@@ -1,0 +1,41 @@
+=== WooCommerce Fluid Checkout ===
+Contributors: diegoversiani
+Tags: ecommerce, e-commerce, cart, checkout, mobile, responsive
+Requires at least: 4.1
+Tested up to: 4.9.8
+Stable tag: 1.0.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+WooCommerce Fluid Checkout provides a simple multi-step checkout flow for any WooCommerce store.
+
+== Description ==
+
+WooCommerce Fluid Checkout provides a simple multi-step checkout flow for any WooCommerce store.
+
+== Installation ==
+
+= Minimum Requirements =
+
+* WordPress 4.1 or greater
+* PHP version 5.2.4 or greater
+* MySQL version 5.0 or greater
+* Some payment gateways require fsockopen support (for IPN access)
+
+= Automatic installation =
+
+Log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
+
+Press the "Upload Plugin" and select the zip file, then click “Install Now”.
+
+= Manual installation =
+
+1. Upload WooCommerce Fluid Checkout to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. All done.
+
+
+== Changelog ==
+
+= 1.0.0 =
+* Initial Release
