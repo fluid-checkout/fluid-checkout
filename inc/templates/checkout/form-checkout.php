@@ -11,7 +11,7 @@
  *
  * @see 	    http://docs.woothemes.com/document/template-structure/
  * @package 	WooCommerce/Templates
- * @version     2.3.0
+ * @version   2.3.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -35,14 +35,22 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 
 <?php wc_print_notices(); ?>
 
-<?php do_action( 'woocommerce_before_checkout_form', $checkout ); ?>
+<?php // TODO: REMOVE ACTIONS FROM HOOK and restore calling it here
+			// do_action( 'woocommerce_before_checkout_form', $checkout ); ?>
 
-<div id="wfc-wrapper" class="wfc-no-modal">
+<div id="wfc-wrapper">
     <div class="wfc-inside">
       <div class="wfc-row wfc-header">
-      	<a class="wfc-prev" href="#">&larr;</a>
         <div id="wfc-progressbar"></div>
       </div> 
+
+		  <section class="wfc-frame" data-label="<?php esc_attr_e( 'Sign-in', 'woocommerce-fluid-checkout' ) ?>">
+				<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
+				<div class="wfc-row">
+					<?php // TODO: Create new hook for this position
+						do_action( 'woocommerce_before_checkout_form', $checkout ); ?>
+				</div>
+			</section>
 
 	<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
@@ -50,16 +58,16 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 
 		<?php if ( sizeof( $checkout->checkout_fields ) > 0 ) : ?>
 
-			<section class="wfc-frame" style="display:none">
+			<section class="wfc-frame" data-label="<?php esc_attr_e( 'Billing', 'woocommerce-fluid-checkout' ) ?>">
 				<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 				<div class="wfc-row">
-				<?php do_action( 'woocommerce_checkout_billing' ); ?>
+					<?php do_action( 'woocommerce_checkout_billing' ); ?>
 				</div>
 			</section>
 
 			<?php do_action( 'wfc_after_billing' ); ?>
 
-			<section class="wfc-frame" style="display:none">
+			<section class="wfc-frame" data-label="<?php esc_attr_e( 'Delivery', 'woocommerce-fluid-checkout' ) ?>">
 				<div class="wfc-row">
 					<div id="wfc-before-shipping-fields">
 						
@@ -74,7 +82,7 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 
 		<?php endif; ?>
 
-		<section class="wfc-frame" style="display:none">
+		<section class="wfc-frame" data-label="<?php esc_attr_e( 'Payment', 'woocommerce-fluid-checkout' ) ?>">
 			<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 				<div class="wfc-row">
 
@@ -92,7 +100,7 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 
 		</section>
 
-		<button class="button" id="wfc-main"><?php _e('Next &rarr;', 'woocommerce-fluid-checkout') ; ?></button>
+		<button class="wfc-next button" id="wfc-main"><?php _e('Next &rarr;', 'woocommerce-fluid-checkout') ; ?></button>
 
     </form>
 

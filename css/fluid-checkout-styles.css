@@ -4,248 +4,120 @@
  * URL: https://fluidweb.site/
  */
 
- #wfc-wrapper {
+#wfc-wrapper {
   overflow: hidden;
- }
+}
 
 .wfc-row {
   margin: 5px 0;
 }
 
 .wfc-header {
+  display: none;
   margin-bottom: 15px;
 }
 
-.wfc-inside .button-bar .button {
-  width: 50%;
-  background: transparent !important;
-  border: 1px solid #999;
-  color: #555 !important;
-  padding: 8px;
+#wfc-wrapper.active .wfc-header {
+  display: block;
 }
 
-.wfc-inside .button-bar .button:hover, .wfc-inside .button-bar .button:active, .wfc-inside .button-bar .button:visited {
-  background-color: #eee !important;
-}
 
-.wfc-inside .button-bar .button:first-child {
-  border-radius: 3px 0 0 3px;
-  border-right: none;
-}
-
-.wfc-inside .button-bar .button:last-child {
-  border-radius: 0 3px 3px 0;
-}
-
-.wfc-inside a.wfc-close, .wfc-prev {
-  display: none;
-  background: rgba(255,255,255,.4);
-  border-radius: 50px;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  color: #ccc;
-  font-weight: bold;
-  opacity: .8;
-  line-height: 22px;
-  font-size: 16px;
-}
-
-.wfc-prev {
-  left: 10px;
-}
-
-.wfc-next {
-  width: 100%;
-}
-
-.button#wfc-main {
-  text-align: center;
-  width: 100%;
-  height: 60px;
-  background-color: #1297d2;
-  color: #fff; 
-  margin-top: 15px;
-  font-size: 16px;
-}
-
-.button#wfc-main:focus {
-  outline-color: transparent;
-}
 
 #wfc-progressbar {
   display: flex;
   margin: 0;
+  overflow: hidden;
+  border-radius: 4px;
 }
 
-.wfc-progress {
-  flex: 1;
-  text-align: center;
-  padding: 5px;
-  background-color: #eee;
-  position: relative;
-  height: 34px;
-  max-height: 34px;
-  font-size: 14px;
+.wfc-step {
   box-sizing: border-box;
-  border-top: 1px solid #fafafa;
+  position: relative;
+  flex: 1;
+  padding: 5px;
+  max-height: 30px;
+  height: 30px;
+  background-color: #fff;
+  font-size: 15px;
+  text-align: center;
+  line-height: 20px;
 }
 
-.wfc-progress:after {
+.wfc-step:before,
+.wfc-step:after {
   content: '';
   position: absolute;
-  top: 0px;
-  right: -25px;
+  top: -2px;
+  right: -23px;
   width: 0;
   height: 0;
   border: 17px solid transparent;
-  border-left: 8px solid #eee;
+  border-left: 7px solid #fff;
   z-index: 3;
 }
 
-.wfc-progress.active:after {
-  content: '';
-  border-left: 8px solid #3d9cd2;
+.wfc-step:before {
+  left: 0;
+  border: 17px solid transparent;
+  border-left: 7px solid #F8F3DD;
+  z-index: 2;
 }
 
-.wfc-progress.active {
-  font-weight: bold;
+
+.wfc-step.active:after {
+  border-left-color: #F0F0F0;
+}
+.wfc-step.active {
+  background-color: #F0F0F0;
+}
+
+
+.wfc-step.done:after {
+  border-left-color: #329f5b;
+}
+.wfc-step.done {
   color: #fff;
-  background-color: #3d9cd2;
+  background-color: #329f5b;
 }
 
-#wfc-progressbar .wfc-progress:last-child:after {
+
+.wfc-step:first-child:before,
+.wfc-step:last-child:after {
   content: '';
   display: none;
 }
 
-form.wfc-save-cart {
-  border: 1px solid #d3ced2;
-  padding: 20px;
-  margin: 2em 0;
-  text-align: left;
-  border-radius: 5px;
-  overflow: hidden;
+
+
+.wfc-header {
+  display: block;
+}
+
+#wfc-wrapper.active .wfc-frame {
+  display: none;
+}
+
+#wfc-wrapper.active .wfc-frame.active {
+  display: block;
+  animation: slideInRight cubic-bezier(0.22, 0.61, 0.36, 1) 200ms; // ease-out-cubic
 }
 
 
-/* Animations */
 
-.slide-in-up {
-  -webkit-transform: translate3d(0, 100%, 0);
-  transform: translate3d(0, 100%, 0); }
-
-  @-webkit-keyframes slideInUp {
-  0% {
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-    opacity: 0; }
-  100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    opacity: 1; } }
-@-webkit-keyframes slideOutUp {
-  0% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    opacity: 1; }
-  100% {
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-    opacity: 0; } }
-.slide-in-up {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  opacity: 1; }
-  .slide-in-up.ng-enter, .slide-in-up .ng-enter {
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-    -webkit-animation-duration: 400ms;
-    -moz-animation-duration: 400ms;
-    animation-duration: 400ms;
-    -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-    -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-    animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-    -webkit-animation-fill-mode: both;
-    -moz-animation-fill-mode: both;
-    animation-fill-mode: both;
-    opacity: 0; }
-  .slide-in-up.ng-enter-active, .slide-in-up .ng-enter-active {
-    -webkit-animation-name: slideInUp;
-    -moz-animation-name: slideInUp;
-    animation-name: slideInUp; }
-  .slide-in-up.ng-leave, .slide-in-up .ng-leave {
-    -webkit-animation-duration: 400ms;
-    -moz-animation-duration: 400ms;
-    animation-duration: 400ms;
-    -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-    -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-    animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-    -webkit-animation-fill-mode: both;
-    -moz-animation-fill-mode: both;
-    animation-fill-mode: both; }
-  .slide-in-up.ng-leave-active, .slide-in-up .ng-leave {
-    -webkit-animation-name: slideOutUp;
-    -moz-animation-name: slideOutUp;
-    animation-name: slideOutUp; }
-
-.slide-in-up-add {
-  -webkit-animation-duration: 400ms;
-  -moz-animation-duration: 400ms;
-  animation-duration: 400ms;
-  -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-  -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-  animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-  -webkit-animation-fill-mode: forwards;
-  -moz-animation-fill-mode: forwards;
-  animation-fill-mode: forwards; }
-
-.slide-in-up-add-active {
-  -webkit-animation-name: slideInUp;
-  -moz-animation-name: slideInUp;
-  animation-name: slideInUp; }
-
-.slide-in-up-remove {
-  -webkit-animation-duration: 400ms;
-  -moz-animation-duration: 400ms;
-  animation-duration: 400ms;
-  -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-  -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-  animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-  -webkit-animation-fill-mode: forwards;
-  -moz-animation-fill-mode: forwards;
-  animation-fill-mode: forwards; }
-
-.slide-in-up-remove-active {
-  -webkit-animation-name: slideOutUp;
-  -moz-animation-name: slideOutUp;
-  animation-name: slideOutUp; }
-
-.fade-in {
-  -webkit-animation: fadeOut 0.3s;
-  -moz-animation: fadeOut 0.3s;
-  animation: fadeOut 0.3s; }
-  .fade-in.active {
-    -webkit-animation: fadeIn 0.3s;
-    -moz-animation: fadeIn 0.3s;
-    animation: fadeIn 0.3s; }
-
-.fade-in-not-out.ng-enter, .fade-in-not-out .ng-enter {
-  -webkit-animation: fadeIn 0.3s;
-  -moz-animation: fadeIn 0.3s;
-  animation: fadeIn 0.3s;
-  position: relative; }
-.fade-in-not-out.ng-leave, .fade-in-not-out .ng-leave {
-  display: none; }
-
-/* animate.css */
-
-.wfc-animated {
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+#wfc-wrapper .wfc-next {
+  display: none;
 }
+
+#wfc-wrapper.active .wfc-next {
+  display: block;
+}
+
+
+
+
+/**
+ * ANIMATIONS
+ */
 
 @-webkit-keyframes slideInRight {
   from {
@@ -260,124 +132,4 @@ form.wfc-save-cart {
   }
 }
 
-@keyframes slideInRight {
-  from {
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
-    visibility: visible;
-  }
 
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.slideInRight {
-  -webkit-animation-name: slideInRight;
-  animation-name: slideInRight;
-}
-
-@-webkit-keyframes slideOutRight {
-  from {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    visibility: hidden;
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
-  }
-}
-
-@keyframes slideOutRight {
-  from {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    visibility: hidden;
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
-  }
-}
-
-.slideOutRight {
-  -webkit-animation-name: slideOutRight;
-  animation-name: slideOutRight;
-}
-
-@-webkit-keyframes slideInLeft {
-  from {
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
-    visibility: visible;
-  }
-
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
-    visibility: visible;
-  }
-
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.slideInLeft {
-  -webkit-animation-name: slideInLeft;
-  animation-name: slideInLeft;
-}
-
-@-webkit-keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-.fadeOut {
-  -webkit-animation-name: fadeOut;
-  animation-name: fadeOut;
-}
-
-/** Storefront theme fix **/
-#wfc-wrapper #order_review_heading, #wfc-wrapper #order_review {
-  width: 100% !important;
-  float: none !important;
-  position: static !important;
-  margin-left: 0 !important;
-  border: none;
-}
-
-#wfc-wrapper .woocommerce-info {
-  margin-bottom: 15px;
-}
-
-.woocommerce-checkout .hentry .entry-header {
-  margin-bottom: 15px;
-}
