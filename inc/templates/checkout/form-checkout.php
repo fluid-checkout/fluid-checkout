@@ -35,8 +35,7 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 
 <?php wc_print_notices(); ?>
 
-<?php // TODO: REMOVE ACTIONS FROM HOOK and restore calling it here
-			// do_action( 'woocommerce_before_checkout_form', $checkout ); ?>
+<?php do_action( 'woocommerce_before_checkout_form', $checkout ); ?>
 
 <div id="wfc-wrapper">
     <div class="wfc-inside">

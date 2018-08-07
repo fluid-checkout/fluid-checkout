@@ -101,6 +101,7 @@
 
 #wfc-wrapper.active .wfc-frame {
   display: none;
+  margin-top: 50px;
 }
 
 #wfc-wrapper.active .wfc-frame.current {
