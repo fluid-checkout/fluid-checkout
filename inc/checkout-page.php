@@ -15,7 +15,7 @@ class FluidCheckoutPage extends FluidCheckout {
 
     // Move login for to inside it's step
     remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
-    add_action( 'wfc_before_login_form', 'woocommerce_checkout_login_form', 10 );
+    add_action( 'wfc_checkout_login_form', 'woocommerce_checkout_login_form', 10 );
 
 
     // add_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
