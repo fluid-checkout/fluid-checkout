@@ -18,17 +18,56 @@
   		frames,
   		steps;
 
+
+
 	/**
 	 * METHODS
 	 */
 	
 	/**
-	 * Get the id of current active step.
+   * Get the id of current step.
+   */
+  var getFirstStepId = function() {
+    // Return next available step
+    for (var i = 0; i < frames.length; i++) {
+      if ( ! frames[i].hasAttribute('disabled') ) {
+        return i + 1;
+      }
+    }
+  };
+
+
+
+  /**
+	 * Get the id of current step.
 	 */
-	var getActiveStepId = function() {
-		var activeStep = document.querySelector('.wfc-step.active');
-		return activeStep ? parseInt( activeStep.getAttribute('data-id') ) : null;
+	var getCurrentStepId = function() {
+		var currentStep = document.querySelector('.wfc-step.current');
+		return currentStep ? parseInt( currentStep.getAttribute('data-id') ) : null;
 	};
+
+
+
+  /**
+   * Get the id of next available step.
+   */
+  var getNextStepId = function( ) {
+    var currentStepId = getCurrentStepId();
+
+    // Get first enabled step
+    if ( ! currentStepId ) {
+      return getFirstStepId();
+    }
+
+    // Return next available step
+    for (var i = currentStepId; i < frames.length; i++) {
+      if ( ! frames[i].hasAttribute('disabled') ) {
+        return currentStepId + 1;
+      }
+    }
+
+    return null;
+  };
 
 
 
@@ -38,10 +77,12 @@
 	var clearStepStatus = function() {
 		for (var i = frames.length - 1; i >= 0; i--) {
 			// active
-			frames[i].classList.remove('active');
-			steps[i].classList.remove('active');
+			frames[i].classList.remove('current');
+			steps[i].classList.remove('current');
 			// done
-			steps[i].classList.remove('done');
+			if ( ! steps[i].hasAttribute('disabled') ) {
+        steps[i].classList.remove('done');
+      }
 		}
 	};
 
@@ -51,10 +92,10 @@
 	 * Mark steps as done.
 	 */
 	var markAllStepDone = function() {
-		var activeStepId = getActiveStepId();
+		var currentStepId = getCurrentStepId();
 		for (var i = steps.length - 1; i >= 0; i--) {
 			var stepId = steps[i].getAttribute('data-id');
-			if ( stepId < activeStepId ) {
+			if ( ! steps[i].hasAttribute('disabled') && stepId < currentStepId ) {
 				steps[i].classList.add('done');
 			}
 		}
@@ -63,26 +104,27 @@
 
 
 	/**
-	 * Mark step as active.
+	 * Mark step as current.
 	 */
 	var markStepActive = function( step, frame ) {
-		// Set step as active
-		step.classList.add('active');
-		frame.classList.add('active');
+		// Set step as current
+		step.classList.add('current');
+		frame.classList.add('current');
 	};
 
 
 
 	/**
-	 * Change active step.
+	 * Change current step.
 	 */
-	var showStep = function( stepId ) {
-		var activeStepId = getActiveStepId(),
-				step = document.querySelector('#step-'+stepId),
-				frame = document.querySelector('#frame-'+stepId);
+	var setCurrentStep = function( stepId ) {
+		var currentStepId = getCurrentStepId();
 
-		// Bail if is current active step
-		if ( activeStepId && activeStepId == stepId ) { return; };
+    // Bail if is current active step
+    if ( currentStepId && currentStepId == stepId ) { return; };
+		
+    var	step = document.querySelector('#step-'+stepId),
+				frame = document.querySelector('#frame-'+stepId);
 		
 		// Clear step status, mark as active and done
 		clearStepStatus();
@@ -108,7 +150,15 @@
 			step.classList.add('wfc-step');
 			step.setAttribute('id', 'step-' + stepId);
 			step.setAttribute('data-id', stepId);
-			step.textContent = label;
+      step.textContent = label;
+
+      if ( frames[i].hasAttribute('disabled') ) {
+        step.setAttribute('disabled', 'disabled');
+      }
+
+      if ( frames[i].classList.contains('done') ) {
+        step.classList.add('done');
+      }
 
 			progressBar.insertBefore(step, progressBar.firstChild);
 			
@@ -119,8 +169,8 @@
 		// Get steps
 		steps = wfcInner.querySelectorAll('.wfc-step');
 
-		// Show first step
-		showStep( 1 );
+		// Show first available step
+		setCurrentStep( getNextStepId() );
 	};
 
 
@@ -131,7 +181,7 @@
 	var handleStepClick = function( e ) {
 		e.preventDefault();
     var step = e.target.closest( '.wfc-step' );
-    showStep( step.getAttribute( 'data-id' ) );
+    setCurrentStep( step.getAttribute( 'data-id' ) );
 	};
 
 
@@ -141,10 +191,7 @@
 	 */
 	var handleNextStepClick = function( e ) {
 		e.preventDefault();
-    var step = e.target.closest( '.wfc-next' ),
-    		activeStepId = getActiveStepId(),
-    		nextStepId = activeStepId + 1;
-    showStep( nextStepId );
+    setCurrentStep( getNextStepId() );
 	};
 
 
@@ -153,10 +200,10 @@
    * Handle document clicks and route to the appropriate function.
    */
   var handleClick = function( e ) {
-    if ( e.target.closest( '.wfc-step' ) ) {
+    if ( e.target.closest( '.wfc-step:not([disabled])' ) ) {
       handleStepClick( e );
     }
-    else if ( e.target.closest( '.wfc-next' ) ) {
+    else if ( e.target.closest( '.wfc-next:not([disabled])' ) ) {
     	handleNextStepClick( e );
     }
   };

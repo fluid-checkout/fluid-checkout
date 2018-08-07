@@ -41,6 +41,12 @@
   font-size: 15px;
   text-align: center;
   line-height: 20px;
+  cursor: pointer;
+}
+
+.wfc-step[disabled],
+.wfc-step.disabled {
+  cursor: default;
 }
 
 .wfc-step:before,
@@ -64,10 +70,10 @@
 }
 
 
-.wfc-step.active:after {
+.wfc-step.current:after {
   border-left-color: #F0F0F0;
 }
-.wfc-step.active {
+.wfc-step.current {
   background-color: #F0F0F0;
 }
 
@@ -97,7 +103,7 @@
   display: none;
 }
 
-#wfc-wrapper.active .wfc-frame.active {
+#wfc-wrapper.active .wfc-frame.current {
   display: block;
   animation: slideInRight cubic-bezier(0.22, 0.61, 0.36, 1) 200ms; // ease-out-cubic
 }

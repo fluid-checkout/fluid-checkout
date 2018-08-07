@@ -44,15 +44,16 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
         <div id="wfc-progressbar"></div>
       </div> 
 
-		  <section class="wfc-frame" data-label="<?php esc_attr_e( 'Sign-in', 'woocommerce-fluid-checkout' ) ?>">
-				<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
+		  <section class="wfc-frame <?php echo is_user_logged_in() ? esc_attr('done') : ''; ?>" <?php echo is_user_logged_in() ? esc_attr('disabled') : ''; ?> data-label="<?php esc_attr_e( 'Sign-in', 'woocommerce-fluid-checkout' ) ?>">
+				
+				<?php if ( ! is_user_logged_in() ) : ?>
+					<div class="wfc-row">
+						<?php do_action( 'wfc_before_login_form', $checkout ); ?>
+					</div>
 
-				<div class="wfc-row">
-					<?php // TODO: Create new hook for this position
-						do_action( 'woocommerce_before_checkout_form', $checkout ); ?>
-				</div>
-
-				<button class="wfc-next button button-success-clear button-icon button-icon--right button--big"><?php _e('Proceed To Billing', 'woocommerce-fluid-checkout') ; ?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+					<button class="wfc-next button button-success-clear button-icon button-icon--right button--big"><?php _e('Proceed To Billing', 'woocommerce-fluid-checkout') ; ?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+				<?php endif; ?>
+				
 			</section>
 
 	<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
