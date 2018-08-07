@@ -46,10 +46,13 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 
 		  <section class="wfc-frame" data-label="<?php esc_attr_e( 'Sign-in', 'woocommerce-fluid-checkout' ) ?>">
 				<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
+
 				<div class="wfc-row">
 					<?php // TODO: Create new hook for this position
 						do_action( 'woocommerce_before_checkout_form', $checkout ); ?>
 				</div>
+
+				<button class="wfc-next button button-success-clear button-icon button-icon--right button--big"><?php _e('Proceed To Billing', 'woocommerce-fluid-checkout') ; ?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
 			</section>
 
 	<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
@@ -63,19 +66,20 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 				<div class="wfc-row">
 					<?php do_action( 'woocommerce_checkout_billing' ); ?>
 				</div>
+
+				<button class="wfc-next button button-success-clear button-icon button-icon--right button--big"><?php _e('Proceed To Shipping', 'woocommerce-fluid-checkout') ; ?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
 			</section>
 
 			<?php do_action( 'wfc_after_billing' ); ?>
 
 			<section class="wfc-frame" data-label="<?php esc_attr_e( 'Delivery', 'woocommerce-fluid-checkout' ) ?>">
 				<div class="wfc-row">
-					<div id="wfc-before-shipping-fields">
-						
-					</div>
-
 					<?php do_action( 'woocommerce_checkout_shipping' ); ?>
 				</div>
+				
 				<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
+
+				<button class="wfc-next button button-success-clear button-icon button-icon--right button--big"><?php _e('Proceed To Payment', 'woocommerce-fluid-checkout') ; ?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
 			</section>
 
 			<?php do_action( 'wfc_after_shipping' ); ?>
@@ -85,22 +89,18 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 		<section class="wfc-frame" data-label="<?php esc_attr_e( 'Payment', 'woocommerce-fluid-checkout' ) ?>">
 			<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 				<div class="wfc-row">
-
 					<h3 id="order_review_heading">
 						<?php _e( 'Your order', 'woocommerce-fluid-checkout' ); ?>
 					</h3>
 
-				<div id="order_review" class="woocommerce-checkout-review-order">
-					<?php do_action( 'woocommerce_checkout_order_review' ); ?>
-				</div>
-
+					<div id="order_review" class="woocommerce-checkout-review-order">
+						<?php do_action( 'woocommerce_checkout_order_review' ); ?>
+					</div>
 				</div>
 
 			<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
 		</section>
-
-		<button class="wfc-next button" id="wfc-main"><?php _e('Next &rarr;', 'woocommerce-fluid-checkout') ; ?></button>
 
     </form>
 
