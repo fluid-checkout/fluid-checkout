@@ -112,6 +112,9 @@ class FluidCheckoutPage extends FluidCheckout {
     // Remove original section for billind fields
     unset($fields['billing']);
 
+    // Fix: Make sure country display in the correct order
+    $fields['billing_address']['billing_country']['priority'] = 100;
+
     return $fields;
   }
 
