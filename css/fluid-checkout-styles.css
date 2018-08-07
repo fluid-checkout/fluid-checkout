@@ -110,6 +110,7 @@
 
 #wfc-wrapper.active .wfc-next {
   display: block;
+  width: 100%;
 }
 
 
