@@ -148,6 +148,9 @@ class FluidCheckoutPage extends FluidCheckout {
     // Replace fields
     $fields['shipping'] = $shipping_fields;
 
+    // Fix: Make sure country display in the correct order
+    $fields['shipping']['shipping_country']['priority'] = 100;
+
     return $fields;
   }
 
