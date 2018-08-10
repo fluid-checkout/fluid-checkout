@@ -178,6 +178,7 @@ class FluidCheckoutPage extends FluidCheckout {
     // TODO: Move this function to a site specific plugin
     $fields['billing']['billing_email']['description'] = __( 'Order and Tracking number will be sent to this email address.', 'la' );
     $fields['billing']['billing_address_2']['description'] = __( 'Important: Do not forget appartment, condo or BLD number if applicable.', 'la' );
+    $fields['shipping']['shipping_address_2']['description'] = __( 'Important: Do not forget appartment, condo or BLD number if applicable.', 'la' );
     $fields['billing']['billing_address_2']['placeholder'] = __( 'Apt, condo or BLD numbers', 'la' );
 
     return $fields;
