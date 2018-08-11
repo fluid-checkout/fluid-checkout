@@ -98,8 +98,8 @@ class FluidCheckout {
 			return;
 
 		global $woocommerce;
-		self::$woo_checkout_url = $woocommerce->cart->get_checkout_url();
-		self::$woo_cart_url     = $woocommerce->cart->get_cart_url();
+		self::$woo_checkout_url = wc_get_checkout_url();
+		self::$woo_cart_url     = wc_get_cart_url();
 		self::$woo_shop_url     = get_permalink( wc_get_page_id( 'shop' ) );
 
 	}
