@@ -49,13 +49,13 @@ class FluidCheckout {
 	const VERSION              = '1.0.0';
 
 	/**
-	 * run function.
+	 * instance function.
 	 *
 	 * @access public
 	 * @static
 	 * @return void
 	 */
-	public static function run() {
+	public static function instance() {
 		if ( self::$instance === null )
 			self::$instance = new self();
 
@@ -192,4 +192,4 @@ class FluidCheckout {
 
 }
 
-FluidCheckout::run();
+FluidCheckout::instance();
