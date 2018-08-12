@@ -113,7 +113,7 @@ class FluidCheckout {
 	public function scripts_styles() {
 
 		// Bail if not on checkout page.
-		if( !is_checkout() ){ return; }
+		if( !is_checkout() || is_order_received_page() ){ return; }
 
 		// TODO: Enable js minification.
 		// $min = '.min';

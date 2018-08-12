@@ -12,9 +12,9 @@
   /**
    * VARIABLES
    */
-  var wfcWrapper = document.querySelector('#wfc-wrapper'),
-  		wfcInner = document.querySelector('.wfc-inside'),
-  		progressBar = document.querySelector('#wfc-progressbar'),
+  var wfcWrapper,
+  		wfcInner,
+  		progressBar,
   		frames,
   		steps;
 
@@ -138,7 +138,10 @@
 	 * Create progress bar steps.
 	 */
 	var initSteps = function() {
-		// Get frames
+		// Bail if inner element not present
+    if ( ! wfcInner ) { return; }
+
+    // Get frames
 		frames = wfcInner.querySelectorAll('.wfc-frame');
 
 		// Add ID to each frame and steps to progress bar
@@ -221,6 +224,13 @@
    * Initialize component and set related handlers.
    */
   var init = function() {
+    wfcWrapper = document.querySelector('#wfc-wrapper');
+    wfcInner = document.querySelector('.wfc-inside');
+    progressBar = document.querySelector('#wfc-progressbar');
+
+    // Bail if elements not present
+    if ( ! wfcWrapper || ! wfcInner || ! progressBar ) { return; }
+
   	initSteps();
   	setPluginActive();
   };
