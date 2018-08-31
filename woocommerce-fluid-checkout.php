@@ -85,6 +85,11 @@ class FluidCheckout {
 
 	}
 
+
+
+  /**
+   * Initialize hooks.
+   */
 	public function hooks() {
 		add_action( 'init', array( $this, 'set_vars') );
 
@@ -92,6 +97,11 @@ class FluidCheckout {
 		add_action( 'plugins_loaded', array( $this, 'includes' ) );
 	}
 
+
+
+	/**
+	 * Set plugin global variables.
+	 */
 	public function set_vars() {
 
 		if( is_admin() || defined( 'DOING_CRON' ) )

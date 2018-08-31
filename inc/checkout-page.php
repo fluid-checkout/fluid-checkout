@@ -5,6 +5,8 @@
  */
 class FluidCheckoutPage extends FluidCheckout {
 
+  public $parent;
+
   public function __construct() {
     $this->hooks();
   }
@@ -12,7 +14,7 @@ class FluidCheckoutPage extends FluidCheckout {
   public function hooks() {
     
     // Template loader
-    add_filter( 'woocommerce_locate_template', array( $this, 'wfc_woocommerce_locate_template' ), 10, 3 );
+    add_filter( 'woocommerce_locate_template', array( $this, 'wfc_locate_template' ), 10, 3 );
     
     // Checkout field types enhancement for mobile
     add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_number_field_types' ), 5 );
@@ -23,7 +25,7 @@ class FluidCheckoutPage extends FluidCheckout {
   /*
    * Use our custom woo checkout form template
    */
-  public function wfc_woocommerce_locate_template( $template, $template_name, $template_path ) {
+  public function wfc_locate_template( $template, $template_name, $template_path ) {
    
     global $woocommerce;
    
@@ -42,8 +44,8 @@ class FluidCheckoutPage extends FluidCheckout {
       )
     );
    
-    // Modification: Get the template from this plugin, if it exists
-    if ( file_exists( $plugin_path . $template_name ) ) {
+    // Get the template from this plugin, if it exists
+    if ( ! $template && file_exists( $plugin_path . $template_name ) ) {
       $template = $plugin_path . $template_name;
     }
    

@@ -110,6 +110,8 @@
 		// Set step as current
 		step.classList.add('current');
 		frame.classList.add('current');
+
+    // TODO: Better animation handling with slide left/right depending on the position of the step
 	};
 
 
