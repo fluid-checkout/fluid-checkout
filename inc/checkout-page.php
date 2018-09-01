@@ -77,4 +77,4 @@ class FluidCheckoutPage extends FluidCheckout {
 
 }
 
-$wsc_checkout_page = new FluidCheckoutPage();
+FluidCheckoutPage::instance();

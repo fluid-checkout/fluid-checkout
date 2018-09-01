@@ -17,10 +17,7 @@ WooCommerce Fluid Checkout provides a simple multi-step checkout flow for any Wo
 
 = Minimum Requirements =
 
-* WordPress 4.1 or greater
-* PHP version 5.2.4 or greater
-* MySQL version 5.0 or greater
-* Some payment gateways require fsockopen support (for IPN access)
+* PHP version 5.3 or greater
 
 = Automatic installation =
 

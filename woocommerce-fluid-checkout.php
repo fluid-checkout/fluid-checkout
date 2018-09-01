@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class FluidCheckout {
 
 	// A single instance of this class.
-	public static $instance    = null;
+	public static $instances   = array();
 	public static $this_plugin = null;
 	public static $woo_checkout_url;
 	public static $woo_shop_url;
@@ -56,10 +56,13 @@ class FluidCheckout {
 	 * @return void
 	 */
 	public static function instance() {
-		if ( self::$instance === null )
-			self::$instance = new self();
+		$calledClass = get_called_class();
 
-		return self::$instance;
+		if ( self::$instances[ $calledClass ] === null ){
+			self::$instances[ $calledClass ] = new $calledClass();
+		}
+
+		return self::$instances[ $calledClass ];
 	}
 
 	/**
@@ -182,7 +185,7 @@ class FluidCheckout {
 		if( ! is_plugin_active( 'woocommerce/woocommerce.php') ) {
 			// Admin notice
 			$this->requires = 'WooCommerce';
-			add_action( 'all_admin_notices', array( $this, 'fluidcheckout_required' ) );
+			add_action( 'all_admin_notices', array( $this, 'woocommerce_required_notice' ) );
 			return false;
 		}
 
@@ -195,7 +198,7 @@ class FluidCheckout {
 	 * Shows required message & deactivates this plugin
 	 * @since  1.0.0
 	 */
-	public function fluidcheckout_required() {
+	public function woocommerce_required_notice() {
 		echo '<div id="message" class="error"><p>'. sprintf( __( '%1$s requires the %2$s plugin to be installed/activated. %1$s has been deactivated.', 'woocommerce-fluid-checkout' ), self::PLUGIN, 'WooCommerce' ) .'</p></div>';
 		deactivate_plugins( self::$this_plugin, true );
 	}
