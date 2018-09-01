@@ -30,6 +30,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+// Define WFC_PLUGIN_FILE.
+if ( ! defined( 'WFC_PLUGIN_FILE' ) ) {
+	define( 'WFC_PLUGIN_FILE', __FILE__ );
+}
+
 
 /**
  * Main Class.
@@ -46,7 +51,7 @@ class FluidCheckout {
 	public $directory_path;
 	public $directory_url;
 	const PLUGIN               = 'WooCommerce Fluid Checkout';
-	const VERSION              = '1.0.0';
+	const VERSION              = '1.0.1';
 
 	/**
 	 * instance function.
@@ -65,6 +70,8 @@ class FluidCheckout {
 		return self::$instances[ $calledClass ];
 	}
 
+
+
 	/**
 	 * __construct function.
 	 *
@@ -72,20 +79,29 @@ class FluidCheckout {
 	 * @return void
 	 */
 	public function __construct() {
+		$this->set_plugin_vars();
 
-		self::$this_plugin = plugin_basename( __FILE__ );
+		self::$this_plugin = plugin_basename( WFC_PLUGIN_FILE );
 
 		// Load translations
-		load_plugin_textdomain( 'woocommerce-fluid-checkout', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( 'woocommerce-fluid-checkout', false, dirname( plugin_basename( WFC_PLUGIN_FILE ) ) . '/languages' );
 
-		// Define plugin constants
-		$this->basename			=	plugin_basename( __FILE__ );
-		$this->directory_path	=	plugin_dir_path( __FILE__ );
-		$this->directory_url	=	plugin_dir_url( __FILE__ );
+		// Get plugin options
 		$this->checkout_options =   get_option('wfc_settings');
 
 		$this->hooks();
 
+	}
+
+
+
+	/**
+	 * Define plugin variables.
+	 */
+	public function set_plugin_vars() {
+		$this->basename				=	plugin_basename( WFC_PLUGIN_FILE );
+		$this->directory_path	=	plugin_dir_path( WFC_PLUGIN_FILE );
+		$this->directory_url	=	plugin_dir_url( WFC_PLUGIN_FILE );
 	}
 
 
@@ -136,7 +152,7 @@ class FluidCheckout {
 			$min = '';
 		}
 	    
-    wp_enqueue_script( 'fluid-checkout-scripts', plugins_url( "js/fluid-checkout$min.js", __FILE__ ), array( 'jquery' ), self::VERSION, true );
+    wp_enqueue_script( 'fluid-checkout-scripts', plugins_url( "js/fluid-checkout$min.js", WFC_PLUGIN_FILE ), array( 'jquery' ), self::VERSION, true );
 
     wp_localize_script( 
     	'fluid-checkout-scripts', 
@@ -148,9 +164,9 @@ class FluidCheckout {
     	)
     );
 
-		wp_enqueue_script( 'jquery-payment', plugins_url( 'js/jquery.payment.js', __FILE__ ), array( 'jquery' ), self::VERSION );
+		wp_enqueue_script( 'jquery-payment', plugins_url( 'js/jquery.payment.js', WFC_PLUGIN_FILE ), array( 'jquery' ), self::VERSION );
 
-	  wp_enqueue_style( 'fluid-checkout-style', plugins_url( "css/fluid-checkout-styles$min.css", __FILE__ ), null, self::VERSION );
+	  wp_enqueue_style( 'fluid-checkout-style', plugins_url( "css/fluid-checkout-styles$min.css", WFC_PLUGIN_FILE ), null, self::VERSION );
 
 	}
 
