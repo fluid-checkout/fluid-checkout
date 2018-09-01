@@ -24,6 +24,7 @@ class FluidCheckoutPage extends FluidCheckout {
 
   /*
    * Use our custom woo checkout form template
+   * TODO: Move this function to the plugin main class.
    */
   public function wfc_locate_template( $template, $template_name, $template_path ) {
    
