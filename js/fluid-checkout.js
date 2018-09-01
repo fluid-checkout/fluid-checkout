@@ -1,5 +1,5 @@
 /**
- * Add products to cart via ajax.
+ * Manage checkout steps state.
  *
  * DEPENDS ON:
  * - jQuery // Interact with WooCommerce events
