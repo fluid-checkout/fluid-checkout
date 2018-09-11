@@ -20,11 +20,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $woocommerce;
 
-$checkout_options = get_option('wfc_settings');
-$woo_checkout_url = $woocommerce->cart->get_checkout_url();
-$woo_cart_url     = $woocommerce->cart->get_cart_url();
-$woo_shop_url     = get_permalink( wc_get_page_id( 'shop' ) );
-
 // If checkout registration is disabled and not logged in, the user cannot checkout
 if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_user_logged_in() ) {
 	echo apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'woocommerce-fluid-checkout' ) );
