@@ -37,7 +37,7 @@ if ( ! defined( 'WFC_PLUGIN_FILE' ) ) {
 
 
 /**
- * Main Class.
+ * Plugin Main Class.
  */
 class FluidCheckout {
 
@@ -51,14 +51,17 @@ class FluidCheckout {
 	public static $directory_path;
 	public static $directory_url;
 	const PLUGIN               = 'WooCommerce Fluid Checkout';
-	const VERSION              = '1.0.1';
+	const VERSION              = '1.0.2';
+
+
 
 	/**
-	 * instance function.
+	 * Singleton instance function.
 	 *
 	 * @access public
 	 * @static
 	 * @return void
+   * @since  1.0.0
 	 */
 	public static function instance() {
 		$calledClass = get_called_class();
@@ -80,25 +83,17 @@ class FluidCheckout {
 	 */
 	public function __construct() {
 		$this->set_plugin_vars();
-
-		self::$this_plugin = plugin_basename( WFC_PLUGIN_FILE );
-
-		// Load translations
-		load_plugin_textdomain( 'woocommerce-fluid-checkout', false, dirname( plugin_basename( WFC_PLUGIN_FILE ) ) . '/languages' );
-
-		// Get plugin options
-		$this->checkout_options =   get_option('wfc_settings');
-
-		$this->hooks();
-
-	}
+    $this->load_textdomain();
+    $this->hooks();
+  }
 
 
 
-	/**
-	 * Define plugin variables.
-	 */
-	public function set_plugin_vars() {
+  /**
+   * Define plugin variables.
+   */
+  public function set_plugin_vars() {
+		self::$this_plugin    = plugin_basename( WFC_PLUGIN_FILE );
 		self::$basename				=	plugin_basename( WFC_PLUGIN_FILE );
 		self::$directory_path	=	plugin_dir_path( WFC_PLUGIN_FILE );
 		self::$directory_url	=	plugin_dir_url( WFC_PLUGIN_FILE );
@@ -106,11 +101,35 @@ class FluidCheckout {
 
 
 
+	/**
+	 * Set plugin global variables.
+	 */
+	public function set_global_vars() {
+		if( is_admin() || defined( 'DOING_CRON' ) )
+			return;
+
+		self::$woo_checkout_url = wc_get_checkout_url();
+		self::$woo_cart_url     = wc_get_cart_url();
+		self::$woo_shop_url     = get_permalink( wc_get_page_id( 'shop' ) );
+    global $woocommerce;
+	}
+
+
+
+  /**
+   * Define plugin variables.
+   */
+  public function load_textdomain() {
+    load_plugin_textdomain( 'woocommerce-fluid-checkout', false, untrailingslashit( self::$directory_path ).'/languages' );
+  }
+
+
+
   /**
    * Initialize hooks.
    */
 	public function hooks() {
-		add_action( 'init', array( $this, 'set_vars') );
+		add_action( 'init', array( $this, 'set_global_vars') );
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts_styles' ) );
 		add_action( 'plugins_loaded', array( $this, 'includes' ) );
 
@@ -119,21 +138,6 @@ class FluidCheckout {
 	}
 
 
-
-	/**
-	 * Set plugin global variables.
-	 */
-	public function set_vars() {
-
-		if( is_admin() || defined( 'DOING_CRON' ) )
-			return;
-
-		global $woocommerce;
-		self::$woo_checkout_url = wc_get_checkout_url();
-		self::$woo_cart_url     = wc_get_cart_url();
-		self::$woo_shop_url     = get_permalink( wc_get_page_id( 'shop' ) );
-
-	}
 
 	/**
 	 * scripts_styles function.
@@ -154,7 +158,7 @@ class FluidCheckout {
 			$min = '';
 		}
 	    
-    wp_enqueue_script( 'fluid-checkout-scripts', plugins_url( "js/fluid-checkout$min.js", WFC_PLUGIN_FILE ), array( 'jquery' ), self::VERSION, true );
+    wp_enqueue_script( 'fluid-checkout-scripts', untrailingslashit( self::$directory_url )."/js/fluid-checkout$min.js", array( 'jquery' ), self::VERSION, true );
 
     wp_localize_script( 
     	'fluid-checkout-scripts', 
@@ -166,9 +170,9 @@ class FluidCheckout {
     	)
     );
 
-		wp_enqueue_script( 'jquery-payment', plugins_url( 'js/jquery.payment.js', WFC_PLUGIN_FILE ), array( 'jquery' ), self::VERSION );
+		wp_enqueue_script( 'jquery-payment', untrailingslashit( self::$directory_url ).'/js/jquery.payment.js', array( 'jquery' ), self::VERSION );
 
-	  wp_enqueue_style( 'fluid-checkout-style', plugins_url( "css/fluid-checkout-styles$min.css", WFC_PLUGIN_FILE ), null, self::VERSION );
+	  wp_enqueue_style( 'fluid-checkout-style', untrailingslashit( self::$directory_url )."/css/fluid-checkout-styles$min.css", null, self::VERSION );
 
 	}
 
@@ -176,8 +180,7 @@ class FluidCheckout {
 
 	/*
    * Locate template files from this plugin.
-   * 
-   * @since 1.0.0
+   * @since 1.0.2
    */
   public function locate_template( $template, $template_name, $template_path ) {
    
