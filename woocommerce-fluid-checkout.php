@@ -47,9 +47,9 @@ class FluidCheckout {
 	public static $woo_checkout_url;
 	public static $woo_shop_url;
 	public static $woo_cart_url;
-	public $basename;
-	public $directory_path;
-	public $directory_url;
+	public static $basename;
+	public static $directory_path;
+	public static $directory_url;
 	const PLUGIN               = 'WooCommerce Fluid Checkout';
 	const VERSION              = '1.0.1';
 
@@ -99,9 +99,9 @@ class FluidCheckout {
 	 * Define plugin variables.
 	 */
 	public function set_plugin_vars() {
-		$this->basename				=	plugin_basename( WFC_PLUGIN_FILE );
-		$this->directory_path	=	plugin_dir_path( WFC_PLUGIN_FILE );
-		$this->directory_url	=	plugin_dir_url( WFC_PLUGIN_FILE );
+		self::$basename				=	plugin_basename( WFC_PLUGIN_FILE );
+		self::$directory_path	=	plugin_dir_path( WFC_PLUGIN_FILE );
+		self::$directory_url	=	plugin_dir_url( WFC_PLUGIN_FILE );
 	}
 
 
@@ -111,9 +111,11 @@ class FluidCheckout {
    */
 	public function hooks() {
 		add_action( 'init', array( $this, 'set_vars') );
-
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts_styles' ) );
 		add_action( 'plugins_loaded', array( $this, 'includes' ) );
+
+		// Template loader
+    add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 10, 3 );
 	}
 
 
@@ -171,6 +173,48 @@ class FluidCheckout {
 	}
 
 
+
+	/*
+   * Locate template files from this plugin.
+   * 
+   * @since 1.0.0
+   */
+  public function locate_template( $template, $template_name, $template_path ) {
+   
+    global $woocommerce;
+   
+    $_template = $template;
+
+   
+    if ( ! $template_path ) $template_path = $woocommerce->template_url;
+   
+    // Get plugin path
+    $plugin_path  = untrailingslashit( self::$directory_path ) . '/templates/';
+   
+    // Look within passed path within the theme
+    $template = locate_template(
+      array(
+        $template_path . $template_name,
+        $template_name
+      )
+    );
+   
+    // Get the template from this plugin, if it exists
+    if ( ! $template && file_exists( $plugin_path . $template_name ) ) {
+      $template = $plugin_path . $template_name;
+    }
+   
+    // Use default template
+    if ( ! $template ){
+      $template = $_template;
+    }
+   
+    // Return what we found
+    return $template;
+  }
+
+
+
 	/**
 	 * Load plugin includes.
 	 * @since 1.0.0
@@ -182,8 +226,7 @@ class FluidCheckout {
 			return;
 		}
 
-		require_once $this->directory_path . 'inc/checkout-page.php';
-
+		require_once self::$directory_path . 'inc/checkout-page.php';
 	}
 
 
