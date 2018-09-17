@@ -44,12 +44,11 @@ class FluidCheckout {
 	// A single instance of this class.
 	public static $instances   = array();
 	public static $this_plugin = null;
+  public static $directory_path;
+  public static $directory_url;
 	public static $woo_checkout_url;
 	public static $woo_shop_url;
 	public static $woo_cart_url;
-	public static $basename;
-	public static $directory_path;
-	public static $directory_url;
 	const PLUGIN               = 'WooCommerce Fluid Checkout';
 	const VERSION              = '1.0.2';
 
@@ -94,7 +93,6 @@ class FluidCheckout {
    */
   public function set_plugin_vars() {
 		self::$this_plugin    = plugin_basename( WFC_PLUGIN_FILE );
-		self::$basename				=	plugin_basename( WFC_PLUGIN_FILE );
 		self::$directory_path	=	plugin_dir_path( WFC_PLUGIN_FILE );
 		self::$directory_url	=	plugin_dir_url( WFC_PLUGIN_FILE );
 	}
