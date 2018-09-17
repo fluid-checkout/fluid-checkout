@@ -192,7 +192,8 @@ class FluidCheckout {
 		}
 
     require_once self::$directory_path . 'inc/checkout-steps.php';
-		require_once self::$directory_path . 'inc/checkout-field-types.php';
+    require_once self::$directory_path . 'inc/checkout-field-types.php';
+    require_once self::$directory_path . 'inc/checkout-validation.php';
 	}
 
 
