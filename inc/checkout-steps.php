@@ -19,9 +19,6 @@ class FluidCheckoutSteps extends FluidCheckout {
    */
   public function hooks() {
     add_action( 'wp_enqueue_scripts', array( $this, 'scripts_styles' ) );
-
-    // Checkout field types enhancement for mobile
-    add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_number_field_types' ), 5 );
   }
 
 
@@ -48,23 +45,6 @@ class FluidCheckoutSteps extends FluidCheckout {
 
     wp_enqueue_style( 'fluid-checkout-steps-style', untrailingslashit( self::$directory_url )."/css/checkout-steps$min.css", null, self::VERSION );
   }
-
-
-
-  /**
-   * Change the types of number input fields
-   * to display a more appropriate keyboard on mobile devices.
-   */
-  public function change_number_field_types( $fields ) {
-    $fields['billing']['billing_email']['type'] = 'email';
-    $fields['billing']['billing_phone']['type'] = 'tel';
-    $fields['billing']['billing_postcode']['type'] = 'tel';
-    $fields['shipping']['shipping_postcode']['type'] = 'tel';
-
-    return $fields;
-  }
-
-
 
 }
 
