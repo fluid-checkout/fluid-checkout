@@ -154,23 +154,6 @@ class FluidCheckout {
 		if ( defined('SCRIPT_DEBUG') && true === SCRIPT_DEBUG ) {
 			$min = '';
 		}
-	    
-    wp_enqueue_script( 'fluid-checkout-scripts', untrailingslashit( self::$directory_url )."/js/fluid-checkout$min.js", array( 'jquery' ), self::VERSION, true );
-
-    wp_localize_script( 
-    	'fluid-checkout-scripts', 
-    	'fluidCheckoutVars', 
-    	array( 
-    		'woo_checkout_url'  => self::$woo_checkout_url,
-    		'woo_cart_url'      => self::$woo_cart_url,
-    		'woo_shop_url'      => self::$woo_shop_url,
-    	)
-    );
-
-		wp_enqueue_script( 'jquery-payment', untrailingslashit( self::$directory_url ).'/js/jquery.payment.js', array( 'jquery' ), self::VERSION );
-
-	  wp_enqueue_style( 'fluid-checkout-style', untrailingslashit( self::$directory_url )."/css/fluid-checkout-styles$min.css", null, self::VERSION );
-
 	}
 
 
@@ -226,7 +209,8 @@ class FluidCheckout {
 			return;
 		}
 
-		require_once self::$directory_path . 'inc/checkout-page.php';
+    require_once self::$directory_path . 'inc/checkout-steps.php';
+		require_once self::$directory_path . 'inc/checkout-field-types.php';
 	}
 
 

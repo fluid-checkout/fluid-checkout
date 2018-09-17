@@ -35,6 +35,7 @@ Press the "Upload Plugin" and select the zip file, then click “Install Now”.
 == Changelog ==
 
 = 1.0.2 =
+* Separate features "Checkout Steps" and "Field Types" to their own classes.
 * Move template loading functions to the plugin main class.
 
 = 1.0.1 =

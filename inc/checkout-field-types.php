@@ -3,7 +3,7 @@
 /**
  * Customizations to the checkout page.
  */
-class FluidCheckoutPage extends FluidCheckout {
+class FluidCheckoutFieldTypes extends FluidCheckout {
 
   /**
    * __construct function.
@@ -37,8 +37,6 @@ class FluidCheckoutPage extends FluidCheckout {
     return $fields;
   }
 
-
-
 }
 
-FluidCheckoutPage::instance();
+FluidCheckoutFieldTypes::instance();
