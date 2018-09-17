@@ -46,9 +46,6 @@ class FluidCheckout {
 	public static $this_plugin = null;
   public static $directory_path;
   public static $directory_url;
-	public static $woo_checkout_url;
-	public static $woo_shop_url;
-	public static $woo_cart_url;
 	const PLUGIN               = 'WooCommerce Fluid Checkout';
 	const VERSION              = '1.0.2';
 
@@ -99,20 +96,6 @@ class FluidCheckout {
 
 
 
-	/**
-	 * Set plugin global variables.
-	 */
-	public function set_global_vars() {
-		if( is_admin() || defined( 'DOING_CRON' ) )
-			return;
-
-    self::$woo_checkout_url = wc_get_checkout_url();
-    self::$woo_cart_url     = wc_get_cart_url();
-    self::$woo_shop_url     = get_permalink( wc_get_page_id( 'shop' ) );
-	}
-
-
-
   /**
    * Load plugin textdomain.
    */
@@ -126,7 +109,6 @@ class FluidCheckout {
    * Initialize hooks.
    */
 	public function hooks() {
-		add_action( 'init', array( $this, 'set_global_vars') );
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts_styles' ) );
 		add_action( 'plugins_loaded', array( $this, 'includes' ) );
 
