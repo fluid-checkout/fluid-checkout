@@ -5,8 +5,6 @@
  */
 class FluidCheckoutPage extends FluidCheckout {
 
-  public $parent;
-
   public function __construct() {
     $this->hooks();
   }
