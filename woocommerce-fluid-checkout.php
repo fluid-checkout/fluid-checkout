@@ -115,7 +115,7 @@ class FluidCheckout {
 
 
   /**
-   * Define plugin variables.
+   * Load plugin textdomain.
    */
   public function load_textdomain() {
     load_plugin_textdomain( 'woocommerce-fluid-checkout', false, untrailingslashit( self::$directory_path ).'/languages' );
