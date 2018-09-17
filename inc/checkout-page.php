@@ -5,10 +5,18 @@
  */
 class FluidCheckoutPage extends FluidCheckout {
 
+  /**
+   * __construct function.
+   */
   public function __construct() {
     $this->hooks();
   }
 
+
+
+  /**
+   * Initialize hooks.
+   */
   public function hooks() {
     // Checkout field types enhancement for mobile
     add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_number_field_types' ), 5 );
