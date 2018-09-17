@@ -3,7 +3,7 @@ Contributors: diegoversiani
 Tags: ecommerce, e-commerce, cart, checkout, mobile, responsive
 Requires at least: 4.1
 Tested up to: 4.9.8
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,12 @@ Press the "Upload Plugin" and select the zip file, then click “Install Now”.
 
 
 == Changelog ==
+
+= 1.0.2 =
+* Move template loading functions to the plugin main class.
+
+= 1.0.1 =
+* Change how plugin_url and plugin_path are used.
 
 = 1.0.0 =
 * Initial Release
