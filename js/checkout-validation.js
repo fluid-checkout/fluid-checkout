@@ -12,12 +12,15 @@
   /**
    * VARIABLES
    */
-  var _formRowSelector      = '.form-row',
-      _select2Selector      = '.select2, .select2-hidden-accessible',
-      _requiredSelector     = '.validate-required',
-      _validClass           = 'woocommerce-validated',
-      _invalidClass         = 'woocommerce-invalid',
-      _invalidRequiredClass = 'woocommerce-invalid-required-field'
+  var _hasJQuery                = ( $ != null ),
+      _formRowSelector          = '.form-row',
+      _select2Selector          = '.select2, .select2-hidden-accessible',
+      _confirmationSelector     = '[data-confirm-with]',
+      _invalidConfirmationClass = 'woocommerce-invalid-confirmation',
+      _requiredSelector         = '.validate-required',
+      _validClass               = 'woocommerce-validated',
+      _invalidClass             = 'woocommerce-invalid',
+      _invalidRequiredClass     = 'woocommerce-invalid-required-field'
       ;
 
 
@@ -28,11 +31,11 @@
   
 
   /**
-   * Check if form row is required.
+   * Check field is a select2 element.
    * @param  {Field}  target    Target field.
-   * @return {Boolean}          True if required.
+   * @return {Boolean}          True if field is select2.
    */
-  var is_select2 = function( target ) {
+  var is_select2_field = function( target ) {
     if ( target.closest( _select2Selector ) ) { return true; }
     return false;
   };
@@ -92,9 +95,40 @@
    * Validate required field.
    * @param  {Field} target Target field for validation.
    */
-  var validate_required = function( target ) {
+  var validate_required = function( target, formRow ) {
     // Bail if has value
     if ( has_value( target ) ) { return true; }
+
+    // Return classes for invalid field
+    return _invalidRequiredClass;
+  };
+
+
+
+  /**
+   * Check if form row is a confirmation field.
+   * @param  {Element}  formRow Form row element.
+   * @return {Boolean}          True if is a confimation field.
+   */
+  var is_confirmation_field = function( formRow ) {
+    // TODO: Polyfill `matches`
+    if ( formRow.querySelector( _confirmationSelector ) ) { return true; }
+    return false;
+  };
+
+
+
+  /**
+   * Validate confirmation field.
+   * @param  {Field} target Target field for validation.
+   */
+  var validate_confirmation = function( target, formRow ) {
+    // Get target confirmation field
+    var form = formRow.closest( 'form' );
+    var confirmWith = form ? form.querySelector( target.getAttribute( 'data-confirm-with' ) ) : null;
+
+    // Bail if does not have value
+    if ( has_value( target ) && confirmWith && target.value == confirmWith.value ) { return true; }
 
     // Return classes for invalid field
     return _invalidRequiredClass;
@@ -109,6 +143,7 @@
    */
   var needs_validation = function( formRow ) {
     if ( is_required( formRow ) ) { return true; }
+    if ( is_confirmation_field( formRow ) ) { return true; }
     return false;
   };
 
@@ -167,11 +202,13 @@
     // Bail if formRow not found
     if ( !formRow ) { return; }
 
+
     // Bail if field doesn't need validation
     if ( ! needs_validation( formRow ) ) { return; }
 
     // Perform validations
     if ( is_required( formRow ) ) { validationResults.push( validate_required( target, formRow ) ); }
+    if ( is_confirmation_field( formRow ) ) { validationResults.push( validate_confirmation( target, formRow ) ); }
 
     // TODO: Trigger validation of related fields (ie zip > State, Country)
     // TODO: Trigger validation of fields with value at load and after each ajax reload
@@ -185,11 +222,11 @@
   /**
    * Handle document clicks and route to the appropriate function.
    */
-  var handleLeaveField = function( e ) {
+  var handleValidateEvent = function( e ) {
     var target = e.target;
 
     // Get correct target when field is select2
-    if ( is_select2( e.target ) ) {
+    if ( is_select2_field( e.target ) ) {
       target = e.target.closest( _formRowSelector ).querySelector( 'select' );
     }
 
@@ -202,17 +239,18 @@
    * Initialize component and set related handlers.
    */
   var init = function() {
+    if ( _hasJQuery ) {
+      $( 'form.checkout' ).on( 'input validate change', '.input-text, select, input:checkbox', handleValidateEvent );
+    }
   };
 
 
 
   // Add event listeners
   window.addEventListener( 'load', init );
-  document.addEventListener( 'blur', handleLeaveField, true );
+  // document.addEventListener( 'blur', handleLeaveField, true );
 
   // Run on checkout or cart changes
-  $(document).on( 'load_ajax_content_done', function() {
-		init();
-	});
+  $(document).on( 'load_ajax_content_done', init );
 
 })( jQuery );

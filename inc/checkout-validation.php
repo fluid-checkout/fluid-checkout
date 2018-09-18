@@ -42,7 +42,7 @@ class FluidCheckoutValidation extends FluidCheckout {
       $min = '';
     }
       
-    wp_enqueue_script( 'fluid-checkout-validation-scripts', untrailingslashit( self::$directory_url )."/js/checkout-validation$min.js", array( 'jquery' ), self::VERSION, true );
+    wp_enqueue_script( 'fluid-checkout-validation-scripts', untrailingslashit( self::$directory_url )."/js/checkout-validation$min.js", array( 'jquery', 'wc-checkout' ), self::VERSION, true );
   }
 
 }
