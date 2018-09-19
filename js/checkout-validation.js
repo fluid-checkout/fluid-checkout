@@ -330,9 +330,6 @@
    * @return {Boolean}          True if field needs any validation.
    */
   var needs_validation = function( field, formRow ) {
-    // Bail if hidden to the user
-    if ( is_hidden( field ) ) { return false; }
-
     // Test validation types
     if ( is_required_field( formRow ) ) { return true; }
     if ( is_email_field( formRow ) ) { return true; }
@@ -400,6 +397,9 @@
 
     // Bail if formRow not found
     if ( !formRow ) { return true; }
+
+    // Bail if hidden to the user
+    if ( is_hidden( target ) ) { return true; }
 
     // Bail if field doesn't need validation
     if ( ! needs_validation( target, formRow ) ) { return true; }

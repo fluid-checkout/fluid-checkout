@@ -261,9 +261,7 @@
   window.addEventListener( 'load', init );
 
   // Run on checkout or cart changes
-  $(document).on( 'load_ajax_content_done', function() {
-		init();
-	});
+  $(document).on( 'load_ajax_content_done', init );
 
 
 
