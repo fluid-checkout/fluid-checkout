@@ -13,7 +13,9 @@
    * VARIABLES
    */
   var _hasJQuery                = ( $ != null ),
+      _formSelector             = 'form.checkout',
       _formRowSelector          = '.form-row',
+      _validateFieldsSelector   = '.input-text, select',
       _select2Selector          = '.select2, .select2-hidden-accessible',
       _confirmationSelector     = '[data-confirm-with]',
       _invalidConfirmationClass = 'woocommerce-invalid-confirmation',
@@ -28,6 +30,96 @@
 	/**
 	 * METHODS
 	 */
+  
+
+  /**
+   * Get the form-row element related to the field.
+   * @param  {Field} field Form field.
+   * @return {Element}     Form row related to the passed field.
+   */
+  var get_form_row = function( field ) {
+    // Bail if field not valid
+    if ( !field ) { return; }
+
+    // TODO: Polyfill `closest`
+    return field.closest( _formRowSelector );
+  };
+
+
+
+  /**
+   * Add markup for inline message of required fields.
+   * @param  {Field} field      Field to validate.
+   * @param  {Element} formRow  Form row related to the field.
+   * @param  {String} message   Message to add.
+   * @param  {String} typeClass Type of error used to identify which message to display on validation.
+   */
+  var add_inline_message_markup = function( field, formRow, message, typeClass ) {
+    // Bail if field not valid
+    if ( !field ) { return; }
+
+    var referenceNode = field;
+
+    // Change reference field for select2
+    if ( is_select2_field( field ) ) {
+      var newReference = field.parentNode.querySelector( '.select2-container' );
+      if ( newReference ) { referenceNode = newReference; }
+    }
+
+    // Create message element and add it after the field.
+    var parent = field.parentNode;
+    var element = document.createElement( 'span' );
+    element.className = 'woocommerce-error invalid-' + typeClass;
+    element.innerText = message;
+    parent.insertBefore( element, referenceNode.nextSibling );
+  };
+
+
+
+  /**
+   * Add markup for inline message of required fields.
+   * @param  {Field} field      Field to validate.
+   * @param  {Element} formRow  Form row related to the field.
+   */
+  var init_inline_message_required = function( field, formRow ) {
+    var message = 'This is a required field.'; // Fallback message if cannot get from settings
+    
+    // Try get message from settings
+    if ( fluidCheckoutValidationVars && fluidCheckoutValidationVars.required_field_message ) {
+      message = fluidCheckoutValidationVars.required_field_message;
+    }
+
+    add_inline_message_markup( field, formRow, message, 'required-field' );
+  };
+
+
+
+   /**
+    * Initalize inline validation messages.
+    */
+  var init_inline_messages = function() {
+    var form = document.querySelector( _formSelector );
+
+
+    // Bail if form not found
+    if ( !form ) { return; }
+
+    var fields = form.querySelectorAll( _validateFieldsSelector );
+    console.log(fields);
+
+    for (var i = 0; i < fields.length; i++) {
+      var formRow = get_form_row( fields[i] );
+
+      // Continue to next field if form row not found
+      if ( !formRow ) { continue; }
+
+      // Proceed if field needs validation
+      if ( needs_validation( formRow ) ) {
+        if ( is_required ) { init_inline_message_required( fields[i], formRow ); }
+      }
+    }
+  };
+
   
 
   /**
@@ -196,8 +288,7 @@
 
     var validationResults = [],
         valid = true,
-        // TODO: Polyfill `closest`
-        formRow = target.closest( _formRowSelector );
+        formRow = get_form_row( target );
 
     // Bail if formRow not found
     if ( !formRow ) { return; }
@@ -240,8 +331,10 @@
    */
   var init = function() {
     if ( _hasJQuery ) {
-      $( 'form.checkout' ).on( 'input validate change', '.input-text, select, input:checkbox', handleValidateEvent );
+      $( _formSelector ).on( 'input validate change', _validateFieldsSelector, handleValidateEvent );
     }
+
+    init_inline_messages();
   };
 
 
