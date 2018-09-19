@@ -199,7 +199,7 @@
   var has_value = function( target ) {
     // Check for select 2 field
     if ( is_select_field( target ) ) {
-      if ( target.options[ target.selectedIndex ].value != '' ) {
+      if ( target.options && target.selectedIndex > -1 && target.options[ target.selectedIndex ].value != '' ) {
         return true;
       }
       else {
