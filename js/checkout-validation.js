@@ -18,12 +18,15 @@
       _validateFieldsSelector   = '.input-text, select',
       _select2Selector          = '.select2, .select2-hidden-accessible',
       _confirmationSelector     = '[data-confirm-with]',
-      _invalidConfirmationClass = 'woocommerce-invalid-confirmation',
       _requiredSelector         = '.validate-required',
       _validClass               = 'woocommerce-validated',
-      _invalidClass             = 'woocommerce-invalid',
-      _invalidRequiredClass     = 'woocommerce-invalid-required-field'
+      _invalidClass             = 'woocommerce-invalid'
       ;
+  var _validationTypes = {
+    required:         'required-field',
+    email:            'email-field',
+    confirmation:     'confirmation-field',
+  };
 
 
 
@@ -100,12 +103,10 @@
   var init_inline_messages = function() {
     var form = document.querySelector( _formSelector );
 
-
     // Bail if form not found
     if ( !form ) { return; }
 
     var fields = form.querySelectorAll( _validateFieldsSelector );
-    console.log(fields);
 
     for (var i = 0; i < fields.length; i++) {
       var formRow = get_form_row( fields[i] );
@@ -192,7 +193,7 @@
     if ( has_value( target ) ) { return true; }
 
     // Return classes for invalid field
-    return _invalidRequiredClass;
+    return _validationTypes.required;
   };
 
 
@@ -223,7 +224,7 @@
     if ( has_value( target ) && confirmWith && target.value == confirmWith.value ) { return true; }
 
     // Return classes for invalid field
-    return _invalidConfirmationClass;
+    return _validationTypes.confirmation;
   };
 
 
@@ -255,12 +256,17 @@
       if ( true === validationResults[i] ) {
         // TODO: Polyfill `classList`
         formRow.classList.remove( _invalidClass );
-        formRow.classList.remove( _invalidRequiredClass );
+
+        // Remove invalid classes for each validation type
+        var validationTypeNames = Object.getOwnPropertyNames( _validationTypes );
+        for ( var j = 0; j < validationTypeNames.length; j++ ) {
+          formRow.classList.remove( _invalidClass +'-'+ _validationTypes[ validationTypeNames[j] ] );
+        }
       }
       // Add invalidation classes to the field
       else {
         valid = false;
-        formRow.classList.add( validationResults[i] );
+        formRow.classList.add( _invalidClass +'-'+ validationResults[i] );
       }
     }
 
