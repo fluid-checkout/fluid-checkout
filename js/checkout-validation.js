@@ -12,22 +12,28 @@
   /**
    * VARIABLES
    */
-  var _initClass                = 'js-fluid-checkout-validation',
-      _hasJQuery                = ( $ != null ),
-      _formSelector             = 'form.checkout',
-      _formRowSelector          = '.form-row',
-      _validateFieldsSelector   = '.input-text, select',
-      _select2Selector          = '.select2, .select2-hidden-accessible',
-      _typeRequiredSelector     = '.validate-required',
-      _typeEmailSelector        = '.validate-email',
-      _typeConfirmationSelector = '[data-confirm-with]',
-      _validClass               = 'woocommerce-validated',
-      _invalidClass             = 'woocommerce-invalid'
+  var _initClass                      = 'js-fluid-checkout-validation',
+      _hasJQuery                      = ( $ != null ),
+      _formSelector                   = 'form.checkout',
+      _formRowSelector                = '.form-row',
+      _validateFieldsSelector         = '.input-text, select',
+      _alwaysValidateFieldsSelector   = '',
+      _select2Selector                = '.select2, .select2-hidden-accessible',
+      _typeRequiredSelector           = '.validate-required',
+      _typeEmailSelector              = '.validate-email',
+      _typeConfirmationSelector       = '[data-confirm-with]',
+      _validClass                     = 'woocommerce-validated',
+      _invalidClass                   = 'woocommerce-invalid'
       ;
   var _validationTypes = {
     required:         'required-field',
     email:            'email',
     confirmation:     'confirmation-field',
+  };
+  var _validationMessages = {
+    required:         'This is a required field.',
+    email:            'This is not a valid email address.',
+    confirmation:     'This field does not match the related',
   };
 
 
@@ -39,12 +45,25 @@
 
 
   /**
-   * Check if element is hidden to the user.
-   * @param  {Element}  el Element to test visibility.
-   * @return {Boolean}     True if element is hidden to the user.
+   * Check if field is hidden to the user.
+   * @param  {Field}  field Field to test visibility.
+   * @return {Boolean}      True if field is hidden to the user.
    */
-  var is_hidden = function( el ) {
-    return (el.offsetParent === null);
+  var is_field_hidden = function( field ) {
+    return ( field.offsetParent === null );
+  };
+
+
+
+  /**
+   * Check if field is in allow list for always validate.
+   * @param  {Field}  field  Field to test for allow list.
+   * @return {Boolean}       True if field is in allow list for always validate.
+   */
+  var is_always_validate = function( field ) {
+    // Check if field is in allow list
+    if ( field.matches( _alwaysValidateFieldsSelector ) ) { return true; }
+    return false;
   };
 
   
@@ -99,13 +118,7 @@
    * @param  {Element} formRow  Form row related to the field.
    */
   var init_inline_message_required = function( field, formRow ) {
-    var message = 'This is a required field.'; // Fallback message if cannot get from settings
-    
-    // Try get message from settings
-    if ( fluidCheckoutValidationVars && fluidCheckoutValidationVars.required_field_message ) {
-      message = fluidCheckoutValidationVars.required_field_message;
-    }
-
+    var message = _validationMessages.required;
     add_inline_message_markup( field, formRow, message, 'required-field' );
   };
 
@@ -117,13 +130,7 @@
    * @param  {Element} formRow  Form row related to the field.
    */
   var init_inline_message_email = function( field, formRow ) {
-    var message = 'This is not a valid email address.'; // Fallback message if cannot get from settings
-    
-    // Try get message from settings
-    if ( fluidCheckoutValidationVars && fluidCheckoutValidationVars.email_field_message ) {
-      message = fluidCheckoutValidationVars.email_field_message;
-    }
-
+    var message = _validationMessages.email;
     add_inline_message_markup( field, formRow, message, 'email' );
   };
 
@@ -135,12 +142,7 @@
    * @param  {Element} formRow  Form row related to the field.
    */
   var init_inline_message_confirmation = function( field, formRow ) {
-    var message = 'This field does not match the related.'; // Fallback message if cannot get from settings
-    
-    // Try get message from settings
-    if ( fluidCheckoutValidationVars && fluidCheckoutValidationVars.confirmation_field_message ) {
-      message = fluidCheckoutValidationVars.confirmation_field_message;
-    }
+    var message = _validationMessages.confirmation;
 
     // Try get message from field attributes
     if ( field.getAttribute( 'data-invalid-confirm-with' ) ) {
@@ -330,6 +332,9 @@
    * @return {Boolean}          True if field needs any validation.
    */
   var needs_validation = function( field, formRow ) {
+    // Bail if field should always validate
+    if ( is_always_validate( field ) ) { return true; }
+
     // Test validation types
     if ( is_required_field( formRow ) ) { return true; }
     if ( is_email_field( formRow ) ) { return true; }
@@ -414,10 +419,10 @@
         formRow = get_form_row( field );
 
     // Bail if formRow not found
-    if ( !formRow ) { return true; }
+    if ( ! formRow ) { return true; }
 
     // Bail if hidden to the user
-    if ( is_hidden( field ) ) { return true; }
+    if ( ! is_always_validate( field ) && is_field_hidden( field ) ) { return true; }
 
     // Bail if field doesn't need validation
     if ( ! needs_validation( field, formRow ) ) { return true; }
@@ -474,10 +479,27 @@
 
 
 
+  var merge_settings_from_server = function() {
+    // Get settings from server side
+    if ( window.fluidCheckoutValidationVars ) {
+      var serverSettings = window.fluidCheckoutValidationVars;
+      
+      if ( serverSettings.validate_fields_selector ) { _validateFieldsSelector = serverSettings.validate_fields_selector; }
+      if ( serverSettings.always_validate_fields_selector ) { _alwaysValidateFieldsSelector = serverSettings.always_validate_fields_selector; }
+
+      if ( serverSettings.required_field_message ) { _validationMessages.required = serverSettings.required_field_message; }
+      if ( serverSettings.email_field_message ) { _validationMessages.email = serverSettings.email_field_message; }
+      if ( serverSettings.confirmation_field_message ) { _validationMessages.confirmation = serverSettings.confirmation_field_message; }
+    }
+  }
+
+
   /**
    * Initialize component and set related handlers.
    */
   var init = function() {
+    merge_settings_from_server();
+
     if ( _hasJQuery ) {
       $( _formSelector ).on( 'input validate change', _validateFieldsSelector, handleValidateEvent );
     }
