@@ -171,7 +171,7 @@
       if ( !formRow ) { continue; }
 
       // Proceed if field needs validation
-      if ( needs_validation( field, formRow ) ) {
+      if ( needs_validation_message( field, formRow ) ) {
         if ( is_required_field( formRow ) ) { init_inline_message_required( fields[i], formRow ); }
         if ( is_email_field( formRow ) ) { init_inline_message_email( fields[i], formRow ); }
         if ( is_confirmation_field( formRow ) ) { init_inline_message_confirmation( fields[i], formRow ); }
@@ -341,6 +341,24 @@
 
 
   /**
+   * Check if field needs validation message markup.
+   * @param  {Field} field      Field to validate.
+   * @param  {Element} formRow  Form row for validation.
+   * @return {Boolean}          True if field needs any validation.
+   */
+  var needs_validation_message = function( field, formRow ) {
+    // Check existence of message markup
+    if ( formRow.querySelector( '.woocommerce-error' ) ) { return false; }
+
+    // Check if field needs validation
+    if ( ! needs_validation( field, formRow ) ) { return false; }
+    
+    return true;
+  };
+
+
+
+  /**
    * Process validation results of one field.
    * @param  {Field} field             Field to validation.
    * @param  {Element} formRow          Form row element.
@@ -482,5 +500,6 @@
 
   // Run on checkout or cart changes
   $(document).on( 'load_ajax_content_done', init );
+  $(document).on( 'updated_checkout', init_inline_messages );
 
 })( jQuery );
