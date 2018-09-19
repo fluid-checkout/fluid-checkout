@@ -183,23 +183,23 @@
 
   /**
    * Check field is a select2 element.
-   * @param  {Field}  target    Target field.
+   * @param  {Field}  field     Field to check.
    * @return {Boolean}          True if field is select2.
    */
-  var is_select2_field = function( target ) {
-    if ( target.closest( _select2Selector ) ) { return true; }
+  var is_select2_field = function( field ) {
+    if ( field.closest( _select2Selector ) ) { return true; }
     return false;
   };
 
 
 
   /**
-   * Check if target is a select field.
-   * @param  {Element}  target Target field.
+   * Check if field is a select field.
+   * @param  {Element}  field  Field to check.
    * @return {Boolean}         True if is a select field.
    */
-  var is_select_field = function( target ) {
-    if ( target.matches( 'select' ) ) { return true; }
+  var is_select_field = function( field ) {
+    if ( field.matches( 'select' ) ) { return true; }
     return false;
   };
 
@@ -207,13 +207,13 @@
 
   /**
    * Check if field has value.
-   * @param  {[type]}  target [description]
-   * @return {Boolean}        [description]
+   * @param  {Field}   field  Field to check.
+   * @return {Boolean}        True if field has value.
    */
-  var has_value = function( target ) {
+  var has_value = function( field ) {
     // Check for select 2 field
-    if ( is_select_field( target ) ) {
-      if ( target.options && target.selectedIndex > -1 && target.options[ target.selectedIndex ].value != '' ) {
+    if ( is_select_field( field ) ) {
+      if ( field.options && field.selectedIndex > -1 && field.options[ field.selectedIndex ].value != '' ) {
         return true;
       }
       else {
@@ -222,7 +222,7 @@
     }
 
     // Check for all other fields
-    if ( target.value != '' ) { return true; }
+    if ( field.value != '' ) { return true; }
     
     return false;
   };
@@ -244,11 +244,11 @@
 
   /**
    * Validate required field.
-   * @param  {Field} target Target field for validation.
+   * @param  {Field} field Field for validation.
    */
-  var validate_required = function( target, formRow ) {
+  var validate_required = function( field, formRow ) {
     // Bail if has value
-    if ( has_value( target ) ) { return [ 'required', true ]; }
+    if ( has_value( field ) ) { return [ 'required', true ]; }
 
     // Return classes for invalid field
     return [ 'required', _validationTypes.required ];
@@ -271,17 +271,17 @@
 
   /**
    * Validate email field.
-   * @param  {Field} target Target field for validation.
+   * @param  {Field} field Field for validation.
    */
-  var validate_email = function( target, formRow ) {
+  var validate_email = function( field, formRow ) {
     // Bail if does not have value
-    if ( ! has_value( target ) ) { return [ 'email', true ]; }
+    if ( ! has_value( field ) ) { return [ 'email', true ]; }
 
     /* https://stackoverflow.com/questions/2855865/jquery-validate-e-mail-address-regex */
     var emailPattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
 
     // Validate email value
-    if ( emailPattern.test( target.value ) ) { return [ 'email', true ]; }
+    if ( emailPattern.test( field.value ) ) { return [ 'email', true ]; }
 
     // Return classes for invalid field
     return [ 'email', _validationTypes.email ];
@@ -304,18 +304,18 @@
 
   /**
    * Validate confirmation field.
-   * @param  {Field} target Target field for validation.
+   * @param  {Field} field Field for validation.
    */
-  var validate_confirmation = function( target, formRow ) {
+  var validate_confirmation = function( field, formRow ) {
     // Bail if does not have value
-    if ( ! has_value( target ) ) { return [ 'confirmation', true ]; }
+    if ( ! has_value( field ) ) { return [ 'confirmation', true ]; }
 
-    // Get target confirmation field
+    // Get confirmation field
     var form = formRow.closest( 'form' );
-    var confirmWith = form ? form.querySelector( target.getAttribute( 'data-confirm-with' ) ) : null;
+    var confirmWith = form ? form.querySelector( field.getAttribute( 'data-confirm-with' ) ) : null;
 
     // Validate fields have same value
-    if ( confirmWith && target.value == confirmWith.value ) { return [ 'confirmation', true ]; }
+    if ( confirmWith && field.value == confirmWith.value ) { return [ 'confirmation', true ]; }
 
     // Return classes for invalid field
     return [ 'confirmation', _validationTypes.confirmation ];
@@ -342,12 +342,12 @@
 
   /**
    * Process validation results of one field.
-   * @param  {Field} target             Field targeted to validation.
+   * @param  {Field} field             Field to validation.
    * @param  {Element} formRow          Form row element.
    * @param  {Array} validationResults Validation results array.
    * @return {Boolean}           True if all fields are valid.
    */
-  var process_validation_results = function( target, formRow, validationResults ) {
+  var process_validation_results = function( field, formRow, validationResults ) {
     var valid = true;
 
     // Iterate validation results
@@ -384,36 +384,35 @@
 
 
   /**
-   * Test multiple validations on the passed target field.
-   * @param  {Form Field} target Target field for validation.
-   * @return {Boolean}           True if field is valid.
+   * Test multiple validations on the passed field.
+   * @param  {Field} field    Field for validation.
+   * @return {Boolean}        True if field is valid.
    */
-  var validate_field = function( target ) {
-    // Bail if target is null
-    if ( ! target ) { return true; }
+  var validate_field = function( field ) {
+    // Bail if field is null
+    if ( ! field ) { return true; }
 
     var validationResults = [],
-        formRow = get_form_row( target );
+        formRow = get_form_row( field );
 
     // Bail if formRow not found
     if ( !formRow ) { return true; }
 
     // Bail if hidden to the user
-    if ( is_hidden( target ) ) { return true; }
+    if ( is_hidden( field ) ) { return true; }
 
     // Bail if field doesn't need validation
-    if ( ! needs_validation( target, formRow ) ) { return true; }
+    if ( ! needs_validation( field, formRow ) ) { return true; }
 
     // Perform validations
-    if ( is_required_field( formRow ) ) { validationResults.push( validate_required( target, formRow ) ); }
-    if ( is_email_field( formRow ) ) { validationResults.push( validate_email( target, formRow ) ); }
-    if ( is_confirmation_field( formRow ) ) { validationResults.push( validate_confirmation( target, formRow ) ); }
+    if ( is_required_field( formRow ) ) { validationResults.push( validate_required( field, formRow ) ); }
+    if ( is_email_field( formRow ) ) { validationResults.push( validate_email( field, formRow ) ); }
+    if ( is_confirmation_field( formRow ) ) { validationResults.push( validate_confirmation( field, formRow ) ); }
 
     // TODO: Trigger validation of related fields (ie zip > State, Country)
-    // TODO: Trigger validation of fields with value at load and after each ajax reload
 
     // Process results
-    return process_validation_results( target, formRow, validationResults );
+    return process_validation_results( field, formRow, validationResults );
   };
 
 
@@ -422,14 +421,14 @@
    * Handle document clicks and route to the appropriate function.
    */
   var handleValidateEvent = function( e ) {
-    var target = e.target;
+    var field = e.target;
 
-    // Get correct target when field is select2
+    // Get correct field when is select2
     if ( is_select2_field( e.target ) ) {
-      target = e.target.closest( _formRowSelector ).querySelector( 'select' );
+      field = e.target.closest( _formRowSelector ).querySelector( 'select' );
     }
 
-    validate_field( target );
+    validate_field( field );
   };
 
 
