@@ -17,14 +17,15 @@
       _formRowSelector          = '.form-row',
       _validateFieldsSelector   = '.input-text, select',
       _select2Selector          = '.select2, .select2-hidden-accessible',
-      _confirmationSelector     = '[data-confirm-with]',
-      _requiredSelector         = '.validate-required',
+      _typeRequiredSelector     = '.validate-required',
+      _typeEmailSelector        = '.validate-email',
+      _typeConfirmationSelector = '[data-confirm-with]',
       _validClass               = 'woocommerce-validated',
       _invalidClass             = 'woocommerce-invalid'
       ;
   var _validationTypes = {
     required:         'required-field',
-    email:            'email-field',
+    email:            'email',
     confirmation:     'confirmation-field',
   };
 
@@ -98,6 +99,24 @@
 
 
   /**
+   * Add markup for inline message of email fields.
+   * @param  {Field} field      Field to validate.
+   * @param  {Element} formRow  Form row related to the field.
+   */
+  var init_inline_message_email = function( field, formRow ) {
+    var message = 'This is not a valid email.'; // Fallback message if cannot get from settings
+    
+    // Try get message from settings
+    if ( fluidCheckoutValidationVars && fluidCheckoutValidationVars.email_field_message ) {
+      message = fluidCheckoutValidationVars.email_field_message;
+    }
+
+    add_inline_message_markup( field, formRow, message, 'email' );
+  };
+
+
+
+  /**
    * Add markup for inline message of confirmation fields.
    * @param  {Field} field      Field to validate.
    * @param  {Element} formRow  Form row related to the field.
@@ -139,8 +158,9 @@
 
       // Proceed if field needs validation
       if ( needs_validation( formRow ) ) {
-        if ( is_required_field ) { init_inline_message_required( fields[i], formRow ); }
-        if ( is_confirmation_field ) { init_inline_message_confirmation( fields[i], formRow ); }
+        if ( is_required_field( formRow ) ) { init_inline_message_required( fields[i], formRow ); }
+        if ( is_email_field( formRow ) ) { init_inline_message_email( fields[i], formRow ); }
+        if ( is_confirmation_field( formRow ) ) { init_inline_message_confirmation( fields[i], formRow ); }
       }
     }
   };
@@ -202,7 +222,7 @@
    */
   var is_required_field = function( formRow ) {
     // TODO: Polyfill `matches`
-    if ( formRow.matches( _requiredSelector ) ) { return true; }
+    if ( formRow.matches( _typeRequiredSelector ) ) { return true; }
     return false;
   };
 
@@ -223,13 +243,46 @@
 
 
   /**
+   * Check if form row is email field.
+   * @param  {Element}  formRow Form row element.
+   * @return {Boolean}          True if is email field.
+   */
+  var is_email_field = function( formRow ) {
+    // TODO: Polyfill `matches`
+    if ( formRow.matches( _typeEmailSelector ) ) { return true; }
+    return false;
+  };
+
+
+
+  /**
+   * Validate email field.
+   * @param  {Field} target Target field for validation.
+   */
+  var validate_email = function( target, formRow ) {
+    // Bail if does not have value
+    if ( ! has_value( target ) ) { return [ 'email', true ]; }
+
+    /* https://stackoverflow.com/questions/2855865/jquery-validate-e-mail-address-regex */
+    var emailPattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+
+    // Validate email value
+    if ( emailPattern.test( target.value ) ) { return [ 'email', true ]; }
+
+    // Return classes for invalid field
+    return [ 'email', _validationTypes.email ];
+  };
+
+
+
+  /**
    * Check if form row is a confirmation field.
    * @param  {Element}  formRow Form row element.
    * @return {Boolean}          True if is a confimation field.
    */
   var is_confirmation_field = function( formRow ) {
     // TODO: Polyfill `matches`
-    if ( formRow.querySelector( _confirmationSelector ) ) { return true; }
+    if ( formRow.querySelector( _typeConfirmationSelector ) ) { return true; }
     return false;
   };
 
@@ -240,15 +293,15 @@
    * @param  {Field} target Target field for validation.
    */
   var validate_confirmation = function( target, formRow ) {
+    // Bail if does not have value
+    if ( ! has_value( target ) ) { return [ 'confirmation', true ]; }
+
     // Get target confirmation field
     var form = formRow.closest( 'form' );
     var confirmWith = form ? form.querySelector( target.getAttribute( 'data-confirm-with' ) ) : null;
 
-    // Bail if does not have value
-    if ( !has_value( target ) ) { return [ 'confirmation', true ]; }
-
     // Validate fields have same value
-    if ( has_value( target ) && confirmWith && target.value == confirmWith.value ) { return [ 'confirmation', true ]; }
+    if ( confirmWith && target.value == confirmWith.value ) { return [ 'confirmation', true ]; }
 
     // Return classes for invalid field
     return [ 'confirmation', _validationTypes.confirmation ];
@@ -263,6 +316,7 @@
    */
   var needs_validation = function( formRow ) {
     if ( is_required_field( formRow ) ) { return true; }
+    if ( is_email_field( formRow ) ) { return true; }
     if ( is_confirmation_field( formRow ) ) { return true; }
     return false;
   };
@@ -329,6 +383,7 @@
 
     // Perform validations
     if ( is_required_field( formRow ) ) { validationResults.push( validate_required( target, formRow ) ); }
+    if ( is_email_field( formRow ) ) { validationResults.push( validate_email( target, formRow ) ); }
     if ( is_confirmation_field( formRow ) ) { validationResults.push( validate_confirmation( target, formRow ) ); }
 
     // TODO: Trigger validation of related fields (ie zip > State, Country)
