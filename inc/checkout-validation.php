@@ -31,7 +31,7 @@ class FluidCheckoutValidation extends FluidCheckout {
    */
   public function scripts_styles() {
     // Bail if not on checkout page.
-    if( !is_checkout() || is_order_received_page() ){ return; }
+    if( ! is_checkout() || is_order_received_page() ){ return; }
 
     // TODO: Enable js minification.
     // TODO: Move $min to main plugin class (DRY)
@@ -55,6 +55,8 @@ class FluidCheckoutValidation extends FluidCheckout {
         )
       )
     );
+
+    wp_enqueue_style( 'fluid-checkout-validation-style', untrailingslashit( self::$directory_url )."/css/checkout-validation$min.css", null, self::VERSION );
   }
 
 }
