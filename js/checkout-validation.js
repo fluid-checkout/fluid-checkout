@@ -97,6 +97,29 @@
 
 
 
+  /**
+   * Add markup for inline message of confirmation fields.
+   * @param  {Field} field      Field to validate.
+   * @param  {Element} formRow  Form row related to the field.
+   */
+  var init_inline_message_confirmation = function( field, formRow ) {
+    var message = 'This field does not match the related.'; // Fallback message if cannot get from settings
+    
+    // Try get message from settings
+    if ( fluidCheckoutValidationVars && fluidCheckoutValidationVars.confirmation_field_message ) {
+      message = fluidCheckoutValidationVars.confirmation_field_message;
+    }
+
+    // Try get message from field attributes
+    if ( field.getAttribute( 'data-invalid-confirm-with' ) ) {
+      message = field.getAttribute( 'data-invalid-confirm-with' );
+    }
+
+    add_inline_message_markup( field, formRow, message, 'confirmation-field' );
+  };
+
+
+
    /**
     * Initalize inline validation messages.
     */
@@ -116,7 +139,8 @@
 
       // Proceed if field needs validation
       if ( needs_validation( formRow ) ) {
-        if ( is_required ) { init_inline_message_required( fields[i], formRow ); }
+        if ( is_required_field ) { init_inline_message_required( fields[i], formRow ); }
+        if ( is_confirmation_field ) { init_inline_message_confirmation( fields[i], formRow ); }
       }
     }
   };
@@ -176,7 +200,7 @@
    * @param  {Element}  formRow Form row element.
    * @return {Boolean}          True if required.
    */
-  var is_required = function( formRow ) {
+  var is_required_field = function( formRow ) {
     // TODO: Polyfill `matches`
     if ( formRow.matches( _requiredSelector ) ) { return true; }
     return false;
@@ -190,10 +214,10 @@
    */
   var validate_required = function( target, formRow ) {
     // Bail if has value
-    if ( has_value( target ) ) { return true; }
+    if ( has_value( target ) ) { return [ 'required', true ]; }
 
     // Return classes for invalid field
-    return _validationTypes.required;
+    return [ 'required', _validationTypes.required ];
   };
 
 
@@ -221,10 +245,13 @@
     var confirmWith = form ? form.querySelector( target.getAttribute( 'data-confirm-with' ) ) : null;
 
     // Bail if does not have value
-    if ( has_value( target ) && confirmWith && target.value == confirmWith.value ) { return true; }
+    if ( !has_value( target ) ) { return [ 'confirmation', true ]; }
+
+    // Validate fields have same value
+    if ( has_value( target ) && confirmWith && target.value == confirmWith.value ) { return [ 'confirmation', true ]; }
 
     // Return classes for invalid field
-    return _validationTypes.confirmation;
+    return [ 'confirmation', _validationTypes.confirmation ];
   };
 
 
@@ -235,7 +262,7 @@
    * @return {Boolean}         True if field needs any validation.
    */
   var needs_validation = function( formRow ) {
-    if ( is_required( formRow ) ) { return true; }
+    if ( is_required_field( formRow ) ) { return true; }
     if ( is_confirmation_field( formRow ) ) { return true; }
     return false;
   };
@@ -246,27 +273,25 @@
    * Process validation results of one field.
    * @param  {Field} target             Field targeted to validation.
    * @param  {Element} formRow          Form row element.
-   * @param  {Boolean} valid            Whether field is valid or not.
    * @param  {Array} validationResults Validation results array.
    */
-  var process_validation_results = function( target, formRow, valid, validationResults ) {
+  var process_validation_results = function( target, formRow, validationResults ) {
+    var valid = true;
+
     // Iterate validation results
     for ( var i = 0; i < validationResults.length; i++ ) {
-      // Remove invalidation classes from the field
-      if ( true === validationResults[i] ) {
-        // TODO: Polyfill `classList`
-        formRow.classList.remove( _invalidClass );
+      var type    = validationResults[i][0],
+          result  = validationResults[i][1];
 
-        // Remove invalid classes for each validation type
-        var validationTypeNames = Object.getOwnPropertyNames( _validationTypes );
-        for ( var j = 0; j < validationTypeNames.length; j++ ) {
-          formRow.classList.remove( _invalidClass +'-'+ _validationTypes[ validationTypeNames[j] ] );
-        }
+      // Remove invalidation classes from the field
+      if ( true === result ) {
+        // Remove invalid classes for validation type
+        formRow.classList.remove( _invalidClass +'-'+ _validationTypes[ type ] );
       }
       // Add invalidation classes to the field
       else {
         valid = false;
-        formRow.classList.add( _invalidClass +'-'+ validationResults[i] );
+        formRow.classList.add( _invalidClass +'-'+ result );
       }
     }
 
@@ -293,7 +318,6 @@
     if ( ! target ) { return; }
 
     var validationResults = [],
-        valid = true,
         formRow = get_form_row( target );
 
     // Bail if formRow not found
@@ -304,14 +328,14 @@
     if ( ! needs_validation( formRow ) ) { return; }
 
     // Perform validations
-    if ( is_required( formRow ) ) { validationResults.push( validate_required( target, formRow ) ); }
+    if ( is_required_field( formRow ) ) { validationResults.push( validate_required( target, formRow ) ); }
     if ( is_confirmation_field( formRow ) ) { validationResults.push( validate_confirmation( target, formRow ) ); }
 
     // TODO: Trigger validation of related fields (ie zip > State, Country)
     // TODO: Trigger validation of fields with value at load and after each ajax reload
 
     // Process results
-    process_validation_results( target, formRow, valid, validationResults );
+    process_validation_results( target, formRow, validationResults );
   };
 
 
