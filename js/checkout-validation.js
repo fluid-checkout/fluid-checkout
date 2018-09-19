@@ -12,7 +12,8 @@
   /**
    * VARIABLES
    */
-  var _hasJQuery                = ( $ != null ),
+  var _initClass                = 'js-fluid-checkout-validation',
+      _hasJQuery                = ( $ != null ),
       _formSelector             = 'form.checkout',
       _formRowSelector          = '.form-row',
       _validateFieldsSelector   = '.input-text, select',
@@ -34,6 +35,18 @@
 	/**
 	 * METHODS
 	 */
+  
+
+
+  /**
+   * Check if element is hidden to the user.
+   * @param  {Element}  el Element to test visibility.
+   * @return {Boolean}     True if element is hidden to the user.
+   */
+  var is_hidden = function( el ) {
+    return (el.offsetParent === null);
+  };
+
   
 
   /**
@@ -151,13 +164,14 @@
     var fields = form.querySelectorAll( _validateFieldsSelector );
 
     for (var i = 0; i < fields.length; i++) {
-      var formRow = get_form_row( fields[i] );
+      var field = fields[i],
+          formRow = get_form_row( field );
 
       // Continue to next field if form row not found
       if ( !formRow ) { continue; }
 
       // Proceed if field needs validation
-      if ( needs_validation( formRow ) ) {
+      if ( needs_validation( field, formRow ) ) {
         if ( is_required_field( formRow ) ) { init_inline_message_required( fields[i], formRow ); }
         if ( is_email_field( formRow ) ) { init_inline_message_email( fields[i], formRow ); }
         if ( is_confirmation_field( formRow ) ) { init_inline_message_confirmation( fields[i], formRow ); }
@@ -311,13 +325,19 @@
 
   /**
    * Check if field needs validation.
-   * @param  {Element} formRow Form row for validation.
-   * @return {Boolean}         True if field needs any validation.
+   * @param  {Field} field      Field to validate.
+   * @param  {Element} formRow  Form row for validation.
+   * @return {Boolean}          True if field needs any validation.
    */
-  var needs_validation = function( formRow ) {
+  var needs_validation = function( field, formRow ) {
+    // Bail if hidden to the user
+    if ( is_hidden( field ) ) { return false; }
+
+    // Test validation types
     if ( is_required_field( formRow ) ) { return true; }
     if ( is_email_field( formRow ) ) { return true; }
     if ( is_confirmation_field( formRow ) ) { return true; }
+
     return false;
   };
 
@@ -328,6 +348,7 @@
    * @param  {Field} target             Field targeted to validation.
    * @param  {Element} formRow          Form row element.
    * @param  {Array} validationResults Validation results array.
+   * @return {Boolean}           True if all fields are valid.
    */
   var process_validation_results = function( target, formRow, validationResults ) {
     var valid = true;
@@ -359,27 +380,29 @@
       formRow.classList.remove( _validClass );
       formRow.classList.add( _invalidClass );
     }
+
+    return valid;
   };
 
 
 
   /**
-   * Handle multiple validations on the passed target field.
+   * Test multiple validations on the passed target field.
    * @param  {Form Field} target Target field for validation.
+   * @return {Boolean}           True if field is valid.
    */
   var validate_field = function( target ) {
     // Bail if target is null
-    if ( ! target ) { return; }
+    if ( ! target ) { return true; }
 
     var validationResults = [],
         formRow = get_form_row( target );
 
     // Bail if formRow not found
-    if ( !formRow ) { return; }
-
+    if ( !formRow ) { return true; }
 
     // Bail if field doesn't need validation
-    if ( ! needs_validation( formRow ) ) { return; }
+    if ( ! needs_validation( target, formRow ) ) { return true; }
 
     // Perform validations
     if ( is_required_field( formRow ) ) { validationResults.push( validate_required( target, formRow ) ); }
@@ -390,7 +413,7 @@
     // TODO: Trigger validation of fields with value at load and after each ajax reload
 
     // Process results
-    process_validation_results( target, formRow, validationResults );
+    return process_validation_results( target, formRow, validationResults );
   };
 
 
@@ -412,6 +435,29 @@
 
 
   /**
+   * Trigger validation in all fields inside the container.
+   * @param  {Element} container Element to look for fields in, if not passed consider the checkout form as container.
+   * @return {Boolean}           True if all fields are valid.
+   */
+  var validate_all_fields = function( container ) {
+    // Default container to the form
+    if ( ! container ) { container = document.querySelector( _formSelector ) }
+
+    var all_valid = true;
+    var fields = container.querySelectorAll( _validateFieldsSelector );
+
+    for (var i = 0; i < fields.length; i++) {
+      if ( ! validate_field( fields[i] ) ) {
+        all_valid = false;
+      }
+    }
+
+    return all_valid;
+  };
+
+
+
+  /**
    * Initialize component and set related handlers.
    */
   var init = function() {
@@ -420,13 +466,20 @@
     }
 
     init_inline_messages();
+
+    // Expose members
+    window.fluidCheckoutValidation = {
+      validate_all_fields: validate_all_fields,
+    };
+
+    // Add init class
+    document.body.classList.add( _initClass );
   };
 
 
 
   // Add event listeners
   window.addEventListener( 'load', init );
-  // document.addEventListener( 'blur', handleLeaveField, true );
 
   // Run on checkout or cart changes
   $(document).on( 'load_ajax_content_done', init );

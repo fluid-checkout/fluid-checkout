@@ -12,11 +12,12 @@
   /**
    * VARIABLES
    */
-  var wfcWrapper,
-  		wfcInner,
-  		progressBar,
-  		frames,
-  		steps;
+  var _initClass      = 'js-fluid-checkout-steps',
+      _wfcWrapper,
+  		_wfcInner,
+  		_progressBar,
+  		_frames,
+  		_steps;
 
 
 
@@ -29,8 +30,8 @@
    */
   var getFirstStepId = function() {
     // Return next available step
-    for (var i = 0; i < frames.length; i++) {
-      if ( ! frames[i].hasAttribute('disabled') ) {
+    for (var i = 0; i < _frames.length; i++) {
+      if ( ! _frames[i].hasAttribute('disabled') ) {
         return i + 1;
       }
     }
@@ -60,8 +61,8 @@
     }
 
     // Return next available step
-    for (var i = currentStepId; i < frames.length; i++) {
-      if ( ! frames[i].hasAttribute('disabled') ) {
+    for (var i = currentStepId; i < _frames.length; i++) {
+      if ( ! _frames[i].hasAttribute('disabled') ) {
         return currentStepId + 1;
       }
     }
@@ -75,13 +76,13 @@
 	 * Clear all step status
 	 */
 	var clearStepStatus = function() {
-		for (var i = frames.length - 1; i >= 0; i--) {
+		for (var i = _frames.length - 1; i >= 0; i--) {
 			// active
-			frames[i].classList.remove('current');
-			steps[i].classList.remove('current');
+			_frames[i].classList.remove('current');
+			_steps[i].classList.remove('current');
 			// done
-			if ( ! steps[i].hasAttribute('disabled') ) {
-        steps[i].classList.remove('done');
+			if ( ! _steps[i].hasAttribute('disabled') ) {
+        _steps[i].classList.remove('done');
       }
 		}
 	};
@@ -93,10 +94,10 @@
 	 */
 	var markAllStepDone = function() {
 		var currentStepId = getCurrentStepId();
-		for (var i = steps.length - 1; i >= 0; i--) {
-			var stepId = steps[i].getAttribute('data-id');
-			if ( ! steps[i].hasAttribute('disabled') && stepId < currentStepId ) {
-				steps[i].classList.add('done');
+		for (var i = _steps.length - 1; i >= 0; i--) {
+			var stepId = _steps[i].getAttribute('data-id');
+			if ( ! _steps[i].hasAttribute('disabled') && stepId < currentStepId ) {
+				_steps[i].classList.add('done');
 			}
 		}
 	};
@@ -141,15 +142,15 @@
 	 */
 	var initSteps = function() {
 		// Bail if inner element not present
-    if ( ! wfcInner ) { return; }
+    if ( ! _wfcInner ) { return; }
 
     // Get frames
-		frames = wfcInner.querySelectorAll('.wfc-frame');
+		_frames = _wfcInner.querySelectorAll('.wfc-frame');
 
 		// Add ID to each frame and steps to progress bar
-		for (var i = frames.length - 1; i >= 0; i--) {
+		for (var i = _frames.length - 1; i >= 0; i--) {
 			var stepId = i + 1,
-					label = $(frames[i]).data('label'),
+					label = $(_frames[i]).data('label'),
 					step = document.createElement('div');
 
 			step.classList.add('wfc-step');
@@ -157,22 +158,22 @@
 			step.setAttribute('data-id', stepId);
       step.textContent = label;
 
-      if ( frames[i].hasAttribute('disabled') ) {
+      if ( _frames[i].hasAttribute('disabled') ) {
         step.setAttribute('disabled', 'disabled');
       }
 
-      if ( frames[i].classList.contains('done') ) {
+      if ( _frames[i].classList.contains('done') ) {
         step.classList.add('done');
       }
 
-			progressBar.insertBefore(step, progressBar.firstChild);
+			_progressBar.insertBefore(step, _progressBar.firstChild);
 			
-			frames[i].setAttribute('id', 'frame-' + stepId);
-			frames[i].setAttribute('data-id', stepId);
+			_frames[i].setAttribute('id', 'frame-' + stepId);
+			_frames[i].setAttribute('data-id', stepId);
 		}
 
 		// Get steps
-		steps = wfcInner.querySelectorAll('.wfc-step');
+		_steps = _wfcInner.querySelectorAll('.wfc-step');
 
 		// Show first available step
 		setCurrentStep( getNextStepId() );
@@ -196,6 +197,19 @@
 	 */
 	var handleNextStepClick = function( e ) {
 		e.preventDefault();
+
+    // Validate step fields
+    if ( window.fluidCheckoutValidation ) {
+      var currentStepId = getCurrentStepId(),
+          frame = _wfcWrapper.querySelector( '#frame-' + currentStepId );
+      
+      // Bail if not all fields valid and stay in the same step
+      if ( ! window.fluidCheckoutValidation.validate_all_fields( frame ) ) {
+        return;
+      }
+    }
+
+    // Go to next step
     setCurrentStep( getNextStepId() );
 	};
 
@@ -218,7 +232,7 @@
    * Set plugin as active.
    */
   var setPluginActive = function() {
-  	wfcWrapper.classList.add('active');
+  	_wfcWrapper.classList.add('active');
   };
 
 
@@ -226,15 +240,18 @@
    * Initialize component and set related handlers.
    */
   var init = function() {
-    wfcWrapper = document.querySelector('#wfc-wrapper');
-    wfcInner = document.querySelector('.wfc-inside');
-    progressBar = document.querySelector('#wfc-progressbar');
+    _wfcWrapper = document.querySelector('#wfc-wrapper');
+    _wfcInner = document.querySelector('.wfc-inside');
+    _progressBar = document.querySelector('#wfc-progressbar');
 
     // Bail if elements not present
-    if ( ! wfcWrapper || ! wfcInner || ! progressBar ) { return; }
+    if ( ! _wfcWrapper || ! _wfcInner || ! _progressBar ) { return; }
 
   	initSteps();
   	setPluginActive();
+
+    // Add init class
+    document.body.classList.add( _initClass );
   };
 
 
