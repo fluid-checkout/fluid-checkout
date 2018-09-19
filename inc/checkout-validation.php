@@ -43,6 +43,16 @@ class FluidCheckoutValidation extends FluidCheckout {
     }
       
     wp_enqueue_script( 'fluid-checkout-validation-scripts', untrailingslashit( self::$directory_url )."/js/checkout-validation$min.js", array( 'jquery', 'wc-checkout' ), self::VERSION, true );
+
+    wp_localize_script( 
+      'fluid-checkout-validation-scripts', 
+      'fluidCheckoutValidationVars', 
+      apply_filters( 'fluid_checkout_validation_script_localization', 
+        array( 
+          'required_field_message'  => __( 'This is a required field.', 'woocommerce-fluid-checkout' ),
+        )
+      )
+    );
   }
 
 }

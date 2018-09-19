@@ -131,7 +131,7 @@
     if ( has_value( target ) && confirmWith && target.value == confirmWith.value ) { return true; }
 
     // Return classes for invalid field
-    return _invalidRequiredClass;
+    return _invalidConfirmationClass;
   };
 
 
