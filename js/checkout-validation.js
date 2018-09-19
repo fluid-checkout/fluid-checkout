@@ -104,7 +104,7 @@
    * @param  {Element} formRow  Form row related to the field.
    */
   var init_inline_message_email = function( field, formRow ) {
-    var message = 'This is not a valid email.'; // Fallback message if cannot get from settings
+    var message = 'This is not a valid email address.'; // Fallback message if cannot get from settings
     
     // Try get message from settings
     if ( fluidCheckoutValidationVars && fluidCheckoutValidationVars.email_field_message ) {

@@ -50,6 +50,7 @@ class FluidCheckoutValidation extends FluidCheckout {
       apply_filters( 'fluid_checkout_validation_script_localization', 
         array( 
           'required_field_message'  => __( 'This is a required field.', 'woocommerce-fluid-checkout' ),
+          'email_field_message'  => __( 'This is not a valid email address.', 'woocommerce-fluid-checkout' ),
           'confirmation_field_message'  => __( 'This does not match the related field value.', 'woocommerce-fluid-checkout' ),
         )
       )
