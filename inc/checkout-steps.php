@@ -19,6 +19,7 @@ class FluidCheckoutSteps extends FluidCheckout {
    */
   public function hooks() {
     add_action( 'wp_enqueue_scripts', array( $this, 'scripts_styles' ) );
+    add_filter( 'woocommerce_order_button_html', array( $this, 'add_back_button_order_button_html' ), 20 );
   }
 
 
@@ -45,6 +46,18 @@ class FluidCheckoutSteps extends FluidCheckout {
 
     wp_enqueue_style( 'fluid-checkout-steps-style', untrailingslashit( self::$directory_url )."/css/checkout-steps$min.css", null, self::VERSION );
   }
+
+
+
+  /**
+   * Add back button html to place order button on checkout.
+   * @param [String] $button_html Place Order button html.
+   */
+  public function add_back_button_order_button_html( $button_html ) {
+    $actions_html = '<div class="wfc-actions"><a href="#wfc-wrapper" class="wfc-prev button button-grey-clear button-icon button-icon--left button--big">Back <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg></a> ' . $button_html . '</div>';
+    return $actions_html;
+  }
+  
 
 }
 

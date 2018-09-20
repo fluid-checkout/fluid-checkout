@@ -55,8 +55,10 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 						<?php do_action( 'woocommerce_checkout_billing' ); ?>
 					</div>
 
-					<?php // TODO: Remove svg icon from button ?>
-					<a href="#wfc-wrapper" class="wfc-next button button-success-clear button-icon button-icon--right button--big"><?php _e('Proceed To Shipping', 'woocommerce-fluid-checkout') ; ?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+					<div class="wfc-actions">
+						<?php // TODO: Remove svg icon and theme specific classes from button ?>
+						<a href="#wfc-wrapper" class="wfc-next button button-success-clear button-icon button-icon--right button--big"><?php _e('Proceed To Shipping', 'woocommerce-fluid-checkout') ; ?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+					</div>
 
 				</section>
 
@@ -69,8 +71,12 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 					
 					<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
-					<?php // TODO: Remove svg icon from button ?>
-					<a href="#wfc-wrapper" class="wfc-next button button-success-clear button-icon button-icon--right button--big"><?php _e('Proceed to Secure Payment', 'woocommerce-fluid-checkout') ; ?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+					<div class="wfc-actions">
+						<?php // TODO: Remove svg icon and theme specific classes from button ?>
+						<a href="#wfc-wrapper" class="wfc-prev button button-grey-clear button-icon button-icon--left button--big"><?php _e( 'Back', 'woocommerce-fluid-checkout' ) ; ?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg></a>
+
+						<a href="#wfc-wrapper" class="wfc-next button button-success-clear button-icon button-icon--right button--big"><?php _e('Proceed to Secure Payment', 'woocommerce-fluid-checkout') ; ?> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
+					</div>
 				</section>
 
 				<?php do_action( 'wfc_after_shipping' ); ?>

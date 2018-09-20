@@ -111,15 +111,26 @@
 
 
 
+#wfc-wrapper .wfc-prev,
 #wfc-wrapper .wfc-next {
   display: none;
 }
 
+#wfc-wrapper.active .wfc-actions {
+  display: flex;
+  width: 100%;
+}
+
+#wfc-wrapper.active .wfc-prev {
+  display: block;
+  margin-right: 10px;
+  flex-shrink: 1;
+}
+
 #wfc-wrapper.active .wfc-next {
   display: block;
-  width: 100%;
-  margin-top: 30px;
-  margin-bottom: 50px;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 

@@ -31,7 +31,7 @@
   var getFirstStepId = function() {
     // Return next available step
     for (var i = 0; i < _frames.length; i++) {
-      if ( ! _frames[i].hasAttribute( 'disabled' ) ) {
+      if ( ! _frames[ i + 1 ].hasAttribute( 'disabled' ) ) {
         return i + 1;
       }
     }
@@ -50,14 +50,45 @@
 
 
   /**
-   * Get the id of next available step.
+   * Get the id of previous available step.
    */
-  var getNextStepId = function( ) {
+  var getPrevStepId = function() {
     var currentStepId = getCurrentStepId();
 
-    // Get first enabled step
+
+    // Get first enabled step if not step is active
     if ( ! currentStepId ) {
       return getFirstStepId();
+    }
+
+    // Return next available step
+    for ( var i = currentStepId - 1; i >= 0; i-- ) {
+      if ( ! _frames[ i - 1 ].hasAttribute( 'disabled' ) ) {
+        return currentStepId - 1;
+      }
+    }
+
+    return 1;
+  };
+
+
+
+  /**
+   * Get the id of next available step.
+   */
+  var getNextStepId = function() {
+    var currentStepId = getCurrentStepId();
+
+    // Get first enabled step if not step is active
+    if ( ! currentStepId ) {
+      return getFirstStepId();
+    }
+
+    // Return next available step
+    for (var i = currentStepId - 1; i < _frames.length; i++) {
+      if ( ! _frames[ i + 1 ].hasAttribute('disabled') ) {
+        return currentStepId + 1;
+      }
     }
 
     return null;
@@ -209,6 +240,18 @@
 
 
 
+  /**
+   * Handle clicks on previous step buttons.
+   */
+  var handlePrevStepClick = function( e ) {
+    e.preventDefault();
+
+    // Go to prev step
+    setCurrentStep( getPrevStepId() );
+  };
+
+
+
 	/**
    * Handle document clicks and route to the appropriate function.
    */
@@ -216,10 +259,14 @@
     if ( e.target.closest( '[data-step-id]:not([disabled])' ) ) {
       handleStepClick( e );
     }
+    else if ( e.target.closest( '.wfc-prev:not([disabled])' ) ) {
+      handlePrevStepClick( e );
+    }
     else if ( e.target.closest( '.wfc-next:not([disabled])' ) ) {
     	handleNextStepClick( e );
     }
   };
+
 
 
   /**
@@ -228,6 +275,7 @@
   var setPluginActive = function() {
   	_wfcWrapper.classList.add('active');
   };
+
 
 
   /**
@@ -255,7 +303,7 @@
   window.addEventListener( 'load', init );
 
   // Run on checkout or cart changes
-  $(document).on( 'load_ajax_content_done', init );
+  $( document ).on( 'load_ajax_content_done', init );
 
 
 

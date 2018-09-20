@@ -36,6 +36,7 @@ Press the "Upload Plugin" and select the zip file, then click “Install Now”.
 
 = 1.0.3 =
 * Add inline validation feature.
+* Fix steps and frame data attributes conflicting in some situations
 
 = 1.0.2 =
 * Separate features "Checkout Steps" and "Field Types" to their own classes.
