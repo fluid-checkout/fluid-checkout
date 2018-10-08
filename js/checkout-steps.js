@@ -132,12 +132,22 @@
 	/**
 	 * Mark step as current.
 	 */
-	var markStepActive = function( step, frame ) {
+	var markStepActive = function( step, frame, scrollToElement ) {
 		// Set step as current
 		step.classList.add( 'current' );
 		frame.classList.add( 'current' );
 
     // TODO: Better animation handling with slide left/right depending on the position of the step
+    
+    // Maybe scroll step into view
+    if ( scrollToElement ) {
+      if ( _progressBar ) {
+        scrollTo( _progressBar );
+      }
+      else {
+        scrollTo( frame );
+      }
+    }
 	};
 
 
@@ -145,7 +155,7 @@
 	/**
 	 * Change current step.
 	 */
-	var setCurrentStep = function( stepId ) {
+	var setCurrentStep = function( stepId, scrollToElement ) {
 		var currentStepId = getCurrentStepId();
 
     // Bail if is current active step
@@ -156,7 +166,7 @@
 		
 		// Clear step status, mark as active and done
 		clearStepStatus();
-		markStepActive( step, frame );
+		markStepActive( step, frame, scrollToElement );
 		markStepsDone();
 	};
 
@@ -201,8 +211,22 @@
 		_steps = _wfcInner.querySelectorAll('.wfc-step');
 
 		// Show first available step
-		setCurrentStep( getNextStepId() );
+		setCurrentStep( getNextStepId(), false );
 	};
+
+
+
+  /**
+   * Scroll element into viewport.
+   * @param  {Element} element Element to get position and scroll viewport to.
+   */
+  var scrollTo = function( element ) {
+    window.scroll({
+      behavior: 'smooth',
+      left: 0,
+      top: element.offsetTop
+    });
+  };
 
 
 	
@@ -212,7 +236,7 @@
 	var handleStepClick = function( e ) {
     e.preventDefault();
     var step = e.target.closest( '[data-step-id]' );
-    setCurrentStep( step.getAttribute( 'data-step-id' ) );
+    setCurrentStep( step.getAttribute( 'data-step-id' ), true );
 	};
 
 
@@ -230,12 +254,15 @@
       
       // Bail if not all fields valid and stay in the same step
       if ( ! window.fluidCheckoutValidation.validate_all_fields( frame ) ) {
+        var element = frame.querySelector( '.woocommerce-invalid' );
+        scrollTo( element );
         return;
       }
     }
 
     // Go to next step
-    setCurrentStep( getNextStepId() );
+    setCurrentStep( getNextStepId(), true );
+
 	};
 
 
@@ -247,7 +274,7 @@
     e.preventDefault();
 
     // Go to prev step
-    setCurrentStep( getPrevStepId() );
+    setCurrentStep( getPrevStepId(), true );
   };
 
 

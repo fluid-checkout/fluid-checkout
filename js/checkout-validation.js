@@ -61,6 +61,9 @@
    * @return {Boolean}       True if field is in allow list for always validate.
    */
   var is_always_validate = function( field ) {
+    // Bail if field not found or selector empty
+    if ( ! field || ! _alwaysValidateFieldsSelector ) { return false; }
+
     // Check if field is in allow list
     if ( field.matches( _alwaysValidateFieldsSelector ) ) { return true; }
     return false;
