@@ -34,6 +34,10 @@ Press the "Upload Plugin" and select the zip file, then click “Install Now”.
 
 == Changelog ==
 
+= 1.0.4 =
+* Fix minor validation script error.
+* Change steps to rely on `window.scroll` instead of anchor links.
+
 = 1.0.3 =
 * Add inline validation feature.
 * Fix steps and frame data attributes conflicting in some situations
