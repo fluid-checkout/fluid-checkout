@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: WooCommerce Fluid Checkout
-Plugin URI: https://fluidweb.site/plugins/checkout/
-Description: WooCommerce Fluid Checkout provides a simple multi-step checkout flow for any WooCommerce store.
+Plugin URI: https://fluidweb.co/
+Description: A simple multi-step checkout fluid experience for any WooCommerce store.
 Text Domain: woocommerce-fluid-checkout
 Version: 1.0.6
-Author: FluidWeb
-Author URI: https://fluidweb.site/
+Author: Fluidweb Digital
+Author URI: https://fluidweb.co/
 License: GPLv2
 
 This program is free software; you can redistribute it and/or
@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Define WFC_PLUGIN_FILE.
 if ( ! defined( 'WFC_PLUGIN_FILE' ) ) {
-	define( 'WFC_PLUGIN_FILE', __FILE__ );
+  define( 'WFC_PLUGIN_FILE', __FILE__ );
 }
 
 
@@ -41,44 +41,44 @@ if ( ! defined( 'WFC_PLUGIN_FILE' ) ) {
  */
 class FluidCheckout {
 
-	// A single instance of this class.
-	public static $instances   = array();
-	public static $this_plugin = null;
+  // A single instance of this class.
+  public static $instances   = array();
+  public static $this_plugin = null;
   public static $directory_path;
   public static $directory_url;
-	const PLUGIN               = 'WooCommerce Fluid Checkout';
-	const VERSION              = '1.0.6';
+  const PLUGIN               = 'WooCommerce Fluid Checkout';
+  const VERSION              = '1.0.6';
 
 
 
-	/**
-	 * Singleton instance function.
-	 *
-	 * @access public
-	 * @static
-	 * @return void
+  /**
+   * Singleton instance function.
+   *
+   * @access public
+   * @static
+   * @return void
    * @since  1.0.0
-	 */
-	public static function instance() {
-		$calledClass = get_called_class();
+   */
+  public static function instance() {
+    $calledClass = get_called_class();
 
-		if ( self::$instances[ $calledClass ] === null ){
-			self::$instances[ $calledClass ] = new $calledClass();
-		}
+    if ( self::$instances[ $calledClass ] === null ){
+      self::$instances[ $calledClass ] = new $calledClass();
+    }
 
-		return self::$instances[ $calledClass ];
-	}
+    return self::$instances[ $calledClass ];
+  }
 
 
 
-	/**
-	 * __construct function.
-	 *
-	 * @access public
-	 * @return void
-	 */
-	public function __construct() {
-		$this->set_plugin_vars();
+  /**
+   * __construct function.
+   *
+   * @access public
+   * @return void
+   */
+  public function __construct() {
+    $this->set_plugin_vars();
     $this->load_textdomain();
     $this->hooks();
   }
@@ -89,10 +89,10 @@ class FluidCheckout {
    * Define plugin variables.
    */
   public function set_plugin_vars() {
-		self::$this_plugin    = plugin_basename( WFC_PLUGIN_FILE );
-		self::$directory_path	=	plugin_dir_path( WFC_PLUGIN_FILE );
-		self::$directory_url	=	plugin_dir_url( WFC_PLUGIN_FILE );
-	}
+    self::$this_plugin    = plugin_basename( WFC_PLUGIN_FILE );
+    self::$directory_path = plugin_dir_path( WFC_PLUGIN_FILE );
+    self::$directory_url  = plugin_dir_url( WFC_PLUGIN_FILE );
+  }
 
 
 
@@ -108,39 +108,39 @@ class FluidCheckout {
   /**
    * Initialize hooks.
    */
-	public function hooks() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'scripts_styles' ) );
-		add_action( 'plugins_loaded', array( $this, 'includes' ) );
+  public function hooks() {
+    add_action( 'wp_enqueue_scripts', array( $this, 'scripts_styles' ) );
+    add_action( 'plugins_loaded', array( $this, 'includes' ) );
 
-		// Template loader
+    // Template loader
     add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 10, 3 );
-	}
+  }
 
 
 
-	/**
-	 * scripts_styles function.
-	 *
-	 * @access public
-	 * @return void
-	 */
-	public function scripts_styles() {
+  /**
+   * scripts_styles function.
+   *
+   * @access public
+   * @return void
+   */
+  public function scripts_styles() {
 
-		// Bail if not on checkout page.
-		if( !is_checkout() || is_order_received_page() ){ return; }
+    // Bail if not on checkout page.
+    if( !is_checkout() || is_order_received_page() ){ return; }
 
-		// TODO: Enable js minification.
-		// $min = '.min';
-		$min = ''; 
+    // TODO: Enable js minification.
+    // $min = '.min';
+    $min = ''; 
 
-		if ( defined('SCRIPT_DEBUG') && true === SCRIPT_DEBUG ) {
-			$min = '';
-		}
-	}
+    if ( defined('SCRIPT_DEBUG') && true === SCRIPT_DEBUG ) {
+      $min = '';
+    }
+  }
 
 
 
-	/*
+  /*
    * Locate template files from this plugin.
    * @since 1.0.2
    */
@@ -180,54 +180,54 @@ class FluidCheckout {
 
 
 
-	/**
-	 * Load plugin includes.
-	 * @since 1.0.0
-	 */
-	public function includes() {
+  /**
+   * Load plugin includes.
+   * @since 1.0.0
+   */
+  public function includes() {
 
-		// if Woocommerce is not active, bail
-		if( ! $this->is_woocommerce_active() ) {
-			return;
-		}
+    // if Woocommerce is not active, bail
+    if( ! $this->is_woocommerce_active() ) {
+      add_action( 'all_admin_notices', array( $this, 'woocommerce_required_notice' ) );
+      deactivate_plugins( self::$this_plugin, true );
+      return;
+    }
 
     require_once self::$directory_path . 'inc/checkout-steps.php';
     require_once self::$directory_path . 'inc/checkout-field-types.php';
     require_once self::$directory_path . 'inc/checkout-validation.php';
-	}
+  }
 
 
 
-	/**
-	 * Check to see if Woocommerce is active on a single install or network wide.
-	 * Otherwise, will display an admin notice.
-	 * 
-	 * @since 1.0.0
-	 */
-	public function is_woocommerce_active() {
+  /**
+   * Check to see if Woocommerce is active on a single install or network wide.
+   * Otherwise, will display an admin notice.
+   * 
+   * @since 1.0.0
+   */
+  public function is_woocommerce_active() {
 
-		// Is Woocommerce active?
-		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		if( ! is_plugin_active( 'woocommerce/woocommerce.php') ) {
-			// Admin notice
-			$this->requires = 'WooCommerce';
-			add_action( 'all_admin_notices', array( $this, 'woocommerce_required_notice' ) );
-			return false;
-		}
+    // Is Woocommerce active?
+    include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+    if( ! is_plugin_active( 'woocommerce/woocommerce.php') ) {
+      // Admin notice
+      $this->requires = 'WooCommerce';
+      return false;
+    }
 
-		return true;
-	}
-
+    return true;
+  }
 
 
-	/**
-	 * Shows required message & deactivates this plugin
-	 * @since  1.0.0
-	 */
-	public function woocommerce_required_notice() {
-		echo '<div id="message" class="error"><p>'. sprintf( __( '%1$s requires the %2$s plugin to be installed/activated. %1$s has been deactivated.', 'woocommerce-fluid-checkout' ), self::PLUGIN, 'WooCommerce' ) .'</p></div>';
-		deactivate_plugins( self::$this_plugin, true );
-	}
+
+  /**
+   * Shows required message & deactivates this plugin
+   * @since  1.0.0
+   */
+  public function woocommerce_required_notice() {
+    echo '<div id="message" class="error"><p>'. sprintf( __( '%1$s requires the %2$s plugin to be installed/activated. %1$s has been deactivated.', 'woocommerce-fluid-checkout' ), self::PLUGIN, 'WooCommerce' ) .'</p></div>';
+  }
 
 }
 
