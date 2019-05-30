@@ -4,7 +4,7 @@ Plugin Name: WooCommerce Fluid Checkout
 Plugin URI: https://fluidweb.co/
 Description: A simple multi-step checkout fluid experience for any WooCommerce store.
 Text Domain: woocommerce-fluid-checkout
-Version: 1.0.6
+Version: 1.0.7
 Author: Fluidweb Digital
 Author URI: https://fluidweb.co/
 License: GPLv2
@@ -47,7 +47,7 @@ class FluidCheckout {
   public static $directory_path;
   public static $directory_url;
   const PLUGIN               = 'WooCommerce Fluid Checkout';
-  const VERSION              = '1.0.6';
+  const VERSION              = '1.0.7';
 
 
 
