@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) { 
-    exit;
+  exit;
 }
 
 // Define WFC_PLUGIN_FILE.
@@ -80,6 +80,7 @@ class FluidCheckout {
   public function __construct() {
     $this->set_plugin_vars();
     $this->load_textdomain();
+    $this->load_updater();
     $this->hooks();
   }
 
@@ -92,6 +93,22 @@ class FluidCheckout {
     self::$this_plugin    = plugin_basename( WFC_PLUGIN_FILE );
     self::$directory_path = plugin_dir_path( WFC_PLUGIN_FILE );
     self::$directory_url  = plugin_dir_url( WFC_PLUGIN_FILE );
+  }
+
+
+
+  /**
+   * Load plugin updater.
+   * @since 1.0.7
+   */
+  public function load_updater() {
+    require_once self::$directory_path . 'inc/plugin-updater.php';
+
+    $repo = 'fluidweb-site/woocommerce-fluid-checkout';
+    $bitbucket_username = 'fluidweb-admin';
+    $bitbucket_app_pass = 'wJyChMm8U9Ra4xrGBaJh';
+    
+    new FluidCheckout_PluginUpdater( __FILE__, $repo, $bitbucket_username, $bitbucket_app_pass );
   }
 
 
