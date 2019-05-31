@@ -1,20 +1,13 @@
 /*
- * Styles for WooCommerce Fluid Checkout
- * Author: FluidWeb
- * URL: https://fluidweb.site/
+ * WooCommerce Fluid Checkout layout styles
  */
 
 #wfc-wrapper {
   overflow: hidden;
 }
 
-.wfc-row {
-  margin: 5px 0;
-}
-
 .wfc-header {
   display: none;
-  margin-bottom: 15px;
 }
 
 #wfc-wrapper.active .wfc-header {
@@ -27,20 +20,12 @@
   display: flex;
   margin: 0;
   overflow: hidden;
-  border-radius: 4px;
 }
 
 .wfc-step {
   box-sizing: border-box;
   position: relative;
   flex: 1;
-  padding: 5px;
-  max-height: 30px;
-  height: 30px;
-  background-color: #fff;
-  font-size: 15px;
-  text-align: center;
-  line-height: 20px;
   cursor: pointer;
 }
 
@@ -48,44 +33,6 @@
 .wfc-step.disabled {
   cursor: default;
 }
-
-.wfc-step:before,
-.wfc-step:after {
-  content: '';
-  position: absolute;
-  top: -2px;
-  right: -23px;
-  width: 0;
-  height: 0;
-  border: 17px solid transparent;
-  border-left: 7px solid #fff;
-  z-index: 3;
-}
-
-.wfc-step:before {
-  left: 0;
-  border: 17px solid transparent;
-  border-left: 7px solid #F8F3DD;
-  z-index: 2;
-}
-
-
-.wfc-step.current:after {
-  border-left-color: #F0F0F0;
-}
-.wfc-step.current {
-  background-color: #F0F0F0;
-}
-
-
-.wfc-step.done:after {
-  border-left-color: #329f5b;
-}
-.wfc-step.done {
-  color: #fff;
-  background-color: #329f5b;
-}
-
 
 .wfc-step:first-child:before,
 .wfc-step:last-child:after {
@@ -101,12 +48,10 @@
 
 #wfc-wrapper.active .wfc-frame {
   display: none;
-  margin-top: 50px;
 }
 
 #wfc-wrapper.active .wfc-frame.current {
   display: block;
-  animation: slideInRight cubic-bezier(0.22, 0.61, 0.36, 1) 200ms; // ease-out-cubic
 }
 
 
@@ -123,7 +68,6 @@
 
 #wfc-wrapper.active .wfc-prev {
   display: block;
-  margin-right: 10px;
   flex-shrink: 1;
 }
 
@@ -132,25 +76,4 @@
   flex-grow: 1;
   flex-shrink: 1;
 }
-
-
-
-
-/**
- * ANIMATIONS
- */
-
-@-webkit-keyframes slideInRight {
-  from {
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
-    visibility: visible;
-  }
-
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
 

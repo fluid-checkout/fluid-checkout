@@ -65,10 +65,18 @@ class FluidCheckoutSteps extends FluidCheckout {
     if ( defined('SCRIPT_DEBUG') && true === SCRIPT_DEBUG ) {
       $min = '';
     }
-      
-    wp_enqueue_script( 'fluid-checkout-steps-scripts', untrailingslashit( self::$directory_url )."/js/checkout-steps$min.js", array( 'jquery' ), self::VERSION, true );
 
-    wp_enqueue_style( 'fluid-checkout-steps-style', untrailingslashit( self::$directory_url )."/css/checkout-steps$min.css", null, self::VERSION );
+    if ( apply_filters( 'wfc_enqueue_steps_script', true ) ) {
+      wp_enqueue_script( 'wfc-steps-js', untrailingslashit( self::$directory_url )."/js/checkout-steps$min.js", array( 'jquery' ), self::VERSION, true );
+    }
+
+    if ( apply_filters( 'wfc_enqueue_steps_css', true ) ) {
+      wp_enqueue_style( 'wfc-steps-css', untrailingslashit( self::$directory_url )."/css/checkout-steps$min.css", null, self::VERSION );
+    }
+
+    if ( apply_filters( 'wfc_enqueue_steps_default_style', true ) ) {
+      wp_enqueue_style( 'wfc-steps-default-style', untrailingslashit( self::$directory_url )."/css/checkout-steps--default$min.css", null, self::VERSION );
+    }
   }
 
 
