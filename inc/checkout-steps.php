@@ -19,7 +19,31 @@ class FluidCheckoutSteps extends FluidCheckout {
    */
   public function hooks() {
     add_action( 'wp_enqueue_scripts', array( $this, 'scripts_styles' ) );
-    add_filter( 'woocommerce_order_button_html', array( $this, 'add_back_button_order_button_html' ), 20 );
+
+    // Wrapper
+    $wrapper_start_hook_args = apply_filters( 'wfc_wrapper_start_hook_args', array( 'hook' => 'woocommerce_before_checkout_form', 'priority' => 10 ) );
+    $wrapper_end_hook_args = apply_filters( 'wfc_wrapper_end_hook_args', array( 'hook' => 'woocommerce_after_checkout_form', 'priority' => 10 ) );
+    add_action( $wrapper_start_hook_args['hook'], array( $this, 'output_wfc_wrapper_start_tag' ), $wrapper_start_hook_args['priority'] );
+    add_action( $wrapper_end_hook_args['hook'], array( $this, 'output_wfc_wrapper_end_tag' ), $wrapper_end_hook_args['priority'] );
+
+    // Billing Step
+    $billing_start_hook_args = apply_filters( 'wfc_billing_start_hook_args', array( 'hook' => 'woocommerce_checkout_billing', 'priority' => 5 ) );
+    $billing_end_hook_args = apply_filters( 'wfc_billing_end_hook_args', array( 'hook' => 'woocommerce_checkout_billing', 'priority' => 9999 ) );
+    add_action( $billing_start_hook_args['hook'], array( $this, 'output_wfc_billing_start_tag' ), $billing_start_hook_args['priority'] );
+    add_action( $billing_end_hook_args['hook'], array( $this, 'output_wfc_billing_end_tag' ), $billing_end_hook_args['priority'] );
+
+    // Shipping Step
+    $shipping_start_hook_args = apply_filters( 'wfc_shipping_start_hook_args', array( 'hook' => 'woocommerce_checkout_shipping', 'priority' => 5 ) );
+    $shipping_end_hook_args = apply_filters( 'wfc_shipping_end_hook_args', array( 'hook' => 'woocommerce_checkout_shipping', 'priority' => 9999 ) );
+    add_action( $shipping_start_hook_args['hook'], array( $this, 'output_wfc_shipping_start_tag' ), $shipping_start_hook_args['priority'] );
+    add_action( $shipping_end_hook_args['hook'], array( $this, 'output_wfc_shipping_end_tag' ), $shipping_end_hook_args['priority'] );
+
+    // Payment Step
+    $payment_start_hook_args = apply_filters( 'wfc_payment_start_hook_args', array( 'hook' => 'woocommerce_checkout_before_order_review_heading', 'priority' => 5 ) );
+    $payment_end_hook_args = apply_filters( 'wfc_payment_end_hook_args', array( 'hook' => 'woocommerce_checkout_after_order_review', 'priority' => 9999 ) );
+    add_action( $payment_start_hook_args['hook'], array( $this, 'output_wfc_payment_start_tag' ), $payment_start_hook_args['priority'] );
+    add_action( $payment_end_hook_args['hook'], array( $this, 'output_wfc_payment_end_tag' ), $payment_end_hook_args['priority'] );
+    add_filter( 'woocommerce_order_button_html', array( $this, 'add_payment_step_actions' ), 20 );
   }
 
 
@@ -50,15 +74,133 @@ class FluidCheckoutSteps extends FluidCheckout {
 
 
   /**
+   * Output start tag for checkout steps wrapper.
+   */
+  public function output_wfc_wrapper_start_tag( $checkout ) {
+    // If checkout registration is disabled and not logged in, the user cannot checkout.
+    if ( $checkout && ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) { return; }
+
+    ?>
+    <div id="wfc-wrapper" class="<?php echo esc_attr( apply_filters( 'wfc_wrapper_classes', '' ) ); ?>">
+      <div class="wfc-inside">
+        <div class="wfc-row wfc-header">
+          <div id="wfc-progressbar"></div>
+        </div>
+    <?php
+  }
+
+
+
+  /**
+   * Output end tag for checkout steps wrapper.
+   */
+  public function output_wfc_wrapper_end_tag() {
+    ?>
+      </div><!-- .wfc-inside -->
+    </div><!-- #wfc-wrapper -->
+    <?php
+  }
+
+
+
+  /**
+   * Output start tag for billing step.
+   */
+  public function output_wfc_billing_start_tag() {
+    ?>
+    <section class="wfc-frame" data-label="<?php esc_attr_e( 'Billing', 'woocommerce-fluid-checkout' ) ?>">
+    <?php
+  }
+
+
+
+  /**
+   * Output end tag for billing step.
+   */
+  public function output_wfc_billing_end_tag() {
+      echo apply_filters( 'wfc_billing_step_actions_html', $this->output_billing_step_actions_html() );
+    ?>
+    </section>
+    <?php
+  }
+
+
+
+  /**
    * Add back button html to place order button on checkout.
    * @param [String] $button_html Place Order button html.
    */
-  public function add_back_button_order_button_html( $button_html ) {
-    // TODO: Remove svg icon and theme specific classes from button
-    $actions_html = '<div class="wfc-actions"><button class="wfc-prev button button-grey-clear button-icon button-icon--left button--big">Back <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg></button> ' . $button_html . '</div>';
+  public function output_billing_step_actions_html() {
+    $actions_html = '<div class="wfc-actions"><button class="wfc-next">' . __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' ) . '</button></div>';
     return $actions_html;
   }
-  
+
+
+
+  /**
+   * Output start tag for shipping step.
+   */
+  public function output_wfc_shipping_start_tag() {
+    ?>
+    <section class="wfc-frame" data-label="<?php esc_attr_e( 'Shipping', 'woocommerce-fluid-checkout' ) ?>">
+    <?php
+  }
+
+
+
+  /**
+   * Output end tag for shipping step.
+   */
+  public function output_wfc_shipping_end_tag() {
+      echo apply_filters( 'wfc_shipping_step_actions_html', $this->output_shipping_step_actions_html() );
+    ?>
+    </section>
+    <?php
+  }
+
+
+
+  /**
+   * Add back button html to place order button on checkout.
+   * @param [String] $button_html Place Order button html.
+   */
+  public function output_shipping_step_actions_html() {
+    $actions_html = '<div class="wfc-actions"><button class="wfc-prev">' . _x( 'Back', 'Previous step button', 'woocommerce-fluid-checkout' ) . '</button> <button class="wfc-next">' . __( 'Proceed to Payment', 'woocommerce-fluid-checkout' ) . '</button></div>';
+    return $actions_html;
+  }
+
+
+
+  /**
+   * Output start tag for payment step.
+   */
+  public function output_wfc_payment_start_tag() {
+    ?>
+    <section class="wfc-frame" data-label="<?php esc_attr_e( 'Payment', 'woocommerce-fluid-checkout' ) ?>">
+    <?php
+  }
+
+
+
+  /**
+   * Output end tag for payment step.
+   */
+  public function output_wfc_payment_end_tag() {
+    ?>
+    </section>
+    <?php
+  }
+
+
+
+  /**
+   * Add back button html to place order button on checkout.
+   * @param [String] $button_html Place Order button html.
+   */
+  public function add_payment_step_actions( $button_html ) {
+    $actions_html = '<div class="wfc-actions"><button class="wfc-prev">' . _x( 'Back', 'Previous step button', 'woocommerce-fluid-checkout' ) . '</button> ' . $button_html . '</div>';
+    return $actions_html;
+  }
 
 }
 
