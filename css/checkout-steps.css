@@ -2,10 +2,6 @@
  * WooCommerce Fluid Checkout layout styles
  */
 
-#wfc-wrapper {
-  overflow: hidden;
-}
-
 .wfc-header {
   display: none;
 }

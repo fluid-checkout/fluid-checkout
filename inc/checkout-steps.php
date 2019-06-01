@@ -92,7 +92,7 @@ class FluidCheckoutSteps extends FluidCheckout {
     <div id="wfc-wrapper" class="<?php echo esc_attr( apply_filters( 'wfc_wrapper_classes', '' ) ); ?>">
       <div class="wfc-inside">
         <div class="wfc-row wfc-header">
-          <div id="wfc-progressbar"></div>
+          <div id="wfc-progressbar"><?php echo apply_filters( 'wfc_progressbar_steps_placeholder', '<div class="wfc-step current"></div><div class="wfc-step"></div><div class="wfc-step"></div>' ); ?></div>
         </div>
     <?php
   }

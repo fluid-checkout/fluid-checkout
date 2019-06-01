@@ -179,6 +179,11 @@
     // Bail if inner element not present
     if ( ! _wfcInner ) { return; }
 
+    // Clear progress bar placeholders
+    while ( _progressBar.firstChild ) {
+      _progressBar.removeChild( _progressBar.firstChild );
+    }
+
     // Get frames
 		_frames = _wfcInner.querySelectorAll( '.wfc-frame' );
 
