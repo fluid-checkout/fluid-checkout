@@ -136,7 +136,6 @@ class FluidCheckoutSteps extends FluidCheckout {
 
   /**
    * Add back button html to place order button on checkout.
-   * @param [String] $button_html Place Order button html.
    */
   public function output_billing_step_actions_html() {
     $actions_html = '<div class="wfc-actions"><button class="wfc-next">' . __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' ) . '</button></div>';
@@ -170,7 +169,6 @@ class FluidCheckoutSteps extends FluidCheckout {
 
   /**
    * Add back button html to place order button on checkout.
-   * @param [String] $button_html Place Order button html.
    */
   public function output_shipping_step_actions_html() {
     $actions_html = '<div class="wfc-actions"><button class="wfc-prev">' . _x( 'Back', 'Previous step button', 'woocommerce-fluid-checkout' ) . '</button> <button class="wfc-next">' . __( 'Proceed to Payment', 'woocommerce-fluid-checkout' ) . '</button></div>';
