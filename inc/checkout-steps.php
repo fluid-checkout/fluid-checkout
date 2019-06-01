@@ -43,7 +43,7 @@ class FluidCheckoutSteps extends FluidCheckout {
     $payment_end_hook_args = apply_filters( 'wfc_payment_end_hook_args', array( 'hook' => 'woocommerce_checkout_after_order_review', 'priority' => 9999 ) );
     add_action( $payment_start_hook_args['hook'], array( $this, 'output_wfc_payment_start_tag' ), $payment_start_hook_args['priority'] );
     add_action( $payment_end_hook_args['hook'], array( $this, 'output_wfc_payment_end_tag' ), $payment_end_hook_args['priority'] );
-    add_filter( 'woocommerce_order_button_html', array( $this, 'add_payment_step_actions' ), 20 );
+    add_filter( 'woocommerce_order_button_html', array( $this, 'get_payment_step_actions_html' ), 20 );
   }
 
 
@@ -126,20 +126,10 @@ class FluidCheckoutSteps extends FluidCheckout {
    * Output end tag for billing step.
    */
   public function output_wfc_billing_end_tag() {
-      echo apply_filters( 'wfc_billing_step_actions_html', $this->output_billing_step_actions_html() );
+      echo $this->get_billing_step_actions_html();
     ?>
     </section>
     <?php
-  }
-
-
-
-  /**
-   * Add back button html to place order button on checkout.
-   */
-  public function output_billing_step_actions_html() {
-    $actions_html = '<div class="wfc-actions"><button class="wfc-next">' . __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' ) . '</button></div>';
-    return $actions_html;
   }
 
 
@@ -159,7 +149,7 @@ class FluidCheckoutSteps extends FluidCheckout {
    * Output end tag for shipping step.
    */
   public function output_wfc_shipping_end_tag() {
-      echo apply_filters( 'wfc_shipping_step_actions_html', $this->output_shipping_step_actions_html() );
+      echo $this->get_shipping_step_actions_html();
     ?>
     </section>
     <?php
@@ -170,9 +160,30 @@ class FluidCheckoutSteps extends FluidCheckout {
   /**
    * Add back button html to place order button on checkout.
    */
-  public function output_shipping_step_actions_html() {
+  public function get_billing_step_actions_html() {
+    $actions_html = '<div class="wfc-actions"><button class="wfc-next">' . __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' ) . '</button></div>';
+    return apply_filters( 'wfc_billing_step_actions_html', $actions_html );
+  }
+
+
+
+  /**
+   * Add back button html to place order button on checkout.
+   */
+  public function get_shipping_step_actions_html() {
     $actions_html = '<div class="wfc-actions"><button class="wfc-prev">' . _x( 'Back', 'Previous step button', 'woocommerce-fluid-checkout' ) . '</button> <button class="wfc-next">' . __( 'Proceed to Payment', 'woocommerce-fluid-checkout' ) . '</button></div>';
-    return $actions_html;
+    return apply_filters( 'wfc_shipping_step_actions_html', $actions_html );
+  }
+
+
+
+  /**
+   * Add back button html to place order button on checkout.
+   * @param [String] $button_html Place Order button html.
+   */
+  public function get_payment_step_actions_html( $button_html ) {
+    $actions_html = '<div class="wfc-actions"><button class="wfc-prev">' . _x( 'Back', 'Previous step button', 'woocommerce-fluid-checkout' ) . '</button> ' . $button_html . '</div>';
+    return apply_filters( 'wfc_payment_step_actions_html', $actions_html, $button_html );
   }
 
 
@@ -195,17 +206,6 @@ class FluidCheckoutSteps extends FluidCheckout {
     ?>
     </section>
     <?php
-  }
-
-
-
-  /**
-   * Add back button html to place order button on checkout.
-   * @param [String] $button_html Place Order button html.
-   */
-  public function add_payment_step_actions( $button_html ) {
-    $actions_html = '<div class="wfc-actions"><button class="wfc-prev">' . _x( 'Back', 'Previous step button', 'woocommerce-fluid-checkout' ) . '</button> ' . $button_html . '</div>';
-    return $actions_html;
   }
 
 }
