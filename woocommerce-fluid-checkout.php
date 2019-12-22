@@ -5,7 +5,7 @@ Plugin URI: https://fluidweb.co/
 Description: A simple multi-step checkout fluid experience for any WooCommerce store.
 Text Domain: woocommerce-fluid-checkout
 Version: 1.0.8-dev-2
-Author: Fluidweb Digital
+Author: Fluidweb.co
 Author URI: https://fluidweb.co/
 License: GPLv2
 
@@ -46,8 +46,10 @@ class FluidCheckout {
   public static $this_plugin = null;
   public static $directory_path;
   public static $directory_url;
-  const PLUGIN               = 'WooCommerce Fluid Checkout';
-  const VERSION              = '1.0.8-dev-2';
+  const PLUGIN = 'WooCommerce Fluid Checkout';
+	// Version is updated automatically by gulp
+	const VERSION = '1.0.8-dev-2';
+	const ASSET_VERSION = '-108-dev-2';
 
 
 
@@ -98,18 +100,20 @@ class FluidCheckout {
 
 
   /**
-   * Load plugin updater.
-   * @since 1.0.7
-   */
-  public function load_updater() {
-    require_once self::$directory_path . 'inc/plugin-updater.php';
-
-    $repo = 'fluidweb-site/woocommerce-fluid-checkout';
-    $bitbucket_username = 'fluidweb-admin';
-    $bitbucket_app_pass = 'wJyChMm8U9Ra4xrGBaJh';
-    
-    new FluidCheckout_PluginUpdater( __FILE__, $repo, $bitbucket_username, $bitbucket_app_pass );
-  }
+	 * Load plugin updater.
+	 */
+	public function load_updater() {
+		require_once self::$directory_path . 'inc/vendor/fluidweb-updater/plugin-updater-bitbucket.php';
+		if ( class_exists( 'Fluidweb_PluginUpdater_Bitbucket' ) ) {
+			new Fluidweb_PluginUpdater_Bitbucket(
+				__FILE__,
+				'fluidweb-co/woocommerce-fluid-checkout',
+				get_option( '_fluidcheckout_repo_user' ),
+				get_option( '_fluidcheckout_repo_pass' ), // TODO: FIX SECURITY - should not save plain text password
+				get_option( '_fluidcheckout_allow-beta-updates' )
+			);
+		}
+	}
 
 
 
@@ -126,7 +130,6 @@ class FluidCheckout {
    * Initialize hooks.
    */
   public function hooks() {
-    add_action( 'wp_enqueue_scripts', array( $this, 'scripts_styles' ) );
     add_action( 'plugins_loaded', array( $this, 'includes' ) );
 
     // Template loader
@@ -141,18 +144,15 @@ class FluidCheckout {
    * @access public
    * @return void
    */
-  public function scripts_styles() {
+  public function maybe_get_minified_suffix() {
+    $min = '.min';
 
-    // Bail if not on checkout page.
-    if( !is_checkout() || is_order_received_page() ){ return; }
-
-    // TODO: Enable js minification.
-    // $min = '.min';
-    $min = ''; 
-
-    if ( defined('SCRIPT_DEBUG') && true === SCRIPT_DEBUG ) {
+    // Load uncompressed file if on DEBUG mode
+    if ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) {
       $min = '';
     }
+
+    return $min;
   }
 
 

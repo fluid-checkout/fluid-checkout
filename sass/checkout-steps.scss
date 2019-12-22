@@ -1,58 +1,75 @@
 /*
  * WooCommerce Fluid Checkout layout styles
  */
+
 .wfc-header {
-  display: none; }
+  display: none;
+}
 
 #wfc-wrapper.active .wfc-header {
-  display: block; }
+  display: block;
+}
+
+
 
 #wfc-progressbar {
-  display: -webkit-box;
   display: flex;
   margin: 0;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .wfc-step {
   box-sizing: border-box;
   position: relative;
-  -webkit-box-flex: 1;
   flex: 1;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .wfc-step[disabled],
 .wfc-step.disabled {
-  cursor: default; }
+  cursor: default;
+}
 
 .wfc-step:first-child:before,
 .wfc-step:last-child:after {
   content: '';
-  display: none; }
+  display: none;
+}
+
+
 
 .wfc-header {
-  display: block; }
+  display: block;
+}
 
 #wfc-wrapper.active .wfc-frame {
-  display: none; }
+  display: none;
+}
 
 #wfc-wrapper.active .wfc-frame.current {
-  display: block; }
+  display: block;
+}
+
+
 
 #wfc-wrapper .wfc-prev,
 #wfc-wrapper .wfc-next {
-  display: none; }
+  display: none;
+}
 
 #wfc-wrapper.active .wfc-actions {
-  display: -webkit-box;
   display: flex;
-  width: 100%; }
+  width: 100%;
+}
 
 #wfc-wrapper.active .wfc-prev {
   display: block;
-  flex-shrink: 1; }
+  flex-shrink: 1;
+}
 
 #wfc-wrapper.active .wfc-next {
   display: block;
-  -webkit-box-flex: 1;
   flex-grow: 1;
-  flex-shrink: 1; }
+  flex-shrink: 1;
+}
+

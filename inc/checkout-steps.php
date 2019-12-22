@@ -18,7 +18,7 @@ class FluidCheckoutSteps extends FluidCheckout {
    * Initialize hooks.
    */
   public function hooks() {
-    add_action( 'wp_enqueue_scripts', array( $this, 'scripts_styles' ) );
+    add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
 
     // Wrapper
     $wrapper_start_hook_args = apply_filters( 'wfc_wrapper_start_hook_args', array( 'hook' => 'woocommerce_before_checkout_form', 'priority' => 10 ) );
@@ -49,33 +49,25 @@ class FluidCheckoutSteps extends FluidCheckout {
 
 
   /**
-   * scripts_styles function.
-   *
-   * @access public
-   * @return void
+   * Enqueue scripts and styles.
    */
-  public function scripts_styles() {
+  public function enqueue() {
     // Bail if not on checkout page.
     if( ! is_checkout() || is_order_received_page() ){ return; }
 
-    // TODO: Enable js minification.
-    // $min = '.min';
-    $min = ''; 
-
-    if ( defined('SCRIPT_DEBUG') && true === SCRIPT_DEBUG ) {
-      $min = '';
-    }
+    $min = self::maybe_get_minified_suffix();
+    $version = self::ASSET_VERSION . $min;
 
     if ( apply_filters( 'wfc_enqueue_steps_script', true ) ) {
-      wp_enqueue_script( 'wfc-steps-js', untrailingslashit( self::$directory_url )."/js/checkout-steps$min.js", array( 'jquery' ), self::VERSION, true );
+      wp_enqueue_script( 'wfc-steps-js', untrailingslashit( self::$directory_url )."/js/checkout-steps$version.js", array( 'jquery' ), NULL, true );
     }
 
     if ( apply_filters( 'wfc_enqueue_steps_css', true ) ) {
-      wp_enqueue_style( 'wfc-steps-css', untrailingslashit( self::$directory_url )."/css/checkout-steps$min.css", null, self::VERSION );
+      wp_enqueue_style( 'wfc-steps-css', untrailingslashit( self::$directory_url )."/css/checkout-steps$version.css", null, NULL );
     }
 
     if ( apply_filters( 'wfc_enqueue_steps_default_style', true ) ) {
-      wp_enqueue_style( 'wfc-steps-default-style', untrailingslashit( self::$directory_url )."/css/checkout-steps--default$min.css", null, self::VERSION );
+      wp_enqueue_style( 'wfc-steps-default-style', untrailingslashit( self::$directory_url )."/css/checkout-steps--default$version.css", null, NULL );
     }
   }
 

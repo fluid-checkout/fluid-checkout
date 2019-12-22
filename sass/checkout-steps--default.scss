@@ -1,8 +1,12 @@
 /*
  * WooCommerce Fluid Checkout default skin
  */
+
 #wfc-progressbar {
-  border-radius: 4px; }
+  border-radius: 4px;
+}
+
+
 
 .wfc-step {
   padding: 5px;
@@ -11,7 +15,8 @@
   background-color: #fff;
   font-size: 15px;
   text-align: center;
-  line-height: 20px; }
+  line-height: 20px;
+}
 
 .wfc-step:before,
 .wfc-step:after {
@@ -23,53 +28,65 @@
   height: 0;
   border: 17px solid transparent;
   border-left: 7px solid #fff;
-  z-index: 3; }
+  z-index: 3;
+}
 
 .wfc-step:before {
   left: 0;
   border: 17px solid transparent;
   border-left: 7px solid #F8F3DD;
-  z-index: 2; }
+  z-index: 2;
+}
+
+
 
 .wfc-step.current:after {
-  border-left-color: #F0F0F0; }
-
+  border-left-color: #F0F0F0;
+}
 .wfc-step.current {
-  background-color: #F0F0F0; }
+  background-color: #F0F0F0;
+}
+
+
 
 .wfc-step.done:after {
-  border-left-color: #329f5b; }
-
+  border-left-color: #329f5b;
+}
 .wfc-step.done {
   color: #fff;
-  background-color: #329f5b; }
+  background-color: #329f5b;
+}
 
 #wfc-wrapper.active .wfc-frame {
-  margin-top: 50px; }
+  margin-top: 50px;
+}
 
 #wfc-wrapper.active .wfc-frame.current {
-  -webkit-animation: slideInRight cubic-bezier(0.22, 0.61, 0.36, 1) 200ms;
-  animation: slideInRight cubic-bezier(0.22, 0.61, 0.36, 1) 200ms; }
+  animation: slideInRight cubic-bezier(0.22, 0.61, 0.36, 1) 200ms; // ease-out-cubic
+}
 
 #wfc-wrapper.active .wfc-prev {
-  margin-right: 10px; }
+  margin-right: 10px;
+}
+
+
+
 
 /**
  * ANIMATIONS
  */
-@-webkit-keyframes slideInRight {
-  from {
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
-    visibility: visible; }
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0); } }
+
 @keyframes slideInRight {
   from {
     -webkit-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0);
-    visibility: visible; }
+    visibility: visible;
+  }
+
   to {
     -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0); } }
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+

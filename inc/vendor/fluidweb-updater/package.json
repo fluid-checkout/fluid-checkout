@@ -1,0 +1,45 @@
+{
+  "_from": "git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git",
+  "_id": "fluidweb-updater@0.1.6",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/fluidweb-updater",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "fluidweb-updater@git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git",
+    "name": "fluidweb-updater",
+    "escapedName": "fluidweb-updater",
+    "rawSpec": "git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git",
+    "saveSpec": "git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git",
+    "fetchSpec": "https://bitbucket.org/fluidweb-co/fluidweb-updater.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git#0377a50c821ce16656aab05d894bf30e63575e26",
+  "_spec": "fluidweb-updater@git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git",
+  "_where": "/Users/diegoversiani/Sites/rdnarts/wp-content/plugins/woocommerce-fluid-checkout",
+  "author": {
+    "name": "Fluidweb.co"
+  },
+  "bundleDependencies": false,
+  "copyright": "Copyright (c) 2019, Fluidweb OÜ",
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Auto-updater for custom coded theme and plugins hosted on Bitbucket.",
+  "devDependencies": {},
+  "homepage": "https://fluidweb.co/",
+  "license": "GPL-3.0",
+  "main": "package.json",
+  "name": "fluidweb-updater",
+  "repository": {
+    "type": "git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.6"
+}
