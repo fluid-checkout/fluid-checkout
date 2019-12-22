@@ -1,0 +1,33 @@
+{
+  "name": "woocommerce-fluid-checkout",
+  "version": "1.0.8-dev-2",
+  "description": "A simple multi-step checkout fluid experience for any WooCommerce store",
+  "main": "woocommerce-fluid-checkout.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {},
+  "author": "Fluidweb OÜ",
+  "license": "GPL-3.0",
+  "copyright": "Copyright (c) 2019, Fluidweb OÜ",
+  "homepage": "https://fluidweb.co",
+  "devDependencies": {
+    "fluidweb-updater": "git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.1",
+    "gulp-ignore": "^2.0.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-rimraf": "^0.2.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sequence": "^1.0.0",
+    "gulp-sourcemaps": "^2.6.2",
+    "gulp-uglify": "^3.0.1",
+    "gulp-watch": "^5.0.1",
+    "load-json-file": "^5.1.0"
+  },
+  "dependencies": {}
+}

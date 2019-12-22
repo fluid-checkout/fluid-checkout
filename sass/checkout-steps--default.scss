@@ -1,0 +1,92 @@
+/*
+ * WooCommerce Fluid Checkout default skin
+ */
+
+#wfc-progressbar {
+  border-radius: 4px;
+}
+
+
+
+.wfc-step {
+  padding: 5px;
+  max-height: 30px;
+  height: 30px;
+  background-color: #fff;
+  font-size: 15px;
+  text-align: center;
+  line-height: 20px;
+}
+
+.wfc-step:before,
+.wfc-step:after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -23px;
+  width: 0;
+  height: 0;
+  border: 17px solid transparent;
+  border-left: 7px solid #fff;
+  z-index: 3;
+}
+
+.wfc-step:before {
+  left: 0;
+  border: 17px solid transparent;
+  border-left: 7px solid #F8F3DD;
+  z-index: 2;
+}
+
+
+
+.wfc-step.current:after {
+  border-left-color: #F0F0F0;
+}
+.wfc-step.current {
+  background-color: #F0F0F0;
+}
+
+
+
+.wfc-step.done:after {
+  border-left-color: #329f5b;
+}
+.wfc-step.done {
+  color: #fff;
+  background-color: #329f5b;
+}
+
+#wfc-wrapper.active .wfc-frame {
+  margin-top: 50px;
+}
+
+#wfc-wrapper.active .wfc-frame.current {
+  animation: slideInRight cubic-bezier(0.22, 0.61, 0.36, 1) 200ms; // ease-out-cubic
+}
+
+#wfc-wrapper.active .wfc-prev {
+  margin-right: 10px;
+}
+
+
+
+
+/**
+ * ANIMATIONS
+ */
+
+@keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+

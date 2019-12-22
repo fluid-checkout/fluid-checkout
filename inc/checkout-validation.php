@@ -18,32 +18,22 @@ class FluidCheckoutValidation extends FluidCheckout {
    * Initialize hooks.
    */
   public function hooks() {
-    add_action( 'wp_enqueue_scripts', array( $this, 'scripts_styles' ) );
+    add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
   }
 
 
 
   /**
-   * scripts_styles function.
-   *
-   * @access public
-   * @return void
+   * Enqueue scripts and styles.
    */
-  public function scripts_styles() {
+  public function enqueue() {
     // Bail if not on checkout page.
     if( ! is_checkout() || is_order_received_page() ){ return; }
+    
+    $min = self::maybe_get_minified_suffix();
+    $version = self::ASSET_VERSION . $min;
 
-    // TODO: Enable js minification.
-    // TODO: Move $min to main plugin class (DRY)
-    // $min = '.min';
-    $min = '';
-
-    if ( defined('SCRIPT_DEBUG') && true === SCRIPT_DEBUG ) {
-      $min = '';
-    }
-      
-    wp_enqueue_script( 'fluid-checkout-validation-scripts', untrailingslashit( self::$directory_url )."/js/checkout-validation$min.js", array( 'jquery', 'wc-checkout' ), self::VERSION, true );
-
+    wp_enqueue_script( 'fluid-checkout-validation-scripts', untrailingslashit( self::$directory_url )."/js/checkout-validation$version.js", array( 'jquery', 'wc-checkout' ), NULL, true );
     wp_localize_script( 
       'fluid-checkout-validation-scripts', 
       'fluidCheckoutValidationVars', 
@@ -56,7 +46,7 @@ class FluidCheckoutValidation extends FluidCheckout {
       )
     );
 
-    wp_enqueue_style( 'fluid-checkout-validation-style', untrailingslashit( self::$directory_url )."/css/checkout-validation$min.css", null, self::VERSION );
+    wp_enqueue_style( 'fluid-checkout-validation-style', untrailingslashit( self::$directory_url )."/css/checkout-validation$version.css", null, NULL );
   }
 
 }
