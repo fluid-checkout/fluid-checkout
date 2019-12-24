@@ -64,7 +64,7 @@ class FluidCheckout {
   public static function instance() {
     $calledClass = get_called_class();
 
-    if ( self::$instances[ $calledClass ] === null ){
+    if ( ! array_key_exists( $calledClass, self::$instances ) || self::$instances[ $calledClass ] === null ){
       self::$instances[ $calledClass ] = new $calledClass();
     }
 
