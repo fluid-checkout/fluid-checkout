@@ -36,7 +36,7 @@ if ( ! class_exists( 'Fluidweb_PluginUpdater_Bitbucket' ) ) {
 			$this->repo = $repo;
 			$this->bitbucketUsername = $bbUsername;
 			$this->bitbucketPassword = $bbPassword;
-			$this->allow_beta_updates = $allowBetaUpdates;
+			$this->allow_beta_updates = boolval( $allowBetaUpdates );
 		}
 	
 	
