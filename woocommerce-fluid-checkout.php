@@ -103,7 +103,12 @@ class FluidCheckout {
 	 * Load plugin updater.
 	 */
 	public function load_updater() {
-		require_once self::$directory_path . 'inc/vendor/fluidweb-updater/plugin-updater-bitbucket.php';
+    // Bail if not on admin pages
+    if ( ! is_admin() ) return;
+
+    require_once self::$directory_path . 'inc/vendor/fluidweb-updater/plugin-updater-bitbucket.php';
+      
+		// Check if updater was loaded correctly and instantiate with options from database
 		if ( class_exists( 'Fluidweb_PluginUpdater_Bitbucket' ) ) {
 			new Fluidweb_PluginUpdater_Bitbucket(
 				__FILE__,
