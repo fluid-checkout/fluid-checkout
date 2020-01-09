@@ -36,7 +36,7 @@ if ( ! class_exists( 'Fluidweb_PluginUpdater_Bitbucket' ) ) {
 			$this->repo = $repo;
 			$this->bitbucketUsername = $bbUsername;
 			$this->bitbucketPassword = $bbPassword;
-			$this->allow_beta_updates = boolval( $allowBetaUpdates );
+			$this->allow_beta_updates = $allowBetaUpdates;
 		}
 	
 	
@@ -76,7 +76,7 @@ if ( ! class_exists( 'Fluidweb_PluginUpdater_Bitbucket' ) ) {
 			}
 	
 			$url = sprintf('https://api.bitbucket.org/2.0/repositories/%s/refs/tags?sort=-target.date', $this->repo);
-	
+
 			// Filter OUT beta and development versions
 			if ( $this->allow_beta_updates !== true ) {
 				$url .= '&q=%28name%21%7E%22beta%22+AND+name%21%7E%22dev%22%29';
