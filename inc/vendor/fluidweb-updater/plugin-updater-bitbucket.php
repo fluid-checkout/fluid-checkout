@@ -71,16 +71,12 @@ if ( ! class_exists( 'Fluidweb_PluginUpdater_Bitbucket' ) ) {
 		 */
 		private function getRepoReleaseInfo() {
 			// Call http request only once
-			if ( ! empty( $this->bitbucketAPIResult ) ) {
-				return;
-			}
+			if ( ! empty( $this->bitbucketAPIResult ) ) { return; }
 	
-			$url = sprintf('https://api.bitbucket.org/2.0/repositories/%s/refs/tags?sort=-target.date', $this->repo);
+			$url = sprintf( 'https://api.bitbucket.org/2.0/repositories/%s/refs/tags?sort=-target.date', $this->repo );
 
 			// Filter OUT beta and development versions
-			if ( $this->allow_beta_updates !== true ) {
-				$url .= '&q=%28name%21%7E%22beta%22+AND+name%21%7E%22dev%22%29';
-			}
+			if ( strval( $this->allow_beta_updates ) !== 'true' ) { $url .= '&q=%28name%21%7E%22beta%22+AND+name%21%7E%22dev%22%29'; }
 	
 			$response = $this->callRepositoryAPI( $url );
 	
@@ -88,10 +84,7 @@ if ( ! class_exists( 'Fluidweb_PluginUpdater_Bitbucket' ) ) {
 				$data = json_decode( $response );
 				if ( isset( $data, $data->values ) && is_array( $data->values ) ) {
 					$tag = reset( $data->values );
-	
-					if ( isset( $tag->name ) ) {
-						$this->bitbucketAPIResult = $tag;
-					}
+					if ( isset( $tag->name ) ) { $this->bitbucketAPIResult = $tag; }
 				}
 			}
 		}
@@ -106,10 +99,8 @@ if ( ! class_exists( 'Fluidweb_PluginUpdater_Bitbucket' ) ) {
 			$this->initPluginData();
 			$this->getRepoReleaseInfo();
 			
-			if ( empty( $this->bitbucketAPIResult ) ) {
-				// Nothing found.
-				return $transient;
-			}
+			// Nothing found.
+			if ( empty( $this->bitbucketAPIResult ) ) { return $transient; }
 			
 			$repo_version = ltrim( $this->bitbucketAPIResult->name, 'v' );
 			
@@ -155,9 +146,7 @@ if ( ! class_exists( 'Fluidweb_PluginUpdater_Bitbucket' ) ) {
 			$decode = json_decode( $response );
 	
 			// No file found or other error.
-			if ( $decode ) {
-				return false;
-			}
+			if ( $decode ) { return false; }
 	
 			return $response;
 		}
@@ -169,12 +158,9 @@ if ( ! class_exists( 'Fluidweb_PluginUpdater_Bitbucket' ) ) {
 		 */
 		public function addAuthRequestArgs( $args, $url ) {
 			if ( preg_match( '/bitbucket.org(.+)' . str_replace( '/', '\/', $this->repo ) . '/', $url ) ) {
-				if ( empty($args['headers'] ) ) {
-				$args['headers'] = array();
-				}
+				if ( empty($args['headers'] ) ) { $args['headers'] = array(); }
 				$args['headers']['Authorization'] = 'Basic ' . base64_encode( $this->bitbucketUsername . ':' . $this->bitbucketPassword );
 			}
-
 			return $args;
 		}
 	
@@ -201,7 +187,7 @@ if ( ! class_exists( 'Fluidweb_PluginUpdater_Bitbucket' ) ) {
 				// }
 	
 				$res->sections = [
-				'changelog' => $changelog,
+					'changelog' => $changelog,
 				];
 			}
 	
@@ -226,9 +212,7 @@ if ( ! class_exists( 'Fluidweb_PluginUpdater_Bitbucket' ) ) {
 			$result['destination'] = $pluginFolder;
 	
 			// Re-activate plugin if needed
-			if ( $wasActivated ) {
-				$activate = activate_plugin( $this->slug );
-			}
+			if ( $wasActivated ) { $activate = activate_plugin( $this->slug ); }
 	
 			return $result;
 		}

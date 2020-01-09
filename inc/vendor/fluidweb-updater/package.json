@@ -19,7 +19,7 @@
     "#DEV:/",
     "#USER"
   ],
-  "_resolved": "git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git#0377a50c821ce16656aab05d894bf30e63575e26",
+  "_resolved": "git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git#246f969ee026567cd878961b15134e37a66cc495",
   "_spec": "fluidweb-updater@git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git",
   "_where": "/Users/diegoversiani/Sites/rdnarts/wp-content/plugins/woocommerce-fluid-checkout",
   "author": {
