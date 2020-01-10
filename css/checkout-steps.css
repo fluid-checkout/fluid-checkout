@@ -56,3 +56,10 @@
   -webkit-box-flex: 1;
   flex-grow: 1;
   flex-shrink: 1; }
+
+.js-fluid-checkout-steps .woocommerce-checkout .col2-set {
+  width: 100%; }
+
+.js-fluid-checkout-steps .woocommerce-checkout #order_review,
+.js-fluid-checkout-steps .woocommerce-checkout #order_review_heading {
+  width: 100%; }
