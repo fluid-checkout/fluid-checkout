@@ -75,7 +75,9 @@
 
 
 
-.js-fluid-checkout-steps .woocommerce-checkout .col2-set {
+.js-fluid-checkout-steps .woocommerce-checkout .col2-set,
+.js-fluid-checkout-steps .woocommerce-checkout .col-1,
+.js-fluid-checkout-steps .woocommerce-checkout .col-2 {
   width: 100%;
 }
 
