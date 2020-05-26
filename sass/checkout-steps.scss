@@ -13,17 +13,26 @@
 
 
 #wfc-progressbar {
-  display: flex;
   margin: 0;
   overflow: hidden;
 }
-
 .wfc-step {
+  display: inline-block;
+  padding: .5rem 2rem;
   box-sizing: border-box;
   position: relative;
-  flex: 1;
   cursor: pointer;
 }
+@supports ( display: flex ) {
+  #wfc-progressbar {
+    display: flex;
+  }
+  .wfc-step {
+    flex: 1;
+    padding: 0;
+  }
+}
+
 
 .wfc-step[disabled],
 .wfc-step.disabled {
@@ -52,6 +61,18 @@
 
 
 
+#wfc-wrapper.active .wfc-actions {
+  text-align: center;
+}
+@supports ( display: flex ) {
+  #wfc-wrapper.active .wfc-actions {
+    display: flex;
+    width: 100%;
+  }
+}
+
+
+
 #wfc-wrapper .wfc-prev,
 #wfc-wrapper .wfc-next {
   display: none;
@@ -62,23 +83,12 @@
   width: auto;
   display: inline-block;
 }
+
 #wfc-wrapper.active .wfc-next {
   min-width: 22rem;
 }
 
-
-#wfc-wrapper.active .wfc-actions {
-  text-align: center;
-}
-
-
-
 @supports ( display: flex ) {
-  #wfc-wrapper.active .wfc-actions {
-    display: flex;
-    width: 100%;
-  }
-
   #wfc-wrapper.active .wfc-prev {
     flex-shrink: 1;
   }
