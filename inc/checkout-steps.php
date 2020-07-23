@@ -55,19 +55,16 @@ class FluidCheckoutSteps extends FluidCheckout {
     // Bail if not on checkout page.
     if( ! is_checkout() || is_order_received_page() ){ return; }
 
-    $min = self::maybe_get_minified_suffix();
-    $version = self::ASSET_VERSION . $min;
-
     if ( apply_filters( 'wfc_enqueue_steps_script', true ) ) {
-      wp_enqueue_script( 'wfc-steps-js', untrailingslashit( self::$directory_url )."/js/checkout-steps$version.js", array( 'jquery' ), NULL, true );
+      wp_enqueue_script( 'wfc-steps-js', self::$directory_url.'js/checkout-steps'.self::$asset_version.'.js', array( 'jquery' ), NULL, true );
     }
 
     if ( apply_filters( 'wfc_enqueue_steps_css', true ) ) {
-      wp_enqueue_style( 'wfc-steps-css', untrailingslashit( self::$directory_url )."/css/checkout-steps$version.css", null, NULL );
+      wp_enqueue_style( 'wfc-steps-css', self::$directory_url.'css/checkout-steps'.self::$asset_version.'.css', null, NULL );
     }
 
     if ( apply_filters( 'wfc_enqueue_steps_default_style', true ) ) {
-      wp_enqueue_style( 'wfc-steps-default-style', untrailingslashit( self::$directory_url )."/css/checkout-steps--default$version.css", null, NULL );
+      wp_enqueue_style( 'wfc-steps-default-style', self::$directory_url.'css/checkout-steps--default'.self::$asset_version.'.css', null, NULL );
     }
   }
 

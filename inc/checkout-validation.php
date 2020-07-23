@@ -29,11 +29,8 @@ class FluidCheckoutValidation extends FluidCheckout {
   public function enqueue() {
     // Bail if not on checkout page.
     if( ! is_checkout() || is_order_received_page() ){ return; }
-    
-    $min = self::maybe_get_minified_suffix();
-    $version = self::ASSET_VERSION . $min;
 
-    wp_enqueue_script( 'fluid-checkout-validation-scripts', untrailingslashit( self::$directory_url )."/js/checkout-validation$version.js", array( 'jquery', 'wc-checkout' ), NULL, true );
+    wp_enqueue_script( 'fluid-checkout-validation-scripts', self::$directory_url.'js/checkout-validation'.self::$asset_version.'.js', array( 'jquery', 'wc-checkout' ), NULL, true );
     wp_localize_script( 
       'fluid-checkout-validation-scripts', 
       'fluidCheckoutValidationVars', 
@@ -46,7 +43,7 @@ class FluidCheckoutValidation extends FluidCheckout {
       )
     );
 
-    wp_enqueue_style( 'fluid-checkout-validation-style', untrailingslashit( self::$directory_url )."/css/checkout-validation$version.css", null, NULL );
+    wp_enqueue_style( 'fluid-checkout-validation-style', self::$directory_url.'css/checkout-validation'.self::$asset_version.'.css', null, NULL );
   }
 
 }
