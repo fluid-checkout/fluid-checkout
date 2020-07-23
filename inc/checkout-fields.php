@@ -31,8 +31,8 @@ class FluidCheckoutFieldTypes extends FluidCheckout {
   public function change_number_field_types( $fields ) {
     $fields['billing']['billing_email']['type'] = 'email';
     $fields['billing']['billing_phone']['type'] = 'tel';
-    $fields['billing']['billing_postcode']['type'] = 'tel';
-    $fields['shipping']['shipping_postcode']['type'] = 'tel';
+    $fields['billing']['billing_postcode']['type'] = apply_filters( 'wfc_postcode_field_type', 'tel' );
+    $fields['shipping']['shipping_postcode']['type'] = apply_filters( 'wfc_postcode_field_type', 'tel' );
 
     return $fields;
   }
