@@ -253,12 +253,12 @@
     e.preventDefault();
 
     // Validate step fields
-    if ( window.fluidCheckoutValidation ) {
+    if ( window.CheckoutValidation ) {
       var currentStepId = getCurrentStepId(),
           frame = _wfcWrapper.querySelector( '#frame-' + currentStepId );
       
       // Bail if not all fields valid and stay in the same step
-      if ( ! window.fluidCheckoutValidation.validate_all_fields( frame ) ) {
+      if ( ! window.CheckoutValidation.validateAllFields( frame ) ) {
         var element = frame.querySelector( '.woocommerce-invalid' );
         scrollTo( element );
         return;
