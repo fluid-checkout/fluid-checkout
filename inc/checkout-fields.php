@@ -38,6 +38,8 @@ class FluidCheckout_Fields extends FluidCheckout {
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_shipping_fields_display_order' ), 10 );
 		}
 
+		// TODO: Merge name fields into one "Full name" field
+
 		// TODO: Move this to Ziptastic support functions, and change field display order to (country, zip, address 1, address 2, state, city)
 		// add_filter( 'woocommerce_default_address_fields' , array( $this, 'ziptastic_change_address_fields_priority' ), 10 );
 	}
