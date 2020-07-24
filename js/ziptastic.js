@@ -1,28 +1,87 @@
 /**
  * Autocomplete address with Ziptastic API data.
  */
-
-(function( $ ){
+(function (root, factory) {
+	if ( typeof define === 'function' && define.amd ) {
+		define([], factory(root));
+	} else if ( typeof exports === 'object' ) {
+		module.exports = factory(root);
+	} else {
+		root.Ziptastic = factory(root);
+	}
+})(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
 	'use strict';
+
+	var $ = jQuery;
+
+	var _hasInitialized = false;
+	var _publicMethods = { }
 
 	/**
 	 * VARIABLES
 	 */
-	var hasJQuery = ( $ != null ),
-		ziptasticAPIKey = false,
-		zipFields = '#billing_postcode, #shipping_postcode',
-		fieldWrappers = '.woocommerce-billing-fields__field-wrapper, .woocommerce-shipping-fields__field-wrapper, .woocommerce-address-fields__field-wrapper',
-		cityFields = '#billing_city, #shipping_city',
-		stateFields = '#billing_state, #shipping_state',
-		countryFields = '#billing_country, #shipping_country',
-		minChars = 5;
+	var _settings = {
+		hasJQuery: ( $ != null ),
+		ziptasticAPIKey: false,
+		zipFields: '#billing_postcode, #shipping_postcode',
+		fieldWrappers: '.woocommerce-billing-fields__field-wrapper, .woocommerce-shipping-fields__field-wrapper, .woocommerce-address-fields__field-wrapper',
+		cityFields: '#billing_city, #shipping_city',
+		stateFields: '#billing_state, #shipping_state',
+		countryFields: '#billing_country, #shipping_country',
+		minChars: 5,
+	}
 
 
 
 	/**
 	 * METHODS
 	 */
+
+
+
+	/*!
+	* Merge two or more objects together.
+	* (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
+	* @param   {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
+	* @param   {Object}   objects  The objects to merge together
+	* @returns {Object}            Merged values of defaults and options
+	*/
+	var extend = function () {
+		// Variables
+		var extended = {};
+		var deep = false;
+		var i = 0;
+
+		// Check if a deep merge
+		if ( Object.prototype.toString.call( arguments[0] ) === '[object Boolean]' ) {
+			deep = arguments[0];
+			i++;
+		}
+
+		// Merge the object into the extended object
+		var merge = function (obj) {
+			for (var prop in obj) {
+				if (obj.hasOwnProperty(prop)) {
+					// If property is an object, merge properties
+					if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
+						extended[prop] = extend(extended[prop], obj[prop]);
+					} else {
+						extended[prop] = obj[prop];
+					}
+				}
+			}
+		};
+
+		// Loop through each object and conduct a merge
+		for (; i < arguments.length; i++) {
+			var obj = arguments[i];
+			merge(obj);
+		}
+
+		return extended;
+	};
+
 	
 
 	/**
@@ -31,14 +90,14 @@
 	 * @param  {Object} data    Data returned by ziptastic.
 	 */
 	var processAutocomplete = function( target, data ) {
-		var wrapper = target.closest( fieldWrappers );
+		var wrapper = target.closest( _settings.fieldWrappers );
 
 		// Bail if wrapper not found
 		if ( ! wrapper ) { return; }
 
-		var city = wrapper.querySelector( cityFields ),
-				state = wrapper.querySelector( stateFields ),
-				country = wrapper.querySelector( countryFields );
+		var city = wrapper.querySelector( _settings.cityFields ),
+				state = wrapper.querySelector( _settings.stateFields ),
+				country = wrapper.querySelector( _settings.countryFields );
 
 		// Update city value
 		if ( city && city.value != data.city ) {
@@ -48,7 +107,7 @@
 
 		// Update country value
 		if ( country && country.value != data.country ) {
-			if ( hasJQuery && $( country ).data( 'select2' ) ) {
+			if ( _settings.hasJQuery && $( country ).data( 'select2' ) ) {
 				// Country is a select2 so it needs to trigger jQuery event
 				$( country ).val( data.country ).trigger( 'change' );
 			}
@@ -62,7 +121,7 @@
 
 		// Update state value
 		if ( state && state.value != data.state_short ) {
-			if ( hasJQuery && $( state ).data( 'select2' ) ) {
+			if ( _settings.hasJQuery && $( state ).data( 'select2' ) ) {
 				// State is a select2 so it needs to trigger jQuery event
 				$( state ).val( data.state_short ).trigger( 'change' );
 			}
@@ -83,10 +142,10 @@
 	 */
 	var triggerAutocomplete = function( target, zip ) {
 		// Bail if api_key not defined
-		if ( ! ziptasticAPIKey ) { return; }
+		if ( ! _settings.ziptasticAPIKey ) { return; }
 		
-		var wrapper = target.closest( fieldWrappers );
-		var countryField = wrapper.querySelector( countryFields );
+		var wrapper = target.closest( _settings.fieldWrappers );
+		var countryField = wrapper.querySelector( _settings.countryFields );
 		
 		// Default to US
 		var country = 'US';
@@ -99,7 +158,7 @@
 		var xhr = new XMLHttpRequest();
 		xhr.open('GET', '//zip.getziptastic.com/v3/'+country+'/'+zip);
 		xhr.setRequestHeader('Content-Type', 'application/json');
-		xhr.setRequestHeader('x-key', ziptasticAPIKey);
+		xhr.setRequestHeader('x-key', _settings.ziptasticAPIKey);
 		xhr.onload = function() {
 			if ( xhr.status === 200 ) {
 				var data = JSON.parse( xhr.responseText );
@@ -117,7 +176,7 @@
 	 */
 	var maybeTriggerAutocomplete = function( e ) {
 		// Bail if api_key not defined
-		if ( ! ziptasticAPIKey ) { return; }
+		if ( ! _settings.ziptasticAPIKey ) { return; }
 
 		// Bail if target not defined
 		if ( ! e.target ) { return; }
@@ -132,7 +191,7 @@
 		var value = e.target.value;
 
 		// Check if field has enough chars
-		if ( value.length < minChars ) { return; }
+		if ( value.length < _settings.minChars ) { return; }
 
 		triggerAutocomplete( e.target, value );
 	};
@@ -144,24 +203,32 @@
 	 * @param  {Event} e Event data.
 	 */
 	var handleTriggerEvents = function( e ) {
-		if ( e.target.matches( zipFields ) ) {
+		if ( e.target.matches( _settings.zipFields ) ) {
 			maybeTriggerAutocomplete( e );
 		}
 	};
 
 
 
-	var init = function() {
+	_publicMethods.init = function() {
+		if ( _hasInitialized ) return;
+
 		// Bail if server defined vars not found
 		if ( ! ziptasticVars ) { return; }
+		
+		_settings = extend( _settings, ziptasticVars );
 
-		ziptasticAPIKey = ziptasticVars.api_key;
+		// Add event listeners
+		window.addEventListener( 'keyup', handleTriggerEvents, true );
+		window.addEventListener( 'change', handleTriggerEvents, true );
+
+		_hasInitialized = true;
 	};
 
+	
+	//
+	// Public APIs
+	//
+	return _publicMethods;
 
-	// Add event listeners
-	window.addEventListener( 'load', init );
-	window.addEventListener( 'keyup', handleTriggerEvents, true );
-	window.addEventListener( 'change', handleTriggerEvents, true );
-
-})( jQuery );
+});

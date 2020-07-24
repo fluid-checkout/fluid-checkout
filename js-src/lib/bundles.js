@@ -12,4 +12,6 @@
     var settings = wfcSettings,
         ver = wfcSettings.assetsVersion;
 
+    RequireBundle.register( 'wfc-ziptastic', [ settings.jsPath + 'ziptastic' + ver + '.js' ], '[data-ziptastic]', function(){ Ziptastic.init(); } );
+
 })();
