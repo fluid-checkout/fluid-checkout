@@ -18,8 +18,7 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// TODO: change default value for ziptastic feature to disabled
-		if ( get_option( 'wfc_enable_integration_ziptastic', true ) && ! empty( get_option( 'wfc_integration_ziptastic_api_key' ) ) ) {
+		if ( get_option( 'wfc_enable_integration_ziptastic', false ) && ! empty( get_option( 'wfc_integration_ziptastic_api_key' ) ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_ziptastic_scripts' ) );
 			add_filter( 'woocommerce_default_address_fields' , array( $this, 'ziptastic_change_address_fields_priority' ), 10 );
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_address_fields_display_class' ), 20 );
@@ -88,7 +87,7 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 		foreach( $types as $type ) {
 			foreach( $field_classes as $field_key => $value ) {
 				$classes_to_remove = array( 'form-row-wide' );
-				
+
 				$classes = $fields[ $type ][ $type . '_' . $field_key ]['class'];
 				$classes = array_diff( $classes, $classes_to_remove );
 				$classes = array_merge( $classes, $field_classes[ $field_key ] );
