@@ -21,7 +21,7 @@
 	var _hasInitialized = false;
 	var _publicMethods = { };
 	var _settings = {
-		initClass: 'js-fluid-checkout-steps',
+		initClass: 'js-wfc-steps',
 	}
 
 	var _wfcWrapper,
