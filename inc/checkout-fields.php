@@ -39,9 +39,6 @@ class FluidCheckout_Fields extends FluidCheckout {
 		}
 
 		// TODO: Merge name fields into one "Full name" field
-
-		// TODO: Move this to Ziptastic support functions, and change field display order to (country, zip, address 1, address 2, state, city)
-		// add_filter( 'woocommerce_default_address_fields' , array( $this, 'ziptastic_change_address_fields_priority' ), 10 );
 	}
 
 
@@ -80,12 +77,10 @@ class FluidCheckout_Fields extends FluidCheckout {
 	 */
 	public function add_shipping_phone_field( $fields ) {
 		$fields['shipping_phone'] = $this->get_shipping_phone_field();
-		$fields['shipping_phone']['priority'] = apply_filters( 'wfc_shipping_phone_field_priority', 30 );
 
 		// Also change company field class as phone field pushes it to the right
 		if ( array_key_exists( 'shipping_company', $fields ) ) {
-			$fields['shipping_company']['class'] = array('form-row-last');
-			$fields['shipping_company']['priority'] = apply_filters( 'wfc_shipping_company_field_priority', 40 );
+			$fields['shipping_company']['class'] = array( 'form-row-last' );
 		}
 
 		return $fields;
@@ -161,8 +156,9 @@ class FluidCheckout_Fields extends FluidCheckout {
 
 	/**
 	 * Change Address Fields for account address edit form.
+	 * @static
 	 */
-	public function change_checkout_fields_display_order( $fields, $type ) {
+	public static function change_checkout_fields_display_order( $fields, $type ) {
 		// Add $type prefix separator when needed
 		if ( ! empty( $type ) ) { $type .= '_'; }
 
@@ -171,7 +167,7 @@ class FluidCheckout_Fields extends FluidCheckout {
 			$type . 'first_name' => 10,
 			$type . 'last_name' => 20,
 			$type . 'phone' => 30,
-			$type . 'company' => 40,
+			$type . 'company' => 35,
 		) );
 
 		// Set fields priority
@@ -189,7 +185,7 @@ class FluidCheckout_Fields extends FluidCheckout {
 	 */
 	public function change_billing_fields_display_order( $fields ) {
 		$type = 'billing';
-		$fields[ $type ] = $this->change_checkout_fields_display_order( $fields[ $type ], $type );
+		$fields[ $type ] = self::change_checkout_fields_display_order( $fields[ $type ], $type );
 		return $fields;
 	}
 
@@ -200,26 +196,8 @@ class FluidCheckout_Fields extends FluidCheckout {
 	 */
 	public function change_shipping_fields_display_order( $fields ) {
 		$type = 'shipping';
-		$fields[ $type ] = $this->change_checkout_fields_display_order( $fields[ $type ], $type );
+		$fields[ $type ] = self::change_checkout_fields_display_order( $fields[ $type ], $type );
 		return $fields;
-	}
-
-
-
-	/**
-	 * Change address default locale fields priority order on the frontend.
-	 */
-	public function ziptastic_change_address_fields_priority( $fields ) {
-		// $type . 'country' => 40,
-		// $type . 'postcode' => 45,
-		// $type . 'address_1' => 50, 
-		// $type . 'address_2' => 60,
-		// $type . 'city' => 70,
-		// $type . 'state' => 80,
-		
-		// TODO: change field
-		
-		return $this->change_checkout_fields_display_order( $fields, null );
 	}
 
 }
