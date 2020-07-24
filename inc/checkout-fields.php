@@ -140,7 +140,7 @@ class FluidCheckout_Fields extends FluidCheckout {
 
 
 	/**
-	 * Add replaced for shipping phone to address formats localisation.
+	 * Add replacement for shipping phone to address formats localisation.
 	 */
 	public function add_shipping_phone_to_formats( $formats ) {
 		foreach ( $formats as $locale => $format ) {
