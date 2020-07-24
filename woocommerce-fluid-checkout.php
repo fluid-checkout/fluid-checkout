@@ -212,6 +212,8 @@ class FluidCheckout {
 			return;
 		}
 
+		require_once self::$directory_path . 'inc/enqueue.php';
+
 		require_once self::$directory_path . 'inc/checkout-steps.php';
 		require_once self::$directory_path . 'inc/checkout-fields.php';
 		require_once self::$directory_path . 'inc/checkout-validation.php';
