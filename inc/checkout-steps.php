@@ -18,55 +18,44 @@ class FluidCheckoutSteps extends FluidCheckout {
    * Initialize hooks.
    */
   public function hooks() {
-    add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
-
-    // Wrapper
-    $wrapper_start_hook_args = apply_filters( 'wfc_wrapper_start_hook_args', array( 'hook' => 'woocommerce_before_checkout_form', 'priority' => 10 ) );
-    $wrapper_end_hook_args = apply_filters( 'wfc_wrapper_end_hook_args', array( 'hook' => 'woocommerce_after_checkout_form', 'priority' => 10 ) );
-    add_action( $wrapper_start_hook_args['hook'], array( $this, 'output_wfc_wrapper_start_tag' ), $wrapper_start_hook_args['priority'] );
-    add_action( $wrapper_end_hook_args['hook'], array( $this, 'output_wfc_wrapper_end_tag' ), $wrapper_end_hook_args['priority'] );
-
-    // Billing Step
-    $billing_start_hook_args = apply_filters( 'wfc_billing_start_hook_args', array( 'hook' => 'woocommerce_checkout_billing', 'priority' => 5 ) );
-    $billing_end_hook_args = apply_filters( 'wfc_billing_end_hook_args', array( 'hook' => 'woocommerce_checkout_billing', 'priority' => 9999 ) );
-    add_action( $billing_start_hook_args['hook'], array( $this, 'output_wfc_billing_start_tag' ), $billing_start_hook_args['priority'] );
-    add_action( $billing_end_hook_args['hook'], array( $this, 'output_wfc_billing_end_tag' ), $billing_end_hook_args['priority'] );
-
-    // Shipping Step
-    $shipping_start_hook_args = apply_filters( 'wfc_shipping_start_hook_args', array( 'hook' => 'woocommerce_checkout_shipping', 'priority' => 5 ) );
-    $shipping_end_hook_args = apply_filters( 'wfc_shipping_end_hook_args', array( 'hook' => 'woocommerce_checkout_shipping', 'priority' => 9999 ) );
-    add_action( $shipping_start_hook_args['hook'], array( $this, 'output_wfc_shipping_start_tag' ), $shipping_start_hook_args['priority'] );
-    add_action( $shipping_end_hook_args['hook'], array( $this, 'output_wfc_shipping_end_tag' ), $shipping_end_hook_args['priority'] );
-
-    // Payment Step
-    $payment_start_hook_args = apply_filters( 'wfc_payment_start_hook_args', array( 'hook' => 'woocommerce_checkout_before_order_review_heading', 'priority' => 5 ) );
-    $payment_end_hook_args = apply_filters( 'wfc_payment_end_hook_args', array( 'hook' => 'woocommerce_checkout_after_order_review', 'priority' => 9999 ) );
-    add_action( $payment_start_hook_args['hook'], array( $this, 'output_wfc_payment_start_tag' ), $payment_start_hook_args['priority'] );
-    add_action( $payment_end_hook_args['hook'], array( $this, 'output_wfc_payment_end_tag' ), $payment_end_hook_args['priority'] );
-    add_filter( 'woocommerce_order_button_html', array( $this, 'get_payment_step_actions_html' ), 20 );
+    if ( get_option( 'wfc_enable_checkout_steps', false ) ) {
+			add_filter( 'body_class', array( $this, 'add_body_class' ) );
+      
+      // Wrapper
+      $wrapper_start_hook_args = apply_filters( 'wfc_wrapper_start_hook_args', array( 'hook' => 'woocommerce_before_checkout_form', 'priority' => 10 ) );
+      $wrapper_end_hook_args = apply_filters( 'wfc_wrapper_end_hook_args', array( 'hook' => 'woocommerce_after_checkout_form', 'priority' => 10 ) );
+      add_action( $wrapper_start_hook_args['hook'], array( $this, 'output_wfc_wrapper_start_tag' ), $wrapper_start_hook_args['priority'] );
+      add_action( $wrapper_end_hook_args['hook'], array( $this, 'output_wfc_wrapper_end_tag' ), $wrapper_end_hook_args['priority'] );
+      
+      // Billing Step
+      $billing_start_hook_args = apply_filters( 'wfc_billing_start_hook_args', array( 'hook' => 'woocommerce_checkout_billing', 'priority' => 5 ) );
+      $billing_end_hook_args = apply_filters( 'wfc_billing_end_hook_args', array( 'hook' => 'woocommerce_checkout_billing', 'priority' => 9999 ) );
+      add_action( $billing_start_hook_args['hook'], array( $this, 'output_wfc_billing_start_tag' ), $billing_start_hook_args['priority'] );
+      add_action( $billing_end_hook_args['hook'], array( $this, 'output_wfc_billing_end_tag' ), $billing_end_hook_args['priority'] );
+      
+      // Shipping Step
+      $shipping_start_hook_args = apply_filters( 'wfc_shipping_start_hook_args', array( 'hook' => 'woocommerce_checkout_shipping', 'priority' => 5 ) );
+      $shipping_end_hook_args = apply_filters( 'wfc_shipping_end_hook_args', array( 'hook' => 'woocommerce_checkout_shipping', 'priority' => 9999 ) );
+      add_action( $shipping_start_hook_args['hook'], array( $this, 'output_wfc_shipping_start_tag' ), $shipping_start_hook_args['priority'] );
+      add_action( $shipping_end_hook_args['hook'], array( $this, 'output_wfc_shipping_end_tag' ), $shipping_end_hook_args['priority'] );
+      
+      // Payment Step
+      $payment_start_hook_args = apply_filters( 'wfc_payment_start_hook_args', array( 'hook' => 'woocommerce_checkout_before_order_review_heading', 'priority' => 5 ) );
+      $payment_end_hook_args = apply_filters( 'wfc_payment_end_hook_args', array( 'hook' => 'woocommerce_checkout_after_order_review', 'priority' => 9999 ) );
+      add_action( $payment_start_hook_args['hook'], array( $this, 'output_wfc_payment_start_tag' ), $payment_start_hook_args['priority'] );
+      add_action( $payment_end_hook_args['hook'], array( $this, 'output_wfc_payment_end_tag' ), $payment_end_hook_args['priority'] );
+      add_filter( 'woocommerce_order_button_html', array( $this, 'get_payment_step_actions_html' ), 20 );
+		}
   }
 
 
 
   /**
-   * Enqueue scripts and styles.
-   */
-  public function enqueue() {
-    // Bail if not on checkout page.
-    if( ! is_checkout() || is_order_received_page() ){ return; }
-
-    if ( apply_filters( 'wfc_enqueue_steps_script', true ) ) {
-      wp_enqueue_script( 'wfc-steps-js', self::$directory_url.'js/checkout-steps'.self::$asset_version.'.js', array( 'jquery' ), NULL, true );
-    }
-
-    if ( apply_filters( 'wfc_enqueue_steps_css', true ) ) {
-      wp_enqueue_style( 'wfc-steps-css', self::$directory_url.'css/checkout-steps'.self::$asset_version.'.css', null, NULL );
-    }
-
-    if ( apply_filters( 'wfc_enqueue_steps_default_style', true ) ) {
-      wp_enqueue_style( 'wfc-steps-default-style', self::$directory_url.'css/checkout-steps--default'.self::$asset_version.'.css', null, NULL );
-    }
-  }
+	 * Add page body class for feature detection
+	 */
+	public function add_body_class( $classes ) {
+		return array_merge( $classes, array( 'has-wfc-checkout-steps' ) );
+	}
 
 
 
