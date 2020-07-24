@@ -82,6 +82,17 @@ gulp.task( 'build-css', gulp.series( 'update-ver', 'clean-css', function( done )
 // Uglifies and concat all JS files into one
 gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 
+	// LIBRARIES
+	gulp.src([
+		settings.nodePath + 'require-polyfills/dist/require-polyfills.js',
+    	settings.nodePath + 'require-polyfills/dist/polyfill-*.js',
+		settings.nodePath + 'require-bundle-js/dist/require-bundle.js',
+		settings.jsPath + 'lib/bundles.js',
+	])
+	.pipe(uglify())
+	.pipe(rename({suffix: settings.assetsVersion + '.min'}))
+	.pipe(gulp.dest('./js/lib/')); // save .min.js
+
     // JS FILES
     gulp.src([
         settings.jsPath + '*.js',

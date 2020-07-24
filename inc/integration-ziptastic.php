@@ -36,13 +36,13 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 		// Bail if address form not present
 		if( ! is_checkout() && ! ( is_account_page() && isset( $wp_query->query_vars['edit-address'] ) ) ){ return; }
 		
-		// TODO: Change to load script via require-bundle.js
-		wp_enqueue_script( 'wfc-ziptastic-scripts', self::$directory_url.'js/ziptastic'.self::$asset_version.'.js', null, null, true );
+		// wp_enqueue_script( 'wfc-bundles', self::$directory_url.'js/ziptastic'.self::$asset_version.'.js', null, null, true );
 		wp_localize_script( 
-			'wfc-ziptastic-scripts', 
+			'wfc-bundles',
 			'ziptasticVars',
 			array( 
-				'api_key'  => get_option( 'wfc_integration_ziptastic_api_key' ),
+				'ziptasticAPIKey'  => get_option( 'wfc_integration_ziptastic_api_key' ),
+				'minChars' => 5,
 			)
 		);
 	}
@@ -67,6 +67,9 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 		foreach( $fields_display_order as $field => $priority ) {
 			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ]['priority'] = $priority; }
 		}
+
+		// Add data-ziptastic attribute to postcode
+		if ( array_key_exists( 'postcode', $fields ) ) { $fields['postcode']['custom_attributes'] = array( 'data-ziptastic' => '1' ); }
 		
 		return $fields;
 	}

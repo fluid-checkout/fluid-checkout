@@ -4,20 +4,31 @@
  * DEPENDS ON:
  * - jQuery // Interact with WooCommerce events
  */
+(function (root, factory) {
+	if ( typeof define === 'function' && define.amd ) {
+		define([], factory(root));
+	} else if ( typeof exports === 'object' ) {
+		module.exports = factory(root);
+	} else {
+		root.CheckoutSteps = factory(root);
+	}
+})(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
-(function( $ ){
+	'use strict';
 
-  'use strict';
+	var $ = jQuery;
 
-  /**
-   * VARIABLES
-   */
-  var _initClass      = 'js-fluid-checkout-steps',
-      _wfcWrapper,
-  		_wfcInner,
-  		_progressBar,
-  		_frames,
-  		_steps;
+	var _hasInitialized = false;
+	var _publicMethods = { };
+	var _settings = {
+		initClass: 'js-wfc-steps',
+	}
+
+	var _wfcWrapper,
+		_wfcInner,
+		_progressBar,
+		_frames,
+		_steps;
 
 
 
@@ -26,20 +37,20 @@
 	 */
 	
 	/**
-   * Get the id of current step.
-   */
-  var getFirstStepId = function() {
-    // Return next available step
-    for (var i = 0; i < _frames.length; i++) {
-      if ( ! _frames[ i + 1 ].hasAttribute( 'disabled' ) ) {
-        return i + 1;
-      }
-    }
-  };
+	 * Get the id of current step.
+	 */
+	var getFirstStepId = function() {
+		// Return next available step
+		for (var i = 0; i < _frames.length; i++) {
+			if ( ! _frames[ i + 1 ].hasAttribute( 'disabled' ) ) {
+				return i + 1;
+			}
+		}
+	};
 
 
 
-  /**
+	/**
 	 * Get the id of current step.
 	 */
 	var getCurrentStepId = function() {
@@ -49,50 +60,50 @@
 
 
 
-  /**
-   * Get the id of previous available step.
-   */
-  var getPrevStepId = function() {
-    var currentStepId = getCurrentStepId();
+	/**
+	 * Get the id of previous available step.
+	 */
+	var getPrevStepId = function() {
+		var currentStepId = getCurrentStepId();
 
 
-    // Get first enabled step if not step is active
-    if ( ! currentStepId ) {
-      return getFirstStepId();
-    }
+		// Get first enabled step if not step is active
+		if ( ! currentStepId ) {
+			return getFirstStepId();
+		}
 
-    // Return next available step
-    for ( var i = currentStepId - 1; i >= 0; i-- ) {
-      if ( ! _frames[ i - 1 ].hasAttribute( 'disabled' ) ) {
-        return currentStepId - 1;
-      }
-    }
+		// Return next available step
+		for ( var i = currentStepId - 1; i >= 0; i-- ) {
+			if ( ! _frames[ i - 1 ].hasAttribute( 'disabled' ) ) {
+				return currentStepId - 1;
+			}
+		}
 
-    return 1;
-  };
+		return 1;
+	};
 
 
 
-  /**
-   * Get the id of next available step.
-   */
-  var getNextStepId = function() {
-    var currentStepId = getCurrentStepId();
+	/**
+	 * Get the id of next available step.
+	 */
+	var getNextStepId = function() {
+		var currentStepId = getCurrentStepId();
 
-    // Get first enabled step if not step is active
-    if ( ! currentStepId ) {
-      return getFirstStepId();
-    }
+		// Get first enabled step if not step is active
+		if ( ! currentStepId ) {
+			return getFirstStepId();
+		}
 
-    // Return next available step
-    for (var i = currentStepId - 1; i < _frames.length; i++) {
-      if ( ! _frames[ i + 1 ].hasAttribute('disabled') ) {
-        return currentStepId + 1;
-      }
-    }
+		// Return next available step
+		for (var i = currentStepId - 1; i < _frames.length; i++) {
+			if ( ! _frames[ i + 1 ].hasAttribute('disabled') ) {
+				return currentStepId + 1;
+			}
+		}
 
-    return null;
-  };
+		return null;
+	};
 
 
 
@@ -105,10 +116,10 @@
 			_frames[i].classList.remove( 'current' );
 			_steps[i].classList.remove( 'current' );
 			
-      // done
+			// done
 			if ( ! _steps[i].hasAttribute( 'disabled' ) ) {
-        _steps[i].classList.remove( 'done' );
-      }
+				_steps[i].classList.remove( 'done' );
+			}
 		}
 	};
 
@@ -137,17 +148,17 @@
 		step.classList.add( 'current' );
 		frame.classList.add( 'current' );
 
-    // TODO: Better animation handling with slide left/right depending on the position of the step
-    
-    // Maybe scroll step into view
-    if ( scrollToElement ) {
-      if ( _progressBar ) {
-        scrollTo( _progressBar );
-      }
-      else {
-        scrollTo( frame );
-      }
-    }
+		// TODO: Better animation handling with slide left/right depending on the position of the step
+		
+		// Maybe scroll step into view
+		if ( scrollToElement ) {
+			if ( _progressBar ) {
+				scrollTo( _progressBar );
+			}
+			else {
+				scrollTo( frame );
+			}
+		}
 	};
 
 
@@ -158,10 +169,10 @@
 	var setCurrentStep = function( stepId, scrollToElement ) {
 		var currentStepId = getCurrentStepId();
 
-    // Bail if is current active step
-    if ( currentStepId && currentStepId == stepId ) { return; }
+		// Bail if is current active step
+		if ( currentStepId && currentStepId == stepId ) { return; }
 		
-    var	step = document.querySelector( '#step-' + stepId ),
+		var	step = document.querySelector( '#step-' + stepId ),
 				frame = document.querySelector( '#frame-' + stepId );
 		
 		// Clear step status, mark as active and done
@@ -176,15 +187,15 @@
 	 * Create progress bar steps.
 	 */
 	var initSteps = function() {
-    // Bail if inner element not present
-    if ( ! _wfcInner ) { return; }
+		// Bail if inner element not present
+		if ( ! _wfcInner ) { return; }
 
-    // Clear progress bar placeholders
-    while ( _progressBar.firstChild ) {
-      _progressBar.removeChild( _progressBar.firstChild );
-    }
+		// Clear progress bar placeholders
+		while ( _progressBar.firstChild ) {
+			_progressBar.removeChild( _progressBar.firstChild );
+		}
 
-    // Get frames
+		// Get frames
 		_frames = _wfcInner.querySelectorAll( '.wfc-frame' );
 
 		// Add ID to each frame and steps to progress bar
@@ -196,15 +207,15 @@
 			step.classList.add('wfc-step');
 			step.setAttribute('id', 'step-' + stepId);
 			step.setAttribute('data-step-id', stepId);
-      step.textContent = label;
+			step.textContent = label;
 
-      if ( _frames[i].hasAttribute('disabled') ) {
-        step.setAttribute('disabled', 'disabled');
-      }
+			if ( _frames[i].hasAttribute('disabled') ) {
+				step.setAttribute('disabled', 'disabled');
+			}
 
-      if ( _frames[i].classList.contains('done') ) {
-        step.classList.add('done');
-      }
+			if ( _frames[i].classList.contains('done') ) {
+				step.classList.add('done');
+			}
 
 			_progressBar.insertBefore(step, _progressBar.firstChild);
 			
@@ -221,17 +232,17 @@
 
 
 
-  /**
-   * Scroll element into viewport.
-   * @param  {Element} element Element to get position and scroll viewport to.
-   */
-  var scrollTo = function( element ) {
-    window.scroll({
-      behavior: 'smooth',
-      left: 0,
-      top: element.offsetTop
-    });
-  };
+	/**
+	 * Scroll element into viewport.
+	 * @param  {Element} element Element to get position and scroll viewport to.
+	 */
+	var scrollTo = function( element ) {
+		window.scroll({
+			behavior: 'smooth',
+			left: 0,
+			top: element.offsetTop
+		});
+	};
 
 
 	
@@ -239,9 +250,9 @@
 	 * Handle clicks on steps progress bar.
 	 */
 	var handleStepClick = function( e ) {
-    e.preventDefault();
-    var step = e.target.closest( '[data-step-id]' );
-    setCurrentStep( step.getAttribute( 'data-step-id' ), true );
+		e.preventDefault();
+		var step = e.target.closest( '[data-step-id]' );
+		setCurrentStep( step.getAttribute( 'data-step-id' ), true );
 	};
 
 
@@ -250,93 +261,106 @@
 	 * Handle clicks on next step buttons.
 	 */
 	var handleNextStepClick = function( e ) {
-    e.preventDefault();
+		e.preventDefault();
 
-    // Validate step fields
-    if ( window.fluidCheckoutValidation ) {
-      var currentStepId = getCurrentStepId(),
-          frame = _wfcWrapper.querySelector( '#frame-' + currentStepId );
-      
-      // Bail if not all fields valid and stay in the same step
-      if ( ! window.fluidCheckoutValidation.validate_all_fields( frame ) ) {
-        var element = frame.querySelector( '.woocommerce-invalid' );
-        scrollTo( element );
-        return;
-      }
-    }
+		// Validate step fields
+		if ( window.CheckoutValidation ) {
+			var currentStepId = getCurrentStepId(),
+					frame = _wfcWrapper.querySelector( '#frame-' + currentStepId );
+			
+			// Bail if not all fields valid and stay in the same step
+			if ( ! window.CheckoutValidation.validateAllFields( frame ) ) {
+				var element = frame.querySelector( '.woocommerce-invalid' );
+				scrollTo( element );
+				return;
+			}
+		}
 
-    // Go to next step
-    setCurrentStep( getNextStepId(), true );
+		// Go to next step
+		setCurrentStep( getNextStepId(), true );
 
 	};
 
 
 
-  /**
-   * Handle clicks on previous step buttons.
-   */
-  var handlePrevStepClick = function( e ) {
-    e.preventDefault();
+	/**
+	 * Handle clicks on previous step buttons.
+	 */
+	var handlePrevStepClick = function( e ) {
+		e.preventDefault();
 
-    // Go to prev step
-    setCurrentStep( getPrevStepId(), true );
-  };
+		// Go to prev step
+		setCurrentStep( getPrevStepId(), true );
+	};
 
 
 
 	/**
-   * Handle document clicks and route to the appropriate function.
-   */
-  var handleClick = function( e ) {
-    if ( e.target.closest( '[data-step-id]:not([disabled])' ) ) {
-      handleStepClick( e );
-    }
-    else if ( e.target.closest( '.wfc-prev:not([disabled])' ) ) {
-      handlePrevStepClick( e );
-    }
-    else if ( e.target.closest( '.wfc-next:not([disabled])' ) ) {
-    	handleNextStepClick( e );
-    }
-  };
+	 * Handle document clicks and route to the appropriate function.
+	 */
+	var handleClick = function( e ) {
+		if ( e.target.closest( '[data-step-id]:not([disabled])' ) ) {
+			handleStepClick( e );
+		}
+		else if ( e.target.closest( '.wfc-prev:not([disabled])' ) ) {
+			handlePrevStepClick( e );
+		}
+		else if ( e.target.closest( '.wfc-next:not([disabled])' ) ) {
+			handleNextStepClick( e );
+		}
+	};
 
 
 
-  /**
-   * Set plugin as active.
-   */
-  var setPluginActive = function() {
-  	_wfcWrapper.classList.add('active');
-  };
+	/**
+	 * Set plugin as active.
+	 */
+	var setPluginActive = function() {
+		_wfcWrapper.classList.add('active');
+	};
 
 
 
-  /**
-   * Initialize component and set related handlers.
-   */
-  var init = function() {
-    _wfcWrapper = document.querySelector('#wfc-wrapper');
-    _wfcInner = document.querySelector('.wfc-inside');
-    _progressBar = document.querySelector('#wfc-progressbar');
+	/**
+	 * Initialize component and set related handlers.
+	 */
+	_publicMethods.refreshSteps = function() {
+		_wfcWrapper = document.querySelector( '#wfc-wrapper' );
+		_wfcInner = document.querySelector( '.wfc-inside' );
+		_progressBar = document.querySelector( '#wfc-progressbar' );
 
-    // Bail if elements not present
-    if ( ! _wfcWrapper || ! _wfcInner || ! _progressBar ) { return; }
+		// Bail if elements not present
+		if ( ! _wfcWrapper || ! _wfcInner || ! _progressBar ) { return; }
 
-  	initSteps();
-  	setPluginActive();
-
-    // Add init class
-    document.body.classList.add( _initClass );
-  };
+		initSteps();
+		setPluginActive();
+	}
 
 
 
-  // Add event listeners
-  window.addEventListener( 'click', handleClick );
-  window.addEventListener( 'load', init );
+	/**
+	 * Initialize component and set related handlers.
+	 */
+	_publicMethods.init = function() {
+		if ( _hasInitialized ) return;
 
-  // Run on checkout or cart changes
-  $( document ).on( 'load_ajax_content_done', init );
+		_publicMethods.refreshSteps();
+
+		// Add init class
+		document.body.classList.add( _settings.initClass );
+
+		// Add event listeners
+		window.addEventListener( 'click', handleClick );
+		$( document ).on( 'load_ajax_content_done', _publicMethods.refreshSteps );
+
+		_hasInitialized = true;
+	};
 
 
 
-})( jQuery );
+	//
+	// Public APIs
+	//
+	return _publicMethods;
+
+});
