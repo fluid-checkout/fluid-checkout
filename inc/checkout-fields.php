@@ -22,7 +22,7 @@ class FluidCheckout_Fields extends FluidCheckout {
 		add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_checkout_field_types' ), 5 );
 
 		// Shipping Phone Field
-		if ( apply_filters( 'wfc_add_shipping_phone_field', true ) ) {
+		if ( get_option( 'wfc_add_shipping_phone_field', true ) ) {
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'add_shipping_phone_field_checkout' ), 5 );
 			add_filter( 'woocommerce_shipping_fields' , array( $this, 'add_shipping_phone_field' ), 5 );
 			add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_shipping_phone' ), 10, 1 );
@@ -31,6 +31,15 @@ class FluidCheckout_Fields extends FluidCheckout {
 			add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_replacement_field_shipping_phone' ), 10, 2 );
 			add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_shipping_phone_to_formats' ) );
 		}
+
+		// Checkout field display order
+		if ( get_option( 'wfc_apply_checkout_fields_display_order', true ) ) {
+			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_billing_fields_display_order' ), 10 );
+			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_shipping_fields_display_order' ), 10 );
+		}
+
+		// TODO: Move this to Ziptastic support functions, and change field display order to (country, zip, address 1, address 2, state, city)
+		// add_filter( 'woocommerce_default_address_fields' , array( $this, 'ziptastic_change_address_fields_priority' ), 10 );
 	}
 
 
@@ -143,6 +152,73 @@ class FluidCheckout_Fields extends FluidCheckout {
 		return $formats;
 	}
 
+
+
+
+
+
+	/**
+	 * Change Address Fields for account address edit form.
+	 */
+	public function change_checkout_fields_display_order( $fields, $type ) {
+		// Add $type prefix separator when needed
+		if ( ! empty( $type ) ) { $type .= '_'; }
+
+		$fields_display_order = apply_filters( 'wfc_checkout_fields_display_order', array(
+			$type . 'email' => 5,
+			$type . 'first_name' => 10,
+			$type . 'last_name' => 20,
+			$type . 'phone' => 30,
+			$type . 'company' => 40,
+		) );
+
+		// Set fields priority
+		foreach( $fields_display_order as $field => $priority ) {
+			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ]['priority'] = $priority; }
+		}
+
+		return $fields;
+	}
+
+
+
+	/**
+	 * Change billing fields display order.
+	 */
+	public function change_billing_fields_display_order( $fields ) {
+		$type = 'billing';
+		$fields[ $type ] = $this->change_checkout_fields_display_order( $fields[ $type ], $type );
+		return $fields;
+	}
+
+
+
+	/**
+	 * Change shipping fields display order.
+	 */
+	public function change_shipping_fields_display_order( $fields ) {
+		$type = 'shipping';
+		$fields[ $type ] = $this->change_checkout_fields_display_order( $fields[ $type ], $type );
+		return $fields;
+	}
+
+
+
+	/**
+	 * Change address default locale fields priority order on the frontend.
+	 */
+	public function ziptastic_change_address_fields_priority( $fields ) {
+		// $type . 'country' => 40,
+		// $type . 'postcode' => 45,
+		// $type . 'address_1' => 50, 
+		// $type . 'address_2' => 60,
+		// $type . 'city' => 70,
+		// $type . 'state' => 80,
+		
+		// TODO: change field
+		
+		return $this->change_checkout_fields_display_order( $fields, null );
+	}
 
 }
 
