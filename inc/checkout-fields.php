@@ -19,7 +19,15 @@ class FluidCheckout_Fields extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Checkout field types enhancement for mobile
-		add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_checkout_field_types' ), 5 );
+		if ( get_option( 'wfc_apply_checkout_field_types_for_mobile', true ) ) {
+			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_checkout_field_types' ), 5 );
+		}
+
+		// Checkout field display order
+		if ( get_option( 'wfc_apply_checkout_fields_args', true ) ) {
+			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_billing_fields_args' ), 10 );
+			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_shipping_fields_args' ), 10 );
+		}
 
 		// Shipping Phone Field
 		if ( get_option( 'wfc_add_shipping_phone_field', true ) ) {
@@ -31,14 +39,6 @@ class FluidCheckout_Fields extends FluidCheckout {
 			add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_replacement_field_shipping_phone' ), 10, 2 );
 			add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_shipping_phone_to_formats' ) );
 		}
-
-		// Checkout field display order
-		if ( get_option( 'wfc_apply_checkout_fields_display_priority', true ) ) {
-			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_billing_fields_args' ), 10 );
-			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_shipping_fields_args' ), 10 );
-		}
-
-		// TODO: Merge name fields into one "Full name" field
 	}
 
 
@@ -76,11 +76,10 @@ class FluidCheckout_Fields extends FluidCheckout {
 	 * Add shipping phone field to edit address fields.
 	 */
 	public function add_shipping_phone_field( $fields ) {
-		$fields_display_priority = $this->get_checkout_fields_args( 'shipping' );
-
 		$fields['shipping_phone'] = $this->get_shipping_phone_field();
-
-		foreach( $fields_display_priority as $field => $values ) {
+		
+		$fields_args = $this->get_checkout_fields_args( 'shipping' );
+		foreach( $fields_args as $field => $values ) {
 			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
 		}
 
@@ -175,9 +174,9 @@ class FluidCheckout_Fields extends FluidCheckout {
 	 * Change Address Fields for account address edit form.
 	 */
 	public function change_checkout_fields_args( $fields, $field_group ) {
-		$fields_display_priority = $this->get_checkout_fields_args( $field_group );
+		$fields_args = $this->get_checkout_fields_args( $field_group );
 
-		foreach( $fields_display_priority as $field => $values ) {
+		foreach( $fields_args as $field => $values ) {
 			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
 		}
 
