@@ -18,8 +18,7 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// SET DEFAULT TO DISABLED
-		if ( get_option( 'wfc_enable_integration_ziptastic', true ) && ! empty( get_option( 'wfc_integration_ziptastic_api_key' ) ) ) {
+		if ( get_option( 'wfc_enable_integration_ziptastic', false ) && ! empty( get_option( 'wfc_integration_ziptastic_api_key' ) ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_ziptastic_scripts' ) );
 			add_filter( 'woocommerce_default_address_fields' , array( $this, 'ziptastic_change_address_fields_priority' ), 10 );
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_address_fields_display_class' ), 20 );
