@@ -42,7 +42,7 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 			'ziptasticVars',
 			array( 
 				'ziptasticAPIKey'  => get_option( 'wfc_integration_ziptastic_api_key' ),
-				'minChars' => 4,
+				'minChars' => 5,
 			)
 		);
 	}
