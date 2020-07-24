@@ -33,9 +33,9 @@ class FluidCheckout_Fields extends FluidCheckout {
 		}
 
 		// Checkout field display order
-		if ( get_option( 'wfc_apply_checkout_fields_display_order', true ) ) {
-			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_billing_fields_display_order' ), 10 );
-			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_shipping_fields_display_order' ), 10 );
+		if ( get_option( 'wfc_apply_checkout_fields_display_priority', true ) ) {
+			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_billing_fields_args' ), 10 );
+			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_shipping_fields_args' ), 10 );
 		}
 
 		// TODO: Merge name fields into one "Full name" field
@@ -76,11 +76,12 @@ class FluidCheckout_Fields extends FluidCheckout {
 	 * Add shipping phone field to edit address fields.
 	 */
 	public function add_shipping_phone_field( $fields ) {
+		$fields_display_priority = $this->get_checkout_fields_args( 'shipping' );
+
 		$fields['shipping_phone'] = $this->get_shipping_phone_field();
 
-		// Also change company field class as phone field pushes it to the right
-		if ( array_key_exists( 'shipping_company', $fields ) ) {
-			$fields['shipping_company']['class'] = array( 'form-row-last' );
+		foreach( $fields_display_priority as $field => $values ) {
+			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
 		}
 
 		return $fields;
@@ -152,27 +153,32 @@ class FluidCheckout_Fields extends FluidCheckout {
 
 
 
+	/**
+	 * Get the checkout fields args.
+	 */
+	public function get_checkout_fields_args( $field_group ) {
+		// Add $field_group prefix separator when needed
+		if ( ! empty( $field_group ) ) { $field_group .= '_'; }
+
+		return apply_filters( 'wfc_checkout_fields_args', array(
+			$field_group . 'email' 			=> array( 'priority' => 5 ),
+			$field_group . 'first_name' 	=> array( 'priority' => 10 ),
+			$field_group . 'last_name' 		=> array( 'priority' => 20 ),
+			$field_group . 'phone' 			=> array( 'priority' => 30, 'class' => array( 'form-row-first' ) ),
+			$field_group . 'company' 		=> array( 'priority' => 35, 'class' => array( 'form-row-last' ) ),
+		) );
+	}
+
 
 
 	/**
 	 * Change Address Fields for account address edit form.
-	 * @static
 	 */
-	public static function change_checkout_fields_display_order( $fields, $type ) {
-		// Add $type prefix separator when needed
-		if ( ! empty( $type ) ) { $type .= '_'; }
+	public function change_checkout_fields_args( $fields, $field_group ) {
+		$fields_display_priority = $this->get_checkout_fields_args( $field_group );
 
-		$fields_display_order = apply_filters( 'wfc_checkout_fields_display_order', array(
-			$type . 'email' => 5,
-			$type . 'first_name' => 10,
-			$type . 'last_name' => 20,
-			$type . 'phone' => 30,
-			$type . 'company' => 35,
-		) );
-
-		// Set fields priority
-		foreach( $fields_display_order as $field => $priority ) {
-			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ]['priority'] = $priority; }
+		foreach( $fields_display_priority as $field => $values ) {
+			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
 		}
 
 		return $fields;
@@ -181,24 +187,28 @@ class FluidCheckout_Fields extends FluidCheckout {
 
 
 	/**
-	 * Change billing fields display order.
+	 * Change billing fields args.
 	 */
-	public function change_billing_fields_display_order( $fields ) {
-		$type = 'billing';
-		$fields[ $type ] = self::change_checkout_fields_display_order( $fields[ $type ], $type );
+	public function change_billing_fields_args( $fields ) {
+		$field_group = 'billing';
+		$fields[ $field_group ] = $this->change_checkout_fields_args( $fields[ $field_group ], $field_group );
 		return $fields;
 	}
 
 
 
 	/**
-	 * Change shipping fields display order.
+	 * Change shipping fields args.
 	 */
-	public function change_shipping_fields_display_order( $fields ) {
-		$type = 'shipping';
-		$fields[ $type ] = self::change_checkout_fields_display_order( $fields[ $type ], $type );
+	public function change_shipping_fields_args( $fields ) {
+		$field_group = 'shipping';
+		$fields[ $field_group ] = $this->change_checkout_fields_args( $fields[ $field_group ], $field_group );
 		return $fields;
 	}
+
+
+
+
 
 }
 
