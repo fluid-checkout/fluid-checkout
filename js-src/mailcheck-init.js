@@ -20,8 +20,11 @@
 	var _settings = {
 		mailFieldSelector: '[data-mailcheck]',
 		mailFieldSuggestedClass: 'has-email-suggestion',
+		formFieldWrapperSelector: '.form-row',
 		suggestionElementSelector: '[data-mailcheck-suggestion]',
-		suggestedElementTemplate: '<div class="wfc-mailcheck-suggestion" data-mailcheck-suggestion>Did you mean <a class="mailcheck-suggestion" href="#apply-suggestion" data-mailcheck-apply>{suggestion}</a>?</div>',
+		suggestionApplySelector: '[data-mailcheck-apply]',
+		suggestionValueAttr: 'data-suggestion-value',
+		suggestedElementTemplate: '<div class="wfc-mailcheck-suggestion" data-mailcheck-suggestion>Did you mean <a class="mailcheck-suggestion" href="#apply-suggestion" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>?</div>',
 		suggestionTemplate: '{address}@<span class="mailcheck-suggestion-domain">{domain}</span>',
 	}
 	var _tempTarget = null;
@@ -34,13 +37,35 @@
 
 
 
+	/**
+	 * Remove Mailcheck suggestions elements
+	 */
+	var removeSuggestions = function() {
+		if ( _tempTarget === null ) return;
+		
+		var parent = _tempTarget.parentNode;
+		var suggestions = parent.querySelectorAll( _settings.suggestionElementSelector );
+		
+		for ( var i = 0; i < suggestions.length; i++ ) {
+			// console.log(suggestions[i]);
+			suggestions[i].parentNode.removeChild( suggestions[i] );
+		}
+
+		_tempTarget.classList.remove( _settings.mailFieldSuggestedClass );
+	}
+
+
+
+	/**
+	 * Add Mailcheck suggestions elements
+	 */
 	var handleSuggested = function( suggestion ) {
 		removeSuggestions();
 
 		if ( _tempTarget === null ) return;
 
 		var suggestionHtml = _settings.suggestionTemplate.replace( '{address}', suggestion.address ).replace( '{domain}', suggestion.domain );
-		var suggestedElementHtml = _settings.suggestedElementTemplate.replace( '{suggestion}', suggestionHtml );
+		var suggestedElementHtml = _settings.suggestedElementTemplate.replace( '{suggestion}', suggestionHtml ).replace( '{suggestion-value}', suggestion.full );
 
 		// Create suggestion element and add it after the field
 		var parent = _tempTarget.parentNode;
@@ -54,18 +79,26 @@
 
 
 
-	var removeSuggestions = function() {
-		if ( _tempTarget === null ) return;
-		
-		var parent = _tempTarget.parentNode;
-		var suggestions = parent.querySelectorAll( _settings.suggestionElementSelector );
-		
-		for ( var i = 0; i < suggestions.length; i++ ) {
-			// console.log(suggestions[i]);
-			suggestions[i].parentNode.removeChild( suggestions[i] );
-		}
+	/**
+	 * Apply an email suggestion value to the email field
+	 */
+	var applySuggestion = function( suggestionElement ){
+		if ( suggestionElement === null ) return;
+		var parentFormRow = suggestionElement.closest( _settings.formFieldWrapperSelector );
+		if ( parentFormRow === null ) return;
+		var targetField = parentFormRow.querySelector( _settings.mailFieldSelector )
+		console.log( suggestionElement.parentNode );
 
-		_tempTarget.classList.remove( _settings.mailFieldSuggestedClass );
+		if ( targetField === null ) return;
+
+		// Apply suggested value
+		targetField.value = suggestionElement.getAttribute( _settings.suggestionValueAttr );
+		
+		_tempTarget = targetField;
+		removeSuggestions();
+		_tempTarget = null;
+
+		// TODO: Try revalidate the field if validation scripts where loaded, need changes to validation script
 	}
 
 
@@ -91,6 +124,17 @@
 
 
 	/**
+	 * Handle document clicks and route to the appropriate function.
+	 */
+	var handleClick = function( e ) {
+		if ( e.target.closest( _settings.suggestionApplySelector ) ) {
+			applySuggestion( e.target.closest( _settings.suggestionApplySelector ) );
+		}
+	}
+
+
+
+	/**
 	 * Initialize Mailcheck feature
 	 */
 	_publicMethods.init = function() {
@@ -98,6 +142,7 @@
 
 		// Add event listeners
 		window.addEventListener( 'change', handleTriggerEvents, true );
+		window.addEventListener( 'click', handleClick, true );
 
 		_hasInitialized = true;
 	};
