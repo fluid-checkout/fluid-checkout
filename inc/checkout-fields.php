@@ -23,7 +23,7 @@ class FluidCheckout_Fields extends FluidCheckout {
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_checkout_field_types' ), 5 );
 		}
 
-		// Checkout field display order
+		// Checkout fields args
 		if ( get_option( 'wfc_apply_checkout_fields_args', true ) ) {
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_billing_fields_args' ), 10 );
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_shipping_fields_args' ), 10 );

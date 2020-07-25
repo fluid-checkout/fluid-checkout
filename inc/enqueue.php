@@ -49,9 +49,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 				'assetsVersion'     => self::$asset_version,
 				'cookiePath'	    => parse_url( get_option('siteurl'), PHP_URL_PATH ),
 				'cookieDomain'	    => parse_url( get_option('siteurl'), PHP_URL_HOST ),
-				'jsPath'			=> self::$directory_url . '/js/',
-				'jsLibPath'			=> self::$directory_url . '/js/lib/',
-				'cssPath'			=> self::$directory_url . '/css/',
+				'jsPath'			=> self::$directory_url . 'js/',
+				'jsLibPath'			=> self::$directory_url . 'js/lib/',
+				'cssPath'			=> self::$directory_url . 'css/',
 				'ajaxUrl'			=> admin_url( 'admin-ajax.php' ),
 			)
 		);

@@ -87,6 +87,7 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 		settings.nodePath + 'require-polyfills/dist/require-polyfills.js',
     	settings.nodePath + 'require-polyfills/dist/polyfill-*.js',
 		settings.nodePath + 'require-bundle-js/dist/require-bundle.js',
+		settings.nodePath + 'mailcheck/src/mailcheck.js',
 		settings.jsPath + 'lib/bundles.js',
 	])
 	.pipe(uglify())
