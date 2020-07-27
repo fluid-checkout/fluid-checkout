@@ -98,7 +98,10 @@
 		removeSuggestions();
 		_tempTarget = null;
 
-		// TODO: Try revalidate the field if validation scripts where loaded, need changes to validation script
+		// Revalidate the field
+		if ( window.CheckoutValidation ) {
+			CheckoutValidation.validateField( targetField );
+		}
 	}
 
 
@@ -128,6 +131,7 @@
 	 */
 	var handleClick = function( e ) {
 		if ( e.target.closest( _settings.suggestionApplySelector ) ) {
+			e.preventDefault();
 			applySuggestion( e.target.closest( _settings.suggestionApplySelector ) );
 		}
 	}

@@ -463,7 +463,7 @@
 	 * @param  {Field} field    Field for validation.
 	 * @return {Boolean}        True if field is valid.
 	 */
-	var validateField = function( field ) {
+	_publicMethods.validateField = function( field ) {
 		// Bail if field is null
 		if ( ! field ) { return true; }
 
@@ -503,7 +503,7 @@
 			field = e.target.closest( _settings.formRowSelector ).querySelector( 'select' );
 		}
 
-		validateField( field );
+		_publicMethods.validateField( field );
 	};
 
 
@@ -520,7 +520,7 @@
 		var fields = container.querySelectorAll( _settings.validateFieldsSelector );
 
 		for (var i = 0; i < fields.length; i++) {
-			if ( ! validateField( fields[i] ) ) {
+			if ( ! _publicMethods.validateField( fields[i] ) ) {
 				all_valid = false;
 			}
 		}
