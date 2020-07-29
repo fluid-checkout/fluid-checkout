@@ -217,16 +217,10 @@ class FluidCheckout {
 		// Features
 		require_once self::$directory_path . 'inc/checkout-fields.php';
 		require_once self::$directory_path . 'inc/checkout-validation.php';
+		require_once self::$directory_path . 'inc/checkout-layouts.php';
 		
 		// Integrations
 		require_once self::$directory_path . 'inc/integration-ziptastic.php';
-
-		// TODO: Move to checkout-layouts.php as a feature
-		// Dynamically load checkout layout
-		$available_checkout_layouts = apply_filters( 'wfc_available_checkout_layouts', array( 'default' => self::$directory_path . 'inc/layouts/default/checkout-layout.php' ) );
-		$selected_checkout_layout_key = get_option( 'wfc_checkout_layout', 'default' );
-		$selected_checkout_layout_key = array_key_exists( $selected_checkout_layout_key ) ? $selected_checkout_layout_key : 'default';
-		require_once $available_checkout_layouts[ $selected_checkout_layout_key ];
 	}
 
 
