@@ -117,7 +117,7 @@ class FluidCheckoutLayout_MultiStep1 extends FluidCheckout {
 		if ( $checkout && ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) { return; }
 
 		?>
-		<div id="wfc-wrapper" class="wfc-wrapper <?php echo esc_attr( apply_filters( 'wfc_wrapper_classes', '' ) ); ?>">
+		<div id="wfc-wrapper" class="wfc-wrapper slider-wrapper <?php echo esc_attr( apply_filters( 'wfc_wrapper_classes', '' ) ); ?>">
 			<div class="wfc-inside">
 				<div class="wfc-row wfc-header">
 					<div id="wfc-progressbar"><?php echo apply_filters( 'wfc_progressbar_steps_placeholder', '<div class="wfc-step current"></div><div class="wfc-step"></div><div class="wfc-step"></div>' ); ?></div>
