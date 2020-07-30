@@ -104,7 +104,7 @@ class FluidCheckoutLayout_MultiStep1 extends FluidCheckout {
 	 * Add page body class for feature detection
 	 */
 	public function add_body_class( $classes ) {
-		return array_merge( $classes, array( 'has-wfc-checkout-steps', 'has-wfc-checkout-steps--default' ) );
+		return array_merge( $classes, array( 'has-wfc-checkout-layout', 'has-wfc-checkout-layout--default' ) );
 	}
 
 
