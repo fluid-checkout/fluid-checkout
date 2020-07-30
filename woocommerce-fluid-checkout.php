@@ -214,10 +214,12 @@ class FluidCheckout {
 
 		require_once self::$directory_path . 'inc/enqueue.php';
 
-		require_once self::$directory_path . 'inc/checkout-steps.php';
+		// Features
 		require_once self::$directory_path . 'inc/checkout-fields.php';
 		require_once self::$directory_path . 'inc/checkout-validation.php';
-
+		require_once self::$directory_path . 'inc/checkout-layouts.php';
+		
+		// Integrations
 		require_once self::$directory_path . 'inc/integration-ziptastic.php';
 	}
 
