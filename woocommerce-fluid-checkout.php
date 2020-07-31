@@ -169,12 +169,11 @@ class FluidCheckout {
 		global $woocommerce;
 	 
 		$_template = $template;
-
 	 
 		if ( ! $template_path ) $template_path = $woocommerce->template_url;
 	 
 		// Get plugin path
-		$plugin_path  = untrailingslashit( self::$directory_path ) . '/templates/';
+		$plugin_path  = self::$directory_path . 'templates/';
 	 
 		// Look within passed path within the theme
 		$template = locate_template(

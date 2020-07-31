@@ -75,7 +75,6 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		global $woocommerce;
 	 
 		$_template = $template;
-
 	 
 		if ( ! $template_path ) $template_path = $woocommerce->template_url;
 	 

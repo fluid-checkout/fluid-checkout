@@ -26,7 +26,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 		
-		// // Template loader
+		// Template loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 30, 3 );
 
 		// Payment
@@ -71,7 +71,6 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		global $woocommerce;
 	 
 		$_template = $template;
-
 	 
 		if ( ! $template_path ) $template_path = $woocommerce->template_url;
 	 
