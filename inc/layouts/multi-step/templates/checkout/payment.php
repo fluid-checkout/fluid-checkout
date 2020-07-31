@@ -22,7 +22,11 @@ if ( ! is_ajax() ) {
 }
 ?>
 
+
 <div id="payment" class="woocommerce-checkout-payment">
+	
+	<?php do_action( 'wfc_checkout_before_payment', $checkout ); ?>
+
 	<?php if ( WC()->cart->needs_payment() ) : ?>
 		<ul class="wc_payment_methods payment_methods methods">
 			<?php
@@ -36,8 +40,12 @@ if ( ! is_ajax() ) {
 			?>
 		</ul>
 	<?php endif; ?>
-	<?php // CHANGE: Removed place order button from payment ?>
+
+	<?php do_action( 'wfc_checkout_after_payment', $checkout ); ?>
+
 </div>
+
+
 <?php
 if ( ! is_ajax() ) {
 	do_action( 'woocommerce_review_order_after_payment' );

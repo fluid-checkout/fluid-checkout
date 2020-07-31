@@ -40,9 +40,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 				<?php do_action( 'wfc_checkout_steps', $checkout ); ?>
 			</div>
 
-			<div class="wfc-checkout-order-review">
-				<?php do_action( 'wfc_checkout_order_review', $checkout ); ?>
-			</div>
+			<?php do_action( 'wfc_checkout_after_steps', $checkout ); ?>
 
 		</div>
 	</div>

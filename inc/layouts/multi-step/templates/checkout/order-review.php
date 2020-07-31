@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 
 <?php do_action( 'wfc_checkout_before_order_review' ); ?>
 
-<div class="wfc-order-review">
+<div class="wfc-checkout-order-review">
 
 	<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 	<h3 id="order_review_heading"><?php echo esc_html( $order_review_title ); ?></h3>

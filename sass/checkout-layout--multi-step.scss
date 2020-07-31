@@ -16,8 +16,8 @@
 .woocommerce-checkout.has-wfc-checkout-layout--multi-step #order_review_heading,
 .woocommerce-checkout.has-wfc-checkout-layout--multi-step #order_review {
   width: 100%;
+  float: none;
 }
-
 
 
 
@@ -196,4 +196,20 @@
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
+}
+
+
+
+
+
+
+/**
+ * Payment
+ */
+.woocommerce-checkout-payment {
+  margin-bottom: 40px;
+}
+
+#place_order {
+  width: 100%;
 }

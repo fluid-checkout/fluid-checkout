@@ -1,6 +1,6 @@
 <?php
 /**
- * Checkout steps layout: Multi Step
+ * Checkout steps layout: Multi Step Enhanced
  */
 class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
@@ -8,6 +8,10 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * __construct function.
 	 */
 	public function __construct() {
+        // Load dependency
+        require_once self::$directory_path . 'inc/layouts/multi-step/checkout-layout.php';
+        FluidCheckoutLayout_MultiStep::instance();
+
 		$this->hooks();
 	}
 
@@ -22,22 +26,22 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 		
-		// Template loader
-		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 20, 3 );
+		// // Template loader
+		// add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 20, 3 );
 
-		// Steps display order
-		add_action( 'wfc_checkout_before_steps', array( $this, 'output_checkout_progress_bar' ), 10 );
-		add_action( 'wfc_checkout_steps', array( $this, 'output_step_customer_contact' ), 10 );
-		add_action( 'wfc_checkout_steps', array( $this, 'output_step_shipping' ), 50 );
-		add_action( 'wfc_checkout_steps', array( $this, 'output_step_payment' ), 100 );
+		// // Steps display order
+		// add_action( 'wfc_checkout_before_steps', array( $this, 'output_checkout_progress_bar' ), 10 );
+		// add_action( 'wfc_checkout_steps', array( $this, 'output_step_customer_contact' ), 10 );
+		// add_action( 'wfc_checkout_steps', array( $this, 'output_step_shipping' ), 50 );
+		// add_action( 'wfc_checkout_steps', array( $this, 'output_step_payment' ), 100 );
 
-		// Payment
-		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
-		add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
+		// // Payment
+		// remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+		// add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		
 		// Order Review
-		add_action( 'wfc_checkout_order_review', array( $this, 'output_order_review' ), 10 );
-		add_action( 'wfc_checkout_order_review', array( $this, 'output_checkout_place_order' ), 10 );
+        add_action( 'wfc_checkout_after_steps', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
+        
 		
 	}
 
@@ -47,7 +51,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Add page body class for feature detection
 	 */
 	public function add_body_class( $classes ) {
-		return array_merge( $classes, array( 'has-wfc-checkout-layout', 'has-wfc-checkout-layout--multi-step has-wfc-checkout-layout--multi-step-enhanced' ) );
+		return array_merge( $classes, array( 'has-wfc-checkout-layout--multi-step-enhanced' ) );
 	}
 
 
@@ -56,11 +60,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Enqueue scripts
 	 */
 	public function enqueue_assets() {
-		wp_enqueue_style( 'wfc-checkout-layout--multi-step', self::$directory_url . 'css/checkout-layout--multi-step'. self::$asset_version . '.css', NULL, NULL );
 		wp_enqueue_style( 'wfc-checkout-layout--multi-step-enhanced', self::$directory_url . 'css/checkout-layout--multi-step-enhanced'. self::$asset_version . '.css', NULL, NULL );
-		
-		wp_enqueue_script( 'wfc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', NULL, NULL, true );
-		wp_add_inline_script( 'wfc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
 	}
 
 
@@ -192,7 +192,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	/**
 	 * Output Order Review
 	 */
-	public function output_order_review() {
+	public function output_checkout_order_review() {
 		wc_get_template(
 			'checkout/order-review.php',
 			array(
