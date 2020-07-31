@@ -1,8 +1,8 @@
 <?php
 /**
- * Checkout steps layout: Multi Step 1
+ * Checkout steps layout: Multi Step
  */
-class FluidCheckoutLayout_MultiStep1 extends FluidCheckout {
+class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -238,4 +238,4 @@ class FluidCheckoutLayout_MultiStep1 extends FluidCheckout {
 
 }
 
-FluidCheckoutLayout_MultiStep1::instance();
+FluidCheckoutLayout_MultiStep::instance();

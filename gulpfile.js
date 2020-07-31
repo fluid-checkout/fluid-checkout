@@ -88,7 +88,6 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
     	settings.nodePath + 'require-polyfills/dist/polyfill-*.js',
 		settings.nodePath + 'require-bundle-js/dist/require-bundle.js',
 		settings.jsPath + 'lib/bundles.js',
-		settings.jsPath + 'lib/fluid-slider.js',
 	])
 	.pipe(uglify())
 	.pipe(rename({suffix: settings.assetsVersion + '.min'}))
