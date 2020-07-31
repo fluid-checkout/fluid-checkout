@@ -17,7 +17,6 @@
  */
 
 defined( 'ABSPATH' ) || exit;
-
 ?>
 
 <?php do_action( 'wfc_checkout_before_order_review' ); ?>
