@@ -22,6 +22,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 		
 		// Wrapper
 		$wrapper_start_hook_args = apply_filters( 'wfc_wrapper_start_hook_args', array( 'hook' => 'woocommerce_before_checkout_form', 'priority' => 10 ) );
@@ -105,6 +106,19 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	 */
 	public function add_body_class( $classes ) {
 		return array_merge( $classes, array( 'has-wfc-checkout-layout', 'has-wfc-checkout-layout--default' ) );
+	}
+
+
+
+	/**
+	 * Enqueue scripts
+	 */
+	public function enqueue_assets() {
+		// wp_enqueue_style( 'wfc-checkout-layout', self::$directory_url . 'css/checkout-layout'. self::$asset_version . '.css', NULL, NULL );
+		wp_enqueue_style( 'wfc-checkout-layout--default', self::$directory_url . 'css/checkout-layout--default'. self::$asset_version . '.css', NULL, NULL );
+		
+		wp_enqueue_script( 'wfc-checkout-layout--multi-step', self::$directory_url . 'js/checkout-layout'. self::$asset_version . '.js', NULL, NULL, true );
+		wp_add_inline_script( 'wfc-checkout-layout--multi-step', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
 	}
 
 
