@@ -47,7 +47,6 @@
 		var suggestions = parent.querySelectorAll( _settings.suggestionElementSelector );
 		
 		for ( var i = 0; i < suggestions.length; i++ ) {
-			// console.log(suggestions[i]);
 			suggestions[i].parentNode.removeChild( suggestions[i] );
 		}
 
