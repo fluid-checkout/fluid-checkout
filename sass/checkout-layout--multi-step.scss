@@ -117,6 +117,7 @@
 
 #wfc-progressbar {
   border-radius: 4px;
+  margin-bottom: 30px;
 }
 
 
@@ -168,10 +169,6 @@
 .wfc-step.done {
   color: #fff;
   background-color: #329f5b;
-}
-
-#wfc-wrapper.active .wfc-frame {
-  margin-top: 50px;
 }
 
 #wfc-wrapper.active .wfc-frame.current {
