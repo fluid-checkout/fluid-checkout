@@ -17,8 +17,6 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Checkout Form Template
-		add_filter( 'wfc_checkout_form', array( $this, 'output_checkout_form' ) );
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
@@ -28,6 +26,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 20, 3 );
 
 		// Steps display order
+		add_action( 'wfc_checkout_before_steps', array( $this, 'output_checkout_progress_bar' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_customer_contact' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_shipping' ), 50 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_payment' ), 100 );
@@ -35,7 +34,6 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
-		
 		
 		// Order Review
 		add_action( 'wfc_checkout_order_review', array( $this, 'output_order_review' ), 10 );
@@ -108,40 +106,6 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Outputs the checkout form.
-	 * 
-	 * This method outputs the code inside the `<form></form>` tags
-	 * on WooCommerce's checkout forms and contains customizations
-	 * which need to be updated whenever there is a new version of
-	 * WooCommerce's original files.
-	 * 
-	 * @see wp-content/plugins/woocommerce/templates/checkout/form-checkout.php
-	 */
-	function output_checkout_form( $checkout ) {
-		?>
-		<div id="wfc-wrapper" class="wfc-wrapper <?php echo esc_attr( apply_filters( 'wfc_wrapper_classes', '' ) ); ?>">
-			<div class="wfc-inside">
-				
-				<div class="wfc-row wfc-header">
-					<div id="wfc-progressbar"><?php echo apply_filters( 'wfc_progressbar_steps_placeholder', '<div class="wfc-step current"></div><div class="wfc-step"></div><div class="wfc-step"></div>' ); ?></div>
-				</div>
-
-				<div class="wfc-checkout-steps">
-					<?php do_action( 'wfc_checkout_steps', $checkout ); ?>
-				</div>
-
-				<div class="wfc-checkout-order-review">
-					<?php do_action( 'wfc_checkout_order_review', $checkout ); ?>
-				</div>
-
-			</div>
-		</div>
-		<?php
-	}
-
-
-
-	/**
 	 * Output start tag for a checkout step.
 	 */
 	public function output_step_start_tag( $step_label ) {
@@ -155,6 +119,19 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	public function output_step_end_tag() {
 		?>
 		</section>
+		<?php
+	}
+
+
+
+	/**
+	 * Output the checkout progress bar
+	 */
+	public function output_checkout_progress_bar() {
+		?>
+		<div class="wfc-checkout-progress-bar wfc-row wfc-header">
+			<div id="wfc-progressbar"><?php echo apply_filters( 'wfc_progressbar_steps_placeholder', '<div class="wfc-step current"></div><div class="wfc-step"></div><div class="wfc-step"></div>' ); ?></div>
+		</div>
 		<?php
 	}
 
@@ -202,7 +179,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 */
 	public function output_checkout_place_order() {
 		wc_get_template(
-			'checkout/place_order.php',
+			'checkout/place-order.php',
 			array(
 				'checkout'           => WC()->checkout(),
 				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),

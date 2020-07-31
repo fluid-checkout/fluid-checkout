@@ -26,15 +26,14 @@ class FluidCheckoutLayouts extends FluidCheckout {
         // Get selected layout key and file path
 		$selected_checkout_layout_key = get_option( 'wfc_checkout_layout', 'default' );
         $selected_checkout_layout_key = array_key_exists( $selected_checkout_layout_key, $available_checkout_layouts ) ? $selected_checkout_layout_key : 'default';
-        $layout_class_file = $available_checkout_layouts[ $selected_checkout_layout_key ];
         
-        // Try load layout class file
-        if ( file_exists( $layout_class_file ) ) {
-            require_once $layout_class_file;
-        }
-        // Load default layout class file not found
-        else {
-            require_once $available_checkout_layouts[ 'default' ];
+        if ( $selected_checkout_layout_key !== 'default' ) {
+            $layout_class_file = $available_checkout_layouts[ $selected_checkout_layout_key ];
+            
+            // Try load layout class file
+            if ( file_exists( $layout_class_file ) ) {
+                require_once $layout_class_file;
+            }
         }
 	}
 

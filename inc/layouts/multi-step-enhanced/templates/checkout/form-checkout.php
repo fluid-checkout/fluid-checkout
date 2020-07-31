@@ -31,7 +31,21 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
-	<?php do_action( 'wfc_checkout_form', $checkout ); ?>
+	<div id="wfc-wrapper" class="wfc-wrapper <?php echo esc_attr( apply_filters( 'wfc_wrapper_classes', '' ) ); ?>">
+		<div class="wfc-inside">
+
+			<?php do_action( 'wfc_checkout_before_steps', $checkout ); ?>
+
+			<div class="wfc-checkout-steps">
+				<?php do_action( 'wfc_checkout_steps', $checkout ); ?>
+			</div>
+
+			<div class="wfc-checkout-order-review">
+				<?php do_action( 'wfc_checkout_order_review', $checkout ); ?>
+			</div>
+
+		</div>
+	</div>
 
 </form>
 
