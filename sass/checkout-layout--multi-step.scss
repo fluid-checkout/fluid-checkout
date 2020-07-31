@@ -1,14 +1,7 @@
 /*
  * WooCommerce Fluid Checkout - Layout: Multi Step
  */
-
-
-.woocommerce-checkout.has-wfc-checkout-layout--multi-step .col2-set,
-.woocommerce-checkout.has-wfc-checkout-layout--multi-step #order_review_heading,
-.woocommerce-checkout.has-wfc-checkout-layout--multi-step #order_review {
-  width: 100%;
-}
-
+ 
 @media ( min-width: 1000px ) {
   .wfc-wrapper {
     width: 75%;
@@ -19,10 +12,18 @@
 
 
 
+.woocommerce-checkout.has-wfc-checkout-layout--multi-step .col2-set,
+.woocommerce-checkout.has-wfc-checkout-layout--multi-step #order_review_heading,
+.woocommerce-checkout.has-wfc-checkout-layout--multi-step #order_review {
+  width: 100%;
+}
+
+
+
+
 .wfc-header {
   display: none;
 }
-
 #wfc-wrapper.active .wfc-header {
   display: block;
 }
@@ -49,7 +50,6 @@
     padding: 0;
   }
 }
-
 
 .wfc-step[disabled],
 .wfc-step.disabled {
@@ -188,7 +188,6 @@
 /**
  * ANIMATIONS
  */
-
 @keyframes slideInRight {
   from {
     -webkit-transform: translate3d(100%, 0, 0);
@@ -201,5 +200,3 @@
     transform: translate3d(0, 0, 0);
   }
 }
-
-
