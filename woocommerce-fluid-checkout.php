@@ -169,12 +169,11 @@ class FluidCheckout {
 		global $woocommerce;
 	 
 		$_template = $template;
-
 	 
 		if ( ! $template_path ) $template_path = $woocommerce->template_url;
 	 
 		// Get plugin path
-		$plugin_path  = untrailingslashit( self::$directory_path ) . '/templates/';
+		$plugin_path  = self::$directory_path . 'templates/';
 	 
 		// Look within passed path within the theme
 		$template = locate_template(
@@ -214,10 +213,12 @@ class FluidCheckout {
 
 		require_once self::$directory_path . 'inc/enqueue.php';
 
-		require_once self::$directory_path . 'inc/checkout-steps.php';
+		// Features
 		require_once self::$directory_path . 'inc/checkout-fields.php';
 		require_once self::$directory_path . 'inc/checkout-validation.php';
-
+		require_once self::$directory_path . 'inc/checkout-layouts.php';
+		
+		// Integrations
 		require_once self::$directory_path . 'inc/integration-ziptastic.php';
 	}
 

@@ -1,0 +1,25 @@
+/*
+ * WooCommerce Fluid Checkout - Layout: Multi Step Enhanced
+ */
+ 
+.wfc-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+
+@media( min-width: 1000px ) {
+
+  #wfc-wrapper.active .wfc-checkout-steps {
+    float: left;
+    width: 57%;
+    margin: 0;
+  }
+  
+  #wfc-wrapper.active .wfc-checkout-order-review-wrapper {
+    float: right;
+    width: 40%;
+    margin: 0;
+  }
+  
+}
