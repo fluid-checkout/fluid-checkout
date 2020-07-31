@@ -29,6 +29,10 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		// Template loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 30, 3 );
 
+		// Steps display order
+		remove_action( 'wfc_checkout_steps', array( FluidCheckoutLayout_MultiStep::instance(), 'output_step_billing' ), 10 );
+		add_action( 'wfc_checkout_steps', array( $this, 'output_step_contact' ), 10 );
+
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'wfc_checkout_payment', array( FluidCheckoutLayout_MultiStep::instance(), 'output_order_review' ), 10 );
@@ -111,6 +115,63 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		</div>
 		<?php
 	}
+
+
+
+
+
+
+
+
+
+	/**
+	 * Checkout Steps
+	 */
+
+
+
+	/**
+	 * Output step: Contact
+	 */
+	public function output_step_contact() {
+		FluidCheckoutLayout_MultiStep::instance()->output_step_start_tag( apply_filters( 'wfc_contact_step_title', __( 'Contact', 'woocommerce-fluid-checkout' ) ) );
+		do_action( 'woocommerce_checkout_before_customer_details' );
+
+		// Define contact fields
+		$contact_fields = apply_filters( 'wfc_checkout_contact_step_field_ids', array(
+			'billing_email',
+			'billing_full_name',
+			'billing_first_name',
+			'billing_last_name',
+			'billing_phone',
+		) );
+
+		wc_get_template(
+			'checkout/form-contact.php',
+			array(
+				'checkout'          => WC()->checkout(),
+				'display_fields'    => $contact_fields,
+				'section_title'  	=> apply_filters( 'wfc_checkout_contact_step_title', __( 'Contact details', 'woocommerce-fluid-checkout' ) ),
+			)
+		);
+
+		echo $this->get_contact_step_actions_html();
+		FluidCheckoutLayout_MultiStep::instance()->output_step_end_tag();
+	}
+
+
+
+	/**
+	 * Add back button html to checkout contact step.
+	 */
+	public function get_contact_step_actions_html() {
+		$actions_html = '<div class="wfc-actions"><button class="wfc-next button alt">' . __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' ) . '</button></div>';
+		return apply_filters( 'wfc_contact_step_actions_html', $actions_html );
+	}
+
+	/**
+	 * END - Checkout Steps
+	 */
 
 }
 

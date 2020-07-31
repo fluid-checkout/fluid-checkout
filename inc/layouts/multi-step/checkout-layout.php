@@ -138,7 +138,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Output step: Contact Details
+	 * Output step: Billing
 	 */
 	public function output_step_billing() {
 		$this->output_step_start_tag( apply_filters( 'wfc_billing_step_title', __( 'Billing', 'woocommerce-fluid-checkout' ) ) );
