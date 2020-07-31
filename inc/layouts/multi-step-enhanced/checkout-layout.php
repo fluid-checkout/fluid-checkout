@@ -23,6 +23,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+		
+		// Template loader
+		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 20, 3 );
 
 		// Steps display order
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_customer_contact' ), 10 );
@@ -33,8 +36,10 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		
+		
 		// Order Review
 		add_action( 'wfc_checkout_order_review', array( $this, 'output_order_review' ), 10 );
+		add_action( 'wfc_checkout_order_review', array( $this, 'output_checkout_place_order' ), 10 );
 		
 	}
 
@@ -58,6 +63,46 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		
 		wp_enqueue_script( 'wfc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', NULL, NULL, true );
 		wp_add_inline_script( 'wfc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
+	}
+
+
+
+	/*
+	 * Locate template files from this checkout layout.
+	 * @since 1.1.0
+	 */
+	public function locate_template( $template, $template_name, $template_path ) {
+	 
+		global $woocommerce;
+	 
+		$_template = $template;
+
+	 
+		if ( ! $template_path ) $template_path = $woocommerce->template_url;
+	 
+		// Get plugin path
+		$plugin_path  = self::$directory_path . 'inc/layouts/multi-step-enhanced/templates/';
+	 
+		// Look within passed path within the theme
+		$template = locate_template(
+			array(
+				$template_path . $template_name,
+				$template_name
+			)
+		);
+	 
+		// Get the template from this plugin, if it exists
+		if ( ! $template && file_exists( $plugin_path . $template_name ) ) {
+			$template = $plugin_path . $template_name;
+		}
+	 
+		// Use default template
+		if ( ! $template ){
+			$template = $_template;
+		}
+	 
+		// Return what we found
+		return $template;
 	}
 
 
@@ -119,7 +164,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Output step: Contact Details
 	 */
 	public function output_step_customer_contact() {
-		$this->output_step_start_tag( apply_filters( 'wfc_contact_details_step_title', __( 'Contact Details', 'woocommerce-fluid-checkout' ) ) );
+		$this->output_step_start_tag( apply_filters( 'wfc_billing_step_title', __( 'Billing', 'woocommerce-fluid-checkout' ) ) );
 		do_action( 'woocommerce_checkout_before_customer_details' );
 		do_action( 'woocommerce_checkout_billing' );
 		echo $this->get_billing_step_actions_html();
@@ -152,30 +197,17 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 
-	public function wfc_checkout_payment() {
-		if ( ! is_ajax() ) {
-			do_action( 'woocommerce_review_order_before_payment' );
-		}
-		?>
-		<div id="payment" class="woocommerce-checkout-payment">
-			<?php if ( WC()->cart->needs_payment() ) : ?>
-				<ul class="wc_payment_methods payment_methods methods">
-					<?php
-					if ( ! empty( $available_gateways ) ) {
-						foreach ( $available_gateways as $gateway ) {
-							wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
-						}
-					} else {
-						echo '<li class="woocommerce-notice woocommerce-notice--info woocommerce-info">' . apply_filters( 'woocommerce_no_available_payment_methods_message', WC()->customer->get_billing_country() ? esc_html__( 'Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce' ) : esc_html__( 'Please fill in your details above to see available payment methods.', 'woocommerce' ) ) . '</li>'; // @codingStandardsIgnoreLine
-					}
-					?>
-				</ul>
-			<?php endif; ?>
-		</div>
-		<?php
-		if ( ! is_ajax() ) {
-			do_action( 'woocommerce_review_order_after_payment' );
-		}
+	/**
+	 * Output checkout place order button
+	 */
+	public function output_checkout_place_order() {
+		wc_get_template(
+			'checkout/place_order.php',
+			array(
+				'checkout'           => WC()->checkout(),
+				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
+			)
+		);
 	}
 
 
