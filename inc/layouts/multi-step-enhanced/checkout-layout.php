@@ -119,7 +119,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Output step: Contact Details
 	 */
 	public function output_step_customer_contact() {
-		$this->output_step_start_tag( __( 'Contact Details', 'woocommerce-fluid-checkout' ) );
+		$this->output_step_start_tag( apply_filters( 'wfc_contact_details_step_title', __( 'Contact Details', 'woocommerce-fluid-checkout' ) ) );
 		do_action( 'woocommerce_checkout_before_customer_details' );
 		do_action( 'woocommerce_checkout_billing' );
 		echo $this->get_billing_step_actions_html();
@@ -132,7 +132,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Output step: Shipping
 	 */
 	public function output_step_shipping() {
-		$this->output_step_start_tag( __( 'Shipping', 'woocommerce-fluid-checkout' ) );
+		$this->output_step_start_tag( apply_filters( 'wfc_shipping_step_title', __( 'Shipping', 'woocommerce-fluid-checkout' ) ) );
 		do_action( 'woocommerce_checkout_shipping' );
 		do_action( 'woocommerce_checkout_after_customer_details' );
 		echo $this->get_shipping_step_actions_html();
@@ -145,7 +145,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Output step: Payment
 	 */
 	public function output_step_payment() {
-		$this->output_step_start_tag( __( 'Payment', 'woocommerce-fluid-checkout' ) );
+		$this->output_step_start_tag( apply_filters( 'wfc_payment_step_title', __( 'Payment', 'woocommerce-fluid-checkout' ) ) );
 		do_action( 'wfc_checkout_payment' );
 		$this->output_step_end_tag();
 	}
