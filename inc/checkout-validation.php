@@ -20,7 +20,27 @@ class FluidCheckoutValidation extends FluidCheckout {
 		if ( get_option( 'wfc_enable_checkout_validation', true ) ) {
 			add_filter( 'body_class', array( $this, 'add_body_class' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
+
+			add_filter( 'wfc_checkout_fields_args' , array( $this, 'change_checkout_email_fields_args' ), 10 );
 		}
+	}
+
+
+
+	/**
+	 * Change email fields to include custom attribute for Mailcheck selector
+	 */
+	public function change_checkout_email_fields_args( $fields_args ) {
+		$email_field_custom_attributes = array( 'data-mailcheck' => 1 );
+		
+		$checkout_email_fields = apply_filters( 'wfc_checkout_email_fields_for_mailcheck', array( 'billing_email' ) );
+		foreach( $fields_args as $field => $values ) {
+			if ( in_array( $field, $checkout_email_fields ) ) {
+				$fields_args[ $field ][ 'custom_attributes' ] = array_merge( $fields_args[ $field ][ 'custom_attributes' ] ?: array(), $email_field_custom_attributes );
+			}
+		}
+
+		return $fields_args;
 	}
 
 
