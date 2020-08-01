@@ -10,13 +10,13 @@
 
 @media( min-width: 1000px ) {
 
-  #wfc-wrapper.active .wfc-checkout-steps {
+  .wfc-checkout-steps--active .wfc-checkout-steps {
     float: left;
     width: 57%;
     margin: 0;
   }
   
-  #wfc-wrapper.active .wfc-checkout-order-review-wrapper {
+  .wfc-checkout-steps--active .wfc-checkout-order-review-wrapper {
     float: right;
     width: 40%;
     margin: 0;

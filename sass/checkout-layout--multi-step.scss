@@ -24,7 +24,7 @@
 .wfc-header {
   display: none;
 }
-#wfc-wrapper.active .wfc-header {
+.wfc-checkout-steps--active .wfc-header {
   display: block;
 }
 
@@ -70,21 +70,21 @@
 
 
 
-#wfc-wrapper.active .wfc-frame {
+.wfc-checkout-steps--active .wfc-frame {
   display: none;
 }
 
-#wfc-wrapper.active .wfc-frame.current {
+.wfc-checkout-steps--active .wfc-frame.current {
   display: block;
 }
 
 
 
-#wfc-wrapper.active .wfc-actions {
+.wfc-checkout-steps--active .wfc-actions {
   text-align: center;
 }
 @supports ( display: flex ) {
-  #wfc-wrapper.active .wfc-actions {
+  .wfc-checkout-steps--active .wfc-actions {
     display: flex;
     width: 100%;
   }
@@ -97,22 +97,22 @@
   display: none;
 }
 
-#wfc-wrapper.active .wfc-prev,
-#wfc-wrapper.active .wfc-next {
+.wfc-checkout-steps--active .wfc-prev,
+.wfc-checkout-steps--active .wfc-next {
   width: auto;
   display: inline-block;
 }
 
-#wfc-wrapper.active .wfc-next {
+.wfc-checkout-steps--active .wfc-next {
   min-width: 22rem;
 }
 
 @supports ( display: flex ) {
-  #wfc-wrapper.active .wfc-prev {
+  .wfc-checkout-steps--active .wfc-prev {
     flex-shrink: 1;
   }
 
-  #wfc-wrapper.active .wfc-next {
+  .wfc-checkout-steps--active .wfc-next {
     flex-grow: 1;
     flex-shrink: 1;
   }
@@ -177,11 +177,11 @@
   background-color: #329f5b;
 }
 
-#wfc-wrapper.active .wfc-frame.current {
+.wfc-checkout-steps--active .wfc-frame.current {
   animation: slideInRight cubic-bezier(0.22, 0.61, 0.36, 1) 200ms; // ease-out-cubic
 }
 
-#wfc-wrapper.active .wfc-prev {
+.wfc-checkout-steps--active .wfc-prev {
   margin-right: 10px;
 }
 

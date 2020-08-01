@@ -20,10 +20,10 @@
 	var $ = jQuery;
 
 	var _hasInitialized = false;
+	var _hasJQuery = ( $ != null );
 	var _publicMethods = { };
 	var _settings = {
-		initClass: 'js-wfc-checkout-validation',
-		hasJQuery: ( $ != null ),
+		bodyClass: 'wfc-checkout-validation--active',
 		formSelector: 'form.checkout',
 		formRowSelector: '.form-row',
 		validateFieldsSelector: '.input-text, select',
@@ -538,9 +538,9 @@
 
 		_settings = extend( _settings, window.wfcValidationVars );
 		initInlineMessages();
-		document.body.classList.add( _settings.initClass );
+		document.body.classList.add( _settings.bodyClass );
 
-		if ( _settings.hasJQuery ) {
+		if ( _hasJQuery ) {
 			$( _settings.formSelector ).on( 'input validate change', _settings.validateFieldsSelector, handleValidateEvent );
 			
 			// Run on checkout or cart changes
