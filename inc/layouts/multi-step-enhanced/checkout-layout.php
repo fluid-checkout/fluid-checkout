@@ -8,9 +8,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * __construct function.
 	 */
 	public function __construct() {
-        // Load dependency
+        // Load dependency: FluidCheckoutLayout_MultiStep
         require_once self::$directory_path . 'inc/layouts/multi-step/checkout-layout.php';
-        FluidCheckoutLayout_MultiStep::instance();
 
 		$this->hooks();
 	}
@@ -61,7 +60,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Enqueue scripts
 	 */
 	public function enqueue_assets() {
-		wp_enqueue_style( 'wfc-checkout-layout--multi-step-enhanced', self::$directory_url . 'css/checkout-layout--multi-step-enhanced'. self::$asset_version . '.css', NULL, NULL );
+		wp_enqueue_style( 'wfc-checkout-layout--multi-step-enhanced', self::$directory_url . 'css/checkout-multi-step--enhanced'. self::$asset_version . '.css', NULL, NULL );
 	}
 
 
