@@ -21,7 +21,7 @@
 	var _hasInitialized = false;
 	var _publicMethods = { };
 	var _settings = {
-		initClass: 'js-wfc-steps',
+		bodyClass: 'wfc-checkout-steps--active',
 
 		wrapperSelector: '#wfc-wrapper',
 		wrapperInsideSelector: '.wfc-inside',
@@ -353,15 +353,6 @@
 
 
 	/**
-	 * Set plugin as active.
-	 */
-	var setPluginActive = function() {
-		_wfcWrapper.classList.add( _settings.states.ACTIVE );
-	};
-
-
-
-	/**
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.refreshSteps = function() {
@@ -373,7 +364,6 @@
 		if ( ! _wfcWrapper || ! _wfcInner || ! _progressBar ) { return; }
 
 		initSteps();
-		setPluginActive();
 	}
 
 
@@ -385,13 +375,13 @@
 		if ( _hasInitialized ) return;
 
 		_publicMethods.refreshSteps();
-
-		// Add init class
-		document.body.classList.add( _settings.initClass );
-
+		
 		// Add event listeners
 		window.addEventListener( 'click', handleClick );
 		$( document ).on( 'load_ajax_content_done', _publicMethods.refreshSteps );
+
+		// Add init class
+		document.body.classList.add( _settings.bodyClass );
 
 		_hasInitialized = true;
 	};
