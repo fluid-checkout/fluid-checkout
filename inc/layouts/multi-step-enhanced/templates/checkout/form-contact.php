@@ -19,7 +19,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<h3 class="wfc-checkout-step-title"><?php echo esc_html( $section_title ); ?></h3>
+<h2 class="wfc-checkout-step-title"><?php echo esc_html( $section_title ); ?></h2>
 
 <?php do_action( 'wfc_checkout_before_step_contact_fields' ); ?>
 
@@ -34,6 +34,8 @@ defined( 'ABSPATH' ) || exit;
     }
     ?>
 </div>
+
+<?php do_action( 'wfc_checkout_after_contact_fields' ); ?>
 
 <?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
 	<div class="woocommerce-account-fields">
