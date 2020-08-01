@@ -30,11 +30,17 @@
 
 
 
+.wfc-checkout-steps {
+  overflow: hidden;
+}
+
+
+
 #wfc-progressbar {
   margin: 0;
   overflow: hidden;
 }
-.wfc-step {
+.wfc-progress-bar-step {
   display: inline-block;
   padding: .5rem 2rem;
   box-sizing: border-box;
@@ -45,19 +51,19 @@
   #wfc-progressbar {
     display: flex;
   }
-  .wfc-step {
+  .wfc-progress-bar-step {
     flex: 1;
     padding: 0;
   }
 }
 
-.wfc-step[disabled],
-.wfc-step.disabled {
+.wfc-progress-bar-step[disabled],
+.wfc-progress-bar-step.disabled {
   cursor: default;
 }
 
-.wfc-step:first-child:before,
-.wfc-step:last-child:after {
+.wfc-progress-bar-step:first-child:before,
+.wfc-progress-bar-step:last-child:after {
   content: '';
   display: none;
 }
@@ -122,7 +128,7 @@
 
 
 
-.wfc-step {
+.wfc-progress-bar-step {
   padding: 5px;
   max-height: 30px;
   height: 30px;
@@ -132,8 +138,8 @@
   line-height: 20px;
 }
 
-.wfc-step:before,
-.wfc-step:after {
+.wfc-progress-bar-step:before,
+.wfc-progress-bar-step:after {
   content: '';
   position: absolute;
   top: -2px;
@@ -145,7 +151,7 @@
   z-index: 3;
 }
 
-.wfc-step:before {
+.wfc-progress-bar-step:before {
   left: 0;
   border: 17px solid transparent;
   border-left: 7px solid #F8F3DD;
@@ -154,19 +160,19 @@
 
 
 
-.wfc-step.current:after {
+.wfc-progress-bar-step.current:after {
   border-left-color: #F0F0F0;
 }
-.wfc-step.current {
+.wfc-progress-bar-step.current {
   background-color: #F0F0F0;
 }
 
 
 
-.wfc-step.done:after {
+.wfc-progress-bar-step.done:after {
   border-left-color: #329f5b;
 }
-.wfc-step.done {
+.wfc-progress-bar-step.done {
   color: #fff;
   background-color: #329f5b;
 }
