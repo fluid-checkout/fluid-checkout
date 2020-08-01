@@ -26,7 +26,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 20, 3 );
 
 		// Steps display order
-		add_action( 'wfc_checkout_before_steps', array( $this, 'output_checkout_progress_bar' ), 10 );
+		add_action( 'wfc_checkout_before', array( $this, 'output_checkout_progress_bar' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_billing' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_shipping' ), 50 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_payment' ), 100 );
@@ -39,7 +39,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		add_filter( 'woocommerce_order_button_html', array( $this, 'get_payment_step_actions_html' ), 20 );
 
 		// Theme fixes
-		add_action( 'wp_footer', array( $this, 'maybe_add_theme_inline_styles' ), 10 );
+		add_action( 'wp_footer', array( $this, 'maybe_add_theme_inline_code' ), 10 );
 		
 	}
 
@@ -130,7 +130,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	public function output_checkout_progress_bar() {
 		?>
 		<div class="wfc-checkout-progress-bar wfc-row wfc-header">
-			<div id="wfc-progressbar"><?php echo apply_filters( 'wfc_progressbar_steps_placeholder', '<div class="wfc-step current"></div><div class="wfc-step"></div><div class="wfc-step"></div>' ); ?></div>
+			<div id="wfc-progressbar"><?php echo apply_filters( 'wfc_progressbar_steps_placeholder', '<div class="wfc-progress-bar-step current"></div><div class="wfc-progress-bar-step"></div><div class="wfc-progress-bar-step"></div>' ); ?></div>
 		</div>
 		<?php
 	}
@@ -248,10 +248,13 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	/**
 	 * Maybe call function to add styles for specific themes when active
 	 */
-	public function maybe_add_theme_inline_styles() {
+	public function maybe_add_theme_inline_code() {
+		// Bail if not on checkout page
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) return;
+
 		$current_theme = wp_get_theme();
 		$theme_slug = sanitize_title( $current_theme->get( 'Name' ) );
-		$methodName = 'add_theme_inline_styles_'.$theme_slug;
+		$methodName = 'add_theme_inline_code_'.$theme_slug;
 		if ( method_exists( $this, $methodName ) ) {
 			$this->{$methodName}();
 		}
@@ -262,7 +265,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	/**
 	 * Add inline styles to fix issues with Storefront theme
 	 */
-	public function add_theme_inline_styles_storefront() {
+	public function add_theme_inline_code_storefront() {
 		?>
 		<style type="text/css">
 			/**

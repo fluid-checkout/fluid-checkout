@@ -22,6 +22,31 @@
 	var _publicMethods = { };
 	var _settings = {
 		initClass: 'js-wfc-steps',
+
+		wrapperSelector: '#wfc-wrapper',
+		wrapperInsideSelector: '.wfc-inside',
+		
+		progressBarSelector: '#wfc-progressbar',
+		progressBarStepSelector: '.wfc-progress-bar-step',
+		progressBarStepClass: 'wfc-progress-bar-step',
+		progressBarStepDoneClass: 'done',
+		progressBarStepCurrentClass: 'current',
+
+		stepIdSelector: '[data-step-id]',
+		stepIdAttribute: 'data-step-id',
+		stepNavigationPrevSelector: '.wfc-prev',
+		stepNavigationNextSelector: '.wfc-next',
+
+		frameIdAttribute: 'data-frame-id',
+
+		woocommerceInvalidFieldClass: '.woocommerce-invalid',
+
+		topScrollOffset: 100,
+
+		states: {
+			ACTIVE: 'active',
+			DISABLED: 'disabled',
+		}
 	}
 
 	var _wfcWrapper,
@@ -41,8 +66,8 @@
 	 */
 	var getFirstStepId = function() {
 		// Return next available step
-		for (var i = 0; i < _frames.length; i++) {
-			if ( ! _frames[ i + 1 ].hasAttribute( 'disabled' ) ) {
+		for ( var i = 0; i < _frames.length; i++ ) {
+			if ( ! _frames[ i + 1 ].hasAttribute( _settings.states.DISABLED ) ) {
 				return i + 1;
 			}
 		}
@@ -54,8 +79,8 @@
 	 * Get the id of current step.
 	 */
 	var getCurrentStepId = function() {
-		var currentStep = document.querySelector( '.wfc-step.current' );
-		return currentStep ? parseInt( currentStep.getAttribute( 'data-step-id' ) ) : null;
+		var currentStep = document.querySelector( '.wfc-progress-bar-step.current' );
+		return currentStep ? parseInt( currentStep.getAttribute( _settings.stepIdAttribute ) ) : null;
 	};
 
 
@@ -74,7 +99,7 @@
 
 		// Return next available step
 		for ( var i = currentStepId - 1; i >= 0; i-- ) {
-			if ( ! _frames[ i - 1 ].hasAttribute( 'disabled' ) ) {
+			if ( ! _frames[ i - 1 ].hasAttribute( _settings.states.DISABLED ) ) {
 				return currentStepId - 1;
 			}
 		}
@@ -96,8 +121,8 @@
 		}
 
 		// Return next available step
-		for (var i = currentStepId - 1; i < _frames.length; i++) {
-			if ( ! _frames[ i + 1 ].hasAttribute('disabled') ) {
+		for ( var i = currentStepId - 1; i < _frames.length; i++ ) {
+			if ( ! _frames[ i + 1 ].hasAttribute( _settings.states.DISABLED ) ) {
 				return currentStepId + 1;
 			}
 		}
@@ -111,14 +136,14 @@
 	 * Clear all step status
 	 */
 	var clearStepStatus = function() {
-		for (var i = _frames.length - 1; i >= 0; i--) {
+		for ( var i = _frames.length - 1; i >= 0; i-- ) {
 			// active
-			_frames[i].classList.remove( 'current' );
-			_steps[i].classList.remove( 'current' );
+			_frames[i].classList.remove( _settings.progressBarStepCurrentClass );
+			_steps[i].classList.remove( _settings.progressBarStepCurrentClass );
 			
 			// done
-			if ( ! _steps[i].hasAttribute( 'disabled' ) ) {
-				_steps[i].classList.remove( 'done' );
+			if ( ! _steps[i].hasAttribute( _settings.states.DISABLED ) ) {
+				_steps[i].classList.remove( _settings.progressBarStepDoneClass );
 			}
 		}
 	};
@@ -130,10 +155,10 @@
 	 */
 	var markStepsDone = function() {
 		var currentStepId = getCurrentStepId();
-		for (var i = _steps.length - 1; i >= 0; i--) {
-			var stepId = _steps[i].getAttribute( 'data-step-id' );
-			if ( ! _steps[i].hasAttribute( 'disabled' ) && stepId < currentStepId ) {
-				_steps[i].classList.add( 'done' );
+		for ( var i = _steps.length - 1; i >= 0; i-- ) {
+			var stepId = _steps[i].getAttribute( _settings.stepIdAttribute );
+			if ( ! _steps[i].hasAttribute( _settings.states.DISABLED ) && stepId < currentStepId ) {
+				_steps[i].classList.add( _settings.progressBarStepDoneClass );
 			}
 		}
 	};
@@ -145,18 +170,18 @@
 	 */
 	var markStepActive = function( step, frame, scrollToElement ) {
 		// Set step as current
-		step.classList.add( 'current' );
-		frame.classList.add( 'current' );
+		step.classList.add( _settings.progressBarStepCurrentClass );
+		frame.classList.add( _settings.progressBarStepCurrentClass );
 
 		// TODO: Better animation handling with slide left/right depending on the position of the step
 		
 		// Maybe scroll step into view
 		if ( scrollToElement ) {
-			if ( _progressBar ) {
-				scrollTo( _progressBar );
+			if ( frame ) {
+				scrollTo( frame );
 			}
 			else {
-				scrollTo( frame );
+				scrollTo( _progressBar );
 			}
 		}
 	};
@@ -173,7 +198,7 @@
 		if ( currentStepId && currentStepId == stepId ) { return; }
 		
 		var	step = document.querySelector( '#step-' + stepId ),
-				frame = document.querySelector( '#frame-' + stepId );
+			frame = document.querySelector( '#frame-' + stepId );
 		
 		// Clear step status, mark as active and done
 		clearStepStatus();
@@ -187,8 +212,6 @@
 	 * Create progress bar steps.
 	 */
 	var initSteps = function() {
-		// Bail if inner element not present
-		if ( ! _wfcInner ) { return; }
 
 		// Clear progress bar placeholders
 		while ( _progressBar.firstChild ) {
@@ -196,35 +219,35 @@
 		}
 
 		// Get frames
-		_frames = _wfcInner.querySelectorAll( '.wfc-frame' );
+		_frames = document.querySelectorAll( '.wfc-frame' );
 
-		// Add ID to each frame and steps to progress bar
-		for (var i = _frames.length - 1; i >= 0; i--) {
+		// Add ID to each frame and steps on progress bar
+		for ( var i = _frames.length - 1; i >= 0; i-- ) {
 			var stepId = i + 1,
 					label = _frames[i].getAttribute( 'data-label' ),
 					step = document.createElement( 'div' );
 
-			step.classList.add('wfc-step');
-			step.setAttribute('id', 'step-' + stepId);
-			step.setAttribute('data-step-id', stepId);
+			step.classList.add( _settings.progressBarStepClass );
+			step.setAttribute( 'id', 'step-' + stepId );
+			step.setAttribute( _settings.stepIdAttribute, stepId );
 			step.textContent = label;
 
-			if ( _frames[i].hasAttribute('disabled') ) {
-				step.setAttribute('disabled', 'disabled');
+			if ( _frames[i].hasAttribute( _settings.states.DISABLED ) ) {
+				step.setAttribute( _settings.states.DISABLED , _settings.states.DISABLED );
 			}
 
-			if ( _frames[i].classList.contains('done') ) {
-				step.classList.add('done');
+			if ( _frames[i].classList.contains( _settings.progressBarStepDoneClass ) ) {
+				step.classList.add( _settings.progressBarStepDoneClass );
 			}
 
-			_progressBar.insertBefore(step, _progressBar.firstChild);
+			_progressBar.insertBefore( step, _progressBar.firstChild );
 			
-			_frames[i].setAttribute('id', 'frame-' + stepId);
-			_frames[i].setAttribute('data-frame-id', stepId);
+			_frames[i].setAttribute( 'id', 'frame-' + stepId );
+			_frames[i].setAttribute( _settings.frameIdAttribute, stepId );
 		}
 
 		// Get steps
-		_steps = _wfcInner.querySelectorAll('.wfc-step');
+		_steps = document.querySelectorAll( _settings.progressBarStepSelector );
 
 		// Show first available step
 		setCurrentStep( getNextStepId(), false );
@@ -233,15 +256,33 @@
 
 
 	/**
+	 * Get element offset values from page limits
+	 * 
+	 * @see https://stackoverflow.com/a/442474/5732235
+	 */
+	var getOffset = function( el ) {
+		var _x = 0;
+		var _y = 0;
+		while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
+			_x += el.offsetLeft - el.scrollLeft;
+			_y += el.offsetTop - el.scrollTop;
+			el = el.offsetParent;
+		}
+		return { top: _y, left: _x };
+	}
+
+
+
+	/**
 	 * Scroll element into viewport.
 	 * @param  {Element} element Element to get position and scroll viewport to.
 	 */
 	var scrollTo = function( element ) {
-		window.scroll({
+		window.scroll( {
 			behavior: 'smooth',
 			left: 0,
-			top: element.offsetTop
-		});
+			top: getOffset( element ).top - _settings.topScrollOffset
+		} );
 	};
 
 
@@ -251,8 +292,8 @@
 	 */
 	var handleStepClick = function( e ) {
 		e.preventDefault();
-		var step = e.target.closest( '[data-step-id]' );
-		setCurrentStep( step.getAttribute( 'data-step-id' ), true );
+		var step = e.target.closest( _settings.stepIdSelector );
+		setCurrentStep( step.getAttribute( _settings.stepIdAttribute ), true );
 	};
 
 
@@ -270,7 +311,7 @@
 			
 			// Bail if not all fields valid and stay in the same step
 			if ( ! window.CheckoutValidation.validateAllFields( frame ) ) {
-				var element = frame.querySelector( '.woocommerce-invalid' );
+				var element = frame.querySelector( _settings.woocommerceInvalidFieldClass );
 				scrollTo( element );
 				return;
 			}
@@ -278,7 +319,6 @@
 
 		// Go to next step
 		setCurrentStep( getNextStepId(), true );
-
 	};
 
 
@@ -299,13 +339,13 @@
 	 * Handle document clicks and route to the appropriate function.
 	 */
 	var handleClick = function( e ) {
-		if ( e.target.closest( '[data-step-id]:not([disabled])' ) ) {
+		if ( e.target.closest( _settings.stepIdSelector + ':not([disabled])' ) ) {
 			handleStepClick( e );
 		}
-		else if ( e.target.closest( '.wfc-prev:not([disabled])' ) ) {
+		else if ( e.target.closest( _settings.stepNavigationPrevSelector + ':not([disabled])' ) ) {
 			handlePrevStepClick( e );
 		}
-		else if ( e.target.closest( '.wfc-next:not([disabled])' ) ) {
+		else if ( e.target.closest( _settings.stepNavigationNextSelector + ':not([disabled])' ) ) {
 			handleNextStepClick( e );
 		}
 	};
@@ -316,7 +356,7 @@
 	 * Set plugin as active.
 	 */
 	var setPluginActive = function() {
-		_wfcWrapper.classList.add('active');
+		_wfcWrapper.classList.add( _settings.states.ACTIVE );
 	};
 
 
@@ -325,9 +365,9 @@
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.refreshSteps = function() {
-		_wfcWrapper = document.querySelector( '#wfc-wrapper' );
-		_wfcInner = document.querySelector( '.wfc-inside' );
-		_progressBar = document.querySelector( '#wfc-progressbar' );
+		_wfcWrapper = document.querySelector( _settings.wrapperSelector );
+		_wfcInner = document.querySelector( _settings.wrapperInsideSelector );
+		_progressBar = document.querySelector( _settings.progressBarSelector );
 
 		// Bail if elements not present
 		if ( ! _wfcWrapper || ! _wfcInner || ! _progressBar ) { return; }
