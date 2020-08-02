@@ -1,6 +1,6 @@
 {
   "name": "woocommerce-fluid-checkout",
-  "version": "1.1.0-dev-6",
+  "version": "1.1.0-dev-7",
   "description": "A simple multi-step checkout fluid experience for any WooCommerce store",
   "main": "woocommerce-fluid-checkout.php",
   "scripts": {
