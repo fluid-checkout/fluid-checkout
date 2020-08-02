@@ -36,8 +36,11 @@
 }
 
 
-
+.wfc-actions {
+  display: none;
+}
 .wfc-checkout-steps--active .wfc-actions {
+  margin-top: 30px;
   text-align: center;
 }
 @supports ( display: flex ) {
@@ -48,17 +51,6 @@
 }
 
 
-
-#wfc-wrapper .wfc-prev,
-#wfc-wrapper .wfc-next {
-  display: none;
-}
-
-.wfc-checkout-steps--active .wfc-prev,
-.wfc-checkout-steps--active .wfc-next {
-  width: auto;
-  display: inline-block;
-}
 
 .wfc-checkout-steps--active .wfc-next {
   min-width: 22rem;
