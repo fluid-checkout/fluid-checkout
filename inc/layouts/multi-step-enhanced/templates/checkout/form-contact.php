@@ -47,6 +47,8 @@ defined( 'ABSPATH' ) || exit;
 			</style>
 		</noscript>
 	<?php endif; ?>
+
+	<?php do_action( 'wfc_checkout_contact_before_fields' ); ?>
 	
 	<div class="wfc-contact-fields__wrapper">
 		<?php
@@ -59,6 +61,8 @@ defined( 'ABSPATH' ) || exit;
 		}
 		?>
 	</div>
+
+	<?php do_action( 'wfc_checkout_contact_after_fields' ); ?>
 </div>
 
 <?php do_action( 'wfc_checkout_after_contact_fields' ); ?>
