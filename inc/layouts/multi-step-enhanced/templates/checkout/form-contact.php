@@ -48,7 +48,6 @@ defined( 'ABSPATH' ) || exit;
 		</noscript>
 	<?php endif; ?>
 	
-	
 	<div class="wfc-contact-fields__wrapper">
 		<?php
 		$fields = $checkout->get_checkout_fields( 'billing' );
