@@ -69,7 +69,7 @@ gulp.task( 'build-css', gulp.series( 'update-ver', 'clean-css', function( done )
 		.pipe(sourcemaps.init())
 		.pipe(sass())
 		.pipe(autoprefixer({ cascade: false }))
-		.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false} } ) )
+		.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false}, reduceIdents: {keyframes: false} } ) )
 		.pipe(rename( { suffix: settings.assetsVersion + '.min' } ) )
 		.pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest('./css/')); // save .min.css
