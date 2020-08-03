@@ -48,9 +48,10 @@ defined( 'ABSPATH' ) || exit;
 		</noscript>
 	<?php endif; ?>
 
-	<?php do_action( 'wfc_checkout_contact_before_fields' ); ?>
 	
 	<div class="wfc-contact-fields__wrapper">
+		<?php do_action( 'wfc_checkout_contact_before_fields' ); ?>
+
 		<?php
 		$fields = $checkout->get_checkout_fields( 'billing' );
 		foreach ( $fields as $key => $field ) {
@@ -60,9 +61,10 @@ defined( 'ABSPATH' ) || exit;
 			}
 		}
 		?>
+		
+		<?php do_action( 'wfc_checkout_contact_after_fields' ); ?>
 	</div>
 
-	<?php do_action( 'wfc_checkout_contact_after_fields' ); ?>
 </div>
 
 <?php do_action( 'wfc_checkout_after_contact_fields' ); ?>
