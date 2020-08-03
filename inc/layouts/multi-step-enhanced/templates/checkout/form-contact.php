@@ -24,15 +24,42 @@ defined( 'ABSPATH' ) || exit;
 <?php do_action( 'wfc_checkout_before_step_contact_fields' ); ?>
 
 <div class="wfc-contact-fields">
-    <?php
-    $fields = $checkout->get_checkout_fields( 'billing' );
-    foreach ( $fields as $key => $field ) {
-        // Display only fields in display list
-        if ( in_array( $key, $display_fields ) ) {
-            woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
-        }
-    }
-    ?>
+	
+	<?php if ( is_user_logged_in() ) : ?>
+		<div class="wfc-contact-user-data" data-user-data-wrapper>
+			<?php do_action( 'wfc_checkout_before_user_data' ); ?>
+
+			<ul class="wfc-user-data">
+				<?php
+				foreach ( $user_data as $key => $value ) :
+					echo '<li class="wfc-user-data__'.$key.'">'.$value.'</li>';
+				endforeach;
+				?>
+				<li class="wfc-user-data__edit"><a href="#edit-info" data-user-contact-edit role="button"><?php _e( 'Edit', 'woocommerce-fluid-checkout' ) ?></a></li>
+			</ul>
+			
+			<?php do_action( 'wfc_checkout_after_user_data' ); ?>
+		</div>
+		<noscript>
+			<style type="text/css">
+			.wfc-user-identification { display: none !important; }
+			.wfc-contact-fields__wrapper { display: block !important; }
+			</style>
+		</noscript>
+	<?php endif; ?>
+	
+	
+	<div class="wfc-contact-fields__wrapper">
+		<?php
+		$fields = $checkout->get_checkout_fields( 'billing' );
+		foreach ( $fields as $key => $field ) {
+			// Display only fields in display list
+			if ( in_array( $key, $display_fields ) ) {
+				woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+			}
+		}
+		?>
+	</div>
 </div>
 
 <?php do_action( 'wfc_checkout_after_contact_fields' ); ?>
