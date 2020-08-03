@@ -58,9 +58,14 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	 * Enqueue scripts
 	 */
 	public function enqueue_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+
+		// Styles
 		wp_enqueue_style( 'wfc-checkout-layout--multi-step', self::$directory_url . 'css/checkout-multi-step'. self::$asset_version . '.css', NULL, NULL );
 		wp_enqueue_style( 'wfc-progress-bar', self::$directory_url . 'css/checkout-progress-bar--'.get_option( 'wfc_checkout_progress_bar_layout', 'default' ). self::$asset_version . '.css', NULL, NULL );
 		
+		// Scripts
 		wp_enqueue_script( 'wfc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', NULL, NULL, true );
 		wp_add_inline_script( 'wfc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
 	}

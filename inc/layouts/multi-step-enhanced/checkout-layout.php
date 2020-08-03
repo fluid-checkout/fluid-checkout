@@ -60,7 +60,15 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Enqueue scripts
 	 */
 	public function enqueue_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+
+		// Styles
 		wp_enqueue_style( 'wfc-checkout-layout--multi-step-enhanced', self::$directory_url . 'css/checkout-multi-step--enhanced'. self::$asset_version . '.css', NULL, NULL );
+		
+		// Scripts
+		wp_enqueue_script( 'wfc-checkout-steps-enhanced', self::$directory_url . 'js/checkout-steps-enhanced'. self::$asset_version . '.js', NULL, NULL, true );
+		wp_add_inline_script( 'wfc-checkout-steps-enhanced', 'window.addEventListener("load",function(){CheckoutStepsEnhanced.init();})' );
 	}
 
 
@@ -145,12 +153,30 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 			'billing_phone',
 		) );
 
+		// Get user data
+		$user_data = array();
+		if ( is_user_logged_in() ) {
+			$current_user = wp_get_current_user();
+
+			$user_data = array(
+				'user_email'   => $current_user->user_email,
+				'display_name' => ! empty( $current_user->display_name ) ? $current_user->display_name : $current_user->first_name.' '.$current_user->last_name,
+			);
+			$billing_phone = get_user_meta( $current_user->ID, 'billing_phone', true );
+			if ( ! empty( $billing_phone ) ) {
+				$user_data['billing_phone'] = $billing_phone;
+			}
+
+			$user_data = apply_filters( 'wfc_checkout_contact_user_data', $user_data );
+		}
+
 		wc_get_template(
 			'checkout/form-contact.php',
 			array(
 				'checkout'          => WC()->checkout(),
 				'display_fields'    => $contact_fields,
-				'section_title'  	=> apply_filters( 'wfc_checkout_contact_details_step_section_title', __( 'Contact details', 'woocommerce-fluid-checkout' ) ),
+				'section_title'  	=> apply_filters( 'wfc_checkout_contact_details_step_ section_title', is_user_logged_in() ? __( 'Confirm your contact details', 'woocommerce-fluid-checkout' ) : __( 'Contact details', 'woocommerce-fluid-checkout' ) ),
+				'user_data'			=> $user_data,
 			)
 		);
 

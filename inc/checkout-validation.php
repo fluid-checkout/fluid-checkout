@@ -59,7 +59,7 @@ class FluidCheckoutValidation extends FluidCheckout {
 	 */
 	public function enqueue() {
 		// Bail if not on checkout page.
-		if( ! is_checkout() || is_order_received_page() ){ return; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
 		
 		wp_localize_script(
 			'wfc-bundles',
