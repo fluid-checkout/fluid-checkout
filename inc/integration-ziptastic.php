@@ -36,7 +36,6 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 		// Bail if address form not present
 		if( ! is_checkout() && ! ( is_account_page() && isset( $wp_query->query_vars['edit-address'] ) ) ){ return; }
 		
-		// wp_enqueue_script( 'wfc-bundles', self::$directory_url.'js/ziptastic'.self::$asset_version.'.js', null, null, true );
 		wp_localize_script( 
 			'wfc-bundles',
 			'ziptasticVars',
