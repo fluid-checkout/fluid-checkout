@@ -49,6 +49,9 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	 * Add page body class for feature detection
 	 */
 	public function add_body_class( $classes ) {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+		
 		return array_merge( $classes, array( 'has-wfc-checkout-layout', 'has-wfc-checkout-layout--multi-step' ) );
 	}
 

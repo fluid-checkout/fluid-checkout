@@ -34,7 +34,7 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 		global $wp_query;
 
 		// Bail if address form not present
-		if( ! is_checkout() && ! ( is_account_page() && isset( $wp_query->query_vars['edit-address'] ) ) ){ return; }
+		if( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! ( is_account_page() && isset( $wp_query->query_vars['edit-address'] ) ) ) ){ return; }
 		
 		wp_localize_script( 
 			'wfc-bundles',

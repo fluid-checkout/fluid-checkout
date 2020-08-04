@@ -28,6 +28,18 @@ class FluidCheckoutValidation extends FluidCheckout {
 
 
 	/**
+	 * Add page body class for feature detection
+	 */
+	public function add_body_class( $classes ) {
+		// Bail if not on checkout page.
+		// if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+
+		return array_merge( $classes, array( 'has-wfc-checkout-validation' ) );
+	}
+
+
+
+	/**
 	 * Change email fields to include custom attribute for Mailcheck selector
 	 */
 	public function change_checkout_email_fields_args( $fields_args ) {
@@ -41,15 +53,6 @@ class FluidCheckoutValidation extends FluidCheckout {
 		}
 
 		return $fields_args;
-	}
-
-
-
-	/**
-	 * Add page body class for feature detection
-	 */
-	public function add_body_class( $classes ) {
-		return array_merge( $classes, array( 'has-wfc-checkout-validation' ) );
 	}
 
 
