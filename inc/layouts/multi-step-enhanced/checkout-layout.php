@@ -178,7 +178,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 			array(
 				'checkout'          => WC()->checkout(),
 				'display_fields'    => $contact_fields,
-				'section_title'  	=> apply_filters( 'wfc_checkout_contact_details_step_ section_title', __( 'Contact details', 'woocommerce-fluid-checkout' ) ),
+				'section_title'  	=> apply_filters( 'wfc_checkout_contact_step_section_title', __( 'Contact details', 'woocommerce-fluid-checkout' ) ),
 				'user_data'			=> $user_data,
 			)
 		);
