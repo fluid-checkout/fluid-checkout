@@ -69,8 +69,10 @@ gulp.task( 'build-css', gulp.series( 'update-ver', 'clean-css', function( done )
 		.pipe(sourcemaps.init())
 		.pipe(sass())
 		.pipe(autoprefixer({ cascade: false }))
+		.pipe(rename({suffix: settings.assetsVersion}))
+		.pipe(gulp.dest('./css/')) // save .css
 		.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false}, reduceIdents: {keyframes: false} } ) )
-		.pipe(rename( { suffix: settings.assetsVersion + '.min' } ) )
+		.pipe(rename( { suffix: '.min' } ) )
 		.pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest('./css/')); // save .min.css
 } ) );
@@ -90,18 +92,21 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 		settings.nodePath + 'mailcheck/src/mailcheck.js',
 		settings.jsPath + 'lib/bundles.js',
 	])
-	.pipe(uglify())
-	.pipe(rename({suffix: settings.assetsVersion + '.min'}))
-	.pipe(gulp.dest('./js/lib/')); // save .min.js
+	.pipe(rename({suffix: settings.assetsVersion}))
+    .pipe(gulp.dest('./js/lib/')) // save .js
+    .pipe(uglify())
+    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest('./js/lib/')); // save .min.js
 
     // JS FILES
     gulp.src([
         settings.jsPath + '*.js',
-    ])
+	])
+	.pipe(rename({suffix: settings.assetsVersion}))
     .pipe(gulp.dest('./js/')) // save .js
     .pipe(sourcemaps.init())
     .pipe(uglify())
-    .pipe(rename({suffix: settings.assetsVersion + '.min'}))
+    .pipe(rename({suffix: '.min'}))
     .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest('./js/')); // save .min.js
 
