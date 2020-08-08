@@ -178,7 +178,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Maybe output billing step section title
+	 * Output billing step section title
 	 */
 	public function output_billing_step_section_title() {
 		?>
@@ -213,7 +213,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Maybe output shipping step section title
+	 * Output shipping step section title
 	 */
 	public function output_shipping_step_section_title() {
 		?>
@@ -277,7 +277,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Maybe output payment step section title
+	 * Output payment step section title
 	 */
 	public function output_payment_step_section_title() {
 		?>

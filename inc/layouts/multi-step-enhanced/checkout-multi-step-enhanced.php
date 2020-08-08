@@ -34,12 +34,12 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		// add_action( 'wfc_checkout_steps', array( $this, 'output_step_shipping' ), 50 );
 		// add_action( 'wfc_checkout_steps', array( $this, 'output_step_payment' ), 100 );
 
-		// Shipping
-		
+		// Contact
+		add_action( 'wfc_checkout_before_step_contact_fields', array( $this, 'output_contact_step_section_title' ), 10 );
 
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
-		remove_action( 'wfc_checkout_payment', array( $this->multistep(), 'output_order_review' ), 10 );
+		remove_action( 'wfc_checkout_before_step_payment_fields', array( $this->multistep(), 'output_order_review' ), 5 );
 		remove_action( 'wfc_checkout_after_step_payment_fields', array( $this->multistep(), 'output_checkout_place_order' ), 100 );
 		remove_filter( 'woocommerce_order_button_html', array( $this->multistep(), 'get_payment_step_actions_html' ), 20 );
 		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_payment_step_actions_html' ), 100 );
@@ -193,7 +193,6 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 			array(
 				'checkout'          => WC()->checkout(),
 				'display_fields'    => $contact_fields,
-				'section_title'  	=> apply_filters( 'wfc_checkout_contact_step_section_title', __( 'Contact details', 'woocommerce-fluid-checkout' ) ),
 				'user_data'			=> $user_data,
 			)
 		);
@@ -208,6 +207,15 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	public function get_contact_step_actions_html() {
 		$actions_html = '<div class="wfc-actions"><button class="wfc-next button alt">' . __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' ) . '</button></div>';
 		return apply_filters( 'wfc_contact_step_actions_html', $actions_html );
+	}
+
+	/**
+	 * Output contact step section title
+	 */
+	public function output_contact_step_section_title() {
+		?>
+		<h3 class="wfc-checkout-step-title"><?php echo esc_html( apply_filters( 'wfc_checkout_contact_step_section_title', __( 'Contact details', 'woocommerce-fluid-checkout' ) ) ); ?></h3>
+		<?php
 	}
 
 

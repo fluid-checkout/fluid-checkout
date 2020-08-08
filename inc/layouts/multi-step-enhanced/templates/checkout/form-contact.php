@@ -19,8 +19,6 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<h2 class="wfc-checkout-step-title"><?php echo esc_html( $section_title ); ?></h2>
-
 <?php do_action( 'wfc_checkout_before_step_contact_fields' ); ?>
 
 <div class="wfc-contact-fields">
