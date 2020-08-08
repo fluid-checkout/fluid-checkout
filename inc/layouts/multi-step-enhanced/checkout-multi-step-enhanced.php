@@ -9,7 +9,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 */
 	public function __construct() {
         // Load dependency: FluidCheckoutLayout_MultiStep
-        require_once self::$directory_path . 'inc/layouts/multi-step/checkout-layout.php';
+        require_once self::$directory_path . 'inc/layouts/multi-step/checkout-multi-step.php';
 
 		$this->hooks();
 	}
