@@ -19,7 +19,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<h2 class="wfc-checkout-step-title"><?php echo esc_html( $section_title ); ?></h2>
+<h3 class="wfc-checkout-step-title"><?php echo esc_html( $section_title ); ?></h3>
 
 <?php do_action( 'wfc_checkout_before_step_shipping_fields' ); ?>
 

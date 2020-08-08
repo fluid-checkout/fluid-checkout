@@ -156,7 +156,15 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	public function output_step_billing() {
 		$this->output_step_start_tag( apply_filters( 'wfc_billing_step_title', __( 'Billing', 'woocommerce-fluid-checkout' ) ) );
 		do_action( 'woocommerce_checkout_before_customer_details' );
-		do_action( 'woocommerce_checkout_billing' );
+
+		wc_get_template(
+			'checkout/form-billing.php',
+			array(
+				'checkout'          => WC()->checkout(),
+				'section_title'  	=> apply_filters( 'wfc_checkout_shipping_step_section_title', __( 'Billing', 'woocommerce-fluid-checkout' ) ),
+			)
+		);
+
 		echo $this->get_billing_step_actions_html();
 		$this->output_step_end_tag();
 	}
@@ -176,7 +184,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 			'checkout/form-shipping.php',
 			array(
 				'checkout'          => WC()->checkout(),
-				'section_title'  	=> apply_filters( 'wfc_checkout_shipping_step_section_title', __( 'Shipping', 'woocommerce-fluid-checkout' ) ),
+				'section_title'  	=> apply_filters( 'wfc_checkout_shipping_step_section_title', __( 'Shipping Address', 'woocommerce-fluid-checkout' ) ),
 			)
 		);
 
@@ -232,7 +240,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 			'checkout/form-payment.php',
 			array(
 				'checkout'          => WC()->checkout(),
-				'section_title'  	=> apply_filters( 'wfc_checkout_payment_step_section_title', __( 'Payment', 'woocommerce-fluid-checkout' ) ),
+				'section_title'  	=> apply_filters( 'wfc_checkout_payment_step_section_title', __( 'Payment Method', 'woocommerce-fluid-checkout' ) ),
 			)
 		);
 
