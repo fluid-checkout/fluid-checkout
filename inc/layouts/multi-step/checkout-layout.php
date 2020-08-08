@@ -280,7 +280,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Add back button html to place order button on checkout.
+	 * Return html for billing step actions
 	 */
 	public function get_billing_step_actions_html() {
 		$proceed_button_text = __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' );
@@ -293,7 +293,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Add back button html to place order button on checkout.
+	 * Return html for shipping step actions
 	 */
 	public function get_shipping_step_actions_html() {
 		$actions_html = '<div class="wfc-actions"><button class="wfc-prev">' . _x( 'Back', 'Previous step button', 'woocommerce-fluid-checkout' ) . '</button> <button class="wfc-next button alt">' . __( 'Proceed to Payment', 'woocommerce-fluid-checkout' ) . '</button></div>';
