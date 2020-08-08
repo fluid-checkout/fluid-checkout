@@ -21,8 +21,6 @@ defined( 'ABSPATH' ) || exit;
 
 <?php do_action( 'wfc_checkout_before_step_payment_fields' ); ?>
 
-<h3><?php echo esc_html( $section_title ); ?></h3>
-
 <?php do_action( 'wfc_checkout_payment' ); ?>
 
 <?php do_action( 'wfc_checkout_after_step_payment_fields' ); ?>

@@ -19,8 +19,6 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<h3><?php echo esc_html( $section_title ); ?></h3>
-
 <?php do_action( 'wfc_checkout_before_step_shipping_fields' ); ?>
 
 <div class="woocommerce-shipping-fields">
