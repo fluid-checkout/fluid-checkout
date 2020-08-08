@@ -29,20 +29,35 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 30, 3 );
 
 		// Steps display order
-		remove_action( 'wfc_checkout_steps', array( FluidCheckoutLayout_MultiStep::instance(), 'output_step_billing' ), 10 );
+		remove_action( 'wfc_checkout_steps', array( $this->multistep(), 'output_step_billing' ), 10 );
+		// remove_action( 'wfc_checkout_steps', array( $this->multistep(), 'output_step_shipping' ), 50 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_contact' ), 10 );
+		// add_action( 'wfc_checkout_steps', array( $this, 'output_step_shipping' ), 50 );
+		// add_action( 'wfc_checkout_steps', array( $this, 'output_step_payment' ), 100 );
+
+		// Shipping
+		
 
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
-		remove_action( 'wfc_checkout_payment', array( FluidCheckoutLayout_MultiStep::instance(), 'output_order_review' ), 10 );
-		remove_action( 'wfc_checkout_payment', array( FluidCheckoutLayout_MultiStep::instance(), 'output_checkout_place_order' ), 30 );
-		remove_action( 'woocommerce_order_button_html', array( FluidCheckoutLayout_MultiStep::instance(), 'get_payment_step_actions_html' ), 20 );
+		remove_action( 'wfc_checkout_payment', array( $this->multistep(), 'output_order_review' ), 10 );
+		remove_action( 'wfc_checkout_payment', array( $this->multistep(), 'output_checkout_place_order' ), 30 );
+		remove_action( 'woocommerce_order_button_html', array( $this->multistep(), 'get_payment_step_actions_html' ), 20 );
 		
 		// Order Review
 		add_action( 'wfc_checkout_after_steps', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
-		add_action( 'wfc_checkout_order_review_wrapper', array( FluidCheckoutLayout_MultiStep::instance(), 'output_order_review' ), 10 );
-		add_action( 'wfc_checkout_order_review_wrapper', array( FluidCheckoutLayout_MultiStep::instance(), 'output_checkout_place_order' ), 30 );
+		add_action( 'wfc_checkout_order_review_wrapper', array( $this->multistep(), 'output_order_review' ), 10 );
+		add_action( 'wfc_checkout_order_review_wrapper', array( $this->multistep(), 'output_checkout_place_order' ), 30 );
 		
+	}
+
+
+
+	/**
+	 * Return WooCommerce Fluid Checkout multi-step class instance
+	 */
+	public function multistep() {
+		return FluidCheckoutLayout_MultiStep::instance();
 	}
 
 
@@ -144,7 +159,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Output step: Contact
 	 */
 	public function output_step_contact() {
-		FluidCheckoutLayout_MultiStep::instance()->output_step_start_tag( apply_filters( 'wfc_contact_step_title', __( 'Contact', 'woocommerce-fluid-checkout' ) ) );
+		$this->multistep()->output_step_start_tag( apply_filters( 'wfc_contact_step_title', __( 'Contact', 'woocommerce-fluid-checkout' ) ) );
 		do_action( 'woocommerce_checkout_before_customer_details' );
 
 		// Define contact fields
@@ -184,10 +199,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		);
 
 		echo $this->get_contact_step_actions_html();
-		FluidCheckoutLayout_MultiStep::instance()->output_step_end_tag();
+		$this->multistep()->output_step_end_tag();
 	}
-
-
 
 	/**
 	 * Add back button html to checkout contact step.
@@ -195,6 +208,30 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	public function get_contact_step_actions_html() {
 		$actions_html = '<div class="wfc-actions"><button class="wfc-next button alt">' . __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' ) . '</button></div>';
 		return apply_filters( 'wfc_contact_step_actions_html', $actions_html );
+	}
+
+
+
+	/**
+	 * Output step: Shipping
+	 */
+	public function output_step_shipping() {
+		// $this->multistep()->output_step_start_tag( apply_filters( 'wfc_shipping_step_title', __( 'Shipping', 'woocommerce-fluid-checkout' ) ) );
+
+		// wc_get_template(
+		// 	'checkout/form-shipping.php',
+		// 	array(
+		// 		'checkout'          => WC()->checkout(),
+		// 		'display_fields'    => $contact_fields,
+		// 		'section_title'  	=> apply_filters( 'wfc_checkout_contact_step_section_title', __( 'Shipping', 'woocommerce-fluid-checkout' ) ),
+		// 		'user_data'			=> $user_data,
+		// 	)
+		// );
+
+		// do_action( 'woocommerce_checkout_after_customer_details' );
+
+		// echo $this->multistep()->get_shipping_step_actions_html();
+		// $this->multistep()->output_step_end_tag();
 	}
 
 	/**

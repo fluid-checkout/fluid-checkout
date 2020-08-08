@@ -31,11 +31,15 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_shipping' ), 50 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_payment' ), 100 );
 
+		// Additional Information
+		add_action( 'wfc_checkout_after_step_shipping_fields', array( $this, 'maybe_output_additional_fields_shipping_step' ), 50 );
+		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'maybe_output_additional_fields_payment_step' ), 50 );
+
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
-		add_action( 'wfc_checkout_payment', array( $this, 'output_order_review' ), 10 );
+		add_action( 'wfc_checkout_before_step_payment_fields', array( $this, 'output_order_review' ), 10 );
 		add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
-		add_action( 'wfc_checkout_payment', array( $this, 'output_checkout_place_order' ), 30 );
+		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_checkout_place_order' ), 100 );
 		add_filter( 'woocommerce_order_button_html', array( $this, 'get_payment_step_actions_html' ), 20 );
 
 		// Theme fixes
@@ -163,11 +167,57 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	 * Output step: Shipping
 	 */
 	public function output_step_shipping() {
+		// Bail if shipping not needed
+		if ( ! WC()->cart->needs_shipping() ) { return; }
+
 		$this->output_step_start_tag( apply_filters( 'wfc_shipping_step_title', __( 'Shipping', 'woocommerce-fluid-checkout' ) ) );
-		do_action( 'woocommerce_checkout_shipping' );
+
+		wc_get_template(
+			'checkout/form-shipping.php',
+			array(
+				'checkout'          => WC()->checkout(),
+				'section_title'  	=> apply_filters( 'wfc_checkout_shipping_step_section_title', __( 'Shipping', 'woocommerce-fluid-checkout' ) ),
+			)
+		);
+
 		do_action( 'woocommerce_checkout_after_customer_details' );
+
 		echo $this->get_shipping_step_actions_html();
 		$this->output_step_end_tag();
+	}
+
+
+
+	/**
+	 * Output step: Additional Information fields
+	 */
+	public function output_additional_fields() {
+		wc_get_template(
+			'checkout/form-additional-fields.php',
+			array(
+				'checkout' => WC()->checkout(),
+			)
+		);
+	}
+
+	/**
+	 * Output order additional fields
+	 */
+	public function maybe_output_additional_fields_shipping_step() {
+		// Bail if shipping not needed
+		if ( ! WC()->cart->needs_shipping() ) { return; }
+
+		$this->output_additional_fields();
+	}
+
+	/**
+	 * Output order additional fields
+	 */
+	public function maybe_output_additional_fields_payment_step() {
+		// Bail if shipping is needed
+		if ( WC()->cart->needs_shipping() ) { return; }
+
+		$this->output_additional_fields();
 	}
 
 
@@ -177,7 +227,15 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	 */
 	public function output_step_payment() {
 		$this->output_step_start_tag( apply_filters( 'wfc_payment_step_title', __( 'Payment', 'woocommerce-fluid-checkout' ) ) );
-		do_action( 'wfc_checkout_payment' );
+		
+		wc_get_template(
+			'checkout/form-payment.php',
+			array(
+				'checkout'          => WC()->checkout(),
+				'section_title'  	=> apply_filters( 'wfc_checkout_payment_step_section_title', __( 'Payment', 'woocommerce-fluid-checkout' ) ),
+			)
+		);
+
 		$this->output_step_end_tag();
 	}
 
@@ -217,7 +275,10 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	 * Add back button html to place order button on checkout.
 	 */
 	public function get_billing_step_actions_html() {
-		$actions_html = '<div class="wfc-actions"><button class="wfc-next button alt">' . __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' ) . '</button></div>';
+		$proceed_button_text = __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' );
+		if ( ! WC()->cart->needs_shipping() ) { $proceed_button_text = __( 'Proceed to Payment', 'woocommerce-fluid-checkout' ); }
+
+		$actions_html = '<div class="wfc-actions"><button class="wfc-next button alt">' . $proceed_button_text . '</button></div>';
 		return apply_filters( 'wfc_billing_step_actions_html', $actions_html );
 	}
 
