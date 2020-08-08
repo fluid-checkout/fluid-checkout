@@ -44,7 +44,7 @@ gulp.task( 'update-ver', function( done ) {
 // gulp clean-css
 // Delete existing generated css files
 gulp.task( 'clean-css', function( done ) {
-	del.sync( [ './css/*.css', './css/maps/*.map' ] );
+	del.sync( [ './css/**/*.css', './css/**/maps/*.map' ] );
 	done();
 } );
 
@@ -54,7 +54,7 @@ gulp.task( 'clean-css', function( done ) {
 // gulp clean-js
 // Delete existing generated js files
 gulp.task( 'clean-js', function( done ) {
-	del.sync( [ './js/*.js', './js/maps/*.map' ] );
+	del.sync( [ './js/**/*.js', './js/**/maps/*.map' ] );
 	done();
 } );
 
