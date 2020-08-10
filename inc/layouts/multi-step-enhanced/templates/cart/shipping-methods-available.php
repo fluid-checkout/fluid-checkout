@@ -11,7 +11,7 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<p class="shipping shipping_method__package" data-title="<?php echo esc_attr( $package_name ); ?>" data-package-index="<?php echo esc_attr( $index ); ?>">
+<div class="shipping shipping_method__package" data-title="<?php echo esc_attr( $package_name ); ?>" data-package-index="<?php echo esc_attr( $index ); ?>">
 
 <?php if ( sizeof( $available_methods ) > 0 ) : ?>
 
@@ -46,4 +46,4 @@ defined( 'ABSPATH' ) || exit;
 
 <?php endif; ?>
 
-</p>
+</div>
