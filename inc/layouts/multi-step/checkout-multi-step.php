@@ -61,7 +61,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not at checkout
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
 		
 		return array_merge( $classes, array( 'has-wfc-checkout-layout', 'has-wfc-checkout-layout--multi-step' ) );
 	}
