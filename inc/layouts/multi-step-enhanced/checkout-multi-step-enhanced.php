@@ -291,24 +291,26 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Change shipping methods full label including price with markup necessary for displaying price as a separate element
 	 */
 	function get_cart_shipping_methods_label( $method ) {
-		$label     = '<span class="shipping_method__option-label">' . $method->get_label() . '</span>';
+		$label     = sprintf( apply_filters( 'wfc_shipping_method_option_label_markup', '<span class="shipping_method__option-label">%s</span>' ), $method->get_label() );
 		$has_cost  = 0 < $method->cost;
 		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
 		
 		if ( $has_cost && ! $hide_cost ) {
 			
 			if ( WC()->cart->display_prices_including_tax() ) {
-				$label .= ' <span class="shipping_method__option-price">' . wc_price( $method->cost + $method->get_shipping_tax() );
+				$method_costs = wc_price( $method->cost + $method->get_shipping_tax() );
 				if ( $method->get_shipping_tax() > 0 && ! wc_prices_include_tax() ) {
-					$label .= '<small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
+					$method_costs .= '<small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
 				}
-				$label .= '</span>';
+
+				$label .= sprintf( apply_filters( 'wfc_shipping_method_option_price_markup', '<span class="shipping_method__option-price">%s</span>' ), $method_costs );
 			} else {
-				$label .= ' <span class="shipping_method__option-price">' . wc_price( $method->cost );
+				$method_costs = wc_price( $method->cost + $method->get_shipping_tax() );
 				if ( $method->get_shipping_tax() > 0 && wc_prices_include_tax() ) {
-					$label .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
+					$method_costs .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
 				}
-				$label .= '</span>';
+
+				$label .= sprintf( apply_filters( 'wfc_shipping_method_option_price_markup', '<span class="shipping_method__option-price">%s</span>' ), $method_costs );
 			}
 		}
 
