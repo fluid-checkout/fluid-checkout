@@ -28,14 +28,13 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		// Template loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 30, 3 );
 
-		// Steps display order
+		// Contact
 		remove_action( 'wfc_checkout_steps', array( $this->multistep(), 'output_step_billing' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_contact' ), 10 );
-		// add_action( 'wfc_checkout_steps', array( $this, 'output_step_shipping' ), 50 );
-		// add_action( 'wfc_checkout_steps', array( $this, 'output_step_payment' ), 100 );
-
-		// Contact
 		add_action( 'wfc_checkout_before_step_contact_fields', array( $this, 'output_contact_step_section_title' ), 10 );
+
+		// Shipping
+		add_action( 'wfc_checkout_after_step_shipping_fields', array( $this, 'output_shipping_methods_available' ), 10 );
 
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
@@ -150,7 +149,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Checkout Steps
+	 * Checkout Step: Contact
 	 */
 
 
@@ -217,6 +216,112 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		<h3 class="wfc-checkout-step-title"><?php echo esc_html( apply_filters( 'wfc_checkout_contact_step_section_title', __( 'Contact details', 'woocommerce-fluid-checkout' ) ) ); ?></h3>
 		<?php
 	}
+
+
+
+
+
+	/**
+	 * Checkout Step: Shipping
+	 */
+
+
+
+	/**
+	 * Get shipping methods for user selection.
+	 *
+	 * @access public
+	 */
+	function output_shipping_methods_available() {
+		$packages = WC()->shipping->get_packages();
+		
+		$this->output_shipping_methods_start_tag();
+		
+		$first_item = true;
+		foreach ( $packages as $i => $package ) {
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			$product_names = array();
+	
+			if ( sizeof( $packages ) > 1 ) {
+				foreach ( $package['contents'] as $item_id => $values ) {
+					$product_names[ $item_id ] = $values['data']->get_name() . ' &times;' . $values['quantity'];
+				}
+				$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
+			}
+	
+			wc_get_template( 'cart/shipping-methods-available.php', array(
+				'package'                  => $package,
+				'available_methods'        => $package['rates'],
+				'show_package_details'     => sizeof( $packages ) > 1,
+				'show_shipping_calculator' => is_cart() && $first_item,
+				'package_details'          => implode( ', ', $product_names ),
+				// @codingStandardsIgnoreStart
+				'package_name'             => apply_filters( 'woocommerce_shipping_package_name', sprintf( _nx( 'Shipping', 'Shipping %d', ( $i + 1 ), 'shipping packages', 'woocommerce' ), ( $i + 1 ) ), $i, $package ),
+				// @codingStandardsIgnoreEnd
+				'index'                    => $i,
+				'chosen_method'            => $chosen_method,
+			) );
+	
+			$first_item = false;
+		}
+		
+		$this->output_shipping_methods_end_tag();
+	}
+
+	/**
+	 * Output shipping methods start tag
+	 */
+	public function output_shipping_methods_start_tag() {
+		?>
+		<div class="shipping-method__packages">
+			<h3><?php esc_html_e( 'Shipping Methods', 'woocommerce' ); ?></h3>
+		<?php
+	}
+
+	/**
+	 * Output shipping methods end tag
+	 */
+	public function output_shipping_methods_end_tag() {
+		?>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Change shipping methods full label including price with markup necessary for displaying price as a separate element
+	 */
+	function get_cart_shipping_methods_label( $method ) {
+		$label     = '<span class="shipping_method__option-label">' . $method->get_label() . '</span>';
+		$has_cost  = 0 < $method->cost;
+		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
+		
+		if ( $has_cost && ! $hide_cost ) {
+			
+			if ( WC()->cart->display_prices_including_tax() ) {
+				$label .= ' <span class="shipping_method__option-price">' . wc_price( $method->cost + $method->get_shipping_tax() );
+				if ( $method->get_shipping_tax() > 0 && ! wc_prices_include_tax() ) {
+					$label .= '<small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
+				}
+				$label .= '</span>';
+			} else {
+				$label .= ' <span class="shipping_method__option-price">' . wc_price( $method->cost );
+				if ( $method->get_shipping_tax() > 0 && wc_prices_include_tax() ) {
+					$label .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
+				}
+				$label .= '</span>';
+			}
+		}
+
+		return $label;
+	}
+
+
+
+
+
+	/**
+	 * Checkout Step: Payment
+	 */
 
 
 
