@@ -35,6 +35,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 		// Shipping
 		add_action( 'wfc_checkout_after_step_shipping_fields', array( $this, 'output_shipping_methods_available' ), 10 );
+		add_action( 'wfc_shipping_methods_before_packages', array( $this, 'output_shipping_methods_start_tag' ), 10 );
+		add_action( 'wfc_shipping_methods_after_packages', array( $this, 'output_shipping_methods_end_tag' ), 10 );
 
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
@@ -235,7 +237,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	function output_shipping_methods_available() {
 		$packages = WC()->shipping->get_packages();
 		
-		$this->output_shipping_methods_start_tag();
+		do_action( 'wfc_shipping_methods_before_packages' );
 		
 		$first_item = true;
 		foreach ( $packages as $i => $package ) {
@@ -264,8 +266,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	
 			$first_item = false;
 		}
-		
-		$this->output_shipping_methods_end_tag();
+
+		do_action( 'wfc_shipping_methods_after_packages' );
 	}
 
 	/**
