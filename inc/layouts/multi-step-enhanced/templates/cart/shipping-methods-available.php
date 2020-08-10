@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 
 <?php if ( sizeof( $available_methods ) > 0 ) : ?>
 
-	<ul id="shipping_method" class="shipping_method__options">
+	<?php echo apply_filters( 'wfc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping_method__options">' ); ?>
 	<?php foreach ( $available_methods as $method ) :
 		$checked_method = sizeof( $available_methods ) === 1 || $method->id == $chosen_method;
 
@@ -30,7 +30,7 @@ defined( 'ABSPATH' ) || exit;
 
 		do_action( 'woocommerce_after_shipping_rate', $method, $index );
 	endforeach; ?>
-	</ul>
+	<?php echo apply_filters( 'wfc_shipping_method_option_end_tag_markup', '</ul>' ); ?>
 
 	<?php if ( $show_package_details ) : ?>
 	<?php echo '<p class="woocommerce-shipping-contents"><small>' . esc_html( $package_details ) . '</small></p>'; ?>
