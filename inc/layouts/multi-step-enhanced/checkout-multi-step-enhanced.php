@@ -276,7 +276,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	public function output_shipping_methods_start_tag() {
 		?>
 		<div class="shipping-method__packages">
-			<h3><?php esc_html_e( 'Shipping Methods', 'woocommerce' ); ?></h3>
+			<h3><?php esc_html_e( 'Shipping Methods', 'woocommerce-fluid-checkout' ); ?></h3>
 		<?php
 	}
 
