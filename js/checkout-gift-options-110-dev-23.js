@@ -23,7 +23,7 @@
 	
 	var _publicMethods = {};
 	var _settings = {
-		fieldsWrapperSelector: '#woocommerce-gift-options__field-wrapper',
+		fieldsWrapperSelector: '#wfc-gift-options__field-wrapper',
 		checkboxSelector: '#_wfc_has_gift_options',
 
 		bodyClass: 'has-wfc-gift-options--active',
