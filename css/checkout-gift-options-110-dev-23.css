@@ -1,0 +1,8 @@
+/*
+ * Styles for WooCommerce Fluid Checkout Validation
+ */
+.has-wfc-gift-options--active #woocommerce-gift-options__field-wrapper {
+  display: none; }
+
+#woocommerce-gift-options__field-wrapper.active {
+  display: block; }
