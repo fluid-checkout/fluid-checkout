@@ -1,7 +1,5 @@
 /*
  * Styles for WooCommerce Fluid Checkout Validation
- * Author: FluidWeb
- * URL: https://fluidweb.site/
  */
 .form-row .woocommerce-error.woocommerce-error {
   /* Double selector to augment specificity */

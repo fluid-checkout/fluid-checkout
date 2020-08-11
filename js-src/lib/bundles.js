@@ -12,9 +12,10 @@
     var settings = wfcSettings,
         ver = wfcSettings.assetsVersion;
 
-    RequireBundle.register( 'wfc-ziptastic', [ settings.jsPath + 'ziptastic' + ver + '.js' ], '[data-ziptastic]', function(){ Ziptastic.init(); } );
     RequireBundle.register( 'wfc-checkout-validation', [ settings.jsPath + 'checkout-validation' + ver + '.js', settings.cssPath + 'checkout-validation' + ver + '.css' ], '.has-wfc-checkout-validation form.checkout', function(){ CheckoutValidation.init(); } );
-    
+    RequireBundle.register( 'wfc-checkout-gift-options', [ settings.jsPath + 'checkout-gift-options' + ver + '.js', settings.cssPath + 'checkout-gift-options' + ver + '.css' ], '.has-wfc-gift-options #wfc-gift-options__field-wrapper', function(){ CheckoutGiftOptions.init(); } );
+        
     RequireBundle.register( 'wfc-mailcheck', [ settings.jsPath + 'lib/mailcheck' + ver + '.js', settings.jsPath + 'mailcheck-init' + ver + '.js' ], '[data-mailcheck]', function(){ MailcheckInit.init(); } );
     
+    RequireBundle.register( 'wfc-ziptastic', [ settings.jsPath + 'ziptastic' + ver + '.js' ], '[data-ziptastic]', function(){ Ziptastic.init(); } );
 })();
