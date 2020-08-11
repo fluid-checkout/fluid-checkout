@@ -44,7 +44,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 
 
 	/**
-	 * Output gift packaging fields.
+	 * Output gift options fields.
 	 */
 	public function output_gift_options_fields( $checkout ) {
 		
@@ -90,59 +90,59 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 	 * Update the order meta with gift fields value.
 	 **/
 	public function update_order_meta_with_gift_options_fields( $order_id ) {
-		$is_gift_packaging = isset( $_POST['_wfc_has_gift_options'] ) && boolval( $_POST['_wfc_has_gift_options'] );
-		$gift_packaging_message = isset( $_POST['_wfc_gift_message'] ) ? $_POST['_wfc_gift_message'] : '';
-		$gift_packaging_from = isset( $_POST['_wfc_gift_from'] ) ? $_POST['_wfc_gift_from'] : '';
+		$has_gift_options = isset( $_POST['_wfc_has_gift_options'] ) && boolval( $_POST['_wfc_has_gift_options'] );
+		$gift_message = isset( $_POST['_wfc_gift_message'] ) ? $_POST['_wfc_gift_message'] : '';
+		$gift_from = isset( $_POST['_wfc_gift_from'] ) ? $_POST['_wfc_gift_from'] : '';
 
 		// Update order meta
-		update_post_meta( $order_id, '_wfc_has_gift_options', $is_gift_packaging ? 'Yes' : 'No' );
-		update_post_meta( $order_id, '_wfc_gift_message', $is_gift_packaging ? $gift_packaging_message : '' );
-		update_post_meta( $order_id, '_wfc_gift_from', $is_gift_packaging ? $gift_packaging_from : '' );
+		update_post_meta( $order_id, '_wfc_has_gift_options', $has_gift_options ? 'Yes' : 'No' );
+		update_post_meta( $order_id, '_wfc_gift_message', $has_gift_options ? $gift_message : '' );
+		update_post_meta( $order_id, '_wfc_gift_from', $has_gift_options ? $gift_from : '' );
 	}
 
 
 
 	/**
-	 * Display gift packaging fields on order admin screen.
+	 * Display gift options fields on order admin screen.
 	 **/
 	public function display_gift_options_fields_order_admin_screen( $order ) {
 		$order_id = $order->id;
-		$gift_packaging_message = get_post_meta( $order_id, '_wfc_gift_message', true );
-		$gift_packaging_from = get_post_meta( $order_id, '_wfc_gift_from', true );
+		$gift_message = get_post_meta( $order_id, '_wfc_gift_message', true );
+		$gift_from = get_post_meta( $order_id, '_wfc_gift_from', true );
 		
 
-		if ( $gift_packaging_message || $gift_packaging_from ) : ?>
+		if ( $gift_message || $gift_from ) : ?>
 		
 		<br class="clear" />
 		<h4>Gift Order <a href="#" class="edit_address">Edit</a></h4>
 
 		<div class="address">
 			<?php
-			if ( $gift_packaging_message ) {
-				echo '<p><strong>'. __( 'Gift Message:', 'woocommerce-fluid-checkout' ) . '</strong>' . $gift_packaging_message . '</p>';
+			if ( $gift_message ) {
+				echo '<p><strong>'. __( 'Gift Message:', 'woocommerce-fluid-checkout' ) . '</strong>' . $gift_message . '</p>';
 			}
 
-			if ( $gift_packaging_from ) {
-				echo '<p><strong>'. __( 'Gift From:', 'woocommerce-fluid-checkout' ) . '</strong>' . $gift_packaging_from . '</p>';
+			if ( $gift_from ) {
+				echo '<p><strong>'. __( 'Gift From:', 'woocommerce-fluid-checkout' ) . '</strong>' . $gift_from . '</p>';
 			}
 			?>
 		</div>
 		<div class="edit_address">
 			<?php
-			if ( $gift_packaging_message ) {
+			if ( $gift_message ) {
 				woocommerce_wp_textarea_input( array(
 				'id' => '_wfc_gift_message',
 				'label' => __( 'Gift Message:', 'woocommerce-fluid-checkout' ),
-				'value' => $gift_packaging_message,
+				'value' => $gift_message,
 				'wrapper_class' => 'form-field-wide'
 				) );
 			}
 
-			if ( $gift_packaging_from ) {
+			if ( $gift_from ) {
 				woocommerce_wp_text_input( array(
 				'id' => '_wfc_gift_from',
 				'label' => __( 'Gift From:', 'woocommerce-fluid-checkout' ),
-				'value' => $gift_packaging_from,
+				'value' => $gift_from,
 				'wrapper_class' => 'form-field-wide'
 				) );
 			}
