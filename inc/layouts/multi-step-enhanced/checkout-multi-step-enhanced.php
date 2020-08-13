@@ -157,14 +157,6 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		if ( array_key_exists( 'billing_company', $field_args ) ) { $field_args['billing_company']['class'] = array( 'form-row-wide' ); }
 
 		return $field_args;
-
-		// return apply_filters( 'wfc_checkout_fields_args', array(
-		// 	$field_group . 'email' 			=> array( 'priority' => 5 ),
-		// 	$field_group . 'first_name' 	=> array( 'priority' => 10 ),
-		// 	$field_group . 'last_name' 		=> array( 'priority' => 20 ),
-		// 	$field_group . 'phone' 			=> array( 'priority' => 30, 'class' => array( 'form-row-first' ) ),
-		// 	$field_group . 'company' 		=> array( 'priority' => 35, 'class' => array( 'form-row-last' ) ),
-		// ) );
 	}
 
 
@@ -395,8 +387,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		wc_get_template(
 			'checkout/form-billing.php',
 			array(
-				'checkout'          => WC()->checkout(),
-				'no_display_fields' => $this->get_contact_step_display_fields(),
+				'checkout'			=> WC()->checkout(),
+				'no_display_fields'	=> $this->get_contact_step_display_fields(),
 				'user_data'			=> $this->get_user_data(),
 			)
 		);
