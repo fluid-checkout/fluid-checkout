@@ -19,9 +19,11 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
+<?php // CHANGE: Add own hook ?>
 <?php do_action( 'wfc_checkout_before_step_billing_fields' ); ?>
 
 <div class="woocommerce-billing-fields">
+	<?php // CHANGE: Remove billing section title ?>
 
 	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
@@ -67,4 +69,5 @@ defined( 'ABSPATH' ) || exit;
 	</div>
 <?php endif; ?>
 
+<?php // CHANGE: Add own hook ?>
 <?php do_action( 'wfc_checkout_after_step_contact_fields' ); ?>
