@@ -396,8 +396,6 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 
-
-
 	/**
 	 * END - Checkout Steps
 	 */
