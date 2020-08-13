@@ -21,7 +21,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		if ( get_option( 'wfc_enable_checkout_gift_options', 'false' ) == 'true' ) {
 			add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
-			add_filter( 'woocommerce_after_order_notes' , array( $this, 'output_gift_options_fields' ), 10 );
+			add_filter( 'woocommerce_after_order_notes' , array( $this, 'maybe_output_gift_options_fields' ), 10 );
 			add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_gift_options_fields' ), 10, 1 );
 			
 			add_action( 'woocommerce_admin_order_data_after_order_details', array( $this, 'display_gift_options_fields_order_admin_screen' ), 100, 1 );
@@ -46,7 +46,9 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 	/**
 	 * Output gift options fields.
 	 */
-	public function output_gift_options_fields( $checkout ) {
+	public function maybe_output_gift_options_fields( $checkout ) {
+		// Bail if shipping not needed
+		if ( ! WC()->cart->needs_shipping() ) { return; }
 		
 		$checkbox_field = apply_filters( 'wfc_gift_options_checkbox_field', array(
 			'_wfc_has_gift_options' => array(
