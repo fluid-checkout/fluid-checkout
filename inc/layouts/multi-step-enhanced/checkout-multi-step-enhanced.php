@@ -28,6 +28,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		// Template loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 30, 3 );
 
+		// Checkout Fields
+		add_filter( 'wfc_checkout_fields_args', array( $this, 'change_checkout_fields_args' ), 50 );
+
 		// Contact
 		remove_action( 'wfc_checkout_steps', array( $this->multistep(), 'output_step_billing' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_contact' ), 10 );
@@ -44,6 +47,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		remove_action( 'wfc_checkout_after_step_payment_fields', array( $this->multistep(), 'output_checkout_place_order' ), 100 );
 		remove_filter( 'woocommerce_order_button_html', array( $this->multistep(), 'get_payment_step_actions_html' ), 20 );
 		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_payment_step_actions_html' ), 100 );
+		add_action( 'wfc_checkout_before_step_payment_fields', array( $this, 'output_billing_fields' ), 100 );
+		add_filter( 'wfc_checkout_billing_step_section_title', array( $this, 'change_billing_fields_section_title' ), 10 );
 		
 		// Order Review
 		add_action( 'wfc_checkout_after_steps', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
@@ -144,7 +149,23 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 
+	/**
+	 * Change checkout fields args for multi step enhanced layout
+	 */
+	public function change_checkout_fields_args( $field_args ) {
+		// Change size of billing company
+		if ( array_key_exists( 'billing_company', $field_args ) ) { $field_args['billing_company']['class'] = array( 'form-row-wide' ); }
 
+		return $field_args;
+
+		// return apply_filters( 'wfc_checkout_fields_args', array(
+		// 	$field_group . 'email' 			=> array( 'priority' => 5 ),
+		// 	$field_group . 'first_name' 	=> array( 'priority' => 10 ),
+		// 	$field_group . 'last_name' 		=> array( 'priority' => 20 ),
+		// 	$field_group . 'phone' 			=> array( 'priority' => 30, 'class' => array( 'form-row-first' ) ),
+		// 	$field_group . 'company' 		=> array( 'priority' => 35, 'class' => array( 'form-row-last' ) ),
+		// ) );
+	}
 
 
 
@@ -163,17 +184,38 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		$this->multistep()->output_step_start_tag( apply_filters( 'wfc_contact_step_title', __( 'Contact', 'woocommerce-fluid-checkout' ) ) );
 		do_action( 'woocommerce_checkout_before_customer_details' );
 
-		// Define contact fields
-		$contact_fields = apply_filters( 'wfc_checkout_contact_step_field_ids', array(
+		wc_get_template(
+			'checkout/form-contact.php',
+			array(
+				'checkout'          => WC()->checkout(),
+				'display_fields'    => $this->get_contact_step_display_fields(),
+				'user_data'			=> $this->get_user_data(),
+			)
+		);
+
+		echo $this->get_contact_step_actions_html();
+		$this->multistep()->output_step_end_tag();
+	}
+
+	/**
+	 * Return list of checkout fields for contact step
+	 */
+	public function get_contact_step_display_fields() {
+		return apply_filters( 'wfc_checkout_contact_step_field_ids', array(
 			'billing_email',
 			'billing_full_name',
 			'billing_first_name',
 			'billing_last_name',
 			'billing_phone',
 		) );
+	}
 
-		// Get user data
+	/**
+	 * Get user data for checkout steps
+	 */
+	public function get_user_data() {
 		$user_data = array();
+
 		if ( is_user_logged_in() ) {
 			$current_user = wp_get_current_user();
 
@@ -189,17 +231,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 			$user_data = apply_filters( 'wfc_checkout_contact_user_data', $user_data );
 		}
 
-		wc_get_template(
-			'checkout/form-contact.php',
-			array(
-				'checkout'          => WC()->checkout(),
-				'display_fields'    => $contact_fields,
-				'user_data'			=> $user_data,
-			)
-		);
-
-		echo $this->get_contact_step_actions_html();
-		$this->multistep()->output_step_end_tag();
+		return $user_data;
 	}
 
 	/**
@@ -348,8 +380,32 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		echo $this->get_payment_step_actions_html();
 	}
 
+	/**
+	 * Change billing fields section title
+	 */
+	public function change_billing_fields_section_title( $section_title ) {
+		$section_title = __( 'Billing Address', 'woocommerce-fluid-checkout' );
+		return $section_title;
+	}
 
-	
+	/**
+	 * Output billing fields except those already added at contact step
+	 */
+	public function output_billing_fields() {
+		wc_get_template(
+			'checkout/form-billing.php',
+			array(
+				'checkout'          => WC()->checkout(),
+				'no_display_fields' => $this->get_contact_step_display_fields(),
+				'user_data'			=> $this->get_user_data(),
+			)
+		);
+	}
+
+
+
+
+
 	/**
 	 * END - Checkout Steps
 	 */

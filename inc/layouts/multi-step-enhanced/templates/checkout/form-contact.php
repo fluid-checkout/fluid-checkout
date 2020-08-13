@@ -50,10 +50,14 @@ defined( 'ABSPATH' ) || exit;
 	<div class="wfc-contact-fields__wrapper">
 		<?php do_action( 'wfc_checkout_contact_before_fields' ); ?>
 
+		<?php // CHANGE: Display only fields in the contact step display list ?>
 		<?php
 		$fields = $checkout->get_checkout_fields( 'billing' );
 		foreach ( $fields as $key => $field ) {
-			// Display only fields in display list
+			/**
+			 * The variable `$display_fields` is passed in by woocommerce fluid checkout
+			 * @see Hook `wfc_checkout_contact_step_field_ids`
+			 */
 			if ( in_array( $key, $display_fields ) ) {
 				woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
 			}
