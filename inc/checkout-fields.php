@@ -3,7 +3,7 @@
 /**
  * Customizations to the checkout page.
  */
-class FluidCheckout_Fields extends FluidCheckout {
+class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -70,8 +70,6 @@ class FluidCheckout_Fields extends FluidCheckout {
 		) );
 	}
 
-
-
 	/**
 	 * Add shipping phone field to edit address fields.
 	 */
@@ -85,8 +83,6 @@ class FluidCheckout_Fields extends FluidCheckout {
 
 		return $fields;
 	}
-
-
 
 	/**
 	 * Add shipping phone field to checkout fields.
@@ -211,4 +207,4 @@ class FluidCheckout_Fields extends FluidCheckout {
 
 }
 
-FluidCheckout_Fields::instance();
+FluidCheckout_CheckoutFields::instance();
