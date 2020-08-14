@@ -19,6 +19,7 @@ defined( 'ABSPATH' ) || exit;
 	<?php foreach ( $available_methods as $method ) :
 		$checked_method = sizeof( $available_methods ) === 1 || $method->id == $chosen_method;
 
+		// TODO: Change position for filter to run after the printf values are replaced
 		printf( apply_filters( 'wfc_shipping_method_option_markup', '<li class="shipping_method__option"><input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />
 			<label for="shipping_method_%1$d_%2$s" class="shipping_method__option has-price">%5$s</label></li>' ),
 			$index,

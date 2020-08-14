@@ -40,6 +40,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'woocommerce_after_checkout_billing_form', array( $this, 'output_billing_address_id_hidden_field' ), 10 );
 		add_filter( 'woocommerce_checkout_fields' , array( $this, 'add_shipping_save_address_checkbox_field_checkout' ), 100 );
 		add_filter( 'woocommerce_checkout_fields' , array( $this, 'add_billing_save_address_checkbox_field_checkout' ), 100 );
+
+		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_address_book' ), 10 );
 	}
 
 
@@ -248,6 +250,24 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	public function add_billing_save_address_checkbox_field_checkout( $fields ) {
 		$fields['billing'] = $this->add_billing_save_address_checkbox_field( $fields['billing'] );
 		return $fields;
+	}
+
+
+
+	/**
+	 * Output address book options for
+	 */
+	function output_shipping_address_book() {
+		$address_book_entries = $this->get_user_address_book_entries();
+		
+		do_action( 'wfc_shipping_address_book_before_entries' );
+	
+		wc_get_template( 'checkout/address-book-entries.php', array(
+			'address_type'			=> 'shipping',
+			'address_book_entries'	=> $address_book_entries,
+		) );
+
+		do_action( 'wfc_shipping_address_book_after_entries' );
 	}
 
 }
