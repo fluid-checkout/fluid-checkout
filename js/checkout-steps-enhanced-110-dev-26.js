@@ -22,13 +22,8 @@
 	var _publicMethods = { };
 	var _settings = {
 		bodyClass: 'wfc-checkout-steps-enhanced--active',
-		
-		// Contact step
         editContactSelector: '[data-user-contact-edit]',
 		userDataSelector: '[data-user-data-wrapper]',
-		
-		// Address Book
-		
 	}
 
 

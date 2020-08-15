@@ -34,14 +34,21 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'save_addresses_from_order' ), 10, 1 );
+		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
-		add_action( 'woocommerce_after_checkout_shipping_form', array( $this, 'output_shipping_address_id_hidden_field' ), 10 );
-		add_action( 'woocommerce_after_checkout_billing_form', array( $this, 'output_billing_address_id_hidden_field' ), 10 );
+		// Shipping Address Book
+		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_address_book_wrapper_start_tag' ), 5 );
+		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_address_book' ), 6 );
+		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_address_book_new_address_wrapper_start_tag' ), 7 );
+		add_action( 'woocommerce_after_checkout_shipping_form', array( $this, 'output_address_book_new_address_wrapper_end_tag' ), 10 );
+		add_action( 'woocommerce_after_checkout_shipping_form', array( $this, 'output_address_book_wrapper_end_tag' ), 20 );
+
+		// Save address checkboxes
 		add_filter( 'woocommerce_checkout_fields' , array( $this, 'add_shipping_save_address_checkbox_field_checkout' ), 100 );
 		add_filter( 'woocommerce_checkout_fields' , array( $this, 'add_billing_save_address_checkbox_field_checkout' ), 100 );
 
-		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_address_book' ), 10 );
+		// Save address
+		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'save_addresses_from_order' ), 10, 1 );
 	}
 
 
@@ -57,6 +64,20 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function checkout_fields() {
 		return FluidCheckout_CheckoutFields::instance();
+	}
+
+
+
+
+
+	/**
+	 * Add page body class for feature detection
+	 */
+	public function add_body_class( $classes ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
+
+		return array_merge( $classes, array( 'has-wfc-address-book' ) );
 	}
 
 
@@ -93,6 +114,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		if ( $shipping_address_save && ! array_key_exists( $shipping_address_id, $address_book_entries ) ) { $this->save_address_book_entry( $shipping_address ); }
 		if ( $billing_address_save && ! array_key_exists( $billing_address_id, $address_book_entries ) ) { $this->save_address_book_entry( $billing_address ); }
 	}
+
+
 
 
 
@@ -159,22 +182,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	}
 
 
-
-
-	
-	/**
-	 * Output billing address entry id hidden field
-	 */
-	public function output_billing_address_id_hidden_field() {
-		echo '<input type="hidden" class="input-hidden" name="_billing_address_id" id="_billing_address_id">';
-	}
-
-	/**
-	 * Output shipping address entry id hidden field
-	 */
-	public function output_shipping_address_id_hidden_field() {
-		echo '<input type="hidden" class="input-hidden" name="_shipping_address_id" id="_shipping_address_id">';
-	}
 
 
 
@@ -255,7 +262,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
-	 * Output address book options for
+	 * Output address book entries for shipping step
 	 */
 	function output_shipping_address_book() {
 		$address_book_entries = $this->get_user_address_book_entries();
@@ -268,6 +275,38 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		) );
 
 		do_action( 'wfc_shipping_address_book_after_entries' );
+	}
+
+	/**
+	 * Output address book new address form wrapper start tag
+	 */
+	public function output_address_book_new_address_wrapper_start_tag() {
+		echo '<noscript><style type="text/css">.wfc-address-book__form-wrapper{display:block !important;}</style></noscript>';
+		echo '<div class="wfc-address-book__form-wrapper">';
+	}
+
+	/**
+	 * Output address book new address form wrapper end tag
+	 */
+	public function output_address_book_new_address_wrapper_end_tag() {
+		echo '</div>';
+	}
+
+
+
+
+	/**
+	 * Output address book wrapper start tag
+	 */
+	public function output_address_book_wrapper_start_tag() {
+		echo '<div class="wfc-address-book">';
+	}
+
+	/**
+	 * Output address book wrapper end tag
+	 */
+	public function output_address_book_wrapper_end_tag() {
+		echo '</div>';
 	}
 
 }

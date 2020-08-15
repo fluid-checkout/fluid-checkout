@@ -18,8 +18,8 @@ defined( 'ABSPATH' ) || exit;
 	<?php echo apply_filters( 'wfc_address_book_entries_start_tag_markup', '<ul id="address_book" class="address-book__entries">' ); ?>
 
 	<?php
-	$address_entry_template = '<li class="address-book-entry"><input type="radio" name="address_book_%1$d" id="address_book_entry_%1$d_%2$s" data-address-type="%1$d" value="%2$s" class="address-book__entry-radio" %3$s />
-		<label for="address_book_entry_%1$d_%2$s" class="address-book__entry-label">%4$s</label>
+	$address_entry_template = '<li class="address-book-entry"><input type="radio" name="_%1$s_address_id" id="address_book_entry_%1$s_%2$s" data-address-type="%1$s" value="%2$s" class="address-book__entry-radio" data-address-entry-values=\'%4$s\' %3$s />
+		<label for="address_book_entry_%1$s_%2$s" class="address-book__entry-label">%5$s</label>
 	</li>';
 	
 	foreach ( $address_book_entries as $address_id => $address_entry ) :
@@ -40,6 +40,7 @@ defined( 'ABSPATH' ) || exit;
 				$address_type,
 				$address_id,
 				checked( $checked_address, true, false ),
+				wp_json_encode( $address_entry ),
 				$address_label
 			),
 			$address_entry, $address_type );
@@ -51,8 +52,9 @@ defined( 'ABSPATH' ) || exit;
 	echo apply_filters( 'wfc_address_book_entry_markup',
 		sprintf( $address_entry_template,
 			$address_type,
-			'-1', // Identifies the new address option
-			'', // New address option unchecked
+			'new',
+			'data-address-book-new',
+			'', // New address doesn't have address data object
 			__( 'Enter a new address', 'woocommerce-fluid-checkout' )
 		),
 		$address_entry, $address_type );
