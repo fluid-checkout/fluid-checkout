@@ -117,22 +117,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 
-
-
-	/**
-	 * Return the user id passed in or the current user id
-	 */
-	public function get_user_id( $user_id = null ) {
-		if ( ! $user_id ) {
-			$current_user = wp_get_current_user();
-			$user_id = $current_user->ID;
-		}
-
-		return $user_id;
-	}
-
-
-
 	/**
 	 * Get user's saved addresses
 	 */
