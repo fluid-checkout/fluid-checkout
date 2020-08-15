@@ -18,14 +18,14 @@ defined( 'ABSPATH' ) || exit;
 	<?php echo apply_filters( 'wfc_address_book_entries_start_tag_markup', '<ul id="address_book" class="address-book__entries">' ); ?>
 
 	<?php
-	$address_entry_template = '<li class="address-book-entry"><input type="radio" name="_%1$s_address_id" id="address_book_entry_%1$s_%2$s" data-address-type="%1$s" value="%2$s" class="address-book__entry-radio" data-address-entry-values=\'%4$s\' %3$s />
+	$address_entry_template = '<li class="address-book-entry"><input type="radio" name="_%1$s_address_id" id="address_book_entry_%1$s_%2$s" data-address-type="%1$s" value="%2$s" class="address-book__entry-radio" data-address=\'%4$s\' %3$s />
 		<label for="address_book_entry_%1$s_%2$s" class="address-book__entry-label">%5$s</label>
 	</li>';
 	
 	foreach ( $address_book_entries as $address_id => $address_entry ) :
 		$checked_address = sizeof( $address_book_entries ) === 1 || ( array_key_exists( 'default', $address_entry ) && $address_entry['default'] === true );
 		
-		$address_label = apply_filters( 'wfc_address_book_entry_markup',
+		$address_label = apply_filters( 'wfc_address_book_entry_label_markup',
 			sprintf( '%1$s %2$s %3$s %4$s %5$s',
 			array_key_exists( 'company', $address_entry ) ? '<div class="address-book-entry__company">'.$address_entry['company'].'</div>' : '',
 			array_key_exists( 'first_name', $address_entry ) ? '<div class="address-book-entry__name">'.$address_entry['first_name'] . ' ' . $address_entry['last_name'].'</div>' : '',
@@ -52,9 +52,9 @@ defined( 'ABSPATH' ) || exit;
 	echo apply_filters( 'wfc_address_book_entry_markup',
 		sprintf( $address_entry_template,
 			$address_type,
-			'new',
+			'new', // address_id
 			'data-address-book-new',
-			'', // New address doesn't have address data object
+			FluidCheckout::instance()->get_user_geo_location(), // default address values
 			__( 'Enter a new address', 'woocommerce-fluid-checkout' )
 		),
 		$address_entry, $address_type );

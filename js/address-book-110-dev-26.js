@@ -28,7 +28,12 @@
 		newAddressFormSelector: '.wfc-address-book__form-wrapper',
 		addressEntrySelector: '.address-book__entry-radio',
 		addressEntryNewSelector: '[data-address-book-new]',
+		addressFieldsSelector: 'input, select, textarea',
+		addressDataAttribute: 'data-address',
+		addressTypeAttribute: 'data-address-type',
 		newAddressFormActiveClass: 'active',
+
+		select2Selector: '[class*="select2"]',
 
 	}
 
@@ -60,6 +65,89 @@
 
 
 	/**
+	 * Get address data from element
+	 */
+	var getAddressData = function( selectedAddress ) {
+		var addressData = false;
+
+		try {
+			var addressDataString = selectedAddress.getAttribute( _settings.addressDataAttribute );
+			addressData = JSON.parse( addressDataString );
+			return addressData;
+		}
+		// Bail if can't parse address string into JSON object
+		catch( e ) {
+			return false;
+		}
+	}
+
+
+
+	/**
+	 * Set address field value
+	 */
+	var setFieldValue = function( field, value ) {
+		// Bail if field not provided
+		if ( ! field ) { return; }
+		
+		// Sanitize value
+		value = value == undefined || value == null ? '' : value;
+
+		field.value = value;
+
+		if ( $ && field.matches( _settings.select2Selector ) ) {
+			$(field).val( value );
+			$(field).select2().trigger('change');
+		}
+	}
+
+
+
+	/**
+	 * Fill up or clean address form with selected address option
+	 */
+	var changeAddressFormFields = function( addressBook, selectedAddress ) {
+		// Bail if selected address not passed
+		if ( ! selectedAddress ) { return; }
+
+		clearShippingFields( addressBook );
+
+		var addressData = getAddressData( selectedAddress );
+
+		// Bail if address data not valid
+		if ( ! addressData ) { return; }
+		
+		var addressType = selectedAddress.getAttribute( _settings.addressTypeAttribute );
+		var fieldKeys = Object.keys( addressData );
+
+		for ( var i = 0; i < fieldKeys.length; i++ ) {
+			var key = fieldKeys[i];
+			var fieldkey = addressType+'_'+fieldKeys[i];
+			var field = addressBook.querySelector( '[name="'+fieldkey+'"]' );
+			setFieldValue( field, addressData[ key ] );
+		}
+	}
+
+
+
+	/**
+	 * Clear address form fields
+	 */
+	var clearShippingFields = function( addressBook ) {
+		// Bail if address book element not passed
+		if ( ! addressBook ) { return; }
+
+		var fields = addressBook.querySelectorAll( _settings.addressFieldsSelector );
+
+		for ( var i = 0; i < fields.length; i++ ) {
+			var field = fields[i];
+			setFieldValue( field, '' );
+		}
+	}
+
+
+
+	/**
 	 * Handle document clicks and route to the appropriate function.
 	 */
 	var handleClick = function( e ) {
@@ -77,6 +165,7 @@
 		if ( e.target.matches( _settings.addressEntrySelector ) ) {
 			var addressBook = e.target.closest( _settings.addressBookSelector );
 			changeNewAddressFormVisibility( addressBook, e.target );
+			changeAddressFormFields( addressBook, e.target );
 		}
 	};
 

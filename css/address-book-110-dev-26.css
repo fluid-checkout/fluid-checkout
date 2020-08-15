@@ -1,5 +1,3 @@
 /*
  * WooCommerce Fluid Checkout - Address Book
  */
-.wfc-address-book__form-wrapper:not(.active) {
-  display: none; }
