@@ -27,12 +27,12 @@ defined( 'ABSPATH' ) || exit;
 		
 		$address_label = apply_filters( 'wfc_address_book_entry_label_markup',
 			sprintf( '%1$s %2$s %3$s %4$s %5$s',
-			array_key_exists( 'company', $address_entry ) ? '<div class="address-book-entry__company">'.$address_entry['company'].'</div>' : '',
-			array_key_exists( 'first_name', $address_entry ) ? '<div class="address-book-entry__name">'.$address_entry['first_name'] . ' ' . $address_entry['last_name'].'</div>' : '',
-			'<div class="address-book-entry__address_1">'.$address_entry['address_1'].'</div>',
-			array_key_exists( 'address_2', $address_entry ) ? '<div class="address-book-entry__address_2">'.$address_entry['address_2'].'</div>' : '',
-			'<div class="address-book-entry__location">'.$address_entry['city'] . ' ' . $address_entry['state'] . ' ' . $address_entry['country'].'</div>'
-		), $address_entry, $address_type );
+				array_key_exists( 'company', $address_entry ) ? '<div class="address-book-entry__company">'.$address_entry['company'].'</div>' : '',
+				array_key_exists( 'first_name', $address_entry ) ? '<div class="address-book-entry__name">'.$address_entry['first_name'] . ' ' . $address_entry['last_name'].'</div>' : '',
+				'<div class="address-book-entry__address_1">'.$address_entry['address_1'].'</div>',
+				array_key_exists( 'address_2', $address_entry ) ? '<div class="address-book-entry__address_2">'.$address_entry['address_2'].'</div>' : '',
+				'<div class="address-book-entry__location">'.$address_entry['city'] . ' ' . $address_entry['state'] . ' ' . $address_entry['country'].'</div>'
+			), $address_entry, $address_type );
 
 		// TODO: Add edit address link/button markup
 		echo apply_filters( 'wfc_address_book_entry_markup',
@@ -42,8 +42,7 @@ defined( 'ABSPATH' ) || exit;
 				checked( $checked_address, true, false ),
 				wp_json_encode( $address_entry ),
 				$address_label
-			),
-			$address_entry, $address_type );
+			), $address_entry, $address_type );
 		
 	endforeach; ?>
 

@@ -36,6 +36,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 		// Shipping
 		add_action( 'wfc_checkout_before_step_shipping_fields', array( $this, 'output_shipping_step_section_title' ), 10 );
+		add_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_checkbox' ), 10 );
 
 		// Additional Information
 		add_action( 'wfc_checkout_after_step_shipping_fields', array( $this, 'maybe_output_additional_fields_shipping_step' ), 50 );
@@ -210,6 +211,18 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		$this->output_step_end_tag();
 	}
 
+	
+	
+	/**
+	 * Output "ship to different address" checkbox
+	 */
+	public function output_ship_to_different_address_checkbox() {
+		?>
+		<label id="ship-to-different-address" class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+			<input id="ship-to-different-address-checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" <?php checked( apply_filters( 'woocommerce_ship_to_different_address_checked', 'shipping' === get_option( 'woocommerce_ship_to_destination' ) ? 1 : 0 ), 1 ); ?> type="checkbox" name="ship_to_different_address" value="1" /> <span><?php esc_html_e( 'Ship to a different address?', 'woocommerce' ); ?></span>
+		</label>
+		<?php
+	}
 
 
 	/**
