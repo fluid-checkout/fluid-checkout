@@ -3,6 +3,5 @@
  */
 
 .wfc-address-book__form-wrapper:not(.active) {
-	// Disable hiding form to be able to easily see the values during development
-	// display: none;
+	display: none;
 }

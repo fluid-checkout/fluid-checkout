@@ -23,6 +23,7 @@ defined( 'ABSPATH' ) || exit;
 	</li>';
 	
 	foreach ( $address_book_entries as $address_id => $address_entry ) :
+
 		$checked_address = sizeof( $address_book_entries ) === 1 || ( array_key_exists( 'default', $address_entry ) && $address_entry['default'] === true );
 		
 		$address_label = apply_filters( 'wfc_address_book_entry_label_markup',
@@ -53,7 +54,7 @@ defined( 'ABSPATH' ) || exit;
 			$address_type,
 			'new', // address_id
 			'data-address-book-new',
-			FluidCheckout::instance()->get_user_geo_location(), // default address values
+			wp_json_encode( array_merge( array( 'address_id' => 'new' ), FluidCheckout::instance()->get_user_geo_location() ) ), // default address values
 			__( 'Enter a new address', 'woocommerce-fluid-checkout' )
 		),
 		$address_entry, $address_type );

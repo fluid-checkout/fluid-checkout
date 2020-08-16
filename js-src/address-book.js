@@ -32,6 +32,7 @@
 		addressDataAttribute: 'data-address',
 		addressTypeAttribute: 'data-address-type',
 		newAddressFormActiveClass: 'active',
+		saveAddressHiddenClass: 'hidden',
 
 		select2Selector: '[class*="select2"]',
 
