@@ -34,6 +34,7 @@
 		newAddressFormActiveClass: 'active',
 		saveAddressHiddenClass: 'hidden',
 
+		formRowSelector: '.form-row',
 		select2Selector: '[class*="select2"]',
 
 	}
@@ -99,6 +100,10 @@
 		if ( $ && field.matches( _settings.select2Selector ) ) {
 			$(field).val( value );
 			$(field).select2().trigger('change');
+		}
+
+		if ( window.CheckoutValidation ) {
+			CheckoutValidation.clearValidationResults( field, field.closest( _settings.formRowSelector ) );
 		}
 	}
 
