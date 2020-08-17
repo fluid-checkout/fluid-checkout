@@ -1,5 +1,5 @@
 /*
  * WooCommerce Fluid Checkout - Address Book
  */
-.wfc-address-book__form-wrapper:not(.active) {
+.has-wfc-address-book-entries .wfc-address-book__form-wrapper:not(.active) {
   display: none; }

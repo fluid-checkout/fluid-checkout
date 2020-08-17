@@ -80,7 +80,12 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Bail if not on checkout page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
 
-		return array_merge( $classes, array( 'has-wfc-address-book' ) );
+		$classes[] = 'has-wfc-address-book';
+		if ( count( $this->get_user_address_book_entries() ) > 0 ) {
+			$classes[] = 'has-wfc-address-book-entries';
+		}
+
+		return $classes;
 	}
 
 
