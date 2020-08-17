@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <div class="address-book address-book__<?php echo esc_attr( $address_type ); ?>">
 
-<?php if ( sizeof( $address_book_entries ) > 0 ) : ?>
+<?php if ( count( $address_book_entries ) > 0 ) : ?>
 
 	<?php echo apply_filters( 'wfc_address_book_entries_start_tag_markup', '<ul id="address_book" class="address-book__entries">' ); ?>
 
@@ -22,9 +22,10 @@ defined( 'ABSPATH' ) || exit;
 		<label for="address_book_entry_%1$s_%2$s" class="address-book__entry-label">%5$s</label>
 	</li>';
 	
+	$first = true;
 	foreach ( $address_book_entries as $address_id => $address_entry ) :
 
-		$checked_address = sizeof( $address_book_entries ) === 1 || ( array_key_exists( 'default', $address_entry ) && $address_entry['default'] === true );
+		$checked_address = $first || ( array_key_exists( 'default', $address_entry ) && $address_entry['default'] === true );
 		
 		$address_label = apply_filters( 'wfc_address_book_entry_label_markup',
 			sprintf( '%1$s %2$s %3$s %4$s %5$s',
@@ -45,6 +46,7 @@ defined( 'ABSPATH' ) || exit;
 				$address_label
 			), $address_entry, $address_type );
 		
+		$first = false;
 	endforeach; ?>
 
 	<?php

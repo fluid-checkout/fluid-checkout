@@ -36,6 +36,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	public function hooks() {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
+		// Address default values
+		add_action( 'wp', array( $this, 'add_address_field_default_value_hooks' ), 10 );
+
 		// Shipping Address Book
 		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_address_book_wrapper_start_tag' ), 5 );
 		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_address_book' ), 6 );
@@ -216,7 +219,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			'label'     => __( 'Save address for future purchase', 'woocommerce-fluid-checkout' ),
 			'type'		=> 'checkbox',
 			'required'  => false,
-			'class'     => array( 'form-row-wide', 'querySelector( _settings.saveAddressSelector -field' ),
+			'class'     => array( 'form-row-wide' ),
 			'value'		=> '1',
 			'default'	=> 1,
 			'priority'	=> 100,
@@ -293,6 +296,42 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function output_address_book_wrapper_end_tag() {
 		echo '</div>';
+	}
+
+
+
+	/**
+	 * Add default value hook for address fields
+	 */
+	public function add_address_field_default_value_hooks() {
+		$default_address_fields = WC()->countries->get_default_address_fields();
+		$address_types = array( 'shipping', 'billing' );
+		
+		foreach ( $address_types as $type ) {
+			foreach ( $default_address_fields as $field_key => $value ) {
+				$input = $type.'_'.$field_key;
+				add_filter( 'default_checkout_' . $input, array( $this, 'change_default_address_field_value' ), 10, 2 );
+			}
+		}
+	}
+
+	/**
+	 * Change default address field value
+	 */
+	public function change_default_address_field_value( $value, $input ) {
+		$address_book_entries = $this->get_user_address_book_entries();
+		
+		// Bail if user doesn't have saved addresses
+		if ( ! $address_book_entries || count( $address_book_entries ) <= 0 ) { return $value; }
+
+		// First address in the list
+		$default_address = $address_book_entries[ array_keys( $address_book_entries )[0] ];
+
+		// Get field value from address book default address
+		$address_field_key = str_replace( 'shipping_', '', str_replace( 'billing_', '', $input ) );
+		$value = $default_address[ $address_field_key ];
+
+		return $value;
 	}
 
 }
