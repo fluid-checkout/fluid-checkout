@@ -25,6 +25,7 @@ defined( 'ABSPATH' ) || exit;
 	$first = true;
 	foreach ( $address_book_entries as $address_id => $address_entry ) :
 
+		// TODO: Change logic to pass chosen address from plugin and compare to that instead of relying just on data passed
 		$checked_address = $first || ( array_key_exists( 'default', $address_entry ) && $address_entry['default'] === true );
 		
 		$address_label = apply_filters( 'wfc_address_book_entry_label_markup',
@@ -36,7 +37,6 @@ defined( 'ABSPATH' ) || exit;
 				'<div class="address-book-entry__location">'.$address_entry['city'] . ' ' . $address_entry['state'] . ' ' . $address_entry['country'].'</div>'
 			), $address_entry, $address_type );
 
-		// TODO: Add edit address link/button markup
 		echo apply_filters( 'wfc_address_book_entry_markup',
 			sprintf( $address_entry_template,
 				$address_type,
