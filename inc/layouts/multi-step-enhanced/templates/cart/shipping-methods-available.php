@@ -13,24 +13,31 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <div class="shipping shipping_method__package" data-title="<?php echo esc_attr( $package_name ); ?>" data-package-index="<?php echo esc_attr( $index ); ?>">
 
-<?php if ( sizeof( $available_methods ) > 0 ) : ?>
+<?php if ( count( $available_methods ) > 0 ) : ?>
 
 	<?php echo apply_filters( 'wfc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping_method__options">' ); ?>
-	<?php foreach ( $available_methods as $method ) :
-		$checked_method = sizeof( $available_methods ) === 1 || $method->id == $chosen_method;
 
-		// TODO: Change position for filter to run after the printf values are replaced
-		printf( apply_filters( 'wfc_shipping_method_option_markup', '<li class="shipping_method__option"><input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />
-			<label for="shipping_method_%1$d_%2$s" class="shipping_method__option has-price">%5$s</label></li>' ),
+	<?php
+	$first = true;
+	foreach ( $available_methods as $method ) :
+		$checked_method = ! $chosen_method ? $first === true : $method->id == $chosen_method;
+
+		echo apply_filters( 'wfc_shipping_method_option_markup',
+			sprintf( '<li class="shipping_method__option"><input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />
+				<label for="shipping_method_%1$d_%2$s" class="shipping_method__option has-price">%5$s</label>
+			</li>',
 			$index,
 			sanitize_title( $method->id ),
 			esc_attr( $method->id ),
 			checked( $checked_method, true, false ),
 			FluidCheckoutLayout_MultiStepEnhanced::instance()->get_cart_shipping_methods_label( $method )
-		);
+		), $method, $index );
 
 		do_action( 'woocommerce_after_shipping_rate', $method, $index );
+		
+		$first = false;
 	endforeach; ?>
+
 	<?php echo apply_filters( 'wfc_shipping_method_option_end_tag_markup', '</ul>' ); ?>
 
 	<?php if ( $show_package_details ) : ?>
