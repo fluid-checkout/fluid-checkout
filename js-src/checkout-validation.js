@@ -418,7 +418,7 @@
 
 
 	/**
-	 * Process validation results of one field.
+	 * Process validation results of a field.
 	 * @param  {Field} field             Field to validation.
 	 * @param  {Element} formRow          Form row element.
 	 * @param  {Array} validationResults Validation results array.
@@ -434,26 +434,62 @@
 
 			// Remove invalidation classes from the field
 			if ( true === result ) {
+				// TODO: Maybe refactor to use classList.toggle
 				// Remove invalid classes for validation type
 				formRow.classList.remove( _settings.invalidClass +'-'+ _validationTypes[ type ] );
 			}
 			// Add invalidation classes to the field
 			else {
 				valid = false;
+				// TODO: Maybe refactor to use classList.toggle
 				formRow.classList.add( _settings.invalidClass +'-'+ result );
 			}
 		}
 
-		if ( valid ) {
-			formRow.classList.add( _settings.validClass );
-			formRow.classList.remove( _settings.invalidClass );
-		}
-		else {
-			formRow.classList.remove( _settings.validClass );
-			formRow.classList.add( _settings.invalidClass );
-		}
+		// Toggle valid/invalid classes
+		formRow.classList.toggle( _settings.validClass, valid );
+		formRow.classList.toggle( _settings.invalidClass, ! valid );
 
 		return valid;
+	};
+
+
+
+	/**
+	 * Clear validation results status of a field.
+	 * @param  {Field} field             Field to validation.
+	 * @param  {Element} formRow          Form row element.
+	 */
+	_publicMethods.clearValidationResults = function( field, formRow ) {
+		// Bail if field or form row invalid
+		if ( ! field || ! formRow ) { return; }
+		
+		// Remove invalid classes for validation types
+		var validationTypeKeys = Object.keys( _validationTypes );
+		for ( var i = 0; i < validationTypeKeys.length; i++ ) {
+			var type = validationTypeKeys[i];
+			formRow.classList.remove( _settings.invalidClass +'-'+ _validationTypes[ type ] );
+		}
+
+		// Remove valid/invalid classes
+		formRow.classList.remove( _settings.validClass );
+		formRow.classList.remove( _settings.invalidClass );
+	};
+
+
+
+	/**
+	 * Handle document clicks and route to the appropriate function.
+	 */
+	var handleValidateEvent = function( e ) {
+		var field = e.target;
+
+		// Get correct field when is select2
+		if ( isSelect2Field( e.target ) ) {
+			field = e.target.closest( _settings.formRowSelector ).querySelector( 'select' );
+		}
+
+		_publicMethods.validateField( field );
 	};
 
 
@@ -488,22 +524,6 @@
 
 		// Process results
 		return processValidationResults( field, formRow, validationResults );
-	};
-
-
-	
-	/**
-	 * Handle document clicks and route to the appropriate function.
-	 */
-	var handleValidateEvent = function( e ) {
-		var field = e.target;
-
-		// Get correct field when is select2
-		if ( isSelect2Field( e.target ) ) {
-			field = e.target.closest( _settings.formRowSelector ).querySelector( 'select' );
-		}
-
-		_publicMethods.validateField( field );
 	};
 
 

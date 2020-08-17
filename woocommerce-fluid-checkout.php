@@ -218,6 +218,7 @@ class FluidCheckout {
 		require_once self::$directory_path . 'inc/checkout-validation.php';
 		require_once self::$directory_path . 'inc/checkout-layouts.php';
 		require_once self::$directory_path . 'inc/checkout-gift-options.php';
+		require_once self::$directory_path . 'inc/address-book.php';
 		
 		// Integrations
 		require_once self::$directory_path . 'inc/integration-ziptastic.php';
@@ -244,6 +245,39 @@ class FluidCheckout {
 	 */
 	public function woocommerce_required_notice() {
 		echo '<div id="message" class="error"><p>'. sprintf( __( '%1$s requires the %2$s plugin to be installed/activated. %1$s has been deactivated.', 'woocommerce-fluid-checkout' ), self::PLUGIN, 'WooCommerce' ) .'</p></div>';
+	}
+
+
+
+	/**
+	 * Return the user id passed in or the current user id
+	 */
+	public function get_user_id( $user_id = null ) {
+		if ( ! $user_id ) {
+			$current_user = wp_get_current_user();
+			$user_id = $current_user->ID;
+		}
+
+		return $user_id;
+	}
+
+
+
+	/**
+	 * Get user location on ip geolocation
+	 */
+	public function get_user_geo_location() {
+		// Get user location
+		if ( class_exists( 'WC_Geolocation' ) ) {
+			$geo      = new WC_Geolocation(); // Get WC_Geolocation instance object
+			$user_ip  = $geo->get_ip_address(); // Get user IP
+			$user_geo = $geo->geolocate_ip( $user_ip ); // Get geolocated user data.
+			$user_geo['country_name'] = array_key_exists( 'country', $user_geo ) && $user_geo['country'] != '' ? WC()->countries->countries[ $user_geo['country'] ] : '';
+
+			return $user_geo;
+		}
+
+		return false;
 	}
 
 }

@@ -37,6 +37,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		add_action( 'wfc_checkout_before_step_contact_fields', array( $this, 'output_contact_step_section_title' ), 10 );
 
 		// Shipping
+		remove_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this->multistep(), 'output_ship_to_different_address_checkbox' ), 10 );
+		add_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
+		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
 		add_action( 'wfc_checkout_after_step_shipping_fields', array( $this, 'output_shipping_methods_available' ), 10 );
 		add_action( 'wfc_shipping_methods_before_packages', array( $this, 'output_shipping_methods_start_tag' ), 10 );
 		add_action( 'wfc_shipping_methods_after_packages', array( $this, 'output_shipping_methods_end_tag' ), 10 );
@@ -250,6 +253,24 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	/**
 	 * Checkout Step: Shipping
 	 */
+
+	
+	
+	/**
+	 * Output "ship to different address" hidden field
+	 */
+	public function output_ship_to_different_address_hidden_field() {
+		?>
+		<input type="hidden" name="ship_to_different_address" value="<?php echo esc_attr( apply_filters( 'woocommerce_ship_to_different_address_checked', 'shipping' === get_option( 'woocommerce_ship_to_destination' ) ? 1 : 0 ) ); ?>" />
+		<?php
+	}
+
+	/**
+	 * Set to always ship to shipping address
+	 */
+	public function set_ship_to_different_address_true() {
+		return 1;
+	}
 
 
 
