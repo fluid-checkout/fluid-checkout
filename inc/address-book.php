@@ -324,6 +324,10 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Change default address field value
 	 */
 	public function change_default_address_field_value( $value, $input ) {
+		// Bail for some fields
+		$ignore_list = apply_filters( 'wfc_default_address_field_ignore_list', array( 'billing_first_name', 'billing_last_name', 'billing_phone', 'billing_email' ) );
+		if ( in_array( $input, $ignore_list ) ) { return $value; }
+		
 		$address_book_entries = $this->get_user_address_book_entries();
 		
 		// Bail if user doesn't have saved addresses
