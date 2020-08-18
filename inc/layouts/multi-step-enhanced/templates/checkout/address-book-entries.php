@@ -37,6 +37,7 @@ defined( 'ABSPATH' ) || exit;
 				'<span class="address-book-entry__location">'.$address_entry['city'] . ' ' . $address_entry['state'] . ' ' . $address_entry['country'].'</span>'
 			), $address_entry, $address_type );
 
+		$new_address_item = true;
 		echo apply_filters( 'wfc_address_book_entry_markup',
 			sprintf( $address_entry_template,
 				$address_type,
@@ -44,21 +45,21 @@ defined( 'ABSPATH' ) || exit;
 				checked( $checked_address, true, false ),
 				wp_json_encode( $address_entry ),
 				$address_label
-			), $address_entry, $address_type, $address_label, $checked_address );
+			), $address_entry, $address_type, $address_label, $new_address_item, $checked_address );
 		
 		$first = false;
 	endforeach; ?>
 
 	<?php
-	// New address option
-	echo apply_filters( 'wfc_address_book_entry_new_address_markup',
+	$new_address_item = true;
+	echo apply_filters( 'wfc_address_book_entry_markup',
 		sprintf( $address_entry_template,
 			$address_type,
 			'new', // address_id
 			'data-address-book-new',
 			wp_json_encode( array_merge( array( 'address_id' => 'new' ), FluidCheckout::instance()->get_user_geo_location() ) ), // default address values
 			__( 'Enter a new address', 'woocommerce-fluid-checkout' )
-		), $address_entry, $address_type, $address_label, $checked_address );
+		), $address_entry, $address_type, $address_label, $new_address_item, $checked_address );
 	?>
 	
 	<?php echo apply_filters( 'wfc_address_book_entries_end_tag_markup', '</ul>', $address_book_entries, $address_type ); ?>
