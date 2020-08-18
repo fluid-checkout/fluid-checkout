@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 
 <?php if ( count( $address_book_entries ) > 0 ) : ?>
 
-	<?php echo apply_filters( 'wfc_address_book_entries_start_tag_markup', '<ul id="address_book" class="address-book__entries">' ); ?>
+	<?php echo apply_filters( 'wfc_address_book_entries_start_tag_markup', sprintf( '<ul id="address_book_%1$s" class="address-book__entries">', esc_attr( $address_type ) ), $address_book_entries, $address_type ); ?>
 
 	<?php
 	$address_entry_template = '<li class="address-book-entry"><input type="radio" name="_%1$s_address_id" id="address_book_entry_%1$s_%2$s" data-address-type="%1$s" value="%2$s" class="address-book__entry-radio" data-address=\'%4$s\' %3$s />
@@ -61,7 +61,7 @@ defined( 'ABSPATH' ) || exit;
 		), $address_entry, $address_type, $address_label, $checked_address );
 	?>
 	
-	<?php echo apply_filters( 'wfc_address_book_entries_end_tag_markup', '</ul>' ); ?>
+	<?php echo apply_filters( 'wfc_address_book_entries_end_tag_markup', '</ul>', $address_book_entries, $address_type ); ?>
 
 <?php endif; ?>
 
