@@ -11,7 +11,7 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<div class="shipping shipping_method__package" data-title="<?php echo esc_attr( $package_name ); ?>" data-package-index="<?php echo esc_attr( $index ); ?>">
+<div class="shipping shipping_method__package" data-title="<?php echo esc_attr( $package_name ); ?>" data-package-index="<?php echo esc_attr( $package_index ); ?>">
 
 <?php if ( count( $available_methods ) > 0 ) : ?>
 
@@ -26,14 +26,14 @@ defined( 'ABSPATH' ) || exit;
 			sprintf( '<li class="shipping_method__option"><input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />
 				<label for="shipping_method_%1$d_%2$s" class="shipping_method__option has-price">%5$s</label>
 			</li>',
-			$index,
+			$package_index,
 			sanitize_title( $method->id ),
 			esc_attr( $method->id ),
 			checked( $checked_method, true, false ),
 			FluidCheckoutLayout_MultiStepEnhanced::instance()->get_cart_shipping_methods_label( $method )
-		), $method, $index );
+		), $method, $package_index, $chosen_method, $first );
 
-		do_action( 'woocommerce_after_shipping_rate', $method, $index );
+		do_action( 'woocommerce_after_shipping_rate', $method, $package_index );
 		
 		$first = false;
 	endforeach; ?>

@@ -212,13 +212,13 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		$user_data = array();
 
 		if ( is_user_logged_in() ) {
-			$current_user = wp_get_current_user();
+			$current_user = WC()->customer;
 
 			$user_data = array(
-				'user_email'   => $current_user->user_email,
-				'display_name' => ! empty( $current_user->display_name ) ? $current_user->display_name : $current_user->first_name.' '.$current_user->last_name,
+				'user_email'   => $current_user->get_email(),
+				'display_name' => $current_user->get_billing_first_name() . ' ' . $current_user->get_billing_last_name(),
 			);
-			$billing_phone = get_user_meta( $current_user->ID, 'billing_phone', true );
+			$billing_phone = $current_user->get_billing_phone();
 			if ( ! empty( $billing_phone ) ) {
 				$user_data['billing_phone'] = $billing_phone;
 			}
@@ -305,7 +305,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 				// @codingStandardsIgnoreStart
 				'package_name'             => apply_filters( 'woocommerce_shipping_package_name', sprintf( _nx( 'Shipping', 'Shipping %d', ( $i + 1 ), 'shipping packages', 'woocommerce' ), ( $i + 1 ) ), $i, $package ),
 				// @codingStandardsIgnoreEnd
-				'index'                    => $i,
+				'package_index'                    => $i,
 				'chosen_method'            => $chosen_method,
 			) );
 	
