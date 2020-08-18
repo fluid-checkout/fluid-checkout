@@ -9,7 +9,7 @@
   "repository": {},
   "author": "Fluidweb OÜ",
   "license": "GPL-3.0",
-  "copyright": "Copyright (c) 2019, Fluidweb OÜ",
+  "copyright": "Copyright (c) 2020, Fluidweb OÜ",
   "homepage": "https://fluidweb.co",
   "devDependencies": {
     "del": "^5.1.0",
