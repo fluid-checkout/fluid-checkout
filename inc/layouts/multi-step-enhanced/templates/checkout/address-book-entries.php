@@ -30,11 +30,11 @@ defined( 'ABSPATH' ) || exit;
 		
 		$address_label = apply_filters( 'wfc_address_book_entry_label_markup',
 			sprintf( '%1$s %2$s %3$s %4$s %5$s',
-				array_key_exists( 'company', $address_entry ) ? '<div class="address-book-entry__company">'.$address_entry['company'].'</div>' : '',
-				array_key_exists( 'first_name', $address_entry ) ? '<div class="address-book-entry__name">'.$address_entry['first_name'] . ' ' . $address_entry['last_name'].'</div>' : '',
-				'<div class="address-book-entry__address_1">'.$address_entry['address_1'].'</div>',
-				array_key_exists( 'address_2', $address_entry ) ? '<div class="address-book-entry__address_2">'.$address_entry['address_2'].'</div>' : '',
-				'<div class="address-book-entry__location">'.$address_entry['city'] . ' ' . $address_entry['state'] . ' ' . $address_entry['country'].'</div>'
+				array_key_exists( 'company', $address_entry ) ? '<span class="address-book-entry__company">'.$address_entry['company'].'</span>' : '',
+				array_key_exists( 'first_name', $address_entry ) ? '<span class="address-book-entry__name">'.$address_entry['first_name'] . ' ' . $address_entry['last_name'].'</span>' : '',
+				'<span class="address-book-entry__address_1">'.$address_entry['address_1'].'</span>',
+				array_key_exists( 'address_2', $address_entry ) ? '<span class="address-book-entry__address_2">'.$address_entry['address_2'].'</span>' : '',
+				'<span class="address-book-entry__location">'.$address_entry['city'] . ' ' . $address_entry['state'] . ' ' . $address_entry['country'].'</span>'
 			), $address_entry, $address_type );
 
 		echo apply_filters( 'wfc_address_book_entry_markup',
