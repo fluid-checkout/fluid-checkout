@@ -51,7 +51,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php
 	// New address option
-	echo apply_filters( 'wfc_address_book_entry_markup',
+	echo apply_filters( 'wfc_address_book_entry_new_address_markup',
 		sprintf( $address_entry_template,
 			$address_type,
 			'new', // address_id
