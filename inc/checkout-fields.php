@@ -27,6 +27,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		if ( get_option( 'wfc_apply_checkout_fields_args', true ) ) {
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_billing_fields_args' ), 10 );
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_shipping_fields_args' ), 10 );
+			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_order_fields_args' ), 10 );
 		}
 
 		// Shipping Phone Field
@@ -197,6 +198,17 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 */
 	public function change_shipping_fields_args( $fields ) {
 		$field_group = 'shipping';
+		$fields[ $field_group ] = $this->change_checkout_fields_args( $fields[ $field_group ], $field_group );
+		return $fields;
+	}
+
+
+
+	/**
+	 * Change order fields args.
+	 */
+	public function change_order_fields_args( $fields ) {
+		$field_group = 'order';
 		$fields[ $field_group ] = $this->change_checkout_fields_args( $fields[ $field_group ], $field_group );
 		return $fields;
 	}
