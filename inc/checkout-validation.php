@@ -48,6 +48,7 @@ class FluidCheckoutValidation extends FluidCheckout {
 		$checkout_email_fields = apply_filters( 'wfc_checkout_email_fields_for_mailcheck', array( 'billing_email' ) );
 		foreach( $fields_args as $field => $values ) {
 			if ( in_array( $field, $checkout_email_fields ) ) {
+				if ( ! array_key_exists( 'custom_attributes', $fields_args[ $field ] ) ) { $fields_args[ $field ][ 'custom_attributes' ] = array(); }
 				$fields_args[ $field ][ 'custom_attributes' ] = array_merge( $fields_args[ $field ][ 'custom_attributes' ] ?: array(), $email_field_custom_attributes );
 			}
 		}
