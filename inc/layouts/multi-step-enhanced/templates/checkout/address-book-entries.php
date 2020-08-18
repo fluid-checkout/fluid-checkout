@@ -44,7 +44,7 @@ defined( 'ABSPATH' ) || exit;
 				checked( $checked_address, true, false ),
 				wp_json_encode( $address_entry ),
 				$address_label
-			), $address_entry, $address_type );
+			), $address_entry, $address_type, $address_label, $checked_address );
 		
 		$first = false;
 	endforeach; ?>
