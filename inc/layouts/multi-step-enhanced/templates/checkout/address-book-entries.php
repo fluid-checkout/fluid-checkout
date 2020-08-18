@@ -58,8 +58,7 @@ defined( 'ABSPATH' ) || exit;
 			'data-address-book-new',
 			wp_json_encode( array_merge( array( 'address_id' => 'new' ), FluidCheckout::instance()->get_user_geo_location() ) ), // default address values
 			__( 'Enter a new address', 'woocommerce-fluid-checkout' )
-		),
-		$address_entry, $address_type );
+		), $address_entry, $address_type, $address_label, $checked_address );
 	?>
 	
 	<?php echo apply_filters( 'wfc_address_book_entries_end_tag_markup', '</ul>' ); ?>
