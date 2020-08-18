@@ -305,7 +305,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 				// @codingStandardsIgnoreStart
 				'package_name'             => apply_filters( 'woocommerce_shipping_package_name', sprintf( _nx( 'Shipping', 'Shipping %d', ( $i + 1 ), 'shipping packages', 'woocommerce' ), ( $i + 1 ) ), $i, $package ),
 				// @codingStandardsIgnoreEnd
-				'index'                    => $i,
+				'package_index'                    => $i,
 				'chosen_method'            => $chosen_method,
 			) );
 	
