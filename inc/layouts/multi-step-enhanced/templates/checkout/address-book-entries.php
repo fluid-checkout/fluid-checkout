@@ -24,9 +24,21 @@ defined( 'ABSPATH' ) || exit;
 	
 	$first = true;
 	foreach ( $address_book_entries as $address_id => $address_entry ) :
-
-		// TODO: Change logic to pass chosen address from plugin and compare to that instead of relying just on data passed
-		$checked_address = $first || ( array_key_exists( 'default', $address_entry ) && $address_entry['default'] === true );
+		$checked_address = FluidCheckout_AddressBook::instance()->get_address_entry_checked_state( $address_entry, $first );
+		// $address_data_session = FluidCheckout_AddressBook::instance()->get_shipping_address_selected_session();
+		// $address_id_session = array_key_exists( 'address_id', $address_data_session ) ? $address_data_session[ 'address_id' ] : null;
+		
+		// // TODO: Move to it's own function and use below for "new address"
+		// // Check if address should be checked
+		// if ( $address_id_session != null && $address_entry['address_id'] == $address_id_session ) {
+		// 	$checked_address = true;
+		// }
+		// elseif ( array_key_exists( 'default', $address_entry ) ) {
+		// 	$checked_address = $address_entry['default'] === true;
+		// }
+		// elseif( $address_id_session == null || empty( $address_id_session ) ) {
+		// 	$checked_address = $first === true;
+		// }
 		
 		$address_label = apply_filters( 'wfc_address_book_entry_label_markup',
 			sprintf( '%1$s %2$s %3$s %4$s %5$s',
@@ -51,15 +63,17 @@ defined( 'ABSPATH' ) || exit;
 	endforeach; ?>
 
 	<?php
+	$new_address_entry = array( 'address_id' => 'new' );
 	$new_address_item = true;
+	$checked_new_address = FluidCheckout_AddressBook::instance()->get_address_entry_checked_state( $new_address_entry, false );
 	echo apply_filters( 'wfc_address_book_entry_markup',
 		sprintf( $address_entry_template,
 			$address_type,
-			'new', // address_id
-			'data-address-book-new',
-			wp_json_encode( array_merge( array( 'address_id' => 'new' ), FluidCheckout::instance()->get_user_geo_location() ) ), // default address values
+			$new_address_entry[ 'address_id' ],
+			'data-address-book-new ' . checked( $checked_new_address, true, false ),
+			wp_json_encode( array_merge( $new_address_entry, FluidCheckout::instance()->get_user_geo_location() ) ), // default address values
 			__( 'Enter a new address', 'woocommerce-fluid-checkout' )
-		), $address_entry, $address_type, $address_label, $new_address_item, $checked_address );
+		), $new_address_entry, $address_type, $address_label, $new_address_item, $checked_address );
 	?>
 	
 	<?php echo apply_filters( 'wfc_address_book_entries_end_tag_markup', '</ul>', $address_book_entries, $address_type ); ?>

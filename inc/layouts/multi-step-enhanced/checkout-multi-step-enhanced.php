@@ -41,6 +41,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		add_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
 		add_action( 'wfc_checkout_after_step_shipping_fields', array( $this, 'output_shipping_methods_available' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_shipping_methods_fragment' ), 10 );
 		add_action( 'wfc_shipping_methods_before_packages', array( $this, 'output_shipping_methods_start_tag' ), 10 );
 		add_action( 'wfc_shipping_methods_after_packages', array( $this, 'output_shipping_methods_end_tag' ), 10 );
 
@@ -275,11 +276,13 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Get shipping methods for user selection.
+	 * Get shipping methods available markup
 	 *
 	 * @access public
 	 */
-	function output_shipping_methods_available() {
+	function get_shipping_methods_available() {
+		ob_start();
+
 		$packages = WC()->shipping->get_packages();
 		
 		do_action( 'wfc_shipping_methods_before_packages' );
@@ -313,6 +316,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		}
 
 		do_action( 'wfc_shipping_methods_after_packages' );
+
+		return ob_get_clean();
 	}
 
 	/**
@@ -332,6 +337,24 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		?>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Add shipping methods as checkout fragment.
+	 */
+	function add_checkout_shipping_methods_fragment( $fragments ) {
+		$shipping_methods_html = $this->get_shipping_methods_available();
+		$fragments['.shipping-method__packages'] = $shipping_methods_html;
+		return $fragments;
+	}
+
+	/**
+	 * Output shipping methods available
+	 *
+	 * @access public
+	 */
+	function output_shipping_methods_available() {
+		echo $this->get_shipping_methods_available();
 	}
 
 	/**

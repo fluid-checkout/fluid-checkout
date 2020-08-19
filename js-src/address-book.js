@@ -116,7 +116,7 @@
 		// Bail if selected address not passed
 		if ( ! selectedAddress ) { return; }
 
-		clearShippingFields( addressBook );
+		clearAddressFields( addressBook );
 
 		var addressData = getAddressData( selectedAddress );
 
@@ -137,9 +137,38 @@
 
 
 	/**
+	 * Send selected address to server for persisting it's values
+	 */
+	var updatePersistedAddress = function( addressBook, selectedAddress ) {
+		var addressType = selectedAddress.getAttribute( _settings.addressTypeAttribute );
+		var addressData = getAddressData( selectedAddress );
+
+		// Update delivery date on server, then update checkout page
+		jQuery.ajax({
+			type: 'POST',
+			url: wc_checkout_params.ajax_url,
+			data: {
+				action: 'wfc_set_'+addressType+'_address_selected_session',
+				address_data: addressData
+			},
+			complete: function(response) {
+				// Update the checkout
+				$( document.body ).trigger( 'update_checkout' );
+			},
+			dataType: 'html'
+		});
+	}
+
+
+
+
+
+
+
+	/**
 	 * Clear address form fields
 	 */
-	var clearShippingFields = function( addressBook ) {
+	var clearAddressFields = function( addressBook ) {
 		// Bail if address book element not passed
 		if ( ! addressBook ) { return; }
 
@@ -172,6 +201,7 @@
 			var addressBook = e.target.closest( _settings.addressBookSelector );
 			changeNewAddressFormVisibility( addressBook, e.target );
 			changeAddressFormFields( addressBook, e.target );
+			updatePersistedAddress( addressBook, e.target );
 		}
 	};
 

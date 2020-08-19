@@ -5,6 +5,9 @@
  */
 class FluidCheckout_AddressBook extends FluidCheckout {
 
+	private $address_book_entries_per_user = array();
+
+
 	/**
 	 * __construct function.
 	 */
@@ -46,12 +49,17 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'woocommerce_after_checkout_shipping_form', array( $this, 'output_address_book_new_address_wrapper_end_tag' ), 10 );
 		add_action( 'woocommerce_after_checkout_shipping_form', array( $this, 'output_address_book_wrapper_end_tag' ), 20 );
 
-		// Save address checkboxes
+		// Checkbox for saving address
 		add_filter( 'woocommerce_checkout_fields' , array( $this, 'add_shipping_save_address_checkbox_field_checkout' ), 100 );
 		add_filter( 'woocommerce_checkout_fields' , array( $this, 'add_billing_save_address_checkbox_field_checkout' ), 100 );
 
-		// Save address
+		// Save address to address book
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'save_addresses_from_order' ), 10, 1 );
+
+		// Persist shipping address selected
+		add_action( 'wp_ajax_wfc_set_shipping_address_selected_session', array( $this, 'set_shipping_address_selected_session' ) );
+		add_action( 'wp_ajax_nopriv_wfc_set_shipping_address_selected_session', array( $this, 'set_shipping_address_selected_session' ) );
+		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'unset_shipping_address_selected_session' ), 10, 1 );
 	}
 
 
@@ -130,6 +138,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function get_user_address_book_entries( $user_id = null ) {
 		$user_id = $this->get_user_id( $user_id );
+
+		// Get from cache if available
+		if ( array_key_exists( $user_id, $this->address_book_entries_per_user ) ) {
+			return $this->address_book_entries_per_user[ $user_id ];
+		}
 		
 		$address_book_entries = get_user_meta( $user_id, '_wfc_address_book', true );
 
@@ -137,6 +150,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		if ( ! is_array( $address_book_entries ) ) {
 			$address_book_entries = array();
 		}
+
+		// Add user's address book entries to cache
+		$this->address_book_entries_per_user[ $user_id ] = $address_book_entries;
 
 		return $address_book_entries;
 	}
@@ -333,14 +349,80 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Bail if user doesn't have saved addresses
 		if ( ! $address_book_entries || count( $address_book_entries ) <= 0 ) { return $value; }
 
-		// First address in the list
-		$default_address = $address_book_entries[ array_keys( $address_book_entries )[0] ];
+		$address_data = $address_book_entries[ array_keys( $address_book_entries )[0] ];
+		
+		// Try get address data from session
+		$address_data_session = $this->get_shipping_address_selected_session();
+		if ( $address_data_session !== false && is_array( $address_data_session ) && array_key_exists( 'address_id', $address_data_session ) ) {
+			$address_data = $address_data_session;
+		}
 
 		// Get field value from address book default address
 		$address_field_key = str_replace( 'shipping_', '', str_replace( 'billing_', '', $input ) );
-		$value = $default_address[ $address_field_key ];
+		$value = $address_data[ $address_field_key ];
 
 		return $value;
+	}
+
+
+
+
+	/**
+	 * Set shipping address selected on session.
+	 */
+	public function set_shipping_address_selected_session() {
+		// Clear session value
+		$this->unset_shipping_address_selected_session();
+		
+		if ( isset( $_POST['address_data'] ) && is_array( $_POST['address_data'] ) ) {
+			// Get sanitized address data
+			$address_data = $_POST['address_data'];
+			foreach ( array_keys( $address_data ) as $key ) {
+				$address_data[ $key ] = sanitize_text_field( $address_data[ $key ] );
+			}
+
+			// Set session value
+			WC()->session->set( 'wfc_shipping_address_selected', $address_data );
+		}
+	}
+
+	/**
+	 * Get shipping address selected value from session.
+	 **/
+	public function get_shipping_address_selected_session() {
+		$address_data = WC()->session->get( 'wfc_shipping_address_selected' );
+		return $address_data != null ? $address_data : false;
+	}
+
+	/**
+	 * Unset shipping address selected session.
+	 **/
+	public function unset_shipping_address_selected_session() {
+		WC()->session->set( 'wfc_shipping_address_selected', null );
+	}
+
+
+
+	/**
+	 * Get address entry checked state
+	 */
+	public function get_address_entry_checked_state( $address_entry, $first = false ) {
+		$checked_address = false;
+
+		$address_data_session = FluidCheckout_AddressBook::instance()->get_shipping_address_selected_session();
+		$address_id_session = array_key_exists( 'address_id', $address_data_session ) ? $address_data_session['address_id'] : null;
+		
+		if ( $address_id_session != null && $address_entry['address_id'] == $address_id_session ) {
+			$checked_address = true;
+		}
+		elseif ( array_key_exists( 'default', $address_entry ) ) {
+			$checked_address = $address_entry['default'] === true;
+		}
+		elseif( $address_id_session == null || empty( $address_id_session ) ) {
+			$checked_address = $first === true;
+		}
+
+		return $checked_address;
 	}
 
 }
