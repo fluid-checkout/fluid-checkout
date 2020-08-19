@@ -50,6 +50,7 @@
 	 */
 	var handleClick = function( e ) {
 		if ( e.target.closest( _settings.editContactSelector ) ) {
+			e.preventDefault();
 			removeUserData();
 		}
 	};
