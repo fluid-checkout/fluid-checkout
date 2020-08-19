@@ -377,6 +377,31 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
+	 * Get address entry checked state
+	 */
+	public function get_address_entry_checked_state( $address_type, $address_entry, $first = false ) {
+		$checked_address = false;
+
+		$address_data_session = FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_selected_session'}();
+		$address_id_session = array_key_exists( 'address_id', $address_data_session ) ? $address_data_session['address_id'] : null;
+		
+		if ( $address_id_session != null && $address_entry['address_id'] == $address_id_session ) {
+			$checked_address = true;
+		}
+		elseif ( array_key_exists( 'default', $address_entry ) ) {
+			$checked_address = $address_entry['default'] === true;
+		}
+		elseif( $address_id_session == null || empty( $address_id_session ) ) {
+			$checked_address = $first === true;
+		}
+
+		return $checked_address;
+	}
+
+
+
+
+	/**
 	 * Set shipping address selected on session.
 	 */
 	public function set_shipping_address_selected_session() {
@@ -410,6 +435,15 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		WC()->session->set( 'wfc_shipping_address_selected', null );
 	}
 
+	/**
+	 * Get shipping address entry checked state
+	 */
+	public function get_shipping_address_entry_checked_state( $address_entry, $first = false ) {
+		return $this->get_address_entry_checked_state( 'shipping', $address_entry, $first );
+	}
+
+
+	
 
 
 	/**
@@ -446,28 +480,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		WC()->session->set( 'wfc_billing_address_selected', null );
 	}
 
-
-
 	/**
-	 * Get address entry checked state
+	 * Get billing address entry checked state
 	 */
-	public function get_shipping_address_entry_checked_state( $address_entry, $first = false ) {
-		$checked_address = false;
-
-		$address_data_session = FluidCheckout_AddressBook::instance()->get_shipping_address_selected_session();
-		$address_id_session = array_key_exists( 'address_id', $address_data_session ) ? $address_data_session['address_id'] : null;
-		
-		if ( $address_id_session != null && $address_entry['address_id'] == $address_id_session ) {
-			$checked_address = true;
-		}
-		elseif ( array_key_exists( 'default', $address_entry ) ) {
-			$checked_address = $address_entry['default'] === true;
-		}
-		elseif( $address_id_session == null || empty( $address_id_session ) ) {
-			$checked_address = $first === true;
-		}
-
-		return $checked_address;
+	public function get_billing_address_entry_checked_state( $address_entry, $first = false ) {
+		return $this->get_address_entry_checked_state( 'billing', $address_entry, $first );
 	}
 
 }
