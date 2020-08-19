@@ -45,8 +45,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Shipping Address Book
 		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_address_book_wrapper_start_tag' ), 5 );
 		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_address_book' ), 6 );
-		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_address_book_new_address_wrapper_start_tag' ), 7 );
-		add_action( 'woocommerce_after_checkout_shipping_form', array( $this, 'output_address_book_new_address_wrapper_end_tag' ), 10 );
+		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_address_book_new_address_wrapper_start_tag' ), 7 );
+		add_action( 'woocommerce_after_checkout_shipping_form', array( $this, 'output_shipping_address_book_new_address_wrapper_end_tag' ), 10 );
 		add_action( 'woocommerce_after_checkout_shipping_form', array( $this, 'output_address_book_wrapper_end_tag' ), 20 );
 
 		// Checkbox for saving address
@@ -290,15 +290,17 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Output address book new address form wrapper start tag
 	 */
-	public function output_address_book_new_address_wrapper_start_tag() {
+	public function output_shipping_address_book_new_address_wrapper_start_tag() {
+		$active_class = $this->get_shipping_address_entry_checked_state( array( 'address_id' => 'new' ), false ) ? 'active' : '';
+
 		echo '<noscript><style type="text/css">.wfc-address-book__form-wrapper{display:block !important;}</style></noscript>';
-		echo '<div class="wfc-address-book__form-wrapper">';
+		echo '<div class="wfc-address-book__form-wrapper '. $active_class .'">';
 	}
 
 	/**
 	 * Output address book new address form wrapper end tag
 	 */
-	public function output_address_book_new_address_wrapper_end_tag() {
+	public function output_shipping_address_book_new_address_wrapper_end_tag() {
 		echo '</div>';
 	}
 
@@ -351,6 +353,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 		$address_data = $address_book_entries[ array_keys( $address_book_entries )[0] ];
 		
+		// TODO: Dynamically indentify which type of address (shipping/billing) and call appropriate function
 		// Try get address data from session
 		$address_data_session = $this->get_shipping_address_selected_session();
 		if ( $address_data_session !== false && is_array( $address_data_session ) && array_key_exists( 'address_id', $address_data_session ) ) {
@@ -406,7 +409,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Get address entry checked state
 	 */
-	public function get_address_entry_checked_state( $address_entry, $first = false ) {
+	public function get_shipping_address_entry_checked_state( $address_entry, $first = false ) {
 		$checked_address = false;
 
 		$address_data_session = FluidCheckout_AddressBook::instance()->get_shipping_address_selected_session();

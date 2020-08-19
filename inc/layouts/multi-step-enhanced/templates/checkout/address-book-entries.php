@@ -24,21 +24,7 @@ defined( 'ABSPATH' ) || exit;
 	
 	$first = true;
 	foreach ( $address_book_entries as $address_id => $address_entry ) :
-		$checked_address = FluidCheckout_AddressBook::instance()->get_address_entry_checked_state( $address_entry, $first );
-		// $address_data_session = FluidCheckout_AddressBook::instance()->get_shipping_address_selected_session();
-		// $address_id_session = array_key_exists( 'address_id', $address_data_session ) ? $address_data_session[ 'address_id' ] : null;
-		
-		// // TODO: Move to it's own function and use below for "new address"
-		// // Check if address should be checked
-		// if ( $address_id_session != null && $address_entry['address_id'] == $address_id_session ) {
-		// 	$checked_address = true;
-		// }
-		// elseif ( array_key_exists( 'default', $address_entry ) ) {
-		// 	$checked_address = $address_entry['default'] === true;
-		// }
-		// elseif( $address_id_session == null || empty( $address_id_session ) ) {
-		// 	$checked_address = $first === true;
-		// }
+		$checked_address = FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $address_entry, $first );
 		
 		$address_label = apply_filters( 'wfc_address_book_entry_label_markup',
 			sprintf( '%1$s %2$s %3$s %4$s %5$s',
@@ -65,7 +51,7 @@ defined( 'ABSPATH' ) || exit;
 	<?php
 	$new_address_entry = array( 'address_id' => 'new' );
 	$new_address_item = true;
-	$checked_new_address = FluidCheckout_AddressBook::instance()->get_address_entry_checked_state( $new_address_entry, false );
+	$checked_new_address = FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $new_address_entry, false );
 	echo apply_filters( 'wfc_address_book_entry_markup',
 		sprintf( $address_entry_template,
 			$address_type,
