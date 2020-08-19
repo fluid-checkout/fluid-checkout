@@ -63,6 +63,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	}
 
 
+
 	/**
 	 * Return WooCommerce Fluid Checkout multi-step enhanced class instance
 	 */
@@ -345,23 +346,28 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Bail for some fields
 		$ignore_list = apply_filters( 'wfc_default_address_field_ignore_list', array( 'billing_first_name', 'billing_last_name', 'billing_phone', 'billing_email' ) );
 		if ( in_array( $input, $ignore_list ) ) { return $value; }
-		
+
+		// Get address type from field input name
+		$address_type = strpos( $input, 'shipping' ) == 0 ? 'shipping' : '';
+		$address_type = empty( $address_type ) && strpos( $input, 'billing' ) == 0 ? 'billing' : '';
+
+		// Bail if not address field
+		if ( empty( $address_type ) ) { return $value; }
+
 		$address_book_entries = $this->get_user_address_book_entries();
 		
 		// Bail if user doesn't have saved addresses
 		if ( ! $address_book_entries || count( $address_book_entries ) <= 0 ) { return $value; }
 
+		// Get address data from session or first of the list
 		$address_data = $address_book_entries[ array_keys( $address_book_entries )[0] ];
-		
-		// TODO: Dynamically indentify which type of address (shipping/billing) and call appropriate function
-		// Try get address data from session
-		$address_data_session = $this->get_shipping_address_selected_session();
+		$address_data_session = $this->{'get_'.$address_type.'_address_selected_session'}();
 		if ( $address_data_session !== false && is_array( $address_data_session ) && array_key_exists( 'address_id', $address_data_session ) ) {
 			$address_data = $address_data_session;
 		}
 
 		// Get field value from address book default address
-		$address_field_key = str_replace( 'shipping_', '', str_replace( 'billing_', '', $input ) );
+		$address_field_key = str_replace( $address_type.'_', '', $input );
 		$value = $address_data[ $address_field_key ];
 
 		return $value;
@@ -402,6 +408,42 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 **/
 	public function unset_shipping_address_selected_session() {
 		WC()->session->set( 'wfc_shipping_address_selected', null );
+	}
+
+
+
+	/**
+	 * Set billing address selected on session.
+	 */
+	public function set_billing_address_selected_session() {
+		// Clear session value
+		$this->unset_billing_address_selected_session();
+		
+		if ( isset( $_POST['address_data'] ) && is_array( $_POST['address_data'] ) ) {
+			// Get sanitized address data
+			$address_data = $_POST['address_data'];
+			foreach ( array_keys( $address_data ) as $key ) {
+				$address_data[ $key ] = sanitize_text_field( $address_data[ $key ] );
+			}
+
+			// Set session value
+			WC()->session->set( 'wfc_billing_address_selected', $address_data );
+		}
+	}
+
+	/**
+	 * Get billing address selected value from session.
+	 **/
+	public function get_billing_address_selected_session() {
+		$address_data = WC()->session->get( 'wfc_billing_address_selected' );
+		return $address_data != null ? $address_data : false;
+	}
+
+	/**
+	 * Unset billing address selected session.
+	 **/
+	public function unset_billing_address_selected_session() {
+		WC()->session->set( 'wfc_billing_address_selected', null );
 	}
 
 
