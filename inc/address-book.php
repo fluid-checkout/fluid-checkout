@@ -312,6 +312,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Output address book wrapper start tag
 	 */
 	public function output_address_book_wrapper_start_tag() {
+		echo WC()->customer->get_shipping_country();
+
 		echo '<div class="wfc-address-book">';
 	}
 
@@ -331,10 +333,18 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$default_address_fields = WC()->countries->get_default_address_fields();
 		$address_types = array( 'shipping', 'billing' );
 		
-		foreach ( $address_types as $type ) {
+		foreach ( $address_types as $address_type ) {
 			foreach ( $default_address_fields as $field_key => $value ) {
-				$input = $type.'_'.$field_key;
-				add_filter( 'default_checkout_' . $input, array( $this, 'change_default_address_field_value' ), 10, 2 );
+				$input = $address_type.'_'.$field_key;
+				
+				// Add filter for default checkout values
+				// add_filter( 'default_checkout_' . $input, array( $this, 'change_default_address_field_value' ), 10, 2 );
+				
+				// Add filter for customer address values
+				$method_name = 'change_customer_'.$input;
+				if ( method_exists( $this, $method_name ) ) {
+					add_filter( 'woocommerce_customer_get_' . $input, array( $this, $method_name ), 10, 2 );
+				}
 			}
 		}
 	}
@@ -354,7 +364,127 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Bail if not address field
 		if ( empty( $address_type ) ) { return $value; }
 
-		$address_book_entries = $this->get_user_address_book_entries();
+		// Get field value from address book
+		$address_field_key = str_replace( $address_type.'_', '', $input );
+		$address_data = $this->get_customer_selected_address_data( $address_type );
+		$value = $address_data[ $address_field_key ];
+
+		return $value;
+	}
+
+
+
+
+
+	/**
+	 * Change customer shipping country value
+	 */
+	public function change_customer_shipping_country( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
+		return array_key_exists( 'country', $address_data ) ? $address_data['country'] : '';
+	}
+
+	/**
+	 * Change customer shipping state value
+	 */
+	public function change_customer_shipping_state( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
+		return array_key_exists( 'state', $address_data ) ? $address_data['state'] : '';
+	}
+
+	/**
+	 * Change customer shipping postcode value
+	 */
+	public function change_customer_shipping_postcode( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
+		return array_key_exists( 'postcode', $address_data ) ? $address_data['postcode'] : '';
+	}
+
+	/**
+	 * Change customer shipping city value
+	 */
+	public function change_customer_shipping_city( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
+		return array_key_exists( 'city', $address_data ) ? $address_data['city'] : '';
+	}
+
+	/**
+	 * Change customer shipping address_1 value
+	 */
+	public function change_customer_shipping_address_1( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
+		return array_key_exists( 'address_1', $address_data ) ? $address_data['address_1'] : '';
+	}
+
+	/**
+	 * Change customer shipping address_2 value
+	 */
+	public function change_customer_shipping_address_2( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
+		return array_key_exists( 'address_2', $address_data ) ? $address_data['address_2'] : '';
+	}
+
+
+
+	/**
+	 * Change customer billing country value
+	 */
+	public function change_customer_billing_country( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
+		return array_key_exists( 'country', $address_data ) ? $address_data['country'] : '';
+	}
+
+	/**
+	 * Change customer billing state value
+	 */
+	public function change_customer_billing_state( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
+		return array_key_exists( 'state', $address_data ) ? $address_data['state'] : '';
+	}
+
+	/**
+	 * Change customer billing postcode value
+	 */
+	public function change_customer_billing_postcode( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
+		return array_key_exists( 'postcode', $address_data ) ? $address_data['postcode'] : '';
+	}
+
+	/**
+	 * Change customer billing city value
+	 */
+	public function change_customer_billing_city( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
+		return array_key_exists( 'city', $address_data ) ? $address_data['city'] : '';
+	}
+
+	/**
+	 * Change customer billing address_1 value
+	 */
+	public function change_customer_billing_address_1( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
+		return array_key_exists( 'address_1', $address_data ) ? $address_data['address_1'] : '';
+	}
+
+	/**
+	 * Change customer billing address_2 value
+	 */
+	public function change_customer_billing_address_2( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
+		return array_key_exists( 'address_2', $address_data ) ? $address_data['address_2'] : '';
+	}
+
+
+
+
+
+	/**
+	 * Get the customer's address data from address book or session
+	 */
+	public function get_customer_selected_address_data( $address_type, $customer_id = null ) {
+		$customer_id = $this->get_user_id( $customer_id );
+		
+		$address_book_entries = $this->get_user_address_book_entries( $customer_id );
 		
 		// Bail if user doesn't have saved addresses
 		if ( ! $address_book_entries || count( $address_book_entries ) <= 0 ) { return $value; }
@@ -366,13 +496,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			$address_data = $address_data_session;
 		}
 
-		// Get field value from address book default address
-		$address_field_key = str_replace( $address_type.'_', '', $input );
-		$value = $address_data[ $address_field_key ];
-
-		return $value;
+		return $address_data;
 	}
-
 
 
 
