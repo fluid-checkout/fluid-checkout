@@ -312,8 +312,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Output address book wrapper start tag
 	 */
 	public function output_address_book_wrapper_start_tag() {
-		echo WC()->customer->get_shipping_country();
-
 		echo '<div class="wfc-address-book">';
 	}
 
@@ -381,6 +379,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function change_customer_shipping_country( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
 		return array_key_exists( 'country', $address_data ) ? $address_data['country'] : '';
 	}
 
@@ -389,6 +388,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function change_customer_shipping_state( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
 		return array_key_exists( 'state', $address_data ) ? $address_data['state'] : '';
 	}
 
@@ -397,6 +397,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function change_customer_shipping_postcode( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
 		return array_key_exists( 'postcode', $address_data ) ? $address_data['postcode'] : '';
 	}
 
@@ -405,6 +406,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function change_customer_shipping_city( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
 		return array_key_exists( 'city', $address_data ) ? $address_data['city'] : '';
 	}
 
@@ -413,6 +415,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function change_customer_shipping_address_1( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
 		return array_key_exists( 'address_1', $address_data ) ? $address_data['address_1'] : '';
 	}
 
@@ -421,6 +424,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function change_customer_shipping_address_2( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
 		return array_key_exists( 'address_2', $address_data ) ? $address_data['address_2'] : '';
 	}
 
@@ -431,6 +435,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function change_customer_billing_country( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
 		return array_key_exists( 'country', $address_data ) ? $address_data['country'] : '';
 	}
 
@@ -439,6 +444,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function change_customer_billing_state( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
 		return array_key_exists( 'state', $address_data ) ? $address_data['state'] : '';
 	}
 
@@ -447,6 +453,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function change_customer_billing_postcode( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
 		return array_key_exists( 'postcode', $address_data ) ? $address_data['postcode'] : '';
 	}
 
@@ -455,6 +462,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function change_customer_billing_city( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
 		return array_key_exists( 'city', $address_data ) ? $address_data['city'] : '';
 	}
 
@@ -463,6 +471,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function change_customer_billing_address_1( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
 		return array_key_exists( 'address_1', $address_data ) ? $address_data['address_1'] : '';
 	}
 
@@ -471,6 +480,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function change_customer_billing_address_2( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
 		return array_key_exists( 'address_2', $address_data ) ? $address_data['address_2'] : '';
 	}
 
@@ -487,7 +497,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$address_book_entries = $this->get_user_address_book_entries( $customer_id );
 		
 		// Bail if user doesn't have saved addresses
-		if ( ! $address_book_entries || count( $address_book_entries ) <= 0 ) { return $value; }
+		if ( ! $address_book_entries || count( $address_book_entries ) <= 0 ) { return $default_location; }
 
 		// Get address data from session or first of the list
 		$address_data = $address_book_entries[ array_keys( $address_book_entries )[0] ];
