@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
 	<?php echo apply_filters( 'wfc_address_book_entries_start_tag_markup', sprintf( '<ul id="address_book_%1$s" class="address-book__entries">', esc_attr( $address_type ) ), $address_book_entries, $address_type ); ?>
 
 	<?php
-	$address_entry_template = '<li class="address-book-entry"><input type="radio" name="_%1$s_address_id" id="address_book_entry_%1$s_%2$s" data-address-type="%1$s" value="%2$s" class="address-book__entry-radio" data-address=\'%4$s\' %3$s />
+	$address_entry_template = '<li class="address-book-entry"><input type="radio" name="%1$s_address_id" id="address_book_entry_%1$s_%2$s" data-address-type="%1$s" value="%2$s" class="address-book__entry-radio" data-address=\'%4$s\' %3$s />
 		<label for="address_book_entry_%1$s_%2$s" class="address-book__entry-label">%5$s</label>
 	</li>';
 	

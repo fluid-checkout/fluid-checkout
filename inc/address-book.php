@@ -53,6 +53,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_filter( 'woocommerce_checkout_fields' , array( $this, 'add_shipping_save_address_checkbox_field_checkout' ), 100 );
 		add_filter( 'woocommerce_checkout_fields' , array( $this, 'add_billing_save_address_checkbox_field_checkout' ), 100 );
 
+		// Do not update total on change for some address fields
+		add_filter( 'woocommerce_checkout_fields' , array( $this, 'unset_update_total_on_change_address_fields' ), 100 );
+
 		// Save address to address book
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'save_addresses_from_order' ), 10, 1 );
 
@@ -121,8 +124,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		unset( $billing_address['billing_address_save'] );
 
 		// Get address id from hidden field and flag to save field
-		$shipping_address_id = ! empty( $_POST['_shipping_address_id'] ) && absint( $_POST['_shipping_address_id'] ) > 0 ? absint( $_POST['_shipping_address_id'] ) : null;
-		$billing_address_id = ! empty( $_POST['_billing_address_id'] ) && absint( $_POST['_billing_address_id'] ) > 0 ? absint( $_POST['_billing_address_id'] ) : null;
+		$shipping_address_id = ! empty( $_POST['shipping_address_id'] ) && absint( $_POST['shipping_address_id'] ) > 0 ? absint( $_POST['shipping_address_id'] ) : null;
+		$billing_address_id = ! empty( $_POST['billing_address_id'] ) && absint( $_POST['billing_address_id'] ) > 0 ? absint( $_POST['billing_address_id'] ) : null;
 		$shipping_address_save = $_POST['shipping_address_save'] === '1' ? true : false;
 		$billing_address_save = $_POST['billing_address_save'] === '1' ? true : false;
 
@@ -273,6 +276,24 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
+	 * Unset update checkout on change for address fields
+	 */
+	public function unset_update_total_on_change_address_fields( $fields ) {
+		
+		$classes = $fields['shipping']['shipping_country']['class'];
+		foreach ( $classes as $key => $class ) {
+			if ( $class == 'update_totals_on_change' ) {
+				unset( $fields['shipping']['shipping_country']['class'][ $key ] );
+			}
+		}
+
+		var_dump( $fields['shipping']['shipping_country']['class'] );
+		return $fields;
+	}
+
+
+
+	/**
 	 * Output address book entries for shipping step
 	 */
 	function output_shipping_address_book() {
@@ -308,6 +329,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 
+
 	/**
 	 * Output address book wrapper start tag
 	 */
@@ -324,6 +346,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 
+
+
 	/**
 	 * Add default value hook for address fields
 	 */
@@ -335,9 +359,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			foreach ( $default_address_fields as $field_key => $value ) {
 				$input = $address_type.'_'.$field_key;
 				
-				// Add filter for default checkout values
-				// add_filter( 'default_checkout_' . $input, array( $this, 'change_default_address_field_value' ), 10, 2 );
-				
 				// Add filter for customer address values
 				$method_name = 'change_customer_'.$input;
 				if ( method_exists( $this, $method_name ) ) {
@@ -347,28 +368,28 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		}
 	}
 
-	/**
-	 * Change default address field value
-	 */
-	public function change_default_address_field_value( $value, $input ) {
-		// Bail for some fields
-		$ignore_list = apply_filters( 'wfc_default_address_field_ignore_list', array( 'billing_first_name', 'billing_last_name', 'billing_phone', 'billing_email' ) );
-		if ( in_array( $input, $ignore_list ) ) { return $value; }
+	// /**
+	//  * Change default address field value
+	//  */
+	// public function change_default_address_field_value( $value, $input ) {
+	// 	// Bail for some fields
+	// 	$ignore_list = apply_filters( 'wfc_default_address_field_ignore_list', array( 'billing_first_name', 'billing_last_name', 'billing_phone', 'billing_email' ) );
+	// 	if ( in_array( $input, $ignore_list ) ) { return $value; }
 
-		// Get address type from field input name
-		$address_type = strpos( $input, 'shipping' ) == 0 ? 'shipping' : '';
-		$address_type = empty( $address_type ) && strpos( $input, 'billing' ) == 0 ? 'billing' : '';
+	// 	// Get address type from field input name
+	// 	$address_type = strpos( $input, 'shipping' ) == 0 ? 'shipping' : '';
+	// 	$address_type = empty( $address_type ) && strpos( $input, 'billing' ) == 0 ? 'billing' : '';
 
-		// Bail if not address field
-		if ( empty( $address_type ) ) { return $value; }
+	// 	// Bail if not address field
+	// 	if ( empty( $address_type ) ) { return $value; }
 
-		// Get field value from address book
-		$address_field_key = str_replace( $address_type.'_', '', $input );
-		$address_data = $this->get_customer_selected_address_data( $address_type );
-		$value = $address_data[ $address_field_key ];
+	// 	// Get field value from address book
+	// 	$address_field_key = str_replace( $address_type.'_', '', $input );
+	// 	$address_data = $this->get_customer_selected_address_data( $address_type );
+	// 	$value = $address_data[ $address_field_key ];
 
-		return $value;
-	}
+	// 	return $value;
+	// }
 
 
 
@@ -517,7 +538,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	public function get_address_entry_checked_state( $address_type, $address_entry, $first = false ) {
 		$checked_address = false;
 
-		$address_data_session = FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_selected_session'}();
+		$address_data_session = $this->{'get_'.$address_type.'_address_selected_session'}();
 		$address_id_session = array_key_exists( 'address_id', $address_data_session ) ? $address_data_session['address_id'] : null;
 		
 		if ( $address_id_session != null && $address_entry['address_id'] == $address_id_session ) {
