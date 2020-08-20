@@ -279,15 +279,23 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Unset update checkout on change for address fields
 	 */
 	public function unset_update_total_on_change_address_fields( $fields ) {
-		
-		$classes = $fields['shipping']['shipping_country']['class'];
-		foreach ( $classes as $key => $class ) {
-			if ( $class == 'update_totals_on_change' ) {
-				unset( $fields['shipping']['shipping_country']['class'][ $key ] );
+		$target_fields = array(
+			'shipping' => array( 'shipping_country' ),
+			'billing' => array( 'billing_country' ),
+		);
+
+		foreach ( $target_fields as $address_type => $target_address_fields ) {
+			foreach ( $target_address_fields as $field_key ) {
+				$classes = $fields[ $address_type ][ $field_key ]['class'];
+				
+				foreach ( $classes as $key => $class ) {
+					if ( $class == 'update_totals_on_change' ) {
+						unset( $fields[ $address_type ][ $field_key ]['class'][ $key ] );
+					}
+				}
 			}
 		}
 
-		var_dump( $fields['shipping']['shipping_country']['class'] );
 		return $fields;
 	}
 
