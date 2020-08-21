@@ -18,47 +18,69 @@ defined( 'ABSPATH' ) || exit;
 	<?php echo apply_filters( 'wfc_address_book_entries_start_tag_markup', sprintf( '<ul id="address_book_%1$s" class="address-book__entries">', esc_attr( $address_type ) ), $address_book_entries, $address_type ); ?>
 
 	<?php
-	$address_entry_template = '<li class="address-book-entry"><input type="radio" name="%1$s_address_id" id="address_book_entry_%1$s_%2$s" data-address-type="%1$s" value="%2$s" class="address-book__entry-radio" data-address=\'%4$s\' %3$s />
+	$address_entry_template = '
+	<li class="address-book-entry">
+		<input type="radio" name="%1$s_address_id" id="address_book_entry_%1$s_%2$s" data-address-type="%1$s" value="%2$s" class="address-book__entry-radio" data-address=\'%4$s\' %3$s />
 		<label for="address_book_entry_%1$s_%2$s" class="address-book__entry-label">%5$s</label>
+		%6$s
 	</li>';
-	
-	$first = true;
-	foreach ( $address_book_entries as $address_id => $address_entry ) :
-		$checked_address = FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $address_entry, $first );
-		
-		$address_label = apply_filters( 'wfc_address_book_entry_label_markup',
-			sprintf( '%1$s %2$s %3$s %4$s %5$s',
-				array_key_exists( 'company', $address_entry ) ? '<span class="address-book-entry__company">'.$address_entry['company'].'</span>' : '',
-				array_key_exists( 'first_name', $address_entry ) ? '<span class="address-book-entry__name">'.$address_entry['first_name'] . ' ' . $address_entry['last_name'].'</span>' : '',
-				'<span class="address-book-entry__address_1">'.$address_entry['address_1'].'</span>',
-				array_key_exists( 'address_2', $address_entry ) ? '<span class="address-book-entry__address_2">'.$address_entry['address_2'].'</span>' : '',
-				'<span class="address-book-entry__location">'.$address_entry['city'] . ' ' . $address_entry['state'] . ' ' . $address_entry['country'].'</span>'
-			), $address_entry, $address_type );
 
-		$new_address_item = true;
+
+	// "SAME AS" ADDRESS
+	if ( is_array( $address_entry_same_as ) && array_key_exists( 'address_id', $address_entry_same_as ) ) {
+		$same_as_address_label = sprintf( '<span class="address-book-entry__same-as-label">%s</span>', sprintf( __( 'Same as %s', 'woocommerce-fluid-checkout' ), $same_as_address_type_label ) );
+		$same_as_address_label .= apply_filters( 'wfc_address_book_entry_label_markup', FluidCheckout_AddressBook::instance()->get_address_entry_display_label( $address_entry_same_as ), $address_entry_same_as, $address_type );
+
+		$new_address_item = false;
+		$checked_same_as_address = FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $address_entry_same_as, false );
+		echo apply_filters( 'wfc_address_book_entry_markup',
+			sprintf( $address_entry_template,
+				$address_type,
+				$address_entry_same_as[ 'address_id' ],
+				'data-address-book-same ' . checked( $checked_same_as_address, true, false ),
+				wp_json_encode( $address_entry_same_as ),
+				$same_as_address_label,
+				sprintf( '<input type="hidden" name="%1$s_address_same_as" id="address_book_entry_%1$s_same_as" value="1"/>', $address_type )
+			), $address_entry_same_as, $address_type, $same_as_address_label, $new_address_item, $checked_same_as_address );
+	}
+	
+
+	// SAVED ADDRESSES
+	$first = ! is_array( $address_entry_same_as );
+	foreach ( $address_book_entries as $address_id => $address_entry ) :
+		// Skip saved address used for "same as" option
+		$same_as_address_id = is_array( $address_entry_same_as ) && array_key_exists( 'address_id', $address_entry_same_as ) ? $address_entry_same_as[ 'address_id' ] : false;
+		if ( $address_id == $same_as_address_id ) { continue; }
+
+		$checked_address = FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $address_entry, $first );
+		$address_label = apply_filters( 'wfc_address_book_entry_label_markup', FluidCheckout_AddressBook::instance()->get_address_entry_display_label( $address_entry ), $address_entry, $address_type );
+		$new_address_item = false;
 		echo apply_filters( 'wfc_address_book_entry_markup',
 			sprintf( $address_entry_template,
 				$address_type,
 				$address_id,
 				checked( $checked_address, true, false ),
 				wp_json_encode( $address_entry ),
-				$address_label
+				$address_label,
+				'' // No extra elements
 			), $address_entry, $address_type, $address_label, $new_address_item, $checked_address );
 		
 		$first = false;
-	endforeach; ?>
-
-	<?php
+	endforeach; 
+	
+	
+	// NEW ADDRESS
 	$new_address_entry = array( 'address_id' => 'new' );
 	$new_address_item = true;
-	$checked_new_address = FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $new_address_entry, false );
+	$checked_new_address = is_array( $address_entry_same_as ) && array_key_exists( 'address_id', $address_entry_same_as ) && $address_entry_same_as['address_id'] == 'new' ? false : FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $new_address_entry, false );
 	echo apply_filters( 'wfc_address_book_entry_markup',
 		sprintf( $address_entry_template,
 			$address_type,
 			$new_address_entry[ 'address_id' ],
 			'data-address-book-new ' . checked( $checked_new_address, true, false ),
 			wp_json_encode( array_merge( $new_address_entry, FluidCheckout::instance()->get_user_geo_location() ) ), // default address values
-			__( 'Enter a new address', 'woocommerce-fluid-checkout' )
+			__( 'Enter a new address', 'woocommerce-fluid-checkout' ),
+			'' // No extra elements
 		), $new_address_entry, $address_type, $address_label, $new_address_item, $checked_new_address );
 	?>
 	

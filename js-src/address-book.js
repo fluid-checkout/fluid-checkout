@@ -31,7 +31,7 @@
 		addressEntryNewSelector: '[data-address-book-new]',
 		addressFieldsSelector: 'input, select, textarea',
 		persistedAddressFieldsSelector: '#shipping_country, #shipping_state, #shipping_postcode, #shipping_city',
-		addressIdSelector: '[name$="_address_id"]',
+		addressFieldsCleanSelector: '[name$="_address_id"], #shipping_address_save, #billing_address_save',
 		selectedAddressIdSelector: '[name$="_address_id"]:checked',
 		addressDataAttribute: 'data-address',
 		addressTypeAttribute: 'data-address-type',
@@ -105,6 +105,7 @@
 			var field = fields[i];
 			var addressFieldName = field.getAttribute( 'name' ).replace( addressType+'_', '' );
 			addressData[ addressFieldName ] = field.value;
+			console.log(field);
 		}
 
 		return addressData;
@@ -226,7 +227,7 @@
 			var field = fields[i];
 			
 			// Skip address id fields
-			if ( ! field.matches( _settings.addressIdSelector ) ) {
+			if ( ! field.matches( _settings.addressFieldsCleanSelector ) ) {
 				setFieldValue( field, '' );
 			}
 		}
