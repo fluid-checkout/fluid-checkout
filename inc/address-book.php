@@ -595,7 +595,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$checked_address = false;
 
 		$address_data_session = $this->{'get_'.$address_type.'_address_selected_session'}();
-		$address_id_session = array_key_exists( 'address_id', $address_data_session ) ? $address_data_session['address_id'] : null;
+		$address_id_session = $address_data_session && array_key_exists( 'address_id', $address_data_session ) ? $address_data_session['address_id'] : null;
 		
 		if ( $address_id_session != null && $address_entry['address_id'] == $address_id_session ) {
 			$checked_address = true;
