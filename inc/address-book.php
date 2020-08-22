@@ -373,6 +373,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 		$address_book_entries = $this->get_saved_user_address_book_entries();
 		$address_entry_same_as = $this->get_shipping_address_selected_session();
+		if ( ! $address_entry_same_as && count( $address_book_entries ) > 0 ) { $address_entry_same_as = $address_book_entries[ array_keys( $address_book_entries )[0] ]; }
 		$address_entry_same_as[ 'address_same_as' ] = '1';
 		
 		do_action( 'wfc_billing_address_book_before_entries', $address_book_entries, $address_entry_same_as );
@@ -619,8 +620,17 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Get address data from session or first of the list
 		$address_data = $address_book_entries[ array_keys( $address_book_entries )[0] ];
 		$address_data_session = $this->{'get_'.$address_type.'_address_selected_session'}();
+		
 		if ( $address_data_session !== false && is_array( $address_data_session ) && array_key_exists( 'address_id', $address_data_session ) ) {
 			$address_data = $address_data_session;
+		}
+		elseif ( $address_type == 'billing' && ! $address_data_session ) {
+			$address_data_shipping = $this->get_customer_selected_address_data( 'shipping', $customer_id );
+			$address_data_shipping['address_same_as'] = '1';
+			$address_data = $address_data_shipping;
+			// var_dump( $address_data_shipping );
+			// die();
+			// get_customer_selected_address_data( $address_type, $customer_id = null )
 		}
 
 		return $address_data;
@@ -660,6 +670,10 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		if ( $address_same_as_session && $address_id_session == 'new' && $address_entry['address_id'] == $address_id_session ) {
 			$checked_address = true;
 		}
+		// Billing same as shipping
+		elseif ( $address_type == 'billing' && ! $address_data_session && array_key_exists( 'address_same_as', $address_entry ) && $address_entry['address_same_as'] == 1 ) {
+			$checked_address = true;
+		}
 		// Address id matches
 		elseif ( $address_id_session != null && $address_entry['address_id'] == $address_id_session ) {
 			$checked_address = true;
@@ -696,7 +710,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 			// Set billing same as shipping
 			$billing_address = $this->get_billing_address_selected_session();
-			if ( ! $billing_address ) {
+			if ( ! $billing_address || ( array_key_exists( 'address_same_as', $billing_address ) && $billing_address['address_same_as'] == '1' ) ) {
+				$address_data[ 'address_same_as' ] = '1';
 				WC()->session->set( 'wfc_billing_address_selected', $address_data );
 			}
 		}
