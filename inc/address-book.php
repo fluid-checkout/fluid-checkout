@@ -54,7 +54,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_address_book' ), 6 );
 		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_address_book_new_address_wrapper_start_tag' ), 7 );
 		add_action( 'woocommerce_after_checkout_billing_form', array( $this, 'output_billing_address_book_new_address_wrapper_end_tag' ), 10 );
-		add_action( 'woocommerce_after_checkout_billing_form', array( $this, 'output_address_book_wrapper_end_tag' ), 20 );
+		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_address_book_wrapper_end_tag' ), 30 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_book_fragment' ), 10 );
 
 		// Checkbox for saving address
@@ -106,7 +106,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
 
 		$classes[] = 'has-wfc-address-book';
-		if ( count( $this->get_user_address_book_entries() ) > 0 ) {
+		if ( count( $this->get_saved_user_address_book_entries() ) > 0 ) {
 			$classes[] = 'has-wfc-address-book-entries';
 		}
 
@@ -144,7 +144,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$billing_address_save = $_POST['billing_address_save'] === '1' && $_POST['billing_address_same_as'] != '1' ? true : false;
 
 		// Save new address entries
-		$address_book_entries = $this->get_user_address_book_entries();
+		$address_book_entries = $this->get_saved_user_address_book_entries();
 		if ( $shipping_address_save && ! array_key_exists( $shipping_address_id, $address_book_entries ) ) { $this->save_address_book_entry( $shipping_address ); }
 		if ( $billing_address_save && ! array_key_exists( $billing_address_id, $address_book_entries ) ) { $this->save_address_book_entry( $billing_address ); }
 	}
@@ -154,7 +154,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Get user's saved addresses
 	 */
-	public function get_user_address_book_entries( $user_id = null ) {
+	public function get_saved_user_address_book_entries( $user_id = null ) {
 		$user_id = $this->get_user_id( $user_id );
 
 		// Get from cache if available
@@ -184,7 +184,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$user_id = $this->get_user_id( $user_id );
 
 		// Get existing entries
-		$address_book_entries = $this->get_user_address_book_entries( $user_id );
+		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
 		
 		// Get or create address id
 		$address_id = is_array( $address_entry ) && array_key_exists( 'address_id' ) ? $address_entry['address_id'] : null;
@@ -325,11 +325,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Output address book entries for shipping step
 	 */
 	function output_shipping_address_book() {
-		$address_book_entries = $this->get_user_address_book_entries();
+		$address_book_entries = $this->get_saved_user_address_book_entries();
 		
 		do_action( 'wfc_shipping_address_book_before_entries' );
 	
-		wc_get_template( 'checkout/address-book-entries.php', array(
+		wc_get_template( 'checkout/address-book-entries-shipping.php', array(
 			'address_type'			=> 'shipping',
 			'address_book_entries'	=> $address_book_entries,
 			'address_entry_same_as'	=> null,
@@ -371,21 +371,20 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	public function get_billing_address_book_markup() {
 		ob_start();
 
-		$address_book_entries = $this->get_user_address_book_entries();
-		
-		do_action( 'wfc_billing_address_book_before_entries' );
-
+		$address_book_entries = $this->get_saved_user_address_book_entries();
 		$address_entry_same_as = $this->get_shipping_address_selected_session();
 		$address_entry_same_as[ 'address_same_as' ] = '1';
+		
+		do_action( 'wfc_billing_address_book_before_entries', $address_book_entries, $address_entry_same_as );
 	
-		wc_get_template( 'checkout/address-book-entries.php', array(
+		wc_get_template( 'checkout/address-book-entries-billing.php', array(
 			'address_type'					=> 'billing',
 			'address_book_entries'			=> $address_book_entries,
 			'address_entry_same_as'			=> $address_entry_same_as,
 			'same_as_address_type_label'	=> _x( 'shipping address', '"same as" address type label', 'woocommerce-fluid-checkout' ),
 		) );
 
-		do_action( 'wfc_billing_address_book_after_entries' );
+		do_action( 'wfc_billing_address_book_after_entries', $address_book_entries, $address_entry_same_as );
 
 		return ob_get_clean();
 	}
@@ -437,7 +436,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	function add_checkout_billing_address_book_fragment( $fragments ) {
 		$billing_address_book = $this->get_billing_address_book_markup();
-		$fragments['#address_book_billing'] = $billing_address_book;
+		$fragments['.address-book__billing'] = $billing_address_book;
 		return $fragments;
 	}
 
@@ -612,7 +611,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	public function get_customer_selected_address_data( $address_type, $customer_id = null ) {
 		$customer_id = $this->get_user_id( $customer_id );
 		
-		$address_book_entries = $this->get_user_address_book_entries( $customer_id );
+		$address_book_entries = $this->get_saved_user_address_book_entries( $customer_id );
 		
 		// Bail if user doesn't have saved addresses
 		if ( ! $address_book_entries || count( $address_book_entries ) <= 0 ) { return $default_location; }
@@ -633,12 +632,13 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Get address entry display label
 	 */
 	public function get_address_entry_display_label( $address_entry ) {
-		$display_label = sprintf( '%1$s %2$s %3$s %4$s %5$s',
+		$display_label = sprintf( '%1$s %2$s %3$s %4$s %5$s %6$s',
 			array_key_exists( 'company', $address_entry ) ? '<span class="address-book-entry__company">'.$address_entry['company'].'</span>' : '',
 			array_key_exists( 'first_name', $address_entry ) ? '<span class="address-book-entry__name">'.$address_entry['first_name'] . ' ' . $address_entry['last_name'].'</span>' : '',
 			'<span class="address-book-entry__address_1">'.$address_entry['address_1'].'</span>',
 			array_key_exists( 'address_2', $address_entry ) ? '<span class="address-book-entry__address_2">'.$address_entry['address_2'].'</span>' : '',
-			'<span class="address-book-entry__location">'.$address_entry['city'] . ' ' . $address_entry['state'] . ' ' . $address_entry['country'].'</span>'
+			'<span class="address-book-entry__location">'.$address_entry['city'].' '.$address_entry['state'].' '.$address_entry['country'].'</span>',
+			'<span class="address-book-entry__postcode">'.$address_entry['postcode'].'</span>'
 		);
 
 		return $display_label;
@@ -655,8 +655,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$address_data_session = $this->{'get_'.$address_type.'_address_selected_session'}();
 		$address_id_session = $address_data_session && array_key_exists( 'address_id', $address_data_session ) ? $address_data_session['address_id'] : null;
 		$address_same_as_session = $address_data_session && array_key_exists( 'address_same_as', $address_data_session ) && $address_data_session['address_same_as'] == 1;
-
-		// var_dump( $address_same_as_session );
 
 		// Same address was checked and is new address option
 		if ( $address_same_as_session && $address_id_session == 'new' && $address_entry['address_id'] == $address_id_session ) {

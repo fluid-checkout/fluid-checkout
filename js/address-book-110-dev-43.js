@@ -26,20 +26,24 @@
 		bodyClass: 'wfc-address-book--active',
 
 		addressBookSelector: '.wfc-address-book',
+		addressBookEntriesWrapper: '.address-book',
 		newAddressFormSelector: '.wfc-address-book__form-wrapper',
 		addressEntrySelector: '.address-book__entry-radio',
 		addressEntryNewSelector: '[data-address-book-new]',
+		addressEntrySameAsSelector: '[data-address-book-same]',
 		addressFieldsSelector: 'input, select, textarea',
 		persistedAddressFieldsSelector: '#shipping_first_name, #shipping_last_name, #shipping_phone, #shipping_company, #shipping_address_1, #shipping_address_2, #shipping_country, #shipping_state, #shipping_postcode, #shipping_city',
 		addressFieldsCleanSelector: '[name$="_address_id"], #shipping_address_save, #billing_address_save',
 		selectedAddressIdSelector: '[name$="_address_id"]:checked',
-		addressDataAttribute: 'data-address',
-		addressTypeAttribute: 'data-address-type',
-		newAddressFormActiveClass: 'active',
-		saveAddressHiddenClass: 'hidden',
-
 		formRowSelector: '.form-row',
 		select2Selector: '[class*="select2"]',
+		
+		addressDataAttribute: 'data-address',
+		addressTypeAttribute: 'data-address-type',
+		sameAsEntryCheckedAttribute: 'data-address-same-as-checked',
+		
+		newAddressFormActiveClass: 'active',
+		saveAddressHiddenClass: 'hidden',
 
 	}
 	var _updateCheckout = true;
@@ -78,10 +82,10 @@
 
 
 	/**
-	 * Show or hide the new address form
+	 * Set or unset the new address form as active
 	 */
 	var changeNewAddressFormVisibility = function( addressBook, selectedAddress ) {
-		// Bail if address book or selectedAddress not available
+		// Bail if address book or selectedAddresss not available
 		if ( ! addressBook || ! selectedAddress ) { return; }
 
 		var newAddressForm = addressBook.querySelector( '.wfc-address-book__form-wrapper' );
@@ -89,9 +93,30 @@
 		// Bail if new address form wrapper not available
 		if ( ! newAddressForm ) { return; }
 
-		// Show or hide new address form
+		// Set new address form state
 		if ( selectedAddress.matches( _settings.addressEntryNewSelector ) ) { newAddressForm.classList.add( _settings.newAddressFormActiveClass ); }
 		else { newAddressForm.classList.remove( _settings.newAddressFormActiveClass ); }
+	}
+
+
+
+	/**
+	 * Set or unset the address book as having "same as" option selected
+	 */
+	var changeSameAsOptionSelectedState = function( addressBook, selectedAddress ) {
+		// Bail if address book or selectedAddress not available
+		if ( ! addressBook || ! selectedAddress ) { return; }
+
+		var addressBookEntriesWrapper = addressBook.querySelector( _settings.addressBookEntriesWrapper );
+
+		// Bail if new address form wrapper not available
+		if ( ! addressBookEntriesWrapper ) { return; }
+
+		// console.log( selectedAddress.matches( _settings.addressEntrySameAsSelector ) );
+
+		// Set "same as" option checked state to address book element
+		if ( selectedAddress.matches( _settings.addressEntrySameAsSelector ) ) { addressBookEntriesWrapper.setAttribute( _settings.sameAsEntryCheckedAttribute, '1' ); }
+		else { addressBookEntriesWrapper.removeAttribute( _settings.sameAsEntryCheckedAttribute ); }
 	}
 
 
@@ -267,6 +292,7 @@
 	var changeSelectedAddress = function ( target ) {
 		var addressBook = target.closest( _settings.addressBookSelector );
 		changeNewAddressFormVisibility( addressBook, target );
+		changeSameAsOptionSelectedState( addressBook, target );
 		changeAddressFormFields( addressBook, target );
 		updatePersistedAddress( addressBook, target );
 	}
