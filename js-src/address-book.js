@@ -30,7 +30,7 @@
 		addressEntrySelector: '.address-book__entry-radio',
 		addressEntryNewSelector: '[data-address-book-new]',
 		addressFieldsSelector: 'input, select, textarea',
-		persistedAddressFieldsSelector: '#shipping_country, #shipping_state, #shipping_postcode, #shipping_city',
+		persistedAddressFieldsSelector: '#shipping_first_name, #shipping_last_name, #shipping_phone, #shipping_company, #shipping_address_1, #shipping_address_2, #shipping_country, #shipping_state, #shipping_postcode, #shipping_city',
 		addressFieldsCleanSelector: '[name$="_address_id"], #shipping_address_save, #billing_address_save',
 		selectedAddressIdSelector: '[name$="_address_id"]:checked',
 		addressDataAttribute: 'data-address',
@@ -49,6 +49,31 @@
 	/**
 	 * METHODS
 	 */
+
+
+	// TODO: Maybe move to it's own file and load with require bundle
+	/**
+	 * Debounce
+	 *
+	 * Returns a function, that, as long as it continues to be invoked, will not
+	 * be triggered. The function will be called after it stops being called for
+	 * N milliseconds. If `immediate` is passed, trigger the function on the
+	 * leading edge, instead of the trailing.
+	 */
+	function debounce( func, wait, immediate ) {
+		var timeout;
+		return function() {
+			var context = this, args = arguments;
+			var later = function() {
+				timeout = null;
+				if (!immediate) func.apply(context, args);
+			};
+			var callNow = immediate && !timeout;
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+			if (callNow) func.apply(context, args);
+		};
+	}
 
 
 
@@ -105,7 +130,6 @@
 			var field = fields[i];
 			var addressFieldName = field.getAttribute( 'name' ).replace( addressType+'_', '' );
 			addressData[ addressFieldName ] = field.value;
-			console.log(field);
 		}
 
 		return addressData;
@@ -272,8 +296,8 @@
 	var setupPersistedFieldsChangeEventListeners = function( e ) {
 		if ( _hasJQuery ) {
 			// Need to use jQuery event handler as select2 doesn't fire change event for the underlying select field
-			$( _settings.persistedAddressFieldsSelector ).off( 'change', changePersistedAddressFields );
-			$( _settings.persistedAddressFieldsSelector ).on( 'change', changePersistedAddressFields );
+			$( _settings.persistedAddressFieldsSelector ).off( 'change', debounce( changePersistedAddressFields, 500 ) );
+			$( _settings.persistedAddressFieldsSelector ).on( 'change', debounce( changePersistedAddressFields, 500 ) );
 		}
 	}
 
