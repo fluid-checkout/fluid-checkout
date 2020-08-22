@@ -28,8 +28,7 @@ defined( 'ABSPATH' ) || exit;
 
 	// "SAME AS" ADDRESS
 	if ( is_array( $address_entry_same_as ) && array_key_exists( 'address_id', $address_entry_same_as ) ) {
-		$same_as_address_label = sprintf( '<span class="address-book-entry__same-as-label">%s</span>', sprintf( __( 'Same as %s', 'woocommerce-fluid-checkout' ), $same_as_address_type_label ) );
-		$same_as_address_label .= apply_filters( 'wfc_address_book_entry_label_markup', FluidCheckout_AddressBook::instance()->get_address_entry_display_label( $address_entry_same_as ), $address_entry_same_as, $address_type );
+		$same_as_address_label = apply_filters( 'wfc_address_book_entry_same_as_label', sprintf( '<span class="address-book-entry__same-as-label">%s</span>', sprintf( __( 'Same as %s', 'woocommerce-fluid-checkout' ), $same_as_address_type_label ) ) );
 
 		$new_address_item = false;
 		$checked_same_as_address = FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $address_entry_same_as, false );
