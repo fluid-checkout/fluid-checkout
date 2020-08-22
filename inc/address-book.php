@@ -43,18 +43,16 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'wp', array( $this, 'add_address_field_default_value_hooks' ), 10 );
 
 		// Shipping Address Book
-		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_address_book_wrapper_start_tag' ), 5 );
+		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_address_book_shipping_wrapper_start_tag' ), 5 );
 		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_address_book' ), 6 );
 		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_address_book_new_address_wrapper_start_tag' ), 7 );
 		add_action( 'woocommerce_after_checkout_shipping_form', array( $this, 'output_shipping_address_book_new_address_wrapper_end_tag' ), 10 );
 		add_action( 'woocommerce_after_checkout_shipping_form', array( $this, 'output_address_book_wrapper_end_tag' ), 20 );
 
 		// Billing Address Book
-		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_address_book_wrapper_start_tag' ), 5 );
-		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_address_book' ), 6 );
-		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_address_book_new_address_wrapper_start_tag' ), 7 );
-		add_action( 'woocommerce_after_checkout_billing_form', array( $this, 'output_billing_address_book_new_address_wrapper_end_tag' ), 10 );
-		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_address_book_wrapper_end_tag' ), 30 );
+		remove_action( 'wfc_checkout_before_step_billing_fields', array( $this->multistep(), 'output_billing_step_section_title' ), 10 );
+		remove_action( 'wfc_checkout_after_step_payment_fields', array( $this->multistep_enhanced(), 'output_billing_fields' ), 20 );
+		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_billing_address_book' ), 20 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_book_fragment' ), 10 );
 
 		// Checkbox for saving address
@@ -79,6 +77,13 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	}
 
 
+
+	/**
+	 * Return WooCommerce Fluid Checkout multi-step class instance
+	 */
+	public function multistep() {
+		return FluidCheckoutLayout_MultiStep::instance();
+	}
 
 	/**
 	 * Return WooCommerce Fluid Checkout multi-step enhanced class instance
@@ -361,16 +366,29 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Output address book entries for billing step
 	 */
+	function get_billing_address_book_markup() {
+		ob_start();
+		$this->output_billing_address_book();
+		return ob_get_clean();
+	}
+
+	/**
+	 * Output address book entries for billing step
+	 */
 	function output_billing_address_book() {
-		echo $this->get_billing_address_book_markup();
+		$this->output_address_book_billing_wrapper_start_tag();
+		$this->multistep()->output_billing_step_section_title();
+		$this->output_billing_address_book_markup();
+		$this->output_billing_address_book_new_address_wrapper_start_tag();
+		$this->multistep_enhanced()->output_billing_fields();
+		$this->output_billing_address_book_new_address_wrapper_end_tag();
+		$this->output_address_book_wrapper_end_tag();
 	}
 	
 	/**
 	 * Output address book entries for billing step
 	 */
-	public function get_billing_address_book_markup() {
-		ob_start();
-
+	public function output_billing_address_book_markup() {
 		$address_book_entries = $this->get_saved_user_address_book_entries();
 		$address_entry_same_as = $this->get_shipping_address_selected_session();
 		if ( ! $address_entry_same_as && count( $address_book_entries ) > 0 ) { $address_entry_same_as = $address_book_entries[ array_keys( $address_book_entries )[0] ]; }
@@ -386,8 +404,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		) );
 
 		do_action( 'wfc_billing_address_book_after_entries', $address_book_entries, $address_entry_same_as );
-
-		return ob_get_clean();
 	}
 
 
@@ -397,7 +413,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function output_billing_address_book_new_address_wrapper_start_tag() {
 		$billing_address = $this->get_billing_address_selected_session();
-		// var_dump( $billing_address );
 		$is_same_address_selected = ! $billing_address || $billing_address && array_key_exists( 'address_same_as', $billing_address ) && $billing_address['address_same_as'] == '1';
 		$active_class = ! $is_same_address_selected && $this->get_billing_address_entry_checked_state( array( 'address_id' => 'new' ), false ) ? 'active' : '';
 		echo '<div class="wfc-address-book__form-wrapper '. $active_class .'">';
@@ -417,8 +432,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Output address book wrapper start tag
 	 */
-	public function output_address_book_wrapper_start_tag() {
-		echo '<div class="wfc-address-book">';
+	public function output_address_book_wrapper_start_tag( $address_type ) {
+		echo '<div class="wfc-address-book wfc-address-book--'.esc_attr( $address_type ).'" data-address-type="'.esc_attr( $address_type ).'">';
 	}
 
 	/**
@@ -426,6 +441,20 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function output_address_book_wrapper_end_tag() {
 		echo '</div>';
+	}
+
+	/**
+	 * Output address book wrapper start tag for shipping address
+	 */
+	public function output_address_book_shipping_wrapper_start_tag() {
+		$this->output_address_book_wrapper_start_tag( 'shipping' );
+	}
+
+	/**
+	 * Output address book wrapper start tag for billing address
+	 */
+	public function output_address_book_billing_wrapper_start_tag() {
+		$this->output_address_book_wrapper_start_tag( 'billing' );
 	}
 
 
@@ -437,7 +466,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	function add_checkout_billing_address_book_fragment( $fragments ) {
 		$billing_address_book = $this->get_billing_address_book_markup();
-		$fragments['.address-book__billing'] = $billing_address_book;
+		$fragments['.wfc-address-book--billing'] = $billing_address_book;
 		return $fragments;
 	}
 
@@ -461,32 +490,35 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 				if ( method_exists( $this, $method_name ) ) {
 					add_filter( 'woocommerce_customer_get_' . $input, array( $this, $method_name ), 10, 2 );
 				}
+
+				// Add default field value filter
+				add_filter( 'default_checkout_' . $input, array( $this, 'change_default_address_field_value' ), 10, 2 );
 			}
 		}
 	}
 
-	// /**
-	//  * Change default address field value
-	//  */
-	// public function change_default_address_field_value( $value, $input ) {
-	// 	// Bail for some fields
-	// 	$ignore_list = apply_filters( 'wfc_default_address_field_ignore_list', array( 'billing_first_name', 'billing_last_name', 'billing_phone', 'billing_email' ) );
-	// 	if ( in_array( $input, $ignore_list ) ) { return $value; }
+	/**
+	 * Change default address field value
+	 */
+	public function change_default_address_field_value( $value, $input ) {
+		// Bail for some fields
+		$ignore_list = apply_filters( 'wfc_default_address_field_ignore_list', array( 'billing_first_name', 'billing_last_name', 'billing_phone', 'billing_email' ) );
+		if ( in_array( $input, $ignore_list ) ) { return $value; }
 
-	// 	// Get address type from field input name
-	// 	$address_type = strpos( $input, 'shipping' ) == 0 ? 'shipping' : '';
-	// 	$address_type = empty( $address_type ) && strpos( $input, 'billing' ) == 0 ? 'billing' : '';
+		// Get address type from field input name
+		$address_type = strpos( $input, 'shipping' ) == 0 ? 'shipping' : '';
+		$address_type = empty( $address_type ) && strpos( $input, 'billing' ) == 0 ? 'billing' : '';
 
-	// 	// Bail if not address field
-	// 	if ( empty( $address_type ) ) { return $value; }
+		// Bail if not address field
+		if ( empty( $address_type ) ) { return $value; }
 
-	// 	// Get field value from address book
-	// 	$address_field_key = str_replace( $address_type.'_', '', $input );
-	// 	$address_data = $this->get_customer_selected_address_data( $address_type );
-	// 	$value = $address_data[ $address_field_key ];
+		// Get field value from address book
+		$address_field_key = str_replace( $address_type.'_', '', $input );
+		$address_data = $this->get_customer_selected_address_data( $address_type );
+		$value = $address_data[ $address_field_key ];
 
-	// 	return $value;
-	// }
+		return $value;
+	}
 
 
 
@@ -628,9 +660,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			$address_data_shipping = $this->get_customer_selected_address_data( 'shipping', $customer_id );
 			$address_data_shipping['address_same_as'] = '1';
 			$address_data = $address_data_shipping;
-			// var_dump( $address_data_shipping );
-			// die();
-			// get_customer_selected_address_data( $address_type, $customer_id = null )
 		}
 
 		return $address_data;
@@ -714,6 +743,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 				$address_data[ 'address_same_as' ] = '1';
 				WC()->session->set( 'wfc_billing_address_selected', $address_data );
 			}
+
 		}
 		else {
 			// Clear session value

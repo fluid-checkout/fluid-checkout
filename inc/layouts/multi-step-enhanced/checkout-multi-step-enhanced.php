@@ -50,9 +50,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		remove_action( 'wfc_checkout_before_step_payment_fields', array( $this->multistep(), 'output_order_review' ), 5 );
 		remove_action( 'wfc_checkout_after_step_payment_fields', array( $this->multistep(), 'output_checkout_place_order' ), 100 );
 		remove_filter( 'woocommerce_order_button_html', array( $this->multistep(), 'get_payment_step_actions_html' ), 20 );
-		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_payment_step_actions_html' ), 100 );
-		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_billing_fields' ), 20 );
 		add_filter( 'wfc_checkout_billing_step_section_title', array( $this, 'change_billing_fields_section_title' ), 10 );
+		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_billing_fields' ), 20 );
+		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_payment_step_actions_html' ), 100 );
 		
 		// Order Review
 		add_action( 'wfc_checkout_after_steps', array( $this, 'output_checkout_order_review_wrapper' ), 10 );

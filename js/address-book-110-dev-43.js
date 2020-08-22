@@ -319,7 +319,7 @@
 	/**
 	 * Handle change to persisted address fields
 	 */
-	var setupPersistedFieldsChangeEventListeners = function( e ) {
+	var setupJQueryEventListeners = function( e ) {
 		if ( _hasJQuery ) {
 			// Need to use jQuery event handler as select2 doesn't fire change event for the underlying select field
 			$( _settings.persistedAddressFieldsSelector ).off( 'change', debounce( changePersistedAddressFields, 500 ) );
@@ -360,7 +360,7 @@
 		// Add event listeners
 		// window.addEventListener( 'click', handleClick );
 		window.addEventListener( 'change', handleChange );
-		setupPersistedFieldsChangeEventListeners();
+		setupJQueryEventListeners();
 
 		// Add init class
 		document.body.classList.add( _settings.bodyClass );
