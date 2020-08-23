@@ -42,6 +42,10 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Address default values
 		add_action( 'wp', array( $this, 'add_address_field_default_value_hooks' ), 10 );
 
+		// Checkout fields
+		add_filter( 'wfc_checkout_fields_args', array( $this, 'change_checkout_fields_args' ), 60 );
+		add_filter( 'wfc_checkout_fields_args', array( $this, 'change_checkout_shipping_copy_target_fields_args' ), 70 );
+
 		// Shipping Address Book
 		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_address_book_shipping_wrapper_start_tag' ), 5 );
 		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_address_book' ), 6 );
@@ -119,6 +123,38 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	}
 
 
+
+
+
+	/**
+	 * Change checkout fields args
+	 */
+	public function change_checkout_fields_args( $field_args ) {
+
+		$field_args = array_merge( $field_args, array(
+			'billing_first_name'	=> array( 'custom_attributes' => array( 'data-copy-to-field' => '#shipping_first_name' ) ),
+			'billing_last_name'	=> array( 'custom_attributes' => array( 'data-copy-to-field' => '#shipping_last_name' ) ),
+			'billing_phone'	=> array( 'custom_attributes' => array( 'data-copy-to-field' => '#shipping_phone' ) ),
+		) );
+
+		return $field_args;
+	}
+
+	/**
+	 * Change checkout shipping fields to prevent to be overwritten with billing fields values copied at frontend
+	 */
+	public function change_checkout_shipping_copy_target_fields_args( $field_args ) {
+		// Bail if saved shipping address is being used
+		if ( $this->get_shipping_address_selected_session() === false ) { return $field_args; };
+
+		$field_args = array_merge( $field_args, array(
+			'shipping_first_name'	=> array( 'custom_attributes' => array( 'data-field-edited' => '1' ) ),
+			'shipping_last_name'	=> array( 'custom_attributes' => array( 'data-field-edited' => '1' ) ),
+			'shipping_phone'		=> array( 'custom_attributes' => array( 'data-field-edited' => '1' ) ),
+		) );
+
+		return $field_args;
+	}
 
 
 

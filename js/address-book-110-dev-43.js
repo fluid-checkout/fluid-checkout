@@ -37,16 +37,22 @@
 		selectedAddressIdSelector: '[name$="_address_id"]:checked',
 		formRowSelector: '.form-row',
 		select2Selector: '[class*="select2"]',
+		copyValueFromFieldSelector: '#billing_first_name, #billing_last_name, #billing_phone',
+		fieldEditedSelector: '[data-field-edited]',
 		
 		addressDataAttribute: 'data-address',
 		addressTypeAttribute: 'data-address-type',
 		sameAsEntryCheckedAttribute: 'data-address-same-as-checked',
+		copyValueToAttribute: 'data-copy-to-field',
+		fieldEditedAttribute: 'data-field-edited',
 		
 		newAddressFormActiveClass: 'active',
 		saveAddressHiddenClass: 'hidden',
 
+
 	}
 	var _updateCheckout = true;
+	var _copyValueToFieldSelector =  '';
 
 
 
@@ -316,15 +322,57 @@
 		}
 	}
 
+
+
 	/**
-	 * Handle change to persisted address fields
+	 * Prepare selector of target field of "copy to" function based origin field attributes
 	 */
-	var setupJQueryEventListeners = function( e ) {
-		if ( _hasJQuery ) {
-			// Need to use jQuery event handler as select2 doesn't fire change event for the underlying select field
-			$( _settings.persistedAddressFieldsSelector ).off( 'change', debounce( changePersistedAddressFields, 500 ) );
-			$( _settings.persistedAddressFieldsSelector ).on( 'change', debounce( changePersistedAddressFields, 500 ) );
+	var prepareCopyValueToFieldsSelector = function() {
+		var copyFromFields = document.querySelectorAll( _settings.copyValueFromFieldSelector );
+
+		
+		for ( var index = 0; index < copyFromFields.length; index++) {
+			var field = copyFromFields[ index ];
+			var copyToSelector = field.getAttribute( _settings.copyValueToAttribute );
+			
+			if ( _copyValueToFieldSelector.indexOf( copyToSelector ) == -1 ) {
+				_copyValueToFieldSelector += _copyValueToFieldSelector.length > 0 ? ', ' : '';
+				_copyValueToFieldSelector += copyToSelector;
+			}
 		}
+	}
+
+
+
+	/**
+	 * Copy value from one field to a target field defined as an attribute
+	 */
+	var copyFieldValue = function( changedField ) {
+		var copyToSelector = changedField.getAttribute( _settings.copyValueToAttribute );
+		
+		// Bail if selector to copy to other fields is empty
+		if ( ! copyToSelector || copyToSelector == '' ) { return; }
+
+		var targetFields = document.querySelectorAll( copyToSelector );
+
+		for ( var index = 0; index < targetFields.length; index++ ) {
+			var field = targetFields[ index ];
+			if ( ! field.matches( _settings.fieldEditedSelector ) ) {
+				field.value = changedField.value;
+			}
+		}
+	}
+
+
+
+	/**
+	 * Mark a field as edited by the user
+	 */
+	var markFieldAsEdited = function( field ) {
+		// Bail if field not valid
+		if ( ! field ) { return; }
+
+		field.setAttribute( _settings.fieldEditedAttribute, '1' );
 	}
 
 
@@ -347,7 +395,26 @@
 		if ( e.target.matches( _settings.addressEntrySelector ) ) {
 			changeSelectedAddress( e.target );
 		}
+		else if ( e.target.matches( _settings.copyValueFromFieldSelector ) ) {
+			copyFieldValue( e.target );
+		}
+		else if ( e.target.matches( _copyValueToFieldSelector ) ) {
+			markFieldAsEdited( e.target );
+		}
 	};
+
+
+
+	/**
+	 * Handle change to persisted address fields
+	 */
+	var setupJQueryEventListeners = function( e ) {
+		if ( _hasJQuery ) {
+			// Need to use jQuery event handler as select2 doesn't fire change event for the underlying select field
+			$( _settings.persistedAddressFieldsSelector ).off( 'change', debounce( changePersistedAddressFields, 500 ) );
+			$( _settings.persistedAddressFieldsSelector ).on( 'change', debounce( changePersistedAddressFields, 500 ) );
+		}
+	}
 
 
 
@@ -361,6 +428,8 @@
 		// window.addEventListener( 'click', handleClick );
 		window.addEventListener( 'change', handleChange );
 		setupJQueryEventListeners();
+
+		prepareCopyValueToFieldsSelector();
 
 		// Add init class
 		document.body.classList.add( _settings.bodyClass );
