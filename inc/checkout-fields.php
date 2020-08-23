@@ -153,15 +153,15 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * Get the checkout fields args.
 	 */
 	public function get_checkout_fields_args( $field_group ) {
-		// Add $field_group prefix separator when needed
+		// Add prefix separator to field group when needed
 		if ( ! empty( $field_group ) ) { $field_group .= '_'; }
 
 		return apply_filters( 'wfc_checkout_fields_args', array(
-			$field_group . 'email' 			=> array( 'priority' => 5 ),
-			$field_group . 'first_name' 	=> array( 'priority' => 10 ),
-			$field_group . 'last_name' 		=> array( 'priority' => 20 ),
-			$field_group . 'phone' 			=> array( 'priority' => 30, 'class' => array( 'form-row-first' ) ),
-			$field_group . 'company' 		=> array( 'priority' => 35, 'class' => array( 'form-row-last' ) ),
+			$field_group . 'email'			=> array( 'priority' => 5 ),
+			$field_group . 'first_name'		=> array( 'priority' => 10 ),
+			$field_group . 'last_name'		=> array( 'priority' => 20 ),
+			$field_group . 'phone'			=> array( 'priority' => 30, 'class' => array( 'form-row-first' ) ),
+			$field_group . 'company'		=> array( 'priority' => 35, 'class' => array( 'form-row-last' ) ),
 		) );
 	}
 
@@ -212,10 +212,6 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		$fields[ $field_group ] = $this->change_checkout_fields_args( $fields[ $field_group ], $field_group );
 		return $fields;
 	}
-
-
-
-
 
 }
 

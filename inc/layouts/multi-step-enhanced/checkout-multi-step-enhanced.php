@@ -146,7 +146,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	public function output_checkout_order_review_wrapper() {
 		?>
 		<div class="wfc-checkout-order-review-wrapper">
-			<?php do_action( 'wfc_checkout_order_review_wrapper' ) ?>
+			<?php do_action( 'wfc_checkout_order_review_wrapper' ); ?>
 		</div>
 		<?php
 	}
@@ -154,11 +154,14 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Change checkout fields args for multi step enhanced layout
+	 * Change checkout fields args
 	 */
 	public function change_checkout_fields_args( $field_args ) {
-		// Change size of billing company
-		if ( array_key_exists( 'billing_company', $field_args ) ) { $field_args['billing_company']['class'] = array( 'form-row-wide' ); }
+
+		$field_args = array_merge( $field_args, array(
+			'shipping_company'			=> array( 'priority' => 100, 'class' => array( 'form-row-first' ) ),
+			'billing_company'			=> array( 'priority' => 100, 'class' => array( 'form-row-first' ) ),
+		) );
 
 		return $field_args;
 	}
@@ -183,8 +186,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		wc_get_template(
 			'checkout/form-contact.php',
 			array(
-				'checkout'          => WC()->checkout(),
-				'display_fields'    => $this->get_contact_step_display_fields(),
+				'checkout'			=> WC()->checkout(),
+				'display_fields'	=> $this->get_contact_step_display_fields(),
 				'user_data'			=> $this->get_user_data(),
 			)
 		);
@@ -216,8 +219,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 			$current_user = WC()->customer;
 
 			$user_data = array(
-				'user_email'   => $current_user->get_email(),
-				'display_name' => $current_user->get_billing_first_name() . ' ' . $current_user->get_billing_last_name(),
+				'user_email'	=> $current_user->get_email(),
+				'display_name'	=> $current_user->get_billing_first_name() . ' ' . $current_user->get_billing_last_name(),
 			);
 			$billing_phone = $current_user->get_billing_phone();
 			if ( ! empty( $billing_phone ) ) {
@@ -302,16 +305,16 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 			}
 	
 			wc_get_template( 'cart/shipping-methods-available.php', array(
-				'package'                  => $package,
-				'available_methods'        => $package['rates'],
-				'show_package_details'     => sizeof( $packages ) > 1,
-				'show_shipping_calculator' => is_cart() && $first_item,
-				'package_details'          => implode( ', ', $product_names ),
+				'package'					=> $package,
+				'available_methods'			=> $package['rates'],
+				'show_package_details'		=> sizeof( $packages ) > 1,
+				'show_shipping_calculator'	=> is_cart() && $first_item,
+				'package_details'			=> implode( ', ', $product_names ),
 				// @codingStandardsIgnoreStart
-				'package_name'             => apply_filters( 'woocommerce_shipping_package_name', sprintf( _nx( 'Shipping', 'Shipping %d', ( $i + 1 ), 'shipping packages', 'woocommerce' ), ( $i + 1 ) ), $i, $package ),
+				'package_name'				=> apply_filters( 'woocommerce_shipping_package_name', sprintf( _nx( 'Shipping', 'Shipping %d', ( $i + 1 ), 'shipping packages', 'woocommerce' ), ( $i + 1 ) ), $i, $package ),
 				// @codingStandardsIgnoreEnd
-				'package_index'            => $i,
-				'chosen_method'            => $chosen_method,
+				'package_index'				=> $i,
+				'chosen_method'				=> $chosen_method,
 			) );
 	
 			$first_item = false;
