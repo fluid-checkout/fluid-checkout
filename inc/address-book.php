@@ -670,10 +670,26 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Get address entry display label
 	 */
-	public function get_address_entry_display_label( $address_entry ) {
+	public function get_shipping_address_entry_display_label( $address_entry ) {
 		$display_label = sprintf( '%1$s %2$s %3$s %4$s %5$s %6$s',
-			array_key_exists( 'company', $address_entry ) ? '<span class="address-book-entry__company">'.$address_entry['company'].'</span>' : '',
 			array_key_exists( 'first_name', $address_entry ) ? '<span class="address-book-entry__name">'.$address_entry['first_name'] . ' ' . $address_entry['last_name'].'</span>' : '',
+			'<span class="address-book-entry__address_1">'.$address_entry['address_1'].'</span>',
+			array_key_exists( 'address_2', $address_entry ) ? '<span class="address-book-entry__address_2">'.$address_entry['address_2'].'</span>' : '',
+			'<span class="address-book-entry__location">'.$address_entry['city'].' '.$address_entry['state'].' '.$address_entry['country'].'</span>',
+			'<span class="address-book-entry__postcode">'.$address_entry['postcode'].'</span>',
+			array_key_exists( 'company', $address_entry ) ? '<span class="address-book-entry__company">'.$address_entry['company'].'</span>' : ''
+		);
+
+		return $display_label;
+	}
+
+
+
+	/**
+	 * Get address entry display label for billing address
+	 */
+	public function get_billing_address_entry_display_label( $address_entry ) {
+		$display_label = sprintf( '%1$s %2$s %3$s %4$s',
 			'<span class="address-book-entry__address_1">'.$address_entry['address_1'].'</span>',
 			array_key_exists( 'address_2', $address_entry ) ? '<span class="address-book-entry__address_2">'.$address_entry['address_2'].'</span>' : '',
 			'<span class="address-book-entry__location">'.$address_entry['city'].' '.$address_entry['state'].' '.$address_entry['country'].'</span>',

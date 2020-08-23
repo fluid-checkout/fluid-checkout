@@ -33,7 +33,7 @@ defined( 'ABSPATH' ) || exit;
 		if ( $address_id == $same_as_address_id ) { continue; }
 
 		$checked_address = FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $address_entry, $first );
-		$address_label = apply_filters( 'wfc_address_book_entry_label_markup', FluidCheckout_AddressBook::instance()->get_address_entry_display_label( $address_entry ), $address_entry, $address_type );
+		$address_label = apply_filters( 'wfc_address_book_entry_label_markup', FluidCheckout_AddressBook::instance()->get_shipping_address_entry_display_label( $address_entry ), $address_entry, $address_type );
 		$new_address_item = false;
 		echo apply_filters( 'wfc_address_book_entry_markup',
 			sprintf( $address_entry_template,
