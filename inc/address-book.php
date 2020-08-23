@@ -274,6 +274,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Add shipping save address checkbox field to edit address fields.
 	 */
 	public function add_shipping_save_address_checkbox_field( $fields ) {
+		// Bail if user not logged in
+		if ( ! is_user_logged_in() ) { return $fields; }
+
 		$fields['shipping_address_save'] = $this->get_shipping_save_address_checkbox_field();
 		
 		$fields_args = $this->checkout_fields()->get_checkout_fields_args( 'shipping' );
@@ -316,6 +319,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Add billing save address checkbox field to edit address fields.
 	 */
 	public function add_billing_save_address_checkbox_field( $fields ) {
+		// Bail if user not logged in
+		if ( ! is_user_logged_in() ) { return $fields; }
+		
 		$fields['billing_address_save'] = $this->get_billing_save_address_checkbox_field();
 		
 		$fields_args = $this->checkout_fields()->get_checkout_fields_args( 'billing' );
