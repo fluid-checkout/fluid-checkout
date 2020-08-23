@@ -237,7 +237,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Return html for contact step actions
 	 */
 	public function get_contact_step_actions_html() {
-		$actions_html = '<div class="wfc-actions"><button class="wfc-next button alt">' . __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' ) . '</button></div>';
+		$next_step_label = WC()->cart->needs_shipping() ? __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' ) : __( 'Proceed to Payment', 'woocommerce-fluid-checkout' );
+		$actions_html = '<div class="wfc-actions"><button class="wfc-next button alt">' . $next_step_label . '</button></div>';
 		return apply_filters( 'wfc_contact_step_actions_html', $actions_html );
 	}
 
