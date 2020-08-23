@@ -418,13 +418,21 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Output address book entries for billing step
 	 */
 	function output_billing_address_book() {
-		$this->output_address_book_billing_wrapper_start_tag();
-		$this->multistep()->output_billing_step_section_title();
-		$this->output_billing_address_book_markup();
-		$this->output_billing_address_book_new_address_wrapper_start_tag();
-		$this->multistep_enhanced()->output_billing_fields();
-		$this->output_billing_address_book_new_address_wrapper_end_tag();
-		$this->output_address_book_wrapper_end_tag();
+		// Output billing address book only when shipping needed
+		if ( WC()->cart->needs_shipping() ) {
+			$this->output_address_book_billing_wrapper_start_tag();
+			$this->multistep()->output_billing_step_section_title();
+			$this->output_billing_address_book_markup();
+			$this->output_billing_address_book_new_address_wrapper_start_tag();
+			$this->multistep_enhanced()->output_billing_fields();
+			$this->output_billing_address_book_new_address_wrapper_end_tag();
+			$this->output_address_book_wrapper_end_tag();
+		}
+		// Output only billing form fields without address book when shipping not needed
+		else {
+			$this->multistep()->output_billing_step_section_title();
+			$this->multistep_enhanced()->output_billing_fields();
+		}
 	}
 	
 	/**
