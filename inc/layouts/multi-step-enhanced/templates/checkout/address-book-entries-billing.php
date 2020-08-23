@@ -16,8 +16,6 @@ $checked_same_as_address_attribute = $checked_same_as_address ? 'data-address-sa
 ?>
 <div class="address-book address-book__<?php echo esc_attr( $address_type ); ?>" <?php echo $checked_same_as_address_attribute; ?>>
 
-<?php if ( count( $address_book_entries ) > 0 ) : ?>
-
     <?php
     echo apply_filters( 'wfc_address_book_entries_start_tag_markup', sprintf( '<ul id="address_book_%1$s" class="address-book__entries">', esc_attr( $address_type ) ), $address_book_entries, $address_type ); ?>
 
@@ -95,7 +93,5 @@ $checked_same_as_address_attribute = $checked_same_as_address ? 'data-address-sa
 	?>
 	
 	<?php echo apply_filters( 'wfc_address_book_entries_end_tag_markup', '</ul>', $address_book_entries, $address_type ); ?>
-
-<?php endif; ?>
 
 </div>

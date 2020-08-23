@@ -5,9 +5,5 @@
   display: block;
   width: 100%; }
 
-.has-wfc-address-book-entries .wfc-address-book__form-wrapper:not(.active),
-.address-book__billing[data-address-same-as-checked="1"] + .wfc-address-book__form-wrapper {
-  display: none; }
-
 .address-book__billing[data-address-same-as-checked="1"] .address-book-entry:not([data-address-book-same-as-entry]):not([data-address-book-new-entry]) {
   display: none; }

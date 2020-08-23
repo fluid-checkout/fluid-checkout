@@ -681,9 +681,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$customer_id = $this->get_user_id( $customer_id );
 		
 		$address_book_entries = $this->get_saved_user_address_book_entries( $customer_id );
-		
-		// Bail if user doesn't have saved addresses
-		if ( ! $address_book_entries || count( $address_book_entries ) <= 0 ) { return $default_location; }
 
 		// Get address data from session or first of the list
 		$address_data = $address_book_entries[ array_keys( $address_book_entries )[0] ];

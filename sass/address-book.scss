@@ -12,7 +12,7 @@
 // Hide new address form when not active, as when new address option isn't selected
 .has-wfc-address-book-entries .wfc-address-book__form-wrapper:not(.active),
 .address-book__billing[data-address-same-as-checked="1"] + .wfc-address-book__form-wrapper {
-	display: none;
+	// display: none;
 }
 
 

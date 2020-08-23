@@ -13,8 +13,6 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <div class="address-book address-book__<?php echo esc_attr( $address_type ); ?>">
 
-<?php if ( count( $address_book_entries ) > 0 ) : ?>
-
 	<?php echo apply_filters( 'wfc_address_book_entries_start_tag_markup', sprintf( '<ul id="address_book_%1$s" class="address-book__entries">', esc_attr( $address_type ) ), $address_book_entries, $address_type ); ?>
 
 	<?php
@@ -52,7 +50,7 @@ defined( 'ABSPATH' ) || exit;
 	// NEW ADDRESS
 	$new_address_entry = array( 'address_id' => 'new' );
 	$new_address_item = true;
-	$checked_new_address = is_array( $address_entry_same_as ) && array_key_exists( 'address_id', $address_entry_same_as ) && $address_entry_same_as['address_id'] == 'new' ? false : FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $new_address_entry, false );
+	$checked_new_address = count( $address_book_entries ) == 0 || ( is_array( $address_entry_same_as ) && array_key_exists( 'address_id', $address_entry_same_as ) && $address_entry_same_as['address_id'] == 'new' ? false : FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $new_address_entry, false ) );
 	echo apply_filters( 'wfc_address_book_entry_markup',
 		sprintf( $address_entry_template,
 			$address_type,
@@ -65,7 +63,5 @@ defined( 'ABSPATH' ) || exit;
 	?>
 	
 	<?php echo apply_filters( 'wfc_address_book_entries_end_tag_markup', '</ul>', $address_book_entries, $address_type ); ?>
-
-<?php endif; ?>
 
 </div>
