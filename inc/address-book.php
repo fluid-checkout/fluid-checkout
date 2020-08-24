@@ -304,7 +304,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			'label'     => __( 'Save address for future purchase', 'woocommerce-fluid-checkout' ),
 			'type'		=> 'checkbox',
 			'required'  => false,
-			'class'     => array( 'form-row-wide' ),
+			'class'     => array( 'form-row-wide', 'save-address-checkbox-field' ),
 			'value'		=> '1',
 			'default'	=> 1,
 			'priority'	=> 200,
