@@ -19,9 +19,6 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<?php // CHANGE: Add own hook ?>
-<?php do_action( 'wfc_checkout_before_step_billing_fields' ); ?>
-
 <div class="woocommerce-billing-fields">
 	<?php // CHANGE: Remove billing section title ?>
 
@@ -33,10 +30,10 @@ defined( 'ABSPATH' ) || exit;
 		$fields = $checkout->get_checkout_fields( 'billing' );
 		foreach ( $fields as $key => $field ) {
 			/**
-			 * The variable `$no_display_fields` is passed in by woocommerce fluid checkout
+			 * The variable `$ignore_fields` is passed in by woocommerce fluid checkout
 			 * @see Hook `wfc_checkout_contact_step_field_ids`
 			 */
-			if ( ! in_array( $key, $no_display_fields ) ) {
+			if ( ! in_array( $key, $ignore_fields ) ) {
 				woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
 			}
 		}
@@ -45,6 +42,3 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
 </div>
-
-<?php // CHANGE: Add own hook ?>
-<?php do_action( 'wfc_checkout_after_step_contact_fields' ); ?>

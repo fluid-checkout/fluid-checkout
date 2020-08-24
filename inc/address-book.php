@@ -54,7 +54,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'woocommerce_after_checkout_shipping_form', array( $this, 'output_address_book_wrapper_end_tag' ), 20 );
 
 		// Billing Address Book
-		remove_action( 'wfc_checkout_before_step_billing_fields', array( $this->multistep(), 'output_billing_step_section_title' ), 10 );
+		// remove_action( 'wfc_checkout_before_step_billing_fields', array( $this->multistep(), 'output_billing_step_section_title' ), 10 );
 		remove_action( 'wfc_checkout_after_step_payment_fields', array( $this->multistep_enhanced(), 'output_billing_fields' ), 20 );
 		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_billing_address_book' ), 20 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_book_fragment' ), 10 );
@@ -421,17 +421,25 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Output billing address book only when shipping needed
 		if ( WC()->cart->needs_shipping() ) {
 			$this->output_address_book_billing_wrapper_start_tag();
-			$this->multistep()->output_billing_step_section_title();
+
+			do_action( 'wfc_checkout_before_step_billing_fields' );
+
 			$this->output_billing_address_book_markup();
 			$this->output_billing_address_book_new_address_wrapper_start_tag();
-			$this->multistep_enhanced()->output_billing_fields();
+			$this->output_billing_fields();
 			$this->output_billing_address_book_new_address_wrapper_end_tag();
+
+			do_action( 'wfc_checkout_after_step_billing_fields' );
+
 			$this->output_address_book_wrapper_end_tag();
 		}
 		// Output only billing form fields without address book when shipping not needed
 		else {
-			$this->multistep()->output_billing_step_section_title();
-			$this->multistep_enhanced()->output_billing_fields();
+			do_action( 'wfc_checkout_before_step_billing_fields' );
+
+			$this->output_billing_fields();
+
+			do_action( 'wfc_checkout_after_step_billing_fields' );
 		}
 	}
 	
@@ -454,6 +462,19 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		) );
 
 		do_action( 'wfc_billing_address_book_after_entries', $address_book_entries, $address_entry_same_as );
+	}
+
+	/**
+	 * Output billing fields except those already added at contact step
+	 */
+	public function output_billing_fields() {
+		wc_get_template(
+			'checkout/form-billing.php',
+			array(
+				'checkout'			=> WC()->checkout(),
+				'ignore_fields'		=> $this->multistep_enhanced()->get_contact_step_display_fields(),
+			)
+		);
 	}
 
 

@@ -434,14 +434,19 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Output billing fields except those already added at contact step
 	 */
 	public function output_billing_fields() {
+
+		do_action( 'wfc_checkout_before_step_billing_fields' );
+
 		wc_get_template(
 			'checkout/form-billing.php',
 			array(
 				'checkout'			=> WC()->checkout(),
-				'no_display_fields'	=> $this->get_contact_step_display_fields(),
-				'user_data'			=> $this->get_user_data(),
+				'ignore_fields'		=> $this->get_contact_step_display_fields(),
 			)
 		);
+
+		do_action( 'wfc_checkout_after_step_billing_fields' );
+
 	}
 
 
