@@ -54,7 +54,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'woocommerce_after_checkout_shipping_form', array( $this, 'output_address_book_wrapper_end_tag' ), 20 );
 
 		// Billing Address Book
-		// remove_action( 'wfc_checkout_before_step_billing_fields', array( $this->multistep(), 'output_billing_step_section_title' ), 10 );
 		remove_action( 'wfc_checkout_after_step_payment_fields', array( $this->multistep_enhanced(), 'output_billing_fields' ), 20 );
 		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_billing_address_book' ), 20 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_book_fragment' ), 10 );
