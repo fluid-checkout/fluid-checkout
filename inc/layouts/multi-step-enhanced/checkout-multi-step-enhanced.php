@@ -56,8 +56,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		
 		// Order Review
 		add_action( 'wfc_checkout_after_steps', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
-		add_action( 'wfc_checkout_order_review_wrapper', array( $this->multistep(), 'output_order_review' ), 10 );
-		add_action( 'wfc_checkout_order_review_wrapper', array( $this->multistep(), 'output_checkout_place_order' ), 30 );
+		add_action( 'wfc_checkout_order_review', array( $this->multistep(), 'output_order_review' ), 10 );
+		add_action( 'wfc_checkout_order_review', array( $this->multistep(), 'output_checkout_place_order' ), 30 );
+		add_action( 'wfc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		
 	}
 
@@ -146,9 +147,53 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	public function output_checkout_order_review_wrapper() {
 		?>
 		<div class="wfc-checkout-order-review-wrapper">
-			<?php do_action( 'wfc_checkout_order_review_wrapper' ); ?>
+			<?php do_action( 'wfc_checkout_order_review' ); ?>
 		</div>
 		<?php
+	}
+
+
+
+	/**
+	 * Maybe output the shipping methods chosen for order review section
+	 */
+	public function maybe_output_order_review_shipping_method_chosen() {
+		// Bail if not checkout page
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) { return; }
+
+		$packages = WC()->shipping()->get_packages();
+		$first    = true;
+
+		foreach ( $packages as $i => $package ) {
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			$product_names = array();
+
+			if ( count( $packages ) > 1 ) {
+				foreach ( $package['contents'] as $item_id => $values ) {
+					$product_names[ $item_id ] = $values['data']->get_name() . ' &times;' . $values['quantity'];
+				}
+				$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
+			}
+
+			wc_get_template(
+				'checkout/review-order-shipping.php',
+				array(
+					'package'                  => $package,
+					'available_methods'        => $package['rates'],
+					'show_package_details'     => count( $packages ) > 1,
+					'show_shipping_calculator' => is_cart() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $i, $package ),
+					'package_details'          => implode( ', ', $product_names ),
+					/* translators: %d: shipping package number */
+					'package_name'             => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
+					'index'                    => $i,
+					'chosen_method'            => $chosen_method,
+					'formatted_destination'    => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
+					'has_calculated_shipping'  => WC()->customer->has_calculated_shipping(),
+				)
+			);
+
+			$first = false;
+		}
 	}
 
 
