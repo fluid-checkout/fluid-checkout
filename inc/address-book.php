@@ -77,6 +77,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'wp_ajax_wfc_set_billing_address_selected_session', array( $this, 'set_billing_address_selected_session' ) );
 		add_action( 'wp_ajax_nopriv_wfc_set_billing_address_selected_session', array( $this, 'set_billing_address_selected_session' ) );
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'unset_billing_address_selected_session' ), 10, 1 );
+
+		// Order Review Shipping Info
+		if ( get_option( 'wfc_order_review_display_shipping_address', true ) ) {
+			add_action( 'woocommerce_review_order_before_order_total', array( $this, 'output_order_review_shipping_address' ), 30 );
+		}
 	}
 
 
@@ -906,6 +911,23 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function get_billing_address_entry_checked_state( $address_entry, $first = false ) {
 		return $this->get_address_entry_checked_state( 'billing', $address_entry, $first );
+	}
+
+
+
+
+
+	/**
+	 * Output shipping address for order review section
+	 */
+	public function output_order_review_shipping_address() {
+		wc_get_template(
+			'checkout/review-order-shipping-address.php',
+			array(
+				'checkout'			=> WC()->checkout(),
+				'shipping_address'	=> $this->get_shipping_address_selected_session(),
+			)
+		);
 	}
 
 }

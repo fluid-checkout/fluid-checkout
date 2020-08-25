@@ -68,7 +68,7 @@ defined( 'ABSPATH' ) || exit;
 
 			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
 
-            <?php // CHANGE: Removed cart totals shipping markup and added own hook ?>
+			<?php // CHANGE: Removed cart totals shipping markup and added own hook ?>
 			<?php do_action( 'wfc_review_order_shipping' ); ?>
 
 			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
