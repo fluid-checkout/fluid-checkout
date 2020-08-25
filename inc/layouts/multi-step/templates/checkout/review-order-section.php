@@ -1,8 +1,8 @@
 <?php
 /**
- * Checkout Payment Section
+ * Order review section
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/checkout/place-order.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/checkout/review-order-section.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -11,9 +11,8 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @see     templates/checkout/payment.php
  * @package woocommerce-fluid-checkout
- * @version 3.5.3
+ * @version 1.1.0
  */
 
 defined( 'ABSPATH' ) || exit;

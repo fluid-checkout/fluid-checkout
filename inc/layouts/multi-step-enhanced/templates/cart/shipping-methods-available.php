@@ -50,7 +50,7 @@ defined( 'ABSPATH' ) || exit;
 
 <?php else: ?>
 
-	<div class="no-shipping-methods-available">
+	<div class="woocommerce-error">
 		<?php echo apply_filters( 'woocommerce_cart_no_shipping_available_html', wpautop( __( 'There are no shipping methods available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce-fluid-checkout' ) ) ); ?>
 	</div>
 
