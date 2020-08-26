@@ -57,9 +57,13 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		// Order Review
 		add_action( 'wfc_checkout_after_steps', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
 		add_action( 'wfc_checkout_order_review', array( $this->multistep(), 'output_order_review' ), 10 );
-		add_action( 'wfc_checkout_order_review', array( $this->multistep(), 'output_checkout_place_order' ), 30 );
+		add_action( 'woocommerce_checkout_after_order_review', array( $this->multistep(), 'output_checkout_place_order' ), 30 );
 		add_action( 'wfc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
-		
+
+		// Widget Areas
+		add_action( 'widgets_init', array( $this, 'register_checkout_widgets_areas' ), 50 );
+		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_order_review_inside' ), 50 );
+		add_action( 'wfc_checkout_after_order_review', array( $this, 'output_order_review_outside' ), 50 );
 	}
 
 
@@ -499,6 +503,54 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	/**
 	 * END - Checkout Steps
 	 */
+
+
+
+
+	
+	/**
+	 * Register widget areas for the checkout pages
+	 */
+	function register_checkout_widgets_areas() {
+		register_sidebar( array(
+			'name'			=> __( 'Order Review', 'lobsteranywhere-customizations' ),
+			'id'			=> 'wfc_order_review_inside',
+			'description'	=> __( 'Display widgets on order review section at checkout.', 'lobsteranywhere-customizations' ),
+			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'	=> '</aside>',
+			'before_title'	=> '<h5 class="widget-title">',
+			'after_title'	=> '</h5>',
+		) );
+
+		register_sidebar( array(
+			'name'			=> __( 'After Order Review', 'lobsteranywhere-customizations' ),
+			'id'			=> 'wfc_order_review_outside',
+			'description'	=> __( 'Display widgets after the order review section at checkout.', 'lobsteranywhere-customizations' ),
+			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'	=> '</aside>',
+			'before_title'	=> '<h5 class="widget-title">',
+			'after_title'	=> '</h5>',
+		) );
+	}
+
+	/**
+	 * Output widget area inside order review section
+	 */
+	function output_order_review_inside() {
+		if ( is_active_sidebar( 'wfc_order_review_inside' ) ) :
+			dynamic_sidebar( 'wfc_order_review_inside' );
+		endif;
+	}
+
+	/**
+	 * Output widget area outside order review section
+	 */
+	function output_order_review_outside() {
+		if ( is_active_sidebar( 'wfc_order_review_outside' ) ) :
+			dynamic_sidebar( 'wfc_order_review_outside' );
+		endif;
+	}
+	
 
 }
 
