@@ -38,6 +38,8 @@
 		stepNavigationNextSelector: '.wfc-next',
 
 		frameIdAttribute: 'data-frame-id',
+		frameIdPattern: 'step-frame-{ID}',
+		frameIdSelectorPattern: '#step-frame-{ID}',
 
 		woocommerceInvalidFieldClass: '.woocommerce-invalid',
 
@@ -198,7 +200,7 @@
 		if ( currentStepId && currentStepId == stepId ) { return; }
 		
 		var	step = document.querySelector( '#step-' + stepId ),
-			frame = document.querySelector( '#frame-' + stepId );
+			frame = document.querySelector( _settings.frameIdSelectorPattern.replace( '{ID}', stepId ) );
 		
 		// Clear step status, mark as active and done
 		clearStepStatus();
@@ -224,8 +226,8 @@
 		// Add ID to each frame and steps on progress bar
 		for ( var i = _frames.length - 1; i >= 0; i-- ) {
 			var stepId = i + 1,
-					label = _frames[i].getAttribute( 'data-label' ),
-					step = document.createElement( 'div' );
+				label = _frames[i].getAttribute( 'data-label' ),
+				step = document.createElement( 'div' );
 
 			step.classList.add( _settings.progressBarStepClass );
 			step.setAttribute( 'id', 'step-' + stepId );
@@ -242,7 +244,7 @@
 
 			_progressBar.insertBefore( step, _progressBar.firstChild );
 			
-			_frames[i].setAttribute( 'id', 'frame-' + stepId );
+			_frames[i].setAttribute( 'id', _settings.frameIdPattern.replace( '{ID}', stepId ) );
 			_frames[i].setAttribute( _settings.frameIdAttribute, stepId );
 		}
 
@@ -307,7 +309,7 @@
 		// Validate step fields
 		if ( window.CheckoutValidation ) {
 			var currentStepId = getCurrentStepId(),
-					frame = _wfcWrapper.querySelector( '#frame-' + currentStepId );
+				frame = _wfcWrapper.querySelector( _settings.frameIdSelectorPattern.replace( '{ID}', currentStepId ) );
 			
 			// Bail if not all fields valid and stay in the same step
 			if ( ! window.CheckoutValidation.validateAllFields( frame ) ) {
