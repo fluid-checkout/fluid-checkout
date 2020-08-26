@@ -56,7 +56,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		
 		// Order Review
 		add_action( 'wfc_checkout_after_steps', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
-		add_action( 'wfc_checkout_order_review', array( $this->multistep(), 'output_order_review' ), 10 );
+		add_action( 'wfc_checkout_order_review_section', array( $this->multistep(), 'output_order_review' ), 10 );
 		add_action( 'woocommerce_checkout_after_order_review', array( $this->multistep(), 'output_checkout_place_order' ), 30 );
 		add_action( 'wfc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 
@@ -151,7 +151,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	public function output_checkout_order_review_wrapper() {
 		?>
 		<div class="wfc-checkout-order-review-wrapper">
-			<?php do_action( 'wfc_checkout_order_review' ); ?>
+			<?php do_action( 'wfc_checkout_order_review_section' ); ?>
 		</div>
 		<?php
 	}
