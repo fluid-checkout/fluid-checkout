@@ -366,16 +366,19 @@
 				var frame = _frames[i];
 				
 				if ( ! window.CheckoutValidation.validateAllFields( frame, true ) ) {
-					// Prevent form submit if there are validation errors
-					e.preventDefault();
-					
 					// Display step with validation errors
 					if ( displayStep == null ) {
-						displayStep = parseInt( frame.getAttribute( _settings.stepIndexAttribute ) )
+						displayStep = parseInt( frame.getAttribute( _settings.stepIndexAttribute ) );
 						setCurrentStep( displayStep, false );
 						var fieldWithError = frame.querySelector( _settings.woocommerceInvalidFieldClass );
-						var scrollToElement = fieldWithError !== null ? fieldWithError : frame;
-						scrollTo( scrollToElement );
+						
+						if ( fieldWithError.offsetParent === null ) {
+							scrollTo( fieldWithError );
+
+							// Prevent form submit if there are validation errors on visible fields
+							e.preventDefault();
+						}
+						
 					}
 				}
 			}
