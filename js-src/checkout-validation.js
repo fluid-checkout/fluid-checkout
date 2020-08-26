@@ -499,7 +499,7 @@
 	 * @param  {Field} field    Field for validation.
 	 * @return {Boolean}        True if field is valid.
 	 */
-	_publicMethods.validateField = function( field ) {
+	_publicMethods.validateField = function( field, validateHidden ) {
 		// Bail if field is null
 		if ( ! field ) { return true; }
 
@@ -510,7 +510,7 @@
 		if ( ! formRow ) { return true; }
 
 		// Bail if hidden to the user
-		if ( ! isAlwaysValidate( field ) && isFieldHidden( field ) ) { return true; }
+		if ( ! isAlwaysValidate( field ) && validateHidden !== true && isFieldHidden( field ) ) { return true; }
 
 		// Bail if field doesn't need validation
 		if ( ! needsValidation( field, formRow ) ) { return true; }
@@ -533,14 +533,14 @@
 	 * @param  {Element} container Element to look for fields in, if not passed consider the checkout form as container.
 	 * @return {Boolean}           True if all fields are valid.
 	 */
-	_publicMethods.validateAllFields = function( container ) {
+	_publicMethods.validateAllFields = function( container, validateHidden ) {
 		if ( ! container ) { container = document.querySelector( _settings.formSelector ) }
 
 		var all_valid = true;
 		var fields = container.querySelectorAll( _settings.validateFieldsSelector );
 
 		for (var i = 0; i < fields.length; i++) {
-			if ( ! _publicMethods.validateField( fields[i] ) ) {
+			if ( ! _publicMethods.validateField( fields[i], validateHidden ) ) {
 				all_valid = false;
 			}
 		}
