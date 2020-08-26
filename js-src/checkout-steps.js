@@ -26,6 +26,7 @@
 
 		wrapperSelector: '#wfc-wrapper',
 		wrapperInsideSelector: '.wfc-inside',
+		targetWrapperAttribute: 'data-target',
 		
 		progressBarSelector: '#wfc-progressbar',
 		progressBarStepSelector: '.wfc-progress-bar-step',
@@ -35,6 +36,7 @@
 
 		stepIdPattern: 'step-{ID}',
 		stepIdSelector: '.wfc-progress-bar-step[data-step-index]',
+		stepButtonSelector: '.wfc-step-button',
 		stepSelector: '.wfc-progress-bar-step[data-step-index="{ID}"]',
 		stepIndexAttribute: 'data-step-index',
 		stepIdAttribute: 'data-step-id',
@@ -102,6 +104,8 @@
 		if ( ! currentStepIndex ) {
 			return getFirstStepIndex();
 		}
+
+		console.log(_frames);
 
 		// Return next available step
 		for ( var i = currentStepIndex - 1; i >= 0; i-- ) {
@@ -312,6 +316,17 @@
 
 
 	/**
+	 * Handle clicks on buttons that lead to a specific step.
+	 */
+	var handleStepButtonClick = function( e ) {
+		e.preventDefault();
+		var button = e.target.closest( _settings.stepButtonSelector );
+		setCurrentStep( button.getAttribute( _settings.stepIndexAttribute ), true );
+	};
+
+
+
+	/**
 	 * Handle clicks on next step buttons.
 	 */
 	var handleNextStepClick = function( e ) {
@@ -354,6 +369,9 @@
 	var handleClick = function( e ) {
 		if ( e.target.closest( _settings.stepIdSelector + ':not([disabled])' ) ) {
 			handleStepClick( e );
+		}
+		else if ( e.target.closest( _settings.stepButtonSelector )  + ':not([disabled])' ) {
+			handleStepButtonClick( e );
 		}
 		else if ( e.target.closest( _settings.stepNavigationPrevSelector + ':not([disabled])' ) ) {
 			handlePrevStepClick( e );
