@@ -370,7 +370,7 @@
 		if ( e.target.closest( _settings.stepIdSelector + ':not([disabled])' ) ) {
 			handleStepClick( e );
 		}
-		else if ( e.target.closest( _settings.stepButtonSelector )  + ':not([disabled])' ) {
+		else if ( e.target.closest( _settings.stepButtonSelector + ':not([disabled])' ) ) {
 			handleStepButtonClick( e );
 		}
 		else if ( e.target.closest( _settings.stepNavigationPrevSelector + ':not([disabled])' ) ) {
