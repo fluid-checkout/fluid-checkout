@@ -334,8 +334,9 @@
 
 		// Validate step fields
 		if ( window.CheckoutValidation ) {
+			
 			var currentStepIndex = getCurrentStepIndex(),
-				frame = _wfcWrapper.querySelector( _settings.frameIdSelectorPattern.replace( '{ID}', currentStepIndex ) );
+				frame = _wfcWrapper.querySelector( _settings.frameSelector.replace( '{ID}', currentStepIndex ) );
 			
 			// Bail if not all fields valid and stay in the same step
 			if ( ! window.CheckoutValidation.validateAllFields( frame ) ) {
