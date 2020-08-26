@@ -129,9 +129,10 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	/**
 	 * Output start tag for a checkout step.
 	 */
-	public function output_step_start_tag( $step_label ) {
+	public function output_step_start_tag( $step_label, $step_id = '' ) {
+		$step_id_attribute = ! empty( $step_id ) && $step_id != null ? 'data-step-id="'.esc_attr( $step_id ).'"' : '';
 		?>
-		<section class="wfc-frame" data-label="<?php echo esc_attr( $step_label ) ?>">
+		<section class="wfc-frame" <?php echo $step_id_attribute; ?> data-label="<?php echo esc_attr( $step_label ); ?>">
 		<?php
 	}
 	/**
@@ -162,7 +163,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	 * Output step: Billing
 	 */
 	public function output_step_billing() {
-		$this->output_step_start_tag( apply_filters( 'wfc_billing_step_title', __( 'Billing', 'woocommerce-fluid-checkout' ) ) );
+		$this->output_step_start_tag( apply_filters( 'wfc_billing_step_title', __( 'Billing', 'woocommerce-fluid-checkout' ) ), 'billing' );
 		do_action( 'woocommerce_checkout_before_customer_details' );
 
 		wc_get_template(
@@ -196,7 +197,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		// Bail if shipping not needed
 		if ( ! WC()->cart->needs_shipping() ) { return; }
 
-		$this->output_step_start_tag( apply_filters( 'wfc_shipping_step_title', __( 'Shipping', 'woocommerce-fluid-checkout' ) ) );
+		$this->output_step_start_tag( apply_filters( 'wfc_shipping_step_title', __( 'Shipping', 'woocommerce-fluid-checkout' ) ), 'shipping' );
 
 		wc_get_template(
 			'checkout/form-shipping.php',
@@ -274,7 +275,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	 * Output step: Payment
 	 */
 	public function output_step_payment() {
-		$this->output_step_start_tag( apply_filters( 'wfc_payment_step_title', __( 'Payment', 'woocommerce-fluid-checkout' ) ) );
+		$this->output_step_start_tag( apply_filters( 'wfc_payment_step_title', __( 'Payment', 'woocommerce-fluid-checkout' ) ), 'payment' );
 		
 		wc_get_template(
 			'checkout/form-payment.php',

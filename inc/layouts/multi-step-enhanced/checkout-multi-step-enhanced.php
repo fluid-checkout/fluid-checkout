@@ -229,7 +229,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Output step: Contact
 	 */
 	public function output_step_contact() {
-		$this->multistep()->output_step_start_tag( apply_filters( 'wfc_contact_step_title', __( 'Contact', 'woocommerce-fluid-checkout' ) ) );
+		$this->multistep()->output_step_start_tag( apply_filters( 'wfc_contact_step_title', __( 'Contact', 'woocommerce-fluid-checkout' ) ), 'contact' );
 		do_action( 'woocommerce_checkout_before_customer_details' );
 
 		wc_get_template(

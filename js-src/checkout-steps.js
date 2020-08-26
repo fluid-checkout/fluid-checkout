@@ -32,7 +32,10 @@
 		progressBarStepDoneClass: 'done',
 		progressBarStepCurrentClass: 'current',
 
-		stepIdSelector: '[data-step-id]',
+		stepIdPattern: 'step-{ID}',
+		stepIdSelector: '.wfc-progress-bar-step[data-step-index]',
+		stepSelector: '.wfc-progress-bar-step[data-step-index="{ID}"]',
+		stepIndexAttribute: 'data-step-index',
 		stepIdAttribute: 'data-step-id',
 		stepNavigationPrevSelector: '.wfc-prev',
 		stepNavigationNextSelector: '.wfc-next',
@@ -40,6 +43,7 @@
 		frameIdAttribute: 'data-frame-id',
 		frameIdPattern: 'step-frame-{ID}',
 		frameIdSelectorPattern: '#step-frame-{ID}',
+		frameSelector: '.wfc-frame[data-step-index="{ID}"]',
 
 		woocommerceInvalidFieldClass: '.woocommerce-invalid',
 
@@ -66,7 +70,7 @@
 	/**
 	 * Get the id of current step.
 	 */
-	var getFirstStepId = function() {
+	var getFirstStepIndex = function() {
 		// Return next available step
 		for ( var i = 0; i < _frames.length; i++ ) {
 			if ( ! _frames[ i + 1 ].hasAttribute( _settings.states.DISABLED ) ) {
@@ -80,9 +84,9 @@
 	/**
 	 * Get the id of current step.
 	 */
-	var getCurrentStepId = function() {
+	var getCurrentStepIndex = function() {
 		var currentStep = document.querySelector( '.wfc-progress-bar-step.current' );
-		return currentStep ? parseInt( currentStep.getAttribute( _settings.stepIdAttribute ) ) : null;
+		return currentStep ? parseInt( currentStep.getAttribute( _settings.stepIndexAttribute ) ) : null;
 	};
 
 
@@ -91,18 +95,17 @@
 	 * Get the id of previous available step.
 	 */
 	var getPrevStepId = function() {
-		var currentStepId = getCurrentStepId();
-
+		var currentStepIndex = getCurrentStepIndex();
 
 		// Get first enabled step if not step is active
-		if ( ! currentStepId ) {
-			return getFirstStepId();
+		if ( ! currentStepIndex ) {
+			return getFirstStepIndex();
 		}
 
 		// Return next available step
-		for ( var i = currentStepId - 1; i >= 0; i-- ) {
+		for ( var i = currentStepIndex - 1; i >= 0; i-- ) {
 			if ( ! _frames[ i - 1 ].hasAttribute( _settings.states.DISABLED ) ) {
-				return currentStepId - 1;
+				return currentStepIndex - 1;
 			}
 		}
 
@@ -114,18 +117,18 @@
 	/**
 	 * Get the id of next available step.
 	 */
-	var getNextStepId = function() {
-		var currentStepId = getCurrentStepId();
+	var getNextStepIndex = function() {
+		var currentStepIndex = getCurrentStepIndex();
 
 		// Get first enabled step if not step is active
-		if ( ! currentStepId ) {
-			return getFirstStepId();
+		if ( ! currentStepIndex ) {
+			return getFirstStepIndex();
 		}
 
 		// Return next available step
-		for ( var i = currentStepId - 1; i < _frames.length; i++ ) {
+		for ( var i = currentStepIndex - 1; i < _frames.length; i++ ) {
 			if ( ! _frames[ i + 1 ].hasAttribute( _settings.states.DISABLED ) ) {
-				return currentStepId + 1;
+				return currentStepIndex + 1;
 			}
 		}
 
@@ -156,10 +159,10 @@
 	 * Mark steps as done.
 	 */
 	var markStepsDone = function() {
-		var currentStepId = getCurrentStepId();
+		var currentStepIndex = getCurrentStepIndex();
 		for ( var i = _steps.length - 1; i >= 0; i-- ) {
-			var stepId = _steps[i].getAttribute( _settings.stepIdAttribute );
-			if ( ! _steps[i].hasAttribute( _settings.states.DISABLED ) && stepId < currentStepId ) {
+			var stepId = _steps[i].getAttribute( _settings.stepIndexAttribute );
+			if ( ! _steps[i].hasAttribute( _settings.states.DISABLED ) && stepId < currentStepIndex ) {
 				_steps[i].classList.add( _settings.progressBarStepDoneClass );
 			}
 		}
@@ -193,15 +196,15 @@
 	/**
 	 * Change current step.
 	 */
-	var setCurrentStep = function( stepId, scrollToElement ) {
-		var currentStepId = getCurrentStepId();
+	var setCurrentStep = function( stepIndex, scrollToElement ) {
+		var currentStepIndex = getCurrentStepIndex();
 
 		// Bail if is current active step
-		if ( currentStepId && currentStepId == stepId ) { return; }
+		if ( currentStepIndex && currentStepIndex == stepIndex ) { return; }
 		
-		var	step = document.querySelector( '#step-' + stepId ),
-			frame = document.querySelector( _settings.frameIdSelectorPattern.replace( '{ID}', stepId ) );
-		
+		var	step = document.querySelector( _settings.stepSelector.replace( '{ID}', stepIndex ) ),
+			frame = document.querySelector( _settings.frameSelector.replace( '{ID}', stepIndex ) );
+
 		// Clear step status, mark as active and done
 		clearStepStatus();
 		markStepActive( step, frame, scrollToElement );
@@ -225,13 +228,17 @@
 
 		// Add ID to each frame and steps on progress bar
 		for ( var i = _frames.length - 1; i >= 0; i-- ) {
-			var stepId = i + 1,
+			var index = i + 1,
+				stepId = _frames[i].getAttribute( _settings.stepIdAttribute ),
 				label = _frames[i].getAttribute( 'data-label' ),
 				step = document.createElement( 'div' );
+			
+			// Make sure stepId has a value
+			if ( stepId == null || _frames[i].getAttribute( _settings.stepIdAttribute ) == '' ) { stepId = index; };
 
 			step.classList.add( _settings.progressBarStepClass );
-			step.setAttribute( 'id', 'step-' + stepId );
-			step.setAttribute( _settings.stepIdAttribute, stepId );
+			step.setAttribute( 'id', _settings.stepIdPattern.replace( '{ID}', stepId ) );
+			step.setAttribute( _settings.stepIndexAttribute, index );
 			step.textContent = label;
 
 			if ( _frames[i].hasAttribute( _settings.states.DISABLED ) ) {
@@ -246,13 +253,14 @@
 			
 			_frames[i].setAttribute( 'id', _settings.frameIdPattern.replace( '{ID}', stepId ) );
 			_frames[i].setAttribute( _settings.frameIdAttribute, stepId );
+			_frames[i].setAttribute( _settings.stepIndexAttribute, index );
 		}
 
 		// Get steps
 		_steps = document.querySelectorAll( _settings.progressBarStepSelector );
 
 		// Show first available step
-		setCurrentStep( getNextStepId(), false );
+		setCurrentStep( getNextStepIndex(), false );
 	};
 
 
@@ -295,7 +303,7 @@
 	var handleStepClick = function( e ) {
 		e.preventDefault();
 		var step = e.target.closest( _settings.stepIdSelector );
-		setCurrentStep( step.getAttribute( _settings.stepIdAttribute ), true );
+		setCurrentStep( step.getAttribute( _settings.stepIndexAttribute ), true );
 	};
 
 
@@ -308,8 +316,8 @@
 
 		// Validate step fields
 		if ( window.CheckoutValidation ) {
-			var currentStepId = getCurrentStepId(),
-				frame = _wfcWrapper.querySelector( _settings.frameIdSelectorPattern.replace( '{ID}', currentStepId ) );
+			var currentStepIndex = getCurrentStepIndex(),
+				frame = _wfcWrapper.querySelector( _settings.frameIdSelectorPattern.replace( '{ID}', currentStepIndex ) );
 			
 			// Bail if not all fields valid and stay in the same step
 			if ( ! window.CheckoutValidation.validateAllFields( frame ) ) {
@@ -320,7 +328,7 @@
 		}
 
 		// Go to next step
-		setCurrentStep( getNextStepId(), true );
+		setCurrentStep( getNextStepIndex(), true );
 	};
 
 
