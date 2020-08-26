@@ -22,6 +22,7 @@
 	var _publicMethods = { };
 	var _settings = {
 		bodyClass: 'wfc-checkout-steps--active',
+		activeStepBodyClassPattern: 'wfc-checkout-step--active-{ID}',
 
 		wrapperSelector: '#wfc-wrapper',
 		wrapperInsideSelector: '.wfc-inside',
@@ -145,6 +146,7 @@
 			// active
 			_frames[i].classList.remove( _settings.progressBarStepCurrentClass );
 			_steps[i].classList.remove( _settings.progressBarStepCurrentClass );
+			document.body.classList.remove( _settings.activeStepBodyClassPattern.replace( '{ID}', _frames[i].getAttribute( _settings.frameIdAttribute ) ) );
 			
 			// done
 			if ( ! _steps[i].hasAttribute( _settings.states.DISABLED ) ) {
@@ -177,6 +179,7 @@
 		// Set step as current
 		step.classList.add( _settings.progressBarStepCurrentClass );
 		frame.classList.add( _settings.progressBarStepCurrentClass );
+		document.body.classList.add( _settings.activeStepBodyClassPattern.replace( '{ID}', frame.getAttribute( _settings.frameIdAttribute ) ) );
 
 		// TODO: Better animation handling with slide left/right depending on the position of the step
 		
