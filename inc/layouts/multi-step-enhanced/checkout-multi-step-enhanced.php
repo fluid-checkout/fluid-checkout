@@ -150,7 +150,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 */
 	public function output_checkout_order_review_wrapper() {
 		?>
-		<div class="wfc-checkout-order-review-wrapper">
+		<div id="wfc-checkout-order-review" class="wfc-checkout-order-review-wrapper">
 			<?php do_action( 'wfc_checkout_order_review_section' ); ?>
 		</div>
 		<?php
