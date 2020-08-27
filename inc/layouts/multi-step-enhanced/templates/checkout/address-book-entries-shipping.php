@@ -48,7 +48,7 @@ defined( 'ABSPATH' ) || exit;
 	
 	
 	// NEW ADDRESS
-	$new_address_entry = array( 'address_id' => 'new' );
+	$new_address_entry = array( 'address_id' => 'new_shipping' );
 	$new_address_item = true;
 	$checked_new_address = count( $address_book_entries ) == 0 || ( is_array( $address_entry_same_as ) && array_key_exists( 'address_id', $address_entry_same_as ) && $address_entry_same_as['address_id'] == 'new' ? false : FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $new_address_entry, false ) );
 	echo apply_filters( 'wfc_address_book_entry_markup',

@@ -32,7 +32,7 @@
 		addressEntryNewSelector: '[data-address-book-new]',
 		addressEntrySameAsSelector: '[data-address-book-same]',
 		addressFieldsSelector: 'input, select, textarea',
-		persistedAddressFieldsSelector: '#shipping_first_name, #shipping_last_name, #shipping_phone, #shipping_company, #shipping_address_1, #shipping_address_2, #shipping_country, #shipping_state, #shipping_postcode, #shipping_city',
+		persistAddressFieldsSelector: '#shipping_first_name, #shipping_last_name, #shipping_phone, #shipping_company, #shipping_address_1, #shipping_address_2, #shipping_country, #shipping_state, #shipping_postcode, #shipping_city, #billing_address_1, #billing_address_2, #billing_country, #billing_state, #billing_postcode, #billing_city, #billing_company',
 		addressFieldsCleanSelector: '[name$="_address_id"], #shipping_address_save, #billing_address_save',
 		selectedAddressIdSelector: '[name$="_address_id"]:checked',
 		formRowSelector: '.form-row',
@@ -309,6 +309,7 @@
 	 * Handle change to persisted address fields
 	 */
 	var changePersistedAddressFields = function( e ) {
+		console.log( 'passed 3' );
 		// Bail if checkout update disabled
 		if ( ! _updateCheckout ) return;
 		
@@ -374,17 +375,6 @@
 
 		field.setAttribute( _settings.fieldEditedAttribute, '1' );
 	}
-
-
-
-	/**
-	 * Handle document clicks and route to the appropriate function.
-	 */
-	var handleClick = function( e ) {
-		// if ( e.target.closest( _settings.editContactSelector ) ) {
-		// 	removeUserData();
-		// }
-	};
 	
 
 
@@ -408,11 +398,22 @@
 	/**
 	 * Handle change to persisted address fields
 	 */
-	var setupJQueryEventListeners = function( e ) {
+	var initEventHandlers = function( e ) {
+		window.addEventListener( 'change', handleChange );
+
+		$( document.body ).on( 'updated_checkout', initAddressFieldsEventHandlers );
+		initAddressFieldsEventHandlers();
+	}
+	
+	/**
+	 * Add event handler to persisted address fields
+	 */
+	var initAddressFieldsEventHandlers = function() {
 		if ( _hasJQuery ) {
 			// Need to use jQuery event handler as select2 doesn't fire change event for the underlying select field
-			$( _settings.persistedAddressFieldsSelector ).off( 'change', debounce( changePersistedAddressFields, 500 ) );
-			$( _settings.persistedAddressFieldsSelector ).on( 'change', debounce( changePersistedAddressFields, 500 ) );
+			var debouncedChangeHandler = debounce( changePersistedAddressFields, 500 );
+			$( _settings.persistAddressFieldsSelector ).off( 'change', debouncedChangeHandler );
+			$( _settings.persistAddressFieldsSelector ).on( 'change', debouncedChangeHandler );
 		}
 	}
 
@@ -424,11 +425,7 @@
 	_publicMethods.init = function() {
 		if ( _hasInitialized ) return;
 		
-		// Add event listeners
-		// window.addEventListener( 'click', handleClick );
-		window.addEventListener( 'change', handleChange );
-		setupJQueryEventListeners();
-
+		initEventHandlers();
 		prepareCopyValueToFieldsSelector();
 
 		// Add init class

@@ -393,7 +393,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Output address book new address form wrapper start tag
 	 */
 	public function output_shipping_address_book_new_address_wrapper_start_tag() {
-		$active_class = $this->get_shipping_address_entry_checked_state( array( 'address_id' => 'new' ), false ) ? 'active' : '';
+		$active_class = $this->get_shipping_address_entry_checked_state( array( 'address_id' => 'new_shipping' ), false ) ? 'active' : '';
 		// TODO: Move `noscript` tag to it's own function to have only one tag of this type
 		echo '<noscript><style type="text/css">.wfc-address-book__form-wrapper{display:block !important;}</style></noscript>';
 		echo '<div class="wfc-address-book__form-wrapper '. $active_class .'">';
@@ -489,7 +489,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	public function output_billing_address_book_new_address_wrapper_start_tag() {
 		$billing_address = $this->get_billing_address_selected_session();
 		$is_same_address_selected = ! $billing_address || $billing_address && array_key_exists( 'address_same_as', $billing_address ) && $billing_address['address_same_as'] == '1';
-		$active_class = ! $is_same_address_selected && $this->get_billing_address_entry_checked_state( array( 'address_id' => 'new' ), false ) ? 'active' : '';
+		$active_class = ! $is_same_address_selected && $this->get_billing_address_entry_checked_state( array( 'address_id' => 'new_billing' ), false ) ? 'active' : '';
 		echo '<div class="wfc-address-book__form-wrapper '. $active_class .'">';
 	}
 
@@ -790,7 +790,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$address_same_as_session = $address_data_session && array_key_exists( 'address_same_as', $address_data_session ) && $address_data_session['address_same_as'] == 1;
 
 		// Same address was checked and is new address option
-		if ( $address_same_as_session && $address_id_session == 'new' && $address_entry['address_id'] == $address_id_session ) {
+		if ( $address_same_as_session && $address_id_session == 'new_shipping' && $address_entry['address_id'] == $address_id_session ) {
 			$checked_address = true;
 		}
 		// Billing same as shipping
