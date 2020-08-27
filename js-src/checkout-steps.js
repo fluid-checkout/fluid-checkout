@@ -48,8 +48,6 @@
 		frameIdSelectorPattern: '#step-frame-{ID}',
 		frameSelector: '.wfc-frame[data-step-index="{ID}"]',
 
-		placeOrderSelector: '#place_order',
-
 		woocommerceInvalidFieldClass: '.woocommerce-invalid',
 
 		topScrollOffset: 100,
@@ -355,39 +353,6 @@
 
 
 	/**
-	 * Handle clicks on checkout place order button.
-	 */
-	var handlePlaceOrderClick = function( e ) {
-		// Validate all fields in all steps
-		if ( window.CheckoutValidation ) {
-			var displayStep = null;
-
-			for ( var i = 0; i < _frames.length; i++ ) {
-				var frame = _frames[i];
-				
-				if ( ! window.CheckoutValidation.validateAllFields( frame, true ) ) {
-					// Display step with validation errors
-					if ( displayStep == null ) {
-						displayStep = parseInt( frame.getAttribute( _settings.stepIndexAttribute ) );
-						setCurrentStep( displayStep, false );
-						var fieldWithError = frame.querySelector( _settings.woocommerceInvalidFieldClass );
-						
-						if ( fieldWithError.offsetParent === null ) {
-							scrollTo( fieldWithError );
-
-							// Prevent form submit if there are validation errors on visible fields
-							e.preventDefault();
-						}
-						
-					}
-				}
-			}
-		}
-	};
-
-
-
-	/**
 	 * Handle clicks on previous step buttons.
 	 */
 	var handlePrevStepClick = function( e ) {
@@ -414,9 +379,6 @@
 		}
 		else if ( e.target.closest( _settings.stepNavigationNextSelector + ':not([disabled])' ) ) {
 			handleNextStepClick( e );
-		}
-		else if ( e.target.closest( _settings.placeOrderSelector ) ) {
-			handlePlaceOrderClick( e );
 		}
 	};
 
