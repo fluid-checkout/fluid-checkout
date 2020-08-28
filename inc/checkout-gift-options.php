@@ -18,15 +18,16 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		if ( get_option( 'wfc_enable_checkout_gift_options', 'false' ) == 'true' ) {
-			add_filter( 'body_class', array( $this, 'add_body_class' ) );
+		// Bail if gift options not enabled
+		if ( get_option( 'wfc_enable_checkout_gift_options', 'false' ) !== 'true' ) { return; }
 
-			add_filter( 'woocommerce_after_order_notes' , array( $this, 'maybe_output_gift_options_fields' ), 10 );
-			add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_gift_options_fields' ), 10, 1 );
-			
-			add_action( 'woocommerce_admin_order_data_after_order_details', array( $this, 'display_gift_options_fields_order_admin_screen' ), 100, 1 );
-			add_action( 'woocommerce_process_shop_order_meta', array( $this, 'save_order_gift_details' ) );
-		}
+		add_filter( 'body_class', array( $this, 'add_body_class' ) );
+
+		add_filter( 'woocommerce_after_order_notes' , array( $this, 'maybe_output_gift_options_fields' ), 10 );
+		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_gift_options_fields' ), 10, 1 );
+		
+		add_action( 'woocommerce_admin_order_data_after_order_details', array( $this, 'display_gift_options_fields_order_admin_screen' ), 100, 1 );
+		add_action( 'woocommerce_process_shop_order_meta', array( $this, 'save_order_gift_details' ) );
 	}
 
 

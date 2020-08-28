@@ -19,19 +19,19 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Checkout field types enhancement for mobile
-		if ( get_option( 'wfc_apply_checkout_field_types_for_mobile', true ) ) {
+		if ( get_option( 'wfc_apply_checkout_field_types_for_mobile', 'true' ) === 'true' ) {
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_checkout_field_types' ), 5 );
 		}
 
 		// Checkout fields args
-		if ( get_option( 'wfc_apply_checkout_fields_args', true ) ) {
+		if ( get_option( 'wfc_apply_checkout_fields_args', 'true' ) === 'true' ) {
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_billing_fields_args' ), 10 );
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_shipping_fields_args' ), 10 );
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_order_fields_args' ), 10 );
 		}
 
 		// Shipping Phone Field
-		if ( get_option( 'wfc_add_shipping_phone_field', true ) ) {
+		if ( get_option( 'wfc_add_shipping_phone_field', 'true' ) === 'true' ) {
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'add_shipping_phone_field_checkout' ), 5 );
 			add_filter( 'woocommerce_shipping_fields' , array( $this, 'add_shipping_phone_field' ), 5 );
 			add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_shipping_phone' ), 10, 1 );

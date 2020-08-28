@@ -17,12 +17,13 @@ class FluidCheckoutValidation extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		if ( get_option( 'wfc_enable_checkout_validation', true ) ) {
-			add_filter( 'body_class', array( $this, 'add_body_class' ) );
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
+		// Bail if checkout validation not enabled
+		if ( get_option( 'wfc_enable_checkout_validation', 'true' ) !== 'true' ) { return; }
+		
+		add_filter( 'body_class', array( $this, 'add_body_class' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
 
-			add_filter( 'wfc_checkout_fields_args' , array( $this, 'change_checkout_email_fields_args' ), 10 );
-		}
+		add_filter( 'wfc_checkout_fields_args' , array( $this, 'change_checkout_email_fields_args' ), 10 );
 	}
 
 

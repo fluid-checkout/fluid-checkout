@@ -22,7 +22,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function init() {
 		// Bail if address book not enabled
-		if ( ! get_option( 'wfc_enable_address_book', true ) ) { return; }
+		if ( get_option( 'wfc_enable_address_book', 'true' ) !== 'true' ) { return; }
 
 		// Bail if checkout layout is not multi-step-enhanced
 		$active_checkout_layout_key = FluidCheckout_CheckoutLayouts::instance()->get_active_checkout_layout_key();
@@ -79,7 +79,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'unset_billing_address_selected_session' ), 10, 1 );
 
 		// Order Review Shipping Info
-		if ( get_option( 'wfc_order_review_display_shipping_address', true ) ) {
+		if ( get_option( 'wfc_order_review_display_shipping_address', 'true' ) === 'true' ) {
 			add_action( 'woocommerce_review_order_before_order_total', array( $this, 'output_order_review_shipping_address' ), 30 );
 		}
 	}
@@ -283,6 +283,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 		$fields['shipping_address_save'] = $this->get_shipping_save_address_checkbox_field();
 		
+		// TODO: Check if we can add the save checkbox field without the need for checkout fields feature to be enabled
 		$fields_args = $this->checkout_fields()->get_checkout_fields_args( 'shipping' );
 		foreach( $fields_args as $field => $values ) {
 			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
