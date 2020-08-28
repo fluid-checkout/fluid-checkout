@@ -62,6 +62,12 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		add_action( 'wfc_checkout_order_review_section', array( $this->multistep(), 'output_order_review' ), 10 );
 		add_action( 'woocommerce_checkout_after_order_review', array( $this->multistep(), 'output_checkout_place_order' ), 30 );
 		add_action( 'wfc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
+		
+		// Order Received
+		add_action( 'wfc_order_received_failed', array( $this, 'output_order_received_failed_template' ), 10 );
+		add_action( 'wfc_order_received_successful', array( $this, 'output_order_received_successful_template' ), 10 );
+		add_action( 'wfc_order_received_successful_no_order_details', array( $this, 'output_order_received_no_order_details_template' ), 10 );
+		add_action( 'woocommerce_thankyou', array( $this, 'do_woocommerce_thankyou_payment_method' ), 1 );
 
 		// Widget Areas
 		add_action( 'widgets_init', array( $this, 'register_checkout_widgets_areas' ), 50 );
@@ -515,6 +521,73 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 	/**
 	 * END - Checkout Steps
+	 */
+
+
+
+
+
+	/**
+	 * Order Received
+	 */
+
+
+	
+	/**
+	 * Output template part for order received failed
+	 */
+	public function output_order_received_failed_template( $order ) {
+		wc_get_template(
+			'checkout/order-received-failed.php',
+			array(
+				'order'			=> $order,
+			)
+		);
+	}
+
+
+
+	/**
+	 * Output template part for order received successful
+	 */
+	public function output_order_received_successful_template( $order ) {
+		wc_get_template(
+			'checkout/order-received-successful.php',
+			array(
+				'order'			=> $order,
+			)
+		);
+	}
+
+
+
+	/**
+	 * Output template part for order received without order details
+	 */
+	public function output_order_received_no_order_details_template( $order ) {
+		wc_get_template(
+			'checkout/order-received-no-order-details.php',
+			array(
+				'order'			=> $order,
+			)
+		);
+	}
+
+
+
+	/**
+	 * Run the action `woocommerce_thankyou_<payment_method>`, give developers
+	 * the ability to define which hook and priority to use
+	 */
+	public function do_woocommerce_thankyou_payment_method( $order_id ) {
+		$order = wc_get_order( $order_id );
+		do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() );
+	}
+
+
+
+	/**
+	 * END - Order Received
 	 */
 
 
