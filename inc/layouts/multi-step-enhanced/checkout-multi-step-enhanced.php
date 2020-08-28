@@ -76,6 +76,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 */
 	public function load_extra_features() {
 		require_once self::$directory_path . 'inc/layouts/multi-step-enhanced/address-book.php';
+		require_once self::$directory_path . 'inc/layouts/multi-step-enhanced/checkout-order-received.php';
 	}
 
 
