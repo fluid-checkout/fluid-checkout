@@ -12,9 +12,6 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		require_once self::$directory_path . 'inc/layouts/multi-step/checkout-multi-step.php';
 		
 		$this->hooks();
-
-		// Load extra features
-		require_once self::$directory_path . 'inc/layouts/multi-step-enhanced/address-book.php';
 	}
 
 
@@ -23,6 +20,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+
+		// Extra features
+		add_filter( 'init', array( $this, 'load_extra_features' ), 10 );
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
@@ -67,6 +67,15 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		add_action( 'widgets_init', array( $this, 'register_checkout_widgets_areas' ), 50 );
 		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_order_review_inside' ), 50 );
 		add_action( 'wfc_checkout_after_order_review', array( $this, 'output_order_review_outside' ), 50 );
+	}
+
+
+
+	/**
+	 * Load extra features
+	 */
+	public function load_extra_features() {
+		require_once self::$directory_path . 'inc/layouts/multi-step-enhanced/address-book.php';
 	}
 
 
