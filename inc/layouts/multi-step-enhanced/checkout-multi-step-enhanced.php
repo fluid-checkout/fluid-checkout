@@ -22,7 +22,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	public function hooks() {
 
 		// Extra features
-		add_filter( 'init', array( $this, 'load_extra_features' ), 10 );
+		// Needs to run early on `init` so that some features like widget areas are loaded correctly
+		add_filter( 'init', array( $this, 'load_extra_features' ), 0 );
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
@@ -63,7 +64,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		add_action( 'woocommerce_checkout_after_order_review', array( $this->multistep(), 'output_checkout_place_order' ), 30 );
 		add_action( 'wfc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		
-		// Order Received
+		// Order Received (default functionality)
 		add_action( 'wfc_order_received_failed', array( $this, 'output_order_received_failed_template' ), 10 );
 		add_action( 'wfc_order_received_successful', array( $this, 'output_order_received_successful_template' ), 10 );
 		add_action( 'wfc_order_received_successful_no_order_details', array( $this, 'output_order_received_no_order_details_template' ), 10 );
@@ -71,8 +72,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 		// Widget Areas
 		add_action( 'widgets_init', array( $this, 'register_checkout_widgets_areas' ), 50 );
-		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_order_review_inside' ), 50 );
-		add_action( 'wfc_checkout_after_order_review', array( $this, 'output_order_review_outside' ), 50 );
+		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_sidebar_order_review_inside' ), 50 );
+		add_action( 'wfc_checkout_after_order_review', array( $this, 'output_sidebar_order_review_outside' ), 50 );
 	}
 
 
@@ -622,7 +623,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	/**
 	 * Output widget area inside order review section
 	 */
-	function output_order_review_inside() {
+	function output_sidebar_order_review_inside() {
 		if ( is_active_sidebar( 'wfc_order_review_inside' ) ) :
 			dynamic_sidebar( 'wfc_order_review_inside' );
 		endif;
@@ -631,7 +632,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	/**
 	 * Output widget area outside order review section
 	 */
-	function output_order_review_outside() {
+	function output_sidebar_order_review_outside() {
 		if ( is_active_sidebar( 'wfc_order_review_outside' ) ) :
 			dynamic_sidebar( 'wfc_order_review_outside' );
 		endif;
