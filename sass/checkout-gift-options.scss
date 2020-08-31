@@ -9,3 +9,12 @@
 #wfc-gift-options__field-wrapper.active {
 	display: block;
 }
+
+
+
+.woocommerce-table--order-details .order-received__gift-from {
+	font-style: italic;
+}
+.woocommerce-table--order-details .order-received__gift-from:before {
+	content: ' \2014\ ';
+}

@@ -116,7 +116,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 */
 	public function enqueue_assets() {
 		// Bail if not at checkout
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
 
 		// Styles
 		wp_enqueue_style( 'wfc-checkout-layout--multi-step-enhanced', self::$directory_url . 'css/checkout-multi-step--enhanced'. self::$asset_version . '.css', NULL, NULL );
