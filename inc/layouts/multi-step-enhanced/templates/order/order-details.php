@@ -25,32 +25,12 @@ if ( ! $order ) {
 
 $order_items           = $order->get_items( apply_filters( 'woocommerce_purchase_order_item_types', 'line_item' ) );
 $show_purchase_note    = $order->has_status( apply_filters( 'woocommerce_purchase_note_order_statuses', array( 'completed', 'processing' ) ) );
-
-
-
-// $show_customer_details = is_user_logged_in() && $order->get_user_id() === get_current_user_id();
-// if ( $show_customer_details ) {
-// 	wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
-// }
-
-
-// $downloads             = $order->get_downloadable_items();
-// $show_downloads        = $order->has_downloadable_item() && $order->is_download_permitted();
-// if ( $show_downloads ) {
-// 	wc_get_template(
-// 		'order/order-downloads.php',
-// 		array(
-// 			'downloads'  => $downloads,
-// 			'show_title' => true,
-// 		)
-// 	);
-// }
-
-// CHANGE: Moved output of downloads details to a function hooked to the new action ``
+// CHANGE: Remove unused conditionals for downloads and customer details
+// CHANGE: Moved output of "downloads details" to a function hooked to new action hook `wfc_order_details_before_order_table_section`
 ?>
 
-<?php // CHANGE: Add new hook ?>
-<?php do_action( 'wfc_order_details_after_order_table_section', $order ); ?>
+<?php // CHANGE: Add new action hook `wfc_order_details_before_order_table_section` ?>
+<?php do_action( 'wfc_order_details_before_order_table_section', $order ); ?>
 
 <section class="woocommerce-order-details">
 	<?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
@@ -113,5 +93,6 @@ $show_purchase_note    = $order->has_status( apply_filters( 'woocommerce_purchas
 	<?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
 </section>
 
-<?php // CHANGE: Add new action hook, and moved "customer details" to a function hooked to the new hook ?>
+<?php // CHANGE: Moved output of "customer details" to a function hooked to new action hook `wfc_order_details_after_order_table_section` ?>
+<?php // CHANGE: Add new action hook `wfc_order_details_after_order_table_section ?>
 <?php do_action( 'wfc_order_details_after_order_table_section', $order ); ?>

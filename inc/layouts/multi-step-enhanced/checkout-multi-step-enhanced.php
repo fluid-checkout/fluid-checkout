@@ -69,6 +69,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		add_action( 'wfc_order_received_successful', array( $this, 'output_order_received_successful_template' ), 10 );
 		add_action( 'wfc_order_received_successful_no_order_details', array( $this, 'output_order_received_no_order_details_template' ), 10 );
 		add_action( 'woocommerce_thankyou', array( $this, 'do_woocommerce_thankyou_payment_method' ), 1 );
+		add_action( 'wfc_order_details_after_order_table_section', array( $this, 'output_order_customer_details' ), 10 );
+		add_action( 'wfc_order_details_before_order_table_section', array( $this, 'output_order_downloads_details' ), 10 );
 
 		// Widget Areas
 		add_action( 'widgets_init', array( $this, 'register_checkout_widgets_areas' ), 50 );
@@ -583,6 +585,37 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	public function do_woocommerce_thankyou_payment_method( $order_id ) {
 		$order = wc_get_order( $order_id );
 		do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() );
+	}
+
+
+
+	/**
+	 * Output order download details
+	 */
+	public function output_order_downloads_details( $order ) {
+		$downloads             = $order->get_downloadable_items();
+		$show_downloads        = $order->has_downloadable_item() && $order->is_download_permitted();
+		if ( $show_downloads ) {
+			wc_get_template(
+				'order/order-downloads.php',
+				array(
+					'downloads'  => $downloads,
+					'show_title' => true,
+				)
+			);
+		}
+	}
+
+
+
+	/**
+	 * Output order customer details
+	 */
+	public function output_order_customer_details( $order ) {
+		$show_customer_details = is_user_logged_in() && $order->get_user_id() === get_current_user_id();
+		if ( $show_customer_details ) {
+			wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
+		}
 	}
 
 

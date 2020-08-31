@@ -40,9 +40,19 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 		add_action( 'woocommerce_thankyou', array( $this, 'output_sidebar_order_review_outside' ), 50 );
 
 		// Order Details
+		remove_action( 'wfc_order_details_after_order_table_section', array( $this->multistep_enhanced(), 'output_order_customer_details' ), 10 );
 		add_filter( 'woocommerce_get_order_item_totals', array( $this, 'move_shipping_address_order_received_details_before_payment' ), 10, 3 );
 		add_filter( 'woocommerce_get_order_item_totals', array( $this, 'add_shipping_address_order_received_details' ), 20, 3 );
 		add_filter( 'woocommerce_get_order_item_totals', array( $this, 'add_billing_address_order_received_details' ), 20, 3 );
+	}
+
+
+
+	/**
+	 * Return WooCommerce Fluid Checkout multi-step enhanced class instance
+	 */
+	public function multistep_enhanced() {
+		return FluidCheckoutLayout_MultiStepEnhanced::instance();
 	}
 
 
