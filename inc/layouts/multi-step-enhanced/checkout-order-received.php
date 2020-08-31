@@ -131,7 +131,7 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 		// Get token position
 		$position_index = array_search( 'payment_method', array_keys( $total_rows ) ) - 1;
 
-		// Insert after token position
+		// Insert at token position
 		$new_total_rows  = array_slice( $total_rows, 0, $position_index );
 		$new_total_rows[ 'shipping' ] = $shipping_row;
 		$new_total_rows = array_merge( $new_total_rows, array_slice( $total_rows, $position_index, count( $total_rows ) ) );
@@ -146,7 +146,7 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 		// Get token position
 		$position_index = array_search( 'shipping', array_keys( $total_rows ) ) + 1;
 	
-		// Insert after token position
+		// Insert at token position
 		$new_total_rows  = array_slice( $total_rows, 0, $position_index );
 		$new_total_rows[ 'shipping_address' ] = array(
 			'label' => __( 'Shipping address:', 'woocommerce-fluid-checkout' ),
@@ -186,7 +186,7 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 			}
 		}
 	
-		// Insert after token position
+		// Insert at token position
 		$new_total_rows  = array_slice( $total_rows, 0, $position_index );
 		$new_total_rows[ 'billing_address' ] = array(
 			'label' => __( 'Billing address:', 'woocommerce-fluid-checkout' ),
