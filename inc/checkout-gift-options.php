@@ -63,7 +63,6 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 				'class'         => array( 'form-row-wide '),
 				'label'         => __( 'Do you want to add a gift message?', 'woocommerce-fluid-checkout' ),
 				'default'		=> false,
-				'hide_optional_label' => true,
 			),
 		) );
 
@@ -74,7 +73,6 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 				'label'         => __( 'Gift message', 'woocommerce-fluid-checkout' ),
 				'placeholder'   => __( 'Write a special message...', 'woocommerce-fluid-checkout' ),
 				'default'		=> $checkout->get_value( '_wfc_gift_message' ),
-				'hide_optional_label' => true,
 			),
 			'_wfc_gift_from' => array(
 				'type'          => 'text',
@@ -82,7 +80,6 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 				'label'         => __( 'From', 'woocommerce-fluid-checkout' ),
 				'placeholder'   => __( 'Who is sending this gift?', 'woocommerce-fluid-checkout' ),
 				'default'		=> $checkout->get_value( 'billing_first_name' ),
-				'hide_optional_label' => true,
 			)
 		) );
 		
