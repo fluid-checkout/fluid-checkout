@@ -16,5 +16,5 @@
 	font-style: italic;
 }
 .woocommerce-table--order-details .order-received__gift-from:before {
-	content: ' \2014\ ';
+	content: ' \2014\ '; // Need spaces before and after the escaped "em dash" char
 }
