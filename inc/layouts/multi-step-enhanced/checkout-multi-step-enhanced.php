@@ -531,7 +531,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Order Received
+	 * Order Received (default functionality)
 	 */
 
 
