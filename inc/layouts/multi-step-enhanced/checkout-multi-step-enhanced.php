@@ -22,7 +22,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	public function hooks() {
 
 		// Extra features
-		add_filter( 'init', array( $this, 'load_extra_features' ), 10 );
+		// Needs to run early on `init` so that some features like widget areas are loaded correctly
+		add_filter( 'init', array( $this, 'load_extra_features' ), 0 );
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
@@ -62,11 +63,19 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		add_action( 'wfc_checkout_order_review_section', array( $this->multistep(), 'output_order_review' ), 10 );
 		add_action( 'woocommerce_checkout_after_order_review', array( $this->multistep(), 'output_checkout_place_order' ), 30 );
 		add_action( 'wfc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
+		
+		// Order Received (default functionality)
+		add_action( 'wfc_order_received_failed', array( $this, 'output_order_received_failed_template' ), 10 );
+		add_action( 'wfc_order_received_successful', array( $this, 'output_order_received_successful_template' ), 10 );
+		add_action( 'wfc_order_received_successful_no_order_details', array( $this, 'output_order_received_no_order_details_template' ), 10 );
+		add_action( 'woocommerce_thankyou', array( $this, 'do_woocommerce_thankyou_payment_method' ), 1 );
+		add_action( 'wfc_order_details_after_order_table_section', array( $this, 'output_order_customer_details' ), 10 );
+		add_action( 'wfc_order_details_before_order_table_section', array( $this, 'output_order_downloads_details' ), 10 );
 
 		// Widget Areas
 		add_action( 'widgets_init', array( $this, 'register_checkout_widgets_areas' ), 50 );
-		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_order_review_inside' ), 50 );
-		add_action( 'wfc_checkout_after_order_review', array( $this, 'output_order_review_outside' ), 50 );
+		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_sidebar_order_review_inside' ), 50 );
+		add_action( 'wfc_checkout_after_order_review', array( $this, 'output_sidebar_order_review_outside' ), 50 );
 	}
 
 
@@ -76,6 +85,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 */
 	public function load_extra_features() {
 		require_once self::$directory_path . 'inc/layouts/multi-step-enhanced/address-book.php';
+		require_once self::$directory_path . 'inc/layouts/multi-step-enhanced/checkout-order-received.php';
 	}
 
 
@@ -106,7 +116,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 */
 	public function enqueue_assets() {
 		// Bail if not at checkout
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
 
 		// Styles
 		wp_enqueue_style( 'wfc-checkout-layout--multi-step-enhanced', self::$directory_url . 'css/checkout-multi-step--enhanced'. self::$asset_version . '.css', NULL, NULL );
@@ -519,6 +529,104 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 
+
+	/**
+	 * Order Received (default functionality)
+	 */
+
+
+	
+	/**
+	 * Output template part for order received failed
+	 */
+	public function output_order_received_failed_template( $order ) {
+		wc_get_template(
+			'checkout/order-received-failed.php',
+			array(
+				'order'			=> $order,
+			)
+		);
+	}
+
+
+
+	/**
+	 * Output template part for order received successful
+	 */
+	public function output_order_received_successful_template( $order ) {
+		wc_get_template(
+			'checkout/order-received-successful.php',
+			array(
+				'order'			=> $order,
+			)
+		);
+	}
+
+
+
+	/**
+	 * Output template part for order received without order details
+	 */
+	public function output_order_received_no_order_details_template( $order ) {
+		wc_get_template(
+			'checkout/order-received-no-order-details.php',
+			array(
+				'order'			=> $order,
+			)
+		);
+	}
+
+
+
+	/**
+	 * Run the action `woocommerce_thankyou_<payment_method>`, give developers
+	 * the ability to define which hook and priority to use
+	 */
+	public function do_woocommerce_thankyou_payment_method( $order_id ) {
+		$order = wc_get_order( $order_id );
+		do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() );
+	}
+
+
+
+	/**
+	 * Output order download details
+	 */
+	public function output_order_downloads_details( $order ) {
+		$downloads             = $order->get_downloadable_items();
+		$show_downloads        = $order->has_downloadable_item() && $order->is_download_permitted();
+		if ( $show_downloads ) {
+			wc_get_template(
+				'order/order-downloads.php',
+				array(
+					'downloads'  => $downloads,
+					'show_title' => true,
+				)
+			);
+		}
+	}
+
+
+
+	/**
+	 * Output order customer details
+	 */
+	public function output_order_customer_details( $order ) {
+		$show_customer_details = is_user_logged_in() && $order->get_user_id() === get_current_user_id();
+		if ( $show_customer_details ) {
+			wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
+		}
+	}
+
+
+
+	/**
+	 * END - Order Received
+	 */
+
+
+
+
 	
 	/**
 	 * Register widget areas for the checkout pages
@@ -548,7 +656,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	/**
 	 * Output widget area inside order review section
 	 */
-	function output_order_review_inside() {
+	function output_sidebar_order_review_inside() {
 		if ( is_active_sidebar( 'wfc_order_review_inside' ) ) :
 			dynamic_sidebar( 'wfc_order_review_inside' );
 		endif;
@@ -557,7 +665,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	/**
 	 * Output widget area outside order review section
 	 */
-	function output_order_review_outside() {
+	function output_sidebar_order_review_outside() {
 		if ( is_active_sidebar( 'wfc_order_review_outside' ) ) :
 			dynamic_sidebar( 'wfc_order_review_outside' );
 		endif;

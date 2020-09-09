@@ -21,13 +21,19 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		// Bail if gift options not enabled
 		if ( get_option( 'wfc_enable_checkout_gift_options', 'false' ) !== 'true' ) { return; }
 
+		// Body Class
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
+		// Order Admin Screen
 		add_filter( 'woocommerce_after_order_notes' , array( $this, 'maybe_output_gift_options_fields' ), 10 );
-		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_gift_options_fields' ), 10, 1 );
-		
 		add_action( 'woocommerce_admin_order_data_after_order_details', array( $this, 'display_gift_options_fields_order_admin_screen' ), 100, 1 );
+		
+		// Save gift message
+		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_gift_options_fields' ), 10, 1 );
 		add_action( 'woocommerce_process_shop_order_meta', array( $this, 'save_order_gift_details' ) );
+		
+		// Order Details
+		add_filter( 'woocommerce_get_order_item_totals', array( $this, 'maybe_add_gift_message_order_received_details' ), 30, 3 );
 	}
 
 
@@ -112,7 +118,6 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		$order_id = $order->id;
 		$gift_message = get_post_meta( $order_id, '_wfc_gift_message', true );
 		$gift_from = get_post_meta( $order_id, '_wfc_gift_from', true );
-		
 
 		if ( $gift_message || $gift_from ) : ?>
 		
@@ -164,6 +169,39 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 	public function save_order_gift_details( $order_id ){
 		update_post_meta( $order_id, '_wfc_gift_message', wc_clean( $_POST[ '_wfc_gift_message' ] ) );
 		update_post_meta( $order_id, '_wfc_gift_from', wc_sanitize_textarea( $_POST[ '_wfc_gift_from' ] ) );
+	}
+
+
+
+	/**
+	 * Maybe add gift message to order details totals.
+	 */
+	public function maybe_add_gift_message_order_received_details( $total_rows, $order, $tax_display ) {
+		// Bail if not on order received page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || ! is_order_received_page() ){ return $total_rows; }
+
+		// Get token position
+		$position_index = array_search( 'shipping_address', array_keys( $total_rows ) ) + 1;
+
+		// Get gift message value
+		$gift_message = get_post_meta( $order->get_id(), '_wfc_gift_message', true );
+		$gift_from = get_post_meta( $order->get_id(), '_wfc_gift_from', true );
+		$gift_message_value = '';
+		if ( ! empty( $gift_message ) ) { $gift_message_value .= '<span class="order-received__gift-message">'.$gift_message.'</span>'; };
+		if ( ! empty( $gift_from ) ) { $gift_message_value .= ' <span class="order-received__gift-from">'.$gift_from.'</span>'; };
+	
+		// Bail if gift message wasn't added
+		if ( empty( $gift_message_value ) ) { return $total_rows; }
+
+		// Insert at token position
+		$new_total_rows  = array_slice( $total_rows, 0, $position_index );
+		$new_total_rows[ 'gift_message' ] = array(
+			'label' => __( 'Gift message:', 'woocommerce-fluid-checkout' ),
+			'value' => $gift_message_value,
+		);
+		$new_total_rows = array_merge( $new_total_rows, array_slice( $total_rows, $position_index, count( $total_rows ) ) );
+	
+		return $new_total_rows;
 	}
 
 }

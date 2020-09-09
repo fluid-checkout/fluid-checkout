@@ -1,8 +1,0 @@
-/*
- * WooCommerce Fluid Checkout - Gift Options
- */
-.has-wfc-gift-options--active #wfc-gift-options__field-wrapper {
-  display: none; }
-
-#wfc-gift-options__field-wrapper.active {
-  display: block; }

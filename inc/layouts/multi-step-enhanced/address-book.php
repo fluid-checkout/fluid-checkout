@@ -24,10 +24,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Bail if address book not enabled
 		if ( get_option( 'wfc_enable_address_book', 'true' ) !== 'true' ) { return; }
 
-		// Bail if checkout layout is not multi-step-enhanced
-		// $active_checkout_layout_key = FluidCheckout_CheckoutLayouts::instance()->get_active_checkout_layout_key();
-		// if ( $active_checkout_layout_key !== 'multi-step-enhanced' ) { return; }
-
 		$this->hooks();
 	}
 
