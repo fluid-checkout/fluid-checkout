@@ -185,7 +185,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 */
 	public function maybe_output_order_review_shipping_method_chosen() {
 		// Bail if not checkout page
-		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || ! is_cart() ) { return; }
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() ) ) { return; }
 
 		$packages = WC()->shipping()->get_packages();
 		$first    = true;
