@@ -66,13 +66,15 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 			),
 		) );
 
+		$message_maxlength = apply_filters( 'wfc_gift_options_from_length', false );
 		$gift_option_fields = apply_filters( 'wfc_gift_options_fields', array(
 			'_wfc_gift_message' => array(
 				'type'          => 'textarea',
 				'class'         => array( 'form-row-wide '),
-				'label'         => __( 'Gift message', 'woocommerce-fluid-checkout' ),
+				'label'         => $message_maxlength ? sprintf( __( 'Gift message (%d characters)', 'woocommerce-fluid-checkout' ), $message_maxlength ) : __( 'Gift message', 'woocommerce-fluid-checkout' ),
 				'placeholder'   => __( 'Write a special message...', 'woocommerce-fluid-checkout' ),
 				'default'		=> $checkout->get_value( '_wfc_gift_message' ),
+				'maxlength'		=> $message_maxlength,
 			),
 			'_wfc_gift_from' => array(
 				'type'          => 'text',
@@ -80,6 +82,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 				'label'         => __( 'From', 'woocommerce-fluid-checkout' ),
 				'placeholder'   => __( 'Who is sending this gift?', 'woocommerce-fluid-checkout' ),
 				'default'		=> $checkout->get_value( 'billing_first_name' ),
+				'maxlength'		=> apply_filters( 'wfc_gift_options_from_length', false ),
 			)
 		) );
 		
