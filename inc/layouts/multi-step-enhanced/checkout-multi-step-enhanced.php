@@ -74,8 +74,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 		// Widget Areas
 		add_action( 'widgets_init', array( $this, 'register_cart_widgets_areas' ), 50 );
-		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_sidebar_cart_totals_inside' ), 50 );
-		add_action( 'wfc_checkout_after_cart_totals', array( $this, 'output_sidebar_cart_totals_outside' ), 50 );
+		add_action( 'woocommerce_after_cart_totals', array( $this, 'output_sidebar_cart_totals_inside' ), 50 );
+		add_action( 'woocommerce_cart_collaterals', array( $this, 'output_sidebar_cart_totals_outside' ), 11 );
 		add_action( 'widgets_init', array( $this, 'register_checkout_widgets_areas' ), 50 );
 		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_sidebar_order_review_inside' ), 50 );
 		add_action( 'wfc_checkout_after_order_review', array( $this, 'output_sidebar_order_review_outside' ), 50 );
