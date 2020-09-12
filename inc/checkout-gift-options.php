@@ -66,7 +66,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 			),
 		) );
 
-		$message_maxlength = apply_filters( 'wfc_gift_options_from_length', false );
+		$message_maxlength = apply_filters( 'wfc_gift_options_message_length', false );
 		$gift_option_fields = apply_filters( 'wfc_gift_options_fields', array(
 			'_wfc_gift_message' => array(
 				'type'          => 'textarea',
