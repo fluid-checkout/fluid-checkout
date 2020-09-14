@@ -48,7 +48,9 @@ defined( 'ABSPATH' ) || exit;
 	
 	
 	// NEW ADDRESS
-	$new_address_entry = array( 'address_id' => 'new_shipping' );
+	$new_address_entry = array_merge( array( 'address_id' => 'new_shipping' ), FluidCheckout::instance()->get_user_geo_location() );
+	$countries = WC()->countries->get_shipping_countries();
+	if ( 1 === count( $countries ) ) { $new_address_entry = array_merge( $new_address_entry, array( 'country' => current( array_keys( $countries ) ) ) ); }
 	$new_address_item = true;
 	$checked_new_address = count( $address_book_entries ) == 0 || ( is_array( $address_entry_same_as ) && array_key_exists( 'address_id', $address_entry_same_as ) && $address_entry_same_as['address_id'] == 'new' ? false : FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $new_address_entry, false ) );
 	echo apply_filters( 'wfc_address_book_entry_markup',
@@ -56,7 +58,7 @@ defined( 'ABSPATH' ) || exit;
 			$address_type,
 			$new_address_entry[ 'address_id' ],
 			'data-address-book-new ' . checked( $checked_new_address, true, false ),
-			wp_json_encode( array_merge( $new_address_entry, FluidCheckout::instance()->get_user_geo_location() ) ), // default address values
+			wp_json_encode( $new_address_entry ), // default address values
 			__( 'Enter a new address', 'woocommerce-fluid-checkout' ),
 			'data-address-book-new-entry'
 		), $new_address_entry, $address_type, $address_label, $new_address_item, $checked_new_address );
