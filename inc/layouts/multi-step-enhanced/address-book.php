@@ -36,6 +36,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
 		// Address default values
+		add_action( 'wp', array( $this, 'maybe_set_shipping_address_selected_session_to_default' ), 10 );
 		add_action( 'wp', array( $this, 'add_address_field_default_value_hooks' ), 10 );
 
 		// Checkout fields
@@ -215,6 +216,33 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 		return $address_book_entries;
 	}
+
+
+
+	/**
+	 * Get user's saved addresses
+	 */
+	public function get_default_shipping_address_from_saved_entries( $user_id = null ) {
+		$user_id = $this->get_user_id( $user_id );
+		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
+		
+		// Bail if not addresses saved
+		if ( ! $address_book_entries || count( $address_book_entries ) == 0 ) { return false; }
+
+		// Try get default, or get first
+		$default_address_entry = false;
+		$first = true;
+		foreach ( $address_book_entries as $address_id => $entry ) {
+			if ( $first ) { $default_address_entry = $entry; }
+			if ( $entry['default'] === true ) {
+				$default_address_entry = $entry;
+				break;
+			}
+			$first = false;
+		}
+
+		return $default_address_entry;
+	}	
 
 
 	
@@ -799,7 +827,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			$checked_address = true;
 		}
 		// Is default address
-		// TODO: Check with how default address is saved and retrieved
 		elseif ( array_key_exists( 'default', $address_entry ) ) {
 			$checked_address = $address_entry['default'] === true;
 		}
@@ -813,28 +840,50 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 
+	/**
+	 * Set shipping address selected on session
+	 */
+	public function set_shipping_address_selected_session_value( $address_data ) {
+		// Bail if address data invalid
+		if ( ! $address_data || ! is_array( $address_data ) ) { return; }
+		
+		// Set session value
+		WC()->session->set( 'wfc_shipping_address_selected', $address_data );
+
+		// Set billing same as shipping
+		$billing_address = $this->get_billing_address_selected_session();
+		if ( ! $billing_address || ( array_key_exists( 'address_same_as', $billing_address ) && $billing_address['address_same_as'] == '1' ) ) {
+			$address_data[ 'address_same_as' ] = '1';
+			WC()->session->set( 'wfc_billing_address_selected', $address_data );
+		}
+	}
+
+	/**
+	 * Set shipping address selected on session, from address book default values.
+	 */
+	public function maybe_set_shipping_address_selected_session_to_default() {
+		// Bail if not cart or checkout pages
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() ) ) { return; }
+
+		// Maybe set session value to default
+		if ( ! $this->get_shipping_address_selected_session() && count( $this->get_saved_user_address_book_entries() ) > 0 ) {
+			$address_data = $this->get_default_shipping_address_from_saved_entries();
+			$this->set_shipping_address_selected_session_value( $address_data );
+		}
+	}
 
 	/**
 	 * Set shipping address selected on session.
 	 */
 	public function set_shipping_address_selected_session() {
 		if ( isset( $_POST['address_data'] ) && is_array( $_POST['address_data'] ) ) {
-			// Get sanitized address data
+			// Get sanitized address data from post request values
 			$address_data = $_POST['address_data'];
 			foreach ( array_keys( $address_data ) as $key ) {
 				$address_data[ $key ] = sanitize_text_field( $address_data[ $key ] );
 			}
 
-			// Set session value
-			WC()->session->set( 'wfc_shipping_address_selected', $address_data );
-
-			// Set billing same as shipping
-			$billing_address = $this->get_billing_address_selected_session();
-			if ( ! $billing_address || ( array_key_exists( 'address_same_as', $billing_address ) && $billing_address['address_same_as'] == '1' ) ) {
-				$address_data[ 'address_same_as' ] = '1';
-				WC()->session->set( 'wfc_billing_address_selected', $address_data );
-			}
-
+			$this->set_shipping_address_selected_session_value( $address_data );
 		}
 		else {
 			// Clear session value
