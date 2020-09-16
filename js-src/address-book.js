@@ -118,8 +118,6 @@
 		// Bail if new address form wrapper not available
 		if ( ! addressBookEntriesWrapper ) { return; }
 
-		// console.log( selectedAddress.matches( _settings.addressEntrySameAsSelector ) );
-
 		// Set "same as" option checked state to address book element
 		if ( selectedAddress.matches( _settings.addressEntrySameAsSelector ) ) { addressBookEntriesWrapper.setAttribute( _settings.sameAsEntryCheckedAttribute, '1' ); }
 		else { addressBookEntriesWrapper.removeAttribute( _settings.sameAsEntryCheckedAttribute ); }
@@ -309,7 +307,6 @@
 	 * Handle change to persisted address fields
 	 */
 	var changePersistedAddressFields = function( e ) {
-		console.log( 'passed 3' );
 		// Bail if checkout update disabled
 		if ( ! _updateCheckout ) return;
 		

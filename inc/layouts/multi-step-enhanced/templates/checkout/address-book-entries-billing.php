@@ -74,7 +74,9 @@ $checked_same_as_address_attribute = $checked_same_as_address ? 'data-address-sa
 	
 	
 	// NEW ADDRESS
-	$new_address_entry = array( 'address_id' => 'new_billing' );
+	$new_address_entry = array_merge( array( 'address_id' => 'new_billing' ), FluidCheckout::instance()->get_user_geo_location() );
+	$countries = WC()->countries->get_allowed_countries();
+	if ( 1 === count( $countries ) ) { $new_address_entry = array_merge( $new_address_entry, array( 'country' => current( array_keys( $countries ) ) ) ); }
 	$new_address_item = true;
     $checked_new_address = FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $new_address_entry, false );
     $address_label = __( 'Use a different address', 'woocommerce-fluid-checkout' );
@@ -83,7 +85,7 @@ $checked_same_as_address_attribute = $checked_same_as_address ? 'data-address-sa
 			$address_type,
 			$new_address_entry[ 'address_id' ],
 			'data-address-book-new ' . checked( $checked_new_address, true, false ),
-			wp_json_encode( array_merge( $new_address_entry, FluidCheckout::instance()->get_user_geo_location() ) ), // default address values
+			wp_json_encode( $new_address_entry ), // default address values
             $address_label,
             'data-address-book-new-entry',
             '', // No extra elements

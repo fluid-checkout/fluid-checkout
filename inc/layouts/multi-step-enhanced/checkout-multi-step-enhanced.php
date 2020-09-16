@@ -73,6 +73,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		add_action( 'wfc_order_details_before_order_table_section', array( $this, 'output_order_downloads_details' ), 10 );
 
 		// Widget Areas
+		add_action( 'widgets_init', array( $this, 'register_cart_widgets_areas' ), 50 );
+		add_action( 'woocommerce_after_cart_totals', array( $this, 'output_sidebar_cart_totals_inside' ), 50 );
+		add_action( 'woocommerce_cart_collaterals', array( $this, 'output_sidebar_cart_totals_outside' ), 11 );
 		add_action( 'widgets_init', array( $this, 'register_checkout_widgets_areas' ), 50 );
 		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_sidebar_order_review_inside' ), 50 );
 		add_action( 'wfc_checkout_after_order_review', array( $this, 'output_sidebar_order_review_outside' ), 50 );
@@ -185,7 +188,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 */
 	public function maybe_output_order_review_shipping_method_chosen() {
 		// Bail if not checkout page
-		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) { return; }
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() ) ) { return; }
 
 		$packages = WC()->shipping()->get_packages();
 		$first    = true;
@@ -633,9 +636,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 */
 	function register_checkout_widgets_areas() {
 		register_sidebar( array(
-			'name'			=> __( 'Order Review', 'lobsteranywhere-customizations' ),
+			'name'			=> __( 'Order Review - Inside', 'woocommerce-fluid-checkout' ),
 			'id'			=> 'wfc_order_review_inside',
-			'description'	=> __( 'Display widgets on order review section at checkout.', 'lobsteranywhere-customizations' ),
+			'description'	=> __( 'Display widgets on order review section at checkout.', 'woocommerce-fluid-checkout' ),
 			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'	=> '</aside>',
 			'before_title'	=> '<h5 class="widget-title">',
@@ -643,9 +646,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		) );
 
 		register_sidebar( array(
-			'name'			=> __( 'After Order Review', 'lobsteranywhere-customizations' ),
+			'name'			=> __( 'Order Review - After', 'woocommerce-fluid-checkout' ),
 			'id'			=> 'wfc_order_review_outside',
-			'description'	=> __( 'Display widgets after the order review section at checkout.', 'lobsteranywhere-customizations' ),
+			'description'	=> __( 'Display widgets after the order review section at checkout.', 'woocommerce-fluid-checkout' ),
 			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'	=> '</aside>',
 			'before_title'	=> '<h5 class="widget-title">',
@@ -668,6 +671,51 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	function output_sidebar_order_review_outside() {
 		if ( is_active_sidebar( 'wfc_order_review_outside' ) ) :
 			dynamic_sidebar( 'wfc_order_review_outside' );
+		endif;
+	}
+
+
+
+	/**
+	 * Register widget areas for the cart pages
+	 */
+	function register_cart_widgets_areas() {
+		register_sidebar( array(
+			'name'			=> __( 'Cart Totals - Inside', 'woocommerce-fluid-checkout' ),
+			'id'			=> 'wfc_cart_totals_inside',
+			'description'	=> __( 'Display widgets on cart totals section at checkout.', 'woocommerce-fluid-checkout' ),
+			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'	=> '</aside>',
+			'before_title'	=> '<h5 class="widget-title">',
+			'after_title'	=> '</h5>',
+		) );
+
+		register_sidebar( array(
+			'name'			=> __( 'Cart Totals - After', 'woocommerce-fluid-checkout' ),
+			'id'			=> 'wfc_cart_totals_outside',
+			'description'	=> __( 'Display widgets after the cart totals section at checkout.', 'woocommerce-fluid-checkout' ),
+			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'	=> '</aside>',
+			'before_title'	=> '<h5 class="widget-title">',
+			'after_title'	=> '</h5>',
+		) );
+	}
+
+	/**
+	 * Output widget area inside cart totals section
+	 */
+	function output_sidebar_cart_totals_inside() {
+		if ( is_active_sidebar( 'wfc_cart_totals_inside' ) ) :
+			dynamic_sidebar( 'wfc_cart_totals_inside' );
+		endif;
+	}
+
+	/**
+	 * Output widget area outside cart totals section
+	 */
+	function output_sidebar_cart_totals_outside() {
+		if ( is_active_sidebar( 'wfc_cart_totals_outside' ) ) :
+			dynamic_sidebar( 'wfc_cart_totals_outside' );
 		endif;
 	}
 	

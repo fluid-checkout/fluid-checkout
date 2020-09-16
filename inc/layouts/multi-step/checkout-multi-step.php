@@ -37,6 +37,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		// Shipping
 		add_action( 'wfc_checkout_before_step_shipping_fields', array( $this, 'output_shipping_step_section_title' ), 10 );
 		add_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_checkbox' ), 10 );
+		add_action( 'wfc_cart_totals_shipping', array( $this, 'output_cart_totals_shipping_section' ), 10 );
 
 		// Additional Information
 		add_action( 'wfc_checkout_after_step_shipping_fields', array( $this, 'maybe_output_additional_fields_shipping_step' ), 50 );
@@ -234,6 +235,18 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		<h3 class="wfc-checkout-step-title"><?php echo esc_html( apply_filters( 'wfc_checkout_shipping_step_section_title', __( 'Shipping Address', 'woocommerce-fluid-checkout' ) ) ); ?></h3>
 		<?php
 	}
+
+
+
+	/**
+	 * Output shipping section for cart totals
+	 */
+	public function output_cart_totals_shipping_section() {
+		wc_get_template(
+			'cart/cart-totals-shipping.php'
+		);
+	}
+	
 
 
 
