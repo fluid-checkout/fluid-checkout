@@ -105,8 +105,6 @@
 			return getFirstStepIndex();
 		}
 
-		console.log(_frames);
-
 		// Return next available step
 		for ( var i = currentStepIndex - 1; i >= 0; i-- ) {
 			if ( ! _frames[ i - 1 ].hasAttribute( _settings.states.DISABLED ) ) {

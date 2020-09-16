@@ -76,9 +76,9 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 	 */
 	function register_order_received_widgets_areas() {
 		register_sidebar( array(
-			'name'			=> __( 'Order Confirmation - Before', 'lobsteranywhere-customizations' ),
+			'name'			=> __( 'Order Confirmation - Before', 'woocommerce-fluid-checkout' ),
 			'id'			=> 'wfc_order_received_before',
-			'description'	=> __( 'Display widgets on order confirmation page before the order details.', 'lobsteranywhere-customizations' ),
+			'description'	=> __( 'Display widgets on order confirmation page before the order details.', 'woocommerce-fluid-checkout' ),
 			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'	=> '</aside>',
 			'before_title'	=> '<h5 class="widget-title">',
@@ -86,9 +86,9 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 		) );
 
 		register_sidebar( array(
-			'name'			=> __( 'Order Confirmation - After', 'lobsteranywhere-customizations' ),
+			'name'			=> __( 'Order Confirmation - After', 'woocommerce-fluid-checkout' ),
 			'id'			=> 'wfc_order_received_after',
-			'description'	=> __( 'Display widgets after the order confirmation page after the order details.', 'lobsteranywhere-customizations' ),
+			'description'	=> __( 'Display widgets after the order confirmation page after the order details.', 'woocommerce-fluid-checkout' ),
 			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'	=> '</aside>',
 			'before_title'	=> '<h5 class="widget-title">',

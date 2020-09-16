@@ -82,12 +82,17 @@
 	 * Apply an email suggestion value to the email field
 	 */
 	var applySuggestion = function( suggestionElement ){
+		// Bail if there are no suggestions
 		if ( suggestionElement === null ) return;
-		var parentFormRow = suggestionElement.closest( _settings.formFieldWrapperSelector );
-		if ( parentFormRow === null ) return;
-		var targetField = parentFormRow.querySelector( _settings.mailFieldSelector )
-		console.log( suggestionElement.parentNode );
 
+		var parentFormRow = suggestionElement.closest( _settings.formFieldWrapperSelector );
+		
+		// Bail if parent form row not found
+		if ( parentFormRow === null ) return;
+
+		var targetField = parentFormRow.querySelector( _settings.mailFieldSelector )
+
+		// Bail if target field not found
 		if ( targetField === null ) return;
 
 		// Apply suggested value
