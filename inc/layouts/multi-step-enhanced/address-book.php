@@ -79,6 +79,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		if ( get_option( 'wfc_order_review_display_shipping_address', 'true' ) === 'true' ) {
 			add_action( 'woocommerce_review_order_before_order_total', array( $this, 'output_order_review_shipping_address' ), 30 );
 		}
+
+		// Account pages
+		add_filter( 'woocommerce_account_menu_items', array( $this, 'change_edit_address_account_menu_item_label' ), 50, 2 );
 	}
 
 
@@ -974,6 +977,18 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 				'shipping_address'	=> $this->get_shipping_address_selected_session(),
 			)
 		);
+	}
+
+
+
+
+
+	/**
+	 * Change the label for edit address account menu item
+	 */
+	public function change_edit_address_account_menu_item_label( $items, $endpoints ) {
+		if ( array_key_exists( 'edit-address', $items ) ) { $items[ 'edit-address' ] = __( 'Address book', 'woocommerce-fluid-checkout' ); }
+		return $items;
 	}
 
 }
