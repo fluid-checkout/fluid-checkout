@@ -83,7 +83,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Account pages
 		remove_action( 'wfc_edit_account_address_form', array( FluidCheckout_AccountPages::instance(), 'output_default_account_edit_address_content' ), 10, 2 );
 		add_filter( 'woocommerce_account_menu_items', array( $this, 'change_edit_address_account_menu_item_label' ), 50, 2 );
-		add_action( 'wfc_edit_account_address_form', array( $this, 'output_account_edit_address_content' ), 10, 2 );
+		add_action( 'wfc_edit_account_address_form', array( $this, 'output_account_address_book_entries_list_start_tag' ), 10, 2 );
+		add_action( 'wfc_edit_account_address_form', array( $this, 'output_account_edit_address_content' ), 20, 2 );
+		add_action( 'wfc_edit_account_address_form', array( $this, 'output_account_address_book_entries_list_end_tag' ), 30, 2 );
 	}
 
 
@@ -1012,6 +1014,22 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	public function change_edit_address_account_menu_item_label( $items, $endpoints ) {
 		if ( array_key_exists( 'edit-address', $items ) ) { $items[ 'edit-address' ] = __( 'Address book', 'woocommerce-fluid-checkout' ); }
 		return $items;
+	}
+
+
+
+	/**
+	 * Output address book list start tag for account pages
+	 */
+	public function output_account_address_book_entries_list_start_tag() {
+		echo '<div class="wfc-address-book__entries ">';
+	}
+
+	/**
+	 * Output address book list end tag for account pages
+	 */
+	public function output_account_address_book_entries_list_end_tag() {
+		echo '</div>';
 	}
 
 	/**
