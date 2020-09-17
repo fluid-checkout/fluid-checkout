@@ -13,6 +13,7 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
+ * @see		woocommerce/templates/myaccount/dashboard.php
  * @package WooCommerce/Templates
  * @version 4.4.0
  */
