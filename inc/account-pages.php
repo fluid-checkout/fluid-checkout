@@ -208,7 +208,7 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 
 		// Maybe change title
 		if ( ! empty( $endpoint_title ) ) {
-			$title .= sprintf( ' <span class="endpoint-title">%s</span>', $endpoint_title );
+			$title .= sprintf( ' <span class="endpoint-title-separator"> &gt; </span><span class="endpoint-title">%s</span>', $endpoint_title );
 		}
 
 		return $title;
