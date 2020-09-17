@@ -1030,14 +1030,14 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Output address book list start tag for account pages
 	 */
-	public function output_account_address_book_entries_list_start_tag() {
+	public function output_account_address_book_entries_list_start_tag( $load_address, $address ) {
 		echo '<div class="wfc-address-book__entries ">';
 	}
 
 	/**
 	 * Output address book list end tag for account pages
 	 */
-	public function output_account_address_book_entries_list_end_tag() {
+	public function output_account_address_book_entries_list_end_tag( $load_address, $address ) {
 		echo '</div>';
 	}
 
