@@ -1,8 +1,8 @@
 <?php
 /**
- * Checkout Address Book Entries
+ * Checkout Billing Address Book Entries
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/checkout/address-book-entries.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/checkout/address-book-entries-billing.php.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package woocommerce-fluid-checkout

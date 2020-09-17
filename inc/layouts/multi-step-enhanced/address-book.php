@@ -81,7 +81,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		}
 
 		// Account pages
+		remove_action( 'wfc_edit_account_address_form', array( FluidCheckout_AccountPages::instance(), 'output_default_account_edit_address_content' ), 10, 2 );
 		add_filter( 'woocommerce_account_menu_items', array( $this, 'change_edit_address_account_menu_item_label' ), 50, 2 );
+		add_action( 'wfc_edit_account_address_form', array( $this, 'output_account_edit_address_content' ), 10, 2 );
 	}
 
 
@@ -768,6 +770,27 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
+	 * Get address entry display label for account pages
+	 */
+	public function get_account_address_entry_display_label( $address_entry ) {
+		$state_label = ! empty( $address_entry['state'] ) ? ', '.$address_entry['state'] : '';
+		$country_label = WC()->countries->countries[ $address_entry['country'] ];
+
+		$display_label = sprintf( '%1$s %2$s %3$s %4$s %5$s %6$s',
+			array_key_exists( 'first_name', $address_entry ) ? '<span class="address-book-entry__name">'.$address_entry['first_name'] . ' ' . $address_entry['last_name'].'</span>' : '',
+			'<span class="address-book-entry__address_1">'.$address_entry['address_1'].'</span>',
+			array_key_exists( 'address_2', $address_entry ) ? '<span class="address-book-entry__address_2">'.$address_entry['address_2'].'</span>' : '',
+			'<span class="address-book-entry__location">'.$address_entry['city'].$state_label.' '.$address_entry['postcode'].'</span>',
+			'<span class="address-book-entry__country">'.$country_label.'</span>',
+			array_key_exists( 'company', $address_entry ) ? '<span class="address-book-entry__company">'.$address_entry['company'].'</span>' : ''
+		);
+
+		return $display_label;
+	}
+
+
+
+	/**
 	 * Get address entry display label
 	 */
 	public function get_shipping_address_entry_display_label( $address_entry ) {
@@ -989,6 +1012,17 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	public function change_edit_address_account_menu_item_label( $items, $endpoints ) {
 		if ( array_key_exists( 'edit-address', $items ) ) { $items[ 'edit-address' ] = __( 'Address book', 'woocommerce-fluid-checkout' ); }
 		return $items;
+	}
+
+	/**
+	 * Output the address book content
+	 */
+	public function output_account_edit_address_content( $load_address, $address ) {
+		$address_book_entries = $this->get_saved_user_address_book_entries();
+	
+		wc_get_template( 'myaccount/address-book-entries.php', array(
+			'address_book_entries'	=> $address_book_entries,
+		) );
 	}
 
 }
