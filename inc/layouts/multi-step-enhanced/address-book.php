@@ -87,6 +87,10 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'wfc_edit_account_address_form', array( $this, 'output_account_address_book_entries_list_start_tag' ), 10, 2 );
 		add_action( 'wfc_edit_account_address_form', array( $this, 'output_account_edit_address_content' ), 20, 2 );
 		add_action( 'wfc_edit_account_address_form', array( $this, 'output_account_address_book_entries_list_end_tag' ), 30, 2 );
+
+		// Address Form
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_replace_address_scripts' ), 11 );
+		add_filter( 'woocommerce_country_locale_field_selectors', array( $this, 'change_country_locale_field_selectors' ), 10 );
 	}
 
 
@@ -1065,10 +1069,12 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	public function output_account_edit_address_content( $load_address, $address ) {
 		$address_book_entries = $this->get_saved_user_address_book_entries();
 		
-		// Get address entry to edit and transpose values to address variable
+		// Get address entry to edit
 		$address_entry = $this->get_address_book_entry( $load_address );
+		$address = WC()->countries->get_default_address_fields();
+
+		// Transpose address entry values to address fiels
 		if ( $address_entry !== false ) {
-			$address = WC()->countries->get_default_address_fields();
 			foreach ( $address as $key => $field ) {
 				if ( array_key_exists( $key, $address_entry ) ) {
 					$address[ $key ][ 'value' ] = $address_entry[ $key ];
@@ -1081,6 +1087,33 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			'address_id' => $load_address,
 			'address' => $address,
 		) );
+	}
+
+
+
+	/**
+	 * Replace WooCommerce address related scripts with modified version targeting field ids without address type prefix
+	 */
+	public function enqueue_replace_address_scripts() {
+		wp_deregister_script( 'wc-country-select' );
+		wp_deregister_script( 'wc-address-i18n' );
+		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
+		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
+	}
+
+	/**
+	 * Change selectors for address locale fields
+	 */
+	public function change_country_locale_field_selectors( $locale_fields ) {
+		$locale_fields = array(
+			'address_1' => '#address_1_field, #billing_address_1_field, #shipping_address_1_field',
+			'address_2' => '#address_2_field, #billing_address_2_field, #shipping_address_2_field',
+			'state'     => '#state_field, #billing_state_field, #shipping_state_field, #calc_shipping_state_field',
+			'postcode'  => '#postcode_field, #billing_postcode_field, #shipping_postcode_field, #calc_shipping_postcode_field',
+			'city'      => '#city_field, #billing_city_field, #shipping_city_field, #calc_shipping_city_field',
+		);
+
+		return $locale_fields;
 	}
 
 }
