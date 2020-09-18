@@ -19,12 +19,14 @@ $page_title = $address_id == 'new' ? __( 'New address', 'woocommerce-fluid-check
 <?php if ( ! $address_id ) : ?>
     
     <?php
-    $address_entry_template = '
+    $address_entry_template = apply_filters( 'wfc_address_book_entry_item_template', '
     <div class="wfc-address-book-entry" data-address-book-entry="%1$s" data-address=\'%2$s\'>
         <address>%3$s</address>
-        <a href="%5$s" class="edit button" data-address-book-entry-id="%1$s">%4$s</a>
-        <a href="%7$s" class="delete button button-secondary" data-address-book-entry-id="%1$s">%6$s</a>
-    </div>';
+        <div class="wfc-address-book__entry-actions">
+            <a href="%5$s" class="edit button" data-address-book-entry-id="%1$s">%4$s</a>
+            <a href="%7$s" class="delete button button-secondary" data-address-book-entry-id="%1$s">%6$s</a>
+        </div>
+    </div>' );
 
     // SAVED ADDRESSES
     foreach ( $address_book_entries as $address_id => $address_entry ) :
@@ -46,7 +48,7 @@ $page_title = $address_id == 'new' ? __( 'New address', 'woocommerce-fluid-check
     endforeach;
     ?>
 
-    <div class="row">
+    <div class="wfc-address-book__entries-actions">
         <a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', 'new' ) ); ?>" class="button button-secondary" ><?php esc_html_e( 'Add address', 'woocommerce-fluid-checkout' ); ?></a>
     </div>
 
@@ -69,9 +71,9 @@ $page_title = $address_id == 'new' ? __( 'New address', 'woocommerce-fluid-check
 
 			<?php do_action( "wfc_after_edit_address_form_{$address_id}" ); ?>
 
-			<div class="row">
+			<div class="wfc-address-book__edit-address-actions">
 				<button type="submit" class="button" name="save_address" value="<?php esc_attr_e( 'Save address', 'woocommerce-fluid-checkout' ); ?>"><?php esc_html_e( 'Save address', 'woocommerce-fluid-checkout' ); ?></button>
-				<a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address' ) ); ?>" class="button button-secondary" ><?php esc_html_e( 'Cancel', 'woocommerce-fluid-checkout' ); ?></a>
+				<a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address' ) ); ?>" class="button button-secondary"><?php esc_html_e( 'Cancel', 'woocommerce-fluid-checkout' ); ?></a>
 				<?php wp_nonce_field( 'woocommerce-edit_address_book', 'woocommerce-edit-address-book-nonce' ); ?>
 				<input type="hidden" name="action" value="edit_address_book" />
 			</div>
