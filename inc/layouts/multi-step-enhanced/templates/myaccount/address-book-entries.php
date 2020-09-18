@@ -39,7 +39,10 @@ $page_title = $address_id == 'new' ? __( 'New address', 'woocommerce-fluid-check
                 esc_url( wc_get_endpoint_url( 'edit-address', $address_id ) ),
                 esc_html__( 'Delete', 'woocommerce-fluid-checkout' ),
                 esc_url( wc_get_endpoint_url( 'delete-address', $address_id ) )
-            ), $address_entry, $address_label );
+            ),
+            $address_entry,
+            $address_label
+        );
     endforeach;
     ?>
 

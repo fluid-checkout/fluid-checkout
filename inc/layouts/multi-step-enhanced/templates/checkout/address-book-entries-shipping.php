@@ -41,7 +41,13 @@ defined( 'ABSPATH' ) || exit;
 				wp_json_encode( $address_entry ),
 				$address_label,
 				'' // No extra list item attributes
-			), $address_entry, $address_type, $address_label, $new_address_item, $checked_address );
+			),
+			$address_entry,
+			$address_type,
+			$address_label,
+			$new_address_item,
+			$checked_address
+		);
 		
 		$first = false;
 	endforeach; 
@@ -61,7 +67,13 @@ defined( 'ABSPATH' ) || exit;
 			wp_json_encode( $new_address_entry ), // default address values
 			__( 'Enter a new address', 'woocommerce-fluid-checkout' ),
 			'data-address-book-new-entry'
-		), $new_address_entry, $address_type, $address_label, $new_address_item, $checked_new_address );
+		),
+		$new_address_entry,
+		$address_type,
+		$address_label,
+		$new_address_item,
+		$checked_new_address
+	);
 	?>
 	
 	<?php echo apply_filters( 'wfc_address_book_entries_end_tag_markup', '</ul>', $address_book_entries, $address_type ); ?>
