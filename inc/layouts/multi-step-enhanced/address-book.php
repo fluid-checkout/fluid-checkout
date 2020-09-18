@@ -228,6 +228,22 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
+	 * Get an address entry from user's saved addresses
+	 */
+	public function get_address_book_entry( $address_id, $user_id = null ) {
+		// Bail if address id not valid
+		if ( ! $address_id ) { return false; }
+
+		$user_id = $this->get_user_id( $user_id );
+		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
+		$address_entry = array_key_exists( $address_id, $address_book_entries ) ? $address_book_entries[ $address_id ] : false;
+		
+		return $address_entry;
+	}
+
+
+
+	/**
 	 * Get user's saved addresses
 	 */
 	public function get_default_shipping_address_from_saved_entries( $user_id = null ) {
@@ -279,6 +295,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		
 		// Add new entry
 		$address_book_entries[ $address_id ] = $address_entry;
+		
+		// TODO: Maybe update cached address book entries after saving
 
 		// Save and return saving result
 		return update_user_meta( $user_id, '_wfc_address_book', $address_book_entries );
@@ -1046,9 +1064,22 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function output_account_edit_address_content( $load_address, $address ) {
 		$address_book_entries = $this->get_saved_user_address_book_entries();
+		
+		// Get address entry to edit and transpose values to address variable
+		$address_entry = $this->get_address_book_entry( $load_address );
+		if ( $address_entry !== false ) {
+			$address = WC()->countries->get_default_address_fields();
+			foreach ( $address as $key => $field ) {
+				if ( array_key_exists( $key, $address_entry ) ) {
+					$address[ $key ][ 'value' ] = $address_entry[ $key ];
+				}
+			}
+		}
 	
 		wc_get_template( 'myaccount/address-book-entries.php', array(
 			'address_book_entries'	=> $address_book_entries,
+			'address_id' => $load_address,
+			'address' => $address,
 		) );
 	}
 
