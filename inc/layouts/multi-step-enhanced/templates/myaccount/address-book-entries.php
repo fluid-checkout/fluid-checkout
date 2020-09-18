@@ -38,7 +38,7 @@ $page_title = $address_id == 'new' ? __( 'New address', 'woocommerce-fluid-check
                 esc_html__( 'Edit', 'woocommerce-fluid-checkout' ),
                 esc_url( wc_get_endpoint_url( 'edit-address', $address_id ) ),
                 esc_html__( 'Delete', 'woocommerce-fluid-checkout' ),
-                esc_url( wc_get_endpoint_url( 'delete-address', $address_id ) )
+                esc_url( wp_nonce_url( wc_get_endpoint_url( 'delete-address', $address_id ), 'wfc-delete_address_book', 'wfc-delete-address-book-nonce' ) )
             ),
             $address_entry,
             $address_label

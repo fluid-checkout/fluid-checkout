@@ -92,6 +92,12 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_replace_address_scripts' ), 11 );
 		add_filter( 'woocommerce_country_locale_field_selectors', array( $this, 'change_country_locale_field_selectors' ), 10 );
 		add_action( 'template_redirect', array( $this, 'maybe_save_address_book_entry' ), 10 );
+
+		// Delete Address
+		add_action( 'init', array( $this, 'add_delete_address_endpoint' ) );
+		add_filter( 'query_vars', array( $this, 'add_delete_address_query_var' ), 0 );
+		add_action( 'template_redirect', array( $this, 'maybe_delete_address_book_entry' ), 10 );
+		
 	}
 
 
@@ -281,7 +287,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	public function add_new_address_book_entry( $address_entry, $user_id = null ) {
 		$user_id = $this->get_user_id( $user_id );
 
-		// Get existing entries
 		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
 		
 		// Get or create address id
@@ -316,12 +321,27 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		
 		// TODO: Validate address entry fields at this point
 		
-		// Get existing entries
 		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
 
-		// Add new entry
+		// Update address entry values
 		$address_id = $address_entry[ 'address_id' ];
 		$address_book_entries[ $address_id ] = $address_entry;
+		
+		// TODO: Maybe clear/update cached address book entries after saving
+
+		// Save and return saving result
+		return update_user_meta( $user_id, '_wfc_address_book', $address_book_entries );
+	}
+
+	/**
+	 * Delete a address book entry for the user
+	 */
+	public function delete_address_book_entry( $address_id, $user_id = null ) {
+		// Bail if address_id not proviced
+		if ( ! $address_id ) { return false; }
+		
+		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
+		unset( $address_book_entries[ $address_id ] );
 		
 		// TODO: Maybe clear/update cached address book entries after saving
 
@@ -1139,6 +1159,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		return $locale_fields;
 	}
 
+	
+	
 	/**
 	 * Maybe process and save and address book entry edit or add form submission
 	 */
@@ -1250,6 +1272,60 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 		wp_safe_redirect( wc_get_endpoint_url( 'edit-address', '', wc_get_page_permalink( 'myaccount' ) ) );
 		exit;
+	}
+
+
+
+	/**
+	 * Maybe delete address book entry
+	 */
+	public function maybe_delete_address_book_entry() {
+		global $wp;
+
+		$nonce_value = wc_get_var( $_REQUEST['wfc-delete-address-book-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
+
+		// Bail if delete address nonce was not provided
+		if ( ! $nonce_value ) { return; }
+
+		// Redirect to address list if nonce is invalid
+		if ( ! wp_verify_nonce( $nonce_value, 'wfc-delete_address_book' ) ) {
+			wp_safe_redirect( wc_get_endpoint_url( 'edit-address', '', wc_get_page_permalink( 'myaccount' ) ) );
+			exit;
+		}
+
+		wc_nocache_headers();
+
+		$user_id = get_current_user_id();
+
+		// Bail if user not valid
+		if ( $user_id <= 0 ) { return; }
+
+		$address_id = isset( $wp->query_vars['delete-address'] ) ? wc_edit_address_i18n( sanitize_title( $wp->query_vars['delete-address'] ), true ) : false;
+
+		// Bail if address id not provided
+		if ( $address_id === false ) { return; }
+
+		$this->delete_address_book_entry( $address_id, $user_id );
+
+		wc_add_notice( __( 'Address deleted successfully.', 'woocommerce-fluid-checkout' ) );
+
+		wp_safe_redirect( wc_get_endpoint_url( 'edit-address', '', wc_get_page_permalink( 'myaccount' ) ) );
+		exit;
+	}
+
+
+	/**
+	 * Register delete-address endpoint to use inside My Account page.
+	 *
+	 * @see https://developer.wordpress.org/reference/functions/add_rewrite_endpoint/
+	 */
+	public function add_delete_address_endpoint() {
+		add_rewrite_endpoint( 'delete-address', EP_ROOT | EP_PAGES );
+	}
+
+	public function add_delete_address_query_var( $vars ) {
+		$vars[] = 'delete-address';
+		return $vars;
 	}
 
 }
