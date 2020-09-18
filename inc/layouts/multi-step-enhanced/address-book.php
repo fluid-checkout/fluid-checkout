@@ -91,6 +91,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Address Form
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_replace_address_scripts' ), 11 );
 		add_filter( 'woocommerce_country_locale_field_selectors', array( $this, 'change_country_locale_field_selectors' ), 10 );
+		add_action( 'template_redirect', array( $this, 'maybe_save_address_book_entry' ), 10 );
 	}
 
 
@@ -199,8 +200,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 		// Save new address entries
 		$address_book_entries = $this->get_saved_user_address_book_entries();
-		if ( $shipping_address_save && ! array_key_exists( $shipping_address_id, $address_book_entries ) ) { $this->save_address_book_entry( $shipping_address ); }
-		if ( $billing_address_save && ! array_key_exists( $billing_address_id, $address_book_entries ) ) { $this->save_address_book_entry( $billing_address ); }
+		if ( $shipping_address_save && ! array_key_exists( $shipping_address_id, $address_book_entries ) ) { $this->add_new_address_book_entry( $shipping_address ); }
+		if ( $billing_address_save && ! array_key_exists( $billing_address_id, $address_book_entries ) ) { $this->add_new_address_book_entry( $billing_address ); }
 	}
 
 
@@ -275,9 +276,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	
 	/**
-	 * Save a new address to users address book
+	 * Save a new address book entry for the user
 	 */
-	public function save_address_book_entry( $address_entry, $user_id = null ) {
+	public function add_new_address_book_entry( $address_entry, $user_id = null ) {
 		$user_id = $this->get_user_id( $user_id );
 
 		// Get existing entries
@@ -300,7 +301,29 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Add new entry
 		$address_book_entries[ $address_id ] = $address_entry;
 		
-		// TODO: Maybe update cached address book entries after saving
+		// TODO: Maybe clear/update cached address book entries after saving
+
+		// Save and return saving result
+		return update_user_meta( $user_id, '_wfc_address_book', $address_book_entries );
+	}
+
+	/**
+	 * Update a saved address book entry for the user
+	 */
+	public function update_address_book_entry( $address_entry, $user_id = null ) {
+		// Bail if address entry doesn't have address_id
+		if ( ! array_key_exists( 'address_id', $address_entry ) ) { return false; }
+		
+		// TODO: Validate address entry fields at this point
+		
+		// Get existing entries
+		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
+
+		// Add new entry
+		$address_id = $address_entry[ 'address_id' ];
+		$address_book_entries[ $address_id ] = $address_entry;
+		
+		// TODO: Maybe clear/update cached address book entries after saving
 
 		// Save and return saving result
 		return update_user_meta( $user_id, '_wfc_address_book', $address_book_entries );
@@ -1068,10 +1091,10 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function output_account_edit_address_content( $load_address, $address ) {
 		$address_book_entries = $this->get_saved_user_address_book_entries();
-		
+
 		// Get address entry to edit
 		$address_entry = $this->get_address_book_entry( $load_address );
-		$address = WC()->countries->get_default_address_fields();
+		$address = WC()->countries->get_address_fields( wc_clean( wp_unslash( $address_entry[ 'country' ] ) ), '' );
 
 		// Transpose address entry values to address fiels
 		if ( $address_entry !== false ) {
@@ -1114,6 +1137,119 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		);
 
 		return $locale_fields;
+	}
+
+	/**
+	 * Maybe process and save and address book entry edit or add form submission
+	 */
+	public function maybe_save_address_book_entry() {
+		global $wp;
+
+		$nonce_value = wc_get_var( $_REQUEST['woocommerce-edit-address-book-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
+
+		if ( ! wp_verify_nonce( $nonce_value, 'woocommerce-edit_address_book' ) ) {
+			return;
+		}
+
+		if ( empty( $_POST['action'] ) || 'edit_address_book' !== $_POST['action'] ) {
+			return;
+		}
+
+		wc_nocache_headers();
+
+		$user_id = get_current_user_id();
+
+		if ( $user_id <= 0 ) {
+			return;
+		}
+
+		$address_id = isset( $wp->query_vars['edit-address'] ) ? wc_edit_address_i18n( sanitize_title( $wp->query_vars['edit-address'] ), true ) : 'new';
+		
+		if ( ! isset( $_POST[ 'country' ] ) ) {
+			return;
+		}
+		
+		$address = WC()->countries->get_address_fields( wc_clean( wp_unslash( $_POST[ 'country' ] ) ), '' );
+		$address_entry = array();
+
+		foreach ( $address as $key => $field ) {
+			if ( ! isset( $field['type'] ) ) {
+				$field['type'] = 'text';
+			}
+
+			// Get Value.
+			if ( 'checkbox' === $field['type'] ) {
+				$value = (int) isset( $_POST[ $key ] );
+			} else {
+				$value = isset( $_POST[ $key ] ) ? wc_clean( wp_unslash( $_POST[ $key ] ) ) : '';
+			}
+
+			// Hook to allow modification of value.
+			$value = apply_filters( 'wfc_process_address_book_entry_field_' . $key, $value );
+
+			// Validation: Required fields.
+			if ( ! empty( $field['required'] ) && empty( $value ) ) {
+				/* translators: %s: Field name. */
+				wc_add_notice( sprintf( __( '%s is a required field.', 'woocommerce' ), $field['label'] ), 'error', array( 'id' => $key ) );
+			}
+
+			if ( ! empty( $value ) ) {
+				// Validation and formatting rules.
+				if ( ! empty( $field['validate'] ) && is_array( $field['validate'] ) ) {
+					foreach ( $field['validate'] as $rule ) {
+						switch ( $rule ) {
+							case 'postcode':
+								$country = wc_clean( wp_unslash( $_POST[ 'country' ] ) );
+								$value   = wc_format_postcode( $value, $country );
+
+								if ( '' !== $value && ! WC_Validation::is_postcode( $value, $country ) ) {
+									switch ( $country ) {
+										case 'IE':
+											$postcode_validation_notice = __( 'Please enter a valid Eircode.', 'woocommerce' );
+											break;
+										default:
+											$postcode_validation_notice = __( 'Please enter a valid postcode / ZIP.', 'woocommerce' );
+									}
+									wc_add_notice( $postcode_validation_notice, 'error' );
+								}
+								break;
+							case 'phone':
+								if ( '' !== $value && ! WC_Validation::is_phone( $value ) ) {
+									/* translators: %s: Phone number. */
+									wc_add_notice( sprintf( __( '%s is not a valid phone number.', 'woocommerce' ), '<strong>' . $field['label'] . '</strong>' ), 'error' );
+								}
+								break;
+						}
+					}
+				}
+			}
+
+			// Add field value to address book entry
+			$address_entry[ $key ] = $value;
+		}
+
+		// TODO: Maybe add action hook similar to `woocommerce_after_save_address_validation`
+
+		if ( 0 < wc_notice_count( 'error' ) ) {
+			return;
+		}
+
+		// Save new entry
+		if ( $address_id === 'new' ) {
+			$this->add_new_address_book_entry( $address_entry, $user_id );
+		}
+		// Update existing entry
+		else {
+			$address_entry[ 'address_id' ] = $address_id;
+			$this->update_address_book_entry( $address_entry, $user_id );
+		}
+
+		wc_add_notice( __( 'Address saved successfully.', 'woocommerce-fluid-checkout' ) );
+
+		// TODO: Maybe add action hook similar to `woocommerce_customer_save_address`
+
+		wp_safe_redirect( wc_get_endpoint_url( 'edit-address', '', wc_get_page_permalink( 'myaccount' ) ) );
+		exit;
 	}
 
 }
