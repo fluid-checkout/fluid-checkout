@@ -49,7 +49,7 @@ $page_title = $address_id == 'new' ? __( 'New address', 'woocommerce-fluid-check
     ?>
 
     <div class="wfc-address-book__entries-actions">
-        <a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', 'new' ) ); ?>" class="button button-secondary" ><?php esc_html_e( 'Add address', 'woocommerce-fluid-checkout' ); ?></a>
+        <a href="<?php echo esc_url( wc_get_endpoint_url( 'edit-address', 'new' ) ); ?>" class="button button-secondary" ><?php esc_html_e( 'Add a new address', 'woocommerce-fluid-checkout' ); ?></a>
     </div>
 
 <?php else : ?>
