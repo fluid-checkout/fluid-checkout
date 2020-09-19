@@ -36,7 +36,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
 		// Address default values
-		add_action( 'wp', array( $this, 'maybe_set_shipping_address_selected_session_to_default' ), 10 );
+		add_action( 'wp', array( $this, 'maybe_set_address_entry_selected_session_to_default' ), 10 );
 		add_action( 'wp', array( $this, 'add_address_field_default_value_hooks' ), 10 );
 
 		// Checkout fields
@@ -236,6 +236,46 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		return $address_book_entries;
 	}
 
+	/**
+	 * Get user's saved addresses for shipping address book
+	 */
+	public function get_saved_user_address_book_entries_for_shipping( $user_id = null ) {
+		$user_id = $this->get_user_id( $user_id );
+		
+		$allowed_countries = WC()->countries->get_shipping_countries();
+		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
+		
+		foreach ( $address_book_entries as $key => $value ) {
+			if( ! is_array( $value ) || ! array_key_exists( 'country', $value ) || ! in_array( $value[ 'country' ], array_keys( $allowed_countries ) ) ) {
+				unset( $address_book_entries[ $key ] );
+			}
+		}
+		
+		// $this->locale = array_intersect_key( $this->locale, array_merge( $this->get_allowed_countries(), $this->get_shipping_countries() ) );
+
+		return $address_book_entries;
+	}
+
+	/**
+	 * Get user's saved addresses for billing address book
+	 */
+	public function get_saved_user_address_book_entries_for_billing( $user_id = null ) {
+		$user_id = $this->get_user_id( $user_id );
+		
+		$allowed_countries = WC()->countries->get_allowed_countries();
+		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
+		
+		foreach ( $address_book_entries as $key => $value ) {
+			if( ! is_array( $value ) || ! array_key_exists( 'country', $value ) || ! in_array( $value[ 'country' ], array_keys( $allowed_countries ) ) ) {
+				unset( $address_book_entries[ $key ] );
+			}
+		}
+		
+		// $this->locale = array_intersect_key( $this->locale, array_merge( $this->get_allowed_countries(), $this->get_shipping_countries() ) );
+
+		return $address_book_entries;
+	}
+
 
 
 	/**
@@ -255,11 +295,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
-	 * Get user's saved addresses
+	 * Get default address entry data for shipping
 	 */
 	public function get_default_shipping_address_from_saved_entries( $user_id = null ) {
 		$user_id = $this->get_user_id( $user_id );
-		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
+		$address_book_entries = $this->get_saved_user_address_book_entries_for_shipping( $user_id );
 		
 		// Bail if not addresses saved
 		if ( ! $address_book_entries || count( $address_book_entries ) == 0 ) { return false; }
@@ -277,7 +317,32 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		}
 
 		return $default_address_entry;
-	}	
+	}
+
+	/**
+	 * Get default address entry data for billing
+	 */
+	public function get_default_billing_address_from_saved_entries( $user_id = null ) {
+		$user_id = $this->get_user_id( $user_id );
+		$address_book_entries = $this->get_saved_user_address_book_entries_for_billing( $user_id );
+		
+		// Bail if not addresses saved
+		if ( ! $address_book_entries || count( $address_book_entries ) == 0 ) { return false; }
+
+		// Try get default, or get first
+		$default_address_entry = false;
+		$first = true;
+		foreach ( $address_book_entries as $address_id => $entry ) {
+			if ( $first ) { $default_address_entry = $entry; }
+			if ( $entry['default'] === true ) {
+				$default_address_entry = $entry;
+				break;
+			}
+			$first = false;
+		}
+
+		return $default_address_entry;
+	}
 
 
 	
@@ -474,13 +539,13 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Output address book entries for shipping step
 	 */
 	function output_shipping_address_book() {
-		$address_book_entries = $this->get_saved_user_address_book_entries();
+		$address_book_entries_shipping = $this->get_saved_user_address_book_entries_for_shipping();
 		
 		do_action( 'wfc_shipping_address_book_before_entries' );
 	
 		wc_get_template( 'checkout/address-book-entries-shipping.php', array(
 			'address_type'			=> 'shipping',
-			'address_book_entries'	=> $address_book_entries,
+			'address_book_entries'	=> $address_book_entries_shipping,
 			'address_entry_same_as'	=> null,
 		) );
 
@@ -544,15 +609,39 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			do_action( 'wfc_checkout_after_step_billing_fields' );
 		}
 	}
+
+	/**
+	 * Get address entry for "same as" address option
+	 */
+	public function get_same_as_shipping_address_entry_value() {
+		$address_book_entries = $this->get_saved_user_address_book_entries_for_billing();
+		$address_entry_same_as = $this->get_shipping_address_selected_session();
+
+		// Try to get first available address
+		if ( ! $address_entry_same_as && count( $address_book_entries ) > 0 ) {
+			$address_entry_same_as = $address_book_entries[ array_keys( $address_book_entries )[0] ];
+		}
+
+		// Set flag for "same as" address option
+		if ( is_array( $address_entry_same_as ) ) {
+			$address_entry_same_as[ 'address_same_as' ] = '1';
+		}
+		
+		// Unset address "same as" entry if country not allowed
+		$allowed_countries = WC()->countries->get_allowed_countries();
+		if( ! is_array( $address_entry_same_as ) || ! array_key_exists( 'country', $address_entry_same_as ) || ! in_array( $address_entry_same_as[ 'country' ], array_keys( $allowed_countries ) ) ) {
+			$address_entry_same_as = null;
+		}
+
+		return $address_entry_same_as;
+	}
 	
 	/**
 	 * Output address book entries for billing step
 	 */
 	public function output_billing_address_book_markup() {
-		$address_book_entries = $this->get_saved_user_address_book_entries();
-		$address_entry_same_as = $this->get_shipping_address_selected_session();
-		if ( ! $address_entry_same_as && count( $address_book_entries ) > 0 ) { $address_entry_same_as = $address_book_entries[ array_keys( $address_book_entries )[0] ]; }
-		$address_entry_same_as[ 'address_same_as' ] = '1';
+		$address_book_entries = $this->get_saved_user_address_book_entries_for_billing();
+		$address_entry_same_as = $this->get_same_as_shipping_address_entry_value();
 		
 		do_action( 'wfc_billing_address_book_before_entries', $address_book_entries, $address_entry_same_as );
 	
@@ -913,7 +1002,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			$checked_address = true;
 		}
 		// Billing same as shipping
-		elseif ( $address_type == 'billing' && ! $address_data_session && array_key_exists( 'address_same_as', $address_entry ) && $address_entry['address_same_as'] == 1 ) {
+		elseif ( $address_type == 'billing' && ! $address_data_session && is_array( $address_entry ) && array_key_exists( 'address_same_as', $address_entry ) && $address_entry['address_same_as'] == 1 ) {
 			$checked_address = true;
 		}
 		// Address id matches
@@ -921,11 +1010,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			$checked_address = true;
 		}
 		// Is default address
-		elseif ( array_key_exists( 'default', $address_entry ) ) {
+		elseif ( is_array( $address_entry ) && array_key_exists( 'default', $address_entry ) ) {
 			$checked_address = $address_entry['default'] === true;
 		}
 		// Is first address in the list
-		elseif( $address_id_session == null || empty( $address_id_session ) ) {
+		elseif( $address_id_session == null || empty( $address_id_session ) || ( $address_type == 'billing' && ! $address_data_session ) ) {
 			$checked_address = $first === true;
 		}
 
@@ -947,22 +1036,45 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Set billing same as shipping
 		$billing_address = $this->get_billing_address_selected_session();
 		if ( ! $billing_address || ( array_key_exists( 'address_same_as', $billing_address ) && $billing_address['address_same_as'] == '1' ) ) {
-			$address_data[ 'address_same_as' ] = '1';
-			WC()->session->set( 'wfc_billing_address_selected', $address_data );
+			$allowed_countries = WC()->countries->get_allowed_countries();
+			if ( is_array( $address_data ) && array_key_exists( 'country', $address_data ) && in_array( $address_data[ 'country' ], array_keys( $allowed_countries ) ) ) {
+				$address_data[ 'address_same_as' ] = '1';
+				WC()->session->set( 'wfc_billing_address_selected', $address_data );
+			}
 		}
+	}
+
+	/**
+	 * Set billing address selected on session
+	 */
+	public function set_billing_address_selected_session_value( $address_data ) {
+		// Bail if address data invalid
+		if ( ! $address_data || ! is_array( $address_data ) ) { return; }
+		
+		// Set session value
+		WC()->session->set( 'wfc_billing_address_selected', $address_data );
 	}
 
 	/**
 	 * Set shipping address selected on session, from address book default values.
 	 */
-	public function maybe_set_shipping_address_selected_session_to_default() {
+	public function maybe_set_address_entry_selected_session_to_default() {
 		// Bail if not cart or checkout pages
 		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() ) ) { return; }
 
-		// Maybe set session value to default
-		if ( ! $this->get_shipping_address_selected_session() && count( $this->get_saved_user_address_book_entries() ) > 0 ) {
+		// Maybe set session shipping address value to default
+		if ( ! $this->get_shipping_address_selected_session() && count( $this->get_saved_user_address_book_entries_for_shipping() ) > 0 ) {
 			$address_data = $this->get_default_shipping_address_from_saved_entries();
 			$this->set_shipping_address_selected_session_value( $address_data );
+		}
+
+		// Maybe set session billing address value to default
+		// Defaults to the shipping address if the same address is available for billing
+		// An address might not be available for both shipping and billing
+		// depending on the allowed countries defined at WooCommerce > Settings
+		if ( ! $this->get_billing_address_selected_session() && count( $this->get_saved_user_address_book_entries_for_billing() ) > 0 ) {
+			$address_data = $this->get_default_billing_address_from_saved_entries();
+			$this->set_billing_address_selected_session_value( $address_data );
 		}
 	}
 
@@ -1014,7 +1126,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Set billing address selected on session.
 	 */
-	public function set_billing_address_selected_session() {		
+	public function set_billing_address_selected_session() {
 		if ( isset( $_POST['address_data'] ) && is_array( $_POST['address_data'] ) ) {
 			// Get sanitized address data
 			$address_data = $_POST['address_data'];
@@ -1023,7 +1135,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			}
 
 			// Set session value
-			WC()->session->set( 'wfc_billing_address_selected', $address_data );
+			$this->set_billing_address_selected_session_value( $address_data );
 		}
 		else {
 			// Clear session value
