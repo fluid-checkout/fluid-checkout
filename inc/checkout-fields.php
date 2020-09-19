@@ -170,6 +170,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 		foreach( $fields_args as $field => $values ) {
 			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
+			// TODO: Replace class values instead of merging to avoid conflicting classes for the same field such as `form-row-XX`
 		}
 
 		return $fields;
