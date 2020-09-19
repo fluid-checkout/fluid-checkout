@@ -41,7 +41,7 @@ $checked_same_as_address_attribute = $checked_same_as_address ? 'data-address-sa
 				wp_json_encode( $address_entry_same_as ),
                 $same_as_address_label,
                 'data-address-book-same-as-entry',
-                sprintf( '<input type="hidden" name="%1$s_address_same_as" id="address_book_entry_%1$s_same_as" value="1"/>', $address_type ),
+                sprintf( '<input type="hidden" name="%1$s_address_same_as" id="address_book_entry_%1$s_same_as" value="%2$s"/>', $address_type, $checked_same_as_address ? '1' : '0' ),
                 '_same_as'
 			),
 			$address_entry_same_as,
