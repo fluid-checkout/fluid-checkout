@@ -1096,7 +1096,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Output address book list start tag for account pages
 	 */
 	public function output_account_address_book_entries_list_start_tag( $load_address, $address ) {
-		echo '<div class="wfc-address-book__entries ">';
+		echo sprintf( '<div class="%s">', empty( $load_address ) ? 'wfc-address-book__entries' : 'wfc-address-book__entry-form' );
 	}
 
 	/**
