@@ -18,8 +18,6 @@ jQuery( function( $ ) {
 	}
 
     var locale_json = wc_address_i18n_params.locale.replace( /&quot;/g, '"' ), locale = $.parseJSON( locale_json );
-    
-    console.log( locale );
 
 	function field_is_required( field, is_required ) {
 		if ( is_required ) {

@@ -20,8 +20,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	public function hooks() {
 		// Checkout field types enhancement for mobile
 		if ( get_option( 'wfc_apply_checkout_field_types_for_mobile', 'true' ) === 'true' ) {
-			add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_checkout_field_types' ), 5 );
 			add_filter( 'woocommerce_billing_fields' , array( $this, 'change_checkout_field_types' ), 5 );
+			add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_checkout_field_types' ), 5 );
 		}
 
 		// Checkout fields args
