@@ -43,6 +43,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_filter( 'wfc_checkout_fields_args', array( $this, 'change_checkout_fields_args' ), 60 );
 		add_filter( 'wfc_checkout_fields_args', array( $this, 'change_checkout_shipping_copy_target_fields_args' ), 70 );
 
+		// Form fields
+		add_filter( 'woocommerce_form_field_country', array( $this, 'maybe_change_country_field_allowed_values' ), 10, 4 );
+
 		// Shipping Address Book
 		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_address_book_shipping_wrapper_start_tag' ), 5 );
 		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_address_book' ), 6 );
@@ -250,8 +253,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 				unset( $address_book_entries[ $key ] );
 			}
 		}
-		
-		// $this->locale = array_intersect_key( $this->locale, array_merge( $this->get_allowed_countries(), $this->get_shipping_countries() ) );
 
 		return $address_book_entries;
 	}
@@ -270,8 +271,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 				unset( $address_book_entries[ $key ] );
 			}
 		}
-		
-		// $this->locale = array_intersect_key( $this->locale, array_merge( $this->get_allowed_countries(), $this->get_shipping_countries() ) );
 
 		return $address_book_entries;
 	}
@@ -1438,6 +1437,28 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	public function add_delete_address_query_var( $vars ) {
 		$vars[] = 'delete-address';
 		return $vars;
+	}
+
+
+
+
+
+	/**
+	 * Replace the options in country field to display options from both billing and shipping allowed countries
+	 */
+	public function maybe_change_country_field_allowed_values( $field, $key, $args, $value ) {
+		// Bail if not a general country field in edit address endpoint
+		if ( ! is_wc_endpoint_url( 'edit-address' ) || ! $key === 'country' ) { return $field; }
+
+		$countries = array_merge( WC()->countries->get_shipping_countries(), WC()->countries->get_allowed_countries() );
+		$new_options = '';
+		foreach ( $countries as $ckey => $cvalue ) {
+			$new_options .= '<option value="' . esc_attr( $ckey ) . '" ' . selected( $value, $ckey, false ) . '>' . esc_html( $cvalue ) . '</option>';
+		}
+		
+		$field = preg_replace( '/(<select.*?>).*?(<\/select>)/', '$1'.$new_options.'$2', $field );
+
+		return $field;
 	}
 
 }
