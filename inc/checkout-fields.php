@@ -20,19 +20,19 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	public function hooks() {
 		// Checkout field types enhancement for mobile
 		if ( get_option( 'wfc_apply_checkout_field_types_for_mobile', 'true' ) === 'true' ) {
-			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_checkout_field_types' ), 5 );
+			add_filter( 'woocommerce_billing_fields' , array( $this, 'change_checkout_field_types' ), 5 );
+			add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_checkout_field_types' ), 5 );
 		}
 
 		// Checkout fields args
 		if ( get_option( 'wfc_apply_checkout_fields_args', 'true' ) === 'true' ) {
-			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_billing_fields_args' ), 10 );
-			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_shipping_fields_args' ), 10 );
+			add_filter( 'woocommerce_billing_fields' , array( $this, 'change_billing_fields_args' ), 10 );
+			add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_shipping_fields_args' ), 10 );
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_order_fields_args' ), 10 );
 		}
 
 		// Shipping Phone Field
 		if ( get_option( 'wfc_add_shipping_phone_field', 'true' ) === 'true' ) {
-			add_filter( 'woocommerce_checkout_fields' , array( $this, 'add_shipping_phone_field_checkout' ), 5 );
 			add_filter( 'woocommerce_shipping_fields' , array( $this, 'add_shipping_phone_field' ), 5 );
 			add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_shipping_phone' ), 10, 1 );
 			add_action( 'woocommerce_admin_order_data_after_shipping_address', array( $this, 'output_shipping_phone_field_admin_screen' ), 1, 1 );
@@ -49,10 +49,13 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * to display a more appropriate keyboard on mobile devices.
 	 */
 	public function change_checkout_field_types( $fields ) {
-		$fields['billing']['billing_email']['type'] = 'email';
-		$fields['billing']['billing_phone']['type'] = 'tel';
-		$fields['billing']['billing_postcode']['type'] = apply_filters( 'wfc_postcode_field_type', 'tel' );
-		$fields['shipping']['shipping_postcode']['type'] = apply_filters( 'wfc_postcode_field_type', 'tel' );
+		if ( array_key_exists( 'billing_email', $fields ) ) { $fields['billing_email']['type'] = 'email'; }
+		if ( array_key_exists( 'billing_phone', $fields ) ) { $fields['billing_phone']['type'] = 'tel'; }
+		if ( array_key_exists( 'shipping_phone', $fields ) ) { $fields['shipping_phone']['type'] = 'tel'; }
+
+		// TODO: Check for zip code format in context to allow correct keyboard type on mobile depending on culture/localization
+		if ( array_key_exists( 'billing_postcode', $fields ) ) { $fields['billing_postcode']['type'] = 'tel'; }
+		if ( array_key_exists( 'shipping_postcode', $fields ) ) { $fields['shipping_postcode']['type'] = 'tel'; }
 
 		return $fields;
 	}
@@ -82,14 +85,6 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
 		}
 
-		return $fields;
-	}
-
-	/**
-	 * Add shipping phone field to checkout fields.
-	 */
-	public function add_shipping_phone_field_checkout( $fields ) {
-		$fields['shipping'] = $this->add_shipping_phone_field( $fields['shipping'] );
 		return $fields;
 	}
 
@@ -175,6 +170,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 		foreach( $fields_args as $field => $values ) {
 			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
+			// TODO: Replace class values instead of merging to avoid conflicting classes for the same field such as `form-row-XX`
 		}
 
 		return $fields;
@@ -187,7 +183,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 */
 	public function change_billing_fields_args( $fields ) {
 		$field_group = 'billing';
-		$fields[ $field_group ] = $this->change_checkout_fields_args( $fields[ $field_group ], $field_group );
+		$fields = $this->change_checkout_fields_args( $fields, $field_group );
 		return $fields;
 	}
 
@@ -198,7 +194,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 */
 	public function change_shipping_fields_args( $fields ) {
 		$field_group = 'shipping';
-		$fields[ $field_group ] = $this->change_checkout_fields_args( $fields[ $field_group ], $field_group );
+		$fields = $this->change_checkout_fields_args( $fields, $field_group );
 		return $fields;
 	}
 

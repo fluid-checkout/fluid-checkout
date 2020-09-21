@@ -1,8 +1,8 @@
 <?php
 /**
- * Checkout Address Book Entries
+ * Checkout Billing Address Book Entries
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/checkout/address-book-entries.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/checkout/address-book-entries-billing.php.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package woocommerce-fluid-checkout
@@ -41,9 +41,15 @@ $checked_same_as_address_attribute = $checked_same_as_address ? 'data-address-sa
 				wp_json_encode( $address_entry_same_as ),
                 $same_as_address_label,
                 'data-address-book-same-as-entry',
-                sprintf( '<input type="hidden" name="%1$s_address_same_as" id="address_book_entry_%1$s_same_as" value="1"/>', $address_type ),
+                sprintf( '<input type="hidden" name="%1$s_address_same_as" id="address_book_entry_%1$s_same_as" value="%2$s"/>', $address_type, $checked_same_as_address ? '1' : '0' ),
                 '_same_as'
-			), $address_entry_same_as, $address_type, $same_as_address_label, $new_address_item, $checked_same_as_address );
+			),
+			$address_entry_same_as,
+			$address_type,
+			$same_as_address_label,
+			$new_address_item,
+			$checked_same_as_address
+		);
 	}
 	
 
@@ -67,7 +73,13 @@ $checked_same_as_address_attribute = $checked_same_as_address ? 'data-address-sa
                 '', // No extra list item attributes
                 '', // No extra elements
                 '' // No extra radio id parts
-			), $address_entry, $address_type, $address_label, $new_address_item, $checked_address );
+			),
+			$address_entry,
+			$address_type,
+			$address_label,
+			$new_address_item,
+			$checked_address
+		);
 		
 		$first = false;
 	endforeach; 

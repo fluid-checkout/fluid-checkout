@@ -36,12 +36,15 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
 		// Address default values
-		add_action( 'wp', array( $this, 'maybe_set_shipping_address_selected_session_to_default' ), 10 );
+		add_action( 'wp', array( $this, 'maybe_set_address_entry_selected_session_to_default' ), 10 );
 		add_action( 'wp', array( $this, 'add_address_field_default_value_hooks' ), 10 );
 
 		// Checkout fields
 		add_filter( 'wfc_checkout_fields_args', array( $this, 'change_checkout_fields_args' ), 60 );
 		add_filter( 'wfc_checkout_fields_args', array( $this, 'change_checkout_shipping_copy_target_fields_args' ), 70 );
+
+		// Form fields
+		add_filter( 'woocommerce_form_field_country', array( $this, 'maybe_change_country_field_allowed_values' ), 10, 4 );
 
 		// Shipping Address Book
 		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_address_book_shipping_wrapper_start_tag' ), 5 );
@@ -79,6 +82,25 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		if ( get_option( 'wfc_order_review_display_shipping_address', 'true' ) === 'true' ) {
 			add_action( 'woocommerce_review_order_before_order_total', array( $this, 'output_order_review_shipping_address' ), 30 );
 		}
+
+		// Account pages
+		remove_action( 'wfc_edit_account_address_form', array( FluidCheckout_AccountPages::instance(), 'output_default_account_edit_address_content' ), 10, 2 );
+		add_filter( 'woocommerce_account_menu_items', array( $this, 'change_edit_address_account_menu_item_label' ), 50, 2 );
+		add_filter( 'woocommerce_endpoint_edit-address_title', array( $this, 'change_edit_address_wc_endpoint_title' ), 10, 2 );
+		add_action( 'wfc_edit_account_address_form', array( $this, 'output_account_address_book_entries_list_start_tag' ), 10, 2 );
+		add_action( 'wfc_edit_account_address_form', array( $this, 'output_account_edit_address_content' ), 20, 2 );
+		add_action( 'wfc_edit_account_address_form', array( $this, 'output_account_address_book_entries_list_end_tag' ), 30, 2 );
+
+		// Address Form
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_replace_address_scripts' ), 11 );
+		add_filter( 'woocommerce_country_locale_field_selectors', array( $this, 'change_country_locale_field_selectors' ), 10 );
+		add_action( 'template_redirect', array( $this, 'maybe_save_address_book_entry' ), 10 );
+
+		// Delete Address
+		add_action( 'init', array( $this, 'add_delete_address_endpoint' ) );
+		add_filter( 'query_vars', array( $this, 'add_delete_address_query_var' ), 0 );
+		add_action( 'template_redirect', array( $this, 'maybe_delete_address_book_entry' ), 10 );
+		
 	}
 
 
@@ -187,8 +209,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 		// Save new address entries
 		$address_book_entries = $this->get_saved_user_address_book_entries();
-		if ( $shipping_address_save && ! array_key_exists( $shipping_address_id, $address_book_entries ) ) { $this->save_address_book_entry( $shipping_address ); }
-		if ( $billing_address_save && ! array_key_exists( $billing_address_id, $address_book_entries ) ) { $this->save_address_book_entry( $billing_address ); }
+		if ( $shipping_address_save && ! array_key_exists( $shipping_address_id, $address_book_entries ) ) { $this->add_new_address_book_entry( $shipping_address ); }
+		if ( $billing_address_save && ! array_key_exists( $billing_address_id, $address_book_entries ) ) { $this->add_new_address_book_entry( $billing_address ); }
 	}
 
 
@@ -217,14 +239,66 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		return $address_book_entries;
 	}
 
+	/**
+	 * Get user's saved addresses for shipping address book
+	 */
+	public function get_saved_user_address_book_entries_for_shipping( $user_id = null ) {
+		$user_id = $this->get_user_id( $user_id );
+		
+		$allowed_countries = WC()->countries->get_shipping_countries();
+		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
+		
+		foreach ( $address_book_entries as $key => $value ) {
+			if( ! is_array( $value ) || ! array_key_exists( 'country', $value ) || ! in_array( $value[ 'country' ], array_keys( $allowed_countries ) ) ) {
+				unset( $address_book_entries[ $key ] );
+			}
+		}
+
+		return $address_book_entries;
+	}
+
+	/**
+	 * Get user's saved addresses for billing address book
+	 */
+	public function get_saved_user_address_book_entries_for_billing( $user_id = null ) {
+		$user_id = $this->get_user_id( $user_id );
+		
+		$allowed_countries = WC()->countries->get_allowed_countries();
+		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
+		
+		foreach ( $address_book_entries as $key => $value ) {
+			if( ! is_array( $value ) || ! array_key_exists( 'country', $value ) || ! in_array( $value[ 'country' ], array_keys( $allowed_countries ) ) ) {
+				unset( $address_book_entries[ $key ] );
+			}
+		}
+
+		return $address_book_entries;
+	}
+
 
 
 	/**
-	 * Get user's saved addresses
+	 * Get an address entry from user's saved addresses
+	 */
+	public function get_address_book_entry( $address_id, $user_id = null ) {
+		// Bail if address id not valid
+		if ( ! $address_id ) { return false; }
+
+		$user_id = $this->get_user_id( $user_id );
+		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
+		$address_entry = array_key_exists( $address_id, $address_book_entries ) ? $address_book_entries[ $address_id ] : false;
+		
+		return $address_entry;
+	}
+
+
+
+	/**
+	 * Get default address entry data for shipping
 	 */
 	public function get_default_shipping_address_from_saved_entries( $user_id = null ) {
 		$user_id = $this->get_user_id( $user_id );
-		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
+		$address_book_entries = $this->get_saved_user_address_book_entries_for_shipping( $user_id );
 		
 		// Bail if not addresses saved
 		if ( ! $address_book_entries || count( $address_book_entries ) == 0 ) { return false; }
@@ -242,17 +316,41 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		}
 
 		return $default_address_entry;
-	}	
+	}
+
+	/**
+	 * Get default address entry data for billing
+	 */
+	public function get_default_billing_address_from_saved_entries( $user_id = null ) {
+		$user_id = $this->get_user_id( $user_id );
+		$address_book_entries = $this->get_saved_user_address_book_entries_for_billing( $user_id );
+		
+		// Bail if not addresses saved
+		if ( ! $address_book_entries || count( $address_book_entries ) == 0 ) { return false; }
+
+		// Try get default, or get first
+		$default_address_entry = false;
+		$first = true;
+		foreach ( $address_book_entries as $address_id => $entry ) {
+			if ( $first ) { $default_address_entry = $entry; }
+			if ( $entry['default'] === true ) {
+				$default_address_entry = $entry;
+				break;
+			}
+			$first = false;
+		}
+
+		return $default_address_entry;
+	}
 
 
 	
 	/**
-	 * Save a new address to users address book
+	 * Save a new address book entry for the user
 	 */
-	public function save_address_book_entry( $address_entry, $user_id = null ) {
+	public function add_new_address_book_entry( $address_entry, $user_id = null ) {
 		$user_id = $this->get_user_id( $user_id );
 
-		// Get existing entries
 		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
 		
 		// Get or create address id
@@ -271,6 +369,45 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		
 		// Add new entry
 		$address_book_entries[ $address_id ] = $address_entry;
+		
+		// TODO: Maybe clear/update cached address book entries after saving
+
+		// Save and return saving result
+		return update_user_meta( $user_id, '_wfc_address_book', $address_book_entries );
+	}
+
+	/**
+	 * Update a saved address book entry for the user
+	 */
+	public function update_address_book_entry( $address_entry, $user_id = null ) {
+		// Bail if address entry doesn't have address_id
+		if ( ! array_key_exists( 'address_id', $address_entry ) ) { return false; }
+		
+		// TODO: Validate address entry fields at this point
+		
+		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
+
+		// Update address entry values
+		$address_id = $address_entry[ 'address_id' ];
+		$address_book_entries[ $address_id ] = $address_entry;
+		
+		// TODO: Maybe clear/update cached address book entries after saving
+
+		// Save and return saving result
+		return update_user_meta( $user_id, '_wfc_address_book', $address_book_entries );
+	}
+
+	/**
+	 * Delete a address book entry for the user
+	 */
+	public function delete_address_book_entry( $address_id, $user_id = null ) {
+		// Bail if address_id not proviced
+		if ( ! $address_id ) { return false; }
+		
+		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
+		unset( $address_book_entries[ $address_id ] );
+		
+		// TODO: Maybe clear/update cached address book entries after saving
 
 		// Save and return saving result
 		return update_user_meta( $user_id, '_wfc_address_book', $address_book_entries );
@@ -401,13 +538,13 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Output address book entries for shipping step
 	 */
 	function output_shipping_address_book() {
-		$address_book_entries = $this->get_saved_user_address_book_entries();
+		$address_book_entries_shipping = $this->get_saved_user_address_book_entries_for_shipping();
 		
 		do_action( 'wfc_shipping_address_book_before_entries' );
 	
 		wc_get_template( 'checkout/address-book-entries-shipping.php', array(
 			'address_type'			=> 'shipping',
-			'address_book_entries'	=> $address_book_entries,
+			'address_book_entries'	=> $address_book_entries_shipping,
 			'address_entry_same_as'	=> null,
 		) );
 
@@ -471,15 +608,39 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			do_action( 'wfc_checkout_after_step_billing_fields' );
 		}
 	}
+
+	/**
+	 * Get address entry for "same as" address option
+	 */
+	public function get_same_as_shipping_address_entry_value() {
+		$address_book_entries = $this->get_saved_user_address_book_entries_for_billing();
+		$address_entry_same_as = $this->get_shipping_address_selected_session();
+
+		// Try to get first available address
+		if ( ! $address_entry_same_as && count( $address_book_entries ) > 0 ) {
+			$address_entry_same_as = $address_book_entries[ array_keys( $address_book_entries )[0] ];
+		}
+
+		// Set flag for "same as" address option
+		if ( is_array( $address_entry_same_as ) ) {
+			$address_entry_same_as[ 'address_same_as' ] = '1';
+		}
+		
+		// Unset address "same as" entry if country not allowed
+		$allowed_countries = WC()->countries->get_allowed_countries();
+		if( ! is_array( $address_entry_same_as ) || ! array_key_exists( 'country', $address_entry_same_as ) || ! in_array( $address_entry_same_as[ 'country' ], array_keys( $allowed_countries ) ) ) {
+			$address_entry_same_as = null;
+		}
+
+		return $address_entry_same_as;
+	}
 	
 	/**
 	 * Output address book entries for billing step
 	 */
 	public function output_billing_address_book_markup() {
-		$address_book_entries = $this->get_saved_user_address_book_entries();
-		$address_entry_same_as = $this->get_shipping_address_selected_session();
-		if ( ! $address_entry_same_as && count( $address_book_entries ) > 0 ) { $address_entry_same_as = $address_book_entries[ array_keys( $address_book_entries )[0] ]; }
-		$address_entry_same_as[ 'address_same_as' ] = '1';
+		$address_book_entries = $this->get_saved_user_address_book_entries_for_billing();
+		$address_entry_same_as = $this->get_same_as_shipping_address_entry_value();
 		
 		do_action( 'wfc_billing_address_book_before_entries', $address_book_entries, $address_entry_same_as );
 	
@@ -765,19 +926,42 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
+	 * Get address entry display label for account pages
+	 */
+	public function get_account_address_entry_display_label( $address_entry ) {
+		$state_label = ! empty( $address_entry['state'] ) ? ', '.$address_entry['state'] : '';
+		$country_label = WC()->countries->countries[ $address_entry['country'] ];
+
+		$display_label = sprintf( '%1$s %2$s %3$s %4$s %5$s %6$s %7$s',
+			array_key_exists( 'first_name', $address_entry ) ? '<span class="address-book-entry__name">'.$address_entry['first_name'] . ' ' . $address_entry['last_name'].'</span>' : '',
+			'<span class="address-book-entry__address_1">'.$address_entry['address_1'].'</span>',
+			array_key_exists( 'address_2', $address_entry ) ? '<span class="address-book-entry__address_2">'.$address_entry['address_2'].'</span>' : '',
+			'<span class="address-book-entry__location">'.$address_entry['city'].$state_label.' '.$address_entry['postcode'].'</span>',
+			'<span class="address-book-entry__country">'.$country_label.'</span>',
+			array_key_exists( 'company', $address_entry ) ? '<span class="address-book-entry__company">'.$address_entry['company'].'</span>' : '',
+			array_key_exists( 'phone', $address_entry ) ? '<span class="address-book-entry__phone">'.$address_entry['phone'].'</span>' : ''
+		);
+
+		return $display_label;
+	}
+
+
+
+	/**
 	 * Get address entry display label
 	 */
 	public function get_shipping_address_entry_display_label( $address_entry ) {
 		$state_label = ! empty( $address_entry['state'] ) ? ', '.$address_entry['state'] : '';
 		$country_label = WC()->countries->countries[ $address_entry['country'] ];
 
-		$display_label = sprintf( '%1$s %2$s %3$s %4$s %5$s %6$s',
+		$display_label = sprintf( '%1$s %2$s %3$s %4$s %5$s %6$s %7$s',
 			array_key_exists( 'first_name', $address_entry ) ? '<span class="address-book-entry__name">'.$address_entry['first_name'] . ' ' . $address_entry['last_name'].'</span>' : '',
 			'<span class="address-book-entry__address_1">'.$address_entry['address_1'].'</span>',
 			array_key_exists( 'address_2', $address_entry ) ? '<span class="address-book-entry__address_2">'.$address_entry['address_2'].'</span>' : '',
 			'<span class="address-book-entry__location">'.$address_entry['city'].$state_label.' '.$address_entry['postcode'].'</span>',
 			'<span class="address-book-entry__country">'.$country_label.'</span>',
-			array_key_exists( 'company', $address_entry ) ? '<span class="address-book-entry__company">'.$address_entry['company'].'</span>' : ''
+			array_key_exists( 'company', $address_entry ) ? '<span class="address-book-entry__company">'.$address_entry['company'].'</span>' : '',
+			array_key_exists( 'phone', $address_entry ) ? '<span class="address-book-entry__phone">'.$address_entry['phone'].'</span>' : ''
 		);
 
 		return $display_label;
@@ -819,7 +1003,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			$checked_address = true;
 		}
 		// Billing same as shipping
-		elseif ( $address_type == 'billing' && ! $address_data_session && array_key_exists( 'address_same_as', $address_entry ) && $address_entry['address_same_as'] == 1 ) {
+		elseif ( $address_type == 'billing' && ! $address_data_session && is_array( $address_entry ) && array_key_exists( 'address_same_as', $address_entry ) && $address_entry['address_same_as'] == 1 ) {
 			$checked_address = true;
 		}
 		// Address id matches
@@ -827,11 +1011,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			$checked_address = true;
 		}
 		// Is default address
-		elseif ( array_key_exists( 'default', $address_entry ) ) {
+		elseif ( is_array( $address_entry ) && array_key_exists( 'default', $address_entry ) ) {
 			$checked_address = $address_entry['default'] === true;
 		}
 		// Is first address in the list
-		elseif( $address_id_session == null || empty( $address_id_session ) ) {
+		elseif( $address_id_session == null || empty( $address_id_session ) || ( $address_type == 'billing' && ! $address_data_session ) ) {
 			$checked_address = $first === true;
 		}
 
@@ -853,22 +1037,45 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Set billing same as shipping
 		$billing_address = $this->get_billing_address_selected_session();
 		if ( ! $billing_address || ( array_key_exists( 'address_same_as', $billing_address ) && $billing_address['address_same_as'] == '1' ) ) {
-			$address_data[ 'address_same_as' ] = '1';
-			WC()->session->set( 'wfc_billing_address_selected', $address_data );
+			$allowed_countries = WC()->countries->get_allowed_countries();
+			if ( is_array( $address_data ) && array_key_exists( 'country', $address_data ) && in_array( $address_data[ 'country' ], array_keys( $allowed_countries ) ) ) {
+				$address_data[ 'address_same_as' ] = '1';
+				WC()->session->set( 'wfc_billing_address_selected', $address_data );
+			}
 		}
+	}
+
+	/**
+	 * Set billing address selected on session
+	 */
+	public function set_billing_address_selected_session_value( $address_data ) {
+		// Bail if address data invalid
+		if ( ! $address_data || ! is_array( $address_data ) ) { return; }
+		
+		// Set session value
+		WC()->session->set( 'wfc_billing_address_selected', $address_data );
 	}
 
 	/**
 	 * Set shipping address selected on session, from address book default values.
 	 */
-	public function maybe_set_shipping_address_selected_session_to_default() {
+	public function maybe_set_address_entry_selected_session_to_default() {
 		// Bail if not cart or checkout pages
 		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() ) ) { return; }
 
-		// Maybe set session value to default
-		if ( ! $this->get_shipping_address_selected_session() && count( $this->get_saved_user_address_book_entries() ) > 0 ) {
+		// Maybe set session shipping address value to default
+		if ( ! $this->get_shipping_address_selected_session() && count( $this->get_saved_user_address_book_entries_for_shipping() ) > 0 ) {
 			$address_data = $this->get_default_shipping_address_from_saved_entries();
 			$this->set_shipping_address_selected_session_value( $address_data );
+		}
+
+		// Maybe set session billing address value to default
+		// Defaults to the shipping address if the same address is available for billing
+		// An address might not be available for both shipping and billing
+		// depending on the allowed countries defined at WooCommerce > Settings
+		if ( ! $this->get_billing_address_selected_session() && count( $this->get_saved_user_address_book_entries_for_billing() ) > 0 ) {
+			$address_data = $this->get_default_billing_address_from_saved_entries();
+			$this->set_billing_address_selected_session_value( $address_data );
 		}
 	}
 
@@ -920,7 +1127,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Set billing address selected on session.
 	 */
-	public function set_billing_address_selected_session() {		
+	public function set_billing_address_selected_session() {
 		if ( isset( $_POST['address_data'] ) && is_array( $_POST['address_data'] ) ) {
 			// Get sanitized address data
 			$address_data = $_POST['address_data'];
@@ -929,7 +1136,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			}
 
 			// Set session value
-			WC()->session->set( 'wfc_billing_address_selected', $address_data );
+			$this->set_billing_address_selected_session_value( $address_data );
 		}
 		else {
 			// Clear session value
@@ -974,6 +1181,286 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 				'shipping_address'	=> $this->get_shipping_address_selected_session(),
 			)
 		);
+	}
+
+
+
+
+
+	/**
+	 * Change the label for edit address account menu item
+	 */
+	public function change_edit_address_account_menu_item_label( $items, $endpoints ) {
+		if ( array_key_exists( 'edit-address', $items ) ) { $items[ 'edit-address' ] = __( 'Address book', 'woocommerce-fluid-checkout' ); }
+		return $items;
+	}
+
+	/**
+	 * Change the label edit address endpoint title
+	 */
+	public function change_edit_address_wc_endpoint_title( $title, $endpoint ) {
+		$title = __( 'Address book', 'woocommerce-fluid-checkout' );
+		return $title;
+	}
+
+
+
+	/**
+	 * Output address book list start tag for account pages
+	 */
+	public function output_account_address_book_entries_list_start_tag( $load_address, $address ) {
+		echo sprintf( '<div class="%s">', empty( $load_address ) ? 'wfc-address-book__entries' : 'wfc-address-book__entry-form' );
+	}
+
+	/**
+	 * Output address book list end tag for account pages
+	 */
+	public function output_account_address_book_entries_list_end_tag( $load_address, $address ) {
+		echo '</div>';
+	}
+
+	/**
+	 * Output the address book content
+	 */
+	public function output_account_edit_address_content( $load_address, $address ) {
+		$address_book_entries = $this->get_saved_user_address_book_entries();
+
+		// Get address entry to edit
+		$address_entry = $this->get_address_book_entry( $load_address );
+		$address = WC()->countries->get_address_fields( wc_clean( wp_unslash( $address_entry[ 'country' ] ) ), '' );
+
+		// Transpose address entry values to address fiels
+		if ( $address_entry !== false ) {
+			foreach ( $address as $key => $field ) {
+				if ( array_key_exists( $key, $address_entry ) ) {
+					$address[ $key ][ 'value' ] = $address_entry[ $key ];
+				}
+			}
+		}
+	
+		wc_get_template( 'myaccount/address-book-entries.php', array(
+			'address_book_entries'	=> $address_book_entries,
+			'address_id' => $load_address,
+			'address' => $address,
+		) );
+	}
+
+
+
+	/**
+	 * Replace WooCommerce address related scripts with modified version targeting field ids without address type prefix
+	 */
+	public function enqueue_replace_address_scripts() {
+		wp_deregister_script( 'wc-country-select' );
+		wp_deregister_script( 'wc-address-i18n' );
+		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
+		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
+	}
+
+	/**
+	 * Change selectors for address locale fields
+	 */
+	public function change_country_locale_field_selectors( $locale_fields ) {
+		$locale_fields = array(
+			'address_1' => '#address_1_field, #billing_address_1_field, #shipping_address_1_field',
+			'address_2' => '#address_2_field, #billing_address_2_field, #shipping_address_2_field',
+			'state'     => '#state_field, #billing_state_field, #shipping_state_field, #calc_shipping_state_field',
+			'postcode'  => '#postcode_field, #billing_postcode_field, #shipping_postcode_field, #calc_shipping_postcode_field',
+			'city'      => '#city_field, #billing_city_field, #shipping_city_field, #calc_shipping_city_field',
+		);
+
+		return $locale_fields;
+	}
+
+	
+	
+	/**
+	 * Maybe process and save and address book entry edit or add form submission
+	 */
+	public function maybe_save_address_book_entry() {
+		global $wp;
+
+		$nonce_value = wc_get_var( $_REQUEST['woocommerce-edit-address-book-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
+
+		if ( ! wp_verify_nonce( $nonce_value, 'woocommerce-edit_address_book' ) ) {
+			return;
+		}
+
+		if ( empty( $_POST['action'] ) || 'edit_address_book' !== $_POST['action'] ) {
+			return;
+		}
+
+		wc_nocache_headers();
+
+		$user_id = get_current_user_id();
+
+		if ( $user_id <= 0 ) {
+			return;
+		}
+
+		$address_id = isset( $wp->query_vars['edit-address'] ) ? wc_edit_address_i18n( sanitize_title( $wp->query_vars['edit-address'] ), true ) : 'new';
+		
+		if ( ! isset( $_POST[ 'country' ] ) ) {
+			return;
+		}
+		
+		$address = WC()->countries->get_address_fields( wc_clean( wp_unslash( $_POST[ 'country' ] ) ), '' );
+		$address_entry = array();
+
+		foreach ( $address as $key => $field ) {
+			if ( ! isset( $field['type'] ) ) {
+				$field['type'] = 'text';
+			}
+
+			// Get Value.
+			if ( 'checkbox' === $field['type'] ) {
+				$value = (int) isset( $_POST[ $key ] );
+			} else {
+				$value = isset( $_POST[ $key ] ) ? wc_clean( wp_unslash( $_POST[ $key ] ) ) : '';
+			}
+
+			// Hook to allow modification of value.
+			$value = apply_filters( 'wfc_process_address_book_entry_field_' . $key, $value );
+
+			// Validation: Required fields.
+			if ( ! empty( $field['required'] ) && empty( $value ) ) {
+				/* translators: %s: Field name. */
+				wc_add_notice( sprintf( __( '%s is a required field.', 'woocommerce' ), $field['label'] ), 'error', array( 'id' => $key ) );
+			}
+
+			if ( ! empty( $value ) ) {
+				// Validation and formatting rules.
+				if ( ! empty( $field['validate'] ) && is_array( $field['validate'] ) ) {
+					foreach ( $field['validate'] as $rule ) {
+						switch ( $rule ) {
+							case 'postcode':
+								$country = wc_clean( wp_unslash( $_POST[ 'country' ] ) );
+								$value   = wc_format_postcode( $value, $country );
+
+								if ( '' !== $value && ! WC_Validation::is_postcode( $value, $country ) ) {
+									switch ( $country ) {
+										case 'IE':
+											$postcode_validation_notice = __( 'Please enter a valid Eircode.', 'woocommerce' );
+											break;
+										default:
+											$postcode_validation_notice = __( 'Please enter a valid postcode / ZIP.', 'woocommerce' );
+									}
+									wc_add_notice( $postcode_validation_notice, 'error' );
+								}
+								break;
+							case 'phone':
+								if ( '' !== $value && ! WC_Validation::is_phone( $value ) ) {
+									/* translators: %s: Phone number. */
+									wc_add_notice( sprintf( __( '%s is not a valid phone number.', 'woocommerce' ), '<strong>' . $field['label'] . '</strong>' ), 'error' );
+								}
+								break;
+						}
+					}
+				}
+			}
+
+			// Add field value to address book entry
+			$address_entry[ $key ] = $value;
+		}
+
+		// TODO: Maybe add action hook similar to `woocommerce_after_save_address_validation`
+
+		if ( 0 < wc_notice_count( 'error' ) ) {
+			return;
+		}
+
+		// Save new entry
+		if ( $address_id === 'new' ) {
+			$this->add_new_address_book_entry( $address_entry, $user_id );
+		}
+		// Update existing entry
+		else {
+			$address_entry[ 'address_id' ] = $address_id;
+			$this->update_address_book_entry( $address_entry, $user_id );
+		}
+
+		wc_add_notice( __( 'Address saved successfully.', 'woocommerce-fluid-checkout' ) );
+
+		// TODO: Maybe add action hook similar to `woocommerce_customer_save_address`
+
+		wp_safe_redirect( wc_get_endpoint_url( 'edit-address', '', wc_get_page_permalink( 'myaccount' ) ) );
+		exit;
+	}
+
+
+
+	/**
+	 * Maybe delete address book entry
+	 */
+	public function maybe_delete_address_book_entry() {
+		global $wp;
+
+		$nonce_value = wc_get_var( $_REQUEST['wfc-delete-address-book-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
+
+		// Bail if delete address nonce was not provided
+		if ( ! $nonce_value ) { return; }
+
+		// Redirect to address list if nonce is invalid
+		if ( ! wp_verify_nonce( $nonce_value, 'wfc-delete_address_book' ) ) {
+			wp_safe_redirect( wc_get_endpoint_url( 'edit-address', '', wc_get_page_permalink( 'myaccount' ) ) );
+			exit;
+		}
+
+		wc_nocache_headers();
+
+		$user_id = get_current_user_id();
+
+		// Bail if user not valid
+		if ( $user_id <= 0 ) { return; }
+
+		$address_id = isset( $wp->query_vars['delete-address'] ) ? wc_edit_address_i18n( sanitize_title( $wp->query_vars['delete-address'] ), true ) : false;
+
+		// Bail if address id not provided
+		if ( $address_id === false ) { return; }
+
+		$this->delete_address_book_entry( $address_id, $user_id );
+
+		wc_add_notice( __( 'Address deleted successfully.', 'woocommerce-fluid-checkout' ) );
+
+		wp_safe_redirect( wc_get_endpoint_url( 'edit-address', '', wc_get_page_permalink( 'myaccount' ) ) );
+		exit;
+	}
+
+
+	/**
+	 * Register delete-address endpoint to use inside My Account page.
+	 *
+	 * @see https://developer.wordpress.org/reference/functions/add_rewrite_endpoint/
+	 */
+	public function add_delete_address_endpoint() {
+		add_rewrite_endpoint( 'delete-address', EP_ROOT | EP_PAGES );
+	}
+
+	public function add_delete_address_query_var( $vars ) {
+		$vars[] = 'delete-address';
+		return $vars;
+	}
+
+
+
+
+
+	/**
+	 * Replace the options in country field to display options from both billing and shipping allowed countries
+	 */
+	public function maybe_change_country_field_allowed_values( $field, $key, $args, $value ) {
+		// Bail if not a general country field in edit address endpoint
+		if ( ! is_wc_endpoint_url( 'edit-address' ) || ! $key === 'country' ) { return $field; }
+
+		$countries = array_merge( WC()->countries->get_shipping_countries(), WC()->countries->get_allowed_countries() );
+		$new_options = '';
+		foreach ( $countries as $ckey => $cvalue ) {
+			$new_options .= '<option value="' . esc_attr( $ckey ) . '" ' . selected( $value, $ckey, false ) . '>' . esc_html( $cvalue ) . '</option>';
+		}
+		
+		$field = preg_replace( '/(<select.*?>).*?(<\/select>)/', '$1'.$new_options.'$2', $field );
+
+		return $field;
 	}
 
 }

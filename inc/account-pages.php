@@ -31,7 +31,8 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
 		// Default dashboard page
-		add_action( 'woocommerce_account_dashboard', array( $this, 'output_default_account_dashboard_content' ) );
+		add_action( 'woocommerce_account_dashboard', array( $this, 'output_default_account_dashboard_content' ), 10 );
+		add_action( 'wfc_edit_account_address_form', array( $this, 'output_default_account_edit_address_content' ), 10, 2 );
 		
 		// Endpoint title
 		if ( get_option( 'wfc_enable_account_pages_endpoint_title', 'true' ) === 'true' ) {
@@ -72,6 +73,21 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 	public function output_default_account_dashboard_content() {
 		wc_get_template(
 			'myaccount/dashboard-default.php'
+		);
+	}
+
+
+
+	/**
+	 * Output the default edit address page content
+	 */
+	public function output_default_account_edit_address_content( $load_address, $address ) {
+		wc_get_template(
+			'myaccount/form-edit-address-default.php',
+			array (
+				'load_address' => $load_address,
+				'address' => $address,
+			)
 		);
 	}
 
@@ -192,7 +208,7 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 
 		// Maybe change title
 		if ( ! empty( $endpoint_title ) ) {
-			$title .= sprintf( ' <span class="endpoint-title">%s</span>', $endpoint_title );
+			$title .= sprintf( ' <span class="endpoint-title-separator"> &gt; </span><span class="endpoint-title">%s</span>', $endpoint_title );
 		}
 
 		return $title;
