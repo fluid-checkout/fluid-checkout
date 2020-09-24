@@ -26,8 +26,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 		// Checkout fields args
 		if ( get_option( 'wfc_apply_checkout_fields_args', 'true' ) === 'true' ) {
-			add_filter( 'woocommerce_billing_fields' , array( $this, 'change_billing_fields_args' ), 10 );
-			add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_shipping_fields_args' ), 10 );
+			add_filter( 'woocommerce_billing_fields' , array( $this, 'change_checkout_fields_args' ), 10 );
+			add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_checkout_fields_args' ), 10 );
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_order_fields_args' ), 10 );
 		}
 
@@ -147,16 +147,18 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	/**
 	 * Get the checkout fields args.
 	 */
-	public function get_checkout_fields_args( $field_group ) {
-		// Add prefix separator to field group when needed
-		if ( ! empty( $field_group ) ) { $field_group .= '_'; }
-
+	public function get_checkout_fields_args() {
 		return apply_filters( 'wfc_checkout_fields_args', array(
-			$field_group . 'email'			=> array( 'priority' => 5 ),
-			$field_group . 'first_name'		=> array( 'priority' => 10 ),
-			$field_group . 'last_name'		=> array( 'priority' => 20 ),
-			$field_group . 'phone'			=> array( 'priority' => 30, 'class' => array( 'form-row-first' ) ),
-			$field_group . 'company'		=> array( 'priority' => 35, 'class' => array( 'form-row-last' ) ),
+			'billing_email'			=> array( 'priority' => 5 ),
+			'billing_first_name'	=> array( 'priority' => 10 ),
+			'billing_last_name'		=> array( 'priority' => 20 ),
+			'billing_phone'			=> array( 'priority' => 30, 'class' => array( 'form-row-first' ) ),
+			'billing_company'		=> array( 'priority' => 35, 'class' => array( 'form-row-last' ) ),
+			
+			'shipping_first_name'	=> array( 'priority' => 10 ),
+			'shipping_last_name'	=> array( 'priority' => 20 ),
+			'shipping_phone'		=> array( 'priority' => 30, 'class' => array( 'form-row-first' ) ),
+			'shipping_company'		=> array( 'priority' => 35, 'class' => array( 'form-row-last' ) ),
 		) );
 	}
 
@@ -165,36 +167,14 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	/**
 	 * Change Address Fields for account address edit form.
 	 */
-	public function change_checkout_fields_args( $fields, $field_group ) {
-		$fields_args = $this->get_checkout_fields_args( $field_group );
+	public function change_checkout_fields_args( $fields ) {
+		$fields_args = $this->get_checkout_fields_args();
 
 		foreach( $fields_args as $field => $values ) {
 			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
-			// TODO: Replace class values instead of merging to avoid conflicting classes for the same field such as `form-row-XX`
+			// TODO: "Manually" merge class values to avoid conflicting `form-row-XX` classes for the same field
 		}
 
-		return $fields;
-	}
-
-
-
-	/**
-	 * Change billing fields args.
-	 */
-	public function change_billing_fields_args( $fields ) {
-		$field_group = 'billing';
-		$fields = $this->change_checkout_fields_args( $fields, $field_group );
-		return $fields;
-	}
-
-
-
-	/**
-	 * Change shipping fields args.
-	 */
-	public function change_shipping_fields_args( $fields ) {
-		$field_group = 'shipping';
-		$fields = $this->change_checkout_fields_args( $fields, $field_group );
 		return $fields;
 	}
 
@@ -205,7 +185,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 */
 	public function change_order_fields_args( $fields ) {
 		$field_group = 'order';
-		$fields[ $field_group ] = $this->change_checkout_fields_args( $fields[ $field_group ], $field_group );
+		$fields[ $field_group ] = $this->change_checkout_fields_args( $fields[ $field_group ] );
 		return $fields;
 	}
 
