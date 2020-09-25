@@ -22,8 +22,10 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 		if ( get_option( 'wfc_enable_integration_ziptastic', 'false' ) !== 'true' || empty( get_option( 'wfc_integration_ziptastic_api_key' ) ) ) { return; }
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_ziptastic_scripts' ) );
-		add_filter( 'woocommerce_default_address_fields' , array( $this, 'ziptastic_change_address_fields_priority' ), 20 );
-		add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_address_fields_display_class' ), 20 );
+		// TODO: Fix order and size of fields when ziptastic is enabled
+		// add_filter( 'wfc_checkout_fields_args', array( $this, 'change_address_fields_args' ), 100 );
+		// add_filter( 'woocommerce_default_address_fields' , array( $this, 'ziptastic_change_address_fields_priority' ), 20 );
+		// add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_address_fields_display_class' ), 20 );
 	}
 
 
@@ -39,8 +41,8 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 		
 		wp_localize_script( 
 			'wfc-bundles',
-			'ziptasticVars',
-			array( 
+			'wfcZiptasticVars',
+			array (
 				'ziptasticAPIKey'  => get_option( 'wfc_integration_ziptastic_api_key' ),
 				'minChars' => 5,
 			)
@@ -100,6 +102,31 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 		}
 
 		return $fields;
+	}
+
+
+
+	/**
+	 * Change address fields args to display in best order for ziptastic auto-fill
+	 */
+	public function change_address_fields_args( $field_args ) {
+		$field_args = wc_array_overlay( $field_args, array(
+			'billing_country'		=> array( 'priority' => 45, 'class' => array( 'form-row-first' ) ),
+			'billing_postcode'		=> array( 'priority' => 46, 'class' => array( 'form-row-last' ) ),
+			'billing_address_1'		=> array( 'priority' => 50 ),
+			'billing_address_2'		=> array( 'priority' => 60 ),
+			'billing_city'			=> array( 'priority' => 70 ),
+			'billing_state'			=> array( 'priority' => 80 ),
+
+			'shipping_country'		=> array( 'priority' => 45, 'class' => array( 'form-row-first' ) ),
+			'shipping_postcode'		=> array( 'priority' => 46, 'class' => array( 'form-row-last' ) ),
+			'shipping_address_1'	=> array( 'priority' => 50 ),
+			'shipping_address_2'	=> array( 'priority' => 60 ),
+			'shipping_city'			=> array( 'priority' => 70 ),
+			'shipping_state'		=> array( 'priority' => 80 ),
+		) );
+
+		return $field_args;
 	}
 
 }

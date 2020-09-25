@@ -214,9 +214,9 @@
 		if ( _hasInitialized ) return;
 
 		// Bail if server defined vars not found
-		if ( ! ziptasticVars ) { return; }
+		if ( ! window.wfcZiptasticVars ) { return; }
 		
-		_settings = extend( _settings, ziptasticVars );
+		_settings = extend( _settings, wfcZiptasticVars );
 
 		// Add event listeners
 		window.addEventListener( 'keyup', handleTriggerEvents, true );

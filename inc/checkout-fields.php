@@ -165,14 +165,37 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 	/**
+	 * Remove `form-row-XX` classes from field classes to avoid conflicts the merge the new classes into it
+	 */
+	public function merge_field_class_args( $field_classes, $new_classes ) {
+		$field_classes = array_diff( $field_classes, array( 'form-row-first', 'form-row-last', 'form-row-wide' ) );
+		$field_classes = array_merge( $field_classes, $new_classes );
+		
+		return $field_classes;
+	}
+
+
+
+	/**
 	 * Change Address Fields for account address edit form.
 	 */
 	public function change_checkout_fields_args( $fields ) {
 		$fields_args = $this->get_checkout_fields_args();
 
-		foreach( $fields_args as $field => $values ) {
-			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
-			// TODO: "Manually" merge class values to avoid conflicting `form-row-XX` classes for the same field
+		foreach( $fields_args as $field_key => $args ) {
+			if ( array_key_exists( $field_key, $fields ) ) {
+				
+				// Merge class args
+				if ( array_key_exists( 'class', $fields[ $field_key ] ) && array_key_exists( 'class', $args ) ) {
+					$fields[ $field_key ][ 'class' ] = $this->merge_field_class_args( $fields[ $field_key ][ 'class' ], $args[ 'class' ] );
+					
+					// Remove already merged classes to avoid conflicts
+					unset( $args[ 'class' ] );
+				}
+
+				// Merge other args
+				$fields[ $field_key ] = wc_array_overlay( $fields[ $field_key ], $args );
+			}
 		}
 
 		return $fields;
