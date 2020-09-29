@@ -473,7 +473,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			'required'  => false,
 			'class'     => array( 'form-row-wide', 'save-address-checkbox-field' ),
 			'value'		=> '1',
-			'default'	=> 1,
 			'priority'	=> 200,
 			'custom_attributes' => array(
 				'data-address-book-save' => 1,
