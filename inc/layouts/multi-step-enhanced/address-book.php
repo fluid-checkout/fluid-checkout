@@ -1173,6 +1173,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Output shipping address for order review section
 	 */
 	public function output_order_review_shipping_address() {
+		// Bail if shipping not needed
+		if ( ! WC()->cart->needs_shipping() ) { return; }
+
 		wc_get_template(
 			'checkout/review-order-shipping-address.php',
 			array(
