@@ -33,7 +33,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 30, 3 );
 
 		// Checkout Fields
-		add_filter( 'wfc_checkout_fields_args', array( $this, 'change_checkout_fields_args' ), 50 );
+		add_filter( 'wfc_checkout_field_args', array( $this, 'change_checkout_field_args' ), 50 );
 
 		// Contact
 		remove_action( 'wfc_checkout_steps', array( $this->multistep(), 'output_step_billing' ), 10 );
@@ -230,13 +230,11 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	/**
 	 * Change checkout fields args
 	 */
-	public function change_checkout_fields_args( $field_args ) {
-
-		$field_args = array_merge( $field_args, array(
+	public function change_checkout_field_args( $field_args ) {
+		$field_args = FluidCheckout_CheckoutFields::instance()->merge_form_field_args( $field_args, array(
 			'shipping_company'			=> array( 'priority' => 100, 'class' => array( 'form-row-first' ) ),
 			'billing_company'			=> array( 'priority' => 100, 'class' => array( 'form-row-first' ) ),
 		) );
-
 		return $field_args;
 	}
 

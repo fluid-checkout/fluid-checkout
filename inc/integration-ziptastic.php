@@ -23,7 +23,7 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_ziptastic_scripts' ) );
 		// TODO: Fix order and size of fields when ziptastic is enabled
-		// add_filter( 'wfc_checkout_fields_args', array( $this, 'change_address_fields_args' ), 100 );
+		// add_filter( 'wfc_checkout_field_args', array( $this, 'change_address_field_args' ), 100 );
 		// add_filter( 'woocommerce_default_address_fields' , array( $this, 'ziptastic_change_address_fields_priority' ), 20 );
 		// add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_address_fields_display_class' ), 20 );
 	}
@@ -109,7 +109,7 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 	/**
 	 * Change address fields args to display in best order for ziptastic auto-fill
 	 */
-	public function change_address_fields_args( $field_args ) {
+	public function change_address_field_args( $field_args ) {
 		$field_args = wc_array_overlay( $field_args, array(
 			'billing_country'		=> array( 'priority' => 45, 'class' => array( 'form-row-first' ) ),
 			'billing_postcode'		=> array( 'priority' => 46, 'class' => array( 'form-row-last' ) ),

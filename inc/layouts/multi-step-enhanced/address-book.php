@@ -40,8 +40,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'wp', array( $this, 'add_address_field_default_value_hooks' ), 10 );
 
 		// Checkout fields
-		add_filter( 'wfc_checkout_fields_args', array( $this, 'change_checkout_fields_args' ), 60 );
-		add_filter( 'wfc_checkout_fields_args', array( $this, 'change_checkout_shipping_copy_target_fields_args' ), 70 );
+		add_filter( 'wfc_checkout_field_args', array( $this, 'change_checkout_field_args' ), 60 );
+		add_filter( 'wfc_checkout_field_args', array( $this, 'change_checkout_shipping_copy_target_field_args' ), 70 );
 
 		// Form fields
 		add_filter( 'woocommerce_form_field_country', array( $this, 'maybe_change_country_field_allowed_values' ), 10, 4 );
@@ -152,10 +152,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Change checkout fields args
 	 */
-	public function change_checkout_fields_args( $field_args ) {
-
-		$field_args = array_merge( $field_args, array(
-			'billing_first_name'	=> array( 'custom_attributes' => array( 'data-copy-to-field' => '#shipping_first_name' ) ),
+	public function change_checkout_field_args( $field_args ) {
+		$field_args = FluidCheckout_CheckoutFields::instance()->merge_form_field_args( $field_args, array(
+			'billing_first_name' => array( 'custom_attributes' => array( 'data-copy-to-field' => '#shipping_first_name' ) ),
 			'billing_last_name'	=> array( 'custom_attributes' => array( 'data-copy-to-field' => '#shipping_last_name' ) ),
 			'billing_phone'	=> array( 'custom_attributes' => array( 'data-copy-to-field' => '#shipping_phone' ) ),
 		) );
@@ -166,11 +165,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Change checkout shipping fields to prevent to be overwritten with billing fields values copied at frontend
 	 */
-	public function change_checkout_shipping_copy_target_fields_args( $field_args ) {
+	public function change_checkout_shipping_copy_target_field_args( $field_args ) {
 		// Bail if saved shipping address is being used
 		if ( $this->get_shipping_address_selected_session() === false ) { return $field_args; };
 
-		$field_args = array_merge( $field_args, array(
+		$field_args = FluidCheckout_CheckoutFields::instance()->merge_form_field_args( $field_args, array(
 			'shipping_first_name'	=> array( 'custom_attributes' => array( 'data-field-edited' => '1' ) ),
 			'shipping_last_name'	=> array( 'custom_attributes' => array( 'data-field-edited' => '1' ) ),
 			'shipping_phone'		=> array( 'custom_attributes' => array( 'data-field-edited' => '1' ) ),
@@ -445,8 +444,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$fields['shipping_address_save'] = $this->get_shipping_save_address_checkbox_field();
 		
 		// TODO: Check if we can add the save checkbox field without the need for checkout fields feature to be enabled
-		$fields_args = $this->checkout_fields()->get_checkout_fields_args( 'shipping' );
-		foreach( $fields_args as $field => $values ) {
+		$field_args = $this->checkout_fields()->get_checkout_field_args();
+		foreach( $field_args as $field => $values ) {
 			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
 		}
 
@@ -487,10 +486,10 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Bail if user not logged in
 		if ( ! is_user_logged_in() ) { return $fields; }
 		
-		$fields['billing_address_save'] = $this->get_billing_save_address_checkbox_field();
+		$fields[ 'billing_address_save' ] = $this->get_billing_save_address_checkbox_field();
 		
-		$fields_args = $this->checkout_fields()->get_checkout_fields_args( 'billing' );
-		foreach( $fields_args as $field => $values ) {
+		$field_args = $this->checkout_fields()->get_checkout_field_args();
+		foreach( $field_args as $field => $values ) {
 			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
 		}
 

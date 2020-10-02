@@ -25,10 +25,10 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		}
 
 		// Checkout fields args
-		if ( get_option( 'wfc_apply_checkout_fields_args', 'true' ) === 'true' ) {
-			add_filter( 'woocommerce_billing_fields' , array( $this, 'change_checkout_fields_args' ), 10 );
-			add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_checkout_fields_args' ), 10 );
-			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_order_fields_args' ), 10 );
+		if ( get_option( 'wfc_apply_checkout_field_args', 'true' ) === 'true' ) {
+			add_filter( 'woocommerce_billing_fields' , array( $this, 'change_checkout_field_args' ), 10 );
+			add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_checkout_field_args' ), 10 );
+			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_order_field_args' ), 10 );
 		}
 
 		// Shipping Phone Field
@@ -79,9 +79,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 */
 	public function add_shipping_phone_field( $fields ) {
 		$fields['shipping_phone'] = $this->get_shipping_phone_field();
-		
-		$fields_args = $this->get_checkout_fields_args( 'shipping' );
-		foreach( $fields_args as $field => $values ) {
+
+		$field_args = $this->get_checkout_field_args();
+		foreach( $field_args as $field => $values ) {
 			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
 		}
 
@@ -147,8 +147,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	/**
 	 * Get the checkout fields args.
 	 */
-	public function get_checkout_fields_args() {
-		return apply_filters( 'wfc_checkout_fields_args', array(
+	public function get_checkout_field_args() {
+		return apply_filters( 'wfc_checkout_field_args', array(
 			'billing_email'			=> array( 'priority' => 5 ),
 			'billing_first_name'	=> array( 'priority' => 10 ),
 			'billing_last_name'		=> array( 'priority' => 20 ),
@@ -167,8 +167,15 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	/**
 	 * Remove `form-row-XX` classes from field classes to avoid conflicts the merge the new classes into it
 	 */
-	public function merge_field_class_args( $field_classes, $new_classes ) {
-		$field_classes = array_diff( $field_classes, array( 'form-row-first', 'form-row-last', 'form-row-wide' ) );
+	public function merge_form_field_class_args( $field_classes, $new_classes ) {
+		
+		// Maybe remove form-row-XX classes
+		$form_row_classes = array( 'form-row-first', 'form-row-last', 'form-row-wide' );
+
+		if ( array_intersect( $new_classes, $form_row_classes ) ) {
+			$field_classes = array_diff( $field_classes, $form_row_classes );
+		}
+
 		$field_classes = array_merge( $field_classes, $new_classes );
 		
 		return $field_classes;
@@ -177,25 +184,41 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 	/**
+	 * Merge checkout field args
+	 */
+	public function merge_form_field_args( $field_args, $new_field_args ) {
+
+		foreach( $new_field_args as $field_key => $args ) {
+			// Merge class args and remove it from $args to avoid conflicts when merging all field args below
+			if ( array_key_exists( 'class', $field_args[ $field_key ] ) && array_key_exists( 'class', $args ) ) {
+				$field_args[ $field_key ][ 'class' ] = $this->merge_form_field_class_args( $field_args[ $field_key ][ 'class' ], $args[ 'class' ] );
+				unset( $args[ 'class' ] );
+			}
+
+			$original_args = array_key_exists( $field_key, $field_args ) ? $field_args[ $field_key ] : array();
+			$field_args[ $field_key ] = array_merge( $original_args, $args );
+		}
+
+		return $field_args;
+	}
+
+
+
+	/**
 	 * Change Address Fields for account address edit form.
 	 */
-	public function change_checkout_fields_args( $fields ) {
-		$fields_args = $this->get_checkout_fields_args();
+	public function change_checkout_field_args( $fields ) {
+		$new_field_args = $this->get_checkout_field_args();
 
-		foreach( $fields_args as $field_key => $args ) {
-			if ( array_key_exists( $field_key, $fields ) ) {
-				
-				// Merge class args
-				if ( array_key_exists( 'class', $fields[ $field_key ] ) && array_key_exists( 'class', $args ) ) {
-					$fields[ $field_key ][ 'class' ] = $this->merge_field_class_args( $fields[ $field_key ][ 'class' ], $args[ 'class' ] );
-					
-					// Remove already merged classes to avoid conflicts
-					unset( $args[ 'class' ] );
-				}
-
-				// Merge other args
-				$fields[ $field_key ] = wc_array_overlay( $fields[ $field_key ], $args );
+		foreach( $fields as $field_key => $original_args ) {
+			// Merge class args and remove it from $new_args to avoid conflicts when merging all field args below
+			if ( array_key_exists( 'class', $new_field_args[ $field_key ] ) && array_key_exists( 'class', $original_args ) ) {
+				$fields[ $field_key ][ 'class' ] = $this->merge_form_field_class_args( $original_args[ 'class' ], $new_field_args[ $field_key ][ 'class' ] );
+				unset( $new_field_args[ $field_key ][ 'class' ] );
 			}
+
+			$new_args = array_key_exists( $field_key, $new_field_args ) ? $new_field_args[ $field_key ] : array();
+			$fields[ $field_key ] = array_merge( $original_args, $new_args );
 		}
 
 		return $fields;
@@ -206,9 +229,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	/**
 	 * Change order fields args.
 	 */
-	public function change_order_fields_args( $fields ) {
+	public function change_order_field_args( $fields ) {
 		$field_group = 'order';
-		$fields[ $field_group ] = $this->change_checkout_fields_args( $fields[ $field_group ] );
+		$fields[ $field_group ] = $this->change_checkout_field_args( $fields[ $field_group ] );
 		return $fields;
 	}
 
