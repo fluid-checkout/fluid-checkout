@@ -255,12 +255,25 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		$this->multistep()->output_step_start_tag( apply_filters( 'wfc_contact_step_title', __( 'Contact', 'woocommerce-fluid-checkout' ) ), 'contact' );
 		do_action( 'woocommerce_checkout_before_customer_details' );
 
+		// Check if user has required data
+		$fields = WC()->checkout()->get_checkout_fields( 'billing' );
+		$contact_display_field_keys = $this->get_contact_step_display_fields();
+		$has_required_contact_data = true;
+		foreach ( $contact_display_field_keys as $field_key ) {
+			$field = $fields[ $field_key ];
+			if ( $has_required_contact_data && array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! WC()->checkout()->get_value( $field_key ) ) {
+				$has_required_contact_data = false;
+				break;
+			}
+		}
+		
 		wc_get_template(
 			'checkout/form-contact.php',
 			array(
 				'checkout'			=> WC()->checkout(),
-				'display_fields'	=> $this->get_contact_step_display_fields(),
+				'display_fields'	=> $contact_display_field_keys,
 				'user_data'			=> $this->get_user_data(),
+				'has_required_contact_data' => $has_required_contact_data,
 			)
 		);
 

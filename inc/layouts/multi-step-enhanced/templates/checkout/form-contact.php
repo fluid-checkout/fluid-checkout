@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
 
 <div class="wfc-contact-fields">
 	
-	<?php if ( is_user_logged_in() ) : ?>
+	<?php if ( is_user_logged_in() && $has_required_contact_data ) : ?>
 		<div class="wfc-contact-user-data" data-user-data-wrapper>
 			<?php do_action( 'wfc_checkout_before_user_data' ); ?>
 
