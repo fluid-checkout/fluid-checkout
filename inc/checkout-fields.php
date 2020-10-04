@@ -191,13 +191,14 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	public function merge_form_field_args( $field_args, $new_field_args ) {
 
 		foreach( $new_field_args as $field_key => $args ) {
+			$original_args = array_key_exists( $field_key, $field_args ) ? $field_args[ $field_key ] : array();
+
 			// Merge class args and remove it from $args to avoid conflicts when merging all field args below
-			if ( array_key_exists( 'class', $field_args[ $field_key ] ) && array_key_exists( 'class', $args ) ) {
-				$field_args[ $field_key ][ 'class' ] = $this->merge_form_field_class_args( $field_args[ $field_key ][ 'class' ], $args[ 'class' ] );
+			if ( array_key_exists( 'class', $original_args ) && array_key_exists( 'class', $args ) ) {
+				$original_args[ 'class' ] = $this->merge_form_field_class_args( $original_args[ 'class' ], $args[ 'class' ] );
 				unset( $args[ 'class' ] );
 			}
 
-			$original_args = array_key_exists( $field_key, $field_args ) ? $field_args[ $field_key ] : array();
 			$field_args[ $field_key ] = array_merge( $original_args, $args );
 		}
 
@@ -213,13 +214,14 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		$new_field_args = $this->get_checkout_field_args();
 
 		foreach( $fields as $field_key => $original_args ) {
+			$new_args = array_key_exists( $field_key, $new_field_args ) ? $new_field_args[ $field_key ] : array();
+
 			// Merge class args and remove it from $new_args to avoid conflicts when merging all field args below
-			if ( array_key_exists( 'class', $new_field_args[ $field_key ] ) && array_key_exists( 'class', $original_args ) ) {
-				$fields[ $field_key ][ 'class' ] = $this->merge_form_field_class_args( $original_args[ 'class' ], $new_field_args[ $field_key ][ 'class' ] );
-				unset( $new_field_args[ $field_key ][ 'class' ] );
+			if ( array_key_exists( 'class', $new_args ) && array_key_exists( 'class', $original_args ) ) {
+				$original_args[ 'class' ] = $this->merge_form_field_class_args( $original_args[ 'class' ], $new_args[ 'class' ] );
+				unset( $new_args[ 'class' ] );
 			}
 
-			$new_args = array_key_exists( $field_key, $new_field_args ) ? $new_field_args[ $field_key ] : array();
 			$fields[ $field_key ] = array_merge( $original_args, $new_args );
 		}
 
