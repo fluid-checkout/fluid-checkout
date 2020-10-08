@@ -34,8 +34,6 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		// Shipping Phone Field
 		if ( get_option( 'wfc_add_shipping_phone_field', 'true' ) === 'true' ) {
 			add_filter( 'woocommerce_shipping_fields' , array( $this, 'add_shipping_phone_field' ), 5 );
-			// Address book entry edtit fields calls action without the fields type
-			add_filter( 'woocommerce_fields' , array( $this, 'add_shipping_phone_field' ), 5 );
 			add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_shipping_phone' ), 10, 1 );
 			add_action( 'woocommerce_admin_order_data_after_shipping_address', array( $this, 'output_shipping_phone_field_admin_screen' ), 1, 1 );
 			add_filter( 'woocommerce_order_formatted_shipping_address', array( $this, 'output_order_formatted_shipping_address_with_phone' ), 1, 2 );

@@ -96,6 +96,12 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_filter( 'woocommerce_country_locale_field_selectors', array( $this, 'change_country_locale_field_selectors' ), 10 );
 		add_action( 'template_redirect', array( $this, 'maybe_save_address_book_entry' ), 10 );
 
+		// Phone field for address book entry edit
+		if ( get_option( 'wfc_add_shipping_phone_field', 'true' ) === 'true' ) {
+			// Address book entry edit fields calls action without the fields type
+			add_filter( 'woocommerce_fields' , array( $this, 'add_phone_field_for_address_book_entry' ), 5 );
+		}
+
 		// Delete Address
 		add_action( 'init', array( $this, 'add_delete_address_endpoint' ) );
 		add_filter( 'query_vars', array( $this, 'add_delete_address_query_var' ), 0 );
@@ -1244,6 +1250,22 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			'address_id' => $load_address,
 			'address' => $address,
 		) );
+	}
+
+
+
+	/**
+	 * Add phone field to edit address book entry at account pages.
+	 */
+	public function add_phone_field_for_address_book_entry( $fields ) {
+		$fields['phone'] = FluidCheckout_CheckoutFields::instance()->get_shipping_phone_field();
+
+		$field_args = FluidCheckout_CheckoutFields::instance()->get_checkout_field_args();
+		foreach( $field_args as $field => $values ) {
+			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
+		}
+
+		return $fields;
 	}
 
 
