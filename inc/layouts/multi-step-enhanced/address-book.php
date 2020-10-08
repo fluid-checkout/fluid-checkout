@@ -66,17 +66,17 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_filter( 'woocommerce_checkout_fields' , array( $this, 'unset_update_total_on_change_address_fields' ), 100 );
 
 		// Save address to address book
-		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'save_addresses_from_order' ), 10, 1 );
+		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'save_addresses_from_order' ), 10, 2 );
 
 		// Persist shipping address selected
 		add_action( 'wp_ajax_wfc_set_shipping_address_selected_session', array( $this, 'set_shipping_address_selected_session' ) );
 		add_action( 'wp_ajax_nopriv_wfc_set_shipping_address_selected_session', array( $this, 'set_shipping_address_selected_session' ) );
-		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'maybe_unset_shipping_address_session_on_order_update' ), 10, 1 );
+		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'maybe_unset_shipping_address_session_on_order_update' ), 10, 2 );
 
 		// Persist billing address selected
 		add_action( 'wp_ajax_wfc_set_billing_address_selected_session', array( $this, 'set_billing_address_selected_session' ) );
 		add_action( 'wp_ajax_nopriv_wfc_set_billing_address_selected_session', array( $this, 'set_billing_address_selected_session' ) );
-		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'maybe_unset_billing_address_session_on_order_update' ), 10, 1 );
+		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'maybe_unset_billing_address_session_on_order_update' ), 10, 2 );
 
 		// Order Review Shipping Info
 		if ( get_option( 'wfc_order_review_display_shipping_address', 'true' ) === 'true' ) {
@@ -189,7 +189,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Save order addresses to address book
 	 */
-	public function save_addresses_from_order( $order_id ) {
+	public function save_addresses_from_order( $order_id, $data ) {
 		// Bail if user not logged in
 		if ( ! is_user_logged_in() ) { return; }
 
