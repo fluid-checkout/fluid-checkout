@@ -71,12 +71,12 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Persist shipping address selected
 		add_action( 'wp_ajax_wfc_set_shipping_address_selected_session', array( $this, 'set_shipping_address_selected_session' ) );
 		add_action( 'wp_ajax_nopriv_wfc_set_shipping_address_selected_session', array( $this, 'set_shipping_address_selected_session' ) );
-		add_action( 'woocommerce_checkout_order_processed', array( $this, 'maybe_unset_shipping_address_session_on_order_update' ), 10, 3 );
+		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_shipping_address_selected_session' ), 10 );
 
 		// Persist billing address selected
 		add_action( 'wp_ajax_wfc_set_billing_address_selected_session', array( $this, 'set_billing_address_selected_session' ) );
 		add_action( 'wp_ajax_nopriv_wfc_set_billing_address_selected_session', array( $this, 'set_billing_address_selected_session' ) );
-		add_action( 'woocommerce_checkout_order_processed', array( $this, 'maybe_unset_billing_address_session_on_order_update' ), 10, 3 );
+		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_billing_address_selected_session' ), 10 );
 
 		// Order Review Shipping Info
 		if ( get_option( 'wfc_order_review_display_shipping_address', 'true' ) === 'true' ) {
