@@ -71,12 +71,12 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Persist shipping address selected
 		add_action( 'wp_ajax_wfc_set_shipping_address_selected_session', array( $this, 'set_shipping_address_selected_session' ) );
 		add_action( 'wp_ajax_nopriv_wfc_set_shipping_address_selected_session', array( $this, 'set_shipping_address_selected_session' ) );
-		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'maybe_unset_shipping_address_session_on_order_update' ), 10, 2 );
+		add_action( 'woocommerce_checkout_order_processed', array( $this, 'maybe_unset_shipping_address_session_on_order_update' ), 10, 3 );
 
 		// Persist billing address selected
 		add_action( 'wp_ajax_wfc_set_billing_address_selected_session', array( $this, 'set_billing_address_selected_session' ) );
 		add_action( 'wp_ajax_nopriv_wfc_set_billing_address_selected_session', array( $this, 'set_billing_address_selected_session' ) );
-		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'maybe_unset_billing_address_session_on_order_update' ), 10, 2 );
+		add_action( 'woocommerce_checkout_order_processed', array( $this, 'maybe_unset_billing_address_session_on_order_update' ), 10, 3 );
 
 		// Order Review Shipping Info
 		if ( get_option( 'wfc_order_review_display_shipping_address', 'true' ) === 'true' ) {
@@ -1130,11 +1130,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Maybe unset shipping address session on order update.
 	 **/
-	public function maybe_unset_shipping_address_session_on_order_update( $order_id, $data ) {
-		$order = wc_get_order( $order_id );
-		
+	public function maybe_unset_shipping_address_session_on_order_update( $order_id, $posted_data, $order ) {
 		// Bail if order pending or failed
-		if ( ! $order || $order->has_status( array( 'pending', 'failed' ) ) ) { return; }
+		if ( ! $order || $order->has_status( array( 'failed' ) ) ) { return; }
 
 		$this->unset_shipping_address_selected_session();
 	}
@@ -1142,11 +1140,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Maybe unset billing address session on order update.
 	 **/
-	public function maybe_unset_billing_address_session_on_order_update( $order_id, $data ) {
-		$order = wc_get_order( $order_id );
-		
+	public function maybe_unset_billing_address_session_on_order_update( $order_id, $posted_data, $order ) {
 		// Bail if order pending or failed
-		if ( ! $order || $order->has_status( array( 'pending', 'failed' ) ) ) { return; }
+		if ( ! $order || $order->has_status( array( 'failed' ) ) ) { return; }
 
 		$this->unset_billing_address_selected_session();
 	}
