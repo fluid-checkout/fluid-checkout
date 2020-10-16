@@ -22,6 +22,8 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 		if ( get_option( 'wfc_enable_integration_ziptastic', 'false' ) !== 'true' || empty( get_option( 'wfc_integration_ziptastic_api_key' ) ) ) { return; }
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_ziptastic_scripts' ) );
+		add_filter( 'woocommerce_default_address_fields' , array( $this, 'add_ziptastic_custom_attributes' ), 20 );
+		
 		// TODO: Fix order and size of fields when ziptastic is enabled
 		// add_filter( 'wfc_checkout_field_args', array( $this, 'change_address_field_args' ), 100 );
 		// add_filter( 'woocommerce_default_address_fields' , array( $this, 'ziptastic_change_address_fields_priority' ), 20 );
@@ -52,6 +54,16 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 
 
 	/**
+	 * Add data-ziptastic attribute to postcode
+	 */
+	public function add_ziptastic_custom_attributes( $fields ) {
+		if ( array_key_exists( 'postcode', $fields ) ) { $fields['postcode']['custom_attributes'] = array( 'data-ziptastic' => '1' ); }
+		return $fields;
+	}
+
+
+
+	/**
 	 * Change address default locale fields priority order on the frontend.
 	 */
 	public function ziptastic_change_address_fields_priority( $fields ) {
@@ -69,9 +81,6 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 		foreach( $fields_display_order as $field => $priority ) {
 			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ]['priority'] = $priority; }
 		}
-
-		// Add data-ziptastic attribute to postcode
-		if ( array_key_exists( 'postcode', $fields ) ) { $fields['postcode']['custom_attributes'] = array( 'data-ziptastic' => '1' ); }
 		
 		return $fields;
 	}
