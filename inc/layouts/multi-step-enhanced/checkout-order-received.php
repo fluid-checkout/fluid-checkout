@@ -123,7 +123,7 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 	 */
 	public function move_shipping_address_order_received_details_before_payment( $total_rows, $order, $tax_display ) {
 		// Bail if shipping or payment method not present
-		if ( ! array_key_exists( 'shipping', $total_rows ) || ! array_key_exists( 'payment_method', $total_rows ) ) { return; }
+		if ( ! array_key_exists( 'shipping', $total_rows ) || ! array_key_exists( 'payment_method', $total_rows ) ) { return $total_rows; }
 
 		// Get shipping row values
 		$shipping_row = $total_rows[ 'shipping' ];
