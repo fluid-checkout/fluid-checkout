@@ -359,7 +359,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
 		
 		// Get or create address id
-		$address_id = is_array( $address_entry ) && array_key_exists( 'address_id' ) ? $address_entry['address_id'] : null;
+		$address_id = is_array( $address_entry ) && array_key_exists( 'address_id', $address_entry ) ? $address_entry['address_id'] : null;
 		while ( $address_id == null ) {
 			$new_address_id = wp_rand( 10000, 99999 );
 			
