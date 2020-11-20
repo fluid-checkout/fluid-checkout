@@ -96,7 +96,8 @@ class FluidCheckout {
 		self::$this_plugin    = plugin_basename( WFC_PLUGIN_FILE );
 		self::$directory_path = plugin_dir_path( WFC_PLUGIN_FILE );
 		self::$directory_url  = plugin_dir_url( WFC_PLUGIN_FILE );
-		self::$version = get_plugin_data( WFC_PLUGIN_FILE )['Version'];
+		self::$version = get_file_data( WFC_PLUGIN_FILE , ['Version' => 'Version'], 'plugin')['Version'];
+		var_dump( self::$version );
 		self::$asset_version = $this->get_assets_version_number();
 	}
 
