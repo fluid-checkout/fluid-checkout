@@ -118,7 +118,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 	 * Display gift options fields on order admin screen.
 	 **/
 	public function display_gift_options_fields_order_admin_screen( $order ) {
-		$order_id = $order->id;
+		$order_id = $order->get_id();
 		$gift_message = get_post_meta( $order_id, '_wfc_gift_message', true );
 		$gift_from = get_post_meta( $order_id, '_wfc_gift_from', true );
 
