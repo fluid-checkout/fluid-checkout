@@ -314,7 +314,7 @@
 		var addressBook = target.closest( _settings.addressBookSelector );
 		var selectedAddress = addressBook.querySelector( _settings.selectedAddressIdSelector );
 
-		if ( selectedAddress.matches( _settings.addressEntryNewSelector ) ) {
+		if ( selectedAddress && selectedAddress.matches( _settings.addressEntryNewSelector ) ) {
 			updateAddressAttribute( addressBook, selectedAddress );
 			updatePersistedAddress( addressBook, selectedAddress );
 		}
