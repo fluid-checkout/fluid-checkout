@@ -4,6 +4,7 @@ Plugin Name: WooCommerce Fluid Checkout
 Plugin URI: https://fluidweb.co/
 Description: A simple multi-step checkout fluid experience for any WooCommerce store.
 Text Domain: woocommerce-fluid-checkout
+Domain Path: /languages
 Version: 1.1.0-dev-97
 Author: Fluidweb.co
 Author URI: https://fluidweb.co/
@@ -129,7 +130,7 @@ class FluidCheckout {
 	 * Load plugin textdomain.
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'woocommerce-fluid-checkout', false, untrailingslashit( self::$directory_path ).'/languages' );
+		load_plugin_textdomain( 'woocommerce-fluid-checkout', false, 'woocommerce-fluid-checkout/languages' );
 	}
 
 
