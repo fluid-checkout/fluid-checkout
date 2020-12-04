@@ -1,0 +1,310 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Fluid Checkout\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-04 16:40+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.6; wp-5.5.3"
+
+#: inc/layouts/multi-step-enhanced/address-book.php:655
+msgctxt "\"same as\" address type label"
+msgid "shipping address"
+msgstr ""
+
+#: woocommerce-fluid-checkout.php:247
+#, php-format
+msgid ""
+"%1$s requires the %2$s plugin to be installed/activated. %1$s has been "
+"deactivated."
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"A simple multi-step checkout fluid experience for any WooCommerce store."
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/templates/myaccount/address-book-entries.php:52
+msgid "Add a new address"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/address-book.php:1224
+#: inc/layouts/multi-step-enhanced/address-book.php:1232
+msgid "Address book"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/address-book.php:1469
+msgid "Address deleted successfully."
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/address-book.php:1428
+msgid "Address saved successfully."
+msgstr ""
+
+#: inc/layouts/multi-step/checkout-multi-step.php:167
+#: inc/layouts/multi-step/checkout-multi-step.php:188
+msgid "Billing"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:516
+msgid "Billing Address"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-order-received.php:192
+msgid "Billing address:"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/templates/myaccount/address-book-entries.php:76
+msgid "Cancel"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:707
+msgid "Cart Totals - After"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:697
+msgid "Cart Totals - Inside"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:255
+msgid "Contact"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:337
+msgid "Contact details"
+msgstr ""
+
+#: inc/account-pages.php:203
+msgid "Dashboard"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/templates/myaccount/address-book-entries.php:42
+msgid "Delete"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:709
+msgid "Display widgets after the cart totals section at checkout."
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-order-received.php:91
+msgid ""
+"Display widgets after the order confirmation page after the order details."
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:664
+msgid "Display widgets after the order review section at checkout."
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:699
+msgid "Display widgets on cart totals section at checkout."
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-order-received.php:81
+msgid "Display widgets on order confirmation page before the order details."
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:654
+msgid "Display widgets on order review section at checkout."
+msgstr ""
+
+#: inc/checkout-gift-options.php:64
+msgid "Do you want to add a gift message?"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/templates/myaccount/address-book-entries.php:40
+#: inc/layouts/multi-step-enhanced/templates/checkout/form-contact.php:36
+msgid "Edit"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/templates/myaccount/address-book-entries.php:14
+msgid "Edit address"
+msgstr ""
+
+#. default address values
+#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-shipping.php:68
+msgid "Enter a new address"
+msgstr ""
+
+#. Author of the plugin
+msgid "Fluidweb.co"
+msgstr ""
+
+#: inc/checkout-gift-options.php:82
+msgid "From"
+msgstr ""
+
+#: inc/checkout-gift-options.php:137 inc/checkout-gift-options.php:155
+msgid "Gift From:"
+msgstr ""
+
+#: inc/checkout-gift-options.php:74
+msgid "Gift message"
+msgstr ""
+
+#: inc/checkout-gift-options.php:74
+#, php-format
+msgid "Gift message (%d characters)"
+msgstr ""
+
+#: inc/checkout-gift-options.php:133 inc/checkout-gift-options.php:146
+msgid "Gift Message:"
+msgstr ""
+
+#: inc/checkout-gift-options.php:202
+msgid "Gift message:"
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://fluidweb.co/"
+msgstr ""
+
+#: inc/account-pages.php:125
+msgid "Manage saved payment information"
+msgstr ""
+
+#: inc/account-pages.php:119
+msgid "Manage saved shipping and billing address"
+msgid_plural "Edit your address"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/layouts/multi-step-enhanced/templates/myaccount/address-book-entries.php:14
+msgid "New address"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-order-received.php:89
+msgid "Order Confirmation - After"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-order-received.php:79
+msgid "Order Confirmation - Before"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:662
+msgid "Order Review - After"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:652
+msgid "Order Review - Inside"
+msgstr ""
+
+#: inc/layouts/multi-step/checkout-multi-step.php:291
+#: inc/layouts/multi-step/checkout-multi-step.php:310
+msgid "Payment"
+msgstr ""
+
+#: inc/checkout-fields.php:108
+msgid "Phone"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:501
+#: inc/layouts/multi-step/checkout-multi-step.php:363
+#: inc/layouts/multi-step/checkout-multi-step.php:374
+msgctxt "Previous step button"
+msgid "Back"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:327
+#: inc/layouts/multi-step/checkout-multi-step.php:351
+#: inc/layouts/multi-step/checkout-multi-step.php:363
+msgid "Proceed to Payment"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:327
+#: inc/layouts/multi-step/checkout-multi-step.php:350
+msgid "Proceed to Shipping"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-billing.php:32
+#, php-format
+msgid "Same as %s"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-order-received.php:185
+msgid "Same as shipping address"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/templates/myaccount/address-book-entries.php:75
+msgid "Save address"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/address-book.php:430
+#: inc/layouts/multi-step-enhanced/address-book.php:476
+msgid "Save address for future purchase"
+msgstr ""
+
+#: inc/layouts/multi-step/checkout-multi-step.php:201
+msgid "Shipping"
+msgstr ""
+
+#: inc/layouts/multi-step/checkout-multi-step.php:235
+#: inc/layouts/multi-step-enhanced/templates/checkout/review-order-shipping-address.php:21
+msgid "Shipping Address"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-order-received.php:152
+msgid "Shipping address:"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:422
+msgid "Shipping Methods"
+msgstr ""
+
+#: inc/checkout-fields.php:70
+msgid "Shipping Phone"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/templates/cart/shipping-methods-available.php:54
+msgid ""
+"There are no shipping methods available. Please ensure that your address has "
+"been entered correctly, or contact us if you need any help."
+msgstr ""
+
+#: inc/checkout-validation.php:76
+msgid "This does not match the related field value."
+msgstr ""
+
+#: inc/checkout-validation.php:74
+msgid "This is a required field."
+msgstr ""
+
+#: inc/checkout-validation.php:75
+msgid "This is not a valid email address."
+msgstr ""
+
+#: inc/account-pages.php:131
+msgid "Update your personal information and password"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-billing.php:96
+msgid "Use a different address"
+msgstr ""
+
+#: inc/account-pages.php:107
+msgid "View orders&apos; details and statuses"
+msgstr ""
+
+#: inc/account-pages.php:113
+msgid "View your downloadable files"
+msgstr ""
+
+#: inc/checkout-gift-options.php:83
+msgid "Who is sending this gift?"
+msgstr ""
+
+#. Name of the plugin
+msgid "WooCommerce Fluid Checkout"
+msgstr ""
+
+#: inc/checkout-gift-options.php:75
+msgid "Write a special message..."
+msgstr ""

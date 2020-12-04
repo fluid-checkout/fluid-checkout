@@ -6,3 +6,7 @@ bower_components
 # don't commit package-lock.json
 # to avoid errors between OS
 package-lock.json
+
+# Translation backup files
+*.po~
+*.pot~
