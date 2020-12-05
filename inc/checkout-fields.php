@@ -52,11 +52,6 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		if ( array_key_exists( 'billing_email', $fields ) ) { $fields['billing_email']['type'] = 'email'; }
 		if ( array_key_exists( 'billing_phone', $fields ) ) { $fields['billing_phone']['type'] = 'tel'; }
 		if ( array_key_exists( 'shipping_phone', $fields ) ) { $fields['shipping_phone']['type'] = 'tel'; }
-
-		// TODO: Check for zip code format in context to allow correct keyboard type on mobile depending on culture/localization
-		if ( array_key_exists( 'billing_postcode', $fields ) ) { $fields['billing_postcode']['type'] = 'tel'; }
-		if ( array_key_exists( 'shipping_postcode', $fields ) ) { $fields['shipping_postcode']['type'] = 'tel'; }
-
 		return $fields;
 	}
 
