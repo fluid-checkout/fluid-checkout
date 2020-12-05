@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$method = $chosen_method && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
+$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 ?>
 <tr class="woocommerce-shipping-totals shipping">
 	<th><?php echo wp_kses_post( $package_name ); ?></th>
