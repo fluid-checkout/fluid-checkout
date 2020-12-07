@@ -1002,12 +1002,16 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$address_id_session = $address_data_session && array_key_exists( 'address_id', $address_data_session ) ? $address_data_session['address_id'] : null;
 		$address_same_as_session = $address_data_session && array_key_exists( 'address_same_as', $address_data_session ) && $address_data_session['address_same_as'] == 1;
 
-		// Same address was checked and is new address option
-		if ( $address_same_as_session && $address_id_session == 'new_shipping' && $address_entry['address_id'] == $address_id_session ) {
+		// Same as shipping address was checked and is new address option
+		if ( $address_type == 'billing' && $address_same_as_session && $address_id_session == 'new_shipping' && $address_entry['address_id'] == $address_id_session ) {
 			$checked_address = true;
 		}
 		// Billing same as shipping
 		elseif ( $address_type == 'billing' && ! $address_data_session && is_array( $address_entry ) && array_key_exists( 'address_same_as', $address_entry ) && $address_entry['address_same_as'] == 1 ) {
+			$checked_address = true;
+		}
+		// New address active when shipping address saved not in allowed countries
+		elseif( $address_type == 'shipping' && is_array( $address_entry ) && $address_entry['address_id'] == 'new_shipping' && count( $this->get_saved_user_address_book_entries_for_shipping() ) == 0 ) {
 			$checked_address = true;
 		}
 		// Address id matches

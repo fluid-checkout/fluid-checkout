@@ -11,6 +11,3 @@
 
 .address-book__billing[data-address-same-as-checked="1"] .address-book-entry:not([data-address-book-same-as-entry]):not([data-address-book-new-entry]) {
   display: none; }
-
-.address-book-entry:only-child {
-  display: none; }
