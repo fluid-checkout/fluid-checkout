@@ -562,7 +562,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$active_class = $this->get_shipping_address_entry_checked_state( array( 'address_id' => 'new_shipping' ), false ) ? 'active' : '';
 		// TODO: Move `noscript` tag to it's own function to have only one tag of this type
 		echo '<noscript><style type="text/css">.wfc-address-book__form-wrapper{display:block !important;}</style></noscript>';
-		echo '<div class="wfc-address-book__form-wrapper '. $active_class .'">';
+		echo apply_filters( 'wfc_address_book_new_address_wrapper_start_tag_markup', '<div class="wfc-address-book__form-wrapper '. $active_class .'">' );
 	}
 
 	/**
