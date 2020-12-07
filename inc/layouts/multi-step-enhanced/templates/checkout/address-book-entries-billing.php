@@ -22,13 +22,14 @@ $checked_same_as_address_attribute = $checked_same_as_address ? 'data-address-sa
 	$address_entry_template = '
 	<li class="address-book-entry" %6$s>
 		<input type="radio" name="%1$s_address_id" id="address_book_entry_%1$s_%2$s%8$s" data-address-type="%1$s" value="%2$s" class="address-book__entry-radio" data-address=\'%4$s\' %3$s />
-		<label for="address_book_entry_%1$s_%2$s%8$s" class="address-book__entry-label">%5$s</label>
+		<label for="address_book_entry_%1$s_%2$s%8$s" class="address-book__entry-label %9$s">%5$s</label>
 		%7$s
     </li>';
     
 
     // "SAME AS" ADDRESS
 	if ( is_array( $address_entry_same_as ) && array_key_exists( 'address_id', $address_entry_same_as ) ) {
+		$first = true;
 		$same_as_address_label = sprintf( '<span class="address-book-entry__same-as-label">%s</span>', sprintf( __( 'Same as %s', 'woocommerce-fluid-checkout' ), $same_as_address_type_label ) );
 		if ( get_option( 'wfc_address_book_billing_same_as_shipping_label_include_address', 'false' ) === 'true' ) {
 			$same_as_address_label .= apply_filters( 'wfc_address_book_entry_label_markup', FluidCheckout_AddressBook::instance()->get_billing_address_entry_display_label( $address_entry_same_as ), $address_entry_same_as, $address_type );
@@ -44,13 +45,15 @@ $checked_same_as_address_attribute = $checked_same_as_address ? 'data-address-sa
                 $same_as_address_label,
                 'data-address-book-same-as-entry',
                 sprintf( '<input type="hidden" name="%1$s_address_same_as" id="address_book_entry_%1$s_same_as" value="%2$s"/>', $address_type, $checked_same_as_address ? '1' : '0' ),
-                '_same_as'
+				'_same_as',
+				$first ? 'address-book__entry-label--first' : ''
 			),
 			$address_entry_same_as,
 			$address_type,
 			$same_as_address_label,
 			$new_address_item,
-			$checked_same_as_address
+			$checked_same_as_address,
+			$first
 		);
 	}
 	
@@ -74,20 +77,23 @@ $checked_same_as_address_attribute = $checked_same_as_address ? 'data-address-sa
                 $address_label,
                 '', // No extra list item attributes
                 '', // No extra elements
-                '' // No extra radio id parts
+				'', // No extra radio id parts
+				$first ? 'address-book__entry-label--first' : ''
 			),
 			$address_entry,
 			$address_type,
 			$address_label,
 			$new_address_item,
-			$checked_address
+			$checked_address,
+			$first
 		);
 		
 		$first = false;
-	endforeach; 
+	endforeach;
 	
 	
 	// NEW ADDRESS
+	$first = ! is_array( $address_entry_same_as ) && ( ! is_array( $address_book_entries ) || count( $address_book_entries ) <= 0) ? true : false;
 	$new_address_entry = array_merge( array( 'address_id' => 'new_billing' ), FluidCheckout::instance()->get_user_geo_location() );
 	$countries = WC()->countries->get_allowed_countries();
 	if ( 1 === count( $countries ) ) { $new_address_entry = array_merge( $new_address_entry, array( 'country' => current( array_keys( $countries ) ) ) ); }
@@ -103,8 +109,16 @@ $checked_same_as_address_attribute = $checked_same_as_address ? 'data-address-sa
             $address_label,
             'data-address-book-new-entry',
             '', // No extra elements
-            '' // No extra radio id parts
-		), $new_address_entry, $address_type, $address_label, $new_address_item, $checked_new_address );
+			'', // No extra radio id parts
+			$first ? 'address-book__entry-label--first' : ''
+		),
+		$new_address_entry,
+		$address_type,
+		$address_label,
+		$new_address_item,
+		$checked_new_address,
+		$first
+	);
 	?>
 	
 	<?php echo apply_filters( 'wfc_address_book_entries_end_tag_markup', '</ul>', $address_book_entries, $address_type ); ?>
