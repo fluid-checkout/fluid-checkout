@@ -49,9 +49,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * to display a more appropriate keyboard on mobile devices.
 	 */
 	public function change_checkout_field_types( $fields ) {
-		if ( array_key_exists( 'billing_email', $fields ) ) { $fields['billing_email']['type'] = 'email'; }
-		if ( array_key_exists( 'billing_phone', $fields ) ) { $fields['billing_phone']['type'] = 'tel'; }
-		if ( array_key_exists( 'shipping_phone', $fields ) ) { $fields['shipping_phone']['type'] = 'tel'; }
+		if ( array_key_exists( 'billing_email', $fields ) ) { $fields['billing_email']['inputmode'] = 'email'; }
+		if ( array_key_exists( 'billing_phone', $fields ) ) { $fields['billing_phone']['inputmode'] = 'tel'; }
+		if ( array_key_exists( 'shipping_phone', $fields ) ) { $fields['shipping_phone']['inputmode'] = 'tel'; }
 		return $fields;
 	}
 
