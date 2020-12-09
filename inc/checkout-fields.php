@@ -149,11 +149,21 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			'billing_last_name'		=> array( 'priority' => 20 ),
 			'billing_phone'			=> array( 'priority' => 30, 'class' => array( 'form-row-first' ) ),
 			'billing_company'		=> array( 'priority' => 35, 'class' => array( 'form-row-last' ) ),
+
+			'billing_postcode' 		=> array( 'autocomplete' => 'billing postal-code' ),
+			'billing_country' 		=> array( 'autocomplete' => 'billing country' ),
+			'billing_city' 			=> array( 'autocomplete' => 'billing address-level2' ),
+			'billing_state' 		=> array( 'autocomplete' => 'billing address-level1' ),
 			
 			'shipping_first_name'	=> array( 'priority' => 10 ),
 			'shipping_last_name'	=> array( 'priority' => 20 ),
 			'shipping_phone'		=> array( 'priority' => 30, 'class' => array( 'form-row-first' ) ),
 			'shipping_company'		=> array( 'priority' => 35, 'class' => array( 'form-row-last' ) ),
+			
+			'shipping_postcode' 	=> array( 'autocomplete' => 'shipping postal-code' ),
+			'shipping_country' 		=> array( 'autocomplete' => 'shipping country' ),
+			'shipping_city' 		=> array( 'autocomplete' => 'shipping address-level2' ),
+			'shipping_state' 		=> array( 'autocomplete' => 'shipping address-level1' ),
 		) );
 	}
 
