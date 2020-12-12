@@ -68,14 +68,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Save address to address book
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'save_addresses_from_order' ), 10, 2 );
 
-		// Persist shipping address selected
-		add_action( 'wp_ajax_wfc_set_shipping_address_selected_session', array( $this, 'set_shipping_address_selected_session' ) );
-		add_action( 'wp_ajax_nopriv_wfc_set_shipping_address_selected_session', array( $this, 'set_shipping_address_selected_session' ) );
+		// Persist addresses on order update
+		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_address_selected_session' ), 10 );
 		add_action( 'woocommerce_thankyou', array( $this, 'unset_shipping_address_selected_session' ), 10 );
-
-		// Persist billing address selected
-		add_action( 'wp_ajax_wfc_set_billing_address_selected_session', array( $this, 'set_billing_address_selected_session' ) );
-		add_action( 'wp_ajax_nopriv_wfc_set_billing_address_selected_session', array( $this, 'set_billing_address_selected_session' ) );
 		add_action( 'woocommerce_thankyou', array( $this, 'unset_billing_address_selected_session' ), 10 );
 
 		// Order Review Shipping Info
@@ -1090,20 +1085,45 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Set shipping address selected on session.
 	 */
-	public function set_shipping_address_selected_session() {
-		if ( isset( $_POST['address_data'] ) && is_array( $_POST['address_data'] ) ) {
-			// Get sanitized address data from post request values
-			$address_data = $_POST['address_data'];
-			foreach ( array_keys( $address_data ) as $key ) {
-				$address_data[ $key ] = sanitize_text_field( $address_data[ $key ] );
-			}
+	public function set_address_selected_session( $post_data ) {
+		// Parsing posted data on checkout
+		$data = array();
+		$vars = explode( '&', $post_data );
+		foreach ( $vars as $k => $value ) {
+			$v = explode( '=', urldecode( $value ) );
+			$data[ $v[0] ] = $v[1];
+		}
 
-			$this->set_shipping_address_selected_session_value( $address_data );
-		}
-		else {
-			// Clear session value
-			$this->unset_shipping_address_selected_session();
-		}
+		$shipping_address_data = array(
+			'first_name' => $data[ 'shipping_first_name' ],
+			'last_name' => $data[ 'shipping_last_name' ],
+			'company' => $data[ 'shipping_company' ],
+			'address_1' => $data[ 'shipping_address_1' ],
+			'address_2' => $data[ 'shipping_address_2' ],
+			'city' => $data[ 'shipping_city' ],
+			'state' => $data[ 'shipping_state' ],
+			'postcode' => $data[ 'shipping_postcode' ],
+			'country' => $data[ 'shipping_country' ],
+			'phone' => $data[ 'shipping_phone' ],
+			'address_id' => $data[ 'shipping_address_id' ],
+		);
+		
+		$billing_address_data = array(
+			'first_name' => $data[ 'billing_first_name' ],
+			'last_name' => $data[ 'billing_last_name' ],
+			'company' => $data[ 'billing_company' ],
+			'address_1' => $data[ 'billing_address_1' ],
+			'address_2' => $data[ 'billing_address_2' ],
+			'city' => $data[ 'billing_city' ],
+			'state' => $data[ 'billing_state' ],
+			'postcode' => $data[ 'billing_postcode' ],
+			'country' => $data[ 'billing_country' ],
+			'phone' => $data[ 'billing_phone' ],
+			'address_id' => $data[ 'billing_address_id' ],
+		);
+
+		$this->set_shipping_address_selected_session_value( $shipping_address_data );
+		$this->set_billing_address_selected_session_value( $billing_address_data );
 	}
 
 	/**
@@ -1154,26 +1174,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	
 
-
-	/**
-	 * Set billing address selected on session.
-	 */
-	public function set_billing_address_selected_session() {
-		if ( isset( $_POST['address_data'] ) && is_array( $_POST['address_data'] ) ) {
-			// Get sanitized address data
-			$address_data = $_POST['address_data'];
-			foreach ( array_keys( $address_data ) as $key ) {
-				$address_data[ $key ] = sanitize_text_field( $address_data[ $key ] );
-			}
-
-			// Set session value
-			$this->set_billing_address_selected_session_value( $address_data );
-		}
-		else {
-			// Clear session value
-			$this->unset_billing_address_selected_session();
-		}
-	}
 
 	/**
 	 * Get billing address selected value from session.

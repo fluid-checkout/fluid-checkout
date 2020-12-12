@@ -237,27 +237,12 @@
 	/**
 	 * Send selected address to server for persisting it's values
 	 */
-	var updatePersistedAddress = function( addressBook, selectedAddress ) {
+	var triggerUpdateCheckout = function( addressBook, selectedAddress ) {
 		// Bail if checkout update disabled
 		if ( ! _updateCheckout ) return;
 
-		var addressType = selectedAddress.getAttribute( _settings.addressTypeAttribute );
-		var addressData = getAddressDataFromAttribute( selectedAddress );
-
-		// Update delivery date on server, then update checkout page
-		jQuery.ajax({
-			type: 'POST',
-			url: wc_checkout_params.ajax_url,
-			data: {
-				action: 'wfc_set_'+addressType+'_address_selected_session',
-				address_data: addressData
-			},
-			complete: function(response) {
-				// Update the checkout
-				$( document.body ).trigger( 'update_checkout' );
-			},
-			dataType: 'html'
-		});
+		// Update the checkout
+		$( document.body ).trigger( 'update_checkout' );
 	}
 
 
@@ -298,7 +283,7 @@
 		changeNewAddressFormVisibility( addressBook, target );
 		changeSameAsOptionSelectedState( addressBook, target );
 		changeAddressFormFields( addressBook, target );
-		updatePersistedAddress( addressBook, target );
+		triggerUpdateCheckout( addressBook, target );
 	}
 
 
@@ -316,7 +301,7 @@
 
 		if ( selectedAddress && selectedAddress.matches( _settings.addressEntryNewSelector ) ) {
 			updateAddressAttribute( addressBook, selectedAddress );
-			updatePersistedAddress( addressBook, selectedAddress );
+			triggerUpdateCheckout( addressBook, selectedAddress );
 		}
 	}
 
