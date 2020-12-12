@@ -68,18 +68,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Save address to address book
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'save_addresses_from_order' ), 10, 2 );
 
-		
 		// Persist addresses on order update
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_address_selected_session' ), 10 );
-		
-		// Persist shipping address selected
-		// add_action( 'wp_ajax_wfc_set_shipping_address_selected_session', array( $this, 'set_shipping_address_selected_session' ) );
-		// add_action( 'wp_ajax_nopriv_wfc_set_shipping_address_selected_session', array( $this, 'set_shipping_address_selected_session' ) );
 		add_action( 'woocommerce_thankyou', array( $this, 'unset_shipping_address_selected_session' ), 10 );
-
-		// Persist billing address selected
-		// add_action( 'wp_ajax_wfc_set_billing_address_selected_session', array( $this, 'set_billing_address_selected_session' ) );
-		// add_action( 'wp_ajax_nopriv_wfc_set_billing_address_selected_session', array( $this, 'set_billing_address_selected_session' ) );
 		add_action( 'woocommerce_thankyou', array( $this, 'unset_billing_address_selected_session' ), 10 );
 
 		// Order Review Shipping Info
