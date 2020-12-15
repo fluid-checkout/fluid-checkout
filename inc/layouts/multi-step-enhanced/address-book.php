@@ -932,7 +932,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$address_book_entries = $this->get_saved_user_address_book_entries( $customer_id );
 
 		// Get address data from session or first of the list
-		$address_data = $address_book_entries[ array_keys( $address_book_entries )[0] ];
+		$address_data = count( $address_book_entries ) > 0 ? $address_book_entries[ array_keys( $address_book_entries )[0] ] : null;
 		$address_data_session = $this->{'get_'.$address_type.'_address_selected_session'}();
 		
 		if ( $address_data_session !== false && is_array( $address_data_session ) && array_key_exists( 'address_id', $address_data_session ) ) {
