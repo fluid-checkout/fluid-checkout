@@ -237,7 +237,7 @@
 	/**
 	 * Send selected address to server for persisting it's values
 	 */
-	var triggerUpdateCheckout = function( addressBook, selectedAddress ) {
+	var triggerUpdateCheckout = function() {
 		// Bail if checkout update disabled
 		if ( ! _updateCheckout ) return;
 
@@ -283,7 +283,7 @@
 		changeNewAddressFormVisibility( addressBook, target );
 		changeSameAsOptionSelectedState( addressBook, target );
 		changeAddressFormFields( addressBook, target );
-		triggerUpdateCheckout( addressBook, target );
+		triggerUpdateCheckout();
 	}
 
 
@@ -301,7 +301,7 @@
 
 		if ( selectedAddress && selectedAddress.matches( _settings.addressEntryNewSelector ) ) {
 			updateAddressAttribute( addressBook, selectedAddress );
-			triggerUpdateCheckout( addressBook, selectedAddress );
+			triggerUpdateCheckout();
 		}
 	}
 

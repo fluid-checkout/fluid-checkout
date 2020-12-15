@@ -178,8 +178,8 @@
 		// Bail if api_key not defined
 		if ( ! _settings.ziptasticAPIKey ) { return; }
 
-		// Bail if target not defined
-		if ( ! e.target ) { return; }
+		// Bail if target not defined or not focused
+		if ( ! e.target || ! e.target.matches( ':focus' ) ) { return; }
 
 		// Bail some keys where presses
 		var skipKeys = [
