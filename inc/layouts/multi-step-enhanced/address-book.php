@@ -33,6 +33,10 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Late hooks
+		add_filter( 'wp', array( $this, 'late_hooks' ), 10 );
+
+		// Body Class
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
 		// Address default values
@@ -54,8 +58,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'woocommerce_after_checkout_shipping_form', array( $this, 'output_address_book_wrapper_end_tag' ), 20 );
 
 		// Billing Address Book
-		remove_action( 'wfc_checkout_after_step_payment_fields', array( $this->multistep_enhanced(), 'output_billing_fields' ), 20 );
-		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_billing_address_book' ), 20 );
+		add_action( 'wfc_checkout_before_step_payment_fields', array( $this, 'output_billing_address_book' ), 20 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_book_fragment' ), 10 );
 
 		// Checkbox for saving address
@@ -79,7 +82,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		}
 
 		// Account pages
-		remove_action( 'wfc_edit_account_address_form', array( FluidCheckout_AccountPages::instance(), 'output_default_account_edit_address_content' ), 10, 2 );
 		add_filter( 'woocommerce_account_menu_items', array( $this, 'change_edit_address_account_menu_item_label' ), 50, 2 );
 		add_filter( 'woocommerce_endpoint_edit-address_title', array( $this, 'change_edit_address_wc_endpoint_title' ), 10, 2 );
 		add_action( 'wfc_edit_account_address_form', array( $this, 'output_account_address_book_entries_list_start_tag' ), 10, 2 );
@@ -104,6 +106,22 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		
 	}
 
+	/**
+	 * Add or remove late hooks
+	 */
+	public function late_hooks() {
+		// Multi-step Enhanced Layout
+		if ( class_exists( 'FluidCheckoutLayout_MultiStepEnhanced' ) ) {
+			// Billing Address Book
+			remove_action( 'wfc_checkout_before_step_payment_fields', array( $this->multistep_enhanced(), 'output_billing_fields' ), 20 );
+		}
+		
+		// Account pages
+		if ( class_exists( 'FluidCheckout_AccountPages' ) ) {
+			remove_action( 'wfc_edit_account_address_form', array( $this->account_pages(), 'output_default_account_edit_address_content' ), 10, 2 );
+		}
+	}
+
 
 
 	/**
@@ -125,6 +143,13 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function checkout_fields() {
 		return FluidCheckout_CheckoutFields::instance();
+	}
+
+	/**
+	 * Return WooCommerce Fluid Checkout account pages class instance
+	 */
+	public function account_pages() {
+		return FluidCheckout_AccountPages::instance();
 	}
 
 
@@ -907,7 +932,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$address_book_entries = $this->get_saved_user_address_book_entries( $customer_id );
 
 		// Get address data from session or first of the list
-		$address_data = $address_book_entries[ array_keys( $address_book_entries )[0] ];
+		$address_data = count( $address_book_entries ) > 0 ? $address_book_entries[ array_keys( $address_book_entries )[0] ] : null;
 		$address_data_session = $this->{'get_'.$address_type.'_address_selected_session'}();
 		
 		if ( $address_data_session !== false && is_array( $address_data_session ) && array_key_exists( 'address_id', $address_data_session ) ) {

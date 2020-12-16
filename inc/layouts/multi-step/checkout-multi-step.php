@@ -46,7 +46,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		add_action( 'wfc_checkout_before_step_payment_fields', array( $this, 'output_order_review' ), 5 );
-		add_action( 'wfc_checkout_payment', array( $this, 'output_payment_step_section_title' ), 10 );
+		add_action( 'wfc_checkout_before_step_payment_fields', array( $this, 'output_payment_step_section_title' ), 10 );
 		add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_checkout_place_order' ), 100 );
 		add_filter( 'woocommerce_order_button_html', array( $this, 'get_payment_step_actions_html' ), 20 );
