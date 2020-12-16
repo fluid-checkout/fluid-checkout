@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Fluid Checkout\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-04 16:40+0000\n"
+"POT-Creation-Date: 2020-12-16 14:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,12 +15,12 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.4.6; wp-5.5.3"
 
-#: inc/layouts/multi-step-enhanced/address-book.php:655
+#: inc/layouts/multi-step-enhanced/address-book.php:650
 msgctxt "\"same as\" address type label"
 msgid "shipping address"
 msgstr ""
 
-#: woocommerce-fluid-checkout.php:247
+#: woocommerce-fluid-checkout.php:248
 #, php-format
 msgid ""
 "%1$s requires the %2$s plugin to be installed/activated. %1$s has been "
@@ -36,16 +36,16 @@ msgstr ""
 msgid "Add a new address"
 msgstr ""
 
-#: inc/layouts/multi-step-enhanced/address-book.php:1224
-#: inc/layouts/multi-step-enhanced/address-book.php:1232
+#: inc/layouts/multi-step-enhanced/address-book.php:1228
+#: inc/layouts/multi-step-enhanced/address-book.php:1236
 msgid "Address book"
 msgstr ""
 
-#: inc/layouts/multi-step-enhanced/address-book.php:1469
+#: inc/layouts/multi-step-enhanced/address-book.php:1473
 msgid "Address deleted successfully."
 msgstr ""
 
-#: inc/layouts/multi-step-enhanced/address-book.php:1428
+#: inc/layouts/multi-step-enhanced/address-book.php:1432
 msgid "Address saved successfully."
 msgstr ""
 
@@ -80,6 +80,10 @@ msgstr ""
 
 #: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:337
 msgid "Contact details"
+msgstr ""
+
+#: inc/layouts/multi-step-enhanced/templates/checkout/form-contact.php:80
+msgid "Create an account"
 msgstr ""
 
 #: inc/account-pages.php:203
@@ -129,7 +133,7 @@ msgid "Edit address"
 msgstr ""
 
 #. default address values
-#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-shipping.php:68
+#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-shipping.php:71
 msgid "Enter a new address"
 msgstr ""
 
@@ -202,29 +206,29 @@ msgstr ""
 msgid "Payment"
 msgstr ""
 
-#: inc/checkout-fields.php:108
+#: inc/checkout-fields.php:103
 msgid "Phone"
 msgstr ""
 
-#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:501
 #: inc/layouts/multi-step/checkout-multi-step.php:363
 #: inc/layouts/multi-step/checkout-multi-step.php:374
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:501
 msgctxt "Previous step button"
 msgid "Back"
 msgstr ""
 
-#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:327
 #: inc/layouts/multi-step/checkout-multi-step.php:351
 #: inc/layouts/multi-step/checkout-multi-step.php:363
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:327
 msgid "Proceed to Payment"
 msgstr ""
 
-#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:327
 #: inc/layouts/multi-step/checkout-multi-step.php:350
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:327
 msgid "Proceed to Shipping"
 msgstr ""
 
-#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-billing.php:32
+#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-billing.php:33
 #, php-format
 msgid "Same as %s"
 msgstr ""
@@ -237,8 +241,8 @@ msgstr ""
 msgid "Save address"
 msgstr ""
 
-#: inc/layouts/multi-step-enhanced/address-book.php:430
-#: inc/layouts/multi-step-enhanced/address-book.php:476
+#: inc/layouts/multi-step-enhanced/address-book.php:425
+#: inc/layouts/multi-step-enhanced/address-book.php:471
 msgid "Save address for future purchase"
 msgstr ""
 
@@ -259,7 +263,7 @@ msgstr ""
 msgid "Shipping Methods"
 msgstr ""
 
-#: inc/checkout-fields.php:70
+#: inc/checkout-fields.php:65
 msgid "Shipping Phone"
 msgstr ""
 
@@ -285,7 +289,7 @@ msgstr ""
 msgid "Update your personal information and password"
 msgstr ""
 
-#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-billing.php:96
+#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-billing.php:102
 msgid "Use a different address"
 msgstr ""
 

@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: WooCommerce Fluid Checkout\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-04 16:40+0000\n"
-"PO-Revision-Date: 2020-12-04 16:45+0000\n"
-"Last-Translator: Diego\n"
+"PO-Revision-Date: 2020-12-16 14:20+0000\n"
+"Last-Translator: Luiggi Bellincanta\n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
@@ -14,13 +14,12 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.4.6; wp-5.5.3"
 
-#: inc/layouts/multi-step-enhanced/address-book.php:655
-#, fuzzy
+#: inc/layouts/multi-step-enhanced/address-book.php:650
 msgctxt "\"same as\" address type label"
 msgid "shipping address"
-msgstr "l'adresse de livraison"
+msgstr "Adresse d'expédition"
 
-#: woocommerce-fluid-checkout.php:247
+#: woocommerce-fluid-checkout.php:248
 #, fuzzy, php-format
 msgid ""
 "%1$s requires the %2$s plugin to be installed/activated. %1$s has been "
@@ -39,18 +38,18 @@ msgstr ""
 msgid "Add a new address"
 msgstr "Ajouter une nouvelle adresse"
 
-#: inc/layouts/multi-step-enhanced/address-book.php:1224
-#: inc/layouts/multi-step-enhanced/address-book.php:1232
+#: inc/layouts/multi-step-enhanced/address-book.php:1228
+#: inc/layouts/multi-step-enhanced/address-book.php:1236
 #, fuzzy
 msgid "Address book"
 msgstr "Carnet d'adresses"
 
-#: inc/layouts/multi-step-enhanced/address-book.php:1469
+#: inc/layouts/multi-step-enhanced/address-book.php:1473
 #, fuzzy
 msgid "Address deleted successfully."
 msgstr "Adresse supprimé avec succès."
 
-#: inc/layouts/multi-step-enhanced/address-book.php:1428
+#: inc/layouts/multi-step-enhanced/address-book.php:1432
 #, fuzzy
 msgid "Address saved successfully."
 msgstr "Adresse enregistrée avec succès."
@@ -95,6 +94,10 @@ msgstr "Contact"
 #, fuzzy
 msgid "Contact details"
 msgstr "Coordonnées"
+
+#: inc/layouts/multi-step-enhanced/templates/checkout/form-contact.php:80
+msgid "Create an account"
+msgstr "Créer un compte"
 
 #: inc/account-pages.php:203
 #, fuzzy
@@ -160,7 +163,7 @@ msgid "Edit address"
 msgstr "Modifier l'adresse"
 
 #. default address values
-#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-shipping.php:68
+#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-shipping.php:71
 #, fuzzy
 msgid "Enter a new address"
 msgstr "Entrez une nouvelle adresse"
@@ -247,33 +250,33 @@ msgstr "Vérification De La Commande - À L'Intérieur"
 msgid "Payment"
 msgstr "Paiement"
 
-#: inc/checkout-fields.php:108
+#: inc/checkout-fields.php:103
 #, fuzzy
 msgid "Phone"
 msgstr "Téléphone"
 
-#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:501
 #: inc/layouts/multi-step/checkout-multi-step.php:363
 #: inc/layouts/multi-step/checkout-multi-step.php:374
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:501
 #, fuzzy
 msgctxt "Previous step button"
 msgid "Back"
 msgstr "De retour"
 
-#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:327
 #: inc/layouts/multi-step/checkout-multi-step.php:351
 #: inc/layouts/multi-step/checkout-multi-step.php:363
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:327
 #, fuzzy
 msgid "Proceed to Payment"
 msgstr "Procéder au Paiement"
 
-#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:327
 #: inc/layouts/multi-step/checkout-multi-step.php:350
+#: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:327
 #, fuzzy
 msgid "Proceed to Shipping"
 msgstr "Procéder à l'Expédition"
 
-#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-billing.php:32
+#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-billing.php:33
 #, fuzzy, php-format
 msgid "Same as %s"
 msgstr "Même en tant que %s"
@@ -288,8 +291,8 @@ msgstr "De même que l'adresse de livraison"
 msgid "Save address"
 msgstr "Enregistrer l'adresse"
 
-#: inc/layouts/multi-step-enhanced/address-book.php:430
-#: inc/layouts/multi-step-enhanced/address-book.php:476
+#: inc/layouts/multi-step-enhanced/address-book.php:425
+#: inc/layouts/multi-step-enhanced/address-book.php:471
 #, fuzzy
 msgid "Save address for future purchase"
 msgstr "Enregistrer l'adresse pour un futur achat"
@@ -301,21 +304,19 @@ msgstr "Expédition"
 
 #: inc/layouts/multi-step/checkout-multi-step.php:235
 #: inc/layouts/multi-step-enhanced/templates/checkout/review-order-shipping-address.php:21
-#, fuzzy
 msgid "Shipping Address"
-msgstr "L'Adresse De Livraison"
+msgstr "Adresse d'expédition"
 
 #: inc/layouts/multi-step-enhanced/checkout-order-received.php:152
-#, fuzzy
 msgid "Shipping address:"
-msgstr "Adresse de livraison:"
+msgstr "Adresse d'expédition:"
 
 #: inc/layouts/multi-step-enhanced/checkout-multi-step-enhanced.php:422
 #, fuzzy
 msgid "Shipping Methods"
 msgstr "Méthodes D'Expédition"
 
-#: inc/checkout-fields.php:70
+#: inc/checkout-fields.php:65
 #, fuzzy
 msgid "Shipping Phone"
 msgstr "L'Expédition Du Téléphone"
@@ -350,7 +351,7 @@ msgstr "Ce n'est pas une adresse email valide."
 msgid "Update your personal information and password"
 msgstr "Mise à jour de vos informations personnelles et votre mot de passe"
 
-#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-billing.php:96
+#: inc/layouts/multi-step-enhanced/templates/checkout/address-book-entries-billing.php:102
 #, fuzzy
 msgid "Use a different address"
 msgstr "Utiliser une adresse différente"
