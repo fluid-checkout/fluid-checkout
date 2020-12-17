@@ -238,7 +238,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		
 		// Maybe save shipping address
 		$address_book_entries = $this->get_saved_user_address_book_entries( $customer_id, true );
-		var_dump( count( $address_book_entries ) );
 		if ( $shipping_address_save && ! array_key_exists( $shipping_address_id, $address_book_entries ) ) {
 			if ( $this->add_new_address_book_entry( $shipping_address ) ) {
 				// TODO: Maybe add order meta to identify if address was saved
