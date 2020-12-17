@@ -213,7 +213,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Bail if user not logged in
 		if ( ! is_user_logged_in() ) { return; }
 
+		// TODO: Add nonce check for saving addresses for security and
+		// to avoid inconsistencies in the address book entries saved by admin users
+
 		$order = wc_get_order( $order_id );
+		$customer_id = $order->get_customer_id();
 
 		// Get addresses from order
 		$shipping_address = $order->get_address( 'shipping' );
@@ -231,11 +235,22 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$billing_address_id = ! empty( $_POST['billing_address_id'] ) && absint( $_POST['billing_address_id'] ) > 0 ? absint( $_POST['billing_address_id'] ) : null;
 		$shipping_address_save = $_POST['shipping_address_save'] === '1' ? true : false;
 		$billing_address_save = $_POST['billing_address_save'] === '1' && $_POST['billing_address_same_as'] != '1' ? true : false;
+		
+		// Maybe save shipping address
+		$address_book_entries = $this->get_saved_user_address_book_entries( $customer_id, true );
+		if ( $shipping_address_save && ! array_key_exists( $shipping_address_id, $address_book_entries ) ) {
+			if ( $this->add_new_address_book_entry( $shipping_address ) ) {
+				// TODO: Maybe add order meta to identify if address was saved
+			}
+		}
 
-		// Save new address entries
-		$address_book_entries = $this->get_saved_user_address_book_entries();
-		if ( $shipping_address_save && ! array_key_exists( $shipping_address_id, $address_book_entries ) ) { $this->add_new_address_book_entry( $shipping_address ); }
-		if ( $billing_address_save && ! array_key_exists( $billing_address_id, $address_book_entries ) ) { $this->add_new_address_book_entry( $billing_address ); }
+		// Maybe save billing address
+		$address_book_entries = $this->get_saved_user_address_book_entries( $customer_id, true );
+		if ( $billing_address_save && ! array_key_exists( $billing_address_id, $address_book_entries ) ) {
+			if ( $this->add_new_address_book_entry( $billing_address ) ) {
+				// TODO: Maybe add order meta to identify if address was saved
+			}
+		}
 	}
 
 
@@ -243,11 +258,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Get user's saved addresses
 	 */
-	public function get_saved_user_address_book_entries( $user_id = null ) {
+	public function get_saved_user_address_book_entries( $user_id = null, $skip_cache = false ) {
 		$user_id = $this->get_user_id( $user_id );
 
 		// Get from cache if available
-		if ( array_key_exists( $user_id, $this->address_book_entries_per_user ) ) {
+		if ( ! $skip_cache && array_key_exists( $user_id, $this->address_book_entries_per_user ) ) {
 			return $this->address_book_entries_per_user[ $user_id ];
 		}
 		
@@ -376,7 +391,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	public function add_new_address_book_entry( $address_entry, $user_id = null ) {
 		$user_id = $this->get_user_id( $user_id );
 
-		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id );
+		$address_book_entries = $this->get_saved_user_address_book_entries( $user_id, true );
 		
 		// Get or create address id
 		$address_id = is_array( $address_entry ) && array_key_exists( 'address_id', $address_entry ) ? $address_entry['address_id'] : null;
@@ -395,7 +410,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Add new entry
 		$address_book_entries[ $address_id ] = $address_entry;
 		
-		// TODO: Maybe clear/update cached address book entries after saving
+		// Update cached address book entries after saving
+		$this->address_book_entries_per_user[ $user_id ] = $this->get_saved_user_address_book_entries( $user_id, true );
 
 		// Save and return saving result
 		return update_user_meta( $user_id, '_wfc_address_book', $address_book_entries );
