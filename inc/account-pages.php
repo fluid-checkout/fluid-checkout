@@ -53,6 +53,8 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 
 	/**
 	 * Add page body class for feature detection
+	 *
+	 * @param array $classes Classes for the body element.
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on account pages.
@@ -80,6 +82,9 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 
 	/**
 	 * Output the default edit address page content
+	 *
+	 * @param   string  $load_address Defines address type to be loaded ( accepted value billing/shipping ) //todo check for typos
+	 * @param   array  $address Contains address fields
 	 */
 	public function output_default_account_edit_address_content( $load_address, $address ) {
 		wc_get_template(
@@ -95,6 +100,10 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 
 	/**
 	 * Get data for account dashboard endpoint items
+	 *
+	 * @param bool $remove_missing Removes missing WooCommerce endpoints
+	 *
+	 * @return array $dashboard_endpoints Returns endpoint details from settings or default
 	 */
 	public function get_account_dashboard_endpoint_items( $remove_missing = true ) {
 		// Get WooCommerce account endpoints
@@ -147,9 +156,14 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 	}
 
 
-
+	
 	/**
 	 * Get image html for an account dashboard endpoint item
+	 *
+	 * @param   string $endpoint Value for account endpoint URL
+	 * @param   array  $endpoint_values Endpoint values array
+	 *
+	 * @return string $html Returns account dashboard endpoint image html
 	 */
 	public function get_account_dashboard_endpoint_image_html( $endpoint, $endpoint_values ) {
 		$html = '';
@@ -185,7 +199,10 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 
 
 	/**
-	 * Add endpoint title to account page title
+	 * Maybe add endpoint title to account page title
+	 *
+	 * @param   string $title The endpoint title
+	 * @param   int $post_id The post ID
 	 */
 	public function maybe_add_endpoint_title( $title, $post_id = null ) {
 		global $wp_query;
@@ -206,7 +223,7 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 		// Filter endpoint title
 		$endpoint_title = apply_filters( 'wfc_account_pages_endpoint_title', $endpoint_title, $endpoint );
 
-		// Maybe change title
+		// Maybe add endpoint title
 		if ( ! empty( $endpoint_title ) ) {
 			$title .= sprintf( ' <span class="endpoint-title-separator"> &gt; </span><span class="endpoint-title">%s</span>', $endpoint_title );
 		}
