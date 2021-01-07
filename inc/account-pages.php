@@ -52,7 +52,7 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 
 
 	/**
-	 * Add page body class for feature detection
+	 * Add page body class for feature detection.
 	 *
 	 * @param array $classes Classes for the body element.
 	 */
@@ -70,7 +70,7 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 
 
 	/**
-	 * Output the default dashboard page content
+	 * Output the default dashboard page content.
 	 */
 	public function output_default_account_dashboard_content() {
 		wc_get_template(
@@ -81,10 +81,10 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 
 
 	/**
-	 * Output the default edit address page content
+	 * Output the default edit address page content.
 	 *
-	 * @param   string  $load_address Defines address type to be loaded ( accepted value billing/shipping ) //todo check for typos
-	 * @param   array  $address Contains address fields
+	 * @param   string  $load_address Defines address type to be loaded ( accepted value billing/shipping ).
+	 * @param   array  $address Contains address fields.
 	 */
 	public function output_default_account_edit_address_content( $load_address, $address ) {
 		wc_get_template(
@@ -99,11 +99,11 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 
 
 	/**
-	 * Get data for account dashboard endpoint items
+	 * Get data for account dashboard endpoint items.
 	 *
-	 * @param bool $remove_missing Removes missing WooCommerce endpoints
+	 * @param bool $remove_missing Removes missing WooCommerce endpoints.
 	 *
-	 * @return array $dashboard_endpoints Returns endpoint details from settings or default
+	 * @return array $dashboard_endpoints Returns endpoint details from settings or default.
 	 */
 	public function get_account_dashboard_endpoint_items( $remove_missing = true ) {
 		// Get WooCommerce account endpoints
@@ -143,7 +143,7 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 			),
 		) );
 
-		// Remove missing WooCommerce endpoints
+		// Remove missing WooCommerce endpoints.
 		if ( $remove_missing ) {
 			foreach ( $dashboard_endpoints as $endpoint_id => $endpoint ) {
 				if ( ! array_key_exists( $endpoint_id, $wc_nav_endpoints ) ) {
@@ -158,12 +158,12 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 
 	
 	/**
-	 * Get image html for an account dashboard endpoint item
+	 * Get image html for an account dashboard endpoint item.
 	 *
-	 * @param   string $endpoint Value for account endpoint URL
-	 * @param   array  $endpoint_values Endpoint values array
+	 * @param   string $endpoint Value for account endpoint URL.
+	 * @param   array  $endpoint_values Endpoint values array.
 	 *
-	 * @return string $html Returns account dashboard endpoint image html
+	 * @return string $html Returns account dashboard endpoint image html.
 	 */
 	public function get_account_dashboard_endpoint_image_html( $endpoint, $endpoint_values ) {
 		$html = '';
@@ -183,7 +183,7 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 
 
 	/**
-	 * Output dashboard page content with endpoint blocks
+	 * Output dashboard page content with endpoint blocks.
 	 */
 	public function output_account_dashboard_items() {
 		wc_get_template(
@@ -199,10 +199,10 @@ class FluidCheckout_AccountPages extends FluidCheckout {
 
 
 	/**
-	 * Maybe add endpoint title to account page title
+	 * Maybe add endpoint title to account page title.
 	 *
-	 * @param   string $title The endpoint title
-	 * @param   int $post_id The post ID
+	 * @param   string $title The endpoint title.
+	 * @param   int $post_id The post ID.
 	 */
 	public function maybe_add_endpoint_title( $title, $post_id = null ) {
 		global $wp_query;
