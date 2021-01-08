@@ -190,9 +190,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 	 * Maybe add gift message to order details totals.
 	 *
 	 * @param array  $total_rows  Total rows.
-	 * 
 	 * @param   class  $order Contains WC_Order class.
-	 * 
 	 * @param string $tax_display Tax to display.
 	 */
 	public function maybe_add_gift_message_order_received_details( $total_rows, $order, $tax_display ) {

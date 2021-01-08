@@ -119,7 +119,6 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * Output shipping phone to the address details on order view.
 	 *
 	 * @param   array  $address Contains address fields.
-	 * 
 	 * @param   class  $order Contains WC_Order class.
 	 */
 	public function output_order_formatted_shipping_address_with_phone( $address, $order ) {
@@ -134,7 +133,6 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * Add replacement for shipping phone.
 	 *
 	 * @param   array  $replacements Contains replacements values.
-	 * 
 	 * @param   array  $address Contains address fields.
 	 */
 	public function add_replacement_field_shipping_phone( $replacements, $address ) {
@@ -193,7 +191,6 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * Remove `form-row-XX` classes from field classes to avoid conflicts the merge the new classes into it.
 	 *
 	 * @param   array  $field_classes  Contains field classes.
-	 * 
 	 * @param   array  $new_classes   New classes to merge into $field_classes.
 	 *
 	 * @return  array  $field_classes  Changed field classes.
@@ -217,7 +214,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	/**
 	 * Merge checkout field args.
 	 *
-	 * @param   array  $field_args      Contains checkout field arguments.
+	 * @param   array  $field_args  Contains checkout field arguments.
 	 * @param   array  $new_field_args  New field argument to be merged.
 	 *
 	 * @return  array  $field_args      Changed field arguments.

@@ -29,7 +29,9 @@ class FluidCheckoutValidation extends FluidCheckout {
 
 
 	/**
-	 * Add page body class for feature detection
+	 * Add page body class for feature detection.
+	 *
+	 * @param array  $classes  Current classes.
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
@@ -42,6 +44,8 @@ class FluidCheckoutValidation extends FluidCheckout {
 
 	/**
 	 * Change email fields to include custom attribute for Mailcheck selector
+	 *
+	 * @param   array  $field_args  Contains checkout field arguments.
 	 */
 	public function change_checkout_email_field_args( $field_args ) {
 		$email_field_custom_attributes = array( 'data-mailcheck' => 1 );
