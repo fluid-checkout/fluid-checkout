@@ -45,8 +45,10 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 	/**
-	 * Change the types of checkout input fields
+	 * Change the types of checkout input fields 
 	 * to display a more appropriate keyboard on mobile devices.
+	 *
+	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function change_checkout_field_types( $fields ) {
 		if ( array_key_exists( 'billing_email', $fields ) ) { $fields['billing_email']['inputmode'] = 'email'; }
@@ -59,6 +61,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 	/**
 	 * Get shipping phone field for address forms.
+	 *
+	 * @return  array $args Arguments for adding shipping phone field.
 	 */
 	public function get_shipping_phone_field() {
 		return apply_filters( 'wfc_shipping_phone_field', array(
@@ -71,6 +75,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 	/**
 	 * Add shipping phone field to edit address fields.
+	 *
+	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function add_shipping_phone_field( $fields ) {
 		$fields['shipping_phone'] = $this->get_shipping_phone_field();
@@ -86,8 +92,10 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 	/**
-	 * Update the order meta with gift fields value.
-	 **/
+	 * Update the order meta with shipping phone.
+	 *
+	 * @param   int  $order_id  Order ID.
+	 */
 	public function update_order_meta_with_shipping_phone( $order_id ) {
 		$shipping_phone = isset( $_POST['shipping_phone'] ) ? sanitize_text_field( $_POST['shipping_phone'] ) : '';
 		update_post_meta( $order_id, '_shipping_phone', $shipping_phone );
@@ -97,6 +105,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	
 	/**
 	 * Output shipping phone field to admin screen.
+	 * 
+	 * @param   class  $order  Contains WC_Order class.
 	 */
 	public function output_shipping_phone_field_admin_screen( $order ) {
 		$shipping_phone = get_post_meta( $order->get_id(), '_shipping_phone', true );
@@ -107,6 +117,10 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 	/**
 	 * Output shipping phone to the address details on order view.
+	 *
+	 * @param   array  $address Contains address fields.
+	 * 
+	 * @param   class  $order Contains WC_Order class.
 	 */
 	public function output_order_formatted_shipping_address_with_phone( $address, $order ) {
 		$shipping_phone = get_post_meta( $order->get_id(), '_shipping_phone', true );
@@ -118,6 +132,10 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 	/**
 	 * Add replacement for shipping phone.
+	 *
+	 * @param   array  $replacements Contains replacements values.
+	 * 
+	 * @param   array  $address Contains address fields.
 	 */
 	public function add_replacement_field_shipping_phone( $replacements, $address ) {
 		$replacements['{shipping_phone}'] = isset( $address['shipping_phone'] ) ? $address['shipping_phone'] : '';
@@ -128,6 +146,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 	/**
 	 * Add replacement for shipping phone to address formats localisation.
+	 *
+	 * @param   array  $formats  Country address formats.
 	 */
 	public function add_shipping_phone_to_formats( $formats ) {
 		foreach ( $formats as $locale => $format ) {
@@ -170,7 +190,13 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 	/**
-	 * Remove `form-row-XX` classes from field classes to avoid conflicts the merge the new classes into it
+	 * Remove `form-row-XX` classes from field classes to avoid conflicts the merge the new classes into it.
+	 *
+	 * @param   array  $field_classes  Contains field classes.
+	 * 
+	 * @param   array  $new_classes   New classes to merge into $field_classes.
+	 *
+	 * @return  array  $field_classes  Changed field classes.
 	 */
 	public function merge_form_field_class_args( $field_classes, $new_classes ) {
 		
@@ -189,7 +215,12 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 	/**
-	 * Merge checkout field args
+	 * Merge checkout field args.
+	 *
+	 * @param   array  $field_args      Contains checkout field arguments.
+	 * @param   array  $new_field_args  New field argument to be merged.
+	 *
+	 * @return  array  $field_args      Changed field arguments.
 	 */
 	public function merge_form_field_args( $field_args, $new_field_args ) {
 
@@ -211,7 +242,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 	/**
-	 * Change Address Fields for account address edit form.
+	 * Change Address Fields arguments for account address edit form.
+	 *
+	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function change_checkout_field_args( $fields ) {
 		$new_field_args = $this->get_checkout_field_args();
@@ -235,6 +268,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 	/**
 	 * Change order fields args.
+	 * 
+	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function change_order_field_args( $fields ) {
 		$field_group = 'order';
