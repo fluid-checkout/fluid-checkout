@@ -49,7 +49,7 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 
 
 	/**
-	 * Return WooCommerce Fluid Checkout multi-step enhanced class instance
+	 * Return WooCommerce Fluid Checkout multi-step enhanced class instance.
 	 */
 	public function multistep_enhanced() {
 		return FluidCheckoutLayout_MultiStepEnhanced::instance();
@@ -58,7 +58,9 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 
 
 	/**
-	 * Add page body class for feature detection
+	 * Add page body class for feature detection.
+	 *
+	 * @param   array  $classes  Body classes array.
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on order received page.
@@ -72,7 +74,7 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 
 
 	/**
-	 * Register widget areas for the checkout pages
+	 * Register widget areas for the checkout pages.
 	 */
 	function register_order_received_widgets_areas() {
 		register_sidebar( array(
@@ -97,7 +99,7 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 	}
 
 	/**
-	 * Output widget area inside order review section
+	 * Output widget area inside order review section.
 	 */
 	function output_sidebar_order_received_before() {
 		if ( is_active_sidebar( 'wfc_order_received_before' ) ) :
@@ -106,7 +108,7 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 	}
 
 	/**
-	 * Output widget area outside order review section
+	 * Output widget area outside order review section.
 	 */
 	function output_sidebar_order_review_outside() {
 		if ( is_active_sidebar( 'wfc_order_received_after' ) ) :
@@ -119,7 +121,11 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 
 
 	/**
-	 * Move order item details position for shipping row to before payment method
+	 * Move order item details position for shipping row to before payment method.
+	 *
+	 * @param array  $total_rows  Total rows.
+	 * @param   class  $order  Contains WC_Order class.
+	 * @param string $tax_display Tax to display.
 	 */
 	public function move_shipping_address_order_received_details_before_payment( $total_rows, $order, $tax_display ) {
 		// Bail if shipping or payment method not present
@@ -141,6 +147,10 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 	
 	/**
 	 * Add shipping address to order details totals.
+	 *
+	 * @param array  $total_rows  Total rows.
+	 * @param   class  $order  Contains WC_Order class.
+	 * @param string $tax_display Tax to display.
 	 */
 	public function add_shipping_address_order_received_details( $total_rows, $order, $tax_display ) {
 		// Get token position
@@ -159,6 +169,10 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 
 	/**
 	 * Add billing address to order details totals.
+	 *
+	 * @param array  $total_rows  Total rows.
+	 * @param   class  $order  Contains WC_Order class.
+	 * @param string $tax_display Tax to display.
 	 */
 	public function add_billing_address_order_received_details( $total_rows, $order, $tax_display ) {
 		// Get token position
