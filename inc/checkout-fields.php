@@ -106,7 +106,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	/**
 	 * Output shipping phone field to admin screen.
 	 * 
-	 * @param   class  $order  Contains WC_Order class.
+	 * @param   WC_Order  $order  The order object.
 	 */
 	public function output_shipping_phone_field_admin_screen( $order ) {
 		$shipping_phone = get_post_meta( $order->get_id(), '_shipping_phone', true );
@@ -119,7 +119,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * Output shipping phone to the address details on order view.
 	 *
 	 * @param   array  $address Contains address fields.
-	 * @param   class  $order Contains WC_Order class.
+	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function output_order_formatted_shipping_address_with_phone( $address, $order ) {
 		$shipping_phone = get_post_meta( $order->get_id(), '_shipping_phone', true );

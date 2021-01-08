@@ -124,7 +124,7 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 	 * Move order item details position for shipping row to before payment method.
 	 *
 	 * @param array  $total_rows  Total rows.
-	 * @param   class  $order  Contains WC_Order class.
+	 * @param   WC_Order  $order  The order object.
 	 * @param string $tax_display Tax to display.
 	 */
 	public function move_shipping_address_order_received_details_before_payment( $total_rows, $order, $tax_display ) {
@@ -149,7 +149,7 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 	 * Add shipping address to order details totals.
 	 *
 	 * @param array  $total_rows  Total rows.
-	 * @param   class  $order  Contains WC_Order class.
+	 * @param   WC_Order  $order  The order object.
 	 * @param string $tax_display Tax to display.
 	 */
 	public function add_shipping_address_order_received_details( $total_rows, $order, $tax_display ) {
@@ -171,7 +171,7 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 	 * Add billing address to order details totals.
 	 *
 	 * @param array  $total_rows  Total rows.
-	 * @param   class  $order  Contains WC_Order class.
+	 * @param   WC_Order  $order  The order object.
 	 * @param string $tax_display Tax to display.
 	 */
 	public function add_billing_address_order_received_details( $total_rows, $order, $tax_display ) {

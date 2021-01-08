@@ -218,7 +218,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Save order addresses to address book.
 	 *
 	 * @param   int  $order_id  Order ID.
-	 * @param   class  $data  Contains WC_Data class.
+	 * @param   WC_Data  $data  The Data object.
 	 */
 	public function save_addresses_from_order( $order_id, $data ) {
 		// Bail if user not logged in
@@ -904,7 +904,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Change customer shipping country value.
 	 *
-	 * @param   class   $customer      Contains WC_Customer class.
+	 * @param   WC_Customer   $customer   The Customer object.
 	 * @param   string  $value         Customer value.
 	 * 
 	 * @return  array   $address_data  Address data.
@@ -918,7 +918,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Change customer shipping state value.
 	 *
-	 * @param   class   $customer      Contains WC_Customer class.
+	 * @param   WC_Customer   $customer   The Customer object.
 	 * @param   string  $value         Customer value.
 	 * 
 	 * @return  array   $address_data  Address data.
@@ -932,7 +932,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Change customer shipping postcode value.
 	 *
-	 * @param   class   $customer      Contains WC_Customer class.
+	 * @param   WC_Customer   $customer   The Customer object.
 	 * @param   string  $value         Customer value.
 	 * 
 	 * @return  array   $address_data  Address data.
@@ -946,7 +946,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Change customer shipping city value
 	 *
-	 * @param   class   $customer      Contains WC_Customer class.
+	 * @param   WC_Customer   $customer   The Customer object.
 	 * @param   string  $value         Customer value.
 	 * 
 	 * @return  array   $address_data  Address data.
@@ -960,7 +960,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Change customer shipping address_1 value
 	 *
-	 * @param   class   $customer      Contains WC_Customer class.
+	 * @param   WC_Customer   $customer   The Customer object.
 	 * @param   string  $value         Customer value.
 	 * 
 	 * @return  array   $address_data  Address data.
@@ -974,7 +974,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Change customer shipping address_2 value
 	 *
-	 * @param   class   $customer      Contains WC_Customer class.
+	 * @param   WC_Customer   $customer   The Customer object.
 	 * @param   string  $value         Customer value.
 	 * 
 	 * @return  array   $address_data  Address data.
@@ -990,7 +990,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Change customer billing country value
 	 *
-	 * @param   class   $customer      Contains WC_Customer class.
+	 * @param   WC_Customer   $customer   The Customer object.
 	 * @param   string  $value         Customer value.
 	 * 
 	 * @return  array   $address_data  Address data.
@@ -1004,7 +1004,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Change customer billing state value
 	 *
-	 * @param   class   $customer      Contains WC_Customer class.
+	 * @param   WC_Customer   $customer   The Customer object.
 	 * @param   string  $value         Customer value.
 	 * 
 	 * @return  array   $address_data  Address data.
@@ -1018,7 +1018,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Change customer billing postcode value
 	 *
-	 * @param   class   $customer      Contains WC_Customer class.
+	 * @param   WC_Customer   $customer   The Customer object.
 	 * @param   string  $value         Customer value.
 	 * 
 	 * @return  array   $address_data  Address data.
@@ -1032,7 +1032,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Change customer billing city value
 	 *
-	 * @param   class   $customer      Contains WC_Customer class.
+	 * @param   WC_Customer   $customer   The Customer object.
 	 * @param   string  $value         Customer value.
 	 * 
 	 * @return  array   $address_data  Address data.
@@ -1046,7 +1046,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Change customer billing address_1 value
 	 *
-	 * @param   class   $customer      Contains WC_Customer class.
+	 * @param   WC_Customer   $customer   The Customer object.
 	 * @param   string  $value         Customer value.
 	 * 
 	 * @return  array   $address_data  Address data.
@@ -1060,7 +1060,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Change customer billing address_2 value
 	 *
-	 * @param   class   $customer      Contains WC_Customer class.
+	 * @param   WC_Customer   $customer   The Customer object.
 	 * @param   string  $value         Customer value.
 	 * 
 	 * @return  array   $address_data  Address data.

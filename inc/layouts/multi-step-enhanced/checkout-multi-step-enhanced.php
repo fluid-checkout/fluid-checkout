@@ -569,7 +569,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	/**
 	 * Output template part for order received failed.
 	 * 
-	 * @param   class  $order Contains WC_Order class.
+	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function output_order_received_failed_template( $order ) {
 		wc_get_template(
@@ -585,7 +585,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	/**
 	 * Output template part for order received successful.
 	 * 
-	 * @param   class  $order Contains WC_Order class.
+	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function output_order_received_successful_template( $order ) {
 		wc_get_template(
@@ -601,7 +601,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	/**
 	 * Output template part for order received without order details.
 	 * 
-	 * @param   class  $order Contains WC_Order class.
+	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function output_order_received_no_order_details_template( $order ) {
 		wc_get_template(
@@ -618,7 +618,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 * Run the action `woocommerce_thankyou_<payment_method>`, give developers
 	 * the ability to define which hook and priority to use.
 	 * 
-	 * @param   class  $order Contains WC_Order class.
+	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function do_woocommerce_thankyou_payment_method( $order_id ) {
 		$order = wc_get_order( $order_id );
@@ -630,7 +630,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	/**
 	 * Output order download details.
 	 * 
-	 * @param   class  $order Contains WC_Order class.
+	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function output_order_downloads_details( $order ) {
 		$downloads             = $order->get_downloadable_items();
@@ -651,7 +651,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	/**
 	 * Output order customer details.
 	 * 
-	 * @param   class  $order Contains WC_Order class.
+	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function output_order_customer_details( $order ) {
 		$show_customer_details = is_user_logged_in() && $order->get_user_id() === get_current_user_id();

@@ -55,7 +55,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 	/**
 	 * Output gift options fields.
 	 *
-	 * @param   class  $checkout  Contains WC_Checkout class.
+	 * @param   WC_Checkout   $checkout   The Checkout object.
 	 */
 	public function maybe_output_gift_options_fields( $checkout ) {
 		// Bail if shipping not needed
@@ -123,7 +123,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 	/**
 	 * Display gift options fields on order admin screen.
 	 *
-	 * @param   class  $order Contains WC_Order class.
+	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function display_gift_options_fields_order_admin_screen( $order ) {
 		$order_id = $order->get_id();
@@ -190,7 +190,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 	 * Maybe add gift message to order details totals.
 	 *
 	 * @param array  $total_rows  Total rows.
-	 * @param   class  $order Contains WC_Order class.
+	 * @param   WC_Order   $order   The Order object.
 	 * @param string $tax_display Tax to display.
 	 */
 	public function maybe_add_gift_message_order_received_details( $total_rows, $order, $tax_display ) {
