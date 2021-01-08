@@ -39,7 +39,9 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 
 
 	/**
-	 * Add page body class for feature detection
+	 * Add page body class for feature detection.
+	 *
+	 * @param   array  $classes  Body classes array.
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
@@ -52,6 +54,8 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 
 	/**
 	 * Output gift options fields.
+	 *
+	 * @param   class  $checkout  Contains WC_Checkout class.
 	 */
 	public function maybe_output_gift_options_fields( $checkout ) {
 		// Bail if shipping not needed
@@ -100,7 +104,9 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 
 	/**
 	 * Update the order meta with gift fields value.
-	 **/
+	 *
+	 * @param   int  $order_id  Order ID.
+	 */
 	public function update_order_meta_with_gift_options_fields( $order_id ) {
 		$has_gift_options = isset( $_POST['_wfc_has_gift_options'] ) && boolval( $_POST['_wfc_has_gift_options'] );
 		$gift_message = isset( $_POST['_wfc_gift_message'] ) ? $_POST['_wfc_gift_message'] : '';
@@ -116,7 +122,9 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 
 	/**
 	 * Display gift options fields on order admin screen.
-	 **/
+	 *
+	 * @param   class  $order Contains WC_Order class.
+	 */
 	public function display_gift_options_fields_order_admin_screen( $order ) {
 		$order_id = $order->get_id();
 		$gift_message = get_post_meta( $order_id, '_wfc_gift_message', true );
@@ -167,7 +175,9 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 
 	
 	/**
-	 * Save order meta data for gift message
+	 * Save order meta data for gift message.
+	 *
+	 * @param   int  $order_id  Order ID.
 	 */
 	public function save_order_gift_details( $order_id ){
 		update_post_meta( $order_id, '_wfc_gift_message', wc_clean( $_POST[ '_wfc_gift_message' ] ) );
@@ -178,6 +188,12 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 
 	/**
 	 * Maybe add gift message to order details totals.
+	 *
+	 * @param array  $total_rows  Total rows.
+	 * 
+	 * @param   class  $order Contains WC_Order class.
+	 * 
+	 * @param string $tax_display Tax to display.
 	 */
 	public function maybe_add_gift_message_order_received_details( $total_rows, $order, $tax_display ) {
 		// Bail if not on order received page.
