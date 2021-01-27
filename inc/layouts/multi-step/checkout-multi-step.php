@@ -59,7 +59,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Add page body class for feature detection
+	 * Add page body class for feature detection.
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not at checkout
@@ -88,9 +88,15 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 
-	/*
+
+	/**
 	 * Locate template files from this checkout layout.
+	 * 
 	 * @since 1.1.0
+	 * 
+	 * @param   string  $template       Template filename.
+	 * @param   string  $template_name  Template name.
+	 * @param   string  $template_path  Template path.
 	 */
 	public function locate_template( $template, $template_name, $template_path ) {
 	 
@@ -129,6 +135,9 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 	/**
 	 * Output start tag for a checkout step.
+	 *
+	 * @param   string  $step_label  Step label.
+	 * @param   string  $step_id     Step ID.
 	 */
 	public function output_step_start_tag( $step_label, $step_id = '' ) {
 		$step_id_attribute = ! empty( $step_id ) && $step_id != null ? 'data-step-id="'.esc_attr( $step_id ).'"' : '';
@@ -136,6 +145,9 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		<section class="wfc-frame" <?php echo $step_id_attribute; ?> data-label="<?php echo esc_attr( $step_label ); ?>">
 		<?php
 	}
+
+
+
 	/**
 	 * Output end tag for a checkout step.
 	 */
@@ -148,7 +160,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Output the checkout progress bar
+	 * Output the checkout progress bar.
 	 */
 	public function output_checkout_progress_bar() {
 		?>
@@ -161,7 +173,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Output step: Billing
+	 * Output step: Billing.
 	 */
 	public function output_step_billing() {
 		$this->output_step_start_tag( apply_filters( 'wfc_billing_step_title', __( 'Billing', 'woocommerce-fluid-checkout' ) ), 'billing' );
@@ -181,7 +193,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Output billing step section title
+	 * Output billing step section title.
 	 */
 	public function output_billing_step_section_title() {
 		?>
@@ -192,7 +204,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Output step: Shipping
+	 * Output step: Shipping.
 	 */
 	public function output_step_shipping() {
 		// Bail if shipping not needed
@@ -216,7 +228,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	
 	
 	/**
-	 * Output "ship to different address" checkbox
+	 * Output "ship to different address" checkbox.
 	 */
 	public function output_ship_to_different_address_checkbox() {
 		?>
@@ -228,7 +240,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Output shipping step section title
+	 * Output shipping step section title.
 	 */
 	public function output_shipping_step_section_title() {
 		?>
@@ -239,7 +251,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Output shipping section for cart totals
+	 * Output shipping section for cart totals.
 	 */
 	public function output_cart_totals_shipping_section() {
 		wc_get_template(
@@ -251,7 +263,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Output step: Additional Information fields
+	 * Output step: Additional Information fields.
 	 */
 	public function output_additional_fields() {
 		wc_get_template(
@@ -262,8 +274,10 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		);
 	}
 
+
+
 	/**
-	 * Output order additional fields
+	 * Output order additional fields.
 	 */
 	public function maybe_output_additional_fields_shipping_step() {
 		// Bail if shipping not needed
@@ -272,8 +286,10 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		$this->output_additional_fields();
 	}
 
+
+
 	/**
-	 * Output order additional fields
+	 * Output order additional fields.
 	 */
 	public function maybe_output_additional_fields_payment_step() {
 		// Bail if shipping is needed
@@ -285,7 +301,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Output step: Payment
+	 * Output step: Payment.
 	 */
 	public function output_step_payment() {
 		$this->output_step_start_tag( apply_filters( 'wfc_payment_step_title', __( 'Payment', 'woocommerce-fluid-checkout' ) ), 'payment' );
@@ -303,7 +319,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Output payment step section title
+	 * Output payment step section title.
 	 */
 	public function output_payment_step_section_title() {
 		?>
@@ -314,7 +330,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Output checkout place order button
+	 * Output checkout place order button.
 	 */
 	public function output_checkout_place_order() {
 		wc_get_template(
@@ -329,7 +345,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Output Order Review
+	 * Output Order Review.
 	 */
 	public function output_order_review() {
 		wc_get_template(
@@ -344,7 +360,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
-	 * Return html for billing step actions
+	 * Return html for billing step actions.
 	 */
 	public function get_billing_step_actions_html() {
 		$proceed_button_text = __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' );

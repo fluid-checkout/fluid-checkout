@@ -33,7 +33,7 @@ class FluidCheckout_CheckoutLayouts extends FluidCheckout {
 
 
     /**
-	 * Return active checkout layout key
+	 * Get available checkout layouts.
 	 */
 	public function get_available_checkout_layouts() {
         return apply_filters( 'wfc_available_checkout_layouts', array(
@@ -46,8 +46,10 @@ class FluidCheckout_CheckoutLayouts extends FluidCheckout {
 
 
     /**
-	 * Return active checkout layout key
-	 */
+     * Return active checkout layout key.
+     *
+     * @return  array  $active_checkout_layout_key  Returns active checkout layout key.
+     */
 	public function get_active_checkout_layout_key() {
         $available_checkout_layouts = $this->get_available_checkout_layouts();
 

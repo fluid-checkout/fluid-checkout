@@ -84,7 +84,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Load extra features
+	 * Load extra features.
 	 */
 	public function load_extra_features() {
 		require_once self::$directory_path . 'inc/layouts/multi-step-enhanced/address-book.php';
@@ -94,7 +94,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Return WooCommerce Fluid Checkout multi-step class instance
+	 * Return WooCommerce Fluid Checkout multi-step class instance.
 	 */
 	public function multistep() {
 		return FluidCheckoutLayout_MultiStep::instance();
@@ -103,7 +103,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Add page body class for feature detection
+	 * Add page body class for feature detection.
+	 *
+     * @param array $classes Classes for the body element.
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
@@ -115,7 +117,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Enqueue scripts
+	 * Enqueue scripts.
 	 */
 	public function enqueue_assets() {
 		// Bail if not at checkout
@@ -134,6 +136,10 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	/*
 	 * Locate template files from this checkout layout.
 	 * @since 1.1.0
+	 * 
+	 * @param   string  $template       Template filename.
+	 * @param   string  $template_name  Template name.
+	 * @param   string  $template_path  Template path.
 	 */
 	public function locate_template( $template, $template_name, $template_path ) {
 	 
@@ -171,7 +177,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Output order review section wrapper
+	 * Output order review section wrapper.
 	 */
 	public function output_checkout_order_review_wrapper() {
 		?>
@@ -184,7 +190,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Maybe output the shipping methods chosen for order review section
+	 * Maybe output the shipping methods chosen for order review section.
 	 */
 	public function maybe_output_order_review_shipping_method_chosen() {
 		// Bail if not checkout page
@@ -228,7 +234,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Change checkout fields args
+	 * Change checkout fields args.
+	 * @param  array  $field_args  Contains checkout field arguments.
 	 */
 	public function change_checkout_field_args( $field_args ) {
 		$field_args = FluidCheckout_CheckoutFields::instance()->merge_form_field_args( $field_args, array(
@@ -249,7 +256,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Output step: Contact
+	 * Output step: Contact.
 	 */
 	public function output_step_contact() {
 		$this->multistep()->output_step_start_tag( apply_filters( 'wfc_contact_step_title', __( 'Contact', 'woocommerce-fluid-checkout' ) ), 'contact' );
@@ -284,7 +291,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Return list of checkout fields for contact step
+	 * Return list of checkout fields for contact step.
 	 */
 	public function get_contact_step_display_fields() {
 		return apply_filters( 'wfc_checkout_contact_step_field_ids', array(
@@ -297,7 +304,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Get user data for checkout steps
+	 * Get user data for checkout steps.
 	 */
 	public function get_user_data() {
 		$user_data = array();
@@ -321,7 +328,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Return html for contact step actions
+	 * Return html for contact step actions.
 	 */
 	public function get_contact_step_actions_html() {
 		$next_step_label = WC()->cart->needs_shipping() ? __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' ) : __( 'Proceed to Payment', 'woocommerce-fluid-checkout' );
@@ -330,7 +337,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Output contact step section title
+	 * Output contact step section title.
 	 */
 	public function output_contact_step_section_title() {
 		?>
@@ -343,13 +350,13 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Checkout Step: Shipping
+	 * Checkout Step: Shipping.
 	 */
 
 	
 	
 	/**
-	 * Output "ship to different address" hidden field
+	 * Output "ship to different address" hidden field.
 	 */
 	public function output_ship_to_different_address_hidden_field() {
 		?>
@@ -360,7 +367,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Set to always ship to shipping address
+	 * Set to always ship to shipping address.
 	 */
 	public function set_ship_to_different_address_true() {
 		return 1;
@@ -369,7 +376,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Get shipping methods available markup
+	 * Get shipping methods available markup.
 	 *
 	 * @access public
 	 */
@@ -414,7 +421,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Output shipping methods start tag
+	 * Output shipping methods start tag.
 	 */
 	public function output_shipping_methods_start_tag() {
 		?>
@@ -424,7 +431,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Output shipping methods end tag
+	 * Output shipping methods end tag.
 	 */
 	public function output_shipping_methods_end_tag() {
 		?>
@@ -434,6 +441,8 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 	/**
 	 * Add shipping methods as checkout fragment.
+	 * 
+	 * @param array $fragments Checkout fragments.
 	 */
 	function add_checkout_shipping_methods_fragment( $fragments ) {
 		$shipping_methods_html = $this->get_shipping_methods_available();
@@ -442,7 +451,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Output shipping methods available
+	 * Output shipping methods available.
 	 *
 	 * @access public
 	 */
@@ -451,7 +460,11 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Change shipping methods full label including price with markup necessary for displaying price as a separate element
+	 * Change shipping methods full label including price with markup necessary for displaying price as a separate element.
+	 *
+	 * @param object|string $method Either the name of the method's class, or an instance of the method's class.
+	 * 
+	 * @return string $label Shipping rate label.
 	 */
 	function get_cart_shipping_methods_label( $method ) {
 		$label     = sprintf( apply_filters( 'wfc_shipping_method_option_label_markup', '<span class="shipping_method__option-label">%s</span>' ), $method->get_label() );
@@ -489,13 +502,13 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Checkout Step: Payment
+	 * Checkout Step: Payment.
 	 */
 
 
 
 	/**
-	 * Return html for payment step actions
+	 * Return html for payment step actions.
 	 */
 	public function get_payment_step_actions_html() {
 		$actions_html = '<div class="wfc-actions"><button class="wfc-prev">' . _x( 'Back', 'Previous step button', 'woocommerce-fluid-checkout' ) . '</button></div>';
@@ -503,14 +516,16 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Output payment step actions
+	 * Output payment step actions.
 	 */
 	public function output_payment_step_actions_html() {
 		echo $this->get_payment_step_actions_html();
 	}
 
 	/**
-	 * Change billing fields section title
+	 * Change billing fields section title.
+	 * 
+	 * @param string $section_title Section title.
 	 */
 	public function change_billing_fields_section_title( $section_title ) {
 		$section_title = __( 'Billing Address', 'woocommerce-fluid-checkout' );
@@ -518,7 +533,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Output billing fields except those already added at contact step
+	 * Output billing fields except those already added at contact step.
 	 */
 	public function output_billing_fields() {
 
@@ -539,7 +554,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * END - Checkout Steps
+	 * END - Checkout Steps.
 	 */
 
 
@@ -547,13 +562,15 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Order Received (default functionality)
+	 * Order Received (default functionality).
 	 */
 
 
 	
 	/**
-	 * Output template part for order received failed
+	 * Output template part for order received failed.
+	 * 
+	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function output_order_received_failed_template( $order ) {
 		wc_get_template(
@@ -567,7 +584,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Output template part for order received successful
+	 * Output template part for order received successful.
+	 * 
+	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function output_order_received_successful_template( $order ) {
 		wc_get_template(
@@ -581,7 +600,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Output template part for order received without order details
+	 * Output template part for order received without order details.
+	 * 
+	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function output_order_received_no_order_details_template( $order ) {
 		wc_get_template(
@@ -596,7 +617,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 	/**
 	 * Run the action `woocommerce_thankyou_<payment_method>`, give developers
-	 * the ability to define which hook and priority to use
+	 * the ability to define which hook and priority to use.
+	 * 
+	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function do_woocommerce_thankyou_payment_method( $order_id ) {
 		$order = wc_get_order( $order_id );
@@ -606,7 +629,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Output order download details
+	 * Output order download details.
+	 * 
+	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function output_order_downloads_details( $order ) {
 		$downloads             = $order->get_downloadable_items();
@@ -625,7 +650,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Output order customer details
+	 * Output order customer details.
+	 * 
+	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function output_order_customer_details( $order ) {
 		$show_customer_details = is_user_logged_in() && $order->get_user_id() === get_current_user_id();
@@ -637,7 +664,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * END - Order Received
+	 * END - Order Received.
 	 */
 
 
@@ -645,7 +672,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 	
 	/**
-	 * Register widget areas for the checkout pages
+	 * Register widget areas for the checkout pages.
 	 */
 	function register_checkout_widgets_areas() {
 		register_sidebar( array(
@@ -670,7 +697,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Output widget area inside order review section
+	 * Output widget area inside order review section.
 	 */
 	function output_sidebar_order_review_inside() {
 		if ( is_active_sidebar( 'wfc_order_review_inside' ) ) :
@@ -679,7 +706,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Output widget area outside order review section
+	 * Output widget area outside order review section.
 	 */
 	function output_sidebar_order_review_outside() {
 		if ( is_active_sidebar( 'wfc_order_review_outside' ) ) :
@@ -690,7 +717,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Register widget areas for the cart pages
+	 * Register widget areas for the cart pages.
 	 */
 	function register_cart_widgets_areas() {
 		register_sidebar( array(
@@ -715,7 +742,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Output widget area inside cart totals section
+	 * Output widget area inside cart totals section.
 	 */
 	function output_sidebar_cart_totals_inside() {
 		if ( is_active_sidebar( 'wfc_cart_totals_inside' ) ) :
@@ -724,7 +751,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	}
 
 	/**
-	 * Output widget area outside cart totals section
+	 * Output widget area outside cart totals section.
 	 */
 	function output_sidebar_cart_totals_outside() {
 		if ( is_active_sidebar( 'wfc_cart_totals_outside' ) ) :

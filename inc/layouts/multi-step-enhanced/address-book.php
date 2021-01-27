@@ -158,6 +158,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Add page body class for feature detection
+	 *
+     * @param array $classes Classes for the body element.
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
@@ -177,6 +179,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Change checkout fields args
+	 *
+	 * @param   array  $field_args  Contains checkout field arguments.
 	 */
 	public function change_checkout_field_args( $field_args ) {
 		$field_args = FluidCheckout_CheckoutFields::instance()->merge_form_field_args( $field_args, array(
@@ -188,8 +192,12 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		return $field_args;
 	}
 
+
+
 	/**
-	 * Change checkout shipping fields to prevent to be overwritten with billing fields values copied at frontend
+	 * Change checkout shipping fields to prevent to be overwritten with billing fields values copied at frontend.
+	 *
+	 * @param   array  $field_args  Contains checkout field arguments.
 	 */
 	public function change_checkout_shipping_copy_target_field_args( $field_args ) {
 		// Bail if saved shipping address is being used
@@ -207,7 +215,10 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
-	 * Save order addresses to address book
+	 * Save order addresses to address book.
+	 *
+	 * @param   int  $order_id  Order ID.
+	 * @param   WC_Data  $data  The Data object.
 	 */
 	public function save_addresses_from_order( $order_id, $data ) {
 		// Bail if user not logged in
@@ -255,8 +266,14 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 
+
 	/**
-	 * Get user's saved addresses
+	 * Get user's saved addresses.
+	 *
+	 * @param   int    $user_id     Id of the user performing the download.
+	 * @param   bool   $skip_cache  Get from cache if available.
+	 *
+	 * @return  array  $address_book_entries Adress book entries.
 	 */
 	public function get_saved_user_address_book_entries( $user_id = null, $skip_cache = false ) {
 		$user_id = $this->get_user_id( $user_id );
@@ -279,8 +296,14 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		return $address_book_entries;
 	}
 
+
+
 	/**
-	 * Get user's saved addresses for shipping address book
+	 * Get user's saved addresses for shipping address book.
+	 *
+	 * @param   int    $user_id               Id of the user performing the download.
+	 *
+	 * @return  array  $address_book_entries  Adress book entries.
 	 */
 	public function get_saved_user_address_book_entries_for_shipping( $user_id = null ) {
 		$user_id = $this->get_user_id( $user_id );
@@ -297,8 +320,14 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		return $address_book_entries;
 	}
 
+
+
 	/**
-	 * Get user's saved addresses for billing address book
+	 * Get user's saved addresses for billing address book.
+	 *
+	 * @param   int    $user_id               Id of the user performing the download.
+	 *
+	 * @return  array  $address_book_entries  Adress book entries.
 	 */
 	public function get_saved_user_address_book_entries_for_billing( $user_id = null ) {
 		$user_id = $this->get_user_id( $user_id );
@@ -318,7 +347,12 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
-	 * Get an address entry from user's saved addresses
+	 * Get an address entry from user's saved addresses.
+	 *
+	 * @param   int    $address_id  Adress ID.
+	 * @param   int    $user_id     Id of the user performing the download.
+	 * 
+	 * @return  bool|array  $address_entry Adress entry. //! not sure.
 	 */
 	public function get_address_book_entry( $address_id, $user_id = null ) {
 		// Bail if address id not valid
@@ -334,7 +368,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
-	 * Get default address entry data for shipping
+	 * Get default address entry data for shipping.
+	 *
+	 * @param   int    $user_id  Id of the user performing the download.
+	 *
+	 * @return  array  $default_address_entry Default adress entry.
 	 */
 	public function get_default_shipping_address_from_saved_entries( $user_id = null ) {
 		$user_id = $this->get_user_id( $user_id );
@@ -358,8 +396,14 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		return $default_address_entry;
 	}
 
+
+
 	/**
-	 * Get default address entry data for billing
+	 * Get default address entry data for billing.
+	 *
+	 * @param   int    $user_id  Id of the user performing the download.
+	 *
+	 * @return  array  $default_address_entry Default adress entry.
 	 */
 	public function get_default_billing_address_from_saved_entries( $user_id = null ) {
 		$user_id = $this->get_user_id( $user_id );
@@ -384,9 +428,14 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	}
 
 
-	
+
 	/**
-	 * Save a new address book entry for the user
+	 * Save a new address book entry for the user.
+	 *
+	 * @param   array  $address_entry  Address entry.
+	 * @param   int    $user_id  Id of the user performing the download.
+	 *
+	 * @return  int|bool  Add new entry.
 	 */
 	public function add_new_address_book_entry( $address_entry, $user_id = null ) {
 		$user_id = $this->get_user_id( $user_id );
@@ -417,8 +466,14 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		return update_user_meta( $user_id, '_wfc_address_book', $address_book_entries );
 	}
 
+
 	/**
-	 * Update a saved address book entry for the user
+	 * Update a saved address book entry for the user.
+	 *
+	 * @param   array  $address_entry  Address entry.
+	 * @param   int    $user_id  Id of the user performing the download.
+	 *
+	 * @return  int|bool  Update address entry values.
 	 */
 	public function update_address_book_entry( $address_entry, $user_id = null ) {
 		// Bail if address entry doesn't have address_id
@@ -438,8 +493,15 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		return update_user_meta( $user_id, '_wfc_address_book', $address_book_entries );
 	}
 
+
+
 	/**
-	 * Delete a address book entry for the user
+	 * Delete a address book entry for the user.
+	 *
+	 * @param   array  $address_entry  Address entry.
+	 * @param   int    $user_id  Id of the user performing the download.
+	 *
+	 * @return  int|bool  Update user meta field based on user ID.
 	 */
 	public function delete_address_book_entry( $address_id, $user_id = null ) {
 		// Bail if address_id not proviced
@@ -476,8 +538,12 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		) );
 	}
 
+
+
 	/**
 	 * Add shipping save address checkbox field to edit address fields.
+	 *
+	 * @param   array  $fields  Fields array.
 	 */
 	public function add_shipping_save_address_checkbox_field( $fields ) {
 		// Bail if user not logged in
@@ -494,8 +560,12 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		return $fields;
 	}
 
+
+
 	/**
 	 * Add shipping save address checkbox field to checkout fields.
+	 * 
+	 * @param   array  $fields  Fields array.
 	 */
 	public function add_shipping_save_address_checkbox_field_checkout( $fields ) {
 		$fields['shipping'] = $this->add_shipping_save_address_checkbox_field( $fields['shipping'] );
@@ -505,7 +575,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
-	 * Get billing save address checkbox field
+	 * Get billing save address checkbox field.
 	 */
 	public function get_billing_save_address_checkbox_field() {
 		return apply_filters( 'wfc_billing_save_checkout_field', array(
@@ -523,6 +593,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Add billing save address checkbox field to edit address fields.
+	 * 
+	 * @param   array  $fields  Fields array.
 	 */
 	public function add_billing_save_address_checkbox_field( $fields ) {
 		// Bail if user not logged in
@@ -540,6 +612,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Add billing save address checkbox field to checkout fields.
+	 * 
+	 * @param   array  $fields  Fields array.
 	 */
 	public function add_billing_save_address_checkbox_field_checkout( $fields ) {
 		$fields['billing'] = $this->add_billing_save_address_checkbox_field( $fields['billing'] );
@@ -550,6 +624,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Unset update checkout on change for address fields
+	 * 
+	 * @param   array  $fields  Fields array.
 	 */
 	public function unset_update_total_on_change_address_fields( $fields ) {
 		$target_fields = array(
@@ -826,7 +902,12 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
-	 * Change customer shipping country value
+	 * Change customer shipping country value.
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
 	 */
 	public function change_customer_shipping_country( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
@@ -835,7 +916,12 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	}
 
 	/**
-	 * Change customer shipping state value
+	 * Change customer shipping state value.
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
 	 */
 	public function change_customer_shipping_state( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
@@ -844,7 +930,12 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	}
 
 	/**
-	 * Change customer shipping postcode value
+	 * Change customer shipping postcode value.
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
 	 */
 	public function change_customer_shipping_postcode( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
@@ -854,6 +945,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Change customer shipping city value
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
 	 */
 	public function change_customer_shipping_city( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
@@ -863,6 +959,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Change customer shipping address_1 value
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
 	 */
 	public function change_customer_shipping_address_1( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
@@ -872,6 +973,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Change customer shipping address_2 value
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
 	 */
 	public function change_customer_shipping_address_2( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
@@ -883,6 +989,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Change customer billing country value
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
 	 */
 	public function change_customer_billing_country( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
@@ -892,6 +1003,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Change customer billing state value
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
 	 */
 	public function change_customer_billing_state( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
@@ -901,6 +1017,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Change customer billing postcode value
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
 	 */
 	public function change_customer_billing_postcode( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
@@ -910,6 +1031,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Change customer billing city value
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
 	 */
 	public function change_customer_billing_city( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
@@ -919,6 +1045,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Change customer billing address_1 value
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
 	 */
 	public function change_customer_billing_address_1( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
@@ -928,6 +1059,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Change customer billing address_2 value
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
 	 */
 	public function change_customer_billing_address_2( $value, $customer ) {
 		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
@@ -941,7 +1077,15 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Get the customer's address data from address book or session
+	 * 
+     * @param  string $address_type Address type.
+     *                              Accepts: 'billing' or 'shipping'.
+     *                              Default to 'billing'.
+     * @param  int    $customer_id  Customer ID.
+     *                              Default to 0.
+     * @return string
 	 */
+	
 	public function get_customer_selected_address_data( $address_type, $customer_id = null ) {
 		$customer_id = $this->get_user_id( $customer_id );
 		
@@ -966,7 +1110,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
-	 * Get address entry display label for account pages
+	 * Get address entry display label for account pages.
+	 * 
+	 * @param   array  $address_entry  Address entry.
 	 */
 	public function get_account_address_entry_display_label( $address_entry ) {
 		$state_label = ! empty( $address_entry['state'] ) ? ', '.$address_entry['state'] : '';
@@ -988,7 +1134,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
-	 * Get address entry display label
+	 * Get address entry display label.
+	 * 
+	 * @param   array  $address_entry  Address entry.
 	 */
 	public function get_shipping_address_entry_display_label( $address_entry ) {
 		$state_label = ! empty( $address_entry['state'] ) ? ', '.$address_entry['state'] : '';
@@ -1011,6 +1159,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Get address entry display label for billing address
+	 * 
+	 * @param   array  $address_entry  Address entry.
 	 */
 	public function get_billing_address_entry_display_label( $address_entry ) {
 		$state_label = ! empty( $address_entry['state'] ) ? ', '.$address_entry['state'] : '';
@@ -1030,6 +1180,12 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Get address entry checked state
+	 * 
+	 * @param   string  $address_type     Address type.
+	 * @param   array   $address_entry    Address entry.
+	 * @param   bool    $first            Is first address in the list.
+	 * 
+	 * @return  bool    $checked_address  Checked address bool value.
 	 */
 	public function get_address_entry_checked_state( $address_type, $address_entry, $first = false ) {
 		$checked_address = false;
@@ -1070,6 +1226,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Set shipping address selected on session
+	 * 
+	 * @param  array   $address_data  Address data.
 	 */
 	public function set_shipping_address_selected_session_value( $address_data ) {
 		// Bail if address data invalid
@@ -1090,7 +1248,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	}
 
 	/**
-	 * Set billing address selected on session
+	 * Set billing address selected on session.
+	 * 
+	 * @param  array   $address_data  Address data.
 	 */
 	public function set_billing_address_selected_session_value( $address_data ) {
 		// Bail if address data invalid
@@ -1102,6 +1262,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Set shipping address selected on session, from address book default values.
+	 * 
+	 * @param  array   $address_data  Address data.
 	 */
 	public function maybe_set_address_entry_selected_session_to_default() {
 		// Bail if not cart or checkout pages
@@ -1125,6 +1287,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Set shipping address selected on session.
+	 * 
+	 * @param array $post_data Post data.
 	 */
 	public function set_address_selected_session( $post_data ) {
 		// Parsing posted data on checkout
@@ -1204,7 +1368,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Maybe unset billing address session on order update.
-	 **/
+	 *
+	 * @param   Int       $order_id     Order ID number.
+	 * @param   Array     $posted_data  Data sent from the browser via POST method.
+	 * @param   WC_Order  $order        WooCommerce Order object.
+	 */
 	public function maybe_unset_billing_address_session_on_order_update( $order_id, $posted_data, $order ) {
 		// Bail if order pending or failed
 		if ( ! $order || $order->has_status( array( 'failed' ) ) ) { return; }
@@ -1232,7 +1400,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	}
 
 	/**
-	 * Get billing address entry checked state
+	 * Get billing address entry checked state.
 	 */
 	public function get_billing_address_entry_checked_state( $address_entry, $first = false ) {
 		return $this->get_address_entry_checked_state( 'billing', $address_entry, $first );
@@ -1243,7 +1411,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
-	 * Output shipping address for order review section
+	 * Output shipping address for order review section.
 	 */
 	public function output_order_review_shipping_address() {
 		// Bail if shipping not needed
@@ -1263,7 +1431,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
-	 * Change the label for edit address account menu item
+	 * Change the label for edit address account menu item.
 	 */
 	public function change_edit_address_account_menu_item_label( $items, $endpoints ) {
 		if ( array_key_exists( 'edit-address', $items ) ) { $items[ 'edit-address' ] = __( 'Address book', 'woocommerce-fluid-checkout' ); }
@@ -1271,7 +1439,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	}
 
 	/**
-	 * Change the label edit address endpoint title
+	 * Change the label edit address endpoint title.
 	 */
 	public function change_edit_address_wc_endpoint_title( $title, $endpoint ) {
 		$title = __( 'Address book', 'woocommerce-fluid-checkout' );
@@ -1281,21 +1449,29 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
-	 * Output address book list start tag for account pages
+	 * Output address book list start tag for account pages.
+	 * @param   string  $load_address Defines address type to be loaded ( accepted value billing/shipping ).
+	 * @param   array  $address Contains address fields.
 	 */
 	public function output_account_address_book_entries_list_start_tag( $load_address, $address ) {
 		echo sprintf( '<div class="%s">', empty( $load_address ) ? 'wfc-address-book__entries' : 'wfc-address-book__entry-form' );
 	}
 
 	/**
-	 * Output address book list end tag for account pages
+	 * Output address book list end tag for account pages.
+	 * 
+	 * @param   string  $load_address Defines address type to be loaded ( accepted value billing/shipping ).
+	 * @param   array  $address Contains address fields.
 	 */
 	public function output_account_address_book_entries_list_end_tag( $load_address, $address ) {
 		echo '</div>';
 	}
 
 	/**
-	 * Output the address book content
+	 * Output the address book content.
+	 * 
+	 * @param   string  $load_address Defines address type to be loaded ( accepted value billing/shipping ).
+	 * @param   array  $address Contains address fields.
 	 */
 	public function output_account_edit_address_content( $load_address, $address ) {
 		$address_book_entries = $this->get_saved_user_address_book_entries();
@@ -1324,6 +1500,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Add phone field to edit address book entry at account pages.
+	 * 
+	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function add_phone_field_for_address_book_entry( $fields ) {
 		$fields['phone'] = FluidCheckout_CheckoutFields::instance()->get_shipping_phone_field();
@@ -1349,7 +1527,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	}
 
 	/**
-	 * Change selectors for address locale fields
+	 * Change selectors for address locale fields.
+	 * 
+	 * @return array $locale_fields Locale fields.
 	 */
 	public function change_country_locale_field_selectors( $locale_fields ) {
 		$locale_fields = array(
@@ -1527,6 +1707,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_rewrite_endpoint( 'delete-address', EP_ROOT | EP_PAGES );
 	}
 
+	/**
+	 * Adds delete address query variable
+	 */
 	public function add_delete_address_query_var( $vars ) {
 		$vars[] = 'delete-address';
 		return $vars;
@@ -1538,6 +1721,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Replace the options in country field to display options from both billing and shipping allowed countries
+	 * 
+	 * @param   array   $fields  Fields used in checkout.
+	 * @param string    $key     Meta key.
+	 * @param  array    $args    Arguments.
+	 * @param   string  $value   Customer value.
 	 */
 	public function maybe_change_country_field_allowed_values( $field, $key, $args, $value ) {
 		// Bail if not a general country field in edit address endpoint

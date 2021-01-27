@@ -33,7 +33,7 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 
 
 	/**
-	 * Enqueue integration scripts and styles
+	 * Enqueue integration scripts and styles.
 	 */
 	public function enqueue_ziptastic_scripts() {
 		global $wp_query;
@@ -54,7 +54,9 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 
 
 	/**
-	 * Add data-ziptastic attribute to postcode
+	 * Add data-ziptastic attribute to postcode.
+	 *
+	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function add_ziptastic_custom_attributes( $fields ) {
 		if ( array_key_exists( 'postcode', $fields ) ) { $fields['postcode']['custom_attributes'] = array( 'data-ziptastic' => '1' ); }
@@ -65,6 +67,8 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 
 	/**
 	 * Change address default locale fields priority order on the frontend.
+	 *
+	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function ziptastic_change_address_fields_priority( $fields ) {
 		
@@ -89,6 +93,8 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 
 	/**
 	 * Change shipping fields display order.
+	 *
+	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function change_address_fields_display_class( $fields ) {
 		$types = array( 'billing', 'shipping' );
@@ -116,7 +122,9 @@ class FluidCheckout_IntegrationZiptastic extends FluidCheckout {
 
 
 	/**
-	 * Change address fields args to display in best order for ziptastic auto-fill
+	 * Change address fields args to display in best order for ziptastic auto-fill.
+	 *
+	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function change_address_field_args( $field_args ) {
 		$field_args = wc_array_overlay( $field_args, array(
