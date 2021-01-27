@@ -441,6 +441,7 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 	/**
 	 * Add shipping methods as checkout fragment.
+	 * 
 	 * @param array $fragments Checkout fragments.
 	 */
 	function add_checkout_shipping_methods_fragment( $fragments ) {

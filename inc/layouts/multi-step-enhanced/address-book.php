@@ -1368,8 +1368,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 	/**
 	 * Maybe unset billing address session on order update.
-	 * 
-	 **/
+	 *
+	 * @param   Int       $order_id     Order ID number.
+	 * @param   Array     $posted_data  Data sent from the browser via POST method.
+	 * @param   WC_Order  $order        WooCommerce Order object.
+	 */
 	public function maybe_unset_billing_address_session_on_order_update( $order_id, $posted_data, $order ) {
 		// Bail if order pending or failed
 		if ( ! $order || $order->has_status( array( 'failed' ) ) ) { return; }
