@@ -301,7 +301,6 @@
 
 		if ( selectedAddress && selectedAddress.matches( _settings.addressEntryNewSelector ) ) {
 			updateAddressAttribute( addressBook, selectedAddress );
-			triggerUpdateCheckout();
 		}
 	}
 
