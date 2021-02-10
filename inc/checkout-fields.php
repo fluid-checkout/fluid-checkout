@@ -162,26 +162,28 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 */
 	public function get_checkout_field_args() {
 		return apply_filters( 'wfc_checkout_field_args', array(
-			'billing_email'			=> array( 'priority' => 5 ),
-			'billing_first_name'	=> array( 'priority' => 10 ),
-			'billing_last_name'		=> array( 'priority' => 20 ),
-			'billing_phone'			=> array( 'priority' => 30, 'class' => array( 'form-row-first' ) ),
-			'billing_company'		=> array( 'priority' => 35, 'class' => array( 'form-row-last' ) ),
-
-			'billing_postcode' 		=> array( 'autocomplete' => 'billing postal-code' ),
-			'billing_country' 		=> array( 'autocomplete' => 'billing country' ),
-			'billing_city' 			=> array( 'autocomplete' => 'billing address-level2' ),
-			'billing_state' 		=> array( 'autocomplete' => 'billing address-level1' ),
+			'billing_email'         => array( 'priority' => 5, 'autocomplete' => 'billing email' ),
+			'billing_first_name'    => array( 'priority' => 10, 'autocomplete' => 'billing given-name' ),
+			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'billing family-name' ),
+			'billing_phone'         => array( 'priority' => 30, 'autocomplete' => 'billing tel', 'class' => array( 'form-row-first' ) ),
+			'billing_company'       => array( 'priority' => 35, 'autocomplete' => 'billing organization', 'class' => array( 'form-row-last' ) ),
+			'billing_address_1'     => array( 'autocomplete' => 'billing address-line1' ),
+			'billing_address_2'     => array( 'autocomplete' => 'billing address-line2' ),
+			'billing_city'          => array( 'autocomplete' => 'billing address-level2' ),
+			'billing_state'         => array( 'autocomplete' => 'billing address-level1' ),
+			'billing_country'       => array( 'autocomplete' => 'billing country' ),
+			'billing_postcode'      => array( 'autocomplete' => 'billing postal-code' ),
 			
-			'shipping_first_name'	=> array( 'priority' => 10 ),
-			'shipping_last_name'	=> array( 'priority' => 20 ),
-			'shipping_phone'		=> array( 'priority' => 30, 'class' => array( 'form-row-first' ) ),
-			'shipping_company'		=> array( 'priority' => 35, 'class' => array( 'form-row-last' ) ),
-			
-			'shipping_postcode' 	=> array( 'autocomplete' => 'shipping postal-code' ),
-			'shipping_country' 		=> array( 'autocomplete' => 'shipping country' ),
-			'shipping_city' 		=> array( 'autocomplete' => 'shipping address-level2' ),
-			'shipping_state' 		=> array( 'autocomplete' => 'shipping address-level1' ),
+			'shipping_first_name'   => array( 'priority' => 10, 'autocomplete' => 'shipping given-name' ),
+			'shipping_last_name'    => array( 'priority' => 20, 'autocomplete' => 'shipping family-name' ),
+			'shipping_phone'        => array( 'priority' => 30, 'autocomplete' => 'shipping tel', 'class' => array( 'form-row-first' ) ),
+			'shipping_company'      => array( 'priority' => 35, 'autocomplete' => 'shipping organization', 'class' => array( 'form-row-last' ) ),
+			'shipping_address_1'    => array( 'autocomplete' => 'shipping address-line1' ),
+			'shipping_address_2'    => array( 'autocomplete' => 'shipping address-line2' ),
+			'shipping_city'         => array( 'autocomplete' => 'shipping address-level2' ),
+			'shipping_state'        => array( 'autocomplete' => 'shipping address-level1' ),
+			'shipping_country'      => array( 'autocomplete' => 'shipping country' ),
+			'shipping_postcode'     => array( 'autocomplete' => 'shipping postal-code' ),
 		) );
 	}
 
