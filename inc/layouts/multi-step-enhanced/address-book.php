@@ -1242,7 +1242,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			$allowed_countries = WC()->countries->get_allowed_countries();
 			if ( is_array( $address_data ) && array_key_exists( 'country', $address_data ) && in_array( $address_data[ 'country' ], array_keys( $allowed_countries ) ) ) {
 				$address_data[ 'address_same_as' ] = '1';
-				WC()->session->set( 'wfc_billing_address_selected', $address_data );
+				$this->set_billing_address_selected_session_value( $address_data );
 			}
 		}
 	}
