@@ -74,6 +74,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 		// Persist addresses on order update
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_address_sessions_on_update_order_review' ), 10 );
+		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'set_address_posted_data_from_session_on_process_checkout' ), 10 );
 		add_action( 'woocommerce_thankyou', array( $this, 'unset_shipping_address_selected_session' ), 10 );
 		add_action( 'woocommerce_thankyou', array( $this, 'unset_billing_address_selected_session' ), 10 );
 
@@ -1363,7 +1364,40 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			$data[ $v[0] ] = $v[1];
 		}
 
+		// Update address session values
 		$this->set_address_selected_sessions( $data );
+	}
+
+	/**
+	 * Set addresses session values when processing an order (place order).
+	 * 
+	 * @param array $post_data Post data for all order fields.
+	 */
+	public function set_address_posted_data_from_session_on_process_checkout( $post_data ) {
+		// Get extra posted data
+		$post_data = array_merge( $post_data, array(
+			'shipping_address_id' => isset( $_POST['shipping_address_id'] ) ? wc_clean( wp_unslash( $_POST['shipping_address_id'] ) ) : '',
+			'billing_address_id' => isset( $_POST['billing_address_id'] ) ? wc_clean( wp_unslash( $_POST['billing_address_id'] ) ) : '',
+			'billing_address_same_as' => isset( $_POST['billing_address_same_as'] ) ? wc_clean( wp_unslash( $_POST['billing_address_same_as'] ) ) : '',
+		) );
+
+		// Update address session values
+		$this->set_address_selected_sessions( $data );
+
+		// Maybe set posted data for billing same as shipping
+		$saved_billing_address = $this->get_billing_address_selected_session();
+		if ( ! $saved_billing_address || ( array_key_exists( 'same_as_shipping', $saved_billing_address ) && $saved_billing_address['same_as_shipping'] == '1' ) ) {
+			$post_data[ 'billing_company' ] = $saved_billing_address[ 'company' ];
+			$post_data[ 'billing_phone' ] = $saved_billing_address[ 'phone' ];
+			$post_data[ 'billing_address_1' ] = $saved_billing_address[ 'address_1' ];
+			$post_data[ 'billing_address_2' ] = $saved_billing_address[ 'address_2' ];
+			$post_data[ 'billing_city' ] = $saved_billing_address[ 'city' ];
+			$post_data[ 'billing_state' ] = $saved_billing_address[ 'state' ];
+			$post_data[ 'billing_postcode' ] = $saved_billing_address[ 'postcode' ];
+			$post_data[ 'billing_country' ] = $saved_billing_address[ 'country' ];
+		}
+		
+		return $post_data;
 	}
 
 	/**
