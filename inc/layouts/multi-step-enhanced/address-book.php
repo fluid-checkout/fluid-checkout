@@ -1428,7 +1428,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		
 		// Maybe set billing same as shipping
 		$saved_billing_address = $this->get_billing_address_selected_session();
-		if ( ! $saved_billing_address || ( array_key_exists( 'same_as_shipping', $saved_billing_address ) && $saved_billing_address['same_as_shipping'] == '1' ) ) {
+		if ( ! $saved_billing_address || $data['billing_address_same_as'] == '1' ) {
 			$address_data = $shipping_address_data;
 
 			$allowed_countries = WC()->countries->get_allowed_countries();
