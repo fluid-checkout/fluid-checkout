@@ -1342,7 +1342,14 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			'address_id' => $data[ 'billing_address_id' ],
 		);
 
+		// Save shipping address to session
 		$this->set_shipping_address_selected_session_value( $shipping_address_data );
+		
+		// Maybe change billing address data to use "same as shipping"
+		$billing_address_saved = $this->get_billing_address_selected_session();
+		$billing_address_data = is_array( $billing_address_saved ) && isset( $billing_address_saved[ 'address_same_as' ] ) && $billing_address_saved[ 'address_same_as' ] == '1' ? $billing_address_saved : $billing_address_data;
+
+		// Save billing address to session
 		$this->set_billing_address_selected_session_value( $billing_address_data );
 	}
 
