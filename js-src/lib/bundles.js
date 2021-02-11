@@ -18,6 +18,4 @@
     RequireBundle.register( 'wfc-address-book', [ settings.jsPath + 'address-book' + ver + '.js', settings.cssPath + 'address-book' + ver + '.css' ], '.has-wfc-address-book .wfc-address-book__form-wrapper', function(){ AddressBook.init(); } );
         
     RequireBundle.register( 'wfc-mailcheck', [ settings.jsPath + 'lib/mailcheck' + ver + '.js', settings.jsPath + 'mailcheck-init' + ver + '.js' ], '[data-mailcheck]', function(){ MailcheckInit.init(); } );
-    
-    RequireBundle.register( 'wfc-ziptastic', [ settings.jsPath + 'ziptastic' + ver + '.js' ], '[data-ziptastic]', function(){ Ziptastic.init(); } );
 })();
