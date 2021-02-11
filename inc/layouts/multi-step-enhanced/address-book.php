@@ -73,7 +73,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'save_addresses_from_order' ), 10, 2 );
 
 		// Persist addresses on order update
-		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_address_selected_session' ), 10 );
+		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_address_sessions_on_update_order_review' ), 10 );
 		add_action( 'woocommerce_thankyou', array( $this, 'unset_shipping_address_selected_session' ), 10 );
 		add_action( 'woocommerce_thankyou', array( $this, 'unset_billing_address_selected_session' ), 10 );
 
@@ -254,13 +254,13 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		unset( $shipping_address['shipping_address_save'] );
 		unset( $billing_address['email'] );
 		unset( $billing_address['billing_address_save'] );
-		unset( $billing_address['billing_address_same_as'] );
+		unset( $billing_address['same_as_shipping'] );
 
 		// Get address id from hidden field and flag to save field
 		$shipping_address_id = ! empty( $_POST['shipping_address_id'] ) && absint( $_POST['shipping_address_id'] ) > 0 ? absint( $_POST['shipping_address_id'] ) : null;
 		$billing_address_id = ! empty( $_POST['billing_address_id'] ) && absint( $_POST['billing_address_id'] ) > 0 ? absint( $_POST['billing_address_id'] ) : null;
 		$shipping_address_save = $_POST['shipping_address_save'] === '1' ? true : false;
-		$billing_address_save = $_POST['billing_address_save'] === '1' && $_POST['billing_address_same_as'] != '1' ? true : false;
+		$billing_address_save = $_POST['billing_address_save'] === '1' && $_POST['same_as_shipping'] != '1' ? true : false;
 		
 		// Maybe save shipping address
 		$address_book_entries = $this->get_saved_user_address_book_entries( $customer_id, true );
@@ -754,7 +754,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 		// Set flag for "same as" address option
 		if ( is_array( $address_entry_same_as ) ) {
-			$address_entry_same_as[ 'address_same_as' ] = '1';
+			$address_entry_same_as[ 'same_as_shipping' ] = '1';
 		}
 		
 		// Unset address "same as" entry if country not allowed
@@ -805,7 +805,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function output_billing_address_book_new_address_wrapper_start_tag() {
 		$billing_address = $this->get_billing_address_selected_session();
-		$is_same_address_selected = ! $billing_address || $billing_address && array_key_exists( 'address_same_as', $billing_address ) && $billing_address['address_same_as'] == '1';
+		$is_same_address_selected = ! $billing_address || $billing_address && array_key_exists( 'same_as_shipping', $billing_address ) && $billing_address['same_as_shipping'] == '1';
 		$active_class = ! $is_same_address_selected && $this->get_billing_address_entry_checked_state( array( 'address_id' => 'new_billing' ), false ) ? 'active' : '';
 		echo '<div class="wfc-address-book__form-wrapper '. $active_class .'">';
 	}
@@ -1172,7 +1172,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		}
 		elseif ( $address_type == 'billing' && ! $address_data_session ) {
 			$address_data_shipping = $this->get_customer_selected_address_data( 'shipping', $customer_id );
-			$address_data_shipping['address_same_as'] = '1';
+			$address_data_shipping['same_as_shipping'] = '1';
 			$address_data = $address_data_shipping;
 		}
 
@@ -1264,14 +1264,14 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 		$address_data_session = $this->{'get_'.$address_type.'_address_selected_session'}();
 		$address_id_session = $address_data_session && array_key_exists( 'address_id', $address_data_session ) ? $address_data_session['address_id'] : null;
-		$address_same_as_session = $address_data_session && array_key_exists( 'address_same_as', $address_data_session ) && $address_data_session['address_same_as'] == 1;
+		$address_same_as_session = $address_data_session && array_key_exists( 'same_as_shipping', $address_data_session ) && $address_data_session['same_as_shipping'] == 1;
 
 		// Same as shipping address was checked and is new address option
 		if ( $address_type == 'billing' && $address_same_as_session && $address_id_session == 'new_shipping' && $address_entry['address_id'] == $address_id_session ) {
 			$checked_address = true;
 		}
 		// Billing same as shipping
-		elseif ( $address_type == 'billing' && ! $address_data_session && is_array( $address_entry ) && array_key_exists( 'address_same_as', $address_entry ) && $address_entry['address_same_as'] == 1 ) {
+		elseif ( $address_type == 'billing' && ! $address_data_session && is_array( $address_entry ) && array_key_exists( 'same_as_shipping', $address_entry ) && $address_entry['same_as_shipping'] == 1 ) {
 			$checked_address = true;
 		}
 		// New address active when shipping address saved not in allowed countries
@@ -1307,16 +1307,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		
 		// Set session value
 		WC()->session->set( 'wfc_shipping_address_selected', $address_data );
-
-		// Set billing same as shipping
-		$billing_address = $this->get_billing_address_selected_session();
-		if ( ! $billing_address || ( array_key_exists( 'address_same_as', $billing_address ) && $billing_address['address_same_as'] == '1' ) ) {
-			$allowed_countries = WC()->countries->get_allowed_countries();
-			if ( is_array( $address_data ) && array_key_exists( 'country', $address_data ) && in_array( $address_data[ 'country' ], array_keys( $allowed_countries ) ) ) {
-				$address_data[ 'address_same_as' ] = '1';
-				$this->set_billing_address_selected_session_value( $address_data );
-			}
-		}
 	}
 
 	/**
@@ -1357,12 +1347,14 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		}
 	}
 
+
+
 	/**
-	 * Set shipping address selected on session.
+	 * Set addresses session values when updating order review.
 	 * 
-	 * @param array $post_data Post data.
+	 * @param array $post_data Post data for all order fields.
 	 */
-	public function set_address_selected_session( $post_data ) {
+	public function set_address_sessions_on_update_order_review( $post_data ) {
 		// Parsing posted data on checkout
 		$data = array();
 		$vars = explode( '&', $post_data );
@@ -1371,6 +1363,19 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			$data[ $v[0] ] = $v[1];
 		}
 
+		$this->set_address_selected_sessions( $data );
+	}
+
+	/**
+	 * Set addresses session values.
+	 * 
+	 * @param array $data Parsed post data for all checkout fields.
+	 */
+	public function set_address_selected_sessions( $data ) {
+		// Bail if data not valid
+		if ( ! $data || ! is_array( $data ) ) { return; }
+
+		// Get shipping address
 		$shipping_address_data = array(
 			'first_name' => $data[ 'shipping_first_name' ],
 			'last_name' => $data[ 'shipping_last_name' ],
@@ -1384,31 +1389,46 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			'phone' => $data[ 'shipping_phone' ],
 			'address_id' => $data[ 'shipping_address_id' ],
 		);
-		
-		$billing_address_data = array(
-			'first_name' => $data[ 'billing_first_name' ],
-			'last_name' => $data[ 'billing_last_name' ],
-			'company' => $data[ 'billing_company' ],
-			'address_1' => $data[ 'billing_address_1' ],
-			'address_2' => $data[ 'billing_address_2' ],
-			'city' => $data[ 'billing_city' ],
-			'state' => $data[ 'billing_state' ],
-			'postcode' => $data[ 'billing_postcode' ],
-			'country' => $data[ 'billing_country' ],
-			'phone' => $data[ 'billing_phone' ],
-			'address_id' => $data[ 'billing_address_id' ],
-		);
 
-		// Save shipping address to session
+		$billing_address_data = null;
+		
+		// Maybe set billing same as shipping
+		$saved_billing_address = $this->get_billing_address_selected_session();
+		if ( ! $saved_billing_address || ( array_key_exists( 'same_as_shipping', $saved_billing_address ) && $saved_billing_address['same_as_shipping'] == '1' ) ) {
+			$address_data = $shipping_address_data;
+
+			$allowed_countries = WC()->countries->get_allowed_countries();
+			if ( array_key_exists( 'country', $address_data ) && in_array( $address_data[ 'country' ], array_keys( $allowed_countries ) ) ) {
+				$address_data[ 'first_name' ] = $data[ 'billing_first_name' ];
+				$address_data[ 'last_name' ] = $data[ 'billing_last_name' ];
+				$address_data[ 'same_as_shipping' ] = '1';
+				$billing_address_data = $address_data;
+			}
+		}
+
+		// Maybe use billing address fields
+		if ( $billing_address_data == null ) {
+			$billing_address_data = array(
+				'first_name' => $data[ 'billing_first_name' ],
+				'last_name' => $data[ 'billing_last_name' ],
+				'company' => $data[ 'billing_company' ],
+				'address_1' => $data[ 'billing_address_1' ],
+				'address_2' => $data[ 'billing_address_2' ],
+				'city' => $data[ 'billing_city' ],
+				'state' => $data[ 'billing_state' ],
+				'postcode' => $data[ 'billing_postcode' ],
+				'country' => $data[ 'billing_country' ],
+				'phone' => $data[ 'billing_phone' ],
+				'address_id' => $data[ 'billing_address_id' ],
+			);
+		}
+		
+		// Save addresses session values
 		$this->set_shipping_address_selected_session_value( $shipping_address_data );
-		
-		// Maybe change billing address data to use "same as shipping"
-		$billing_address_saved = $this->get_billing_address_selected_session();
-		$billing_address_data = is_array( $billing_address_saved ) && isset( $billing_address_saved[ 'address_same_as' ] ) && $billing_address_saved[ 'address_same_as' ] == '1' ? $billing_address_saved : $billing_address_data;
-
-		// Save billing address to session
 		$this->set_billing_address_selected_session_value( $billing_address_data );
 	}
+
+
 
 	/**
 	 * Get shipping address selected value from session.
