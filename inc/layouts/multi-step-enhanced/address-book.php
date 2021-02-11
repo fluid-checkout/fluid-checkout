@@ -870,13 +870,14 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Add default value hook for address fields
 	 */
 	public function add_address_field_default_value_hooks() {
-		$default_address_fields = WC()->countries->get_default_address_fields();
 		$address_types = array( 'shipping', 'billing' );
+		$default_address_fields = WC()->countries->get_default_address_fields();
+		$persisted_fields = array_keys( $default_address_fields );
 		
 		foreach ( $address_types as $address_type ) {
-			foreach ( $default_address_fields as $field_key => $value ) {
-				$input = $address_type.'_'.$field_key;
-				
+			foreach ( $persisted_fields as $field_name ) {
+				$input = $address_type.'_'.$field_name;
+
 				// Add filter for customer address values
 				$method_name = 'change_customer_'.$input;
 				if ( method_exists( $this, $method_name ) ) {
@@ -894,7 +895,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function change_default_address_field_value( $value, $input ) {
 		// Bail for some fields
-		$ignore_list = apply_filters( 'wfc_default_address_field_ignore_list', array( 'billing_first_name', 'billing_last_name', 'billing_phone', 'billing_email' ) );
+		$ignore_list = apply_filters( 'wfc_default_address_field_ignore_list', array() );
 		if ( in_array( $input, $ignore_list ) ) { return $value; }
 
 		// Get address type from field input name
@@ -916,6 +917,34 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 
+	/**
+	 * Change customer shipping first name value.
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
+	 */
+	public function change_customer_shipping_first_name( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
+		return array_key_exists( 'first_name', $address_data ) ? $address_data['first_name'] : '';
+	}
+
+	/**
+	 * Change customer shipping last name value.
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
+	 */
+	public function change_customer_shipping_last_name( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'shipping', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
+		return array_key_exists( 'last_name', $address_data ) ? $address_data['last_name'] : '';
+	}
+	
 	/**
 	 * Change customer shipping country value.
 	 *
@@ -1001,6 +1030,34 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	}
 
 
+
+	/**
+	 * Change customer billing first name value.
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
+	 */
+	public function change_customer_billing_first_name( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
+		return array_key_exists( 'first_name', $address_data ) ? $address_data['first_name'] : '';
+	}
+
+	/**
+	 * Change customer billing last name value.
+	 *
+	 * @param   WC_Customer   $customer   The Customer object.
+	 * @param   string  $value         Customer value.
+	 * 
+	 * @return  array   $address_data  Address data.
+	 */
+	public function change_customer_billing_last_name( $value, $customer ) {
+		$address_data = $this->get_customer_selected_address_data( 'billing', $customer->get_id() );
+		if ( ! is_array( $address_data ) || empty( $address_data ) ) { return $value; }
+		return array_key_exists( 'last_name', $address_data ) ? $address_data['last_name'] : '';
+	}
 
 	/**
 	 * Change customer billing country value
