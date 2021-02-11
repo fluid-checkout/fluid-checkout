@@ -1378,7 +1378,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$post_data = array_merge( $post_data, array(
 			'shipping_address_id' => isset( $_POST['shipping_address_id'] ) ? wc_clean( wp_unslash( $_POST['shipping_address_id'] ) ) : '',
 			'billing_address_id' => isset( $_POST['billing_address_id'] ) ? wc_clean( wp_unslash( $_POST['billing_address_id'] ) ) : '',
-			'billing_address_same_as' => isset( $_POST['billing_address_same_as'] ) ? wc_clean( wp_unslash( $_POST['billing_address_same_as'] ) ) : '',
+			'billing_same_as_shipping' => isset( $_POST['billing_same_as_shipping'] ) ? wc_clean( wp_unslash( $_POST['billing_same_as_shipping'] ) ) : '',
 		) );
 
 		// Update address session values
@@ -1428,7 +1428,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		
 		// Maybe set billing same as shipping
 		$saved_billing_address = $this->get_billing_address_selected_session();
-		if ( ! $saved_billing_address || $data['billing_address_same_as'] == '1' ) {
+		if ( ! $saved_billing_address || $data['billing_same_as_shipping'] == '1' ) {
 			$address_data = $shipping_address_data;
 
 			$allowed_countries = WC()->countries->get_allowed_countries();
