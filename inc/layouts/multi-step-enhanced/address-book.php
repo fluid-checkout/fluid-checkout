@@ -40,6 +40,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
 		// Address default values
+		add_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
 		add_action( 'wp', array( $this, 'maybe_set_address_entry_selected_session_to_default' ), 10 );
 		add_action( 'wp', array( $this, 'add_address_field_default_value_hooks' ), 10 );
 
@@ -171,6 +172,20 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		}
 
 		return $classes;
+	}
+
+
+
+	/**
+	 * Change WooCommerce option `woocommerce_ship_to_destination` to always return
+	 * ship to `shipping` address when Address Book is enabled.
+	 *
+	 * @param mixed  $value  Value of the option. If stored serialized, it will be
+     *                       unserialized prior to being returned.
+     * @param string $option Option name.
+	 */
+	public function change_woocommerce_ship_to_destination( $value, $option ) {
+		return 'shipping';
 	}
 
 
@@ -1242,7 +1257,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			$allowed_countries = WC()->countries->get_allowed_countries();
 			if ( is_array( $address_data ) && array_key_exists( 'country', $address_data ) && in_array( $address_data[ 'country' ], array_keys( $allowed_countries ) ) ) {
 				$address_data[ 'address_same_as' ] = '1';
-				WC()->session->set( 'wfc_billing_address_selected', $address_data );
+				$this->set_billing_address_selected_session_value( $address_data );
 			}
 		}
 	}
