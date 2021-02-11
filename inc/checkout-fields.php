@@ -162,10 +162,11 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 */
 	public function get_checkout_field_args() {
 		return apply_filters( 'wfc_checkout_field_args', array(
-			'billing_email'         => array( 'priority' => 5, 'autocomplete' => 'billing email' ),
-			'billing_first_name'    => array( 'priority' => 10, 'autocomplete' => 'billing given-name' ),
-			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'billing family-name' ),
-			'billing_phone'         => array( 'priority' => 30, 'autocomplete' => 'billing tel', 'class' => array( 'form-row-first' ) ),
+			'billing_email'         => array( 'priority' => 5, 'autocomplete' => 'contact email' ),
+			'billing_first_name'    => array( 'priority' => 10, 'autocomplete' => 'contact given-name' ),
+			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'contact family-name' ),
+			'billing_phone'         => array( 'priority' => 30, 'autocomplete' => 'contact tel', 'class' => array( 'form-row-first' ) ),
+
 			'billing_company'       => array( 'priority' => 35, 'autocomplete' => 'billing organization', 'class' => array( 'form-row-last' ) ),
 			'billing_address_1'     => array( 'autocomplete' => 'billing address-line1' ),
 			'billing_address_2'     => array( 'autocomplete' => 'billing address-line2' ),

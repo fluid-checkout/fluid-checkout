@@ -11,7 +11,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$checked_same_as_address = FluidCheckout_AddressBook::instance()->{'get_'.$address_type.'_address_entry_checked_state'}( $address_entry_same_as, false );
+$checked_same_as_address = FluidCheckout_AddressBook::instance()->get_billing_address_entry_checked_state( $address_entry_same_as, false );
 $checked_same_as_address_attribute = $checked_same_as_address ? 'data-address-same-as-checked="1"' : '';
 ?>
 <div class="address-book address-book__<?php echo esc_attr( $address_type ); ?>" <?php echo $checked_same_as_address_attribute; ?>>
@@ -44,7 +44,7 @@ $checked_same_as_address_attribute = $checked_same_as_address ? 'data-address-sa
 				wp_json_encode( $address_entry_same_as ),
                 $same_as_address_label,
                 'data-address-book-same-as-entry',
-                sprintf( '<input type="hidden" name="%1$s_address_same_as" id="address_book_entry_%1$s_same_as" value="%2$s"/>', $address_type, $checked_same_as_address ? '1' : '0' ),
+                sprintf( '<input type="hidden" name="billing_same_as_shipping" id="address_book_entry_billing_same_as" value="%1$s"/>', $checked_same_as_address ? '1' : '0' ),
 				'_same_as',
 				$first ? 'address-book__entry-label--first' : ''
 			),
