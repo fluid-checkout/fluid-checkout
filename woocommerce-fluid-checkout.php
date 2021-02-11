@@ -220,9 +220,6 @@ class FluidCheckout {
 		require_once self::$directory_path . 'inc/checkout-validation.php';
 		require_once self::$directory_path . 'inc/checkout-layouts.php';
 		require_once self::$directory_path . 'inc/checkout-gift-options.php';
-		
-		// Integrations
-		require_once self::$directory_path . 'inc/integration-ziptastic.php';
 	}
 
 
