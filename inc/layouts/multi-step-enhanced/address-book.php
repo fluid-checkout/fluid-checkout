@@ -1280,6 +1280,10 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		elseif ( $address_type == 'billing' && ! $address_data_session && is_array( $address_entry ) && array_key_exists( 'same_as_shipping', $address_entry ) && $address_entry['same_as_shipping'] == 1 ) {
 			$checked_address = true;
 		}
+		// Billing default to new address
+		elseif ( $address_type == 'billing' && ! $address_data_session && ! $this->is_default_billing_same_as_shipping() && $address_entry['address_id'] == 'new_billing' ) {
+			$checked_address = true;
+		}
 		// New address active when shipping address saved not in allowed countries
 		elseif( $address_type == 'shipping' && is_array( $address_entry ) && $address_entry['address_id'] == 'new_shipping' && count( $this->get_saved_user_address_book_entries_for_shipping() ) == 0 ) {
 			$checked_address = true;
@@ -1356,6 +1360,15 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
+	 * Checks if billing address should default to shipping address.
+	 *
+	 * @return  Boolean  True if billing address defaults to same as the shipping address, false otherwise.
+	 */
+	public function is_default_billing_same_as_shipping() {
+		return ( get_option( 'wfc_default_to_billing_same_as_shipping', 'true' ) === 'true' );
+	}
+
+	/**
 	 * Set addresses session values when updating order review.
 	 * 
 	 * @param array $posted_data Posted data for all checkout fields.
@@ -1391,7 +1404,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 		// Maybe set posted data for billing same as shipping
 		$saved_billing_address = $this->get_billing_address_selected_session();
-		if ( ! $saved_billing_address || ( array_key_exists( 'same_as_shipping', $saved_billing_address ) && $saved_billing_address['same_as_shipping'] == '1' ) ) {
+		if ( ( $this->is_default_billing_same_as_shipping() && ! $saved_billing_address ) || ( array_key_exists( 'same_as_shipping', $saved_billing_address ) && $saved_billing_address['same_as_shipping'] == '1' ) ) {
 			$posted_data[ 'billing_company' ] = $saved_billing_address[ 'company' ];
 			$posted_data[ 'billing_phone' ] = $saved_billing_address[ 'phone' ];
 			$posted_data[ 'billing_address_1' ] = $saved_billing_address[ 'address_1' ];
@@ -1433,7 +1446,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		
 		// Maybe set billing same as shipping
 		$saved_billing_address = $this->get_billing_address_selected_session();
-		if ( ! $saved_billing_address || $posted_data['billing_same_as_shipping'] == '1' ) {
+		if ( ( $this->is_default_billing_same_as_shipping() && ! $saved_billing_address ) || $posted_data['billing_same_as_shipping'] == '1' ) {
 			$address_data = $shipping_address_data;
 
 			$allowed_countries = WC()->countries->get_allowed_countries();
