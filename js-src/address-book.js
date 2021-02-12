@@ -32,7 +32,7 @@
 		addressEntryNewSelector: '[data-address-book-new]',
 		addressEntrySameAsSelector: '[data-address-book-same]',
 		addressFieldsSelector: 'input, select, textarea',
-		persistAddressFieldsSelector: '#shipping_first_name, #shipping_last_name, #shipping_phone, #shipping_company, #shipping_address_1, #shipping_address_2, #shipping_country, #shipping_state, #shipping_postcode, #shipping_city, #billing_address_1, #billing_address_2, #billing_country, #billing_state, #billing_postcode, #billing_city, #billing_company',
+		persistAddressFieldsSelector: '#shipping_first_name, #shipping_last_name, #shipping_phone, #shipping_company, #shipping_address_1, #shipping_address_2, #shipping_country, #shipping_state, #shipping_postcode, #shipping_city, #billing_country',
 		addressFieldsCleanSelector: '[name$="_address_id"], #shipping_address_save, #billing_address_save',
 		selectedAddressIdSelector: '[name$="_address_id"]:checked',
 		formRowSelector: '.form-row',
