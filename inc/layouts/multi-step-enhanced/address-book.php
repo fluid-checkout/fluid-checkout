@@ -240,8 +240,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Bail if user not logged in
 		if ( ! is_user_logged_in() ) { return; }
 
-		// TODO: Add nonce check for saving addresses for security and
-		// to avoid inconsistencies in the address book entries saved by admin users
+		// Security checks
+		// Use nonce from the WooCommerce process checkout
+		// as this function is only intended to run when an order is successfully placed
+		$nonce_value = wc_get_var( $_REQUEST['woocommerce-process-checkout-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
+		if ( empty( $nonce_value ) || ! wp_verify_nonce( $nonce_value, 'woocommerce-process_checkout' ) ) { return; }
 
 		$order = wc_get_order( $order_id );
 		$customer_id = $order->get_customer_id();
@@ -266,17 +269,19 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Maybe save shipping address
 		$address_book_entries = $this->get_saved_user_address_book_entries( $customer_id, true );
 		if ( $shipping_address_save && ! array_key_exists( $shipping_address_id, $address_book_entries ) ) {
-			if ( $this->add_new_address_book_entry( $shipping_address ) ) {
-				// TODO: Maybe add order meta to identify if address was saved
-			}
+			$address_added = $this->add_new_address_book_entry( $shipping_address );
+			// if ( $address_added ) {
+				// TODO: Maybe add order meta to identify if address was saved during checkout
+			// }
 		}
 
 		// Maybe save billing address
 		$address_book_entries = $this->get_saved_user_address_book_entries( $customer_id, true );
 		if ( $billing_address_save && ! array_key_exists( $billing_address_id, $address_book_entries ) ) {
-			if ( $this->add_new_address_book_entry( $billing_address ) ) {
-				// TODO: Maybe add order meta to identify if address was saved
-			}
+			$address_added = $this->add_new_address_book_entry( $billing_address );
+			// if ( $address_added ) {
+				// TODO: Maybe add order meta to identify if address was saved during checkout
+			// }
 		}
 	}
 
@@ -1684,29 +1689,21 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	public function maybe_save_address_book_entry() {
 		global $wp;
 
+		// Security checks
 		$nonce_value = wc_get_var( $_REQUEST['woocommerce-edit-address-book-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
-
-		if ( ! wp_verify_nonce( $nonce_value, 'woocommerce-edit_address_book' ) ) {
-			return;
-		}
-
-		if ( empty( $_POST['action'] ) || 'edit_address_book' !== $_POST['action'] ) {
-			return;
-		}
+		if ( ! wp_verify_nonce( $nonce_value, 'woocommerce-edit_address_book' ) ) { return; }
+		if ( empty( $_POST['action'] ) || 'edit_address_book' !== $_POST['action'] ) { return; }
 
 		wc_nocache_headers();
 
+		// Check for user_id
 		$user_id = get_current_user_id();
+		if ( $user_id <= 0 ) { return; }
 
-		if ( $user_id <= 0 ) {
-			return;
-		}
-
+		// Get address ID (updating or new address?)
 		$address_id = isset( $wp->query_vars['edit-address'] ) ? wc_edit_address_i18n( sanitize_title( $wp->query_vars['edit-address'] ), true ) : 'new';
 		
-		if ( ! isset( $_POST[ 'country' ] ) ) {
-			return;
-		}
+		if ( ! isset( $_POST[ 'country' ] ) ) { return; }
 		
 		$address = WC()->countries->get_address_fields( wc_clean( wp_unslash( $_POST[ 'country' ] ) ), '' );
 		$address_entry = array();
