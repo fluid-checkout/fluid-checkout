@@ -34,7 +34,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Late hooks
-		add_filter( 'wp', array( $this, 'late_hooks' ), 10 );
+		add_action( 'wp', array( $this, 'late_hooks' ), 10 );
 
 		// Body Class
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
