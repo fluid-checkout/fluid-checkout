@@ -299,9 +299,12 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 				'user_email'	=> $current_user->get_email(),
 				'display_name'	=> $current_user->get_billing_first_name() . ' ' . $current_user->get_billing_last_name(),
 			);
-			$billing_phone = $current_user->get_billing_phone();
-			if ( ! empty( $billing_phone ) ) {
-				$user_data['billing_phone'] = $billing_phone;
+			
+			if ( 'hidden' !== get_option( 'woocommerce_checkout_phone_field', 'required' ) ) {
+				$billing_phone = $current_user->get_billing_phone();
+				if ( ! empty( $billing_phone ) ) {
+					$user_data['billing_phone'] = $billing_phone;
+				}
 			}
 
 			$user_data = apply_filters( 'wfc_checkout_contact_user_data', $user_data );
