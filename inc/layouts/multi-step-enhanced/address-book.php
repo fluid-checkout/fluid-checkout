@@ -97,7 +97,8 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 		// Phone field for address book entry edit
 		if ( get_option( 'wfc_add_shipping_phone_field', 'true' ) === 'true' ) {
-			// Address book entry edit fields calls action without the fields type
+			// Address book entry edit fields calls the function `WC_Countries::get_address_fields()` without the fields type
+			// The hook name comes from `'woocommerce_' . $type . 'fields'` in the function `WC_Countries::get_address_fields()`
 			add_filter( 'woocommerce_fields' , array( $this, 'add_phone_field_for_address_book_entry' ), 5 );
 		}
 
@@ -1655,12 +1656,15 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function add_phone_field_for_address_book_entry( $fields ) {
-		$fields['phone'] = FluidCheckout_CheckoutFields::instance()->get_shipping_phone_field();
+		$checkout_field_args = FluidCheckout_CheckoutFields::instance()->get_checkout_field_args();
 
-		$field_args = FluidCheckout_CheckoutFields::instance()->get_checkout_field_args();
-		foreach( $field_args as $field => $values ) {
-			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
-		}
+		// Add phone field
+		$fields['phone'] = FluidCheckout_CheckoutFields::instance()->get_shipping_phone_field();
+		$fields['phone']['priority'] = $checkout_field_args[ 'shipping_phone' ][ 'priority' ];
+
+		// Change company priority and classes to accomodate the phone field
+		$fields['company']['priority'] = $checkout_field_args[ 'shipping_company' ][ 'priority' ];
+		$fields['company']['class'] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $fields['company']['class'], $checkout_field_args[ 'shipping_company' ][ 'class' ] );
 
 		return $fields;
 	}
