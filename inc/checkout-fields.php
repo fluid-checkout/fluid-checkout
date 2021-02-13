@@ -21,21 +21,21 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		// TODO: Move field type enhancements to field args filter below
 		// Checkout field types enhancement for mobile
 		if ( get_option( 'wfc_apply_checkout_field_types_for_mobile', 'true' ) === 'true' ) {
-			add_filter( 'woocommerce_billing_fields' , array( $this, 'change_checkout_field_types' ), 5 );
-			add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_checkout_field_types' ), 5 );
+			add_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_types' ), 5 );
+			add_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_types' ), 5 );
 		}
 
 		// Checkout fields args
 		if ( get_option( 'wfc_apply_checkout_field_args', 'true' ) === 'true' ) {
-			add_filter( 'woocommerce_billing_fields' , array( $this, 'change_checkout_field_args' ), 10 );
-			add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_checkout_field_args' ), 10 );
-			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_order_field_args' ), 10 );
-			add_filter( 'woocommerce_default_address_fields' , array( $this, 'change_default_locale_field_args' ), 10 );
+			add_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_args' ), 10 );
+			add_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 10 );
+			add_filter( 'woocommerce_checkout_fields', array( $this, 'change_order_field_args' ), 10 );
+			add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 10 );
 		}
 
 		// Shipping Phone Field
 		if ( get_option( 'wfc_add_shipping_phone_field', 'true' ) === 'true' ) {
-			add_filter( 'woocommerce_shipping_fields' , array( $this, 'add_shipping_phone_field' ), 5 );
+			add_filter( 'woocommerce_shipping_fields', array( $this, 'add_shipping_phone_field' ), 5 );
 			add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_shipping_phone' ), 10, 1 );
 			add_action( 'woocommerce_admin_order_data_after_shipping_address', array( $this, 'output_shipping_phone_field_admin_screen' ), 1, 1 );
 			add_filter( 'woocommerce_order_formatted_shipping_address', array( $this, 'output_order_formatted_shipping_address_with_phone' ), 1, 2 );
