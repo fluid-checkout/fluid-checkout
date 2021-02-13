@@ -18,6 +18,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// TODO: Move field type enhancements to field args filter below
 		// Checkout field types enhancement for mobile
 		if ( get_option( 'wfc_apply_checkout_field_types_for_mobile', 'true' ) === 'true' ) {
 			add_filter( 'woocommerce_billing_fields' , array( $this, 'change_checkout_field_types' ), 5 );
@@ -29,6 +30,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			add_filter( 'woocommerce_billing_fields' , array( $this, 'change_checkout_field_args' ), 10 );
 			add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_checkout_field_args' ), 10 );
 			add_filter( 'woocommerce_checkout_fields' , array( $this, 'change_order_field_args' ), 10 );
+			add_filter( 'woocommerce_default_address_fields' , array( $this, 'change_default_locale_field_args' ), 10 );
 		}
 
 		// Shipping Phone Field
@@ -167,7 +169,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'contact family-name' ),
 			'billing_phone'         => array( 'priority' => 30, 'autocomplete' => 'contact tel', 'class' => array( 'form-row-first' ) ),
 
-			'billing_company'       => array( 'priority' => 35, 'autocomplete' => 'billing organization', 'class' => array( 'form-row-last' ) ),
+			'billing_company'       => array( 'priority' => 100, 'autocomplete' => 'billing organization', 'class' => array( 'form-wide' ) ),
 			'billing_address_1'     => array( 'autocomplete' => 'billing address-line1' ),
 			'billing_address_2'     => array( 'autocomplete' => 'billing address-line2' ),
 			'billing_city'          => array( 'autocomplete' => 'billing address-level2' ),
@@ -181,11 +183,25 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			'shipping_company'      => array( 'priority' => 35, 'autocomplete' => 'shipping organization', 'class' => array( 'form-row-last' ) ),
 			'shipping_address_1'    => array( 'autocomplete' => 'shipping address-line1' ),
 			'shipping_address_2'    => array( 'autocomplete' => 'shipping address-line2' ),
-			'shipping_city'         => array( 'autocomplete' => 'shipping address-level2' ),
-			'shipping_state'        => array( 'autocomplete' => 'shipping address-level1' ),
+			'shipping_city'         => array( 'autocomplete' => 'shipping address-level2', 'class' => array( 'form-row-first' ) ),
+			'shipping_state'        => array( 'autocomplete' => 'shipping address-level1', 'class' => array( 'form-row-last' ) ),
 			'shipping_country'      => array( 'autocomplete' => 'shipping country' ),
-			'shipping_postcode'     => array( 'autocomplete' => 'shipping postal-code' ),
+			'shipping_postcode'     => array( 'autocomplete' => 'shipping postal-code', 'class' => array( 'form-row-first' ) ),
 		) );
+	}
+
+
+
+	/**
+	 * Change default locale fields args.
+	 * 
+	 * @param   array  $fields  Default address fields args.
+	 */
+	public function change_default_locale_field_args( $fields ) {
+		if ( array_key_exists( 'city', $fields ) ) { $fields['city']['class'] = array( 'form-row-first' ); }
+		if ( array_key_exists( 'state', $fields ) ) { $fields['state']['class'] = array( 'form-row-last' ); }
+		if ( array_key_exists( 'postcode', $fields ) ) { $fields['postcode']['class'] = array( 'form-row-first' ); }
+		return $fields;
 	}
 
 
