@@ -18,13 +18,6 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// TODO: Move field type enhancements to field args filter below
-		// Checkout field types enhancement for mobile
-		if ( get_option( 'wfc_apply_checkout_field_types_for_mobile', 'true' ) === 'true' ) {
-			add_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_types' ), 5 );
-			add_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_types' ), 5 );
-		}
-
 		// Checkout fields args
 		if ( get_option( 'wfc_apply_checkout_field_args', 'true' ) === 'true' ) {
 			add_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_args' ), 10 );
@@ -42,21 +35,6 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_replacement_field_shipping_phone' ), 10, 2 );
 			add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_shipping_phone_to_formats' ) );
 		}
-	}
-
-
-
-	/**
-	 * Change the types of checkout input fields 
-	 * to display a more appropriate keyboard on mobile devices.
-	 *
-	 * @param   array  $fields  Fields used in checkout.
-	 */
-	public function change_checkout_field_types( $fields ) {
-		if ( array_key_exists( 'billing_email', $fields ) ) { $fields['billing_email']['inputmode'] = 'email'; }
-		if ( array_key_exists( 'billing_phone', $fields ) ) { $fields['billing_phone']['inputmode'] = 'tel'; }
-		if ( array_key_exists( 'shipping_phone', $fields ) ) { $fields['shipping_phone']['inputmode'] = 'tel'; }
-		return $fields;
 	}
 
 
