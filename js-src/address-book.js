@@ -393,9 +393,9 @@
 	var initAddressFieldsEventHandlers = function() {
 		if ( _hasJQuery ) {
 			// Need to use jQuery event handler as select2 doesn't fire change event for the underlying select field
-			var debouncedChangeHandler = debounce( changePersistedAddressFields, 500 );
-			$( _settings.persistAddressFieldsSelector ).off( 'change', debouncedChangeHandler );
-			$( _settings.persistAddressFieldsSelector ).on( 'change', debouncedChangeHandler );
+			// var debouncedChangeHandler = debounce( changePersistedAddressFields, 500 );
+			// $( _settings.persistAddressFieldsSelector ).off( 'change', debouncedChangeHandler );
+			// $( _settings.persistAddressFieldsSelector ).on( 'change', debouncedChangeHandler );
 		}
 	}
 
