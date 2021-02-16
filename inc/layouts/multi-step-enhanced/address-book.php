@@ -92,6 +92,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 		// Address Form
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_replace_address_scripts' ), 11 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_replace_checkout_scripts' ), 5 );
 		add_filter( 'woocommerce_country_locale_field_selectors', array( $this, 'change_country_locale_field_selectors' ), 10 );
 		add_action( 'template_redirect', array( $this, 'maybe_save_address_book_entry' ), 10 );
 
@@ -1680,6 +1681,19 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
 		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
 	}
+
+	/**
+	 * Replace WooCommerce checkout.js with a modified version supporting shipping before billing
+	 */
+	public function enqueue_replace_checkout_scripts() {
+		// Bail if not at checkout page or WooCommerce function `is_checkout` isn't available
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) { return; }
+		// wp_dequeue_script( 'wc-checkout' );
+		// wp_deregister_script( 'wc-checkout' );
+		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n' ), NULL, true );
+	}
+
+	
 
 	/**
 	 * Change selectors for address locale fields.
