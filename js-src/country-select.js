@@ -17,8 +17,7 @@ jQuery( function( $ ) {
 	}
 
 	// Select2 Enhancement if it exists
-	// if ( $().selectWoo ) {
-	if ( false ) {
+	if ( $().selectWoo ) {
 		var getEnhancedSelectFormatString = function() {
 			return {
 				'language': {
