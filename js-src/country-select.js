@@ -17,7 +17,8 @@ jQuery( function( $ ) {
 	}
 
 	// Select2 Enhancement if it exists
-	if ( $().selectWoo ) {
+	// if ( $().selectWoo ) {
+	if ( false ) {
 		var getEnhancedSelectFormatString = function() {
 			return {
 				'language': {
@@ -154,10 +155,7 @@ jQuery( function( $ ) {
 					$statebox.append( $option );
 				} );
 
-				console.log( input_name );
-				console.log( value );
-				console.log( $statebox );
-				// $statebox.val( value ).change();
+				$statebox.val( value ).change();
 
 				$( document.body ).trigger( 'country_to_state_changed', [country, $wrapper ] );
 			}
