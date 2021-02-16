@@ -229,7 +229,7 @@
 			var fieldkey = addressType+'_'+fieldKeys[i];
 			var field = addressBook.querySelector( '[name="'+fieldkey+'"]' );
 			setFieldValue( field, addressData[ key ] );
-			
+
 			console.log( fieldkey + ': ' + addressData[ key ] );
 		}
 	}
@@ -367,6 +367,11 @@
 	 * Handle captured `change` event and route to the appropriate function.
 	 */
 	var handleChange = function( e ) {
+
+		if ( e.target.closest( '#shipping_state' ) ) {
+			console.trace( 'shipping state value changed' );
+		}
+
 		if ( e.target.matches( _settings.addressEntrySelector ) ) {
 			changeSelectedAddress( e.target );
 		}
