@@ -154,7 +154,10 @@ jQuery( function( $ ) {
 					$statebox.append( $option );
 				} );
 
-				$statebox.val( value ).change();
+				console.log( input_name );
+				console.log( value );
+				console.log( $statebox );
+				// $statebox.val( value ).change();
 
 				$( document.body ).trigger( 'country_to_state_changed', [country, $wrapper ] );
 			}
