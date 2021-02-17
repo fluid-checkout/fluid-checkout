@@ -91,7 +91,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'wfc_edit_account_address_form', array( $this, 'output_account_address_book_entries_list_end_tag' ), 30, 2 );
 
 		// Address Form
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_replace_address_scripts' ), 11 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_woocommerce_scripts' ), 5 ); // Need to run before WooCommerce registers and enqueues scripts
 		add_filter( 'woocommerce_country_locale_field_selectors', array( $this, 'change_country_locale_field_selectors' ), 10 );
 		add_action( 'template_redirect', array( $this, 'maybe_save_address_book_entry' ), 10 );
 
@@ -1674,12 +1674,13 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	/**
 	 * Replace WooCommerce address related scripts with modified version targeting field ids without address type prefix
 	 */
-	public function enqueue_replace_address_scripts() {
-		wp_deregister_script( 'wc-country-select' );
-		wp_deregister_script( 'wc-address-i18n' );
+	public function enqueue_woocommerce_scripts() {
 		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
 		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
+		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n' ), NULL, true );
 	}
+
+	
 
 	/**
 	 * Change selectors for address locale fields.
