@@ -105,7 +105,7 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 	.pipe(rename({suffix: settings.assetsVersion}))
     .pipe(gulp.dest('./js/')) // save .js
     .pipe(sourcemaps.init())
-    // .pipe(uglify())
+    .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
     .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest('./js/')); // save .min.js
