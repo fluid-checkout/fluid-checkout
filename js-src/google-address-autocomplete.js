@@ -60,7 +60,10 @@
 				city: 'administrative_area_level_2',
 				address_1: [ 'route', 'street_number' ],
 				components_separator: ', ',
-			}
+			},
+			NL: {
+				address_1: [ 'route', 'street_number' ],
+			},
 		},
 
 	};
@@ -173,6 +176,13 @@
 
 
 
+	/**
+	 * Get country locale settings for address fields from Google Place data.
+	 *
+	 * @param   {string}  countryCode  Country code to get locale settings for.
+	 *
+	 * @return  {Object}               Full locale settings for the country.
+	 */
 	var getLocale = function( countryCode ) {
 		var locale = _settings.localeComponents.default;
 
@@ -211,18 +221,18 @@
 		var fieldComponents = locale[ fieldId ];
 		if ( ! Array.isArray( fieldComponents ) ) { fieldComponents = [ fieldComponents ]; }
 		
-		
-		place.address_components.forEach( function( component ) {
-			var fieldType = component.types[0];
-			
-			if ( fieldComponents.includes( fieldType ) ) {
-				var fieldValue = component[ _settings.componentValueType[ fieldType ] ];
-				values.push( fieldValue );
+		fieldComponents.forEach( function( fieldComponent ) {
+			for ( var i = 0; i < place.address_components.length; i++ ) {
+				var component = place.address_components[ i ];
+				var fieldType = component.types[0];
+				
+				if ( fieldComponent == fieldType ) {
+					var fieldValue = component[ _settings.componentValueType[ fieldType ] ];
+					values.push( fieldValue );
+					break; // Exit place address components iteration when value is found
+				}
 			}
-			
 		} );
-
-		// TODO: Get correct field components order based on locale, such as "number + street" vs "street + number"
 		
 		return values.join( locale.components_separator );
 	}
