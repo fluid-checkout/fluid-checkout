@@ -40,13 +40,14 @@
 			route: 'long_name',
 			locality: 'long_name',
 			administrative_area_level_1: 'short_name',
+			administrative_area_level_2: 'long_name',
 			country: 'short_name',
 			postal_code: 'short_name',
 		},
 		
 		// TODO: Need to set different address_components combination for each country, similar to WC locales
 		// Keys based on WooCommerce forms field ids, values based on component names froom Google Place data
-		fieldIdComponent: {
+		localeComponents: {
 			default: {
 				country: 'country',
 				postcode: 'postal_code',
@@ -172,24 +173,44 @@
 
 
 
+	var getLocale = function( countryCode ) {
+		var locale = _settings.localeComponents.default;
+
+		// Get full locale settings for the country
+		if ( countryCode != null && _settings.localeComponents.hasOwnProperty( countryCode.toUpperCase() ) ) {
+			locale = extend( locale, _settings.localeComponents[ countryCode.toUpperCase() ] );
+		}
+
+		return locale;
+	}
+
+
+
 	/**
 	 * Get the value for an address field from the Google Place data based on the locale.
 	 *
-	 * @param   {Object}  place    Google Place data
 	 * @param   {string}  fieldId  Form field id to get data for.
+	 * @param   {Object}  place    Google Place data
 	 * @param	{string}  locale   Country code of the locale.
 	 *
 	 * @return  {string}           Localized value for the form field.
 	 */
-	var getAddressComponentValue = function( place, fieldId, locale ) {
+	var getFieldValueFromPlace = function( fieldId, place, locale ) {
+		
 		// Bail if place does not have address components
 		if ( ! place || ! place.address_components ) { return; }
 
 		var values = [];
 		
+		// Get default locale if not passed in
+		if ( ! locale ) {
+			locale = _settings.localeComponents.default;
+		}
+		
 		// Get `fieldComponents` as an Array
-		var fieldComponents = _settings.fieldIdComponent.default[ fieldId ];
+		var fieldComponents = locale[ fieldId ];
 		if ( ! Array.isArray( fieldComponents ) ) { fieldComponents = [ fieldComponents ]; }
+		
 		
 		place.address_components.forEach( function( component ) {
 			var fieldType = component.types[0];
@@ -203,7 +224,7 @@
 
 		// TODO: Get correct field components order based on locale, such as "number + street" vs "street + number"
 		
-		return values.join( ' ' );
+		return values.join( locale.components_separator );
 	}
 
 
@@ -220,9 +241,9 @@
 		var groupElement = input.closest( _settings.addressGroupSelector );
 		
 		cleanAddressFields( groupElement );
-
+		
 		// Set country field
-		var countryValue = getAddressComponentValue( place, 'country' );
+		var countryValue = getFieldValueFromPlace( 'country', place );
 		var countryField = groupElement.querySelector( '[id$="country"]' );
 		setFieldValue( countryField, countryValue );
 
@@ -234,7 +255,8 @@
 		}
 
 		// Set other fields
-		var fieldIds = Object.getOwnPropertyNames( _settings.fieldIdComponent.default );
+		var locale = getLocale( countryValue );
+		var fieldIds = Object.getOwnPropertyNames( locale );
 		for ( var i = 0; i < fieldIds.length; i++ ) {
 			var fieldId = fieldIds[ i ];
 			
@@ -242,7 +264,7 @@
 			if ( fieldId == 'country' ) { continue; }
 
 			// Set field value
-			var value = getAddressComponentValue( place, fieldId );
+			var value = getFieldValueFromPlace( fieldId, place, locale );
 			var field = groupElement.querySelector( '[id$="'+fieldId+'"]' );
 			setFieldValue( field, value );
 		}
@@ -292,7 +314,7 @@
 	_publicMethods.init = function( options ) {
 		if ( _hasInitialized ) return;
 
-		_settings = extend( _settings, options );
+		_settings = extend( true, _settings, options );
 		
 		initFields();
 		// TODO: Initialize fields after updated_checkout event to re-initialize address complete on billing field because the content element is replaced entirely
