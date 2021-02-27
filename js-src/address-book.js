@@ -33,7 +33,7 @@
 		addressEntrySameAsSelector: '[data-address-book-same]',
 		addressFieldsSelector: 'input, select, textarea',
 		persistAddressFieldsSelector: '#shipping_first_name, #shipping_last_name, #shipping_phone, #shipping_company, #shipping_address_1, #shipping_address_2, #shipping_country, #shipping_state, #shipping_postcode, #shipping_city, #billing_country, #billing_state',
-		addressFieldsCleanSelector: '[name$="_address_id"], #shipping_address_save, #billing_address_save',
+		addressFieldsDontCleanSelector: '[name$="_address_id"], #shipping_address_save, #billing_address_save',
 		selectedAddressIdSelector: '[name$="_address_id"]:checked',
 		formRowSelector: '.form-row',
 		select2Selector: '[class*="select2"]',
@@ -265,7 +265,7 @@
 			var field = fields[i];
 			
 			// Skip address id fields
-			if ( ! field.matches( _settings.addressFieldsCleanSelector ) ) {
+			if ( ! field.matches( _settings.addressFieldsDontCleanSelector ) ) {
 				setFieldValue( field, '' );
 			}
 		}
