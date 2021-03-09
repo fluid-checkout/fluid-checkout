@@ -1407,7 +1407,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		$saved_billing_address = $this->get_billing_address_selected_session();
 		if ( ( $this->is_default_billing_same_as_shipping() && ! $saved_billing_address ) || ( array_key_exists( 'same_as_shipping', $saved_billing_address ) && $saved_billing_address['same_as_shipping'] == '1' ) ) {
 			$posted_data[ 'billing_company' ] = $saved_billing_address[ 'company' ];
-			$posted_data[ 'billing_phone' ] = $saved_billing_address[ 'phone' ];
 			$posted_data[ 'billing_address_1' ] = $saved_billing_address[ 'address_1' ];
 			$posted_data[ 'billing_address_2' ] = $saved_billing_address[ 'address_2' ];
 			$posted_data[ 'billing_city' ] = $saved_billing_address[ 'city' ];
