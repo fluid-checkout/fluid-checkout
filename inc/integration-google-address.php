@@ -49,7 +49,6 @@ class FluidCheckout_IntegrationGoogleAddress extends FluidCheckout {
 	public function enqueue() {
 		// Bail if not on checkout or edit address page
 		if ( ! function_exists( 'is_checkout' ) && ( ! is_checkout() || is_wc_endpoint_url( 'edit-address' ) ) ) { return; }
-		// TODO: Check if on checkout or address edit pages
 		
 		wp_enqueue_script( 'wfc-google-address-autocomplete', self::$directory_url . 'js/google-address-autocomplete'. self::$asset_version . '.js', array(), NULL, true );
 		wp_enqueue_script( 'wfc-google-address-api', "https://maps.googleapis.com/maps/api/js?key={$this->google_places_api_key}&libraries=places&callback=GoogleAddressAutocomplete.init", array( 'wfc-google-address-autocomplete' ), NULL, true );
