@@ -445,13 +445,17 @@
 
 		// Initialize address autocomplete fields
 		initFields();
+		if ( _hasJQuery ) {
+			// Initialize address fields after `updated_checkout` to reinitialize
+			// billing address complete field
+			$( document.body ).on( 'updated_checkout', initFields );
+		}
 
 		// Add event listeners
 		window.addEventListener( 'focusin', handleFocus );
 		window.addEventListener( 'focusout', handleBlur );
 		window.addEventListener( 'keydown', handleKeydown, true );
-		// TODO: Initialize fields after updated_checkout event to re-initialize address complete on billing field because the content element is replaced entirely
-
+			
 		// Finish initialization
 		document.body.classList.add( _settings.bodyClass );
 		_hasInitialized = true;
