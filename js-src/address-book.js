@@ -37,6 +37,7 @@
 		selectedAddressIdSelector: '[name$="_address_id"]:checked',
 		formRowSelector: '.form-row',
 		select2Selector: '[class*="select2"]',
+		select2InitFieldsSelector: '#billing_country, select#billing_state',
 		copyValueFromFieldSelector: '#billing_first_name, #billing_last_name, #billing_phone',
 		fieldEditedSelector: '[data-field-edited]',
 		
@@ -48,7 +49,6 @@
 		
 		newAddressFormActiveClass: 'active',
 		saveAddressHiddenClass: 'hidden',
-
 
 	}
 	var _updateCheckout = true;
@@ -384,7 +384,10 @@
 		window.addEventListener( 'change', handleChange );
 
 		$( document.body ).on( 'updated_checkout', initAddressFieldsEventHandlers );
+		$( document.body ).on( 'updated_checkout', initSelect2Fields );
+		
 		initAddressFieldsEventHandlers();
+		initSelect2Fields();
 	}
 	
 	/**
@@ -396,6 +399,19 @@
 			var debouncedChangeHandler = debounce( changePersistedAddressFields, 500 );
 			$( _settings.persistAddressFieldsSelector ).off( 'change', debouncedChangeHandler );
 			$( _settings.persistAddressFieldsSelector ).on( 'change', debouncedChangeHandler );
+		}
+	}
+
+	/**
+	 * Initialize select2 components for address fields after `updated_checkout`.
+	 */
+	var initSelect2Fields = function() {
+		if ( _hasJQuery ) {
+			var fields = document.querySelectorAll( _settings.select2InitFieldsSelector );
+			for ( var i = 0; i < fields.length; i++) {
+				var field = fields[i];
+				$( field ).select2();
+			}
 		}
 	}
 
