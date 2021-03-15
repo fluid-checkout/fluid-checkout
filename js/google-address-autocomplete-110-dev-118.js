@@ -320,6 +320,22 @@
 	}
 
 
+	/**
+	 * Prevent form submit when `Enter` key is pressed to select an address suggestion.
+	 *
+	 * @param   {Event}   e  Keydown event.
+	 *
+	 * @return  {Boolean}    Return `false` to prevent event to complete execution, nothing otherwise.
+	 */
+	var maybePreventFormSubmit = function( e ) {
+		// Prevent form submit when `Enter` key is pressed to select an address suggestion
+		if ( e.key == 'Enter' || e.which == 13 ) {
+			e.preventDefault();
+			return false;
+		}
+	}
+
+
 
 
 	/**
@@ -400,6 +416,19 @@
 			restoreInputAutocomplete( e.target );
 		}
 	}
+
+
+
+	/**
+	 * Handle captured `keydown` event and route to the appropriate functions.
+	 *
+	 * @param   {Event}  e  Keydown event dispatched.
+	 */
+	var handleKeydown = function( e ) {
+		if ( e.target.matches( _settings.autocompleteEnabledInputSelector ) ) {
+			maybePreventFormSubmit( e );
+		}
+	}
 	
 	
 
@@ -420,7 +449,7 @@
 		// Add event listeners
 		window.addEventListener( 'focusin', handleFocus );
 		window.addEventListener( 'focusout', handleBlur );
-		// TODO: Prevent form submit when "Enter" key is pressed while selecting a suggestion
+		window.addEventListener( 'keydown', handleKeydown, true );
 		// TODO: Initialize fields after updated_checkout event to re-initialize address complete on billing field because the content element is replaced entirely
 
 		// Finish initialization
