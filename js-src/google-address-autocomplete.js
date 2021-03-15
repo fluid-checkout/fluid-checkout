@@ -22,6 +22,7 @@
 		bodyClass: 'has-google-autocomplete',
 
 		autocompleteInputSelector: '#address_1, #shipping_address_1, #billing_address_1',
+		autocompleteEnabledInputSelector: '.pac-target-input',
 		addressGroupSelector: '.woocommerce-shipping-fields, .woocommerce-billing-fields', // TODO: add group selector for address in account pages
 		select2Selector: '[class*="select2"]',
 		addressFieldsSelector: 'input, select, textarea',
@@ -48,7 +49,7 @@
 		// TODO: Need to set different address_components combination for each country, similar to WC locales
 		// Keys based on WooCommerce forms field ids, values based on component names froom Google Place data
 		localeComponents: {
-			default: {
+			default: { // Default to US settings
 				country: 'country',
 				postcode: 'postal_code',
 				state: 'administrative_area_level_1',
@@ -283,17 +284,64 @@
 
 
 	/**
+	 * Effectively disable the browser autocomplete feature by changing the input `autocomplete` attribute to a random value.
+	 *
+	 * @param   {HTMLElement}  input  Input field to disable the browser autocomplete feature.
+	 */
+	var disableInputAutocomplete = function( input ) {
+		// Bail if input is invalid
+		if ( ! input ) { return; }
+
+		input.setAttribute( 'autocomplete', 'off-' + Date.now() );
+	}
+
+	/**
+	 * Restore the browser autocomplete feature by changing the input `autocomplete` attribute to its original value.
+	 *
+	 * @param   {HTMLElement}  input  Input field to restore the browser autocomplete feature.
+	 */
+	var restoreInputAutocomplete = function( input ) {
+		// Bail if input is invalid
+		if ( ! input ) { return; }
+
+		input.setAttribute( 'autocomplete', input.getAttribute( 'data-o-autocomplete' ) );
+	}
+
+	/**
+	 * Maybe restore the browser autocomplete feature.
+	 *
+	 * @param   {HTMLElement}  input  Input field to restore the browser autocomplete feature.
+	 */
+	var maybeRestoreInputAutocomplete = function( input ) {
+		// Bail if input is invalid of already restored
+		if ( ! input || input.getAttribute( 'autocomplete' ) != 'off' ) { return; }
+
+		restoreInputAutocomplete( input );
+	}
+
+
+
+
+	/**
 	 * Initialize Google Address Autocomplete for an address lookup field.
 	 *
 	 * @param   {HTMLElement}  input  Address lookup for field element.
 	 */
 	var initField = function( input ) {
+		// Bail if input invalid or already initialized
+		if ( ! input || input.matches( _settings.autocompleteEnabledInputSelector ) ) { return; }
+		
 		// Maybe set country restrictions
+		// TODO: Maybe start autocomplete class with country restrictions based on countries dropdown if it has 5 or less options, this will allow for having different restrictions for shipping and billing
 		if ( _settings.componentRestrictions.hasOwnProperty( input.id ) ) {
 			var inputComponentsRestrictions = _settings.componentRestrictions[ input.id ];
 			_settings.autocompleteDefaultOptions.componentRestrictions = inputComponentsRestrictions;
 		}
 		
+		// Get/Set original value of the `autocomplete` attribute
+		input.setAttribute( 'data-o-autocomplete', input.getAttribute( 'autocomplete' ) );
+
+		// Initialze Google Places Autocomplete
 		var autocomplete = new google.maps.places.Autocomplete( input, _settings.autocompleteDefaultOptions );
 		var onPlaceChange = function() {
 			var place = autocomplete.getPlace();
@@ -303,8 +351,20 @@
 				fillAddressFields( place, input, autocomplete );
 			}
 		}
+
+		// Set event handler for suggestion selected/changed
 		autocomplete.addListener( 'place_changed', onPlaceChange );
+
+		// Attempt to disable browser autocomplete for the input field.
+		// This is a hacky way to restore autocomplete values after initializing the Google Places Autocomplete component,
+		// a better approach would be to listen to an event from the API but at the time of making this the only event
+		// available is `place_changed` which won't work for this purpoose
+		// @see https://developers.google.com/maps/documentation/javascript/reference/places-widget#Autocomplete
+		window.setTimeout( function(){ maybeRestoreInputAutocomplete( input ); }, 1000 );
+		window.setTimeout( function(){ maybeRestoreInputAutocomplete( input ); }, 2000 );
+		window.setTimeout( function(){ maybeRestoreInputAutocomplete( input ); }, 5000 );
 	}
+
 
 
 	/**
@@ -314,6 +374,33 @@
 		var inputs = document.querySelectorAll( _settings.autocompleteInputSelector );
 		inputs.forEach( initField );
 	}
+
+
+
+	/**
+	 * Handle captured `focus` event and route to the appropriate functions.
+	 *
+	 * @param   {Event}  e  Event dispatched. Usually `focus` or `focusin`.
+	 */
+	var handleFocus = function( e ) {
+		if ( e.target.matches( _settings.autocompleteEnabledInputSelector ) ) {
+			disableInputAutocomplete( e.target );
+		}
+	}
+	
+
+
+	/**
+	 * Handle captured `blur` event and route to the appropriate functions.
+	 *
+	 * @param   {Event}  e  Event dispatched. Usually `blur` or `focusout`.
+	 */
+	var handleBlur = function( e ) {
+		if ( e.target.matches( _settings.autocompleteEnabledInputSelector ) ) {
+			restoreInputAutocomplete( e.target );
+		}
+	}
+	
 	
 
 	/**
@@ -324,9 +411,16 @@
 	_publicMethods.init = function( options ) {
 		if ( _hasInitialized ) return;
 
+		// Merge settings
 		_settings = extend( true, _settings, options );
-		
+
+		// Initialize address autocomplete fields
 		initFields();
+
+		// Add event listeners
+		window.addEventListener( 'focusin', handleFocus );
+		window.addEventListener( 'focusout', handleBlur );
+		// TODO: Prevent form submit when "Enter" key is pressed while selecting a suggestion
 		// TODO: Initialize fields after updated_checkout event to re-initialize address complete on billing field because the content element is replaced entirely
 
 		// Finish initialization

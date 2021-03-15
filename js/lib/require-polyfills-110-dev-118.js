@@ -12,6 +12,7 @@
      */
     var _polyfills = {
         'polyfill-bind': function(){ return !! Function.bind; },
+        'polyfill-Array': function(){ return ! ( ! Array.prototype.includes || ! Array.prototype.indexOf ); },
         'polyfill-classList': function(){ return 'classList' in document.createElement('_'); },
         'polyfill-matches': function(){ return !! Element.prototype.matches; }, // Needed for `closest` polyfill
         'polyfill-closest': function(){ return !! Element.prototype.closest; },
@@ -69,6 +70,7 @@
         getIds().forEach( function( polyfillId ) {
             if ( ! _polyfills[ polyfillId ]() ) {
                 RequireBundle.require( polyfillId );
+                console.log( polyfillId );
             }
         } );
     }

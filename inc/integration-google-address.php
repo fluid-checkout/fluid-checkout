@@ -16,9 +16,8 @@ class FluidCheckout_IntegrationGoogleAddress extends FluidCheckout {
 	 * __construct function.
 	 */
 	public function __construct() {
-		// Check API Keys
+		// Get API Key
 		$this->google_places_api_key = get_option( 'wfc_google_address_integration_api_key' );
-
 
 		// Load hooks
 		$this->hooks();
@@ -30,15 +29,11 @@ class FluidCheckout_IntegrationGoogleAddress extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Check if feature is enabled
-		if ( get_option( 'wfc_enable_google_address_integration', 'true' ) === 'true' ) {
+		// Check if feature is enabled and API Key added
+		if ( get_option( 'wfc_enable_google_address_integration', 'true' ) !== 'true' || ! $this->google_places_api_key || empty( $this->google_places_api_key ) ) { return; }
 
-			// Check API Key
-			if ( $this->google_places_api_key && ! empty( $this->google_places_api_key ) ) {
-				add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
-			}
-
-		}
+		// Hooks
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
 	}
 
 
