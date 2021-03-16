@@ -1879,13 +1879,26 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		// Bail if not a general country field in edit address endpoint
 		if ( ! is_wc_endpoint_url( 'edit-address' ) || ! $key === 'country' ) { return $field; }
 
+		// Get all allowed countries
 		$countries = array_merge( WC()->countries->get_shipping_countries(), WC()->countries->get_allowed_countries() );
+		
+		// Bail if only one country allowed
+		if ( count( $countries ) <= 1 ) { return $field; }
+
+		// Get new field options
 		$new_options = '';
 		foreach ( $countries as $ckey => $cvalue ) {
 			$new_options .= '<option value="' . esc_attr( $ckey ) . '" ' . selected( $value, $ckey, false ) . '>' . esc_html( $cvalue ) . '</option>';
 		}
 		
-		$field = preg_replace( '/(<select.*?>).*?(<\/select>)/', '$1'.$new_options.'$2', $field );
+		// Create new select field
+		$new_select_field = '<select name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" class="country_to_state country_select ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" ' . implode( ' ', $custom_attributes ) . ' data-placeholder="' . esc_attr( $args['placeholder'] ? $args['placeholder'] : esc_attr__( 'Select a country / region&hellip;', 'woocommerce' ) ) . '"><option value="">' . esc_html__( 'Select a country / region&hellip;', 'woocommerce' ) . '</option>';
+		$new_select_field .= $new_options;
+		$new_select_field .= '</select>';
+
+		// Replace existing `select` or `hidden` field with the new select field
+		$field = preg_replace( '/(<select.*?>).*?(<\/select>)/', $new_select_field, $field );
+		$field = preg_replace( '/(<strong>.*?>).*?(readonly="readonly" \/>)/', $new_select_field, $field );
 
 		return $field;
 	}
