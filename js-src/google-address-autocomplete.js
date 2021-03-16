@@ -21,12 +21,20 @@
 	var _settings = {
 		bodyClass: 'has-google-autocomplete',
 
+		formRowSelector: '.form-row',
+		select2Selector: '[class*="select2"]',
+
 		autocompleteInputSelector: '#address_1, #shipping_address_1, #billing_address_1',
 		autocompleteEnabledInputSelector: '.pac-target-input',
 		addressGroupSelector: '.woocommerce-shipping-fields, .woocommerce-billing-fields, .woocommerce-address-fields',
-		select2Selector: '[class*="select2"]',
+		addressGroupShippingSelector: '.woocommerce-shipping-fields',
+		addressGroupBillingSelector: '.woocommerce-billing-fields',
 		addressFieldsSelector: 'input, select, textarea',
 		addressFieldsDontCleanSelector: '[name$="_address_id"], #shipping_address_save, #billing_address_save',
+
+		genericAddressType: 'this',
+		addressTypeLabelShipping: 'shipping',
+		addressTypeLabelBilling: 'billing',
 		
 		autocompleteDefaultOptions: {
 			fields: [ 'address_components' ],
@@ -34,10 +42,12 @@
 		},
 		
 		// Set component restrictions for each address lookup field.
-		//
-		// Example of this accepted values:
-		// allowedCountries: { `shipping_address_1: ['US','UK'], }`
-		allowedCountries: { 'shipping_address_1': [ 'US' ] },
+		// Example of this accepted values: `allowedCountries: { shipping_address_1: ['US','UK'], }`
+		allowedCountries: {},
+		countryNotAllowedMessageSelector: '.woocommerce-error.invalid-country-not-allowed',
+		countryNotAllowedMessageTemplate: '<span class="woocommerce-error invalid-country-not-allowed">Country {country_name} is not allowed for {address_type} address.</span>',
+		invalidMessageClass: 'woocommerce-invalid',
+		invalidMessageCountryNotAllowedClass: 'woocommerce-invalid-country-not-allowed-field',
 		
 		// Keys based on component names from Google Place data
 		componentValueType: {
@@ -55,6 +65,7 @@
 		// @see `/inc/integration-google-address.php` at function `add_google_address_js_settings`
 		localeComponents: {
 			default: { // Default to US settings
+				country_name: 'country_name',
 				country: 'country',
 				postcode: 'postal_code',
 				state: 'administrative_area_level_1',
@@ -149,6 +160,57 @@
 
 
 	/**
+	 * Remove the country not allowed validation message.
+	 * 
+	 * @param   {HTMLElement}    groupElement  Element containing the address form field.
+	 */
+	var removeCountryNotAllowedMessage = function( groupElement ) {
+		// Remove country not allowed error message
+		var countryNotAllowedMessage = groupElement.querySelector( _settings.countryNotAllowedMessageSelector );
+
+		if ( countryNotAllowedMessage ) {
+			// Add validation classes to form row
+			var formRow = countryNotAllowedMessage.closest( _settings.formRowSelector );
+			formRow.classList.remove( _settings.invalidMessageClass );
+			formRow.classList.remove( _settings.invalidMessageCountryNotAllowedClass );
+			
+			// Remove message element
+			countryNotAllowedMessage.parentNode.removeChild( countryNotAllowedMessage );
+		}
+	}
+
+
+
+	/**
+	 * Display the country not allowed validation message.
+	 *
+	 * @param   {Object}        place   Google Place data.
+	 * @param   {HTMLElement}   input   Address lookup field element.
+	 */
+	var displayCountryNowAllowedMessage = function( place, input ) {
+		// Get country long name
+		var countryName = getFieldLongNameFromPlace( 'country', place );
+			
+		// Get address type
+		var addressType = _settings.genericAddressType;
+		if ( input.closest( _settings.addressGroupShippingSelector ) ) { addressType = _settings.addressTypeLabelShipping; }
+		if ( input.closest( _settings.addressGroupBillingSelector ) ) { addressType = _settings.addressTypeLabelBilling; }
+		
+		// Get message html and append to page
+		var messageHtml = _settings.countryNotAllowedMessageTemplate;
+		messageHtml = messageHtml.replace( '{country_name}', countryName );
+		messageHtml = messageHtml.replace( '{address_type}', addressType );
+		input.insertAdjacentHTML( 'afterend', messageHtml );
+
+		// Add validation classes to form row
+		var formRow = input.closest( _settings.formRowSelector );
+		formRow.classList.add( _settings.invalidMessageClass );
+		formRow.classList.add( _settings.invalidMessageCountryNotAllowedClass );
+	}
+
+
+
+	/**
 	 * Clear address form fields
 	 * 
 	 * @param   {HTMLElement}    groupElement  Element containing the address form field.
@@ -159,6 +221,7 @@
 
 		_updateCheckout = false;
 
+		// Iterate address form fields
 		var fields = groupElement.querySelectorAll( _settings.addressFieldsSelector );
 		for ( var i = 0; i < fields.length; i++ ) {
 			var field = fields[i];
@@ -168,6 +231,9 @@
 				setFieldValue( field, '' );
 			}
 		}
+
+		// Remove country not allowed validation message
+		removeCountryNotAllowedMessage( groupElement );
 		
 		_updateCheckout = true;
 	}
@@ -238,6 +304,49 @@
 
 
 	/**
+	 * Get the `long_name` value for an address field from the Google Place data based on the locale.
+	 *
+	 * @param   {string}  fieldId  Form field id to get data for.
+	 * @param   {Object}  place    Google Place data
+	 * @param	{string}  locale   Country code of the locale.
+	 *
+	 * @return  {string}           Localized value for the form field.
+	 */
+	var getFieldLongNameFromPlace = function( fieldId, place, locale ) {
+		
+		// Bail if place does not have address components
+		if ( ! place || ! place.address_components ) { return; }
+
+		var values = [];
+		
+		// Get default locale if not passed in
+		if ( ! locale ) {
+			locale = _settings.localeComponents.default;
+		}
+		
+		// Get `fieldComponents` as an Array
+		var fieldComponents = locale[ fieldId ];
+		if ( ! Array.isArray( fieldComponents ) ) { fieldComponents = [ fieldComponents ]; }
+		
+		fieldComponents.forEach( function( fieldComponent ) {
+			for ( var i = 0; i < place.address_components.length; i++ ) {
+				var component = place.address_components[ i ];
+				var fieldType = component.types[0];
+				
+				if ( fieldComponent == fieldType ) {
+					var fieldValue = component[ 'long_name' ];
+					values.push( fieldValue );
+					break; // Exit place address components iteration when value is found
+				}
+			}
+		} );
+		
+		return values.join( locale.components_separator );
+	}
+
+
+
+	/**
 	 * Get the allowed countries for an Address Autocomplete lookup field.
 	 *
 	 * @param   {HTMLElement}   input   Address lookup field element.
@@ -247,12 +356,14 @@
 	var getAllowedCountriesForInput = function( input ) {
 		// Bail if input not valid or group element not available
 		if ( ! input || ! input.closest( _settings.addressGroupSelector ) ) { return; }
-
+		
+		var allowedCountries = [];
 		var groupElement = input.closest( _settings.addressGroupSelector );
 		var countryOptions = groupElement.querySelectorAll( '[id$="country"] option' );
 
-		// Get allowed country codes
-		var allowedCountries = [];
+		// TODO: Handle only one country allowed (hidden field?)
+
+		// Get allowed country codes from country select field
 		for ( var i = 0; i < countryOptions.length; i++ ) {
 			var option = countryOptions[i];
 			if ( option.value != '' ) { allowedCountries.push( option.value ); }
@@ -266,46 +377,41 @@
 	/**
 	 * Fill address form field values for a place from Google Place API.
 	 *
-	 * @param   {Object}                           place         Google Place data.
-	 * @param   {HTMLElement}                      input         Address lookup field element.
-	 * @param   {google.maps.places.Autocomplete}  autocomplete  Google Maps Autocomplete object.
+	 * @param   {Object}                            place          Google Place data.
+	 * @param   {HTMLElement}                       input          Address lookup field element.
+	 * @param   {google.maps.places.Autocomplete}   autocomplete   Google Maps Autocomplete object.
 	 */
 	var fillAddressFields = function( place, input, autocomplete ) {
 		var groupElement = input.closest( _settings.addressGroupSelector );
-
-		console.log( place.address_components );
-		
-		cleanAddressFields( groupElement );
 		
 		// Set country field
 		var countryValue = getFieldValueFromPlace( 'country', place );
-		var countryField = groupElement.querySelector( '[id$="country"]' );
-		setFieldValue( countryField, countryValue );
+		var countryFieldOption = groupElement.querySelector( '[id$="country"] option[value="'+countryValue+'"]' );
 
-		// Bail and clean fields if country not allowed
-		if ( countryField.value !== countryValue ) {
-			cleanAddressFields( groupElement );
-			
-			// TODO: Display message telling user the country is not available
-
+		// Check if country is allowed, display validation message otherwise
+		if ( ! countryFieldOption ) {
+			displayCountryNowAllowedMessage( place, input );
 			return;
 		}
 
-		// Set other fields
+		// Clear previous address field values
+		cleanAddressFields( groupElement );
+
+		// Set address field values to the selected place
 		var locale = getLocale( countryValue );
 		var fieldIds = Object.getOwnPropertyNames( locale );
 		for ( var i = 0; i < fieldIds.length; i++ ) {
 			var fieldId = fieldIds[ i ];
 			
 			// Skip country field
-			if ( fieldId == 'country' ) { continue; }
+			// if ( fieldId == 'country' ) { continue; }
 
 			// Set field value
 			var value = getFieldValueFromPlace( fieldId, place, locale );
 			var field = groupElement.querySelector( '[id$="'+fieldId+'"]' );
 			
 			// Set state field to uppercase to match values from WooCommerce
-			if ( fieldId == 'state' ) { value = value.toUpperCase(); }
+			if ( fieldId == 'state' && field.type == 'select' ) { value = value.toUpperCase(); }
 
 			setFieldValue( field, value );
 		}
@@ -469,8 +575,15 @@
 	 * @param   {Event}  e  Keydown event dispatched.
 	 */
 	var handleKeydown = function( e ) {
+		// Pressing `Enter`
 		if ( e.target.matches( _settings.autocompleteEnabledInputSelector ) ) {
 			maybePreventFormSubmit( e );
+		}
+
+		// Clear country allowed message on address field change
+		if ( e.target.matches( _settings.autocompleteInputSelector ) ) {
+			var groupElement = e.target.closest( _settings.addressGroupSelector );
+			removeCountryNotAllowedMessage( groupElement );
 		}
 	}
 	
