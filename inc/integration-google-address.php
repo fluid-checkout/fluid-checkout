@@ -32,8 +32,11 @@ class FluidCheckout_IntegrationGoogleAddress extends FluidCheckout {
 		// Check if feature is enabled and API Key added
 		if ( get_option( 'wfc_enable_google_address_integration', 'true' ) !== 'true' || ! $this->google_places_api_key || empty( $this->google_places_api_key ) ) { return; }
 
-		// Hooks
+		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
+
+		// Change position of address fields
+		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_fields_priority' ), 10 );
 	}
 
 
@@ -47,6 +50,18 @@ class FluidCheckout_IntegrationGoogleAddress extends FluidCheckout {
 		
 		wp_enqueue_script( 'wfc-google-address-autocomplete', self::$directory_url . 'js/google-address-autocomplete'. self::$asset_version . '.js', array(), NULL, true );
 		wp_enqueue_script( 'wfc-google-address-api', "https://maps.googleapis.com/maps/api/js?key={$this->google_places_api_key}&libraries=places&callback=GoogleAddressAutocomplete.init", array( 'wfc-google-address-autocomplete' ), NULL, true );
+	}
+
+
+
+	/**
+	 * Change default locale fields priority.
+	 * 
+	 * @param   array  $fields  Default address fields args.
+	 */
+	public function change_default_locale_fields_priority( $fields ) {
+		if ( array_key_exists( 'country', $fields ) ) { $fields['country']['priority'] = 85; }
+		return $fields;
 	}
 
 }
