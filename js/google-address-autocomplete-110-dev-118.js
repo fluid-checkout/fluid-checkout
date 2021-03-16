@@ -413,10 +413,10 @@
 			var field = groupElement.querySelector( '[id$="'+fieldId+'"]' );
 			
 			// Set state field to uppercase to match values from WooCommerce
-			if ( fieldId == 'state' && field.type == 'select' ) { value = value.toUpperCase(); }
+			if ( fieldId == 'state' && ( field.type.indexOf( 'select' ) > -1 )  ) { value = value.toUpperCase(); }
 			
 			// Skip country field if not a `select` field
-			if ( fieldId == 'country' && field.type != 'select' ) { continue; }
+			if ( fieldId == 'country' && field.type == 'hidden' ) { continue; }
 
 			setFieldValue( field, value );
 		}
