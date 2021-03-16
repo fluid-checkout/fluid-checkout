@@ -50,8 +50,9 @@
 			postal_code: 'short_name',
 		},
 		
-		// TODO: Need to set different address_components combination for each country, similar to WC locales
-		// Keys based on WooCommerce forms field ids, values based on component names froom Google Place datax
+		// Keys based on WooCommerce forms field ids, values based on component names from Google Place data
+		// Values for each locale defined at the server
+		// @see `/inc/integration-google-address.php` at function `add_google_address_js_settings`
 		localeComponents: {
 			default: { // Default to US settings
 				country: 'country',
@@ -60,14 +61,6 @@
 				city: 'locality',
 				address_1: [ 'street_number', 'route' ],
 				components_separator: ' ',
-			},
-			BR: {
-				city: 'administrative_area_level_2',
-				address_1: [ 'route', 'street_number' ],
-				components_separator: ', ',
-			},
-			NL: {
-				address_1: [ 'route', 'street_number' ],
 			},
 		},
 
@@ -490,6 +483,11 @@
 	 */
 	_publicMethods.init = function( options ) {
 		if ( _hasInitialized ) return;
+
+		// Try to get options from the plugin settings JS object
+		if ( ! options && window.wfcSettings && window.wfcSettings.googleAutoCompleteSettings ) {
+			options = window.wfcSettings.googleAutoCompleteSettings;
+		}
 
 		// Merge settings
 		_settings = extend( true, _settings, options );

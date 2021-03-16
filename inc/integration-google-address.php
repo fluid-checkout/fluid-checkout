@@ -35,6 +35,9 @@ class FluidCheckout_IntegrationGoogleAddress extends FluidCheckout {
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
 
+		// Google Autocomplete Settings
+		add_filter( 'wfc_js_settings', array( $this, 'add_google_address_js_settings' ), 10 );
+
 		// Change position of address fields
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_fields_priority' ), 10 );
 	}
@@ -50,6 +53,31 @@ class FluidCheckout_IntegrationGoogleAddress extends FluidCheckout {
 		
 		wp_enqueue_script( 'wfc-google-address-autocomplete', self::$directory_url . 'js/google-address-autocomplete'. self::$asset_version . '.js', array(), NULL, true );
 		wp_enqueue_script( 'wfc-google-address-api', "https://maps.googleapis.com/maps/api/js?key={$this->google_places_api_key}&libraries=places&callback=GoogleAddressAutocomplete.init", array( 'wfc-google-address-autocomplete' ), NULL, true );
+	}
+
+
+
+	/**
+	 * Add Google Address Autocomplete settings to the plugin settings JS object.
+	 * 
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_google_address_js_settings( $settings ) {
+		
+		$settings[ 'googleAutoCompleteSettings' ] = apply_filters( 'wfc_google_autocomplete_js_settings', array(
+			'localeComponents' => array(
+				'BR' => array(
+					'city' => 'administrative_area_level_2',
+					'address_1' => array( 'route', 'street_number' ),
+					'components_separator' => ', ',
+				),
+				'NL' => array(
+					'address_1' => array( 'route', 'street_number' ),
+				),
+			),
+		) );
+
+		return $settings;
 	}
 
 
