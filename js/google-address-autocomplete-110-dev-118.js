@@ -30,7 +30,7 @@
 		addressGroupShippingSelector: '.woocommerce-shipping-fields',
 		addressGroupBillingSelector: '.woocommerce-billing-fields',
 		addressFieldsSelector: 'input, select, textarea',
-		addressFieldsDontCleanSelector: '[name$="_address_id"], #shipping_address_save, #billing_address_save',
+		addressFieldsDontCleanSelector: '[name$="_address_id"], #shipping_address_save, #billing_address_save, input[type="hidden"]#shipping_country, input[type="hidden"]#billing_country, input[type="hidden"]#country',
 
 		genericAddressType: 'this',
 		addressTypeLabelShipping: 'shipping',
@@ -226,7 +226,7 @@
 		for ( var i = 0; i < fields.length; i++ ) {
 			var field = fields[i];
 			
-			// Skip address id fields
+			// Skip some address fields that should not be cleaned
 			if ( ! field.matches( _settings.addressFieldsDontCleanSelector ) ) {
 				setFieldValue( field, '' );
 			}
@@ -359,14 +359,19 @@
 		
 		var allowedCountries = [];
 		var groupElement = input.closest( _settings.addressGroupSelector );
-		var countryOptions = groupElement.querySelectorAll( '[id$="country"] option' );
-
-		// TODO: Handle only one country allowed (hidden field?)
-
+		var countryField = groupElement.querySelector( '[id$="country"]' );
+		
 		// Get allowed country codes from country select field
-		for ( var i = 0; i < countryOptions.length; i++ ) {
-			var option = countryOptions[i];
-			if ( option.value != '' ) { allowedCountries.push( option.value ); }
+		if ( countryField.type != 'hidden' ) {
+			var countryOptions = groupElement.querySelectorAll( '[id$="country"] option' );
+			for ( var i = 0; i < countryOptions.length; i++ ) {
+				var option = countryOptions[i];
+				if ( option.value != '' ) { allowedCountries.push( option.value ); }
+			}
+		}
+		// Handle only one allowed country
+		else if ( countryField.value != '' ) {
+			allowedCountries.push( countryField.value );
 		}
 
 		return allowedCountries;
@@ -386,10 +391,10 @@
 		
 		// Set country field
 		var countryValue = getFieldValueFromPlace( 'country', place );
-		var countryFieldOption = groupElement.querySelector( '[id$="country"] option[value="'+countryValue+'"]' );
-
+		var allowedCountries = getAllowedCountriesForInput( input );
+		
 		// Check if country is allowed, display validation message otherwise
-		if ( ! countryFieldOption ) {
+		if ( ! allowedCountries.includes( countryValue ) ) {
 			displayCountryNowAllowedMessage( place, input );
 			return;
 		}
@@ -403,15 +408,15 @@
 		for ( var i = 0; i < fieldIds.length; i++ ) {
 			var fieldId = fieldIds[ i ];
 			
-			// Skip country field
-			// if ( fieldId == 'country' ) { continue; }
-
 			// Set field value
 			var value = getFieldValueFromPlace( fieldId, place, locale );
 			var field = groupElement.querySelector( '[id$="'+fieldId+'"]' );
 			
 			// Set state field to uppercase to match values from WooCommerce
 			if ( fieldId == 'state' && field.type == 'select' ) { value = value.toUpperCase(); }
+			
+			// Skip country field if not a `select` field
+			if ( fieldId == 'country' && field.type != 'select' ) { continue; }
 
 			setFieldValue( field, value );
 		}
