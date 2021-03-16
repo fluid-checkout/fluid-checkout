@@ -410,7 +410,9 @@
 			var fields = document.querySelectorAll( _settings.select2InitFieldsSelector );
 			for ( var i = 0; i < fields.length; i++) {
 				var field = fields[i];
-				$( field ).select2();
+				if ( field.type == 'select' ) {
+					$( field ).select2();
+				}
 			}
 		}
 	}
