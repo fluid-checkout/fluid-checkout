@@ -33,7 +33,11 @@
 			types: [ 'address' ],
 		},
 		
-		componentRestrictions: {},
+		// Set component restrictions for each address lookup field.
+		//
+		// Example of this accepted values:
+		// allowedCountries: { `shipping_address_1: ['US','UK'], }`
+		allowedCountries: { 'shipping_address_1': [ 'US' ] },
 		
 		// Keys based on component names from Google Place data
 		componentValueType: {
@@ -47,7 +51,7 @@
 		},
 		
 		// TODO: Need to set different address_components combination for each country, similar to WC locales
-		// Keys based on WooCommerce forms field ids, values based on component names froom Google Place data
+		// Keys based on WooCommerce forms field ids, values based on component names froom Google Place datax
 		localeComponents: {
 			default: { // Default to US settings
 				country: 'country',
@@ -241,15 +245,42 @@
 
 
 	/**
+	 * Get the allowed countries for an Address Autocomplete lookup field.
+	 *
+	 * @param   {HTMLElement}   input   Address lookup field element.
+	 *
+	 * @return  {Array}                 A list of countries allowed for the address lookup input field. `Null` on error getting the values.
+	 */
+	var getAllowedCountriesForInput = function( input ) {
+		// Bail if input not valid or group element not available
+		if ( ! input || ! input.closest( _settings.addressGroupSelector ) ) { return; }
+
+		var groupElement = input.closest( _settings.addressGroupSelector );
+		var countryOptions = groupElement.querySelectorAll( '[id$="country"] option' );
+
+		// Get allowed country codes
+		var allowedCountries = [];
+		for ( var i = 0; i < countryOptions.length; i++ ) {
+			var option = countryOptions[i];
+			if ( option.value != '' ) { allowedCountries.push( option.value ); }
+		}
+
+		return allowedCountries;
+	}
+
+
+
+	/**
 	 * Fill address form field values for a place from Google Place API.
 	 *
 	 * @param   {Object}                           place         Google Place data.
-	 * @param   {HTMLElement}                      input         Address lookup for field element.
+	 * @param   {HTMLElement}                      input         Address lookup field element.
 	 * @param   {google.maps.places.Autocomplete}  autocomplete  Google Maps Autocomplete object.
 	 */
 	var fillAddressFields = function( place, input, autocomplete ) {
-		
 		var groupElement = input.closest( _settings.addressGroupSelector );
+
+		console.log( place.address_components );
 		
 		cleanAddressFields( groupElement );
 		
@@ -260,8 +291,10 @@
 
 		// Bail and clean fields if country not allowed
 		if ( countryField.value !== countryValue ) {
-			// TODO: Display message telling user the country is not available
 			cleanAddressFields( groupElement );
+			
+			// TODO: Display message telling user the country is not available
+
 			return;
 		}
 
@@ -277,6 +310,10 @@
 			// Set field value
 			var value = getFieldValueFromPlace( fieldId, place, locale );
 			var field = groupElement.querySelector( '[id$="'+fieldId+'"]' );
+			
+			// Set state field to uppercase to match values from WooCommerce
+			if ( fieldId == 'state' ) { value = value.toUpperCase(); }
+
 			setFieldValue( field, value );
 		}
 	}
@@ -288,7 +325,7 @@
 	 *
 	 * @param   {HTMLElement}  input  Input field to disable the browser autocomplete feature.
 	 */
-	var disableInputAutocomplete = function( input ) {
+	var disableBrowserAutocomplete = function( input ) {
 		// Bail if input is invalid
 		if ( ! input ) { return; }
 
@@ -300,7 +337,7 @@
 	 *
 	 * @param   {HTMLElement}  input  Input field to restore the browser autocomplete feature.
 	 */
-	var restoreInputAutocomplete = function( input ) {
+	var restoreAutocompleteAttr = function( input ) {
 		// Bail if input is invalid
 		if ( ! input ) { return; }
 
@@ -312,11 +349,11 @@
 	 *
 	 * @param   {HTMLElement}  input  Input field to restore the browser autocomplete feature.
 	 */
-	var maybeRestoreInputAutocomplete = function( input ) {
+	var maybeRestoreAutocompleteAttr = function( input ) {
 		// Bail if input is invalid of already restored
 		if ( ! input || input.getAttribute( 'autocomplete' ) != 'off' ) { return; }
 
-		restoreInputAutocomplete( input );
+		restoreAutocompleteAttr( input );
 	}
 
 
@@ -341,24 +378,38 @@
 	/**
 	 * Initialize Google Address Autocomplete for an address lookup field.
 	 *
-	 * @param   {HTMLElement}  input  Address lookup for field element.
+	 * @param   {HTMLElement}  input  Address lookup field element.
 	 */
 	var initField = function( input ) {
 		// Bail if input invalid or already initialized
 		if ( ! input || input.matches( _settings.autocompleteEnabledInputSelector ) ) { return; }
+
+		// Get autocomplete options
+		var autocompleteOptions = extend( true, [], _settings.autocompleteDefaultOptions ); // Clone options object
+		var allowedCountriesList;
 		
+		// Try get allowed countries from settings
+		if ( _settings.allowedCountries.hasOwnProperty( input.id ) ) {
+			allowedCountriesList = _settings.allowedCountries[ input.id ];
+		}
+		// Try get/set allowed countries from country select field options
+		else {
+			allowedCountriesList = getAllowedCountriesForInput( input );
+			if ( allowedCountriesList.length > 5 ) {
+				allowedCountriesList = null;
+			}
+		}
+
 		// Maybe set country restrictions
-		// TODO: Maybe start autocomplete class with country restrictions based on countries dropdown if it has 5 or less options, this will allow for having different restrictions for shipping and billing
-		if ( _settings.componentRestrictions.hasOwnProperty( input.id ) ) {
-			var inputComponentsRestrictions = _settings.componentRestrictions[ input.id ];
-			_settings.autocompleteDefaultOptions.componentRestrictions = inputComponentsRestrictions;
+		if ( Array.isArray( allowedCountriesList ) ) {
+			autocompleteOptions[ 'componentRestrictions' ] = { country: allowedCountriesList };
 		}
 		
 		// Get/Set original value of the `autocomplete` attribute
 		input.setAttribute( 'data-o-autocomplete', input.getAttribute( 'autocomplete' ) );
 
 		// Initialze Google Places Autocomplete
-		var autocomplete = new google.maps.places.Autocomplete( input, _settings.autocompleteDefaultOptions );
+		var autocomplete = new google.maps.places.Autocomplete( input, autocompleteOptions );
 		var onPlaceChange = function() {
 			var place = autocomplete.getPlace();
 	
@@ -376,9 +427,9 @@
 		// a better approach would be to listen to an event from the API but at the time of making this the only event
 		// available is `place_changed` which won't work for this purpoose
 		// @see https://developers.google.com/maps/documentation/javascript/reference/places-widget#Autocomplete
-		window.setTimeout( function(){ maybeRestoreInputAutocomplete( input ); }, 1000 );
-		window.setTimeout( function(){ maybeRestoreInputAutocomplete( input ); }, 2000 );
-		window.setTimeout( function(){ maybeRestoreInputAutocomplete( input ); }, 5000 );
+		window.setTimeout( function(){ maybeRestoreAutocompleteAttr( input ); }, 1000 );
+		window.setTimeout( function(){ maybeRestoreAutocompleteAttr( input ); }, 2000 );
+		window.setTimeout( function(){ maybeRestoreAutocompleteAttr( input ); }, 5000 );
 	}
 
 
@@ -400,7 +451,7 @@
 	 */
 	var handleFocus = function( e ) {
 		if ( e.target.matches( _settings.autocompleteEnabledInputSelector ) ) {
-			disableInputAutocomplete( e.target );
+			disableBrowserAutocomplete( e.target );
 		}
 	}
 	
@@ -413,7 +464,7 @@
 	 */
 	var handleBlur = function( e ) {
 		if ( e.target.matches( _settings.autocompleteEnabledInputSelector ) ) {
-			restoreInputAutocomplete( e.target );
+			restoreAutocompleteAttr( e.target );
 		}
 	}
 
