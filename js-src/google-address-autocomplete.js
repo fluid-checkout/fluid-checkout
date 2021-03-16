@@ -23,7 +23,7 @@
 
 		autocompleteInputSelector: '#address_1, #shipping_address_1, #billing_address_1',
 		autocompleteEnabledInputSelector: '.pac-target-input',
-		addressGroupSelector: '.woocommerce-shipping-fields, .woocommerce-billing-fields', // TODO: add group selector for address in account pages
+		addressGroupSelector: '.woocommerce-shipping-fields, .woocommerce-billing-fields, .woocommerce-address-fields',
 		select2Selector: '[class*="select2"]',
 		addressFieldsSelector: 'input, select, textarea',
 		addressFieldsDontCleanSelector: '[name$="_address_id"], #shipping_address_save, #billing_address_save',
