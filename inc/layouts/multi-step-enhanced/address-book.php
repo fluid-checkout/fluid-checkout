@@ -44,9 +44,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 		add_action( 'wp', array( $this, 'maybe_set_address_entry_selected_session_to_default' ), 10 );
 		add_action( 'wp', array( $this, 'add_address_field_default_value_hooks' ), 10 );
 
-		// Checkout fields
-		add_filter( 'wfc_checkout_field_args', array( $this, 'change_checkout_field_args' ), 60 );
-		add_filter( 'wfc_checkout_field_args', array( $this, 'change_checkout_shipping_copy_target_field_args' ), 70 );
+		// Copy contact fields to shipping
+		if ( get_option( 'wfc_enable_copy_billing_fields_to_shipping', 'false' ) === 'true' ) {
+			add_filter( 'wfc_checkout_field_args', array( $this, 'change_checkout_field_args' ), 60 );
+			add_filter( 'wfc_checkout_field_args', array( $this, 'change_checkout_shipping_copy_target_field_args' ), 70 );
+		}
 
 		// Form fields
 		add_filter( 'woocommerce_form_field_country', array( $this, 'maybe_change_country_field_allowed_values' ), 10, 4 );
