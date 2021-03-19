@@ -2,7 +2,7 @@
  * WooCommerce Fluid Checkout - Validation
  */
 
-.form-row .woocommerce-error.woocommerce-error { /* Double selector to augment specificity */
+.form-row .woocommerce-error.woocommerce-error:not( .invalid-country-not-allowed ) { /* Double selector to augment specificity */
   display: none;
 }
 
