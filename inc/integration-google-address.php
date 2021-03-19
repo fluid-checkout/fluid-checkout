@@ -49,7 +49,7 @@ class FluidCheckout_IntegrationGoogleAddress extends FluidCheckout {
 	 */
 	public function enqueue() {
 		// Bail if not on checkout or edit address page
-		if ( ! function_exists( 'is_checkout' ) && ( ! is_checkout() || is_wc_endpoint_url( 'edit-address' ) ) ) { return; }
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_wc_endpoint_url( 'edit-address' ) ) ) { return; }
 		
 		// TODO: Maybe move Google Address API script enqueue to inside the class to allow using `RequireBundle`
 		wp_enqueue_script( 'wfc-google-address-autocomplete', self::$directory_url . 'js/google-address-autocomplete'. self::$asset_version . '.js', array(), NULL, true );
