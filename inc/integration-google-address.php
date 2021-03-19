@@ -51,7 +51,6 @@ class FluidCheckout_IntegrationGoogleAddress extends FluidCheckout {
 		// Bail if not on checkout or edit address page
 		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_wc_endpoint_url( 'edit-address' ) ) ) { return; }
 		
-		// TODO: Maybe move Google Address API script enqueue to inside the class to allow using `RequireBundle`
 		wp_enqueue_script( 'wfc-google-address-autocomplete', self::$directory_url . 'js/google-address-autocomplete'. self::$asset_version . '.js', array(), NULL, true );
 		wp_enqueue_script( 'wfc-google-address-api', "https://maps.googleapis.com/maps/api/js?key={$this->google_places_api_key}&libraries=places&callback=GoogleAddressAutocomplete.init", array( 'wfc-google-address-autocomplete' ), NULL, true );
 	}
@@ -65,6 +64,10 @@ class FluidCheckout_IntegrationGoogleAddress extends FluidCheckout {
 	 */
 	public function add_google_address_js_settings( $settings ) {
 		
+		/**
+		 * Allow plugins to change settings for the integration with Google Address Autocomplete.
+		 * The default locale settings are defined in the script `google-address-autocomplete.js`.
+		 */
 		$settings[ 'googleAutoCompleteSettings' ] = apply_filters( 'wfc_google_autocomplete_js_settings', array(
 			'localeComponents' => array(
 				'BR' => array(
