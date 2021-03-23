@@ -208,7 +208,7 @@ class FluidCheckout {
 
 
 	/*
-	 * Locate template files from this plugin.
+	 * Load the plugin features
 	 * @since 1.2.0
 	 */
 	public function load_features() {
