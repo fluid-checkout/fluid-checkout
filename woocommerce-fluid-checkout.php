@@ -88,6 +88,9 @@ class FluidCheckout {
 		$this->load_updater();
 		$this->add_features();
 		$this->hooks();
+
+		// Load premium features
+		require_once self::$directory_path . 'inc/premium/premium-features.php';
 	}
 
 
@@ -218,10 +221,14 @@ class FluidCheckout {
 		// Bail if features list is not valid
 		if ( ! is_array( self::$features )  ) { return; }
 
+		// Maybe extend plugin features
+		$_features = apply_filters( 'wfc_init_features_list', self::$features );
+
 		// Load enqueue
 		require_once self::$directory_path . 'inc/enqueue.php';
 
-		foreach ( self::$features as $feature_key => $feature ) {
+		// Load each features
+		foreach ( $_features as $feature_key => $feature ) {
 			$feature_is_enabled = true;
 			$file = array_key_exists( 'file', $feature ) ? $feature[ 'file' ] : null;
 			$enable_option = array_key_exists( 'enable_option', $feature ) ? $feature[ 'enable_option' ] : null;
@@ -241,7 +248,6 @@ class FluidCheckout {
 			
 			// Load feature file if enabled
 			if ( $feature_is_enabled ) {
-				var_dump( $feature_key );
 				require_once self::$directory_path . $file;
 			}
 		}
@@ -250,22 +256,16 @@ class FluidCheckout {
 
 
 	/**
-	 * Load plugin includes.
-	 * @since 1.0.0
+	 * Register plugin features.
+	 * @since 1.2.0
 	 */
 	private function add_features() {
-		$_features = array(
+		self::$features = array(
 			'checkout-layouts'            => array( 'file' => 'inc/checkout-layouts.php' ),
 			'checkout-fields'             => array( 'file' => 'inc/checkout-fields.php' ),
 			'checkout-validation'         => array( 'file' => 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => true ),
 			'checkout-gift-options'       => array( 'file' => 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => true ),
-			
-			// Premium features
-			'account-pages'               => array( 'file' => 'inc/account-pages.php', 'enable_option' => 'wfc_enable_account_pages', 'enable_default' => true ),
-			'integration-google-address'  => array( 'file' => 'inc/integration-google-address.php', 'enable_option' => 'wfc_enable_google_address_integration', 'enable_default' => true ),
 		);
-
-		self::$features = apply_filters( 'wfc_init_features_list', $_features );
 	}
 
 
