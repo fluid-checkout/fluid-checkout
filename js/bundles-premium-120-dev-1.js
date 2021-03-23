@@ -11,6 +11,5 @@
     var settings = wfcSettings,
         ver = wfcSettings.assetsVersion;
 
-    // Premium features
     RequireBundle.register( 'wfc-address-book', [ settings.jsPath + 'address-book' + ver + '.js', settings.cssPath + 'address-book' + ver + '.css' ], '.has-wfc-address-book .wfc-address-book__form-wrapper', function(){ AddressBook.init(); } );
 })();
