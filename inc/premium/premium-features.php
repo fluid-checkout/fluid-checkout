@@ -9,7 +9,11 @@ class FluidCheckout_PremiumFeatures extends FluidCheckout {
 	 * __construct function.
 	 */
 	public function __construct() {
+		// Add premium features
 		add_filter( 'wfc_init_features_list', array( $this, 'add_premium_features' ) );
+
+		// Enqueue scripts
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 20 );
 	}
 
 
@@ -25,6 +29,15 @@ class FluidCheckout_PremiumFeatures extends FluidCheckout {
 		) );
 
 		return $_features;
+	}
+
+
+
+	/**
+	 * Enqueue scripts
+	 */
+	public function enqueue_scripts() {
+		wp_enqueue_script( 'wfc-bundles-premium', self::$directory_url . 'js/bundles-premium'. self::$asset_version . '.js', array( 'require-bundle', 'wfc-bundles' ), NULL, true );
 	}
 
 }

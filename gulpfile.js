@@ -90,7 +90,6 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
     	settings.nodePath + 'require-polyfills/dist/polyfill-*.js',
 		settings.nodePath + 'require-bundle-js/dist/require-bundle.js',
 		settings.nodePath + 'mailcheck/src/mailcheck.js',
-		settings.jsPath + 'lib/bundles.js',
 	])
 	.pipe(rename({suffix: settings.assetsVersion}))
     .pipe(gulp.dest('./js/lib/')) // save .js
@@ -101,6 +100,7 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
     // JS FILES
     gulp.src([
         settings.jsPath + '*.js',
+        settings.jsPath + 'premium/*.js',
 	])
 	.pipe(rename({suffix: settings.assetsVersion}))
     .pipe(gulp.dest('./js/')) // save .js
