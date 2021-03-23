@@ -40,7 +40,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Enqueue scripts
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'wfc-bundles', self::$directory_url . 'js/lib/bundles'. self::$asset_version . '.js', array('require-bundle'), NULL, true );
+		wp_enqueue_script( 'wfc-bundles', self::$directory_url . 'js/lib/bundles'. self::$asset_version . '.js', array( 'require-bundle' ), NULL, true );
 		wp_localize_script(
 			'wfc-bundles',
 			'wfcSettings',

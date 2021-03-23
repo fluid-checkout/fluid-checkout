@@ -553,11 +553,16 @@
 	/**
 	 * Initialize component and set related handlers.
 	 */
-	_publicMethods.init = function() {
+	_publicMethods.init = function( options ) {
 		if ( _hasInitialized ) return;
 
-		_settings = extend( _settings, window.wfcValidationVars );
+		// Merge settings
+		_settings = extend( _settings, options );
+
+		// Initialize message to listen for changes
 		initInlineMessages();
+		
+		// Add body class
 		document.body.classList.add( _settings.bodyClass );
 
 		if ( _hasJQuery ) {
