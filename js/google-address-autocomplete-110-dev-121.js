@@ -29,8 +29,7 @@
 		addressGroupSelector: '.woocommerce-shipping-fields, .woocommerce-billing-fields, .woocommerce-address-fields',
 		addressGroupShippingSelector: '.woocommerce-shipping-fields',
 		addressGroupBillingSelector: '.woocommerce-billing-fields',
-		addressFieldsSelector: 'input, select, textarea',
-		addressFieldsDontCleanSelector: '[name$="_address_id"], #shipping_address_save, #billing_address_save, input[type="hidden"]#shipping_country, input[type="hidden"]#billing_country, input[type="hidden"]#country',
+		addressFieldsSelector: '[name$="address_1"], [name$="address_2"], [name$="city"], [name$="state"], [name$="postcode"], [name$="country"]:not( input[type="hidden"] )', //'#shipping_address_1, #shipping_address_2, #shipping_city, #shipping_state, #shipping_postcode, #shipping_country:not( input[type="hidden"] ), #billing_country:not( input[type="hidden"] ), #country:not( input[type="hidden"] )',
 
 		genericAddressType: 'this',
 		addressTypeLabelShipping: 'shipping',
@@ -225,11 +224,7 @@
 		var fields = groupElement.querySelectorAll( _settings.addressFieldsSelector );
 		for ( var i = 0; i < fields.length; i++ ) {
 			var field = fields[i];
-			
-			// Skip some address fields that should not be cleaned
-			if ( ! field.matches( _settings.addressFieldsDontCleanSelector ) ) {
-				setFieldValue( field, '' );
-			}
+			setFieldValue( field, '' );
 		}
 
 		// Remove country not allowed validation message
