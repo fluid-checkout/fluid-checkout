@@ -10,7 +10,7 @@
   "author": "Fluidweb OÜ",
   "license": "GPL-3.0",
   "copyright": "Copyright (c) 2021, Fluidweb OÜ",
-  "homepage": "https://fluidweb.co",
+  "homepage": "https://fluidweb.co/plugins/fluid-checkout",
   "devDependencies": {
     "del": "^5.1.0",
     "fluidweb-updater": "git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git",

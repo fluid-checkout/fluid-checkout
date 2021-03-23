@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WooCommerce Fluid Checkout
-Plugin URI: https://fluidweb.co/
+Plugin URI: https://fluidweb.co/plugins/fluid-checkout/
 Description: A fluid checkout experience for any WooCommerce store. Ask for shipping information before billing information in a linear and multi-step checkout experience, add options for gift message and packaging and add a coupon code field at the checkout page that does not distract your customers.
 Text Domain: woocommerce-fluid-checkout
 Domain Path: /languages
