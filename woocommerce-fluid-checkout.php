@@ -261,7 +261,7 @@ class FluidCheckout {
 	 */
 	private function add_features() {
 		self::$features = array(
-			'checkout-layouts'            => array( 'file' => 'inc/checkout-layouts.php' ),
+			'checkout-layout'             => array( 'file' => 'inc/checkout-layout.php' ),
 			'checkout-fields'             => array( 'file' => 'inc/checkout-fields.php' ),
 			'checkout-validation'         => array( 'file' => 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => true ),
 			'checkout-gift-options'       => array( 'file' => 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => true ),
