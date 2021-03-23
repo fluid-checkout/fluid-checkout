@@ -1,29 +1,30 @@
 === WooCommerce Fluid Checkout ===
 Contributors: diegoversiani
-Tags: ecommerce, e-commerce, cart, checkout, mobile, responsive
-Requires at least: 4.1
-Tested up to: 4.9.8
+Tags: ecommerce, e-commerce, cart, checkout, mobile, responsive, woocommerce
+Requires PHP: 7.2
+Requires at least: 5.0
+Tested up to: 5.7
 Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WooCommerce Fluid Checkout provides a simple multi-step checkout flow for any WooCommerce store.
+A fluid checkout experience for any WooCommerce store. Ask for shipping information before billing information in a linear and multi-step checkout experience, add options for gift message and packaging and add a coupon code field at the checkout page that does not distract your customers.
 
 == Description ==
 
-WooCommerce Fluid Checkout provides a simple multi-step checkout flow for any WooCommerce store.
+A fluid checkout experience for any WooCommerce store. Ask for shipping information before billing information in a linear and multi-step checkout experience, add options for gift message and packaging and add a coupon code field at the checkout page that does not distract your customers.
 
 == Installation ==
 
 = Minimum Requirements =
 
-* PHP version 5.3 or greater
+* PHP version 7.2 or later
 
 = Automatic installation =
 
 Log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
 
-Press the "Upload Plugin" and select the zip file, then click “Install Now”.
+Press the "Upload Plugin" and select the zip file, then click "Install Now".
 
 = Manual installation =
 
@@ -34,26 +35,5 @@ Press the "Upload Plugin" and select the zip file, then click “Install Now”.
 
 == Changelog ==
 
-= 1.0.6 =
-* Upgrade WooCommerce templates to v3.5.1
-
-= 1.0.5 =
-* Remove svg icon and theme specific classes from button.
-
-= 1.0.4 =
-* Fix minor validation script error.
-* Change steps to rely on `window.scroll` instead of anchor links.
-
-= 1.0.3 =
-* Add inline validation feature.
-* Fix steps and frame data attributes conflicting in some situations
-
-= 1.0.2 =
-* Separate features "Checkout Steps" and "Field Types" to their own classes.
-* Move template loading functions to the plugin main class.
-
-= 1.0.1 =
-* Change how plugin_url and plugin_path are used.
-
-= 1.0.0 =
-* Initial Release
+= 1.2.0 =
+* New plugin foundation code.

@@ -1,7 +1,7 @@
 {
   "name": "woocommerce-fluid-checkout",
-  "version": "1.1.0-dev-122",
-  "description": "A simple multi-step checkout fluid experience for any WooCommerce store",
+  "version": "1.2.0-dev-1",
+  "description": "A fluid checkout experience for any WooCommerce store. Ask for shipping information before billing information in a linear and multi-step checkout experience, add options for gift message and packaging and add a coupon code field at the checkout page that does not distract your customers.",
   "main": "woocommerce-fluid-checkout.php",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,7 @@
   "repository": {},
   "author": "Fluidweb OÜ",
   "license": "GPL-3.0",
-  "copyright": "Copyright (c) 2020, Fluidweb OÜ",
+  "copyright": "Copyright (c) 2021, Fluidweb OÜ",
   "homepage": "https://fluidweb.co",
   "devDependencies": {
     "del": "^5.1.0",

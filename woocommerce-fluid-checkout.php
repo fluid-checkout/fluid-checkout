@@ -2,13 +2,14 @@
 /*
 Plugin Name: WooCommerce Fluid Checkout
 Plugin URI: https://fluidweb.co/
-Description: A simple multi-step checkout fluid experience for any WooCommerce store.
+Description: A fluid checkout experience for any WooCommerce store. Ask for shipping information before billing information in a linear and multi-step checkout experience, add options for gift message and packaging and add a coupon code field at the checkout page that does not distract your customers.
 Text Domain: woocommerce-fluid-checkout
 Domain Path: /languages
-Version: 1.1.0-dev-122
+Version: 1.2.0-dev-1
 Author: Fluidweb.co
 Author URI: https://fluidweb.co/
 License: GPLv2
+WC tested up to: 5.0.0
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -118,7 +119,7 @@ class FluidCheckout {
 				__FILE__,
 				'fluidweb-co/woocommerce-fluid-checkout',
 				get_option( '_fluidcheckout_repo_user' ),
-				get_option( '_fluidcheckout_repo_pass' ), // TODO: FIX SECURITY - should not save plain text password
+				get_option( '_fluidcheckout_repo_pass' ),
 				get_option( '_fluidcheckout_allow-beta-updates' )
 			);
 		}
