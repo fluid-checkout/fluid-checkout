@@ -64,17 +64,22 @@ gulp.task( 'clean-js', function( done ) {
 // gulp build-css
 // Builds css from scss and apply other changes.
 gulp.task( 'build-css', gulp.series( 'update-ver', 'clean-css', function( done ) {
-	return gulp.src('./sass/*.scss')
-		.pipe(plumber())
-		.pipe(sourcemaps.init())
-		.pipe(sass())
-		.pipe(autoprefixer({ cascade: false }))
-		.pipe(rename({suffix: settings.assetsVersion}))
-		.pipe(gulp.dest('./css/')) // save .css
-		.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false}, reduceIdents: {keyframes: false} } ) )
-		.pipe(rename( { suffix: '.min' } ) )
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./css/')); // save .min.css
+	gulp.src([
+		'./sass/*.scss',
+		'./sass/premium/*.scss',
+	] )
+	.pipe(plumber())
+	.pipe(sourcemaps.init())
+	.pipe(sass())
+	.pipe(autoprefixer({ cascade: false }))
+	.pipe(rename({suffix: settings.assetsVersion}))
+	.pipe(gulp.dest('./css/')) // save .css
+	.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false}, reduceIdents: {keyframes: false} } ) )
+	.pipe(rename( { suffix: '.min' } ) )
+	.pipe(sourcemaps.write('maps'))
+	.pipe(gulp.dest('./css/')); // save .min.css
+
+	done();
 } ) );
 
 
@@ -90,7 +95,6 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
     	settings.nodePath + 'require-polyfills/dist/polyfill-*.js',
 		settings.nodePath + 'require-bundle-js/dist/require-bundle.js',
 		settings.nodePath + 'mailcheck/src/mailcheck.js',
-		settings.jsPath + 'lib/bundles.js',
 	])
 	.pipe(rename({suffix: settings.assetsVersion}))
     .pipe(gulp.dest('./js/lib/')) // save .js
@@ -101,6 +105,7 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
     // JS FILES
     gulp.src([
         settings.jsPath + '*.js',
+        settings.jsPath + 'premium/*.js',
 	])
 	.pipe(rename({suffix: settings.assetsVersion}))
     .pipe(gulp.dest('./js/')) // save .js
@@ -122,7 +127,7 @@ gulp.task( 'copy-updater', function( done ) {
 	del.sync( [ './inc/vendor/fluidweb-updater' ] );
 
 	gulp.src( settings.nodePath + 'fluidweb-updater/**/*' )
-		.pipe( gulp.dest( './inc/vendor/fluidweb-updater' ) );
+	.pipe( gulp.dest( './inc/vendor/fluidweb-updater' ) );
 
 	done();
 });

@@ -24,6 +24,9 @@ class FluidCheckoutValidation extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
 
 		add_filter( 'wfc_checkout_field_args' , array( $this, 'change_checkout_email_field_args' ), 10 );
+
+		// Checkout validation settings
+		add_filter( 'wfc_js_settings', array( $this, 'add_checkout_validation_js_settings' ), 10 );
 	}
 
 
@@ -38,6 +41,31 @@ class FluidCheckoutValidation extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
 
 		return array_merge( $classes, array( 'has-wfc-checkout-validation' ) );
+	}
+
+
+
+
+	/**
+	 * Add Checkout Validation settings to the plugin settings JS object.
+	 * 
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_checkout_validation_js_settings( $settings ) {
+		
+		$settings[ 'checkoutValidation' ] = apply_filters( 'wfc_checkout_validation_script_settings', array(
+			'mailcheckSuggestions' => array(
+				/* translators: %s: html for the email address typo correction suggestion link */
+				'suggestedElementTemplate'    => '<div class="wfc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( __( 'Did you mean %s?', 'woocommerce-fluid-checkout' ), '<a class="mailcheck-suggestion" href="#apply-suggestion" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
+			),
+			'validationMessages' => array(
+				'required'                    => __( 'This is a required field.', 'woocommerce-fluid-checkout' ),
+				'email'                       => __( 'This is not a valid email address.', 'woocommerce-fluid-checkout' ),
+				'confirmation'                => __( 'This does not match the related field value.', 'woocommerce-fluid-checkout' ),
+			),
+		) );
+
+		return $settings;
 	}
 
 
@@ -59,29 +87,6 @@ class FluidCheckoutValidation extends FluidCheckout {
 		}
 
 		return $field_args;
-	}
-
-
-
-	/**
-	 * Enqueue scripts and styles.
-	 */
-	public function enqueue() {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
-		
-		wp_localize_script(
-			'wfc-bundles',
-			'wfcValidationVars', 
-			apply_filters( 'wfc_checkout_validation_script_settings', array(
-				'validationMessages' => array( 
-					'required'  => __( 'This is a required field.', 'woocommerce-fluid-checkout' ),
-					'email'  => __( 'This is not a valid email address.', 'woocommerce-fluid-checkout' ),
-					'confirmation'  => __( 'This does not match the related field value.', 'woocommerce-fluid-checkout' ),
-				),
-			) )
-		);
-
 	}
 
 }

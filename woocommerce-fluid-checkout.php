@@ -42,6 +42,8 @@ if ( ! defined( 'WFC_PLUGIN_FILE' ) ) {
  * Plugin Main Class.
  */
 class FluidCheckout {
+	
+	private static $features = array();
 
 	// A single instance of this class.
 	public static $instances   = array();
@@ -84,7 +86,11 @@ class FluidCheckout {
 		$this->set_plugin_vars();
 		$this->load_textdomain();
 		$this->load_updater();
+		$this->add_features();
 		$this->hooks();
+
+		// Load premium features
+		require_once self::$directory_path . 'inc/premium/premium-features.php';
 	}
 
 
@@ -140,7 +146,7 @@ class FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'plugins_loaded', array( $this, 'includes' ) );
+		add_action( 'plugins_loaded', array( $this, 'load_features' ) );
 
 		// Template loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 10, 3 );
@@ -201,27 +207,65 @@ class FluidCheckout {
 
 
 
-	/**
-	 * Load plugin includes.
-	 * @since 1.0.0
+	/*
+	 * Load the plugin features
+	 * @since 1.2.0
 	 */
-	public function includes() {
-
-		// if Woocommerce is not active, bail
+	public function load_features() {
+		// Check if Woocommerce is activated
 		if( ! $this->is_woocommerce_active() ) {
 			add_action( 'all_admin_notices', array( $this, 'woocommerce_required_notice' ) );
 			return;
 		}
 
+		// Bail if features list is not valid
+		if ( ! is_array( self::$features )  ) { return; }
+
+		// Maybe extend plugin features
+		$_features = apply_filters( 'wfc_init_features_list', self::$features );
+
+		// Load enqueue
 		require_once self::$directory_path . 'inc/enqueue.php';
 
-		// Features
-		require_once self::$directory_path . 'inc/account-pages.php';
-		require_once self::$directory_path . 'inc/checkout-fields.php';
-		require_once self::$directory_path . 'inc/checkout-validation.php';
-		require_once self::$directory_path . 'inc/checkout-layouts.php';
-		require_once self::$directory_path . 'inc/checkout-gift-options.php';
-		require_once self::$directory_path . 'inc/integration-google-address.php';
+		// Load each features
+		foreach ( $_features as $feature_key => $feature ) {
+			$feature_is_enabled = true;
+			$file = array_key_exists( 'file', $feature ) ? $feature[ 'file' ] : null;
+			$enable_option = array_key_exists( 'enable_option', $feature ) ? $feature[ 'enable_option' ] : null;
+			$enable_default = array_key_exists( 'enable_default', $feature ) ? $feature[ 'enable_default' ] : null;
+
+			// Set feature as enabled if `enable_default` value is invalid or empty
+			if ( ! is_bool( $enable_default ) ) {
+				$enable_default = true;
+			}
+
+			// Check if feature is set to enabled by option value in the database
+			$enable_option_value = get_option( $enable_option, $enable_default );
+			$enable_option_value_str = is_bool( $enable_option_value ) && $enable_option_value ? 'true' : strval( $enable_option_value );
+			if ( is_string( $enable_option ) && 'true' !== $enable_option_value_str ) {
+				$feature_is_enabled = false;
+			}
+			
+			// Load feature file if enabled
+			if ( $feature_is_enabled ) {
+				require_once self::$directory_path . $file;
+			}
+		}
+	}
+
+
+
+	/**
+	 * Register plugin features.
+	 * @since 1.2.0
+	 */
+	private function add_features() {
+		self::$features = array(
+			'checkout-layouts'            => array( 'file' => 'inc/checkout-layouts.php' ),
+			'checkout-fields'             => array( 'file' => 'inc/checkout-fields.php' ),
+			'checkout-validation'         => array( 'file' => 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => true ),
+			'checkout-gift-options'       => array( 'file' => 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => true ),
+		);
 	}
 
 
@@ -244,7 +288,7 @@ class FluidCheckout {
 	 * @since  1.0.0
 	 */
 	public function woocommerce_required_notice() {
-		echo '<div id="message" class="error"><p>'. sprintf( __( '%1$s requires the %2$s plugin to be installed/activated. %1$s has been deactivated.', 'woocommerce-fluid-checkout' ), self::PLUGIN, 'WooCommerce' ) .'</p></div>';
+		echo '<div id="message" class="error"><p>'. sprintf( __( '%1$s requires the %2$s plugin to be installed and activated.', 'woocommerce-fluid-checkout' ), self::PLUGIN, 'WooCommerce' ) .'</p></div>';
 	}
 
 
