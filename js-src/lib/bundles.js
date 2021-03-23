@@ -17,5 +17,5 @@
     RequireBundle.register( 'wfc-checkout-gift-options-styles', [ settings.cssPath + 'checkout-gift-options' + ver + '.css' ], '.has-wfc-gift-options #wfc-gift-options__field-wrapper, .woocommerce-table--order-details' );
     RequireBundle.register( 'wfc-address-book', [ settings.jsPath + 'address-book' + ver + '.js', settings.cssPath + 'address-book' + ver + '.css' ], '.has-wfc-address-book .wfc-address-book__form-wrapper', function(){ AddressBook.init(); } );
         
-    RequireBundle.register( 'wfc-mailcheck', [ settings.jsPath + 'lib/mailcheck' + ver + '.js', settings.jsPath + 'mailcheck-init' + ver + '.js' ], '[data-mailcheck]', function(){ MailcheckInit.init(); } );
+    RequireBundle.register( 'wfc-mailcheck', [ settings.jsPath + 'lib/mailcheck' + ver + '.js', settings.jsPath + 'mailcheck-init' + ver + '.js' ], '[data-mailcheck]', function(){ MailcheckInit.init( wfcSettings.mailcheckSuggestions ); } );
 })();

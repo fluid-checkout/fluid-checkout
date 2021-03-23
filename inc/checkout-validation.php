@@ -24,6 +24,9 @@ class FluidCheckoutValidation extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
 
 		add_filter( 'wfc_checkout_field_args' , array( $this, 'change_checkout_email_field_args' ), 10 );
+
+		// Checkout validation settings
+		add_filter( 'wfc_js_settings', array( $this, 'add_checkout_validation_js_settings' ), 10 );
 	}
 
 
@@ -38,6 +41,24 @@ class FluidCheckoutValidation extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
 
 		return array_merge( $classes, array( 'has-wfc-checkout-validation' ) );
+	}
+
+
+
+
+	/**
+	 * Add Checkout Validation settings to the plugin settings JS object.
+	 * 
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_checkout_validation_js_settings( $settings ) {
+		
+		$settings[ 'mailcheckSuggestions' ] = apply_filters( 'wfc_google_autocomplete_js_settings', array(
+			/* translators: %s: html for the email address typo correction suggestion link */
+			'suggestedElementTemplate' => '<div class="wfc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( __( 'Did you mean %s?', 'woocommerce-fluid-checkout' ), '<a class="mailcheck-suggestion" href="#apply-suggestion" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
+		) );
+
+		return $settings;
 	}
 
 
