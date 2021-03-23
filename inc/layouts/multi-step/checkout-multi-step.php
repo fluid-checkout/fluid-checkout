@@ -23,7 +23,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 		
 		// Template loader
-		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 20, 3 );
+		// add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 20, 3 );
 
 		// Steps display order
 		add_action( 'wfc_checkout_before', array( $this, 'output_checkout_progress_bar' ), 10 );

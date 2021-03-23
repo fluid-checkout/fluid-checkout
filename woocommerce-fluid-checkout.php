@@ -174,6 +174,7 @@ class FluidCheckout {
 	 */
 	public function locate_template( $template, $template_name, $template_path ) {
 		global $woocommerce;
+		$_template = null;
 	 
 		// Set template path to default value when not provided
 		if ( ! $template_path ) { $template_path = $woocommerce->template_url; };
@@ -200,7 +201,7 @@ class FluidCheckout {
 		}
 	 
 		// Return what we found
-		return $template;
+		return $_template;
 	}
 
 
