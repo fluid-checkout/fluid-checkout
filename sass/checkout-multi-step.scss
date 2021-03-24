@@ -4,126 +4,27 @@
 
 
 .wfc-site-content--checkout {
-  margin: 0 auto;
-  padding: 20px;
+	margin: 0 auto;
+	padding: 20px;
 
-  @media ( min-width: 750px ) {
-    padding: 30px;
-  }
-  @media ( min-width: 1000px ) {
-    padding: 50px;
-    max-width: 1400px;
-  }
-}
-
-
-
-@media ( min-width: 1000px ) {
-  .wfc-wrapper {
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-
-
-.woocommerce-checkout.has-wfc-checkout-multi-step .col2-set,
-.woocommerce-checkout.has-wfc-checkout-multi-step #order_review_heading,
-.woocommerce-checkout.has-wfc-checkout-multi-step #order_review {
-  width: 100%;
-  float: none;
-}
-
-
-
-.wfc-checkout-steps {
-  overflow: hidden;
-}
-
-
-
-.wfc-checkout-steps--active .wfc-frame {
-  display: none;
-}
-
-.wfc-checkout-steps--active .wfc-frame.current {
-  display: block;
-}
-
-
-.wfc-actions {
-  display: none;
-}
-.wfc-checkout-steps--active .wfc-actions {
-  margin-top: 30px;
-  text-align: center;
-}
-@supports ( display: flex ) {
-  .wfc-checkout-steps--active .wfc-actions {
-    display: flex;
-    width: 100%;
-  }
-}
-
-
-
-.wfc-checkout-steps--active .wfc-next {
-  min-width: 22rem;
-}
-
-@supports ( display: flex ) {
-  .wfc-checkout-steps--active .wfc-prev {
-    flex-shrink: 1;
-  }
-
-  .wfc-checkout-steps--active .wfc-next {
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
-}
-
-
-
-.wfc-checkout-steps--active .wfc-frame.current {
-  animation: slideInRight cubic-bezier(0.22, 0.61, 0.36, 1) 200ms; // ease-out-cubic
-}
-
-.wfc-checkout-steps--active .wfc-prev {
-  margin-right: 10px;
+	@media ( min-width: 750px ) { padding: 30px; }
+	@media ( min-width: 1000px ) {
+		padding: 50px;
+		max-width: 1400px;
+	}
 }
 
 
 
 
-/**
- * ANIMATIONS
- */
-@keyframes slideInRight {
-  from {
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
-    visibility: visible;
-  }
-
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-
-
-
-
-
-/**
- * Payment
- */
-.woocommerce-checkout-payment {
-  margin-bottom: 40px;
-}
-
-#place_order {
-  width: 100%;
-}
+// #sidebar:after {
+//     content: '';
+//     display: block;
+//     position: absolute;
+//     top: 0;
+//     height: 100%;
+//     background: #fafafb;
+//     border-left: #ebebeb solid 1px;
+//     width: 50%;
+//     margin-left: -30px;
+// }
