@@ -22,6 +22,9 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
+		// Checkout Header
+		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_header' ), 1 );
+
 		// Steps display order
 		add_action( 'wfc_checkout_before', array( $this, 'output_checkout_progress_bar' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_shipping' ), 50 );
@@ -199,6 +202,26 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 			$first = false;
 		}
+	}
+
+
+
+
+
+	/**
+	 * Checkout Header
+	 */
+
+
+
+	/**
+	 * Output the checkout header.
+	 */
+	public function output_checkout_header() {
+		wc_get_template(
+			'checkout/checkout-header.php',
+			array( 'checkout' => WC()->checkout() )
+		);
 	}
 
 

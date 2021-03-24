@@ -1,0 +1,27 @@
+/*
+ * WooCommerce Fluid Checkout - Layout: Multi Step
+ */
+
+.wfc-checkout__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: remsize( 6rem );
+
+	@media (#{$bp-larger-than-desktop}) { height: remsize( 10rem ); }
+}
+
+
+
+
+.wfc-checkout__header .custom-logo-link {
+	margin: 0;
+	line-height: 0;
+}
+.wfc-checkout__header .custom-logo {
+	margin: 0;
+	max-height: remsize( 2.5rem );
+	width: auto;
+
+	@media (#{$bp-larger-than-desktop}) { max-height: remsize( 4rem ); }
+}

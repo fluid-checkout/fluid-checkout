@@ -1,30 +1,18 @@
-/*
- * WooCommerce Fluid Checkout - Layout: Multi Step
- */
-
-
-.wfc-site-content--checkout {
-	margin: 0 auto;
-	padding: 20px;
-
-	@media ( min-width: 750px ) { padding: 30px; }
-	@media ( min-width: 1000px ) {
-		padding: 50px;
-		max-width: 1400px;
-	}
-}
+/*------------------------------------*\
+  #IMPORT ABSTRACT
+\*------------------------------------*/
+@import
+	"abstract/functions/remsize", // Should be imported before `_variables`
+    "abstract/variables",
+	"abstract/functions/_all";
 
 
 
 
-// #sidebar:after {
-//     content: '';
-//     display: block;
-//     position: absolute;
-//     top: 0;
-//     height: 100%;
-//     background: #fafafb;
-//     border-left: #ebebeb solid 1px;
-//     width: 50%;
-//     margin-left: -30px;
-// }
+	
+/*------------------------------------*\
+  #IMPORT STYLES
+\*------------------------------------*/
+@import
+	"partials/checkout-content-area",
+	"partials/checkout-header";

@@ -1,13 +1,88 @@
+/*------------------------------------*\
+  #IMPORT ABSTRACT
+\*------------------------------------*/
+/*------------------------------------*\
+	#VARIABLES
+\*------------------------------------*/
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+/**
+ * Return glyph values icons
+ * @see https://www.sitepoint.com/better-solution-managing-z-index-sass/
+ */
+/**
+ * Return z-index values for named layers
+ * @see https://www.sitepoint.com/better-solution-managing-z-index-sass/
+ */
+/*------------------------------------*\
+  #IMPORT STYLES
+\*------------------------------------*/
+/*------------------------------------*\
+  #CHECKOUT CONTENT AREA
+\*------------------------------------*/
+.wfc-content {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0 1.25rem; }
+  @media (min-width: 750px) {
+    .wfc-content {
+      max-width: 100%; } }
+  @media (min-width: 1000px) {
+    .wfc-content {
+      max-width: 100%; } }
+  @media (min-width: 1280px) {
+    .wfc-content {
+      max-width: 100%; } }
+  @media (min-width: 1500px) {
+    .wfc-content {
+      max-width: 87.5rem; } }
+  @media (min-width: 2000px) {
+    .wfc-content {
+      max-width: 87.5rem; } }
+  @media (min-width: 750px) {
+    .wfc-content {
+      padding: 0 1.875rem; } }
+  @media (min-width: 1000px) {
+    .wfc-content {
+      padding: 0 3.125rem; } }
+  @media (min-width: 1280px) {
+    .wfc-content {
+      padding: 0 3.125rem; } }
+  @media (min-width: 1500px) {
+    .wfc-content {
+      padding: 0 5rem; } }
+  @media (min-width: 2000px) {
+    .wfc-content {
+      padding: 0 8.125rem; } }
+
 /*
  * WooCommerce Fluid Checkout - Layout: Multi Step
  */
-.wfc-site-content--checkout {
-  margin: 0 auto;
-  padding: 20px; }
-  @media (min-width: 750px) {
-    .wfc-site-content--checkout {
-      padding: 30px; } }
+.wfc-checkout__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.75rem; }
   @media (min-width: 1000px) {
-    .wfc-site-content--checkout {
-      padding: 50px;
-      max-width: 1400px; } }
+    .wfc-checkout__header {
+      height: 6.25rem; } }
+
+.wfc-checkout__header .custom-logo-link {
+  margin: 0;
+  line-height: 0; }
+
+.wfc-checkout__header .custom-logo {
+  margin: 0;
+  max-height: 1.5625rem;
+  width: auto; }
+  @media (min-width: 1000px) {
+    .wfc-checkout__header .custom-logo {
+      max-height: 2.5rem; } }

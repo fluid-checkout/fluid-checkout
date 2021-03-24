@@ -1,0 +1,43 @@
+/*------------------------------------*\
+  #CHECKOUT CONTENT AREA
+\*------------------------------------*/
+
+// Same styles as fluid theme `.container` class
+.wfc-content {
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+	box-sizing: border-box;
+
+	// max-width
+	max-width: $container-width-mobile;
+	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
+	@media (#{$bp-larger-than-desktop}) { max-width: $container-width-desktop; }
+	@media (#{$bp-larger-than-desktop-medium}) { max-width: $container-width-desktop-medium; }
+	@media (#{$bp-larger-than-desktop-large}) { max-width: $container-width-desktop-large; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { max-width: $container-width-desktop-extra-large; }
+
+	// padding
+	padding: 0 $container-spacing-mobile;
+	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet; }
+	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop; }
+	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium; }
+	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large; }
+}
+
+
+
+
+
+// #sidebar:after {
+//     content: '';
+//     display: block;
+//     position: absolute;
+//     top: 0;
+//     height: 100%;
+//     background: #fafafb;
+//     border-left: #ebebeb solid 1px;
+//     width: 50%;
+//     margin-left: -30px;
+// }
