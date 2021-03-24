@@ -25,7 +25,9 @@ class FluidCheckout_PremiumFeatures extends FluidCheckout {
 	public function add_premium_features( $features ) {
 		$_features = array_merge( $features, array(
 			'account-pages'               => array( 'file' => 'inc/premium/account-pages.php', 'enable_option' => 'wfc_enable_account_pages', 'enable_default' => true ),
+			'address-book'                => array( 'file' => 'inc/premium/address-book.php', 'enable_option' => 'wfc_enable_address_book', 'enable_default' => true ),
 			'integration-google-address'  => array( 'file' => 'inc/premium/integration-google-address.php', 'enable_option' => 'wfc_enable_google_address_integration', 'enable_default' => true ),
+			'checkout-order-received'     => array( 'file' => 'inc/premium/checkout-order-received.php', 'enable_option' => 'wfc_enable_order_received', 'enable_default' => true ),
 		) );
 
 		return $_features;

@@ -21,16 +21,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 	 */
 	public function hooks() {
 
-		// Extra features
-		// Needs to run early on `init` so that some features like widget areas are loaded correctly
-		add_filter( 'init', array( $this, 'load_extra_features' ), 0 );
-
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
-		
-		// Template loader
-		// add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 30, 3 );
 
 		// Contact
 		remove_action( 'wfc_checkout_steps', array( $this->multistep(), 'output_step_billing' ), 10 );
@@ -81,16 +74,6 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 
 
 	/**
-	 * Load extra features.
-	 */
-	public function load_extra_features() {
-		require_once self::$directory_path . 'inc/layouts/multi-step-enhanced/address-book.php';
-		require_once self::$directory_path . 'inc/layouts/multi-step-enhanced/checkout-order-received.php';
-	}
-
-
-
-	/**
 	 * Return WooCommerce Fluid Checkout multi-step class instance.
 	 */
 	public function multistep() {
@@ -126,49 +109,6 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		// Scripts
 		wp_enqueue_script( 'wfc-checkout-steps-enhanced', self::$directory_url . 'js/checkout-steps-enhanced'. self::$asset_version . '.js', NULL, NULL, true );
 		wp_add_inline_script( 'wfc-checkout-steps-enhanced', 'window.addEventListener("load",function(){CheckoutStepsEnhanced.init();})' );
-	}
-
-
-
-	/*
-	 * Locate template files from this checkout layout.
-	 * @since 1.1.0
-	 * 
-	 * @param   string  $template       Template filename.
-	 * @param   string  $template_name  Template name.
-	 * @param   string  $template_path  Template path.
-	 */
-	public function locate_template( $template, $template_name, $template_path ) {
-	 
-		global $woocommerce;
-	 
-		$_template = $template;
-	 
-		if ( ! $template_path ) $template_path = $woocommerce->template_url;
-	 
-		// Get plugin path
-		$plugin_path  = self::$directory_path . 'inc/layouts/multi-step-enhanced/templates/';
-	 
-		// Look within passed path within the theme
-		$template = locate_template(
-			array(
-				$template_path . $template_name,
-				$template_name
-			)
-		);
-	 
-		// Get the template from this plugin, if it exists
-		if ( ! $template && file_exists( $plugin_path . $template_name ) ) {
-			$template = $plugin_path . $template_name;
-		}
-	 
-		// Use default template
-		if ( ! $template ){
-			$template = $_template;
-		}
-	 
-		// Return what we found
-		return $template;
 	}
 
 
