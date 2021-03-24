@@ -155,6 +155,21 @@ class FluidCheckout {
 
 
 	/**
+	 * Register plugin features.
+	 * @since 1.2.0
+	 */
+	private function add_features() {
+		self::$features = array(
+			'checkout-multi-step'         => array( 'file' => 'inc/checkout-multi-step.php' ),
+			'checkout-fields'             => array( 'file' => 'inc/checkout-fields.php' ),
+			'checkout-validation'         => array( 'file' => 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => true ),
+			'checkout-gift-options'       => array( 'file' => 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => true ),
+		);
+	}
+
+
+
+	/**
 	 * scripts_styles function.
 	 *
 	 * @access public
@@ -250,21 +265,6 @@ class FluidCheckout {
 				require_once self::$directory_path . $file;
 			}
 		}
-	}
-
-
-
-	/**
-	 * Register plugin features.
-	 * @since 1.2.0
-	 */
-	private function add_features() {
-		self::$features = array(
-			'checkout-layout'             => array( 'file' => 'inc/checkout-layout.php' ),
-			'checkout-fields'             => array( 'file' => 'inc/checkout-fields.php' ),
-			'checkout-validation'         => array( 'file' => 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => true ),
-			'checkout-gift-options'       => array( 'file' => 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => true ),
-		);
 	}
 
 
