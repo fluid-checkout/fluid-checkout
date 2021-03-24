@@ -21,9 +21,6 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
-		
-		// Template loader
-		// add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 20, 3 );
 
 		// Steps display order
 		add_action( 'wfc_checkout_before', array( $this, 'output_checkout_progress_bar' ), 10 );
@@ -84,51 +81,6 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		// Scripts
 		wp_enqueue_script( 'wfc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', NULL, NULL, true );
 		wp_add_inline_script( 'wfc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
-	}
-
-
-
-
-	/**
-	 * Locate template files from this checkout layout.
-	 * 
-	 * @since 1.1.0
-	 * 
-	 * @param   string  $template       Template filename.
-	 * @param   string  $template_name  Template name.
-	 * @param   string  $template_path  Template path.
-	 */
-	public function locate_template( $template, $template_name, $template_path ) {
-	 
-		global $woocommerce;
-	 
-		$_template = $template;
-	 
-		if ( ! $template_path ) $template_path = $woocommerce->template_url;
-	 
-		// Get plugin path
-		$plugin_path  = self::$directory_path . 'inc/layouts/multi-step/templates/';
-	 
-		// Look within passed path within the theme
-		$template = locate_template(
-			array(
-				$template_path . $template_name,
-				$template_name
-			)
-		);
-	 
-		// Get the template from this plugin, if it exists
-		if ( ! $template && file_exists( $plugin_path . $template_name ) ) {
-			$template = $plugin_path . $template_name;
-		}
-	 
-		// Use default template
-		if ( ! $template ){
-			$template = $_template;
-		}
-	 
-		// Return what we found
-		return $template;
 	}
 
 

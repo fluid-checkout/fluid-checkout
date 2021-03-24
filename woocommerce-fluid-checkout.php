@@ -168,7 +168,7 @@ class FluidCheckout {
 
 
 
-	/*
+	/**
 	 * Locate template files from this plugin.
 	 * @since 1.0.2
 	 */
@@ -206,7 +206,7 @@ class FluidCheckout {
 
 
 
-	/*
+	/**
 	 * Load the plugin features
 	 * @since 1.2.0
 	 */
