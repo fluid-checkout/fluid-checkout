@@ -30,6 +30,9 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_contact' ), 10 );
 		add_action( 'wfc_checkout_before_step_contact_fields', array( $this, 'output_contact_step_section_title' ), 10 );
 
+		// Account creation
+		add_action( 'wfc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
+
 		// Shipping
 		remove_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this->multistep(), 'output_ship_to_different_address_checkbox' ), 10 );
 		add_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
@@ -212,6 +215,22 @@ class FluidCheckoutLayout_MultiStepEnhanced extends FluidCheckout {
 		echo $this->get_contact_step_actions_html();
 		$this->multistep()->output_step_end_tag();
 	}
+
+
+
+	/**
+	 * Output account creation form fields.
+	 */
+	public function output_form_account_creation() {
+		wc_get_template(
+			'checkout/form-account-creation.php',
+			array(
+				'checkout'			=> WC()->checkout(),
+			)
+		);
+	}
+
+
 
 	/**
 	 * Return list of checkout fields for contact step.
