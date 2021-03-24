@@ -7,9 +7,9 @@
     margin-left: auto;
     margin-right: auto; } }
 
-.woocommerce-checkout.has-wfc-checkout-layout--multi-step .col2-set,
-.woocommerce-checkout.has-wfc-checkout-layout--multi-step #order_review_heading,
-.woocommerce-checkout.has-wfc-checkout-layout--multi-step #order_review {
+.woocommerce-checkout.has-wfc-checkout-multi-step .col2-set,
+.woocommerce-checkout.has-wfc-checkout-multi-step #order_review_heading,
+.woocommerce-checkout.has-wfc-checkout-multi-step #order_review {
   width: 100%;
   float: none; }
 
