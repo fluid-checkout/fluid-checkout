@@ -1,8 +1,8 @@
 <?php
 /**
- * Checkout billing information form
+ * Checkout account creation form
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/checkout/form-billing.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/checkout/form-account-creation.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -11,34 +11,13 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce/Templates
- * @version 3.6.0
- * @global WC_Checkout $checkout
+ * @see     templates/checkout/form-billing.php
+ * @package woocommerce-fluid-checkout
+ * @version 1.2.0
  */
 
 defined( 'ABSPATH' ) || exit;
 ?>
-
-<?php // CHANGE: Add new hook ?>
-<?php do_action( 'wfc_checkout_before_step_billing_fields' ); ?>
-
-<div class="woocommerce-billing-fields">
-	<?php // CHANGE: Remove billing section title ?>
-
-	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
-
-	<div class="woocommerce-billing-fields__field-wrapper">
-		<?php
-		$fields = $checkout->get_checkout_fields( 'billing' );
-
-		foreach ( $fields as $key => $field ) {
-			woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
-		}
-		?>
-	</div>
-
-	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
-</div>
 
 <?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
 	<div class="woocommerce-account-fields">
@@ -46,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 
 			<p class="form-row form-row-wide create-account">
 				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ); ?> type="checkbox" name="createaccount" value="1" /> <span><?php esc_html_e( 'Create an account?', 'woocommerce' ); ?></span>
+					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ); ?> type="checkbox" name="createaccount" value="1" /> <span><?php esc_html_e( 'Create an account', 'woocommerce-fluid-checkout' ); ?></span>
 				</label>
 			</p>
 
@@ -68,6 +47,3 @@ defined( 'ABSPATH' ) || exit;
 		<?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
 	</div>
 <?php endif; ?>
-
-<?php // CHANGE: Add new hook ?>
-<?php do_action( 'wfc_checkout_after_step_contact_fields' ); ?>

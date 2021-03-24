@@ -155,6 +155,21 @@ class FluidCheckout {
 
 
 	/**
+	 * Register plugin features.
+	 * @since 1.2.0
+	 */
+	private function add_features() {
+		self::$features = array(
+			'checkout-multi-step'         => array( 'file' => 'inc/checkout-multi-step.php' ),
+			'checkout-fields'             => array( 'file' => 'inc/checkout-fields.php' ),
+			'checkout-validation'         => array( 'file' => 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => true ),
+			'checkout-gift-options'       => array( 'file' => 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => true ),
+		);
+	}
+
+
+
+	/**
 	 * scripts_styles function.
 	 *
 	 * @access public
@@ -168,46 +183,45 @@ class FluidCheckout {
 
 
 
-	/*
+	/**
 	 * Locate template files from this plugin.
 	 * @since 1.0.2
 	 */
 	public function locate_template( $template, $template_name, $template_path ) {
-	 
 		global $woocommerce;
+		$_template = null;
 	 
-		$_template = $template;
-	 
-		if ( ! $template_path ) $template_path = $woocommerce->template_url;
+		// Set template path to default value when not provided
+		if ( ! $template_path ) { $template_path = $woocommerce->template_url; };
 	 
 		// Get plugin path
 		$plugin_path  = self::$directory_path . 'templates/';
-	 
-		// Look within passed path within the theme
-		$template = locate_template(
-			array(
-				$template_path . $template_name,
-				$template_name
-			)
-		);
-	 
+
 		// Get the template from this plugin, if it exists
-		if ( ! $template && file_exists( $plugin_path . $template_name ) ) {
-			$template = $plugin_path . $template_name;
+		if ( file_exists( $plugin_path . $template_name ) ) {
+			$_template = $plugin_path . $template_name;
+		}
+		
+		// Look for template file in the theme
+		if ( ! $_template || apply_filters( 'wfc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
+			$_template = locate_template( array(
+				$template_path . $template_name,
+				$template_name,
+			) );
 		}
 	 
 		// Use default template
-		if ( ! $template ){
-			$template = $_template;
+		if ( ! $_template ){
+			$_template = $template;
 		}
 	 
 		// Return what we found
-		return $template;
+		return $_template;
 	}
 
 
 
-	/*
+	/**
 	 * Load the plugin features
 	 * @since 1.2.0
 	 */
@@ -251,21 +265,6 @@ class FluidCheckout {
 				require_once self::$directory_path . $file;
 			}
 		}
-	}
-
-
-
-	/**
-	 * Register plugin features.
-	 * @since 1.2.0
-	 */
-	private function add_features() {
-		self::$features = array(
-			'checkout-layouts'            => array( 'file' => 'inc/checkout-layouts.php' ),
-			'checkout-fields'             => array( 'file' => 'inc/checkout-fields.php' ),
-			'checkout-validation'         => array( 'file' => 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => true ),
-			'checkout-gift-options'       => array( 'file' => 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => true ),
-		);
 	}
 
 

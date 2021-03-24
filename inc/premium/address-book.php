@@ -116,9 +116,9 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function late_hooks() {
 		// Multi-step Enhanced Layout
-		if ( class_exists( 'FluidCheckoutLayout_MultiStepEnhanced' ) ) {
+		if ( class_exists( 'FluidCheckoutLayout_MultiStep' ) ) {
 			// Billing Address Book
-			remove_action( 'wfc_checkout_before_step_payment_fields', array( $this->multistep_enhanced(), 'output_billing_fields' ), 20 );
+			remove_action( 'wfc_checkout_before_step_payment_fields', array( $this->multistep(), 'output_billing_fields' ), 20 );
 		}
 		
 		// Account pages
@@ -134,13 +134,6 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function multistep() {
 		return FluidCheckoutLayout_MultiStep::instance();
-	}
-
-	/**
-	 * Return WooCommerce Fluid Checkout multi-step enhanced class instance
-	 */
-	public function multistep_enhanced() {
-		return FluidCheckoutLayout_MultiStepEnhanced::instance();
 	}
 
 	/**
@@ -802,7 +795,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 			'checkout/form-billing.php',
 			array(
 				'checkout'			=> WC()->checkout(),
-				'ignore_fields'		=> $this->multistep_enhanced()->get_contact_step_display_fields(),
+				'ignore_fields'		=> $this->multistep()->get_contact_step_display_fields(),
 			)
 		);
 	}
@@ -1473,7 +1466,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 				'postcode' => $posted_data[ 'billing_postcode' ],
 				'country' => $posted_data[ 'billing_country' ],
 				'phone' => $posted_data[ 'billing_phone' ],
-				'address_id' => $posted_data[ 'billing_address_id' ],
+				'address_id' => array_key_exists( 'billing_address_id', $posted_data ) ? $posted_data[ 'billing_address_id' ] : null,
 			);
 		}
 		

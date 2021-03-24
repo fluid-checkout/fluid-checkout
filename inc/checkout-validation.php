@@ -21,7 +21,6 @@ class FluidCheckoutValidation extends FluidCheckout {
 		if ( get_option( 'wfc_enable_checkout_validation', 'true' ) !== 'true' ) { return; }
 		
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
 
 		add_filter( 'wfc_checkout_field_args' , array( $this, 'change_checkout_email_field_args' ), 10 );
 
