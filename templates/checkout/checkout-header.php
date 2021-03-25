@@ -19,13 +19,18 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <header class="wfc-checkout-header">
 	<div class="wfc-checkout-header__inner">
-		<?php
-		if ( 'true' === get_option( 'wfc_hide_site_header_at_checkout', 'true' ) ) :
-			if ( function_exists( 'the_custom_logo' ) ) {
-				the_custom_logo();
-			}
-		endif;
-		?>
+		<div class="wfc-checkout__branding">
+			<?php
+			if ( 'true' === get_option( 'wfc_hide_site_header_at_checkout', 'true' ) ) :
+				if ( function_exists( 'the_custom_logo' ) && get_theme_mod( 'custom_logo' ) ) {
+					the_custom_logo();
+				}
+				else {
+					echo '<h1 class="wfc-checkout__site-name">' . esc_html( get_bloginfo( 'name' ) ) . '</h1>';
+				}
+			endif;
+			?>
+		</div>
 
 		<div class="wfc-checkout__cart-link-wrapper">
 			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link" aria-label="<?php _e( 'Open the order summary', 'woocommerce-fluid-checkout' ); ?>"><?php wc_cart_totals_order_total_html(); ?></a>
