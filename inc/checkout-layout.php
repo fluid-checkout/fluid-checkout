@@ -98,7 +98,7 @@ class FluidCheckout_Layout extends FluidCheckout {
 		// Bail if not on checkout page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
 
-		$add_classes = array( 'has-wfc-checkout-multi-step' );
+		$add_classes = array();
 		
 		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
 		if ( $this->get_hide_site_header_at_checkout() ) {
