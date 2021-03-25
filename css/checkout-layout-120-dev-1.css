@@ -47,7 +47,8 @@ body.woocommerce-checkout.has-checkout-header .content-area {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  overflow-x: hidden; }
 
 body.woocommerce-checkout.has-checkout-header .wfc-content {
   max-width: 100%;
