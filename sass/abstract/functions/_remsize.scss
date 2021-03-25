@@ -3,5 +3,5 @@
 /// @param {String} $context - Context for which the size value will be used, defaults to `frontend`
 /// @return {String} - Converted `rem` value for the given context
 @function remsize( $size, $context: 'frontend' ) {
-    @return $size * .625;
+    @return strip-unit( $size ) * 10px;
 }

@@ -5,7 +5,9 @@
 // Remove margins inherited from some themes
 .woocommerce-checkout .content-area,
 form.woocommerce-checkout {
+	display: block !important; // Needed to override theme styles breaking the layout
 	margin: 0;
+	
 }
 
 
