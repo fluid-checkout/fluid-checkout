@@ -24,7 +24,9 @@ body.woocommerce-checkout.has-checkout-header .content-area {
 	width: 100%;
 	margin: 0 auto;
 	box-sizing: border-box;
+}
 
+body.woocommerce-checkout.has-checkout-header .wfc-content {
 	// max-width
 	max-width: $container-width-mobile;
 	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
@@ -49,9 +51,9 @@ body.woocommerce-checkout.has-checkout-header .content-area {
 /*------------------------------------*\
   #CHECKOUT COLUMNS LAYOUT
 \*------------------------------------*/
-.wfc-checkout-header,
-.wfc-checkout-notices,
-.wfc-inside {
+body:not( .has-checkout-must-login-notice ) .wfc-checkout-header,
+body:not( .has-checkout-must-login-notice ) .wfc-checkout-notices,
+body:not( .has-checkout-must-login-notice ) .wfc-inside {
 	@media (#{$bp-larger-than-desktop}) {
 		float: left;
 		width: $checkout-steps-width--large-screen;

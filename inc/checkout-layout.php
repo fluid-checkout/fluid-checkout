@@ -99,10 +99,16 @@ class FluidCheckout_Layout extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
 
 		$add_classes = array( 'has-wfc-checkout-multi-step' );
-
+		
 		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
-		if ( 'true' === get_option( 'wfc_hide_site_header_at_checkout', 'true' ) ) {
+		if ( $this->get_hide_site_header_at_checkout() ) {
 			$add_classes[] = 'has-checkout-header';
+		}
+		
+		// Add extra class if displaying the `must-log-in` notice
+		$checkout = WC()->checkout();
+		if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
+			$add_classes[] = 'has-checkout-must-login-notice';
 		}
 		
 		return array_merge( $classes, $add_classes );
@@ -124,6 +130,38 @@ class FluidCheckout_Layout extends FluidCheckout {
 		// Scripts
 		wp_enqueue_script( 'wfc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', NULL, NULL, true );
 		wp_add_inline_script( 'wfc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
+	}
+
+
+
+	/**
+	 * Get option for hiding the site's original header at the checkout page.
+	 *
+	 * @return  Boolean  True if should hide the site's original header at the checkout page, false otherwise.
+	 */
+	public function get_hide_site_header_at_checkout() {
+		// Bail if WooCommerce class not available
+		if ( ! function_exists( 'WC' ) ) { return false; }
+
+		// Get checkout object.
+		$checkout = WC()->checkout();
+
+		return ( ! ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) && 'true' === get_option( 'wfc_hide_site_header_at_checkout', 'true' );
+	}
+
+	/**
+	 * Get option for hiding the site's original footer at the checkout page.
+	 *
+	 * @return  Boolean  True if should hide the site's original footer at the checkout page, false otherwise.
+	 */
+	public function get_hide_site_footer_at_checkout() {
+		// Bail if WooCommerce class not available
+		if ( ! function_exists( 'WC' ) ) { return false; }
+
+		// Get checkout object.
+		$checkout = WC()->checkout();
+
+		return ( ! ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) && 'true' === get_option( 'wfc_hide_site_footer_at_checkout', 'true' );
 	}
 
 
@@ -232,6 +270,9 @@ class FluidCheckout_Layout extends FluidCheckout {
 	 * Output the checkout header.
 	 */
 	public function output_checkout_header() {
+		// Only display our checkout header if the site header is hidden
+		if ( ! $this->get_hide_site_header_at_checkout() ) { return; }
+		
 		wc_get_template(
 			'checkout/checkout-header.php',
 			array( 'checkout' => WC()->checkout() )

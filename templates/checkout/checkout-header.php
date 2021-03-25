@@ -16,8 +16,6 @@
  */
 
 defined( 'ABSPATH' ) || exit;
-
-$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 ?>
 <header class="wfc-checkout-header">
 	<div class="wfc-checkout-header__inner">

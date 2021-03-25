@@ -39,47 +39,49 @@ body.woocommerce-checkout.has-checkout-header .content-area {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  box-sizing: border-box;
+  box-sizing: border-box; }
+
+body.woocommerce-checkout.has-checkout-header .wfc-content {
   max-width: 100%;
   padding: 0 1.25rem; }
   @media (min-width: 750px) {
-    .wfc-content {
+    body.woocommerce-checkout.has-checkout-header .wfc-content {
       max-width: 100%; } }
   @media (min-width: 1000px) {
-    .wfc-content {
+    body.woocommerce-checkout.has-checkout-header .wfc-content {
       max-width: 100%; } }
   @media (min-width: 1280px) {
-    .wfc-content {
+    body.woocommerce-checkout.has-checkout-header .wfc-content {
       max-width: 100%; } }
   @media (min-width: 1500px) {
-    .wfc-content {
+    body.woocommerce-checkout.has-checkout-header .wfc-content {
       max-width: 87.5rem; } }
   @media (min-width: 2000px) {
-    .wfc-content {
+    body.woocommerce-checkout.has-checkout-header .wfc-content {
       max-width: 87.5rem; } }
   @media (min-width: 750px) {
-    .wfc-content {
+    body.woocommerce-checkout.has-checkout-header .wfc-content {
       padding: 0 1.875rem; } }
   @media (min-width: 1000px) {
-    .wfc-content {
+    body.woocommerce-checkout.has-checkout-header .wfc-content {
       padding: 0 3.125rem; } }
   @media (min-width: 1280px) {
-    .wfc-content {
+    body.woocommerce-checkout.has-checkout-header .wfc-content {
       padding: 0 3.125rem; } }
   @media (min-width: 1500px) {
-    .wfc-content {
+    body.woocommerce-checkout.has-checkout-header .wfc-content {
       padding: 0 3.125rem; } }
   @media (min-width: 2000px) {
-    .wfc-content {
+    body.woocommerce-checkout.has-checkout-header .wfc-content {
       padding: 0 3.125rem; } }
 
 /*------------------------------------*\
   #CHECKOUT COLUMNS LAYOUT
 \*------------------------------------*/
 @media (min-width: 1000px) {
-  .wfc-checkout-header,
-  .wfc-checkout-notices,
-  .wfc-inside {
+  body:not(.has-checkout-must-login-notice) .wfc-checkout-header,
+  body:not(.has-checkout-must-login-notice) .wfc-checkout-notices,
+  body:not(.has-checkout-must-login-notice) .wfc-inside {
     float: left;
     width: 60%;
     padding-right: 3.125rem; } }
