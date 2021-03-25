@@ -63,9 +63,9 @@
     .wfc-content {
       padding: 0 8.125rem; } }
 
-/*
- * WooCommerce Fluid Checkout - Layout: Multi Step
- */
+/*------------------------------------*\
+  #CHECKOUT HEADER
+\*------------------------------------*/
 .wfc-checkout__header {
   display: flex;
   align-items: center;

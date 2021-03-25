@@ -107,8 +107,7 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 		// Styles
 		wp_enqueue_style( 'wfc-checkout-layout--multi-step', self::$directory_url . 'css/checkout-multi-step'. self::$asset_version . '.css', NULL, NULL );
-		wp_enqueue_style( 'wfc-progress-bar', self::$directory_url . 'css/checkout-progress-bar--'.get_option( 'wfc_checkout_progress_bar_layout', 'default' ). self::$asset_version . '.css', NULL, NULL );
-		wp_enqueue_style( 'wfc-checkout-layout--multi-step-enhanced', self::$directory_url . 'css/checkout-multi-step--enhanced'. self::$asset_version . '.css', NULL, NULL );
+		wp_enqueue_style( 'wfc-progress-bar', self::$directory_url . 'css/checkout-progress-bar' . self::$asset_version . '.css', NULL, NULL );
 		
 		// Scripts
 		wp_enqueue_script( 'wfc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', NULL, NULL, true );

@@ -1,6 +1,30 @@
-/*
- * WooCommerce Fluid Checkout - Address Book
+/*------------------------------------*\
+	#IMPORT ABSTRACT
+\*------------------------------------*/
+/*------------------------------------*\
+	#VARIABLES
+\*------------------------------------*/
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
  */
+/**
+ * Return glyph values icons
+ * @see https://www.sitepoint.com/better-solution-managing-z-index-sass/
+ */
+/**
+ * Return z-index values for named layers
+ * @see https://www.sitepoint.com/better-solution-managing-z-index-sass/
+ */
+/*------------------------------------*\
+	#IMPORT STYLES
+\*------------------------------------*/
+/*------------------------------------*\
+	#ADDRESS BOOK
+\*------------------------------------*/
 .address-book__entry-label > span {
   display: block;
   width: 100%; }

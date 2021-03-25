@@ -1,20 +1,17 @@
-/*
- * WooCommerce Fluid Checkout - Gift Options
- */
-
-.has-wfc-gift-options--active #wfc-gift-options__field-wrapper {
-	display: none;
-}
-
-#wfc-gift-options__field-wrapper.active {
-	display: block;
-}
+/*------------------------------------*\
+	#IMPORT ABSTRACT
+\*------------------------------------*/
+@import
+	"abstract/functions/remsize", // Should be imported before `_variables`
+	"abstract/variables",
+	"abstract/functions/_all";
 
 
 
-.woocommerce-table--order-details .order-received__gift-from {
-	font-style: italic;
-}
-.woocommerce-table--order-details .order-received__gift-from:before {
-	content: ' \2014\ '; // Need spaces before and after the escaped "em dash" char
-}
+
+	
+/*------------------------------------*\
+	#IMPORT STYLES
+\*------------------------------------*/
+@import
+	"partials/checkout-gift-options";
