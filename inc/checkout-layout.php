@@ -124,8 +124,7 @@ class FluidCheckout_Layout extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
 
 		// Styles
-		wp_enqueue_style( 'wfc-checkout-layout--multi-step', self::$directory_url . 'css/checkout-multi-step'. self::$asset_version . '.css', NULL, NULL );
-		wp_enqueue_style( 'wfc-progress-bar', self::$directory_url . 'css/checkout-progress-bar' . self::$asset_version . '.css', NULL, NULL );
+		wp_enqueue_style( 'wfc-checkout-layout', self::$directory_url . 'css/checkout-layout'. self::$asset_version . '.css', NULL, NULL );
 		
 		// Scripts
 		wp_enqueue_script( 'wfc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', NULL, NULL, true );

@@ -2,7 +2,7 @@
 	#IMPORT ABSTRACT
 \*------------------------------------*/
 @import
-	"../abstract/functions/all-early", // Should be imported before `_variables`
+	"../abstract/functions/_all-early", // Should be imported before `_variables`
 	"../abstract/variables",
 	"../abstract/functions/_all";
 
