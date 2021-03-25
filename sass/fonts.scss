@@ -1,17 +1,17 @@
+@charset "UTF-8";
+
 /*------------------------------------*\
-	#IMPORT ABSTRACT
+  #IMPORT ABSTRACT
 \*------------------------------------*/
 @import
 	"abstract/functions/_all-early", // Should be imported before `_variables`
 	"abstract/variables",
-	"abstract/functions/_all";
+	"abstract/functions/_all",
+	"abstract/mixins/_all";
 
 
 
-
-	
 /*------------------------------------*\
-	#IMPORT STYLES
+  #FONTS IMPORT
 \*------------------------------------*/
-@import
-	"partials/checkout-progress-bar";
+@include fontFace( 'fluid-checkout-icons', '../fonts/fluid-checkout-icons', normal, normal, block );

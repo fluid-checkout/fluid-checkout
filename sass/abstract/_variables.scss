@@ -193,27 +193,31 @@ $z-layers: (
 $icon-font-name:                 'fluid-checkout-icons' !default;
 
 $icon-size-extra-small:          remsize( 1rem ) !default;
-$icon-size-small:                remsize( 1.6rem ) !default;
+$icon-size-small:                remsize( 1.8rem ) !default;
 $icon-size:                      remsize( 2.4rem ) !default;
 $icon-size-medium:               remsize( 3rem ) !default;
 $icon-size-large:                remsize( 5rem ) !default;
 $icon-size-extra-large:          remsize( 8rem ) !default;
 
-// $icons: (
-// 	'i-chevron-up': '\e80a',
-// 	'i-chevron-up-medium': '\e80c',
-// 	'i-chevron-right-medium': '\e804',
-// 	'i-chevron-right': '\e805',
-// 	'i-chevron-down': '\e801',
-// 	'i-chevron-down-medium': '\e803',
-// 	'i-chevron-left': '\e802',
-// 	'i-chevron-left-medium': '\e800',
-// 	'i-check-small': '\e808',
-// 	'i-check': '\e809',
-// 	'i-minus': '\e80e',
-// 	'i-plus': '\e816',
-// 	'i-x': '\e811',
-// ) !default;
+$icons: (
+	'i-arrow-left': '\e802',
+	'i-arrow-right': '\e803',
+	'i-check-small': '\e805',
+	'i-check': '\e806',
+	'i-chevron-down-medium': '\e807',
+	'i-chevron-down': '\e808',
+	'i-chevron-left-medium': '\e809',
+	'i-chevron-left': '\e80a',
+	'i-chevron-right-medium': '\e80b',
+	'i-chevron-right': '\e80c',
+	'i-chevron-up-medium': '\e80d',
+	'i-chevron-up': '\e80e',
+	'i-minus': '\e818',
+	'i-plus': '\e81b',
+	'i-trash': '\e822',
+	'i-x': '\e827',
+	'i-cart': '\e828',
+) !default;
 
 // END - ICONS
 // ----------------------------------------

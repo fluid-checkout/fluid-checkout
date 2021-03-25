@@ -4,7 +4,8 @@
 @import
 	"abstract/functions/_all-early", // Should be imported before `_variables`
 	"abstract/variables",
-	"abstract/functions/_all";
+	"abstract/functions/_all",
+	"abstract/mixins/_all";
 
 
 
@@ -15,4 +16,5 @@
 \*------------------------------------*/
 @import
 	"partials/checkout-content-area",
-	"partials/checkout-header";
+	"partials/checkout-header",
+	"partials/checkout-progress-bar";

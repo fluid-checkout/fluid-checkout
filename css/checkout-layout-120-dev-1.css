@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*------------------------------------*\
   #IMPORT ABSTRACT
 \*------------------------------------*/
@@ -160,17 +161,21 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   position: absolute;
   top: 50%;
   right: 0;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateX(8px);
   margin: 0;
   line-height: 1; }
+  @media (min-width: 1000px) {
+    .wfc-checkout-header .wfc-checkout__cart-link-wrapper {
+      display: none; } }
 
 .wfc-checkout-header .wfc-checkout__cart-link {
   display: block;
-  padding: 5px 10px;
+  padding: 10px 8px 8px 10px;
   background-color: #fff;
   border: solid 1px #F7F0F5;
   border-radius: 8px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  font-size: 15px;
   text-decoration: none;
   color: inherit;
   transition: all 0.3s ease; }
@@ -178,3 +183,134 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
     box-shadow: none;
     transform: translateY(1px);
     color: inherit; }
+
+.wfc-checkout-header .wfc-checkout__cart-link:before {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "";
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  margin-right: 10px; }
+
+.wfc-checkout-header .wfc-checkout__cart-link:after {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "";
+  width: 18px;
+  height: 18px;
+  font-size: 18px; }
+
+/*------------------------------------*\
+  #CHECKOUT PROGRESS BAR
+\*------------------------------------*/
+#wfc-progressbar {
+  margin: 0;
+  overflow: hidden; }
+
+.wfc-progress-bar-step {
+  display: inline-block;
+  padding: .5rem 2rem;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer; }
+
+@supports (display: flex) {
+  #wfc-progressbar {
+    display: flex; }
+  .wfc-progress-bar-step {
+    flex: 1;
+    padding: 0; } }
+
+.wfc-progress-bar-step[disabled],
+.wfc-progress-bar-step.disabled {
+  cursor: default; }
+
+.wfc-progress-bar-step:first-child:before,
+.wfc-progress-bar-step:last-child:after {
+  content: '';
+  display: none; }
+
+#wfc-progressbar {
+  border-radius: 4px;
+  margin-bottom: 30px; }
+
+.wfc-progress-bar-step {
+  padding: 5px;
+  max-height: 30px;
+  height: 30px;
+  background-color: #f3f3f3;
+  font-size: 15px;
+  text-align: center;
+  line-height: 20px; }
+
+.wfc-progress-bar-step:before,
+.wfc-progress-bar-step:after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -23px;
+  width: 0;
+  height: 0;
+  border: 17px solid transparent;
+  border-left: 7px solid #f3f3f3;
+  z-index: 3; }
+
+.wfc-progress-bar-step:before {
+  left: 0;
+  border: 17px solid transparent;
+  border-left: 7px solid #fff;
+  z-index: 2; }
+
+.wfc-progress-bar-step.current:after {
+  border-left-color: #e9e9e9; }
+
+.wfc-progress-bar-step.current {
+  background-color: #e9e9e9; }
+
+.wfc-progress-bar-step.done:after {
+  border-left-color: #329f5b; }
+
+.wfc-progress-bar-step.done {
+  color: #fff;
+  background-color: #329f5b; }
