@@ -50,6 +50,9 @@
 
 		woocommerceInvalidFieldClass: '.woocommerce-invalid',
 
+		editContactSelector: '[data-user-contact-edit]',
+		userDataSelector: '[data-user-data-wrapper]',
+
 		topScrollOffset: 100,
 
 		states: {
@@ -363,6 +366,18 @@
 
 
 	/**
+	 * Show contact details form for editing
+	 */
+	 var removeUserData = function() {
+        var userDataWrapper = document.querySelector( _settings.userDataSelector );
+        if ( userDataWrapper ) {
+            userDataWrapper.parentNode.removeChild( userDataWrapper );
+        }
+    }
+
+
+
+	/**
 	 * Handle document clicks and route to the appropriate function.
 	 */
 	var handleClick = function( e ) {
@@ -377,6 +392,10 @@
 		}
 		else if ( e.target.closest( _settings.stepNavigationNextSelector + ':not([disabled])' ) ) {
 			handleNextStepClick( e );
+		}
+		else if ( e.target.closest( _settings.editContactSelector ) ) {
+			e.preventDefault();
+			removeUserData();
 		}
 	};
 
