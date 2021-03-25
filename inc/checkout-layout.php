@@ -2,7 +2,7 @@
 /**
  * Checkout steps layout: Multi Step
  */
-class FluidCheckoutLayout_MultiStep extends FluidCheckout {
+class FluidCheckout_Layout extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -915,4 +915,4 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 }
 
-FluidCheckoutLayout_MultiStep::instance();
+FluidCheckout_Layout::instance();
