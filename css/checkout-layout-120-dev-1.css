@@ -252,6 +252,20 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   height: 18px;
   font-size: 18px; }
 
+.wfc-checkout-header .wfc-checkout__header-trust {
+  display: none; }
+  @media (min-width: 1000px) {
+    .wfc-checkout-header .wfc-checkout__header-trust {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      display: block;
+      margin: 0;
+      width: 50%;
+      display: flex;
+      justify-content: flex-end; } }
+
 /*------------------------------------*\
   #CHECKOUT PROGRESS BAR
 \*------------------------------------*/

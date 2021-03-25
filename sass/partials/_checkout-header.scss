@@ -88,3 +88,24 @@
 	@include icon( 'i-chevron-down' );
 	@include icon-size( $icon-size-small );
 }
+
+
+
+
+
+.wfc-checkout-header .wfc-checkout__header-trust {
+	display: none;
+
+	@media (#{$bp-larger-than-desktop}) {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		transform: translateY( -50% );
+		display: block;
+		margin: 0;
+
+		width: 50%;
+		display: flex;
+		justify-content: flex-end;
+	}
+}
