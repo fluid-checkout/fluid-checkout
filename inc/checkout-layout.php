@@ -201,15 +201,13 @@ class FluidCheckout_Layout extends FluidCheckout {
 	 * Output checkout place order button.
 	 */
 	public function output_checkout_place_order() {
-		echo '<div style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">PLACE ORDER SECTION</div>';
-
-		// wc_get_template(
-		// 	'checkout/place-order.php',
-		// 	array(
-		// 		'checkout'           => WC()->checkout(),
-		// 		'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
-		// 	)
-		// );
+		wc_get_template(
+			'checkout/place-order.php',
+			array(
+				'checkout'           => WC()->checkout(),
+				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
+			)
+		);
 	}
 
 
