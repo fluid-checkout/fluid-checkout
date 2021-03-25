@@ -30,7 +30,7 @@ defined( 'ABSPATH' ) || exit;
 			sanitize_title( $method->id ),
 			esc_attr( $method->id ),
 			checked( $checked_method, true, false ),
-			FluidCheckoutLayout_MultiStep::instance()->get_cart_shipping_methods_label( $method )
+			FluidCheckout_Layout::instance()->get_cart_shipping_methods_label( $method )
 		), $method, $package_index, $chosen_method, $first );
 
 		do_action( 'woocommerce_after_shipping_rate', $method, $package_index );

@@ -18,8 +18,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Change labels
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_require_bundle' ), 1 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_custom_fonts' ), 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
 	}
 
@@ -55,6 +55,15 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 				'ajaxUrl'			=> admin_url( 'admin-ajax.php' ),
 			) )
 		);
+	}
+
+
+
+	/**
+	 * Enqueue fonts
+	 */
+	function enqueue_custom_fonts( $hook ) {
+		wp_enqueue_style( 'wfc-fonts', self::$directory_url . '/css/fonts'. self::$asset_version . '.css', array(), null );
 	}
 
 }

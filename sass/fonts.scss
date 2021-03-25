@@ -1,5 +1,7 @@
+@charset "UTF-8";
+
 /*------------------------------------*\
-	#IMPORT ABSTRACT
+  #IMPORT ABSTRACT
 \*------------------------------------*/
 @import
 	"abstract/functions/_all-early", // Should be imported before `_variables`
@@ -9,10 +11,7 @@
 
 
 
-
-	
 /*------------------------------------*\
-	#IMPORT STYLES
+  #FONTS IMPORT
 \*------------------------------------*/
-@import
-	"partials/checkout-validation";
+@include fontFace( 'fluid-checkout-icons', '../fonts/fluid-checkout-icons', normal, normal, block );

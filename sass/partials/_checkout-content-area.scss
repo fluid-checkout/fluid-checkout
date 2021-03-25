@@ -1,0 +1,106 @@
+/*------------------------------------*\
+  #CHECKOUT CONTENT AREA
+\*------------------------------------*/
+body.woocommerce-checkout {
+	overflow-x: hidden;
+}
+
+
+
+// Remove margins inherited from some themes
+body.woocommerce-checkout .content-area,
+form.woocommerce-checkout {
+	display: block !important; // Needed to override theme styles breaking the layout
+	margin: 0;
+}
+
+
+
+body.woocommerce-checkout .content-area {
+	padding-bottom: $global-spacing-medium;
+}
+body.woocommerce-checkout.has-checkout-header .content-area {
+	min-height: 100vh;
+}
+
+
+
+// Same styles as fluid theme `.container` class
+.wfc-content {
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+body.woocommerce-checkout.has-checkout-header .wfc-content {
+	// max-width
+	max-width: $container-width-mobile;
+	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
+	@media (#{$bp-larger-than-desktop}) { max-width: $container-width-desktop; }
+	@media (#{$bp-larger-than-desktop-medium}) { max-width: $container-width-desktop-medium; }
+	@media (#{$bp-larger-than-desktop-large}) { max-width: $container-width-desktop-large; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { max-width: $container-width-desktop-extra-large; }
+
+	// padding
+	padding: 0 $container-spacing-mobile;
+	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet; }
+	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop; }
+	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium; }
+	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large; }
+}
+
+
+
+
+
+/*------------------------------------*\
+  #CHECKOUT COLUMNS LAYOUT
+\*------------------------------------*/
+body:not( .has-checkout-must-login-notice ) .wfc-checkout-header,
+body:not( .has-checkout-must-login-notice ) .wfc-checkout-notices,
+body:not( .has-checkout-must-login-notice ) .wfc-inside {
+	@media (#{$bp-larger-than-desktop}) {
+		float: left;
+		width: $checkout-steps-width--large-screen;
+		padding-right: $checkout-column-gap--large-screen;
+	}
+}
+
+
+
+.wfc-checkout-order-review__wrapper {
+	position: static;
+
+	@media (#{$bp-larger-than-desktop}) {
+		float: right;
+		width: $checkout-overview-width--large-screen;
+		padding-left: $checkout-column-gap--large-screen;
+	}
+}
+.wfc-checkout-order-review__wrapper:before {
+	@media (#{$bp-larger-than-desktop}) {
+		z-index: z( 'default' );
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		height: 100%;
+		background: $checkout-overview-background;
+		border-left: $checkout-overview-border-left;
+		width: 100vw;
+		margin-left: - #{ $checkout-column-gap--large-screen };
+	}
+}
+
+.wfc-checkout-order-review__inner {
+	z-index: z( 'above' );
+
+	@media (#{$bp-larger-than-desktop}) {
+		position: absolute;
+		top: 0;
+		width: #{ $checkout-overview-width--large-screen * .8 }; // Fall back, using multiplication by `.8` makes the order review stay inside the content area
+		width: calc( #{ $checkout-overview-width--large-screen } - #{ $checkout-column-gap--large-screen * $checkout-overview-width-magic-number } );
+	}
+}

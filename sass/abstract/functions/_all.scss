@@ -1,0 +1,13 @@
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+
+@import
+    "icon-glyph",
+    "str-replace",
+    "strip-unit",
+    "z-index";

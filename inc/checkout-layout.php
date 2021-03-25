@@ -2,7 +2,7 @@
 /**
  * Checkout steps layout: Multi Step
  */
-class FluidCheckoutLayout_MultiStep extends FluidCheckout {
+class FluidCheckout_Layout extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -22,13 +22,22 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
-		// Steps display order
-		add_action( 'wfc_checkout_before', array( $this, 'output_checkout_progress_bar' ), 10 );
+		// Checkout Header
+		// Uses `woocommerce_before_checkout_form_cart_notices` because it runs before the hook `woocommerce_before_checkout_form`
+		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_header' ), 1 );
+		
+		// Notices
+		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
+		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), PHP_INT_MAX );
+
+		// Display ctions
+		add_action( 'wfc_checkout_before_steps', array( $this, 'output_checkout_progress_bar' ), 10 );
+		add_action( 'wfc_checkout_steps', array( $this, 'output_step_contact' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_shipping' ), 50 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_step_payment' ), 100 );
+		add_action( 'wfc_checkout_after', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
 
 		// Contact
-		add_action( 'wfc_checkout_steps', array( $this, 'output_step_contact' ), 10 );
 		add_action( 'wfc_checkout_before_contact_fields', array( $this, 'output_contact_step_section_title' ), 10 );
 
 		// Account creation
@@ -57,7 +66,6 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_payment_step_actions_html' ), 100 );
 		
 		// Order Review
-		add_action( 'wfc_checkout_after_steps', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
 		add_action( 'wfc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_checkout_place_order' ), 30 );
 		add_action( 'wfc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
@@ -89,8 +97,21 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
+
+		$add_classes = array();
 		
-		return array_merge( $classes, array( 'has-wfc-checkout-multi-step' ) );
+		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
+		if ( $this->get_hide_site_header_at_checkout() ) {
+			$add_classes[] = 'has-checkout-header';
+		}
+		
+		// Add extra class if displaying the `must-log-in` notice
+		$checkout = WC()->checkout();
+		if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
+			$add_classes[] = 'has-checkout-must-login-notice';
+		}
+		
+		return array_merge( $classes, $add_classes );
 	}
 
 
@@ -103,15 +124,43 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
 
 		// Styles
-		wp_enqueue_style( 'wfc-checkout-layout--multi-step', self::$directory_url . 'css/checkout-multi-step'. self::$asset_version . '.css', NULL, NULL );
-		wp_enqueue_style( 'wfc-progress-bar', self::$directory_url . 'css/checkout-progress-bar--'.get_option( 'wfc_checkout_progress_bar_layout', 'default' ). self::$asset_version . '.css', NULL, NULL );
-		wp_enqueue_style( 'wfc-checkout-layout--multi-step-enhanced', self::$directory_url . 'css/checkout-multi-step--enhanced'. self::$asset_version . '.css', NULL, NULL );
+		wp_enqueue_style( 'wfc-checkout-layout', self::$directory_url . 'css/checkout-layout'. self::$asset_version . '.css', NULL, NULL );
 		
 		// Scripts
 		wp_enqueue_script( 'wfc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', NULL, NULL, true );
 		wp_add_inline_script( 'wfc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
-		wp_enqueue_script( 'wfc-checkout-steps-enhanced', self::$directory_url . 'js/checkout-steps-enhanced'. self::$asset_version . '.js', NULL, NULL, true );
-		wp_add_inline_script( 'wfc-checkout-steps-enhanced', 'window.addEventListener("load",function(){CheckoutStepsEnhanced.init();})' );
+	}
+
+
+
+	/**
+	 * Get option for hiding the site's original header at the checkout page.
+	 *
+	 * @return  Boolean  True if should hide the site's original header at the checkout page, false otherwise.
+	 */
+	public function get_hide_site_header_at_checkout() {
+		// Bail if WooCommerce class not available
+		if ( ! function_exists( 'WC' ) ) { return false; }
+
+		// Get checkout object.
+		$checkout = WC()->checkout();
+
+		return ( ! ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) && 'true' === get_option( 'wfc_hide_site_header_at_checkout', 'true' );
+	}
+
+	/**
+	 * Get option for hiding the site's original footer at the checkout page.
+	 *
+	 * @return  Boolean  True if should hide the site's original footer at the checkout page, false otherwise.
+	 */
+	public function get_hide_site_footer_at_checkout() {
+		// Bail if WooCommerce class not available
+		if ( ! function_exists( 'WC' ) ) { return false; }
+
+		// Get checkout object.
+		$checkout = WC()->checkout();
+
+		return ( ! ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) && 'true' === get_option( 'wfc_hide_site_footer_at_checkout', 'true' );
 	}
 
 
@@ -121,8 +170,11 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	 */
 	public function output_checkout_order_review_wrapper() {
 		?>
-		<div id="wfc-checkout-order-review" class="wfc-checkout-order-review-wrapper">
-			<?php do_action( 'wfc_checkout_order_review_section' ); ?>
+		<div class="wfc-checkout-order-review__wrapper">
+			<div class="wfc-checkout-order-review__inner">
+				<?php echo '<div style="margin: 20px 0; padding: 5px 10px; background-color: white; text-align: center;">ORDER REVIEW SECTION</div>'; ?>
+				<?php // do_action( 'wfc_checkout_order_review_section' ); ?>
+			</div>
 		</div>
 		<?php
 	}
@@ -206,6 +258,47 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 
 	/**
+	 * Checkout Header
+	 */
+
+
+
+	/**
+	 * Output the checkout header.
+	 */
+	public function output_checkout_header() {
+		// Only display our checkout header if the site header is hidden
+		if ( ! $this->get_hide_site_header_at_checkout() ) { return; }
+		
+		wc_get_template(
+			'checkout/checkout-header.php',
+			array( 'checkout' => WC()->checkout() )
+		);
+	}
+
+	/**
+	 * Output the checkout header.
+	 */
+	public function output_checkout_notices_wrapper_start_tag() {
+		?>
+		<div class="wfc-checkout-notices">
+		<?php
+	}
+
+	/**
+	 * Output the checkout header.
+	 */
+	public function output_checkout_notices_wrapper_end_tag() {
+		?>
+		</div>
+		<?php
+	}
+
+
+
+
+
+	/**
 	 * Checkout Steps
 	 */
 
@@ -216,8 +309,8 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	 */
 	public function output_checkout_progress_bar() {
 		?>
-		<div class="wfc-checkout-progress-bar wfc-row wfc-header">
-			<div id="wfc-progressbar"><?php echo apply_filters( 'wfc_progressbar_steps_placeholder', '<div class="wfc-progress-bar-step current"></div><div class="wfc-progress-bar-step"></div><div class="wfc-progress-bar-step"></div>' ); ?></div>
+		<div class="wfc-progress-bar" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">
+			PROGRESS BAR
 		</div>
 		<?php
 	}
@@ -261,33 +354,38 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	 */
 	public function output_step_contact() {
 		$this->output_step_start_tag( apply_filters( 'wfc_contact_step_title', __( 'Contact', 'woocommerce-fluid-checkout' ) ), 'contact' );
-		do_action( 'woocommerce_checkout_before_customer_details' );
-
-		$checkout = WC()->checkout();
-
-		// Check if user has required data
-		$fields = $checkout->get_checkout_fields( 'billing' );
-		$contact_display_field_keys = $this->get_contact_step_display_fields();
-		$has_required_contact_data = true;
-		foreach ( $contact_display_field_keys as $field_key ) {
-			$field = array_key_exists( $field_key, $fields ) ? $fields[ $field_key ] : array();
-			if ( $has_required_contact_data && array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
-				$has_required_contact_data = false;
-				break;
-			}
-		}
 		
-		wc_get_template(
-			'checkout/form-contact.php',
-			array(
-				'checkout'			=> $checkout,
-				'display_fields'	=> $contact_display_field_keys,
-				'user_data'			=> $this->get_user_data(),
-				'has_required_contact_data' => $has_required_contact_data,
-			)
-		);
+		echo '<div class="wfc-step__content" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">CONTACT STEP</div>';
 
-		echo $this->get_contact_step_actions_html();
+		// do_action( 'woocommerce_checkout_before_customer_details' );
+
+		// $checkout = WC()->checkout();
+
+		// // Check if user has required data
+		// $fields = $checkout->get_checkout_fields( 'billing' );
+		// $contact_display_field_keys = $this->get_contact_step_display_fields();
+		// $has_required_contact_data = true;
+		// foreach ( $contact_display_field_keys as $field_key ) {
+		// 	$field = array_key_exists( $field_key, $fields ) ? $fields[ $field_key ] : array();
+		// 	if ( $has_required_contact_data && array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
+		// 		$has_required_contact_data = false;
+		// 		break;
+		// 	}
+		// }
+		
+		// wc_get_template(
+		// 	'checkout/form-contact.php',
+		// 	array(
+		// 		'checkout'			=> $checkout,
+		// 		'display_fields'	=> $contact_display_field_keys,
+		// 		'user_data'			=> $this->get_user_data(),
+		// 		'has_required_contact_data' => $has_required_contact_data,
+		// 	)
+		// );
+
+		// echo $this->get_contact_step_actions_html();
+
+
 		$this->output_step_end_tag();
 	}
 
@@ -383,17 +481,20 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 		if ( ! WC()->cart->needs_shipping() ) { return; }
 
 		$this->output_step_start_tag( apply_filters( 'wfc_shipping_step_title', __( 'Shipping', 'woocommerce-fluid-checkout' ) ), 'shipping' );
+		
+		echo '<div class="wfc-step__content" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">SHIPPING STEP</div>';
 
-		wc_get_template(
-			'checkout/form-shipping.php',
-			array(
-				'checkout'          => WC()->checkout(),
-			)
-		);
+		// wc_get_template(
+		// 	'checkout/form-shipping.php',
+		// 	array(
+		// 		'checkout'          => WC()->checkout(),
+		// 	)
+		// );
 
-		do_action( 'woocommerce_checkout_after_customer_details' );
+		// do_action( 'woocommerce_checkout_after_customer_details' );
 
-		echo $this->get_shipping_step_actions_html();
+		// echo $this->get_shipping_step_actions_html();
+
 		$this->output_step_end_tag();
 	}
 
@@ -619,13 +720,15 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 	 */
 	public function output_step_payment() {
 		$this->output_step_start_tag( apply_filters( 'wfc_payment_step_title', __( 'Payment', 'woocommerce-fluid-checkout' ) ), 'payment' );
+
+		echo '<div class="wfc-step__content" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">PAYMENT STEP</div>';
 		
-		wc_get_template(
-			'checkout/form-payment.php',
-			array(
-				'checkout'          => WC()->checkout(),
-			)
-		);
+		// wc_get_template(
+		// 	'checkout/form-payment.php',
+		// 	array(
+		// 		'checkout'          => WC()->checkout(),
+		// 	)
+		// );
 
 		$this->output_step_end_tag();
 	}
@@ -895,4 +998,4 @@ class FluidCheckoutLayout_MultiStep extends FluidCheckout {
 
 }
 
-FluidCheckoutLayout_MultiStep::instance();
+FluidCheckout_Layout::instance();

@@ -1,5 +1,5 @@
 /*------------------------------------*\
-	#IMPORT ABSTRACT
+  #IMPORT ABSTRACT
 \*------------------------------------*/
 @import
 	"abstract/functions/_all-early", // Should be imported before `_variables`
@@ -12,7 +12,9 @@
 
 	
 /*------------------------------------*\
-	#IMPORT STYLES
+  #IMPORT STYLES
 \*------------------------------------*/
 @import
-	"partials/checkout-validation";
+	"partials/checkout-content-area",
+	"partials/checkout-header",
+	"partials/checkout-progress-bar";

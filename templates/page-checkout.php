@@ -6,18 +6,17 @@
  * @version 1.2.0
  */
 
-
 // Replace site header with our implementation
-if ( get_option( 'wfc_hide_site_header_at_checkout', true ) ) {
+if ( FluidCheckout_Layout::instance()->get_hide_site_header_at_checkout() ) {
 	wc_get_template( 'header-checkout.php' );
 }
 // Display the site's default header
 else {
 	get_header( 'checkout' );
 }
-
 ?>
-<div id="content" class="site-content wfc-site-content--checkout">
+
+<div id="content" class="site-content wfc-content">
 
 	<main id="main" class="content-area">
 
@@ -35,7 +34,7 @@ else {
 
 <?php
 // Replace site header with our implementation
-if ( get_option( 'wfc_hide_site_footer_at_checkout', true ) ) {
+if ( FluidCheckout_Layout::instance()->get_hide_site_footer_at_checkout() ) {
 	wc_get_template( 'footer-checkout.php' );
 }
 // Display the site's default header
