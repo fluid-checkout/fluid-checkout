@@ -34,11 +34,37 @@
 
 
 
-.wfc-checkout-header .wfc-checkout__cart-link {
+
+
+.wfc-checkout-header .wfc-checkout__cart-link-wrapper {
 	position: absolute;
 	top: 50%;
 	right: 0;
 	transform: translateY( -50% );
 	margin: 0;
-	line-height: 0;
+	line-height: 1;
+}
+.wfc-checkout-header .wfc-checkout__cart-link {
+	display: block;
+	padding: $global-spacing-tiny $global-spacing-extra-small;
+	background-color: $white;
+	border: solid remsize( .1rem ) $border-color;
+	border-radius: $global-radius;
+	box-shadow: $box-shadow-dark;
+	text-decoration: none;
+	color: inherit;
+
+	transition: all $global-animation-duration $global-animation-easing;
+
+	&:active {
+		box-shadow: none;
+		transform: translateY( remsize( .1rem ) );
+		color: inherit;
+	}
+}
+.wfc-checkout-header .wfc-checkout__cart-link:before {
+	// TODO: Add cart icon
+}
+.wfc-checkout-header .wfc-checkout__cart-link:before {
+	// TODO: Add chevron down icon
 }

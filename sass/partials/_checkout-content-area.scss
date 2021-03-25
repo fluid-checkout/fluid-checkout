@@ -1,14 +1,19 @@
 /*------------------------------------*\
   #CHECKOUT CONTENT AREA
 \*------------------------------------*/
+body.woocommerce-checkout {
+	overflow-x: hidden;
+}
+
+
 
 // Remove margins inherited from some themes
-.woocommerce-checkout .content-area,
+body.woocommerce-checkout .content-area,
 form.woocommerce-checkout {
 	display: block !important; // Needed to override theme styles breaking the layout
 	margin: 0;
-	
 }
+
 
 
 body.woocommerce-checkout .content-area {
@@ -26,7 +31,6 @@ body.woocommerce-checkout.has-checkout-header .content-area {
 	width: 100%;
 	margin: 0 auto;
 	box-sizing: border-box;
-	overflow-x: hidden;
 }
 
 body.woocommerce-checkout.has-checkout-header .wfc-content {
@@ -77,7 +81,7 @@ body:not( .has-checkout-must-login-notice ) .wfc-inside {
 }
 .wfc-checkout-order-review__wrapper:before {
 	@media (#{$bp-larger-than-desktop}) {
-		z-index: z( 'below' );
+		z-index: z( 'default' );
 		content: '';
 		display: block;
 		position: absolute;
@@ -91,6 +95,8 @@ body:not( .has-checkout-must-login-notice ) .wfc-inside {
 }
 
 .wfc-checkout-order-review__inner {
+	z-index: z( 'above' );
+
 	@media (#{$bp-larger-than-desktop}) {
 		position: absolute;
 		top: 0;

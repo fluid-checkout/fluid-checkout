@@ -32,7 +32,10 @@
 /*------------------------------------*\
   #CHECKOUT CONTENT AREA
 \*------------------------------------*/
-.woocommerce-checkout .content-area,
+body.woocommerce-checkout {
+  overflow-x: hidden; }
+
+body.woocommerce-checkout .content-area,
 form.woocommerce-checkout {
   display: block !important;
   margin: 0; }
@@ -47,8 +50,7 @@ body.woocommerce-checkout.has-checkout-header .content-area {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  box-sizing: border-box;
-  overflow-x: hidden; }
+  box-sizing: border-box; }
 
 body.woocommerce-checkout.has-checkout-header .wfc-content {
   max-width: 100%;
@@ -105,7 +107,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 
 @media (min-width: 1000px) {
   .wfc-checkout-order-review__wrapper:before {
-    z-index: -1;
+    z-index: 1;
     content: '';
     display: block;
     position: absolute;
@@ -116,12 +118,14 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
     width: 100vw;
     margin-left: -50px; } }
 
-@media (min-width: 1000px) {
-  .wfc-checkout-order-review__inner {
-    position: absolute;
-    top: 0;
-    width: 32%;
-    width: calc( 40% - 90px); } }
+.wfc-checkout-order-review__inner {
+  z-index: 10; }
+  @media (min-width: 1000px) {
+    .wfc-checkout-order-review__inner {
+      position: absolute;
+      top: 0;
+      width: 32%;
+      width: calc( 40% - 90px); } }
 
 /*------------------------------------*\
   #CHECKOUT HEADER
@@ -152,10 +156,25 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
     .wfc-checkout-header .custom-logo {
       height: 40px; } }
 
-.wfc-checkout-header .wfc-checkout__cart-link {
+.wfc-checkout-header .wfc-checkout__cart-link-wrapper {
   position: absolute;
   top: 50%;
   right: 0;
   transform: translateY(-50%);
   margin: 0;
-  line-height: 0; }
+  line-height: 1; }
+
+.wfc-checkout-header .wfc-checkout__cart-link {
+  display: block;
+  padding: 5px 10px;
+  background-color: #fff;
+  border: solid 1px #F7F0F5;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease; }
+  .wfc-checkout-header .wfc-checkout__cart-link:active {
+    box-shadow: none;
+    transform: translateY(1px);
+    color: inherit; }

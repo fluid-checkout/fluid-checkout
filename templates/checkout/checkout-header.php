@@ -27,6 +27,8 @@ defined( 'ABSPATH' ) || exit;
 		endif;
 		?>
 
-		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link" aria-label="<?php _e( 'Open the order summary', 'woocommerce-fluid-checkout' ); ?>"><?php wc_cart_totals_order_total_html(); ?></a>
+		<div class="wfc-checkout__cart-link-wrapper">
+			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link" aria-label="<?php _e( 'Open the order summary', 'woocommerce-fluid-checkout' ); ?>"><?php wc_cart_totals_order_total_html(); ?></a>
+		</div>
 	</div>
 </header>
