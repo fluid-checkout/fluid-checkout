@@ -126,8 +126,8 @@ $container-spacing-mobile: 					$global-spacing-small !default;
 $container-spacing-tablet: 					$global-spacing !default;
 $container-spacing-desktop: 				$global-spacing-medium !default;
 $container-spacing-desktop-medium: 			$global-spacing-medium !default;
-$container-spacing-desktop-large: 			$global-spacing-large !default;
-$container-spacing-desktop-extra-large: 	$global-spacing-extra-large !default;
+$container-spacing-desktop-large: 			$global-spacing-medium !default;
+$container-spacing-desktop-extra-large: 	$global-spacing-medium !default;
 
 // Container total width
 $container-width-mobile: 					100% !default;
@@ -201,3 +201,36 @@ $icon-size-extra-large:          remsize( 8rem ) !default;
 
 
 
+// ----------------------------------------
+// CHECKOUT HEADER
+
+$checkout-header-height:                   remsize( 6rem ) !default;
+$checkout-header-height--large-screen:     remsize( 10rem ) !default;
+
+$checkout-logo-height:                     remsize( 2.5rem ) !default;
+$checkout-logo-height--large-screen:       remsize( 4rem ) !default;
+
+// END - CHECKOUT LAYOUT
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// CHECKOUT LAYOUT
+
+$checkout-column-gap--large-screen:        $global-spacing-medium !default;
+
+$checkout-steps-width--large-screen:       60% !default;
+
+// The magic number below makes the order review width go up to the content area considering the paddings
+$checkout-overview-width-magic-number:     1.8 !default; // 1.8 works for 50px of padding on the content area
+$checkout-overview-width--large-screen:    40% !default;
+$checkout-overview-background:             linear-gradient( 90deg, darken( $lighter-grey, 5% ) 0%, $lighter-grey .5%, $lighter-grey 100% ) !default;
+$checkout-overview-border-left:            none !default;
+
+
+
+// END - CHECKOUT LAYOUT
+// ----------------------------------------

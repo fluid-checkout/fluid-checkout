@@ -19,14 +19,16 @@ defined( 'ABSPATH' ) || exit;
 
 $method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 ?>
-<header class="wfc-checkout__header">
-	<?php
-	if ( 'true' === get_option( 'wfc_hide_site_header_at_checkout', 'true' ) ) :
-		if ( function_exists( 'the_custom_logo' ) ) {
-			the_custom_logo();
-		}
-	endif;
-	?>
+<header class="wfc-checkout-header">
+	<div class="wfc-checkout-header__inner">
+		<?php
+		if ( 'true' === get_option( 'wfc_hide_site_header_at_checkout', 'true' ) ) :
+			if ( function_exists( 'the_custom_logo' ) ) {
+				the_custom_logo();
+			}
+		endif;
+		?>
 
-	<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link" aria-label="<?php _e( 'Open the order summary', 'woocommerce-fluid-checkout' ); ?>"><?php wc_cart_totals_order_total_html(); ?></a>
+		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link" aria-label="<?php _e( 'Open the order summary', 'woocommerce-fluid-checkout' ); ?>"><?php wc_cart_totals_order_total_html(); ?></a>
+	</div>
 </header>

@@ -2,26 +2,43 @@
   #CHECKOUT HEADER
 \*------------------------------------*/
 
-.wfc-checkout__header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: remsize( 6rem );
-
-	@media (#{$bp-larger-than-desktop}) { height: remsize( 10rem ); }
+.wfc-checkout-header {
+	height: $checkout-header-height;
+	
+	@media (#{$bp-larger-than-desktop}) { height: $checkout-header-height--large-screen; }
+}
+.wfc-checkout-header__inner {
+	position: relative;
+	height: 100%;
 }
 
 
 
 
-.wfc-checkout__header .custom-logo-link {
+
+.wfc-checkout-header .custom-logo-link {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY( -50% );
 	margin: 0;
 	line-height: 0;
 }
-.wfc-checkout__header .custom-logo {
+.wfc-checkout-header .custom-logo {
 	margin: 0;
-	max-height: remsize( 2.5rem );
+	height: $checkout-logo-height;
 	width: auto;
 
-	@media (#{$bp-larger-than-desktop}) { max-height: remsize( 4rem ); }
+	@media (#{$bp-larger-than-desktop}) { height: $checkout-logo-height--large-screen; }
+}
+
+
+
+.wfc-checkout-header .wfc-checkout__cart-link {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY( -50% );
+	margin: 0;
+	line-height: 0;
 }
