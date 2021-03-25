@@ -150,6 +150,19 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   line-height: 1;
   width: 50%; }
 
+.wfc-checkout-header .wfc-checkout__title.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden; }
+
+.wfc-checkout-header .wfc-checkout__site-name {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: bold; }
+
 .wfc-checkout-header .custom-logo-link {
   display: inline-block;
   margin: 2px 0 0; }
@@ -161,12 +174,6 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   @media (min-width: 1000px) {
     .wfc-checkout-header .custom-logo {
       height: 40px; } }
-
-.wfc-checkout-header .wfc-checkout__site-name {
-  margin: 0;
-  padding: 0;
-  font-size: 18px;
-  font-weight: bold; }
 
 .wfc-checkout-header .wfc-checkout__cart-link-wrapper {
   position: absolute;

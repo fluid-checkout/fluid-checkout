@@ -21,18 +21,19 @@ defined( 'ABSPATH' ) || exit;
 	<div class="wfc-checkout-header__inner">
 
 		<div class="wfc-checkout__branding">
+			<h1 class="wfc-checkout__title screen-reader-text"><?php echo _x( 'Checkout', 'Checkout page title', 'woocommerce-fluid-checkout' ) ?></h1>
 			<?php
 			if ( function_exists( 'the_custom_logo' ) && get_theme_mod( 'custom_logo' ) ) {
 				the_custom_logo();
 			}
 			else {
-				echo '<h1 class="wfc-checkout__site-name">' . esc_html( get_bloginfo( 'name' ) ) . '</h1>';
+				echo '<span class="wfc-checkout__site-name">' . esc_html( get_bloginfo( 'name' ) ) . '</span>';
 			}
 			?>
 		</div>
 
 		<div class="wfc-checkout__cart-link-wrapper">
-			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link" aria-label="<?php _e( 'Open the order summary', 'woocommerce-fluid-checkout' ); ?>"><?php wc_cart_totals_order_total_html(); ?></a>
+			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link"><?php wc_cart_totals_order_total_html(); ?></a>
 		</div>
 
 		<?php if ( is_active_sidebar( 'wfc_header_trust' ) ) : ?>
