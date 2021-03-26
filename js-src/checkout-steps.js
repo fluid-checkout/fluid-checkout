@@ -46,7 +46,8 @@
 		frameIdAttribute: 'data-frame-id',
 		frameIdPattern: 'step-frame-{ID}',
 		frameIdSelectorPattern: '#step-frame-{ID}',
-		frameSelector: '.wfc-frame[data-step-index="{ID}"]',
+		frameSelector: '.wfc-checkout-step[data-step-index="{ID}"]',
+		allFramesSelector: '.wfc-checkout-step',
 
 		woocommerceInvalidFieldClass: '.woocommerce-invalid',
 
@@ -232,7 +233,7 @@
 		}
 
 		// Get frames
-		_frames = document.querySelectorAll( '.wfc-frame' );
+		_frames = document.querySelectorAll( _settings.allFramesSelector );
 
 		// Add ID to each frame and steps on progress bar
 		for ( var i = _frames.length - 1; i >= 0; i-- ) {

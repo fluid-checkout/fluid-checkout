@@ -2,93 +2,52 @@
   #CHECKOUT PROGRESS BAR
 \*------------------------------------*/
 
-#wfc-progressbar {
-	margin: 0;
+.wfc-progress-bar {
+	margin-top: $checkout-progress-bar-margin-top;
+	margin-bottom: $checkout-progress-bar-margin-bottom;
+}
+
+
+
+
+
+.wfc-progress-bar__count {
+	color: $checkout-step-count-color;
+	font-weight: $checkout-step-count-font-weight;
+	font-size: $checkout-step-count-font-size;
+	text-transform: $checkout-step-count-text-transform;
+	text-align: $checkout-step-count-text-align;
+
+	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-step-count-font-size--large-screen; }
+}
+
+
+
+
+
+.wfc-progress-bar__bars {
+	width: 100%;
+	height: $checkout-progress-bar-height;
+	border: $checkout-progress-bar-border;
+	border-radius: $checkout-progress-bar-border-radius;
+	background-color: $checkout-progress-bar-color;
 	overflow: hidden;
 }
-.wfc-progress-bar-step {
-	display: inline-block;
-	padding: .5rem 2rem;
-	box-sizing: border-box;
-	position: relative;
-	cursor: pointer;
+
+.wfc-progress-bar__bar {
+	margin: 0;
+	display: block;
+	float:left;
+	height: $checkout-progress-bar-height;
+	background-color: $checkout-progress-bar-color;
 }
-@supports ( display: flex ) {
-	#wfc-progressbar {
-		display: flex;
+.wfc-progress-bar__bar.complete { background-color: $checkout-progress-bar-complete-color; }
+.wfc-progress-bar__bar.current { background-color: $checkout-progress-bar-current-color; }
+
+// Progress bar width
+// Supports from 2 to 10 checkout steps
+@for $count from 2 through 10 {
+	.wfc-progress-bar__bars[data-step-count="#{$count}"] .wfc-progress-bar__bar {
+		width: #{ 100% / $count };
 	}
-	.wfc-progress-bar-step {
-		flex: 1;
-		padding: 0;
-	}
-}
-
-.wfc-progress-bar-step[disabled],
-.wfc-progress-bar-step.disabled {
-	cursor: default;
-}
-
-.wfc-progress-bar-step:first-child:before,
-.wfc-progress-bar-step:last-child:after {
-	content: '';
-	display: none;
-}
-
-
-
-
-#wfc-progressbar {
-	border-radius: 4px;
-	margin-bottom: 30px;
-}
-
-
-
-.wfc-progress-bar-step {
-	padding: 5px;
-	max-height: 30px;
-	height: 30px;
-	background-color: #f3f3f3;
-	font-size: 15px;
-	text-align: center;
-	line-height: 20px;
-}
-
-.wfc-progress-bar-step:before,
-.wfc-progress-bar-step:after {
-	content: '';
-	position: absolute;
-	top: -2px;
-	right: -23px;
-	width: 0;
-	height: 0;
-	border: 17px solid transparent;
-	border-left: 7px solid #f3f3f3;
-	z-index: 3;
-}
-
-.wfc-progress-bar-step:before {
-	left: 0;
-	border: 17px solid transparent;
-	border-left: 7px solid #fff;
-	z-index: 2;
-}
-
-
-
-.wfc-progress-bar-step.current:after {
-	border-left-color: #e9e9e9;
-}
-.wfc-progress-bar-step.current {
-	background-color: #e9e9e9;
-}
-
-
-
-.wfc-progress-bar-step.done:after {
-	border-left-color: #329f5b;
-}
-.wfc-progress-bar-step.done {
-	color: #fff;
-	background-color: #329f5b;
 }
