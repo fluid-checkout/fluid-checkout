@@ -4,6 +4,23 @@
  */
 class FluidCheckout_Layout extends FluidCheckout {
 
+
+	/**
+	 * Holds configuration for each checkout step.
+	 *
+	 * $checkout_steps[]                     array       Defines the checkout steps to be displayed.
+	 *      ['step_id']                      string      ID of the checkout step, it will be sanitized with `sanitize_title()`.
+	 *      ['step_title']                   string      The checkout step title visible to the user.
+	 *      ['priority']                     int         Defines the order the checkout step will be displayed.
+	 *      ['render_callback']              callable    Function or array to display the contents of the checkout step.
+	 *      ['render_condition_callback']    callable    (optional) Function or array to determine if the step should be rendered. If not provided the checkout step will be displayed.
+	 *
+	 * @var array
+	 **/
+	private $checkout_steps   = array();
+
+
+
 	/**
 	 * __construct function.
 	 */
@@ -19,7 +36,7 @@ class FluidCheckout_Layout extends FluidCheckout {
 	public function hooks() {
 
 		// General
-		add_filter( 'body_class', array( $this, 'add_body_class' ) );
+		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
 		// Checkout Header
@@ -28,23 +45,18 @@ class FluidCheckout_Layout extends FluidCheckout {
 		
 		// Notices
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
-		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), PHP_INT_MAX );
+		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), 100 );
 
-		// Display ctions
+		// Checkout steps
 		add_action( 'wfc_checkout_before_steps', array( $this, 'output_checkout_progress_bar' ), 10 );
-		add_action( 'wfc_checkout_steps', array( $this, 'output_step_contact' ), 10 );
-		add_action( 'wfc_checkout_steps', array( $this, 'output_step_shipping' ), 50 );
-		add_action( 'wfc_checkout_steps', array( $this, 'output_step_payment' ), 100 );
+		add_action( 'init', array( $this, 'register_default_checkout_steps' ), 10 );
+		add_action( 'wfc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_after', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
-
-		// Contact
-		add_action( 'wfc_checkout_before_contact_fields', array( $this, 'output_contact_step_section_title' ), 10 );
 
 		// Account creation
 		add_action( 'wfc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
 
 		// Shipping
-		add_action( 'wfc_checkout_before_step_shipping_fields', array( $this, 'output_shipping_step_section_title' ), 10 );
 		add_action( 'wfc_cart_totals_shipping', array( $this, 'output_cart_totals_shipping_section' ), 10 );
 		add_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
@@ -59,7 +71,6 @@ class FluidCheckout_Layout extends FluidCheckout {
 
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
-		add_action( 'wfc_checkout_before_step_payment_fields', array( $this, 'output_payment_step_section_title' ), 10 );
 		add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_action( 'wfc_checkout_before_step_billing_fields', array( $this, 'output_billing_address_step_section_title' ), 10 );
 		add_action( 'wfc_checkout_before_step_payment_fields', array( $this, 'output_billing_fields' ), 20 );
@@ -80,8 +91,8 @@ class FluidCheckout_Layout extends FluidCheckout {
 
 		// Widget Areas
 		add_action( 'widgets_init', array( $this, 'register_cart_widgets_areas' ), 50 );
-		add_action( 'woocommerce_after_cart_totals', array( $this, 'output_sidebar_cart_totals_inside' ), 50 );
-		add_action( 'woocommerce_cart_collaterals', array( $this, 'output_sidebar_cart_totals_outside' ), 11 );
+		add_action( 'woocommerce_after_cart_totals', array( $this, 'output_widget_area_cart_totals_inside' ), 50 );
+		add_action( 'woocommerce_cart_collaterals', array( $this, 'output_widget_area_cart_totals_outside' ), 11 );
 		add_action( 'widgets_init', array( $this, 'register_checkout_widgets_areas' ), 50 );
 		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_sidebar_order_review_inside' ), 50 );
 		add_action( 'wfc_checkout_after_order_review', array( $this, 'output_sidebar_order_review_outside' ), 50 );
@@ -303,7 +314,174 @@ class FluidCheckout_Layout extends FluidCheckout {
 	 */
 
 
+
+	/**
+	 * User to sort checkout fields based on priority with uasort.
+	 *
+	 * @since 1.2.0
+	 * @param array $a First step to compare.
+	 * @param array $b Second step to compare.
+	 * @return int
+	 */
+	public function checkout_step_priority_uasort_comparison( $a, $b ) {
+		/*
+		 * We are not guaranteed to get a priority setting.
+		 * So don't compare if they don't exist.
+		 */
+		if ( ! isset( $a['priority'], $b['priority'] ) ) {
+			return 0;
+		}
+
+		return wc_uasort_comparison( $a['priority'], $b['priority'] );
+	}
 	
+
+
+	/**
+	 * Check if a checkout step is registered with the `step_id`.
+	 *
+	 * @param   string  $step_id  ID of the checkout step.
+	 *
+	 * @return  boolean           `true` if a checkout step is registered with the `step_id`, `false` otherwise.
+	 */
+	public function has_checkout_step( $step_id ) {
+		// Look for a step with the same id
+		foreach ( $this->get_checkout_steps() as $step_args ) {
+			if ( $step_args[ 'step_id' ] == sanitize_title( $step_id ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+
+
+	/**
+	 * Get the registered checkout steps.
+	 *
+	 * @return  array  An array of the registered checkout steps. For more details of what is expected see the documentation of the property $checkout_steps of this class.
+	 * @see $checkout_steps
+	 */
+	public function get_checkout_steps() {
+		return $this->checkout_steps;
+	}
+
+
+
+	/**
+	 * Register a new checkout step.
+	 *
+	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property $checkout_steps of this class.
+	 *
+	 * @return  boolean             `true` if the step was successfully registered, `false` otherwise. See the PHP log files to troubleshoot the error.
+	 */
+	public function register_checkout_step( $step_args ) {
+
+		// Check for required step arguments
+		$required_args = array( 'step_id', 'step_title', 'priority', 'render_callback' );
+		if ( count( array_intersect( $required_args, array_keys( $step_args ) ) ) !== count( $required_args ) ) {
+			trigger_error( "One of the required checkout step arguments (step_id, step_title, priority, render_callback) was not provided. Skipping step." . ( array_key_exists( 'step_id', $step_args ) ? " Step id `{$step_args[ 'step_id' ]}`." : '' ), E_USER_WARNING );
+			return false;
+		}
+		
+		// Sanitize step id
+		$step_args[ 'step_id' ] = sanitize_title( $step_args[ 'step_id' ] );
+		$step_id = $step_args[ 'step_id' ];
+
+		// Check for duplicate step_id
+		if ( $this->has_checkout_step( $step_id ) ) {
+			trigger_error( "A checkout step with `step_id = {$step_id}` already exists. Skipping step.", E_USER_WARNING );
+			return false;
+		}
+
+		// Add step to the list
+		$_checkout_steps = $this->get_checkout_steps();
+		$_checkout_steps[] = $step_args;
+
+		// Sort steps based on priority.
+		uasort( $_checkout_steps, array( $this, 'checkout_step_priority_uasort_comparison' ) );
+
+		// Update registered checkout steps
+		$this->checkout_steps = $_checkout_steps;
+
+		return true;
+	}
+
+
+
+	/**
+	 * Register the default checkout steps supported by this plugin.
+	 */
+	public function register_default_checkout_steps() {
+		
+		$this->register_checkout_step( array(
+			'step_id' => 'contact',
+			'step_title' => _x( 'Contact', 'Checkout step title', 'woocommerce-fluid-checkout' ),
+			'priority' => 10,
+			'render_callback' => array( $this, 'output_step_contact' ),
+		) );
+
+		$this->register_checkout_step( array(
+			'step_id' => 'shipping',
+			'step_title' => _x( 'Shipping', 'Checkout step title', 'woocommerce-fluid-checkout' ),
+			'priority' => 20,
+			'render_callback' => array( $this, 'output_step_shipping' ),
+			'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
+		) );
+
+		$this->register_checkout_step( array(
+			'step_id' => 'billing',
+			'step_title' => _x( 'Billing', 'Checkout step title', 'woocommerce-fluid-checkout' ),
+			'priority' => 30,
+			'render_callback' => array( $this, 'output_step_billing' ),
+		) );
+
+		$this->register_checkout_step( array(
+			'step_id' => 'payment',
+			'step_title' => _x( 'Shipping', 'Checkout step title', 'woocommerce-fluid-checkout' ),
+			'priority' => 100,
+			'render_callback' => array( $this, 'output_step_payment' ),
+		) );
+
+	}
+
+
+
+	/**
+	 * Output the contents of each registered checkout step.
+	 */
+	public function output_checkout_steps() {
+		foreach ( $this->get_checkout_steps() as $step_args ) {
+			$step_id = $step_args[ 'step_id' ];
+			$render_function = array_key_exists( 'render_callback', $step_args ) ? $step_args[ 'render_callback' ] : null;
+			$render_conditional = array_key_exists( 'render_condition_callback', $step_args ) ? $step_args[ 'render_condition_callback' ] : null;
+			
+			// Skip step if step render function not callable
+			if ( ! $render_function || ! is_callable( $render_function ) ) {
+				trigger_error( "The output function for the checkout step with `step_id = {$step_id}` is not callable. Skipping step render.", E_USER_WARNING );
+				continue;
+			}
+			
+			// Skip step if conditional is not met
+			if ( $render_conditional && is_callable( $render_conditional ) && ! call_user_func( $render_conditional ) ) { continue; }
+			
+			// Output the step
+			$this->output_step_start_tag( $step_id, apply_filters( "wfc_step_title_{$step_id}", $step_args[ 'step_title' ] ) );
+			call_user_func( $render_function );
+			$this->output_step_end_tag();
+		}
+	}
+
+
+
+
+	/**
+	 * Checkout Progress Bar
+	 */
+
+
+
 	/**
 	 * Output the checkout progress bar.
 	 */
@@ -320,13 +498,13 @@ class FluidCheckout_Layout extends FluidCheckout {
 	/**
 	 * Output start tag for a checkout step.
 	 *
-	 * @param   string  $step_label  Step label.
 	 * @param   string  $step_id     Step ID.
+	 * @param   string  $step_title  Step label.
 	 */
-	public function output_step_start_tag( $step_label, $step_id = '' ) {
+	public function output_step_start_tag( $step_id = '', $step_title ) {
 		$step_id_attribute = ! empty( $step_id ) && $step_id != null ? 'data-step-id="'.esc_attr( $step_id ).'"' : '';
 		?>
-		<section class="wfc-frame" <?php echo $step_id_attribute; ?> data-label="<?php echo esc_attr( $step_label ); ?>">
+		<section class="wfc-checkout-step" <?php echo $step_id_attribute; ?> data-label="<?php echo esc_attr( $step_title ); ?>">
 		<?php
 	}
 
@@ -352,9 +530,7 @@ class FluidCheckout_Layout extends FluidCheckout {
 	/**
 	 * Output step: Contact.
 	 */
-	public function output_step_contact() {
-		$this->output_step_start_tag( apply_filters( 'wfc_contact_step_title', __( 'Contact', 'woocommerce-fluid-checkout' ) ), 'contact' );
-		
+	public function output_step_contact() {		
 		echo '<div class="wfc-step__content" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">CONTACT STEP</div>';
 
 		// do_action( 'woocommerce_checkout_before_customer_details' );
@@ -384,9 +560,6 @@ class FluidCheckout_Layout extends FluidCheckout {
 		// );
 
 		// echo $this->get_contact_step_actions_html();
-
-
-		$this->output_step_end_tag();
 	}
 
 
@@ -472,16 +645,11 @@ class FluidCheckout_Layout extends FluidCheckout {
 	 */
 
 
-	
+
 	/**
 	 * Output step: Shipping.
 	 */
 	public function output_step_shipping() {
-		// Bail if shipping not needed
-		if ( ! WC()->cart->needs_shipping() ) { return; }
-
-		$this->output_step_start_tag( apply_filters( 'wfc_shipping_step_title', __( 'Shipping', 'woocommerce-fluid-checkout' ) ), 'shipping' );
-		
 		echo '<div class="wfc-step__content" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">SHIPPING STEP</div>';
 
 		// wc_get_template(
@@ -494,19 +662,6 @@ class FluidCheckout_Layout extends FluidCheckout {
 		// do_action( 'woocommerce_checkout_after_customer_details' );
 
 		// echo $this->get_shipping_step_actions_html();
-
-		$this->output_step_end_tag();
-	}
-
-
-
-	/**
-	 * Output shipping step section title.
-	 */
-	public function output_shipping_step_section_title() {
-		?>
-		<h3 class="wfc-checkout-step-title"><?php echo esc_html( apply_filters( 'wfc_checkout_shipping_step_section_title', __( 'Shipping Address', 'woocommerce-fluid-checkout' ) ) ); ?></h3>
-		<?php
 	}
 
 
@@ -710,6 +865,17 @@ class FluidCheckout_Layout extends FluidCheckout {
 
 
 	/**
+	 * Output step: Billing.
+	 */
+	public function output_step_billing() {
+		echo '<div class="wfc-step__content" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">BILLING STEP</div>';
+	}
+
+
+
+
+
+	/**
 	 * Checkout Step: Payment.
 	 */
 
@@ -719,8 +885,6 @@ class FluidCheckout_Layout extends FluidCheckout {
 	 * Output step: Payment.
 	 */
 	public function output_step_payment() {
-		$this->output_step_start_tag( apply_filters( 'wfc_payment_step_title', __( 'Payment', 'woocommerce-fluid-checkout' ) ), 'payment' );
-
 		echo '<div class="wfc-step__content" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">PAYMENT STEP</div>';
 		
 		// wc_get_template(
@@ -729,8 +893,6 @@ class FluidCheckout_Layout extends FluidCheckout {
 		// 		'checkout'          => WC()->checkout(),
 		// 	)
 		// );
-
-		$this->output_step_end_tag();
 	}
 
 
@@ -748,15 +910,6 @@ class FluidCheckout_Layout extends FluidCheckout {
 	 */
 	public function output_payment_step_actions_html() {
 		echo $this->get_payment_step_actions_html();
-	}
-
-	/**
-	 * Output payment step section title.
-	 */
-	public function output_payment_step_section_title() {
-		?>
-		<h3 class="wfc-checkout-step-title"><?php echo esc_html( apply_filters( 'wfc_checkout_payment_step_section_title', __( 'Payment', 'woocommerce-fluid-checkout' ) ) ); ?></h3>
-		<?php
 	}
 
 	/**
@@ -980,7 +1133,7 @@ class FluidCheckout_Layout extends FluidCheckout {
 	/**
 	 * Output widget area inside cart totals section.
 	 */
-	function output_sidebar_cart_totals_inside() {
+	function output_widget_area_cart_totals_inside() {
 		if ( is_active_sidebar( 'wfc_cart_totals_inside' ) ) :
 			dynamic_sidebar( 'wfc_cart_totals_inside' );
 		endif;
@@ -989,7 +1142,7 @@ class FluidCheckout_Layout extends FluidCheckout {
 	/**
 	 * Output widget area outside cart totals section.
 	 */
-	function output_sidebar_cart_totals_outside() {
+	function output_widget_area_cart_totals_outside() {
 		if ( is_active_sidebar( 'wfc_cart_totals_outside' ) ) :
 			dynamic_sidebar( 'wfc_cart_totals_outside' );
 		endif;
