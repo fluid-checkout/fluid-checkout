@@ -44,8 +44,8 @@
 .wfc-progress-bar__bar.complete { background-color: $checkout-progress-bar-complete-color; }
 .wfc-progress-bar__bar.current { background-color: $checkout-progress-bar-current-color; }
 
-// Progress bar widths.
-// Supports from 2 up to 10 checkout steps
+// Progress bar width
+// Supports from 2 to 10 checkout steps
 @for $count from 2 through 10 {
 	.wfc-progress-bar__bars[data-step-count="#{$count}"] .wfc-progress-bar__bar {
 		width: #{ 100% / $count };

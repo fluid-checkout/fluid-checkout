@@ -557,7 +557,7 @@ class FluidCheckout_Layout extends FluidCheckout {
 	/**
 	 * Output step: Contact.
 	 */
-	public function output_step_contact() {		
+	public function output_step_contact() {
 		echo '<div class="wfc-step__content" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">CONTACT STEP</div>';
 
 		// do_action( 'woocommerce_checkout_before_customer_details' );
