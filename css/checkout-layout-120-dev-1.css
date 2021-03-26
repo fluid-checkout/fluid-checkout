@@ -276,73 +276,64 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 /*------------------------------------*\
   #CHECKOUT PROGRESS BAR
 \*------------------------------------*/
-#wfc-progressbar {
-  margin: 0;
+.wfc-progress-bar {
+  margin-top: 20px;
+  margin-bottom: 20px; }
+
+.wfc-progress-bar__count {
+  color: #615A56;
+  font-weight: bold;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-align: center; }
+  @media (min-width: 1000px) {
+    .wfc-progress-bar__count {
+      font-size: 15px; } }
+
+.wfc-progress-bar__bars {
+  width: 100%;
+  height: 5px;
+  border: none;
+  border-radius: 2.5px;
+  background-color: #F7F0F5;
   overflow: hidden; }
 
-.wfc-progress-bar-step {
-  display: inline-block;
-  padding: .5rem 2rem;
-  box-sizing: border-box;
-  position: relative;
-  cursor: pointer; }
+.wfc-progress-bar__bar {
+  margin: 0;
+  display: block;
+  float: left;
+  height: 5px;
+  background-color: #F7F0F5; }
 
-@supports (display: flex) {
-  #wfc-progressbar {
-    display: flex; }
-  .wfc-progress-bar-step {
-    flex: 1;
-    padding: 0; } }
+.wfc-progress-bar__bar.complete {
+  background-color: #1FC19E; }
 
-.wfc-progress-bar-step[disabled],
-.wfc-progress-bar-step.disabled {
-  cursor: default; }
+.wfc-progress-bar__bar.current {
+  background-color: rgba(31, 193, 158, 0.4); }
 
-.wfc-progress-bar-step:first-child:before,
-.wfc-progress-bar-step:last-child:after {
-  content: '';
-  display: none; }
+.wfc-progress-bar__bars[data-step-count="2"] .wfc-progress-bar__bar {
+  width: 50%; }
 
-#wfc-progressbar {
-  border-radius: 4px;
-  margin-bottom: 30px; }
+.wfc-progress-bar__bars[data-step-count="3"] .wfc-progress-bar__bar {
+  width: 33.33333%; }
 
-.wfc-progress-bar-step {
-  padding: 5px;
-  max-height: 30px;
-  height: 30px;
-  background-color: #f3f3f3;
-  font-size: 15px;
-  text-align: center;
-  line-height: 20px; }
+.wfc-progress-bar__bars[data-step-count="4"] .wfc-progress-bar__bar {
+  width: 25%; }
 
-.wfc-progress-bar-step:before,
-.wfc-progress-bar-step:after {
-  content: '';
-  position: absolute;
-  top: -2px;
-  right: -23px;
-  width: 0;
-  height: 0;
-  border: 17px solid transparent;
-  border-left: 7px solid #f3f3f3;
-  z-index: 3; }
+.wfc-progress-bar__bars[data-step-count="5"] .wfc-progress-bar__bar {
+  width: 20%; }
 
-.wfc-progress-bar-step:before {
-  left: 0;
-  border: 17px solid transparent;
-  border-left: 7px solid #fff;
-  z-index: 2; }
+.wfc-progress-bar__bars[data-step-count="6"] .wfc-progress-bar__bar {
+  width: 16.66667%; }
 
-.wfc-progress-bar-step.current:after {
-  border-left-color: #e9e9e9; }
+.wfc-progress-bar__bars[data-step-count="7"] .wfc-progress-bar__bar {
+  width: 14.28571%; }
 
-.wfc-progress-bar-step.current {
-  background-color: #e9e9e9; }
+.wfc-progress-bar__bars[data-step-count="8"] .wfc-progress-bar__bar {
+  width: 12.5%; }
 
-.wfc-progress-bar-step.done:after {
-  border-left-color: #329f5b; }
+.wfc-progress-bar__bars[data-step-count="9"] .wfc-progress-bar__bar {
+  width: 11.11111%; }
 
-.wfc-progress-bar-step.done {
-  color: #fff;
-  background-color: #329f5b; }
+.wfc-progress-bar__bars[data-step-count="10"] .wfc-progress-bar__bar {
+  width: 10%; }

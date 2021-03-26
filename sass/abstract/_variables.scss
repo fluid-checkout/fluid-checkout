@@ -235,7 +235,7 @@ $checkout-header-height--large-screen:     remsize( 10rem ) !default;
 $checkout-logo-height:                     remsize( 2.5rem ) !default;
 $checkout-logo-height--large-screen:       remsize( 4rem ) !default;
 
-// END - CHECKOUT LAYOUT
+// END - CHECKOUT HEADER
 // ----------------------------------------
 
 
@@ -256,4 +256,30 @@ $checkout-overview-background:             linear-gradient( 90deg, darken( $ligh
 $checkout-overview-border-left:            none !default;
 
 // END - CHECKOUT LAYOUT
+// ----------------------------------------
+
+
+
+
+// ----------------------------------------
+// CHECKOUT PROGRESS BAR
+
+$checkout-progress-bar-margin-top:               $global-spacing-small !default;
+$checkout-progress-bar-margin-bottom:            $global-spacing-small !default;
+
+$checkout-progress-bar-height:                   remsize( .5rem ) !default;
+$checkout-progress-bar-border:                   none !default;
+$checkout-progress-bar-border-radius:            $checkout-progress-bar-height / 2 !default;
+$checkout-progress-bar-color:                    $light-grey !default;
+$checkout-progress-bar-complete-color:           $success-color !default;
+$checkout-progress-bar-current-color:            transparentize( $checkout-progress-bar-complete-color, .6 ) !default; // Stands for 40% opacity of the color `$checkout-progress-bar-complete-color`
+
+$checkout-step-count-color:                      $dark-grey !default;
+$checkout-step-count-font-size:                  $font-size-small !default;
+$checkout-step-count-font-size--large-screen:    $font-size-small--large-screen !default;
+$checkout-step-count-font-weight:                bold !default;
+$checkout-step-count-text-transform:             uppercase !default;
+$checkout-step-count-text-align:                 center !default;
+
+// END - CHECKOUT PROGRESS BAR
 // ----------------------------------------

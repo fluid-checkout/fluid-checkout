@@ -486,9 +486,36 @@ class FluidCheckout_Layout extends FluidCheckout {
 	 * Output the checkout progress bar.
 	 */
 	public function output_checkout_progress_bar() {
+		$_checkout_steps = $this->get_checkout_steps();
+		
+		// Get step count
+		$steps_count = count( $_checkout_steps );
+		
+		// TODO: Define current step based on the data already provided by the user
+		$current_step_id = 'shipping';
+		$current_step_index = 1;
+		
+		// Get step count html
+		$steps_count_label_html = sprintf(
+			/* translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps". */
+			esc_html( __( 'Step %1$s of %2$s', 'woocommerce-fluid-checkout' ) ),
+			'<span class="wfc-progress-bar__current-step" data-step-count-current>' . esc_html( $current_step_index + 1 ) . '</span>',
+			'<span class="wfc-progress-bar__total-steps" data-step-count-total>' . esc_html( $steps_count ) . '</span>'
+		);
+
 		?>
-		<div class="wfc-progress-bar" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">
-			PROGRESS BAR
+		<div class="wfc-progress-bar" data-progress-bar>
+			<div class="wfc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html ?></div>
+			<div class="wfc-progress-bar__bars" data-progress-bar data-step-count="<?php echo esc_attr( $steps_count ); ?>">
+				<?php
+				foreach ( $_checkout_steps as $step_index => $step_args ) :
+					$step_bar_class = $step_index < $current_step_index ? 'complete' : ( $step_index == $current_step_index ? 'current' : '' );
+					?>
+					<span class="wfc-progress-bar__bar <?php echo esc_attr( $step_bar_class ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>"></span>
+				<?php
+				endforeach;
+				?>
+			</div>
 		</div>
 		<?php
 	}
