@@ -363,8 +363,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   padding: 20px 0; }
 
 .wfc-step__substep-title {
-  margin: 0 0 10px;
-  padding: 0 0 0 5px;
+  margin: 0 0 10px 0;
   color: #535156;
   font-weight: bold;
   font-size: 15px;
