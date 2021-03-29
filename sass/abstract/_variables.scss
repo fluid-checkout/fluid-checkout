@@ -264,8 +264,8 @@ $checkout-overview-border-left:            none !default;
 // ----------------------------------------
 // CHECKOUT PROGRESS BAR
 
-$checkout-progress-bar-margin-top:               $global-spacing-small !default;
-$checkout-progress-bar-margin-bottom:            $global-spacing-small !default;
+$checkout-progress-bar-margin-top:               $global-spacing-tiny !default;
+$checkout-progress-bar-margin-bottom:            $global-spacing-tiny !default;
 
 $checkout-progress-bar-height:                   remsize( .5rem ) !default;
 $checkout-progress-bar-border:                   none !default;

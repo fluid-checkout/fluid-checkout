@@ -36,9 +36,9 @@ defined( 'ABSPATH' ) || exit;
 			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link"><?php wc_cart_totals_order_total_html(); ?></a>
 		</div>
 
-		<?php if ( is_active_sidebar( 'wfc_header_trust' ) ) : ?>
-			<div class="wfc-checkout__header-trust">
-				<?php dynamic_sidebar( 'wfc_header_trust' ); ?>
+		<?php if ( has_action( 'wfc_checkout_header_widgets' ) ) : ?>
+			<div class="wfc-checkout__header-widgets">
+				<?php do_action( 'wfc_checkout_header_widgets' ); ?>
 			</div>
 		<?php endif; ?>
 

@@ -104,3 +104,14 @@ body:not( .has-checkout-must-login-notice ) .wfc-inside {
 		width: calc( #{ $checkout-overview-width--large-screen } - #{ $checkout-column-gap--large-screen * $checkout-overview-width-magic-number } );
 	}
 }
+
+
+
+
+/*------------------------------------*\
+  #CHECKOUT COLUMNS LAYOUT
+\*------------------------------------*/
+.wfc-checkout-header .widget,
+.wfc-wrapper .widget {
+	margin: 0;
+}

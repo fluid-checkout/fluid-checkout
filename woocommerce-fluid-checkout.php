@@ -163,8 +163,10 @@ class FluidCheckout {
 			'checkout-page-template'      => array( 'file' => 'inc/checkout-page-template.php', 'enable_option' => 'wfc_enable_checkout_page_template', 'enable_default' => true ),
 			'checkout-layout'             => array( 'file' => 'inc/checkout-layout.php' ),
 			'checkout-fields'             => array( 'file' => 'inc/checkout-fields.php' ),
+			'checkout-widget-areas'       => array( 'file' => 'inc/checkout-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => true ),
 			'checkout-validation'         => array( 'file' => 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => true ),
 			'checkout-gift-options'       => array( 'file' => 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => true ),
+			'cart-widget-areas'           => array( 'file' => 'inc/cart-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => true ),
 		);
 	}
 
