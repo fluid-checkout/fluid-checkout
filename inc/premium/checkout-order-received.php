@@ -52,7 +52,7 @@ class FluidCheckout_OrderReceived extends FluidCheckout {
 	 * Return WooCommerce Fluid Checkout multi-step class instance.
 	 */
 	public function multistep() {
-		return FluidCheckout_Layout::instance();
+		return FluidCheckout_Steps::instance();
 	}
 
 

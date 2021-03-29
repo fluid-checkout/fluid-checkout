@@ -7,7 +7,7 @@
  */
 
 // Replace site header with our implementation
-if ( FluidCheckout_Layout::instance()->get_hide_site_header_at_checkout() ) {
+if ( FluidCheckout_Steps::instance()->get_hide_site_header_at_checkout() ) {
 	wc_get_template( 'header-checkout.php' );
 }
 // Display the site's default header
@@ -34,7 +34,7 @@ else {
 
 <?php
 // Replace site header with our implementation
-if ( FluidCheckout_Layout::instance()->get_hide_site_footer_at_checkout() ) {
+if ( FluidCheckout_Steps::instance()->get_hide_site_footer_at_checkout() ) {
 	wc_get_template( 'footer-checkout.php' );
 }
 // Display the site's default header

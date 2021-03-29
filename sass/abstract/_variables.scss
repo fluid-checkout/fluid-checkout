@@ -6,36 +6,36 @@
 // COLORS
 
 // Named colors
-$raisin-black: 					#1E212B !default;
-$davys-grey:					#615A56 !default;
-$pale-silver-grey: 				#DDCECD !default;
-$magnolia-grey:					#F7F0F5 !default;
-$cultured-grey:					#F0F4F4 !default;
-$mountain-meadow-green: 		#1FC19E !default;
-$viridian-green: 				#30989C !default;
-$maximum-blue-green:			#44C1C5 !default;
-$tarte-orange:					#FE4A49 !default;
-$crayola-yellow:				#FED766 !default;
+$raisin-black:                  #1E212B !default;
+$dark-liver-grey:               #535156 !default;
+$rocket-mettallic-grey:         #888181 !default;
+$light-grey:                    #D6D8D8 !default;
+$cultured-grey:                 #F0F4F4 !default;
+$mountain-meadow-green:         #1FC19E !default;
+$viridian-green:                #30989C !default;
+$maximum-blue-green:            #44C1C5 !default;
+$tarte-orange:                  #FE4A49 !default;
+$crayola-yellow:                #FED766 !default;
 
 // ----------
 
 // Greys
-$black: 						#000 !default;
-$darker-grey:					$raisin-black !default;
-$dark-grey:						$davys-grey !default;
-$grey: 							$pale-silver-grey !default;
-$light-grey:					$magnolia-grey !default;
-$lighter-grey:					$cultured-grey !default;
-$white:							#fff !default;
+$black:                         #000 !default;
+$darker-grey:                   $raisin-black !default;
+$dark-grey:                     $dark-liver-grey !default;
+$grey:                          $rocket-mettallic-grey !default;
+$light-grey:                    $light-grey !default;
+$lighter-grey:                  $cultured-grey !default;
+$white:                         #fff !default;
 
 // Utility colors
-$success-color:					$mountain-meadow-green !default;
-$error-color:					$tarte-orange !default;
-$alert-color:					$crayola-yellow !default;
-$info-color:					$maximum-blue-green !default;
+$success-color:                 $mountain-meadow-green !default;
+$error-color:                   $tarte-orange !default;
+$alert-color:                   $crayola-yellow !default;
+$info-color:                    $maximum-blue-green !default;
 
-$border-color:					$light-grey !default;
-$border-light-color:			$lighter-grey !default;
+$border-color:                  $light-grey !default;
+$border-light-color:            $lighter-grey !default;
 
 // Shadows
 $box-shadow-darker:             0 remsize( .2rem ) remsize( 1.5rem ) rgba( 0, 0, 0, .3 ) !default;
@@ -52,20 +52,20 @@ $box-shadow-light:              0 remsize( .2rem ) remsize( 1.5rem ) rgba( 255, 
 // ----------------------------------------
 // SPACING & BOX SYSTEM
 
-$global-spacing-tiny:				remsize( .5rem ) !default;
-$global-spacing-extra-small: 		remsize( 1rem ) !default;
-$global-spacing-small: 				remsize( 2rem ) !default;
-$global-spacing: 					remsize( 3rem ) !default;
-$global-spacing-medium: 			remsize( 5rem ) !default;
-$global-spacing-large: 				remsize( 8rem ) !default;
-$global-spacing-extra-large: 		remsize( 13rem ) !default;
+$global-spacing-tiny:               remsize( .5rem ) !default;
+$global-spacing-extra-small:        remsize( 1rem ) !default;
+$global-spacing-small:              remsize( 2rem ) !default;
+$global-spacing:                    remsize( 3rem ) !default;
+$global-spacing-medium:             remsize( 5rem ) !default;
+$global-spacing-large:              remsize( 8rem ) !default;
+$global-spacing-extra-large:        remsize( 13rem ) !default;
 
-$global-radius-extra-small:			remsize( .3rem ) !default;
-$global-radius-small:				remsize( .5rem ) !default;
-$global-radius:						remsize( .8rem ) !default;
-$global-radius-medium:				remsize( 1.3rem ) !default;
-$global-radius-large:				remsize( 2.1rem ) !default;
-$global-radius-extra-large:			remsize( 3.4rem ) !default;
+$global-radius-extra-small:         remsize( .3rem ) !default;
+$global-radius-small:               remsize( .5rem ) !default;
+$global-radius:                     remsize( .8rem ) !default;
+$global-radius-medium:              remsize( 1.3rem ) !default;
+$global-radius-large:               remsize( 2.1rem ) !default;
+$global-radius-extra-large:         remsize( 3.4rem ) !default;
 
 // END - SPACING & BOX SYSTEM
 // ----------------------------------------
@@ -78,21 +78,21 @@ $global-radius-extra-large:			remsize( 3.4rem ) !default;
 // TYPOGRAPHY
 
 // Font sizes
-$font-size-tiny:						remsize( 1rem ) !default;
-$font-size-extra-small:					remsize( 1.3rem ) !default;
-$font-size-small:						remsize( 1.5rem ) !default;
-$font-size:								remsize( 1.8rem ) !default; // Should be at least 16px to prevent auto-zoom issues on Safari Mobile
-$font-size-medium:						remsize( 2rem ) !default;
-$font-size-large:						remsize( 2.8rem ) !default;
-$font-size-extra-large:					remsize( 4rem ) !default;
+$font-size-tiny:                        remsize( 1rem ) !default;
+$font-size-extra-small:                 remsize( 1.3rem ) !default;
+$font-size-small:                       remsize( 1.5rem ) !default;
+$font-size:                             remsize( 1.8rem ) !default; // Should be at least 16px to prevent auto-zoom issues on Safari Mobile
+$font-size-medium:                      remsize( 2rem ) !default;
+$font-size-large:                       remsize( 2.8rem ) !default;
+$font-size-extra-large:                 remsize( 4rem ) !default;
 
-$font-size-tiny--large-screen:			remsize( 1rem ) !default;
-$font-size-extra-small--large-screen:	remsize( 1.3rem ) !default;
-$font-size-small--large-screen:			remsize( 1.5rem ) !default;
-$font-size--large-screen:				remsize( 1.8rem ) !default;
-$font-size-medium--large-screen:		remsize( 2.4rem ) !default;
-$font-size-large--large-screen:			remsize( 3.2rem ) !default;
-$font-size-extra-large--large-screen:	remsize( 5rem ) !default;
+$font-size-tiny--large-screen:          remsize( 1rem ) !default;
+$font-size-extra-small--large-screen:   remsize( 1.3rem ) !default;
+$font-size-small--large-screen:         remsize( 1.5rem ) !default;
+$font-size--large-screen:               remsize( 1.8rem ) !default;
+$font-size-medium--large-screen:        remsize( 2.4rem ) !default;
+$font-size-large--large-screen:         remsize( 3.2rem ) !default;
+$font-size-extra-large--large-screen:   remsize( 5rem ) !default;
 
 // END - TYPOGRAPHY
 // ----------------------------------------
@@ -105,37 +105,37 @@ $font-size-extra-large--large-screen:	remsize( 5rem ) !default;
 // GRID SYSTEM
 
 // Breakpoints
-$bp-larger-than-mobile:						'min-width: 400px' !default;
-$bp-larger-than-phablet:					'min-width: 550px' !default;
-$bp-larger-than-tablet:						'min-width: 750px' !default;
-$bp-larger-than-desktop:					'min-width: 1000px' !default;
-$bp-larger-than-desktop-medium:				'min-width: 1280px' !default;
-$bp-larger-than-desktop-large:				'min-width: 1500px' !default;
-$bp-larger-than-desktop-extra-large:		'min-width: 2000px' !default;
+$bp-larger-than-mobile:                     'min-width: 400px' !default;
+$bp-larger-than-phablet:                    'min-width: 550px' !default;
+$bp-larger-than-tablet:                     'min-width: 750px' !default;
+$bp-larger-than-desktop:                    'min-width: 1000px' !default;
+$bp-larger-than-desktop-medium:             'min-width: 1280px' !default;
+$bp-larger-than-desktop-large:              'min-width: 1500px' !default;
+$bp-larger-than-desktop-extra-large:        'min-width: 2000px' !default;
 
-$bp-smaller-than-mobile:					'max-width: 399px' !default;
-$bp-smaller-than-phablet:					'max-width: 549px' !default;
-$bp-smaller-than-tablet:					'max-width: 749px' !default;
-$bp-smaller-than-desktop:					'max-width: 999px' !default;
-$bp-smaller-than-desktop-medium:			'max-width: 1279px' !default;
-$bp-smaller-than-desktop-large:				'max-width: 1499px' !default;
-$bp-smaller-than-desktop-extra-large:		'max-width: 1999px' !default;
+$bp-smaller-than-mobile:                    'max-width: 399px' !default;
+$bp-smaller-than-phablet:                   'max-width: 549px' !default;
+$bp-smaller-than-tablet:                    'max-width: 749px' !default;
+$bp-smaller-than-desktop:                   'max-width: 999px' !default;
+$bp-smaller-than-desktop-medium:            'max-width: 1279px' !default;
+$bp-smaller-than-desktop-large:             'max-width: 1499px' !default;
+$bp-smaller-than-desktop-extra-large:       'max-width: 1999px' !default;
 
 // Container spacing
-$container-spacing-mobile: 					$global-spacing-small !default;
-$container-spacing-tablet: 					$global-spacing !default;
-$container-spacing-desktop: 				$global-spacing-medium !default;
-$container-spacing-desktop-medium: 			$global-spacing-medium !default;
-$container-spacing-desktop-large: 			$global-spacing-medium !default;
-$container-spacing-desktop-extra-large: 	$global-spacing-medium !default;
+$container-spacing-mobile:                  $global-spacing-small !default;
+$container-spacing-tablet:                  $global-spacing !default;
+$container-spacing-desktop:                 $global-spacing-medium !default;
+$container-spacing-desktop-medium:          $global-spacing-medium !default;
+$container-spacing-desktop-large:           $global-spacing-medium !default;
+$container-spacing-desktop-extra-large:     $global-spacing-medium !default;
 
 // Container total width
-$container-width-mobile: 					100% !default;
-$container-width-tablet: 					100% !default;
-$container-width-desktop: 					100% !default;
-$container-width-desktop-medium: 			100% !default;
-$container-width-desktop-large: 			remsize( 140rem ) !default;
-$container-width-desktop-extra-large: 		remsize( 140rem ) !default;
+$container-width-mobile:                    100% !default;
+$container-width-tablet:                    100% !default;
+$container-width-desktop:                   100% !default;
+$container-width-desktop-medium:            100% !default;
+$container-width-desktop-large:             remsize( 140rem ) !default;
+$container-width-desktop-extra-large:       remsize( 140rem ) !default;
 
 // END - GRID SYSTEM
 // ----------------------------------------
@@ -148,15 +148,15 @@ $container-width-desktop-extra-large: 		remsize( 140rem ) !default;
 // ANIMATIONS
 
 $global-animation-duration-slowest: 2.5s !default;
-$global-animation-duration-slower: 	1.5s !default;
-$global-animation-duration-slow: 	.75s !default;
-$global-animation-duration: 		.3s !default;
-$global-animation-duration-fast: 	.15s !default;
-$global-animation-duration-faster: 	.1s !default;
+$global-animation-duration-slower:  1.5s !default;
+$global-animation-duration-slow:    .75s !default;
+$global-animation-duration:         .3s !default;
+$global-animation-duration-fast:    .15s !default;
+$global-animation-duration-faster:  .1s !default;
 $global-animation-duration-fastest: .05s !default;
 
-$global-animation-easing:			ease !default;
-$sliding-animation-easing:			cubic-bezier(0.25, 0.46, 0.45, 0.94) !default; // ease-out-quadratic
+$global-animation-easing:           ease !default;
+$sliding-animation-easing:          cubic-bezier(0.25, 0.46, 0.45, 0.94) !default; // ease-out-quadratic
 
 // END - ANIMATIONS
 // ----------------------------------------
@@ -169,15 +169,15 @@ $sliding-animation-easing:			cubic-bezier(0.25, 0.46, 0.45, 0.94) !default; // e
 // Z-INDEX LEVELS
 
 $z-layers: (
-	'above-all':			100000,
-	'modal':				5000,
-	'header-element':		2000,
-	'offside-element':		1500,
-	'sticky-element':		300,
-	'float-element':		200,
-	'above':				10,
-	'default':				1,
-	'below':				-1
+	'above-all':            100000,
+	'modal':                5000,
+	'header-element':       2000,
+	'offside-element':      1500,
+	'sticky-element':       300,
+	'float-element':        200,
+	'above':                10,
+	'default':              1,
+	'below':                -1
 ) !default;
 
 // END - Z-INDEX LEVELS
@@ -261,6 +261,7 @@ $checkout-overview-border-left:            none !default;
 
 
 
+
 // ----------------------------------------
 // CHECKOUT PROGRESS BAR
 
@@ -282,4 +283,32 @@ $checkout-step-count-text-transform:             uppercase !default;
 $checkout-step-count-text-align:                 center !default;
 
 // END - CHECKOUT PROGRESS BAR
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// CHECKOUT STEPS
+
+$checkout-step-padding:                          $global-spacing-small 0 !default;
+
+$checkout-substep-title-margin:                  0 0 $global-spacing-extra-small 0 !default;
+$checkout-substep-title-color:                   $dark-grey !default;
+$checkout-substep-title-font-size:               $font-size-small !default;
+$checkout-substep-title-font-size--large-screen: $font-size-small--large-screen !default;
+$checkout-substep-title-font-weight:             bold !default;
+$checkout-substep-title-text-transform:          uppercase !default;
+$checkout-substep-title-text-align:              left !default;
+$checkout-substep-title-check-icon-size:         $icon-size-small !default;
+$checkout-substep-title-check-icon-spacing:      $global-spacing-tiny !default;
+
+$checkout-substep-text-padding:                  0 0 0 #{ $global-spacing-tiny + $global-spacing-extra-small + $checkout-substep-title-check-icon-size } !default;
+$checkout-substep-text-color:                    $grey !default;
+$checkout-substep-text-font-size:                $font-size-small !default;
+$checkout-substep-text-font-size--large-screen:  $font-size-small--large-screen !default;
+$checkout-substep-text-font-weight:              normal !default;
+
+// END - CHECKOUT STEPS
 // ----------------------------------------

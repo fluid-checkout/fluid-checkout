@@ -161,7 +161,7 @@ class FluidCheckout {
 	private function add_features() {
 		self::$features = array(
 			'checkout-page-template'      => array( 'file' => 'inc/checkout-page-template.php', 'enable_option' => 'wfc_enable_checkout_page_template', 'enable_default' => true ),
-			'checkout-layout'             => array( 'file' => 'inc/checkout-layout.php' ),
+			'checkout-steps'              => array( 'file' => 'inc/checkout-steps.php' ),
 			'checkout-fields'             => array( 'file' => 'inc/checkout-fields.php' ),
 			'checkout-widget-areas'       => array( 'file' => 'inc/checkout-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => true ),
 			'checkout-validation'         => array( 'file' => 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => true ),
@@ -324,6 +324,23 @@ class FluidCheckout {
 		}
 
 		return false;
+	}
+
+
+
+	/**
+	 * Map an associative array of html attributes to a string of html attributes.
+	 *
+	 * @param   array  $k  Attributes keys.
+	 * @param   array  $v  Attributes values.
+	 *
+	 * @return  string     A string that represent the attribute in html format `key="value"` or only `key` when the attribute value is boolean and `true`.
+	 */
+	public function map_html_attributes( $k, $v ) {
+		if ( is_bool( $v ) ) {
+			return $v ? esc_attr( $k ) : null;
+		}
+		return sprintf( '%s="%s"', esc_attr( $k ), esc_attr( $v ) );
 	}
 
 }

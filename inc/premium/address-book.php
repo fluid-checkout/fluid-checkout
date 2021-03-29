@@ -116,7 +116,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 */
 	public function late_hooks() {
 		// Multi-step Enhanced Layout
-		if ( class_exists( 'FluidCheckout_Layout' ) ) {
+		if ( class_exists( 'FluidCheckout_Steps' ) ) {
 			// Billing Address Book
 			remove_action( 'wfc_checkout_before_step_payment_fields', array( $this->multistep(), 'output_billing_fields' ), 20 );
 		}
@@ -133,7 +133,7 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 	 * Return WooCommerce Fluid Checkout multi-step class instance
 	 */
 	public function multistep() {
-		return FluidCheckout_Layout::instance();
+		return FluidCheckout_Steps::instance();
 	}
 
 	/**
