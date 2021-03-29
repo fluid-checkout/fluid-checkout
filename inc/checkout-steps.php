@@ -800,11 +800,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Check if user has required data
 		$fields = $checkout->get_checkout_fields( 'billing' );
 		$contact_display_field_keys = $this->get_contact_step_display_fields();
-		$has_required_contact_data = true;
 
 		foreach ( $contact_display_field_keys as $field_key ) {
 			$field = array_key_exists( $field_key, $fields ) ? $fields[ $field_key ] : array();
-			if ( $has_required_contact_data && array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
+			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
 				return false;
 			}
 		}
