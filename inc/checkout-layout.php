@@ -556,11 +556,16 @@ class FluidCheckout_Layout extends FluidCheckout {
 		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
 		
 		// Get step count html
-		$steps_count_label_html = sprintf(
-			/* translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps". */
-			esc_html( __( 'Step %1$s of %2$s', 'woocommerce-fluid-checkout' ) ),
-			'<span class="wfc-progress-bar__current-step" data-step-count-current>' . esc_html( $current_step_index + 1 ) . '</span>',
-			'<span class="wfc-progress-bar__total-steps" data-step-count-total>' . esc_html( $steps_count ) . '</span>'
+		$steps_count_label_html = apply_filters(
+			'wfc_steps_count_html',
+			sprintf(
+				/* translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps". */
+				esc_html( __( 'Step %1$s of %2$s', 'woocommerce-fluid-checkout' ) ),
+				'<span class="wfc-progress-bar__current-step" data-step-count-current>' . esc_html( $current_step_index + 1 ) . '</span>',
+				'<span class="wfc-progress-bar__total-steps" data-step-count-total>' . esc_html( $steps_count ) . '</span>'
+			),
+			$_checkout_steps,
+			$current_step
 		);
 
 		?>
