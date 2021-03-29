@@ -14,9 +14,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *      ['priority']                     int         Defines the order the checkout step will be displayed.
 	 *      ['render_callback']              callable    Function name or callable array to display the contents of the checkout step.
 	 *      ['render_condition_callback']    callable    (optional) Function name or callable array to determine if the step should be rendered. If a callback is not provided the checkout step will be displayed.
-	 *      ['render_text_callback']         callable    Function name or callable array to display the contents of the checkout step in text format for when the step is "complete".
-	 *      ['is_complete_callback']         callable    (optional) Function name or callable array to determine if all required date for the step has been provided. If a callback is not provided it will consider the step as 'incomplete'.
-	
+	 *      ['is_complete_callback']         callable    (optional) Function name or callable array to determine if all required date for the step has been provided. If a callback is not provided it will consider the step as 'incomplete'.	
 	 *
 	 * @var array
 	 **/
