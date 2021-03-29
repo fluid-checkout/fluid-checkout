@@ -538,6 +538,44 @@ class FluidCheckout_Layout extends FluidCheckout {
 		$incomplete_steps = $this->get_incomplete_steps();
 		return array_slice( $incomplete_steps, 0, 1, true );
 	}
+
+
+
+	/**
+	 * Determine if the step is the current step.
+	 *
+	 * @param   string  $step_id  Id of the step to check for the "current step" status.
+	 *
+	 * @return  boolean  `true` if the step is the current step, `false` otherwise.
+	 */
+	public function is_current_step( $step_id ) {
+		// Get checkout current step
+		$current_step = $this->get_current_step();
+		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the original checkout steps list
+		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
+
+		return ( $step_id == $current_step_id );
+	}
+
+
+
+	/**
+	 * Determine if the step is complete.
+	 *
+	 * @param   string  $step_id  Id of the step to check for the "complete" status.
+	 *
+	 * @return  boolean  `true` if the step is considered complete, `false` otherwise. Defaults to `false`.
+	 */
+	public function is_step_complete( $step_id ) {
+		$complete_steps = $this->get_complete_steps();
+
+		// Return `true` if step id is found in the complete steps list
+		foreach ( $complete_steps as $step_args ) {
+			if ( $step_id == $step_args[ 'step_id' ] ) { return true; }
+		}
+
+		return false;
+	}
 	
 	
 	
@@ -594,11 +632,15 @@ class FluidCheckout_Layout extends FluidCheckout {
 	 * @param   string  $step_title  Step label.
 	 */
 	public function output_step_start_tag( $step_id = '', $step_title ) {
-		$step_id_attribute = ! empty( $step_id ) && $step_id != null ? 'data-step-id="'.esc_attr( $step_id ).'"' : '';
-
-		// TODO: Output markup for "completed" step to display them collapsed when loading the page
+		$step_attributes = array(
+			'data-step-id' => ! empty( $step_id ) && $step_id != null ? $step_id : '',
+			'data-step-label' => $step_title,
+			'data-step-complete' => $this->is_step_complete( $step_id ),
+			'data-step-current' => $this->is_current_step( $step_id ),
+		);
+		$step_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $step_attributes ), $step_attributes ) );
 		?>
-		<section class="wfc-checkout-step" <?php echo $step_id_attribute; ?> data-label="<?php echo esc_attr( $step_title ); ?>">
+		<section class="wfc-checkout-step" <?php echo $step_attributes_str; ?>>
 		<?php
 	}
 

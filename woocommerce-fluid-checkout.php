@@ -326,6 +326,23 @@ class FluidCheckout {
 		return false;
 	}
 
+
+
+	/**
+	 * Map an associative array of html attributes to a string of html attributes.
+	 *
+	 * @param   array  $k  Attributes keys.
+	 * @param   array  $v  Attributes values.
+	 *
+	 * @return  string     A string that represent the attribute in html format `key="value"` or only `key` when the attribute value is boolean and `true`.
+	 */
+	public function map_html_attributes( $k, $v ) {
+		if ( is_bool( $v ) ) {
+			return $v ? esc_attr( $k ) : null;
+		}
+		return sprintf( '%s="%s"', esc_attr( $k ), esc_attr( $v ) );
+	}
+
 }
 
 FluidCheckout::instance();
