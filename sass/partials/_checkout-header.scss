@@ -3,9 +3,10 @@
 \*------------------------------------*/
 
 .wfc-checkout-header {
-	height: $checkout-header-height;
+	margin-bottom: $global-spacing-tiny;
+	min-height: $checkout-header-height;
 	
-	@media (#{$bp-larger-than-desktop}) { height: $checkout-header-height--large-screen; }
+	@media (#{$bp-larger-than-desktop}) { min-height: $checkout-header-height--large-screen; }
 }
 .wfc-checkout-header__inner {
 	position: relative;
@@ -17,14 +18,8 @@
 
 
 .wfc-checkout-header .wfc-checkout__branding {
-	position: absolute;
-	top: 50%;
-	left: 0;
-	transform: translateY( -50% );
-	margin: 0;
-	line-height: 1;
-
 	width: 50%;
+	line-height: 1;
 }
 
 .wfc-checkout-header .wfc-checkout__title.screen-reader-text {
@@ -47,11 +42,14 @@
 	margin: remsize( .2rem ) 0 0;
 }
 .wfc-checkout-header .custom-logo {
-	margin: 0;
+	margin: #{ ( $checkout-header-height - $checkout-logo-height ) / 2 } 0;
 	height: $checkout-logo-height;
 	width: auto;
 
-	@media (#{$bp-larger-than-desktop}) { height: $checkout-logo-height--large-screen; }
+	@media (#{$bp-larger-than-desktop}) {
+		margin: #{ ( $checkout-header-height--large-screen - $checkout-logo-height--large-screen ) / 2 } 0;
+		height: $checkout-logo-height--large-screen;
+	}
 }
 
 
@@ -60,16 +58,20 @@
 
 .wfc-checkout-header .wfc-checkout__cart-link-wrapper {
 	position: absolute;
-	top: 50%;
+	top: 0;
 	right: 0;
-	transform: translateY( -50% ) translateX( remsize( .8rem ) );
 	margin: 0;
+	
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+	height: $checkout-header-height;
 	line-height: 1;
 
 	@media (#{$bp-larger-than-desktop}) { display: none; }
 }
 .wfc-checkout-header .wfc-checkout__cart-link {
-	display: block;
+	margin: $global-spacing-tiny 0;
 	padding: $global-spacing-extra-small remsize( .8rem ) remsize( .8rem ) $global-spacing-extra-small;
 	background-color: $white;
 	border: solid remsize( .1rem ) $border-color;
@@ -103,19 +105,15 @@
 
 
 
-.wfc-checkout-header .wfc-checkout__header-trust {
-	display: none;
-
+.wfc-checkout-header .wfc-checkout__header-widgets {
 	@media (#{$bp-larger-than-desktop}) {
 		position: absolute;
 		top: 50%;
 		right: 0;
 		transform: translateY( -50% );
-		display: block;
-		margin: 0;
-
-		width: 50%;
 		display: flex;
 		justify-content: flex-end;
+		margin: 0;
+		width: 50%;
 	}
 }
