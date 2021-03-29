@@ -62,7 +62,7 @@
 .wfc-checkout-header .wfc-checkout__cart-link-wrapper {
 	position: absolute;
 	top: 0;
-	right: 0;
+	right: - $global-spacing-extra-small;
 	margin: 0;
 	
 	display: flex;
@@ -77,7 +77,7 @@
 	margin: $global-spacing-tiny 0;
 	padding: $global-spacing-extra-small remsize( .8rem ) remsize( .8rem ) $global-spacing-extra-small;
 	background-color: $white;
-	border: solid remsize( .1rem ) $border-color;
+	border: solid remsize( .1rem ) $border-light-color;
 	border-radius: $global-radius;
 	box-shadow: $box-shadow-dark;
 	font-size: $font-size-small;

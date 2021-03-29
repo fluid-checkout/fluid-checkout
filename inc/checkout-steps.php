@@ -1,8 +1,8 @@
 <?php
 /**
- * Checkout steps layout: Multi Step
+ * Checkout layout and steps
  */
-class FluidCheckout_Layout extends FluidCheckout {
+class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
@@ -14,7 +14,9 @@ class FluidCheckout_Layout extends FluidCheckout {
 	 *      ['priority']                     int         Defines the order the checkout step will be displayed.
 	 *      ['render_callback']              callable    Function name or callable array to display the contents of the checkout step.
 	 *      ['render_condition_callback']    callable    (optional) Function name or callable array to determine if the step should be rendered. If a callback is not provided the checkout step will be displayed.
+	 *      ['render_text_callback']         callable    Function name or callable array to display the contents of the checkout step in text format for when the step is "complete".
 	 *      ['is_complete_callback']         callable    (optional) Function name or callable array to determine if all required date for the step has been provided. If a callback is not provided it will consider the step as 'incomplete'.
+	
 	 *
 	 * @var array
 	 **/
@@ -464,9 +466,9 @@ class FluidCheckout_Layout extends FluidCheckout {
 			if ( $render_conditional_callback && is_callable( $render_conditional_callback ) && ! call_user_func( $render_conditional_callback ) ) { continue; }
 			
 			// Output the step
-			$this->output_step_start_tag( $step_id, apply_filters( "wfc_step_title_{$step_id}", $step_args[ 'step_title' ] ) );
+			$this->output_step_start_tag( $step_args );
 			call_user_func( $render_callback );
-			$this->output_step_end_tag();
+			$this->output_step_end_tag( $step_args );
 		}
 	}
 
@@ -626,12 +628,13 @@ class FluidCheckout_Layout extends FluidCheckout {
 
 
 	/**
-	 * Output start tag for a checkout step.
+	 * Output checkout step start tag.
 	 *
-	 * @param   string  $step_id     Step ID.
-	 * @param   string  $step_title  Step label.
+	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property $checkout_steps of this class.
 	 */
-	public function output_step_start_tag( $step_id = '', $step_title ) {
+	public function output_step_start_tag( $step_args ) {
+		$step_id = $step_args[ 'step_id' ];
+		$step_title = apply_filters( "wfc_step_title_{$step_id}", $step_args[ 'step_title' ] );
 		$step_attributes = array(
 			'data-step-id' => ! empty( $step_id ) && $step_id != null ? $step_id : '',
 			'data-step-label' => $step_title,
@@ -645,11 +648,87 @@ class FluidCheckout_Layout extends FluidCheckout {
 	}
 
 	/**
-	 * Output end tag for a checkout step.
+	 * Output checkout step end tag.
+	 * 
+	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property $checkout_steps of this class.
 	 */
-	public function output_step_end_tag() {
+	public function output_step_end_tag( $step_args ) {
 		?>
 		</section>
+		<?php
+	}
+
+
+
+	/**
+	 * Output checkout substep start tag.
+	 */
+	public function output_substep_start_tag( $substep_id, $substep_title ) {
+		$substep_title = apply_filters( "wfc_substep_title_{$substep_id}", $substep_title );
+		$substep_attributes = array(
+			'data-substep-id' => ! empty( $substep_id ) && $substep_id != null ? $substep_id : '',
+		);
+		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
+		?>
+		<div class="wfc-step__substep" <?php echo $substep_attributes_str; ?>>
+			<h3 class="wfc-step__substep-title"><?php echo esc_html( $substep_title ); ?></h3>
+		<?php
+	}
+
+	/**
+	 * Output checkout substep end tag.
+	 */
+	public function output_substep_end_tag() {
+		?>
+		</div>
+		<?php
+	}
+
+
+
+	/**
+	 * Output checkout substep start tag.
+	 */
+	public function output_substep_fields_start_tag( $substep_id ) {
+		$substep_attributes = array(
+			'data-substep-id' => ! empty( $substep_id ) && $substep_id != null ? $substep_id : '',
+		);
+		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
+		?>
+		<div class="wfc-step__substep-fields" <?php echo $substep_attributes_str; ?>>
+		<?php
+	}
+
+	/**
+	 * Output checkout substep end tag.
+	 */
+	public function output_substep_fields_end_tag() {
+		?>
+		</div>
+		<?php
+	}
+
+
+
+	/**
+	 * Output checkout substep start tag.
+	 */
+	public function output_substep_text_start_tag( $substep_id ) {
+		$substep_attributes = array(
+			'data-substep-id' => ! empty( $substep_id ) && $substep_id != null ? $substep_id : '',
+		);
+		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
+		?>
+		<div class="wfc-step__substep-text" <?php echo $substep_attributes_str; ?>>
+		<?php
+	}
+
+	/**
+	 * Output checkout substep end tag.
+	 */
+	public function output_substep_text_end_tag() {
+		?>
+		</div>
 		<?php
 	}
 
@@ -664,38 +743,50 @@ class FluidCheckout_Layout extends FluidCheckout {
 
 
 	/**
-	 * Output step: Contact.
+	 * Output contact step.
 	 */
 	public function output_step_contact() {
-		echo '<div class="wfc-step__content" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">CONTACT STEP</div>';
-
-		// do_action( 'woocommerce_checkout_before_customer_details' );
-
-		// $checkout = WC()->checkout();
-
-		// // Check if user has required data
-		// $fields = $checkout->get_checkout_fields( 'billing' );
-		// $contact_display_field_keys = $this->get_contact_step_display_fields();
-		// $has_required_contact_data = true;
-		// foreach ( $contact_display_field_keys as $field_key ) {
-		// 	$field = array_key_exists( $field_key, $fields ) ? $fields[ $field_key ] : array();
-		// 	if ( $has_required_contact_data && array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
-		// 		$has_required_contact_data = false;
-		// 		break;
-		// 	}
-		// }
+		// Contact substep
+		$substep_id_contact = 'contact';
+		$this->output_substep_start_tag( $substep_id_contact, __( 'My contact', 'woocommerce-fluid-checkout' ) );
 		
-		// wc_get_template(
-		// 	'checkout/form-contact.php',
-		// 	array(
-		// 		'checkout'			=> $checkout,
-		// 		'display_fields'	=> $contact_display_field_keys,
-		// 		'user_data'			=> $this->get_user_data(),
-		// 		'has_required_contact_data' => $has_required_contact_data,
-		// 	)
-		// );
+		$this->output_substep_fields_start_tag( $substep_id_contact );
+		$this->output_step_contact_fields();
+		$this->output_substep_fields_end_tag();
+		
+		$this->output_substep_text_start_tag( $substep_id_contact );
+		$this->output_substep_text_contact();
+		$this->output_substep_text_end_tag();
 
-		// echo $this->get_contact_step_actions_html();
+		$this->output_substep_end_tag();
+	}
+	
+	/**
+	 * Output contact step fields.
+	 */
+	public function output_step_contact_fields() {
+		do_action( 'woocommerce_checkout_before_customer_details' );
+		
+		wc_get_template(
+			'checkout/form-contact.php',
+			array(
+				'checkout'			=> WC()->checkout(),
+				'display_fields'	=> $this->get_contact_step_display_fields(),
+				'user_data'			=> $this->get_user_data(),
+				'has_required_contact_data' => $has_required_contact_data,
+			)
+		);
+	}
+
+
+	/**
+	 * Output contact substep in text format for when the step is complete.
+	 */
+	public function output_substep_text_contact() {
+		$checkout = WC()->checkout();
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_email' ) . '</span>';
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_first_name' ) . '' . $checkout->get_value( 'billing_last_name' ) . '</span>';
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_phone' ) . '</span>';
 	}
 
 
@@ -706,7 +797,21 @@ class FluidCheckout_Layout extends FluidCheckout {
 	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
 	 */
 	public function is_step_complete_contact() {
-		return false;
+		$checkout = WC()->checkout();
+
+		// Check if user has required data
+		$fields = $checkout->get_checkout_fields( 'billing' );
+		$contact_display_field_keys = $this->get_contact_step_display_fields();
+		$has_required_contact_data = true;
+
+		foreach ( $contact_display_field_keys as $field_key ) {
+			$field = array_key_exists( $field_key, $fields ) ? $fields[ $field_key ] : array();
+			if ( $has_required_contact_data && array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 
@@ -731,7 +836,6 @@ class FluidCheckout_Layout extends FluidCheckout {
 	public function get_contact_step_display_fields() {
 		return apply_filters( 'wfc_checkout_contact_step_field_ids', array(
 			'billing_email',
-			'billing_full_name',
 			'billing_first_name',
 			'billing_last_name',
 			'billing_phone',
@@ -766,15 +870,6 @@ class FluidCheckout_Layout extends FluidCheckout {
 	}
 
 	/**
-	 * Return html for contact step actions.
-	 */
-	public function get_contact_step_actions_html() {
-		$next_step_label = WC()->cart->needs_shipping() ? __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' ) : __( 'Proceed to Payment', 'woocommerce-fluid-checkout' );
-		$actions_html = '<div class="wfc-actions"><button class="wfc-next button alt">' . $next_step_label . '</button></div>';
-		return apply_filters( 'wfc_contact_step_actions_html', $actions_html );
-	}
-
-	/**
 	 * Output contact step section title.
 	 */
 	public function output_contact_step_section_title() {
@@ -805,8 +900,6 @@ class FluidCheckout_Layout extends FluidCheckout {
 		// 		'checkout'          => WC()->checkout(),
 		// 	)
 		// );
-
-		// do_action( 'woocommerce_checkout_after_customer_details' );
 
 		// echo $this->get_shipping_step_actions_html();
 	}
@@ -1027,6 +1120,15 @@ class FluidCheckout_Layout extends FluidCheckout {
 	 */
 	public function output_step_billing() {
 		echo '<div class="wfc-step__content" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">BILLING STEP</div>';
+
+		// wc_get_template(
+		// 	'checkout/form-billing.php',
+		// 	array(
+		// 		'checkout'          => WC()->checkout(),
+		// 	)
+		// );
+
+		// do_action( 'woocommerce_checkout_after_customer_details' );
 	}
 
 
@@ -1227,4 +1329,4 @@ class FluidCheckout_Layout extends FluidCheckout {
 
 }
 
-FluidCheckout_Layout::instance();
+FluidCheckout_Steps::instance();

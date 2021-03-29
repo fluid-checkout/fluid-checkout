@@ -7,9 +7,9 @@
 
 // Named colors
 $raisin-black: 					#1E212B !default;
-$davys-grey:					#615A56 !default;
-$pale-silver-grey: 				#DDCECD !default;
-$magnolia-grey:					#F7F0F5 !default;
+$dark-liver-grey:				#535156 !default;
+$rocket-mettallic-grey: 		#888181 !default;
+$light-grey:					#D6D8D8 !default;
 $cultured-grey:					#F0F4F4 !default;
 $mountain-meadow-green: 		#1FC19E !default;
 $viridian-green: 				#30989C !default;
@@ -22,9 +22,9 @@ $crayola-yellow:				#FED766 !default;
 // Greys
 $black: 						#000 !default;
 $darker-grey:					$raisin-black !default;
-$dark-grey:						$davys-grey !default;
-$grey: 							$pale-silver-grey !default;
-$light-grey:					$magnolia-grey !default;
+$dark-grey:						$dark-liver-grey !default;
+$grey: 							$rocket-mettallic-grey !default;
+$light-grey:					$light-grey !default;
 $lighter-grey:					$cultured-grey !default;
 $white:							#fff !default;
 
@@ -261,6 +261,7 @@ $checkout-overview-border-left:            none !default;
 
 
 
+
 // ----------------------------------------
 // CHECKOUT PROGRESS BAR
 
@@ -282,4 +283,34 @@ $checkout-step-count-text-transform:             uppercase !default;
 $checkout-step-count-text-align:                 center !default;
 
 // END - CHECKOUT PROGRESS BAR
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// CHECKOUT STEPS
+
+$checkout-step-padding:                          $global-spacing-small 0 !default;
+
+$checkout-substep-title-margin:                  0 0 $global-spacing-extra-small !default;
+$checkout-substep-title-padding-left:            $global-spacing-tiny !default;
+$checkout-substep-title-padding:                 0 0 0 #{ $global-spacing-tiny } !default;
+$checkout-substep-title-color:                   $dark-grey !default;
+$checkout-substep-title-font-size:               $font-size-small !default;
+$checkout-substep-title-font-size--large-screen: $font-size-small--large-screen !default;
+$checkout-substep-title-font-weight:             bold !default;
+$checkout-substep-title-text-transform:          uppercase !default;
+$checkout-substep-title-text-align:              left !default;
+$checkout-substep-title-check-icon-size:         $icon-size-small !default;
+$checkout-substep-title-check-icon-spacing:      $global-spacing-tiny !default;
+
+$checkout-substep-text-padding:                  0 0 0 #{ $checkout-substep-title-padding-left + $global-spacing-extra-small + $checkout-substep-title-check-icon-size } !default;
+$checkout-substep-text-color:                    $grey !default;
+$checkout-substep-text-font-size:                $font-size-small !default;
+$checkout-substep-text-font-size--large-screen:  $font-size-small--large-screen !default;
+$checkout-substep-text-font-weight:              normal !default;
+
+// END - CHECKOUT STEPS
 // ----------------------------------------

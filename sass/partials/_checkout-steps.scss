@@ -1,0 +1,79 @@
+/*------------------------------------*\
+	#CHECKOUT STEPS
+\*------------------------------------*/
+
+.wfc-checkout-step {
+	padding: $checkout-step-padding;
+}
+
+
+
+
+
+.wfc-step__substep-title {
+	margin: $checkout-substep-title-margin;
+	padding: $checkout-substep-title-padding;
+	color: $checkout-substep-title-color;
+	font-weight: $checkout-substep-title-font-weight;
+	font-size: $checkout-substep-title-font-size;
+	text-transform: $checkout-substep-title-text-transform;
+	text-align: $checkout-substep-title-text-align;
+
+	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-title-font-size--large-screen; }
+}
+
+[data-step-complete] .wfc-step__substep-title {
+	position: relative;
+	padding: $checkout-substep-text-padding;
+	color: $checkout-substep-text-color;
+
+	&:before {
+		@include icon( 'i-check-small' );
+		@include icon-size( $icon-size-small );
+		
+		position: absolute;
+		left: $checkout-substep-title-check-icon-spacing;
+		top: 50%;
+		transform: translateY( -50% );
+		border-radius: 100%;
+		background-color: $checkout-substep-text-color;
+		color: $white;
+	}
+}
+
+
+
+
+
+.wfc-step__substep-fields {
+	display: inline-block;
+	padding-top: $global-spacing-extra-small;
+	width: 100%;
+}
+
+[data-step-complete] .wfc-step__substep-fields {
+	display: none;
+}
+
+
+
+
+
+.wfc-step__substep-text {
+	display: none;
+	padding: $checkout-substep-text-padding;
+	color: $checkout-substep-text-color;
+	font-weight: $checkout-substep-text-font-weight;
+	font-size: $checkout-substep-text-font-size;
+
+	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-text-font-size--large-screen; }
+}
+
+[data-step-complete] .wfc-step__substep-text {
+	display: block;
+}
+
+.wfc-step__substep-text-line {
+	display: block;
+	width: 100%;
+}
