@@ -309,7 +309,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   display: block;
   float: left;
   margin: 0;
-  width: 0%;
+  width: 0;
   height: 5px;
   background-color: #D6D8D8;
   transition: width 0.3s linear, background-color 0.3s linear; }

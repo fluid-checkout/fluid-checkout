@@ -38,7 +38,7 @@
 	display: block;
 	float:left;
 	margin: 0;
-	width: 0%;
+	width: 0;
 	height: $checkout-progress-bar-height;
 	background-color: $checkout-progress-bar-color;
 	transition: width $global-animation-duration linear, background-color $global-animation-duration linear;
