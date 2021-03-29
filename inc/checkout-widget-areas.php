@@ -35,45 +35,45 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	public function register_checkout_widgets_areas() {
 
 		register_sidebar( array(
-			'name'			=> __( 'Checkout Header', 'woocommerce-fluid-checkout' ),
-			'id'			=> 'wfc_checkout_header',
-			'description'	=> __( 'Display widgets at the checkout header.', 'woocommerce-fluid-checkout' ),
-			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'	=> '</aside>',
-			'before_title'	=> '<h5 class="widget-title">',
-			'after_title'	=> '</h5>',
+			'name'          => __( 'Checkout Header', 'woocommerce-fluid-checkout' ),
+			'id'            => 'wfc_checkout_header',
+			'description'   => __( 'Display widgets at the checkout header.', 'woocommerce-fluid-checkout' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h5 class="widget-title">',
+			'after_title'   => '</h5>',
 		) );
 		
 		register_sidebar( array(
-			'name'			=> __( 'Checkout Below Progress Bar', 'woocommerce-fluid-checkout' ),
-			'id'			=> 'wfc_checkout_below_progress_bar',
-			'description'	=> __( 'Display widgets below the checkout progress bar.', 'woocommerce-fluid-checkout' ),
-			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'	=> '</aside>',
-			'before_title'	=> '<h5 class="widget-title">',
-			'after_title'	=> '</h5>',
+			'name'          => __( 'Checkout Below Progress Bar', 'woocommerce-fluid-checkout' ),
+			'id'            => 'wfc_checkout_below_progress_bar',
+			'description'   => __( 'Display widgets below the checkout progress bar.', 'woocommerce-fluid-checkout' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h5 class="widget-title">',
+			'after_title'   => '</h5>',
 		) );
 		
 
 
 		register_sidebar( array(
-			'name'			=> __( 'Checkout Order Summary - Inside', 'woocommerce-fluid-checkout' ),
-			'id'			=> 'wfc_checkout_order_summary_inside',
-			'description'	=> __( 'Display widgets inside the order summary at the checkout page.', 'woocommerce-fluid-checkout' ),
-			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'	=> '</aside>',
-			'before_title'	=> '<h5 class="widget-title">',
-			'after_title'	=> '</h5>',
+			'name'          => __( 'Checkout Order Summary - Inside', 'woocommerce-fluid-checkout' ),
+			'id'            => 'wfc_checkout_order_summary_inside',
+			'description'   => __( 'Display widgets inside the order summary at the checkout page.', 'woocommerce-fluid-checkout' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h5 class="widget-title">',
+			'after_title'   => '</h5>',
 		) );
 
 		register_sidebar( array(
-			'name'			=> __( 'Checkout Order Summary - After', 'woocommerce-fluid-checkout' ),
-			'id'			=> 'wfc_checkout_order_summary_outside',
-			'description'	=> __( 'Display widgets after the order summary at the checkout page.', 'woocommerce-fluid-checkout' ),
-			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'	=> '</aside>',
-			'before_title'	=> '<h5 class="widget-title">',
-			'after_title'	=> '</h5>',
+			'name'          => __( 'Checkout Order Summary - After', 'woocommerce-fluid-checkout' ),
+			'id'            => 'wfc_checkout_order_summary_outside',
+			'description'   => __( 'Display widgets after the order summary at the checkout page.', 'woocommerce-fluid-checkout' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h5 class="widget-title">',
+			'after_title'   => '</h5>',
 		) );
 
 	}

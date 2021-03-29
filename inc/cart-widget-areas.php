@@ -33,23 +33,23 @@ class FluidCheckout_CartWidgetAreas extends FluidCheckout {
 	public function register_cart_widgets_areas() {
 
 		register_sidebar( array(
-			'name'			=> __( 'Cart Totals - Inside', 'woocommerce-fluid-checkout' ),
-			'id'			=> 'wfc_cart_totals_inside',
-			'description'	=> __( 'Display widgets on cart totals section at checkout.', 'woocommerce-fluid-checkout' ),
-			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'	=> '</aside>',
-			'before_title'	=> '<h5 class="widget-title">',
-			'after_title'	=> '</h5>',
+			'name'          => __( 'Cart Totals - Inside', 'woocommerce-fluid-checkout' ),
+			'id'            => 'wfc_cart_totals_inside',
+			'description'   => __( 'Display widgets on cart totals section at checkout.', 'woocommerce-fluid-checkout' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h5 class="widget-title">',
+			'after_title'   => '</h5>',
 		) );
 
 		register_sidebar( array(
-			'name'			=> __( 'Cart Totals - After', 'woocommerce-fluid-checkout' ),
-			'id'			=> 'wfc_cart_totals_outside',
-			'description'	=> __( 'Display widgets after the cart totals section at checkout.', 'woocommerce-fluid-checkout' ),
-			'before_widget'	=> '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'	=> '</aside>',
-			'before_title'	=> '<h5 class="widget-title">',
-			'after_title'	=> '</h5>',
+			'name'          => __( 'Cart Totals - After', 'woocommerce-fluid-checkout' ),
+			'id'            => 'wfc_cart_totals_outside',
+			'description'   => __( 'Display widgets after the cart totals section at checkout.', 'woocommerce-fluid-checkout' ),
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h5 class="widget-title">',
+			'after_title'   => '</h5>',
 		) );
 
 	}
