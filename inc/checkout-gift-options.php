@@ -25,7 +25,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
 		// Order Admin Screen
-		add_filter( 'woocommerce_after_order_notes' , array( $this, 'maybe_output_gift_options_fields' ), 10 );
+		// add_filter( 'woocommerce_after_order_notes' , array( $this, 'maybe_output_gift_options_fields' ), 10 );
 		add_action( 'woocommerce_admin_order_data_after_order_details', array( $this, 'display_gift_options_fields_order_admin_screen' ), 100, 1 );
 		
 		// Save gift message

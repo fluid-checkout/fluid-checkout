@@ -61,14 +61,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_cart_totals_shipping', array( $this, 'output_cart_totals_shipping_section' ), 10 );
 		add_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
-		add_action( 'wfc_checkout_after_step_shipping_fields', array( $this, 'output_shipping_methods_available' ), 10 );
+		// add_action( 'wfc_checkout_after_step_shipping_fields', array( $this, 'output_shipping_methods_available' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_shipping_methods_fragment' ), 10 );
 		add_action( 'wfc_shipping_methods_before_packages', array( $this, 'output_shipping_methods_start_tag' ), 10 );
 		add_action( 'wfc_shipping_methods_after_packages', array( $this, 'output_shipping_methods_end_tag' ), 10 );
 
 		// Additional Information
-		add_action( 'wfc_checkout_after_step_shipping_fields', array( $this, 'maybe_output_additional_fields_shipping_step' ), 50 );
-		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'maybe_output_additional_fields_payment_step' ), 50 );
+		// add_action( 'wfc_checkout_after_step_shipping_fields', array( $this, 'maybe_output_additional_fields_shipping_step' ), 50 );
+		// add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'maybe_output_additional_fields_payment_step' ), 50 );
 
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
@@ -783,7 +783,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_substep_text_contact() {
 		$checkout = WC()->checkout();
 		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_email' ) . '</span>';
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_first_name' ) . '' . $checkout->get_value( 'billing_last_name' ) . '</span>';
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_first_name' ) . ' ' . $checkout->get_value( 'billing_last_name' ) . '</span>';
 		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_phone' ) . '</span>';
 	}
 
@@ -797,7 +797,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function is_step_complete_contact() {
 		$checkout = WC()->checkout();
 
-		// Check if user has required data
+		// Check required data
 		$fields = $checkout->get_checkout_fields( 'billing' );
 		$contact_display_field_keys = $this->get_contact_step_display_fields();
 
@@ -886,19 +886,105 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output step: Shipping.
+	 * Output shipping step.
 	 */
 	public function output_step_shipping() {
-		echo '<div class="wfc-step__content" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">SHIPPING STEP</div>';
+		// Shipping Address substep
+		$substep_id_shipping_address = 'shipping_address';
+		$this->output_substep_start_tag( $substep_id_shipping_address, __( 'Shipping Address', 'woocommerce-fluid-checkout' ) );
+		$this->output_substep_fields_start_tag( $substep_id_shipping_address );
+		$this->output_step_shipping_address_fields();
+		$this->output_substep_fields_end_tag();
+		$this->output_substep_text_start_tag( $substep_id_shipping_address );
+		$this->output_substep_text_shipping_address();
+		$this->output_substep_text_end_tag();
+		$this->output_substep_end_tag();
 
-		// wc_get_template(
-		// 	'checkout/form-shipping.php',
-		// 	array(
-		// 		'checkout'          => WC()->checkout(),
-		// 	)
-		// );
+		// Shipping Method substep
+		$substep_id_shipping_method = 'shipping_method';
+		$this->output_substep_start_tag( $substep_id_shipping_method, __( 'Shipping Method', 'woocommerce-fluid-checkout' ) );
+		$this->output_substep_fields_start_tag( $substep_id_shipping_method );
+		$this->output_shipping_methods_available();
+		$this->output_substep_fields_end_tag();
+		$this->output_substep_text_start_tag( $substep_id_shipping_method );
+		$this->output_substep_text_shipping_method();
+		$this->output_substep_text_end_tag();
+		$this->output_substep_end_tag();
 
-		// echo $this->get_shipping_step_actions_html();
+		// TODO: ADD ACTION TO STEP OUTPUT FUNCTIONS TO ALLOW FOR CHANGES
+		// TODO: ADD GIFT OPTIONS FIELDS BETWEEN SHIPPING METHOD AND ORDER NOTES
+
+		// Additional Order Notes
+		$substep_id_order_notes = 'order_notes';
+		$this->output_substep_start_tag( $substep_id_order_notes, __( 'Additional notes', 'woocommerce-fluid-checkout' ) );
+		$this->output_substep_fields_start_tag( $substep_id_order_notes );
+		$this->output_additional_fields();
+		$this->output_substep_fields_end_tag();
+		$this->output_substep_text_start_tag( $substep_id_order_notes );
+		$this->output_substep_text_order_notes();
+		$this->output_substep_text_end_tag();
+		$this->output_substep_end_tag();
+	}
+
+
+
+	/**
+	 * Output shipping step fields.
+	 */
+	public function output_step_shipping_address_fields() {
+		wc_get_template(
+			'checkout/form-shipping.php',
+			array(
+				'checkout'          => WC()->checkout(),
+			)
+		);
+	}
+
+
+
+	/**
+	 * Output contact substep in text format for when the step is complete.
+	 */
+	public function output_substep_text_shipping_address() {
+		$checkout = WC()->checkout();
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_first_name' ) . '' . $checkout->get_value( 'shipping_last_name' ) . '</span>';
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_phone' ) . '</span>';
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_company' ) . '</span>';
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_address_1' ) . '</span>';
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_address_2' ) . '</span>';
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_city' ) . '</span>';
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_state' ) . '</span>';
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_country' ) . '</span>';
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_postcode' ) . '</span>';
+	}
+
+
+
+	/**
+	 * Output contact substep in text format for when the step is complete.
+	 */
+	public function output_substep_text_order_notes() {
+		$checkout = WC()->checkout();
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'order_notes' ) . '</span>';
+	}
+
+
+
+	/**
+	 * Output contact substep in text format for when the step is complete.
+	 */
+	public function output_substep_text_shipping_method() {
+		$packages = WC()->shipping()->get_packages();
+
+		foreach ( $packages as $i => $package ) {
+			$available_methods = $package['rates'];
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
+			$package_name = apply_filters( 'woocommerce_shipping_package_name', sprintf( _nx( 'Shipping', 'Shipping %d', ( $i + 1 ), 'shipping packages', 'woocommerce' ), ( $i + 1 ) ), $i, $package );
+			$chosen_method_label = wc_cart_totals_shipping_method_label( $method );
+
+			echo '<span class="wfc-step__substep-text-line">' . $chosen_method_label . '</span>';
+		}
 	}
 
 
@@ -909,8 +995,29 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
 	 */
 	public function is_step_complete_shipping() {
-		return false;
+		$checkout = WC()->checkout();
+
+		// Check required data for shipping address
+		$fields = $checkout->get_checkout_fields( 'shipping' );
+		foreach ( $fields as $field_key => $field ) {
+			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
+				return false;
+			}
+		}
+
+		// Check chosen shipping method
+		$packages = WC()->shipping()->get_packages();
+		foreach ( $packages as $i => $package ) {
+			$available_methods = $package['rates'];
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			if ( ! $chosen_method || empty( $chosen_method ) ) {
+				return false;
+			}
+		}
+
+		return true;
 	}
+
 
 
 	/**
@@ -957,7 +1064,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @access public
 	 */
-	function get_shipping_methods_available() {
+	public function get_shipping_methods_available() {
 		ob_start();
 
 		$packages = WC()->shipping->get_packages();
@@ -1021,7 +1128,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * 
 	 * @param array $fragments Checkout fragments.
 	 */
-	function add_checkout_shipping_methods_fragment( $fragments ) {
+	public function add_checkout_shipping_methods_fragment( $fragments ) {
 		$shipping_methods_html = $this->get_shipping_methods_available();
 		$fragments['.shipping-method__packages'] = $shipping_methods_html;
 		return $fragments;
@@ -1032,7 +1139,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @access public
 	 */
-	function output_shipping_methods_available() {
+	public function output_shipping_methods_available() {
 		echo $this->get_shipping_methods_available();
 	}
 
@@ -1043,7 +1150,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * 
 	 * @return string $label Shipping rate label.
 	 */
-	function get_cart_shipping_methods_label( $method ) {
+	public function get_cart_shipping_methods_label( $method ) {
 		$label     = sprintf( apply_filters( 'wfc_shipping_method_option_label_markup', '<span class="shipping_method__option-label">%s</span>' ), $method->get_label() );
 		$has_cost  = 0 < $method->cost;
 		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );

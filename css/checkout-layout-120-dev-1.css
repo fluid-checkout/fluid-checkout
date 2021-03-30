@@ -362,6 +362,9 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 .wfc-checkout-step {
   padding: 20px 0; }
 
+.wfc-step__substep + .wfc-step__substep {
+  margin-top: 20px; }
+
 .wfc-step__substep-title {
   margin: 0 0 10px 0;
   color: #535156;
@@ -406,11 +409,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   padding-top: 10px;
   width: 100%; }
 
-[data-step-complete] .wfc-step__substep-fields {
-  display: none; }
-
 .wfc-step__substep-text {
-  display: none;
   padding: 0 0 0 33px;
   color: #888181;
   font-weight: normal;

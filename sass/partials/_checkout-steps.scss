@@ -9,6 +9,9 @@
 
 
 
+.wfc-step__substep + .wfc-step__substep {
+	margin-top: $global-spacing-small;
+}
 
 .wfc-step__substep-title {
 	margin: $checkout-substep-title-margin;
@@ -51,7 +54,7 @@
 }
 
 [data-step-complete] .wfc-step__substep-fields {
-	display: none;
+	// display: none;
 }
 
 
@@ -59,7 +62,7 @@
 
 
 .wfc-step__substep-text {
-	display: none;
+	// display: none;
 	padding: $checkout-substep-text-padding;
 	color: $checkout-substep-text-color;
 	font-weight: $checkout-substep-text-font-weight;
