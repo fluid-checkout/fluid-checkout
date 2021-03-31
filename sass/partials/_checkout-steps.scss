@@ -24,7 +24,32 @@
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-title-font-size--large-screen; }
 }
 
-[data-step-complete] .wfc-step__substep-title {
+
+
+
+
+.wfc-step__substep-fields {
+	display: inline-block;
+	padding-top: $global-spacing-extra-small;
+	width: 100%;
+}
+
+
+
+
+
+.wfc-step__substep-text {
+	display: none;
+}
+
+
+
+
+
+/*------------------------------------*\
+	#CHECKOUT LAYOUT MULTI-STEP
+\*------------------------------------*/
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title {
 	position: relative;
 	padding: $checkout-substep-text-padding;
 	color: $checkout-substep-text-color;
@@ -47,22 +72,19 @@
 
 
 
-.wfc-step__substep-fields {
-	display: inline-block;
-	padding-top: $global-spacing-extra-small;
-	width: 100%;
+.has-checkout-layout--multi-step [data-step-current] ~ .wfc-checkout-step {
+	display: none;
 }
 
-[data-step-complete] .wfc-step__substep-fields {
-	// display: none;
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-fields {
+	display: none;
 }
 
 
 
 
-
-.wfc-step__substep-text {
-	// display: none;
+.has-checkout-layout--multi-step .wfc-step__substep-text {
+	display: none;
 	padding: $checkout-substep-text-padding;
 	color: $checkout-substep-text-color;
 	font-weight: $checkout-substep-text-font-weight;
@@ -71,11 +93,33 @@
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-text-font-size--large-screen; }
 }
 
-[data-step-complete] .wfc-step__substep-text {
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-text {
 	display: block;
 }
 
-.wfc-step__substep-text-line {
+.has-checkout-layout--multi-step .wfc-step__substep-text-line {
 	display: block;
 	width: 100%;
+}
+
+
+
+
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title {
+	position: relative;
+	padding: $checkout-substep-text-padding;
+	color: $checkout-substep-text-color;
+
+	&:before {
+		@include icon( 'i-check-small' );
+		@include icon-size( $icon-size-small );
+		
+		position: absolute;
+		left: $checkout-substep-title-check-icon-spacing;
+		top: 50%;
+		transform: translateY( -50% );
+		border-radius: 100%;
+		background-color: $checkout-substep-text-color;
+		color: $white;
+	}
 }

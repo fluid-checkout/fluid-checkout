@@ -376,11 +376,22 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
     .wfc-step__substep-title {
       font-size: 15px; } }
 
-[data-step-complete] .wfc-step__substep-title {
+.wfc-step__substep-fields {
+  display: inline-block;
+  padding-top: 10px;
+  width: 100%; }
+
+.wfc-step__substep-text {
+  display: none; }
+
+/*------------------------------------*\
+	#CHECKOUT LAYOUT MULTI-STEP
+\*------------------------------------*/
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title {
   position: relative;
   padding: 0 0 0 33px;
   color: #888181; }
-  [data-step-complete] .wfc-step__substep-title:before {
+  .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title:before {
     display: inline-block;
     font-family: "fluid-checkout-icons" !important;
     font-style: normal !important;
@@ -404,23 +415,53 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
     background-color: #888181;
     color: #fff; }
 
-.wfc-step__substep-fields {
-  display: inline-block;
-  padding-top: 10px;
-  width: 100%; }
+.has-checkout-layout--multi-step [data-step-current] ~ .wfc-checkout-step {
+  display: none; }
 
-.wfc-step__substep-text {
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-fields {
+  display: none; }
+
+.has-checkout-layout--multi-step .wfc-step__substep-text {
+  display: none;
   padding: 0 0 0 33px;
   color: #888181;
   font-weight: normal;
   font-size: 15px; }
   @media (min-width: 1000px) {
-    .wfc-step__substep-text {
+    .has-checkout-layout--multi-step .wfc-step__substep-text {
       font-size: 15px; } }
 
-[data-step-complete] .wfc-step__substep-text {
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-text {
   display: block; }
 
-.wfc-step__substep-text-line {
+.has-checkout-layout--multi-step .wfc-step__substep-text-line {
   display: block;
   width: 100%; }
+
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title {
+  position: relative;
+  padding: 0 0 0 33px;
+  color: #888181; }
+  .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title:before {
+    display: inline-block;
+    font-family: "fluid-checkout-icons" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: middle;
+    content: "";
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 100%;
+    background-color: #888181;
+    color: #fff; }

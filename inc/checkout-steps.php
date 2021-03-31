@@ -142,7 +142,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get option for hiding the site's original header at the checkout page.
 	 *
-	 * @return  Boolean  True if should hide the site's original header at the checkout page, false otherwise.
+	 * @return  boolean  True if should hide the site's original header at the checkout page, false otherwise.
 	 */
 	public function get_hide_site_header_at_checkout() {
 		// Bail if WooCommerce class not available
@@ -157,7 +157,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get option for hiding the site's original footer at the checkout page.
 	 *
-	 * @return  Boolean  True if should hide the site's original footer at the checkout page, false otherwise.
+	 * @return  boolean  True if should hide the site's original footer at the checkout page, false otherwise.
 	 */
 	public function get_hide_site_footer_at_checkout() {
 		// Bail if WooCommerce class not available
@@ -178,8 +178,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_checkout_layout() {
 		$allowed_values = apply_filters( 'wfc_allowed_checkout_layouts', array( 'multi-step', 'one-page' ) );
-		return get_option( 'wfc_checkout_layout', 'multi-step' );
+		$current_value = get_option( 'wfc_checkout_layout' );
+		$default_value = 'multi-step';
+
+		// Set layout to default value if value not set or not allowed
+		if ( ! in_array( $current_value, $allowed_values ) ) {
+			$current_value = $default_value;
+		}
+
+		return $current_value;
 	}
+
+	/**
+	 * Check if the current checkout layout is set to `multi-step`.
+	 *
+	 * @return  boolean  `true` if the current checkout layout option value is set to `multi-step`, `false` otherwise.
+	 */
+	public function is_checkout_layout_multistep() {
+		return $this->get_checkout_layout() === 'multi-step';
+	}
+
 
 
 
@@ -597,6 +615,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the checkout progress bar.
 	 */
 	public function output_checkout_progress_bar() {
+		// Bail if not multi-step checkout layout
+		if ( ! $this->is_checkout_layout_multistep() ) { return; }
+
 		$_checkout_steps = $this->get_checkout_steps();
 		
 		// Get step count
@@ -772,10 +793,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_step_contact_fields();
 		$this->output_substep_fields_end_tag();
 		
-		$this->output_substep_text_start_tag( $substep_id_contact );
-		$this->output_substep_contact_text();
-		$this->output_substep_text_end_tag();
-
+		// Only output substep text format for multi-step checkout layout
+		if ( $this->is_checkout_layout_multistep() ) {
+			$this->output_substep_text_start_tag( $substep_id_contact );
+			$this->output_substep_contact_text();
+			$this->output_substep_text_end_tag();
+		}
+			
 		$this->output_substep_end_tag();
 	}
 	
@@ -917,40 +941,55 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_shipping_address_fields();
 		$this->output_substep_fields_end_tag();
 
-		$this->output_substep_text_start_tag( $substep_id_shipping_address );
-		$this->output_substep_shipping_address_text();
-		$this->output_substep_text_end_tag();
+		// Only output substep text format for multi-step checkout layout
+		if ( $this->is_checkout_layout_multistep() ) {
+			$this->output_substep_text_start_tag( $substep_id_shipping_address );
+			$this->output_substep_shipping_address_text();
+			$this->output_substep_text_end_tag();
+		}
 
 		$this->output_substep_end_tag();
 	}
 
 	/**
-	 * Output shipping address substep.
+	 * Output shipping method substep.
 	 */
 	public function output_substep_shipping_method() {
 		$substep_id_shipping_method = 'shipping_method';
 		$this->output_substep_start_tag( $substep_id_shipping_method, __( 'Shipping Method', 'woocommerce-fluid-checkout' ) );
+
 		$this->output_substep_fields_start_tag( $substep_id_shipping_method );
 		$this->output_shipping_methods_available();
 		$this->output_substep_fields_end_tag();
-		$this->output_substep_text_start_tag( $substep_id_shipping_method );
-		$this->output_substep_text_shipping_method();
-		$this->output_substep_text_end_tag();
+
+		// Only output substep text format for multi-step checkout layout
+		if ( $this->is_checkout_layout_multistep() ) {
+			$this->output_substep_text_start_tag( $substep_id_shipping_method );
+			$this->output_substep_text_shipping_method();
+			$this->output_substep_text_end_tag();
+		}
+
 		$this->output_substep_end_tag();
 	}
 
 	/**
-	 * Output shipping address substep.
+	 * Output order notes substep.
 	 */
 	public function output_substep_order_notes() {
 		$substep_id_order_notes = 'order_notes';
 		$this->output_substep_start_tag( $substep_id_order_notes, __( 'Additional notes', 'woocommerce-fluid-checkout' ) );
+
 		$this->output_substep_fields_start_tag( $substep_id_order_notes );
 		$this->output_additional_fields();
 		$this->output_substep_fields_end_tag();
-		$this->output_substep_text_start_tag( $substep_id_order_notes );
-		$this->output_substep_text_order_notes();
-		$this->output_substep_text_end_tag();
+
+		// Only output substep text format for multi-step checkout layout
+		if ( $this->is_checkout_layout_multistep() ) {
+			$this->output_substep_text_start_tag( $substep_id_order_notes );
+			$this->output_substep_text_order_notes();
+			$this->output_substep_text_end_tag();
+		}
+
 		$this->output_substep_end_tag();
 	}
 
@@ -1257,9 +1296,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_billing_address_fields();
 		$this->output_substep_fields_end_tag();
 
-		$this->output_substep_text_start_tag( $substep_id_billing_address );
-		$this->output_substep_billing_address_text();
-		$this->output_substep_text_end_tag();
+		// Only output substep text format for multi-step checkout layout
+		if ( $this->is_checkout_layout_multistep() ) {
+			$this->output_substep_text_start_tag( $substep_id_billing_address );
+			$this->output_substep_billing_address_text();
+			$this->output_substep_text_end_tag();
+		}
 
 		$this->output_substep_end_tag();
 	}
