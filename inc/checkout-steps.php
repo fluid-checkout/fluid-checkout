@@ -68,8 +68,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_shipping_methods_fragment' ), 10 );
-		add_action( 'wfc_shipping_methods_before_packages', array( $this, 'output_shipping_methods_start_tag' ), 10 );
-		add_action( 'wfc_shipping_methods_after_packages', array( $this, 'output_shipping_methods_end_tag' ), 10 );
 		
 		// Billing Address
 		add_action( 'wfc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
@@ -1085,25 +1083,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		do_action( 'wfc_shipping_methods_after_packages' );
 
 		return ob_get_clean();
-	}
-
-	/**
-	 * Output shipping methods start tag.
-	 */
-	public function output_shipping_methods_start_tag() {
-		?>
-		<div class="shipping-method__packages">
-			<h3><?php esc_html_e( 'Shipping Methods', 'woocommerce-fluid-checkout' ); ?></h3>
-		<?php
-	}
-
-	/**
-	 * Output shipping methods end tag.
-	 */
-	public function output_shipping_methods_end_tag() {
-		?>
-		</div>
-		<?php
 	}
 
 	/**
