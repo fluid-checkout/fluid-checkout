@@ -186,7 +186,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$current_value = $default_value;
 		}
 
-		return $current_value;
+		return apply_filters( 'wfc_get_checkout_layout', $current_value );
 	}
 
 	/**
@@ -195,7 +195,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  boolean  `true` if the current checkout layout option value is set to `multi-step`, `false` otherwise.
 	 */
 	public function is_checkout_layout_multistep() {
-		return $this->get_checkout_layout() === 'multi-step';
+		return apply_filters( 'wfc_is_checkout_layout_multistep', $this->get_checkout_layout() === 'multi-step' );
 	}
 
 
