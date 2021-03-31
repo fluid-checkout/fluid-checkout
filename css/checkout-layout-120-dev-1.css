@@ -563,6 +563,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   font-size: 15px;
   text-align: right;
   line-height: 1;
+  vertical-align: middle;
   white-space: nowrap; }
 
 .wfc-wrapper .woocommerce-checkout-review-order-table td.product-total {
@@ -595,8 +596,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   left: 10px;
   border: solid 1px #F0F4F4;
   width: 50px !important;
-  height: 50px !important;
-  vertical-align: middle; }
+  height: 50px !important; }
   @media (min-width: 1000px) {
     .wfc-wrapper .woocommerce-checkout-review-order-table .attachment-woocommerce_thumbnail {
       width: 70px !important;

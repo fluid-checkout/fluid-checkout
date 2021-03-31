@@ -58,6 +58,7 @@
 	font-size: $order-summary-font-size;
 	text-align: right;
 	line-height: 1;
+	vertical-align: middle;
 	white-space: nowrap;
 }
 
@@ -99,7 +100,6 @@
 	border: $order-summary-image-border;
 	width: $order-summary-image-width !important; // Needed to override inline styles added by some themes
 	height: $order-summary-image-width !important; // Needed to override inline styles added by some themes
-	vertical-align: middle;
 
 	@media (#{$bp-larger-than-desktop}) {
 		width: $order-summary-image-width--large-screen !important; // Needed to override inline styles added by some themes
