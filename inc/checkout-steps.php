@@ -76,8 +76,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+		add_action( 'wfc_output_step_payment', array( $this, 'output_substep_payment' ), 10 );
 		add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
-		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_payment_step_actions_html' ), 100 );
 		
 		// Order Review
 		add_action( 'wfc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
@@ -104,7 +104,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if not on checkout page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
 
-		$add_classes = array();
+		$add_classes = array( 'has-checkout-layout--' . $this->get_checkout_layout() );
 		
 		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
 		if ( $this->get_hide_site_header_at_checkout() ) {
@@ -167,6 +167,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$checkout = WC()->checkout();
 
 		return ( ! ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) && 'true' === get_option( 'wfc_hide_site_footer_at_checkout', 'true' );
+	}
+
+
+
+	/**
+	 * Get the current checkout layout value.
+	 *
+	 * @return  string  The name of the currently selected checkout layout option. Defaults to `multi-step`.
+	 */
+	public function get_checkout_layout() {
+		$allowed_values = apply_filters( 'wfc_allowed_checkout_layouts', array( 'multi-step', 'one-page' ) );
+		return get_option( 'wfc_checkout_layout', 'multi-step' );
 	}
 
 
@@ -779,7 +791,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'checkout'			=> WC()->checkout(),
 				'display_fields'	=> $this->get_contact_step_display_fields(),
 				'user_data'			=> $this->get_user_data(),
-				'has_required_contact_data' => $has_required_contact_data,
 			)
 		);
 	}
@@ -1226,8 +1237,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 
 
-	 /**
-	 * Output shipping step.
+	/**
+	 * Output billing step.
 	 */
 	public function output_step_billing() {
 		do_action( 'wfc_output_step_billing' );
@@ -1280,7 +1291,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_billing_address_text() {
 		$checkout = WC()->checkout();
-		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_company' ) . '</span>';
+		$text_html = '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_company' ) . '</span>';
 		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_address_1' ) . '</span>';
 		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_address_2' ) . '</span>';
 		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_city' ) . '</span>';
@@ -1331,43 +1342,40 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output step: Payment.
+	 * Output payment step.
 	 */
 	public function output_step_payment() {
-		echo '<div class="wfc-step__content" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">PAYMENT STEP</div>';
-		
-		// wc_get_template(
-		// 	'checkout/form-payment.php',
-		// 	array(
-		// 		'checkout'          => WC()->checkout(),
-		// 	)
-		// );
+		do_action( 'wfc_output_step_payment' );
+	}
+	
+
+
+	/**
+	 * Output billing address substep.
+	 */
+	public function output_substep_payment() {
+		$substep_id_payment = 'payment';
+		$this->output_substep_start_tag( $substep_id_payment, __( 'Payment', 'woocommerce-fluid-checkout' ) );
+
+		$this->output_substep_fields_start_tag( $substep_id_payment );
+		$this->output_substep_payment_fields();
+		$this->output_substep_fields_end_tag();
+
+		$this->output_substep_end_tag();
 	}
 
 
 
 	/**
-	 * Return html for payment step actions.
+	 * Output billing address fields, except those already added at the contact step.
 	 */
-	public function get_payment_step_actions_html() {
-		$actions_html = '<div class="wfc-actions"><button class="wfc-prev">' . _x( 'Back', 'Previous step button', 'woocommerce-fluid-checkout' ) . '</button></div>';
-		return apply_filters( 'wfc_payment_step_actions_html', $actions_html, null );
-	}
-
-	/**
-	 * Output payment step actions.
-	 */
-	public function output_payment_step_actions_html() {
-		echo $this->get_payment_step_actions_html();
-	}
-
-	/**
-	 * Output billing step section title.
-	 */
-	public function output_billing_address_step_section_title() {
-		?>
-		<h3 class="wfc-checkout-step-title"><?php echo esc_html( apply_filters( 'wfc_checkout_billing_step_section_title', __( 'Billing Address', 'woocommerce-fluid-checkout' ) ) ); ?></h3>
-		<?php
+	public function output_substep_payment_fields() {
+		wc_get_template(
+			'checkout/form-payment.php',
+			array(
+				'checkout'          => WC()->checkout(),
+			)
+		);
 	}
 
 
