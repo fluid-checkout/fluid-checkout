@@ -54,10 +54,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_after', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
 
+		// Contact
+		add_action( 'wfc_output_step_contact', array( $this, 'output_substep_contact' ), 10 );
+
 		// Account creation
 		add_action( 'wfc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
 
 		// Shipping
+		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
+		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
+		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_order_notes' ), 100 );
 		add_action( 'wfc_cart_totals_shipping', array( $this, 'output_cart_totals_shipping_section' ), 10 );
 		add_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
@@ -744,7 +750,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output contact step.
 	 */
 	public function output_step_contact() {
-		// Contact substep
+		do_action( 'wfc_output_step_contact' );
+	}
+
+	/**
+	 * Output contact substep.
+	 */
+	public function output_substep_contact() {
 		$substep_id_contact = 'contact';
 		$this->output_substep_start_tag( $substep_id_contact, __( 'My contact', 'woocommerce-fluid-checkout' ) );
 		
@@ -753,7 +765,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_fields_end_tag();
 		
 		$this->output_substep_text_start_tag( $substep_id_contact );
-		$this->output_substep_text_contact();
+		$this->output_substep_contact_text();
 		$this->output_substep_text_end_tag();
 
 		$this->output_substep_end_tag();
@@ -780,11 +792,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output contact substep in text format for when the step is complete.
 	 */
-	public function output_substep_text_contact() {
+	public function output_substep_contact_text() {
 		$checkout = WC()->checkout();
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_email' ) . '</span>';
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_first_name' ) . ' ' . $checkout->get_value( 'billing_last_name' ) . '</span>';
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_phone' ) . '</span>';
+		$text_html = '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_email' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_first_name' ) . ' ' . $checkout->get_value( 'billing_last_name' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_phone' ) . '</span>';
+
+		echo apply_filters( 'wfc_substep_contact_text', $text_html );
 	}
 
 
@@ -866,15 +880,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $user_data;
 	}
 
-	/**
-	 * Output contact step section title.
-	 */
-	public function output_contact_step_section_title() {
-		?>
-		<h3 class="wfc-checkout-step-title"><?php echo esc_html( apply_filters( 'wfc_checkout_contact_step_section_title', __( 'Contact details', 'woocommerce-fluid-checkout' ) ) ); ?></h3>
-		<?php
-	}
-
 
 
 
@@ -889,18 +894,31 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output shipping step.
 	 */
 	public function output_step_shipping() {
-		// Shipping Address substep
+		do_action( 'wfc_output_step_shipping' );
+	}
+
+	/**
+	 * Output shipping address substep.
+	 */
+	public function output_substep_shipping_address() {
 		$substep_id_shipping_address = 'shipping_address';
 		$this->output_substep_start_tag( $substep_id_shipping_address, __( 'Shipping Address', 'woocommerce-fluid-checkout' ) );
+
 		$this->output_substep_fields_start_tag( $substep_id_shipping_address );
 		$this->output_step_shipping_address_fields();
 		$this->output_substep_fields_end_tag();
-		$this->output_substep_text_start_tag( $substep_id_shipping_address );
-		$this->output_substep_text_shipping_address();
-		$this->output_substep_text_end_tag();
-		$this->output_substep_end_tag();
 
-		// Shipping Method substep
+		$this->output_substep_text_start_tag( $substep_id_shipping_address );
+		$this->output_substep_shipping_address_text();
+		$this->output_substep_text_end_tag();
+
+		$this->output_substep_end_tag();
+	}
+
+	/**
+	 * Output shipping address substep.
+	 */
+	public function output_substep_shipping_method() {
 		$substep_id_shipping_method = 'shipping_method';
 		$this->output_substep_start_tag( $substep_id_shipping_method, __( 'Shipping Method', 'woocommerce-fluid-checkout' ) );
 		$this->output_substep_fields_start_tag( $substep_id_shipping_method );
@@ -910,11 +928,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_text_shipping_method();
 		$this->output_substep_text_end_tag();
 		$this->output_substep_end_tag();
+	}
 
-		// TODO: ADD ACTION TO STEP OUTPUT FUNCTIONS TO ALLOW FOR CHANGES
-		// TODO: ADD GIFT OPTIONS FIELDS BETWEEN SHIPPING METHOD AND ORDER NOTES
-
-		// Additional Order Notes
+	/**
+	 * Output shipping address substep.
+	 */
+	public function output_substep_order_notes() {
 		$substep_id_order_notes = 'order_notes';
 		$this->output_substep_start_tag( $substep_id_order_notes, __( 'Additional notes', 'woocommerce-fluid-checkout' ) );
 		$this->output_substep_fields_start_tag( $substep_id_order_notes );
@@ -945,17 +964,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output contact substep in text format for when the step is complete.
 	 */
-	public function output_substep_text_shipping_address() {
+	public function output_substep_shipping_address_text() {
 		$checkout = WC()->checkout();
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_first_name' ) . '' . $checkout->get_value( 'shipping_last_name' ) . '</span>';
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_phone' ) . '</span>';
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_company' ) . '</span>';
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_address_1' ) . '</span>';
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_address_2' ) . '</span>';
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_city' ) . '</span>';
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_state' ) . '</span>';
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_country' ) . '</span>';
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_postcode' ) . '</span>';
+		$text_html = '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_first_name' ) . '' . $checkout->get_value( 'shipping_last_name' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_phone' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_company' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_address_1' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_address_2' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_city' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_state' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_country' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_postcode' ) . '</span>';
+
+		echo apply_filters( 'wfc_substep_shipping_address_text', $text_html );
 	}
 
 
