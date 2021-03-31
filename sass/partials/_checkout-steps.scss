@@ -123,3 +123,22 @@
 		color: $white;
 	}
 }
+
+
+
+
+
+/*------------------------------------*\
+	#CHECKOUT LAYOUT MULTI-STEP
+\*------------------------------------*/
+.wfc-sidebar .wfc-checkout-order-review {
+	@media (#{$bp-smaller-than-desktop}) {
+		display: none;
+	}
+}
+
+.wfc-checkout-step[data-step-id="payment"] .wfc-checkout-order-review {
+	@media (#{$bp-larger-than-desktop}) {
+		display: none;
+	}
+}

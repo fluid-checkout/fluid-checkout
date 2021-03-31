@@ -229,6 +229,9 @@ $icons: (
 // ----------------------------------------
 // CHECKOUT HEADER
 
+$checkout-header-background-color:         $white !default;
+$checkout-header-box-shadow:               0 remsize( .2rem ) remsize( 1rem ) rgba( 0, 0, 0, .05 ) !default;
+
 $checkout-header-height:                   remsize( 6rem ) !default;
 $checkout-header-height--large-screen:     remsize( 10rem ) !default;
 

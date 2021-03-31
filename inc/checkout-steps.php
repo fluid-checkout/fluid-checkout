@@ -74,13 +74,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
-		add_action( 'wfc_output_step_payment', array( $this, 'output_substep_payment' ), 100 );
 		add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
+		add_action( 'wfc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
+		add_action( 'wfc_output_step_payment', array( $this, 'output_order_review' ), 90 );
+		add_action( 'wfc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100 );
 		
 		// Order Review
 		add_action( 'wfc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		add_action( 'wfc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
-		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_checkout_place_order' ), 30 );
 		
 		// Order Received (default functionality)
 		add_action( 'wfc_order_received_failed', array( $this, 'output_order_received_failed_template' ), 10 );
@@ -1331,8 +1332,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_order_review_wrapper() {
 		?>
-		<div class="wfc-checkout-order-review__wrapper">
-			<div class="wfc-checkout-order-review__inner">
+		<div class="wfc-sidebar">
+			<div class="wfc-sidebar__inner">
 				<?php do_action( 'wfc_checkout_order_review_section' ); ?>
 			</div>
 		</div>
@@ -1375,7 +1376,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Maybe output the shipping methods chosen for order review section.
 	 */
 	public function maybe_output_order_review_shipping_method_chosen() {
-		// Bail if not checkout page
+		// Bail if not on checkout or cart page
 		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() ) ) { return; }
 
 		$packages = WC()->shipping()->get_packages();
