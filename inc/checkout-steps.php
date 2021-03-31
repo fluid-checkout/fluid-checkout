@@ -67,20 +67,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_cart_totals_shipping', array( $this, 'output_cart_totals_shipping_section' ), 10 );
 		add_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
-		// add_action( 'wfc_checkout_after_step_shipping_fields', array( $this, 'output_shipping_methods_available' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_shipping_methods_fragment' ), 10 );
 		add_action( 'wfc_shipping_methods_before_packages', array( $this, 'output_shipping_methods_start_tag' ), 10 );
 		add_action( 'wfc_shipping_methods_after_packages', array( $this, 'output_shipping_methods_end_tag' ), 10 );
-
-		// Additional Information
-		// add_action( 'wfc_checkout_after_step_shipping_fields', array( $this, 'maybe_output_additional_fields_shipping_step' ), 50 );
-		// add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'maybe_output_additional_fields_payment_step' ), 50 );
+		
+		// Billing Address
+		add_action( 'wfc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
 
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
-		add_action( 'wfc_checkout_before_step_billing_fields', array( $this, 'output_billing_address_step_section_title' ), 10 );
-		add_action( 'wfc_checkout_before_step_payment_fields', array( $this, 'output_billing_fields' ), 20 );
 		add_action( 'wfc_checkout_after_step_payment_fields', array( $this, 'output_payment_step_actions_html' ), 100 );
 		
 		// Order Review
@@ -804,12 +800,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Determines if all required data for the the contact step has been provided.
+	 * Determines if all required data for the contact step has been provided.
 	 *
 	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
 	 */
 	public function is_step_complete_contact() {
 		$checkout = WC()->checkout();
+		$is_step_complete = true;
 
 		// Check required data
 		$fields = $checkout->get_checkout_fields( 'billing' );
@@ -818,11 +815,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach ( $contact_display_field_keys as $field_key ) {
 			$field = array_key_exists( $field_key, $fields ) ? $fields[ $field_key ] : array();
 			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
-				return false;
+				$is_step_complete = false;
+				break;
 			}
 		}
 
-		return true;
+		return apply_filters( 'wfc_is_step_complete_contact', $is_step_complete );
 	}
 
 
@@ -905,7 +903,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_start_tag( $substep_id_shipping_address, __( 'Shipping Address', 'woocommerce-fluid-checkout' ) );
 
 		$this->output_substep_fields_start_tag( $substep_id_shipping_address );
-		$this->output_step_shipping_address_fields();
+		$this->output_substep_shipping_address_fields();
 		$this->output_substep_fields_end_tag();
 
 		$this->output_substep_text_start_tag( $substep_id_shipping_address );
@@ -950,7 +948,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output shipping step fields.
 	 */
-	public function output_step_shipping_address_fields() {
+	public function output_substep_shipping_address_fields() {
 		wc_get_template(
 			'checkout/form-shipping.php',
 			array(
@@ -962,7 +960,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output contact substep in text format for when the step is complete.
+	 * Output shipping address substep in text format for when the step is complete.
 	 */
 	public function output_substep_shipping_address_text() {
 		$checkout = WC()->checkout();
@@ -982,17 +980,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output contact substep in text format for when the step is complete.
-	 */
-	public function output_substep_text_order_notes() {
-		$checkout = WC()->checkout();
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'order_notes' ) . '</span>';
-	}
-
-
-
-	/**
-	 * Output contact substep in text format for when the step is complete.
+	 * Output shipping method substep in text format for when the step is complete.
 	 */
 	public function output_substep_text_shipping_method() {
 		$packages = WC()->shipping()->get_packages();
@@ -1011,18 +999,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Determines if all required data for the the shipping step has been provided.
+	 * Output order notes substep in text format for when the step is complete.
+	 */
+	public function output_substep_text_order_notes() {
+		$checkout = WC()->checkout();
+		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'order_notes' ) . '</span>';
+	}
+
+
+
+	/**
+	 * Determines if all required data for the shipping step has been provided.
 	 *
 	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
 	 */
 	public function is_step_complete_shipping() {
 		$checkout = WC()->checkout();
+		$is_step_complete = true;
 
 		// Check required data for shipping address
 		$fields = $checkout->get_checkout_fields( 'shipping' );
 		foreach ( $fields as $field_key => $field ) {
 			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
-				return false;
+				$is_step_complete = false;
+				break;
 			}
 		}
 
@@ -1032,11 +1032,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$available_methods = $package['rates'];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			if ( ! $chosen_method || empty( $chosen_method ) ) {
-				return false;
+				$is_step_complete = false;
+				break;
 			}
 		}
 
-		return true;
+		return apply_filters( 'wfc_is_step_complete_shipping', $is_step_complete );
 	}
 
 
@@ -1216,55 +1217,107 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 	}
 
+
+
+
+
 	/**
-	 * Output order additional fields.
+	 * Checkout step: Billing.
 	 */
-	public function maybe_output_additional_fields_shipping_step() {
-		// Bail if shipping not needed
-		if ( ! WC()->cart->needs_shipping() ) { return; }
-
-		$this->output_additional_fields();
-	}
-
-	/**
-	 * Output order additional fields.
-	 */
-	public function maybe_output_additional_fields_payment_step() {
-		// Bail if shipping is needed
-		if ( WC()->cart->needs_shipping() ) { return; }
-
-		$this->output_additional_fields();
-	}
 
 
-
-
-
-	/**
-	 * Output step: Billing.
+	 /**
+	 * Output shipping step.
 	 */
 	public function output_step_billing() {
-		echo '<div class="wfc-step__content" style="margin: 20px 0; padding: 5px 10px; background-color: #f3f3f3; text-align: center;">BILLING STEP</div>';
+		do_action( 'wfc_output_step_billing' );
+	}
+	
 
-		// wc_get_template(
-		// 	'checkout/form-billing.php',
-		// 	array(
-		// 		'checkout'          => WC()->checkout(),
-		// 	)
-		// );
 
-		// do_action( 'woocommerce_checkout_after_customer_details' );
+	/**
+	 * Output billing address substep.
+	 */
+	public function output_substep_billing_address() {
+		$substep_id_billing_address = 'billing_address';
+		$this->output_substep_start_tag( $substep_id_billing_address, __( 'Billing Address', 'woocommerce-fluid-checkout' ) );
+
+		$this->output_substep_fields_start_tag( $substep_id_billing_address );
+		$this->output_substep_billing_address_fields();
+		$this->output_substep_fields_end_tag();
+
+		$this->output_substep_text_start_tag( $substep_id_billing_address );
+		$this->output_substep_billing_address_text();
+		$this->output_substep_text_end_tag();
+
+		$this->output_substep_end_tag();
 	}
 
 
 
 	/**
-	 * Determines if all required data for the the contact step has been provided.
+	 * Output billing address fields, except those already added at the contact step.
+	 */
+	public function output_substep_billing_address_fields() {
+
+		do_action( 'wfc_checkout_before_step_billing_fields' );
+
+		wc_get_template(
+			'checkout/form-billing.php',
+			array(
+				'checkout'			=> WC()->checkout(),
+				'ignore_fields'		=> $this->get_contact_step_display_fields(),
+			)
+		);
+
+		do_action( 'wfc_checkout_after_step_billing_fields' );
+	}
+
+
+
+	/**
+	 * Output billing address substep in text format for when the step is complete.
+	 */
+	public function output_substep_billing_address_text() {
+		$checkout = WC()->checkout();
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_company' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_address_1' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_address_2' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_city' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_state' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_country' ) . '</span>';
+		$text_html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_postcode' ) . '</span>';
+
+		echo apply_filters( 'wfc_substep_billing_address_text', $text_html );
+	}
+
+
+
+	/**
+	 * Determines if all required data for the billing step has been provided.
 	 *
 	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
 	 */
 	public function is_step_complete_billing() {
-		return false;
+		$checkout = WC()->checkout();
+		$is_step_complete = true;
+
+		// Get billing fields moved to contact step
+		$contact_display_field_keys = $this->get_contact_step_display_fields();
+
+		// Check required data for billing address
+		$fields = $checkout->get_checkout_fields( 'billing' );
+		foreach ( $fields as $field_key => $field ) {
+			// Skip billing fields moved to contact step
+			if ( in_array( $field_key, $contact_display_field_keys ) ) { continue; }
+
+			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
+				$is_step_complete = false;
+				break;
+			}
+		}
+
+		return apply_filters( 'wfc_is_step_complete_billing', $is_step_complete );
 	}
 
 
@@ -1315,25 +1368,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		?>
 		<h3 class="wfc-checkout-step-title"><?php echo esc_html( apply_filters( 'wfc_checkout_billing_step_section_title', __( 'Billing Address', 'woocommerce-fluid-checkout' ) ) ); ?></h3>
 		<?php
-	}
-
-	/**
-	 * Output billing fields except those already added at contact step.
-	 */
-	public function output_billing_fields() {
-
-		do_action( 'wfc_checkout_before_step_billing_fields' );
-
-		wc_get_template(
-			'checkout/form-billing.php',
-			array(
-				'checkout'			=> WC()->checkout(),
-				'ignore_fields'		=> $this->get_contact_step_display_fields(),
-			)
-		);
-
-		do_action( 'wfc_checkout_after_step_billing_fields' );
-
 	}
 
 
