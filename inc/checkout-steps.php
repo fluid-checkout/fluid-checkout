@@ -81,8 +81,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		
 		// Order Review
 		add_action( 'wfc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
-		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_checkout_place_order' ), 30 );
 		add_action( 'wfc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
+		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_checkout_place_order' ), 30 );
 		
 		// Order Received (default functionality)
 		add_action( 'wfc_order_received_failed', array( $this, 'output_order_received_failed_template' ), 10 );
@@ -201,100 +201,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 
-	/**
-	 * Output order review section wrapper.
-	 */
-	public function output_checkout_order_review_wrapper() {
-		?>
-		<div class="wfc-checkout-order-review__wrapper">
-			<div class="wfc-checkout-order-review__inner">
-				<?php echo '<div style="margin: 20px 0; padding: 5px 10px; background-color: white; text-align: center;">ORDER REVIEW SECTION</div>'; ?>
-				<?php // do_action( 'wfc_checkout_order_review_section' ); ?>
-			</div>
-		</div>
-		<?php
-	}
-
-
 
 	/**
-	 * Output Order Review.
-	 */
-	public function output_order_review() {
-		wc_get_template(
-			'checkout/review-order-section.php',
-			array(
-				'checkout'           => WC()->checkout(),
-				'order_review_title' => apply_filters( 'wfc_order_review_title', __( 'Your order', 'woocommerce' ) ),
-			)
-		);
-	}
-
-
-
-	/**
-	 * Output checkout place order button.
-	 */
-	public function output_checkout_place_order() {
-		wc_get_template(
-			'checkout/place-order.php',
-			array(
-				'checkout'           => WC()->checkout(),
-				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
-			)
-		);
-	}
-
-
-
-	/**
-	 * Maybe output the shipping methods chosen for order review section.
-	 */
-	public function maybe_output_order_review_shipping_method_chosen() {
-		// Bail if not checkout page
-		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() ) ) { return; }
-
-		$packages = WC()->shipping()->get_packages();
-		$first    = true;
-
-		foreach ( $packages as $i => $package ) {
-			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
-			$product_names = array();
-
-			if ( count( $packages ) > 1 ) {
-				foreach ( $package['contents'] as $item_id => $values ) {
-					$product_names[ $item_id ] = $values['data']->get_name() . ' &times;' . $values['quantity'];
-				}
-				$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
-			}
-
-			wc_get_template(
-				'checkout/review-order-shipping.php',
-				array(
-					'package'                  => $package,
-					'available_methods'        => $package['rates'],
-					'show_package_details'     => count( $packages ) > 1,
-					'show_shipping_calculator' => is_cart() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $i, $package ),
-					'package_details'          => implode( ', ', $product_names ),
-					/* translators: %d: shipping package number */
-					'package_name'             => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
-					'index'                    => $i,
-					'chosen_method'            => $chosen_method,
-					'formatted_destination'    => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
-					'has_calculated_shipping'  => WC()->customer->has_calculated_shipping(),
-				)
-			);
-
-			$first = false;
-		}
-	}
-
-
-
-
-
-	/**
-	 * Checkout Header
+	 * Checkout Header.
 	 */
 
 
@@ -335,7 +244,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Checkout Steps
+	 * Checkout Steps.
 	 */
 
 
@@ -1039,8 +948,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$available_methods = $package['rates'];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
-			$package_name = apply_filters( 'woocommerce_shipping_package_name', sprintf( _nx( 'Shipping', 'Shipping %d', ( $i + 1 ), 'shipping packages', 'woocommerce' ), ( $i + 1 ) ), $i, $package );
 			$chosen_method_label = wc_cart_totals_shipping_method_label( $method );
+			
+			// TODO: Maybe handle multiple packages
+			// $package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
 
 			echo '<span class="wfc-step__substep-text-line">' . $chosen_method_label . '</span>';
 		}
@@ -1424,6 +1335,125 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * END - Checkout Steps.
+	 */
+
+
+
+
+
+	/**
+	 * Order Review.
+	 */
+
+
+
+	/**
+	 * Output order review section wrapper.
+	 */
+	public function output_checkout_order_review_wrapper() {
+		?>
+		<div class="wfc-checkout-order-review__wrapper">
+			<div class="wfc-checkout-order-review__inner">
+				<?php do_action( 'wfc_checkout_order_review_section' ); ?>
+			</div>
+		</div>
+		<?php
+	}
+
+
+
+	/**
+	 * Output Order Review.
+	 */
+	public function output_order_review() {
+		wc_get_template(
+			'checkout/review-order-section.php',
+			array(
+				'checkout'           => WC()->checkout(),
+				'order_review_title' => apply_filters( 'wfc_order_review_title', __( 'Your order', 'woocommerce' ) ),
+			)
+		);
+	}
+
+
+
+	/**
+	 * Output checkout place order button.
+	 */
+	public function output_checkout_place_order() {
+		wc_get_template(
+			'checkout/place-order.php',
+			array(
+				'checkout'           => WC()->checkout(),
+				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
+			)
+		);
+	}
+
+
+
+	/**
+	 * Maybe output the shipping methods chosen for order review section.
+	 */
+	public function maybe_output_order_review_shipping_method_chosen() {
+		// Bail if not checkout page
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() ) ) { return; }
+
+		$packages = WC()->shipping()->get_packages();
+		$first    = true;
+
+		foreach ( $packages as $i => $package ) {
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			$product_names = array();
+
+			if ( count( $packages ) > 1 ) {
+				foreach ( $package['contents'] as $item_id => $values ) {
+					$product_names[ $item_id ] = $values['data']->get_name() . ' &times;' . $values['quantity'];
+				}
+				$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
+			}
+
+			wc_get_template(
+				'checkout/review-order-shipping.php',
+				array(
+					'package'                  => $package,
+					'available_methods'        => $package['rates'],
+					'show_package_details'     => count( $packages ) > 1,
+					'show_shipping_calculator' => is_cart() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $i, $package ),
+					'package_details'          => implode( ', ', $product_names ),
+					'package_name'             => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
+					'index'                    => $i,
+					'chosen_method'            => $chosen_method,
+					'formatted_destination'    => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
+					'has_calculated_shipping'  => WC()->customer->has_calculated_shipping(),
+				)
+			);
+
+			$first = false;
+		}
+	}
+
+
+	/**
+	 * Get shipping method label with only the cost, removing the label of the shipping method chosen.
+	 *
+	 * @param  WC_Shipping_Rate $method Shipping method rate data.
+	 *
+	 * @return  string                  Shipping method label with only the cost.
+	 */
+	public function get_cart_totals_shipping_method_label( $method ) {
+		$method_label = $method->get_label();
+		
+		// Remove the shipping method label, leaving only the cost
+		$shipping_total_label = str_replace( $method_label.': ', '', wc_cart_totals_shipping_method_label( $method ) );
+
+		return $shipping_total_label;
+	}
+
+
+
+	/**
+	 * END - Order Review.
 	 */
 
 
