@@ -33,6 +33,7 @@ defined( 'ABSPATH' ) || exit;
 		</div>
 
 		<div class="wfc-checkout__cart-link-wrapper">
+			<?php do_action( 'wfc_checkout_header_cart_link' ); ?>
 			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link"><?php wc_cart_totals_order_total_html(); ?></a>
 		</div>
 

@@ -41,8 +41,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
 		// Checkout Header
-		// Uses `woocommerce_before_checkout_form_cart_notices` because it runs before the hook `woocommerce_before_checkout_form`
-		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_header' ), 1 );
+		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_header' ), 1 ); // Uses `woocommerce_before_checkout_form_cart_notices` as it runs before the hook `woocommerce_before_checkout_form`
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
 		
 		// Notices
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
@@ -236,6 +236,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 		?>
 		</div>
 		<?php
+	}
+
+	
+	public function output_checkout_header_cart_link() {
+		?>
+		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link"><?php wc_cart_totals_order_total_html(); ?></a>
+		<?php
+	}
+
+	public function get_checkout_header_cart_link() {
+		ob_start();
+		$this->output_checkout_header_cart_link();
+		return ob_get_clean();
+	}
+
+	/**
+	 * Add order review dropdown button order total as checkout fragment.
+	 * 
+	 * @param array $fragments Checkout fragments.
+	 */
+	public function add_checkout_header_cart_link_fragment( $fragments ) {
+		$cart_link_html = $this->get_checkout_header_cart_link();
+		$fragments['.wfc-checkout__cart-link'] = $cart_link_html;
+		return $fragments;
 	}
 
 
