@@ -568,6 +568,9 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 .wfc-wrapper .woocommerce-checkout-review-order-table td.product-total {
   padding-top: 27.5px;
   vertical-align: top; }
+  @media (min-width: 1000px) {
+    .wfc-wrapper .woocommerce-checkout-review-order-table td.product-total {
+      padding-top: 37.5px; } }
 
 .wfc-wrapper .woocommerce-checkout-review-order-table .product-name {
   width: 70%;
@@ -577,33 +580,33 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   position: relative;
   display: inline-flex;
   align-items: center;
-  padding-left: 60px;
+  padding-left: 70px;
   min-height: 70px;
   width: 100%;
   background-color: transparent; }
   @media (min-width: 1000px) {
     .wfc-wrapper .woocommerce-checkout-review-order-table td.product-name {
       padding-left: 90px;
-      min-height: 100px; } }
+      min-height: 90px; } }
 
 .wfc-wrapper .woocommerce-checkout-review-order-table .attachment-woocommerce_thumbnail {
   position: absolute;
   top: 10px;
-  left: 0;
+  left: 10px;
   border: solid 1px #F0F4F4;
   width: 50px !important;
   height: 50px !important;
   vertical-align: middle; }
   @media (min-width: 1000px) {
     .wfc-wrapper .woocommerce-checkout-review-order-table .attachment-woocommerce_thumbnail {
-      width: 80px !important;
-      height: 80px !important; } }
+      width: 70px !important;
+      height: 70px !important; } }
 
 .wfc-wrapper .woocommerce-checkout-review-order-table .product-quantity {
   z-index: 10;
   position: absolute;
   top: 10px;
-  left: 55px;
+  left: 65px;
   transform: translateX(-100%) translateY(-25%);
   display: block;
   padding: 1px 6px 2px 5px;
@@ -613,7 +616,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   font-size: 13px;
   font-weight: normal;
   line-height: 1;
-  letter-spacing: -0.5px; }
+  letter-spacing: 0; }
   @media (min-width: 1000px) {
     .wfc-wrapper .woocommerce-checkout-review-order-table .product-quantity {
       left: 85px; } }
