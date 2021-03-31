@@ -315,3 +315,28 @@ $checkout-substep-text-font-weight:              normal !default;
 
 // END - CHECKOUT STEPS
 // ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// ORDER SUMMARY
+
+$order-summary-cell-padding-vertical:       $global-spacing-extra-small !default;
+$order-summary-cell-padding-horizontal:     $global-spacing-extra-small !default;
+$order-summary-cell-border:                 solid remsize( .1rem ) $border-color !default;
+
+$order-summary-image-width:                 remsize( 5rem ) !default;
+$order-summary-image-width--large-screen:   remsize( 8rem ) !default;
+$order-summary-image-border:                solid remsize( .1rem ) $border-light-color !default;
+
+$order-summary-quantity-background-color:   $dark-grey !default;
+$order-summary-quantity-text-color:         $white !default;
+$order-summary-quantity-font-size:          $font-size-extra-small !default;
+
+$order-summary-font-size:                   $font-size-small !default;
+$order-summary-font-size--large-screen:     $font-size-small--large-screen !default;
+
+// END - ORDER SUMMARY
+// ----------------------------------------

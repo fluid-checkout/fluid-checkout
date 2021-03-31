@@ -153,7 +153,8 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
     .wfc-checkout-header {
       position: static;
       min-height: 100px;
-      box-shadow: none; } }
+      box-shadow: none;
+      background-color: transparent; } }
 
 .admin-bar .wfc-checkout-header {
   top: 46px; }
@@ -515,3 +516,118 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 @media (min-width: 1000px) {
   .wfc-checkout-step[data-step-id="payment"] .wfc-checkout-order-review {
     display: none; } }
+
+/*------------------------------------*\
+	#ORDER SUMMARY
+\*------------------------------------*/
+.wfc-wrapper .wfc-checkout-order-review {
+  padding-top: 30px;
+  padding-bottom: 30px; }
+
+.wfc-wrapper .wfc-checkout-order-review-title {
+  text-align: center; }
+
+.wfc-wrapper .woocommerce-checkout-review-order-table {
+  width: 100%;
+  border: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 15px; }
+  @media (min-width: 1000px) {
+    .wfc-wrapper .woocommerce-checkout-review-order-table {
+      font-size: 15px; } }
+
+.wfc-wrapper .woocommerce-checkout-review-order-table th,
+.wfc-wrapper .woocommerce-checkout-review-order-table td,
+.wfc-wrapper .woocommerce-checkout-review-order-table tr:first-child th,
+.wfc-wrapper .woocommerce-checkout-review-order-table tr:first-child td {
+  border-top: 0;
+  border-bottom: 0; }
+
+.wfc-wrapper .woocommerce-checkout-review-order-table tr {
+  border-bottom: solid 1px #D6D8D8; }
+
+.wfc-wrapper .woocommerce-checkout-review-order-table tr:first-child {
+  border-top: solid 1px #D6D8D8; }
+
+.wfc-wrapper .woocommerce-checkout-review-order-table th,
+.wfc-wrapper .woocommerce-checkout-review-order-table td {
+  padding: 10px 10px;
+  background-color: transparent; }
+
+.wfc-wrapper .woocommerce-checkout-review-order-table tfoot th {
+  text-align: left; }
+
+.wfc-wrapper .woocommerce-checkout-review-order-table .product-total,
+.wfc-wrapper .woocommerce-checkout-review-order-table tfoot td {
+  font-size: 15px;
+  text-align: right;
+  line-height: 1;
+  white-space: nowrap; }
+
+.wfc-wrapper .woocommerce-checkout-review-order-table td.product-total {
+  padding-top: 27.5px;
+  vertical-align: top; }
+
+.wfc-wrapper .woocommerce-checkout-review-order-table .product-name {
+  width: 70%;
+  min-width: 180px; }
+
+.wfc-wrapper .woocommerce-checkout-review-order-table td.product-name {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-left: 60px;
+  min-height: 70px;
+  width: 100%;
+  background-color: transparent; }
+  @media (min-width: 1000px) {
+    .wfc-wrapper .woocommerce-checkout-review-order-table td.product-name {
+      padding-left: 90px;
+      min-height: 100px; } }
+
+.wfc-wrapper .woocommerce-checkout-review-order-table .attachment-woocommerce_thumbnail {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  border: solid 1px #F0F4F4;
+  width: 50px !important;
+  height: 50px !important;
+  vertical-align: middle; }
+  @media (min-width: 1000px) {
+    .wfc-wrapper .woocommerce-checkout-review-order-table .attachment-woocommerce_thumbnail {
+      width: 80px !important;
+      height: 80px !important; } }
+
+.wfc-wrapper .woocommerce-checkout-review-order-table .product-quantity {
+  z-index: 10;
+  position: absolute;
+  top: 10px;
+  left: 55px;
+  transform: translateX(-100%) translateY(-25%);
+  display: block;
+  padding: 1px 6px 2px 5px;
+  border-radius: 8.5px;
+  background-color: #535156;
+  color: #fff;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: -0.5px; }
+  @media (min-width: 1000px) {
+    .wfc-wrapper .woocommerce-checkout-review-order-table .product-quantity {
+      left: 85px; } }
+
+.wfc-wrapper .woocommerce-checkout-review-order-table td.product-total {
+  background-color: transparent; }
+
+/*------------------------------------*\
+	#THEME SUPPORT
+\*------------------------------------*/
+.wfc-wrapper .wfc-checkout-order-review #order_review {
+  float: none;
+  width: 100%;
+  background-color: transparent; }
+
+.woocommerce-checkout form .wfc-wrapper #order_review .woocommerce-checkout-review-order-table tbody::after {
+  display: none; }

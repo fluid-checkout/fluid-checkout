@@ -1,0 +1,152 @@
+/*------------------------------------*\
+	#ORDER SUMMARY
+\*------------------------------------*/
+.wfc-wrapper .wfc-checkout-order-review {
+	padding-top: $global-spacing;
+	padding-bottom: $global-spacing;
+}
+
+
+
+
+
+.wfc-wrapper .wfc-checkout-order-review-title {
+	text-align: center;
+}
+
+
+
+
+
+.wfc-wrapper .woocommerce-checkout-review-order-table {
+	width: 100%;
+	border: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: $order-summary-font-size;
+
+	@media (#{$bp-larger-than-desktop}) { font-size: $order-summary-font-size--large-screen; }
+}
+
+.wfc-wrapper .woocommerce-checkout-review-order-table th,
+.wfc-wrapper .woocommerce-checkout-review-order-table td,
+.wfc-wrapper .woocommerce-checkout-review-order-table tr:first-child th,
+.wfc-wrapper .woocommerce-checkout-review-order-table tr:first-child td {
+	border-top: 0;
+	border-bottom: 0;
+}
+
+.wfc-wrapper .woocommerce-checkout-review-order-table tr {
+	border-bottom: $order-summary-cell-border;
+}
+.wfc-wrapper .woocommerce-checkout-review-order-table tr:first-child {
+	border-top: $order-summary-cell-border;
+}
+
+.wfc-wrapper .woocommerce-checkout-review-order-table th,
+.wfc-wrapper .woocommerce-checkout-review-order-table td {
+	padding: $order-summary-cell-padding-vertical $order-summary-cell-padding-horizontal;
+	background-color: transparent;
+}
+
+.wfc-wrapper .woocommerce-checkout-review-order-table tfoot th {
+	text-align: left;
+}
+
+.wfc-wrapper .woocommerce-checkout-review-order-table .product-total,
+.wfc-wrapper .woocommerce-checkout-review-order-table tfoot td {
+	font-size: $order-summary-font-size;
+	text-align: right;
+	line-height: 1;
+	white-space: nowrap;
+}
+
+.wfc-wrapper .woocommerce-checkout-review-order-table td.product-total {
+	padding-top: #{ ( ( $order-summary-image-width - $order-summary-font-size ) / 2 ) + $order-summary-cell-padding-vertical };
+	vertical-align: top;
+}
+
+.wfc-wrapper .woocommerce-checkout-review-order-table .product-name {
+	width: 70%;
+	min-width: remsize( 18rem );
+}
+
+
+
+
+
+.wfc-wrapper .woocommerce-checkout-review-order-table td.product-name {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	padding-left: #{ $order-summary-image-width + $order-summary-cell-padding-vertical };
+	min-height: #{ $order-summary-image-width + ( $order-summary-cell-padding-vertical * 2 )  };
+	width: 100%;
+	background-color: transparent;
+
+	@media (#{$bp-larger-than-desktop}) {
+		padding-left: #{ $order-summary-image-width--large-screen + $order-summary-cell-padding-vertical };
+		min-height: #{ $order-summary-image-width--large-screen + ( $order-summary-cell-padding-vertical * 2 )  };
+	}
+}
+
+.wfc-wrapper .woocommerce-checkout-review-order-table .attachment-woocommerce_thumbnail {
+	position: absolute;
+	top: $order-summary-cell-padding-vertical;
+	left: 0;
+	border: $order-summary-image-border;
+	width: $order-summary-image-width !important; // Needed to override inline styles added by some themes
+	height: $order-summary-image-width !important; // Needed to override inline styles added by some themes
+	vertical-align: middle;
+
+	@media (#{$bp-larger-than-desktop}) {
+		width: $order-summary-image-width--large-screen !important; // Needed to override inline styles added by some themes
+		height: $order-summary-image-width--large-screen !important;  // Needed to override inline styles added by some themes
+	}
+}
+
+.wfc-wrapper .woocommerce-checkout-review-order-table .product-quantity {
+	z-index: z( 'above' );
+	position: absolute;
+	top: $order-summary-cell-padding-vertical;
+	left: #{ $order-summary-image-width + $global-spacing-tiny };
+	transform: translateX( -100% ) translateY( -25% );
+	display: block;
+	padding: remsize( .1rem ) remsize( .6rem ) remsize( .2rem ) $global-spacing-tiny;
+	border-radius: #{ ( $font-size-extra-small + remsize( .4rem ) ) / 2 };
+	background-color: $order-summary-quantity-background-color;
+	color: $order-summary-quantity-text-color;
+	font-size: $order-summary-quantity-font-size;
+	font-weight: normal;
+	line-height: 1;
+	letter-spacing: remsize( -.05rem );
+
+	@media (#{$bp-larger-than-desktop}) {
+		left: #{ $order-summary-image-width--large-screen + $global-spacing-tiny };
+	}
+}
+
+.wfc-wrapper .woocommerce-checkout-review-order-table td.product-total {
+	background-color: transparent;
+}
+
+
+
+
+
+/*------------------------------------*\
+	#THEME SUPPORT
+\*------------------------------------*/
+
+.wfc-wrapper .wfc-checkout-order-review #order_review {
+	float: none;
+	width: 100%;
+	background-color: transparent;
+}
+
+
+
+// Remove spacing added by some themes
+.woocommerce-checkout form .wfc-wrapper #order_review .woocommerce-checkout-review-order-table tbody::after {
+	display: none;
+}

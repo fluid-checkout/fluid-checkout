@@ -1374,7 +1374,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'checkout/review-order-section.php',
 			array(
 				'checkout'           => WC()->checkout(),
-				'order_review_title' => apply_filters( 'wfc_order_review_title', __( 'Your order', 'woocommerce' ) ),
+				'order_review_title' => apply_filters( 'wfc_order_review_title', __( 'Order Summary', 'woocommerce-fluid-checkout' ) ),
 			)
 		);
 	}
