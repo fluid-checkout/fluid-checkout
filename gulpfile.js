@@ -92,28 +92,31 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 	// LIBRARIES
 	gulp.src([
 		settings.nodePath + 'require-polyfills/dist/require-polyfills.js',
-    	settings.nodePath + 'require-polyfills/dist/polyfill-*.js',
+		settings.nodePath + 'require-polyfills/dist/polyfill-*.js',
 		settings.nodePath + 'require-bundle-js/dist/require-bundle.js',
+		
+		settings.nodePath + 'animate-helper/dist/animate-helper.js',
+		settings.nodePath + 'flyout-block/dist/flyout-block.js',
 		settings.nodePath + 'mailcheck/src/mailcheck.js',
 	])
 	.pipe(rename({suffix: settings.assetsVersion}))
-    .pipe(gulp.dest('./js/lib/')) // save .js
-    .pipe(uglify())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('./js/lib/')); // save .min.js
+	.pipe(gulp.dest('./js/lib/')) // save .js
+	.pipe(uglify())
+	.pipe(rename({suffix: '.min'}))
+	.pipe(gulp.dest('./js/lib/')); // save .min.js
 
-    // JS FILES
-    gulp.src([
-        settings.jsPath + '*.js',
-        settings.jsPath + 'premium/*.js',
+	// JS FILES
+	gulp.src([
+		settings.jsPath + '*.js',
+		settings.jsPath + 'premium/*.js',
 	])
 	.pipe(rename({suffix: settings.assetsVersion}))
-    .pipe(gulp.dest('./js/')) // save .js
-    .pipe(sourcemaps.init())
-    .pipe(uglify())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(sourcemaps.write('maps'))
-    .pipe(gulp.dest('./js/')); // save .min.js
+	.pipe(gulp.dest('./js/')) // save .js
+	.pipe(sourcemaps.init())
+	.pipe(uglify())
+	.pipe(rename({suffix: '.min'}))
+	.pipe(sourcemaps.write('maps'))
+	.pipe(gulp.dest('./js/')); // save .min.js
 
 	done();
 } ) );

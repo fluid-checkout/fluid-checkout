@@ -90,7 +90,7 @@ class FluidCheckout {
 		$this->hooks();
 
 		// Load premium features
-		require_once self::$directory_path . 'inc/premium/premium-features.php';
+		// require_once self::$directory_path . 'inc/premium/premium-features.php';
 	}
 
 

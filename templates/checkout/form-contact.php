@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @see     templates/checkout/form-billing.php
  * @package woocommerce-fluid-checkout
- * @version 3.6.0
+ * @version 1.2.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -22,30 +22,6 @@ defined( 'ABSPATH' ) || exit;
 <?php do_action( 'wfc_checkout_before_contact_fields' ); ?>
 
 <div class="wfc-contact-fields">
-	
-	<?php if ( is_user_logged_in() && $has_required_contact_data ) : ?>
-		<div class="wfc-contact-user-data" data-user-data-wrapper>
-			<?php do_action( 'wfc_checkout_before_user_data' ); ?>
-
-			<ul class="wfc-user-data">
-				<?php
-				foreach ( $user_data as $key => $value ) :
-					echo '<li class="wfc-user-data__'.$key.'">'.$value.'</li>';
-				endforeach;
-				?>
-				<li class="wfc-user-data__edit"><a href="#edit-info" data-user-contact-edit role="button"><?php _e( 'Edit', 'woocommerce-fluid-checkout' ) ?></a></li>
-			</ul>
-			
-			<?php do_action( 'wfc_checkout_after_user_data' ); ?>
-		</div>
-		<noscript>
-			<style type="text/css">
-			.wfc-user-identification { display: none !important; }
-			.wfc-contact-fields__wrapper { display: block !important; }
-			</style>
-		</noscript>
-	<?php endif; ?>
-
 	
 	<div class="wfc-contact-fields__wrapper">
 		<?php do_action( 'wfc_checkout_contact_before_fields' ); ?>

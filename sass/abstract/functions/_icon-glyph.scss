@@ -1,8 +1,8 @@
-/**
- * Return glyph values icons
- * @see https://www.sitepoint.com/better-solution-managing-z-index-sass/
- */
- @function icon-glyph( $icon-name ) {
+/// Get the icon-glyph vallue from the `$icons` list variable.
+/// @author Diego Versiani
+/// @param {String} $icon-name - Name of the icon corresponding to an icon value in the `$icons` list variable.
+/// @return {String} - Icon glyph value.
+@function icon-glyph( $icon-name ) {
     @if not map-has-key( $icons, $icon-name ) {
         @warn "No icon found for `#{$icon-name}` in $icons map. Property omitted.";
     }

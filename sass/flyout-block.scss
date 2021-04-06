@@ -1,9 +1,10 @@
 /*------------------------------------*\
-  #IMPORT ABSTRACT
+	#IMPORT ABSTRACT
 \*------------------------------------*/
 @import
 	"abstract/functions/_all-early", // Should be imported before `_variables`
 	"abstract/variables",
+	"../node_modules/flyout-block/sass/abstract/variables",
 	"abstract/functions/_all",
 	"abstract/mixins/_all";
 
@@ -12,11 +13,8 @@
 
 	
 /*------------------------------------*\
-  #IMPORT STYLES
+	#IMPORT STYLES
 \*------------------------------------*/
 @import
-	"partials/checkout-content-area",
-	"partials/checkout-header",
-	"partials/checkout-progress-bar",
-	"partials/checkout-steps",
-	"partials/order-summary";
+	"../node_modules/flyout-block/sass/theme/flyout-block",
+	"../node_modules/flyout-block/sass/theme/animations";

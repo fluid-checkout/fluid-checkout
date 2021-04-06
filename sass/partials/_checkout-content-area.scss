@@ -70,7 +70,7 @@ body:not( .has-checkout-must-login-notice ) .wfc-inside {
 
 
 
-.wfc-checkout-order-review__wrapper {
+.wfc-sidebar {
 	position: static;
 
 	@media (#{$bp-larger-than-desktop}) {
@@ -79,7 +79,7 @@ body:not( .has-checkout-must-login-notice ) .wfc-inside {
 		padding-left: $checkout-column-gap--large-screen;
 	}
 }
-.wfc-checkout-order-review__wrapper:before {
+.wfc-sidebar:before {
 	@media (#{$bp-larger-than-desktop}) {
 		z-index: z( 'default' );
 		content: '';
@@ -94,7 +94,7 @@ body:not( .has-checkout-must-login-notice ) .wfc-inside {
 	}
 }
 
-.wfc-checkout-order-review__inner {
+.wfc-sidebar__inner {
 	z-index: z( 'above' );
 
 	@media (#{$bp-larger-than-desktop}) {

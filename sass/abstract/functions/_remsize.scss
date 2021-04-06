@@ -1,7 +1,8 @@
-/// Convert values for `rem` unit with base 10 (ie. 1rem == 10px) to normal `rem` values
-/// @param {String} $size - Size value in `rem` as expected for the frontend styles
-/// @param {String} $context - Context for which the size value will be used, defaults to `frontend`
-/// @return {String} - Converted `rem` value for the given context
+/// Convert values for `rem` unit to `px`.
+/// @author Diego Versiani
+/// @param {String} $size - Size value in `rem` as expected for the frontend styles.
+/// @param {String} $context - Context for which the size value will be used, defaults to `frontend`. Kept for compatibility with the Fluid Theme projects.
+/// @return {String} - Values converted from `rem` to `px`.
 @function remsize( $size, $context: 'frontend' ) {
     @return strip-unit( $size ) * 10px;
 }

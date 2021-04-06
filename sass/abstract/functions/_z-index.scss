@@ -1,8 +1,9 @@
-/**
- * Return z-index values for named layers
- * @see https://www.sitepoint.com/better-solution-managing-z-index-sass/
- */
- @function z( $layer ) {
+/// Return z-index values for named layers.
+/// @author Diego Versiani
+/// @see https://www.sitepoint.com/better-solution-managing-z-index-sass/
+/// @param {String} $layer - Name of the layer corresponding to a value in the `$z-layers` list variable.
+/// @return {String} - Z-index layer value.
+@function z( $layer ) {
     @if not map-has-key( $z-layers, $layer ) {
         @warn "No layer found for `#{$layer}` in $z-layers map. Property omitted.";
     }

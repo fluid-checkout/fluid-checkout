@@ -3,16 +3,54 @@
 \*------------------------------------*/
 
 .wfc-checkout-header {
+	z-index: z( 'sticky-element' );
+	position: fixed;
+	top: 0;
+	left: 0;
+
 	display: flex;
 	align-items: center;
-	margin-bottom: $global-spacing-tiny;
+	width: 100%;
 	min-height: $checkout-header-height;
+	background-color: $checkout-header-background-color;
+	box-shadow: $checkout-header-box-shadow;
 	
-	@media (#{$bp-larger-than-desktop}) { min-height: $checkout-header-height--large-screen; }
+	@media (#{$bp-larger-than-desktop}) {
+		position: static;
+		min-height: $checkout-header-height--large-screen;
+		box-shadow: none;
+		background-color: transparent;
+	}
 }
+// With admin bar
+.admin-bar .wfc-checkout-header {
+	top: 46px; // Uses pixels to match WordPress admin bar
+
+	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
+		top: 32px; // Uses pixels to match WordPress admin bar
+	}
+}
+
+.wfc-checkout-header + .wfc-checkout-notices,
+.wfc-checkout-header + form.woocommerce-checkout {
+	@media (#{$bp-smaller-than-desktop}) {
+		padding-top: #{ $checkout-header-height + $global-spacing-small };
+	}
+}
+
 .wfc-checkout-header__inner {
 	position: relative;
 	width: 100%;
+	
+	// max-width
+	max-width: $container-width-mobile;
+	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
+	@media (#{$bp-larger-than-desktop}) { max-width: none; }
+
+	// padding
+	padding: 0 $container-spacing-mobile;
+	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet; }
+	@media (#{$bp-larger-than-desktop}) { padding: 0; }
 }
 
 
@@ -62,7 +100,7 @@
 .wfc-checkout-header .wfc-checkout__cart-link-wrapper {
 	position: absolute;
 	top: 0;
-	right: - $global-spacing-extra-small;
+	right: #{ $container-spacing-mobile - $global-spacing-extra-small };
 	margin: 0;
 	
 	display: flex;
@@ -71,6 +109,8 @@
 	height: $checkout-header-height;
 	line-height: 1;
 
+	@media (#{$bp-larger-than-mobile}) { right: #{ $container-spacing-mobile }; } // Larger mobile devices
+	@media (#{$bp-larger-than-tablet}) { right: #{ $container-spacing-tablet }; }
 	@media (#{$bp-larger-than-desktop}) { display: none; }
 }
 .wfc-checkout-header .wfc-checkout__cart-link {
@@ -102,6 +142,15 @@
 	@include icon-styles();
 	@include icon( 'i-chevron-down' );
 	@include icon-size( $icon-size-small );
+}
+
+.has-flyout--open-wfc-checkout-order-review .wfc-checkout-header .wfc-checkout__cart-link {
+	background-color: $lighter-grey;
+	box-shadow: none;
+	transform: translateY( remsize( .1rem ) );
+}
+.has-flyout--open-wfc-checkout-order-review .wfc-checkout-header .wfc-checkout__cart-link:after {
+	@include icon( 'i-chevron-up' );
 }
 
 

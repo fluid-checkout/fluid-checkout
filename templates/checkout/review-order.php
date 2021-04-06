@@ -11,7 +11,7 @@
  * the readme will list any important changes.
  *
  * @see https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce/Templates
+ * @package WooCommerce\Templates
  * @version 3.8.0
  */
 
@@ -35,6 +35,8 @@ defined( 'ABSPATH' ) || exit;
 				?>
 				<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 					<td class="product-name">
+						<?php // CHANGE: Add product images ?>
+						<?php echo apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key ); ?>
 						<?php echo apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 						<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 						<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -68,7 +70,7 @@ defined( 'ABSPATH' ) || exit;
 
 			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
 
-			<?php // CHANGE: Removed cart totals shipping markup and added own hook ?>
+			<?php // CHANGE: Replaced cart totals shipping markup with an action hook to allow for customizations ?>
 			<?php do_action( 'wfc_review_order_shipping' ); ?>
 
 			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>

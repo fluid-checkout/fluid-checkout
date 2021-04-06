@@ -32,9 +32,11 @@ defined( 'ABSPATH' ) || exit;
 			?>
 		</div>
 
+		<?php if ( has_action( 'wfc_checkout_header_cart_link' ) ) : ?>
 		<div class="wfc-checkout__cart-link-wrapper">
-			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link"><?php wc_cart_totals_order_total_html(); ?></a>
+			<?php do_action( 'wfc_checkout_header_cart_link' ); ?>
 		</div>
+		<?php endif; ?>
 
 		<?php if ( has_action( 'wfc_checkout_header_widgets' ) ) : ?>
 			<div class="wfc-checkout__header-widgets">
