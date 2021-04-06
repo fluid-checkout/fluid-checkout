@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @see     templates/checkout/form-billing.php
  * @package woocommerce-fluid-checkout
- * @version 3.6.0
+ * @version 1.2.0
  */
 
 defined( 'ABSPATH' ) || exit;
