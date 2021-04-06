@@ -56,7 +56,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_checkout_after', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
 
 		// Contact
-		add_action( 'wfc_output_step_contact', array( $this, 'output_substep_contact' ), 10 );
+		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+		add_action( 'wfc_output_step_contact', array( $this, 'output_substep_contact_login' ), 10 );
+		add_action( 'wfc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
+		add_action( 'wp_footer', array( $this, 'output_login_form_flyout' ), 10 );
 
 		// Account creation
 		add_action( 'wfc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
@@ -644,7 +647,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
 		<div class="wfc-step__substep" <?php echo $substep_attributes_str; ?>>
-			<h3 class="wfc-step__substep-title"><?php echo esc_html( $substep_title ); ?></h3>
+			<?php if ( ! empty( $substep_title ) ) : ?>
+				<h3 class="wfc-step__substep-title"><?php echo esc_html( $substep_title ); ?></h3>
+			<?php endif; ?>
 		<?php
 	}
 
@@ -742,7 +747,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			
 		$this->output_substep_end_tag();
 	}
-	
+
 	/**
 	 * Output contact step fields.
 	 */
@@ -754,10 +759,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			array(
 				'checkout'			=> WC()->checkout(),
 				'display_fields'	=> $this->get_contact_step_display_fields(),
-				'user_data'			=> $this->get_user_data(),
 			)
 		);
 	}
+
 
 
 	/**
@@ -826,31 +831,54 @@ class FluidCheckout_Steps extends FluidCheckout {
 		) );
 	}
 
+	
+
 	/**
-	 * Get user data for checkout steps.
+	 * Output the login form flyout block for the checkout page.
 	 */
-	public function get_user_data() {
-		$user_data = array();
+	public function output_login_form_flyout() {
+		// Bail if user already logged in or login at checkout is disabled
+		if ( is_user_logged_in() || 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
+		?>
+		<div class="wfc-login-form" data-flyout data-flyout-modal data-flyout-checkout-login>
+			<div data-flyout-content>
+				<button class="button button-text button-icon button--flyout-close" title="<?php esc_attr_e( 'Close login form', 'fluidtheme' ) ?>" data-flyout-close><?php echo _x( 'Close', 'Close button for the checkout login form', 'woocommerce-fluid-checkout' ); ?></button>
+				<?php wc_get_template( 'global/form-login-popup.php' ); ?>
+			</div>
+		</div>
+		<?php
+	}
 
-		if ( is_user_logged_in() ) {
-			$current_user = WC()->customer;
+	/**
+	 * Output contact step fields.
+	 */
+	public function output_substep_contact_login_button() {
+		// Do not output if login at checkout is disabled
+		if ( 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; }
 
-			$user_data = array(
-				'user_email'	=> $current_user->get_email(),
-				'display_name'	=> $current_user->get_billing_first_name() . ' ' . $current_user->get_billing_last_name(),
-			);
+		wc_get_template(
+			'checkout/form-contact-login.php',
+			array(
+				'checkout'			=> WC()->checkout(),
+			)
+		);
+	}
+
+	/**
+	 * Output contact substep.
+	 */
+	public function output_substep_contact_login() {
+		// Bail if user already logged in
+		if ( is_user_logged_in() ) { return; };
+
+		$substep_id_contact = 'contact_login';
+		$this->output_substep_start_tag( $substep_id_contact, '' );
+		
+		$this->output_substep_fields_start_tag( $substep_id_contact );
+		$this->output_substep_contact_login_button();
+		$this->output_substep_fields_end_tag();
 			
-			if ( 'hidden' !== get_option( 'woocommerce_checkout_phone_field', 'required' ) ) {
-				$billing_phone = $current_user->get_billing_phone();
-				if ( ! empty( $billing_phone ) ) {
-					$user_data['billing_phone'] = $billing_phone;
-				}
-			}
-
-			$user_data = apply_filters( 'wfc_checkout_contact_user_data', $user_data );
-		}
-
-		return $user_data;
+		$this->output_substep_end_tag();
 	}
 
 

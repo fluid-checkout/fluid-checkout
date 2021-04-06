@@ -408,6 +408,37 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   width: 10%; }
 
 /*------------------------------------*\
+  #CHECKOUT LOGIN
+\*------------------------------------*/
+.wfc-contact-login {
+  margin: 10px auto;
+  text-align: center; }
+
+.wfc-contact-login__cta-text {
+  margin-bottom: 20px; }
+
+.wfc-contact-login__separator {
+  position: relative;
+  margin-top: 30px; }
+
+.wfc-contact-login__separator:before {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #D6D8D8; }
+
+.wfc-contact-login__separator-text {
+  z-index: 10;
+  position: relative;
+  display: inline-block;
+  padding: 0 10px;
+  background-color: #fff; }
+
+/*------------------------------------*\
 	#CHECKOUT STEPS
 \*------------------------------------*/
 .wfc-checkout-step {
