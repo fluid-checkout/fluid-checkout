@@ -854,7 +854,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		<div class="wfc-login-form" data-flyout data-flyout-modal data-flyout-checkout-login>
 			<div data-flyout-content>
 				<button class="button button-text button-icon button--flyout-close" title="<?php esc_attr_e( 'Close login form', 'fluidtheme' ) ?>" data-flyout-close><?php echo _x( 'Close', 'Close button for the checkout login form', 'woocommerce-fluid-checkout' ); ?></button>
-				<?php wc_get_template( 'global/form-login-popup.php' ); ?>
+				<?php wc_get_template( 'global/form-login.php' ); ?>
 			</div>
 		</div>
 		<?php
