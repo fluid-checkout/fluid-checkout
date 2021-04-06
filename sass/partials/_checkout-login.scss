@@ -51,6 +51,11 @@
 	text-align: right;
 }
 
+.wfc-login-form .button--flyout-close {
+	position: absolute;
+	top: $global-spacing-small;
+	right: $global-spacing-small;
+}
 .wfc-login-form .button--flyout-close:before {
 	@include icon-styles();
 	@include icon( 'i-x' );

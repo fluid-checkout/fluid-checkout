@@ -444,6 +444,11 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 .wfc-login-form .wfc-login-form__close-wrapper {
   text-align: right; }
 
+.wfc-login-form .button--flyout-close {
+  position: absolute;
+  top: 20px;
+  right: 20px; }
+
 .wfc-login-form .button--flyout-close:before {
   display: inline-block;
   font-family: "fluid-checkout-icons" !important;
