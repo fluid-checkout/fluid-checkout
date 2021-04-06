@@ -279,7 +279,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_woocommerce_login_form_redirect_hidden_field() {
 		$raw_referrer_url = wc_get_raw_referer() ? wc_get_raw_referer() : wc_get_page_permalink( 'myaccount' );
-		$referrer_url = $_GET[ '_redirect' ] == 'checkout' ? wc_get_checkout_url() : $raw_referrer_url;
+		$referrer_url = ( ( function_exists( 'is_checkout' ) && is_checkout() ) || $_GET[ '_redirect' ] == 'checkout' ) ? wc_get_checkout_url() : $raw_referrer_url;
 
 		echo '<input type="hidden" name="redirect" value="' . wp_validate_redirect( $referrer_url, wc_get_page_permalink( 'myaccount' ) ) . '" />';
 	}
@@ -850,14 +850,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_login_form_flyout() {
 		// Bail if user already logged in or login at checkout is disabled
 		if ( is_user_logged_in() || 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
-		?>
-		<div class="wfc-login-form" data-flyout data-flyout-modal data-flyout-checkout-login>
-			<div data-flyout-content>
-				<button class="button button-text button-icon button--flyout-close" title="<?php esc_attr_e( 'Close login form', 'fluidtheme' ) ?>" data-flyout-close><?php echo _x( 'Close', 'Close button for the checkout login form', 'woocommerce-fluid-checkout' ); ?></button>
-				<?php wc_get_template( 'global/form-login.php' ); ?>
-			</div>
-		</div>
-		<?php
+		
+		wc_get_template(
+			'checkout/form-contact-login-modal.php',
+			array(
+				'checkout'			=> WC()->checkout(),
+			)
+		);
 	}
 
 	/**
