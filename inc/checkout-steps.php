@@ -1316,7 +1316,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output billing address substep.
+	 * Output payment substep.
 	 */
 	public function output_substep_payment() {
 		$substep_id_payment = 'payment';
@@ -1332,7 +1332,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output billing address fields, except those already added at the contact step.
+	 * Output payment fields.
 	 */
 	public function output_substep_payment_fields() {
 		wc_get_template(
