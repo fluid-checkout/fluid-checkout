@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
 	<div class="wfc-contact-login__cta-text"><?php echo esc_html( apply_filters( 'wfc_checkout_login_cta_text', __( 'Log in for faster checkout', 'woocommerce-fluid-checkout' ) ) ); ?></div>
 
 	<div class="wfc-contact-login__action">
-		<button type="button" class="wfc-contact-login__action-login" data-flyout-toggle data-flyout-target="[data-flyout-checkout-login]"><?php echo esc_html( apply_filters( 'wfc_checkout_login_button_label', __( 'Log in', 'Log in button label at checkout contact step', 'woocommerce-fluid-checkout' ) ) ); ?></button>
+		<a href="<?php echo esc_url( add_query_arg( '_redirect', 'checkout', wc_get_account_endpoint_url( 'dashboard' ) ) ); ?>" class="wfc-contact-login__action-login button" data-flyout-toggle data-flyout-target="[data-flyout-checkout-login]"><?php echo esc_html( apply_filters( 'wfc_checkout_login_button_label', __( 'Log in', 'Log in button label at checkout contact step', 'woocommerce-fluid-checkout' ) ) ); ?></a>
 	</div>
 
 	<div class="wfc-contact-login__separator">

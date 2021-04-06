@@ -42,8 +42,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Checkout Header
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_header' ), 1 ); // Uses `woocommerce_before_checkout_form_cart_notices` as it runs before the hook `woocommerce_before_checkout_form`
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
 		add_action( 'wfc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
 		
 		// Notices
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
@@ -54,6 +54,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'init', array( $this, 'register_default_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_after', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
+		add_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
 
 		// Contact
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
@@ -271,6 +272,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$cart_link_html = $this->get_checkout_header_cart_link();
 		$fragments['.wfc-checkout__cart-link'] = $cart_link_html;
 		return $fragments;
+	}
+
+	/**
+	 * Output a redirect hidden field to the WooCommerce login form to redirect the user to the checkout or previous page.
+	 */
+	public function output_woocommerce_login_form_redirect_hidden_field() {
+		$raw_referrer_url = wc_get_raw_referer() ? wc_get_raw_referer() : wc_get_page_permalink( 'myaccount' );
+		$referrer_url = $_GET[ '_redirect' ] == 'checkout' ? wc_get_checkout_url() : $raw_referrer_url;
+
+		echo '<input type="hidden" name="redirect" value="' . wp_validate_redirect( $referrer_url, wc_get_page_permalink( 'myaccount' ) ) . '" />';
 	}
 
 
