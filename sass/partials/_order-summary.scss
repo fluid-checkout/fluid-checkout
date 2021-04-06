@@ -173,15 +173,21 @@
 }
 
 .wfc-wrapper .wfc-checkout-order-review[data-flyout] .wfc-checkout-order-review__inner {
+	
 	// max-width
 	max-width: $container-width-mobile;
 	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
-	@media (#{$bp-larger-than-desktop}) { max-width: none; }
-
+	
 	// padding
 	padding: $global-spacing-small $container-spacing-mobile $global-spacing-large;
 	@media (#{$bp-larger-than-tablet}) { padding: $global-spacing-small $container-spacing-tablet $global-spacing-large; }
-	@media (#{$bp-larger-than-desktop}) { padding: 0; }
+	
+	
+	@media (#{$bp-larger-than-desktop}) {
+		padding: 0;
+		max-width: none;
+		background-color: transparent;
+	}
 }
 
 
