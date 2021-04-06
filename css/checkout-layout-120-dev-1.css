@@ -408,6 +408,86 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   width: 10%; }
 
 /*------------------------------------*\
+  #CHECKOUT LOGIN
+\*------------------------------------*/
+.wfc-contact-login {
+  margin: 10px auto;
+  text-align: center; }
+
+.wfc-contact-login__cta-text {
+  margin-bottom: 20px; }
+
+.wfc-contact-login__separator {
+  position: relative;
+  margin-top: 30px; }
+
+.wfc-contact-login__separator:before {
+  z-index: 1;
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #D6D8D8; }
+
+.wfc-contact-login__separator-text {
+  z-index: 10;
+  position: relative;
+  display: inline-block;
+  padding: 0 10px;
+  background-color: #fff; }
+
+/*------------------------------------*\
+  #CHECKOUT LOGIN FORM
+\*------------------------------------*/
+.wfc-login-form .wfc-login-form__close-wrapper {
+  text-align: right; }
+
+.wfc-login-form .button--flyout-close {
+  position: absolute;
+  top: 20px;
+  right: 20px; }
+
+.wfc-login-form .button--flyout-close:before {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "";
+  width: 24px;
+  height: 24px;
+  font-size: 24px; }
+
+.wfc-login-form__title {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center; }
+
+.wfc-login-form .woocommerce-form-login__submit {
+  margin-top: 20px; }
+
+/*------------------------------------*\
 	#CHECKOUT STEPS
 \*------------------------------------*/
 .wfc-checkout-step {
@@ -670,15 +750,14 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   @media (min-width: 750px) {
     .wfc-wrapper .wfc-checkout-order-review[data-flyout] .wfc-checkout-order-review__inner {
       max-width: 100%; } }
-  @media (min-width: 1000px) {
-    .wfc-wrapper .wfc-checkout-order-review[data-flyout] .wfc-checkout-order-review__inner {
-      max-width: none; } }
   @media (min-width: 750px) {
     .wfc-wrapper .wfc-checkout-order-review[data-flyout] .wfc-checkout-order-review__inner {
       padding: 20px 30px 80px; } }
   @media (min-width: 1000px) {
     .wfc-wrapper .wfc-checkout-order-review[data-flyout] .wfc-checkout-order-review__inner {
-      padding: 0; } }
+      padding: 0;
+      max-width: none;
+      background-color: transparent; } }
 
 /*------------------------------------*\
 	#FLYOUT ORDER SUMMARY ACTIONS

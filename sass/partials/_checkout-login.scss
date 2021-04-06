@@ -1,0 +1,79 @@
+/*------------------------------------*\
+  #CHECKOUT LOGIN
+\*------------------------------------*/
+
+.wfc-contact-login {
+	margin: $global-spacing-extra-small auto;
+	text-align: center;
+}
+
+
+
+.wfc-contact-login__cta-text {
+	margin-bottom: $global-spacing-small;
+}
+
+
+
+.wfc-contact-login__separator {
+	position: relative;
+	margin-top: $global-spacing;
+}
+.wfc-contact-login__separator:before {
+	z-index: z( 'default' );
+	content: '';
+	position: absolute;
+	top: 50%;
+	display: block;
+	width: 100%;
+	height: remsize( .1rem );
+	background-color: $border-color;
+}
+
+.wfc-contact-login__separator-text {
+	z-index: z( 'above' );
+	position: relative;
+	display: inline-block;
+	padding: 0 $global-spacing-extra-small;
+	background-color: $white;
+}
+
+
+
+
+
+
+/*------------------------------------*\
+  #CHECKOUT LOGIN FORM
+\*------------------------------------*/
+
+.wfc-login-form .wfc-login-form__close-wrapper {
+	text-align: right;
+}
+
+.wfc-login-form .button--flyout-close {
+	position: absolute;
+	top: $global-spacing-small;
+	right: $global-spacing-small;
+}
+.wfc-login-form .button--flyout-close:before {
+	@include icon-styles();
+	@include icon( 'i-x' );
+	@include icon-size( $icon-size );
+}
+
+
+
+.wfc-login-form__title {
+	margin-top: $global-spacing;
+	margin-bottom: $global-spacing-small;
+	font-size: $font-size-medium;
+	font-weight: bold;
+	text-align: center;
+}
+
+
+
+.wfc-login-form .woocommerce-form-login__submit {
+	margin-top: $global-spacing-small;
+}

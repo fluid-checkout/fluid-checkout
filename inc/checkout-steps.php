@@ -42,8 +42,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Checkout Header
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_header' ), 1 ); // Uses `woocommerce_before_checkout_form_cart_notices` as it runs before the hook `woocommerce_before_checkout_form`
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
 		add_action( 'wfc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
 		
 		// Notices
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
@@ -54,9 +54,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'init', array( $this, 'register_default_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_after', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
+		add_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
 
 		// Contact
-		add_action( 'wfc_output_step_contact', array( $this, 'output_substep_contact' ), 10 );
+		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+		add_action( 'wfc_output_step_contact', array( $this, 'output_substep_contact_login' ), 10 );
+		add_action( 'wfc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
+		add_action( 'wp_footer', array( $this, 'output_login_form_flyout' ), 10 );
 
 		// Account creation
 		add_action( 'wfc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
@@ -268,6 +272,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$cart_link_html = $this->get_checkout_header_cart_link();
 		$fragments['.wfc-checkout__cart-link'] = $cart_link_html;
 		return $fragments;
+	}
+
+	/**
+	 * Output a redirect hidden field to the WooCommerce login form to redirect the user to the checkout or previous page.
+	 */
+	public function output_woocommerce_login_form_redirect_hidden_field() {
+		$raw_referrer_url = wc_get_raw_referer() ? wc_get_raw_referer() : wc_get_page_permalink( 'myaccount' );
+		$referrer_url = ( ( function_exists( 'is_checkout' ) && is_checkout() ) || $_GET[ '_redirect' ] == 'checkout' ) ? wc_get_checkout_url() : $raw_referrer_url;
+
+		echo '<input type="hidden" name="redirect" value="' . wp_validate_redirect( $referrer_url, wc_get_page_permalink( 'myaccount' ) ) . '" />';
 	}
 
 
@@ -644,7 +658,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
 		<div class="wfc-step__substep" <?php echo $substep_attributes_str; ?>>
-			<h3 class="wfc-step__substep-title"><?php echo esc_html( $substep_title ); ?></h3>
+			<?php if ( ! empty( $substep_title ) ) : ?>
+				<h3 class="wfc-step__substep-title"><?php echo esc_html( $substep_title ); ?></h3>
+			<?php endif; ?>
 		<?php
 	}
 
@@ -742,7 +758,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			
 		$this->output_substep_end_tag();
 	}
-	
+
 	/**
 	 * Output contact step fields.
 	 */
@@ -754,10 +770,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			array(
 				'checkout'			=> WC()->checkout(),
 				'display_fields'	=> $this->get_contact_step_display_fields(),
-				'user_data'			=> $this->get_user_data(),
 			)
 		);
 	}
+
 
 
 	/**
@@ -826,31 +842,53 @@ class FluidCheckout_Steps extends FluidCheckout {
 		) );
 	}
 
+	
+
 	/**
-	 * Get user data for checkout steps.
+	 * Output the login form flyout block for the checkout page.
 	 */
-	public function get_user_data() {
-		$user_data = array();
+	public function output_login_form_flyout() {
+		// Bail if user already logged in or login at checkout is disabled
+		if ( is_user_logged_in() || 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
+		
+		wc_get_template(
+			'checkout/form-contact-login-modal.php',
+			array(
+				'checkout'			=> WC()->checkout(),
+			)
+		);
+	}
 
-		if ( is_user_logged_in() ) {
-			$current_user = WC()->customer;
+	/**
+	 * Output contact step fields.
+	 */
+	public function output_substep_contact_login_button() {
+		// Do not output if login at checkout is disabled
+		if ( 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; }
 
-			$user_data = array(
-				'user_email'	=> $current_user->get_email(),
-				'display_name'	=> $current_user->get_billing_first_name() . ' ' . $current_user->get_billing_last_name(),
-			);
+		wc_get_template(
+			'checkout/form-contact-login.php',
+			array(
+				'checkout'			=> WC()->checkout(),
+			)
+		);
+	}
+
+	/**
+	 * Output contact substep.
+	 */
+	public function output_substep_contact_login() {
+		// Bail if user already logged in
+		if ( is_user_logged_in() ) { return; };
+
+		$substep_id_contact = 'contact_login';
+		$this->output_substep_start_tag( $substep_id_contact, '' );
+		
+		$this->output_substep_fields_start_tag( $substep_id_contact );
+		$this->output_substep_contact_login_button();
+		$this->output_substep_fields_end_tag();
 			
-			if ( 'hidden' !== get_option( 'woocommerce_checkout_phone_field', 'required' ) ) {
-				$billing_phone = $current_user->get_billing_phone();
-				if ( ! empty( $billing_phone ) ) {
-					$user_data['billing_phone'] = $billing_phone;
-				}
-			}
-
-			$user_data = apply_filters( 'wfc_checkout_contact_user_data', $user_data );
-		}
-
-		return $user_data;
+		$this->output_substep_end_tag();
 	}
 
 
