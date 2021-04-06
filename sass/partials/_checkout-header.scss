@@ -144,6 +144,15 @@
 	@include icon-size( $icon-size-small );
 }
 
+.has-flyout--open-wfc-checkout-order-review .wfc-checkout-header .wfc-checkout__cart-link {
+	background-color: $lighter-grey;
+	box-shadow: none;
+	transform: translateY( remsize( .1rem ) );
+}
+.has-flyout--open-wfc-checkout-order-review .wfc-checkout-header .wfc-checkout__cart-link:after {
+	@include icon( 'i-chevron-up' );
+}
+
 
 
 

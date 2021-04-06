@@ -81,7 +81,8 @@
 .wfc-wrapper .woocommerce-checkout-review-order-table td.product-name {
 	position: relative;
 	display: inline-flex;
-	align-items: center;
+	flex-direction: column;
+	justify-content: center;
 	padding-left: #{ $order-summary-image-width + ( $order-summary-cell-padding-horizontal * 2 ) };
 	min-height: #{ $order-summary-image-width + ( $order-summary-cell-padding-vertical * 2 )  };
 	width: 100%;
@@ -97,9 +98,13 @@
 	position: absolute;
 	top: $order-summary-cell-padding-vertical;
 	left: $order-summary-cell-padding-horizontal;
-	border: $order-summary-image-border;
+	padding: $order-summary-image-padding;
+	margin-left: - $order-summary-image-padding;
 	width: $order-summary-image-width !important; // Needed to override inline styles added by some themes
 	height: $order-summary-image-width !important; // Needed to override inline styles added by some themes
+	background-color: $order-summary-image-background-color;
+	border: $order-summary-image-border;
+	border-radius: $order-summary-image-border-radius;
 
 	@media (#{$bp-larger-than-desktop}) {
 		width: $order-summary-image-width--large-screen !important; // Needed to override inline styles added by some themes
@@ -137,9 +142,96 @@
 
 
 /*------------------------------------*\
+	#FLYOUT ORDER SUMMARY
+\*------------------------------------*/
+.wfc-wrapper .wfc-checkout-order-review[data-flyout] {
+	padding-top: $checkout-header-height;
+	padding-bottom: 0;
+
+	@media (#{$bp-larger-than-desktop}) {
+		position: static;
+		padding-top: $global-spacing;
+		padding-bottom: $global-spacing;
+		transform: none;
+	}
+}
+// With admin bar
+.admin-bar .wfc-wrapper .wfc-checkout-order-review[data-flyout] {
+	padding-top: #{ $checkout-header-height + 46px }; // Uses pixels to match WordPress admin bar
+
+	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
+		padding-top: #{ $checkout-header-height + 32px }; // Uses pixels to match WordPress admin bar
+	}
+
+	@media (#{$bp-larger-than-desktop}) { padding-top: $global-spacing; }
+}
+.wfc-wrapper .wfc-checkout-order-review[data-flyout].is-activated {
+	z-index: z( 'float-element' );
+}
+.has-flyout.has-flyout--open-wfc-checkout-order-review .flyout-overlay {
+	z-index: z( 'float-element' ) - 1;
+}
+
+.wfc-wrapper .wfc-checkout-order-review[data-flyout] .wfc-checkout-order-review__inner {
+	// max-width
+	max-width: $container-width-mobile;
+	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
+	@media (#{$bp-larger-than-desktop}) { max-width: none; }
+
+	// padding
+	padding: $global-spacing-small $container-spacing-mobile $global-spacing-large;
+	@media (#{$bp-larger-than-tablet}) { padding: $global-spacing-small $container-spacing-tablet $global-spacing-large; }
+	@media (#{$bp-larger-than-desktop}) { padding: 0; }
+}
+
+
+
+
+
+/*------------------------------------*\
+	#FLYOUT ORDER SUMMARY ACTIONS
+\*------------------------------------*/
+.wfc-checkout-order-review__actions {
+	display: none;
+}
+.has-flyout.has-flyout--open-wfc-checkout-order-review .wfc-checkout-order-review__actions {
+	z-index: z( 'sticky-element' );
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	background-color: $white;
+	box-shadow: $box-shadow-dark;
+
+	// max-width
+	max-width: $container-width-mobile;
+	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
+
+	// padding
+	padding: $global-spacing-extra-small $container-spacing-mobile;
+	@media (#{$bp-larger-than-tablet}) { padding: $global-spacing-small $container-spacing-tablet; }
+	
+	// Hide on desktop view
+	@media (#{$bp-larger-than-desktop}) { display: none; }
+}
+
+
+
+.wfc-checkout-order-review__actions .wfc-checkout-order-review__edit-cart {
+	padding-left: $order-summary-cell-padding-horizontal;
+}
+
+
+
+
+/*------------------------------------*\
 	#THEME SUPPORT
 \*------------------------------------*/
 
+// Fix layout for the `#order_review` element
 .wfc-wrapper .wfc-checkout-order-review #order_review {
 	float: none;
 	width: 100%;

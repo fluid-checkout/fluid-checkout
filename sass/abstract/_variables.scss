@@ -325,11 +325,14 @@ $checkout-substep-text-font-weight:              normal !default;
 
 $order-summary-cell-padding-vertical:       $global-spacing-extra-small !default;
 $order-summary-cell-padding-horizontal:     $global-spacing-extra-small !default;
-$order-summary-cell-border:                 solid remsize( .1rem ) $border-color !default;
+$order-summary-cell-border:                 solid remsize( .1rem ) darken( $lighter-grey, 5% ) !default;
 
 $order-summary-image-width:                 remsize( 5rem ) !default;
-$order-summary-image-width--large-screen:   remsize( 7rem ) !default;
-$order-summary-image-border:                solid remsize( .1rem ) $border-light-color !default;
+$order-summary-image-width--large-screen:   remsize( 6rem ) !default;
+$order-summary-image-padding:               remsize( .3rem ) !default;
+$order-summary-image-background-color:      $white !default;
+$order-summary-image-border:                solid remsize( .1rem ) $border-color !default;
+$order-summary-image-border-radius:         $global-radius-extra-small !default;
 
 $order-summary-quantity-background-color:   $dark-grey !default;
 $order-summary-quantity-text-color:         $white !default;

@@ -53,6 +53,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 				'jsLibPath'			=> self::$directory_url . 'js/lib/',
 				'cssPath'			=> self::$directory_url . 'css/',
 				'ajaxUrl'			=> admin_url( 'admin-ajax.php' ),
+				'flyoutBlock'       => array(),
 			) )
 		);
 	}

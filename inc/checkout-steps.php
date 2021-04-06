@@ -43,6 +43,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Checkout Header
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_header' ), 1 ); // Uses `woocommerce_before_checkout_form_cart_notices` as it runs before the hook `woocommerce_before_checkout_form`
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
+		add_action( 'wfc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
 		
 		// Notices
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
@@ -80,7 +81,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100 );
 		
 		// Order Review
-		add_action( 'wfc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
+		add_action( 'wfc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
 		add_action( 'wfc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		
 		// Order Received (default functionality)
@@ -238,13 +239,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 		<?php
 	}
 
-	
+
+
+	/**
+	 * Output the cart link for the checkout header.
+	 */
 	public function output_checkout_header_cart_link() {
 		?>
-		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link"><?php wc_cart_totals_order_total_html(); ?></a>
+		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link" data-flyout-toggle data-flyout-target="[data-flyout-order-review]"><?php wc_cart_totals_order_total_html(); ?></a>
 		<?php
 	}
 
+	/**
+	 * Get html for the cart link for the checkout header.
+	 */
 	public function get_checkout_header_cart_link() {
 		ob_start();
 		$this->output_checkout_header_cart_link();
@@ -252,7 +260,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Add order review dropdown button order total as checkout fragment.
+	 * Add cart link for the checkout header as a checkout fragment.
 	 * 
 	 * @param array $fragments Checkout fragments.
 	 */
@@ -1367,6 +1375,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the order review section title.
+	 *
+	 * @return  string  The order review section title.
+	 */
+	public function get_order_review_title() {
+		return apply_filters( 'wfc_order_review_title', __( 'Order Summary', 'woocommerce-fluid-checkout' ) );
+	}
+
+	/**
 	 * Output Order Review.
 	 */
 	public function output_order_review() {
@@ -1374,7 +1391,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'checkout/review-order-section.php',
 			array(
 				'checkout'           => WC()->checkout(),
-				'order_review_title' => apply_filters( 'wfc_order_review_title', __( 'Order Summary', 'woocommerce-fluid-checkout' ) ),
+				'order_review_title' => $this->get_order_review_title(),
+				'is_sidebar_widget'  => false,
+			)
+		);
+	}
+
+	/**
+	 * Output Order Review for sidebar.
+	 */
+	public function output_order_review_for_sidebar() {
+		wc_get_template(
+			'checkout/review-order-section.php',
+			array(
+				'checkout'           => WC()->checkout(),
+				'order_review_title' => $this->get_order_review_title(),
+				'is_sidebar_widget'  => true,
 			)
 		);
 	}
