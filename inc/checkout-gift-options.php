@@ -25,7 +25,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
 		// Order Admin Screen
-		// add_filter( 'woocommerce_after_order_notes' , array( $this, 'maybe_output_gift_options_fields' ), 10 );
+		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_gift_options' ), 100 );
 		add_action( 'woocommerce_admin_order_data_after_order_details', array( $this, 'display_gift_options_fields_order_admin_screen' ), 100, 1 );
 		
 		// Save gift message
@@ -34,6 +34,15 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		
 		// Order Details
 		add_filter( 'woocommerce_get_order_item_totals', array( $this, 'maybe_add_gift_message_order_received_details' ), 30, 3 );
+	}
+
+
+
+	/**
+	 * Return WooCommerce Fluid Checkout multi-step class instance
+	 */
+	public function multistep() {
+		return FluidCheckout_Steps::instance();
 	}
 
 
@@ -53,11 +62,37 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 
 
 	/**
+	 * Output gift options substep.
+	 */
+	public function output_substep_gift_options() {
+		$substep_id = 'gift_options';
+		$this->multistep()->output_substep_start_tag( $substep_id, __( '<span class="gift-options__icon"></span>Gift Options', 'woocommerce-fluid-checkout' ) );
+
+		$this->multistep()->output_substep_fields_start_tag( $substep_id );
+		$this->maybe_output_gift_options_fields();
+		$this->multistep()->output_substep_fields_end_tag();
+
+		// Only output substep text format for multi-step checkout layout
+		// if ( $this->multistep()->is_checkout_layout_multistep() ) {
+		// 	$this->multistep()->output_substep_text_start_tag( $substep_id );
+		// 	$this->multistep()->output_substep_text_gift_options();
+		// 	$this->multistep()->output_substep_text_end_tag();
+		// }
+
+		$this->multistep()->output_substep_end_tag();
+	}
+
+
+
+	/**
 	 * Output gift options fields.
 	 *
 	 * @param   WC_Checkout   $checkout   The Checkout object.
 	 */
-	public function maybe_output_gift_options_fields( $checkout ) {
+	public function maybe_output_gift_options_fields() {
+		// Get checkout object.
+		$checkout = WC()->checkout();
+
 		// Bail if shipping not needed
 		if ( ! WC()->cart->needs_shipping() ) { return; }
 		
@@ -65,7 +100,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 			'_wfc_has_gift_options' => array(
 				'type'          => 'checkbox',
 				'class'         => array( 'form-row-wide '),
-				'label'         => __( 'Do you want to add a gift message?', 'woocommerce-fluid-checkout' ),
+				'label'         => __( 'Add a gift message', 'woocommerce-fluid-checkout' ),
 				'default'		=> false,
 			),
 		) );

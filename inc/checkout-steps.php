@@ -68,7 +68,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Shipping
 		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
 		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
-		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_order_notes' ), 100 );
+		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_order_notes' ), 90 );
 		add_action( 'wfc_cart_totals_shipping', array( $this, 'output_cart_totals_shipping_section' ), 10 );
 		add_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
@@ -662,7 +662,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		?>
 		<div class="wfc-step__substep" <?php echo $substep_attributes_str; ?>>
 			<?php if ( ! empty( $substep_title ) ) : ?>
-				<h3 class="wfc-step__substep-title"><?php echo esc_html( $substep_title ); ?></h3>
+				<h3 class="wfc-step__substep-title"><?php echo wp_kses( $substep_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ); ?></h3>
 			<?php endif; ?>
 		<?php
 	}
