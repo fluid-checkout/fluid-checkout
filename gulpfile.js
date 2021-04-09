@@ -97,6 +97,7 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 		
 		settings.nodePath + 'animate-helper/dist/animate-helper.js',
 		settings.nodePath + 'flyout-block/dist/flyout-block.js',
+		settings.nodePath + 'collapsible-block/dist/collapsible-block.js',
 		settings.nodePath + 'mailcheck/src/mailcheck.js',
 	])
 	.pipe(rename({suffix: settings.assetsVersion}))

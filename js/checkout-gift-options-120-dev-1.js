@@ -18,16 +18,13 @@
 	'use strict';
 
 
-
-	var $ = jQuery;
-	
+	var _hasInitialized = false;	
 	var _publicMethods = {};
 	var _settings = {
 		fieldsWrapperSelector: '#wfc-gift-options__field-wrapper',
 		checkboxSelector: '#_wfc_has_gift_options',
 
 		bodyClass: 'has-wfc-gift-options--active',
-		activeClass: 'active',
 	}
 
 	
@@ -44,10 +41,10 @@
 		var fieldsWrapper = document.querySelector( _settings.fieldsWrapperSelector );
 
 		if ( checkbox.checked ) {
-			fieldsWrapper.classList.add( _settings.activeClass );
+			CollapsibleBlock.expand( fieldsWrapper );
 		}
 		else {
-			fieldsWrapper.classList.remove( _settings.activeClass );
+			CollapsibleBlock.collapse( fieldsWrapper );
 		}
 	};
 
@@ -65,14 +62,33 @@
 
 
 	/**
-	 * Initialize component and set related handlers.
+	 * Finish to initialize component and set related handlers.
 	 */
-	_publicMethods.init = function() {
+	var finishInit = function() {
 		// Add event listeners
 		window.addEventListener( 'change', handleChange );
 
 		// Add init class
 		document.body.classList.add( _settings.bodyClass );
+
+		_hasInitialized = true;
+	}
+
+
+
+	/**
+	 * Load required dependencies, initialize component and set related handlers.
+	 */
+	_publicMethods.init = function() {
+		if ( _hasInitialized ) return;
+
+		// Finish initialization, maybe load dependencies first
+		if ( window.CollapsibleBlock ) {
+			finishInit();
+		}
+		else if( window.RequireBundle ) {
+			RequireBundle.require( [ 'collapsible-block' ], function() { finishInit(); } );
+		}
 	};
 
 

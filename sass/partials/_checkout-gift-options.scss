@@ -1,20 +1,11 @@
 /*------------------------------------*\
   #CHECKOUT GIFT OPTIONS
 \*------------------------------------*/
-
-.has-wfc-gift-options--active #wfc-gift-options__field-wrapper {
-	display: none;
-}
-
-#wfc-gift-options__field-wrapper.active {
-	display: block;
-}
-
-
-
-.woocommerce-table--order-details .order-received__gift-from {
-	font-style: italic;
-}
-.woocommerce-table--order-details .order-received__gift-from:before {
-	content: ' \2014\ '; // Need spaces before and after the escaped "em dash" char
+.gift-options__icon:before {
+	@include icon-styles();
+	@include icon( 'i-gift-box' );
+	@include icon-size( $icon-size );
+	
+	margin-right: $global-spacing-extra-small;
+	transform: translateY( - remsize( .1rem ) );
 }

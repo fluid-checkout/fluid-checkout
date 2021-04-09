@@ -102,6 +102,10 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 				'class'         => array( 'form-row-wide '),
 				'label'         => __( 'Add a gift message', 'woocommerce-fluid-checkout' ),
 				'default'		=> false,
+				'custom_attributes' => array(
+					'data-collapsible-handler' => true,
+					'data-collapsible-target' => 'wfc-gift-options__field-wrapper',
+				),
 			),
 		) );
 

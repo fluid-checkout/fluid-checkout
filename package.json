@@ -12,6 +12,7 @@
   "copyright": "Copyright (c) 2021, Fluidweb OÜ",
   "homepage": "https://fluidweb.co/plugins/fluid-checkout",
   "devDependencies": {
+    "collapsible-block": "^1.0.4",
     "del": "^5.1.0",
     "fluidweb-updater": "git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git",
     "flyout-block": "^1.0.0",
