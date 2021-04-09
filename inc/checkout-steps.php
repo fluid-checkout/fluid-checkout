@@ -745,16 +745,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output contact substep.
 	 */
 	public function output_substep_contact() {
-		$substep_id_contact = 'contact';
-		$this->output_substep_start_tag( $substep_id_contact, __( 'My contact', 'woocommerce-fluid-checkout' ) );
+		$substep_id = 'contact';
+		$this->output_substep_start_tag( $substep_id, __( 'My contact', 'woocommerce-fluid-checkout' ) );
 		
-		$this->output_substep_fields_start_tag( $substep_id_contact );
+		$this->output_substep_fields_start_tag( $substep_id );
 		$this->output_step_contact_fields();
 		$this->output_substep_fields_end_tag();
 		
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id_contact );
+			$this->output_substep_text_start_tag( $substep_id );
 			$this->output_substep_contact_text();
 			$this->output_substep_text_end_tag();
 		}
@@ -884,10 +884,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if user already logged in
 		if ( is_user_logged_in() ) { return; };
 
-		$substep_id_contact = 'contact_login';
-		$this->output_substep_start_tag( $substep_id_contact, '' );
+		$substep_id = 'contact_login';
+		$this->output_substep_start_tag( $substep_id, '' );
 		
-		$this->output_substep_fields_start_tag( $substep_id_contact );
+		$this->output_substep_fields_start_tag( $substep_id );
 		$this->output_substep_contact_login_button();
 		$this->output_substep_fields_end_tag();
 			
@@ -915,16 +915,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output shipping address substep.
 	 */
 	public function output_substep_shipping_address() {
-		$substep_id_shipping_address = 'shipping_address';
-		$this->output_substep_start_tag( $substep_id_shipping_address, __( 'Shipping Address', 'woocommerce-fluid-checkout' ) );
+		$substep_id = 'shipping_address';
+		$this->output_substep_start_tag( $substep_id, __( 'Shipping Address', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep_id_shipping_address );
+		$this->output_substep_fields_start_tag( $substep_id );
 		$this->output_substep_shipping_address_fields();
 		$this->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id_shipping_address );
+			$this->output_substep_text_start_tag( $substep_id );
 			$this->output_substep_shipping_address_text();
 			$this->output_substep_text_end_tag();
 		}
@@ -936,16 +936,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output shipping method substep.
 	 */
 	public function output_substep_shipping_method() {
-		$substep_id_shipping_method = 'shipping_method';
-		$this->output_substep_start_tag( $substep_id_shipping_method, __( 'Shipping Method', 'woocommerce-fluid-checkout' ) );
+		$substep_id = 'shipping_method';
+		$this->output_substep_start_tag( $substep_id, __( 'Shipping Method', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep_id_shipping_method );
+		$this->output_substep_fields_start_tag( $substep_id );
 		$this->output_shipping_methods_available();
 		$this->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id_shipping_method );
+			$this->output_substep_text_start_tag( $substep_id );
 			$this->output_substep_text_shipping_method();
 			$this->output_substep_text_end_tag();
 		}
@@ -957,16 +957,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output order notes substep.
 	 */
 	public function output_substep_order_notes() {
-		$substep_id_order_notes = 'order_notes';
-		$this->output_substep_start_tag( $substep_id_order_notes, __( 'Additional notes', 'woocommerce-fluid-checkout' ) );
+		$substep_id = 'order_notes';
+		$this->output_substep_start_tag( $substep_id, __( 'Additional notes', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep_id_order_notes );
+		$this->output_substep_fields_start_tag( $substep_id );
 		$this->output_additional_fields();
 		$this->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id_order_notes );
+			$this->output_substep_text_start_tag( $substep_id );
 			$this->output_substep_text_order_notes();
 			$this->output_substep_text_end_tag();
 		}
@@ -1253,16 +1253,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output billing address substep.
 	 */
 	public function output_substep_billing_address() {
-		$substep_id_billing_address = 'billing_address';
-		$this->output_substep_start_tag( $substep_id_billing_address, __( 'Billing Address', 'woocommerce-fluid-checkout' ) );
+		$substep_id = 'billing_address';
+		$this->output_substep_start_tag( $substep_id, __( 'Billing Address', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep_id_billing_address );
+		$this->output_substep_fields_start_tag( $substep_id );
 		$this->output_substep_billing_address_fields();
 		$this->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id_billing_address );
+			$this->output_substep_text_start_tag( $substep_id );
 			$this->output_substep_billing_address_text();
 			$this->output_substep_text_end_tag();
 		}
@@ -1360,10 +1360,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output payment substep.
 	 */
 	public function output_substep_payment() {
-		$substep_id_payment = 'payment';
-		$this->output_substep_start_tag( $substep_id_payment, __( 'Payment', 'woocommerce-fluid-checkout' ) );
+		$substep = 'payment';
+		$this->output_substep_start_tag( $substep, __( 'Payment', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep_id_payment );
+		$this->output_substep_fields_start_tag( $substep );
 		$this->output_substep_payment_fields();
 		$this->output_substep_fields_end_tag();
 
