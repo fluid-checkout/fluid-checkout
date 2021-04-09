@@ -661,6 +661,15 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   vertical-align: middle;
   white-space: nowrap; }
 
+.wfc-wrapper .woocommerce-checkout-review-order-table .product-total .tax_label,
+.wfc-wrapper .woocommerce-checkout-review-order-table .product-total .includes_tax,
+.wfc-wrapper .woocommerce-checkout-review-order-table tfoot td .includes_tax,
+.wfc-wrapper .woocommerce-checkout-review-order-table tfoot td .tax_label {
+  display: block;
+  width: 100%;
+  line-height: 1.2;
+  color: #888181; }
+
 .wfc-wrapper .woocommerce-checkout-review-order-table td.product-total {
   padding-top: 27.5px;
   vertical-align: top; }
