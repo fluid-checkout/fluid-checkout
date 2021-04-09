@@ -415,7 +415,11 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   text-align: center; }
 
 .wfc-contact-login__cta-text {
+  margin-top: 20px;
   margin-bottom: 20px; }
+
+.wfc-step__substep[data-substep-id="contact_login"] {
+  border-top: solid 1px #D6D8D8; }
 
 .wfc-contact-login__separator {
   position: relative;
