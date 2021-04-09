@@ -29,7 +29,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<div class="wfc-contact-login__separator">
 		<?php if ( 'yes' === get_option( 'woocommerce_enable_guest_checkout' ) ) : ?>
-			<span class="wfc-contact-login__separator-text"><?php echo esc_html( apply_filters( 'wfc_checkout_login_separator_text', __( 'Or continue without an account', 'woocommerce-fluid-checkout' ) ) ); ?></span>
+			<span class="wfc-contact-login__separator-text"><?php echo esc_html( apply_filters( 'wfc_checkout_login_separator_text', __( 'Or continue below', 'woocommerce-fluid-checkout' ) ) ); ?></span>
 		<?php endif; ?>
 	</div>
 
