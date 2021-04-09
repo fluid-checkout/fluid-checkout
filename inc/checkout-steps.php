@@ -249,8 +249,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the cart link for the checkout header.
 	 */
 	public function output_checkout_header_cart_link() {
+		ob_start();
+		wc_cart_totals_order_total_html();
+		$link_label_html = str_replace( 'includes_tax', 'includes_tax screen-reader-text', ob_get_clean() );
 		?>
-		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link" data-flyout-toggle data-flyout-target="[data-flyout-order-review]"><?php wc_cart_totals_order_total_html(); ?></a>
+		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link" data-flyout-toggle data-flyout-target="[data-flyout-order-review]"><?php echo $link_label_html; ?></a>
 		<?php
 	}
 
