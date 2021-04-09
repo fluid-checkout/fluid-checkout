@@ -730,6 +730,16 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
     .wfc-wrapper .woocommerce-checkout-review-order-table .product-quantity {
       left: 75px; } }
 
+.wfc-wrapper .woocommerce-checkout-review-order-table dl.variation {
+  margin-bottom: 0;
+  padding-left: 0;
+  color: #888181;
+  font-size: 13px; }
+
+.wfc-wrapper .woocommerce-checkout-review-order-table dl.variation dd {
+  margin: 0;
+  padding: 0; }
+
 .wfc-wrapper .woocommerce-checkout-review-order-table td.product-total {
   background-color: transparent; }
 
