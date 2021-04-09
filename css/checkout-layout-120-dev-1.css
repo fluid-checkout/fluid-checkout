@@ -419,7 +419,8 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   margin-bottom: 20px; }
 
 .wfc-step__substep[data-substep-id="contact_login"] {
-  border-top: solid 1px #D6D8D8; }
+  border-top: solid 1px #D6D8D8;
+  border-bottom: none; }
 
 .wfc-contact-login__separator {
   position: relative;
@@ -496,6 +497,9 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 \*------------------------------------*/
 .wfc-checkout-step {
   padding: 20px 0; }
+
+.wfc-step__substep {
+  border-bottom: solid 1px #D6D8D8; }
 
 .wfc-step__substep + .wfc-step__substep {
   margin-top: 20px; }
