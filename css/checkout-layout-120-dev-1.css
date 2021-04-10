@@ -366,10 +366,10 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   transition: width 0.3s linear, background-color 0.3s linear; }
 
 .wfc-progress-bar__bar.complete {
-  background-color: #1FC19E; }
+  background-color: #00A854; }
 
 .wfc-progress-bar__bar.current {
-  background-color: rgba(31, 193, 158, 0.4); }
+  background-color: rgba(0, 168, 84, 0.4); }
 
 .wfc-progress-bar__bars[data-step-count="2"] .wfc-progress-bar__bar.complete,
 .wfc-progress-bar__bars[data-step-count="2"] .wfc-progress-bar__bar.current {
@@ -644,6 +644,30 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   font-size: 24px;
   margin-right: 10px;
   transform: translateY(-1px); }
+
+/*------------------------------------*\
+  #CHECKOUT PLACE ORDER
+\*------------------------------------*/
+@media (min-width: 750px) {
+  div.place-order {
+    margin: 30px auto;
+    width: 80%; } }
+
+.woocommerce-privacy-policy-text > p,
+.woocommerce-terms-and-conditions-wrapper > p {
+  margin-bottom: 30px; }
+
+.woocommerce-terms-and-conditions {
+  margin-bottom: 30px;
+  padding: 20px 10px;
+  background-color: #F0F4F4; }
+
+.wfc-place-order {
+  text-align: center; }
+
+.wfc-place-order-button.button.alt {
+  margin: 30px auto;
+  min-width: 280px; }
 
 /*------------------------------------*\
 	#ORDER SUMMARY

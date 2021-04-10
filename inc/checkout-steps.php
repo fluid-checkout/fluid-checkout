@@ -83,6 +83,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_order_review' ), 90 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100 );
+		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
 		
 		// Order Review
 		add_action( 'wfc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
@@ -1465,6 +1466,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
 			)
 		);
+	}
+
+	/**
+	 * Add wrapper element and custom class for the checkout place order button.
+	 */
+	public function add_place_order_button_wrapper( $button_html ) {
+		$button_html = str_replace( 'class="button alt', 'class="button alt wfc-place-order-button', $button_html );
+		return '<div class="wfc-place-order">' . $button_html . '</div>';
 	}
 
 

@@ -1,0 +1,36 @@
+/*------------------------------------*\
+  #CHECKOUT PLACE ORDER
+\*------------------------------------*/
+
+div.place-order {
+    @media (#{$bp-larger-than-tablet}) {
+        margin: $global-spacing auto;
+        width: 80%;
+    }
+}
+
+
+
+.woocommerce-privacy-policy-text > p,
+.woocommerce-terms-and-conditions-wrapper > p {
+    margin-bottom: $global-spacing;
+}
+
+.woocommerce-terms-and-conditions {
+    margin-bottom: $global-spacing;
+    padding: $global-spacing-small $global-spacing-extra-small;
+    background-color: $lighter-grey;
+}
+
+
+
+.wfc-place-order {
+    text-align: center;
+}
+
+
+
+.wfc-place-order-button.button.alt {
+    margin: $global-spacing auto;
+    min-width: remsize( 28rem );
+}
