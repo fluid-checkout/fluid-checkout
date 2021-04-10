@@ -8,6 +8,10 @@ jQuery( function( $ ) {
 
 	$.blockUI.defaults.overlayCSS.cursor = 'default';
 
+	// CHANGE: Add custom css selectors for place order button and terms checkbox
+	var _place_order_selector = '#place_order, .wfc-place-order-button';
+	var _terms_selector = '.wfc-terms-checkbox';
+
 	var wc_checkout_form = {
 		updateTimer: false,
 		dirtyInput: false,
@@ -48,6 +52,9 @@ jQuery( function( $ ) {
 			this.$checkout_form.on( 'change', '.address-field input.input-text:not( #billing_address_1 ), .update_totals_on_change input.input-text', this.maybe_input_changed ); // eslint-disable-line max-len
 			// CHANGE: Prevent billing street address field change to update checkout
 			this.$checkout_form.on( 'keydown', '.address-field input.input-text:not( #billing_address_1 ), .update_totals_on_change input.input-text', this.queue_update_checkout ); // eslint-disable-line max-len
+
+			// CHANGE: Add event listener to sync terms checkbox state
+			this.$checkout_form.on( 'change', _terms_selector, this.terms_checked_changed );
 
 			// CHANGE: Removed shipping to different address checkout `change` listener
 
@@ -114,9 +121,11 @@ jQuery( function( $ ) {
 			}
 
 			if ( $( this ).data( 'order_button_text' ) ) {
-				$( '#place_order' ).text( $( this ).data( 'order_button_text' ) );
+				// CHANGE: replaced the place order button css selector with an extended custom selector
+				$( _place_order_selector ).text( $( this ).data( 'order_button_text' ) );
 			} else {
-				$( '#place_order' ).text( $( '#place_order' ).data( 'value' ) );
+				// CHANGE: replaced the place order button css selector with an extended custom selector
+				$( _place_order_selector ).text( $( _place_order_selector ).data( 'value' ) );
 			}
 
 			var selectedPaymentMethod = $( '.woocommerce-checkout input[name="payment_method"]:checked' ).attr( 'id' );
@@ -143,6 +152,11 @@ jQuery( function( $ ) {
 			if ( wc_checkout_form.dirtyInput ) {
 				wc_checkout_form.input_changed( e );
 			}
+		},
+		// CHANGE: Add functiono to sync the terms checkbox state
+		terms_checked_changed: function( e ) {
+			var termsCheckBoxChecked = $( e.target ).prop( 'checked' );
+			$( _terms_selector ).prop( 'checked', termsCheckBoxChecked );
 		},
 		input_changed: function( e ) {
 			wc_checkout_form.dirtyInput = e.target;
@@ -333,7 +347,8 @@ jQuery( function( $ ) {
 					// Remove any notices added previously
 					$( '.woocommerce-NoticeGroup-updateOrderReview' ).remove();
 
-					var termsCheckBoxChecked = $( '#terms' ).prop( 'checked' );
+					// CHANGE: replaced the terms checkbox css selector
+					var termsCheckBoxChecked = $( _terms_selector ).prop( 'checked' );
 
 					// Save payment details to a temporary object
 					var paymentDetails = {};
@@ -362,7 +377,8 @@ jQuery( function( $ ) {
 
 					// Recheck the terms and conditions box, if needed
 					if ( termsCheckBoxChecked ) {
-						$( '#terms' ).prop( 'checked', true );
+						// CHANGE: replaced the terms checkbox css selector
+						$( _terms_selector ).prop( 'checked', true );
 					}
 
 					// Fill in the payment details if possible without overwriting data if set.

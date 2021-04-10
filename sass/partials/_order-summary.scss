@@ -209,6 +209,7 @@
 		padding: 0;
 		max-width: none;
 		background-color: transparent;
+		overflow: visible;
 	}
 }
 
@@ -250,6 +251,14 @@
 
 .wfc-checkout-order-review__actions .wfc-checkout-order-review__edit-cart {
 	padding-left: $order-summary-cell-padding-horizontal;
+}
+
+
+
+.wfc-checkout-order-review__sidebar-actions {
+	display: none;
+
+	@media (#{$bp-larger-than-desktop}) { display: block; }
 }
 
 

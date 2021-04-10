@@ -38,6 +38,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_woocommerce_scripts' ), 5 ); // Need to run before WooCommerce registers and enqueues scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
 		// Checkout Header
@@ -82,7 +83,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_order_review' ), 90 );
-		add_action( 'wfc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100 );
+		add_action( 'wfc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 1 );
+		add_action( 'wfc_checkout_order_review_sidebar_before_actions', array( $this, 'output_checkout_place_order' ), 100, 1 );
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
 		
 		// Order Review
@@ -140,6 +142,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Scripts
 		wp_enqueue_script( 'wfc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', NULL, NULL, true );
 		wp_add_inline_script( 'wfc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
+	}
+
+
+
+	/**
+	 * Replace WooCommerce scripts with modified version.
+	 */
+	public function enqueue_woocommerce_scripts() {
+		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n' ), NULL, true );
 	}
 
 
@@ -1449,6 +1460,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'checkout'           => WC()->checkout(),
 				'order_review_title' => $this->get_order_review_title(),
 				'is_sidebar_widget'  => true,
+				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
 			)
 		);
 	}
@@ -1458,7 +1470,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout place order button.
 	 */
-	public function output_checkout_place_order() {
+	public function output_checkout_place_order( $is_sidebar = false ) {
+		ob_start();
 		wc_get_template(
 			'checkout/place-order.php',
 			array(
@@ -1466,6 +1479,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
 			)
 		);
+		$place_order_html = ob_get_clean();
+
+		// Add terms checkbox custom class
+		$place_order_html = str_replace( 'input-checkbox" name="terms"', 'input-checkbox wfc-terms-checkbox" name="terms"', $place_order_html );
+
+		// Make sure there are no duplicate fields for outputting place order on the sidebar
+		if ( $is_sidebar ) {
+			$place_order_html = str_replace( 'id="terms"', '', $place_order_html );
+			$place_order_html = str_replace( 'name="terms"', '', $place_order_html );
+			$place_order_html = str_replace( 'name="terms-field"', '', $place_order_html );
+			$place_order_html = str_replace( 'name="woocommerce-process-checkout-nonce"', '', $place_order_html );
+			$place_order_html = str_replace( 'name="_wp_http_referer"', '', $place_order_html );
+		}
+
+		echo $place_order_html;
 	}
 
 	/**
