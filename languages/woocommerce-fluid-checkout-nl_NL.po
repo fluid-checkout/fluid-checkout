@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Fluid Checkout\n"
+"Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-16 14:20+0000\n"
 "PO-Revision-Date: 2021-01-27 13:02+0000\n"
@@ -373,8 +373,8 @@ msgid "Who is sending this gift?"
 msgstr "Wie is het verzenden van dit cadeau?"
 
 #. Name of the plugin
-msgid "WooCommerce Fluid Checkout"
-msgstr "WooCommerce Fluid Checkout"
+msgid "Fluid Checkout for WooCommerce"
+msgstr "Fluid Checkout for WooCommerce"
 
 #: inc/checkout-gift-options.php:75
 #, fuzzy

@@ -130,21 +130,21 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
-	 * Return WooCommerce Fluid Checkout multi-step class instance
+	 * Return Fluid Checkout for WooCommerce multi-step class instance
 	 */
 	public function multistep() {
 		return FluidCheckout_Steps::instance();
 	}
 
 	/**
-	 * Return WooCommerce Fluid Checkout checkout fields class instance
+	 * Return Fluid Checkout for WooCommerce checkout fields class instance
 	 */
 	public function checkout_fields() {
 		return FluidCheckout_CheckoutFields::instance();
 	}
 
 	/**
-	 * Return WooCommerce Fluid Checkout account pages class instance
+	 * Return Fluid Checkout for WooCommerce account pages class instance
 	 */
 	public function account_pages() {
 		return FluidCheckout_AccountPages::instance();

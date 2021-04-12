@@ -1,5 +1,5 @@
 /**
- * WooCommerce Fluid Checkout
+ * Fluid Checkout for WooCommerce
  * 
  * Country Select Script
  * 
