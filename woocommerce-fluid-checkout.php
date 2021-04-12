@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: WooCommerce Fluid Checkout
+Plugin Name: Fluid Checkout for WooCommerce
 Plugin URI: https://fluidweb.co/plugins/fluid-checkout/
-Description: A fluid checkout experience for any WooCommerce store. Ask for shipping information before billing information in a linear and multi-step checkout experience, add options for gift message and packaging and add a coupon code field at the checkout page that does not distract your customers.
+Description: Provides a fluid checkout experience for any WooCommerce store. Ask for shipping information before billing in a linear and multi-step checkout, add options for gift message and packaging and add a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.
 Text Domain: woocommerce-fluid-checkout
 Domain Path: /languages
 Version: 1.2.0-dev-1
@@ -50,7 +50,7 @@ class FluidCheckout {
 	public static $this_plugin = null;
 	public static $directory_path;
 	public static $directory_url;
-	public static $plugin = 'WooCommerce Fluid Checkout';
+	public static $plugin = 'Fluid Checkout for WooCommerce';
 	public static $version = ''; // Values set at function `set_plugin_vars`
 	public static $asset_version = ''; // Values set at function `set_plugin_vars`
 
@@ -88,9 +88,6 @@ class FluidCheckout {
 		$this->load_updater();
 		$this->add_features();
 		$this->hooks();
-
-		// Load premium features
-		// require_once self::$directory_path . 'inc/premium/premium-features.php';
 	}
 
 

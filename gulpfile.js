@@ -66,7 +66,6 @@ gulp.task( 'clean-js', function( done ) {
 gulp.task( 'build-css', gulp.series( 'update-ver', 'clean-css', function( done ) {
 	gulp.src([
 		'./sass/*.scss',
-		'./sass/premium/*.scss',
 	] )
 	.pipe(plumber())
 	.pipe(sourcemaps.init())
@@ -109,7 +108,6 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 	// JS FILES
 	gulp.src([
 		settings.jsPath + '*.js',
-		settings.jsPath + 'premium/*.js',
 	])
 	.pipe(rename({suffix: settings.assetsVersion}))
 	.pipe(gulp.dest('./js/')) // save .js

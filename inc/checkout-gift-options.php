@@ -39,7 +39,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 
 
 	/**
-	 * Return WooCommerce Fluid Checkout multi-step class instance
+	 * Return Fluid Checkout for WooCommerce multi-step class instance
 	 */
 	public function multistep() {
 		return FluidCheckout_Steps::instance();
