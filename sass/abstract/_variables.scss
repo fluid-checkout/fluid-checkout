@@ -11,7 +11,7 @@ $dark-liver-grey:               #535156 !default;
 $rocket-mettallic-grey:         #888181 !default;
 $light-grey:                    #D6D8D8 !default;
 $cultured-grey:                 #F0F4F4 !default;
-$mountain-meadow-green:         #1FC19E !default;
+$green-pigment:                 #00A854 !default;
 $viridian-green:                #30989C !default;
 $maximum-blue-green:            #44C1C5 !default;
 $tarte-orange:                  #FE4A49 !default;
@@ -29,7 +29,7 @@ $lighter-grey:                  $cultured-grey !default;
 $white:                         #fff !default;
 
 // Utility colors
-$success-color:                 $mountain-meadow-green !default;
+$success-color:                 $green-pigment !        default;
 $error-color:                   $tarte-orange !default;
 $alert-color:                   $crayola-yellow !default;
 $info-color:                    $maximum-blue-green !default;
@@ -81,7 +81,7 @@ $global-radius-extra-large:         remsize( 3.4rem ) !default;
 $font-size-tiny:                        remsize( 1rem ) !default;
 $font-size-extra-small:                 remsize( 1.3rem ) !default;
 $font-size-small:                       remsize( 1.5rem ) !default;
-$font-size:                             remsize( 1.8rem ) !default; // Should be at least 16px to prevent auto-zoom issues on Safari Mobile
+$font-size:                             remsize( 1.6rem ) !default; // Should be at least 16px to prevent auto-zoom issues on Safari Mobile
 $font-size-medium:                      remsize( 2rem ) !default;
 $font-size-large:                       remsize( 2.8rem ) !default;
 $font-size-extra-large:                 remsize( 4rem ) !default;
@@ -147,16 +147,16 @@ $container-width-desktop-extra-large:       remsize( 140rem ) !default;
 // ----------------------------------------
 // ANIMATIONS
 
-$global-animation-duration-slowest: 2.5s !default;
-$global-animation-duration-slower:  1.5s !default;
-$global-animation-duration-slow:    .75s !default;
-$global-animation-duration:         .3s !default;
-$global-animation-duration-fast:    .15s !default;
-$global-animation-duration-faster:  .1s !default;
-$global-animation-duration-fastest: .05s !default;
+$global-animation-duration-slowest:         2.5s !default;
+$global-animation-duration-slower:          1.5s !default;
+$global-animation-duration-slow:            .75s !default;
+$global-animation-duration:                 .3s !default;
+$global-animation-duration-fast:            .15s !default;
+$global-animation-duration-faster:          .1s !default;
+$global-animation-duration-fastest:         .05s !default;
 
-$global-animation-easing:           ease !default;
-$sliding-animation-easing:          cubic-bezier(0.25, 0.46, 0.45, 0.94) !default; // ease-out-quadratic
+$global-animation-easing:                   ease !default;
+$sliding-animation-easing:                  cubic-bezier(0.25, 0.46, 0.45, 0.94) !default; // ease-out-quadratic
 
 // END - ANIMATIONS
 // ----------------------------------------
@@ -217,9 +217,33 @@ $icons: (
 	'i-trash': '\e822',
 	'i-x': '\e827',
 	'i-cart': '\e828',
+	'i-gift-box': '\e829',
 ) !default;
 
 // END - ICONS
+// ----------------------------------------
+
+
+
+// ----------------------------------------
+// OPTION BOX
+
+$option-box-padding-vertical:               $global-spacing-extra-small !default;
+$option-box-padding-horizontal:             $global-spacing-extra-small !default;
+
+$option-box-border-color:                   $border-color !default;
+$option-box-border:                         solid remsize( .1rem ) $option-box-border-color !default;
+$option-box-border-radius:                  $global-radius-medium !default;
+
+$option-box-radio-size:                     $icon-size !default;
+$option-box-radio-border:                   solid remsize( .2rem ) $border-color !default;
+
+$option-box-checked-radio-color:            $success-color !default;
+$option-box-checked-icon-color:             $white !default;
+$option-box-checked-background-color:       $lighter-grey !default;
+$option-box-checked-color:                  inherit !default;
+
+// END - OPTION BOX
 // ----------------------------------------
 
 
@@ -229,14 +253,14 @@ $icons: (
 // ----------------------------------------
 // CHECKOUT HEADER
 
-$checkout-header-background-color:         $white !default;
-$checkout-header-box-shadow:               0 remsize( .2rem ) remsize( 1rem ) rgba( 0, 0, 0, .05 ) !default;
+$checkout-header-background-color:          $white !default;
+$checkout-header-box-shadow:                0 remsize( .2rem ) remsize( 1rem ) rgba( 0, 0, 0, .05 ) !default;
 
-$checkout-header-height:                   remsize( 6rem ) !default;
-$checkout-header-height--large-screen:     remsize( 10rem ) !default;
+$checkout-header-height:                    remsize( 6rem ) !default;
+$checkout-header-height--large-screen:      remsize( 10rem ) !default;
 
-$checkout-logo-height:                     remsize( 2.5rem ) !default;
-$checkout-logo-height--large-screen:       remsize( 4rem ) !default;
+$checkout-logo-height:                      remsize( 2.5rem ) !default;
+$checkout-logo-height--large-screen:        remsize( 4rem ) !default;
 
 // END - CHECKOUT HEADER
 // ----------------------------------------
@@ -248,15 +272,15 @@ $checkout-logo-height--large-screen:       remsize( 4rem ) !default;
 // ----------------------------------------
 // CHECKOUT LAYOUT
 
-$checkout-column-gap--large-screen:        $global-spacing-medium !default;
+$checkout-column-gap--large-screen:         $global-spacing-medium !default;
 
-$checkout-steps-width--large-screen:       60% !default;
+$checkout-steps-width--large-screen:        60% !default;
 
 // The magic number below makes the order review width go up to the content area considering the paddings
-$checkout-overview-width-magic-number:     1.8 !default; // 1.8 works for 50px of padding on the content area
-$checkout-overview-width--large-screen:    40% !default;
-$checkout-overview-background:             linear-gradient( 90deg, darken( $lighter-grey, 5% ) 0%, $lighter-grey .5%, $lighter-grey 100% ) !default;
-$checkout-overview-border-left:            none !default;
+$checkout-overview-width-magic-number:      1.8 !default; // 1.8 works for 50px of padding on the content area
+$checkout-overview-width--large-screen:     40% !default;
+$checkout-overview-background:              linear-gradient( 90deg, darken( $lighter-grey, 5% ) 0%, $lighter-grey .5%, $lighter-grey 100% ) !default;
+$checkout-overview-border-left:             none !default;
 
 // END - CHECKOUT LAYOUT
 // ----------------------------------------
@@ -342,4 +366,63 @@ $order-summary-font-size:                   $font-size-small !default;
 $order-summary-font-size--large-screen:     $font-size-small--large-screen !default;
 
 // END - ORDER SUMMARY
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// SHIPPING METHODS
+
+$shipping-method-padding-vertical:          $option-box-padding-vertical !default;
+$shipping-method-padding-horizontal:        $option-box-padding-horizontal !default;
+$shipping-method-space-between-options:     0 !default;
+
+$shipping-method-font-weight:               normal !default;
+
+$shipping-method-price-font-weight:         bold !default;
+$shipping-method-price-width:               $global-spacing-large !default;
+
+$shipping-method-border-color:              $option-box-border-color !default;
+$shipping-method-border:                    $option-box-border !default;
+$shipping-method-border-radius:             $option-box-border-radius !default;
+
+$shipping-method-radio-size:                $option-box-radio-size !default;
+$shipping-method-radio-border:              $option-box-radio-border !default;
+
+$shipping-method-checked-radio-color:       $option-box-checked-radio-color !default;
+$shipping-method-checked-icon-color:        $option-box-checked-icon-color !default;
+$shipping-method-checked-background-color:  $option-box-checked-background-color !default;
+$shipping-method-checked-color:             $option-box-checked-color !default;
+
+// END - SHIPPING METHODS
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// PAYMENT METHODS
+
+$payment-method-padding-vertical:          $option-box-padding-vertical !default;
+$payment-method-padding-horizontal:        $global-spacing-small !default;
+$payment-method-space-between-options:     0 !default;
+
+$payment-method-font-weight:               normal !default;
+
+$payment-method-border-color:              $option-box-border-color !default;
+$payment-method-border:                    $option-box-border !default;
+$payment-method-border-radius:             $option-box-border-radius !default;
+
+$payment-method-radio-size:                $option-box-radio-size !default;
+$payment-method-radio-border:              $option-box-radio-border !default;
+
+$payment-method-checked-radio-color:       $option-box-checked-radio-color !default;
+$payment-method-checked-icon-color:        $option-box-checked-icon-color !default;
+$payment-method-checked-background-color:  $option-box-checked-background-color !default;
+$payment-method-checked-color:             $option-box-checked-color !default;
+
+// END - PAYMENT METHODS
 // ----------------------------------------

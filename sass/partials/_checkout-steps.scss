@@ -9,6 +9,10 @@
 
 
 
+.wfc-step__substep {
+	border-bottom: solid remsize( .1rem ) $border-color;
+}
+
 .wfc-step__substep + .wfc-step__substep {
 	margin-top: $global-spacing-small;
 }

@@ -56,6 +56,8 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 		<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
 		<?php if ( $is_sidebar_widget ) : ?>
+			<?php do_action( 'wfc_checkout_order_review_sidebar_before_actions', $is_sidebar_widget ); ?>
+
 			<div class="wfc-checkout-order-review__actions">
 				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout-order-review__edit-cart"><?php echo __( 'Edit Cart', 'woocommerce-fluid-checkout' ); ?></a>
 				<button href="#" class="button" data-flyout-close><?php echo __( 'Continue', 'woocommerce-fluid-checkout' ); ?></button>

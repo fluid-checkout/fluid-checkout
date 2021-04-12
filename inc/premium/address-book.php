@@ -1666,12 +1666,11 @@ class FluidCheckout_AddressBook extends FluidCheckout {
 
 
 	/**
-	 * Replace WooCommerce address related scripts with modified version targeting field ids without address type prefix
+	 * Replace WooCommerce scripts with modified version.
 	 */
 	public function enqueue_woocommerce_scripts() {
 		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
 		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
-		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n' ), NULL, true );
 	}
 
 	

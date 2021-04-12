@@ -10,10 +10,15 @@
 
 
 .wfc-contact-login__cta-text {
+	margin-top: $global-spacing-small;
 	margin-bottom: $global-spacing-small;
 }
 
 
+.wfc-step__substep[data-substep-id="contact_login"] {
+	border-top: solid remsize( .1rem ) $border-color;
+	border-bottom: none;
+}
 
 .wfc-contact-login__separator {
 	position: relative;

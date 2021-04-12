@@ -11,11 +11,11 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<div class="shipping shipping_method__package" data-title="<?php echo esc_attr( $package_name ); ?>" data-package-index="<?php echo esc_attr( $package_index ); ?>">
+<div class="shipping shipping-method__package" data-title="<?php echo esc_attr( $package_name ); ?>" data-package-index="<?php echo esc_attr( $package_index ); ?>">
 
 <?php if ( count( $available_methods ) > 0 ) : ?>
 
-	<?php echo apply_filters( 'wfc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping_method__options">' ); ?>
+	<?php echo apply_filters( 'wfc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
 
 	<?php
 	$first = true;
@@ -23,8 +23,8 @@ defined( 'ABSPATH' ) || exit;
 		$checked_method = ! $chosen_method ? $first === true : $method->id == $chosen_method;
 
 		echo apply_filters( 'wfc_shipping_method_option_markup',
-			sprintf( '<li class="shipping_method__option"><input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />
-				<label for="shipping_method_%1$d_%2$s" class="shipping_method__option has-price">%5$s</label>
+			sprintf( '<li class="shipping-method__option"><input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />
+				<label for="shipping_method_%1$d_%2$s" class="shipping-method__option-label has-price">%5$s</label>
 			</li>',
 			$package_index,
 			sanitize_title( $method->id ),

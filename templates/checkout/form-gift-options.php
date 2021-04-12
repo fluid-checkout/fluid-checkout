@@ -29,17 +29,20 @@ defined( 'ABSPATH' ) || exit;
     ?>
 
 
-    <div id="wfc-gift-options__field-wrapper">
+    <div id="wfc-gift-options__field-wrapper" data-collapsible data-collapsible-content>
+        <div class="collapsible-content__inner">
 
-        <?php do_action( 'wfc_checkout_gift_options_before_fields' ); ?>
+            <?php do_action( 'wfc_checkout_gift_options_before_fields' ); ?>
 
-        <?php
-        foreach ( $display_fields as $key => $field ) {
-            woocommerce_form_field( $key, $field, array_key_exists( 'default', $field ) ? $field['default'] : '' );
-        }
-        ?>
+            <?php
+            foreach ( $display_fields as $key => $field ) {
+                woocommerce_form_field( $key, $field, array_key_exists( 'default', $field ) ? $field['default'] : '' );
+            }
+            ?>
 
-        <?php do_action( 'wfc_checkout_gift_options_after_fields' ); ?>
+            <?php do_action( 'wfc_checkout_gift_options_after_fields' ); ?>
+
+        </div>
 
     </div>
 

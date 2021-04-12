@@ -38,6 +38,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_woocommerce_scripts' ), 5 ); // Need to run before WooCommerce registers and enqueues scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
 		// Checkout Header
@@ -68,7 +69,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Shipping
 		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
 		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
-		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_order_notes' ), 100 );
+		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_order_notes' ), 90 );
 		add_action( 'wfc_cart_totals_shipping', array( $this, 'output_cart_totals_shipping_section' ), 10 );
 		add_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
@@ -82,7 +83,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_order_review' ), 90 );
-		add_action( 'wfc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100 );
+		add_action( 'wfc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 1 );
+		add_action( 'wfc_checkout_order_review_sidebar_before_actions', array( $this, 'output_checkout_place_order_for_sidebar' ), 100, 1 );
+		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
+		add_action( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
 		
 		// Order Review
 		add_action( 'wfc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
@@ -139,6 +143,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Scripts
 		wp_enqueue_script( 'wfc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', NULL, NULL, true );
 		wp_add_inline_script( 'wfc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
+	}
+
+
+
+	/**
+	 * Replace WooCommerce scripts with modified version.
+	 */
+	public function enqueue_woocommerce_scripts() {
+		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n' ), NULL, true );
 	}
 
 
@@ -249,8 +262,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the cart link for the checkout header.
 	 */
 	public function output_checkout_header_cart_link() {
+		ob_start();
+		wc_cart_totals_order_total_html();
+		$link_label_html = str_replace( 'includes_tax', 'includes_tax screen-reader-text', ob_get_clean() );
 		?>
-		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link" data-flyout-toggle data-flyout-target="[data-flyout-order-review]"><?php wc_cart_totals_order_total_html(); ?></a>
+		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout__cart-link" data-flyout-toggle data-flyout-target="[data-flyout-order-review]"><?php echo $link_label_html; ?></a>
 		<?php
 	}
 
@@ -659,7 +675,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		?>
 		<div class="wfc-step__substep" <?php echo $substep_attributes_str; ?>>
 			<?php if ( ! empty( $substep_title ) ) : ?>
-				<h3 class="wfc-step__substep-title"><?php echo esc_html( $substep_title ); ?></h3>
+				<h3 class="wfc-step__substep-title"><?php echo wp_kses( $substep_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ); ?></h3>
 			<?php endif; ?>
 		<?php
 	}
@@ -742,16 +758,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output contact substep.
 	 */
 	public function output_substep_contact() {
-		$substep_id_contact = 'contact';
-		$this->output_substep_start_tag( $substep_id_contact, __( 'My contact', 'woocommerce-fluid-checkout' ) );
+		$substep_id = 'contact';
+		$this->output_substep_start_tag( $substep_id, __( 'My contact', 'woocommerce-fluid-checkout' ) );
 		
-		$this->output_substep_fields_start_tag( $substep_id_contact );
+		$this->output_substep_fields_start_tag( $substep_id );
 		$this->output_step_contact_fields();
 		$this->output_substep_fields_end_tag();
 		
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id_contact );
+			$this->output_substep_text_start_tag( $substep_id );
 			$this->output_substep_contact_text();
 			$this->output_substep_text_end_tag();
 		}
@@ -881,10 +897,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if user already logged in
 		if ( is_user_logged_in() ) { return; };
 
-		$substep_id_contact = 'contact_login';
-		$this->output_substep_start_tag( $substep_id_contact, '' );
+		$substep_id = 'contact_login';
+		$this->output_substep_start_tag( $substep_id, '' );
 		
-		$this->output_substep_fields_start_tag( $substep_id_contact );
+		$this->output_substep_fields_start_tag( $substep_id );
 		$this->output_substep_contact_login_button();
 		$this->output_substep_fields_end_tag();
 			
@@ -912,16 +928,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output shipping address substep.
 	 */
 	public function output_substep_shipping_address() {
-		$substep_id_shipping_address = 'shipping_address';
-		$this->output_substep_start_tag( $substep_id_shipping_address, __( 'Shipping Address', 'woocommerce-fluid-checkout' ) );
+		$substep_id = 'shipping_address';
+		$this->output_substep_start_tag( $substep_id, __( 'Shipping Address', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep_id_shipping_address );
+		$this->output_substep_fields_start_tag( $substep_id );
 		$this->output_substep_shipping_address_fields();
 		$this->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id_shipping_address );
+			$this->output_substep_text_start_tag( $substep_id );
 			$this->output_substep_shipping_address_text();
 			$this->output_substep_text_end_tag();
 		}
@@ -933,16 +949,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output shipping method substep.
 	 */
 	public function output_substep_shipping_method() {
-		$substep_id_shipping_method = 'shipping_method';
-		$this->output_substep_start_tag( $substep_id_shipping_method, __( 'Shipping Method', 'woocommerce-fluid-checkout' ) );
+		$substep_id = 'shipping_method';
+		$this->output_substep_start_tag( $substep_id, __( 'Shipping Method', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep_id_shipping_method );
+		$this->output_substep_fields_start_tag( $substep_id );
 		$this->output_shipping_methods_available();
 		$this->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id_shipping_method );
+			$this->output_substep_text_start_tag( $substep_id );
 			$this->output_substep_text_shipping_method();
 			$this->output_substep_text_end_tag();
 		}
@@ -954,16 +970,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output order notes substep.
 	 */
 	public function output_substep_order_notes() {
-		$substep_id_order_notes = 'order_notes';
-		$this->output_substep_start_tag( $substep_id_order_notes, __( 'Additional notes', 'woocommerce-fluid-checkout' ) );
+		$substep_id = 'order_notes';
+		$this->output_substep_start_tag( $substep_id, __( 'Additional notes', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep_id_order_notes );
+		$this->output_substep_fields_start_tag( $substep_id );
 		$this->output_additional_fields();
 		$this->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id_order_notes );
+			$this->output_substep_text_start_tag( $substep_id );
 			$this->output_substep_text_order_notes();
 			$this->output_substep_text_end_tag();
 		}
@@ -1184,7 +1200,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return string $label Shipping rate label.
 	 */
 	public function get_cart_shipping_methods_label( $method ) {
-		$label     = sprintf( apply_filters( 'wfc_shipping_method_option_label_markup', '<span class="shipping_method__option-label">%s</span>' ), $method->get_label() );
+		$label     = sprintf( apply_filters( 'wfc_shipping_method_option_label_markup', '<span class="shipping-method__option-text">%s</span>' ), $method->get_label() );
 		$has_cost  = 0 < $method->cost;
 		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
 		
@@ -1197,7 +1213,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 					$method_costs .= ' <small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
 				}
 
-				$label .= sprintf( apply_filters( 'wfc_shipping_method_option_price_markup', ' <span class="shipping_method__option-price">%s</span>' ), $method_costs );
+				$label .= sprintf( apply_filters( 'wfc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>' ), $method_costs );
 
 			} else {
 				
@@ -1206,7 +1222,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 					$method_costs .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
 				}
 
-				$label .= sprintf( apply_filters( 'wfc_shipping_method_option_price_markup', ' <span class="shipping_method__option-price">%s</span>' ), $method_costs );
+				$label .= sprintf( apply_filters( 'wfc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>' ), $method_costs );
 
 			}
 		}
@@ -1250,16 +1266,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output billing address substep.
 	 */
 	public function output_substep_billing_address() {
-		$substep_id_billing_address = 'billing_address';
-		$this->output_substep_start_tag( $substep_id_billing_address, __( 'Billing Address', 'woocommerce-fluid-checkout' ) );
+		$substep_id = 'billing_address';
+		$this->output_substep_start_tag( $substep_id, __( 'Billing Address', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep_id_billing_address );
+		$this->output_substep_fields_start_tag( $substep_id );
 		$this->output_substep_billing_address_fields();
 		$this->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id_billing_address );
+			$this->output_substep_text_start_tag( $substep_id );
 			$this->output_substep_billing_address_text();
 			$this->output_substep_text_end_tag();
 		}
@@ -1357,10 +1373,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output payment substep.
 	 */
 	public function output_substep_payment() {
-		$substep_id_payment = 'payment';
-		$this->output_substep_start_tag( $substep_id_payment, __( 'Payment', 'woocommerce-fluid-checkout' ) );
+		$substep = 'payment';
+		$this->output_substep_start_tag( $substep, __( 'Payment Method', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep_id_payment );
+		$this->output_substep_fields_start_tag( $substep );
 		$this->output_substep_payment_fields();
 		$this->output_substep_fields_end_tag();
 
@@ -1379,6 +1395,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'checkout'          => WC()->checkout(),
 			)
 		);
+	}
+
+
+
+	/**
+	 * Remove links and fix accessibility attributes for payment method icons.
+	 */
+	public function change_payment_gateway_icon_html( $icon, $id ) {
+		
+		// Remove links from the icon html
+		$pattern = '/(<a [^<]*)([^<]*)(<\/a>)/';
+		$icon = preg_replace( $pattern, '$2', $icon );
+
+		// Fix accessibility attributes
+		$pattern = '/( alt="[^<]*")/';
+		$icon = preg_replace( $pattern, 'alt="" aria-hidden="true" role="presentation"', $icon );
+
+		return $icon;
 	}
 
 
@@ -1445,6 +1479,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'checkout'           => WC()->checkout(),
 				'order_review_title' => $this->get_order_review_title(),
 				'is_sidebar_widget'  => true,
+				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
 			)
 		);
 	}
@@ -1452,9 +1487,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output checkout place order button.
+	 * Output checkout place order section.
 	 */
-	public function output_checkout_place_order() {
+	public function output_checkout_place_order( $is_sidebar = false ) {
+		ob_start();
 		wc_get_template(
 			'checkout/place-order.php',
 			array(
@@ -1462,6 +1498,38 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
 			)
 		);
+		$place_order_html = ob_get_clean();
+
+		// Add terms checkbox custom class
+		$place_order_html = str_replace( 'input-checkbox" name="terms"', 'input-checkbox wfc-terms-checkbox" name="terms"', $place_order_html );
+
+		// Make sure there are no duplicate fields for outputting place order on the sidebar
+		if ( $is_sidebar ) {
+			$place_order_html = str_replace( 'id="terms"', '', $place_order_html );
+			$place_order_html = str_replace( 'id="place_order"', '', $place_order_html );
+			$place_order_html = str_replace( 'id="woocommerce-process-checkout-nonce"', '', $place_order_html );
+			$place_order_html = str_replace( 'name="terms"', '', $place_order_html );
+			$place_order_html = str_replace( 'name="terms-field"', '', $place_order_html );
+			$place_order_html = str_replace( 'name="woocommerce-process-checkout-nonce"', '', $place_order_html );
+			$place_order_html = str_replace( 'name="_wp_http_referer"', '', $place_order_html );
+		}
+
+		echo $place_order_html;
+	}
+
+	/**
+	 * Output checkout place order section.
+	 */
+	public function output_checkout_place_order_for_sidebar() {
+		$this->output_checkout_place_order( true );
+	}
+
+	/**
+	 * Add wrapper element and custom class for the checkout place order button.
+	 */
+	public function add_place_order_button_wrapper( $button_html ) {
+		$button_html = str_replace( 'class="button alt', 'class="button alt wfc-place-order-button', $button_html );
+		return '<div class="wfc-place-order">' . $button_html . '</div>';
 	}
 
 
