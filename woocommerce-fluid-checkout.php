@@ -88,9 +88,6 @@ class FluidCheckout {
 		$this->load_updater();
 		$this->add_features();
 		$this->hooks();
-
-		// Load premium features
-		// require_once self::$directory_path . 'inc/premium/premium-features.php';
 	}
 
 
