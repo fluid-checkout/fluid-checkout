@@ -55,7 +55,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 				'ajaxUrl'			=> admin_url( 'admin-ajax.php' ),
 				'flyoutBlock'       => array(
 					'openAnimationClass' => 'fade-in-up',
-        			'closeAnimationClass' => 'fade-out-down',
+					'closeAnimationClass' => 'fade-out-down',
 				),
 				'collapsibleBlock'  => array(),
 			) )
