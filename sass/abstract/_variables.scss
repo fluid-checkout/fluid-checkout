@@ -398,3 +398,31 @@ $shipping-method-checked-color:             $option-box-checked-color !default;
 
 // END - SHIPPING METHODS
 // ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// PAYMENT METHODS
+
+$payment-method-padding-vertical:          $option-box-padding-vertical !default;
+$payment-method-padding-horizontal:        $global-spacing-small !default;
+$payment-method-space-between-options:     0 !default;
+
+$payment-method-font-weight:               normal !default;
+
+$payment-method-border-color:              $option-box-border-color !default;
+$payment-method-border:                    $option-box-border !default;
+$payment-method-border-radius:             $option-box-border-radius !default;
+
+$payment-method-radio-size:                $option-box-radio-size !default;
+$payment-method-radio-border:              $option-box-radio-border !default;
+
+$payment-method-checked-radio-color:       $option-box-checked-radio-color !default;
+$payment-method-checked-icon-color:        $option-box-checked-icon-color !default;
+$payment-method-checked-background-color:  $option-box-checked-background-color !default;
+$payment-method-checked-color:             $option-box-checked-color !default;
+
+// END - PAYMENT METHODS
+// ----------------------------------------

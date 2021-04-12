@@ -84,8 +84,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_order_review' ), 90 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 1 );
-		add_action( 'wfc_checkout_order_review_sidebar_before_actions', array( $this, 'output_checkout_place_order' ), 100, 1 );
+		add_action( 'wfc_checkout_order_review_sidebar_before_actions', array( $this, 'output_checkout_place_order_for_sidebar' ), 100, 1 );
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
+		add_action( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
 		
 		// Order Review
 		add_action( 'wfc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
@@ -1373,7 +1374,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_payment() {
 		$substep = 'payment';
-		$this->output_substep_start_tag( $substep, __( 'Payment', 'woocommerce-fluid-checkout' ) );
+		$this->output_substep_start_tag( $substep, __( 'Payment Method', 'woocommerce-fluid-checkout' ) );
 
 		$this->output_substep_fields_start_tag( $substep );
 		$this->output_substep_payment_fields();
@@ -1394,6 +1395,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'checkout'          => WC()->checkout(),
 			)
 		);
+	}
+
+
+
+	/**
+	 * Remove links and fix accessibility attributes for payment method icons.
+	 */
+	public function change_payment_gateway_icon_html( $icon, $id ) {
+		
+		// Remove links from the icon html
+		$pattern = '/(<a [^<]*)([^<]*)(<\/a>)/';
+		$icon = preg_replace( $pattern, '$2', $icon );
+
+		// Fix accessibility attributes
+		$pattern = '/( alt="[^<]*")/';
+		$icon = preg_replace( $pattern, 'alt="" aria-hidden="true" role="presentation"', $icon );
+
+		return $icon;
 	}
 
 
@@ -1468,7 +1487,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output checkout place order button.
+	 * Output checkout place order section.
 	 */
 	public function output_checkout_place_order( $is_sidebar = false ) {
 		ob_start();
@@ -1487,6 +1506,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Make sure there are no duplicate fields for outputting place order on the sidebar
 		if ( $is_sidebar ) {
 			$place_order_html = str_replace( 'id="terms"', '', $place_order_html );
+			$place_order_html = str_replace( 'id="place_order"', '', $place_order_html );
+			$place_order_html = str_replace( 'id="woocommerce-process-checkout-nonce"', '', $place_order_html );
 			$place_order_html = str_replace( 'name="terms"', '', $place_order_html );
 			$place_order_html = str_replace( 'name="terms-field"', '', $place_order_html );
 			$place_order_html = str_replace( 'name="woocommerce-process-checkout-nonce"', '', $place_order_html );
@@ -1494,6 +1515,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		echo $place_order_html;
+	}
+
+	/**
+	 * Output checkout place order section.
+	 */
+	public function output_checkout_place_order_for_sidebar() {
+		$this->output_checkout_place_order( true );
 	}
 
 	/**

@@ -44,6 +44,7 @@
 	border-bottom: $shipping-method-border;
 	font-weight: $shipping-method-font-weight;
 	cursor: pointer;
+	transition: all $global-animation-duration-fast linear;
 }
 .shipping-method__option:last-child .shipping-method__option-label {
 	border-bottom: none;
@@ -74,6 +75,10 @@
 .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:before {
 	border-color: $success-color;
 	background-color: $success-color;
+}
+
+.shipping-method__option .shipping-method__option-label:hover {
+	background-color: $shipping-method-checked-background-color;
 }
 .shipping-method__option .shipping-method__option-label:hover:before,
 .shipping-method__option .shipping-method__option-label:focus:before {

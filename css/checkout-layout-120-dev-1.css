@@ -643,7 +643,8 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   width: 100%;
   border-bottom: solid 1px #D6D8D8;
   font-weight: normal;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: all 0.15s linear; }
 
 .shipping-method__option:last-child .shipping-method__option-label {
   border-bottom: none; }
@@ -669,6 +670,9 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:before {
   border-color: #00A854;
   background-color: #00A854; }
+
+.shipping-method__option .shipping-method__option-label:hover {
+  background-color: #F0F4F4; }
 
 .shipping-method__option .shipping-method__option-label:hover:before,
 .shipping-method__option .shipping-method__option-label:focus:before {
@@ -722,6 +726,147 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 
 .shipping-method__option .shipping-method__option-price .tax_label {
   display: block; }
+
+/*------------------------------------*\
+  #CHECKOUT PAYMENT METHODS
+\*------------------------------------*/
+.wfc-wrapper .wfc-payment-methods__wrapper {
+  position: relative;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  /* HIDE SCROLL BAR */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 10+ */
+  /* END - HIDE SCROLL BAR */ }
+  .wfc-wrapper .wfc-payment-methods__wrapper::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+    /* Chrome/Safari/Webkit */ }
+
+.wfc-wrapper #payment .payment_methods {
+  list-style-type: none;
+  display: block;
+  width: 100%;
+  border: solid 1px #D6D8D8;
+  border-radius: 13px;
+  overflow: hidden; }
+
+.wfc-wrapper #payment .payment_methods > .wc_payment_method {
+  display: block;
+  width: 100%;
+  margin: 0 0 0 0; }
+
+.wc_payment_method input[type="radio"] {
+  position: absolute;
+  display: block;
+  width: 1px;
+  height: 1px;
+  opacity: 0; }
+
+.wfc-wrapper #payment .payment_methods > .wc_payment_method > label {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 10px 20px 10px 44px;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: solid 1px #D6D8D8;
+  font-weight: normal;
+  cursor: pointer;
+  transition: all 0.15s linear; }
+
+.wfc-wrapper #payment .payment_methods > .wc_payment_method:last-child > label {
+  border-bottom: none; }
+
+.wfc-wrapper #payment .payment_methods > li.wc_payment_method:not(.woocommerce-notice) {
+  background-color: transparent; }
+
+.wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:checked + label {
+  background-color: #F0F4F4;
+  color: inherit; }
+
+.wfc-wrapper #payment .payment_methods > li.wc_payment_method > input[type=radio]:first-child:checked + label:before {
+  content: ''; }
+
+.wfc-wrapper #payment .payment_methods > .wc_payment_method > label:before {
+  box-sizing: border-box;
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: solid 2px #D6D8D8;
+  border-radius: 100%;
+  transition: all 0.15s linear; }
+
+.wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:checked + label:before {
+  border-color: #00A854;
+  background-color: #00A854; }
+
+.wfc-wrapper #payment .payment_methods > .wc_payment_method > label:hover {
+  background-color: #F0F4F4; }
+
+.wfc-wrapper #payment .payment_methods > .wc_payment_method > label:hover:before,
+.wfc-wrapper #payment .payment_methods > .wc_payment_method > label:focus:before {
+  border-color: #afb3b3; }
+
+.wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:checked + label:after {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "";
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  color: #fff; }
+
+.wfc-wrapper #payment ul.payment_methods > li.wc_payment_method > label .payment-method__label-text {
+  display: inline-block;
+  margin-right: 10px; }
+
+.wfc-wrapper #payment ul.payment_methods > li.wc_payment_method > label img {
+  float: none;
+  display: inline-block;
+  height: 24px;
+  vertical-align: top; }
+
+.wfc-wrapper #payment .payment_methods > li .payment_box {
+  padding: 20px;
+  border-bottom: solid 1px #D6D8D8;
+  background-color: #F0F4F4; }
+
+.wfc-wrapper .payment_box > p:last-child {
+  margin-bottom: 0; }
 
 /*------------------------------------*\
   #CHECKOUT GIFT OPTIONS
