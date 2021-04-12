@@ -2,21 +2,8 @@
   #CHECKOUT PAYMENT METHODS
 \*------------------------------------*/
 
-
 .wfc-wrapper .wfc-payment-methods__wrapper {
     position: relative;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-
-    /* HIDE SCROLL BAR */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE 10+ */
-    &::-webkit-scrollbar {
-        width: 0;
-        height: 0;
-        background: transparent; /* Chrome/Safari/Webkit */
-    }
-    /* END - HIDE SCROLL BAR */
 }
 
 
@@ -28,7 +15,6 @@
 	border: $payment-method-border;
 	border-radius: $payment-method-border-radius;
 	overflow: hidden;
-    // white-space: nowrap;
 }
 
 

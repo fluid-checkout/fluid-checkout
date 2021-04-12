@@ -81,7 +81,7 @@ $global-radius-extra-large:         remsize( 3.4rem ) !default;
 $font-size-tiny:                        remsize( 1rem ) !default;
 $font-size-extra-small:                 remsize( 1.3rem ) !default;
 $font-size-small:                       remsize( 1.5rem ) !default;
-$font-size:                             remsize( 1.8rem ) !default; // Should be at least 16px to prevent auto-zoom issues on Safari Mobile
+$font-size:                             remsize( 1.6rem ) !default; // Should be at least 16px to prevent auto-zoom issues on Safari Mobile
 $font-size-medium:                      remsize( 2rem ) !default;
 $font-size-large:                       remsize( 2.8rem ) !default;
 $font-size-extra-large:                 remsize( 4rem ) !default;
