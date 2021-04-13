@@ -3,40 +3,59 @@
 \*------------------------------------*/
 
 .wfc-inside div.place-order {
-    @media (#{$bp-larger-than-tablet}) {
-        margin: $global-spacing auto;
-        width: 80%;
-    }
+	margin-top: $global-spacing;
 }
 
 .wfc-sidebar div.place-order {
-    display: none;
-    
-    @media (#{$bp-larger-than-desktop}) { display: block; }
+	display: none;
+	
+	@media (#{$bp-larger-than-desktop}) { display: block; }
+}
+
+
+
+.woocommerce-terms-and-conditions-wrapper {
+	padding: $global-spacing-small;
+	background-color: $lighter-grey;
+}
+
+.wfc-sidebar .woocommerce-terms-and-conditions-wrapper {
+	background-color: $white;
+}
+
+
+
+.woocommerce-privacy-policy-text{	
+	margin-bottom: $global-spacing-small;
+}
+
+.woocommerce-terms-and-conditions {
+	margin-bottom: $global-spacing-small;
+	padding: $global-spacing-extra-small;
+	border: solid remsize( .1rem ) $border-light-color;
+	background-color: $white;
 }
 
 
 
 .woocommerce-privacy-policy-text > p,
 .woocommerce-terms-and-conditions-wrapper > p {
-    margin-bottom: $global-spacing-extra-small;
+	margin-bottom: $global-spacing-small;
 }
-
-.woocommerce-terms-and-conditions {
-    margin-bottom: $global-spacing;
-    padding: $global-spacing-extra-small;
-    background-color: $lighter-grey;
+.woocommerce-privacy-policy-text > p:last-child,
+.woocommerce-terms-and-conditions-wrapper > p:last-child {
+	margin-bottom: 0;
 }
 
 
 
 .wfc-place-order {
-    text-align: center;
+	text-align: center;
 }
 
 
 
 .wfc-place-order-button.button.alt {
-    margin: $global-spacing-extra-small auto;
-    min-width: remsize( 28rem );
+	margin: $global-spacing auto;
+	min-width: remsize( 28rem );
 }

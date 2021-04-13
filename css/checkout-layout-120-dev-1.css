@@ -891,10 +891,8 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 /*------------------------------------*\
   #CHECKOUT PLACE ORDER
 \*------------------------------------*/
-@media (min-width: 750px) {
-  .wfc-inside div.place-order {
-    margin: 30px auto;
-    width: 80%; } }
+.wfc-inside div.place-order {
+  margin-top: 30px; }
 
 .wfc-sidebar div.place-order {
   display: none; }
@@ -902,20 +900,35 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
     .wfc-sidebar div.place-order {
       display: block; } }
 
-.woocommerce-privacy-policy-text > p,
-.woocommerce-terms-and-conditions-wrapper > p {
-  margin-bottom: 10px; }
+.woocommerce-terms-and-conditions-wrapper {
+  padding: 20px;
+  background-color: #F0F4F4; }
+
+.wfc-sidebar .woocommerce-terms-and-conditions-wrapper {
+  background-color: #fff; }
+
+.woocommerce-privacy-policy-text {
+  margin-bottom: 20px; }
 
 .woocommerce-terms-and-conditions {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   padding: 10px;
-  background-color: #F0F4F4; }
+  border: solid 1px #F0F4F4;
+  background-color: #fff; }
+
+.woocommerce-privacy-policy-text > p,
+.woocommerce-terms-and-conditions-wrapper > p {
+  margin-bottom: 20px; }
+
+.woocommerce-privacy-policy-text > p:last-child,
+.woocommerce-terms-and-conditions-wrapper > p:last-child {
+  margin-bottom: 0; }
 
 .wfc-place-order {
   text-align: center; }
 
 .wfc-place-order-button.button.alt {
-  margin: 10px auto;
+  margin: 30px auto;
   min-width: 280px; }
 
 /*------------------------------------*\
@@ -924,6 +937,9 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 .wfc-wrapper .wfc-checkout-order-review {
   padding-top: 30px;
   padding-bottom: 30px; }
+
+.wfc-wrapper #order_review .shop_table {
+  margin-bottom: 30px; }
 
 .wfc-wrapper .wfc-checkout-order-review-title {
   text-align: center; }
