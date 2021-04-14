@@ -902,10 +902,8 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 
 .woocommerce-terms-and-conditions-wrapper {
   padding: 20px;
-  background-color: #F0F4F4; }
-
-.wfc-sidebar .woocommerce-terms-and-conditions-wrapper {
-  background-color: #fff; }
+  border: solid 1px #D6D8D8;
+  border-radius: 13px; }
 
 .woocommerce-privacy-policy-text {
   margin-bottom: 20px; }
@@ -913,7 +911,6 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 .woocommerce-terms-and-conditions {
   margin-bottom: 20px;
   padding: 10px;
-  border: solid 1px #F0F4F4;
   background-color: #fff; }
 
 .woocommerce-privacy-policy-text > p,

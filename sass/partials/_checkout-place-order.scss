@@ -16,23 +16,19 @@
 
 .woocommerce-terms-and-conditions-wrapper {
 	padding: $global-spacing-small;
-	background-color: $lighter-grey;
-}
-
-.wfc-sidebar .woocommerce-terms-and-conditions-wrapper {
-	background-color: $white;
+	border: solid remsize( .1rem ) $border-color;
+	border-radius: $global-radius-medium;
 }
 
 
 
-.woocommerce-privacy-policy-text{	
+.woocommerce-privacy-policy-text {
 	margin-bottom: $global-spacing-small;
 }
 
 .woocommerce-terms-and-conditions {
 	margin-bottom: $global-spacing-small;
 	padding: $global-spacing-extra-small;
-	border: solid remsize( .1rem ) $border-light-color;
 	background-color: $white;
 }
 
