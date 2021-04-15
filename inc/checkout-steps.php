@@ -1462,6 +1462,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$billing_same_as_shipping = WC()->session->get( 'wfc_billing_same_as_shipping' ) === '1';
 		}
 
+		// Set to different billing address when order does not need shipping
+		if ( ! WC()->cart->needs_shipping() ) {
+			$billing_same_as_shipping = false;
+		}
+
 		return $billing_same_as_shipping;
 	}
 
