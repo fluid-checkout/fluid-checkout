@@ -151,11 +151,11 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		wc_get_template(
 			'checkout/form-gift-options.php',
 			array(
-				'checkout'          => WC()->checkout(),
-				'checkbox_field'    => $checkbox_field,
+				'checkout'                 => WC()->checkout(),
+				'checkbox_field'           => $checkbox_field,
 				'has_gift_options_checked' => $this->has_gift_options_checked(),
-				'gift_options'      => $gift_options,
-				'display_fields'    => $this->get_gift_options_fields(),
+				'gift_options'             => $gift_options,
+				'display_fields'           => $this->get_gift_options_fields(),
 			)
 		);
 	}
