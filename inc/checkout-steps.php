@@ -1471,9 +1471,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Set the value for `billing_same_as_shipping` to the current user session.
-	 *
-	 * @param   bool  $billing_same_as_shipping  Whether the billing address is the same as the shipping address. `true` if the billing address is the same as the shipping address, `false` otherwise.
+	 * Save value of `billing_same_as_shipping` to the current user session.
 	 */
 	public function set_billing_same_as_shipping_session( $billing_same_as_shipping ) {
 		// Set session value
