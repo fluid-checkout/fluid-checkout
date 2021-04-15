@@ -1384,17 +1384,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output checkbox for billing address same as shipping.
 	 */
 	public function output_billing_same_as_shipping_checkbox() {
-		$checkout = WC()->checkout();
-		
-		$key = 'billing_same_as_shipping';
-		$checkbox_field = apply_filters( 'wfc_billing_same_as_shipping_checkbox_field', array(
-			'type'          => 'checkbox',
-			'class'         => array( 'form-row-wide '),
-			'label'         => __( 'Same as shipping address', 'woocommerce-fluid-checkout' ),
-			'default'		=> $this->is_billing_same_as_shipping(),
-		) );
-
-		woocommerce_form_field( $key, $checkbox_field );
+		?>
+		<p class="form-row form-row-wide" id="billing_same_as_shipping_field">
+			<label class="checkbox">
+				<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>> <?php echo __( 'Same as shipping address', 'woocommerce-fluid-checkout' ); ?></span>
+			</label>
+		</p>
+		<?php
 	}
 
 
