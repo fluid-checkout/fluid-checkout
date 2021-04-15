@@ -1,5 +1,5 @@
 /**
- * Show or hide gift options fields.
+ * Show or hide billing address fields.
  *
  * DEPENDS ON:
  * - jQuery // Interact with WooCommerce events
@@ -11,7 +11,7 @@
 	} else if ( typeof exports === 'object' ) {
 		module.exports = factory(root);
 	} else {
-		root.CheckoutGiftOptions = factory(root);
+		root.CheckoutBillingSameShipping = factory(root);
 	}
 })(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
@@ -23,10 +23,8 @@
 	var _hasInitialized = false;	
 	var _publicMethods = {};
 	var _settings = {
-		fieldsWrapperSelector: '#wfc-gift-options__field-wrapper',
-		checkboxSelector: '#_wfc_has_gift_options',
-
-		bodyClass: 'has-wfc-gift-options--active',
+		fieldsWrapperSelector: '#woocommerce-billing-fields__field-wrapper',
+		checkboxSelector: '#billing_same_as_shipping',
 	}
 
 	
@@ -42,7 +40,8 @@
 	var toggleFieldsVisibility = function( checkbox ) {
 		var fieldsWrapper = document.querySelector( _settings.fieldsWrapperSelector );
 
-		if ( checkbox.checked ) {
+		// Toggle state
+		if ( ! checkbox.checked ) {
 			CollapsibleBlock.expand( fieldsWrapper );
 		}
 		else {
@@ -58,6 +57,9 @@
 	var handleChange = function( e ) {
 		if ( e.target.matches( _settings.checkboxSelector ) ) {
 			toggleFieldsVisibility( e.target );
+
+			// Update the checkout
+			$( document.body ).trigger( 'update_checkout' );
 		}
 	};
 
@@ -66,7 +68,7 @@
 	/**
 	 * Initialize select2 components for address fields after `updated_checkout`.
 	 */
-	 var maybeReinitializeCollapsibleBlock = function() {
+	var maybeReinitializeCollapsibleBlock = function() {
 		var fieldsWrapper = document.querySelector( _settings.fieldsWrapperSelector );
 
 		// Maybe initialize collapsible-block for the element
@@ -88,9 +90,6 @@
 		if ( _hasJQuery ) {
 			$( document.body ).on( 'updated_checkout', maybeReinitializeCollapsibleBlock );
 		}
-
-		// Add init class
-		document.body.classList.add( _settings.bodyClass );
 
 		_hasInitialized = true;
 	}

@@ -17,6 +17,7 @@
 	if ( ! RequireBundle.hasBundle( 'collapsible-block' ) ) { RequireBundle.register( 'collapsible-block', [ settings.jsLibPath + 'collapsible-block' + ver + '.js' ], '[data-collapsible]', function(){ CollapsibleBlock.init( settings.collapsibleBlock ); } ); }
 
 	RequireBundle.register( 'wfc-checkout-gift-options', [ settings.jsPath + 'checkout-gift-options' + ver + '.js' ], '.has-wfc-gift-options #wfc-gift-options__field-wrapper', function(){ CheckoutGiftOptions.init(); } );
+	RequireBundle.register( 'wfc-checkout-billing-same-shipping', [ settings.jsPath + 'checkout-billing-same-shipping' + ver + '.js' ], '#billing_same_as_shipping', function(){ CheckoutBillingSameShipping.init(); } );
 	RequireBundle.register( 'wfc-checkout-validation', [ settings.jsPath + 'checkout-validation' + ver + '.js', settings.cssPath + 'checkout-validation' + ver + '.css' ], '.has-wfc-checkout-validation form.checkout', function(){ CheckoutValidation.init( wfcSettings.checkoutValidation ); } );
 	RequireBundle.register( 'wfc-mailcheck', [ settings.jsLibPath + 'mailcheck' + ver + '.js', settings.jsPath + 'mailcheck-init' + ver + '.js' ], '[data-mailcheck]', function(){ MailcheckInit.init( wfcSettings.checkoutValidation.mailcheckSuggestions ); } );
 	

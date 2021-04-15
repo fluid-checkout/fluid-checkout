@@ -4,7 +4,6 @@
  */
 class FluidCheckout_Steps extends FluidCheckout {
 
-
 	/**
 	 * Holds configuration for each checkout step.
 	 *
@@ -19,6 +18,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @var array
 	 **/
 	private $checkout_steps   = array();
+
+	/**
+	 * Hold cached values for parsed `post_data`.
+	 *
+	 * @var array
+	 */
+	private $posted_data = null;
 
 
 
@@ -67,6 +73,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
 
 		// Shipping
+		add_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
 		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
 		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
 		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_order_notes' ), 90 );
@@ -77,6 +84,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		
 		// Billing Address
 		add_action( 'wfc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
+
+		// Billing Same as Shipping
+		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_checkbox' ), 100 );
+		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
+		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
 
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
@@ -1247,6 +1260,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 
+	/**
+	 * Change WooCommerce option `woocommerce_ship_to_destination` to always return ship to `shipping` address.
+	 *
+	 * @param mixed  $value  Value of the option. If stored serialized, it will be
+	 *                       unserialized prior to being returned.
+	 * @param string $option Option name.
+	 */
+	public function change_woocommerce_ship_to_destination( $value, $option ) {
+		return 'shipping';
+	}
+
+
+
+
 
 	/**
 	 * Checkout step: Billing.
@@ -1297,6 +1324,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			array(
 				'checkout'			=> WC()->checkout(),
 				'ignore_fields'		=> $this->get_contact_step_display_fields(),
+				'is_billing_same_as_shipping' => $this->is_billing_same_as_shipping(),
 			)
 		);
 
@@ -1348,6 +1376,151 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return apply_filters( 'wfc_is_step_complete_billing', $is_step_complete );
+	}
+
+
+
+	/**
+	 * Output checkbox for billing address same as shipping.
+	 */
+	public function output_billing_same_as_shipping_checkbox() {
+		?>
+		<p class="form-row form-row-wide" id="billing_same_as_shipping_field">
+			<label class="checkbox">
+				<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>> <?php echo __( 'Same as shipping address', 'woocommerce-fluid-checkout' ); ?></span>
+			</label>
+		</p>
+		<?php
+	}
+
+
+
+	/**
+	 * Add billing address fields section as a checkout fragment.
+	 */
+	function add_checkout_billing_address_fields_fragment( $fragments ) {
+		ob_start();
+		$this->output_substep_billing_address_fields();
+		$billing_address_fields_html = ob_get_clean();
+		$fragments['.woocommerce-billing-fields'] = $billing_address_fields_html;
+		return $fragments;
+	}
+
+
+
+	/**
+	 * Parse the data from the `post_data` request parameter into an `array`.
+	 *
+	 * @return  array  Post data for all checkout fields parsed into an `array`.
+	 */
+	public function get_parsed_posted_data() {
+		// Return cached parsed data
+		if ( is_array( $this->posted_data ) ) {
+			return $this->posted_data;
+		}
+		
+		// Get sanitized posted data as a string
+		$posted_data = isset( $_POST['post_data'] ) ? wp_unslash( $_POST['post_data'] ) : '';
+
+		// Parsing posted data into an array
+		$new_posted_data = array();
+		$vars = explode( '&', $posted_data );
+		foreach ( $vars as $k => $value ) {
+			$v = explode( '=', urldecode( $value ) );
+			$new_posted_data[ $v[0] ] = $v[1];
+		}
+
+		// Updated cached posted data
+		$this->posted_data = $new_posted_data;
+
+		return $this->posted_data;
+	}
+
+
+
+	/**
+	 * Get value for whether the billing address is the same as the shipping address.
+	 *
+	 * @return  bool  `true` if the billing address is the same as the shipping address, `false` otherwise.
+	 */
+	public function is_billing_same_as_shipping() {
+		$posted_data = $this->get_parsed_posted_data();
+
+		// Set default value
+		$billing_same_as_shipping = apply_filters( 'wfc_default_to_billing_same_as_shipping', get_option( 'wfc_default_to_billing_same_as_shipping', 'true' ) === 'true' );
+
+		// Try get value from the post_data
+		if ( isset( $_POST['post_data'] ) ) {
+			$billing_same_as_shipping = isset( $posted_data['billing_same_as_shipping'] ) && $posted_data['billing_same_as_shipping'] === '1' ? true : false;
+		}
+		// Try get value from the form data sent on process checkout
+		else if ( isset( $_POST['billing_same_as_shipping'] ) ) {
+			$billing_same_as_shipping = isset( $_POST['billing_same_as_shipping'] ) && wc_clean( wp_unslash( $_POST['billing_same_as_shipping'] ) ) === '1' ? true : false;
+		}
+		// Try to get value from the session
+		else if ( WC()->session->__isset( 'wfc_billing_same_as_shipping' ) ) {
+			$billing_same_as_shipping = WC()->session->get( 'wfc_billing_same_as_shipping' ) === '1';
+		}
+
+		return $billing_same_as_shipping;
+	}
+
+	/**
+	 * Set the value for `billing_same_as_shipping` to the current user session.
+	 *
+	 * @param   bool  $billing_same_as_shipping  Whether the billing address is the same as the shipping address. `true` if the billing address is the same as the shipping address, `false` otherwise.
+	 */
+	public function set_billing_same_as_shipping_session( $billing_same_as_shipping ) {
+		// Set session value
+		WC()->session->set( 'wfc_billing_same_as_shipping', $billing_same_as_shipping ? '1' : '0');
+	}
+
+
+
+	/**
+	 * Maybe set billing address fields values to same as shipping address from the posted data.
+	 * 
+	 * @param array $posted_data Post data for all checkout fields.
+	 */
+	public function maybe_set_billing_address_same_as_shipping( $posted_data ) {		
+		// Get value for billing same as shipping
+		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping();
+
+		// Update values for billing same as shipping
+		$this->set_billing_same_as_shipping_session( $is_billing_same_as_shipping );
+		
+		// Maybe set post data for billing same as shipping
+		if ( $is_billing_same_as_shipping ) {
+			$_POST['country'] = isset( $_POST['s_country'] ) ? wc_clean( wp_unslash( $_POST['s_country'] ) ) : null;
+			$_POST['state'] = isset( $_POST['s_state'] ) ? wc_clean( wp_unslash( $_POST['s_state'] ) ) : null;
+			$_POST['postcode'] = isset( $_POST['s_postcode'] ) ? wc_clean( wp_unslash( $_POST['s_postcode'] ) ) : null;
+			$_POST['city'] = isset( $_POST['s_city'] ) ? wc_clean( wp_unslash( $_POST['s_city'] ) ) : null;
+			$_POST['address'] = isset( $_POST['s_address'] ) ? wc_clean( wp_unslash( $_POST['s_address'] ) ) : null;
+			$_POST['address_2'] = isset( $_POST['s_address_2'] ) ? wc_clean( wp_unslash( $_POST['s_address_2'] ) ) : null;
+			$_POST['company'] = isset( $_POST['s_company'] ) ? wc_clean( wp_unslash( $_POST['s_company'] ) ) : null;
+		}
+		
+		return $posted_data;
+	}
+
+	/**
+	 * Set addresses session values when processing an order (place order).
+	 * 
+	 * @param array $post_data Post data for all checkout fields.
+	 */
+	public function maybe_set_billing_address_same_as_shipping_on_process_checkout( $post_data ) {
+		// Maybe set posted data for billing address to same as shipping
+		if ( $this->is_billing_same_as_shipping() ) {
+			$post_data[ 'billing_country' ] = $post_data[ 'shipping_country' ];
+			$post_data[ 'billing_state' ] = $post_data[ 'shipping_state' ];
+			$post_data[ 'billing_postcode' ] = $post_data[ 'shipping_postcode' ];
+			$post_data[ 'billing_city' ] = $post_data[ 'shipping_city' ];
+			$post_data[ 'billing_address_1' ] = $post_data[ 'shipping_address_1' ];
+			$post_data[ 'billing_address_2' ] = $post_data[ 'shipping_address_2' ];
+			$post_data[ 'billing_company' ] = $post_data[ 'shipping_company' ];
+		}
+		
+		return $post_data;
 	}
 
 

@@ -17,7 +17,9 @@
 
 	'use strict';
 
+	var $ = jQuery;
 
+	var _hasJQuery = ( $ != null );
 	var _hasInitialized = false;	
 	var _publicMethods = {};
 	var _settings = {
@@ -62,11 +64,30 @@
 
 
 	/**
+	 * Initialize select2 components for address fields after `updated_checkout`.
+	 */
+	 var maybeReinitializeCollapsibleBlock = function() {
+		var fieldsWrapper = document.querySelector( _settings.fieldsWrapperSelector );
+
+		// Maybe initialize collapsible-block for the element
+		if ( ! CollapsibleBlock.getInstance( fieldsWrapper ) ) {
+			CollapsibleBlock.initializeElement( fieldsWrapper );
+		}
+	}
+
+
+
+	/**
 	 * Finish to initialize component and set related handlers.
 	 */
 	var finishInit = function() {
 		// Add event listeners
 		window.addEventListener( 'change', handleChange );
+
+		// Add jQuery event listeners
+		if ( _hasJQuery ) {
+			$( document.body ).on( 'updated_checkout', maybeReinitializeCollapsibleBlock );
+		}
 
 		// Add init class
 		document.body.classList.add( _settings.bodyClass );
