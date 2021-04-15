@@ -111,7 +111,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 				'type'          => 'textarea',
 				'class'         => array( 'form-row-wide '),
 				'label'         => $message_maxlength ? sprintf( __( 'Gift message (%d characters)', 'woocommerce-fluid-checkout' ), $message_maxlength ) : __( 'Gift message', 'woocommerce-fluid-checkout' ),
-				'placeholder'   => __( 'Write your gift message here...', 'woocommerce-fluid-checkout' ),
+				'placeholder'   => __( 'Write a gift message...', 'woocommerce-fluid-checkout' ),
 				'default'		=> $checkout->get_value( '_wfc_gift_message' ),
 				'maxlength'		=> $message_maxlength,
 			),
