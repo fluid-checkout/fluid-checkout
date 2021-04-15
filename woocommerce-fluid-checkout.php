@@ -42,8 +42,6 @@ if ( ! defined( 'WFC_PLUGIN_FILE' ) ) {
  * Plugin Main Class.
  */
 class FluidCheckout {
-	
-	private static $features = array();
 
 	// A single instance of this class.
 	public static $instances   = array();
@@ -54,6 +52,19 @@ class FluidCheckout {
 	public static $version = ''; // Values set at function `set_plugin_vars`
 	public static $asset_version = ''; // Values set at function `set_plugin_vars`
 
+	/**
+	 * Hold list of the plugin features to load when initializing.
+	 *
+	 * @var array
+	 */
+	private static $features = array();
+
+	/**
+	 * Hold cached values for parsed `post_data`.
+	 *
+	 * @var array
+	 */
+	private $posted_data = null;
 
 
 	/**
@@ -338,6 +349,36 @@ class FluidCheckout {
 			return $v ? esc_attr( $k ) : null;
 		}
 		return sprintf( '%s="%s"', esc_attr( $k ), esc_attr( $v ) );
+	}
+
+
+
+	/**
+	 * Parse the data from the `post_data` request parameter into an `array`.
+	 *
+	 * @return  array  Post data for all checkout fields parsed into an `array`.
+	 */
+	public function get_parsed_posted_data() {
+		// Return cached parsed data
+		if ( is_array( $this->posted_data ) ) {
+			return $this->posted_data;
+		}
+		
+		// Get sanitized posted data as a string
+		$posted_data = isset( $_POST['post_data'] ) ? wp_unslash( $_POST['post_data'] ) : '';
+
+		// Parsing posted data into an array
+		$new_posted_data = array();
+		$vars = explode( '&', $posted_data );
+		foreach ( $vars as $k => $value ) {
+			$v = explode( '=', urldecode( $value ) );
+			$new_posted_data[ $v[0] ] = $v[1];
+		}
+
+		// Updated cached posted data
+		$this->posted_data = $new_posted_data;
+
+		return $this->posted_data;
 	}
 
 }

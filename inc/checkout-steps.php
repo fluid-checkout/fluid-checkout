@@ -19,13 +19,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 **/
 	private $checkout_steps   = array();
 
-	/**
-	 * Hold cached values for parsed `post_data`.
-	 *
-	 * @var array
-	 */
-	private $posted_data = null;
-
 
 
 	/**
@@ -1409,36 +1402,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Parse the data from the `post_data` request parameter into an `array`.
-	 *
-	 * @return  array  Post data for all checkout fields parsed into an `array`.
-	 */
-	public function get_parsed_posted_data() {
-		// Return cached parsed data
-		if ( is_array( $this->posted_data ) ) {
-			return $this->posted_data;
-		}
-		
-		// Get sanitized posted data as a string
-		$posted_data = isset( $_POST['post_data'] ) ? wp_unslash( $_POST['post_data'] ) : '';
-
-		// Parsing posted data into an array
-		$new_posted_data = array();
-		$vars = explode( '&', $posted_data );
-		foreach ( $vars as $k => $value ) {
-			$v = explode( '=', urldecode( $value ) );
-			$new_posted_data[ $v[0] ] = $v[1];
-		}
-
-		// Updated cached posted data
-		$this->posted_data = $new_posted_data;
-
-		return $this->posted_data;
-	}
-
-
-
-	/**
 	 * Get value for whether the billing address is the same as the shipping address.
 	 *
 	 * @return  bool  `true` if the billing address is the same as the shipping address, `false` otherwise.
@@ -1471,9 +1434,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Set the value for `billing_same_as_shipping` to the current user session.
-	 *
-	 * @param   bool  $billing_same_as_shipping  Whether the billing address is the same as the shipping address. `true` if the billing address is the same as the shipping address, `false` otherwise.
+	 * Save value of `billing_same_as_shipping` to the current user session.
 	 */
 	public function set_billing_same_as_shipping_session( $billing_same_as_shipping ) {
 		// Set session value

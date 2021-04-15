@@ -26,6 +26,8 @@
 		fieldsWrapperSelector: '#wfc-gift-options__field-wrapper',
 		checkboxSelector: '#_wfc_has_gift_options',
 
+		persistedFieldsSelector: '#_wfc_has_gift_options, #_wfc_gift_from, #_wfc_gift_message',
+
 		bodyClass: 'has-wfc-gift-options--active',
 	}
 
@@ -58,6 +60,12 @@
 	var handleChange = function( e ) {
 		if ( e.target.matches( _settings.checkboxSelector ) ) {
 			toggleFieldsVisibility( e.target );
+		}
+
+		// Maybe trigger `update_checkout`
+		if ( e.target.matches( _settings.persistedFieldsSelector ) ) {
+			// Update the checkout
+			$( document.body ).trigger( 'update_checkout' );
 		}
 	};
 
