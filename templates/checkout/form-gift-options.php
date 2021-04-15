@@ -24,19 +24,18 @@ defined( 'ABSPATH' ) || exit;
 
     <?php
     foreach ( $checkbox_field as $key => $field ) {
-        woocommerce_form_field( $key, $field, array_key_exists( 'default', $field ) ? $field['default'] : '' );
+        woocommerce_form_field( $key, $field, $has_gift_options_checked );
     }
     ?>
 
-
-    <div id="wfc-gift-options__field-wrapper" data-collapsible data-collapsible-content>
+    <div id="wfc-gift-options__field-wrapper" <?php echo $has_gift_options_checked ? 'class="is-collapsed"' : ''; ?> data-collapsible data-collapsible-content <?php echo $has_gift_options_checked ? 'data-collapsible-initial-state="expanded"' : 'data-collapsible-initial-state="collapsed"'; ?>>
         <div class="collapsible-content__inner">
 
             <?php do_action( 'wfc_checkout_gift_options_before_fields' ); ?>
 
             <?php
             foreach ( $display_fields as $key => $field ) {
-                woocommerce_form_field( $key, $field, array_key_exists( 'default', $field ) ? $field['default'] : '' );
+                woocommerce_form_field( $key, $field, $gift_options[ $key ] );
             }
             ?>
 
