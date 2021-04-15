@@ -153,7 +153,7 @@ jQuery( function( $ ) {
 				wc_checkout_form.input_changed( e );
 			}
 		},
-		// CHANGE: Add functiono to sync the terms checkbox state
+		// CHANGE: Add function to sync the terms checkbox state
 		terms_checked_changed: function( e ) {
 			var termsCheckBoxChecked = $( e.target ).prop( 'checked' );
 			$( _terms_selector ).prop( 'checked', termsCheckBoxChecked );
