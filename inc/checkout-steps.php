@@ -1486,12 +1486,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get value for billing same as shipping
 		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping();
 
-		// var_dump( isset( $_POST['billing_same_as_shipping'] ) );
-
 		// Update values for billing same as shipping
 		$this->set_billing_same_as_shipping_session( $is_billing_same_as_shipping );
-
-		// var_dump( WC()->session->get( 'wfc_billing_same_as_shipping' ) );
 		
 		// Maybe set post data for billing same as shipping
 		if ( $is_billing_same_as_shipping ) {
