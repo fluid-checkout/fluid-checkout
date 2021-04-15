@@ -41,7 +41,7 @@ if ( ! defined( 'WFC_PLUGIN_FILE' ) ) {
 /**
  * Plugin Main Class.
  */
-class FluidCheckout {	
+class FluidCheckout {
 
 	// A single instance of this class.
 	public static $instances   = array();
