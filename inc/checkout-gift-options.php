@@ -27,8 +27,12 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		// Order Admin Screen
 		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_gift_options' ), 100 );
 		add_action( 'woocommerce_admin_order_data_after_order_details', array( $this, 'display_gift_options_fields_order_admin_screen' ), 100, 1 );
+
+		// Persist gift options to the user's session
+		// add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_gift_options_fields' ), 10, 1 );
+		// add_action( 'woocommerce_process_shop_order_meta', array( $this, 'save_order_gift_details' ) );
 		
-		// Save gift message
+		// Save gift fields to order
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_gift_options_fields' ), 10, 1 );
 		add_action( 'woocommerce_process_shop_order_meta', array( $this, 'save_order_gift_details' ) );
 		
@@ -39,7 +43,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 
 
 	/**
-	 * Return Fluid Checkout for WooCommerce multi-step class instance
+	 * Return Fluid Checkout for WooCommerce multi-step class instance.
 	 */
 	public function multistep() {
 		return FluidCheckout_Steps::instance();
@@ -148,8 +152,8 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 	 */
 	public function update_order_meta_with_gift_options_fields( $order_id ) {
 		$has_gift_options = isset( $_POST['_wfc_has_gift_options'] ) && boolval( $_POST['_wfc_has_gift_options'] );
-		$gift_message = isset( $_POST['_wfc_gift_message'] ) ? $_POST['_wfc_gift_message'] : '';
-		$gift_from = isset( $_POST['_wfc_gift_from'] ) ? $_POST['_wfc_gift_from'] : '';
+		$gift_message = isset( $_POST['_wfc_gift_message'] ) ? wc_clean( wp_unslash( $_POST['_wfc_gift_message'] ) ) : '';
+		$gift_from = isset( $_POST['_wfc_gift_from'] ) ? wc_clean( wp_unslash( $_POST['_wfc_gift_from'] ) ) : '';
 
 		// Update order meta
 		update_post_meta( $order_id, '_wfc_has_gift_options', $has_gift_options ? 'Yes' : 'No' );
