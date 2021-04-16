@@ -30,6 +30,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 
 		// Persist gift options to the user's session
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_gift_options_session' ), 10 );
+		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_gift_options_session' ), 10 );
 		
 		// Save gift fields to order
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_gift_options_fields' ), 10, 1 );
@@ -182,7 +183,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 			$has_gift_options = isset( $_POST['_wfc_has_gift_options'] ) && wc_clean( wp_unslash( $_POST['_wfc_has_gift_options'] ) ) === '1' ? true : false;
 		}
 		// Try to get value from the session
-		else if ( WC()->session->__isset( '_wfc_gift_options' ) ) {
+		else if ( $this->get_gift_options_session() ) {
 			$gift_options = $this->get_gift_options_session();
 			$has_gift_options = array_key_exists( '_wfc_has_gift_options', $gift_options ) ? $gift_options['_wfc_has_gift_options'] == 'Yes' : false;
 		}
@@ -201,8 +202,6 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		$gift_options = is_array( WC()->session->get( '_wfc_gift_options' ) ) ? WC()->session->get( '_wfc_gift_options' ) : array();
 		return $gift_options;
 	}
-
-
 
 	/**
 	 * Save the gift options fields values to the current user session.
@@ -231,6 +230,13 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		WC()->session->set( '_wfc_gift_options', $gift_options );
 		
 		return $posted_data;
+	}
+
+	/**
+	 * Unset gift options session.
+	 **/
+	public function unset_gift_options_session() {
+		WC()->session->set( '_wfc_gift_options', null );
 	}
 
 
