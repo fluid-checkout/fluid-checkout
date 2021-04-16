@@ -48,10 +48,10 @@ jQuery( function( $ ) {
             // CHANGE: Removed selector `#ship-to-different-address input`
 			this.$checkout_form.on( 'change', 'select.shipping_method, input[name^="shipping_method"], .update_totals_on_change select, .update_totals_on_change input[type="radio"], .update_totals_on_change input[type="checkbox"]', this.trigger_update_checkout ); // eslint-disable-line max-len
 			this.$checkout_form.on( 'change', '.address-field select', this.input_changed );
-			// CHANGE: Prevent billing street address field change to update checkout
-			this.$checkout_form.on( 'change', '.address-field input.input-text:not( #billing_address_1 ), .update_totals_on_change input.input-text', this.maybe_input_changed ); // eslint-disable-line max-len
-			// CHANGE: Prevent billing street address field change to update checkout
-			this.$checkout_form.on( 'keydown', '.address-field input.input-text:not( #billing_address_1 ), .update_totals_on_change input.input-text', this.queue_update_checkout ); // eslint-disable-line max-len
+			// CHANGE: Prevent billing address fields change from updating checkout
+			this.$checkout_form.on( 'change', '.woocommerce-shipping-fields__field-wrapper .address-field input.input-text, .update_totals_on_change input.input-text', this.maybe_input_changed ); // eslint-disable-line max-len
+			// CHANGE: Prevent billing address fields change from updating checkout
+			this.$checkout_form.on( 'keydown', '.woocommerce-shipping-fields__field-wrapper .address-field input.input-text, .update_totals_on_change input.input-text', this.queue_update_checkout ); // eslint-disable-line max-len
 
 			// CHANGE: Add event listener to sync terms checkbox state
 			this.$checkout_form.on( 'change', _terms_selector, this.terms_checked_changed );
