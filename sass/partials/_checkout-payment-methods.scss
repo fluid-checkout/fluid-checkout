@@ -51,8 +51,8 @@
 	cursor: pointer;
 	transition: all $global-animation-duration-fast linear;
 }
-.wfc-wrapper #payment .payment_methods > .wc_payment_method:last-child > label {
-	border-bottom: none;
+.wfc-wrapper #payment .payment_methods > .wc_payment_method:last-child {
+	margin-bottom: #{ - remsize( .1rem ) };
 }
 .wfc-wrapper #payment .payment_methods > li.wc_payment_method:not( .woocommerce-notice ) {
 	background-color: transparent;

@@ -766,8 +766,8 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   cursor: pointer;
   transition: all 0.15s linear; }
 
-.wfc-wrapper #payment .payment_methods > .wc_payment_method:last-child > label {
-  border-bottom: none; }
+.wfc-wrapper #payment .payment_methods > .wc_payment_method:last-child {
+  margin-bottom: -1px; }
 
 .wfc-wrapper #payment .payment_methods > li.wc_payment_method:not(.woocommerce-notice) {
   background-color: transparent; }
