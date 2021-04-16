@@ -108,6 +108,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Persisted data
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'update_customer_persisted_data' ), 10 );
+		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_order_comments_session' ), 10 );
+		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_order_comments_session' ), 10 );
+		add_filter( 'default_checkout_order_comments', array( $this, 'change_default_order_comments_value' ), 10, 2 );
 	}
 
 
@@ -1890,6 +1893,50 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Update customer data to the customer object
 		WC()->customer->set_props( $persisted_fields );
+	}
+
+
+
+	/**
+	 * Change default order notes value
+	 */
+	public function change_default_order_comments_value( $value, $input ) {
+		return $this->get_order_comments_session();
+	}
+
+	/**
+	 * Get order notes values from session.
+	 *
+	 * @return  array  The order notes fields values saved to session.
+	 */
+	public function get_order_comments_session() {
+		$order_comments = WC()->session->get( '_order_comments' );
+		return $order_comments;
+	}
+
+	/**
+	 * Save the order notes fields values to the current user session.
+	 * 
+	 * @param array $posted_data Post data for all checkout fields.
+	 */
+	public function set_order_comments_session( $posted_data ) {
+		// Get parsed posted data
+		$parsed_posted_data = $this->get_parsed_posted_data();
+
+		// Get order notes values
+		$order_comments = $parsed_posted_data['order_comments'];
+
+		// Set session value
+		WC()->session->set( '_order_comments', $order_comments );
+		
+		return $posted_data;
+	}
+
+	/**
+	 * Unset order notes session.
+	 **/
+	public function unset_order_comments_session() {
+		WC()->session->set( '_order_comments', null );
 	}
 
 }
