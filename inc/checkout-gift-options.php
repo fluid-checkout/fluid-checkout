@@ -145,7 +145,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 			),
 		) );
 		
-		// Get gift options values:
+		// Get gift options values
 		$gift_options = $this->get_gift_options_session();
 
 		// Output gift options form template

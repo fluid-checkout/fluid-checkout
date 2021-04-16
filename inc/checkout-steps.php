@@ -54,13 +54,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'init', array( $this, 'register_default_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_after', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
-		add_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
-
+		
 		// Contact
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		add_action( 'wfc_output_step_contact', array( $this, 'output_substep_contact_login' ), 10 );
 		add_action( 'wfc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
 		add_action( 'wp_footer', array( $this, 'output_login_form_flyout' ), 10 );
+		add_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
 
 		// Account creation
 		add_action( 'wfc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
@@ -105,6 +105,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_thankyou', array( $this, 'do_woocommerce_thankyou_payment_method' ), 1 );
 		add_action( 'wfc_order_details_after_order_table_section', array( $this, 'output_order_customer_details' ), 10 );
 		add_action( 'wfc_order_details_before_order_table_section', array( $this, 'output_order_downloads_details' ), 10 );
+
+		// Persisted data
+		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'update_customer_persisted_data' ), 10 );
 	}
 
 
@@ -1448,7 +1451,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * 
 	 * @param array $posted_data Post data for all checkout fields.
 	 */
-	public function maybe_set_billing_address_same_as_shipping( $posted_data ) {		
+	public function maybe_set_billing_address_same_as_shipping( $posted_data ) {
 		// Get value for billing same as shipping
 		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping();
 
@@ -1846,6 +1849,48 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * END - Order Received.
 	 */
+
+
+
+
+
+	 /**
+	 * Maybe set billing address fields values to same as shipping address from the posted data.
+	 * 
+	 * @param string $posted_data Post data for all checkout fields.
+	 */
+	public function update_customer_persisted_data( $posted_data ) {
+		// Get parsed posted data
+		$parsed_posted_data = $this->get_parsed_posted_data();
+
+		// Define which WC_Customer fields to update,
+		// Because `shipping_phone` is not a native WC_Customer field it does not work here.
+		$persisted_field_keys = apply_filters( 'wfc_customer_persisted_fields_keys', array(
+			'billing_email',
+			'billing_first_name',
+			'billing_last_name',
+			'billing_phone',
+			'billing_company',
+
+			'shipping_first_name',
+			'shipping_last_name',
+			'shipping_company',
+		) );
+
+		// Get values for the persisted fields
+		$persisted_fields = array();
+		foreach ( $persisted_field_keys as $field_key ) {
+			if ( array_key_exists( $field_key, $parsed_posted_data ) ) {
+				$persisted_fields[ $field_key ] = $parsed_posted_data[ $field_key ];
+			}
+		}
+
+		// Allow developers to change the values
+		$persisted_fields = apply_filters( 'wfc_customer_persisted_fields_before_update', $persisted_fields );
+
+		// Update customer data to the customer object
+		WC()->customer->set_props( $persisted_fields );
+	}
 
 }
 

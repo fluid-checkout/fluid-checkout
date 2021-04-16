@@ -28,12 +28,18 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 		// Shipping Phone Field
 		if ( get_option( 'wfc_add_shipping_phone_field', 'true' ) === 'true' ) {
+			
 			add_filter( 'woocommerce_shipping_fields', array( $this, 'add_shipping_phone_field' ), 5 );
 			add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_shipping_phone' ), 10, 1 );
 			add_action( 'woocommerce_admin_order_data_after_shipping_address', array( $this, 'output_shipping_phone_field_admin_screen' ), 1, 1 );
 			add_filter( 'woocommerce_order_formatted_shipping_address', array( $this, 'output_order_formatted_shipping_address_with_phone' ), 1, 2 );
 			add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_replacement_field_shipping_phone' ), 10, 2 );
 			add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_shipping_phone_to_formats' ) );
+			
+			// Persist shipping phone to the user's session
+			add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_shipping_phone_session' ), 10 );
+			add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_shipping_phone_session' ), 10 );
+			add_filter( 'default_checkout_shipping_phone', array( $this, 'change_default_shipping_phone_value' ), 10, 2 );
 		}
 	}
 
@@ -132,6 +138,51 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			$formats[ $locale ] .= "\n{shipping_phone}";
 		}
 		return $formats;
+	}
+
+
+
+	/**
+	 * Change default shipping phone value
+	 */
+	public function change_default_shipping_phone_value( $value, $input ) {
+		// TODO: Maybe try to get shipping phone from the user meta data if not found in session
+		return $this->get_shipping_phone_session();
+	}
+
+	/**
+	 * Get shipping phone values from session.
+	 *
+	 * @return  array  The shipping phone fields values saved to session.
+	 */
+	public function get_shipping_phone_session() {
+		$shipping_phone = WC()->session->get( '_shipping_phone' );
+		return $shipping_phone;
+	}
+
+	/**
+	 * Save the shipping phone fields values to the current user session.
+	 * 
+	 * @param array $posted_data Post data for all checkout fields.
+	 */
+	public function set_shipping_phone_session( $posted_data ) {
+		// Get parsed posted data
+		$parsed_posted_data = $this->get_parsed_posted_data();
+
+		// Get shipping phone values
+		$shipping_phone = $parsed_posted_data['shipping_phone'];
+
+		// Set session value
+		WC()->session->set( '_shipping_phone', $shipping_phone );
+		
+		return $posted_data;
+	}
+
+	/**
+	 * Unset shipping phone session.
+	 **/
+	public function unset_shipping_phone_session() {
+		WC()->session->set( '_shipping_phone', null );
 	}
 
 
