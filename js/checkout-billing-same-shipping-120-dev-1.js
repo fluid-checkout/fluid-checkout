@@ -64,7 +64,7 @@
 		// Maybe trigger `update_checkout`
 		if ( e.target.matches( _settings.persistedFieldsSelector ) ) {
 			// Update the checkout
-			$( document.body ).trigger( 'update_checkout' );
+			// $( document.body ).trigger( 'update_checkout' );
 		}
 	};
 
@@ -93,6 +93,7 @@
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
+			console.log( 'has jquery' );
 			$( document.body ).on( 'updated_checkout', maybeReinitializeCollapsibleBlock );
 		}
 

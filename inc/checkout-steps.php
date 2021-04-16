@@ -80,7 +80,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
 
 		// Billing Same as Shipping
-		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_checkbox' ), 100 );
+		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_field' ), 100 );
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
 
@@ -1321,8 +1321,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		wc_get_template(
 			'checkout/form-billing.php',
 			array(
-				'checkout'			=> WC()->checkout(),
-				'ignore_fields'		=> $this->get_contact_step_display_fields(),
+				'checkout'			          => WC()->checkout(),
+				'ignore_fields'		          => $this->get_contact_step_display_fields(),
 				'is_billing_same_as_shipping' => $this->is_billing_same_as_shipping(),
 			)
 		);
@@ -1380,16 +1380,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output checkbox for billing address same as shipping.
+	 * Output field for billing address same as shipping.
 	 */
-	public function output_billing_same_as_shipping_checkbox() {
-		?>
-		<p class="form-row form-row-wide" id="billing_same_as_shipping_field">
-			<label class="checkbox">
-				<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>> <?php echo __( 'Same as shipping address', 'woocommerce-fluid-checkout' ); ?></span>
-			</label>
-		</p>
+	public function output_billing_same_as_shipping_field() {
+		// Output a hidden field when shipping country not allowed for billing
+		if ( $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
+			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; ?>">
 		<?php
+		// Output the checkbox when shipping country is allowed for billing
+		else :
+		?>
+			<p id="billing_same_as_shipping_field" class="form-row form-row-wide">
+				<label class="checkbox">
+					<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>> <?php echo __( 'Same as shipping address', 'woocommerce-fluid-checkout' ); ?></span>
+				</label>
+			</p>
+		<?php
+		endif;
 	}
 
 
@@ -1408,11 +1415,42 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get value for whether the billing address is the same as the shipping address.
+	 * Check whether the selected shipping country is also available for billing country.
 	 *
-	 * @return  bool  `true` if the billing address is the same as the shipping address, `false` otherwise.
+	 * @return  mixed  `true` if the selected shipping country is also available for billing country, `false` if the shipping country is not allowed for billing, and `null` if the shipping country is not set.
 	 */
-	public function is_billing_same_as_shipping() {
+	public function is_shipping_country_allowed_for_billing() {
+		// Get checkout object
+		$checkout = WC()->checkout();
+		
+		// Get shipping value from saved checkout data
+		$shipping_country = $checkout->get_value( 'shipping_country' );
+		
+		// Use posted data when doing checkout update
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			$shipping_country = isset( $_POST['s_country'] ) ? wc_clean( wp_unslash( $_POST['s_country'] ) ) : null;
+		}
+
+		// Shipping country is defined, return bool
+		if ( $shipping_country != null && ! empty( $shipping_country ) ) {
+			$allowed_billing_countries = WC()->countries->get_allowed_countries();
+			return in_array( $shipping_country, array_keys( $allowed_billing_countries ) );
+		}
+
+		return null; 
+	}
+
+
+
+	/**
+	 * Check whether the checkbox "billing address same as shipping" is checked.
+	 * This function will return `true` even if the shipping country is not allowed for billing,
+	 * use `is_billing_same_as_shipping` to also check if the shipping country is allowed for billing.
+	 *
+	 * @return  bool  `true` checkbox "billing address same as shipping" is checked, `false` otherwise.
+	 */
+	public function is_billing_same_as_shipping_checked() {
+		// Get parsed posted data
 		$posted_data = $this->get_parsed_posted_data();
 
 		// Set default value
@@ -1439,6 +1477,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $billing_same_as_shipping;
 	}
 
+
+
+	/**
+	 * Get value for whether the billing address is the same as the shipping address.
+	 *
+	 * @return  bool  `true` if the billing address is the same as the shipping address, `false` otherwise.
+	 */
+	public function is_billing_same_as_shipping() {
+		// Set to different billing address when shipping country not allowed
+		if ( $this->is_shipping_country_allowed_for_billing() !== null && ! $this->is_shipping_country_allowed_for_billing() ) {
+			return false;
+		}
+
+		return $this->is_billing_same_as_shipping_checked();
+	}
+
 	/**
 	 * Save value of `billing_same_as_shipping` to the current user session.
 	 */
@@ -1457,9 +1511,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function maybe_set_billing_address_same_as_shipping( $posted_data ) {
 		// Get value for billing same as shipping
 		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping();
+		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked();
 
 		// Update values for billing same as shipping
-		$this->set_billing_same_as_shipping_session( $is_billing_same_as_shipping );
+		$this->set_billing_same_as_shipping_session( $is_billing_same_as_shipping_checked );
 		
 		// Maybe set post data for billing same as shipping
 		if ( $is_billing_same_as_shipping ) {
