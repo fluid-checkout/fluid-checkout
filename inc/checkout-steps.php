@@ -54,13 +54,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'init', array( $this, 'register_default_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_after', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
-		add_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
-
+		
 		// Contact
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		add_action( 'wfc_output_step_contact', array( $this, 'output_substep_contact_login' ), 10 );
 		add_action( 'wfc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
 		add_action( 'wp_footer', array( $this, 'output_login_form_flyout' ), 10 );
+		add_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
 
 		// Account creation
 		add_action( 'wfc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
@@ -80,7 +80,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
 
 		// Billing Same as Shipping
-		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_checkbox' ), 100 );
+		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_field' ), 100 );
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
 
@@ -105,6 +105,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_thankyou', array( $this, 'do_woocommerce_thankyou_payment_method' ), 1 );
 		add_action( 'wfc_order_details_after_order_table_section', array( $this, 'output_order_customer_details' ), 10 );
 		add_action( 'wfc_order_details_before_order_table_section', array( $this, 'output_order_downloads_details' ), 10 );
+
+		// Persisted data
+		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'update_customer_persisted_data' ), 10 );
+		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_order_comments_session' ), 10 );
+		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_order_comments_session' ), 10 );
+		add_filter( 'default_checkout_order_comments', array( $this, 'change_default_order_comments_value' ), 10, 2 );
 	}
 
 
@@ -1315,8 +1321,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		wc_get_template(
 			'checkout/form-billing.php',
 			array(
-				'checkout'			=> WC()->checkout(),
-				'ignore_fields'		=> $this->get_contact_step_display_fields(),
+				'checkout'			          => WC()->checkout(),
+				'ignore_fields'		          => $this->get_contact_step_display_fields(),
 				'is_billing_same_as_shipping' => $this->is_billing_same_as_shipping(),
 			)
 		);
@@ -1374,16 +1380,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output checkbox for billing address same as shipping.
+	 * Output field for billing address same as shipping.
 	 */
-	public function output_billing_same_as_shipping_checkbox() {
-		?>
-		<p class="form-row form-row-wide" id="billing_same_as_shipping_field">
-			<label class="checkbox">
-				<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>> <?php echo __( 'Same as shipping address', 'woocommerce-fluid-checkout' ); ?></span>
-			</label>
-		</p>
+	public function output_billing_same_as_shipping_field() {
+		// Output a hidden field when shipping country not allowed for billing
+		if ( $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
+			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; ?>">
 		<?php
+		// Output the checkbox when shipping country is allowed for billing
+		else :
+		?>
+			<p id="billing_same_as_shipping_field" class="form-row form-row-wide">
+				<label class="checkbox">
+					<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>> <?php echo __( 'Same as shipping address', 'woocommerce-fluid-checkout' ); ?></span>
+				</label>
+			</p>
+		<?php
+		endif;
 	}
 
 
@@ -1402,11 +1415,42 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get value for whether the billing address is the same as the shipping address.
+	 * Check whether the selected shipping country is also available for billing country.
 	 *
-	 * @return  bool  `true` if the billing address is the same as the shipping address, `false` otherwise.
+	 * @return  mixed  `true` if the selected shipping country is also available for billing country, `false` if the shipping country is not allowed for billing, and `null` if the shipping country is not set.
 	 */
-	public function is_billing_same_as_shipping() {
+	public function is_shipping_country_allowed_for_billing() {
+		// Get checkout object
+		$checkout = WC()->checkout();
+		
+		// Get shipping value from saved checkout data
+		$shipping_country = $checkout->get_value( 'shipping_country' );
+		
+		// Use posted data when doing checkout update
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			$shipping_country = isset( $_POST['s_country'] ) ? wc_clean( wp_unslash( $_POST['s_country'] ) ) : null;
+		}
+
+		// Shipping country is defined, return bool
+		if ( $shipping_country != null && ! empty( $shipping_country ) ) {
+			$allowed_billing_countries = WC()->countries->get_allowed_countries();
+			return in_array( $shipping_country, array_keys( $allowed_billing_countries ) );
+		}
+
+		return null; 
+	}
+
+
+
+	/**
+	 * Check whether the checkbox "billing address same as shipping" is checked.
+	 * This function will return `true` even if the shipping country is not allowed for billing,
+	 * use `is_billing_same_as_shipping` to also check if the shipping country is allowed for billing.
+	 *
+	 * @return  bool  `true` checkbox "billing address same as shipping" is checked, `false` otherwise.
+	 */
+	public function is_billing_same_as_shipping_checked() {
+		// Get parsed posted data
 		$posted_data = $this->get_parsed_posted_data();
 
 		// Set default value
@@ -1433,6 +1477,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $billing_same_as_shipping;
 	}
 
+
+
+	/**
+	 * Get value for whether the billing address is the same as the shipping address.
+	 *
+	 * @return  bool  `true` if the billing address is the same as the shipping address, `false` otherwise.
+	 */
+	public function is_billing_same_as_shipping() {
+		// Set to different billing address when shipping country not allowed
+		if ( $this->is_shipping_country_allowed_for_billing() !== null && ! $this->is_shipping_country_allowed_for_billing() ) {
+			return false;
+		}
+
+		return $this->is_billing_same_as_shipping_checked();
+	}
+
 	/**
 	 * Save value of `billing_same_as_shipping` to the current user session.
 	 */
@@ -1448,12 +1508,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * 
 	 * @param array $posted_data Post data for all checkout fields.
 	 */
-	public function maybe_set_billing_address_same_as_shipping( $posted_data ) {		
+	public function maybe_set_billing_address_same_as_shipping( $posted_data ) {
 		// Get value for billing same as shipping
 		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping();
+		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked();
 
 		// Update values for billing same as shipping
-		$this->set_billing_same_as_shipping_session( $is_billing_same_as_shipping );
+		$this->set_billing_same_as_shipping_session( $is_billing_same_as_shipping_checked );
 		
 		// Maybe set post data for billing same as shipping
 		if ( $is_billing_same_as_shipping ) {
@@ -1846,6 +1907,92 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * END - Order Received.
 	 */
+
+
+
+
+
+	 /**
+	 * Maybe set billing address fields values to same as shipping address from the posted data.
+	 * 
+	 * @param string $posted_data Post data for all checkout fields.
+	 */
+	public function update_customer_persisted_data( $posted_data ) {
+		// Get parsed posted data
+		$parsed_posted_data = $this->get_parsed_posted_data();
+
+		// Define which WC_Customer fields to update,
+		// Because `shipping_phone` is not a native WC_Customer field it does not work here.
+		$persisted_field_keys = apply_filters( 'wfc_customer_persisted_fields_keys', array(
+			'billing_email',
+			'billing_first_name',
+			'billing_last_name',
+			'billing_phone',
+			'billing_company',
+
+			'shipping_first_name',
+			'shipping_last_name',
+			'shipping_company',
+		) );
+
+		// Get values for the persisted fields
+		$persisted_fields = array();
+		foreach ( $persisted_field_keys as $field_key ) {
+			if ( array_key_exists( $field_key, $parsed_posted_data ) ) {
+				$persisted_fields[ $field_key ] = $parsed_posted_data[ $field_key ];
+			}
+		}
+
+		// Allow developers to change the values
+		$persisted_fields = apply_filters( 'wfc_customer_persisted_fields_before_update', $persisted_fields );
+
+		// Update customer data to the customer object
+		WC()->customer->set_props( $persisted_fields );
+	}
+
+
+
+	/**
+	 * Change default order notes value
+	 */
+	public function change_default_order_comments_value( $value, $input ) {
+		return $this->get_order_comments_session();
+	}
+
+	/**
+	 * Get order notes values from session.
+	 *
+	 * @return  array  The order notes fields values saved to session.
+	 */
+	public function get_order_comments_session() {
+		$order_comments = WC()->session->get( '_order_comments' );
+		return $order_comments;
+	}
+
+	/**
+	 * Save the order notes fields values to the current user session.
+	 * 
+	 * @param array $posted_data Post data for all checkout fields.
+	 */
+	public function set_order_comments_session( $posted_data ) {
+		// Get parsed posted data
+		$parsed_posted_data = $this->get_parsed_posted_data();
+
+		// Get order notes values
+		$order_comments = $parsed_posted_data['order_comments'];
+
+		// Set session value
+		WC()->session->set( '_order_comments', $order_comments );
+		
+		return $posted_data;
+	}
+
+	/**
+	 * Unset order notes session.
+	 **/
+	public function unset_order_comments_session() {
+		WC()->session->set( '_order_comments', null );
+	}
 
 }
 

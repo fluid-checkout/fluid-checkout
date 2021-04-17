@@ -11,6 +11,8 @@ jQuery( function( $ ) {
 	// CHANGE: Add custom css selectors for place order button and terms checkbox
 	var _place_order_selector = '#place_order, .wfc-place-order-button';
 	var _terms_selector = '.wfc-terms-checkbox';
+	var _updateBeforeUnload = false;
+
 
 	var wc_checkout_form = {
 		updateTimer: false,
@@ -45,13 +47,23 @@ jQuery( function( $ ) {
 			this.$checkout_form.on( 'update', this.trigger_update_checkout );
 
 			// Inputs/selects which update totals
-            // CHANGE: Removed selector `#ship-to-different-address input`
+			// CHANGE: Removed selector `#ship-to-different-address input`
 			this.$checkout_form.on( 'change', 'select.shipping_method, input[name^="shipping_method"], .update_totals_on_change select, .update_totals_on_change input[type="radio"], .update_totals_on_change input[type="checkbox"]', this.trigger_update_checkout ); // eslint-disable-line max-len
 			this.$checkout_form.on( 'change', '.address-field select', this.input_changed );
-			// CHANGE: Prevent billing street address field change to update checkout
-			this.$checkout_form.on( 'change', '.address-field input.input-text:not( #billing_address_1 ), .update_totals_on_change input.input-text', this.maybe_input_changed ); // eslint-disable-line max-len
-			// CHANGE: Prevent billing street address field change to update checkout
-			this.$checkout_form.on( 'keydown', '.address-field input.input-text:not( #billing_address_1 ), .update_totals_on_change input.input-text', this.queue_update_checkout ); // eslint-disable-line max-len
+			// CHANGE: Prevent billing address fields change from updating checkout
+			this.$checkout_form.on( 'change', '.woocommerce-shipping-fields__field-wrapper .address-field input.input-text, .update_totals_on_change input.input-text', this.maybe_input_changed ); // eslint-disable-line max-len
+			// CHANGE: Prevent billing address fields change from updating checkout
+			this.$checkout_form.on( 'keydown', '.woocommerce-shipping-fields__field-wrapper .address-field input.input-text, .update_totals_on_change input.input-text', this.queue_update_checkout ); // eslint-disable-line max-len
+
+			// CHANGE: Update checkout totals to save data to session when user switches tabs, apps, goes to homescreen, etc.
+			document.addEventListener( 'visibilitychange' , function() {
+				if ( document.visibilityState == 'hidden' ) {
+					$( document.body ).trigger( 'update_checkout' );
+				}
+			});
+
+			// CHANGE: Maybe prevent `unload` after they change fields in the page
+			this.$checkout_form.on( 'change', 'select, input, textarea', this.maybe_prevent_unload );
 
 			// CHANGE: Add event listener to sync terms checkbox state
 			this.$checkout_form.on( 'change', _terms_selector, this.terms_checked_changed );
@@ -59,7 +71,7 @@ jQuery( function( $ ) {
 			// CHANGE: Removed shipping to different address checkout `change` listener
 
 			// Trigger events
-            // CHANGE: Removed shipping to different address checkout `change` trigger
+			// CHANGE: Removed shipping to different address checkout `change` trigger
 			this.init_payment_methods();
 
 			// Update on page load
@@ -68,6 +80,32 @@ jQuery( function( $ ) {
 			}
 			if ( wc_checkout_params.option_guest_checkout === 'yes' ) {
 				$( 'input#createaccount' ).change( this.toggle_create_account ).change();
+			}
+		},
+		// CHANGE: Prompt user that they might lose data when closing tab or leaving the current page after they change some values in the checkout form
+		maybe_prevent_unload: function( e ) {
+			// Ignore some fields
+			if ( e && e.target.closest( '.payment_box, input#createaccount' ) ) { return; }
+
+			if ( ! _updateBeforeUnload ) {
+
+				var preventUnload = function( e ) {
+					// Prompt user if there is unsaved data
+					if ( _updateBeforeUnload ) {
+						e.preventDefault();
+						e.returnValue = '';
+	
+						// Proceed to update the checkout totals if the user cancel the event
+						$( document.body ).trigger( 'update_checkout' );
+
+						// Reset flag to update on `beforeunload`
+						_updateBeforeUnload = false;
+						window.removeEventListener( 'beforeunload', preventUnload );
+					}
+				};
+
+				window.addEventListener( 'beforeunload', preventUnload );
+				_updateBeforeUnload = true;
 			}
 		},
 		init_payment_methods: function() {
@@ -421,6 +459,9 @@ jQuery( function( $ ) {
 					// Re-init methods
 					wc_checkout_form.init_payment_methods();
 
+					// CHANGE: Set to not prompt user before leaving the page
+					_updateBeforeUnload = false;
+
 					// Fire updated_checkout event.
 					$( document.body ).trigger( 'updated_checkout', [ data ] );
 				}
@@ -470,6 +511,9 @@ jQuery( function( $ ) {
 			if ( $form.is( '.processing' ) ) {
 				return false;
 			}
+
+			// CHANGE: Reset flag to update on `beforeunload`
+			_updateBeforeUnload = false;
 
 			// Trigger a handler to let gateways manipulate the checkout if needed
 			// eslint-disable-next-line max-len
