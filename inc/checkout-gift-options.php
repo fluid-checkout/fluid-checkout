@@ -309,7 +309,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		?>
 			<br class="clear" />
 			
-			<?php // TODO: Move the gift options edit section to its own metabox ?>
+			<?php // TODO: Move the gift options edit section to its own metabox and template file ?>
 			<div class="order_data_column" style="width: 100%">
 				
 				<h4><?php echo __( 'Gift options', 'Title for gift options on admin order details screen', 'woocommerce-fluid-checkout' ) ?> <a href="#" class="edit_address"><?php echo _x( 'Edit', 'Edit gift options link on admin order details screen', 'woocommerce-fluid-checkout' ) ?></a></h4>

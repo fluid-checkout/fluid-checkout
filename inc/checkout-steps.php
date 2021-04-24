@@ -74,6 +74,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_shipping_methods_fragment' ), 10 );
+
+		// Order Notes
+		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_order_notes_session' ), 10 );
+		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_order_notes_session' ), 10 );
 		
 		// Billing Address
 		add_action( 'wfc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
@@ -1060,8 +1064,41 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output order notes substep in text format for when the step is complete.
 	 */
 	public function output_substep_text_order_notes() {
-		$checkout = WC()->checkout();
-		echo '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'order_notes' ) . '</span>';
+		echo '<span class="wfc-step__substep-text-line">' . esc_html( $this->get_order_notes_session() ) . '</span>';
+	}
+
+
+
+	/**
+	 * Get order notes value from session.
+	 *
+	 * @return  string  The order notes field value saved to session.
+	 */
+	public function get_order_notes_session() {
+		$order_notes = WC()->session->get( '_wfc_order_notes' ) !== null ? WC()->session->get( '_wfc_order_notes' ) : '';
+		return $order_notes;
+	}
+
+	/**
+	 * Save the order notes fields values to the current user session.
+	 * 
+	 * @param array $posted_data Post data for all checkout fields.
+	 */
+	public function set_order_notes_session( $posted_data ) {
+		// Get parsed posted data
+		$parsed_posted_data = $this->get_parsed_posted_data();
+
+		// Set session value
+		WC()->session->set( '_wfc_order_notes', $parsed_posted_data['order_comments'] );
+		
+		return $posted_data;
+	}
+
+	/**
+	 * Unset order notes session.
+	 **/
+	public function unset_order_notes_session() {
+		WC()->session->set( '_wfc_order_notes', null );
 	}
 
 
