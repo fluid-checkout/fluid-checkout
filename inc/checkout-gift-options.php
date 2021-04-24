@@ -25,7 +25,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
 		// Order Admin Screen
-		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_gift_options' ), 100 );
+		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_gift_options' ), 90 );
 		add_action( 'woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_gift_options_fields_order_admin_screen' ), 100, 1 );
 
 		// Persist gift options to the user's session
@@ -77,13 +77,33 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		$this->multistep()->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
-		// if ( $this->multistep()->is_checkout_layout_multistep() ) {
-		// 	$this->multistep()->output_substep_text_start_tag( $substep_id );
-		// 	$this->multistep()->output_substep_text_gift_options();
-		// 	$this->multistep()->output_substep_text_end_tag();
-		// }
+		if ( $this->multistep()->is_checkout_layout_multistep() ) {
+			$this->multistep()->output_substep_text_start_tag( $substep_id );
+			$this->output_substep_text_gift_options();
+			$this->multistep()->output_substep_text_end_tag();
+		}
 
 		$this->multistep()->output_substep_end_tag();
+	}
+
+
+
+	/**
+	 * Output gift options substep in text format for when the step is completed.
+	 */
+	public function output_substep_text_gift_options() {
+		// Get gift options values
+		$gift_options = $this->get_gift_options_session();
+
+		// Display gift options values
+		if ( isset( $gift_options['_wfc_has_gift_options'] ) && $gift_options['_wfc_has_gift_options'] == true ) {
+			echo '<span class="wfc-step__substep-text-line wfc-step__substep-text-line--gift-message">' . esc_html( $gift_options['_wfc_gift_message'] ) . '</span>';
+			echo '<span class="wfc-step__substep-text-line wfc-step__substep-text-line--gift-from">' . esc_html( $gift_options['_wfc_gift_from'] ) . '</span>';
+		}
+		// Display "no gift options" notice.
+		else {
+			echo '<span class="wfc-step__substep-text-line">' . apply_filters( 'wfc_no_gift_options_order_review_notice', _x( 'None.', 'Notice for no gift options provided', 'woocommerce-fluid-checkout' ) ) . '</span>';
+		}
 	}
 
 
@@ -309,7 +329,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		?>
 			<br class="clear" />
 			
-			<?php // TODO: Move the gift options edit section to its own metabox ?>
+			<?php // TODO: Move the gift options edit section to its own metabox and template file ?>
 			<div class="order_data_column" style="width: 100%">
 				
 				<h4><?php echo __( 'Gift options', 'Title for gift options on admin order details screen', 'woocommerce-fluid-checkout' ) ?> <a href="#" class="edit_address"><?php echo _x( 'Edit', 'Edit gift options link on admin order details screen', 'woocommerce-fluid-checkout' ) ?></a></h4>
