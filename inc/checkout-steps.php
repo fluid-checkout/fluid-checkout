@@ -578,7 +578,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Determine if the step is complete.
+	 * Determine if the step is completed.
 	 *
 	 * @param   string  $step_id  Id of the step to check for the "complete" status.
 	 *
@@ -809,7 +809,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output contact substep in text format for when the step is complete.
+	 * Output contact substep in text format for when the step is completed.
 	 */
 	public function output_substep_contact_text() {
 		$checkout = WC()->checkout();
@@ -1020,7 +1020,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output shipping address substep in text format for when the step is complete.
+	 * Output shipping address substep in text format for when the step is completed.
 	 */
 	public function output_substep_shipping_address_text() {
 		$checkout = WC()->checkout();
@@ -1040,7 +1040,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output shipping method substep in text format for when the step is complete.
+	 * Output shipping method substep in text format for when the step is completed.
 	 */
 	public function output_substep_text_shipping_method() {
 		$packages = WC()->shipping()->get_packages();
@@ -1061,10 +1061,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output order notes substep in text format for when the step is complete.
+	 * Output order notes substep in text format for when the step is completed.
 	 */
 	public function output_substep_text_order_notes() {
-		echo '<span class="wfc-step__substep-text-line">' . esc_html( $this->get_order_notes_session() ) . '</span>';
+		$order_notes = $this->get_order_notes_session();
+
+		// Display the order notes value
+		if ( ! empty( $order_notes ) ) {
+			echo '<span class="wfc-step__substep-text-line">' . esc_html( $order_notes ) . '</span>';
+		}
+		// Display "no order notes" notice.
+		else {
+			echo '<span class="wfc-step__substep-text-line">' . apply_filters( 'wfc_no_order_notes_order_review_notice', _x( 'None.', 'Notice for no order notes provided', 'woocommerce-fluid-checkout' ) ) . '</span>';
+		}
+
 	}
 
 
@@ -1370,7 +1380,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output billing address substep in text format for when the step is complete.
+	 * Output billing address substep in text format for when the step is completed.
 	 */
 	public function output_substep_billing_address_text() {
 		$checkout = WC()->checkout();
