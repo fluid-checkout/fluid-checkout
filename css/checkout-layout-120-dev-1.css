@@ -858,6 +858,9 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 /*------------------------------------*\
   #CHECKOUT GIFT OPTIONS
 \*------------------------------------*/
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title .gift-options__icon {
+  display: none; }
+
 .gift-options__icon:before {
   display: inline-block;
   font-family: "fluid-checkout-icons" !important;
