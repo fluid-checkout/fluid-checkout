@@ -25,7 +25,7 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
 		// Order Admin Screen
-		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_gift_options' ), 100 );
+		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_gift_options' ), 90 );
 		add_action( 'woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_gift_options_fields_order_admin_screen' ), 100, 1 );
 
 		// Persist gift options to the user's session

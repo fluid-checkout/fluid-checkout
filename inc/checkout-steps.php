@@ -69,7 +69,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
 		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
 		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
-		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_order_notes' ), 90 );
+		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_order_notes' ), 100 );
 		add_action( 'wfc_cart_totals_shipping', array( $this, 'output_cart_totals_shipping_section' ), 10 );
 		add_action( 'wfc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
