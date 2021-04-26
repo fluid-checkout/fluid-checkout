@@ -851,6 +851,9 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   padding: 20px;
   border-bottom: solid 1px #D6D8D8;
   background-color: #F0F4F4; }
+  @media (min-width: 750px) {
+    .wfc-wrapper #payment .payment_methods > li .payment_box {
+      padding: 20px 44px; } }
 
 .wfc-wrapper .payment_box > p:last-child {
   margin-bottom: 0; }
