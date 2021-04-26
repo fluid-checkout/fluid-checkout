@@ -36,7 +36,7 @@ class FluidCheckout_PaymentMethodStripe extends FluidCheckout {
 			'base' => array(
 				'iconColor'     => '#666EE8',
 				'color'         => '#31325F',
-				'lineHeight'    => '2', // Make fields taller and easier to see
+				'lineHeight'    => '2', // Makes fields taller and easier to see
 				'fontSize'      => '16px', // Should be at least 16px to prevent auto-zoom issues on Safari Mobile
 				'::placeholder' => array(
 					'color' => '#CFD7E0',
