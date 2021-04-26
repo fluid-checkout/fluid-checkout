@@ -8,8 +8,6 @@
 	top: 0;
 	left: 0;
 
-	display: flex;
-	align-items: center;
 	width: 100%;
 	min-height: $checkout-header-height;
 	background-color: $checkout-header-background-color;
@@ -40,7 +38,13 @@
 
 .wfc-checkout-header__inner {
 	position: relative;
+	display: flex;
+	align-items: center;
 	width: 100%;
+
+	// min-height should be same as the main header element
+	min-height: $checkout-header-height;
+	@media (#{$bp-larger-than-desktop}) { min-height: $checkout-header-height--large-screen; }
 	
 	// max-width
 	max-width: $container-width-mobile;
