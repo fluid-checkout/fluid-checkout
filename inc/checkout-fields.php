@@ -31,7 +31,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			
 			add_filter( 'woocommerce_shipping_fields', array( $this, 'add_shipping_phone_field' ), 5 );
 			add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_shipping_phone' ), 10, 1 );
-			add_action( 'woocommerce_admin_order_data_after_shipping_address', array( $this, 'output_shipping_phone_field_admin_screen' ), 1, 1 );
+			add_filter( 'woocommerce_admin_shipping_fields', array( $this, 'add_ashipping_field_to_admin_screen' ), 10 );
 			add_filter( 'woocommerce_order_formatted_shipping_address', array( $this, 'output_order_formatted_shipping_address_with_phone' ), 1, 2 );
 			add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_replacement_field_shipping_phone' ), 10, 2 );
 			add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_shipping_phone_to_formats' ) );
@@ -87,16 +87,17 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		update_post_meta( $order_id, '_shipping_phone', $shipping_phone );
 	}
 
-
-	
 	/**
-	 * Output shipping phone field to admin screen.
-	 * 
-	 * @param   WC_Order  $order  The order object.
+	 * Add the shipping phone field to admin screen.
 	 */
-	public function output_shipping_phone_field_admin_screen( $order ) {
-		$shipping_phone = get_post_meta( $order->get_id(), '_shipping_phone', true );
-		echo '<p><strong>'. __( 'Phone', 'woocommerce-fluid-checkout' ) .':</strong><br><a href="tel:' . $shipping_phone . '">'. $shipping_phone .'</a></p>';
+	public function add_ashipping_field_to_admin_screen( $shipping_fields ) {
+		$shipping_fields[ 'phone' ] = array(
+			'label'         => __( 'Phone', 'woocommerce' ),
+			'wrapper_class' => 'form-field-wide',
+			'show'          => false,
+		);
+
+		return $shipping_fields;
 	}
 
 
