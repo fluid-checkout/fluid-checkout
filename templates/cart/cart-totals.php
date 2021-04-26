@@ -11,8 +11,9 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce/Templates
+ * @package WooCommerce\Templates
  * @version 2.3.6
+ * @wfc-version 1.2.0
  */
 
 defined( 'ABSPATH' ) || exit;

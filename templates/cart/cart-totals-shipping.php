@@ -12,7 +12,9 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package woocommerce-fluid-checkout
- * @version 3.0.0
+ * @version 1.2.0
+ * @wc-version 2.3.6
+ * @wc-original cart/cart-totals.php
  */
 
 defined( 'ABSPATH' ) || exit;

@@ -11,9 +11,10 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @see     templates/checkout/form-billing.php
  * @package woocommerce-fluid-checkout
  * @version 1.2.0
+ * @wc-version 3.6.0
+ * @wc-original checkout/form-billing.php
  */
 
 defined( 'ABSPATH' ) || exit;
