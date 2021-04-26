@@ -911,7 +911,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   border: solid 1px #D6D8D8;
   border-radius: 13px; }
 
-.woocommerce-privacy-policy-text {
+.woocommerce-privacy-policy-text:not(:last-child):not(:empty) {
   margin-bottom: 20px; }
 
 .woocommerce-terms-and-conditions {
