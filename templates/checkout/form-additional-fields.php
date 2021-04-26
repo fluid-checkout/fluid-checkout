@@ -11,8 +11,10 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce/Templates
- * @version 3.6.0
+ * @package woocommerce-fluid-checkout
+ * @version 1.2.0
+ * @wc-version 3.6.0
+ * @wc-original checkout/form-shipping.php
  * @global WC_Checkout $checkout
  */
 

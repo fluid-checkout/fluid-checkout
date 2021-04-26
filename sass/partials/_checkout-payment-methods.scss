@@ -132,6 +132,8 @@
 	padding: $global-spacing-small;
 	border-bottom: $payment-method-border;
 	background-color: $lighter-grey;
+
+	@media (#{$bp-larger-than-tablet}) { padding: $global-spacing-small #{ $payment-method-radio-size + $payment-method-padding-horizontal }; }
 }
 
 .wfc-wrapper .payment_box > p:last-child {

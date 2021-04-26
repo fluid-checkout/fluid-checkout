@@ -3,7 +3,7 @@
 /**
  * Feature for adding gift options to checkout
  */
-class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
+class FluidCheckout_GiftOptions extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -18,9 +18,6 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Bail if gift options not enabled
-		if ( get_option( 'wfc_enable_checkout_gift_options', 'false' ) !== 'true' ) { return; }
-
 		// Body Class
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
@@ -423,4 +420,4 @@ class FluidCheckout_CheckoutGiftOptions extends FluidCheckout {
 
 }
 
-FluidCheckout_CheckoutGiftOptions::instance();
+FluidCheckout_GiftOptions::instance();

@@ -168,13 +168,15 @@ class FluidCheckout {
 	 */
 	private function add_features() {
 		self::$features = array(
-			'checkout-page-template'      => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php', 'enable_option' => 'wfc_enable_checkout_page_template', 'enable_default' => true ),
-			'checkout-steps'              => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
-			'checkout-fields'             => array( 'file' => self::$directory_path . 'inc/checkout-fields.php' ),
-			'checkout-widget-areas'       => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => true ),
-			'checkout-validation'         => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => true ),
-			'checkout-gift-options'       => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => true ),
-			'cart-widget-areas'           => array( 'file' => self::$directory_path . 'inc/cart-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => true ),
+			'checkout-page-template'              => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php', 'enable_option' => 'wfc_enable_checkout_page_template', 'enable_default' => true ),
+			'checkout-steps'                      => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
+			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php' ),
+			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => true ),
+			'checkout-validation'                 => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => true ),
+			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => true ),
+			'cart-widget-areas'                   => array( 'file' => self::$directory_path . 'inc/cart-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => true ),
+			
+			'compat-payment-method-stripe'        => array( 'file' => self::$directory_path . 'inc/compat/plugins/compat-payment-method-stripe.php', 'enable_option' => 'wfc_compat_payment_method_stripe', 'enable_default' => true ),
 		);
 	}
 

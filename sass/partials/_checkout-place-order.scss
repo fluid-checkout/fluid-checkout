@@ -22,7 +22,7 @@
 
 
 
-.woocommerce-privacy-policy-text {
+.woocommerce-privacy-policy-text:not( :last-child ):not( :empty ) {
 	margin-bottom: $global-spacing-small;
 }
 

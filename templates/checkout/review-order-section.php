@@ -13,6 +13,8 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package woocommerce-fluid-checkout
  * @version 1.2.0
+ * @wc-version 3.5.0
+ * @wc-original checkout/form-checkout.php
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -46,7 +48,6 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 		
-		<?php // CHANGE: Remove id attribute to avoid duplicate element id, added a class to apply styles to the element ?>
 		<h3 class="wfc-checkout-order-review-title"><?php echo esc_html( $order_review_title ); ?></h3>
 		
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
