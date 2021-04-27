@@ -253,7 +253,7 @@
 		// Collapse element
 		manager.element.classList.add( manager.settings.isCollapsedClass );
 		
-		// Remove `removeProperties` event listener to prevent block from expanding
+		// Remove `removeProperties` event listener to prevent block from expanding at the end of the transition
 		manager.contentElement.removeEventListener( getTransitionEvent(), removeProperties );
 		
 		// Set content element to hide overflowing content
@@ -344,7 +344,7 @@
 		manager.settings = extend( _settings );
 		
 		// Get content element
-		manager.contentElement = manager.element.querySelector( manager.settings.contentElementSelector );
+		manager.contentElement = manager.element.matches( _settings.contentElementSelector ) ? manager.element : manager.element.querySelector( manager.settings.contentElementSelector );
 		if ( ! manager.contentElement ) {
 			manager.contentElement = manager.element;
 		}
