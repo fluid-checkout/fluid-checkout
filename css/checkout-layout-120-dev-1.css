@@ -526,7 +526,18 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 \*------------------------------------*/
 .has-checkout-layout--multi-step .wfc-step__substep-edit,
 .has-checkout-layout--multi-step .wfc-step__substep-save {
-  display: none; }
+  display: none;
+  margin-right: -10px;
+  padding: 5px 10px;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 1;
+  text-decoration: underline;
+  background-color: transparent; }
+  @media (min-width: 1000px) {
+    .has-checkout-layout--multi-step .wfc-step__substep-edit,
+    .has-checkout-layout--multi-step .wfc-step__substep-save {
+      font-size: 15px; } }
 
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-edit,
 .has-checkout-layout--multi-step [data-step-complete] .is-editing .wfc-step__substep-save {

@@ -33,15 +33,6 @@
 
 
 
-// TODO: REMOVE THIS DECLARATION IF NOT NEEDED
-// .wfc-step__substep-fields {
-	// width: 100%;
-// }
-
-
-
-
-
 .wfc-step__substep-text {
 	display: none;
 }
@@ -138,6 +129,16 @@
 .has-checkout-layout--multi-step .wfc-step__substep-edit,
 .has-checkout-layout--multi-step .wfc-step__substep-save {
 	display: none;
+
+	margin-right: - $global-spacing-extra-small;
+	padding: $global-spacing-tiny $global-spacing-extra-small;
+	font-size: $font-size-small;
+	font-weight: normal;
+	line-height: 1;
+	text-decoration: underline;
+	background-color: transparent;
+
+	@media (#{$bp-larger-than-desktop}) { font-size: $font-size-small--large-screen; }
 }
 
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-edit,
