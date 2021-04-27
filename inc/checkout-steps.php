@@ -1199,7 +1199,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_substep_text_order_notes() {
 		$order_notes = $this->get_order_notes_session();
 
-		$html = '<div class="wfc-step__substep-text fc-step__substep-text--order-notes">';
+		$html = '<div class="wfc-step__substep-text-content wfc-step__substep-text-content--order-notes">';
 
 		// The order notes value
 		if ( ! empty( $order_notes ) ) {
