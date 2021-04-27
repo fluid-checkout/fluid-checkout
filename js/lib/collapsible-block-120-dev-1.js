@@ -27,6 +27,8 @@
 	};
 	var _settings = { };
 	var _defaults = {
+		bodyClass: 'has-collapsible-block',
+
 		elementSelector: '[data-collapsible]',
 		contentElementSelector: '[data-collapsible-content]',
 		contentInnerSelector: '.collapsible-content__inner',
@@ -419,6 +421,9 @@
 		
 		// Add event listeners
 		document.addEventListener( 'click', handleClick );
+
+		// Set body class
+		document.body.classList.add( _settings.bodyClass );
 
 		_hasInitialized = true;
 	};

@@ -472,13 +472,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$render_callback = array_key_exists( 'render_callback', $step_args ) ? $step_args[ 'render_callback' ] : null;
 			$render_conditional_callback = array_key_exists( 'render_condition_callback', $step_args ) ? $step_args[ 'render_condition_callback' ] : null;
 			
-			// Skip step if step render function not callable
+			// Skip step if step `render` function not callable
 			if ( ! $render_callback || ! is_callable( $render_callback ) ) {
 				trigger_error( "The output function for the checkout step with `step_id = {$step_id}` is not callable. Skipping step render.", E_USER_WARNING );
 				continue;
 			}
 			
-			// Skip step if conditional is not met
+			// Skip step if `render` conditional is not met
 			if ( $render_conditional_callback && is_callable( $render_conditional_callback ) && ! call_user_func( $render_conditional_callback ) ) { continue; }
 			
 			// Output the step
@@ -655,6 +655,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$step_id = $step_args[ 'step_id' ];
 		$step_title = apply_filters( "wfc_step_title_{$step_id}", $step_args[ 'step_title' ] );
 		$step_attributes = array(
+			'class' => 'wfc-checkout-step',
 			'data-step-id' => ! empty( $step_id ) && $step_id != null ? $step_id : '',
 			'data-step-label' => $step_title,
 			'data-step-complete' => $this->is_step_complete( $step_id ),
@@ -662,7 +663,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 		$step_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $step_attributes ), $step_attributes ) );
 		?>
-		<section class="wfc-checkout-step" <?php echo $step_attributes_str; ?>>
+		<section <?php echo $step_attributes_str; ?>>
 		<?php
 	}
 
@@ -681,15 +682,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Output checkout substep start tag.
+	 *
+	 * @param   string  $step_id        Id of the step in which the substep will be rendered.
+	 * @param   string  $substep_id     Id of the substep.
+	 * @param   string  $substep_title  Title of the substep.
 	 */
-	public function output_substep_start_tag( $substep_id, $substep_title ) {
+	public function output_substep_start_tag( $step_id, $substep_id, $substep_title ) {
 		$substep_title = apply_filters( "wfc_substep_title_{$substep_id}", $substep_title );
 		$substep_attributes = array(
+			'class' => 'wfc-step__substep',
 			'data-substep-id' => ! empty( $substep_id ) && $substep_id != null ? $substep_id : '',
 		);
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
-		<div class="wfc-step__substep" <?php echo $substep_attributes_str; ?>>
+		<div <?php echo $substep_attributes_str; ?>>
 			<?php if ( ! empty( $substep_title ) ) : ?>
 				<h3 class="wfc-step__substep-title"><?php echo wp_kses( $substep_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ); ?></h3>
 			<?php endif; ?>
@@ -698,9 +704,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Output checkout substep end tag.
+	 *
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
+	 * @param   string  $substep_id  Id of the substep.
 	 */
-	public function output_substep_end_tag() {
-		?>
+	public function output_substep_end_tag( $step_id, $substep_id ) {
+			?>
+			<button type="button" class="wfc-step__substep-edit" data-step-edit data-collapsible-target="wfc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo _x( 'Change', 'Checkout substep change link label', 'woocommerce-fluid-checkout' ); ?></button>
+			<button type="button" class="wfc-step__substep-save" data-step-save data-collapsible-target="wfc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo _x( 'Save', 'Checkout substep save link label', 'woocommerce-fluid-checkout' ); ?></button>
 		</div>
 		<?php
 	}
@@ -709,14 +720,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Output checkout substep start tag.
+	 *
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
+	 * @param   string  $substep_id  Id of the substep.
 	 */
-	public function output_substep_fields_start_tag( $substep_id ) {
+	public function output_substep_fields_start_tag( $step_id, $substep_id ) {
+		$is_step_complete = $this->is_step_complete( $step_id );
 		$substep_attributes = array(
-			'data-substep-id' => ! empty( $substep_id ) && $substep_id != null ? $substep_id : '',
+			'id' => 'wfc-substep__fields--' . $substep_id,
+			'class' => 'wfc-step__substep-fields',
+			'data-substep-id' => $substep_id,
+			'data-collapsible' => '',
+			'data-collapsible-content' => '',
+			'data-collapsible-initial-state' => $is_step_complete ? 'collapsed' : 'expanded',
 		);
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
-		<div class="wfc-step__substep-fields" <?php echo $substep_attributes_str; ?>>
+		<div <?php echo $substep_attributes_str; ?>>
 		<?php
 	}
 
@@ -733,14 +753,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Output checkout substep start tag.
+	 *
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
+	 * @param   string  $substep_id  Id of the substep.
 	 */
-	public function output_substep_text_start_tag( $substep_id ) {
+	public function output_substep_text_start_tag( $step_id, $substep_id ) {
+		$is_step_complete = $this->is_step_complete( $step_id );
 		$substep_attributes = array(
-			'data-substep-id' => ! empty( $substep_id ) && $substep_id != null ? $substep_id : '',
+			'id' => 'wfc-substep__text--' . $substep_id,
+			'class' => 'wfc-step__substep-text',
+			'data-substep-id' => $substep_id,
+			'data-collapsible' => '',
+			'data-collapsible-content' => '',
+			'data-collapsible-initial-state' => $is_step_complete ? 'expanded' : 'collapsed',
 		);
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
-		<div class="wfc-step__substep-text" <?php echo $substep_attributes_str; ?>>
+		<div <?php echo $substep_attributes_str; ?>>
 		<?php
 	}
 
@@ -767,28 +796,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output contact step.
 	 */
 	public function output_step_contact() {
-		do_action( 'wfc_output_step_contact' );
+		do_action( 'wfc_output_step_contact', 'contact' );
 	}
 
 	/**
 	 * Output contact substep.
+	 *
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
 	 */
-	public function output_substep_contact() {
+	public function output_substep_contact( $step_id ) {
 		$substep_id = 'contact';
-		$this->output_substep_start_tag( $substep_id, __( 'My contact', 'woocommerce-fluid-checkout' ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, __( 'My contact', 'woocommerce-fluid-checkout' ) );
 		
-		$this->output_substep_fields_start_tag( $substep_id );
+		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_step_contact_fields();
 		$this->output_substep_fields_end_tag();
 		
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id );
+			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_contact_text();
 			$this->output_substep_text_end_tag();
 		}
 			
-		$this->output_substep_end_tag();
+		$this->output_substep_end_tag( $step_id, $substep_id );
 	}
 
 	/**
@@ -908,19 +939,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Output contact substep.
+	 *
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
 	 */
-	public function output_substep_contact_login() {
+	public function output_substep_contact_login( $step_id ) {
 		// Bail if user already logged in
 		if ( is_user_logged_in() ) { return; };
 
 		$substep_id = 'contact_login';
-		$this->output_substep_start_tag( $substep_id, '' );
+		$this->output_substep_start_tag( $step_id, $substep_id, '' );
 		
-		$this->output_substep_fields_start_tag( $substep_id );
+		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_contact_login_button();
 		$this->output_substep_fields_end_tag();
 			
-		$this->output_substep_end_tag();
+		$this->output_substep_end_tag( $step_id, $substep_id );
 	}
 
 
@@ -937,70 +970,76 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output shipping step.
 	 */
 	public function output_step_shipping() {
-		do_action( 'wfc_output_step_shipping' );
+		do_action( 'wfc_output_step_shipping', 'shipping' );
 	}
 
 	/**
 	 * Output shipping address substep.
+	 *
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
 	 */
-	public function output_substep_shipping_address() {
+	public function output_substep_shipping_address( $step_id ) {
 		$substep_id = 'shipping_address';
-		$this->output_substep_start_tag( $substep_id, __( 'Shipping Address', 'woocommerce-fluid-checkout' ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Shipping Address', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep_id );
+		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_shipping_address_fields();
 		$this->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id );
+			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_shipping_address_text();
 			$this->output_substep_text_end_tag();
 		}
 
-		$this->output_substep_end_tag();
+		$this->output_substep_end_tag( $step_id, $substep_id );
 	}
 
 	/**
 	 * Output shipping method substep.
+	 *
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
 	 */
-	public function output_substep_shipping_method() {
+	public function output_substep_shipping_method( $step_id ) {
 		$substep_id = 'shipping_method';
-		$this->output_substep_start_tag( $substep_id, __( 'Shipping Method', 'woocommerce-fluid-checkout' ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Shipping Method', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep_id );
+		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_shipping_methods_available();
 		$this->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id );
+			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_shipping_method();
 			$this->output_substep_text_end_tag();
 		}
 
-		$this->output_substep_end_tag();
+		$this->output_substep_end_tag( $step_id, $substep_id );
 	}
 
 	/**
 	 * Output order notes substep.
+	 *
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
 	 */
-	public function output_substep_order_notes() {
+	public function output_substep_order_notes( $step_id ) {
 		$substep_id = 'order_notes';
-		$this->output_substep_start_tag( $substep_id, __( 'Additional notes', 'woocommerce-fluid-checkout' ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Additional notes', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep_id );
+		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_additional_fields();
 		$this->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id );
+			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_order_notes();
 			$this->output_substep_text_end_tag();
 		}
 
-		$this->output_substep_end_tag();
+		$this->output_substep_end_tag( $step_id, $substep_id );
 	}
 
 
@@ -1330,30 +1369,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output billing step.
 	 */
 	public function output_step_billing() {
-		do_action( 'wfc_output_step_billing' );
+		do_action( 'wfc_output_step_billing', 'billing' );
 	}
 	
 
 
 	/**
 	 * Output billing address substep.
+	 *
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
 	 */
-	public function output_substep_billing_address() {
+	public function output_substep_billing_address( $step_id ) {
 		$substep_id = 'billing_address';
-		$this->output_substep_start_tag( $substep_id, __( 'Billing Address', 'woocommerce-fluid-checkout' ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Billing Address', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep_id );
+		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_billing_address_fields();
 		$this->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $substep_id );
+			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_billing_address_text();
 			$this->output_substep_text_end_tag();
 		}
 
-		$this->output_substep_end_tag();
+		$this->output_substep_end_tag( $step_id, $substep_id );
 	}
 
 
@@ -1611,23 +1652,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output payment step.
 	 */
 	public function output_step_payment() {
-		do_action( 'wfc_output_step_payment' );
+		do_action( 'wfc_output_step_payment', 'payment' );
 	}
 	
 
 
 	/**
 	 * Output payment substep.
+	 *
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
 	 */
-	public function output_substep_payment() {
-		$substep = 'payment';
-		$this->output_substep_start_tag( $substep, __( 'Payment Method', 'woocommerce-fluid-checkout' ) );
+	public function output_substep_payment( $step_id ) {
+		$substep_id = 'payment';
+		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Payment Method', 'woocommerce-fluid-checkout' ) );
 
-		$this->output_substep_fields_start_tag( $substep );
+		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_payment_fields();
 		$this->output_substep_fields_end_tag();
 
-		$this->output_substep_end_tag();
+		$this->output_substep_end_tag( $step_id, $substep_id );
 	}
 
 

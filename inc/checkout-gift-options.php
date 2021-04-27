@@ -64,23 +64,25 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 	/**
 	 * Output gift options substep.
+	 *
+	 * @param   string  $step_id  Id of the step in which the substep will be rendered.
 	 */
-	public function output_substep_gift_options() {
+	public function output_substep_gift_options( $step_id ) {
 		$substep_id = 'gift_options';
-		$this->multistep()->output_substep_start_tag( $substep_id, __( '<span class="gift-options__icon"></span>Gift Options', 'woocommerce-fluid-checkout' ) );
+		$this->multistep()->output_substep_start_tag( $step_id, $substep_id, __( '<span class="gift-options__icon"></span>Gift Options', 'woocommerce-fluid-checkout' ) );
 
-		$this->multistep()->output_substep_fields_start_tag( $substep_id );
+		$this->multistep()->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->maybe_output_gift_options_fields();
 		$this->multistep()->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->multistep()->is_checkout_layout_multistep() ) {
-			$this->multistep()->output_substep_text_start_tag( $substep_id );
+			$this->multistep()->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_gift_options();
 			$this->multistep()->output_substep_text_end_tag();
 		}
 
-		$this->multistep()->output_substep_end_tag();
+		$this->multistep()->output_substep_end_tag( $step_id, $substep_id );
 	}
 
 

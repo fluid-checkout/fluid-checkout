@@ -10,6 +10,7 @@
 
 
 .wfc-step__substep {
+	position: relative;
 	border-bottom: solid remsize( .1rem ) $border-color;
 }
 
@@ -32,11 +33,10 @@
 
 
 
-.wfc-step__substep-fields {
-	display: inline-block;
-	padding-top: $global-spacing-extra-small;
-	width: 100%;
-}
+// TODO: REMOVE THIS DECLARATION IF NOT NEEDED
+// .wfc-step__substep-fields {
+	// width: 100%;
+// }
 
 
 
@@ -80,7 +80,7 @@
 	display: none;
 }
 
-.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-fields {
+.has-checkout-layout--multi-step:not( .has-collapsible-block ) [data-step-complete] .wfc-step__substep-fields {
 	display: none;
 }
 
@@ -133,10 +133,22 @@
 
 
 /*------------------------------------*\
-	#CHECKOUT LAYOUT MULTI-STEP
+	#CHECKOUT SUB-STEP EDIT
 \*------------------------------------*/
-.wfc-checkout-step[data-step-id="payment"] .wfc-checkout-order-review {
-	@media (#{$bp-larger-than-desktop}) {
-		display: none;
-	}
+.has-checkout-layout--multi-step .wfc-step__substep-edit,
+.has-checkout-layout--multi-step .wfc-step__substep-save {
+	display: none;
+}
+
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-edit,
+.has-checkout-layout--multi-step [data-step-complete] .is-editing .wfc-step__substep-save {
+	// TODO: DECIDE IF POSITION BUTTONS TO THE TOP RIGHT
+	// position: absolute;
+	// top: 0;
+	// right: 0;
+	display: inline;
+}
+.has-checkout-layout--multi-step [data-step-complete] .is-editing .wfc-step__substep-edit,
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-save {
+	display: none;
 }
