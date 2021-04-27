@@ -17,6 +17,7 @@
 	'use strict';
 
 	var $ = jQuery;
+	var _hasJQuery = ( $ != null );
 
 	var _hasInitialized = false;
 	var _publicMethods = { };
@@ -30,6 +31,8 @@
 		substepEditButtonSelector: '[data-step-edit]',
 		substepSaveButtonSelector: '[data-step-save]',
 		substepEditingClass: 'is-editing',
+
+		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
 	}
 
 
@@ -110,7 +113,7 @@
 	 *
 	 * @param   HTMLElement  substepElement  Substep element to change the state of.
 	 */
-	 var collapseSubstepEdit = function( substepElement ) {
+	var collapseSubstepEdit = function( substepElement ) {
 		// Bail if editButton not valid
 		if ( ! substepElement ) { return; }
 
@@ -123,6 +126,38 @@
 
 		// Remove editing class from the substep element
 		substepElement.classList.remove( _settings.substepEditingClass );
+	}
+
+
+
+	/**
+	 * Collapse the substep fields, and expand the substep values in text format for review.
+	 *
+	 * @param   HTMLElement  substepElement  Substep element to change the state of.
+	 */
+	 var maybeSaveSubstep = function( substepElement ) {
+		// Bail if editButton not valid
+		if ( ! substepElement ) { return; }
+		
+		// Maybe validate fields
+		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( substepElement ) ) {
+			// Try to focus the first invalid field
+			var firstInvalidField = substepElement.querySelector( _settings.invalidFieldRowSelector );
+			if ( firstInvalidField ) {
+				firstInvalidField.focus();
+			}
+			
+			// Bail when substep has invalid fields
+			return;
+		}
+
+		// Collapse substep fields and display step in text format
+		collapseSubstepEdit( substepElement );
+
+		// Update checkout
+		if ( _hasJQuery ) {
+			$( document.body ).trigger( 'update_checkout' );
+		}
 	}
 
 
@@ -141,10 +176,24 @@
 		else if ( e.target.closest( _settings.substepSaveButtonSelector ) ) {
 			var saveButton = e.target.closest( _settings.substepSaveButtonSelector );
 			var substepElement = saveButton.closest( _settings.substepSelector );
-			// TODO: CHANGE FUNCTION CALL TO VALIDATE SUBSTEP BEFORE COLLAPSING
-			collapseSubstepEdit( substepElement );
+			maybeSaveSubstep( substepElement );
 		}
 	};
+
+
+
+	/**
+	 * Finish to initialize component and set related handlers.
+	 */
+	 var finishInit = function() {
+		// Add event listeners
+		window.addEventListener( 'click', handleClick );
+
+		// Add init class
+		document.body.classList.add( _settings.bodyClass );
+
+		_hasInitialized = true;
+	}
 
 
 
@@ -157,15 +206,13 @@
 		// Merge settings
 		_settings = extend( _settings, options );
 
-		// TODO: Check if CollapsibleBlocks is loaded before finishing the initialization, and try to load it if not available
-		
-		// Add event listeners
-		window.addEventListener( 'click', handleClick );
-
-		// Add init class
-		document.body.classList.add( _settings.bodyClass );
-
-		_hasInitialized = true;
+		// Finish initialization, maybe load dependencies first
+		if ( window.CollapsibleBlock ) {
+			finishInit();
+		}
+		else if( window.RequireBundle ) {
+			RequireBundle.require( [ 'collapsible-block' ], function() { finishInit(); } );
+		}
 	};
 
 

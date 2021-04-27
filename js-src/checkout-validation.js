@@ -539,7 +539,7 @@
 		var all_valid = true;
 		var fields = container.querySelectorAll( _settings.validateFieldsSelector );
 
-		for (var i = 0; i < fields.length; i++) {
+		for ( var i = 0; i < fields.length; i++ ) {
 			if ( ! _publicMethods.validateField( fields[i], validateHidden ) ) {
 				all_valid = false;
 			}
