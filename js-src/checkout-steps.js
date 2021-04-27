@@ -159,8 +159,9 @@
 			// Get text content element	
 			var contentElement = substepElement.querySelector( '.wfc-step__substep-text-content' );
 			
-			// Use the same method that WooCommerce uses
-			// to block other parts of the checkout form while updating
+			// Use the same method that WooCommerce uses to block other parts of the checkout form while updating.
+			// The UI is unblocked by the WooCommerce `checkout.js` script (which is replaced with a modified version but keeps the same behavior)
+			// using the checkout fragment selector, then unblocking after the checkout update is completed.
 			$( contentElement ).block({
 				message: null,
 				overlayCSS: {
@@ -205,11 +206,6 @@
 
 		// Add init class
 		document.body.classList.add( _settings.bodyClass );
-
-		// // Unblock UI
-		// if ( _hasJQuery ) {
-
-		// }
 
 		_hasInitialized = true;
 	}
