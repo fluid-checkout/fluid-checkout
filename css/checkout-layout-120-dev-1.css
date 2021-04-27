@@ -530,6 +530,9 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-edit,
 .has-checkout-layout--multi-step [data-step-complete] .is-editing .wfc-step__substep-save {
+  position: absolute;
+  top: 0;
+  right: 0;
   display: inline; }
 
 .has-checkout-layout--multi-step [data-step-complete] .is-editing .wfc-step__substep-edit,

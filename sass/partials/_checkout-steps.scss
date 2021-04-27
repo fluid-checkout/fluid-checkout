@@ -142,10 +142,9 @@
 
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-edit,
 .has-checkout-layout--multi-step [data-step-complete] .is-editing .wfc-step__substep-save {
-	// TODO: DECIDE IF POSITION BUTTONS TO THE TOP RIGHT
-	// position: absolute;
-	// top: 0;
-	// right: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
 	display: inline;
 }
 .has-checkout-layout--multi-step [data-step-complete] .is-editing .wfc-step__substep-edit,
