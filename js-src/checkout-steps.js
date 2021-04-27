@@ -156,6 +156,20 @@
 
 		// Update checkout
 		if ( _hasJQuery ) {
+			// Get text content element	
+			var contentElement = substepElement.querySelector( '.wfc-step__substep-text-content' );
+			
+			// Use the same method that WooCommerce uses
+			// to block other parts of the checkout form while updating
+			$( contentElement ).block({
+				message: null,
+				overlayCSS: {
+					background: '#fff',
+					opacity: 0.6
+				}
+			});
+
+			// Trigger update checkout
 			$( document.body ).trigger( 'update_checkout' );
 		}
 	}
@@ -191,6 +205,11 @@
 
 		// Add init class
 		document.body.classList.add( _settings.bodyClass );
+
+		// // Unblock UI
+		// if ( _hasJQuery ) {
+
+		// }
 
 		_hasInitialized = true;
 	}

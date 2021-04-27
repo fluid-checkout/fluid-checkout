@@ -97,7 +97,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		// Get gift options values
 		$gift_options = $this->get_gift_options_session();
 
-		$html = '<div class="wfc-step__substep-text--gift-options">';
+		$html = '<div class="wfc-step__substep-text-content wfc-step__substep-text-content--gift-options">';
 
 		// Display gift options values
 		if ( isset( $gift_options['_wfc_has_gift_options'] ) && $gift_options['_wfc_has_gift_options'] == true ) {
@@ -121,7 +121,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 */
 	public function add_gift_options_text_fragment( $fragments ) {
 		$html = $this->get_substep_text_gift_options();
-		$fragments['.wfc-step__substep-text--gift-options'] = $html;
+		$fragments['.wfc-step__substep-text-content--gift-options'] = $html;
 		return $fragments;
 	}
 
