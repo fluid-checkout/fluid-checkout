@@ -376,11 +376,130 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get the registered checkout steps.
 	 *
-	 * @return  array  An array of the registered checkout steps. For more details of what is expected see the documentation of the property $checkout_steps of this class.
-	 * @see $checkout_steps
+	 * @return  array  An array of the registered checkout steps. For more details of what is expected see the documentation of the private property `$checkout_steps` of this class.
 	 */
 	public function get_checkout_steps() {
 		return $this->checkout_steps;
+	}
+
+
+
+	/**
+	 * Get the checkout steps for the passed step id.
+	 * 
+	 * @param   string  $step_id  ID of the step.
+	 *
+	 * @return  mixed             An array with only one value for the step args. The index is preserved from the original checkout steps list. If not found, returns `false`.
+	 */
+	public function get_checkout_step( $step_id ) {
+		// Look for a step with the same id
+		foreach ( $this->get_checkout_steps() as $key => $step_args ) {
+			if ( $step_args[ 'step_id' ] == sanitize_title( $step_id ) ) {
+				return array( $key, $step_args );
+			}
+		}
+
+		return false;
+	}
+
+
+
+	/**
+	 * Get the list checkout steps considered complete, those which all required data has been provided.
+	 *
+	 * @return  array  List of checkout steps which all required data has been provided. The index is preserved from the original checkout steps list.
+	 */
+	public function get_complete_steps() {
+		$_checkout_steps = $this->get_checkout_steps();
+		$complete_steps = array();
+		
+		for ( $step_index = 0; $step_index < count( $_checkout_steps ); $step_index++ ) {
+			$step_args = $_checkout_steps[ $step_index ];
+			$step_id = $step_args[ 'step_id' ];
+			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
+			
+			// Add incomplete steps to the list
+			if ( $is_complete_callback && is_callable( $is_complete_callback ) && call_user_func( $is_complete_callback ) ) {
+				$complete_steps[ $step_index ] = $step_args;
+			}
+		}
+
+		return $complete_steps;
+	}
+	
+	
+	
+	/**
+	 * Get the list checkout steps considered incomplete, those missing required data.
+	 *
+	 * @return  array  List of checkout steps with required data missing. The index is preserved from the original checkout steps list.
+	 */
+	public function get_incomplete_steps() {
+		$_checkout_steps = $this->get_checkout_steps();
+		$incomplete_steps = array();
+		
+		for ( $step_index = 0; $step_index < count( $_checkout_steps ); $step_index++ ) {
+			$step_args = $_checkout_steps[ $step_index ];
+			$step_id = $step_args[ 'step_id' ];
+			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
+			
+			// Add incomplete steps to the list
+			if ( $is_complete_callback && is_callable( $is_complete_callback ) && ! call_user_func( $is_complete_callback ) ) {
+				$incomplete_steps[ $step_index ] = $step_args;
+			}
+		}
+
+		return $incomplete_steps;
+	}
+
+
+
+	/**
+	 * Get the current checkout step. The first checkout step which is considered incomplete.
+	 *
+	 * @return  array  An array with only one value, the first checkout step which is considered incomplete. The index is preserved from the original checkout steps list.
+	 */
+	public function get_current_step() {
+		$incomplete_steps = $this->get_incomplete_steps();
+		return array_slice( $incomplete_steps, 0, 1, true );
+	}
+
+
+
+	/**
+	 * Determine if the step is the current step.
+	 *
+	 * @param   string  $step_id  Id of the step to check for the "current step" status.
+	 *
+	 * @return  boolean  `true` if the step is the current step, `false` otherwise.
+	 */
+	public function is_current_step( $step_id ) {
+		// Get checkout current step
+		$current_step = $this->get_current_step();
+		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the original checkout steps list
+		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
+
+		return ( $step_id == $current_step_id );
+	}
+
+
+
+	/**
+	 * Determine if the step is completed.
+	 *
+	 * @param   string  $step_id  Id of the step to check for the "complete" status.
+	 *
+	 * @return  boolean  `true` if the step is considered complete, `false` otherwise. Defaults to `false`.
+	 */
+	public function is_step_complete( $step_id ) {
+		$complete_steps = $this->get_complete_steps();
+
+		// Return `true` if step id is found in the complete steps list
+		foreach ( $complete_steps as $step_args ) {
+			if ( $step_id == $step_args[ 'step_id' ] ) { return true; }
+		}
+
+		return false;
 	}
 
 
@@ -499,106 +618,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Checkout Progress Bar
 	 */
-
-
-
-	/**
-	 * Get the list checkout steps considered complete, those which all required data has been provided.
-	 *
-	 * @return  array  List of checkout steps which all required data has been provided. The index is preserved from the original checkout steps list.
-	 */
-	public function get_complete_steps() {
-		$_checkout_steps = $this->get_checkout_steps();
-		$complete_steps = array();
-		
-		for ( $step_index = 0; $step_index < count( $_checkout_steps ); $step_index++ ) {
-			$step_args = $_checkout_steps[ $step_index ];
-			$step_id = $step_args[ 'step_id' ];
-			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
-			
-			// Add incomplete steps to the list
-			if ( $is_complete_callback && is_callable( $is_complete_callback ) && call_user_func( $is_complete_callback ) ) {
-				$complete_steps[ $step_index ] = $step_args;
-			}
-		}
-
-		return $complete_steps;
-	}
-	
-	
-	
-	/**
-	 * Get the list checkout steps considered incomplete, those missing required data.
-	 *
-	 * @return  array  List of checkout steps with required data missing. The index is preserved from the original checkout steps list.
-	 */
-	public function get_incomplete_steps() {
-		$_checkout_steps = $this->get_checkout_steps();
-		$incomplete_steps = array();
-		
-		for ( $step_index = 0; $step_index < count( $_checkout_steps ); $step_index++ ) {
-			$step_args = $_checkout_steps[ $step_index ];
-			$step_id = $step_args[ 'step_id' ];
-			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
-			
-			// Add incomplete steps to the list
-			if ( $is_complete_callback && is_callable( $is_complete_callback ) && ! call_user_func( $is_complete_callback ) ) {
-				$incomplete_steps[ $step_index ] = $step_args;
-			}
-		}
-
-		return $incomplete_steps;
-	}
-
-
-
-	/**
-	 * Get the current checkout step. The first checkout step which is considered incomplete.
-	 *
-	 * @return  array  An array with only one value, the first checkout step which is considered incomplete. The index is preserved from the original checkout steps list.
-	 */
-	public function get_current_step() {
-		$incomplete_steps = $this->get_incomplete_steps();
-		return array_slice( $incomplete_steps, 0, 1, true );
-	}
-
-
-
-	/**
-	 * Determine if the step is the current step.
-	 *
-	 * @param   string  $step_id  Id of the step to check for the "current step" status.
-	 *
-	 * @return  boolean  `true` if the step is the current step, `false` otherwise.
-	 */
-	public function is_current_step( $step_id ) {
-		// Get checkout current step
-		$current_step = $this->get_current_step();
-		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the original checkout steps list
-		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
-
-		return ( $step_id == $current_step_id );
-	}
-
-
-
-	/**
-	 * Determine if the step is completed.
-	 *
-	 * @param   string  $step_id  Id of the step to check for the "complete" status.
-	 *
-	 * @return  boolean  `true` if the step is considered complete, `false` otherwise. Defaults to `false`.
-	 */
-	public function is_step_complete( $step_id ) {
-		$complete_steps = $this->get_complete_steps();
-
-		// Return `true` if step id is found in the complete steps list
-		foreach ( $complete_steps as $step_args ) {
-			if ( $step_id == $step_args[ 'step_id' ] ) { return true; }
-		}
-
-		return false;
-	}
 	
 	
 	
@@ -713,10 +732,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
 	 * @param   string  $substep_id  Id of the substep.
 	 */
-	public function output_substep_end_tag( $step_id, $substep_id ) {
-			?>
-			<button type="button" class="wfc-step__substep-edit" data-step-edit data-collapsible-target="wfc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo _x( 'Change', 'Checkout substep change link label', 'woocommerce-fluid-checkout' ); ?></button>
-			<button type="button" class="wfc-step__substep-save" data-step-save data-collapsible-target="wfc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo _x( 'Save', 'Checkout substep save link label', 'woocommerce-fluid-checkout' ); ?></button>
+	public function output_substep_end_tag( $step_id, $substep_id, $output_edit_buttons = true ) {
+		?>
+			<?php if ( $output_edit_buttons ) : ?>
+				<button type="button" class="wfc-step__substep-edit" data-step-edit data-collapsible-target="wfc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo _x( 'Change', 'Checkout substep change link label', 'woocommerce-fluid-checkout' ); ?></button>
+				<button type="button" class="wfc-step__substep-save" data-step-save data-collapsible-target="wfc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo _x( 'Save', 'Checkout substep save link label', 'woocommerce-fluid-checkout' ); ?></button>
+			<?php endif; ?>
 		</div>
 		<?php
 	}
@@ -979,7 +1000,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_contact_login_button();
 		$this->output_substep_fields_end_tag();
 			
-		$this->output_substep_end_tag( $step_id, $substep_id );
+		$this->output_substep_end_tag( $step_id, $substep_id, false );
 	}
 
 
@@ -1792,7 +1813,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_payment_fields();
 		$this->output_substep_fields_end_tag();
 
-		$this->output_substep_end_tag( $step_id, $substep_id );
+		$this->output_substep_end_tag( $step_id, $substep_id, false );
 	}
 
 
