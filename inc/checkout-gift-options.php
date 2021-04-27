@@ -21,8 +21,11 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		// Body Class
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
-		// Order Admin Screen
+		// Checkout
 		add_action( 'wfc_output_step_shipping', array( $this, 'output_substep_gift_options' ), 90 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_gift_options_text_fragment' ), 10 );
+
+		// Order Admin Screen
 		add_action( 'woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_gift_options_fields_order_admin_screen' ), 100, 1 );
 
 		// Persist gift options to the user's session
@@ -90,19 +93,43 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	/**
 	 * Output gift options substep in text format for when the step is completed.
 	 */
-	public function output_substep_text_gift_options() {
+	public function get_substep_text_gift_options() {
 		// Get gift options values
 		$gift_options = $this->get_gift_options_session();
 
+		$html = '<div class="wfc-step__substep-text--gift-options">';
+
 		// Display gift options values
 		if ( isset( $gift_options['_wfc_has_gift_options'] ) && $gift_options['_wfc_has_gift_options'] == true ) {
-			echo '<span class="wfc-step__substep-text-line wfc-step__substep-text-line--gift-message">' . esc_html( $gift_options['_wfc_gift_message'] ) . '</span>';
-			echo '<span class="wfc-step__substep-text-line wfc-step__substep-text-line--gift-from">' . esc_html( $gift_options['_wfc_gift_from'] ) . '</span>';
+			$html .= '<span class="wfc-step__substep-text-line wfc-step__substep-text-line--gift-message">' . esc_html( $gift_options['_wfc_gift_message'] ) . '</span>';
+			$html .= '<span class="wfc-step__substep-text-line wfc-step__substep-text-line--gift-from">' . esc_html( $gift_options['_wfc_gift_from'] ) . '</span>';
 		}
 		// Display "no gift options" notice.
 		else {
-			echo '<span class="wfc-step__substep-text-line">' . apply_filters( 'wfc_no_gift_options_order_review_notice', _x( 'None.', 'Notice for no gift options provided', 'woocommerce-fluid-checkout' ) ) . '</span>';
+			$html .= '<span class="wfc-step__substep-text-line">' . apply_filters( 'wfc_no_gift_options_order_review_notice', _x( 'None.', 'Notice for no gift options provided', 'woocommerce-fluid-checkout' ) ) . '</span>';
 		}
+
+		$html .= '</div>';
+
+		return apply_filters( 'wfc_substep_gift_options_text', $html );
+	}
+
+	/**
+	 * Add gift options text format as checkout fragment.
+	 * 
+	 * @param array $fragments Checkout fragments.
+	 */
+	public function add_gift_options_text_fragment( $fragments ) {
+		$html = $this->get_substep_text_gift_options();
+		$fragments['.wfc-step__substep-text--gift-options'] = $html;
+		return $fragments;
+	}
+
+	/**
+	 * Output gift options substep in text format for when the step is completed.
+	 */
+	public function output_substep_text_gift_options() {
+		echo $this->get_substep_text_gift_options();
 	}
 
 
