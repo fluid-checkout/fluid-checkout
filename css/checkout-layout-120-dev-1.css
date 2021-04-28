@@ -489,6 +489,9 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-text {
   display: block; }
 
+.has-checkout-layout--multi-step .wfc-step__substep-text-content.is-loading {
+  min-height: 50px; }
+
 .has-checkout-layout--multi-step .wfc-step__substep-text-line {
   display: block;
   width: 100%; }

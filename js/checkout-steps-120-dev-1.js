@@ -24,13 +24,22 @@
 	var _settings = {
 		bodyClass: 'has-wfc-checkout-steps',
 		bodyClassActiveStepPattern: 'wfc-checkout-step--active-{ID}',
+		
+		stepSelector: '.wfc-checkout-step',
+		nextStepSelector: '[data-step-current] ~ .wfc-checkout-step',
+		nextStepButtonSelector: '[data-step-next]',
+		stepCompleteAttribute: 'data-step-complete',
+		stepCurrentAttribute: 'data-step-current',
 
 		substepSelector: '.wfc-step__substep',
+		substepTextContentSelector: '.wfc-step__substep-text-content',
 		substepFieldsSelector: '.wfc-step__substep-fields',
 		substepTextSelector: '.wfc-step__substep-text',
 		substepEditButtonSelector: '[data-step-edit]',
 		substepSaveButtonSelector: '[data-step-save]',
-		substepEditingClass: 'is-editing',
+		
+		isEditingClass: 'is-editing',
+		isLoadingClass: 'is-loading',
 
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
 	}
@@ -105,7 +114,7 @@
 		CollapsibleBlock.collapse( substepTextElement );
 
 		// Add editing class to the substep element
-		substepElement.classList.add( _settings.substepEditingClass );
+		substepElement.classList.add( _settings.isEditingClass );
 	}
 
 	/**
@@ -125,7 +134,28 @@
 		CollapsibleBlock.expand( substepTextElement );
 
 		// Remove editing class from the substep element
-		substepElement.classList.remove( _settings.substepEditingClass );
+		substepElement.classList.remove( _settings.isEditingClass );
+	}
+
+
+
+	/**
+	 * Use the same method that WooCommerce uses to block other parts of the checkout form while updating.
+	 * The UI is unblocked by the WooCommerce `checkout.js` script (which is replaced with a modified version but keeps the same behavior)
+	 * using the checkout fragment selector, then unblocking after the checkout update is completed.
+	 *
+	 * @param   HTMLElement  element  Element to block the UI and show the loading indicator.
+	 */
+	var blockUI = function( element ) {
+		if ( _hasJQuery ) {
+			$( element ).block({
+				message: null,
+				overlayCSS: {
+					background: '#fff',
+					opacity: 0.6
+				}
+			});
+		}
 	}
 
 
@@ -156,21 +186,70 @@
 
 		// Update checkout
 		if ( _hasJQuery ) {
-			// Get text content element	
-			var contentElement = substepElement.querySelector( '.wfc-step__substep-text-content' );
-			
-			// Use the same method that WooCommerce uses to block other parts of the checkout form while updating.
-			// The UI is unblocked by the WooCommerce `checkout.js` script (which is replaced with a modified version but keeps the same behavior)
-			// using the checkout fragment selector, then unblocking after the checkout update is completed.
-			$( contentElement ).block({
-				message: null,
-				overlayCSS: {
-					background: '#fff',
-					opacity: 0.6
-				}
-			});
+			// Get text content element, then block IU
+			var contentElement = substepElement.querySelector( _settings.substepTextContentSelector );
+			blockUI( contentElement );
 
 			// Trigger update checkout
+			$( document.body ).trigger( 'update_checkout' );
+		}
+	}
+
+
+
+	/**
+	 * Collapse the substep fields, and expand the substep values in text format for review.
+	 *
+	 * @param   HTMLElement  substepElement  Substep element to change the state of.
+	 */
+	var maybeProceedNextStep = function( stepElement ) {
+		// Bail if editButton not valid
+		if ( ! stepElement ) { return; }
+		
+		// Maybe validate fields
+		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( stepElement ) ) {
+			// Try to focus the first invalid field
+			var firstInvalidField = stepElement.querySelector( _settings.invalidFieldRowSelector );
+			if ( firstInvalidField ) {
+				firstInvalidField.focus();
+			}
+			
+			// Bail when any substep has invalid fields
+			return;
+		}
+
+		// Set current step as complete
+		stepElement.setAttribute( _settings.stepCompleteAttribute, '' );
+
+		// TODO: Use collapsible block to collapse/expand steps
+
+		// Collapse substeps fields and display step in text format
+		var substepElements = stepElement.querySelectorAll( _settings.substepSelector );
+		for ( var i = 0; i < substepElements.length; i++ ) {
+			var substepElement = substepElements[i];
+			
+			// Get text content element, then block IU
+			var contentElement = substepElement.querySelector( _settings.substepTextContentSelector );
+			if ( contentElement ) {
+				contentElement.classList.add( _settings.isLoadingClass );
+				blockUI( contentElement );
+			}
+
+			// Collapse substep
+			collapseSubstepEdit( substepElement );
+		}
+
+		// Get next step, and set it as current
+		var nextStepElement = stepElement.parentElement.querySelector( _settings.nextStepSelector );
+		nextStepElement.setAttribute( _settings.stepCurrentAttribute, '' );
+		
+		// Unset `current` from the step that is closing
+		stepElement.removeAttribute( _settings.stepCurrentAttribute );
+
+		// TODO: Use collapsible block to collapse/expand steps
+
+		// Trigger update checkout
+		if ( _hasJQuery ) {
 			$( document.body ).trigger( 'update_checkout' );
 		}
 	}
@@ -181,16 +260,19 @@
 	 * Handle document clicks and route to the appropriate function.
 	 */
 	var handleClick = function( e ) {
+		// NEXT STEP
+		if ( e.target.closest( _settings.nextStepButtonSelector ) ) {
+			var step = e.target.closest( _settings.stepSelector );
+			maybeProceedNextStep( step );
+		}
 		// EDIT SUBSTEP
-		if ( e.target.closest( _settings.substepEditButtonSelector ) ) {
-			var editButton = e.target.closest( _settings.substepEditButtonSelector );
-			var substepElement = editButton.closest( _settings.substepSelector );
+		else if ( e.target.closest( _settings.substepEditButtonSelector ) ) {
+			var substepElement = e.target.closest( _settings.substepSelector );
 			expandSubstepEdit( substepElement );
 		}
 		// SAVE SUBSTEP
 		else if ( e.target.closest( _settings.substepSaveButtonSelector ) ) {
-			var saveButton = e.target.closest( _settings.substepSaveButtonSelector );
-			var substepElement = saveButton.closest( _settings.substepSelector );
+			var substepElement = e.target.closest( _settings.substepSelector );
 			maybeSaveSubstep( substepElement );
 		}
 	};

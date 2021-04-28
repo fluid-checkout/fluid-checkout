@@ -87,9 +87,12 @@
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-text-font-size--large-screen; }
 }
-
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-text {
 	display: block;
+}
+
+.has-checkout-layout--multi-step .wfc-step__substep-text-content.is-loading {
+	min-height: $global-spacing-medium;
 }
 
 .has-checkout-layout--multi-step .wfc-step__substep-text-line {
