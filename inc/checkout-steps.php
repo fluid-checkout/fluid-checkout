@@ -11,9 +11,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *      ['step_id']                      string      ID of the checkout step, it will be sanitized with `sanitize_title()`.
 	 *      ['step_title']                   string      The checkout step title visible to the user.
 	 *      ['priority']                     int         Defines the order the checkout step will be displayed.
+	 *      ['next_step_button_label']       string      The label for the "Next step" button. Accepts `<span>` and `<i>` elements for extra styling. Defaults to "Next Step".
+	 *      ['next_step_button_classes']     array       Array of CSS classes to add to the "Next step" button.
+	 *      ['render_next_step_button']      bool        Whether to display a "Next Step" button at the end of the step. Defaults to `true`.
 	 *      ['render_callback']              callable    Function name or callable array to display the contents of the checkout step.
 	 *      ['render_condition_callback']    callable    (optional) Function name or callable array to determine if the step should be rendered. If a callback is not provided the checkout step will be displayed.
-	 *      ['is_complete_callback']         callable    (optional) Function name or callable array to determine if all required date for the step has been provided. If a callback is not provided it will consider the step as 'incomplete'.	
+	 *      ['is_complete_callback']         callable    (optional) Function name or callable array to determine if all required date for the step has been provided. Defaults to `__return_false` if a callback is not provided, considering the step as 'incomplete'.
 	 *
 	 * @var array
 	 **/
@@ -51,7 +54,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Checkout steps
 		add_action( 'wfc_checkout_before_steps', array( $this, 'output_checkout_progress_bar' ), 10 );
-		add_action( 'init', array( $this, 'register_default_checkout_steps' ), 10 );
+		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_after', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
 		
@@ -507,7 +510,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Register a new checkout step.
 	 *
-	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property $checkout_steps of this class.
+	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
 	 *
 	 * @return  boolean             `true` if the step was successfully registered, `false` otherwise. See the PHP log files to troubleshoot the error.
 	 */
@@ -519,10 +522,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 			trigger_error( "One of the required checkout step arguments (step_id, step_title, priority, render_callback) was not provided. Skipping step." . ( array_key_exists( 'step_id', $step_args ) ? " Step id `{$step_args[ 'step_id' ]}`." : '' ), E_USER_WARNING );
 			return false;
 		}
+
+		// Allow developers to change args for checkout steps at registration
+		$step_args = apply_filters( 'wfc_register_checkout_step_args', $step_args );
 		
 		// Sanitize step id
 		$step_args[ 'step_id' ] = sanitize_title( $step_args[ 'step_id' ] );
 		$step_id = $step_args[ 'step_id' ];
+
+		// Sanitize value for `render_next_step_button` flag and set default value if needed
+		$step_args[ 'render_next_step_button' ] = $step_args[ 'render_next_step_button' ] !== false ? true : $step_args[ 'render_next_step_button' ];
+
+		// Sanitize "next step" button label, or set default value
+		$step_args[ 'next_step_button_label' ] = $step_args[ 'next_step_button_label' ] && $step_args[ 'next_step_button_label' ] != '' ? $step_args[ 'next_step_button_label' ] : __( 'Next step', 'woocommerce-fluid-checkout' );
+		$step_args[ 'next_step_button_label' ] = wp_kses( $step_args[ 'next_step_button_label' ], array( 'span' => array( 'class' => '' ), 'i' => array( 'class' => '' ) ) );
+
+		// Sanitize "next step" button classes
+		$step_args[ 'next_step_button_classes' ] = is_array( $step_args[ 'next_step_button_classes' ] ) ? $step_args[ 'next_step_button_classes' ] : array();
+		foreach ( $step_args[ 'next_step_button_classes' ] as $key => $class ) {
+			$step_args[ 'next_step_button_classes' ][ $key ] = sanitize_html_class( $class );
+		}
 
 		// Check for duplicate step_id
 		if ( $this->has_checkout_step( $step_id ) ) {
@@ -549,15 +568,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Register the default checkout steps supported by this plugin.
 	 */
 	public function register_default_checkout_steps() {
-		
+
+		// CONTACT
 		$this->register_checkout_step( array(
 			'step_id' => 'contact',
 			'step_title' => _x( 'Contact', 'Checkout step title', 'woocommerce-fluid-checkout' ),
 			'priority' => 10,
 			'render_callback' => array( $this, 'output_step_contact' ),
 			'is_complete_callback' => array( $this, 'is_step_complete_contact' ),
+			'next_step_button_label' => WC()->cart->needs_shipping() ? __( 'Proceed to Shipping', 'woocommerce-fluid-checkout' ) : __( 'Proceed to Billing', 'woocommerce-fluid-checkout' ),
 		) );
 
+		// SHIPPING
 		$this->register_checkout_step( array(
 			'step_id' => 'shipping',
 			'step_title' => _x( 'Shipping', 'Checkout step title', 'woocommerce-fluid-checkout' ),
@@ -565,22 +587,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'render_callback' => array( $this, 'output_step_shipping' ),
 			'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
 			'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
+			'next_step_button_label' => __( 'Proceed to Billing', 'woocommerce-fluid-checkout' ),
 		) );
 
+		// BILLING
 		$this->register_checkout_step( array(
 			'step_id' => 'billing',
 			'step_title' => _x( 'Billing', 'Checkout step title', 'woocommerce-fluid-checkout' ),
 			'priority' => 30,
 			'render_callback' => array( $this, 'output_step_billing' ),
 			'is_complete_callback' => array( $this, 'is_step_complete_billing' ),
+			'next_step_button_label' => __( 'Proceed to Payment', 'woocommerce-fluid-checkout' ),
 		) );
 
+		// PAYMENT
 		$this->register_checkout_step( array(
 			'step_id' => 'payment',
 			'step_title' => _x( 'Payment', 'Checkout step title', 'woocommerce-fluid-checkout' ),
 			'priority' => 100,
 			'render_callback' => array( $this, 'output_step_payment' ),
 			'is_complete_callback' => '__return_false', // Payment step is only complete when the order has been placed and the payment has been accepted, during the checkout process it will always be considered 'incomplete'.
+			'render_next_step_button' => false,
 		) );
 
 	}
@@ -673,7 +700,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout step start tag.
 	 *
-	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property $checkout_steps of this class.
+	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
 	 */
 	public function output_step_start_tag( $step_args ) {
 		$step_id = $step_args[ 'step_id' ];
@@ -686,20 +713,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'data-step-current' => $this->is_current_step( $step_id ),
 		);
 		$step_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $step_attributes ), $step_attributes ) );
-		?>
-		<section <?php echo $step_attributes_str; ?>>
-		<?php
+
+		echo '<section ' . $step_attributes_str . '>';
 	}
 
 	/**
 	 * Output checkout step end tag.
 	 * 
-	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property $checkout_steps of this class.
+	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
 	 */
 	public function output_step_end_tag( $step_args ) {
-		?>
-		</section>
-		<?php
+		
+		// Maybe output the "Next step" button
+		if ( $this->is_checkout_layout_multistep() && $step_args[ 'render_next_step_button' ] ) :
+			$button_attributes = array(
+				'class' => implode( ' ', array_merge( array( 'wfc-step__next-step' ), $step_args[ 'next_step_button_classes' ] ) ),
+				'data-step-next' => '',
+			);
+			$button_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $button_attributes ), $button_attributes ) );
+			?>
+			<div class="wfc-step__actions">
+				<button type="button" <?php echo $button_attributes_str; ?>><?php echo $step_args[ 'next_step_button_label' ]; ?></button>
+			</div>
+			<?php
+		endif;
+
+		echo '</section>';
 	}
 
 

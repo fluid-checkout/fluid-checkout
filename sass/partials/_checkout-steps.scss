@@ -124,6 +124,22 @@
 
 
 /*------------------------------------*\
+	#CHECKOUT STEP ACTIONS
+\*------------------------------------*/
+.wfc-step__actions {
+	margin-top: $global-spacing-medium;
+	text-align: center;
+}
+
+.wfc-step__actions .wfc-step__next-step:only-child {
+	min-width: remsize( 28rem );
+}
+
+
+
+
+
+/*------------------------------------*\
 	#CHECKOUT SUB-STEP EDIT
 \*------------------------------------*/
 .has-checkout-layout--multi-step .wfc-step__substep-edit,
