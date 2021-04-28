@@ -618,7 +618,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the contents of each registered checkout step.
 	 */
 	public function output_checkout_steps() {
-		foreach ( $this->get_checkout_steps() as $step_args ) {
+		foreach ( $this->get_checkout_steps() as $step_index => $step_args ) {
 			$step_id = $step_args[ 'step_id' ];
 			$render_callback = array_key_exists( 'render_callback', $step_args ) ? $step_args[ 'render_callback' ] : null;
 			$render_conditional_callback = array_key_exists( 'render_condition_callback', $step_args ) ? $step_args[ 'render_condition_callback' ] : null;
@@ -633,9 +633,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			if ( $render_conditional_callback && is_callable( $render_conditional_callback ) && ! call_user_func( $render_conditional_callback ) ) { continue; }
 			
 			// Output the step
-			$this->output_step_start_tag( $step_args );
+			$this->output_step_start_tag( $step_args, $step_index );
 			call_user_func( $render_callback );
-			$this->output_step_end_tag( $step_args );
+			$this->output_step_end_tag( $step_args, $step_index );
 		}
 	}
 
@@ -684,7 +684,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			<div class="wfc-progress-bar__bars" data-progress-bar data-step-count="<?php echo esc_attr( $steps_count ); ?>">
 				<?php
 				foreach ( $_checkout_steps as $step_index => $step_args ) :
-					$step_bar_class = $step_index < $current_step_index ? 'complete' : ( $step_index == $current_step_index ? 'current' : '' );
+					$step_bar_class = $step_index < $current_step_index ? 'is-complete' : ( $step_index == $current_step_index ? 'is-current' : '' );
 					?>
 					<span class="wfc-progress-bar__bar <?php echo esc_attr( $step_bar_class ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>"></span>
 				<?php
@@ -701,14 +701,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output checkout step start tag.
 	 *
 	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
+	 * @param   array  $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
 	 */
-	public function output_step_start_tag( $step_args ) {
+	public function output_step_start_tag( $step_args, $step_index ) {
 		$step_id = $step_args[ 'step_id' ];
 		$step_title = apply_filters( "wfc_step_title_{$step_id}", $step_args[ 'step_title' ] );
 		$step_attributes = array(
 			'class' => 'wfc-checkout-step',
 			'data-step-id' => ! empty( $step_id ) && $step_id != null ? $step_id : '',
 			'data-step-label' => $step_title,
+			'data-step-index' => $step_index,
 			'data-step-complete' => $this->is_step_complete( $step_id ),
 			'data-step-current' => $this->is_current_step( $step_id ),
 		);
@@ -721,8 +723,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output checkout step end tag.
 	 * 
 	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
+	 * @param   array  $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
 	 */
-	public function output_step_end_tag( $step_args ) {
+	public function output_step_end_tag( $step_args, $step_index ) {
 		
 		// Maybe output the "Next step" button
 		if ( $this->is_checkout_layout_multistep() && $step_args[ 'render_next_step_button' ] ) :

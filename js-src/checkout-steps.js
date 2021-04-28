@@ -24,13 +24,18 @@
 	var _settings = {
 		bodyClass: 'has-wfc-checkout-steps',
 		bodyClassActiveStepPattern: 'wfc-checkout-step--active-{ID}',
+
+		wrapperSelector: '.wfc-wrapper',
+
+		progressBarSelector: '.wfc-progress-bar',
+		progressBarCurrentSelector: '.wfc-progress-bar__current-step',
+		progressBarItemSelector: '.wfc-progress-bar__bar',
 		
 		stepSelector: '.wfc-checkout-step',
+		currentStepSelector: '[data-step-current]',
 		nextStepSelector: '[data-step-current] ~ .wfc-checkout-step',
 		nextStepButtonSelector: '[data-step-next]',
-		stepCompleteAttribute: 'data-step-complete',
-		stepCurrentAttribute: 'data-step-current',
-
+		
 		substepSelector: '.wfc-step__substep',
 		substepTextContentSelector: '.wfc-step__substep-text-content',
 		substepFieldsSelector: '.wfc-step__substep-fields',
@@ -38,10 +43,19 @@
 		substepEditButtonSelector: '[data-step-edit]',
 		substepSaveButtonSelector: '[data-step-save]',
 		
+		stepCompleteAttribute: 'data-step-complete',
+		stepCurrentAttribute: 'data-step-current',
+		stepIndexAttribute: 'data-step-index',
+		
 		isEditingClass: 'is-editing',
 		isLoadingClass: 'is-loading',
+		isCurrentClass: 'is-current',
+		isCompleteClass: 'is-complete',
 
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
+
+		scrollBehavior: 'smooth',
+		scrollOffset: 0,
 	}
 
 
@@ -93,6 +107,24 @@
 
 		return extended;
     };
+
+
+
+	var getOffsetTop = function( element, stopElement ) {
+		var offsetTop = 0;
+		
+		while( element ) {
+			// Reached the stopElement
+			if ( stopElement && element != stopElement ) {
+				break;
+			}
+
+			offsetTop += element.offsetTop;
+			element = element.offsetParent;
+		}
+		
+		return offsetTop;
+	}
 
 
 
@@ -197,6 +229,59 @@
 
 
 
+	var updateProgressBar = function() {
+		// Get checkout wrapper
+		var wrapper = document.querySelector( _settings.wrapperSelector );
+
+		// Get current step
+		var currentStepElement = wrapper.querySelector( _settings.currentStepSelector );
+		
+		// Bail if no current step was found
+		if ( ! currentStepElement ) { return; }
+
+		// Get index of the current step
+		var currentStepIndex = parseInt( currentStepElement.getAttribute( _settings.stepIndexAttribute ) );
+		currentStepIndex = isNaN( currentStepIndex ) ? -1 : currentStepIndex;
+
+		// Get progress bar items
+		var progressBarElement = wrapper.querySelector( _settings.progressBarSelector )
+		var progressBarItems = progressBarElement.querySelectorAll( _settings.progressBarItemSelector );
+		var progressBarItemsCount = progressBarItems.length;
+
+		// Update progress bar items status
+		for ( var i = 0; i < progressBarItems.length; i++ ) {
+			var bar = progressBarItems[i];
+			var stepIndex = parseInt( bar.getAttribute( _settings.stepIndexAttribute ) );
+			stepIndex = isNaN( stepIndex ) ? -1 : stepIndex;
+
+			// Update the `current` status for each progress bar item
+			if ( stepIndex == currentStepIndex ) {
+				bar.classList.add( _settings.isCurrentClass );
+			}
+			else {
+				bar.classList.remove( _settings.isCurrentClass );
+			}
+			
+			// Update the `complete` status for each progress bar item
+			if ( stepIndex <= currentStepIndex ) {
+				bar.classList.add( _settings.isCompleteClass );
+			}
+			else {
+				bar.classList.remove( _settings.isCompleteClass );
+			}
+		}
+
+		// Calculate the current step text value
+		var currentStepValue = currentStepIndex + 1;
+		currentStepValue = currentStepValue <= progressBarItemsCount ? currentStepValue : progressBarItemsCount;
+
+		// Change value of the current step text indicator
+		var currentStepTextElement = progressBarElement.querySelector( _settings.progressBarCurrentSelector );
+		currentStepTextElement.innerText = currentStepValue;
+	}
+
+
+
 	/**
 	 * Collapse the substep fields, and expand the substep values in text format for review.
 	 *
@@ -247,6 +332,16 @@
 		stepElement.removeAttribute( _settings.stepCurrentAttribute );
 
 		// TODO: Use collapsible block to collapse/expand steps
+
+		// Update progress bar
+		updateProgressBar();
+
+		// Scroll to the top of the collapsed step
+		var stepElementOffset = getOffsetTop( stepElement ) + ( _settings.scrollOffset * -1 );
+		window.scrollTo( {
+			top: stepElementOffset,
+			behavior: _settings.scrollBehavior,
+		} );
 
 		// Trigger update checkout
 		if ( _hasJQuery ) {

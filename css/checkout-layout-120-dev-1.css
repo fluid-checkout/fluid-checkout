@@ -370,46 +370,46 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   background-color: #D6D8D8;
   transition: width 0.3s linear, background-color 0.3s linear; }
 
-.wfc-progress-bar__bar.complete {
+.wfc-progress-bar__bar.is-complete {
   background-color: #00A854; }
 
-.wfc-progress-bar__bar.current {
-  background-color: rgba(0, 168, 84, 0.4); }
+.wfc-progress-bar__bar.is-current {
+  background-color: rgba(0, 168, 84, 0.3); }
 
-.wfc-progress-bar__bars[data-step-count="2"] .wfc-progress-bar__bar.complete,
-.wfc-progress-bar__bars[data-step-count="2"] .wfc-progress-bar__bar.current {
+.wfc-progress-bar__bars[data-step-count="2"] .wfc-progress-bar__bar.is-complete,
+.wfc-progress-bar__bars[data-step-count="2"] .wfc-progress-bar__bar.is-current {
   width: 50%; }
 
-.wfc-progress-bar__bars[data-step-count="3"] .wfc-progress-bar__bar.complete,
-.wfc-progress-bar__bars[data-step-count="3"] .wfc-progress-bar__bar.current {
+.wfc-progress-bar__bars[data-step-count="3"] .wfc-progress-bar__bar.is-complete,
+.wfc-progress-bar__bars[data-step-count="3"] .wfc-progress-bar__bar.is-current {
   width: 33.33333%; }
 
-.wfc-progress-bar__bars[data-step-count="4"] .wfc-progress-bar__bar.complete,
-.wfc-progress-bar__bars[data-step-count="4"] .wfc-progress-bar__bar.current {
+.wfc-progress-bar__bars[data-step-count="4"] .wfc-progress-bar__bar.is-complete,
+.wfc-progress-bar__bars[data-step-count="4"] .wfc-progress-bar__bar.is-current {
   width: 25%; }
 
-.wfc-progress-bar__bars[data-step-count="5"] .wfc-progress-bar__bar.complete,
-.wfc-progress-bar__bars[data-step-count="5"] .wfc-progress-bar__bar.current {
+.wfc-progress-bar__bars[data-step-count="5"] .wfc-progress-bar__bar.is-complete,
+.wfc-progress-bar__bars[data-step-count="5"] .wfc-progress-bar__bar.is-current {
   width: 20%; }
 
-.wfc-progress-bar__bars[data-step-count="6"] .wfc-progress-bar__bar.complete,
-.wfc-progress-bar__bars[data-step-count="6"] .wfc-progress-bar__bar.current {
+.wfc-progress-bar__bars[data-step-count="6"] .wfc-progress-bar__bar.is-complete,
+.wfc-progress-bar__bars[data-step-count="6"] .wfc-progress-bar__bar.is-current {
   width: 16.66667%; }
 
-.wfc-progress-bar__bars[data-step-count="7"] .wfc-progress-bar__bar.complete,
-.wfc-progress-bar__bars[data-step-count="7"] .wfc-progress-bar__bar.current {
+.wfc-progress-bar__bars[data-step-count="7"] .wfc-progress-bar__bar.is-complete,
+.wfc-progress-bar__bars[data-step-count="7"] .wfc-progress-bar__bar.is-current {
   width: 14.28571%; }
 
-.wfc-progress-bar__bars[data-step-count="8"] .wfc-progress-bar__bar.complete,
-.wfc-progress-bar__bars[data-step-count="8"] .wfc-progress-bar__bar.current {
+.wfc-progress-bar__bars[data-step-count="8"] .wfc-progress-bar__bar.is-complete,
+.wfc-progress-bar__bars[data-step-count="8"] .wfc-progress-bar__bar.is-current {
   width: 12.5%; }
 
-.wfc-progress-bar__bars[data-step-count="9"] .wfc-progress-bar__bar.complete,
-.wfc-progress-bar__bars[data-step-count="9"] .wfc-progress-bar__bar.current {
+.wfc-progress-bar__bars[data-step-count="9"] .wfc-progress-bar__bar.is-complete,
+.wfc-progress-bar__bars[data-step-count="9"] .wfc-progress-bar__bar.is-current {
   width: 11.11111%; }
 
-.wfc-progress-bar__bars[data-step-count="10"] .wfc-progress-bar__bar.complete,
-.wfc-progress-bar__bars[data-step-count="10"] .wfc-progress-bar__bar.current {
+.wfc-progress-bar__bars[data-step-count="10"] .wfc-progress-bar__bar.is-complete,
+.wfc-progress-bar__bars[data-step-count="10"] .wfc-progress-bar__bar.is-current {
   width: 10%; }
 
 /*------------------------------------*\

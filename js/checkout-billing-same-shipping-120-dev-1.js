@@ -63,7 +63,7 @@
 
 
 	/**
-	 * Initialize collapsible-blocks components `updated_checkout`.
+	 * Initialize collapsible-blocks components after `updated_checkout` event.
 	 */
 	var maybeReinitializeCollapsibleBlock = function() {
 		var fieldsWrapper = document.querySelector( _settings.fieldsWrapperSelector );
