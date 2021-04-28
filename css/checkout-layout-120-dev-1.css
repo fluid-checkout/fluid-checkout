@@ -524,11 +524,14 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 /*------------------------------------*\
 	#CHECKOUT STEP ACTIONS
 \*------------------------------------*/
-.wfc-step__actions {
+.has-checkout-layout--multi-step .wfc-step__actions {
   margin-top: 50px;
   text-align: center; }
 
-.wfc-step__actions .wfc-step__next-step:only-child {
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__actions {
+  display: none; }
+
+.has-checkout-layout--multi-step .wfc-step__actions .wfc-step__next-step:only-child {
   min-width: 280px; }
 
 /*------------------------------------*\
