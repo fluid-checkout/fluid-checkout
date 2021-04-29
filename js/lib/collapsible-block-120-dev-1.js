@@ -38,7 +38,7 @@
 		isActivatedClass: 'is-activated',
 		cssTransition: 'height .15s linear',
 		
-		targetAttribute: 'data-collapsible-target',
+		targetAttribute: 'aria-controls',
 		maxHeightAttribute: 'data-collapsible-max-height',
 		createHandlerAttribute: 'data-collapsible-create-handler',
 		changeStateOnResizeAttribute: 'data-collapsible-change-state-resize',
@@ -53,6 +53,10 @@
 		handlerTemplate: '<a href="#collapsible" role="button" data-collapsible-handler>Read more</a>',
 		contentInnerTemplate: '<div class="collapsible-content__inner"></div>',
 	};
+	var _key = {
+		ENTER: 'Enter',
+		SPACE: ' ',
+	}
 
 
 
@@ -110,7 +114,7 @@
 	 *
 	 * @return  {String}  The transitionend event name
 	 */
-	 var getTransitionEvent = function() {
+	var getTransitionEndEvent = function() {
 		var t;
 		var el = document.createElement('fakeelement');
 		var transitions = {
@@ -126,8 +130,26 @@
 			}
 		}
 
-		return 'animationend';
+		return 'transitionend';
 	};
+
+
+
+	/**
+	 * Trigger a reflow, flushing the CSS changes.
+	 * 
+	 * @param   HTMLElement  element  Element to get the computed height value.
+	 * 
+	 * @see https://gist.github.com/paulirish/5d52fb081b3570c81e3a
+	 */
+	var reflow = function( element ) {
+		// Set element as the body when not provided
+		if ( ! element ) {
+			element = document.body;
+		}
+
+		element.offsetHeight;
+	}
 
 
 
@@ -138,18 +160,40 @@
 		if ( e.target.closest( _settings.handlerSelector ) ) {
 			e.preventDefault();
 			
+			// Get target and handler elements
 			var handlerElement = e.target.closest( _settings.handlerSelector );
 			var targetElement = document.querySelector( '#' + handlerElement.getAttribute( _settings.targetAttribute ) );
+			
+			// Get target element from the handler element
 			if ( ! targetElement ) {
 				targetElement = handlerElement;
 			}
+
+			// Get the collapsbile element
 			var element = targetElement.closest( _settings.elementSelector );
 
+			// Maybe toggle collapsbile element state
 			if ( element ) {
 				_publicMethods.toggleState( element );
 			}
 		}
 	}
+
+
+
+	/**
+	 * Handle keypress event.
+	 */
+	var handleKeyDown = function( e ) {
+		// Should do nothing if the default action has been cancelled
+		if ( e.defaultPrevented ) { return; }
+
+		// ENTER on flyout trigger
+		if ( ( e.key == _key.ENTER || e.key == _key.SPACE ) && e.target.closest( _settings.handlerSelector ) ) {
+			// Similate click
+			handleClick( e );
+		}
+	};
 
 
 
@@ -163,8 +207,6 @@
 		handler.innerHTML = manager.settings.handlerTemplate.trim();
 		manager.handlerElement = handler.childNodes[0];
 		manager.handlerElement.setAttribute( manager.settings.targetAttribute, contentElement.id );
-		manager.handlerElement.setAttribute( 'href', '#' );
-		manager.handlerElement.setAttribute( 'role', 'button' );
 
 		element.insertBefore( handler.childNodes[0], contentElement.nextSibling );
 	}
@@ -178,7 +220,6 @@
 		// Bail if content inner element already exists
 		if ( manager.contentElement.querySelector( manager.settings.contentInnerSelector ) ) { return; }
 		
-		var element = manager.element;
 		var contentElement = manager.contentElement;
 		var newContentPlaceholder = document.createElement('div');
 		newContentPlaceholder.innerHTML = manager.settings.contentInnerTemplate.trim();
@@ -188,21 +229,103 @@
 		contentInner.innerHTML = contentElement.innerHTML;
 		contentElement.innerHTML = newContentPlaceholder.innerHTML;
 	}
-	
+
+
+
+	/**
+	 * Get the element's computed `height` even when hidden or collapsed.
+	 *
+	 * @param   HTMLElement  element  Element to get the computed height value.
+	 *
+	 * @return  Number                The computed height value of the element.
+	 */
+	var getComputedHeight = function( element ) {
+		// Get original element style values
+		var originalPosition = element.style.position;
+		var originalDisplay = element.style.display;
+		var originalVisibility = element.style.visibility;
+		var originalTransition = element.style.transition;
+		var originalHeight = element.style.height;
+
+		// Set element styles prior to getting its height
+		element.style.position = 'absolute';
+		element.style.display = 'block';
+		element.style.visibility = 'hidden';
+		element.style.transition = 'none';
+		element.style.height = '';
+
+		// Get the element's natural height
+		var computedHeight = element.scrollHeight;
+
+		// Set element styles back to original values
+		element.style.position = originalPosition;
+		element.style.display = originalDisplay;
+		element.style.visibility = originalVisibility;
+		element.style.transition = originalTransition;
+		element.style.height = originalHeight;
+
+		return computedHeight;
+	}
+
+
+
+	/**
+	 * Get the element's current used `height` space, even in the middle of a transition.
+	 *
+	 * @param   HTMLElement  element  Element to get the current height value.
+	 *
+	 * @return  Number                The current height value of the element.
+	 */
+	var getCurrentHeight = function( element ) {
+		return element.getBoundingClientRect().height;
+	}
+
+
+
+	/**
+	 * Set the height of the content element.
+	 *
+	 * @param   HTMLElement  element         Collapsible block content element.
+	 * @param   Number       size            New height value for the content element in pixels. The string `px` will be added to the value before setting it to the element's style property.
+	 * @param   Boolean      withTransition  Whether to use transitions between states.
+	 */
+	var setHeight = function( element, size, withTransition ) {
+		// Set default value for withTransition
+		withTransition = withTransition === false ? false : true;
+		
+		// Remove element's transition
+		var originalTransition;
+		if ( ! withTransition ) {
+			originalTransition = element.style.transition;
+			element.style.transition = 'none';
+		}
+		
+		// Set the element's new height
+		element.style.height = size + 'px';
+		
+		// Restore element's transition
+		if ( ! withTransition ) {
+			// Trigger a reflow, flushing the CSS changes
+			reflow( element );
+			
+			// Set element styles back to original values
+			element.style.transition = originalTransition;
+		}
+	}
+
 
 
 	/**
 	 * Resize element
 	 */
 	var maybeChangeStateOnResize = function( manager ) {
+		// TODO: REFACTOR THIS FUNCTION TO BE MORE EFFICIENT
 		// Reset collapsed state
 		_publicMethods.expand( manager.element );
 
 		requestAnimationFrame( function() {
-			var elementRect = manager.element.getBoundingClientRect();
-
 			// Maybe collapse
-			if ( elementRect.height > manager.settings.maxHeight ) {
+			if ( getComputedHeight( manager.contentElement ) > manager.settings.maxHeight ) {
 				_publicMethods.collapse( manager.element );
 			}
 		} );
@@ -211,93 +334,210 @@
 
 
 	/**
-	 * Get slider manager instance from slider element
+	 * Syncronize `aria-expanded` attribute for every handler of the collapsible-block on the page
+	 *
+	 * @param   mixed  HTMLElement  The content element of the collapsible block
+	 */
+	var syncAriaExpanded = function ( element, expanded ) {
+		// Bail if `element` or `expanded` are invalid
+		if ( ! element && typeof expanded !== 'boolean' ) { return; }
+
+		var handlers = document.querySelectorAll( '[' + _settings.targetAttribute + '=' + element.id + ']' );
+		for ( var i = 0; i < handlers.length; i++ ) {
+			var handler = handlers[ i ];
+			handler.setAttribute( 'aria-expanded', expanded );
+		}
+	}
+
+
+
+	/**
+	 * Finish the change to the "expanded" state.
+	 *
+	 * @param   mixed  element  The content element of the collapsible block as a HTMLElement, or an Event dispatched on that element.
+	 */
+	var finishExpand = function ( element ) {
+		// Bail if element is invalid
+		if ( ! element ) { return; }
+
+		// Maybe bail when handling a transition event but not for the right property
+		if ( 'propertyName' in element && element.propertyName !== 'height' ) return;
+
+		// Get target element from property, usually passed in an event object
+		if ( 'target' in element && element.target ) {
+			element = element.target;
+		}
+
+		// Remove content element properties when transition is complete
+		element.style.height = '';
+		element.style.overflow = '';
+
+		// Syncronize `aria-expanded` for every handler on the page
+		syncAriaExpanded( element, true );
+
+		// Remove the event handler so it runs only once
+		element.removeEventListener( getTransitionEndEvent(), finishExpand );
+	}
+
+
+	/**
+	 * Finish the change to the "collapsed" state.
+	 *
+	 * @param   mixed  element  The content element of the collapsible block as a HTMLElement, or an Event dispatched on that element.
+	 */
+	var finishCollapse = function ( element ) {
+		// Bail if element is invalid
+		if ( ! element ) { return; }
+
+		// Maybe bail when handling a transition event but not for the right property
+		if ( 'propertyName' in element && element.propertyName !== 'height' ) return;
+
+		// Get target element from property, usually passed in an event object
+		if ( 'target' in element && element.target ) {
+			element = element.target;
+		}
+
+		// Hide the element from the screen and from the accessibility tree
+		element.style.display = 'none';
+
+		// Syncronize `aria-expanded` for every handler on the page
+		syncAriaExpanded( element, false );
+
+		// Remove the event handler so it runs only once
+		element.removeEventListener( getTransitionEndEvent(), finishCollapse );
+	}
+
+
+
+	/**
+	 * Get slider manager instance from slider element.
+	 *
+	 * @param   HTMLElement  element  Collapsible block main element.
+	 *
+	 * @return  Object                Collapsible block `manager` instance.
 	 */
 	_publicMethods.getInstance = function ( element ) {
 		var instance;
+		
 		for ( var i = 0; i < _publicMethods.managers.length; i++ ) {
 			var manager = _publicMethods.managers[i];
 			if ( manager.element == element ) { instance = manager; break; }
 		}
+
 		return instance;
 	}
 
 
 
 	/**
-	 * Remove property values from the `contentElement` when height transition ends.
+	 * Collapse element.
+	 *
+	 * @param   HTMLElement  element         Collapsible block main element.
+	 * @param   Boolean      withTransition  Whether to use transitions between states.
 	 */
-	var removeProperties = function ( e ) {
-		if ( e.propertyName !== 'height' ) return;
-
-		// Remove content element properties when transition is complete
-		e.target.style.height = '';
-		e.target.style.overflow = '';
-
-		// Remove the event handler so it runs only once
-		e.target.removeEventListener( getTransitionEvent(), removeProperties );
-		
-	}
-
-
-
-	/**
-	 * Collapse element
-	 */
-	_publicMethods.collapse = function( element ) {
+	_publicMethods.collapse = function( element, withTransition ) {
 		var manager = _publicMethods.getInstance( element );
 		
 		// Bail if manager not found
+		// TODO: Maybe try to initialize collapsible and manager on the fly
 		if ( ! manager ) { return; }
+
+		// Set default value for withTransition
+		withTransition = withTransition === false ? false : true;
 
 		// Collapse element
 		manager.element.classList.add( manager.settings.isCollapsedClass );
 		
-		// Remove `removeProperties` event listener to prevent block from expanding at the end of the transition
-		manager.contentElement.removeEventListener( getTransitionEvent(), removeProperties );
+		// Remove `finishExpand` event listener to prevent block from expanding at the end of the transition
+		manager.contentElement.removeEventListener( getTransitionEndEvent(), finishExpand );
 		
 		// Set content element to hide overflowing content
 		manager.contentElement.style.overflow = 'hidden';
+
+		// Set height of the element to the current height value
+		// Without knowing the value of `height` property the browser can't calculate the steps of the `height` values
+		// related to the transition time and therefore won't be able to display the transition.
+		setHeight( manager.contentElement, getCurrentHeight( manager.contentElement ), false );
 		
-		requestAnimationFrame( function() {
-			// Set height of the content element to it's current expanded height
-			manager.contentElement.style.height = manager.contentElement.scrollHeight + 'px';
-			
-			// Wait for the new height to apply
-			requestAnimationFrame( function() {
-				// Set height of the element to the collapsed state
-				manager.contentElement.style.height = manager.settings.maxHeight + 'px';
-			});
-		} )
+		// Set event listener to finish the "collapse" state change
+		if ( withTransition ) {
+			manager.contentElement.addEventListener( getTransitionEndEvent(), finishCollapse );
+		}
+
+		// Trigger a reflow, flushing the CSS changes
+		reflow( element );
+
+		// Set height of the element to the `collapsed` state
+		setHeight( manager.contentElement, manager.settings.maxHeight, withTransition );
+
+		// Make sure to finish the "collapse" state change when transitions are not used
+		if ( ! withTransition ) {
+			finishCollapse( manager.contentElement );
+		}
 	}
 
 
 
 	/**
-	 * Expand element
+	 * Expand element.
+	 *
+	 * @param   HTMLElement  element         Collapsible block main element.
+	 * @param   Boolean      withTransition  Whether to use transitions between states.
 	 */
-	_publicMethods.expand = function( element ) {
+	_publicMethods.expand = function( element, withTransition ) {
+		// Get element manager
 		var manager = _publicMethods.getInstance( element );
 
 		// Bail if manager not found
+		// TODO: Maybe try to initialize collapsible and manager on the fly
 		if ( ! manager ) { return; }
 
-		// Set event handler to remove height value when transition ends
-		manager.contentElement.addEventListener( getTransitionEvent(), removeProperties );
+		// Set default value for withTransition
+		withTransition = withTransition === false ? false : true;
 
+		// Show the element again on the screen and add it back to the accessibility tree
+		manager.contentElement.style.display = '';
+		
+		// Remove `finishCollapse` event listener to prevent block from collapsing at the end of the transition
+		manager.contentElement.removeEventListener( getTransitionEndEvent(), finishCollapse );
+
+		// Set height of the element to the current height value
+		setHeight( manager.contentElement, getCurrentHeight( manager.contentElement ), false );
+
+		// Set event listener to finish the "expand" state change
+		if ( withTransition ) {
+			manager.contentElement.addEventListener( getTransitionEndEvent(), finishExpand );
+		}
+		
+		// Expand element to its content height
 		requestAnimationFrame( function() {
-			// Expand element to its content height
+			var computedHeight = getComputedHeight( manager.contentElement );
+
+			// Trigger a reflow, flushing the CSS changes
+			reflow( element );
+
+			// Set height of the element to the `expanded` state
+			setHeight( manager.contentElement, computedHeight, withTransition );
+
+			// Update element's state to `expanded`
 			manager.element.classList.remove( manager.settings.isCollapsedClass );
-			manager.contentElement.style.height = manager.contentElement.scrollHeight + 'px';
+			
+			// Make sure to finish the "expand" state change when transitions are not used
+			if ( ! withTransition ) {
+				finishExpand( manager.contentElement );
+			}
 		} );
 	}
 
 
 
 	/**
-	 * Toggle collapsible state
+	 * Toggle between collapsed/expanded states of the element.
+	 *
+	 * @param   HTMLElement  element         Collapsible block main element.
+	 * @param   Boolean      withTransition  Whether to use transitions between states.
 	 */
-	_publicMethods.toggleState = function( element ) {
+	_publicMethods.toggleState = function( element, withTransition ) {
 		var manager = _publicMethods.getInstance( element );
 
 		// Bail if manager not found
@@ -305,17 +545,22 @@
 
 		// Toggle state
 		if ( element.classList.contains( manager.settings.isCollapsedClass ) ) {
-			_publicMethods.expand( element );
+			_publicMethods.expand( element, withTransition );
 		}
 		else {
-			_publicMethods.collapse( element );
+			_publicMethods.collapse( element, withTransition );
 		}
 	}
 	
 
 
 	/**
-	 * Get current collapsible block state
+	 * /**
+	 * Get current state of the collapsible block.
+	 *
+	 * @param   HTMLElement  element         Collapsible block main element.
+	 *
+	 * @return  string                       Either `collapsed` or `expanded`. Can be compared to the constants present in `CollapsibleBlock.states`.
 	 */
 	_publicMethods.getState = function( element ) {
 		var manager = _publicMethods.getInstance( element );
@@ -331,16 +576,62 @@
 
 		return currentState;
 	}
+
+
+
+	/**
+	 * Initialize a handler element.
+	 */
+	_publicMethods.initializeHandler = function( handler ) {
+		// Enable the handler element
+		handler.removeAttribute( 'disabled' );
+		handler.removeAttribute( 'aria-hidden' );
+		
+		// Add the element to the natural tab order
+		handler.setAttribute( 'tabindex', '0' );
+
+		// Set handler role to `button`
+		if ( handler.tagName.toUpperCase() != 'BUTTON' ) {
+			handler.setAttribute( 'role', 'button' );
+		}
+
+		// Maybe get target element id from attributes or parent elements
+		var targetId = handler.getAttribute( _settings.targetAttribute );
+		if ( ! targetId || targetId == '' ) {
+			var parentCollapsible = handler.closest( _settings.elementSelector );
+
+			// Check if collapsbile blocks is also the content element
+			if ( parentCollapsible && parentCollapsible.matches( _settings.contentElementSelector ) ) {
+				targetId = parentCollapsible.id;
+			}
+			// Else, try to get content element from the collapsible block
+			else if ( parentCollapsible && parentCollapsible.querySelector( _settings.contentElementSelector ) ) {
+				var contentElement = parentCollapsible.querySelector( _settings.contentElementSelector );
+				targetId = contentElement.id;
+			}
+
+			// Maybe set target attribute
+			if ( targetId && targetId != '' ) {
+				handler.setAttribute( _settings.targetAttribute, targetId );
+			}
+		}
+		
+		// Remove the `href` attribute
+		handler.removeAttribute( 'href' );
+	}
 	
 
 
 	/**
-	 * Initialize an element
+	 * Initialize an element.
+	 * 
+	 * @param   HTMLElement  element  Collapsible block main element.
 	 */
 	_publicMethods.initializeElement = function( element ) {
 		var manager = {};
 		_publicMethods.managers.push( manager );
 		manager.element = element;
+		// TODO: Refactor to remove `manager.settings` as it will always be a copy of the high-level `_settings` variable, with more properties that can be added directly to the `manager` variable.
 		manager.settings = extend( _settings );
 		
 		// Get content element
@@ -378,10 +669,10 @@
 		var initialState = initialStateAttribute ? initialStateAttribute : manager.settings.initialState;
 		var index = Array.prototype.indexOf.call( manager.element.parentNode.children, manager.element );
 		if ( initialState == _publicMethods.states.EXPANDED || ( initialState == _publicMethods.states.FIRST_EXPANDED && index == 0 ) ) {
-			setTimeout( function() { _publicMethods.expand( manager.element ); }, manager.settings.firstExpandedDelay );
+			_publicMethods.expand( manager.element, false );
 		}
 		else {
-			setTimeout( function() { _publicMethods.collapse( manager.element ); }, manager.settings.firstExpandedDelay );
+			_publicMethods.collapse( manager.element, false );
 		}
 		
 		// Maybe change state on resize
@@ -389,6 +680,8 @@
 		manager.settings.changeStateOnResize = changeStateOnResizeAttribute && changeStateOnResizeAttribute != '' ? Boolean( changeStateOnResizeAttribute ) : false;
 		if ( manager.settings.changeStateOnResize ) {
 			maybeChangeStateOnResize( manager );
+			
+			// TODO: Maybe move event handler to a single listener
 			window.addEventListener( 'resize', function() { maybeChangeStateOnResize( manager ); } );
 		}
 		
@@ -405,7 +698,7 @@
 	
 
 	/**
-	 * Initialize
+	 * Initialize.
 	 */
 	_publicMethods.init = function( options ) {
 		if ( _hasInitialized ) return;
@@ -413,14 +706,31 @@
 		// Merge with general settings with options
 		_settings = extend( _defaults, options );
 
+		// Initialize collapsible elements
 		var elements = document.querySelectorAll( _settings.elementSelector );
-		
 		for ( var i = 0; i < elements.length; i++ ) {
 			_publicMethods.initializeElement( elements[ i ] );
+		}
+
+		// Initialize handler elements
+		var handlers = document.querySelectorAll( _settings.handlerSelector );
+		for ( var i = 0; i < handlers.length; i++ ) {
+			_publicMethods.initializeHandler( handlers[ i ] );
+		}
+
+		// Trigger a reflow, flushing the CSS changes
+		reflow();
+
+		// Syncronize `aria-expanded` for every handler on the page
+		for ( var i = 0; i < elements.length; i++ ) {
+			var element = elements[ i ];
+			var contentElement = element.matches( _settings.contentElementSelector ) ? element : element.querySelector( _settings.contentElementSelector );
+			syncAriaExpanded( contentElement, _publicMethods.getState( element ) == _publicMethods.states.EXPANDED );
 		}
 		
 		// Add event listeners
 		document.addEventListener( 'click', handleClick );
+		document.addEventListener( 'keydown', handleKeyDown, true );
 
 		// Set body class
 		document.body.classList.add( _settings.bodyClass );
