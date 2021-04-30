@@ -292,8 +292,7 @@ $checkout-overview-border-left:             none !default;
 // ----------------------------------------
 // CHECKOUT PROGRESS BAR
 
-$checkout-progress-bar-margin-top:               $global-spacing-tiny !default;
-$checkout-progress-bar-margin-bottom:            $global-spacing-tiny !default;
+$checkout-progress-bar-padding:                  $global-spacing-tiny 0 !default;
 
 $checkout-progress-bar-height:                   remsize( .5rem ) !default;
 $checkout-progress-bar-border:                   none !default;
@@ -319,7 +318,10 @@ $checkout-step-count-text-align:                 center !default;
 // ----------------------------------------
 // CHECKOUT STEPS
 
-$checkout-step-padding:                          $global-spacing-small 0 !default;
+$checkout-steps-container-margin:                0 #{ - $container-spacing-mobile } !default;
+$checkout-steps-container-margin--large-screen:  0 !default;
+
+$checkout-step-padding:                          0 !default;
 
 $checkout-substep-title-margin:                  0 0 $global-spacing-extra-small 0 !default;
 $checkout-substep-title-color:                   $dark-grey !default;
@@ -331,11 +333,16 @@ $checkout-substep-title-text-align:              left !default;
 $checkout-substep-title-check-icon-size:         $icon-size-small !default;
 $checkout-substep-title-check-icon-spacing:      $global-spacing-tiny !default;
 
+$checkout-substep-padding:                       $global-spacing-small $container-spacing-mobile !default;
+$checkout-substep-padding--large-screen:         $global-spacing-small 0 !default;
+
 $checkout-substep-text-padding:                  0 0 0 #{ $global-spacing-tiny + $global-spacing-extra-small + $checkout-substep-title-check-icon-size } !default;
 $checkout-substep-text-color:                    $grey !default;
 $checkout-substep-text-font-size:                $font-size-small !default;
 $checkout-substep-text-font-size--large-screen:  $font-size-small--large-screen !default;
 $checkout-substep-text-font-weight:              normal !default;
+
+$checkout-substep-action-button-margin:          $global-spacing-small $global-spacing-extra-small 0 0 !default; // Used to position the substep "Change/Save" action buttons
 
 // END - CHECKOUT STEPS
 // ----------------------------------------
@@ -347,23 +354,28 @@ $checkout-substep-text-font-weight:              normal !default;
 // ----------------------------------------
 // ORDER SUMMARY
 
-$order-summary-cell-padding-vertical:       $global-spacing-extra-small !default;
-$order-summary-cell-padding-horizontal:     $global-spacing-extra-small !default;
-$order-summary-cell-border:                 solid remsize( .1rem ) darken( $lighter-grey, 5% ) !default;
+$order-summary-container-margin:                 $global-spacing-medium 0 0 !default;
+$order-summary-container-padding:                0 $container-spacing-mobile !default;
+$order-summary-container-margin--large-screen:   0 !default;
+$order-summary-container-padding--large-screen:  0 !default;
 
-$order-summary-image-width:                 remsize( 5rem ) !default;
-$order-summary-image-width--large-screen:   remsize( 6rem ) !default;
-$order-summary-image-padding:               remsize( .3rem ) !default;
-$order-summary-image-background-color:      $white !default;
-$order-summary-image-border:                solid remsize( .1rem ) $border-color !default;
-$order-summary-image-border-radius:         $global-radius-extra-small !default;
+$order-summary-cell-padding-vertical:            $global-spacing-extra-small !default;
+$order-summary-cell-padding-horizontal:          $global-spacing-extra-small !default;
+$order-summary-cell-border:                      solid remsize( .1rem ) darken( $lighter-grey, 5% ) !default;
 
-$order-summary-quantity-background-color:   $dark-grey !default;
-$order-summary-quantity-text-color:         $white !default;
-$order-summary-quantity-font-size:          $font-size-extra-small !default;
+$order-summary-image-width:                      remsize( 5rem ) !default;
+$order-summary-image-width--large-screen:        remsize( 6rem ) !default;
+$order-summary-image-padding:                    remsize( .3rem ) !default;
+$order-summary-image-background-color:           $white !default;
+$order-summary-image-border:                     solid remsize( .1rem ) $border-color !default;
+$order-summary-image-border-radius:              $global-radius-extra-small !default;
 
-$order-summary-font-size:                   $font-size-small !default;
-$order-summary-font-size--large-screen:     $font-size-small--large-screen !default;
+$order-summary-quantity-background-color:        $dark-grey !default;
+$order-summary-quantity-text-color:              $white !default;
+$order-summary-quantity-font-size:               $font-size-extra-small !default;
+
+$order-summary-font-size:                        $font-size-small !default;
+$order-summary-font-size--large-screen:          $font-size-small--large-screen !default;
 
 // END - ORDER SUMMARY
 // ----------------------------------------

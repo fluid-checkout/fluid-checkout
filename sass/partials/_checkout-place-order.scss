@@ -3,13 +3,16 @@
 \*------------------------------------*/
 
 .wfc-inside div.place-order {
-	margin-top: $global-spacing;
+	padding: $checkout-substep-padding;
 }
 
 .wfc-sidebar div.place-order {
 	display: none;
 	
-	@media (#{$bp-larger-than-desktop}) { display: block; }
+	@media (#{$bp-larger-than-desktop}) {
+		display: block;
+		padding: $checkout-substep-padding--large-screen;
+	}
 }
 
 

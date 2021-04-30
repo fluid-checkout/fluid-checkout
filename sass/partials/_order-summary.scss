@@ -2,8 +2,13 @@
 	#ORDER SUMMARY
 \*------------------------------------*/
 .wfc-wrapper .wfc-checkout-order-review {
-	padding-top: $global-spacing;
-	padding-bottom: $global-spacing;
+	margin: $order-summary-container-margin;
+	padding: $order-summary-container-padding;
+
+	@media (#{$bp-larger-than-desktop}) {
+		margin: $order-summary-container-margin--large-screen;
+		padding: $order-summary-container-padding--large-screen;
+	}
 }
 
 
@@ -11,7 +16,7 @@
 
 
 .wfc-wrapper #order_review .shop_table {
-	margin-bottom: $global-spacing;
+	margin: 0;
 }
 
 
@@ -175,6 +180,8 @@
 	#ORDER REVIEW VISIBILITY
 \*------------------------------------*/
 .wfc-checkout-step[data-step-id="payment"] .wfc-checkout-order-review {
+	margin-bottom: $global-spacing-small;
+
 	@media (#{$bp-larger-than-desktop}) {
 		display: none;
 	}
