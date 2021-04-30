@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) || exit;
     }
     ?>
 
-    <div id="wfc-gift-options__field-wrapper" <?php echo $has_gift_options_checked ? 'class="is-collapsed"' : ''; ?> data-collapsible data-collapsible-content <?php echo $has_gift_options_checked ? 'data-collapsible-initial-state="expanded"' : 'data-collapsible-initial-state="collapsed"'; ?>>
+    <div id="wfc-gift-options__field-wrapper" <?php echo $has_gift_options_checked ? 'class="is-collapsed"' : ''; ?> data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo $has_gift_options_checked ? 'expanded' : 'collapsed'; ?>">
         <div class="collapsible-content__inner">
 
             <?php do_action( 'wfc_checkout_gift_options_before_fields' ); ?>

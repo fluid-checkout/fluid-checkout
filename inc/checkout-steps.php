@@ -805,14 +805,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
 		<div <?php echo $substep_attributes_str; ?>>
-		<?php
+			<div class="collapsible-content__inner">
+			<?php
 	}
 
 	/**
 	 * Output checkout substep end tag.
 	 */
 	public function output_substep_fields_end_tag() {
-		?>
+			?>
+			</div>
 		</div>
 		<?php
 	}
@@ -838,14 +840,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
 		<div <?php echo $substep_attributes_str; ?>>
-		<?php
+			<div class="collapsible-content__inner">
+			<?php
 	}
 
 	/**
 	 * Output checkout substep end tag.
 	 */
 	public function output_substep_text_end_tag() {
-		?>
+			?>
+			</div>
 		</div>
 		<?php
 	}
