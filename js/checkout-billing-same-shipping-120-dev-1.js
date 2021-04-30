@@ -63,7 +63,7 @@
 
 
 	/**
-	 * Initialize select2 components for address fields after `updated_checkout`.
+	 * Initialize collapsible-blocks components after `updated_checkout` event.
 	 */
 	var maybeReinitializeCollapsibleBlock = function() {
 		var fieldsWrapper = document.querySelector( _settings.fieldsWrapperSelector );

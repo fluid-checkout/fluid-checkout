@@ -172,6 +172,19 @@
 
 
 /*------------------------------------*\
+	#ORDER REVIEW VISIBILITY
+\*------------------------------------*/
+.wfc-checkout-step[data-step-id="payment"] .wfc-checkout-order-review {
+	@media (#{$bp-larger-than-desktop}) {
+		display: none;
+	}
+}
+
+
+
+
+
+/*------------------------------------*\
 	#FLYOUT ORDER SUMMARY
 \*------------------------------------*/
 .wfc-wrapper .wfc-checkout-order-review[data-flyout] {

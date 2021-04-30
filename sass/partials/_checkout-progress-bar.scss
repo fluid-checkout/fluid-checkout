@@ -43,14 +43,14 @@
 	background-color: $checkout-progress-bar-color;
 	transition: width $global-animation-duration linear, background-color $global-animation-duration linear;
 }
-.wfc-progress-bar__bar.complete { background-color: $checkout-progress-bar-complete-color; }
-.wfc-progress-bar__bar.current { background-color: $checkout-progress-bar-current-color; }
+.wfc-progress-bar__bar.is-complete { background-color: $checkout-progress-bar-complete-color; }
+.wfc-progress-bar__bar.is-current { background-color: $checkout-progress-bar-current-color; }
 
 // Progress bar width
 // Supports from 2 to 10 checkout steps
 @for $count from 2 through 10 {
-	.wfc-progress-bar__bars[data-step-count="#{$count}"] .wfc-progress-bar__bar.complete,
-	.wfc-progress-bar__bars[data-step-count="#{$count}"] .wfc-progress-bar__bar.current {
+	.wfc-progress-bar__bars[data-step-count="#{$count}"] .wfc-progress-bar__bar.is-complete,
+	.wfc-progress-bar__bars[data-step-count="#{$count}"] .wfc-progress-bar__bar.is-current {
 		width: #{ 100% / $count };
 	}
 }

@@ -8,9 +8,12 @@
 
 
 
-
 .wfc-step__substep {
+	position: relative;
 	border-bottom: solid remsize( .1rem ) $border-color;
+}
+.wfc-step__substep:after {
+    @include clearfix();
 }
 
 .wfc-step__substep + .wfc-step__substep {
@@ -30,15 +33,9 @@
 
 
 
-
-
-.wfc-step__substep-fields {
-	display: inline-block;
-	padding-top: $global-spacing-extra-small;
-	width: 100%;
+.wfc-step__substep-fields:after {
+    @include clearfix();
 }
-
-
 
 
 
@@ -80,7 +77,7 @@
 	display: none;
 }
 
-.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-fields {
+.has-checkout-layout--multi-step:not( .has-collapsible-block ) [data-step-complete] .wfc-step__substep-fields {
 	display: none;
 }
 
@@ -96,9 +93,12 @@
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-text-font-size--large-screen; }
 }
-
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-text {
 	display: block;
+}
+
+.has-checkout-layout--multi-step .wfc-step__substep-text-content.is-loading {
+	min-height: $global-spacing-medium;
 }
 
 .has-checkout-layout--multi-step .wfc-step__substep-text-line {
@@ -133,10 +133,50 @@
 
 
 /*------------------------------------*\
-	#CHECKOUT LAYOUT MULTI-STEP
+	#CHECKOUT STEP ACTIONS
 \*------------------------------------*/
-.wfc-checkout-step[data-step-id="payment"] .wfc-checkout-order-review {
-	@media (#{$bp-larger-than-desktop}) {
-		display: none;
-	}
+.has-checkout-layout--multi-step .wfc-step__actions {
+	margin-top: $global-spacing-medium;
+	text-align: center;
+}
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__actions {
+	display: none;
+}
+
+.has-checkout-layout--multi-step .wfc-step__actions .wfc-step__next-step:only-child {
+	min-width: remsize( 28rem );
+}
+
+
+
+
+
+/*------------------------------------*\
+	#CHECKOUT SUB-STEP EDIT
+\*------------------------------------*/
+.has-checkout-layout--multi-step .wfc-step__substep-edit,
+.has-checkout-layout--multi-step .wfc-step__substep-save {
+	display: none;
+
+	margin-right: - $global-spacing-extra-small;
+	padding: $global-spacing-tiny $global-spacing-extra-small;
+	font-size: $font-size-small;
+	font-weight: normal;
+	line-height: 1;
+	text-decoration: underline;
+	background-color: transparent;
+
+	@media (#{$bp-larger-than-desktop}) { font-size: $font-size-small--large-screen; }
+}
+
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-edit,
+.has-checkout-layout--multi-step [data-step-complete] .is-editing .wfc-step__substep-save {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: inline;
+}
+.has-checkout-layout--multi-step [data-step-complete] .is-editing .wfc-step__substep-edit,
+.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-save {
+	display: none;
 }
