@@ -16,7 +16,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *      ['render_next_step_button']      bool        Whether to display a "Next Step" button at the end of the step. Defaults to `true`.
 	 *      ['render_callback']              callable    Function name or callable array to display the contents of the checkout step.
 	 *      ['render_condition_callback']    callable    (optional) Function name or callable array to determine if the step should be rendered. If a callback is not provided the checkout step will be displayed.
-	 *      ['is_complete_callback']         callable    (optional) Function name or callable array to determine if all required date for the step has been provided. Defaults to `__return_false` if a callback is not provided, considering the step as 'incomplete'.
+	 *      ['is_complete_callback']         callable    (optional) Function name or callable array to determine if all required date for the step has been provided. Defaults to `false`, considering the step as 'incomplete' if a callback is not provided.
 	 *
 	 * @var array
 	 **/
