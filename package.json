@@ -12,10 +12,7 @@
   "copyright": "Copyright (c) 2021, Fluidweb OÜ",
   "homepage": "https://fluidweb.co/plugins/fluid-checkout",
   "devDependencies": {
-    "collapsible-block": "^1.1.1",
     "del": "^5.1.0",
-    "fluidweb-updater": "git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git",
-    "flyout-block": "^1.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-concat": "^2.6.1",
@@ -27,11 +24,15 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "gulp-watch": "^5.0.1",
+    "uglify-js": "^3.8.0"
+  },
+  "dependencies": {
+    "collapsible-block": "^1.1.1",
+    "fluidweb-updater": "git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git",
+    "flyout-block": "^1.0.0",
     "load-json-file": "^6.2.0",
     "mailcheck": "^1.1.1",
     "require-bundle-js": "^1.0.0",
-    "require-polyfills": "^1.0.0",
-    "uglify-js": "^3.8.0"
-  },
-  "dependencies": {}
+    "require-polyfills": "^1.0.0"
+  }
 }
