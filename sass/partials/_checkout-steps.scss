@@ -14,7 +14,6 @@
 }
 .wfc-step__substep:after {
     @include clearfix();
-	width: 100%;
 }
 
 .wfc-step__substep + .wfc-step__substep {
@@ -36,7 +35,6 @@
 
 .wfc-step__substep-fields:after {
     @include clearfix();
-	width: 100%;
 }
 
 

@@ -426,7 +426,6 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   content: '';
   display: table;
   table-layout: fixed;
-  width: 100%;
   width: 100%; }
 
 .wfc-step__substep + .wfc-step__substep {
@@ -447,7 +446,6 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   content: '';
   display: table;
   table-layout: fixed;
-  width: 100%;
   width: 100%; }
 
 .wfc-step__substep-text {
