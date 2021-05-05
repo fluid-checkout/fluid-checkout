@@ -919,6 +919,9 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 .wfc-wrapper .payment_box > p:last-child {
   margin-bottom: 0; }
 
+.wfc-wrapper #payment .payment_methods > .woocommerce-notice {
+  margin-bottom: 0; }
+
 /*------------------------------------*\
   #CHECKOUT GIFT OPTIONS
 \*------------------------------------*/
