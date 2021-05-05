@@ -22,6 +22,7 @@ defined( 'ABSPATH' ) || exit;
 $attributes = array();
 $attributes_inner = array();
 
+// Sidebar widget
 if ( $is_sidebar_widget ) {
 	$attributes = array_merge( $attributes, array(
 		'id' => 'wfc-checkout-order-review',
@@ -29,10 +30,12 @@ if ( $is_sidebar_widget ) {
 		'data-flyout-order-review' => true,
 		'data-flyout-open-animation-class' => 'fade-in-down',
 		'data-flyout-close-animation-class' => 'fade-out-up',
-	) );
-
-	$attributes_inner = array_merge( $attributes_inner, array(
-		'data-flyout-content' => true,
+		// 'data-sticky-states' => '',
+		) );
+		
+		$attributes_inner = array_merge( $attributes_inner, array(
+			'data-flyout-content' => true,
+			// 'data-sticky-states-inner' => '',
 	) );
 }
 
