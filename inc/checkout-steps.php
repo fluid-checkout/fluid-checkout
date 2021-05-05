@@ -531,14 +531,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$step_id = $step_args[ 'step_id' ];
 
 		// Sanitize value for `render_next_step_button` flag and set default value if needed
-		$step_args[ 'render_next_step_button' ] = $step_args[ 'render_next_step_button' ] !== false ? true : $step_args[ 'render_next_step_button' ];
+		$step_args[ 'render_next_step_button' ] = array_key_exists( 'render_next_step_button', $step_args ) && $step_args[ 'render_next_step_button' ] === false ? false : true;
 
 		// Sanitize "next step" button label, or set default value
-		$step_args[ 'next_step_button_label' ] = $step_args[ 'next_step_button_label' ] && $step_args[ 'next_step_button_label' ] != '' ? $step_args[ 'next_step_button_label' ] : __( 'Next step', 'woocommerce-fluid-checkout' );
+		$step_args[ 'next_step_button_label' ] = array_key_exists( 'next_step_button_label', $step_args ) && $step_args[ 'next_step_button_label' ] && $step_args[ 'next_step_button_label' ] != '' ? $step_args[ 'next_step_button_label' ] : __( 'Next step', 'woocommerce-fluid-checkout' );
 		$step_args[ 'next_step_button_label' ] = wp_kses( $step_args[ 'next_step_button_label' ], array( 'span' => array( 'class' => '' ), 'i' => array( 'class' => '' ) ) );
 
 		// Sanitize "next step" button classes
-		$step_args[ 'next_step_button_classes' ] = is_array( $step_args[ 'next_step_button_classes' ] ) ? $step_args[ 'next_step_button_classes' ] : array();
+		$step_args[ 'next_step_button_classes' ] = array_key_exists( 'next_step_button_classes', $step_args ) && is_array( $step_args[ 'next_step_button_classes' ] ) ? $step_args[ 'next_step_button_classes' ] : array();
 		foreach ( $step_args[ 'next_step_button_classes' ] as $key => $class ) {
 			$step_args[ 'next_step_button_classes' ][ $key ] = sanitize_html_class( $class );
 		}
@@ -728,7 +728,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_step_end_tag( $step_args, $step_index ) {
 		
 		// Maybe output the "Next step" button
-		if ( $this->is_checkout_layout_multistep() && $step_args[ 'render_next_step_button' ] ) :
+		if ( $this->is_checkout_layout_multistep() && array_key_exists( 'render_next_step_button', $step_args ) && $step_args[ 'render_next_step_button' ] ) :
 			$button_attributes = array(
 				'class' => implode( ' ', array_merge( array( 'wfc-step__next-step' ), $step_args[ 'next_step_button_classes' ] ) ),
 				'data-step-next' => '',
