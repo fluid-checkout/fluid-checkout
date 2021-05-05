@@ -30,12 +30,10 @@ if ( $is_sidebar_widget ) {
 		'data-flyout-order-review' => true,
 		'data-flyout-open-animation-class' => 'fade-in-down',
 		'data-flyout-close-animation-class' => 'fade-out-up',
-		// 'data-sticky-states' => '',
-		) );
-		
-		$attributes_inner = array_merge( $attributes_inner, array(
-			'data-flyout-content' => true,
-			// 'data-sticky-states-inner' => '',
+	) );
+
+	$attributes_inner = array_merge( $attributes_inner, array(
+		'data-flyout-content' => true,
 	) );
 }
 

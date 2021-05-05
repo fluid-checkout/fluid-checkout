@@ -110,7 +110,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
 		add_action( 'wfc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		
-		// Order Received (default functionality)
+		// Order Received
 		add_action( 'wfc_order_received_failed', array( $this, 'output_order_received_failed_template' ), 10 );
 		add_action( 'wfc_order_received_successful', array( $this, 'output_order_received_successful_template' ), 10 );
 		add_action( 'wfc_order_received_successful_no_order_details', array( $this, 'output_order_received_no_order_details_template' ), 10 );
@@ -677,9 +677,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$_checkout_steps,
 			$current_step
 		);
-
 		?>
-		<div class="wfc-progress-bar" data-progress-bar data-sticky-states>
+		<div class="wfc-progress-bar" data-progress-bar data-sticky-states data-sticky-container=".wfc-inside">
 			<div class="wfc-progress-bar__inner" data-sticky-states-inner>
 
 				<div class="wfc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html ?></div>
