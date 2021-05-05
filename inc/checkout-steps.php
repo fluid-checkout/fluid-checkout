@@ -101,7 +101,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_order_review' ), 90 );
-		add_action( 'wfc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 1 );
+		add_action( 'wfc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
 		add_action( 'wfc_checkout_order_review_sidebar_before_actions', array( $this, 'output_checkout_place_order_for_sidebar' ), 100, 1 );
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
 		add_action( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
@@ -1975,7 +1975,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout place order section.
 	 */
-	public function output_checkout_place_order( $is_sidebar = false ) {
+	public function output_checkout_place_order( $step_id, $is_sidebar = false ) {
 		ob_start();
 		wc_get_template(
 			'checkout/place-order.php',
@@ -2007,7 +2007,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output checkout place order section.
 	 */
 	public function output_checkout_place_order_for_sidebar() {
-		$this->output_checkout_place_order( true );
+		$this->output_checkout_place_order( '__sidebar', true );
 	}
 
 	/**
