@@ -38,6 +38,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			
 			// Persist shipping phone to the user's session
 			add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_shipping_phone_session' ), 10 );
+			add_action( 'woocommerce_checkout_order_processed', array( $this, 'save_shipping_phone_user_meta' ), 10 );
 			add_filter( 'default_checkout_shipping_phone', array( $this, 'change_default_shipping_phone_value' ), 10, 2 );
 		}
 	}
@@ -143,10 +144,37 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 	/**
-	 * Change default shipping phone value
+	 * Update the shipping phone user meta.
+	 *
+	 * @return  bool  `true` if the shipping phone value was saved, `false` otherwise.
+	 */
+	public function save_shipping_phone_user_meta() {
+		$user_id = $this->get_user_id( $user_id );
+
+		// Bail if user id not valid or user not registered
+		if ( ! $user_id || $user_id <= 0 ) { return false; }
+
+		// Get shipping phone from posted data
+		$shipping_phone = isset( $_POST['shipping_phone'] ) ? wc_clean( wp_unslash( $_POST['shipping_phone'] ) ) : '';
+		
+		// Save and return saving result
+		return update_user_meta( $user_id, '_wfc_shipping_phone', $shipping_phone );
+	}
+
+	/**
+	 * Change default shipping phone value.
 	 */
 	public function change_default_shipping_phone_value( $value, $input ) {
 		$shipping_phone = $this->get_shipping_phone_session();
+		
+		// Try to get shipping phone from the user meta data if not found in session
+		if ( ! $shipping_phone ) {
+			$user_id = $this->get_user_id( $user_id );
+			if ( $user_id > 0 ) {
+				$shipping_phone = get_user_meta( $user_id, '_wfc_shipping_phone', $shipping_phone );
+			}
+		}
+
 		return $shipping_phone;
 	}
 
