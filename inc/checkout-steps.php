@@ -798,10 +798,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'id' => 'wfc-substep__fields--' . $substep_id,
 			'class' => 'wfc-step__substep-fields',
 			'data-substep-id' => $substep_id,
-			'data-collapsible' => '',
-			'data-collapsible-content' => '',
-			'data-collapsible-initial-state' => $is_step_complete ? 'collapsed' : 'expanded',
 		);
+
+		// Add collapsible-block attributes for multistep layout
+		if ( $this->is_checkout_layout_multistep() ) {
+			$substep_attributes = array_merge( $substep_attributes, array(
+				'data-collapsible' => '',
+				'data-collapsible-content' => '',
+				'data-collapsible-initial-state' => $is_step_complete ? 'collapsed' : 'expanded',
+			) );
+		}
+
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
 		<div <?php echo $substep_attributes_str; ?>>
