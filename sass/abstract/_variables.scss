@@ -254,7 +254,7 @@ $option-box-checked-color:                  inherit !default;
 // CHECKOUT HEADER
 
 $checkout-header-background-color:          $white !default;
-$checkout-header-box-shadow:                0 remsize( .2rem ) remsize( 1rem ) rgba( 0, 0, 0, .05 ) !default;
+$checkout-header-box-shadow:                0 remsize( .2rem ) remsize( 1rem ) rgba( 0, 0, 0, .1 ) !default;
 
 $checkout-header-height:                    remsize( 6rem ) !default;
 $checkout-header-height--large-screen:      remsize( 10rem ) !default;
@@ -291,6 +291,8 @@ $checkout-overview-border-left:             none !default;
 
 // ----------------------------------------
 // CHECKOUT PROGRESS BAR
+
+$checkout-progress-bar-box-shadow:               $checkout-header-box-shadow !default;
 
 $checkout-progress-bar-padding-vertical:         $global-spacing-tiny !default;
 

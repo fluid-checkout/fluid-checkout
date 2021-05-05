@@ -137,7 +137,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   width: 100%;
   min-height: 60px;
   background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
   @media (min-width: 1000px) {
     .wfc-checkout-header {
       position: static;
@@ -358,7 +358,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
   top: 60px;
   background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
   @media (min-width: 1000px) {
     .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
       top: 0; } }

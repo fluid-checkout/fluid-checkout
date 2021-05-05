@@ -18,7 +18,7 @@
 .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
 	top: #{ $checkout-header-height };
 	background-color: $white;
-	box-shadow: $checkout-header-box-shadow;
+	box-shadow: $checkout-progress-bar-box-shadow;
 	
 	@media (#{$bp-larger-than-desktop}) { top: 0; }
 }
