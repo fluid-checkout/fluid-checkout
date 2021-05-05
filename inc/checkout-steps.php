@@ -679,18 +679,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		?>
-		<div class="wfc-progress-bar" data-progress-bar>
-			<div class="wfc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html ?></div>
-			<div class="wfc-progress-bar__bars" data-progress-bar data-step-count="<?php echo esc_attr( $steps_count ); ?>">
-				<?php
-				foreach ( $_checkout_steps as $step_index => $step_args ) :
-					$step_bar_class = $step_index < $current_step_index ? 'is-complete' : ( $step_index == $current_step_index ? 'is-current' : '' );
+		<div class="wfc-progress-bar" data-progress-bar data-sticky-states>
+			<div class="wfc-progress-bar__inner" data-sticky-states-inner>
+
+				<div class="wfc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html ?></div>
+				<div class="wfc-progress-bar__bars" data-progress-bar data-step-count="<?php echo esc_attr( $steps_count ); ?>">
+					<?php
+					foreach ( $_checkout_steps as $step_index => $step_args ) :
+						$step_bar_class = $step_index < $current_step_index ? 'is-complete' : ( $step_index == $current_step_index ? 'is-current' : '' );
+						?>
+						<span class="wfc-progress-bar__bar <?php echo esc_attr( $step_bar_class ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>"></span>
+					<?php
+					endforeach;
 					?>
-					<span class="wfc-progress-bar__bar <?php echo esc_attr( $step_bar_class ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>"></span>
-				<?php
-				endforeach;
-				?>
-			</div>
+				</div>
+				
+			</div>	
 		</div>
 		<?php
 	}

@@ -3,7 +3,38 @@
 \*------------------------------------*/
 
 .wfc-progress-bar {
-	padding: $checkout-progress-bar-padding;
+	// margin
+	margin: 0 #{ - $container-spacing-mobile };
+	@media (#{$bp-larger-than-tablet}) { margin: 0 #{ - $container-spacing-tablet }; }
+	@media (#{$bp-larger-than-desktop}) { margin: 0 #{ - $container-spacing-desktop }; }
+}
+
+.wfc-progress-bar .wfc-progress-bar__inner {
+	// padding
+	padding: $checkout-progress-bar-padding-vertical $container-spacing-mobile;
+	@media (#{$bp-larger-than-tablet}) { padding: $checkout-progress-bar-padding-vertical $container-spacing-tablet; }
+	@media (#{$bp-larger-than-desktop}) { padding: $checkout-progress-bar-padding-vertical $container-spacing-desktop; }
+}
+.wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
+	top: #{ $checkout-header-height };
+	background-color: $white;
+	box-shadow: $checkout-header-box-shadow;
+	
+	@media (#{$bp-larger-than-desktop}) { top: 0; }
+}
+// With admin bar
+.admin-bar .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
+	top: calc( 46px + #{ $checkout-header-height } );
+	
+	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
+		top: calc( 32px + #{ $checkout-header-height } );
+	}
+
+	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
+		top: calc( 32px + #{ $checkout-header-height } );
+	}
+
+	@media (#{$bp-larger-than-desktop}) { top: 32px; }
 }
 
 
@@ -11,11 +42,13 @@
 
 
 .wfc-progress-bar__count {
+	margin-bottom: $checkout-progress-bar-padding-vertical;
 	color: $checkout-step-count-color;
 	font-weight: $checkout-step-count-font-weight;
 	font-size: $checkout-step-count-font-size;
 	text-transform: $checkout-step-count-text-transform;
 	text-align: $checkout-step-count-text-align;
+	line-height: 1;
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-step-count-font-size--large-screen; }
 }
