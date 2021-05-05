@@ -143,10 +143,23 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 	/**
-	 * Change default shipping phone value
+	 * Change default shipping phone value.
 	 */
 	public function change_default_shipping_phone_value( $value, $input ) {
-		$shipping_phone = $this->get_shipping_phone_session();
+		// Try get the shipping phone from the session
+		$shipping_phone_session = $this->get_shipping_phone_session();
+		if ( $shipping_phone_session != null ) {
+			$shipping_phone = $shipping_phone_session;
+		}
+		
+		// Try to get shipping phone from the saved customer shipping address
+		if ( $shipping_phone == null ) {
+			$user_id = $this->get_user_id();
+			if ( $user_id > 0 ) {
+				$shipping_phone = get_user_meta( $user_id, 'shipping_phone', true );
+			}
+		}
+
 		return $shipping_phone;
 	}
 
