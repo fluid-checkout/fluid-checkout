@@ -130,7 +130,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add page body class for feature detection.
 	 *
-     * @param array $classes Classes for the body element.
+		 * @param array $classes Classes for the body element.
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
@@ -1712,13 +1712,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Use posted data when doing checkout update
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			// Try get value from the post_data
-      if ( isset( $_POST['s_country'] ) ) {
-        $shipping_country = isset( $_POST['s_country'] ) ? wc_clean( wp_unslash( $_POST['s_country'] ) ) : null;
-      }
-      // Try get value from the form data sent on process checkout
-      else if ( isset( $_POST['shipping_country'] ) ) {
-        $shipping_country = isset( $_POST['shipping_country'] ) ? wc_clean( wp_unslash( $_POST['shipping_country'] ) ) : null;
-      }
+			if ( isset( $_POST['s_country'] ) ) {
+				$shipping_country = isset( $_POST['s_country'] ) ? wc_clean( wp_unslash( $_POST['s_country'] ) ) : null;
+			}
+			// Try get value from the form data sent on process checkout
+			else if ( isset( $_POST['shipping_country'] ) ) {
+				$shipping_country = isset( $_POST['shipping_country'] ) ? wc_clean( wp_unslash( $_POST['shipping_country'] ) ) : null;
+			}
 		}
 
 		// Shipping country is defined, return bool
