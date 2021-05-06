@@ -925,12 +925,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Get contact substep in text format for when the step is completed.
 	 */
 	public function get_substep_text_contact() {
-		$checkout = WC()->checkout();
-
+		$customer = WC()->customer;
 		$html = '<div class="wfc-step__substep-text-content wfc-step__substep-text-content--contact">';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_email' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_first_name' ) . ' ' . $checkout->get_value( 'billing_last_name' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_phone' ) . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_email() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_first_name() . ' ' . $customer->get_billing_last_name() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_phone() . '</span>';
 		$html .= '</div>';
 
 		return apply_filters( 'wfc_substep_contact_text', $html );
@@ -1165,18 +1164,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output shipping address substep in text format for when the step is completed.
 	 */
 	public function get_substep_text_shipping_address() {
-		$checkout = WC()->checkout();
+		$customer = WC()->customer;
 		
 		$html = '<div class="wfc-step__substep-text-content wfc-step__substep-text-content--shipping-address">';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_first_name' ) . '' . $checkout->get_value( 'shipping_last_name' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_phone' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_company' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_address_1' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_address_2' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_city' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_state' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_country' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'shipping_postcode' ) . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_first_name() . ' ' . $customer->get_shipping_last_name() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_company() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_address_1() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_address_2() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_city() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_state() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_country() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_postcode() . '</span>';
 		$html .= '</div>';
 
 		return apply_filters( 'wfc_substep_shipping_address_text', $html );
@@ -1615,16 +1613,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Get billing address substep in text format for when the step is completed.
 	 */
 	public function get_substep_text_billing_address() {
-		$checkout = WC()->checkout();
+		$customer = WC()->customer;
 		
 		$html = '<div class="wfc-step__substep-text-content wfc-step__substep-text-content--billing-address">';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_company' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_address_1' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_address_2' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_city' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_state' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_country' ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $checkout->get_value( 'billing_postcode' ) . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_company() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_address_1() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_address_2() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_city() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_state() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_country() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_postcode() . '</span>';
 		$html .= '</div>';
 
 		return apply_filters( 'wfc_substep_billing_address_text', $html );
@@ -2202,7 +2200,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	 /**
-	 * Maybe set billing address fields values to same as shipping address from the posted data.
+	 * Update the customer's data to the WC_Customer object.
 	 * 
 	 * @param string $posted_data Post data for all checkout fields.
 	 */
@@ -2233,7 +2231,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Allow developers to change the values
-		$persisted_fields = apply_filters( 'wfc_customer_persisted_fields_before_update', $persisted_fields );
+		$persisted_fields = apply_filters( 'wfc_customer_persisted_fields_before_update', $persisted_fields, $posted_data, $parsed_posted_data );
 
 		// Update customer data to the customer object
 		WC()->customer->set_props( $persisted_fields );
