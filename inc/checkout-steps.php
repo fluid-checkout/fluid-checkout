@@ -101,7 +101,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_order_review' ), 90 );
-		add_action( 'wfc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 1 );
+		add_action( 'wfc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
 		add_action( 'wfc_checkout_order_review_sidebar_before_actions', array( $this, 'output_checkout_place_order_for_sidebar' ), 100, 1 );
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
 		add_action( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
@@ -110,7 +110,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
 		add_action( 'wfc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		
-		// Order Received (default functionality)
+		// Order Received
 		add_action( 'wfc_order_received_failed', array( $this, 'output_order_received_failed_template' ), 10 );
 		add_action( 'wfc_order_received_successful', array( $this, 'output_order_received_successful_template' ), 10 );
 		add_action( 'wfc_order_received_successful_no_order_details', array( $this, 'output_order_received_no_order_details_template' ), 10 );
@@ -531,14 +531,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$step_id = $step_args[ 'step_id' ];
 
 		// Sanitize value for `render_next_step_button` flag and set default value if needed
-		$step_args[ 'render_next_step_button' ] = $step_args[ 'render_next_step_button' ] !== false ? true : $step_args[ 'render_next_step_button' ];
+		$step_args[ 'render_next_step_button' ] = array_key_exists( 'render_next_step_button', $step_args ) && $step_args[ 'render_next_step_button' ] === false ? false : true;
 
 		// Sanitize "next step" button label, or set default value
-		$step_args[ 'next_step_button_label' ] = $step_args[ 'next_step_button_label' ] && $step_args[ 'next_step_button_label' ] != '' ? $step_args[ 'next_step_button_label' ] : __( 'Next step', 'woocommerce-fluid-checkout' );
+		$step_args[ 'next_step_button_label' ] = array_key_exists( 'next_step_button_label', $step_args ) && $step_args[ 'next_step_button_label' ] && $step_args[ 'next_step_button_label' ] != '' ? $step_args[ 'next_step_button_label' ] : __( 'Next step', 'woocommerce-fluid-checkout' );
 		$step_args[ 'next_step_button_label' ] = wp_kses( $step_args[ 'next_step_button_label' ], array( 'span' => array( 'class' => '' ), 'i' => array( 'class' => '' ) ) );
 
 		// Sanitize "next step" button classes
-		$step_args[ 'next_step_button_classes' ] = is_array( $step_args[ 'next_step_button_classes' ] ) ? $step_args[ 'next_step_button_classes' ] : array();
+		$step_args[ 'next_step_button_classes' ] = array_key_exists( 'next_step_button_classes', $step_args ) && is_array( $step_args[ 'next_step_button_classes' ] ) ? $step_args[ 'next_step_button_classes' ] : array();
 		foreach ( $step_args[ 'next_step_button_classes' ] as $key => $class ) {
 			$step_args[ 'next_step_button_classes' ][ $key ] = sanitize_html_class( $class );
 		}
@@ -677,20 +677,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$_checkout_steps,
 			$current_step
 		);
-
 		?>
-		<div class="wfc-progress-bar" data-progress-bar>
-			<div class="wfc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html ?></div>
-			<div class="wfc-progress-bar__bars" data-progress-bar data-step-count="<?php echo esc_attr( $steps_count ); ?>">
-				<?php
-				foreach ( $_checkout_steps as $step_index => $step_args ) :
-					$step_bar_class = $step_index < $current_step_index ? 'is-complete' : ( $step_index == $current_step_index ? 'is-current' : '' );
+		<div class="wfc-progress-bar" data-progress-bar data-sticky-states data-sticky-container=".wfc-inside">
+			<div class="wfc-progress-bar__inner" data-sticky-states-inner>
+
+				<div class="wfc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html ?></div>
+				<div class="wfc-progress-bar__bars" data-progress-bar data-step-count="<?php echo esc_attr( $steps_count ); ?>">
+					<?php
+					foreach ( $_checkout_steps as $step_index => $step_args ) :
+						$step_bar_class = $step_index < $current_step_index ? 'is-complete' : ( $step_index == $current_step_index ? 'is-current' : '' );
+						?>
+						<span class="wfc-progress-bar__bar <?php echo esc_attr( $step_bar_class ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>"></span>
+					<?php
+					endforeach;
 					?>
-					<span class="wfc-progress-bar__bar <?php echo esc_attr( $step_bar_class ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>"></span>
-				<?php
-				endforeach;
-				?>
-			</div>
+				</div>
+				
+			</div>	
 		</div>
 		<?php
 	}
@@ -728,7 +731,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_step_end_tag( $step_args, $step_index ) {
 		
 		// Maybe output the "Next step" button
-		if ( $this->is_checkout_layout_multistep() && $step_args[ 'render_next_step_button' ] ) :
+		if ( $this->is_checkout_layout_multistep() && array_key_exists( 'render_next_step_button', $step_args ) && $step_args[ 'render_next_step_button' ] ) :
 			$button_attributes = array(
 				'class' => implode( ' ', array_merge( array( 'wfc-step__next-step' ), $step_args[ 'next_step_button_classes' ] ) ),
 				'data-step-next' => '',
@@ -776,7 +779,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_end_tag( $step_id, $substep_id, $output_edit_buttons = true ) {
 		?>
-			<?php if ( $output_edit_buttons ) : ?>
+			<?php if ( $output_edit_buttons && $this->is_checkout_layout_multistep() ) : ?>
 				<button type="button" class="wfc-step__substep-edit" data-step-edit aria-controls="wfc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo _x( 'Change', 'Checkout substep change link label', 'woocommerce-fluid-checkout' ); ?></button>
 				<button type="button" class="wfc-step__substep-save" data-step-save aria-controls="wfc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo _x( 'Save', 'Checkout substep save link label', 'woocommerce-fluid-checkout' ); ?></button>
 			<?php endif; ?>
@@ -798,10 +801,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'id' => 'wfc-substep__fields--' . $substep_id,
 			'class' => 'wfc-step__substep-fields',
 			'data-substep-id' => $substep_id,
-			'data-collapsible' => '',
-			'data-collapsible-content' => '',
-			'data-collapsible-initial-state' => $is_step_complete ? 'collapsed' : 'expanded',
 		);
+
+		// Add collapsible-block attributes for multistep layout
+		if ( $this->is_checkout_layout_multistep() ) {
+			$substep_attributes = array_merge( $substep_attributes, array(
+				'data-collapsible' => '',
+				'data-collapsible-content' => '',
+				'data-collapsible-initial-state' => $is_step_complete ? 'collapsed' : 'expanded',
+			) );
+		}
+
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
 		<div <?php echo $substep_attributes_str; ?>>
@@ -1968,7 +1978,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout place order section.
 	 */
-	public function output_checkout_place_order( $is_sidebar = false ) {
+	public function output_checkout_place_order( $step_id, $is_sidebar = false ) {
 		ob_start();
 		wc_get_template(
 			'checkout/place-order.php',
@@ -2000,7 +2010,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output checkout place order section.
 	 */
 	public function output_checkout_place_order_for_sidebar() {
-		$this->output_checkout_place_order( true );
+		$this->output_checkout_place_order( '__sidebar', true );
 	}
 
 	/**

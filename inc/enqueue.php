@@ -58,6 +58,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 					'closeAnimationClass' => 'fade-out-down',
 				),
 				'collapsibleBlock'  => array(),
+				'stickyStates'    => array(),
 			) )
 		);
 	}

@@ -16,9 +16,6 @@ form.woocommerce-checkout {
 
 
 
-body.woocommerce-checkout .content-area {
-	padding-bottom: $global-spacing-medium;
-}
 body.woocommerce-checkout.has-checkout-header .content-area {
 	min-height: 100vh;
 }
@@ -30,6 +27,7 @@ body.woocommerce-checkout.has-checkout-header .content-area {
 	position: relative;
 	width: 100%;
 	margin: 0 auto;
+	padding-bottom: $global-spacing-medium;
 	box-sizing: border-box;
 }
 
@@ -43,12 +41,12 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 	@media (#{$bp-larger-than-desktop-extra-large}) { max-width: $container-width-desktop-extra-large; }
 
 	// padding
-	padding: 0 $container-spacing-mobile;
-	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet; }
-	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop; }
-	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium; }
-	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large; }
-	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large; }
+	padding: 0 $container-spacing-mobile $global-spacing-medium;
+	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet $global-spacing-medium; }
+	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop $global-spacing-medium; }
+	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium $global-spacing-medium; }
+	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large $global-spacing-medium; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large $global-spacing-medium; }
 }
 
 

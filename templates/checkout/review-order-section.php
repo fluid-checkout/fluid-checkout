@@ -22,6 +22,7 @@ defined( 'ABSPATH' ) || exit;
 $attributes = array();
 $attributes_inner = array();
 
+// Sidebar widget
 if ( $is_sidebar_widget ) {
 	$attributes = array_merge( $attributes, array(
 		'id' => 'wfc-checkout-order-review',

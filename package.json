@@ -35,6 +35,7 @@
     "load-json-file": "^6.2.0",
     "mailcheck": "^1.1.1",
     "require-bundle-js": "^1.0.0",
-    "require-polyfills": "^1.0.0"
+    "require-polyfills": "^1.0.0",
+    "sticky-states": "^1.0.0"
   }
 }

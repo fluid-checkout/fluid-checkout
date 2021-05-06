@@ -38,7 +38,6 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			
 			// Persist shipping phone to the user's session
 			add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_shipping_phone_session' ), 10 );
-			add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_shipping_phone_session' ), 10 );
 			add_filter( 'default_checkout_shipping_phone', array( $this, 'change_default_shipping_phone_value' ), 10, 2 );
 		}
 	}
@@ -144,11 +143,24 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 	/**
-	 * Change default shipping phone value
+	 * Change default shipping phone value.
 	 */
 	public function change_default_shipping_phone_value( $value, $input ) {
-		// TODO: Maybe try to get shipping phone from the user meta data if not found in session
-		return $this->get_shipping_phone_session();
+		// Try get the shipping phone from the session
+		$shipping_phone_session = $this->get_shipping_phone_session();
+		if ( $shipping_phone_session != null ) {
+			$shipping_phone = $shipping_phone_session;
+		}
+		
+		// Try to get shipping phone from the saved customer shipping address
+		if ( $shipping_phone == null ) {
+			$user_id = $this->get_user_id();
+			if ( $user_id > 0 ) {
+				$shipping_phone = get_user_meta( $user_id, 'shipping_phone', true );
+			}
+		}
+
+		return $shipping_phone;
 	}
 
 	/**
