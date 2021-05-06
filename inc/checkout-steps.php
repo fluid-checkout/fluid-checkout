@@ -1683,7 +1683,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_billing_same_as_shipping_field() {
 		// Output a hidden field when shipping country not allowed for billing
 		if ( $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
-			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="0">
+			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; ?>">
 		<?php
 		// Output the checkbox when shipping country is allowed for billing
 		else :
@@ -1704,16 +1704,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @return  mixed  `true` if the selected shipping country is also available for billing country, `false` if the shipping country is not allowed for billing, and `null` if the shipping country is not set.
 	 */
-	public function is_shipping_country_allowed_for_billing() {
-		// Get checkout object
-		$checkout = WC()->checkout();
-		
-		// Get shipping value from saved checkout data
-		$shipping_country = $checkout->get_value( 'shipping_country' );
+	public function is_shipping_country_allowed_for_billing() {		
+		// Get shipping value from customer data
+		$customer = WC()->customer;
+		$shipping_country = $customer->get_shipping_country();
 		
 		// Use posted data when doing checkout update
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-			$shipping_country = isset( $_POST['s_country'] ) ? wc_clean( wp_unslash( $_POST['s_country'] ) ) : null;
+			// Try get value from the post_data
+      if ( isset( $_POST['s_country'] ) ) {
+        $shipping_country = isset( $_POST['s_country'] ) ? wc_clean( wp_unslash( $_POST['s_country'] ) ) : null;
+      }
+      // Try get value from the form data sent on process checkout
+      else if ( isset( $_POST['shipping_country'] ) ) {
+        $shipping_country = isset( $_POST['shipping_country'] ) ? wc_clean( wp_unslash( $_POST['shipping_country'] ) ) : null;
+      }
 		}
 
 		// Shipping country is defined, return bool
