@@ -1683,7 +1683,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_billing_same_as_shipping_field() {
 		// Output a hidden field when shipping country not allowed for billing
 		if ( $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
-			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; ?>">
+			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="0">
 		<?php
 		// Output the checkbox when shipping country is allowed for billing
 		else :
@@ -1798,7 +1798,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping();
 		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked();
 
-		// Update values for billing same as shipping
+		// Save checked state of the billing same as shipping field to the session,
+		// for the case the shipping country changes again and the new value is also accepted for billing.
 		$this->set_billing_same_as_shipping_session( $is_billing_same_as_shipping_checked );
 		
 		// Maybe set post data for billing same as shipping
