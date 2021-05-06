@@ -28,14 +28,16 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 		// Shipping Phone Field
 		if ( get_option( 'wfc_add_shipping_phone_field', 'true' ) === 'true' ) {
-			
+
+			// Add shipping phone field
 			add_filter( 'woocommerce_shipping_fields', array( $this, 'add_shipping_phone_field' ), 5 );
 			add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_shipping_phone' ), 10 );
-			add_filter( 'woocommerce_admin_shipping_fields', array( $this, 'add_ashipping_field_to_admin_screen' ), 10 );
+			add_filter( 'woocommerce_admin_shipping_fields', array( $this, 'add_shipping_phone_to_admin_screen' ), 10 );
 			add_filter( 'woocommerce_order_formatted_shipping_address', array( $this, 'output_order_formatted_shipping_address_with_phone' ), 1, 2 );
 			add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_replacement_field_shipping_phone' ), 10, 2 );
 			add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_shipping_phone_to_formats' ), 10 );
-			
+			add_filter( 'wfc_substep_shipping_address_text', array( $this, 'add_shipping_phone_to_substep_text_format' ), 10 );
+
 			// Persist shipping phone to the user's session
 			add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_shipping_phone_session' ), 10 );
 			add_filter( 'default_checkout_shipping_phone', array( $this, 'change_default_shipping_phone_value' ), 10, 2 );
@@ -89,7 +91,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	/**
 	 * Add the shipping phone field to admin screen.
 	 */
-	public function add_ashipping_field_to_admin_screen( $shipping_fields ) {
+	public function add_shipping_phone_to_admin_screen( $shipping_fields ) {
 		$shipping_fields[ 'phone' ] = array(
 			'label'         => __( 'Phone', 'woocommerce' ),
 			'wrapper_class' => 'form-field-wide',
@@ -142,31 +144,11 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 
-	/**
-	 * Change default shipping phone value.
-	 */
-	public function change_default_shipping_phone_value( $value, $input ) {
-		// Try get the shipping phone from the session
-		$shipping_phone_session = $this->get_shipping_phone_session();
-		if ( $shipping_phone_session != null ) {
-			$shipping_phone = $shipping_phone_session;
-		}
-		
-		// Try to get shipping phone from the saved customer shipping address
-		if ( $shipping_phone == null ) {
-			$user_id = $this->get_user_id();
-			if ( $user_id > 0 ) {
-				$shipping_phone = get_user_meta( $user_id, 'shipping_phone', true );
-			}
-		}
-
-		return $shipping_phone;
-	}
 
 	/**
 	 * Get shipping phone values from session.
 	 *
-	 * @return  array  The shipping phone fields values saved to session.
+	 * @return  array  The shipping phone field values saved to session.
 	 */
 	public function get_shipping_phone_session() {
 		$shipping_phone = WC()->session->get( '_shipping_phone' );
@@ -200,6 +182,65 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 
+	/**
+	 * Get shipping phone values from session or database.
+	 *
+	 * @return  array  The current value for the shipping phone field.
+	 */
+	public function get_current_shipping_phone_value() {
+		// Try get the shipping phone from the session
+		$shipping_phone_session = $this->get_shipping_phone_session();
+		if ( $shipping_phone_session != null ) {
+			$shipping_phone = $shipping_phone_session;
+		}
+
+		// Try to get shipping phone from the saved customer shipping address
+		if ( $shipping_phone == null ) {
+			$user_id = $this->get_user_id();
+			if ( $user_id > 0 ) {
+				$shipping_phone = get_user_meta( $user_id, 'shipping_phone', true );
+			}
+		}
+
+		return $shipping_phone;
+	}
+
+
+
+	/**
+	 * Change default shipping phone value.
+	 */
+	public function change_default_shipping_phone_value( $value, $input ) {
+		$shipping_phone = $this->get_current_shipping_phone_value();
+
+		// If shipping phone value was not found return unchanged value
+		if ( $shipping_phone == null ) {
+			$shipping_phone = $value;
+		}
+
+		return $shipping_phone;
+	}
+
+
+
+	/**
+	 * Add replacement for shipping phone to address formats localisation.
+	 *
+	 * @param   array  $formats  Country address formats.
+	 */
+	public function add_shipping_phone_to_substep_text_format( $html ) {
+		$shipping_phone = $this->get_current_shipping_phone_value();
+
+		// Insert the phone field at in the text
+		if ( $shipping_phone != null && ! empty( $shipping_phone ) ) {
+			$shipping_phone_text = '<span class="wfc-step__substep-text-line">' . $shipping_phone . '</span></div>';
+			$html = str_replace( '</div>', $shipping_phone_text, $html );
+		}
+
+		return $html;
+	}
+
+
 
 	/**
 	 * Get the checkout fields args.
@@ -218,7 +259,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			'billing_state'         => array( 'autocomplete' => 'billing address-level1' ),
 			'billing_country'       => array( 'autocomplete' => 'billing country' ),
 			'billing_postcode'      => array( 'autocomplete' => 'billing postal-code' ),
-			
+
 			'shipping_first_name'   => array( 'priority' => 10, 'autocomplete' => 'shipping given-name' ),
 			'shipping_last_name'    => array( 'priority' => 20, 'autocomplete' => 'shipping family-name' ),
 			'shipping_phone'        => array( 'priority' => 30, 'autocomplete' => 'shipping tel', 'class' => array( 'form-row-first' ) ),
