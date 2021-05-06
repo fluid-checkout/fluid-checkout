@@ -1704,7 +1704,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @return  mixed  `true` if the selected shipping country is also available for billing country, `false` if the shipping country is not allowed for billing, and `null` if the shipping country is not set.
 	 */
-	public function is_shipping_country_allowed_for_billing() {		
+	public function is_shipping_country_allowed_for_billing() {
 		// Get shipping value from customer data
 		$customer = WC()->customer;
 		$shipping_country = $customer->get_shipping_country();
