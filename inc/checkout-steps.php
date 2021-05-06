@@ -130,7 +130,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add page body class for feature detection.
 	 *
-     * @param array $classes Classes for the body element.
+		 * @param array $classes Classes for the body element.
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
@@ -1705,15 +1705,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  mixed  `true` if the selected shipping country is also available for billing country, `false` if the shipping country is not allowed for billing, and `null` if the shipping country is not set.
 	 */
 	public function is_shipping_country_allowed_for_billing() {
-		// Get checkout object
-		$checkout = WC()->checkout();
-		
-		// Get shipping value from saved checkout data
-		$shipping_country = $checkout->get_value( 'shipping_country' );
+		// Get shipping value from customer data
+		$customer = WC()->customer;
+		$shipping_country = $customer->get_shipping_country();
 		
 		// Use posted data when doing checkout update
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-			$shipping_country = isset( $_POST['s_country'] ) ? wc_clean( wp_unslash( $_POST['s_country'] ) ) : null;
+			// Try get value from the post_data
+			if ( isset( $_POST['s_country'] ) ) {
+				$shipping_country = isset( $_POST['s_country'] ) ? wc_clean( wp_unslash( $_POST['s_country'] ) ) : null;
+			}
+			// Try get value from the form data sent on process checkout
+			else if ( isset( $_POST['shipping_country'] ) ) {
+				$shipping_country = isset( $_POST['shipping_country'] ) ? wc_clean( wp_unslash( $_POST['shipping_country'] ) ) : null;
+			}
 		}
 
 		// Shipping country is defined, return bool
@@ -1798,7 +1803,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping();
 		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked();
 
-		// Update values for billing same as shipping
+		// Save checked state of the billing same as shipping field to the session,
+		// for the case the shipping country changes again and the new value is also accepted for billing.
 		$this->set_billing_same_as_shipping_session( $is_billing_same_as_shipping_checked );
 		
 		// Maybe set post data for billing same as shipping
