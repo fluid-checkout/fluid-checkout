@@ -22,34 +22,48 @@
 	var _settings = { };
 	var _defaults = {
 		flyoutWrapperSelector: '[data-flyout]',
-		flyoutElementSelector: '[data-flyout-content]',
+		flyoutContentSelector: '[data-flyout-content]',
 		toggleButtonSelector: '[data-flyout-toggle]',
 		openButtonSelector: '[data-flyout-open]',
 		closeButtonSelector: '[data-flyout-close]',
 		overlaySelector: '[data-flyout-overlay]',
 		flyoutTogglePassActionSelector: '[data-flyout-pass-action], .js-flyout-pass-action',
+		autoFocusSelector: '[data-autofocus]',
 
 		flyoutToggleClassSelector: '.js-flyout-toggle',
 		flyoutClassTogglePrefix: 'js-flyout-target-',
 		
 		idPrefix: 'flyout-block',
+		headingsSelector: 'h1, h2, h3, h4, h5, h6, [role="heading"]',
 		
 		bodyHasFlyoutClass: 'has-flyout',
 		bodyHasFlyoutOpenClass: 'has-flyout--open',
 		isActivatedClass: 'is-activated',
 		isOpenClass: 'is-open',
-		openAnimationClass: 'slide-in-up',
-		closeAnimationClass: 'slide-out-down',
+		openAnimationClass: 'fade-in-up',
+		closeAnimationClass: 'fade-out-down',
 		
 		targetElementAttribute: 'data-flyout-target',
 		openAnimationClassAttribute: 'data-flyout-open-animation-class',
 		closeAnimationClassAttribute: 'data-flyout-close-animation-class',
+		manualFocusAttribute: 'data-flyout-manual-focus',
+		descriptionAttribute: 'data-flyout-description',
+		autoFocusAttribute: 'data-autofocus',
+		focusableElementsSelector: 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), details, summary, iframe, object, embed, [contenteditable] [tabindex]:not([tabindex="-1"])',
+		
+		flyoutRoleAttribute: 'data-flyout-role',
 
 		overlayTemplate: '<div class="flyout-overlay" data-flyout-overlay></div>',
 	};
 	var _states = {
 		OPEN: 'open',
 		CLOSED: 'closed',
+	}
+	var _key = {
+		TAB: 'Tab',
+		ENTER: 'Enter',
+		ESC: 'Escape',
+		SPACE: ' ',
 	}
 
 
@@ -95,6 +109,22 @@
 
 		return extended;
 	};
+
+
+	/**
+	 * Gets keyboard-focusable elements within a specified element
+	 *
+	 * @param   HTMLElement  element  The element to search within. Defaults to the `document` root element.
+	 *
+	 * @return  NodeList              All focusable elements withing the element passed in.
+	 */
+	var getFocusableElements = function( element ) {
+		// Set element to `document` root if not passed in
+		if ( ! element ) { element = document; }
+		
+		// Get elements that are keyboard-focusable, but might be `disabled`
+		return element.querySelectorAll( _settings.focusableElementsSelector );
+	}
 
 
 
@@ -193,40 +223,41 @@
 	/**
 	 * Handle keypress event.
 	 */
-	var handleKeyDown = function(e) {
-		if ( e.keyCode == 27 || e.which == 27 || e.key == 'Escape' || e.key == 'Esc' ) {
+	var handleKeyDown = function( e ) {
+		// Should do nothing if the default action has been cancelled
+		if ( e.defaultPrevented ) { return; }
+
+		// Close all flyout blocks if `ESC` was pressed
+		if ( e.key == _key.ESC ) {
 			_publicMethods.closeAll();
 		}
+
+		// ENTER on flyout trigger
+		if ( ( e.key == _key.ENTER || e.key == _key.SPACE ) && e.target.closest( _settings.triggerSelectors ) ) {
+			// Similate click
+			handleClick( e );
+		}
 	};
-	
+
 
 
 	/**
-	 * Finish Initialize
+	 * Set the `inert` property of the sibling elements.
+	 *
+	 * @param   HTMLElement  element  The element which to maintain the focus in, all siblings will marked with the value of the param `inert` except this one.
+	 * @param   bool         inert    Boolean value to set to the `inert` property, `true` will make siblings inert, `false` will release the siblings.
 	 */
-	var finishInit = function( options ) {
-		// Merge with general settings with options
-		_settings = extend( _defaults, options );
+	var setSiblingsInert = function( element, inert ) {
+		// Release all elements in case of an invalid value for the `inert` param.
+		if ( typeof inert !== 'boolean' ) { inert = false; }
 
-		// Iterate elements
-		var elements = document.querySelectorAll( _settings.flyoutWrapperSelector );
-		for ( var i = 0; i < elements.length; i++ ) {
-			_publicMethods.initializeElement( elements[ i ] );
+		// Make all other elements `inert`
+		var siblings = element.parentNode ? element.parentNode.childNodes : null;
+		if ( siblings ) {
+			Array.from( siblings ).forEach( function( child ) {
+				if ( child != element ) { child.inert = inert; }
+			} );
 		}
-
-		// Add flyout overlay
-		var overlayElement = document.createElement('div');
-		overlayElement.innerHTML = _settings.overlayTemplate.trim();
-		document.body.appendChild( overlayElement.childNodes[0] );
-
-		// Add event listeners
-		document.addEventListener( 'click', handleClick );
-		document.addEventListener( 'keydown', handleKeyDown, true );
-		
-		// Add body class
-		document.body.classList.add( _settings.bodyHasFlyoutClass );
-
-		_hasInitialized = true;
 	}
 
 
@@ -252,15 +283,48 @@
 		// Bail if manager invalid
 		if ( ! manager ) return false;
 
+		// Save element with focus
+		manager.previousActiveElement = document.activeElement;
+
 		// Set element open then play openning animation
 		AnimateHelper.doThenAnimate( element, manager.settings.openAnimationClass, function() {
 			// Set manager state
 			manager.state = _states.OPEN;
 
+			// Maybe save `hidden` attribute on the flyout element
+			manager.wasHidden = manager.element.hasAttribute( 'hidden' );
+			manager.element.removeAttribute( 'hidden' );
+
 			// Set classes
 			manager.element.classList.add( manager.settings.isOpenClass );
-			document.body.classList.add( manager.settings.bodyHasFlyoutOpenClass );
-			document.body.classList.add( manager.settings.bodyHasFlyoutOpenClass + '-' + manager.element.id );
+			document.body.classList.add( manager.settings.bodyHasFlyoutOpenClass,manager.settings.bodyHasFlyoutOpenClass + '-' + manager.element.id );
+
+			// Maybe skip setting focus
+			if ( ! manager.element.hasAttribute( manager.settings.manualFocusAttribute ) ) {
+				// Set focus element as the dialog itself
+				var focusElement = manager.contentElement;
+				
+				// Maybe set focus to child element marked as auto-focus
+				var autofocusChild = manager.element.querySelector( manager.settings.autoFocusSelector );
+				if ( autofocusChild ) {
+					focusElement = autofocusChild;
+				}
+				// Maybe set focus to first focusable element
+				else if ( manager.element.matches( manager.settings.autoFocusSelector ) ) {
+					var focusableElements = Array.from( getFocusableElements( manager.element ) );
+					focusableElements = focusableElements.filter( function( maybeFocusable ) { return ! maybeFocusable.matches( manager.settings.closeButtonSelector ); } );
+
+					if ( focusableElements.length > 0 ) {
+						focusElement = focusableElements[0];
+					}
+				}
+
+				// Set focus
+				focusElement.focus();
+			}
+
+			// Make all other elements `inert`
+			setSiblingsInert( manager.element, true );
 		} );
 	}
 
@@ -275,7 +339,7 @@
 		if ( ! manager ) return false;
 
 		// Play closing animation then set element closed
-		AnimateHelper.doThenAnimate( element, manager.settings.closeAnimationClass, function() {
+		AnimateHelper.animateThenDo( element, manager.settings.closeAnimationClass, function() {
 			// Set manager state
 			manager.state = _states.CLOSED;
 
@@ -283,9 +347,23 @@
 			manager.element.classList.remove( manager.settings.isOpenClass );
 			document.body.classList.remove( manager.settings.bodyHasFlyoutOpenClass + '-' + manager.element.id );
 
+			// Maybe set `hidden` attribute again
+			if ( manager.wasHidden ) {
+				manager.element.setAttribute( 'hidden', '' );
+			}
+			manager.element.wasHidden = undefined;
+
 			// Maybe remove body class for open elements
 			if ( ! _publicMethods.hasAnyElementOpen() ) {
 				document.body.classList.remove( manager.settings.bodyHasFlyoutOpenClass );
+			}
+
+			// Release all other elements, set `inert` to false
+			setSiblingsInert( manager.element, false );
+
+			// Set focus back to the element previously with focus
+			if ( manager.previousActiveElement ) {
+				manager.previousActiveElement.focus();
 			}
 		} );
 	}
@@ -347,6 +425,42 @@
 		
 		return false;
 	}
+
+
+
+	/**
+	 * Initialize a trigger element.
+	 */
+	_publicMethods.initializeTrigger = function( trigger ) {
+		// Enable the trigger element
+		trigger.removeAttribute( 'disabled' );
+		trigger.removeAttribute( 'aria-hidden' );
+		
+		// Add the element to the natural tab order
+		trigger.setAttribute( 'tabindex', '0' );
+
+		// Set trigger role to `button`
+		if ( trigger.tagName.toUpperCase() != 'BUTTON' ) {
+			trigger.setAttribute( 'role', 'button' );
+		}
+
+		// Maybe remove the `href` attribute to avoid right-click to open link on new tab
+		var triggerHref = trigger.getAttribute( 'href' );
+		if ( triggerHref != undefined && triggerHref != '' ) {
+			
+			// Move selector to the target attribute
+			var targetElement = triggerHref && triggerHref != '#' && triggerHref != '' ? document.querySelector( triggerHref ) : undefined;
+			if ( targetElement ) {
+				trigger.setAttribute( _settings.targetElementAttribute, triggerHref );
+			}
+
+			// Only remove the `href` attribute if the element has a target
+			if ( trigger.getAttribute( _settings.targetElementAttribute ) ) {
+				trigger.removeAttribute( 'href' );
+			}
+
+		}
+	}
 	
 
 
@@ -363,12 +477,49 @@
 		if ( ! manager.element.id || manager.element.id == '' ) {
 			manager.element.id = manager.settings.idPrefix + '-' + _publicMethods.managers.length;
 		}
+
+		// Get the content element
+		manager.contentElement = manager.element.querySelector( manager.settings.flyoutContentSelector );
+
+		// Set content element as focusable
+		manager.contentElement.setAttribute( 'tabindex', 0 );
 		
 		// Try get open/close animation classes from attributes
 		var openAnimationAttrValue = manager.element.getAttribute( manager.settings.openAnimationClassAttribute );
 		var closeAnimationAttrValue = manager.element.getAttribute( manager.settings.closeAnimationClassAttribute );
 		manager.settings.openAnimationClass = openAnimationAttrValue && openAnimationAttrValue != '' ? openAnimationAttrValue : _settings.openAnimationClass;
 		manager.settings.closeAnimationClass = closeAnimationAttrValue && closeAnimationAttrValue != '' ? closeAnimationAttrValue : _settings.closeAnimationClass;
+
+		// Set flyout content `role` attribute from data attributes
+		var roleAttrValue = manager.element.getAttribute( manager.settings.flyoutRoleAttribute ) == 'alert' || manager.element.getAttribute( manager.settings.flyoutRoleAttribute ) == 'alertdialog' ? 'alertdialog' : 'dialog';
+		manager.contentElement.setAttribute( 'role', roleAttrValue );
+
+		// Set flyout accessible name
+		var ariaLabelValue = manager.element.getAttribute( 'aria-label' );
+		var ariaLabelledbyValue = manager.element.getAttribute( 'aria-labelledby' );
+		if ( ( ! ariaLabelValue || ariaLabelValue == '' ) && ( ! ariaLabelledbyValue || ariaLabelledbyValue == '' ) ) {
+			var firstHeading = manager.contentElement.querySelector( manager.settings.headingsSelector );
+			
+			// Set `aria-labelled` If a heading element exists inside the flyout content element
+			if ( firstHeading ) {
+				var headingId = firstHeading.id != undefined && firstHeading.id != '' ? firstHeading.id : manager.element.id + '-heading';
+				firstHeading.id = headingId;
+				manager.contentElement.setAttribute( 'aria-labelledby', headingId );
+			}
+		}
+
+		// Set flyout accessible description
+		var ariaDescribedbyValue = manager.element.getAttribute( 'aria-describedby' );
+		if ( ! ariaDescribedbyValue || ariaDescribedbyValue == '' ) {
+			var descriptionElement = manager.contentElement.querySelector( '[' + manager.settings.descriptionAttribute + ']' );
+			
+			// If a description element exists inside the flyout content element
+			if ( descriptionElement ) {
+				var descriptionId = descriptionElement.id != undefined && descriptionElement.id != '' ? descriptionElement.id : manager.element.id + '-description';
+				descriptionElement.id = descriptionId;
+				manager.contentElement.setAttribute( 'aria-describedby', descriptionId );
+			}
+		}
 		
 		// Set element as activated
 		manager.isActivated = true;
@@ -378,20 +529,59 @@
 		_publicMethods.managers.push( manager );
 	}
 
+
+
+	/**
+	 * Finish Initialize
+	 */
+	var finishInit = function( options ) {
+		// Merge with general settings with options
+		_settings = extend( _defaults, options );
+
+		// Set dynamic settings value
+		_settings.triggerSelectors = _settings.toggleButtonSelector + ', ' + _settings.openButtonSelector + ', ' + _settings.closeButtonSelector;
+
+		// Iterate elements
+		var elements = document.querySelectorAll( _settings.flyoutWrapperSelector );
+		for ( var i = 0; i < elements.length; i++ ) {
+			_publicMethods.initializeElement( elements[ i ] );
+		}
+
+		// Iterate trigger elements
+		var triggers = document.querySelectorAll( _settings.triggerSelectors );
+		for ( var i = 0; i < triggers.length; i++ ) {
+			_publicMethods.initializeTrigger( triggers[ i ] );
+		}
+
+		// Add flyout overlay
+		var overlayElement = document.createElement('div');
+		overlayElement.innerHTML = _settings.overlayTemplate.trim();
+		document.body.appendChild( overlayElement.childNodes[0] );
+
+		// Add event listeners
+		document.addEventListener( 'click', handleClick );
+		document.addEventListener( 'keydown', handleKeyDown, true );
+		
+		// Add body class
+		document.body.classList.add( _settings.bodyHasFlyoutClass );
+
+		_hasInitialized = true;
+	}
+
 	
 
 	/**
-	 * Initialize Script
+	 * Initialize Script.
 	 */
 	_publicMethods.init = function( options ) {
 		if ( _hasInitialized ) return;
 
-		// Finish initialization, maybe load dependencies first
-		if ( window.AnimateHelper ) {
+		// Finish initialization, maybe load dependencies first (AnimateHelper, and Inert Polyfill)
+		if ( window.AnimateHelper && Element.prototype.hasOwnProperty( 'inert' ) ) {
 			finishInit( options );
 		}
 		else if( window.RequireBundle ) {
-			RequireBundle.require( [ 'animate-helper' ], function() { finishInit( options ); } );
+			RequireBundle.require( [ 'animate-helper', 'polyfill-inert' ], function() { finishInit( options ); } );
 		}
 	};
 
