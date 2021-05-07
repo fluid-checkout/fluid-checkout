@@ -356,24 +356,14 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
       padding: 5px 50px; } }
 
 .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
-  top: 60px;
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
-  @media (min-width: 1000px) {
-    .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
-      top: 0; } }
 
 .admin-bar .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
-  top: calc( 46px + 60px); }
+  transform: translateY(46px); }
   @media screen and (min-width: 783px) {
     .admin-bar .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
-      top: calc( 32px + 60px); } }
-  @media screen and (min-width: 783px) {
-    .admin-bar .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
-      top: calc( 32px + 60px); } }
-  @media (min-width: 1000px) {
-    .admin-bar .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
-      top: 32px; } }
+      transform: translateY(32px); } }
 
 .wfc-progress-bar__count {
   margin-bottom: 5px;

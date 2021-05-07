@@ -33,9 +33,10 @@
 		
 		positionAttribute: 'data-sticky-position',
 		thresholdAttribute: 'data-sticky-threshold',
+		stickyRelativeToAttribute: 'data-sticky-relative-to',
 		staticAtEndAttribute: 'data-sticky-static-at-end',
 		containerAttribute: 'data-sticky-container',
-		
+
 		position: 'top', // Accepted values: `top`, `bottom`
 		threshold: 0,
 	};
@@ -105,8 +106,31 @@
 
 
 	/**
-	 * Maybe change visibility of the variation switcher
-	 * depending on container's position.
+	 * Check if the element is considered visible. Does not consider the CSS property `visibility: hidden;`.
+	 */
+	var isVisible = function( element ) {
+		return !!( element.offsetWidth || element.offsetHeight || element.getClientRects().length );
+	}
+
+
+
+	/**
+	 * Check if the element is considered sticky.
+	 */
+	var isStickyPosition = function( element ) {
+		// Try checking for the sticky class
+		if ( element.closest( '.' + _settings.isStickyClass ) ) { return true; }
+
+		// Try checking for computed styles (slower)
+		// Used for elements set to sticky position by other means other than using sticky-states
+		var elementComputedPosition = window.getComputedStyle( element ).position;
+		return elementComputedPosition == 'fixed' || elementComputedPosition == 'sticky';
+	}
+
+
+
+	/**
+	 * Maybe change state of sticky elements.
 	 */
 	var maybeChangeState = function() {
 		var currentScrollPosition = window.pageYOffset || document.body.scrollTop;
@@ -115,14 +139,21 @@
 		for ( var i = 0; i < _publicMethods.managers.length; i++ ) {
 			var manager = _publicMethods.managers[i];
 			var isSticky = currentScrollPosition >= manager.settings.threshold;
+			var relativeHeight = 0;
 			var isEndThreshold = currentScrollPosition >= manager.settings.endThreshold;
 			var isStaticAtEnd = manager.stickyElement.hasAttribute( manager.settings.staticAtEndAttribute );
+
+			// Maybe set isSticky value based on the relative element
+			if ( manager.relativeElement && isVisible( manager.relativeElement ) && isStickyPosition( manager.relativeElement ) ) {
+ 				relativeHeight = manager.relativeElement.getBoundingClientRect().height;
+				isSticky = currentScrollPosition >= ( manager.settings.threshold - relativeHeight );
+			}
 			
 			// Sticky
 			if ( isSticky && ! isEndThreshold ) {
 				var stickyWidth = window.getComputedStyle( manager.innerElement ).width;
 				var containerHeight = window.getComputedStyle( manager.stickyElement ).height;
-				manager.innerElement.style.top = '';
+				manager.innerElement.style.top = relativeHeight > 0 ? relativeHeight + 'px' : '';
 				manager.innerElement.style.width = stickyWidth; // variable already has unit `px`
 				manager.stickyElement.style.height = containerHeight; // variable already has unit `px`
 				manager.stickyElement.style.position = '';
@@ -161,7 +192,7 @@
 
 
 	/**
-	 * Calculate threshold values
+	 * Recalculate threshold values.
 	 */
 	_publicMethods.resetStickyLimits = function( manager ) {
 		var windowHeight = Math.max( document.documentElement.clientHeight, window.innerHeight || 0 );
@@ -175,6 +206,13 @@
 		// Calculate threshold for elements sticky to the bottom
 		if ( manager.settings.position == 'bottom' ) {
 			manager.settings.threshold = Math.max( manager.settings.threshold - windowHeight + elementRect.height, 0 );
+		}
+
+		// Maybe get relativeElement set via attribute
+		var relativeElementSelector = manager.stickyElement.getAttribute( manager.settings.stickyRelativeToAttribute );
+		if ( relativeElementSelector != null && relativeElementSelector != '' ) {
+			// Try to find the relative sticky element in the page
+			manager.relativeElement = document.querySelector( relativeElementSelector );
 		}
 
 		// Use the parent element as the container element
@@ -215,7 +253,7 @@
 
 
 	/**
-	 * Get manager instance for element
+	 * Get manager instance for element.
 	 */
 	_publicMethods.getInstance = function ( element ) {
 		var instance;
@@ -229,7 +267,7 @@
 
 
 	/**
-	 * Initialize an sticky element
+	 * Initialize an sticky element.
 	 */
 	_publicMethods.initializeElement = function( stickyElement ) {
 		var manager = {};
@@ -251,14 +289,14 @@
 		manager.isActivated = true;
 		manager.stickyElement.classList.add( manager.settings.isActivatedClass );
 		
-		// Add slider manager to public methods
+		// Add manager to public methods
 		_publicMethods.managers.push( manager );
 	}
 
 	
 
 	/**
-	 * Initialize
+	 * Initialize.
 	 */
 	_publicMethods.init = function( options ) {
 		if ( _hasInitialized ) return;

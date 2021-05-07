@@ -678,7 +678,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$current_step
 		);
 		?>
-		<div class="wfc-progress-bar" data-progress-bar data-sticky-states data-sticky-container=".wfc-inside">
+		<div class="wfc-progress-bar" data-progress-bar data-sticky-states data-sticky-relative-to=".wfc-checkout-header" data-sticky-container=".wfc-inside">
 			<div class="wfc-progress-bar__inner" data-sticky-states-inner>
 
 				<div class="wfc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html ?></div>

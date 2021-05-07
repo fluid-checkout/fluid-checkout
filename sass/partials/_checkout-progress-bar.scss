@@ -16,25 +16,16 @@
 	@media (#{$bp-larger-than-desktop}) { padding: $checkout-progress-bar-padding-vertical $container-spacing-desktop; }
 }
 .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
-	top: #{ $checkout-header-height };
 	background-color: $white;
 	box-shadow: $checkout-progress-bar-box-shadow;
-	
-	@media (#{$bp-larger-than-desktop}) { top: 0; }
 }
 // With admin bar
 .admin-bar .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
-	top: calc( 46px + #{ $checkout-header-height } );
+	transform: translateY( 46px );
 	
 	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
-		top: calc( 32px + #{ $checkout-header-height } );
+		transform: translateY( 32px );
 	}
-
-	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
-		top: calc( 32px + #{ $checkout-header-height } );
-	}
-
-	@media (#{$bp-larger-than-desktop}) { top: 32px; }
 }
 
 
