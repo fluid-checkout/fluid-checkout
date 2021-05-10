@@ -14,6 +14,7 @@
 	@media (#{$bp-larger-than-desktop}) { padding: $checkout-progress-bar-padding-vertical $container-spacing-desktop; }
 }
 .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
+	z-index: z( 'float-element' ) - 2; // Needed to show behing the order summary flyout
 	background-color: $white;
 	box-shadow: $checkout-progress-bar-box-shadow;
 }

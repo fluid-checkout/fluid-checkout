@@ -195,9 +195,6 @@
 	#FLYOUT ORDER SUMMARY
 \*------------------------------------*/
 .wfc-wrapper .wfc-checkout-order-review[data-flyout] {
-	padding-top: $checkout-header-height;
-	padding-bottom: 0;
-
 	@media (#{$bp-larger-than-desktop}) {
 		position: static;
 		padding-top: $global-spacing;
@@ -215,12 +212,29 @@
 
 	@media (#{$bp-larger-than-desktop}) { padding-top: $global-spacing; }
 }
-.wfc-wrapper .wfc-checkout-order-review[data-flyout].is-activated {
-	z-index: z( 'float-element' );
+.wfc-wrapper .wfc-checkout-order-review[data-flyout].is-activated {	
+	@media (#{$bp-larger-than-desktop}) {
+		display: block;
+	}
 }
+
+.wfc-wrapper .wfc-checkout-order-review[data-flyout].is-activated.is-open {
+	z-index: z( 'float-element' );
+	margin: 0;
+	padding: $checkout-header-height 0 0;
+}
+// With admin bar
+.admin-bar .wfc-wrapper .wfc-checkout-order-review[data-flyout].is-activated.is-open {
+	padding: calc( #{ $checkout-header-height } + 46px) 0 0;
+}
+
+
+
 .has-flyout.has-flyout--open-wfc-checkout-order-review .flyout-overlay {
 	z-index: z( 'float-element' ) - 1;
 }
+
+
 
 .wfc-wrapper .wfc-checkout-order-review[data-flyout] .wfc-checkout-order-review__inner {
 	
