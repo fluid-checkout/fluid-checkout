@@ -53,7 +53,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), 100 );
 
 		// Checkout steps
-		add_action( 'wfc_checkout_before_steps', array( $this, 'output_checkout_progress_bar' ), 10 );
+		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 1 );
 		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_after', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
@@ -678,7 +678,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$current_step
 		);
 		?>
-		<div class="wfc-progress-bar" data-progress-bar data-sticky-states data-sticky-relative-to=".wfc-checkout-header" data-sticky-container=".wfc-inside">
+		<div class="wfc-progress-bar" data-progress-bar data-sticky-states data-sticky-relative-to=".wfc-checkout-header" data-sticky-container="div.checkout">
 			<div class="wfc-progress-bar__inner" data-sticky-states-inner>
 
 				<div class="wfc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html ?></div>

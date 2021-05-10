@@ -14,6 +14,12 @@ form.woocommerce-checkout {
 	margin: 0;
 }
 
+form.woocommerce-checkout {
+	clear: both;
+}
+form.woocommerce-checkout:after {
+	@include clearfix();
+}
 
 
 body.woocommerce-checkout.has-checkout-header .content-area {
@@ -41,8 +47,8 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 	@media (#{$bp-larger-than-desktop-extra-large}) { max-width: $container-width-desktop-extra-large; }
 
 	// padding
-	padding: 0 $container-spacing-mobile $global-spacing-medium;
-	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet $global-spacing-medium; }
+	padding: #{ $checkout-header-height + $global-spacing-small } $container-spacing-mobile $global-spacing-medium;
+	@media (#{$bp-larger-than-tablet}) { padding: #{ $checkout-header-height + $global-spacing-small } $container-spacing-tablet $global-spacing-medium; }
 	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop $global-spacing-medium; }
 	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium $global-spacing-medium; }
 	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large $global-spacing-medium; }
@@ -58,6 +64,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 \*------------------------------------*/
 body:not( .has-checkout-must-login-notice ) .wfc-checkout-header,
 body:not( .has-checkout-must-login-notice ) .wfc-checkout-notices,
+body:not( .has-checkout-must-login-notice ) .wfc-progress-bar,
 body:not( .has-checkout-must-login-notice ) .woocommerce-NoticeGroup-checkout,
 body:not( .has-checkout-must-login-notice ) .wfc-inside {
 	@media (#{$bp-larger-than-desktop}) {

@@ -29,13 +29,6 @@
 	}
 }
 
-.wfc-checkout-header + .wfc-checkout-notices,
-.wfc-checkout-header + form.woocommerce-checkout {
-	@media (#{$bp-smaller-than-desktop}) {
-		padding-top: #{ $checkout-header-height + $global-spacing-small };
-	}
-}
-
 .wfc-checkout-header__inner {
 	position: relative;
 	display: flex;

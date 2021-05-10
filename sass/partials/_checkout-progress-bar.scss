@@ -2,14 +2,12 @@
   #CHECKOUT PROGRESS BAR
 \*------------------------------------*/
 
-.wfc-progress-bar {
+.wfc-progress-bar .wfc-progress-bar__inner {
 	// margin
 	margin: 0 #{ - $container-spacing-mobile };
 	@media (#{$bp-larger-than-tablet}) { margin: 0 #{ - $container-spacing-tablet }; }
 	@media (#{$bp-larger-than-desktop}) { margin: 0 #{ - $container-spacing-desktop }; }
-}
-
-.wfc-progress-bar .wfc-progress-bar__inner {
+	
 	// padding
 	padding: $checkout-progress-bar-padding-vertical $container-spacing-mobile;
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-progress-bar-padding-vertical $container-spacing-tablet; }
@@ -26,6 +24,15 @@
 	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
 		transform: translateY( 32px );
 	}
+}
+
+
+
+
+
+.wfc-progress-bar + .wfc-checkout-notices,
+.wfc-progress-bar + form.woocommerce-checkout {
+	padding-top: $global-spacing-small;
 }
 
 
