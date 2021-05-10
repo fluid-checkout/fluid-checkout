@@ -54,8 +54,10 @@
 
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
 
+		scrollOffsetSelector: '.wfc-checkout-header',
 		scrollBehavior: 'smooth',
 		scrollOffset: 0,
+		
 	}
 
 
@@ -229,6 +231,9 @@
 
 
 
+	/**
+	 * Update the progress bar state.
+	 */
 	var updateProgressBar = function() {
 		// Get checkout wrapper
 		var wrapper = document.querySelector( _settings.wrapperSelector );
@@ -283,6 +288,49 @@
 
 
 	/**
+	 * Change scroll position after changing steps.
+	 *
+	 * @param   HTMLElement  stepElement      The element of the step that was just completed.
+	 * @param   HTMLElement  nextStepElement  The element of the next step.
+	 */
+	var scrollAfterStepChange = function( stepElement, nextStepElement ) {
+		// Get checkout wrapper
+		var wrapper = document.querySelector( _settings.wrapperSelector );
+
+		var stickyElementsOffset = 0;
+		
+		// Maybe add height of the progress bar to scroll position
+		var progressBarElement = wrapper.querySelector( _settings.progressBarSelector );
+		if ( progressBarElement ) {
+			var height = progressBarElement.getBoundingClientRect().height;
+			stickyElementsOffset += height;
+		}
+		
+		// Maybe add sticky elements height to scroll position
+		if ( window.StickyStates ) {
+			var maybeStickyElements = document.querySelectorAll( _settings.scrollOffsetSelector );
+			if ( maybeStickyElements && maybeStickyElements.length > 0 ) {
+				for ( var i = 0; i < maybeStickyElements.length; i++ ) {
+					var stickyElement = maybeStickyElements[i];
+					if ( StickyStates.isStickyPosition( stickyElement ) ) {
+						var height = stickyElement.getBoundingClientRect().height;
+						stickyElementsOffset += height;
+					}
+				}
+			}
+		}
+
+		// Scroll to the top of the collapsed step
+		var stepElementOffset = getOffsetTop( stepElement ) + ( _settings.scrollOffset * -1 ) + ( stickyElementsOffset * -1 );
+		window.scrollTo( {
+			top: stepElementOffset,
+			behavior: _settings.scrollBehavior,
+		} );
+	}
+
+
+
+	/**
 	 * Collapse the substep fields, and expand the substep values in text format for review.
 	 *
 	 * @param   HTMLElement  substepElement  Substep element to change the state of.
@@ -305,8 +353,6 @@
 
 		// Set current step as complete
 		stepElement.setAttribute( _settings.stepCompleteAttribute, '' );
-
-		// TODO: Use collapsible block to collapse/expand steps
 
 		// Collapse substeps fields and display step in text format
 		var substepElements = stepElement.querySelectorAll( _settings.substepSelector );
@@ -331,17 +377,11 @@
 		// Unset `current` from the step that is closing
 		stepElement.removeAttribute( _settings.stepCurrentAttribute );
 
-		// TODO: Use collapsible block to collapse/expand steps
-
 		// Update progress bar
 		updateProgressBar();
 
-		// Scroll to the top of the collapsed step
-		var stepElementOffset = getOffsetTop( stepElement ) + ( _settings.scrollOffset * -1 );
-		window.scrollTo( {
-			top: stepElementOffset,
-			behavior: _settings.scrollBehavior,
-		} );
+		// Change scroll position after moving to next step
+		scrollAfterStepChange( stepElement, nextStepElement );
 
 		// Trigger update checkout
 		if ( _hasJQuery ) {

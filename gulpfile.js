@@ -95,10 +95,11 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 		settings.nodePath + 'require-bundle-js/dist/require-bundle.js',
 		
 		settings.nodePath + 'animate-helper/dist/animate-helper.js',
-		settings.nodePath + 'flyout-block/dist/flyout-block.js',
 		settings.nodePath + 'collapsible-block/dist/collapsible-block.js',
+		settings.nodePath + 'flyout-block/dist/flyout-block.js',
 		settings.nodePath + 'mailcheck/src/mailcheck.js',
 		settings.nodePath + 'sticky-states/dist/sticky-states.js',
+		settings.nodePath + 'wicg-inert/dist/inert.js',
 	])
 	.pipe(rename({suffix: settings.assetsVersion}))
 	.pipe(gulp.dest('./js/lib/')) // save .js

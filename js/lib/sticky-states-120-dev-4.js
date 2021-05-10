@@ -117,9 +117,9 @@
 	/**
 	 * Check if the element is considered sticky.
 	 */
-	var isStickyPosition = function( element ) {
+	 _publicMethods.isStickyPosition = function( element ) {
 		// Try checking for the sticky class
-		if ( element.closest( '.' + _settings.isStickyClass ) ) { return true; }
+		if ( element.matches( '.' + _settings.isStickyClass ) ) { return true; }
 
 		// Try checking for computed styles (slower)
 		// Used for elements set to sticky position by other means other than using sticky-states
@@ -144,7 +144,7 @@
 			var isStaticAtEnd = manager.stickyElement.hasAttribute( manager.settings.staticAtEndAttribute );
 
 			// Maybe set isSticky value based on the relative element
-			if ( manager.relativeElement && isVisible( manager.relativeElement ) && isStickyPosition( manager.relativeElement ) ) {
+			if ( manager.relativeElement && isVisible( manager.relativeElement ) && _publicMethods.isStickyPosition( manager.relativeElement ) ) {
  				relativeHeight = manager.relativeElement.getBoundingClientRect().height;
 				isSticky = currentScrollPosition >= ( manager.settings.threshold - relativeHeight );
 			}

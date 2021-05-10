@@ -444,21 +444,19 @@
 			trigger.setAttribute( 'role', 'button' );
 		}
 
-		// Maybe remove the `href` attribute to avoid right-click to open link on new tab
+		// Maybe move selector to the target attribute
 		var triggerHref = trigger.getAttribute( 'href' );
-		if ( triggerHref != undefined && triggerHref != '' ) {
-			
+		if ( triggerHref != undefined && triggerHref != '' && triggerHref != '#' && triggerHref.indexOf( '#' ) == 0 ) {
 			// Move selector to the target attribute
-			var targetElement = triggerHref && triggerHref != '#' && triggerHref != '' ? document.querySelector( triggerHref ) : undefined;
+			var targetElement = document.querySelector( triggerHref );
 			if ( targetElement ) {
 				trigger.setAttribute( _settings.targetElementAttribute, triggerHref );
 			}
+		}
 
-			// Only remove the `href` attribute if the element has a target
-			if ( trigger.getAttribute( _settings.targetElementAttribute ) ) {
-				trigger.removeAttribute( 'href' );
-			}
-
+		// Remove the `href` attribute if the element has a flyout target
+		if ( trigger.getAttribute( _settings.targetElementAttribute ) ) {
+			trigger.removeAttribute( 'href' );
 		}
 	}
 	

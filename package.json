@@ -31,11 +31,11 @@
   "dependencies": {
     "collapsible-block": "^1.1.1",
     "fluidweb-updater": "git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git",
-    "flyout-block": "^1.1.1",
+    "flyout-block": "^1.1.2",
     "load-json-file": "^6.2.0",
     "mailcheck": "^1.1.1",
     "require-bundle-js": "^1.0.0",
     "require-polyfills": "^1.0.0",
-    "sticky-states": "^1.0.1"
+    "sticky-states": "^1.0.3"
   }
 }
