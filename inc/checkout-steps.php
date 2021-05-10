@@ -53,7 +53,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), 100 );
 
 		// Checkout steps
-		add_action( 'wfc_checkout_before_steps', array( $this, 'output_checkout_progress_bar' ), 10 );
+		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 1 );
 		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_after', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
@@ -678,7 +678,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$current_step
 		);
 		?>
-		<div class="wfc-progress-bar" data-progress-bar data-sticky-states data-sticky-container=".wfc-inside">
+		<div class="wfc-progress-bar" data-progress-bar data-sticky-states data-sticky-relative-to=".wfc-checkout-header" data-sticky-container="div.checkout">
 			<div class="wfc-progress-bar__inner" data-sticky-states-inner>
 
 				<div class="wfc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html ?></div>
@@ -1949,6 +1949,54 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Get attributes for the order review section element.
+	 *
+	 * @param   bool $is_sidebar_widget  Whether to add attributes for the order summary section to be displayed in the sidebar.
+	 *
+	 * @return  array                    Array of key/value html attributes.
+	 */
+	public function get_order_review_html_attributes( $is_sidebar_widget = false ) {
+		$attributes = array(
+			'id' => 'wfc-checkout-order-review',
+		);
+
+		// Sidebar widget
+		if ( $is_sidebar_widget ) {
+			$attributes = array_merge( $attributes, array(
+				'data-flyout' => true,
+				'data-flyout-order-review' => true,
+				'data-flyout-open-animation-class' => 'fade-in-down',
+				'data-flyout-close-animation-class' => 'fade-out-up',
+				'data-sticky-states' => true,
+				'data-sticky-container' => 'div.checkout',
+			) );
+		}
+		
+		return $attributes;
+	}
+
+	/**
+	 * Get attributes for the order review section inner element.
+	 *
+	 * @param   bool $is_sidebar_widget  Whether to add attributes for the order summary inner element to be displayed in the sidebar.
+	 *
+	 * @return  array                    Array of key/value html attributes.
+	 */
+	public function get_order_review_html_attributes_inner( $is_sidebar_widget = false ) {
+		$attributes = array();
+
+		// Sidebar widget
+		if ( $is_sidebar_widget ) {
+			$attributes = array_merge( $attributes, array(
+				'data-flyout-content' => true,
+				'data-sticky-states-inner' => true,
+			) );
+		}
+		
+		return $attributes;
+	}
+
+	/**
 	 * Output Order Review.
 	 */
 	public function output_order_review() {
@@ -1958,6 +2006,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'checkout'           => WC()->checkout(),
 				'order_review_title' => $this->get_order_review_title(),
 				'is_sidebar_widget'  => false,
+				'attributes'         => $this->get_order_review_html_attributes(),
+				'attributes_inner'   => $this->get_order_review_html_attributes_inner(),
 			)
 		);
 	}
@@ -1972,6 +2022,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'checkout'           => WC()->checkout(),
 				'order_review_title' => $this->get_order_review_title(),
 				'is_sidebar_widget'  => true,
+				'attributes'         => $this->get_order_review_html_attributes( true ),
+				'attributes_inner'   => $this->get_order_review_html_attributes_inner( true ),
 				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
 			)
 		);

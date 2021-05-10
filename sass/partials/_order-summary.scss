@@ -195,35 +195,61 @@
 	#FLYOUT ORDER SUMMARY
 \*------------------------------------*/
 .wfc-wrapper .wfc-checkout-order-review[data-flyout] {
-	padding-top: $checkout-header-height;
-	padding-bottom: 0;
-
 	@media (#{$bp-larger-than-desktop}) {
 		position: static;
-		padding-top: $global-spacing;
-		padding-bottom: $global-spacing;
 		transform: none;
 	}
 }
-// With admin bar
-.admin-bar .wfc-wrapper .wfc-checkout-order-review[data-flyout] {
-	padding-top: #{ $checkout-header-height + 46px }; // Uses pixels to match WordPress admin bar
-
-	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
-		padding-top: #{ $checkout-header-height + 32px }; // Uses pixels to match WordPress admin bar
-	}
-
-	@media (#{$bp-larger-than-desktop}) { padding-top: $global-spacing; }
-}
 .wfc-wrapper .wfc-checkout-order-review[data-flyout].is-activated {
-	z-index: z( 'float-element' );
+	@media (#{$bp-larger-than-desktop}) {
+		display: block;
+	}
 }
+
+.wfc-wrapper .wfc-checkout-order-review[data-flyout].is-activated.is-open {
+	z-index: z( 'float-element' );
+	margin: 0;
+	padding: $checkout-header-height 0 0;
+}
+// With admin bar
+.admin-bar .wfc-wrapper .wfc-checkout-order-review[data-flyout].is-activated.is-open {
+	padding: calc( #{ $checkout-header-height } + 46px ) 0 0;
+}
+
+
+
 .has-flyout.has-flyout--open-wfc-checkout-order-review .flyout-overlay {
 	z-index: z( 'float-element' ) - 1;
 }
 
-.wfc-wrapper .wfc-checkout-order-review[data-flyout] .wfc-checkout-order-review__inner {
-	
+
+
+.wfc-wrapper .wfc-checkout-order-review .wfc-checkout-order-review__inner {
+	@media (#{$bp-larger-than-desktop}) {
+		padding-top: $global-spacing;
+		padding-bottom: $global-spacing;
+	}
+}
+// With admin bar
+.admin-bar .wfc-wrapper .wfc-checkout-order-review.is-sticky .wfc-checkout-order-review__inner {
+	@media (#{$bp-larger-than-desktop}) {
+		padding-top: calc( #{ $global-spacing } + 32px );
+	}
+}
+
+.wfc-wrapper .wfc-checkout-order-review .wfc-checkout-order-review__inner {
+	@media (#{$bp-larger-than-desktop}) {
+		margin-left: - #{ $container-spacing-desktop - $global-spacing-extra-small };
+		margin-right: - #{ $container-spacing-desktop - $global-spacing-extra-small };
+		padding-left: $container-spacing-desktop - $global-spacing-extra-small;
+		padding-right: $container-spacing-desktop - $global-spacing-extra-small;
+		max-width: none;
+		background-color: transparent;
+		overflow: visible;
+	}
+}
+
+.wfc-wrapper .wfc-checkout-order-review[data-flyout].is-open .wfc-checkout-order-review__inner {
 	// max-width
 	max-width: $container-width-mobile;
 	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
@@ -231,16 +257,7 @@
 	// padding
 	padding: $global-spacing-small $container-spacing-mobile $global-spacing-large;
 	@media (#{$bp-larger-than-tablet}) { padding: $global-spacing-small $container-spacing-tablet $global-spacing-large; }
-	
-	
-	@media (#{$bp-larger-than-desktop}) {
-		padding: 0;
-		max-width: none;
-		background-color: transparent;
-		overflow: visible;
-	}
 }
-
 
 
 

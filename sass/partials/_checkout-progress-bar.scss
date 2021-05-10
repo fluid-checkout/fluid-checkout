@@ -2,39 +2,38 @@
   #CHECKOUT PROGRESS BAR
 \*------------------------------------*/
 
-.wfc-progress-bar {
+.wfc-progress-bar .wfc-progress-bar__inner {
 	// margin
 	margin: 0 #{ - $container-spacing-mobile };
 	@media (#{$bp-larger-than-tablet}) { margin: 0 #{ - $container-spacing-tablet }; }
 	@media (#{$bp-larger-than-desktop}) { margin: 0 #{ - $container-spacing-desktop }; }
-}
 
-.wfc-progress-bar .wfc-progress-bar__inner {
 	// padding
 	padding: $checkout-progress-bar-padding-vertical $container-spacing-mobile;
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-progress-bar-padding-vertical $container-spacing-tablet; }
 	@media (#{$bp-larger-than-desktop}) { padding: $checkout-progress-bar-padding-vertical $container-spacing-desktop; }
 }
 .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
-	top: #{ $checkout-header-height };
+	z-index: z( 'float-element' ) - 2; // Needed to show behing the order summary flyout
 	background-color: $white;
 	box-shadow: $checkout-progress-bar-box-shadow;
-	
-	@media (#{$bp-larger-than-desktop}) { top: 0; }
 }
 // With admin bar
 .admin-bar .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
-	top: calc( 46px + #{ $checkout-header-height } );
+	transform: translateY( 46px );
 	
 	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
-		top: calc( 32px + #{ $checkout-header-height } );
+		transform: translateY( 32px );
 	}
+}
 
-	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
-		top: calc( 32px + #{ $checkout-header-height } );
-	}
 
-	@media (#{$bp-larger-than-desktop}) { top: 32px; }
+
+
+
+.wfc-progress-bar + .wfc-checkout-notices,
+.wfc-progress-bar + form.woocommerce-checkout {
+	padding-top: $global-spacing-small;
 }
 
 

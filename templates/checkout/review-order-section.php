@@ -19,24 +19,6 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$attributes = array();
-$attributes_inner = array();
-
-// Sidebar widget
-if ( $is_sidebar_widget ) {
-	$attributes = array_merge( $attributes, array(
-		'id' => 'wfc-checkout-order-review',
-		'data-flyout' => true,
-		'data-flyout-order-review' => true,
-		'data-flyout-open-animation-class' => 'fade-in-down',
-		'data-flyout-close-animation-class' => 'fade-out-up',
-	) );
-
-	$attributes_inner = array_merge( $attributes_inner, array(
-		'data-flyout-content' => true,
-	) );
-}
-
 $attributes_str = implode( ' ', array_map( array( FluidCheckout::instance(), 'map_html_attributes' ), array_keys( $attributes ), $attributes ) );
 $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(), 'map_html_attributes' ), array_keys( $attributes_inner ), $attributes_inner ) );
 ?>
