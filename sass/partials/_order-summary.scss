@@ -197,12 +197,10 @@
 .wfc-wrapper .wfc-checkout-order-review[data-flyout] {
 	@media (#{$bp-larger-than-desktop}) {
 		position: static;
-		// padding-top: $global-spacing;
-		// padding-bottom: $global-spacing;
 		transform: none;
 	}
 }
-.wfc-wrapper .wfc-checkout-order-review[data-flyout].is-activated {	
+.wfc-wrapper .wfc-checkout-order-review[data-flyout].is-activated {
 	@media (#{$bp-larger-than-desktop}) {
 		display: block;
 	}

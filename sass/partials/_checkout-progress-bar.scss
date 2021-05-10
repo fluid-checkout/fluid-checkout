@@ -7,7 +7,7 @@
 	margin: 0 #{ - $container-spacing-mobile };
 	@media (#{$bp-larger-than-tablet}) { margin: 0 #{ - $container-spacing-tablet }; }
 	@media (#{$bp-larger-than-desktop}) { margin: 0 #{ - $container-spacing-desktop }; }
-	
+
 	// padding
 	padding: $checkout-progress-bar-padding-vertical $container-spacing-mobile;
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-progress-bar-padding-vertical $container-spacing-tablet; }
