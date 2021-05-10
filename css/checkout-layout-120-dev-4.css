@@ -1186,18 +1186,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 @media (min-width: 1000px) {
   .wfc-wrapper .wfc-checkout-order-review[data-flyout] {
     position: static;
-    padding-top: 30px;
-    padding-bottom: 30px;
     transform: none; } }
-
-.admin-bar .wfc-wrapper .wfc-checkout-order-review[data-flyout] {
-  padding-top: 106px; }
-  @media screen and (min-width: 783px) {
-    .admin-bar .wfc-wrapper .wfc-checkout-order-review[data-flyout] {
-      padding-top: 92px; } }
-  @media (min-width: 1000px) {
-    .admin-bar .wfc-wrapper .wfc-checkout-order-review[data-flyout] {
-      padding-top: 30px; } }
 
 @media (min-width: 1000px) {
   .wfc-wrapper .wfc-checkout-order-review[data-flyout].is-activated {
@@ -1214,21 +1203,34 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 .has-flyout.has-flyout--open-wfc-checkout-order-review .flyout-overlay {
   z-index: 199; }
 
-.wfc-wrapper .wfc-checkout-order-review[data-flyout] .wfc-checkout-order-review__inner {
+@media (min-width: 1000px) {
+  .wfc-wrapper .wfc-checkout-order-review .wfc-checkout-order-review__inner {
+    padding-top: 30px;
+    padding-bottom: 30px; } }
+
+@media (min-width: 1000px) {
+  .admin-bar .wfc-wrapper .wfc-checkout-order-review.is-sticky .wfc-checkout-order-review__inner {
+    padding-top: calc( 30px + 32px); } }
+
+@media (min-width: 1000px) {
+  .wfc-wrapper .wfc-checkout-order-review .wfc-checkout-order-review__inner {
+    margin-left: -40px;
+    margin-right: -40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    max-width: none;
+    background-color: transparent;
+    overflow: visible; } }
+
+.wfc-wrapper .wfc-checkout-order-review[data-flyout].is-open .wfc-checkout-order-review__inner {
   max-width: 100%;
   padding: 20px 20px 80px; }
   @media (min-width: 750px) {
-    .wfc-wrapper .wfc-checkout-order-review[data-flyout] .wfc-checkout-order-review__inner {
+    .wfc-wrapper .wfc-checkout-order-review[data-flyout].is-open .wfc-checkout-order-review__inner {
       max-width: 100%; } }
   @media (min-width: 750px) {
-    .wfc-wrapper .wfc-checkout-order-review[data-flyout] .wfc-checkout-order-review__inner {
+    .wfc-wrapper .wfc-checkout-order-review[data-flyout].is-open .wfc-checkout-order-review__inner {
       padding: 20px 30px 80px; } }
-  @media (min-width: 1000px) {
-    .wfc-wrapper .wfc-checkout-order-review[data-flyout] .wfc-checkout-order-review__inner {
-      padding: 0;
-      max-width: none;
-      background-color: transparent;
-      overflow: visible; } }
 
 /*------------------------------------*\
 	#FLYOUT ORDER SUMMARY ACTIONS
