@@ -20,7 +20,7 @@
 	var _hasJQuery = ( $ != null );
 
 	var _hasInitialized = false;
-	var _publicMethods = { };
+	var _publicMethods = {};
 	var _settings = {
 		bodyClass: 'has-wfc-checkout-steps',
 		bodyClassActiveStepPattern: 'wfc-checkout-step--active-{ID}',
@@ -182,13 +182,35 @@
 	 */
 	var blockUI = function( element ) {
 		if ( _hasJQuery ) {
-			$( element ).block({
+			$( element ).block( {
 				message: null,
 				overlayCSS: {
 					background: '#fff',
 					opacity: 0.6
 				}
-			});
+			} );
+		}
+	}
+
+
+
+	/**
+	 * Maybe remove `is-loading` class from fragments after checkout update.
+	 *
+	 * @param   Event  _event  An unused `jQuery.Event` object.
+	 * @param   Array  data   The updated checkout data.
+	 */
+	var maybeRemoveFragmentsLoadingClass = function( _event, data ) {
+		// Iterate fragments
+		if ( data && data.fragments ) {
+			for ( var key in data.fragments ) {
+				// Try to get the target fragment element
+				var framentElement = document.querySelector( key );
+				if ( framentElement ) {
+					// Remove `is-loading` class from the fragment element
+					framentElement.classList.remove( _settings.isLoadingClass );
+				}
+			}
 		}
 	}
 
@@ -235,11 +257,8 @@
 	 * Update the progress bar state.
 	 */
 	var updateProgressBar = function() {
-		// Get checkout wrapper
-		var wrapper = document.querySelector( _settings.wrapperSelector );
-
 		// Get current step
-		var currentStepElement = wrapper.querySelector( _settings.currentStepSelector );
+		var currentStepElement = document.querySelector( _settings.currentStepSelector );
 		
 		// Bail if no current step was found
 		if ( ! currentStepElement ) { return; }
@@ -249,7 +268,7 @@
 		currentStepIndex = isNaN( currentStepIndex ) ? -1 : currentStepIndex;
 
 		// Get progress bar items
-		var progressBarElement = wrapper.querySelector( _settings.progressBarSelector )
+		var progressBarElement = document.querySelector( _settings.progressBarSelector )
 		var progressBarItems = progressBarElement.querySelectorAll( _settings.progressBarItemSelector );
 		var progressBarItemsCount = progressBarItems.length;
 
@@ -294,13 +313,10 @@
 	 * @param   HTMLElement  nextStepElement  The element of the next step.
 	 */
 	var scrollAfterStepChange = function( stepElement, nextStepElement ) {
-		// Get checkout wrapper
-		var wrapper = document.querySelector( _settings.wrapperSelector );
-
 		var stickyElementsOffset = 0;
 		
 		// Maybe add height of the progress bar to scroll position
-		var progressBarElement = wrapper.querySelector( _settings.progressBarSelector );
+		var progressBarElement = document.querySelector( _settings.progressBarSelector );
 		if ( progressBarElement ) {
 			var height = progressBarElement.getBoundingClientRect().height;
 			stickyElementsOffset += height;
@@ -420,6 +436,11 @@
 	 var finishInit = function() {
 		// Add event listeners
 		window.addEventListener( 'click', handleClick );
+
+		// Add jQuery event listeners
+		if ( _hasJQuery ) {
+			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
+		}
 
 		// Add init class
 		document.body.classList.add( _settings.bodyClass );
