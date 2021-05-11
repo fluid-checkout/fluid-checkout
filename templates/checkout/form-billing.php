@@ -33,7 +33,7 @@ defined( 'ABSPATH' ) || exit;
 		$fields = $checkout->get_checkout_fields( 'billing' );
 		foreach ( $fields as $key => $field ) {
 			/**
-			 * The variable `$ignore_fields` is passed in by woocommerce fluid checkout
+			 * The variable `$display_fields` is passed as a paramenter to this template file
 			 * @see Hook `wfc_checkout_contact_step_field_ids`
 			 */
 			if ( ! in_array( $key, $ignore_fields ) ) {
