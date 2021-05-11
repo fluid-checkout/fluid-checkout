@@ -196,7 +196,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 		// Output gift options form template
 		wc_get_template(
-			'checkout/form-gift-options.php',
+			'wfc/checkout/form-gift-options.php',
 			array(
 				'checkout'                 => WC()->checkout(),
 				'checkbox_field'           => $checkbox_field,

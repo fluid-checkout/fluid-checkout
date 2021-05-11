@@ -44,7 +44,7 @@ if ( ! is_ajax() ) {
 		</div>
 	<?php endif; ?>
 
-	<?php // CHANGE: Removed place order section, moved to templates/checkout/place-order.php ?>
+	<?php // CHANGE: Removed place order section, moved to templates/wfc/checkout/place-order.php ?>
 
 	<?php // CHANGE: Added hook for after the payment section ?>
 	<?php do_action( 'wfc_checkout_after_payment', $checkout ); ?>
