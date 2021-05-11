@@ -922,6 +922,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_email() . '</span>';
 		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_first_name() . ' ' . $customer->get_billing_last_name() . '</span>';
 		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_phone() . '</span>';
+		
+		// Maybe add notice for account creation
+		$parsed_posted_data = $this->get_parsed_posted_data();
+		if ( array_key_exists( 'createaccount', $parsed_posted_data ) && $parsed_posted_data[ 'createaccount' ] == '1' ) {
+			$html .= '<span class="wfc-step__substep-text-line"><em>' . __( 'An account will be created with the username and password provided.', 'woocommerce-fluid-checkout' ) . '</em></span>';
+		}
+		
 		$html .= '</div>';
 
 		return apply_filters( 'wfc_substep_contact_text', $html );
