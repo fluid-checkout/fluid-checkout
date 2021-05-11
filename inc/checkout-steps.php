@@ -257,7 +257,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! $this->get_hide_site_header_at_checkout() ) { return; }
 		
 		wc_get_template(
-			'checkout/checkout-header.php',
+			'wfc/checkout/checkout-header.php',
 			array( 'checkout' => WC()->checkout() )
 		);
 	}
@@ -911,7 +911,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		do_action( 'woocommerce_checkout_before_customer_details' );
 		
 		wc_get_template(
-			'checkout/form-contact.php',
+			'wfc/checkout/form-contact.php',
 			array(
 				'checkout'			=> WC()->checkout(),
 				'display_fields'	=> $this->get_contact_step_display_fields(),
@@ -986,7 +986,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_form_account_creation() {
 		wc_get_template(
-			'checkout/form-account-creation.php',
+			'wfc/checkout/form-account-creation.php',
 			array(
 				'checkout'			=> WC()->checkout(),
 			)
@@ -1017,7 +1017,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( is_user_logged_in() || 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
 		
 		wc_get_template(
-			'checkout/form-contact-login-modal.php',
+			'wfc/checkout/form-contact-login-modal.php',
 			array(
 				'checkout'			=> WC()->checkout(),
 			)
@@ -1032,7 +1032,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; }
 
 		wc_get_template(
-			'checkout/form-contact-login.php',
+			'wfc/checkout/form-contact-login.php',
 			array(
 				'checkout'			=> WC()->checkout(),
 			)
@@ -1372,7 +1372,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_cart_totals_shipping_section() {
 		wc_get_template(
-			'cart/cart-totals-shipping.php'
+			'wfc/cart/cart-totals-shipping.php'
 		);
 	}
 
@@ -1420,7 +1420,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
 			}
 	
-			wc_get_template( 'cart/shipping-methods-available.php', array(
+			wc_get_template( 'wfc/cart/shipping-methods-available.php', array(
 				'package'					=> $package,
 				'available_methods'			=> $package['rates'],
 				'show_package_details'		=> sizeof( $packages ) > 1,
@@ -1506,7 +1506,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_additional_fields() {
 		wc_get_template(
-			'checkout/form-additional-fields.php',
+			'wfc/checkout/form-additional-fields.php',
 			array(
 				'checkout' => WC()->checkout(),
 			)
@@ -1883,7 +1883,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_payment_fields() {
 		wc_get_template(
-			'checkout/form-payment.php',
+			'wfc/checkout/form-payment.php',
 			array(
 				'checkout'          => WC()->checkout(),
 			)
@@ -2001,7 +2001,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_order_review() {
 		wc_get_template(
-			'checkout/review-order-section.php',
+			'wfc/checkout/review-order-section.php',
 			array(
 				'checkout'           => WC()->checkout(),
 				'order_review_title' => $this->get_order_review_title(),
@@ -2017,7 +2017,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_order_review_for_sidebar() {
 		wc_get_template(
-			'checkout/review-order-section.php',
+			'wfc/checkout/review-order-section.php',
 			array(
 				'checkout'           => WC()->checkout(),
 				'order_review_title' => $this->get_order_review_title(),
@@ -2037,7 +2037,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_checkout_place_order( $step_id, $is_sidebar = false ) {
 		ob_start();
 		wc_get_template(
-			'checkout/place-order.php',
+			'wfc/checkout/place-order.php',
 			array(
 				'checkout'           => WC()->checkout(),
 				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
@@ -2101,7 +2101,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			wc_get_template(
-				'checkout/review-order-shipping.php',
+				'wfc/checkout/review-order-shipping.php',
 				array(
 					'package'                  => $package,
 					'available_methods'        => $package['rates'],

@@ -1,8 +1,8 @@
 <?php
 /**
- * Checkout payment form
+ * The template for displaying the footer for the checkout page.
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/checkout/form-payment.php.
+  * This template can be overridden by copying it to yourtheme/woocommerce/wfc/checkout/footer-checkout.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -15,11 +15,10 @@
  * @version 1.2.0
  */
 
-defined( 'ABSPATH' ) || exit;
 ?>
+</div>
 
-<?php do_action( 'wfc_checkout_before_step_payment_fields' ); ?>
+<?php wp_footer(); ?>
 
-<?php do_action( 'wfc_checkout_payment' ); ?>
-
-<?php do_action( 'wfc_checkout_after_step_payment_fields' ); ?>
+</body>
+</html>
