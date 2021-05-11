@@ -374,7 +374,7 @@ class FluidCheckout {
 		$vars = explode( '&', $posted_data );
 		foreach ( $vars as $k => $value ) {
 			$v = explode( '=', urldecode( $value ) );
-			$new_posted_data[ $v[0] ] = $v[1];
+			$new_posted_data[ $v[0] ] = array_key_exists( 1, $v) ? $v[1] : null;
 		}
 
 		// Updated cached posted data
