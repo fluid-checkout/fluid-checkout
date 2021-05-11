@@ -1166,16 +1166,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_substep_text_shipping_address() {
 		$customer = WC()->customer;
+
+		$address_data = array(
+			'first_name' => $customer->get_shipping_first_name(),
+			'last_name' => $customer->get_shipping_last_name(),
+			'company' => $customer->get_shipping_company(),
+			'address_1' => $customer->get_shipping_address_1(),
+			'address_2' => $customer->get_shipping_address_2(),
+			'city' => $customer->get_shipping_city(),
+			'state' => $customer->get_shipping_state(),
+			'country' => $customer->get_shipping_country(),
+			'postcode' => $customer->get_shipping_postcode(),
+		);
 		
 		$html = '<div class="wfc-step__substep-text-content wfc-step__substep-text-content--shipping-address">';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_first_name() . ' ' . $customer->get_shipping_last_name() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_company() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_address_1() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_address_2() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_city() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_state() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_country() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_shipping_postcode() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</span>';
 		$html .= '</div>';
 
 		return apply_filters( 'wfc_substep_shipping_address_text', $html );
@@ -1615,15 +1620,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_substep_text_billing_address() {
 		$customer = WC()->customer;
+
+		$address_data = array(
+			'address_1' => $customer->get_billing_address_1(),
+			'address_2' => $customer->get_billing_address_2(),
+			'city' => $customer->get_billing_city(),
+			'state' => $customer->get_billing_state(),
+			'country' => $customer->get_billing_country(),
+			'postcode' => $customer->get_billing_postcode(),
+			'company' => $customer->get_billing_company(),
+		);
 		
 		$html = '<div class="wfc-step__substep-text-content wfc-step__substep-text-content--billing-address">';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_company() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_address_1() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_address_2() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_city() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_state() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_country() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_postcode() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</span>';
 		$html .= '</div>';
 
 		return apply_filters( 'wfc_substep_billing_address_text', $html );
