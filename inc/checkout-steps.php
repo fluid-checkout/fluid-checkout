@@ -564,6 +564,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Register the default checkout steps supported by this plugin.
 	 */
 	public function register_default_checkout_steps() {
+		// Bail if not on checkout or cart page
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() ) ) { return; }
 
 		// CONTACT
 		$this->register_checkout_step( array(
