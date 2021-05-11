@@ -109,14 +109,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Order Review
 		add_action( 'wfc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
 		add_action( 'wfc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
-		
-		// Order Received
-		add_action( 'wfc_order_received_failed', array( $this, 'output_order_received_failed_template' ), 10 );
-		add_action( 'wfc_order_received_successful', array( $this, 'output_order_received_successful_template' ), 10 );
-		add_action( 'wfc_order_received_successful_no_order_details', array( $this, 'output_order_received_no_order_details_template' ), 10 );
-		add_action( 'woocommerce_thankyou', array( $this, 'do_woocommerce_thankyou_payment_method' ), 1 );
-		add_action( 'wfc_order_details_after_order_table_section', array( $this, 'output_order_customer_details' ), 10 );
-		add_action( 'wfc_order_details_before_order_table_section', array( $this, 'output_order_downloads_details' ), 10 );
 
 		// Persisted data
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'update_customer_persisted_data' ), 10 );
@@ -2148,116 +2140,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Order Received (default functionality).
+	 * Persisted Data
 	 */
-
-
-	
-	/**
-	 * Output template part for order received failed.
-	 * 
-	 * @param   WC_Order   $order   The Order object.
-	 */
-	public function output_order_received_failed_template( $order ) {
-		wc_get_template(
-			'checkout/order-received-failed.php',
-			array(
-				'order'			=> $order,
-			)
-		);
-	}
 
 
 
 	/**
-	 * Output template part for order received successful.
-	 * 
-	 * @param   WC_Order   $order   The Order object.
-	 */
-	public function output_order_received_successful_template( $order ) {
-		wc_get_template(
-			'checkout/order-received-successful.php',
-			array(
-				'order'			=> $order,
-			)
-		);
-	}
-
-
-
-	/**
-	 * Output template part for order received without order details.
-	 * 
-	 * @param   WC_Order   $order   The Order object.
-	 */
-	public function output_order_received_no_order_details_template( $order ) {
-		wc_get_template(
-			'checkout/order-received-no-order-details.php',
-			array(
-				'order'			=> $order,
-			)
-		);
-	}
-
-
-
-	/**
-	 * Run the action `woocommerce_thankyou_<payment_method>`, give developers
-	 * the ability to define which hook and priority to use.
-	 * 
-	 * @param   WC_Order   $order   The Order object.
-	 */
-	public function do_woocommerce_thankyou_payment_method( $order_id ) {
-		$order = wc_get_order( $order_id );
-		do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() );
-	}
-
-
-
-	/**
-	 * Output order download details.
-	 * 
-	 * @param   WC_Order   $order   The Order object.
-	 */
-	public function output_order_downloads_details( $order ) {
-		$downloads             = $order->get_downloadable_items();
-		$show_downloads        = $order->has_downloadable_item() && $order->is_download_permitted();
-		if ( $show_downloads ) {
-			wc_get_template(
-				'order/order-downloads.php',
-				array(
-					'downloads'  => $downloads,
-					'show_title' => true,
-				)
-			);
-		}
-	}
-
-
-
-	/**
-	 * Output order customer details.
-	 * 
-	 * @param   WC_Order   $order   The Order object.
-	 */
-	public function output_order_customer_details( $order ) {
-		$show_customer_details = is_user_logged_in() && $order->get_user_id() === get_current_user_id();
-		if ( $show_customer_details ) {
-			wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
-		}
-	}
-
-
-
-	/**
-	 * END - Order Received.
-	 */
-
-
-
-
-
-	 /**
 	 * Update the customer's data to the WC_Customer object.
 	 * 
 	 * @param string $posted_data Post data for all checkout fields.
@@ -2338,6 +2226,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function unset_order_comments_session() {
 		WC()->session->set( '_order_comments', null );
 	}
+
+
+
+	/**
+	 * END - Persisted Data
+	 */
 
 }
 
