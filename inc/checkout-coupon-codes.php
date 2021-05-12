@@ -61,7 +61,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function output_substep_coupon_codes( $step_id ) {
 		$substep_id = 'coupon_codes';
-		$substep_title = apply_filters( 'wfc_substep_coupon_codes_display_title', true ) === true ? __( 'Gift certificates or coupon codes', 'woocommerce-fluid-checkout' ) : null;
+		$substep_title = apply_filters( 'wfc_substep_coupon_codes_title_display', false ) === true ? apply_filters( 'wfc_substep_coupon_codes_title', __( 'Coupon code', 'woocommerce-fluid-checkout' ) ) : null;
 		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_text_coupon_codes();
@@ -83,7 +83,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$coupon_code_field_placeholder = apply_filters( 'wfc_coupon_code_field_placeholder', __( 'Enter your code here', 'woocommerce-fluid-checkout' ) );
 		$coupon_code_button_label = apply_filters( 'wfc_coupon_code_button_label', _x( 'Apply code', 'Button label for applying coupon codes', 'woocommerce-fluid-checkout' ) );
 
-		$this->checkout_steps()->output_expansible_form_section_start_tag( 'coupon_code', apply_filters( 'wfc_coupon_code_expansible_section_toggle_label', __( 'Add gift certificate or coupon code', 'woocommerce-fluid-checkout' ) ) );
+		$this->checkout_steps()->output_expansible_form_section_start_tag( 'coupon_code', apply_filters( 'wfc_coupon_code_expansible_section_toggle_label', __( 'Add coupon code', 'woocommerce-fluid-checkout' ) ) );
 		?>
 			<input type="text" class="input-text" name="wfc-couponcode" id="wfc-couponcode" aria-label="<?php echo esc_attr( $coupon_code_field_label ); ?>" placeholder="<?php echo esc_attr( $coupon_code_field_placeholder ); ?>">
 			<button type="button" class="wfc-step__substep-coupon-codes-save" data-step-save><?php echo $coupon_code_button_label; ?></button>
