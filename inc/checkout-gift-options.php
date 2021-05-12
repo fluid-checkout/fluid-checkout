@@ -43,9 +43,9 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 
 	/**
-	 * Return Fluid Checkout for WooCommerce multi-step class instance.
+	 * Return Checkout Steps class instance.
 	 */
-	public function multistep() {
+	public function checkout_steps() {
 		return FluidCheckout_Steps::instance();
 	}
 
@@ -72,20 +72,20 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 */
 	public function output_substep_gift_options( $step_id ) {
 		$substep_id = 'gift_options';
-		$this->multistep()->output_substep_start_tag( $step_id, $substep_id, __( '<span class="gift-options__icon"></span>Gift Options', 'woocommerce-fluid-checkout' ) );
+		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, __( '<span class="gift-options__icon"></span>Gift Options', 'woocommerce-fluid-checkout' ) );
 
-		$this->multistep()->output_substep_fields_start_tag( $step_id, $substep_id );
+		$this->checkout_steps()->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->maybe_output_gift_options_fields();
-		$this->multistep()->output_substep_fields_end_tag();
+		$this->checkout_steps()->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
-		if ( $this->multistep()->is_checkout_layout_multistep() ) {
-			$this->multistep()->output_substep_text_start_tag( $step_id, $substep_id );
+		if ( $this->checkout_steps()->is_checkout_layout_multistep() ) {
+			$this->checkout_steps()->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_gift_options();
-			$this->multistep()->output_substep_text_end_tag();
+			$this->checkout_steps()->output_substep_text_end_tag();
 		}
 
-		$this->multistep()->output_substep_end_tag( $step_id, $substep_id );
+		$this->checkout_steps()->output_substep_end_tag( $step_id, $substep_id );
 	}
 
 
