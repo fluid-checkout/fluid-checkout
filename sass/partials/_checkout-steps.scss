@@ -188,6 +188,26 @@
 
 
 
+/*------------------------------------*\
+	#CHECKOUT EXPANSIBLE SECTIONS
+\*------------------------------------*/
+.wfc-wrapper .expansible-section__toggle-plus {
+	position: relative;
+	padding: $checkout-substep-text-padding;
+
+	&:before {
+		@include icon( 'i-plus-circle' );
+		@include icon-size( $icon-size );
+		
+		position: absolute;
+		left: $checkout-expansible-section-icon-spacing;
+		top: 50%;
+		transform: translateY( -50% );
+	}
+}
+
+
+
 
 /*------------------------------------*\
 	#CHECKOUT CONTACT STEP

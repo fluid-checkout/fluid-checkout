@@ -793,27 +793,37 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
 	 * @param   string  $substep_id  Id of the substep.
 	 */
-	public function output_substep_fields_start_tag( $step_id, $substep_id ) {
-		$is_step_complete = $this->is_step_complete( $step_id );
+	public function output_substep_fields_start_tag( $step_id, $substep_id, $collapsible = true ) {
 		$substep_attributes = array(
 			'id' => 'wfc-substep__fields--' . $substep_id,
 			'class' => 'wfc-step__substep-fields',
 			'data-substep-id' => $substep_id,
 		);
-
+		
+		$substep_inner_attributes = array(
+			'class' => 'wfc-step__substep-fields-inner',
+		);
+		
 		// Add collapsible-block attributes for multistep layout
-		if ( $this->is_checkout_layout_multistep() ) {
+		if ( $collapsible && $this->is_checkout_layout_multistep() ) {
+			$is_step_complete = $this->is_step_complete( $step_id );
+
 			$substep_attributes = array_merge( $substep_attributes, array(
-				'data-collapsible' => '',
-				'data-collapsible-content' => '',
+				'data-collapsible' => true,
+				'data-collapsible-content' => true,
 				'data-collapsible-initial-state' => $is_step_complete ? 'collapsed' : 'expanded',
 			) );
+
+			$substep_inner_attributes = array(
+				'class' => $substep_inner_attributes[ 'class' ] . ' collapsible-content__inner',
+			);
 		}
 
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
+		$substep_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_inner_attributes ), $substep_inner_attributes ) );
 		?>
 		<div <?php echo $substep_attributes_str; ?>>
-			<div class="collapsible-content__inner">
+			<div <?php echo $substep_inner_attributes_str; ?>>
 			<?php
 	}
 
@@ -841,14 +851,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'id' => 'wfc-substep__text--' . $substep_id,
 			'class' => 'wfc-step__substep-text',
 			'data-substep-id' => $substep_id,
-			'data-collapsible' => '',
-			'data-collapsible-content' => '',
+			'data-collapsible' => true,
+			'data-collapsible-content' => true,
 			'data-collapsible-initial-state' => $is_step_complete ? 'expanded' : 'collapsed',
 		);
+
+		$substep_inner_attributes = array(
+			'class' => 'collapsible-content__inner',
+		);
+		
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
+		$substep_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_inner_attributes ), $substep_inner_attributes ) );
 		?>
 		<div <?php echo $substep_attributes_str; ?>>
-			<div class="collapsible-content__inner">
+			<div <?php echo $substep_inner_attributes_str; ?>>
 			<?php
 	}
 
@@ -856,6 +872,80 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output checkout substep end tag.
 	 */
 	public function output_substep_text_end_tag() {
+			?>
+			</div>
+		</div>
+		<?php
+	}
+
+
+
+	/**
+	 * Output checkout expansible form section start tag.
+	 *
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
+	 * @param   string  $section_id  Id of the substep.
+	 */
+	public function output_expansible_form_section_start_tag( $section_id, $toggle_label ) {
+		// Section toggle attributes
+		$section_toggle_attributes = array(
+			'id' => 'wfc-expansible-form-section__toggle--' . $section_id,
+			'data-collapsible' => true,
+			'data-collapsible-content' => true,
+			'data-collapsible-initial-state' => 'expanded',
+		);
+
+		// Section toggle inner attributes
+		$section_toggle_inner_attributes = array(
+			'class' => 'collapsible-content__inner',
+		);
+
+		// Toggle element attributes
+		$toggle_attributes = array(
+			'href' => '#wfc-expansible-form-section__content--' . $section_id,
+			'class' => 'expansible-section__toggle-plus',
+			'data-expansible-section-toggle' => true,
+			'data-expansible-section-collapse' => '#wfc-expansible-form-section__toggle--' . $section_id,
+			'data-expansible-section-expand' => '#wfc-expansible-form-section__content--' . $section_id,
+		);
+
+		// Section content attributes
+		$section_content_attributes = array(
+			'id' => 'wfc-expansible-form-section__content--' . $section_id,
+			'class' => 'is-collapsed',
+			'data-collapsible' => true,
+			'data-collapsible-content' => true,
+			'data-collapsible-initial-state' => 'collapsed',
+		);
+
+		// Section content inner attributes
+		$section_content_inner_attributes = array(
+			'class' => 'collapsible-content__inner',
+		);
+		
+		$section_toggle_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_toggle_attributes ), $section_toggle_attributes ) );
+		$section_toggle_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_toggle_inner_attributes ), $section_toggle_inner_attributes ) );
+		$toggle_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $toggle_attributes ), $toggle_attributes ) );
+		$section_content_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_content_attributes ), $section_content_attributes ) );
+		$section_content_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_content_inner_attributes ), $section_content_inner_attributes ) );
+		?>
+		<div <?php echo $section_toggle_attributes_str; ?>>
+			<div <?php echo $section_content_inner_attributes_str; ?>>
+				<a <?php echo $toggle_attributes_str; ?>>
+					<?php echo esc_html( $toggle_label ); ?>
+				</a>
+			</div>
+		</div>
+
+		<div <?php echo $section_content_attributes_str; ?>>
+			<div <?php echo $section_content_inner_attributes_str; ?>>
+			<?php
+	}
+
+	/**
+	 * Output checkout expansible form section end tag.
+	 */
+	public function output_expansible_form_section_end_tag() {
 			?>
 			</div>
 		</div>
@@ -1056,7 +1146,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( is_user_logged_in() ) { return; };
 
 		$substep_id = 'contact_login';
-		$this->output_substep_start_tag( $step_id, $substep_id, '' );
+		$this->output_substep_start_tag( $step_id, $substep_id, null );
 		
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_contact_login_button();

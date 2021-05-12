@@ -214,6 +214,7 @@ $icons: (
 	'i-chevron-up': '\e80e',
 	'i-minus': '\e818',
 	'i-plus': '\e81b',
+	'i-plus-circle': '\e82a',
 	'i-trash': '\e822',
 	'i-x': '\e827',
 	'i-cart': '\e828',
@@ -345,6 +346,8 @@ $checkout-substep-text-font-size--large-screen:  $font-size-small--large-screen 
 $checkout-substep-text-font-weight:              normal !default;
 
 $checkout-substep-action-button-margin:          $global-spacing-small $global-spacing-extra-small 0 0 !default; // Used to position the substep "Change/Save" action buttons
+
+$checkout-expansible-section-icon-spacing:       $checkout-substep-title-check-icon-spacing / 2 !default;
 
 // END - CHECKOUT STEPS
 // ----------------------------------------

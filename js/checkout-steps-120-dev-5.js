@@ -42,6 +42,10 @@
 		substepTextSelector: '.wfc-step__substep-text',
 		substepEditButtonSelector: '[data-step-edit]',
 		substepSaveButtonSelector: '[data-step-save]',
+
+		expansibleSectionToggleSelector: '[data-expansible-section-toggle]',
+		expansibleSectionExpandAttribute: 'data-expansible-section-expand',
+		expansibleSectionCollapseAttribute: 'data-expansible-section-collapse',
 		
 		stepCompleteAttribute: 'data-step-complete',
 		stepCurrentAttribute: 'data-step-current',
@@ -408,23 +412,61 @@
 
 
 	/**
+	 * Expand or collapse form sections hidden behind a "expand" link button. The sections to expand or collapse are passed as data attributes on the toggle element.
+	 *
+	 * @param   HTMLElement  toggleElement  The HTMLElement of the "expand" link button.
+	 */
+	var maybeToggleFormSectionState = function( toggleElement ) {
+		// Get selectors of section to expand or collapse from attributes
+		var expandTargetAttribute = toggleElement.getAttribute( _settings.expansibleSectionExpandAttribute );
+		var collapseTargetAttribute = toggleElement.getAttribute( _settings.expansibleSectionCollapseAttribute );
+
+		// Maybe expand section
+		if ( expandTargetAttribute && expandTargetAttribute != '' ) {
+			var expandTargetElement = document.querySelector( expandTargetAttribute );
+			if ( expandTargetElement ) {
+				CollapsibleBlock.expand( expandTargetElement );
+			}
+		}
+
+		// Maybe collapse section
+		if ( collapseTargetAttribute && collapseTargetAttribute != '' ) {
+			var collapseTargetElement = document.querySelector( collapseTargetAttribute );
+			if ( collapseTargetElement ) {
+				CollapsibleBlock.collapse( collapseTargetElement );
+			}
+		}
+	}
+
+
+
+	/**
 	 * Handle document clicks and route to the appropriate function.
 	 */
 	var handleClick = function( e ) {
 		// NEXT STEP
 		if ( e.target.closest( _settings.nextStepButtonSelector ) ) {
+			e.preventDefault();
 			var step = e.target.closest( _settings.stepSelector );
 			maybeProceedNextStep( step );
 		}
 		// EDIT SUBSTEP
 		else if ( e.target.closest( _settings.substepEditButtonSelector ) ) {
+			e.preventDefault();
 			var substepElement = e.target.closest( _settings.substepSelector );
 			expandSubstepEdit( substepElement );
 		}
 		// SAVE SUBSTEP
 		else if ( e.target.closest( _settings.substepSaveButtonSelector ) ) {
+			e.preventDefault();
 			var substepElement = e.target.closest( _settings.substepSelector );
 			maybeSaveSubstep( substepElement );
+		}
+		// EXPANSIBLE FORM SECTIONS
+		else if ( e.target.closest( _settings.expansibleSectionToggleSelector ) ) {
+			e.preventDefault();
+			var toggleElement = e.target.closest( _settings.expansibleSectionToggleSelector );
+			maybeToggleFormSectionState( toggleElement );
 		}
 	};
 
