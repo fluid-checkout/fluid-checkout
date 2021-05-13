@@ -26,7 +26,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		// Coupon Code Substep
 		add_action( 'wfc_output_step_payment', array( $this, 'output_substep_coupon_codes' ), 10 );
-		// add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_coupon_codes_text_fragment' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_coupon_codes_text_fragment' ), 10 );
 	}
 
 
@@ -107,9 +107,22 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function get_substep_text_coupon_codes() {
 		$html = '<div class="wfc-step__substep-text-content wfc-step__substep-text-content--coupon-codes">';
+		ob_start();
 
-		// TODO: Display coupons added to the cart, with code value (ie. "CODE-10-OFF"), value of the discount, and option to remove the coupon from the cart/order
-		
+		foreach ( WC()->cart->get_coupons() as $code => $coupon ) :
+			// Get coupon label with changed "remove" link
+			ob_start();
+			wc_cart_totals_coupon_html( $coupon );
+			$coupon_html = str_replace( __( '[Remove]', 'woocommerce' ), __( 'Remove', 'woocommerce-fluid-checkout' ), ob_get_clean() );
+			?>
+			<div class="wfc-coupon-codes__coupon coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
+				<span class="wfc-coupon-codes__coupon-code"><?php wc_cart_totals_coupon_label( $coupon ); ?></span>
+				<span class="wfc-coupon-codes__coupon-amount"><?php echo $coupon_html; ?></span>
+			</div>
+			<?php
+		endforeach;
+
+		$html .= ob_get_clean();
 		$html .= '</div>';
 
 		return apply_filters( 'wfc_substep_coupon_codes_text', $html );

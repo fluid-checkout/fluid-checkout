@@ -39,7 +39,7 @@ defined( 'ABSPATH' ) || exit;
 			</tr>
 		<?php endforeach; ?>
 
-        <?php // CHANGE: Add new hook, remove shipping related code to a new template file ?>
+        <?php // CHANGE: Add new hook, move shipping related code to a new template file ?>
         <?php do_action( 'wfc_cart_totals_shipping' ); ?>
 
 		<?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
