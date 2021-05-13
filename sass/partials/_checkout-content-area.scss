@@ -64,8 +64,8 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 \*------------------------------------*/
 body:not( .has-checkout-must-login-notice ) .wfc-checkout-header,
 body:not( .has-checkout-must-login-notice ) .wfc-checkout-notices,
+body:not( .has-checkout-must-login-notice ).woocommerce-checkout .woocommerce-NoticeGroup,
 body:not( .has-checkout-must-login-notice ) .wfc-progress-bar,
-body:not( .has-checkout-must-login-notice ) .woocommerce-NoticeGroup-checkout,
 body:not( .has-checkout-must-login-notice ) .wfc-inside {
 	@media (#{$bp-larger-than-desktop}) {
 		float: left;
