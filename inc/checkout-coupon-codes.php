@@ -30,7 +30,10 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		// Apply coupon code
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_apply_coupon_code' ), 10 );
-		add_action( 'woocommerce_checkout_process', array( $this, 'maybe_apply_coupon_code_on_process_checkout' ), 10 );
+		
+		// Apply coupon code on processing order
+		// This action has high priority as other plugins might need the updated cart values after this point.
+		add_action( 'woocommerce_checkout_process', array( $this, 'maybe_apply_coupon_code_on_process_checkout' ), 0 );
 	}
 
 
@@ -163,8 +166,8 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		
 		// If a coupon code was entered, try to apply it
 		if ( array_key_exists( 'wfc-couponcode', $parsed_posted_data ) && ! empty( $parsed_posted_data[ 'wfc-couponcode' ] ) ) {
-			$coupon_code = $parsed_posted_data[ 'wfc-couponcode' ];
-			WC()->cart->add_discount( wc_format_coupon_code( wp_unslash( $coupon_code ) ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$coupon_code = wc_format_coupon_code( wp_unslash( $parsed_posted_data[ 'wfc-couponcode' ] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			WC()->cart->add_discount( $coupon_code );
 		}
 		
 		return $posted_data;
@@ -175,11 +178,34 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * 
 	 * @param array $posted_data Post data for all checkout fields.
 	 */
-	public function maybe_apply_coupon_code_on_process_checkout( $post_data ) {
+	public function maybe_apply_coupon_code_on_process_checkout() {
 		// If a coupon code was entered, try to apply it
 		if ( array_key_exists( 'wfc-couponcode', $_POST ) && ! empty( $_POST[ 'wfc-couponcode' ] ) ) {
-			$coupon_code = $_POST[ 'wfc-couponcode' ];
-			WC()->cart->add_discount( wc_format_coupon_code( wp_unslash( $coupon_code ) ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$coupon_code = wc_format_coupon_code( wp_unslash( $_POST[ 'wfc-couponcode' ] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			
+			// Apply coupon code to the Cart and Order
+			WC()->cart->add_discount( $coupon_code );
+			
+			// Maybe remove notice "coupon added successfuly" as it is not needed after the order is completed
+			$coupon_class = new WC_Coupon(); // A new instance of `WC_Coupon` is needed to use the function `get_coupon_message`.
+			$coupon_added_message = $coupon_class->get_coupon_message( WC_Coupon::WC_COUPON_SUCCESS );
+			if ( wc_has_notice( $coupon_added_message, 'success' ) ) {
+				// Get all success notices
+				$all_notices = wc_get_notices();
+				$success_notices = $all_notices[ 'success' ];
+
+				// Search for the message and get the array key
+				$notice_key = array_search( $coupon_added_message, wp_list_pluck( $success_notices, 'notice' ), true );
+
+				// Maybe remove the notice from the list
+				if ( $notice_key !== false ) {
+					unset( $success_notices[ $notice_key ] );
+					
+					// Update the notices
+					$all_notices[ 'success' ] = $success_notices;
+					wc_set_notices( $all_notices );
+				}
+			}
 		}
 		
 		return $posted_data;
