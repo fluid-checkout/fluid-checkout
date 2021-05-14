@@ -55,6 +55,9 @@ jQuery( function( $ ) {
 			// CHANGE: Prevent billing address fields change from updating checkout
 			this.$checkout_form.on( 'keydown', '.woocommerce-shipping-fields__field-wrapper .address-field input.input-text, .update_totals_on_change input.input-text', this.queue_update_checkout ); // eslint-disable-line max-len
 
+			// CHANGE: Added event handler for pressing the `ENTER` key on the coupon code field
+			this.$checkout_form.on( 'keydown', 'input[name="coupon_code"]', this.maybe_apply_coupon );
+
 			// CHANGE: Update checkout totals to save data to session when user switches tabs, apps, goes to homescreen, etc.
 			document.addEventListener( 'visibilitychange' , function() {
 				if ( document.visibilityState == 'hidden' ) {
@@ -195,6 +198,15 @@ jQuery( function( $ ) {
 		terms_checked_changed: function( e ) {
 			var termsCheckBoxChecked = $( e.target ).prop( 'checked' );
 			$( _terms_selector ).prop( 'checked', termsCheckBoxChecked );
+		},
+		// CHANGE: Added function to handle `ENTER` key on the coupon code field
+		maybe_apply_coupon: function( e ) {
+			var code = e.keyCode || e.which || 0;
+
+			if ( $( e.target ).is( 'form.woocommerce-checkout input[name="coupon_code"]' ) && code === 13 ) {
+				e.preventDefault();
+				$( document.body ).trigger( 'update_checkout' );
+			}
 		},
 		input_changed: function( e ) {
 			wc_checkout_form.dirtyInput = e.target;
