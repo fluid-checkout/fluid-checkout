@@ -93,7 +93,8 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$this->checkout_steps()->output_expansible_form_section_start_tag( 'coupon_code', apply_filters( 'wfc_coupon_code_expansible_section_toggle_label', __( 'Add coupon code', 'woocommerce-fluid-checkout' ) ) );
 		?>
 			<input type="text" class="input-text" name="coupon_code" id="coupon_code" aria-label="<?php echo esc_attr( $coupon_code_field_label ); ?>" placeholder="<?php echo esc_attr( $coupon_code_field_placeholder ); ?>" data-autofocus>
-			<button type="button" class="wfc-step__substep-coupon-codes-save" data-step-save><?php echo $coupon_code_button_label; ?></button>
+			<button type="button" class="wfc-step__substep-coupon-codes-save" data-apply-coupon-button><?php echo $coupon_code_button_label; ?></button>
+			<input type="hidden" name="apply_coupon_code" id="apply_coupon_code">
 		<?php
 		$this->checkout_steps()->output_expansible_form_section_end_tag();
 	}
@@ -165,12 +166,19 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$parsed_posted_data = $this->get_parsed_posted_data();
 		
 		// If a coupon code was entered, try to apply it
-		if ( array_key_exists( 'coupon_code', $parsed_posted_data ) && ! empty( $parsed_posted_data[ 'coupon_code' ] ) ) {
+		if ( array_key_exists( 'apply_coupon_code', $parsed_posted_data ) && $parsed_posted_data[ 'apply_coupon_code' ] === '1' && array_key_exists( 'coupon_code', $parsed_posted_data ) && ! empty( $parsed_posted_data[ 'coupon_code' ] ) ) {
 			$coupon_code = wc_format_coupon_code( wp_unslash( $parsed_posted_data[ 'coupon_code' ] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			WC()->cart->add_discount( $coupon_code );
 		}
 		
 		return $posted_data;
+	}
+
+
+	public function hooks() {
+		// Apply coupon code on processing order
+		// This action has high priority as other plugins might need the updated cart values after this point.
+		add_action( 'woocommerce_checkout_process', array( $this, 'maybe_apply_coupon_code_on_process_checkout' ), 0 );
 	}
 
 	/**
@@ -180,7 +188,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function maybe_apply_coupon_code_on_process_checkout() {
 		// If a coupon code was entered, try to apply it
-		if ( array_key_exists( 'coupon_code', $_POST ) && ! empty( $_POST[ 'coupon_code' ] ) ) {
+		if ( array_key_exists( 'apply_coupon_code', $_POST ) && $_POST[ 'apply_coupon_code' ] === '1' && array_key_exists( 'coupon_code', $_POST ) && ! empty( $_POST[ 'coupon_code' ] ) ) {
 			$coupon_code = wc_format_coupon_code( wp_unslash( $_POST[ 'coupon_code' ] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			
 			// Apply coupon code to the Cart and Order
