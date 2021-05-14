@@ -207,8 +207,6 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 				}
 			}
 		}
-		
-		return $posted_data;
 	}
 
 }
