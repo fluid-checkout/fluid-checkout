@@ -713,6 +713,9 @@ jQuery( function( $ ) {
 
 						// Remove coupon code from coupon field
 						$( 'form.checkout_coupon' ).find( 'input[name="coupon_code"]' ).val( '' );
+
+						// CHANGE: Remove coupon code from coupon field on the checkout form
+						$( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' ).val( '' );
 					}
 				},
 				error: function ( jqXHR ) {
