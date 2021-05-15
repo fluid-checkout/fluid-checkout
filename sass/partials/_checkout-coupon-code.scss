@@ -1,6 +1,32 @@
 /*------------------------------------*\
   #CHECKOUT COUPON CODE
 \*------------------------------------*/
+
+.wfc-wrapper .wfc-expansible-form-section__content--coupon_code .collapsible-content__inner {
+	display: flex;
+}
+
+.wfc-wrapper .wfc-expansible-form-section__content--coupon_code .form-row {
+	float: none;
+	margin: 0;
+	flex-shrink: 1;
+	flex-grow: 1;
+}
+.wfc-wrapper .wfc-expansible-form-section__content--coupon_code input:focus {
+	position: relative;
+	z-index: z( 'above' );
+}
+
+.wfc-wrapper .wfc-expansible-form-section__content--coupon_code .wfc-coupon-code__apply {
+	margin: 0;
+	flex-shrink: 0;
+	flex-grow: 0;
+}
+
+
+
+
+
 .wfc-wrapper .wfc-step__substep-text-content--coupon-codes:not( :empty ) {
 	margin-bottom: $global-spacing-small;
 }

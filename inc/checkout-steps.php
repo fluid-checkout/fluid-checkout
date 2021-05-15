@@ -796,7 +796,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_substep_fields_start_tag( $step_id, $substep_id, $collapsible = true ) {
 		$substep_attributes = array(
 			'id' => 'wfc-substep__fields--' . $substep_id,
-			'class' => 'wfc-step__substep-fields',
+			'class' => 'wfc-step__substep-fields wfc-substep__fields--' . $substep_id,
 			'data-substep-id' => $substep_id,
 		);
 		
@@ -914,7 +914,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Section content attributes
 		$section_content_attributes = array(
 			'id' => 'wfc-expansible-form-section__content--' . $section_id,
-			'class' => 'is-collapsed',
+			'class' => 'wfc-expansible-form-section__content wfc-expansible-form-section__content--' . $section_id . ' is-collapsed',
 			'data-collapsible' => true,
 			'data-collapsible-content' => true,
 			'data-collapsible-initial-state' => 'collapsed',
