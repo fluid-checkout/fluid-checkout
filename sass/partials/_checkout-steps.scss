@@ -163,12 +163,13 @@
 	display: none;
 
 	margin: $checkout-substep-action-button-margin;
-	padding: $global-spacing-tiny $global-spacing-extra-small;
-	font-size: $font-size-small;
-	font-weight: normal;
+	padding: $checkout-substep-action-button-padding;
+	font-size: $checkout-substep-action-button-font-size;
+	font-weight: $checkout-substep-action-button-font-weight;
 	line-height: 1;
-	text-decoration: underline;
-	background-color: transparent;
+	text-decoration: $checkout-substep-action-button-text-decoration;
+	color: $checkout-substep-action-button-color;
+	background-color: $checkout-substep-action-button-background-color;
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $font-size-small--large-screen; }
 }

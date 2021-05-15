@@ -132,7 +132,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 			$coupon_html = str_replace( __( '[Remove]', 'woocommerce' ), __( 'Remove', 'woocommerce-fluid-checkout' ), ob_get_clean() );
 			?>
 			<div class="wfc-coupon-codes__coupon coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
-				<span class="wfc-coupon-codes__coupon-code"><?php wc_cart_totals_coupon_label( $coupon ); ?></span>
+				<strong class="wfc-coupon-codes__coupon-code"><?php wc_cart_totals_coupon_label( $coupon ); ?></strong>
 				<span class="wfc-coupon-codes__coupon-amount"><?php echo $coupon_html; ?></span>
 			</div>
 			<?php

@@ -598,6 +598,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   font-weight: normal;
   line-height: 1;
   text-decoration: underline;
+  color: inherit;
   background-color: transparent; }
   @media (min-width: 1000px) {
     .has-checkout-layout--multi-step .wfc-step__substep-edit,
@@ -1017,6 +1018,34 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   font-size: 24px;
   margin-right: 10px;
   transform: translateY(-1px); }
+
+/*------------------------------------*\
+  #CHECKOUT COUPON CODE
+\*------------------------------------*/
+.wfc-wrapper .wfc-step__substep-text-content--coupon-codes:not(:empty) {
+  margin-bottom: 20px; }
+
+.wfc-wrapper .wfc-coupon-codes__coupon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 -10px 5px;
+  padding: 5px 10px;
+  border: dashed 1px #D6D8D8;
+  border-radius: 5px; }
+
+.wfc-wrapper .wfc-coupon-codes__coupon-amount {
+  flex-wrap: wrap;
+  flex-shrink: 0; }
+
+.wfc-wrapper .wfc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 1;
+  text-decoration: underline;
+  color: inherit;
+  background-color: transparent; }
 
 /*------------------------------------*\
   #CHECKOUT PLACE ORDER
