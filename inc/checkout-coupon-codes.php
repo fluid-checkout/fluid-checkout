@@ -100,7 +100,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		
 		woocommerce_form_field( 'coupon_code', $coupon_code_field_args );
 		?>
-		<button type="button" class="wfc-coupon-code__apply" data-apply-coupon-button><?php echo $coupon_code_button_label; ?></button>
+		<button type="button" class="wfc-coupon-code__apply <?php echo esc_attr( apply_filters( 'wfc_coupon_code_apply_button_classes', '' ) ); ?>" data-apply-coupon-button><?php echo $coupon_code_button_label; ?></button>
 		<input type="hidden" name="apply_coupon_code" id="apply_coupon_code">
 		<?php
 		
