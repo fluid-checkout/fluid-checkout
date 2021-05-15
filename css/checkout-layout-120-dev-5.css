@@ -621,7 +621,8 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 \*------------------------------------*/
 .wfc-wrapper .expansible-section__toggle-plus {
   position: relative;
-  padding: 0 0 0 33px; }
+  padding: 0 0 0 33px;
+  cursor: pointer; }
   .wfc-wrapper .expansible-section__toggle-plus:before {
     display: inline-block;
     font-family: "fluid-checkout-icons" !important;

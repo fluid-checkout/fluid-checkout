@@ -195,6 +195,7 @@
 .wfc-wrapper .expansible-section__toggle-plus {
 	position: relative;
 	padding: $checkout-substep-text-padding;
+	cursor: pointer;
 
 	&:before {
 		@include icon( 'i-plus-circle' );
