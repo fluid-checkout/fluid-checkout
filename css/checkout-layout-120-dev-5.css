@@ -1160,8 +1160,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   font-size: 15px;
   text-align: right;
   line-height: 1;
-  vertical-align: middle;
-  white-space: nowrap; }
+  vertical-align: middle; }
 
 .wfc-wrapper .woocommerce-checkout-review-order-table .product-total .tax_label,
 .wfc-wrapper .woocommerce-checkout-review-order-table .product-total .includes_tax,
