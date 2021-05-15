@@ -27,9 +27,6 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		// Coupon Code Substep
 		add_action( 'wfc_output_step_payment', array( $this, 'output_substep_coupon_codes' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_coupon_codes_text_fragment' ), 10 );
-
-		// Apply coupon code
-		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_apply_coupon_code' ), 10 );
 	}
 
 
@@ -160,26 +157,6 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function output_substep_text_coupon_codes() {
 		echo $this->get_substep_text_coupon_codes();
-	}
-
-
-
-	/**
-	 * Apply a coupon code when updating the checkout page, if a value is provided.
-	 * 
-	 * @param array $posted_data Post data for all checkout fields.
-	 */
-	public function maybe_apply_coupon_code( $posted_data ) {
-		// Get parsed posted data
-		$parsed_posted_data = $this->get_parsed_posted_data();
-		
-		// If a coupon code was entered, try to apply it
-		if ( array_key_exists( 'apply_coupon_code', $parsed_posted_data ) && $parsed_posted_data[ 'apply_coupon_code' ] === '1' && array_key_exists( 'coupon_code', $parsed_posted_data ) && ! empty( $parsed_posted_data[ 'coupon_code' ] ) ) {
-			$coupon_code = wc_format_coupon_code( wp_unslash( $parsed_posted_data[ 'coupon_code' ] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-			WC()->cart->add_discount( $coupon_code );
-		}
-		
-		return $posted_data;
 	}
 
 }

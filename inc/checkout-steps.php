@@ -890,6 +890,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Section toggle attributes
 		$section_toggle_attributes = array(
 			'id' => 'wfc-expansible-form-section__toggle--' . $section_id,
+			'class' => 'wfc-expansible-form-section__toggle wfc-expansible-form-section__toggle--' . $section_id,
 			'data-collapsible' => true,
 			'data-collapsible-content' => true,
 			'data-collapsible-initial-state' => 'expanded',
@@ -903,7 +904,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Toggle element attributes
 		$toggle_attributes = array(
 			'href' => '#wfc-expansible-form-section__content--' . $section_id,
-			'class' => 'expansible-section__toggle-plus',
+			'class' => 'expansible-section__toggle-plus expansible-section__toggle-plus--' . $section_id,
 			'data-collapsible-handler' => true,
 			'data-collapsible-targets' => implode( ',', array(
 				'wfc-expansible-form-section__toggle--' . $section_id,
