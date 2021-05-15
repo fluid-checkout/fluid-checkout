@@ -219,7 +219,11 @@ jQuery( function( $ ) {
 
 			if ( $( e.target ).is( 'form.woocommerce-checkout input[name="coupon_code"]' ) && code === 13 ) {
 				e.preventDefault();
+				$( wc_checkout_form.$checkout_form ).find( '#apply_coupon_code' ).val( '1' );
 				$( document.body ).trigger( 'update_checkout' );
+			}
+			else {
+				$( wc_checkout_form.$checkout_form ).find( '#apply_coupon_code' ).val( '' );
 			}
 		},
 		input_changed: function( e ) {
