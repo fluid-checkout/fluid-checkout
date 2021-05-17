@@ -739,6 +739,12 @@ body:not(.has-collapsible-block) .wfc-expansible-form-section__content .collapsi
   display: none; }
 
 /*------------------------------------*\
+	#CHECKOUT BILLING STEP
+\*------------------------------------*/
+body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-collapsed .collapsible-content__inner {
+  display: none; }
+
+/*------------------------------------*\
   #CHECKOUT SHIPPING METHODS
 \*------------------------------------*/
 .shipping-method__package {
