@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "collapsible-block": "^1.1.2",
-    "fluidweb-updater": "git+https://bitbucket.org/fluidweb-co/fluidweb-updater.git",
     "flyout-block": "^1.1.2",
     "load-json-file": "^6.2.0",
     "mailcheck": "^1.1.1",

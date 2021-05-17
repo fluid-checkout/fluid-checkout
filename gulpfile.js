@@ -125,20 +125,6 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 
 
 // Run: 
-// gulp copy-updater
-// Copy fluidweb-updater to inc/vendor
-gulp.task( 'copy-updater', function( done ) {
-	del.sync( [ './inc/vendor/fluidweb-updater' ] );
-
-	gulp.src( settings.nodePath + 'fluidweb-updater/**/*' )
-	.pipe( gulp.dest( './inc/vendor/fluidweb-updater' ) );
-
-	done();
-});
-
-
-
-// Run: 
 // gulp watch
 // Starts watcher. Watcher runs appropriate tasks on file changes
 gulp.task( 'watch', function ( done ) {

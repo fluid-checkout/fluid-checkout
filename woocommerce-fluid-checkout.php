@@ -96,7 +96,6 @@ class FluidCheckout {
 	public function __construct() {
 		$this->set_plugin_vars();
 		$this->load_textdomain();
-		$this->load_updater();
 		$this->add_features();
 		$this->hooks();
 	}
@@ -114,29 +113,6 @@ class FluidCheckout {
 		self::$directory_url  = plugin_dir_url( WFC_PLUGIN_FILE );
 		self::$version = get_file_data( WFC_PLUGIN_FILE , ['Version' => 'Version'], 'plugin')['Version'];
 		self::$asset_version = $this->get_assets_version_number();
-	}
-
-
-
-	/**
-	 * Load plugin updater.
-	 */
-	public function load_updater() {
-		// Bail if not on admin pages
-		if ( ! is_admin() ) return;
-
-		require_once self::$directory_path . 'inc/vendor/fluidweb-updater/plugin-updater-bitbucket.php';
-			
-		// Check if updater was loaded correctly and instantiate with options from database
-		if ( class_exists( 'Fluidweb_PluginUpdater_Bitbucket' ) ) {
-			new Fluidweb_PluginUpdater_Bitbucket(
-				__FILE__,
-				'fluidweb-co/woocommerce-fluid-checkout',
-				get_option( '_fluidcheckout_repo_user' ),
-				get_option( '_fluidcheckout_repo_pass' ),
-				get_option( '_fluidcheckout_allow-beta-updates' )
-			);
-		}
 	}
 
 
