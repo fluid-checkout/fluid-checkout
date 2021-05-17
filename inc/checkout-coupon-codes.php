@@ -18,6 +18,9 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Bail if use of coupons not enabled
+		if ( ! wc_coupons_enabled() ) { return; }
+		
 		// Body Class
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
