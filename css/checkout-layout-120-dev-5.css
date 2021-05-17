@@ -1061,7 +1061,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   margin-left: 10px;
   font-size: 15px;
   font-weight: normal;
-  line-height: 1;
+  line-height: inherit;
   text-decoration: underline;
   color: inherit;
   background-color: transparent; }
