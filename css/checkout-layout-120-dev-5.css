@@ -644,10 +644,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
     top: 50%;
     transform: translateY(-50%); }
 
-/*------------------------------------*\
-	#CHECKOUT CONTACT STEP
-\*------------------------------------*/
-.has-checkout-layout--multi-step [data-step-complete] [data-substep-id="contact_login"] {
+body:not(.has-collapsible-block) .wfc-expansible-form-section__content .collapsible-content__inner {
   display: none; }
 
 /*------------------------------------*\
@@ -734,6 +731,12 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 
 .wfc-login-form .woocommerce-form-login__submit {
   margin-top: 20px; }
+
+/*------------------------------------*\
+	#CHECKOUT CONTACT STEP
+\*------------------------------------*/
+.has-checkout-layout--multi-step [data-step-complete] [data-substep-id="contact_login"] {
+  display: none; }
 
 /*------------------------------------*\
   #CHECKOUT SHIPPING METHODS
@@ -987,6 +990,9 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 /*------------------------------------*\
   #CHECKOUT GIFT OPTIONS
 \*------------------------------------*/
+body:not(.has-collapsible-block) #wfc-gift-options__field-wrapper .collapsible-content__inner {
+  display: none; }
+
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title .gift-options__icon {
   display: none; }
 

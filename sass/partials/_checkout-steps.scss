@@ -189,6 +189,7 @@
 
 
 
+
 /*------------------------------------*\
 	#CHECKOUT EXPANSIBLE SECTIONS
 \*------------------------------------*/
@@ -208,12 +209,7 @@
 	}
 }
 
-
-
-
-/*------------------------------------*\
-	#CHECKOUT CONTACT STEP
-\*------------------------------------*/
-.has-checkout-layout--multi-step [data-step-complete] [data-substep-id="contact_login"] {
+// Temporarily hide extensible form sections while the collapsible-block script is not yet loaded
+body:not( .has-collapsible-block ) .wfc-expansible-form-section__content .collapsible-content__inner {
 	display: none;
 }

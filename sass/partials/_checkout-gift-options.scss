@@ -1,6 +1,12 @@
 /*------------------------------------*\
   #CHECKOUT GIFT OPTIONS
 \*------------------------------------*/
+
+// Temporarily hide the gift options form section while the collapsible-block script is not yet loaded
+body:not( .has-collapsible-block ) #wfc-gift-options__field-wrapper .collapsible-content__inner {
+	display: none;
+}
+
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title .gift-options__icon {
 	display: none;
 }
