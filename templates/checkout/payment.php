@@ -28,7 +28,6 @@ if ( ! is_ajax() ) {
 	<?php do_action( 'wfc_checkout_before_payment', $checkout ); ?>
 
 	<?php if ( WC()->cart->needs_payment() ) : ?>
-		
 		<div class="wfc-payment-methods__wrapper">
 			<ul class="wc_payment_methods payment_methods methods">
 				<?php
@@ -42,6 +41,9 @@ if ( ! is_ajax() ) {
 				?>
 			</ul>
 		</div>
+	<?php // CHANGE: Display info message when payment is not needed ?>
+	<?php else: ?>
+		<div class="woocommerce-info"><?php echo apply_filters( 'wfc_payment_not_needed_message', sprintf( __( 'Your order has a total amount due of %s. No&nbsp;further payment is needed.', 'woocommerce-fluid-checkout' ), wc_price( 0 ) ) ); ?></div>
 	<?php endif; ?>
 
 	<?php // CHANGE: Removed place order section, moved to templates/wfc/checkout/place-order.php ?>
