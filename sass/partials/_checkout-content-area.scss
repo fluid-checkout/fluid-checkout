@@ -63,6 +63,9 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   #CHECKOUT COLUMNS LAYOUT
 \*------------------------------------*/
 body:not( .has-checkout-must-login-notice ) .wfc-checkout-header,
+body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-message,
+body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-info,
+body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-error,
 body:not( .has-checkout-must-login-notice ) .wfc-checkout-notices,
 body:not( .has-checkout-must-login-notice ).woocommerce-checkout .woocommerce-NoticeGroup,
 body:not( .has-checkout-must-login-notice ) .wfc-progress-bar,
@@ -72,6 +75,11 @@ body:not( .has-checkout-must-login-notice ) .wfc-inside {
 		width: $checkout-steps-width--large-screen;
 		padding-right: $checkout-column-gap--large-screen;
 	}
+}
+body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-message,
+body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-info,
+body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-error {
+	width: calc( #{ $checkout-steps-width--large-screen } - #{ $checkout-column-gap--large-screen } );
 }
 
 

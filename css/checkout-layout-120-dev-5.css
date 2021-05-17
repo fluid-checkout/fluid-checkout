@@ -91,6 +91,9 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 \*------------------------------------*/
 @media (min-width: 1000px) {
   body:not(.has-checkout-must-login-notice) .wfc-checkout-header,
+  body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-message,
+  body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-info,
+  body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-error,
   body:not(.has-checkout-must-login-notice) .wfc-checkout-notices,
   body:not(.has-checkout-must-login-notice).woocommerce-checkout .woocommerce-NoticeGroup,
   body:not(.has-checkout-must-login-notice) .wfc-progress-bar,
@@ -98,6 +101,11 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
     float: left;
     width: 60%;
     padding-right: 50px; } }
+
+body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-message,
+body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-info,
+body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-error {
+  width: calc( 60% - 50px); }
 
 .wfc-sidebar {
   position: static; }
