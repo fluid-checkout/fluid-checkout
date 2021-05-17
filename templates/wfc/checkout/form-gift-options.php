@@ -35,7 +35,8 @@ defined( 'ABSPATH' ) || exit;
 
             <?php
             foreach ( $display_fields as $key => $field ) {
-                woocommerce_form_field( $key, $field, $gift_options[ $key ] );
+                $field_value = array_key_exists( $key, $gift_options ) ? $gift_options[ $key ] : '';
+                woocommerce_form_field( $key, $field, $field_value );
             }
             ?>
 

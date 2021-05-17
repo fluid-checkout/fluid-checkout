@@ -214,6 +214,7 @@ $icons: (
 	'i-chevron-up': '\e80e',
 	'i-minus': '\e818',
 	'i-plus': '\e81b',
+	'i-plus-circle': '\e82a',
 	'i-trash': '\e822',
 	'i-x': '\e827',
 	'i-cart': '\e828',
@@ -345,6 +346,14 @@ $checkout-substep-text-font-size--large-screen:  $font-size-small--large-screen 
 $checkout-substep-text-font-weight:              normal !default;
 
 $checkout-substep-action-button-margin:          $global-spacing-small $global-spacing-extra-small 0 0 !default; // Used to position the substep "Change/Save" action buttons
+$checkout-substep-action-button-padding:         $global-spacing-tiny $global-spacing-extra-small !default;
+$checkout-substep-action-button-font-size:       $font-size-small !default;
+$checkout-substep-action-button-font-weight:     normal !default;
+$checkout-substep-action-button-text-decoration: underline !default;
+$checkout-substep-action-button-color:           inherit !default;
+$checkout-substep-action-button-background-color: transparent !default;
+
+$checkout-expansible-section-icon-spacing:       $checkout-substep-title-check-icon-spacing / 2 !default;
 
 // END - CHECKOUT STEPS
 // ----------------------------------------
@@ -439,4 +448,25 @@ $payment-method-checked-background-color:  $option-box-checked-background-color 
 $payment-method-checked-color:             $option-box-checked-color !default;
 
 // END - PAYMENT METHODS
+// ----------------------------------------
+
+
+
+
+// ----------------------------------------
+// COUPON CODES
+
+$coupon-code-coupon-margin:                 0 #{ - $global-spacing-extra-small } $global-spacing-tiny !default;
+$coupon-code-coupon-padding:                $global-spacing-tiny $global-spacing-extra-small !default;
+$coupon-code-coupon-border:                 dashed remsize( .1rem ) $border-color !default;
+$coupon-code-coupon-border-radius:          $global-radius-small !default;
+
+$coupon-code-remove-spacing:                $global-spacing-extra-small !default;
+$coupon-code-remove-font-size:              $font-size-small !default;
+$coupon-code-remove-font-weight:            normal !default;
+$coupon-code-remove-text-decoration:        underline !default;
+$coupon-code-remove-color:                  inherit !default;
+$coupon-code-remove-background-color:       transparent !default;
+
+// END - COUPON CODES
 // ----------------------------------------

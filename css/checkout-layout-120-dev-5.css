@@ -91,13 +91,21 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 \*------------------------------------*/
 @media (min-width: 1000px) {
   body:not(.has-checkout-must-login-notice) .wfc-checkout-header,
+  body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-message,
+  body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-info,
+  body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-error,
   body:not(.has-checkout-must-login-notice) .wfc-checkout-notices,
+  body:not(.has-checkout-must-login-notice).woocommerce-checkout .woocommerce-NoticeGroup,
   body:not(.has-checkout-must-login-notice) .wfc-progress-bar,
-  body:not(.has-checkout-must-login-notice) .woocommerce-NoticeGroup-checkout,
   body:not(.has-checkout-must-login-notice) .wfc-inside {
     float: left;
     width: 60%;
     padding-right: 50px; } }
+
+body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-message,
+body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-info,
+body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-error {
+  width: calc( 60% - 50px); }
 
 .wfc-sidebar {
   position: static; }
@@ -598,6 +606,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   font-weight: normal;
   line-height: 1;
   text-decoration: underline;
+  color: inherit;
   background-color: transparent; }
   @media (min-width: 1000px) {
     .has-checkout-layout--multi-step .wfc-step__substep-edit,
@@ -616,9 +625,34 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   display: none; }
 
 /*------------------------------------*\
-	#CHECKOUT CONTACT STEP
+	#CHECKOUT EXPANSIBLE SECTIONS
 \*------------------------------------*/
-.has-checkout-layout--multi-step [data-step-complete] [data-substep-id="contact_login"] {
+.wfc-wrapper .expansible-section__toggle-plus {
+  position: relative;
+  padding: 0 0 0 33px;
+  cursor: pointer; }
+  .wfc-wrapper .expansible-section__toggle-plus:before {
+    display: inline-block;
+    font-family: "fluid-checkout-icons" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: middle;
+    content: "";
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    position: absolute;
+    left: 2.5px;
+    top: 50%;
+    transform: translateY(-50%); }
+
+body:not(.has-collapsible-block) .wfc-expansible-form-section__content .collapsible-content__inner {
   display: none; }
 
 /*------------------------------------*\
@@ -705,6 +739,18 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 
 .wfc-login-form .woocommerce-form-login__submit {
   margin-top: 20px; }
+
+/*------------------------------------*\
+	#CHECKOUT CONTACT STEP
+\*------------------------------------*/
+.has-checkout-layout--multi-step [data-step-complete] [data-substep-id="contact_login"] {
+  display: none; }
+
+/*------------------------------------*\
+	#CHECKOUT BILLING STEP
+\*------------------------------------*/
+body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-collapsed .collapsible-content__inner {
+  display: none; }
 
 /*------------------------------------*\
   #CHECKOUT SHIPPING METHODS
@@ -958,6 +1004,9 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 /*------------------------------------*\
   #CHECKOUT GIFT OPTIONS
 \*------------------------------------*/
+body:not(.has-collapsible-block) #wfc-gift-options__field-wrapper .collapsible-content__inner {
+  display: none; }
+
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title .gift-options__icon {
   display: none; }
 
@@ -990,6 +1039,52 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   font-size: 24px;
   margin-right: 10px;
   transform: translateY(-1px); }
+
+/*------------------------------------*\
+  #CHECKOUT COUPON CODE
+\*------------------------------------*/
+.wfc-wrapper .wfc-expansible-form-section__content--coupon_code .collapsible-content__inner {
+  display: flex; }
+
+.wfc-wrapper .wfc-expansible-form-section__content--coupon_code .form-row {
+  float: none;
+  margin: 0;
+  flex-shrink: 1;
+  flex-grow: 1; }
+
+.wfc-wrapper .wfc-expansible-form-section__content--coupon_code input:focus {
+  position: relative;
+  z-index: 10; }
+
+.wfc-wrapper .wfc-expansible-form-section__content--coupon_code .wfc-coupon-code__apply {
+  margin: 0;
+  flex-shrink: 0;
+  flex-grow: 0; }
+
+.wfc-wrapper .wfc-step__substep-text-content--coupon-codes:not(:empty) {
+  margin-bottom: 20px; }
+
+.wfc-wrapper .wfc-coupon-codes__coupon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 -10px 5px;
+  padding: 5px 10px;
+  border: dashed 1px #D6D8D8;
+  border-radius: 5px; }
+
+.wfc-wrapper .wfc-coupon-codes__coupon-amount {
+  flex-wrap: wrap;
+  flex-shrink: 0; }
+
+.wfc-wrapper .wfc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: inherit;
+  text-decoration: underline;
+  color: inherit;
+  background-color: transparent; }
 
 /*------------------------------------*\
   #CHECKOUT PLACE ORDER
@@ -1085,8 +1180,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
   font-size: 15px;
   text-align: right;
   line-height: 1;
-  vertical-align: middle;
-  white-space: nowrap; }
+  vertical-align: middle; }
 
 .wfc-wrapper .woocommerce-checkout-review-order-table .product-total .tax_label,
 .wfc-wrapper .woocommerce-checkout-review-order-table .product-total .includes_tax,

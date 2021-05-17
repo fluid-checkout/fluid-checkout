@@ -1,0 +1,8 @@
+/*------------------------------------*\
+	#CHECKOUT BILLING STEP
+\*------------------------------------*/
+
+// Temporarily hide extensible form sections while the collapsible-block script is not yet loaded
+body:not( .has-collapsible-block ) .woocommerce-billing-fields__field-wrapper.is-collapsed .collapsible-content__inner {
+	display: none;
+}

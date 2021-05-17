@@ -1,0 +1,57 @@
+/*------------------------------------*\
+  #CHECKOUT COUPON CODE
+\*------------------------------------*/
+
+.wfc-wrapper .wfc-expansible-form-section__content--coupon_code .collapsible-content__inner {
+	display: flex;
+}
+
+.wfc-wrapper .wfc-expansible-form-section__content--coupon_code .form-row {
+	float: none;
+	margin: 0;
+	flex-shrink: 1;
+	flex-grow: 1;
+}
+.wfc-wrapper .wfc-expansible-form-section__content--coupon_code input:focus {
+	position: relative;
+	z-index: z( 'above' );
+}
+
+.wfc-wrapper .wfc-expansible-form-section__content--coupon_code .wfc-coupon-code__apply {
+	margin: 0;
+	flex-shrink: 0;
+	flex-grow: 0;
+}
+
+
+
+
+
+.wfc-wrapper .wfc-step__substep-text-content--coupon-codes:not( :empty ) {
+	margin-bottom: $global-spacing-small;
+}
+
+.wfc-wrapper .wfc-coupon-codes__coupon {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: $coupon-code-coupon-margin;
+	padding: $coupon-code-coupon-padding;
+	border: $coupon-code-coupon-border;
+	border-radius: $coupon-code-coupon-border-radius;
+}
+
+.wfc-wrapper .wfc-coupon-codes__coupon-amount {
+	flex-wrap: wrap;
+	flex-shrink: 0;
+}
+
+.wfc-wrapper .wfc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
+	margin-left: $coupon-code-remove-spacing;
+	font-size: $coupon-code-remove-font-size;
+	font-weight: $coupon-code-remove-font-weight;
+	line-height: inherit;
+	text-decoration: $coupon-code-remove-text-decoration;
+	color: $coupon-code-remove-color;
+	background-color: transparent;
+}

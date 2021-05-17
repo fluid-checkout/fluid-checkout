@@ -33,19 +33,24 @@
 		contentElementSelector: '[data-collapsible-content]',
 		contentInnerSelector: '.collapsible-content__inner',
 		handlerSelector: '[data-collapsible-handler]',
+		handlerMultiTargetSelector: '[data-collapsible-targets]',
+		
+		autoFocusSelector: '[data-autofocus]',
+		focusableElementsSelector: 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), details, summary, iframe, object, embed, [contenteditable] [tabindex]:not([tabindex="-1"])',
 		
 		isCollapsedClass: 'is-collapsed',
+		isExpandedClass: 'is-expanded',
 		isActivatedClass: 'is-activated',
 		cssTransition: 'height .15s linear',
 		
 		targetAttribute: 'aria-controls',
+		multiTargetAttribute: 'data-collapsible-targets',
 		maxHeightAttribute: 'data-collapsible-max-height',
 		createHandlerAttribute: 'data-collapsible-create-handler',
 		changeStateOnResizeAttribute: 'data-collapsible-change-state-resize',
 
 		initialState: _publicMethods.states.FIRST_EXPANDED,
 		initialStateAttribute: 'data-collapsible-initial-state',
-		firstExpandedDelay: 100,
 		
 		idPrefix: 'collapsible',
 		createHandler: false,
@@ -154,28 +159,96 @@
 
 
 	/**
+	 * Gets keyboard-focusable elements within a specified element
+	 *
+	 * @param   HTMLElement  element  The element to search within. Defaults to the `document` root element.
+	 *
+	 * @return  NodeList              All focusable elements withing the element passed in.
+	 */
+	 var getFocusableElements = function( element ) {
+		// Set element to `document` root if not passed in
+		if ( ! element ) { element = document; }
+		
+		// Get elements that are keyboard-focusable, but might be `disabled`
+		return element.querySelectorAll( _settings.focusableElementsSelector );
+	}
+
+
+
+	/**
+	 * Handle toggle events for handlers with multiple targets.
+	 *
+	 * @param   HTMLElement  handlerElement  Handler element.
+	 */
+	var handleMultipleTargets = function( handlerElement ) {
+		// Bail if handler element is not valid
+		if ( ! handlerElement ) { return; }
+
+		// Get target ids
+		var multiTargetIds = handlerElement.getAttribute( _settings.multiTargetAttribute );
+		var targetIds = multiTargetIds.split( ',' );
+
+		// Iterate targetIds
+		for ( var i = 0; i < targetIds.length; i++) {
+			var targetId = targetIds[i];
+
+			// Get target element
+			var targetElement = document.querySelector( '#' + targetId.trim() );
+			if ( targetElement ) {
+				// Get the collapsbile element
+				var element = targetElement.closest( _settings.elementSelector );
+
+				// Maybe toggle collapsbile element state
+				if ( element ) {
+					_publicMethods.toggleState( element );
+				}
+			}
+		}
+	}
+
+
+
+	/**
+	 * Handle toggle events for handlers with single targets.
+	 *
+	 * @param   HTMLElement  handlerElement  Handler element.
+	 */
+	var handleSingleTarget = function( handlerElement ) {
+		// Bail if handler element is not valid
+		if ( ! handlerElement ) { return; }
+
+		// Get target element
+		var targetElement = document.querySelector( '#' + handlerElement.getAttribute( _settings.targetAttribute ) );
+		
+		// Get target element from the handler element
+		if ( ! targetElement ) {
+			targetElement = handlerElement;
+		}
+
+		// Get the collapsbile element
+		var element = targetElement.closest( _settings.elementSelector );
+
+		// Maybe toggle collapsbile element state
+		if ( element ) {
+			_publicMethods.toggleState( element );
+		}
+	}
+
+
+
+	/**
 	 * Route click events
 	 */
 	var handleClick = function( e ) {
-		if ( e.target.closest( _settings.handlerSelector ) ) {
+		if ( e.target.closest( _settings.handlerSelector ) && e.target.closest( _settings.handlerMultiTargetSelector ) ) {
 			e.preventDefault();
-			
-			// Get target and handler elements
+			var handlerElement = e.target.closest( _settings.handlerMultiTargetSelector );
+			handleMultipleTargets( handlerElement );
+		}
+		else if ( e.target.closest( _settings.handlerSelector ) ) {
+			e.preventDefault();
 			var handlerElement = e.target.closest( _settings.handlerSelector );
-			var targetElement = document.querySelector( '#' + handlerElement.getAttribute( _settings.targetAttribute ) );
-			
-			// Get target element from the handler element
-			if ( ! targetElement ) {
-				targetElement = handlerElement;
-			}
-
-			// Get the collapsbile element
-			var element = targetElement.closest( _settings.elementSelector );
-
-			// Maybe toggle collapsbile element state
-			if ( element ) {
-				_publicMethods.toggleState( element );
-			}
+			handleSingleTarget( handlerElement );
 		}
 	}
 
@@ -188,7 +261,7 @@
 		// Should do nothing if the default action has been cancelled
 		if ( e.defaultPrevented ) { return; }
 
-		// ENTER on flyout trigger
+		// ENTER or SPACE on handler element
 		if ( ( e.key == _key.ENTER || e.key == _key.SPACE ) && e.target.closest( _settings.handlerSelector ) ) {
 			// Similate click
 			handleClick( e );
@@ -374,6 +447,19 @@
 
 		// Syncronize `aria-expanded` for every handler on the page
 		syncAriaExpanded( element, true );
+				
+		// Maybe set focus to child element marked as auto-focus
+		var autofocusChild = element.querySelector( _settings.autoFocusSelector );
+		if ( autofocusChild ) {
+			autofocusChild.focus();
+		}
+		// Maybe set focus to first focusable element
+		else if ( element.matches( _settings.autoFocusSelector ) ) {
+			var focusableElements = Array.from( getFocusableElements( element ) );
+			if ( focusableElements.length > 0 ) {
+				focusableElements[0].focus();
+			}
+		}
 
 		// Remove the event handler so it runs only once
 		element.removeEventListener( getTransitionEndEvent(), finishExpand );
@@ -445,8 +531,9 @@
 		// Set default value for withTransition
 		withTransition = withTransition === false ? false : true;
 
-		// Collapse element
+		// Update element's state to `collapsed`
 		manager.element.classList.add( manager.settings.isCollapsedClass );
+		manager.element.classList.remove( manager.settings.isExpandedClass );
 		
 		// Remove `finishExpand` event listener to prevent block from expanding at the end of the transition
 		manager.contentElement.removeEventListener( getTransitionEndEvent(), finishExpand );
@@ -520,6 +607,7 @@
 			setHeight( manager.contentElement, computedHeight, withTransition );
 
 			// Update element's state to `expanded`
+			manager.element.classList.add( manager.settings.isExpandedClass );
 			manager.element.classList.remove( manager.settings.isCollapsedClass );
 			
 			// Make sure to finish the "expand" state change when transitions are not used
@@ -595,9 +683,12 @@
 			handler.setAttribute( 'role', 'button' );
 		}
 
-		// Maybe get target element id from attributes or parent elements
+		// Get target attributes
 		var targetId = handler.getAttribute( _settings.targetAttribute );
-		if ( ! targetId || targetId == '' ) {
+		var multiTargetIds = handler.getAttribute( _settings.multiTargetAttribute );
+
+		// Maybe get target element id from attributes or parent elements
+		if ( ( ! targetId || targetId == '' ) && ( ! multiTargetIds || multiTargetIds == '' ) ) {
 			var parentCollapsible = handler.closest( _settings.elementSelector );
 
 			// Check if collapsbile blocks is also the content element

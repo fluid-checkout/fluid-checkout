@@ -96,7 +96,6 @@ class FluidCheckout {
 	public function __construct() {
 		$this->set_plugin_vars();
 		$this->load_textdomain();
-		$this->load_updater();
 		$this->add_features();
 		$this->hooks();
 	}
@@ -119,29 +118,6 @@ class FluidCheckout {
 
 
 	/**
-	 * Load plugin updater.
-	 */
-	public function load_updater() {
-		// Bail if not on admin pages
-		if ( ! is_admin() ) return;
-
-		require_once self::$directory_path . 'inc/vendor/fluidweb-updater/plugin-updater-bitbucket.php';
-			
-		// Check if updater was loaded correctly and instantiate with options from database
-		if ( class_exists( 'Fluidweb_PluginUpdater_Bitbucket' ) ) {
-			new Fluidweb_PluginUpdater_Bitbucket(
-				__FILE__,
-				'fluidweb-co/woocommerce-fluid-checkout',
-				get_option( '_fluidcheckout_repo_user' ),
-				get_option( '_fluidcheckout_repo_pass' ),
-				get_option( '_fluidcheckout_allow-beta-updates' )
-			);
-		}
-	}
-
-
-
-	/**
 	 * Load plugin textdomain.
 	 */
 	public function load_textdomain() {
@@ -154,9 +130,12 @@ class FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Load features
 		add_action( 'plugins_loaded', array( $this, 'load_features' ) );
+		add_action( 'plugins_loaded', array( $this, 'load_plugin_compat_features' ) );
+		add_action( 'plugins_loaded', array( $this, 'load_theme_compat_features' ) );
 
-		// Template loader
+		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 10, 3 );
 	}
 
@@ -171,12 +150,12 @@ class FluidCheckout {
 			'checkout-page-template'              => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php', 'enable_option' => 'wfc_enable_checkout_page_template', 'enable_default' => true ),
 			'checkout-steps'                      => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
 			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php' ),
-			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => true ),
 			'checkout-validation'                 => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => true ),
 			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => true ),
-			'cart-widget-areas'                   => array( 'file' => self::$directory_path . 'inc/cart-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => true ),
+			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php', 'enable_option' => 'wfc_enable_checkout_coupon_codes', 'enable_default' => true ),
+			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => true ),
 			
-			'compat-payment-method-stripe'        => array( 'file' => self::$directory_path . 'inc/compat/plugins/compat-payment-method-stripe.php', 'enable_option' => 'wfc_compat_payment_method_stripe', 'enable_default' => true ),
+			'cart-widget-areas'                   => array( 'file' => self::$directory_path . 'inc/cart-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => true ),
 		);
 	}
 
@@ -276,6 +255,63 @@ class FluidCheckout {
 			// Load feature file if enabled and file exists
 			if ( $feature_is_enabled && file_exists( $file ) ) {
 				require_once $file;
+			}
+		}
+	}
+
+
+
+	/**
+	 * Load plugins compatibility features.
+	 * @since 1.2.0
+	 */
+	public function load_plugin_compat_features() {
+		// Bail if visiting admin pages
+		if ( is_admin() ) { return; }
+
+		// Get active plugins
+		$plugins_installed = get_option('active_plugins');
+		
+		foreach ( $plugins_installed as $plugin_file ) {
+			// Get plugin slug
+			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
+			
+			// Maybe skip compat file
+			if ( get_option( 'wfc_enable_compat_plugin_' . $plugin_slug, true ) === 'false' ) { continue; }
+			
+			// Get plugin file path
+			$plugin_compat_file_path = self::$directory_path . 'inc/compat/plugins/compat-plugin-' . $plugin_slug . '.php';
+
+			// Maybe load plugin's compatibility file
+			if ( file_exists( $plugin_compat_file_path ) ) {
+				include_once( $plugin_compat_file_path );
+			}
+		}
+	}
+
+
+
+	/**
+	 * Load themes compatibility features.
+	 * @since 1.2.0
+	 */
+	public function load_theme_compat_features() {
+		// Bail if visiting admin pages
+		if ( is_admin() ) { return; }
+
+		// Get currently active theme and child theme
+		$theme_slugs = array( get_template(), get_stylesheet() );
+		
+		foreach ( $theme_slugs as $theme_slug ) {
+			// Maybe skip compat file
+			if ( get_option( 'wfc_enable_compat_theme_' . $theme_slug, true ) === 'false' ) { continue; }
+			
+			// Get current theme's compatibility file name
+			$theme_compat_file_path = self::$directory_path . 'inc/compat/themes/compat-theme-' . $theme_slug . '.php';
+
+			// Maybe load theme's compatibility file
+			if ( file_exists( $theme_compat_file_path ) ) {
+				include_once( $theme_compat_file_path );
 			}
 		}
 	}

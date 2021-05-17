@@ -42,6 +42,10 @@
 		substepTextSelector: '.wfc-step__substep-text',
 		substepEditButtonSelector: '[data-step-edit]',
 		substepSaveButtonSelector: '[data-step-save]',
+
+		expansibleSectionToggleSelector: '[data-expansible-section-toggle]',
+		expansibleSectionExpandAttribute: 'data-expansible-section-expand',
+		expansibleSectionCollapseAttribute: 'data-expansible-section-collapse',
 		
 		stepCompleteAttribute: 'data-step-complete',
 		stepCurrentAttribute: 'data-step-current',
@@ -246,6 +250,9 @@
 			var contentElement = substepElement.querySelector( _settings.substepTextContentSelector );
 			blockUI( contentElement );
 
+			// Remove messages prior to updating
+			$( '.woocommerce-error, .woocommerce-message' ).remove();
+
 			// Trigger update checkout
 			$( document.body ).trigger( 'update_checkout' );
 		}
@@ -413,16 +420,19 @@
 	var handleClick = function( e ) {
 		// NEXT STEP
 		if ( e.target.closest( _settings.nextStepButtonSelector ) ) {
+			e.preventDefault();
 			var step = e.target.closest( _settings.stepSelector );
 			maybeProceedNextStep( step );
 		}
 		// EDIT SUBSTEP
 		else if ( e.target.closest( _settings.substepEditButtonSelector ) ) {
+			e.preventDefault();
 			var substepElement = e.target.closest( _settings.substepSelector );
 			expandSubstepEdit( substepElement );
 		}
 		// SAVE SUBSTEP
 		else if ( e.target.closest( _settings.substepSaveButtonSelector ) ) {
+			e.preventDefault();
 			var substepElement = e.target.closest( _settings.substepSelector );
 			maybeSaveSubstep( substepElement );
 		}

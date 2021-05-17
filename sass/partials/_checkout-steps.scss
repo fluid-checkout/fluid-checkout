@@ -163,12 +163,13 @@
 	display: none;
 
 	margin: $checkout-substep-action-button-margin;
-	padding: $global-spacing-tiny $global-spacing-extra-small;
-	font-size: $font-size-small;
-	font-weight: normal;
+	padding: $checkout-substep-action-button-padding;
+	font-size: $checkout-substep-action-button-font-size;
+	font-weight: $checkout-substep-action-button-font-weight;
 	line-height: 1;
-	text-decoration: underline;
-	background-color: transparent;
+	text-decoration: $checkout-substep-action-button-text-decoration;
+	color: $checkout-substep-action-button-color;
+	background-color: $checkout-substep-action-button-background-color;
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $font-size-small--large-screen; }
 }
@@ -190,8 +191,25 @@
 
 
 /*------------------------------------*\
-	#CHECKOUT CONTACT STEP
+	#CHECKOUT EXPANSIBLE SECTIONS
 \*------------------------------------*/
-.has-checkout-layout--multi-step [data-step-complete] [data-substep-id="contact_login"] {
+.wfc-wrapper .expansible-section__toggle-plus {
+	position: relative;
+	padding: $checkout-substep-text-padding;
+	cursor: pointer;
+
+	&:before {
+		@include icon( 'i-plus-circle' );
+		@include icon-size( $icon-size );
+		
+		position: absolute;
+		left: $checkout-expansible-section-icon-spacing;
+		top: 50%;
+		transform: translateY( -50% );
+	}
+}
+
+// Temporarily hide extensible form sections while the collapsible-block script is not yet loaded
+body:not( .has-collapsible-block ) .wfc-expansible-form-section__content .collapsible-content__inner {
 	display: none;
 }
