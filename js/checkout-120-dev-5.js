@@ -732,8 +732,13 @@ jQuery( function( $ ) {
 					remove_button.removeClass( 'is-loading' );
 
 					if ( code ) {
-						// CHANGE: Change coupon code message container selector
-						$( '.wfc-step__substep-text-content--coupon-codes' ).before( code );
+						// CHANGE: Maybe display coupon code messages in the coupon code step instead of the top of the page
+						if ( remove_button.parents( '[data-substep-id="coupon_codes"]' ).length > 0 ) {
+							remove_button.parents( '[data-substep-id="coupon_codes"]' ).prepend( code );
+						}
+						else {
+							$( 'form.woocommerce-checkout' ).before( code );
+						}
 
 						$( document.body ).trigger( 'removed_coupon_in_checkout', [ data.coupon_code ] );
 						$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
