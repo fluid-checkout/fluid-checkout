@@ -398,7 +398,6 @@ jQuery( function( $ ) {
 
 					// Remove any notices added previously
 					$( '.woocommerce-NoticeGroup-updateOrderReview' ).remove();
-					// TODO: Also remove coupon code messages
 
 					// CHANGE: replaced the terms checkbox css selector
 					var termsCheckBoxChecked = $( _terms_selector ).prop( 'checked' );
@@ -460,12 +459,6 @@ jQuery( function( $ ) {
 
 						// Add new errors returned by this event
 						if ( data.messages ) {
-							
-							// TODO: Check if all messages are related to coupon codes
-							// TODO: Display coupon messages at the coupon section if all messages are related to coupons
-							// TODO: Add a flag to maybe scroll to the notices
-							console.log( data.messages );
-
 							$form.prepend( '<div class="woocommerce-NoticeGroup woocommerce-NoticeGroup-updateOrderReview">' + data.messages + '</div>' ); // eslint-disable-line max-len
 						} else {
 							$form.prepend( data );
@@ -474,7 +467,6 @@ jQuery( function( $ ) {
 						// Lose focus for all fields
 						$form.find( '.input-text, select, input:checkbox' ).trigger( 'validate' ).trigger( 'blur' );
 
-						// TODO: Check flag to maybe scroll to the checkout notices, or stay at the same position
 						wc_checkout_form.scroll_to_notices();
 					}
 
@@ -635,11 +627,6 @@ jQuery( function( $ ) {
 			wc_checkout_form.$checkout_form.removeClass( 'processing' ).unblock();
 			wc_checkout_form.$checkout_form.find( '.input-text, select, input:checkbox' ).trigger( 'validate' ).trigger( 'blur' );
 			wc_checkout_form.scroll_to_notices();
-
-			// TODO: Maybe remove this change as it may not be necessary anymore
-			// CHANGE: Remove coupon code from coupon field on the checkout form
-			$( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' ).val( '' );
-
 			$( document.body ).trigger( 'checkout_error' , [ error_message ] );
 		},
 		scroll_to_notices: function() {
@@ -727,6 +714,11 @@ jQuery( function( $ ) {
 				coupon:   coupon
 			};
 
+			// CHANGE: Display loading/processing indication on the remove coupon button
+			var remove_button   = $( this );
+			remove_button.prop( 'disabled', true );
+			remove_button.addClass( 'is-loading' );
+
 			$.ajax({
 				type:    'POST',
 				url:     wc_checkout_params.wc_ajax_url.toString().replace( '%%endpoint%%', 'remove_coupon' ),
@@ -734,6 +726,10 @@ jQuery( function( $ ) {
 				success: function( code ) {
 					$( '.woocommerce-error, .woocommerce-message' ).remove();
 					container.removeClass( 'processing' ).unblock();
+
+					// CHANGE: Remove loading/processing indication from the remove coupon button
+					remove_button.prop( 'disabled', false );
+					remove_button.removeClass( 'is-loading' );
 
 					if ( code ) {
 						// CHANGE: Change coupon code message container selector
@@ -763,13 +759,18 @@ jQuery( function( $ ) {
 			e.preventDefault();
 
 			var coupon_code    = $( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' ).val();
+			var coupon_field   = $( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' );
+			var apply_button   = $( 'form.woocommerce-checkout' ).find( '[data-apply-coupon-button]' );
 
 			var data = {
 				security: wc_checkout_params.apply_coupon_nonce,
 				coupon_code:   coupon_code
 			};
 
-			// TODO: Display loading/processing indication
+			// Display loading/processing indication
+			coupon_field.prop( 'disabled', true );
+			apply_button.prop( 'disabled', true );
+			apply_button.addClass( 'is-loading' );
 
 			$.ajax({
 				type:    'POST',
@@ -778,7 +779,10 @@ jQuery( function( $ ) {
 				success: function( code ) {
 					$( '.woocommerce-error, .woocommerce-message' ).remove();
 					
-					// TODO: Remove loading/processing indication
+					// Remove loading/processing indication
+					coupon_field.prop( 'disabled', false );
+					apply_button.prop( 'disabled', false );
+					apply_button.removeClass( 'is-loading' );
 
 					if ( code ) {
 						$( '.wfc-step__substep-text-content--coupon-codes' ).before( code );
@@ -810,8 +814,6 @@ jQuery( function( $ ) {
 								}
 							}
 						}
-
-						// TODO: Scroll message into view
 					}
 				},
 				error: function ( jqXHR ) {

@@ -250,6 +250,9 @@
 			var contentElement = substepElement.querySelector( _settings.substepTextContentSelector );
 			blockUI( contentElement );
 
+			// Remove messages prior to updating
+			$( '.woocommerce-error, .woocommerce-message' ).remove();
+
 			// Trigger update checkout
 			$( document.body ).trigger( 'update_checkout' );
 		}
