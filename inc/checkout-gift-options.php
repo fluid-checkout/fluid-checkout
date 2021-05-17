@@ -37,7 +37,9 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		add_action( 'woocommerce_process_shop_order_meta', array( $this, 'save_order_gift_details' ) );
 		
 		// Order Details
-		add_filter( 'woocommerce_get_order_item_totals', array( $this, 'maybe_add_gift_message_order_received_details' ), 30, 3 );
+		add_filter( 'woocommerce_get_order_item_totals', array( $this, 'maybe_add_gift_message_order_received_details_table' ), 30, 3 );
+		add_action( 'woocommerce_order_details_after_order_table', array( $this, 'output_gift_message_order_details' ), 10 );
+		add_action( 'woocommerce_email_after_order_table', array( $this, 'output_gift_message_order_details_email' ), 10, 4 );
 	}
 
 
@@ -413,38 +415,117 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 
 	/**
-	 * Maybe add gift message to order details totals.
+	 * Maybe add gift message values to the order details table.
 	 *
 	 * @param array  $total_rows  Total rows.
 	 * @param   WC_Order   $order   The Order object.
 	 * @param string $tax_display Tax to display.
 	 */
-	public function maybe_add_gift_message_order_received_details( $total_rows, $order, $tax_display ) {
+	public function maybe_add_gift_message_order_received_details_table( $total_rows, $order, $tax_display ) {
 		// Bail if not on order received page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || ! is_order_received_page() ){ return $total_rows; }
 
 		// Get token position
 		$position_index = array_search( 'shipping_address', array_keys( $total_rows ) ) + 1;
 
+		// Get gift options
+		$gift_options = $this->get_gift_options_from_order( $order->get_id() );
+
 		// Get gift message value
-		$gift_message = get_post_meta( $order->get_id(), '_wfc_gift_message', true );
-		$gift_from = get_post_meta( $order->get_id(), '_wfc_gift_from', true );
-		$gift_message_value = '';
-		if ( ! empty( $gift_message ) ) { $gift_message_value .= '<span class="order-received__gift-message">'.$gift_message.'</span>'; };
-		if ( ! empty( $gift_from ) ) { $gift_message_value .= ' <span class="order-received__gift-from">'.$gift_from.'</span>'; };
-	
-		// Bail if gift message wasn't added
-		if ( empty( $gift_message_value ) ) { return $total_rows; }
+		$gift_message = $gift_options[ '_wfc_gift_message' ];
+		$gift_from = $gift_options[ '_wfc_gift_from' ];
 
 		// Insert at token position
 		$new_total_rows  = array_slice( $total_rows, 0, $position_index );
-		$new_total_rows[ 'gift_message' ] = array(
-			'label' => __( 'Gift message:', 'woocommerce-fluid-checkout' ),
-			'value' => $gift_message_value,
-		);
+		
+		// Check if should display message text on the order details table
+		if ( get_option( 'wfc_display_gift_message_order_details_table', 'false' ) !== 'false' ) {
+			// Gift message
+			if ( ! empty( $gift_message ) ) {
+				$new_total_rows[ 'gift_message' ] = array(
+					'label' => __( 'Gift message:', 'woocommerce-fluid-checkout' ),
+					'value' => $gift_message,
+				);
+			}
+	
+			// Gift message from
+			if ( ! empty( $gift_from ) ) { 
+				$new_total_rows[ 'gift_message_from' ] = array(
+					'label' => __( 'Gift message from:', 'woocommerce-fluid-checkout' ),
+					'value' => $gift_from,
+				);
+			}
+		}
+
 		$new_total_rows = array_merge( $new_total_rows, array_slice( $total_rows, $position_index, count( $total_rows ) ) );
 	
 		return $new_total_rows;
+	}
+
+
+
+	/**
+	 * Output the gift message values to the order details as a section below the order details table.
+	 *
+	 * @param   WC_Order   $order   The Order object.
+	 */
+	public function output_gift_message_order_details( $order ) {
+		// Bail if already displaying message text on the order details table
+		if ( get_option( 'wfc_display_gift_message_order_details_table', 'false' ) !== 'false' ) { return; }
+
+		// Bail if not on order received page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || ! is_order_received_page() ){ return; }
+
+		// Get gift options
+		$gift_options = $this->get_gift_options_from_order( $order->get_id() );
+
+		// Output gift options section template
+		wc_get_template(
+			'wfc/order/order-details-gift-options.php',
+			array(
+				'order'                    => $order,
+				'gift_options'             => $gift_options,
+			)
+		);
+	}
+
+
+	/**
+	 * * Maybe output the gift message values to the order details as a section below the order details table.
+	 *
+	 * @param WC_Order $order         Order instance.
+	 * @param bool     $sent_to_admin If should sent to admin.
+	 * @param bool     $plain_text    If is plain text email.
+	 * @param string   $email         Email address.
+	 */
+	public function output_gift_message_order_details_email( $order, $sent_to_admin, $plain_text, $email ) {
+		// Bail if already displaying message text on the order details table
+		if ( get_option( 'wfc_display_gift_message_order_details_table', 'false' ) !== 'false' ) { return; }
+
+		// Get gift options
+		$gift_options = $this->get_gift_options_from_order( $order->get_id() );
+
+		if ( $plain_text ) {
+
+			// Output gift options section template
+			wc_get_template(
+				'wfc/order/order-details-gift-options-email-plain-text.php',
+				array(
+					'order'                    => $order,
+					'gift_options'             => $gift_options,
+				)
+			);
+		}
+		else {
+			// Output gift options section template
+			wc_get_template(
+				'wfc/order/order-details-gift-options.php',
+				array(
+					'order'                    => $order,
+					'gift_options'             => $gift_options,
+				)
+			);
+		}
 	}
 
 }
