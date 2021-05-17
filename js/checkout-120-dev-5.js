@@ -22,8 +22,8 @@ jQuery( function( $ ) {
 		$order_review: $( '#order_review' ),
 		$checkout_form: $( 'form.checkout' ),
 		init: function() {
-			$( document.body ).bind( 'update_checkout', this.update_checkout );
-			$( document.body ).bind( 'init_checkout', this.init_checkout );
+			$( document.body ).on( 'update_checkout', this.update_checkout );
+			$( document.body ).on( 'init_checkout', this.init_checkout );
 
 			// Payment methods
 			this.$checkout_form.on( 'click', 'input[name="payment_method"]', this.payment_method_selected );
@@ -55,6 +55,9 @@ jQuery( function( $ ) {
 			// CHANGE: Prevent billing address fields change from updating checkout
 			this.$checkout_form.on( 'keydown', '.woocommerce-shipping-fields__field-wrapper .address-field input.input-text, .update_totals_on_change input.input-text', this.queue_update_checkout ); // eslint-disable-line max-len
 
+			// Address fields
+			// CHANGE: Removed shipping to different address checkout `change` listener
+
 			// CHANGE: Update checkout totals to save data to session when user switches tabs, apps, goes to homescreen, etc.
 			document.addEventListener( 'visibilitychange' , function() {
 				if ( document.visibilityState == 'hidden' ) {
@@ -68,7 +71,6 @@ jQuery( function( $ ) {
 			// CHANGE: Add event listener to sync terms checkbox state
 			this.$checkout_form.on( 'change', _terms_selector, this.terms_checked_changed );
 
-			// CHANGE: Removed shipping to different address checkout `change` listener
 
 			// Trigger events
 			// CHANGE: Removed shipping to different address checkout `change` trigger
@@ -79,7 +81,7 @@ jQuery( function( $ ) {
 				$( document.body ).trigger( 'init_checkout' );
 			}
 			if ( wc_checkout_params.option_guest_checkout === 'yes' ) {
-				$( 'input#createaccount' ).change( this.toggle_create_account ).change();
+				$( 'input#createaccount' ).on( 'change', this.toggle_create_account ).trigger( 'change' );
 			}
 		},
 		// CHANGE: Prompt user that they might lose data when closing tab or leaving the current page after they change some values in the checkout form
@@ -179,7 +181,7 @@ jQuery( function( $ ) {
 
 			if ( $( this ).is( ':checked' ) ) {
 				// Ensure password is not pre-populated.
-				$( '#account_password' ).val( '' ).change();
+				$( '#account_password' ).val( '' ).trigger( 'change' );
 				$( 'div.create-account' ).slideDown();
 			}
 		},
@@ -253,10 +255,12 @@ jQuery( function( $ ) {
 				validated         = true,
 				validate_required = $parent.is( '.validate-required' ),
 				validate_email    = $parent.is( '.validate-email' ),
+				validate_phone    = $parent.is( '.validate-phone' ),
+				pattern           = '',
 				event_type        = e.type;
 
 			if ( 'input' === event_type ) {
-				$parent.removeClass( 'woocommerce-invalid woocommerce-invalid-required-field woocommerce-invalid-email woocommerce-validated' ); // eslint-disable-line max-len
+				$parent.removeClass( 'woocommerce-invalid woocommerce-invalid-required-field woocommerce-invalid-email woocommerce-invalid-phone woocommerce-validated' ); // eslint-disable-line max-len
 			}
 
 			if ( 'validate' === event_type || 'change' === event_type ) {
@@ -274,17 +278,26 @@ jQuery( function( $ ) {
 				if ( validate_email ) {
 					if ( $this.val() ) {
 						/* https://stackoverflow.com/questions/2855865/jquery-validate-e-mail-address-regex */
-						var pattern = new RegExp(/^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[0-9a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i); // eslint-disable-line max-len
+						pattern = new RegExp( /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[0-9a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i ); // eslint-disable-line max-len
 
-						if ( ! pattern.test( $this.val()  ) ) {
-							$parent.removeClass( 'woocommerce-validated' ).addClass( 'woocommerce-invalid woocommerce-invalid-email' );
+						if ( ! pattern.test( $this.val() ) ) {
+							$parent.removeClass( 'woocommerce-validated' ).addClass( 'woocommerce-invalid woocommerce-invalid-email woocommerce-invalid-phone' ); // eslint-disable-line max-len
 							validated = false;
 						}
 					}
 				}
 
+				if ( validate_phone ) {
+					pattern = new RegExp( /[\s\#0-9_\-\+\/\(\)\.]/g );
+
+					if ( 0 < $this.val().replace( pattern, '' ).length ) {
+						$parent.removeClass( 'woocommerce-validated' ).addClass( 'woocommerce-invalid woocommerce-invalid-phone' );
+						validated = false;
+					}
+				}
+
 				if ( validated ) {
-					$parent.removeClass( 'woocommerce-invalid woocommerce-invalid-required-field woocommerce-invalid-email' ).addClass( 'woocommerce-validated' ); // eslint-disable-line max-len
+					$parent.removeClass( 'woocommerce-invalid woocommerce-invalid-required-field woocommerce-invalid-email woocommerce-invalid-phone' ).addClass( 'woocommerce-validated' ); // eslint-disable-line max-len
 				}
 			}
 		},
@@ -313,12 +326,13 @@ jQuery( function( $ ) {
 				address			 = $( ':input#billing_address_1' ).val(),
 				address_2		 = $( ':input#billing_address_2' ).val(),
 				// CHANGE: Always get shipping address values from shipping fields
-                s_country		 = $( '#shipping_country' ).val(),
+				s_country		 = $( '#shipping_country' ).val(),
 				s_state			 = $( '#shipping_state' ).val(),
 				s_postcode		 = $( ':input#shipping_postcode' ).val(),
 				s_city			 = $( '#shipping_city' ).val(),
 				s_address		 = $( ':input#shipping_address_1' ).val(),
 				s_address_2		 = $( ':input#shipping_address_2' ).val(),
+				// END - CHANGE: Always get shipping address values from shipping fields
 				$required_inputs = $( wc_checkout_form.$checkout_form ).find( '.address-field.validate-required:visible' ),
 				has_full_address = true;
 
@@ -426,11 +440,11 @@ jQuery( function( $ ) {
 							var ID = $( this ).attr( 'id' );
 							if ( ID ) {
 								if ( $.inArray( $( this ).attr( 'type' ), [ 'checkbox', 'radio' ] ) !== -1 ) {
-									$( this ).prop( 'checked', paymentDetails[ ID ] ).change();
+									$( this ).prop( 'checked', paymentDetails[ ID ] ).trigger( 'change' );
 								} else if ( $.inArray( $( this ).attr( 'type' ), [ 'select' ] ) !== -1 ) {
-									$( this ).val( paymentDetails[ ID ] ).change();
+									$( this ).val( paymentDetails[ ID ] ).trigger( 'change' );
 								} else if ( null !== $( this ).val() && 0 === $( this ).val().length ) {
-									$( this ).val( paymentDetails[ ID ] ).change();
+									$( this ).val( paymentDetails[ ID ] ).trigger( 'change' );
 								}
 							}
 						});
@@ -444,7 +458,6 @@ jQuery( function( $ ) {
 						// Remove notices from all sources
 						$( '.woocommerce-error, .woocommerce-message' ).remove();
 
-						
 						// Add new errors returned by this event
 						if ( data.messages ) {
 							
@@ -459,7 +472,7 @@ jQuery( function( $ ) {
 						}
 
 						// Lose focus for all fields
-						$form.find( '.input-text, select, input:checkbox' ).trigger( 'validate' ).blur();
+						$form.find( '.input-text, select, input:checkbox' ).trigger( 'validate' ).trigger( 'blur' );
 
 						// TODO: Check flag to maybe scroll to the checkout notices, or stay at the same position
 						wc_checkout_form.scroll_to_notices();
@@ -495,12 +508,12 @@ jQuery( function( $ ) {
 			$( window ).on('beforeunload', this.handleUnloadEvent);
 		},
 		detachUnloadEventsOnSubmit: function() {
-			$( window ).unbind('beforeunload', this.handleUnloadEvent);
+			$( window ).off('beforeunload', this.handleUnloadEvent);
 		},
 		blockOnSubmit: function( $form ) {
-			var form_data = $form.data();
+			var isBlocked = $form.data( 'blockUI.isBlocked' );
 
-			if ( 1 !== form_data['blockUI.isBlocked'] ) {
+			if ( 1 !== isBlocked ) {
 				$form.block({
 					message: null,
 					overlayCSS: {
@@ -574,7 +587,7 @@ jQuery( function( $ ) {
 						wc_checkout_form.detachUnloadEventsOnSubmit();
 
 						try {
-							if ( 'success' === result.result && $form.triggerHandler( 'checkout_place_order_success' ) !== false ) {
+							if ( 'success' === result.result && $form.triggerHandler( 'checkout_place_order_success', result ) !== false ) {
 								if ( -1 === result.redirect.indexOf( 'https://' ) || -1 === result.redirect.indexOf( 'http://' ) ) {
 									window.location = result.redirect;
 								} else {
@@ -620,14 +633,14 @@ jQuery( function( $ ) {
 			$( '.woocommerce-NoticeGroup-checkout, .woocommerce-error, .woocommerce-message' ).remove();
 			wc_checkout_form.$checkout_form.prepend( '<div class="woocommerce-NoticeGroup woocommerce-NoticeGroup-checkout">' + error_message + '</div>' ); // eslint-disable-line max-len
 			wc_checkout_form.$checkout_form.removeClass( 'processing' ).unblock();
-			wc_checkout_form.$checkout_form.find( '.input-text, select, input:checkbox' ).trigger( 'validate' ).blur();
+			wc_checkout_form.$checkout_form.find( '.input-text, select, input:checkbox' ).trigger( 'validate' ).trigger( 'blur' );
 			wc_checkout_form.scroll_to_notices();
-			
+
+			// TODO: Maybe remove this change as it may not be necessary anymore
 			// CHANGE: Remove coupon code from coupon field on the checkout form
 			$( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' ).val( '' );
 
 			$( document.body ).trigger( 'checkout_error' , [ error_message ] );
-
 		},
 		scroll_to_notices: function() {
 			var scrollElement           = $( '.woocommerce-NoticeGroup-updateOrderReview, .woocommerce-NoticeGroup-checkout' );
@@ -643,14 +656,14 @@ jQuery( function( $ ) {
 		init: function() {
 			$( document.body ).on( 'click', 'a.showcoupon', this.show_coupon_form );
 			$( document.body ).on( 'click', '.woocommerce-remove-coupon', this.remove_coupon );
+			$( 'form.checkout_coupon' ).hide().on( 'submit', this.submit );
 			// CHANGE: Added event listeners for apply coupon via ajax
 			$( document.body ).on( 'click', '[data-apply-coupon-button]', this.apply_coupon );
 			wc_checkout_form.$checkout_form.on( 'keydown', 'input[name="coupon_code"]', this.maybe_apply_coupon_keydown );
-			$( 'form.checkout_coupon' ).hide().submit( this.submit );
 		},
 		show_coupon_form: function() {
 			$( '.checkout_coupon' ).slideToggle( 400, function() {
-				$( '.checkout_coupon' ).find( ':input:eq(0)' ).focus();
+				$( '.checkout_coupon' ).find( ':input:eq(0)' ).trigger( 'focus' );
 			});
 			return false;
 		},
@@ -723,7 +736,7 @@ jQuery( function( $ ) {
 					container.removeClass( 'processing' ).unblock();
 
 					if ( code ) {
-						// CHANGE: Coupon code message container selector
+						// CHANGE: Change coupon code message container selector
 						$( '.wfc-step__substep-text-content--coupon-codes' ).before( code );
 
 						$( document.body ).trigger( 'removed_coupon_in_checkout', [ data.coupon_code ] );
@@ -781,7 +794,7 @@ jQuery( function( $ ) {
 
 						// Close the coupon code field section
 						if ( window.CollapsibleBlock ) {
-							
+
 							var expansibleCouponToggle = document.querySelector( 'form.woocommerce-checkout .wfc-expansible-form-section__toggle--coupon_code' );
 							var expansibleCouponContent = document.querySelector( 'form.woocommerce-checkout .wfc-expansible-form-section__content--coupon_code' );
 							var expansibleCouponToggleButton = document.querySelector( 'form.woocommerce-checkout .expansible-section__toggle-plus--coupon_code' );
