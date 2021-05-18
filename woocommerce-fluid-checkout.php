@@ -130,6 +130,12 @@ class FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Check if Woocommerce is activated
+		if( ! $this->is_woocommerce_active() ) {
+			add_action( 'all_admin_notices', array( $this, 'woocommerce_required_notice' ) );
+			return;
+		}
+
 		// Load features
 		add_action( 'plugins_loaded', array( $this, 'load_features' ) );
 		add_action( 'plugins_loaded', array( $this, 'load_plugin_compat_features' ) );
@@ -155,7 +161,7 @@ class FluidCheckout {
 			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php', 'enable_option' => 'wfc_enable_checkout_coupon_codes', 'enable_default' => true ),
 			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => true ),
 			
-			'cart-widget-areas'                   => array( 'file' => self::$directory_path . 'inc/cart-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => true ),
+			'cart-widget-areas'                   => array( 'file' => self::$directory_path . 'inc/cart-widget-areas.php', 'enable_option' => 'wfc_enable_cart_widget_areas', 'enable_default' => true ),
 		);
 	}
 
@@ -218,12 +224,6 @@ class FluidCheckout {
 	 * @since 1.2.0
 	 */
 	public function load_features() {
-		// Check if Woocommerce is activated
-		if( ! $this->is_woocommerce_active() ) {
-			add_action( 'all_admin_notices', array( $this, 'woocommerce_required_notice' ) );
-			return;
-		}
-
 		// Bail if features list is not valid
 		if ( ! is_array( self::$features )  ) { return; }
 
@@ -336,7 +336,7 @@ class FluidCheckout {
 	 * @since  1.0.0
 	 */
 	public function woocommerce_required_notice() {
-		echo '<div id="message" class="error"><p>'. sprintf( __( '%1$s requires the %2$s plugin to be installed and activated.', 'woocommerce-fluid-checkout' ), self::PLUGIN, 'WooCommerce' ) .'</p></div>';
+		echo '<div id="message" class="error"><p>'. sprintf( __( '<strong>%1$s requires %2$s to be installed and active. You can <a href="%3$s">download %2$s here</a></strong>.', 'woocommerce-fluid-checkout' ), self::$plugin, 'WooCommerce', 'https://woocommerce.com' ) .'</p></div>';
 	}
 
 
