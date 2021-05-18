@@ -37,7 +37,7 @@ jQuery( function( $ ) {
 		event.stopPropagation();
 	} );
 
-    // CHANGE: Remove "Make form field descriptions toggle on focus."
+	// CHANGE: Remove "Make form field descriptions toggle on focus."
 
 	// Common scroll to element code.
 	$.scroll_to_notices = function( scrollElement ) {
