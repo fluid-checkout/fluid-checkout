@@ -246,15 +246,21 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * Get the checkout fields args.
 	 */
 	public function get_checkout_field_args() {
+		$billing_email_description = WC()->cart->needs_shipping() ? __( 'Order and tracking number will be sent to this email address.', 'woocommerce-fluid-checkout' ) : __( 'Order number and receipt will be sent to this email address.', 'woocommerce-fluid-checkout' );
+		$billing_address_2_label = __( 'Appartment, suite, unit, building, floor, etc.', 'woocommerce-fluid-checkout' );
+		
+		$shipping_phone_description = __( 'For shipping-related purposes only.', 'woocommerce-fluid-checkout' );
+		$shipping_address_2_label = __( 'Appartment, suite, unit, building, floor, etc.', 'woocommerce-fluid-checkout' );
+
 		return apply_filters( 'wfc_checkout_field_args', array(
-			'billing_email'         => array( 'priority' => 5, 'autocomplete' => 'contact email' ),
+			'billing_email'         => array( 'priority' => 5, 'autocomplete' => 'contact email', 'description' => $billing_email_description ),
 			'billing_first_name'    => array( 'priority' => 10, 'autocomplete' => 'contact given-name' ),
 			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'contact family-name' ),
 			'billing_phone'         => array( 'priority' => 30, 'autocomplete' => 'contact tel', 'class' => array( 'form-row-first' ) ),
 
 			'billing_company'       => array( 'priority' => 100, 'autocomplete' => 'billing organization', 'class' => array( 'form-wide' ) ),
 			'billing_address_1'     => array( 'autocomplete' => 'billing address-line1' ),
-			'billing_address_2'     => array( 'autocomplete' => 'billing address-line2' ),
+			'billing_address_2'     => array( 'autocomplete' => 'billing address-line2', 'label' => $billing_address_2_label ),
 			'billing_city'          => array( 'autocomplete' => 'billing address-level2' ),
 			'billing_state'         => array( 'autocomplete' => 'billing address-level1' ),
 			'billing_country'       => array( 'autocomplete' => 'billing country' ),
@@ -262,10 +268,10 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 			'shipping_first_name'   => array( 'priority' => 10, 'autocomplete' => 'shipping given-name' ),
 			'shipping_last_name'    => array( 'priority' => 20, 'autocomplete' => 'shipping family-name' ),
-			'shipping_phone'        => array( 'priority' => 30, 'autocomplete' => 'shipping tel', 'class' => array( 'form-row-first' ) ),
+			'shipping_phone'        => array( 'priority' => 30, 'autocomplete' => 'shipping tel', 'class' => array( 'form-row-first' ), 'description' => $shipping_phone_description ),
 			'shipping_company'      => array( 'priority' => 35, 'autocomplete' => 'shipping organization', 'class' => array( 'form-row-last' ) ),
 			'shipping_address_1'    => array( 'autocomplete' => 'shipping address-line1' ),
-			'shipping_address_2'    => array( 'autocomplete' => 'shipping address-line2' ),
+			'shipping_address_2'    => array( 'autocomplete' => 'shipping address-line2', 'label' => $shipping_address_2_label ),
 			'shipping_city'         => array( 'autocomplete' => 'shipping address-level2', 'class' => array( 'form-row-first' ) ),
 			'shipping_state'        => array( 'autocomplete' => 'shipping address-level1', 'class' => array( 'form-row-last' ) ),
 			'shipping_country'      => array( 'autocomplete' => 'shipping country' ),

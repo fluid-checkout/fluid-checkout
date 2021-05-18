@@ -40,7 +40,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_woocommerce_scripts' ), 5 ); // Need to run before WooCommerce registers and enqueues scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
 		// Checkout Header
@@ -165,15 +164,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			wp_enqueue_script( 'wfc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
 			wp_add_inline_script( 'wfc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
 		}
-	}
-
-
-
-	/**
-	 * Replace WooCommerce scripts with modified version.
-	 */
-	public function enqueue_woocommerce_scripts() {
-		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n' ), NULL, true );
 	}
 
 
