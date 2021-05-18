@@ -1,49 +1,119 @@
 <?php
-
 /**
- * Checkout admin options.
+ * WooCommerce Checkout Settings
+ *
+ * @package woocommerce-fluid-checkout
+ * @version 1.2.0
  */
-class FluidCheckout_AdminCheckout extends FluidCheckout {
 
-	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->hooks();
-	}
-
-
-
-	/**
-	 * Initialize hooks.
-	 */
-	public function hooks() {
-		// WooCommerce Settings
-		add_filter( 'woocommerce_settings_tabs_array', array( $this, 'add_checkout_settings_tab' ), 50 );
-		// TODO: Add "Checkout > General" sub tab
-	}
-
-
-
-	/**
-	 * Add the Checkout settings tab.
-	 *
-	 * @param   array  $settings_tabs  List of the WooCommerce settings tabs.
-	 *
-	 * @return  array                  Modified list of the WooCommerce settings tabs.
-	 */
-	public function add_checkout_settings_tab( $settings_tabs ) {
-		// Get token position (after "Payments" tab)
-		$position_index = array_search( 'checkout', array_keys( $settings_tabs ) ) + 1;
-
-		// Insert at token position
-		$new_settings_tabs  = array_slice( $settings_tabs, 0, $position_index );
-		$new_settings_tabs[ 'wfc_checkout' ] = __( 'Checkout', 'woocommerce-fluid-checkout' );
-		$new_settings_tabs = array_merge( $new_settings_tabs, array_slice( $settings_tabs, $position_index, count( $settings_tabs ) ) );
-
-		return $new_settings_tabs;
-	}
-
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
-FluidCheckout_AdminCheckout::instance();
+if ( class_exists( 'WC_Settings_FluidCheckout_Checkout', false ) ) {
+	return new WC_Settings_FluidCheckout_Checkout();
+}
+
+/**
+ * WC_Settings_FluidCheckout_Checkout.
+ */
+class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
+
+	/**
+	 * Constructor.
+	 */
+	public function __construct() {
+		$this->id    = 'wfc_checkout';
+		$this->label = __( 'Checkout', 'woocommerce-fluid-checkout' );
+
+		parent::__construct();
+	}
+
+	/**
+	 * Get sections.
+	 *
+	 * @return array
+	 */
+	public function get_sections() {
+		$sections = array(
+			''             => __( 'General', 'woocommerce-fluid-checkout' ),
+			'advanced'     => __( 'Advanced', 'woocommerce-fluid-checkout' ),
+		);
+
+		return apply_filters( 'woocommerce_get_sections_' . $this->id, $sections );
+	}
+
+	/**
+	 * Output the settings.
+	 */
+	public function output() {
+		global $current_section;
+
+		$settings = $this->get_settings( $current_section );
+
+		WC_Admin_Settings::output_fields( $settings );
+	}
+
+	/**
+	 * Save settings.
+	 */
+	public function save() {
+		global $current_section;
+
+		$settings = $this->get_settings( $current_section );
+		WC_Admin_Settings::save_fields( $settings );
+
+		if ( $current_section ) {
+			do_action( 'woocommerce_update_options_' . $this->id . '_' . $current_section );
+		}
+	}
+
+	/**
+	 * Get settings array.
+	 *
+	 * @param string $current_section Current section name.
+	 * @return array
+	 */
+	public function get_settings( $current_section = '' ) {
+		if ( 'advanced' === $current_section ) {
+			$settings = apply_filters(
+				'wfc_checkout_advanced_settings',
+				array(
+					array(
+						'title' => __( 'Advanced', 'woocommerce' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'wfc_checkout_advanced_options',
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'wfc_checkout_advanced_options',
+					),
+				)
+			);
+		}
+		else {
+			$settings = apply_filters(
+				'wfc_checkout_general_settings',
+				array(
+					array(
+						'title' => __( 'Layout', 'woocommerce' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'wfc_checkout_layout_options',
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'wfc_checkout_layout_options',
+					),
+				)
+			);
+		}
+
+		return apply_filters( 'woocommerce_get_settings_' . $this->id, $settings, $current_section );
+	}
+}
+
+return new WC_Settings_FluidCheckout_Checkout();
