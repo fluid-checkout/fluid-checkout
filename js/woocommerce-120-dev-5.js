@@ -2,7 +2,7 @@
 jQuery( function( $ ) {
 	// Orderby
 	$( '.woocommerce-ordering' ).on( 'change', 'select.orderby', function() {
-		$( this ).closest( 'form' ).submit();
+		$( this ).closest( 'form' ).trigger( 'submit' );
 	});
 
 	// Target quantity inputs on product pages
@@ -37,7 +37,7 @@ jQuery( function( $ ) {
 		event.stopPropagation();
 	} );
 
-    // CHANGE: Remove "Make form field descriptions toggle on focus."
+	// CHANGE: Remove "Make form field descriptions toggle on focus."
 
 	// Common scroll to element code.
 	$.scroll_to_notices = function( scrollElement ) {
