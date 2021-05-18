@@ -141,6 +141,7 @@ class FluidCheckout {
 		add_action( 'plugins_loaded', array( $this, 'load_plugin_compat_features' ) );
 		add_action( 'plugins_loaded', array( $this, 'load_theme_compat_features' ) );
 
+
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 10, 3 );
 	}
@@ -257,6 +258,11 @@ class FluidCheckout {
 			if ( $feature_is_enabled && file_exists( $file ) ) {
 				require_once $file;
 			}
+		}
+		
+		// Load admin features
+		if( is_admin() ) {
+			require_once self::$directory_path . 'inc/admin/admin-checkout.php';
 		}
 	}
 
