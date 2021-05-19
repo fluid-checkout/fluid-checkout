@@ -158,7 +158,7 @@ class FluidCheckout {
 			'checkout-page-template'              => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php', 'enable_option' => 'wfc_enable_checkout_page_template', 'enable_default' => 'yes' ),
 
 			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'wfc_apply_checkout_field_args', 'enable_default' => 'yes' ),
-			'checkout-shipping-phone'             => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'wfc_add_shipping_phone_field', 'enable_default' => 'no' ),
+			'checkout-shipping-phone'             => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'wfc_shipping_phone_field_visibility', 'enable_default' => 'no' ),
 			'checkout-validation'                 => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => 'yes' ),
 			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => 'no' ),
 			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php', 'enable_option' => 'wfc_enable_checkout_coupon_codes', 'enable_default' => 'yes' ),
@@ -241,12 +241,19 @@ class FluidCheckout {
 			$feature_is_enabled = true;
 			$file = array_key_exists( 'file', $feature ) ? $feature[ 'file' ] : null;
 			$enable_option = array_key_exists( 'enable_option', $feature ) ? $feature[ 'enable_option' ] : null;
-			$enable_default = array_key_exists( 'enable_default', $feature ) ? $feature[ 'enable_default' ] == 'yes' : false;
+			$enable_default = array_key_exists( 'enable_default', $feature ) ? $feature[ 'enable_default' ] !== 'no' : false;
 
 			// Check if feature is set to enabled by option value in the database
 			if ( $enable_option !== null ) {
 				$enable_option_value = get_option( $enable_option, $enable_default );
-				$feature_is_enabled = $enable_option_value == 'yes';
+
+				// Check option value
+				if ( ( is_bool( $enable_option_value ) && $enable_option_value === true ) || ( strval( $enable_option_value ) !== 'no' && strval( $enable_option_value ) !== 'false' ) ) {
+					$feature_is_enabled = true;
+				}
+				else {
+					$feature_is_enabled = false;
+				}
 			}
 			
 			// Load feature file if enabled and file exists

@@ -203,7 +203,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					array(
 						'title'         => __( 'Shipping phone', 'woocommerce-fluid-checkout' ),
 						'desc'          => __( 'Add a phone field to the shipping address form', 'woocommerce-fluid-checkout' ),
-						'id'            => 'wfc_add_shipping_phone_field',
+						'id'            => 'wfc_shipping_phone_field_visibility',
 						'options'       => array(
 							'no'        => __( 'Hidden', 'woocommerce-fluid-checkout' ),
 							'optional'  => __( 'Optional', 'woocommerce-fluid-checkout' ),
