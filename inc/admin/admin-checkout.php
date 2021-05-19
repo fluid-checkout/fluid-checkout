@@ -49,6 +49,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	public function get_sections() {
 		$sections = array(
 			''             => __( 'Checkout Options', 'woocommerce-fluid-checkout' ),
+			'address'    => __( 'Address Fields', 'woocommerce-fluid-checkout' ),
 			'advanced'     => __( 'Advanced', 'woocommerce-fluid-checkout' ),
 		);
 
@@ -95,7 +96,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	public function get_settings( $current_section = '' ) {
 		if ( 'advanced' === $current_section ) {
 			$settings = apply_filters(
-				'wfc_checkout_advanced_settings',
+				'wfc_checkout_'.$current_section.'_settings',
 				array(
 					array(
 						'title' => __( 'Layout', 'woocommerce-fluid-checkout' ),
@@ -168,6 +169,48 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'id'            => 'wfc_load_unminified_assets',
 						'default'       => 'no',
 						'type'          => 'checkbox',
+						'autoload'      => false,
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'wfc_checkout_advanced_debug_options',
+					),
+				)
+			);
+		}
+		else if ( 'address' === $current_section ) {
+			$settings = apply_filters(
+				'wfc_checkout_'.$current_section.'_settings',
+				array(
+					array(
+						'title' => __( 'Address Fields', 'woocommerce-fluid-checkout' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'wfc_checkout_advanced_debug_options',
+					),
+
+					array(
+						'title'         => __( 'Billing Address', 'woocommerce-fluid-checkout' ),
+						'desc'          => __( 'Billing address same as the shipping address checked by default', 'woocommerce-fluid-checkout' ),
+						'desc_tip'      => __( 'It is recommended to leave this option checked. The billing address at checkout will start with the option "Billing same as shipping" checked by default. This will reduce significantly the number of open input fields at the checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'woocommerce-fluid-checkout' ),
+						'id'            => 'wfc_default_to_billing_same_as_shipping',
+						'default'       => 'yes',
+						'type'          => 'checkbox',
+						'autoload'      => false,
+					),
+
+					array(
+						'title'         => __( 'Shipping phone', 'woocommerce-fluid-checkout' ),
+						'desc'          => __( 'Add a phone field to the shipping address form', 'woocommerce-fluid-checkout' ),
+						'id'            => 'wfc_add_shipping_phone_field',
+						'options'       => array(
+							'no'        => __( 'Hidden', 'woocommerce-fluid-checkout' ),
+							'optional'  => __( 'Optional', 'woocommerce-fluid-checkout' ),
+							'required'  => __( 'Required', 'woocommerce-fluid-checkout' ),
+						),
+						'default'       => 'no',
+						'type'          => 'select',
 						'autoload'      => false,
 					),
 

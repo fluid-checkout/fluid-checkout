@@ -1973,7 +1973,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$posted_data = $this->get_parsed_posted_data();
 
 		// Set default value
-		$billing_same_as_shipping = apply_filters( 'wfc_default_to_billing_same_as_shipping', get_option( 'wfc_default_to_billing_same_as_shipping', 'true' ) === 'true' );
+		$billing_same_as_shipping = apply_filters( 'wfc_default_to_billing_same_as_shipping', get_option( 'wfc_default_to_billing_same_as_shipping', 'yes' ) == 'yes' );
 
 		// Try get value from the post_data
 		if ( isset( $_POST['post_data'] ) ) {
