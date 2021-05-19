@@ -180,7 +180,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get checkout object.
 		$checkout = WC()->checkout();
 
-		return ( ! ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) && 'true' === get_option( 'wfc_hide_site_header_at_checkout', 'true' );
+		return ( ! ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) && 'yes' === get_option( 'wfc_hide_site_header_at_checkout', 'yes' );
 	}
 
 	/**
@@ -195,7 +195,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get checkout object.
 		$checkout = WC()->checkout();
 
-		return ( ! ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) && 'true' === get_option( 'wfc_hide_site_footer_at_checkout', 'true' );
+		return ( ! ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) && 'yes' === get_option( 'wfc_hide_site_footer_at_checkout', 'yes' );
+	}
+
+
+
+	/**
+	 * Return the list of values accepted for checkout layout.
+	 * 
+	 * @return  array  List of values accepted for checkout layout.
+	 */
+	public function get_allowed_checkout_layouts() {
+		return apply_filters( 'wfc_allowed_checkout_layouts', array(
+			'multi-step' => __( 'Multi-step', 'woocommerce-fluid-checkout' ),
+			'one-page' => __( 'One page', 'woocommerce-fluid-checkout' ),
+		) );
 	}
 
 
@@ -206,7 +220,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  string  The name of the currently selected checkout layout option. Defaults to `multi-step`.
 	 */
 	public function get_checkout_layout() {
-		$allowed_values = apply_filters( 'wfc_allowed_checkout_layouts', array( 'multi-step', 'one-page' ) );
+		$allowed_values = array_keys( $this->get_allowed_checkout_layouts() );
 		$current_value = get_option( 'wfc_checkout_layout' );
 		$default_value = 'multi-step';
 
