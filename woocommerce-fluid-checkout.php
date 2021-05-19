@@ -163,8 +163,6 @@ class FluidCheckout {
 			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => 'no' ),
 			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php', 'enable_option' => 'wfc_enable_checkout_coupon_codes', 'enable_default' => 'yes' ),
 			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => 'yes' ),
-			
-			'cart-widget-areas'                   => array( 'file' => self::$directory_path . 'inc/cart-widget-areas.php', 'enable_option' => 'wfc_enable_cart_widget_areas', 'enable_default' => 'yes' ),
 		);
 	}
 
