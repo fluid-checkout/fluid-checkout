@@ -160,7 +160,7 @@ class FluidCheckout {
 			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'wfc_apply_checkout_field_args', 'enable_default' => 'yes' ),
 			'checkout-shipping-phone'             => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'wfc_add_shipping_phone_field', 'enable_default' => 'yes' ),
 			'checkout-validation'                 => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => 'yes' ),
-			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => 'yes' ),
+			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => 'no' ),
 			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php', 'enable_option' => 'wfc_enable_checkout_coupon_codes', 'enable_default' => 'yes' ),
 			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => 'yes' ),
 			

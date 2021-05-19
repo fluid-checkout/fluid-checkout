@@ -105,19 +105,19 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 
 					array(
-						'title'         => __( 'Progress bar', 'woocommerce-fluid-checkout' ),
-						'desc'          => __( 'Make the checkout progress bar stay visible while scrolling', 'woocommerce-fluid-checkout' ),
-						'desc_tip'      => __( 'Applies only to multi-step layouts.', 'woocommerce-fluid-checkout' ),
-						'id'            => 'wfc_enable_checkout_sticky_progress_bar',
+						'title'         => __( 'Order Summary', 'woocommerce-fluid-checkout' ),
+						'desc'          => __( 'Make the order summary stay visible while scrolling', 'woocommerce-fluid-checkout' ),
+						'id'            => 'wfc_enable_checkout_sticky_order_summary',
 						'default'       => 'yes',
 						'type'          => 'checkbox',
 						'autoload'      => false,
 					),
 
 					array(
-						'title'         => __( 'Order Summary', 'woocommerce-fluid-checkout' ),
-						'desc'          => __( 'Make the order summary stay visible while scrolling', 'woocommerce-fluid-checkout' ),
-						'id'            => 'wfc_enable_checkout_sticky_order_summary',
+						'title'         => __( 'Progress bar', 'woocommerce-fluid-checkout' ),
+						'desc'          => __( 'Make the checkout progress bar stay visible while scrolling', 'woocommerce-fluid-checkout' ),
+						'desc_tip'      => __( 'Applies only to multi-step layouts.', 'woocommerce-fluid-checkout' ),
+						'id'            => 'wfc_enable_checkout_sticky_progress_bar',
 						'default'       => 'yes',
 						'type'          => 'checkbox',
 						'autoload'      => false,
@@ -152,6 +152,28 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					array(
 						'type' => 'sectionend',
 						'id'   => 'wfc_checkout_advanced_layout_options',
+					),
+
+					array(
+						'title' => __( 'Troubleshooting', 'woocommerce-fluid-checkout' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'wfc_checkout_advanced_debug_options',
+					),
+
+					array(
+						'title'         => __( 'Debug options', 'woocommerce-fluid-checkout' ),
+						'desc'          => __( 'Load unminified assets', 'woocommerce-fluid-checkout' ),
+						'desc_tip'      => __( 'Loading unminified assets affect the the website performance. Only use this option while troubleshooting.', 'woocommerce-fluid-checkout' ),
+						'id'            => 'wfc_load_unminified_assets',
+						'default'       => 'no',
+						'type'          => 'checkbox',
+						'autoload'      => false,
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'wfc_checkout_advanced_debug_options',
 					),
 				)
 			);
@@ -204,15 +226,45 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 
 					array(
-						'title' => __( 'Layout', 'woocommerce-fluid-checkout' ),
+						'title' => __( 'Features', 'woocommerce-fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
-						'id'    => 'wfc_checkout_layout_options',
+						'id'    => 'wfc_checkout_features_options',
+					),
+
+					array(
+						'title'         => __( 'Coupon Codes', 'woocommerce-fluid-checkout' ),
+						'desc'          => __( 'Show coupon codes as a substep of the payment step', 'woocommerce-fluid-checkout' ),
+						'desc_tip'      => __( 'Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'woocommerce-fluid-checkout' ),
+						'id'            => 'wfc_enable_checkout_coupon_codes',
+						'default'       => 'yes',
+						'type'          => 'checkbox',
+						'autoload'      => false,
+					),
+
+					array(
+						'title'         => __( 'Gift options', 'woocommerce-fluid-checkout' ),
+						'desc'          => __( 'Display gift message and other gift options at the checkout page', 'woocommerce-fluid-checkout' ),
+						'desc_tip'      => __( 'Allow customers to add a gift message and other gift related options to the order.', 'woocommerce-fluid-checkout' ),
+						'id'            => 'wfc_enable_checkout_gift_options',
+						'default'       => 'no',
+						'type'          => 'checkbox',
+						'autoload'      => false,
+					),
+
+					array(
+						'title'         => __( 'Checkout Widget Areas', 'woocommerce-fluid-checkout' ),
+						'desc'          => __( 'Add widget areas to the checkout page', 'woocommerce-fluid-checkout' ),
+						'desc_tip'      => __( 'These widget areas are used to add trust symbols on the checkout page.', 'woocommerce-fluid-checkout' ),
+						'id'            => 'wfc_enable_checkout_widget_areas',
+						'default'       => 'yes',
+						'type'          => 'checkbox',
+						'autoload'      => false,
 					),
 
 					array(
 						'type' => 'sectionend',
-						'id'   => 'wfc_checkout_layout_options',
+						'id'   => 'wfc_checkout_features_options',
 					),
 				)
 			);
