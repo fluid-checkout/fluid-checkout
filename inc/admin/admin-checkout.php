@@ -32,12 +32,11 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	}
 
 
-
 	/**
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		
+		add_action( 'woocommerce_admin_field_wfc_layout_selector', array( $this, 'output_field_type_wfc_layout_seletor' ), 10 );
 	}
 
 
@@ -108,6 +107,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					array(
 						'title'         => __( 'Progress bar', 'woocommerce-fluid-checkout' ),
 						'desc'          => __( 'Make the checkout progress bar stay visible while scrolling', 'woocommerce-fluid-checkout' ),
+						'desc_tip'      => __( 'Applies only to multi-step layouts.', 'woocommerce-fluid-checkout' ),
 						'id'            => 'wfc_enable_checkout_sticky_progress_bar',
 						'default'       => 'yes',
 						'type'          => 'checkbox',
@@ -170,7 +170,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					array(
 						'title'         => __( 'Checkout Layout', 'woocommerce-fluid-checkout' ),
 						'id'            => 'wfc_checkout_layout',
-						'type'          => 'radio',
+						'type'          => 'wfc_layout_selector',
 						'options'       => FluidCheckout_Steps::instance()->get_allowed_checkout_layouts(),
 						'default'       => 'multi-step',
 						'autoload'      => false,
@@ -181,7 +181,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					array(
 						'title'         => __( 'Optional fields', 'woocommerce-fluid-checkout' ),
 						'desc'          => __( 'Hide optional fields behind a "+ Add optional field" link button', 'woocommerce-fluid-checkout' ),
-						'desc_tip'      => __( 'It is recommended to keep this options checked to reduce the number of open input fields, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-link" target="_blank">read the research</a>. <br>When hiding the optional fields, the name of the field will appear in the link button (ie. "+ Add company name").', 'woocommerce-fluid-checkout' ),
+						'desc_tip'      => __( 'It is recommended to keep this options checked to reduce the number of open input fields, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-link" target="_blank">read the research</a>.', 'woocommerce-fluid-checkout' ),
 						'id'            => 'wfc_enable_checkout_hide_optional_fields',
 						'default'       => 'yes',
 						'type'          => 'checkbox',
@@ -191,6 +191,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					array(
 						'title'         => __( 'Order Summary', 'woocommerce-fluid-checkout' ),
 						'desc'          => __( 'Display an additional "Place order" and terms checkbox below the order summary in the sidebar.', 'woocommerce-fluid-checkout' ),
+						'desc_tip'      => __( 'Recommended if most of the orders have only a few different products in the cart, and product variations do not take too much space on the order summary.', 'woocommerce-fluid-checkout' ),
 						'id'            => 'wfc_enable_checkout_place_order_sidebar',
 						'default'       => 'no',
 						'type'          => 'checkbox',
@@ -206,6 +207,60 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 		}
 
 		return apply_filters( 'woocommerce_get_settings_' . $this->id, $settings, $current_section );
+	}
+
+
+
+	/**
+	 * Output the layout selector setting field.
+	 *
+	 * @param   array  $value  Admin settings args values.
+	 */
+	public function output_field_type_wfc_layout_seletor( $value ) {
+		$option_value = $value['value'];
+			?>
+			<tr valign="top">
+				<th scope="row" class="titledesc">
+					<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
+				</th>
+				<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
+					<fieldset>
+						<?php echo $description; // WPCS: XSS ok. ?>
+						<ul>
+						<?php
+						foreach ( $value['options'] as $key => $val ) {
+							?>
+							<li>
+								<label><input
+									name="<?php echo esc_attr( $value['id'] ); ?>"
+									value="<?php echo esc_attr( $key ); ?>"
+									type="radio"
+									style="<?php echo esc_attr( $value['css'] ); ?>"
+									class="<?php echo esc_attr( $value['class'] ); ?>"
+									<?php echo implode( ' ', $custom_attributes ); // WPCS: XSS ok. ?>
+									<?php checked( $key, $option_value ); ?>
+									/> <?php echo esc_html( $val ); ?></label>
+							</li>
+							<?php
+						}
+						?>
+						</ul>
+						<style>
+							<?php
+							foreach ( $value['options'] as $key => $val ) {
+								$option_image_url = apply_filters( 'wfc_checkout_layout_option_image_url', FluidCheckout::$directory_url . 'images/admin/wfc-layout-'. esc_attr( $key ) .'.png', $key, $val );
+								?>
+								.forminp-wfc_layout_selector .wfc-checkout-layout__option[value="<?php echo esc_attr( $key ); ?>"]:after {
+									background-image: url( <?php echo esc_url( $option_image_url ) ?> );
+								}
+								<?php
+							}
+							?>
+						</style>
+					</fieldset>
+				</td>
+			</tr>
+		<?php
 	}
 }
 
