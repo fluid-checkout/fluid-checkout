@@ -292,6 +292,16 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'id'            => 'wfc_enable_checkout_gift_options',
 						'default'       => 'no',
 						'type'          => 'checkbox',
+						'checkboxgroup' => 'start',
+						'autoload'      => false,
+					),
+
+					array(
+						'desc'          => __( 'Display added gift message as part of the order details table', 'woocommerce' ),
+						'id'            => 'wfc_display_gift_message_in_order_details',
+						'type'          => 'checkbox',
+						'default'       => 'no',
+						'checkboxgroup' => 'end',
 						'autoload'      => false,
 					),
 
