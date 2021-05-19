@@ -202,6 +202,18 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'type' => 'sectionend',
 						'id'   => 'wfc_checkout_layout_options',
 					),
+
+					array(
+						'title' => __( 'Layout', 'woocommerce-fluid-checkout' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'wfc_checkout_layout_options',
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'wfc_checkout_layout_options',
+					),
 				)
 			);
 		}
