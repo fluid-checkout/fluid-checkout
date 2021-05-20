@@ -185,31 +185,3 @@
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-save {
 	display: none;
 }
-
-
-
-
-
-/*------------------------------------*\
-	#CHECKOUT EXPANSIBLE SECTIONS
-\*------------------------------------*/
-.wfc-wrapper .expansible-section__toggle-plus {
-	position: relative;
-	padding: $checkout-substep-text-padding;
-	cursor: pointer;
-
-	&:before {
-		@include icon( 'i-plus-circle' );
-		@include icon-size( $icon-size );
-		
-		position: absolute;
-		left: $checkout-expansible-section-icon-spacing;
-		top: 50%;
-		transform: translateY( -50% );
-	}
-}
-
-// Temporarily hide extensible form sections while the collapsible-block script is not yet loaded
-body:not( .has-collapsible-block ) .wfc-expansible-form-section__content .collapsible-content__inner {
-	display: none;
-}

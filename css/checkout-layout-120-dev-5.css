@@ -634,37 +634,6 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   display: none; }
 
 /*------------------------------------*\
-	#CHECKOUT EXPANSIBLE SECTIONS
-\*------------------------------------*/
-.wfc-wrapper .expansible-section__toggle-plus {
-  position: relative;
-  padding: 0 0 0 33px;
-  cursor: pointer; }
-  .wfc-wrapper .expansible-section__toggle-plus:before {
-    display: inline-block;
-    font-family: "fluid-checkout-icons" !important;
-    font-style: normal !important;
-    font-weight: normal !important;
-    font-variant: normal !important;
-    text-transform: none !important;
-    speak: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    vertical-align: middle;
-    content: "";
-    width: 24px;
-    height: 24px;
-    font-size: 24px;
-    position: absolute;
-    left: 2.5px;
-    top: 50%;
-    transform: translateY(-50%); }
-
-body:not(.has-collapsible-block) .wfc-expansible-form-section__content .collapsible-content__inner {
-  display: none; }
-
-/*------------------------------------*\
   #CHECKOUT LOGIN
 \*------------------------------------*/
 .wfc-contact-login {
@@ -1378,4 +1347,36 @@ body:not(.has-collapsible-block) #wfc-gift-options__field-wrapper .collapsible-c
   background-color: transparent; }
 
 .woocommerce-checkout form .wfc-wrapper #order_review .woocommerce-checkout-review-order-table tbody::after {
+  display: none; }
+
+/*------------------------------------*\
+	#EXPANSIBLE SECTIONS
+\*------------------------------------*/
+div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
+  position: relative;
+  padding: 0 0 0 33px;
+  cursor: pointer;
+  text-decoration: none; }
+  div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus:before {
+    display: inline-block;
+    font-family: "fluid-checkout-icons" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: middle;
+    content: "";
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+    position: absolute;
+    left: 2.5px;
+    top: 50%;
+    transform: translateY(-50%); }
+
+body:not(.has-collapsible-block) .wfc-expansible-form-section__content .collapsible-content__inner {
   display: none; }

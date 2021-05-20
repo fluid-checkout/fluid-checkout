@@ -24,6 +24,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_require_bundle' ), 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_custom_fonts' ), 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 10 );
 	}
 
 
@@ -85,6 +86,17 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
 		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
 		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n' ), NULL, true );
+	}
+
+
+	
+	/**
+	 * Enqueue fonts
+	 */
+	function enqueue_styles( $hook ) {
+		if ( function_exists( 'is_account_page' ) && is_account_page() && is_wc_endpoint_url( 'edit-address' ) ) {
+			wp_enqueue_style( 'wfc-account-page-address', self::$directory_url . '/css/account-page-address'. self::$asset_version . '.css', array(), null );
+		}
 	}
 
 }
