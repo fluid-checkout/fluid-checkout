@@ -78,6 +78,22 @@ gulp.task( 'build-css', gulp.series( 'update-ver', 'clean-css', function( done )
 	.pipe(sourcemaps.write('maps'))
 	.pipe(gulp.dest('./css/')); // save .min.css
 
+
+	// THEME COMPATIBILITY FILES
+	gulp.src([
+		'./sass/compat/themes/*.scss',
+	] )
+	.pipe(plumber())
+	.pipe(sourcemaps.init())
+	.pipe(sass())
+	.pipe(autoprefixer({ cascade: false }))
+	.pipe(rename({suffix: settings.assetsVersion}))
+	.pipe(gulp.dest('./css/compat/themes/')) // save .css
+	.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false}, reduceIdents: {keyframes: false} } ) )
+	.pipe(rename( { suffix: '.min' } ) )
+	.pipe(sourcemaps.write('maps'))
+	.pipe(gulp.dest('./css/compat/themes/')); // save .min.css
+
 	done();
 } ) );
 
