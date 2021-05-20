@@ -129,7 +129,8 @@ jQuery( function( $ ) {
 			);
 
 			fieldsets.each( function( index, fieldset ) {
-				var rows    = $( fieldset ).find( '.form-row' );
+				// CHANGE: Change form row selector to exclude nested `.form-row` elements (used for expansible form fields)
+				var rows    = $( fieldset ).find( '.form-row:not( .form-row .form-row )' );
 				var wrapper = rows.first().parent();
 
 				// Before sorting, ensure all fields have a priority for bW compatibility.
