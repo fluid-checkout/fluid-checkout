@@ -44,7 +44,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * Add new WooCommerce settings pages/tabs.
 	 */
 	public function add_settings_pages( $settings ) {
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-shipping.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-wc-shipping.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-checkout.php';
 		return $settings;
 	}

@@ -1,9 +1,23 @@
 <?php
+/**
+ * WooCommerce Checkout Settings
+ *
+ * @package woocommerce-fluid-checkout
+ * @version 1.2.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+if ( class_exists( 'WC_Settings_FluidCheckout_WCShippingSettings', false ) ) {
+	return new WC_Settings_FluidCheckout_WCShippingSettings();
+}
 
 /**
- * Shipping settings options.
+ * WC_Settings_FluidCheckout_WCShippingSettings.
  */
-class FluidCheckout_AdminSettingsShipping extends FluidCheckout {
+class WC_Settings_FluidCheckout_WCShippingSettings extends WC_Settings_Page {
 
 	/**
 	 * __construct function.
@@ -44,4 +58,4 @@ class FluidCheckout_AdminSettingsShipping extends FluidCheckout {
 
 }
 
-FluidCheckout_AdminSettingsShipping::instance();
+return new WC_Settings_FluidCheckout_WCShippingSettings();
