@@ -30,6 +30,9 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		// Coupon Code Substep
 		add_action( 'wfc_output_step_payment', array( $this, 'output_substep_coupon_codes' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_coupon_codes_text_fragment' ), 10 );
+
+		// Prevent hiding coupon code field behind a link button, as it is implemented directly
+		add_filter( 'wfc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_coupon_code' ), 10 );
 	}
 
 
@@ -86,6 +89,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$coupon_code_field_placeholder = apply_filters( 'wfc_coupon_code_field_placeholder', __( 'Enter your code here', 'woocommerce-fluid-checkout' ) );
 		$coupon_code_button_label = apply_filters( 'wfc_coupon_code_button_label', _x( 'Apply code', 'Button label for applying coupon codes', 'woocommerce-fluid-checkout' ) );
 
+		$key = 'coupon_code';
 		$coupon_code_field_args = array(
 			'required'           => false,
 			'class'              => array( 'form-row-first' ),
@@ -95,15 +99,27 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 				'data-autofocus' => true,
 			),
 		);
-
-		$this->checkout_steps()->output_expansible_form_section_start_tag( 'coupon_code', apply_filters( 'wfc_coupon_code_expansible_section_toggle_label', __( 'Add coupon code', 'woocommerce-fluid-checkout' ) ) );
 		
-		woocommerce_form_field( 'coupon_code', $coupon_code_field_args );
+		// Output coupon code field and button in an expansible form section
+		/* translators: %s: Form field label */
+		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, apply_filters( 'wfc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'woocommerce-fluid-checkout' ), strtolower( $coupon_code_field_label ) ) ) );
+		woocommerce_form_field( $key, $coupon_code_field_args );
 		?>
 		<button type="button" class="wfc-coupon-code__apply <?php echo esc_attr( apply_filters( 'wfc_coupon_code_apply_button_classes', '' ) ); ?>" data-apply-coupon-button><?php echo $coupon_code_button_label; ?></button>
 		<?php
-		
 		$this->checkout_steps()->output_expansible_form_section_end_tag();
+	}
+
+
+
+	/**
+	 * Prevent hiding optional coupon code field behind a link button, as it is implemented directly.
+	 *
+	 * @param   array  $skip_list  List of optional fields to skip hidding.
+	 */
+	public function prevent_hide_optional_fields_coupon_code( $skip_list ) {
+		$skip_list[] = 'coupon_code';
+		return $skip_list;
 	}
 
 

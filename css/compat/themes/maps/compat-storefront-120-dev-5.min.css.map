@@ -1,0 +1,1 @@
+{"version":3,"sources":["storefront/_woocommerce-form-fields.scss"],"names":[],"mappings":"AAGA,sCACI,iBAAkB,CAAA","file":"../compat-storefront-120-dev-5.min.css","sourcesContent":["/*------------------------------------*\\\n  #STOREFRONT FORM FIELDS\n\\*------------------------------------*/\n.wfc-expansible-form-section.form-row {\n    margin-bottom: 1em;\n}\n"]}

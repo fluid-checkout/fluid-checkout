@@ -245,11 +245,21 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					
 					array(
 						'title'         => __( 'Optional fields', 'woocommerce-fluid-checkout' ),
-						'desc'          => __( 'Hide optional fields behind a "+ Add optional field" link button', 'woocommerce-fluid-checkout' ),
+						'desc'          => __( 'Hide optional fields behind a link button', 'woocommerce-fluid-checkout' ),
 						'desc_tip'      => __( 'It is recommended to keep this options checked to reduce the number of open input fields, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-link" target="_blank">read the research</a>.', 'woocommerce-fluid-checkout' ),
 						'id'            => 'wfc_enable_checkout_hide_optional_fields',
 						'default'       => 'yes',
 						'type'          => 'checkbox',
+						'checkboxgroup' => 'start',
+						'autoload'      => false,
+					),
+					array(
+						'desc'          => __( 'Do not hide "Address line 2" fields behind a link button', 'woocommerce-fluid-checkout' ),
+						'desc_tip'      => __( 'Recommended only whe most customers actually need the "Address line 2" field or when delivering perishable products.', 'woocommerce-fluid-checkout' ),
+						'id'            => 'wfc_hide_optional_fields_skip_address_2',
+						'default'       => 'no',
+						'type'          => 'checkbox',
+						'checkboxgroup' => 'end',
 						'autoload'      => false,
 					),
 					
@@ -295,7 +305,6 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'checkboxgroup' => 'start',
 						'autoload'      => false,
 					),
-
 					array(
 						'desc'          => __( 'Display added gift message as part of the order details table', 'woocommerce' ),
 						'id'            => 'wfc_display_gift_message_in_order_details',

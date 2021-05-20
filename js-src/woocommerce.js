@@ -1,3 +1,9 @@
+/**
+ * WooCommerce Script
+ * 
+ * Replaces the original WooCommerce `woocommerce.js`.
+ */
+
 /* global Cookies */
 jQuery( function( $ ) {
 	// Orderby
