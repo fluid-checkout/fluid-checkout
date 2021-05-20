@@ -681,9 +681,35 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$_checkout_steps,
 			$current_step
 		);
+
+		// Attributes
+		$progress_bar_attributes = array(
+			'class' => 'wfc-progress-bar',
+			'data-progress-bar' => true,
+
+		);
+		$progress_bar_inner_attributes = array(
+			'class' => 'wfc-progress-bar__inner',
+		);
+
+		// Sticky state attributes
+		if ( get_option( 'wfc_enable_checkout_sticky_progress_bar', 'yes' ) === 'yes' ) {
+			$progress_bar_attributes = array_merge( $progress_bar_attributes, array(
+				'data-sticky-states' => true,
+				'data-sticky-relative-to' => '.wfc-checkout-header',
+				'data-sticky-container' => 'div.checkout',
+			) );
+
+			$progress_bar_inner_attributes = array_merge( $progress_bar_inner_attributes, array(
+				'data-sticky-states-inner' => true,
+			) );
+		}
+
+		$progress_bar_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $progress_bar_attributes ), $progress_bar_attributes ) );
+		$progress_bar_attributes_inner_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $progress_bar_inner_attributes ), $progress_bar_inner_attributes ) );
 		?>
-		<div class="wfc-progress-bar" data-progress-bar data-sticky-states data-sticky-relative-to=".wfc-checkout-header" data-sticky-container="div.checkout">
-			<div class="wfc-progress-bar__inner" data-sticky-states-inner>
+		<div <?php echo $progress_bar_attributes_str; ?>>
+			<div <?php echo $progress_bar_attributes_inner_str; ?>>
 
 				<div class="wfc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html ?></div>
 				<div class="wfc-progress-bar__bars" data-progress-bar data-step-count="<?php echo esc_attr( $steps_count ); ?>">
