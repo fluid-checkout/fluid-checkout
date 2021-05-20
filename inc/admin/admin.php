@@ -19,7 +19,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 */
 	public function hooks() {
 		// WooCommerce Settings
-        add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_settings_pages' ), 50 );
+		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_settings_pages' ), 50 );
 		
 		// WooCommerce Settings Styles
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles'), 10 );
@@ -40,13 +40,14 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 
 
-    /**
-     * Add new WooCommerce settings pages/tabs.
-     */
-    public function add_settings_pages( $settings ) {
-        $settings[] = include self::$directory_path . 'inc/admin/admin-checkout.php';
-        return $settings;
-    }
+	/**
+	 * Add new WooCommerce settings pages/tabs.
+	 */
+	public function add_settings_pages( $settings ) {
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-shipping.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-checkout.php';
+		return $settings;
+	}
 
 }
 
