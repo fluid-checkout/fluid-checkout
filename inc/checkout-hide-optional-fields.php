@@ -55,14 +55,19 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		// Set attribute `data-autofocus` to focus on the optional field when expanding the section
 		$field = str_replace( 'name="'. $key .'"', 'name="'. $key .'" data-autofocus', $field );
 		
-		/* translators: %s: Form field label */
-		$toggle_label = sprintf( __( 'Add %s', 'woocommerce-fluid-checkout' ), strtolower( $args['label'] ) );
+		// Move container classes to expansible block
+		$container_class = esc_attr( implode( ' ', $args['class'] ) );
+		$section_attributes = array( 'class' => 'form-row ' . $container_class );
+		$field = str_replace( 'form-row '. $container_class, 'form-row ', $field );
+		
+		ob_start();
 		
 		// Add extensible block markup for the field
-		ob_start();
-		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, apply_filters( 'wfc_expansible_section_toggle_label_'.$key, $toggle_label ) );
+		/* translators: %s: Form field label */
+		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, apply_filters( 'wfc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'woocommerce-fluid-checkout' ), strtolower( $args['label'] ) ) ), $section_attributes );
 		echo $field;
 		$this->checkout_steps()->output_expansible_form_section_end_tag();
+
 		$field = ob_get_clean();
 
 		return $field;

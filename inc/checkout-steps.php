@@ -918,7 +918,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
 	 * @param   string  $section_id  Id of the substep.
 	 */
-	public function output_expansible_form_section_start_tag( $section_id, $toggle_label ) {
+	public function output_expansible_form_section_start_tag( $section_id, $toggle_label, $section_attributes = array() ) {
+		// Add class to section attributes
+		$section_attributes['class'] = array_key_exists( 'class', $section_attributes ) ? 'wfc-expansible-form-section ' . $section_attributes['class'] : 'wfc-expansible-form-section';
+		
 		// Section toggle attributes
 		$section_toggle_attributes = array(
 			'id' => 'wfc-expansible-form-section__toggle--' . $section_id,
@@ -958,30 +961,33 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'class' => 'collapsible-content__inner',
 		);
 		
+		$section_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_attributes ), $section_attributes ) );
 		$section_toggle_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_toggle_attributes ), $section_toggle_attributes ) );
 		$section_toggle_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_toggle_inner_attributes ), $section_toggle_inner_attributes ) );
 		$toggle_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $toggle_attributes ), $toggle_attributes ) );
 		$section_content_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_content_attributes ), $section_content_attributes ) );
 		$section_content_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_content_inner_attributes ), $section_content_inner_attributes ) );
 		?>
-		<div <?php echo $section_toggle_attributes_str; ?>>
-			<div <?php echo $section_content_inner_attributes_str; ?>>
-				<a <?php echo $toggle_attributes_str; ?>>
-					<?php echo esc_html( $toggle_label ); ?>
-				</a>
+		<div <?php echo $section_attributes_str; ?>>
+			<div <?php echo $section_toggle_attributes_str; ?>>
+				<div <?php echo $section_content_inner_attributes_str; ?>>
+					<a <?php echo $toggle_attributes_str; ?>>
+						<?php echo esc_html( $toggle_label ); ?>
+					</a>
+				</div>
 			</div>
-		</div>
 
-		<div <?php echo $section_content_attributes_str; ?>>
-			<div <?php echo $section_content_inner_attributes_str; ?>>
-			<?php
+			<div <?php echo $section_content_attributes_str; ?>>
+				<div <?php echo $section_content_inner_attributes_str; ?>>
+				<?php
 	}
 
 	/**
 	 * Output checkout expansible form section end tag.
 	 */
 	public function output_expansible_form_section_end_tag() {
-			?>
+				?>
+				</div>
 			</div>
 		</div>
 		<?php

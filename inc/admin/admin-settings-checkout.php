@@ -254,7 +254,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'autoload'      => false,
 					),
 					array(
-						'desc'          => __( 'Do not hide "Address line 2" fields', 'woocommerce-fluid-checkout' ),
+						'desc'          => __( 'Do not hide "Address line 2" fields behind a link button', 'woocommerce-fluid-checkout' ),
 						'desc_tip'      => __( 'Recommended only whe most customers actually need the "Address line 2" field or when delivering perishable products.', 'woocommerce-fluid-checkout' ),
 						'id'            => 'wfc_hide_optional_fields_skip_address_2',
 						'default'       => 'no',

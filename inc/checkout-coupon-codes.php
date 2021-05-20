@@ -89,6 +89,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$coupon_code_field_placeholder = apply_filters( 'wfc_coupon_code_field_placeholder', __( 'Enter your code here', 'woocommerce-fluid-checkout' ) );
 		$coupon_code_button_label = apply_filters( 'wfc_coupon_code_button_label', _x( 'Apply code', 'Button label for applying coupon codes', 'woocommerce-fluid-checkout' ) );
 
+		$key = 'coupon_code';
 		$coupon_code_field_args = array(
 			'required'           => false,
 			'class'              => array( 'form-row-first' ),
@@ -98,13 +99,10 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 				'data-autofocus' => true,
 			),
 		);
-
-		// Get key and toggle label for expansible section
-		$key = 'coupon_code';
-		$toggle_label = sprintf( __( 'Add %s', 'woocommerce-fluid-checkout' ), strtolower( $coupon_code_field_label ) );
 		
 		// Output coupon code field and button in an expansible form section
-		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, apply_filters( 'wfc_expansible_section_toggle_label_'.$key, $toggle_label ) );
+		/* translators: %s: Form field label */
+		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, apply_filters( 'wfc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'woocommerce-fluid-checkout' ), strtolower( $coupon_code_field_label ) ) ) );
 		woocommerce_form_field( $key, $coupon_code_field_args );
 		?>
 		<button type="button" class="wfc-coupon-code__apply <?php echo esc_attr( apply_filters( 'wfc_coupon_code_apply_button_classes', '' ) ); ?>" data-apply-coupon-button><?php echo $coupon_code_button_label; ?></button>
