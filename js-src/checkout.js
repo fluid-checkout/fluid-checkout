@@ -1,3 +1,9 @@
+/**
+ * Checkout Script
+ * 
+ * Replaces the original WooCommerce `checkout.js`.
+ */
+
 /* global wc_checkout_params */
 jQuery( function( $ ) {
 
