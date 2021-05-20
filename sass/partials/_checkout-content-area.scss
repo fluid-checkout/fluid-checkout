@@ -88,9 +88,15 @@ body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-
 	position: static;
 
 	@media (#{$bp-larger-than-desktop}) {
-		float: right;
+		z-index: z( 'default' ) + 1;
+		position: absolute;
+		top: 0;
+		right: 0;
 		width: $checkout-overview-width--large-screen;
+		height: 100%;
 		padding-left: $checkout-column-gap--large-screen;
+		padding-right: $checkout-column-gap--large-screen;
+		background: $checkout-overview-background;
 	}
 }
 .wfc-sidebar:before {
@@ -112,10 +118,15 @@ body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-
 	z-index: z( 'above' );
 
 	@media (#{$bp-larger-than-desktop}) {
-		position: absolute;
-		top: 0;
-		width: #{ $checkout-overview-width--large-screen * .8 }; // Fall back, using multiplication by `.8` makes the order review stay inside the content area
-		width: calc( #{ $checkout-overview-width--large-screen } - #{ $checkout-column-gap--large-screen * $checkout-overview-width-magic-number } );
+		position: relative;
+		padding-top: $global-spacing-small;
+		width: 100%;
+	}
+}
+// With admin bar
+.admin-bar .wfc-wrapper .wfc-sidebar.is-sticky .wfc-sidebar__inner {
+	@media (#{$bp-larger-than-desktop}) {
+		padding-top: calc( #{ $global-spacing-small } + 32px );
 	}
 }
 

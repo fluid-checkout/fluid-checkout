@@ -225,14 +225,8 @@
 
 .wfc-wrapper .wfc-checkout-order-review .wfc-checkout-order-review__inner {
 	@media (#{$bp-larger-than-desktop}) {
-		padding-top: $global-spacing;
-		padding-bottom: $global-spacing;
-	}
-}
-// With admin bar
-.admin-bar .wfc-wrapper .wfc-checkout-order-review.is-sticky .wfc-checkout-order-review__inner {
-	@media (#{$bp-larger-than-desktop}) {
-		padding-top: calc( #{ $global-spacing } + 32px );
+		padding-top: 0;
+		padding-bottom: 0;
 	}
 }
 

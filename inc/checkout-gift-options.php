@@ -407,9 +407,20 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 *
 	 * @param   int  $order_id  Order ID.
 	 */
-	public function save_order_gift_details( $order_id ){
+	public function save_order_gift_details( $order_id ) {
 		update_post_meta( $order_id, '_wfc_gift_message', wc_clean( $_POST[ '_wfc_gift_message' ] ) );
 		update_post_meta( $order_id, '_wfc_gift_from', wc_sanitize_textarea( $_POST[ '_wfc_gift_from' ] ) );
+	}
+
+
+
+	/**
+	 * Wheter the gift message should be displayed as a separate section in the order details.
+	 *
+	 * @return  bool  `true` if displaying the gift message as a separate section, `false` if displaying the gift message as part of the order details table.
+	 */
+	public function is_gift_message_in_order_details() {
+		return get_option( 'wfc_display_gift_message_in_order_details', 'no' ) == 'yes';
 	}
 
 
@@ -438,8 +449,8 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		// Insert at token position
 		$new_total_rows  = array_slice( $total_rows, 0, $position_index );
 		
-		// Check if should display message text on the order details table
-		if ( get_option( 'wfc_display_gift_message_order_details_table', 'false' ) !== 'false' ) {
+		// Check if should display message text as a separate section
+		if ( $this->is_gift_message_in_order_details() ) {
 			// Gift message
 			if ( ! empty( $gift_message ) ) {
 				$new_total_rows[ 'gift_message' ] = array(
@@ -471,7 +482,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 */
 	public function output_gift_message_order_details( $order ) {
 		// Bail if already displaying message text on the order details table
-		if ( get_option( 'wfc_display_gift_message_order_details_table', 'false' ) !== 'false' ) { return; }
+		if ( $this->is_gift_message_in_order_details() ) { return; }
 
 		// Bail if not on order received page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || ! is_order_received_page() ){ return; }
@@ -500,7 +511,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 */
 	public function output_gift_message_order_details_email( $order, $sent_to_admin, $plain_text, $email ) {
 		// Bail if already displaying message text on the order details table
-		if ( get_option( 'wfc_display_gift_message_order_details_table', 'false' ) !== 'false' ) { return; }
+		if ( $this->is_gift_message_in_order_details() ) { return; }
 
 		// Get gift options
 		$gift_options = $this->get_gift_options_from_order( $order->get_id() );

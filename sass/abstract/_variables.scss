@@ -277,9 +277,7 @@ $checkout-column-gap--large-screen:         $global-spacing-medium !default;
 
 $checkout-steps-width--large-screen:        60% !default;
 
-// The magic number below makes the order review width go up to the content area considering the paddings
-$checkout-overview-width-magic-number:      1.8 !default; // 1.8 works for 50px of padding on the content area
-$checkout-overview-width--large-screen:     40% !default;
+$checkout-overview-width--large-screen:     #{ 100% - $checkout-steps-width--large-screen } !default;
 $checkout-overview-background:              linear-gradient( 90deg, darken( $lighter-grey, 5% ) 0%, $lighter-grey .5%, $lighter-grey 100% ) !default;
 $checkout-overview-border-left:             none !default;
 

@@ -42,7 +42,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	public function get_shipping_phone_field() {
 		return apply_filters( 'wfc_shipping_phone_field_args', array(
 			'label'     => __( 'Shipping Phone', 'woocommerce-fluid-checkout' ),
-			'required'  => false,
+			'required'  => get_option( 'wfc_shipping_phone_field_visibility', 'optional' ) === 'required',
 			'class'     => array( 'form-row-first' ),
 			'clear'     => true
 		) );

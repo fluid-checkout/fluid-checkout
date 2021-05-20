@@ -38,8 +38,8 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 			'name'          => __( 'Checkout Header', 'woocommerce-fluid-checkout' ),
 			'id'            => 'wfc_checkout_header',
 			'description'   => __( 'Display widgets at the checkout header.', 'woocommerce-fluid-checkout' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</aside>',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
 			'before_title'  => '<h5 class="widget-title">',
 			'after_title'   => '</h5>',
 		) );
@@ -48,8 +48,8 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 			'name'          => __( 'Checkout Below Progress Bar', 'woocommerce-fluid-checkout' ),
 			'id'            => 'wfc_checkout_below_progress_bar',
 			'description'   => __( 'Display widgets below the checkout progress bar.', 'woocommerce-fluid-checkout' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</aside>',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
 			'before_title'  => '<h5 class="widget-title">',
 			'after_title'   => '</h5>',
 		) );
@@ -60,18 +60,18 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 			'name'          => __( 'Checkout Order Summary - Inside', 'woocommerce-fluid-checkout' ),
 			'id'            => 'wfc_checkout_order_summary_inside',
 			'description'   => __( 'Display widgets inside the order summary at the checkout page.', 'woocommerce-fluid-checkout' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</aside>',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
 			'before_title'  => '<h5 class="widget-title">',
 			'after_title'   => '</h5>',
 		) );
 
 		register_sidebar( array(
-			'name'          => __( 'Checkout Order Summary - After', 'woocommerce-fluid-checkout' ),
-			'id'            => 'wfc_checkout_order_summary_outside',
-			'description'   => __( 'Display widgets after the order summary at the checkout page.', 'woocommerce-fluid-checkout' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</aside>',
+			'name'          => __( 'Checkout Sidebar - After', 'woocommerce-fluid-checkout' ),
+			'id'            => 'wfc_checkout_sidebar_after',
+			'description'   => __( 'Display widgets on the checkout sidebar after the order summary.', 'woocommerce-fluid-checkout' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
 			'before_title'  => '<h5 class="widget-title">',
 			'after_title'   => '</h5>',
 		) );
@@ -117,8 +117,8 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 * Output widget area outside order review section.
 	 */
 	public function output_widget_area_order_review_outside() {
-		if ( is_active_sidebar( 'wfc_checkout_order_summary_outside' ) ) :
-			dynamic_sidebar( 'wfc_checkout_order_summary_outside' );
+		if ( is_active_sidebar( 'wfc_checkout_sidebar_after' ) ) :
+			dynamic_sidebar( 'wfc_checkout_sidebar_after' );
 		endif;
 	}
 

@@ -34,9 +34,11 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 		<h3 class="wfc-checkout-order-review-title"><?php echo esc_html( $order_review_title ); ?></h3>
 		
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+		
 		<div id="order_review" class="woocommerce-checkout-review-order">
 			<?php do_action( 'woocommerce_checkout_order_review' ); ?>
 		</div>
+
 		<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
 		<?php if ( $is_sidebar_widget ) : ?>
@@ -44,7 +46,7 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 			<div class="wfc-checkout-order-review__actions">
 				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout-order-review__edit-cart"><?php echo __( 'Edit Cart', 'woocommerce-fluid-checkout' ); ?></a>
-				<button href="#" class="button" data-flyout-close><?php echo __( 'Continue', 'woocommerce-fluid-checkout' ); ?></button>
+				<button type="button" class="button" data-flyout-close><?php echo __( 'Continue', 'woocommerce-fluid-checkout' ); ?></button>
 			</div>
 		<?php endif; ?>
 	

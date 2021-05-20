@@ -141,6 +141,7 @@ class FluidCheckout {
 		add_action( 'plugins_loaded', array( $this, 'load_plugin_compat_features' ) );
 		add_action( 'plugins_loaded', array( $this, 'load_theme_compat_features' ) );
 
+
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 10, 3 );
 	}
@@ -153,16 +154,15 @@ class FluidCheckout {
 	 */
 	private function add_features() {
 		self::$features = array(
-			'checkout-page-template'              => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php', 'enable_option' => 'wfc_enable_checkout_page_template', 'enable_default' => true ),
 			'checkout-steps'                      => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
-			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'wfc_apply_checkout_field_args', 'enable_default' => true ),
-			'checkout-shipping-phone'             => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'wfc_add_shipping_phone_field', 'enable_default' => true ),
-			'checkout-validation'                 => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => true ),
-			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => true ),
-			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php', 'enable_option' => 'wfc_enable_checkout_coupon_codes', 'enable_default' => true ),
-			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => true ),
-			
-			'cart-widget-areas'                   => array( 'file' => self::$directory_path . 'inc/cart-widget-areas.php', 'enable_option' => 'wfc_enable_cart_widget_areas', 'enable_default' => true ),
+			'checkout-page-template'              => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php', 'enable_option' => 'wfc_enable_checkout_page_template', 'enable_default' => 'yes' ),
+
+			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'wfc_apply_checkout_field_args', 'enable_default' => 'yes' ),
+			'checkout-shipping-phone'             => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'wfc_shipping_phone_field_visibility', 'enable_default' => 'no' ),
+			'checkout-validation'                 => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => 'yes' ),
+			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => 'no' ),
+			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php', 'enable_option' => 'wfc_enable_checkout_coupon_codes', 'enable_default' => 'yes' ),
+			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => 'yes' ),
 		);
 	}
 
@@ -239,24 +239,30 @@ class FluidCheckout {
 			$feature_is_enabled = true;
 			$file = array_key_exists( 'file', $feature ) ? $feature[ 'file' ] : null;
 			$enable_option = array_key_exists( 'enable_option', $feature ) ? $feature[ 'enable_option' ] : null;
-			$enable_default = array_key_exists( 'enable_default', $feature ) ? $feature[ 'enable_default' ] : null;
-
-			// Set feature as enabled if `enable_default` value is invalid or empty
-			if ( ! is_bool( $enable_default ) ) {
-				$enable_default = true;
-			}
+			$enable_default = array_key_exists( 'enable_default', $feature ) ? $feature[ 'enable_default' ] !== 'no' : false;
 
 			// Check if feature is set to enabled by option value in the database
-			$enable_option_value = get_option( $enable_option, $enable_default );
-			$enable_option_value_str = is_bool( $enable_option_value ) && $enable_option_value ? 'true' : strval( $enable_option_value );
-			if ( is_string( $enable_option ) && 'true' !== $enable_option_value_str ) {
-				$feature_is_enabled = false;
+			if ( $enable_option !== null ) {
+				$enable_option_value = get_option( $enable_option, $enable_default );
+
+				// Check option value
+				if ( ( is_bool( $enable_option_value ) && $enable_option_value === true ) || ( strval( $enable_option_value ) !== 'no' && strval( $enable_option_value ) !== 'false' ) ) {
+					$feature_is_enabled = true;
+				}
+				else {
+					$feature_is_enabled = false;
+				}
 			}
 			
 			// Load feature file if enabled and file exists
 			if ( $feature_is_enabled && file_exists( $file ) ) {
 				require_once $file;
 			}
+		}
+		
+		// Load admin features
+		if( is_admin() ) {
+			require_once self::$directory_path . 'inc/admin/admin.php';
 		}
 	}
 
