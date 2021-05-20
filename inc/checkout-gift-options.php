@@ -40,6 +40,9 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		add_filter( 'woocommerce_get_order_item_totals', array( $this, 'maybe_add_gift_message_order_received_details_table' ), 30, 3 );
 		add_action( 'woocommerce_order_details_after_order_table', array( $this, 'output_gift_message_order_details' ), 10 );
 		add_action( 'woocommerce_email_after_order_table', array( $this, 'output_gift_message_order_details_email' ), 10, 4 );
+
+		// Prevent hiding optional gift option fields behind a link button
+		add_filter( 'wfc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_gift_options' ), 10 );
 	}
 
 
@@ -167,6 +170,18 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		) );
 
 		return $gift_option_fields;
+	}
+
+
+
+	/**
+	 * Prevent hiding optional gift option fields behind a link button.
+	 *
+	 * @param   array  $skip_list  List of optional fields to skip hidding.
+	 */
+	public function prevent_hide_optional_fields_gift_options( $skip_list ) {
+		$skip_list = array_merge( $skip_list, array( '_wfc_has_gift_options', '_wfc_gift_message', '_wfc_gift_from' ) );
+		return $skip_list;
 	}
 
 
