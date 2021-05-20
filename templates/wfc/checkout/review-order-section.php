@@ -34,9 +34,11 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 		<h3 class="wfc-checkout-order-review-title"><?php echo esc_html( $order_review_title ); ?></h3>
 		
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+		
 		<div id="order_review" class="woocommerce-checkout-review-order">
 			<?php do_action( 'woocommerce_checkout_order_review' ); ?>
 		</div>
+
 		<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
 		<?php if ( $is_sidebar_widget ) : ?>

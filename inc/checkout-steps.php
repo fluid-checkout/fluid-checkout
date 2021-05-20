@@ -2293,6 +2293,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output checkout place order section.
 	 */
 	public function output_checkout_place_order_for_sidebar() {
+		// Bail if additional place order section is not enabled
+		if ( get_option( 'wfc_enable_checkout_place_order_sidebar', 'no' ) === 'no' ) { return; }
+
 		$this->output_checkout_place_order( '__sidebar', true );
 	}
 
