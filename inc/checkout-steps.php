@@ -55,7 +55,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 1 );
 		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 );
 		add_action( 'wfc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
-		add_action( 'wfc_checkout_after', array( $this, 'output_checkout_order_review_wrapper' ), 10 );
+		add_action( 'wfc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
 		
 		// Contact
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
@@ -105,7 +105,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_order_review' ), 90 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
-		add_action( 'wfc_checkout_order_review_sidebar_before_actions', array( $this, 'output_checkout_place_order_for_sidebar' ), 100, 1 );
+		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_checkout_place_order_for_sidebar' ), 20 );
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
 		add_action( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
 		
@@ -697,7 +697,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$progress_bar_attributes = array_merge( $progress_bar_attributes, array(
 				'data-sticky-states' => true,
 				'data-sticky-relative-to' => '.wfc-checkout-header',
-				'data-sticky-container' => 'div.checkout',
+				'data-sticky-container' => 'div.woocommerce',
 			) );
 
 			$progress_bar_inner_attributes = array_merge( $progress_bar_inner_attributes, array(
@@ -2178,12 +2178,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output order review section wrapper.
+	 * Output sidebar section wrapper.
 	 */
-	public function output_checkout_order_review_wrapper() {
+	public function output_checkout_sidebar_wrapper() {
+		$sidebar_attributes = array(
+			'class' => 'wfc-sidebar',
+		);
+		$sidebar_attributes_inner = array(
+			'class' => 'wfc-sidebar__inner',
+		);
+
+		// Sticky state attributes
+		if ( get_option( 'wfc_enable_checkout_sticky_order_summary', 'yes' ) === 'yes' ) {
+			$sidebar_attributes = array_merge( $sidebar_attributes, array(
+				'data-sticky-states' => true,
+				'data-sticky-container' => 'div.woocommerce',
+			) );
+			$sidebar_attributes_inner = array_merge( $sidebar_attributes_inner, array(
+				'data-sticky-states-inner' => true,
+			) );
+		}
+
+		$sidebar_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $sidebar_attributes ), $sidebar_attributes ) );
+		$sidebar_attributes_inner_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $sidebar_attributes_inner ), $sidebar_attributes_inner ) );
 		?>
-		<div class="wfc-sidebar">
-			<div class="wfc-sidebar__inner">
+		<div <?php echo $sidebar_attributes_str; ?>>
+			<div <?php echo $sidebar_attributes_inner_str; ?>>
 				<?php do_action( 'wfc_checkout_order_review_section' ); ?>
 			</div>
 		</div>
@@ -2220,8 +2240,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'data-flyout-order-review' => true,
 				'data-flyout-open-animation-class' => 'fade-in-down',
 				'data-flyout-close-animation-class' => 'fade-out-up',
-				'data-sticky-states' => true,
-				'data-sticky-container' => 'div.checkout',
 			) );
 		}
 		
@@ -2242,7 +2260,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( $is_sidebar_widget ) {
 			$attributes = array_merge( $attributes, array(
 				'data-flyout-content' => true,
-				'data-sticky-states-inner' => true,
 			) );
 		}
 		

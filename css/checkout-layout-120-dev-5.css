@@ -111,9 +111,15 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   position: static; }
   @media (min-width: 1000px) {
     .wfc-sidebar {
-      float: right;
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      right: 0;
       width: 40%;
-      padding-left: 50px; } }
+      height: 100%;
+      padding-left: 50px;
+      padding-right: 50px;
+      background: linear-gradient(90deg, #e1e9e9 0%, #F0F4F4 0.5%, #F0F4F4 100%); } }
 
 @media (min-width: 1000px) {
   .wfc-sidebar:before {
@@ -132,10 +138,13 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   z-index: 10; }
   @media (min-width: 1000px) {
     .wfc-sidebar__inner {
-      position: absolute;
-      top: 0;
-      width: 32%;
-      width: calc( 40% - 90px); } }
+      position: relative;
+      padding-top: 20px;
+      width: 100%; } }
+
+@media (min-width: 1000px) {
+  .admin-bar .wfc-wrapper .wfc-sidebar.is-sticky .wfc-sidebar__inner {
+    padding-top: calc( 20px + 32px); } }
 
 /*------------------------------------*\
   #CHECKOUT COLUMNS LAYOUT
@@ -1299,12 +1308,8 @@ body:not(.has-collapsible-block) #wfc-gift-options__field-wrapper .collapsible-c
 
 @media (min-width: 1000px) {
   .wfc-wrapper .wfc-checkout-order-review .wfc-checkout-order-review__inner {
-    padding-top: 30px;
-    padding-bottom: 30px; } }
-
-@media (min-width: 1000px) {
-  .admin-bar .wfc-wrapper .wfc-checkout-order-review.is-sticky .wfc-checkout-order-review__inner {
-    padding-top: calc( 30px + 32px); } }
+    padding-top: 0;
+    padding-bottom: 0; } }
 
 @media (min-width: 1000px) {
   .wfc-wrapper .wfc-checkout-order-review .wfc-checkout-order-review__inner {

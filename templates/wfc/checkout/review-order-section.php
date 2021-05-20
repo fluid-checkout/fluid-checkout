@@ -46,7 +46,7 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 			<div class="wfc-checkout-order-review__actions">
 				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout-order-review__edit-cart"><?php echo __( 'Edit Cart', 'woocommerce-fluid-checkout' ); ?></a>
-				<button href="#" class="button" data-flyout-close><?php echo __( 'Continue', 'woocommerce-fluid-checkout' ); ?></button>
+				<button type="button" class="button" data-flyout-close><?php echo __( 'Continue', 'woocommerce-fluid-checkout' ); ?></button>
 			</div>
 		<?php endif; ?>
 	
