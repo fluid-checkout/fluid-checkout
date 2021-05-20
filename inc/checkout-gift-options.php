@@ -180,7 +180,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 * @param   array  $skip_list  List of optional fields to skip hidding.
 	 */
 	public function prevent_hide_optional_fields_gift_options( $skip_list ) {
-		$skip_list = array_merge( $skip_list, array( '_wfc_has_gift_options', '_wfc_gift_message', '_wfc_gift_from' ) );
+		$skip_list = array_merge( $skip_list, array( '_wfc_gift_message', '_wfc_gift_from' ) );
 		return $skip_list;
 	}
 

@@ -40,6 +40,9 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		// Bail if field is required
 		if ( array_key_exists( 'required', $args ) && $args['required'] === true ) { return $field; }
 
+		// Bail if optional field by its type
+		if ( in_array( $args['type'], apply_filters( 'wfc_hide_optional_fields_skip_types', array( 'checkbox' ) ) ) ) { return $field; }
+
 		// Always skip these fields
 		$skip_list = array();
 
