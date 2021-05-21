@@ -177,7 +177,7 @@ class FluidCheckout {
 	 */
 	public function get_assets_version_number() {
 		$asset_version = '-' . preg_replace( '/\./', '', self::$version );
-		$min = get_option( 'wfc_load_unminified_assets', false ) ? '' : '.min';
+		$min = get_option( 'wfc_load_unminified_assets', 'no' ) === 'yes' ? '' : '.min';
 		return $asset_version . $min;
 	}
 
