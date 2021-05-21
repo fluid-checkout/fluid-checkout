@@ -66,7 +66,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 
 	/**
-	 * Change email fields to include custom attribute for Mailcheck selector
+	 * Change shipping company field arguments to accomodate the shipping phone field.
 	 *
 	 * @param   array  $field_args  Contains checkout field arguments.
 	 */
