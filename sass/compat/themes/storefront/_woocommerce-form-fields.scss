@@ -2,5 +2,13 @@
   #STOREFRONT FORM FIELDS
 \*------------------------------------*/
 .wfc-expansible-form-section.form-row {
-    margin-bottom: 1em;
+	margin-bottom: 1em;
+}
+
+.wfc-expansible-form-section.form-row p.form-row {
+	margin-bottom: 0;
+}
+
+.wfc-expansible-form-section.form-row.form-row-last .wfc-expansible-form-section__toggle .collapsible-content__inner {
+	padding-top: 2.2em;
 }
