@@ -33,8 +33,6 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	public function get_checkout_field_args() {
 		$billing_email_description = WC()->cart->needs_shipping() ? __( 'Order and tracking number will be sent to this email address.', 'woocommerce-fluid-checkout' ) : __( 'Order number and receipt will be sent to this email address.', 'woocommerce-fluid-checkout' );
 		$billing_address_2_label = __( 'Appartment, suite, unit, building, floor, etc.', 'woocommerce-fluid-checkout' );
-		
-		$shipping_phone_description = __( 'For shipping-related purposes only.', 'woocommerce-fluid-checkout' );
 		$shipping_address_2_label = __( 'Appartment, suite, unit, building, floor, etc.', 'woocommerce-fluid-checkout' );
 
 		return apply_filters( 'wfc_checkout_field_args', array(
@@ -53,8 +51,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 			'shipping_first_name'   => array( 'priority' => 10, 'autocomplete' => 'shipping given-name' ),
 			'shipping_last_name'    => array( 'priority' => 20, 'autocomplete' => 'shipping family-name' ),
-			'shipping_phone'        => array( 'priority' => 30, 'autocomplete' => 'shipping tel', 'class' => array( 'form-row-first' ), 'description' => $shipping_phone_description ),
-			'shipping_company'      => array( 'priority' => 35, 'autocomplete' => 'shipping organization', 'class' => array( 'form-row-last' ) ),
+			'shipping_company'      => array( 'priority' => 30, 'autocomplete' => 'shipping organization', 'class' => array( 'form-row-first' ) ),
 			'shipping_address_1'    => array( 'autocomplete' => 'shipping address-line1' ),
 			'shipping_address_2'    => array( 'autocomplete' => 'shipping address-line2', 'label' => $shipping_address_2_label ),
 			'shipping_city'         => array( 'autocomplete' => 'shipping address-level2', 'class' => array( 'form-row-first' ) ),

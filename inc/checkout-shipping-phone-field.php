@@ -27,9 +27,21 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_shipping_phone_to_formats' ), 10 );
 		add_filter( 'wfc_substep_shipping_address_text', array( $this, 'add_shipping_phone_to_substep_text_format' ), 10 );
 
+		// Change checkout field args
+		add_filter( 'wfc_checkout_field_args' , array( $this, 'change_shipping_company_field_args' ), 10 );
+
 		// Persist shipping phone to the user's session
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_shipping_phone_session' ), 10 );
 		add_filter( 'default_checkout_shipping_phone', array( $this, 'change_default_shipping_phone_value' ), 10, 2 );
+	}
+
+
+
+	/**
+	 * Return Checkout Fields class instance.
+	 */
+	public function checkout_fields() {
+		return FluidCheckout_CheckoutFields::instance();
 	}
 
 
@@ -41,12 +53,35 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function get_shipping_phone_field() {
 		return apply_filters( 'wfc_shipping_phone_field_args', array(
-			'label'     => __( 'Shipping Phone', 'woocommerce-fluid-checkout' ),
+			'label'     => __( 'Shipping phone', 'woocommerce-fluid-checkout' ),
+			'description' => __( 'For shipping-related purposes only.', 'woocommerce-fluid-checkout' ),
 			'required'  => get_option( 'wfc_shipping_phone_field_visibility', 'optional' ) === 'required',
 			'class'     => array( 'form-row-first' ),
+			'priority'  => 25,
+			'autocomplete' => 'shipping tel',
 			'clear'     => true
 		) );
 	}
+
+
+
+	/**
+	 * Change email fields to include custom attribute for Mailcheck selector
+	 *
+	 * @param   array  $field_args  Contains checkout field arguments.
+	 */
+	public function change_shipping_company_field_args( $field_args ) {
+		// Bail if hidding optional fields behind a link button
+		if ( get_option( 'wfc_enable_checkout_hide_optional_fields', 'yes' ) === 'yes' && get_option( 'wfc_shipping_phone_field_visibility', 'optional' ) !== 'required' ) { return $field_args; }
+
+		if ( array_key_exists( 'shipping_company', $field_args ) ) {
+			$field_args['shipping_company']['class'] = array( 'form-row-last' );
+		}
+
+		return $field_args;
+	}
+
+
 
 	/**
 	 * Add shipping phone field to edit address fields.
@@ -56,7 +91,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	public function add_shipping_phone_field( $fields ) {
 		$fields['shipping_phone'] = $this->get_shipping_phone_field();
 
-		$field_args = $this->get_checkout_field_args();
+		$field_args = $this->checkout_fields()->get_checkout_field_args();
 		foreach( $field_args as $field => $values ) {
 			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
 		}
@@ -226,96 +261,6 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		}
 
 		return $html;
-	}
-
-
-
-	/**
-	 * Get the checkout fields args.
-	 */
-	public function get_checkout_field_args() {
-		$billing_email_description = WC()->cart->needs_shipping() ? __( 'Order and tracking number will be sent to this email address.', 'woocommerce-fluid-checkout' ) : __( 'Order number and receipt will be sent to this email address.', 'woocommerce-fluid-checkout' );
-		$billing_address_2_label = __( 'Appartment, suite, unit, building, floor, etc.', 'woocommerce-fluid-checkout' );
-		
-		$shipping_phone_description = __( 'For shipping-related purposes only.', 'woocommerce-fluid-checkout' );
-		$shipping_address_2_label = __( 'Appartment, suite, unit, building, floor, etc.', 'woocommerce-fluid-checkout' );
-
-		return apply_filters( 'wfc_checkout_field_args', array(
-			'billing_email'         => array( 'priority' => 5, 'autocomplete' => 'contact email', 'description' => $billing_email_description ),
-			'billing_first_name'    => array( 'priority' => 10, 'autocomplete' => 'contact given-name' ),
-			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'contact family-name' ),
-			'billing_phone'         => array( 'priority' => 30, 'autocomplete' => 'contact tel', 'class' => array( 'form-row-first' ) ),
-
-			'billing_company'       => array( 'priority' => 100, 'autocomplete' => 'billing organization', 'class' => array( 'form-wide' ) ),
-			'billing_address_1'     => array( 'autocomplete' => 'billing address-line1' ),
-			'billing_address_2'     => array( 'autocomplete' => 'billing address-line2', 'label' => $billing_address_2_label ),
-			'billing_city'          => array( 'autocomplete' => 'billing address-level2' ),
-			'billing_state'         => array( 'autocomplete' => 'billing address-level1' ),
-			'billing_country'       => array( 'autocomplete' => 'billing country' ),
-			'billing_postcode'      => array( 'autocomplete' => 'billing postal-code' ),
-
-			'shipping_first_name'   => array( 'priority' => 10, 'autocomplete' => 'shipping given-name' ),
-			'shipping_last_name'    => array( 'priority' => 20, 'autocomplete' => 'shipping family-name' ),
-			'shipping_phone'        => array( 'priority' => 30, 'autocomplete' => 'shipping tel', 'class' => array( 'form-row-first' ), 'description' => $shipping_phone_description ),
-			'shipping_company'      => array( 'priority' => 35, 'autocomplete' => 'shipping organization', 'class' => array( 'form-row-last' ) ),
-			'shipping_address_1'    => array( 'autocomplete' => 'shipping address-line1' ),
-			'shipping_address_2'    => array( 'autocomplete' => 'shipping address-line2', 'label' => $shipping_address_2_label ),
-			'shipping_city'         => array( 'autocomplete' => 'shipping address-level2', 'class' => array( 'form-row-first' ) ),
-			'shipping_state'        => array( 'autocomplete' => 'shipping address-level1', 'class' => array( 'form-row-last' ) ),
-			'shipping_country'      => array( 'autocomplete' => 'shipping country' ),
-			'shipping_postcode'     => array( 'autocomplete' => 'shipping postal-code', 'class' => array( 'form-row-first' ) ),
-		) );
-	}
-
-
-
-	/**
-	 * Remove `form-row-XX` classes from field classes to avoid conflicts the merge the new classes into it.
-	 *
-	 * @param   array  $field_classes  Contains field classes.
-	 * @param   array  $new_classes   New classes to merge into $field_classes.
-	 *
-	 * @return  array  $field_classes  Changed field classes.
-	 */
-	public function merge_form_field_class_args( $field_classes, $new_classes ) {
-		
-		// Maybe remove form-row-XX classes
-		$form_row_classes = array( 'form-row-first', 'form-row-last', 'form-row-wide' );
-
-		if ( array_intersect( $new_classes, $form_row_classes ) ) {
-			$field_classes = array_diff( $field_classes, $form_row_classes );
-		}
-
-		$field_classes = array_merge( $field_classes, $new_classes );
-		
-		return $field_classes;
-	}
-
-
-
-	/**
-	 * Merge checkout field args.
-	 *
-	 * @param   array  $field_args  Contains checkout field arguments.
-	 * @param   array  $new_field_args  New field argument to be merged.
-	 *
-	 * @return  array  $field_args      Changed field arguments.
-	 */
-	public function merge_form_field_args( $field_args, $new_field_args ) {
-
-		foreach( $new_field_args as $field_key => $args ) {
-			$original_args = array_key_exists( $field_key, $field_args ) ? $field_args[ $field_key ] : array();
-
-			// Merge class args and remove it from $args to avoid conflicts when merging all field args below
-			if ( array_key_exists( 'class', $original_args ) && array_key_exists( 'class', $args ) ) {
-				$original_args[ 'class' ] = $this->merge_form_field_class_args( $original_args[ 'class' ], $args[ 'class' ] );
-				unset( $args[ 'class' ] );
-			}
-
-			$field_args[ $field_key ] = array_merge( $original_args, $args );
-		}
-
-		return $field_args;
 	}
 
 }
