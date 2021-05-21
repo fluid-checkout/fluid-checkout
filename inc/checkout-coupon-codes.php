@@ -67,7 +67,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function output_substep_coupon_codes( $step_id ) {
 		$substep_id = 'coupon_codes';
-		$substep_title = apply_filters( 'wfc_substep_coupon_codes_title_display', false ) === true ? apply_filters( 'wfc_substep_coupon_codes_title', __( 'Coupon code', 'woocommerce-fluid-checkout' ) ) : null;
+		$substep_title = get_option( 'wfc_display_coupon_code_section_title', 'no' ) === 'yes' ? apply_filters( 'wfc_substep_coupon_codes_section_title', __( 'Coupon code', 'woocommerce-fluid-checkout' ) ) : null;
 		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_text_coupon_codes();
