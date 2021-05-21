@@ -292,6 +292,15 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'id'            => 'wfc_enable_checkout_coupon_codes',
 						'default'       => 'yes',
 						'type'          => 'checkbox',
+						'checkboxgroup' => 'start',
+						'autoload'      => false,
+					),
+					array(
+						'desc'          => __( 'Display the coupon codes section title', 'woocommerce' ),
+						'id'            => 'wfc_display_coupon_code_section_title',
+						'type'          => 'checkbox',
+						'default'       => 'no',
+						'checkboxgroup' => 'end',
 						'autoload'      => false,
 					),
 
