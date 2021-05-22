@@ -159,6 +159,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Styles
 		wp_enqueue_style( 'wfc-checkout-layout', self::$directory_url . 'css/checkout-layout'. self::$asset_version . '.css', NULL, NULL );
 		
+		// Order details styles
+		if ( is_order_received_page() || is_wc_endpoint_url( 'view-order' ) ) {
+			wp_enqueue_style( 'wfc-order-details', self::$directory_url . 'css/order-details'. self::$asset_version . '.css', NULL, NULL );
+		}
+		
 		// Multi-step Layout scripts
 		if ( $this->is_checkout_layout_multistep() ) {
 			wp_enqueue_script( 'wfc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );

@@ -1,0 +1,26 @@
+/*------------------------------------*\
+	#ORDER DETAILS - GIFT MESSAGE
+\*------------------------------------*/
+div.woocommerce .wfc-gift-options__message {
+    margin: $gift-message-margin;
+	padding: $gift-message-padding;
+	border: $gift-message-border;
+	border-radius: $gift-message-border-radius;
+    text-align: center;
+}
+
+
+
+div.woocommerce .wfc-gift-options__message .wfc-gift-options__message-text {
+    max-width: remsize( 75rem );
+    display: block;
+    margin: 0 auto;
+    border: 0;
+    font-size: 1.2em;
+}
+
+
+
+div.woocommerce .wfc-gift-options__message .wfc-gift-options__message-from {
+    margin-top: $global-spacing-tiny;
+}
