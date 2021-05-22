@@ -235,7 +235,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		$posted_data = $this->get_parsed_posted_data();
 
 		// Set default value
-		$has_gift_options = apply_filters( 'wfc_default_has_gift_options_checked', get_option( 'wfc_default_has_gift_options_checked', 'false' ) === 'true' );
+		$has_gift_options = get_option( 'wfc_default_has_gift_options', 'no' ) === 'yes';
 
 		// Try get value from the post_data
 		if ( isset( $_POST['post_data'] ) ) {

@@ -320,6 +320,15 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'autoload'          => false,
 					),
 					array(
+						'desc'              => __( 'Display the gift options substep always expanded', 'woocommerce' ),
+						'id'                => 'wfc_default_has_gift_options',
+						'type'              => 'checkbox',
+						'default'           => 'no',
+						'checkboxgroup'     => '',
+						'show_if_checked'   => 'yes',
+						'autoload'          => false,
+					),
+					array(
 						'desc'              => __( 'Display added gift message as part of the order details table', 'woocommerce' ),
 						'id'                => 'wfc_display_gift_message_in_order_details',
 						'type'              => 'checkbox',
