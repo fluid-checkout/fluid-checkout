@@ -1823,6 +1823,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
 	 */
 	public function output_substep_billing_company( $step_id ) {
+		// Get list of company fields present
+		$fields = WC()->checkout()->get_checkout_fields( 'billing' );
+		$existing_company_field_ids = array_intersect( array_keys( $fields ), $this->get_billing_company_substep_display_field_ids() );
+		
+		// Bail if company fields not present
+		if ( ! is_array( $existing_company_field_ids ) || count( $existing_company_field_ids ) === 0 ) { return; }
+		
 		$substep_id = 'billing_company';
 		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Billing Company', 'woocommerce-fluid-checkout' ) );
 
