@@ -41,6 +41,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_order_details_styles' ), 10 );
 
 		// Checkout Header
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_header' ), 1 ); // Uses `woocommerce_before_checkout_form_cart_notices` as it runs before the hook `woocommerce_before_checkout_form`
@@ -159,16 +160,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Styles
 		wp_enqueue_style( 'wfc-checkout-layout', self::$directory_url . 'css/checkout-layout'. self::$asset_version . '.css', NULL, NULL );
 		
-		// Order details styles
-		if ( is_order_received_page() || is_wc_endpoint_url( 'view-order' ) ) {
-			wp_enqueue_style( 'wfc-order-details', self::$directory_url . 'css/order-details'. self::$asset_version . '.css', NULL, NULL );
-		}
-		
 		// Multi-step Layout scripts
 		if ( $this->is_checkout_layout_multistep() ) {
 			wp_enqueue_script( 'wfc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
 			wp_add_inline_script( 'wfc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
 		}
+	}
+
+
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_order_details_styles() {
+		// Bail if not on order details pages
+		if ( ! is_order_received_page() && ! is_wc_endpoint_url( 'view-order' ) ) { return; }
+
+		wp_enqueue_style( 'wfc-order-details', self::$directory_url . 'css/order-details'. self::$asset_version . '.css', NULL, NULL );
 	}
 
 

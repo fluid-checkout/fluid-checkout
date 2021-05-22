@@ -464,7 +464,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		if ( $this->is_gift_message_in_order_details() ) { return; }
 
 		// Bail if not on order received page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || ! is_order_received_page() ){ return; }
+		if( ( ! function_exists( 'is_checkout' ) || ! is_checkout() && ! is_order_received_page() ) && ! is_wc_endpoint_url( 'view-order' ) ){ return; }
 
 		// Get gift options
 		$gift_options = $this->get_gift_options_from_order( $order->get_id() );
