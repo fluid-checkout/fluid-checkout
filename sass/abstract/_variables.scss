@@ -218,7 +218,6 @@ $icons: (
 	'i-trash': '\e822',
 	'i-x': '\e827',
 	'i-cart': '\e828',
-	'i-gift-box': '\e829',
 ) !default;
 
 // END - ICONS
@@ -467,4 +466,19 @@ $coupon-code-remove-color:                  inherit !default;
 $coupon-code-remove-background-color:       transparent !default;
 
 // END - COUPON CODES
+// ----------------------------------------
+
+
+
+
+// ----------------------------------------
+// GIFT MESSAGE
+
+$gift-message-margin:                       0 0 $global-spacing !default;
+$gift-message-padding:                      $global-spacing $global-spacing-small !default;
+$gift-message-border:                       dashed remsize( .1rem ) $border-color !default;
+$gift-message-border-radius:                $global-radius-small !default;
+$gift-message-text-align:                   center !default;
+
+// END - GIFT MESSAGE
 // ----------------------------------------

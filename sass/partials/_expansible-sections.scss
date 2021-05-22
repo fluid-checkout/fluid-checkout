@@ -19,6 +19,7 @@ div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
 }
 
 // Temporarily hide extensible form sections while the collapsible-block script is not yet loaded
-body:not( .has-collapsible-block ) .wfc-expansible-form-section__content .collapsible-content__inner {
+body:not( .has-collapsible-block ) .wfc-expansible-form-section__toggle.is-collapsed .collapsible-content__inner,
+body:not( .has-collapsible-block ) .wfc-expansible-form-section__content.is-collapsed .collapsible-content__inner {
 	display: none;
 }

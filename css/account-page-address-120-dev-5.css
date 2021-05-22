@@ -51,5 +51,6 @@ div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
     top: 50%;
     transform: translateY(-50%); }
 
-body:not(.has-collapsible-block) .wfc-expansible-form-section__content .collapsible-content__inner {
+body:not(.has-collapsible-block) .wfc-expansible-form-section__toggle.is-collapsed .collapsible-content__inner,
+body:not(.has-collapsible-block) .wfc-expansible-form-section__content.is-collapsed .collapsible-content__inner {
   display: none; }

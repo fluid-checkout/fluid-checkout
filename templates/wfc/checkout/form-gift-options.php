@@ -16,37 +16,51 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+// Maybe separate gift message fields
+$gift_message_fields = array_filter( $gift_options_fields, function( $key ) {
+	return in_array( $key, FluidCheckout_GiftOptions::instance()->get_gift_message_field_ids() );
+}, ARRAY_FILTER_USE_KEY );
+
+// Remove gift message fields from options fields to avoid duplicate fields
+$gift_options_fields = array_filter( $gift_options_fields, function( $key ) {
+	return ! in_array( $key, FluidCheckout_GiftOptions::instance()->get_gift_message_field_ids() );
+}, ARRAY_FILTER_USE_KEY );
 ?>
 
 <div id="wfc-gift-options">
 
-    <?php do_action( 'wfc_checkout_gift_options_before' ); ?>
+	<?php
+	do_action( 'wfc_checkout_gift_options_before_fields' );
 
-    <?php
-    foreach ( $checkbox_field as $key => $field ) {
-        woocommerce_form_field( $key, $field, $has_gift_options_checked );
-    }
-    ?>
+	// Output gift options fields, except gift message fields
+	foreach ( $gift_options_fields as $key => $field ) {
+		$field_value = array_key_exists( $key, $gift_options ) ? $gift_options[ $key ] : '';
+		woocommerce_form_field( $key, $field, $field_value );
+	}
+	
+	// Get initial state for gift options expansible form section
+	$extensible_section_args = array();
+	
+	// Set expansible form section as initially expanded if has a gift message
+	$has_required_message = array_key_exists( '_wfc_gift_message', $gift_message_fields ) && array_key_exists( 'required', $gift_message_fields['_wfc_gift_message'] ) && ( $gift_message_fields['_wfc_gift_message']['required'] === true );
+	if ( ! empty( $gift_options[ '_wfc_gift_message' ] ) || $has_required_message || get_option( 'wfc_default_gift_options_expanded', 'no' ) === 'yes' ) {
+		$extensible_section_args[ 'initial_state' ] = 'expanded';
+	}
 
-    <div id="wfc-gift-options__field-wrapper" <?php echo $has_gift_options_checked ? 'class="is-collapsed"' : ''; ?> data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo $has_gift_options_checked ? 'expanded' : 'collapsed'; ?>">
-        <div class="collapsible-content__inner">
+	// Output gift options expansible form section
+	FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( 'gift_options', apply_filters( 'wfc_expansible_section_toggle_label_gift_options', __( 'Add a gift message', 'woocommerce-fluid-checkout' ) ), $extensible_section_args );
 
-            <?php do_action( 'wfc_checkout_gift_options_before_fields' ); ?>
+	// Output gift message fields
+	foreach ( $gift_message_fields as $key => $field ) {
+		$field_value = array_key_exists( $key, $gift_options ) ? $gift_options[ $key ] : null;
+		woocommerce_form_field( $key, $field, $field_value );
+	}
 
-            <?php
-            foreach ( $display_fields as $key => $field ) {
-                $field_value = array_key_exists( $key, $gift_options ) ? $gift_options[ $key ] : '';
-                woocommerce_form_field( $key, $field, $field_value );
-            }
-            ?>
-
-            <?php do_action( 'wfc_checkout_gift_options_after_fields' ); ?>
-
-        </div>
-
-    </div>
-
-    <?php do_action( 'wfc_checkout_gift_options_after' ); ?>
+	// Close expansible section tag
+	FluidCheckout_Steps::instance()->output_expansible_form_section_end_tag();
+	
+	do_action( 'wfc_checkout_gift_options_after_fields' );
+	?>
 
 </div>
-

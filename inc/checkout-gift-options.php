@@ -77,10 +77,10 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 */
 	public function output_substep_gift_options( $step_id ) {
 		$substep_id = 'gift_options';
-		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, __( '<span class="gift-options__icon"></span>Gift Options', 'woocommerce-fluid-checkout' ) );
+		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, __( 'Gift Options', 'woocommerce-fluid-checkout' ) );
 
 		$this->checkout_steps()->output_substep_fields_start_tag( $step_id, $substep_id );
-		$this->maybe_output_gift_options_fields();
+		$this->output_gift_options_fields();
 		$this->checkout_steps()->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
@@ -105,7 +105,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		$html = '<div class="wfc-step__substep-text-content wfc-step__substep-text-content--gift-options">';
 
 		// Display gift options values
-		if ( isset( $gift_options['_wfc_has_gift_options'] ) && $gift_options['_wfc_has_gift_options'] == true ) {
+		if ( isset( $gift_options['_wfc_gift_message'] ) && ! empty( $gift_options['_wfc_gift_message'] ) ) {
 			$html .= '<span class="wfc-step__substep-text-line wfc-step__substep-text-line--gift-message">' . esc_html( $gift_options['_wfc_gift_message'] ) . '</span>';
 			$html .= '<span class="wfc-step__substep-text-line wfc-step__substep-text-line--gift-from">' . esc_html( $gift_options['_wfc_gift_from'] ) . '</span>';
 		}
@@ -147,29 +147,44 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	public function get_gift_options_fields() {
 		// Get checkout object.
 		$checkout = WC()->checkout();
+		$customer = WC()->customer;
 
 		// Define gift options fields
-		$message_maxlength = apply_filters( 'wfc_gift_options_message_length', false );
-		$gift_option_fields = apply_filters( 'wfc_gift_options_fields', array(
+		$message_maxlength = apply_filters( 'wfc_gift_options_message_length', 200 );
+		$gift_option_fields = array(
 			'_wfc_gift_from' => array(
 				'type'          => 'text',
 				'class'         => array( 'form-row-wide '),
-				'label'         => __( 'From', 'woocommerce-fluid-checkout' ),
+				'label'         => __( 'From - your name', 'woocommerce-fluid-checkout' ),
 				'placeholder'   => __( 'Who is sending this gift?', 'woocommerce-fluid-checkout' ),
-				'default'		=> $checkout->get_value( 'billing_first_name' ),
+				'default'		=> is_checkout() ? $customer->get_display_name() : null,
 				'maxlength'		=> apply_filters( 'wfc_gift_options_from_length', false ),
+				'custom_attributes' => array(
+					'data-autofocus' => true,
+				),
 			),
+
 			'_wfc_gift_message' => array(
 				'type'          => 'textarea',
 				'class'         => array( 'form-row-wide '),
-				'label'         => $message_maxlength ? sprintf( __( 'Gift message (%d characters)', 'woocommerce-fluid-checkout' ), $message_maxlength ) : __( 'Gift message', 'woocommerce-fluid-checkout' ),
+				'label'         => __( 'Gift message', 'woocommerce-fluid-checkout' ),
 				'placeholder'   => __( 'Write a gift message...', 'woocommerce-fluid-checkout' ),
-				'default'		=> $checkout->get_value( '_wfc_gift_message' ),
+				'description'   => $message_maxlength ? sprintf( __( 'Brief message with up to %d characters, printed on the packing slip.', 'woocommerce-fluid-checkout' ), $message_maxlength ) : __( 'Brief message, printed on the packing slip.', 'woocommerce-fluid-checkout' ),
+				'default'		=> is_checkout() ? $checkout->get_value( '_wfc_gift_message' ) : null,
 				'maxlength'		=> $message_maxlength,
 			),
-		) );
+		);
 
-		return $gift_option_fields;
+		return apply_filters( 'wfc_gift_options_fields_args', $gift_option_fields );
+	}
+
+	/**
+	 * Get the list of gift message field IDs.
+	 *
+	 * @return  array  List of gift message field IDs.
+	 */
+	public function get_gift_message_field_ids() {
+		return array( '_wfc_gift_message', '_wfc_gift_from' );
 	}
 
 
@@ -191,67 +206,16 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 *
 	 * @param   WC_Checkout   $checkout   The Checkout object.
 	 */
-	public function maybe_output_gift_options_fields() {
-		// Bail if shipping not needed
-		if ( ! WC()->cart->needs_shipping() ) { return; }
-
-		// Get checkout object.
-		$checkout = WC()->checkout();
-		
-		// Define checkbox field
-		$checkbox_field = apply_filters( 'wfc_gift_options_checkbox_field', array(
-			'_wfc_has_gift_options' => array(
-				'type'          => 'checkbox',
-				'class'         => array( 'form-row-wide '),
-				'label'         => __( 'Add a gift message', 'woocommerce-fluid-checkout' ),
-				'default'		=> false,
-			),
-		) );
-		
-		// Get gift options values
-		$gift_options = $this->get_gift_options_session();
-
+	public function output_gift_options_fields() {
 		// Output gift options form template
 		wc_get_template(
 			'wfc/checkout/form-gift-options.php',
 			array(
 				'checkout'                 => WC()->checkout(),
-				'checkbox_field'           => $checkbox_field,
-				'has_gift_options_checked' => $this->has_gift_options_checked(),
-				'gift_options'             => $gift_options,
-				'display_fields'           => $this->get_gift_options_fields(),
+				'gift_options'             => $this->get_gift_options_session(),
+				'gift_options_fields'      => $this->get_gift_options_fields(),
 			)
 		);
-	}
-
-
-
-	/**
-	 * Get value for whether the billing address is the same as the shipping address.
-	 *
-	 * @return  bool  `true` if the billing address is the same as the shipping address, `false` otherwise.
-	 */
-	public function has_gift_options_checked() {
-		$posted_data = $this->get_parsed_posted_data();
-
-		// Set default value
-		$has_gift_options = apply_filters( 'wfc_default_has_gift_options_checked', get_option( 'wfc_default_has_gift_options_checked', 'false' ) === 'true' );
-
-		// Try get value from the post_data
-		if ( isset( $_POST['post_data'] ) ) {
-			$has_gift_options = isset( $posted_data['_wfc_has_gift_options'] ) && $posted_data['_wfc_has_gift_options'] === '1' ? true : false;
-		}
-		// Try get value from the form data sent on process checkout
-		else if ( isset( $_POST['_wfc_has_gift_options'] ) ) {
-			$has_gift_options = isset( $_POST['_wfc_has_gift_options'] ) && wc_clean( wp_unslash( $_POST['_wfc_has_gift_options'] ) ) === '1' ? true : false;
-		}
-		// Try to get value from the session
-		else if ( $this->get_gift_options_session() ) {
-			$gift_options = $this->get_gift_options_session();
-			$has_gift_options = array_key_exists( '_wfc_has_gift_options', $gift_options ) ? $gift_options['_wfc_has_gift_options'] == 'Yes' : false;
-		}
-
-		return $has_gift_options;
 	}
 
 
@@ -275,13 +239,8 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		// Get parsed posted data
 		$parsed_posted_data = $this->get_parsed_posted_data();
 
-		// Get value for gift options
-		$has_gift_options = $this->has_gift_options_checked();
-
 		// Get gift options values
-		$gift_options = array(
-			'_wfc_has_gift_options' => array_key_exists( '_wfc_has_gift_options', $parsed_posted_data ) ? ( $parsed_posted_data['_wfc_has_gift_options'] === '1' ) : false,
-		);
+		$gift_options = array();
 		
 		// Get values for each field
 		$gift_options_fields = $this->get_gift_options_fields();
@@ -310,16 +269,23 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 * @param   int  $order_id  Order ID.
 	 */
 	public function update_order_meta_with_gift_options_fields( $order_id ) {
-		$has_gift_options = isset( $_POST['_wfc_has_gift_options'] ) && wc_clean( wp_unslash( $_POST['_wfc_has_gift_options'] ) ) === '1';
-
-		// Update order meta
-		update_post_meta( $order_id, '_wfc_has_gift_options', $has_gift_options ? 'Yes' : 'No' );
-		
 		// Save values for each field to the order meta
 		$gift_options_fields = $this->get_gift_options_fields();
 		foreach ( $gift_options_fields as $key => $field ) {
-			$field_value = isset( $_POST[ $key ] ) ? wc_clean( wp_unslash( $_POST[ $key ] ) ) : '';
-			update_post_meta( $order_id, $key, $has_gift_options ? $field_value : '' );
+			$field_value = isset( $_POST[ $key ] ) ? wc_clean( wp_unslash( $_POST[ $key ] ) ) : null;
+
+			// Maybe unset gift message `from` field
+			if ( $key === '_wfc_gift_from' && ( ! isset( $_POST[ '_wfc_gift_message' ] ) || empty( $_POST[ '_wfc_gift_message' ] ) ) ) {
+				$field_value = null;
+			}
+
+			// Update order meta data for the current field
+			if ( ! empty( $field_value ) ) {
+				update_post_meta( $order_id, $key, $field_value );
+			}
+			else {
+				delete_post_meta( $order_id, $key );
+			}
 		}
 	}
 
@@ -332,9 +298,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 */
 	public function get_gift_options_from_order( $order_id ) {
 		// Get gift options values
-		$gift_options = array(
-			'_wfc_has_gift_options' => get_post_meta( $order_id, '_wfc_has_gift_options', true ),
-		);
+		$gift_options = array();
 		
 		// Get values for each field
 		$gift_options_fields = $this->get_gift_options_fields();
@@ -500,10 +464,13 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		if ( $this->is_gift_message_in_order_details() ) { return; }
 
 		// Bail if not on order received page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || ! is_order_received_page() ){ return; }
+		if( ( ! function_exists( 'is_checkout' ) || ! is_checkout() && ! is_order_received_page() ) && ! is_wc_endpoint_url( 'view-order' ) ){ return; }
 
 		// Get gift options
 		$gift_options = $this->get_gift_options_from_order( $order->get_id() );
+
+		// Bail if gift message not added to the order
+		if ( ! array_key_exists( '_wfc_gift_message', $gift_options ) || empty( $gift_options['_wfc_gift_message'] ) ) { return; }
 
 		// Output gift options section template
 		wc_get_template(
@@ -530,6 +497,9 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 		// Get gift options
 		$gift_options = $this->get_gift_options_from_order( $order->get_id() );
+
+		// Bail if gift message not added to the order
+		if ( ! array_key_exists( '_wfc_gift_message', $gift_options ) || empty( $gift_options['_wfc_gift_message'] ) ) { return; }
 
 		if ( $plain_text ) {
 

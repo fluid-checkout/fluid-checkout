@@ -1,11 +1,7 @@
 /**
- * Fluid Checkout for WooCommerce PRO
- * 
  * Country Select Script
  * 
- * Replaces the original WooCommerce country-select.js file
- * to also target address fields without a prefix of type
- * `billing_` or `shipping_`.
+ * Replaces the original WooCommerce `country-select.js`.
  */
 
 /*global wc_country_select_params */
