@@ -1,13 +1,8 @@
 /**
- * Fluid Checkout for WooCommerce PRO
- * 
  * Address Internationalization Script
  * 
- * Replaces the original WooCommerce address-i18n.js file
- * to also target address fields without a prefix of type
- * `billing_` or `shipping_`.
+ * Replaces the original WooCommerce `address-i18n.js`.
  */
-
 
 /*global wc_address_i18n_params */
 jQuery( function( $ ) {

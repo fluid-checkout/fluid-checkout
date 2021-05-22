@@ -918,17 +918,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
 	 * @param   string  $section_id  Id of the substep.
 	 */
-	public function output_expansible_form_section_start_tag( $section_id, $toggle_label, $section_attributes = array() ) {
-		// Add class to section attributes
-		$section_attributes['class'] = array_key_exists( 'class', $section_attributes ) ? 'wfc-expansible-form-section ' . $section_attributes['class'] : 'wfc-expansible-form-section';
+	public function output_expansible_form_section_start_tag( $section_id, $toggle_label, $args = array() ) {
+		// Initial state
+		$initial_state = array_key_exists( 'initial_state', $args ) && $args['initial_state'] === 'expanded' ? 'expanded' : 'collapsed';
+		
+		// Section attributes
+		$section_attributes = array( 'class' => 'wfc-expansible-form-section' );
+
+		// Merge section attributes
+		if ( array_key_exists( 'section_attributes', $args ) && is_array( $args['section_attributes'] ) ) {
+			$section_class = $section_attributes['class'];
+
+			$section_attributes = array_merge( $section_attributes, $args['section_attributes'] );
+
+			// Merge class attribute
+			$section_attributes['class'] = array_key_exists( 'class', $args['section_attributes'] ) ? $section_class . ' ' . $args['section_attributes']['class'] : $section_class;
+		}
 		
 		// Section toggle attributes
 		$section_toggle_attributes = array(
 			'id' => 'wfc-expansible-form-section__toggle--' . $section_id,
-			'class' => 'wfc-expansible-form-section__toggle wfc-expansible-form-section__toggle--' . $section_id,
+			'class' => 'wfc-expansible-form-section__toggle wfc-expansible-form-section__toggle--' . $section_id . ' ' . ( $initial_state === 'expanded' ? 'is-collapsed' : 'is-expanded' ), // Toggle is collapsed when the section is set to expanded
 			'data-collapsible' => true,
 			'data-collapsible-content' => true,
-			'data-collapsible-initial-state' => 'expanded',
+			'data-collapsible-initial-state' => $initial_state === 'expanded' ? 'collapsed' : 'expanded', // Toggle is collapsed when the section is set to expanded
 		);
 
 		// Section toggle inner attributes
@@ -950,10 +963,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Section content attributes
 		$section_content_attributes = array(
 			'id' => 'wfc-expansible-form-section__content--' . $section_id,
-			'class' => 'wfc-expansible-form-section__content wfc-expansible-form-section__content--' . $section_id . ' is-collapsed',
+			'class' => 'wfc-expansible-form-section__content wfc-expansible-form-section__content--' . $section_id . ' ' . ( $initial_state === 'expanded' ? 'is-expanded' : 'is-collapsed' ),
 			'data-collapsible' => true,
 			'data-collapsible-content' => true,
-			'data-collapsible-initial-state' => 'collapsed',
+			'data-collapsible-initial-state' => $initial_state,
 		);
 
 		// Section content inner attributes

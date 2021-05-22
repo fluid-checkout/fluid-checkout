@@ -211,6 +211,8 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * @return  array  The current value for the shipping phone field.
 	 */
 	public function get_current_shipping_phone_value() {
+		$shipping_phone = null;
+		
 		// Try get the shipping phone from the session
 		$shipping_phone_session = $this->get_shipping_phone_session();
 		if ( $shipping_phone_session != null ) {

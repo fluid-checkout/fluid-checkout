@@ -60,14 +60,19 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		
 		// Move container classes to expansible block
 		$container_class = esc_attr( implode( ' ', $args['class'] ) );
-		$section_attributes = array( 'class' => 'form-row ' . $container_class );
+		$expansible_section_args = array(
+			'section_attributes' => array(
+				'class' => 'form-row ' . $container_class,
+			),
+		);
 		$field = str_replace( 'form-row '. $container_class, 'form-row ', $field );
 		
 		ob_start();
 		
 		// Add extensible block markup for the field
 		/* translators: %s: Form field label */
-		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, apply_filters( 'wfc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'woocommerce-fluid-checkout' ), strtolower( $args['label'] ) ) ), $section_attributes );
+		$toggle_label = apply_filters( 'wfc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'woocommerce-fluid-checkout' ), strtolower( $args['label'] ) ) );
+		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, $toggle_label, $expansible_section_args );
 		echo $field;
 		$this->checkout_steps()->output_expansible_form_section_end_tag();
 

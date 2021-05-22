@@ -320,8 +320,8 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'autoload'          => false,
 					),
 					array(
-						'desc'              => __( 'Display the gift options substep always expanded', 'woocommerce' ),
-						'id'                => 'wfc_default_has_gift_options',
+						'desc'              => __( 'Display the gift message fields always expanded', 'woocommerce' ),
+						'id'                => 'wfc_default_gift_options_expanded',
 						'type'              => 'checkbox',
 						'default'           => 'no',
 						'checkboxgroup'     => '',
@@ -329,7 +329,8 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'autoload'          => false,
 					),
 					array(
-						'desc'              => __( 'Display added gift message as part of the order details table', 'woocommerce' ),
+						'desc'              => __( 'Display the gift message as part of the order details table', 'woocommerce' ),
+						'desc_tip'          => __( 'This option affects the order confirmation page (thank you), order details at account pages, emails and package slips.', 'woocommerce' ),
 						'id'                => 'wfc_display_gift_message_in_order_details',
 						'type'              => 'checkbox',
 						'default'           => 'no',
