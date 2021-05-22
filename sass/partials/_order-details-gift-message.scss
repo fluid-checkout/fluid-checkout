@@ -6,7 +6,7 @@ div.woocommerce .wfc-gift-options__message {
 	padding: $gift-message-padding;
 	border: $gift-message-border;
 	border-radius: $gift-message-border-radius;
-    text-align: center;
+    text-align: $gift-message-text-align;
 }
 
 

@@ -151,7 +151,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 		// Define gift options fields
 		$message_maxlength = apply_filters( 'wfc_gift_options_message_length', 200 );
-		$gift_option_fields = array(			
+		$gift_option_fields = array(
 			'_wfc_gift_from' => array(
 				'type'          => 'text',
 				'class'         => array( 'form-row-wide '),
