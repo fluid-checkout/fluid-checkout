@@ -158,8 +158,9 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 			'_wfc_gift_from' => array(
 				'type'          => 'text',
 				'class'         => array( 'form-row-wide '),
-				'label'         => __( 'From - your name', 'woocommerce-fluid-checkout' ),
-				'placeholder'   => __( 'Who is sending this gift?', 'woocommerce-fluid-checkout' ),
+				'label'         => __( 'From', 'woocommerce-fluid-checkout' ),
+				'placeholder'   => __( 'Your name', 'woocommerce-fluid-checkout' ),
+				'description'   => __( 'Name of who is sending the gift. Printed on the packing slip.', 'woocommerce-fluid-checkout' ),
 				'default'		=> is_checkout() ? $customer->get_display_name() : null,
 				'maxlength'		=> apply_filters( 'wfc_gift_options_from_length', false ),
 				'custom_attributes' => array(
