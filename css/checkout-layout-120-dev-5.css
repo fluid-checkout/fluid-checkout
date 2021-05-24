@@ -491,7 +491,8 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   font-weight: bold;
   font-size: 15px;
   text-transform: uppercase;
-  text-align: left; }
+  text-align: left;
+  line-height: 1; }
   @media (min-width: 1000px) {
     .wfc-step__substep-title {
       font-size: 15px; } }
@@ -733,9 +734,6 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
 /*------------------------------------*\
   #CHECKOUT SHIPPING METHODS
 \*------------------------------------*/
-.shipping-method__package {
-  margin: 0 0 20px; }
-
 .shipping-method__options {
   list-style-type: none;
   border: solid 1px #D6D8D8;
@@ -1039,9 +1037,15 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
       padding: 20px 0; } }
 
 .woocommerce-terms-and-conditions-wrapper {
-  padding: 20px;
+  position: relative;
+  padding: 10px 20px 10px 44px;
   border: solid 1px #D6D8D8;
   border-radius: 13px; }
+
+.woocommerce-terms-and-conditions-wrapper input[type="checkbox"].wfc-terms-checkbox {
+  position: absolute;
+  top: 16px;
+  left: 16px; }
 
 .woocommerce-privacy-policy-text:not(:last-child):not(:empty) {
   margin-bottom: 20px; }
@@ -1065,6 +1069,12 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
 .wfc-place-order-button.button.alt {
   margin: 20px auto;
   min-width: 280px; }
+
+/*------------------------------------*\
+  #CHECKOUT FORM-ROW SPACING
+\*------------------------------------*/
+div.woocommerce .form-row:last-child {
+  margin-bottom: 0; }
 
 /*------------------------------------*\
 	#ORDER SUMMARY
@@ -1315,7 +1325,7 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
 \*------------------------------------*/
 div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
   position: relative;
-  padding: 0 0 0 33px;
+  padding: 0 0 0 44px;
   cursor: pointer;
   text-decoration: none; }
   div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus:before {
@@ -1335,10 +1345,17 @@ div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
     height: 24px;
     font-size: 24px;
     position: absolute;
-    left: 2.5px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%); }
 
 body:not(.has-collapsible-block) .wfc-expansible-form-section__toggle.is-collapsed .collapsible-content__inner,
 body:not(.has-collapsible-block) .wfc-expansible-form-section__content.is-collapsed .collapsible-content__inner {
   display: none; }
+
+/*------------------------------------*\
+  #CHECKOUT CHECKBOXES
+\*------------------------------------*/
+div.woocommerce input[type="checkbox"]:not(.wfc-terms-checkbox) {
+  margin-left: 15px;
+  margin-right: 10px; }

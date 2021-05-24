@@ -3,16 +3,16 @@
 \*------------------------------------*/
 div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
 	position: relative;
-	padding: $checkout-substep-text-padding;
+	padding: 0 0 0 #{ $checkout-expansible-section-icon-size + $checkout-expansible-section-icon-spacing-left + $checkout-expansible-section-icon-spacing-right };
 	cursor: pointer;
-    text-decoration: none;
+    text-decoration: $checkout-expansible-section-text-decoration;
 
 	&:before {
-		@include icon( 'i-plus-circle' );
-		@include icon-size( $icon-size );
+		@include icon( $checkout-expansible-section-icon );
+		@include icon-size( $checkout-expansible-section-icon-size );
 		
 		position: absolute;
-		left: $checkout-expansible-section-icon-spacing;
+		left: $checkout-expansible-section-icon-spacing-left;
 		top: 50%;
 		transform: translateY( -50% );
 	}

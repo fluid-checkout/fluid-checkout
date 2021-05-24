@@ -32,6 +32,7 @@
 	font-size: $checkout-substep-title-font-size;
 	text-transform: $checkout-substep-title-text-transform;
 	text-align: $checkout-substep-title-text-align;
+	line-height: 1;
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-title-font-size--large-screen; }
 }

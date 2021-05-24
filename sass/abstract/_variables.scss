@@ -350,7 +350,14 @@ $checkout-substep-action-button-text-decoration: underline !default;
 $checkout-substep-action-button-color:           inherit !default;
 $checkout-substep-action-button-background-color: transparent !default;
 
-$checkout-expansible-section-icon-spacing:       $checkout-substep-title-check-icon-spacing / 2 !default;
+$checkout-expansible-section-icon:               'i-plus-circle' !default;
+$checkout-expansible-section-icon-size:          $icon-size !default;
+$checkout-expansible-section-icon-spacing-left:  $global-spacing-extra-small !default;
+$checkout-expansible-section-icon-spacing-right: $global-spacing-extra-small !default;
+$checkout-expansible-section-text-decoration:    none !default;
+
+$checkout-checkbox-spacing-left:                 $global-spacing-extra-small !default;
+$checkout-checkbox-spacing-right:                $global-spacing-extra-small !default;
 
 // END - CHECKOUT STEPS
 // ----------------------------------------
