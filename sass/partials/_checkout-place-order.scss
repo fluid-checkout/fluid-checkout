@@ -18,9 +18,16 @@
 
 
 .woocommerce-terms-and-conditions-wrapper {
-	padding: $global-spacing-small;
+	position: relative;
+	padding: $global-spacing-extra-small $global-spacing-small $global-spacing-extra-small #{ $checkout-expansible-section-icon-size + $checkout-expansible-section-icon-spacing-left + $checkout-expansible-section-icon-spacing-right };
 	border: solid remsize( .1rem ) $border-color;
 	border-radius: $global-radius-medium;
+}
+
+.woocommerce-terms-and-conditions-wrapper input[type="checkbox"].wfc-terms-checkbox {
+	position: absolute;
+	top: remsize( 1.6rem );
+	left: remsize( 1.6rem );
 }
 
 
