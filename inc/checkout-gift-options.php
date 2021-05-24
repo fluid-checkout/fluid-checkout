@@ -31,18 +31,18 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		// Persist gift options to the user's session
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_gift_options_session' ), 10 );
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_gift_options_session' ), 10 );
-		
+
 		// Save gift fields to order
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_gift_options_fields' ), 10, 1 );
 		add_action( 'woocommerce_process_shop_order_meta', array( $this, 'save_order_gift_details' ) );
-		
+
 		// Order Details
 		add_filter( 'woocommerce_get_order_item_totals', array( $this, 'maybe_add_gift_message_order_received_details_table' ), 30, 3 );
 		add_action( 'woocommerce_order_details_after_order_table', array( $this, 'output_gift_message_order_details' ), 10 );
-		
+
 		// Prevent hiding optional gift option fields behind a link button
 		add_filter( 'wfc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_gift_options' ), 10 );
-		
+
 		// Emails
 		add_action( 'woocommerce_email_after_order_table', array( $this, 'output_gift_message_order_details_email' ), 10, 4 );
 		add_filter( 'woocommerce_email_styles', array( $this, 'add_email_styles' ), 10, 2 );
@@ -550,7 +550,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 				$css = $css . PHP_EOL . $file_contents;
 			}
 		}
-		
+
 		return $css;
 	}
 
