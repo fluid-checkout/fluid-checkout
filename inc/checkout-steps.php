@@ -1246,7 +1246,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_shipping_address( $step_id ) {
 		$substep_id = 'shipping_address';
-		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Shipping Address', 'woocommerce-fluid-checkout' ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Shipping to', 'woocommerce-fluid-checkout' ) );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_shipping_address_fields();

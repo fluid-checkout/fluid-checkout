@@ -67,9 +67,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function change_default_locale_field_args( $fields ) {
-		
+
 		if ( array_key_exists( 'address_1', $fields ) ) {
-			$fields['address_1']['description'] = __( 'House number and street name', 'woocommerce-fluid-checkout' );
+			$fields['address_1']['description'] = __( 'House number and street name.', 'woocommerce-fluid-checkout' );
 		}
 		
 		if ( array_key_exists( 'address_2', $fields ) ) {
