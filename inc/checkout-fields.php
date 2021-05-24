@@ -43,7 +43,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 			'billing_company'       => array( 'priority' => 100, 'autocomplete' => 'billing organization', 'class' => array( 'form-wide' ) ),
 			'billing_address_1'     => array( 'autocomplete' => 'billing address-line1' ),
-			'billing_address_2'     => array( 'autocomplete' => 'billing address-line2', 'label' => $billing_address_2_label ),
+			'billing_address_2'     => array( 'autocomplete' => 'billing address-line2', 'label' => $billing_address_2_label, 'label_class'  => array() ),
 			'billing_city'          => array( 'autocomplete' => 'billing address-level2' ),
 			'billing_state'         => array( 'autocomplete' => 'billing address-level1' ),
 			'billing_country'       => array( 'autocomplete' => 'billing country' ),
@@ -53,7 +53,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			'shipping_last_name'    => array( 'priority' => 20, 'autocomplete' => 'shipping family-name' ),
 			'shipping_company'      => array( 'priority' => 30, 'autocomplete' => 'shipping organization', 'class' => array( 'form-row-first' ) ),
 			'shipping_address_1'    => array( 'autocomplete' => 'shipping address-line1' ),
-			'shipping_address_2'    => array( 'autocomplete' => 'shipping address-line2', 'label' => $shipping_address_2_label ),
+			'shipping_address_2'    => array( 'autocomplete' => 'shipping address-line2', 'label' => $shipping_address_2_label, 'label_class'  => array() ),
 			'shipping_city'         => array( 'autocomplete' => 'shipping address-level2', 'class' => array( 'form-row-first' ) ),
 			'shipping_state'        => array( 'autocomplete' => 'shipping address-level1', 'class' => array( 'form-row-last' ) ),
 			'shipping_country'      => array( 'autocomplete' => 'shipping country' ),
@@ -72,6 +72,12 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		if ( array_key_exists( 'city', $fields ) ) { $fields['city']['class'] = array( 'form-row-first' ); }
 		if ( array_key_exists( 'state', $fields ) ) { $fields['state']['class'] = array( 'form-row-last' ); }
 		if ( array_key_exists( 'postcode', $fields ) ) { $fields['postcode']['class'] = array( 'form-row-first' ); }
+		
+		if ( array_key_exists( 'address_2', $fields ) ) {
+			$shipping_address_2_label = __( 'Appartment, suite, unit, building, floor, etc.', 'woocommerce-fluid-checkout' );
+			$fields['address_2']['label'] = $shipping_address_2_label;
+		}
+		
 		return $fields;
 	}
 
