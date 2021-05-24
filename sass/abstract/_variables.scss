@@ -479,6 +479,8 @@ $gift-message-padding:                      $global-spacing $global-spacing-smal
 $gift-message-border:                       dashed remsize( .1rem ) $border-color !default;
 $gift-message-border-radius:                $global-radius-small !default;
 $gift-message-text-align:                   center !default;
+$gift-message-font-size:                    1.2em !default;
+$gift-message-font-style:                   italic !default;
 
 // END - GIFT MESSAGE
 // ----------------------------------------

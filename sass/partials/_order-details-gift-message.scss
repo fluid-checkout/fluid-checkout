@@ -1,7 +1,7 @@
 /*------------------------------------*\
 	#ORDER DETAILS - GIFT MESSAGE
 \*------------------------------------*/
-div.woocommerce .wfc-gift-options__message {
+.wfc-gift-options__message {
     margin: $gift-message-margin;
 	padding: $gift-message-padding;
 	border: $gift-message-border;
@@ -11,16 +11,17 @@ div.woocommerce .wfc-gift-options__message {
 
 
 
-div.woocommerce .wfc-gift-options__message .wfc-gift-options__message-text {
+.wfc-gift-options__message .wfc-gift-options__message-text {
     max-width: remsize( 75rem );
     display: block;
     margin: 0 auto;
     border: 0;
-    font-size: 1.2em;
+    font-size: $gift-message-font-size;
+    font-style: $gift-message-font-style;
 }
 
 
 
-div.woocommerce .wfc-gift-options__message .wfc-gift-options__message-from {
+.wfc-gift-options__message .wfc-gift-options__message-from {
     margin-top: $global-spacing-tiny;
 }

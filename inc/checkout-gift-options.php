@@ -31,18 +31,21 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		// Persist gift options to the user's session
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_gift_options_session' ), 10 );
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_gift_options_session' ), 10 );
-		
+
 		// Save gift fields to order
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_gift_options_fields' ), 10, 1 );
 		add_action( 'woocommerce_process_shop_order_meta', array( $this, 'save_order_gift_details' ) );
-		
+
 		// Order Details
 		add_filter( 'woocommerce_get_order_item_totals', array( $this, 'maybe_add_gift_message_order_received_details_table' ), 30, 3 );
 		add_action( 'woocommerce_order_details_after_order_table', array( $this, 'output_gift_message_order_details' ), 10 );
-		add_action( 'woocommerce_email_after_order_table', array( $this, 'output_gift_message_order_details_email' ), 10, 4 );
 
 		// Prevent hiding optional gift option fields behind a link button
 		add_filter( 'wfc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_gift_options' ), 10 );
+
+		// Emails
+		add_action( 'woocommerce_email_after_order_table', array( $this, 'output_gift_message_order_details_email' ), 10, 4 );
+		add_filter( 'woocommerce_email_styles', array( $this, 'add_email_styles' ), 10, 2 );
 	}
 
 
@@ -150,7 +153,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		$customer = WC()->customer;
 
 		// Define gift options fields
-		$message_maxlength = apply_filters( 'wfc_gift_options_message_length', 200 );
+		$message_maxlength = apply_filters( 'wfc_gift_options_message_length', false );
 		$gift_option_fields = array(
 			'_wfc_gift_from' => array(
 				'type'          => 'text',
@@ -522,6 +525,33 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 				)
 			);
 		}
+	}
+
+
+
+	/**
+	 * Add the gift options email styles.
+	 *
+	 * @param   string    $css    CSS code for the email styles.
+	 * @param   WC_Email  $email  WooCommerce email object.
+	 */
+	public function add_email_styles( $css, $email ) {
+		// Bail if email does not have gift message
+		$allowed_email_ids = array( 'new_order', 'customer_invoice', 'failed_order', 'cancelled_order', 'customer_completed_order', 'customer_note', 'customer_on_hold_order', 'customer_processing_order', 'customer_refunded_order' );
+		if ( ! in_array( $email->id, $allowed_email_ids ) ) { return $css; }
+
+		$css_file_path = self::$directory_path . 'css/gift-message-email-styles'. self::$asset_version . '.css';
+
+		// Get styles from file, if it exists
+		if ( file_exists( $css_file_path ) ) {
+			$file_contents = file_get_contents( $css_file_path );
+
+			if( $file_contents ) {
+				$css = $css . PHP_EOL . $file_contents;
+			}
+		}
+
+		return $css;
 	}
 
 }
