@@ -37,7 +37,7 @@
 		
 		autoFocusSelector: '[data-autofocus]',
 		focusableElementsSelector: 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), details, summary, iframe, object, embed, [contenteditable] [tabindex]:not([tabindex="-1"])',
-		
+
 		isCollapsedClass: 'is-collapsed',
 		isExpandedClass: 'is-expanded',
 		isActivatedClass: 'is-activated',
@@ -447,17 +447,19 @@
 
 		// Syncronize `aria-expanded` for every handler on the page
 		syncAriaExpanded( element, true );
-				
-		// Maybe set focus to child element marked as auto-focus
-		var autofocusChild = element.querySelector( _settings.autoFocusSelector );
-		if ( autofocusChild ) {
-			autofocusChild.focus();
-		}
-		// Maybe set focus to first focusable element
-		else if ( element.matches( _settings.autoFocusSelector ) ) {
-			var focusableElements = Array.from( getFocusableElements( element ) );
-			if ( focusableElements.length > 0 ) {
-				focusableElements[0].focus();
+
+		if ( _hasInitialized ) {
+			// Maybe set focus to child element marked as auto-focus
+			var autofocusChild = element.querySelector( _settings.autoFocusSelector );
+			if ( autofocusChild ) {
+				autofocusChild.focus();
+			}
+			// Maybe set focus to first focusable element
+			else if ( element.matches( _settings.autoFocusSelector ) ) {
+				var focusableElements = Array.from( getFocusableElements( element ) );
+				if ( focusableElements.length > 0 ) {
+					focusableElements[0].focus();
+				}
 			}
 		}
 
@@ -826,7 +828,10 @@
 		// Set body class
 		document.body.classList.add( _settings.bodyClass );
 
-		_hasInitialized = true;
+		// Set as initialized
+		requestAnimationFrame( function() {
+			_hasInitialized = true;
+		} );
 	};
 
 
