@@ -23,18 +23,20 @@ $attributes_str = implode( ' ', array_map( array( FluidCheckout::instance(), 'ma
 $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(), 'map_html_attributes' ), array_keys( $attributes_inner ), $attributes_inner ) );
 ?>
 
-<?php do_action( 'wfc_checkout_before_order_review' ); ?>
+<?php do_action( 'wfc_checkout_before_order_review', $is_sidebar_widget ); ?>
 
 <div class="wfc-checkout-order-review" <?php echo $attributes_str; ?>>
 	
 	<div class="wfc-checkout-order-review__inner" <?php echo $attributes_inner_str; ?>>
 
+		<?php do_action( 'wfc_checkout_before_order_review_inside', $is_sidebar_widget ); ?>
+
 		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
-		
+
 		<h3 class="wfc-checkout-order-review-title"><?php echo esc_html( $order_review_title ); ?></h3>
-		
+
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
-		
+
 		<div id="order_review" class="woocommerce-checkout-review-order">
 			<?php do_action( 'woocommerce_checkout_order_review' ); ?>
 		</div>
@@ -49,8 +51,10 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 				<button type="button" class="button" data-flyout-close><?php echo __( 'Continue', 'woocommerce-fluid-checkout' ); ?></button>
 			</div>
 		<?php endif; ?>
-	
+
+		<?php do_action( 'wfc_checkout_after_order_review_inside', $is_sidebar_widget ); ?>
+
 	</div>
 </div>
 
-<?php do_action( 'wfc_checkout_after_order_review' ); ?>
+<?php do_action( 'wfc_checkout_after_order_review', $is_sidebar_widget ); ?>

@@ -115,8 +115,8 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
       position: absolute;
       top: 0;
       right: 0;
-      width: 40%;
-      height: 100%;
+      width: calc( 40% + 10px);
+      height: 100% !important;
       padding-left: 50px;
       padding-right: 50px;
       background: linear-gradient(90deg, #e1e9e9 0%, #F0F4F4 0.5%, #F0F4F4 100%); } }
@@ -1027,14 +1027,17 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
   #CHECKOUT PLACE ORDER
 \*------------------------------------*/
 .wfc-inside div.place-order {
-  padding: 20px 20px; }
+  padding: 0 20px 0; }
+  @media (min-width: 1000px) {
+    .wfc-inside div.place-order {
+      padding: 20px 20px 0; } }
 
 .wfc-sidebar div.place-order {
   display: none; }
   @media (min-width: 1000px) {
     .wfc-sidebar div.place-order {
       display: block;
-      padding: 20px 0; } }
+      padding: 20px 0 0; } }
 
 .woocommerce-terms-and-conditions-wrapper {
   position: relative;

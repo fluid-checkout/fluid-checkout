@@ -76,7 +76,8 @@ jQuery( function( $ ) {
 
 		wc_country_select_select2();
 
-		$( document.body ).on( 'country_to_state_changed', function() {
+		// CHANGE: Added `updated_checkout` to list of event which trigger select2 fields rebuild
+		$( document.body ).on( 'country_to_state_changed, updated_checkout', function() {
 			wc_country_select_select2();
 		});
 	}

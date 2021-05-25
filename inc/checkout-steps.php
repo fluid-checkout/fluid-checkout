@@ -106,7 +106,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wfc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_order_review' ), 90 );
 		add_action( 'wfc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
-		add_action( 'woocommerce_checkout_after_order_review', array( $this, 'output_checkout_place_order_for_sidebar' ), 20 );
+		add_action( 'wfc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_sidebar' ), 1 );
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
 		add_action( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
 		
@@ -2263,7 +2263,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get attributes for the order review section element.
 	 *
-	 * @param   bool $is_sidebar_widget  Whether to add attributes for the order summary section to be displayed in the sidebar.
+	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
 	 *
 	 * @return  array                    Array of key/value html attributes.
 	 */
@@ -2288,7 +2288,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get attributes for the order review section inner element.
 	 *
-	 * @param   bool $is_sidebar_widget  Whether to add attributes for the order summary inner element to be displayed in the sidebar.
+	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
 	 *
 	 * @return  array                    Array of key/value html attributes.
 	 */
@@ -2333,7 +2333,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'is_sidebar_widget'  => true,
 				'attributes'         => $this->get_order_review_html_attributes( true ),
 				'attributes_inner'   => $this->get_order_review_html_attributes_inner( true ),
-				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
 			)
 		);
 	}
@@ -2373,8 +2372,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Output checkout place order section.
+	 *
+	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
 	 */
-	public function output_checkout_place_order_for_sidebar() {
+	public function output_checkout_place_order_for_sidebar( $is_sidebar_widget ) {
+		// Bail if not ouputting for the sidebar
+		if ( ! $is_sidebar_widget ) { return; }
+
 		// Bail if additional place order section is not enabled
 		if ( get_option( 'wfc_enable_checkout_place_order_sidebar', 'no' ) === 'no' ) { return; }
 
