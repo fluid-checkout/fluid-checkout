@@ -597,15 +597,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 		) );
 
 		// SHIPPING
-		$this->register_checkout_step( array(
-			'step_id' => 'shipping',
-			'step_title' => _x( 'Shipping', 'Checkout step title', 'woocommerce-fluid-checkout' ),
-			'priority' => 20,
-			'render_callback' => array( $this, 'output_step_shipping' ),
-			'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
-			'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
-			'next_step_button_label' => __( 'Proceed to Billing', 'woocommerce-fluid-checkout' ),
-		) );
+		if ( WC()->cart->needs_shipping() ) {
+			$this->register_checkout_step( array(
+				'step_id' => 'shipping',
+				'step_title' => _x( 'Shipping', 'Checkout step title', 'woocommerce-fluid-checkout' ),
+				'priority' => 20,
+				'render_callback' => array( $this, 'output_step_shipping' ),
+				'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
+				'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
+				'next_step_button_label' => __( 'Proceed to Billing', 'woocommerce-fluid-checkout' ),
+			) );
+		}
 
 		// BILLING
 		$this->register_checkout_step( array(
