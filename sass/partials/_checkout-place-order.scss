@@ -3,7 +3,11 @@
 \*------------------------------------*/
 
 .wfc-inside div.place-order {
-	padding: $checkout-substep-padding;
+	padding: $place-order-padding;
+
+	@media (#{$bp-larger-than-desktop}) {
+		padding: $place-order-padding--large-screen;
+	}
 }
 
 .wfc-sidebar div.place-order {
@@ -11,7 +15,7 @@
 	
 	@media (#{$bp-larger-than-desktop}) {
 		display: block;
-		padding: $checkout-substep-padding--large-screen;
+		padding: $place-order-padding--large-screen;
 	}
 }
 

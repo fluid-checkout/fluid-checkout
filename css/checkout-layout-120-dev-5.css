@@ -1027,14 +1027,17 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
   #CHECKOUT PLACE ORDER
 \*------------------------------------*/
 .wfc-inside div.place-order {
-  padding: 20px 20px; }
+  padding: 0 20px 0; }
+  @media (min-width: 1000px) {
+    .wfc-inside div.place-order {
+      padding: 20px 0 0; } }
 
 .wfc-sidebar div.place-order {
   display: none; }
   @media (min-width: 1000px) {
     .wfc-sidebar div.place-order {
       display: block;
-      padding: 20px 0; } }
+      padding: 20px 0 0; } }
 
 .woocommerce-terms-and-conditions-wrapper {
   position: relative;
