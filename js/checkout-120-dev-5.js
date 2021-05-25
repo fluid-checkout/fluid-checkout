@@ -65,18 +65,17 @@ jQuery( function( $ ) {
 			// CHANGE: Removed shipping to different address checkout `change` listener
 
 			// CHANGE: Update checkout totals to save data to session when user switches tabs, apps, goes to homescreen, etc.
-			document.addEventListener( 'visibilitychange' , function() {
-				if ( document.visibilityState == 'hidden' ) {
-					$( document.body ).trigger( 'update_checkout' );
-				}
-			});
+			document.addEventListener( 'visibilitychange', this.maybe_update_checkout_visibility_change );
 
 			// CHANGE: Maybe prevent `unload` after they change fields in the page
 			this.$checkout_form.on( 'change', 'select, input, textarea', this.maybe_prevent_unload );
 
+			// CHANGE: Update checkout when "billing same as shipping" checked state changes
+			this.$checkout_form.on( 'change', '#billing_same_as_shipping', this.billing_same_shipping_changed );
+			$( document.body ).on( 'updated_checkout', maybe_reinitialize_collapsible_block_billing );
+
 			// CHANGE: Add event listener to sync terms checkbox state
 			this.$checkout_form.on( 'change', _terms_selector, this.terms_checked_changed );
-
 
 			// Trigger events
 			// CHANGE: Removed shipping to different address checkout `change` trigger
@@ -88,6 +87,40 @@ jQuery( function( $ ) {
 			}
 			if ( wc_checkout_params.option_guest_checkout === 'yes' ) {
 				$( 'input#createaccount' ).on( 'change', this.toggle_create_account ).trigger( 'change' );
+			}
+		},
+		// CHANGE: Update checkout when "billing same as shipping" checked state changes
+		billing_same_shipping_changed: function( e ) {
+			if ( window.CollapsibleBlock ) {
+				var checkbox = document.querySelector( '#billing_same_as_shipping' );
+				var fieldsWrapper = document.querySelector( '#woocommerce-billing-fields__field-wrapper' );
+
+				// Toggle state
+				if ( ! checkbox.checked ) {
+					CollapsibleBlock.expand( fieldsWrapper );
+				}
+				else {
+					CollapsibleBlock.collapse( fieldsWrapper );
+				}
+			}
+
+			$( document.body ).trigger( 'update_checkout' );
+		},
+		// CHANGE: Reinitialize billing fields collapsible block after checkout update
+		maybe_reinitialize_collapsible_block_billing = function() {
+			if ( window.CollapsibleBlock ) {
+				var fieldsWrapper = document.querySelector( '#woocommerce-billing-fields__field-wrapper' );
+		
+				// Maybe initialize collapsible-block for the element
+				if ( ! CollapsibleBlock.getInstance( fieldsWrapper ) ) {
+					CollapsibleBlock.initializeElement( fieldsWrapper );
+				}
+			}
+		},
+		// CHANGE: Update checkout when page gets hidden
+		maybe_update_checkout_visibility_change: function() {
+			if ( document.visibilityState == 'hidden' ) {
+				$( document.body ).trigger( 'update_checkout' );
 			}
 		},
 		// CHANGE: Prompt user that they might lose data when closing tab or leaving the current page after they change some values in the checkout form
