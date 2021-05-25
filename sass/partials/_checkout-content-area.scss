@@ -92,7 +92,7 @@ body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-
 		position: absolute;
 		top: 0;
 		right: 0;
-		width: $checkout-overview-width--large-screen;
+		width: calc( #{ $checkout-overview-width--large-screen } + #{ remsize( 1rem ) } );
 		height: 100%;
 		padding-left: $checkout-column-gap--large-screen;
 		padding-right: $checkout-column-gap--large-screen;
