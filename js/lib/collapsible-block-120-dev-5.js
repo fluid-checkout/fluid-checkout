@@ -450,6 +450,8 @@
 			element = element.target;
 		}
 
+		var manager = _publicMethods.getInstance( element.closest( _settings.elementSelector ) );
+
 		// Remove content element properties when transition is complete
 		element.style.height = '';
 		element.style.overflow = '';
@@ -457,7 +459,7 @@
 		// Syncronize `aria-expanded` for every handler on the page
 		syncAriaExpanded( element, true );
 
-		if ( _hasInitialized ) {
+		if ( manager && manager.isActivated === true ) {
 			var focusElement = null;
 
 			// Maybe set focus to the child element marked as auto-focus that is visible, skipping those in nested collapsible blocks
@@ -812,8 +814,10 @@
 		manager.contentElement.style.transition = cssTransition;
 		
 		// Set element as activated
-		manager.isActivated = true;
-		manager.element.classList.add( manager.settings.isActivatedClass );
+		requestAnimationFrame( function(){
+			manager.isActivated = true;
+			manager.element.classList.add( manager.settings.isActivatedClass );
+		} );
 	}
 
 	

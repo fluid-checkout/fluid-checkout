@@ -65,7 +65,14 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 				'class' => 'form-row ' . $container_class,
 			),
 		);
+		
+		// Remove the container class from the field element
 		$field = str_replace( 'form-row '. $container_class, 'form-row ', $field );
+
+		// Maybe set field as `expanded` when it contains a value
+		if ( ! empty( $value ) ) {
+			$expansible_section_args[ 'initial_state' ] = 'expanded';
+		}
 		
 		ob_start();
 		

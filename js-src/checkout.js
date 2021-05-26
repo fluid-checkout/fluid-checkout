@@ -72,7 +72,7 @@ jQuery( function( $ ) {
 
 			// CHANGE: Update checkout when "billing same as shipping" checked state changes
 			this.$checkout_form.on( 'change', '#billing_same_as_shipping', this.billing_same_shipping_changed );
-			$( document.body ).on( 'updated_checkout', maybe_reinitialize_collapsible_block_billing );
+			$( document.body ).on( 'updated_checkout', maybe_reinitialize_collapsible_blocks );
 
 			// CHANGE: Add event listener to sync terms checkbox state
 			this.$checkout_form.on( 'change', _terms_selector, this.terms_checked_changed );
@@ -107,13 +107,16 @@ jQuery( function( $ ) {
 			$( document.body ).trigger( 'update_checkout' );
 		},
 		// CHANGE: Reinitialize billing fields collapsible block after checkout update
-		maybe_reinitialize_collapsible_block_billing = function() {
+		maybe_reinitialize_collapsible_blocks = function() {
 			if ( window.CollapsibleBlock ) {
-				var fieldsWrapper = document.querySelector( '#woocommerce-billing-fields__field-wrapper' );
-		
-				// Maybe initialize collapsible-block for the element
-				if ( ! CollapsibleBlock.getInstance( fieldsWrapper ) ) {
-					CollapsibleBlock.initializeElement( fieldsWrapper );
+				var collapsibleBlocks = document.querySelectorAll( '[data-collapsible]' );
+				for ( var i = 0; i < collapsibleBlocks.length; i++ ) {
+					var collapsibleBlock = collapsibleBlocks[i];
+					
+					// Maybe initialize the collapsible block
+					if ( ! CollapsibleBlock.getInstance( collapsibleBlock ) ) {
+						CollapsibleBlock.initializeElement( collapsibleBlock );
+					}
 				}
 			}
 		},

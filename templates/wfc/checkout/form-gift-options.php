@@ -40,16 +40,16 @@ $gift_options_fields = array_filter( $gift_options_fields, function( $key ) {
 	}
 	
 	// Get initial state for gift options expansible form section
-	$extensible_section_args = array();
+	$expansible_section_args = array();
 	
 	// Set expansible form section as initially expanded if has a gift message
 	$has_required_message = array_key_exists( '_wfc_gift_message', $gift_message_fields ) && array_key_exists( 'required', $gift_message_fields['_wfc_gift_message'] ) && ( $gift_message_fields['_wfc_gift_message']['required'] === true );
 	if ( ! empty( $gift_options[ '_wfc_gift_message' ] ) || $has_required_message || get_option( 'wfc_default_gift_options_expanded', 'no' ) === 'yes' ) {
-		$extensible_section_args[ 'initial_state' ] = 'expanded';
+		$expansible_section_args[ 'initial_state' ] = 'expanded';
 	}
 
 	// Output gift options expansible form section
-	FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( 'gift_options', apply_filters( 'wfc_expansible_section_toggle_label_gift_options', __( 'Add a gift message', 'woocommerce-fluid-checkout' ) ), $extensible_section_args );
+	FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( 'gift_options', apply_filters( 'wfc_expansible_section_toggle_label_gift_options', __( 'Add a gift message', 'woocommerce-fluid-checkout' ) ), $expansible_section_args );
 
 	// Output gift message fields
 	foreach ( $gift_message_fields as $key => $field ) {
