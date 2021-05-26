@@ -21,6 +21,10 @@ form.woocommerce-checkout:after {
 	@include clearfix();
 }
 
+body.woocommerce-checkout .content-area {
+	float: none !important; // Needed to override theme added styles
+	margin: 0 auto;
+}
 
 body.woocommerce-checkout.has-checkout-header .content-area {
 	min-height: 100vh;
@@ -96,21 +100,6 @@ body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-
 		height: 100% !important; // Needed to override styles for the sticky state
 		padding-left: $checkout-column-gap--large-screen;
 		padding-right: $checkout-column-gap--large-screen;
-		background: $checkout-overview-background;
-	}
-}
-.wfc-sidebar:before {
-	@media (#{$bp-larger-than-desktop}) {
-		z-index: z( 'default' );
-		content: '';
-		display: block;
-		position: absolute;
-		top: 0;
-		height: 100%;
-		background: $checkout-overview-background;
-		border-left: $checkout-overview-border-left;
-		width: 100vw;
-		margin-left: - #{ $checkout-column-gap--large-screen };
 	}
 }
 
