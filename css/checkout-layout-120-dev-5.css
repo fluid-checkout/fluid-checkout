@@ -482,7 +482,8 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   font-size: 15px;
   text-transform: uppercase;
   text-align: left;
-  line-height: 1; }
+  line-height: 1;
+  overflow: unset; }
   @media (min-width: 1000px) {
     .wfc-wrapper .wfc-step__substep-title {
       font-size: 15px; } }
