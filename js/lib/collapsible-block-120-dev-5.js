@@ -159,6 +159,15 @@
 
 
 	/**
+	 * Check if the element is considered visible. Does not consider the CSS property `visibility: hidden;`.
+	 */
+	 var isVisible = function( element ) {
+		return !!( element.offsetWidth || element.offsetHeight || element.getClientRects().length );
+	}
+
+
+
+	/**
 	 * Gets keyboard-focusable elements within a specified element
 	 *
 	 * @param   HTMLElement  element  The element to search within. Defaults to the `document` root element.
@@ -169,7 +178,7 @@
 		// Set element to `document` root if not passed in
 		if ( ! element ) { element = document; }
 		
-		// Get elements that are keyboard-focusable, but might be `disabled`
+		// Get elements that are keyboard-focusable
 		return element.querySelectorAll( _settings.focusableElementsSelector );
 	}
 
@@ -449,17 +458,36 @@
 		syncAriaExpanded( element, true );
 
 		if ( _hasInitialized ) {
-			// Maybe set focus to child element marked as auto-focus
-			var autofocusChild = element.querySelector( _settings.autoFocusSelector );
-			if ( autofocusChild ) {
-				autofocusChild.focus();
-			}
-			// Maybe set focus to first focusable element
-			else if ( element.matches( _settings.autoFocusSelector ) ) {
-				var focusableElements = Array.from( getFocusableElements( element ) );
-				if ( focusableElements.length > 0 ) {
-					focusableElements[0].focus();
+			var focusElement = null;
+
+			// Maybe set focus to the child element marked as auto-focus that is visible, skipping those in nested collapsible blocks
+			var autofocusChildren = element.querySelectorAll( _settings.autoFocusSelector );
+			if ( ! focusElement && autofocusChildren ) {
+				for ( var i = 0; i < autofocusChildren.length; i++ ) {
+					var autofocusChild = autofocusChildren[i];
+					
+					if ( autofocusChild.closest( _settings.contentElementSelector ) === element && isVisible( autofocusChild ) ) {
+						focusElement = autofocusChild;
+					}
 				}
+			}
+
+			// Maybe set focusElement to the first focusable element that is visible
+			if ( ! focusElement && element.matches( _settings.autoFocusSelector ) ) {
+				var focusableElements = Array.from( getFocusableElements( element ) );
+
+				for ( var i = 0; i < focusableElements.length; i++ ) {
+					var focusableElement = focusableElements[i];
+					if ( isVisible( focusableElement ) ) {
+						focusElement = focusableElement;
+						break;
+					}
+				}
+			}
+
+			// Set focus to focusElement
+			if ( focusElement ) {
+				focusElement.focus();
 			}
 		}
 
