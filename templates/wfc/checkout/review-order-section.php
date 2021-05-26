@@ -33,7 +33,7 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
-		<h3 class="wfc-checkout-order-review-title"><?php echo esc_html( $order_review_title ); ?></h3>
+		<h3 class="wfc-checkout-order-review-title wfc-step__substep-title"><?php echo esc_html( $order_review_title ); ?></h3>
 
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 

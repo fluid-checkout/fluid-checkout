@@ -15,24 +15,17 @@
 
 
 
-.wfc-wrapper #order_review .shop_table {
-	margin: 0;
-}
-
-
-
-
-
 .wfc-wrapper .wfc-checkout-order-review-title {
-	text-align: center;
+	text-align: left;
 }
 
 
 
 
 
-.wfc-wrapper .woocommerce-checkout-review-order-table {
-	width: 100%;
+.wfc-wrapper #order_review .woocommerce-checkout-review-order-table {
+	width: calc( 100% + #{ $global-spacing-small } );
+	margin: 0 #{ - $global-spacing-extra-small };
 	border: 0;
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -122,7 +115,6 @@
 	top: $order-summary-cell-padding-vertical;
 	left: $order-summary-cell-padding-horizontal;
 	padding: $order-summary-image-padding;
-	margin-left: - $order-summary-image-padding;
 	width: $order-summary-image-width !important; // Needed to override inline styles added by some themes
 	height: $order-summary-image-width !important; // Needed to override inline styles added by some themes
 	background-color: $order-summary-image-background-color;
@@ -225,18 +217,11 @@
 
 .wfc-wrapper .wfc-checkout-order-review .wfc-checkout-order-review__inner {
 	@media (#{$bp-larger-than-desktop}) {
-		padding-top: 0;
-		padding-bottom: 0;
-	}
-}
-
-.wfc-wrapper .wfc-checkout-order-review .wfc-checkout-order-review__inner {
-	@media (#{$bp-larger-than-desktop}) {
-		margin-left: - #{ $container-spacing-desktop - $global-spacing-extra-small };
-		margin-right: - #{ $container-spacing-desktop - $global-spacing-extra-small };
-		padding-left: $container-spacing-desktop - $global-spacing-extra-small;
-		padding-right: $container-spacing-desktop - $global-spacing-extra-small;
+		margin: 0 0 $global-spacing-small;
+		padding: $global-spacing-extra-small;
 		max-width: none;
+		border: solid remsize( .1rem ) $border-color;
+		border-radius: $global-radius;
 		background-color: transparent;
 		overflow: visible;
 	}
