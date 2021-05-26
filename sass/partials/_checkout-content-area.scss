@@ -59,6 +59,15 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large $global-spacing-medium; }
 }
 
+body.woocommerce-checkout.has-checkout-header .wfc-content > div.woocommerce {
+	position: relative;
+
+	@media (#{$bp-larger-than-desktop-medium}) {
+		margin: 0 auto;
+		width: 80%;
+	}
+}
+
 
 
 
@@ -94,11 +103,10 @@ body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-
 	@media (#{$bp-larger-than-desktop}) {
 		z-index: z( 'default' ) + 1;
 		position: absolute;
-		top: 0;
+		top: $global-spacing-medium;
 		right: 0;
-		width: calc( #{ $checkout-overview-width--large-screen } + #{ remsize( 1rem ) } );
+		width: $checkout-overview-width--large-screen;
 		height: 100% !important; // Needed to override styles for the sticky state
-		padding-left: $checkout-column-gap--large-screen;
 		padding-right: $checkout-column-gap--large-screen;
 	}
 }
@@ -108,14 +116,14 @@ body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-
 
 	@media (#{$bp-larger-than-desktop}) {
 		position: relative;
-		padding-top: $global-spacing-small;
+		padding-top: $global-spacing-tiny;
 		width: 100%;
 	}
 }
 // With admin bar
 .admin-bar .wfc-wrapper .wfc-sidebar.is-sticky .wfc-sidebar__inner {
 	@media (#{$bp-larger-than-desktop}) {
-		padding-top: calc( #{ $global-spacing-small } + 32px );
+		padding-top: calc( #{ $global-spacing-tiny } + 32px );
 	}
 }
 

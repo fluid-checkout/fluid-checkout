@@ -293,6 +293,7 @@ $checkout-overview-border-left:             none !default;
 $checkout-progress-bar-box-shadow:               $checkout-header-box-shadow !default;
 
 $checkout-progress-bar-padding-vertical:         $global-spacing-tiny !default;
+$checkout-progress-bar-padding-vertical--large-screen: $global-spacing-extra-small !default;
 
 $checkout-progress-bar-height:                   remsize( .5rem ) !default;
 $checkout-progress-bar-border:                   none !default;
