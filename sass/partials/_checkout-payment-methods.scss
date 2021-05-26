@@ -10,6 +10,8 @@
 
 .wfc-wrapper #payment .payment_methods {
 	list-style-type: none;
+	margin: 0;
+	padding: 0;
 	display: block;
 	width: 100%;
 	border: $payment-method-border;

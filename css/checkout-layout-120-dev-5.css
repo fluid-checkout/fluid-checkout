@@ -734,8 +734,10 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
 /*------------------------------------*\
   #CHECKOUT SHIPPING METHODS
 \*------------------------------------*/
-.shipping-method__options {
+#shipping_method.shipping-method__options {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
   border: solid 1px #D6D8D8;
   border-radius: 13px;
   overflow: hidden; }
@@ -851,6 +853,8 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
 
 .wfc-wrapper #payment .payment_methods {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
   display: block;
   width: 100%;
   border: solid 1px #D6D8D8;
