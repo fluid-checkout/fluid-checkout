@@ -1,7 +1,7 @@
 /*------------------------------------*\
 	#CHECKOUT STEPS
 \*------------------------------------*/
-.wfc-checkout-steps {
+.wfc-wrapper .wfc-checkout-steps {
 	margin: $checkout-steps-container-margin;
 	border-top: solid remsize( .1rem ) $border-color;
 
@@ -10,22 +10,22 @@
 
 
 
-.wfc-checkout-step {
+.wfc-wrapper .wfc-checkout-step {
 	padding: $checkout-step-padding;
 }
 
 
 
-.wfc-step__substep {
+.wfc-wrapper .wfc-step__substep {
 	position: relative;
 	padding: $checkout-substep-padding;
 	border-bottom: solid remsize( .1rem ) $border-color;
 }
-.wfc-step__substep:after {
+.wfc-wrapper .wfc-step__substep:after {
     @include clearfix();
 }
 
-.wfc-step__substep-title {
+.wfc-wrapper .wfc-step__substep-title {
 	margin: $checkout-substep-title-margin;
 	color: $checkout-substep-title-color;
 	font-weight: $checkout-substep-title-font-weight;
@@ -39,13 +39,13 @@
 
 
 
-.wfc-step__substep-fields:after {
+.wfc-wrapper .wfc-step__substep-fields:after {
     @include clearfix();
 }
 
 
 
-.wfc-step__substep-text {
+.wfc-wrapper .wfc-step__substep-text {
 	display: none;
 }
 
