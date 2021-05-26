@@ -10,6 +10,8 @@
 
 .wfc-wrapper #payment .payment_methods {
 	list-style-type: none;
+	margin: 0;
+	padding: 0;
 	display: block;
 	width: 100%;
 	border: $payment-method-border;
@@ -76,10 +78,12 @@
 	transform: translateY( -50% );
 	left: $global-spacing-extra-small;
 	display: block;
+	margin: 0;
 	width: $payment-method-radio-size;
 	height: $payment-method-radio-size;
 	border: $payment-method-radio-border;
 	border-radius: 100%;
+	box-shadow: none;
 	transition: all $global-animation-duration-fast linear;
 }
 

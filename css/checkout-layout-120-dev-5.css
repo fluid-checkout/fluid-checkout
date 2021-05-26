@@ -42,6 +42,10 @@ form.woocommerce-checkout:after {
   table-layout: fixed;
   width: 100%; }
 
+body.woocommerce-checkout .content-area {
+  float: none !important;
+  margin: 0 auto; }
+
 body.woocommerce-checkout.has-checkout-header .content-area {
   min-height: 100vh; }
 
@@ -118,21 +122,7 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
       width: calc( 40% + 10px);
       height: 100% !important;
       padding-left: 50px;
-      padding-right: 50px;
-      background: linear-gradient(90deg, #e1e9e9 0%, #F0F4F4 0.5%, #F0F4F4 100%); } }
-
-@media (min-width: 1000px) {
-  .wfc-sidebar:before {
-    z-index: 1;
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    height: 100%;
-    background: linear-gradient(90deg, #e1e9e9 0%, #F0F4F4 0.5%, #F0F4F4 100%);
-    border-left: none;
-    width: 100vw;
-    margin-left: -50px; } }
+      padding-right: 50px; } }
 
 .wfc-sidebar__inner {
   z-index: 10; }
@@ -464,28 +454,28 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 /*------------------------------------*\
 	#CHECKOUT STEPS
 \*------------------------------------*/
-.wfc-checkout-steps {
+.wfc-wrapper .wfc-checkout-steps {
   margin: 0 -20px;
   border-top: solid 1px #D6D8D8; }
   @media (min-width: 750px) {
-    .wfc-checkout-steps {
+    .wfc-wrapper .wfc-checkout-steps {
       margin: 0; } }
 
-.wfc-checkout-step {
+.wfc-wrapper .wfc-checkout-step {
   padding: 0; }
 
-.wfc-step__substep {
+.wfc-wrapper .wfc-step__substep {
   position: relative;
   padding: 20px 20px;
   border-bottom: solid 1px #D6D8D8; }
 
-.wfc-step__substep:after {
+.wfc-wrapper .wfc-step__substep:after {
   content: '';
   display: table;
   table-layout: fixed;
   width: 100%; }
 
-.wfc-step__substep-title {
+.wfc-wrapper .wfc-step__substep-title {
   margin: 0 0 10px 0;
   color: #535156;
   font-weight: bold;
@@ -494,16 +484,16 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   text-align: left;
   line-height: 1; }
   @media (min-width: 1000px) {
-    .wfc-step__substep-title {
+    .wfc-wrapper .wfc-step__substep-title {
       font-size: 15px; } }
 
-.wfc-step__substep-fields:after {
+.wfc-wrapper .wfc-step__substep-fields:after {
   content: '';
   display: table;
   table-layout: fixed;
   width: 100%; }
 
-.wfc-step__substep-text {
+.wfc-wrapper .wfc-step__substep-text {
   display: none; }
 
 /*------------------------------------*\
@@ -734,8 +724,10 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
 /*------------------------------------*\
   #CHECKOUT SHIPPING METHODS
 \*------------------------------------*/
-.shipping-method__options {
+#shipping_method.shipping-method__options {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
   border: solid 1px #D6D8D8;
   border-radius: 13px;
   overflow: hidden; }
@@ -851,6 +843,8 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
 
 .wfc-wrapper #payment .payment_methods {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
   display: block;
   width: 100%;
   border: solid 1px #D6D8D8;
@@ -903,10 +897,12 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
   transform: translateY(-50%);
   left: 10px;
   display: block;
+  margin: 0;
   width: 24px;
   height: 24px;
   border: solid 2px #D6D8D8;
   border-radius: 100%;
+  box-shadow: none;
   transition: all 0.15s linear; }
 
 .wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:checked + label:before {

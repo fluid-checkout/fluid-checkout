@@ -24,22 +24,17 @@ else {
 	get_header( 'checkout' );
 }
 ?>
+<main id="main" class="content-area wfc-content">
 
-<div id="content" class="site-content wfc-content">
+	<?php
+	// Load the checkout page content
+	while ( have_posts() ) :
+		the_post();
+		the_content();
+	endwhile;
+	?>
 
-	<main id="main" class="content-area">
-
-		<?php
-		// Load the checkout page content
-		while ( have_posts() ) :
-			the_post();
-			the_content();
-		endwhile;
-		?>
-
-	</main>
-
-</div>
+</main>
 
 <?php
 // Replace site header with our implementation
