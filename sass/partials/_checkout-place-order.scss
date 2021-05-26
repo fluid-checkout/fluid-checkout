@@ -57,15 +57,12 @@
 
 
 .wfc-place-order .wfc-place-order-button {
-	margin: $global-spacing-extra-small auto;
+	margin: $global-spacing auto 0;
 	min-width: remsize( 28rem );
 }
 
-.form-row.place-order:last-child .wfc-place-order .wfc-place-order-button {
-	margin-bottom: 0;
-}
-
 .wfc-sidebar .wfc-place-order .wfc-place-order-button {
+	margin: $global-spacing-extra-small auto 0;
 	width: 100%;
 }
 

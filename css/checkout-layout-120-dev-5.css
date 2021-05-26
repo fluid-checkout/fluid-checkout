@@ -1060,13 +1060,11 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
   text-align: center; }
 
 .wfc-place-order .wfc-place-order-button {
-  margin: 10px auto;
+  margin: 30px auto 0;
   min-width: 280px; }
 
-.form-row.place-order:last-child .wfc-place-order .wfc-place-order-button {
-  margin-bottom: 0; }
-
 .wfc-sidebar .wfc-place-order .wfc-place-order-button {
+  margin: 10px auto 0;
   width: 100%; }
 
 /*------------------------------------*\
@@ -1090,14 +1088,16 @@ div.woocommerce .form-row:last-child {
   text-align: left; }
 
 .wfc-wrapper #order_review .woocommerce-checkout-review-order-table {
-  width: calc( 100% + 20px);
-  margin: 0 -10px;
+  width: 100%;
+  margin: 0;
   border: 0;
   border-collapse: collapse;
   border-spacing: 0;
   font-size: 15px; }
   @media (min-width: 1000px) {
     .wfc-wrapper #order_review .woocommerce-checkout-review-order-table {
+      margin: 0 -10px;
+      width: calc( 100% + 20px);
       font-size: 15px; } }
 
 .wfc-wrapper .woocommerce-checkout-review-order-table th,
@@ -1209,6 +1209,9 @@ div.woocommerce .form-row:last-child {
 
 .wfc-wrapper .woocommerce-checkout-review-order-table td.product-total {
   background-color: transparent; }
+
+.wfc-wrapper .wfc-checkout-order-review__widgets-inside {
+  margin-top: 10px; }
 
 /*------------------------------------*\
 	#ORDER REVIEW VISIBILITY

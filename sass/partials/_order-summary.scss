@@ -24,14 +24,18 @@
 
 
 .wfc-wrapper #order_review .woocommerce-checkout-review-order-table {
-	width: calc( 100% + #{ $global-spacing-small } );
-	margin: 0 #{ - $global-spacing-extra-small };
+	width: 100%;
+	margin: 0;
 	border: 0;
 	border-collapse: collapse;
 	border-spacing: 0;
 	font-size: $order-summary-font-size;
-
-	@media (#{$bp-larger-than-desktop}) { font-size: $order-summary-font-size--large-screen; }
+	
+	@media (#{$bp-larger-than-desktop}) {
+		margin: 0 #{ - $global-spacing-extra-small };
+		width: calc( 100% + #{ $global-spacing-small } );
+		font-size: $order-summary-font-size--large-screen;
+	}
 }
 
 .wfc-wrapper .woocommerce-checkout-review-order-table th,
@@ -163,6 +167,13 @@
 	background-color: transparent;
 }
 
+
+
+
+
+.wfc-wrapper .wfc-checkout-order-review__widgets-inside {
+	margin-top: $global-spacing-extra-small;
+}
 
 
 
