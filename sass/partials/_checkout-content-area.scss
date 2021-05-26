@@ -22,7 +22,7 @@ form.woocommerce-checkout:after {
 }
 
 body.woocommerce-checkout .content-area {
-	float: none !important; // Needed to override theme added styles
+	float: none !important; // Needed to override theme styles breaking the layout
 	margin: 0 auto;
 }
 
