@@ -344,7 +344,7 @@ $checkout-substep-text-font-size:                $font-size-small !default;
 $checkout-substep-text-font-size--large-screen:  $font-size-small--large-screen !default;
 $checkout-substep-text-font-weight:              normal !default;
 
-$checkout-substep-action-button-margin:          $global-spacing-small $global-spacing-extra-small 0 0 !default; // Used to position the substep "Change/Save" action buttons
+$checkout-substep-action-button-margin:          remsize( 1.2rem ) $global-spacing-extra-small 0 0 !default; // Used to position the substep "Change/Save" action buttons
 $checkout-substep-action-button-padding:         $global-spacing-tiny $global-spacing-extra-small !default;
 $checkout-substep-action-button-font-size:       $font-size-small !default;
 $checkout-substep-action-button-font-weight:     normal !default;

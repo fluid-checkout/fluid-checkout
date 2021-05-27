@@ -211,6 +211,7 @@
 	text-decoration: $checkout-substep-action-button-text-decoration;
 	color: $checkout-substep-action-button-color;
 	background-color: $checkout-substep-action-button-background-color;
+	cursor: pointer;
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $font-size-small--large-screen; }
 }
