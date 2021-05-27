@@ -87,11 +87,10 @@
 
 
 
-.has-checkout-layout--multi-step .wfc-checkout-step[data-step-complete] + .wfc-checkout-step:not( [data-step-complete] ) {
-	margin-top: $global-spacing;
+.has-checkout-layout--multi-step .wfc-checkout-step[data-step-current],
+.has-checkout-layout--multi-step .wfc-checkout-step:not( [data-step-complete] ) {
 	border-radius: $global-radius-medium;
 }
-
 
 
 
@@ -181,14 +180,15 @@
 	#CHECKOUT STEP ACTIONS
 \*------------------------------------*/
 .has-checkout-layout--multi-step .wfc-step__actions {
-	margin-top: $global-spacing-medium;
+	margin: $global-spacing 0;
 	text-align: center;
 }
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__actions {
 	display: none;
 }
 
-.has-checkout-layout--multi-step .wfc-step__actions .wfc-step__next-step:only-child {
+.has-checkout-layout--multi-step .wfc-step__actions .wfc-step__next-step {
+	margin: 0;
 	min-width: remsize( 28rem );
 }
 

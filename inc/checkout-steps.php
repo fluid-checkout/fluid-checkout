@@ -835,7 +835,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Maybe output the "Next step" button
 		if ( $this->is_checkout_layout_multistep() && array_key_exists( 'render_next_step_button', $step_args ) && $step_args[ 'render_next_step_button' ] ) :
 			$button_attributes = array(
-				'class' => implode( ' ', array_merge( array( 'wfc-step__next-step' ), $step_args[ 'next_step_button_classes' ] ) ),
+				'class' => implode( ' ', array_merge( array( 'wfc-step__next-step', 'button' ), $step_args[ 'next_step_button_classes' ] ) ),
 				'data-step-next' => '',
 			);
 			$button_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $button_attributes ), $button_attributes ) );
