@@ -479,6 +479,9 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   padding: 20px 20px;
   margin: 0 0 -1px;
   border-bottom: solid 1px #D6D8D8; }
+  @media (min-width: 750px) {
+    .wfc-wrapper .wfc-step__substep {
+      padding: 20px 20px; } }
 
 .wfc-wrapper .wfc-step__substep:after {
   content: '';
@@ -531,7 +534,7 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title {
   position: relative;
-  padding: 0 0 0 33px;
+  padding: 0 0 0 28px;
   color: #888181; }
   .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title:before {
     display: inline-block;
@@ -550,7 +553,7 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
     height: 18px;
     font-size: 18px;
     position: absolute;
-    left: 5px;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
     border-radius: 100%;
@@ -565,10 +568,11 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 
 .has-checkout-layout--multi-step .wfc-step__substep-text {
   display: none;
-  padding: 0 0 0 33px;
+  padding: 0 0 0 28px;
   color: #888181;
   font-weight: normal;
-  font-size: 15px; }
+  font-size: 15px;
+  line-height: 1.4; }
   @media (min-width: 1000px) {
     .has-checkout-layout--multi-step .wfc-step__substep-text {
       font-size: 15px; } }
@@ -585,7 +589,7 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title {
   position: relative;
-  padding: 0 0 0 33px;
+  padding: 0 0 0 28px;
   color: #888181; }
   .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title:before {
     display: inline-block;
@@ -604,7 +608,7 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
     height: 18px;
     font-size: 18px;
     position: absolute;
-    left: 5px;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
     border-radius: 100%;
@@ -1351,7 +1355,7 @@ div.woocommerce .form-row:last-child {
 \*------------------------------------*/
 div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
   position: relative;
-  padding: 0 0 0 44px;
+  padding: 0 0 0 26px;
   cursor: pointer;
   text-decoration: none; }
   div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus:before {
@@ -1371,7 +1375,7 @@ div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
     height: 24px;
     font-size: 24px;
     position: absolute;
-    left: 10px;
+    left: -3px;
     top: 50%;
     transform: translateY(-50%); }
 

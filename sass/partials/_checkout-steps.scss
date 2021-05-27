@@ -25,6 +25,8 @@
 	padding: $checkout-substep-padding;
 	margin: 0 0 remsize( -.1rem ); // Prevent double borders
 	border-bottom: solid remsize( .1rem ) $border-color;
+
+	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
 }
 .wfc-wrapper .wfc-step__substep:after {
     @include clearfix();
@@ -126,6 +128,7 @@
 	color: $checkout-substep-text-color;
 	font-weight: $checkout-substep-text-font-weight;
 	font-size: $checkout-substep-text-font-size;
+	line-height: 1.4;
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-text-font-size--large-screen; }
 }

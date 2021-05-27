@@ -333,12 +333,12 @@ $checkout-substep-title-font-weight:             bold !default;
 $checkout-substep-title-text-transform:          uppercase !default;
 $checkout-substep-title-text-align:              left !default;
 $checkout-substep-title-check-icon-size:         $icon-size-small !default;
-$checkout-substep-title-check-icon-spacing:      $global-spacing-tiny !default;
+$checkout-substep-title-check-icon-spacing:      0 !default;
 
 $checkout-substep-padding:                       $global-spacing-small $container-spacing-mobile !default;
-$checkout-substep-padding--large-screen:         $global-spacing-small 0 !default;
+$checkout-substep-padding--large-screen:         $global-spacing-small $container-spacing-mobile !default;
 
-$checkout-substep-text-padding:                  0 0 0 #{ $global-spacing-tiny + $global-spacing-extra-small + $checkout-substep-title-check-icon-size } !default;
+$checkout-substep-text-padding:                  0 0 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
 $checkout-substep-text-color:                    $grey !default;
 $checkout-substep-text-font-size:                $font-size-small !default;
 $checkout-substep-text-font-size--large-screen:  $font-size-small--large-screen !default;
@@ -354,8 +354,8 @@ $checkout-substep-action-button-background-color: transparent !default;
 
 $checkout-expansible-section-icon:               'i-plus-circle' !default;
 $checkout-expansible-section-icon-size:          $icon-size !default;
-$checkout-expansible-section-icon-spacing-left:  $global-spacing-extra-small !default;
-$checkout-expansible-section-icon-spacing-right: $global-spacing-extra-small !default;
+$checkout-expansible-section-icon-spacing-left:  remsize( -.3rem ) !default;
+$checkout-expansible-section-icon-spacing-right: $global-spacing-tiny !default;
 $checkout-expansible-section-text-decoration:    none !default;
 
 $checkout-checkbox-spacing-left:                 $global-spacing-extra-small !default;
