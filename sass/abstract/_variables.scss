@@ -274,7 +274,7 @@ $checkout-logo-height--large-screen:        remsize( 4rem ) !default;
 
 $checkout-column-gap--large-screen:         $global-spacing-medium !default;
 
-$checkout-steps-width--large-screen:        60% !default;
+$checkout-steps-width--large-screen:        62.5% !default;
 
 $checkout-overview-width--large-screen:     #{ 100% - $checkout-steps-width--large-screen } !default;
 $checkout-overview-background:              linear-gradient( 90deg, darken( $lighter-grey, 5% ) 0%, $lighter-grey .5%, $lighter-grey 100% ) !default;
@@ -377,7 +377,7 @@ $order-summary-container-margin--large-screen:   0 !default;
 $order-summary-container-padding--large-screen:  0 !default;
 
 $order-summary-cell-padding-vertical:            $global-spacing-extra-small !default;
-$order-summary-cell-padding-horizontal:          $global-spacing-extra-small !default;
+$order-summary-cell-padding-horizontal:          $global-spacing-small !default;
 $order-summary-cell-border:                      solid remsize( .1rem ) darken( $lighter-grey, 5% ) !default;
 
 $order-summary-image-width:                      remsize( 5rem ) !default;

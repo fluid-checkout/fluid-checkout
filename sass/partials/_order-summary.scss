@@ -23,7 +23,7 @@
 
 
 
-.wfc-wrapper #order_review .woocommerce-checkout-review-order-table {
+.wfc-wrapper #order_review table.woocommerce-checkout-review-order-table {
 	width: 100%;
 	margin: 0;
 	border: 0;
@@ -32,49 +32,49 @@
 	font-size: $order-summary-font-size;
 	
 	@media (#{$bp-larger-than-desktop}) {
-		margin: 0 #{ - $global-spacing-extra-small };
-		width: calc( 100% + #{ $global-spacing-small } );
+		margin: 0 #{ - $global-spacing-small };
+		width: calc( 100% + #{ $global-spacing-small * 2 } );
 		font-size: $order-summary-font-size--large-screen;
 	}
 }
 
-.wfc-wrapper .woocommerce-checkout-review-order-table th,
-.wfc-wrapper .woocommerce-checkout-review-order-table td,
-.wfc-wrapper .woocommerce-checkout-review-order-table tr:first-child th,
-.wfc-wrapper .woocommerce-checkout-review-order-table tr:first-child td {
+.wfc-wrapper table.woocommerce-checkout-review-order-table th,
+.wfc-wrapper table.woocommerce-checkout-review-order-table td,
+.wfc-wrapper table.woocommerce-checkout-review-order-table tr:first-child th,
+.wfc-wrapper table.woocommerce-checkout-review-order-table tr:first-child td {
 	border-top: 0;
 	border-bottom: 0;
 }
 
-.wfc-wrapper .woocommerce-checkout-review-order-table tr {
+.wfc-wrapper table.woocommerce-checkout-review-order-table tr {
 	border-bottom: $order-summary-cell-border;
 }
-.wfc-wrapper .woocommerce-checkout-review-order-table tr:first-child {
+.wfc-wrapper table.woocommerce-checkout-review-order-table tr:first-child {
 	border-top: $order-summary-cell-border;
 }
 
-.wfc-wrapper .woocommerce-checkout-review-order-table th,
-.wfc-wrapper .woocommerce-checkout-review-order-table td {
+.wfc-wrapper table.woocommerce-checkout-review-order-table th,
+.wfc-wrapper table.woocommerce-checkout-review-order-table td {
 	padding: $order-summary-cell-padding-vertical $order-summary-cell-padding-horizontal;
 	background-color: transparent;
 }
 
-.wfc-wrapper .woocommerce-checkout-review-order-table tfoot th {
+.wfc-wrapper table.woocommerce-checkout-review-order-table tfoot th {
 	text-align: left;
 }
 
-.wfc-wrapper .woocommerce-checkout-review-order-table .product-total,
-.wfc-wrapper .woocommerce-checkout-review-order-table tfoot td {
+.wfc-wrapper table.woocommerce-checkout-review-order-table .product-total,
+.wfc-wrapper table.woocommerce-checkout-review-order-table tfoot td {
 	font-size: $order-summary-font-size;
 	text-align: right;
 	line-height: 1;
 	vertical-align: middle;
 }
 
-.wfc-wrapper .woocommerce-checkout-review-order-table .product-total .tax_label,
-.wfc-wrapper .woocommerce-checkout-review-order-table .product-total .includes_tax,
-.wfc-wrapper .woocommerce-checkout-review-order-table tfoot td .includes_tax,
-.wfc-wrapper .woocommerce-checkout-review-order-table tfoot td .tax_label {
+.wfc-wrapper table.woocommerce-checkout-review-order-table .product-total .tax_label,
+.wfc-wrapper table.woocommerce-checkout-review-order-table .product-total .includes_tax,
+.wfc-wrapper table.woocommerce-checkout-review-order-table tfoot td .includes_tax,
+.wfc-wrapper table.woocommerce-checkout-review-order-table tfoot td .tax_label {
 	display: block;
 	width: 100%;
 	line-height: 1.2;
@@ -82,14 +82,14 @@
 	white-space: normal;
 }
 
-.wfc-wrapper .woocommerce-checkout-review-order-table td.product-total {
+.wfc-wrapper table.woocommerce-checkout-review-order-table td.product-total {
 	padding-top: #{ ( ( $order-summary-image-width - $order-summary-font-size ) / 2 ) + $order-summary-cell-padding-vertical };
 	vertical-align: top;
 
 	@media (#{$bp-larger-than-desktop}) { padding-top: #{ ( ( $order-summary-image-width--large-screen - $order-summary-font-size--large-screen ) / 2 ) + $order-summary-cell-padding-vertical }; }
 }
 
-.wfc-wrapper .woocommerce-checkout-review-order-table .product-name {
+.wfc-wrapper table.woocommerce-checkout-review-order-table .product-name {
 	width: 70%;
 	min-width: remsize( 18rem );
 }
@@ -98,7 +98,7 @@
 
 
 
-.wfc-wrapper .woocommerce-checkout-review-order-table td.product-name {
+.wfc-wrapper table.woocommerce-checkout-review-order-table td.product-name {
 	position: relative;
 	display: inline-flex;
 	flex-direction: column;
@@ -114,7 +114,7 @@
 	}
 }
 
-.wfc-wrapper .woocommerce-checkout-review-order-table .attachment-woocommerce_thumbnail {
+.wfc-wrapper table.woocommerce-checkout-review-order-table .attachment-woocommerce_thumbnail {
 	position: absolute;
 	top: $order-summary-cell-padding-vertical;
 	left: $order-summary-cell-padding-horizontal;
@@ -131,7 +131,7 @@
 	}
 }
 
-.wfc-wrapper .woocommerce-checkout-review-order-table .product-quantity {
+.wfc-wrapper table.woocommerce-checkout-review-order-table .product-quantity {
 	z-index: z( 'above' );
 	position: absolute;
 	top: $order-summary-cell-padding-vertical;
@@ -152,18 +152,18 @@
 	}
 }
 
-.wfc-wrapper .woocommerce-checkout-review-order-table dl.variation {
+.wfc-wrapper table.woocommerce-checkout-review-order-table dl.variation {
 	margin-bottom: 0;
 	padding-left: 0;
 	color: $grey;
 	font-size: $font-size-extra-small;
 }
-.wfc-wrapper .woocommerce-checkout-review-order-table dl.variation dd {
+.wfc-wrapper table.woocommerce-checkout-review-order-table dl.variation dd {
 	margin: 0;
 	padding: 0;
 }
 
-.wfc-wrapper .woocommerce-checkout-review-order-table td.product-total {
+.wfc-wrapper table.woocommerce-checkout-review-order-table td.product-total {
 	background-color: transparent;
 }
 
@@ -229,10 +229,10 @@
 .wfc-wrapper .wfc-checkout-order-review .wfc-checkout-order-review__inner {
 	@media (#{$bp-larger-than-desktop}) {
 		margin: 0 0 $global-spacing-small;
-		padding: $global-spacing-extra-small;
+		padding: $global-spacing-small;
 		max-width: none;
 		border: solid remsize( .1rem ) $border-color;
-		border-radius: $global-radius;
+		border-radius: $global-radius-medium;
 		background-color: $white;
 		overflow: visible;
 	}
@@ -313,6 +313,6 @@
 
 
 // Remove spacing added by some themes
-.woocommerce-checkout form .wfc-wrapper #order_review .woocommerce-checkout-review-order-table tbody::after {
+.woocommerce-checkout form .wfc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody::after {
 	display: none;
 }

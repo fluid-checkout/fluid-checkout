@@ -107,7 +107,6 @@ body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-
 		right: 0;
 		width: $checkout-overview-width--large-screen;
 		height: 100% !important; // Needed to override styles for the sticky state
-		padding-right: $checkout-column-gap--large-screen;
 	}
 }
 
