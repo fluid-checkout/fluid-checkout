@@ -24,7 +24,9 @@
 .wfc-wrapper #payment .payment_methods > .wc_payment_method {
 	display: block;
 	width: 100%;
-	margin: 0 $payment-method-space-between-options 0 0;
+	margin: $payment-method-margin;
+	padding: 0;
+	border: 0;
 }
 
 
