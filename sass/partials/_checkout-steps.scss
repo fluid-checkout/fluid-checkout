@@ -13,9 +13,17 @@
 	margin: 0 0 remsize( -.1rem ); // Prevent double borders
 	padding: $checkout-step-padding;
 	border: solid remsize( .1rem ) $border-color;
+	border-radius: 0;
+	overflow: hidden;
 	background-color: $white;
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-step-padding--large-screen; }
+}
+.wfc-wrapper .wfc-checkout-step:first-child {
+	border-radius: $global-radius-medium $global-radius-medium 0 0;
+}
+.wfc-wrapper .wfc-checkout-step:last-child {
+	border-radius: 0 0 $global-radius-medium $global-radius-medium;
 }
 
 
@@ -66,9 +74,7 @@
 	#CHECKOUT LAYOUT MULTI-STEP
 \*------------------------------------*/
 .has-checkout-layout--multi-step .wfc-checkout-step[data-step-complete] {
-	background-color: $white;
-	overflow: hidden;
-	border-radius: $global-radius-medium;
+	margin: 0 0 remsize( -.1rem ); // Prevent double borders
 }
 .has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--prev-step-complete {
 	border-top-right-radius: 0;
@@ -219,4 +225,29 @@
 .has-checkout-layout--multi-step [data-step-complete] .is-editing .wfc-step__substep-edit,
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-save {
 	display: none;
+}
+
+
+
+
+
+/*------------------------------------*\
+	#CHECKOUT SUB-STEP FIELD WRAPPERS
+\*------------------------------------*/
+.wfc-wrapper .wfc-step__substep-fields-inner {
+	padding: $global-spacing-extra-small 0 0;
+	border: 0;
+}
+
+.wfc-wrapper .woocommerce-shipping-fields,
+.wfc-wrapper .woocommerce-billing-fields {
+	padding: 0;
+	border: 0;
+}
+
+.wfc-substep__fields--coupon_codes .wfc-step__substep-fields-inner {
+	padding: 0;
+}
+.wfc-substep__fields--coupon_codes .wfc-expansible-form-section__content--coupon_code .collapsible-content__inner {
+	padding: $global-spacing-extra-small 0 0;
 }

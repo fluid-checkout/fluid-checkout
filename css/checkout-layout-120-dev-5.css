@@ -469,10 +469,18 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   margin: 0 0 -1px;
   padding: 0;
   border: solid 1px #D6D8D8;
+  border-radius: 0;
+  overflow: hidden;
   background-color: #fff; }
   @media (min-width: 750px) {
     .wfc-wrapper .wfc-checkout-step {
       padding: 0; } }
+
+.wfc-wrapper .wfc-checkout-step:first-child {
+  border-radius: 13px 13px 0 0; }
+
+.wfc-wrapper .wfc-checkout-step:last-child {
+  border-radius: 0 0 13px 13px; }
 
 .wfc-wrapper .wfc-step__substep {
   position: relative;
@@ -516,9 +524,7 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 	#CHECKOUT LAYOUT MULTI-STEP
 \*------------------------------------*/
 .has-checkout-layout--multi-step .wfc-checkout-step[data-step-complete] {
-  background-color: #fff;
-  overflow: hidden;
-  border-radius: 13px; }
+  margin: 0 0 -1px; }
 
 .has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--prev-step-complete {
   border-top-right-radius: 0;
@@ -659,6 +665,24 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   display: none; }
 
 /*------------------------------------*\
+	#CHECKOUT SUB-STEP FIELD WRAPPERS
+\*------------------------------------*/
+.wfc-wrapper .wfc-step__substep-fields-inner {
+  padding: 10px 0 0;
+  border: 0; }
+
+.wfc-wrapper .woocommerce-shipping-fields,
+.wfc-wrapper .woocommerce-billing-fields {
+  padding: 0;
+  border: 0; }
+
+.wfc-substep__fields--coupon_codes .wfc-step__substep-fields-inner {
+  padding: 0; }
+
+.wfc-substep__fields--coupon_codes .wfc-expansible-form-section__content--coupon_code .collapsible-content__inner {
+  padding: 10px 0 0; }
+
+/*------------------------------------*\
   #CHECKOUT LOGIN
 \*------------------------------------*/
 .wfc-contact-login {
@@ -752,10 +776,6 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 /*------------------------------------*\
 	#CHECKOUT BILLING STEP
 \*------------------------------------*/
-.wfc-wrapper .woocommerce-billing-fields {
-  padding: 10px 0 0;
-  border: 0; }
-
 body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-collapsed .collapsible-content__inner {
   display: none; }
 
