@@ -233,7 +233,7 @@
 		max-width: none;
 		border: solid remsize( .1rem ) $border-color;
 		border-radius: $global-radius;
-		background-color: transparent;
+		background-color: $white;
 		overflow: visible;
 	}
 }

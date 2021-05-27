@@ -520,6 +520,52 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return false;
 	}
 
+	/**
+	 * Determine if the step before the checked step is completed.
+	 *
+	 * @param   string  $step_id  Id of the step to use as a reference to check for the "complete" status of the previous step.
+	 *
+	 * @return  boolean  `true` if the step is considered complete, `false` otherwise. Defaults to `false`.
+	 */
+	public function is_prev_step_complete( $step_id ) {
+		$complete_steps = $this->get_complete_steps();
+		
+		// Return `true` if previous step id is found in the complete steps list
+		foreach ( $complete_steps as $step_index => $step_args ) {
+			if ( $step_id == $step_args[ 'step_id' ] ) {
+				$next_step_index = $step_index - 1;
+				if ( array_key_exists( $next_step_index, $complete_steps ) ) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Determine if the step after the checked step is completed.
+	 *
+	 * @param   string  $step_id  Id of the step to use as a reference to check for the "complete" status of the next step.
+	 *
+	 * @return  boolean  `true` if the step is considered complete, `false` otherwise. Defaults to `false`.
+	 */
+	public function is_next_step_complete( $step_id ) {
+		$complete_steps = $this->get_complete_steps();
+		
+		// Return `true` if next step id is found in the complete steps list
+		foreach ( $complete_steps as $step_index => $step_args ) {
+			if ( $step_id == $step_args[ 'step_id' ] ) {
+				$next_step_index = $step_index + 1;
+				if ( array_key_exists( $next_step_index, $complete_steps ) ) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
 
 
 	/**
@@ -754,6 +800,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_step_start_tag( $step_args, $step_index ) {
 		$step_id = $step_args[ 'step_id' ];
 		$step_title = apply_filters( "wfc_step_title_{$step_id}", $step_args[ 'step_title' ] );
+		
 		$step_attributes = array(
 			'class' => 'wfc-checkout-step',
 			'data-step-id' => ! empty( $step_id ) && $step_id != null ? $step_id : '',
@@ -762,8 +809,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'data-step-complete' => $this->is_step_complete( $step_id ),
 			'data-step-current' => $this->is_current_step( $step_id ),
 		);
+		
+		// Maybe add class for previous step completed
+		if ( $this->is_prev_step_complete( $step_id ) ) {
+			$step_attributes['class'] .= ' wfc-checkout-step--prev-step-complete';
+		}
+		
+		// Maybe add class for next step completed
+		if ( $this->is_next_step_complete( $step_id ) ) {
+			$step_attributes['class'] .= ' wfc-checkout-step--next-step-complete';
+		}
+		
 		$step_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $step_attributes ), $step_attributes ) );
-
 		echo '<section ' . $step_attributes_str . '>';
 	}
 
