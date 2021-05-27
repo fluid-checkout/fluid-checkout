@@ -784,6 +784,12 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
 /*------------------------------------*\
   #CHECKOUT SHIPPING METHODS
 \*------------------------------------*/
+.woocommerce-checkout .wfc-wrapper .woocommerce-shipping-fields,
+.woocommerce-checkout .wfc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
 #shipping_method.shipping-method__options {
   list-style-type: none;
   margin: 0;
@@ -902,6 +908,11 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
 \*------------------------------------*/
 .wfc-wrapper .wfc-payment-methods__wrapper {
   position: relative; }
+
+.woocommerce-page.woocommerce-checkout .wfc-wrapper #payment {
+  margin: 0;
+  padding: 0;
+  border: 0; }
 
 .woocommerce-page.woocommerce-checkout .wfc-wrapper #payment ul.payment_methods {
   list-style-type: none;
@@ -1125,7 +1136,7 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
 .wfc-place-order {
   text-align: center; }
 
-.wfc-place-order .wfc-place-order-button {
+.wfc-wrapper .wfc-place-order .wfc-place-order-button {
   margin: 30px auto 30px;
   min-width: 280px; }
 
