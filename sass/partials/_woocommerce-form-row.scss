@@ -1,0 +1,28 @@
+/*------------------------------------*\
+  #WOOCOMMERCE FORM-ROW
+\*------------------------------------*/
+div.woocommerce .form-row:before,
+div.woocommerce .form-row:after {
+	content: '';
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+
+
+
+div.woocommerce .form-row:last-child {
+	margin-bottom: 0;
+}
+
+
+
+div.woocommerce .form-row {
+	margin-bottom: $global-spacing-small;
+}
+
+div.woocommerce .form-row input,
+div.woocommerce .form-row textarea,
+div.woocommerce .form-row select {
+	margin-bottom: 0;
+}
