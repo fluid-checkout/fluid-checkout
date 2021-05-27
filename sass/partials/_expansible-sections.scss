@@ -18,6 +18,20 @@ div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
 	}
 }
 
+
+
+.wfc-expansible-form-section.form-row p.form-row {
+	margin: 0;
+	padding: 0;
+}
+
+.wfc-expansible-form-section.form-row.form-row-last .wfc-expansible-form-section__toggle .collapsible-content__inner {
+	padding-top: 2.3em;
+}
+
+
+
+
 // Temporarily hide extensible form sections while the collapsible-block script is not yet loaded
 body:not( .has-collapsible-block ) .wfc-expansible-form-section__toggle.is-collapsed .collapsible-content__inner,
 body:not( .has-collapsible-block ) .wfc-expansible-form-section__content.is-collapsed .collapsible-content__inner {
