@@ -30,6 +30,13 @@ div.woocommerce .form-row .select2-container {
 
 
 
+div.woocommerce .form-row.form-row-first,
+div.woocommerce .form-row.form-row-wide {
+	clear: left;
+}
+
+
+
 div.woocommerce .form-row span.description {
 	font-size: $font-size-extra-small;
 }

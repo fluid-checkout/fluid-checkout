@@ -11,6 +11,8 @@
 	margin: 0;
 	padding: 0;
 	border: 0;
+	border-radius: 0;
+	background-color: transparent;
 }
 
 
@@ -48,8 +50,8 @@
 }
 
 
-
-.wfc-wrapper #payment .payment_methods > .wc_payment_method > label {
+// #payment ul.wc_payment_methods li.wc_payment_method input[type=radio]:first-child:checked+label
+.wfc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
 	position: relative;
 	display: block;
 	margin: 0;
@@ -57,10 +59,22 @@
 	width: 100%;
 	overflow: hidden;
 	white-space: nowrap;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
 	border-bottom: $payment-method-border;
+	background-color: $white;
 	font-weight: $payment-method-font-weight;
 	cursor: pointer;
 	transition: all $global-animation-duration-fast linear;
+
+	&:active,
+	&:hover,
+	&:focus {
+		border-top: 0;
+		border-left: 0;
+		border-right: 0;
+	}
 }
 .wfc-wrapper #payment .payment_methods > .wc_payment_method:last-child {
 	margin-bottom: #{ - remsize( .1rem ) };
@@ -69,7 +83,10 @@
 	background-color: transparent;
 }
 
-.wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:checked + label {
+.wfc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[type="radio"]:first-child:checked + label {
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
 	background-color: $payment-method-checked-background-color;
 	color: $payment-method-checked-color;
 }
@@ -96,7 +113,7 @@
 	transition: all $global-animation-duration-fast linear;
 }
 
-.wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:checked + label:before {
+.wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:before {
 	border-color: $success-color;
 	background-color: $success-color;
 }
@@ -109,7 +126,7 @@
 	border-color: darken( $payment-method-border-color, 15% );
 }
 
-.wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:checked + label:after {
+.wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:after {
 	@include icon-styles();
 	@include icon( 'i-check-small' );
 	@include icon-size( $payment-method-radio-size );
@@ -134,7 +151,7 @@
 	float: none;
 	display: inline-block;
 	height: $payment-method-radio-size;
-	vertical-align: top;
+	vertical-align: middle;
 }
 
 

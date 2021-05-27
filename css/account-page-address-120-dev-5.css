@@ -57,6 +57,10 @@ div.woocommerce .form-row select,
 div.woocommerce .form-row .select2-container {
   margin-bottom: 0; }
 
+div.woocommerce .form-row.form-row-first,
+div.woocommerce .form-row.form-row-wide {
+  clear: left; }
+
 div.woocommerce .form-row span.description {
   font-size: 13px; }
 
