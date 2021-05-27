@@ -1127,6 +1127,7 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
       display: block;
       padding: 10px 0 0; } }
 
+.woocommerce-terms-and-conditions-wrapper,
 .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
   margin-bottom: 0; }
 
@@ -1182,6 +1183,9 @@ div.woocommerce .form-row .select2-container {
 div.woocommerce .form-row.form-row-first,
 div.woocommerce .form-row.form-row-wide {
   clear: left; }
+
+div.woocommerce .form-row.place-order {
+  float: none; }
 
 div.woocommerce .form-row span.description {
   font-size: 13px; }
