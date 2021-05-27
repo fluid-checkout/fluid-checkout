@@ -23,6 +23,52 @@
   #IMPORT STYLES
 \*------------------------------------*/
 /*------------------------------------*\
+  #WOOCOMMERCE ACCOUNT ADDRESSES
+\*------------------------------------*/
+.woocommerce-MyAccount-content .woocommerce-address-fields__field-wrapper {
+  margin-bottom: 50px; }
+
+.woocommerce-MyAccount-content .woocommerce-address-fields__field-wrapper::before,
+.woocommerce-MyAccount-content .woocommerce-address-fields__field-wrapper::after {
+  content: '';
+  display: table;
+  table-layout: fixed;
+  width: 100%; }
+
+/*------------------------------------*\
+  #WOOCOMMERCE FORM-ROW
+\*------------------------------------*/
+div.woocommerce .form-row:before,
+div.woocommerce .form-row:after {
+  content: '';
+  display: table;
+  table-layout: fixed;
+  width: 100%; }
+
+div.woocommerce .form-row:last-child {
+  margin-bottom: 0; }
+
+div.woocommerce .form-row {
+  margin-bottom: 20px; }
+
+div.woocommerce .form-row input,
+div.woocommerce .form-row textarea,
+div.woocommerce .form-row select,
+div.woocommerce .form-row .select2-container {
+  margin-bottom: 0; }
+
+div.woocommerce .form-row span.description {
+  font-size: 13px; }
+
+/*------------------------------------*\
+  #WOOCOMMERCE ADDRESS FIELDS
+\*------------------------------------*/
+div.woocommerce #billing_address_2_field > label,
+div.woocommerce #shipping_address_2_field > label {
+  opacity: unset;
+  width: auto; }
+
+/*------------------------------------*\
 	#EXPANSIBLE SECTIONS
 \*------------------------------------*/
 div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {

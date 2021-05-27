@@ -19,10 +19,10 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Checkout fields args
-		add_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_args' ), 10 );
-		add_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 10 );
-		add_filter( 'woocommerce_checkout_fields', array( $this, 'change_order_field_args' ), 10 );
-		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 10 );
+		add_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_args' ), 100 );
+		add_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 100 );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'change_order_field_args' ), 100 );
+		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 100 );
 	}
 
 
@@ -67,19 +67,25 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function change_default_locale_field_args( $fields ) {
+		$new_field_args = apply_filters( 'wfc_default_locale_field_args', array(
+			'address_1'           => array( 'class' => array( 'form-row-wide' ), 'description' => __( 'House number and street name.', 'woocommerce-fluid-checkout' ) ),
+			'address_2'           => array( 'class' => array( 'form-row-wide' ), 'label' => __( 'Appartment, suite, unit, building, floor, etc.', 'woocommerce-fluid-checkout' ) ),
+			'city'                => array( 'class' => array( 'form-row-first' ) ),
+			'state'               => array( 'class' => array( 'form-row-last' ) ),
+			'postcode'            => array( 'class' => array( 'form-row-first' ) ),
+		) );
 
-		if ( array_key_exists( 'address_1', $fields ) ) {
-			$fields['address_1']['description'] = __( 'House number and street name.', 'woocommerce-fluid-checkout' );
+		foreach( $fields as $field_key => $original_args ) {
+			$new_args = array_key_exists( $field_key, $new_field_args ) ? $new_field_args[ $field_key ] : array();
+
+			// Merge class args and remove it from $new_args to avoid conflicts when merging all field args below
+			if ( array_key_exists( 'class', $new_args ) && array_key_exists( 'class', $original_args ) ) {
+				$original_args[ 'class' ] = $this->merge_form_field_class_args( $original_args[ 'class' ], $new_args[ 'class' ] );
+				unset( $new_args[ 'class' ] );
+			}
+
+			$fields[ $field_key ] = array_merge( $original_args, $new_args );
 		}
-		
-		if ( array_key_exists( 'address_2', $fields ) ) {
-			$fields['address_2']['label'] = __( 'Appartment, suite, unit, building, floor, etc.', 'woocommerce-fluid-checkout' );
-			unset( $fields['address_2']['label_class'] );
-		}
-		
-		if ( array_key_exists( 'city', $fields ) ) { $fields['city']['class'] = array( 'form-row-first' ); }
-		if ( array_key_exists( 'state', $fields ) ) { $fields['state']['class'] = array( 'form-row-last' ); }
-		if ( array_key_exists( 'postcode', $fields ) ) { $fields['postcode']['class'] = array( 'form-row-first' ); }
 
 		return $fields;
 	}

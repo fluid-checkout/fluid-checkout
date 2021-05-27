@@ -1161,8 +1161,20 @@ div.woocommerce .form-row {
 
 div.woocommerce .form-row input,
 div.woocommerce .form-row textarea,
-div.woocommerce .form-row select {
+div.woocommerce .form-row select,
+div.woocommerce .form-row .select2-container {
   margin-bottom: 0; }
+
+div.woocommerce .form-row span.description {
+  font-size: 13px; }
+
+/*------------------------------------*\
+  #WOOCOMMERCE ADDRESS FIELDS
+\*------------------------------------*/
+div.woocommerce #billing_address_2_field > label,
+div.woocommerce #shipping_address_2_field > label {
+  opacity: unset;
+  width: auto; }
 
 /*------------------------------------*\
 	#ORDER SUMMARY
