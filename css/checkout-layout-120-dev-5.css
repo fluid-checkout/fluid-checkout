@@ -973,10 +973,7 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
   background-color: #F0F4F4;
   color: inherit; }
 
-.wfc-wrapper #payment .payment_methods > li.wc_payment_method > input[type=radio]:first-child:checked + label:before {
-  content: ''; }
-
-.wfc-wrapper #payment .payment_methods > .wc_payment_method > label:before {
+.wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"] + label:before {
   box-sizing: border-box;
   content: '';
   position: absolute;
@@ -992,7 +989,8 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
   box-shadow: none;
   transition: all 0.15s linear; }
 
-.wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:before {
+.wfc-wrapper #payment .payment_methods > .wc_payment_method input[type="radio"]:first-child:checked + label:before {
+  content: '';
   border-color: #00A854;
   background-color: #00A854; }
 
@@ -1003,7 +1001,10 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
 .wfc-wrapper #payment .payment_methods > .wc_payment_method > label:focus:before {
   border-color: #afb3b3; }
 
-.wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:after {
+.woocommerce-checkout .wfc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:before {
+  content: ''; }
+
+.wfc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:after {
   display: inline-block;
   font-family: "fluid-checkout-icons" !important;
   font-style: normal !important;
