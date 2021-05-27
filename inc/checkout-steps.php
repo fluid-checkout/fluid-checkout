@@ -2329,6 +2329,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_order_review_html_attributes( $is_sidebar_widget = false ) {
 		$attributes = array(
 			'id' => 'wfc-checkout-order-review',
+			'class' => 'wfc-checkout-order-review',
 		);
 
 		// Sidebar widget
@@ -2352,7 +2353,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  array                    Array of key/value html attributes.
 	 */
 	public function get_order_review_html_attributes_inner( $is_sidebar_widget = false ) {
-		$attributes = array();
+		$attributes = array(
+			'class' => 'wfc-checkout-order-review__inner',
+		);
 
 		// Sidebar widget
 		if ( $is_sidebar_widget ) {

@@ -25,9 +25,9 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 <?php do_action( 'wfc_checkout_before_order_review', $is_sidebar_widget ); ?>
 
-<div class="wfc-checkout-order-review" <?php echo $attributes_str; ?>>
+<div <?php echo $attributes_str; ?>>
 	
-	<div class="wfc-checkout-order-review__inner" <?php echo $attributes_inner_str; ?>>
+	<div <?php echo $attributes_inner_str; ?>>
 
 		<?php do_action( 'wfc_checkout_before_order_review_inside', $is_sidebar_widget ); ?>
 
