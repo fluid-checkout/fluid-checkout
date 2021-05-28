@@ -2,7 +2,7 @@
   #CHECKOUT PLACE ORDER
 \*------------------------------------*/
 
-.wfc-inside div.place-order {
+.wfc-wrapper .wfc-inside div.place-order {
 	padding: $place-order-padding;
 
 	@media (#{$bp-larger-than-desktop}) {
