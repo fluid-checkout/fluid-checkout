@@ -2,13 +2,54 @@
 	#CHECKOUT VALIDATION
 \*------------------------------------*/
 
-.form-row .woocommerce-error.woocommerce-error:not( .invalid-country-not-allowed ) { /* Double selector to augment specificity */
+div.woocommerce .form-row .woocommerce-error:not( .invalid-country-not-allowed ) { /* Double selector to augment specificity */
 	display: none;
 }
 
 /* Double selectors to augment specificity */
-.woocommerce-invalid-required-field .woocommerce-error.woocommerce-error.invalid-required-field,
-.woocommerce-invalid-email .woocommerce-error.woocommerce-error.invalid-email,
-.woocommerce-invalid-confirmation-field .woocommerce-error.woocommerce-error.invalid-confirmation-field {
+div.woocommerce .woocommerce-invalid-required-field .woocommerce-error.invalid-required-field,
+div.woocommerce .woocommerce-invalid-email .woocommerce-error.invalid-email,
+div.woocommerce .woocommerce-invalid-confirmation-field .woocommerce-error.invalid-confirmation-field {
 	display: block;
+}
+
+
+
+
+
+/*------------------------------------*\
+	#CHECKOUT VALIDATION STYLES
+\*------------------------------------*/
+div.woocommerce .form-row .woocommerce-error,
+div.woocommerce .form-row .wfc-mailcheck-suggestion {
+	position: relative;
+	margin: 0;
+	padding: $checkout-message-error-padding;
+	border: 0;
+	background-color: $checkout-message-error-background-color;
+	font-size: $font-size-extra-small;
+}
+
+div.woocommerce .form-row .wfc-mailcheck-suggestion {
+	padding: $checkout-message-suggestion-padding;
+}
+
+div.woocommerce .form-row .woocommerce-error {
+	color: $checkout-message-error-color;
+}
+div.woocommerce .form-row .woocommerce-error:before {
+	@include icon( $checkout-message-error-icon );
+	@include icon-size( $checkout-message-error-icon-size );
+	
+	position: absolute;
+	left: $checkout-message-error-icon-position-left;
+	top: 50%;
+	transform: translateY( -50% );
+	color: inherit;
+}
+
+
+
+div.woocommerce form .form-row.woocommerce-validated input.input-text {
+	border-color: $checkout-message-success-color;
 }

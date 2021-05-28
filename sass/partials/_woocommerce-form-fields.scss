@@ -42,8 +42,20 @@ div.woocommerce .form-row.place-order {
 
 
 div.woocommerce .form-row span.description {
-	font-size: $font-size-extra-small;
+	position: static;
+	display: block;
+	margin: 0;
+	padding: $checkout-field-description-padding;
+	border: 0;
+	background-color: $checkout-field-description-background-color;
+	color: $checkout-field-description-color;
+	font-size: $checkout-field-description-font-size;
+	
+	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-field-description-font-size--large-screen; }
 }
+
+
+
 
 
 /*------------------------------------*\

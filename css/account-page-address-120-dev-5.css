@@ -65,7 +65,17 @@ div.woocommerce .form-row.place-order {
   float: none; }
 
 div.woocommerce .form-row span.description {
+  position: static;
+  display: block;
+  margin: 0;
+  padding: 5px 10px;
+  border: 0;
+  background-color: transparent;
+  color: #888181;
   font-size: 13px; }
+  @media (min-width: 1000px) {
+    div.woocommerce .form-row span.description {
+      font-size: 13px; } }
 
 /*------------------------------------*\
   #WOOCOMMERCE ADDRESS FIELDS
