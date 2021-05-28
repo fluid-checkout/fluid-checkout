@@ -44,9 +44,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_order_details_styles' ), 10 );
 
 		// Checkout Header
-		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_header' ), 1 ); // Uses `woocommerce_before_checkout_form_cart_notices` as it runs before the hook `woocommerce_before_checkout_form`
+		add_action( 'wfc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
 		add_action( 'wfc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
+		add_filter( 'wfc_content_section_class', array( $this, 'wfc_content_section_class' ), 10 );
 		
 		// Notices
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
@@ -135,7 +136,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$add_classes = array( 'has-checkout-layout--' . $this->get_checkout_layout() );
 		
 		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
-		if ( $this->get_hide_site_header_at_checkout() ) {
+		if ( $this->get_hide_site_header_footer_at_checkout() ) {
 			$add_classes[] = 'has-checkout-header';
 		}
 		
@@ -182,33 +183,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get option for hiding the site's original header at the checkout page.
+	 * Get option for hiding the site's original header and footer at the checkout page.
 	 *
-	 * @return  boolean  True if should hide the site's original header at the checkout page, false otherwise.
+	 * @return  boolean  True if should hide the site's original header and footer at the checkout page, false otherwise.
 	 */
-	public function get_hide_site_header_at_checkout() {
+	public function get_hide_site_header_footer_at_checkout() {
 		// Bail if WooCommerce class not available
 		if ( ! function_exists( 'WC' ) ) { return false; }
 
 		// Get checkout object.
 		$checkout = WC()->checkout();
 
-		return ( ! ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) && 'yes' === get_option( 'wfc_hide_site_header_at_checkout', 'yes' );
-	}
-
-	/**
-	 * Get option for hiding the site's original footer at the checkout page.
-	 *
-	 * @return  boolean  True if should hide the site's original footer at the checkout page, false otherwise.
-	 */
-	public function get_hide_site_footer_at_checkout() {
-		// Bail if WooCommerce class not available
-		if ( ! function_exists( 'WC' ) ) { return false; }
-
-		// Get checkout object.
-		$checkout = WC()->checkout();
-
-		return ( ! ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) && 'yes' === get_option( 'wfc_hide_site_footer_at_checkout', 'yes' );
+		return ( ! ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) && 'yes' === get_option( 'wfc_hide_site_header_footer_at_checkout', 'yes' );
 	}
 
 
@@ -269,7 +255,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_header() {
 		// Only display our checkout header if the site header is hidden
-		if ( ! $this->get_hide_site_header_at_checkout() ) { return; }
+		if ( ! $this->get_hide_site_header_footer_at_checkout() ) { return; }
 		
 		wc_get_template(
 			'wfc/checkout/checkout-header.php',
@@ -337,6 +323,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$referrer_url = ( ( function_exists( 'is_checkout' ) && is_checkout() ) || $_GET[ '_redirect' ] == 'checkout' ) ? wc_get_checkout_url() : $raw_referrer_url;
 
 		echo '<input type="hidden" name="redirect" value="' . wp_validate_redirect( $referrer_url, wc_get_page_permalink( 'myaccount' ) ) . '" />';
+	}
+
+
+	
+	/**
+	 * Add container class to the main content element.
+	 * 
+	 * @param string $class Main content element classes.
+	 */
+	public function wfc_content_section_class( $class ) {
+		// Bail if using the plugin's header and footer
+		if ( $this->get_hide_site_header_footer_at_checkout() ) { return $class; }
+
+		return $class . ' wfc-container';
 	}
 
 

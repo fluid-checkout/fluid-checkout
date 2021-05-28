@@ -125,26 +125,13 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 
 					array(
-						'title'         => __( 'Checkout Header', 'woocommerce-fluid-checkout' ),
-						'desc_tip'      => __( 'Controls whether to use the Fluid Checkout page header or to keep the header of the currently active theme.', 'woocommerce-fluid-checkout' ),
-						'id'            => 'wfc_hide_site_header_at_checkout',
+						'title'         => __( 'Header and Footer', 'woocommerce-fluid-checkout' ),
+						'desc_tip'      => __( 'Controls whether to use the Fluid Checkout page header and footer of keep the currently active theme\'s.', 'woocommerce-fluid-checkout' ),
+						'id'            => 'wfc_hide_site_header_footer_at_checkout',
 						'type'          => 'radio',
 						'options'       => array(
-							'yes'       => __( 'Use Fluid Checkout page header', 'woocommerce-fluid-checkout' ),
-							'no'        => __( 'Use theme\'s page header at the checkout page', 'woocommerce-fluid-checkout' ),
-						),
-						'default'       => 'yes',
-						'autoload'      => false,
-					),
-
-					array(
-						'title'         => __( 'Checkout Footer', 'woocommerce-fluid-checkout' ),
-						'desc_tip'      => __( 'Controls whether to use the Fluid Checkout page footer or to keep the footer of the current active theme.', 'woocommerce-fluid-checkout' ),
-						'id'            => 'wfc_hide_site_footer_at_checkout',
-						'type'          => 'radio',
-						'options'       => array(
-							'yes'       => __( 'Use Fluid Checkout page footer', 'woocommerce-fluid-checkout' ),
-							'no'        => __( 'Use theme\'s page footer at the checkout page', 'woocommerce-fluid-checkout' ),
+							'yes'       => __( 'Use Fluid Checkout header and footer', 'woocommerce-fluid-checkout' ),
+							'no'        => __( 'Use theme\'s page header and footer for the checkout page', 'woocommerce-fluid-checkout' ),
 						),
 						'default'       => 'yes',
 						'autoload'      => false,

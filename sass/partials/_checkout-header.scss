@@ -1,7 +1,6 @@
 /*------------------------------------*\
   #CHECKOUT HEADER
 \*------------------------------------*/
-
 .wfc-checkout-header {
 	z-index: z( 'sticky-element' );
 	position: fixed;
@@ -11,27 +10,21 @@
 	width: 100%;
 	min-height: $checkout-header-height;
 	background-color: $checkout-header-background-color;
-	
 	box-shadow: $checkout-header-box-shadow;
 	
 	@media (#{$bp-larger-than-desktop}) {
-		position: absolute;
-		top: 0;
+		position: static;
 		min-height: $checkout-header-height--large-screen;
+		border-bottom: solid remsize( .1rem ) $border-color;
+		box-shadow: none;
 	}
-
-	// padding for large screens
-	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop; }
-	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium; }
-	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large; }
-	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large; }
 }
 // With admin bar
 .admin-bar .wfc-checkout-header {
 	top: 46px; // Uses pixels to match WordPress admin bar
 
 	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
-		top: 0; // Relative to .wfc-content instead of the body element
+		top: 32px; // Uses pixels to match WordPress admin bar
 	}
 }
 
@@ -39,6 +32,7 @@
 	position: relative;
 	display: flex;
 	align-items: center;
+	margin: 0 auto;
 	width: 100%;
 
 	// min-height should be same as the main header element
@@ -48,12 +42,18 @@
 	// max-width
 	max-width: $container-width-mobile;
 	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
-	@media (#{$bp-larger-than-desktop}) { max-width: none; }
+	@media (#{$bp-larger-than-desktop}) { max-width: $container-width-desktop; }
+	@media (#{$bp-larger-than-desktop-medium}) { max-width: $container-width-desktop-medium; }
+	@media (#{$bp-larger-than-desktop-large}) { max-width: $container-width-desktop-large; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { max-width: $container-width-desktop-extra-large; }
 
 	// padding
 	padding: 0 $container-spacing-mobile;
 	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet; }
-	@media (#{$bp-larger-than-desktop}) { padding: 0; }
+	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop; }
+	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium; }
+	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large; }
 }
 
 

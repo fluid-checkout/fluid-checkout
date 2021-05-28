@@ -7,7 +7,7 @@
 
 	@media (#{$bp-larger-than-desktop}) {
 		margin: $order-summary-container-margin--large-screen;
-		padding: $global-spacing-extra-small $order-summary-container-padding--large-screen $order-summary-container-padding--large-screen;
+		padding: $global-spacing-small $order-summary-container-padding--large-screen $order-summary-container-padding--large-screen;
 	}
 }
 

@@ -8,7 +8,7 @@ body.woocommerce-checkout {
 
 
 // Remove margins inherited from some themes
-body.woocommerce-checkout .content-area,
+body.woocommerce-checkout .wfc-content,
 form.woocommerce-checkout {
 	display: block !important; // Needed to override theme styles breaking the layout
 	margin: 0;
@@ -24,28 +24,9 @@ form.woocommerce-checkout {
 
 
 
-body.woocommerce-checkout .content-area {
-	float: none !important; // Needed to override theme styles breaking the layout
+body.woocommerce-checkout .wfc-main {
 	margin: 0 auto;
-}
 
-body.woocommerce-checkout.has-checkout-header .content-area {
-	min-height: 100vh;
-}
-
-
-
-// Same styles as fluid theme `.container` class
-body.woocommerce-checkout .wfc-content {
-	box-sizing: border-box;
-	position: relative;
-	margin: 0 auto;
-	padding: 0 0 $global-spacing-medium;
-	width: 100%;
-	border: 0;
-}
-
-body.woocommerce-checkout.has-checkout-header .wfc-content {
 	// max-width
 	max-width: $container-width-mobile;
 	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
@@ -63,18 +44,40 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large $global-spacing-medium; }
 }
 
+
+
+body.woocommerce-checkout .wfc-content {
+	box-sizing: border-box;
+	float: none !important; // Needed to override theme styles breaking the layout
+	margin: 0 auto;
+	padding-bottom: $global-spacing-medium;
+	width: 100%;
+	border: 0;
+}
+body.woocommerce-checkout .wfc-content.wfc-container {
+	// max-width
+	@media (#{$bp-larger-than-desktop}) { max-width: $container-width-desktop; }
+	@media (#{$bp-larger-than-desktop-medium}) { max-width: $container-width-desktop-medium; }
+	@media (#{$bp-larger-than-desktop-large}) { max-width: $container-width-desktop-large; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { max-width: $container-width-desktop-extra-large; }
+}
+
 body.woocommerce-checkout.has-checkout-header .wfc-content {
+	padding-top: #{ $checkout-header-height + $global-spacing-extra-small };;
+	min-height: 100vh;
+
 	@media (#{$bp-larger-than-desktop}) {
-		padding-top: #{ $checkout-header-height--large-screen + $global-spacing-extra-small };
+		padding-top: $global-spacing-extra-small;
 	}
 }
 
-body.woocommerce-checkout.has-checkout-header .wfc-content > div.woocommerce {
+
+
+body.woocommerce-checkout .wfc-content > div.woocommerce {
 	position: static;
 
 	@media (#{$bp-larger-than-desktop-medium}) {
 		margin: 0 auto;
-		width: 80%;
 	}
 }
 
@@ -85,7 +88,6 @@ body.woocommerce-checkout.has-checkout-header .wfc-content > div.woocommerce {
 /*------------------------------------*\
   #CHECKOUT COLUMNS LAYOUT
 \*------------------------------------*/
-// body:not( .has-checkout-must-login-notice ) .wfc-checkout-header,
 body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-message,
 body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-info,
 body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-error,
@@ -108,7 +110,7 @@ body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-
 
 
 body:not( .has-checkout-must-login-notice ) .wfc-inside {
-	padding-top: $global-spacing-extra-small;
+	padding-top: $global-spacing-small;
 }
 
 
