@@ -20,10 +20,11 @@
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-step-padding--large-screen; }
 }
 .wfc-wrapper .wfc-checkout-step:first-child {
-	border-radius: $global-radius-medium $global-radius-medium 0 0;
+	@media (#{$bp-smaller-than-desktop}) { border-top: 0; }
+	@media (#{$bp-larger-than-desktop}) { border-radius: $global-radius-medium $global-radius-medium 0 0; }
 }
 .wfc-wrapper .wfc-checkout-step:last-child {
-	border-radius: 0 0 $global-radius-medium $global-radius-medium;
+	@media (#{$bp-larger-than-desktop}) { border-radius: 0 0 $global-radius-medium $global-radius-medium; }
 }
 
 
