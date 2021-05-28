@@ -157,11 +157,12 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   @media (min-width: 1000px) {
     .wfc-sidebar__inner {
       position: relative;
-      width: 100%; } }
+      width: 100%;
+      padding-top: 20px; } }
 
 @media (min-width: 1000px) {
   .admin-bar .wfc-wrapper .wfc-sidebar.is-sticky .wfc-sidebar__inner {
-    padding-top: 32px; } }
+    padding-top: calc( 20px + 32px); } }
 
 /*------------------------------------*\
   #CHECKOUT WIDGETS
