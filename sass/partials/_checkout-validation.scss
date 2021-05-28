@@ -1,5 +1,5 @@
 /*------------------------------------*\
-	#CHECKOUT VALIDATION
+	#CHECKOUT VALIDATION MESSAGES
 \*------------------------------------*/
 
 div.woocommerce .form-row .woocommerce-error:not( .invalid-country-not-allowed ) { /* Double selector to augment specificity */
@@ -15,11 +15,6 @@ div.woocommerce .woocommerce-invalid-confirmation-field .woocommerce-error.inval
 
 
 
-
-
-/*------------------------------------*\
-	#CHECKOUT VALIDATION STYLES
-\*------------------------------------*/
 div.woocommerce .form-row .woocommerce-error,
 div.woocommerce .form-row .wfc-mailcheck-suggestion {
 	position: relative;
@@ -50,6 +45,86 @@ div.woocommerce .form-row .woocommerce-error:before {
 
 
 
-div.woocommerce form .form-row.woocommerce-validated input.input-text {
-	border-color: $checkout-message-success-color;
+
+
+/*------------------------------------*\
+	#CHECKOUT FIELD VALIDATION
+\*------------------------------------*/
+
+// INVALID FIELDS
+div.woocommerce form .form-row[class*='woocommerce-invalid'] {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="search"],
+	input[type="text"],
+	input[type="date"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"],
+	.select2-selection {
+		border-color: $error-color;
+	}
+}
+
+
+
+// VALID FIELDS
+div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="search"],
+	input[type="text"],
+	input[type="date"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"],
+	.select2-selection {
+		border-color: $success-color;
+	}
+	
+	// Container for "valid" check icon
+	.woocommerce-input-wrapper {
+		position: relative;
+		display: block;
+		width: 100%;
+	}
+
+	// "valid" field check icon
+	.select2-selection:after,
+	.woocommerce-input-wrapper:after {
+		@include icon( 'i-check-small' );
+		@include icon-size( $icon-size );
+
+		position: absolute;
+		right: remsize( .5rem );
+		top: remsize( .8rem );
+		color: $success-color;
+	}
+	
+	// Select2 Fields
+	.select2-selection:after {
+		right: remsize( 2rem );
+	}
+	// Should hide duplicate check icon on select2 fields
+	&#billing_state_field .woocommerce-input-wrapper:after,
+	&#billing_country_field .woocommerce-input-wrapper:after,
+	&#shipping_state_field .woocommerce-input-wrapper:after,
+	&#shipping_country_field .woocommerce-input-wrapper:after {
+		display: none;
+	}
+
+	// Exclusions for "valid" field check icon
+	.woocommerce-terms-and-conditions-wrapper &,
+	&.create-account {
+		&:after {
+			content: '';
+			display: none;
+		}
+	}
+	
 }

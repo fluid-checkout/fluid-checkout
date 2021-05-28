@@ -23,7 +23,7 @@
 	#IMPORT STYLES
 \*------------------------------------*/
 /*------------------------------------*\
-	#CHECKOUT VALIDATION
+	#CHECKOUT VALIDATION MESSAGES
 \*------------------------------------*/
 div.woocommerce .form-row .woocommerce-error:not(.invalid-country-not-allowed) {
   /* Double selector to augment specificity */
@@ -35,9 +35,6 @@ div.woocommerce .woocommerce-invalid-email .woocommerce-error.invalid-email,
 div.woocommerce .woocommerce-invalid-confirmation-field .woocommerce-error.invalid-confirmation-field {
   display: block; }
 
-/*------------------------------------*\
-	#CHECKOUT VALIDATION STYLES
-\*------------------------------------*/
 div.woocommerce .form-row .woocommerce-error,
 div.woocommerce .form-row .wfc-mailcheck-suggestion {
   position: relative;
@@ -75,5 +72,71 @@ div.woocommerce .form-row .woocommerce-error:before {
   transform: translateY(-50%);
   color: inherit; }
 
-div.woocommerce form .form-row.woocommerce-validated input.input-text {
+/*------------------------------------*\
+	#CHECKOUT FIELD VALIDATION
+\*------------------------------------*/
+div.woocommerce form .form-row[class*='woocommerce-invalid'] textarea,
+div.woocommerce form .form-row[class*='woocommerce-invalid'] select,
+div.woocommerce form .form-row[class*='woocommerce-invalid'] input[type="email"],
+div.woocommerce form .form-row[class*='woocommerce-invalid'] input[type="number"],
+div.woocommerce form .form-row[class*='woocommerce-invalid'] input[type="search"],
+div.woocommerce form .form-row[class*='woocommerce-invalid'] input[type="text"],
+div.woocommerce form .form-row[class*='woocommerce-invalid'] input[type="date"],
+div.woocommerce form .form-row[class*='woocommerce-invalid'] input[type="tel"],
+div.woocommerce form .form-row[class*='woocommerce-invalid'] input[type="url"],
+div.woocommerce form .form-row[class*='woocommerce-invalid'] input[type="password"],
+div.woocommerce form .form-row[class*='woocommerce-invalid'] .select2-selection {
+  border-color: #CC1818; }
+
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) textarea,
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) select,
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) input[type="email"],
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) input[type="number"],
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) input[type="search"],
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) input[type="text"],
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) input[type="date"],
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) input[type="tel"],
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) input[type="url"],
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) input[type="password"],
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .select2-selection {
   border-color: #00A854; }
+
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .woocommerce-input-wrapper {
+  position: relative;
+  display: block;
+  width: 100%; }
+
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .select2-selection:after,
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .woocommerce-input-wrapper:after {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "";
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  position: absolute;
+  right: 5px;
+  top: 8px;
+  color: #00A854; }
+
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .select2-selection:after {
+  right: 20px; }
+
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid'])#billing_state_field .woocommerce-input-wrapper:after,
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid'])#billing_country_field .woocommerce-input-wrapper:after,
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid'])#shipping_state_field .woocommerce-input-wrapper:after,
+div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid'])#shipping_country_field .woocommerce-input-wrapper:after {
+  display: none; }
+
+.woocommerce-terms-and-conditions-wrapper div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']):after, div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']).create-account:after {
+  content: '';
+  display: none; }
