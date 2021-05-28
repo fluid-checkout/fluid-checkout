@@ -62,8 +62,14 @@ body.woocommerce-checkout.has-checkout-header .wfc-content {
 	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large $global-spacing-medium; }
 }
 
+body.woocommerce-checkout.has-checkout-header .wfc-content {
+	@media (#{$bp-larger-than-desktop}) {
+		padding-top: #{ $checkout-header-height--large-screen + $global-spacing-extra-small };
+	}
+}
+
 body.woocommerce-checkout.has-checkout-header .wfc-content > div.woocommerce {
-	position: relative;
+	position: static;
 
 	@media (#{$bp-larger-than-desktop-medium}) {
 		margin: 0 auto;
@@ -78,7 +84,7 @@ body.woocommerce-checkout.has-checkout-header .wfc-content > div.woocommerce {
 /*------------------------------------*\
   #CHECKOUT COLUMNS LAYOUT
 \*------------------------------------*/
-body:not( .has-checkout-must-login-notice ) .wfc-checkout-header,
+// body:not( .has-checkout-must-login-notice ) .wfc-checkout-header,
 body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-message,
 body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-info,
 body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-error,
@@ -100,16 +106,26 @@ body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-
 
 
 
+body:not( .has-checkout-must-login-notice ) .wfc-inside {
+	padding-top: $global-spacing-extra-small;
+}
+
+
+
+.wfc-wrapper {
+	position: relative;
+}
+
+
+
 .wfc-sidebar {
 	position: static;
 
 	@media (#{$bp-larger-than-desktop}) {
 		z-index: z( 'default' ) + 1;
 		position: absolute;
-		top: $global-spacing-medium;
 		right: 0;
 		width: $checkout-overview-width--large-screen;
-		height: 100% !important; // Needed to override styles for the sticky state
 	}
 }
 
@@ -118,22 +134,22 @@ body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-
 
 	@media (#{$bp-larger-than-desktop}) {
 		position: relative;
-		padding-top: $global-spacing-tiny;
 		width: 100%;
 	}
 }
 // With admin bar
 .admin-bar .wfc-wrapper .wfc-sidebar.is-sticky .wfc-sidebar__inner {
 	@media (#{$bp-larger-than-desktop}) {
-		padding-top: calc( #{ $global-spacing-tiny } + 32px );
+		padding-top: 32px; // Use pixels to match styles of the WordPress Admin bar
 	}
 }
 
 
 
 
+
 /*------------------------------------*\
-  #CHECKOUT COLUMNS LAYOUT
+  #CHECKOUT WIDGETS
 \*------------------------------------*/
 .wfc-checkout-header .widget,
 .wfc-wrapper .widget {
