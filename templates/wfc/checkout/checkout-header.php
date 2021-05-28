@@ -21,8 +21,6 @@ defined( 'ABSPATH' ) || exit;
 	<div class="wfc-checkout-header__inner">
 
 		<div class="wfc-checkout__branding">
-			<h1 class="wfc-checkout__title screen-reader-text"><?php echo _x( 'Checkout', 'Checkout page title', 'woocommerce-fluid-checkout' ) ?></h1>
-			
 			<?php
 			if ( function_exists( 'the_custom_logo' ) && get_theme_mod( 'custom_logo' ) ) {
 				the_custom_logo();
