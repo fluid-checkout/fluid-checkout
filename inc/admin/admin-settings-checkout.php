@@ -24,7 +24,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'wfc_checkout';
-		$this->label = __( 'Checkout', 'woocommerce-fluid-checkout' );
+		$this->label = __( 'Fluid Checkout', 'woocommerce-fluid-checkout' );
 
 		parent::__construct();
 
@@ -121,6 +121,32 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'id'            => 'wfc_enable_checkout_sticky_progress_bar',
 						'default'       => 'yes',
 						'type'          => 'checkbox',
+						'autoload'      => false,
+					),
+
+					array(
+						'title'         => __( 'Checkout Header', 'woocommerce-fluid-checkout' ),
+						'desc_tip'      => __( 'Controls whether to use the Fluid Checkout page header or to keep the header of the currently active theme.', 'woocommerce-fluid-checkout' ),
+						'id'            => 'wfc_hide_site_header_at_checkout',
+						'type'          => 'radio',
+						'options'       => array(
+							'yes'       => __( 'Use Fluid Checkout page header', 'woocommerce-fluid-checkout' ),
+							'no'        => __( 'Use theme\'s page header at the checkout page', 'woocommerce-fluid-checkout' ),
+						),
+						'default'       => 'yes',
+						'autoload'      => false,
+					),
+
+					array(
+						'title'         => __( 'Checkout Footer', 'woocommerce-fluid-checkout' ),
+						'desc_tip'      => __( 'Controls whether to use the Fluid Checkout page footer or to keep the footer of the current active theme.', 'woocommerce-fluid-checkout' ),
+						'id'            => 'wfc_hide_site_footer_at_checkout',
+						'type'          => 'radio',
+						'options'       => array(
+							'yes'       => __( 'Use Fluid Checkout page footer', 'woocommerce-fluid-checkout' ),
+							'no'        => __( 'Use theme\'s page footer at the checkout page', 'woocommerce-fluid-checkout' ),
+						),
+						'default'       => 'yes',
 						'autoload'      => false,
 					),
 
