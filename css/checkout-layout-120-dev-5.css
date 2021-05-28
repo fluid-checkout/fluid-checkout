@@ -50,12 +50,13 @@ body.woocommerce-checkout .content-area {
 body.woocommerce-checkout.has-checkout-header .content-area {
   min-height: 100vh; }
 
-.wfc-content {
+body.woocommerce-checkout .wfc-content {
+  box-sizing: border-box;
   position: relative;
-  width: 100%;
   margin: 0 auto;
-  padding-bottom: 50px;
-  box-sizing: border-box; }
+  padding: 0 0 50px;
+  width: 100%;
+  border: 0; }
 
 body.woocommerce-checkout.has-checkout-header .wfc-content {
   max-width: 100%;

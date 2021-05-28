@@ -36,12 +36,13 @@ body.woocommerce-checkout.has-checkout-header .content-area {
 
 
 // Same styles as fluid theme `.container` class
-.wfc-content {
-	position: relative;
-	width: 100%;
-	margin: 0 auto;
-	padding-bottom: $global-spacing-medium;
+body.woocommerce-checkout .wfc-content {
 	box-sizing: border-box;
+	position: relative;
+	margin: 0 auto;
+	padding: 0 0 $global-spacing-medium;
+	width: 100%;
+	border: 0;
 }
 
 body.woocommerce-checkout.has-checkout-header .wfc-content {
