@@ -23,6 +23,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'change_order_field_args' ), 100 );
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 100 );
+
+		// Remove `screen-reader-text` from some fields
+		add_filter( 'woocommerce_default_address_fields', array( $this, 'remove_screen_reader_class_default_locale_field_args' ), 100 );
 	}
 
 
@@ -85,6 +88,30 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			}
 
 			$fields[ $field_key ] = array_merge( $original_args, $new_args );
+		}
+
+		return $fields;
+	}
+
+
+
+	/**
+	 * Remove the class `screen-reader-text` from the label of some fields.
+	 * 
+	 * @param   array  $fields  Default address fields args.
+	 */
+	public function remove_screen_reader_class_default_locale_field_args( $fields ) {
+		$target_field_ids = array( 'address_2' );
+		
+		foreach( $fields as $field_key => $field_args ) {
+			// Bail if field is not in the target list
+			if ( ! in_array( $field_key, $target_field_ids ) ) { continue; }
+
+			// Remove `screen-reader-text` class from the field label
+			if ( in_array( 'screen-reader-text', $fields[ $field_key ]['label_class'] ) ) {
+				$class_key = array_search( 'screen-reader-text', $fields[ $field_key ]['label_class'] );
+				unset( $fields[ $field_key ]['label_class'][ $class_key ] );
+			}
 		}
 
 		return $fields;

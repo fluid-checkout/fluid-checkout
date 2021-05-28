@@ -64,7 +64,7 @@ div.woocommerce .form-row.form-row-wide {
 div.woocommerce .form-row.place-order {
   float: none; }
 
-div.woocommerce .form-row span.description {
+div.woocommerce form.woocommerce-checkout .form-row .woocommerce-input-wrapper span.description {
   position: static;
   display: block;
   margin: 0;
@@ -72,9 +72,10 @@ div.woocommerce .form-row span.description {
   border: 0;
   background-color: transparent;
   color: #888181;
-  font-size: 13px; }
+  font-size: 13px;
+  line-height: 1.2; }
   @media (min-width: 1000px) {
-    div.woocommerce .form-row span.description {
+    div.woocommerce form.woocommerce-checkout .form-row .woocommerce-input-wrapper span.description {
       font-size: 13px; } }
 
 /*------------------------------------*\
