@@ -26,6 +26,12 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 		// Remove `screen-reader-text` from some fields
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'remove_screen_reader_class_default_locale_field_args' ), 100 );
+
+		// Add class for fields with description
+		add_filter( 'woocommerce_default_address_fields', array( $this, 'add_field_has_description_class_default_locale_field_args' ), 100 );
+		add_filter( 'woocommerce_billing_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
+		add_filter( 'woocommerce_shipping_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
 	}
 
 
@@ -111,6 +117,58 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			if ( in_array( 'screen-reader-text', $fields[ $field_key ]['label_class'] ) ) {
 				$class_key = array_search( 'screen-reader-text', $fields[ $field_key ]['label_class'] );
 				unset( $fields[ $field_key ]['label_class'][ $class_key ] );
+			}
+		}
+
+		return $fields;
+	}
+
+
+
+	/**
+	 * Add a class to fields with description for default locale fields.
+	 * 
+	 * @param   array  $fields  Default address fields args.
+	 */
+	public function add_field_has_description_class_default_locale_field_args( $fields ) {
+		foreach( $fields as $field_key => $field_args ) {
+			// Bail if field does not have description
+			if ( ! array_key_exists( 'description', $fields[ $field_key ] ) ) { continue; }
+
+			// Maybe initialize `class` array
+			if ( ! array_key_exists( 'class', $fields[ $field_key ] ) || ! is_array( $fields[ $field_key ]['class'] ) ) {
+				$fields[ $field_key ]['class'] = array();
+			}
+
+			// Maybe add class for field with description
+			if ( ! in_array( 'has-description', $fields[ $field_key ]['class'] ) ) {
+				array_push( $fields[ $field_key ]['class'], 'has-description' );
+			}
+		}
+
+		return $fields;
+	}
+
+
+
+	/**
+	 * Add a class to fields with description for WooCommerce fields.
+	 * 
+	 * @param   array  $fields  Default address fields args.
+	 */
+	public function add_field_has_description_class_checkout_fields_args( $fields ) {
+		foreach( $fields as $field_key => $field_args ) {
+			// Bail if field does not have description
+			if ( ! array_key_exists( 'description', $fields[ $field_key ] ) ) { continue; }
+
+			// Maybe initialize `class` array
+			if ( ! array_key_exists( 'class', $fields[ $field_key ] ) || ! is_array( $fields[ $field_key ]['class'] ) ) {
+				$fields[ $field_key ]['class'] = array();
+			}
+
+			// Maybe add class for field with description
+			if ( ! in_array( 'has-description', $fields[ $field_key ]['class'] ) ) {
+				array_push( $fields[ $field_key ]['class'], 'has-description' );
 			}
 		}
 

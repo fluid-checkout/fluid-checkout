@@ -38,33 +38,36 @@
 /*------------------------------------*\
   #WOOCOMMERCE FORM-ROW
 \*------------------------------------*/
-div.woocommerce .form-row:before,
-div.woocommerce .form-row:after {
+div.woocommerce form .form-row:before,
+div.woocommerce form .form-row:after {
   content: '';
   display: table;
   table-layout: fixed;
   width: 100%; }
 
-div.woocommerce .form-row:last-child {
+div.woocommerce form .form-row:last-child {
   margin-bottom: 0; }
 
-div.woocommerce .form-row {
+div.woocommerce form .form-row {
   margin-bottom: 20px; }
 
-div.woocommerce .form-row input,
-div.woocommerce .form-row textarea,
-div.woocommerce .form-row select,
-div.woocommerce .form-row .select2-container {
+div.woocommerce form .form-row.has-description {
+  margin-bottom: 8px; }
+
+div.woocommerce form .form-row input,
+div.woocommerce form .form-row textarea,
+div.woocommerce form .form-row select,
+div.woocommerce form .form-row .select2-container {
   margin-bottom: 0; }
 
-div.woocommerce .form-row.form-row-first,
-div.woocommerce .form-row.form-row-wide {
+div.woocommerce form .form-row.form-row-first,
+div.woocommerce form .form-row.form-row-wide {
   clear: left; }
 
-div.woocommerce .form-row.place-order {
+div.woocommerce form .form-row.place-order {
   float: none; }
 
-div.woocommerce form.woocommerce-checkout .form-row .woocommerce-input-wrapper span.description {
+div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
   position: static;
   display: block;
   margin: 0;
@@ -75,26 +78,20 @@ div.woocommerce form.woocommerce-checkout .form-row .woocommerce-input-wrapper s
   font-size: 13px;
   line-height: 1.2; }
   @media (min-width: 1000px) {
-    div.woocommerce form.woocommerce-checkout .form-row .woocommerce-input-wrapper span.description {
+    div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
       font-size: 13px; } }
 
-div.woocommerce form.woocommerce-checkout .form-row .woocommerce-input-wrapper span.description:before {
+div.woocommerce form .form-row .woocommerce-input-wrapper span.description:before {
   display: none; }
 
 /*------------------------------------*\
   #WOOCOMMERCE FORM FIELD LABELS
 \*------------------------------------*/
-div.woocommerce form.woocommerce-checkout .form-row label {
+div.woocommerce form .form-row label {
   margin-bottom: 5px;
-  line-height: 1.2; }
-
-/*------------------------------------*\
-  #WOOCOMMERCE ADDRESS FIELDS
-\*------------------------------------*/
-div.woocommerce #billing_address_2_field > label,
-div.woocommerce #shipping_address_2_field > label {
+  width: auto;
   opacity: unset;
-  width: auto; }
+  line-height: 1.2; }
 
 /*------------------------------------*\
 	#EXPANSIBLE SECTIONS
