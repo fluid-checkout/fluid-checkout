@@ -54,6 +54,9 @@ div.woocommerce form.woocommerce-checkout .form-row .woocommerce-input-wrapper s
 	
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-field-description-font-size--large-screen; }
 }
+div.woocommerce form.woocommerce-checkout .form-row .woocommerce-input-wrapper span.description:before {
+	display: none;
+}
 
 
 

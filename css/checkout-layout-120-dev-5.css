@@ -1265,6 +1265,9 @@ div.woocommerce form.woocommerce-checkout .form-row .woocommerce-input-wrapper s
     div.woocommerce form.woocommerce-checkout .form-row .woocommerce-input-wrapper span.description {
       font-size: 13px; } }
 
+div.woocommerce form.woocommerce-checkout .form-row .woocommerce-input-wrapper span.description:before {
+  display: none; }
+
 /*------------------------------------*\
   #WOOCOMMERCE FORM FIELD LABELS
 \*------------------------------------*/
@@ -1555,7 +1558,7 @@ div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
   padding: 0; }
 
 .wfc-expansible-form-section.form-row.form-row-last .wfc-expansible-form-section__toggle .collapsible-content__inner {
-  padding-top: 2.3em; }
+  padding-top: 1.8em; }
 
 body:not(.has-collapsible-block) .wfc-expansible-form-section__toggle.is-collapsed .collapsible-content__inner,
 body:not(.has-collapsible-block) .wfc-expansible-form-section__content.is-collapsed .collapsible-content__inner {
