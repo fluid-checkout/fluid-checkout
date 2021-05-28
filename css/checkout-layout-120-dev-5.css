@@ -1249,12 +1249,12 @@ div.woocommerce #shipping_address_2_field > label {
 	#ORDER SUMMARY
 \*------------------------------------*/
 .wfc-wrapper .wfc-checkout-order-review {
-  margin: 50px 0 0;
-  padding: 10px 0 20px 0 20px; }
+  margin: 20px 0 0;
+  padding: 0 20px; }
   @media (min-width: 1000px) {
     .wfc-wrapper .wfc-checkout-order-review {
       margin: 0;
-      padding: 20px 0 0; } }
+      padding: 0; } }
 
 .woocommerce-page.woocommerce-checkout form.woocommerce-checkout .wfc-wrapper #order_review {
   float: none;
@@ -1269,8 +1269,10 @@ div.woocommerce #shipping_address_2_field > label {
   text-align: left; }
 
 form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-review-order-table {
-  width: 100%;
-  margin: 0;
+  margin: 0 -20px;
+  padding: 0;
+  width: calc( 100% + 40px);
+  max-width: calc( 100% + 40px);
   border: 0;
   border-collapse: collapse;
   border-spacing: 0;
@@ -1279,7 +1281,6 @@ form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-
     form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-review-order-table {
       margin: 0 -20px;
       width: calc( 100% + 40px);
-      max-width: calc( 100% + 40px);
       font-size: 15px; } }
 
 .woocommerce-checkout form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody::after {

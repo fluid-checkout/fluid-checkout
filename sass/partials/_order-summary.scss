@@ -3,11 +3,11 @@
 \*------------------------------------*/
 .wfc-wrapper .wfc-checkout-order-review {
 	margin: $order-summary-container-margin;
-	padding: $global-spacing-extra-small $order-summary-container-padding $order-summary-container-padding;
+	padding: $order-summary-container-padding;
 
 	@media (#{$bp-larger-than-desktop}) {
 		margin: $order-summary-container-margin--large-screen;
-		padding: $global-spacing-small $order-summary-container-padding--large-screen $order-summary-container-padding--large-screen;
+		padding: $order-summary-container-padding--large-screen;
 	}
 }
 
@@ -38,17 +38,18 @@
 
 
 form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-review-order-table {
-	width: 100%;
-	margin: 0;
+	margin: $order-summary-table-margin;
+	padding: 0;
+	width: $order-summary-table-width;
+	max-width: $order-summary-table-width;
 	border: 0;
 	border-collapse: collapse;
 	border-spacing: 0;
 	font-size: $order-summary-font-size;
 	
 	@media (#{$bp-larger-than-desktop}) {
-		margin: 0 #{ - $global-spacing-small };
-		width: calc( 100% + #{ $global-spacing-small * 2 } );
-		max-width: calc( 100% + #{ $global-spacing-small * 2 } );
+		margin: $order-summary-table-margin--large-screen;
+		width: $order-summary-table-width--large-screen;
 		font-size: $order-summary-font-size--large-screen;
 	}
 }
