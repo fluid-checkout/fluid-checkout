@@ -104,6 +104,22 @@ body.woocommerce-checkout .wfc-content {
   body.woocommerce-checkout .wfc-content.wfc-container {
     max-width: 1400px; } }
 
+@media (min-width: 1000px) {
+  body.woocommerce-checkout .wfc-content.wfc-container {
+    padding: 0 50px 50px; } }
+
+@media (min-width: 1280px) {
+  body.woocommerce-checkout .wfc-content.wfc-container {
+    padding: 0 50px 50px; } }
+
+@media (min-width: 1500px) {
+  body.woocommerce-checkout .wfc-content.wfc-container {
+    padding: 0 50px 50px; } }
+
+@media (min-width: 2000px) {
+  body.woocommerce-checkout .wfc-content.wfc-container {
+    padding: 0 50px 50px; } }
+
 body.woocommerce-checkout.has-checkout-header .wfc-content {
   min-height: 100vh; }
   @media (min-width: 1000px) {
