@@ -38,8 +38,8 @@ body.woocommerce-checkout #main.wfc-main {
 	@media (#{$bp-larger-than-desktop-extra-large}) { max-width: $container-width-desktop-extra-large; }
 
 	// padding
-	padding: #{ $checkout-header-height + $global-spacing-small } $container-spacing-mobile $global-spacing-medium;
-	@media (#{$bp-larger-than-tablet}) { padding: #{ $checkout-header-height + $global-spacing-small } $container-spacing-tablet $global-spacing-medium; }
+	padding: $checkout-header-height $container-spacing-mobile $global-spacing-medium;
+	@media (#{$bp-larger-than-tablet}) { padding: $checkout-header-height $container-spacing-tablet $global-spacing-medium; }
 	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop $global-spacing-medium; }
 	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium $global-spacing-medium; }
 	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large $global-spacing-medium; }
@@ -65,7 +65,6 @@ body.woocommerce-checkout .wfc-content.wfc-container {
 }
 
 body.woocommerce-checkout.has-checkout-header .wfc-content {
-	padding-top: #{ $checkout-header-height + $global-spacing-extra-small };;
 	min-height: 100vh;
 
 	@media (#{$bp-larger-than-desktop}) {
@@ -112,7 +111,9 @@ body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-
 
 
 body:not( .has-checkout-must-login-notice ) .wfc-inside {
-	padding-top: $global-spacing-small;
+	@media (#{$bp-larger-than-desktop}) {
+		padding-top: $global-spacing-small;
+	}
 }
 
 
