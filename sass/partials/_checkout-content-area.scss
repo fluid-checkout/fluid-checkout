@@ -14,12 +14,15 @@ form.woocommerce-checkout {
 	margin: 0;
 }
 
-form.woocommerce-checkout {
+.wfc-content form.woocommerce-checkout {
 	clear: both;
+	float: none;
 }
-form.woocommerce-checkout:after {
+.wfc-content form.woocommerce-checkout:after {
 	@include clearfix();
 }
+
+
 
 body.woocommerce-checkout .content-area {
 	float: none !important; // Needed to override theme styles breaking the layout

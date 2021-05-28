@@ -33,10 +33,11 @@ form.woocommerce-checkout {
   display: block !important;
   margin: 0; }
 
-form.woocommerce-checkout {
-  clear: both; }
+.wfc-content form.woocommerce-checkout {
+  clear: both;
+  float: none; }
 
-form.woocommerce-checkout:after {
+.wfc-content form.woocommerce-checkout:after {
   content: '';
   display: table;
   table-layout: fixed;
