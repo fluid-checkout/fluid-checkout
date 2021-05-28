@@ -24,7 +24,9 @@ form.woocommerce-checkout {
 
 
 
-body.woocommerce-checkout .wfc-main {
+body.woocommerce-checkout #main.wfc-main {
+	position: static;
+	float: none;
 	margin: 0 auto;
 
 	// max-width

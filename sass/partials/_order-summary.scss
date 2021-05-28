@@ -63,6 +63,7 @@ form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-
 form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child td {
 	border: 0;
 	display: table-cell;
+	width: auto;
 }
 
 form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-review-order-table tr {
@@ -85,6 +86,7 @@ form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-
 
 form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
 	vertical-align: middle;
+	width: auto;
 }
 
 form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total,
@@ -117,6 +119,7 @@ form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-
 	flex-direction: column;
 	justify-content: center;
 	padding-left: #{ $order-summary-image-width + $order-summary-cell-padding-horizontal + $global-spacing-extra-small };
+	width: auto;
 	min-height: #{ $order-summary-image-width + ( $order-summary-cell-padding-vertical * 2 )  };
 	background-color: transparent;
 
