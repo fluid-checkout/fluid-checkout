@@ -1265,6 +1265,13 @@ div.woocommerce .form-row span.description {
       font-size: 13px; } }
 
 /*------------------------------------*\
+  #WOOCOMMERCE FORM FIELD LABELS
+\*------------------------------------*/
+div.woocommerce form.woocommerce-checkout .form-row label {
+  margin-bottom: 5px;
+  line-height: 1.2; }
+
+/*------------------------------------*\
   #WOOCOMMERCE ADDRESS FIELDS
 \*------------------------------------*/
 div.woocommerce #billing_address_2_field > label,

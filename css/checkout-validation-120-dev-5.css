@@ -126,6 +126,8 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-in
   position: absolute;
   right: 5px;
   top: 8px;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
   color: #00A854; }
 
 div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .select2-selection:after {

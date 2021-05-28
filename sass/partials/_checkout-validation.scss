@@ -103,6 +103,8 @@ div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-i
 		position: absolute;
 		right: remsize( .5rem );
 		top: remsize( .8rem );
+		border-radius: 100%;
+		background-color: transparentize( $white, .25 );
 		color: $success-color;
 	}
 	

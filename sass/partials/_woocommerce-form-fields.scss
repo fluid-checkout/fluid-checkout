@@ -59,6 +59,17 @@ div.woocommerce .form-row span.description {
 
 
 /*------------------------------------*\
+  #WOOCOMMERCE FORM FIELD LABELS
+\*------------------------------------*/
+div.woocommerce form.woocommerce-checkout .form-row label {
+	margin-bottom: $global-spacing-tiny;
+	line-height: 1.2;
+}
+
+
+
+
+/*------------------------------------*\
   #WOOCOMMERCE ADDRESS FIELDS
 \*------------------------------------*/
 div.woocommerce #billing_address_2_field > label,
