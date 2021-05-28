@@ -241,7 +241,7 @@ $option-box-radio-border:                   solid remsize( .2rem ) $border-color
 $option-box-checked-radio-color:            $success-color !default;
 $option-box-checked-icon-color:             $white !default;
 $option-box-checked-background-color:       $lighter-grey !default;
-$option-box-checked-color:                  inherit !default;
+$option-box-checked-color:                  $darker-grey !default;
 
 // END - OPTION BOX
 // ----------------------------------------

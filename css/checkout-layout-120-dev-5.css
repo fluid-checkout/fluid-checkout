@@ -826,7 +826,7 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
 
 .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label {
   background-color: #F0F4F4;
-  color: inherit; }
+  color: #1E212B; }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:before {
   box-sizing: border-box;
@@ -971,7 +971,7 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
   border-left: 0;
   border-right: 0;
   background-color: #F0F4F4;
-  color: inherit; }
+  color: #1E212B; }
 
 .wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"] + label:before {
   box-sizing: border-box;
