@@ -44,10 +44,11 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		if ( in_array( $args['type'], apply_filters( 'wfc_hide_optional_fields_skip_types', array( 'checkbox' ) ) ) ) { return $field; }
 
 		// Always skip these fields
-		$skip_list = array();
+		$skip_list = array( 'state', 'billing_state', 'shipping_state' );
 
 		// Maybe skip "address line 2" fields
 		if ( get_option( 'wfc_hide_optional_fields_skip_address_2', 'no' ) === 'yes' ) {
+			$skip_list[] = 'address_2';
 			$skip_list[] = 'shipping_address_2';
 			$skip_list[] = 'billing_address_2';
 		}
