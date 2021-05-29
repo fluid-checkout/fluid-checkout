@@ -407,7 +407,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * 
 	 * @param   string  $step_id  ID of the step.
 	 *
-	 * @return  mixed             An array with only one value for the step args. The index is preserved from the original checkout steps list. If not found, returns `false`.
+	 * @return  mixed             An array with only one value for the step args. The index is preserved from the registered checkout steps list. If not found, returns `false`.
 	 */
 	public function get_checkout_step( $step_id ) {
 		// Look for a step with the same id
@@ -425,7 +425,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get the list checkout steps considered complete, those which all required data has been provided.
 	 *
-	 * @return  array  List of checkout steps which all required data has been provided. The index is preserved from the original checkout steps list.
+	 * @return  array  List of checkout steps which all required data has been provided. The index is preserved from the registered checkout steps list.
 	 */
 	public function get_complete_steps() {
 		$_checkout_steps = $this->get_checkout_steps();
@@ -442,6 +442,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
+		// Remove steps after the current steps
+		$current_step = $this->get_current_step();
+		$current_step_index = array_keys( $current_step )[0];
+		foreach ( $complete_steps as $step_index => $step_args ) {
+			if ( $step_index >= $current_step_index ) {
+				unset( $complete_steps[ $step_index ] );
+			}
+		}
+
 		return $complete_steps;
 	}
 	
@@ -450,7 +459,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get the list checkout steps considered incomplete, those missing required data.
 	 *
-	 * @return  array  List of checkout steps with required data missing. The index is preserved from the original checkout steps list.
+	 * @return  array  List of checkout steps with required data missing. The index is preserved from the registered checkout steps list.
 	 */
 	public function get_incomplete_steps() {
 		$_checkout_steps = $this->get_checkout_steps();
@@ -475,11 +484,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get the current checkout step. The first checkout step which is considered incomplete.
 	 *
-	 * @return  array  An array with only one value, the first checkout step which is considered incomplete. The index is preserved from the original checkout steps list.
+	 * @return  array  An array with only one value, the first checkout step which is considered incomplete, for `false` if not step is found. The index is preserved from the registered checkout steps list.
 	 */
 	public function get_current_step() {
-		$incomplete_steps = $this->get_incomplete_steps();
-		return array_slice( $incomplete_steps, 0, 1, true );
+		$_checkout_steps = $this->get_checkout_steps();
+		
+		for ( $step_index = 0; $step_index < count( $_checkout_steps ); $step_index++ ) {
+			$step_args = $_checkout_steps[ $step_index ];
+			$step_id = $step_args[ 'step_id' ];
+			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
+			
+			// Return first incomplete step
+			if ( $is_complete_callback && is_callable( $is_complete_callback ) && ! call_user_func( $is_complete_callback ) ) {
+				return array( $step_index => $step_args );
+			}
+		}
+
+		return false;
 	}
 
 
@@ -494,7 +515,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function is_current_step( $step_id ) {
 		// Get checkout current step
 		$current_step = $this->get_current_step();
-		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the original checkout steps list
+		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the registered checkout steps list
 		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
 
 		return ( $step_id == $current_step_id );
@@ -727,7 +748,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		
 		// Get checkout current step
 		$current_step = $this->get_current_step();
-		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the original checkout steps list
+		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the registered checkout steps list
 		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
 		
 		// Get step count html
@@ -818,6 +839,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Maybe add class for next step completed
 		if ( $this->is_next_step_complete( $step_id ) ) {
 			$step_attributes['class'] .= ' wfc-checkout-step--next-step-complete';
+		}
+		else {
+			$step_attributes['class'] .= ' wfc-checkout-step--next-step-incomplete';
 		}
 		
 		$step_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $step_attributes ), $step_attributes ) );

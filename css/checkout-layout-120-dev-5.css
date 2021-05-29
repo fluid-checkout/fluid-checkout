@@ -605,7 +605,13 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-.has-checkout-layout--multi-step .wfc-checkout-step[data-step-current],
+@media (min-width: 1000px) {
+  .has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--next-step-incomplete {
+    margin-bottom: 20px;
+    border-bottom-right-radius: 13px;
+    border-bottom-left-radius: 13px; } }
+
+.has-checkout-layout--multi-step .wfc-checkout-step[data-step-current]:not([data-step-index="0"]),
 .has-checkout-layout--multi-step .wfc-checkout-step:not([data-step-complete]) {
   border-radius: 13px; }
 

@@ -77,21 +77,37 @@
 .has-checkout-layout--multi-step .wfc-checkout-step[data-step-complete] {
 	margin: 0 0 remsize( -.1rem ); // Prevent double borders
 }
+// PREV Complete
 .has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--prev-step-complete {
 	border-top-right-radius: 0;
 	border-top-left-radius: 0;
 }
+// NEXT Complete
 .has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--next-step-complete {
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 }
+// NEXT Incomplete
+.has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--next-step-incomplete {
+	@media (#{$bp-larger-than-desktop}) {
+		margin-bottom: $global-spacing-small;
+		border-bottom-right-radius: $global-radius-medium;
+		border-bottom-left-radius: $global-radius-medium;
+	}
+}
 
 
 
-.has-checkout-layout--multi-step .wfc-checkout-step[data-step-current],
+.has-checkout-layout--multi-step .wfc-checkout-step[data-step-current]:not( [data-step-index="0"] ),
 .has-checkout-layout--multi-step .wfc-checkout-step:not( [data-step-complete] ) {
 	border-radius: $global-radius-medium;
 }
+
+
+
+// .has-checkout-layout--multi-step .wfc-checkout-step[data-step-current] {
+
+// }
 
 
 
