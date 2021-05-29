@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php // CHANGE: Add markup for collapsible-block component ?>
 	<div id="woocommerce-billing-fields__field-wrapper" class="woocommerce-billing-fields__field-wrapper <?php echo $is_billing_same_as_shipping ? 'is-collapsed' : ''; ?>" data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo $is_billing_same_as_shipping ? 'collapsed' : 'expanded'; ?>">
-		<div class="collapsible-content__inner">
+		<div class="collapsible-content__inner wfc-field-group">
 		<?php // CHANGE: Display billing fields except those added at contact step ?>
 		<?php
 		$fields = $checkout->get_checkout_fields( 'billing' );

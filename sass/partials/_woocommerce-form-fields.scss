@@ -38,6 +38,27 @@ div.woocommerce form .form-row.form-row-wide {
 	clear: left;
 }
 
+div.woocommerce form .form-row.form-row-first,
+div.woocommerce form .form-row.form-row-last {
+	clear: left;
+	float: none;
+	width: 100%;
+
+	@media (#{$bp-larger-than-tablet}) {
+		clear: none;
+		float: left;
+		width: 48%;
+	}
+}
+
+div.woocommerce form .form-row.form-row-first {
+	@media (#{$bp-larger-than-tablet}) {
+		margin-right: 4%;
+	}
+}
+
+
+
 div.woocommerce form .form-row.place-order {
 	float: none;
 }
@@ -73,4 +94,30 @@ div.woocommerce form .form-row label {
 	width: auto;
 	opacity: unset;
 	line-height: 1.2;
+}
+
+
+
+
+
+/*------------------------------------*\
+  #WOOCOMMERCE FORM FIELD GROUP
+\*------------------------------------*/
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group {
+	margin: $checkout-field-group-margin;
+	padding: $checkout-field-group-padding;
+	background-color: $lighter-grey;
+
+	@media (#{$bp-larger-than-desktop}) {
+		margin: $checkout-field-group-margin--large-screen;
+		padding: $checkout-field-group-padding--large-screen;
+	}
+}
+
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group:before,
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group:after {
+	content: '';
+	display: table;
+	table-layout: fixed;
+	width: 100%;
 }

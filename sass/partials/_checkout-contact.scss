@@ -4,3 +4,10 @@
 .has-checkout-layout--multi-step [data-step-complete] [data-substep-id="contact_login"] {
 	display: none;
 }
+
+
+
+div.woocommerce form .form-row.create-account {
+	padding-top: $global-spacing-extra-small;
+	margin-bottom: 0;
+}

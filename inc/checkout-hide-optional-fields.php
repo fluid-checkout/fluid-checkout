@@ -76,7 +76,7 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		
 		ob_start();
 		
-		// Add extensible block markup for the field
+		// Add expansible block markup for the field
 		/* translators: %s: Form field label */
 		$toggle_label = apply_filters( 'wfc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'woocommerce-fluid-checkout' ), strtolower( $args['label'] ) ) );
 		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, $toggle_label, $expansible_section_args );

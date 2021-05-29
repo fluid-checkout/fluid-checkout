@@ -31,16 +31,18 @@ defined( 'ABSPATH' ) || exit;
 			</p>
 
 		<?php endif; ?>
-
+		
 		<?php do_action( 'woocommerce_before_checkout_registration_form', $checkout ); ?>
-
+		
 		<?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
-
-			<div class="create-account">
+			
+			<?php // CHANGE: Add class `wfc-field-group` ?>
+			<div class="create-account wfc-field-group">
 				<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
 					<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
 				<?php endforeach; ?>
-				<div class="clear"></div>
+
+				<?php // CHANGE: Removed the `clear` div element as clearing is applied via CSS ?>
 			</div>
 
 		<?php endif; ?>

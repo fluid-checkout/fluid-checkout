@@ -32,7 +32,8 @@ defined( 'ABSPATH' ) || exit;
 
 			<?php do_action( 'woocommerce_before_checkout_shipping_form', $checkout ); ?>
 			
-			<div class="woocommerce-shipping-fields__field-wrapper">
+			<?php // CHANGE: Add class `wfc-field-group` ?>
+			<div class="woocommerce-shipping-fields__field-wrapper wfc-field-group">
 				<?php
 				$fields = $checkout->get_checkout_fields( 'shipping' );
 

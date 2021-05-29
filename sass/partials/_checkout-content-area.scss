@@ -64,6 +64,8 @@ body.woocommerce-checkout .wfc-content.wfc-container {
 	@media (#{$bp-larger-than-desktop-extra-large}) { max-width: $container-width-desktop-extra-large; }
 
 	// padding
+	padding: 0 $container-spacing-mobile $global-spacing-medium;
+	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet $global-spacing-medium; }
 	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop $global-spacing-medium; }
 	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium $global-spacing-medium; }
 	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large $global-spacing-medium; }
