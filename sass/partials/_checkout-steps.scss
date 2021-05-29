@@ -20,7 +20,6 @@
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-step-padding--large-screen; }
 }
 .wfc-wrapper .wfc-checkout-step:first-child {
-	@media (#{$bp-smaller-than-desktop}) { border-top: 0; }
 	@media (#{$bp-larger-than-desktop}) { border-radius: $global-radius-medium $global-radius-medium 0 0; }
 }
 .wfc-wrapper .wfc-checkout-step:last-child {
@@ -77,6 +76,16 @@
 .has-checkout-layout--multi-step .wfc-checkout-step[data-step-complete] {
 	margin: 0 0 remsize( -.1rem ); // Prevent double borders
 }
+// FIRST step
+.has-checkout-layout--multi-step .wfc-checkout-step:first-child {
+	border-top-right-radius: $global-radius-medium;
+	border-top-left-radius: $global-radius-medium;
+}
+// LAST step
+.has-checkout-layout--multi-step .wfc-checkout-step:last-child {
+	border-bottom-right-radius: $global-radius-medium;
+	border-bottom-left-radius: $global-radius-medium;
+}
 // PREV Complete
 .has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--prev-step-complete {
 	border-top-right-radius: 0;
@@ -89,11 +98,9 @@
 }
 // NEXT Incomplete
 .has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--next-step-incomplete {
-	@media (#{$bp-larger-than-desktop}) {
-		margin-bottom: $global-spacing-small;
-		border-bottom-right-radius: $global-radius-medium;
-		border-bottom-left-radius: $global-radius-medium;
-	}
+	margin-bottom: $global-spacing-small;
+	border-bottom-right-radius: $global-radius-medium;
+	border-bottom-left-radius: $global-radius-medium;
 }
 
 
@@ -102,12 +109,6 @@
 .has-checkout-layout--multi-step .wfc-checkout-step:not( [data-step-complete] ) {
 	border-radius: $global-radius-medium;
 }
-
-
-
-// .has-checkout-layout--multi-step .wfc-checkout-step[data-step-current] {
-
-// }
 
 
 

@@ -320,7 +320,7 @@ $checkout-step-count-text-align:                 center !default;
 // ----------------------------------------
 // CHECKOUT STEPS
 
-$checkout-steps-container-margin:                0 #{ - $container-spacing-mobile } $global-spacing !default;
+$checkout-steps-container-margin:                $global-spacing-small #{ - $container-spacing-mobile } $global-spacing !default;
 $checkout-steps-container-margin--large-screen:  0 !default;
 
 $checkout-step-padding:                          0 !default;

@@ -525,7 +525,7 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 	#CHECKOUT STEPS
 \*------------------------------------*/
 .wfc-wrapper .wfc-checkout-steps {
-  margin: 0 -20px 30px; }
+  margin: 20px -20px 30px; }
   @media (min-width: 750px) {
     .wfc-wrapper .wfc-checkout-steps {
       margin: 0; } }
@@ -540,10 +540,6 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   @media (min-width: 750px) {
     .wfc-wrapper .wfc-checkout-step {
       padding: 0; } }
-
-@media (max-width: 999px) {
-  .wfc-wrapper .wfc-checkout-step:first-child {
-    border-top: 0; } }
 
 @media (min-width: 1000px) {
   .wfc-wrapper .wfc-checkout-step:first-child {
@@ -597,6 +593,14 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 .has-checkout-layout--multi-step .wfc-checkout-step[data-step-complete] {
   margin: 0 0 -1px; }
 
+.has-checkout-layout--multi-step .wfc-checkout-step:first-child {
+  border-top-right-radius: 13px;
+  border-top-left-radius: 13px; }
+
+.has-checkout-layout--multi-step .wfc-checkout-step:last-child {
+  border-bottom-right-radius: 13px;
+  border-bottom-left-radius: 13px; }
+
 .has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--prev-step-complete {
   border-top-right-radius: 0;
   border-top-left-radius: 0; }
@@ -605,11 +609,10 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0; }
 
-@media (min-width: 1000px) {
-  .has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--next-step-incomplete {
-    margin-bottom: 20px;
-    border-bottom-right-radius: 13px;
-    border-bottom-left-radius: 13px; } }
+.has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--next-step-incomplete {
+  margin-bottom: 20px;
+  border-bottom-right-radius: 13px;
+  border-bottom-left-radius: 13px; }
 
 .has-checkout-layout--multi-step .wfc-checkout-step[data-step-current]:not([data-step-index="0"]),
 .has-checkout-layout--multi-step .wfc-checkout-step:not([data-step-complete]) {
