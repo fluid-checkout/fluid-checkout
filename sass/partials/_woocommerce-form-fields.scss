@@ -3,10 +3,7 @@
 \*------------------------------------*/
 div.woocommerce form .form-row:before,
 div.woocommerce form .form-row:after {
-	content: '';
-	display: table;
-	table-layout: fixed;
-	width: 100%;
+	@include clearfix();
 }
 
 
@@ -20,7 +17,7 @@ div.woocommerce form .form-row:last-child {
 div.woocommerce form .form-row {
 	margin-bottom: $global-spacing-small;
 }
-div.woocommerce form .form-row.has-description {
+div.woocommerce form .form-row.has-description:not( :last-child ) {
 	margin-bottom: remsize( .8rem );
 }
 
@@ -116,8 +113,5 @@ div.woocommerce form .form-row label {
 
 .wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group:before,
 .wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group:after {
-	content: '';
-	display: table;
-	table-layout: fixed;
-	width: 100%;
+	@include clearfix();
 }

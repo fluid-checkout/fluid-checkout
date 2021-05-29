@@ -6,3 +6,9 @@
 body:not( .has-collapsible-block ) .woocommerce-billing-fields__field-wrapper.is-collapsed .collapsible-content__inner {
 	display: none;
 }
+
+
+
+div.woocommerce form #billing_same_as_shipping_field.form-row {
+	margin-bottom: 0;
+}

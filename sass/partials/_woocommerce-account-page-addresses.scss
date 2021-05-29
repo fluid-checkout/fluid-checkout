@@ -7,8 +7,5 @@
 
 .woocommerce-MyAccount-content .woocommerce-address-fields__field-wrapper::before,
 .woocommerce-MyAccount-content .woocommerce-address-fields__field-wrapper::after {
-	content: '';
-	display: table;
-	table-layout: fixed;
-	width: 100%;
+	@include clearfix();
 }

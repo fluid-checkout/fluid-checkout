@@ -521,8 +521,8 @@ $checkout-message-suggestion-padding:                 $global-spacing-tiny $glob
 
 $checkout-message-success-color:                      $success-color !default;
 
-$checkout-field-group-margin:                         $global-spacing-extra-small #{ - $global-spacing-small } #{ - $global-spacing-small } !default;
-$checkout-field-group-margin--large-screen:           $global-spacing-extra-small #{ - $global-spacing-small } #{ - $global-spacing-small } !default;
+$checkout-field-group-margin:                         0 #{ - $global-spacing-small } #{ - $global-spacing-small } !default;
+$checkout-field-group-margin--large-screen:           0 #{ - $global-spacing-small } #{ - $global-spacing-small } !default;
 $checkout-field-group-padding:                        $global-spacing-small !default;
 $checkout-field-group-padding--large-screen:          $global-spacing-small !default;
 

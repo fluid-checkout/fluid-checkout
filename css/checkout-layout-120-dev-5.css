@@ -186,6 +186,16 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   margin: 0; }
 
 /*------------------------------------*\
+  #CLEAR FIX
+\*------------------------------------*/
+.wfc-clearfix:before,
+.wfc-clearfix:after {
+  content: '';
+  display: table;
+  table-layout: fixed;
+  width: 100%; }
+
+/*------------------------------------*\
   #CHECKOUT HEADER
 \*------------------------------------*/
 .wfc-checkout-header {
@@ -836,15 +846,21 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 .has-checkout-layout--multi-step [data-step-complete] [data-substep-id="contact_login"] {
   display: none; }
 
-div.woocommerce form .form-row.create-account {
-  padding-top: 10px;
+.wfc-content div.woocommerce form .wfc-wrapper .form-row.create-account {
+  margin-top: 20px;
   margin-bottom: 0; }
+
+.wfc-content div.woocommerce form .wfc-wrapper .form-row.create-account + div.create-account {
+  margin-top: 10px; }
 
 /*------------------------------------*\
 	#CHECKOUT BILLING STEP
 \*------------------------------------*/
 body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-collapsed .collapsible-content__inner {
   display: none; }
+
+div.woocommerce form #billing_same_as_shipping_field.form-row {
+  margin-bottom: 0; }
 
 /*------------------------------------*\
   #CHECKOUT SHIPPING METHODS
@@ -1240,7 +1256,7 @@ div.woocommerce form .form-row:last-child {
 div.woocommerce form .form-row {
   margin-bottom: 20px; }
 
-div.woocommerce form .form-row.has-description {
+div.woocommerce form .form-row.has-description:not(:last-child) {
   margin-bottom: 8px; }
 
 div.woocommerce form .form-row input,
@@ -1302,12 +1318,12 @@ div.woocommerce form .form-row label {
   #WOOCOMMERCE FORM FIELD GROUP
 \*------------------------------------*/
 .wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group {
-  margin: 10px -20px -20px;
+  margin: 0 -20px -20px;
   padding: 20px;
   background-color: #F0F4F4; }
   @media (min-width: 1000px) {
     .wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group {
-      margin: 10px -20px -20px;
+      margin: 0 -20px -20px;
       padding: 20px; } }
 
 .wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group:before,

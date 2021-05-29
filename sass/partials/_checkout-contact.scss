@@ -7,7 +7,11 @@
 
 
 
-div.woocommerce form .form-row.create-account {
-	padding-top: $global-spacing-extra-small;
+.wfc-content div.woocommerce form .wfc-wrapper .form-row.create-account {
+	margin-top: $global-spacing-small;
 	margin-bottom: 0;
+}
+
+.wfc-content div.woocommerce form .wfc-wrapper .form-row.create-account + div.create-account {
+	margin-top: $global-spacing-extra-small;
 }
