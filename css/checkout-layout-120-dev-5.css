@@ -856,11 +856,23 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 /*------------------------------------*\
 	#CHECKOUT BILLING STEP
 \*------------------------------------*/
+.wfc-step__substep[data-substep-id="billing_address"] {
+  background-color: #F0F4F4; }
+
+div.woocommerce form .woocommerce-billing-fields__field-wrapper .collapsible-content__inner {
+  padding-top: 20px; }
+
 body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-collapsed .collapsible-content__inner {
   display: none; }
 
 div.woocommerce form #billing_same_as_shipping_field.form-row {
   margin-bottom: 0; }
+
+/*------------------------------------*\
+	#CHECKOUT SHIPPING STEP
+\*------------------------------------*/
+.wfc-step__substep[data-substep-id="shipping_address"] {
+  background-color: #F0F4F4; }
 
 /*------------------------------------*\
   #CHECKOUT SHIPPING METHODS

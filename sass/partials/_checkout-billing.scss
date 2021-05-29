@@ -1,6 +1,15 @@
 /*------------------------------------*\
 	#CHECKOUT BILLING STEP
 \*------------------------------------*/
+.wfc-step__substep[data-substep-id="billing_address"] {
+	background-color: $lighter-grey;
+}
+
+
+
+div.woocommerce form .woocommerce-billing-fields__field-wrapper .collapsible-content__inner {
+	padding-top: $global-spacing-small;
+}
 
 // Temporarily hide expansible form sections while the collapsible-block script is not yet loaded
 body:not( .has-collapsible-block ) .woocommerce-billing-fields__field-wrapper.is-collapsed .collapsible-content__inner {

@@ -24,16 +24,15 @@ defined( 'ABSPATH' ) || exit;
 
 <div class="woocommerce-shipping-fields">
 	<?php if ( true === WC()->cart->needs_shipping_address() ) : ?>
-		
+
 		<?php // CHANGE: Output "ship to different address" option via hook ?>
 		<?php do_action( 'wfc_before_checkout_shipping_address_wrapper', $checkout ); ?>
 
 		<div class="shipping_address">
 
 			<?php do_action( 'woocommerce_before_checkout_shipping_form', $checkout ); ?>
-			
-			<?php // CHANGE: Add class `wfc-field-group` ?>
-			<div class="woocommerce-shipping-fields__field-wrapper wfc-field-group">
+
+			<div class="woocommerce-shipping-fields__field-wrapper">
 				<?php
 				$fields = $checkout->get_checkout_fields( 'shipping' );
 
