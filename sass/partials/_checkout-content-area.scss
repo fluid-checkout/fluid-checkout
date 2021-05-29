@@ -170,3 +170,15 @@ body:not( .has-checkout-must-login-notice ) .wfc-inside {
 .wfc-wrapper .widget {
 	margin: 0;
 }
+
+
+
+
+
+/*------------------------------------*\
+  #CLEAR FIX
+\*------------------------------------*/
+.wfc-clearfix:before,
+.wfc-clearfix:after {
+	@include clearfix();
+}
