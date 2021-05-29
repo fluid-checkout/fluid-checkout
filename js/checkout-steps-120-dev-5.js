@@ -63,7 +63,10 @@
 		scrollOffsetSelector: '.wfc-checkout-header',
 		scrollBehavior: 'smooth',
 		scrollOffset: 0,
-
+	}
+	var _key = {
+		ENTER: 'Enter',
+		SPACE: ' ',
 	}
 
 
@@ -478,11 +481,28 @@
 
 
 	/**
+	 * Handle keypress event.
+	 */
+	 var handleKeyDown = function( e ) {
+		// Should do nothing if the default action has been cancelled
+		if ( e.defaultPrevented ) { return; }
+
+		// ENTER or SPACE on handler element
+		if ( ( e.key == _key.ENTER || e.key == _key.SPACE ) && ( e.target.closest( _settings.substepEditButtonSelector ) || e.target.closest( _settings.substepSaveButtonSelector ) ) ) {
+			// Similate click
+			handleClick( e );
+		}
+	};
+
+
+
+	/**
 	 * Finish to initialize component and set related handlers.
 	 */
 	 var finishInit = function() {
 		// Add event listeners
 		window.addEventListener( 'click', handleClick );
+		document.addEventListener( 'keydown', handleKeyDown, true );
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
