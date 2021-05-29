@@ -56,13 +56,15 @@
 
 
 
+// Place order button
 .wfc-wrapper .wfc-place-order .wfc-place-order-button {
 	margin: $global-spacing auto $global-spacing;
-	min-width: remsize( 28rem );
+	width: 100%;
+	max-width: remsize( 60rem );
+	min-height: remsize( 5rem );
 }
 
+// Place order button on the sidebar
 .wfc-sidebar .wfc-place-order .wfc-place-order-button {
 	margin: $global-spacing-extra-small auto 0;
-	width: 100%;
 }
-

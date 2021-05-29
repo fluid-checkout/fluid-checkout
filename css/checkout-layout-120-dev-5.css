@@ -1254,11 +1254,12 @@ div.woocommerce form #billing_same_as_shipping_field.form-row {
 
 .wfc-wrapper .wfc-place-order .wfc-place-order-button {
   margin: 30px auto 30px;
-  min-width: 280px; }
+  width: 100%;
+  max-width: 600px;
+  min-height: 50px; }
 
 .wfc-sidebar .wfc-place-order .wfc-place-order-button {
-  margin: 10px auto 0;
-  width: 100%; }
+  margin: 10px auto 0; }
 
 /*------------------------------------*\
   #WOOCOMMERCE FORM-ROW
