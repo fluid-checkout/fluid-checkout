@@ -758,21 +758,20 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 /*------------------------------------*\
   #CHECKOUT LOGIN
 \*------------------------------------*/
+.wfc-wrapper .wfc-step__substep[data-substep-id="contact_login"] {
+  padding-bottom: 5px;
+  border-top: 0;
+  border-bottom: 0; }
+
 .wfc-contact-login {
-  margin: 10px auto;
   text-align: center; }
 
 .wfc-contact-login__cta-text {
-  margin-top: 20px;
-  margin-bottom: 20px; }
-
-.wfc-step__substep[data-substep-id="contact_login"] {
-  border-top: solid 1px #D6D8D8;
-  border-bottom: none; }
+  margin-bottom: 0; }
 
 .wfc-contact-login__separator {
   position: relative;
-  margin-top: 30px; }
+  margin-top: 20px; }
 
 .wfc-contact-login__separator:before {
   z-index: 1;
@@ -848,7 +847,6 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   display: none; }
 
 .wfc-content div.woocommerce form .wfc-wrapper .form-row.create-account {
-  margin-top: 20px;
   margin-bottom: 0; }
 
 .wfc-content div.woocommerce form .wfc-wrapper .form-row.create-account + div.create-account {
