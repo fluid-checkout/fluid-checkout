@@ -778,7 +778,7 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   z-index: 1;
   content: '';
   position: absolute;
-  top: 50%;
+  top: 56%;
   display: block;
   width: 100%;
   height: 1px;
@@ -789,7 +789,8 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   position: relative;
   display: inline-block;
   padding: 0 10px;
-  background-color: #fff; }
+  background-color: #fff;
+  text-transform: lowercase; }
 
 /*------------------------------------*\
   #CHECKOUT LOGIN FORM
@@ -859,10 +860,10 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 .wfc-step__substep[data-substep-id="billing_address"] {
   background-color: #F0F4F4; }
 
-div.woocommerce form .woocommerce-billing-fields__field-wrapper .collapsible-content__inner {
+div.woocommerce form .woocommerce-billing-fields__field-wrapper > .collapsible-content__inner {
   padding-top: 20px; }
 
-body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-collapsed .collapsible-content__inner {
+body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-collapsed > .collapsible-content__inner {
   display: none; }
 
 div.woocommerce form #billing_same_as_shipping_field.form-row {

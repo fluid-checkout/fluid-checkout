@@ -1224,9 +1224,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_contact_step_display_field_ids() {
 		return apply_filters( 'wfc_checkout_contact_step_field_ids', array(
 			'billing_email',
-			'billing_first_name',
-			'billing_last_name',
-			'billing_phone',
 		) );
 	}
 
@@ -2162,6 +2159,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		
 		// Maybe set post data for billing same as shipping
 		if ( $is_billing_same_as_shipping ) {
+			$_POST['billing_first_name'] = isset( $_POST['shipping_first_name'] ) ? wc_clean( wp_unslash( $_POST['shipping_first_name'] ) ) : null;
+			$_POST['billing_last_name'] = isset( $_POST['shipping_last_name'] ) ? wc_clean( wp_unslash( $_POST['shipping_last_name'] ) ) : null;
+			$_POST['billing_phone'] = isset( $_POST['shipping_phone'] ) ? wc_clean( wp_unslash( $_POST['shipping_phone'] ) ) : null;
+			
 			$_POST['address'] = isset( $_POST['s_address'] ) ? wc_clean( wp_unslash( $_POST['s_address'] ) ) : null;
 			$_POST['address_2'] = isset( $_POST['s_address_2'] ) ? wc_clean( wp_unslash( $_POST['s_address_2'] ) ) : null;
 			$_POST['city'] = isset( $_POST['s_city'] ) ? wc_clean( wp_unslash( $_POST['s_city'] ) ) : null;
@@ -2181,6 +2182,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function maybe_set_billing_address_same_as_shipping_on_process_checkout( $post_data ) {
 		// Maybe set posted data for billing address to same as shipping
 		if ( $this->is_billing_same_as_shipping() ) {
+			$post_data[ 'billing_first_name' ] = $post_data[ 'shipping_first_name' ];
+			$post_data[ 'billing_last_name' ] = $post_data[ 'shipping_last_name' ];
+			$post_data[ 'billing_phone' ] = $post_data[ 'shipping_phone' ];
+			
 			$post_data[ 'billing_address_1' ] = $post_data[ 'shipping_address_1' ];
 			$post_data[ 'billing_address_2' ] = $post_data[ 'shipping_address_2' ];
 			$post_data[ 'billing_city' ] = $post_data[ 'shipping_city' ];
