@@ -166,6 +166,10 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
       right: 0;
       width: 37.5%; } }
 
+@media (min-width: 1000px) {
+  .wfc-sidebar[data-sticky-states].is-end-position {
+    position: absolute; } }
+
 .wfc-sidebar__inner {
   z-index: 10; }
   @media (min-width: 1000px) {
@@ -421,6 +425,7 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
   #CHECKOUT PROGRESS BAR
 \*------------------------------------*/
 .wfc-progress-bar .wfc-progress-bar__inner {
+  z-index: 198;
   margin: 0 -20px;
   padding: 5px 20px; }
   @media (min-width: 750px) {
@@ -436,8 +441,8 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
     .wfc-progress-bar .wfc-progress-bar__inner {
       padding: 10px 50px; } }
 
-.wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
-  z-index: 198;
+.wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner,
+.wfc-progress-bar[data-sticky-states].is-end-position .wfc-progress-bar__inner {
   background-color: #fff; }
 
 .admin-bar .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {

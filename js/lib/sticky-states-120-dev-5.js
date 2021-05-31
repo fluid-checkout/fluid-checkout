@@ -20,7 +20,7 @@
 	var _publicMethods = {
 		managers: [],
 	};
-	var _settings = { };
+	var _settings = {};
 	var _defaults = {
 		elementSelector: '[data-sticky-states]',
 		innerElementSelector: '[data-sticky-states-inner]',
@@ -88,19 +88,27 @@
 
 
 	/**
-	 * Get element offset values from page limits
-	 * 
-	 * @see https://stackoverflow.com/a/442474/5732235
+	 * Get the offset position of the element recursively adding the offset position of parent offset elements until the `stopElement` (or the `body` element).
+	 *
+	 * @param   HTMLElement  element      Element to get the offset position for.
+	 * @param   HTMLElement  stopElement  Parent offset element where to stop adding the offset position to the total offset top position of the element.
+	 *
+	 * @return  int                       Offset position of the element until the `stopElement` or the `body` element.
 	 */
-	var getOffset = function( el ) {
-		var _x = 0;
-		var _y = 0;
-		while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
-			_x += el.offsetLeft - el.scrollLeft;
-			_y += el.offsetTop - el.scrollTop;
-			el = el.offsetParent;
+	var getOffsetTop = function( element, stopElement ) {
+		var offsetTop = 0;
+		
+		while( element ) {
+			// Reached the stopElement
+			if ( stopElement && stopElement == element ) {
+				break;
+			}
+
+			offsetTop += element.offsetTop;
+			element = element.offsetParent;
 		}
-		return { top: _y, left: _x };
+		
+		return offsetTop;
 	}
 
 
@@ -147,6 +155,7 @@
 			if ( manager.relativeElement && isVisible( manager.relativeElement ) && _publicMethods.isStickyPosition( manager.relativeElement ) ) {
  				relativeHeight = manager.relativeElement.getBoundingClientRect().height;
 				isSticky = currentScrollPosition >= ( manager.settings.threshold - relativeHeight );
+				isEndThreshold = currentScrollPosition >= ( manager.settings.endThreshold - relativeHeight );
 			}
 			
 			// Sticky
@@ -163,7 +172,9 @@
 			// Absolute ( at end position )
 			else if ( isEndThreshold && ! isStaticAtEnd ) {
 				var containerHeight = parseInt( window.getComputedStyle( manager.containerElement ).height.replace( 'px' ) );
-				manager.innerElement.style.top = containerHeight + 'px';
+				var elementHeight = parseInt( window.getComputedStyle( manager.stickyElement ).height.replace( 'px' ) );
+				var elementOffsetToContainer = getOffsetTop( manager.stickyElement ) - getOffsetTop( manager.containerElement );
+				manager.innerElement.style.top = ( containerHeight - elementHeight - elementOffsetToContainer ) + 'px';
 				manager.stickyElement.classList.remove( manager.settings.isStickyClass, manager.settings.isStickyTopClass, manager.settings.isStickyBottomClass );
 				manager.stickyElement.classList.add( manager.settings.isEndPositionClass );
 			}
@@ -198,7 +209,7 @@
 		var windowHeight = Math.max( document.documentElement.clientHeight, window.innerHeight || 0 );
 		var thresholdAttrValue = manager.stickyElement.getAttribute( manager.settings.thresholdAttribute );
 		var elementRect = manager.stickyElement.getBoundingClientRect();
-		var elementOffset = getOffset( manager.stickyElement ).top;
+		var elementOffset = getOffsetTop( manager.stickyElement );
 		
 		// Threshold
 		manager.settings.threshold = isNaN( parseInt( thresholdAttrValue ) ) ? elementOffset : parseInt( thresholdAttrValue );
@@ -234,13 +245,15 @@
 		// Maybe set endThreshold
 		if ( manager.containerElement ) {
 			var containerHeight = parseInt( window.getComputedStyle( manager.containerElement ).height.replace( 'px' ) );
+			var elementHeight = parseInt( window.getComputedStyle( manager.stickyElement ).height.replace( 'px' ) );
+			var elementOffsetToContainer = getOffsetTop( manager.stickyElement ) - getOffsetTop( manager.containerElement );
 			
 			// Set endThreshold to bottom of containerElement
-			manager.settings.endThreshold = manager.settings.threshold + containerHeight;
+			manager.settings.endThreshold = manager.settings.threshold + containerHeight - elementHeight - elementOffsetToContainer;
 
 			// Maybe calculate endThreshold for elements sticky to the bottom
 			if ( manager.settings.position == 'bottom' ) {
-				var endThreshold = getOffset( manager.stickyElement ).top - windowHeight + elementRect.height;
+				var endThreshold = getOffsetTop( manager.stickyElement ) - windowHeight + elementRect.height;
 				
 				// Maybe set endThreshold to stop sticky state at the element's normal position
 				if ( endThreshold > manager.settings.threshold ) {
@@ -259,7 +272,7 @@
 		var instance;
 		for ( var i = 0; i < _publicMethods.managers.length; i++ ) {
 			var manager = _publicMethods.managers[i];
-			if ( manager.element == element ) { instance = manager; break; }
+			if ( manager.stickyElement == element ) { instance = manager; break; }
 		}
 		return instance;
 	}

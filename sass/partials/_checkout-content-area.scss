@@ -142,6 +142,11 @@ body:not( .has-checkout-must-login-notice ) .wfc-inside {
 		width: $checkout-overview-width--large-screen;
 	}
 }
+.wfc-sidebar[data-sticky-states].is-end-position {
+	@media (#{$bp-larger-than-desktop}) {
+		position: absolute;
+	}
+}
 
 .wfc-sidebar__inner {
 	z-index: z( 'above' );

@@ -134,7 +134,7 @@
 		
 		while( element ) {
 			// Reached the stopElement
-			if ( stopElement && element != stopElement ) {
+			if ( stopElement && stopElement == element ) {
 				break;
 			}
 

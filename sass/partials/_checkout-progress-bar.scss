@@ -3,6 +3,8 @@
 \*------------------------------------*/
 
 .wfc-progress-bar .wfc-progress-bar__inner {
+	z-index: z( 'float-element' ) - 2; // Needed to show behing the order summary flyout
+
 	// margin
 	margin: 0 #{ - $container-spacing-mobile };
 	@media (#{$bp-larger-than-tablet}) { margin: 0 #{ - $container-spacing-tablet }; }
@@ -13,8 +15,8 @@
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-progress-bar-padding-vertical $container-spacing-tablet; }
 	@media (#{$bp-larger-than-desktop}) { padding: $checkout-progress-bar-padding-vertical--large-screen $container-spacing-desktop; }
 }
-.wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
-	z-index: z( 'float-element' ) - 2; // Needed to show behing the order summary flyout
+.wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner,
+.wfc-progress-bar[data-sticky-states].is-end-position .wfc-progress-bar__inner {
 	background-color: $white;
 }
 // With admin bar
