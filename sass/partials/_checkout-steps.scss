@@ -20,10 +20,10 @@
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-step-padding--large-screen; }
 }
 .wfc-wrapper .wfc-checkout-step:first-child {
-	@media (#{$bp-larger-than-desktop}) { border-radius: $global-radius-medium $global-radius-medium 0 0; }
+	@media (#{$bp-larger-than-tablet}) { border-radius: $global-radius-medium $global-radius-medium 0 0; }
 }
 .wfc-wrapper .wfc-checkout-step:last-child {
-	@media (#{$bp-larger-than-desktop}) { border-radius: 0 0 $global-radius-medium $global-radius-medium; }
+	@media (#{$bp-larger-than-tablet}) { border-radius: 0 0 $global-radius-medium $global-radius-medium; }
 }
 
 
@@ -78,36 +78,49 @@
 }
 // FIRST step
 .has-checkout-layout--multi-step .wfc-checkout-step:first-child {
-	border-top-right-radius: $global-radius-medium;
-	border-top-left-radius: $global-radius-medium;
+	@media (#{$bp-larger-than-tablet}) {
+		border-top-right-radius: $global-radius-medium;
+		border-top-left-radius: $global-radius-medium;
+	}
 }
 // LAST step
 .has-checkout-layout--multi-step .wfc-checkout-step:last-child {
-	border-bottom-right-radius: $global-radius-medium;
-	border-bottom-left-radius: $global-radius-medium;
+	@media (#{$bp-larger-than-tablet}) {
+		border-bottom-right-radius: $global-radius-medium;
+		border-bottom-left-radius: $global-radius-medium;
+	}
 }
 // PREV Complete
 .has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--prev-step-complete {
-	border-top-right-radius: 0;
-	border-top-left-radius: 0;
+	@media (#{$bp-larger-than-tablet}) {
+		border-top-right-radius: 0;
+		border-top-left-radius: 0;
+	}
 }
 // NEXT Complete
 .has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--next-step-complete {
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
+	@media (#{$bp-larger-than-tablet}) {
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+	}
 }
 // NEXT Incomplete
 .has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--next-step-incomplete {
 	margin-bottom: $global-spacing-small;
-	border-bottom-right-radius: $global-radius-medium;
-	border-bottom-left-radius: $global-radius-medium;
+
+	@media (#{$bp-larger-than-tablet}) {
+		border-bottom-right-radius: $global-radius-medium;
+		border-bottom-left-radius: $global-radius-medium;
+	}
 }
 
 
 
 .has-checkout-layout--multi-step .wfc-checkout-step[data-step-current]:not( [data-step-index="0"] ),
 .has-checkout-layout--multi-step .wfc-checkout-step:not( [data-step-complete] ) {
-	border-radius: $global-radius-medium;
+	@media (#{$bp-larger-than-tablet}) {
+		border-radius: $global-radius-medium;
+	}
 }
 
 
