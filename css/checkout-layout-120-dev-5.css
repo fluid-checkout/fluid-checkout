@@ -655,14 +655,20 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 
 .has-checkout-layout--multi-step .wfc-step__substep-text {
   display: none;
+  margin: 0;
   padding: 0 0 0 28px;
   color: #888181;
   font-weight: normal;
-  font-size: 15px;
+  font-size: 13px;
   line-height: 1.4; }
   @media (min-width: 1000px) {
     .has-checkout-layout--multi-step .wfc-step__substep-text {
-      font-size: 15px; } }
+      float: right;
+      padding-left: 0;
+      padding-right: 80px;
+      margin: -17px 0 0 0;
+      width: calc( 100% - 200px);
+      font-size: 13px; } }
 
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-text {
   display: block; }
@@ -676,8 +682,13 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title {
   position: relative;
+  display: block;
   padding: 0 0 0 28px;
   color: #888181; }
+  @media (min-width: 1000px) {
+    .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title {
+      margin-bottom: 0;
+      width: 200px; } }
   .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title:before {
     display: inline-block;
     font-family: "fluid-checkout-icons" !important;
@@ -751,7 +762,7 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 	#CHECKOUT SUB-STEP FIELD WRAPPERS
 \*------------------------------------*/
 .wfc-wrapper .wfc-step__substep-fields-inner {
-  padding: 10px 0 0;
+  padding-top: 20px;
   border: 0; }
 
 .wfc-wrapper .woocommerce-shipping-fields,
@@ -1363,7 +1374,9 @@ div.woocommerce form .form-row .woocommerce-input-wrapper span.description:befor
 /*------------------------------------*\
   #WOOCOMMERCE FORM FIELD LABELS
 \*------------------------------------*/
-div.woocommerce form .form-row label {
+div.woocommerce form .form-row label,
+div.woocommerce form #billing_address_2_field > label,
+div.woocommerce form #shipping_address_2_field > label {
   margin-bottom: 5px;
   width: auto;
   opacity: unset;

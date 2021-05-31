@@ -147,6 +147,7 @@
 
 
 
+
 .has-checkout-layout--multi-step [data-step-current] ~ .wfc-checkout-step {
 	display: none;
 }
@@ -158,15 +159,24 @@
 
 
 
+
 .has-checkout-layout--multi-step .wfc-step__substep-text {
 	display: none;
+	margin: $checkout-substep-text-margin;
 	padding: $checkout-substep-text-padding;
 	color: $checkout-substep-text-color;
 	font-weight: $checkout-substep-text-font-weight;
 	font-size: $checkout-substep-text-font-size;
 	line-height: 1.4;
 
-	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-text-font-size--large-screen; }
+	@media (#{$bp-larger-than-desktop}) {
+		float: right;
+		padding-left: 0;
+		padding-right: $global-spacing-large;
+		margin: $checkout-substep-text-margin--large-screen;
+		width: calc( 100% - #{ remsize( 20rem ) } );
+		font-size: $checkout-substep-text-font-size--large-screen;
+	}
 }
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-text {
 	display: block;
@@ -186,8 +196,14 @@
 
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title {
 	position: relative;
+	display: block;
 	padding: $checkout-substep-text-padding;
 	color: $checkout-substep-text-color;
+
+	@media (#{$bp-larger-than-desktop}) {
+		margin-bottom: 0;
+		width: remsize( 20rem );
+	}
 
 	&:before {
 		@include icon( 'i-check-small' );
@@ -267,7 +283,7 @@
 	#CHECKOUT SUB-STEP FIELD WRAPPERS
 \*------------------------------------*/
 .wfc-wrapper .wfc-step__substep-fields-inner {
-	padding: $global-spacing-extra-small 0 0;
+	padding-top: $global-spacing-small;
 	border: 0;
 }
 

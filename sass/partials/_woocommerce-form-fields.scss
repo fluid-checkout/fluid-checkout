@@ -86,7 +86,9 @@ div.woocommerce form .form-row .woocommerce-input-wrapper span.description:befor
 /*------------------------------------*\
   #WOOCOMMERCE FORM FIELD LABELS
 \*------------------------------------*/
-div.woocommerce form .form-row label {
+div.woocommerce form .form-row label,
+div.woocommerce form #billing_address_2_field > label,
+div.woocommerce form #shipping_address_2_field > label {
 	margin-bottom: $global-spacing-tiny;
 	width: auto;
 	opacity: unset;

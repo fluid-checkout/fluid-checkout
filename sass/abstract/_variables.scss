@@ -340,10 +340,12 @@ $checkout-substep-padding:                       $global-spacing-small $containe
 $checkout-substep-padding--large-screen:         $global-spacing-small $container-spacing-mobile !default;
 $checkout-substep-border-radius:                 $global-radius !default;
 
+$checkout-substep-text-margin:                   0 !default;
+$checkout-substep-text-margin--large-screen:     remsize( -1.7rem ) 0 0 0 !default;
 $checkout-substep-text-padding:                  0 0 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
 $checkout-substep-text-color:                    $grey !default;
-$checkout-substep-text-font-size:                $font-size-small !default;
-$checkout-substep-text-font-size--large-screen:  $font-size-small--large-screen !default;
+$checkout-substep-text-font-size:                $font-size-extra-small !default;
+$checkout-substep-text-font-size--large-screen:  $font-size-extra-small--large-screen !default;
 $checkout-substep-text-font-weight:              normal !default;
 
 $checkout-substep-action-button-margin:          remsize( 1.2rem ) $global-spacing-extra-small 0 0 !default; // Used to position the substep "Change/Save" action buttons
