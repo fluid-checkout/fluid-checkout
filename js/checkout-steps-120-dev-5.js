@@ -202,6 +202,12 @@
 
 		// Remove editing class from the substep element
 		substepElement.classList.remove( _settings.isEditingClass );
+
+		// Focus on the substep edit button
+		var editbutton = substepElement.querySelector( _settings.substepEditButtonSelector );
+		if ( editbutton ) {
+			editbutton.focus();
+		}
 	}
 
 

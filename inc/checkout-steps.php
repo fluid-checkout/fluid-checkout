@@ -939,6 +939,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$substep_attributes = array_merge( $substep_attributes, array(
 				'data-collapsible' => true,
 				'data-collapsible-content' => true,
+				'data-autofocus' => true,
 				'data-collapsible-initial-state' => $is_step_complete ? 'collapsed' : 'expanded',
 			) );
 
