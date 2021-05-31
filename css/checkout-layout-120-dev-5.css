@@ -1499,7 +1499,7 @@ form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-
 form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-review-order-table td.product-name,
 form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child td.product-name {
   position: relative;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   padding-left: 80px;
