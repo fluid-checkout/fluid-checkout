@@ -4,20 +4,11 @@
 
 .wfc-progress-bar .wfc-progress-bar__inner {
 	z-index: z( 'float-element' ) - 2; // Needed to show behing the order summary flyout
-
-	// margin
-	margin: 0 #{ - $container-spacing-mobile };
-	@media (#{$bp-larger-than-tablet}) { margin: 0 #{ - $container-spacing-tablet }; }
-	@media (#{$bp-larger-than-desktop}) { margin: 0 #{ - $container-spacing-desktop }; }
-
-	// padding
-	padding: $checkout-progress-bar-padding-vertical $container-spacing-mobile;
-	@media (#{$bp-larger-than-tablet}) { padding: $checkout-progress-bar-padding-vertical $container-spacing-tablet; }
-	@media (#{$bp-larger-than-desktop}) { padding: $checkout-progress-bar-padding-vertical--large-screen $container-spacing-desktop; }
-}
-.wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner,
-.wfc-progress-bar[data-sticky-states].is-end-position .wfc-progress-bar__inner {
+	padding: $checkout-progress-padding;
 	background-color: $white;
+	border-radius: $checkout-substep-border-radius;
+
+	@media (#{$bp-larger-than-tablet}) { padding: $checkout-progress-padding--large-screen; }
 }
 // With admin bar
 .admin-bar .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
@@ -42,7 +33,7 @@
 
 
 .wfc-progress-bar__count {
-	margin-bottom: $checkout-progress-bar-padding-vertical;
+	margin: $checkout-step-count-margin;
 	color: $checkout-step-count-color;
 	font-weight: $checkout-step-count-font-weight;
 	font-size: $checkout-step-count-font-size;
@@ -50,7 +41,10 @@
 	text-align: $checkout-step-count-text-align;
 	line-height: 1;
 
-	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-step-count-font-size--large-screen; }
+	@media (#{$bp-larger-than-desktop}) {
+		margin: $checkout-step-count-margin--large-screen;
+		font-size: $checkout-step-count-font-size--large-screen;
+	}
 }
 
 

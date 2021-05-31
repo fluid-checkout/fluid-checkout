@@ -250,7 +250,7 @@ form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-
 		padding: remsize( 1.2rem ) $global-spacing-small $global-spacing-small;
 		max-width: none;
 		border: solid remsize( .1rem ) $border-color;
-		border-radius: $global-radius-medium;
+		border-radius: $checkout-substep-border-radius;
 		background-color: $white;
 		overflow: visible;
 	}

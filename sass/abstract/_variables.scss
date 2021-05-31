@@ -291,24 +291,24 @@ $checkout-overview-border-left:             none !default;
 // ----------------------------------------
 // CHECKOUT PROGRESS BAR
 
-$checkout-progress-bar-box-shadow:               $checkout-header-box-shadow !default;
+$checkout-progress-padding:                           $global-spacing-extra-small $container-spacing-mobile !default;
+$checkout-progress-padding--large-screen:             $global-spacing-extra-small $container-spacing-mobile !default;
 
-$checkout-progress-bar-padding-vertical:         $global-spacing-tiny !default;
-$checkout-progress-bar-padding-vertical--large-screen: $global-spacing-extra-small !default;
+$checkout-progress-bar-height:                        remsize( .5rem ) !default;
+$checkout-progress-bar-border:                        none !default;
+$checkout-progress-bar-border-radius:                 $checkout-progress-bar-height / 2 !default;
+$checkout-progress-bar-color:                         $light-grey !default;
+$checkout-progress-bar-complete-color:                $success-color !default;
+$checkout-progress-bar-current-color:                 transparentize( $checkout-progress-bar-complete-color, .7 ) !default; // Stands for 30% opacity of the color `$checkout-progress-bar-complete-color`
 
-$checkout-progress-bar-height:                   remsize( .5rem ) !default;
-$checkout-progress-bar-border:                   none !default;
-$checkout-progress-bar-border-radius:            $checkout-progress-bar-height / 2 !default;
-$checkout-progress-bar-color:                    $light-grey !default;
-$checkout-progress-bar-complete-color:           $success-color !default;
-$checkout-progress-bar-current-color:            transparentize( $checkout-progress-bar-complete-color, .7 ) !default; // Stands for 30% opacity of the color `$checkout-progress-bar-complete-color`
-
-$checkout-step-count-color:                      $dark-grey !default;
-$checkout-step-count-font-size:                  $font-size-small !default;
-$checkout-step-count-font-size--large-screen:    $font-size-small--large-screen !default;
-$checkout-step-count-font-weight:                bold !default;
-$checkout-step-count-text-transform:             uppercase !default;
-$checkout-step-count-text-align:                 center !default;
+$checkout-step-count-margin:                          0 0 $global-spacing-tiny !default;
+$checkout-step-count-margin--large-screen:            0 0 $global-spacing-tiny !default;
+$checkout-step-count-color:                           $dark-grey !default;
+$checkout-step-count-font-size:                       $font-size-small !default;
+$checkout-step-count-font-size--large-screen:         $font-size-small--large-screen !default;
+$checkout-step-count-font-weight:                     bold !default;
+$checkout-step-count-text-transform:                  uppercase !default;
+$checkout-step-count-text-align:                      center !default;
 
 // END - CHECKOUT PROGRESS BAR
 // ----------------------------------------
@@ -338,6 +338,7 @@ $checkout-substep-title-check-icon-spacing:      0 !default;
 
 $checkout-substep-padding:                       $global-spacing-small $container-spacing-mobile !default;
 $checkout-substep-padding--large-screen:         $global-spacing-small $container-spacing-mobile !default;
+$checkout-substep-border-radius:                 $global-radius !default;
 
 $checkout-substep-text-padding:                  0 0 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
 $checkout-substep-text-color:                    $grey !default;

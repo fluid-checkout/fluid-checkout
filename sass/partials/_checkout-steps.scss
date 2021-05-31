@@ -20,10 +20,10 @@
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-step-padding--large-screen; }
 }
 .wfc-wrapper .wfc-checkout-step:first-child {
-	@media (#{$bp-larger-than-tablet}) { border-radius: $global-radius-medium $global-radius-medium 0 0; }
+	@media (#{$bp-larger-than-tablet}) { border-radius: $checkout-substep-border-radius $checkout-substep-border-radius 0 0; }
 }
 .wfc-wrapper .wfc-checkout-step:last-child {
-	@media (#{$bp-larger-than-tablet}) { border-radius: 0 0 $global-radius-medium $global-radius-medium; }
+	@media (#{$bp-larger-than-tablet}) { border-radius: 0 0 $checkout-substep-border-radius $checkout-substep-border-radius; }
 }
 
 
@@ -79,15 +79,15 @@
 // FIRST step
 .has-checkout-layout--multi-step .wfc-checkout-step:first-child {
 	@media (#{$bp-larger-than-tablet}) {
-		border-top-right-radius: $global-radius-medium;
-		border-top-left-radius: $global-radius-medium;
+		border-top-right-radius: $checkout-substep-border-radius;
+		border-top-left-radius: $checkout-substep-border-radius;
 	}
 }
 // LAST step
 .has-checkout-layout--multi-step .wfc-checkout-step:last-child {
 	@media (#{$bp-larger-than-tablet}) {
-		border-bottom-right-radius: $global-radius-medium;
-		border-bottom-left-radius: $global-radius-medium;
+		border-bottom-right-radius: $checkout-substep-border-radius;
+		border-bottom-left-radius: $checkout-substep-border-radius;
 	}
 }
 // PREV Complete
@@ -109,8 +109,8 @@
 	margin-bottom: $global-spacing-small;
 
 	@media (#{$bp-larger-than-tablet}) {
-		border-bottom-right-radius: $global-radius-medium;
-		border-bottom-left-radius: $global-radius-medium;
+		border-bottom-right-radius: $checkout-substep-border-radius;
+		border-bottom-left-radius: $checkout-substep-border-radius;
 	}
 }
 
@@ -119,7 +119,7 @@
 .has-checkout-layout--multi-step .wfc-checkout-step[data-step-current]:not( [data-step-index="0"] ),
 .has-checkout-layout--multi-step .wfc-checkout-step:not( [data-step-complete] ) {
 	@media (#{$bp-larger-than-tablet}) {
-		border-radius: $global-radius-medium;
+		border-radius: $checkout-substep-border-radius;
 	}
 }
 
