@@ -128,6 +128,18 @@ div.woocommerce form .form-row label {
   table-layout: fixed;
   width: 100%; }
 
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group textarea,
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group select,
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="email"],
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="number"],
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="date"],
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="search"],
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="text"],
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="tel"],
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="url"],
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="password"] {
+  background-color: #fff; }
+
 /*------------------------------------*\
 	#EXPANSIBLE SECTIONS
 \*------------------------------------*/

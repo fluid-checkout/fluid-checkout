@@ -866,6 +866,17 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 \*------------------------------------*/
 .wfc-step__substep[data-substep-id="billing_address"] {
   background-color: #F0F4F4; }
+  .wfc-step__substep[data-substep-id="billing_address"] textarea,
+  .wfc-step__substep[data-substep-id="billing_address"] select,
+  .wfc-step__substep[data-substep-id="billing_address"] input[type="email"],
+  .wfc-step__substep[data-substep-id="billing_address"] input[type="number"],
+  .wfc-step__substep[data-substep-id="billing_address"] input[type="date"],
+  .wfc-step__substep[data-substep-id="billing_address"] input[type="search"],
+  .wfc-step__substep[data-substep-id="billing_address"] input[type="text"],
+  .wfc-step__substep[data-substep-id="billing_address"] input[type="tel"],
+  .wfc-step__substep[data-substep-id="billing_address"] input[type="url"],
+  .wfc-step__substep[data-substep-id="billing_address"] input[type="password"] {
+    background-color: #fff; }
 
 div.woocommerce form .woocommerce-billing-fields__field-wrapper > .collapsible-content__inner {
   padding-top: 20px; }
@@ -881,6 +892,17 @@ div.woocommerce form #billing_same_as_shipping_field.form-row {
 \*------------------------------------*/
 .wfc-step__substep[data-substep-id="shipping_address"] {
   background-color: #F0F4F4; }
+  .wfc-step__substep[data-substep-id="shipping_address"] textarea,
+  .wfc-step__substep[data-substep-id="shipping_address"] select,
+  .wfc-step__substep[data-substep-id="shipping_address"] input[type="email"],
+  .wfc-step__substep[data-substep-id="shipping_address"] input[type="number"],
+  .wfc-step__substep[data-substep-id="shipping_address"] input[type="date"],
+  .wfc-step__substep[data-substep-id="shipping_address"] input[type="search"],
+  .wfc-step__substep[data-substep-id="shipping_address"] input[type="text"],
+  .wfc-step__substep[data-substep-id="shipping_address"] input[type="tel"],
+  .wfc-step__substep[data-substep-id="shipping_address"] input[type="url"],
+  .wfc-step__substep[data-substep-id="shipping_address"] input[type="password"] {
+    background-color: #fff; }
 
 /*------------------------------------*\
   #CHECKOUT SHIPPING METHODS
@@ -1157,6 +1179,17 @@ div.woocommerce form #billing_same_as_shipping_field.form-row {
   @media (min-width: 750px) {
     .wfc-wrapper #payment .payment_methods > li .payment_box {
       padding: 20px 44px; } }
+  .wfc-wrapper #payment .payment_methods > li .payment_box textarea,
+  .wfc-wrapper #payment .payment_methods > li .payment_box select,
+  .wfc-wrapper #payment .payment_methods > li .payment_box input[type="email"],
+  .wfc-wrapper #payment .payment_methods > li .payment_box input[type="number"],
+  .wfc-wrapper #payment .payment_methods > li .payment_box input[type="date"],
+  .wfc-wrapper #payment .payment_methods > li .payment_box input[type="search"],
+  .wfc-wrapper #payment .payment_methods > li .payment_box input[type="text"],
+  .wfc-wrapper #payment .payment_methods > li .payment_box input[type="tel"],
+  .wfc-wrapper #payment .payment_methods > li .payment_box input[type="url"],
+  .wfc-wrapper #payment .payment_methods > li .payment_box input[type="password"] {
+    background-color: #fff; }
 
 .wfc-wrapper #payment .payment_methods > li .payment_box:before {
   display: none; }
@@ -1353,6 +1386,18 @@ div.woocommerce form .form-row label {
   display: table;
   table-layout: fixed;
   width: 100%; }
+
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group textarea,
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group select,
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="email"],
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="number"],
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="date"],
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="search"],
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="text"],
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="tel"],
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="url"],
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="password"] {
+  background-color: #fff; }
 
 /*------------------------------------*\
 	#ORDER SUMMARY
