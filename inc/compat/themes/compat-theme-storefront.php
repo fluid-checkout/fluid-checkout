@@ -18,6 +18,10 @@ class FluidCheckout_ThemeCompat_Storefront extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Page container class
+		remove_filter( 'wfc_content_section_class', array( FluidCheckout_Steps::instance(), 'wfc_content_section_class' ), 10 );
+
+		// Coupon code button style
 		add_filter('wfc_coupon_code_apply_button_classes', array( $this, 'change_coupon_code_apply_button_class' ), 10 );
 	}
 
