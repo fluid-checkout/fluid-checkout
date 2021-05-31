@@ -1505,7 +1505,8 @@ form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-
   padding-left: 80px;
   width: auto;
   min-height: 70px;
-  background-color: transparent; }
+  background-color: transparent;
+  line-height: 1.2; }
   @media (min-width: 1000px) {
     form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-review-order-table td.product-name,
     form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child td.product-name {

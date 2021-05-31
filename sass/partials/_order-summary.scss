@@ -123,6 +123,7 @@ form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-
 	width: auto;
 	min-height: #{ $order-summary-image-width + ( $order-summary-cell-padding-vertical * 2 )  };
 	background-color: transparent;
+	line-height: 1.2;
 
 	@media (#{$bp-larger-than-desktop}) {
 		padding-left: #{ $order-summary-image-width--large-screen + $order-summary-cell-padding-horizontal + $global-spacing-extra-small };
