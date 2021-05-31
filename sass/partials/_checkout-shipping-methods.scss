@@ -83,6 +83,10 @@
 	border-color: $success-color;
 	background-color: $success-color;
 }
+.woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:focus + .shipping-method__option-label:before {
+	outline: $focus-outline-field;
+	outline-offset: $focus-outline-offest-field;
+}
 
 .woocommerce ul#shipping_method .shipping-method__option.shipping-method__option .shipping-method__option-label:hover {
 	background-color: $shipping-method-checked-background-color;

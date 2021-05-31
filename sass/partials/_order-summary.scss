@@ -254,6 +254,11 @@ form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-
 		background-color: $white;
 		overflow: visible;
 	}
+
+	&:focus {
+		outline: $focus-outline-field;
+		outline-offset: $focus-outline-offest-field;
+	}
 }
 
 .wfc-wrapper .wfc-checkout-order-review[data-flyout].is-open .wfc-checkout-order-review__inner {

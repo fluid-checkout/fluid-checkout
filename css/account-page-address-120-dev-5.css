@@ -143,6 +143,24 @@ div.woocommerce form #shipping_address_2_field > label {
   background-color: #fff; }
 
 /*------------------------------------*\
+  #WOOCOMMERCE FORM FIELDS
+\*------------------------------------*/
+div.woocommerce form .form-row textarea:focus,
+div.woocommerce form .form-row select:focus,
+div.woocommerce form .form-row input[type="email"]:focus,
+div.woocommerce form .form-row input[type="number"]:focus,
+div.woocommerce form .form-row input[type="date"]:focus,
+div.woocommerce form .form-row input[type="search"]:focus,
+div.woocommerce form .form-row input[type="text"]:focus,
+div.woocommerce form .form-row input[type="tel"]:focus,
+div.woocommerce form .form-row input[type="url"]:focus,
+div.woocommerce form .form-row input[type="password"]:focus,
+div.woocommerce form .form-row input[type="checkbox"]:focus,
+div.woocommerce form .form-row .select2-selection:focus {
+  outline: solid 2px #535156;
+  outline-offset: 2px; }
+
+/*------------------------------------*\
 	#EXPANSIBLE SECTIONS
 \*------------------------------------*/
 div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
@@ -173,6 +191,9 @@ div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
     left: -3px;
     top: 50%;
     transform: translateY(-50%); }
+  div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus:focus {
+    outline: dotted 1px #535156;
+    outline-offset: 1px; }
 
 div.woocommerce .wfc-expansible-form-section.form-row .form-row {
   margin: 0;

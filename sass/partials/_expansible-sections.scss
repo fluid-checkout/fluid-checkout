@@ -19,6 +19,11 @@ div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
 		top: 50%;
 		transform: translateY( -50% );
 	}
+
+	&:focus {
+		outline: $focus-outline-link;
+		outline-offset: $focus-outline-offest-link;
+	}
 }
 
 

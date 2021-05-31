@@ -726,6 +726,9 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 .has-checkout-layout--multi-step .wfc-step__actions .wfc-step__next-step {
   margin: 0;
   min-width: 280px; }
+  .has-checkout-layout--multi-step .wfc-step__actions .wfc-step__next-step:focus {
+    outline: solid 2px #535156;
+    outline-offset: 2px; }
 
 /*------------------------------------*\
 	#CHECKOUT SUB-STEP EDIT
@@ -746,6 +749,10 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
     .has-checkout-layout--multi-step .wfc-step__substep-edit,
     .has-checkout-layout--multi-step .wfc-step__substep-save {
       font-size: 15px; } }
+  .has-checkout-layout--multi-step .wfc-step__substep-edit:focus,
+  .has-checkout-layout--multi-step .wfc-step__substep-save:focus {
+    outline: dotted 1px #535156;
+    outline-offset: 1px; }
 
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-edit,
 .has-checkout-layout--multi-step [data-step-complete] .is-editing .wfc-step__substep-save {
@@ -982,6 +989,10 @@ div.woocommerce form #billing_same_as_shipping_field.form-row {
   border-color: #00A854;
   background-color: #00A854; }
 
+.woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:focus + .shipping-method__option-label:before {
+  outline: solid 2px #535156;
+  outline-offset: 2px; }
+
 .woocommerce ul#shipping_method .shipping-method__option.shipping-method__option .shipping-method__option-label:hover {
   background-color: #F0F4F4; }
 
@@ -1125,6 +1136,10 @@ div.woocommerce form #billing_same_as_shipping_field.form-row {
   box-shadow: none;
   transition: all 0.15s linear; }
 
+.wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:focus + label:before {
+  outline: solid 2px #535156;
+  outline-offset: 2px; }
+
 .wfc-wrapper #payment .payment_methods > .wc_payment_method input[type="radio"]:first-child:checked + label:before {
   content: '';
   border-color: #00A854;
@@ -1232,6 +1247,9 @@ div.woocommerce form #billing_same_as_shipping_field.form-row {
   margin: 0;
   flex-shrink: 0;
   flex-grow: 0; }
+  .wfc-wrapper .wfc-expansible-form-section__content--coupon_code .wfc-coupon-code__apply:focus {
+    outline: solid 2px #535156;
+    outline-offset: 2px; }
 
 .wfc-wrapper .wfc-step__substep-text-content--coupon-codes:not(:empty) {
   margin-bottom: 20px; }
@@ -1302,9 +1320,17 @@ div.woocommerce form #billing_same_as_shipping_field.form-row {
   width: 100%;
   max-width: 600px;
   min-height: 50px; }
+  .wfc-wrapper .wfc-place-order .wfc-place-order-button:focus {
+    outline: solid 2px #535156;
+    outline-offset: 2px; }
 
 .wfc-sidebar .wfc-place-order .wfc-place-order-button {
   margin: 10px auto 0; }
+
+div.place-order .woocommerce-terms-and-conditions-link:focus,
+div.place-order .woocommerce-privacy-policy-link:focus {
+  outline: dotted 1px #535156 !important;
+  outline-offset: 1px !important; }
 
 /*------------------------------------*\
   #WOOCOMMERCE FORM-ROW
@@ -1412,6 +1438,24 @@ div.woocommerce form #shipping_address_2_field > label {
 .wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="url"],
 .wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="password"] {
   background-color: #fff; }
+
+/*------------------------------------*\
+  #WOOCOMMERCE FORM FIELDS
+\*------------------------------------*/
+div.woocommerce form .form-row textarea:focus,
+div.woocommerce form .form-row select:focus,
+div.woocommerce form .form-row input[type="email"]:focus,
+div.woocommerce form .form-row input[type="number"]:focus,
+div.woocommerce form .form-row input[type="date"]:focus,
+div.woocommerce form .form-row input[type="search"]:focus,
+div.woocommerce form .form-row input[type="text"]:focus,
+div.woocommerce form .form-row input[type="tel"]:focus,
+div.woocommerce form .form-row input[type="url"]:focus,
+div.woocommerce form .form-row input[type="password"]:focus,
+div.woocommerce form .form-row input[type="checkbox"]:focus,
+div.woocommerce form .form-row .select2-selection:focus {
+  outline: solid 2px #535156;
+  outline-offset: 2px; }
 
 /*------------------------------------*\
 	#ORDER SUMMARY
@@ -1607,6 +1651,10 @@ form.woocommerce-checkout .wfc-wrapper #order_review table.woocommerce-checkout-
     background-color: #fff;
     overflow: visible; } }
 
+.wfc-wrapper .wfc-checkout-order-review .wfc-checkout-order-review__inner:focus {
+  outline: solid 2px #535156;
+  outline-offset: 2px; }
+
 .wfc-wrapper .wfc-checkout-order-review[data-flyout].is-open .wfc-checkout-order-review__inner {
   max-width: 100%;
   padding: 20px 20px 80px; }
@@ -1686,6 +1734,9 @@ div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
     left: -3px;
     top: 50%;
     transform: translateY(-50%); }
+  div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus:focus {
+    outline: dotted 1px #535156;
+    outline-offset: 1px; }
 
 div.woocommerce .wfc-expansible-form-section.form-row .form-row {
   margin: 0;

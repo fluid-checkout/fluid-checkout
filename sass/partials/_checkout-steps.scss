@@ -237,6 +237,11 @@
 .has-checkout-layout--multi-step .wfc-step__actions .wfc-step__next-step {
 	margin: 0;
 	min-width: remsize( 28rem );
+
+	&:focus {
+		outline: $focus-outline-button;
+		outline-offset: $focus-outline-offest-button;
+	}
 }
 
 
@@ -261,6 +266,11 @@
 	cursor: pointer;
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $font-size-small--large-screen; }
+
+	&:focus {
+		outline: $focus-outline-link;
+		outline-offset: $focus-outline-offest-link;
+	}
 }
 
 .has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-edit,

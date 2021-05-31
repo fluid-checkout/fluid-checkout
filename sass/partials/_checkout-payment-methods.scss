@@ -50,7 +50,7 @@
 }
 
 
-// #payment ul.wc_payment_methods li.wc_payment_method input[type=radio]:first-child:checked+label
+
 .wfc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
 	position: relative;
 	display: block;
@@ -109,6 +109,11 @@
 	box-shadow: none;
 	transition: all $global-animation-duration-fast linear;
 }
+.wfc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:focus + label:before {
+	outline: $focus-outline-field;
+	outline-offset: $focus-outline-offest-field;
+}
+
 
 .wfc-wrapper #payment .payment_methods > .wc_payment_method input[type="radio"]:first-child:checked + label:before {
 	content: '';
