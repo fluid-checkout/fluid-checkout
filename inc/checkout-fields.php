@@ -78,7 +78,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	public function change_default_locale_field_args( $fields ) {
 		$new_field_args = apply_filters( 'wfc_default_locale_field_args', array(
 			'address_1'           => array( 'class' => array( 'form-row-wide' ), 'description' => __( 'House number and street name.', 'woocommerce-fluid-checkout' ) ),
-			'address_2'           => array( 'class' => array( 'form-row-wide' ), 'label' => __( 'Appartment, suite, unit, building, floor, etc.', 'woocommerce-fluid-checkout' ) ),
+			'address_2'           => array( 'class' => array( 'form-row-wide' ), 'label' => __( 'Address line 2', 'woocommerce-fluid-checkout' ), 'description' => __( 'Appartment, suite, unit, building, floor, etc.', 'woocommerce-fluid-checkout' ) ),
 			'city'                => array( 'class' => array( 'form-row-first' ) ),
 			'state'               => array( 'class' => array( 'form-row-last' ) ),
 			'postcode'            => array( 'class' => array( 'form-row-first' ) ),
