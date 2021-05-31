@@ -152,7 +152,7 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 
 @media (min-width: 1000px) {
   body:not(.has-checkout-must-login-notice) .wfc-inside {
-    padding-top: 20px; } }
+    padding-top: 5px; } }
 
 .wfc-wrapper {
   position: relative; }
@@ -172,11 +172,11 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
     .wfc-sidebar__inner {
       position: relative;
       width: 100%;
-      padding-top: 20px; } }
+      padding-top: 5px; } }
 
 @media (min-width: 1000px) {
   .admin-bar .wfc-wrapper .wfc-sidebar.is-sticky .wfc-sidebar__inner {
-    padding-top: calc( 20px + 32px); } }
+    padding-top: calc( 5px + 32px); } }
 
 /*------------------------------------*\
   #CHECKOUT WIDGETS

@@ -120,7 +120,7 @@ body:not( .has-checkout-must-login-notice ) .wfc-checkout-header ~ .woocommerce-
 
 body:not( .has-checkout-must-login-notice ) .wfc-inside {
 	@media (#{$bp-larger-than-desktop}) {
-		padding-top: $global-spacing-small;
+		padding-top: $global-spacing-tiny;
 	}
 }
 
@@ -149,13 +149,13 @@ body:not( .has-checkout-must-login-notice ) .wfc-inside {
 	@media (#{$bp-larger-than-desktop}) {
 		position: relative;
 		width: 100%;
-		padding-top: $global-spacing-small;
+		padding-top: $global-spacing-tiny;
 	}
 }
 // With admin bar
 .admin-bar .wfc-wrapper .wfc-sidebar.is-sticky .wfc-sidebar__inner {
 	@media (#{$bp-larger-than-desktop}) {
-		padding-top: calc( #{ $global-spacing-small } + 32px ); // Use pixels to match styles of the WordPress Admin bar
+		padding-top: calc( #{ $global-spacing-tiny } + 32px ); // Use pixels to match styles of the WordPress Admin bar
 	}
 }
 
