@@ -80,7 +80,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 */
 	public function output_substep_gift_options( $step_id ) {
 		$substep_id = 'gift_options';
-		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, __( 'Gift Options', 'woocommerce-fluid-checkout' ) );
+		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, __( 'Gift options', 'woocommerce-fluid-checkout' ) );
 
 		$this->checkout_steps()->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_gift_options_fields();

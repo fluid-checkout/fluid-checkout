@@ -97,10 +97,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
 
-		// Billing Company
-		add_action( 'wfc_output_step_billing', array( $this, 'output_substep_billing_company' ), 10 );
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_billing_company_text_fragment' ), 10 );
-
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		add_action( 'wfc_checkout_payment', 'woocommerce_checkout_payment', 20 );
@@ -1167,8 +1163,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$customer = WC()->customer;
 		$html = '<div class="wfc-step__substep-text-content wfc-step__substep-text-content--contact">';
 		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_email() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_first_name() . ' ' . $customer->get_billing_last_name() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_phone() . '</span>';
 		
 		// Maybe add notice for account creation
 		if ( get_option( 'wfc_show_account_creation_notice_checkout_contact_step_text', 'true' ) === 'true' ) {
@@ -1350,7 +1344,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_shipping_method( $step_id ) {
 		$substep_id = 'shipping_method';
-		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Shipping Method', 'woocommerce-fluid-checkout' ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Shipping method', 'woocommerce-fluid-checkout' ) );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_shipping_methods_available();
@@ -1802,7 +1796,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_billing_address( $step_id ) {
 		$substep_id = 'billing_address';
-		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Billing Address', 'woocommerce-fluid-checkout' ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Billing to', 'woocommerce-fluid-checkout' ) );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_billing_address_fields();
@@ -1826,7 +1820,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  array  List of billing fields to ignore at billing address substep.
 	 */
 	public function get_billing_address_ignored_billing_field_ids() {
-		$billing_ignored_field_ids = array_merge( $this->get_contact_step_display_field_ids(), $this->get_billing_company_substep_display_field_ids() );
+		$billing_ignored_field_ids = $this->get_contact_step_display_field_ids();
 		return $billing_ignored_field_ids;
 	}
 
@@ -1887,7 +1881,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 		
 		$html = '<div class="wfc-step__substep-text-content wfc-step__substep-text-content--billing-address">';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_first_name() . ' ' . $customer->get_billing_last_name() . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_company() . '</span>';
 		$html .= '<span class="wfc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</span>';
+		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_phone() . '</span>';
 		$html .= '</div>';
 
 		return apply_filters( 'wfc_substep_billing_address_text', $html );
@@ -1909,116 +1906,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_text_billing_address() {
 		echo $this->get_substep_text_billing_address();
-	}
-
-
-
-	/**
-	 * Return list of checkout fields for billing company substep.
-	 */
-	public function get_billing_company_substep_display_field_ids() {
-		return apply_filters( 'wfc_checkout_billing_company_substep_field_ids', array(
-			'billing_company',
-		) );
-	}
-
-
-
-	/**
-	 * Output billing company substep.
-	 *
-	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
-	 */
-	public function output_substep_billing_company( $step_id ) {
-		// Get list of company fields present
-		$fields = WC()->checkout()->get_checkout_fields( 'billing' );
-		$existing_company_field_ids = array_intersect( array_keys( $fields ), $this->get_billing_company_substep_display_field_ids() );
-		
-		// Bail if company fields not present
-		if ( ! is_array( $existing_company_field_ids ) || count( $existing_company_field_ids ) === 0 ) { return; }
-		
-		$substep_id = 'billing_company';
-		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Billing Company', 'woocommerce-fluid-checkout' ) );
-
-		$this->output_substep_fields_start_tag( $step_id, $substep_id );
-		$this->output_substep_billing_company_fields();
-		$this->output_substep_fields_end_tag();
-
-		// Only output substep text format for multi-step checkout layout
-		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $step_id, $substep_id );
-			$this->output_substep_text_billing_company();
-			$this->output_substep_text_end_tag();
-		}
-
-		$this->output_substep_end_tag( $step_id, $substep_id );
-	}
-
-
-
-	/**
-	 * Output billing company fields, except those already added at the contact step.
-	 */
-	public function output_substep_billing_company_fields() {
-		wc_get_template(
-			'wfc/checkout/form-billing-company.php',
-			array(
-				'checkout'			=> WC()->checkout(),
-				'display_fields'	=> $this->get_billing_company_substep_display_field_ids(),
-			)
-		);
-	}
-
-	/**
-	 * Get billing company fields, except those already added at the contact step.
-	 */
-	public function get_substep_billing_company_fields() {
-		ob_start();
-		$this->output_substep_billing_company_fields();
-		return ob_get_clean();
-	}
-
-
-
-	/**
-	 * Get billing company substep in text format for when the step is completed.
-	 */
-	public function get_substep_text_billing_company() {
-		$customer = WC()->customer;
-		$billing_company = $customer->get_billing_company();
-		
-		$html = '<div class="wfc-step__substep-text-content wfc-step__substep-text-content--billing-company">';
-
-		// The billing company value
-		if ( ! empty( $billing_company ) ) {
-			$html .= '<span class="wfc-step__substep-text-line">' . esc_html( $billing_company ) . '</span>';
-		}
-		// "No billing company" notice.
-		else {
-			$html .= '<span class="wfc-step__substep-text-line">' . apply_filters( 'wfc_no_billing_company_order_review_notice', _x( 'None.', 'Notice for no billing company provided', 'woocommerce-fluid-checkout' ) ) . '</span>';
-		}
-		
-		$html .= '</div>';
-
-		return apply_filters( 'wfc_substep_billing_company_text', $html );
-	}
-
-	/**
-	 * Add billing company text format as checkout fragment.
-	 * 
-	 * @param array $fragments Checkout fragments.
-	 */
-	public function add_billing_company_text_fragment( $fragments ) {
-		$html = $this->get_substep_text_billing_company();
-		$fragments['.wfc-step__substep-text-content--billing-company'] = $html;
-		return $fragments;
-	}
-
-	/**
-	 * Output billing company substep in text format for when the step is completed.
-	 */
-	public function output_substep_text_billing_company() {
-		echo $this->get_substep_text_billing_company();
 	}
 
 
@@ -2182,18 +2069,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// for the case the shipping country changes again and the new value is also accepted for billing.
 		$this->set_billing_same_as_shipping_session( $is_billing_same_as_shipping_checked );
 		
+		// Get parsed posted data
+		$parsed_posted_data = $this->get_parsed_posted_data();
+		
 		// Maybe set post data for billing same as shipping
 		if ( $is_billing_same_as_shipping ) {
-			$_POST['billing_first_name'] = isset( $_POST['shipping_first_name'] ) ? wc_clean( wp_unslash( $_POST['shipping_first_name'] ) ) : null;
-			$_POST['billing_last_name'] = isset( $_POST['shipping_last_name'] ) ? wc_clean( wp_unslash( $_POST['shipping_last_name'] ) ) : null;
-			$_POST['billing_phone'] = isset( $_POST['shipping_phone'] ) ? wc_clean( wp_unslash( $_POST['shipping_phone'] ) ) : null;
+			$_POST['billing_first_name'] = isset( $parsed_posted_data['shipping_first_name'] ) ? $parsed_posted_data['shipping_first_name'] : null;
+			$_POST['billing_last_name'] = isset( $parsed_posted_data['shipping_last_name'] ) ? $parsed_posted_data['shipping_last_name'] : null;
+			$_POST['billing_phone'] = isset( $parsed_posted_data['shipping_phone'] ) ? $parsed_posted_data['shipping_phone'] : null;
+			$_POST['billing_company'] = isset( $parsed_posted_data['shipping_company'] ) ? $parsed_posted_data['shipping_company'] : null;
 			
-			$_POST['address'] = isset( $_POST['s_address'] ) ? wc_clean( wp_unslash( $_POST['s_address'] ) ) : null;
-			$_POST['address_2'] = isset( $_POST['s_address_2'] ) ? wc_clean( wp_unslash( $_POST['s_address_2'] ) ) : null;
-			$_POST['city'] = isset( $_POST['s_city'] ) ? wc_clean( wp_unslash( $_POST['s_city'] ) ) : null;
-			$_POST['state'] = isset( $_POST['s_state'] ) ? wc_clean( wp_unslash( $_POST['s_state'] ) ) : null;
-			$_POST['country'] = isset( $_POST['s_country'] ) ? wc_clean( wp_unslash( $_POST['s_country'] ) ) : null;
-			$_POST['postcode'] = isset( $_POST['s_postcode'] ) ? wc_clean( wp_unslash( $_POST['s_postcode'] ) ) : null;
+			$_POST['address'] = isset( $parsed_posted_data['shipping_address_1'] ) ? $parsed_posted_data['shipping_address_1'] : null;
+			$_POST['address_2'] = isset( $parsed_posted_data['shipping_address_2'] ) ? $parsed_posted_data['shipping_address_2'] : null;
+			$_POST['city'] = isset( $parsed_posted_data['shipping_city'] ) ? $parsed_posted_data['shipping_city'] : null;
+			$_POST['state'] = isset( $parsed_posted_data['shipping_state'] ) ? $parsed_posted_data['shipping_state'] : null;
+			$_POST['country'] = isset( $parsed_posted_data['shipping_country'] ) ? $parsed_posted_data['shipping_country'] : null;
+			$_POST['postcode'] = isset( $parsed_posted_data['shipping_postcode'] ) ? $parsed_posted_data['shipping_postcode'] : null;
 		}
 		
 		return $posted_data;
@@ -2210,6 +2101,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$post_data[ 'billing_first_name' ] = $post_data[ 'shipping_first_name' ];
 			$post_data[ 'billing_last_name' ] = $post_data[ 'shipping_last_name' ];
 			$post_data[ 'billing_phone' ] = $post_data[ 'shipping_phone' ];
+			$post_data[ 'billing_company' ] = $post_data[ 'shipping_company' ];
 			
 			$post_data[ 'billing_address_1' ] = $post_data[ 'shipping_address_1' ];
 			$post_data[ 'billing_address_2' ] = $post_data[ 'shipping_address_2' ];
@@ -2248,7 +2140,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_payment( $step_id ) {
 		$substep_id = 'payment';
-		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Payment Method', 'woocommerce-fluid-checkout' ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, __( 'Payment method', 'woocommerce-fluid-checkout' ) );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_payment_fields();

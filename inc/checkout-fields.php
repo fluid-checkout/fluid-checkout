@@ -48,7 +48,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'contact family-name' ),
 			'billing_phone'         => array( 'priority' => 30, 'autocomplete' => 'contact tel', 'class' => array( 'form-row-first' ) ),
 
-			'billing_company'       => array( 'priority' => 100, 'autocomplete' => 'billing organization', 'class' => array( 'form-wide' ) ),
+			'billing_company'       => array( 'priority' => 40, 'autocomplete' => 'billing organization', 'class' => array( 'form-row-last' ) ),
 			'billing_address_1'     => array( 'autocomplete' => 'billing address-line1' ),
 			'billing_address_2'     => array( 'autocomplete' => 'billing address-line2' ),
 			'billing_city'          => array( 'autocomplete' => 'billing address-level2' ),
