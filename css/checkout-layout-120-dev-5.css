@@ -776,6 +776,13 @@ body:not(.has-checkout-must-login-notice) .wfc-checkout-header ~ .woocommerce-er
 .wfc-wrapper .woocommerce-billing-fields {
   padding: 0;
   border: 0; }
+  .wfc-wrapper .woocommerce-shipping-fields:before, .wfc-wrapper .woocommerce-shipping-fields:after,
+  .wfc-wrapper .woocommerce-billing-fields:before,
+  .wfc-wrapper .woocommerce-billing-fields:after {
+    content: '';
+    display: table;
+    table-layout: fixed;
+    width: 100%; }
 
 .wfc-substep__fields--coupon_codes .wfc-step__substep-fields-inner {
   padding: 0; }

@@ -301,6 +301,11 @@
 .wfc-wrapper .woocommerce-billing-fields {
 	padding: 0;
 	border: 0;
+
+	&:before,
+	&:after {
+		@include clearfix();
+	}
 }
 
 .wfc-substep__fields--coupon_codes .wfc-step__substep-fields-inner {
