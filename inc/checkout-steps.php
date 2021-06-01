@@ -203,7 +203,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_allowed_checkout_layouts() {
 		return apply_filters( 'wfc_allowed_checkout_layouts', array(
 			'multi-step' => __( 'Multi-step', 'woocommerce-fluid-checkout' ),
-			'one-page' => __( 'One page', 'woocommerce-fluid-checkout' ),
+			'single-step' => __( 'Single step', 'woocommerce-fluid-checkout' ),
 		) );
 	}
 
@@ -2470,10 +2470,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'billing_last_name',
 			'billing_phone',
 			'billing_company',
-
+			'billing_country',
+			
 			'shipping_first_name',
 			'shipping_last_name',
 			'shipping_company',
+			'shipping_country',
 		) );
 
 		// Get values for the persisted fields
@@ -2489,6 +2491,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Update customer data to the customer object
 		WC()->customer->set_props( $persisted_fields );
+		WC()->customer->save();
 	}
 
 
