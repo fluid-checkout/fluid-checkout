@@ -1874,21 +1874,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_substep_text_billing_address() {
 		$customer = WC()->customer;
-
-		$address_data = array(
-			'address_1' => $customer->get_billing_address_1(),
-			'address_2' => $customer->get_billing_address_2(),
-			'city' => $customer->get_billing_city(),
-			'state' => $customer->get_billing_state(),
-			'country' => $customer->get_billing_country(),
-			'postcode' => $customer->get_billing_postcode(),
-		);
 		
 		$html = '<div class="wfc-step__substep-text-content wfc-step__substep-text-content--billing-address">';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_first_name() . ' ' . $customer->get_billing_last_name() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_company() . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</span>';
-		$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_phone() . '</span>';
+		
+		if ( $this->is_billing_same_as_shipping_checked() ) {
+			$html .= '<span class="wfc-step__substep-text-line"><em>' . __( 'Same as shipping details', 'WooCommerce' ) . '</em></span>';
+		}
+		else {
+			$address_data = array(
+				'address_1' => $customer->get_billing_address_1(),
+				'address_2' => $customer->get_billing_address_2(),
+				'city' => $customer->get_billing_city(),
+				'state' => $customer->get_billing_state(),
+				'country' => $customer->get_billing_country(),
+				'postcode' => $customer->get_billing_postcode(),
+			);
+
+			$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_first_name() . ' ' . $customer->get_billing_last_name() . '</span>';
+			$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_company() . '</span>';
+			$html .= '<span class="wfc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</span>';
+			$html .= '<span class="wfc-step__substep-text-line">' . $customer->get_billing_phone() . '</span>';
+		}
+
 		$html .= '</div>';
 
 		return apply_filters( 'wfc_substep_billing_address_text', $html );
