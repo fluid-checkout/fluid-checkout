@@ -57,7 +57,8 @@ div.woocommerce form .form-row.has-description:not(:last-child) {
 div.woocommerce form .form-row input,
 div.woocommerce form .form-row textarea,
 div.woocommerce form .form-row select,
-div.woocommerce form .form-row .select2-container {
+div.woocommerce form .form-row .select2-container,
+div.woocommerce form .form-row .select2-container .select2-selection {
   margin-bottom: 0; }
 
 div.woocommerce form .form-row.form-row-first,
@@ -145,20 +146,34 @@ div.woocommerce form #shipping_address_2_field > label {
 /*------------------------------------*\
   #WOOCOMMERCE FORM FIELDS
 \*------------------------------------*/
-div.woocommerce form .form-row textarea:focus,
-div.woocommerce form .form-row select:focus,
-div.woocommerce form .form-row input[type="email"]:focus,
-div.woocommerce form .form-row input[type="number"]:focus,
-div.woocommerce form .form-row input[type="date"]:focus,
-div.woocommerce form .form-row input[type="search"]:focus,
-div.woocommerce form .form-row input[type="text"]:focus,
-div.woocommerce form .form-row input[type="tel"]:focus,
-div.woocommerce form .form-row input[type="url"]:focus,
-div.woocommerce form .form-row input[type="password"]:focus,
-div.woocommerce form .form-row input[type="checkbox"]:focus,
-div.woocommerce form .form-row .select2-selection:focus {
-  outline: solid 2px #535156;
-  outline-offset: 2px; }
+div.woocommerce form .form-row textarea,
+div.woocommerce form .form-row select,
+div.woocommerce form .form-row input[type="email"],
+div.woocommerce form .form-row input[type="number"],
+div.woocommerce form .form-row input[type="date"],
+div.woocommerce form .form-row input[type="search"],
+div.woocommerce form .form-row input[type="text"],
+div.woocommerce form .form-row input[type="tel"],
+div.woocommerce form .form-row input[type="url"],
+div.woocommerce form .form-row input[type="password"],
+div.woocommerce form .form-row input[type="checkbox"],
+div.woocommerce form .form-row .select2-selection {
+  position: relative;
+  z-index: 1; }
+  div.woocommerce form .form-row textarea:focus,
+  div.woocommerce form .form-row select:focus,
+  div.woocommerce form .form-row input[type="email"]:focus,
+  div.woocommerce form .form-row input[type="number"]:focus,
+  div.woocommerce form .form-row input[type="date"]:focus,
+  div.woocommerce form .form-row input[type="search"]:focus,
+  div.woocommerce form .form-row input[type="text"]:focus,
+  div.woocommerce form .form-row input[type="tel"]:focus,
+  div.woocommerce form .form-row input[type="url"]:focus,
+  div.woocommerce form .form-row input[type="password"]:focus,
+  div.woocommerce form .form-row input[type="checkbox"]:focus,
+  div.woocommerce form .form-row .select2-selection:focus {
+    outline: solid 2px #535156;
+    outline-offset: 2px; }
 
 /*------------------------------------*\
 	#EXPANSIBLE SECTIONS

@@ -76,9 +76,24 @@ jQuery( function( $ ) {
 
 		wc_country_select_select2();
 
-		// CHANGE: Added `updated_checkout` to list of event which trigger select2 fields rebuild
-		$( document.body ).on( 'country_to_state_changed, updated_checkout', function() {
+		$( document.body ).on( 'country_to_state_changed', function() {
 			wc_country_select_select2();
+		});
+
+		// CHANGE: Rebuild `select2` fields for billing address after `updated_checkout`
+		$( document.body ).on( 'updated_checkout', function() {
+			$( 'select#billing_country, select#billing_state' ).each( function() {
+				var select2_args = $.extend({
+					placeholder: $( this ).attr( 'data-placeholder' ) || $( this ).attr( 'placeholder' ) || '',
+					width: '100%'
+				}, getEnhancedSelectFormatString() );
+
+				$( this )
+					.on( 'select2:select', function() {
+						$( this ).focus(); // Maintain focus after select https://github.com/select2/select2/issues/4384
+					} )
+					.selectWoo( select2_args );
+			});
 		});
 	}
 

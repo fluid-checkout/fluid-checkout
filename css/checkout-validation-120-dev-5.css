@@ -123,6 +123,7 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-in
   width: 24px;
   height: 24px;
   font-size: 24px;
+  z-index: 10;
   position: absolute;
   right: 5px;
   top: 8px;
