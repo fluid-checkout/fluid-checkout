@@ -91,12 +91,13 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		$key = 'coupon_code';
 		$coupon_code_field_args = array(
-			'required'           => false,
-			'class'              => array( 'form-row-first' ),
-			'placeholder'        => $coupon_code_field_placeholder,
-			'custom_attributes'  => array(
-				'aria-label'     => $coupon_code_field_label,
-				'data-autofocus' => true,
+			'required'                   => false,
+			'wfc_skip_server_validation' => true,
+			'class'                      => array( 'form-row-first' ),
+			'placeholder'                => $coupon_code_field_placeholder,
+			'custom_attributes'          => array(
+				'aria-label'             => $coupon_code_field_label,
+				'data-autofocus'         => true,
 			),
 		);
 		

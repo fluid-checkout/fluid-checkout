@@ -53,13 +53,14 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function get_shipping_phone_field() {
 		return apply_filters( 'wfc_shipping_phone_field_args', array(
-			'label'     => __( 'Shipping phone', 'woocommerce-fluid-checkout' ),
-			'description' => __( 'For shipping-related purposes only.', 'woocommerce-fluid-checkout' ),
-			'required'  => get_option( 'wfc_shipping_phone_field_visibility', 'optional' ) === 'required',
-			'class'     => array( 'form-row-first' ),
-			'priority'  => 25,
+			'label'        => __( 'Shipping phone', 'woocommerce-fluid-checkout' ),
+			'description'  => __( 'For shipping-related purposes only.', 'woocommerce-fluid-checkout' ),
+			'required'     => get_option( 'wfc_shipping_phone_field_visibility', 'optional' ) === 'required',
+			'validate'     => array( 'phone' ),
+			'class'        => array( 'form-row-first' ),
+			'priority'     => 25,
 			'autocomplete' => 'shipping tel',
-			'clear'     => true
+			'clear'        => true
 		) );
 	}
 
