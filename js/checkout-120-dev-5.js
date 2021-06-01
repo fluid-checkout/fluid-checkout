@@ -418,8 +418,8 @@ jQuery( function( $ ) {
 				data.shipping_method = shipping_methods;
 			}
 
-			// TODO: Also block the billing address fields
-			$( '.woocommerce-checkout-payment, .woocommerce-checkout-review-order-table' ).block({
+			// CHANGE: Also block the billing address fields and shipping methods
+			$( '.woocommerce-checkout-payment, .woocommerce-checkout-review-order-table, .woocommerce-billing-fields, .wfc-shipping-method__packages' ).block({
 				message: null,
 				overlayCSS: {
 					background: '#fff',

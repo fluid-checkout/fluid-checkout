@@ -1458,7 +1458,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$available_methods = $package['rates'];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
-			$chosen_method_label = wc_cart_totals_shipping_method_label( $method );
+			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.' );
 			
 			// TODO: Maybe handle multiple packages
 			// $package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
@@ -1651,6 +1651,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$packages = WC()->shipping->get_packages();
 		
 		do_action( 'wfc_shipping_methods_before_packages' );
+
+		echo '<div class="wfc-shipping-method__packages">';
 		
 		$first_item = true;
 		foreach ( $packages as $i => $package ) {
@@ -1680,6 +1682,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$first_item = false;
 		}
 
+		echo '</div>';
+
 		do_action( 'wfc_shipping_methods_after_packages' );
 
 		return ob_get_clean();
@@ -1692,7 +1696,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_shipping_methods_fragment( $fragments ) {
 		$html = $this->get_shipping_methods_available();
-		$fragments['.shipping-method__packages'] = $html;
+		$fragments['.wfc-shipping-method__packages'] = $html;
 		return $fragments;
 	}
 
