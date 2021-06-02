@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 2.3.6
- * @wfc-version 1.2.0
+ * @fc-version 1.2.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -40,7 +40,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php endforeach; ?>
 
         <?php // CHANGE: Add new hook, move shipping related code to a new template file ?>
-        <?php do_action( 'wfc_cart_totals_shipping' ); ?>
+        <?php do_action( 'fc_cart_totals_shipping' ); ?>
 
 		<?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
 			<tr class="fee">

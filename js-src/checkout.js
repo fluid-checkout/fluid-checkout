@@ -15,8 +15,8 @@ jQuery( function( $ ) {
 	$.blockUI.defaults.overlayCSS.cursor = 'default';
 
 	// CHANGE: Add custom css selectors for place order button and terms checkbox
-	var _place_order_selector = '#place_order, .wfc-place-order-button';
-	var _terms_selector = '.wfc-terms-checkbox';
+	var _place_order_selector = '#place_order, .fc-place-order-button';
+	var _terms_selector = '.fc-terms-checkbox';
 	var _updateBeforeUnload = false;
 
 
@@ -419,7 +419,7 @@ jQuery( function( $ ) {
 			}
 
 			// CHANGE: Also block the billing address fields and shipping methods
-			$( '.woocommerce-checkout-payment, .woocommerce-checkout-review-order-table, .woocommerce-billing-fields, .wfc-shipping-method__packages' ).block({
+			$( '.woocommerce-checkout-payment, .woocommerce-checkout-review-order-table, .woocommerce-billing-fields, .fc-shipping-method__packages' ).block({
 				message: null,
 				overlayCSS: {
 					background: '#fff',
@@ -864,7 +864,7 @@ jQuery( function( $ ) {
 					apply_button.removeClass( 'is-loading' );
 
 					if ( code ) {
-						$( '.wfc-step__substep-text-content--coupon-codes' ).before( code );
+						$( '.fc-step__substep-text-content--coupon-codes' ).before( code );
 
 						$( document.body ).trigger( 'applied_coupon_in_checkout', [ data.coupon_code ] );
 						$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
@@ -878,8 +878,8 @@ jQuery( function( $ ) {
 						// Close the coupon code field section
 						if ( window.CollapsibleBlock ) {
 
-							var expansibleCouponToggle = document.querySelector( 'form.woocommerce-checkout .wfc-expansible-form-section__toggle--coupon_code' );
-							var expansibleCouponContent = document.querySelector( 'form.woocommerce-checkout .wfc-expansible-form-section__content--coupon_code' );
+							var expansibleCouponToggle = document.querySelector( 'form.woocommerce-checkout .fc-expansible-form-section__toggle--coupon_code' );
+							var expansibleCouponContent = document.querySelector( 'form.woocommerce-checkout .fc-expansible-form-section__content--coupon_code' );
 							var expansibleCouponToggleButton = document.querySelector( 'form.woocommerce-checkout .expansible-section__toggle-plus--coupon_code' );
 
 							if ( expansibleCouponToggle && expansibleCouponContent ) {

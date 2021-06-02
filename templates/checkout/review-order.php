@@ -13,7 +13,7 @@
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.8.0
- * @wfc-version 1.2.0
+ * @fc-version 1.2.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -72,7 +72,7 @@ defined( 'ABSPATH' ) || exit;
 			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
 
 			<?php // CHANGE: Replaced cart totals shipping markup with an action hook to allow for customizations ?>
-			<?php do_action( 'wfc_review_order_shipping' ); ?>
+			<?php do_action( 'fc_review_order_shipping' ); ?>
 
 			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
 

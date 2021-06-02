@@ -2,7 +2,7 @@
   #CHECKOUT PROGRESS BAR
 \*------------------------------------*/
 
-.wfc-progress-bar .wfc-progress-bar__inner {
+.fc-progress-bar .fc-progress-bar__inner {
 	z-index: z( 'float-element' ) - 2; // Needed to show behing the order summary flyout
 	padding: $checkout-progress-padding;
 	background-color: $white;
@@ -11,7 +11,7 @@
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-progress-padding--large-screen; }
 }
 // With admin bar
-.admin-bar .wfc-progress-bar[data-sticky-states].is-sticky--top .wfc-progress-bar__inner {
+.admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
 	transform: translateY( 46px );
 	
 	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
@@ -23,8 +23,8 @@
 
 
 
-.wfc-progress-bar + .wfc-checkout-notices,
-.wfc-progress-bar + form.woocommerce-checkout {
+.fc-progress-bar + .fc-checkout-notices,
+.fc-progress-bar + form.woocommerce-checkout {
 	padding-top: $global-spacing-small;
 }
 
@@ -32,7 +32,7 @@
 
 
 
-.wfc-progress-bar__count {
+.fc-progress-bar__count {
 	margin: $checkout-step-count-margin;
 	color: $checkout-step-count-color;
 	font-weight: $checkout-step-count-font-weight;
@@ -51,7 +51,7 @@
 
 
 
-.wfc-progress-bar__bars {
+.fc-progress-bar__bars {
 	width: 100%;
 	height: $checkout-progress-bar-height;
 	border: $checkout-progress-bar-border;
@@ -60,7 +60,7 @@
 	overflow: hidden;
 }
 
-.wfc-progress-bar__bar {
+.fc-progress-bar__bar {
 	display: block;
 	float:left;
 	margin: 0;
@@ -69,14 +69,14 @@
 	background-color: $checkout-progress-bar-color;
 	transition: width $global-animation-duration linear, background-color $global-animation-duration linear;
 }
-.wfc-progress-bar__bar.is-complete { background-color: $checkout-progress-bar-complete-color; }
-.wfc-progress-bar__bar.is-current { background-color: $checkout-progress-bar-current-color; }
+.fc-progress-bar__bar.is-complete { background-color: $checkout-progress-bar-complete-color; }
+.fc-progress-bar__bar.is-current { background-color: $checkout-progress-bar-current-color; }
 
 // Progress bar width
 // Supports from 2 to 10 checkout steps
 @for $count from 2 through 10 {
-	.wfc-progress-bar__bars[data-step-count="#{$count}"] .wfc-progress-bar__bar.is-complete,
-	.wfc-progress-bar__bars[data-step-count="#{$count}"] .wfc-progress-bar__bar.is-current {
+	.fc-progress-bar__bars[data-step-count="#{$count}"] .fc-progress-bar__bar.is-complete,
+	.fc-progress-bar__bars[data-step-count="#{$count}"] .fc-progress-bar__bar.is-current {
 		width: #{ 100% / $count };
 	}
 }

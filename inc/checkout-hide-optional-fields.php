@@ -41,20 +41,20 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		if ( array_key_exists( 'required', $args ) && $args['required'] === true ) { return $field; }
 
 		// Bail if optional field by its type
-		if ( in_array( $args['type'], apply_filters( 'wfc_hide_optional_fields_skip_types', array( 'checkbox' ) ) ) ) { return $field; }
+		if ( in_array( $args['type'], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'checkbox' ) ) ) ) { return $field; }
 
 		// Always skip these fields
 		$skip_list = array( 'state', 'billing_state', 'shipping_state' );
 
 		// Maybe skip "address line 2" fields
-		if ( get_option( 'wfc_hide_optional_fields_skip_address_2', 'no' ) === 'yes' ) {
+		if ( get_option( 'fc_hide_optional_fields_skip_address_2', 'no' ) === 'yes' ) {
 			$skip_list[] = 'address_2';
 			$skip_list[] = 'shipping_address_2';
 			$skip_list[] = 'billing_address_2';
 		}
 
 		// Check if should skip current field
-		if ( in_array( $key, apply_filters( 'wfc_hide_optional_fields_skip_list', $skip_list ) ) ) { return $field; }
+		if ( in_array( $key, apply_filters( 'fc_hide_optional_fields_skip_list', $skip_list ) ) ) { return $field; }
 
 		// Set attribute `data-autofocus` to focus on the optional field when expanding the section
 		$field = str_replace( 'name="'. $key .'"', 'name="'. $key .'" data-autofocus', $field );
@@ -79,7 +79,7 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 
 		// Add expansible block markup for the field
 		/* translators: %s: Form field label */
-		$toggle_label = apply_filters( 'wfc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), strtolower( $args['label'] ) ) );
+		$toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), strtolower( $args['label'] ) ) );
 		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, $toggle_label, $expansible_section_args );
 		echo $field;
 		$this->checkout_steps()->output_expansible_form_section_end_tag();

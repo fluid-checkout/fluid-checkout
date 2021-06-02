@@ -13,20 +13,20 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
- * @wfc-version 1.2.0
+ * @fc-version 1.2.0
  * @global WC_Checkout $checkout
  */
 
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<?php do_action( 'wfc_checkout_before_step_shipping_fields' ); ?>
+<?php do_action( 'fc_checkout_before_step_shipping_fields' ); ?>
 
 <div class="woocommerce-shipping-fields">
 	<?php if ( true === WC()->cart->needs_shipping_address() ) : ?>
 
 		<?php // CHANGE: Output "ship to different address" option via hook ?>
-		<?php do_action( 'wfc_before_checkout_shipping_address_wrapper', $checkout ); ?>
+		<?php do_action( 'fc_before_checkout_shipping_address_wrapper', $checkout ); ?>
 
 		<div class="shipping_address">
 
@@ -49,4 +49,4 @@ defined( 'ABSPATH' ) || exit;
 	<?php endif; ?>
 </div>
 
-<?php do_action( 'wfc_checkout_after_step_shipping_fields' ); ?>
+<?php do_action( 'fc_checkout_after_step_shipping_fields' ); ?>

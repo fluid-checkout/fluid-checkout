@@ -1,7 +1,7 @@
 /*------------------------------------*\
 	#ORDER DETAILS - GIFT MESSAGE
 \*------------------------------------*/
-.wfc-gift-options__message {
+.fc-gift-options__message {
     margin: $gift-message-margin;
 	padding: $gift-message-padding;
 	border: $gift-message-border;
@@ -11,7 +11,7 @@
 
 
 
-.wfc-gift-options__message .wfc-gift-options__message-text {
+.fc-gift-options__message .fc-gift-options__message-text {
     max-width: remsize( 75rem );
     display: block;
     margin: 0 auto;
@@ -22,6 +22,6 @@
 
 
 
-.wfc-gift-options__message .wfc-gift-options__message-from {
+.fc-gift-options__message .fc-gift-options__message-from {
     margin-top: $global-spacing-tiny;
 }

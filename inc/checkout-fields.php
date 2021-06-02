@@ -42,7 +42,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	public function get_checkout_field_args() {
 		$billing_email_description = WC()->cart->needs_shipping() ? __( 'Order and tracking number will be sent to this email address.', 'fluid-checkout' ) : __( 'Order number and receipt will be sent to this email address.', 'fluid-checkout' );
 
-		return apply_filters( 'wfc_checkout_field_args', array(
+		return apply_filters( 'fc_checkout_field_args', array(
 			'billing_email'         => array( 'priority' => 5, 'autocomplete' => 'contact email', 'description' => $billing_email_description ),
 			'billing_first_name'    => array( 'priority' => 10, 'autocomplete' => 'contact given-name' ),
 			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'contact family-name' ),
@@ -76,7 +76,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function change_default_locale_field_args( $fields ) {
-		$new_field_args = apply_filters( 'wfc_default_locale_field_args', array(
+		$new_field_args = apply_filters( 'fc_default_locale_field_args', array(
 			'address_1'           => array( 'class' => array( 'form-row-wide' ), 'description' => __( 'House number and street name.', 'fluid-checkout' ) ),
 			'address_2'           => array( 'class' => array( 'form-row-wide' ), 'label' => __( 'Appartment, unit, building, floor, etc.', 'fluid-checkout' ), 'placeholder' => __( 'Appartment, unit, building, floor, etc.', 'fluid-checkout' ) ),
 			'city'                => array( 'class' => array( 'form-row-first' ) ),

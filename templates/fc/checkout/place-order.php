@@ -2,7 +2,7 @@
 /**
  * Checkout Payment Section
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/wfc/checkout/place-order.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/fc/checkout/place-order.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to

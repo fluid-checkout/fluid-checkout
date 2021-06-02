@@ -1,7 +1,7 @@
 /*------------------------------------*\
 	#EXPANSIBLE SECTIONS
 \*------------------------------------*/
-div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
+div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
 	position: relative;
 	display: inline-block;
 	width: auto;
@@ -30,13 +30,13 @@ div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
 
 
 
-div.woocommerce .wfc-expansible-form-section.form-row .form-row {
+div.woocommerce .fc-expansible-form-section.form-row .form-row {
 	margin: 0;
 	padding: 0;
 	width: 100%;
 }
 
-div.woocommerce .wfc-expansible-form-section.form-row.form-row-last .wfc-expansible-form-section__toggle .collapsible-content__inner {
+div.woocommerce .fc-expansible-form-section.form-row.form-row-last .fc-expansible-form-section__toggle .collapsible-content__inner {
 	@media (#{$bp-larger-than-tablet}) {
 		padding-top: 1.8em;
 	}
@@ -47,7 +47,7 @@ div.woocommerce .wfc-expansible-form-section.form-row.form-row-last .wfc-expansi
 
 
 // Temporarily hide expansible form sections while the collapsible-block script is not yet loaded
-body:not( .has-collapsible-block ) .wfc-expansible-form-section__toggle.is-collapsed .collapsible-content__inner,
-body:not( .has-collapsible-block ) .wfc-expansible-form-section__content.is-collapsed .collapsible-content__inner {
+body:not( .has-collapsible-block ) .fc-expansible-form-section__toggle.is-collapsed .collapsible-content__inner,
+body:not( .has-collapsible-block ) .fc-expansible-form-section__content.is-collapsed .collapsible-content__inner {
 	display: none;
 }

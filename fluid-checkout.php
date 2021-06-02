@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Fluid Checkout for WooCommerce
-Plugin URI: https://fluidweb.co/plugins/fluid-checkout/
+Plugin URI: https://fluidcheckout.com/
 Description: Provides a fluid checkout experience for any WooCommerce store. Ask for shipping information before billing in a linear and multi-step checkout, add options for gift message and packaging and add a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.
 Text Domain: fluid-checkout
 Domain Path: /languages
@@ -9,7 +9,8 @@ Version: 1.2.0-dev-5
 Author: Fluidweb.co
 Author URI: https://fluidweb.co/
 License: GPLv2
-WC tested up to: 5.0.0
+WC requires at least: 5.0.0
+WC tested up to: 5.3.0
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -32,9 +33,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Define WFC_PLUGIN_FILE.
-if ( ! defined( 'WFC_PLUGIN_FILE' ) ) {
-	define( 'WFC_PLUGIN_FILE', __FILE__ );
+// Define FC_PLUGIN_FILE.
+if ( ! defined( 'FC_PLUGIN_FILE' ) ) {
+	define( 'FC_PLUGIN_FILE', __FILE__ );
 }
 
 
@@ -108,10 +109,10 @@ class FluidCheckout {
 	public function set_plugin_vars() {
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-		self::$this_plugin    = plugin_basename( WFC_PLUGIN_FILE );
-		self::$directory_path = plugin_dir_path( WFC_PLUGIN_FILE );
-		self::$directory_url  = plugin_dir_url( WFC_PLUGIN_FILE );
-		self::$version = get_file_data( WFC_PLUGIN_FILE , ['Version' => 'Version'], 'plugin')['Version'];
+		self::$this_plugin    = plugin_basename( FC_PLUGIN_FILE );
+		self::$directory_path = plugin_dir_path( FC_PLUGIN_FILE );
+		self::$directory_url  = plugin_dir_url( FC_PLUGIN_FILE );
+		self::$version = get_file_data( FC_PLUGIN_FILE , ['Version' => 'Version'], 'plugin')['Version'];
 		self::$asset_version = $this->get_assets_version_number();
 	}
 
@@ -155,15 +156,15 @@ class FluidCheckout {
 	private function add_features() {
 		self::$features = array(
 			'checkout-steps'                      => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
-			'checkout-page-template'              => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php', 'enable_option' => 'wfc_enable_checkout_page_template', 'enable_default' => 'yes' ),
+			'checkout-page-template'              => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php', 'enable_option' => 'fc_enable_checkout_page_template', 'enable_default' => 'yes' ),
 
-			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'wfc_apply_checkout_field_args', 'enable_default' => 'yes' ),
-			'checkout-hide-optional-fields'       => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'wfc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),
-			'checkout-shipping-phone'             => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'wfc_shipping_phone_field_visibility', 'enable_default' => 'no' ),
-			'checkout-validation'                 => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'wfc_enable_checkout_validation', 'enable_default' => 'yes' ),
-			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'wfc_enable_checkout_gift_options', 'enable_default' => 'no' ),
-			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php', 'enable_option' => 'wfc_enable_checkout_coupon_codes', 'enable_default' => 'yes' ),
-			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'wfc_enable_checkout_widget_areas', 'enable_default' => 'yes' ),
+			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'fc_apply_checkout_field_args', 'enable_default' => 'yes' ),
+			'checkout-hide-optional-fields'       => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'fc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),
+			'checkout-shipping-phone'             => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'fc_shipping_phone_field_visibility', 'enable_default' => 'no' ),
+			'checkout-validation'                 => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'fc_enable_checkout_validation', 'enable_default' => 'yes' ),
+			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'fc_enable_checkout_gift_options', 'enable_default' => 'no' ),
+			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php', 'enable_option' => 'fc_enable_checkout_coupon_codes', 'enable_default' => 'yes' ),
+			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'fc_enable_checkout_widget_areas', 'enable_default' => 'yes' ),
 		);
 	}
 
@@ -177,7 +178,7 @@ class FluidCheckout {
 	 */
 	public function get_assets_version_number() {
 		$asset_version = '-' . preg_replace( '/\./', '', self::$version );
-		$min = get_option( 'wfc_load_unminified_assets', 'no' ) === 'yes' ? '' : '.min';
+		$min = get_option( 'fc_load_unminified_assets', 'no' ) === 'yes' ? '' : '.min';
 		return $asset_version . $min;
 	}
 
@@ -203,7 +204,7 @@ class FluidCheckout {
 		}
 
 		// Look for template file in the theme
-		if ( ! $_template || apply_filters( 'wfc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
+		if ( ! $_template || apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
 			$_template = locate_template( array(
 				$template_path . $template_name,
 				$template_name,
@@ -230,7 +231,7 @@ class FluidCheckout {
 		if ( ! is_array( self::$features )  ) { return; }
 
 		// Maybe extend plugin features
-		$_features = apply_filters( 'wfc_init_features_list', self::$features );
+		$_features = apply_filters( 'fc_init_features_list', self::$features );
 
 		// Load enqueue
 		require_once self::$directory_path . 'inc/enqueue.php';
@@ -285,7 +286,7 @@ class FluidCheckout {
 			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
 
 			// Maybe skip compat file
-			if ( get_option( 'wfc_enable_compat_plugin_' . $plugin_slug, true ) === 'false' ) { continue; }
+			if ( get_option( 'fc_enable_compat_plugin_' . $plugin_slug, true ) === 'false' ) { continue; }
 
 			// Get plugin file path
 			$plugin_compat_file_path = self::$directory_path . 'inc/compat/plugins/compat-plugin-' . $plugin_slug . '.php';
@@ -312,7 +313,7 @@ class FluidCheckout {
 
 		foreach ( $theme_slugs as $theme_slug ) {
 			// Maybe skip compat file
-			if ( get_option( 'wfc_enable_compat_theme_' . $theme_slug, true ) === 'false' ) { continue; }
+			if ( get_option( 'fc_enable_compat_theme_' . $theme_slug, true ) === 'false' ) { continue; }
 
 			// Get current theme's compatibility file name
 			$theme_compat_file_path = self::$directory_path . 'inc/compat/themes/compat-theme-' . $theme_slug . '.php';

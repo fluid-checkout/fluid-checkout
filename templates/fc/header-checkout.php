@@ -2,7 +2,7 @@
 /**
  * The header for the checkout page.
  *
-  * This template can be overridden by copying it to yourtheme/woocommerce/wfc/checkout/header-checkout.php.
+  * This template can be overridden by copying it to yourtheme/woocommerce/fc/checkout/header-checkout.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -33,6 +33,6 @@
 
 <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'fluid-checkout' ); ?></a>
 
-<?php do_action( 'wfc_checkout_header' ); ?>
+<?php do_action( 'fc_checkout_header' ); ?>
 
-<main id="main" class="content-area wfc-main">
+<main id="main" class="content-area fc-main">

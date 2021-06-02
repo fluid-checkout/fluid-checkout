@@ -2,7 +2,7 @@
 /**
  * Checkout account creation form
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/wfc/checkout/form-account-creation.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/fc/checkout/form-account-creation.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -36,8 +36,8 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
 
-			<?php // CHANGE: Add class `wfc-field-group` ?>
-			<div class="create-account wfc-field-group">
+			<?php // CHANGE: Add class `fc-field-group` ?>
+			<div class="create-account fc-field-group">
 				<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
 					<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
 				<?php endforeach; ?>

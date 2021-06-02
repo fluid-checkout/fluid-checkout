@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.5.3
- * @wfc-version 1.2.0
+ * @fc-version 1.2.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -25,10 +25,10 @@ if ( ! is_ajax() ) {
 <div id="payment" class="woocommerce-checkout-payment">
 
 	<?php // CHANGE: Added hook for before the payment section ?>
-	<?php do_action( 'wfc_checkout_before_payment', $checkout ); ?>
+	<?php do_action( 'fc_checkout_before_payment', $checkout ); ?>
 
 	<?php if ( WC()->cart->needs_payment() ) : ?>
-		<div class="wfc-payment-methods__wrapper">
+		<div class="fc-payment-methods__wrapper">
 			<ul class="wc_payment_methods payment_methods methods">
 				<?php
 				if ( ! empty( $available_gateways ) ) {
@@ -43,13 +43,13 @@ if ( ! is_ajax() ) {
 		</div>
 	<?php // CHANGE: Display info message when payment is not needed ?>
 	<?php else: ?>
-		<div class="woocommerce-info"><?php echo apply_filters( 'wfc_payment_not_needed_message', sprintf( __( 'Your order has a total amount due of %s. No&nbsp;further payment is needed.', 'fluid-checkout' ), wc_price( 0 ) ) ); ?></div>
+		<div class="woocommerce-info"><?php echo apply_filters( 'fc_payment_not_needed_message', sprintf( __( 'Your order has a total amount due of %s. No&nbsp;further payment is needed.', 'fluid-checkout' ), wc_price( 0 ) ) ); ?></div>
 	<?php endif; ?>
 
-	<?php // CHANGE: Removed place order section, moved to templates/wfc/checkout/place-order.php ?>
+	<?php // CHANGE: Removed place order section, moved to templates/fc/checkout/place-order.php ?>
 
 	<?php // CHANGE: Added hook for after the payment section ?>
-	<?php do_action( 'wfc_checkout_after_payment', $checkout ); ?>
+	<?php do_action( 'fc_checkout_after_payment', $checkout ); ?>
 
 </div>
 

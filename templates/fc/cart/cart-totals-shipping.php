@@ -2,7 +2,7 @@
 /**
  * Cart totals shipping section
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/wfc/cart/cart-totals-shipping.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/fc/cart/cart-totals-shipping.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to

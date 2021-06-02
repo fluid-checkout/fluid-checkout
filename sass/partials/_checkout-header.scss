@@ -1,7 +1,7 @@
 /*------------------------------------*\
   #CHECKOUT HEADER
 \*------------------------------------*/
-.wfc-checkout-header {
+.fc-checkout-header {
 	z-index: z( 'sticky-element' );
 	position: fixed;
 	top: 0;
@@ -20,7 +20,7 @@
 	}
 }
 // With admin bar
-.admin-bar .wfc-checkout-header {
+.admin-bar .fc-checkout-header {
 	top: 46px; // Uses pixels to match WordPress admin bar
 
 	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
@@ -28,7 +28,7 @@
 	}
 }
 
-.wfc-checkout-header__inner {
+.fc-checkout-header__inner {
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -60,12 +60,12 @@
 
 
 
-.wfc-checkout-header .wfc-checkout__branding {
+.fc-checkout-header .fc-checkout__branding {
 	width: 50%;
 	line-height: 1;
 }
 
-.wfc-checkout-header .wfc-checkout__title.screen-reader-text {
+.fc-checkout-header .fc-checkout__title.screen-reader-text {
 	clip: rect( 1px, 1px, 1px, 1px );
 	position: absolute !important; // Needed to make sure other style rules won't affect accessibility
 	height: 1px;
@@ -73,7 +73,7 @@
 	overflow: hidden;
 }
 
-.wfc-checkout-header .wfc-checkout__site-name {
+.fc-checkout-header .fc-checkout__site-name {
 	display: inline-block;
 	margin: $global-spacing-extra-small 0;
 	padding: 0;
@@ -81,11 +81,11 @@
 	font-weight: bold;
 }
 
-.wfc-checkout-header .custom-logo-link {
+.fc-checkout-header .custom-logo-link {
 	display: inline-block;
 	margin: remsize( .2rem ) 0 0;
 }
-.wfc-checkout-header .custom-logo {
+.fc-checkout-header .custom-logo {
 	margin: #{ ( $checkout-header-height - $checkout-logo-height ) / 2 } 0;
 	height: $checkout-logo-height;
 	width: auto;
@@ -100,7 +100,7 @@
 
 
 
-.wfc-checkout-header .wfc-checkout__cart-link-wrapper {
+.fc-checkout-header .fc-checkout__cart-link-wrapper {
 	position: absolute;
 	top: 0;
 	right: #{ $container-spacing-mobile - $global-spacing-extra-small };
@@ -116,7 +116,7 @@
 	@media (#{$bp-larger-than-tablet}) { right: #{ $container-spacing-tablet }; }
 	@media (#{$bp-larger-than-desktop}) { display: none; }
 }
-.wfc-checkout-header .wfc-checkout__cart-link {
+.fc-checkout-header .fc-checkout__cart-link {
 	margin: $global-spacing-tiny 0;
 	padding: $global-spacing-extra-small remsize( .8rem ) remsize( .8rem ) $global-spacing-extra-small;
 	background-color: $white;
@@ -134,25 +134,25 @@
 		color: inherit;
 	}
 }
-.wfc-checkout-header .wfc-checkout__cart-link:before {
+.fc-checkout-header .fc-checkout__cart-link:before {
 	@include icon-styles();
 	@include icon( 'i-cart' );
 	@include icon-size( $icon-size-small );
 	
 	margin-right: $global-spacing-extra-small;
 }
-.wfc-checkout-header .wfc-checkout__cart-link:after {
+.fc-checkout-header .fc-checkout__cart-link:after {
 	@include icon-styles();
 	@include icon( 'i-chevron-down' );
 	@include icon-size( $icon-size-small );
 }
 
-.has-flyout--open-wfc-checkout-order-review .wfc-checkout-header .wfc-checkout__cart-link {
+.has-flyout--open-fc-checkout-order-review .fc-checkout-header .fc-checkout__cart-link {
 	background-color: $lighter-grey;
 	box-shadow: none;
 	transform: translateY( remsize( .1rem ) );
 }
-.has-flyout--open-wfc-checkout-order-review .wfc-checkout-header .wfc-checkout__cart-link:after {
+.has-flyout--open-fc-checkout-order-review .fc-checkout-header .fc-checkout__cart-link:after {
 	@include icon( 'i-chevron-up' );
 }
 
@@ -160,7 +160,7 @@
 
 
 
-.wfc-checkout-header .wfc-checkout__header-widgets {
+.fc-checkout-header .fc-checkout__header-widgets {
 	@media (#{$bp-larger-than-desktop}) {
 		position: absolute;
 		top: 50%;

@@ -2,7 +2,7 @@
 /**
  * Checkout shipping additional information form
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/wfc/checkout/form-additional-fields.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/fc/checkout/form-additional-fields.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) ) : ?>
 
-		<?php if ( apply_filters( 'wfc_show_additional_information_section_title', ( ! WC()->cart->needs_shipping() || wc_ship_to_billing_address_only() ) ) ) : ?>
+		<?php if ( apply_filters( 'fc_show_additional_information_section_title', ( ! WC()->cart->needs_shipping() || wc_ship_to_billing_address_only() ) ) ) : ?>
 
 			<h3><?php esc_html_e( 'Additional information', 'woocommerce' ); ?></h3>
 

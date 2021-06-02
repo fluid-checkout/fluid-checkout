@@ -31,7 +31,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $template; }
 
 		// Locate new checkout page template
-		$template_name = 'wfc/page-checkout.php';
+		$template_name = 'fc/page-checkout.php';
 		$plugin_path  = self::$directory_path . 'templates/';
 		$new_template = $this->locate_template( $template, $template_name, $plugin_path );
 

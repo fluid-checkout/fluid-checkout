@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
- * @wfc-version 1.2.0
+ * @fc-version 1.2.0
  * @global WC_Checkout $checkout
  */
 
@@ -34,7 +34,7 @@ defined( 'ABSPATH' ) || exit;
 		foreach ( $fields as $key => $field ) {
 			/**
 			 * The variable `$ignore_fields` is passed as a paramenter to this template file
-			 * @see Hook `wfc_checkout_contact_step_field_ids`
+			 * @see Hook `fc_checkout_contact_step_field_ids`
 			 */
 			if ( ! in_array( $key, $ignore_fields ) ) {
 				woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
