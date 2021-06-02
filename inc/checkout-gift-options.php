@@ -80,7 +80,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 */
 	public function output_substep_gift_options( $step_id ) {
 		$substep_id = 'gift_options';
-		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, __( 'Gift Options', 'woocommerce-fluid-checkout' ) );
+		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, __( 'Gift options', 'woocommerce-fluid-checkout' ) );
 
 		$this->checkout_steps()->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_gift_options_fields();
@@ -160,7 +160,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 				'class'         => array( 'form-row-wide '),
 				'label'         => __( 'From', 'woocommerce-fluid-checkout' ),
 				'placeholder'   => __( 'Your name', 'woocommerce-fluid-checkout' ),
-				'description'   => __( 'Name of who is sending the gift. Printed on the packing slip.', 'woocommerce-fluid-checkout' ),
+				'description'   => __( 'Name of who is sending the gift, printed on the packing slip.', 'woocommerce-fluid-checkout' ),
 				'default'		=> is_checkout() ? $customer->get_display_name() : null,
 				'maxlength'		=> apply_filters( 'wfc_gift_options_from_length', false ),
 				'custom_attributes' => array(

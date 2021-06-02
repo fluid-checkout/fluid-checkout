@@ -27,6 +27,7 @@
 		formSelector: 'form.checkout',
 		formRowSelector: '.form-row',
 		validateFieldsSelector: '.input-text, select',
+		clearValidationCountryChangedSelector: '#state, #shipping_state, #billing_state',
 		alwaysValidateFieldsSelector: '',
 		select2Selector: '.select2, .select2-hidden-accessible',
 		typeRequiredSelector: '.validate-required',
@@ -456,6 +457,37 @@
 
 
 	/**
+	 * Clear the state fields validation status classes when the field loses the value due changes to the country fields.
+	 *
+	 * @param   jQuery.Event  event    Event object as a `jQuery.Event`.
+	 * @param   string        country  Selected country code value of the related country field.
+	 * @param   jQuery.fn     wrapper  jQuery object representing the field wrapper element related to the country field that was changed. See variable `wrapper_selectors` ~LN103 of the `country-select.js`.
+	 */
+	var maybeClearStateFields = function( event, country, wrapper ) {
+		// Bail if jQuery is not available
+		if ( ! _hasJQuery ) { return; }
+		
+		var wrappersList = $( wrapper ).toArray();
+
+		wrappersList.forEach( function( wrapperItem ) {
+			
+			var fields = Array.from( wrapperItem.querySelectorAll( _settings.clearValidationCountryChangedSelector ) );
+			
+			fields.forEach( function( field ) {
+				
+				if ( '' == field.value ) {
+					var formRow = field.closest( _settings.formRowSelector );
+					_publicMethods.clearValidationResults( field, formRow );
+				}
+
+			} );
+
+		} );
+	};
+
+
+
+	/**
 	 * Clear validation results status of a field.
 	 * @param  {Field} field             Field to validation.
 	 * @param  {Element} formRow          Form row element.
@@ -571,6 +603,7 @@
 			// Run on checkout or cart changes
 			$( document ).on( 'load_ajax_content_done', _publicMethods.init );
 			$( document ).on( 'updated_checkout', initInlineMessages );
+			$( document ).on( 'country_to_state_changed', maybeClearStateFields );
 		}
 
 		_hasInitialized = true;

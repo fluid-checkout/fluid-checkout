@@ -27,8 +27,8 @@ $method = $available_methods && array_key_exists( $chosen_method, $available_met
 		<?php if ( $method ) : ?>
 			<?php printf( '<span class="shipping_method_%1$s_%2$s">%3$s</span>', $index, esc_attr( sanitize_title( $method->id ) ), FluidCheckout_Steps::instance()->get_cart_totals_shipping_method_label( $method ) ); // WPCS: XSS ok. ?>
 		<?php else :
-			// Translators: $s shipping destination.
-			echo wp_kses_post( apply_filters( 'wfc_checkout_no_shipping_method_chosen_html', sprintf( esc_html__( 'No shipping method chosen for %s.', 'woocommerce' ) . ' ', '<strong>' . esc_html( $formatted_destination ) . '</strong>' ) ) );
+			// Translators: %s shipping destination.
+			echo wp_kses_post( apply_filters( 'wfc_checkout_no_shipping_method_chosen_html', sprintf( esc_html_x( '--', 'No shipping method chosen label for the order summary', 'woocommerce-fluid-checkout' ), ' <strong>' . esc_html( $formatted_destination ) . '</strong>' ) ) );
 		endif; ?>
 	</td>
 </tr>

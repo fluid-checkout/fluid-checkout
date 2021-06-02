@@ -1,34 +1,35 @@
 /*------------------------------------*\
   #CHECKOUT LOGIN
 \*------------------------------------*/
+.wfc-wrapper .wfc-step__substep[data-substep-id="contact_login"] {
+	padding-bottom: $global-spacing-tiny;
+	border-top: 0;
+	border-bottom: 0;
+}
+
+
 
 .wfc-contact-login {
-	margin: $global-spacing-extra-small auto;
 	text-align: center;
 }
 
 
 
 .wfc-contact-login__cta-text {
-	margin-top: $global-spacing-small;
-	margin-bottom: $global-spacing-small;
+	margin-bottom: 0;
 }
 
 
-.wfc-step__substep[data-substep-id="contact_login"] {
-	border-top: solid remsize( .1rem ) $border-color;
-	border-bottom: none;
-}
 
 .wfc-contact-login__separator {
 	position: relative;
-	margin-top: $global-spacing;
+	margin-top: $global-spacing-small;
 }
 .wfc-contact-login__separator:before {
 	z-index: z( 'default' );
 	content: '';
 	position: absolute;
-	top: 50%;
+	top: 56%;
 	display: block;
 	width: 100%;
 	height: remsize( .1rem );
@@ -41,6 +42,7 @@
 	display: inline-block;
 	padding: 0 $global-spacing-extra-small;
 	background-color: $white;
+	text-transform: lowercase;
 }
 
 

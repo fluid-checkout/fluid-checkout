@@ -4,3 +4,13 @@
 .has-checkout-layout--multi-step [data-step-complete] [data-substep-id="contact_login"] {
 	display: none;
 }
+
+
+
+.wfc-content div.woocommerce form .wfc-wrapper .form-row.create-account {
+	margin-bottom: 0;
+}
+
+.wfc-content div.woocommerce form .wfc-wrapper .form-row.create-account + div.create-account {
+	margin-top: $global-spacing-extra-small;
+}

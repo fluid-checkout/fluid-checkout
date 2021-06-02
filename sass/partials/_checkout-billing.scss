@@ -1,8 +1,37 @@
 /*------------------------------------*\
 	#CHECKOUT BILLING STEP
 \*------------------------------------*/
+.wfc-step__substep[data-substep-id="billing_address"] {
+	background-color: $lighter-grey;
 
-// Temporarily hide extensible form sections while the collapsible-block script is not yet loaded
-body:not( .has-collapsible-block ) .woocommerce-billing-fields__field-wrapper.is-collapsed .collapsible-content__inner {
+	// Make fields background white
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="search"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"] {
+		background-color: $white;
+	}
+}
+
+
+
+div.woocommerce form .woocommerce-billing-fields__field-wrapper > .collapsible-content__inner {
+	padding-top: $global-spacing-small;
+}
+
+// Temporarily hide expansible form sections while the collapsible-block script is not yet loaded
+body:not( .has-collapsible-block ) .woocommerce-billing-fields__field-wrapper.is-collapsed > .collapsible-content__inner {
 	display: none;
+}
+
+
+
+div.woocommerce form #billing_same_as_shipping_field.form-row {
+	margin-bottom: 0;
 }

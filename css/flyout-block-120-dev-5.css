@@ -440,7 +440,7 @@ body.has-flyout--open {
       max-width: 100%; } }
   @media (min-width: 1280px) {
     [data-flyout-content] {
-      max-width: 100%; } }
+      max-width: 80%; } }
   @media (min-width: 1500px) {
     [data-flyout-content] {
       max-width: 1400px; } }

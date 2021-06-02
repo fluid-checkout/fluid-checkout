@@ -19,10 +19,19 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Checkout fields args
-		add_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_args' ), 10 );
-		add_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 10 );
-		add_filter( 'woocommerce_checkout_fields', array( $this, 'change_order_field_args' ), 10 );
-		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 10 );
+		add_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_args' ), 100 );
+		add_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 100 );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'change_order_field_args' ), 100 );
+		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 100 );
+
+		// Remove `screen-reader-text` from some fields
+		add_filter( 'woocommerce_default_address_fields', array( $this, 'remove_screen_reader_class_default_locale_field_args' ), 100 );
+
+		// Add class for fields with description
+		add_filter( 'woocommerce_default_address_fields', array( $this, 'add_field_has_description_class_default_locale_field_args' ), 100 );
+		add_filter( 'woocommerce_billing_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
+		add_filter( 'woocommerce_shipping_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
 	}
 
 
@@ -39,7 +48,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'contact family-name' ),
 			'billing_phone'         => array( 'priority' => 30, 'autocomplete' => 'contact tel', 'class' => array( 'form-row-first' ) ),
 
-			'billing_company'       => array( 'priority' => 100, 'autocomplete' => 'billing organization', 'class' => array( 'form-wide' ) ),
+			'billing_company'       => array( 'priority' => 40, 'autocomplete' => 'billing organization', 'class' => array( 'form-row-last' ) ),
 			'billing_address_1'     => array( 'autocomplete' => 'billing address-line1' ),
 			'billing_address_2'     => array( 'autocomplete' => 'billing address-line2' ),
 			'billing_city'          => array( 'autocomplete' => 'billing address-level2' ),
@@ -67,19 +76,101 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function change_default_locale_field_args( $fields ) {
+		$new_field_args = apply_filters( 'wfc_default_locale_field_args', array(
+			'address_1'           => array( 'class' => array( 'form-row-wide' ), 'description' => __( 'House number and street name.', 'woocommerce-fluid-checkout' ) ),
+			'address_2'           => array( 'class' => array( 'form-row-wide' ), 'label' => __( 'Appartment, unit, building, floor, etc.', 'woocommerce-fluid-checkout' ), 'placeholder' => __( 'Appartment, unit, building, floor, etc.', 'woocommerce-fluid-checkout' ) ),
+			'city'                => array( 'class' => array( 'form-row-first' ) ),
+			'state'               => array( 'class' => array( 'form-row-last' ) ),
+			'postcode'            => array( 'class' => array( 'form-row-first' ) ),
+		) );
 
-		if ( array_key_exists( 'address_1', $fields ) ) {
-			$fields['address_1']['description'] = __( 'House number and street name.', 'woocommerce-fluid-checkout' );
+		foreach( $fields as $field_key => $original_args ) {
+			$new_args = array_key_exists( $field_key, $new_field_args ) ? $new_field_args[ $field_key ] : array();
+
+			// Merge class args and remove it from $new_args to avoid conflicts when merging all field args below
+			if ( array_key_exists( 'class', $new_args ) && array_key_exists( 'class', $original_args ) ) {
+				$original_args[ 'class' ] = $this->merge_form_field_class_args( $original_args[ 'class' ], $new_args[ 'class' ] );
+				unset( $new_args[ 'class' ] );
+			}
+
+			$fields[ $field_key ] = array_merge( $original_args, $new_args );
 		}
+
+		return $fields;
+	}
+
+
+
+	/**
+	 * Remove the class `screen-reader-text` from the label of some fields.
+	 * 
+	 * @param   array  $fields  Default address fields args.
+	 */
+	public function remove_screen_reader_class_default_locale_field_args( $fields ) {
+		$target_field_ids = array( 'address_2' );
 		
-		if ( array_key_exists( 'address_2', $fields ) ) {
-			$fields['address_2']['label'] = __( 'Appartment, suite, unit, building, floor, etc.', 'woocommerce-fluid-checkout' );
-			unset( $fields['address_2']['label_class'] );
+		foreach( $fields as $field_key => $field_args ) {
+			// Bail if field is not in the target list
+			if ( ! in_array( $field_key, $target_field_ids ) ) { continue; }
+
+			// Remove `screen-reader-text` class from the field label
+			if ( in_array( 'screen-reader-text', $fields[ $field_key ]['label_class'] ) ) {
+				$class_key = array_search( 'screen-reader-text', $fields[ $field_key ]['label_class'] );
+				unset( $fields[ $field_key ]['label_class'][ $class_key ] );
+			}
 		}
-		
-		if ( array_key_exists( 'city', $fields ) ) { $fields['city']['class'] = array( 'form-row-first' ); }
-		if ( array_key_exists( 'state', $fields ) ) { $fields['state']['class'] = array( 'form-row-last' ); }
-		if ( array_key_exists( 'postcode', $fields ) ) { $fields['postcode']['class'] = array( 'form-row-first' ); }
+
+		return $fields;
+	}
+
+
+
+	/**
+	 * Add a class to fields with description for default locale fields.
+	 * 
+	 * @param   array  $fields  Default address fields args.
+	 */
+	public function add_field_has_description_class_default_locale_field_args( $fields ) {
+		foreach( $fields as $field_key => $field_args ) {
+			// Bail if field does not have description
+			if ( ! array_key_exists( 'description', $fields[ $field_key ] ) ) { continue; }
+
+			// Maybe initialize `class` array
+			if ( ! array_key_exists( 'class', $fields[ $field_key ] ) || ! is_array( $fields[ $field_key ]['class'] ) ) {
+				$fields[ $field_key ]['class'] = array();
+			}
+
+			// Maybe add class for field with description
+			if ( ! in_array( 'has-description', $fields[ $field_key ]['class'] ) ) {
+				array_push( $fields[ $field_key ]['class'], 'has-description' );
+			}
+		}
+
+		return $fields;
+	}
+
+
+
+	/**
+	 * Add a class to fields with description for WooCommerce fields.
+	 * 
+	 * @param   array  $fields  Default address fields args.
+	 */
+	public function add_field_has_description_class_checkout_fields_args( $fields ) {
+		foreach( $fields as $field_key => $field_args ) {
+			// Bail if field does not have description
+			if ( ! array_key_exists( 'description', $fields[ $field_key ] ) ) { continue; }
+
+			// Maybe initialize `class` array
+			if ( ! array_key_exists( 'class', $fields[ $field_key ] ) || ! is_array( $fields[ $field_key ]['class'] ) ) {
+				$fields[ $field_key ]['class'] = array();
+			}
+
+			// Maybe add class for field with description
+			if ( ! in_array( 'has-description', $fields[ $field_key ]['class'] ) ) {
+				array_push( $fields[ $field_key ]['class'], 'has-description' );
+			}
+		}
 
 		return $fields;
 	}

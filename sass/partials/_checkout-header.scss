@@ -1,7 +1,6 @@
 /*------------------------------------*\
   #CHECKOUT HEADER
 \*------------------------------------*/
-
 .wfc-checkout-header {
 	z-index: z( 'sticky-element' );
 	position: fixed;
@@ -16,8 +15,8 @@
 	@media (#{$bp-larger-than-desktop}) {
 		position: static;
 		min-height: $checkout-header-height--large-screen;
+		border-bottom: solid remsize( .1rem ) $border-color;
 		box-shadow: none;
-		background-color: transparent;
 	}
 }
 // With admin bar
@@ -33,6 +32,7 @@
 	position: relative;
 	display: flex;
 	align-items: center;
+	margin: 0 auto;
 	width: 100%;
 
 	// min-height should be same as the main header element
@@ -42,12 +42,18 @@
 	// max-width
 	max-width: $container-width-mobile;
 	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
-	@media (#{$bp-larger-than-desktop}) { max-width: none; }
+	@media (#{$bp-larger-than-desktop}) { max-width: $container-width-desktop; }
+	@media (#{$bp-larger-than-desktop-medium}) { max-width: $container-width-desktop-medium; }
+	@media (#{$bp-larger-than-desktop-large}) { max-width: $container-width-desktop-large; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { max-width: $container-width-desktop-extra-large; }
 
 	// padding
 	padding: 0 $container-spacing-mobile;
 	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet; }
-	@media (#{$bp-larger-than-desktop}) { padding: 0; }
+	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop; }
+	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium; }
+	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large; }
 }
 
 

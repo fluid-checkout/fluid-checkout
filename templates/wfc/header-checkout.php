@@ -31,5 +31,8 @@
 
 <body <?php body_class(); ?>>
 
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'woocommerce-fluid-checkout' ); ?></a>
+<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'woocommerce-fluid-checkout' ); ?></a>
+
+<?php do_action( 'wfc_checkout_header' ); ?>
+
+<main id="main" class="content-area wfc-main">

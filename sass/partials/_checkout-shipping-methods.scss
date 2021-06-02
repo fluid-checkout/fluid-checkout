@@ -2,6 +2,15 @@
   #CHECKOUT SHIPPING METHODS
 \*------------------------------------*/
 
+.woocommerce-checkout .wfc-wrapper .woocommerce-shipping-fields,
+.woocommerce-checkout .wfc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+
+
 #shipping_method.shipping-method__options {
 	list-style-type: none;
 	margin: 0;
@@ -13,9 +22,11 @@
 
 
 
-#shipping_method li.shipping-method__option {
+.woocommerce ul#shipping_method li.shipping-method__option {
 	display: block;
 	margin: 0 0 $shipping-method-space-between-options;
+	padding: 0;
+	text-indent: 0;
 }
 
 
@@ -31,7 +42,7 @@
 
 
 
-.shipping-method__option .shipping-method__option-label {
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label {
 	position: relative;
 	display: block;
 	margin: 0;
@@ -42,18 +53,18 @@
 	cursor: pointer;
 	transition: all $global-animation-duration-fast linear;
 }
-.shipping-method__option:last-child .shipping-method__option-label {
+.woocommerce ul#shipping_method .shipping-method__option:last-child .shipping-method__option-label {
 	border-bottom: none;
 }
 
-.shipping-method__option input[type="radio"]:checked + .shipping-method__option-label {
+.woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label {
 	background-color: $shipping-method-checked-background-color;
 	color: $shipping-method-checked-color;
 }
 
 
 
-.shipping-method__option .shipping-method__option-label:before {
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:before {
 	box-sizing: border-box;
 	content: '';
 	position: absolute;
@@ -68,20 +79,24 @@
 	transition: all $global-animation-duration-fast linear;
 }
 
-.shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:before {
+.woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:before {
 	border-color: $success-color;
 	background-color: $success-color;
 }
+.woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:focus + .shipping-method__option-label:before {
+	outline: $focus-outline-field;
+	outline-offset: $focus-outline-offest-field;
+}
 
-.shipping-method__option .shipping-method__option-label:hover {
+.woocommerce ul#shipping_method .shipping-method__option.shipping-method__option .shipping-method__option-label:hover {
 	background-color: $shipping-method-checked-background-color;
 }
-.shipping-method__option .shipping-method__option-label:hover:before,
-.shipping-method__option .shipping-method__option-label:focus:before {
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:hover:before,
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:focus:before {
 	border-color: darken( $shipping-method-border-color, 15% );
 }
 
-.shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:after {
+.woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:after {
 	@include icon-styles();
 	@include icon( 'i-check-small' );
 	@include icon-size( $shipping-method-radio-size );
@@ -95,7 +110,7 @@
 
 
 
-.shipping-method__option .shipping-method__option-price {
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
 	position: absolute;
 	top: 50%;
 	transform: translateY( -50% );
@@ -105,11 +120,11 @@
 	text-align: right;
 }
 
-.shipping-method__option .shipping-method__option-price .amount {
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .amount {
 	display: block;
 	font-weight: $shipping-method-price-font-weight;
 }
 
-.shipping-method__option .shipping-method__option-price .tax_label {
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .tax_label {
 	display: block;
 }

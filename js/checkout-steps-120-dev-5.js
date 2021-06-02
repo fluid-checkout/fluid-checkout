@@ -30,12 +30,13 @@
 		progressBarSelector: '.wfc-progress-bar',
 		progressBarCurrentSelector: '.wfc-progress-bar__current-step',
 		progressBarItemSelector: '.wfc-progress-bar__bar',
-		
+
+		stepsWrapperSelector: '.wfc-checkout-steps',
 		stepSelector: '.wfc-checkout-step',
 		currentStepSelector: '[data-step-current]',
 		nextStepSelector: '[data-step-current] ~ .wfc-checkout-step',
 		nextStepButtonSelector: '[data-step-next]',
-		
+
 		substepSelector: '.wfc-step__substep',
 		substepTextContentSelector: '.wfc-step__substep-text-content',
 		substepFieldsSelector: '.wfc-step__substep-fields',
@@ -46,22 +47,26 @@
 		expansibleSectionToggleSelector: '[data-expansible-section-toggle]',
 		expansibleSectionExpandAttribute: 'data-expansible-section-expand',
 		expansibleSectionCollapseAttribute: 'data-expansible-section-collapse',
-		
+
 		stepCompleteAttribute: 'data-step-complete',
 		stepCurrentAttribute: 'data-step-current',
 		stepIndexAttribute: 'data-step-index',
-		
+
 		isEditingClass: 'is-editing',
 		isLoadingClass: 'is-loading',
 		isCurrentClass: 'is-current',
 		isCompleteClass: 'is-complete',
+		stepNextIncompleteClass: 'wfc-checkout-step--next-step-incomplete',
 
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
 
 		scrollOffsetSelector: '.wfc-checkout-header',
 		scrollBehavior: 'smooth',
 		scrollOffset: 0,
-		
+	}
+	var _key = {
+		ENTER: 'Enter',
+		SPACE: ' ',
 	}
 
 
@@ -116,12 +121,20 @@
 
 
 
+	/**
+	 * Get the offset position of the element recursively adding the offset position of parent elements until the `stopElement` (or the `body` element).
+	 *
+	 * @param   HTMLElement  element      Element to get the offset position for.
+	 * @param   HTMLElement  stopElement  Parent element where to stop adding the offset position to the total offset top position of the element.
+	 *
+	 * @return  int                       Offset position of the element until the `stopElement` or the `body` element.
+	 */
 	var getOffsetTop = function( element, stopElement ) {
 		var offsetTop = 0;
 		
 		while( element ) {
 			// Reached the stopElement
-			if ( stopElement && element != stopElement ) {
+			if ( stopElement && stopElement == element ) {
 				break;
 			}
 
@@ -130,6 +143,22 @@
 		}
 		
 		return offsetTop;
+	}
+
+
+
+	/**
+	 * Get all step elements.
+	 *
+	 * @return  Array  List of step elements.
+	 */
+	var getAllSteps = function() {
+		var stepsWrapper = document.querySelector( _settings.stepsWrapperSelector );
+
+		// Bail if steps wrapper not found, returns empty `Array`.
+		if ( ! stepsWrapper ) { return []; }
+
+		return Array.from( stepsWrapper.querySelectorAll( _settings.stepSelector ) );
 	}
 
 
@@ -173,6 +202,12 @@
 
 		// Remove editing class from the substep element
 		substepElement.classList.remove( _settings.isEditingClass );
+
+		// Focus on the substep edit button
+		var editbutton = substepElement.querySelector( _settings.substepEditButtonSelector );
+		if ( editbutton ) {
+			editbutton.focus();
+		}
 	}
 
 
@@ -236,7 +271,7 @@
 			if ( firstInvalidField ) {
 				firstInvalidField.focus();
 			}
-			
+
 			// Bail when substep has invalid fields
 			return;
 		}
@@ -292,7 +327,7 @@
 			else {
 				bar.classList.remove( _settings.isCurrentClass );
 			}
-			
+
 			// Update the `complete` status for each progress bar item
 			if ( stepIndex <= currentStepIndex ) {
 				bar.classList.add( _settings.isCompleteClass );
@@ -321,14 +356,14 @@
 	 */
 	var scrollAfterStepChange = function( stepElement, nextStepElement ) {
 		var stickyElementsOffset = 0;
-		
+
 		// Maybe add height of the progress bar to scroll position
 		var progressBarElement = document.querySelector( _settings.progressBarSelector );
 		if ( progressBarElement ) {
 			var height = progressBarElement.getBoundingClientRect().height;
 			stickyElementsOffset += height;
 		}
-		
+
 		// Maybe add sticky elements height to scroll position
 		if ( window.StickyStates ) {
 			var maybeStickyElements = document.querySelectorAll( _settings.scrollOffsetSelector );
@@ -361,7 +396,7 @@
 	var maybeProceedNextStep = function( stepElement ) {
 		// Bail if editButton not valid
 		if ( ! stepElement ) { return; }
-		
+
 		// Maybe validate fields
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( stepElement ) ) {
 			// Try to focus the first invalid field
@@ -369,7 +404,7 @@
 			if ( firstInvalidField ) {
 				firstInvalidField.focus();
 			}
-			
+
 			// Bail when any substep has invalid fields
 			return;
 		}
@@ -381,7 +416,7 @@
 		var substepElements = stepElement.querySelectorAll( _settings.substepSelector );
 		for ( var i = 0; i < substepElements.length; i++ ) {
 			var substepElement = substepElements[i];
-			
+
 			// Get text content element, then block IU
 			var contentElement = substepElement.querySelector( _settings.substepTextContentSelector );
 			if ( contentElement ) {
@@ -396,9 +431,20 @@
 		// Get next step, and set it as current
 		var nextStepElement = stepElement.parentElement.querySelector( _settings.nextStepSelector );
 		nextStepElement.setAttribute( _settings.stepCurrentAttribute, '' );
-		
+
 		// Unset `current` from the step that is closing
+		// (needs to run after setting the next step as the current one)
 		stepElement.removeAttribute( _settings.stepCurrentAttribute );
+
+		// Remove `next-step-incomplete` class from previous steps
+		var allSteps = getAllSteps();
+		var stepIndex = allSteps.indexOf( stepElement );
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			if ( i < stepIndex ) {
+				var step = allSteps[i];
+				step.classList.remove( _settings.stepNextIncompleteClass );
+			}
+		}
 
 		// Update progress bar
 		updateProgressBar();
@@ -441,11 +487,28 @@
 
 
 	/**
+	 * Handle keypress event.
+	 */
+	 var handleKeyDown = function( e ) {
+		// Should do nothing if the default action has been cancelled
+		if ( e.defaultPrevented ) { return; }
+
+		// ENTER or SPACE on handler element
+		if ( ( e.key == _key.ENTER || e.key == _key.SPACE ) && ( e.target.closest( _settings.substepEditButtonSelector ) || e.target.closest( _settings.substepSaveButtonSelector ) ) ) {
+			// Similate click
+			handleClick( e );
+		}
+	};
+
+
+
+	/**
 	 * Finish to initialize component and set related handlers.
 	 */
 	 var finishInit = function() {
 		// Add event listeners
 		window.addEventListener( 'click', handleClick );
+		document.addEventListener( 'keydown', handleKeyDown, true );
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {

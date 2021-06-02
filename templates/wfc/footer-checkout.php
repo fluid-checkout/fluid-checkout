@@ -16,7 +16,10 @@
  */
 
 ?>
-</div>
+
+</main>
+
+<?php do_action( 'wfc_checkout_footer' ); ?>
 
 <?php wp_footer(); ?>
 

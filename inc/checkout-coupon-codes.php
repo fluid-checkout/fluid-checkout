@@ -91,12 +91,13 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		$key = 'coupon_code';
 		$coupon_code_field_args = array(
-			'required'           => false,
-			'class'              => array( 'form-row-first' ),
-			'placeholder'        => $coupon_code_field_placeholder,
-			'custom_attributes'  => array(
-				'aria-label'     => $coupon_code_field_label,
-				'data-autofocus' => true,
+			'required'                   => false,
+			'wfc_skip_server_validation' => true,
+			'class'                      => array( 'form-row-first' ),
+			'placeholder'                => $coupon_code_field_placeholder,
+			'custom_attributes'          => array(
+				'aria-label'             => $coupon_code_field_label,
+				'data-autofocus'         => true,
 			),
 		);
 		
@@ -105,7 +106,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, apply_filters( 'wfc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'woocommerce-fluid-checkout' ), strtolower( $coupon_code_field_label ) ) ) );
 		woocommerce_form_field( $key, $coupon_code_field_args );
 		?>
-		<button type="button" class="wfc-coupon-code__apply <?php echo esc_attr( apply_filters( 'wfc_coupon_code_apply_button_classes', '' ) ); ?>" data-apply-coupon-button><?php echo $coupon_code_button_label; ?></button>
+		<button type="button" class="wfc-coupon-code__apply <?php echo esc_attr( apply_filters( 'wfc_coupon_code_apply_button_classes', 'button' ) ); ?>" data-apply-coupon-button><?php echo $coupon_code_button_label; ?></button>
 		<?php
 		$this->checkout_steps()->output_expansible_form_section_end_tag();
 	}

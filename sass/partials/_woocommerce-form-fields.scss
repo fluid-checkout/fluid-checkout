@@ -1,0 +1,166 @@
+/*------------------------------------*\
+  #WOOCOMMERCE FORM-ROW
+\*------------------------------------*/
+div.woocommerce form .form-row:before,
+div.woocommerce form .form-row:after {
+	@include clearfix();
+}
+
+
+
+div.woocommerce form .form-row:last-child {
+	margin-bottom: 0;
+}
+
+
+
+div.woocommerce form .form-row {
+	margin-bottom: $global-spacing-small;
+}
+div.woocommerce form .form-row.has-description:not( :last-child ) {
+	margin-bottom: remsize( .8rem );
+}
+
+div.woocommerce form .form-row input,
+div.woocommerce form .form-row textarea,
+div.woocommerce form .form-row select,
+div.woocommerce form .form-row .select2-container,
+div.woocommerce form .form-row .select2-container .select2-selection {
+	margin-bottom: 0;
+}
+
+
+
+div.woocommerce form .form-row.form-row-first,
+div.woocommerce form .form-row.form-row-wide {
+	clear: left;
+}
+
+div.woocommerce form .form-row.form-row-first,
+div.woocommerce form .form-row.form-row-last {
+	clear: left;
+	float: none;
+	width: 100%;
+
+	@media (#{$bp-larger-than-tablet}) {
+		clear: none;
+		float: left;
+		width: 48%;
+	}
+}
+
+div.woocommerce form .form-row.form-row-first {
+	@media (#{$bp-larger-than-tablet}) {
+		margin-right: 4%;
+	}
+}
+
+
+
+div.woocommerce form .form-row.place-order {
+	float: none;
+}
+
+
+
+div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
+	position: static;
+	display: block;
+	margin: 0;
+	padding: $checkout-field-description-padding;
+	border: 0;
+	background-color: $checkout-field-description-background-color;
+	color: $checkout-field-description-color;
+	font-size: $checkout-field-description-font-size;
+	line-height: 1.2;
+	
+	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-field-description-font-size--large-screen; }
+}
+div.woocommerce form .form-row .woocommerce-input-wrapper span.description:before {
+	display: none;
+}
+
+
+
+
+
+/*------------------------------------*\
+  #WOOCOMMERCE FORM FIELD LABELS
+\*------------------------------------*/
+div.woocommerce form .form-row label,
+div.woocommerce form #billing_address_2_field > label,
+div.woocommerce form #shipping_address_2_field > label {
+	margin-bottom: $global-spacing-tiny;
+	width: auto;
+	opacity: unset;
+	line-height: 1.2;
+}
+
+
+
+
+
+/*------------------------------------*\
+  #WOOCOMMERCE FORM FIELD GROUP
+\*------------------------------------*/
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group {
+	margin: $checkout-field-group-margin;
+	padding: $checkout-field-group-padding;
+	background-color: $lighter-grey;
+
+	@media (#{$bp-larger-than-desktop}) {
+		margin: $checkout-field-group-margin--large-screen;
+		padding: $checkout-field-group-padding--large-screen;
+	}
+}
+
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group:before,
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group:after {
+	@include clearfix();
+}
+
+// Make fields background white
+.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="search"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"] {
+		background-color: $white;
+	}
+}
+
+
+
+
+
+/*------------------------------------*\
+  #WOOCOMMERCE FORM FIELDS
+\*------------------------------------*/
+div.woocommerce form .form-row {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="search"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"],
+	input[type="checkbox"],
+	.select2-selection {
+	position: relative;
+		z-index: z( 'default' );
+
+		&:focus {
+			outline: $focus-outline-field;
+			outline-offset: $focus-outline-offest-field;
+		}
+	}
+}

@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 
 <?php do_action( 'wfc_checkout_before_contact_fields' ); ?>
 
-<div class="wfc-contact-fields">
+<div class="wfc-contact-fields wfc-clearfix">
 	
 	<div class="wfc-contact-fields__wrapper">
 		<?php do_action( 'wfc_checkout_contact_before_fields' ); ?>

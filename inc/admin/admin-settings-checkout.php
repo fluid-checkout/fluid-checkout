@@ -24,7 +24,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'wfc_checkout';
-		$this->label = __( 'Checkout', 'woocommerce-fluid-checkout' );
+		$this->label = __( 'Fluid Checkout', 'woocommerce-fluid-checkout' );
 
 		parent::__construct();
 
@@ -121,6 +121,20 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'id'            => 'wfc_enable_checkout_sticky_progress_bar',
 						'default'       => 'yes',
 						'type'          => 'checkbox',
+						'autoload'      => false,
+					),
+
+					array(
+						'title'         => __( 'Header and Footer', 'woocommerce-fluid-checkout' ),
+						'desc'          => __( 'We recommend using the Fluid Checkout header and footer to avoid distractions at the checkout page. <a href="https://baymard.com/blog/cart-abandonment" target="_blank">Read the research about cart abandonment</a>.', 'woocommerce-fluid-checkout' ),
+						'desc_tip'      => __( 'Controls whether to use the Fluid Checkout page header and footer of keep the currently active theme\'s.', 'woocommerce-fluid-checkout' ),
+						'id'            => 'wfc_hide_site_header_footer_at_checkout',
+						'type'          => 'radio',
+						'options'       => array(
+							'yes'       => __( 'Use Fluid Checkout header and footer', 'woocommerce-fluid-checkout' ),
+							'no'        => __( 'Use theme\'s page header and footer for the checkout page', 'woocommerce-fluid-checkout' ),
+						),
+						'default'       => 'yes',
 						'autoload'      => false,
 					),
 
@@ -304,7 +318,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 					array(
 						'desc'              => __( 'Display the gift message as part of the order details table', 'woocommerce' ),
-						'desc_tip'          => __( 'This option affects the order confirmation page (thank you), order details at account pages, emails and package slips.', 'woocommerce' ),
+						'desc_tip'          => __( 'This option affects the order confirmation page (thank you page), order details at account pages, emails and packing slips.', 'woocommerce' ),
 						'id'                => 'wfc_display_gift_message_in_order_details',
 						'type'              => 'checkbox',
 						'default'           => 'no',

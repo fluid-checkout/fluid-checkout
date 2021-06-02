@@ -418,7 +418,8 @@ jQuery( function( $ ) {
 				data.shipping_method = shipping_methods;
 			}
 
-			$( '.woocommerce-checkout-payment, .woocommerce-checkout-review-order-table' ).block({
+			// CHANGE: Also block the billing address fields and shipping methods
+			$( '.woocommerce-checkout-payment, .woocommerce-checkout-review-order-table, .woocommerce-billing-fields, .wfc-shipping-method__packages' ).block({
 				message: null,
 				overlayCSS: {
 					background: '#fff',
@@ -458,6 +459,9 @@ jQuery( function( $ ) {
 						}
 					});
 
+					// CHANGE: Get current element with focus, will reset after updating the fragments
+					var currentFocusedElement = document.activeElement;
+					
 					// Always update the fragments
 					if ( data && data.fragments ) {
 						$.each( data.fragments, function ( key, value ) {
@@ -468,6 +472,34 @@ jQuery( function( $ ) {
 						} );
 						wc_checkout_form.fragments = data.fragments;
 					}
+
+					// CHANGE: Re-set focus to the element with focus previously to updating fragments
+					requestAnimationFrame( function() {
+						var elementToFocus;
+
+						// Try findind the the current focused element after updating updated element by ID
+						if ( currentFocusedElement.id ) {
+							elementToFocus = document.getElementById( currentFocusedElement.id );
+						}
+						// Try findind the updated element by classes
+						else if ( currentFocusedElement.getAttribute( 'name' ) ) {
+							var nameAttr = currentFocusedElement.getAttribute( 'name' );
+							elementToFocus = document.querySelector( '[name="'+nameAttr+'"]' );
+						}
+						// Try findind the `select2` focusable element
+						else if ( currentFocusedElement.closest( '.form-row' ) ) {
+							var formRow = currentFocusedElement.closest( '.form-row' );
+							if ( formRow.id ) {
+								elementToFocus = document.querySelector( '.form-row[id="'+formRow.id+'"] .select2-selection' );
+							}
+						}
+
+						// Try setting focus if element is found
+						if ( elementToFocus ) {
+							elementToFocus.focus();
+						}
+					} );
+					// END - CHANGE: Re-set focus to the element with focus previously to updating fragments
 
 					// Recheck the terms and conditions box, if needed
 					if ( termsCheckBoxChecked ) {

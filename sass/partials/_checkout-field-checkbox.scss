@@ -1,7 +1,0 @@
-/*------------------------------------*\
-  #CHECKOUT CHECKBOXES
-\*------------------------------------*/
-div.woocommerce input[type="checkbox"]:not( .wfc-terms-checkbox ) {
-    margin-left: #{ $checkout-expansible-section-icon-spacing-left + remsize( .5rem ) };
-    margin-right: $checkout-expansible-section-icon-spacing-right;
-}

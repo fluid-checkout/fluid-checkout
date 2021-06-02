@@ -16,7 +16,7 @@
  */
 
 // Replace site header with our implementation
-if ( FluidCheckout_Steps::instance()->get_hide_site_header_at_checkout() ) {
+if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) {
 	wc_get_template( 'wfc/header-checkout.php' );
 }
 // Display the site's default header
@@ -24,7 +24,9 @@ else {
 	get_header( 'checkout' );
 }
 ?>
-<main id="main" class="content-area wfc-content">
+<div class="wfc-content <?php echo esc_attr( apply_filters( 'wfc_content_section_class', '' ) ); ?>">
+
+	<h1 class="wfc-checkout__title screen-reader-text"><?php the_title(); ?></h1>
 
 	<?php
 	// Load the checkout page content
@@ -34,11 +36,11 @@ else {
 	endwhile;
 	?>
 
-</main>
+</div>
 
 <?php
 // Replace site header with our implementation
-if ( FluidCheckout_Steps::instance()->get_hide_site_footer_at_checkout() ) {
+if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) {
 	wc_get_template( 'wfc/footer-checkout.php' );
 }
 // Display the site's default header
