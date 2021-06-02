@@ -126,6 +126,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 
 					array(
 						'title'         => __( 'Header and Footer', 'woocommerce-fluid-checkout' ),
+						'desc'          => __( 'We recommend using the Fluid Checkout header and footer to avoid distractions at the checkout page. <a href="https://baymard.com/blog/cart-abandonment" target="_blank">Read the research about cart abandonment</a>.', 'woocommerce-fluid-checkout' ),
 						'desc_tip'      => __( 'Controls whether to use the Fluid Checkout page header and footer of keep the currently active theme\'s.', 'woocommerce-fluid-checkout' ),
 						'id'            => 'wfc_hide_site_header_footer_at_checkout',
 						'type'          => 'radio',
