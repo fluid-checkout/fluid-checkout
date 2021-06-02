@@ -22,7 +22,7 @@ var del = require('del');
 
 
 
-// Run: 
+// Run:
 // gulp update-ver
 // Starts watcher. Watcher runs appropriate tasks on file changes
 gulp.task( 'update-ver', function( done ) {
@@ -30,7 +30,7 @@ gulp.task( 'update-ver', function( done ) {
 	settings.pkg = json;
 	settings.assetsVersion = '-' + json.version.replace( /\./gi, '' );
 
-	gulp.src( ['./woocommerce-fluid-checkout.php'] )
+	gulp.src( ['./fluid-checkout.php'] )
 	// See http://mdn.io/string.replace#Specifying_a_string_as_a_parameter
 	.pipe(replace(/Version: (.)*/g, 'Version: ' + settings.pkg.version ))
 	.pipe(gulp.dest('./'));
@@ -40,7 +40,7 @@ gulp.task( 'update-ver', function( done ) {
 
 
 
-// Run: 
+// Run:
 // gulp clean-css
 // Delete existing generated css files
 gulp.task( 'clean-css', function( done ) {
@@ -50,7 +50,7 @@ gulp.task( 'clean-css', function( done ) {
 
 
 
-// Run: 
+// Run:
 // gulp clean-js
 // Delete existing generated js files
 gulp.task( 'clean-js', function( done ) {
@@ -60,7 +60,7 @@ gulp.task( 'clean-js', function( done ) {
 
 
 
-// Run: 
+// Run:
 // gulp build-css
 // Builds css from scss and apply other changes.
 gulp.task( 'build-css', gulp.series( 'update-ver', 'clean-css', function( done ) {
@@ -99,8 +99,8 @@ gulp.task( 'build-css', gulp.series( 'update-ver', 'clean-css', function( done )
 
 
 
-// Run: 
-// gulp build-js. 
+// Run:
+// gulp build-js.
 // Uglifies and concat all JS files into one
 gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 
@@ -109,7 +109,7 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 		settings.nodePath + 'require-polyfills/dist/require-polyfills.js',
 		settings.nodePath + 'require-polyfills/dist/polyfill-*.js',
 		settings.nodePath + 'require-bundle-js/dist/require-bundle.js',
-		
+
 		settings.nodePath + 'animate-helper/dist/animate-helper.js',
 		settings.nodePath + 'collapsible-block/dist/collapsible-block.js',
 		settings.nodePath + 'flyout-block/dist/flyout-block.js',
@@ -140,7 +140,7 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 
 
 
-// Run: 
+// Run:
 // gulp watch
 // Starts watcher. Watcher runs appropriate tasks on file changes
 gulp.task( 'watch', function ( done ) {
@@ -153,14 +153,14 @@ gulp.task( 'watch', function ( done ) {
 
 
 
-// Run: 
+// Run:
 // gulp build
 // Build css and js assets
 gulp.task( 'build', gulp.series( gulp.parallel( 'build-js', 'build-css' ) ) );
 
 
 
-// Run: 
+// Run:
 // gulp
 // Defines gulp default task
 gulp.task( 'default', gulp.series( 'watch' ) );

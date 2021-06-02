@@ -2,22 +2,22 @@
   #CHECKOUT COUPON CODE
 \*------------------------------------*/
 
-.wfc-wrapper .wfc-expansible-form-section__content--coupon_code .collapsible-content__inner {
+.fc-wrapper .fc-expansible-form-section__content--coupon_code .collapsible-content__inner {
 	display: flex;
 }
 
-.wfc-wrapper .wfc-expansible-form-section__content--coupon_code .form-row {
+.fc-wrapper .fc-expansible-form-section__content--coupon_code .form-row {
 	float: none;
 	margin: 0;
 	flex-shrink: 1;
 	flex-grow: 1;
 }
-.wfc-wrapper .wfc-expansible-form-section__content--coupon_code input:focus {
+.fc-wrapper .fc-expansible-form-section__content--coupon_code input:focus {
 	position: relative;
 	z-index: z( 'above' );
 }
 
-.wfc-wrapper .wfc-expansible-form-section__content--coupon_code .wfc-coupon-code__apply {
+.fc-wrapper .fc-expansible-form-section__content--coupon_code .fc-coupon-code__apply {
 	margin: 0;
 	flex-shrink: 0;
 	flex-grow: 0;
@@ -32,11 +32,11 @@
 
 
 
-.wfc-wrapper .wfc-step__substep-text-content--coupon-codes:not( :empty ) {
+.fc-wrapper .fc-step__substep-text-content--coupon-codes:not( :empty ) {
 	margin-bottom: $global-spacing-small;
 }
 
-.wfc-wrapper .wfc-coupon-codes__coupon {
+.fc-wrapper .fc-coupon-codes__coupon {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -46,12 +46,12 @@
 	border-radius: $coupon-code-coupon-border-radius;
 }
 
-.wfc-wrapper .wfc-coupon-codes__coupon-amount {
+.fc-wrapper .fc-coupon-codes__coupon-amount {
 	flex-wrap: wrap;
 	flex-shrink: 0;
 }
 
-.wfc-wrapper .wfc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
+.fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
 	margin-left: $coupon-code-remove-spacing;
 	font-size: $coupon-code-remove-font-size;
 	font-weight: $coupon-code-remove-font-weight;

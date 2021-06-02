@@ -1,7 +1,7 @@
 /*------------------------------------*\
 	#CHECKOUT STEPS
 \*------------------------------------*/
-.wfc-wrapper .wfc-checkout-steps {
+.fc-wrapper .fc-checkout-steps {
 	margin: $checkout-steps-container-margin;
 
 	@media (#{$bp-larger-than-tablet}) { margin: $checkout-steps-container-margin--large-screen; }
@@ -9,7 +9,7 @@
 
 
 
-.wfc-wrapper .wfc-checkout-step {
+.fc-wrapper .fc-checkout-step {
 	margin: 0 0 remsize( -.1rem ); // Prevent double borders
 	padding: $checkout-step-padding;
 	border: solid remsize( .1rem ) $border-color;
@@ -19,16 +19,16 @@
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-step-padding--large-screen; }
 }
-.wfc-wrapper .wfc-checkout-step:first-child {
+.fc-wrapper .fc-checkout-step:first-child {
 	@media (#{$bp-larger-than-tablet}) { border-radius: $checkout-substep-border-radius $checkout-substep-border-radius 0 0; }
 }
-.wfc-wrapper .wfc-checkout-step:last-child {
+.fc-wrapper .fc-checkout-step:last-child {
 	@media (#{$bp-larger-than-tablet}) { border-radius: 0 0 $checkout-substep-border-radius $checkout-substep-border-radius; }
 }
 
 
 
-.wfc-wrapper .wfc-step__substep {
+.fc-wrapper .fc-step__substep {
 	position: relative;
 	padding: $checkout-substep-padding;
 	margin: 0 0 remsize( -.1rem ); // Prevent double borders
@@ -36,11 +36,11 @@
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
 }
-.wfc-wrapper .wfc-step__substep:after {
+.fc-wrapper .fc-step__substep:after {
     @include clearfix();
 }
 
-.wfc-wrapper .wfc-step__substep-title {
+.fc-wrapper .fc-step__substep-title {
 	margin: $checkout-substep-title-margin;
 	padding: 0;
 	color: $checkout-substep-title-color;
@@ -56,13 +56,13 @@
 
 
 
-.wfc-wrapper .wfc-step__substep-fields:after {
+.fc-wrapper .fc-step__substep-fields:after {
     @include clearfix();
 }
 
 
 
-.wfc-wrapper .wfc-step__substep-text {
+.fc-wrapper .fc-step__substep-text {
 	display: none;
 }
 
@@ -73,39 +73,39 @@
 /*------------------------------------*\
 	#CHECKOUT LAYOUT MULTI-STEP
 \*------------------------------------*/
-.has-checkout-layout--multi-step .wfc-checkout-step[data-step-complete] {
+.has-checkout-layout--multi-step .fc-checkout-step[data-step-complete] {
 	margin: 0 0 remsize( -.1rem ); // Prevent double borders
 }
 // FIRST step
-.has-checkout-layout--multi-step .wfc-checkout-step:first-child {
+.has-checkout-layout--multi-step .fc-checkout-step:first-child {
 	@media (#{$bp-larger-than-tablet}) {
 		border-top-right-radius: $checkout-substep-border-radius;
 		border-top-left-radius: $checkout-substep-border-radius;
 	}
 }
 // LAST step
-.has-checkout-layout--multi-step .wfc-checkout-step:last-child {
+.has-checkout-layout--multi-step .fc-checkout-step:last-child {
 	@media (#{$bp-larger-than-tablet}) {
 		border-bottom-right-radius: $checkout-substep-border-radius;
 		border-bottom-left-radius: $checkout-substep-border-radius;
 	}
 }
 // PREV Complete
-.has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--prev-step-complete {
+.has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--prev-step-complete {
 	@media (#{$bp-larger-than-tablet}) {
 		border-top-right-radius: 0;
 		border-top-left-radius: 0;
 	}
 }
 // NEXT Complete
-.has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--next-step-complete {
+.has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-complete {
 	@media (#{$bp-larger-than-tablet}) {
 		border-bottom-right-radius: 0;
 		border-bottom-left-radius: 0;
 	}
 }
 // NEXT Incomplete
-.has-checkout-layout--multi-step .wfc-checkout-step.wfc-checkout-step--next-step-incomplete {
+.has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete {
 	margin-bottom: $global-spacing-small;
 
 	@media (#{$bp-larger-than-tablet}) {
@@ -116,8 +116,8 @@
 
 
 
-.has-checkout-layout--multi-step .wfc-checkout-step[data-step-current]:not( [data-step-index="0"] ),
-.has-checkout-layout--multi-step .wfc-checkout-step:not( [data-step-complete] ) {
+.has-checkout-layout--multi-step .fc-checkout-step[data-step-current]:not( [data-step-index="0"] ),
+.has-checkout-layout--multi-step .fc-checkout-step:not( [data-step-complete] ) {
 	@media (#{$bp-larger-than-tablet}) {
 		border-radius: $checkout-substep-border-radius;
 	}
@@ -125,7 +125,7 @@
 
 
 
-.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title {
+.has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-title {
 	position: relative;
 	padding: $checkout-substep-text-padding;
 	color: $checkout-substep-text-color;
@@ -148,11 +148,11 @@
 
 
 
-.has-checkout-layout--multi-step [data-step-current] ~ .wfc-checkout-step {
+.has-checkout-layout--multi-step [data-step-current] ~ .fc-checkout-step {
 	display: none;
 }
 
-.has-checkout-layout--multi-step:not( .has-collapsible-block ) [data-step-complete] .wfc-step__substep-fields {
+.has-checkout-layout--multi-step:not( .has-collapsible-block ) [data-step-complete] .fc-step__substep-fields {
 	display: none;
 }
 
@@ -160,7 +160,7 @@
 
 
 
-.has-checkout-layout--multi-step .wfc-step__substep-text {
+.has-checkout-layout--multi-step .fc-step__substep-text {
 	display: none;
 	margin: $checkout-substep-text-margin;
 	padding: $checkout-substep-text-padding;
@@ -178,15 +178,15 @@
 		font-size: $checkout-substep-text-font-size--large-screen;
 	}
 }
-.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-text {
+.has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-text {
 	display: block;
 }
 
-.has-checkout-layout--multi-step .wfc-step__substep-text-content.is-loading {
+.has-checkout-layout--multi-step .fc-step__substep-text-content.is-loading {
 	min-height: $global-spacing-medium;
 }
 
-.has-checkout-layout--multi-step .wfc-step__substep-text-line {
+.has-checkout-layout--multi-step .fc-step__substep-text-line {
 	display: block;
 	width: 100%;
 }
@@ -194,7 +194,7 @@
 
 
 
-.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-title {
+.has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-title {
 	position: relative;
 	display: block;
 	padding: $checkout-substep-text-padding;
@@ -226,15 +226,15 @@
 /*------------------------------------*\
 	#CHECKOUT STEP ACTIONS
 \*------------------------------------*/
-.has-checkout-layout--multi-step .wfc-step__actions {
+.has-checkout-layout--multi-step .fc-step__actions {
 	margin: $global-spacing 0;
 	text-align: center;
 }
-.has-checkout-layout--multi-step [data-step-complete] .wfc-step__actions {
+.has-checkout-layout--multi-step [data-step-complete] .fc-step__actions {
 	display: none;
 }
 
-.has-checkout-layout--multi-step .wfc-step__actions .wfc-step__next-step {
+.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
 	margin: 0;
 	min-width: remsize( 28rem );
 
@@ -251,8 +251,8 @@
 /*------------------------------------*\
 	#CHECKOUT SUB-STEP EDIT
 \*------------------------------------*/
-.has-checkout-layout--multi-step .wfc-step__substep-edit,
-.has-checkout-layout--multi-step .wfc-step__substep-save {
+.has-checkout-layout--multi-step .fc-step__substep-edit,
+.has-checkout-layout--multi-step .fc-step__substep-save {
 	display: none;
 
 	margin: $checkout-substep-action-button-margin;
@@ -273,15 +273,15 @@
 	}
 }
 
-.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-edit,
-.has-checkout-layout--multi-step [data-step-complete] .is-editing .wfc-step__substep-save {
+.has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-edit,
+.has-checkout-layout--multi-step [data-step-complete] .is-editing .fc-step__substep-save {
 	position: absolute;
 	top: 0;
 	right: 0;
 	display: inline;
 }
-.has-checkout-layout--multi-step [data-step-complete] .is-editing .wfc-step__substep-edit,
-.has-checkout-layout--multi-step [data-step-complete] .wfc-step__substep-save {
+.has-checkout-layout--multi-step [data-step-complete] .is-editing .fc-step__substep-edit,
+.has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-save {
 	display: none;
 }
 
@@ -292,13 +292,13 @@
 /*------------------------------------*\
 	#CHECKOUT SUB-STEP FIELD WRAPPERS
 \*------------------------------------*/
-.wfc-wrapper .wfc-step__substep-fields-inner {
+.fc-wrapper .fc-step__substep-fields-inner {
 	padding-top: $global-spacing-small;
 	border: 0;
 }
 
-.wfc-wrapper .woocommerce-shipping-fields,
-.wfc-wrapper .woocommerce-billing-fields {
+.fc-wrapper .woocommerce-shipping-fields,
+.fc-wrapper .woocommerce-billing-fields {
 	padding: 0;
 	border: 0;
 
@@ -308,9 +308,9 @@
 	}
 }
 
-.wfc-substep__fields--coupon_codes .wfc-step__substep-fields-inner {
+.fc-substep__fields--coupon_codes .fc-step__substep-fields-inner {
 	padding: 0;
 }
-.wfc-substep__fields--coupon_codes .wfc-expansible-form-section__content--coupon_code .collapsible-content__inner {
+.fc-substep__fields--coupon_codes .fc-expansible-form-section__content--coupon_code .collapsible-content__inner {
 	padding: $global-spacing-extra-small 0 0;
 }

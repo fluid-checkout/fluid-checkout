@@ -2,7 +2,7 @@
 /**
  * Checkout header template file.
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/wfc/checkout/checkout-header.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/fc/checkout/checkout-header.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -11,16 +11,16 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package woocommerce-fluid-checkout
+ * @package fluid-checkout
  * @version 1.2.0
  */
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<header class="wfc-checkout-header">
-	<div class="wfc-checkout-header__inner">
+<header class="fc-checkout-header">
+	<div class="fc-checkout-header__inner">
 
-		<div class="wfc-checkout__branding">
+		<div class="fc-checkout__branding">
 			<?php
 			if ( function_exists( 'the_custom_logo' ) && get_theme_mod( 'custom_logo' ) ) {
 				the_custom_logo();
@@ -29,21 +29,21 @@ defined( 'ABSPATH' ) || exit;
 				echo sprintf(
 					'<a href="%1$s" class="custom-logo-link" rel="home">%2$s</a>',
 					esc_url( home_url( '/' ) ),
-					'<span class="wfc-checkout__site-name">' . esc_html( get_bloginfo( 'name' ) ) . '</span>'
+					'<span class="fc-checkout__site-name">' . esc_html( get_bloginfo( 'name' ) ) . '</span>'
 				);
 			}
 			?>
 		</div>
 
-		<?php if ( has_action( 'wfc_checkout_header_cart_link' ) ) : ?>
-		<div class="wfc-checkout__cart-link-wrapper">
-			<?php do_action( 'wfc_checkout_header_cart_link' ); ?>
+		<?php if ( has_action( 'fc_checkout_header_cart_link' ) ) : ?>
+		<div class="fc-checkout__cart-link-wrapper">
+			<?php do_action( 'fc_checkout_header_cart_link' ); ?>
 		</div>
 		<?php endif; ?>
 
-		<?php if ( has_action( 'wfc_checkout_header_widgets' ) ) : ?>
-			<div class="wfc-checkout__header-widgets">
-				<?php do_action( 'wfc_checkout_header_widgets' ); ?>
+		<?php if ( has_action( 'fc_checkout_header_widgets' ) ) : ?>
+			<div class="fc-checkout__header-widgets">
+				<?php do_action( 'fc_checkout_header_widgets' ); ?>
 			</div>
 		<?php endif; ?>
 

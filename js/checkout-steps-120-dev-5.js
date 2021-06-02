@@ -22,25 +22,25 @@
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _settings = {
-		bodyClass: 'has-wfc-checkout-steps',
-		bodyClassActiveStepPattern: 'wfc-checkout-step--active-{ID}',
+		bodyClass: 'has-fc-checkout-steps',
+		bodyClassActiveStepPattern: 'fc-checkout-step--active-{ID}',
 
-		wrapperSelector: '.wfc-wrapper',
+		wrapperSelector: '.fc-wrapper',
 
-		progressBarSelector: '.wfc-progress-bar',
-		progressBarCurrentSelector: '.wfc-progress-bar__current-step',
-		progressBarItemSelector: '.wfc-progress-bar__bar',
+		progressBarSelector: '.fc-progress-bar',
+		progressBarCurrentSelector: '.fc-progress-bar__current-step',
+		progressBarItemSelector: '.fc-progress-bar__bar',
 
-		stepsWrapperSelector: '.wfc-checkout-steps',
-		stepSelector: '.wfc-checkout-step',
+		stepsWrapperSelector: '.fc-checkout-steps',
+		stepSelector: '.fc-checkout-step',
 		currentStepSelector: '[data-step-current]',
-		nextStepSelector: '[data-step-current] ~ .wfc-checkout-step',
+		nextStepSelector: '[data-step-current] ~ .fc-checkout-step',
 		nextStepButtonSelector: '[data-step-next]',
 
-		substepSelector: '.wfc-step__substep',
-		substepTextContentSelector: '.wfc-step__substep-text-content',
-		substepFieldsSelector: '.wfc-step__substep-fields',
-		substepTextSelector: '.wfc-step__substep-text',
+		substepSelector: '.fc-step__substep',
+		substepTextContentSelector: '.fc-step__substep-text-content',
+		substepFieldsSelector: '.fc-step__substep-fields',
+		substepTextSelector: '.fc-step__substep-text',
 		substepEditButtonSelector: '[data-step-edit]',
 		substepSaveButtonSelector: '[data-step-save]',
 
@@ -56,11 +56,11 @@
 		isLoadingClass: 'is-loading',
 		isCurrentClass: 'is-current',
 		isCompleteClass: 'is-complete',
-		stepNextIncompleteClass: 'wfc-checkout-step--next-step-incomplete',
+		stepNextIncompleteClass: 'fc-checkout-step--next-step-incomplete',
 
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
 
-		scrollOffsetSelector: '.wfc-checkout-header',
+		scrollOffsetSelector: '.fc-checkout-header',
 		scrollBehavior: 'smooth',
 		scrollOffset: 0,
 	}

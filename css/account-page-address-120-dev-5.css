@@ -115,32 +115,32 @@ div.woocommerce form #shipping_address_2_field > label {
 /*------------------------------------*\
   #WOOCOMMERCE FORM FIELD GROUP
 \*------------------------------------*/
-.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group {
+.fc-content div.woocommerce form .fc-wrapper .fc-field-group {
   margin: 0 -20px -20px;
   padding: 20px;
   background-color: #F0F4F4; }
   @media (min-width: 1000px) {
-    .wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group {
+    .fc-content div.woocommerce form .fc-wrapper .fc-field-group {
       margin: 0 -20px -20px;
       padding: 20px; } }
 
-.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group:before,
-.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group:after {
+.fc-content div.woocommerce form .fc-wrapper .fc-field-group:before,
+.fc-content div.woocommerce form .fc-wrapper .fc-field-group:after {
   content: '';
   display: table;
   table-layout: fixed;
   width: 100%; }
 
-.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group textarea,
-.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group select,
-.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="email"],
-.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="number"],
-.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="date"],
-.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="search"],
-.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="text"],
-.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="tel"],
-.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="url"],
-.wfc-content div.woocommerce form .wfc-wrapper .wfc-field-group input[type="password"] {
+.fc-content div.woocommerce form .fc-wrapper .fc-field-group textarea,
+.fc-content div.woocommerce form .fc-wrapper .fc-field-group select,
+.fc-content div.woocommerce form .fc-wrapper .fc-field-group input[type="email"],
+.fc-content div.woocommerce form .fc-wrapper .fc-field-group input[type="number"],
+.fc-content div.woocommerce form .fc-wrapper .fc-field-group input[type="date"],
+.fc-content div.woocommerce form .fc-wrapper .fc-field-group input[type="search"],
+.fc-content div.woocommerce form .fc-wrapper .fc-field-group input[type="text"],
+.fc-content div.woocommerce form .fc-wrapper .fc-field-group input[type="tel"],
+.fc-content div.woocommerce form .fc-wrapper .fc-field-group input[type="url"],
+.fc-content div.woocommerce form .fc-wrapper .fc-field-group input[type="password"] {
   background-color: #fff; }
 
 /*------------------------------------*\
@@ -178,7 +178,7 @@ div.woocommerce form .form-row .select2-selection {
 /*------------------------------------*\
 	#EXPANSIBLE SECTIONS
 \*------------------------------------*/
-div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
+div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
   position: relative;
   display: inline-block;
   width: auto;
@@ -186,7 +186,7 @@ div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
   cursor: pointer;
   text-decoration: none;
   line-height: 1.2; }
-  div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus:before {
+  div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:before {
     display: inline-block;
     font-family: "fluid-checkout-icons" !important;
     font-style: normal !important;
@@ -206,19 +206,19 @@ div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus {
     left: -3px;
     top: 50%;
     transform: translateY(-50%); }
-  div.woocommerce .wfc-expansible-form-section .expansible-section__toggle-plus:focus {
+  div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:focus {
     outline: dotted 1px #535156;
     outline-offset: 1px; }
 
-div.woocommerce .wfc-expansible-form-section.form-row .form-row {
+div.woocommerce .fc-expansible-form-section.form-row .form-row {
   margin: 0;
   padding: 0;
   width: 100%; }
 
 @media (min-width: 750px) {
-  div.woocommerce .wfc-expansible-form-section.form-row.form-row-last .wfc-expansible-form-section__toggle .collapsible-content__inner {
+  div.woocommerce .fc-expansible-form-section.form-row.form-row-last .fc-expansible-form-section__toggle .collapsible-content__inner {
     padding-top: 1.8em; } }
 
-body:not(.has-collapsible-block) .wfc-expansible-form-section__toggle.is-collapsed .collapsible-content__inner,
-body:not(.has-collapsible-block) .wfc-expansible-form-section__content.is-collapsed .collapsible-content__inner {
+body:not(.has-collapsible-block) .fc-expansible-form-section__toggle.is-collapsed .collapsible-content__inner,
+body:not(.has-collapsible-block) .fc-expansible-form-section__content.is-collapsed .collapsible-content__inner {
   display: none; }

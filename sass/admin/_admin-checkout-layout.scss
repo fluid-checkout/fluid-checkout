@@ -1,29 +1,29 @@
 /*------------------------------------*\
 	#CHECKOUT OPTIONS - LAYOUT
 \*------------------------------------*/
-.forminp-wfc_layout_selector fieldset {
+.forminp-fc_layout_selector fieldset {
     padding: 20px;
     background-color: #fff;
 }
 
-.forminp-wfc_layout_selector ul {
+.forminp-fc_layout_selector ul {
     margin: 0;
     display: flex;
 }
 
-.forminp-wfc_layout_selector li {
+.forminp-fc_layout_selector li {
     position: relative;
     display: block;
     padding: 85px 2px 0;
     width: 100px;
 }
-.forminp-wfc_layout_selector li + li {
+.forminp-fc_layout_selector li + li {
     margin-left: 10px;
 }
 
 
 
-.forminp-wfc_layout_selector .wfc-checkout-layout__option:after {
+.forminp-fc_layout_selector .fc-checkout-layout__option:after {
     content: '';
     float: none;
     position: absolute;
@@ -35,6 +35,6 @@
     border: solid 2px #fff;
     background-color: #F0EFF1;
 }
-.forminp-wfc_layout_selector .wfc-checkout-layout__option:checked:after {
+.forminp-fc_layout_selector .fc-checkout-layout__option:checked:after {
     border: solid 2px #3481C4;
 }

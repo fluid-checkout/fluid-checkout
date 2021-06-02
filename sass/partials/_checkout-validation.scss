@@ -16,7 +16,7 @@ div.woocommerce .woocommerce-invalid-confirmation-field .woocommerce-error.inval
 
 
 div.woocommerce .form-row .woocommerce-error,
-div.woocommerce .form-row .wfc-mailcheck-suggestion {
+div.woocommerce .form-row .fc-mailcheck-suggestion {
 	position: relative;
 	margin: 0;
 	padding: $checkout-message-error-padding;
@@ -25,7 +25,7 @@ div.woocommerce .form-row .wfc-mailcheck-suggestion {
 	font-size: $font-size-extra-small;
 }
 
-div.woocommerce .form-row .wfc-mailcheck-suggestion {
+div.woocommerce .form-row .fc-mailcheck-suggestion {
 	padding: $checkout-message-suggestion-padding;
 }
 

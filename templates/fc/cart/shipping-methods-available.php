@@ -2,10 +2,10 @@
 /**
  * Cart shipping methods available
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/wfc/cart/shipping-methods-available.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/fc/cart/shipping-methods-available.php.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package woocommerce-fluid-checkout
+ * @package fluid-checkout
  * @version 1.2.0
  * @wc-version 3.6.0
  * @wc-original cart/cart-shipping.php
@@ -17,14 +17,14 @@ defined( 'ABSPATH' ) || exit;
 
 <?php if ( count( $available_methods ) > 0 ) : ?>
 
-	<?php echo apply_filters( 'wfc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
+	<?php echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
 
 	<?php
 	$first = true;
 	foreach ( $available_methods as $method ) :
 		$checked_method = ! $chosen_method ? $first === true : $method->id == $chosen_method;
 
-		echo apply_filters( 'wfc_shipping_method_option_markup',
+		echo apply_filters( 'fc_shipping_method_option_markup',
 			sprintf( '<li class="shipping-method__option"><input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />
 				<label for="shipping_method_%1$d_%2$s" class="shipping-method__option-label has-price">%5$s</label>
 			</li>',
@@ -36,11 +36,11 @@ defined( 'ABSPATH' ) || exit;
 		), $method, $package_index, $chosen_method, $first );
 
 		do_action( 'woocommerce_after_shipping_rate', $method, $package_index );
-		
+
 		$first = false;
 	endforeach; ?>
 
-	<?php echo apply_filters( 'wfc_shipping_method_option_end_tag_markup', '</ul>' ); ?>
+	<?php echo apply_filters( 'fc_shipping_method_option_end_tag_markup', '</ul>' ); ?>
 
 	<?php if ( $show_package_details ) : ?>
 	<?php echo '<p class="woocommerce-shipping-contents"><small>' . esc_html( $package_details ) . '</small></p>'; ?>

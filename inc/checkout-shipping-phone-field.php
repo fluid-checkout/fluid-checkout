@@ -25,10 +25,10 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		add_filter( 'woocommerce_order_formatted_shipping_address', array( $this, 'output_order_formatted_shipping_address_with_phone' ), 1, 2 );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_replacement_field_shipping_phone' ), 10, 2 );
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_shipping_phone_to_formats' ), 10 );
-		add_filter( 'wfc_substep_shipping_address_text', array( $this, 'add_shipping_phone_to_substep_text_format' ), 10 );
+		add_filter( 'fc_substep_shipping_address_text', array( $this, 'add_shipping_phone_to_substep_text_format' ), 10 );
 
 		// Change checkout field args
-		add_filter( 'wfc_checkout_field_args' , array( $this, 'change_shipping_company_field_args' ), 10 );
+		add_filter( 'fc_checkout_field_args' , array( $this, 'change_shipping_company_field_args' ), 10 );
 
 		// Persist shipping phone to the user's session
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_shipping_phone_session' ), 10 );
@@ -52,10 +52,10 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * @return  array $args Arguments for adding shipping phone field.
 	 */
 	public function get_shipping_phone_field() {
-		return apply_filters( 'wfc_shipping_phone_field_args', array(
-			'label'        => __( 'Shipping phone', 'woocommerce-fluid-checkout' ),
-			'description'  => __( 'Only used for shipping-related questions.', 'woocommerce-fluid-checkout' ),
-			'required'     => get_option( 'wfc_shipping_phone_field_visibility', 'optional' ) === 'required',
+		return apply_filters( 'fc_shipping_phone_field_args', array(
+			'label'        => __( 'Shipping phone', 'fluid-checkout' ),
+			'description'  => __( 'Only used for shipping-related questions.', 'fluid-checkout' ),
+			'required'     => get_option( 'fc_shipping_phone_field_visibility', 'optional' ) === 'required',
 			'validate'     => array( 'phone' ),
 			'class'        => array( 'form-row-first' ),
 			'priority'     => 25,
@@ -73,7 +73,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function change_shipping_company_field_args( $field_args ) {
 		// Bail if hidding optional fields behind a link button
-		if ( get_option( 'wfc_enable_checkout_hide_optional_fields', 'yes' ) === 'yes' && get_option( 'wfc_shipping_phone_field_visibility', 'optional' ) !== 'required' ) { return $field_args; }
+		if ( get_option( 'fc_enable_checkout_hide_optional_fields', 'yes' ) === 'yes' && get_option( 'fc_shipping_phone_field_visibility', 'optional' ) !== 'required' ) { return $field_args; }
 
 		if ( array_key_exists( 'shipping_company', $field_args ) ) {
 			$field_args['shipping_company']['class'] = array( 'form-row-last' );
@@ -181,7 +181,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 	/**
 	 * Save the shipping phone fields values to the current user session.
-	 * 
+	 *
 	 * @param array $posted_data Post data for all checkout fields.
 	 */
 	public function set_shipping_phone_session( $posted_data ) {
@@ -193,7 +193,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 		// Set session value
 		WC()->session->set( '_shipping_phone', $shipping_phone );
-		
+
 		return $posted_data;
 	}
 
@@ -213,7 +213,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function get_current_shipping_phone_value() {
 		$shipping_phone = null;
-		
+
 		// Try get the shipping phone from the session
 		$shipping_phone_session = $this->get_shipping_phone_session();
 		if ( $shipping_phone_session != null ) {
@@ -259,7 +259,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 		// Insert the phone field at in the text
 		if ( $shipping_phone != null && ! empty( $shipping_phone ) ) {
-			$shipping_phone_text = '<span class="wfc-step__substep-text-line">' . $shipping_phone . '</span></div>';
+			$shipping_phone_text = '<span class="fc-step__substep-text-line">' . $shipping_phone . '</span></div>';
 			$html = str_replace( '</div>', $shipping_phone_text, $html );
 		}
 

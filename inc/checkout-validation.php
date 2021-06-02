@@ -21,12 +21,12 @@ class FluidCheckoutValidation extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
 		// TODO: Enqueue validation styles and scripts from WP instead of RequireBundle
-		
+
 		// Checkout validation settings
-		add_filter( 'wfc_js_settings', array( $this, 'add_checkout_validation_js_settings' ), 10 );
+		add_filter( 'fc_js_settings', array( $this, 'add_checkout_validation_js_settings' ), 10 );
 
 		// Mailcheck validation
-		add_filter( 'wfc_checkout_field_args' , array( $this, 'change_checkout_email_field_args' ), 10 );
+		add_filter( 'fc_checkout_field_args' , array( $this, 'change_checkout_email_field_args' ), 10 );
 
 		// Add validation status classes to checkout fields
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_status_classes' ), 100, 3 );
@@ -43,7 +43,7 @@ class FluidCheckoutValidation extends FluidCheckout {
 		// Bail if not on checkout page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
 
-		return array_merge( $classes, array( 'has-wfc-checkout-validation' ) );
+		return array_merge( $classes, array( 'has-fc-checkout-validation' ) );
 	}
 
 
@@ -51,20 +51,20 @@ class FluidCheckoutValidation extends FluidCheckout {
 
 	/**
 	 * Add Checkout Validation settings to the plugin settings JS object.
-	 * 
+	 *
 	 * @param   array  $settings  JS settings object of the plugin.
 	 */
 	public function add_checkout_validation_js_settings( $settings ) {
-		
-		$settings[ 'checkoutValidation' ] = apply_filters( 'wfc_checkout_validation_script_settings', array(
+
+		$settings[ 'checkoutValidation' ] = apply_filters( 'fc_checkout_validation_script_settings', array(
 			'mailcheckSuggestions' => array(
 				/* translators: %s: html for the email address typo correction suggestion link */
-				'suggestedElementTemplate'    => '<div class="wfc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( __( 'Did you mean %s?', 'woocommerce-fluid-checkout' ), '<a class="mailcheck-suggestion" href="#apply-suggestion" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
+				'suggestedElementTemplate'    => '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( __( 'Did you mean %s?', 'fluid-checkout' ), '<a class="mailcheck-suggestion" href="#apply-suggestion" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
 			),
 			'validationMessages' => array(
-				'required'                    => __( 'This is a required field.', 'woocommerce-fluid-checkout' ),
-				'email'                       => __( 'This is not a valid email address.', 'woocommerce-fluid-checkout' ),
-				'confirmation'                => __( 'This does not match the related field value.', 'woocommerce-fluid-checkout' ),
+				'required'                    => __( 'This is a required field.', 'fluid-checkout' ),
+				'email'                       => __( 'This is not a valid email address.', 'fluid-checkout' ),
+				'confirmation'                => __( 'This does not match the related field value.', 'fluid-checkout' ),
 			),
 		) );
 
@@ -80,8 +80,8 @@ class FluidCheckoutValidation extends FluidCheckout {
 	 */
 	public function change_checkout_email_field_args( $field_args ) {
 		$email_field_custom_attributes = array( 'data-mailcheck' => 1 );
-		
-		$checkout_email_fields = apply_filters( 'wfc_checkout_email_fields_for_mailcheck', array( 'billing_email' ) );
+
+		$checkout_email_fields = apply_filters( 'fc_checkout_email_fields_for_mailcheck', array( 'billing_email' ) );
 		foreach( $field_args as $field => $values ) {
 			if ( in_array( $field, $checkout_email_fields ) ) {
 				if ( ! array_key_exists( 'custom_attributes', $field_args[ $field ] ) ) { $field_args[ $field ][ 'custom_attributes' ] = array(); }
@@ -103,9 +103,9 @@ class FluidCheckoutValidation extends FluidCheckout {
 	 *
 	 * @return  array           Modified checkout field args.
 	 */
-	public function add_checkout_field_validation_status_classes( $args, $key, $value ) {		
+	public function add_checkout_field_validation_status_classes( $args, $key, $value ) {
 		// Bail, skip validation for the field
-		if ( array_key_exists( 'wfc_skip_server_validation', $args ) && true === $args[ 'wfc_skip_server_validation' ] ) { return $args; }
+		if ( array_key_exists( 'fc_skip_server_validation', $args ) && true === $args[ 'fc_skip_server_validation' ] ) { return $args; }
 
 		// Initialize class argument if not existing yet
 		if ( ! array_key_exists( 'class', $args ) ) { $args['class'] = array(); }
@@ -149,7 +149,7 @@ class FluidCheckoutValidation extends FluidCheckout {
 		}
 
 		return $args;
-	}	
+	}
 
 }
 

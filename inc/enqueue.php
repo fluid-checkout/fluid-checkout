@@ -45,11 +45,11 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Enqueue scripts
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'wfc-bundles', self::$directory_url . 'js/bundles'. self::$asset_version . '.js', array( 'require-bundle' ), NULL, true );
+		wp_enqueue_script( 'fc-bundles', self::$directory_url . 'js/bundles'. self::$asset_version . '.js', array( 'require-bundle' ), NULL, true );
 		wp_localize_script(
-			'wfc-bundles',
-			'wfcSettings',
-			apply_filters( 'wfc_js_settings', array(
+			'fc-bundles',
+			'fcSettings',
+			apply_filters( 'fc_js_settings', array(
 				'ver'				=> self::$version,
 				'assetsVersion'     => self::$asset_version,
 				'cookiePath'	    => parse_url( get_option( 'siteurl' ), PHP_URL_PATH ),
@@ -74,7 +74,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Enqueue fonts
 	 */
 	function enqueue_custom_fonts( $hook ) {
-		wp_enqueue_style( 'wfc-fonts', self::$directory_url . '/css/fonts'. self::$asset_version . '.css', array(), null );
+		wp_enqueue_style( 'fc-fonts', self::$directory_url . '/css/fonts'. self::$asset_version . '.css', array(), null );
 	}
 
 
@@ -97,7 +97,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	function enqueue_styles( $hook ) {
 		// Edit Address Styles
 		if ( function_exists( 'is_account_page' ) && is_account_page() && is_wc_endpoint_url( 'edit-address' ) ) {
-			wp_enqueue_style( 'wfc-account-page-address', self::$directory_url . 'css/account-page-address'. self::$asset_version . '.css', array(), null );
+			wp_enqueue_style( 'fc-account-page-address', self::$directory_url . 'css/account-page-address'. self::$asset_version . '.css', array(), null );
 		}
 	}
 
@@ -116,14 +116,14 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		
 		foreach ( $theme_slugs as $theme_slug ) {
 			// Maybe skip compat file
-			if ( get_option( 'wfc_enable_compat_theme_style_' . $theme_slug, true ) === 'false' ) { continue; }
+			if ( get_option( 'fc_enable_compat_theme_style_' . $theme_slug, true ) === 'false' ) { continue; }
 			
 			// Get current theme's compatibility style file name
 			$theme_compat_file_path = 'css/compat/themes/compat-' . $theme_slug . self::$asset_version . '.css';
 
 			// Maybe load theme's compatibility file
 			if ( file_exists( self::$directory_path . $theme_compat_file_path ) ) {
-				wp_enqueue_style( 'wfc-theme-compat-'.$theme_slug, self::$directory_url . $theme_compat_file_path, array(), null );
+				wp_enqueue_style( 'fc-theme-compat-'.$theme_slug, self::$directory_url . $theme_compat_file_path, array(), null );
 			}
 		}
 	}

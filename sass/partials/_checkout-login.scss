@@ -1,7 +1,7 @@
 /*------------------------------------*\
   #CHECKOUT LOGIN
 \*------------------------------------*/
-.wfc-wrapper .wfc-step__substep[data-substep-id="contact_login"] {
+.fc-wrapper .fc-step__substep[data-substep-id="contact_login"] {
 	padding-bottom: $global-spacing-tiny;
 	border-top: 0;
 	border-bottom: 0;
@@ -9,23 +9,23 @@
 
 
 
-.wfc-contact-login {
+.fc-contact-login {
 	text-align: center;
 }
 
 
 
-.wfc-contact-login__cta-text {
+.fc-contact-login__cta-text {
 	margin-bottom: 0;
 }
 
 
 
-.wfc-contact-login__separator {
+.fc-contact-login__separator {
 	position: relative;
 	margin-top: $global-spacing-small;
 }
-.wfc-contact-login__separator:before {
+.fc-contact-login__separator:before {
 	z-index: z( 'default' );
 	content: '';
 	position: absolute;
@@ -36,7 +36,7 @@
 	background-color: $border-color;
 }
 
-.wfc-contact-login__separator-text {
+.fc-contact-login__separator-text {
 	z-index: z( 'above' );
 	position: relative;
 	display: inline-block;
@@ -54,16 +54,16 @@
   #CHECKOUT LOGIN FORM
 \*------------------------------------*/
 
-.wfc-login-form .wfc-login-form__close-wrapper {
+.fc-login-form .fc-login-form__close-wrapper {
 	text-align: right;
 }
 
-.wfc-login-form .button--flyout-close {
+.fc-login-form .button--flyout-close {
 	position: absolute;
 	top: $global-spacing-small;
 	right: $global-spacing-small;
 }
-.wfc-login-form .button--flyout-close:before {
+.fc-login-form .button--flyout-close:before {
 	@include icon-styles();
 	@include icon( 'i-x' );
 	@include icon-size( $icon-size );
@@ -71,7 +71,7 @@
 
 
 
-.wfc-login-form__title {
+.fc-login-form__title {
 	margin-top: $global-spacing;
 	margin-bottom: $global-spacing-small;
 	font-size: $font-size-medium;
@@ -81,6 +81,6 @@
 
 
 
-.wfc-login-form .woocommerce-form-login__submit {
+.fc-login-form .woocommerce-form-login__submit {
 	margin-top: $global-spacing-small;
 }

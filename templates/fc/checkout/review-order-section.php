@@ -2,7 +2,7 @@
 /**
  * Order review section
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/wfc/checkout/review-order-section.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/fc/checkout/review-order-section.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -11,7 +11,7 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package woocommerce-fluid-checkout
+ * @package fluid-checkout
  * @version 1.2.0
  * @wc-version 3.5.0
  * @wc-original checkout/form-checkout.php
@@ -23,17 +23,17 @@ $attributes_str = implode( ' ', array_map( array( FluidCheckout::instance(), 'ma
 $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(), 'map_html_attributes' ), array_keys( $attributes_inner ), $attributes_inner ) );
 ?>
 
-<?php do_action( 'wfc_checkout_before_order_review', $is_sidebar_widget ); ?>
+<?php do_action( 'fc_checkout_before_order_review', $is_sidebar_widget ); ?>
 
 <div <?php echo $attributes_str; ?>>
 	
 	<div <?php echo $attributes_inner_str; ?>>
 
-		<?php do_action( 'wfc_checkout_before_order_review_inside', $is_sidebar_widget ); ?>
+		<?php do_action( 'fc_checkout_before_order_review_inside', $is_sidebar_widget ); ?>
 
 		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
-		<h3 class="wfc-checkout-order-review-title wfc-step__substep-title"><?php echo esc_html( $order_review_title ); ?></h3>
+		<h3 class="fc-checkout-order-review-title fc-step__substep-title"><?php echo esc_html( $order_review_title ); ?></h3>
 
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
@@ -44,17 +44,17 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 		<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
 		<?php if ( $is_sidebar_widget ) : ?>
-			<?php do_action( 'wfc_checkout_order_review_sidebar_before_actions', $is_sidebar_widget ); ?>
+			<?php do_action( 'fc_checkout_order_review_sidebar_before_actions', $is_sidebar_widget ); ?>
 
-			<div class="wfc-checkout-order-review__actions">
-				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout-order-review__edit-cart"><?php echo __( 'Edit Cart', 'woocommerce-fluid-checkout' ); ?></a>
-				<button type="button" class="button" data-flyout-close><?php echo __( 'Continue', 'woocommerce-fluid-checkout' ); ?></button>
+			<div class="fc-checkout-order-review__actions">
+				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__edit-cart"><?php echo __( 'Edit Cart', 'fluid-checkout' ); ?></a>
+				<button type="button" class="button" data-flyout-close><?php echo __( 'Continue', 'fluid-checkout' ); ?></button>
 			</div>
 		<?php endif; ?>
 
-		<?php do_action( 'wfc_checkout_after_order_review_inside', $is_sidebar_widget ); ?>
+		<?php do_action( 'fc_checkout_after_order_review_inside', $is_sidebar_widget ); ?>
 
 	</div>
 </div>
 
-<?php do_action( 'wfc_checkout_after_order_review', $is_sidebar_widget ); ?>
+<?php do_action( 'fc_checkout_after_order_review', $is_sidebar_widget ); ?>

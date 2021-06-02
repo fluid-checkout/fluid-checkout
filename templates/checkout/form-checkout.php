@@ -13,7 +13,7 @@
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.5.0
- * @wfc-version 1.2.0
+ * @fc-version 1.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -24,7 +24,7 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
 if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
-	echo '<div class="wfc-must-login-notice">';
+	echo '<div class="fc-must-login-notice">';
 	echo esc_html( apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'woocommerce' ) ) );
 	echo '</div>';
 	return;
@@ -34,23 +34,23 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
-	<div id="wfc-wrapper" class="wfc-wrapper <?php echo esc_attr( apply_filters( 'wfc_wrapper_classes', '' ) ); ?>">
+	<div id="fc-wrapper" class="fc-wrapper <?php echo esc_attr( apply_filters( 'fc_wrapper_classes', '' ) ); ?>">
 
-		<?php do_action( 'wfc_checkout_before', $checkout ); ?>
+		<?php do_action( 'fc_checkout_before', $checkout ); ?>
 
-		<div class="wfc-inside">
+		<div class="fc-inside">
 
-			<?php do_action( 'wfc_checkout_before_steps', $checkout ); ?>
+			<?php do_action( 'fc_checkout_before_steps', $checkout ); ?>
 
-			<div class="wfc-checkout-steps">
-				<?php do_action( 'wfc_checkout_steps', $checkout ); ?>
+			<div class="fc-checkout-steps">
+				<?php do_action( 'fc_checkout_steps', $checkout ); ?>
 			</div>
 
-			<?php do_action( 'wfc_checkout_after_steps', $checkout ); ?>
+			<?php do_action( 'fc_checkout_after_steps', $checkout ); ?>
 
 		</div>
 
-		<?php do_action( 'wfc_checkout_after', $checkout ); ?>
+		<?php do_action( 'fc_checkout_after', $checkout ); ?>
 
 	</div>
 

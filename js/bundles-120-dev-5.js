@@ -6,10 +6,10 @@
 	'use strict';
 
 	// Bail if require bundle or server variables not loaded
-	if ( ! RequireBundle || ! wfcSettings ) return;
-	
-	var settings = wfcSettings,
-		ver = wfcSettings.assetsVersion;
+	if ( ! RequireBundle || ! fcSettings ) return;
+
+	var settings = fcSettings,
+		ver = fcSettings.assetsVersion;
 
 	// Helper Libraries
 	if ( ! RequireBundle.hasBundle( 'animate-helper' ) ) { RequireBundle.register( 'animate-helper', [ settings.jsLibPath + 'animate-helper' + ver + '.js' ] ); }
@@ -18,7 +18,7 @@
 	if ( ! RequireBundle.hasBundle( 'polyfill-inert' ) ) { RequireBundle.register( 'polyfill-inert', [ settings.jsLibPath + 'inert' + ver + '.js' ] ); }
 	if ( ! RequireBundle.hasBundle( 'sticky-states' ) ) { RequireBundle.register( 'sticky-states', [ settings.jsLibPath + 'sticky-states' + ver + '.js', settings.cssPath + 'sticky-states' + ver + '.css' ], '[data-sticky-states]', function(){ StickyStates.init( settings.stickyStates ); } ); }
 
-	RequireBundle.register( 'wfc-checkout-validation', [ settings.jsPath + 'checkout-validation' + ver + '.js', settings.cssPath + 'checkout-validation' + ver + '.css' ], '.has-wfc-checkout-validation form.checkout', function(){ CheckoutValidation.init( wfcSettings.checkoutValidation ); } );
-	RequireBundle.register( 'mailcheck', [ settings.jsLibPath + 'mailcheck' + ver + '.js', settings.jsPath + 'mailcheck-init' + ver + '.js' ], '[data-mailcheck]', function(){ MailcheckInit.init( wfcSettings.checkoutValidation.mailcheckSuggestions ); } );
+	RequireBundle.register( 'fc-checkout-validation', [ settings.jsPath + 'checkout-validation' + ver + '.js', settings.cssPath + 'checkout-validation' + ver + '.css' ], '.has-fc-checkout-validation form.checkout', function(){ CheckoutValidation.init( fcSettings.checkoutValidation ); } );
+	RequireBundle.register( 'mailcheck', [ settings.jsLibPath + 'mailcheck' + ver + '.js', settings.jsPath + 'mailcheck-init' + ver + '.js' ], '[data-mailcheck]', function(){ MailcheckInit.init( fcSettings.checkoutValidation.mailcheckSuggestions ); } );
 
 })();

@@ -40,9 +40,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * Get the checkout fields args.
 	 */
 	public function get_checkout_field_args() {
-		$billing_email_description = WC()->cart->needs_shipping() ? __( 'Order and tracking number will be sent to this email address.', 'woocommerce-fluid-checkout' ) : __( 'Order number and receipt will be sent to this email address.', 'woocommerce-fluid-checkout' );
+		$billing_email_description = WC()->cart->needs_shipping() ? __( 'Order and tracking number will be sent to this email address.', 'fluid-checkout' ) : __( 'Order number and receipt will be sent to this email address.', 'fluid-checkout' );
 
-		return apply_filters( 'wfc_checkout_field_args', array(
+		return apply_filters( 'fc_checkout_field_args', array(
 			'billing_email'         => array( 'priority' => 5, 'autocomplete' => 'contact email', 'description' => $billing_email_description ),
 			'billing_first_name'    => array( 'priority' => 10, 'autocomplete' => 'contact given-name' ),
 			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'contact family-name' ),
@@ -72,13 +72,13 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 	/**
 	 * Change default locale fields args.
-	 * 
+	 *
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function change_default_locale_field_args( $fields ) {
-		$new_field_args = apply_filters( 'wfc_default_locale_field_args', array(
-			'address_1'           => array( 'class' => array( 'form-row-wide' ), 'description' => __( 'House number and street name.', 'woocommerce-fluid-checkout' ) ),
-			'address_2'           => array( 'class' => array( 'form-row-wide' ), 'label' => __( 'Appartment, unit, building, floor, etc.', 'woocommerce-fluid-checkout' ), 'placeholder' => __( 'Appartment, unit, building, floor, etc.', 'woocommerce-fluid-checkout' ) ),
+		$new_field_args = apply_filters( 'fc_default_locale_field_args', array(
+			'address_1'           => array( 'class' => array( 'form-row-wide' ), 'description' => __( 'House number and street name.', 'fluid-checkout' ) ),
+			'address_2'           => array( 'class' => array( 'form-row-wide' ), 'label' => __( 'Appartment, unit, building, floor, etc.', 'fluid-checkout' ), 'placeholder' => __( 'Appartment, unit, building, floor, etc.', 'fluid-checkout' ) ),
 			'city'                => array( 'class' => array( 'form-row-first' ) ),
 			'state'               => array( 'class' => array( 'form-row-last' ) ),
 			'postcode'            => array( 'class' => array( 'form-row-first' ) ),
@@ -103,12 +103,12 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 	/**
 	 * Remove the class `screen-reader-text` from the label of some fields.
-	 * 
+	 *
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function remove_screen_reader_class_default_locale_field_args( $fields ) {
 		$target_field_ids = array( 'address_2' );
-		
+
 		foreach( $fields as $field_key => $field_args ) {
 			// Bail if field is not in the target list
 			if ( ! in_array( $field_key, $target_field_ids ) ) { continue; }
@@ -127,7 +127,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 	/**
 	 * Add a class to fields with description for default locale fields.
-	 * 
+	 *
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function add_field_has_description_class_default_locale_field_args( $fields ) {
@@ -153,7 +153,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 	/**
 	 * Add a class to fields with description for WooCommerce fields.
-	 * 
+	 *
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function add_field_has_description_class_checkout_fields_args( $fields ) {
@@ -186,7 +186,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @return  array  $field_classes  Changed field classes.
 	 */
 	public function merge_form_field_class_args( $field_classes, $new_classes ) {
-		
+
 		// Maybe remove form-row-XX classes
 		$form_row_classes = array( 'form-row-first', 'form-row-last', 'form-row-wide' );
 
@@ -195,7 +195,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		}
 
 		$field_classes = array_merge( $field_classes, $new_classes );
-		
+
 		return $field_classes;
 	}
 
@@ -255,7 +255,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 	/**
 	 * Change order fields args.
-	 * 
+	 *
 	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function change_order_field_args( $fields ) {
