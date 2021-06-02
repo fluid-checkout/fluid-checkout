@@ -24,13 +24,13 @@
 	var _defaults = {
 		elementSelector: '[data-sticky-states]',
 		innerElementSelector: '[data-sticky-states-inner]',
-		
+
 		isEndPositionClass: 'is-end-position',
 		isStickyClass: 'is-sticky',
 		isStickyTopClass: 'is-sticky--top',
 		isStickyBottomClass: 'is-sticky--bottom',
 		isActivatedClass: 'is-activated',
-		
+
 		positionAttribute: 'data-sticky-position',
 		thresholdAttribute: 'data-sticky-threshold',
 		stickyRelativeToAttribute: 'data-sticky-relative-to',
@@ -40,6 +40,7 @@
 		position: 'top', // Accepted values: `top`, `bottom`
 		threshold: 0,
 	};
+	var _resizeObserver;
 
 
 
@@ -88,6 +89,76 @@
 
 
 	/**
+	 * Execute a function immediately and prevent execution of the same method again for the amount of time defined as the threshold.
+	 *
+	 * @param   function  fn          Function to be executed.
+	 * @param   int       threshhold  Threshold time in milliseconds. Default 250ms.
+	 * @param   object    scope       Scope of execution of the function.
+	 *
+	 * @return  function              Function to be executed, incapsulated in a timed function.
+	 */
+	var _throttle = function( fn, threshhold, scope ) {
+		threshhold || (threshhold = 250);
+
+		var last,
+			deferTimer;
+
+		return function () {
+			var context = scope || this;
+
+			var now = +new Date,
+				args = arguments;
+
+			if ( last && now < last + threshhold ) {
+				// hold on to it
+				clearTimeout( deferTimer );
+				deferTimer = setTimeout( function () {
+					last = now;
+					fn.apply( context, args );
+				}, threshhold );
+			}
+			else {
+				last = now;
+				fn.apply( context, args );
+			}
+		};
+	}
+
+
+
+	/**
+	 * Returns a function, that, as long as it continues to be invoked, will not
+	 * be triggered. The function will be called after it stops being called for
+	 * N milliseconds. If `immediate` is passed, trigger the function on the
+	 * leading edge, instead of the trailing.
+	 *
+	 * @param   {[type]}  func       Function to be executed.
+	 * @param   {[type]}  wait       Wait time in milliseconds.
+	 * @param   {[type]}  immediate  Trigger the function on the leading edge.
+	 *
+	 * @return  function              Function to be executed, incapsulated in a timed function.
+	 */
+	var _debounce = function ( func, wait, immediate ) {
+		var timeout;
+
+		return function() {
+		  var context = this, args = arguments;
+		  var later = function() {
+			timeout = null;
+			if (!immediate) func.apply( context, args );
+		  };
+
+		  var callNow = immediate && !timeout;
+		  clearTimeout( timeout );
+		  timeout = setTimeout( later, wait );
+
+		  if ( callNow ) func.apply( context, args );
+		};
+	};
+
+
+
+	/**
 	 * Get the offset position of the element recursively adding the offset position of parent offset elements until the `stopElement` (or the `body` element).
 	 *
 	 * @param   HTMLElement  element      Element to get the offset position for.
@@ -97,7 +168,7 @@
 	 */
 	var getOffsetTop = function( element, stopElement ) {
 		var offsetTop = 0;
-		
+
 		while( element ) {
 			// Reached the stopElement
 			if ( stopElement && stopElement == element ) {
@@ -107,7 +178,7 @@
 			offsetTop += element.offsetTop;
 			element = element.offsetParent;
 		}
-		
+
 		return offsetTop;
 	}
 
@@ -157,7 +228,7 @@
 				isSticky = currentScrollPosition >= ( manager.settings.threshold - relativeHeight );
 				isEndThreshold = currentScrollPosition >= ( manager.settings.endThreshold - relativeHeight );
 			}
-			
+
 			// Sticky
 			if ( isSticky && ! isEndThreshold ) {
 				var stickyWidth = window.getComputedStyle( manager.innerElement ).width;
@@ -193,11 +264,26 @@
 	/**
 	 * Loop function to changes visibility of the variation switcher.
 	 */
+	var throttledChangeState = _throttle( maybeChangeState, 50 );
 	var loop = function() {
-		maybeChangeState();
-
+		throttledChangeState();
 		// Loop this function indefinitely
 		window.requestAnimationFrame( loop );
+	};
+
+
+
+	/**
+	 * Trigger recalculate threshold values when resizing.
+	 */
+	var resetStickyLimitsOnResize = function() {
+		// Iterate managers
+		for ( var i = 0; i < _publicMethods.managers.length; i++ ) {
+			var manager = _publicMethods.managers[i];
+			if ( manager ) {
+				_publicMethods.resetStickyLimits( manager );
+			}
+		}
 	};
 
 
@@ -210,7 +296,7 @@
 		var thresholdAttrValue = manager.stickyElement.getAttribute( manager.settings.thresholdAttribute );
 		var elementRect = manager.stickyElement.getBoundingClientRect();
 		var elementOffset = getOffsetTop( manager.stickyElement );
-		
+
 		// Threshold
 		manager.settings.threshold = isNaN( parseInt( thresholdAttrValue ) ) ? elementOffset : parseInt( thresholdAttrValue );
 
@@ -228,14 +314,14 @@
 
 		// Use the parent element as the container element
 		manager.containerElement = manager.stickyElement.parentNode;
-		
+
 		// Maybe get containerElement set via attribute
 		var containerSelector = manager.stickyElement.getAttribute( manager.settings.containerAttribute );
 		if ( containerSelector != null && containerSelector != '' ) {
 
 			// Try to find the containerElement in the element's hierarchy first
 			manager.containerElement = manager.stickyElement.closest( containerSelector );
-			
+
 			// Try to find the containerElement on the entire document and set to the first found element that matches the selector
 			if ( ! manager.containerElement ) {
 				manager.containerElement = document.querySelector( containerSelector );
@@ -247,14 +333,14 @@
 			var containerHeight = parseInt( window.getComputedStyle( manager.containerElement ).height.replace( 'px' ) );
 			var elementHeight = parseInt( window.getComputedStyle( manager.stickyElement ).height.replace( 'px' ) );
 			var elementOffsetToContainer = getOffsetTop( manager.stickyElement ) - getOffsetTop( manager.containerElement );
-			
+
 			// Set endThreshold to bottom of containerElement
 			manager.settings.endThreshold = manager.settings.threshold + containerHeight - elementHeight - elementOffsetToContainer;
 
 			// Maybe calculate endThreshold for elements sticky to the bottom
 			if ( manager.settings.position == 'bottom' ) {
 				var endThreshold = getOffsetTop( manager.stickyElement ) - windowHeight + elementRect.height;
-				
+
 				// Maybe set endThreshold to stop sticky state at the element's normal position
 				if ( endThreshold > manager.settings.threshold ) {
 					manager.settings.endThreshold = endThreshold;
@@ -266,17 +352,49 @@
 
 
 	/**
-	 * Get manager instance for element.
+	 * Get manager instance from an element.
+	 *
+	 * @param    HTMLElement   An element that is a `stickyElement`, `stickyInner` or `containerElement`.
 	 */
 	_publicMethods.getInstance = function ( element ) {
 		var instance;
+		// Try getting instance from the element
 		for ( var i = 0; i < _publicMethods.managers.length; i++ ) {
 			var manager = _publicMethods.managers[i];
 			if ( manager.stickyElement == element ) { instance = manager; break; }
 		}
+
+		// Try getting instace from other types of elements
+		if ( ! instance )  { instance = _publicMethods.getInstanceFromInner( element ); }
+		if ( ! instance )  { instance = _publicMethods.getInstanceFromContainer( element ); }
+
 		return instance;
 	}
-	
+
+	/**
+	 * Get manager instance for containerElement.
+	 */
+	_publicMethods.getInstanceFromContainer = function ( containerElement ) {
+		var instance;
+		for ( var i = 0; i < _publicMethods.managers.length; i++ ) {
+			var manager = _publicMethods.managers[i];
+			if ( manager.containerElement == containerElement ) { instance = manager; break; }
+		}
+		return instance;
+	}
+
+	/**
+	 * Get manager instance for innerElement.
+	 */
+	_publicMethods.getInstanceFromInner = function ( innerElement ) {
+		var instance;
+		for ( var i = 0; i < _publicMethods.managers.length; i++ ) {
+			var manager = _publicMethods.managers[i];
+			if ( manager.innerElement == innerElement ) { instance = manager; break; }
+		}
+		return instance;
+	}
+
 
 
 	/**
@@ -285,28 +403,33 @@
 	_publicMethods.initializeElement = function( stickyElement ) {
 		var manager = {};
 		manager.settings = extend( _settings );
-		
+
 		// Get elements
 		manager.stickyElement = stickyElement;
 		manager.innerElement = manager.stickyElement.querySelector( manager.settings.innerElementSelector );
-		
+
 		var positionAttrValue = manager.stickyElement.getAttribute( manager.settings.positionAttribute );
 		manager.settings.position = positionAttrValue == 'top' || positionAttrValue == 'bottom' ? positionAttrValue : _settings.position;
-		
+
 		// Calculate threshold values, recalculate when resize window
 		_publicMethods.resetStickyLimits( manager );
-		// TODO: Move resize event listener to a single global event handler, instead of multiple event listers for each sticky element
-		window.addEventListener( 'resize', function() { _publicMethods.resetStickyLimits( manager ); } );
-		
+
+		// Start observing resize of relevant elements
+		if ( _resizeObserver ) {
+			_resizeObserver.observe( manager.containerElement );
+			_resizeObserver.observe( manager.stickyElement );
+			_resizeObserver.observe( manager.innerElement );
+		}
+
 		// Set element as activated
 		manager.isActivated = true;
 		manager.stickyElement.classList.add( manager.settings.isActivatedClass );
-		
+
 		// Add manager to public methods
 		_publicMethods.managers.push( manager );
 	}
 
-	
+
 
 	/**
 	 * Initialize.
@@ -317,12 +440,17 @@
 		// Merge with general settings with options
 		_settings = extend( _defaults, options );
 
+		// Initialize resize observer
+		if ( window.ResizeObserver ) {
+			_resizeObserver = new ResizeObserver( _debounce( resetStickyLimitsOnResize, 50 ) );
+		}
+
 		// Initialize each sticky element
 		var stickyElements = document.querySelectorAll( _settings.elementSelector );
 		for ( var i = 0; i < stickyElements.length; i++ ) {
 			_publicMethods.initializeElement( stickyElements[ i ] );
 		}
-		
+
 		// Start handling sticky states
 		requestAnimationFrame( loop );
 
