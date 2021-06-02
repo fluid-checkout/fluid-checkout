@@ -24,14 +24,14 @@
 /*------------------------------------*\
 	#ORDER DETAILS - GIFT MESSAGE
 \*------------------------------------*/
-.wfc-gift-options__message {
+.fc-gift-options__message {
   margin: 0 0 30px;
   padding: 30px 20px;
   border: dashed 1px #D6D8D8;
   border-radius: 5px;
   text-align: center; }
 
-.wfc-gift-options__message .wfc-gift-options__message-text {
+.fc-gift-options__message .fc-gift-options__message-text {
   max-width: 750px;
   display: block;
   margin: 0 auto;
@@ -39,5 +39,5 @@
   font-size: 1.2em;
   font-style: italic; }
 
-.wfc-gift-options__message .wfc-gift-options__message-from {
+.fc-gift-options__message .fc-gift-options__message-from {
   margin-top: 5px; }

@@ -23,7 +23,7 @@
 	var _hasJQuery = ( $ != null );
 	var _publicMethods = { };
 	var _settings = {
-		bodyClass: 'wfc-checkout-validation--active',
+		bodyClass: 'fc-checkout-validation--active',
 		formSelector: 'form.checkout',
 		formRowSelector: '.form-row',
 		validateFieldsSelector: '.input-text, select',
