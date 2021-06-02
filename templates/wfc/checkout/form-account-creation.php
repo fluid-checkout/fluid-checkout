@@ -11,7 +11,7 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package woocommerce-fluid-checkout
+ * @package fluid-checkout
  * @version 1.2.0
  * @wc-version 3.6.0
  * @wc-original checkout/form-billing.php
@@ -26,16 +26,16 @@ defined( 'ABSPATH' ) || exit;
 
 			<p class="form-row form-row-wide create-account">
 				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ); ?> type="checkbox" name="createaccount" value="1" /> <span><?php esc_html_e( 'Create an account', 'woocommerce-fluid-checkout' ); ?></span>
+					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ); ?> type="checkbox" name="createaccount" value="1" /> <span><?php esc_html_e( 'Create an account', 'fluid-checkout' ); ?></span>
 				</label>
 			</p>
 
 		<?php endif; ?>
-		
+
 		<?php do_action( 'woocommerce_before_checkout_registration_form', $checkout ); ?>
-		
+
 		<?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
-			
+
 			<?php // CHANGE: Add class `wfc-field-group` ?>
 			<div class="create-account wfc-field-group">
 				<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>

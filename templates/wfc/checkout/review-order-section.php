@@ -11,7 +11,7 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package woocommerce-fluid-checkout
+ * @package fluid-checkout
  * @version 1.2.0
  * @wc-version 3.5.0
  * @wc-original checkout/form-checkout.php
@@ -47,8 +47,8 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 			<?php do_action( 'wfc_checkout_order_review_sidebar_before_actions', $is_sidebar_widget ); ?>
 
 			<div class="wfc-checkout-order-review__actions">
-				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout-order-review__edit-cart"><?php echo __( 'Edit Cart', 'woocommerce-fluid-checkout' ); ?></a>
-				<button type="button" class="button" data-flyout-close><?php echo __( 'Continue', 'woocommerce-fluid-checkout' ); ?></button>
+				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="wfc-checkout-order-review__edit-cart"><?php echo __( 'Edit Cart', 'fluid-checkout' ); ?></a>
+				<button type="button" class="button" data-flyout-close><?php echo __( 'Continue', 'fluid-checkout' ); ?></button>
 			</div>
 		<?php endif; ?>
 

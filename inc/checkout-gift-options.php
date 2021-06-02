@@ -80,7 +80,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 */
 	public function output_substep_gift_options( $step_id ) {
 		$substep_id = 'gift_options';
-		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, __( 'Gift options', 'woocommerce-fluid-checkout' ) );
+		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, __( 'Gift options', 'fluid-checkout' ) );
 
 		$this->checkout_steps()->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_gift_options_fields();
@@ -114,7 +114,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		}
 		// Display "no gift options" notice.
 		else {
-			$html .= '<span class="wfc-step__substep-text-line">' . apply_filters( 'wfc_no_gift_options_order_review_notice', _x( 'None.', 'Notice for no gift options provided', 'woocommerce-fluid-checkout' ) ) . '</span>';
+			$html .= '<span class="wfc-step__substep-text-line">' . apply_filters( 'wfc_no_gift_options_order_review_notice', _x( 'None.', 'Notice for no gift options provided', 'fluid-checkout' ) ) . '</span>';
 		}
 
 		$html .= '</div>';
@@ -124,7 +124,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 	/**
 	 * Add gift options text format as checkout fragment.
-	 * 
+	 *
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_gift_options_text_fragment( $fragments ) {
@@ -158,9 +158,9 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 			'_wfc_gift_from' => array(
 				'type'          => 'text',
 				'class'         => array( 'form-row-wide '),
-				'label'         => __( 'From', 'woocommerce-fluid-checkout' ),
-				'placeholder'   => __( 'Your name', 'woocommerce-fluid-checkout' ),
-				'description'   => __( 'Name of who is sending the gift, printed on the packing slip.', 'woocommerce-fluid-checkout' ),
+				'label'         => __( 'From', 'fluid-checkout' ),
+				'placeholder'   => __( 'Your name', 'fluid-checkout' ),
+				'description'   => __( 'Name of who is sending the gift, printed on the packing slip.', 'fluid-checkout' ),
 				'default'		=> is_checkout() ? $customer->get_display_name() : null,
 				'maxlength'		=> apply_filters( 'wfc_gift_options_from_length', false ),
 				'custom_attributes' => array(
@@ -171,9 +171,9 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 			'_wfc_gift_message' => array(
 				'type'          => 'textarea',
 				'class'         => array( 'form-row-wide '),
-				'label'         => __( 'Gift message', 'woocommerce-fluid-checkout' ),
-				'placeholder'   => __( 'Write a gift message...', 'woocommerce-fluid-checkout' ),
-				'description'   => $message_maxlength ? sprintf( __( 'Brief message with up to %d characters, printed on the packing slip.', 'woocommerce-fluid-checkout' ), $message_maxlength ) : __( 'Brief message, printed on the packing slip.', 'woocommerce-fluid-checkout' ),
+				'label'         => __( 'Gift message', 'fluid-checkout' ),
+				'placeholder'   => __( 'Write a gift message...', 'fluid-checkout' ),
+				'description'   => $message_maxlength ? sprintf( __( 'Brief message with up to %d characters, printed on the packing slip.', 'fluid-checkout' ), $message_maxlength ) : __( 'Brief message, printed on the packing slip.', 'fluid-checkout' ),
 				'default'		=> is_checkout() ? $checkout->get_value( '_wfc_gift_message' ) : null,
 				'maxlength'		=> $message_maxlength,
 			),
@@ -236,7 +236,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 	/**
 	 * Save the gift options fields values to the current user session.
-	 * 
+	 *
 	 * @param array $posted_data Post data for all checkout fields.
 	 */
 	public function set_gift_options_session( $posted_data ) {
@@ -245,7 +245,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 		// Get gift options values
 		$gift_options = array();
-		
+
 		// Get values for each field
 		$gift_options_fields = $this->get_gift_options_fields();
 		foreach ( $gift_options_fields as $key => $field ) {
@@ -254,7 +254,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 		// Set session value
 		WC()->session->set( '_wfc_gift_options', $gift_options );
-		
+
 		return $posted_data;
 	}
 
@@ -303,13 +303,13 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	public function get_gift_options_from_order( $order_id ) {
 		// Get gift options values
 		$gift_options = array();
-		
+
 		// Get values for each field
 		$gift_options_fields = $this->get_gift_options_fields();
 		foreach ( $gift_options_fields as $key => $field ) {
 			$gift_options[ $key ] = get_post_meta( $order_id, $key, true );
 		}
-		
+
 		return $gift_options;
 	}
 
@@ -339,11 +339,11 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		$gift_options_fields = $this->get_gift_options_fields();
 		?>
 			<br class="clear" />
-			
+
 			<?php // TODO: Move the gift options edit section to its own metabox and template file ?>
 			<div class="order_data_column" style="width: 100%">
-				
-				<h4><?php echo __( 'Gift options', 'Title for gift options on admin order details screen', 'woocommerce-fluid-checkout' ) ?> <a href="#" class="edit_address"><?php echo _x( 'Edit', 'Edit gift options link on admin order details screen', 'woocommerce-fluid-checkout' ) ?></a></h4>
+
+				<h4><?php echo __( 'Gift options', 'Title for gift options on admin order details screen', 'fluid-checkout' ) ?> <a href="#" class="edit_address"><?php echo _x( 'Edit', 'Edit gift options link on admin order details screen', 'fluid-checkout' ) ?></a></h4>
 
 				<div class="address">
 					<?php
@@ -384,7 +384,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	}
 
 
-	
+
 	/**
 	 * Save order meta data for gift message.
 	 *
@@ -431,28 +431,28 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 		// Insert at token position
 		$new_total_rows  = array_slice( $total_rows, 0, $position_index );
-		
+
 		// Check if should display message text as a separate section
 		if ( $this->is_gift_message_in_order_details() ) {
 			// Gift message
 			if ( ! empty( $gift_message ) ) {
 				$new_total_rows[ 'gift_message' ] = array(
-					'label' => __( 'Gift message:', 'woocommerce-fluid-checkout' ),
+					'label' => __( 'Gift message:', 'fluid-checkout' ),
 					'value' => $gift_message,
 				);
 			}
-	
+
 			// Gift message from
-			if ( ! empty( $gift_from ) ) { 
+			if ( ! empty( $gift_from ) ) {
 				$new_total_rows[ 'gift_message_from' ] = array(
-					'label' => __( 'Gift message from:', 'woocommerce-fluid-checkout' ),
+					'label' => __( 'Gift message from:', 'fluid-checkout' ),
 					'value' => $gift_from,
 				);
 			}
 		}
 
 		$new_total_rows = array_merge( $new_total_rows, array_slice( $total_rows, $position_index, count( $total_rows ) ) );
-	
+
 		return $new_total_rows;
 	}
 

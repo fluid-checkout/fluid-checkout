@@ -23,7 +23,7 @@ if ( ! is_ajax() ) {
 }
 ?>
 <div id="payment" class="woocommerce-checkout-payment">
-	
+
 	<?php // CHANGE: Added hook for before the payment section ?>
 	<?php do_action( 'wfc_checkout_before_payment', $checkout ); ?>
 
@@ -43,7 +43,7 @@ if ( ! is_ajax() ) {
 		</div>
 	<?php // CHANGE: Display info message when payment is not needed ?>
 	<?php else: ?>
-		<div class="woocommerce-info"><?php echo apply_filters( 'wfc_payment_not_needed_message', sprintf( __( 'Your order has a total amount due of %s. No&nbsp;further payment is needed.', 'woocommerce-fluid-checkout' ), wc_price( 0 ) ) ); ?></div>
+		<div class="woocommerce-info"><?php echo apply_filters( 'wfc_payment_not_needed_message', sprintf( __( 'Your order has a total amount due of %s. No&nbsp;further payment is needed.', 'fluid-checkout' ), wc_price( 0 ) ) ); ?></div>
 	<?php endif; ?>
 
 	<?php // CHANGE: Removed place order section, moved to templates/wfc/checkout/place-order.php ?>

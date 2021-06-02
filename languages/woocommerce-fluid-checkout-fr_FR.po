@@ -19,7 +19,7 @@ msgctxt "\"same as\" address type label"
 msgid "shipping address"
 msgstr "Adresse d'expédition"
 
-#: woocommerce-fluid-checkout.php:248
+#: fluid-checkout.php:248
 #, fuzzy, php-format
 msgid ""
 "%1$s requires the %2$s plugin to be installed/activated. %1$s has been "

@@ -52,13 +52,13 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 			$skip_list[] = 'shipping_address_2';
 			$skip_list[] = 'billing_address_2';
 		}
-	
+
 		// Check if should skip current field
 		if ( in_array( $key, apply_filters( 'wfc_hide_optional_fields_skip_list', $skip_list ) ) ) { return $field; }
 
 		// Set attribute `data-autofocus` to focus on the optional field when expanding the section
 		$field = str_replace( 'name="'. $key .'"', 'name="'. $key .'" data-autofocus', $field );
-		
+
 		// Move container classes to expansible block
 		$container_class = esc_attr( implode( ' ', $args['class'] ) );
 		$expansible_section_args = array(
@@ -66,7 +66,7 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 				'class' => 'form-row ' . $container_class,
 			),
 		);
-		
+
 		// Remove the container class from the field element
 		$field = str_replace( 'form-row '. $container_class, 'form-row ', $field );
 
@@ -74,12 +74,12 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		if ( ! empty( $value ) ) {
 			$expansible_section_args[ 'initial_state' ] = 'expanded';
 		}
-		
+
 		ob_start();
-		
+
 		// Add expansible block markup for the field
 		/* translators: %s: Form field label */
-		$toggle_label = apply_filters( 'wfc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'woocommerce-fluid-checkout' ), strtolower( $args['label'] ) ) );
+		$toggle_label = apply_filters( 'wfc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), strtolower( $args['label'] ) ) );
 		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, $toggle_label, $expansible_section_args );
 		echo $field;
 		$this->checkout_steps()->output_expansible_form_section_end_tag();

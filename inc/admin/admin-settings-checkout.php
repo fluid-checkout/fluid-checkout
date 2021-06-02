@@ -2,7 +2,7 @@
 /**
  * WooCommerce Checkout Settings
  *
- * @package woocommerce-fluid-checkout
+ * @package fluid-checkout
  * @version 1.2.0
  */
 
@@ -24,7 +24,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'wfc_checkout';
-		$this->label = __( 'Fluid Checkout', 'woocommerce-fluid-checkout' );
+		$this->label = __( 'Fluid Checkout', 'fluid-checkout' );
 
 		parent::__construct();
 
@@ -48,9 +48,9 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	 */
 	public function get_sections() {
 		$sections = array(
-			''             => __( 'Checkout Options', 'woocommerce-fluid-checkout' ),
-			'address'    => __( 'Address Fields', 'woocommerce-fluid-checkout' ),
-			'advanced'     => __( 'Advanced', 'woocommerce-fluid-checkout' ),
+			''             => __( 'Checkout Options', 'fluid-checkout' ),
+			'address'    => __( 'Address Fields', 'fluid-checkout' ),
+			'advanced'     => __( 'Advanced', 'fluid-checkout' ),
 		);
 
 		return apply_filters( 'woocommerce_get_sections_' . $this->id, $sections );
@@ -99,15 +99,15 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 				'wfc_checkout_'.$current_section.'_settings',
 				array(
 					array(
-						'title' => __( 'Layout', 'woocommerce-fluid-checkout' ),
+						'title' => __( 'Layout', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'wfc_checkout_advanced_layout_options',
 					),
 
 					array(
-						'title'         => __( 'Order Summary', 'woocommerce-fluid-checkout' ),
-						'desc'          => __( 'Make the order summary stay visible while scrolling', 'woocommerce-fluid-checkout' ),
+						'title'         => __( 'Order Summary', 'fluid-checkout' ),
+						'desc'          => __( 'Make the order summary stay visible while scrolling', 'fluid-checkout' ),
 						'id'            => 'wfc_enable_checkout_sticky_order_summary',
 						'default'       => 'yes',
 						'type'          => 'checkbox',
@@ -115,9 +115,9 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 
 					array(
-						'title'         => __( 'Progress bar', 'woocommerce-fluid-checkout' ),
-						'desc'          => __( 'Make the checkout progress bar stay visible while scrolling', 'woocommerce-fluid-checkout' ),
-						'desc_tip'      => __( 'Applies only to multi-step layouts.', 'woocommerce-fluid-checkout' ),
+						'title'         => __( 'Progress bar', 'fluid-checkout' ),
+						'desc'          => __( 'Make the checkout progress bar stay visible while scrolling', 'fluid-checkout' ),
+						'desc_tip'      => __( 'Applies only to multi-step layouts.', 'fluid-checkout' ),
 						'id'            => 'wfc_enable_checkout_sticky_progress_bar',
 						'default'       => 'yes',
 						'type'          => 'checkbox',
@@ -125,14 +125,14 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 
 					array(
-						'title'         => __( 'Header and Footer', 'woocommerce-fluid-checkout' ),
-						'desc'          => __( 'We recommend using the Fluid Checkout header and footer to avoid distractions at the checkout page. <a href="https://baymard.com/blog/cart-abandonment" target="_blank">Read the research about cart abandonment</a>.', 'woocommerce-fluid-checkout' ),
-						'desc_tip'      => __( 'Controls whether to use the Fluid Checkout page header and footer of keep the currently active theme\'s.', 'woocommerce-fluid-checkout' ),
+						'title'         => __( 'Header and Footer', 'fluid-checkout' ),
+						'desc'          => __( 'We recommend using the Fluid Checkout header and footer to avoid distractions at the checkout page. <a href="https://baymard.com/blog/cart-abandonment" target="_blank">Read the research about cart abandonment</a>.', 'fluid-checkout' ),
+						'desc_tip'      => __( 'Controls whether to use the Fluid Checkout page header and footer of keep the currently active theme\'s.', 'fluid-checkout' ),
 						'id'            => 'wfc_hide_site_header_footer_at_checkout',
 						'type'          => 'radio',
 						'options'       => array(
-							'yes'       => __( 'Use Fluid Checkout header and footer', 'woocommerce-fluid-checkout' ),
-							'no'        => __( 'Use theme\'s page header and footer for the checkout page', 'woocommerce-fluid-checkout' ),
+							'yes'       => __( 'Use Fluid Checkout header and footer', 'fluid-checkout' ),
+							'no'        => __( 'Use theme\'s page header and footer for the checkout page', 'fluid-checkout' ),
 						),
 						'default'       => 'yes',
 						'autoload'      => false,
@@ -144,16 +144,16 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 
 					array(
-						'title' => __( 'Troubleshooting', 'woocommerce-fluid-checkout' ),
+						'title' => __( 'Troubleshooting', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'wfc_checkout_advanced_debug_options',
 					),
 
 					array(
-						'title'         => __( 'Debug options', 'woocommerce-fluid-checkout' ),
-						'desc'          => __( 'Load unminified assets', 'woocommerce-fluid-checkout' ),
-						'desc_tip'      => __( 'Loading unminified assets affect the the website performance. Only use this option while troubleshooting.', 'woocommerce-fluid-checkout' ),
+						'title'         => __( 'Debug options', 'fluid-checkout' ),
+						'desc'          => __( 'Load unminified assets', 'fluid-checkout' ),
+						'desc_tip'      => __( 'Loading unminified assets affect the the website performance. Only use this option while troubleshooting.', 'fluid-checkout' ),
 						'id'            => 'wfc_load_unminified_assets',
 						'default'       => 'no',
 						'type'          => 'checkbox',
@@ -172,16 +172,16 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 				'wfc_checkout_'.$current_section.'_settings',
 				array(
 					array(
-						'title' => __( 'Address Fields', 'woocommerce-fluid-checkout' ),
+						'title' => __( 'Address Fields', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'wfc_checkout_advanced_debug_options',
 					),
 
 					array(
-						'title'         => __( 'Billing Address', 'woocommerce-fluid-checkout' ),
-						'desc'          => __( 'Billing address same as the shipping address checked by default', 'woocommerce-fluid-checkout' ),
-						'desc_tip'      => __( 'It is recommended to leave this option checked. The billing address at checkout will start with the option "Billing same as shipping" checked by default. This will reduce significantly the number of open input fields at the checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'woocommerce-fluid-checkout' ),
+						'title'         => __( 'Billing Address', 'fluid-checkout' ),
+						'desc'          => __( 'Billing address same as the shipping address checked by default', 'fluid-checkout' ),
+						'desc_tip'      => __( 'It is recommended to leave this option checked. The billing address at checkout will start with the option "Billing same as shipping" checked by default. This will reduce significantly the number of open input fields at the checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
 						'id'            => 'wfc_default_to_billing_same_as_shipping',
 						'default'       => 'yes',
 						'type'          => 'checkbox',
@@ -189,13 +189,13 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 
 					array(
-						'title'         => __( 'Shipping phone', 'woocommerce-fluid-checkout' ),
-						'desc'          => __( 'Add a phone field to the shipping address form', 'woocommerce-fluid-checkout' ),
+						'title'         => __( 'Shipping phone', 'fluid-checkout' ),
+						'desc'          => __( 'Add a phone field to the shipping address form', 'fluid-checkout' ),
 						'id'            => 'wfc_shipping_phone_field_visibility',
 						'options'       => array(
-							'no'        => __( 'Hidden', 'woocommerce-fluid-checkout' ),
-							'optional'  => __( 'Optional', 'woocommerce-fluid-checkout' ),
-							'required'  => __( 'Required', 'woocommerce-fluid-checkout' ),
+							'no'        => __( 'Hidden', 'fluid-checkout' ),
+							'optional'  => __( 'Optional', 'fluid-checkout' ),
+							'required'  => __( 'Required', 'fluid-checkout' ),
 						),
 						'default'       => 'no',
 						'type'          => 'select',
@@ -214,14 +214,14 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 				'wfc_checkout_general_settings',
 				array(
 					array(
-						'title' => __( 'Layout', 'woocommerce-fluid-checkout' ),
+						'title' => __( 'Layout', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'wfc_checkout_layout_options',
 					),
 
 					array(
-						'title'             => __( 'Checkout Layout', 'woocommerce-fluid-checkout' ),
+						'title'             => __( 'Checkout Layout', 'fluid-checkout' ),
 						'id'                => 'wfc_checkout_layout',
 						'type'              => 'wfc_layout_selector',
 						'options'           => FluidCheckout_Steps::instance()->get_allowed_checkout_layouts(),
@@ -230,11 +230,11 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'wrapper_class'     => 'wfc-checkout-layout',
 						'class'             => 'wfc-checkout-layout__option',
 					),
-					
+
 					array(
-						'title'             => __( 'Optional fields', 'woocommerce-fluid-checkout' ),
-						'desc'              => __( 'Hide optional fields behind a link button', 'woocommerce-fluid-checkout' ),
-						'desc_tip'          => __( 'It is recommended to keep this options checked to reduce the number of open input fields, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-link" target="_blank">read the research</a>.', 'woocommerce-fluid-checkout' ),
+						'title'             => __( 'Optional fields', 'fluid-checkout' ),
+						'desc'              => __( 'Hide optional fields behind a link button', 'fluid-checkout' ),
+						'desc_tip'          => __( 'It is recommended to keep this options checked to reduce the number of open input fields, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-link" target="_blank">read the research</a>.', 'fluid-checkout' ),
 						'id'                => 'wfc_enable_checkout_hide_optional_fields',
 						'default'           => 'yes',
 						'type'              => 'checkbox',
@@ -243,8 +243,8 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'autoload'          => false,
 					),
 					array(
-						'desc'              => __( 'Do not hide "Address line 2" fields behind a link button', 'woocommerce-fluid-checkout' ),
-						'desc_tip'          => __( 'Recommended only whe most customers actually need the "Address line 2" field or when delivering perishable products.', 'woocommerce-fluid-checkout' ),
+						'desc'              => __( 'Do not hide "Address line 2" fields behind a link button', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Recommended only whe most customers actually need the "Address line 2" field or when delivering perishable products.', 'fluid-checkout' ),
 						'id'                => 'wfc_hide_optional_fields_skip_address_2',
 						'default'           => 'no',
 						'type'              => 'checkbox',
@@ -252,33 +252,33 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
 					),
-					
+
 					array(
-						'title'             => __( 'Order Summary', 'woocommerce-fluid-checkout' ),
-						'desc'              => __( 'Display an additional "Place order" and terms checkbox below the order summary in the sidebar.', 'woocommerce-fluid-checkout' ),
-						'desc_tip'          => __( 'Recommended if most of the orders have only a few different products in the cart, and product variations do not take too much space on the order summary.', 'woocommerce-fluid-checkout' ),
+						'title'             => __( 'Order Summary', 'fluid-checkout' ),
+						'desc'              => __( 'Display an additional "Place order" and terms checkbox below the order summary in the sidebar.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Recommended if most of the orders have only a few different products in the cart, and product variations do not take too much space on the order summary.', 'fluid-checkout' ),
 						'id'                => 'wfc_enable_checkout_place_order_sidebar',
 						'default'           => 'no',
 						'type'              => 'checkbox',
 						'autoload'          => false,
 					),
-					
+
 					array(
 						'type' => 'sectionend',
 						'id'   => 'wfc_checkout_layout_options',
 					),
 
 					array(
-						'title' => __( 'Features', 'woocommerce-fluid-checkout' ),
+						'title' => __( 'Features', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'wfc_checkout_features_options',
 					),
 
 					array(
-						'title'             => __( 'Coupon Codes', 'woocommerce-fluid-checkout' ),
-						'desc'              => __( 'Show coupon codes as a substep of the payment step', 'woocommerce-fluid-checkout' ),
-						'desc_tip'          => __( 'Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'woocommerce-fluid-checkout' ),
+						'title'             => __( 'Coupon Codes', 'fluid-checkout' ),
+						'desc'              => __( 'Show coupon codes as a substep of the payment step', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'fluid-checkout' ),
 						'id'                => 'wfc_enable_checkout_coupon_codes',
 						'default'           => 'yes',
 						'type'              => 'checkbox',
@@ -297,9 +297,9 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Gift options', 'woocommerce-fluid-checkout' ),
-						'desc'              => __( 'Display gift message and other gift options at the checkout page', 'woocommerce-fluid-checkout' ),
-						'desc_tip'          => __( 'Allow customers to add a gift message and other gift related options to the order.', 'woocommerce-fluid-checkout' ),
+						'title'             => __( 'Gift options', 'fluid-checkout' ),
+						'desc'              => __( 'Display gift message and other gift options at the checkout page', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Allow customers to add a gift message and other gift related options to the order.', 'fluid-checkout' ),
 						'id'                => 'wfc_enable_checkout_gift_options',
 						'default'           => 'no',
 						'type'              => 'checkbox',
@@ -328,9 +328,9 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Checkout Widget Areas', 'woocommerce-fluid-checkout' ),
-						'desc'              => __( 'Add widget areas to the checkout page', 'woocommerce-fluid-checkout' ),
-						'desc_tip'          => __( 'These widget areas are used to add trust symbols on the checkout page.', 'woocommerce-fluid-checkout' ),
+						'title'             => __( 'Checkout Widget Areas', 'fluid-checkout' ),
+						'desc'              => __( 'Add widget areas to the checkout page', 'fluid-checkout' ),
+						'desc_tip'          => __( 'These widget areas are used to add trust symbols on the checkout page.', 'fluid-checkout' ),
 						'id'                => 'wfc_enable_checkout_widget_areas',
 						'default'           => 'yes',
 						'type'              => 'checkbox',

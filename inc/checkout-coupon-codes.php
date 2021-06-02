@@ -20,7 +20,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	public function hooks() {
 		// Bail if use of coupons not enabled
 		if ( ! wc_coupons_enabled() ) { return; }
-		
+
 		// Body Class
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
@@ -67,14 +67,14 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function output_substep_coupon_codes( $step_id ) {
 		$substep_id = 'coupon_codes';
-		$substep_title = get_option( 'wfc_display_coupon_code_section_title', 'no' ) === 'yes' ? apply_filters( 'wfc_substep_coupon_codes_section_title', __( 'Coupon code', 'woocommerce-fluid-checkout' ) ) : null;
+		$substep_title = get_option( 'wfc_display_coupon_code_section_title', 'no' ) === 'yes' ? apply_filters( 'wfc_substep_coupon_codes_section_title', __( 'Coupon code', 'fluid-checkout' ) ) : null;
 		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_text_coupon_codes();
 
 		$this->checkout_steps()->output_substep_fields_start_tag( $step_id, $substep_id, false );
 		$this->output_substep_coupon_codes_fields();
-		$this->checkout_steps()->output_substep_fields_end_tag();		
+		$this->checkout_steps()->output_substep_fields_end_tag();
 
 		$this->checkout_steps()->output_substep_end_tag( $step_id, $substep_id, false );
 	}
@@ -85,9 +85,9 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * Output coupon codes fields.
 	 */
 	public function output_substep_coupon_codes_fields() {
-		$coupon_code_field_label = apply_filters( 'wfc_coupon_code_field_label', __( 'Coupon code', 'woocommerce-fluid-checkout' ) );
-		$coupon_code_field_placeholder = apply_filters( 'wfc_coupon_code_field_placeholder', __( 'Enter your code here', 'woocommerce-fluid-checkout' ) );
-		$coupon_code_button_label = apply_filters( 'wfc_coupon_code_button_label', _x( 'Apply code', 'Button label for applying coupon codes', 'woocommerce-fluid-checkout' ) );
+		$coupon_code_field_label = apply_filters( 'wfc_coupon_code_field_label', __( 'Coupon code', 'fluid-checkout' ) );
+		$coupon_code_field_placeholder = apply_filters( 'wfc_coupon_code_field_placeholder', __( 'Enter your code here', 'fluid-checkout' ) );
+		$coupon_code_button_label = apply_filters( 'wfc_coupon_code_button_label', _x( 'Apply code', 'Button label for applying coupon codes', 'fluid-checkout' ) );
 
 		$key = 'coupon_code';
 		$coupon_code_field_args = array(
@@ -100,10 +100,10 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 				'data-autofocus'         => true,
 			),
 		);
-		
+
 		// Output coupon code field and button in an expansible form section
 		/* translators: %s: Form field label */
-		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, apply_filters( 'wfc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'woocommerce-fluid-checkout' ), strtolower( $coupon_code_field_label ) ) ) );
+		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, apply_filters( 'wfc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), strtolower( $coupon_code_field_label ) ) ) );
 		woocommerce_form_field( $key, $coupon_code_field_args );
 		?>
 		<button type="button" class="wfc-coupon-code__apply <?php echo esc_attr( apply_filters( 'wfc_coupon_code_apply_button_classes', 'button' ) ); ?>" data-apply-coupon-button><?php echo $coupon_code_button_label; ?></button>
@@ -136,7 +136,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 			// Get coupon label with changed "remove" link
 			ob_start();
 			wc_cart_totals_coupon_html( $coupon );
-			$coupon_html = str_replace( __( '[Remove]', 'woocommerce' ), __( 'Remove', 'woocommerce-fluid-checkout' ), ob_get_clean() );
+			$coupon_html = str_replace( __( '[Remove]', 'woocommerce' ), __( 'Remove', 'fluid-checkout' ), ob_get_clean() );
 			?>
 			<div class="wfc-coupon-codes__coupon coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
 				<strong class="wfc-coupon-codes__coupon-code"><?php wc_cart_totals_coupon_label( $coupon ); ?></strong>
@@ -153,7 +153,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 	/**
 	 * Add coupon codes text format as checkout fragment.
-	 * 
+	 *
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_coupon_codes_text_fragment( $fragments ) {

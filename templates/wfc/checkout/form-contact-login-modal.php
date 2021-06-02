@@ -11,7 +11,7 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package woocommerce-fluid-checkout
+ * @package fluid-checkout
  * @version 1.2.0
  */
 
@@ -20,14 +20,14 @@ defined( 'ABSPATH' ) || exit;
 
 <div class="wfc-login-form" data-flyout data-flyout-modal data-flyout-checkout-login>
 	<div class="wfc-login-form__inner" data-flyout-content>
-		
+
 		<div class="wfc-login-form__close-wrapper">
-			<a href="#close" class="button--flyout-close" title="<?php esc_attr_e( 'Close login form', 'fluidtheme' ) ?>" data-flyout-close aria-label="<?php echo _x( 'Close', 'Close button aria-label', 'woocommerce-fluid-checkout' ); ?>"></a>
+			<a href="#close" class="button--flyout-close" title="<?php esc_attr_e( 'Close login form', 'fluidtheme' ) ?>" data-flyout-close aria-label="<?php echo _x( 'Close', 'Close button aria-label', 'fluid-checkout' ); ?>"></a>
 		</div>
 
-		<div class="wfc-login-form__title"><?php echo __( 'Sign in to your account', 'woocommerce-fluid-checkout' ); ?></div>
-		
+		<div class="wfc-login-form__title"><?php echo __( 'Sign in to your account', 'fluid-checkout' ); ?></div>
+
 		<?php wc_get_template( 'global/form-login.php' ); ?>
-		
+
 	</div>
 </div>

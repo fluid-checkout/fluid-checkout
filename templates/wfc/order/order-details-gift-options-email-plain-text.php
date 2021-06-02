@@ -11,20 +11,20 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package woocommerce-fluid-checkout
+ * @package fluid-checkout
  * @version 1.2.0
  */
 
 defined( 'ABSPATH' ) || exit;
 
-echo _x( 'Gift message:', 'Gift options section title in the order details', 'woocommerce-fluid-checkout' );
+echo _x( 'Gift message:', 'Gift options section title in the order details', 'fluid-checkout' );
 
 if ( isset( $gift_options ) && array_key_exists( '_wfc_gift_message', $gift_options ) && ! empty( $gift_options[ '_wfc_gift_message' ] ) ) {
-    echo esc_attr( __( 'Gift Message:', 'woocommerce-fluid-checkout' ) );
+    echo esc_attr( __( 'Gift Message:', 'fluid-checkout' ) );
     echo esc_attr( $gift_options[ '_wfc_gift_message' ] );
 }
 
 if ( isset( $gift_options ) && array_key_exists( '_wfc_gift_from', $gift_options ) && ! empty( $gift_options[ '_wfc_gift_from' ] ) ) {
-    echo esc_attr( __( 'Gift Message From:', 'woocommerce-fluid-checkout' ) );
+    echo esc_attr( __( 'Gift Message From:', 'fluid-checkout' ) );
     echo esc_attr( $gift_options[ '_wfc_gift_from' ] );
 }

@@ -5,7 +5,7 @@
  * This template can be overridden by copying it to yourtheme/woocommerce/wfc/cart/shipping-methods-available.php.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package woocommerce-fluid-checkout
+ * @package fluid-checkout
  * @version 1.2.0
  * @wc-version 3.6.0
  * @wc-original cart/cart-shipping.php
@@ -36,7 +36,7 @@ defined( 'ABSPATH' ) || exit;
 		), $method, $package_index, $chosen_method, $first );
 
 		do_action( 'woocommerce_after_shipping_rate', $method, $package_index );
-		
+
 		$first = false;
 	endforeach; ?>
 

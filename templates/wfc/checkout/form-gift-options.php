@@ -11,7 +11,7 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package woocommerce-fluid-checkout
+ * @package fluid-checkout
  * @version 1.2.0
  */
 
@@ -49,7 +49,7 @@ $gift_options_fields = array_filter( $gift_options_fields, function( $key ) {
 	}
 
 	// Output gift options expansible form section
-	FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( 'gift_options', apply_filters( 'wfc_expansible_section_toggle_label_gift_options', __( 'Add a gift message', 'woocommerce-fluid-checkout' ) ), $expansible_section_args );
+	FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( 'gift_options', apply_filters( 'wfc_expansible_section_toggle_label_gift_options', __( 'Add a gift message', 'fluid-checkout' ) ), $expansible_section_args );
 
 	// Output gift message fields
 	foreach ( $gift_message_fields as $key => $field ) {

@@ -11,7 +11,7 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package woocommerce-fluid-checkout
+ * @package fluid-checkout
  * @version 1.2.0
  * @wc-version 3.6.0
  * @wc-original checkout/form-billing.php
@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
 <?php do_action( 'wfc_checkout_before_contact_fields' ); ?>
 
 <div class="wfc-contact-fields wfc-clearfix">
-	
+
 	<div class="wfc-contact-fields__wrapper">
 		<?php do_action( 'wfc_checkout_contact_before_fields' ); ?>
 
@@ -40,7 +40,7 @@ defined( 'ABSPATH' ) || exit;
 			}
 		}
 		?>
-		
+
 		<?php do_action( 'wfc_checkout_contact_after_fields' ); ?>
 	</div>
 

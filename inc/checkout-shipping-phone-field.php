@@ -53,8 +53,8 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function get_shipping_phone_field() {
 		return apply_filters( 'wfc_shipping_phone_field_args', array(
-			'label'        => __( 'Shipping phone', 'woocommerce-fluid-checkout' ),
-			'description'  => __( 'Only used for shipping-related questions.', 'woocommerce-fluid-checkout' ),
+			'label'        => __( 'Shipping phone', 'fluid-checkout' ),
+			'description'  => __( 'Only used for shipping-related questions.', 'fluid-checkout' ),
 			'required'     => get_option( 'wfc_shipping_phone_field_visibility', 'optional' ) === 'required',
 			'validate'     => array( 'phone' ),
 			'class'        => array( 'form-row-first' ),
@@ -181,7 +181,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 	/**
 	 * Save the shipping phone fields values to the current user session.
-	 * 
+	 *
 	 * @param array $posted_data Post data for all checkout fields.
 	 */
 	public function set_shipping_phone_session( $posted_data ) {
@@ -193,7 +193,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 		// Set session value
 		WC()->session->set( '_shipping_phone', $shipping_phone );
-		
+
 		return $posted_data;
 	}
 
@@ -213,7 +213,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function get_current_shipping_phone_value() {
 		$shipping_phone = null;
-		
+
 		// Try get the shipping phone from the session
 		$shipping_phone_session = $this->get_shipping_phone_session();
 		if ( $shipping_phone_session != null ) {

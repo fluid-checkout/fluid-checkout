@@ -11,7 +11,7 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @package woocommerce-fluid-checkout
+ * @package fluid-checkout
  * @version 1.2.0
  */
 ?>
@@ -31,7 +31,7 @@
 
 <body <?php body_class(); ?>>
 
-<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'woocommerce-fluid-checkout' ); ?></a>
+<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'fluid-checkout' ); ?></a>
 
 <?php do_action( 'wfc_checkout_header' ); ?>
 
