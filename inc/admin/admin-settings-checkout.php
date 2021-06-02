@@ -317,7 +317,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 					array(
 						'desc'              => __( 'Display the gift message as part of the order details table', 'woocommerce' ),
-						'desc_tip'          => __( 'This option affects the order confirmation page (thank you), order details at account pages, emails and package slips.', 'woocommerce' ),
+						'desc_tip'          => __( 'This option affects the order confirmation page (thank you page), order details at account pages, emails and packaging slips.', 'woocommerce' ),
 						'id'                => 'wfc_display_gift_message_in_order_details',
 						'type'              => 'checkbox',
 						'default'           => 'no',
