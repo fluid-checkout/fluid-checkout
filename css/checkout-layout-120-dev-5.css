@@ -445,7 +445,7 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
 
 .fc-progress-bar + .fc-checkout-notices,
 .fc-progress-bar + form.woocommerce-checkout {
-  padding-top: 20px; }
+  padding-top: 10px; }
 
 .fc-progress-bar__count {
   margin: 0 0 5px;
@@ -523,7 +523,7 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
 	#CHECKOUT STEPS
 \*------------------------------------*/
 .fc-wrapper .fc-checkout-steps {
-  margin: 20px -20px 30px; }
+  margin: 0 -20px 30px; }
   @media (min-width: 750px) {
     .fc-wrapper .fc-checkout-steps {
       margin: 0; } }
