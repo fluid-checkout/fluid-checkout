@@ -73,7 +73,7 @@ div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
 	color: $checkout-field-description-color;
 	font-size: $checkout-field-description-font-size;
 	line-height: 1.2;
-	
+
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-field-description-font-size--large-screen; }
 }
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description:before {
@@ -154,13 +154,32 @@ div.woocommerce form .form-row {
 	input[type="url"],
 	input[type="password"],
 	input[type="checkbox"],
+	input[type="radio"],
 	.select2-selection {
-	position: relative;
 		z-index: z( 'default' );
+		position: relative;
 
 		&:focus {
 			outline: $focus-outline-field;
 			outline-offset: $focus-outline-offset-field;
 		}
+	}
+}
+
+
+
+div.woocommerce form .form-row {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="search"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"],
+	.select2-selection {
+		width: 100%;
 	}
 }

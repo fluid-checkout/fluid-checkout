@@ -164,7 +164,7 @@
 
 
 
-.fc-wrapper #payment .payment_methods > li .payment_box {
+.fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
 	margin: 0;
 	padding: $global-spacing-small;
 	border-bottom: $payment-method-border;

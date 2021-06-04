@@ -48,6 +48,11 @@ body.woocommerce-checkout #main.fc-main {
 
 
 
+body.woocommerce-checkout .fc-content,
+body.woocommerce-checkout .fc-content * {
+	box-sizing: border-box !important; // Needed to override theme styles breaking the layout
+}
+
 body.woocommerce-checkout .fc-content {
 	box-sizing: border-box;
 	float: none !important; // Needed to override theme styles breaking the layout
