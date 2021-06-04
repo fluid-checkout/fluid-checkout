@@ -86,7 +86,8 @@ body.woocommerce-checkout .fc-content {
   margin: 0 auto;
   padding-bottom: 50px;
   width: 100%;
-  border: 0; }
+  border: 0;
+  text-align: left; }
 
 body.woocommerce-checkout .fc-content.fc-container {
   padding: 0 20px 50px; }
