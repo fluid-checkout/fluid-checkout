@@ -58,7 +58,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 			'shipping_first_name'   => array( 'priority' => 10, 'autocomplete' => 'shipping given-name' ),
 			'shipping_last_name'    => array( 'priority' => 20, 'autocomplete' => 'shipping family-name' ),
-			'shipping_company'      => array( 'priority' => 30, 'autocomplete' => 'shipping organization', 'class' => array( 'form-row-first' ) ),
+			'shipping_company'      => array( 'priority' => 30, 'autocomplete' => 'shipping organization', 'class' => array( 'form-row-wide' ) ),
 			'shipping_address_1'    => array( 'autocomplete' => 'shipping address-line1' ),
 			'shipping_address_2'    => array( 'autocomplete' => 'shipping address-line2' ),
 			'shipping_city'         => array( 'autocomplete' => 'shipping address-level2', 'class' => array( 'form-row-first' ) ),
