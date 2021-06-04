@@ -34,7 +34,7 @@
 		contentInnerSelector: '.collapsible-content__inner',
 		handlerSelector: '[data-collapsible-handler]',
 		handlerMultiTargetSelector: '[data-collapsible-targets]',
-		
+
 		autoFocusSelector: '[data-autofocus]',
 		focusableElementsSelector: 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), details, summary, iframe, object, embed, [contenteditable] [tabindex]:not([tabindex="-1"])',
 
@@ -42,7 +42,7 @@
 		isExpandedClass: 'is-expanded',
 		isActivatedClass: 'is-activated',
 		cssTransition: 'height .15s linear',
-		
+
 		targetAttribute: 'aria-controls',
 		multiTargetAttribute: 'data-collapsible-targets',
 		maxHeightAttribute: 'data-collapsible-max-height',
@@ -51,7 +51,7 @@
 
 		initialState: _publicMethods.states.FIRST_EXPANDED,
 		initialStateAttribute: 'data-collapsible-initial-state',
-		
+
 		idPrefix: 'collapsible',
 		createHandler: false,
 		maxHeight: 0,
@@ -112,7 +112,7 @@
 	/**
 	 * Provide a crossbrowser way to determine which
 	 * transitionend event is supported by the current browser.
-	 * 
+	 *
 	 * Based on the work of:
 	 * Jonathan Suh - https://jonsuh.com/blog/detect-the-end-of-css-animations-and-transitions-with-javascript/
 	 * David Walsh - https://davidwalsh.name/css-animation-callback
@@ -142,9 +142,9 @@
 
 	/**
 	 * Trigger a reflow, flushing the CSS changes.
-	 * 
+	 *
 	 * @param   HTMLElement  element  Element to get the computed height value.
-	 * 
+	 *
 	 * @see https://gist.github.com/paulirish/5d52fb081b3570c81e3a
 	 */
 	var reflow = function( element ) {
@@ -177,7 +177,7 @@
 	 var getFocusableElements = function( element ) {
 		// Set element to `document` root if not passed in
 		if ( ! element ) { element = document; }
-		
+
 		// Get elements that are keyboard-focusable
 		return element.querySelectorAll( _settings.focusableElementsSelector );
 	}
@@ -228,7 +228,7 @@
 
 		// Get target element
 		var targetElement = document.querySelector( '#' + handlerElement.getAttribute( _settings.targetAttribute ) );
-		
+
 		// Get target element from the handler element
 		if ( ! targetElement ) {
 			targetElement = handlerElement;
@@ -301,7 +301,7 @@
 	var maybeCreateContentInnerElement = function( manager ) {
 		// Bail if content inner element already exists
 		if ( manager.contentElement.querySelector( manager.settings.contentInnerSelector ) ) { return; }
-		
+
 		var contentElement = manager.contentElement;
 		var newContentPlaceholder = document.createElement('div');
 		newContentPlaceholder.innerHTML = manager.settings.contentInnerTemplate.trim();
@@ -374,22 +374,22 @@
 	var setHeight = function( element, size, withTransition ) {
 		// Set default value for withTransition
 		withTransition = withTransition === false ? false : true;
-		
+
 		// Remove element's transition
 		var originalTransition;
 		if ( ! withTransition ) {
 			originalTransition = element.style.transition;
 			element.style.transition = 'none';
 		}
-		
+
 		// Set the element's new height
 		element.style.height = size + 'px';
-		
+
 		// Restore element's transition
 		if ( ! withTransition ) {
 			// Trigger a reflow, flushing the CSS changes
 			reflow( element );
-			
+
 			// Set element styles back to original values
 			element.style.transition = originalTransition;
 		}
@@ -467,7 +467,7 @@
 			if ( ! focusElement && autofocusChildren ) {
 				for ( var i = 0; i < autofocusChildren.length; i++ ) {
 					var autofocusChild = autofocusChildren[i];
-					
+
 					if ( autofocusChild.closest( _settings.contentElementSelector ) === element && isVisible( autofocusChild ) ) {
 						focusElement = autofocusChild;
 					}
@@ -490,6 +490,11 @@
 			// Set focus to focusElement
 			if ( focusElement ) {
 				focusElement.focus();
+				focusElement.select();
+				// focusElement.focus( function() {
+				// 	// `this` = `focusElement`
+				// 	this.setSelectionRange( 0, 99999 );
+				// } );
 			}
 		}
 
@@ -536,7 +541,7 @@
 	 */
 	_publicMethods.getInstance = function ( element ) {
 		var instance;
-		
+
 		for ( var i = 0; i < _publicMethods.managers.length; i++ ) {
 			var manager = _publicMethods.managers[i];
 			if ( manager.element == element ) { instance = manager; break; }
@@ -555,7 +560,7 @@
 	 */
 	_publicMethods.collapse = function( element, withTransition ) {
 		var manager = _publicMethods.getInstance( element );
-		
+
 		// Bail if manager not found
 		// TODO: Maybe try to initialize collapsible and manager on the fly
 		if ( ! manager ) { return; }
@@ -566,10 +571,10 @@
 		// Update element's state to `collapsed`
 		manager.element.classList.add( manager.settings.isCollapsedClass );
 		manager.element.classList.remove( manager.settings.isExpandedClass );
-		
+
 		// Remove `finishExpand` event listener to prevent block from expanding at the end of the transition
 		manager.contentElement.removeEventListener( getTransitionEndEvent(), finishExpand );
-		
+
 		// Set content element to hide overflowing content
 		manager.contentElement.style.overflow = 'hidden';
 
@@ -577,7 +582,7 @@
 		// Without knowing the value of `height` property the browser can't calculate the steps of the `height` values
 		// related to the transition time and therefore won't be able to display the transition.
 		setHeight( manager.contentElement, getCurrentHeight( manager.contentElement ), false );
-		
+
 		// Set event listener to finish the "collapse" state change
 		if ( withTransition ) {
 			manager.contentElement.addEventListener( getTransitionEndEvent(), finishCollapse );
@@ -616,7 +621,7 @@
 
 		// Show the element again on the screen and add it back to the accessibility tree
 		manager.contentElement.style.display = '';
-		
+
 		// Remove `finishCollapse` event listener to prevent block from collapsing at the end of the transition
 		manager.contentElement.removeEventListener( getTransitionEndEvent(), finishCollapse );
 
@@ -627,7 +632,7 @@
 		if ( withTransition ) {
 			manager.contentElement.addEventListener( getTransitionEndEvent(), finishExpand );
 		}
-		
+
 		// Expand element to its content height
 		requestAnimationFrame( function() {
 			var computedHeight = getComputedHeight( manager.contentElement );
@@ -641,7 +646,7 @@
 			// Update element's state to `expanded`
 			manager.element.classList.add( manager.settings.isExpandedClass );
 			manager.element.classList.remove( manager.settings.isCollapsedClass );
-			
+
 			// Make sure to finish the "expand" state change when transitions are not used
 			if ( ! withTransition ) {
 				finishExpand( manager.contentElement );
@@ -671,7 +676,7 @@
 			_publicMethods.collapse( element, withTransition );
 		}
 	}
-	
+
 
 
 	/**
@@ -687,7 +692,7 @@
 
 		// Bail if manager not found
 		if ( ! manager ) { return false; }
-		
+
 		// Get current state
 		var currentState = _publicMethods.states.EXPANDED;
 		if ( element.classList.contains( manager.settings.isCollapsedClass ) ) {
@@ -706,7 +711,7 @@
 		// Enable the handler element
 		handler.removeAttribute( 'disabled' );
 		handler.removeAttribute( 'aria-hidden' );
-		
+
 		// Add the element to the natural tab order
 		handler.setAttribute( 'tabindex', '0' );
 
@@ -738,16 +743,16 @@
 				handler.setAttribute( _settings.targetAttribute, targetId );
 			}
 		}
-		
+
 		// Remove the `href` attribute
 		handler.removeAttribute( 'href' );
 	}
-	
+
 
 
 	/**
 	 * Initialize an element.
-	 * 
+	 *
 	 * @param   HTMLElement  element  Collapsible block main element.
 	 */
 	_publicMethods.initializeElement = function( element ) {
@@ -756,13 +761,13 @@
 		manager.element = element;
 		// TODO: Refactor to remove `manager.settings` as it will always be a copy of the high-level `_settings` variable, with more properties that can be added directly to the `manager` variable.
 		manager.settings = extend( _settings );
-		
+
 		// Get content element
 		manager.contentElement = manager.element.matches( _settings.contentElementSelector ) ? manager.element : manager.element.querySelector( manager.settings.contentElementSelector );
 		if ( ! manager.contentElement ) {
 			manager.contentElement = manager.element;
 		}
-		
+
 		// Maybe create element ID
 		if ( manager.element.id == '' ) {
 			manager.element.id = manager.settings.idPrefix + '_' + _publicMethods.managers.length;
@@ -797,22 +802,22 @@
 		else {
 			_publicMethods.collapse( manager.element, false );
 		}
-		
+
 		// Maybe change state on resize
 		var changeStateOnResizeAttribute = manager.element.getAttribute( manager.settings.changeStateOnResizeAttribute );
 		manager.settings.changeStateOnResize = changeStateOnResizeAttribute && changeStateOnResizeAttribute != '' ? Boolean( changeStateOnResizeAttribute ) : false;
 		if ( manager.settings.changeStateOnResize ) {
 			maybeChangeStateOnResize( manager );
-			
+
 			// TODO: Maybe move event handler to a single listener
 			window.addEventListener( 'resize', function() { maybeChangeStateOnResize( manager ); } );
 		}
-		
+
 		// Set css transition property
 		var computedTransition = window.getComputedStyle( manager.contentElement ).transition;
 		var cssTransition = computedTransition != '' ? computedTransition + ', ' + manager.settings.cssTransition : manager.settings.cssTransition;
 		manager.contentElement.style.transition = cssTransition;
-		
+
 		// Set element as activated
 		requestAnimationFrame( function(){
 			manager.isActivated = true;
@@ -820,7 +825,7 @@
 		} );
 	}
 
-	
+
 
 	/**
 	 * Initialize.
@@ -852,7 +857,7 @@
 			var contentElement = element.matches( _settings.contentElementSelector ) ? element : element.querySelector( _settings.contentElementSelector );
 			syncAriaExpanded( contentElement, _publicMethods.getState( element ) == _publicMethods.states.EXPANDED );
 		}
-		
+
 		// Add event listeners
 		document.addEventListener( 'click', handleClick );
 		document.addEventListener( 'keydown', handleKeyDown, true );

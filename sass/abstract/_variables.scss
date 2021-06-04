@@ -44,11 +44,11 @@ $box-shadow-light:              0 remsize( .2rem ) remsize( 1.5rem ) rgba( 255, 
 
 // Outline focus
 $focus-outline-field:           solid remsize( .2rem ) $dark-grey;
-$focus-outline-offest-field:    remsize( .2rem );
+$focus-outline-offset-field:    remsize( .2rem );
 $focus-outline-link:            dotted remsize( .1rem ) $dark-grey;
-$focus-outline-offest-link:     remsize( .1rem );
+$focus-outline-offset-link:     remsize( .1rem );
 $focus-outline-button:          $focus-outline-field;
-$focus-outline-offest-button:   $focus-outline-offest-field;
+$focus-outline-offset-button:   $focus-outline-offset-field;
 
 // END - COLORS
 // ----------------------------------------

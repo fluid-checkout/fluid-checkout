@@ -26,7 +26,7 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 <?php do_action( 'fc_checkout_before_order_review', $is_sidebar_widget ); ?>
 
 <div <?php echo $attributes_str; ?>>
-	
+
 	<div <?php echo $attributes_inner_str; ?>>
 
 		<?php do_action( 'fc_checkout_before_order_review_inside', $is_sidebar_widget ); ?>
@@ -48,7 +48,7 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 			<div class="fc-checkout-order-review__actions">
 				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__edit-cart"><?php echo __( 'Edit Cart', 'fluid-checkout' ); ?></a>
-				<button type="button" class="button" data-flyout-close><?php echo __( 'Continue', 'fluid-checkout' ); ?></button>
+				<button type="button" class="fc-checkout-order-review__close-order-summary <?php echo esc_attr( apply_filters( 'fc_order_summary_continue_button_classes', 'button' ) ); ?>" data-flyout-close aria-label="<?php echo __( 'Close and continue with checkout', 'fluid-checkout' ); ?>"><?php echo __( 'Continue', 'fluid-checkout' ); ?></button>
 			</div>
 		<?php endif; ?>
 

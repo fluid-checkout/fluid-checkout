@@ -240,7 +240,7 @@
 
 	&:focus {
 		outline: $focus-outline-button;
-		outline-offset: $focus-outline-offest-button;
+		outline-offset: $focus-outline-offset-button;
 	}
 }
 
@@ -269,7 +269,7 @@
 
 	&:focus {
 		outline: $focus-outline-link;
-		outline-offset: $focus-outline-offest-link;
+		outline-offset: $focus-outline-offset-link;
 	}
 }
 

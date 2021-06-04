@@ -65,7 +65,7 @@
 
 	&:focus {
 		outline: $focus-outline-button;
-		outline-offset: $focus-outline-offest-button;
+		outline-offset: $focus-outline-offset-button;
 	}
 }
 
@@ -80,6 +80,6 @@ div.place-order .woocommerce-terms-and-conditions-link,
 div.place-order .woocommerce-privacy-policy-link {
 	&:focus {
 		outline: $focus-outline-link !important;
-		outline-offset: $focus-outline-offest-link !important;
+		outline-offset: $focus-outline-offset-link !important;
 	}
 }

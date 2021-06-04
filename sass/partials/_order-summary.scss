@@ -46,7 +46,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	border-collapse: collapse;
 	border-spacing: 0;
 	font-size: $order-summary-font-size;
-	
+
 	@media (#{$bp-larger-than-desktop}) {
 		margin: $order-summary-table-margin--large-screen;
 		width: $order-summary-table-width--large-screen;
@@ -181,7 +181,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 }
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table td.product-total {
-	
+
 	background-color: transparent;
 }
 
@@ -257,7 +257,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 	&:focus {
 		outline: $focus-outline-field;
-		outline-offset: $focus-outline-offest-field;
+		outline-offset: $focus-outline-offset-field;
 	}
 }
 
@@ -265,7 +265,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	// max-width
 	max-width: $container-width-mobile;
 	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
-	
+
 	// padding
 	padding: $global-spacing-small $container-spacing-mobile $global-spacing-large;
 	@media (#{$bp-larger-than-tablet}) { padding: $global-spacing-small $container-spacing-tablet $global-spacing-large; }
@@ -299,7 +299,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	// padding
 	padding: $global-spacing-extra-small $container-spacing-mobile;
 	@media (#{$bp-larger-than-tablet}) { padding: $global-spacing-small $container-spacing-tablet; }
-	
+
 	// Hide on desktop view
 	@media (#{$bp-larger-than-desktop}) { display: none; }
 }
@@ -307,7 +307,24 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 
 .fc-checkout-order-review__actions .fc-checkout-order-review__edit-cart {
-	padding-left: $order-summary-cell-padding-horizontal;
+	margin: 0 0 0 #{ - $global-spacing-extra-small };
+	padding-left: $global-spacing-extra-small;
+	padding-right: $global-spacing-extra-small;
+
+	&:focus {
+		outline: $focus-outline-link;
+		outline-offset: $focus-outline-offset-link;
+	}
+}
+
+.fc-checkout-order-review__actions .fc-checkout-order-review__close-order-summary {
+	margin: 0 #{ - $global-spacing-extra-small } 0 0;
+	height: remsize( 4.4rem );
+
+	&:focus {
+		outline: $focus-outline-button;
+		outline-offset: $focus-outline-offset-button;
+	}
 }
 
 
