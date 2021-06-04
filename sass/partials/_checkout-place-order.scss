@@ -12,7 +12,7 @@
 
 .fc-sidebar div.place-order {
 	display: none;
-	
+
 	@media (#{$bp-larger-than-desktop}) {
 		display: block;
 		padding: $place-order-padding-sidebar--large-screen;
@@ -62,6 +62,7 @@
 	width: 100%;
 	max-width: remsize( 60rem );
 	min-height: remsize( 5rem );
+	text-align: center;
 
 	&:focus {
 		outline: $focus-outline-button;

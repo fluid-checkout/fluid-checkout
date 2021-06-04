@@ -3,6 +3,7 @@
 \*------------------------------------*/
 .fc-checkout-header {
 	z-index: z( 'sticky-element' );
+	box-sizing: border-box;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -29,6 +30,7 @@
 }
 
 .fc-checkout-header__inner {
+	box-sizing: border-box;
 	position: relative;
 	display: flex;
 	align-items: center;

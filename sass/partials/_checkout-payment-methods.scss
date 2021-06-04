@@ -41,7 +41,7 @@
 
 
 // Hide default radio elements with opacity to allow for keyboard navigation
-.wc_payment_method input[type="radio"] {
+.fc-wrapper #payment .payment_methods > .wc_payment_method input[type="radio"] {
 	position: absolute;
 	display: block;
 	width: 1px;
@@ -164,7 +164,7 @@
 
 
 
-.fc-wrapper #payment .payment_methods > li .payment_box {
+.fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
 	margin: 0;
 	padding: $global-spacing-small;
 	border-bottom: $payment-method-border;
