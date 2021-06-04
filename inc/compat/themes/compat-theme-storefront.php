@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Compatibility with Payment Method Stripe.
+ * Compatibility with theme: Storefront.
  */
 class FluidCheckout_ThemeCompat_Storefront extends FluidCheckout {
 
