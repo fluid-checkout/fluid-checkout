@@ -1089,7 +1089,7 @@ div.woocommerce form #billing_same_as_shipping_field.form-row {
   padding: 0;
   border: 0; }
 
-.wc_payment_method input[type="radio"] {
+.fc-wrapper #payment .payment_methods > .wc_payment_method input[type="radio"] {
   position: absolute;
   display: block;
   width: 1px;
