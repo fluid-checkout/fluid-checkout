@@ -885,6 +885,7 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   display: none; }
 
 .fc-content div.woocommerce form .fc-wrapper .form-row.create-account {
+  margin-top: 10px;
   margin-bottom: 0; }
 
 .fc-content div.woocommerce form .fc-wrapper .form-row.create-account + div.create-account {
