@@ -333,6 +333,9 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
     box-shadow: none;
     transform: translateY(1px);
     color: inherit; }
+  .fc-checkout-header .fc-checkout__cart-link:focus {
+    outline: dotted 1px #535156;
+    outline-offset: 1px; }
 
 .fc-checkout-header .fc-checkout__cart-link:before {
   display: inline-block;
@@ -1717,7 +1720,19 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
       display: none; } }
 
 .fc-checkout-order-review__actions .fc-checkout-order-review__edit-cart {
-  padding-left: 20px; }
+  margin: 0 0 0 -10px;
+  padding-left: 10px;
+  padding-right: 10px; }
+  .fc-checkout-order-review__actions .fc-checkout-order-review__edit-cart:focus {
+    outline: dotted 1px #535156;
+    outline-offset: 1px; }
+
+.fc-checkout-order-review__actions .fc-checkout-order-review__close-order-summary {
+  margin: 0 -10px 0 0;
+  height: 44px; }
+  .fc-checkout-order-review__actions .fc-checkout-order-review__close-order-summary:focus {
+    outline: solid 2px #535156;
+    outline-offset: 2px; }
 
 .fc-checkout-order-review__sidebar-actions {
   display: none; }
