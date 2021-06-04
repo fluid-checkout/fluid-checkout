@@ -1,0 +1,18 @@
+/*------------------------------------*\
+  #IMPORT ABSTRACT
+\*------------------------------------*/
+@import
+	"../../abstract/functions/_all-early", // Should be imported before `_variables`
+	"../../abstract/variables",
+	"../../abstract/functions/_all",
+	"../../abstract/mixins/_all";
+
+
+
+
+
+/*------------------------------------*\
+  #IMPORT STYLES
+\*------------------------------------*/
+@import
+	"flatsome/checkout-content-area";
