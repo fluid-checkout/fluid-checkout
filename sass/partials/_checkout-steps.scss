@@ -106,9 +106,8 @@
 }
 // NEXT Incomplete
 .has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete {
-	margin-bottom: $global-spacing-small;
-
 	@media (#{$bp-larger-than-tablet}) {
+		margin-bottom: $global-spacing-small;
 		border-bottom-right-radius: $checkout-substep-border-radius;
 		border-bottom-left-radius: $checkout-substep-border-radius;
 	}
@@ -133,7 +132,7 @@
 	&:before {
 		@include icon( 'i-check-small' );
 		@include icon-size( $icon-size-small );
-		
+
 		position: absolute;
 		left: $checkout-substep-title-check-icon-spacing;
 		top: 50%;
@@ -208,7 +207,7 @@
 	&:before {
 		@include icon( 'i-check-small' );
 		@include icon-size( $icon-size-small );
-		
+
 		position: absolute;
 		left: $checkout-substep-title-check-icon-spacing;
 		top: 50%;

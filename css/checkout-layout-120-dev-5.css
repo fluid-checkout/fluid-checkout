@@ -610,12 +610,11 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0; } }
 
-.has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete {
-  margin-bottom: 20px; }
-  @media (min-width: 750px) {
-    .has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete {
-      border-bottom-right-radius: 8px;
-      border-bottom-left-radius: 8px; } }
+@media (min-width: 750px) {
+  .has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete {
+    margin-bottom: 20px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px; } }
 
 @media (min-width: 750px) {
   .has-checkout-layout--multi-step .fc-checkout-step[data-step-current]:not([data-step-index="0"]),
