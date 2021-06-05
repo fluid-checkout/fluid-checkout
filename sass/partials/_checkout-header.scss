@@ -176,10 +176,6 @@
 
 .fc-checkout-header .fc-checkout__header-widgets {
 	@media (#{$bp-larger-than-desktop}) {
-		position: absolute;
-		top: 50%;
-		right: 0;
-		transform: translateY( -50% );
 		display: flex;
 		justify-content: flex-end;
 		margin: 0;

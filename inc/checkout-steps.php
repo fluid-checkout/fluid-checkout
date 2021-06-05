@@ -2286,7 +2286,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Maybe add class for additional content inside the order summary section
-		if ( get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) === 'yes' || is_active_sidebar( 'fc_checkout_order_summary_inside' ) ) {
+		if ( get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) === 'yes' || is_active_sidebar( 'fc_order_summary_after' ) ) {
 			$attributes[ 'class' ] = $attributes[ 'class' ] . ' has-additional-content';
 		}
 

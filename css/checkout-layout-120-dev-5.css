@@ -429,10 +429,6 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
 
 @media (min-width: 1000px) {
   .fc-checkout-header .fc-checkout__header-widgets {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
     display: flex;
     justify-content: flex-end;
     margin: 0;
