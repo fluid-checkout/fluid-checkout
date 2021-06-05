@@ -55,7 +55,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		return apply_filters( 'fc_shipping_phone_field_args', array(
 			'label'        => __( 'Shipping phone', 'fluid-checkout' ),
 			'description'  => __( 'Only used for shipping-related questions.', 'fluid-checkout' ),
-			'required'     => get_option( 'fc_shipping_phone_field_visibility', 'optional' ) === 'required',
+			'required'     => get_option( 'fc_shipping_phone_field_visibility', 'no' ) === 'required',
 			'validate'     => array( 'phone' ),
 			'class'        => array( 'form-row-first' ),
 			'priority'     => 25,
@@ -73,7 +73,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function change_shipping_company_field_args( $field_args ) {
 		// Bail if hidding optional fields behind a link button
-		if ( get_option( 'fc_enable_checkout_hide_optional_fields', 'yes' ) === 'yes' && get_option( 'fc_shipping_phone_field_visibility', 'optional' ) !== 'required' ) { return $field_args; }
+		if ( get_option( 'fc_enable_checkout_hide_optional_fields', 'yes' ) === 'yes' && get_option( 'fc_shipping_phone_field_visibility', 'no' ) !== 'required' ) { return $field_args; }
 
 		if ( array_key_exists( 'shipping_company', $field_args ) ) {
 			$field_args['shipping_company']['class'] = array( 'form-row-last' );
