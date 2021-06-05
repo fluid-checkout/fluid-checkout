@@ -22,7 +22,10 @@ defined( 'ABSPATH' ) || exit;
 
 		<div class="fc-checkout__branding">
 			<?php
-			if ( function_exists( 'the_custom_logo' ) && get_theme_mod( 'custom_logo' ) ) {
+			if ( has_action( 'fc_checkout_header_logo' ) ) {
+				do_action( 'fc_checkout_header_logo' );
+			}
+			else if ( function_exists( 'the_custom_logo' ) && get_theme_mod( 'custom_logo' ) ) {
 				the_custom_logo();
 			}
 			else {
