@@ -898,7 +898,8 @@ div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
   div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] input[type="text"],
   div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] input[type="tel"],
   div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] input[type="url"],
-  div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] input[type="password"] {
+  div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] input[type="password"],
+  div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] .select2-selection {
     background-color: #fff;
     color: inherit; }
 
@@ -925,7 +926,8 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] input[type="text"],
   div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] input[type="tel"],
   div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] input[type="url"],
-  div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] input[type="password"] {
+  div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] input[type="password"],
+  div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] .select2-selection {
     background-color: #fff;
     color: inherit; }
 

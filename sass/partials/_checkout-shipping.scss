@@ -14,7 +14,8 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
 	input[type="text"],
 	input[type="tel"],
 	input[type="url"],
-	input[type="password"] {
+	input[type="password"],
+	.select2-selection {
 		background-color: $white;
 		color: inherit;
 	}
