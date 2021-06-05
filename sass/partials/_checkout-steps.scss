@@ -40,7 +40,8 @@
     @include clearfix();
 }
 
-.fc-wrapper .fc-step__substep-title {
+
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
 	margin: $checkout-substep-title-margin;
 	padding: 0;
 	color: $checkout-substep-title-color;
@@ -124,10 +125,17 @@
 
 
 
-.has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-title {
+.has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title {
 	position: relative;
+	display: block;
+	margin: 0 0 $global-radius-extra-small;
 	padding: $checkout-substep-text-padding;
 	color: $checkout-substep-text-color;
+
+	@media (#{$bp-larger-than-desktop}) {
+		margin: 0;
+		width: remsize( 20rem );
+	}
 
 	&:before {
 		@include icon( 'i-check-small' );
@@ -188,34 +196,6 @@
 .has-checkout-layout--multi-step .fc-step__substep-text-line {
 	display: block;
 	width: 100%;
-}
-
-
-
-
-.has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-title {
-	position: relative;
-	display: block;
-	padding: $checkout-substep-text-padding;
-	color: $checkout-substep-text-color;
-
-	@media (#{$bp-larger-than-desktop}) {
-		margin-bottom: 0;
-		width: remsize( 20rem );
-	}
-
-	&:before {
-		@include icon( 'i-check-small' );
-		@include icon-size( $icon-size-small );
-
-		position: absolute;
-		left: $checkout-substep-title-check-icon-spacing;
-		top: 50%;
-		transform: translateY( -50% );
-		border-radius: 100%;
-		background-color: $checkout-substep-text-color;
-		color: $white;
-	}
 }
 
 

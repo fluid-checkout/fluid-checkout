@@ -27,6 +27,9 @@
 body:not(.has-checkout-header) {
   padding-top: 120px; }
 
+body:not(.has-checkout-header).admin-bar .fc-sidebar[data-sticky-states].is-sticky--top .fc-sidebar__inner {
+  padding-top: 5px; }
+
 /*------------------------------------*\
   #CHECKOUT HEADER
 \*------------------------------------*/
@@ -42,3 +45,12 @@ header.fc-checkout-header {
   @media screen and (min-width: 783px) {
     .admin-bar header.fc-checkout-header {
       top: 32px !important; } }
+
+/*------------------------------------*\
+  #CHECKOUT PROGRESS BAR
+\*------------------------------------*/
+body:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+  transform: translateY(5px); }
+  @media screen and (min-width: 783px) {
+    body:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+      transform: translateY(5px); } }
