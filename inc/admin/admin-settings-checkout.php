@@ -356,6 +356,19 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	 * @param   array  $value  Admin settings args values.
 	 */
 	public function output_field_type_fc_layout_seletor( $value ) {
+		// Custom attribute handling.
+		$custom_attributes = array();
+		if ( ! empty( $value['custom_attributes'] ) && is_array( $value['custom_attributes'] ) ) {
+			foreach ( $value['custom_attributes'] as $attribute => $attribute_value ) {
+				$custom_attributes[] = esc_attr( $attribute ) . '="' . esc_attr( $attribute_value ) . '"';
+			}
+		}
+
+		// Description handling.
+		$field_description = WC_Admin_Settings::get_field_description( $value );
+		$description       = $field_description['description'];
+		$tooltip_html      = $field_description['tooltip_html'];
+
 		$option_value = $value['value'];
 			?>
 			<tr valign="top">
