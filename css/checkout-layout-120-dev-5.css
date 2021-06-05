@@ -278,6 +278,13 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   width: 50%;
   line-height: 1; }
 
+.fc-checkout-header .fc-checkout__branding img {
+  -o-object-fit: contain;
+  object-fit: contain;
+  max-width: 200px;
+  max-height: 40px;
+  width: 100%; }
+
 .fc-checkout-header .fc-checkout__title.screen-reader-text {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;

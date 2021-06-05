@@ -24,6 +24,9 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 
 		// Make header static (not sticky at the top)
 		add_filter( 'theme_mod_header_sticky', array( $this, 'change_theme_mod_header_sticky' ), 10 );
+
+		// Use theme's logo
+		add_action( 'fc_checkout_header_logo', array( $this, 'output_checkout_header_logo' ), 10 );
 	}
 
 
@@ -52,6 +55,15 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $current_mod; }
 
 		return 0; // Disabled
+	}
+
+
+
+	/**
+	 * Output the theme logo on the plugin's checkout header.
+	 */
+	public function output_checkout_header_logo() {
+		get_template_part( 'template-parts/header/partials/element', 'logo' );
 	}
 
 }

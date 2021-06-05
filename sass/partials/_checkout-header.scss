@@ -67,6 +67,13 @@
 	line-height: 1;
 }
 
+.fc-checkout-header .fc-checkout__branding img {
+	object-fit: contain;
+	max-width: remsize( 20rem );
+	max-height: remsize( 4rem );
+	width: 100%;
+}
+
 .fc-checkout-header .fc-checkout__title.screen-reader-text {
 	clip: rect( 1px, 1px, 1px, 1px );
 	position: absolute !important; // Needed to make sure other style rules won't affect accessibility
