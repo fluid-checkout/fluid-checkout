@@ -50,7 +50,14 @@ header.fc-checkout-header {
   #CHECKOUT PROGRESS BAR
 \*------------------------------------*/
 body:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
-  transform: translateY(5px); }
+  transform: translateY(0); }
   @media screen and (min-width: 783px) {
     body:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
       transform: translateY(5px); } }
+
+/*------------------------------------*\
+	#CHECKOUT FIELD VALIDATION
+\*------------------------------------*/
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .select2-selection:after,
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .woocommerce-input-wrapper:after {
+  top: 12px; }

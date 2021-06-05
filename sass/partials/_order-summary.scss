@@ -190,7 +190,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 
 .fc-wrapper .fc-checkout-order-review__widgets-inside {
-	margin-top: $global-spacing-extra-small;
+	margin-top: $global-spacing-small;
 }
 
 
@@ -247,18 +247,21 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
 	@media (#{$bp-larger-than-desktop}) {
 		margin: 0 0 $global-spacing-small;
-		padding: remsize( 1.2rem ) $global-spacing-small $global-spacing-small;
+		padding: remsize( 1.2rem ) $global-spacing-small 0;
 		max-width: none;
 		border: solid remsize( .1rem ) $border-color;
 		border-radius: $checkout-substep-border-radius;
 		background-color: $white;
-		overflow: visible;
+		overflow: hidden;
 	}
 
 	&:focus {
 		outline: $focus-outline-field;
 		outline-offset: $focus-outline-offset-field;
 	}
+}
+.fc-wrapper .fc-checkout-order-review.has-additional-content .fc-checkout-order-review__inner {
+	padding-bottom: $global-spacing-small;
 }
 
 .fc-wrapper .fc-checkout-order-review[data-flyout].is-open .fc-checkout-order-review__inner {

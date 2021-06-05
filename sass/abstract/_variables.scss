@@ -299,6 +299,9 @@ $checkout-overview-border-left:             none !default;
 // ----------------------------------------
 // CHECKOUT PROGRESS BAR
 
+$checkout-progress-margin:                            0 #{ - $container-spacing-mobile } !default;
+$checkout-progress-margin--large-screen:              0 !default;
+
 $checkout-progress-padding:                           $global-spacing-extra-small $container-spacing-mobile !default;
 $checkout-progress-padding--large-screen:             $global-spacing-extra-small $container-spacing-mobile !default;
 
@@ -386,7 +389,7 @@ $order-summary-container-margin--large-screen:   0 !default;
 $order-summary-container-padding--large-screen:  0 !default;
 
 $order-summary-table-margin:                     0 #{ - $global-spacing-small } !default;
-$order-summary-table-margin--large-screen:       0 #{ - $global-spacing-small } !default;
+$order-summary-table-margin--large-screen:       0 #{ - $global-spacing-small } remsize( -.1rem ) !default;
 $order-summary-table-width:                      calc( 100% + #{ $global-spacing-small * 2 } ) !default;
 $order-summary-table-width--large-screen:        calc( 100% + #{ $global-spacing-small * 2 } ) !default;
 

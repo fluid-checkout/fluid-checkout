@@ -142,6 +142,8 @@ div.woocommerce form #shipping_address_2_field > label {
 /*------------------------------------*\
   #WOOCOMMERCE FORM FIELDS
 \*------------------------------------*/
+
+// Position and outline styles
 div.woocommerce form .form-row {
 	textarea,
 	select,
@@ -168,6 +170,7 @@ div.woocommerce form .form-row {
 
 
 
+// Field sizes
 div.woocommerce form .form-row {
 	textarea,
 	select,
@@ -181,5 +184,9 @@ div.woocommerce form .form-row {
 	input[type="password"],
 	.select2-selection {
 		width: 100%;
+	}
+
+	textarea {
+		min-height: remsize( 10rem );
 	}
 }

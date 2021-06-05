@@ -190,6 +190,9 @@ div.woocommerce form .form-row input[type="password"],
 div.woocommerce form .form-row .select2-selection {
   width: 100%; }
 
+div.woocommerce form .form-row textarea {
+  min-height: 100px; }
+
 /*------------------------------------*\
 	#EXPANSIBLE SECTIONS
 \*------------------------------------*/

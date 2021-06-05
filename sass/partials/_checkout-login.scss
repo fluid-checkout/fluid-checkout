@@ -1,6 +1,17 @@
 /*------------------------------------*\
   #CHECKOUT LOGIN
 \*------------------------------------*/
+.fc-login-form,
+.fc-login-form * {
+	box-sizing: border-box !important; // Needed to override theme styles breaking the layout
+}
+
+.has-flyout [data-flyout][data-flyout-modal].is-activated .fc-login-form__inner[data-flyout-content] {
+	padding-bottom: $global-spacing-medium;
+	max-width: remsize( 42rem );
+}
+
+
 .fc-wrapper .fc-step__substep[data-substep-id="contact_login"] {
 	padding-bottom: $global-spacing-tiny;
 	border-top: 0;
@@ -17,6 +28,12 @@
 
 .fc-contact-login__cta-text {
 	margin-bottom: 0;
+}
+
+
+
+.fc-contact-login__action-login {
+	cursor: pointer;
 }
 
 
@@ -53,6 +70,12 @@
 /*------------------------------------*\
   #CHECKOUT LOGIN FORM
 \*------------------------------------*/
+.woocommerce-checkout .fc-login-form form.login {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
 
 .fc-login-form .fc-login-form__close-wrapper {
 	text-align: right;
@@ -83,4 +106,38 @@
 
 .fc-login-form .woocommerce-form-login__submit {
 	margin-top: $global-spacing-small;
+}
+
+
+
+
+/*------------------------------------*\
+  #CHECKOUT LOGIN FORM FIELDS
+\*------------------------------------*/
+.woocommerce-checkout .fc-login-form form.login .form-row {
+	display: block;
+	margin: 0 0 $global-spacing-small;
+	width: 100%;
+}
+
+
+
+.woocommerce-checkout .fc-login-form form.login .form-row input[type="text"],
+.woocommerce-checkout .fc-login-form form.login .form-row input[type="password"],
+.woocommerce-checkout .fc-login-form form.login .fc-login-button {
+	margin: 0;
+}
+
+.woocommerce-checkout .fc-login-form form.login .woocommerce-button.woocommerce-form-login__submit {
+	box-sizing: border-box !important; // Needed to override theme styles breaking the layout
+	margin: 0 0 $global-spacing-small;
+	width: 100%;
+	text-align: center;
+}
+
+
+
+.woocommerce-checkout .fc-login-form form.login .lost_password {
+	float: none;
+	text-align: center;
 }

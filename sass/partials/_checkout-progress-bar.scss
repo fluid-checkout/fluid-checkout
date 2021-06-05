@@ -1,14 +1,23 @@
 /*------------------------------------*\
   #CHECKOUT PROGRESS BAR
 \*------------------------------------*/
+.fc-progress-bar {
+	margin: $checkout-progress-margin;
+
+	@media (#{$bp-larger-than-tablet}) {
+		margin: $checkout-progress-margin--large-screen;
+	}
+}
 
 .fc-progress-bar .fc-progress-bar__inner {
 	z-index: z( 'float-element' ) - 2; // Needed to show behing the order summary flyout
 	padding: $checkout-progress-padding;
 	background-color: $white;
-	border-radius: $checkout-substep-border-radius;
 
-	@media (#{$bp-larger-than-tablet}) { padding: $checkout-progress-padding--large-screen; }
+	@media (#{$bp-larger-than-tablet}) {
+		padding: $checkout-progress-padding--large-screen;
+		border-radius: $checkout-substep-border-radius;
+	}
 }
 // With admin bar
 .admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
