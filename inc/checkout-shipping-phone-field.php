@@ -216,12 +216,12 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 		// Try get the shipping phone from the session
 		$shipping_phone_session = $this->get_shipping_phone_session();
-		if ( $shipping_phone_session != null ) {
+		if ( $shipping_phone_session !== null ) {
 			$shipping_phone = $shipping_phone_session;
 		}
 
 		// Try to get shipping phone from the saved customer shipping address
-		if ( $shipping_phone == null ) {
+		if ( $shipping_phone === null ) {
 			$user_id = $this->get_user_id();
 			if ( $user_id > 0 ) {
 				$shipping_phone = get_user_meta( $user_id, 'shipping_phone', true );
@@ -237,14 +237,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * Change default shipping phone value.
 	 */
 	public function change_default_shipping_phone_value( $value, $input ) {
-		$shipping_phone = $this->get_current_shipping_phone_value();
-
-		// If shipping phone value was not found return unchanged value
-		if ( $shipping_phone == null ) {
-			$shipping_phone = $value;
-		}
-
-		return $shipping_phone;
+		return $this->get_current_shipping_phone_value();
 	}
 
 
