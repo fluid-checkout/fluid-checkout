@@ -55,7 +55,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		return apply_filters( 'fc_shipping_phone_field_args', array(
 			'label'        => __( 'Shipping phone', 'fluid-checkout' ),
 			'description'  => __( 'Only used for shipping-related questions.', 'fluid-checkout' ),
-			'required'     => get_option( 'fc_shipping_phone_field_visibility', 'optional' ) === 'required',
+			'required'     => get_option( 'fc_shipping_phone_field_visibility', 'no' ) === 'required',
 			'validate'     => array( 'phone' ),
 			'class'        => array( 'form-row-first' ),
 			'priority'     => 25,
@@ -73,7 +73,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function change_shipping_company_field_args( $field_args ) {
 		// Bail if hidding optional fields behind a link button
-		if ( get_option( 'fc_enable_checkout_hide_optional_fields', 'yes' ) === 'yes' && get_option( 'fc_shipping_phone_field_visibility', 'optional' ) !== 'required' ) { return $field_args; }
+		if ( get_option( 'fc_enable_checkout_hide_optional_fields', 'yes' ) === 'yes' && get_option( 'fc_shipping_phone_field_visibility', 'no' ) !== 'required' ) { return $field_args; }
 
 		if ( array_key_exists( 'shipping_company', $field_args ) ) {
 			$field_args['shipping_company']['class'] = array( 'form-row-last' );
@@ -216,12 +216,12 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 		// Try get the shipping phone from the session
 		$shipping_phone_session = $this->get_shipping_phone_session();
-		if ( $shipping_phone_session != null ) {
+		if ( $shipping_phone_session !== null ) {
 			$shipping_phone = $shipping_phone_session;
 		}
 
 		// Try to get shipping phone from the saved customer shipping address
-		if ( $shipping_phone == null ) {
+		if ( $shipping_phone === null ) {
 			$user_id = $this->get_user_id();
 			if ( $user_id > 0 ) {
 				$shipping_phone = get_user_meta( $user_id, 'shipping_phone', true );
@@ -237,14 +237,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * Change default shipping phone value.
 	 */
 	public function change_default_shipping_phone_value( $value, $input ) {
-		$shipping_phone = $this->get_current_shipping_phone_value();
-
-		// If shipping phone value was not found return unchanged value
-		if ( $shipping_phone == null ) {
-			$shipping_phone = $value;
-		}
-
-		return $shipping_phone;
+		return $this->get_current_shipping_phone_value();
 	}
 
 
