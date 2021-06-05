@@ -741,7 +741,8 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
 
 .has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
   margin: 0;
-  min-width: 280px; }
+  min-width: 280px;
+  text-align: center; }
   .has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:focus {
     outline: solid 2px #535156;
     outline-offset: 2px; }

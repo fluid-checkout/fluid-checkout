@@ -1,0 +1,2 @@
+body:not(.has-checkout-header){padding-top:120px}header.fc-checkout-header{position:fixed!important;top:0!important}@media (min-width:1000px){header.fc-checkout-header{position:static!important}}.admin-bar header.fc-checkout-header{top:46px!important}@media screen and (min-width:783px){.admin-bar header.fc-checkout-header{top:32px!important}}
+/*# sourceMappingURL=maps/compat-hazel-120-dev-5.min.css.map */

@@ -236,6 +236,7 @@
 .has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
 	margin: 0;
 	min-width: remsize( 28rem );
+	text-align: center;
 
 	&:focus {
 		outline: $focus-outline-button;

@@ -783,11 +783,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			) );
 		}
 
-		// Filter attributes
-		$progress_bar_attributes = apply_filters( 'fc_checkout_progress_bar_attributes', $progress_bar_attributes );
-		$progress_bar_inner_attributes = apply_filters( 'fc_checkout_progress_bar_inner_attributes', $progress_bar_inner_attributes );
-
-		// Convert attributes to string
 		$progress_bar_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $progress_bar_attributes ), $progress_bar_attributes ) );
 		$progress_bar_attributes_inner_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $progress_bar_inner_attributes ), $progress_bar_inner_attributes ) );
 		?>
@@ -2235,11 +2230,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			) );
 		}
 
-		// Filter attributes
-		$sidebar_attributes = apply_filters( 'fc_checkout_sidebar_attributes', $sidebar_attributes );
-		$sidebar_attributes_inner = apply_filters( 'fc_checkout_sidebar_attributes_inner', $sidebar_attributes_inner );
-
-		// Convert attributes to string
 		$sidebar_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $sidebar_attributes ), $sidebar_attributes ) );
 		$sidebar_attributes_inner_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $sidebar_attributes_inner ), $sidebar_attributes_inner ) );
 		?>
