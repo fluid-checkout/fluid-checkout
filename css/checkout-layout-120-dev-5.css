@@ -441,14 +441,20 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
 /*------------------------------------*\
   #CHECKOUT PROGRESS BAR
 \*------------------------------------*/
+.fc-progress-bar {
+  margin: 0 -20px; }
+  @media (min-width: 750px) {
+    .fc-progress-bar {
+      margin: 0; } }
+
 .fc-progress-bar .fc-progress-bar__inner {
   z-index: 198;
   padding: 10px 20px;
-  background-color: #fff;
-  border-radius: 8px; }
+  background-color: #fff; }
   @media (min-width: 750px) {
     .fc-progress-bar .fc-progress-bar__inner {
-      padding: 10px 20px; } }
+      padding: 10px 20px;
+      border-radius: 8px; } }
 
 .admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
   transform: translateY(46px); }

@@ -299,6 +299,9 @@ $checkout-overview-border-left:             none !default;
 // ----------------------------------------
 // CHECKOUT PROGRESS BAR
 
+$checkout-progress-margin:                            0 #{ - $container-spacing-mobile } !default;
+$checkout-progress-margin--large-screen:              0 !default;
+
 $checkout-progress-padding:                           $global-spacing-extra-small $container-spacing-mobile !default;
 $checkout-progress-padding--large-screen:             $global-spacing-extra-small $container-spacing-mobile !default;
 

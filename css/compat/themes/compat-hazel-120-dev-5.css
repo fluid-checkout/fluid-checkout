@@ -50,7 +50,7 @@ header.fc-checkout-header {
   #CHECKOUT PROGRESS BAR
 \*------------------------------------*/
 body:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
-  transform: translateY(5px); }
+  transform: translateY(0); }
   @media screen and (min-width: 783px) {
     body:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
       transform: translateY(5px); } }
