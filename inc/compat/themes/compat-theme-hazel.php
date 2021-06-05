@@ -69,7 +69,7 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 	/**
 	 * Change the attributes of the sidebar element.
 	 *
-	 * @param   array   $sidebar_attributes    Progress bar html element attributes.
+	 * @param   array   $sidebar_attributes    Sidebar html element attributes.
 	 */
 	public function change_sidebar_attributes( $sidebar_attributes ) {
 		// Bail if using the plugin's header and footer
