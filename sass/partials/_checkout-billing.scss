@@ -1,7 +1,7 @@
 /*------------------------------------*\
 	#CHECKOUT BILLING STEP
 \*------------------------------------*/
-.fc-step__substep[data-substep-id="billing_address"] {
+div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
 	background-color: $lighter-grey;
 
 	// Make fields background white
@@ -16,6 +16,7 @@
 	input[type="url"],
 	input[type="password"] {
 		background-color: $white;
+		color: inherit;
 	}
 }
 

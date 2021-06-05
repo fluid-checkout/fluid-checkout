@@ -887,19 +887,20 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 /*------------------------------------*\
 	#CHECKOUT BILLING STEP
 \*------------------------------------*/
-.fc-step__substep[data-substep-id="billing_address"] {
+div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
   background-color: #F0F4F4; }
-  .fc-step__substep[data-substep-id="billing_address"] textarea,
-  .fc-step__substep[data-substep-id="billing_address"] select,
-  .fc-step__substep[data-substep-id="billing_address"] input[type="email"],
-  .fc-step__substep[data-substep-id="billing_address"] input[type="number"],
-  .fc-step__substep[data-substep-id="billing_address"] input[type="date"],
-  .fc-step__substep[data-substep-id="billing_address"] input[type="search"],
-  .fc-step__substep[data-substep-id="billing_address"] input[type="text"],
-  .fc-step__substep[data-substep-id="billing_address"] input[type="tel"],
-  .fc-step__substep[data-substep-id="billing_address"] input[type="url"],
-  .fc-step__substep[data-substep-id="billing_address"] input[type="password"] {
-    background-color: #fff; }
+  div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] textarea,
+  div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] select,
+  div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] input[type="email"],
+  div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] input[type="number"],
+  div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] input[type="date"],
+  div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] input[type="search"],
+  div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] input[type="text"],
+  div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] input[type="tel"],
+  div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] input[type="url"],
+  div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] input[type="password"] {
+    background-color: #fff;
+    color: inherit; }
 
 div.woocommerce form .woocommerce-billing-fields__field-wrapper > .collapsible-content__inner {
   padding-top: 20px; }
@@ -913,19 +914,20 @@ div.woocommerce form #billing_same_as_shipping_field.form-row {
 /*------------------------------------*\
 	#CHECKOUT SHIPPING STEP
 \*------------------------------------*/
-.fc-step__substep[data-substep-id="shipping_address"] {
+div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   background-color: #F0F4F4; }
-  .fc-step__substep[data-substep-id="shipping_address"] textarea,
-  .fc-step__substep[data-substep-id="shipping_address"] select,
-  .fc-step__substep[data-substep-id="shipping_address"] input[type="email"],
-  .fc-step__substep[data-substep-id="shipping_address"] input[type="number"],
-  .fc-step__substep[data-substep-id="shipping_address"] input[type="date"],
-  .fc-step__substep[data-substep-id="shipping_address"] input[type="search"],
-  .fc-step__substep[data-substep-id="shipping_address"] input[type="text"],
-  .fc-step__substep[data-substep-id="shipping_address"] input[type="tel"],
-  .fc-step__substep[data-substep-id="shipping_address"] input[type="url"],
-  .fc-step__substep[data-substep-id="shipping_address"] input[type="password"] {
-    background-color: #fff; }
+  div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] textarea,
+  div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] select,
+  div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] input[type="email"],
+  div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] input[type="number"],
+  div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] input[type="date"],
+  div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] input[type="search"],
+  div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] input[type="text"],
+  div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] input[type="tel"],
+  div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] input[type="url"],
+  div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] input[type="password"] {
+    background-color: #fff;
+    color: inherit; }
 
 /*------------------------------------*\
   #CHECKOUT SHIPPING METHODS
