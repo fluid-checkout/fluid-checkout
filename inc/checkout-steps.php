@@ -907,8 +907,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_substep_end_tag( $step_id, $substep_id, $output_edit_buttons = true ) {
 		?>
 			<?php if ( $output_edit_buttons && $this->is_checkout_layout_multistep() ) : ?>
-				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ); ?></a>
-				<a tabindex="0" role="button" class="fc-step__substep-save" data-step-save aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo _x( 'Save', 'Checkout substep save link label', 'fluid-checkout' ); ?></a>
+				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo apply_filters( 'fc_substep_change_button_label', _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ) ); ?></a>
+				<a tabindex="0" role="button" class="fc-step__substep-save <?php echo esc_attr( apply_filters( 'fc_substep_save_button_classes', 'button' ) ); ?>" data-step-save aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo apply_filters( 'fc_substep_save_button_label', _x( 'Save changes', 'Checkout substep save link label', 'fluid-checkout' ) ); ?></a>
 			<?php endif; ?>
 		</div>
 		<?php
@@ -1602,16 +1602,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return apply_filters( 'fc_is_step_complete_shipping', $is_step_complete );
-	}
-
-
-
-	/**
-	 * Return html for shipping step actions
-	 */
-	public function get_shipping_step_actions_html() {
-		$actions_html = '<div class="fc-actions"><button class="fc-prev">' . _x( 'Back', 'Previous step button', 'fluid-checkout' ) . '</button> <button class="fc-next button alt">' . __( 'Proceed to Payment', 'fluid-checkout' ) . '</button></div>';
-		return apply_filters( 'fc_shipping_step_actions_html', $actions_html );
 	}
 
 
