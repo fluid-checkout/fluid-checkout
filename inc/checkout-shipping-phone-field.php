@@ -60,6 +60,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 			'class'        => array( 'form-row-first' ),
 			'priority'     => 25,
 			'autocomplete' => 'shipping tel',
+			'type'         => 'tel',
 			'clear'        => true
 		) );
 	}

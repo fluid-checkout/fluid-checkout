@@ -44,11 +44,11 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		$billing_company_class = get_option( 'woocommerce_checkout_phone_field', 'required' ) === 'required' ? 'form-row-last' : 'form-row-wide';
 
 		return apply_filters( 'fc_checkout_field_args', array(
-			'billing_email'         => array( 'priority' => 5, 'autocomplete' => 'contact email', 'description' => $billing_email_description ),
+			'billing_email'         => array( 'priority' => 5, 'autocomplete' => 'contact email', 'description' => $billing_email_description, 'type' => 'email' ),
 
 			'billing_first_name'    => array( 'priority' => 10, 'autocomplete' => 'contact given-name' ),
 			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'contact family-name' ),
-			'billing_phone'         => array( 'priority' => 30, 'autocomplete' => 'contact tel', 'class' => array( 'form-row-first' ) ),
+			'billing_phone'         => array( 'priority' => 30, 'autocomplete' => 'contact tel', 'class' => array( 'form-row-first' ), 'type' => 'tel' ),
 			'billing_company'       => array( 'priority' => 40, 'autocomplete' => 'billing organization', 'class' => array( $billing_company_class ) ),
 			'billing_address_1'     => array( 'autocomplete' => 'billing address-line1' ),
 			'billing_address_2'     => array( 'autocomplete' => 'billing address-line2' ),
