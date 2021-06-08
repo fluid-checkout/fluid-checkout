@@ -757,6 +757,9 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   margin: 20px 0 0;
   width: 100%;
   text-align: center; }
+  .has-checkout-layout--multi-step .fc-step__substep-save:focus {
+    outline: solid 2px #535156;
+    outline-offset: 2px; }
 
 .has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-edit {
   position: absolute;

@@ -257,6 +257,11 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	margin: $global-spacing-small 0 0;
 	width: 100%;
 	text-align: center;
+
+	&:focus {
+		outline: $focus-outline-button;
+		outline-offset: $focus-outline-offset-button;
+	}
 }
 
 .has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-edit {
