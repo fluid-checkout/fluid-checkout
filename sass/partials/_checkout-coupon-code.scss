@@ -19,14 +19,14 @@
 }
 
 .fc-wrapper .fc-expansible-form-section__content--coupon_code .fc-coupon-code__apply {
-    z-index: z( 'above' ) + 1;
+	z-index: z( 'above' ) + 1;
 	position: absolute;
-    top: remsize( .5rem );
+	top: remsize( .5rem );
 	margin: 0;
 	padding-left: $global-spacing-small;
 	padding-right: $global-spacing-small;
-    right: remsize( .5rem );
-    height: remsize( 4.5rem );
+	right: remsize( .5rem );
+	height: remsize( 4.5rem );
 
 	&:focus {
 		outline: $focus-outline-button;
