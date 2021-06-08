@@ -47,17 +47,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
 		add_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
+
+		// Container class
 		add_filter( 'fc_content_section_class', array( $this, 'fc_content_section_class' ), 10 );
+
+		// Checkout steps
+		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout/cart notices
+		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 );
+		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
+		add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
 
 		// Notices
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), 100 );
-
-		// Checkout steps
-		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 1 );
-		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 );
-		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
-		add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
 
 		// Contact
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );

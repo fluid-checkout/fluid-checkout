@@ -191,7 +191,7 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   #CHECKOUT WIDGETS
 \*------------------------------------*/
 .fc-checkout-header .widget,
-.fc-wrapper .widget {
+.fc-main .widget {
   margin: 0; }
 
 /*------------------------------------*\
@@ -429,14 +429,17 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   content: ""; }
 
 .fc-checkout-header .fc-checkout__header-widgets {
-  display: block;
-  width: 100%; }
+  display: none; }
   @media (min-width: 1000px) {
     .fc-checkout-header .fc-checkout__header-widgets {
       display: flex;
       justify-content: flex-end;
       margin: 0;
       width: 50%; } }
+
+@media (min-width: 1000px) {
+  .fc-main .fc-checkout__below-header-widgets {
+    display: none; } }
 
 /*------------------------------------*\
   #CHECKOUT PROGRESS BAR

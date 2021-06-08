@@ -176,8 +176,7 @@
 
 
 .fc-checkout-header .fc-checkout__header-widgets {
-	display: block;
-	width: 100%;
+	display: none;
 
 	@media (#{$bp-larger-than-desktop}) {
 		display: flex;
@@ -185,4 +184,8 @@
 		margin: 0;
 		width: 50%;
 	}
+}
+
+.fc-main .fc-checkout__below-header-widgets {
+	@media (#{$bp-larger-than-desktop}) { display: none; }
 }
