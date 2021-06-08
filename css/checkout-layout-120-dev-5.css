@@ -952,14 +952,11 @@ div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
     background-color: #fff;
     color: inherit; }
 
-div.woocommerce form .woocommerce-billing-fields__field-wrapper > .collapsible-content__inner {
-  padding-top: 20px; }
-
 body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-collapsed > .collapsible-content__inner {
   display: none; }
 
 div.woocommerce form #billing_same_as_shipping_field.form-row {
-  margin-bottom: 0; }
+  margin-bottom: 20px; }
 
 /*------------------------------------*\
 	#CHECKOUT SHIPPING STEP
