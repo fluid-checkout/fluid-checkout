@@ -28,7 +28,10 @@
 
 
 .woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title {
-	margin: 0 0 $global-spacing-extra-small;
+	display: inline-block;
+	margin: 0 0 remsize( 1.5rem );
+	padding: 0;
+	width: auto;
 	color: $checkout-substep-title-color;
 	font-weight: $checkout-substep-title-font-weight;
 	font-size: $checkout-substep-title-font-size;
@@ -214,6 +217,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 
 
+
 /*------------------------------------*\
 	#ORDER REVIEW VISIBILITY
 \*------------------------------------*/
@@ -296,12 +300,12 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 
 /*------------------------------------*\
-	#FLYOUT ORDER SUMMARY ACTIONS
+	#ORDER SUMMARY ACTIONS
 \*------------------------------------*/
-.fc-checkout-order-review__actions {
+.fc-checkout-order-review__actions-mobile {
 	display: none;
 }
-.has-flyout.has-flyout--open-fc-checkout-order-review .fc-checkout-order-review__actions {
+.has-flyout.has-flyout--open-fc-checkout-order-review .fc-checkout-order-review__actions-mobile {
 	z-index: z( 'sticky-element' );
 	position: fixed;
 	bottom: 0;
@@ -327,7 +331,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 
 
-.fc-checkout-order-review__actions .fc-checkout-order-review__edit-cart {
+.fc-checkout-order-review__actions-mobile .fc-checkout-order-review__edit-cart {
 	margin: 0 0 0 #{ - $global-spacing-extra-small };
 	padding-left: $global-spacing-extra-small;
 	padding-right: $global-spacing-extra-small;
@@ -338,7 +342,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	}
 }
 
-.fc-checkout-order-review__actions .fc-checkout-order-review__close-order-summary {
+.fc-checkout-order-review__actions-mobile .fc-checkout-order-review__close-order-summary {
 	margin: 0 #{ - $global-spacing-extra-small } 0 0;
 	height: remsize( 4.4rem );
 
@@ -354,4 +358,32 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	display: none;
 
 	@media (#{$bp-larger-than-desktop}) { display: block; }
+}
+
+
+
+
+.fc-checkout-order-review__inner > .fc-checkout-order-review__edit-cart {
+	display: none;
+
+	@media (#{$bp-larger-than-desktop}) {
+		float: right;
+		display: block;
+
+		margin: $order-summary-edit-cart-button-margin;
+		padding: $order-summary-edit-cart-button-padding;
+		font-size: $order-summary-edit-cart-button-font-size--large-screen;
+		font-weight: $order-summary-edit-cart-button-font-weight;
+		line-height: 1;
+		text-decoration: $order-summary-edit-cart-button-text-decoration;
+		color: $order-summary-edit-cart-button-color;
+		background-color: $order-summary-edit-cart-button-background-color;
+		cursor: pointer;
+
+
+		&:focus {
+			outline: $focus-outline-link;
+			outline-offset: $focus-outline-offset-link;
+		}
+	}
 }

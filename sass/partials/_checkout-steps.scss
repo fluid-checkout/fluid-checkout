@@ -244,7 +244,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	background-color: $checkout-substep-action-button-background-color;
 	cursor: pointer;
 
-	@media (#{$bp-larger-than-desktop}) { font-size: $font-size-small--large-screen; }
+	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-action-button-font-size--large-screen; }
 
 	&:focus {
 		outline: $focus-outline-link;
