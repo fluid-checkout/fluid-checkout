@@ -1951,8 +1951,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output field for billing address same as shipping.
 	 */
 	public function output_billing_same_as_shipping_field() {
-		// Output a hidden field when shipping country not allowed for billing
-		if ( $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
+		// Output a hidden field when shipping country not allowed for billing, or shipping not needed
+		if ( ! WC()->cart->needs_shipping() || $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
 			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; ?>">
 		<?php
 		// Output the checkbox when shipping country is allowed for billing
