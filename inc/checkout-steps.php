@@ -47,17 +47,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
 		add_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
+
+		// Container class
 		add_filter( 'fc_content_section_class', array( $this, 'fc_content_section_class' ), 10 );
+
+		// Checkout steps
+		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout/cart notices
+		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 );
+		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
+		add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
 
 		// Notices
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), 100 );
-
-		// Checkout steps
-		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 1 );
-		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 );
-		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
-		add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
 
 		// Contact
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
@@ -907,8 +909,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_substep_end_tag( $step_id, $substep_id, $output_edit_buttons = true ) {
 		?>
 			<?php if ( $output_edit_buttons && $this->is_checkout_layout_multistep() ) : ?>
-				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ); ?></a>
-				<a tabindex="0" role="button" class="fc-step__substep-save" data-step-save aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo _x( 'Save', 'Checkout substep save link label', 'fluid-checkout' ); ?></a>
+				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo apply_filters( 'fc_substep_change_button_label', _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ) ); ?></a>
+				<a tabindex="0" role="button" class="fc-step__substep-save <?php echo esc_attr( apply_filters( 'fc_substep_save_button_classes', 'button' ) ); ?>" data-step-save aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo apply_filters( 'fc_substep_save_button_label', _x( 'Save changes', 'Checkout substep save link label', 'fluid-checkout' ) ); ?></a>
 			<?php endif; ?>
 		</div>
 		<?php
@@ -1607,16 +1609,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Return html for shipping step actions
-	 */
-	public function get_shipping_step_actions_html() {
-		$actions_html = '<div class="fc-actions"><button class="fc-prev">' . _x( 'Back', 'Previous step button', 'fluid-checkout' ) . '</button> <button class="fc-next button alt">' . __( 'Proceed to Payment', 'fluid-checkout' ) . '</button></div>';
-		return apply_filters( 'fc_shipping_step_actions_html', $actions_html );
-	}
-
-
-
-	/**
 	 * Output shipping section for cart totals.
 	 */
 	public function output_cart_totals_shipping_section() {
@@ -1959,8 +1951,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output field for billing address same as shipping.
 	 */
 	public function output_billing_same_as_shipping_field() {
-		// Output a hidden field when shipping country not allowed for billing
-		if ( $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
+		// Output a hidden field when shipping country not allowed for billing, or shipping not needed
+		if ( ! WC()->cart->needs_shipping() || $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
 			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; ?>">
 		<?php
 		// Output the checkbox when shipping country is allowed for billing

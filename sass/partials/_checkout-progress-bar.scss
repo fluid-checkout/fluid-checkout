@@ -10,7 +10,6 @@
 }
 
 .fc-progress-bar .fc-progress-bar__inner {
-	z-index: z( 'float-element' ) - 2; // Needed to show behing the order summary flyout
 	padding: $checkout-progress-padding;
 	background-color: $white;
 
@@ -18,6 +17,10 @@
 		padding: $checkout-progress-padding--large-screen;
 		border-radius: $checkout-substep-border-radius;
 	}
+}
+// Sticky state
+.fc-progress-bar[data-sticky-states].is-sticky .fc-progress-bar__inner {
+	z-index: z( 'float-element' ) - 2; // Needed to show behing the order summary flyout
 }
 // With admin bar
 .admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {

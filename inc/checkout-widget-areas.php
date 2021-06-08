@@ -20,7 +20,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		// Widget Areas
 		add_action( 'widgets_init', array( $this, 'register_checkout_widgets_areas' ), 50 );
 		add_action( 'fc_checkout_header_widgets', array( $this, 'output_widget_area_checkout_header' ), 50 );
-		add_action( 'fc_checkout_before_steps', array( $this, 'output_widget_area_checkout_steps_before' ), 50 );
+		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_widget_area_checkout_header_below' ), 3 ); // Displays widgets before the progress bar
 		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_widget_area_order_review_inside' ), 50 );
 		add_action( 'fc_checkout_after_order_review', array( $this, 'output_widget_area_order_review_outside' ), 50 );
 	}
@@ -35,9 +35,9 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	public function register_checkout_widgets_areas() {
 
 		register_sidebar( array(
-			'name'          => __( 'Checkout Header', 'fluid-checkout' ),
+			'name'          => __( 'Checkout Header - Desktop', 'fluid-checkout' ),
 			'id'            => 'fc_checkout_header',
-			'description'   => __( 'Display widgets at the checkout header.', 'fluid-checkout' ),
+			'description'   => __( 'Display widgets on the checkout header and on large screens. Only displayed if using the plugin\'s checkout header.', 'fluid-checkout' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -45,13 +45,13 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		) );
 
 		register_sidebar( array(
-			'name'          => __( 'Checkout Steps - Before', 'fluid-checkout' ),
-			'id'            => 'fc_checkout_steps_before',
-			'description'   => __( 'Display widgets below the checkout progress bar.', 'fluid-checkout' ),
+			'name'          => __( 'Checkout Header - Mobile', 'fluid-checkout' ),
+			'id'            => 'fc_checkout_below_header',
+			'description'   => __( 'Display widgets below the checkout header on mobile devices. Only displayed if using the plugin\'s checkout header.', 'fluid-checkout' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
-			'before_title'  => '<h3 class="widget-title">',
-			'after_title'   => '</h3>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
 		) );
 
 
@@ -89,17 +89,19 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 */
 	public function output_widget_area_checkout_header() {
 		if ( is_active_sidebar( 'fc_checkout_header' ) ) :
+			echo '<div class="fc-checkout__header-widgets">';
 			dynamic_sidebar( 'fc_checkout_header' );
+			echo '</div>';
 		endif;
 	}
 
 	/**
 	 * Output widget area below the checkout progress bar.
 	 */
-	public function output_widget_area_checkout_steps_before() {
-		if ( is_active_sidebar( 'fc_checkout_steps_before' ) ) :
-			echo '<div class="fc-checkout__steps-widgets">';
-			dynamic_sidebar( 'fc_checkout_steps_before' );
+	public function output_widget_area_checkout_header_below() {
+		if ( is_active_sidebar( 'fc_checkout_below_header' ) ) :
+			echo '<div class="fc-checkout__below-header-widgets">';
+			dynamic_sidebar( 'fc_checkout_below_header' );
 			echo '</div>';
 		endif;
 	}

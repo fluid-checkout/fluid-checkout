@@ -41,7 +41,7 @@
 
 
 // Hide default radio elements with opacity to allow for keyboard navigation
-.fc-wrapper #payment .payment_methods > .wc_payment_method input[type="radio"] {
+.fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"] {
 	position: absolute;
 	display: block;
 	width: 1px;
@@ -115,7 +115,7 @@
 }
 
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method input[type="radio"]:first-child:checked + label:before {
+.fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:before {
 	content: '';
 	border-color: $success-color;
 	background-color: $success-color;
@@ -192,6 +192,13 @@
 
 .fc-wrapper .payment_box > p:last-child {
 	margin-bottom: 0;
+}
+
+
+
+.fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box a:focus {
+	outline: $focus-outline-link;
+	outline-offset: $focus-outline-offset-link;
 }
 
 

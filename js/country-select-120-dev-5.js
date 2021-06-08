@@ -1,6 +1,6 @@
 /**
  * Country Select Script
- * 
+ *
  * Replaces the original WooCommerce `country-select.js`.
  */
 
@@ -60,7 +60,8 @@ jQuery( function( $ ) {
 		};
 
 		var wc_country_select_select2 = function() {
-			$( 'select.country_select:visible, select.state_select:visible' ).each( function() {
+			// CHANGE: Allow building `select2` fields while not visible
+			$( 'select.country_select, select.state_select' ).each( function() {
 				var select2_args = $.extend({
 					placeholder: $( this ).attr( 'data-placeholder' ) || $( this ).attr( 'placeholder' ) || '',
 					width: '100%'

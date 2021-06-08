@@ -37,6 +37,7 @@
 
 		autoFocusSelector: '[data-autofocus]',
 		focusableElementsSelector: 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), details, summary, iframe, object, embed, [contenteditable] [tabindex]:not([tabindex="-1"])',
+		selectContentsOnFocus: true,
 
 		isCollapsedClass: 'is-collapsed',
 		isExpandedClass: 'is-expanded',
@@ -490,11 +491,9 @@
 			// Set focus to focusElement
 			if ( focusElement ) {
 				focusElement.focus();
-				focusElement.select();
-				// focusElement.focus( function() {
-				// 	// `this` = `focusElement`
-				// 	this.setSelectionRange( 0, 99999 );
-				// } );
+				if ( _settings.selectContentsOnFocus ) {
+					focusElement.select();
+				}
 			}
 		}
 

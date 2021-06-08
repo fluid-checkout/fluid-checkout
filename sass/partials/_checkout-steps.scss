@@ -231,8 +231,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 /*------------------------------------*\
 	#CHECKOUT SUB-STEP EDIT
 \*------------------------------------*/
-.has-checkout-layout--multi-step .fc-step__substep-edit,
-.has-checkout-layout--multi-step .fc-step__substep-save {
+.has-checkout-layout--multi-step .fc-main .fc-step__substep-edit {
 	display: none;
 
 	margin: $checkout-substep-action-button-margin;
@@ -245,7 +244,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	background-color: $checkout-substep-action-button-background-color;
 	cursor: pointer;
 
-	@media (#{$bp-larger-than-desktop}) { font-size: $font-size-small--large-screen; }
+	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-action-button-font-size--large-screen; }
 
 	&:focus {
 		outline: $focus-outline-link;
@@ -253,15 +252,31 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	}
 }
 
-.has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-edit,
-.has-checkout-layout--multi-step [data-step-complete] .is-editing .fc-step__substep-save {
+.has-checkout-layout--multi-step .fc-main .fc-step__substep-save {
+	display: none;
+	margin: $global-spacing-small 0 0;
+	width: 100%;
+	text-align: center;
+
+	&:focus {
+		outline: $focus-outline-button;
+		outline-offset: $focus-outline-offset-button;
+	}
+}
+
+.has-checkout-layout--multi-step .fc-main [data-step-complete] .fc-step__substep-edit {
 	position: absolute;
 	top: 0;
 	right: 0;
 	display: inline;
 }
-.has-checkout-layout--multi-step [data-step-complete] .is-editing .fc-step__substep-edit,
-.has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-save {
+
+.has-checkout-layout--multi-step .fc-main [data-step-complete] .is-editing .fc-step__substep-save {
+	display: block;
+}
+
+.has-checkout-layout--multi-step .fc-main [data-step-complete] .is-editing .fc-step__substep-edit,
+.has-checkout-layout--multi-step .fc-main [data-step-complete] .fc-step__substep-save {
 	display: none;
 }
 
@@ -273,7 +288,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	#CHECKOUT SUB-STEP FIELD WRAPPERS
 \*------------------------------------*/
 .fc-wrapper .fc-step__substep-fields-inner {
-	padding-top: $global-spacing-small;
+	padding: $global-spacing-extra-small 0 0;
 	border: 0;
 }
 
@@ -290,7 +305,4 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 .fc-substep__fields--coupon_codes .fc-step__substep-fields-inner {
 	padding: 0;
-}
-.fc-substep__fields--coupon_codes .fc-expansible-form-section__content--coupon_code .collapsible-content__inner {
-	padding: $global-spacing-extra-small 0 0;
 }

@@ -44,11 +44,7 @@ defined( 'ABSPATH' ) || exit;
 		</div>
 		<?php endif; ?>
 
-		<?php if ( has_action( 'fc_checkout_header_widgets' ) ) : ?>
-			<div class="fc-checkout__header-widgets">
-				<?php do_action( 'fc_checkout_header_widgets' ); ?>
-			</div>
-		<?php endif; ?>
+		<?php do_action( 'fc_checkout_header_widgets' ); ?>
 
 	</div>
 </header>
