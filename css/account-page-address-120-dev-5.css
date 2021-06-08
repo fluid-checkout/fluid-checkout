@@ -178,6 +178,11 @@ div.woocommerce form .form-row .select2-selection {
     outline: solid 2px #535156;
     outline-offset: 2px; }
 
+div.woocommerce input[type="checkbox"]:focus,
+div.woocommerce input[type="radio"]:focus {
+  outline: solid 2px #535156;
+  outline-offset: 2px; }
+
 div.woocommerce form .form-row textarea,
 div.woocommerce form .form-row select,
 div.woocommerce form .form-row input[type="email"],

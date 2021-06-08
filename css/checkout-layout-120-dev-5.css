@@ -1136,7 +1136,7 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   padding: 0;
   border: 0; }
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method input[type="radio"] {
+.fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"] {
   position: absolute;
   display: block;
   width: 1px;
@@ -1197,7 +1197,7 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   outline: solid 2px #535156;
   outline-offset: 2px; }
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method input[type="radio"]:first-child:checked + label:before {
+.fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:before {
   content: '';
   border-color: #00A854;
   background-color: #00A854; }
@@ -1280,6 +1280,10 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
 
 .fc-wrapper .payment_box > p:last-child {
   margin-bottom: 0; }
+
+.fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box a:focus {
+  outline: dotted 1px #535156;
+  outline-offset: 1px; }
 
 .fc-wrapper #payment .payment_methods > .woocommerce-notice {
   margin-bottom: 0; }
@@ -1542,6 +1546,11 @@ div.woocommerce form .form-row .select2-selection {
   div.woocommerce form .form-row .select2-selection:focus {
     outline: solid 2px #535156;
     outline-offset: 2px; }
+
+div.woocommerce input[type="checkbox"]:focus,
+div.woocommerce input[type="radio"]:focus {
+  outline: solid 2px #535156;
+  outline-offset: 2px; }
 
 div.woocommerce form .form-row textarea,
 div.woocommerce form .form-row select,
