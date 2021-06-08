@@ -820,6 +820,9 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 .fc-contact-login__action-login {
   cursor: pointer; }
+  .fc-contact-login__action-login:focus {
+    outline: dotted 1px #535156;
+    outline-offset: 1px; }
 
 .fc-contact-login__separator {
   position: relative;
