@@ -288,7 +288,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	#CHECKOUT SUB-STEP FIELD WRAPPERS
 \*------------------------------------*/
 .fc-wrapper .fc-step__substep-fields-inner {
-	padding-top: $global-spacing-small;
+	padding: $global-spacing-extra-small 0 0;
 	border: 0;
 }
 
