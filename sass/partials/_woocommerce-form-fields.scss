@@ -16,6 +16,7 @@ div.woocommerce form .form-row:last-child {
 
 div.woocommerce form .form-row {
 	margin-bottom: $global-spacing-small;
+	padding: 0;
 }
 div.woocommerce form .form-row.has-description:not( :last-child ) {
 	margin-bottom: remsize( .8rem );

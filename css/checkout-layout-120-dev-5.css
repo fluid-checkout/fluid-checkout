@@ -791,9 +791,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .fc-substep__fields--coupon_codes .fc-step__substep-fields-inner {
   padding: 0; }
 
-.fc-substep__fields--coupon_codes .fc-expansible-form-section__content--coupon_code .collapsible-content__inner {
-  padding: 10px 0 0; }
-
 /*------------------------------------*\
   #CHECKOUT LOGIN
 \*------------------------------------*/
@@ -1286,22 +1283,29 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   #CHECKOUT COUPON CODE
 \*------------------------------------*/
 .fc-wrapper .fc-expansible-form-section__content--coupon_code .collapsible-content__inner {
-  display: flex; }
+  position: relative; }
 
 .fc-wrapper .fc-expansible-form-section__content--coupon_code .form-row {
   float: none;
   margin: 0;
-  flex-shrink: 1;
-  flex-grow: 1; }
+  padding: 0; }
+
+.fc-wrapper .fc-expansible-form-section__content--coupon_code input {
+  height: 55px; }
 
 .fc-wrapper .fc-expansible-form-section__content--coupon_code input:focus {
   position: relative;
   z-index: 10; }
 
 .fc-wrapper .fc-expansible-form-section__content--coupon_code .fc-coupon-code__apply {
+  z-index: 11;
+  position: absolute;
+  top: 5px;
   margin: 0;
-  flex-shrink: 0;
-  flex-grow: 0; }
+  padding-left: 20px;
+  padding-right: 20px;
+  right: 5px;
+  height: 45px; }
   .fc-wrapper .fc-expansible-form-section__content--coupon_code .fc-coupon-code__apply:focus {
     outline: solid 2px #535156;
     outline-offset: 2px; }
@@ -1330,6 +1334,9 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   text-decoration: underline;
   color: inherit;
   background-color: transparent; }
+  .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon:focus {
+    outline: dotted 1px #535156;
+    outline-offset: 1px; }
 
 /*------------------------------------*\
   #CHECKOUT PLACE ORDER
@@ -1402,7 +1409,8 @@ div.woocommerce form .form-row:last-child {
   margin-bottom: 0; }
 
 div.woocommerce form .form-row {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  padding: 0; }
 
 div.woocommerce form .form-row.has-description:not(:last-child) {
   margin-bottom: 8px; }
@@ -1695,6 +1703,10 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table td.product-total {
   background-color: transparent; }
+
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon:focus {
+  outline: dotted 1px #535156;
+  outline-offset: 1px; }
 
 .fc-wrapper .fc-checkout-order-review__widgets-inside {
   margin-top: 20px; }

@@ -87,13 +87,13 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	public function output_substep_coupon_codes_fields() {
 		$coupon_code_field_label = apply_filters( 'fc_coupon_code_field_label', __( 'Coupon code', 'fluid-checkout' ) );
 		$coupon_code_field_placeholder = apply_filters( 'fc_coupon_code_field_placeholder', __( 'Enter your code here', 'fluid-checkout' ) );
-		$coupon_code_button_label = apply_filters( 'fc_coupon_code_button_label', _x( 'Apply code', 'Button label for applying coupon codes', 'fluid-checkout' ) );
+		$coupon_code_button_label = apply_filters( 'fc_coupon_code_button_label', _x( 'Apply', 'Button label for applying coupon codes', 'fluid-checkout' ) );
 
 		$key = 'coupon_code';
 		$coupon_code_field_args = array(
 			'required'                   => false,
 			'fc_skip_server_validation' => true,
-			'class'                      => array( 'form-row-first' ),
+			'class'                      => array( 'form-row-wide' ),
 			'placeholder'                => $coupon_code_field_placeholder,
 			'custom_attributes'          => array(
 				'aria-label'             => $coupon_code_field_label,

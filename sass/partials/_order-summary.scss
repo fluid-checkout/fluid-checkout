@@ -187,6 +187,16 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 
 
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon {
+	&:focus {
+		outline: $focus-outline-link;
+		outline-offset: $focus-outline-offset-link;
+	}
+}
+
+
+
+
 
 
 .fc-wrapper .fc-checkout-order-review__widgets-inside {

@@ -49,7 +49,8 @@ div.woocommerce form .form-row:last-child {
   margin-bottom: 0; }
 
 div.woocommerce form .form-row {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  padding: 0; }
 
 div.woocommerce form .form-row.has-description:not(:last-child) {
   margin-bottom: 8px; }
