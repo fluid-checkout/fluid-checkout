@@ -734,7 +734,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 /*------------------------------------*\
 	#CHECKOUT SUB-STEP EDIT
 \*------------------------------------*/
-.has-checkout-layout--multi-step .fc-step__substep-edit {
+.has-checkout-layout--multi-step .fc-main .fc-step__substep-edit {
   display: none;
   margin: 12px 10px 0 0;
   padding: 5px 10px;
@@ -746,32 +746,32 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   background-color: transparent;
   cursor: pointer; }
   @media (min-width: 1000px) {
-    .has-checkout-layout--multi-step .fc-step__substep-edit {
+    .has-checkout-layout--multi-step .fc-main .fc-step__substep-edit {
       font-size: 15px; } }
-  .has-checkout-layout--multi-step .fc-step__substep-edit:focus {
+  .has-checkout-layout--multi-step .fc-main .fc-step__substep-edit:focus {
     outline: dotted 1px #535156;
     outline-offset: 1px; }
 
-.has-checkout-layout--multi-step .fc-step__substep-save {
+.has-checkout-layout--multi-step .fc-main .fc-step__substep-save {
   display: none;
   margin: 20px 0 0;
   width: 100%;
   text-align: center; }
-  .has-checkout-layout--multi-step .fc-step__substep-save:focus {
+  .has-checkout-layout--multi-step .fc-main .fc-step__substep-save:focus {
     outline: solid 2px #535156;
     outline-offset: 2px; }
 
-.has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-edit {
+.has-checkout-layout--multi-step .fc-main [data-step-complete] .fc-step__substep-edit {
   position: absolute;
   top: 0;
   right: 0;
   display: inline; }
 
-.has-checkout-layout--multi-step [data-step-complete] .is-editing .fc-step__substep-save {
+.has-checkout-layout--multi-step .fc-main [data-step-complete] .is-editing .fc-step__substep-save {
   display: block; }
 
-.has-checkout-layout--multi-step [data-step-complete] .is-editing .fc-step__substep-edit,
-.has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-save {
+.has-checkout-layout--multi-step .fc-main [data-step-complete] .is-editing .fc-step__substep-edit,
+.has-checkout-layout--multi-step .fc-main [data-step-complete] .fc-step__substep-save {
   display: none; }
 
 /*------------------------------------*\
