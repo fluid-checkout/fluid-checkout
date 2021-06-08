@@ -1580,7 +1580,16 @@ div.woocommerce form .form-row textarea {
 
 .woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title {
   margin: 0 0 10px;
-  text-align: left; }
+  color: #535156;
+  font-weight: bold;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-align: left;
+  line-height: 1;
+  overflow: unset; }
+  @media (min-width: 1000px) {
+    .woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title {
+      font-size: 15px; } }
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table {
   margin: 0 -20px;
