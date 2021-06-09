@@ -144,7 +144,7 @@ class FluidCheckout {
 
 
 		// Template file loader
-		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 10, 3 );
+		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 	}
 
 
