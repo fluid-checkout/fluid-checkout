@@ -779,7 +779,11 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 \*------------------------------------*/
 .fc-wrapper .fc-step__substep-fields-inner {
   padding: 10px 0 0;
-  border: 0; }
+  border: 0;
+  transition: padding-top 0.15s linear; }
+
+.fc-wrapper .fc-step__substep.is-editing .fc-step__substep-fields-inner {
+  padding: 20px 0 0; }
 
 .fc-wrapper .woocommerce-shipping-fields,
 .fc-wrapper .woocommerce-billing-fields {

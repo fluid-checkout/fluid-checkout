@@ -290,6 +290,11 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .fc-wrapper .fc-step__substep-fields-inner {
 	padding: $global-spacing-extra-small 0 0;
 	border: 0;
+	transition: padding-top $global-animation-duration-fast linear;
+}
+
+.fc-wrapper .fc-step__substep.is-editing .fc-step__substep-fields-inner {
+	padding: $global-spacing-small 0 0;
 }
 
 .fc-wrapper .woocommerce-shipping-fields,
