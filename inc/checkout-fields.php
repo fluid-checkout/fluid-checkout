@@ -115,7 +115,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			if ( ! in_array( $field_key, $target_field_ids ) ) { continue; }
 
 			// Remove `screen-reader-text` class from the field label
-			if ( in_array( 'screen-reader-text', $fields[ $field_key ]['label_class'] ) ) {
+			if ( array_key_exists( 'label_class', $fields[ $field_key ] ) && in_array( 'screen-reader-text', $fields[ $field_key ]['label_class'] ) ) {
 				$class_key = array_search( 'screen-reader-text', $fields[ $field_key ]['label_class'] );
 				unset( $fields[ $field_key ]['label_class'][ $class_key ] );
 			}
