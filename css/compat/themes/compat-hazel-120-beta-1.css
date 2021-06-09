@@ -62,6 +62,9 @@ body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class
 body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .woocommerce-input-wrapper:after {
   top: 12px; }
 
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .select2-selection:after {
+  right: 24px; }
+
 /*------------------------------------*\
   #WOOCOMMERCE FORM-ROW
 \*------------------------------------*/
@@ -71,5 +74,9 @@ div.woocommerce form .form-row .select2-container--default,
 div.woocommerce form .form-row .select2-container .select2-selection {
   height: auto; }
 
-div.woocommerce form .form-row .select2-container .select2-selection__rendered {
+div.woocommerce form .form-row .select2-container .select2-selection__rendered,
+div.woocommerce form .form-row .select2-container .select2-selection__arrow {
   line-height: 45px; }
+
+div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+  right: 10px; }
