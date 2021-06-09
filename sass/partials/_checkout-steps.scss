@@ -231,7 +231,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 /*------------------------------------*\
 	#CHECKOUT SUB-STEP EDIT
 \*------------------------------------*/
-.has-checkout-layout--multi-step .fc-main .fc-step__substep-edit {
+.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-edit {
 	display: none;
 
 	margin: $checkout-substep-action-button-margin;
@@ -252,7 +252,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	}
 }
 
-.has-checkout-layout--multi-step .fc-main .fc-step__substep-save {
+.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save {
 	display: none;
 	margin: $global-spacing-small 0 0;
 	width: 100%;
@@ -264,19 +264,19 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	}
 }
 
-.has-checkout-layout--multi-step .fc-main [data-step-complete] .fc-step__substep-edit {
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit {
 	position: absolute;
 	top: 0;
 	right: 0;
 	display: inline;
 }
 
-.has-checkout-layout--multi-step .fc-main [data-step-complete] .is-editing .fc-step__substep-save {
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-save {
 	display: block;
 }
 
-.has-checkout-layout--multi-step .fc-main [data-step-complete] .is-editing .fc-step__substep-edit,
-.has-checkout-layout--multi-step .fc-main [data-step-complete] .fc-step__substep-save {
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-edit,
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-save {
 	display: none;
 }
 

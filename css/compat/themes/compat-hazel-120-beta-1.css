@@ -61,3 +61,15 @@ body:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is
 body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .select2-selection:after,
 body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .woocommerce-input-wrapper:after {
   top: 12px; }
+
+/*------------------------------------*\
+  #WOOCOMMERCE FORM-ROW
+\*------------------------------------*/
+div.woocommerce form #billing_country_field,
+div.woocommerce form #shipping_country_field,
+div.woocommerce form .form-row .select2-container--default,
+div.woocommerce form .form-row .select2-container .select2-selection {
+  height: auto; }
+
+div.woocommerce form .form-row .select2-container .select2-selection__rendered {
+  line-height: 45px; }
