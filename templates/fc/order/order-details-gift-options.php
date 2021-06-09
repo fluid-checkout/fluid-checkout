@@ -29,10 +29,10 @@ defined( 'ABSPATH' ) || exit;
 				<?php echo esc_html( $gift_options[ '_fc_gift_message' ] ); ?>
 			</blockquote>
 		<?php endif; ?>
-		
+
 		<?php if ( isset( $gift_options ) && array_key_exists( '_fc_gift_from', $gift_options ) && ! empty( $gift_options[ '_fc_gift_from' ] ) ) : ?>
 			<figcaption class="fc-gift-options__message-from">
-				<span class="screen-reader-text"><?php echo esc_attr( __( 'From:', 'fluid-checkout' ) ); ?></span>
+				<span class="screen-reader-text"><?php echo esc_attr( _x( 'From:', 'Label on the order details for person sending the gift', 'fluid-checkout' ) ); ?></span>
 				<?php echo esc_html( $gift_options[ '_fc_gift_from' ] ); ?>
 			</figcaption>
 		<?php endif; ?>

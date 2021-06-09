@@ -2251,7 +2251,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  string  The order review section title.
 	 */
 	public function get_order_review_title() {
-		return apply_filters( 'fc_order_review_title', __( 'Order Summary', 'fluid-checkout' ) );
+		return apply_filters( 'fc_order_review_title', __( 'Order summary', 'fluid-checkout' ) );
 	}
 
 	/**

@@ -37,7 +37,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		register_sidebar( array(
 			'name'          => __( 'Checkout Header - Desktop', 'fluid-checkout' ),
 			'id'            => 'fc_checkout_header',
-			'description'   => __( 'Display widgets on the checkout header and on large screens. Only displayed if using the plugin\'s checkout header.', 'fluid-checkout' ),
+			'description'   => __( 'Display widgets on the checkout header for large screens. Only displayed if using the plugin\'s checkout header.', 'fluid-checkout' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -47,7 +47,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		register_sidebar( array(
 			'name'          => __( 'Checkout Header - Mobile', 'fluid-checkout' ),
 			'id'            => 'fc_checkout_below_header',
-			'description'   => __( 'Display widgets below the checkout header on mobile devices. Only displayed if using the plugin\'s checkout header.', 'fluid-checkout' ),
+			'description'   => __( 'Display widgets below the checkout header for mobile devices. Only displayed if using the plugin\'s checkout header.', 'fluid-checkout' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -69,7 +69,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 
 
 		register_sidebar( array(
-			'name'          => __( 'Order Summary', 'fluid-checkout' ),
+			'name'          => __( 'Order summary', 'fluid-checkout' ),
 			'id'            => 'fc_order_summary_after',
 			'description'   => __( 'Display widgets inside the order summary at the checkout page.', 'fluid-checkout' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
