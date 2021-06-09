@@ -106,7 +106,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 
 					array(
-						'title'         => __( 'Order Summary', 'fluid-checkout' ),
+						'title'         => __( 'Order summary', 'fluid-checkout' ),
 						'desc'          => __( 'Make the order summary stay visible while scrolling', 'fluid-checkout' ),
 						'id'            => 'fc_enable_checkout_sticky_order_summary',
 						'default'       => 'yes',
@@ -127,7 +127,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					array(
 						'title'         => __( 'Header and Footer', 'fluid-checkout' ),
 						'desc'          => __( 'We recommend using the Fluid Checkout header and footer to avoid distractions at the checkout page. <a href="https://baymard.com/blog/cart-abandonment" target="_blank">Read the research about cart abandonment</a>.', 'fluid-checkout' ),
-						'desc_tip'      => __( 'Controls whether to use the Fluid Checkout page header and footer of keep the currently active theme\'s.', 'fluid-checkout' ),
+						'desc_tip'      => __( 'Controls whether to use the Fluid Checkout page header and footer or keep the currently active theme\'s.', 'fluid-checkout' ),
 						'id'            => 'fc_hide_site_header_footer_at_checkout',
 						'type'          => 'radio',
 						'options'       => array(
@@ -193,9 +193,9 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'desc'          => __( 'Add a phone field to the shipping address form', 'fluid-checkout' ),
 						'id'            => 'fc_shipping_phone_field_visibility',
 						'options'       => array(
-							'no'        => __( 'Hidden', 'fluid-checkout' ),
-							'optional'  => __( 'Optional', 'fluid-checkout' ),
-							'required'  => __( 'Required', 'fluid-checkout' ),
+							'no'        => _x( 'Hidden', 'Shipping phone field visibility', 'fluid-checkout' ),
+							'optional'  => _x( 'Optional', 'Shipping phone field visibility', 'fluid-checkout' ),
+							'required'  => _x( 'Required', 'Shipping phone field visibility', 'fluid-checkout' ),
 						),
 						'default'       => 'no',
 						'type'          => 'select',
@@ -244,7 +244,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 					array(
 						'desc'              => __( 'Do not hide "Address line 2" fields behind a link button', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Recommended only whe most customers actually need the "Address line 2" field or when delivering perishable products.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Recommended only whe most customers actually need the "Address line 2" field, or when getting the right shipping address is crucial (ie. if delivering food and other perishable products).', 'fluid-checkout' ),
 						'id'                => 'fc_hide_optional_fields_skip_address_2',
 						'default'           => 'no',
 						'type'              => 'checkbox',
@@ -254,7 +254,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Order Summary', 'fluid-checkout' ),
+						'title'             => __( 'Order summary', 'fluid-checkout' ),
 						'desc'              => __( 'Display an additional "Place order" and terms checkbox below the order summary in the sidebar.', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Recommended if most of the orders have only a few different products in the cart, and product variations do not take too much space on the order summary.', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_place_order_sidebar',

@@ -158,7 +158,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 			'_fc_gift_from' => array(
 				'type'          => 'text',
 				'class'         => array( 'form-row-wide '),
-				'label'         => __( 'From', 'fluid-checkout' ),
+				'label'         => _x( 'From', 'Field label for person sending the gift', 'fluid-checkout' ),
 				'placeholder'   => __( 'Your name', 'fluid-checkout' ),
 				'description'   => __( 'Name of who is sending the gift, printed on the packing slip.', 'fluid-checkout' ),
 				'default'		=> is_checkout() ? $customer->get_display_name() : null,
