@@ -10,9 +10,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Provides a Fluid Checkout experience for any WooCommerce store. Ask for shipping information before billing in a linear and multi-step checkout, add options for gift message and packaging and display a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.
 
+
 == Description ==
 
 Provides a Fluid Checkout experience for any WooCommerce store. Ask for shipping information before billing in a linear and multi-step checkout, add options for gift message and packaging and display a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.
+
 
 == Installation ==
 
@@ -36,4 +38,4 @@ Press the "Upload Plugin" and select the zip file, then click "Install Now".
 == Changelog ==
 
 = 1.2.0 =
-* New plugin foundation code.
+* First public release.
