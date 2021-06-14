@@ -148,12 +148,13 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Screenshots ==
 
-1. Step 1 - Contact: Email, newsletter sign-up and account creation fields
-2. Step 2 - Shipping:
+1. Step 1 - Contact: Email, newsletter sign-up and account creation
+2. Step 2 - Shipping: Address and shipping method
 3. Step 3 - Billing: Billing address and company information
 4. Step 4 - Payment: Payment options and discounts
 5. Single step layout: All fields are displayed in one single step.
 6. Settings: Layout options and features
+7. Theme styles: Look and feel like your website.
 
 
 == Changelog ==
