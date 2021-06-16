@@ -256,6 +256,16 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 
 					array(
+						'title'             => __( 'Header background color', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Choose a background color for the checkout page header. Only applies when using the plugin\'s checkout header.', 'fluid-checkout' ),
+						'desc'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'id'                => 'fc_checkout_header_background_color',
+						'type'              => 'text',
+						'autoload'          => false,
+						'class'             => 'colorpick',
+					),
+
+					array(
 						'title'             => __( 'Optional fields', 'fluid-checkout' ),
 						'desc'              => __( 'Hide optional fields behind a link button', 'fluid-checkout' ),
 						'desc_tip'          => __( 'It is recommended to keep this options checked to reduce the number of open input fields, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-link" target="_blank">read the research</a>.', 'fluid-checkout' ),
