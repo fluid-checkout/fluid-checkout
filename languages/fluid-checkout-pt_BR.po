@@ -3,9 +3,9 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2021-06-10 14:46+0000\n"
+"PO-Revision-Date: 2021-06-16 11:43+0000\n"
 "Last-Translator: Diego Versiani\n"
-"Language-Team: Portuguese (Brazil)\n"
+"Language-Team: Português do Brasil\n"
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
@@ -116,7 +116,7 @@ msgstr "Cabeçalho do checkout - Celular"
 
 #: inc/admin/admin-settings-checkout.php:224
 msgid "Checkout Layout"
-msgstr "Layout de checkout"
+msgstr "Opções de Layout"
 
 #: inc/admin/admin-settings-checkout.php:51
 msgid "Checkout Options"
@@ -393,7 +393,7 @@ msgstr ""
 #: inc/admin/admin-settings-checkout.php:110
 msgid "Make the order summary stay visible while scrolling"
 msgstr ""
-"Faça com que o resumo de compra fique visível enquanto rola-se a página"
+"Faça com que o resumo do pedido fique visível enquanto rola-se a página"
 
 #: inc/checkout-steps.php:207
 msgid "Multi-step"
@@ -463,7 +463,7 @@ msgstr ""
 #: inc/admin/admin-settings-checkout.php:257
 #| msgid "Order Summary"
 msgid "Order summary"
-msgstr "Resumo de compra"
+msgstr "Resumo do pedido"
 
 #: inc/checkout-steps.php:2151
 msgid "Payment method"
@@ -653,5 +653,5 @@ msgstr "Seu nome"
 msgid ""
 "Your order has a total amount due of %s. No&nbsp;further payment is needed."
 msgstr ""
-"Sua compra tem um valor total devido de %s. Nenhum pagamento adicional é "
+"Seu pedido tem um valor total devido de %s. Nenhum pagamento adicional é "
 "necessário."
