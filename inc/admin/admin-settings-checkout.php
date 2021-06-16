@@ -321,7 +321,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'autoload'          => false,
 					),
 					array(
-						'desc'              => __( 'Display the coupon codes section title', 'woocommerce' ),
+						'desc'              => __( 'Display the coupon codes section title', 'fluid-checkout' ),
 						'id'                => 'fc_display_coupon_code_section_title',
 						'type'              => 'checkbox',
 						'default'           => 'no',
@@ -342,7 +342,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'autoload'          => false,
 					),
 					array(
-						'desc'              => __( 'Display the gift message fields always expanded', 'woocommerce' ),
+						'desc'              => __( 'Display the gift message fields always expanded', 'fluid-checkout' ),
 						'id'                => 'fc_default_gift_options_expanded',
 						'type'              => 'checkbox',
 						'default'           => 'no',
@@ -351,8 +351,8 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'autoload'          => false,
 					),
 					array(
-						'desc'              => __( 'Display the gift message as part of the order details table', 'woocommerce' ),
-						'desc_tip'          => __( 'This option affects the order confirmation page (thank you page), order details at account pages, emails and packing slips.', 'woocommerce' ),
+						'desc'              => __( 'Display the gift message as part of the order details table', 'fluid-checkout' ),
+						'desc_tip'          => __( 'This option affects the order confirmation page (thank you page), order details at account pages, emails and packing slips.', 'fluid-checkout' ),
 						'id'                => 'fc_display_gift_message_in_order_details',
 						'type'              => 'checkbox',
 						'default'           => 'no',

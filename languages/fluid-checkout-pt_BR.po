@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2021-06-16 21:09+0000\n"
+"PO-Revision-Date: 2021-06-16 21:20+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Português do Brasil\n"
 "Language: pt_BR\n"
@@ -235,6 +235,19 @@ msgstr ""
 #: inc/admin/admin-settings-checkout.php:335
 msgid "Display gift message and other gift options at the checkout page"
 msgstr "Exibir opções de presente na página de checkout"
+
+#: inc/admin/admin-settings-checkout.php:324
+msgid "Display the coupon codes section title"
+msgstr "Exibir título da seção de código de cupom"
+
+#: inc/admin/admin-settings-checkout.php:354
+msgid "Display the gift message as part of the order details table"
+msgstr ""
+"Exibir a mensagem de presente como parte da tabela de detalhes do pedido"
+
+#: inc/admin/admin-settings-checkout.php:345
+msgid "Display the gift message fields always expanded"
+msgstr "Exibir campos de mensagem de presente sempre expandidos"
 
 #: inc/checkout-widget-areas.php:50
 #| msgid ""
@@ -657,6 +670,14 @@ msgstr "Este é um campo obrigatório."
 #: inc/checkout-validation.php:66
 msgid "This is not a valid email address."
 msgstr "Este não é um endereço de e-mail válido."
+
+#: inc/admin/admin-settings-checkout.php:355
+msgid ""
+"This option affects the order confirmation page (thank you page), order "
+"details at account pages, emails and packing slips."
+msgstr ""
+"Esta opção afeta a página de confirmação do pedido, detalhes do pedido nas "
+"páginas de conta do cliente, emails e guias de remessa."
 
 #: inc/admin/admin-settings-checkout.php:162
 msgid "Troubleshooting"
