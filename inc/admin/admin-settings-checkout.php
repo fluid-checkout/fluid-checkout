@@ -36,7 +36,22 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Enqueue
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts_styles' ), 10 );
+
+		// Field types
 		add_action( 'woocommerce_admin_field_fc_layout_selector', array( $this, 'output_field_type_fc_layout_seletor' ), 10 );
+		add_action( 'woocommerce_admin_field_fc_image_uploader', array( $this, 'output_field_type_fc_image_uploader' ), 10 );
+	}
+
+
+
+	public function admin_enqueue_scripts_styles( $hook ) {
+		// SCRIPT: MEDIA UPLOADER
+		if ( in_array( $hook, array( 'woocommerce_page_wc-settings' ) ) ) {
+			wp_enqueue_media();
+			wp_enqueue_script( 'fc-admin-image-uploader', FluidCheckout::$directory_url . '/js/admin/admin-image-uploader'. FluidCheckout::$asset_version . '.js' , array( 'jquery', 'media-upload', 'media-views' ), null, true );
+		}
 	}
 
 
@@ -49,7 +64,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	public function get_sections() {
 		$sections = array(
 			''             => __( 'Checkout Options', 'fluid-checkout' ),
-			'address'    => __( 'Address Fields', 'fluid-checkout' ),
+			'address'      => __( 'Address Fields', 'fluid-checkout' ),
 			'advanced'     => __( 'Advanced', 'fluid-checkout' ),
 		);
 
@@ -232,6 +247,15 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 
 					array(
+						'title'             => __( 'Logo image', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Choose an image to be displayed on the checkout page header. Only applies when using the plugin\'s checkout header.', 'fluid-checkout' ),
+						'id'                => 'fc_checkout_logo_image',
+						'type'              => 'fc_image_uploader',
+						'autoload'          => false,
+						'wrapper_class'     => 'fc-checkout-logo-image',
+					),
+
+					array(
 						'title'             => __( 'Optional fields', 'fluid-checkout' ),
 						'desc'              => __( 'Hide optional fields behind a link button', 'fluid-checkout' ),
 						'desc_tip'          => __( 'It is recommended to keep this options checked to reduce the number of open input fields, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-link" target="_blank">read the research</a>.', 'fluid-checkout' ),
@@ -409,6 +433,78 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 							}
 							?>
 						</style>
+					</fieldset>
+				</td>
+			</tr>
+		<?php
+	}
+
+
+
+	/**
+	 * Output the image selector setting field.
+	 *
+	 * @param   array  $value  Admin settings args values.
+	 */
+	public function output_field_type_fc_image_uploader( $value ) {
+		// Custom attribute handling.
+		$custom_attributes = array();
+		if ( ! empty( $value['custom_attributes'] ) && is_array( $value['custom_attributes'] ) ) {
+			foreach ( $value['custom_attributes'] as $attribute => $attribute_value ) {
+				$custom_attributes[] = esc_attr( $attribute ) . '="' . esc_attr( $attribute_value ) . '"';
+			}
+		}
+
+		// Description handling.
+		$field_description = WC_Admin_Settings::get_field_description( $value );
+		$description       = $field_description['description'];
+		$tooltip_html      = $field_description['tooltip_html'];
+
+		$option_value = $value['value'];
+		$image_url = $option_value ? wp_get_attachment_image_url( $option_value, 'full' ) : '';
+		?>
+			<tr valign="top">
+				<th scope="row" class="titledesc">
+					<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
+				</th>
+				<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
+					<fieldset>
+						<?php echo $description; // WPCS: XSS ok. ?>
+
+						<div class="image-upload__wrapper <?php echo esc_attr( $value['class'] ); ?>">
+							<input type="hidden" name="<?php echo esc_attr( $value['id'] ); ?>" id="<?php echo esc_attr( $value['id'] ); ?>" value="<?php echo esc_attr( $option_value ); ?>">
+							<div class="image-upload-preview">
+								<div id="<?php echo esc_attr( $value['id'] ); ?>_preview" class="placeholder">
+								<?php
+									if ( empty( $image_url ) ) {
+										echo _x( 'No image selected.', 'Image uploader.', 'fluid-checkout' );
+									}
+									else {
+										echo '<img src="' . esc_attr( $image_url ) . '">';
+									}
+								?>
+								</div>
+								<div class="actions">
+									<button
+										id="<?php echo esc_attr( $value['id'] ); ?>_select_button"
+										type="button"
+										class="button image-upload-select-button"
+										data-dialog-title="<?php echo esc_attr ( __( 'Select Image', 'fluid-checkout' ) ); ?>"
+										data-dialog-button-text="<?php echo esc_attr ( __( 'Select Image', 'fluid-checkout' ) ); ?>"
+										data-library-type="image"
+										data-preview-id="<?php echo esc_attr( $value['id'] ); ?>_preview"
+										data-control-id="<?php echo esc_attr( $value['id'] ); ?>"><?php _e( 'Select image', 'fluid-checkout' ); ?></button>
+									<button
+										id="<?php echo esc_attr( $value['id'] ); ?>clear_button"
+										type="button"
+										class="button image-upload-clear-button"
+										data-preview-id="<?php echo esc_attr( $value['id'] ); ?>_preview"
+										data-control-id="<?php echo esc_attr( $value['id'] ); ?>"
+										data-message="<?php _e( 'No image selected.', 'Image uploader.', 'fluid-checkout' ); ?>"><?php _e( 'Remove image', 'Clear image selection on admin pages.', 'fluid-checkout' ); ?></button>
+								</div>
+							</div>
+						</div>
+
 					</fieldset>
 				</td>
 			</tr>
