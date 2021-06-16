@@ -22,7 +22,10 @@ defined( 'ABSPATH' ) || exit;
 
 		<div class="fc-checkout__branding">
 			<?php
-			if ( has_action( 'fc_checkout_header_logo' ) ) {
+			if ( get_option( 'fc_checkout_logo_image', '' ) !== '' ) {
+				echo wp_get_attachment_image( get_option( 'fc_checkout_logo_image', '' ), 'full' );
+			}
+			else if ( has_action( 'fc_checkout_header_logo' ) ) {
 				do_action( 'fc_checkout_header_logo' );
 			}
 			else if ( function_exists( 'the_custom_logo' ) && get_theme_mod( 'custom_logo' ) ) {
