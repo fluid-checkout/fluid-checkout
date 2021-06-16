@@ -189,13 +189,14 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		// Get parsed posted data
 		$parsed_posted_data = $this->get_parsed_posted_data();
 
+		// Bail if shipping phone field not present
+		if ( ! array_key_exists( 'shipping_phone', $parsed_posted_data ) ) { return; }
+
 		// Get shipping phone values
 		$shipping_phone = $parsed_posted_data['shipping_phone'];
 
 		// Set session value
 		WC()->session->set( '_shipping_phone', $shipping_phone );
-
-		return $posted_data;
 	}
 
 	/**
