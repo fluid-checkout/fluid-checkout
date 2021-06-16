@@ -2082,17 +2082,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Maybe set post data for billing same as shipping
 		if ( $is_billing_same_as_shipping ) {
-			$_POST['billing_first_name'] = isset( $parsed_posted_data['shipping_first_name'] ) ? $parsed_posted_data['shipping_first_name'] : null;
-			$_POST['billing_last_name'] = isset( $parsed_posted_data['shipping_last_name'] ) ? $parsed_posted_data['shipping_last_name'] : null;
-			$_POST['billing_phone'] = isset( $parsed_posted_data['shipping_phone'] ) ? $parsed_posted_data['shipping_phone'] : null;
-			$_POST['billing_company'] = isset( $parsed_posted_data['shipping_company'] ) ? $parsed_posted_data['shipping_company'] : null;
 
-			$_POST['address'] = isset( $parsed_posted_data['shipping_address_1'] ) ? $parsed_posted_data['shipping_address_1'] : null;
-			$_POST['address_2'] = isset( $parsed_posted_data['shipping_address_2'] ) ? $parsed_posted_data['shipping_address_2'] : null;
-			$_POST['city'] = isset( $parsed_posted_data['shipping_city'] ) ? $parsed_posted_data['shipping_city'] : null;
-			$_POST['state'] = isset( $parsed_posted_data['shipping_state'] ) ? $parsed_posted_data['shipping_state'] : null;
-			$_POST['country'] = isset( $parsed_posted_data['shipping_country'] ) ? $parsed_posted_data['shipping_country'] : null;
-			$_POST['postcode'] = isset( $parsed_posted_data['shipping_postcode'] ) ? $parsed_posted_data['shipping_postcode'] : null;
+			// Iterate posted data
+			foreach( $parsed_posted_data as $field_key => $field_value ) {
+
+				// Only process shipping fields
+				if ( strpos( $field_key, 'shipping_' ) === 0 ) {
+
+					// Get billing field key
+					$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+
+					// Update billing field values
+					$skip_field_keys = apply_filters( 'fc_billing_same_as_shipping_skip_fields', array() );
+					if ( ! in_array( $billing_field_key, $skip_field_keys ) ) {
+						$parsed_posted_data[ $billing_field_key ] = isset( $parsed_posted_data[ $field_key ] ) ? $parsed_posted_data[ $field_key ] : null;
+						$_POST[ $billing_field_key ] = isset( $parsed_posted_data[ $field_key ] ) ? $parsed_posted_data[ $field_key ] : null;
+					}
+				}
+
+			}
+
 		}
 
 		return $posted_data;
@@ -2106,17 +2115,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function maybe_set_billing_address_same_as_shipping_on_process_checkout( $post_data ) {
 		// Maybe set posted data for billing address to same as shipping
 		if ( $this->is_billing_same_as_shipping() ) {
-			$post_data[ 'billing_first_name' ] = $post_data[ 'shipping_first_name' ];
-			$post_data[ 'billing_last_name' ] = $post_data[ 'shipping_last_name' ];
-			$post_data[ 'billing_phone' ] = $post_data[ 'shipping_phone' ];
-			$post_data[ 'billing_company' ] = $post_data[ 'shipping_company' ];
+			// Iterate posted data
+			foreach( $post_data as $field_key => $field_value ) {
 
-			$post_data[ 'billing_address_1' ] = $post_data[ 'shipping_address_1' ];
-			$post_data[ 'billing_address_2' ] = $post_data[ 'shipping_address_2' ];
-			$post_data[ 'billing_city' ] = $post_data[ 'shipping_city' ];
-			$post_data[ 'billing_state' ] = $post_data[ 'shipping_state' ];
-			$post_data[ 'billing_country' ] = $post_data[ 'shipping_country' ];
-			$post_data[ 'billing_postcode' ] = $post_data[ 'shipping_postcode' ];
+				// Only process shipping fields
+				if ( strpos( $field_key, 'shipping_' ) === 0 ) {
+
+					// Get billing field key
+					$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+
+					// Update billing field values
+					$skip_field_keys = apply_filters( 'fc_billing_same_as_shipping_skip_fields', array() );
+					if ( ! in_array( $billing_field_key, $skip_field_keys ) ) {
+						$post_data[ $billing_field_key ] = isset( $post_data[ $field_key ] ) ? $post_data[ $field_key ] : null;
+					}
+				}
+
+			}
 		}
 
 		return $post_data;
