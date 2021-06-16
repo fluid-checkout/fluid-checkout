@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2021-06-16 11:43+0000\n"
+"PO-Revision-Date: 2021-06-16 21:09+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Português do Brasil\n"
 "Language: pt_BR\n"
@@ -33,34 +33,34 @@ msgstr "Adicionar %s"
 msgid "Add a gift message"
 msgstr "Adicione uma mensagem"
 
-#: inc/admin/admin-settings-checkout.php:193
+#: inc/admin/admin-settings-checkout.php:208
 msgid "Add a phone field to the shipping address form"
 msgstr "Adicione um campo de telefone ao formulário de endereço de entrega"
 
-#: inc/admin/admin-settings-checkout.php:332
+#: inc/admin/admin-settings-checkout.php:366
 msgid "Add widget areas to the checkout page"
 msgstr "Adicione áreas de widget à página de checkout"
 
 #: inc/checkout-steps.php:1377
 msgid "Additional notes"
-msgstr "Notas Adicionais"
+msgstr "Observações do pedido"
 
-#: inc/admin/admin-settings-checkout.php:52
-#: inc/admin/admin-settings-checkout.php:175
+#: inc/admin/admin-settings-checkout.php:67
+#: inc/admin/admin-settings-checkout.php:190
 msgid "Address Fields"
 msgstr "Campos de Endereço"
 
-#: inc/admin/admin-settings-checkout.php:53
+#: inc/admin/admin-settings-checkout.php:68
 msgid "Advanced"
 msgstr "Avançado"
 
-#: inc/admin/admin-settings-checkout.php:302
+#: inc/admin/admin-settings-checkout.php:336
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
 "order."
 msgstr ""
 "Permita que os clientes adicionem uma mensagem e outras opções de presente "
-"relacionadas à compra."
+"relacionadas ao pedido."
 
 #: templates/fc/checkout/form-contact-login.php:23
 msgid "Already have an account?"
@@ -75,15 +75,15 @@ msgstr "Uma conta será criada com as informações fornecidas."
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Apartamento, unidade, prédio, andar, etc."
 
-#: inc/admin/admin-settings-checkout.php:120
+#: inc/admin/admin-settings-checkout.php:135
 msgid "Applies only to multi-step layouts."
-msgstr "Aplica-se apenas a layouts multi-passos."
+msgstr "Aplica-se apenas à layouts multi-passos."
 
-#: inc/admin/admin-settings-checkout.php:182
+#: inc/admin/admin-settings-checkout.php:197
 msgid "Billing Address"
 msgstr "Endereço de faturamento"
 
-#: inc/admin/admin-settings-checkout.php:183
+#: inc/admin/admin-settings-checkout.php:198
 msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 "Endereço de faturamento igual ao endereço de entrega marcado por padrão"
@@ -114,11 +114,11 @@ msgstr "Cabeçalho do checkout - Desktop"
 msgid "Checkout Header - Mobile"
 msgstr "Cabeçalho do checkout - Celular"
 
-#: inc/admin/admin-settings-checkout.php:224
+#: inc/admin/admin-settings-checkout.php:239
 msgid "Checkout Layout"
 msgstr "Opções de Layout"
 
-#: inc/admin/admin-settings-checkout.php:51
+#: inc/admin/admin-settings-checkout.php:66
 msgid "Checkout Options"
 msgstr "Opções de checkout"
 
@@ -156,9 +156,27 @@ msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Salvar alterações"
 
-#: inc/admin/admin-settings-checkout.php:331
+#: inc/admin/admin-settings-checkout.php:365
 msgid "Checkout Widget Areas"
 msgstr "Áreas de widget de checkout"
+
+#: inc/admin/admin-settings-checkout.php:260
+msgid ""
+"Choose a background color for the checkout page header. Only applies when "
+"using the plugin's checkout header."
+msgstr ""
+"Escolha uma cor de fundo para o cabeçalho da página de finalização de compra."
+" Aplica-se apenas quando usando o cabeçalho da página do plugin na página de "
+"finalização de compra."
+
+#: inc/admin/admin-settings-checkout.php:251
+msgid ""
+"Choose an image to be displayed on the checkout page header. Only applies "
+"when using the plugin's checkout header."
+msgstr ""
+"Escolha uma imagem para ser exibida no cabeçalho da página de finalização de "
+"compra. Aplica-se apenas quando usando o cabeçalho da página do plugin na "
+"página de finalização de compra."
 
 #: templates/fc/checkout/review-order-section.php:55
 msgid "Close and continue with checkout"
@@ -173,7 +191,7 @@ msgstr "Fechar"
 msgid "Continue"
 msgstr "Continuar"
 
-#: inc/admin/admin-settings-checkout.php:130
+#: inc/admin/admin-settings-checkout.php:145
 #| msgid ""
 #| "Controls whether to use the Fluid Checkout page header and footer of keep "
 #| "the currently active theme's."
@@ -188,7 +206,7 @@ msgstr ""
 msgid "Coupon code"
 msgstr "Código de cupom"
 
-#: inc/admin/admin-settings-checkout.php:279
+#: inc/admin/admin-settings-checkout.php:313
 msgid "Coupon Codes"
 msgstr "Códigos de cupom"
 
@@ -196,7 +214,7 @@ msgstr "Códigos de cupom"
 msgid "Create an account"
 msgstr "Criar uma conta"
 
-#: inc/admin/admin-settings-checkout.php:154
+#: inc/admin/admin-settings-checkout.php:169
 msgid "Debug options"
 msgstr "Solução de problemas"
 
@@ -206,15 +224,15 @@ msgstr "Solução de problemas"
 msgid "Did you mean %s?"
 msgstr "Você quis dizer %s?"
 
-#: inc/admin/admin-settings-checkout.php:258
+#: inc/admin/admin-settings-checkout.php:292
 msgid ""
 "Display an additional \"Place order\" and terms checkbox below the order "
 "summary in the sidebar."
 msgstr ""
-"Exiba uma caixa de \"Finalizar compra\" e termos adicionais abaixo do resumo "
-"de compra na barra lateral."
+"Exiba uma seção \"Finalizar compra\" e termos adicionais abaixo do resumo do "
+"pedido na barra lateral."
 
-#: inc/admin/admin-settings-checkout.php:301
+#: inc/admin/admin-settings-checkout.php:335
 msgid "Display gift message and other gift options at the checkout page"
 msgstr "Exibir opções de presente na página de checkout"
 
@@ -231,7 +249,7 @@ msgstr ""
 
 #: inc/checkout-widget-areas.php:74
 msgid "Display widgets inside the order summary at the checkout page."
-msgstr "Exibir widgets dentro do resumo de compra na página de checkout."
+msgstr "Exibir widgets dentro do resumo do pedido na página de checkout."
 
 #: inc/checkout-widget-areas.php:40
 #| msgid ""
@@ -246,9 +264,9 @@ msgstr ""
 
 #: inc/checkout-widget-areas.php:62
 msgid "Display widgets on the checkout sidebar after the order summary."
-msgstr "Exibir widgets na barra lateral de checkout após o resumo de compra."
+msgstr "Exibir widgets na barra lateral de checkout após o resumo do pedido."
 
-#: inc/admin/admin-settings-checkout.php:246
+#: inc/admin/admin-settings-checkout.php:280
 msgid "Do not hide \"Address line 2\" fields behind a link button"
 msgstr "Não esconder os campos \"linha de endereço 2\" atrás de um link"
 
@@ -266,7 +284,7 @@ msgstr "Alterar"
 msgid "Enter your code here"
 msgstr "Coloque o seu código aqui"
 
-#: inc/admin/admin-settings-checkout.php:272
+#: inc/admin/admin-settings-checkout.php:306
 msgid "Features"
 msgstr "Funções do plugin"
 
@@ -301,7 +319,7 @@ msgstr "Mensagem de presente de:"
 msgid "Gift message:"
 msgstr "Mensagem de presente:"
 
-#: inc/checkout-gift-options.php:83 inc/admin/admin-settings-checkout.php:300
+#: inc/checkout-gift-options.php:83 inc/admin/admin-settings-checkout.php:334
 msgid "Gift options"
 msgstr "Opções de presente"
 
@@ -315,17 +333,25 @@ msgctxt "Gift options section title in the order details"
 msgid "Gift message:"
 msgstr "Mensagem de presente:"
 
-#: inc/admin/admin-settings-checkout.php:128
+#: inc/admin/admin-settings-checkout.php:143
 msgid "Header and Footer"
 msgstr "Cabeçalho e rodapé"
 
-#: inc/admin/admin-settings-checkout.php:236
+#: inc/admin/admin-settings-checkout.php:259
+msgid "Header background color"
+msgstr "Cor de fundo do cabeçalho"
+
+#: inc/admin/admin-settings-checkout.php:270
 msgid "Hide optional fields behind a link button"
 msgstr "Ocultar campos opcionais atrás de um link"
 
 #: inc/checkout-fields.php:81
 msgid "House number and street name."
 msgstr "Nome da rua e número do imóvel."
+
+#: inc/admin/admin-settings-checkout.php:261
+msgid "HTML color value. ie: #f3f3f3"
+msgstr "Valor de cor para HTML. Ex: #f3f3f3"
 
 #. URI of the plugin
 msgid "https://fluidcheckout.com/"
@@ -335,7 +361,12 @@ msgstr "https://fluidcheckout.com/"
 msgid "https://fluidweb.co/"
 msgstr "https://fluidweb.co/"
 
-#: inc/admin/admin-settings-checkout.php:237
+#: inc/admin/admin-settings-checkout.php:490
+msgctxt "Image uploader."
+msgid "No image selected."
+msgstr "Nenhuma imagem selecionada."
+
+#: inc/admin/admin-settings-checkout.php:271
 msgid ""
 "It is recommended to keep this options checked to reduce the number of open "
 "input fields, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
@@ -347,7 +378,7 @@ msgstr ""
 "fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-"
 "link\" target=\"_blank\">leia a pesquisa (em inglês)</a>."
 
-#: inc/admin/admin-settings-checkout.php:184
+#: inc/admin/admin-settings-checkout.php:199
 msgid ""
 "It is recommended to leave this option checked. The billing address at "
 "checkout will start with the option \"Billing same as shipping\" checked by "
@@ -368,16 +399,16 @@ msgctxt "Label on the order details for person sending the gift"
 msgid "From:"
 msgstr "Remetente:"
 
-#: inc/admin/admin-settings-checkout.php:102
-#: inc/admin/admin-settings-checkout.php:217
+#: inc/admin/admin-settings-checkout.php:117
+#: inc/admin/admin-settings-checkout.php:232
 msgid "Layout"
 msgstr "Layout"
 
-#: inc/admin/admin-settings-checkout.php:155
+#: inc/admin/admin-settings-checkout.php:170
 msgid "Load unminified assets"
 msgstr "Carregar arquivos não minificados"
 
-#: inc/admin/admin-settings-checkout.php:156
+#: inc/admin/admin-settings-checkout.php:171
 msgid ""
 "Loading unminified assets affect the the website performance. Only use this "
 "option while troubleshooting."
@@ -385,12 +416,16 @@ msgstr ""
 "O carregamento de arquivos não minimizados afeta o desempenho do site. Use "
 "esta opção apenas durante a solução de problemas."
 
-#: inc/admin/admin-settings-checkout.php:119
+#: inc/admin/admin-settings-checkout.php:250
+msgid "Logo image"
+msgstr "Imagem de logo"
+
+#: inc/admin/admin-settings-checkout.php:134
 msgid "Make the checkout progress bar stay visible while scrolling"
 msgstr ""
 "Faça com que o barra de progresso fique visível enquanto rola-se a página"
 
-#: inc/admin/admin-settings-checkout.php:110
+#: inc/admin/admin-settings-checkout.php:125
 msgid "Make the order summary stay visible while scrolling"
 msgstr ""
 "Faça com que o resumo do pedido fique visível enquanto rola-se a página"
@@ -427,7 +462,7 @@ msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Nenhuma."
 
-#: inc/admin/admin-settings-checkout.php:281
+#: inc/admin/admin-settings-checkout.php:315
 msgid ""
 "Only applicable if use of coupon codes are enabled in the WooCommerce "
 "settings."
@@ -439,7 +474,7 @@ msgstr ""
 msgid "Only used for shipping-related questions."
 msgstr "Usado apenas para perguntas relacionadas à entrega."
 
-#: inc/admin/admin-settings-checkout.php:235
+#: inc/admin/admin-settings-checkout.php:269
 msgid "Optional fields"
 msgstr "Campos opcionais"
 
@@ -458,14 +493,14 @@ msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 "O número do pedido e o recibo serão enviados para este endereço de e-mail."
 
-#: inc/checkout-widget-areas.php:72 inc/checkout-steps.php:2254
-#: inc/admin/admin-settings-checkout.php:109
-#: inc/admin/admin-settings-checkout.php:257
+#: inc/checkout-widget-areas.php:72 inc/checkout-steps.php:2269
+#: inc/admin/admin-settings-checkout.php:124
+#: inc/admin/admin-settings-checkout.php:291
 #| msgid "Order Summary"
 msgid "Order summary"
 msgstr "Resumo do pedido"
 
-#: inc/checkout-steps.php:2151
+#: inc/checkout-steps.php:2166
 msgid "Payment method"
 msgstr "Forma de pagamento"
 
@@ -481,7 +516,7 @@ msgstr "Prossiga para o pagamento"
 msgid "Proceed to Shipping"
 msgstr "Prossiga para o envio"
 
-#: inc/admin/admin-settings-checkout.php:118
+#: inc/admin/admin-settings-checkout.php:133
 msgid "Progress bar"
 msgstr "Barra de progresso"
 
@@ -500,16 +535,16 @@ msgstr ""
 "código de cupom na página checkout que não distraia seus clientes. "
 "Semelhante ao checkout do Shopify, e ainda melhor."
 
-#: inc/admin/admin-settings-checkout.php:259
+#: inc/admin/admin-settings-checkout.php:293
 msgid ""
 "Recommended if most of the orders have only a few different products in the "
 "cart, and product variations do not take too much space on the order summary."
 msgstr ""
 "Recomendado se a maioria dos pedidos tiver apenas alguns produtos diferentes "
 "no carrinho, e as variações do produto não ocuparem muito espaço no resumo "
-"de compra."
+"do pedido."
 
-#: inc/admin/admin-settings-checkout.php:247
+#: inc/admin/admin-settings-checkout.php:281
 msgid ""
 "Recommended only whe most customers actually need the \"Address line 2\" "
 "field, or when getting the right shipping address is crucial (ie. if "
@@ -527,26 +562,32 @@ msgstr "Remover"
 msgid "Same as shipping address"
 msgstr "Igual ao endereço de entrega"
 
+#: inc/admin/admin-settings-checkout.php:502
+#: inc/admin/admin-settings-checkout.php:503
+#: inc/admin/admin-settings-checkout.php:506
+msgid "Select an image"
+msgstr "Selecionar imagem"
+
 #: inc/checkout-steps.php:1354
 msgid "Shipping method"
 msgstr "Método de entrega"
 
 #: inc/checkout-shipping-phone-field.php:56
-#: inc/admin/admin-settings-checkout.php:192
+#: inc/admin/admin-settings-checkout.php:207
 msgid "Shipping phone"
 msgstr "Telefone de entrega"
 
-#: inc/admin/admin-settings-checkout.php:196
+#: inc/admin/admin-settings-checkout.php:211
 msgctxt "Shipping phone field visibility"
 msgid "Hidden"
 msgstr "Escondido"
 
-#: inc/admin/admin-settings-checkout.php:197
+#: inc/admin/admin-settings-checkout.php:212
 msgctxt "Shipping phone field visibility"
 msgid "Optional"
 msgstr "Opcional"
 
-#: inc/admin/admin-settings-checkout.php:198
+#: inc/admin/admin-settings-checkout.php:213
 msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr "Obrigatório"
@@ -555,7 +596,7 @@ msgstr "Obrigatório"
 msgid "Shipping to"
 msgstr "Enviando para"
 
-#: inc/admin/admin-settings-checkout.php:280
+#: inc/admin/admin-settings-checkout.php:314
 msgid "Show coupon codes as a substep of the payment step"
 msgstr "Mostrar códigos de cupom como uma seção no passo de pagamento"
 
@@ -599,7 +640,7 @@ msgstr ""
 "endereço de entrega está disponível em WooCommerce > Configurações > Fluid "
 "Checkout > Campos de endereço."
 
-#: inc/admin/admin-settings-checkout.php:333
+#: inc/admin/admin-settings-checkout.php:367
 msgid "These widget areas are used to add trust symbols on the checkout page."
 msgstr ""
 "Essas áreas de widget são usadas para adicionar símbolos de confiança na "
@@ -617,19 +658,19 @@ msgstr "Este é um campo obrigatório."
 msgid "This is not a valid email address."
 msgstr "Este não é um endereço de e-mail válido."
 
-#: inc/admin/admin-settings-checkout.php:147
+#: inc/admin/admin-settings-checkout.php:162
 msgid "Troubleshooting"
 msgstr "Solução de problemas"
 
-#: inc/admin/admin-settings-checkout.php:134
+#: inc/admin/admin-settings-checkout.php:149
 msgid "Use Fluid Checkout header and footer"
 msgstr "Usar cabeçalho e rodapé do Fluid Checkout"
 
-#: inc/admin/admin-settings-checkout.php:135
+#: inc/admin/admin-settings-checkout.php:150
 msgid "Use theme's page header and footer for the checkout page"
 msgstr "Use o cabeçalho e rodapé do tema para a página de checkout"
 
-#: inc/admin/admin-settings-checkout.php:129
+#: inc/admin/admin-settings-checkout.php:144
 msgid ""
 "We recommend using the Fluid Checkout header and footer to avoid "
 "distractions at the checkout page. <a href=\"https://baymard.com/blog/cart-"

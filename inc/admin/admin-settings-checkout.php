@@ -499,11 +499,11 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 										id="<?php echo esc_attr( $value['id'] ); ?>_select_button"
 										type="button"
 										class="button image-upload-select-button"
-										data-dialog-title="<?php echo esc_attr ( __( 'Select Image', 'fluid-checkout' ) ); ?>"
-										data-dialog-button-text="<?php echo esc_attr ( __( 'Select Image', 'fluid-checkout' ) ); ?>"
+										data-dialog-title="<?php echo esc_attr ( __( 'Select an image', 'fluid-checkout' ) ); ?>"
+										data-dialog-button-text="<?php echo esc_attr ( __( 'Select an image', 'fluid-checkout' ) ); ?>"
 										data-library-type="image"
 										data-preview-id="<?php echo esc_attr( $value['id'] ); ?>_preview"
-										data-control-id="<?php echo esc_attr( $value['id'] ); ?>"><?php _e( 'Select image', 'fluid-checkout' ); ?></button>
+										data-control-id="<?php echo esc_attr( $value['id'] ); ?>"><?php _e( 'Select an image', 'fluid-checkout' ); ?></button>
 									<button
 										id="<?php echo esc_attr( $value['id'] ); ?>clear_button"
 										type="button"
