@@ -238,17 +238,18 @@ class FluidCheckout {
 
 		// Load each features
 		foreach ( $_features as $feature_key => $feature ) {
+
 			$feature_is_enabled = true;
 			$file = array_key_exists( 'file', $feature ) ? $feature[ 'file' ] : null;
 			$enable_option = array_key_exists( 'enable_option', $feature ) ? $feature[ 'enable_option' ] : null;
-			$enable_default = array_key_exists( 'enable_default', $feature ) ? $feature[ 'enable_default' ] !== 'no' : false;
+			$enable_default = array_key_exists( 'enable_default', $feature ) ? $feature[ 'enable_default' ] : 'no';
 
 			// Check if feature is set to enabled by option value in the database
 			if ( $enable_option !== null ) {
 				$enable_option_value = get_option( $enable_option, $enable_default );
 
 				// Check option value
-				if ( ( is_bool( $enable_option_value ) && $enable_option_value === true ) || ( strval( $enable_option_value ) !== 'no' && strval( $enable_option_value ) !== 'false' ) ) {
+				if ( ( is_bool( $enable_option_value ) && $enable_option_value === true ) || ( strval( $enable_option_value ) !== 'no' && strval( $enable_option_value ) !== '0' && strval( $enable_option_value ) !== 'false' ) ) {
 					$feature_is_enabled = true;
 				}
 				else {
