@@ -428,6 +428,63 @@ class FluidCheckout {
 		return $this->posted_data;
 	}
 
+
+
+	/**
+	 * Get hook callbacks by class name.
+	 */
+	public function get_hooked_function_for_class( $tag, $class_name, $priority ) {
+		global $wp_filter;
+
+		// Bail if hook tag doesn't exist
+		if ( ! array_key_exists( $tag, $wp_filter ) ) { return false; }
+
+		$callbacks = $wp_filter[ $tag ]->callbacks;
+		$priority_callbacks = $callbacks[ $priority ];
+		$class_callbacks = array();
+
+		foreach ( $priority_callbacks as $callback ) {
+			// Check target class
+			if ( $callback[ 'function' ][0] instanceof $class_name ) {
+				$class_callbacks[] = $callback;
+			}
+		}
+
+		// Return false if no functions hooked
+		return count( $class_callbacks ) > 0 ? $class_callbacks : false;
+	}
+
+	/**
+	 * Remove hook callback by class name.
+	 */
+	public function remove_filter_for_class( $tag, $function_array, $priority ) {
+		// Bail if function_array isn't an array or doens't have 2 string values
+		if ( ! is_array( $function_array ) || count( $function_array ) < 2 || ! is_string( $function_array[0] ) || ! is_string( $function_array[1] ) ) { return false; }
+
+		$class_name = $function_array[0];
+		$function_name = $function_array[1];
+		$class_callbacks = $this->get_hooked_function_for_class( $tag, $class_name, $priority );
+
+		// Bail when no hooks found for that class
+		if ( ! $class_callbacks ) { return false; }
+
+		foreach ( $class_callbacks as $callback ) {
+			if ( $callback['function'][1] == $function_name ) {
+				remove_filter( $tag, $callback['function'], $priority );
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Remove hook callback by class name (alias for `remove_filter_for_class`).
+	 * @see `remove_filter_for_class`
+	 */
+	public function remove_action_for_class( $tag, $function_array, $priority ) {
+		return $this->remove_filter_for_class( $tag, $function_array, $priority );
+	}
+
 }
 
 FluidCheckout::instance();

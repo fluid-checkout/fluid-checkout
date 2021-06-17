@@ -1718,6 +1718,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$has_cost  = 0 < $method->cost;
 		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
 
+		// Maybe add shipping method description
+		$method_description = apply_filters( 'fc_shipping_method_option_description', '', $method );
+		$method_description_markup = ! empty( $method_description ) ? apply_filters( 'fc_shipping_method_option_description_markup', ' <span class="shipping-method__option-description">%s</span>' ) : '';
+		$label .= sprintf( $method_description_markup, $method_description );
+
 		if ( $has_cost && ! $hide_cost ) {
 
 			if ( WC()->cart->display_prices_including_tax() ) {

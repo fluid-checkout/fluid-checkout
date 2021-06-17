@@ -68,8 +68,7 @@
 	box-sizing: border-box;
 	content: '';
 	position: absolute;
-	top: 50%;
-	transform: translateY( -50% );
+	top: $shipping-method-padding-vertical;
 	left: $global-spacing-extra-small;
 	display: block;
 	width: $shipping-method-radio-size;
@@ -102,21 +101,26 @@
 	@include icon-size( $shipping-method-radio-size );
 
 	position: absolute;
-	top: 50%;
-	transform: translateY( -50% );
+	top: $shipping-method-padding-vertical;
 	left: $global-spacing-extra-small;
 	color: $white;
 }
 
 
 
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-description {
+	display: block;
+	width: 100%;
+	font-size: $font-size-extra-small;
+}
+
+
+
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
 	position: absolute;
-	top: 50%;
-	transform: translateY( -50% );
+	top: $shipping-method-padding-vertical;
 	right: $shipping-method-padding-horizontal;
 	display: block;
-	line-height: 1.2;
 	text-align: right;
 }
 
