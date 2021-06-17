@@ -1170,7 +1170,6 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   border-bottom: solid 1px #D6D8D8;
   background-color: #fff;
   font-weight: normal;
-  line-height: 1.2;
   cursor: pointer;
   transition: all 0.15s linear; }
   .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label:active, .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label:hover, .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label:focus {
