@@ -28,9 +28,8 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		// Order Admin Screen
 		add_action( 'woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_gift_options_fields_order_admin_screen' ), 100, 1 );
 
-		// Persist gift options to the user's session
-		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_gift_options_session' ), 10 );
-		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_gift_options_session' ), 10 );
+		// Clear session after placing order
+		add_filter( 'fc_customer_persisted_data_clear_fields', array( $this, 'change_customer_persisted_data_clear_fields' ), 10 );
 
 		// Save gift fields to order
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_gift_options_fields' ), 10, 1 );
@@ -230,39 +229,26 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 * @return  array  The gift options fields values saved to session.
 	 */
 	public function get_gift_options_session() {
-		$gift_options = is_array( WC()->session->get( '_fc_gift_options' ) ) ? WC()->session->get( '_fc_gift_options' ) : array();
+		$gift_options = array();
+
+		// Get gift options fields
+		$gift_options_fields = $this->get_gift_options_fields();
+
+		// Get gift option field values from session
+		foreach ( $gift_options_fields as $field_key => $field_args ) {
+			$gift_options[ $field_key ] = $this->checkout_steps()->get_checkout_field_value_from_session( $field_key );
+		}
+
 		return $gift_options;
 	}
 
 	/**
-	 * Save the gift options fields values to the current user session.
+	 * Change the list of fields to clear from session after placing an order, adding the gift option fields to be cleared.
 	 *
-	 * @param array $posted_data Post data for all checkout fields.
+	 * @param   array  $clear_field_keys  Checkout field keys to clear from the session after placing an order.
 	 */
-	public function set_gift_options_session( $posted_data ) {
-		// Get parsed posted data
-		$parsed_posted_data = $this->get_parsed_posted_data();
-
-		// Get gift options values
-		$gift_options = array();
-
-		// Get values for each field
-		$gift_options_fields = $this->get_gift_options_fields();
-		foreach ( $gift_options_fields as $key => $field ) {
-			$gift_options[ $key ] = array_key_exists( $key, $parsed_posted_data ) ? $parsed_posted_data[ $key ] : false;
-		}
-
-		// Set session value
-		WC()->session->set( '_fc_gift_options', $gift_options );
-
-		return $posted_data;
-	}
-
-	/**
-	 * Unset gift options session.
-	 **/
-	public function unset_gift_options_session() {
-		WC()->session->set( '_fc_gift_options', null );
+	public function change_customer_persisted_data_clear_fields( $clear_field_keys ) {
+		return array_merge( $clear_field_keys, array_keys( $this->get_gift_options_fields() ) );
 	}
 
 
@@ -273,8 +259,10 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 * @param   int  $order_id  Order ID.
 	 */
 	public function update_order_meta_with_gift_options_fields( $order_id ) {
-		// Save values for each field to the order meta
+		// Get gift options fields
 		$gift_options_fields = $this->get_gift_options_fields();
+
+		// Save values for each field to the order meta
 		foreach ( $gift_options_fields as $key => $field ) {
 			$field_value = isset( $_POST[ $key ] ) ? wc_clean( wp_unslash( $_POST[ $key ] ) ) : null;
 
