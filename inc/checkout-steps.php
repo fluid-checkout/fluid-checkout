@@ -2033,6 +2033,42 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get list of checkout field keys which values are to be copied from shipping fields.
+	 *
+	 * @return  array  List of checkout field keys.
+	 */
+	public function get_billing_same_shipping_fields_keys() {
+		// Intialize list of supported field keys
+		$billing_copy_shipping_field_keys = array();
+
+		// Get checkout object and fields
+		$checkout = WC()->checkout();
+		$billing_fields = $checkout->get_checkout_fields( 'billing' );
+		$shipping_fields = $checkout->get_checkout_fields( 'shipping' );
+
+		// Get list of billing fields to skip copying from shipping fields
+		$skip_field_keys = apply_filters( 'fc_billing_same_as_shipping_skip_fields', array() );
+
+		// Use the `WC_Customer` object for supported properties
+		foreach ( $shipping_fields as $field_key => $field_args ) {
+
+			// Get billing field key
+			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+
+			// Maybe add field key to the list of fields to copy
+			if ( ! in_array( $billing_field_key, $skip_field_keys ) ) {
+				$billing_copy_shipping_field_keys[] = $billing_field_key;
+			}
+
+		}
+
+		// Filter list leaving only billing fields that actually exist
+		$billing_copy_shipping_field_keys = array_intersect( array_keys( $billing_fields ), $billing_copy_shipping_field_keys );
+
+		return $billing_copy_shipping_field_keys;
+	}
+
+	/**
 	 * Maybe set billing address fields values to same as shipping address from the posted data.
 	 *
 	 * @param array $posted_data Post data for all checkout fields.
@@ -2052,21 +2088,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Maybe set post data for billing same as shipping
 		if ( $is_billing_same_as_shipping ) {
 
+			// Get list of billing fields to copy from shipping fields
+			$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
+
+			// Get list of posted data keys
+			$posted_data_field_keys = array_keys( $parsed_posted_data );
+
 			// Iterate posted data
-			foreach( $parsed_posted_data as $field_key => $field_value ) {
+			foreach( $billing_copy_shipping_field_keys as $field_key ) {
 
-				// Only process shipping fields
-				if ( strpos( $field_key, 'shipping_' ) === 0 ) {
+				// Get shipping field key
+				$shipping_field_key = str_replace( 'billing_', 'shipping_', $field_key );
 
-					// Get billing field key
-					$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
-
-					// Update billing field values
-					$skip_field_keys = apply_filters( 'fc_billing_same_as_shipping_skip_fields', array() );
-					if ( ! in_array( $billing_field_key, $skip_field_keys ) ) {
-						$parsed_posted_data[ $billing_field_key ] = isset( $parsed_posted_data[ $field_key ] ) ? $parsed_posted_data[ $field_key ] : null;
-						$_POST[ $billing_field_key ] = isset( $parsed_posted_data[ $field_key ] ) ? $parsed_posted_data[ $field_key ] : null;
-					}
+				// Update billing field values
+				if ( in_array( $shipping_field_key, $posted_data_field_keys ) ) {
+					$parsed_posted_data[ $field_key ] = isset( $parsed_posted_data[ $shipping_field_key ] ) ? $parsed_posted_data[ $shipping_field_key ] : null;
+					$_POST[ $field_key ] = isset( $parsed_posted_data[ $shipping_field_key ] ) ? $parsed_posted_data[ $shipping_field_key ] : null;
 				}
 
 			}
