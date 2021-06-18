@@ -22,6 +22,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 **/
 	private $checkout_steps   = array();
 
+	private const SESSION_PREFIX = 'fc_';
 
 
 	/**
@@ -85,8 +86,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
 
 		// Order Notes
-		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_order_notes_session' ), 10 );
-		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_order_notes_session' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
 
 		// Billing Address
@@ -115,9 +114,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Persisted data
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'update_customer_persisted_data' ), 10 );
-		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_order_comments_session' ), 10 );
-		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_order_comments_session' ), 10 );
-		add_filter( 'default_checkout_order_comments', array( $this, 'change_default_order_comments_value' ), 10, 2 );
+		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session' ), 10, 2 );
+		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data' ), 10 );
 	}
 
 
@@ -1502,7 +1500,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output order notes substep in text format for when the step is completed.
 	 */
 	public function get_substep_text_order_notes() {
-		$order_notes = $this->get_order_notes_session();
+		$order_notes = $this->get_checkout_field_value_from_session( 'order_comments' );
 
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--order-notes">';
 
@@ -1536,40 +1534,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_text_order_notes() {
 		echo $this->get_substep_text_order_notes();
-	}
-
-
-
-	/**
-	 * Get order notes value from session.
-	 *
-	 * @return  string  The order notes field value saved to session.
-	 */
-	public function get_order_notes_session() {
-		$order_notes = WC()->session->get( '_fc_order_notes' ) !== null ? WC()->session->get( '_fc_order_notes' ) : '';
-		return $order_notes;
-	}
-
-	/**
-	 * Save the order notes fields values to the current user session.
-	 *
-	 * @param array $posted_data Post data for all checkout fields.
-	 */
-	public function set_order_notes_session( $posted_data ) {
-		// Get parsed posted data
-		$parsed_posted_data = $this->get_parsed_posted_data();
-
-		// Set session value
-		WC()->session->set( '_fc_order_notes', $parsed_posted_data['order_comments'] );
-
-		return $posted_data;
-	}
-
-	/**
-	 * Unset order notes session.
-	 **/
-	public function unset_order_notes_session() {
-		WC()->session->set( '_fc_order_notes', null );
 	}
 
 
@@ -2492,6 +2456,87 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get list of checkout field keys that are supported by `WC_Customer` object.
+	 *
+	 * @return  array  List of checkout field keys.
+	 */
+	public function get_supported_customer_property_field_keys() {
+		// Intialize list of supported field keys
+		$customer_supported_field_keys = array();
+
+		// Get customer object
+		$customer = WC()->customer;
+
+		// Get checkout object and fields
+		$checkout = WC()->checkout();
+		$fields = $checkout->get_checkout_fields();
+
+		// Use the `WC_Customer` object for supported properties
+		foreach ( $fields as $fieldset_key => $fieldset ) {
+
+			// Iterate checkout fieldset groups (ie. billing, shipping, account)
+			foreach ( $fieldset as $field_key => $field ) {
+
+				// Get the setter method name for the customer property
+				$setter = "set_$field_key";
+
+				// Check if the setter method is supported
+				if ( is_callable( array( $customer, $setter ) ) ) {
+					// Add field key to the list of already saved values
+					$customer_supported_field_keys[] = $field_key;
+				}
+
+			}
+
+		}
+
+		return $customer_supported_field_keys;
+	}
+
+	/**
+	 * Get list of checkout field keys that are not supported by `WC_Customer` object, and therefore needs to be saved to the session.
+	 *
+	 * @return  array  List of checkout field keys.
+	 */
+	public function get_customer_session_field_keys() {
+		// Get parsed posted data
+		$parsed_posted_data = $this->get_parsed_posted_data();
+
+		// Get customer supported field keys
+		$customer_supported_field_keys = $this->get_supported_customer_property_field_keys();
+
+		// Get list of unsupported customer property field keys
+		$session_field_keys = array_diff( array_keys( $parsed_posted_data ), $customer_supported_field_keys );
+
+		$skip_field_keys = array(
+			'ship_to_different_address',
+			'payment_method',
+			'terms-field',
+			'_wp_http_referer',
+		);
+
+		// Add some fields to the skip list
+		foreach ( $session_field_keys as $field_key ) {
+			if (
+				( strpos( $field_key, 'shipping_method[' ) !== false && strpos( $field_key, 'shipping_method[' ) === 0 ) // Target field keys such as `shipping_method[0]` and `shipping_method[1]`
+				|| ( strpos( $field_key, '-nonce' ) !== false && strpos( $field_key, '-nonce' ) >= 0 ) // Target field keys such as `woocommerce-process-checkout-nonce`
+			) {
+				$skip_field_keys[] = $field_key;
+			}
+		}
+
+		// Filter skip fields to allow developers to add more fields to the skip list
+		$skip_field_keys = apply_filters( 'fc_customer_persisted_data_skip_fields', $skip_field_keys, $parsed_posted_data );
+
+		// Remove fields that should be skipped
+		$session_field_keys = array_diff( $session_field_keys, $skip_field_keys );
+
+		return $session_field_keys;
+	}
+
+
+
+	/**
 	 * Update the customer's data to the WC_Customer object.
 	 *
 	 * @param string $posted_data Post data for all checkout fields.
@@ -2500,80 +2545,91 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get parsed posted data
 		$parsed_posted_data = $this->get_parsed_posted_data();
 
-		// Define which WC_Customer fields to update,
-		// Because `shipping_phone` is not a native WC_Customer field it does not work here.
-		$persisted_field_keys = apply_filters( 'fc_customer_persisted_fields_keys', array(
-			'billing_email',
-			'billing_first_name',
-			'billing_last_name',
-			'billing_phone',
-			'billing_company',
-			'billing_country',
+		// Get customer object and supported field keys
+		$customer = WC()->customer;
+		$customer_supported_field_keys = $this->get_supported_customer_property_field_keys();
 
-			'shipping_first_name',
-			'shipping_last_name',
-			'shipping_company',
-			'shipping_country',
-		) );
+		// Use the `WC_Customer` object for supported properties
+		foreach ( $customer_supported_field_keys as $field_key ) {
+			// Get the setter method name for the customer property
+			$setter = "set_$field_key";
 
-		// Get values for the persisted fields
-		$persisted_fields = array();
-		foreach ( $persisted_field_keys as $field_key ) {
-			if ( array_key_exists( $field_key, $parsed_posted_data ) ) {
-				$persisted_fields[ $field_key ] = $parsed_posted_data[ $field_key ];
+			// Check if the setter method is supported
+			if ( is_callable( array( $customer, $setter ) ) ) {
+				// Set property value to the customer object
+				if ( array_key_exists( $field_key, $parsed_posted_data ) ) {
+					$customer->{$setter}( $parsed_posted_data[ $field_key ] );
+				}
 			}
 		}
 
-		// Allow developers to change the values
-		$persisted_fields = apply_filters( 'fc_customer_persisted_fields_before_update', $persisted_fields, $posted_data, $parsed_posted_data );
-
-		// Update customer data to the customer object
-		WC()->customer->set_props( $persisted_fields );
+		// Save/commit changes to the customer object
 		WC()->customer->save();
+
+		// Get list of fields to save to the session
+		$session_field_keys = $this->get_customer_session_field_keys();
+
+		// Save customer data to the session
+		foreach ( $session_field_keys as $field_key ) {
+
+			// Set property value to the customer object
+			if ( array_key_exists( $field_key, $parsed_posted_data ) ) {
+				// Set session value
+				WC()->session->set( self::SESSION_PREFIX . $field_key, $parsed_posted_data[ $field_key ] );
+			}
+			else {
+				// Unset session value
+				WC()->session->set( self::SESSION_PREFIX . $field_key, null );
+			}
+
+		}
 	}
 
 
 
 	/**
 	 * Change default order notes value
-	 */
-	public function change_default_order_comments_value( $value, $input ) {
-		return $this->get_order_comments_session();
-	}
-
-	/**
-	 * Get order notes values from session.
 	 *
-	 * @return  array  The order notes fields values saved to session.
+	 * @param   mixed    $value   Value of the field.
+	 * @param   string   $input   Checkout field key (ie. order_comments ).
 	 */
-	public function get_order_comments_session() {
-		$order_comments = WC()->session->get( '_order_comments' );
-		return $order_comments;
+	public function change_default_checkout_field_value_from_session( $value, $input ) {
+		// Get field value from session
+		$field_session_value = $this->get_checkout_field_value_from_session( $input );
+
+		// Maybe return field value from session
+		if ( $field_session_value !== null ) {
+			return $field_session_value;
+		}
+
+		return $value;
 	}
 
 	/**
-	 * Save the order notes fields values to the current user session.
+	 * Get values for a checkout field from the session.
 	 *
-	 * @param array $posted_data Post data for all checkout fields.
+	 * @param   string  $field_key  Checkout field key name (ie. order_comments ).
+	 * @return  mixed               The value of the field from the saved session.
 	 */
-	public function set_order_comments_session( $posted_data ) {
-		// Get parsed posted data
-		$parsed_posted_data = $this->get_parsed_posted_data();
-
-		// Get order notes values
-		$order_comments = $parsed_posted_data['order_comments'];
-
-		// Set session value
-		WC()->session->set( '_order_comments', $order_comments );
-
-		return $posted_data;
+	public function get_checkout_field_value_from_session( $field_key ) {
+		return WC()->session->get( self::SESSION_PREFIX . $field_key );
 	}
 
 	/**
-	 * Unset order notes session.
+	 * Clear session values for checkout fields.
 	 **/
-	public function unset_order_comments_session() {
-		WC()->session->set( '_order_comments', null );
+	public function unset_session_customer_persisted_data() {
+		$clear_field_keys = array(
+			'order_comments',
+		);
+
+		// Filter clear fields to allow developers to add more fields to be cleared
+		$clear_field_keys = apply_filters( 'fc_customer_persisted_data_clear_fields', $clear_field_keys );
+
+		// Save customer data to the session
+		foreach ( $clear_field_keys as $field_key ) {
+			WC()->session->set( self::SESSION_PREFIX . $field_key, null );
+		}
 	}
 
 

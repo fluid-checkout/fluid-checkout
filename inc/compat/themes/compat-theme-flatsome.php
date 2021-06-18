@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Compatibility with theme: Flatsome.
+ * Compatibility with theme: Flatsome (by UX-Themes).
  */
-class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
+class FluidCheckout_ThemeCompat_Hazel extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -80,4 +80,4 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 
 }
 
-FluidCheckout_ThemeCompat_Flatsome::instance();
+FluidCheckout_ThemeCompat_Hazel::instance();

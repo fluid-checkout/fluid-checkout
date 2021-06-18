@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Compatibility with theme: Storefront.
+ * Compatibility with theme: Storefront (by WooCommerce).
  */
 class FluidCheckout_ThemeCompat_Storefront extends FluidCheckout {
 

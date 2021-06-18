@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Compatibility with WooCommerce Correios.
+ * Compatibility with plugin: WooCommerce Correios (by Claudio Sanches).
  */
 class FluidCheckout_WooCommerceCorreios extends FluidCheckout {
 
