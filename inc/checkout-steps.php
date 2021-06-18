@@ -1801,14 +1801,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_billing_address_fields() {
 
+		// Get checkout object and billing fields, with ignored billing fields removed
+		$checkout = WC()->checkout();
+		$billing_fields = $checkout->get_checkout_fields( 'billing' );
+		$billing_fields = array_filter( $billing_fields, function( $key ) {
+			return ! in_array( $key, $this->get_billing_address_ignored_billing_field_ids() );
+		}, ARRAY_FILTER_USE_KEY );
+
+		// Get list of billling fields that might be copied from shipping fields
+		$billing_same_as_shipping_fields = array_filter( $billing_fields, function( $key ) {
+			return in_array( $key, $this->get_billing_same_shipping_fields_keys() );
+		}, ARRAY_FILTER_USE_KEY );
+
+		// Get list of billing only fields
+		$billing_only_fields = array_filter( $billing_fields, function( $key ) {
+			return in_array( $key, $this->get_billing_only_fields_keys() );
+		}, ARRAY_FILTER_USE_KEY );
+
 		do_action( 'fc_checkout_before_step_billing_fields' );
 
 		wc_get_template(
 			'checkout/form-billing.php',
 			array(
-				'checkout'			          => WC()->checkout(),
-				'ignore_fields'		          => $this->get_billing_address_ignored_billing_field_ids(),
-				'is_billing_same_as_shipping' => $this->is_billing_same_as_shipping(),
+				'checkout'                         => $checkout,
+				'billing_same_as_shipping_fields'  => $billing_same_as_shipping_fields,
+				'billing_only_fields'              => $billing_only_fields,
+				'is_billing_same_as_shipping'      => $this->is_billing_same_as_shipping(),
 			)
 		);
 
@@ -2065,7 +2083,34 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Filter list leaving only billing fields that actually exist
 		$billing_copy_shipping_field_keys = array_intersect( array_keys( $billing_fields ), $billing_copy_shipping_field_keys );
 
+		// Remove ignored billing fields
+		$billing_copy_shipping_field_keys = array_diff( $billing_copy_shipping_field_keys, $this->get_billing_address_ignored_billing_field_ids() );
+
 		return $billing_copy_shipping_field_keys;
+	}
+
+	/**
+	 * Get list of billing only fields, that is, fields that are not present on both shipping and billing fields,
+	 * which would be copied when "Billing same as shipping" is cheched. Also returns the fields which are to be
+	 * ignored when copying values from the shipping to billing.
+	 *
+	 * @return  array  List of checkout field keys.
+	 */
+	public function get_billing_only_fields_keys() {
+		// Get checkout object and fields
+		$checkout = WC()->checkout();
+		$billing_fields = $checkout->get_checkout_fields( 'billing' );
+
+		// Get list of billing fields to copy from shipping fields
+		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
+
+		// Get list of billing only fields
+		$billing_only_field_keys = array_diff( array_keys( $billing_fields ), $billing_copy_shipping_field_keys );
+
+		// Remove ignored billing fields
+		$billing_only_field_keys = array_diff( $billing_only_field_keys, $this->get_billing_address_ignored_billing_field_ids() );
+
+		return $billing_only_field_keys;
 	}
 
 	/**

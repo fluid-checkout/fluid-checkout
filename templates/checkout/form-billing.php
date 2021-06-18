@@ -28,22 +28,26 @@ defined( 'ABSPATH' ) || exit;
 	<?php // CHANGE: Add markup for collapsible-block component ?>
 	<div id="woocommerce-billing-fields__field-wrapper" class="woocommerce-billing-fields__field-wrapper <?php echo $is_billing_same_as_shipping ? 'is-collapsed' : ''; ?>" data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo $is_billing_same_as_shipping ? 'collapsed' : 'expanded'; ?>">
 		<div class="collapsible-content__inner">
-		<?php // CHANGE: Display billing fields except those added at contact step ?>
+		<?php // CHANGE: Display billing fields which might be copied from shipping fields ?>
 		<?php
-		$fields = $checkout->get_checkout_fields( 'billing' );
-		foreach ( $fields as $key => $field ) {
-			/**
-			 * The variable `$ignore_fields` is passed as a paramenter to this template file
-			 * @see Hook `fc_checkout_contact_step_field_ids`
-			 */
-			if ( ! in_array( $key, $ignore_fields ) ) {
-				woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
-			}
+		foreach ( $billing_same_as_shipping_fields as $key => $field ) {
+			woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
 		}
 		?>
 		<?php // CHANGE: Add markup for collapsible-block component ?>
 		</div>
 	</div>
+
+	<?php // CHANGE: Display billing only fields ?>
+	<?php if ( count( $billing_only_fields ) > 0 ) : ?>
+	<div class="woocommerce-billing-only-fields__field-wrapper">
+		<?php
+		foreach ( $billing_only_fields as $key => $field ) {
+			woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+		}
+		?>
+	</div>
+	<?php endif; ?>
 
 	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
 </div>
