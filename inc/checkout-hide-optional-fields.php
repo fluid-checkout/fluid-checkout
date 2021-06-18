@@ -35,13 +35,15 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 
 	/**
 	 * Get the checkout fields args.
+	 *
+	 * TODO: Add function documentation
 	 */
 	public function add_optional_form_field_link_button( $field, $key, $args, $value ) {
 		// Bail if field is required
-		if ( array_key_exists( 'required', $args ) && $args['required'] === true ) { return $field; }
+		if ( array_key_exists( 'required', $args ) && $args['required'] == true ) { return $field; }
 
 		// Bail if optional field by its type
-		if ( in_array( $args['type'], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'checkbox' ) ) ) ) { return $field; }
+		if ( in_array( $args['type'], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'checkbox', 'radio' ) ) ) ) { return $field; }
 
 		// Always skip these fields
 		$skip_list = array( 'state', 'billing_state', 'shipping_state' );
