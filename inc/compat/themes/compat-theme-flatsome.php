@@ -18,6 +18,9 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Late hooks
+		add_filter( 'init', array( $this, 'late_hooks' ), 100 );
+
 		// Page container class
 		remove_filter( 'fc_content_section_class', array( FluidCheckout_Steps::instance(), 'fc_content_section_class' ), 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
@@ -27,6 +30,15 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 
 		// Use theme's logo
 		add_action( 'fc_checkout_header_logo', array( $this, 'output_checkout_header_logo' ), 10 );
+	}
+
+	/**
+	 * Add or remove late hooks.
+	 */
+	public function late_hooks() {
+		// Revert Flatsome changes to the privacy policy placement at the checkout page
+		remove_action( 'woocommerce_checkout_after_order_review', 'wc_checkout_privacy_policy_text', 1 );
+		add_action( 'woocommerce_checkout_terms_and_conditions', 'wc_checkout_privacy_policy_text', 20 );
 	}
 
 
