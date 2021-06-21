@@ -1258,7 +1258,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_login_form_flyout() {
 		// Bail if user already logged in or login at checkout is disabled
-		if ( is_user_logged_in() || 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
+		if ( ! is_checkout() || is_user_logged_in() || 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
 
 		wc_get_template(
 			'fc/checkout/form-contact-login-modal.php',
