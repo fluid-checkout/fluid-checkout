@@ -36,9 +36,7 @@
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
 }
-.fc-wrapper .fc-step__substep:after {
-    @include clearfix();
-}
+
 
 
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
@@ -61,8 +59,19 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 
 
-.fc-wrapper .fc-step__substep-fields:after {
-    @include clearfix();
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep:before,
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep:after,
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:before,
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:after,
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:before,
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:after {
+	@include clearfix();
+}
+
+
+
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
+	float: left;
 }
 
 
@@ -248,7 +257,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	padding: $checkout-substep-action-button-padding;
 	font-size: $checkout-substep-action-button-font-size;
 	font-weight: $checkout-substep-action-button-font-weight;
-	line-height: 1;
+	line-height: 1.2;
 	text-decoration: $checkout-substep-action-button-text-decoration;
 	color: $checkout-substep-action-button-color;
 	background-color: $checkout-substep-action-button-background-color;
@@ -278,11 +287,11 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	position: absolute;
 	top: 0;
 	right: 0;
-	display: inline;
+	display: inline-block;
 }
 
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-save {
-	display: block;
+	display: inline-block;
 }
 
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-edit,

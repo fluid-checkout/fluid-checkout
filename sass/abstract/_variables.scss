@@ -344,8 +344,8 @@ $checkout-substep-title-margin:                  0 0 $global-spacing-extra-small
 $checkout-substep-title-margin--large-screen:    $checkout-substep-title-margin !default;
 $checkout-substep-title-padding:                 0 !default;
 $checkout-substep-title-padding--large-screen:   0 $global-spacing-tiny 0 0 !default;
-$checkout-substep-complete-title-padding:                 0 $global-spacing-tiny 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
-$checkout-substep-complete-title-padding--large-screen:   $checkout-substep-complete-title-padding !default;
+$checkout-substep-complete-title-padding:                 0 $global-spacing-large 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
+$checkout-substep-complete-title-padding--large-screen:   0 $global-spacing-tiny 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
 
 $checkout-substep-title-color:                   $dark-grey !default;
 $checkout-substep-title-font-size:               $font-size-small !default;

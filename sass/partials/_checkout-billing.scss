@@ -33,3 +33,9 @@ body:not( .has-collapsible-block ) .woocommerce-billing-fields__field-wrapper.is
 div.woocommerce form #billing_same_as_shipping_field.form-row {
 	margin-bottom: $global-spacing-small;
 }
+
+
+
+div.woocommerce form .woocommerce-billing-only-fields__field-wrapper {
+	padding-top: $global-spacing-small;
+}
