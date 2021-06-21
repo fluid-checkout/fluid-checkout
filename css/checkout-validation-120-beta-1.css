@@ -47,6 +47,10 @@ div.woocommerce .form-row .fc-mailcheck-suggestion {
 div.woocommerce .form-row .fc-mailcheck-suggestion {
   padding: 5px 10px; }
 
+div.woocommerce .form-row .fc-mailcheck-suggestion .mailcheck-suggestion:focus {
+  outline: dotted 1px #535156;
+  outline-offset: 1px; }
+
 div.woocommerce .form-row .woocommerce-error {
   color: #CC1818; }
 
