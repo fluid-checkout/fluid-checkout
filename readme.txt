@@ -23,13 +23,13 @@ Similar to the Shopify checkout, and even better!
 
 = Demos =
 
-* [Multi step layout](https://demo-multistep.fluidcheckout.com/)
+* [Multi step layout](https://demos.fluidcheckout.com/multistep/)
 Make sure to test the checkout flow by adding to the cart and completing the purchase at least two times to see how the plugin streamlines the process for repeat customers.
 
-* [Single step layout](https://demo-single-step.fluidcheckout.com/)
+* [Single step layout](https://demos.fluidcheckout.com/single-step/)
 Single step checkout is recommended when only a few fields are required, usually when selling digital products or allowing local store pickup where shipping address information is not needed.
 
-* [Highly stylized theme](https://demo-deli.fluidcheckout.com/)
+* [Highly stylized theme](https://demos.fluidcheckout.com/theme-deli/)
 With themes that are highly stylized such as Storefront Deli -- when comparing to a plain theme such as the default Storefront theme, Fluid Checkout adapts itself with part of the theme's styles, keeping the same look and feel while improving the experience.
 
 = Lite Version (Free) =
@@ -79,6 +79,11 @@ We are working to bring to you the following PRO features:
 **Can't wait for the PRO version to get Google Address Autocomplete?** We'll soon launch this feature as a stand-alone plugin. [Visit our website](https://fluidcheckout.com) and sign up to be the first to know when it's released.
 
 
+= More features? =
+
+**If you need a features that is not listed above [visit our feedback page](https://feedback.fluidcheckout.com) and see which features we are planning to add or make a feature request.**
+
+
 = Tested WooCommerce Themes =
 
 By default, Fluid Checkout works with every WooCommerce theme. Some themes may need adjustments due to not using WooCommerce standards hooks or styles. We've tested certain third-party WooCommerce themes to ensure better compatibility with Fluid Checkout:
@@ -95,7 +100,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 * Woostify
 * Zakra
 
-**If you have any issues to use Fluid Checkout with your theme please let us know through the plugin's support forum or [our website](https://fluidcheckout.com) and we'll quickly fix it.**
+**If you have any issues to use Fluid Checkout with your theme please let us know through the plugin's support forum or [our feedback page](https://feedback.fluidcheckout.com) and we'll quickly fix it.**
 
 
 = Fully Customizable =
@@ -128,7 +133,7 @@ Currently the plugin is translated into the languages below, and more are commin
 
 * Log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
 * Search for "Fluid Checkout for WooCommerce", and press "Install now".
-* Or, press the "Upload Plugin" and select the zip file, then press "Install Now".
+* Or, press "Upload Plugin" and select the zip file, then press "Install Now".
 
 = Settings =
 
@@ -154,12 +159,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 4. Step 4 - Payment: Payment options and discounts
 5. Single step layout: All fields are displayed in one single step.
 6. Settings: Layout options and features
-7. Theme styles: Look and feel like your website.
 
 
 == Changelog ==
-
-Only the changes for the 5 latest version are kept here, for the full changelog please [visit our feedback page](https://feedback.fluidcheckout.com).
 
 = 1.2.0 =
 * First public release.
