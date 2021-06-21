@@ -32,7 +32,8 @@
 
 
 
-.fc-contact-login__action-login {
+.fc-contact-login__action {
+	text-decoration: underline;
 	cursor: pointer;
 
 	&:focus {
