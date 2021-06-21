@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Compatibility with theme: Flatsome.
+ * Compatibility with theme: Hazel (by Select Themes).
  */
 class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 

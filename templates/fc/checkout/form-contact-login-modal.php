@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || exit;
 
 		<div class="fc-login-form__title"><?php echo __( 'Sign in to your account', 'fluid-checkout' ); ?></div>
 
-		<?php wc_get_template( 'global/form-login.php' ); ?>
+		<?php woocommerce_login_form(); ?>
 
 	</div>
 </div>

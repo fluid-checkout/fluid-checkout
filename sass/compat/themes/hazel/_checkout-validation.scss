@@ -10,4 +10,8 @@ body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not( [clas
 		top: remsize( 1.2rem );
 	}
 
+	// Select2 Fields
+	.select2-selection:after {
+		right: remsize( 2.4rem );
+	}
 }

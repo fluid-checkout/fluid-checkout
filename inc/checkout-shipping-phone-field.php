@@ -27,15 +27,23 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_shipping_phone_to_formats' ), 10 );
 		add_filter( 'fc_substep_shipping_address_text', array( $this, 'add_shipping_phone_to_substep_text_format' ), 10 );
 
-		// Change checkout field args
-		add_filter( 'fc_checkout_field_args' , array( $this, 'change_shipping_company_field_args' ), 10 );
+		// Change shipping field args
+		add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_set_shipping_phone_required' ), 100 );
+		add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_shipping_company_field_args' ), 100 );
 
-		// Persist shipping phone to the user's session
-		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'set_shipping_phone_session' ), 10 );
-		add_filter( 'default_checkout_shipping_phone', array( $this, 'change_default_shipping_phone_value' ), 10, 2 );
+		// Support for plugin "Brazilian Market on WooCommerce"
+		add_filter( 'wcbcf_shipping_fields', array( $this, 'add_shipping_phone_field' ), 5 );
+		add_filter( 'wcbcf_shipping_fields' , array( $this, 'change_shipping_company_field_args' ), 10 );
 	}
 
 
+
+	/**
+	 * Return Checkout Steps class instance.
+	 */
+	public function checkout_steps() {
+		return FluidCheckout_Steps::instance();
+	}
 
 	/**
 	 * Return Checkout Fields class instance.
@@ -68,13 +76,30 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 
 	/**
+	 * Change shipping phone `required` argument when billing phone field is required.
+	 *
+	 * @param   array  $field_args  Contains shipping field arguments.
+	 */
+	public function maybe_set_shipping_phone_required( $field_args ) {
+		// Bail if shipping phone not present, or billing phone field not required
+		if ( ! array_key_exists( 'shipping_phone', $field_args ) || get_option( 'woocommerce_checkout_phone_field', 'required' ) !== 'required' ) { return $field_args; }
+
+		// Set shipping phone as required
+		$field_args['shipping_phone']['required'] = true;
+
+		return $field_args;
+	}
+
+
+
+	/**
 	 * Change shipping company field arguments to accomodate the shipping phone field.
 	 *
-	 * @param   array  $field_args  Contains checkout field arguments.
+	 * @param   array  $field_args  Contains shipping field arguments.
 	 */
 	public function change_shipping_company_field_args( $field_args ) {
-		// Bail if hidding optional fields behind a link button
-		if ( get_option( 'fc_enable_checkout_hide_optional_fields', 'yes' ) === 'yes' && get_option( 'fc_shipping_phone_field_visibility', 'no' ) !== 'required' ) { return $field_args; }
+		// Bail if not hidding optional fields behind a link button
+		if ( get_option( 'fc_enable_checkout_hide_optional_fields', 'yes' ) === 'yes' && array_key_exists( 'shipping_phone', $field_args ) && array_key_exists( 'required', $field_args['shipping_phone'] ) && $field_args['shipping_phone']['required'] != true ) { return $field_args; }
 
 		if ( array_key_exists( 'shipping_company', $field_args ) ) {
 			$field_args['shipping_company']['class'] = array( 'form-row-last' );
@@ -169,87 +194,13 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 
 
-
-	/**
-	 * Get shipping phone values from session.
-	 *
-	 * @return  array  The shipping phone field values saved to session.
-	 */
-	public function get_shipping_phone_session() {
-		$shipping_phone = WC()->session->get( '_shipping_phone' );
-		return $shipping_phone;
-	}
-
-	/**
-	 * Save the shipping phone fields values to the current user session.
-	 *
-	 * @param array $posted_data Post data for all checkout fields.
-	 */
-	public function set_shipping_phone_session( $posted_data ) {
-		// Get parsed posted data
-		$parsed_posted_data = $this->get_parsed_posted_data();
-
-		// Get shipping phone values
-		$shipping_phone = $parsed_posted_data['shipping_phone'];
-
-		// Set session value
-		WC()->session->set( '_shipping_phone', $shipping_phone );
-
-		return $posted_data;
-	}
-
-	/**
-	 * Unset shipping phone session.
-	 **/
-	public function unset_shipping_phone_session() {
-		WC()->session->set( '_shipping_phone', null );
-	}
-
-
-
-	/**
-	 * Get shipping phone values from session or database.
-	 *
-	 * @return  array  The current value for the shipping phone field.
-	 */
-	public function get_current_shipping_phone_value() {
-		$shipping_phone = null;
-
-		// Try get the shipping phone from the session
-		$shipping_phone_session = $this->get_shipping_phone_session();
-		if ( $shipping_phone_session !== null ) {
-			$shipping_phone = $shipping_phone_session;
-		}
-
-		// Try to get shipping phone from the saved customer shipping address
-		if ( $shipping_phone === null ) {
-			$user_id = $this->get_user_id();
-			if ( $user_id > 0 ) {
-				$shipping_phone = get_user_meta( $user_id, 'shipping_phone', true );
-			}
-		}
-
-		return $shipping_phone;
-	}
-
-
-
-	/**
-	 * Change default shipping phone value.
-	 */
-	public function change_default_shipping_phone_value( $value, $input ) {
-		return $this->get_current_shipping_phone_value();
-	}
-
-
-
 	/**
 	 * Add replacement for shipping phone to address formats localisation.
 	 *
 	 * @param   array  $formats  Country address formats.
 	 */
 	public function add_shipping_phone_to_substep_text_format( $html ) {
-		$shipping_phone = $this->get_current_shipping_phone_value();
+		$shipping_phone = $this->checkout_steps()->get_checkout_field_value_from_session( 'shipping_phone' );
 
 		// Insert the phone field at in the text
 		if ( $shipping_phone != null && ! empty( $shipping_phone ) ) {

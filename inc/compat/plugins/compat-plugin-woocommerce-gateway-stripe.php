@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Compatibility with Payment Method Stripe.
+ * Compatibility with plugin: WooCommerce Stripe Gateway (by WooCommerce).
  */
 class FluidCheckout_PaymentMethodStripe extends FluidCheckout {
 

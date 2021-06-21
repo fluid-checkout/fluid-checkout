@@ -29,13 +29,20 @@ div.woocommerce .form-row .fc-mailcheck-suggestion {
 	padding: $checkout-message-suggestion-padding;
 }
 
+div.woocommerce .form-row .fc-mailcheck-suggestion .mailcheck-suggestion {
+	&:focus {
+		outline: $focus-outline-link;
+		outline-offset: $focus-outline-offset-link;
+	}
+}
+
 div.woocommerce .form-row .woocommerce-error {
 	color: $checkout-message-error-color;
 }
 div.woocommerce .form-row .woocommerce-error:before {
 	@include icon( $checkout-message-error-icon );
 	@include icon-size( $checkout-message-error-icon-size );
-	
+
 	position: absolute;
 	left: $checkout-message-error-icon-position-left;
 	top: 50%;
@@ -86,7 +93,7 @@ div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-i
 	.select2-selection {
 		border-color: $success-color;
 	}
-	
+
 	// Container for "valid" check icon
 	.woocommerce-input-wrapper {
 		position: relative;
@@ -108,7 +115,7 @@ div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-i
 		background-color: transparentize( $white, .25 );
 		color: $success-color;
 	}
-	
+
 	// Select2 Fields
 	.select2-selection:after {
 		right: remsize( 2rem );
@@ -129,5 +136,5 @@ div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-i
 			display: none;
 		}
 	}
-	
+
 }

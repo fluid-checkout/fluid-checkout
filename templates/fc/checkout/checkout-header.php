@@ -16,13 +16,21 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+// Get header background color
+$header_background_color = esc_attr( get_option( 'fc_checkout_header_background_color', '' ) );
+$header_background_style = ! empty( $header_background_color ) ? 'style="background-color: '. $header_background_color .'"' : '';
 ?>
-<header class="fc-checkout-header">
+
+<header class="fc-checkout-header" <?php echo $header_background_style; ?>>
 	<div class="fc-checkout-header__inner">
 
 		<div class="fc-checkout__branding">
 			<?php
-			if ( has_action( 'fc_checkout_header_logo' ) ) {
+			if ( ! empty( get_option( 'fc_checkout_logo_image', '' ) ) ) {
+				echo wp_get_attachment_image( get_option( 'fc_checkout_logo_image', '' ), 'full' );
+			}
+			else if ( has_action( 'fc_checkout_header_logo' ) ) {
 				do_action( 'fc_checkout_header_logo' );
 			}
 			else if ( function_exists( 'the_custom_logo' ) && get_theme_mod( 'custom_logo' ) ) {

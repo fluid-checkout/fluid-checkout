@@ -2,7 +2,7 @@
 /*
 Plugin Name: Fluid Checkout for WooCommerce
 Plugin URI: https://fluidcheckout.com/
-Description: Provides a fluid checkout experience for any WooCommerce store. Ask for shipping information before billing in a linear and multi-step checkout, add options for gift message and packaging and add a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.
+Description: Provides a Fluid Checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message and packaging and display a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.
 Text Domain: fluid-checkout
 Domain Path: /languages
 Version: 1.2.0-beta-1
@@ -10,7 +10,7 @@ Author: Fluidweb.co
 Author URI: https://fluidweb.co/
 License: GPLv2
 WC requires at least: 5.0.0
-WC tested up to: 5.3.0
+WC tested up to: 5.4.0
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -144,7 +144,7 @@ class FluidCheckout {
 
 
 		// Template file loader
-		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 10, 3 );
+		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 	}
 
 
@@ -238,17 +238,18 @@ class FluidCheckout {
 
 		// Load each features
 		foreach ( $_features as $feature_key => $feature ) {
+
 			$feature_is_enabled = true;
 			$file = array_key_exists( 'file', $feature ) ? $feature[ 'file' ] : null;
 			$enable_option = array_key_exists( 'enable_option', $feature ) ? $feature[ 'enable_option' ] : null;
-			$enable_default = array_key_exists( 'enable_default', $feature ) ? $feature[ 'enable_default' ] !== 'no' : false;
+			$enable_default = array_key_exists( 'enable_default', $feature ) ? $feature[ 'enable_default' ] : 'no';
 
 			// Check if feature is set to enabled by option value in the database
 			if ( $enable_option !== null ) {
 				$enable_option_value = get_option( $enable_option, $enable_default );
 
 				// Check option value
-				if ( ( is_bool( $enable_option_value ) && $enable_option_value === true ) || ( strval( $enable_option_value ) !== 'no' && strval( $enable_option_value ) !== 'false' ) ) {
+				if ( ( is_bool( $enable_option_value ) && $enable_option_value === true ) || ( strval( $enable_option_value ) !== 'no' && strval( $enable_option_value ) !== '0' && strval( $enable_option_value ) !== 'false' ) ) {
 					$feature_is_enabled = true;
 				}
 				else {
@@ -426,6 +427,63 @@ class FluidCheckout {
 		$this->posted_data = $new_posted_data;
 
 		return $this->posted_data;
+	}
+
+
+
+	/**
+	 * Get hook callbacks by class name.
+	 */
+	public function get_hooked_function_for_class( $tag, $class_name, $priority ) {
+		global $wp_filter;
+
+		// Bail if hook tag doesn't exist
+		if ( ! array_key_exists( $tag, $wp_filter ) ) { return false; }
+
+		$callbacks = $wp_filter[ $tag ]->callbacks;
+		$priority_callbacks = $callbacks[ $priority ];
+		$class_callbacks = array();
+
+		foreach ( $priority_callbacks as $callback ) {
+			// Check target class
+			if ( $callback[ 'function' ][0] instanceof $class_name ) {
+				$class_callbacks[] = $callback;
+			}
+		}
+
+		// Return false if no functions hooked
+		return count( $class_callbacks ) > 0 ? $class_callbacks : false;
+	}
+
+	/**
+	 * Remove hook callback by class name.
+	 */
+	public function remove_filter_for_class( $tag, $function_array, $priority ) {
+		// Bail if function_array isn't an array or doens't have 2 string values
+		if ( ! is_array( $function_array ) || count( $function_array ) < 2 || ! is_string( $function_array[0] ) || ! is_string( $function_array[1] ) ) { return false; }
+
+		$class_name = $function_array[0];
+		$function_name = $function_array[1];
+		$class_callbacks = $this->get_hooked_function_for_class( $tag, $class_name, $priority );
+
+		// Bail when no hooks found for that class
+		if ( ! $class_callbacks ) { return false; }
+
+		foreach ( $class_callbacks as $callback ) {
+			if ( $callback['function'][1] == $function_name ) {
+				remove_filter( $tag, $callback['function'], $priority );
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Remove hook callback by class name (alias for `remove_filter_for_class`).
+	 * @see `remove_filter_for_class`
+	 */
+	public function remove_action_for_class( $tag, $function_array, $priority ) {
+		return $this->remove_filter_for_class( $tag, $function_array, $priority );
 	}
 
 }

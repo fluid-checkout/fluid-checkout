@@ -192,8 +192,16 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 }
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table td.product-total {
-
 	background-color: transparent;
+}
+
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total {
+	text-transform: uppercase;
+}
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total th,
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total td {
+	padding-top: $order-summary-cell-padding-vertical--total;
+	padding-bottom: $order-summary-cell-padding-vertical--total;
 }
 
 
@@ -204,7 +212,6 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 		outline-offset: $focus-outline-offset-link;
 	}
 }
-
 
 
 

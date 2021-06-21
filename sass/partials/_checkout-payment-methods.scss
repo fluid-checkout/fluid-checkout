@@ -57,8 +57,6 @@
 	margin: 0;
 	padding: $payment-method-padding-vertical #{ $payment-method-padding-horizontal } $payment-method-padding-vertical #{ $payment-method-radio-size + $payment-method-padding-horizontal };
 	width: 100%;
-	overflow: hidden;
-	white-space: nowrap;
 	border-top: 0;
 	border-left: 0;
 	border-right: 0;
@@ -97,8 +95,7 @@
 	box-sizing: border-box;
 	content: '';
 	position: absolute;
-	top: 50%;
-	transform: translateY( -50% );
+	top: $payment-method-padding-vertical;
 	left: $global-spacing-extra-small;
 	display: block;
 	margin: 0;
@@ -138,8 +135,7 @@
 	@include icon-size( $payment-method-radio-size );
 
 	position: absolute;
-	top: 50%;
-	transform: translateY( -50% );
+	top: $payment-method-padding-vertical;
 	left: $global-spacing-extra-small;
 	color: $white;
 }

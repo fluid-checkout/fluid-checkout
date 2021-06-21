@@ -40,7 +40,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * Get the checkout fields args.
 	 */
 	public function get_checkout_field_args() {
-		$billing_email_description = WC()->cart->needs_shipping() ? __( 'Order and tracking number will be sent to this email address.', 'fluid-checkout' ) : __( 'Order number and receipt will be sent to this email address.', 'fluid-checkout' );
+		$needs_shipping = is_checkout() ? WC()->cart->needs_shipping() : true;
+		$billing_email_description = $needs_shipping ? __( 'Order and tracking number will be sent to this email address.', 'fluid-checkout' ) : __( 'Order number and receipt will be sent to this email address.', 'fluid-checkout' );
 		$billing_company_class = get_option( 'woocommerce_checkout_phone_field', 'required' ) === 'required' ? 'form-row-last' : 'form-row-wide';
 
 		return apply_filters( 'fc_checkout_field_args', array(
@@ -115,7 +116,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			if ( ! in_array( $field_key, $target_field_ids ) ) { continue; }
 
 			// Remove `screen-reader-text` class from the field label
-			if ( in_array( 'screen-reader-text', $fields[ $field_key ]['label_class'] ) ) {
+			if ( array_key_exists( 'label_class', $fields[ $field_key ] ) && in_array( 'screen-reader-text', $fields[ $field_key ]['label_class'] ) ) {
 				$class_key = array_search( 'screen-reader-text', $fields[ $field_key ]['label_class'] );
 				unset( $fields[ $field_key ]['label_class'][ $class_key ] );
 			}

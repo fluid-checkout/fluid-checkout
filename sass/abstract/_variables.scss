@@ -337,22 +337,29 @@ $checkout-steps-container-margin--large-screen:  0 !default;
 $checkout-step-padding:                          0 !default;
 $checkout-step-padding--large-screen:            0 !default;
 
+$checkout-substep-title-check-icon-size:         $icon-size-small !default;
+$checkout-substep-title-check-icon-spacing:      0 !default;
+
 $checkout-substep-title-margin:                  0 0 $global-spacing-extra-small 0 !default;
+$checkout-substep-title-margin--large-screen:    $checkout-substep-title-margin !default;
+$checkout-substep-title-padding:                 0 !default;
+$checkout-substep-title-padding--large-screen:   0 $global-spacing-tiny 0 0 !default;
+$checkout-substep-complete-title-padding:                 0 $global-spacing-large 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
+$checkout-substep-complete-title-padding--large-screen:   0 $global-spacing-tiny 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
+
 $checkout-substep-title-color:                   $dark-grey !default;
 $checkout-substep-title-font-size:               $font-size-small !default;
 $checkout-substep-title-font-size--large-screen: $font-size-small--large-screen !default;
 $checkout-substep-title-font-weight:             bold !default;
 $checkout-substep-title-text-transform:          uppercase !default;
 $checkout-substep-title-text-align:              left !default;
-$checkout-substep-title-check-icon-size:         $icon-size-small !default;
-$checkout-substep-title-check-icon-spacing:      0 !default;
 
 $checkout-substep-padding:                       $global-spacing-small $container-spacing-mobile !default;
 $checkout-substep-padding--large-screen:         $global-spacing-small $container-spacing-mobile !default;
 $checkout-substep-border-radius:                 $global-radius !default;
 
 $checkout-substep-text-margin:                   0 !default;
-$checkout-substep-text-margin--large-screen:     remsize( -1.7rem ) 0 0 0 !default;
+$checkout-substep-text-margin--large-screen:     0 !default;
 $checkout-substep-text-padding:                  0 0 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
 $checkout-substep-text-color:                    $grey !default;
 $checkout-substep-text-font-size:                $font-size-extra-small !default;
@@ -394,8 +401,9 @@ $order-summary-table-margin--large-screen:       0 #{ - $global-spacing-small } 
 $order-summary-table-width:                      calc( 100% + #{ $global-spacing-small * 2 } ) !default;
 $order-summary-table-width--large-screen:        calc( 100% + #{ $global-spacing-small * 2 } ) !default;
 
-$order-summary-cell-padding-vertical:            $global-spacing-extra-small !default;
 $order-summary-cell-padding-horizontal:          $global-spacing-small !default;
+$order-summary-cell-padding-vertical:            $global-spacing-extra-small !default;
+$order-summary-cell-padding-vertical--total:     $order-summary-cell-padding-vertical + $global-spacing-tiny !default;
 $order-summary-cell-border:                      solid remsize( .1rem ) darken( $lighter-grey, 5% ) !default;
 
 $order-summary-image-width:                      remsize( 5rem ) !default;

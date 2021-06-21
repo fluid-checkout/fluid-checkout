@@ -1,0 +1,30 @@
+/*------------------------------------*\
+  #ADMIN IMAGE UPLOADER
+\*------------------------------------*/
+.image-upload-preview {
+
+	max-width: 400px;
+
+	.placeholder {
+		width: 100%;
+		position: relative;
+		text-align: center;
+		cursor: default;
+		border: 1px dashed #b4b9be;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding: 9px;
+		line-height: 20px;
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+
+	.actions {
+		margin-top: 8px;
+	}
+
+}

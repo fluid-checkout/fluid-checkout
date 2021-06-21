@@ -135,6 +135,18 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 	.pipe(sourcemaps.write('maps'))
 	.pipe(gulp.dest('./js/')); // save .min.js
 
+	// JS ADMIN FILES
+	gulp.src([
+		settings.jsPath + 'admin/*.js',
+	])
+	.pipe(rename({suffix: settings.assetsVersion}))
+	.pipe(gulp.dest('./js/admin/')) // save .js
+	.pipe(sourcemaps.init())
+	.pipe(uglify())
+	.pipe(rename({suffix: '.min'}))
+	.pipe(sourcemaps.write('maps'))
+	.pipe(gulp.dest('./js/admin/')); // save .min.js
+
 	done();
 } ) );
 

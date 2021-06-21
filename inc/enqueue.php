@@ -90,7 +90,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	}
 
 
-	
+
 	/**
 	 * Enqueue fonts
 	 */
@@ -113,11 +113,11 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Get currently active theme and child theme
 		$theme_slugs = array( get_template(), get_stylesheet() );
-		
+
 		foreach ( $theme_slugs as $theme_slug ) {
 			// Maybe skip compat file
 			if ( get_option( 'fc_enable_compat_theme_style_' . $theme_slug, true ) === 'false' ) { continue; }
-			
+
 			// Get current theme's compatibility style file name
 			$theme_compat_file_path = 'css/compat/themes/compat-' . $theme_slug . self::$asset_version . '.css';
 
