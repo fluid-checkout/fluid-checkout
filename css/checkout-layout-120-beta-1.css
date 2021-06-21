@@ -1491,6 +1491,8 @@ div.woocommerce form #shipping_address_2_field > label {
   margin-bottom: 5px;
   width: auto;
   opacity: unset;
+  overflow: unset;
+  white-space: normal;
   line-height: 1.2; }
 
 /*------------------------------------*\
