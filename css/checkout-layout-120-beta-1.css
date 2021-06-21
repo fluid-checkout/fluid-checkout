@@ -1749,6 +1749,14 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table td.product-total {
   background-color: transparent; }
 
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total {
+  text-transform: uppercase; }
+
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total th,
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total td {
+  padding-top: 15px;
+  padding-bottom: 15px; }
+
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon:focus {
   outline: dotted 1px #535156;
   outline-offset: 1px; }
