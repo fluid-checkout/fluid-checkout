@@ -316,7 +316,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_woocommerce_login_form_redirect_hidden_field() {
 		$raw_referrer_url = wc_get_raw_referer() ? wc_get_raw_referer() : wc_get_page_permalink( 'myaccount' );
-		$referrer_url = ( ( function_exists( 'is_checkout' ) && is_checkout() ) || $_GET[ '_redirect' ] == 'checkout' ) ? wc_get_checkout_url() : $raw_referrer_url;
+		$referrer_url = ( is_checkout() || ( array_key_exists( '_redirect', $_GET ) && $_GET[ '_redirect' ] == 'checkout' ) ) ? wc_get_checkout_url() : $raw_referrer_url;
 
 		echo '<input type="hidden" name="redirect" value="' . wp_validate_redirect( $referrer_url, wc_get_page_permalink( 'myaccount' ) ) . '" />';
 	}
