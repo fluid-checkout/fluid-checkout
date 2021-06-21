@@ -1862,7 +1862,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--billing-address">';
 
 		if ( $this->is_billing_same_as_shipping_checked() ) {
-			$html .= '<span class="fc-step__substep-text-line"><em>' . __( 'Same as shipping details', 'WooCommerce' ) . '</em></span>';
+			$html .= '<span class="fc-step__substep-text-line"><em>' . __( 'Same as shipping address', 'fluid-checkout' ) . '</em></span>';
 		}
 		else {
 			$address_data = array(

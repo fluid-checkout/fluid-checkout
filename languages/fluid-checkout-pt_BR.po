@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2021-06-21 10:05+0000\n"
+"PO-Revision-Date: 2021-06-21 10:23+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Português do Brasil\n"
 "Language: pt_BR\n"
@@ -582,7 +582,7 @@ msgstr ""
 msgid "Remove"
 msgstr "Remover"
 
-#: inc/checkout-steps.php:1950
+#: inc/checkout-steps.php:1865 inc/checkout-steps.php:1950
 msgid "Same as shipping address"
 msgstr "Igual ao endereço de entrega"
 
