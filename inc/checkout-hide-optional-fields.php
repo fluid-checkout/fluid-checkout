@@ -36,7 +36,10 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 	/**
 	 * Get the checkout fields args.
 	 *
-	 * TODO: Add function documentation
+	 * @param   string  $field  Field html markup to be changed.
+	 * @param   string  $key    Field key.
+	 * @param   arrray  $args   Field args.
+	 * @param   mixed   $value  Value of the field. Defaults to `null`.
 	 */
 	public function add_optional_form_field_link_button( $field, $key, $args, $value ) {
 		// Bail if field is required
