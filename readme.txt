@@ -23,7 +23,7 @@ Similar to the Shopify checkout, and even better!
 
 = Demos =
 
-* [Multi step layout](https://demos.fluidcheckout.com/multistep/)
+* [Multi step layout](https://demos.fluidcheckout.com/multi-step/)
 Make sure to test the checkout flow by adding to the cart and completing the purchase at least two times to see how the plugin streamlines the process for repeat customers.
 
 * [Single step layout](https://demos.fluidcheckout.com/single-step/)
