@@ -25,19 +25,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
 */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 // Define FC_PLUGIN_FILE.
 if ( ! defined( 'FC_PLUGIN_FILE' ) ) {
 	define( 'FC_PLUGIN_FILE', __FILE__ );
 }
-
 
 /**
  * Plugin Main Class.
@@ -106,7 +101,7 @@ class FluidCheckout {
 	 * Define plugin variables.
 	 */
 	public function set_plugin_vars() {
-		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 		self::$directory_path = plugin_dir_path( FC_PLUGIN_FILE );
 		self::$directory_url  = plugin_dir_url( FC_PLUGIN_FILE );
@@ -255,8 +250,8 @@ class FluidCheckout {
 				}
 			}
 
-			// Load feature file if enabled and file exists
-			if ( $feature_is_enabled && file_exists( $file ) ) {
+			// Load feature file if enabled, file exists, and file is inside our plugin folder
+			if ( $feature_is_enabled && file_exists( $file ) && strpos( $file, plugin_dir_path( FC_PLUGIN_FILE ) ) == 0 ) {
 				require_once $file;
 			}
 		}
@@ -290,9 +285,9 @@ class FluidCheckout {
 			// Get plugin file path
 			$plugin_compat_file_path = self::$directory_path . 'inc/compat/plugins/compat-plugin-' . $plugin_slug . '.php';
 
-			// Maybe load plugin's compatibility file
-			if ( file_exists( $plugin_compat_file_path ) ) {
-				include_once( $plugin_compat_file_path );
+			// Maybe load plugin's compatibility file, and file is inside our plugin folder
+			if ( file_exists( $plugin_compat_file_path ) && strpos( $plugin_compat_file_path, plugin_dir_path( FC_PLUGIN_FILE ) ) == 0 ) {
+				require_once $plugin_compat_file_path;
 			}
 		}
 	}
@@ -317,9 +312,9 @@ class FluidCheckout {
 			// Get current theme's compatibility file name
 			$theme_compat_file_path = self::$directory_path . 'inc/compat/themes/compat-theme-' . $theme_slug . '.php';
 
-			// Maybe load theme's compatibility file
-			if ( file_exists( $theme_compat_file_path ) ) {
-				include_once( $theme_compat_file_path );
+			// Maybe load theme's compatibility file, and file is inside our plugin folder
+			if ( file_exists( $theme_compat_file_path ) && strpos( $theme_compat_file_path, plugin_dir_path( FC_PLUGIN_FILE ) ) == 0 ) {
+				require_once $theme_compat_file_path;
 			}
 		}
 	}
@@ -333,7 +328,7 @@ class FluidCheckout {
 	 * @since 1.0.0
 	 */
 	public function is_woocommerce_active() {
-		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		return is_plugin_active( 'woocommerce/woocommerce.php' );
 	}
 
