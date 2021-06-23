@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 
 <section class="fc-gift-options--order-details">
 
-	<h2 class="woocommerce-column__title"><?php echo _x( 'Gift message', 'Gift options section title in the order details', 'fluid-checkout' ); ?></h2>
+	<h2 class="woocommerce-column__title"><?php echo esc_html( _x( 'Gift message', 'Gift options section title in the order details', 'fluid-checkout' ) ); ?></h2>
 
 	<figure class="fc-gift-options__message">
 

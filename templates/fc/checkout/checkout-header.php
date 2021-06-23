@@ -18,11 +18,11 @@
 defined( 'ABSPATH' ) || exit;
 
 // Get header background color
-$header_background_color = esc_attr( get_option( 'fc_checkout_header_background_color', '' ) );
-$header_background_style = ! empty( $header_background_color ) ? 'style="background-color: '. $header_background_color .'"' : '';
+$header_background_color_esc = esc_attr( get_option( 'fc_checkout_header_background_color', '' ) );
+$header_background_style = ! empty( $header_background_color_esc ) ? 'style="background-color: '. $header_background_color_esc .'"' : ''; // WPCS: XSS ok.
 ?>
 
-<header class="fc-checkout-header" <?php echo $header_background_style; ?>>
+<header class="fc-checkout-header" <?php echo $header_background_style; // WPCS: XSS ok. ?>>
 	<div class="fc-checkout-header__inner">
 
 		<div class="fc-checkout__branding">

@@ -331,14 +331,14 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 			<?php // TODO: Move the gift options edit section to its own metabox and template file ?>
 			<div class="order_data_column" style="width: 100%">
 
-				<h4><?php echo __( 'Gift options', 'Title for gift options on admin order details screen', 'fluid-checkout' ) ?> <a href="#" class="edit_address"><?php echo _x( 'Edit', 'Edit gift options link on admin order details screen', 'fluid-checkout' ) ?></a></h4>
+				<h4><?php echo esc_html( __( 'Gift options', 'Title for gift options on admin order details screen', 'fluid-checkout' ) ); ?> <a href="#" class="edit_address"><?php echo esc_html( _x( 'Edit', 'Edit gift options link on admin order details screen', 'fluid-checkout' ) ); ?></a></h4>
 
 				<div class="address">
 					<?php
 					// Output values in text format
 					foreach ( $gift_options_fields as $key => $field ) {
 						if ( ! empty( $gift_options[ $key ] ) ) {
-							echo '<p><strong>'. $field[ 'label' ] . '</strong>' . $gift_options[ $key ] . '</p>';
+							echo '<p><strong>'. esc_html( $field[ 'label' ] ) . '</strong>' . esc_html( $gift_options[ $key ] ) . '</p>';
 						}
 					}
 					?>

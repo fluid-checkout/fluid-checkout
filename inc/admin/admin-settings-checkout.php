@@ -391,10 +391,10 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	 */
 	public function output_field_type_fc_layout_seletor( $value ) {
 		// Custom attribute handling.
-		$custom_attributes = array();
+		$custom_attributes_esc = array();
 		if ( ! empty( $value['custom_attributes'] ) && is_array( $value['custom_attributes'] ) ) {
 			foreach ( $value['custom_attributes'] as $attribute => $attribute_value ) {
-				$custom_attributes[] = esc_attr( $attribute ) . '="' . esc_attr( $attribute_value ) . '"';
+				$custom_attributes_esc[] = esc_attr( $attribute ) . '="' . esc_attr( $attribute_value ) . '"';
 			}
 		}
 
@@ -423,7 +423,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 									type="radio"
 									style="<?php echo esc_attr( $value['css'] ); ?>"
 									class="<?php echo esc_attr( $value['class'] ); ?>"
-									<?php echo implode( ' ', $custom_attributes ); // WPCS: XSS ok. ?>
+									<?php echo implode( ' ', $custom_attributes_esc ); // WPCS: XSS ok. ?>
 									<?php checked( $key, $option_value ); ?>
 									/> <?php echo esc_html( $val ); ?></label>
 							</li>
@@ -503,14 +503,14 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 										data-dialog-button-text="<?php echo esc_attr ( __( 'Select an image', 'fluid-checkout' ) ); ?>"
 										data-library-type="image"
 										data-preview-id="<?php echo esc_attr( $value['id'] ); ?>_preview"
-										data-control-id="<?php echo esc_attr( $value['id'] ); ?>"><?php _e( 'Select an image', 'fluid-checkout' ); ?></button>
+										data-control-id="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( __( 'Select an image', 'fluid-checkout' ) ); ?></button>
 									<button
 										id="<?php echo esc_attr( $value['id'] ); ?>clear_button"
 										type="button"
 										class="button image-upload-clear-button"
 										data-preview-id="<?php echo esc_attr( $value['id'] ); ?>_preview"
 										data-control-id="<?php echo esc_attr( $value['id'] ); ?>"
-										data-message="<?php _e( 'No image selected.', 'Image uploader.', 'fluid-checkout' ); ?>"><?php _e( 'Remove image', 'Clear image selection on admin pages.', 'fluid-checkout' ); ?></button>
+										data-message="<?php echo esc_attr( __( 'No image selected.', 'Image uploader.', 'fluid-checkout' ) ); ?>"><?php echo esc_html( __( 'Remove image', 'Clear image selection on admin pages.', 'fluid-checkout' ) ); ?></button>
 								</div>
 							</div>
 						</div>

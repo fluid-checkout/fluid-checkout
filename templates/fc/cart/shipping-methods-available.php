@@ -29,6 +29,7 @@ defined( 'ABSPATH' ) || exit;
 				<label for="shipping_method_%1$d_%2$s" class="shipping-method__option-label has-price">%5$s</label>
 			</li>',
 			$package_index,
+			// The function `sanitize_title` is used below to convert the string into a CSS-class-like string
 			sanitize_title( $method->id ),
 			esc_attr( $method->id ),
 			checked( $checked_method, true, false ),

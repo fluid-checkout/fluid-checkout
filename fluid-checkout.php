@@ -46,7 +46,6 @@ class FluidCheckout {
 
 	// A single instance of this class.
 	public static $instances   = array();
-	public static $this_plugin = null;
 	public static $directory_path;
 	public static $directory_url;
 	public static $plugin = 'Fluid Checkout for WooCommerce';
@@ -109,7 +108,6 @@ class FluidCheckout {
 	public function set_plugin_vars() {
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-		self::$this_plugin    = plugin_basename( FC_PLUGIN_FILE );
 		self::$directory_path = plugin_dir_path( FC_PLUGIN_FILE );
 		self::$directory_url  = plugin_dir_url( FC_PLUGIN_FILE );
 		self::$version = get_file_data( FC_PLUGIN_FILE , ['Version' => 'Version'], 'plugin')['Version'];
@@ -346,7 +344,7 @@ class FluidCheckout {
 	 * @since  1.0.0
 	 */
 	public function woocommerce_required_notice() {
-		echo '<div id="message" class="error"><p>'. sprintf( __( '<strong>%1$s requires %2$s to be installed and active. You can <a href="%3$s">download %2$s here</a></strong>.', 'fluid-checkout' ), self::$plugin, 'WooCommerce', 'https://woocommerce.com' ) .'</p></div>';
+		echo '<div id="message" class="error"><p><strong>'. sprintf( wp_kses_post( __( '%1$s requires %2$s to be installed and active. You can <a href="%3$s">download %2$s here</a>.', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', 'https://woocommerce.com' ) .'</strong></p></div>';
 	}
 
 
@@ -387,8 +385,8 @@ class FluidCheckout {
 	/**
 	 * Map an associative array of html attributes to a string of html attributes.
 	 *
-	 * @param   array  $k  Attributes keys.
-	 * @param   array  $v  Attributes values.
+	 * @param   array  $k  Attributes keys. Will be escaped with `esc_attr`.
+	 * @param   array  $v  Attributes values. Will be escaped with `esc_attr`, when passing a URL as the value please provide a escaped string with `esc_url`.
 	 *
 	 * @return  string     A string that represent the attribute in html format `key="value"` or only `key` when the attribute value is boolean and `true`.
 	 */

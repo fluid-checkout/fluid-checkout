@@ -287,7 +287,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		wc_cart_totals_order_total_html();
 		$link_label_html = str_replace( 'includes_tax', 'includes_tax screen-reader-text', ob_get_clean() );
 		?>
-		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout__cart-link" data-flyout-toggle data-flyout-target="[data-flyout-order-review]"><?php echo $link_label_html; ?></a>
+		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout__cart-link" data-flyout-toggle data-flyout-target="[data-flyout-order-review]"><?php echo $link_label_html; // WPCS: XSS ok. ?></a>
 		<?php
 	}
 
@@ -791,10 +791,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$progress_bar_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $progress_bar_attributes ), $progress_bar_attributes ) );
 		$progress_bar_attributes_inner_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $progress_bar_inner_attributes ), $progress_bar_inner_attributes ) );
 		?>
-		<div <?php echo $progress_bar_attributes_str; ?>>
-			<div <?php echo $progress_bar_attributes_inner_str; ?>>
+		<div <?php echo $progress_bar_attributes_str; // WPCS: XSS ok. ?>>
+			<div <?php echo $progress_bar_attributes_inner_str; // WPCS: XSS ok. ?>>
 
-				<div class="fc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html ?></div>
+				<div class="fc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html; // WPCS: XSS ok. ?></div>
 				<div class="fc-progress-bar__bars" data-progress-bar data-step-count="<?php echo esc_attr( $steps_count ); ?>">
 					<?php
 					foreach ( $_checkout_steps as $step_index => $step_args ) :
@@ -846,7 +846,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		$step_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $step_attributes ), $step_attributes ) );
-		echo '<section ' . $step_attributes_str . '>';
+		echo '<section ' . $step_attributes_str . '>'; // WPCS: XSS ok.
 	}
 
 	/**
@@ -861,12 +861,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( $this->is_checkout_layout_multistep() && array_key_exists( 'render_next_step_button', $step_args ) && $step_args[ 'render_next_step_button' ] ) :
 			$button_attributes = array(
 				'class' => implode( ' ', array_merge( array( 'fc-step__next-step', 'button' ), $step_args[ 'next_step_button_classes' ] ) ),
-				'data-step-next' => '',
+				'data-step-next' => true,
 			);
 			$button_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $button_attributes ), $button_attributes ) );
 			?>
 			<div class="fc-step__actions">
-				<button type="button" <?php echo $button_attributes_str; ?>><?php echo $step_args[ 'next_step_button_label' ]; ?></button>
+				<button type="button" <?php echo $button_attributes_str; // WPCS: XSS ok. ?>><?php echo esc_html( $step_args[ 'next_step_button_label' ] ); ?></button>
 			</div>
 			<?php
 		endif;
@@ -891,7 +891,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
-		<div <?php echo $substep_attributes_str; ?>>
+		<div <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
 			<?php if ( ! empty( $substep_title ) ) : ?>
 				<h3 class="fc-step__substep-title"><?php echo wp_kses( $substep_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ); ?></h3>
 			<?php endif; ?>
@@ -907,8 +907,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_substep_end_tag( $step_id, $substep_id, $output_edit_buttons = true ) {
 		?>
 			<?php if ( $output_edit_buttons && $this->is_checkout_layout_multistep() ) : ?>
-				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo apply_filters( 'fc_substep_change_button_label', _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ) ); ?></a>
-				<a tabindex="0" role="button" class="fc-step__substep-save <?php echo esc_attr( apply_filters( 'fc_substep_save_button_classes', 'button' ) ); ?>" data-step-save aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo apply_filters( 'fc_substep_save_button_label', _x( 'Save changes', 'Checkout substep save link label', 'fluid-checkout' ) ); ?></a>
+				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo esc_html( apply_filters( 'fc_substep_change_button_label', _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ) ) ); ?></a>
+				<a tabindex="0" role="button" class="fc-step__substep-save <?php echo esc_attr( apply_filters( 'fc_substep_save_button_classes', 'button' ) ); ?>" data-step-save aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo esc_html( apply_filters( 'fc_substep_save_button_label', _x( 'Save changes', 'Checkout substep save link label', 'fluid-checkout' ) ) ); ?></a>
 			<?php endif; ?>
 		</div>
 		<?php
@@ -952,8 +952,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		$substep_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_inner_attributes ), $substep_inner_attributes ) );
 		?>
-		<div <?php echo $substep_attributes_str; ?>>
-			<div <?php echo $substep_inner_attributes_str; ?>>
+		<div <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
+			<div <?php echo $substep_inner_attributes_str; // WPCS: XSS ok. ?>>
 			<?php
 	}
 
@@ -993,8 +993,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		$substep_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_inner_attributes ), $substep_inner_attributes ) );
 		?>
-		<div <?php echo $substep_attributes_str; ?>>
-			<div <?php echo $substep_inner_attributes_str; ?>>
+		<div <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
+			<div <?php echo $substep_inner_attributes_str; // WPCS: XSS ok. ?>>
 			<?php
 	}
 
@@ -1017,6 +1017,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $section_id  Id of the substep.
 	 */
 	public function output_expansible_form_section_start_tag( $section_id, $toggle_label, $args = array() ) {
+		$section_id_esc = esc_attr( $section_id );
+
 		// Initial state
 		$initial_state = array_key_exists( 'initial_state', $args ) && $args['initial_state'] === 'expanded' ? 'expanded' : 'collapsed';
 
@@ -1025,18 +1027,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Merge section attributes
 		if ( array_key_exists( 'section_attributes', $args ) && is_array( $args['section_attributes'] ) ) {
-			$section_class = $section_attributes['class'];
+			$section_class_esc = esc_attr( $section_attributes['class'] );
 
 			$section_attributes = array_merge( $section_attributes, $args['section_attributes'] );
 
 			// Merge class attribute
-			$section_attributes['class'] = array_key_exists( 'class', $args['section_attributes'] ) ? $section_class . ' ' . $args['section_attributes']['class'] : $section_class;
+			$section_attributes['class'] = array_key_exists( 'class', $args['section_attributes'] ) ? $section_class_esc . ' ' . esc_attr( $args['section_attributes']['class'] ) : $section_class_esc;
 		}
 
 		// Section toggle attributes
 		$section_toggle_attributes = array(
-			'id' => 'fc-expansible-form-section__toggle--' . $section_id,
-			'class' => 'fc-expansible-form-section__toggle fc-expansible-form-section__toggle--' . $section_id . ' ' . ( $initial_state === 'expanded' ? 'is-collapsed' : 'is-expanded' ), // Toggle is collapsed when the section is set to expanded
+			'id' => 'fc-expansible-form-section__toggle--' . $section_id_esc,
+			'class' => 'fc-expansible-form-section__toggle fc-expansible-form-section__toggle--' . $section_id_esc . ' ' . ( $initial_state === 'expanded' ? 'is-collapsed' : 'is-expanded' ), // Toggle is collapsed when the section is set to expanded
 			'data-collapsible' => true,
 			'data-collapsible-content' => true,
 			'data-collapsible-initial-state' => $initial_state === 'expanded' ? 'collapsed' : 'expanded', // Toggle is collapsed when the section is set to expanded
@@ -1049,19 +1051,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Toggle element attributes
 		$toggle_attributes = array(
-			'href' => '#fc-expansible-form-section__content--' . $section_id,
-			'class' => 'expansible-section__toggle-plus expansible-section__toggle-plus--' . $section_id,
+			'href' => '#fc-expansible-form-section__content--' . $section_id_esc,
+			'class' => 'expansible-section__toggle-plus expansible-section__toggle-plus--' . $section_id_esc,
 			'data-collapsible-handler' => true,
 			'data-collapsible-targets' => implode( ',', array(
-				'fc-expansible-form-section__toggle--' . $section_id,
-				'fc-expansible-form-section__content--' . $section_id,
+				'fc-expansible-form-section__toggle--' . $section_id_esc,
+				'fc-expansible-form-section__content--' . $section_id_esc,
 			) ),
 		);
 
 		// Section content attributes
 		$section_content_attributes = array(
-			'id' => 'fc-expansible-form-section__content--' . $section_id,
-			'class' => 'fc-expansible-form-section__content fc-expansible-form-section__content--' . $section_id . ' ' . ( $initial_state === 'expanded' ? 'is-expanded' : 'is-collapsed' ),
+			'id' => 'fc-expansible-form-section__content--' . $section_id_esc,
+			'class' => 'fc-expansible-form-section__content fc-expansible-form-section__content--' . $section_id_esc . ' ' . ( $initial_state === 'expanded' ? 'is-expanded' : 'is-collapsed' ),
 			'data-collapsible' => true,
 			'data-collapsible-content' => true,
 			'data-collapsible-initial-state' => $initial_state,
@@ -1079,17 +1081,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$section_content_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_content_attributes ), $section_content_attributes ) );
 		$section_content_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_content_inner_attributes ), $section_content_inner_attributes ) );
 		?>
-		<div <?php echo $section_attributes_str; ?>>
-			<div <?php echo $section_toggle_attributes_str; ?>>
-				<div <?php echo $section_content_inner_attributes_str; ?>>
-					<a <?php echo $toggle_attributes_str; ?>>
+		<div <?php echo $section_attributes_str; // WPCS: XSS ok. ?>>
+			<div <?php echo $section_toggle_attributes_str; // WPCS: XSS ok. ?>>
+				<div <?php echo $section_content_inner_attributes_str; // WPCS: XSS ok. ?>>
+					<a <?php echo $toggle_attributes_str; // WPCS: XSS ok. ?>>
 						<?php echo esc_html( $toggle_label ); ?>
 					</a>
 				</div>
 			</div>
 
-			<div <?php echo $section_content_attributes_str; ?>>
-				<div <?php echo $section_content_inner_attributes_str; ?>>
+			<div <?php echo $section_content_attributes_str; // WPCS: XSS ok. ?>>
+				<div <?php echo $section_content_inner_attributes_str; // WPCS: XSS ok. ?>>
 				<?php
 	}
 
@@ -1167,13 +1169,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_substep_text_contact() {
 		$customer = WC()->customer;
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--contact">';
-		$html .= '<span class="fc-step__substep-text-line">' . $customer->get_billing_email() . '</span>';
+		$html .= '<span class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_email() ) . '</span>';
 
 		// Maybe add notice for account creation
 		if ( get_option( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) === 'true' ) {
 			$parsed_posted_data = $this->get_parsed_posted_data();
 			if ( array_key_exists( 'createaccount', $parsed_posted_data ) && $parsed_posted_data[ 'createaccount' ] == '1' ) {
-				$html .= '<span class="fc-step__substep-text-line"><em>' . __( 'An account will be created with the information provided.', 'fluid-checkout' ) . '</em></span>';
+				$html .= '<span class="fc-step__substep-text-line"><em>' . esc_html( __( 'An account will be created with the information provided.', 'fluid-checkout' ) ) . '</em></span>';
 			}
 		}
 
@@ -1423,7 +1425,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping-address">';
-		$html .= '<span class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</span>';
+		$html .= '<span class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</span>'; // WPCS: XSS ok.
 		$html .= '</div>';
 
 		return apply_filters( 'fc_substep_shipping_address_text', $html );
@@ -1468,7 +1470,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// TODO: Maybe handle multiple packages
 			// $package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
 
-			$html .= '<span class="fc-step__substep-text-line">' . $chosen_method_label . '</span>';
+			$html .= '<span class="fc-step__substep-text-line">' . esc_html( $chosen_method_label ) . '</span>';
 		}
 
 		$html .= '</div>';
@@ -1510,7 +1512,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 		// "No order notes" notice.
 		else {
-			$html .= '<span class="fc-step__substep-text-line">' . apply_filters( 'fc_no_order_notes_order_review_notice', _x( 'None.', 'Notice for no order notes provided', 'fluid-checkout' ) ) . '</span>';
+			$html .= '<span class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_no_order_notes_order_review_notice', _x( 'None.', 'Notice for no order notes provided', 'fluid-checkout' ) ) ) . '</span>';
 		}
 
 		$html .= '</div>';
@@ -1874,10 +1876,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'postcode' => $customer->get_billing_postcode(),
 			);
 
-			$html .= '<span class="fc-step__substep-text-line">' . $customer->get_billing_first_name() . ' ' . $customer->get_billing_last_name() . '</span>';
-			$html .= '<span class="fc-step__substep-text-line">' . $customer->get_billing_company() . '</span>';
-			$html .= '<span class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</span>';
-			$html .= '<span class="fc-step__substep-text-line">' . $customer->get_billing_phone() . '</span>';
+			$html .= '<span class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_first_name() ) . ' ' . esc_html( $customer->get_billing_last_name() ) . '</span>';
+			$html .= '<span class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_company() ) . '</span>';
+			$html .= '<span class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</span>'; // WPCS: XSS ok.
+			$html .= '<span class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_phone() ) . '</span>';
 		}
 
 		$html .= '</div>';
@@ -1940,14 +1942,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_billing_same_as_shipping_field() {
 		// Output a hidden field when shipping country not allowed for billing, or shipping not needed
 		if ( ! WC()->cart->needs_shipping() || $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
-			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; ?>">
+			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
 		<?php
 		// Output the checkbox when shipping country is allowed for billing
 		else :
 		?>
 			<p id="billing_same_as_shipping_field" class="form-row form-row-wide">
 				<label class="checkbox">
-					<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>> <?php echo __( 'Same as shipping address', 'fluid-checkout' ); ?></span>
+					<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>> <?php echo esc_html( __( 'Same as shipping address', 'fluid-checkout' ) ); ?></span>
 				</label>
 			</p>
 		<?php
@@ -2301,8 +2303,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$sidebar_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $sidebar_attributes ), $sidebar_attributes ) );
 		$sidebar_attributes_inner_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $sidebar_attributes_inner ), $sidebar_attributes_inner ) );
 		?>
-		<div <?php echo $sidebar_attributes_str; ?>>
-			<div <?php echo $sidebar_attributes_inner_str; ?>>
+		<div <?php echo $sidebar_attributes_str; // WPCS: XSS ok. ?>>
+			<div <?php echo $sidebar_attributes_inner_str; // WPCS: XSS ok. ?>>
 				<?php do_action( 'fc_checkout_order_review_section' ); ?>
 			</div>
 		</div>
@@ -2435,7 +2437,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$place_order_html = str_replace( 'name="_wp_http_referer"', '', $place_order_html );
 		}
 
-		echo $place_order_html;
+		echo $place_order_html; // WPCS: XSS ok.
 	}
 
 	/**
