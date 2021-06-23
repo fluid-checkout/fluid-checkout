@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Compatibility with theme: Flatsome (by UX-Themes).

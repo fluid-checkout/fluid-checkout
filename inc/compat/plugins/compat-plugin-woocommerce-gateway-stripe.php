@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Compatibility with plugin: WooCommerce Stripe Gateway (by WooCommerce).

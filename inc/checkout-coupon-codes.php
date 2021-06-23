@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Feature for adding coupon codes or gift certificate codes to checkout

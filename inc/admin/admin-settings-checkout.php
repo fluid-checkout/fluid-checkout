@@ -6,9 +6,7 @@
  * @version 1.2.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 if ( class_exists( 'WC_Settings_FluidCheckout_Checkout', false ) ) {
 	return new WC_Settings_FluidCheckout_Checkout();
