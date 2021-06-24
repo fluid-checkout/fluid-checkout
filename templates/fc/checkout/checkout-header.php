@@ -28,7 +28,11 @@ $header_background_style = ! empty( $header_background_color_esc ) ? 'style="bac
 		<div class="fc-checkout__branding">
 			<?php
 			if ( ! empty( get_option( 'fc_checkout_logo_image', '' ) ) ) {
-				echo wp_get_attachment_image( get_option( 'fc_checkout_logo_image', '' ), 'full' );
+				echo sprintf(
+					'<a href="%1$s" class="custom-logo-link" rel="home">%2$s</a>',
+					esc_url( home_url( '/' ) ),
+					wp_get_attachment_image( get_option( 'fc_checkout_logo_image', '' ), 'full' )
+				);
 			}
 			else if ( has_action( 'fc_checkout_header_logo' ) ) {
 				do_action( 'fc_checkout_header_logo' );
