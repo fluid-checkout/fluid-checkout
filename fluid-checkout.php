@@ -251,7 +251,7 @@ class FluidCheckout {
 			}
 
 			// Load feature file if enabled, file exists, and file is inside our plugin folder
-			if ( $feature_is_enabled && file_exists( $file ) && strpos( $file, plugin_dir_path( FC_PLUGIN_FILE ) ) == 0 ) {
+			if ( $feature_is_enabled && file_exists( $file ) && strpos( $file, plugin_dir_path( FC_PLUGIN_FILE ) ) === 0 ) {
 				require_once $file;
 			}
 		}
@@ -286,7 +286,7 @@ class FluidCheckout {
 			$plugin_compat_file_path = self::$directory_path . 'inc/compat/plugins/compat-plugin-' . $plugin_slug . '.php';
 
 			// Maybe load plugin's compatibility file, and file is inside our plugin folder
-			if ( file_exists( $plugin_compat_file_path ) && strpos( $plugin_compat_file_path, plugin_dir_path( FC_PLUGIN_FILE ) ) == 0 ) {
+			if ( file_exists( $plugin_compat_file_path ) && strpos( $plugin_compat_file_path, plugin_dir_path( FC_PLUGIN_FILE ) ) === 0 ) {
 				require_once $plugin_compat_file_path;
 			}
 		}
@@ -313,7 +313,7 @@ class FluidCheckout {
 			$theme_compat_file_path = self::$directory_path . 'inc/compat/themes/compat-theme-' . $theme_slug . '.php';
 
 			// Maybe load theme's compatibility file, and file is inside our plugin folder
-			if ( file_exists( $theme_compat_file_path ) && strpos( $theme_compat_file_path, plugin_dir_path( FC_PLUGIN_FILE ) ) == 0 ) {
+			if ( file_exists( $theme_compat_file_path ) && strpos( $theme_compat_file_path, plugin_dir_path( FC_PLUGIN_FILE ) ) === 0 ) {
 				require_once $theme_compat_file_path;
 			}
 		}
