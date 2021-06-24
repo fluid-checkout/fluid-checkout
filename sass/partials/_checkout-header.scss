@@ -63,18 +63,6 @@
 
 
 
-.fc-checkout-header .fc-checkout__branding {
-	width: 50%;
-	line-height: 1;
-}
-
-.fc-checkout-header .fc-checkout__branding img {
-	object-fit: contain;
-	max-width: remsize( 25rem );
-	max-height: remsize( 4.6rem );
-	width: 100%;
-}
-
 .fc-checkout-header .fc-checkout__title.screen-reader-text {
 	clip: rect( 1px, 1px, 1px, 1px );
 	position: absolute !important; // Needed to make sure other style rules won't affect accessibility
@@ -95,17 +83,16 @@
 	display: inline-block;
 	margin: remsize( .2rem ) 0 0;
 }
-.fc-checkout-header .custom-logo {
-	margin: #{ ( $checkout-header-height - $checkout-logo-height ) / 2 } 0;
-	height: $checkout-logo-height;
-	width: auto;
 
-	@media (#{$bp-larger-than-desktop}) {
-		margin: #{ ( $checkout-header-height--large-screen - $checkout-logo-height--large-screen ) / 2 } 0;
-		height: $checkout-logo-height--large-screen;
-	}
+.fc-checkout-header .fc-checkout__branding {
+	width: 50%;
+	line-height: 1;
 }
 
+.fc-checkout-header .fc-checkout__branding img {
+	max-height: remsize( 4.6rem );
+	width: auto;
+}
 
 
 
