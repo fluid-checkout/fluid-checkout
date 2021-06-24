@@ -167,13 +167,8 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   @media (min-width: 1000px) {
     .fc-sidebar {
       z-index: 2;
-      position: absolute;
-      right: 0;
+      float: right;
       width: 37.5%; } }
-
-@media (min-width: 1000px) {
-  .fc-sidebar[data-sticky-states].is-end-position {
-    position: absolute; } }
 
 .fc-sidebar__inner {
   z-index: 10; }
