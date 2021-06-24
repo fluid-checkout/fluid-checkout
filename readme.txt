@@ -23,13 +23,13 @@ Similar to the Shopify checkout, and even better!
 
 = Demos =
 
-* [Multi step layout](https://demos.fluidcheckout.com/multi-step/)
+* [Multi step layout](https://demos.fluidcheckout.com/multi-step/cart/?add-to-cart=14&quantity=2)
 Make sure to test the checkout flow by adding to the cart and completing the purchase at least two times to see how the plugin streamlines the process for repeat customers.
 
-* [Single step layout](https://demos.fluidcheckout.com/single-step/)
+* [Single step layout](https://demos.fluidcheckout.com/single-step/cart/?add-to-cart=22&quantity=2)
 Single step checkout is recommended when only a few fields are required, usually when selling digital products or allowing local store pickup where shipping address information is not needed.
 
-* [Highly stylized theme](https://demos.fluidcheckout.com/theme-deli/)
+* [Highly stylized theme](https://demos.fluidcheckout.com/theme-deli/cart/?add-to-cart=14&quantity=2)
 With themes that are highly stylized such as Storefront Deli -- when comparing to a plain theme such as the default Storefront theme, Fluid Checkout adapts itself with part of the theme's styles, keeping the same look and feel while improving the experience.
 
 = Lite Version (Free) =
