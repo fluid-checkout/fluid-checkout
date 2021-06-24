@@ -118,24 +118,26 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'id'    => 'fc_checkout_advanced_layout_options',
 					),
 
-					array(
-						'title'         => __( 'Order summary', 'fluid-checkout' ),
-						'desc'          => __( 'Make the order summary stay visible while scrolling', 'fluid-checkout' ),
-						'id'            => 'fc_enable_checkout_sticky_order_summary',
-						'default'       => 'yes',
-						'type'          => 'checkbox',
-						'autoload'      => false,
-					),
+					// TEMPORARILY DISABLED
+					// array(
+					// 	'title'         => __( 'Order summary', 'fluid-checkout' ),
+					// 	'desc'          => __( 'Make the order summary stay visible while scrolling', 'fluid-checkout' ),
+					// 	'id'            => 'fc_enable_checkout_sticky_order_summary',
+					// 	'default'       => 'yes',
+					// 	'type'          => 'checkbox',
+					// 	'autoload'      => false,
+					// ),
 
-					array(
-						'title'         => __( 'Progress bar', 'fluid-checkout' ),
-						'desc'          => __( 'Make the checkout progress bar stay visible while scrolling', 'fluid-checkout' ),
-						'desc_tip'      => __( 'Applies only to multi-step layouts.', 'fluid-checkout' ),
-						'id'            => 'fc_enable_checkout_sticky_progress_bar',
-						'default'       => 'yes',
-						'type'          => 'checkbox',
-						'autoload'      => false,
-					),
+					// TEMPORARILY DISABLED
+					// array(
+					// 	'title'         => __( 'Progress bar', 'fluid-checkout' ),
+					// 	'desc'          => __( 'Make the checkout progress bar stay visible while scrolling', 'fluid-checkout' ),
+					// 	'desc_tip'      => __( 'Applies only to multi-step layouts.', 'fluid-checkout' ),
+					// 	'id'            => 'fc_enable_checkout_sticky_progress_bar',
+					// 	'default'       => 'yes',
+					// 	'type'          => 'checkbox',
+					// 	'autoload'      => false,
+					// ),
 
 					array(
 						'title'         => __( 'Header and Footer', 'fluid-checkout' ),
@@ -145,7 +147,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'type'          => 'radio',
 						'options'       => array(
 							'yes'       => __( 'Use Fluid Checkout header and footer', 'fluid-checkout' ),
-							'no'        => __( 'Use theme\'s page header and footer for the checkout page', 'fluid-checkout' ),
+							'no'        => __( '(Experimental) Use theme\'s page header and footer for the checkout page', 'fluid-checkout' ),
 						),
 						'default'       => 'yes',
 						'autoload'      => false,

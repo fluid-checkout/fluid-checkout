@@ -773,7 +773,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		// Sticky state attributes
-		if ( get_option( 'fc_enable_checkout_sticky_progress_bar', 'yes' ) === 'yes' ) {
+		if ( get_option( 'fc_enable_checkout_sticky_progress_bar', 'no' ) === 'yes' ) {
 			$progress_bar_attributes = array_merge( $progress_bar_attributes, array(
 				'data-sticky-states' => true,
 				'data-sticky-relative-to' => '.fc-checkout-header',
@@ -2287,7 +2287,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		// Sticky state attributes
-		if ( get_option( 'fc_enable_checkout_sticky_order_summary', 'yes' ) === 'yes' ) {
+		if ( get_option( 'fc_enable_checkout_sticky_order_summary', 'no' ) === 'yes' ) {
 			$sidebar_attributes = array_merge( $sidebar_attributes, array(
 				'data-sticky-states' => true,
 				'data-sticky-container' => 'div.woocommerce',
