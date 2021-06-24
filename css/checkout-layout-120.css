@@ -1422,6 +1422,13 @@ div.place-order .woocommerce-privacy-policy-link:focus {
   outline-offset: 1px !important; }
 
 /*------------------------------------*\
+  #CHECKOUT SIDEBAR
+\*------------------------------------*/
+.fc-sidebar .fc-checkout-order-review__widgets-outside {
+  padding-left: 20px;
+  padding-right: 20px; }
+
+/*------------------------------------*\
   #WOOCOMMERCE FORM-ROW
 \*------------------------------------*/
 div.woocommerce form .form-row:before,
