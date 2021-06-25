@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Customizations to the checkout optional fields.
@@ -62,33 +63,35 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		if ( in_array( $key, apply_filters( 'fc_hide_optional_fields_skip_list', $skip_list ) ) ) { return $field; }
 
 		// Set attribute `data-autofocus` to focus on the optional field when expanding the section
-		$field = str_replace( 'name="'. $key .'"', 'name="'. $key .'" data-autofocus', $field );
+		$field = str_replace( 'name="'. esc_attr( $key ) .'"', 'name="'. esc_attr( $key ) .'" data-autofocus', $field );
 
 		// Move container classes to expansible block
-		$container_class = esc_attr( implode( ' ', $args['class'] ) );
+		$container_class_esc = esc_attr( implode( ' ', $args['class'] ) );
 		$expansible_section_args = array(
 			'section_attributes' => array(
-				'class' => 'form-row ' . $container_class,
+				'class' => 'form-row ' . $container_class_esc,
 			),
 		);
 
 		// Remove the container class from the field element
-		$field = str_replace( 'form-row '. $container_class, 'form-row ', $field );
+		$field = str_replace( 'form-row '. $container_class_esc, 'form-row ', $field );
 
 		// Maybe set field as `expanded` when it contains a value
 		if ( ! empty( $value ) ) {
 			$expansible_section_args[ 'initial_state' ] = 'expanded';
 		}
 
+		// Start buffer
 		ob_start();
 
 		// Add expansible block markup for the field
 		/* translators: %s: Form field label */
 		$toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), strtolower( $args['label'] ) ) );
 		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, $toggle_label, $expansible_section_args );
-		echo $field;
+		echo $field; // WPCS: XSS ok.
 		$this->checkout_steps()->output_expansible_form_section_end_tag();
 
+		// Get value and clear buffer
 		$field = ob_get_clean();
 
 		return $field;

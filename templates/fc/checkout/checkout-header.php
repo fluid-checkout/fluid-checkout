@@ -18,17 +18,21 @@
 defined( 'ABSPATH' ) || exit;
 
 // Get header background color
-$header_background_color = esc_attr( get_option( 'fc_checkout_header_background_color', '' ) );
-$header_background_style = ! empty( $header_background_color ) ? 'style="background-color: '. $header_background_color .'"' : '';
+$header_background_color_esc = esc_attr( get_option( 'fc_checkout_header_background_color', '' ) );
+$header_background_style = ! empty( $header_background_color_esc ) ? 'style="background-color: '. $header_background_color_esc .'"' : ''; // WPCS: XSS ok.
 ?>
 
-<header class="fc-checkout-header" <?php echo $header_background_style; ?>>
+<header class="fc-checkout-header" <?php echo $header_background_style; // WPCS: XSS ok. ?>>
 	<div class="fc-checkout-header__inner">
 
 		<div class="fc-checkout__branding">
 			<?php
 			if ( ! empty( get_option( 'fc_checkout_logo_image', '' ) ) ) {
-				echo wp_get_attachment_image( get_option( 'fc_checkout_logo_image', '' ), 'full' );
+				echo sprintf(
+					'<a href="%1$s" class="custom-logo-link" rel="home">%2$s</a>',
+					esc_url( home_url( '/' ) ),
+					wp_get_attachment_image( get_option( 'fc_checkout_logo_image', '' ), 'full' )
+				);
 			}
 			else if ( has_action( 'fc_checkout_header_logo' ) ) {
 				do_action( 'fc_checkout_header_logo' );

@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Feature for adding coupon codes or gift certificate codes to checkout
@@ -106,7 +107,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), strtolower( $coupon_code_field_label ) ) ) );
 		woocommerce_form_field( $key, $coupon_code_field_args );
 		?>
-		<button type="button" class="fc-coupon-code__apply <?php echo esc_attr( apply_filters( 'fc_coupon_code_apply_button_classes', 'button' ) ); ?>" data-apply-coupon-button><?php echo $coupon_code_button_label; ?></button>
+		<button type="button" class="fc-coupon-code__apply <?php echo esc_attr( apply_filters( 'fc_coupon_code_apply_button_classes', 'button' ) ); ?>" data-apply-coupon-button><?php echo esc_html( $coupon_code_button_label ); ?></button>
 		<?php
 		$this->checkout_steps()->output_expansible_form_section_end_tag();
 	}
@@ -136,11 +137,12 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 			// Get coupon label with changed "remove" link
 			ob_start();
 			wc_cart_totals_coupon_html( $coupon );
-			$coupon_html = str_replace( __( '[Remove]', 'woocommerce' ), __( 'Remove', 'fluid-checkout' ), ob_get_clean() );
+			$coupon_html_esc = str_replace( esc_html( __( '[Remove]', 'woocommerce' ) ), esc_html( __( 'Remove', 'fluid-checkout' ) ), ob_get_clean() );
 			?>
+			<?php // The function `sanitize_title` is used below to convert the string into a CSS-class-like string ?>
 			<div class="fc-coupon-codes__coupon coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
 				<strong class="fc-coupon-codes__coupon-code"><?php wc_cart_totals_coupon_label( $coupon ); ?></strong>
-				<span class="fc-coupon-codes__coupon-amount"><?php echo $coupon_html; ?></span>
+				<span class="fc-coupon-codes__coupon-amount"><?php echo $coupon_html_esc; // WPCS: XSS ok. ?></span>
 			</div>
 			<?php
 		endforeach;

@@ -17,14 +17,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
-echo _x( 'Gift message:', 'Gift options section title in the order details', 'fluid-checkout' );
+echo esc_textarea( _x( 'Gift message:', 'Gift options section title in the order details', 'fluid-checkout' ) );
 
 if ( isset( $gift_options ) && array_key_exists( '_fc_gift_message', $gift_options ) && ! empty( $gift_options[ '_fc_gift_message' ] ) ) {
-    echo esc_attr( __( 'Gift message:', 'fluid-checkout' ) );
-    echo esc_attr( $gift_options[ '_fc_gift_message' ] );
+    echo esc_textarea( __( 'Gift message:', 'fluid-checkout' ) );
+    echo esc_textarea( $gift_options[ '_fc_gift_message' ] );
 }
 
 if ( isset( $gift_options ) && array_key_exists( '_fc_gift_from', $gift_options ) && ! empty( $gift_options[ '_fc_gift_from' ] ) ) {
-    echo esc_attr( __( 'Gift message from:', 'fluid-checkout' ) );
-    echo esc_attr( $gift_options[ '_fc_gift_from' ] );
+    echo esc_textarea( __( 'Gift message from:', 'fluid-checkout' ) );
+    echo esc_textarea( $gift_options[ '_fc_gift_from' ] );
 }

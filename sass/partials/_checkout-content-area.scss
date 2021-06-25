@@ -143,14 +143,8 @@ body:not( .has-checkout-must-login-notice ) .fc-inside {
 
 	@media (#{$bp-larger-than-desktop}) {
 		z-index: z( 'default' ) + 1;
-		position: absolute;
-		right: 0;
+		float: right;
 		width: $checkout-overview-width--large-screen;
-	}
-}
-.fc-sidebar[data-sticky-states].is-end-position {
-	@media (#{$bp-larger-than-desktop}) {
-		position: absolute;
 	}
 }
 

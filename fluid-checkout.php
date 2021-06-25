@@ -5,7 +5,7 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a Fluid Checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message and packaging and display a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 1.2.0-RC
+Version: 1.2.0
 Author: Fluidweb.co
 Author URI: https://fluidweb.co/
 License: GPLv2
@@ -25,19 +25,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
 */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 // Define FC_PLUGIN_FILE.
 if ( ! defined( 'FC_PLUGIN_FILE' ) ) {
 	define( 'FC_PLUGIN_FILE', __FILE__ );
 }
-
 
 /**
  * Plugin Main Class.
@@ -46,7 +41,6 @@ class FluidCheckout {
 
 	// A single instance of this class.
 	public static $instances   = array();
-	public static $this_plugin = null;
 	public static $directory_path;
 	public static $directory_url;
 	public static $plugin = 'Fluid Checkout for WooCommerce';
@@ -107,9 +101,8 @@ class FluidCheckout {
 	 * Define plugin variables.
 	 */
 	public function set_plugin_vars() {
-		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-		self::$this_plugin    = plugin_basename( FC_PLUGIN_FILE );
 		self::$directory_path = plugin_dir_path( FC_PLUGIN_FILE );
 		self::$directory_url  = plugin_dir_url( FC_PLUGIN_FILE );
 		self::$version = get_file_data( FC_PLUGIN_FILE , ['Version' => 'Version'], 'plugin')['Version'];
@@ -257,8 +250,8 @@ class FluidCheckout {
 				}
 			}
 
-			// Load feature file if enabled and file exists
-			if ( $feature_is_enabled && file_exists( $file ) ) {
+			// Load feature file if enabled, file exists, and file is inside our plugin folder
+			if ( $feature_is_enabled && file_exists( $file ) && strpos( $file, plugin_dir_path( FC_PLUGIN_FILE ) ) === 0 ) {
 				require_once $file;
 			}
 		}
@@ -292,9 +285,9 @@ class FluidCheckout {
 			// Get plugin file path
 			$plugin_compat_file_path = self::$directory_path . 'inc/compat/plugins/compat-plugin-' . $plugin_slug . '.php';
 
-			// Maybe load plugin's compatibility file
-			if ( file_exists( $plugin_compat_file_path ) ) {
-				include_once( $plugin_compat_file_path );
+			// Maybe load plugin's compatibility file, and file is inside our plugin folder
+			if ( file_exists( $plugin_compat_file_path ) && strpos( $plugin_compat_file_path, plugin_dir_path( FC_PLUGIN_FILE ) ) === 0 ) {
+				require_once $plugin_compat_file_path;
 			}
 		}
 	}
@@ -319,9 +312,9 @@ class FluidCheckout {
 			// Get current theme's compatibility file name
 			$theme_compat_file_path = self::$directory_path . 'inc/compat/themes/compat-theme-' . $theme_slug . '.php';
 
-			// Maybe load theme's compatibility file
-			if ( file_exists( $theme_compat_file_path ) ) {
-				include_once( $theme_compat_file_path );
+			// Maybe load theme's compatibility file, and file is inside our plugin folder
+			if ( file_exists( $theme_compat_file_path ) && strpos( $theme_compat_file_path, plugin_dir_path( FC_PLUGIN_FILE ) ) === 0 ) {
+				require_once $theme_compat_file_path;
 			}
 		}
 	}
@@ -335,7 +328,7 @@ class FluidCheckout {
 	 * @since 1.0.0
 	 */
 	public function is_woocommerce_active() {
-		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		return is_plugin_active( 'woocommerce/woocommerce.php' );
 	}
 
@@ -346,7 +339,7 @@ class FluidCheckout {
 	 * @since  1.0.0
 	 */
 	public function woocommerce_required_notice() {
-		echo '<div id="message" class="error"><p>'. sprintf( __( '<strong>%1$s requires %2$s to be installed and active. You can <a href="%3$s">download %2$s here</a></strong>.', 'fluid-checkout' ), self::$plugin, 'WooCommerce', 'https://woocommerce.com' ) .'</p></div>';
+		echo '<div id="message" class="error"><p><strong>'. sprintf( wp_kses_post( __( '%1$s requires %2$s to be installed and active. You can <a href="%3$s">download %2$s here</a>.', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', 'https://woocommerce.com' ) .'</strong></p></div>';
 	}
 
 
@@ -387,8 +380,8 @@ class FluidCheckout {
 	/**
 	 * Map an associative array of html attributes to a string of html attributes.
 	 *
-	 * @param   array  $k  Attributes keys.
-	 * @param   array  $v  Attributes values.
+	 * @param   array  $k  Attributes keys. Will be escaped with `esc_attr`.
+	 * @param   array  $v  Attributes values. Will be escaped with `esc_attr`, when passing a URL as the value please provide a escaped string with `esc_url`.
 	 *
 	 * @return  string     A string that represent the attribute in html format `key="value"` or only `key` when the attribute value is boolean and `true`.
 	 */

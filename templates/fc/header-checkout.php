@@ -14,6 +14,8 @@
  * @package fluid-checkout
  * @version 1.2.0
  */
+
+defined( 'ABSPATH' ) || exit;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>

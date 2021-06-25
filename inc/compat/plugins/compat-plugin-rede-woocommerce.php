@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Compatibility with plugin: Rede WooCommerce (by Rede).

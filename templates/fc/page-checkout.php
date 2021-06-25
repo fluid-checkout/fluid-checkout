@@ -15,6 +15,8 @@
  * @version 1.2.0
  */
 
+defined( 'ABSPATH' ) || exit;
+
 // Replace site header with our implementation
 if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) {
 	wc_get_template( 'fc/header-checkout.php' );

@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Checkout admin options.
@@ -20,7 +21,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	public function hooks() {
 		// WooCommerce Settings
 		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_settings_pages' ), 50 );
-		
+
 		// WooCommerce Settings Styles
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles'), 10 );
 	}

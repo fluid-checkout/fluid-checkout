@@ -15,6 +15,7 @@
  * @version 1.2.0
  */
 
+defined( 'ABSPATH' ) || exit;
 ?>
 
 </main>
