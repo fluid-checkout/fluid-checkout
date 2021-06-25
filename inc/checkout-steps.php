@@ -1472,7 +1472,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// TODO: Maybe handle multiple packages
 			// $package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
 
-			$html .= '<span class="fc-step__substep-text-line">' . esc_html( $chosen_method_label ) . '</span>';
+			$html .= '<span class="fc-step__substep-text-line">' . wp_kses( $chosen_method_label, array( 'span' => array( 'class' => '' ), 'bdi' => array(), 'strong' => array() ) ) . '</span>';
 		}
 
 		$html .= '</div>';
