@@ -48,6 +48,8 @@ With themes that are highly stylized such as Storefront Deli -- when comparing t
 
 * **Integrated coupon code field at the checkout**: When users see an open coupon code field at the checkout page the changes they will leave the website and go "coupon hunting" is very high, and they might not come back. The integrated coupon code field is displayed in a custom expansible section, and while ness noticeable is still discoverable by customers who have a coupon and need to add it.
 
+* **Trust symbols placement**: Add trust symbols to the checkout page using one or more of the widget areas:
+
 1. Order Summary: at the bottom of the order summary, below the order details and the place order button when present.
 2. Checkout Sidebar: displayed on the sidebar, below the order summary.
 3. Checkout Header - Desktop: at the checkout header -- only displayed on desktop devices and when using the plugin's header and footer templates.
@@ -81,7 +83,7 @@ We are working to bring to you the following PRO features:
 
 = More features? =
 
-**If you need a features that is not listed above [visit our feedback page](https://feedback.fluidcheckout.com) and see which features we are planning to add or make a feature request.**
+**If you need a features that is not listed above [visit our feedback page](https://feedback.fluidcheckout.com) and see which features we are planning to add, vote on them, or make a new feature request.**
 
 
 = Tested WooCommerce Themes =
@@ -153,12 +155,13 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Screenshots ==
 
-1. Step 1 - Contact: Email, newsletter sign-up and account creation
-2. Step 2 - Shipping: Address and shipping method
+1. Step 1 - Contact: Email, account creation and newsletter sign-up
+2. Step 2 - Shipping: Shipping address, shipping method, gift options, additional order notes
 3. Step 3 - Billing: Billing address and company information
 4. Step 4 - Payment: Payment options and discounts
-5. Single step layout: All fields are displayed in one single step.
-6. Settings: Layout options and features
+5. Single Step: All fields are displayed in one single step.
+6. Settings: Multi-step or single-step layout, choose a logo and header color, enable/disable features
+7. Theme Deli: The checkout page looks and feels like your website, even with highly styled themes
 
 
 == Changelog ==
