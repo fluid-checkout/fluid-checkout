@@ -34,7 +34,7 @@ With themes that are highly stylized such as Storefront Deli -- when comparing t
 
 = Lite Version (Free) =
 
-* **Multi-step or Single-step**: Choose between multi-step and one-step checkout layouts. While Fluid Checkout changes the layout of the checkout page, it will still look and feels like your website.
+* **Multi-step or Single-step**: Choose between multi-step and one-step checkout layouts. While Fluid Checkout changes the layout of the checkout page, it will still look and feel like your website.
 
 * **Optimized for mobile**: Fluid Checkout is optimized for mobile devices and will surface the most appropriate keyboard type on fields such as phone and email. In fact, Fluid Checkout was created with mobile devices in mind, and enhanced with more functionality and style for bigger screens.
 
