@@ -269,9 +269,6 @@ class FluidCheckout {
 	 * @since 1.2.0
 	 */
 	public function load_plugin_compat_features() {
-		// Bail if visiting admin pages
-		if ( is_admin() ) { return; }
-
 		// Get active plugins
 		$plugins_installed = get_option('active_plugins');
 
@@ -299,9 +296,6 @@ class FluidCheckout {
 	 * @since 1.2.0
 	 */
 	public function load_theme_compat_features() {
-		// Bail if visiting admin pages
-		if ( is_admin() ) { return; }
-
 		// Get currently active theme and child theme
 		$theme_slugs = array( get_template(), get_stylesheet() );
 
