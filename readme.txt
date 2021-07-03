@@ -166,7 +166,12 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= 1.2.0 =
+= [Unreleased] =
+* New feature: Added information message box for packing slips, works with __WooCommerce PDF Invoices & Packing Slips (by Ewout Fernhout)__ and __WooCommerce Print Invoices/Packing Lists (by SkyVerge)__.
+* Fixed: Display gift message on packing slips.
+* Fix - Wrong check preventing compatibility classes from loading on the admin pages.
+
+= 1.2.0 - 2021-06-25 =
 * First public release.
 
 
