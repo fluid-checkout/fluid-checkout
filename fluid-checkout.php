@@ -6,8 +6,8 @@ Description: Provides a Fluid Checkout experience for any WooCommerce store. Ask
 Text Domain: fluid-checkout
 Domain Path: /languages
 Version: 1.2.0
-Author: Fluidweb.co
-Author URI: https://fluidweb.co/
+Author: Fluid Checkout
+Author URI: https://fluidcheckout.com/
 License: GPLv2
 WC requires at least: 5.0.0
 WC tested up to: 5.4.0
@@ -158,6 +158,7 @@ class FluidCheckout {
 			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'fc_enable_checkout_gift_options', 'enable_default' => 'no' ),
 			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php', 'enable_option' => 'fc_enable_checkout_coupon_codes', 'enable_default' => 'yes' ),
 			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'fc_enable_checkout_widget_areas', 'enable_default' => 'yes' ),
+			'packing-slips'                       => array( 'file' => self::$directory_path . 'inc/packing-slips.php', 'enable_option' => 'fc_enable_packing_slips_options', 'enable_default' => 'yes' ),
 		);
 	}
 
@@ -269,9 +270,6 @@ class FluidCheckout {
 	 * @since 1.2.0
 	 */
 	public function load_plugin_compat_features() {
-		// Bail if visiting admin pages
-		if ( is_admin() ) { return; }
-
 		// Get active plugins
 		$plugins_installed = get_option('active_plugins');
 
@@ -299,9 +297,6 @@ class FluidCheckout {
 	 * @since 1.2.0
 	 */
 	public function load_theme_compat_features() {
-		// Bail if visiting admin pages
-		if ( is_admin() ) { return; }
-
 		// Get currently active theme and child theme
 		$theme_slugs = array( get_template(), get_stylesheet() );
 

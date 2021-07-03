@@ -46,6 +46,9 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		// Emails
 		add_action( 'woocommerce_email_after_order_table', array( $this, 'output_gift_message_order_details_email' ), 10, 4 );
 		add_filter( 'woocommerce_email_styles', array( $this, 'add_email_styles' ), 10, 2 );
+
+		// Packing slips
+		add_filter( 'fc_packing_slips_message_box_args', array( $this, 'change_packing_slip_message_box_args' ), 10, 2 );
 	}
 
 
@@ -542,6 +545,34 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		}
 
 		return $css;
+	}
+
+
+
+	/**
+	 * Get the message box markup for packing slip documents.
+	 *
+	 * @param   array   $args           Packing slip message box arguments.
+	 * @param   int     $order_id       ID of the order.
+	 */
+	public function change_packing_slip_message_box_args( $args, $order_id ) {
+		// Bail if order_id invalid
+		if ( ! $order_id ) { return $args; }
+
+		// Get gift options
+		$gift_options = $this->get_gift_options_from_order( $order_id );
+
+		// Bail if no order does not have a gift message
+		if ( empty( $gift_options[ '_fc_gift_message' ] ) ) { return $args; }
+
+		// Get message values for gift
+		$args[ 'info_text' ] = $args[ 'message_body' ];
+		$args[ 'message_body_extra_classes' ] = $args[ 'message_body_extra_classes' ] . ' packing-list__message-body--gift-message';
+		$args[ 'message_body' ] = $gift_options[ '_fc_gift_message' ];
+		$args[ 'message_footer' ] = $gift_options[ '_fc_gift_from' ];
+		$args[ 'message_icon_url' ] = self::$directory_url . 'images/icon-gift-package.png';
+
+		return $args;
 	}
 
 }

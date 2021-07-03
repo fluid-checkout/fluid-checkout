@@ -102,7 +102,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 * Woostify
 * Zakra
 
-**If you have any issues to use Fluid Checkout with your theme please let us know through the plugin's support forum or [our feedback page](https://feedback.fluidcheckout.com) and we'll quickly fix it.**
+**If you have any issues using Fluid Checkout with your theme please let us know through the plugin's support forum or [our feedback page](https://feedback.fluidcheckout.com) and we'll quickly fix it.**
 
 
 = Fully Customizable =
@@ -146,12 +146,17 @@ If you want to tweak the settings, head over to WP Admin > WooCommerce > Setting
 
 == Frequently Asked Questions ==
 
-= How do I get Fluid Checkout for WooCommerce PRO? =
-We are working on building the PRO version of Fluid Checkout. You can visit https://fluidcheckout.com and sign up to be the first to know when it's ready.
+= Will Fluid Checkout work with my theme? =
+
+Yes! Fluid Checkout should work with most theme out-of-the-box. However some themes may need adjustments due to not using WooCommerce standards hooks or styles.
+
+**If you have any issues using Fluid Checkout with your theme please let us know through the plugin's support forum or [our feedback page](https://feedback.fluidcheckout.com) and we'll quickly fix it.**
 
 = How do I add trust symbols to the checkout page? =
 The plugin provides widget areas in strategic positions on the checkout page for adding the trust symbols. Head over to WP Admin > Appearance > Widget Areas, and add any type of widget to boost the perceived trust customers have on the website.
 
+= How do I get Fluid Checkout for WooCommerce PRO? =
+We are working on building the PRO version of Fluid Checkout. You can visit https://fluidcheckout.com and sign up to be the first to know when it's ready.
 
 == Screenshots ==
 
@@ -166,8 +171,15 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= 1.2.0 =
+= [Unreleased] =
+* New feature: Added information message box for packing slips, works with __WooCommerce PDF Invoices & Packing Slips (by Ewout Fernhout)__ and __WooCommerce Print Invoices/Packing Lists (by SkyVerge)__.
+* Fixed: Display gift message on packing slips.
+* Fix - Wrong check preventing compatibility classes from loading on the admin pages.
+
+= 1.2.0 - 2021-06-25 =
 * First public release.
 
 
 == Upgrade Notice ==
+
+Added information and gift message to packing slips. You'll need a supported Packing Slip plugin to use the new feature.
