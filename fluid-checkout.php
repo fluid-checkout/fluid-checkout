@@ -6,8 +6,8 @@ Description: Provides a Fluid Checkout experience for any WooCommerce store. Ask
 Text Domain: fluid-checkout
 Domain Path: /languages
 Version: 1.2.0
-Author: Fluidweb.co
-Author URI: https://fluidweb.co/
+Author: Fluid Checkout
+Author URI: https://fluidcheckout.com/
 License: GPLv2
 WC requires at least: 5.0.0
 WC tested up to: 5.4.0
