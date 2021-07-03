@@ -181,3 +181,5 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 
 == Upgrade Notice ==
+
+Added information and gift message to packing slips. You'll need a supported Packing Slip plugin to use the new feature.
