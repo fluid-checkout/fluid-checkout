@@ -175,7 +175,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 * New feature: Added information message box for packing slips, works with __WooCommerce PDF Invoices & Packing Slips (by Ewout Fernhout)__ and __WooCommerce Print Invoices/Packing Lists (by SkyVerge)__.
 * Fixed: Wrong check preventing compatibility classes from loading on the admin pages.
 * Fixed: Display gift message on packing slips.
-* Fixed: Select2 field height for theme Storefront.
+* Fixed: Select2 field height for themes Storefront, OnePress.
 
 = 1.2.0 - 2021-06-25 =
 * First public release.
