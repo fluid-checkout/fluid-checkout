@@ -4,7 +4,7 @@ Tags: woocommerce, e-commerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.2
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -171,7 +171,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 == Changelog ==
 
-= [Unreleased] =
+= 1.2.1 - 2021-07-05 =
 * New feature: Added information message box for packing slips, works with __WooCommerce PDF Invoices & Packing Slips (by Ewout Fernhout)__ and __WooCommerce Print Invoices/Packing Lists (by SkyVerge)__.
 * Fixed: Wrong check preventing compatibility classes from loading on the admin pages.
 * Fixed: Display gift message on packing slips.
