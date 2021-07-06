@@ -28,7 +28,7 @@ class FluidCheckout_WooCommercePDFInvoicesPackingSlips extends FluidCheckout {
 	 */
 	public function late_hooks() {
 		// Packing Slips customizations
-		if ( class_exists( 'FluidCheckout_PackingSlips' ) ) {
+		if ( class_exists( 'FluidCheckout_PackingSlips' ) && class_exists( 'FluidCheckout_GiftOptions' ) && ! FluidCheckout_GiftOptions::instance()->is_gift_message_in_order_details() ) {
 			add_action( 'wpo_wcpdf_before_order_details', array( $this, 'output_message_box_for_packing_slips' ), 10, 2 );
 			add_action( 'wpo_wcpdf_template_styles', array( $this, 'add_message_box_styles_for_packing_slips' ), 10, 2 );
 		}
