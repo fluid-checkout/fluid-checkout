@@ -48,13 +48,13 @@ class FluidCheckout_PackingSlips extends FluidCheckout {
 		for ( $index = 0; $index < count( $settings ) - 1; $index++ ) {
 			$args = $settings[ $index ];
 
-			if ( array_key_exists( 'id', $args ) && $args[ 'id' ] == 'fc_display_gift_message_in_order_details' ) {
+			if ( array_key_exists( 'id', $args ) && $args[ 'id' ] == 'fc_enable_checkout_widget_areas' ) {
 				$position_index = $index;
 			}
 		}
 
 		// Insert at token position
-		$new_settings  = array_slice( $settings, 0, $position_index + 1 );
+		$new_settings  = array_slice( $settings, 0, $position_index );
 		$new_settings[] = $insert_settings;
 		$new_settings = array_merge( $new_settings, array_slice( $settings, $position_index, count( $settings ) ) );
 

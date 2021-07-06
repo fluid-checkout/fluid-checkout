@@ -349,7 +349,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'autoload'          => false,
 					),
 					array(
-						'desc'              => __( 'Display the gift message as part of the order details table', 'fluid-checkout' ),
+						'desc'              => __( 'Display the gift message as part of the order details table instead of a separate section', 'fluid-checkout' ),
 						'desc_tip'          => __( 'This option affects the order confirmation page (thank you page), order details at account pages, emails and packing slips.', 'fluid-checkout' ),
 						'id'                => 'fc_display_gift_message_in_order_details',
 						'type'              => 'checkbox',

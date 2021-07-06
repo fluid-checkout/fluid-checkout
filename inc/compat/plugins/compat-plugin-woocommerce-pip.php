@@ -28,7 +28,7 @@ class FluidCheckout_WooCommercePIP extends FluidCheckout {
 	 */
 	public function late_hooks() {
 		// Packing Slips customizations
-		if ( class_exists( 'FluidCheckout_PackingSlips' ) ) {
+		if ( class_exists( 'FluidCheckout_PackingSlips' ) && class_exists( 'FluidCheckout_GiftOptions' ) && ! FluidCheckout_GiftOptions::instance()->is_gift_message_in_order_details() ) {
 			add_action( 'wc_pip_before_body', array( $this, 'output_message_box_for_packing_slips' ), 10, 4 );
 			add_action( 'wc_pip_styles', array( $this, 'add_message_box_styles_for_packing_slips' ), 10 );
 		}

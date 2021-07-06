@@ -171,6 +171,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 == Changelog ==
 
+= Unreleased =
+* Fixed: Gift message not displaying on emails if option "display as part of order details table" was checked
+
 = 1.2.1 - 2021-07-05 =
 * New feature: Added information message box for packing slips, works with __WooCommerce PDF Invoices & Packing Slips (by Ewout Fernhout)__ and __WooCommerce Print Invoices/Packing Lists (by SkyVerge)__.
 * Fixed: Wrong check preventing compatibility classes from loading on the admin pages.

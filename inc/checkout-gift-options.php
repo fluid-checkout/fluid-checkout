@@ -408,8 +408,8 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 * @param string $tax_display Tax to display.
 	 */
 	public function maybe_add_gift_message_order_received_details_table( $total_rows, $order, $tax_display ) {
-		// Bail if not on order received page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || ! is_order_received_page() ){ return $total_rows; }
+		// Bail if displaying gift message as a separate section
+		if ( ! $this->is_gift_message_in_order_details() ) { return $total_rows; }
 
 		// Get token position
 		$position_index = array_search( 'shipping_address', array_keys( $total_rows ) ) + 1;
@@ -424,23 +424,20 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		// Insert at token position
 		$new_total_rows  = array_slice( $total_rows, 0, $position_index );
 
-		// Check if should display message text as a separate section
-		if ( $this->is_gift_message_in_order_details() ) {
-			// Gift message
-			if ( ! empty( $gift_message ) ) {
-				$new_total_rows[ 'gift_message' ] = array(
-					'label' => __( 'Gift message:', 'fluid-checkout' ),
-					'value' => $gift_message,
-				);
-			}
+		// Gift message
+		if ( ! empty( $gift_message ) ) {
+			$new_total_rows[ 'gift_message' ] = array(
+				'label' => __( 'Gift message:', 'fluid-checkout' ),
+				'value' => $gift_message,
+			);
+		}
 
-			// Gift message from
-			if ( ! empty( $gift_from ) ) {
-				$new_total_rows[ 'gift_message_from' ] = array(
-					'label' => __( 'Gift message from:', 'fluid-checkout' ),
-					'value' => $gift_from,
-				);
-			}
+		// Gift message from
+		if ( ! empty( $gift_from ) ) {
+			$new_total_rows[ 'gift_message_from' ] = array(
+				'label' => __( 'Gift message from:', 'fluid-checkout' ),
+				'value' => $gift_from,
+			);
 		}
 
 		$new_total_rows = array_merge( $new_total_rows, array_slice( $total_rows, $position_index, count( $total_rows ) ) );
