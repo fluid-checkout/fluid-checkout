@@ -171,7 +171,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 == Changelog ==
 
-= 1.2.2 - 2021-07-06
+= 1.2.2 - 2021-07-06 =
 * Fixed: Gift message not displaying on emails if option "display as part of order details table" was checked
 
 = 1.2.1 - 2021-07-05 =
