@@ -48,8 +48,8 @@ class FluidCheckout_PackingSlips extends FluidCheckout {
 		for ( $index = 0; $index < count( $settings ) - 1; $index++ ) {
 			$args = $settings[ $index ];
 
-			if ( array_key_exists( 'id', $args ) && $args[ 'id' ] == 'fc_enable_checkout_widget_areas' ) {
-				$position_index = $index;
+			if ( array_key_exists( 'id', $args ) && $args[ 'id' ] == 'fc_display_gift_message_in_order_details' ) {
+				$position_index = $index + 1;
 			}
 		}
 
