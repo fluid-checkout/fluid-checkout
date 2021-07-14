@@ -20,7 +20,7 @@ class FluidCheckout_WooCommercePIP extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Late hooks
-		add_filter( 'init', array( $this, 'late_hooks' ), 100 );
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 	}
 
 	/**

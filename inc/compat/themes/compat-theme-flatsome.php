@@ -20,7 +20,7 @@ class FluidCheckout_ThemeCompat_Hazel extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Late hooks
-		add_filter( 'init', array( $this, 'late_hooks' ), 100 );
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
 		// Page container class
 		remove_filter( 'fc_content_section_class', array( FluidCheckout_Steps::instance(), 'fc_content_section_class' ), 10 );
