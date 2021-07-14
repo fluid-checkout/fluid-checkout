@@ -7,11 +7,15 @@
 	padding: 0;
 	border: 0;
 }
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:not( :last-child ) {
+
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:not( :last-child ),
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .shipping_address:not( :last-child ) {
 	padding-bottom: $global-spacing-small;
 }
+
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields:after,
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:after {
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:after,
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .shipping_address:after {
 	@include clearfix();
 }
 

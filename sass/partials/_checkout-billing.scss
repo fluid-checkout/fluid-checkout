@@ -23,6 +23,7 @@ div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
 
 
 
+div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:not( :last-child ),
 div.woocommerce form .woocommerce-billing-fields__field-wrapper:not( :last-child ) {
 	padding-bottom: $global-spacing-small;
 }

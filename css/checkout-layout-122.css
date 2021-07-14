@@ -955,6 +955,7 @@ div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
     background-color: #fff;
     color: inherit; }
 
+div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:not(:last-child),
 div.woocommerce form .woocommerce-billing-fields__field-wrapper:not(:last-child) {
   padding-bottom: 20px; }
 
@@ -982,11 +983,13 @@ div.woocommerce form .woocommerce-billing-only-fields__field-wrapper {
   padding: 0;
   border: 0; }
 
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:not(:last-child) {
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:not(:last-child),
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .shipping_address:not(:last-child) {
   padding-bottom: 20px; }
 
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields:after,
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:after {
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:after,
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .shipping_address:after {
   content: '';
   display: table;
   table-layout: fixed;

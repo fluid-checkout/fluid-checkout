@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
- * @fc-version 1.2.0
+ * @fc-version 1.2.3
  * @global WC_Checkout $checkout
  */
 
@@ -48,6 +48,11 @@ defined( 'ABSPATH' ) || exit;
 		?>
 	</div>
 	<?php endif; ?>
+
+	<?php
+	// CHANGE: Added for compatibility with plugins that use this action hook
+	do_action( 'woocommerce_checkout_billing', $checkout );
+	?>
 
 	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
 </div>
