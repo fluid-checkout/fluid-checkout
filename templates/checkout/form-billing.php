@@ -28,13 +28,13 @@ defined( 'ABSPATH' ) || exit;
 	<?php // CHANGE: Add markup for collapsible-block component ?>
 	<div id="woocommerce-billing-fields__field-wrapper" class="woocommerce-billing-fields__field-wrapper <?php echo $is_billing_same_as_shipping ? 'is-collapsed' : ''; // WPCS: XSS ok. ?>" data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo $is_billing_same_as_shipping ? 'collapsed' : 'expanded'; // WPCS: XSS ok. ?>">
 		<div class="collapsible-content__inner">
-		<?php // CHANGE: Display billing fields which might be copied from shipping fields ?>
-		<?php
-		foreach ( $billing_same_as_shipping_fields as $key => $field ) {
-			woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
-		}
-		?>
-		<?php // CHANGE: Add markup for collapsible-block component ?>
+			<?php // CHANGE: Display billing fields which might be copied from shipping fields ?>
+			<?php
+			foreach ( $billing_same_as_shipping_fields as $key => $field ) {
+				woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+			}
+			?>
+			<?php // CHANGE: Add markup for collapsible-block component ?>
 		</div>
 	</div>
 
