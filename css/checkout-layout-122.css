@@ -955,6 +955,15 @@ div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
     background-color: #fff;
     color: inherit; }
 
+div.woocommerce form .woocommerce-billing-fields__field-wrapper:not(:last-child) {
+  padding-bottom: 20px; }
+
+div.woocommerce form .woocommerce-billing-fields__field-wrapper:after {
+  content: '';
+  display: table;
+  table-layout: fixed;
+  width: 100%; }
+
 body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-collapsed > .collapsible-content__inner {
   display: none; }
 
@@ -967,6 +976,22 @@ div.woocommerce form .woocommerce-billing-only-fields__field-wrapper {
 /*------------------------------------*\
 	#CHECKOUT SHIPPING STEP
 \*------------------------------------*/
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields,
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:not(:last-child) {
+  padding-bottom: 20px; }
+
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields:after,
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:after {
+  content: '';
+  display: table;
+  table-layout: fixed;
+  width: 100%; }
+
 div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   background-color: #F0F4F4; }
   div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] textarea,
@@ -986,12 +1011,6 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
 /*------------------------------------*\
   #CHECKOUT SHIPPING METHODS
 \*------------------------------------*/
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields,
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
-  margin: 0;
-  padding: 0;
-  border: 0; }
-
 #shipping_method.shipping-method__options {
   list-style-type: none;
   margin: 0;

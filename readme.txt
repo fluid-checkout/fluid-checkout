@@ -171,6 +171,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 == Changelog ==
 
+= Unreleased =
+* Fixed: Added missing clearings to some checkout sections which were allowing overlapping fields.
+
 = 1.2.2 - 2021-07-06 =
 * Fixed: Gift message not displaying on emails when the option "display as part of order details table" was checked
 
