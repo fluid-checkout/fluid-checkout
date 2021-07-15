@@ -2685,7 +2685,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Change default order notes value
+	 * Change default checkout field value, getting it from the persisted fields session.
 	 *
 	 * @param   mixed    $value   Value of the field.
 	 * @param   string   $input   Checkout field key (ie. order_comments ).
