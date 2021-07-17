@@ -25,8 +25,7 @@ var del = require('del');
 // Run:
 // gulp update-ver
 // Starts watcher. Watcher runs appropriate tasks on file changes
-gulp.task( 'update-ver', function( done ) {
-	var today = new Date();
+gulp.task( 'update-ver', gulp.series( function( done ) {
 	var json = loadJsonFile.sync( 'package.json' );
 	settings.pkg = json;
 	settings.assetsVersion = '-' + json.version.replace( /\./gi, '' );
@@ -36,6 +35,19 @@ gulp.task( 'update-ver', function( done ) {
 	.pipe(replace(/Version: (.)*/g, 'Version: ' + settings.pkg.version ))
 	.pipe(gulp.dest('./'));
 
+	done();
+} ) );
+
+
+// Run:
+// gulp update-ver
+// Starts watcher. Watcher runs appropriate tasks on file changes
+gulp.task( 'update-ver-release', gulp.series( 'update-ver', function( done ) {
+	var today = new Date();
+	var json = loadJsonFile.sync( 'package.json' );
+	settings.pkg = json;
+	settings.assetsVersion = '-' + json.version.replace( /\./gi, '' );
+
 	gulp.src( ['./readme.txt'] )
 	// See http://mdn.io/string.replace#Specifying_a_string_as_a_parameter
 	.pipe(replace(/Stable tag: (.)*/g, 'Stable tag: ' + settings.pkg.version ))
@@ -43,7 +55,7 @@ gulp.task( 'update-ver', function( done ) {
 	.pipe(gulp.dest('./'));
 
 	done();
-});
+} ) );
 
 
 

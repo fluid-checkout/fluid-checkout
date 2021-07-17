@@ -173,6 +173,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 = Unreleased =
 * Improved: Add compatibility with plugin "Delivery & Pickup Date Time for WooCommerce" by CodeRockz.
+* Fixed: Conflict with plugin "Merge + Minify + Refresh" by Launch Interactive preventing checkout features to work.
 * Fixed: Add back the hooks `woocommerce_checkout_billing` and `woocommerce_checkout_shipping` for better compatibility. Changed template files `form-billing.php` and `form-shipping.php`.
 * Fixed: Added missing clearings to some checkout sections which were allowing overlapping fields.
 
