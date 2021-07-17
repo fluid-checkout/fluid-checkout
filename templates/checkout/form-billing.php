@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
- * @fc-version 1.2.0
+ * @fc-version 1.2.3
  * @global WC_Checkout $checkout
  */
 
@@ -28,13 +28,13 @@ defined( 'ABSPATH' ) || exit;
 	<?php // CHANGE: Add markup for collapsible-block component ?>
 	<div id="woocommerce-billing-fields__field-wrapper" class="woocommerce-billing-fields__field-wrapper <?php echo $is_billing_same_as_shipping ? 'is-collapsed' : ''; // WPCS: XSS ok. ?>" data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo $is_billing_same_as_shipping ? 'collapsed' : 'expanded'; // WPCS: XSS ok. ?>">
 		<div class="collapsible-content__inner">
-		<?php // CHANGE: Display billing fields which might be copied from shipping fields ?>
-		<?php
-		foreach ( $billing_same_as_shipping_fields as $key => $field ) {
-			woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
-		}
-		?>
-		<?php // CHANGE: Add markup for collapsible-block component ?>
+			<?php // CHANGE: Display billing fields which might be copied from shipping fields ?>
+			<?php
+			foreach ( $billing_same_as_shipping_fields as $key => $field ) {
+				woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+			}
+			?>
+			<?php // CHANGE: Add markup for collapsible-block component ?>
 		</div>
 	</div>
 
@@ -48,6 +48,11 @@ defined( 'ABSPATH' ) || exit;
 		?>
 	</div>
 	<?php endif; ?>
+
+	<?php
+	// CHANGE: Added for compatibility with plugins that use this action hook
+	do_action( 'woocommerce_checkout_billing', $checkout );
+	?>
 
 	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
 </div>

@@ -20,7 +20,7 @@ class FluidCheckout_WooCommerceCorreios extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Late hooks
-		add_filter( 'init', array( $this, 'late_hooks' ), 100 );
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
 		// Move shipping delivery forecast to the shipping method description
 		add_filter( 'fc_shipping_method_option_description', array( $this, 'shipping_delivery_forecast' ), 10, 2 );

@@ -40,6 +40,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
@@ -118,6 +120,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'update_customer_persisted_data' ), 10 );
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session' ), 10, 2 );
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data' ), 10 );
+	}
+
+	/**
+	 * Add or remove late hooks.
+	 */
+	public function late_hooks() {
+		// Unhook WooCommerce functions
+		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
+		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
 	}
 
 
@@ -2674,7 +2685,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Change default order notes value
+	 * Change default checkout field value, getting it from the persisted fields session.
 	 *
 	 * @param   mixed    $value   Value of the field.
 	 * @param   string   $input   Checkout field key (ie. order_comments ).
