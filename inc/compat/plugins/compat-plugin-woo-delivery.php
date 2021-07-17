@@ -69,6 +69,9 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 			// Get delivery date value from session
 			add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_delivery_date_value_from_session' ), 10, 2 );
+
+			// Change delivery date field args
+			add_filter( 'woocommerce_form_field_args', array( $this, 'change_delivery_date_field_args' ), 10, 3 );
 		}
 	}
 
@@ -177,6 +180,23 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		}
 
 		return $value;
+	}
+
+
+
+	/**
+	 * Change the fields argments of the delivery date field to set the default date of the date picker component with the value previously selected by the users.
+	 * 
+	 * @param  mixed   $args   Arguments.
+	 * @param  string  $key    Key.
+	 * @param  string  $value  (default: null).
+	 */
+	public function change_delivery_date_field_args( $args, $key, $value ) {
+		if ( ! empty( WC()->checkout->get_value('coderockz_woo_delivery_date_field') ) ) {
+			$args['custom_attributes']['data-default_date'] = WC()->checkout->get_value('coderockz_woo_delivery_date_field');
+		}
+
+		return $args;
 	}
 
 }
