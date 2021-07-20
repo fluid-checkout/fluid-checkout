@@ -200,4 +200,5 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 == Upgrade Notice ==
 
-Added information and gift message to packing slips. You'll need a supported Packing Slip plugin to use the new feature.
+= 1.2.4 =
+Small layout bug fixes and compatibility with "Stripe for WooCommerce" and "Mercado Pago Payments for WooCommerce".
