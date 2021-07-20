@@ -27,6 +27,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_styles' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_plugin_compat_styles' ), 10 );
 	}
 
 
@@ -125,6 +126,36 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			// Maybe load theme's compatibility file
 			if ( file_exists( self::$directory_path . $theme_compat_file_path ) ) {
 				wp_enqueue_style( 'fc-theme-compat-'.$theme_slug, self::$directory_url . $theme_compat_file_path, array(), null );
+			}
+		}
+	}
+
+
+
+	/**
+	 * Enqueue plugins compatibility styles.
+	 * @since 1.2.4
+	 */
+	public function enqueue_plugin_compat_styles() {
+		// Bail if not visiting pages affected by the plugin
+		if ( is_admin() || ( ! is_checkout() && ! is_account_page() ) ) { return; }
+
+		// Get active plugins
+		$plugins_installed = get_option('active_plugins');
+
+		foreach ( $plugins_installed as $plugin_file ) {
+			// Get plugin slug
+			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
+
+			// Maybe skip compat file
+			if ( get_option( 'fc_enable_compat_plugin_style_' . $plugin_slug, true ) === 'false' ) { continue; }
+
+			// Get current plugin's compatibility style file name
+			$plugin_compat_file_path = 'css/compat/plugins/compat-' . $plugin_slug . self::$asset_version . '.css';
+
+			// Maybe load plugin's compatibility file
+			if ( file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
+				wp_enqueue_style( 'fc-plugin-compat-'.$plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
 			}
 		}
 	}
