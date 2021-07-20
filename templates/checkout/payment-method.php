@@ -20,7 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$has_icon_classes = ! empty( trim( $gateway->get_icon() ) ) ? 'has-icon' : ''; // WPCS: XSS ok.
+// Use output buffer to avoid invalid when `get_icon` function outputs the contents instead of returning it
+ob_start();
+$icon_html = $gateway->get_icon();
+$has_icon_classes = ! empty( ob_get_clean() ) || ! empty( trim( $icon_html ) ) ? 'has-icon' : ''; // WPCS: XSS ok.
 ?>
 <?php // CHANGE: Add class to detect when the list item has an icon ?>
 <li class="wc_payment_method payment_method_<?php echo esc_attr( $gateway->id ); ?> <?php echo $has_icon_classes; // WPCS: XSS ok. ?>">
