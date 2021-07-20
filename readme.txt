@@ -171,6 +171,10 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 == Changelog ==
 
+= Unreleased =
+* Added: Plugin compatibility styles enqueue functions.
+* Added: Compatibility with plugin "Mercado Pago payments for WooCommerce" by Mercado Pago.
+
 = 1.2.3 - 2021-07-17 =
 * Improved: Add compatibility with plugin "Delivery & Pickup Date Time for WooCommerce" by CodeRockz.
 * Fixed: Conflict with plugin "Merge + Minify + Refresh" by Launch Interactive preventing checkout features to work.
