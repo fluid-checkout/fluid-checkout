@@ -113,6 +113,21 @@ gulp.task( 'build-css', gulp.series( 'update-ver', 'clean-css', function( done )
 	.pipe(sourcemaps.write('maps'))
 	.pipe(gulp.dest('./css/compat/themes/')); // save .min.css
 
+	// PLUGIN COMPATIBILITY FILES
+	gulp.src([
+		'./sass/compat/plugins/*.scss',
+	] )
+	.pipe(plumber())
+	.pipe(sourcemaps.init())
+	.pipe(sass())
+	.pipe(autoprefixer({ cascade: false }))
+	.pipe(rename({suffix: settings.assetsVersion}))
+	.pipe(gulp.dest('./css/compat/plugins/')) // save .css
+	.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false}, reduceIdents: {keyframes: false} } ) )
+	.pipe(rename( { suffix: '.min' } ) )
+	.pipe(sourcemaps.write('maps'))
+	.pipe(gulp.dest('./css/compat/plugins/')); // save .min.css
+
 	done();
 } ) );
 

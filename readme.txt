@@ -4,7 +4,7 @@ Tags: woocommerce, e-commerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.2
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -171,6 +171,14 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 == Changelog ==
 
+= 1.2.4 - 2021-07-20 =
+* Added: Plugin compatibility styles enqueue functions.
+* Added: Compatibility with plugin "Mercado Pago payments for WooCommerce" by Mercado Pago.
+* Added: Compatibility with plugin "Stripe For WooCommerce" by Payment Plugins.
+* Fixed: Broken icon markup for some payment methods.
+* Fixed: Position for payment method icons to the right at checkout.
+* Fixed: Payment methods styles forcing display of payment method options not available for the some devices.
+
 = 1.2.3 - 2021-07-17 =
 * Improved: Add compatibility with plugin "Delivery & Pickup Date Time for WooCommerce" by CodeRockz.
 * Fixed: Conflict with plugin "Merge + Minify + Refresh" by Launch Interactive preventing checkout features to work.
@@ -192,4 +200,5 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 == Upgrade Notice ==
 
-Added information and gift message to packing slips. You'll need a supported Packing Slip plugin to use the new feature.
+= 1.2.4 =
+Small layout bug fixes and compatibility with "Stripe for WooCommerce" and "Mercado Pago Payments for WooCommerce".

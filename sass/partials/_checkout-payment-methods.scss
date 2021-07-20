@@ -31,7 +31,6 @@
 
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method {
-	display: block;
 	width: 100%;
 	margin: $payment-method-margin;
 	padding: 0;
@@ -150,7 +149,6 @@
 }
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label img {
-	float: none;
 	display: inline-block;
 	height: $payment-method-radio-size;
 	vertical-align: middle;
