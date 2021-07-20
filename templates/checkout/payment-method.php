@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <?php // CHANGE: Add class to detect when the list item has an icon ?>
-<li class="wc_payment_method payment_method_<?php echo esc_attr( $gateway->id ); ?> <?php echo ! empty( trim( $gateway->get_icon() ) ) ? 'has-icon' : ''; // WPCS: XSS ok. ?>"">
+<li class="wc_payment_method payment_method_<?php echo esc_attr( $gateway->id ); ?> <?php echo ! empty( trim( $gateway->get_icon() ) ) ? 'has-icon' : ''; // WPCS: XSS ok. ?>">
 	<input id="payment_method_<?php echo esc_attr( $gateway->id ); ?>" type="radio" class="input-radio" name="payment_method" value="<?php echo esc_attr( $gateway->id ); ?>" <?php checked( $gateway->chosen, true ); ?> data-order_button_text="<?php echo esc_attr( $gateway->order_button_text ); ?>" />
 
 	<label for="payment_method_<?php echo esc_attr( $gateway->id ); ?>">
