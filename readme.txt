@@ -174,8 +174,10 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 = Unreleased =
 * Added: Plugin compatibility styles enqueue functions.
 * Added: Compatibility with plugin "Mercado Pago payments for WooCommerce" by Mercado Pago.
+* Added: Compatibility with plugin "Stripe For WooCommerce" by Payment Plugins.
 * Fixed: Broken icon markup for some payment methods.
 * Fixed: Position for payment method icons to the right at checkout.
+* Fixed: Payment methods styles forcing display of payment method options not available for the some devices.
 
 = 1.2.3 - 2021-07-17 =
 * Improved: Add compatibility with plugin "Delivery & Pickup Date Time for WooCommerce" by CodeRockz.

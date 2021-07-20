@@ -1156,7 +1156,6 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   overflow: hidden; }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method {
-  display: block;
   width: 100%;
   margin: 0;
   padding: 0;
