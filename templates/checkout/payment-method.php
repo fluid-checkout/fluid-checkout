@@ -13,15 +13,17 @@
  * @see         https://docs.woocommerce.com/document/template-structure/
  * @package     WooCommerce\Templates
  * @version     3.5.0
- * @fc-version 1.2.0
+ * @fc-version 1.2.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+$has_icon_classes = ! empty( trim( $gateway->get_icon() ) ) ? 'has-icon' : ''; // WPCS: XSS ok.
 ?>
 <?php // CHANGE: Add class to detect when the list item has an icon ?>
-<li class="wc_payment_method payment_method_<?php echo esc_attr( $gateway->id ); ?> <?php echo ! empty( trim( $gateway->get_icon() ) ) ? 'has-icon' : ''; // WPCS: XSS ok. ?>">
+<li class="wc_payment_method payment_method_<?php echo esc_attr( $gateway->id ); ?> <?php echo $has_icon_classes; // WPCS: XSS ok. ?>">
 	<input id="payment_method_<?php echo esc_attr( $gateway->id ); ?>" type="radio" class="input-radio" name="payment_method" value="<?php echo esc_attr( $gateway->id ); ?>" <?php checked( $gateway->chosen, true ); ?> data-order_button_text="<?php echo esc_attr( $gateway->order_button_text ); ?>" />
 
 	<label for="payment_method_<?php echo esc_attr( $gateway->id ); ?>">
