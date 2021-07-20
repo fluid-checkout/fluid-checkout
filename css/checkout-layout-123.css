@@ -1272,7 +1272,6 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   margin-right: 10px; }
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label img {
-  float: none;
   display: inline-block;
   height: 24px;
   vertical-align: middle; }
@@ -1406,10 +1405,11 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   margin-bottom: 0; }
 
 .fc-place-order {
+  padding: 30px 0;
   text-align: center; }
 
 .fc-wrapper .fc-place-order .fc-place-order-button {
-  margin: 30px auto 30px;
+  margin: 0;
   width: 100%;
   max-width: 600px;
   min-height: 50px;

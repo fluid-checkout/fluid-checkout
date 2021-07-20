@@ -51,6 +51,7 @@
 
 
 .fc-place-order {
+	padding: $global-spacing 0;
 	text-align: center;
 }
 
@@ -58,7 +59,7 @@
 
 // Place order button
 .fc-wrapper .fc-place-order .fc-place-order-button {
-	margin: $global-spacing auto $global-spacing;
+	margin: 0;
 	width: 100%;
 	max-width: remsize( 60rem );
 	min-height: remsize( 5rem );
