@@ -4,7 +4,7 @@ Tags: woocommerce, e-commerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.2
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -171,7 +171,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 == Changelog ==
 
-= Unreleased =
+= 1.2.4 - 2021-07-20 =
 * Added: Plugin compatibility styles enqueue functions.
 * Added: Compatibility with plugin "Mercado Pago payments for WooCommerce" by Mercado Pago.
 * Added: Compatibility with plugin "Stripe For WooCommerce" by Payment Plugins.
