@@ -171,6 +171,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 == Changelog ==
 
+= Unreleased =
+* Added: New filter hook `fc_place_order_button_classes` to allow developers to change the place order button classes.
+
 = 1.2.4 - 2021-07-20 =
 * Added: Plugin compatibility styles enqueue functions.
 * Added: Compatibility with plugin "Mercado Pago payments for WooCommerce" by Mercado Pago.
