@@ -2472,7 +2472,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add wrapper element and custom class for the checkout place order button.
 	 */
 	public function add_place_order_button_wrapper( $button_html ) {
-		$button_html = str_replace( 'class="button alt', 'class="button alt fc-place-order-button', $button_html );
+		$button_html = str_replace( 'class="button alt', 'class="' . apply_filters( 'fc_place_order_button_classes', 'button alt' ) . ' fc-place-order-button', $button_html );
 		return '<div class="fc-place-order">' . $button_html . '</div>';
 	}
 
