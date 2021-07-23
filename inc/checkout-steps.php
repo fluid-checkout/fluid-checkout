@@ -109,6 +109,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
 		add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
 		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_sidebar' ), 1 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
 		add_action( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
 
@@ -2425,7 +2426,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout place order section.
 	 */
-	public function output_checkout_place_order( $step_id, $is_sidebar = false ) {
+	public function get_checkout_place_order_html( $step_id = 'payment', $is_sidebar = false ) {
 		ob_start();
 		wc_get_template(
 			'fc/checkout/place-order.php',
@@ -2450,7 +2451,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$place_order_html = str_replace( 'name="_wp_http_referer"', '', $place_order_html );
 		}
 
-		echo $place_order_html; // WPCS: XSS ok.
+		return $place_order_html; // WPCS: XSS ok.
+	}
+
+	/**
+	 * Output checkout place order section.
+	 */
+	public function output_checkout_place_order( $step_id = 'payment', $is_sidebar = false ) {
+		echo $this->get_checkout_place_order_html( $step_id, $is_sidebar );
 	}
 
 	/**
@@ -2467,6 +2475,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$this->output_checkout_place_order( '__sidebar', true );
 	}
+
+	/**
+	 * Add place order section as checkout fragment.
+	 *
+	 * @param array $fragments Checkout fragments.
+	 */
+	public function add_place_order_fragment( $fragments ) {
+		$html = $this->get_checkout_place_order_html();
+		$fragments['.place-order'] = $html;
+		return $fragments;
+	}
+
+
 
 	/**
 	 * Add wrapper element and custom class for the checkout place order button.
