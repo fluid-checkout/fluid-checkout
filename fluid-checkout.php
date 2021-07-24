@@ -8,9 +8,9 @@ Domain Path: /languages
 Version: 1.2.5-beta-1
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
-License: GPLv2
 WC requires at least: 5.0
 WC tested up to: 5.5
+License: GPLv3
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
