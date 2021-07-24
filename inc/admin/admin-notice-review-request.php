@@ -19,7 +19,7 @@ class FluidCheckout_AdminNotices_ReviewRequest extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'fc_admin_notices', array( $this, 'add_review_request_seven_days_notice' ), 10 );
+		add_action( 'fc_admin_notices', array( $this, 'add_review_request_timed_notice' ), 10 );
 		add_action( 'fc_admin_notices', array( $this, 'add_review_request_hundredth_order_notice' ), 10 );
 	}
 
@@ -28,9 +28,16 @@ class FluidCheckout_AdminNotices_ReviewRequest extends FluidCheckout {
 	/**
 	 * Add plugin review request notice.
 	 */
-	public static function add_review_request_seven_days_notice( $notices = array() ) {
+	public static function add_review_request_timed_notice( $notices = array() ) {
+		// Get install date
+		$install_date = get_option( 'fc_plugin_activation_time' );
+		$past_date = strtotime( '-7 days' );
+
+		// Bail if 7 days have not passed since installation
+		if ( $past_date < $install_date ) { return; }
+
 		$notices[] = array(
-			'name' => 'review_request_7_days',
+			'name' => 'review_request_timed',
 			'title' => __( 'Thanks for choosing Fluid Checkout, you rock!', 'fluid-checkout' ),
 			'description' => __( 'You have been using Fluid Checkout for a while. How do you like it so far? <br>Please give us a quick rating, it works as a boost for us to keep working on the plugin :)', 'fluid-checkout' ),
 			'actions' => array(

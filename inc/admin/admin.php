@@ -10,7 +10,6 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * __construct function.
 	 */
 	public function __construct() {
-		$this->load_admin_notices();
 		$this->hooks();
 	}
 
@@ -25,17 +24,6 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 		// WooCommerce Settings Styles
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles'), 10 );
-	}
-
-
-
-	/**
-	 * Load admin notices.
-	 * @since 1.2.5
-	 */
-	private function load_admin_notices() {
-		require_once self::$directory_path . 'inc/admin/admin-notices.php';
-		require_once self::$directory_path . 'inc/admin/admin-notice-review-request.php';
 	}
 
 
