@@ -48,6 +48,7 @@ class FluidCheckout {
 	public static $directory_url;
 	public static $plugin = 'Fluid Checkout for WooCommerce';
 	public static $plugin_slug = 'fluid-checkout';
+	public static $plugin_basename = ''; // Values set at function `set_plugin_vars`
 	public static $version = ''; // Values set at function `set_plugin_vars`
 	public static $asset_version = ''; // Values set at function `set_plugin_vars`
 
@@ -110,6 +111,7 @@ class FluidCheckout {
 
 		self::$directory_path = plugin_dir_path( __FILE__ );
 		self::$directory_url  = plugin_dir_url( __FILE__ );
+		self::$plugin_basename = plugin_basename( __FILE__ );
 		self::$version = get_file_data( __FILE__ , ['Version' => 'Version'], 'plugin')['Version'];
 		self::$asset_version = $this->get_assets_version_number();
 	}
@@ -353,7 +355,7 @@ class FluidCheckout {
 		$notices[] = array(
 			'name' => 'woocommerce_required',
 			'error' => true,
-			'description' => sprintf( wp_kses_post( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%3$s">Go to Plugin Search</a>', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', esc_url( get_admin_url() . 'plugin-install.php?s=woocommerce&tab=search&type=term' ) ),
+			'description' => sprintf( wp_kses_post( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%3$s">Go to Plugin Search</a>', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', admin_url( 'plugin-install.php?s=woocommerce&tab=search&type=term' ) ),
 			'dismissable' => false,
 		);
 		return $notices;

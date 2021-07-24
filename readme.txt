@@ -175,6 +175,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 = Unreleased =
 * Bump tested up to WP 5.8 and WooCommerce 5.5
 * Added: New filter hook `fc_place_order_button_classes` to allow developers to change the place order button classes.
+* Added: Handy "Settings" link on the plugins list.
 * Fixed: Added the place order section as a fragment in the checkout page as it is expected from the original WooCommerce behavior.
 
 = 1.2.4 - 2021-07-20 =
