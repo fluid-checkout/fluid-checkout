@@ -26,6 +26,7 @@ class FluidCheckout_AdminNotices_ReviewRequest extends FluidCheckout {
 
 	/**
 	 * Add plugin review request notice.
+	 * @param  array  $notices  Admin notices from the plugin.
 	 */
 	public static function add_review_request_timed_notice( $notices = array() ) {
 		// Get install date

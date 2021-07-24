@@ -28,9 +28,9 @@ var del = require('del');
 gulp.task( 'update-ver', gulp.series( function( done ) {
 	var json = loadJsonFile.sync( 'package.json' );
 	settings.pkg = json;
-	settings.assetsVersion = '-' + json.version.replace( /\./gi, '' );
+	settings.assetsVersion = '-' + settings.pkg.version.replace( /\./gi, '' );
 
-	gulp.src( ['./fluid-checkout.php'] )
+	gulp.src( settings.pkg.main )
 	// See http://mdn.io/string.replace#Specifying_a_string_as_a_parameter
 	.pipe(replace(/Version: (.)*/g, 'Version: ' + settings.pkg.version ))
 	.pipe(gulp.dest('./'));
@@ -46,7 +46,7 @@ gulp.task( 'update-ver-release', gulp.series( 'update-ver', function( done ) {
 	var today = new Date();
 	var json = loadJsonFile.sync( 'package.json' );
 	settings.pkg = json;
-	settings.assetsVersion = '-' + json.version.replace( /\./gi, '' );
+	settings.assetsVersion = '-' + settings.pkg.version.replace( /\./gi, '' );
 
 	gulp.src( ['./readme.txt'] )
 	// See http://mdn.io/string.replace#Specifying_a_string_as_a_parameter

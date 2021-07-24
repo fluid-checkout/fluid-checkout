@@ -130,15 +130,15 @@ class FluidCheckout {
 	 */
 	public function hooks() {
 		// Check if Woocommerce is activated
-		if( ! $this->is_woocommerce_active() ) {
-			add_action( 'all_admin_notices', array( $this, 'woocommerce_required_notice' ) );
+		if( ! $this->is_woocommerce_activated() ) {
+			add_action( 'fc_admin_notices', array( $this, 'add_woocommerce_required_notice' ), 10 );
 			return;
 		}
 
 		// Load features
-		add_action( 'plugins_loaded', array( $this, 'load_features' ) );
-		add_action( 'plugins_loaded', array( $this, 'load_plugin_compat_features' ) );
-		add_action( 'plugins_loaded', array( $this, 'load_theme_compat_features' ) );
+		add_action( 'plugins_loaded', array( $this, 'load_features' ), 10 );
+		add_action( 'plugins_loaded', array( $this, 'load_plugin_compat_features' ), 10 );
+		add_action( 'plugins_loaded', array( $this, 'load_theme_compat_features' ), 10 );
 
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
@@ -337,7 +337,7 @@ class FluidCheckout {
 	 *
 	 * @since 1.0.0
 	 */
-	public function is_woocommerce_active() {
+	public function is_woocommerce_activated() {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		return is_plugin_active( 'woocommerce/woocommerce.php' );
 	}
@@ -345,11 +345,18 @@ class FluidCheckout {
 
 
 	/**
-	 * Shows required message & deactivates this plugin
-	 * @since  1.0.0
+	 * Display a admin notice regarding the need for WooCommerce to be active.
+	 * @since  1.2.0
+	 * @param  array  $notices  Admin notices from the plugin.
 	 */
-	public function woocommerce_required_notice() {
-		echo '<div id="message" class="error"><p><strong>'. sprintf( wp_kses_post( __( '%1$s requires %2$s to be installed and active. You can <a href="%3$s">download %2$s here</a>.', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', 'https://woocommerce.com' ) .'</strong></p></div>';
+	public function add_woocommerce_required_notice( $notices = array() ) {
+		$notices[] = array(
+			'name' => 'woocommerce_required',
+			'error' => true,
+			'description' => sprintf( wp_kses_post( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%3$s">Go to Plugin Search</a>', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', esc_url( get_admin_url() . 'plugin-install.php?s=woocommerce&tab=search&type=term' ) ),
+			'dismissable' => false,
+		);
+		return $notices;
 	}
 
 

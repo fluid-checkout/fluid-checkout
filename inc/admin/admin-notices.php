@@ -39,6 +39,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 			'name'        => null,
 			'title'       => '',
 			'description' => '',
+			'error'       => false,
             'actions'     => array(),
 			'dismissable' => true,
 		);
@@ -55,13 +56,15 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
             }
             
             ?>
-			<div class="notice fc-admin-notice" style="border-left-color: #0047e1;">
-				<p><strong><?php echo wp_kses_post( $notice['title'] ); ?></strong></p>
+			<div class="notice fc-admin-notice <?php echo $notice['error'] === true ? 'notice-error' : ''; ?>" <?php echo $notice['error'] === true ? '' : 'style="border-left-color: #0047e1;"'; ?>>
+				<?php if ( ! empty( $notice['title'] ) ) : ?>
+					<p><strong><?php echo wp_kses_post( $notice['title'] ); ?></strong></p>
+				<?php endif; ?>
+
 				<p><?php echo wp_kses_post( $notice['description'] ); ?></p>
+
 				<?php if ( is_array( $notice['actions'] ) && count( $notice['actions'] ) > 0 ) { ?>
-					<p>
-                        <?php echo wp_kses_post( implode( ' ',  $notice['actions'] ) ); ?>
-					</p>
+					<p><?php echo wp_kses_post( implode( ' ',  $notice['actions'] ) ); ?></p>
 				<?php } ?>
 			</div>
 			<?php
