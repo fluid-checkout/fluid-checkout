@@ -3,7 +3,7 @@ Contributors: fluidwebco, diegoversiani
 Tags: woocommerce, e-commerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.2
 Requires at least: 5.0
-Tested up to: 5.7
+Tested up to: 5.8
 Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -83,7 +83,7 @@ We are working to bring to you the following PRO features:
 
 = More features? =
 
-**If you need a features that is not listed above [visit our feedback page](https://feedback.fluidcheckout.com) and see which features we are planning to add, vote on them, or make a new feature request.**
+**Request a feature or report a bug on the [support forum](https://wordpress.org/support/plugin/fluid-checkout/).**
 
 
 = Tested WooCommerce Themes =
@@ -91,6 +91,7 @@ We are working to bring to you the following PRO features:
 By default, Fluid Checkout works with every WooCommerce theme. Some themes may need adjustments due to not using WooCommerce standards hooks or styles. We've tested certain third-party WooCommerce themes to ensure better compatibility with Fluid Checkout:
 
 * Astra
+* Blocksy
 * Flatsome
 * Generate Press
 * Hello Elementor
@@ -102,7 +103,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 * Woostify
 * Zakra
 
-**If you have any issues using Fluid Checkout with your theme please let us know through the plugin's support forum or [our feedback page](https://feedback.fluidcheckout.com) and we'll quickly fix it.**
+**If you have any issues using Fluid Checkout with your theme please let us know through the plugin's [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.**
 
 
 = Fully Customizable =
@@ -148,9 +149,9 @@ If you want to tweak the settings, head over to WP Admin > WooCommerce > Setting
 
 = Will Fluid Checkout work with my theme? =
 
-Yes! Fluid Checkout should work with most theme out-of-the-box. However some themes may need adjustments due to not using WooCommerce standards hooks or styles.
+Yes! Fluid Checkout should work with most theme out-of-the-box. However some themes may need adjustments due to not using WooCommerce standard hooks or styles.
 
-**If you have any issues using Fluid Checkout with your theme please let us know through the plugin's support forum or [our feedback page](https://feedback.fluidcheckout.com) and we'll quickly fix it.**
+**If you have any issues using Fluid Checkout with your theme please let us know through the plugin's [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and fix it asap.**
 
 = How do I add trust symbols to the checkout page? =
 The plugin provides widget areas in strategic positions on the checkout page for adding the trust symbols. Head over to WP Admin > Appearance > Widget Areas, and add any type of widget to boost the perceived trust customers have on the website.
@@ -172,6 +173,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 == Changelog ==
 
 = Unreleased =
+* Bump tested up to WP 5.8 and WooCommerce 5.5
 * Added: New filter hook `fc_place_order_button_classes` to allow developers to change the place order button classes.
 * Fixed: Added the place order section as a fragment in the checkout page as it is expected from the original WooCommerce behavior.
 

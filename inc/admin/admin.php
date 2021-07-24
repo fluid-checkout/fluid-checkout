@@ -33,7 +33,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 *
 	 * @param int $hook_suffix Hook suffix for the current admin page.
 	 */
-	function enqueue_admin_styles( $hook_suffix ) {
+	public function enqueue_admin_styles( $hook_suffix ) {
 		// Bail if not on WooCommerce settings page
 		if ( $hook_suffix !== 'woocommerce_page_wc-settings' ) { return; }
 		wp_enqueue_style( 'fc-admin-options', self::$directory_url . 'css/admin-options'. self::$asset_version . '.css', NULL, NULL );

@@ -9,8 +9,8 @@ Version: 1.2.5-beta-1
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 License: GPLv2
-WC requires at least: 5.0.0
-WC tested up to: 5.4.0
+WC requires at least: 5.0
+WC tested up to: 5.5
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -29,10 +29,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 defined( 'ABSPATH' ) || exit;
 
-// Define FC_PLUGIN_FILE.
-if ( ! defined( 'FC_PLUGIN_FILE' ) ) {
-	define( 'FC_PLUGIN_FILE', __FILE__ );
-}
+
+
+// Plugin activation
+require_once plugin_dir_path( __FILE__ ) . 'inc/plugin-activation.php';
+register_activation_hook( __FILE__, array( 'FluidCheckout_Activation', 'on_activation' ) );
+
+
 
 /**
  * Plugin Main Class.
@@ -44,6 +47,7 @@ class FluidCheckout {
 	public static $directory_path;
 	public static $directory_url;
 	public static $plugin = 'Fluid Checkout for WooCommerce';
+	public static $plugin_slug = 'fluid-checkout';
 	public static $version = ''; // Values set at function `set_plugin_vars`
 	public static $asset_version = ''; // Values set at function `set_plugin_vars`
 
@@ -91,6 +95,7 @@ class FluidCheckout {
 	public function __construct() {
 		$this->set_plugin_vars();
 		$this->load_textdomain();
+		$this->load_admin_notices();
 		$this->add_features();
 		$this->hooks();
 	}
@@ -103,9 +108,9 @@ class FluidCheckout {
 	public function set_plugin_vars() {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-		self::$directory_path = plugin_dir_path( FC_PLUGIN_FILE );
-		self::$directory_url  = plugin_dir_url( FC_PLUGIN_FILE );
-		self::$version = get_file_data( FC_PLUGIN_FILE , ['Version' => 'Version'], 'plugin')['Version'];
+		self::$directory_path = plugin_dir_path( __FILE__ );
+		self::$directory_url  = plugin_dir_url( __FILE__ );
+		self::$version = get_file_data( __FILE__ , ['Version' => 'Version'], 'plugin')['Version'];
 		self::$asset_version = $this->get_assets_version_number();
 	}
 
@@ -135,9 +140,19 @@ class FluidCheckout {
 		add_action( 'plugins_loaded', array( $this, 'load_plugin_compat_features' ) );
 		add_action( 'plugins_loaded', array( $this, 'load_theme_compat_features' ) );
 
-
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
+	}
+
+
+
+	/**
+	 * Load admin notices.
+	 * @since 1.2.5
+	 */
+	private function load_admin_notices() {
+		require_once self::$directory_path . 'inc/admin/admin-notices.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-review-request.php';
 	}
 
 
@@ -252,7 +267,7 @@ class FluidCheckout {
 			}
 
 			// Load feature file if enabled, file exists, and file is inside our plugin folder
-			if ( $feature_is_enabled && file_exists( $file ) && strpos( $file, plugin_dir_path( FC_PLUGIN_FILE ) ) === 0 ) {
+			if ( $feature_is_enabled && file_exists( $file ) && strpos( $file, plugin_dir_path( __FILE__ ) ) === 0 ) {
 				require_once $file;
 			}
 		}
@@ -284,7 +299,7 @@ class FluidCheckout {
 			$plugin_compat_file_path = self::$directory_path . 'inc/compat/plugins/compat-plugin-' . $plugin_slug . '.php';
 
 			// Maybe load plugin's compatibility file, and file is inside our plugin folder
-			if ( file_exists( $plugin_compat_file_path ) && strpos( $plugin_compat_file_path, plugin_dir_path( FC_PLUGIN_FILE ) ) === 0 ) {
+			if ( file_exists( $plugin_compat_file_path ) && strpos( $plugin_compat_file_path, plugin_dir_path( __FILE__ ) ) === 0 ) {
 				require_once $plugin_compat_file_path;
 			}
 		}
@@ -308,7 +323,7 @@ class FluidCheckout {
 			$theme_compat_file_path = self::$directory_path . 'inc/compat/themes/compat-theme-' . $theme_slug . '.php';
 
 			// Maybe load theme's compatibility file, and file is inside our plugin folder
-			if ( file_exists( $theme_compat_file_path ) && strpos( $theme_compat_file_path, plugin_dir_path( FC_PLUGIN_FILE ) ) === 0 ) {
+			if ( file_exists( $theme_compat_file_path ) && strpos( $theme_compat_file_path, plugin_dir_path( __FILE__ ) ) === 0 ) {
 				require_once $theme_compat_file_path;
 			}
 		}
