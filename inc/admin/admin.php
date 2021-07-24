@@ -10,6 +10,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * __construct function.
 	 */
 	public function __construct() {
+		$this->load_admin_notices();
 		$this->hooks();
 	}
 
@@ -29,11 +30,22 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 
 	/**
+	 * Load admin notices.
+	 * @since 1.2.5
+	 */
+	private function load_admin_notices() {
+		require_once self::$directory_path . 'inc/admin/admin-notices.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-review-request.php';
+	}
+
+
+
+	/**
 	 * Enqueue styles for the current admin settings page.
 	 *
 	 * @param int $hook_suffix Hook suffix for the current admin page.
 	 */
-	function enqueue_admin_styles( $hook_suffix ) {
+	public function enqueue_admin_styles( $hook_suffix ) {
 		// Bail if not on WooCommerce settings page
 		if ( $hook_suffix !== 'woocommerce_page_wc-settings' ) { return; }
 		wp_enqueue_style( 'fc-admin-options', self::$directory_url . 'css/admin-options'. self::$asset_version . '.css', NULL, NULL );

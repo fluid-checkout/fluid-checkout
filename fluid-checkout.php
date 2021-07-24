@@ -44,6 +44,7 @@ class FluidCheckout {
 	public static $directory_path;
 	public static $directory_url;
 	public static $plugin = 'Fluid Checkout for WooCommerce';
+	public static $plugin_slug = 'fluid-checkout';
 	public static $version = ''; // Values set at function `set_plugin_vars`
 	public static $asset_version = ''; // Values set at function `set_plugin_vars`
 
