@@ -139,6 +139,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Prepare the hooks related to shipping method "Local Pickup".
 	 */
 	public function prepare_local_pickup_hooks() {
+		// Bail if not checkout pages
+		if ( ! is_checkout() ) { return; }
+
 		// Hide shipping address for local pickup
 		if ( $this->is_local_pickup_available() ) {
 			remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
