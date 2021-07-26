@@ -80,6 +80,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Shipping
 		add_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
+		add_action( 'fc_output_step_shipping', array( $this, 'prepare_local_pickup_hooks' ), 5 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_order_notes' ), 100 );
@@ -88,7 +89,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
+		
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'prepare_local_pickup_hooks' ), 5 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_fields_fragment' ), 10 );
 
 		// Order Notes
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
@@ -131,6 +134,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Unhook WooCommerce functions
 		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
 		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+	}
+
+	/**
+	 * Prepare the hooks related to shipping method "Local Pickup".
+	 */
+	public function prepare_local_pickup_hooks() {
+		// Hide shipping address for local pickup
+		if ( $this->is_local_pickup_available() ) {
+			remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
+			remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
+			add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 10 );
+			add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 20 );
+			add_filter( 'woocommerce_cart_needs_shipping_address', array( $this, 'maybe_change_needs_shipping_address' ), 10 );
+		}
 	}
 
 
@@ -675,17 +692,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		) );
 
 		// SHIPPING
-		if ( WC()->cart->needs_shipping() ) {
-			$this->register_checkout_step( array(
-				'step_id' => 'shipping',
-				'step_title' => _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ),
-				'priority' => 20,
-				'render_callback' => array( $this, 'output_step_shipping' ),
-				'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
-				'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
-				'next_step_button_label' => __( 'Proceed to Billing', 'fluid-checkout' ),
-			) );
-		}
+		$this->register_checkout_step( array(
+			'step_id' => 'shipping',
+			'step_title' => _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ),
+			'priority' => 20,
+			'render_callback' => array( $this, 'output_step_shipping' ),
+			'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
+			'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
+			'next_step_button_label' => __( 'Proceed to Billing', 'fluid-checkout' ),
+		) );
 
 		// BILLING
 		$this->register_checkout_step( array(
@@ -1423,7 +1438,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output shipping step fields.
+	 * Output shipping address step fields.
 	 */
 	public function output_substep_shipping_address_fields() {
 		wc_get_template(
@@ -1432,6 +1447,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'checkout'          => WC()->checkout(),
 			)
 		);
+	}
+
+	/**
+	 * Get shipping address step fields html.
+	 */
+	public function get_substep_shipping_address_fields() {
+		ob_start();
+		$this->output_substep_shipping_address_fields();
+		return ob_get_clean();
+	}
+
+	/**
+	 * Add shipping address fields as checkout fragment.
+	 *
+	 * @param array $fragments Checkout fragments.
+	 */
+	public function add_shipping_address_fields_fragment( $fragments ) {
+		$html = $this->get_substep_shipping_address_fields();
+		$fragments['.woocommerce-shipping-fields'] = $html;
+		return $fragments;
 	}
 
 
@@ -1455,6 +1490,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping-address">';
+
+		// Use store base address for `local_pickup`
+		if ( $this->is_shipping_method_local_pickup_selected() ) {
+			$address_data = array(
+				'address_1' => WC()->countries->get_base_address(),
+				'address_2' => WC()->countries->get_base_address_2(),
+				'city' => WC()->countries->get_base_city(),
+				'state' => WC()->countries->get_base_state(),
+				'country' => WC()->countries->get_base_country(),
+				'postcode' => WC()->countries->get_base_postcode(),
+			);
+			
+			$html .= '<span class="fc-step__substep-text-line"><strong>' . __( 'Pick up at store:', 'fluid-checkout' ) . '</strong></span>'; // WPCS: XSS ok.
+		}
+
 		$html .= '<span class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</span>'; // WPCS: XSS ok.
 		$html .= '</div>';
 
@@ -1743,6 +1793,74 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return $label;
+	}
+
+
+
+	/**
+	 * Determines if a shipping address is needed.
+	 *
+	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
+	 */
+	public function maybe_change_needs_shipping_address( $needs_shipping_address ) {
+		// Hides shipping addresses for `local_pickup`.
+		if ( $this->is_shipping_method_local_pickup_selected() ) {
+			return false;
+		}
+
+		return $needs_shipping_address;
+	}
+
+
+
+	/**
+	 * Determines if the currently selected shipping method is `local_pickup`.
+	 *
+	 * @return  boolean  `true` if the selected shipping method is `local_pickup`. Defaults to `false`.
+	 */
+	public function is_shipping_method_local_pickup_selected() {
+		$checkout = WC()->checkout();
+		$is_shipping_method_local_pickup_selected = false;
+
+		// Check chosen shipping method
+		$packages = WC()->shipping()->get_packages();
+		foreach ( $packages as $i => $package ) {
+			$available_methods = $package['rates'];
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+
+			if ( $chosen_method && 0 === strpos( $chosen_method, 'local_pickup' ) ) {
+				$is_shipping_method_local_pickup_selected = true;
+				break;
+			}
+		}
+
+		return apply_filters( 'fc_is_shipping_method_local_pickup_selected', $is_shipping_method_local_pickup_selected );
+	}
+
+
+
+	/**
+	 * Determines if a shipping address is needed.
+	 *
+	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
+	 */
+	public function is_local_pickup_available() {
+		$checkout = WC()->checkout();
+		$is_local_pickup_available = false;
+
+		// Check available shipping methods
+		$packages = WC()->shipping()->get_packages();
+		foreach ( $packages as $i => $package ) {
+			$available_methods = $package['rates'];
+			foreach ( $available_methods as $method_id => $shipping_method ) {
+				if ( 0 === strpos( $method_id, 'local_pickup' ) ) {
+					$is_local_pickup_available = true;
+					break;
+				}
+			}
+		}
+
+		return apply_filters( 'fc_is_local_pickup_available', $is_local_pickup_available );
 	}
 
 
