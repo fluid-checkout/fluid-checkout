@@ -80,18 +80,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Shipping
 		add_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
-		add_action( 'fc_output_step_shipping', array( $this, 'prepare_local_pickup_hooks' ), 5 );
+		add_action( 'wp', array( $this, 'prepare_local_pickup_hooks' ), 5 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_order_notes' ), 100 );
 		add_action( 'fc_cart_totals_shipping', array( $this, 'output_cart_totals_shipping_section' ), 10 );
 		add_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fragment' ), 10 );
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
-		
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'prepare_local_pickup_hooks' ), 5 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_fields_fragment' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 
 		// Order Notes
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
@@ -1737,7 +1736,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
-	public function add_shipping_methods_fragment( $fragments ) {
+	public function add_shipping_methods_fields_fragment( $fragments ) {
 		$html = $this->get_shipping_methods_available();
 		$fragments['.fc-shipping-method__packages'] = $html;
 		return $fragments;
@@ -1821,7 +1820,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function is_shipping_method_local_pickup_selected() {
 		$checkout = WC()->checkout();
 		$is_shipping_method_local_pickup_selected = false;
-
+		
+		// Make sure chosen shipping method is set
+		WC()->cart->calculate_shipping();
+		
 		// Check chosen shipping method
 		$packages = WC()->shipping()->get_packages();
 		foreach ( $packages as $i => $package ) {
@@ -1847,6 +1849,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function is_local_pickup_available() {
 		$checkout = WC()->checkout();
 		$is_local_pickup_available = false;
+
+		// Make sure chosen shipping method is set
+		WC()->cart->calculate_shipping();
 
 		// Check available shipping methods
 		$packages = WC()->shipping()->get_packages();
