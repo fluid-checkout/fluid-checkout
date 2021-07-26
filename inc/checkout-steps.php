@@ -68,6 +68,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Contact
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+		add_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
 		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact_login' ), 10 );
 		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
 		add_action( 'wp_footer', array( $this, 'output_login_form_flyout' ), 10 );
@@ -1316,6 +1317,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_fields_end_tag();
 
 		$this->output_substep_end_tag( $step_id, $substep_id, false );
+	}
+
+
+
+	/**
+	 * Change the error message for existing email while creating a new account at the checkout page.
+	 *
+	 * @param   string  $message_html  Error message for email existent while creating a new account.
+	 */
+	public function change_message_registration_error_email_exists( $message_html ) {
+		// Bail if not at the checkout page
+		if ( ! is_checkout() ) { return $message_html; }
+
+		$message_html = str_replace( '<a href="#" class="showlogin', '<a href="#" data-flyout-toggle data-flyout-target="[data-flyout-checkout-login]" class="', $message_html );
+		return $message_html;
 	}
 
 
