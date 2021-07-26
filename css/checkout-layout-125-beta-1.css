@@ -1011,6 +1011,10 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
     background-color: #fff;
     color: inherit; }
 
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep.has-local-pickup-selected .fc-step__substep-edit,
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep.has-local-pickup-selected .fc-step__substep-save {
+  display: none; }
+
 /*------------------------------------*\
   #CHECKOUT SHIPPING METHODS
 \*------------------------------------*/

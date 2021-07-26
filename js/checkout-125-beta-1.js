@@ -74,6 +74,9 @@ jQuery( function( $ ) {
 			this.$checkout_form.on( 'change', '#billing_same_as_shipping', this.billing_same_shipping_changed );
 			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_collapsible_blocks );
 
+			// CHANGE: Maybe hide shipping address substep edit buttons
+			$( document.body ).on( 'updated_checkout', this.maybe_change_shipping_address_edit_button_visibility );
+
 			// CHANGE: Add event listener to sync terms checkbox state
 			this.$checkout_form.on( 'change', _terms_selector, this.terms_checked_changed );
 
@@ -118,6 +121,27 @@ jQuery( function( $ ) {
 						CollapsibleBlock.initializeElement( collapsibleBlock );
 					}
 				}
+			}
+		},
+		// CHANGE: Maybe change visibility status of the shipping address edit buttons
+		maybe_change_shipping_address_edit_button_visibility: function() {
+			var $packages = $( '.shipping-method__package' );
+			if ( $packages.length ) {
+				$packages.each( function() {
+
+					var $chosen_method = $( this ).find( 'input.shipping_method:checked' );
+					var $shipping_address_substep = $( '.fc-step__substep[data-substep-id="shipping_address"]' );
+					var is_local_pickup = $chosen_method.val().startsWith( 'local_pickup' );
+					
+					// TODO: Manage multiple shipping packages
+					if( is_local_pickup ) {
+						$shipping_address_substep.addClass( 'has-local-pickup-selected' );
+					}
+					else {
+						$shipping_address_substep.removeClass( 'has-local-pickup-selected' );
+					}
+
+				} );
 			}
 		},
 		// CHANGE: Update checkout when page gets hidden
