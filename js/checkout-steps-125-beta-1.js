@@ -256,6 +256,35 @@
 
 
 	/**
+	 * Maybe change visibility status of the shipping address edit buttons when shipping method is `local_pickup`.
+	 *
+	 * @param   Event  _event  An unused `jQuery.Event` object.
+	 * @param   Array  data   The updated checkout data.
+	 */
+	var maybeChangeShippingAddressEditButtonVisibility = function( _event, data ) {
+		var $packages = $( '.shipping-method__package' );
+		if ( $packages.length ) {
+			$packages.each( function() {
+
+				var $chosen_method = $( this ).find( 'input.shipping_method:checked' );
+				var $shipping_address_substep = $( '.fc-step__substep[data-substep-id="shipping_address"]' );
+				var is_local_pickup = $chosen_method.val().startsWith( 'local_pickup' );
+				
+				// TODO: Manage multiple shipping packages
+				if( is_local_pickup ) {
+					$shipping_address_substep.addClass( 'has-local-pickup-selected' );
+				}
+				else {
+					$shipping_address_substep.removeClass( 'has-local-pickup-selected' );
+				}
+
+			} );
+		}
+	}
+
+
+
+	/**
 	 * Collapse the substep fields, and expand the substep values in text format for review.
 	 *
 	 * @param   HTMLElement  substepElement  Substep element to change the state of.
@@ -513,6 +542,7 @@
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
 			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
+			$( document.body ).on( 'updated_checkout', maybeChangeShippingAddressEditButtonVisibility );
 		}
 
 		// Add init class

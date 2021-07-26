@@ -145,6 +145,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
 			add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 10 );
 			add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 20 );
+			add_action( 'fc_checkout_after_step_shipping_fields', array( $this, 'maybe_output_shipping_address_text' ), 10 );
 			add_filter( 'woocommerce_cart_needs_shipping_address', array( $this, 'maybe_change_needs_shipping_address' ), 10 );
 		}
 	}
@@ -1198,13 +1199,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_substep_text_contact() {
 		$customer = WC()->customer;
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--contact">';
-		$html .= '<span class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_email() ) . '</span>';
+		$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_email() ) . '</div>';
 
 		// Maybe add notice for account creation
 		if ( get_option( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) === 'true' ) {
 			$parsed_posted_data = $this->get_parsed_posted_data();
 			if ( array_key_exists( 'createaccount', $parsed_posted_data ) && $parsed_posted_data[ 'createaccount' ] == '1' ) {
-				$html .= '<span class="fc-step__substep-text-line"><em>' . esc_html( __( 'An account will be created with the information provided.', 'fluid-checkout' ) ) . '</em></span>';
+				$html .= '<div class="fc-step__substep-text-line"><em>' . esc_html( __( 'An account will be created with the information provided.', 'fluid-checkout' ) ) . '</em></div>';
 			}
 		}
 
@@ -1501,10 +1502,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'postcode' => WC()->countries->get_base_postcode(),
 			);
 			
-			$html .= '<span class="fc-step__substep-text-line"><strong>' . __( 'Pick up at store:', 'fluid-checkout' ) . '</strong></span>'; // WPCS: XSS ok.
+			$html .= '<div class="fc-step__substep-text-line"><strong>' . __( 'Pick up at store:', 'fluid-checkout' ) . '</strong></div>'; // WPCS: XSS ok.
 		}
 
-		$html .= '<span class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</span>'; // WPCS: XSS ok.
+		$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
 		$html .= '</div>';
 
 		return apply_filters( 'fc_substep_shipping_address_text', $html );
@@ -1549,7 +1550,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// TODO: Maybe handle multiple packages
 			// $package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
 
-			$html .= '<span class="fc-step__substep-text-line">' . wp_kses( $chosen_method_label, array( 'span' => array( 'class' => '' ), 'bdi' => array(), 'strong' => array() ) ) . '</span>';
+			$html .= '<div class="fc-step__substep-text-line">' . wp_kses( $chosen_method_label, array( 'span' => array( 'class' => '' ), 'bdi' => array(), 'strong' => array() ) ) . '</div>';
 		}
 
 		$html .= '</div>';
@@ -1587,11 +1588,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// The order notes value
 		if ( ! empty( $order_notes ) ) {
-			$html .= '<span class="fc-step__substep-text-line">' . esc_html( $order_notes ) . '</span>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $order_notes ) . '</div>';
 		}
 		// "No order notes" notice.
 		else {
-			$html .= '<span class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_no_order_notes_order_review_notice', _x( 'None.', 'Notice for no order notes provided', 'fluid-checkout' ) ) ) . '</span>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_no_order_notes_order_review_notice', _x( 'None.', 'Notice for no order notes provided', 'fluid-checkout' ) ) ) . '</div>';
 		}
 
 		$html .= '</div>';
@@ -1813,6 +1814,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Output the shipping address substep as text when "Local pickup" is selected for the shipping method.
+	 */
+	public function maybe_output_shipping_address_text() {
+		// Bail if shipping method is not `local_pickup`
+		if ( ! $this->is_shipping_method_local_pickup_selected() ) { return; }
+		
+		$this->output_substep_text_shipping_address();
+	}
+
+
+
+	/**
 	 * Determines if the currently selected shipping method is `local_pickup`.
 	 *
 	 * @return  boolean  `true` if the selected shipping method is `local_pickup`. Defaults to `false`.
@@ -2017,7 +2030,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--billing-address">';
 
 		if ( $this->is_billing_same_as_shipping_checked() ) {
-			$html .= '<span class="fc-step__substep-text-line"><em>' . __( 'Same as shipping address', 'fluid-checkout' ) . '</em></span>';
+			$html .= '<div class="fc-step__substep-text-line"><em>' . __( 'Same as shipping address', 'fluid-checkout' ) . '</em></div>';
 		}
 		else {
 			$address_data = array(
@@ -2029,10 +2042,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'postcode' => $customer->get_billing_postcode(),
 			);
 
-			$html .= '<span class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_first_name() ) . ' ' . esc_html( $customer->get_billing_last_name() ) . '</span>';
-			$html .= '<span class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_company() ) . '</span>';
-			$html .= '<span class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</span>'; // WPCS: XSS ok.
-			$html .= '<span class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_phone() ) . '</span>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_first_name() ) . ' ' . esc_html( $customer->get_billing_last_name() ) . '</div>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_company() ) . '</div>';
+			$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_phone() ) . '</div>';
 		}
 
 		$html .= '</div>';
@@ -2094,7 +2107,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_billing_same_as_shipping_field() {
 		// Output a hidden field when shipping country not allowed for billing, or shipping not needed
-		if ( ! WC()->cart->needs_shipping() || $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
+		if ( ! WC()->cart->needs_shipping_address() || $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
 			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
 		<?php
 		// Output the checkbox when shipping country is allowed for billing
