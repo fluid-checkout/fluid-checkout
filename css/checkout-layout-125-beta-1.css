@@ -23,6 +23,15 @@
   #IMPORT STYLES
 \*------------------------------------*/
 /*------------------------------------*\
+	#COLLAPSIBLE BLOCKS
+\*------------------------------------*/
+.fc-wrapper .collapsible-content__inner:after {
+  content: '';
+  display: table;
+  table-layout: fixed;
+  width: 100%; }
+
+/*------------------------------------*\
   #CHECKOUT CONTENT AREA
 \*------------------------------------*/
 body.woocommerce-checkout {
@@ -970,9 +979,6 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
 
 div.woocommerce form #billing_same_as_shipping_field.form-row {
   margin-bottom: 20px; }
-
-div.woocommerce form .woocommerce-billing-only-fields__field-wrapper {
-  padding-top: 20px; }
 
 /*------------------------------------*\
 	#CHECKOUT SHIPPING STEP

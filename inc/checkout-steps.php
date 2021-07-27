@@ -2210,6 +2210,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return false;
 		}
 
+		// Set to different billing address when shipping address not needed
+		if ( ! WC()->cart->needs_shipping_address() ) {
+			return false;
+		}
+
 		return $this->is_billing_same_as_shipping_checked();
 	}
 
