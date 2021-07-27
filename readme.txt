@@ -1,5 +1,5 @@
 === Fluid Checkout for WooCommerce ===
-Contributors: fluidwebco, diegoversiani
+Contributors: fluidwebco, diegoversiani, luiggiab
 Tags: woocommerce, e-commerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.2
 Requires at least: 5.0
