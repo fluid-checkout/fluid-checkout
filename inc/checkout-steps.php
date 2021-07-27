@@ -1633,11 +1633,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$is_step_complete = true;
 
 		// Check required data for shipping address
-		$fields = $checkout->get_checkout_fields( 'shipping' );
-		foreach ( $fields as $field_key => $field ) {
-			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
-				$is_step_complete = false;
-				break;
+		if ( WC()->cart->needs_shipping_address() ) {
+			$fields = $checkout->get_checkout_fields( 'shipping' );
+			foreach ( $fields as $field_key => $field ) {
+				if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
+					$is_step_complete = false;
+					break;
+				}
 			}
 		}
 
