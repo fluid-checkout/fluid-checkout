@@ -140,7 +140,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function prepare_local_pickup_hooks() {
 		// Bail if not checkout pages
-		if ( ! is_checkout() ) { return; }
+		if ( ! is_checkout() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) { return; }
 
 		// Hide shipping address for local pickup
 		if ( $this->is_local_pickup_available() ) {
@@ -2775,11 +2775,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get parsed posted data
 		$parsed_posted_data = $this->get_parsed_posted_data();
 
-		// Get customer supported field keys
-		$customer_supported_field_keys = $this->get_supported_customer_property_field_keys();
-
-		// Get list of unsupported customer property field keys
-		$session_field_keys = array_diff( array_keys( $parsed_posted_data ), $customer_supported_field_keys );
+		// Get list of field keys posted
+		$session_field_keys = array_keys( $parsed_posted_data );
 
 		$skip_field_keys = array(
 			'ship_to_different_address',
