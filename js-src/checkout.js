@@ -12,6 +12,9 @@ jQuery( function( $ ) {
 		return false;
 	}
 
+	// CHANGE: Create flag to allow or block updating the checkout
+	window.can_update_checkout = true;
+
 	$.blockUI.defaults.overlayCSS.cursor = 'default';
 
 	// CHANGE: Add custom css selectors for place order button and terms checkbox
@@ -349,6 +352,9 @@ jQuery( function( $ ) {
 			wc_checkout_form.updateTimer = setTimeout( wc_checkout_form.update_checkout_action, '5', args );
 		},
 		update_checkout_action: function( args ) {
+			// CHANGE: Check flag that allows or block updating the checkout
+			if ( ! window.can_update_checkout ) { return; }
+
 			if ( wc_checkout_form.xhr ) {
 				wc_checkout_form.xhr.abort();
 			}

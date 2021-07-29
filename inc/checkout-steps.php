@@ -122,7 +122,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Persisted data
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'update_customer_persisted_data' ), 10 );
-		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session' ), 10, 2 );
+		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 10, 2 );
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data' ), 10 );
 	}
 
@@ -2870,11 +2870,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   mixed    $value   Value of the field.
 	 * @param   string   $input   Checkout field key (ie. order_comments ).
 	 */
-	public function change_default_checkout_field_value_from_session( $value, $input ) {
-		// Get field value from session
-		$field_session_value = $this->get_checkout_field_value_from_session( $input );
-
+	public function change_default_checkout_field_value_from_session_or_posted_data( $value, $input ) {
+		// Maybe return field value from posted data
+		$posted_data = $this->get_parsed_posted_data();
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && array_key_exists( $input, $posted_data ) ) {
+			$field_posted_data_value = $posted_data[ $input ];
+			return $field_posted_data_value;
+		}
+		
 		// Maybe return field value from session
+		$field_session_value = $this->get_checkout_field_value_from_session( $input );
 		if ( $field_session_value !== null ) {
 			return $field_session_value;
 		}
