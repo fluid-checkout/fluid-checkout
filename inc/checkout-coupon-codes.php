@@ -77,7 +77,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$this->output_substep_coupon_codes_fields();
 		$this->checkout_steps()->output_substep_fields_end_tag();
 
-		$this->checkout_steps()->output_substep_end_tag( $step_id, $substep_id, false );
+		$this->checkout_steps()->output_substep_end_tag( $step_id, $substep_id, false, $substep_title );
 	}
 
 

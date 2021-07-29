@@ -918,10 +918,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
 	 * @param   string  $substep_id  Id of the substep.
 	 */
-	public function output_substep_end_tag( $step_id, $substep_id, $output_edit_buttons = true ) {
+	public function output_substep_end_tag( $step_id, $substep_id, $output_edit_buttons = true, $substep_title  ) {
 		?>
 			<?php if ( $output_edit_buttons && $this->is_checkout_layout_multistep() ) : ?>
-				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo esc_html( apply_filters( 'fc_substep_change_button_label', _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ) ) ); ?></a>
+				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-label="<?php echo sprintf( __( 'Change: %s.', 'fluid-checkout' ), $substep_title ); ?>" aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo esc_html( apply_filters( 'fc_substep_change_button_label', _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ) ) ); ?></a>
 				<a tabindex="0" role="button" class="fc-step__substep-save <?php echo esc_attr( apply_filters( 'fc_substep_save_button_classes', 'button' ) ); ?>" data-step-save aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo esc_html( apply_filters( 'fc_substep_save_button_label', _x( 'Save changes', 'Checkout substep save link label', 'fluid-checkout' ) ) ); ?></a>
 			<?php endif; ?>
 		</div>
@@ -1157,7 +1157,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$this->output_substep_text_end_tag();
 		}
 
-		$this->output_substep_end_tag( $step_id, $substep_id );
+		$this->output_substep_end_tag( $step_id, $substep_id, true, __( 'My contact', 'fluid-checkout' ) );
 	}
 
 	/**
@@ -1315,7 +1315,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_contact_login_button();
 		$this->output_substep_fields_end_tag();
 
-		$this->output_substep_end_tag( $step_id, $substep_id, false );
+		$this->output_substep_end_tag( $step_id, $substep_id, false, null );
 	}
 
 
@@ -1355,7 +1355,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$this->output_substep_text_end_tag();
 		}
 
-		$this->output_substep_end_tag( $step_id, $substep_id );
+		$this->output_substep_end_tag( $step_id, $substep_id, true, __( 'Shipping to', 'fluid-checkout' ) );
 	}
 
 	/**
@@ -1378,7 +1378,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$this->output_substep_text_end_tag();
 		}
 
-		$this->output_substep_end_tag( $step_id, $substep_id );
+		$this->output_substep_end_tag( $step_id, $substep_id, true, __( 'Shipping method', 'fluid-checkout' ) );
 	}
 
 	/**
@@ -1401,7 +1401,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$this->output_substep_text_end_tag();
 		}
 
-		$this->output_substep_end_tag( $step_id, $substep_id );
+		$this->output_substep_end_tag( $step_id, $substep_id, true, __( 'Additional notes', 'fluid-checkout' ) );
 	}
 
 
@@ -1795,7 +1795,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$this->output_substep_text_end_tag();
 		}
 
-		$this->output_substep_end_tag( $step_id, $substep_id );
+		$this->output_substep_end_tag( $step_id, $substep_id, true, __( 'Billing to', 'fluid-checkout' ) );
 	}
 
 
@@ -2236,7 +2236,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_payment_fields();
 		$this->output_substep_fields_end_tag();
 
-		$this->output_substep_end_tag( $step_id, $substep_id, false );
+		$this->output_substep_end_tag( $step_id, $substep_id, false, __( 'Payment method', 'fluid-checkout' ) );
 	}
 
 
