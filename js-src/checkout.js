@@ -20,7 +20,13 @@ jQuery( function( $ ) {
 	// CHANGE: Add custom css selectors for place order button and terms checkbox
 	var _place_order_selector = '#place_order, .fc-place-order-button';
 	var _terms_selector = '.fc-terms-checkbox';
+
+	// CHANGE: Add flag to up prevent users from leaving the page when there is unsaved data
 	var _updateBeforeUnload = false;
+
+	// CHANGE: Move CSS selector for fields that updated the checkout when value is changed
+	// CHANGE: Prevent billing address fields change from updating checkout
+	var _update_checkout_fields_selector = '.woocommerce-shipping-fields__field-wrapper .address-field input.input-text, .update_totals_on_change input.input-text';
 
 
 	var wc_checkout_form = {
@@ -59,10 +65,11 @@ jQuery( function( $ ) {
 			// CHANGE: Removed selector `#ship-to-different-address input`
 			this.$checkout_form.on( 'change', 'select.shipping_method, input[name^="shipping_method"], .update_totals_on_change select, .update_totals_on_change input[type="radio"], .update_totals_on_change input[type="checkbox"]', this.trigger_update_checkout ); // eslint-disable-line max-len
 			this.$checkout_form.on( 'change', '.address-field select', this.input_changed );
-			// CHANGE: Prevent billing address fields change from updating checkout
-			this.$checkout_form.on( 'change', '.woocommerce-shipping-fields__field-wrapper .address-field input.input-text, .update_totals_on_change input.input-text', this.maybe_input_changed ); // eslint-disable-line max-len
-			// CHANGE: Prevent billing address fields change from updating checkout
-			this.$checkout_form.on( 'keydown', '.woocommerce-shipping-fields__field-wrapper .address-field input.input-text, .update_totals_on_change input.input-text', this.queue_update_checkout ); // eslint-disable-line max-len
+			
+			// CHANGE: Move CSS selector for fields that updated the checkout when value is changed, and check for customizations of the selector
+			var update_fields_selector = window.fcSettings !== null && window.fcSettings.checkoutUpdateFieldsSelector !== null ? window.fcSettings.checkoutUpdateFieldsSelector : _update_checkout_fields_selector;
+			this.$checkout_form.on( 'change', update_fields_selector, this.maybe_input_changed ); // eslint-disable-line max-len
+			this.$checkout_form.on( 'keydown', update_fields_selector, this.queue_update_checkout ); // eslint-disable-line max-len
 
 			// Address fields
 			// CHANGE: Removed shipping to different address checkout `change` listener
