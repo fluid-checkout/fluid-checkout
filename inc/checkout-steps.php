@@ -80,15 +80,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Shipping
 		add_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
+		add_action( 'wp', array( $this, 'prepare_local_pickup_hooks' ), 5 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_order_notes' ), 100 );
 		add_action( 'fc_cart_totals_shipping', array( $this, 'output_cart_totals_shipping_section' ), 10 );
 		add_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fragment' ), 10 );
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 
 		// Order Notes
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
@@ -120,7 +122,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Persisted data
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'update_customer_persisted_data' ), 10 );
-		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session' ), 10, 2 );
+		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 10, 2 );
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data' ), 10 );
 	}
 
@@ -131,6 +133,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Unhook WooCommerce functions
 		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
 		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+	}
+
+	/**
+	 * Prepare the hooks related to shipping method "Local Pickup".
+	 */
+	public function prepare_local_pickup_hooks() {
+		// Bail if not checkout pages
+		if ( ! is_checkout() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) { return; }
+
+		// Hide shipping address for local pickup
+		if ( $this->is_local_pickup_available() ) {
+			remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
+			remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
+			add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 10 );
+			add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 20 );
+			add_action( 'fc_checkout_after_step_shipping_fields', array( $this, 'maybe_output_shipping_address_text' ), 10 );
+			add_filter( 'woocommerce_cart_needs_shipping_address', array( $this, 'maybe_change_needs_shipping_address' ), 10 );
+		}
 	}
 
 
@@ -675,17 +695,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		) );
 
 		// SHIPPING
-		if ( WC()->cart->needs_shipping() ) {
-			$this->register_checkout_step( array(
-				'step_id' => 'shipping',
-				'step_title' => _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ),
-				'priority' => 20,
-				'render_callback' => array( $this, 'output_step_shipping' ),
-				'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
-				'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
-				'next_step_button_label' => __( 'Proceed to Billing', 'fluid-checkout' ),
-			) );
-		}
+		$this->register_checkout_step( array(
+			'step_id' => 'shipping',
+			'step_title' => _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ),
+			'priority' => 20,
+			'render_callback' => array( $this, 'output_step_shipping' ),
+			'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
+			'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
+			'next_step_button_label' => __( 'Proceed to Billing', 'fluid-checkout' ),
+		) );
 
 		// BILLING
 		$this->register_checkout_step( array(
@@ -1184,13 +1202,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_substep_text_contact() {
 		$customer = WC()->customer;
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--contact">';
-		$html .= '<span class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_email() ) . '</span>';
+		$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_email() ) . '</div>';
 
 		// Maybe add notice for account creation
 		if ( get_option( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) === 'true' ) {
 			$parsed_posted_data = $this->get_parsed_posted_data();
 			if ( array_key_exists( 'createaccount', $parsed_posted_data ) && $parsed_posted_data[ 'createaccount' ] == '1' ) {
-				$html .= '<span class="fc-step__substep-text-line"><em>' . esc_html( __( 'An account will be created with the information provided.', 'fluid-checkout' ) ) . '</em></span>';
+				$html .= '<div class="fc-step__substep-text-line"><em>' . esc_html( __( 'An account will be created with the information provided.', 'fluid-checkout' ) ) . '</em></div>';
 			}
 		}
 
@@ -1423,7 +1441,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output shipping step fields.
+	 * Output shipping address step fields.
 	 */
 	public function output_substep_shipping_address_fields() {
 		wc_get_template(
@@ -1432,6 +1450,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'checkout'          => WC()->checkout(),
 			)
 		);
+	}
+
+	/**
+	 * Get shipping address step fields html.
+	 */
+	public function get_substep_shipping_address_fields() {
+		ob_start();
+		$this->output_substep_shipping_address_fields();
+		return ob_get_clean();
+	}
+
+	/**
+	 * Add shipping address fields as checkout fragment.
+	 *
+	 * @param array $fragments Checkout fragments.
+	 */
+	public function add_shipping_address_fields_fragment( $fragments ) {
+		$html = $this->get_substep_shipping_address_fields();
+		$fragments['.woocommerce-shipping-fields'] = $html;
+		return $fragments;
 	}
 
 
@@ -1455,7 +1493,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping-address">';
-		$html .= '<span class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</span>'; // WPCS: XSS ok.
+
+		// Use store base address for `local_pickup`
+		if ( $this->is_shipping_method_local_pickup_selected() ) {
+			$address_data = array(
+				'address_1' => WC()->countries->get_base_address(),
+				'address_2' => WC()->countries->get_base_address_2(),
+				'city' => WC()->countries->get_base_city(),
+				'state' => WC()->countries->get_base_state(),
+				'country' => WC()->countries->get_base_country(),
+				'postcode' => WC()->countries->get_base_postcode(),
+			);
+			
+			$html .= '<div class="fc-step__substep-text-line"><strong>' . __( 'Pick up at store:', 'fluid-checkout' ) . '</strong></div>'; // WPCS: XSS ok.
+		}
+
+		$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
 		$html .= '</div>';
 
 		return apply_filters( 'fc_substep_shipping_address_text', $html );
@@ -1500,7 +1553,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// TODO: Maybe handle multiple packages
 			// $package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
 
-			$html .= '<span class="fc-step__substep-text-line">' . wp_kses( $chosen_method_label, array( 'span' => array( 'class' => '' ), 'bdi' => array(), 'strong' => array() ) ) . '</span>';
+			$html .= '<div class="fc-step__substep-text-line">' . wp_kses( $chosen_method_label, array( 'span' => array( 'class' => '' ), 'bdi' => array(), 'strong' => array() ) ) . '</div>';
 		}
 
 		$html .= '</div>';
@@ -1538,11 +1591,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// The order notes value
 		if ( ! empty( $order_notes ) ) {
-			$html .= '<span class="fc-step__substep-text-line">' . esc_html( $order_notes ) . '</span>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $order_notes ) . '</div>';
 		}
 		// "No order notes" notice.
 		else {
-			$html .= '<span class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_no_order_notes_order_review_notice', _x( 'None.', 'Notice for no order notes provided', 'fluid-checkout' ) ) ) . '</span>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_no_order_notes_order_review_notice', _x( 'None.', 'Notice for no order notes provided', 'fluid-checkout' ) ) ) . '</div>';
 		}
 
 		$html .= '</div>';
@@ -1580,11 +1633,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$is_step_complete = true;
 
 		// Check required data for shipping address
-		$fields = $checkout->get_checkout_fields( 'shipping' );
-		foreach ( $fields as $field_key => $field ) {
-			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
-				$is_step_complete = false;
-				break;
+		if ( WC()->cart->needs_shipping_address() ) {
+			$fields = $checkout->get_checkout_fields( 'shipping' );
+			foreach ( $fields as $field_key => $field ) {
+				if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
+					$is_step_complete = false;
+					break;
+				}
 			}
 		}
 
@@ -1687,7 +1742,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
-	public function add_shipping_methods_fragment( $fragments ) {
+	public function add_shipping_methods_fields_fragment( $fragments ) {
 		$html = $this->get_shipping_methods_available();
 		$fragments['.fc-shipping-method__packages'] = $html;
 		return $fragments;
@@ -1743,6 +1798,92 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return $label;
+	}
+
+
+
+	/**
+	 * Determines if a shipping address is needed.
+	 *
+	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
+	 */
+	public function maybe_change_needs_shipping_address( $needs_shipping_address ) {
+		// Hides shipping addresses for `local_pickup`.
+		if ( $this->is_shipping_method_local_pickup_selected() ) {
+			return false;
+		}
+
+		return $needs_shipping_address;
+	}
+
+
+
+	/**
+	 * Output the shipping address substep as text when "Local pickup" is selected for the shipping method.
+	 */
+	public function maybe_output_shipping_address_text() {
+		// Bail if shipping method is not `local_pickup`
+		if ( ! $this->is_shipping_method_local_pickup_selected() ) { return; }
+		
+		$this->output_substep_text_shipping_address();
+	}
+
+
+
+	/**
+	 * Determines if the currently selected shipping method is `local_pickup`.
+	 *
+	 * @return  boolean  `true` if the selected shipping method is `local_pickup`. Defaults to `false`.
+	 */
+	public function is_shipping_method_local_pickup_selected() {
+		$checkout = WC()->checkout();
+		$is_shipping_method_local_pickup_selected = false;
+		
+		// Make sure chosen shipping method is set
+		WC()->cart->calculate_shipping();
+		
+		// Check chosen shipping method
+		$packages = WC()->shipping()->get_packages();
+		foreach ( $packages as $i => $package ) {
+			$available_methods = $package['rates'];
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+
+			if ( $chosen_method && 0 === strpos( $chosen_method, 'local_pickup' ) ) {
+				$is_shipping_method_local_pickup_selected = true;
+				break;
+			}
+		}
+
+		return apply_filters( 'fc_is_shipping_method_local_pickup_selected', $is_shipping_method_local_pickup_selected );
+	}
+
+
+
+	/**
+	 * Determines if a shipping address is needed.
+	 *
+	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
+	 */
+	public function is_local_pickup_available() {
+		$checkout = WC()->checkout();
+		$is_local_pickup_available = false;
+
+		// Make sure chosen shipping method is set
+		WC()->cart->calculate_shipping();
+
+		// Check available shipping methods
+		$packages = WC()->shipping()->get_packages();
+		foreach ( $packages as $i => $package ) {
+			$available_methods = $package['rates'];
+			foreach ( $available_methods as $method_id => $shipping_method ) {
+				if ( 0 === strpos( $method_id, 'local_pickup' ) ) {
+					$is_local_pickup_available = true;
+					break;
+				}
+			}
+		}
+
+		return apply_filters( 'fc_is_local_pickup_available', $is_local_pickup_available );
 	}
 
 
@@ -1894,7 +2035,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--billing-address">';
 
 		if ( $this->is_billing_same_as_shipping_checked() ) {
-			$html .= '<span class="fc-step__substep-text-line"><em>' . __( 'Same as shipping address', 'fluid-checkout' ) . '</em></span>';
+			$html .= '<div class="fc-step__substep-text-line"><em>' . __( 'Same as shipping address', 'fluid-checkout' ) . '</em></div>';
 		}
 		else {
 			$address_data = array(
@@ -1906,10 +2047,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'postcode' => $customer->get_billing_postcode(),
 			);
 
-			$html .= '<span class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_first_name() ) . ' ' . esc_html( $customer->get_billing_last_name() ) . '</span>';
-			$html .= '<span class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_company() ) . '</span>';
-			$html .= '<span class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</span>'; // WPCS: XSS ok.
-			$html .= '<span class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_phone() ) . '</span>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_first_name() ) . ' ' . esc_html( $customer->get_billing_last_name() ) . '</div>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_company() ) . '</div>';
+			$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_phone() ) . '</div>';
 		}
 
 		$html .= '</div>';
@@ -1971,7 +2112,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_billing_same_as_shipping_field() {
 		// Output a hidden field when shipping country not allowed for billing, or shipping not needed
-		if ( ! WC()->cart->needs_shipping() || $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
+		if ( ! WC()->cart->needs_shipping_address() || $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
 			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
 		<?php
 		// Output the checkbox when shipping country is allowed for billing
@@ -2066,6 +2207,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function is_billing_same_as_shipping() {
 		// Set to different billing address when shipping country not allowed
 		if ( $this->is_shipping_country_allowed_for_billing() !== null && ! $this->is_shipping_country_allowed_for_billing() ) {
+			return false;
+		}
+
+		// Set to different billing address when shipping address not needed
+		if ( ! WC()->cart->needs_shipping_address() ) {
 			return false;
 		}
 
@@ -2636,11 +2782,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get parsed posted data
 		$parsed_posted_data = $this->get_parsed_posted_data();
 
-		// Get customer supported field keys
-		$customer_supported_field_keys = $this->get_supported_customer_property_field_keys();
-
-		// Get list of unsupported customer property field keys
-		$session_field_keys = array_diff( array_keys( $parsed_posted_data ), $customer_supported_field_keys );
+		// Get list of field keys posted
+		$session_field_keys = array_keys( $parsed_posted_data );
 
 		$skip_field_keys = array(
 			'ship_to_different_address',
@@ -2727,11 +2870,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   mixed    $value   Value of the field.
 	 * @param   string   $input   Checkout field key (ie. order_comments ).
 	 */
-	public function change_default_checkout_field_value_from_session( $value, $input ) {
-		// Get field value from session
-		$field_session_value = $this->get_checkout_field_value_from_session( $input );
-
+	public function change_default_checkout_field_value_from_session_or_posted_data( $value, $input ) {
+		// Maybe return field value from posted data
+		$posted_data = $this->get_parsed_posted_data();
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && array_key_exists( $input, $posted_data ) ) {
+			$field_posted_data_value = $posted_data[ $input ];
+			return $field_posted_data_value;
+		}
+		
 		// Maybe return field value from session
+		$field_session_value = $this->get_checkout_field_value_from_session( $input );
 		if ( $field_session_value !== null ) {
 			return $field_session_value;
 		}

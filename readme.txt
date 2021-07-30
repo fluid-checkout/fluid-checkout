@@ -1,5 +1,5 @@
 === Fluid Checkout for WooCommerce ===
-Contributors: fluidwebco, diegoversiani
+Contributors: fluidwebco, diegoversiani, luiggiab
 Tags: woocommerce, e-commerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.2
 Requires at least: 5.0
@@ -176,6 +176,8 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 * Bump tested up to WP 5.8 and WooCommerce 5.5
 * Added: New filter hook `fc_place_order_button_classes` to allow developers to change the place order button classes.
 * Added: Handy "Settings" link on the plugins list.
+* Added: New feature to automatically hide shipping address fields when "Local Pickup" is selected.
+* Improved: Moved action hooks `fc_checkout_before_step_shipping_fields` and `fc_checkout_after_step_shipping_fields` do inside the shipping address fields wrapper element.
 * Fixed: Added the place order section as a fragment in the checkout page as it is expected from the original WooCommerce behavior.
 * Fixed: Login link on error message for existing email does not open the login modal.
 
