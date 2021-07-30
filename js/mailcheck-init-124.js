@@ -196,7 +196,7 @@
 		_settings = extend( true, _settings, options );
 
 		// Add event listeners
-		window.addEventListener( 'change', handleTriggerEvents, true );
+		window.addEventListener( 'keyup', handleTriggerEvents, true );
 		window.addEventListener( 'click', handleClick, true );
 
 		_hasInitialized = true;
