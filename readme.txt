@@ -213,5 +213,8 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 == Upgrade Notice ==
 
+= 1.2.5 =
+New feature to automatically hide shipping address fields when "Local Pickup" is selected.
+
 = 1.2.4 =
 Small layout bug fixes and compatibility with "Stripe for WooCommerce" and "Mercado Pago Payments for WooCommerce".
