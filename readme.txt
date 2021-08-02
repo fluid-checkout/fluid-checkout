@@ -124,7 +124,7 @@ All labels and other texts added or changed by the plugin are translatable using
 Currently the plugin is translated into the languages below, and more are comming soon:
 
 * English
-* Portuguese (Brazil)
+* Portuguese - Brazil
 * Dutch (soon)
 * German (soon)
 * Italian (soon)
@@ -180,6 +180,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 * Improved: Moved action hooks `fc_checkout_before_step_shipping_fields` and `fc_checkout_after_step_shipping_fields` do inside the shipping address fields wrapper element.
 * Fixed: Added the place order section as a fragment in the checkout page as it is expected from the original WooCommerce behavior.
 * Fixed: Login link on error message for existing email does not open the login modal.
+* Removed: Links to external feedback platform. Favoring WordPress Support Forums instead.
 
 = 1.2.4 - 2021-07-20 =
 * Added: Plugin compatibility styles enqueue functions.
