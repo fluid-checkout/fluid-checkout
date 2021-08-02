@@ -4,7 +4,7 @@ Tags: woocommerce, e-commerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.2
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -173,7 +173,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 == Changelog ==
 
-= Unreleased =
+= 1.2.5 - 2021-08-02 =
 * Bump tested up to WP 5.8 and WooCommerce 5.5
 * Added: New filter hook `fc_place_order_button_classes` to allow developers to change the place order button classes.
 * Added: Handy "Settings" link on the plugins list.
