@@ -19,13 +19,13 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-        add_action( 'admin_notices', array( $this, 'display_notices' ), 10 );
-        add_action( 'admin_init', array( $this, 'dismiss_notice' ), 10 );
+		add_action( 'admin_notices', array( $this, 'display_notices' ), 10 );
+		add_action( 'admin_init', array( $this, 'dismiss_notice' ), 10 );
 	}
 
 
 
-    /**
+	/**
 	 * Display notices if they exist.
 	 */
 	public static function display_notices() {
@@ -40,7 +40,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 			'title'       => '',
 			'description' => '',
 			'error'       => false,
-            'actions'     => array(),
+			'actions'     => array(),
 			'dismissable' => true,
 		);
 
@@ -51,11 +51,11 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 				continue;
 			}
 
-            if ( $notice['dismissable'] ) {
-                $notice['actions'][] = '<a href="' . esc_url( add_query_arg( array( 'fc_action' => 'dismiss_notice', 'fc_notice' => $notice['name'] ) ) ) . '">' . __( 'Dismiss Notice', 'fluid-checkout' ) . '</a>';
-            }
-            
-            ?>
+			if ( $notice['dismissable'] ) {
+				$notice['actions'][] = '<a href="' . esc_url( add_query_arg( array( 'fc_action' => 'dismiss_notice', 'fc_notice' => $notice['name'] ) ) ) . '">' . __( 'Dismiss Notice', 'fluid-checkout' ) . '</a>';
+			}
+			
+			?>
 			<div class="notice fc-admin-notice <?php echo $notice['error'] === true ? 'notice-error' : ''; ?>" <?php echo $notice['error'] === true ? '' : 'style="border-left-color: #0047e1;"'; ?>>
 				<?php if ( ! empty( $notice['title'] ) ) : ?>
 					<p><strong><?php echo wp_kses_post( $notice['title'] ); ?></strong></p>
@@ -73,7 +73,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 
 
 
-    /**
+	/**
 	 * Check if notice is dismissed.
 	 *
 	 * @param string $name
@@ -86,7 +86,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 
 
 
-    /**
+	/**
 	 * Dismiss notices.
 	 */
 	public static function dismiss_notice() {
@@ -112,7 +112,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		// Update notice dismiss option
 		update_option( 'fc_dismissed_notice_' . $name, 1 );
 	}
-    
+	
 }
 
 FluidCheckout_AdminNotices::instance();
