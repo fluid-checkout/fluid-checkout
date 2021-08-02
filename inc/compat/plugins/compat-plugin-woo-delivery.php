@@ -126,11 +126,11 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		
 		// The delivery date value
 		if ( $delivery_date !== null && ! empty( $delivery_date ) ) {
-			$html .= '<span class="fc-step__substep-text-line">' . esc_html( $delivery_date ) . '</span>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $delivery_date ) . '</div>';
 		}
 		// "No delivery date" notice.
 		else {
-			$html .= '<span class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_no_woodelivery_delivery_date_order_review_notice', _x( 'None.', 'Notice for no delivery date provided', 'fluid-checkout' ) ) ) . '</span>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_no_woodelivery_delivery_date_order_review_notice', _x( 'None.', 'Notice for no delivery date provided', 'fluid-checkout' ) ) ) . '</div>';
 		}
 		
 		$html .= '</div>';

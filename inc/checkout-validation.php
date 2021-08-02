@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Customizations to the checkout page.
  */
-class FluidCheckoutValidation extends FluidCheckout {
+class FluidCheckout_Validation extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -155,4 +155,4 @@ class FluidCheckoutValidation extends FluidCheckout {
 
 }
 
-FluidCheckoutValidation::instance();
+FluidCheckout_Validation::instance();

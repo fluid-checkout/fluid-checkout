@@ -38,7 +38,7 @@ class WC_Settings_FluidCheckout_WCShippingSettings extends WC_Settings_Page {
 
 	public function change_shipping_destination_settings_args( $settings, $current_section ) {
 		// Bail if not on shipping options section
-		if ( $current_section != '' ) { return $settings; }
+		if ( $current_section != 'options' ) { return $settings; }
 
 		// Iterate shipping settings
 		foreach ( $settings as $key => $setting_args ) {
