@@ -175,6 +175,8 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 = Unreleased =
 * Added: New action hooks `fc_before_substep_<substep_id>` and `fc_after_substep_<substep_id>`.
+* Improved: Add compatibility with plugin "Sg Checkout Location Picker for WooCommerce" by Sevengits.
+
 
 = 1.2.5 - 2021-08-02 =
 * Bump tested up to WP 5.8 and WooCommerce 5.5
