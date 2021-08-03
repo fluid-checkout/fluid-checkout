@@ -173,6 +173,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 == Changelog ==
 
+= Unreleased =
+* Added: New action hooks `fc_before_substep_<substep_id>` and `fc_after_substep_<substep_id>`.
+
 = 1.2.5 - 2021-08-02 =
 * Bump tested up to WP 5.8 and WooCommerce 5.5
 * Added: New filter hook `fc_place_order_button_classes` to allow developers to change the place order button classes.
