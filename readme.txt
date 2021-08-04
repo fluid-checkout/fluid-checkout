@@ -155,10 +155,24 @@ Yes! Fluid Checkout should work with most theme out-of-the-box. However some the
 **If you have any issues using Fluid Checkout with your theme please let us know through the plugin's [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and fix it asap.**
 
 = How do I add trust symbols to the checkout page? =
+
 The plugin provides widget areas in strategic positions on the checkout page for adding the trust symbols. Head over to WP Admin > Appearance > Widget Areas, and add any type of widget to boost the perceived trust customers have on the website.
 
 = How do I get Fluid Checkout for WooCommerce PRO? =
-We are working on building the PRO version of Fluid Checkout. You can visit https://fluidcheckout.com and sign up to be the first to know when it's ready.
+
+We are working on building the PRO version of Fluid Checkout. You can visit [https://fluidcheckout.com](https://fluidcheckout.com) and sign up to be the first to know when it's ready.
+
+= The Fluid Checkout settings tab is not available on WP Admin > WooCommerce > Settings? =
+
+There are two possible reasons:
+
+1. Check that Fluid Checkout is installed and activated.
+
+2. Sometimes, the Fluid Checkout settings tab will not be present due to another plugin or theme changing the WooCommerce `$settings` parameter to an invalid type. To prevent "Fatal errors" while accessing the WooCommerce admin settings pages, Fluid Checkout will refrain from trying to add its own settings to an invalid parameter type. To find out which plugin is in conflict with Fluid Checkout, please follow the instructions on the WooCommerce's article [How to Test for Plugin and Theme Conflicts
+](https://docs.woocommerce.com/document/how-to-test-for-conflicts/).
+
+If you still can't find which plugin is conflicting with Fluid Checkout, please [open a support ticket](https://wordpress.org/support/plugin/fluid-checkout/) and provide the error message so we can try to help you troubleshooting.
+
 
 == Screenshots ==
 
@@ -172,6 +186,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 
 == Changelog ==
+
+= Unreleased =
+* Fixed: Prevent "Fatal errors" on WooCommerce settings page when the type of the `$settings` parameter is not an `Array`.
 
 = 1.2.5 - 2021-08-02 =
 * Bump tested up to WP 5.8 and WooCommerce 5.5
