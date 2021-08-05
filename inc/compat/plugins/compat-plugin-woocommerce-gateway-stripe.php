@@ -29,7 +29,7 @@ class FluidCheckout_PaymentMethodStripe extends FluidCheckout {
 	 *
 	 * @param   array  $styles  The Stripe elements style properties.
 	 */
-	public function change_stripe_fields_styles($styles) {
+	public function change_stripe_fields_styles( $styles ) {
 		$styles = array(
 			// Notice: Need to pass the default styles values again for `color`, `iconColor` and `::placeholder` because once
 			// the styles object is changed Stripe will ignore its defaults and use only what is provided.
