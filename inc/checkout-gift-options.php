@@ -112,12 +112,12 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 		// Display gift options values
 		if ( isset( $gift_options['_fc_gift_message'] ) && ! empty( $gift_options['_fc_gift_message'] ) ) {
-			$html .= '<span class="fc-step__substep-text-line fc-step__substep-text-line--gift-message">' . esc_html( $gift_options['_fc_gift_message'] ) . '</span>';
-			$html .= '<span class="fc-step__substep-text-line fc-step__substep-text-line--gift-from">' . esc_html( $gift_options['_fc_gift_from'] ) . '</span>';
+			$html .= '<div class="fc-step__substep-text-line fc-step__substep-text-line--gift-message">' . esc_html( $gift_options['_fc_gift_message'] ) . '</div>';
+			$html .= '<div class="fc-step__substep-text-line fc-step__substep-text-line--gift-from">' . esc_html( $gift_options['_fc_gift_from'] ) . '</div>';
 		}
 		// Display "no gift options" notice.
 		else {
-			$html .= '<span class="fc-step__substep-text-line">' . apply_filters( 'fc_no_gift_options_order_review_notice', _x( 'None.', 'Notice for no gift options provided', 'fluid-checkout' ) ) . '</span>';
+			$html .= '<div class="fc-step__substep-text-line">' . apply_filters( 'fc_no_gift_options_order_review_notice', _x( 'None.', 'Notice for no gift options provided', 'fluid-checkout' ) ) . '</div>';
 		}
 
 		$html .= '</div>';

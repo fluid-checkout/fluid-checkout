@@ -205,7 +205,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 		// Insert the phone field at in the text
 		if ( $shipping_phone != null && ! empty( $shipping_phone ) ) {
-			$shipping_phone_text = '<span class="fc-step__substep-text-line">' . $shipping_phone . '</span></div>';
+			$shipping_phone_text = '<div class="fc-step__substep-text-line">' . $shipping_phone . '</div></div>';
 			$html = str_replace( '</div>', $shipping_phone_text, $html );
 		}
 

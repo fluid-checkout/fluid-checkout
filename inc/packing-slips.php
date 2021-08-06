@@ -36,11 +36,13 @@ class FluidCheckout_PackingSlips extends FluidCheckout {
 
 		// Define setting to insert
 		$insert_settings = array(
-			'title'             => __( 'Packing Slips', 'fluid-checkout' ),
-			'desc'              => __( 'Information message printed on the packing slips. May be replaced with the gift message for order with a gift message added.', 'fluid-checkout' ),
-			'id'                => 'fc_packing_slips_message_box_body_text',
-			'type'              => 'textarea',
-			'autoload'          => false,
+			array(
+				'title'             => __( 'Packing Slips', 'fluid-checkout' ),
+				'desc'              => __( 'Information message printed on the packing slips. May be replaced with the gift message for order with a gift message added.', 'fluid-checkout' ),
+				'id'                => 'fc_packing_slips_message_box_body_text',
+				'type'              => 'textarea',
+				'autoload'          => false,
+			),
 		);
 
 		// Get token position
@@ -55,7 +57,7 @@ class FluidCheckout_PackingSlips extends FluidCheckout {
 
 		// Insert at token position
 		$new_settings  = array_slice( $settings, 0, $position_index );
-		$new_settings[] = $insert_settings;
+		$new_settings = array_merge( $new_settings, $insert_settings );
 		$new_settings = array_merge( $new_settings, array_slice( $settings, $position_index, count( $settings ) ) );
 
 		return $new_settings;

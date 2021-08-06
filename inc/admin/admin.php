@@ -19,6 +19,9 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Plugin settings link
+		add_filter( 'plugin_action_links_' . self::$plugin_basename, array( $this, 'add_plugin_settings_link' ), 10 );
+		
 		// WooCommerce Settings
 		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_settings_pages' ), 50 );
 
@@ -33,7 +36,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 *
 	 * @param int $hook_suffix Hook suffix for the current admin page.
 	 */
-	function enqueue_admin_styles( $hook_suffix ) {
+	public function enqueue_admin_styles( $hook_suffix ) {
 		// Bail if not on WooCommerce settings page
 		if ( $hook_suffix !== 'woocommerce_page_wc-settings' ) { return; }
 		wp_enqueue_style( 'fc-admin-options', self::$directory_url . 'css/admin-options'. self::$asset_version . '.css', NULL, NULL );
@@ -48,6 +51,17 @@ class FluidCheckout_Admin extends FluidCheckout {
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-wc-shipping.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-checkout.php';
 		return $settings;
+	}
+
+
+
+	/**
+	 * Add settings page link to plugin listing.
+	 * @param array $links
+	 */
+	public function add_plugin_settings_link( $links = array() ) {
+		$links[] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=wc-settings&tab=fc_checkout' ), esc_html( __( 'Settings', 'fluid-checkout' ) ) );
+		return $links;
 	}
 
 }
