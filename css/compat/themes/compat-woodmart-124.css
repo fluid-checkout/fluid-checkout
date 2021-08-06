@@ -1,0 +1,32 @@
+/*------------------------------------*\
+  #IMPORT ABSTRACT
+\*------------------------------------*/
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+/*------------------------------------*\
+	#VARIABLES
+\*------------------------------------*/
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+/*------------------------------------*\
+  #IMPORT STYLES
+\*------------------------------------*/
+/*------------------------------------*\
+	#FLYOUT ORDER SUMMARY
+\*------------------------------------*/
+#fc-checkout-order-review .woocommerce-checkout-review-order-table td {
+  max-width: 100%;
+  width: 100%; }
+
+* {
+  background-color: lawngreen; }
