@@ -162,17 +162,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 We are working on building the PRO version of Fluid Checkout. You can visit [https://fluidcheckout.com](https://fluidcheckout.com) and sign up to be the first to know when it's ready.
 
-= The Fluid Checkout settings tab is not available on WP Admin > WooCommerce > Settings? =
-
-There are two possible reasons:
-
-1. Check that Fluid Checkout is installed and activated.
-
-2. Sometimes, the Fluid Checkout settings tab will not be present due to another plugin or theme changing the WooCommerce `$settings` parameter to an invalid type. To prevent "Fatal errors" while accessing the WooCommerce admin settings pages, Fluid Checkout will refrain from trying to add its own settings to an invalid parameter type. To find out which plugin is in conflict with Fluid Checkout, please follow the instructions on the WooCommerce's article [How to Test for Plugin and Theme Conflicts
-](https://docs.woocommerce.com/document/how-to-test-for-conflicts/).
-
-If you still can't find which plugin is conflicting with Fluid Checkout, please [open a support ticket](https://wordpress.org/support/plugin/fluid-checkout/) and provide the error message so we can try to help you troubleshooting.
-
 
 == Screenshots ==
 
