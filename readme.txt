@@ -4,7 +4,7 @@ Tags: woocommerce, e-commerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.2
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 1.2.7
+Stable tag: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -175,6 +175,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 
 == Changelog ==
+
+= 1.2.7 - 2021-08-09 =
+* Fixed: Missing assets in release 1.2.6
 
 = 1.2.6 - 2021-08-09 =
 * Fixed: Prevent "Fatal errors" on WooCommerce settings page when the type of the `$settings` parameter is not an `Array`.
