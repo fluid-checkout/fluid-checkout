@@ -287,10 +287,13 @@ class FluidCheckout {
 	 * @since 1.2.0
 	 */
 	public function load_plugin_compat_features() {
-		// Get active plugins
-		$plugins_installed = get_option('active_plugins');
+		// Get all plugins installed
+		$plugins_installed = get_plugins();
+		
+		foreach ( $plugins_installed as $plugin_file => $plugin_meta ) {
+			// Skip plugins not activated
+			if ( ! is_plugin_active( $plugin_file ) ) { continue; }
 
-		foreach ( $plugins_installed as $plugin_file ) {
 			// Get plugin slug
 			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
 

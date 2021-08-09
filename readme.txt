@@ -176,6 +176,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 == Changelog ==
 
+= Unreleased =
+* Improved: Change the way plugin compatibility classes are loaded.
+
 = 1.2.7 - 2021-08-09 =
 * Fixed: Missing assets in release 1.2.6
 
