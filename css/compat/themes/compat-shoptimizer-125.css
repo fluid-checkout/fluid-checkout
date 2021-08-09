@@ -22,8 +22,7 @@
   #IMPORT STYLES
 \*------------------------------------*/
 /*------------------------------------*\
-	#FLYOUT ORDER SUMMARY
+  #WOOCOMMERCE FORM FIELDS
 \*------------------------------------*/
-.fc-checkout-order-review .woocommerce-checkout-review-order-table td {
-  max-width: 100%;
-  width: 100%; }
+body #payment .fc-payment-methods__wrapper .payment_methods li:last-child:not(.woocommerce-notice) {
+  padding-bottom: 0; }
