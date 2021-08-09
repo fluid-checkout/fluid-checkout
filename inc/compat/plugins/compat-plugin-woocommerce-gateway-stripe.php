@@ -19,7 +19,25 @@ class FluidCheckout_PaymentMethodStripe extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+
+		// Styles
 		add_filter('wc_stripe_elements_styling', array( $this, 'change_stripe_fields_styles' ), 10 );
+
+	}
+
+
+	
+	/**
+	 * Add or remove late hooks.
+	 */
+	public function late_hooks() {
+		if ( class_exists( 'WC_Stripe_Payment_Request' ) ) {
+			add_filter( 'wc_stripe_show_payment_request_on_checkout', '__return_true', 10 );
+			add_action( 'fc_checkout_before_steps', [ WC_Stripe_Payment_Request::instance(), 'display_payment_request_button_html' ], 1 );
+			add_action( 'fc_checkout_before_steps', [ WC_Stripe_Payment_Request::instance(), 'display_payment_request_button_separator_html' ], 2 );
+		}
 	}
 
 

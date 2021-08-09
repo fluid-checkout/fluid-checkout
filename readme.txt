@@ -177,6 +177,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 == Changelog ==
 
 = Unreleased =
+* Added: Support for express payment buttons for plugin "WooCommerce Stripe Gateway" by WooCommerce.
 * Improved: Change the way plugin compatibility classes are loaded.
 
 = 1.2.7 - 2021-08-09 =
