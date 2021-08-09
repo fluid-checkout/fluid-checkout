@@ -4,7 +4,7 @@ Tags: woocommerce, e-commerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.2
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 1.2.5
+Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -157,10 +157,13 @@ Yes! Fluid Checkout should work with most theme out-of-the-box. However some the
 **If you have any issues using Fluid Checkout with your theme please let us know through the plugin's [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and fix it asap.**
 
 = How do I add trust symbols to the checkout page? =
+
 The plugin provides widget areas in strategic positions on the checkout page for adding the trust symbols. Head over to WP Admin > Appearance > Widget Areas, and add any type of widget to boost the perceived trust customers have on the website.
 
 = How do I get Fluid Checkout for WooCommerce PRO? =
-We are working on building the PRO version of Fluid Checkout. You can visit https://fluidcheckout.com and sign up to be the first to know when it's ready.
+
+We are working on building the PRO version of Fluid Checkout. You can visit [https://fluidcheckout.com](https://fluidcheckout.com) and sign up to be the first to know when it's ready.
+
 
 == Screenshots ==
 
@@ -174,6 +177,12 @@ We are working on building the PRO version of Fluid Checkout. You can visit http
 
 
 == Changelog ==
+
+= 1.2.7 - 2021-08-09 =
+* Fixed: Missing assets in release 1.2.6
+
+= 1.2.6 - 2021-08-09 =
+* Fixed: Prevent "Fatal errors" on WooCommerce settings page when the type of the `$settings` parameter is not an `Array`.
 
 = 1.2.5 - 2021-08-02 =
 * Bump tested up to WP 5.8 and WooCommerce 5.5
