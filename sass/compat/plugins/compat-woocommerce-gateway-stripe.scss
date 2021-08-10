@@ -1,5 +1,5 @@
 /*------------------------------------*\
-	#IMPORT ABSTRACT
+  #IMPORT ABSTRACT
 \*------------------------------------*/
 @import "../../abstract/_all";
 
@@ -8,8 +8,7 @@
 
 
 /*------------------------------------*\
-	#IMPORT STYLES
+  #IMPORT STYLES
 \*------------------------------------*/
 @import
-	"woo-stripe-payment/checkout-payment-methods",
-	"woo-stripe-payment/express-checkout";
+	"woocommerce-gateway-stripe/express-checkout";
