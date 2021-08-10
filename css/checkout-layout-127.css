@@ -1393,10 +1393,10 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   margin: 0;
   padding: 0; }
 
-.fc-wrapper .fc-expansible-form-section__content--coupon_code input {
+.fc-wrapper .fc-expansible-form-section__content--coupon_code input#coupon_code {
   height: 55px; }
 
-.fc-wrapper .fc-expansible-form-section__content--coupon_code input:focus {
+.fc-wrapper .fc-expansible-form-section__content--coupon_code input#coupon_code:focus {
   position: relative;
   z-index: 10; }
 
