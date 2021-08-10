@@ -102,6 +102,7 @@
 	height: $payment-method-radio-size;
 	border: $payment-method-radio-border;
 	border-radius: 100%;
+	background-color: transparent;
 	box-shadow: none;
 	transition: all $global-animation-duration-fast linear;
 }

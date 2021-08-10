@@ -1135,6 +1135,8 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   height: 24px;
   border: solid 2px #D6D8D8;
   border-radius: 100%;
+  background-color: transparent;
+  box-shadow: none;
   transition: all 0.15s linear; }
 
 .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:before {
@@ -1283,6 +1285,7 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   height: 24px;
   border: solid 2px #D6D8D8;
   border-radius: 100%;
+  background-color: transparent;
   box-shadow: none;
   transition: all 0.15s linear; }
 
