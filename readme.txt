@@ -98,12 +98,12 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 * Kadence
 * Neve
 * Ocean WP
+* Shoptimizer
 * Storefront
 * OnePress
+* Woodmart
 * Woostify
 * Zakra
-* Woodmart
-* Shoptimizer
 
 **If you have any issues using Fluid Checkout with your theme please let us know through the plugin's [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.**
 
