@@ -1,0 +1,68 @@
+/*------------------------------------*\
+	#EXPRESS CHECKOUT
+\*------------------------------------*/
+
+.fc-wrapper .fc-express-checkout__inner {
+	margin: 0 0 remsize( -.1rem ); // Prevent double borders
+	padding: $checkout-substep-padding;
+	border: solid remsize( .1rem ) $border-color;
+	border-radius: $checkout-substep-border-radius;
+	overflow: hidden;
+	background-color: $white;
+
+	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
+}
+
+
+
+.fc-wrapper .fc-express-checkout__title {
+	margin: $checkout-substep-title-margin;
+	margin-bottom: 0;
+	padding: $checkout-substep-title-padding;
+	color: $checkout-substep-title-color;
+	font-weight: $checkout-substep-title-font-weight;
+	font-size: $checkout-substep-title-font-size;
+	text-transform: $checkout-substep-title-text-transform;
+	text-align: $checkout-substep-title-text-align;
+	line-height: 1.2;
+	overflow: unset;
+
+	@media (#{$bp-larger-than-desktop}) {
+		margin: $checkout-substep-title-margin--large-screen;
+		margin-bottom: 0;
+		padding: $checkout-substep-title-padding--large-screen;
+		font-size: $checkout-substep-title-font-size--large-screen;
+	}
+	
+}
+.fc-wrapper .fc-express-checkout__title:before,
+.fc-wrapper .fc-express-checkout__title:after {
+	@include clearfix();
+}
+
+
+
+.fc-wrapper .fc-express-checkout__separator {
+	position: relative;
+	margin: $global-spacing-small 0;
+	text-align: center;
+}
+.fc-wrapper .fc-express-checkout__separator:before {
+	z-index: z( 'default' );
+	content: '';
+	position: absolute;
+	top: 56%;
+	display: block;
+	width: 100%;
+	height: remsize( .1rem );
+	background-color: $border-color;
+}
+
+.fc-wrapper .fc-express-checkout__separator-text {
+	z-index: z( 'above' );
+	position: relative;
+	display: inline-block;
+	padding: 0 $global-spacing-extra-small;
+	background-color: $white;
+	text-transform: $express-checkout-title-text-transform;
+}

@@ -1141,6 +1141,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 
+	/**
+	 * Checkout Step: Express Checkout
+	 */
+
+	
+	
+	/**
+	 * Output the express checkout section.
+	 */
+	public function output_express_checkout_section() {
+		if ( has_action( 'fc_checkout_express_checkout' ) ) {
+			?>
+			<div class="fc-express-checkout">
+				<div class="fc-express-checkout__inner">
+					<h3 class="fc-express-checkout__title"><?php echo esc_html( __( 'Express checkout', 'fluid-checkout' ) ); ?></h3>
+					<?php do_action( 'fc_checkout_express_checkout' ); ?>
+				</div>
+				
+				<div class="fc-express-checkout__separator">
+					<span class="fc-express-checkout__separator-text"><?php echo esc_html( apply_filters( 'fc_checkout_login_separator_text', _x( 'Or', 'Separator label for the express checkout section', 'fluid-checkout' ) ) ); ?></span>
+				</div>
+			</div>
+			<?php
+		}
+	}
+
 
 
 	/**

@@ -34,9 +34,18 @@ class FluidCheckout_PaymentMethodStripe extends FluidCheckout {
 	 */
 	public function late_hooks() {
 		if ( class_exists( 'WC_Stripe_Payment_Request' ) ) {
+			// Remove actions
+			remove_action( 'woocommerce_checkout_before_customer_details', array( WC_Stripe_Payment_Request::instance(), 'display_payment_request_button_html' ), 1 );
+			remove_action( 'woocommerce_checkout_before_customer_details', array( WC_Stripe_Payment_Request::instance(), 'display_payment_request_button_separator_html' ), 2 );
+
+			// Add actions
 			add_filter( 'wc_stripe_show_payment_request_on_checkout', '__return_true', 10 );
-			add_action( 'fc_checkout_before_steps', [ WC_Stripe_Payment_Request::instance(), 'display_payment_request_button_html' ], 1 );
-			add_action( 'fc_checkout_before_steps', [ WC_Stripe_Payment_Request::instance(), 'display_payment_request_button_separator_html' ], 2 );
+			add_action( 'fc_checkout_express_checkout', array( WC_Stripe_Payment_Request::instance(), 'display_payment_request_button_html' ), 10 );
+			
+			// Maybe add express checkout section
+			if ( ! has_action( 'fc_checkout_before_steps', array( FluidCheckout_Steps::instance(), 'output_express_checkout_section' ) ) ) {
+				add_action( 'fc_checkout_before_steps', array( FluidCheckout_Steps::instance(), 'output_express_checkout_section' ), 10 );
+			}
 		}
 	}
 
