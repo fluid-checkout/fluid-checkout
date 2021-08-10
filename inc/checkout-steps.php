@@ -325,7 +325,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		wc_cart_totals_order_total_html();
 		$link_label_html = str_replace( 'includes_tax', 'includes_tax screen-reader-text', ob_get_clean() );
 		?>
-		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout__cart-link" data-flyout-toggle data-flyout-target="[data-flyout-order-review]"><?php echo $link_label_html; // WPCS: XSS ok. ?></a>
+		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout__cart-link" aria-label="<?php echo esc_attr( __( 'Open order summary', 'fluid-checkout' ) ); ?>" data-flyout-toggle data-flyout-target="[data-flyout-order-review]"><?php echo $link_label_html; // WPCS: XSS ok. ?></a>
 		<?php
 	}
 
