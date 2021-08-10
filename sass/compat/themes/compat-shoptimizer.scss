@@ -1,5 +1,5 @@
 /*------------------------------------*\
-  #IMPORT ABSTRACT
+	#IMPORT ABSTRACT
 \*------------------------------------*/
 @import "../../abstract/_all";
 
@@ -8,7 +8,8 @@
 
 
 /*------------------------------------*\
-  #IMPORT STYLES
+	#IMPORT STYLES
 \*------------------------------------*/
 @import
-	"shoptimizer/woocommerce-form-fields";
+	"shoptimizer/woocommerce-form-fields",
+	"shoptimizer/order-summary";
