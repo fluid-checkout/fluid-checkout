@@ -1,0 +1,11 @@
+/*------------------------------------*\
+	#CHECKOUT FIELD VALIDATION
+\*------------------------------------*/
+// VALID FIELDS
+body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+
+	// Select2 Fields
+	.select2-selection:after {
+		right: remsize( 2.6rem );
+	}
+}

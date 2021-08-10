@@ -22,6 +22,12 @@
   #IMPORT STYLES
 \*------------------------------------*/
 /*------------------------------------*\
+	#CHECKOUT FIELD VALIDATION
+\*------------------------------------*/
+body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .select2-selection:after {
+  right: 26px; }
+
+/*------------------------------------*\
 	#FLYOUT ORDER SUMMARY
 \*------------------------------------*/
 .fc-checkout-order-review .woodmart-table-wrapper {
