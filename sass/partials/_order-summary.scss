@@ -183,8 +183,6 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-quantity {
 	z-index: z( 'above' );
 	position: absolute;
-	// top: $order-summary-cell-padding-vertical;
-	// left: #{ $order-summary-image-width + $order-summary-cell-padding-horizontal + $global-spacing-tiny };
 	top: 0;
 	left: #{ $order-summary-image-width + $global-spacing-tiny };
 	transform: translateX( -100% ) translateY( -25% );
