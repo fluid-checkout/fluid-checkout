@@ -37,3 +37,9 @@
 .fc-wrapper #payment ul.payment_methods > li.payment_method_stripe_sofort.wc-stripe-no-desc .payment_box.wc-stripe-no-methods {
   padding: 0;
   margin: 0; }
+
+/*------------------------------------*\
+  #EXPRESS CHECKOUT
+\*------------------------------------*/
+.fc-wrapper .wc-stripe-cart-checkout-container ul.wc_stripe_cart_payment_methods.active li.wc-stripe-payment-method.or {
+  display: none; }

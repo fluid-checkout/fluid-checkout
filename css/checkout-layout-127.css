@@ -820,7 +820,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 .fc-wrapper .fc-express-checkout__title {
   margin: 0 0 10px 0;
-  margin-bottom: 0;
   padding: 0;
   color: #535156;
   font-weight: bold;
@@ -832,7 +831,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   @media (min-width: 1000px) {
     .fc-wrapper .fc-express-checkout__title {
       margin: 0 0 10px 0;
-      margin-bottom: 0;
       padding: 0 5px 0 0;
       font-size: 15px; } }
 

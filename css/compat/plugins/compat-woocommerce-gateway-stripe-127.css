@@ -1,0 +1,31 @@
+/*------------------------------------*\
+  #IMPORT ABSTRACT
+\*------------------------------------*/
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+/*------------------------------------*\
+	#VARIABLES
+\*------------------------------------*/
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+/*------------------------------------*\
+  #IMPORT STYLES
+\*------------------------------------*/
+/*------------------------------------*\
+  #EXPRESS CHECKOUT
+\*------------------------------------*/
+.fc-wrapper .fc-express-checkout__title {
+  margin-bottom: 0; }
+  @media (min-width: 1000px) {
+    .fc-wrapper .fc-express-checkout__title {
+      margin-bottom: 0; } }

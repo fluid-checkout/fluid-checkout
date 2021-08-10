@@ -17,7 +17,6 @@
 
 .fc-wrapper .fc-express-checkout__title {
 	margin: $checkout-substep-title-margin;
-	margin-bottom: 0;
 	padding: $checkout-substep-title-padding;
 	color: $checkout-substep-title-color;
 	font-weight: $checkout-substep-title-font-weight;
@@ -29,7 +28,6 @@
 
 	@media (#{$bp-larger-than-desktop}) {
 		margin: $checkout-substep-title-margin--large-screen;
-		margin-bottom: 0;
 		padding: $checkout-substep-title-padding--large-screen;
 		font-size: $checkout-substep-title-font-size--large-screen;
 	}
