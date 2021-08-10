@@ -61,7 +61,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		$settings[ 'checkoutValidation' ] = apply_filters( 'fc_checkout_validation_script_settings', array(
 			'mailcheckSuggestions' => array(
 				/* translators: %s: html for the email address typo correction suggestion link */
-				'suggestedElementTemplate'    => '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( __( 'Did you mean %s?', 'fluid-checkout' ), '<a class="mailcheck-suggestion" href="#apply-suggestion" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
+				'suggestedElementTemplate'    => '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( __( 'Did you mean %s?', 'fluid-checkout' ), '<a class="mailcheck-suggestion" href="#apply-suggestion" role="button" aria-label="'.esc_attr( __( 'Change email address to: {suggestion-value}', 'fluid-checkout' ) ).'" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
 			),
 			'validationMessages' => array(
 				'required'                    => __( 'This is a required field.', 'fluid-checkout' ),

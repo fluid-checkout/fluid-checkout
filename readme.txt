@@ -102,6 +102,8 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 * OnePress
 * Woostify
 * Zakra
+* Woodmart
+* Shoptimizer
 
 **If you have any issues using Fluid Checkout with your theme please let us know through the plugin's [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.**
 
@@ -178,7 +180,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 = Unreleased =
 * Added: Support for express payment buttons for the plugin "WooCommerce Stripe Gateway" by WooCommerce.
+* Added: Support for themes "Shoptimizer" and "Woodmart".
 * Improved: Change the way plugin compatibility classes and styles are loaded, extending support for WordPress Multi-site mode.
+* Fixed: Coupon code field height on some themes.
 
 = 1.2.7 - 2021-08-09 =
 * Fixed: Missing assets in release 1.2.6
