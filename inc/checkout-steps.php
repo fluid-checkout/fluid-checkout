@@ -858,12 +858,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_step_start_tag( $step_args, $step_index ) {
 		$step_id = $step_args[ 'step_id' ];
 		$step_title = apply_filters( "fc_step_title_{$step_id}", $step_args[ 'step_title' ] );
+		$step_title_id = 'fc-step__title--' . $step_args[ 'step_id' ];
 
 		$step_attributes = array(
 			'class' => 'fc-checkout-step',
 			'data-step-id' => ! empty( $step_id ) && $step_id != null ? $step_id : '',
 			'data-step-label' => $step_title,
-			'aria-label' => $step_title,
+			'aria-labelledby' => $step_title_id,
 			'data-step-index' => $step_index,
 			'data-step-complete' => $this->is_step_complete( $step_id ),
 			'data-step-current' => $this->is_current_step( $step_id ),
@@ -884,6 +885,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$step_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $step_attributes ), $step_attributes ) );
 		echo '<section ' . $step_attributes_str . '>'; // WPCS: XSS ok.
+		echo '<h2 ' . esc_attr( $step_title_id ) . ' class="fc-step__title screen-reader-text">' . wp_kses( $step_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h2>';
 	}
 
 	/**
@@ -1157,16 +1159,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function maybe_output_express_checkout_section() {
 		if ( has_action( 'fc_checkout_express_checkout' ) ) {
 			?>
-			<div class="fc-express-checkout">
+			<section class="fc-express-checkout">
 				<div class="fc-express-checkout__inner">
-					<h3 class="fc-express-checkout__title"><?php echo esc_html( __( 'Express checkout', 'fluid-checkout' ) ); ?></h3>
+					<h2 class="fc-express-checkout__title"><?php echo esc_html( __( 'Express checkout', 'fluid-checkout' ) ); ?></h2>
 					<?php do_action( 'fc_checkout_express_checkout' ); ?>
 				</div>
 				
 				<div class="fc-express-checkout__separator">
 					<span class="fc-express-checkout__separator-text"><?php echo esc_html( apply_filters( 'fc_checkout_login_separator_text', _x( 'Or', 'Separator label for the express checkout section', 'fluid-checkout' ) ) ); ?></span>
 				</div>
-			</div>
+			</section>
 			<?php
 		}
 	}
