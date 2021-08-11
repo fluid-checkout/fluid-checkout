@@ -56,9 +56,14 @@ $header_background_style = ! empty( $header_background_color_esc ) ? 'style="bac
 
 			$logo_html = ob_get_clean();
 			
-			// Maybe add `aria-label` and `aria-description`
-			if ( ! strpos( $logo_html, ' aria-label=' ) ) {
-				$logo_html = str_replace( 'rel="home"', 'rel="home" '.sprintf( 'aria-label="%1$s" aria-description="%2$s"', $site_title, $homepage_link_description ),  $logo_html );
+			// Maybe add `aria-description`
+			if ( ! strpos( $logo_html, ' aria-description=' ) ) {
+				$logo_html = str_replace( 'rel="home"', 'rel="home" aria-description="' . $homepage_link_description . '"', $logo_html );
+			}
+
+			// Maybe add image `alt` attribute
+			if ( strpos( $logo_html, ' alt=""' ) ) {
+				$logo_html = str_replace( 'alt=""', 'alt="' . $site_title . '"', $logo_html );
 			}
 			
 			echo $logo_html;
