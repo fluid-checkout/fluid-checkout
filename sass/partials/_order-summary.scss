@@ -142,14 +142,14 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	float: left;
 	width: 75%;
 	padding: $global-spacing-tiny;
-	padding-left: #{ $order-summary-image-width + $global-spacing-extra-small };
+	padding-left: #{ $order-summary-image-width + $global-spacing-small };
 	min-height: #{ $order-summary-image-width };
 	background-color: transparent;
 	text-align: left;
 	line-height: 1.2;
 
 	@media (#{$bp-larger-than-desktop}) {
-		padding-left: #{ $order-summary-image-width--large-screen + $global-spacing-extra-small };
+		padding-left: #{ $order-summary-image-width--large-screen + $global-spacing-small };
 		min-height: #{ $order-summary-image-width--large-screen };
 	}
 }

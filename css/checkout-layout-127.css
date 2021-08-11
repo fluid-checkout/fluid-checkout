@@ -1788,7 +1788,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
   float: left;
   width: 75%;
   padding: 5px;
-  padding-left: 60px;
+  padding-left: 70px;
   min-height: 50px;
   background-color: transparent;
   text-align: left;
@@ -1796,7 +1796,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
   @media (min-width: 1000px) {
     form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name,
     form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-name {
-      padding-left: 70px;
+      padding-left: 80px;
       min-height: 60px; } }
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total,
