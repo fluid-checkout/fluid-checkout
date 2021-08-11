@@ -244,8 +244,8 @@
 	/**
 	 * Set the `inert` property of the sibling elements.
 	 *
-	 * @param   HTMLElement  element  The element which to maintain the focus in, all siblings will marked with the value of the param `inert` except this one.
-	 * @param   bool         inert    Boolean value to set to the `inert` property, `true` will make siblings inert, `false` will release the siblings.
+	 * @param   HTMLElement  element  The element which to maintain the focus in, all siblings will be marked with the value of the param `inert` except this one.
+	 * @param   bool         inert    Boolean value to set to the `inert` property, `true` will make siblings inert, `false` will release the inert state.
 	 */
 	var setSiblingsInert = function( element, inert ) {
 		// Release all elements in case of an invalid value for the `inert` param.
@@ -257,6 +257,22 @@
 			Array.from( siblings ).forEach( function( child ) {
 				if ( child != element ) { child.inert = inert; }
 			} );
+		}
+	}
+
+
+	/**
+	 * Set all sibling elements on the passed element's tree with `inert` property.
+	 *
+	 * @param   HTMLElement  element  The element which to maintain the focus in, all siblings up the element's tree will be marked with the value of the param `inert` except this one.
+	 * @param   bool         inert    Boolean value to set to the `inert` property, `true` will make siblings inert, `false` will release the inert state.
+	 */
+	var setTreeSiblingsInert = function( element, inert ) {
+		var targetElement = element;
+		
+		while ( element.parentNode ) {
+			setSiblingsInert( targetElement, inert );
+			targetElement = targetElement.parentNode;
 		}
 	}
 
@@ -297,7 +313,11 @@
 
 			// Set classes
 			manager.element.classList.add( manager.settings.isOpenClass );
-			document.body.classList.add( manager.settings.bodyHasFlyoutOpenClass,manager.settings.bodyHasFlyoutOpenClass + '-' + manager.element.id );
+			document.body.classList.add( manager.settings.bodyHasFlyoutOpenClass, manager.settings.bodyHasFlyoutOpenClass + '-' + manager.element.id );
+
+			// Set flyout content `role` attribute from data attributes
+			var roleAttrValue = manager.element.getAttribute( manager.settings.flyoutRoleAttribute ) == 'alert' || manager.element.getAttribute( manager.settings.flyoutRoleAttribute ) == 'alertdialog' ? 'alertdialog' : 'dialog';
+			manager.contentElement.setAttribute( 'role', roleAttrValue );
 
 			// Maybe skip setting focus
 			if ( ! manager.element.hasAttribute( manager.settings.manualFocusAttribute ) ) {
@@ -324,7 +344,7 @@
 			}
 
 			// Make all other elements `inert`
-			setSiblingsInert( manager.element, true );
+			setTreeSiblingsInert( manager.element, true );
 		} );
 	}
 
@@ -347,6 +367,9 @@
 			manager.element.classList.remove( manager.settings.isOpenClass );
 			document.body.classList.remove( manager.settings.bodyHasFlyoutOpenClass + '-' + manager.element.id );
 
+			// Remove flyout content `role` attribute
+			manager.contentElement.removeAttribute( 'role' );
+
 			// Maybe set `hidden` attribute again
 			if ( manager.wasHidden ) {
 				manager.element.setAttribute( 'hidden', '' );
@@ -359,7 +382,7 @@
 			}
 
 			// Release all other elements, set `inert` to false
-			setSiblingsInert( manager.element, false );
+			setTreeSiblingsInert( manager.element, false );
 
 			// Set focus back to the element previously with focus
 			if ( manager.previousActiveElement ) {
@@ -487,10 +510,6 @@
 		var closeAnimationAttrValue = manager.element.getAttribute( manager.settings.closeAnimationClassAttribute );
 		manager.settings.openAnimationClass = openAnimationAttrValue && openAnimationAttrValue != '' ? openAnimationAttrValue : _settings.openAnimationClass;
 		manager.settings.closeAnimationClass = closeAnimationAttrValue && closeAnimationAttrValue != '' ? closeAnimationAttrValue : _settings.closeAnimationClass;
-
-		// Set flyout content `role` attribute from data attributes
-		var roleAttrValue = manager.element.getAttribute( manager.settings.flyoutRoleAttribute ) == 'alert' || manager.element.getAttribute( manager.settings.flyoutRoleAttribute ) == 'alertdialog' ? 'alertdialog' : 'dialog';
-		manager.contentElement.setAttribute( 'role', roleAttrValue );
 
 		// Set flyout accessible name
 		var ariaLabelValue = manager.element.getAttribute( 'aria-label' );
