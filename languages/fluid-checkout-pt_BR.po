@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2021-08-11 13:23+0000\n"
+"PO-Revision-Date: 2021-08-11 16:38+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -127,6 +127,10 @@ msgctxt "Button label for applying coupon codes"
 msgid "Apply"
 msgstr "Aplicar"
 
+#: inc/checkout-steps.php:328
+msgid "Cart total:"
+msgstr "Total no carrinho:"
+
 #: inc/checkout-validation.php:67
 msgid "Change email address to: {suggestion-value}"
 msgstr "Alterar o endereço de e-mail para: {suggestion-value}"
@@ -207,6 +211,10 @@ msgstr ""
 "Escolha uma imagem para ser exibida no cabeçalho da página de finalização de "
 "compra. Aplica-se apenas quando usando o cabeçalho da página do plugin na "
 "página de finalização de compra."
+
+#: inc/checkout-steps.php:328
+msgid "Click to go to the order summary"
+msgstr "Clique para ir para o resumo do pedido"
 
 #: templates/fc/checkout/review-order-section.php:55
 msgid "Close and continue with checkout"
@@ -550,10 +558,6 @@ msgstr ""
 #: inc/checkout-shipping-phone-field.php:66
 msgid "Only used for shipping-related questions."
 msgstr "Usado apenas para perguntas relacionadas à entrega."
-
-#: inc/checkout-steps.php:328
-msgid "Open order summary"
-msgstr "Abrir resumo do pedido"
 
 #: inc/admin/admin-settings-checkout.php:267
 msgid "Optional fields"

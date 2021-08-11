@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-11 13:09+0000\n"
+"POT-Creation-Date: 2021-08-11 16:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -115,6 +115,10 @@ msgctxt "Button label for applying coupon codes"
 msgid "Apply"
 msgstr ""
 
+#: inc/checkout-steps.php:328
+msgid "Cart total:"
+msgstr ""
+
 #: inc/checkout-validation.php:67
 msgid "Change email address to: {suggestion-value}"
 msgstr ""
@@ -188,6 +192,10 @@ msgstr ""
 msgid ""
 "Choose an image to be displayed on the checkout page header. Only applies "
 "when using the plugin's checkout header."
+msgstr ""
+
+#: inc/checkout-steps.php:328
+msgid "Click to go to the order summary"
 msgstr ""
 
 #: templates/fc/checkout/review-order-section.php:55
@@ -495,10 +503,6 @@ msgstr ""
 
 #: inc/checkout-shipping-phone-field.php:66
 msgid "Only used for shipping-related questions."
-msgstr ""
-
-#: inc/checkout-steps.php:328
-msgid "Open order summary"
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:267
