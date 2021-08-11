@@ -1158,10 +1158,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_output_express_checkout_section() {
 		if ( has_action( 'fc_checkout_express_checkout' ) ) {
+			$express_checkout_section_label = __( 'Express checkout', 'fluid-checkout' );
 			?>
-			<section class="fc-express-checkout">
+			<section class="fc-express-checkout" aria-label="<?php echo esc_attr( $express_checkout_section_label ); ?>">
 				<div class="fc-express-checkout__inner">
-					<h2 class="fc-express-checkout__title"><?php echo esc_html( __( 'Express checkout', 'fluid-checkout' ) ); ?></h2>
+					<h2 class="fc-express-checkout__title"><?php echo esc_html( $express_checkout_section_label ); ?></h2>
 					<?php do_action( 'fc_checkout_express_checkout' ); ?>
 				</div>
 				
