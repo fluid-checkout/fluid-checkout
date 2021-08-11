@@ -858,6 +858,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_step_start_tag( $step_args, $step_index ) {
 		$step_id = $step_args[ 'step_id' ];
 		$step_title = apply_filters( "fc_step_title_{$step_id}", $step_args[ 'step_title' ] );
+		$step_title_id = 'fc-step__title--' . $step_args[ 'step_id' ];
 
 		$step_attributes = array(
 			'class' => 'fc-checkout-step',
@@ -884,6 +885,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$step_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $step_attributes ), $step_attributes ) );
 		echo '<section ' . $step_attributes_str . '>'; // WPCS: XSS ok.
+		echo '<h2 id="' . esc_attr( $step_title_id ) . '" class="fc-step__title screen-reader-text">' . wp_kses( $step_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h2>';
 	}
 
 	/**
@@ -944,8 +946,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_substep_end_tag( $step_id, $substep_id, $substep_title, $output_edit_buttons = true ) {
 		?>
 			<?php if ( $output_edit_buttons && $this->is_checkout_layout_multistep() ) : ?>
-				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-label="<?php echo sprintf( __( 'Change: %s', 'fluid-checkout' ), $substep_title ); ?>" aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo esc_html( apply_filters( 'fc_substep_change_button_label', _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ) ) ); ?></a>
-				<button tabindex="0" role="button" class="fc-step__substep-save <?php echo esc_attr( apply_filters( 'fc_substep_save_button_classes', 'button' ) ); ?>" data-step-save aria-controls="fc-substep__<?php echo esc_attr( $substep_id ); ?>"><?php echo esc_html( apply_filters( 'fc_substep_save_button_label', _x( 'Save changes', 'Checkout substep save link label', 'fluid-checkout' ) ) ); ?></button>
+				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-label="<?php echo sprintf( __( 'Change: %s', 'fluid-checkout' ), $substep_title ); ?>"><?php echo esc_html( apply_filters( 'fc_substep_change_button_label', _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ) ) ); ?></a>
+				<button tabindex="0" role="button" class="fc-step__substep-save <?php echo esc_attr( apply_filters( 'fc_substep_save_button_classes', 'button' ) ); ?>" data-step-save><?php echo esc_html( apply_filters( 'fc_substep_save_button_label', _x( 'Save changes', 'Checkout substep save link label', 'fluid-checkout' ) ) ); ?></button>
 			<?php endif; ?>
 		</div>
 		<?php
@@ -1156,17 +1158,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_output_express_checkout_section() {
 		if ( has_action( 'fc_checkout_express_checkout' ) ) {
+			$express_checkout_section_label = __( 'Express checkout', 'fluid-checkout' );
 			?>
-			<div class="fc-express-checkout">
+			<section class="fc-express-checkout" aria-label="<?php echo esc_attr( $express_checkout_section_label ); ?>">
 				<div class="fc-express-checkout__inner">
-					<h3 class="fc-express-checkout__title"><?php echo esc_html( __( 'Express checkout', 'fluid-checkout' ) ); ?></h3>
+					<h2 class="fc-express-checkout__title"><?php echo esc_html( $express_checkout_section_label ); ?></h2>
 					<?php do_action( 'fc_checkout_express_checkout' ); ?>
 				</div>
 				
 				<div class="fc-express-checkout__separator">
 					<span class="fc-express-checkout__separator-text"><?php echo esc_html( apply_filters( 'fc_checkout_login_separator_text', _x( 'Or', 'Separator label for the express checkout section', 'fluid-checkout' ) ) ); ?></span>
 				</div>
-			</div>
+			</section>
 			<?php
 		}
 	}
@@ -2543,7 +2546,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_order_review_html_attributes( $is_sidebar_widget = false ) {
 		$attributes = array(
-			'id' => 'fc-checkout-order-review',
 			'class' => 'fc-checkout-order-review',
 		);
 
