@@ -181,6 +181,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 = Unreleased =
 * Added: Support for express payment buttons for the plugin "WooCommerce Stripe Gateway" by WooCommerce.
 * Added: Support for themes "Shoptimizer" and "Woodmart".
+* Improved: Added more space for product names and details on the order summary.
 * Improved: Change the way plugin compatibility classes and styles are loaded, extending support for WordPress Multi-site mode.
 * Fixed: Coupon code field height on some themes.
 

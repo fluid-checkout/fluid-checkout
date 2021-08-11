@@ -32,6 +32,9 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		// Add validation status classes to checkout fields
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_status_classes' ), 100, 3 );
+
+		// Fix required marker accessibility
+		add_filter( 'woocommerce_form_field', array( $this, 'change_required_field_marker_aria_label' ), 100, 4 );
 	}
 
 
@@ -151,6 +154,26 @@ class FluidCheckout_Validation extends FluidCheckout {
 		}
 
 		return $args;
+	}
+
+
+
+	/**
+	 * Get the checkout fields args.
+	 *
+	 * @param   string  $field  Field html markup to be changed.
+	 * @param   string  $key    Field key.
+	 * @param   arrray  $args   Field args.
+	 * @param   mixed   $value  Value of the field. Defaults to `null`.
+	 */
+	public function change_required_field_marker_aria_label( $field, $key, $args, $value ) {
+		// Bail if field is not required
+		if ( ! array_key_exists( 'required', $args ) || $args['required'] != true ) { return $field; }
+
+		// Set attribute `data-autofocus` to focus on the optional field when expanding the section
+		$field = str_replace( '<abbr class="required"', '<abbr class="required" aria-label="' . __( '(Required)', 'fluid-checkout' ) . '" ', $field );
+
+		return $field;
 	}
 
 }
