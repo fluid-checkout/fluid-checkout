@@ -864,7 +864,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'class' => 'fc-checkout-step',
 			'data-step-id' => ! empty( $step_id ) && $step_id != null ? $step_id : '',
 			'data-step-label' => $step_title,
-			'aria-labelledby' => $step_title_id,
+			'aria-label' => $step_title,
 			'data-step-index' => $step_index,
 			'data-step-complete' => $this->is_step_complete( $step_id ),
 			'data-step-current' => $this->is_current_step( $step_id ),
@@ -885,7 +885,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$step_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $step_attributes ), $step_attributes ) );
 		echo '<section ' . $step_attributes_str . '>'; // WPCS: XSS ok.
-		echo '<h2 ' . esc_attr( $step_title_id ) . ' class="fc-step__title screen-reader-text">' . wp_kses( $step_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h2>';
+		echo '<h2 id="' . esc_attr( $step_title_id ) . '" class="fc-step__title screen-reader-text">' . wp_kses( $step_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h2>';
 	}
 
 	/**
@@ -2545,7 +2545,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_order_review_html_attributes( $is_sidebar_widget = false ) {
 		$attributes = array(
-			'id' => 'fc-checkout-order-review',
 			'class' => 'fc-checkout-order-review',
 		);
 

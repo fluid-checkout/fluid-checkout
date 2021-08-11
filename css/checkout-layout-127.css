@@ -1899,7 +1899,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
   z-index: 199; }
 
 @media (min-width: 1000px) {
-  form.woocommerce-checkout .fc-wrapper #fc-checkout-order-review .fc-checkout-order-review__inner {
+  form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
     margin: 0 0 20px;
     padding: 12px 20px 0;
     max-width: none;
@@ -1908,7 +1908,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
     background-color: #fff;
     overflow: hidden; } }
 
-form.woocommerce-checkout .fc-wrapper #fc-checkout-order-review .fc-checkout-order-review__inner:focus {
+form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner:focus {
   outline: solid 2px #535156;
   outline-offset: 2px; }
 

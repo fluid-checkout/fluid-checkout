@@ -290,7 +290,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 
 
-form.woocommerce-checkout .fc-wrapper #fc-checkout-order-review .fc-checkout-order-review__inner {
+form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
 	@media (#{$bp-larger-than-desktop}) {
 		margin: 0 0 $global-spacing-small;
 		padding: remsize( 1.2rem ) $global-spacing-small 0;
