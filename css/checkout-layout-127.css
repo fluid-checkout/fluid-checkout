@@ -730,7 +730,9 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	#CHECKOUT STEP ACTIONS
 \*------------------------------------*/
 .has-checkout-layout--multi-step .fc-step__actions {
-  margin: 30px 0;
+  padding: 20px 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   text-align: center; }
 
 .has-checkout-layout--multi-step [data-step-complete] .fc-step__actions {
@@ -739,6 +741,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
   margin: 0;
   min-width: 280px;
+  width: 100%;
   text-align: center; }
   .has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:focus {
     outline: solid 2px #535156;
