@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2021-08-11 16:38+0000\n"
+"PO-Revision-Date: 2021-08-12 17:09+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -31,7 +31,7 @@ msgid "(Experimental) Use theme's page header and footer for the checkout page"
 msgstr ""
 "(Experimental) Use o cabeçalho e rodapé do tema para a página de checkout"
 
-#: inc/checkout-validation.php:174
+#: inc/checkout-validation.php:175
 msgid "(Required)"
 msgstr "(Obrigatório)"
 
@@ -62,7 +62,7 @@ msgstr "Adicione um campo de telefone ao formulário de endereço de entrega"
 msgid "Add widget areas to the checkout page"
 msgstr "Adicione áreas de widget à página de checkout"
 
-#: inc/checkout-steps.php:1458
+#: inc/checkout-steps.php:1461
 msgid "Additional notes"
 msgstr "Notas Adicionais"
 
@@ -87,7 +87,7 @@ msgstr ""
 msgid "Already have an account?"
 msgstr "Já tem uma conta?"
 
-#: inc/checkout-steps.php:1242
+#: inc/checkout-steps.php:1245
 msgid "An account will be created with the information provided."
 msgstr "Sua conta será criada com as informações fornecidas."
 
@@ -109,7 +109,7 @@ msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 "Endereço de faturamento igual ao endereço de entrega marcado por padrão"
 
-#: inc/checkout-steps.php:1976
+#: inc/checkout-steps.php:1979
 msgid "Billing to"
 msgstr "Faturamento para"
 
@@ -135,7 +135,7 @@ msgstr "Total no carrinho:"
 msgid "Change email address to: {suggestion-value}"
 msgstr "Alterar o endereço de e-mail para: {suggestion-value}"
 
-#: inc/checkout-steps.php:947
+#: inc/checkout-steps.php:949
 #, php-format
 msgid "Change: %s"
 msgstr "Alterar: %s"
@@ -180,12 +180,12 @@ msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Entrega"
 
-#: inc/checkout-steps.php:947
+#: inc/checkout-steps.php:949
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Alterar"
 
-#: inc/checkout-steps.php:948
+#: inc/checkout-steps.php:950
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Salvar alterações"
@@ -338,7 +338,7 @@ msgstr "Alterar"
 msgid "Enter your code here"
 msgstr "Coloque o seu código aqui"
 
-#: inc/checkout-steps.php:1162
+#: inc/checkout-steps.php:1161
 msgid "Express checkout"
 msgstr "Checkout expresso"
 
@@ -387,6 +387,10 @@ msgstr "Mensagem de presente"
 msgctxt "Gift options section title in the order details"
 msgid "Gift message:"
 msgstr "Mensagem de presente:"
+
+#: templates/fc/checkout/checkout-header.php:31
+msgid "Go to the home page"
+msgstr "Ir para a página inicial"
 
 #: inc/admin/admin-settings-checkout.php:141
 msgid "Header and Footer"
@@ -514,7 +518,7 @@ msgstr ""
 msgid "Multi-step"
 msgstr "Multi-etapas"
 
-#: inc/checkout-steps.php:1196
+#: inc/checkout-steps.php:1199
 msgid "My contact"
 msgstr "Meu contato"
 
@@ -542,7 +546,7 @@ msgctxt "Notice for no gift options provided"
 msgid "None."
 msgstr "Nenhuma."
 
-#: inc/checkout-steps.php:1632
+#: inc/checkout-steps.php:1635
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Nenhuma."
@@ -574,7 +578,7 @@ msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 "O número do pedido e o recibo serão enviados para este endereço de e-mail."
 
-#: inc/checkout-widget-areas.php:74 inc/checkout-steps.php:2534
+#: inc/checkout-widget-areas.php:74 inc/checkout-steps.php:2537
 #: inc/admin/admin-settings-checkout.php:122
 #: inc/admin/admin-settings-checkout.php:289
 #| msgid "Order Summary"
@@ -585,21 +589,21 @@ msgstr "Resumo do pedido"
 msgid "Packing Slips"
 msgstr "Guias de remessa"
 
-#: inc/checkout-steps.php:2430
+#: inc/checkout-steps.php:2433
 msgid "Payment method"
 msgstr "Forma de pagamento"
 
-#: inc/checkout-steps.php:1542
+#: inc/checkout-steps.php:1545
 msgid "Pick up at store:"
 msgstr "Retirar na loja:"
 
 #: inc/checkout-steps.php:697 inc/checkout-steps.php:708
 msgid "Proceed to Billing"
-msgstr "Prossiga para o faturamento"
+msgstr "Prosseguir para o faturamento"
 
 #: inc/checkout-steps.php:718
 msgid "Proceed to Payment"
-msgstr "Prossiga para o pagamento"
+msgstr "Prosseguir para o pagamento"
 
 #: inc/checkout-steps.php:697
 msgid "Proceed to Shipping"
@@ -611,18 +615,17 @@ msgstr "Barra de progresso"
 
 #. Description of the plugin
 msgid ""
-"Provides a Fluid Checkout experience for any WooCommerce store. Ask for "
-"shipping information before billing in a truly linear multi-step or one-step "
-"checkout, add options for gift message and packaging and display a coupon "
-"code field at the checkout page that does not distract your customers. "
-"Similar to the Shopify checkout, and even better."
+"Provides a distraction free checkout experience for any WooCommerce store. "
+"Ask for shipping information before billing in a truly linear multi-step or "
+"one-step checkout, add options for gift message, and display a coupon code "
+"field at the checkout page that does not distract your customers."
 msgstr ""
-"Fornece uma experiência de checkout fluida para sua loja WooCommerce. "
-"Solicite informações de entrega antes das informações de faturamento em um "
-"checkout verdadeiramente linear em um layout multi-passos ou único passo, "
-"adicione opções para mensagem e embalagem de presente e adicione um campo de "
-"código de cupom na página checkout que não distraia seus clientes. "
-"Semelhante ao checkout do Shopify, e ainda melhor."
+"Fornece uma experiência de pagamento livre de distrações para qualquer loja "
+"WooCommerce. Peça informações de envio antes de informações de cobrança em "
+"com uma página de finalização de compra verdadeiramente linear de várias "
+"etapas ou etapa-única, adicione opções para mensagem de presente e exiba um "
+"campo de código de cupom na página de finalização de compra que não distraia "
+"seus clientes."
 
 #: inc/admin/admin-notice-review-request.php:44
 msgid "Rate Us Now"
@@ -651,7 +654,7 @@ msgstr ""
 msgid "Remove"
 msgstr "Remover"
 
-#: inc/checkout-steps.php:2073 inc/checkout-steps.php:2158
+#: inc/checkout-steps.php:2076 inc/checkout-steps.php:2161
 msgid "Same as shipping address"
 msgstr "Igual ao endereço de entrega"
 
@@ -661,7 +664,7 @@ msgstr "Igual ao endereço de entrega"
 msgid "Select an image"
 msgstr "Selecionar imagem"
 
-#: inc/checkout-steps.php:1167
+#: inc/checkout-steps.php:1170
 msgctxt "Separator label for the express checkout section"
 msgid "Or"
 msgstr "Ou"
@@ -670,7 +673,7 @@ msgstr "Ou"
 msgid "Settings"
 msgstr "Configurações"
 
-#: inc/checkout-steps.php:1434
+#: inc/checkout-steps.php:1437
 msgid "Shipping method"
 msgstr "Método de entrega"
 
@@ -694,7 +697,7 @@ msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr "Obrigatório"
 
-#: inc/checkout-steps.php:1410
+#: inc/checkout-steps.php:1413
 msgid "Shipping to"
 msgstr "Enviando para"
 
