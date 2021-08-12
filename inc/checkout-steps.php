@@ -2552,6 +2552,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Sidebar widget
 		if ( $is_sidebar_widget ) {
 			$attributes = array_merge( $attributes, array(
+				'id' => 'fc-checkout-order-review',
 				'data-flyout' => true,
 				'data-flyout-order-review' => true,
 				'data-flyout-open-animation-class' => 'fade-in-down',
