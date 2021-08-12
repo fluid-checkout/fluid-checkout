@@ -1880,7 +1880,8 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
   outline-offset: 1px; }
 
 .fc-wrapper .fc-checkout-order-review__widgets-inside {
-  margin-top: 20px; }
+  margin-top: 20px;
+  margin-bottom: 20px; }
 
 /*------------------------------------*\
 	#ORDER REVIEW VISIBILITY
