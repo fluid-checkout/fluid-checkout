@@ -303,7 +303,16 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
 
 .fc-checkout-header .fc-checkout__branding img {
   max-height: 46px;
-  width: auto; }
+  max-width: 130px;
+  width: auto;
+  -o-object-fit: contain;
+  object-fit: contain; }
+  @media (min-width: 400px) {
+    .fc-checkout-header .fc-checkout__branding img {
+      max-width: 180px; } }
+  @media (min-width: 750px) {
+    .fc-checkout-header .fc-checkout__branding img {
+      max-width: 200px; } }
 
 .fc-checkout-header .fc-checkout__cart-link-wrapper {
   position: absolute;
