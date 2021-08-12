@@ -34,7 +34,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_status_classes' ), 100, 3 );
 
 		// Fix required marker accessibility
-		add_filter( 'woocommerce_form_field', array( $this, 'change_required_field_marker_aria_label' ), 100, 4 );
+		add_filter( 'woocommerce_form_field', array( $this, 'change_required_field_attributes' ), 100, 4 );
 	}
 
 
@@ -159,19 +159,67 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 
 	/**
-	 * Get the checkout fields args.
+	 * Change the fields args for required fields.
 	 *
 	 * @param   string  $field  Field html markup to be changed.
 	 * @param   string  $key    Field key.
 	 * @param   arrray  $args   Field args.
 	 * @param   mixed   $value  Value of the field. Defaults to `null`.
 	 */
-	public function change_required_field_marker_aria_label( $field, $key, $args, $value ) {
+	public function change_required_field_attributes( $field, $key, $args, $value ) {
+		
 		// Bail if field is not required
 		if ( ! array_key_exists( 'required', $args ) || $args['required'] != true ) { return $field; }
-
-		// Set attribute `data-autofocus` to focus on the optional field when expanding the section
+		
+		// Add `aria-label` to required field labels
 		$field = str_replace( '<abbr class="required"', '<abbr class="required" aria-label="' . __( '(Required)', 'fluid-checkout' ) . '" ', $field );
+		
+		// Add `required` attribute to required fields
+		$search_str = null;
+		switch ( $args['type'] ) {
+			case 'country':
+				$countries = 'shipping_country' === $key ? WC()->countries->get_shipping_countries() : WC()->countries->get_allowed_countries();
+				if ( 1 !== count( $countries ) ) {
+					$search_str = '<select';
+				}
+				break;
+			case 'state':
+				/* Get country this state field is representing */
+				$for_country = isset( $args['country'] ) ? $args['country'] : WC()->checkout->get_value( 'billing_state' === $key ? 'billing_country' : 'shipping_country' );
+				$states      = WC()->countries->get_states( $for_country );
+				if ( ! is_null( $for_country ) && is_array( $states ) ) {
+					$search_str = '<select';
+				} else {
+					$search_str = '<input';
+				}
+				break;
+			case 'textarea':
+				$search_str = '<textarea';
+				break;
+			case 'text':
+			case 'password':
+			case 'datetime':
+			case 'datetime-local':
+			case 'date':
+			case 'month':
+			case 'time':
+			case 'week':
+			case 'number':
+			case 'email':
+			case 'url':
+			case 'tel':
+			case 'radio':
+			case 'checkbox':
+				$search_str = '<input';
+				break;
+			case 'select':
+				$search_str = '<select';
+				break;
+		}
+
+		if ( ! empty( $search_str ) ) {
+			$field = str_replace( $search_str, $search_str . ' required aria-required="true" ', $field );
+		}
 
 		return $field;
 	}
