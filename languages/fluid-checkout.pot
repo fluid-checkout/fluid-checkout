@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-11 16:37+0000\n"
+"POT-Creation-Date: 2021-08-12 17:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "(Experimental) Use theme's page header and footer for the checkout page"
 msgstr ""
 
-#: inc/checkout-validation.php:174
+#: inc/checkout-validation.php:175
 msgid "(Required)"
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Add widget areas to the checkout page"
 msgstr ""
 
-#: inc/checkout-steps.php:1458
+#: inc/checkout-steps.php:1461
 msgid "Additional notes"
 msgstr ""
 
@@ -77,7 +77,7 @@ msgstr ""
 msgid "Already have an account?"
 msgstr ""
 
-#: inc/checkout-steps.php:1242
+#: inc/checkout-steps.php:1245
 msgid "An account will be created with the information provided."
 msgstr ""
 
@@ -97,7 +97,7 @@ msgstr ""
 msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 
-#: inc/checkout-steps.php:1976
+#: inc/checkout-steps.php:1979
 msgid "Billing to"
 msgstr ""
 
@@ -123,7 +123,7 @@ msgstr ""
 msgid "Change email address to: {suggestion-value}"
 msgstr ""
 
-#: inc/checkout-steps.php:947
+#: inc/checkout-steps.php:949
 #, php-format
 msgid "Change: %s"
 msgstr ""
@@ -168,12 +168,12 @@ msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr ""
 
-#: inc/checkout-steps.php:947
+#: inc/checkout-steps.php:949
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr ""
 
-#: inc/checkout-steps.php:948
+#: inc/checkout-steps.php:950
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr ""
@@ -303,7 +303,7 @@ msgstr ""
 msgid "Enter your code here"
 msgstr ""
 
-#: inc/checkout-steps.php:1162
+#: inc/checkout-steps.php:1161
 msgid "Express checkout"
 msgstr ""
 
@@ -351,6 +351,10 @@ msgstr ""
 #: templates/fc/order/order-details-gift-options-email-plain-text.php:20
 msgctxt "Gift options section title in the order details"
 msgid "Gift message:"
+msgstr ""
+
+#: templates/fc/checkout/checkout-header.php:31
+msgid "Go to the home page"
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:141
@@ -462,7 +466,7 @@ msgstr ""
 msgid "Multi-step"
 msgstr ""
 
-#: inc/checkout-steps.php:1196
+#: inc/checkout-steps.php:1199
 msgid "My contact"
 msgstr ""
 
@@ -490,7 +494,7 @@ msgctxt "Notice for no gift options provided"
 msgid "None."
 msgstr ""
 
-#: inc/checkout-steps.php:1632
+#: inc/checkout-steps.php:1635
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr ""
@@ -517,7 +521,7 @@ msgstr ""
 msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 
-#: inc/checkout-widget-areas.php:74 inc/checkout-steps.php:2534
+#: inc/checkout-widget-areas.php:74 inc/checkout-steps.php:2537
 #: inc/admin/admin-settings-checkout.php:122
 #: inc/admin/admin-settings-checkout.php:289
 msgid "Order summary"
@@ -527,11 +531,11 @@ msgstr ""
 msgid "Packing Slips"
 msgstr ""
 
-#: inc/checkout-steps.php:2430
+#: inc/checkout-steps.php:2433
 msgid "Payment method"
 msgstr ""
 
-#: inc/checkout-steps.php:1542
+#: inc/checkout-steps.php:1545
 msgid "Pick up at store:"
 msgstr ""
 
@@ -553,11 +557,10 @@ msgstr ""
 
 #. Description of the plugin
 msgid ""
-"Provides a Fluid Checkout experience for any WooCommerce store. Ask for "
-"shipping information before billing in a truly linear multi-step or one-step "
-"checkout, add options for gift message and packaging and display a coupon "
-"code field at the checkout page that does not distract your customers. "
-"Similar to the Shopify checkout, and even better."
+"Provides a distraction free checkout experience for any WooCommerce store. "
+"Ask for shipping information before billing in a truly linear multi-step or "
+"one-step checkout, add options for gift message, and display a coupon code "
+"field at the checkout page that does not distract your customers."
 msgstr ""
 
 #: inc/admin/admin-notice-review-request.php:44
@@ -581,7 +584,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: inc/checkout-steps.php:2073 inc/checkout-steps.php:2158
+#: inc/checkout-steps.php:2076 inc/checkout-steps.php:2161
 msgid "Same as shipping address"
 msgstr ""
 
@@ -591,7 +594,7 @@ msgstr ""
 msgid "Select an image"
 msgstr ""
 
-#: inc/checkout-steps.php:1167
+#: inc/checkout-steps.php:1170
 msgctxt "Separator label for the express checkout section"
 msgid "Or"
 msgstr ""
@@ -600,7 +603,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: inc/checkout-steps.php:1434
+#: inc/checkout-steps.php:1437
 msgid "Shipping method"
 msgstr ""
 
@@ -624,7 +627,7 @@ msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr ""
 
-#: inc/checkout-steps.php:1410
+#: inc/checkout-steps.php:1413
 msgid "Shipping to"
 msgstr ""
 
