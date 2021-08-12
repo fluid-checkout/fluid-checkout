@@ -250,6 +250,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 == Upgrade Notice ==
 
+= 1.2.8 =
+Better accessibility support, and express checkout.
+
 = 1.2.5 =
 New feature to automatically hide shipping address fields when "Local Pickup" is selected.
 
