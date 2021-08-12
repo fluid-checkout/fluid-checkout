@@ -203,10 +203,11 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	public function add_shipping_phone_to_substep_text_format( $html ) {
 		$shipping_phone = $this->checkout_steps()->get_checkout_field_value_from_session( 'shipping_phone' );
 
-		// Insert the phone field at in the text
+		// Insert the phone field in the text
 		if ( $shipping_phone != null && ! empty( $shipping_phone ) ) {
-			$shipping_phone_text = '<div class="fc-step__substep-text-line">' . $shipping_phone . '</div></div>';
-			$html = str_replace( '</div>', $shipping_phone_text, $html );
+			$shipping_phone_text = '<div class="fc-step__substep-text-line">' . $shipping_phone . '</div>';
+			$last_div_position = strrpos( $html, '</div>' );
+			$html = substr_replace( $html, $shipping_phone_text, $last_div_position, 0 );
 		}
 
 		return $html;
