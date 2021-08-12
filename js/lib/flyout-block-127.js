@@ -248,6 +248,9 @@
 	 * @param   bool         inert    Boolean value to set to the `inert` property, `true` will make siblings inert, `false` will release the inert state.
 	 */
 	var setSiblingsInert = function( element, inert ) {
+		// Bail if element does not have a parentNode
+		if ( ! element || ! element.parentNode ) { return; }
+
 		// Release all elements in case of an invalid value for the `inert` param.
 		if ( typeof inert !== 'boolean' ) { inert = false; }
 
@@ -268,9 +271,12 @@
 	 * @param   bool         inert    Boolean value to set to the `inert` property, `true` will make siblings inert, `false` will release the inert state.
 	 */
 	var setTreeSiblingsInert = function( element, inert ) {
+		// Bail if element does not have a parentNode
+		if ( ! element || ! element.parentNode ) { return; }
+
 		var targetElement = element;
 		
-		while ( element.parentNode ) {
+		while ( targetElement.parentNode ) {
 			setSiblingsInert( targetElement, inert );
 			targetElement = targetElement.parentNode;
 		}
@@ -318,6 +324,9 @@
 			// Set flyout content `role` attribute from data attributes
 			var roleAttrValue = manager.element.getAttribute( manager.settings.flyoutRoleAttribute ) == 'alert' || manager.element.getAttribute( manager.settings.flyoutRoleAttribute ) == 'alertdialog' ? 'alertdialog' : 'dialog';
 			manager.contentElement.setAttribute( 'role', roleAttrValue );
+
+			// Set content element as focusable
+			manager.contentElement.setAttribute( 'tabindex', 0 );
 
 			// Maybe skip setting focus
 			if ( ! manager.element.hasAttribute( manager.settings.manualFocusAttribute ) ) {
@@ -369,6 +378,9 @@
 
 			// Remove flyout content `role` attribute
 			manager.contentElement.removeAttribute( 'role' );
+
+			// Set content element as not-focusable
+			manager.contentElement.removeAttribute( 'tabindex' );
 
 			// Maybe set `hidden` attribute again
 			if ( manager.wasHidden ) {
@@ -501,9 +513,6 @@
 
 		// Get the content element
 		manager.contentElement = manager.element.querySelector( manager.settings.flyoutContentSelector );
-
-		// Set content element as focusable
-		manager.contentElement.setAttribute( 'tabindex', 0 );
 		
 		// Try get open/close animation classes from attributes
 		var openAnimationAttrValue = manager.element.getAttribute( manager.settings.openAnimationClassAttribute );
