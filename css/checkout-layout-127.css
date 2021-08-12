@@ -1500,7 +1500,7 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
 .fc-wrapper .fc-place-order .fc-place-order-button {
   margin: 0;
   width: 100%;
-  max-width: 600px;
+  min-width: 280px;
   min-height: 50px;
   text-align: center; }
   .fc-wrapper .fc-place-order .fc-place-order-button:focus {
