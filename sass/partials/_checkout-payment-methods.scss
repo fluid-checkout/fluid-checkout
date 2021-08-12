@@ -52,7 +52,10 @@
 
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
 	position: relative;
-	display: block;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
 	margin: 0;
 	padding: $payment-method-padding-vertical #{ $payment-method-padding-horizontal } $payment-method-padding-vertical #{ $payment-method-radio-size + $payment-method-padding-horizontal };
 	width: 100%;
@@ -150,6 +153,7 @@
 }
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label img {
+	float: none;
 	display: inline-block;
 	height: $payment-method-radio-size;
 	vertical-align: middle;

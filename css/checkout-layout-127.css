@@ -1255,7 +1255,10 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
 
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   margin: 0;
   padding: 10px 20px 10px 44px;
   width: 100%;
@@ -1357,6 +1360,7 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
   margin-right: 10px; }
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label img {
+  float: none;
   display: inline-block;
   height: 24px;
   vertical-align: middle; }
