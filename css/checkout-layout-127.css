@@ -459,7 +459,7 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
       padding: 10px 20px;
       border-radius: 8px; } }
 
-.fc-progress-bar[data-sticky-states].is-sticky .fc-progress-bar__inner {
+.fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
   z-index: 198; }
 
 .admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
