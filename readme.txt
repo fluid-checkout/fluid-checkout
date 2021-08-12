@@ -8,20 +8,20 @@ Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Provides a Fluid Checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message and packaging and display a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.
+Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message, and display a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.
 
 
 == Description ==
 
 Fluid Checkout simplifies and improves the checkout experience on WooCommerce websites for your new and repeating customers with a truly linear, Shopify-like checkout.
 
-Eliminate unnecessary friction at the checkout page and benefit from better conversion rates, customer satisfaction, and earn customer's loyalty.
-
-Optimized for better accessibility with support for keyboard-only navigation and screen readers. Full compatibility with ADA / WCAG 2.1 AA is underway.
+Eliminate unnecessary friction at the checkout page and benefit from better conversion rates, customer satisfaction, and earned customer's loyalty.
 
 Ask for shipping information before billing in a truly linear **multi-step and one-step checkout**, easily add trust symbols, add options for gift message and packaging and display a coupon code field that does not distract your customers.
 
 Similar to the Shopify checkout, and even better!
+
+Better accessibility at the checkout page with support for keyboard-only navigation and screen readers.
 
 = Demos =
 
