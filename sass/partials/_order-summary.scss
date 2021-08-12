@@ -64,6 +64,12 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	}
 }
 
+.woocommerce-checkout form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table thead,
+.woocommerce-checkout form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody,
+.woocommerce-checkout form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot {
+	border: none;
+}
+
 .woocommerce-checkout form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody::after {
 	display: none;
 }
@@ -97,12 +103,13 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
 	vertical-align: middle;
-	width: auto;
+	width: 50%;
 	text-align: left;
 }
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total,
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td {
+	width: 50%;
 	font-size: $order-summary-font-size;
 	text-align: right;
 	line-height: 1;
@@ -123,29 +130,43 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 
 
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart_item td {
+	margin: 0;
+	width: 100%;
+	white-space: normal;
+}
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table td.product-name,
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child td.product-name {
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name,
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-name {
 	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	padding-left: #{ $order-summary-image-width + $order-summary-cell-padding-horizontal + $global-spacing-extra-small };
-	width: auto;
-	min-height: #{ $order-summary-image-width + ( $order-summary-cell-padding-vertical * 2 )  };
+	float: left;
+	width: 75%;
+	padding: $global-spacing-tiny;
+	padding-left: #{ $order-summary-image-width + $global-spacing-small };
+	min-height: #{ $order-summary-image-width };
 	background-color: transparent;
+	text-align: left;
 	line-height: 1.2;
 
 	@media (#{$bp-larger-than-desktop}) {
-		padding-left: #{ $order-summary-image-width--large-screen + $order-summary-cell-padding-horizontal + $global-spacing-extra-small };
-		min-height: #{ $order-summary-image-width--large-screen + ( $order-summary-cell-padding-vertical * 2 )  };
+		padding-left: #{ $order-summary-image-width--large-screen + $global-spacing-small };
+		min-height: #{ $order-summary-image-width--large-screen };
 	}
+}
+
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total,
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-total {
+	display: block;
+	padding: $global-spacing-tiny 0;
+	width: 25%;
+	float: right;
+	background-color: transparent;
 }
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .attachment-woocommerce_thumbnail {
 	position: absolute;
-	top: $order-summary-cell-padding-vertical;
-	left: $order-summary-cell-padding-horizontal;
+	top: 0;
+	left: - #{ $order-summary-image-padding };
 	padding: $order-summary-image-padding;
 	width: $order-summary-image-width !important; // Needed to override inline styles added by some themes
 	height: $order-summary-image-width !important; // Needed to override inline styles added by some themes
@@ -162,8 +183,8 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-quantity {
 	z-index: z( 'above' );
 	position: absolute;
-	top: $order-summary-cell-padding-vertical;
-	left: #{ $order-summary-image-width + $order-summary-cell-padding-horizontal + $global-spacing-tiny };
+	top: 0;
+	left: #{ $order-summary-image-width + $global-spacing-tiny };
 	transform: translateX( -100% ) translateY( -25% );
 	display: block;
 	padding: remsize( .1rem ) remsize( .6rem ) remsize( .2rem ) $global-spacing-tiny;
@@ -176,7 +197,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	letter-spacing: 0;
 
 	@media (#{$bp-larger-than-desktop}) {
-		left: #{ $order-summary-image-width--large-screen + $order-summary-cell-padding-horizontal + $global-spacing-tiny };
+		left: #{ $order-summary-image-width--large-screen + $global-spacing-tiny };
 	}
 }
 
@@ -189,10 +210,6 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table dl.variation dd {
 	margin: 0;
 	padding: 0;
-}
-
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table td.product-total {
-	background-color: transparent;
 }
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total {
@@ -219,6 +236,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 .fc-wrapper .fc-checkout-order-review__widgets-inside {
 	margin-top: $global-spacing-small;
+	margin-bottom: $global-spacing-small;
 }
 
 
@@ -273,7 +291,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 
 
-.fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
+form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
 	@media (#{$bp-larger-than-desktop}) {
 		margin: 0 0 $global-spacing-small;
 		padding: remsize( 1.2rem ) $global-spacing-small 0;

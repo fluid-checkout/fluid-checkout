@@ -36,6 +36,7 @@
 		currentStepSelector: '[data-step-current]',
 		nextStepSelector: '[data-step-current] ~ .fc-checkout-step',
 		nextStepButtonSelector: '[data-step-next]',
+		focusableElementsSelector: 'a[role="button"], a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), details, summary, iframe, object, embed, [contenteditable] [tabindex]:not([tabindex="-1"])',
 
 		substepSelector: '.fc-step__substep',
 		substepTextContentSelector: '.fc-step__substep-text-content',
@@ -118,6 +119,32 @@
 
 		return extended;
     };
+
+
+
+	/**
+	 * Check if the element is considered visible. Does not consider the CSS property `visibility: hidden;`.
+	 */
+	 var isVisible = function( element ) {
+		return !!( element.offsetWidth || element.offsetHeight || element.getClientRects().length );
+	}
+
+
+
+	/**
+	 * Gets keyboard-focusable elements within a specified element
+	 *
+	 * @param   HTMLElement  element  The element to search within. Defaults to the `document` root element.
+	 *
+	 * @return  NodeList              All focusable elements withing the element passed in.
+	 */
+	 var getFocusableElements = function( element ) {
+		// Set element to `document` root if not passed in
+		if ( ! element ) { element = document; }
+		
+		// Get elements that are keyboard-focusable, but might be `disabled`
+		return element.querySelectorAll( _settings.focusableElementsSelector );
+	}
 
 
 
@@ -480,6 +507,22 @@
 
 		// Change scroll position after moving to next step
 		scrollAfterStepChange( stepElement, nextStepElement );
+
+		// Maybe set focusElement to the first focusable element that is visible
+		var focusElement = null;
+		var focusableElements = Array.from( getFocusableElements( nextStepElement ) );
+		for ( var i = 0; i < focusableElements.length; i++ ) {
+			var focusableElement = focusableElements[i];
+			if ( isVisible( focusableElement ) ) {
+				focusElement = focusableElement;
+				break;
+			}
+		}
+
+		// Set focus
+		if ( focusElement ) {
+			focusElement.focus();
+		}
 
 		// Trigger update checkout
 		if ( _hasJQuery ) {

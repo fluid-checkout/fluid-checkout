@@ -27,6 +27,10 @@
 		suggestedElementTemplate: '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>Did you mean <a class="mailcheck-suggestion" href="#apply-suggestion" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>?</div>',
 		suggestionTemplate: '{address}@<span class="mailcheck-suggestion-domain">{domain}</span>',
 	}
+	var _key = {
+		ENTER: 'Enter',
+		SPACE: ' ',
+	}
 	var _tempTarget = null;
 
 
@@ -107,8 +111,8 @@
 
 		if ( _tempTarget === null ) return;
 
-		var suggestionHtml = _settings.suggestionTemplate.replace( '{address}', suggestion.address ).replace( '{domain}', suggestion.domain );
-		var suggestedElementHtml = _settings.suggestedElementTemplate.replace( '{suggestion}', suggestionHtml ).replace( '{suggestion-value}', suggestion.full );
+		var suggestionHtml = _settings.suggestionTemplate.replaceAll( '{address}', suggestion.address ).replaceAll( '{domain}', suggestion.domain );
+		var suggestedElementHtml = _settings.suggestedElementTemplate.replaceAll( '{suggestion}', suggestionHtml ).replaceAll( '{suggestion-value}', suggestion.full );
 
 		// Create suggestion element and add it after the field
 		var parent = _tempTarget.parentNode;
@@ -187,6 +191,22 @@
 
 
 	/**
+	 * Handle keypress event.
+	 */
+	var handleKeyDown = function( e ) {
+		// Should do nothing if the default action has been cancelled
+		if ( e.defaultPrevented ) { return; }
+
+		// ENTER or SPACE on apply-suggestion element
+		if ( ( e.key == _key.ENTER || e.key == _key.SPACE ) && e.target.closest( _settings.suggestionApplySelector ) ) {
+			// Similate click
+			handleClick( e );
+		}
+	};
+
+
+
+	/**
 	 * Initialize Mailcheck feature
 	 */
 	_publicMethods.init = function( options ) {
@@ -196,8 +216,9 @@
 		_settings = extend( true, _settings, options );
 
 		// Add event listeners
-		window.addEventListener( 'change', handleTriggerEvents, true );
+		window.addEventListener( 'keyup', handleTriggerEvents, true );
 		window.addEventListener( 'click', handleClick, true );
+		document.addEventListener( 'keydown', handleKeyDown, true );
 
 		_hasInitialized = true;
 	};

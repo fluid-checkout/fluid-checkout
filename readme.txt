@@ -8,18 +8,20 @@ Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Provides a Fluid Checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message and packaging and display a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.
+Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message, and display a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.
 
 
 == Description ==
 
 Fluid Checkout simplifies and improves the checkout experience on WooCommerce websites for your new and repeating customers with a truly linear, Shopify-like checkout.
 
-Eliminate unnecessary friction at the checkout page and benefit from better conversion rates, customer satisfaction, and earn customer's loyalty.
+Eliminate unnecessary friction at the checkout page and benefit from better conversion rates, customer satisfaction, and earned customer's loyalty.
 
 Ask for shipping information before billing in a truly linear **multi-step and one-step checkout**, easily add trust symbols, add options for gift message and packaging and display a coupon code field that does not distract your customers.
 
 Similar to the Shopify checkout, and even better!
+
+Better accessibility at the checkout page with support for keyboard-only navigation and screen readers.
 
 = Demos =
 
@@ -98,12 +100,14 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 * Kadence
 * Neve
 * Ocean WP
+* Shoptimizer
 * Storefront
 * OnePress
+* Woodmart
 * Woostify
 * Zakra
 
-**If you have any issues using Fluid Checkout with your theme please let us know through the plugin's [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.**
+** Don't see your theme in the list? No problem, try Fluid Checkout now and if you experience any issues please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.**
 
 
 = Fully Customizable =
@@ -152,7 +156,23 @@ If you want to tweak the settings, head over to WP Admin > WooCommerce > Setting
 
 Yes! Fluid Checkout should work with most theme out-of-the-box. However some themes may need adjustments due to not using WooCommerce standard hooks or styles.
 
-**If you have any issues using Fluid Checkout with your theme please let us know through the plugin's [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and fix it asap.**
+**If you have any issues using Fluid Checkout with your theme please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.**
+
+= Does Fluid Checkout work with the plugins I use on my webshop? =
+
+Although Fluid Checkout was built in a way that it should be compatible with most plugins, the checkout page is a really complex part of WooCommerce and there are myriads of plugins that extends it. Because of that, it is likely that some plugins won't work optimaly with Fluid Checkout out-of-the-box.
+
+**If you have any issues using Fluid Checkout with other plugins please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.**
+
+= Is Fluid Checkout fully compatible with ADA/WCAG 2.1 Level AA requirements? Will it make my webshop compliant? =
+
+No. While Fluid Checkout does improve the accessibility of the checkout page by implementing support for keyboard-only navigation and screen readers, **we can't say if your webshop will be 100% compliant or not** with ADA, WCAG or any other accessibility requirements. 
+
+Did you know that only about 30% of accessibility issues can be detected with automated tools? The majority of the issues can only be detected with manual testing on each page of the website. Read the article: [Automated Accessibility Testing Tools: How Much Do Scans Catch?](https://www.essentialaccessibility.com/blog/automated-accessibility-testing-tools-how-much-do-scans-catch).
+
+We have plans to add an "accessible layout" feature that will ensure most accessibility issues will be fixed.
+
+**If you need help with making your webshop accessible to people with disabilities, please contact us at hello [at] fluidweb.co.**
 
 = How do I add trust symbols to the checkout page? =
 
@@ -175,6 +195,14 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 
 == Changelog ==
+
+= Unreleased =
+* Added: Support for express payment buttons for the plugin "WooCommerce Stripe Gateway" by WooCommerce.
+* Added: Support for themes "Shoptimizer" and "Woodmart".
+* Improved: Better accessibility, with support for keyboard-only navigation and descriptive content for screen readers.
+* Improved: Added more space for product names and details on the order summary.
+* Improved: Change the way plugin compatibility classes and styles are loaded, extending support for WordPress Multi-site mode.
+* Fixed: Coupon code field height on some themes.
 
 = 1.2.7 - 2021-08-09 =
 * Fixed: Missing assets in release 1.2.6

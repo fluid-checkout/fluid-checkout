@@ -225,7 +225,9 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	#CHECKOUT STEP ACTIONS
 \*------------------------------------*/
 .has-checkout-layout--multi-step .fc-step__actions {
-	margin: $global-spacing 0;
+	padding: $checkout-substep-padding;
+	padding-top: $global-spacing;
+	padding-bottom: $global-spacing;
 	text-align: center;
 }
 .has-checkout-layout--multi-step [data-step-complete] .fc-step__actions {
@@ -235,6 +237,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
 	margin: 0;
 	min-width: remsize( 28rem );
+	width: 100%;
 	text-align: center;
 
 	&:focus {
