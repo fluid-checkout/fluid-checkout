@@ -196,6 +196,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 == Changelog ==
 
+= Unreleased =
+* Fixed: Billing fields not being copied properly when using the Astra theme.
+
 = 1.2.8 - 2021-08-12 =
 * Added: Support for express payment buttons for the plugin "WooCommerce Stripe Gateway" by WooCommerce.
 * Added: Support for themes "Shoptimizer" and "Woodmart".
