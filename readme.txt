@@ -198,6 +198,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 = Unreleased =
 * Fixed: Billing fields not being copied properly when using the Astra theme.
+* Fixed: Only display payment request buttons at checkout if enabled in the settings for the plugin "WooCommerce Stripe Gateway" by WooCommerce.
 
 = 1.2.8 - 2021-08-12 =
 * Added: Support for express payment buttons for the plugin "WooCommerce Stripe Gateway" by WooCommerce.
