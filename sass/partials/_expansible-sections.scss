@@ -1,6 +1,14 @@
 /*------------------------------------*\
 	#EXPANSIBLE SECTIONS
 \*------------------------------------*/
+
+div.woocommerce .fc-expansible-form-section {
+	background-color: transparent;
+	box-shadow: none;
+}
+
+
+
 div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
 	position: relative;
 	display: inline-block;
