@@ -198,6 +198,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 = Unreleased =
 * Added: New action hooks `fc_before_substep_<substep_id>` and `fc_after_substep_<substep_id>`.
+* Improved: Add compatibility with plugin "SG Map to Address" by Sevengits.
 * Fixed: Billing fields not being copied properly when using the Astra theme.
 * Fixed: Only display payment request buttons at checkout if enabled in the settings for the plugin "WooCommerce Stripe Gateway" by WooCommerce.
 * Fixed: Focus position changing inside text fields when updating the checkout sections.
