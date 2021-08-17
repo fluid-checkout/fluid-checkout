@@ -2306,7 +2306,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Remove ignored billing fields
 		$billing_copy_shipping_field_keys = array_diff( $billing_copy_shipping_field_keys, $this->get_billing_address_ignored_billing_field_ids() );
 
-		return $billing_copy_shipping_field_keys;
+		return apply_filters( 'fc_billing_same_as_shipping_field_keys', $billing_copy_shipping_field_keys );
 	}
 
 	/**
