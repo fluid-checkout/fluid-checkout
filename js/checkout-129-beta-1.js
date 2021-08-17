@@ -259,7 +259,8 @@ jQuery( function( $ ) {
 
 			console.log( code );
 
-			if ( code === 9 ) {
+			// CHANGE: Also skip `update_checkout` when pressing other controls keys such as "Shift", "Control", "Command", "Alt" and "Arrows"
+			if ( code === 9 || code === 16 || code === 17 || code === 18 || code === 91 || code === 92 || code === 37 || code === 38 || code === 39 || code === 40 ) {
 				return true;
 			}
 
