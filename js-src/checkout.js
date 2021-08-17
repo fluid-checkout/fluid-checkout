@@ -474,6 +474,7 @@ jQuery( function( $ ) {
 
 					// CHANGE: Get current element with focus, will reset after updating the fragments
 					var currentFocusedElement = document.activeElement;
+					var currentValue = document.activeElement.value;
 					
 					// Always update the fragments
 					if ( data && data.fragments ) {
@@ -510,9 +511,22 @@ jQuery( function( $ ) {
 						// Try setting focus if element is found
 						if ( elementToFocus ) {
 							elementToFocus.focus();
+
+							// Try to set current value to the focused element
+							if ( currentValue !== elementToFocus.value ) {
+								elementToFocus.value = currentValue;
+							}
 							
-							// Set keyboard track position at end of the field
-							setTimeout( function(){ elementToFocus.selectionStart = elementToFocus.selectionEnd = Number.MAX_SAFE_INTEGER || 10000; }, 0 );
+							// Set keyboard track position back to that previously to update
+							setTimeout( function(){
+								if ( currentFocusedElement.selectionStart && currentFocusedElement.selectionEnd ) {
+									elementToFocus.selectionStart = currentFocusedElement.selectionStart;
+									elementToFocus.selectionEnd = currentFocusedElement.selectionEnd;
+								}
+								else {
+									elementToFocus.selectionStart = elementToFocus.selectionEnd = Number.MAX_SAFE_INTEGER || 10000;
+								}
+							}, 0 );
 						}
 					} );
 					// END - CHANGE: Re-set focus to the element with focus previously to updating fragments
