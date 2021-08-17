@@ -510,6 +510,9 @@ jQuery( function( $ ) {
 						// Try setting focus if element is found
 						if ( elementToFocus ) {
 							elementToFocus.focus();
+							
+							// Set keyboard track position at end of the field
+							setTimeout( function(){ elementToFocus.selectionStart = elementToFocus.selectionEnd = Number.MAX_SAFE_INTEGER || 10000; }, 0 );
 						}
 					} );
 					// END - CHANGE: Re-set focus to the element with focus previously to updating fragments
