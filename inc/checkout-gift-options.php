@@ -83,7 +83,8 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 */
 	public function output_substep_gift_options( $step_id ) {
 		$substep_id = 'gift_options';
-		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, __( 'Gift options', 'fluid-checkout' ) );
+		$substep_title = __( 'Gift options', 'fluid-checkout' );
+		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->checkout_steps()->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_gift_options_fields();
@@ -96,7 +97,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 			$this->checkout_steps()->output_substep_text_end_tag();
 		}
 
-		$this->checkout_steps()->output_substep_end_tag( $step_id, $substep_id );
+		$this->checkout_steps()->output_substep_end_tag( $step_id, $substep_id, $substep_title );
 	}
 
 

@@ -19,7 +19,30 @@ class FluidCheckout_PaymentMethodStripe extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_filter('wc_stripe_elements_styling', array( $this, 'change_stripe_fields_styles' ), 10 );
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+
+		// Styles
+		add_filter( 'wc_stripe_elements_styling', array( $this, 'change_stripe_fields_styles' ), 10 );
+	}
+	
+	
+	
+	/**
+	 * Add or remove late hooks.
+	 */
+	public function late_hooks() {
+		if ( class_exists( 'WC_Stripe_Payment_Request' ) ) {
+			// Remove actions
+			remove_action( 'woocommerce_checkout_before_customer_details', array( WC_Stripe_Payment_Request::instance(), 'display_payment_request_button_html' ), 1 );
+			remove_action( 'woocommerce_checkout_before_customer_details', array( WC_Stripe_Payment_Request::instance(), 'display_payment_request_button_separator_html' ), 2 );
+
+			// Add actions
+			if ( 'yes' === apply_filters( 'fc_woocommerce_gateway_stripe_show_buttons', 'yes' ) && is_array( WC_Stripe_Payment_Request::instance()->stripe_settings ) && array_key_exists( 'payment_request', WC_Stripe_Payment_Request::instance()->stripe_settings ) && 'yes' === WC_Stripe_Payment_Request::instance()->stripe_settings[ 'payment_request' ] && WC_Stripe_Payment_Request::instance()->should_show_payment_request_button() ) {
+				add_filter( 'wc_stripe_show_payment_request_on_checkout', '__return_true', 10 );
+				add_action( 'fc_checkout_express_checkout', array( WC_Stripe_Payment_Request::instance(), 'display_payment_request_button_html' ), 10 );
+			}
+		}
 	}
 
 

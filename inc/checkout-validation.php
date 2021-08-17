@@ -32,6 +32,9 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		// Add validation status classes to checkout fields
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_status_classes' ), 100, 3 );
+
+		// Fix required marker accessibility
+		add_filter( 'woocommerce_form_field', array( $this, 'change_required_field_attributes' ), 100, 4 );
 	}
 
 
@@ -61,7 +64,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		$settings[ 'checkoutValidation' ] = apply_filters( 'fc_checkout_validation_script_settings', array(
 			'mailcheckSuggestions' => array(
 				/* translators: %s: html for the email address typo correction suggestion link */
-				'suggestedElementTemplate'    => '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( __( 'Did you mean %s?', 'fluid-checkout' ), '<a class="mailcheck-suggestion" href="#apply-suggestion" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
+				'suggestedElementTemplate'    => '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( __( 'Did you mean %s?', 'fluid-checkout' ), '<a class="mailcheck-suggestion" href="#apply-suggestion" role="button" aria-label="'.esc_attr( __( 'Change email address to: {suggestion-value}', 'fluid-checkout' ) ).'" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
 			),
 			'validationMessages' => array(
 				'required'                    => __( 'This is a required field.', 'fluid-checkout' ),
@@ -151,6 +154,74 @@ class FluidCheckout_Validation extends FluidCheckout {
 		}
 
 		return $args;
+	}
+
+
+
+	/**
+	 * Change the fields args for required fields.
+	 *
+	 * @param   string  $field  Field html markup to be changed.
+	 * @param   string  $key    Field key.
+	 * @param   arrray  $args   Field args.
+	 * @param   mixed   $value  Value of the field. Defaults to `null`.
+	 */
+	public function change_required_field_attributes( $field, $key, $args, $value ) {
+		
+		// Bail if field is not required
+		if ( ! array_key_exists( 'required', $args ) || $args['required'] != true ) { return $field; }
+		
+		// Add `aria-label` to required field labels
+		$field = str_replace( '<abbr class="required"', '<abbr class="required" aria-label="' . __( '(Required)', 'fluid-checkout' ) . '" ', $field );
+		
+		// Add `required` attribute to required fields
+		$search_str = null;
+		switch ( $args['type'] ) {
+			case 'country':
+				$countries = 'shipping_country' === $key ? WC()->countries->get_shipping_countries() : WC()->countries->get_allowed_countries();
+				if ( 1 !== count( $countries ) ) {
+					$search_str = '<select';
+				}
+				break;
+			case 'state':
+				/* Get country this state field is representing */
+				$for_country = isset( $args['country'] ) ? $args['country'] : WC()->checkout->get_value( 'billing_state' === $key ? 'billing_country' : 'shipping_country' );
+				$states      = WC()->countries->get_states( $for_country );
+				if ( ! is_null( $for_country ) && is_array( $states ) ) {
+					$search_str = '<select';
+				} else {
+					$search_str = '<input';
+				}
+				break;
+			case 'textarea':
+				$search_str = '<textarea';
+				break;
+			case 'text':
+			case 'password':
+			case 'datetime':
+			case 'datetime-local':
+			case 'date':
+			case 'month':
+			case 'time':
+			case 'week':
+			case 'number':
+			case 'email':
+			case 'url':
+			case 'tel':
+			case 'radio':
+			case 'checkbox':
+				$search_str = '<input';
+				break;
+			case 'select':
+				$search_str = '<select';
+				break;
+		}
+
+		if ( ! empty( $search_str ) ) {
+			$field = str_replace( $search_str, $search_str . ' required aria-required="true" ', $field );
+		}
+
+		return $field;
 	}
 
 }
