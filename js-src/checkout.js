@@ -257,6 +257,8 @@ jQuery( function( $ ) {
 		queue_update_checkout: function( e ) {
 			var code = e.keyCode || e.which || 0;
 
+			console.log( code );
+
 			if ( code === 9 ) {
 				return true;
 			}
@@ -523,7 +525,7 @@ jQuery( function( $ ) {
 									elementToFocus.selectionStart = currentFocusedElement.selectionStart;
 									elementToFocus.selectionEnd = currentFocusedElement.selectionEnd;
 								}
-								else {
+								else if( elementToFocus.selectionStart && elementToFocus.selectionEnd ) {
 									elementToFocus.selectionStart = elementToFocus.selectionEnd = Number.MAX_SAFE_INTEGER || 10000;
 								}
 							}, 0 );
