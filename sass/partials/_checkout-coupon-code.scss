@@ -10,10 +10,11 @@
 	margin: 0;
 	padding: 0;
 }
-.fc-wrapper .fc-expansible-form-section__content--coupon_code input {
+
+.fc-wrapper .fc-expansible-form-section__content--coupon_code input#coupon_code {
 	height: remsize( 5.5rem );
 }
-.fc-wrapper .fc-expansible-form-section__content--coupon_code input:focus {
+.fc-wrapper .fc-expansible-form-section__content--coupon_code input#coupon_code:focus {
 	position: relative;
 	z-index: z( 'above' );
 }

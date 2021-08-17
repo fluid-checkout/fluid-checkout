@@ -19,7 +19,7 @@
 	}
 }
 // Sticky state
-.fc-progress-bar[data-sticky-states].is-sticky .fc-progress-bar__inner {
+.fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
 	z-index: z( 'float-element' ) - 2; // Needed to show behing the order summary flyout
 }
 // With admin bar

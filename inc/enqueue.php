@@ -52,20 +52,20 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			'fc-bundles',
 			'fcSettings',
 			apply_filters( 'fc_js_settings', array(
-				'ver'				=> self::$version,
+				'ver'               => self::$version,
 				'assetsVersion'     => self::$asset_version,
-				'cookiePath'	    => parse_url( get_option( 'siteurl' ), PHP_URL_PATH ),
-				'cookieDomain'	    => parse_url( get_option( 'siteurl' ), PHP_URL_HOST ),
-				'jsPath'			=> self::$directory_url . 'js/',
-				'jsLibPath'			=> self::$directory_url . 'js/lib/',
-				'cssPath'			=> self::$directory_url . 'css/',
-				'ajaxUrl'			=> admin_url( 'admin-ajax.php' ),
+				'cookiePath'        => parse_url( get_option( 'siteurl' ), PHP_URL_PATH ),
+				'cookieDomain'      => parse_url( get_option( 'siteurl' ), PHP_URL_HOST ),
+				'jsPath'            => self::$directory_url . 'js/',
+				'jsLibPath'         => self::$directory_url . 'js/lib/',
+				'cssPath'           => self::$directory_url . 'css/',
+				'ajaxUrl'           => admin_url( 'admin-ajax.php' ),
 				'flyoutBlock'       => array(
 					'openAnimationClass' => 'fade-in-up',
 					'closeAnimationClass' => 'fade-out-down',
 				),
 				'collapsibleBlock'  => array(),
-				'stickyStates'    => array(),
+				'stickyStates'      => array(),
 			) )
 		);
 	}
@@ -140,10 +140,12 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Bail if not visiting pages affected by the plugin
 		if ( is_admin() || ( ! is_checkout() && ! is_account_page() ) ) { return; }
 
-		// Get active plugins
-		$plugins_installed = get_option('active_plugins');
-
-		foreach ( $plugins_installed as $plugin_file ) {
+		// Get all plugins installed
+		$plugins_installed = get_plugins();
+		
+		foreach ( $plugins_installed as $plugin_file => $plugin_meta ) {
+			// Skip plugins not activated
+			if ( ! is_plugin_active( $plugin_file ) ) { continue; }
 			// Get plugin slug
 			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
 
