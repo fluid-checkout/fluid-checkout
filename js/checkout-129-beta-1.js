@@ -257,8 +257,6 @@ jQuery( function( $ ) {
 		queue_update_checkout: function( e ) {
 			var code = e.keyCode || e.which || 0;
 
-			console.log( code );
-
 			// CHANGE: Also skip `update_checkout` when pressing other controls keys such as "Shift", "Control", "Command", "Alt" and "Arrows"
 			if ( code === 9 || code === 16 || code === 17 || code === 18 || code === 91 || code === 92 || code === 37 || code === 38 || code === 39 || code === 40 ) {
 				return true;
@@ -434,8 +432,8 @@ jQuery( function( $ ) {
 				data.shipping_method = shipping_methods;
 			}
 
-			// CHANGE: Also block the billing address fields and shipping methods
-			$( '.woocommerce-checkout-payment, .woocommerce-checkout-review-order-table, .woocommerce-billing-fields, .fc-shipping-method__packages' ).block({
+			// CHANGE: Also block the shipping methods section when updating
+			$( '.woocommerce-checkout-payment, .woocommerce-checkout-review-order-table .fc-shipping-method__packages' ).block({
 				message: null,
 				overlayCSS: {
 					background: '#fff',
