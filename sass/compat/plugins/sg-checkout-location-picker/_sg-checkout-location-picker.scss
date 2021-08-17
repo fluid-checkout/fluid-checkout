@@ -1,0 +1,20 @@
+/*------------------------------------*\
+	#SG CHECKOUT LOCATION PICKER
+\*------------------------------------*/
+
+.sg-checkout-location-picker-wrapper:before,
+.sg-checkout-location-picker-wrapper:after {
+	@include clearfix();
+}
+
+
+
+.sg-checkout-location-picker-wrapper .sg-container {
+    margin-top: $global-spacing-small;
+}
+
+
+
+.sg-checkout-location-picker-wrapper .sg-container p:last-child {
+    margin-bottom: 0 !important; // Needed to override inline styles
+}
