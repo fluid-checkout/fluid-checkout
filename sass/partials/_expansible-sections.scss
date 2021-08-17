@@ -36,7 +36,7 @@ div.woocommerce .fc-expansible-form-section.form-row .form-row {
 	width: 100%;
 }
 
-div.woocommerce .fc-expansible-form-section.form-row.form-row-last .fc-expansible-form-section__toggle .collapsible-content__inner {
+div.woocommerce .fc-expansible-form-section.form-row.form-row-first + .form-row-last .fc-expansible-form-section__toggle .collapsible-content__inner {
 	@media (#{$bp-larger-than-tablet}) {
 		padding-top: 1.8em;
 	}

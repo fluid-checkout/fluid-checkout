@@ -93,7 +93,8 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	 */
 	public function output_substep_delivery_date( $step_id ) {
 		$substep_id = 'coderockz_delivery_date';
-		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, __( 'Delivery Date', 'fluid-checkout' ) );
+		$substep_title = __( 'Delivery Date', 'fluid-checkout' );
+		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		// Get Woo Delivery instances
 		$woodelivery_main = new Coderockz_Woo_Delivery();
@@ -110,7 +111,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 			$this->checkout_steps()->output_substep_text_end_tag();
 		}
 
-		$this->checkout_steps()->output_substep_end_tag( $step_id, $substep_id );
+		$this->checkout_steps()->output_substep_end_tag( $step_id, $substep_id, $substep_title );
 	}
 
 

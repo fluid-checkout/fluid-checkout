@@ -13,7 +13,7 @@
  * @see         https://docs.woocommerce.com/document/template-structure/
  * @package     WooCommerce\Templates
  * @version     3.5.0
- * @fc-version 1.2.4
+ * @fc-version  1.2.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -30,8 +30,8 @@ $has_icon_classes = ! empty( ob_get_clean() ) || ! empty( trim( $icon_html ) ) ?
 	<input id="payment_method_<?php echo esc_attr( $gateway->id ); ?>" type="radio" class="input-radio" name="payment_method" value="<?php echo esc_attr( $gateway->id ); ?>" <?php checked( $gateway->chosen, true ); ?> data-order_button_text="<?php echo esc_attr( $gateway->order_button_text ); ?>" />
 
 	<label for="payment_method_<?php echo esc_attr( $gateway->id ); ?>">
-        <?php // CHANGE: Add wrapper span element for the payment method label ?>
-		<span class="payment-method__label-text"><?php echo $gateway->get_title(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></span> <?php echo $gateway->get_icon(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?>
+        <?php // CHANGE: Add `span` element for the payment method label text and icon ?>
+		<span class="payment-method__label-text"><?php echo $gateway->get_title(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></span> <span class="payment-method__label-icon"><?php echo $gateway->get_icon(); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></span>
 	</label>
 	<?php if ( $gateway->has_fields() || $gateway->get_description() ) : ?>
 		<div class="payment_box payment_method_<?php echo esc_attr( $gateway->id ); ?>" <?php if ( ! $gateway->chosen ) : /* phpcs:ignore Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace */ ?>style="display:none;"<?php endif; /* phpcs:ignore Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace */ ?>>

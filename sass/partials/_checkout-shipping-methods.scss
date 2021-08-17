@@ -66,6 +66,8 @@
 	height: $shipping-method-radio-size;
 	border: $shipping-method-radio-border;
 	border-radius: 100%;
+	background-color: transparent;
+	box-shadow: none;
 	transition: all $global-animation-duration-fast linear;
 }
 
