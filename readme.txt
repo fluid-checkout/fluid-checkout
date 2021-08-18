@@ -121,13 +121,13 @@ To customize styles, when making small adjustments just add your custom CSS thro
 If you need more control, you can remove the plugin styles and add your own complete custom CSS files. If you are familiar with SASS and other code building tools, the original SASS files are included in the plugin and can be modified and rebuilt, most styles make use of SASS variables that can make the process a lot easier.
 
 
-= Translation ready =
+== Translations ==
 
-All labels and other texts added or changed by the plugin are translatable using the built in WordPress capabilities.
+All labels and other texts added or changed by the plugin are translatable using the built in WordPress functions.
 
 Currently the plugin is translated into the languages below, and more are comming soon:
 
-* English
+* English (Default)
 * Portuguese - Brazil
 
 ** Comming soon **
@@ -137,6 +137,11 @@ Currently the plugin is translated into the languages below, and more are commin
 * German (soon)
 * German - Formal (soon)
 * Italian (soon)
+
+** Note: **
+Fluid Checkout is fully localized/translatable. This is very important for all users worldwide.
+Please contribute your language to the plugin to make it even more useful.
+For translating we recommend the plugin ["Loco Translate - By Tim Whitlock"](https://wordpress.org/plugins/loco-translate/).
 
 == Installation ==
 
