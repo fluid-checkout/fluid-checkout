@@ -72,6 +72,9 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 			// Change delivery date field args
 			add_filter( 'woocommerce_form_field_args', array( $this, 'change_delivery_date_field_args' ), 10, 3 );
+
+			// Maybe set step as incomplete
+			add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete' ), 10 );
 		}
 	}
 
@@ -231,6 +234,79 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		}
 
 		return $args;
+	}
+
+
+
+	/**
+	 * Set the related checkout step as incomplete depending on the `woo-delivery` plugin settings and its field values.
+	 *
+	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 */
+	public function maybe_set_step_incomplete( $is_step_complete ) {
+		// Bail if step is already incomplete
+		if ( ! $is_step_complete ) { return $is_step_complete; }
+
+		// Get settings
+		$delivery_date_settings = get_option('coderockz_woo_delivery_date_settings');
+		$delivery_time_settings = get_option('coderockz_woo_delivery_time_settings');
+		$delivery_option_settings = get_option('coderockz_woo_delivery_option_delivery_settings');
+		$pickup_date_settings = get_option('coderockz_woo_delivery_pickup_date_settings');
+		$pickup_time_settings = get_option('coderockz_woo_delivery_pickup_settings');
+		
+		// Get field values
+		$order_type = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_delivery_selection_box' );
+		$delivery_date = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_date_field' );
+		$delivery_time = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_time_field' );
+		$pickup_date = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_date_field' );
+		$pickup_time = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_time_field' );
+		
+		// Check order type
+		if ( $delivery_option_settings['enable_option_time_pickup'] === true ) {
+			$allowed_order_type_values = array( 'delivery', 'pickup' );
+			if ( ! in_array( $order_type, $allowed_order_type_values ) ) {
+				$is_step_complete = false;
+			}
+		}
+
+		// Check delivery date values
+		if ( 'delivery' == $order_type ) {
+			
+			// Check delivery date is enabled and mandatory
+			if ( $delivery_date_settings['enable_delivery_date'] === true ) {
+				if ( $delivery_date_settings['delivery_date_mandatory'] === true && ( $delivery_date == null || empty( $delivery_date ) ) ) {
+					$is_step_complete = false;
+				}
+			}
+
+			// Check delivery time is enabled and mandatory
+			if ( $delivery_time_settings['enable_delivery_time'] === true ) {
+				if ( $delivery_time_settings['delivery_time_mandatory'] === true && ( $delivery_time == null || empty( $delivery_time ) ) ) {
+					$is_step_complete = false;
+				}
+			}
+
+		}
+		// Check pickup date values
+		else if ( 'pickup' == $order_type ) {
+
+			// Check pickup date is enabled and mandatory
+			if ( $pickup_date_settings['enable_pickup_date'] === true ) {
+				if ( $pickup_date_settings['pickup_date_mandatory'] === true && ( $pickup_date == null || empty( $pickup_date ) ) ) {
+					$is_step_complete = false;
+				}
+			}
+
+			// Check pickup time is enabled and mandatory
+			if ( $pickup_time_settings['enable_pickup_time'] === true ) {
+				if ( $pickup_time_settings['pickup_time_mandatory'] === true && ( $pickup_time == null || empty( $pickup_time ) ) ) {
+					$is_step_complete = false;
+				}
+			}
+
+		}
+
+		return $is_step_complete;
 	}
 
 }
