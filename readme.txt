@@ -197,6 +197,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 == Changelog ==
 
 = Unreleased =
+* Bump tested up to WooCommerce 5.6
 * Added: New action hooks `fc_before_substep_<substep_id>` and `fc_after_substep_<substep_id>`.
 * Improved: Add compatibility with plugin "Sg Checkout Location Picker for WooCommerce" by Sevengits.
 * Improved: Add compatibility with plugin "SG Map to Address" by Sevengits.
@@ -219,7 +220,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 * Fixed: Prevent "Fatal errors" on WooCommerce settings page when the type of the `$settings` parameter is not an `Array`.
 
 = 1.2.5 - 2021-08-02 =
-* Bump tested up to WP 5.8 and WooCommerce 5.5
+* Bump tested up to WordPress 5.8 and WooCommerce 5.5
 * Added: New filter hook `fc_place_order_button_classes` to allow developers to change the place order button classes.
 * Added: Handy "Settings" link on the plugins list.
 * Added: New feature to automatically hide shipping address fields when "Local Pickup" is selected.

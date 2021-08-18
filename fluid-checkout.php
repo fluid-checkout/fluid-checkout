@@ -9,7 +9,7 @@ Version: 1.2.9-beta-2
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 5.5
+WC tested up to: 5.6
 License: GPLv3
 
 This program is free software; you can redistribute it and/or
