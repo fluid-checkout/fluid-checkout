@@ -129,11 +129,11 @@ Currently the plugin is translated into the languages below, and more are commin
 
 * English
 * Portuguese - Brazil
+* Spanish - Argentina (soon)
 * Dutch (soon)
 * German (soon)
 * German - Formal (soon)
 * Italian (soon)
-
 
 == Installation ==
 
@@ -260,6 +260,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 
 == Upgrade Notice ==
+
+= 1.2.9 =
+Better support for translations. Compatibility with Astra theme and other plugins.
 
 = 1.2.8 =
 Better accessibility support, and express checkout.
