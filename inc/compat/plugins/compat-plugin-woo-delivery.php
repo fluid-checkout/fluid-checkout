@@ -62,10 +62,10 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 			// Add delivery date substep at the selected position
 			$hook = $substep_position_priority[ $position ][ 0 ];
 			$priority = $substep_position_priority[ $position ][ 1 ];
-			add_action( $hook, array( $this, 'output_substep_delivery_pickup_date' ), $priority );
+			add_action( $hook, array( $this, 'output_substep_delivery_options' ), $priority );
 
 			// Add substep review text fragment
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_delivery_pickup_date_text_fragment' ), 10 );
+			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_delivery_options_text_fragment' ), 10 );
 
 			// Get delivery date value from session
 			add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_field_values_from_session' ), 10, 2 );
@@ -94,7 +94,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	 *
 	 * @param   string  $step_id  Id of the step in which the substep will be rendered.
 	 */
-	public function output_substep_delivery_pickup_date( $step_id ) {
+	public function output_substep_delivery_options( $step_id ) {
 		// Get settings
 		$delivery_option_settings = get_option( 'coderockz_woo_delivery_option_delivery_settings' );
 		$delivery_date_settings = get_option('coderockz_woo_delivery_date_settings');
@@ -132,7 +132,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->checkout_steps()->is_checkout_layout_multistep() ) {
 			$this->checkout_steps()->output_substep_text_start_tag( $step_id, $substep_id );
-			$this->output_substep_text_delivery_pickup_date();
+			$this->output_substep_text_delivery_options();
 			$this->checkout_steps()->output_substep_text_end_tag();
 		}
 
@@ -144,7 +144,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	/**
 	 * Output gift options substep in text format for when the step is completed.
 	 */
-	public function get_substep_text_delivery_pickup_date() {
+	public function get_substep_text_delivery_options() {
 		// Get settings
 		$delivery_option_settings = get_option( 'coderockz_woo_delivery_option_delivery_settings' );
 		
@@ -200,8 +200,8 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
-	public function add_delivery_pickup_date_text_fragment( $fragments ) {
-		$html = $this->get_substep_text_delivery_pickup_date();
+	public function add_delivery_options_text_fragment( $fragments ) {
+		$html = $this->get_substep_text_delivery_options();
 		$fragments['.fc-step__substep-text-content--delivery-date'] = $html;
 		return $fragments;
 	}
@@ -209,8 +209,8 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	/**
 	 * Output gift options substep in text format for when the step is completed.
 	 */
-	public function output_substep_text_delivery_pickup_date() {
-		echo $this->get_substep_text_delivery_pickup_date();
+	public function output_substep_text_delivery_options() {
+		echo $this->get_substep_text_delivery_options();
 	}
 
 

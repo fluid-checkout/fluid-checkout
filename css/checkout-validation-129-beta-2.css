@@ -133,7 +133,8 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-in
   top: 8px;
   border-radius: 100%;
   background-color: rgba(255, 255, 255, 0.75);
-  color: #00A854; }
+  color: #00A854;
+  pointer-events: none; }
 
 div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .select2-selection:after {
   right: 20px; }
