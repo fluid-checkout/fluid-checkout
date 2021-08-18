@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-12 17:06+0000\n"
+"POT-Creation-Date: 2021-08-18 20:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Add widget areas to the checkout page"
 msgstr ""
 
-#: inc/checkout-steps.php:1461
+#: inc/checkout-steps.php:1465
 msgid "Additional notes"
 msgstr ""
 
@@ -77,7 +77,7 @@ msgstr ""
 msgid "Already have an account?"
 msgstr ""
 
-#: inc/checkout-steps.php:1245
+#: inc/checkout-steps.php:1249
 msgid "An account will be created with the information provided."
 msgstr ""
 
@@ -97,7 +97,7 @@ msgstr ""
 msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 
-#: inc/checkout-steps.php:1979
+#: inc/checkout-steps.php:1983
 msgid "Billing to"
 msgstr ""
 
@@ -123,7 +123,7 @@ msgstr ""
 msgid "Change email address to: {suggestion-value}"
 msgstr ""
 
-#: inc/checkout-steps.php:949
+#: inc/checkout-steps.php:953
 #, php-format
 msgid "Change: %s"
 msgstr ""
@@ -168,12 +168,12 @@ msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr ""
 
-#: inc/checkout-steps.php:949
+#: inc/checkout-steps.php:953
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr ""
 
-#: inc/checkout-steps.php:950
+#: inc/checkout-steps.php:954
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr ""
@@ -233,8 +233,16 @@ msgstr ""
 msgid "Debug options"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:96
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:112
 msgid "Delivery Date"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:104
+msgid "Delivery Options"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:108
+msgid "Delivery or Pickup"
 msgstr ""
 
 #. %s: html for the email address typo correction suggestion link
@@ -303,7 +311,7 @@ msgstr ""
 msgid "Enter your code here"
 msgstr ""
 
-#: inc/checkout-steps.php:1161
+#: inc/checkout-steps.php:1165
 msgid "Express checkout"
 msgstr ""
 
@@ -466,7 +474,7 @@ msgstr ""
 msgid "Multi-step"
 msgstr ""
 
-#: inc/checkout-steps.php:1199
+#: inc/checkout-steps.php:1203
 msgid "My contact"
 msgstr ""
 
@@ -484,8 +492,8 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:134
-msgctxt "Notice for no delivery date provided"
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:208
+msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr ""
 
@@ -494,7 +502,7 @@ msgctxt "Notice for no gift options provided"
 msgid "None."
 msgstr ""
 
-#: inc/checkout-steps.php:1635
+#: inc/checkout-steps.php:1639
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr ""
@@ -521,7 +529,7 @@ msgstr ""
 msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 
-#: inc/checkout-widget-areas.php:74 inc/checkout-steps.php:2537
+#: inc/checkout-widget-areas.php:74 inc/checkout-steps.php:2541
 #: inc/admin/admin-settings-checkout.php:122
 #: inc/admin/admin-settings-checkout.php:289
 msgid "Order summary"
@@ -531,12 +539,16 @@ msgstr ""
 msgid "Packing Slips"
 msgstr ""
 
-#: inc/checkout-steps.php:2433
+#: inc/checkout-steps.php:2437
 msgid "Payment method"
 msgstr ""
 
-#: inc/checkout-steps.php:1545
+#: inc/checkout-steps.php:1549
 msgid "Pick up at store:"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:116
+msgid "Pickup Date"
 msgstr ""
 
 #: inc/checkout-steps.php:697 inc/checkout-steps.php:708
@@ -584,7 +596,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: inc/checkout-steps.php:2076 inc/checkout-steps.php:2161
+#: inc/checkout-steps.php:2080 inc/checkout-steps.php:2165
 msgid "Same as shipping address"
 msgstr ""
 
@@ -594,7 +606,7 @@ msgstr ""
 msgid "Select an image"
 msgstr ""
 
-#: inc/checkout-steps.php:1170
+#: inc/checkout-steps.php:1174
 msgctxt "Separator label for the express checkout section"
 msgid "Or"
 msgstr ""
@@ -603,7 +615,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: inc/checkout-steps.php:1437
+#: inc/checkout-steps.php:1441
 msgid "Shipping method"
 msgstr ""
 
@@ -627,7 +639,7 @@ msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr ""
 
-#: inc/checkout-steps.php:1413
+#: inc/checkout-steps.php:1417
 msgid "Shipping to"
 msgstr ""
 
