@@ -1,0 +1,20 @@
+/*------------------------------------*\
+	#CHECKOUT FIELD VALIDATION
+\*------------------------------------*/
+
+// VALID FIELDS
+div.woocommerce form .form-row.coderockz_woo_delivery_delivery_selection_box.woocommerce-validated:not( [class*='woocommerce-invalid'] ),
+div.woocommerce form .form-row.coderockz_woo_delivery_time_field.woocommerce-validated:not( [class*='woocommerce-invalid'] ),
+div.woocommerce form .form-row.coderockz_woo_delivery_pickup_time_field.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+
+	// "valid" field check icon
+	.select2-selection:after {
+		right: remsize( 3.2rem );
+	}
+
+	// Hide duplicate "valid" field check icon
+	.woocommerce-input-wrapper:after {
+		display: none;
+	}
+
+}
