@@ -48,11 +48,14 @@ gulp.task( 'update-ver-release', gulp.series( 'update-ver', function( done ) {
 	settings.pkg = json;
 	settings.assetsVersion = '-' + settings.pkg.version.replace( /\./gi, '' );
 
-	gulp.src( ['./readme.txt'] )
-	// See http://mdn.io/string.replace#Specifying_a_string_as_a_parameter
-	.pipe(replace(/Stable tag: (.)*/g, 'Stable tag: ' + settings.pkg.version ))
-	.pipe(replace(/= Unreleased (.)*/g, '= ' + settings.pkg.version + ' - ' + today.toISOString().slice(0, 10) + ' =' ))
-	.pipe(gulp.dest('./'));
+	// Only update readme.txt for full release versions
+	if ( settings.pkg.version.indexOf( 'beta' ) < 0 && settings.pkg.version.indexOf( 'dev' ) < 0 ) {
+		gulp.src( ['./readme.txt'] )
+		// See http://mdn.io/string.replace#Specifying_a_string_as_a_parameter
+		.pipe(replace(/Stable tag: (.)*/g, 'Stable tag: ' + settings.pkg.version ))
+		.pipe(replace(/= Unreleased (.)*/g, '= ' + settings.pkg.version + ' - ' + today.toISOString().slice(0, 10) + ' =' ))
+		.pipe(gulp.dest('./'));
+	}
 
 	done();
 } ) );

@@ -114,6 +114,7 @@ div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-i
 		border-radius: 100%;
 		background-color: transparentize( $white, .25 );
 		color: $success-color;
+		pointer-events: none;
 	}
 
 	// Select2 Fields

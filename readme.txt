@@ -4,7 +4,7 @@ Tags: woocommerce, e-commerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.2
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 1.2.8
+Stable tag: 1.2.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -129,11 +129,14 @@ Currently the plugin is translated into the languages below, and more are commin
 
 * English
 * Portuguese - Brazil
+
+** Comming soon **
+
+* Spanish - Argentina (soon)
 * Dutch (soon)
 * German (soon)
 * German - Formal (soon)
 * Italian (soon)
-
 
 == Installation ==
 
@@ -196,6 +199,17 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 == Changelog ==
 
+= 1.2.9 - 2021-08-18 =
+* Bump tested up to WooCommerce 5.6
+* Added: New action hooks `fc_before_substep_<substep_id>` and `fc_after_substep_<substep_id>`.
+* Improved: Add compatibility with plugin "Sg Checkout Location Picker for WooCommerce" by Sevengits.
+* Improved: Add compatibility with plugin "SG Map to Address" by Sevengits.
+* Improved: Add compatibility with plugin options for delivery or pickup date and time for "Delivery & Pickup Date Time for WooCommerce (Free)" by CodeRockz.
+* Fixed: Billing fields not being copied properly when using the Astra theme.
+* Fixed: Only display payment request buttons at checkout if enabled in the settings for the plugin "WooCommerce Stripe Gateway" by WooCommerce.
+* Fixed: Focus position changing inside text fields when updating the checkout sections.
+* Fixed: Compatibility with Loco Translate for custom location for translation files, should possibly fix it for other translation plugins.
+
 = 1.2.8 - 2021-08-12 =
 * Added: Support for express payment buttons for the plugin "WooCommerce Stripe Gateway" by WooCommerce.
 * Added: Support for themes "Shoptimizer" and "Woodmart".
@@ -211,7 +225,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 * Fixed: Prevent "Fatal errors" on WooCommerce settings page when the type of the `$settings` parameter is not an `Array`.
 
 = 1.2.5 - 2021-08-02 =
-* Bump tested up to WP 5.8 and WooCommerce 5.5
+* Bump tested up to WordPress 5.8 and WooCommerce 5.5
 * Added: New filter hook `fc_place_order_button_classes` to allow developers to change the place order button classes.
 * Added: Handy "Settings" link on the plugins list.
 * Added: New feature to automatically hide shipping address fields when "Local Pickup" is selected.
@@ -230,7 +244,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 * Fixed: Payment methods styles forcing display of payment method options not available for the some devices.
 
 = 1.2.3 - 2021-07-17 =
-* Improved: Add compatibility with plugin "Delivery & Pickup Date Time for WooCommerce" by CodeRockz.
+* Improved: Add compatibility with plugin "Delivery & Pickup Date Time for WooCommerce (Free)" by CodeRockz.
 * Fixed: Conflict with plugin "Merge + Minify + Refresh" by Launch Interactive preventing checkout features to work.
 * Fixed: Add back the hooks `woocommerce_checkout_billing` and `woocommerce_checkout_shipping` for better compatibility. Changed template files `form-billing.php` and `form-shipping.php`.
 * Fixed: Added missing clearings to some checkout sections which were allowing overlapping fields.
@@ -249,6 +263,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 
 == Upgrade Notice ==
+
+= 1.2.9 =
+Better support for translations. Compatibility with Astra theme and other plugins.
 
 = 1.2.8 =
 Better accessibility support, and express checkout.

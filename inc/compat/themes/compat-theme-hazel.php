@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Compatibility with theme: Hazel (by Select Themes).
  */
-class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
+class FluidCheckout_ThemeCompat_Hazel extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -83,4 +83,4 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 
 }
 
-FluidCheckout_ThemeCompat_Flatsome::instance();
+FluidCheckout_ThemeCompat_Hazel::instance();

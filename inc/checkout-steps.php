@@ -935,15 +935,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 				<h3 class="fc-step__substep-title"><?php echo wp_kses( $substep_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ); ?></h3>
 			<?php endif; ?>
 		<?php
+
+		do_action( "fc_before_substep_{$substep_id}" , $step_id, $substep_id );
 	}
 
 	/**
 	 * Output checkout substep end tag.
 	 *
-	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
-	 * @param   string  $substep_id  Id of the substep.
+	 * @param   string  $step_id        Id of the step in which the substep will be rendered.
+	 * @param   string  $substep_id     Id of the substep.
+	 * @param   string  $substep_title  Title of the substep.
 	 */
 	public function output_substep_end_tag( $step_id, $substep_id, $substep_title, $output_edit_buttons = true ) {
+		do_action( "fc_after_substep_{$substep_id}" , $step_id, $substep_id, $output_edit_buttons );
 		?>
 			<?php if ( $output_edit_buttons && $this->is_checkout_layout_multistep() ) : ?>
 				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-label="<?php echo sprintf( __( 'Change: %s', 'fluid-checkout' ), $substep_title ); ?>"><?php echo esc_html( apply_filters( 'fc_substep_change_button_label', _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ) ) ); ?></a>
@@ -2302,7 +2306,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Remove ignored billing fields
 		$billing_copy_shipping_field_keys = array_diff( $billing_copy_shipping_field_keys, $this->get_billing_address_ignored_billing_field_ids() );
 
-		return $billing_copy_shipping_field_keys;
+		return apply_filters( 'fc_billing_same_as_shipping_field_keys', $billing_copy_shipping_field_keys );
 	}
 
 	/**
