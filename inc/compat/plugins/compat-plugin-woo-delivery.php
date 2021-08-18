@@ -62,13 +62,13 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 			// Add delivery date substep at the selected position
 			$hook = $substep_position_priority[ $position ][ 0 ];
 			$priority = $substep_position_priority[ $position ][ 1 ];
-			add_action( $hook, array( $this, 'output_substep_delivery_date' ), $priority );
+			add_action( $hook, array( $this, 'output_substep_delivery_pickup_date' ), $priority );
 
 			// Add substep review text fragment
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_delivery_date_text_fragment' ), 10 );
+			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_delivery_pickup_date_text_fragment' ), 10 );
 
 			// Get delivery date value from session
-			add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_delivery_date_value_from_session' ), 10, 2 );
+			add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_field_values_from_session' ), 10, 2 );
 
 			// Change delivery date field args
 			add_filter( 'woocommerce_form_field_args', array( $this, 'change_delivery_date_field_args' ), 10, 3 );
@@ -91,7 +91,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	 *
 	 * @param   string  $step_id  Id of the step in which the substep will be rendered.
 	 */
-	public function output_substep_delivery_date( $step_id ) {
+	public function output_substep_delivery_pickup_date( $step_id ) {
 		$substep_id = 'coderockz_delivery_date';
 		$substep_title = __( 'Delivery Date', 'fluid-checkout' );
 		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, $substep_title );
@@ -107,7 +107,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->checkout_steps()->is_checkout_layout_multistep() ) {
 			$this->checkout_steps()->output_substep_text_start_tag( $step_id, $substep_id );
-			$this->output_substep_text_delivery_date();
+			$this->output_substep_text_delivery_pickup_date();
 			$this->checkout_steps()->output_substep_text_end_tag();
 		}
 
@@ -119,19 +119,50 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	/**
 	 * Output gift options substep in text format for when the step is completed.
 	 */
-	public function get_substep_text_delivery_date() {
-		// Get delivery date value
+	public function get_substep_text_delivery_pickup_date() {
+		// Get settings
+		$delivery_option_settings = get_option( 'coderockz_woo_delivery_option_delivery_settings' );
+		
+		// Get field values
+		$order_type = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_delivery_selection_box' );
 		$delivery_date = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_date_field' );
+		$delivery_time = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_time_field' );
+		$pickup_date = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_date_field' );
+		$pickup_time = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_time_field' );
+
+		// Get field labels
+		$delivery_field_label = ( isset( $delivery_option_settings['delivery_label'] ) && ! empty( $delivery_option_settings['delivery_label'] ) ) ? stripslashes( $delivery_option_settings['delivery_label'] ) : __( 'Delivery', 'woo-delivery' );
+		$pickup_field_label = ( isset( $delivery_option_settings['pickup_label'] ) && ! empty( $delivery_option_settings['pickup_label'] ) ) ? stripslashes( $delivery_option_settings['pickup_label'] ) : __( 'Pickup', 'woo-delivery' );
 
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--delivery-date">';
-		
-		// The delivery date value
-		if ( $delivery_date !== null && ! empty( $delivery_date ) ) {
+
+		// Output delivery date value
+		if ( 'delivery' == $order_type && $delivery_date !== null && ! empty( $delivery_date ) ) {
+			$html .= '<div class="fc-step__substep-text-line"><strong>' . esc_html( $delivery_field_label ) . '</strong></div>';
 			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $delivery_date ) . '</div>';
+			if ( $delivery_time !== null && ! empty( $delivery_time ) ) {
+				$html .= '<div class="fc-step__substep-text-line">' . esc_html( $delivery_time ) . '</div>';
+			}
+		}
+		// Output pickup date value
+		else if ( 'pickup' == $order_type && $pickup_date !== null && ! empty( $pickup_date ) ) {
+			$html .= '<div class="fc-step__substep-text-line"><strong>' . esc_html( $pickup_field_label ) . '</strong></div>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $pickup_date ) . '</div>';
+			if ( $pickup_time !== null && ! empty( $pickup_time ) ) {
+				$html .= '<div class="fc-step__substep-text-line">' . esc_html( $pickup_time ) . '</div>';
+			}
 		}
 		// "No delivery date" notice.
-		else {
+		else if ( 'delivery' == $order_type && ( $delivery_date == null || empty( $delivery_date ) ) ) {
 			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_no_woodelivery_delivery_date_order_review_notice', _x( 'None.', 'Notice for no delivery date provided', 'fluid-checkout' ) ) ) . '</div>';
+		}
+		// "No pickup date" notice.
+		else if ( 'pickup' == $order_type && ( $pickup_date == null || empty( $pickup_date ) ) ) {
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_no_woodelivery_pickup_date_order_review_notice', _x( 'None.', 'Notice for no pickup date provided', 'fluid-checkout' ) ) ) . '</div>';
+		}
+		// "No delivery or pickup date" notice.
+		else {
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_no_woodelivery_delivery_pickup_date_order_review_notice', _x( 'None.', 'Notice for no delivery or pickup date provided', 'fluid-checkout' ) ) ) . '</div>';
 		}
 		
 		$html .= '</div>';
@@ -144,8 +175,8 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
-	public function add_delivery_date_text_fragment( $fragments ) {
-		$html = $this->get_substep_text_delivery_date();
+	public function add_delivery_pickup_date_text_fragment( $fragments ) {
+		$html = $this->get_substep_text_delivery_pickup_date();
 		$fragments['.fc-step__substep-text-content--delivery-date'] = $html;
 		return $fragments;
 	}
@@ -153,8 +184,8 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	/**
 	 * Output gift options substep in text format for when the step is completed.
 	 */
-	public function output_substep_text_delivery_date() {
-		echo $this->get_substep_text_delivery_date();
+	public function output_substep_text_delivery_pickup_date() {
+		echo $this->get_substep_text_delivery_pickup_date();
 	}
 
 
@@ -166,8 +197,9 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	 * @param   mixed    $value   Value of the field.
 	 * @param   string   $input   Checkout field key (ie. order_comments ).
 	 */
-	public function change_default_delivery_date_value_from_session( $value, $input ) {
-		if ( $input !== 'coderockz_woo_delivery_date_field' ) {
+	public function change_default_field_values_from_session( $value, $input ) {
+		$allowed_field_ids = array( 'coderockz_woo_delivery_delivery_selection_box', 'coderockz_woo_delivery_date_field', 'coderockz_woo_delivery_time_field', 'coderockz_woo_delivery_pickup_date_field', 'coderockz_woo_delivery_pickup_time_field' );
+		if ( in_array( $input, $allowed_field_ids ) ) {
 			return $value;
 		}
 		
@@ -175,7 +207,8 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		$field_session_value = $this->checkout_steps()->get_checkout_field_value_from_session( $input );
 
 		// Maybe return field value from session
-		if ( $field_session_value !== null ) {
+		$date_field_ids = array( 'coderockz_woo_delivery_date_field', 'coderockz_woo_delivery_pickup_date_field' );
+		if ( $field_session_value !== null && in_array( $input, $date_field_ids ) ) {
 			$date_converted_value = date( 'Y-m-d', strtotime( $field_session_value ) );
 			return $date_converted_value;
 		}

@@ -13,6 +13,8 @@
 
 
 .fc-wrapper #coderockz_woo_delivery_delivery_selection_field ~ #coderockz_woo_delivery_delivery_date_section,
-.fc-wrapper #coderockz_woo_delivery_delivery_selection_field ~ #coderockz_woo_delivery_pickup_date_section {
+.fc-wrapper #coderockz_woo_delivery_delivery_selection_field ~ #coderockz_woo_delivery_delivery_time_section,
+.fc-wrapper #coderockz_woo_delivery_delivery_selection_field ~ #coderockz_woo_delivery_pickup_date_section,
+.fc-wrapper #coderockz_woo_delivery_delivery_selection_field ~ #coderockz_woo_delivery_pickup_time_section {
 	margin-top: $global-spacing-small;
 }
