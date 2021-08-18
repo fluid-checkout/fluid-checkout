@@ -260,18 +260,3 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 = 1.2.0 - 2021-06-25 =
 * First public release.
-
-
-== Upgrade Notice ==
-
-= 1.2.9 =
-Better support for translations. Compatibility with Astra theme and other plugins.
-
-= 1.2.8 =
-Better accessibility support, and express checkout.
-
-= 1.2.5 =
-New feature to automatically hide shipping address fields when "Local Pickup" is selected.
-
-= 1.2.4 =
-Small layout bug fixes and compatibility with "Stripe for WooCommerce" and "Mercado Pago Payments for WooCommerce".
