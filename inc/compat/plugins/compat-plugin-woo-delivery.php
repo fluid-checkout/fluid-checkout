@@ -95,8 +95,30 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	 * @param   string  $step_id  Id of the step in which the substep will be rendered.
 	 */
 	public function output_substep_delivery_pickup_date( $step_id ) {
+		// Get settings
+		$delivery_option_settings = get_option( 'coderockz_woo_delivery_option_delivery_settings' );
+		$delivery_date_settings = get_option('coderockz_woo_delivery_date_settings');
+		$pickup_date_settings = get_option('coderockz_woo_delivery_pickup_date_settings');
+
+		// Define substep title
+		$substep_title = __( 'Delivery Options', 'fluid-checkout' );
+		if ( $delivery_option_settings['enable_option_time_pickup'] === true ) {
+			// Both delivery and pickup enabled
+			if ( $delivery_date_settings['enable_delivery_date'] === true && $pickup_date_settings['enable_pickup_date'] === true ) {
+				$substep_title = __( 'Delivery or Pickup', 'fluid-checkout' );
+			}
+			// Only delivery enabled
+			else if ( $delivery_date_settings['enable_delivery_date'] === true ) {
+				$substep_title = __( 'Delivery Date', 'fluid-checkout' );
+			}
+			// Only pickup enabled
+			else if ( $pickup_date_settings['enable_pickup_date'] === true ) {
+				$substep_title = __( 'Pickup Date', 'fluid-checkout' );
+			}
+		}
+		$substep_title = apply_filters( 'fc_woodelivery_substep_title', $substep_title );
+		
 		$substep_id = 'coderockz_delivery_date';
-		$substep_title = __( 'Delivery Date', 'fluid-checkout' );
 		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		// Get Woo Delivery instances
@@ -157,15 +179,15 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		}
 		// "No delivery date" notice.
 		else if ( 'delivery' == $order_type && ( $delivery_date == null || empty( $delivery_date ) ) ) {
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_no_woodelivery_delivery_date_order_review_notice', _x( 'None.', 'Notice for no delivery date provided', 'fluid-checkout' ) ) ) . '</div>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_woodelivery_no_delivery_date_order_review_notice', _x( 'None.', 'Notice for no delivery date provided', 'fluid-checkout' ) ) ) . '</div>';
 		}
 		// "No pickup date" notice.
 		else if ( 'pickup' == $order_type && ( $pickup_date == null || empty( $pickup_date ) ) ) {
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_no_woodelivery_pickup_date_order_review_notice', _x( 'None.', 'Notice for no pickup date provided', 'fluid-checkout' ) ) ) . '</div>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_woodelivery_no_pickup_date_order_review_notice', _x( 'None.', 'Notice for no pickup date provided', 'fluid-checkout' ) ) ) . '</div>';
 		}
 		// "No delivery or pickup date" notice.
 		else {
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_no_woodelivery_delivery_pickup_date_order_review_notice', _x( 'None.', 'Notice for no delivery or pickup date provided', 'fluid-checkout' ) ) ) . '</div>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_woodelivery_no_delivery_pickup_date_order_review_notice', _x( 'None.', 'Notice for no delivery or pickup date provided', 'fluid-checkout' ) ) ) . '</div>';
 		}
 		
 		$html .= '</div>';
