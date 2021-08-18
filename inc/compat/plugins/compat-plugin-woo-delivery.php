@@ -159,35 +159,53 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		$delivery_field_label = ( isset( $delivery_option_settings['delivery_label'] ) && ! empty( $delivery_option_settings['delivery_label'] ) ) ? stripslashes( $delivery_option_settings['delivery_label'] ) : __( 'Delivery', 'woo-delivery' );
 		$pickup_field_label = ( isset( $delivery_option_settings['pickup_label'] ) && ! empty( $delivery_option_settings['pickup_label'] ) ) ? stripslashes( $delivery_option_settings['pickup_label'] ) : __( 'Pickup', 'woo-delivery' );
 
-		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--delivery-date">';
+		// Value flags
+		$has_delivery_date = $delivery_date !== null && ! empty( $delivery_date );
+		$has_delivery_time = $delivery_time !== null && ! empty( $delivery_time );
+		$has_pickup_date = $pickup_date !== null && ! empty( $pickup_date );
+		$has_pickup_time = $pickup_time !== null && ! empty( $pickup_time );
+		$has_values = $has_delivery_date || $has_delivery_time || $has_pickup_date || $has_pickup_time;
 
-		// Output delivery date value
-		if ( 'delivery' == $order_type && $delivery_date !== null && ! empty( $delivery_date ) ) {
-			$html .= '<div class="fc-step__substep-text-line"><strong>' . esc_html( $delivery_field_label ) . '</strong></div>';
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $delivery_date ) . '</div>';
-			if ( $delivery_time !== null && ! empty( $delivery_time ) ) {
-				$html .= '<div class="fc-step__substep-text-line">' . esc_html( $delivery_time ) . '</div>';
+		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--delivery-date">';
+		
+		if ( $has_values ) {
+			
+			// Delivery
+			if ( ( $delivery_option_settings['enable_option_time_pickup'] !== true || 'delivery' == $order_type ) && ( $has_delivery_date || $has_delivery_time ) ) {
+				// Delivery label
+				$html .= '<div class="fc-step__substep-text-line"><strong>' . esc_html( $delivery_field_label ) . '</strong></div>';
+
+				// Delivery Date
+				if ( $has_delivery_date ) {
+					$html .= '<div class="fc-step__substep-text-line">' . esc_html( $delivery_date ) . '</div>';
+				}
+				
+				// Delivery Time
+				if ( $has_delivery_time ) {
+					$html .= '<div class="fc-step__substep-text-line">' . esc_html( $delivery_time ) . '</div>';
+				}
 			}
-		}
-		// Output pickup date value
-		else if ( 'pickup' == $order_type && $pickup_date !== null && ! empty( $pickup_date ) ) {
-			$html .= '<div class="fc-step__substep-text-line"><strong>' . esc_html( $pickup_field_label ) . '</strong></div>';
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $pickup_date ) . '</div>';
-			if ( $pickup_time !== null && ! empty( $pickup_time ) ) {
-				$html .= '<div class="fc-step__substep-text-line">' . esc_html( $pickup_time ) . '</div>';
+
+			// Pickup
+			if ( ( $delivery_option_settings['enable_option_time_pickup'] !== true || 'pickup' == $order_type ) && ( $has_pickup_date || $has_pickup_time ) ) {
+				// Pickup label
+				$html .= '<div class="fc-step__substep-text-line"><strong>' . esc_html( $pickup_field_label ) . '</strong></div>';
+
+				// Pickup Date
+				if ( $has_pickup_date ) {
+					$html .= '<div class="fc-step__substep-text-line">' . esc_html( $pickup_date ) . '</div>';
+				}
+				
+				// Pickup Time
+				if ( $has_pickup_time ) {
+					$html .= '<div class="fc-step__substep-text-line">' . esc_html( $pickup_time ) . '</div>';
+				}
 			}
-		}
-		// "No delivery date" notice.
-		else if ( 'delivery' == $order_type && ( $delivery_date == null || empty( $delivery_date ) ) ) {
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_woodelivery_no_delivery_date_order_review_notice', _x( 'None.', 'Notice for no delivery date provided', 'fluid-checkout' ) ) ) . '</div>';
-		}
-		// "No pickup date" notice.
-		else if ( 'pickup' == $order_type && ( $pickup_date == null || empty( $pickup_date ) ) ) {
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_woodelivery_no_pickup_date_order_review_notice', _x( 'None.', 'Notice for no pickup date provided', 'fluid-checkout' ) ) ) . '</div>';
+
 		}
 		// "No delivery or pickup date" notice.
 		else {
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_woodelivery_no_delivery_pickup_date_order_review_notice', _x( 'None.', 'Notice for no delivery or pickup date provided', 'fluid-checkout' ) ) ) . '</div>';
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_woodelivery_no_delivery_options_order_review_notice', _x( 'None.', 'Notice for no delivery or pickup options provided', 'fluid-checkout' ) ) ) . '</div>';
 		}
 		
 		$html .= '</div>';
@@ -290,70 +308,33 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 				$is_step_complete = false;
 			}
 		}
-		// Check fields independently when order type option not enabled
-		else {
+
+		// Check delivery values
+		if ( $delivery_option_settings['enable_option_time_pickup'] !== true || 'delivery' == $order_type ) {
+
 			// Check delivery date is enabled and mandatory
-			if ( $delivery_date_settings['enable_delivery_date'] === true ) {
-				if ( $delivery_date_settings['delivery_date_mandatory'] === true && ( $delivery_date == null || empty( $delivery_date ) ) ) {
-					$is_step_complete = false;
-				}
+			if ( $delivery_date_settings['enable_delivery_date'] === true && $delivery_date_settings['delivery_date_mandatory'] === true && ( $delivery_date == null || empty( $delivery_date ) ) ) {
+				$is_step_complete = false;
 			}
 
 			// Check delivery time is enabled and mandatory
-			if ( $delivery_time_settings['enable_delivery_time'] === true ) {
-				if ( $delivery_time_settings['delivery_time_mandatory'] === true && ( $delivery_time == null || empty( $delivery_time ) ) ) {
-					$is_step_complete = false;
-				}
-			}
-
-			// Check pickup date is enabled and mandatory
-			if ( $pickup_date_settings['enable_pickup_date'] === true ) {
-				if ( $pickup_date_settings['pickup_date_mandatory'] === true && ( $pickup_date == null || empty( $pickup_date ) ) ) {
-					$is_step_complete = false;
-				}
-			}
-
-			// Check pickup time is enabled and mandatory
-			if ( $pickup_time_settings['enable_pickup_time'] === true ) {
-				if ( $pickup_time_settings['pickup_time_mandatory'] === true && ( $pickup_time == null || empty( $pickup_time ) ) ) {
-					$is_step_complete = false;
-				}
-			}
-		}
-
-		// Check delivery date values
-		if ( 'delivery' == $order_type ) {
-
-			// Check delivery date is enabled and mandatory
-			if ( $delivery_date_settings['enable_delivery_date'] === true ) {
-				if ( $delivery_date_settings['delivery_date_mandatory'] === true && ( $delivery_date == null || empty( $delivery_date ) ) ) {
-					$is_step_complete = false;
-				}
-			}
-
-			// Check delivery time is enabled and mandatory
-			if ( $delivery_time_settings['enable_delivery_time'] === true ) {
-				if ( $delivery_time_settings['delivery_time_mandatory'] === true && ( $delivery_time == null || empty( $delivery_time ) ) ) {
-					$is_step_complete = false;
-				}
+			if ( $delivery_time_settings['enable_delivery_time'] === true && $delivery_time_settings['delivery_time_mandatory'] === true && ( $delivery_time == null || empty( $delivery_time ) ) ) {
+				$is_step_complete = false;
 			}
 
 		}
-		// Check pickup date values
-		else if ( 'pickup' == $order_type ) {
+		
+		// Check pickup values
+		if ( $delivery_option_settings['enable_option_time_pickup'] !== true || 'pickup' == $order_type ) {
 
 			// Check pickup date is enabled and mandatory
-			if ( $pickup_date_settings['enable_pickup_date'] === true ) {
-				if ( $pickup_date_settings['pickup_date_mandatory'] === true && ( $pickup_date == null || empty( $pickup_date ) ) ) {
-					$is_step_complete = false;
-				}
+			if ( $pickup_date_settings['enable_pickup_date'] === true && $pickup_date_settings['pickup_date_mandatory'] === true && ( $pickup_date == null || empty( $pickup_date ) ) ) {
+				$is_step_complete = false;
 			}
 
 			// Check pickup time is enabled and mandatory
-			if ( $pickup_time_settings['enable_pickup_time'] === true ) {
-				if ( $pickup_time_settings['pickup_time_mandatory'] === true && ( $pickup_time == null || empty( $pickup_time ) ) ) {
-					$is_step_complete = false;
-				}
+			if ( $pickup_time_settings['enable_pickup_time'] === true && $pickup_time_settings['pickup_time_mandatory'] === true && ( $pickup_time == null || empty( $pickup_time ) ) ) {
+				$is_step_complete = false;
 			}
 
 		}
