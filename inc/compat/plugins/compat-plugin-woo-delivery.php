@@ -290,10 +290,40 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 				$is_step_complete = false;
 			}
 		}
+		// Check fields independently when order type option not enabled
+		else {
+			// Check delivery date is enabled and mandatory
+			if ( $delivery_date_settings['enable_delivery_date'] === true ) {
+				if ( $delivery_date_settings['delivery_date_mandatory'] === true && ( $delivery_date == null || empty( $delivery_date ) ) ) {
+					$is_step_complete = false;
+				}
+			}
+
+			// Check delivery time is enabled and mandatory
+			if ( $delivery_time_settings['enable_delivery_time'] === true ) {
+				if ( $delivery_time_settings['delivery_time_mandatory'] === true && ( $delivery_time == null || empty( $delivery_time ) ) ) {
+					$is_step_complete = false;
+				}
+			}
+
+			// Check pickup date is enabled and mandatory
+			if ( $pickup_date_settings['enable_pickup_date'] === true ) {
+				if ( $pickup_date_settings['pickup_date_mandatory'] === true && ( $pickup_date == null || empty( $pickup_date ) ) ) {
+					$is_step_complete = false;
+				}
+			}
+
+			// Check pickup time is enabled and mandatory
+			if ( $pickup_time_settings['enable_pickup_time'] === true ) {
+				if ( $pickup_time_settings['pickup_time_mandatory'] === true && ( $pickup_time == null || empty( $pickup_time ) ) ) {
+					$is_step_complete = false;
+				}
+			}
+		}
 
 		// Check delivery date values
 		if ( 'delivery' == $order_type ) {
-			
+
 			// Check delivery date is enabled and mandatory
 			if ( $delivery_date_settings['enable_delivery_date'] === true ) {
 				if ( $delivery_date_settings['delivery_date_mandatory'] === true && ( $delivery_date == null || empty( $delivery_date ) ) ) {
