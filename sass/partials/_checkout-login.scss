@@ -47,6 +47,7 @@
 .fc-contact-login__separator {
 	position: relative;
 	margin-top: $global-spacing-small;
+	text-align: center;
 }
 .fc-contact-login__separator:before {
 	z-index: z( 'default' );

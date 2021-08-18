@@ -61,7 +61,7 @@
 .fc-wrapper .fc-place-order .fc-place-order-button {
 	margin: 0;
 	width: 100%;
-	max-width: remsize( 60rem );
+	min-width: remsize( 28rem );
 	min-height: remsize( 5rem );
 	text-align: center;
 
