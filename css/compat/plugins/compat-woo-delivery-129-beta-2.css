@@ -22,6 +22,12 @@
   #IMPORT STYLES
 \*------------------------------------*/
 /*------------------------------------*\
+	#CHECKOUT FIELD VALIDATION
+\*------------------------------------*/
+div.woocommerce form .form-row.coderockz_woo_delivery_delivery_selection_box.woocommerce-validated:not([class*='woocommerce-invalid']) .woocommerce-input-wrapper:after {
+  display: none; }
+
+/*------------------------------------*\
   #WOO-DELIVERY FORM-ROW
 \*------------------------------------*/
 .fc-wrapper #coderockz_woo_delivery_delivery_selection_field ~ #coderockz_woo_delivery_delivery_date_section,
