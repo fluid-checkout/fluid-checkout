@@ -200,6 +200,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 * Added: New action hooks `fc_before_substep_<substep_id>` and `fc_after_substep_<substep_id>`.
 * Improved: Add compatibility with plugin "Sg Checkout Location Picker for WooCommerce" by Sevengits.
 * Improved: Add compatibility with plugin "SG Map to Address" by Sevengits.
+* Improved: Add compatibility with plugin options for delivery or pickup date and time for "Delivery & Pickup Date Time for WooCommerce (Free)" by CodeRockz.
 * Fixed: Billing fields not being copied properly when using the Astra theme.
 * Fixed: Only display payment request buttons at checkout if enabled in the settings for the plugin "WooCommerce Stripe Gateway" by WooCommerce.
 * Fixed: Focus position changing inside text fields when updating the checkout sections.
@@ -238,7 +239,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 * Fixed: Payment methods styles forcing display of payment method options not available for the some devices.
 
 = 1.2.3 - 2021-07-17 =
-* Improved: Add compatibility with plugin "Delivery & Pickup Date Time for WooCommerce" by CodeRockz.
+* Improved: Add compatibility with plugin "Delivery & Pickup Date Time for WooCommerce (Free)" by CodeRockz.
 * Fixed: Conflict with plugin "Merge + Minify + Refresh" by Launch Interactive preventing checkout features to work.
 * Fixed: Add back the hooks `woocommerce_checkout_billing` and `woocommerce_checkout_shipping` for better compatibility. Changed template files `form-billing.php` and `form-shipping.php`.
 * Fixed: Added missing clearings to some checkout sections which were allowing overlapping fields.
