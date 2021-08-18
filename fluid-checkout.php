@@ -95,7 +95,6 @@ class FluidCheckout {
 	 */
 	public function __construct() {
 		$this->set_plugin_vars();
-		$this->load_textdomain();
 		$this->load_admin_notices();
 		$this->add_features();
 		$this->hooks();
@@ -138,6 +137,7 @@ class FluidCheckout {
 		}
 
 		// Load features
+		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 10 );
 		add_action( 'plugins_loaded', array( $this, 'load_features' ), 10 );
 		add_action( 'plugins_loaded', array( $this, 'load_plugin_compat_features' ), 10 );
 		add_action( 'plugins_loaded', array( $this, 'load_theme_compat_features' ), 10 );
