@@ -129,6 +129,9 @@ Currently the plugin is translated into the languages below, and more are commin
 
 * English
 * Portuguese - Brazil
+
+** Comming soon **
+
 * Spanish - Argentina (soon)
 * Dutch (soon)
 * German (soon)
