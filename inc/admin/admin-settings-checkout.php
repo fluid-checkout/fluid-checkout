@@ -166,7 +166,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					array(
 						'title'         => __( 'Debug options', 'fluid-checkout' ),
 						'desc'          => __( 'Load unminified assets', 'fluid-checkout' ),
-						'desc_tip'      => __( 'Loading unminified assets affect the the website performance. Only use this option while troubleshooting.', 'fluid-checkout' ),
+						'desc_tip'      => __( 'Loading unminified assets affects the website performance. Only use this option while troubleshooting.', 'fluid-checkout' ),
 						'id'            => 'fc_load_unminified_assets',
 						'default'       => 'no',
 						'type'          => 'checkbox',
