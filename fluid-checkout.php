@@ -66,6 +66,13 @@ class FluidCheckout {
 	 */
 	private $posted_data = null;
 
+	/**
+	 * User session keys prefix.
+	 *
+	 * @var string
+	 */
+	public const SESSION_PREFIX = 'fc_';
+
 
 	/**
 	 * Singleton instance function.

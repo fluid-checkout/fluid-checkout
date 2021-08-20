@@ -24,7 +24,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 **/
 	private $checkout_steps   = array();
 
-	private const SESSION_PREFIX = 'fc_';
 
 
 	/**
