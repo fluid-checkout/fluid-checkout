@@ -1,7 +1,7 @@
 === Fluid Checkout for WooCommerce ===
 Contributors: fluidwebco, diegoversiani, luiggiab
 Tags: woocommerce, e-commerce, checkout, conversion, multi-step, one-page
-Requires PHP: 7.3
+Requires PHP: 7.2
 Requires at least: 5.0
 Tested up to: 5.8
 Stable tag: 1.2.9
@@ -205,7 +205,6 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 == Changelog ==
 
 = Unreleased =
-* Changed minimum PHP version to 7.3, still works on PHP version 7.2. Change was needed to support minimum version required for the PRO version.
 * Added: New filter hook `fc_coupon_code_field_initially_expanded` to allow displaying the coupon code field always expanded.
 
 = 1.2.9 - 2021-08-18 =
