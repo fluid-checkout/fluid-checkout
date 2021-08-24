@@ -1,6 +1,7 @@
 node_modules
 .sass-cache
 bower_components
+/vendor/**/.git
 .DS_Store
 
 # don't commit package-lock.json
