@@ -118,7 +118,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		foreach ( $theme_slugs as $theme_slug ) {
 			// Maybe skip compat file
-			if ( get_option( 'fc_enable_compat_theme_style_' . $theme_slug, true ) === 'false' ) { continue; }
+			if ( apply_filters( 'fc_enable_compat_theme_style_' . $theme_slug, true ) === false ) { continue; }
 
 			// Get current theme's compatibility style file name
 			$theme_compat_file_path = 'css/compat/themes/compat-' . $theme_slug . self::$asset_version . '.css';
@@ -150,7 +150,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
 
 			// Maybe skip compat file
-			if ( get_option( 'fc_enable_compat_plugin_style_' . $plugin_slug, true ) === 'false' ) { continue; }
+			if ( apply_filters( 'fc_enable_compat_plugin_style_' . $plugin_slug, true ) === false ) { continue; }
 
 			// Get current plugin's compatibility style file name
 			$plugin_compat_file_path = 'css/compat/plugins/compat-' . $plugin_slug . self::$asset_version . '.css';
