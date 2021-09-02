@@ -5,8 +5,8 @@ Requires PHP: 7.2
 Requires at least: 5.0
 Tested up to: 5.8
 Stable tag: 1.2.9
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message, and display a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.
 
