@@ -95,7 +95,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Order Notes
 		add_action( 'wp', array( $this, 'prepare_order_notes_hooks' ), 10 );
-		// add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
 
 		// Billing Address
 		add_action( 'fc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
