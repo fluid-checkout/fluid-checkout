@@ -17,7 +17,7 @@ Fluid Checkout simplifies and improves the checkout experience on WooCommerce we
 
 Eliminate unnecessary friction at the checkout page and benefit from better conversion rates, customer satisfaction, and earned customer's loyalty.
 
-Ask for shipping information before billing in a truly linear **multi-step and one-step checkout**, easily add trust symbols, add options for gift message and packaging and display a coupon code field that does not distract your customers.
+Ask for shipping information before billing in a **multi-step or one-step checkout**, easily add trust symbols, add options for gift message and packaging and display a coupon code field that does not distract your customers.
 
 Similar to the Shopify checkout, and even better!
 
