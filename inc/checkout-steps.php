@@ -158,6 +158,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Prepare the hooks related to the additinal order notes substep.
 	 */
 	public function prepare_order_notes_hooks() {
+		// Bail if not checkout pages
+		if ( ! is_checkout() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) { return; }
+
 		// Get additional order fields
 		$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
 		$order_notes_substep_position = 'fc_output_step_shipping';
