@@ -1,13 +1,21 @@
-node_modules
-.sass-cache
-bower_components
-/vendor/**/.git
+# OS storage files
 .DS_Store
 
-# don't commit package-lock.json
-# to avoid errors between OS
+# Cache
+.sass-cache
+
+# Don't commit package-lock.json to avoid errors between different OS
 package-lock.json
+
+# local environment files
+gulp-settings.local.json
+.vs-code
 
 # Translation backup files
 *.po~
 *.pot~
+
+# Project dependencies
+node_modules
+bower_components
+/vendor/**/.git
