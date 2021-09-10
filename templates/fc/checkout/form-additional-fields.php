@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) ) : ?>
 
-		<?php // CHANGE: Remove section title "Additional Information" as the section's title is already added as the substep title ?>
+		<?php // CHANGE: Remove section title "Additional Information" because it is already added as the substep title ?>
 
 		<div class="woocommerce-additional-fields__field-wrapper">
 			<?php foreach ( $checkout->get_checkout_fields( 'order' ) as $key => $field ) : ?>
