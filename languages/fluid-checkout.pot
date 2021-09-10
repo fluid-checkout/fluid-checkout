@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-19 07:56+0000\n"
+"POT-Creation-Date: 2021-09-10 13:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "(Required)"
 msgstr ""
 
-#: fluid-checkout.php:361
+#: fluid-checkout.php:371
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -37,7 +37,7 @@ msgid ""
 msgstr ""
 
 #. %s: Form field label
-#: inc/checkout-coupon-codes.php:107 inc/checkout-hide-optional-fields.php:89
+#: inc/checkout-coupon-codes.php:112 inc/checkout-hide-optional-fields.php:99
 #, php-format
 msgid "Add %s"
 msgstr ""
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Add widget areas to the checkout page"
 msgstr ""
 
-#: inc/checkout-steps.php:1465
+#: inc/checkout-steps.php:1489
 msgid "Additional notes"
 msgstr ""
 
@@ -77,7 +77,7 @@ msgstr ""
 msgid "Already have an account?"
 msgstr ""
 
-#: inc/checkout-steps.php:1249
+#: inc/checkout-steps.php:1273
 msgid "An account will be created with the information provided."
 msgstr ""
 
@@ -97,7 +97,7 @@ msgstr ""
 msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 
-#: inc/checkout-steps.php:1983
+#: inc/checkout-steps.php:1906
 msgid "Billing to"
 msgstr ""
 
@@ -115,7 +115,7 @@ msgctxt "Button label for applying coupon codes"
 msgid "Apply"
 msgstr ""
 
-#: inc/checkout-steps.php:328
+#: inc/checkout-steps.php:335
 msgid "Cart total:"
 msgstr ""
 
@@ -123,7 +123,7 @@ msgstr ""
 msgid "Change email address to: {suggestion-value}"
 msgstr ""
 
-#: inc/checkout-steps.php:953
+#: inc/checkout-steps.php:976
 #, php-format
 msgid "Change: %s"
 msgstr ""
@@ -148,32 +148,32 @@ msgstr ""
 msgid "Checkout Sidebar"
 msgstr ""
 
-#: inc/checkout-steps.php:714
+#: inc/checkout-steps.php:721
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr ""
 
-#: inc/checkout-steps.php:693
+#: inc/checkout-steps.php:700
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr ""
 
-#: inc/checkout-steps.php:724
+#: inc/checkout-steps.php:731
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr ""
 
-#: inc/checkout-steps.php:703
+#: inc/checkout-steps.php:710
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr ""
 
-#: inc/checkout-steps.php:953
+#: inc/checkout-steps.php:976
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr ""
 
-#: inc/checkout-steps.php:954
+#: inc/checkout-steps.php:977
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr ""
@@ -194,7 +194,7 @@ msgid ""
 "when using the plugin's checkout header."
 msgstr ""
 
-#: inc/checkout-steps.php:328
+#: inc/checkout-steps.php:335
 msgid "Click to go to the order summary"
 msgstr ""
 
@@ -311,7 +311,7 @@ msgstr ""
 msgid "Enter your code here"
 msgstr ""
 
-#: inc/checkout-steps.php:1165
+#: inc/checkout-steps.php:1189
 msgid "Express checkout"
 msgstr ""
 
@@ -470,11 +470,11 @@ msgstr ""
 msgid "Make the order summary stay visible while scrolling"
 msgstr ""
 
-#: inc/checkout-steps.php:243
+#: inc/checkout-steps.php:250
 msgid "Multi-step"
 msgstr ""
 
-#: inc/checkout-steps.php:1203
+#: inc/checkout-steps.php:1227
 msgid "My contact"
 msgstr ""
 
@@ -482,7 +482,7 @@ msgstr ""
 msgid "Name of who is sending the gift, printed on the packing slip."
 msgstr ""
 
-#: inc/checkout-steps.php:653
+#: inc/checkout-steps.php:660
 msgid "Next step"
 msgstr ""
 
@@ -490,6 +490,10 @@ msgstr ""
 #: templates/fc/checkout/review-order-shipping.php:31
 msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
+msgstr ""
+
+#: inc/checkout-steps.php:1601
+msgid "Not selected yet."
 msgstr ""
 
 #: inc/compat/plugins/compat-plugin-woo-delivery.php:208
@@ -502,7 +506,7 @@ msgctxt "Notice for no gift options provided"
 msgid "None."
 msgstr ""
 
-#: inc/checkout-steps.php:1639
+#: inc/checkout-steps.php:1648
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr ""
@@ -529,7 +533,7 @@ msgstr ""
 msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 
-#: inc/checkout-widget-areas.php:74 inc/checkout-steps.php:2541
+#: inc/checkout-widget-areas.php:74 inc/checkout-steps.php:2464
 #: inc/admin/admin-settings-checkout.php:122
 #: inc/admin/admin-settings-checkout.php:289
 msgid "Order summary"
@@ -539,27 +543,27 @@ msgstr ""
 msgid "Packing Slips"
 msgstr ""
 
-#: inc/checkout-steps.php:2437
+#: inc/checkout-steps.php:2360
 msgid "Payment method"
-msgstr ""
-
-#: inc/checkout-steps.php:1549
-msgid "Pick up at store:"
 msgstr ""
 
 #: inc/compat/plugins/compat-plugin-woo-delivery.php:116
 msgid "Pickup Date"
 msgstr ""
 
-#: inc/checkout-steps.php:697 inc/checkout-steps.php:708
+#: inc/checkout-local-pickup.php:154
+msgid "Pickup point"
+msgstr ""
+
+#: inc/checkout-steps.php:704 inc/checkout-steps.php:715
 msgid "Proceed to Billing"
 msgstr ""
 
-#: inc/checkout-steps.php:718
+#: inc/checkout-steps.php:725
 msgid "Proceed to Payment"
 msgstr ""
 
-#: inc/checkout-steps.php:697
+#: inc/checkout-steps.php:704
 msgid "Proceed to Shipping"
 msgstr ""
 
@@ -592,11 +596,11 @@ msgid ""
 "delivering food and other perishable products)."
 msgstr ""
 
-#: inc/checkout-coupon-codes.php:140
+#: inc/checkout-coupon-codes.php:147
 msgid "Remove"
 msgstr ""
 
-#: inc/checkout-steps.php:2080 inc/checkout-steps.php:2165
+#: inc/checkout-steps.php:2003 inc/checkout-steps.php:2088
 msgid "Same as shipping address"
 msgstr ""
 
@@ -606,7 +610,7 @@ msgstr ""
 msgid "Select an image"
 msgstr ""
 
-#: inc/checkout-steps.php:1174
+#: inc/checkout-steps.php:1198
 msgctxt "Separator label for the express checkout section"
 msgid "Or"
 msgstr ""
@@ -615,7 +619,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: inc/checkout-steps.php:1441
+#: inc/checkout-steps.php:1465
 msgid "Shipping method"
 msgstr ""
 
@@ -639,7 +643,7 @@ msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr ""
 
-#: inc/checkout-steps.php:1417
+#: inc/checkout-local-pickup.php:142 inc/checkout-steps.php:1441
 msgid "Shipping to"
 msgstr ""
 
@@ -651,7 +655,7 @@ msgstr ""
 msgid "Sign in to your account"
 msgstr ""
 
-#: inc/checkout-steps.php:244
+#: inc/checkout-steps.php:251
 msgid "Single step"
 msgstr ""
 
@@ -660,7 +664,7 @@ msgid "Skip to content"
 msgstr ""
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:791
+#: inc/checkout-steps.php:798
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr ""
