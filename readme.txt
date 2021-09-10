@@ -202,6 +202,10 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 == Changelog ==
 
+= Unreleased =
+* Breaking change: Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
+* Improved: Show "Pickup point" as the substep title. Text can be changed by using the filter `fc_shipping_address_local_pickup_point_title`.
+
 = 1.2.10 - 2021-09-10 =
 * Added: New filter hook `fc_coupon_code_field_initially_expanded` to allow displaying the coupon code field always expanded.
 * Improved: Fix plugin and theme compatibility styles enqueue function to use filter hook instead of options to allow disabling loading compatibility files.
@@ -269,3 +273,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 = 1.2.0 - 2021-06-25 =
 * First public release.
+
+
+== Upgrade Notice ==
+
+= 1.3 =
+Breaking change: Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
