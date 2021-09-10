@@ -204,6 +204,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 = Unreleased =
 * Added: New filter hook `fc_coupon_code_field_initially_expanded` to allow displaying the coupon code field always expanded.
+* Improved: Fix plugin and theme compatibility styles enqueue function to use filter hook instead of options to allow disabling loading compatibility files.
+* Fixed: Fix substep "Additional notes" being displayed even when all fields are removed.
+* Fixed: Typos and info in the readme.txt.
 
 = 1.2.9 - 2021-08-18 =
 * Bump tested up to WooCommerce 5.6
