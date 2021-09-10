@@ -4,7 +4,7 @@ Tags: woocommerce, e-commerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.2
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 1.2.9
+Stable tag: 1.2.10
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -202,7 +202,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 == Changelog ==
 
-= Unreleased =
+= 1.2.10 - 2021-09-10 =
 * Added: New filter hook `fc_coupon_code_field_initially_expanded` to allow displaying the coupon code field always expanded.
 * Improved: Fix plugin and theme compatibility styles enqueue function to use filter hook instead of options to allow disabling loading compatibility files.
 * Fixed: Fix substep "Additional notes" being displayed even when all fields are removed.
