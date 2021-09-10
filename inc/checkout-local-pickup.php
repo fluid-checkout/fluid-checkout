@@ -46,7 +46,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 
 
 	/**
-	 * Determines if a shipping address is needed.
+	 * Determines if a shipping address is needed depending on the shipping method selected.
 	 *
 	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
 	 */
@@ -103,7 +103,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 
 
 	/**
-	 * Determines if a shipping address is needed.
+	 * Determines if the any `local_pickup` shipping method is available.
 	 *
 	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
 	 */
