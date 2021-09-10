@@ -213,6 +213,7 @@ $icons: (
 	'i-arrow-right': '\e803',
 	'i-check-small': '\e805',
 	'i-check': '\e806',
+	'i-check-circle': '\e82b',
 	'i-chevron-down-medium': '\e807',
 	'i-chevron-down': '\e808',
 	'i-chevron-left-medium': '\e809',
@@ -542,6 +543,7 @@ $checkout-field-description-font-size--large-screen:  $font-size-extra-small !de
 
 $checkout-message-error-icon:                         'i-alert-octagon' !default;
 $checkout-message-error-icon-size:                    $icon-size-small !default;
+$checkout-message-error-icon-position-top:            remsize( 1.6rem ) !default;
 $checkout-message-error-icon-position-left:           $global-spacing-tiny !default;
 
 $checkout-message-error-padding:                      $global-spacing-tiny $global-spacing-extra-small $global-spacing-tiny #{ $checkout-message-error-icon-position-left + $checkout-message-error-icon-size + $global-spacing-tiny } !default;
@@ -553,6 +555,10 @@ $checkout-message-error-font-size--large-screen:      $font-size-extra-small !de
 $checkout-message-suggestion-padding:                 $global-spacing-tiny $global-spacing-extra-small !default;
 
 $checkout-message-success-color:                      $success-color !default;
+$checkout-message-success-icon:                       'i-check-circle' !default;
+$checkout-message-success-icon-size:                  $icon-size-small !default;
+$checkout-message-success-icon-position-top:          remsize( 1.4rem ) !default;
+$checkout-message-success-icon-position-left:         $global-spacing-tiny !default;
 
 $checkout-field-group-margin:                         0 #{ - $global-spacing-small } #{ - $global-spacing-small } !default;
 $checkout-field-group-margin--large-screen:           0 #{ - $global-spacing-small } #{ - $global-spacing-small } !default;

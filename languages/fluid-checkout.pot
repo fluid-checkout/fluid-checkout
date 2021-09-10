@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-18 20:21+0000\n"
+"POT-Creation-Date: 2021-08-19 07:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -439,7 +439,7 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:169
 msgid ""
-"Loading unminified assets affect the the website performance. Only use this "
+"Loading unminified assets affects the website performance. Only use this "
 "option while troubleshooting."
 msgstr ""
 

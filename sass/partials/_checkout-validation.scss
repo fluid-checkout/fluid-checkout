@@ -44,8 +44,8 @@ div.woocommerce .form-row .woocommerce-error:before {
 	@include icon-size( $checkout-message-error-icon-size );
 
 	position: absolute;
+	top: $checkout-message-error-icon-position-top;
 	left: $checkout-message-error-icon-position-left;
-	top: 50%;
 	transform: translateY( -50% );
 	color: inherit;
 }

@@ -5,8 +5,8 @@ Requires PHP: 7.2
 Requires at least: 5.0
 Tested up to: 5.8
 Stable tag: 1.2.9
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message, and display a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.
 
@@ -17,7 +17,7 @@ Fluid Checkout simplifies and improves the checkout experience on WooCommerce we
 
 Eliminate unnecessary friction at the checkout page and benefit from better conversion rates, customer satisfaction, and earned customer's loyalty.
 
-Ask for shipping information before billing in a truly linear **multi-step and one-step checkout**, easily add trust symbols, add options for gift message and packaging and display a coupon code field that does not distract your customers.
+Ask for shipping information before billing in a **multi-step or one-step checkout**, easily add trust symbols, add options for gift message and packaging and display a coupon code field that does not distract your customers.
 
 Similar to the Shopify checkout, and even better!
 
@@ -40,7 +40,12 @@ With themes that are highly stylized such as Storefront Deli -- when comparing t
 
 * **Optimized for mobile**: Fluid Checkout is optimized for mobile devices and will surface the most appropriate keyboard type on fields such as phone and email. In fact, Fluid Checkout was created with mobile devices in mind, and enhanced with more functionality and style for bigger screens.
 
-* **Easily add trust symbols to the checkout page**: Add any widget such as accepted payment methods, security badges, reviews, testimonials, or anything that can boost the perceived trust customers have on the website. The checkout page contains widget areas displayed at strategic positions.
+* **Easily add trust symbols to the checkout page**: Add any widget such as accepted payment methods, security badges, reviews, testimonials, or anything that can boost the perceived trust customers have on the website. The checkout page contains widget areas displayed at strategic positions:
+
+1. Order Summary: at the bottom of the order summary, below the order details and the place order button when present.
+2. Checkout Sidebar: displayed on the sidebar, below the order summary.
+3. Checkout Header - Desktop: at the checkout header -- only displayed on desktop devices and when using the plugin's header and footer templates.
+4. Checkout Header - Mobile: at the top of the page, right below the checkout header -- only displayed on mobile devices and when using the plugin's header and footer templates.
 
 * **Shipping before billing**: Customers expect to fill up shipping information before thinking about billing, by asking for the shipping information before billing, we remove unnecessary friction, matching the customer's expectations.
 
@@ -48,18 +53,11 @@ With themes that are highly stylized such as Storefront Deli -- when comparing t
 
 * **Instant field validation**: The default WooCommerce checkout only validates when the form is submitted, leading to confusion and frustration. Customers want the "Place order" button to be the last thing they click to complete their purchase. Some things can only be validated when placing the order, such as if the credit card is valid and has enough funds to cover the order total, however, most errors at checkout can be prevented by instantly validating the customer data.
 
-* **Integrated coupon code field at the checkout**: When users see an open coupon code field at the checkout page the changes they will leave the website and go "coupon hunting" is very high, and they might not come back. The integrated coupon code field is displayed in a custom expansible section, and while ness noticeable is still discoverable by customers who have a coupon and need to add it.
-
-* **Trust symbols placement**: Add trust symbols to the checkout page using one or more of the widget areas:
-
-1. Order Summary: at the bottom of the order summary, below the order details and the place order button when present.
-2. Checkout Sidebar: displayed on the sidebar, below the order summary.
-3. Checkout Header - Desktop: at the checkout header -- only displayed on desktop devices and when using the plugin's header and footer templates.
-4. Checkout Header - Mobile: at the top of the page, right below the checkout header -- only displayed on mobile devices and when using the plugin's header and footer templates.
+* **Integrated coupon code field at the checkout**: When users see an open coupon code field at the checkout page the changes they will leave the website and go "coupon hunting" is very high, and they might not come back. The integrated coupon code field is displayed in a custom expansible section, and while less noticeable is still discoverable by customers who have a coupon and need to add it.
 
 * **Offer gift options**: Customers can add a gift message to their order, to be printed with the packing slip generated by WooCommerce PDF Invoices & Packing Slips.
 
-* **Shipping phone field**: Add a separate phone field for shipping-related questions, in addition to the billing phone field.
+* **Shipping phone field**: Add a separate phone field for shipping-related questions, in addition to the native billing phone field.
 
 * **Automatically saved customer data**: customers won't lose any information they already have entered on the checkout page, and will get back exactly where they left when re-visiting it. Only payment information won't be saved for security reasons.
 
@@ -203,6 +201,12 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 
 == Changelog ==
+
+= Unreleased =
+* Added: New filter hook `fc_coupon_code_field_initially_expanded` to allow displaying the coupon code field always expanded.
+* Improved: Fix plugin and theme compatibility styles enqueue function to use filter hook instead of options to allow disabling loading compatibility files.
+* Fixed: Fix substep "Additional notes" being displayed even when all fields are removed.
+* Fixed: Typos and info in the readme.txt.
 
 = 1.2.9 - 2021-08-18 =
 * Bump tested up to WooCommerce 5.6

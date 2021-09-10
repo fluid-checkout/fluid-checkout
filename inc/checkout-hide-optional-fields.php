@@ -33,6 +33,26 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 	}
 
 
+	/**
+	 * Get the list of field ids to skip hidding when hide optional fields is enabled.
+	 *
+	 * @return  Array  List of field ids to skip hidding.
+	 */
+	public function get_hide_optional_fields_skip_list() {
+		// Always skip these fields
+		$skip_list = array( 'state', 'billing_state', 'shipping_state' );
+
+		// Maybe skip "address line 2" fields
+		if ( get_option( 'fc_hide_optional_fields_skip_address_2', 'no' ) === 'yes' ) {
+			$skip_list[] = 'address_2';
+			$skip_list[] = 'shipping_address_2';
+			$skip_list[] = 'billing_address_2';
+		}
+
+		return apply_filters( 'fc_hide_optional_fields_skip_list', $skip_list );
+	}
+
+
 
 	/**
 	 * Get the checkout fields args.
@@ -49,18 +69,8 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		// Bail if optional field by its type
 		if ( in_array( $args['type'], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'checkbox', 'radio' ) ) ) ) { return $field; }
 
-		// Always skip these fields
-		$skip_list = array( 'state', 'billing_state', 'shipping_state' );
-
-		// Maybe skip "address line 2" fields
-		if ( get_option( 'fc_hide_optional_fields_skip_address_2', 'no' ) === 'yes' ) {
-			$skip_list[] = 'address_2';
-			$skip_list[] = 'shipping_address_2';
-			$skip_list[] = 'billing_address_2';
-		}
-
 		// Check if should skip current field
-		if ( in_array( $key, apply_filters( 'fc_hide_optional_fields_skip_list', $skip_list ) ) ) { return $field; }
+		if ( in_array( $key, $this->get_hide_optional_fields_skip_list() ) ) { return $field; }
 
 		// Set attribute `data-autofocus` to focus on the optional field when expanding the section
 		$field = str_replace( 'name="'. esc_attr( $key ) .'"', 'name="'. esc_attr( $key ) .'" data-autofocus', $field );

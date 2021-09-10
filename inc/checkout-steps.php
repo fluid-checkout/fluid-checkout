@@ -24,7 +24,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 **/
 	private $checkout_steps   = array();
 
-	private const SESSION_PREFIX = 'fc_';
 
 
 	/**
@@ -86,7 +85,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wp', array( $this, 'prepare_local_pickup_hooks' ), 5 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
-		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_order_notes' ), 100 );
 		add_action( 'fc_cart_totals_shipping', array( $this, 'output_cart_totals_shipping_section' ), 10 );
 		add_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
@@ -96,7 +94,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 
 		// Order Notes
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
+		add_action( 'wp', array( $this, 'prepare_order_notes_hooks' ), 10 );
 
 		// Billing Address
 		add_action( 'fc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
@@ -153,6 +151,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 			add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 20 );
 			add_action( 'fc_checkout_after_step_shipping_fields', array( $this, 'maybe_output_shipping_address_text' ), 10 );
 			add_filter( 'woocommerce_cart_needs_shipping_address', array( $this, 'maybe_change_needs_shipping_address' ), 10 );
+		}
+	}
+
+	/**
+	 * Prepare the hooks related to the additinal order notes substep.
+	 */
+	public function prepare_order_notes_hooks() {
+		// Bail if not checkout pages
+		if ( ! is_checkout() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) { return; }
+
+		// Get additional order fields
+		$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
+		$order_notes_substep_position = 'fc_output_step_shipping';
+		
+		// Bail if no additional order fields are present
+		if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
+			
+			// Maybe change output to the billing step
+			if ( ! WC()->cart->needs_shipping() ) {
+				$order_notes_substep_position = 'fc_output_step_billing';
+			}
+
+			// Add hooks
+			add_action( $order_notes_substep_position, array( $this, 'output_substep_order_notes' ), 100 );
+			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
+
 		}
 	}
 

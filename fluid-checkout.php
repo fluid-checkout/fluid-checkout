@@ -5,17 +5,20 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message, and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 1.2.9
+Version: 1.2.10-beta-3
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
 WC tested up to: 5.6
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
+Copyright (C) 2021 Fluidweb OÜ
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -23,8 +26,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 defined( 'ABSPATH' ) || exit;
@@ -65,6 +67,13 @@ class FluidCheckout {
 	 * @var array
 	 */
 	private $posted_data = null;
+
+	/**
+	 * User session keys prefix.
+	 *
+	 * @var string
+	 */
+	public const SESSION_PREFIX = 'fc_';
 
 
 	/**
