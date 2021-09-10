@@ -146,10 +146,10 @@ class FluidCheckout {
 		}
 
 		// Load features
-		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 10 );
-		add_action( 'plugins_loaded', array( $this, 'load_features' ), 10 );
-		add_action( 'plugins_loaded', array( $this, 'load_plugin_compat_features' ), 10 );
-		add_action( 'plugins_loaded', array( $this, 'load_theme_compat_features' ), 10 );
+		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
+		add_action( 'after_setup_theme', array( $this, 'load_features' ), 10 );
+		add_action( 'after_setup_theme', array( $this, 'load_plugin_compat_features' ), 10 );
+		add_action( 'after_setup_theme', array( $this, 'load_theme_compat_features' ), 10 );
 
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );

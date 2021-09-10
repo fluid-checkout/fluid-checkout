@@ -203,7 +203,8 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 == Changelog ==
 
 = Unreleased =
-* Breaking change: Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
+* Improved: Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
+* Improved: Changed the hook used to initialize the plugin features from `plugins_loaded` to `after_setup_theme` to allow themes to customize early plugin settings and features.
 * Improved: Show "Pickup point" as the substep title. Text can be changed by using the filter `fc_shipping_address_local_pickup_point_title`.
 
 = 1.2.10 - 2021-09-10 =
