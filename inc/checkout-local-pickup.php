@@ -19,6 +19,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 		add_action( 'wp', array( $this, 'prepare_local_pickup_hooks' ), 5 );
 	}
 
@@ -41,6 +42,20 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_substep_title_fragment' ), 10 );
 			add_filter( 'fc_substep_shipping_address_text', array( $this, 'change_substep_text_shipping_address' ), 50 );
 		}
+	}
+
+
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Bail if not at checkout page or `local_pickup` not available
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || ! $this->is_local_pickup_available() ){ return; }
+
+		// Load scripts
+		wp_enqueue_script( 'fc-checkout-local-pickup', self::$directory_url . 'js/checkout-local-pickup'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-local-pickup', 'window.addEventListener("load",function(){CheckoutLocalPickup.init();})' );
 	}
 
 
