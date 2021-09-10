@@ -1,5 +1,5 @@
 /**
- * Manage checkout steps state.
+ * Manage local pickup shipping methods.
  *
  * DEPENDS ON:
  * - jQuery // Interact with WooCommerce events
