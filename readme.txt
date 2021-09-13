@@ -208,6 +208,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 * Improved: Show "Pickup point" as the substep title. Text can be changed by using the filter `fc_shipping_address_local_pickup_point_title`.
 * Fixed: Order summary title styles breaking the layout on some themes.
 * Fixed: Only make the labels of total line as `uppercase` instead of the whole line.
+* Fixed: Removed extra margin on collapsible form sections on some themes.
 
 = 1.2.10 - 2021-09-10 =
 * Added: New filter hook `fc_coupon_code_field_initially_expanded` to allow displaying the coupon code field always expanded.

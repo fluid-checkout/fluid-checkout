@@ -31,6 +31,9 @@
   table-layout: fixed;
   width: 100%; }
 
+.fc-wrapper [data-collapsible].fc-expansible-form-section__content {
+  margin-top: 0; }
+
 /*------------------------------------*\
   #CHECKOUT CONTENT AREA
 \*------------------------------------*/
