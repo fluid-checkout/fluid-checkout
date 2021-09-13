@@ -275,6 +275,16 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 						'autoload'          => false,
 					),
 					array(
+						'desc'              => __( 'Make the "Add" link button <code>lowercase</code>', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Make the labels of optional field "Add" link button as <code>lowercase</code>. (ie. "Add phone number" instead of "Add Phone number")', 'fluid-checkout' ),
+						'id'                => 'fc_optional_fields_link_label_lowercase',
+						'default'           => 'yes',
+						'type'              => 'checkbox',
+						'checkboxgroup'     => '',
+						'show_if_checked'   => 'yes',
+						'autoload'          => false,
+					),
+					array(
 						'desc'              => __( 'Do not hide "Address line 2" fields behind a link button', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Recommended only whe most customers actually need the "Address line 2" field, or when getting the right shipping address is crucial (ie. if delivering food and other perishable products).', 'fluid-checkout' ),
 						'id'                => 'fc_hide_optional_fields_skip_address_2',
