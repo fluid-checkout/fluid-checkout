@@ -15,7 +15,7 @@ Provides a distraction free checkout experience for any WooCommerce store. Ask f
 
 Fluid Checkout simplifies and improves the checkout experience on WooCommerce websites for your new and repeating customers with a truly linear, Shopify-like checkout.
 
-Eliminate unnecessary friction at the checkout page and benefit from better conversion rates, customer satisfaction, and earned customer's loyalty.
+Eliminate unnecessary friction at the checkout page and benefit from better conversion rates, customer satisfaction, and earned customer loyalty.
 
 Ask for shipping information before billing in a **multi-step or one-step checkout**, easily add trust symbols, add options for gift message and packaging and display a coupon code field that does not distract your customers.
 
