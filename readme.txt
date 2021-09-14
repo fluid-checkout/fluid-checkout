@@ -214,6 +214,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 * Fixed: Order summary title styles breaking the layout on some themes.
 * Fixed: Only make the labels of total line as `uppercase` instead of the whole line.
 * Fixed: Removed extra margin on collapsible form sections on some themes.
+* Fixed: Unintended checkout update triggered for some fields. Fixes issue preventing users to fill payment information for the plugin "Mercado Pago payments for WooCommerce - by Mercado Pago".
 * Removed: Unused `cart-totals.php` template file.
 
 
