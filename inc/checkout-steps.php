@@ -144,6 +144,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if not checkout pages
 		if ( ! is_checkout() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) { return; }
 
+		// Bail if no additional order fields are present
+		$all_fields = WC()->checkout()->get_checkout_fields();
+		if ( ! in_array( 'order', array_keys( $all_fields ) ) ) { return; }
+
 		// Get additional order fields
 		$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
 		$order_notes_substep_position = 'fc_output_step_shipping';
