@@ -2032,7 +2032,11 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
   padding: 0 0 0 26px;
   cursor: pointer;
   text-decoration: none;
-  line-height: 1.2; }
+  line-height: 1.2;
+  font-size: 15px; }
+  @media (min-width: 750px) {
+    div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
+      font-size: 15px; } }
   div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:before {
     display: inline-block;
     font-family: "fluid-checkout-icons" !important;
