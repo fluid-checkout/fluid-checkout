@@ -621,8 +621,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Return `true` if next step id is found in the complete steps list
 		foreach ( $complete_steps as $step_index => $step_args ) {
+			
+			// Get next step args
+			$next_step_index = $step_index + 1;
+			$next_step_args = array_key_exists( $next_step_index, $complete_steps ) ? $complete_steps[ $next_step_index ] : false;
+			
+			// Maybe skip `shipping` step
+			if ( is_array( $next_step_args ) && 'shipping' == $next_step_args[ 'step_id' ] && ! WC()->cart->needs_shipping() ) {
+				$next_step_index++;
+			}
+
 			if ( $step_id == $step_args[ 'step_id' ] ) {
-				$next_step_index = $step_index + 1;
 				if ( array_key_exists( $next_step_index, $complete_steps ) ) {
 					return true;
 				}
@@ -793,6 +802,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$current_step = $this->get_current_step();
 		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the registered checkout steps list
 		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
+		$current_step_number = $current_step_index + 1;
+		
+		// Maybe decrease number of steps when `shipping` is not needed
+		if ( ! WC()->cart->needs_shipping() ) {
+			$steps_count--;
+			$current_step_number--;
+		}
 
 		// Get step count html
 		$steps_count_label_html = apply_filters(
@@ -800,7 +816,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			sprintf(
 				/* translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps". */
 				esc_html( __( 'Step %1$s of %2$s', 'fluid-checkout' ) ),
-				'<span class="fc-progress-bar__current-step" data-step-count-current>' . esc_html( $current_step_index + 1 ) . '</span>',
+				'<span class="fc-progress-bar__current-step" data-step-count-current>' . esc_html( $current_step_number ) . '</span>',
 				'<span class="fc-progress-bar__total-steps" data-step-count-total>' . esc_html( $steps_count ) . '</span>'
 			),
 			$_checkout_steps,
