@@ -2084,9 +2084,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		else :
 		?>
 			<p id="billing_same_as_shipping_field" class="form-row form-row-wide">
-				<label class="checkbox">
-					<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>> <?php echo esc_html( __( 'Same as shipping address', 'fluid-checkout' ) ); ?></span>
-				</label>
+				<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>>
+				<label for="billing_same_as_shipping"><?php echo esc_html( __( 'Same as shipping address', 'fluid-checkout' ) ); ?></label>
 			</p>
 		<?php
 		endif;
