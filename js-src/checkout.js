@@ -67,7 +67,7 @@ jQuery( function( $ ) {
 			this.$checkout_form.on( 'change', '.address-field select', this.input_changed );
 			
 			// CHANGE: Move CSS selector for fields that updated the checkout when value is changed, and check for customizations of the selector
-			var update_fields_selector = window.fcSettings !== null &&  window.fcSettings.hasOwnProperty( 'checkoutUpdateFieldsSelector' ) ? window.fcSettings.checkoutUpdateFieldsSelector : _update_checkout_fields_selector;
+			var update_fields_selector = window.fcSettings !== null && window.fcSettings.hasOwnProperty( 'checkoutUpdateFieldsSelector' ) ? window.fcSettings.checkoutUpdateFieldsSelector : _update_checkout_fields_selector;
 			this.$checkout_form.on( 'change', update_fields_selector, this.maybe_input_changed ); // eslint-disable-line max-len
 			this.$checkout_form.on( 'keydown', update_fields_selector, this.queue_update_checkout ); // eslint-disable-line max-len
 
