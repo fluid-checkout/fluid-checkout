@@ -339,6 +339,19 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 					),
 
 					array(
+						'title'         => __( 'Order notes', 'fluid-checkout' ),
+						'desc'          => __( 'Define the visibility of the additional order notes field.', 'fluid-checkout' ),
+						'id'            => 'woocommerce_enable_order_comments',
+						'options'       => array(
+							'no'        => _x( 'Hidden', 'Order notes field visibility', 'fluid-checkout' ),
+							'yes'       => _x( 'Optional', 'Order notes field visibility', 'fluid-checkout' ),
+						),
+						'default'       => 'yes',
+						'type'          => 'select',
+						'autoload'      => false,
+					),
+
+					array(
 						'title'             => __( 'Gift options', 'fluid-checkout' ),
 						'desc'              => __( 'Display gift message and other gift options at the checkout page', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Allow customers to add a gift message and other gift related options to the order.', 'fluid-checkout' ),
