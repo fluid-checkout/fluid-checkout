@@ -1,6 +1,6 @@
-/*------------------------------------*\
-  #CHECKOUT CONTENT AREA
-\*------------------------------------*/
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
 body.woocommerce-checkout {
 	overflow-x: hidden;
 }
@@ -100,9 +100,9 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
 
 
 
-/*------------------------------------*\
-  #CHECKOUT COLUMNS LAYOUT
-\*------------------------------------*/
+// ------------------------------------
+// CHECKOUT COLUMNS LAYOUT
+// ------------------------------------
 body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-message,
 body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-info,
 body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-error,
@@ -168,9 +168,9 @@ body:not( .has-checkout-must-login-notice ) .fc-inside {
 
 
 
-/*------------------------------------*\
-  #CHECKOUT WIDGETS
-\*------------------------------------*/
+// ------------------------------------
+// CHECKOUT WIDGETS
+// ------------------------------------
 .fc-checkout-header .widget,
 .fc-main .widget {
 	margin: 0;
@@ -180,9 +180,9 @@ body:not( .has-checkout-must-login-notice ) .fc-inside {
 
 
 
-/*------------------------------------*\
-  #CLEAR FIX
-\*------------------------------------*/
+// ------------------------------------
+// CLEAR FIX
+// ------------------------------------
 .fc-clearfix:before,
 .fc-clearfix:after {
 	@include clearfix();

@@ -1,6 +1,3 @@
-/*------------------------------------*\
-  #IMPORT ABSTRACT
-\*------------------------------------*/
 /** 
  * FUNCTIONS
  * 
@@ -8,9 +5,6 @@
  * except the `remsize` functions which is already imported
  * before the `variables` as it is needed earlier.
  */
-/*------------------------------------*\
-	#VARIABLES
-\*------------------------------------*/
 /** 
  * FUNCTIONS
  * 
@@ -18,21 +12,12 @@
  * except the `remsize` functions which is already imported
  * before the `variables` as it is needed earlier.
  */
-/*------------------------------------*\
-  #IMPORT STYLES
-\*------------------------------------*/
-/*------------------------------------*\
-	#CHECKOUT CONTENT AREA
-\*------------------------------------*/
 body:not(.has-checkout-header) {
   padding-top: 120px; }
 
 body:not(.has-checkout-header).admin-bar .fc-sidebar[data-sticky-states].is-sticky--top .fc-sidebar__inner {
   padding-top: 5px; }
 
-/*------------------------------------*\
-  #CHECKOUT HEADER
-\*------------------------------------*/
 header.fc-checkout-header {
   position: fixed !important;
   top: 0 !important; }
@@ -46,18 +31,12 @@ header.fc-checkout-header {
     .admin-bar header.fc-checkout-header {
       top: 32px !important; } }
 
-/*------------------------------------*\
-  #CHECKOUT PROGRESS BAR
-\*------------------------------------*/
 body:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
   transform: translateY(0); }
   @media screen and (min-width: 783px) {
     body:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
       transform: translateY(5px); } }
 
-/*------------------------------------*\
-	#CHECKOUT FIELD VALIDATION
-\*------------------------------------*/
 body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .select2-selection:after,
 body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .woocommerce-input-wrapper:after {
   top: 12px; }
@@ -65,9 +44,6 @@ body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class
 body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .select2-selection:after {
   right: 24px; }
 
-/*------------------------------------*\
-  #WOOCOMMERCE FORM-ROW
-\*------------------------------------*/
 div.woocommerce form #billing_country_field,
 div.woocommerce form #shipping_country_field,
 div.woocommerce form .form-row .select2-container--default,
