@@ -1,6 +1,6 @@
-/*------------------------------------*\
-  #IMPORT ABSTRACT
-\*------------------------------------*/
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
 @import
 	"abstract/functions/_all-early", // Should be imported before `_variables`
 	"abstract/variables",
@@ -11,9 +11,9 @@
 
 
 
-/*------------------------------------*\
-  #IMPORT STYLES
-\*------------------------------------*/
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
 @import
 	"partials/collapsible-blocks",
 	"partials/checkout-content-area",

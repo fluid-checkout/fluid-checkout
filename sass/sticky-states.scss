@@ -1,6 +1,6 @@
-/*------------------------------------*\
-	#IMPORT ABSTRACT
-\*------------------------------------*/
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
 @import "abstract/_all";
 @import	"../node_modules/sticky-states/sass/abstract/variables";
 
@@ -8,9 +8,9 @@
 
 
 	
-/*------------------------------------*\
-	#IMPORT STYLES
-\*------------------------------------*/
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
 @import
 	"../node_modules/sticky-states/sass/abstract/variables",
 	"../node_modules/sticky-states/sass/theme/sticky-states";
