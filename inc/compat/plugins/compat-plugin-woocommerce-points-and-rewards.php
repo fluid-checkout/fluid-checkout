@@ -166,21 +166,6 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 		$html .= '</div>';
 		
 		echo $html;
-
-		// // add 'Apply Discount' button
-		// // CHANGE: Replace `form` element with a `div` element
-		// $message .= '<div class="fc-points-rewards__apply-discount">';
-		// $message .= '<input type="hidden" name="wc_points_rewards_apply_discount_amount" class="wc_points_rewards_apply_discount_amount" />';
-		// // CHANGE: Change button type to `button` instead of `submit`
-		// $message .= '<a href="#apply_discount" role="button" class="wc_points_rewards_apply_discount" name="wc_points_rewards_apply_discount">' . __( 'Apply Discount', 'woocommerce-points-and-rewards' ) . '</a></div>';
-
-		// // wrap with info div
-		// // CHANGE: Replace message wrapper class to display as a coupon code
-		//  . $message . '</div>';
-
-		// echo apply_filters( 'wc_points_rewards_redeem_points_message', $message, $discount_available );
-
-		// CHANGE: Remove inline JS used to handle the points and rewards form submit
 	}
 
 }
