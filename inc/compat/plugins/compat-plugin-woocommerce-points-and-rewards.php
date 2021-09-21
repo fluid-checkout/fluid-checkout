@@ -27,6 +27,9 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+
+		// Enqueue
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
 	}
 
 
@@ -43,6 +46,18 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 
 			// Checkout substep
 			add_action( 'fc_before_substep_coupon_codes', array( $this, 'output_redeem_points_section' ), 10 );
+		}
+	}
+
+
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_scripts() {
+		// CHECKOUT
+		if ( is_checkout() && ! ( is_order_received_page() || is_checkout_pay_page() ) ) {
+			wp_enqueue_script( 'fc-plugin-compat-woocommerce-points-and-rewards--apply-discount', self::$directory_url . 'js/compat/plugins/woocommerce-points-and-rewards/apply-discount'. self::$asset_version . '.js', array(), null );
 		}
 	}
 
