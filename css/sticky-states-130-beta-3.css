@@ -17,16 +17,21 @@
 \*------------------------------------*/
 [data-sticky-states].is-sticky [data-sticky-states-inner] {
   z-index: 300;
-  position: fixed; }
+  position: fixed;
+}
 
 [data-sticky-states].is-sticky--top [data-sticky-states-inner] {
-  top: 0; }
+  top: 0;
+}
 
 [data-sticky-states].is-sticky--bottom [data-sticky-states-inner] {
-  bottom: 0; }
+  bottom: 0;
+}
 
 [data-sticky-states].is-end-position {
-  position: relative; }
+  position: relative;
+}
 
 [data-sticky-states].is-end-position [data-sticky-states-inner] {
-  position: absolute; }
+  position: absolute;
+}

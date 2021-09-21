@@ -1,3 +1,5 @@
+@use "sass:math" as math;
+
 // ------------------------------------
 // CHECKOUT PROGRESS BAR
 // ------------------------------------
@@ -89,6 +91,6 @@
 @for $count from 2 through 10 {
 	.fc-progress-bar__bars[data-step-count="#{$count}"] .fc-progress-bar__bar.is-complete,
 	.fc-progress-bar__bars[data-step-count="#{$count}"] .fc-progress-bar__bar.is-current {
-		width: #{ 100% / $count };
+		width: #{ math.div( 100%, $count ) };
 	}
 }

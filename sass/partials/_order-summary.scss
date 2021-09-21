@@ -1,3 +1,5 @@
+@use "sass:math" as math;
+
 // ------------------------------------
 // ORDER SUMMARY
 // ------------------------------------
@@ -192,7 +194,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	transform: translateX( -100% ) translateY( -25% );
 	display: block;
 	padding: remsize( .1rem ) remsize( .6rem ) remsize( .2rem ) $global-spacing-tiny;
-	border-radius: #{ ( $font-size-extra-small + remsize( .4rem ) ) / 2 };
+	border-radius: #{ math.div( $font-size-extra-small + remsize( .4rem ), 2 ) };
 	background-color: $order-summary-quantity-background-color;
 	color: $order-summary-quantity-text-color;
 	font-size: $order-summary-quantity-font-size;
