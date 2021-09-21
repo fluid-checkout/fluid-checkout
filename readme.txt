@@ -206,12 +206,14 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 = Unreleased =
 * Added: New option to hide the additional order notes field. Saves to the WooCommerce option `woocommerce_enable_order_comments`.
+* Added: Compatibility styles for plugin MailPoet.
 * Improved: Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
 * Improved: Changed the hook used to initialize the plugin features from `plugins_loaded` to `after_setup_theme` to allow themes to customize early plugin settings and features.
 * Improved: Show "Pickup point" as the substep title. Text can be changed by using the filter `fc_shipping_address_local_pickup_point_title`.
 * Improved: Add option "Make the "Add" link button lowercase" to prevent plugin from changing the optional fields link buttons to `lowercase` when keeping the letter case is necessary.
 * Improved: Changed the markup for the checkbox "Same as shipping address" for better compatibility with WooCommerce form field styles.
 * Improved: Compatibility styles for checkbox and validation check icon for Blocksy theme.
+* Fixed: Fields of type `hidden` being wrapper in expansible hidden field sections.
 * Fixed: Steps count was including the shipping step when not needed or disabled.
 * Fixed: Order summary title styles breaking the layout on some themes.
 * Fixed: Only make the labels of total line as `uppercase` instead of the whole line.
