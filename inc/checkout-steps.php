@@ -82,10 +82,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Shipping
 		add_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
-		add_action( 'wp', array( $this, 'prepare_local_pickup_hooks' ), 5 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
-		add_action( 'fc_cart_totals_shipping', array( $this, 'output_cart_totals_shipping_section' ), 10 );
 		add_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_fields_fragment' ), 10 );
@@ -136,23 +134,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
 	}
 
-	/**
-	 * Prepare the hooks related to shipping method "Local Pickup".
-	 */
-	public function prepare_local_pickup_hooks() {
-		// Bail if not checkout pages
-		if ( ! is_checkout() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) { return; }
 
-		// Hide shipping address for local pickup
-		if ( $this->is_local_pickup_available() ) {
-			remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
-			remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
-			add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 10 );
-			add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 20 );
-			add_action( 'fc_checkout_after_step_shipping_fields', array( $this, 'maybe_output_shipping_address_text' ), 10 );
-			add_filter( 'woocommerce_cart_needs_shipping_address', array( $this, 'maybe_change_needs_shipping_address' ), 10 );
-		}
-	}
 
 	/**
 	 * Prepare the hooks related to the additinal order notes substep.
@@ -160,6 +142,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function prepare_order_notes_hooks() {
 		// Bail if not checkout pages
 		if ( ! is_checkout() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) { return; }
+
+		// Bail if no additional order fields are present
+		$all_fields = WC()->checkout()->get_checkout_fields();
+		if ( ! in_array( 'order', array_keys( $all_fields ) ) ) { return; }
 
 		// Get additional order fields
 		$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
@@ -634,8 +620,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Return `true` if next step id is found in the complete steps list
 		foreach ( $complete_steps as $step_index => $step_args ) {
+			
+			// Get next step args
+			$next_step_index = $step_index + 1;
+			$next_step_args = array_key_exists( $next_step_index, $complete_steps ) ? $complete_steps[ $next_step_index ] : false;
+			
+			// Maybe skip `shipping` step
+			if ( is_array( $next_step_args ) && 'shipping' == $next_step_args[ 'step_id' ] && ! WC()->cart->needs_shipping() ) {
+				$next_step_index++;
+			}
+
 			if ( $step_id == $step_args[ 'step_id' ] ) {
-				$next_step_index = $step_index + 1;
 				if ( array_key_exists( $next_step_index, $complete_steps ) ) {
 					return true;
 				}
@@ -722,15 +717,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 		) );
 
 		// SHIPPING
-		$this->register_checkout_step( array(
-			'step_id' => 'shipping',
-			'step_title' => _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ),
-			'priority' => 20,
-			'render_callback' => array( $this, 'output_step_shipping' ),
-			'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
-			'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
-			'next_step_button_label' => __( 'Proceed to Billing', 'fluid-checkout' ),
-		) );
+		if ( WC()->cart->needs_shipping() ) {
+			$this->register_checkout_step( array(
+				'step_id' => 'shipping',
+				'step_title' => _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ),
+				'priority' => 20,
+				'render_callback' => array( $this, 'output_step_shipping' ),
+				'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
+				'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
+				'next_step_button_label' => __( 'Proceed to Billing', 'fluid-checkout' ),
+			) );
+		}
 
 		// BILLING
 		$this->register_checkout_step( array(
@@ -806,6 +803,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$current_step = $this->get_current_step();
 		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the registered checkout steps list
 		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
+		$current_step_number = $current_step_index + 1;
 
 		// Get step count html
 		$steps_count_label_html = apply_filters(
@@ -813,7 +811,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			sprintf(
 				/* translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps". */
 				esc_html( __( 'Step %1$s of %2$s', 'fluid-checkout' ) ),
-				'<span class="fc-progress-bar__current-step" data-step-count-current>' . esc_html( $current_step_index + 1 ) . '</span>',
+				'<span class="fc-progress-bar__current-step" data-step-count-current>' . esc_html( $current_step_number ) . '</span>',
 				'<span class="fc-progress-bar__total-steps" data-step-count-total>' . esc_html( $steps_count ) . '</span>'
 			),
 			$_checkout_steps,
@@ -940,6 +938,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the checkout substep title html.
+	 *
+	 * @param   string  $substep_id     Id of the substep.
+	 * @param   string  $substep_title  Title of the substep.
+	 */
+	public function get_substep_title_html( $substep_id, $substep_title ) {
+		$html = '';
+		$substep_title = apply_filters( "fc_substep_title_{$substep_id}", $substep_title );
+		
+		if ( ! empty( $substep_title ) ) {
+			$html = '<h3 class="fc-step__substep-title fc-step__substep-title--' . esc_attr( $substep_id ) . '">' . wp_kses( $substep_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h3>';
+		}
+
+		return $html;
+	}
+
+
+
+	/**
 	 * Output checkout substep start tag.
 	 *
 	 * @param   string  $step_id        Id of the step in which the substep will be rendered.
@@ -947,20 +964,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $substep_title  Title of the substep.
 	 */
 	public function output_substep_start_tag( $step_id, $substep_id, $substep_title ) {
-		$substep_title = apply_filters( "fc_substep_title_{$substep_id}", $substep_title );
 		$substep_attributes = array(
 			'class' => 'fc-step__substep',
-			'data-substep-id' => ! empty( $substep_id ) && $substep_id != null ? $substep_id : '',
+			'data-substep-id' => $substep_id,
 		);
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
 		<div <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
-			<?php if ( ! empty( $substep_title ) ) : ?>
-				<h3 class="fc-step__substep-title"><?php echo wp_kses( $substep_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ); ?></h3>
-			<?php endif; ?>
-		<?php
-
-		do_action( "fc_before_substep_{$substep_id}" , $step_id, $substep_id );
+			<?php
+			echo $this->get_substep_title_html( $substep_id, $substep_title ); // WPCS: XSS ok.
+			do_action( "fc_before_substep_{$substep_id}" , $step_id, $substep_id );
 	}
 
 	/**
@@ -971,12 +984,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $substep_title  Title of the substep.
 	 */
 	public function output_substep_end_tag( $step_id, $substep_id, $substep_title, $output_edit_buttons = true ) {
-		do_action( "fc_after_substep_{$substep_id}" , $step_id, $substep_id, $output_edit_buttons );
-		?>
+			do_action( "fc_after_substep_{$substep_id}" , $step_id, $substep_id, $output_edit_buttons );
+			?>
+
 			<?php if ( $output_edit_buttons && $this->is_checkout_layout_multistep() ) : ?>
 				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-label="<?php echo sprintf( __( 'Change: %s', 'fluid-checkout' ), $substep_title ); ?>"><?php echo esc_html( apply_filters( 'fc_substep_change_button_label', _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ) ) ); ?></a>
 				<button class="fc-step__substep-save <?php echo esc_attr( apply_filters( 'fc_substep_save_button_classes', 'button' ) ); ?>" data-step-save><?php echo esc_html( apply_filters( 'fc_substep_save_button_label', _x( 'Save changes', 'Checkout substep save link label', 'fluid-checkout' ) ) ); ?></button>
 			<?php endif; ?>
+
 		</div>
 		<?php
 	}
@@ -1558,21 +1573,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping-address">';
-
-		// Use store base address for `local_pickup`
-		if ( $this->is_shipping_method_local_pickup_selected() ) {
-			$address_data = array(
-				'address_1' => WC()->countries->get_base_address(),
-				'address_2' => WC()->countries->get_base_address_2(),
-				'city' => WC()->countries->get_base_city(),
-				'state' => WC()->countries->get_base_state(),
-				'country' => WC()->countries->get_base_country(),
-				'postcode' => WC()->countries->get_base_postcode(),
-			);
-			
-			$html .= '<div class="fc-step__substep-text-line"><strong>' . __( 'Pick up at store:', 'fluid-checkout' ) . '</strong></div>'; // WPCS: XSS ok.
-		}
-
 		$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
 		$html .= '</div>';
 
@@ -1613,7 +1613,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$available_methods = $package['rates'];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
-			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.' );
+			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
 
 			// TODO: Maybe handle multiple packages
 			// $package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
@@ -1720,17 +1720,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return apply_filters( 'fc_is_step_complete_shipping', $is_step_complete );
-	}
-
-
-
-	/**
-	 * Output shipping section for cart totals.
-	 */
-	public function output_cart_totals_shipping_section() {
-		wc_get_template(
-			'fc/cart/cart-totals-shipping.php'
-		);
 	}
 
 
@@ -1863,92 +1852,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return $label;
-	}
-
-
-
-	/**
-	 * Determines if a shipping address is needed.
-	 *
-	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
-	 */
-	public function maybe_change_needs_shipping_address( $needs_shipping_address ) {
-		// Hides shipping addresses for `local_pickup`.
-		if ( $this->is_shipping_method_local_pickup_selected() ) {
-			return false;
-		}
-
-		return $needs_shipping_address;
-	}
-
-
-
-	/**
-	 * Output the shipping address substep as text when "Local pickup" is selected for the shipping method.
-	 */
-	public function maybe_output_shipping_address_text() {
-		// Bail if shipping method is not `local_pickup`
-		if ( ! $this->is_shipping_method_local_pickup_selected() ) { return; }
-		
-		$this->output_substep_text_shipping_address();
-	}
-
-
-
-	/**
-	 * Determines if the currently selected shipping method is `local_pickup`.
-	 *
-	 * @return  boolean  `true` if the selected shipping method is `local_pickup`. Defaults to `false`.
-	 */
-	public function is_shipping_method_local_pickup_selected() {
-		$checkout = WC()->checkout();
-		$is_shipping_method_local_pickup_selected = false;
-		
-		// Make sure chosen shipping method is set
-		WC()->cart->calculate_shipping();
-		
-		// Check chosen shipping method
-		$packages = WC()->shipping()->get_packages();
-		foreach ( $packages as $i => $package ) {
-			$available_methods = $package['rates'];
-			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
-
-			if ( $chosen_method && 0 === strpos( $chosen_method, 'local_pickup' ) ) {
-				$is_shipping_method_local_pickup_selected = true;
-				break;
-			}
-		}
-
-		return apply_filters( 'fc_is_shipping_method_local_pickup_selected', $is_shipping_method_local_pickup_selected );
-	}
-
-
-
-	/**
-	 * Determines if a shipping address is needed.
-	 *
-	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
-	 */
-	public function is_local_pickup_available() {
-		$checkout = WC()->checkout();
-		$is_local_pickup_available = false;
-
-		// Make sure chosen shipping method is set
-		WC()->cart->calculate_shipping();
-
-		// Check available shipping methods
-		$packages = WC()->shipping()->get_packages();
-		foreach ( $packages as $i => $package ) {
-			$available_methods = $package['rates'];
-			foreach ( $available_methods as $method_id => $shipping_method ) {
-				if ( 0 === strpos( $method_id, 'local_pickup' ) ) {
-					$is_local_pickup_available = true;
-					break;
-				}
-			}
-		}
-
-		return apply_filters( 'fc_is_local_pickup_available', $is_local_pickup_available );
 	}
 
 
@@ -2185,9 +2088,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		else :
 		?>
 			<p id="billing_same_as_shipping_field" class="form-row form-row-wide">
-				<label class="checkbox">
-					<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>> <?php echo esc_html( __( 'Same as shipping address', 'fluid-checkout' ) ); ?></span>
-				</label>
+				<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>>
+				<label for="billing_same_as_shipping"><?php echo esc_html( __( 'Same as shipping address', 'fluid-checkout' ) ); ?></label>
 			</p>
 		<?php
 		endif;

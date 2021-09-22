@@ -1,0 +1,30 @@
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+body {
+  background-color: #fff; }
+
+.theme-flatsome.admin-bar .fc-checkout-header {
+  top: 0; }
+
+.theme-flatsome.admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+  transform: translateY(0); }
+
+div.woocommerce form .form-row .fl-wrap label.fl-label,
+div.woocommerce form #billing_address_2_field .fl-wrap > label.fl-label,
+div.woocommerce form #shipping_address_2_field .fl-wrap > label.fl-label {
+  z-index: 2; }
+
+.theme-flatsome.admin-bar .fc-wrapper .fc-checkout-order-review[data-flyout].is-activated.is-open {
+  padding: 60px 0 0; }

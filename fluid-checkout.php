@@ -5,11 +5,11 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message, and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 1.2.10
+Version: 1.3.0-beta-4
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 5.6
+WC tested up to: 5.7
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
@@ -146,10 +146,10 @@ class FluidCheckout {
 		}
 
 		// Load features
-		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 10 );
-		add_action( 'plugins_loaded', array( $this, 'load_features' ), 10 );
-		add_action( 'plugins_loaded', array( $this, 'load_plugin_compat_features' ), 10 );
-		add_action( 'plugins_loaded', array( $this, 'load_theme_compat_features' ), 10 );
+		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
+		add_action( 'after_setup_theme', array( $this, 'load_features' ), 10 );
+		add_action( 'after_setup_theme', array( $this, 'load_plugin_compat_features' ), 10 );
+		add_action( 'after_setup_theme', array( $this, 'load_theme_compat_features' ), 10 );
 
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
@@ -180,6 +180,7 @@ class FluidCheckout {
 			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'fc_apply_checkout_field_args', 'enable_default' => 'yes' ),
 			'checkout-hide-optional-fields'       => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'fc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),
 			'checkout-shipping-phone'             => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'fc_shipping_phone_field_visibility', 'enable_default' => 'no' ),
+			'checkout-local-pickup'               => array( 'file' => self::$directory_path . 'inc/checkout-local-pickup.php', 'enable_option' => 'fc_enable_checkout_local_pickup', 'enable_default' => 'yes' ),
 			'checkout-validation'                 => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'fc_enable_checkout_validation', 'enable_default' => 'yes' ),
 			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'fc_enable_checkout_gift_options', 'enable_default' => 'no' ),
 			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php', 'enable_option' => 'fc_enable_checkout_coupon_codes', 'enable_default' => 'yes' ),

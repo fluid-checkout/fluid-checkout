@@ -1,7 +1,12 @@
-/*------------------------------------*\
-	#COLLAPSIBLE BLOCKS
-\*------------------------------------*/
+// ------------------------------------
+// COLLAPSIBLE BLOCKS
+// ------------------------------------
 
 .fc-wrapper .collapsible-content__inner:after {
 	@include clearfix();
+}
+
+
+.fc-wrapper [data-collapsible].fc-expansible-form-section__content {
+	margin-top: 0;
 }

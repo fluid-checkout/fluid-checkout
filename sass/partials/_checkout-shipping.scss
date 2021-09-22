@@ -1,6 +1,6 @@
-/*------------------------------------*\
-	#CHECKOUT SHIPPING STEP
-\*------------------------------------*/
+// ------------------------------------
+// CHECKOUT SHIPPING STEP
+// ------------------------------------
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields,
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
 	margin: 0;
@@ -42,7 +42,7 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
 
 
 
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep.has-local-pickup-selected .fc-step__substep-edit,
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep.has-local-pickup-selected .fc-step__substep-save {
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep.hide-edit-button .fc-step__substep-edit,
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep.hide-edit-button .fc-step__substep-save {
 	display: none;
 }

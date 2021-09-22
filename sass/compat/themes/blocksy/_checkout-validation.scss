@@ -1,0 +1,13 @@
+// ------------------------------------
+// CHECKOUT FIELD VALIDATION
+// ------------------------------------
+
+// VALID FIELDS
+body.theme-blocksy div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+	
+	// Select2 Fields
+	.select2-selection:after {
+		right: remsize( 3rem );
+	}
+	
+}

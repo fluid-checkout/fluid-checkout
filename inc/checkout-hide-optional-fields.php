@@ -67,7 +67,7 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		if ( array_key_exists( 'required', $args ) && $args['required'] == true ) { return $field; }
 
 		// Bail if optional field by its type
-		if ( in_array( $args['type'], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'checkbox', 'radio' ) ) ) ) { return $field; }
+		if ( in_array( $args['type'], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'checkbox', 'radio', 'hidden' ) ) ) ) { return $field; }
 
 		// Check if should skip current field
 		if ( in_array( $key, $this->get_hide_optional_fields_skip_list() ) ) { return $field; }
@@ -95,8 +95,9 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		ob_start();
 
 		// Add expansible block markup for the field
+		$form_field_label = get_option( 'fc_optional_fields_link_label_lowercase', 'yes' ) === 'yes' ? strtolower( $args['label'] ) : $args['label'];
 		/* translators: %s: Form field label */
-		$toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), strtolower( $args['label'] ) ) );
+		$toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), $form_field_label ) );
 		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, $toggle_label, $expansible_section_args );
 		echo $field; // WPCS: XSS ok.
 		$this->checkout_steps()->output_expansible_form_section_end_tag();

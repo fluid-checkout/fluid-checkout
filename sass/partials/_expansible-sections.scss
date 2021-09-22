@@ -1,6 +1,6 @@
-/*------------------------------------*\
-	#EXPANSIBLE SECTIONS
-\*------------------------------------*/
+// ------------------------------------
+// EXPANSIBLE SECTIONS
+// ------------------------------------
 
 div.woocommerce .fc-expansible-form-section {
 	background-color: transparent;
@@ -17,6 +17,11 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
 	cursor: pointer;
     text-decoration: $checkout-expansible-section-text-decoration;
 	line-height: 1.2;
+	font-size: $font-size-small;
+
+	@media (#{$bp-larger-than_tablet}) {
+		font-size: $font-size-small--large-screen;
+	}
 
 	&:before {
 		@include icon( $checkout-expansible-section-icon );

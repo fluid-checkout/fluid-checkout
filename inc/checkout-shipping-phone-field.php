@@ -32,6 +32,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_set_shipping_phone_required' ), 100 );
 		add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_shipping_company_field_args' ), 100 );
 
+		// TODO: Move to a plugin compatibility class
 		// Support for plugin "Brazilian Market on WooCommerce"
 		add_filter( 'wcbcf_shipping_fields', array( $this, 'add_shipping_phone_field' ), 5 );
 		add_filter( 'wcbcf_shipping_fields' , array( $this, 'change_shipping_company_field_args' ), 10 );

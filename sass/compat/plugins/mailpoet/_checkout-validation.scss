@@ -1,0 +1,14 @@
+// ------------------------------------
+// CHECKOUT FIELD VALIDATION
+// ------------------------------------
+
+// VALID FIELDS
+div.woocommerce form #mailpoet_woocommerce_checkout_optin_field.form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ),
+div.woocommerce form #mailpoet_woocommerce_checkout_optin_present_field.form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+
+	// "valid" field check icon
+	.woocommerce-input-wrapper:after {
+		display: none;
+	}
+
+}

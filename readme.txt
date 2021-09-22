@@ -15,13 +15,15 @@ Provides a distraction free checkout experience for any WooCommerce store. Ask f
 
 Fluid Checkout simplifies and improves the checkout experience on WooCommerce websites for your new and repeating customers with a truly linear, Shopify-like checkout.
 
-Eliminate unnecessary friction at the checkout page and benefit from better conversion rates, customer satisfaction, and earned customer's loyalty.
+Eliminate unnecessary friction at the checkout page and benefit from better conversion rates, customer satisfaction, and earned customer loyalty.
 
 Ask for shipping information before billing in a **multi-step or one-step checkout**, easily add trust symbols, add options for gift message and packaging and display a coupon code field that does not distract your customers.
 
 Similar to the Shopify checkout, and even better!
 
 Better accessibility at the checkout page with support for keyboard-only navigation and screen readers.
+
+[View detailed list of features on our website](https://fluidcheckout.com/features/)
 
 = Demos =
 
@@ -73,17 +75,17 @@ We are working to bring to you the following PRO features:
 * Cart page optimization
 * Edit cart at checkout
 * Thank you / Order confirmation page
-* Google Address Autocomplete for WooCommerce
+* [Google Address Autocomplete for WooCommerce](https://fluidcheckout.com/products/fc-google-address-autocomplete/)
 * Customize checkout steps and fields
 * Account matching, let registered customers complete the purchase without logging in and attach the order to their account
 * Account pages optimization
 
-**Can't wait for the PRO version to get Google Address Autocomplete?** We'll soon launch this feature as a stand-alone plugin. [Visit our website](https://fluidcheckout.com) and sign up to be the first to know when it's released.
+**[Google Address Autocomplete for WooCommerce](https://fluidcheckout.com/products/fc-google-address-autocomplete/) is now available as a stand-alone plugin**.
 
 
-= More features? =
+= Need more features? =
 
-**Request a feature or report a bug on the [support forum](https://wordpress.org/support/plugin/fluid-checkout/).**
+**[Request a feature](https://fluidcheckout.com/support/).**
 
 
 = Tested WooCommerce Themes =
@@ -178,7 +180,7 @@ Did you know that only about 30% of accessibility issues can be detected with au
 
 We have plans to add an "accessible layout" feature that will ensure most accessibility issues will be fixed.
 
-**If you need help with making your webshop accessible to people with disabilities, please contact us at hello [at] fluidweb.co.**
+**[Contact us](https://fluidcheckout.com/support/) if you need help with making your webshop accessible to people with disabilities.**
 
 = How do I add trust symbols to the checkout page? =
 
@@ -186,7 +188,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = How do I get Fluid Checkout for WooCommerce PRO? =
 
-We are working on building the PRO version of Fluid Checkout. You can visit [https://fluidcheckout.com](https://fluidcheckout.com) and sign up to be the first to know when it's ready.
+We are working on building the PRO version of Fluid Checkout. Visit [our website](https://fluidcheckout.com) and sign up to be the first to know when it's ready.
 
 
 == Screenshots ==
@@ -201,6 +203,26 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 
 == Changelog ==
+
+= Unreleased =
+* Bump tested up to WooCommerce 5.7
+* Added: Compatibility for Germanized for WooCommerce.
+* Added: Compatibility styles for plugin MailPoet.
+* Added: New option to hide the additional order notes field. Saves to the WooCommerce option `woocommerce_enable_order_comments`.
+* Improved: Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
+* Improved: Changed the hook used to initialize the plugin features from `plugins_loaded` to `after_setup_theme` to allow themes to customize early plugin settings and features.
+* Improved: Show "Pickup point" as the substep title. Text can be changed by using the filter `fc_shipping_address_local_pickup_point_title`.
+* Improved: Add option "Make 'Add' link buttons lowercase" to prevent plugin from changing the optional fields link buttons to `lowercase` when keeping the letter case is necessary.
+* Improved: Changed the markup for the checkbox "Same as shipping address" for better compatibility with WooCommerce form field styles.
+* Improved: Compatibility styles for checkbox and validation check icon for Blocksy theme.
+* Fixed: Fields of type `hidden` being wrapper in expansible hidden field sections.
+* Fixed: Steps count was including the shipping step when not needed or disabled.
+* Fixed: Order summary title styles breaking the layout on some themes.
+* Fixed: Only make the labels of total line as `uppercase` instead of the whole line.
+* Fixed: Removed extra margin on collapsible form sections on some themes.
+* Fixed: Unintended checkout update triggered for some fields. Fixes issue preventing users to fill payment information for the plugin "Mercado Pago payments for WooCommerce - by Mercado Pago".
+* Removed: Unused `cart-totals.php` template file.
+
 
 = 1.2.10 - 2021-09-10 =
 * Added: New filter hook `fc_coupon_code_field_initially_expanded` to allow displaying the coupon code field always expanded.
@@ -269,3 +291,9 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 
 = 1.2.0 - 2021-06-25 =
 * First public release.
+
+
+== Upgrade Notice ==
+
+= 1.3 =
+Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
