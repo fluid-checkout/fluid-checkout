@@ -156,16 +156,15 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 		}
 		// END - COPIED FROM ORIGINAL PLUGIN FUNCTION
 
-		
 		$html = '<div class="fc-coupon-codes__coupon wc_points_redeem_earn_points">';
-		$html .= '<span class="fc-points-rewards__message">' . $message . '</span>';
+		$html .= '<span class="fc-points-rewards__message">' . wp_kses_post( $message ) . '</span>';
 		$html .= '<span class="fc-points-rewards__apply-discount">';
 		$html .= '<input type="hidden" name="wc_points_rewards_apply_discount_amount" class="wc_points_rewards_apply_discount_amount" />';
-		$html .= '<a href="#apply_discount" role="button" class="wc_points_rewards_apply_discount" name="wc_points_rewards_apply_discount">' . __( 'Apply Discount', 'woocommerce-points-and-rewards' ) . '</a>';
+		$html .= '<a href="#apply_discount" role="button" class="wc_points_rewards_apply_discount" name="wc_points_rewards_apply_discount">' . esc_html( __( 'Apply Discount', 'woocommerce-points-and-rewards' ) ) . '</a>';
 		$html .= '</span>';
 		$html .= '</div>';
 		
-		echo $html;
+		echo apply_filters( 'fc_points_and_rewards_redemption_message', $html, $message );
 	}
 
 }
