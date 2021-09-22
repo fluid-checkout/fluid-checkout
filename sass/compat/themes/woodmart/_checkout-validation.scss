@@ -1,6 +1,7 @@
-/*------------------------------------*\
-	#CHECKOUT FIELD VALIDATION
-\*------------------------------------*/
+// ------------------------------------
+// CHECKOUT FIELD VALIDATION
+// ------------------------------------
+
 // VALID FIELDS
 body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
 
@@ -8,4 +9,5 @@ body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not( [c
 	.select2-selection:after {
 		right: remsize( 2.6rem );
 	}
+
 }

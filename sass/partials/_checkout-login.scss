@@ -1,6 +1,6 @@
-/*------------------------------------*\
-  #CHECKOUT LOGIN
-\*------------------------------------*/
+// ------------------------------------
+// CHECKOUT LOGIN
+// ------------------------------------
 .fc-login-form,
 .fc-login-form * {
 	box-sizing: border-box !important; // Needed to override theme styles breaking the layout
@@ -74,9 +74,9 @@
 
 
 
-/*------------------------------------*\
-  #CHECKOUT LOGIN FORM
-\*------------------------------------*/
+// ------------------------------------
+// CHECKOUT LOGIN FORM
+// ------------------------------------
 .woocommerce-checkout .fc-login-form form.login {
 	margin: 0;
 	padding: 0;
@@ -118,9 +118,9 @@
 
 
 
-/*------------------------------------*\
-  #CHECKOUT LOGIN FORM FIELDS
-\*------------------------------------*/
+// ------------------------------------
+// CHECKOUT LOGIN FORM FIELDS
+// ------------------------------------
 .woocommerce-checkout .fc-login-form form.login .form-row {
 	display: block;
 	margin: 0 0 $global-spacing-small;

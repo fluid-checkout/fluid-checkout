@@ -1,9 +1,3 @@
-/*------------------------------------*\
-	#IMPORT STYLES
-\*------------------------------------*/
-/*------------------------------------*\
-  #ADMIN IMAGE UPLOADER
-\*------------------------------------*/
 .image-upload-preview {
   max-width: 400px; }
   .image-upload-preview .placeholder {
@@ -21,9 +15,6 @@
   .image-upload-preview .actions {
     margin-top: 8px; }
 
-/*------------------------------------*\
-	#CHECKOUT OPTIONS - LAYOUT
-\*------------------------------------*/
 .forminp-fc_layout_selector fieldset {
   padding: 20px;
   background-color: #fff; }

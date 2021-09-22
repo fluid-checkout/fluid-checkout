@@ -1,6 +1,6 @@
-/*------------------------------------*\
-	#CHECKOUT STEPS
-\*------------------------------------*/
+// ------------------------------------
+// CHECKOUT STEPS
+// ------------------------------------
 .fc-wrapper .fc-checkout-steps {
 	margin: $checkout-steps-container-margin;
 
@@ -84,9 +84,9 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 
 
-/*------------------------------------*\
-	#CHECKOUT LAYOUT MULTI-STEP
-\*------------------------------------*/
+// ------------------------------------
+// CHECKOUT LAYOUT MULTI-STEP
+// ------------------------------------
 .has-checkout-layout--multi-step .fc-checkout-step[data-step-complete] {
 	margin: 0 0 remsize( -.1rem ); // Prevent double borders
 }
@@ -221,9 +221,9 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 
 
-/*------------------------------------*\
-	#CHECKOUT STEP ACTIONS
-\*------------------------------------*/
+// ------------------------------------
+// CHECKOUT STEP ACTIONS
+// ------------------------------------
 .has-checkout-layout--multi-step .fc-step__actions {
 	padding: $checkout-substep-padding;
 	padding-top: $global-spacing;
@@ -250,9 +250,9 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 
 
-/*------------------------------------*\
-	#CHECKOUT SUB-STEP EDIT
-\*------------------------------------*/
+// ------------------------------------
+// CHECKOUT SUB-STEP EDIT
+// ------------------------------------
 .has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-edit {
 	display: none;
 
@@ -306,9 +306,9 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 
 
-/*------------------------------------*\
-	#CHECKOUT SUB-STEP FIELD WRAPPERS
-\*------------------------------------*/
+// ------------------------------------
+// CHECKOUT SUB-STEP FIELD WRAPPERS
+// ------------------------------------
 .fc-wrapper .fc-step__substep-fields-inner {
 	padding: $global-spacing-extra-small 0 0;
 	border: 0;

@@ -1,6 +1,6 @@
-/*------------------------------------*\
-	#ORDER SUMMARY
-\*------------------------------------*/
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
 .fc-wrapper .fc-checkout-order-review {
 	margin: $order-summary-container-margin;
 	padding: $order-summary-container-padding;
@@ -247,9 +247,9 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 
 
-/*------------------------------------*\
-	#ORDER REVIEW VISIBILITY
-\*------------------------------------*/
+// ------------------------------------
+// ORDER REVIEW VISIBILITY
+// ------------------------------------
 .fc-checkout-step[data-step-id="payment"] .fc-checkout-order-review {
 	margin-bottom: $global-spacing-small;
 
@@ -262,9 +262,9 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 
 
-/*------------------------------------*\
-	#FLYOUT ORDER SUMMARY
-\*------------------------------------*/
+// ------------------------------------
+// FLYOUT ORDER SUMMARY
+// ------------------------------------
 .fc-wrapper .fc-checkout-order-review[data-flyout] {
 	@media (#{$bp-larger-than-desktop}) {
 		position: static;
@@ -328,9 +328,9 @@ form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review .fc-checkout-ord
 
 
 
-/*------------------------------------*\
-	#ORDER SUMMARY ACTIONS
-\*------------------------------------*/
+// ------------------------------------
+// ORDER SUMMARY ACTIONS
+// ------------------------------------
 .fc-checkout-order-review__actions-mobile {
 	display: none;
 }

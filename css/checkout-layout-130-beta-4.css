@@ -1,7 +1,4 @@
 @charset "UTF-8";
-/*------------------------------------*\
-  #IMPORT ABSTRACT
-\*------------------------------------*/
 /** 
  * FUNCTIONS
  * 
@@ -9,9 +6,6 @@
  * except the `remsize` functions which is already imported
  * before the `variables` as it is needed earlier.
  */
-/*------------------------------------*\
-	#VARIABLES
-\*------------------------------------*/
 /** 
  * FUNCTIONS
  * 
@@ -19,12 +13,6 @@
  * except the `remsize` functions which is already imported
  * before the `variables` as it is needed earlier.
  */
-/*------------------------------------*\
-  #IMPORT STYLES
-\*------------------------------------*/
-/*------------------------------------*\
-	#COLLAPSIBLE BLOCKS
-\*------------------------------------*/
 .fc-wrapper .collapsible-content__inner:after {
   content: '';
   display: table;
@@ -34,9 +22,6 @@
 .fc-wrapper [data-collapsible].fc-expansible-form-section__content {
   margin-top: 0; }
 
-/*------------------------------------*\
-  #CHECKOUT CONTENT AREA
-\*------------------------------------*/
 body.woocommerce-checkout {
   overflow-x: hidden; }
 
@@ -147,9 +132,6 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
     body.woocommerce-checkout .fc-content > div.woocommerce {
       margin: 0 auto; } }
 
-/*------------------------------------*\
-  #CHECKOUT COLUMNS LAYOUT
-\*------------------------------------*/
 @media (min-width: 1000px) {
   body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-message,
   body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-info,
@@ -194,16 +176,10 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   .admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
     padding-top: calc( 5px + 32px); } }
 
-/*------------------------------------*\
-  #CHECKOUT WIDGETS
-\*------------------------------------*/
 .fc-checkout-header .widget,
 .fc-main .widget {
   margin: 0; }
 
-/*------------------------------------*\
-  #CLEAR FIX
-\*------------------------------------*/
 .fc-clearfix:before,
 .fc-clearfix:after {
   content: '';
@@ -211,9 +187,6 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   table-layout: fixed;
   width: 100%; }
 
-/*------------------------------------*\
-  #CHECKOUT HEADER
-\*------------------------------------*/
 .fc-checkout-header {
   z-index: 300;
   box-sizing: border-box;
@@ -445,9 +418,6 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   .fc-main .fc-checkout__below-header-widgets {
     display: none; } }
 
-/*------------------------------------*\
-  #CHECKOUT PROGRESS BAR
-\*------------------------------------*/
 .fc-progress-bar {
   margin: 0 -20px; }
   @media (min-width: 750px) {
@@ -547,9 +517,6 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
 .fc-progress-bar__bars[data-step-count="10"] .fc-progress-bar__bar.is-current {
   width: 10%; }
 
-/*------------------------------------*\
-	#CHECKOUT STEPS
-\*------------------------------------*/
 .fc-wrapper .fc-checkout-steps {
   margin: 0 -20px 30px; }
   @media (min-width: 750px) {
@@ -617,9 +584,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .fc-wrapper .fc-step__substep-text {
   display: none; }
 
-/*------------------------------------*\
-	#CHECKOUT LAYOUT MULTI-STEP
-\*------------------------------------*/
 .has-checkout-layout--multi-step .fc-checkout-step[data-step-complete] {
   margin: 0 0 -1px; }
 
@@ -729,9 +693,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   display: block;
   width: 100%; }
 
-/*------------------------------------*\
-	#CHECKOUT STEP ACTIONS
-\*------------------------------------*/
 .has-checkout-layout--multi-step .fc-step__actions {
   padding: 20px 20px;
   padding-top: 30px;
@@ -750,9 +711,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
     outline: solid 2px #535156;
     outline-offset: 2px; }
 
-/*------------------------------------*\
-	#CHECKOUT SUB-STEP EDIT
-\*------------------------------------*/
 .has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-edit {
   display: none;
   margin: 12px 10px 0 0;
@@ -793,9 +751,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-save {
   display: none; }
 
-/*------------------------------------*\
-	#CHECKOUT SUB-STEP FIELD WRAPPERS
-\*------------------------------------*/
 .fc-wrapper .fc-step__substep-fields-inner {
   padding: 10px 0 0;
   border: 0;
@@ -819,9 +774,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .fc-substep__fields--coupon_codes .fc-step__substep-fields-inner {
   padding: 0; }
 
-/*------------------------------------*\
-	#EXPRESS CHECKOUT
-\*------------------------------------*/
 .fc-wrapper .fc-express-checkout__inner {
   margin: 0 0 -1px;
   padding: 20px 20px;
@@ -879,9 +831,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   background-color: #fff;
   text-transform: uppercase; }
 
-/*------------------------------------*\
-  #CHECKOUT LOGIN
-\*------------------------------------*/
 .fc-login-form,
 .fc-login-form * {
   box-sizing: border-box !important; }
@@ -931,9 +880,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   background-color: #fff;
   text-transform: lowercase; }
 
-/*------------------------------------*\
-  #CHECKOUT LOGIN FORM
-\*------------------------------------*/
 .woocommerce-checkout .fc-login-form form.login {
   margin: 0;
   padding: 0;
@@ -985,9 +931,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .fc-login-form .woocommerce-form-login__submit {
   margin-top: 20px; }
 
-/*------------------------------------*\
-  #CHECKOUT LOGIN FORM FIELDS
-\*------------------------------------*/
 .woocommerce-checkout .fc-login-form form.login .form-row {
   display: block;
   margin: 0 0 20px;
@@ -1008,9 +951,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   float: none;
   text-align: center; }
 
-/*------------------------------------*\
-	#CHECKOUT CONTACT STEP
-\*------------------------------------*/
 .has-checkout-layout--multi-step [data-step-complete] [data-substep-id="contact_login"] {
   display: none; }
 
@@ -1021,9 +961,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .fc-content div.woocommerce form .fc-wrapper .form-row.create-account + div.create-account {
   margin-top: 10px; }
 
-/*------------------------------------*\
-	#CHECKOUT BILLING STEP
-\*------------------------------------*/
 div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
   background-color: #F0F4F4; }
   div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] textarea,
@@ -1059,9 +996,6 @@ div.woocommerce form #billing_same_as_shipping_field.form-row {
 div.woocommerce form #billing_same_as_shipping_field.form-row label {
   display: inline-block; }
 
-/*------------------------------------*\
-	#CHECKOUT SHIPPING STEP
-\*------------------------------------*/
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields,
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
   margin: 0;
@@ -1100,9 +1034,6 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep.hide-edit-button .fc-step__substep-save {
   display: none; }
 
-/*------------------------------------*\
-  #CHECKOUT SHIPPING METHODS
-\*------------------------------------*/
 #shipping_method.shipping-method__options {
   list-style-type: none;
   margin: 0;
@@ -1223,9 +1154,6 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .tax_label {
   display: block; }
 
-/*------------------------------------*\
-  #CHECKOUT PAYMENT METHODS
-\*------------------------------------*/
 .fc-wrapper .fc-payment-methods__wrapper {
   position: relative; }
 
@@ -1404,9 +1332,6 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
 .fc-wrapper #payment .payment_methods > .woocommerce-notice {
   margin-bottom: 0; }
 
-/*------------------------------------*\
-  #CHECKOUT COUPON CODE
-\*------------------------------------*/
 .fc-wrapper .fc-expansible-form-section__content--coupon_code .collapsible-content__inner {
   position: relative; }
 
@@ -1463,9 +1388,6 @@ div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
     outline: dotted 1px #535156;
     outline-offset: 1px; }
 
-/*------------------------------------*\
-  #CHECKOUT PLACE ORDER
-\*------------------------------------*/
 .fc-wrapper .fc-inside div.place-order {
   padding: 0 20px 0; }
   @media (min-width: 1000px) {
@@ -1521,16 +1443,10 @@ div.place-order .woocommerce-privacy-policy-link:focus {
   outline: dotted 1px #535156 !important;
   outline-offset: 1px !important; }
 
-/*------------------------------------*\
-  #CHECKOUT SIDEBAR
-\*------------------------------------*/
 .fc-sidebar .fc-checkout-order-review__widgets-outside {
   padding-left: 20px;
   padding-right: 20px; }
 
-/*------------------------------------*\
-  #WOOCOMMERCE FORM-ROW
-\*------------------------------------*/
 div.woocommerce form .form-row:before,
 div.woocommerce form .form-row:after {
   content: '';
@@ -1595,9 +1511,6 @@ div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description:before {
   display: none; }
 
-/*------------------------------------*\
-  #WOOCOMMERCE FORM FIELD LABELS
-\*------------------------------------*/
 div.woocommerce form .form-row label,
 div.woocommerce form #billing_address_2_field > label,
 div.woocommerce form #shipping_address_2_field > label {
@@ -1609,9 +1522,6 @@ div.woocommerce form #shipping_address_2_field > label {
   white-space: normal;
   line-height: 1.2; }
 
-/*------------------------------------*\
-  #WOOCOMMERCE FORM FIELD GROUP
-\*------------------------------------*/
 .fc-content div.woocommerce form .fc-wrapper .fc-field-group {
   margin: 0 -20px -20px;
   padding: 20px;
@@ -1640,9 +1550,6 @@ div.woocommerce form #shipping_address_2_field > label {
 .fc-content div.woocommerce form .fc-wrapper .fc-field-group input[type="password"] {
   background-color: #fff; }
 
-/*------------------------------------*\
-  #WOOCOMMERCE FORM FIELDS
-\*------------------------------------*/
 div.woocommerce form .form-row textarea,
 div.woocommerce form .form-row select,
 div.woocommerce form .form-row input[type="email"],
@@ -1695,9 +1602,6 @@ div.woocommerce form .form-row .select2-selection {
 div.woocommerce form .form-row textarea {
   min-height: 100px; }
 
-/*------------------------------------*\
-	#ORDER SUMMARY
-\*------------------------------------*/
 .fc-wrapper .fc-checkout-order-review {
   margin: 20px 0 0;
   padding: 0 20px; }
@@ -1893,18 +1797,12 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
   margin-top: 20px;
   margin-bottom: 20px; }
 
-/*------------------------------------*\
-	#ORDER REVIEW VISIBILITY
-\*------------------------------------*/
 .fc-checkout-step[data-step-id="payment"] .fc-checkout-order-review {
   margin-bottom: 20px; }
   @media (min-width: 1000px) {
     .fc-checkout-step[data-step-id="payment"] .fc-checkout-order-review {
       display: none; } }
 
-/*------------------------------------*\
-	#FLYOUT ORDER SUMMARY
-\*------------------------------------*/
 @media (min-width: 1000px) {
   .fc-wrapper .fc-checkout-order-review[data-flyout] {
     position: static;
@@ -1952,9 +1850,6 @@ form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review .fc-checkout-ord
     .fc-wrapper .fc-checkout-order-review[data-flyout].is-open .fc-checkout-order-review__inner {
       padding: 20px 30px 80px; } }
 
-/*------------------------------------*\
-	#ORDER SUMMARY ACTIONS
-\*------------------------------------*/
 .fc-checkout-order-review__actions-mobile {
   display: none; }
 
@@ -2021,9 +1916,6 @@ form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review .fc-checkout-ord
         outline: dotted 1px #535156;
         outline-offset: 1px; } }
 
-/*------------------------------------*\
-	#EXPANSIBLE SECTIONS
-\*------------------------------------*/
 div.woocommerce .fc-expansible-form-section {
   background-color: transparent;
   box-shadow: none; }

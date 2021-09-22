@@ -1,6 +1,3 @@
-/*------------------------------------*\
-  #IMPORT ABSTRACT
-\*------------------------------------*/
 /** 
  * FUNCTIONS
  * 
@@ -8,9 +5,6 @@
  * except the `remsize` functions which is already imported
  * before the `variables` as it is needed earlier.
  */
-/*------------------------------------*\
-	#VARIABLES
-\*------------------------------------*/
 /** 
  * FUNCTIONS
  * 
@@ -18,12 +12,6 @@
  * except the `remsize` functions which is already imported
  * before the `variables` as it is needed earlier.
  */
-/*------------------------------------*\
-  #IMPORT STYLES
-\*------------------------------------*/
-/*------------------------------------*\
-  #WOOCOMMERCE FORM-ROW
-\*------------------------------------*/
 div.woocommerce form .form-row .select2-selection,
 div.woocommerce form .form-row .select2-selection__rendered {
   height: 39.16px;

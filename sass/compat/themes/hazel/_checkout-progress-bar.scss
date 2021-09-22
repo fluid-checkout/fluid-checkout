@@ -1,6 +1,7 @@
-/*------------------------------------*\
-  #CHECKOUT PROGRESS BAR
-\*------------------------------------*/
+// ------------------------------------
+// CHECKOUT PROGRESS BAR
+// ------------------------------------
+
 // Sticky progress bar, page with admin bar
 body:not( .has-checkout-header ).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
 	transform: translateY( 0 );

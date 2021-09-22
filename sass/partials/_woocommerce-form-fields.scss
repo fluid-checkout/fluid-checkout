@@ -1,6 +1,6 @@
-/*------------------------------------*\
-  #WOOCOMMERCE FORM-ROW
-\*------------------------------------*/
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
 div.woocommerce form .form-row:before,
 div.woocommerce form .form-row:after {
 	@include clearfix();
@@ -85,9 +85,9 @@ div.woocommerce form .form-row .woocommerce-input-wrapper span.description:befor
 
 
 
-/*------------------------------------*\
-  #WOOCOMMERCE FORM FIELD LABELS
-\*------------------------------------*/
+// ------------------------------------
+// WOOCOMMERCE FORM FIELD LABELS
+// ------------------------------------
 div.woocommerce form .form-row label,
 div.woocommerce form #billing_address_2_field > label,
 div.woocommerce form #shipping_address_2_field > label {
@@ -104,9 +104,9 @@ div.woocommerce form #shipping_address_2_field > label {
 
 
 
-/*------------------------------------*\
-  #WOOCOMMERCE FORM FIELD GROUP
-\*------------------------------------*/
+// ------------------------------------
+// WOOCOMMERCE FORM FIELD GROUP
+// ------------------------------------
 .fc-content div.woocommerce form .fc-wrapper .fc-field-group {
 	margin: $checkout-field-group-margin;
 	padding: $checkout-field-group-padding;
@@ -143,9 +143,9 @@ div.woocommerce form #shipping_address_2_field > label {
 
 
 
-/*------------------------------------*\
-  #WOOCOMMERCE FORM FIELDS
-\*------------------------------------*/
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
 
 // Position and outline styles
 div.woocommerce form .form-row {
