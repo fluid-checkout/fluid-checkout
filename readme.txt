@@ -205,6 +205,7 @@ We are working on building the PRO version of Fluid Checkout. You can visit [htt
 == Changelog ==
 
 = Unreleased =
+* Bump tested up to WooCommerce 5.7
 * Added: New option to hide the additional order notes field. Saves to the WooCommerce option `woocommerce_enable_order_comments`.
 * Added: Compatibility styles for plugin MailPoet.
 * Improved: Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
