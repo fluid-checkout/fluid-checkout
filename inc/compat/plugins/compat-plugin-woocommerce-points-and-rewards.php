@@ -46,6 +46,9 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 			remove_action( 'woocommerce_applied_coupon', array( WC_Points_Rewards::instance()->cart, 'discount_updated' ), 40 );
 			remove_action( 'woocommerce_removed_coupon', array( WC_Points_Rewards::instance()->cart, 'discount_updated' ), 40 );
 
+			// Earn points
+			add_action( 'fc_checkout_before_steps', array( $this, 'output_earn_points_section' ), 5 );
+
 			// Redeem points
 			add_action( 'fc_substep_coupon_codes_text_after', array( $this, 'output_redeem_points_section' ), 10 );
 		}
@@ -176,7 +179,7 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 		}
 		// END - COPIED FROM ORIGINAL PLUGIN FUNCTION
 
-		$html = '<div class="fc-coupon-codes__coupon fc-coupon-codes__coupon--points-rewards wc_points_redeem_earn_points">';
+		$html = '<div class="fc-coupon-codes__points-rewards wc_points_redeem_earn_points">';
 		$html .= '<span class="fc-points-rewards__message">' . wp_kses_post( $message ) . '</span>';
 		$html .= '<span class="fc-points-rewards__apply-discount">';
 		$html .= '<input type="hidden" name="wc_points_rewards_apply_discount_amount" class="wc_points_rewards_apply_discount_amount" />';
@@ -185,6 +188,35 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 		$html .= '</div>';
 		
 		echo apply_filters( 'fc_points_and_rewards_redemption_message', $html, $message );
+	}
+
+
+
+	/**
+	 * Output the earn points section.
+	 */
+	public function output_earn_points_section() {
+		$points_earned = $this->get_points_earned_for_purchase();
+		$message = WC_Points_Rewards::instance()->cart->generate_earn_points_message();
+
+		// Bail if message was null
+		if( null === $message ) { return; }
+
+		$labels = get_option( 'wc_points_rewards_points_label' );
+		$labels = is_string( $labels ) ? explode( ':', $labels ) : array();
+		$section_label = array_key_exists( 1, $labels ) ? $labels[1] : _x( 'Points', 'Points and rewards section title', 'fluid-checkout' );
+		$section_label = apply_filters( 'fc_points_rewards_section_title', $section_label );
+		?>
+		<section class="fc-points-rewards-earn_points" aria-label="<?php echo esc_attr( $section_label ); ?>">
+			<div class="fc-points-rewards-earn_points__inner">
+				<?php if ( get_option( 'fc_display_points_rewards_section_title', 'no' ) === 'yes' ) : ?>
+					<h2 class="fc-points-rewards-earn_points__title"><?php echo esc_html( $section_label ); ?></h2>
+				<?php endif; ?>
+
+				<?php echo wp_kses_post( $message ); ?>
+			</div>
+		</section>
+		<?php
 	}
 
 }

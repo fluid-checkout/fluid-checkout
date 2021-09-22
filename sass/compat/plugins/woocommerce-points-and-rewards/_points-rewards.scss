@@ -1,0 +1,57 @@
+// ------------------------------------
+// CHECKOUT COUPON CODE
+// ------------------------------------
+.fc-wrapper .fc-points-rewards-earn_points {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 0 0 $global-spacing-small;
+	padding: $checkout-substep-padding;
+	border: $coupon-code-coupon-border;
+	border-radius: $checkout-substep-border-radius;
+	border-color: $success-color;
+	line-height: 1.2;
+}
+
+
+
+.fc-wrapper .fc-coupon-codes__points-rewards {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: $coupon-code-coupon-margin;
+	margin-bottom: $global-spacing-small;
+	padding: $coupon-code-coupon-padding;
+	border: $coupon-code-coupon-border;
+	border-radius: $checkout-substep-border-radius;
+	border-color: $success-color;
+	line-height: 1.2;
+	
+	@media (#{$bp-smaller-than-tablet}) {
+		flex-direction: column;
+	}
+}
+
+.fc-wrapper .fc-coupon-codes__coupon + .fc-coupon-codes__points-rewards {
+	margin-top: $global-spacing-small;
+}
+
+
+
+.fc-wrapper .fc-coupon-codes__points-rewards .fc-points-rewards__apply-discount {
+	flex-shrink: 0;
+
+	@media (#{$bp-smaller-than-tablet}) {
+		width: 100%;
+	}
+}
+
+
+
+.fc-wrapper .fc-coupon-codes__points-rewards .wc_points_rewards_apply_discount {
+	@media (#{$bp-smaller-than-tablet}) {
+		margin-top: $global-spacing-extra-small;
+		width: 100%;
+		text-align: center;
+	}
+}
