@@ -12,7 +12,7 @@
  * except the `remsize` functions which is already imported
  * before the `variables` as it is needed earlier.
  */
-.fc-wrapper .fc-express-checkout #wc-stripe-payment-request-wrapper {
-  padding-top: 0 !important;
+.fc-wrapper .fc-coupon-codes__coupon.fc-coupon-codes__coupon--points-rewards {
+  margin-bottom: 20px;
+  border-color: #00A854;
 }
-/*# sourceMappingURL=maps/compat-woocommerce-gateway-stripe-130.min.css.map */

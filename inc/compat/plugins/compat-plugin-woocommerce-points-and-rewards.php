@@ -43,9 +43,11 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 			remove_action( 'woocommerce_before_checkout_form', array( WC_Points_Rewards::instance()->cart, 'render_earn_points_message' ), 5 );
 			remove_action( 'woocommerce_before_checkout_form', array( WC_Points_Rewards::instance()->cart, 'render_redeem_points_message' ), 6 );
 			remove_action( 'woocommerce_before_checkout_form', array( WC_Points_Rewards::instance()->cart, 'render_discount_javascript' ), 10 );
+			remove_action( 'woocommerce_applied_coupon', array( WC_Points_Rewards::instance()->cart, 'discount_updated' ), 40 );
+			remove_action( 'woocommerce_removed_coupon', array( WC_Points_Rewards::instance()->cart, 'discount_updated' ), 40 );
 
-			// Checkout substep
-			add_action( 'fc_before_substep_coupon_codes', array( $this, 'output_redeem_points_section' ), 10 );
+			// Redeem points
+			add_action( 'fc_substep_coupon_codes_text_after', array( $this, 'output_redeem_points_section' ), 10 );
 		}
 	}
 
@@ -59,6 +61,24 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 		if ( is_checkout() && ! ( is_order_received_page() || is_checkout_pay_page() ) ) {
 			wp_enqueue_script( 'fc-plugin-compat-woocommerce-points-and-rewards--apply-discount', self::$directory_url . 'js/compat/plugins/woocommerce-points-and-rewards/apply-discount'. self::$asset_version . '.js', array(), null );
 		}
+	}
+
+
+
+	/**
+	 * Recalculate cart totals when a discount is applied or removed.
+	 *
+	 * @param string $coupon_code Coupon code which is removed.
+	 * 
+	 * @see WC_Points_Rewards_Cart_Checkout::discount_updated();
+	 */
+	public function recalculate_totals_discount_updated( $coupon_code ) {
+		// Do not display messages on ajax requests from the checkout or cart page.
+		if ( wp_is_json_request() || is_checkout() || is_cart() || wp_get_referer() === wc_get_cart_url() ) {
+			return;
+		}
+
+		WC()->cart->calculate_totals();
 	}
 
 
@@ -156,11 +176,11 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 		}
 		// END - COPIED FROM ORIGINAL PLUGIN FUNCTION
 
-		$html = '<div class="fc-coupon-codes__coupon wc_points_redeem_earn_points">';
+		$html = '<div class="fc-coupon-codes__coupon fc-coupon-codes__coupon--points-rewards wc_points_redeem_earn_points">';
 		$html .= '<span class="fc-points-rewards__message">' . wp_kses_post( $message ) . '</span>';
 		$html .= '<span class="fc-points-rewards__apply-discount">';
 		$html .= '<input type="hidden" name="wc_points_rewards_apply_discount_amount" class="wc_points_rewards_apply_discount_amount" />';
-		$html .= '<a href="#apply_discount" role="button" class="wc_points_rewards_apply_discount" name="wc_points_rewards_apply_discount">' . esc_html( __( 'Apply Discount', 'woocommerce-points-and-rewards' ) ) . '</a>';
+		$html .= '<a href="#apply_discount" role="button" class="wc_points_rewards_apply_discount button alt" name="wc_points_rewards_apply_discount">' . esc_html( __( 'Apply Discount', 'woocommerce-points-and-rewards' ) ) . '</a>';
 		$html .= '</span>';
 		$html .= '</div>';
 		
