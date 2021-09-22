@@ -717,15 +717,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 		) );
 
 		// SHIPPING
-		$this->register_checkout_step( array(
-			'step_id' => 'shipping',
-			'step_title' => _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ),
-			'priority' => 20,
-			'render_callback' => array( $this, 'output_step_shipping' ),
-			'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
-			'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
-			'next_step_button_label' => __( 'Proceed to Billing', 'fluid-checkout' ),
-		) );
+		if ( WC()->cart->needs_shipping() ) {
+			$this->register_checkout_step( array(
+				'step_id' => 'shipping',
+				'step_title' => _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ),
+				'priority' => 20,
+				'render_callback' => array( $this, 'output_step_shipping' ),
+				'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
+				'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
+				'next_step_button_label' => __( 'Proceed to Billing', 'fluid-checkout' ),
+			) );
+		}
 
 		// BILLING
 		$this->register_checkout_step( array(
@@ -802,12 +804,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the registered checkout steps list
 		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
 		$current_step_number = $current_step_index + 1;
-		
-		// Maybe decrease number of steps when `shipping` is not needed
-		if ( ! WC()->cart->needs_shipping() ) {
-			$steps_count--;
-			$current_step_number--;
-		}
 
 		// Get step count html
 		$steps_count_label_html = apply_filters(
