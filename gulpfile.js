@@ -16,18 +16,20 @@ var sourcemaps = require('gulp-sourcemaps');
 var del = require('del');
 
 
+
 // Defining settings
 var _gulpSettings = loadJsonFile.sync( 'gulp-settings.json' );
 var _gulpSettingsLocal = {};
 var _package = {},
-	_assetsVersion = '',
-	_nodePath = './node_modules/',
-	_jsPath = './js-src/';
+	_assetsVersion = '';
+
+
 
 // Try loading local gulpfile settings
 if ( fs.access( 'gulp-settings.local.json', function(){} ) ) {
 	_gulpSettingsLocal = loadJsonFile.sync( 'gulp-settings.local.json' );
 }
+
 
 
 // Run:
