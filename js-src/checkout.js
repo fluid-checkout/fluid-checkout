@@ -835,7 +835,7 @@ jQuery( function( $ ) {
 				data:    data,
 				success: function( code ) {
 					// CHANGE: Unblock container and remove messages if using native WooCommerce coupons feature
-					if ( isFluidCheckoutCouponsEnabled ) {
+					if ( ! isFluidCheckoutCouponsEnabled ) {
 						$( '.woocommerce-error, .woocommerce-message' ).remove();
 						container.removeClass( 'processing' ).unblock();
 					}
@@ -883,7 +883,6 @@ jQuery( function( $ ) {
 				security: wc_checkout_params.apply_coupon_nonce,
 				coupon_code:   coupon_code
 			};
-
 			
 			// Display loading/processing indication
 			var container = $( this ).parents( '.fc-expansible-form-section__content--coupon_code' );
