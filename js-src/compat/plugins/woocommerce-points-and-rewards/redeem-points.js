@@ -29,6 +29,9 @@
 		redeemSectionSelector: '.wc_points_redeem_earn_points',
 		redeemButtonSelector: '.wc_points_rewards_apply_discount',
 		messagesSelector: '.woocommerce-error, .woocommerce-message',
+
+		maxPointsFieldSelector: '[name="wc-points-rewards-max-points"]',
+		pointsToApplyFieldSelector: 'input.wc_points_rewards_apply_discount_amount',
 	}
 
 
@@ -83,6 +86,37 @@
 
 
 
+	var maybePromptPointsToRedeem = function() {
+		// Bail if settings not available or partial redemption not enabled
+		if ( ! window.fcSettings || ! fcSettings.woocommercePointsRewards || ! fcSettings.woocommercePointsRewards.partialRedemptionEnabled ) { return true; }
+		
+		// Get max points
+		var max_points = document.querySelector( _settings.maxPointsFieldSelector );
+		var pointsToApplyField = document.querySelector( _settings.pointsToApplyFieldSelector );
+		
+		// Bail if hidden fields for max amount of points or amount of points to redeem are not available
+		if ( ! max_points || ! pointsToApplyField ) { return true; }
+
+		var points = prompt( fcSettings.woocommercePointsRewards.pointsToRedeemMessage, max_points.value );
+		if ( null != points && 0 != points ) {
+			
+			if ( points >= fcSettings.woocommercePointsRewards.minPointsToRedeem ) {
+				// Should continue with redemption
+				pointsToApplyField.value = points;
+				return true;
+			}
+			else {
+				alert( fcSettings.woocommercePointsRewards.lessThanMinPointsMessage );
+			}
+		}
+		else {
+			// User cancelled or value invalid
+			return false;
+		}
+	}
+
+
+
 	/**
 	 * Sends the apply discount ajax request.
 	 * 
@@ -92,7 +126,10 @@
 	 */
 	var submitPointsRedemption = function( e ) {
 		// Bail if still processing a request for points redemption
-		if ( _isProcessing ) { console.log('cancelled'); return; }
+		if ( _isProcessing ) { return; }
+
+		// Maybe prompt how many points to redeem or cancel submit if dialog is cancelled by the user
+		if ( ! maybePromptPointsToRedeem() ) { return; }
 
 		// Get sections
 		var $substep = $( _settings.substepSelector );

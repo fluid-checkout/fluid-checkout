@@ -30,6 +30,9 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
+
+		// JS settings
+		add_filter( 'fc_js_settings', array( $this, 'add_points_rewards_js_settings' ), 10 );
 	}
 
 
@@ -65,6 +68,34 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 			wp_enqueue_script( 'fc-plugin-compat-woocommerce-points-and-rewards--redeem-points', self::$directory_url . 'js/compat/plugins/woocommerce-points-and-rewards/redeem-points'. self::$asset_version . '.js', array(), null );
 			wp_add_inline_script( 'fc-plugin-compat-woocommerce-points-and-rewards--redeem-points', 'window.addEventListener("load",function(){ if(window.PointsRewardsRedeemPoints){PointsRewardsRedeemPoints.init()}})' );
 		}
+	}
+
+
+
+	/**
+	 * Add points and rewards settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_points_rewards_js_settings( $settings ) {
+		$labels = get_option( 'wc_points_rewards_points_label' );
+		$labels = is_string( $labels ) ? explode( ':', $labels ) : array();
+		$label_plural = array_key_exists( 1, $labels ) ? $labels[1] : _x( 'Points', 'Points label', 'fluid-checkout' );
+
+		$min_points = max( (float) get_option( 'wc_points_rewards_cart_min_discount', '' ), 1 );
+		$max_points = WC_Points_Rewards::instance()->cart->calculate_cart_max_points();
+
+		$settings[ 'woocommercePointsRewards' ] = apply_filters( 'fc_points_rewards_script_settings', array(
+			/* translators: %1$s is points label, %2$s is min points to redeem, %3$s is max points to redeem. */
+			'pointsToRedeemMessage' => sprintf( __( 'How many %1$s would you like to apply? Choose from %2$s up to %3$s %1$s to apply for a discount.', 'fluid-checkout' ), $label_plural, $min_points, $max_points ),
+			/* translators: %1$s is points label, %2$s is min points to redeem, %3$s is max points to redeem. */
+			'lessThanMinPointsMessage' => sprintf( __( 'Minimum of %2$s %1$s to apply for a discount not reached.', 'fluid-checkout' ), $label_plural, $min_points, $max_points ),
+			'partialRedemptionEnabled' => 'yes' === get_option( 'wc_points_rewards_partial_redemption_enabled' ),
+			'minPointsToRedeem' => $min_points,
+			'maxPointsToRedeem' => $max_points,
+		) );
+
+		return $settings;
 	}
 
 
