@@ -10,6 +10,10 @@
 		"main": [
 			"./sass/*.scss"
 		],
+
+		"themeCompat": [
+			"./sass/compat/themes/*.scss"
+		],
 		
 		"pluginCompat": [
 			"./sass/compat/plugins/*.scss"
