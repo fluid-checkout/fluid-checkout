@@ -12,14 +12,13 @@
  * except the `remsize` functions which is already imported
  * before the `variables` as it is needed earlier.
  */
-.fc-wrapper .wc-gzd-checkbox-placeholder {
-  margin-bottom: 10px;
+body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after {
+  right: 26px;
 }
 
-.fc-checkout-order-review .fc-place-order {
-  padding: 20px 0;
-}
-
-.fc-sidebar .fc-checkout-order-review .fc-place-order .fc-place-order-button {
+.fc-checkout-order-review .woodmart-table-wrapper {
   margin: 0;
+  padding: 0;
+  overflow: visible;
+  box-shadow: none;
 }
