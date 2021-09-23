@@ -205,7 +205,6 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 == Changelog ==
 
 = Unreleased =
-* Added: Compatibility with plugin "WooCommerce Points and Rewards - by WooCommerce".
 * Improved: Coupon code field and items shows loading status while processing adding or removing a coupon code.
 
 = 1.3.0 - 2021-09-22 =
