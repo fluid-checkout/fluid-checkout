@@ -75,12 +75,12 @@ We are working to bring to you the following PRO features:
 * Cart page optimization
 * Edit cart at checkout
 * Thank you / Order confirmation page
-* [Google Address Autocomplete for WooCommerce](https://fluidcheckout.com/products/fc-google-address-autocomplete/)
+* [Google Address Autocomplete for WooCommerce](https://fluidcheckout.com/product/fc-google-address-autocomplete/)
 * Customize checkout steps and fields
 * Account matching, let registered customers complete the purchase without logging in and attach the order to their account
 * Account pages optimization
 
-**[Google Address Autocomplete for WooCommerce](https://fluidcheckout.com/products/fc-google-address-autocomplete/) is now available as a stand-alone plugin**.
+**[Google Address Autocomplete for WooCommerce](https://fluidcheckout.com/product/fc-google-address-autocomplete/) is now available as a stand-alone plugin**.
 
 
 = Need more features? =
