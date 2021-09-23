@@ -12,7 +12,7 @@
  * except the `remsize` functions which is already imported
  * before the `variables` as it is needed earlier.
  */
-.fc-wrapper .fc-points-rewards-earn_points {
+.fc-wrapper .fc-points-rewards-earn-points__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
