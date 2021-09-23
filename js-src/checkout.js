@@ -883,7 +883,7 @@ jQuery( function( $ ) {
 				security: wc_checkout_params.apply_coupon_nonce,
 				coupon_code:   coupon_code
 			};
-			
+
 			// Display loading/processing indication
 			var container = $( this ).parents( '.fc-expansible-form-section__content--coupon_code' );
 			container.addClass( 'processing' ).block({
