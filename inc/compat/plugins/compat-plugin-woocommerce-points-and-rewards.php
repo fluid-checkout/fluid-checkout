@@ -62,7 +62,8 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 	public function enqueue_scripts() {
 		// CHECKOUT
 		if ( is_checkout() && ! ( is_order_received_page() || is_checkout_pay_page() ) ) {
-			wp_enqueue_script( 'fc-plugin-compat-woocommerce-points-and-rewards--apply-discount', self::$directory_url . 'js/compat/plugins/woocommerce-points-and-rewards/apply-discount'. self::$asset_version . '.js', array(), null );
+			wp_enqueue_script( 'fc-plugin-compat-woocommerce-points-and-rewards--redeem-points', self::$directory_url . 'js/compat/plugins/woocommerce-points-and-rewards/redeem-points'. self::$asset_version . '.js', array(), null );
+			wp_add_inline_script( 'fc-plugin-compat-woocommerce-points-and-rewards--redeem-points', 'window.addEventListener("load",function(){ if(window.PointsRewardsRedeemPoints){PointsRewardsRedeemPoints.init()}})' );
 		}
 	}
 
@@ -183,7 +184,7 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 		$html .= '<span class="fc-points-rewards__message">' . wp_kses_post( $message ) . '</span>';
 		$html .= '<span class="fc-points-rewards__apply-discount">';
 		$html .= '<input type="hidden" name="wc_points_rewards_apply_discount_amount" class="wc_points_rewards_apply_discount_amount" />';
-		$html .= '<a href="#apply_discount" role="button" class="wc_points_rewards_apply_discount button alt" name="wc_points_rewards_apply_discount">' . esc_html( __( 'Apply Discount', 'woocommerce-points-and-rewards' ) ) . '</a>';
+		$html .= '<button type="button" class="wc_points_rewards_apply_discount button alt">' . esc_html( __( 'Apply Discount', 'woocommerce-points-and-rewards' ) ) . '</button>';
 		$html .= '</span>';
 		$html .= '</div>';
 		

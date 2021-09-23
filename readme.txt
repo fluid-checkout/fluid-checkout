@@ -204,10 +204,14 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+* Added: Compatibility with plugin "WooCommerce Points and Rewards - by WooCommerce".
+* Improved: Coupon code field and items shows loading status while processing adding or removing a coupon code.
+
 = 1.3.0 - 2021-09-22 =
 * Bump tested up to WooCommerce 5.7
-* Added: Compatibility for Germanized for WooCommerce.
-* Added: Compatibility styles for plugin MailPoet.
+* Added: Compatibility for plugin "Germanized for WooCommerce - by vendidero".
+* Added: Compatibility styles for plugin "MailPoet - by MailPoet".
 * Added: New option to hide the additional order notes field. Saves to the WooCommerce option `woocommerce_enable_order_comments`.
 * Improved: Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
 * Improved: Changed the hook used to initialize the plugin features from `plugins_loaded` to `after_setup_theme` to allow themes to customize early plugin settings and features.

@@ -803,7 +803,9 @@ jQuery( function( $ ) {
 		remove_coupon: function( e ) {
 			e.preventDefault();
 
-			var container = $( this ).parents( '.woocommerce-checkout-review-order' ),
+			// CHANGE: Change container element to be the coupon code item if Fluid Checkout coupons feature is enabled
+			var isFluidCheckoutCouponsEnabled = $( this ).parents( '.fc-coupon-codes__coupon' ).length > 0;
+			var container = isFluidCheckoutCouponsEnabled ? $( this ).parents( '.fc-coupon-codes__coupon' ) : $( this ).parents( '.woocommerce-checkout-review-order' ),
 				coupon    = $( this ).data( 'coupon' );
 
 			container.addClass( 'processing' ).block({
@@ -818,28 +820,30 @@ jQuery( function( $ ) {
 				security: wc_checkout_params.remove_coupon_nonce,
 				coupon:   coupon
 			};
+			
+			// CHANGE: Get the checkout substep
+			var $substep = $( '.fc-step__substep[data-substep-id="coupon_codes"]' );
 
-			// CHANGE: Display loading/processing indication on the remove coupon button
-			var remove_button   = $( this );
-			remove_button.prop( 'disabled', true );
-			remove_button.addClass( 'is-loading' );
+			// CHANGE: Remove existing messages previously to sending request
+			if ( isFluidCheckoutCouponsEnabled ) {
+				$( '.woocommerce-error, .woocommerce-message' ).remove();
+			}
 
 			$.ajax({
 				type:    'POST',
 				url:     wc_checkout_params.wc_ajax_url.toString().replace( '%%endpoint%%', 'remove_coupon' ),
 				data:    data,
 				success: function( code ) {
-					$( '.woocommerce-error, .woocommerce-message' ).remove();
-					container.removeClass( 'processing' ).unblock();
-
-					// CHANGE: Remove loading/processing indication from the remove coupon button
-					remove_button.prop( 'disabled', false );
-					remove_button.removeClass( 'is-loading' );
+					// CHANGE: Unblock container and remove messages if using native WooCommerce coupons feature
+					if ( isFluidCheckoutCouponsEnabled ) {
+						$( '.woocommerce-error, .woocommerce-message' ).remove();
+						container.removeClass( 'processing' ).unblock();
+					}
 
 					if ( code ) {
 						// CHANGE: Maybe display coupon code messages in the coupon code step instead of the top of the page
-						if ( remove_button.parents( '[data-substep-id="coupon_codes"]' ).length > 0 ) {
-							remove_button.parents( '[data-substep-id="coupon_codes"]' ).prepend( code );
+						if ( isFluidCheckoutCouponsEnabled && $substep.length > 0 ) {
+							$substep.prepend( code );
 						}
 						else {
 							$( 'form.woocommerce-checkout' ).before( code );
@@ -868,6 +872,9 @@ jQuery( function( $ ) {
 		apply_coupon: function( e ) {
 			e.preventDefault();
 
+			// Get the checkout substep
+			var $substep = $( '.fc-step__substep[data-substep-id="coupon_codes"]' );
+
 			var coupon_code    = $( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' ).val();
 			var coupon_field   = $( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' );
 			var apply_button   = $( 'form.woocommerce-checkout' ).find( '[data-apply-coupon-button]' );
@@ -877,10 +884,20 @@ jQuery( function( $ ) {
 				coupon_code:   coupon_code
 			};
 
+			
 			// Display loading/processing indication
+			var container = $( this ).parents( '.fc-expansible-form-section__content--coupon_code' );
+			container.addClass( 'processing' ).block({
+				message: null,
+				overlayCSS: {
+					background: '#fff',
+					opacity: 0.6
+				}
+			});
+
+			// Disable coupon and button
 			coupon_field.prop( 'disabled', true );
 			apply_button.prop( 'disabled', true );
-			apply_button.addClass( 'is-loading' );
 
 			$.ajax({
 				type:    'POST',
@@ -889,13 +906,14 @@ jQuery( function( $ ) {
 				success: function( code ) {
 					$( '.woocommerce-error, .woocommerce-message' ).remove();
 					
-					// Remove loading/processing indication
+					// Remove loading/processing indication and unblock coupon field and button
+					container.removeClass( 'processing' ).unblock();
 					coupon_field.prop( 'disabled', false );
 					apply_button.prop( 'disabled', false );
-					apply_button.removeClass( 'is-loading' );
 
 					if ( code ) {
-						$( '.fc-step__substep-text-content--coupon-codes' ).before( code );
+						// Display response (`code`) as a message
+						$substep.prepend( code );
 
 						$( document.body ).trigger( 'applied_coupon_in_checkout', [ data.coupon_code ] );
 						$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
