@@ -206,6 +206,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 * Improved: Coupon code field and items shows loading status while processing adding or removing a coupon code.
+* Improved: Developement build scripts to use shared gulpfile.js, updated `gulp-sass` to 5.0.0.
 
 = 1.3.0 - 2021-09-22 =
 * Bump tested up to WooCommerce 5.7
@@ -218,7 +219,6 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Add option "Make 'Add' link buttons lowercase" to prevent plugin from changing the optional fields link buttons to `lowercase` when keeping the letter case is necessary.
 * Improved: Changed the markup for the checkbox "Same as shipping address" for better compatibility with WooCommerce form field styles.
 * Improved: Compatibility styles for checkbox and validation check icon for Blocksy theme.
-* Improved: Developement build scripts to use shared gulpfile.js, updated `gulp-sass` to 5.0.0.
 * Fixed: Fields of type `hidden` being wrapper in expansible hidden field sections.
 * Fixed: Steps count was including the shipping step when not needed or disabled.
 * Fixed: Order summary title styles breaking the layout on some themes.
