@@ -49,6 +49,10 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 			remove_action( 'woocommerce_applied_coupon', array( WC_Points_Rewards::instance()->cart, 'discount_updated' ), 40 );
 			remove_action( 'woocommerce_removed_coupon', array( WC_Points_Rewards::instance()->cart, 'discount_updated' ), 40 );
 
+			// Change coupon label
+			remove_filter( 'woocommerce_cart_totals_coupon_label', array( WC_Points_Rewards::instance()->cart, 'coupon_label' ), 10 );
+			add_filter( 'woocommerce_cart_totals_coupon_label', array( $this, 'change_points_redemption_coupon_label' ), 10 );
+
 			// Earn points
 			add_action( 'fc_checkout_before_steps', array( $this, 'output_earn_points_section' ), 5 );
 
@@ -249,6 +253,28 @@ class FluidCheckout_WooCommercePointsAndRewards extends FluidCheckout {
 			</div>
 		</section>
 		<?php
+	}
+
+
+
+	/**
+	 * Change the coupon code label for points redemption to include the points label from the settings.
+	 *
+	 * @param   string  $label  Coupon code label.
+	 */
+	public function change_points_redemption_coupon_label( $label ) {
+		if ( strstr( strtoupper( $label ), 'WC_POINTS_REDEMPTION' ) ) {
+			// Get label from settings
+			$labels = get_option( 'wc_points_rewards_points_label' );
+			$labels = is_string( $labels ) ? explode( ':', $labels ) : array();
+			$label_singular = array_key_exists( 0, $labels ) ? $labels[0] : _x( 'Point', 'Points label', 'fluid-checkout' );
+			$label_plural = array_key_exists( 1, $labels ) ? $labels[1] : _x( 'Points', 'Points label', 'fluid-checkout' );
+
+			/* translators: %1$s points label in singular form, %2$s points label in plural form */
+			$label = esc_html( sprintf( __( '%2$s redemption', 'woocommerce-points-and-rewards' ), $label_singular, $label_plural ) );
+		}
+
+		return $label;
 	}
 
 }
