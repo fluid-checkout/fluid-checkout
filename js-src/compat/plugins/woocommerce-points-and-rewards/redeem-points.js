@@ -86,6 +86,11 @@
 
 
 
+	/**
+	 * Maybe prompt user for the amount of points to redeem.
+	 *
+	 * @return  bool  `true` if amount of points provided by the user was valid or if partial redemption is disabled or not possible at the moment, `false` if user cancelled the dialog or provided an invalid amount.
+	 */
 	var maybePromptPointsToRedeem = function() {
 		// Bail if settings not available or partial redemption not enabled
 		if ( ! window.fcSettings || ! fcSettings.woocommercePointsRewards || ! fcSettings.woocommercePointsRewards.partialRedemptionEnabled ) { return true; }
@@ -106,7 +111,9 @@
 				return true;
 			}
 			else {
+				// Invalid amount of points
 				alert( fcSettings.woocommercePointsRewards.lessThanMinPointsMessage );
+				return false;
 			}
 		}
 		else {
