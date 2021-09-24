@@ -155,6 +155,18 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'desc'          => __( 'Choose in which step to display the shipping phone', 'fluid-checkout' ),
+						'id'            => 'fc_shipping_phone_field_position',
+						'options'       => array(
+							'shipping_address' => _x( 'Shipping address', 'Shipping phone field position', 'fluid-checkout' ),
+							'contact'          => _x( 'Contact', 'Shipping phone field position', 'fluid-checkout' ),
+						),
+						'default'       => 'shipping_address',
+						'type'          => 'select',
+						'autoload'      => false,
+					),
+
+					array(
 						'title'             => __( 'Integrated Coupon Codes', 'fluid-checkout' ),
 						'desc'              => __( 'Show coupon codes as a substep of the payment step', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'fluid-checkout' ),

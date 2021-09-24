@@ -22,15 +22,29 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		// Add shipping phone field
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'add_shipping_phone_field' ), 5 );
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_shipping_phone' ), 10 );
-		add_filter( 'woocommerce_admin_shipping_fields', array( $this, 'add_shipping_phone_to_admin_screen' ), 10 );
-		add_filter( 'woocommerce_order_formatted_shipping_address', array( $this, 'output_order_formatted_shipping_address_with_phone' ), 1, 2 );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_replacement_field_shipping_phone' ), 10, 2 );
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_shipping_phone_to_formats' ), 10 );
 		add_filter( 'fc_substep_shipping_address_text', array( $this, 'add_shipping_phone_to_substep_text_format' ), 10 );
+		
+		// Admin fields
+		if ( is_admin() ) {
+			add_filter( 'woocommerce_admin_shipping_fields', array( $this, 'add_shipping_phone_to_admin_screen' ), 10 );
+			add_filter( 'woocommerce_order_formatted_shipping_address', array( $this, 'output_order_formatted_shipping_address_with_phone' ), 1, 2 );
+		}
 
 		// Change shipping field args
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_set_shipping_phone_required' ), 100 );
 		add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_shipping_company_field_args' ), 100 );
+
+		// Move shipping phone to contact step
+		if ( 'contact' === get_option( 'fc_shipping_phone_field_position', 'shipping_address' ) ) {
+			// Remove shipping phone field from shipping address
+			remove_filter( 'fc_substep_shipping_address_text', array( $this, 'add_shipping_phone_to_substep_text_format' ), 10 );
+
+			// Add shipping phone to contact fields
+			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_shipping_phone_field_to_contact_fields' ), 10 );
+			add_filter( 'fc_substep_contact_text', array( $this, 'add_shipping_phone_to_substep_text_format' ), 10 );
+		}
 
 		// TODO: Move to a plugin compatibility class
 		// Support for plugin "Brazilian Market on WooCommerce"
@@ -212,6 +226,18 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		}
 
 		return $html;
+	}
+
+
+
+	/**
+	 * Add the shipping phone to the list of fields to display on the contact step.
+	 *
+	 * @param   array  $display_fields  List of fields to display on the contact step.
+	 */
+	public function add_shipping_phone_field_to_contact_fields( $display_fields ) {
+		$display_fields[] = 'shipping_phone';
+		return $display_fields;
 	}
 
 }

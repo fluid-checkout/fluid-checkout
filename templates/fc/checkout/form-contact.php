@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.2.0
+ * @version 1.3.1
  * @wc-version 3.6.0
  * @wc-original checkout/form-billing.php
  */
@@ -29,14 +29,16 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php // CHANGE: Display only fields in the contact step display list ?>
 		<?php
-		$fields = $checkout->get_checkout_fields( 'billing' );
-		foreach ( $fields as $key => $field ) {
-			/**
-			 * The variable `$display_fields` is passed as a paramenter to this template file
-			 * @see Hook `fc_checkout_contact_step_field_ids`
-			 */
-			if ( in_array( $key, $display_fields ) ) {
-				woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+		$field_groups = $checkout->get_checkout_fields();
+		foreach ( $field_groups as $group_key => $fields ) {
+			foreach ( $fields as $key => $field ) {
+				/**
+				 * The variable `$display_fields` is passed as a paramenter to this template file
+				 * @see Hook `fc_checkout_contact_step_field_ids`
+				 */
+				if ( in_array( $key, $display_fields ) ) {
+					woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+				}
 			}
 		}
 		?>
