@@ -1521,13 +1521,34 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get list of shipping fields ignored at the shipping address substep as they were moved to another substep.
+	 *
+	 * @return  array  List of shipping fields to ignore at shipping address substep.
+	 */
+	public function get_shipping_address_ignored_shipping_field_ids() {
+		$shipping_ignored_field_ids = $this->get_contact_step_display_field_ids();
+		return $shipping_ignored_field_ids;
+	}
+
+
+
+	/**
 	 * Output shipping address step fields.
 	 */
 	public function output_substep_shipping_address_fields() {
+		$checkout = WC()->checkout();
+		
+		// Filter out shipping fields moved to another step
+		$shipping_fields = $checkout->get_checkout_fields( 'shipping' );
+		$shipping_fields = array_filter( $shipping_fields, function( $key ) {
+			return ! in_array( $key, $this->get_shipping_address_ignored_shipping_field_ids() );
+		}, ARRAY_FILTER_USE_KEY );
+
 		wc_get_template(
 			'checkout/form-shipping.php',
 			array(
-				'checkout'          => WC()->checkout(),
+				'checkout'          => $checkout,
+				'display_fields'	=> array_keys( $shipping_fields ),
 			)
 		);
 	}

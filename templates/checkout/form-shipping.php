@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
- * @fc-version 1.2.5
+ * @fc-version 1.3.1
  * @global WC_Checkout $checkout
  */
 
@@ -39,7 +39,13 @@ defined( 'ABSPATH' ) || exit;
 				$fields = $checkout->get_checkout_fields( 'shipping' );
 
 				foreach ( $fields as $key => $field ) {
-					woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+					/**
+					 * The variable `$display_fields` is passed as a paramenter to this template file
+					 * @see Hook `fc_checkout_contact_step_field_ids`
+					 */
+					if ( in_array( $key, $display_fields ) ) {
+						woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+					}
 				}
 				?>
 			</div>
