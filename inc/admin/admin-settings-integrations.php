@@ -82,7 +82,6 @@ class WC_Settings_FluidCheckout_Integrations_Settings extends WC_Settings_Page {
 				array(
 					'title' => _x( 'Integrations', 'Settings section title', 'fluid-checkout' ),
 					'type'  => 'title',
-					'desc'  => __( 'This section allows to enable or disable optional integrations with other plugins. The options related to each plugin will only appear here if the plugin is activated.', 'fluid-checkout' ),
 					'id'    => 'fc_integrations',
 				),
 			);
@@ -93,7 +92,7 @@ class WC_Settings_FluidCheckout_Integrations_Settings extends WC_Settings_Page {
 			if ( 0 == count( $settings_add ) ) {
 				$settings_add[] = array(
 					'type'  => 'fc_paragraph',
-					'desc'  => __( 'No integrations available at the moment on this section.', 'fluid-checkout' ),
+					'desc'  => __( 'No integrations available at the moment on this section. The options related to each plugin will only appear here if that plugin is activated.', 'fluid-checkout' ),
 					'id'    => 'fc_no_integrations',
 				);
 			}
