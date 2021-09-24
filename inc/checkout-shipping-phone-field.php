@@ -230,6 +230,11 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 
 
+	/**
+	 * Add the shipping phone to the list of fields to display on the contact step.
+	 *
+	 * @param   array  $display_fields  List of fields to display on the contact step.
+	 */
 	public function add_shipping_phone_field_to_contact_fields( $display_fields ) {
 		$display_fields[] = 'shipping_phone';
 		return $display_fields;
