@@ -75,12 +75,12 @@ We are working to bring to you the following PRO features:
 * Cart page optimization
 * Edit cart at checkout
 * Thank you / Order confirmation page
-* [Google Address Autocomplete for WooCommerce](https://fluidcheckout.com/products/fc-google-address-autocomplete/)
+* [Google Address Autocomplete for WooCommerce](https://fluidcheckout.com/product/fc-google-address-autocomplete/)
 * Customize checkout steps and fields
 * Account matching, let registered customers complete the purchase without logging in and attach the order to their account
 * Account pages optimization
 
-**[Google Address Autocomplete for WooCommerce](https://fluidcheckout.com/products/fc-google-address-autocomplete/) is now available as a stand-alone plugin**.
+**[Google Address Autocomplete for WooCommerce](https://fluidcheckout.com/product/fc-google-address-autocomplete/) is now available as a stand-alone plugin**.
 
 
 = Need more features? =
@@ -204,10 +204,15 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+* Improved: Coupon code field and items shows loading status while processing adding or removing a coupon code.
+* Improved: Developement build scripts to use shared gulpfile.js, updated `gulp-sass` to 5.0.0.
+* Improved: Admin settings structure. Added "Integrations" subtab. Moved "Optional fields" and "Address Fields" settings into the "Features" section of the "Checkout Options" subtab.
+
 = 1.3.0 - 2021-09-22 =
 * Bump tested up to WooCommerce 5.7
-* Added: Compatibility for Germanized for WooCommerce.
-* Added: Compatibility styles for plugin MailPoet.
+* Added: Compatibility for plugin "Germanized for WooCommerce - by vendidero".
+* Added: Compatibility styles for plugin "MailPoet - by MailPoet".
 * Added: New option to hide the additional order notes field. Saves to the WooCommerce option `woocommerce_enable_order_comments`.
 * Improved: Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
 * Improved: Changed the hook used to initialize the plugin features from `plugins_loaded` to `after_setup_theme` to allow themes to customize early plugin settings and features.

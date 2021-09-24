@@ -17,7 +17,8 @@
   padding: 30px 20px;
   border: dashed 1px #D6D8D8;
   border-radius: 5px;
-  text-align: center; }
+  text-align: center;
+}
 
 .fc-gift-options__message .fc-gift-options__message-text {
   max-width: 750px;
@@ -25,7 +26,9 @@
   margin: 0 auto;
   border: 0;
   font-size: 1.2em;
-  font-style: italic; }
+  font-style: italic;
+}
 
 .fc-gift-options__message .fc-gift-options__message-from {
-  margin-top: 5px; }
+  margin-top: 5px;
+}

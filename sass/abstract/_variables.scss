@@ -1,3 +1,5 @@
+@use "sass:math" as math;
+
 // ------------------------------------
 // VARIABLES
 // ------------------------------------
@@ -308,7 +310,7 @@ $checkout-progress-padding--large-screen:             $global-spacing-extra-smal
 
 $checkout-progress-bar-height:                        remsize( .5rem ) !default;
 $checkout-progress-bar-border:                        none !default;
-$checkout-progress-bar-border-radius:                 $checkout-progress-bar-height / 2 !default;
+$checkout-progress-bar-border-radius:                 math.div( $checkout-progress-bar-height, 2 ) !default;
 $checkout-progress-bar-color:                         $light-grey !default;
 $checkout-progress-bar-complete-color:                $success-color !default;
 $checkout-progress-bar-current-color:                 transparentize( $checkout-progress-bar-complete-color, .7 ) !default; // Stands for 30% opacity of the color `$checkout-progress-bar-complete-color`

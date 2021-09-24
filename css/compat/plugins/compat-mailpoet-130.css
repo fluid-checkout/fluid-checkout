@@ -12,6 +12,7 @@
  * except the `remsize` functions which is already imported
  * before the `variables` as it is needed earlier.
  */
-div.woocommerce form #mailpoet_woocommerce_checkout_optin_field.form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .woocommerce-input-wrapper:after,
-div.woocommerce form #mailpoet_woocommerce_checkout_optin_present_field.form-row.woocommerce-validated:not([class*='woocommerce-invalid']) .woocommerce-input-wrapper:after {
-  display: none; }
+div.woocommerce form #mailpoet_woocommerce_checkout_optin_field.form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper:after,
+div.woocommerce form #mailpoet_woocommerce_checkout_optin_present_field.form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper:after {
+  display: none;
+}

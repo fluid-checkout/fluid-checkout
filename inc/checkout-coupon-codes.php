@@ -140,6 +140,8 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--coupon-codes">';
 		ob_start();
 
+		do_action( 'fc_substep_coupon_codes_text_before' );
+
 		foreach ( WC()->cart->get_coupons() as $code => $coupon ) :
 			// Get coupon label with changed "remove" link
 			ob_start();
@@ -153,6 +155,8 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 			</div>
 			<?php
 		endforeach;
+
+		do_action( 'fc_substep_coupon_codes_text_after' );
 
 		$html .= ob_get_clean();
 		$html .= '</div>';

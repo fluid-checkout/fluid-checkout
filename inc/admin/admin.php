@@ -52,7 +52,10 @@ class FluidCheckout_Admin extends FluidCheckout {
 		if ( ! is_array( $settings ) ) { $settings = array( $settings ); }
 
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-wc-shipping.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-checkout.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-fluid-checkout.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-general.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-advanced.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-integrations.php';
 		
 		return $settings;
 	}
