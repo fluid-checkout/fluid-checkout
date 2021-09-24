@@ -12,7 +12,12 @@
  * except the `remsize` functions which is already imported
  * before the `variables` as it is needed earlier.
  */
-.fc-wrapper .fc-express-checkout #wc-stripe-payment-request-wrapper {
-  padding-top: 0 !important;
+body #payment .fc-payment-methods__wrapper .payment_methods li:last-child:not(.woocommerce-notice) {
+  padding-bottom: 0;
 }
-/*# sourceMappingURL=maps/compat-woocommerce-gateway-stripe-130.min.css.map */
+
+form.woocommerce-checkout .fc-wrapper #order_review .woocommerce-checkout-review-order-table .product-name .product-item-thumbnail {
+  width: auto;
+  padding: 0;
+}
+/*# sourceMappingURL=maps/compat-shoptimizer-130.min.css.map */

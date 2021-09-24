@@ -12,7 +12,14 @@
  * except the `remsize` functions which is already imported
  * before the `variables` as it is needed earlier.
  */
-.fc-wrapper .fc-express-checkout #wc-stripe-payment-request-wrapper {
-  padding-top: 0 !important;
+body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after {
+  right: 26px;
 }
-/*# sourceMappingURL=maps/compat-woocommerce-gateway-stripe-130.min.css.map */
+
+.fc-checkout-order-review .woodmart-table-wrapper {
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  box-shadow: none;
+}
+/*# sourceMappingURL=maps/compat-woodmart-130.min.css.map */

@@ -1,1 +1,18 @@
-.fc-wrapper #ppc-button{margin-top:20px}
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+.fc-wrapper #ppc-button {
+  margin-top: 20px;
+}
+/*# sourceMappingURL=maps/compat-woocommerce-paypal-payments-130.min.css.map */

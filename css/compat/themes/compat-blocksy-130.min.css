@@ -12,7 +12,12 @@
  * except the `remsize` functions which is already imported
  * before the `variables` as it is needed earlier.
  */
-.fc-wrapper .fc-express-checkout #wc-stripe-payment-request-wrapper {
-  padding-top: 0 !important;
+body.theme-blocksy div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after {
+  right: 30px;
 }
-/*# sourceMappingURL=maps/compat-woocommerce-gateway-stripe-130.min.css.map */
+
+div.woocommerce form .form-row input[type=checkbox],
+div.woocommerce form .form-row input[type=radio] {
+  background-color: #fff;
+}
+/*# sourceMappingURL=maps/compat-blocksy-130.min.css.map */
