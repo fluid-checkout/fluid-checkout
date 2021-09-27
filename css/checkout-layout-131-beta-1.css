@@ -717,6 +717,10 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   }
 }
 
+.fc-wrapper .fc-step__substep.fc-step__substep--hidden {
+  display: none !important;
+}
+
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
   margin: 0 0 10px 0;
   padding: 0;

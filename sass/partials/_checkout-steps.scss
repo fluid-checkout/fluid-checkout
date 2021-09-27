@@ -37,6 +37,10 @@
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
 }
 
+.fc-wrapper .fc-step__substep.fc-step__substep--hidden {
+	display: none !important;
+}
+
 
 
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
