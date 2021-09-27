@@ -488,10 +488,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Remove steps after the current steps
 		$current_step = $this->get_current_step();
-		$current_step_index = array_keys( $current_step )[0];
-		foreach ( $complete_steps as $step_index => $step_args ) {
-			if ( $step_index >= $current_step_index ) {
-				unset( $complete_steps[ $step_index ] );
+		if ( $current_step ) {
+			$current_step_index = array_keys( $current_step )[0];
+			foreach ( $complete_steps as $step_index => $step_args ) {
+				if ( $step_index >= $current_step_index ) {
+					unset( $complete_steps[ $step_index ] );
+				}
 			}
 		}
 
@@ -703,8 +705,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Register the default checkout steps supported by this plugin.
 	 */
 	public function register_default_checkout_steps() {
-		// Bail if not on checkout or cart page
-		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() ) ) { return; }
+		// Bail if not on checkout or cart page or doing AJAX call
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
 		// CONTACT
 		$this->register_checkout_step( array(
@@ -959,15 +961,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout substep start tag.
 	 *
-	 * @param   string  $step_id        Id of the step in which the substep will be rendered.
-	 * @param   string  $substep_id     Id of the substep.
-	 * @param   string  $substep_title  Title of the substep.
+	 * @param   string  $step_id                Id of the step in which the substep will be rendered.
+	 * @param   string  $substep_id             Id of the substep.
+	 * @param   string  $substep_title          Title of the substep.
+	 * @param   array   $additional_attributes  Additional HTML attributes to add to the substep element.
 	 */
-	public function output_substep_start_tag( $step_id, $substep_id, $substep_title ) {
-		$substep_attributes = array(
-			'class' => 'fc-step__substep',
+	public function output_substep_start_tag( $step_id, $substep_id, $substep_title, $additional_attributes = array() ) {
+		$substep_attributes = array_merge( $additional_attributes, array(
+			'class' => array_key_exists( 'class', $additional_attributes ) ? 'fc-step__substep ' . $additional_attributes['class'] : 'fc-step__substep',
 			'data-substep-id' => $substep_id,
-		);
+		) );
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
 		<div <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
