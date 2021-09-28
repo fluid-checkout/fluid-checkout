@@ -210,6 +210,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Developement build scripts to use shared gulpfile.js, updated `gulp-sass` to 5.0.0.
 * Improved: Admin settings structure. Added "Integrations" subtab. Moved "Optional fields" and "Address Fields" settings into the "Features" section of the "Checkout Options" subtab.
 * Improved: Add parameter to allow setting custom attributes to substeps elements.
+* Improved: Add mechanism to conditionally make substeps non-editable or hidden.
 * Fixed: Also register checkout steps while doing AJAX calls.
 * Fixed: Prevent fatal error if checkout steps are not yet registered while trying to information about get complete steps.
 
