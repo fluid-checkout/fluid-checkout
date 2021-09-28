@@ -272,8 +272,10 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 	if ( _gulpSettings.jsSources.libraries ) {
 		gulp.src( _gulpSettings.jsSources.libraries )
 		.pipe(sourcemaps.init())
+		.pipe(rename({suffix: _assetsVersion}))
+		.pipe(gulp.dest('./js/lib/')) // save .js
 		.pipe(uglify())
-		.pipe(rename({suffix: _assetsVersion + '.min'}))
+		.pipe(rename({suffix: '.min'}))
 		.pipe(gulp.dest('./js/lib/')); // save .min.js
 	}
 
@@ -290,8 +292,10 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 		gulp.src( _gulpSettings.jsSources.bundles )
 		.pipe(sourcemaps.init())
 		.pipe(concat('bundles.js'))
+		.pipe(rename({suffix: _assetsVersion}))
+		.pipe(gulp.dest('./js/')) // save .js
 		.pipe(uglify())
-		.pipe(rename({suffix: _assetsVersion + '.min'}))
+		.pipe(rename({suffix: '.min'}))
 		.pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest('./js/')); // save .min.js
 	}
@@ -301,8 +305,10 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 		gulp.src( _gulpSettings.jsSources.main )
 		.pipe(sourcemaps.init())
 		.pipe(concat('main.js'))
+		.pipe(rename({suffix: _assetsVersion}))
+		.pipe(gulp.dest('./js/')) // save .js
 		.pipe(uglify())
-		.pipe(rename({suffix: _assetsVersion + '.min'}))
+		.pipe(rename({suffix: '.min'}))
 		.pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest('./js/')); // save .min.js
 	}
@@ -311,8 +317,10 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 	if ( _gulpSettings.jsSources.standalone ) {
 		gulp.src( _gulpSettings.jsSources.standalone )
 		.pipe(sourcemaps.init())
+		.pipe(rename({suffix: _assetsVersion}))
+		.pipe(gulp.dest('./js/')) // save .js
 		.pipe(uglify())
-		.pipe(rename({suffix: _assetsVersion + '.min'}))
+		.pipe(rename({suffix: '.min'}))
 		.pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest('./js/')); // save .min.js
 	}
@@ -321,8 +329,10 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 	if ( _gulpSettings.jsSources.admin ) {
 		gulp.src( _gulpSettings.jsSources.admin )
 		.pipe(sourcemaps.init())
+		.pipe(rename({suffix: _assetsVersion}))
+		.pipe(gulp.dest('./js/admin/')) // save .js
 		.pipe(uglify())
-		.pipe(rename({suffix: _assetsVersion + '.min'}))
+		.pipe(rename({suffix: '.min'}))
 		.pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest('./js/admin/')); // save .min.js
 	}
@@ -331,8 +341,10 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 	if ( _gulpSettings.jsSources.pluginCompat ) {
 		gulp.src( _gulpSettings.jsSources.pluginCompat )
 		.pipe(sourcemaps.init())
+		.pipe(rename({suffix: _assetsVersion}))
+		.pipe(gulp.dest('./js/compat/plugins/')) // save .js
 		.pipe(uglify())
-		.pipe(rename({suffix: _assetsVersion + '.min'}))
+		.pipe(rename({suffix: '.min'}))
 		.pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest('./js/compat/plugins/')); // save .min.js
 	}
@@ -341,8 +353,10 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 	if ( _gulpSettings.jsSources.themeCompat ) {
 		gulp.src( _gulpSettings.jsSources.themeCompat )
 		.pipe(sourcemaps.init())
+		.pipe(rename({suffix: _assetsVersion}))
+		.pipe(gulp.dest('./js/compat/themes/')) // save .js
 		.pipe(uglify())
-		.pipe(rename({suffix: _assetsVersion + '.min'}))
+		.pipe(rename({suffix: '.min'}))
 		.pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest('./js/compat/themes/')); // save .min.js
 	}

@@ -37,6 +37,15 @@
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
 }
 
+.fc-wrapper .fc-step__substep[data-substep-visible="no"] {
+	display: none !important;
+}
+
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-edit,
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-save {
+	display: none;
+}
+
 
 
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
