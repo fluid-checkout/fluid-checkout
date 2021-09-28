@@ -63,7 +63,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 	/**
 	 * Determines if a shipping address is needed depending on the shipping method selected.
 	 *
-	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
+	 * @param   bool  $needs_shipping_address  Whether the cart needs a shipping address or not.
 	 */
 	public function maybe_change_needs_shipping_address( $needs_shipping_address ) {
 		// Hides shipping addresses for `local_pickup`.
