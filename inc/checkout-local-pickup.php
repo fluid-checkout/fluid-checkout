@@ -19,7 +19,6 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 		add_action( 'wp', array( $this, 'prepare_local_pickup_hooks' ), 5 );
 	}
 
@@ -36,26 +35,14 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 			remove_action( 'fc_output_step_shipping', array( FluidCheckout_Steps::instance(), 'output_substep_shipping_method' ), 20 );
 			add_action( 'fc_output_step_shipping', array( FluidCheckout_Steps::instance(), 'output_substep_shipping_method' ), 10 );
 			add_action( 'fc_output_step_shipping', array( FluidCheckout_Steps::instance(), 'output_substep_shipping_address' ), 20 );
+			add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'change_substep_attributes_shipping_address' ), 10 );
+			add_action( 'fc_checkout_after_step_shipping_fields', array( $this, 'output_substep_state_hidden_fields_shipping_fields' ), 10 );
 			add_action( 'fc_checkout_after_step_shipping_fields', array( $this, 'maybe_output_shipping_address_text' ), 10 );
 			add_filter( 'woocommerce_cart_needs_shipping_address', array( $this, 'maybe_change_needs_shipping_address' ), 10 );
 			add_filter( 'fc_substep_title_shipping_address', array( $this, 'maybe_change_shipping_address_substep_title' ), 50 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_substep_title_fragment' ), 10 );
 			add_filter( 'fc_substep_shipping_address_text', array( $this, 'change_substep_text_shipping_address' ), 50 );
 		}
-	}
-
-
-
-	/**
-	 * Enqueue scripts.
-	 */
-	public function enqueue_assets() {
-		// Bail if not at checkout page or `local_pickup` not available
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || ! $this->is_local_pickup_available() ){ return; }
-
-		// Load scripts
-		wp_enqueue_script( 'fc-checkout-local-pickup', self::$directory_url . 'js/checkout-local-pickup'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-local-pickup', 'window.addEventListener("load",function(){CheckoutLocalPickup.init();})' );
 	}
 
 
@@ -72,6 +59,29 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 		}
 
 		return $needs_shipping_address;
+	}
+
+
+
+	/**
+	 * Change the shipping address substep attributes to make it non-editable when a local pickup shipping method is selected.
+	 *
+	 * @param   array  $substep_attributes  HTML attributes for the substep element.
+	 */
+	public function change_substep_attributes_shipping_address( $substep_attributes ) {
+		$substep_attributes = array_merge( $substep_attributes, array(
+			'data-substep-editable' => ! $this->is_shipping_method_local_pickup_selected() ? 'yes' : 'no',
+		) );
+
+		return $substep_attributes;
+	}
+	
+	/**
+	 * Output delivery date step fields.
+	 */
+	public function output_substep_state_hidden_fields_shipping_fields() {
+		$substep_editable_value = ! $this->is_shipping_method_local_pickup_selected() ? 'yes' : 'no';
+		echo '<input class="fc-substep-editable-state" type="hidden" value="' . $substep_editable_value . '" />';
 	}
 
 
