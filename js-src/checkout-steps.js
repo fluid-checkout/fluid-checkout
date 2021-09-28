@@ -59,6 +59,11 @@
 		isCompleteClass: 'is-complete',
 		stepNextIncompleteClass: 'fc-checkout-step--next-step-incomplete',
 
+		substepEditableStateFieldSelector: '.fc-substep-editable-state[type="hidden"]',
+		substepEditableStateAttribute: 'data-substep-editable',
+		substepVisibleStateFieldSelector: '.fc-substep-visible-state[type="hidden"]',
+		substepVisibleStateAttribute: 'data-substep-visible',
+
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
 
 		scrollOffsetSelector: '.fc-checkout-header',
@@ -504,6 +509,39 @@
 
 
 	/**
+	 * Maybe change visibility status of the shipping address edit buttons when shipping method is `local_pickup`.
+	 *
+	 * @param   Event  _event  An unused `jQuery.Event` object.
+	 * @param   Array  data   The updated checkout data.
+	 */
+	var maybeChangeSubstepState = function( _event, data ) {
+		var substepElements = document.querySelectorAll( _settings.substepSelector );
+		for ( var i = 0; i < substepElements.length; i++ ) {
+			var substepElement = substepElements[i];
+			
+			// Handle substep editable state
+			var editableHiddenField = substepElement.querySelector( _settings.substepEditableStateFieldSelector );
+			if ( editableHiddenField && 'no' === editableHiddenField.value ) {
+				substepElement.setAttribute( _settings.substepEditableStateAttribute, editableHiddenField.value );
+			}
+			else {
+				substepElement.removeAttribute( _settings.substepEditableStateAttribute );
+			}
+
+			// Handle substep visibility state
+			var visibilityHiddenField = substepElement.querySelector( _settings.substepVisibleStateFieldSelector );
+			if ( visibilityHiddenField && 'no' === visibilityHiddenField.value ) {
+				substepElement.setAttribute( _settings.substepVisibleStateAttribute, visibilityHiddenField.value );
+			}
+			else {
+				substepElement.removeAttribute( _settings.substepVisibleStateAttribute );
+			}
+		}
+	}
+
+
+
+	/**
 	 * Handle document clicks and route to the appropriate function.
 	 */
 	var handleClick = function( e ) {
@@ -555,6 +593,7 @@
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
+			$( document.body ).on( 'updated_checkout', maybeChangeSubstepState );
 			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
 		}
 
