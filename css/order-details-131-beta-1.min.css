@@ -1,1 +1,35 @@
-.fc-gift-options__message{margin:0 0 30px;padding:30px 20px;border:1px dashed #d6d8d8;border-radius:5px;text-align:center}.fc-gift-options__message .fc-gift-options__message-text{max-width:750px;display:block;margin:0 auto;border:0;font-size:1.2em;font-style:italic}.fc-gift-options__message .fc-gift-options__message-from{margin-top:5px}
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+.fc-gift-options__message {
+  margin: 0 0 30px;
+  padding: 30px 20px;
+  border: dashed 1px #D6D8D8;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.fc-gift-options__message .fc-gift-options__message-text {
+  max-width: 750px;
+  display: block;
+  margin: 0 auto;
+  border: 0;
+  font-size: 1.2em;
+  font-style: italic;
+}
+
+.fc-gift-options__message .fc-gift-options__message-from {
+  margin-top: 5px;
+}
+/*# sourceMappingURL=maps/order-details-131-beta-1.min.css.map */

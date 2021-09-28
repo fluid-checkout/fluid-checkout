@@ -28,8 +28,7 @@
         chosenShippingMethodSelector: 'input.shipping_method:checked',
         shippingAddressSubstepSelector: '.fc-step__substep[data-substep-id="shipping_address"]',
 
-        localPickupSelectedClass: 'has-local-pickup-selected', 
-        hideEditButtonClass: 'hide-edit-button',
+        substepEditableAttribute: 'data-substep-editable',
         
         localPickupIdPattern: 'local_pickup',
 	}
@@ -103,10 +102,10 @@
 				
 				// TODO: Manage multiple shipping packages
 				if( is_local_pickup ) {
-					$shipping_address_substep.addClass( [ _settings.localPickupSelectedClass, _settings.hideEditButtonClass ] );
+					$shipping_address_substep.attr( _settings.substepEditableAttribute, 'no' );
 				}
 				else {
-					$shipping_address_substep.removeClass( [ _settings.localPickupSelectedClass, _settings.hideEditButtonClass ] );
+					$shipping_address_substep.attr( _settings.substepEditableAttribute, 'yes' );
 				}
 
 			} );

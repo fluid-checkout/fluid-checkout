@@ -717,8 +717,13 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   }
 }
 
-.fc-wrapper .fc-step__substep.fc-step__substep--hidden {
+.fc-wrapper .fc-step__substep[data-substep-visible=no] {
   display: none !important;
+}
+
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable=no] .fc-step__substep-edit,
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable=no] .fc-step__substep-save {
+  display: none;
 }
 
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
@@ -1296,11 +1301,6 @@ div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[t
 div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection {
   background-color: #fff;
   color: inherit;
-}
-
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep.hide-edit-button .fc-step__substep-edit,
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep.hide-edit-button .fc-step__substep-save {
-  display: none;
 }
 
 #shipping_method.shipping-method__options {

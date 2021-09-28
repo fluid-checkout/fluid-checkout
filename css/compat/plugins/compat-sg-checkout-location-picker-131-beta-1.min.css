@@ -1,1 +1,30 @@
-.sg-checkout-location-picker-wrapper:after,.sg-checkout-location-picker-wrapper:before{content:"";display:table;table-layout:fixed;width:100%}.sg-checkout-location-picker-wrapper .sg-container{margin-top:20px}.sg-checkout-location-picker-wrapper .sg-container p:last-child{margin-bottom:0!important}
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+.sg-checkout-location-picker-wrapper:before,
+.sg-checkout-location-picker-wrapper:after {
+  content: "";
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.sg-checkout-location-picker-wrapper .sg-container {
+  margin-top: 20px;
+}
+
+.sg-checkout-location-picker-wrapper .sg-container p:last-child {
+  margin-bottom: 0 !important;
+}
+/*# sourceMappingURL=maps/compat-sg-checkout-location-picker-131-beta-1.min.css.map */
