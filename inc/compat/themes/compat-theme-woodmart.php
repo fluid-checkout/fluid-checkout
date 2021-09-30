@@ -25,7 +25,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 
 
 	/**
-	 * Add or remove very late hooks.
+	 * Override plugin template files with the theme version.
 	 */
 	public function override_template_with_theme_file( $override, $template, $template_name, $template_path ) {
 		
