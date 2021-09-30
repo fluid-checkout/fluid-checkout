@@ -19,15 +19,16 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'wp', array( $this, 'prepare_local_pickup_hooks' ), 5 );
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 	}
 
 	/**
 	 * Prepare the hooks related to shipping method "Local Pickup".
 	 */
-	public function prepare_local_pickup_hooks() {
-		// Bail if not checkout pages
-		if ( ! is_checkout() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) { return; }
+	public function very_late_hooks() {
+		// Bail if not on checkout or cart page or doing AJAX call
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
 		// Hide shipping address for local pickup
 		if ( $this->is_local_pickup_available() ) {
@@ -133,6 +134,9 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
 	 */
 	public function is_local_pickup_available() {
+		// Bail if not on checkout or cart page or doing AJAX call
+		if ( ! function_exists( 'is_checkout' ) || ! ( is_checkout() || is_cart() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) ) { return false; }
+
 		$checkout = WC()->checkout();
 		$is_local_pickup_available = false;
 

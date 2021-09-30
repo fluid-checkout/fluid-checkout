@@ -41,6 +41,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function hooks() {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+		
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
@@ -60,8 +63,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Checkout steps
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout/cart notices
-		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 );
-		add_action( 'admin_init', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for AJAX
+		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for frontend requests
+		add_action( 'admin_init', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for AJAX requests
 		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 		add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
 
@@ -91,9 +94,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
-
-		// Order Notes
-		add_action( 'wp', array( $this, 'prepare_order_notes_hooks' ), 10 );
 
 		// Billing Address
 		add_action( 'fc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
@@ -138,32 +138,34 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Prepare the hooks related to the additinal order notes substep.
+	 * Add or remove very late hooks.
 	 */
-	public function prepare_order_notes_hooks() {
-		// Bail if not checkout pages
-		if ( ! is_checkout() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) { return; }
+	public function very_late_hooks() {
+		// Bail if not on checkout or cart page or doing AJAX call
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
 		// Bail if no additional order fields are present
 		$all_fields = WC()->checkout()->get_checkout_fields();
-		if ( ! in_array( 'order', array_keys( $all_fields ) ) ) { return; }
-
-		// Get additional order fields
-		$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
-		$order_notes_substep_position = 'fc_output_step_shipping';
 		
-		// Bail if no additional order fields are present
-		if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
+		// Prepare the hooks related to the additional order notes substep.
+		if ( in_array( 'order', array_keys( $all_fields ) ) ) {
+			// Get additional order fields
+			$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
+			$order_notes_substep_position = 'fc_output_step_shipping';
 			
-			// Maybe change output to the billing step
-			if ( ! WC()->cart->needs_shipping() ) {
-				$order_notes_substep_position = 'fc_output_step_billing';
+			// Bail if no additional order fields are present
+			if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
+				
+				// Maybe change output to the billing step
+				if ( ! WC()->cart->needs_shipping() ) {
+					$order_notes_substep_position = 'fc_output_step_billing';
+				}
+
+				// Add hooks
+				add_action( $order_notes_substep_position, array( $this, 'output_substep_order_notes' ), 100 );
+				add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
+
 			}
-
-			// Add hooks
-			add_action( $order_notes_substep_position, array( $this, 'output_substep_order_notes' ), 100 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
-
 		}
 	}
 
