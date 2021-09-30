@@ -45,7 +45,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		$billing_email_description = $needs_shipping ? __( 'Order and tracking number will be sent to this email address.', 'fluid-checkout' ) : __( 'Order number and receipt will be sent to this email address.', 'fluid-checkout' );
 		$billing_company_class = get_option( 'woocommerce_checkout_phone_field', 'required' ) === 'required' ? 'form-row-last' : 'form-row-wide';
 
-		return apply_filters( 'fc_checkout_field_args', array(
+		$fields_args = array(
 			'billing_email'         => array( 'priority' => 5, 'autocomplete' => 'contact email', 'description' => $billing_email_description, 'type' => 'email' ),
 
 			'billing_first_name'    => array( 'priority' => 10, 'autocomplete' => 'contact given-name' ),
@@ -64,11 +64,20 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			'shipping_company'      => array( 'priority' => 30, 'autocomplete' => 'shipping organization', 'class' => array( 'form-row-wide' ) ),
 			'shipping_address_1'    => array( 'autocomplete' => 'shipping address-line1' ),
 			'shipping_address_2'    => array( 'autocomplete' => 'shipping address-line2' ),
-			'shipping_city'         => array( 'autocomplete' => 'shipping address-level2', 'class' => array( 'form-row-first' ) ),
-			'shipping_state'        => array( 'autocomplete' => 'shipping address-level1', 'class' => array( 'form-row-last' ) ),
+			'shipping_city'         => array( 'autocomplete' => 'shipping address-level2' ),
+			'shipping_state'        => array( 'autocomplete' => 'shipping address-level1' ),
 			'shipping_country'      => array( 'autocomplete' => 'shipping country' ),
-			'shipping_postcode'     => array( 'autocomplete' => 'shipping postal-code', 'class' => array( 'form-row-first' ) ),
-		) );
+			'shipping_postcode'     => array( 'autocomplete' => 'shipping postal-code' ),
+		);
+
+		// Bail if not on checkout or cart page or doing AJAX call
+		if ( function_exists( 'is_checkout' ) && ( is_checkout() || is_account_page() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) ) {
+			$fields_args[ 'shipping_city' ][ 'class' ] = array( 'form-row-first' );
+			$fields_args[ 'shipping_state' ][ 'class' ] = array( 'form-row-last' );
+			$fields_args[ 'shipping_postcode' ][ 'class' ] = array( 'form-row-first' );
+		}
+
+		return apply_filters( 'fc_checkout_field_args', $fields_args );
 	}
 
 
@@ -79,13 +88,19 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function change_default_locale_field_args( $fields ) {
-		$new_field_args = apply_filters( 'fc_default_locale_field_args', array(
+		$new_field_args = array(
 			'address_1'           => array( 'class' => array( 'form-row-wide' ), 'description' => __( 'House number and street name.', 'fluid-checkout' ) ),
 			'address_2'           => array( 'class' => array( 'form-row-wide' ), 'label' => __( 'Apartment, unit, building, floor, etc.', 'fluid-checkout' ), 'placeholder' => __( 'Apartment, unit, building, floor, etc.', 'fluid-checkout' ) ),
-			'city'                => array( 'class' => array( 'form-row-first' ) ),
-			'state'               => array( 'class' => array( 'form-row-last' ) ),
-			'postcode'            => array( 'class' => array( 'form-row-first' ) ),
-		) );
+		);
+
+		// Bail if not on checkout or cart page or doing AJAX call
+		if ( function_exists( 'is_checkout' ) && ( is_checkout() || is_account_page() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) ) {
+			$new_field_args[ 'city' ][ 'class' ] = array( 'form-row-first' );
+			$new_field_args[ 'state' ][ 'class' ] = array( 'form-row-last' );
+			$new_field_args[ 'postcode' ][ 'class' ] = array( 'form-row-first' );
+		}
+
+		$new_field_args = apply_filters( 'fc_default_locale_field_args', $new_field_args );
 
 		foreach( $fields as $field_key => $original_args ) {
 			$new_args = array_key_exists( $field_key, $new_field_args ) ? $new_field_args[ $field_key ] : array();
