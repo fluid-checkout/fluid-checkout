@@ -61,6 +61,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Checkout steps
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout/cart notices
 		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 );
+		add_action( 'admin_init', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for AJAX
 		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 		add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
 
@@ -486,12 +487,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Remove steps after the current steps
 		$current_step = $this->get_current_step();
-		if ( $current_step ) {
-			$current_step_index = array_keys( $current_step )[0];
-			foreach ( $complete_steps as $step_index => $step_args ) {
-				if ( $step_index >= $current_step_index ) {
-					unset( $complete_steps[ $step_index ] );
-				}
+		$current_step_index = array_keys( $current_step )[0];
+		foreach ( $complete_steps as $step_index => $step_args ) {
+			if ( $step_index >= $current_step_index ) {
+				unset( $complete_steps[ $step_index ] );
 			}
 		}
 
@@ -703,6 +702,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Register the default checkout steps supported by this plugin.
 	 */
 	public function register_default_checkout_steps() {
+		// Bail if has already registered steps
+		if ( count( $this->checkout_steps ) > 0 ) { return; }
+		
 		// Bail if not on checkout or cart page or doing AJAX call
 		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
@@ -748,7 +750,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'is_complete_callback' => '__return_false', // Payment step is only complete when the order has been placed and the payment has been accepted, during the checkout process it will always be considered 'incomplete'.
 			'render_next_step_button' => false,
 		) );
-
 	}
 
 

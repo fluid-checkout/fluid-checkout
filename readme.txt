@@ -211,8 +211,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Admin settings structure. Added "Integrations" subtab. Moved "Optional fields" and "Address Fields" settings into the "Features" section of the "Checkout Options" subtab.
 * Improved: Add parameter to allow setting custom attributes to substeps elements.
 * Improved: Add mechanism to conditionally make substeps non-editable or hidden.
-* Fixed: Also register checkout steps while doing AJAX calls.
-* Fixed: Prevent fatal error if checkout steps are not yet registered while trying to information about get complete steps.
+* Fixed: Fatal error because steps were not registered on Admin Pages and AJAX requests. Fixes compatibility with page editor Elementor.
 
 = 1.3.0 - 2021-09-22 =
 * Bump tested up to WooCommerce 5.7
