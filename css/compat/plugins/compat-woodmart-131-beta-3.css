@@ -16,7 +16,8 @@ body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not([cl
   right: 26px;
 }
 
-.fc-checkout-order-review .woodmart-table-wrapper {
+.fc-checkout-order-review .woodmart-table-wrapper,
+.fc-checkout-order-review .wd-table-wrapper {
   margin: 0;
   padding: 0;
   overflow: visible;
