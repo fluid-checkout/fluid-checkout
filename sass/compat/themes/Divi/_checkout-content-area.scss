@@ -1,0 +1,13 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+body:not( .has-checkout-header ) {
+	padding-top: remsize( 12rem );
+}
+
+
+
+// Sticky sidebar, page with admin bar
+body:not( .has-checkout-header ).admin-bar .fc-sidebar[data-sticky-states].is-sticky--top .fc-sidebar__inner {
+	padding-top: $global-spacing-tiny;
+}
