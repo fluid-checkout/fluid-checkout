@@ -8,14 +8,9 @@ body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-rem
 	margin-right: - $global-spacing-tiny;
 	width: remsize( 3rem );
 	height: remsize( 3rem );
-	// font-size: $coupon-code-remove-font-size;
-	// font-weight: $coupon-code-remove-font-weight;
 	line-height: inherit;
-	// text-decoration: $coupon-code-remove-text-decoration;
 	text-decoration: none;
 	text-indent: remsize( -1000rem );
-	// color: $coupon-code-remove-color;
-	// background-color: transparent;
 
 	&:focus {
 		outline: $focus-outline-link;

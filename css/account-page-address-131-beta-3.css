@@ -1,17 +1,3 @@
-/** 
- * FUNCTIONS
- * 
- * Caution: This file is supposed to import all functions
- * except the `remsize` functions which is already imported
- * before the `variables` as it is needed earlier.
- */
-/** 
- * FUNCTIONS
- * 
- * Caution: This file is supposed to import all functions
- * except the `remsize` functions which is already imported
- * before the `variables` as it is needed earlier.
- */
 .woocommerce-MyAccount-content .woocommerce-address-fields__field-wrapper {
   margin-bottom: 50px;
 }
