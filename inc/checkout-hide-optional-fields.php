@@ -66,6 +66,13 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		// Bail if field is required
 		if ( array_key_exists( 'required', $args ) && $args['required'] == true ) { return $field; }
 
+		// Bail if field is not empty
+		if ( ! empty( $value ) ) { return $field; }
+
+		// Bail if field has already been hidden
+		// Needed for compatibility with plugins that call `woocommerce_form_field` multiple times for the same field
+		if ( false !== strpos( $field, 'id="fc-expansible-form-section__toggle--' . $key ) ) { return $field; }
+
 		// Bail if optional field by its type
 		if ( in_array( $args['type'], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'checkbox', 'radio', 'hidden' ) ) ) ) { return $field; }
 
@@ -85,11 +92,6 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 
 		// Remove the container class from the field element
 		$field = str_replace( 'form-row '. $container_class_esc, 'form-row ', $field );
-
-		// Maybe set field as `expanded` when it contains a value
-		if ( ! empty( $value ) ) {
-			$expansible_section_args[ 'initial_state' ] = 'expanded';
-		}
 
 		// Start buffer
 		ob_start();

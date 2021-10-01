@@ -19,16 +19,16 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
-		add_action( 'wp', array( $this, 'prepare_local_pickup_hooks' ), 5 );
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 	}
 
 	/**
 	 * Prepare the hooks related to shipping method "Local Pickup".
 	 */
-	public function prepare_local_pickup_hooks() {
-		// Bail if not checkout pages
-		if ( ! is_checkout() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) { return; }
+	public function very_late_hooks() {
+		// Bail if not on checkout or cart page or doing AJAX call
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
 		// Hide shipping address for local pickup
 		if ( $this->is_local_pickup_available() ) {
@@ -36,9 +36,11 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 			remove_action( 'fc_output_step_shipping', array( FluidCheckout_Steps::instance(), 'output_substep_shipping_method' ), 20 );
 			add_action( 'fc_output_step_shipping', array( FluidCheckout_Steps::instance(), 'output_substep_shipping_method' ), 10 );
 			add_action( 'fc_output_step_shipping', array( FluidCheckout_Steps::instance(), 'output_substep_shipping_address' ), 20 );
+			add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'change_substep_attributes_shipping_address' ), 10 );
+			add_action( 'fc_checkout_after_step_shipping_fields', array( $this, 'output_substep_state_hidden_fields_shipping_fields' ), 10 );
 			add_action( 'fc_checkout_after_step_shipping_fields', array( $this, 'maybe_output_shipping_address_text' ), 10 );
 			add_filter( 'woocommerce_cart_needs_shipping_address', array( $this, 'maybe_change_needs_shipping_address' ), 10 );
-			add_filter( 'fc_substep_title_shipping_address', array( $this, 'change_shipping_address_substep_title' ), 50 );
+			add_filter( 'fc_substep_title_shipping_address', array( $this, 'maybe_change_shipping_address_substep_title' ), 50 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_substep_title_fragment' ), 10 );
 			add_filter( 'fc_substep_shipping_address_text', array( $this, 'change_substep_text_shipping_address' ), 50 );
 		}
@@ -47,23 +49,9 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 
 
 	/**
-	 * Enqueue scripts.
-	 */
-	public function enqueue_assets() {
-		// Bail if not at checkout page or `local_pickup` not available
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || ! $this->is_local_pickup_available() ){ return; }
-
-		// Load scripts
-		wp_enqueue_script( 'fc-checkout-local-pickup', self::$directory_url . 'js/checkout-local-pickup'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-local-pickup', 'window.addEventListener("load",function(){CheckoutLocalPickup.init();})' );
-	}
-
-
-
-	/**
 	 * Determines if a shipping address is needed depending on the shipping method selected.
 	 *
-	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
+	 * @param   bool  $needs_shipping_address  Whether the cart needs a shipping address or not.
 	 */
 	public function maybe_change_needs_shipping_address( $needs_shipping_address ) {
 		// Hides shipping addresses for `local_pickup`.
@@ -72,6 +60,29 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 		}
 
 		return $needs_shipping_address;
+	}
+
+
+
+	/**
+	 * Change the shipping address substep attributes to make it non-editable when a local pickup shipping method is selected.
+	 *
+	 * @param   array  $substep_attributes  HTML attributes for the substep element.
+	 */
+	public function change_substep_attributes_shipping_address( $substep_attributes ) {
+		$substep_attributes = array_merge( $substep_attributes, array(
+			'data-substep-editable' => ! $this->is_shipping_method_local_pickup_selected() ? 'yes' : 'no',
+		) );
+
+		return $substep_attributes;
+	}
+	
+	/**
+	 * Output delivery date step fields.
+	 */
+	public function output_substep_state_hidden_fields_shipping_fields() {
+		$substep_editable_value = ! $this->is_shipping_method_local_pickup_selected() ? 'yes' : 'no';
+		echo '<input class="fc-substep-editable-state" type="hidden" value="' . $substep_editable_value . '" />';
 	}
 
 
@@ -123,6 +134,9 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
 	 */
 	public function is_local_pickup_available() {
+		// Bail if not on checkout or cart page or doing AJAX call
+		if ( ! function_exists( 'is_checkout' ) || ! ( is_checkout() || is_cart() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) ) { return false; }
+
 		$checkout = WC()->checkout();
 		$is_local_pickup_available = false;
 
@@ -153,8 +167,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 	 */
 	public function add_shipping_address_substep_title_fragment( $fragments ) {
 		$substep_id = 'shipping_address';
-		// TODO: Get substep title from registered substeps titles (needs changes to FluidCheckout_Steps)
-		$substep_title = $this->change_shipping_address_substep_title( __( 'Shipping to', 'fluid-checkout' ) );
+		$substep_title = $this->maybe_change_shipping_address_substep_title( __( 'Shipping to', 'fluid-checkout' ) );
 		$html = FluidCheckout_Steps::instance()->get_substep_title_html( $substep_id, $substep_title );
 		$fragments['.fc-step__substep-title--shipping_address'] = $html;
 		return $fragments;
@@ -163,7 +176,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 	/**
 	 * Change the Shipping Address substep title.
 	 */
-	public function change_shipping_address_substep_title( $substep_title ) {
+	public function maybe_change_shipping_address_substep_title( $substep_title ) {
 		// Change substep title for `local_pickup` shipping methods
 		if ( $this->is_shipping_method_local_pickup_selected() ) {
 			$substep_title = apply_filters( 'fc_shipping_address_local_pickup_point_title', __( 'Pickup point', 'fluid-checkout' ) );

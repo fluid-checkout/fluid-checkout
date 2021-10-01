@@ -76,7 +76,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Enqueue fonts
 	 */
 	function enqueue_custom_fonts( $hook ) {
-		wp_enqueue_style( 'fc-fonts', self::$directory_url . '/css/fonts'. self::$asset_version . '.css', array(), null );
+		wp_enqueue_style( 'fc-fonts', self::$directory_url . 'css/fonts'. self::$asset_version . '.css', array(), null );
 	}
 
 

@@ -9,7 +9,7 @@ package-lock.json
 
 # local environment files
 gulp-settings.local.json
-.vs-code
+.vscode
 
 # Translation backup files
 *.po~

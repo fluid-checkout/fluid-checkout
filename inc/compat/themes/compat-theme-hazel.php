@@ -22,9 +22,9 @@ class FluidCheckout_ThemeCompat_Hazel extends FluidCheckout {
 		// Use theme's logo
 		add_action( 'fc_checkout_header_logo', array( $this, 'output_checkout_header_logo' ), 10 );
 
-		// page_header
-		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_progress_bar_attributes' ), 20 );
-		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sidebar_attributes' ), 20 );
+		// Page header
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 	}
 
 
@@ -54,31 +54,17 @@ class FluidCheckout_ThemeCompat_Hazel extends FluidCheckout {
 
 
 	/**
-	 * Change the attributes of the progress bar element.
+	 * Change the sticky element relative ID.
 	 *
-	 * @param   array   $progress_bar_attributes    Progress bar html element attributes.
+	 * @param   array   $attributes    HTML element attributes.
 	 */
-	public function change_progress_bar_attributes( $progress_bar_attributes ) {
+	public function change_sticky_elements_relative_header( $attributes ) {
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $progress_bar_attributes; }
+		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
 
-		$progress_bar_attributes['data-sticky-relative-to'] = 'header.page_header';
+		$attributes['data-sticky-relative-to'] = 'header.page_header';
 
-		return $progress_bar_attributes;
-	}
-
-	/**
-	 * Change the attributes of the sidebar element.
-	 *
-	 * @param   array   $sidebar_attributes    Sidebar html element attributes.
-	 */
-	public function change_sidebar_attributes( $sidebar_attributes ) {
-		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $sidebar_attributes; }
-
-		$sidebar_attributes['data-sticky-relative-to'] = 'header.page_header';
-
-		return $sidebar_attributes;
+		return $attributes;
 	}
 
 }
