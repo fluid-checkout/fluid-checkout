@@ -1,1 +1,19 @@
-div.woocommerce form #mailpoet_woocommerce_checkout_optin_field.form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper:after,div.woocommerce form #mailpoet_woocommerce_checkout_optin_present_field.form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper:after{display:none}
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+div.woocommerce form #mailpoet_woocommerce_checkout_optin_field.form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper:after,
+div.woocommerce form #mailpoet_woocommerce_checkout_optin_present_field.form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper:after {
+  display: none;
+}
+/*# sourceMappingURL=maps/compat-mailpoet-131-beta-3.min.css.map */

@@ -1,1 +1,18 @@
-.fc-wrapper .fc-express-checkout #wc-stripe-payment-request-wrapper{padding-top:0!important}
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+/** 
+ * FUNCTIONS
+ * 
+ * Caution: This file is supposed to import all functions
+ * except the `remsize` functions which is already imported
+ * before the `variables` as it is needed earlier.
+ */
+.fc-wrapper .fc-express-checkout #wc-stripe-payment-request-wrapper {
+  padding-top: 0 !important;
+}
+/*# sourceMappingURL=maps/compat-woocommerce-gateway-stripe-131-beta-3.min.css.map */
