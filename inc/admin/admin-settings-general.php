@@ -201,9 +201,9 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'         => __( 'Express Checkout', 'fluid-checkout' ),
-						'desc'          => __( 'Enable the Express Checkout section at checkout', 'fluid-checkout' ),
-						'desc_tip'      => __( 'Displays the Express Checkout section at checkout when supported payment gateways have this feature enabled.', 'fluid-checkout' ),
+						'title'         => __( 'Express checkout', 'fluid-checkout' ),
+						'desc'          => __( 'Enable the express checkout section at checkout', 'fluid-checkout' ),
+						'desc_tip'      => __( 'Displays the express checkout section at checkout when supported payment gateways have this feature enabled.', 'fluid-checkout' ),
 						'id'            => 'fc_enable_checkout_express_checkout',
 						'default'       => 'yes',
 						'type'          => 'checkbox',
