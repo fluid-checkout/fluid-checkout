@@ -4,7 +4,7 @@ Tags: woocommerce, e-commerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.2
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -215,7 +215,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
-= Unreleased =
+= 1.3.1 - 2021-10-01 =
 * Added: New option to move shipping phone field to the contact step.
 * Added: Compatibility with theme Divi by Elegant Themes.
 * Improved: Coupon code field and items shows loading status while processing adding or removing a coupon code.
