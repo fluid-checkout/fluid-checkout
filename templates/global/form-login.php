@@ -30,12 +30,12 @@ if ( is_user_logged_in() ) {
 
 	<?php echo ( $message ) ? wpautop( wptexturize( $message ) ) : ''; // @codingStandardsIgnoreLine ?>
 
-	<?php // CHANGE: Form row class to `form-row-last` ?>
+	<?php // CHANGE: Form row class to `form-row-wide` ?>
 	<p class="form-row form-row-wide">
 		<label for="username"><?php esc_html_e( 'Username or email', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
 		<input type="text" class="input-text" name="username" id="username" autocomplete="username" />
 	</p>
-    <?php // CHANGE: Form row class to `form-row-last` ?>
+    <?php // CHANGE: Form row class to `form-row-wide` ?>
 	<p class="form-row form-row-wide">
 		<label for="password"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
 		<input class="input-text" type="password" name="password" id="password" autocomplete="current-password" />

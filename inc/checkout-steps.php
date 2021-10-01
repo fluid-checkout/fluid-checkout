@@ -41,6 +41,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function hooks() {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+		
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
@@ -55,12 +58,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_content_section_class', array( $this, 'fc_content_section_class' ), 10 );
 
-		// Express checkout
-		add_action( 'fc_checkout_before_steps', array( $this, 'maybe_output_express_checkout_section' ), 10 );
-
 		// Checkout steps
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout/cart notices
-		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 );
+		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for frontend requests
+		add_action( 'admin_init', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for AJAX requests
 		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 		add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
 
@@ -90,9 +91,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
-
-		// Order Notes
-		add_action( 'wp', array( $this, 'prepare_order_notes_hooks' ), 10 );
 
 		// Billing Address
 		add_action( 'fc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
@@ -137,32 +135,34 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Prepare the hooks related to the additinal order notes substep.
+	 * Add or remove very late hooks.
 	 */
-	public function prepare_order_notes_hooks() {
-		// Bail if not checkout pages
-		if ( ! is_checkout() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) { return; }
+	public function very_late_hooks() {
+		// Bail if not on checkout or cart page or doing AJAX call
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
 		// Bail if no additional order fields are present
 		$all_fields = WC()->checkout()->get_checkout_fields();
-		if ( ! in_array( 'order', array_keys( $all_fields ) ) ) { return; }
-
-		// Get additional order fields
-		$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
-		$order_notes_substep_position = 'fc_output_step_shipping';
 		
-		// Bail if no additional order fields are present
-		if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
+		// Prepare the hooks related to the additional order notes substep.
+		if ( in_array( 'order', array_keys( $all_fields ) ) ) {
+			// Get additional order fields
+			$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
+			$order_notes_substep_position = 'fc_output_step_shipping';
 			
-			// Maybe change output to the billing step
-			if ( ! WC()->cart->needs_shipping() ) {
-				$order_notes_substep_position = 'fc_output_step_billing';
+			// Bail if no additional order fields are present
+			if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
+				
+				// Maybe change output to the billing step
+				if ( ! WC()->cart->needs_shipping() ) {
+					$order_notes_substep_position = 'fc_output_step_billing';
+				}
+
+				// Add hooks
+				add_action( $order_notes_substep_position, array( $this, 'output_substep_order_notes' ), 100 );
+				add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
+
 			}
-
-			// Add hooks
-			add_action( $order_notes_substep_position, array( $this, 'output_substep_order_notes' ), 100 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
-
 		}
 	}
 
@@ -486,12 +486,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Remove steps after the current steps
 		$current_step = $this->get_current_step();
-		if ( $current_step ) {
-			$current_step_index = array_keys( $current_step )[0];
-			foreach ( $complete_steps as $step_index => $step_args ) {
-				if ( $step_index >= $current_step_index ) {
-					unset( $complete_steps[ $step_index ] );
-				}
+		$current_step_index = array_keys( $current_step )[0];
+		foreach ( $complete_steps as $step_index => $step_args ) {
+			if ( $step_index >= $current_step_index ) {
+				unset( $complete_steps[ $step_index ] );
 			}
 		}
 
@@ -703,6 +701,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Register the default checkout steps supported by this plugin.
 	 */
 	public function register_default_checkout_steps() {
+		// Bail if has already registered steps
+		if ( count( $this->checkout_steps ) > 0 ) { return; }
+		
 		// Bail if not on checkout or cart page or doing AJAX call
 		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
@@ -748,7 +749,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'is_complete_callback' => '__return_false', // Payment step is only complete when the order has been placed and the payment has been accepted, during the checkout process it will always be considered 'incomplete'.
 			'render_next_step_button' => false,
 		) );
-
 	}
 
 
@@ -1190,33 +1190,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 
-
-	/**
-	 * Checkout Step: Express Checkout
-	 */
-
-	
-	
-	/**
-	 * Output the express checkout section.
-	 */
-	public function maybe_output_express_checkout_section() {
-		if ( has_action( 'fc_checkout_express_checkout' ) ) {
-			$express_checkout_section_label = __( 'Express checkout', 'fluid-checkout' );
-			?>
-			<section class="fc-express-checkout" aria-label="<?php echo esc_attr( $express_checkout_section_label ); ?>">
-				<div class="fc-express-checkout__inner">
-					<h2 class="fc-express-checkout__title"><?php echo esc_html( $express_checkout_section_label ); ?></h2>
-					<?php do_action( 'fc_checkout_express_checkout' ); ?>
-				</div>
-				
-				<div class="fc-express-checkout__separator">
-					<span class="fc-express-checkout__separator-text"><?php echo esc_html( apply_filters( 'fc_checkout_login_separator_text', _x( 'Or', 'Separator label for the express checkout section', 'fluid-checkout' ) ) ); ?></span>
-				</div>
-			</section>
-			<?php
-		}
-	}
 
 
 

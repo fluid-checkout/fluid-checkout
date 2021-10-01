@@ -1,0 +1,30 @@
+// ------------------------------------
+// CHECKOUT COUPON CODE
+// ------------------------------------
+
+body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
+	position: relative;
+	margin-left: $global-spacing-tiny;
+	margin-right: - $global-spacing-tiny;
+	width: remsize( 3rem );
+	height: remsize( 3rem );
+	line-height: inherit;
+	text-decoration: none;
+	text-indent: remsize( -1000rem );
+
+	&:focus {
+		outline: $focus-outline-link;
+		outline-offset: $focus-outline-offset-link;
+	}
+}
+body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon::before {
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	width: remsize( 3rem );
+	height: remsize( 3rem );
+	line-height: remsize( 3rem );
+	text-align: center;
+	text-indent: 0;
+}
