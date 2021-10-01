@@ -209,11 +209,12 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: New option to move shipping phone field to the contact step.
 * Added: Compatibility with theme Divi by Elegant Themes.
 * Improved: Coupon code field and items shows loading status while processing adding or removing a coupon code.
+* Improved: Refactoring of Express Checkout feature, and added option to disable it.
 * Improved: Developement build scripts to use shared gulpfile.js, updated `gulp-sass` to 5.0.0.
 * Improved: Admin settings structure. Added "Integrations" subtab. Moved "Optional fields" and "Address Fields" settings into the "Features" section of the "Checkout Options" subtab.
 * Improved: Add parameter to allow setting custom attributes to substeps elements.
 * Improved: Add mechanism to conditionally make substeps non-editable or hidden.
-* Improved: Compatibility with theme Woodmart version 6.1.4+. Fixes social login forms and styles for coupon codes.
+* Improved: Compatibility with theme Woodmart version 6.1.4+, fixing social login forms and styles for coupon codes.
 * Fixed: Fatal error because steps were not registered on admin pages and AJAX requests. Fixes compatibility with page editor Elementor.
 
 = 1.3.0 - 2021-09-22 =
