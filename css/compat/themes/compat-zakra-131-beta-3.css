@@ -1,0 +1,10 @@
+div.woocommerce form .form-row .select2-selection,
+div.woocommerce form .form-row .select2-selection__rendered {
+  height: 39.16px;
+  line-height: 39.16px;
+}
+
+div.woocommerce form .form-row .select2-selection__arrow {
+  height: 37px;
+  line-height: 37px;
+}

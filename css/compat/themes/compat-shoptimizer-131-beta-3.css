@@ -1,0 +1,8 @@
+body #payment .fc-payment-methods__wrapper .payment_methods li:last-child:not(.woocommerce-notice) {
+  padding-bottom: 0;
+}
+
+form.woocommerce-checkout .fc-wrapper #order_review .woocommerce-checkout-review-order-table .product-name .product-item-thumbnail {
+  width: auto;
+  padding: 0;
+}

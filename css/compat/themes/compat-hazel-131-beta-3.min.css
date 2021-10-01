@@ -1,17 +1,3 @@
-/** 
- * FUNCTIONS
- * 
- * Caution: This file is supposed to import all functions
- * except the `remsize` functions which is already imported
- * before the `variables` as it is needed earlier.
- */
-/** 
- * FUNCTIONS
- * 
- * Caution: This file is supposed to import all functions
- * except the `remsize` functions which is already imported
- * before the `variables` as it is needed earlier.
- */
 body:not(.has-checkout-header) {
   padding-top: 120px;
 }
@@ -71,3 +57,4 @@ div.woocommerce form .form-row .select2-container .select2-selection__arrow {
 div.woocommerce form .form-row .select2-container .select2-selection__arrow {
   right: 10px;
 }
+/*# sourceMappingURL=maps/compat-hazel-131-beta-3.min.css.map */

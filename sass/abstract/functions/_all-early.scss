@@ -1,10 +1,15 @@
-/** 
- * FUNCTIONS
- * 
- * Caution: This file is supposed to import all functions
- * except the `remsize` functions which is already imported
- * before the `variables` as it is needed earlier.
- */
+// ------------------------------------
+// FUNCTIONS ALL-EARLY
+//
+// CAUTION:
+//
+// This file is supposed to
+// import all functions needed early
+// in the SASS processing, usually
+// before the processing the
+// `_variables.scss` file.
+//
+// ------------------------------------
 
 @import
     "strip-unit",
