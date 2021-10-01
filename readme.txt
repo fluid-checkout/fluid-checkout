@@ -153,6 +153,7 @@ Fluid Checkout is fully localized/translatable. This is very important for all u
 Please contribute your language to the plugin to make it even more useful.
 For translating we recommend the plugin ["Loco Translate - By Tim Whitlock"](https://wordpress.org/plugins/loco-translate/).
 
+
 == Installation ==
 
 = Automatic installation =
@@ -244,7 +245,6 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Removed extra margin on collapsible form sections on some themes.
 * Fixed: Unintended checkout update triggered for some fields. Fixes issue preventing users to fill payment information for the plugin "Mercado Pago payments for WooCommerce - by Mercado Pago".
 * Removed: Unused `cart-totals.php` template file.
-
 
 = 1.2.10 - 2021-09-10 =
 * Added: New filter hook `fc_coupon_code_field_initially_expanded` to allow displaying the coupon code field always expanded.
