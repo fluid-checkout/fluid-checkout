@@ -201,6 +201,16 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'title'         => __( 'Express Checkout', 'fluid-checkout' ),
+						'desc'          => __( 'Enable the Express Checkout section at checkout', 'fluid-checkout' ),
+						'desc_tip'      => __( 'Displays the Express Checkout section at checkout when supported payment gateways have this feature enabled.', 'fluid-checkout' ),
+						'id'            => 'fc_enable_checkout_express_checkout',
+						'default'       => 'yes',
+						'type'          => 'checkbox',
+						'autoload'      => false,
+					),
+
+					array(
 						'title'             => __( 'Gift options', 'fluid-checkout' ),
 						'desc'              => __( 'Display gift message and other gift options at the checkout page', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Allow customers to add a gift message and other gift related options to the order.', 'fluid-checkout' ),
