@@ -1,0 +1,18 @@
+// ------------------------------------
+// CHECKOUT FIELD VALIDATION
+// ------------------------------------
+
+// VALID FIELDS
+body.theme-Divi div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+
+	// "valid" field check icon
+	.select2-selection:after,
+	.woocommerce-input-wrapper:after {
+		top: remsize( 1.4rem );
+	}
+
+	// Select2 Fields
+	.select2-selection:after {
+		right: remsize( 2rem );
+	}
+}

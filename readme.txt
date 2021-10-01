@@ -94,6 +94,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 
 * Astra
 * Blocksy
+* Divi
 * Flatsome
 * Generate Press
 * Hello Elementor
@@ -206,6 +207,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 * Added: New option to move shipping phone field to the contact step.
+* Added: Compatibility with theme Divi by Elegant Themes.
 * Improved: Coupon code field and items shows loading status while processing adding or removing a coupon code.
 * Improved: Developement build scripts to use shared gulpfile.js, updated `gulp-sass` to 5.0.0.
 * Improved: Admin settings structure. Added "Integrations" subtab. Moved "Optional fields" and "Address Fields" settings into the "Features" section of the "Checkout Options" subtab.
