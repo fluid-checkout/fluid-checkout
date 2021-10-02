@@ -13,7 +13,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *      ['step_id']                      string      ID of the checkout step, it will be sanitized with `sanitize_title()`.
 	 *      ['step_title']                   string      The checkout step title visible to the user.
 	 *      ['priority']                     int         Defines the order the checkout step will be displayed.
-	 *      ['next_step_button_label']       string      The label for the "Next step" button. Accepts `<span>` and `<i>` elements for extra styling. Defaults to "Next Step".
 	 *      ['next_step_button_classes']     array       Array of CSS classes to add to the "Next step" button.
 	 *      ['render_next_step_button']      bool        Whether to display a "Next Step" button at the end of the step. Defaults to `true`.
 	 *      ['render_callback']              callable    Function name or callable array to display the contents of the checkout step.
@@ -478,7 +477,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$step_id = $step_args[ 'step_id' ];
 			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
 
-			// Add incomplete steps to the list
+			// Add complete steps to the list
 			if ( $is_complete_callback && is_callable( $is_complete_callback ) && call_user_func( $is_complete_callback ) ) {
 				$complete_steps[ $step_index ] = $step_args;
 			}
@@ -522,6 +521,46 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 
+
+	/**
+	 * Get the step arguments for the step ID passed.
+	 *
+	 * @param   string  $step_id  ID of the step.
+	 *
+	 * @return  array             Array with arguments of the step.
+	 */
+	public function get_step( $step_id ) {
+		$_checkout_steps = $this->get_checkout_steps();
+
+		foreach ( $_checkout_steps as $step_index => $step_args ) {
+			if ( $step_id == $step_args[ 'step_id' ] ) {
+				return $step_args;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get the step arguments for the step next to the step ID passed.
+	 *
+	 * @param   string  $step_id  ID of the step.
+	 *
+	 * @return  array             Array with arguments of the next step.
+	 */
+	public function get_next_step( $step_id ) {
+		$_checkout_steps = $this->get_checkout_steps();
+
+		foreach ( $_checkout_steps as $step_index => $step_args ) {
+			if ( $step_id == $step_args[ 'step_id' ] ) {
+				$next_step_index = $step_index + 1;
+				$next_step_args = array_key_exists( $next_step_index, $_checkout_steps ) ? $_checkout_steps[ $next_step_index ] : false;
+				return $next_step_args;
+			}
+		}
+
+		return false;
+	}
 
 	/**
 	 * Get the current checkout step. The first checkout step which is considered incomplete.
@@ -614,28 +653,40 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  boolean  `true` if the step is considered complete, `false` otherwise. Defaults to `false`.
 	 */
 	public function is_next_step_complete( $step_id ) {
-		$complete_steps = $this->get_complete_steps();
+		$step_args = $this->get_step( $step_id );
+		
+		// Check if step passed is incomplete
+		if ( false !== $step_args ) {
+			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
 
-		// Return `true` if next step id is found in the complete steps list
-		foreach ( $complete_steps as $step_index => $step_args ) {
-			
-			// Get next step args
-			$next_step_index = $step_index + 1;
-			$next_step_args = array_key_exists( $next_step_index, $complete_steps ) ? $complete_steps[ $next_step_index ] : false;
-			
-			// Maybe skip `shipping` step
-			if ( is_array( $next_step_args ) && 'shipping' == $next_step_args[ 'step_id' ] && ! WC()->cart->needs_shipping() ) {
-				$next_step_index++;
+			// Make all subsequent steps incomplete when the step passed is incomplete
+			if ( $is_complete_callback && is_callable( $is_complete_callback ) && ! call_user_func( $is_complete_callback ) ) {
+				return false;
 			}
+		}
 
-			if ( $step_id == $step_args[ 'step_id' ] ) {
-				if ( array_key_exists( $next_step_index, $complete_steps ) ) {
-					return true;
-				}
+		// Check if next step is complete
+		$next_step_args = $this->get_next_step( $step_id );
+		if ( false !== $next_step_args ) {
+			$is_complete_callback = array_key_exists( 'is_complete_callback', $next_step_args ) ? $next_step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
+
+			// Add incomplete steps to the list
+			if ( $is_complete_callback && is_callable( $is_complete_callback ) && call_user_func( $is_complete_callback ) ) {
+				return true;
 			}
 		}
 
 		return false;
+	}
+
+	/**
+	 * Get the label for the proceed to next step button.
+	 *
+	 * @param   string  $step_id  ID of the step.
+	 */
+	public function get_next_step_button_label( $step_id ) {
+		$next_step_args = $this->get_next_step( $step_id );
+		return sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_args[ 'step_title' ] );
 	}
 
 
@@ -666,10 +717,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Sanitize value for `render_next_step_button` flag and set default value if needed
 		$step_args[ 'render_next_step_button' ] = array_key_exists( 'render_next_step_button', $step_args ) && $step_args[ 'render_next_step_button' ] === false ? false : true;
 
-		// Sanitize "next step" button label, or set default value
-		$step_args[ 'next_step_button_label' ] = array_key_exists( 'next_step_button_label', $step_args ) && $step_args[ 'next_step_button_label' ] && $step_args[ 'next_step_button_label' ] != '' ? $step_args[ 'next_step_button_label' ] : __( 'Next step', 'fluid-checkout' );
-		$step_args[ 'next_step_button_label' ] = wp_kses( $step_args[ 'next_step_button_label' ], array( 'span' => array( 'class' => '' ), 'i' => array( 'class' => '' ) ) );
-
 		// Sanitize "next step" button classes
 		$step_args[ 'next_step_button_classes' ] = array_key_exists( 'next_step_button_classes', $step_args ) && is_array( $step_args[ 'next_step_button_classes' ] ) ? $step_args[ 'next_step_button_classes' ] : array();
 		foreach ( $step_args[ 'next_step_button_classes' ] as $key => $class ) {
@@ -688,6 +735,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Sort steps based on priority.
 		uasort( $_checkout_steps, array( $this, 'checkout_step_priority_uasort_comparison' ) );
+		$_checkout_steps = array_values( $_checkout_steps );
 
 		// Update registered checkout steps
 		$this->checkout_steps = $_checkout_steps;
@@ -714,7 +762,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'priority' => 10,
 			'render_callback' => array( $this, 'output_step_contact' ),
 			'is_complete_callback' => array( $this, 'is_step_complete_contact' ),
-			'next_step_button_label' => WC()->cart->needs_shipping() ? __( 'Proceed to Shipping', 'fluid-checkout' ) : __( 'Proceed to Billing', 'fluid-checkout' ),
 		) );
 
 		// SHIPPING
@@ -726,7 +773,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'render_callback' => array( $this, 'output_step_shipping' ),
 				'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
 				'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
-				'next_step_button_label' => __( 'Proceed to Billing', 'fluid-checkout' ),
 			) );
 		}
 
@@ -737,7 +783,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'priority' => 30,
 			'render_callback' => array( $this, 'output_step_billing' ),
 			'is_complete_callback' => array( $this, 'is_step_complete_billing' ),
-			'next_step_button_label' => __( 'Proceed to Payment', 'fluid-checkout' ),
 		) );
 
 		// PAYMENT
@@ -749,6 +794,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'is_complete_callback' => '__return_false', // Payment step is only complete when the order has been placed and the payment has been accepted, during the checkout process it will always be considered 'incomplete'.
 			'render_next_step_button' => false,
 		) );
+
+		do_action( 'fc_register_steps' );
 	}
 
 
@@ -917,9 +964,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   array  $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
 	 */
 	public function output_step_end_tag( $step_args, $step_index ) {
-
 		// Maybe output the "Next step" button
 		if ( $this->is_checkout_layout_multistep() && array_key_exists( 'render_next_step_button', $step_args ) && $step_args[ 'render_next_step_button' ] ) :
+			$button_label = apply_filters( 'fc_next_step_button_label', $this->get_next_step_button_label( $step_args[ 'step_id' ] ), $step_args[ 'step_id' ] );
+
 			$button_attributes = array(
 				'class' => implode( ' ', array_merge( array( 'fc-step__next-step', 'button' ), $step_args[ 'next_step_button_classes' ] ) ),
 				'data-step-next' => true,
@@ -927,7 +975,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$button_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $button_attributes ), $button_attributes ) );
 			?>
 			<div class="fc-step__actions">
-				<button type="button" <?php echo $button_attributes_str; // WPCS: XSS ok. ?>><?php echo esc_html( $step_args[ 'next_step_button_label' ] ); ?></button>
+				<button type="button" <?php echo $button_attributes_str; // WPCS: XSS ok. ?>><?php echo esc_html( $button_label ); ?></button>
 			</div>
 			<?php
 		endif;
