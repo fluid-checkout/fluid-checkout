@@ -165,11 +165,11 @@ gulp.task( 'build-css', gulp.series( 'update-ver', 'clean-css', function( done )
 		.pipe(sass())
 		.pipe(autoprefixer({ cascade: false }))
 		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./css/compat/plugins/')) // save .css
+		.pipe(gulp.dest('./css/compat/themes/')) // save .css
 		.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false}, reduceIdents: {keyframes: false} } ) )
 		.pipe(rename( { suffix: '.min' } ) )
 		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./css/compat/plugins/')); // save .min.css
+		.pipe(gulp.dest('./css/compat/themes/')); // save .min.css
 	}
 
 	done();
