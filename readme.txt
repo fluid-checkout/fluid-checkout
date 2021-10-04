@@ -215,6 +215,9 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+Fixed: Fix build process to save theme compat files in the right place.
+
 = 1.3.1 - 2021-10-01 =
 * Added: New option to move shipping phone field to the contact step.
 * Added: Compatibility with theme Divi by Elegant Themes.
