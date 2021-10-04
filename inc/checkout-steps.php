@@ -654,26 +654,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  boolean  `true` if the step is considered complete, `false` otherwise. Defaults to `false`.
 	 */
 	public function is_next_step_complete( $step_id ) {
-		$step_args = $this->get_step( $step_id );
-		
-		// Check if step passed is incomplete
-		if ( false !== $step_args ) {
-			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
+		$complete_steps = $this->get_complete_steps();
 
-			// Make all subsequent steps incomplete when the step passed is incomplete
-			if ( $is_complete_callback && is_callable( $is_complete_callback ) && ! call_user_func( $is_complete_callback ) ) {
-				return false;
+		// Return `true` if next step id is found in the complete steps list
+		foreach ( $complete_steps as $step_index => $step_args ) {
+			
+			// Get next step args
+			$next_step_index = $step_index + 1;
+			$next_step_args = array_key_exists( $next_step_index, $complete_steps ) ? $complete_steps[ $next_step_index ] : false;
+			
+			// Maybe skip `shipping` step
+			if ( is_array( $next_step_args ) && 'shipping' == $next_step_args[ 'step_id' ] && ! WC()->cart->needs_shipping() ) {
+				$next_step_index++;
 			}
-		}
 
-		// Check if next step is complete
-		$next_step_args = $this->get_next_step( $step_id );
-		if ( false !== $next_step_args ) {
-			$is_complete_callback = array_key_exists( 'is_complete_callback', $next_step_args ) ? $next_step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
-
-			// Add incomplete steps to the list
-			if ( $is_complete_callback && is_callable( $is_complete_callback ) && call_user_func( $is_complete_callback ) ) {
-				return true;
+			if ( $step_id == $step_args[ 'step_id' ] ) {
+				if ( array_key_exists( $next_step_index, $complete_steps ) ) {
+					return true;
+				}
 			}
 		}
 
