@@ -235,6 +235,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get checkout object.
 		$checkout = WC()->checkout();
 
+		// Check if checkout page is showing the checkout form, then check the settings to show theme header or plugin header
 		return ( ! ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) && 'yes' === get_option( 'fc_hide_site_header_footer_at_checkout', 'yes' );
 	}
 

@@ -4,7 +4,7 @@ Tags: woocommerce, e-commerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.2
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -218,6 +218,9 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 = Unreleased =
 * Removed: Step registration argument `next_step_button_label` is no longer used as the label of the button to proceed to next step is now retrieved dynamically.
 * Fixed: When adding new steps, functions to get current and next steps and outputing the progress bar now works as expected.
+
+= 1.3.2 - 2021-10-04 =
+Fixed: Fix build process to save theme compat files in the right place.
 
 = 1.3.1 - 2021-10-01 =
 * Added: New option to move shipping phone field to the contact step.
