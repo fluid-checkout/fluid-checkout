@@ -22,6 +22,7 @@
 	var _hasInitialized = false;
 	var _hasJQuery = ( $ != null );
 	var _publicMethods = { };
+	var _validationTypes = {};
 	var _settings = {
 		bodyClass: 'fc-checkout-validation--active',
 		formSelector: 'form.checkout',
@@ -40,12 +41,6 @@
 			email:            'This is not a valid email address.',
 			confirmation:     'This field does not match the related',
 		},
-	};
-
-	var _validationTypes = {
-		required:         'required-field',
-		email:            'email',
-		confirmation:     'confirmation-field',
 	};
 
 
@@ -143,14 +138,17 @@
 
 	/**
 	 * Add markup for inline message of required fields.
-	 * @param  {Field} field      Field to validate.
-	 * @param  {Element} formRow  Form row related to the field.
-	 * @param  {String} message   Message to add.
-	 * @param  {String} typeClass Type of error used to identify which message to display on validation.
+	 * @param  {Field}   field         Field to validate.
+	 * @param  {Element} formRow       Form row related to the field.
+	 * @param  {String}  message       Message to add.
+	 * @param  {String}  invalidClass  Type of error used to identify which message is related to which error.
 	 */
-	var addInlineMessageMarkup = function( field, formRow, message, typeClass ) {
+	var addInlineMessage = function( field, formRow, message, invalidClass ) {
 		// Bail if field not valid
-		if ( !field ) { return; }
+		if ( ! field ) { return; }
+
+		// Bail if message is empty
+		if ( ! message || message.length == 0 ) { return; }
 
 		var referenceNode = field;
 
@@ -163,81 +161,24 @@
 		// Create message element and add it after the field.
 		var parent = field.parentNode;
 		var element = document.createElement( 'span' );
-		element.className = 'woocommerce-error invalid-' + typeClass;
+		element.className = 'woocommerce-error invalid-' + invalidClass;
 		element.innerText = message;
 		parent.insertBefore( element, referenceNode.nextSibling );
 	};
 
 
-
 	/**
-	 * Add markup for inline message of required fields.
+	 * Remove inline message from the field.
 	 * @param  {Field} field      Field to validate.
 	 * @param  {Element} formRow  Form row related to the field.
+	 * @param  {String}  invalidClass  Type of error used to identify which message is related to which error.
 	 */
-	var initInlineMessageRequired = function( field, formRow ) {
-		var message = _settings.validationMessages.required;
-		addInlineMessageMarkup( field, formRow, message, 'required-field' );
-	};
-
-
-
-	/**
-	 * Add markup for inline message of email fields.
-	 * @param  {Field} field      Field to validate.
-	 * @param  {Element} formRow  Form row related to the field.
-	 */
-	var initInlineMessageEmail = function( field, formRow ) {
-		var message = _settings.validationMessages.email;
-		addInlineMessageMarkup( field, formRow, message, 'email' );
-	};
-
-
-
-	/**
-	 * Add markup for inline message of confirmation fields.
-	 * @param  {Field} field      Field to validate.
-	 * @param  {Element} formRow  Form row related to the field.
-	 */
-	var initInlineMessageConfirmation = function( field, formRow ) {
-		var message = _settings.validationMessages.confirmation;
-
-		// Try get message from field attributes
-		if ( field.getAttribute( 'data-invalid-confirm-with' ) ) {
-			message = field.getAttribute( 'data-invalid-confirm-with' );
+	var removeInlineMessage = function( field, formRow, invalidClass ) {
+		var messageElements = formRow.querySelectorAll( 'span.woocommerce-error.invalid-' + invalidClass );
+		for ( var i = 0; i < messageElements.length; i++ ) {
+			messageElements[ i ].parentNode.removeChild( messageElements[ i ] );
 		}
-
-		addInlineMessageMarkup( field, formRow, message, 'confirmation-field' );
-	};
-
-
-
-	/**
-	 * Initalize inline validation messages.
-	 */
-	var initInlineMessages = function() {
-		var form = document.querySelector( _settings.formSelector );
-
-		// Bail if form not found
-		if ( !form ) { return; }
-
-		var fields = form.querySelectorAll( _settings.validateFieldsSelector );
-
-		for (var i = 0; i < fields.length; i++) {
-			var field = fields[i],
-					formRow = getFormRow( field );
-
-			// Continue to next field if form row not found
-			if ( !formRow ) { continue; }
-
-			// Proceed if field needs validation
-			if ( needsValidationMessage( field, formRow ) ) {
-				if ( isRequiredField( formRow ) ) { initInlineMessageRequired( fields[i], formRow ); }
-				if ( isEmailField( formRow ) ) { initInlineMessageEmail( fields[i], formRow ); }
-				if ( isConfirmationField( formRow ) ) { initInlineMessageConfirmation( fields[i], formRow ); }
-			}
-		}
-	};
+	}
 
 	
 
@@ -270,7 +211,7 @@
 	 * @param  {Field}   field  Field to check.
 	 * @return {Boolean}        True if field has value.
 	 */
-	var hasValue = function( field ) {
+	_publicMethods.hasValue = function( field ) {
 		// Check for select 2 field
 		if ( isSelectField( field ) ) {
 			if ( field.options && field.selectedIndex > -1 && field.options[ field.selectedIndex ].value != '' ) {
@@ -291,91 +232,88 @@
 
 	/**
 	 * Check if form row is required.
+	 * @param  {Field}    field Field for validation.
 	 * @param  {Element}  formRow Form row element.
 	 * @return {Boolean}          True if required.
 	 */
-	var isRequiredField = function( formRow ) {
-		if ( formRow.matches( _settings.typeRequiredSelector ) ) { return true; }
-		return false;
+	var isRequiredField = function( field, formRow ) {
+		if ( ! formRow.matches( _settings.typeRequiredSelector ) ) { return false; }
+		return true;
 	};
-
-
 
 	/**
 	 * Validate required field.
-	 * @param  {Field} field Field for validation.
+	 * @param  {Field}    field Field for validation.
+	 * @param  {Element}  formRow Form row element.
 	 */
 	var validateRequired = function( field, formRow ) {
-		// Bail if has value
-		if ( hasValue( field ) ) { return [ 'required', true ]; }
+		// Bail if field does not have a value
+		if ( ! _publicMethods.hasValue( field ) ) { return { valid: false, message: _settings.validationMessages.required }; }
 
-		// Return classes for invalid field
-		return [ 'required', _validationTypes.required ];
+		return { valid: true };
 	};
 
 
 
 	/**
 	 * Check if form row is email field.
+	 * @param  {Field}    field Field for validation.
 	 * @param  {Element}  formRow Form row element.
 	 * @return {Boolean}          True if is email field.
 	 */
-	var isEmailField = function( formRow ) {
-		if ( formRow.matches( _settings.typeEmailSelector ) ) { return true; }
-		return false;
+	var isEmailField = function( field, formRow ) {
+		if ( ! formRow.matches( _settings.typeEmailSelector ) ) { return false; }
+		return true;
 	};
-
-
 
 	/**
 	 * Validate email field.
-	 * @param  {Field} field Field for validation.
+	 * @param  {Field}    field Field for validation.
+	 * @param  {Element}  formRow Form row element.
 	 */
 	var validateEmail = function( field, formRow ) {
 		// Bail if does not have value
-		if ( ! hasValue( field ) ) { return [ 'email', true ]; }
+		if ( ! _publicMethods.hasValue( field ) ) { return { valid: false }; }
 
 		/* https://stackoverflow.com/questions/2855865/jquery-validate-e-mail-address-regex */
 		var emailPattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
 
 		// Validate email value
-		if ( emailPattern.test( field.value ) ) { return [ 'email', true ]; }
+		if ( ! emailPattern.test( field.value ) ) { return { valid: false, message: _settings.validationMessages.email }; }
 
-		// Return classes for invalid field
-		return [ 'email', _validationTypes.email ];
+		return { valid: true };
 	};
 
 
 
 	/**
 	 * Check if form row is a confirmation field.
+	 * @param  {Field}    field Field for validation.
 	 * @param  {Element}  formRow Form row element.
 	 * @return {Boolean}          True if is a confimation field.
 	 */
-	var isConfirmationField = function( formRow ) {
-		if ( formRow.querySelector( _settings.typeConfirmationSelector ) ) { return true; }
-		return false;
+	var isConfirmationField = function( field, formRow ) {
+		if ( ! formRow.querySelector( _settings.typeConfirmationSelector ) ) { return false; }
+		return true;
 	};
-
-
 
 	/**
 	 * Validate confirmation field.
-	 * @param  {Field} field Field for validation.
+	 * @param  {Field}    field Field for validation.
+	 * @param  {Element}  formRow Form row element.
 	 */
 	var validateConfirmation = function( field, formRow ) {
 		// Bail if does not have value
-		if ( ! hasValue( field ) ) { return [ 'confirmation', true ]; }
+		if ( ! _publicMethods.hasValue( field ) ) { return { valid: false }; }
 
 		// Get confirmation field
 		var form = formRow.closest( 'form' );
 		var confirmWith = form ? form.querySelector( field.getAttribute( 'data-confirm-with' ) ) : null;
 
 		// Validate fields have same value
-		if ( confirmWith && field.value == confirmWith.value ) { return [ 'confirmation', true ]; }
+		if ( confirmWith && field.value == confirmWith.value ) { return { valid: false, message: _settings.validationMessages.confirmation }; }
 
-		// Return classes for invalid field
-		return [ 'confirmation', _validationTypes.confirmation ];
+		return { valid: true };
 	};
 
 
@@ -390,30 +328,17 @@
 		// Bail if field should always validate
 		if ( isAlwaysValidate( field ) ) { return true; }
 
-		// Test validation types
-		if ( isRequiredField( formRow ) ) { return true; }
-		if ( isEmailField( formRow ) ) { return true; }
-		if ( isConfirmationField( formRow ) ) { return true; }
+		// Test if field needs validation from any validation type
+		var validationTypeNames = Object.getOwnPropertyNames( _validationTypes );
+		for ( var i = 0; i < validationTypeNames.length; i++) {
+			var validationTypeName = validationTypeNames[i];
+			var validationType = _validationTypes[ validationTypeName ];
+			if ( validationType.needsValidation( field, formRow ) ) {
+				return true;
+			}
+		}
 
 		return false;
-	};
-
-
-
-	/**
-	 * Check if field needs validation message markup.
-	 * @param  {Field} field      Field to validate.
-	 * @param  {Element} formRow  Form row for validation.
-	 * @return {Boolean}          True if field needs any validation.
-	 */
-	var needsValidationMessage = function( field, formRow ) {
-		// Check existence of message markup
-		if ( formRow.querySelector( '.woocommerce-error' ) ) { return false; }
-
-		// Check if field needs validation
-		if ( ! needsValidation( field, formRow ) ) { return false; }
-		
-		return true;
 	};
 
 
@@ -429,27 +354,30 @@
 		var valid = true;
 
 		// Iterate validation results
-		for ( var i = 0; i < validationResults.length; i++ ) {
-			var type    = validationResults[i][0],
-					result  = validationResults[i][1];
+		var validationResultsNames = Object.getOwnPropertyNames( validationResults );
+		for ( var i = 0; i < validationResultsNames.length; i++ ) {
+			var validationTypeName = validationResultsNames[ i ];
+			var validationType = _validationTypes[ validationTypeName ];
+			var result = validationResults[ validationTypeName ].valid;
+			var message = validationResults[ validationTypeName ].message;
+			var invalidClass = validationType.invalidClass;
 
-			// Remove invalidation classes from the field
-			if ( true === result ) {
-				// TODO: Maybe refactor to use classList.toggle
-				// Remove invalid classes for validation type
-				formRow.classList.remove( _settings.invalidClass +'-'+ _validationTypes[ type ] );
-			}
-			// Add invalidation classes to the field
-			else {
+			// Remove messages for the current validation type
+			removeInlineMessage( field, formRow, invalidClass );
+
+			// Toggle validation `invalidClass` according to validation `result`
+			formRow.classList.toggle( _settings.invalidClass +'-'+ validationType.invalidClass, true !== result );
+
+			// Maybe set field as invalid
+			if ( true !== result ) {
 				valid = false;
-				// TODO: Maybe refactor to use classList.toggle
-				formRow.classList.add( _settings.invalidClass +'-'+ result );
+				addInlineMessage( field, formRow, message, invalidClass );
 			}
 		}
 
-		// Toggle valid/invalid classes
+		// Toggle general field valid/invalid classes
 		formRow.classList.toggle( _settings.validClass, valid );
-		formRow.classList.toggle( _settings.invalidClass, ! valid );
+		formRow.classList.toggle( _settings.invalidClass, !valid );
 
 		return valid;
 	};
@@ -488,11 +416,38 @@
 
 
 	/**
+	 * Handle document clicks and route to the appropriate function.
+	 */
+	var handleValidateEvent = function( e ) {
+		var field = e.target;
+
+		// Get correct field when is select2
+		if ( isSelect2Field( e.target ) ) {
+			field = e.target.closest( _settings.formRowSelector ).querySelector( 'select' );
+		}
+
+		_publicMethods.validateField( field );
+	};
+
+
+
+	/**
+	 * Register validation types.
+	 */
+	var registerValidationTypes = function() {
+		_publicMethods.registerValidationType( 'required', 'required-field', isRequiredField, validateRequired );
+		_publicMethods.registerValidationType( 'email', 'email', isEmailField, validateEmail );
+		_publicMethods.registerValidationType( 'confirmation', 'confirmation-field', isConfirmationField, validateConfirmation );
+	}
+
+
+
+	/**
 	 * Clear validation results status of a field.
 	 * @param  {Field} field             Field to validation.
 	 * @param  {Element} formRow          Form row element.
 	 */
-	_publicMethods.clearValidationResults = function( field, formRow ) {
+	 _publicMethods.clearValidationResults = function( field, formRow ) {
 		// Bail if field or form row invalid
 		if ( ! field || ! formRow ) { return; }
 		
@@ -511,22 +466,6 @@
 
 
 	/**
-	 * Handle document clicks and route to the appropriate function.
-	 */
-	var handleValidateEvent = function( e ) {
-		var field = e.target;
-
-		// Get correct field when is select2
-		if ( isSelect2Field( e.target ) ) {
-			field = e.target.closest( _settings.formRowSelector ).querySelector( 'select' );
-		}
-
-		_publicMethods.validateField( field );
-	};
-
-
-
-	/**
 	 * Test multiple validations on the passed field.
 	 * @param  {Field} field    Field for validation.
 	 * @return {Boolean}        True if field is valid.
@@ -535,7 +474,7 @@
 		// Bail if field is null
 		if ( ! field ) { return true; }
 
-		var validationResults = [],
+		var validationResults = {},
 			formRow = getFormRow( field );
 
 		// Bail if formRow not found
@@ -547,12 +486,17 @@
 		// Bail if field doesn't need validation
 		if ( ! needsValidation( field, formRow ) ) { return true; }
 
-		// Perform validations
-		if ( isRequiredField( formRow ) ) { validationResults.push( validateRequired( field, formRow ) ); }
-		if ( isEmailField( formRow ) ) { validationResults.push( validateEmail( field, formRow ) ); }
-		if ( isConfirmationField( formRow ) ) { validationResults.push( validateConfirmation( field, formRow ) ); }
+		// Execute validate field for all applicable validation types
+		var validationTypeNames = Object.getOwnPropertyNames( _validationTypes );
+		for ( var i = 0; i < validationTypeNames.length; i++) {
+			var validationTypeName = validationTypeNames[i];
+			var validationType = _validationTypes[ validationTypeName ];
+			if ( validationType.needsValidation( field, formRow ) ) {
+				validationResults[ validationTypeName ] = validationType.validate( field, formRow );
+			}
+		}
 
-		// TODO: Trigger validation of related fields (ie zip > State, Country)
+		// TODO: Maybe trigger validation of related fields (ie zip > State, Country)
 
 		// Process results
 		return processValidationResults( field, formRow, validationResults );
@@ -580,6 +524,55 @@
 		return all_valid;
 	};
 
+
+
+	/**
+	 * Register a new validation type.
+	 *
+	 * @param   String    validationType      A `snake_case` string representing the type of validation. Used as the validation type property on the `_validationTypes` object.
+	 * @param   String    invalidClass        CSS class to be used on the `form-row` related to the field when the validation fails.
+	 * @param   Function  fnNeedsValidation   A function to check if the field needs validation, should return `true` when the field needs validation.
+	 * @param   Function  fnValidate          A function to validate the form field, should accept 2 parameters being `field` and `formRow`, both expected to be an HTMLElement.
+	 *
+	 * @return  Boolean                  `true` when the registration of the validation type has been successful, `false` otherwise.
+	 */
+	_publicMethods.registerValidationType = function( validationType, invalidClass, fnNeedsValidation, fnValidate ) {
+		// Bail if _validationTypes not initialized
+		if ( ! _validationTypes ) { return false; }
+
+		// Bail if validationType or invalidClass not a string
+		if ( typeof validationType !== 'string' || typeof invalidClass !== 'string' ) { return false; }
+
+		// Bail if fnNeedsValidation or fnValidate are not functions
+		if ( ! ( fnNeedsValidation instanceof Function ) || ! ( fnValidate instanceof Function ) ) { return false; }
+		
+		// Bail if validation type already registered
+		if ( _validationTypes.hasOwnProperty( validationType ) ) {
+			console.log( 'Validation type "' + validationType + '" already registered.' );
+			return false;
+		}
+
+		// Register validation type
+		_validationTypes[ validationType ] = {
+			invalidClass: invalidClass,
+			needsValidation: fnNeedsValidation,
+			validate: fnValidate,
+		}
+
+		return true;
+	}
+
+
+
+	/**
+	 * Return the registered validation types.
+	 *
+	 * @return  Object  Object with the registered validation types as properties.
+	 */
+	_publicMethods.getValidationTypes = function() {
+		return _validationTypes;
+	}
+
 	
 
 	/**
@@ -591,20 +584,19 @@
 		// Merge settings
 		_settings = extend( _settings, options );
 
-		// Initialize message to listen for changes
-		initInlineMessages();
-		
-		// Add body class
-		document.body.classList.add( _settings.bodyClass );
+		// Register validation types
+		registerValidationTypes();
 
 		if ( _hasJQuery ) {
 			$( _settings.formSelector ).on( 'input validate change', _settings.validateFieldsSelector, handleValidateEvent );
 			
 			// Run on checkout or cart changes
 			$( document ).on( 'load_ajax_content_done', _publicMethods.init );
-			$( document ).on( 'updated_checkout', initInlineMessages );
 			$( document ).on( 'country_to_state_changed', maybeClearStateFields );
 		}
+
+		// Add body class
+		document.body.classList.add( _settings.bodyClass );
 
 		_hasInitialized = true;
 	};

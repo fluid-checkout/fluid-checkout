@@ -22,7 +22,8 @@ class FluidCheckout_Validation extends FluidCheckout {
 		// Body class
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
-		// TODO: Enqueue validation styles and scripts from WP instead of RequireBundle
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
 		// Checkout validation settings
 		add_filter( 'fc_js_settings', array( $this, 'add_checkout_validation_js_settings' ), 10 );
@@ -53,6 +54,23 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 
 
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
+
+		// Styles
+		wp_enqueue_style( 'fc-checkout-validation', self::$directory_url . 'css/checkout-validation'. self::$asset_version . '.css', array( 'fc-checkout-layout' ), NULL );
+
+		// Checkout steps scripts
+		wp_enqueue_script( 'fc-checkout-validation', self::$directory_url . 'js/checkout-validation'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("load",function(){CheckoutValidation.init(fcSettings.checkoutValidation);})' );
+	}
+
+
+
 
 	/**
 	 * Add Checkout Validation settings to the plugin settings JS object.
@@ -62,6 +80,8 @@ class FluidCheckout_Validation extends FluidCheckout {
 	public function add_checkout_validation_js_settings( $settings ) {
 
 		$settings[ 'checkoutValidation' ] = apply_filters( 'fc_checkout_validation_script_settings', array(
+			'validateFieldsSelector' => '.input-text, select',
+			'alwaysValidateFieldsSelector' => '',
 			'mailcheckSuggestions' => array(
 				/* translators: %s: html for the email address typo correction suggestion link */
 				'suggestedElementTemplate'    => '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( __( 'Did you mean %s?', 'fluid-checkout' ), '<a class="mailcheck-suggestion" href="#apply-suggestion" role="button" aria-label="'.esc_attr( __( 'Change email address to: {suggestion-value}', 'fluid-checkout' ) ).'" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
