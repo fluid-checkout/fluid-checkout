@@ -106,7 +106,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	 * @return array
 	 */
 	public function get_settings( $current_section = '' ) {
-		return apply_filters( 'woocommerce_get_settings_' . $this->id, $settings, $current_section );
+		return apply_filters( 'woocommerce_get_settings_' . $this->id, array(), $current_section );
 	}
 
 
