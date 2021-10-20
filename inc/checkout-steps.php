@@ -1816,9 +1816,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'show_package_details'		=> sizeof( $packages ) > 1,
 				'show_shipping_calculator'	=> is_cart() && $first_item,
 				'package_details'			=> implode( ', ', $product_names ),
-				// @codingStandardsIgnoreStart
-				'package_name'				=> apply_filters( 'woocommerce_shipping_package_name', sprintf( _nx( 'Shipping', 'Shipping %d', ( $i + 1 ), 'shipping packages', 'woocommerce' ), ( $i + 1 ) ), $i, $package ),
-				// @codingStandardsIgnoreEnd
+				/* translators: %d: shipping package number */
+				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
 				'package_index'				=> $i,
 				'chosen_method'				=> $chosen_method,
 			) );
