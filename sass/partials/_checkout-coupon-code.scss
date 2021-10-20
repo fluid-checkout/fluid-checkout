@@ -28,6 +28,7 @@
 	padding-right: $global-spacing-small;
 	right: remsize( .5rem );
 	height: remsize( 4.5rem );
+	width: auto;
 
 	&:focus {
 		outline: $focus-outline-button;

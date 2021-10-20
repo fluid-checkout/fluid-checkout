@@ -1658,6 +1658,7 @@ div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select
   padding-right: 20px;
   right: 5px;
   height: 45px;
+  width: auto;
 }
 .fc-wrapper .fc-expansible-form-section__content--coupon_code .fc-coupon-code__apply:focus {
   outline: solid 2px #535156;
