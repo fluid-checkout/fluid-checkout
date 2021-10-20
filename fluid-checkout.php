@@ -459,6 +459,12 @@ class FluidCheckout {
 
 	/**
 	 * Get hook callbacks by class name.
+	 *
+	 * @param   string  $tag         Hook name.
+	 * @param   string  $class_name  Class name.
+	 * @param   int     $priority    Hook priority.
+	 *
+	 * @return  array|bool           Array of hooked functions for the class, or `false` if no functions were found.
 	 */
 	public function get_hooked_function_for_class( $tag, $class_name, $priority ) {
 		global $wp_filter;
@@ -478,11 +484,38 @@ class FluidCheckout {
 		}
 
 		// Return false if no functions hooked
-		return count( $class_callbacks ) > 0 ? $class_callbacks : false;
+		return $class_callbacks && count( $class_callbacks ) > 0 ? $class_callbacks : false;
+	}
+
+	/**
+	 * Get hook callbacks by priority.
+	 *
+	 * @param   string  $tag         Hook name.
+	 * @param   int     $priority    Hook priority.
+	 *
+	 * @return  array|bool           Array of hooked functions for the priority value, or `false` if no functions were found.
+	 */
+	public function get_hooked_function_for_priority( $tag, $priority ) {
+		global $wp_filter;
+
+		// Bail if hook tag doesn't exist
+		if ( ! array_key_exists( $tag, $wp_filter ) ) { return false; }
+
+		$callbacks = $wp_filter[ $tag ]->callbacks;
+		$priority_callbacks = $callbacks[ $priority ];
+
+		// Return false if no functions hooked
+		return $priority_callbacks && count( $priority_callbacks ) > 0 ? $priority_callbacks : false;
 	}
 
 	/**
 	 * Remove hook callback by class name.
+	 *
+	 * @param   string  $tag             Hook name.
+	 * @param   string  $function_array  Callable array containing the Object and function name.
+	 * @param   int     $priority        Hook priority.
+	 *
+	 * @return  bool                     `true` when the function was found and removed, `false` otherwise.
 	 */
 	public function remove_filter_for_class( $tag, $function_array, $priority ) {
 		// Bail if function_array isn't an array or doens't have 2 string values
@@ -507,9 +540,56 @@ class FluidCheckout {
 	/**
 	 * Remove hook callback by class name (alias for `remove_filter_for_class`).
 	 * @see `remove_filter_for_class`
+	 *
+	 * @param   string  $tag             Hook name.
+	 * @param   string  $function_array  Callable array containing the Object and function name.
+	 * @param   int     $priority        Hook priority.
+	 *
+	 * @return  bool                     `true` when the function was found and removed, `false` otherwise.
 	 */
 	public function remove_action_for_class( $tag, $function_array, $priority ) {
 		return $this->remove_filter_for_class( $tag, $function_array, $priority );
+	}
+
+	/**
+	 * Remove hook callback for anonymous functions (closure).
+	 *
+	 * @param   string  $tag         Hook name.
+	 * @param   int     $priority    Hook priority.
+	 * @param   bool    $first_only  Whether to remove all occurencies or only the first one. Defaults to only the first occurency.
+	 *
+	 * @return  bool                 `true` when the function was found and removed, `false` otherwise.
+	 */
+	public function remove_filter_for_closure( $tag, $priority, $all_occurencies = false ) {
+		// Get callbacks for the priority value
+		$priority_callbacks = $this->get_hooked_function_for_priority( $tag, $priority );
+
+		// Bail when no hooks found for that class
+		if ( ! $priority_callbacks ) { return false; }
+
+		foreach ( $priority_callbacks as $callback ) {
+			if ( $callback['function'] instanceof Closure ) {
+				remove_filter( $tag, $callback['function'], $priority );
+				
+				// Skip removing other occurencies, when not removing all occurencies
+				if ( ! $all_occurencies ) { break; }
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Remove hook callback for anonymous functions (closure)(alias for `remove_filter_for_closure`).
+	 *
+	 * @param   string  $tag         Hook name.
+	 * @param   int     $priority    Hook priority.
+	 * @param   bool    $first_only  Whether to remove all occurencies or only the first one. Defaults to only the first occurency.
+	 *
+	 * @return  bool                 `true` when the function was found and removed, `false` otherwise.
+	 */
+	public function remove_action_for_closure( $tag, $priority, $all_occurencies = false ) {
+		return $this->remove_filter_for_closure( $tag, $priority, $all_occurencies );
 	}
 
 }

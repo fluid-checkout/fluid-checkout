@@ -24,7 +24,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 	}
 
 	/**
-	 * Prepare the hooks related to shipping method "Local Pickup".
+	 * Add or remove very late hooks.
 	 */
 	public function very_late_hooks() {
 		// Bail if not on checkout or cart page or doing AJAX call
