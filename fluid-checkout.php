@@ -571,7 +571,7 @@ class FluidCheckout {
 			if ( $callback['function'] instanceof Closure ) {
 				remove_filter( $tag, $callback['function'], $priority );
 				
-				// Remove only first, if not removing all occurencies
+				// Skip removing other occurencies, when not removing all occurencies
 				if ( ! $all_occurencies ) { break; }
 			}
 		}
