@@ -221,6 +221,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Refactor of the front-end checkout validation script to allow developers to add validation type extensions.
 * Improved: Compatibility with theme Neve.
 * Fixed: When adding new steps, functions to get current and next steps and outputing the progress bar now works as expected.
+* Fixed: Translation of shipping package names to match what is used by WooCommerce.
 * Removed: Step registration argument `next_step_button_label` is no longer used as the label of the button to proceed to next step is now retrieved dynamically.
 
 = 1.3.2 - 2021-10-04 =
