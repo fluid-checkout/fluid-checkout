@@ -2,9 +2,9 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with theme: Neve (by ThemeIsle).
+ * Compatibility with theme: Aora (by ThemeIsle).
  */
-class FluidCheckout_ThemeCompat_Neve extends FluidCheckout {
+class FluidCheckout_ThemeCompat_Aora extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -24,4 +24,4 @@ class FluidCheckout_ThemeCompat_Neve extends FluidCheckout {
 
 }
 
-FluidCheckout_ThemeCompat_Neve::instance();
+FluidCheckout_ThemeCompat_Aora::instance();
