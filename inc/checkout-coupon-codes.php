@@ -109,7 +109,8 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		}
 
 		// Output coupon code field and button in an expansible form section
-		$coupon_code_toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), strtolower( $coupon_code_field_label ) ) );
+		$coupon_code_toggle_label = get_option( 'fc_optional_fields_link_label_lowercase', 'yes' ) === 'yes' ? strtolower( $coupon_code_field_label ) : $coupon_code_field_label;
+		$coupon_code_toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), $coupon_code_toggle_label ) );
 		/* translators: %s: Form field label */
 		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, $coupon_code_toggle_label, $coupon_code_expansible_args );
 		woocommerce_form_field( $key, $coupon_code_field_args );
