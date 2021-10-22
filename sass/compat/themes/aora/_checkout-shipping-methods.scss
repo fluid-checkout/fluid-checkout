@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT SHIPPING METHODS
+// ------------------------------------
+
+// Hide default radio elements with opacity to allow for keyboard navigation
+body.theme-aora .shipping-method__option input[type="radio"] {
+	display: block !important;
+}

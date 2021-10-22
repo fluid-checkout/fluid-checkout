@@ -1,0 +1,34 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body.theme-aora.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
+	border: $payment-method-border !important;
+}
+
+
+
+body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method {
+	margin: $payment-method-margin !important;
+}
+
+
+
+body.theme-aora .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+	padding: $payment-method-padding-vertical #{ $payment-method-padding-horizontal } $payment-method-padding-vertical #{ $payment-method-radio-size + $payment-method-padding-horizontal } !important;
+}
+body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method:last-child {
+	margin-bottom: #{ - remsize( .1rem ) } !important;
+}
+
+
+
+body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:before {
+	background-color: $success-color !important;
+}
+
+
+
+body.theme-aora .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box:after {
+	display: none !important;
+}
