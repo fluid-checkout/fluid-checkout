@@ -29,11 +29,11 @@ class FluidCheckout_ThemeCompat_Phlox extends FluidCheckout {
 	 * Dequeue theme scripts unnecessary on checkout page and that interfere with Fluid Checkout scripts.
 	 */
 	public function maybe_dequeue_scripts() {
-		// Bail if not on checkout or cart page or doing AJAX call
-		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
+		// Bail if not on checkout page
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ) { return; }
 
 		// Bail if use of theme header is enabled
-		if ( 'yes' !== get_option( 'fc_hide_site_header_footer_at_checkout', 'yes' ) ) { return; }
+		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
 		
 		wp_dequeue_script( 'auxin-plugins' );
 		wp_dequeue_script( 'auxin-scripts' );

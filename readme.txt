@@ -221,6 +221,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: New functions to handle anonymous functions used in hooks (closure).
 * Added: Compatibility with theme Aora by Thembay.
 * Added: Compatibility with theme Phlox by averta.
+* Added: Compatibility with theme Impreza by UpSolution.
 * Improved: Automatically determine the label for the "Proceed to <next step>" button based on the registered steps.
 * Improved: Refactor of the front-end checkout validation script to allow developers to add validation type extensions.
 * Improved: Compatibility with theme Neve.
