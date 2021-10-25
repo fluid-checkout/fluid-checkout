@@ -119,7 +119,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Persisted data
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'update_customer_persisted_data' ), 10 );
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 10, 2 );
-		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data' ), 10 );
+		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 10 );
+		add_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 10 );
 	}
 
 	/**
@@ -2865,7 +2866,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				WC()->session->set( self::SESSION_PREFIX . $field_key, $parsed_posted_data[ $field_key ] );
 			}
 			else {
-				// Unset session value
+				// Set session value as empty
 				WC()->session->set( self::SESSION_PREFIX . $field_key, null );
 			}
 
@@ -2908,19 +2909,44 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Clear session values for checkout fields.
+	 * Clear session values for checkout fields when the order is processed.
 	 **/
-	public function unset_session_customer_persisted_data() {
+	public function unset_session_customer_persisted_data_order_processed() {
 		$clear_field_keys = array(
 			'order_comments',
 		);
 
 		// Filter clear fields to allow developers to add more fields to be cleared
-		$clear_field_keys = apply_filters( 'fc_customer_persisted_data_clear_fields', $clear_field_keys );
+		$clear_field_keys = apply_filters( 'fc_customer_persisted_data_clear_fields_order_processed', $clear_field_keys );
 
-		// Save customer data to the session
+		// Clear customer data from the session
 		foreach ( $clear_field_keys as $field_key ) {
-			WC()->session->set( self::SESSION_PREFIX . $field_key, null );
+			WC()->session->__unset( self::SESSION_PREFIX . $field_key );
+		}
+	}
+
+	/**
+	 * Clear session values for all checkout fields.
+	 **/
+	public function unset_all_session_customer_persisted_data() {
+		// Filter clear fields to allow developers to add more fields to skip being cleared
+		$clear_field_keys_skip_list = apply_filters( 'fc_customer_persisted_data_clear_all_fields_skip_list', array( 'order_comments' ) );
+
+		// Get field keys from the session
+		$all_session_data = WC()->session->get_session_data();
+		$clear_field_keys = array();
+		foreach ( array_keys( $all_session_data ) as $session_field_key ) {
+			if ( 0 === strpos( $session_field_key, self::SESSION_PREFIX ) ) {
+				$clear_field_keys[] = substr_replace( $session_field_key, '', strpos( $session_field_key, self::SESSION_PREFIX ), strlen( self::SESSION_PREFIX ) );
+			}
+		}
+
+		// Clear customer data from the session
+		foreach ( $clear_field_keys as $field_key ) {
+			// Skip clearing some fields
+			if ( in_array( $field_key, $clear_field_keys_skip_list ) ) { continue; }
+			
+			WC()->session->__unset( self::SESSION_PREFIX . $field_key );
 		}
 	}
 

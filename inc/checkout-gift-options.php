@@ -30,7 +30,8 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		add_action( 'woocommerce_admin_order_data_after_shipping_address', array( $this, 'display_gift_options_fields_order_admin_screen' ), 100, 1 );
 
 		// Clear session after placing order
-		add_filter( 'fc_customer_persisted_data_clear_fields', array( $this, 'change_customer_persisted_data_clear_fields' ), 10 );
+		add_filter( 'fc_customer_persisted_data_clear_fields_order_processed', array( $this, 'change_customer_persisted_data_clear_fields_order_processed' ), 10 );
+		add_filter( 'fc_customer_persisted_data_clear_all_fields_skip_list', array( $this, 'change_customer_persisted_data_clear_fields_skip_list' ), 10 );
 
 		// Save gift fields to order
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_gift_options_fields' ), 10, 1 );
@@ -252,7 +253,16 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 *
 	 * @param   array  $clear_field_keys  Checkout field keys to clear from the session after placing an order.
 	 */
-	public function change_customer_persisted_data_clear_fields( $clear_field_keys ) {
+	public function change_customer_persisted_data_clear_fields_order_processed( $clear_field_keys ) {
+		return array_merge( $clear_field_keys, array_keys( $this->get_gift_options_fields() ) );
+	}
+	
+	/**
+	 * Change the list of fields to clear from session after placing an order, adding the gift option fields to be cleared.
+	 *
+	 * @param   array  $clear_field_keys  Checkout field keys to clear from the session after placing an order.
+	 */
+	public function change_customer_persisted_data_clear_fields_skip_list( $clear_field_keys ) {
 		return array_merge( $clear_field_keys, array_keys( $this->get_gift_options_fields() ) );
 	}
 

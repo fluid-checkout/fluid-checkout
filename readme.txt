@@ -222,9 +222,10 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Compatibility with theme Aora by Thembay.
 * Added: Compatibility with theme Phlox by averta.
 * Added: Compatibility with theme Impreza by UpSolution.
-* Improved: Automatically determine the label for the "Proceed to <next step>" button based on the registered steps.
+* Improved: Automatically determine the label for the "Proceed to <next step>" button based on the registered steps. Custom translations will need to be updated.
 * Improved: Refactor of the front-end checkout validation script to allow developers to add validation type extensions.
 * Improved: Compatibility with theme Neve.
+* Fixed: Checkout fields values should be replaced with data from registered customer profile when user logs from the checkout page or otherwise. Renamed hook `fc_customer_persisted_data_clear_fields` to `fc_customer_persisted_data_clear_fields_order_processed`.
 * Fixed: When adding new steps, functions to get current and next steps and outputing the progress bar now works as expected.
 * Fixed: Translation of shipping package names to match what is used by WooCommerce.
 * Fixed: Coupon code "Add" link label now respects the option to make field labels `lowercase`, instead of always making it `lowercase`.
@@ -337,3 +338,6 @@ Fixed: Fix build process to save theme compat files in the right place.
 
 = 1.3 =
 Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
+
+= 1.4 =
+Changes to "Proceed to <next_step>" button labels, custom translations will need to be updated. Changes the way customer session data is cleared. Renamed hook `fc_customer_persisted_data_clear_fields` to `fc_customer_persisted_data_clear_fields_order_processed` can break customizations use this hook.
