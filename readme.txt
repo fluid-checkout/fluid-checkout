@@ -217,6 +217,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 == Changelog ==
 
 = Unreleased =
+* Bump tested up to WooCommerce 5.8
 * Added: New functions to handle anonymous functions used in hooks (closure).
 * Added: Compatibility with theme Aora by Thembay.
 * Added: Compatibility with theme Phlox by averta.
