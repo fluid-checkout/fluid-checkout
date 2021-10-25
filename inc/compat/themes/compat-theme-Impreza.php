@@ -61,17 +61,17 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 
 
 	/**
-	 * Maybe output the theme options and custom CSS to the checkout page.
+	 * Maybe output custom header CSS to the checkout page.
 	 */
 	public function maybe_output_header_css() {
 		// Bail if not on checkout page
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ) { return; }
 		
-		// Bail if use of theme header is enabled
+		// Bail if using the plugin's header and footer
 		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
 
+		// Custom spacing
 		$header_spacing = get_option( 'fc_compat_theme_impreza_header_spacing' );
-
 		if ( ! empty( $header_spacing ) && intval( $header_spacing ) > 0 || '0' == $header_spacing ) {
 			$header_spacing = intval( $header_spacing );
 			?>
