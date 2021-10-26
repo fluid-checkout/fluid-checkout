@@ -1,0 +1,39 @@
+.fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+  line-height: 1.4;
+}
+
+.fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label .payment-method__label-text {
+  line-height: 1.4;
+}
+
+div.woocommerce form #billing_country_field,
+div.woocommerce form #shipping_country_field,
+div.woocommerce form .form-row .select2-container--default,
+div.woocommerce form .form-row .select2-container .select2-selection {
+  height: auto;
+}
+
+div.woocommerce form .form-row .select2-container .select2-selection__rendered,
+div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+  line-height: 55px;
+}
+
+div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+  top: 7px;
+}
+
+div.woocommerce form .form-row textarea,
+div.woocommerce form .form-row select,
+div.woocommerce form .form-row input[type=email],
+div.woocommerce form .form-row input[type=number],
+div.woocommerce form .form-row input[type=date],
+div.woocommerce form .form-row input[type=search],
+div.woocommerce form .form-row input[type=text],
+div.woocommerce form .form-row input[type=tel],
+div.woocommerce form .form-row input[type=url],
+div.woocommerce form .form-row input[type=password],
+div.woocommerce form .form-row input[type=checkbox],
+div.woocommerce form .form-row input[type=radio],
+div.woocommerce form .form-row .select2-selection {
+  max-width: none;
+}

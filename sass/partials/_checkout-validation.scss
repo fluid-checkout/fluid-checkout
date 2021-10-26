@@ -3,12 +3,6 @@
 // ------------------------------------
 
 div.woocommerce .form-row .woocommerce-error:not( .invalid-country-not-allowed ) {
-	display: none;
-}
-
-div.woocommerce .woocommerce-invalid-required-field .woocommerce-error.invalid-required-field,
-div.woocommerce .woocommerce-invalid-email .woocommerce-error.invalid-email,
-div.woocommerce .woocommerce-invalid-confirmation-field .woocommerce-error.invalid-confirmation-field {
 	display: block;
 }
 

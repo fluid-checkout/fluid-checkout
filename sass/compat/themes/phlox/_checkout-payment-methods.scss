@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+.fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+	line-height: 1.4;
+}
+
+.fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label .payment-method__label-text {
+	line-height: 1.4;
+}

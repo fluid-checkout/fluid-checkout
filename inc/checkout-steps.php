@@ -13,7 +13,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *      ['step_id']                      string      ID of the checkout step, it will be sanitized with `sanitize_title()`.
 	 *      ['step_title']                   string      The checkout step title visible to the user.
 	 *      ['priority']                     int         Defines the order the checkout step will be displayed.
-	 *      ['next_step_button_label']       string      The label for the "Next step" button. Accepts `<span>` and `<i>` elements for extra styling. Defaults to "Next Step".
 	 *      ['next_step_button_classes']     array       Array of CSS classes to add to the "Next step" button.
 	 *      ['render_next_step_button']      bool        Whether to display a "Next Step" button at the end of the step. Defaults to `true`.
 	 *      ['render_callback']              callable    Function name or callable array to display the contents of the checkout step.
@@ -120,7 +119,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Persisted data
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'update_customer_persisted_data' ), 10 );
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 10, 2 );
-		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data' ), 10 );
+		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 10 );
+		add_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 10 );
 	}
 
 	/**
@@ -479,7 +479,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$step_id = $step_args[ 'step_id' ];
 			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
 
-			// Add incomplete steps to the list
+			// Add complete steps to the list
 			if ( $is_complete_callback && is_callable( $is_complete_callback ) && call_user_func( $is_complete_callback ) ) {
 				$complete_steps[ $step_index ] = $step_args;
 			}
@@ -523,6 +523,46 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 
+
+	/**
+	 * Get the step arguments for the step ID passed.
+	 *
+	 * @param   string  $step_id  ID of the step.
+	 *
+	 * @return  array             Array with arguments of the step.
+	 */
+	public function get_step( $step_id ) {
+		$_checkout_steps = $this->get_checkout_steps();
+
+		foreach ( $_checkout_steps as $step_index => $step_args ) {
+			if ( $step_id == $step_args[ 'step_id' ] ) {
+				return $step_args;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get the step arguments for the step next to the step ID passed.
+	 *
+	 * @param   string  $step_id  ID of the step.
+	 *
+	 * @return  array             Array with arguments of the next step.
+	 */
+	public function get_next_step( $step_id ) {
+		$_checkout_steps = $this->get_checkout_steps();
+
+		foreach ( $_checkout_steps as $step_index => $step_args ) {
+			if ( $step_id == $step_args[ 'step_id' ] ) {
+				$next_step_index = $step_index + 1;
+				$next_step_args = array_key_exists( $next_step_index, $_checkout_steps ) ? $_checkout_steps[ $next_step_index ] : false;
+				return $next_step_args;
+			}
+		}
+
+		return false;
+	}
 
 	/**
 	 * Get the current checkout step. The first checkout step which is considered incomplete.
@@ -639,6 +679,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return false;
 	}
 
+	/**
+	 * Get the label for the proceed to next step button.
+	 *
+	 * @param   string  $step_id  ID of the step.
+	 */
+	public function get_next_step_button_label( $step_id ) {
+		$next_step_args = $this->get_next_step( $step_id );
+		return sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_args[ 'step_title' ] );
+	}
+
 
 
 	/**
@@ -667,10 +717,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Sanitize value for `render_next_step_button` flag and set default value if needed
 		$step_args[ 'render_next_step_button' ] = array_key_exists( 'render_next_step_button', $step_args ) && $step_args[ 'render_next_step_button' ] === false ? false : true;
 
-		// Sanitize "next step" button label, or set default value
-		$step_args[ 'next_step_button_label' ] = array_key_exists( 'next_step_button_label', $step_args ) && $step_args[ 'next_step_button_label' ] && $step_args[ 'next_step_button_label' ] != '' ? $step_args[ 'next_step_button_label' ] : __( 'Next step', 'fluid-checkout' );
-		$step_args[ 'next_step_button_label' ] = wp_kses( $step_args[ 'next_step_button_label' ], array( 'span' => array( 'class' => '' ), 'i' => array( 'class' => '' ) ) );
-
 		// Sanitize "next step" button classes
 		$step_args[ 'next_step_button_classes' ] = array_key_exists( 'next_step_button_classes', $step_args ) && is_array( $step_args[ 'next_step_button_classes' ] ) ? $step_args[ 'next_step_button_classes' ] : array();
 		foreach ( $step_args[ 'next_step_button_classes' ] as $key => $class ) {
@@ -689,6 +735,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Sort steps based on priority.
 		uasort( $_checkout_steps, array( $this, 'checkout_step_priority_uasort_comparison' ) );
+		$_checkout_steps = array_values( $_checkout_steps );
 
 		// Update registered checkout steps
 		$this->checkout_steps = $_checkout_steps;
@@ -715,7 +762,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'priority' => 10,
 			'render_callback' => array( $this, 'output_step_contact' ),
 			'is_complete_callback' => array( $this, 'is_step_complete_contact' ),
-			'next_step_button_label' => WC()->cart->needs_shipping() ? __( 'Proceed to Shipping', 'fluid-checkout' ) : __( 'Proceed to Billing', 'fluid-checkout' ),
 		) );
 
 		// SHIPPING
@@ -727,7 +773,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'render_callback' => array( $this, 'output_step_shipping' ),
 				'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
 				'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
-				'next_step_button_label' => __( 'Proceed to Billing', 'fluid-checkout' ),
 			) );
 		}
 
@@ -738,7 +783,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'priority' => 30,
 			'render_callback' => array( $this, 'output_step_billing' ),
 			'is_complete_callback' => array( $this, 'is_step_complete_billing' ),
-			'next_step_button_label' => __( 'Proceed to Payment', 'fluid-checkout' ),
 		) );
 
 		// PAYMENT
@@ -750,6 +794,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'is_complete_callback' => '__return_false', // Payment step is only complete when the order has been placed and the payment has been accepted, during the checkout process it will always be considered 'incomplete'.
 			'render_next_step_button' => false,
 		) );
+
+		do_action( 'fc_register_steps' );
 	}
 
 
@@ -918,9 +964,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   array  $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
 	 */
 	public function output_step_end_tag( $step_args, $step_index ) {
-
 		// Maybe output the "Next step" button
 		if ( $this->is_checkout_layout_multistep() && array_key_exists( 'render_next_step_button', $step_args ) && $step_args[ 'render_next_step_button' ] ) :
+			$button_label = apply_filters( 'fc_next_step_button_label', $this->get_next_step_button_label( $step_args[ 'step_id' ] ), $step_args[ 'step_id' ] );
+
 			$button_attributes = array(
 				'class' => implode( ' ', array_merge( array( 'fc-step__next-step', 'button' ), $step_args[ 'next_step_button_classes' ] ) ),
 				'data-step-next' => true,
@@ -928,7 +975,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$button_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $button_attributes ), $button_attributes ) );
 			?>
 			<div class="fc-step__actions">
-				<button type="button" <?php echo $button_attributes_str; // WPCS: XSS ok. ?>><?php echo esc_html( $step_args[ 'next_step_button_label' ] ); ?></button>
+				<button type="button" <?php echo $button_attributes_str; // WPCS: XSS ok. ?>><?php echo esc_html( $button_label ); ?></button>
 			</div>
 			<?php
 		endif;
@@ -1770,9 +1817,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'show_package_details'		=> sizeof( $packages ) > 1,
 				'show_shipping_calculator'	=> is_cart() && $first_item,
 				'package_details'			=> implode( ', ', $product_names ),
-				// @codingStandardsIgnoreStart
-				'package_name'				=> apply_filters( 'woocommerce_shipping_package_name', sprintf( _nx( 'Shipping', 'Shipping %d', ( $i + 1 ), 'shipping packages', 'woocommerce' ), ( $i + 1 ) ), $i, $package ),
-				// @codingStandardsIgnoreEnd
+				/* translators: %d: shipping package number */
+				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
 				'package_index'				=> $i,
 				'chosen_method'				=> $chosen_method,
 			) );
@@ -2820,7 +2866,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				WC()->session->set( self::SESSION_PREFIX . $field_key, $parsed_posted_data[ $field_key ] );
 			}
 			else {
-				// Unset session value
+				// Set session value as empty
 				WC()->session->set( self::SESSION_PREFIX . $field_key, null );
 			}
 
@@ -2863,19 +2909,44 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Clear session values for checkout fields.
+	 * Clear session values for checkout fields when the order is processed.
 	 **/
-	public function unset_session_customer_persisted_data() {
+	public function unset_session_customer_persisted_data_order_processed() {
 		$clear_field_keys = array(
 			'order_comments',
 		);
 
 		// Filter clear fields to allow developers to add more fields to be cleared
-		$clear_field_keys = apply_filters( 'fc_customer_persisted_data_clear_fields', $clear_field_keys );
+		$clear_field_keys = apply_filters( 'fc_customer_persisted_data_clear_fields_order_processed', $clear_field_keys );
 
-		// Save customer data to the session
+		// Clear customer data from the session
 		foreach ( $clear_field_keys as $field_key ) {
-			WC()->session->set( self::SESSION_PREFIX . $field_key, null );
+			WC()->session->__unset( self::SESSION_PREFIX . $field_key );
+		}
+	}
+
+	/**
+	 * Clear session values for all checkout fields.
+	 **/
+	public function unset_all_session_customer_persisted_data() {
+		// Filter clear fields to allow developers to add more fields to skip being cleared
+		$clear_field_keys_skip_list = apply_filters( 'fc_customer_persisted_data_clear_all_fields_skip_list', array( 'order_comments' ) );
+
+		// Get field keys from the session
+		$all_session_data = WC()->session->get_session_data();
+		$clear_field_keys = array();
+		foreach ( array_keys( $all_session_data ) as $session_field_key ) {
+			if ( 0 === strpos( $session_field_key, self::SESSION_PREFIX ) ) {
+				$clear_field_keys[] = substr_replace( $session_field_key, '', strpos( $session_field_key, self::SESSION_PREFIX ), strlen( self::SESSION_PREFIX ) );
+			}
+		}
+
+		// Clear customer data from the session
+		foreach ( $clear_field_keys as $field_key ) {
+			// Skip clearing some fields
+			if ( in_array( $field_key, $clear_field_keys_skip_list ) ) { continue; }
+			
+			WC()->session->__unset( self::SESSION_PREFIX . $field_key );
 		}
 	}
 
