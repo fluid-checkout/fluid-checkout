@@ -455,7 +455,7 @@
 		var validationTypeKeys = Object.keys( _validationTypes );
 		for ( var i = 0; i < validationTypeKeys.length; i++ ) {
 			var type = validationTypeKeys[i];
-			formRow.classList.remove( _settings.invalidClass +'-'+ _validationTypes[ type ] );
+			formRow.classList.remove( _settings.invalidClass +'-'+ type );
 		}
 
 		// Remove valid/invalid classes
