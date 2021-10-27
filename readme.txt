@@ -216,6 +216,9 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+* Fixed: JS error preventing proceed to next step when progress elements are not present.
+
 = 1.4.0 - 2021-10-26 =
 * Bump tested up to WooCommerce 5.8
 * Added: New functions to handle anonymous functions used in hooks (closure).
