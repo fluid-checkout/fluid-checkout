@@ -1144,8 +1144,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout expansible form section start tag.
 	 *
-	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
-	 * @param   string  $section_id  Id of the substep.
+	 * @param   string  $section_id    ID of the expansible section.
+	 * @param   string  $toggle_label  Label for the expansible section toggle link. (optional)
+	 * @param   string  $args          Arguments for the expansible section.
 	 */
 	public function output_expansible_form_section_start_tag( $section_id, $toggle_label, $args = array() ) {
 		$section_id_esc = esc_attr( $section_id );
@@ -1213,6 +1214,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$section_content_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_content_inner_attributes ), $section_content_inner_attributes ) );
 		?>
 		<div <?php echo $section_attributes_str; // WPCS: XSS ok. ?>>
+			
+			<?php if ( ! empty( $toggle_label ) ) : ?>
 			<div <?php echo $section_toggle_attributes_str; // WPCS: XSS ok. ?>>
 				<div <?php echo $section_content_inner_attributes_str; // WPCS: XSS ok. ?>>
 					<a <?php echo $toggle_attributes_str; // WPCS: XSS ok. ?>>
@@ -1220,6 +1223,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 					</a>
 				</div>
 			</div>
+			<?php endif; ?>
 
 			<div <?php echo $section_content_attributes_str; // WPCS: XSS ok. ?>>
 				<div <?php echo $section_content_inner_attributes_str; // WPCS: XSS ok. ?>>
