@@ -43,10 +43,13 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 		// Bail if using the theme's header and footer
 		if ( ! FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
 
+		// Bail if required functions are not available
+		if ( ! function_exists( 'us_get_theme_options_css' ) ) { return; }
+
 		// Theme Options CSS
 		if ( defined( 'US_DEV' ) OR ! us_get_option( 'optimize_assets', 0 ) ) {
 			?>
-			<style id="us-theme-options-css"><?php echo us_get_theme_options_css() ?></style>
+			<style id="us-theme-options-css"><?php  echo us_get_theme_options_css() ?></style>
 			<?php
 		}
 
