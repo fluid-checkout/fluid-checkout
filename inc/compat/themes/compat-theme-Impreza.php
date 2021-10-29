@@ -49,7 +49,7 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 		// Theme Options CSS
 		if ( defined( 'US_DEV' ) OR ! us_get_option( 'optimize_assets', 0 ) ) {
 			?>
-			<style id="us-theme-options-css"><?php  echo us_get_theme_options_css() ?></style>
+			<style id="us-theme-options-css"><?php echo us_get_theme_options_css() ?></style>
 			<?php
 		}
 
