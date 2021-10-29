@@ -2929,6 +2929,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Clear session values for all checkout fields.
 	 **/
 	public function unset_all_session_customer_persisted_data() {
+		// Bail if session not available
+		if ( ! function_exists( 'WC' ) || ! isset( WC()->session ) ) { return; }
+
 		// Filter clear fields to allow developers to add more fields to skip being cleared
 		$clear_field_keys_skip_list = apply_filters( 'fc_customer_persisted_data_clear_all_fields_skip_list', array( 'order_comments' ) );
 
