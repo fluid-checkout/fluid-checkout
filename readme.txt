@@ -218,6 +218,8 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 * Added: New filter `fc_checkout_update_fields_selectors` for CSS selectors used to trigger update the checkout fragments.
+* Improved: Allow collapsible sections to be created without a toggle link when toggle label is `null`.
+* Fixed: Missing billing fields sometimes when allowed countries settings are changed.
 
 = 1.4.0 - 2021-10-26 =
 * Bump tested up to WooCommerce 5.8
