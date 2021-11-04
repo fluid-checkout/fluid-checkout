@@ -449,6 +449,9 @@ class FluidCheckout {
 			$new_posted_data[ $v[0] ] = array_key_exists( 1, $v) ? wc_clean( wp_unslash( $v[1] ) ) : null;
 		}
 
+		// Filter to allow customizations
+		$new_posted_data = apply_filters( 'fc_get_parsed_posted_data', $new_posted_data );
+
 		// Updated cached posted data
 		$this->posted_data = $new_posted_data;
 
