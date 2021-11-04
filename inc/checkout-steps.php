@@ -2339,8 +2339,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Update billing field values
 				if ( in_array( $shipping_field_key, $posted_data_field_keys ) ) {
-					$parsed_posted_data[ $field_key ] = isset( $parsed_posted_data[ $shipping_field_key ] ) ? $parsed_posted_data[ $shipping_field_key ] : null;
-					$_POST[ $field_key ] = isset( $parsed_posted_data[ $shipping_field_key ] ) ? $parsed_posted_data[ $shipping_field_key ] : null;
+					$new_field_value = isset( $parsed_posted_data[ $shipping_field_key ] ) ? $parsed_posted_data[ $shipping_field_key ] : null;
+					$parsed_posted_data[ $field_key ] = $new_field_value;
+					$_POST[ $field_key ] = $new_field_value;
 				}
 
 			}
