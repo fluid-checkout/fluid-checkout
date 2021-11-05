@@ -2127,7 +2127,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_billing_same_as_shipping_field() {
 		// Output a hidden field when shipping country not allowed for billing, or shipping not needed
-		if ( ! WC()->cart->needs_shipping_address() || $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
+		if ( apply_filters( 'fc_output_billing_same_as_shipping_as_hidden_field', false ) || ! $this->is_shipping_address_available_for_billing() ) : ?>
 			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
 		<?php
 		// Output the checkbox when shipping country is allowed for billing
@@ -2174,6 +2174,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return null;
 	}
 
+	/**
+	 * Check whether the shipping address is available to be used for the billing address.
+	 */
+	public function is_shipping_address_available_for_billing() {
+		return WC()->cart->needs_shipping_address() && true === $this->is_shipping_country_allowed_for_billing();
+	}
+
 
 
 	/**
@@ -2207,6 +2214,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! WC()->cart->needs_shipping() ) {
 			$billing_same_as_shipping = false;
 		}
+
+		// Filter to allow for customizations
+		$billing_same_as_shipping = apply_filters( 'fc_is_billing_same_as_shipping_checked', $billing_same_as_shipping );
 
 		return $billing_same_as_shipping;
 	}
