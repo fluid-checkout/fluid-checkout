@@ -218,6 +218,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 * Added: New filter `fc_checkout_update_fields_selectors` for CSS selectors used to trigger update the checkout fragments.
+* Added: New filters `fc_is_billing_same_as_shipping_checked` and `fc_output_billing_same_as_shipping_as_hidden_field` for billing same as shipping.
 * Improved: Allow collapsible sections to be created without a toggle link when toggle label is `null`.
 * Fixed: Missing billing fields sometimes when allowed countries settings are changed.
 
@@ -341,8 +342,8 @@ Fixed: Fix build process to save theme compat files in the right place.
 
 == Upgrade Notice ==
 
-= 1.3 =
-Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
-
 = 1.4 =
 Changes to "Proceed to <next_step>" button labels, custom translations will need to be updated. Changes the way customer session data is cleared. Renamed hook `fc_customer_persisted_data_clear_fields` to `fc_customer_persisted_data_clear_fields_order_processed` can break customizations use this hook.
+
+= 1.3 =
+Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
