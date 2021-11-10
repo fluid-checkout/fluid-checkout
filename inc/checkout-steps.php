@@ -1607,7 +1607,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_substep_text_shipping_address() {
 		$customer = WC()->customer;
 
-		$address_data = array(
+		$address_data = apply_filters( 'fc_shipping_substep_text_address_data', array(
 			'first_name' => $customer->get_shipping_first_name(),
 			'last_name' => $customer->get_shipping_last_name(),
 			'company' => $customer->get_shipping_company(),
@@ -1617,7 +1617,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'state' => $customer->get_shipping_state(),
 			'country' => $customer->get_shipping_country(),
 			'postcode' => $customer->get_shipping_postcode(),
-		);
+		) );
 
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping-address">';
 		$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
@@ -2053,14 +2053,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$html .= '<div class="fc-step__substep-text-line"><em>' . __( 'Same as shipping address', 'fluid-checkout' ) . '</em></div>';
 		}
 		else {
-			$address_data = array(
+			$address_data = apply_filters( 'fc_billing_substep_text_address_data', array(
 				'address_1' => $customer->get_billing_address_1(),
 				'address_2' => $customer->get_billing_address_2(),
 				'city' => $customer->get_billing_city(),
 				'state' => $customer->get_billing_state(),
 				'country' => $customer->get_billing_country(),
 				'postcode' => $customer->get_billing_postcode(),
-			);
+			) );
 
 			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_first_name() ) . ' ' . esc_html( $customer->get_billing_last_name() ) . '</div>';
 			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_company() ) . '</div>';
