@@ -220,6 +220,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: New filter `fc_checkout_update_fields_selectors` for CSS selectors used to trigger update the checkout fragments.
 * Added: New filters `fc_is_billing_same_as_shipping_checked` and `fc_output_billing_same_as_shipping_as_hidden_field` for billing same as shipping.
 * Improved: Allow collapsible sections to be created without a toggle link when toggle label is `null`.
+* Improved: Use registered checkout fields to display shipping and billing addresses substep review text.
 * Fixed: Missing billing fields sometimes when allowed countries settings are changed.
 
 = 1.4.0 - 2021-10-26 =

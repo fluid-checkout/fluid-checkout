@@ -112,6 +112,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
 		add_action( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
 
+		// Formatted Address
+		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ) );
+		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
+
 		// Order Review
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
@@ -823,6 +827,35 @@ class FluidCheckout_Steps extends FluidCheckout {
 			call_user_func( $render_callback );
 			$this->output_step_end_tag( $step_args, $step_index );
 		}
+	}
+
+
+
+	/**
+	 * Add phone field replacement to localisation addresses formats.
+	 *
+	 * @param  array  $formats  Default localisation formats.
+	 */
+	public function add_phone_localisation_address_formats( $formats ) {
+		// Bail if should not display phone in formatted addresses
+		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $formats; }
+
+		foreach ( $formats as $locale => $format) {
+			$formats[ $locale ] = $format . "\n{phone}";
+		}
+
+		return $formats;
+	}
+
+	/**
+	 * Add phone field replacement to formatted addresses.
+	 *
+	 * @param   array  $replacements  Default replacements.
+	 * @param   array  $address       Contains address fields.
+	 */
+	public function add_phone_formatted_address_replacements( $replacements, $args ) {
+		$replacements['{phone}'] = isset( $args['phone'] ) ? $args['phone'] : '';
+		return $replacements;
 	}
 
 
@@ -1617,6 +1650,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'state' => $customer->get_shipping_state(),
 			'country' => $customer->get_shipping_country(),
 			'postcode' => $customer->get_shipping_postcode(),
+			'phone' => $customer->get_shipping_phone(),
 		) );
 
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping-address">';
