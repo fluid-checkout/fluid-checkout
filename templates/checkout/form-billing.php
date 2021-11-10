@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
- * @fc-version 1.2.3
+ * @fc-version 1.5.0
  * @global WC_Checkout $checkout
  */
 
@@ -37,6 +37,9 @@ defined( 'ABSPATH' ) || exit;
 			<?php // CHANGE: Add markup for collapsible-block component ?>
 		</div>
 	</div>
+
+	<?php // CHANGE: Display billing only fields ?>
+	<?php do_action( 'fc_before_checkout_billing_only_form', $checkout ); ?>
 
 	<?php // CHANGE: Display billing only fields ?>
 	<?php if ( count( $billing_only_fields ) > 0 ) : ?>
