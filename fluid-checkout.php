@@ -67,6 +67,7 @@ class FluidCheckout {
 	 * @var array
 	 */
 	private $posted_data = null;
+	private $set_parsed_posted_data_filter_applied = false;
 
 	/**
 	 * User session keys prefix.
@@ -429,15 +430,8 @@ class FluidCheckout {
 
 	/**
 	 * Parse the data from the `post_data` request parameter into an `array`.
-	 *
-	 * @return  array  Post data for all checkout fields parsed into an `array`.
 	 */
-	public function get_parsed_posted_data() {
-		// Return cached parsed data
-		if ( is_array( $this->posted_data ) ) {
-			return $this->posted_data;
-		}
-
+	public function set_parsed_posted_data() {
 		// Get sanitized posted data as a string
 		$posted_data = isset( $_POST['post_data'] ) ? wp_unslash( $_POST['post_data'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
@@ -449,11 +443,31 @@ class FluidCheckout {
 			$new_posted_data[ $v[0] ] = array_key_exists( 1, $v) ? wc_clean( wp_unslash( $v[1] ) ) : null;
 		}
 
-		// Filter to allow customizations
-		$new_posted_data = apply_filters( 'fc_get_parsed_posted_data', $new_posted_data );
+		// Maybe apply filter
+		if ( ! $this->set_parsed_posted_data_filter_applied ) {
+			$this->set_parsed_posted_data_filter_applied = true;
+
+			// Updated cached posted data
+			$this->posted_data = $new_posted_data;
+			
+			// Filter to allow customizations
+			$new_posted_data = apply_filters( 'fc_set_parsed_posted_data', $new_posted_data );
+		}
 
 		// Updated cached posted data
 		$this->posted_data = $new_posted_data;
+	}
+
+	/**
+	 * Parse the data from the `post_data` request parameter into an `array`.
+	 *
+	 * @return  array  Post data for all checkout fields parsed into an `array`.
+	 */
+	public function get_parsed_posted_data() {
+		// Maybe initialize posted data
+		if ( null === $this->posted_data ) {
+			$this->set_parsed_posted_data();
+		}
 
 		return $this->posted_data;
 	}

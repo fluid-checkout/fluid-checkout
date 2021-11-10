@@ -98,7 +98,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Billing Same as Shipping
 		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_field' ), 100 );
-		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
 
 		// Payment
@@ -117,7 +117,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 
 		// Persisted data
-		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'update_customer_persisted_data' ), 10 );
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 10, 2 );
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 10 );
 		add_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 10 );
@@ -2190,9 +2190,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @return  bool  `true` checkbox "billing address same as shipping" is checked, `false` otherwise.
 	 */
-	public function is_billing_same_as_shipping_checked() {
+	public function is_billing_same_as_shipping_checked( $posted_data = array() ) {
 		// Get parsed posted data
-		$posted_data = $this->get_parsed_posted_data();
+		if ( empty( $posted_data ) ) {
+			$posted_data = $this->get_parsed_posted_data();
+		}
 
 		// Set default value
 		$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', get_option( 'fc_default_to_billing_same_as_shipping', 'yes' ) == 'yes' );
@@ -2228,7 +2230,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @return  bool  `true` if the billing address is the same as the shipping address, `false` otherwise.
 	 */
-	public function is_billing_same_as_shipping() {
+	public function is_billing_same_as_shipping( $posted_data = array() ) {
 		// Set to different billing address when shipping country not allowed
 		if ( $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) {
 			return false;
@@ -2239,7 +2241,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return false;
 		}
 
-		return $this->is_billing_same_as_shipping_checked();
+		return $this->is_billing_same_as_shipping_checked( $posted_data );
 	}
 
 	/**
@@ -2322,15 +2324,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_set_billing_address_same_as_shipping( $posted_data ) {
 		// Get value for billing same as shipping
-		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping();
-		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked();
+		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping( $posted_data );
+		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked( $posted_data );
 
 		// Save checked state of the billing same as shipping field to the session,
 		// for the case the shipping country changes again and the new value is also accepted for billing.
 		$this->set_billing_same_as_shipping_session( $is_billing_same_as_shipping_checked );
-
-		// Get parsed posted data
-		$parsed_posted_data = $this->get_parsed_posted_data();
 
 		// Maybe set post data for billing same as shipping
 		if ( $is_billing_same_as_shipping ) {
@@ -2339,7 +2338,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
 
 			// Get list of posted data keys
-			$posted_data_field_keys = array_keys( $parsed_posted_data );
+			$posted_data_field_keys = array_keys( $posted_data );
 
 			// Iterate posted data
 			foreach( $billing_copy_shipping_field_keys as $field_key ) {
@@ -2349,8 +2348,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Update billing field values
 				if ( in_array( $shipping_field_key, $posted_data_field_keys ) ) {
-					$new_field_value = isset( $parsed_posted_data[ $shipping_field_key ] ) ? $parsed_posted_data[ $shipping_field_key ] : null;
-					$parsed_posted_data[ $field_key ] = $new_field_value;
+					$new_field_value = isset( $posted_data[ $shipping_field_key ] ) ? $posted_data[ $shipping_field_key ] : null;
+					$posted_data[ $field_key ] = $new_field_value;
 					$_POST[ $field_key ] = $new_field_value;
 				}
 
@@ -2846,7 +2845,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function update_customer_persisted_data( $posted_data ) {
 		// Get parsed posted data
-		$parsed_posted_data = $this->get_parsed_posted_data();
+		if ( empty( $posted_data ) ) {
+			$posted_data = $this->get_parsed_posted_data();
+		}
 
 		// Get customer object and supported field keys
 		$customer = WC()->customer;
@@ -2860,8 +2861,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Check if the setter method is supported
 			if ( is_callable( array( $customer, $setter ) ) ) {
 				// Set property value to the customer object
-				if ( array_key_exists( $field_key, $parsed_posted_data ) ) {
-					$customer->{$setter}( $parsed_posted_data[ $field_key ] );
+				if ( array_key_exists( $field_key, $posted_data ) ) {
+					$customer->{$setter}( $posted_data[ $field_key ] );
 				}
 			}
 		}
@@ -2876,9 +2877,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach ( $session_field_keys as $field_key ) {
 
 			// Set property value to the customer object
-			if ( array_key_exists( $field_key, $parsed_posted_data ) ) {
+			if ( array_key_exists( $field_key, $posted_data ) ) {
 				// Set session value
-				WC()->session->set( self::SESSION_PREFIX . $field_key, $parsed_posted_data[ $field_key ] );
+				WC()->session->set( self::SESSION_PREFIX . $field_key, $posted_data[ $field_key ] );
 			}
 			else {
 				// Set session value as empty
@@ -2886,6 +2887,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 		}
+
+		return $posted_data;
 	}
 
 
