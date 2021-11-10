@@ -1635,30 +1635,34 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output shipping address substep in text format for when the step is completed.
+	 * Output address substep in text format for when the step is completed.
 	 */
-	public function get_substep_text_shipping_address() {
-		$customer = WC()->customer;
+	public function get_substep_text_formatted_address( $address_type ) {
+		// Field prefix
+		$field_key_prefix = $address_type . '_';
 
-		$address_data = apply_filters( 'fc_shipping_substep_text_address_data', array(
-			'first_name' => $customer->get_shipping_first_name(),
-			'last_name' => $customer->get_shipping_last_name(),
-			'company' => $customer->get_shipping_company(),
-			'address_1' => $customer->get_shipping_address_1(),
-			'address_2' => $customer->get_shipping_address_2(),
-			'city' => $customer->get_shipping_city(),
-			'state' => $customer->get_shipping_state(),
-			'country' => $customer->get_shipping_country(),
-			'postcode' => $customer->get_shipping_postcode(),
-			'phone' => $customer->get_shipping_phone(),
-		) );
+		// Get field keys from checkout fields
+		$address_data = array();
+		$fields = WC()->checkout()->get_checkout_fields( $address_type );
+		$field_keys = array_keys( $fields );
+		
+		// Get data from checkout fields
+		foreach ( $field_keys as $field_key ) {
+			// Get field key
+			$address_field_key = str_replace( $field_key_prefix, '', $field_key );
+			$address_data[ $address_field_key ] = WC()->checkout->get_value( $field_key );
+		}
 
-		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping-address">';
+		$address_data = apply_filters( 'fc_'.$address_type.'_substep_text_address_data', $address_data );
+
+		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--'.$address_type.'-address">';
 		$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
 		$html .= '</div>';
 
-		return apply_filters( 'fc_substep_shipping_address_text', $html );
+		return apply_filters( 'fc_substep_'.$address_type.'_address_text', $html );
 	}
+
+
 
 	/**
 	 * Add shipping address text as checkout fragment.
@@ -1666,7 +1670,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_shipping_address_text_fragment( $fragments ) {
-		$html = $this->get_substep_text_shipping_address();
+		$html = $this->get_substep_text_formatted_address( 'shipping' );
 		$fragments['.fc-step__substep-text-content--shipping-address'] = $html;
 		return $fragments;
 	}
@@ -1677,7 +1681,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @access public
 	 */
 	public function output_substep_text_shipping_address() {
-		echo $this->get_substep_text_shipping_address();
+		echo $this->get_substep_text_formatted_address( 'shipping' );
 	}
 
 
@@ -2076,44 +2080,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get billing address substep in text format for when the step is completed.
-	 */
-	public function get_substep_text_billing_address() {
-		$customer = WC()->customer;
-
-		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--billing-address">';
-
-		if ( $this->is_billing_same_as_shipping_checked() ) {
-			$html .= '<div class="fc-step__substep-text-line"><em>' . __( 'Same as shipping address', 'fluid-checkout' ) . '</em></div>';
-		}
-		else {
-			$address_data = apply_filters( 'fc_billing_substep_text_address_data', array(
-				'address_1' => $customer->get_billing_address_1(),
-				'address_2' => $customer->get_billing_address_2(),
-				'city' => $customer->get_billing_city(),
-				'state' => $customer->get_billing_state(),
-				'country' => $customer->get_billing_country(),
-				'postcode' => $customer->get_billing_postcode(),
-			) );
-
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_first_name() ) . ' ' . esc_html( $customer->get_billing_last_name() ) . '</div>';
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_company() ) . '</div>';
-			$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_phone() ) . '</div>';
-		}
-
-		$html .= '</div>';
-
-		return apply_filters( 'fc_substep_billing_address_text', $html );
-	}
-
-	/**
 	 * Add billing address text format as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_billing_address_text_fragment( $fragments ) {
-		$html = $this->get_substep_text_billing_address();
+		$html = $this->get_substep_text_formatted_address( 'billing' );
 		$fragments['.fc-step__substep-text-content--billing-address'] = $html;
 		return $fragments;
 	}
@@ -2122,7 +2094,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output billing address substep in text format for when the step is completed.
 	 */
 	public function output_substep_text_billing_address() {
-		echo $this->get_substep_text_billing_address();
+		echo $this->get_substep_text_formatted_address( 'billing' );
 	}
 
 
