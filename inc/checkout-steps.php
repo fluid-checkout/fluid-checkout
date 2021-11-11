@@ -194,6 +194,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$add_classes[] = 'has-checkout-must-login-notice';
 		}
 
+		// Add extra class to highlight the shipping section
+		if ( true === apply_filters( 'fc_show_shipping_section_highlighted', true ) ) {
+			$add_classes[] = 'has-highlighted-shipping-section';
+		}
+
+		// Add extra class to highlight the billing section
+		if ( true === apply_filters( 'fc_show_billing_section_highlighted', true ) ) {
+			$add_classes[] = 'has-highlighted-billing-section';
+		}
+
 		return array_merge( $classes, $add_classes );
 	}
 
