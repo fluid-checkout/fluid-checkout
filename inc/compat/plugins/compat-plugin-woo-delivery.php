@@ -241,8 +241,9 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	 * @param   string   $input   Checkout field key (ie. order_comments ).
 	 */
 	public function change_default_field_values_from_session( $value, $input ) {
+		// Bail if not a CodeRockz field
 		$allowed_field_ids = array( 'coderockz_woo_delivery_delivery_selection_box', 'coderockz_woo_delivery_date_field', 'coderockz_woo_delivery_time_field', 'coderockz_woo_delivery_pickup_date_field', 'coderockz_woo_delivery_pickup_time_field' );
-		if ( in_array( $input, $allowed_field_ids ) ) {
+		if ( ! in_array( $input, $allowed_field_ids ) ) {
 			return $value;
 		}
 
