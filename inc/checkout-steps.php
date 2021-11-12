@@ -743,6 +743,39 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return true;
 	}
 
+	/**
+	 * Deregister a checkout step.
+	 *
+	 * @param   string  $step_id  ID of the checkout step.
+	 *
+	 * @return  boolean           `true` if the step was successfully unregistered, `false` otherwise.
+	 */
+	public function unregister_checkout_step( $step_id ) {
+		// Bail if checkout step is not registered
+		if ( ! $this->has_checkout_step( $step_id ) ) { return false; }
+		
+		// Look for a step with the same id
+		$step_index = false;
+		foreach ( $this->get_checkout_steps() as $key => $step_args ) {
+			if ( $step_args[ 'step_id' ] == sanitize_title( $step_id ) ) {
+				$step_index = $key;
+			}
+		}
+
+		// Add step to the list
+		$_checkout_steps = $this->get_checkout_steps();
+		unset( $_checkout_steps[ $step_index ] );
+
+		// Sort steps based on priority.
+		uasort( $_checkout_steps, array( $this, 'checkout_step_priority_uasort_comparison' ) );
+		$_checkout_steps = array_values( $_checkout_steps );
+
+		// Update registered checkout steps
+		$this->checkout_steps = $_checkout_steps;
+
+		return true;
+	}
+
 
 
 	/**
