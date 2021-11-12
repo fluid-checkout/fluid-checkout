@@ -2905,6 +2905,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  mixed               The value of the field from the saved session.
 	 */
 	public function get_checkout_field_value_from_session( $field_key ) {
+		// Bail if WC or session not available yet
+		if ( ! function_exists( 'wC' ) || ! isset( WC()->session ) ) { return; }
+
 		return WC()->session->get( self::SESSION_PREFIX . $field_key );
 	}
 

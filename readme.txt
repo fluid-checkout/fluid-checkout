@@ -221,6 +221,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: JS error preventing proceed to next step when progress elements are not present.
 * Fixed: Compatibility with theme Impreza when required plugin UpSolution Core is not activated.
 * Fixed: Prevent fatal error while login when WooCommerce session is not available.
+* Fixed: Fatal error on admin screens when the WooCommerce session object is not available.
 
 = 1.4.0 - 2021-10-26 =
 * Bump tested up to WooCommerce 5.8
