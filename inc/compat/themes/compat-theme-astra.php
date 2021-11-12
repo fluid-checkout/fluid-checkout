@@ -36,7 +36,6 @@ class FluidCheckout_ThemeCompat_Astra extends FluidCheckout {
 		// @see themes/astra/inc/compatibility/woocommerce/class-astra-woocommerce.php:LN759
 		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout(), 'checkout_form_shipping' ) );
 	}
-
 }
 
 FluidCheckout_ThemeCompat_Astra::instance();
