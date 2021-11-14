@@ -232,7 +232,6 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	}
 
 
-
 	
 	/**
 	 * Change default delivery date field value, getting it from the persisted fields session.
@@ -241,8 +240,9 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	 * @param   string   $input   Checkout field key (ie. order_comments ).
 	 */
 	public function change_default_field_values_from_session( $value, $input ) {
+		// Bail if not a CodeRockz field
 		$allowed_field_ids = array( 'coderockz_woo_delivery_delivery_selection_box', 'coderockz_woo_delivery_date_field', 'coderockz_woo_delivery_time_field', 'coderockz_woo_delivery_pickup_date_field', 'coderockz_woo_delivery_pickup_time_field' );
-		if ( in_array( $input, $allowed_field_ids ) ) {
+		if ( ! in_array( $input, $allowed_field_ids ) ) {
 			return $value;
 		}
 
@@ -269,8 +269,15 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	 * @param  string  $value  (default: null).
 	 */
 	public function change_delivery_date_field_args( $args, $key, $value ) {
-		if ( ! empty( WC()->checkout->get_value('coderockz_woo_delivery_date_field') ) ) {
-			$args['custom_attributes']['data-default_date'] = WC()->checkout->get_value('coderockz_woo_delivery_date_field');
+		// Bail if not a CodeRockz field
+		$allowed_field_ids = array( 'coderockz_woo_delivery_date_field', 'coderockz_woo_delivery_pickup_date_field' );
+		if ( ! in_array( $key, $allowed_field_ids ) ) {
+			return $args;
+		}
+		
+		// Maybe add default date attribute
+		if ( ! empty( WC()->checkout->get_value( $key ) ) ) {
+			$args['custom_attributes']['data-default_date'] = WC()->checkout->get_value( $key );
 		}
 
 		return $args;

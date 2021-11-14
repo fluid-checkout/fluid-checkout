@@ -216,6 +216,14 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+* Added: Compatibility with WooCommerce Delivery & Pickup Date Time Pro by CodeRockz.
+* Improved: Added function to allow unregistering checkout steps.
+* Fixed: JS error preventing proceed to next step when progress elements are not present.
+* Fixed: Compatibility with theme Impreza when required plugin UpSolution Core is not activated.
+* Fixed: Prevent fatal error while login when WooCommerce session is not available.
+* Fixed: Fatal error on admin screens when the WooCommerce session object is not available.
+
 = 1.4.0 - 2021-10-26 =
 * Bump tested up to WooCommerce 5.8
 * Added: New functions to handle anonymous functions used in hooks (closure).

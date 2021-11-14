@@ -343,6 +343,10 @@
 
 		// Get progress bar items
 		var progressBarElement = document.querySelector( _settings.progressBarSelector )
+
+		// Bail if progress bar element not found
+		if ( ! progressBarElement ) { return; }
+
 		var progressBarItems = progressBarElement.querySelectorAll( _settings.progressBarItemSelector );
 		var progressBarItemsCount = progressBarItems.length;
 
@@ -375,7 +379,9 @@
 
 		// Change value of the current step text indicator
 		var currentStepTextElement = progressBarElement.querySelector( _settings.progressBarCurrentSelector );
-		currentStepTextElement.innerText = currentStepValue;
+		if ( currentStepTextElement ) {
+			currentStepTextElement.innerText = currentStepValue;
+		}
 	}
 
 
