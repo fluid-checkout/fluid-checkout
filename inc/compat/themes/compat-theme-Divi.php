@@ -22,7 +22,7 @@ class FluidCheckout_ThemeCompat_Divi extends FluidCheckout {
 		// Use theme's logo
 		add_action( 'fc_checkout_header_logo', array( $this, 'output_checkout_header_logo' ), 10 );
 
-		// Page header 
+		// Page header
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 	}
