@@ -362,6 +362,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output a redirect hidden field to the WooCommerce login form to redirect the user to the checkout or previous page.
 	 */
 	public function output_woocommerce_login_form_redirect_hidden_field() {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
+
 		$raw_referrer_url = wc_get_raw_referer() ? wc_get_raw_referer() : wc_get_page_permalink( 'myaccount' );
 		$referrer_url = ( is_checkout() || ( array_key_exists( '_redirect', $_GET ) && $_GET[ '_redirect' ] == 'checkout' ) ) ? wc_get_checkout_url() : $raw_referrer_url;
 
