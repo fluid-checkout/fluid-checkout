@@ -218,6 +218,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 * Added: Compatibility with WooCommerce Delivery & Pickup Date Time Pro by CodeRockz.
+* Improved: Compatibility with theme Woodmart.
 * Improved: Added function to allow unregistering checkout steps.
 * Fixed: JS error preventing proceed to next step when progress elements are not present.
 * Fixed: Compatibility with theme Impreza when required plugin UpSolution Core is not activated.
