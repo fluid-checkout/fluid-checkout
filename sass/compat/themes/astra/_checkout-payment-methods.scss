@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+ul#shipping_method li:not(.elementor-widget-woocommerce-cart #shipping_method li) {
+    padding: 0;
+    text-indent: 0;
+}
