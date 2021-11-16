@@ -11,3 +11,36 @@ body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not( [c
 	}
 
 }
+
+div.woocommerce .form-row.form-row .woocommerce-error:before {
+	padding-top: 6px;
+}
+
+.notifications-sticky.notifications-sticky .woocommerce-error {
+	background-color: none;
+	-webkit-transform: none;
+    transform: none;
+    -webkit-animation: none;
+    animation: none;
+	z-index: 0;
+	cursor: none;
+}
+
+.notifications-sticky.notifications-sticky .woocommerce-error::after {
+//   position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: auto;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+  width: 10px;
+  height: 15px;
+  background-color: transparent;
+//   font-weight: 600;
+//   font-size: 14px;
+  transition: none;
+//   content: "\f112";
+//   font-family: "woodmart-font"; 
+}
+
