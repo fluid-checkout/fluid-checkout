@@ -222,6 +222,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Allow collapsible sections to be created without a toggle link when toggle label is `null`.
 * Improved: Use registered checkout fields to display shipping and billing addresses substep review text.
 * Fixed: Missing billing fields sometimes when allowed countries settings are changed.
+* Fixed: Billing address being overwritten with same as shipping for logged users.
 
 = 1.4.0 - 2021-10-26 =
 * Bump tested up to WooCommerce 5.8

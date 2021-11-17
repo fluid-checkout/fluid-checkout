@@ -2200,9 +2200,60 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Determine if billing address field values are the same as shipping address.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function is_billing_address_data_same_as_shipping( $posted_data = array() ) {
+		// Get parsed posted data
+		if ( empty( $posted_data ) ) {
+			$posted_data = $this->get_parsed_posted_data();
+		}
+
+		// Get list of billing fields to copy from shipping fields
+		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
+
+		// Get shipping fields
+		$shipping_fields = WC()->checkout->get_checkout_fields( 'shipping' );
+
+		// Iterate posted data
+		foreach( $billing_copy_shipping_field_keys as $field_key ) {
+
+			// Get shipping field key
+			$shipping_field_key = str_replace( 'billing_', 'shipping_', $field_key );
+			
+			// Check billing field values against shipping
+			if ( array_key_exists( $shipping_field_key, $shipping_fields ) ) {
+				$billing_field_value = null;
+				$shipping_field_value = null;
+
+				// Maybe get field values from posted data
+				if ( isset( $_POST['post_data'] ) ) {
+					$billing_field_value = $posted_data[ $field_key ];
+					$shipping_field_value = $posted_data[ $shipping_field_key ];
+				}
+				// Maybe get field values from checkout fields
+				else {
+					$billing_field_value = WC()->checkout->get_value( $field_key );
+					$shipping_field_value = WC()->checkout->get_value( $shipping_field_key );
+				}
+
+				if ( $billing_field_value !== $shipping_field_value ) {
+					return false;
+				}
+			}
+
+		}
+
+		return true;
+	}
+
+	/**
 	 * Check whether the checkbox "billing address same as shipping" is checked.
 	 * This function will return `true` even if the shipping country is not allowed for billing,
 	 * use `is_billing_same_as_shipping` to also check if the shipping country is allowed for billing.
+	 * 
+	 * @param  array  $posted_data   Post data for all checkout fields.
 	 *
 	 * @return  bool  `true` checkbox "billing address same as shipping" is checked, `false` otherwise.
 	 */
@@ -2213,7 +2264,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Set default value
-		$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', get_option( 'fc_default_to_billing_same_as_shipping', 'yes' ) == 'yes' );
+		$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === get_option( 'fc_default_to_billing_same_as_shipping', 'yes' ) );
+		
+		// Maybe set as same as shipping for logged users
+		if ( is_user_logged_in() ) {
+			$billing_same_as_shipping = $this->is_billing_address_data_same_as_shipping( $posted_data );
+		}
 
 		// Try get value from the post_data
 		if ( isset( $_POST['post_data'] ) ) {
@@ -2243,6 +2299,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Get value for whether the billing address is the same as the shipping address.
+	 * 
+	 * @param  array  $posted_data   Post data for all checkout fields.
 	 *
 	 * @return  bool  `true` if the billing address is the same as the shipping address, `false` otherwise.
 	 */
@@ -2336,7 +2394,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Maybe set billing address fields values to same as shipping address from the posted data.
 	 *
-	 * @param array $posted_data Post data for all checkout fields.
+	 * @param  array  $posted_data   Post data for all checkout fields.
 	 */
 	public function maybe_set_billing_address_same_as_shipping( $posted_data ) {
 		// Get value for billing same as shipping
