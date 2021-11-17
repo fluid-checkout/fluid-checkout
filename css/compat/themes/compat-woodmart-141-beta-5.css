@@ -2,6 +2,25 @@ body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not([cl
   right: 26px;
 }
 
+body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error:before {
+  padding-top: 6px;
+}
+
+body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error {
+  background-color: none;
+  -webkit-transform: none;
+  -webkit-animation: none;
+  transform: none;
+  animation: none;
+  z-index: 0;
+  cursor: auto;
+  min-height: 0;
+}
+
+body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error::after {
+  display: none;
+}
+
 body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
   position: relative;
   margin-left: 5px;
