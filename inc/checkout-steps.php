@@ -2150,6 +2150,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Check whether a country is allowed for shipping.
+	 *
+	 * @param   string  $country_code  Country code to check against site settings.
+	 *
+	 * @return  bool                   `true` when the country is allowed for shipping addresses, `false` otherwise.
+	 */
+	public function is_country_allowed_for_shipping( $country_code ) {
+		$allowed_countries = WC()->countries->get_shipping_countries();
+		return in_array( $country_code, array_keys( $allowed_countries ) );
+	}
+
+	/**
+	 * Check whether a country is allowed for billing.
+	 *
+	 * @param   string  $country_code  Country code to check against site settings.
+	 *
+	 * @return  bool                   `true` when the country is allowed for billing addresses, `false` otherwise.
+	 */
+	public function is_country_allowed_for_billing( $country_code ) {
+		$allowed_countries = WC()->countries->get_allowed_countries();
+		return in_array( $country_code, array_keys( $allowed_countries ) );
+	}
+
+	/**
 	 * Check whether the selected shipping country is also available for billing country.
 	 *
 	 * @return  mixed  `true` if the selected shipping country is also available for billing country, `false` if the shipping country is not allowed for billing, and `null` if the shipping country is not set.
@@ -2173,8 +2197,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Shipping country is defined, return bool
 		if ( $shipping_country != null && ! empty( $shipping_country ) ) {
-			$allowed_billing_countries = WC()->countries->get_allowed_countries();
-			return in_array( $shipping_country, array_keys( $allowed_billing_countries ) );
+			return $this->is_country_allowed_for_billing( $shipping_country );
 		}
 
 		return null;
