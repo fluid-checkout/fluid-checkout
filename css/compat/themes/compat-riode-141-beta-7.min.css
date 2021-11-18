@@ -1,4 +1,13 @@
 .fc-login-form .login {
   display: block;
 }
+
+.fc-checkout-notices .form-row.form-row:before,
+.fc-checkout-notices .form-row.form-row:after {
+  display: none;
+}
+
+.fc-checkout-notices .input-wrapper-inline.input-wrapper-inline {
+  max-width: 100%;
+}
 /*# sourceMappingURL=maps/compat-riode-141-beta-7.min.css.map */
