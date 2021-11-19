@@ -1,0 +1,11 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+.woocommerce-checkout .woocommerce form.woocommerce-checkout .fc-checkout-order-review__inner .woocommerce-checkout-review-order.woocommerce-checkout-review-order {
+    background-image: none;
+}
+
+.woocommerce-checkout .fc-checkout-order-review__inner #order_review table.shop_table tbody tr td:last-child {
+    padding: remsize( 1rem ) remsize( 2rem );
+}
