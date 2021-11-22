@@ -840,6 +840,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if should not display phone in formatted addresses
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $formats; }
 
+		// Bail if viewing order confirmation page
+		if ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) { return $formats; }
+
 		foreach ( $formats as $locale => $format) {
 			$formats[ $locale ] = $format . "\n{phone}";
 		}
@@ -854,6 +857,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   array  $address       Contains address fields.
 	 */
 	public function add_phone_formatted_address_replacements( $replacements, $args ) {
+		// Bail if should not display phone in formatted addresses
+		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $replacements; }
+
+		// Bail if viewing order confirmation page
+		if ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) { return $replacements; }
+
 		$replacements['{phone}'] = isset( $args['phone'] ) ? $args['phone'] : '';
 		return $replacements;
 	}
