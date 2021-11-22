@@ -224,6 +224,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Missing billing fields sometimes when allowed countries settings are changed.
 * Fixed: Billing address being overwritten with same as shipping for logged users.
 * Fixed: Only check for options and hooks when preparing additional notes substep.
+* Fixed: Missing borders for some steps or substeps.
 
 = 1.4.0 - 2021-10-26 =
 * Bump tested up to WooCommerce 5.8

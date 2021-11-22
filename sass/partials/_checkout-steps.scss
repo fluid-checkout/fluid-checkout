@@ -10,7 +10,7 @@
 
 
 .fc-wrapper .fc-checkout-step {
-	margin: 0 0 remsize( -.1rem ); // Prevent double borders
+	margin: remsize( -.1rem ) 0 0; // Prevent double borders
 	padding: $checkout-step-padding;
 	border: solid remsize( .1rem ) $border-color;
 	border-radius: 0;
@@ -31,8 +31,8 @@
 .fc-wrapper .fc-step__substep {
 	position: relative;
 	padding: $checkout-substep-padding;
-	margin: 0 0 remsize( -.1rem ); // Prevent double borders
-	border-bottom: solid remsize( .1rem ) $border-color;
+	margin: remsize( -.1rem ) 0 0; // Prevent double borders
+	border-top: solid remsize( .1rem ) $border-color;
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
 }
