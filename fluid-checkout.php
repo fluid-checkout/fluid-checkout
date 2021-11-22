@@ -490,6 +490,10 @@ class FluidCheckout {
 		if ( ! array_key_exists( $tag, $wp_filter ) ) { return false; }
 
 		$callbacks = $wp_filter[ $tag ]->callbacks;
+
+		// Return false if no functions hooked to the priority
+		if ( ! array_key_exists( $priority, $callbacks ) ) { return false; }
+
 		$priority_callbacks = $callbacks[ $priority ];
 		$class_callbacks = array();
 
