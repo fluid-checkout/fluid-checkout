@@ -1,7 +1,3 @@
-.fc-login-form .login {
-  display: block;
-}
-
 .fc-checkout-notices .form-row.form-row:before,
 .fc-checkout-notices .form-row.form-row:after {
   display: none;
@@ -9,4 +5,12 @@
 
 .fc-checkout-notices .input-wrapper-inline.input-wrapper-inline {
   max-width: 100%;
+}
+
+.fc-wrapper .payment_method_paypal img {
+  min-width: auto;
+}
+
+.fc-login-form .login {
+  display: block;
 }
