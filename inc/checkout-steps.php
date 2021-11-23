@@ -2192,6 +2192,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$customer = WC()->customer;
 		$shipping_country = $customer->get_shipping_country();
 
+		// Try get value from session
+		$shipping_country_session = $this->get_checkout_field_value_from_session( 'shipping_country' );
+		if ( isset( $shipping_country_session ) && ! empty( $shipping_country_session ) ) {
+			$shipping_country = $shipping_country_session;
+		}
+
 		// Use posted data when doing checkout update
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			// Try get value from the post_data
