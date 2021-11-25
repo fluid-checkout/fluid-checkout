@@ -1,11 +1,15 @@
 div.woocommerce form .form-row.coderockz_woo_delivery_delivery_selection_box.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after,
 div.woocommerce form .form-row.coderockz_woo_delivery_time_field.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after,
-div.woocommerce form .form-row.coderockz_woo_delivery_pickup_time_field.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after {
+div.woocommerce form .form-row.coderockz_woo_delivery_pickup_time_field.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after,
+div.woocommerce form .form-row#coderockz_woo_delivery_time_field_field.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after,
+div.woocommerce form .form-row#coderockz_woo_delivery_pickup_time_field_field.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after {
   right: 32px;
 }
 div.woocommerce form .form-row.coderockz_woo_delivery_delivery_selection_box.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper:after,
 div.woocommerce form .form-row.coderockz_woo_delivery_time_field.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper:after,
-div.woocommerce form .form-row.coderockz_woo_delivery_pickup_time_field.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper:after {
+div.woocommerce form .form-row.coderockz_woo_delivery_pickup_time_field.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper:after,
+div.woocommerce form .form-row#coderockz_woo_delivery_time_field_field.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper:after,
+div.woocommerce form .form-row#coderockz_woo_delivery_pickup_time_field_field.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper:after {
   display: none;
 }
 
@@ -23,4 +27,3 @@ div.woocommerce form .form-row.coderockz_woo_delivery_pickup_time_field.woocomme
 .fc-wrapper #coderockz_woo_delivery_setting_wrapper #coderockz_woo_delivery_pickup_time_section:not(:first-child) {
   margin-top: 20px;
 }
-/*# sourceMappingURL=maps/compat-woo-delivery-140.min.css.map */

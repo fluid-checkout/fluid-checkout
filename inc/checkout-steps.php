@@ -366,6 +366,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output a redirect hidden field to the WooCommerce login form to redirect the user to the checkout or previous page.
 	 */
 	public function output_woocommerce_login_form_redirect_hidden_field() {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
+
 		$raw_referrer_url = wc_get_raw_referer() ? wc_get_raw_referer() : wc_get_page_permalink( 'myaccount' );
 		$referrer_url = ( is_checkout() || ( array_key_exists( '_redirect', $_GET ) && $_GET[ '_redirect' ] == 'checkout' ) ) ? wc_get_checkout_url() : $raw_referrer_url;
 
@@ -736,6 +739,39 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Add step to the list
 		$_checkout_steps = $this->get_checkout_steps();
 		$_checkout_steps[] = $step_args;
+
+		// Sort steps based on priority.
+		uasort( $_checkout_steps, array( $this, 'checkout_step_priority_uasort_comparison' ) );
+		$_checkout_steps = array_values( $_checkout_steps );
+
+		// Update registered checkout steps
+		$this->checkout_steps = $_checkout_steps;
+
+		return true;
+	}
+
+	/**
+	 * Deregister a checkout step.
+	 *
+	 * @param   string  $step_id  ID of the checkout step.
+	 *
+	 * @return  boolean           `true` if the step was successfully unregistered, `false` otherwise.
+	 */
+	public function unregister_checkout_step( $step_id ) {
+		// Bail if checkout step is not registered
+		if ( ! $this->has_checkout_step( $step_id ) ) { return false; }
+		
+		// Look for a step with the same id
+		$step_index = false;
+		foreach ( $this->get_checkout_steps() as $key => $step_args ) {
+			if ( $step_args[ 'step_id' ] == sanitize_title( $step_id ) ) {
+				$step_index = $key;
+			}
+		}
+
+		// Add step to the list
+		$_checkout_steps = $this->get_checkout_steps();
+		unset( $_checkout_steps[ $step_index ] );
 
 		// Sort steps based on priority.
 		uasort( $_checkout_steps, array( $this, 'checkout_step_priority_uasort_comparison' ) );
@@ -3054,6 +3090,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  mixed               The value of the field from the saved session.
 	 */
 	public function get_checkout_field_value_from_session( $field_key ) {
+		// Bail if WC or session not available yet
+		if ( ! function_exists( 'wC' ) || ! isset( WC()->session ) ) { return; }
+
 		return WC()->session->get( self::SESSION_PREFIX . $field_key );
 	}
 
@@ -3078,6 +3117,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Clear session values for all checkout fields.
 	 **/
 	public function unset_all_session_customer_persisted_data() {
+		// Bail if session not available
+		if ( ! function_exists( 'WC' ) || ! isset( WC()->session ) ) { return; }
+
 		// Filter clear fields to allow developers to add more fields to skip being cleared
 		$clear_field_keys_skip_list = apply_filters( 'fc_customer_persisted_data_clear_all_fields_skip_list', array( 'order_comments' ) );
 
