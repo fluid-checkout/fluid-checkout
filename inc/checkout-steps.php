@@ -2247,7 +2247,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Shipping country is defined, return bool
-		if ( $shipping_country != null && ! empty( $shipping_country ) ) {
+		if ( null !== $shipping_country && ! empty( $shipping_country ) ) {
 			return $this->is_country_allowed_for_billing( $shipping_country );
 		}
 
