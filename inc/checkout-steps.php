@@ -2996,6 +2996,35 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the list of address fields to update on the checkout form.
+	 *
+	 * @param   string  $address_type  The address type.
+	 */
+	public function get_address_field_keys( $address_type ) {
+		$field_key_prefix = $address_type . '_';
+
+		// Get field keys from checkout fields
+		$fields = WC()->checkout()->get_checkout_fields( $address_type );
+		$field_keys = array_keys( $fields );
+
+		// Skip some fields
+		$skip_field_keys = apply_filters( 'fc_adress_field_keys_skip_list', array( $field_key_prefix.'email' ) );
+		$field_keys = array_diff( $field_keys, $skip_field_keys );
+
+		// Maybe remove billing only fields
+		if ( 'billing' === $address_type ) {
+			$field_keys = array_diff( $field_keys, $this->get_billing_only_fields_keys() );
+		}
+
+		// Filter to allow customizations
+		$field_keys = apply_filters( 'fc_address_field_keys', $field_keys, $address_type );
+
+		return $field_keys;
+	}
+
+
+
+	/**
 	 * Change default checkout field value, getting it from the persisted fields session.
 	 *
 	 * @param   mixed    $value   Value of the field.
