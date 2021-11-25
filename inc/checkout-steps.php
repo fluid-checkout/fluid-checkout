@@ -2467,7 +2467,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Remove links and fix accessibility attributes for payment method icons.
 	 */
-	public function change_payment_gateway_icon_html( $icon, $id ) {
+	public function change_payment_gateway_icon_html( $icon, $id = null ) {
 
 		// Remove links from the icon html
 		$pattern = '/(<a [^<]*)([^<]*)(<\/a>)/';
