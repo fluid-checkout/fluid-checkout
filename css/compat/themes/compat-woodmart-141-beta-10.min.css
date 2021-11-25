@@ -1,1 +1,62 @@
-body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after{right:26px}body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error:before{padding-top:6px}body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error{background-color:none;-webkit-transform:none;-webkit-animation:none;transform:none;animation:none;z-index:0;cursor:auto;min-height:0}body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error:after{display:none}body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon{position:relative;margin-left:5px;margin-right:-5px;width:30px;height:30px;line-height:inherit;text-decoration:none;text-indent:-10000px}body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon:focus{outline:1px dotted #535156;outline-offset:1px}body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon:before{position:absolute;display:block;top:0;left:0;width:30px;height:30px;line-height:30px;text-align:center;text-indent:0}body.theme-woodmart .fc-checkout-order-review .wd-table-wrapper,body.theme-woodmart .fc-checkout-order-review .woodmart-table-wrapper{margin:0;padding:0;overflow:visible;box-shadow:none}body.theme-woodmart form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon{margin-right:-10px}
+body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after {
+  right: 26px;
+}
+
+body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error:before {
+  padding-top: 6px;
+}
+
+body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error {
+  background-color: none;
+  -webkit-transform: none;
+  -webkit-animation: none;
+  transform: none;
+  animation: none;
+  z-index: 0;
+  cursor: auto;
+  min-height: 0;
+}
+
+body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error::after {
+  display: none;
+}
+
+body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
+  position: relative;
+  margin-left: 5px;
+  margin-right: -5px;
+  width: 30px;
+  height: 30px;
+  line-height: inherit;
+  text-decoration: none;
+  text-indent: -10000px;
+}
+body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon:focus {
+  outline: dotted 1px #535156;
+  outline-offset: 1px;
+}
+
+body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon::before {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  text-indent: 0;
+}
+
+body.theme-woodmart .fc-checkout-order-review .woodmart-table-wrapper,
+body.theme-woodmart .fc-checkout-order-review .wd-table-wrapper {
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  box-shadow: none;
+}
+
+body.theme-woodmart form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon {
+  margin-right: -10px;
+}
+/*# sourceMappingURL=maps/compat-woodmart-141-beta-10.min.css.map */
