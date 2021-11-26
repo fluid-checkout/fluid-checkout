@@ -62,14 +62,6 @@ class FluidCheckout {
 	private static $features = array();
 
 	/**
-	 * Hold cached values for parsed `post_data`.
-	 *
-	 * @var array
-	 */
-	private $posted_data = null;
-	private $set_parsed_posted_data_filter_applied = false;
-
-	/**
 	 * User session keys prefix.
 	 *
 	 * @var string
@@ -429,47 +421,15 @@ class FluidCheckout {
 
 
 	/**
-	 * Parse the data from the `post_data` request parameter into an `array`.
-	 */
-	public function set_parsed_posted_data() {
-		// Get sanitized posted data as a string
-		$posted_data = isset( $_POST['post_data'] ) ? wp_unslash( $_POST['post_data'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-
-		// Parsing posted data into an array
-		$new_posted_data = array();
-		$vars = explode( '&', $posted_data );
-		foreach ( $vars as $k => $value ) {
-			$v = explode( '=', urldecode( $value ) );
-			$new_posted_data[ $v[0] ] = array_key_exists( 1, $v) ? wc_clean( wp_unslash( $v[1] ) ) : null;
-		}
-
-		// Maybe apply filter
-		if ( ! $this->set_parsed_posted_data_filter_applied ) {
-			$this->set_parsed_posted_data_filter_applied = true;
-
-			// Updated cached posted data
-			$this->posted_data = $new_posted_data;
-			
-			// Filter to allow customizations
-			$new_posted_data = apply_filters( 'fc_set_parsed_posted_data', $new_posted_data );
-		}
-
-		// Updated cached posted data
-		$this->posted_data = $new_posted_data;
-	}
-
-	/**
-	 * Parse the data from the `post_data` request parameter into an `array`.
+	 * Parse the data from the `post_data` request parameter into an `array`. Alias for the method with the same name from the `FluidCheckout` main class.
 	 *
 	 * @return  array  Post data for all checkout fields parsed into an `array`.
 	 */
 	public function get_parsed_posted_data() {
-		// Maybe initialize posted data
-		if ( null === $this->posted_data ) {
-			$this->set_parsed_posted_data();
-		}
+		// Bail if class not available
+		if ( ! class_exists( 'FluidCheckout_Steps' ) ) { return; }
 
-		return $this->posted_data;
+		return FluidCheckout_Steps::instance()->get_parsed_posted_data();
 	}
 
 
