@@ -232,6 +232,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Compatibility with theme Impreza when required plugin UpSolution Core is not activated.
 * Fixed: Prevent fatal error while login when WooCommerce session is not available.
 * Fixed: Fatal error on admin screens when the WooCommerce session object is not available.
+* Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
 
 = 1.4.0 - 2021-10-26 =
 * Bump tested up to WooCommerce 5.8
