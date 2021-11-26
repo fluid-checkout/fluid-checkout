@@ -394,6 +394,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Check whether the shipping phone field is enabled to be used.
+	 */
+	public function is_shipping_phone_enabled() {
+		return 'no' !== get_option( 'fc_shipping_phone_field_visibility', 'no' );
+	}
+
+	/**
+	 * Check whether the billing phone field is enabled to be used.
+	 */
+	public function is_billing_phone_enabled() {
+		return 'hidden' !== get_option( 'woocommerce_checkout_phone_field', 'required' );
+	}
+
+
+
+
+
+	/**
 	 * Checkout Steps.
 	 */
 
