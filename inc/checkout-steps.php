@@ -118,7 +118,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_sidebar' ), 1 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
-		add_action( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
+		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
 
 		// Formatted Address
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ) );
@@ -2609,7 +2609,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Remove links and fix accessibility attributes for payment method icons.
 	 */
-	public function change_payment_gateway_icon_html( $icon, $id ) {
+	public function change_payment_gateway_icon_html( $icon, $id = null ) {
 
 		// Remove links from the icon html
 		$pattern = '/(<a [^<]*)([^<]*)(<\/a>)/';
