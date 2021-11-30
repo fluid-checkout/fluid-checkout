@@ -46,7 +46,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 	public function add_settings( $settings, $current_section ) {
 		if ( empty( $current_section ) ) {
 
-			$settings_new = apply_filters(
+			$settings = apply_filters(
 				'fc_checkout_general_settings',
 				array(
 					array(
@@ -257,8 +257,6 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 				)
 			);
-
-			$settings = apply_filters( 'fc_general_settings', $settings_new, $current_section );
 		}
 
 		return $settings;

@@ -62,13 +62,6 @@ class FluidCheckout {
 	private static $features = array();
 
 	/**
-	 * Hold cached values for parsed `post_data`.
-	 *
-	 * @var array
-	 */
-	private $posted_data = null;
-
-	/**
 	 * User session keys prefix.
 	 *
 	 * @var string
@@ -428,31 +421,15 @@ class FluidCheckout {
 
 
 	/**
-	 * Parse the data from the `post_data` request parameter into an `array`.
+	 * Parse the data from the `post_data` request parameter into an `array`. Alias for the method with the same name from the `FluidCheckout` main class.
 	 *
 	 * @return  array  Post data for all checkout fields parsed into an `array`.
 	 */
 	public function get_parsed_posted_data() {
-		// Return cached parsed data
-		if ( is_array( $this->posted_data ) ) {
-			return $this->posted_data;
-		}
+		// Bail if class not available
+		if ( ! class_exists( 'FluidCheckout_Steps' ) ) { return; }
 
-		// Get sanitized posted data as a string
-		$posted_data = isset( $_POST['post_data'] ) ? wp_unslash( $_POST['post_data'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-
-		// Parsing posted data into an array
-		$new_posted_data = array();
-		$vars = explode( '&', $posted_data );
-		foreach ( $vars as $k => $value ) {
-			$v = explode( '=', urldecode( $value ) );
-			$new_posted_data[ $v[0] ] = array_key_exists( 1, $v) ? wc_clean( wp_unslash( $v[1] ) ) : null;
-		}
-
-		// Updated cached posted data
-		$this->posted_data = $new_posted_data;
-
-		return $this->posted_data;
+		return FluidCheckout_Steps::instance()->get_parsed_posted_data();
 	}
 
 
@@ -473,6 +450,10 @@ class FluidCheckout {
 		if ( ! array_key_exists( $tag, $wp_filter ) ) { return false; }
 
 		$callbacks = $wp_filter[ $tag ]->callbacks;
+
+		// Return false if no functions hooked to the priority
+		if ( ! array_key_exists( $priority, $callbacks ) ) { return false; }
+
 		$priority_callbacks = $callbacks[ $priority ];
 		$class_callbacks = array();
 
