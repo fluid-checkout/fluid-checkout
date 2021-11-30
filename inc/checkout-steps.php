@@ -2396,7 +2396,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function is_billing_same_as_shipping( $posted_data = array() ) {
 		// Set to different billing address when shipping country not allowed
-		if ( $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) {
+		if ( null === $this->is_shipping_country_allowed_for_billing() || ! $this->is_shipping_country_allowed_for_billing() ) {
 			return false;
 		}
 
