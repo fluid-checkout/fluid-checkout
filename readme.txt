@@ -218,6 +218,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 * Added: Compatibility with WooCommerce Delivery & Pickup Date Time Pro by CodeRockz.
+* Added: Conditionally add the shipping package name to the shipping method section. Added the hook `fc_shipping_method_display_package_name` to control whether to display the package name.
 * Improved: Compatibility with theme Woodmart.
 * Improved: Added function to allow unregistering checkout steps.
 * Fixed: JS error preventing proceed to next step when progress elements are not present.
