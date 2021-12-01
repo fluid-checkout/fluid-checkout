@@ -3,8 +3,8 @@
 // ------------------------------------
 
 .fc-wrapper #payment ul.payment_methods > .wc_payment_method.wc_payment_method > input[type=radio]:first-child:checked + label:after {
-    top: 9px;
-    left: 8px;
+	top: remsize( .9rem );
+    left: remsize( .8rem );
 }
 
 .fc-content [type="radio"]:not(:checked)+label, 
@@ -26,7 +26,8 @@
 .fc-content [type="radio"]:checked+label:after, 
 .fc-content .with-gap[type="radio"]:checked+label:before, 
 .fc-content .with-gap[type="radio"]:checked+label:after {
-    border: 2px solid transparent;
+    border: remsize( .2rem ) solid transparent;
+    border: remsize( .2rem ) solid transparent;
 }
 
 body .fc-content {
