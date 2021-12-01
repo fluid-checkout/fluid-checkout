@@ -186,10 +186,7 @@ class FluidCheckout {
 
 
 	/**
-	 * scripts_styles function.
-	 *
-	 * @access public
-	 * @return void
+	 * Get the assets version number.
 	 */
 	public function get_assets_version_number() {
 		$asset_version = '-' . preg_replace( '/\./', '', self::$version );
