@@ -58,8 +58,8 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php else: ?>
 
-		<div class="woocommerce-error">
-			<?php echo apply_filters( 'woocommerce_cart_no_shipping_available_html', wpautop( __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce' ) ) ); ?>
+		<div class="fc-shipping-method__no-shipping-methods">
+			<?php echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce' ) ) ); ?>
 		</div>
 
 	<?php endif; ?>

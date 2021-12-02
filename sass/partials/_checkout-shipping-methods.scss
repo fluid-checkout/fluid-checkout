@@ -2,6 +2,16 @@
 // CHECKOUT SHIPPING METHODS
 // ------------------------------------
 
+.woocommerce .fc-shipping-method__no-shipping-methods {
+	border: $shipping-method-border;
+	border-radius: $shipping-method-border-radius;
+	border-color: $error-color;
+	color: $error-color;
+	padding: $shipping-method-padding-vertical $shipping-method-padding-horizontal;
+}
+
+
+
 #shipping_method.shipping-method__options {
 	list-style-type: none;
 	margin: 0;

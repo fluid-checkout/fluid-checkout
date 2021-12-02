@@ -226,6 +226,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Added function to allow unregistering checkout steps.
 * Improved: Allow collapsible sections to be created without a toggle link when toggle label is `null`.
 * Improved: Use registered checkout fields to display shipping and billing addresses substep review text.
+* Fixed: Missing no shipping method message sometimes. Changes to that message styles where necessary to make it work properly.
 * Fixed: Missing billing fields sometimes when allowed countries settings are changed.
 * Fixed: Billing address being overwritten with same as shipping for logged users.
 * Fixed: Only check for options and hooks when preparing additional notes substep.

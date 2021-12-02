@@ -144,8 +144,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
 	}
 
-
-
 	/**
 	 * Add or remove very late hooks.
 	 */
