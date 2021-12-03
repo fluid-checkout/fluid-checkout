@@ -216,6 +216,10 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Compatibility with theme Orchid Store.
+
 = 1.4.1 - 2021-12-03 =
 * Added: Translation to German. Thanks to @reilix.
 * Added: Compatibility with theme Kentha.
