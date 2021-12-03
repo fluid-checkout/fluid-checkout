@@ -717,6 +717,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_next_step_button_label( $step_id ) {
 		$next_step_args = $this->get_next_step( $step_id );
+		/** translators: Next checkout step title */
 		return sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_args[ 'step_title' ] );
 	}
 

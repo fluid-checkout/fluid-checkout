@@ -140,12 +140,12 @@ Currently the plugin is translated into the languages below, and more are commin
 
 * English (Default)
 * Portuguese - Brazil
+* German - Germany (thanks to @reilix)
 
 ** Comming soon **
 
 * Spanish - Argentina (soon)
 * Dutch (soon)
-* German (soon)
 * German - Formal (soon)
 * Italian (soon)
 
@@ -217,6 +217,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 == Changelog ==
 
 = Unreleased =
+* Added: Translation to German. Thanks to @reilix.
 * Added: New filter `fc_checkout_update_fields_selectors` for CSS selectors used to trigger update the checkout fragments.
 * Added: New filters `fc_is_billing_same_as_shipping_checked` and `fc_output_billing_same_as_shipping_as_hidden_field` for billing same as shipping.
 * Added: Compatibility with WooCommerce Delivery & Pickup Date Time Pro by CodeRockz.
