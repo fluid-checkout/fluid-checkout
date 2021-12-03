@@ -1,15 +1,17 @@
 // ------------------------------------
 // IMPORT ABSTRACT
 // ------------------------------------
-@import "abstract/_all";
-@import	"../node_modules/sticky-states/sass/abstract/variables";
+@import "../../abstract/_all";
 
 
 
 
-	
+
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"../node_modules/sticky-states/sass/theme/sticky-states";
+	"riode/checkout-coupon-code",
+	"riode/checkout-payment-methods",
+	"riode/woocommerce-form-fields";
+

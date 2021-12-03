@@ -110,7 +110,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_sidebar' ), 1 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
-		add_action( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
+		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
 
 		// Order Review
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
@@ -131,8 +131,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
 		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
 	}
-
-
 
 	/**
 	 * Add or remove very late hooks.
@@ -362,6 +360,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output a redirect hidden field to the WooCommerce login form to redirect the user to the checkout or previous page.
 	 */
 	public function output_woocommerce_login_form_redirect_hidden_field() {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
+
 		$raw_referrer_url = wc_get_raw_referer() ? wc_get_raw_referer() : wc_get_page_permalink( 'myaccount' );
 		$referrer_url = ( is_checkout() || ( array_key_exists( '_redirect', $_GET ) && $_GET[ '_redirect' ] == 'checkout' ) ) ? wc_get_checkout_url() : $raw_referrer_url;
 
@@ -686,6 +687,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_next_step_button_label( $step_id ) {
 		$next_step_args = $this->get_next_step( $step_id );
+		/** translators: Next checkout step title */
 		return sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_args[ 'step_title' ] );
 	}
 
@@ -732,6 +734,39 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Add step to the list
 		$_checkout_steps = $this->get_checkout_steps();
 		$_checkout_steps[] = $step_args;
+
+		// Sort steps based on priority.
+		uasort( $_checkout_steps, array( $this, 'checkout_step_priority_uasort_comparison' ) );
+		$_checkout_steps = array_values( $_checkout_steps );
+
+		// Update registered checkout steps
+		$this->checkout_steps = $_checkout_steps;
+
+		return true;
+	}
+
+	/**
+	 * Deregister a checkout step.
+	 *
+	 * @param   string  $step_id  ID of the checkout step.
+	 *
+	 * @return  boolean           `true` if the step was successfully unregistered, `false` otherwise.
+	 */
+	public function unregister_checkout_step( $step_id ) {
+		// Bail if checkout step is not registered
+		if ( ! $this->has_checkout_step( $step_id ) ) { return false; }
+		
+		// Look for a step with the same id
+		$step_index = false;
+		foreach ( $this->get_checkout_steps() as $key => $step_args ) {
+			if ( $step_args[ 'step_id' ] == sanitize_title( $step_id ) ) {
+				$step_index = $key;
+			}
+		}
+
+		// Add step to the list
+		$_checkout_steps = $this->get_checkout_steps();
+		unset( $_checkout_steps[ $step_index ] );
 
 		// Sort steps based on priority.
 		uasort( $_checkout_steps, array( $this, 'checkout_step_priority_uasort_comparison' ) );
@@ -969,7 +1004,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$button_label = apply_filters( 'fc_next_step_button_label', $this->get_next_step_button_label( $step_args[ 'step_id' ] ), $step_args[ 'step_id' ] );
 
 			$button_attributes = array(
-				'class' => implode( ' ', array_merge( array( 'fc-step__next-step', 'button' ), $step_args[ 'next_step_button_classes' ] ) ),
+				'class' => implode( ' ', array_merge( array( 'fc-step__next-step' ), apply_filters( 'fc_next_step_button_classes', array( 'button' ) ), $step_args[ 'next_step_button_classes' ] ) ),
 				'data-step-next' => true,
 			);
 			$button_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $button_attributes ), $button_attributes ) );
@@ -2431,7 +2466,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Remove links and fix accessibility attributes for payment method icons.
 	 */
-	public function change_payment_gateway_icon_html( $icon, $id ) {
+	public function change_payment_gateway_icon_html( $icon, $id = null ) {
 
 		// Remove links from the icon html
 		$pattern = '/(<a [^<]*)([^<]*)(<\/a>)/';
@@ -2666,7 +2701,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add wrapper element and custom class for the checkout place order button.
 	 */
 	public function add_place_order_button_wrapper( $button_html ) {
-		$button_html = str_replace( 'class="button alt', 'class="' . apply_filters( 'fc_place_order_button_classes', 'button alt' ) . ' fc-place-order-button', $button_html );
+		$button_html = str_replace( 'class="button alt', 'class="' . esc_attr( apply_filters( 'fc_place_order_button_classes', 'button alt' ) ) . ' fc-place-order-button', $button_html );
 		return '<div class="fc-place-order">' . $button_html . '</div>';
 	}
 
@@ -2905,6 +2940,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  mixed               The value of the field from the saved session.
 	 */
 	public function get_checkout_field_value_from_session( $field_key ) {
+		// Bail if WC or session not available yet
+		if ( ! function_exists( 'wC' ) || ! isset( WC()->session ) ) { return; }
+
 		return WC()->session->get( self::SESSION_PREFIX . $field_key );
 	}
 
@@ -2929,6 +2967,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Clear session values for all checkout fields.
 	 **/
 	public function unset_all_session_customer_persisted_data() {
+		// Bail if session not available
+		if ( ! function_exists( 'WC' ) || ! isset( WC()->session ) ) { return; }
+
 		// Filter clear fields to allow developers to add more fields to skip being cleared
 		$clear_field_keys_skip_list = apply_filters( 'fc_customer_persisted_data_clear_all_fields_skip_list', array( 'order_comments' ) );
 
