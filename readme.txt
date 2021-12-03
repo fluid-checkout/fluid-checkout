@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.2
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -216,10 +216,22 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
-= Unreleased =
-* Added: Translation to German. Thanks to @reilix.
+= Unreleased (1.5.0) =
+
 * Added: New filter `fc_checkout_update_fields_selectors` for CSS selectors used to trigger update the checkout fragments.
 * Added: New filters `fc_is_billing_same_as_shipping_checked` and `fc_output_billing_same_as_shipping_as_hidden_field` for billing same as shipping.
+* Added: Function to get list of address field keys, necessary for Address Book (PRO) feature.
+* Improved: Renamed the checkout settings subtab from "Checkout options" to "Checkout".
+* Fixed: Shipping and billing phone numbers being displayed twice on order confirmation page.
+* Fixed: Missing borders between some steps and substeps.
+* Fixed: Maybe get shipping country value from session when appropriate.
+* Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
+
+= 1.4.1 - 2021-12-03 =
+* Added: Translation to German. Thanks to @reilix.
+* Added: Compatibility with theme Kentha.
+* Added: Compatibility with theme MrTailor.
+* Added: Compatibility with theme Riode.
 * Added: Compatibility with WooCommerce Delivery & Pickup Date Time Pro by CodeRockz.
 * Added: Conditionally add the shipping package name to the shipping method section. Added the hook `fc_shipping_method_display_package_name` to control whether to display the package name.
 * Added: Filter to change button classes for "Proceed to next step" buttons.
@@ -235,8 +247,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: JS error preventing proceed to next step when progress elements are not present.
 * Fixed: Compatibility with theme Impreza when required plugin UpSolution Core is not activated.
 * Fixed: Prevent fatal error while login when WooCommerce session is not available.
-* Fixed: Fatal error on admin screens when the WooCommerce session object is not available.
-* Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
+* Fixed: Prevent fatal error on admin screens when the WooCommerce session object is not available.
 
 = 1.4.0 - 2021-10-26 =
 * Bump tested up to WooCommerce 5.8
