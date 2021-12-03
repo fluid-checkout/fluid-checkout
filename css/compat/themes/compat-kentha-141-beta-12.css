@@ -23,7 +23,6 @@
 .fc-content .with-gap[type=radio]:checked + label:before,
 .fc-content .with-gap[type=radio]:checked + label:after {
   border: 2px solid transparent;
-  border: 2px solid transparent;
 }
 
 body .fc-content {
