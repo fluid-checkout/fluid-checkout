@@ -1,0 +1,52 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+.fc-wrapper #payment ul.payment_methods > .wc_payment_method.wc_payment_method > input[type=radio]:first-child:checked + label:after {
+	top: remsize( .9rem );
+	left: remsize( .8rem );
+}
+
+.fc-content [type="radio"]:not(:checked)+label, 
+.fc-content [type="radio"]:checked+label {
+	height: auto;
+}
+
+.fc-content [type="radio"] + label:before, 
+.fc-content [type="radio"] + label:after {
+	margin: auto;
+	transition: none;
+}
+
+.fc-content [type="radio"]:checked + label:after, 
+.fc-content .with-gap[type="radio"]:checked + label:after {
+	background-color: transparent;
+}
+
+.fc-content [type="radio"]:checked + label:after, 
+.fc-content .with-gap[type="radio"]:checked + label:before, 
+.fc-content .with-gap[type="radio"]:checked + label:after {
+	border: remsize( .2rem ) solid transparent;
+}
+
+body .fc-content {
+	color: #6d6d6d;
+}
+
+.fc-step__substep-fields-inner input[type=text], 
+.fc-step__substep-fields-inner input[type=number], 
+.fc-step__substep-fields-inner input[type=email], 
+.fc-step__substep-fields-inner input[type=tel], 
+.fc-step__substep-fields-inner input[type=url], 
+.fc-step__substep-fields-inner input[type=password], 
+.fc-step__substep-fields-inner input[type=search], 
+.fc-step__substep-fields-inner textarea, 
+.fc-step__substep-fields-inner .input-text {
+	padding: remsize( 1rem );
+}
+
+.fc-step__substep-fields-inner .select2-selection.select2-selection, 
+.fc-step__substep-fields-inner .select2-selection__rendered.select2-selection__rendered {
+	height: remsize( 4rem );
+	line-height: remsize( 4rem );
+}
