@@ -217,10 +217,19 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 == Changelog ==
 
 = Unreleased =
+* Added: Translation to German. Thanks to @reilix.
 * Added: Compatibility with WooCommerce Delivery & Pickup Date Time Pro by CodeRockz.
 * Added: Conditionally add the shipping package name to the shipping method section. Added the hook `fc_shipping_method_display_package_name` to control whether to display the package name.
+* Added: Filter to change button classes for "Proceed to next step" buttons.
 * Improved: Compatibility with theme Woodmart.
 * Improved: Added function to allow unregistering checkout steps.
+* Improved: Allow collapsible sections to be created without a toggle link when toggle label is `null`.
+* Improved: Use registered checkout fields to display shipping and billing addresses substep review text.
+* Fixed: Missing no shipping method message sometimes. Changes to that message styles where necessary to make it work properly.
+* Fixed: Missing billing fields sometimes when allowed countries settings are changed.
+* Fixed: Billing address being overwritten with same as shipping for logged users.
+* Fixed: Only check for options and hooks when preparing additional notes substep.
+* Fixed: Missing borders for some steps or substeps.
 * Fixed: JS error preventing proceed to next step when progress elements are not present.
 * Fixed: Compatibility with theme Impreza when required plugin UpSolution Core is not activated.
 * Fixed: Prevent fatal error while login when WooCommerce session is not available.

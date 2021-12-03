@@ -132,8 +132,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
 	}
 
-
-
 	/**
 	 * Add or remove very late hooks.
 	 */
@@ -689,6 +687,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_next_step_button_label( $step_id ) {
 		$next_step_args = $this->get_next_step( $step_id );
+		/** translators: Next checkout step title */
 		return sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_args[ 'step_title' ] );
 	}
 
@@ -1005,7 +1004,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$button_label = apply_filters( 'fc_next_step_button_label', $this->get_next_step_button_label( $step_args[ 'step_id' ] ), $step_args[ 'step_id' ] );
 
 			$button_attributes = array(
-				'class' => implode( ' ', array_merge( array( 'fc-step__next-step', 'button' ), $step_args[ 'next_step_button_classes' ] ) ),
+				'class' => implode( ' ', array_merge( array( 'fc-step__next-step' ), apply_filters( 'fc_next_step_button_classes', array( 'button' ) ), $step_args[ 'next_step_button_classes' ] ) ),
 				'data-step-next' => true,
 			);
 			$button_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $button_attributes ), $button_attributes ) );
@@ -2702,7 +2701,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add wrapper element and custom class for the checkout place order button.
 	 */
 	public function add_place_order_button_wrapper( $button_html ) {
-		$button_html = str_replace( 'class="button alt', 'class="' . apply_filters( 'fc_place_order_button_classes', 'button alt' ) . ' fc-place-order-button', $button_html );
+		$button_html = str_replace( 'class="button alt', 'class="' . esc_attr( apply_filters( 'fc_place_order_button_classes', 'button alt' ) ) . ' fc-place-order-button', $button_html );
 		return '<div class="fc-place-order">' . $button_html . '</div>';
 	}
 

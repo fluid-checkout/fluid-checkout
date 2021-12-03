@@ -1289,6 +1289,14 @@ div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select
   color: inherit;
 }
 
+.woocommerce .fc-shipping-method__no-shipping-methods {
+  border: solid 1px #D6D8D8;
+  border-radius: 13px;
+  border-color: #CC1818;
+  color: #CC1818;
+  padding: 10px 10px;
+}
+
 #shipping_method.shipping-method__options {
   list-style-type: none;
   margin: 0;
