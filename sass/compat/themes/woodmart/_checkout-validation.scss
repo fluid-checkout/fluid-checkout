@@ -13,7 +13,7 @@ body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not( [c
 }
 
 body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error:before {
-	padding-top: 6px;
+	padding-top: remsize( .6rem );
 }
 
 body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error {
