@@ -12,17 +12,13 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.2.8
+ * @version 1.4.2
  */
 
 defined( 'ABSPATH' ) || exit;
-
-// Get header background color
-$header_background_color_esc = esc_attr( get_option( 'fc_checkout_header_background_color', '' ) );
-$header_background_style = ! empty( $header_background_color_esc ) ? 'style="background-color: '. $header_background_color_esc .'"' : ''; // WPCS: XSS ok.
 ?>
 
-<header class="fc-checkout-header" <?php echo $header_background_style; // WPCS: XSS ok. ?>>
+<header class="fc-checkout-header">
 	<div class="fc-checkout-header__inner">
 
 		<div class="fc-checkout__branding">

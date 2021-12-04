@@ -87,6 +87,16 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'title'             => __( 'Page background color', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Choose a background color for the checkout page. Color is applied to the <code>&lt;body&gt;</code>.', 'fluid-checkout' ),
+						'desc'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'id'                => 'fc_checkout_page_background_color',
+						'type'              => 'text',
+						'autoload'          => false,
+						'class'             => 'colorpick',
+					),
+
+					array(
 						'type' => 'sectionend',
 						'id'   => 'fc_checkout_layout_options',
 					),

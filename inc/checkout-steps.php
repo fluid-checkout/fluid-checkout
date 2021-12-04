@@ -46,6 +46,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
+
+		// Custom styles
+		add_filter( 'wp_head', array( $this, 'add_custom_styles' ), 10 );
+		add_action( 'fc_output_custom_styles', array( $this, 'output_checkout_header_custom_styles' ), 10 );
+		add_action( 'fc_output_custom_styles', array( $this, 'output_checkout_page_custom_styles' ), 10 );
+
+		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_order_details_styles' ), 10 );
 
@@ -169,7 +176,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add page body class for feature detection.
 	 *
-		 * @param array $classes Classes for the body element.
+	 * @param array $classes Classes for the body element.
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
@@ -189,6 +196,56 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return array_merge( $classes, $add_classes );
+	}
+
+
+
+	/**
+	 * Output custom styles to the checkout page.
+	 */
+	public function add_custom_styles() {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+
+		// Baii if no custom styles were added
+		if ( ! has_action( 'fc_output_custom_styles' ) ) { return; }
+		?>
+		<style id="fc-custom-styles">
+			<?php do_action( 'fc_output_custom_styles' ); ?>
+		</style>
+		<?php
+	}
+
+	/**
+	 * Output the custom styles for the checkout header background color.
+	 */
+	public function output_checkout_header_custom_styles() {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+		
+		// Get header background color
+		$header_background_color = trim( get_option( 'fc_checkout_header_background_color', '' ) );
+
+		// Bail if color is empty
+		if ( empty( $header_background_color ) ) { return; }
+
+		echo 'header.fc-checkout-header{background-color:'. $header_background_color .'}';
+	}
+
+	/**
+	 * Output the custom styles for the checkout page background color.
+	 */
+	public function output_checkout_page_custom_styles() {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+		
+		// Get header background color
+		$page_background_color = trim( get_option( 'fc_checkout_page_background_color', '' ) );
+
+		// Bail if color is empty
+		if ( empty( $page_background_color ) ) { return; }
+
+		echo 'body{background-color:'. $page_background_color .'}';
 	}
 
 
