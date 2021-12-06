@@ -18,6 +18,10 @@
 	border-bottom: 0;
 }
 
+.fc-wrapper .fc-step__substep[data-substep-id="contact_login"] + .fc-step__substep {
+	border-top: 0;
+}
+
 
 
 .fc-contact-login {
