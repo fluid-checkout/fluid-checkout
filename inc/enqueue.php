@@ -19,13 +19,13 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Need to run before WooCommerce registers and enqueues its scripts
+		// Need to run before WooCommerce registers and enqueues its scripts, priority has to be less than 10
 		add_action( 'wp_enqueue_scripts', array( $this, 'replace_woocommerce_scripts' ), 5 );
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_require_bundle' ), 1 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_custom_fonts' ), 1 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_require_bundle' ), 1 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_custom_fonts' ), 1 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_scripts' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_styles_edit_address' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_styles' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_plugin_compat_styles' ), 10 );
 	}
@@ -33,7 +33,29 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 	/**
-	 * Enqueue scripts
+	 * Replace WooCommerce scripts with modified version.
+	 */
+	public function replace_woocommerce_scripts() {
+		wp_register_script( 'woocommerce', self::$directory_url . 'js/woocommerce'. self::$asset_version . '.js', array( 'jquery', 'jquery-blockui', 'js-cookie' ), NULL, true );
+		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
+		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
+		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n' ), NULL, true );
+	}
+
+
+
+	/**
+	 * Maybe enqueue Require Bundle.
+	 */
+	public function maybe_enqueue_require_bundle() {
+		// Bail if not visiting pages affected by the plugin
+		if ( is_admin() || ( ! is_checkout() && ! is_account_page() ) ) { return; }
+
+		$this->enqueue_require_bundle();
+	}
+
+	/**
+	 * Enqueue Require Bundle.
 	 */
 	public function enqueue_require_bundle() {
 		// Require Bundle & Polyfills
@@ -44,7 +66,17 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 	/**
-	 * Enqueue scripts
+	 * Maybe enqueue scripts.
+	 */
+	public function maybe_enqueue_scripts() {
+		// Bail if not visiting pages affected by the plugin
+		if ( is_admin() || ( ! is_checkout() && ! is_account_page() ) ) { return; }
+
+		$this->enqueue_scripts();
+	}
+
+	/**
+	 * Enqueue scripts.
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_script( 'fc-bundles', self::$directory_url . 'js/bundles'. self::$asset_version . '.js', array( 'require-bundle' ), NULL, true );
@@ -77,34 +109,39 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 	/**
-	 * Enqueue fonts
+	 * Maybe enqueue custom fonts.
 	 */
-	function enqueue_custom_fonts( $hook ) {
+	function maybe_enqueue_custom_fonts() {
+		// Bail if not visiting pages affected by the plugin
+		if ( is_admin() || ( ! is_checkout() && ! is_account_page() ) ) { return; }
+
+		$this->enqueue_custom_fonts();
+	}
+
+	/**
+	 * Enqueue custom fonts.
+	 */
+	function enqueue_custom_fonts() {
 		wp_enqueue_style( 'fc-fonts', self::$directory_url . 'css/fonts'. self::$asset_version . '.css', array(), null );
 	}
 
 
 
 	/**
-	 * Replace WooCommerce scripts with modified version.
+	 * Maybe enqueue edit address styles.
 	 */
-	public function replace_woocommerce_scripts() {
-		wp_register_script( 'woocommerce', self::$directory_url . 'js/woocommerce'. self::$asset_version . '.js', array( 'jquery', 'jquery-blockui', 'js-cookie' ), NULL, true );
-		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
-		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
-		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n' ), NULL, true );
+	function maybe_enqueue_styles_edit_address() {
+		// Bail if not visiting pages affected by the plugin
+		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'edit-address' ) ) { return; }
+
+		$this->enqueue_styles_edit_address();
 	}
 
-
-
 	/**
-	 * Enqueue fonts
+	 * Enqueue edit address styles.
 	 */
-	function enqueue_styles( $hook ) {
-		// Edit Address Styles
-		if ( function_exists( 'is_account_page' ) && is_account_page() && is_wc_endpoint_url( 'edit-address' ) ) {
-			wp_enqueue_style( 'fc-account-page-address', self::$directory_url . 'css/account-page-address'. self::$asset_version . '.css', array(), null );
-		}
+	function enqueue_styles_edit_address() {
+		wp_enqueue_style( 'fc-account-page-address', self::$directory_url . 'css/account-page-address'. self::$asset_version . '.css', array(), null );
 	}
 
 
