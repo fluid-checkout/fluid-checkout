@@ -277,12 +277,15 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		// Get gift options fields
 		$gift_options_fields = $this->get_gift_options_fields();
 
+		// Get gift message value
+		$gift_message = wc_clean( wp_unslash( $_POST[ '_fc_gift_message' ] ) );
+
 		// Save values for each field to the order meta
 		foreach ( $gift_options_fields as $key => $field ) {
 			$field_value = isset( $_POST[ $key ] ) ? wc_clean( wp_unslash( $_POST[ $key ] ) ) : null;
 
 			// Maybe unset gift message `from` field
-			if ( $key === '_fc_gift_from' && ( ! isset( $_POST[ '_fc_gift_message' ] ) || empty( $_POST[ '_fc_gift_message' ] ) ) ) {
+			if ( $key === '_fc_gift_from' && empty( $gift_message ) ) {
 				$field_value = null;
 			}
 
@@ -394,8 +397,20 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 * @param   int  $order_id  Order ID.
 	 */
 	public function save_order_gift_details( $order_id ) {
-		update_post_meta( $order_id, '_fc_gift_message', wc_clean( $_POST[ '_fc_gift_message' ] ) );
-		update_post_meta( $order_id, '_fc_gift_from', wc_sanitize_textarea( $_POST[ '_fc_gift_from' ] ) );
+		
+		// TODO: Get list of gift fields and iterate to save or delete each post meta, see `update_order_meta_with_gift_options_fields`
+
+		$gift_message = wc_clean( wp_unslash( $_POST[ '_fc_gift_message' ] ) );
+		$gift_from = wc_clean( wp_unslash( $_POST[ '_fc_gift_from' ] ) );
+
+		if ( ! empty( $gift_message ) ) {
+			update_post_meta( $order_id, '_fc_gift_message', $gift_message );
+			update_post_meta( $order_id, '_fc_gift_from', $gift_from );
+		}
+		else {
+			delete_post_meta( $order_id, '_fc_gift_message' );
+			delete_post_meta( $order_id, '_fc_gift_from' );
+		}
 	}
 
 
