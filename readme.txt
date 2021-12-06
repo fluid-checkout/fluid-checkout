@@ -227,6 +227,12 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Maybe get shipping country value from session when appropriate.
 * Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
 
+= Unreleased =
+
+* Added: Compatibility with theme Orchid Store.
+* Added: Option to set a background color for the checkout page. Refactor checkout header background color to output custom styles in a `<style>` tag.
+* Added: New filter `fc_display_checkout_page_title` to make the checkout page title visible. When hidden, checkout page title is output as `screen-reader-only`. Defaults to hidden.
+
 = 1.4.1 - 2021-12-03 =
 * Added: Translation to German. Thanks to @reilix.
 * Added: Compatibility with theme Kentha.
@@ -235,6 +241,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Compatibility with WooCommerce Delivery & Pickup Date Time Pro by CodeRockz.
 * Added: Conditionally add the shipping package name to the shipping method section. Added the hook `fc_shipping_method_display_package_name` to control whether to display the package name.
 * Added: Filter to change button classes for "Proceed to next step" buttons.
+* Added: New filter `fc_substep_title_<substep_id>` to allow changing the titles of each substep.
 * Improved: Compatibility with theme Woodmart.
 * Improved: Added function to allow unregistering checkout steps.
 * Improved: Allow collapsible sections to be created without a toggle link when toggle label is `null`.

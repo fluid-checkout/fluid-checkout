@@ -28,7 +28,7 @@ else {
 ?>
 <div class="fc-content <?php echo esc_attr( apply_filters( 'fc_content_section_class', '' ) ); ?>">
 
-	<h1 class="fc-checkout__title screen-reader-text"><?php the_title(); ?></h1>
+	<h1 class="fc-checkout__title <?php echo false === apply_filters( 'fc_display_checkout_page_title', false ) ? 'screen-reader-text' : ''; ?>"><?php the_title(); ?></h1>
 
 	<?php
 	// Load the checkout page content
