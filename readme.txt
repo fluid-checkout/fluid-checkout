@@ -218,6 +218,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Added: Compatibility with theme Hello Elementor.
 * Added: Compatibility with theme Orchid Store.
 * Added: Option to set a background color for the checkout page. Refactor checkout header background color to output custom styles in a `<style>` tag.
 * Added: New filter `fc_display_checkout_page_title` to make the checkout page title visible. When hidden, checkout page title is output as `screen-reader-only`. Defaults to hidden.
