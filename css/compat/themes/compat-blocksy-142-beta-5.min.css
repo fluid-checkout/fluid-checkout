@@ -1,1 +1,9 @@
-body.theme-blocksy div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after{right:30px}div.woocommerce form .form-row input[type=checkbox],div.woocommerce form .form-row input[type=radio]{background-color:#fff}
+body.theme-blocksy div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after {
+  right: 30px;
+}
+
+div.woocommerce form .form-row input[type=checkbox],
+div.woocommerce form .form-row input[type=radio] {
+  background-color: #fff;
+}
+/*# sourceMappingURL=maps/compat-blocksy-142-beta-5.min.css.map */
