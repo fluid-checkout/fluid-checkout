@@ -224,6 +224,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: New filter `fc_checkout_express_checkout_section_title` to allow changing the express checkout section title.
 * Added: New filter `fc_output_checkout_contact_login_cta` to control whether to display the call to action "Already have an account? Log in." in the contact step.
 * Added: New action `fc_checkout_below_contact_login_cta` to allow adding content to the contact login substep.
+* Added: New option `checkoutEnablePreventUnload` to the `fcSettings` to allow disabling the "data loss protection" script when closing the browser tab with unsaved changes to checkout fields.
 
 = 1.4.1 - 2021-12-03 =
 * Added: Translation to German. Thanks to @reilix.
