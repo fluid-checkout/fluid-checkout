@@ -1075,12 +1075,9 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   border-top: 0;
 }
 
-.fc-contact-login {
-  text-align: center;
-}
-
 .fc-contact-login__cta-text {
   margin-bottom: 0;
+  text-align: center;
 }
 
 .fc-contact-login__action {

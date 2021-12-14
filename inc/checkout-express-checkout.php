@@ -31,11 +31,11 @@ class FluidCheckout_ExpressCheckout extends FluidCheckout {
 	public function maybe_output_express_checkout_section() {
 		if ( 'yes' !== get_option( 'fc_enable_checkout_express_checkout', 'yes' ) || ! has_action( 'fc_checkout_express_checkout' ) ) { return; }
 
-		$express_checkout_section_label = __( 'Express checkout', 'fluid-checkout' );
+		$express_checkout_section_title = apply_filters( 'fc_checkout_express_checkout_section_title', __( 'Express checkout', 'fluid-checkout' ) );
 		?>
-		<section class="fc-express-checkout" aria-label="<?php echo esc_attr( $express_checkout_section_label ); ?>">
+		<section class="fc-express-checkout" aria-labelledby="fc-express-checkout__title">
 			<div class="fc-express-checkout__inner">
-				<h2 class="fc-express-checkout__title"><?php echo esc_html( $express_checkout_section_label ); ?></h2>
+				<h2 id="fc-express-checkout__title" class="fc-express-checkout__title"><?php echo esc_html( $express_checkout_section_title ); ?></h2>
 				<?php do_action( 'fc_checkout_express_checkout' ); ?>
 			</div>
 			

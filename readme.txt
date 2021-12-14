@@ -134,7 +134,7 @@ If you need more control, you can remove the plugin styles and add your own comp
 
 == Translations ==
 
-All labels and other texts added or changed by the plugin are translatable using the built in WordPress functions.
+All labels and other texts added or changed by the plugin are translatable using the built-in WordPress functions.
 
 Currently the plugin is translated into the languages below, and more are comming soon:
 
@@ -144,10 +144,10 @@ Currently the plugin is translated into the languages below, and more are commin
 
 ** Comming soon **
 
-* Spanish - Argentina (soon)
 * Dutch (soon)
 * German - Formal (soon)
 * Italian (soon)
+* Spanish - Argentina (soon)
 
 ** Note: **
 Fluid Checkout is fully localized/translatable. This is very important for all users worldwide.
@@ -229,9 +229,14 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Added: Compatibility with theme Hello Elementor.
 * Added: Compatibility with theme Orchid Store.
 * Added: Option to set a background color for the checkout page. Refactor checkout header background color to output custom styles in a `<style>` tag.
 * Added: New filter `fc_display_checkout_page_title` to make the checkout page title visible. When hidden, checkout page title is output as `screen-reader-only`. Defaults to hidden.
+* Added: New filter `fc_checkout_express_checkout_section_title` to allow changing the express checkout section title.
+* Added: New filter `fc_output_checkout_contact_login_cta` to control whether to display the call to action "Already have an account? Log in." in the contact step.
+* Added: New action `fc_checkout_below_contact_login_cta` to allow adding content to the contact login substep.
+* Added: New option `checkoutEnablePreventUnload` to the `fcSettings` to allow disabling the "data loss protection" script when closing the browser tab with unsaved changes to checkout fields.
 
 = 1.4.1 - 2021-12-03 =
 * Added: Translation to German. Thanks to @reilix.

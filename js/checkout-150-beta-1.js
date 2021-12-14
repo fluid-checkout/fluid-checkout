@@ -78,7 +78,10 @@ jQuery( function( $ ) {
 			document.addEventListener( 'visibilitychange', this.maybe_update_checkout_visibility_change );
 
 			// CHANGE: Maybe prevent `unload` after they change fields in the page
-			this.$checkout_form.on( 'change', 'select, input, textarea', this.maybe_prevent_unload );
+			var enable_prevent_unload = window.fcSettings !== null && window.fcSettings.hasOwnProperty( 'checkoutEnablePreventUnload' ) ? window.fcSettings.checkoutEnablePreventUnload : 'yes';
+			if ( 'yes' === enable_prevent_unload ) {
+				this.$checkout_form.on( 'change', 'select, input, textarea', this.maybe_prevent_unload );
+			}
 
 			// CHANGE: Update checkout when "billing same as shipping" checked state changes
 			this.$checkout_form.on( 'change', '#billing_same_as_shipping', this.billing_same_shipping_changed );
