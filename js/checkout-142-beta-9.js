@@ -823,9 +823,6 @@ jQuery( function( $ ) {
 				security: wc_checkout_params.remove_coupon_nonce,
 				coupon:   coupon
 			};
-			
-			// CHANGE: Get the checkout substep
-			var $substep = $( '.fc-step__substep[data-substep-id="coupon_codes"]' );
 
 			// CHANGE: Remove existing messages previously to sending request
 			if ( isFluidCheckoutCouponsEnabled ) {
@@ -844,8 +841,15 @@ jQuery( function( $ ) {
 					}
 
 					if ( code ) {
+						// CHANGE: Get the checkout substep elements
+						var $substep_title = $( '.fc-step__substep[data-substep-id="coupon_codes"] .fc-step__substep-title' );
+						var $substep = $( '.fc-step__substep[data-substep-id="coupon_codes"]' );
+
 						// CHANGE: Maybe display coupon code messages in the coupon code step instead of the top of the page
-						if ( isFluidCheckoutCouponsEnabled && $substep.length > 0 ) {
+						if ( isFluidCheckoutCouponsEnabled && $substep_title.length ) {
+							$( code ).insertAfter( $substep_title );
+						}
+						else if ( isFluidCheckoutCouponsEnabled && $substep.length > 0 ) {
 							$substep.prepend( code );
 						}
 						else {
@@ -874,9 +878,6 @@ jQuery( function( $ ) {
 		// CHANGE: Add function to apply coupon via ajax from the checkout form
 		apply_coupon: function( e ) {
 			e.preventDefault();
-
-			// Get the checkout substep
-			var $substep = $( '.fc-step__substep[data-substep-id="coupon_codes"]' );
 
 			var coupon_code    = $( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' ).val();
 			var coupon_field   = $( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' );
@@ -914,8 +915,17 @@ jQuery( function( $ ) {
 					apply_button.prop( 'disabled', false );
 
 					if ( code ) {
+						// Get the checkout substep elements
+						var $substep_title = $( '.fc-step__substep[data-substep-id="coupon_codes"] .fc-step__substep-title' );
+						var $substep = $( '.fc-step__substep[data-substep-id="coupon_codes"]' );
+
 						// Display response (`code`) as a message
-						$substep.prepend( code );
+						if ( $substep_title.length > 0 ) {
+							$( code ).insertAfter( $substep_title );
+						}
+						else {
+							$substep.prepend( code );
+						}
 
 						$( document.body ).trigger( 'applied_coupon_in_checkout', [ data.coupon_code ] );
 						$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
