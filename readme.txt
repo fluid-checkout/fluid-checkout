@@ -134,20 +134,20 @@ If you need more control, you can remove the plugin styles and add your own comp
 
 == Translations ==
 
-All labels and other texts added or changed by the plugin are translatable using the built in WordPress functions.
+All labels and other texts added or changed by the plugin are translatable using the built-in WordPress functions.
 
 Currently the plugin is translated into the languages below, and more are comming soon:
 
 * English (Default)
 * Portuguese - Brazil
+* German
 
 ** Comming soon **
 
-* Spanish - Argentina (soon)
 * Dutch (soon)
-* German (soon)
 * German - Formal (soon)
 * Italian (soon)
+* Spanish - Argentina (soon)
 
 ** Note: **
 Fluid Checkout is fully localized/translatable. This is very important for all users worldwide.
