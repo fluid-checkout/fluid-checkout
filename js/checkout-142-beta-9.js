@@ -362,6 +362,50 @@ jQuery( function( $ ) {
 			wc_checkout_form.reset_update_checkout_timer();
 			wc_checkout_form.updateTimer = setTimeout( wc_checkout_form.update_checkout_action, '5', args );
 		},
+		// CHANGE: Add function to re-focus and keep value of the element that was previously focused before submitting an ajax request
+		maybe_refocus_element: function( currentFocusedElement, currentValue ) {
+			requestAnimationFrame( function() {
+				var elementToFocus;
+
+				// Try findind the the current focused element after updating updated element by ID
+				if ( currentFocusedElement.id ) {
+					elementToFocus = document.getElementById( currentFocusedElement.id );
+				}
+				// Try findind the updated element by classes
+				else if ( currentFocusedElement.getAttribute( 'name' ) ) {
+					var nameAttr = currentFocusedElement.getAttribute( 'name' );
+					elementToFocus = document.querySelector( '[name="'+nameAttr+'"]' );
+				}
+				// Try findind the `select2` focusable element
+				else if ( currentFocusedElement.closest( '.form-row' ) ) {
+					var formRow = currentFocusedElement.closest( '.form-row' );
+					if ( formRow.id ) {
+						elementToFocus = document.querySelector( '.form-row[id="'+formRow.id+'"] .select2-selection' );
+					}
+				}
+
+				// Try setting focus if element is found
+				if ( elementToFocus ) {
+					elementToFocus.focus();
+
+					// Try to set current value to the focused element
+					if ( null !== currentValue && currentValue !== elementToFocus.value ) {
+						elementToFocus.value = currentValue;
+					}
+					
+					// Set keyboard track position back to that previously to update
+					setTimeout( function(){
+						if ( currentFocusedElement.selectionStart && currentFocusedElement.selectionEnd ) {
+							elementToFocus.selectionStart = currentFocusedElement.selectionStart;
+							elementToFocus.selectionEnd = currentFocusedElement.selectionEnd;
+						}
+						else if( elementToFocus.selectionStart && elementToFocus.selectionEnd ) {
+							elementToFocus.selectionStart = elementToFocus.selectionEnd = Number.MAX_SAFE_INTEGER || 10000;
+						}
+					}, 0 );
+				}
+			} );
+		},
 		update_checkout_action: function( args ) {
 			// CHANGE: Check flag that allows or block updating the checkout
 			if ( ! window.can_update_checkout ) { return; }
@@ -492,48 +536,7 @@ jQuery( function( $ ) {
 					}
 
 					// CHANGE: Re-set focus to the element with focus previously to updating fragments
-					requestAnimationFrame( function() {
-						var elementToFocus;
-
-						// Try findind the the current focused element after updating updated element by ID
-						if ( currentFocusedElement.id ) {
-							elementToFocus = document.getElementById( currentFocusedElement.id );
-						}
-						// Try findind the updated element by classes
-						else if ( currentFocusedElement.getAttribute( 'name' ) ) {
-							var nameAttr = currentFocusedElement.getAttribute( 'name' );
-							elementToFocus = document.querySelector( '[name="'+nameAttr+'"]' );
-						}
-						// Try findind the `select2` focusable element
-						else if ( currentFocusedElement.closest( '.form-row' ) ) {
-							var formRow = currentFocusedElement.closest( '.form-row' );
-							if ( formRow.id ) {
-								elementToFocus = document.querySelector( '.form-row[id="'+formRow.id+'"] .select2-selection' );
-							}
-						}
-
-						// Try setting focus if element is found
-						if ( elementToFocus ) {
-							elementToFocus.focus();
-
-							// Try to set current value to the focused element
-							if ( currentValue !== elementToFocus.value ) {
-								elementToFocus.value = currentValue;
-							}
-							
-							// Set keyboard track position back to that previously to update
-							setTimeout( function(){
-								if ( currentFocusedElement.selectionStart && currentFocusedElement.selectionEnd ) {
-									elementToFocus.selectionStart = currentFocusedElement.selectionStart;
-									elementToFocus.selectionEnd = currentFocusedElement.selectionEnd;
-								}
-								else if( elementToFocus.selectionStart && elementToFocus.selectionEnd ) {
-									elementToFocus.selectionStart = elementToFocus.selectionEnd = Number.MAX_SAFE_INTEGER || 10000;
-								}
-							}, 0 );
-						}
-					} );
-					// END - CHANGE: Re-set focus to the element with focus previously to updating fragments
+					wc_checkout_form.maybe_refocus_element( currentFocusedElement, currentValue );
 
 					// Recheck the terms and conditions box, if needed
 					if ( termsCheckBoxChecked ) {
@@ -642,6 +645,11 @@ jQuery( function( $ ) {
 			if ( $form.triggerHandler( 'checkout_place_order' ) !== false && $form.triggerHandler( 'checkout_place_order_' + wc_checkout_form.get_payment_method() ) !== false ) {
 
 				$form.addClass( 'processing' );
+				
+				// CHANGE: Disable place order button
+				var currentFocusedElement = document.activeElement;
+				$( _place_order_selector ).attr( 'disabled', 'disabled' );
+				$( _place_order_selector ).addClass( 'disabled' );
 
 				wc_checkout_form.blockOnSubmit( $form );
 
@@ -705,6 +713,11 @@ jQuery( function( $ ) {
 								return;
 							}
 
+							// CHANGE: Unblock the place order button
+							$( _place_order_selector ).removeAttr( 'disabled' );
+							$( _place_order_selector ).removeClass( 'disabled' );
+							wc_checkout_form.maybe_refocus_element( currentFocusedElement );
+
 							// Trigger update in case we need a fresh nonce
 							if ( true === result.refresh ) {
 								$( document.body ).trigger( 'update_checkout' );
@@ -723,7 +736,7 @@ jQuery( function( $ ) {
 						wc_checkout_form.detachUnloadEventsOnSubmit();
 
 						wc_checkout_form.submit_error( '<div class="woocommerce-error">' + errorThrown + '</div>' );
-					}
+					},
 				});
 			}
 
@@ -733,6 +746,10 @@ jQuery( function( $ ) {
 			$( '.woocommerce-NoticeGroup-checkout, .woocommerce-error, .woocommerce-message' ).remove();
 			wc_checkout_form.$checkout_form.prepend( '<div class="woocommerce-NoticeGroup woocommerce-NoticeGroup-checkout">' + error_message + '</div>' ); // eslint-disable-line max-len
 			wc_checkout_form.$checkout_form.removeClass( 'processing' ).unblock();
+			// CHANGE: Unblock the place order button
+			$( _place_order_selector ).removeAttr( 'disabled' );
+			$( _place_order_selector ).removeClass( 'disabled' );
+			// END - Unblock the place order button
 			wc_checkout_form.$checkout_form.find( '.input-text, select, input:checkbox' ).trigger( 'validate' ).trigger( 'blur' );
 			wc_checkout_form.scroll_to_notices();
 			$( document.body ).trigger( 'checkout_error' , [ error_message ] );
@@ -789,7 +806,10 @@ jQuery( function( $ ) {
 				success:	function( code ) {
 					$( '.woocommerce-error, .woocommerce-message' ).remove();
 					$form.removeClass( 'processing' ).unblock();
-
+					// TODO: MAYBE UNLOCK PLACE ORDER BUTTON
+					// $("#place_order").removeAttr("style");
+					// $("#place_order").html("Place Order");
+					// $("#place_order").removeAttr("disabled","disabled");
 					if ( code ) {
 						$form.before( code );
 						$form.slideUp();
