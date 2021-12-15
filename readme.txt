@@ -115,6 +115,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 = Compatible with popular plugins =
 
 * Germanized for WooCommerce - by vendidero
+* German Market - by MarketPress
 * WooCommerce PDF Invoices & Packing Slips - by Ewout Fernhout
 * WooCommerce Print Invoices/Packing Lists - by SkyVerge
 
@@ -218,6 +219,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Added: Compatibility with plugin German Market.
 * Added: New widget area to display trust symbols below the place order button.
 * Added: Compatibility with theme Hello Elementor.
 * Added: Compatibility with theme Orchid Store.
