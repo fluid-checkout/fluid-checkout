@@ -364,6 +364,9 @@ jQuery( function( $ ) {
 		},
 		// CHANGE: Add function to re-focus and keep value of the element that was previously focused before submitting an ajax request
 		maybe_refocus_element: function( currentFocusedElement, currentValue ) {
+			// Bail if no element to focus
+			if ( null === currentFocusedElement ) { return; }
+
 			requestAnimationFrame( function() {
 				var elementToFocus;
 
@@ -717,6 +720,7 @@ jQuery( function( $ ) {
 							$( _place_order_selector ).removeAttr( 'disabled' );
 							$( _place_order_selector ).removeClass( 'disabled' );
 							wc_checkout_form.maybe_refocus_element( currentFocusedElement );
+							// END - Unblock the place order button
 
 							// Trigger update in case we need a fresh nonce
 							if ( true === result.refresh ) {
