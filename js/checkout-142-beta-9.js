@@ -653,6 +653,7 @@ jQuery( function( $ ) {
 				var currentFocusedElement = document.activeElement;
 				$( _place_order_selector ).attr( 'disabled', 'disabled' );
 				$( _place_order_selector ).addClass( 'disabled' );
+				// END - Disable place order button
 
 				wc_checkout_form.blockOnSubmit( $form );
 
