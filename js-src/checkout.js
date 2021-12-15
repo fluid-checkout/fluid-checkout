@@ -741,7 +741,7 @@ jQuery( function( $ ) {
 						wc_checkout_form.detachUnloadEventsOnSubmit();
 
 						wc_checkout_form.submit_error( '<div class="woocommerce-error">' + errorThrown + '</div>' );
-					},
+					}
 				});
 			}
 
@@ -811,10 +811,6 @@ jQuery( function( $ ) {
 				success:	function( code ) {
 					$( '.woocommerce-error, .woocommerce-message' ).remove();
 					$form.removeClass( 'processing' ).unblock();
-					// TODO: MAYBE UNLOCK PLACE ORDER BUTTON
-					// $("#place_order").removeAttr("style");
-					// $("#place_order").html("Place Order");
-					// $("#place_order").removeAttr("disabled","disabled");
 					if ( code ) {
 						$form.before( code );
 						$form.slideUp();
