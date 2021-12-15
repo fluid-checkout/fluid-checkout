@@ -6,7 +6,14 @@ defined( 'ABSPATH' ) || exit;
  */
 class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 
+	/**
+	 * Temporarily holds the place order button HTML.
+	 *
+	 * @var string
+	 */
 	public static $button_html;
+
+
 
 	/**
 	 * __construct function.
