@@ -32,15 +32,16 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
-		// Place order button on payment section
-		// TODO: only recover button when German Market is removing it
-		add_filter( 'woocommerce_order_button_html', array( $this, 'retrieve_order_button_html' ), 9998 );
-		add_filter( 'woocommerce_order_button_html', array( $this, 'recover_order_button_html' ), 10000 );
-
-		// Checkout widgets
-		if ( class_exists( 'FluidCheckout_CheckoutWidgetAreas' ) ) {
-			add_action( 'woocommerce_checkout_order_review', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 10000 );
-			// add_action( 'woocommerce_checkout_order_review', 					array( 'WGM_Template', 'print_order_button_html' ), 9999 );
+		// Has place order button changes
+		if ( has_filter( 'woocommerce_order_button_html', array( 'WGM_Template', 'remove_order_button_html' ) ) ) {
+			// Place order button on payment section
+			add_filter( 'woocommerce_order_button_html', array( $this, 'retrieve_order_button_html' ), 9998 );
+			add_filter( 'woocommerce_order_button_html', array( $this, 'recover_order_button_html' ), 10000 );
+			
+			// Checkout widgets
+			if ( class_exists( 'FluidCheckout_CheckoutWidgetAreas' ) ) {
+				add_action( 'woocommerce_checkout_order_review', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 10000 );
+			}
 		}
 	}
 
