@@ -25,6 +25,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_widget_area_checkout_header_below' ), 3 ); // Displays widgets before the progress bar
 		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_widget_area_order_review_inside' ), 50 );
 		add_action( 'fc_checkout_after_order_review', array( $this, 'output_widget_area_order_review_outside' ), 50 );
+		add_action( 'woocommerce_review_order_after_submit', array( $this, 'output_widget_area_checkout_place_order_below' ), 50 );
 	}
 
 
@@ -71,9 +72,19 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 
 
 		register_sidebar( array(
-			'name'          => __( 'Order summary', 'fluid-checkout' ),
+			'name'          => __( 'Checkout Order Summary', 'fluid-checkout' ),
 			'id'            => 'fc_order_summary_after',
 			'description'   => __( 'Display widgets inside the order summary at the checkout page.', 'fluid-checkout' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h4 class="widget-title">',
+			'after_title'   => '</h4>',
+		) );
+
+		register_sidebar( array(
+			'name'          => __( 'Checkout Below Place Order', 'fluid-checkout' ),
+			'id'            => 'fc_place_order_after',
+			'description'   => __( 'Display widgets below the place order button at the checkout page.', 'fluid-checkout' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h4 class="widget-title">',
@@ -140,6 +151,19 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		if ( is_active_sidebar( 'fc_order_summary_after' ) ) :
 			echo '<div class="fc-checkout-order-review__widgets-inside">';
 			dynamic_sidebar( 'fc_order_summary_after' );
+			echo '</div>';
+		endif;
+	}
+
+
+
+	/**
+	 * Output widget area below the checkout place order button.
+	 */
+	public function output_widget_area_checkout_place_order_below() {
+		if ( is_active_sidebar( 'fc_place_order_after' ) ) :
+			echo '<div class="fc-checkout__below-place-order-widgets">';
+			dynamic_sidebar( 'fc_place_order_after' );
 			echo '</div>';
 		endif;
 	}

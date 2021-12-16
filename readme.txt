@@ -115,6 +115,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 = Compatible with popular plugins =
 
 * Germanized for WooCommerce - by vendidero
+* German Market - by MarketPress
 * WooCommerce PDF Invoices & Packing Slips - by Ewout Fernhout
 * WooCommerce Print Invoices/Packing Lists - by SkyVerge
 
@@ -229,6 +230,8 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Added: Compatibility with plugin German Market.
+* Added: New widget area to display trust symbols below the place order button.
 * Added: Compatibility with theme Hello Elementor.
 * Added: Compatibility with theme Orchid Store.
 * Added: Option to set a background color for the checkout page. Refactor checkout header background color to output custom styles in a `<style>` tag.
@@ -237,6 +240,9 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: New filter `fc_output_checkout_contact_login_cta` to control whether to display the call to action "Already have an account? Log in." in the contact step.
 * Added: New action `fc_checkout_below_contact_login_cta` to allow adding content to the contact login substep.
 * Added: New option `checkoutEnablePreventUnload` to the `fcSettings` to allow disabling the "data loss protection" script when closing the browser tab with unsaved changes to checkout fields.
+* Improved: Block the place order button with attribute and class `disabled` when processing the order to prevent user from submitting duplicate orders.
+* Fixed: Display coupon code messages below the substep title, instead of above.
+* Fixed: Run additional order notes hooks `woocommerce_before_order_notes` and `woocommerce_after_order_notes` when order notes field is disabled or removed.
 
 = 1.4.1 - 2021-12-03 =
 * Added: Translation to German. Thanks to @reilix.
