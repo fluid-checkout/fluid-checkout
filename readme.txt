@@ -232,6 +232,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Block the place order button with attribute and class `disabled` when processing the order to prevent user from submitting duplicate orders.
 * Fixed: Display coupon code messages below the substep title, instead of above.
 * Fixed: Run additional order notes hooks `woocommerce_before_order_notes` and `woocommerce_after_order_notes` when order notes field is disabled or removed.
+* Fixed: Scroll position when proceeding to next steps was being calculated wrong on some themes.
 
 = 1.4.1 - 2021-12-03 =
 * Added: Translation to German. Thanks to @reilix.
