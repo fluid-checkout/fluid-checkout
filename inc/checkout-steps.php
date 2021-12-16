@@ -158,18 +158,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if not on checkout or cart page or doing AJAX call
 		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
-		// Prepare additional order fields hooks
-		if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) ) {
-			$order_notes_substep_position = 'fc_output_step_shipping';
+		// Bail if no additional order fields are present
+		$all_fields = WC()->checkout()->get_checkout_fields();
 		
-			// Maybe change output to the billing step
-			if ( ! WC()->cart->needs_shipping() ) {
-				$order_notes_substep_position = 'fc_output_step_billing';
-			}
+		// Prepare the hooks related to the additional order notes substep.
+		if ( in_array( 'order', array_keys( $all_fields ) ) ) {
+			// Get additional order fields
+			$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
+			$order_notes_substep_position = 'fc_output_step_shipping';
+			
+			// Bail if no additional order fields are present
+			if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
+				
+				// Maybe change output to the billing step
+				if ( ! WC()->cart->needs_shipping() ) {
+					$order_notes_substep_position = 'fc_output_step_billing';
+				}
 
-			// Add hooks
-			add_action( $order_notes_substep_position, array( $this, 'output_substep_order_notes' ), 100 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
+				// Add hooks
+				add_action( $order_notes_substep_position, array( $this, 'output_substep_order_notes' ), 100 );
+				add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
+
+			}
 		}
 		
 		// Run order notes hooks for better compatibility with plugins that rely on them,
