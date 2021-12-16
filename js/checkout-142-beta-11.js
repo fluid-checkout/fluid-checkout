@@ -78,7 +78,10 @@ jQuery( function( $ ) {
 			document.addEventListener( 'visibilitychange', this.maybe_update_checkout_visibility_change );
 
 			// CHANGE: Maybe prevent `unload` after they change fields in the page
-			this.$checkout_form.on( 'change', 'select, input, textarea', this.maybe_prevent_unload );
+			var enable_prevent_unload = window.fcSettings !== null && window.fcSettings.hasOwnProperty( 'checkoutEnablePreventUnload' ) ? window.fcSettings.checkoutEnablePreventUnload : 'yes';
+			if ( 'yes' === enable_prevent_unload ) {
+				this.$checkout_form.on( 'change', 'select, input, textarea', this.maybe_prevent_unload );
+			}
 
 			// CHANGE: Update checkout when "billing same as shipping" checked state changes
 			this.$checkout_form.on( 'change', '#billing_same_as_shipping', this.billing_same_shipping_changed );
@@ -359,6 +362,53 @@ jQuery( function( $ ) {
 			wc_checkout_form.reset_update_checkout_timer();
 			wc_checkout_form.updateTimer = setTimeout( wc_checkout_form.update_checkout_action, '5', args );
 		},
+		// CHANGE: Add function to re-focus and keep value of the element that was previously focused before submitting an ajax request
+		maybe_refocus_element: function( currentFocusedElement, currentValue ) {
+			// Bail if no element to focus
+			if ( null === currentFocusedElement ) { return; }
+
+			requestAnimationFrame( function() {
+				var elementToFocus;
+
+				// Try findind the the current focused element after updating updated element by ID
+				if ( currentFocusedElement.id ) {
+					elementToFocus = document.getElementById( currentFocusedElement.id );
+				}
+				// Try findind the updated element by classes
+				else if ( currentFocusedElement.getAttribute( 'name' ) ) {
+					var nameAttr = currentFocusedElement.getAttribute( 'name' );
+					elementToFocus = document.querySelector( '[name="'+nameAttr+'"]' );
+				}
+				// Try findind the `select2` focusable element
+				else if ( currentFocusedElement.closest( '.form-row' ) ) {
+					var formRow = currentFocusedElement.closest( '.form-row' );
+					if ( formRow.id ) {
+						elementToFocus = document.querySelector( '.form-row[id="'+formRow.id+'"] .select2-selection' );
+					}
+				}
+
+				// Try setting focus if element is found
+				if ( elementToFocus ) {
+					elementToFocus.focus();
+
+					// Try to set current value to the focused element
+					if ( null !== currentValue && currentValue !== elementToFocus.value ) {
+						elementToFocus.value = currentValue;
+					}
+					
+					// Set keyboard track position back to that previously to update
+					setTimeout( function(){
+						if ( currentFocusedElement.selectionStart && currentFocusedElement.selectionEnd ) {
+							elementToFocus.selectionStart = currentFocusedElement.selectionStart;
+							elementToFocus.selectionEnd = currentFocusedElement.selectionEnd;
+						}
+						else if( elementToFocus.selectionStart && elementToFocus.selectionEnd ) {
+							elementToFocus.selectionStart = elementToFocus.selectionEnd = Number.MAX_SAFE_INTEGER || 10000;
+						}
+					}, 0 );
+				}
+			} );
+		},
 		update_checkout_action: function( args ) {
 			// CHANGE: Check flag that allows or block updating the checkout
 			if ( ! window.can_update_checkout ) { return; }
@@ -489,48 +539,7 @@ jQuery( function( $ ) {
 					}
 
 					// CHANGE: Re-set focus to the element with focus previously to updating fragments
-					requestAnimationFrame( function() {
-						var elementToFocus;
-
-						// Try findind the the current focused element after updating updated element by ID
-						if ( currentFocusedElement.id ) {
-							elementToFocus = document.getElementById( currentFocusedElement.id );
-						}
-						// Try findind the updated element by classes
-						else if ( currentFocusedElement.getAttribute( 'name' ) ) {
-							var nameAttr = currentFocusedElement.getAttribute( 'name' );
-							elementToFocus = document.querySelector( '[name="'+nameAttr+'"]' );
-						}
-						// Try findind the `select2` focusable element
-						else if ( currentFocusedElement.closest( '.form-row' ) ) {
-							var formRow = currentFocusedElement.closest( '.form-row' );
-							if ( formRow.id ) {
-								elementToFocus = document.querySelector( '.form-row[id="'+formRow.id+'"] .select2-selection' );
-							}
-						}
-
-						// Try setting focus if element is found
-						if ( elementToFocus ) {
-							elementToFocus.focus();
-
-							// Try to set current value to the focused element
-							if ( currentValue !== elementToFocus.value ) {
-								elementToFocus.value = currentValue;
-							}
-							
-							// Set keyboard track position back to that previously to update
-							setTimeout( function(){
-								if ( currentFocusedElement.selectionStart && currentFocusedElement.selectionEnd ) {
-									elementToFocus.selectionStart = currentFocusedElement.selectionStart;
-									elementToFocus.selectionEnd = currentFocusedElement.selectionEnd;
-								}
-								else if( elementToFocus.selectionStart && elementToFocus.selectionEnd ) {
-									elementToFocus.selectionStart = elementToFocus.selectionEnd = Number.MAX_SAFE_INTEGER || 10000;
-								}
-							}, 0 );
-						}
-					} );
-					// END - CHANGE: Re-set focus to the element with focus previously to updating fragments
+					wc_checkout_form.maybe_refocus_element( currentFocusedElement, currentValue );
 
 					// Recheck the terms and conditions box, if needed
 					if ( termsCheckBoxChecked ) {
@@ -639,6 +648,12 @@ jQuery( function( $ ) {
 			if ( $form.triggerHandler( 'checkout_place_order' ) !== false && $form.triggerHandler( 'checkout_place_order_' + wc_checkout_form.get_payment_method() ) !== false ) {
 
 				$form.addClass( 'processing' );
+				
+				// CHANGE: Disable place order button
+				var currentFocusedElement = document.activeElement;
+				$( _place_order_selector ).attr( 'disabled', 'disabled' );
+				$( _place_order_selector ).addClass( 'disabled' );
+				// END - Disable place order button
 
 				wc_checkout_form.blockOnSubmit( $form );
 
@@ -702,6 +717,12 @@ jQuery( function( $ ) {
 								return;
 							}
 
+							// CHANGE: Unblock the place order button
+							$( _place_order_selector ).removeAttr( 'disabled' );
+							$( _place_order_selector ).removeClass( 'disabled' );
+							wc_checkout_form.maybe_refocus_element( currentFocusedElement );
+							// END - Unblock the place order button
+
 							// Trigger update in case we need a fresh nonce
 							if ( true === result.refresh ) {
 								$( document.body ).trigger( 'update_checkout' );
@@ -730,6 +751,10 @@ jQuery( function( $ ) {
 			$( '.woocommerce-NoticeGroup-checkout, .woocommerce-error, .woocommerce-message' ).remove();
 			wc_checkout_form.$checkout_form.prepend( '<div class="woocommerce-NoticeGroup woocommerce-NoticeGroup-checkout">' + error_message + '</div>' ); // eslint-disable-line max-len
 			wc_checkout_form.$checkout_form.removeClass( 'processing' ).unblock();
+			// CHANGE: Unblock the place order button
+			$( _place_order_selector ).removeAttr( 'disabled' );
+			$( _place_order_selector ).removeClass( 'disabled' );
+			// END - Unblock the place order button
 			wc_checkout_form.$checkout_form.find( '.input-text, select, input:checkbox' ).trigger( 'validate' ).trigger( 'blur' );
 			wc_checkout_form.scroll_to_notices();
 			$( document.body ).trigger( 'checkout_error' , [ error_message ] );
@@ -786,7 +811,6 @@ jQuery( function( $ ) {
 				success:	function( code ) {
 					$( '.woocommerce-error, .woocommerce-message' ).remove();
 					$form.removeClass( 'processing' ).unblock();
-
 					if ( code ) {
 						$form.before( code );
 						$form.slideUp();
@@ -820,9 +844,6 @@ jQuery( function( $ ) {
 				security: wc_checkout_params.remove_coupon_nonce,
 				coupon:   coupon
 			};
-			
-			// CHANGE: Get the checkout substep
-			var $substep = $( '.fc-step__substep[data-substep-id="coupon_codes"]' );
 
 			// CHANGE: Remove existing messages previously to sending request
 			if ( isFluidCheckoutCouponsEnabled ) {
@@ -841,8 +862,15 @@ jQuery( function( $ ) {
 					}
 
 					if ( code ) {
+						// CHANGE: Get the checkout substep elements
+						var $substep_title = $( '.fc-step__substep[data-substep-id="coupon_codes"] .fc-step__substep-title' );
+						var $substep = $( '.fc-step__substep[data-substep-id="coupon_codes"]' );
+
 						// CHANGE: Maybe display coupon code messages in the coupon code step instead of the top of the page
-						if ( isFluidCheckoutCouponsEnabled && $substep.length > 0 ) {
+						if ( isFluidCheckoutCouponsEnabled && $substep_title.length ) {
+							$( code ).insertAfter( $substep_title );
+						}
+						else if ( isFluidCheckoutCouponsEnabled && $substep.length > 0 ) {
 							$substep.prepend( code );
 						}
 						else {
@@ -871,9 +899,6 @@ jQuery( function( $ ) {
 		// CHANGE: Add function to apply coupon via ajax from the checkout form
 		apply_coupon: function( e ) {
 			e.preventDefault();
-
-			// Get the checkout substep
-			var $substep = $( '.fc-step__substep[data-substep-id="coupon_codes"]' );
 
 			var coupon_code    = $( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' ).val();
 			var coupon_field   = $( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' );
@@ -911,8 +936,17 @@ jQuery( function( $ ) {
 					apply_button.prop( 'disabled', false );
 
 					if ( code ) {
+						// Get the checkout substep elements
+						var $substep_title = $( '.fc-step__substep[data-substep-id="coupon_codes"] .fc-step__substep-title' );
+						var $substep = $( '.fc-step__substep[data-substep-id="coupon_codes"]' );
+
 						// Display response (`code`) as a message
-						$substep.prepend( code );
+						if ( $substep_title.length > 0 ) {
+							$( code ).insertAfter( $substep_title );
+						}
+						else {
+							$substep.prepend( code );
+						}
 
 						$( document.body ).trigger( 'applied_coupon_in_checkout', [ data.coupon_code ] );
 						$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );

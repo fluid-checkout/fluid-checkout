@@ -1,0 +1,49 @@
+body.has-fc-compat-german-market-button-placement form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 1000px) {
+  body.has-fc-compat-german-market-button-placement .fc-wrapper .fc-inside div.place-order {
+    display: none;
+  }
+}
+
+body.has-fc-compat-german-market-button-placement .fc-place-order,
+body.has-fc-compat-german-market-button-placement form.woocommerce-checkout .fc-wrapper #order_review .fc-place-order {
+  padding-top: 0;
+  padding-bottom: 20px;
+}
+
+body.has-fc-compat-german-market-button-placement .fc-sidebar .fc-place-order .fc-place-order-button {
+  display: none;
+}
+@media (min-width: 1000px) {
+  body.has-fc-compat-german-market-button-placement .fc-sidebar .fc-place-order .fc-place-order-button {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+body.has-fc-compat-german-market-button-placement .fc-sidebar .woocommerce-checkout-review-order .woocommerce-terms-and-conditions + p.form-row,
+body.has-fc-compat-german-market-button-placement .fc-sidebar .woocommerce-checkout-review-order .german-market-checkbox-p {
+  display: none;
+}
+@media (min-width: 1000px) {
+  body.has-fc-compat-german-market-button-placement .fc-sidebar .woocommerce-checkout-review-order .woocommerce-terms-and-conditions + p.form-row,
+body.has-fc-compat-german-market-button-placement .fc-sidebar .woocommerce-checkout-review-order .german-market-checkbox-p {
+    display: block;
+  }
+}
+
+body.has-fc-compat-german-market-button-placement .fc-wrapper .fc-checkout-order-review.has-additional-content .fc-checkout-order-review__inner {
+  padding-bottom: 0;
+}
+
+body.has-fc-compat-german-market-button-placement form.woocommerce-checkout .fc-wrapper #order_review .fc-checkout__below-place-order-widgets {
+  display: none;
+}
+@media (min-width: 1000px) {
+  body.has-fc-compat-german-market-button-placement form.woocommerce-checkout .fc-wrapper #order_review .fc-checkout__below-place-order-widgets {
+    display: block;
+  }
+}
