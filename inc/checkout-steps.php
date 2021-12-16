@@ -169,6 +169,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			}
 		}
+		
+		// Run order notes hooks for better compatibility with plugins that rely on them,
+		// because they originally run regardless of the order notes fields existence.
+		if ( ! in_array( 'order', array_keys( $all_fields ) ) || ! apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) ) {
+			$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields' );
+			$order_notes_substep_priority = apply_filters( 'fc_do_order_notes_hooks_priority', 100 );
+			add_action( $order_notes_substep_position, array( $this, 'do_order_notes_hooks' ), $order_notes_substep_priority );
+		}
 	}
 
 
@@ -1630,6 +1638,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
+	}
+
+	/**
+	 * Run additional order notes hooks, for when the order notes fields are disabled.
+	 */
+	public function do_order_notes_hooks() {
+		do_action( 'woocommerce_before_order_notes', WC()->checkout() );
+		do_action( 'woocommerce_after_order_notes', WC()->checkout() );
 	}
 
 
