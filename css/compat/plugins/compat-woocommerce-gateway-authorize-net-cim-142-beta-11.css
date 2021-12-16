@@ -1,0 +1,3 @@
+div.woocommerce form .form-row#wc-authorize-net-cim-credit-card-account-number_field.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper:after {
+  right: 60px;
+}

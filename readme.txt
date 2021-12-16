@@ -231,9 +231,10 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 = Unreleased =
 
 * Added: Compatibility with plugin German Market.
-* Added: New widget area to display trust symbols below the place order button.
+* Added: Compatibility with plugin WooCommerce Authorize.Net Gateway.
 * Added: Compatibility with theme Hello Elementor.
 * Added: Compatibility with theme Orchid Store.
+* Added: New widget area to display trust symbols below the place order button.
 * Added: Option to set a background color for the checkout page. Refactor checkout header background color to output custom styles in a `<style>` tag.
 * Added: New filter `fc_display_checkout_page_title` to make the checkout page title visible. When hidden, checkout page title is output as `screen-reader-only`. Defaults to hidden.
 * Added: New filter `fc_checkout_express_checkout_section_title` to allow changing the express checkout section title.
