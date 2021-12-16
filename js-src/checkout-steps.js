@@ -418,9 +418,11 @@
 
 		// Scroll to the top of the collapsed step
 		var stepElementOffset = getOffsetTop( stepElement ) + ( _settings.scrollOffset * -1 ) + ( stickyElementsOffset * -1 );
-		window.scrollTo( {
-			top: stepElementOffset,
-			behavior: _settings.scrollBehavior,
+		requestAnimationFrame( function() {
+			window.scrollTo( {
+				top: stepElementOffset,
+				behavior: _settings.scrollBehavior,
+			} );
 		} );
 	}
 
