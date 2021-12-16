@@ -98,7 +98,7 @@
 	border-color: darken( $shipping-method-border-color, 15% );
 }
 
-.woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:after {
+.woocommerce ul#shipping_method .shipping-method__option input[type="radio"] + .shipping-method__option-label:after {
 	@include icon-styles();
 	@include icon( 'i-check-small' );
 	@include icon-size( $shipping-method-radio-size );
@@ -106,6 +106,10 @@
 	position: absolute;
 	top: $shipping-method-padding-vertical;
 	left: $global-spacing-extra-small;
+	color: transparent;
+}
+
+.woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:after {
 	color: $white;
 }
 

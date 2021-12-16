@@ -132,7 +132,7 @@
 .woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:before {
 	content: '';
 }
-.fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:after {
+.fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type="radio"]:first-child + label:after {
 	@include icon-styles();
 	@include icon( 'i-check-small' );
 	@include icon-size( $payment-method-radio-size );
@@ -140,6 +140,9 @@
 	position: absolute;
 	top: $payment-method-padding-vertical;
 	left: $global-spacing-extra-small;
+	color: transparent;
+}
+.fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:after {
 	color: $white;
 }
 
