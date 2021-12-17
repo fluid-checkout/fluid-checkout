@@ -1,7 +1,7 @@
 === Fluid Checkout for WooCommerce ===
 Contributors: fluidwebco, diegoversiani, luiggiab
 Tags: woocommerce, checkout, conversion, multi-step, one-page
-Requires PHP: 7.2
+Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 5.8
 Stable tag: 1.4.1
@@ -219,6 +219,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Bump minimum required version to PHP 7.4.
 * Added: Compatibility with plugin German Market.
 * Added: Compatibility with plugin WooCommerce Authorize.Net Gateway.
 * Added: Compatibility with theme Hello Elementor.
@@ -235,6 +236,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Run additional order notes hooks `woocommerce_before_order_notes` and `woocommerce_after_order_notes` when order notes field is disabled or removed.
 * Fixed: Scroll position when proceeding to next steps was being calculated wrong on some themes.
 * Fixed: Removed background color from `fieldset` elements on payment method fields section.
+* Fixed: Fatal error when activating Fluid Checkout on older versions of PHP.
 
 = 1.4.1 - 2021-12-03 =
 * Added: Translation to German. Thanks to @reilix.
