@@ -216,6 +216,9 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+* Fixed: Fatal error when activating Fluid Checkout on PHP 7.2.
+
 = 1.4.1 - 2021-12-03 =
 * Added: Translation to German. Thanks to @reilix.
 * Added: Compatibility with theme Kentha.

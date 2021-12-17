@@ -45,7 +45,7 @@ register_activation_hook( __FILE__, array( 'FluidCheckout_Activation', 'on_activ
 class FluidCheckout {
 
 	// A single instance of this class.
-	public static $instances   = array();
+	public static $instances = array();
 	public static $directory_path;
 	public static $directory_url;
 	public static $plugin = 'Fluid Checkout for WooCommerce';
@@ -73,7 +73,7 @@ class FluidCheckout {
 	 *
 	 * @var string
 	 */
-	public const SESSION_PREFIX = 'fc_';
+	const SESSION_PREFIX = 'fc_';
 
 
 	/**
