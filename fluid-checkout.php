@@ -339,13 +339,22 @@ class FluidCheckout {
 
 	/**
 	 * Check to see if Woocommerce is active on a single install or network wide.
-	 * Otherwise, will display an admin notice.
 	 *
 	 * @since 1.0.0
 	 */
 	public function is_woocommerce_activated() {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		return is_plugin_active( 'woocommerce/woocommerce.php' );
+	}
+
+	/**
+	 * Check to see if Fluid Checkout PRO is active on a single install or network wide.
+	 *
+	 * @since 1.5.0
+	 */
+	public function is_pro_activated() {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		return is_plugin_active( 'fluid-checkout-pro/fluid-checkout-pro.php' );
 	}
 
 

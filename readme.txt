@@ -223,6 +223,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: New filters `fc_is_billing_same_as_shipping_checked` and `fc_output_billing_same_as_shipping_as_hidden_field` for billing same as shipping.
 * Added: Function to get list of address field keys, necessary for Address Book (PRO) feature.
 * Improved: Renamed the checkout settings subtab from "Checkout options" to "Checkout".
+* Improved: Added support and PRO promotion links to the plugins list.
 * Fixed: Shipping and billing phone numbers being displayed twice on order confirmation page.
 * Fixed: Missing borders between some steps and substeps.
 * Fixed: Maybe get shipping country value from session when appropriate.
