@@ -77,7 +77,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 		// Maybe add PRO version promotion
 		if ( ! FluidCheckout::instance()->is_pro_activated() ) {
-			$links[] = sprintf( '<a href="%s" style="color:#007F01;font-weight:bold;">%s</a>', admin_url( 'admin.php?page=wc-settings&tab=fc_checkout&section=license_keys' ), esc_html( __( 'Get PRO', 'fluid-checkout' ) ) );
+			$links[] = sprintf( '<a href="%s" style="color:#007F01;font-weight:bold;">%s</a>', 'https://fluidcheckout.com/product/fluid-checkout-pro/', esc_html( __( 'Get PRO', 'fluid-checkout' ) ) );
 		}
 
 		return $links;
