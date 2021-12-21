@@ -13,11 +13,13 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
- * @fc-version 1.2.3
+ * @fc-version 1.4.2
  * @global WC_Checkout $checkout
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$collapsible_initial_state = WC()->cart->needs_shipping_address() && FluidCheckout_Steps::instance()->is_shipping_country_allowed_for_billing() === null ? 'expanded' : ( $is_billing_same_as_shipping ? 'collapsed' : 'expanded' );
 ?>
 
 <div class="woocommerce-billing-fields">
@@ -26,7 +28,7 @@ defined( 'ABSPATH' ) || exit;
 	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
 	<?php // CHANGE: Add markup for collapsible-block component ?>
-	<div id="woocommerce-billing-fields__field-wrapper" class="woocommerce-billing-fields__field-wrapper <?php echo $is_billing_same_as_shipping ? 'is-collapsed' : ''; // WPCS: XSS ok. ?>" data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo $is_billing_same_as_shipping ? 'collapsed' : 'expanded'; // WPCS: XSS ok. ?>">
+	<div id="woocommerce-billing-fields__field-wrapper" class="woocommerce-billing-fields__field-wrapper <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
 		<div class="collapsible-content__inner">
 			<?php // CHANGE: Display billing fields which might be copied from shipping fields ?>
 			<?php
