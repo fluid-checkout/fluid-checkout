@@ -141,7 +141,7 @@ Currently the plugin is translated into the languages below, and more are commin
 
 * English (Default)
 * Portuguese - Brazil
-* German
+* German - Germany (thanks to @reilix)
 
 ** Comming soon **
 
