@@ -86,7 +86,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		$settings[] = array(
 			'title'          => __( 'Germanized for WooCommerce', 'fluid-checkout' ),
-			'desc'           => __( 'Define the position to display the place order button.<br/><span style="color:#f00;"><strong>Disclaimer:</strong> by changing these settings, I confirm that I understand the legal implications of changing the position of the legal checkboxes on my checkout page.</span>', 'fluid-checkout' ),
+			'desc'           => __( 'Define the position to display the place order button. <br/><span style="color:#f00;"><strong>Disclaimer:</strong> by changing these settings, I confirm that I understand the legal implications of changing the position of the legal checkboxes on my checkout page.</span>', 'fluid-checkout' ),
 			'id'             => 'fc_integration_woocommerce_germanized_place_order_position',
 			'options'        => array(
 				'order_summary_after_total'      => _x( 'Order summary (after totals)', 'Place order position', 'fluid-checkout' ),
