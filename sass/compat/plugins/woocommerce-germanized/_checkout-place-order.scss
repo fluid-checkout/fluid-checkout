@@ -2,8 +2,12 @@
 // CHECKOUT PLACE ORDER
 // ------------------------------------
 
+.fc-wrapper .wc-gzd-order-submit {
+	padding-top: $global-spacing-small;
+}
 
-// Place order (payment section)
+
+
 .fc-checkout-order-review .fc-place-order {
 	padding: $global-spacing-small 0;
 }
@@ -12,21 +16,17 @@
 	padding-right: 0;
 }
 
-// Place order (order summary section)
-.fc-wrapper .fc-sidebar .wc-gzd-order-submit {
-	padding-top: $global-spacing-small;
-}
+
+
 .fc-wrapper .fc-sidebar .wc-gzd-order-submit div.place-order {
 	padding-top: 0;
 }
-// Place order button
-.fc-sidebar .fc-checkout-order-review .fc-place-order .fc-place-order-button {
+.fc-wrapper .fc-sidebar .fc-checkout-order-review .fc-place-order .fc-place-order-button {
 	margin: 0;
 }
 
 
 
-// Legal checkboxes
 .fc-wrapper .wc-gzd-checkbox-placeholder {
 	margin-bottom: $global-spacing-extra-small;
 }
