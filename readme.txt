@@ -142,6 +142,7 @@ Currently the plugin is translated into the languages below, and more are commin
 * English (Default)
 * Portuguese - Brazil
 * German - Germany (thanks to @reilix)
+* Spanish - Spain (thanks to Giomar Morales from senseiwpacademy.com)
 
 ** Comming soon **
 
@@ -220,6 +221,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 = Unreleased =
 
 * Bump minimum required version to PHP 7.4.
+* Added: Translation to Spanish (Spain). Thanks to Giomar Morales from senseiwpacademy.com.
 * Added: Compatibility with plugin German Market.
 * Added: Compatibility with plugin WooCommerce Authorize.Net Gateway.
 * Added: Compatibility with theme Hello Elementor.
