@@ -190,7 +190,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if not on checkout page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
 
-		$add_classes = array( 'has-checkout-layout--' . $this->get_checkout_layout() );
+		$add_classes = array(
+			'has-fluid-checkout',
+			'has-checkout-layout--' . $this->get_checkout_layout(),
+		);
 
 		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
 		if ( $this->get_hide_site_header_footer_at_checkout() ) {
@@ -253,7 +256,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if color is empty
 		if ( empty( $page_background_color ) ) { return; }
 
-		echo 'body{background-color:'. $page_background_color .'}';
+		echo 'body.has-fluid-checkout{background-color:'. $page_background_color .'}';
 	}
 
 
