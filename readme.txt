@@ -140,9 +140,10 @@ All labels and other texts added or changed by the plugin are translatable using
 Currently the plugin is translated into the languages below, and more are comming soon:
 
 * English (Default)
+* German - Germany (thanks to @reilix, felix-gudowius.de)
 * Portuguese - Brazil
-* German - Germany (thanks to @reilix)
-* Spanish - Spain (thanks to Giomar Morales from senseiwpacademy.com)
+* Spanish - Spain (thanks to @gio15, senseiwpacademy.com)
+* Swedish - Sweden (thanks to @kozley, @tobifjellner, @elbogen)
 
 ** Comming soon **
 
