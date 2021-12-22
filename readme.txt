@@ -225,6 +225,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Translation to Spanish (Spain). Thanks to Giomar Morales from senseiwpacademy.com.
 * Added: Compatibility with plugin German Market.
 * Added: Compatibility with plugin WooCommerce Authorize.Net Gateway.
+* Added: Compatibility with plugin Captcha Pro by BestWebSoft.
 * Added: Compatibility with theme Hello Elementor.
 * Added: Compatibility with theme Orchid Store.
 * Added: New widget area to display trust symbols below the place order button.
@@ -240,6 +241,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Run additional order notes hooks `woocommerce_before_order_notes` and `woocommerce_after_order_notes` when order notes field is disabled or removed.
 * Fixed: Scroll position when proceeding to next steps was being calculated wrong on some themes.
 * Fixed: Removed background color from `fieldset` elements on payment method fields section.
+* Fixed: Billing address form not displaying when the shipping country was not yet selected on single-step layout mode.
 * Fixed: Fatal error when activating Fluid Checkout on older versions of PHP.
 
 = 1.4.1 - 2021-12-03 =
