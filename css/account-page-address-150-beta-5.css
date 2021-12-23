@@ -76,7 +76,7 @@ div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
   padding: 5px 10px;
   border: 0;
   background-color: transparent;
-  color: #888181;
+  color: #7B7575;
   font-size: 13px;
   line-height: 1.2;
 }
@@ -105,7 +105,7 @@ div.woocommerce form #shipping_address_2_field > label {
 .fc-content div.woocommerce form .fc-wrapper .fc-field-group {
   margin: 0 -20px -20px;
   padding: 20px;
-  background-color: #F0F4F4;
+  background-color: #F4F4F4;
 }
 @media (min-width: 1000px) {
   .fc-content div.woocommerce form .fc-wrapper .fc-field-group {
