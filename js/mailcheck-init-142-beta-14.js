@@ -146,9 +146,13 @@
 		// Apply suggested value
 		targetField.value = suggestionElement.getAttribute( _settings.suggestionValueAttr );
 		
+		// Remove suggestion message
 		_tempTarget = targetField;
 		removeSuggestions();
 		_tempTarget = null;
+
+		// Refocus on the target field
+		targetField.focus();
 
 		// Revalidate the field
 		if ( window.CheckoutValidation ) {
