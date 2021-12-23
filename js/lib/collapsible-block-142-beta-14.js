@@ -36,7 +36,7 @@
 		handlerMultiTargetSelector: '[data-collapsible-targets]',
 
 		autoFocusSelector: '[data-autofocus]',
-		focusableElementsSelector: 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), details, summary, iframe, object, embed, [contenteditable] [tabindex]:not([tabindex="-1"])',
+		focusableElementsSelector: 'a[href], a[role="button"]:not([disabled]), button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), details, summary, iframe, object, embed, [contenteditable] [tabindex]:not([tabindex="-1"])',
 		selectContentsOnFocus: true,
 
 		isCollapsedClass: 'is-collapsed',
@@ -491,7 +491,7 @@
 			// Set focus to focusElement
 			if ( focusElement ) {
 				focusElement.focus();
-				if ( _settings.selectContentsOnFocus ) {
+				if ( _settings.selectContentsOnFocus && 'select' in focusElement ) {
 					focusElement.select();
 				}
 			}

@@ -235,10 +235,12 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: New filter `fc_output_checkout_contact_login_cta` to control whether to display the call to action "Already have an account? Log in." in the contact step.
 * Added: New action `fc_checkout_below_contact_login_cta` to allow adding content to the contact login substep.
 * Added: New option `checkoutEnablePreventUnload` to the `fcSettings` to allow disabling the "data loss protection" script when closing the browser tab with unsaved changes to checkout fields.
+* Updated: `collapsible-block` library to version 1.1.7.
 * Improved: Block the place order button with attribute and class `disabled` when processing the order to prevent user from submitting duplicate orders.
 * Improved: Compatibility with plugin Germanized for WooCommerce.
 * Fixed: Display coupon code messages below the substep title, instead of above.
 * Fixed: Re-focus on email field after applying email typo suggestion.
+* Fixed: Also consider a link button as focusable when setting focus while opening a section.
 * Fixed: Run additional order notes hooks `woocommerce_before_order_notes` and `woocommerce_after_order_notes` when order notes field is disabled or removed.
 * Fixed: Scroll position when proceeding to next steps was being calculated wrong on some themes.
 * Fixed: Removed background color from `fieldset` elements on payment method fields section.
