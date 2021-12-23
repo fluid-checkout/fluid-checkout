@@ -39,6 +39,7 @@ defined( 'ABSPATH' ) || exit;
 				$fields = $checkout->get_checkout_fields( 'shipping' );
 
 				foreach ( $fields as $key => $field ) {
+					// CHANGE: Only display fields from allowed list
 					/**
 					 * The variable `$display_fields` is passed as a paramenter to this template file
 					 * @see Hook `fc_checkout_contact_step_field_ids`

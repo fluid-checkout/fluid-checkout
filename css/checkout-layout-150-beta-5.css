@@ -666,7 +666,7 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
 }
 
 .fc-wrapper .fc-checkout-step {
-  margin: 0 0 -1px;
+  margin: -1px 0 0;
   padding: 0;
   border: solid 1px #D8D8D8;
   border-radius: 0;
@@ -694,8 +694,8 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
 .fc-wrapper .fc-step__substep {
   position: relative;
   padding: 20px 20px;
-  margin: 0 0 -1px;
-  border-bottom: solid 1px #D8D8D8;
+  margin: -1px 0 0;
+  border-top: solid 1px #D8D8D8;
 }
 @media (min-width: 750px) {
   .fc-wrapper .fc-step__substep {
@@ -1071,6 +1071,10 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   border-bottom: 0;
 }
 
+.fc-wrapper .fc-step__substep[data-substep-id=contact_login] + .fc-step__substep {
+  border-top: 0;
+}
+
 .fc-contact-login__cta-text {
   margin-bottom: 0;
   text-align: center;
@@ -1205,22 +1209,34 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   margin-top: 10px;
 }
 
-div.woocommerce form .fc-step__substep[data-substep-id=billing_address] {
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] {
   background-color: #F4F4F4;
 }
-div.woocommerce form .fc-step__substep[data-substep-id=billing_address] textarea,
-div.woocommerce form .fc-step__substep[data-substep-id=billing_address] select,
-div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=email],
-div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=number],
-div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=date],
-div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=search],
-div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=text],
-div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=tel],
-div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=url],
-div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=password],
-div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection {
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] textarea,
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] select,
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=email],
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=number],
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=date],
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=search],
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=text],
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=tel],
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=url],
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=password],
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection {
   background-color: #fff;
   color: inherit;
+}
+
+div.woocommerce form .woocommerce-billing-only-fields__field-wrapper {
+  margin-top: 20px;
+}
+
+div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:before,
+div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:after {
+  content: "";
+  display: table;
+  table-layout: fixed;
+  width: 100%;
 }
 
 div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:not(:last-child),
@@ -1268,20 +1284,20 @@ div.woocommerce form #billing_same_as_shipping_field.form-row label {
   width: 100%;
 }
 
-div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] {
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] {
   background-color: #F4F4F4;
 }
-div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] textarea,
-div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select,
-div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=email],
-div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=number],
-div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=date],
-div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=search],
-div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=text],
-div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=tel],
-div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=url],
-div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=password],
-div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection {
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] textarea,
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select,
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=email],
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=number],
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=date],
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=search],
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=text],
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=tel],
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=url],
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=password],
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection {
   background-color: #fff;
   color: inherit;
 }

@@ -219,6 +219,18 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased (1.5.0) =
+
+* Added: New filter `fc_checkout_update_fields_selectors` for CSS selectors used to trigger update the checkout fragments.
+* Added: New filters `fc_is_billing_same_as_shipping_checked` and `fc_output_billing_same_as_shipping_as_hidden_field` for billing same as shipping.
+* Added: Function to get list of address field keys, necessary for Address Book (PRO) feature.
+* Improved: Renamed the checkout settings subtab from "Checkout options" to "Checkout".
+* Improved: Added support and PRO promotion links on the plugins list.
+* Fixed: Shipping and billing phone numbers being displayed twice on order confirmation page.
+* Fixed: Missing borders between some steps and substeps.
+* Fixed: Maybe get shipping country value from session when appropriate.
+* Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
+
 = Unreleased =
 
 * Bump minimum required version to PHP 7.4.
@@ -391,8 +403,8 @@ Fixed: Fix build process to save theme compat files in the right place.
 
 == Upgrade Notice ==
 
-= 1.3 =
-Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
-
 = 1.4 =
 Changes to "Proceed to <next_step>" button labels, custom translations will need to be updated. Changes the way customer session data is cleared. Renamed hook `fc_customer_persisted_data_clear_fields` to `fc_customer_persisted_data_clear_fields_order_processed` can break customizations use this hook.
+
+= 1.3 =
+Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.

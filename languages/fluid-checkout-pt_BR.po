@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2021-12-21 11:35+0000\n"
+"PO-Revision-Date: 2021-12-23 09:59+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -35,7 +35,7 @@ msgstr ""
 msgid "(Required)"
 msgstr "(Obrigatório)"
 
-#: fluid-checkout.php:369
+#: fluid-checkout.php:371
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -45,7 +45,7 @@ msgstr ""
 "ativado. <a href=\"%3$s\">Vá para a Pesquisa de Plug-ins</a>"
 
 #. %s: Form field label
-#: inc/checkout-coupon-codes.php:113 inc/checkout-hide-optional-fields.php:102
+#: inc/checkout-coupon-codes.php:114 inc/checkout-hide-optional-fields.php:102
 #, php-format
 msgid "Add %s"
 msgstr "Adicionar %s"
@@ -62,7 +62,7 @@ msgstr "Adicione um campo de telefone ao formulário de endereço de entrega"
 msgid "Add widget areas to the checkout page"
 msgstr "Adicione áreas de widget à página de checkout"
 
-#: inc/checkout-steps.php:1629
+#: inc/checkout-steps.php:1711
 msgid "Additional notes"
 msgstr "Notas Adicionais"
 
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Already have an account?"
 msgstr "Já tem uma conta?"
 
-#: inc/checkout-steps.php:1413
+#: inc/checkout-steps.php:1495
 msgid "An account will be created with the information provided."
 msgstr "Sua conta será criada com as informações fornecidas."
 
@@ -104,7 +104,7 @@ msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 "Endereço de faturamento igual ao endereço de entrega marcado por padrão"
 
-#: inc/checkout-steps.php:2063
+#: inc/checkout-steps.php:2150
 msgid "Billing to"
 msgstr "Faturamento para"
 
@@ -122,7 +122,21 @@ msgctxt "Button label for applying coupon codes"
 msgid "Apply"
 msgstr "Aplicar"
 
-#: inc/checkout-steps.php:403
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:68
+msgctxt "Captcha position"
+msgid "Before place order button"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:67
+msgctxt "Captcha position"
+msgid "Before place order section"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:63
+msgid "Captcha Pro by BestWebSoft"
+msgstr ""
+
+#: inc/checkout-steps.php:425
 msgid "Cart total:"
 msgstr "Total no carrinho:"
 
@@ -130,10 +144,14 @@ msgstr "Total no carrinho:"
 msgid "Change email address to: {suggestion-value}"
 msgstr "Alterar o endereço de e-mail para: {suggestion-value}"
 
-#: inc/checkout-steps.php:1143
+#: inc/checkout-steps.php:1221
 #, php-format
 msgid "Change: %s"
 msgstr "Alterar: %s"
+
+#: inc/admin/admin-settings-fluid-checkout.php:65
+msgid "Checkout"
+msgstr ""
 
 #: inc/checkout-widget-areas.php:85
 msgid "Checkout Below Place Order"
@@ -151,10 +169,6 @@ msgstr "Cabeçalho do checkout - Celular"
 msgid "Checkout Layout"
 msgstr "Opções de Layout"
 
-#: inc/admin/admin-settings-fluid-checkout.php:65
-msgid "Checkout Options"
-msgstr "Opções de checkout"
-
 #: inc/checkout-widget-areas.php:75
 msgid "Checkout Order Summary"
 msgstr "Resumo do pedido no checkout"
@@ -163,32 +177,32 @@ msgstr "Resumo do pedido no checkout"
 msgid "Checkout Sidebar"
 msgstr "Barra lateral do checkout"
 
-#: inc/checkout-steps.php:885
+#: inc/checkout-steps.php:925
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Cobrança"
 
-#: inc/checkout-steps.php:864
+#: inc/checkout-steps.php:904
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Contato"
 
-#: inc/checkout-steps.php:894
+#: inc/checkout-steps.php:934
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Pagamento"
 
-#: inc/checkout-steps.php:874
+#: inc/checkout-steps.php:914
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Entrega"
 
-#: inc/checkout-steps.php:1143
+#: inc/checkout-steps.php:1221
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Alterar"
 
-#: inc/checkout-steps.php:1144
+#: inc/checkout-steps.php:1222
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Salvar alterações"
@@ -227,7 +241,7 @@ msgstr ""
 msgid "Choose in which step to display the shipping phone"
 msgstr "Escolha em qual etapa exibir o telefone de entrega"
 
-#: inc/checkout-steps.php:403
+#: inc/checkout-steps.php:425
 msgid "Click to go to the order summary"
 msgstr "Clique para ir para o resumo do pedido"
 
@@ -266,6 +280,12 @@ msgstr "Criar uma conta"
 #: inc/admin/admin-settings-advanced.php:140
 msgid "Debug options"
 msgstr "Solução de problemas"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:64
+msgid ""
+"Define the position to display the captcha section. Some positions might not "
+"work depending on the captcha type chosen."
+msgstr ""
 
 #: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:101
 msgid ""
@@ -436,6 +456,10 @@ msgstr "Fluid Checkout para WooCommerce"
 #: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:88
 msgid "Germanized for WooCommerce"
 msgstr "Germanized for WooCommerce"
+
+#: inc/admin/admin.php:80
+msgid "Get PRO"
+msgstr ""
 
 #: inc/checkout-gift-options.php:179
 msgid "Gift message"
@@ -628,11 +652,11 @@ msgid "Make the order summary stay visible while scrolling"
 msgstr ""
 "Faça com que o resumo do pedido fique visível enquanto rola-se a página"
 
-#: inc/checkout-steps.php:318
+#: inc/checkout-steps.php:340
 msgid "Multi-step"
 msgstr "Multi-etapas"
 
-#: inc/checkout-steps.php:1367
+#: inc/checkout-steps.php:1449
 msgid "My contact"
 msgstr "Meu contato"
 
@@ -654,7 +678,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:1770
+#: inc/checkout-steps.php:1857
 msgid "Not selected yet."
 msgstr "Não selecionado."
 
@@ -668,7 +692,7 @@ msgctxt "Notice for no gift options provided"
 msgid "None."
 msgstr "Nenhuma."
 
-#: inc/checkout-steps.php:1817
+#: inc/checkout-steps.php:1904
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Nenhuma."
@@ -687,7 +711,7 @@ msgid ""
 msgstr ""
 "Aplicável apenas ao usar o cabeçalho do tema Impreza na página de checkout."
 
-#: inc/checkout-shipping-phone-field.php:81
+#: inc/checkout-shipping-phone-field.php:78
 msgid "Only used for shipping-related questions."
 msgstr "Usado apenas para perguntas relacionadas à entrega."
 
@@ -720,7 +744,7 @@ msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 "O número do pedido e o recibo serão enviados para este endereço de e-mail."
 
-#: inc/checkout-steps.php:2620 inc/admin/admin-settings-advanced.php:85
+#: inc/checkout-steps.php:2772 inc/admin/admin-settings-advanced.php:85
 #: inc/admin/admin-settings-advanced.php:104
 #| msgid "Order Summary"
 msgid "Order summary"
@@ -734,7 +758,7 @@ msgstr "Guias de remessa"
 msgid "Page background color"
 msgstr "Cor de fundo da página"
 
-#: inc/checkout-steps.php:2516
+#: inc/checkout-steps.php:2668
 msgid "Payment method"
 msgstr "Forma de pagamento"
 
@@ -757,7 +781,7 @@ msgid "Payment step"
 msgstr "Etapa de pagamento"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:759
+#: inc/checkout-steps.php:799
 #, php-format
 msgid "Proceed to %s"
 msgstr "Prosseguir para %s"
@@ -807,7 +831,7 @@ msgstr ""
 msgid "Remove"
 msgstr "Remover"
 
-#: inc/checkout-steps.php:2160 inc/checkout-steps.php:2245
+#: inc/checkout-steps.php:2300
 msgid "Same as shipping address"
 msgstr "Igual ao endereço de entrega"
 
@@ -822,7 +846,7 @@ msgctxt "Separator label for the express checkout section"
 msgid "Or"
 msgstr "Ou"
 
-#: inc/admin/admin.php:70
+#: inc/admin/admin.php:72
 msgid "Settings"
 msgstr "Configurações"
 
@@ -831,11 +855,11 @@ msgctxt "Settings section title"
 msgid "Integrations"
 msgstr "Integrações"
 
-#: inc/checkout-steps.php:1605
+#: inc/checkout-steps.php:1687
 msgid "Shipping method"
 msgstr "Método de entrega"
 
-#: inc/checkout-shipping-phone-field.php:80
+#: inc/checkout-shipping-phone-field.php:77
 #: inc/admin/admin-settings-general.php:154
 msgid "Shipping phone"
 msgstr "Telefone de entrega"
@@ -865,7 +889,7 @@ msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr "Obrigatório"
 
-#: inc/checkout-local-pickup.php:170 inc/checkout-steps.php:1581
+#: inc/checkout-local-pickup.php:170 inc/checkout-steps.php:1663
 msgid "Shipping to"
 msgstr "Enviando para"
 
@@ -877,7 +901,7 @@ msgstr "Mostrar códigos de cupom como uma seção no passo de pagamento"
 msgid "Sign in to your account"
 msgstr "Faça login em sua conta"
 
-#: inc/checkout-steps.php:319
+#: inc/checkout-steps.php:341
 msgid "Single step"
 msgstr "Passo único"
 
@@ -890,10 +914,14 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Espaçamento para cabeçalho do site na página de checkout (em pixels)"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:963
+#: inc/checkout-steps.php:1041
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Passo %1$s de %2$s"
+
+#: inc/admin/admin.php:73
+msgid "Support"
+msgstr ""
 
 #: inc/admin/admin-notice-review-request.php:41
 msgid "Thanks for choosing Fluid Checkout, you rock!"
@@ -905,21 +933,21 @@ msgstr "Obrigado por escolher o Fluid Checkout, você é demais!"
 #| "address\" when Fluid Checkout is activated. Customers can still provide "
 #| "different shipping and billing addresses during checkout, an option for "
 #| "setting the default billing address to be the same as the shipping "
-#| "address is available at WooCommerce > Settings > Checkout > Address "
+#| "address is available at WooCommerce > Settings > Fluid Checkout > Address "
 #| "Fields."
 msgid ""
 "The shipping destination is always set to \"Default to customer shipping "
 "address\" when Fluid Checkout is activated. Customers can still provide "
 "different shipping and billing addresses during checkout, an option for "
 "setting the default billing address to be the same as the shipping address "
-"is available at WooCommerce > Settings > Fluid Checkout > Address Fields."
+"is available at WooCommerce > Settings > Fluid Checkout."
 msgstr ""
 "O destino de envio é sempre definido como \"Padrão para o endereço de "
 "entrega do cliente\" quando o Fluid Checkout está ativado. Os clientes ainda "
 "podem fornecer endereços de entrega e cobrança diferentes durante o checkout,"
 " uma opção para definir o endereço de cobrança padrão para ser o mesmo que o "
 "endereço de entrega está disponível em WooCommerce > Configurações > Fluid "
-"Checkout > Campos de endereço."
+"Checkout."
 
 #: inc/compat/themes/compat-theme-Impreza.php:117
 msgid "Theme Impreza"

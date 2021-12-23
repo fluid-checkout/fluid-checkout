@@ -20,7 +20,7 @@
 }
 
 
-div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
 	background-color: $lighter-grey;
 
 	// Make fields background white

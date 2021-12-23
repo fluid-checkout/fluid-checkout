@@ -23,6 +23,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 **/
 	private $checkout_steps   = array();
 
+	/**
+	 * Hold cached values for parsed `post_data`.
+	 *
+	 * @var array
+	 */
+	private $posted_data = null;
+	private $set_parsed_posted_data_filter_applied = false;
+
 
 
 	/**
@@ -105,7 +113,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Billing Same as Shipping
 		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_field' ), 100 );
-		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
 
 		// Payment
@@ -119,12 +127,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
 		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
 
+		// Formatted Address
+		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ) );
+		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
+
 		// Order Review
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 
 		// Persisted data
-		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'update_customer_persisted_data' ), 10 );
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 10, 2 );
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 10 );
 		add_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 10 );
@@ -204,6 +216,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$checkout = WC()->checkout();
 		if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
 			$add_classes[] = 'has-checkout-must-login-notice';
+		}
+
+		// Add extra class to highlight the shipping section
+		if ( true === apply_filters( 'fc_show_shipping_section_highlighted', true ) ) {
+			$add_classes[] = 'has-highlighted-shipping-section';
+		}
+
+		// Add extra class to highlight the billing section
+		if ( true === apply_filters( 'fc_show_billing_section_highlighted', true ) ) {
+			$add_classes[] = 'has-highlighted-billing-section';
 		}
 
 		return array_merge( $classes, $add_classes );
@@ -449,6 +471,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( $this->get_hide_site_header_footer_at_checkout() ) { return $class; }
 
 		return $class . ' fc-container';
+	}
+
+
+
+
+
+	/**
+	 * Check whether the shipping phone field is enabled to be used.
+	 */
+	public function is_shipping_phone_enabled() {
+		return 'no' !== get_option( 'fc_shipping_phone_field_visibility', 'no' );
+	}
+
+	/**
+	 * Check whether the billing phone field is enabled to be used.
+	 */
+	public function is_billing_phone_enabled() {
+		return 'hidden' !== get_option( 'woocommerce_checkout_phone_field', 'required' );
 	}
 
 
@@ -930,6 +970,44 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 
+	/**
+	 * Add phone field replacement to localisation addresses formats.
+	 *
+	 * @param  array  $formats  Default localisation formats.
+	 */
+	public function add_phone_localisation_address_formats( $formats ) {
+		// Bail if should not display phone in formatted addresses
+		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $formats; }
+
+		// Bail if viewing order confirmation page
+		if ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) { return $formats; }
+
+		foreach ( $formats as $locale => $format) {
+			$formats[ $locale ] = $format . "\n{phone}";
+		}
+
+		return $formats;
+	}
+
+	/**
+	 * Add phone field replacement to formatted addresses.
+	 *
+	 * @param   array  $replacements  Default replacements.
+	 * @param   array  $address       Contains address fields.
+	 */
+	public function add_phone_formatted_address_replacements( $replacements, $args ) {
+		// Bail if should not display phone in formatted addresses
+		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $replacements; }
+
+		// Bail if viewing order confirmation page
+		if ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) { return $replacements; }
+
+		$replacements['{phone}'] = isset( $args['phone'] ) ? $args['phone'] : '';
+		return $replacements;
+	}
+
+
+
 
 	/**
 	 * Checkout Progress Bar
@@ -1247,8 +1325,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout expansible form section start tag.
 	 *
-	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
-	 * @param   string  $section_id  Id of the substep.
+	 * @param   string  $section_id    ID of the expansible section.
+	 * @param   string  $toggle_label  Label for the expansible section toggle link. (optional)
+	 * @param   string  $args          Arguments for the expansible section.
 	 */
 	public function output_expansible_form_section_start_tag( $section_id, $toggle_label, $args = array() ) {
 		$section_id_esc = esc_attr( $section_id );
@@ -1316,6 +1395,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$section_content_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_content_inner_attributes ), $section_content_inner_attributes ) );
 		?>
 		<div <?php echo $section_attributes_str; // WPCS: XSS ok. ?>>
+			
+			<?php if ( ! empty( $toggle_label ) ) : ?>
 			<div <?php echo $section_toggle_attributes_str; // WPCS: XSS ok. ?>>
 				<div <?php echo $section_content_inner_attributes_str; // WPCS: XSS ok. ?>>
 					<a <?php echo $toggle_attributes_str; // WPCS: XSS ok. ?>>
@@ -1323,6 +1404,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 					</a>
 				</div>
 			</div>
+			<?php endif; ?>
 
 			<div <?php echo $section_content_attributes_str; // WPCS: XSS ok. ?>>
 				<div <?php echo $section_content_inner_attributes_str; // WPCS: XSS ok. ?>>
@@ -1709,29 +1791,34 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output shipping address substep in text format for when the step is completed.
+	 * Output address substep in text format for when the step is completed.
 	 */
-	public function get_substep_text_shipping_address() {
-		$customer = WC()->customer;
+	public function get_substep_text_formatted_address( $address_type ) {
+		// Field prefix
+		$field_key_prefix = $address_type . '_';
 
-		$address_data = array(
-			'first_name' => $customer->get_shipping_first_name(),
-			'last_name' => $customer->get_shipping_last_name(),
-			'company' => $customer->get_shipping_company(),
-			'address_1' => $customer->get_shipping_address_1(),
-			'address_2' => $customer->get_shipping_address_2(),
-			'city' => $customer->get_shipping_city(),
-			'state' => $customer->get_shipping_state(),
-			'country' => $customer->get_shipping_country(),
-			'postcode' => $customer->get_shipping_postcode(),
-		);
+		// Get field keys from checkout fields
+		$address_data = array();
+		$fields = WC()->checkout()->get_checkout_fields( $address_type );
+		$field_keys = array_keys( $fields );
+		
+		// Get data from checkout fields
+		foreach ( $field_keys as $field_key ) {
+			// Get field key
+			$address_field_key = str_replace( $field_key_prefix, '', $field_key );
+			$address_data[ $address_field_key ] = WC()->checkout->get_value( $field_key );
+		}
 
-		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping-address">';
+		$address_data = apply_filters( 'fc_'.$address_type.'_substep_text_address_data', $address_data );
+
+		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--'.$address_type.'-address">';
 		$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
 		$html .= '</div>';
 
-		return apply_filters( 'fc_substep_shipping_address_text', $html );
+		return apply_filters( 'fc_substep_'.$address_type.'_address_text', $html );
 	}
+
+
 
 	/**
 	 * Add shipping address text as checkout fragment.
@@ -1739,7 +1826,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_shipping_address_text_fragment( $fragments ) {
-		$html = $this->get_substep_text_shipping_address();
+		$html = $this->get_substep_text_formatted_address( 'shipping' );
 		$fragments['.fc-step__substep-text-content--shipping-address'] = $html;
 		return $fragments;
 	}
@@ -1750,7 +1837,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @access public
 	 */
 	public function output_substep_text_shipping_address() {
-		echo $this->get_substep_text_shipping_address();
+		echo $this->get_substep_text_formatted_address( 'shipping' );
 	}
 
 
@@ -2149,44 +2236,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get billing address substep in text format for when the step is completed.
-	 */
-	public function get_substep_text_billing_address() {
-		$customer = WC()->customer;
-
-		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--billing-address">';
-
-		if ( $this->is_billing_same_as_shipping_checked() ) {
-			$html .= '<div class="fc-step__substep-text-line"><em>' . __( 'Same as shipping address', 'fluid-checkout' ) . '</em></div>';
-		}
-		else {
-			$address_data = array(
-				'address_1' => $customer->get_billing_address_1(),
-				'address_2' => $customer->get_billing_address_2(),
-				'city' => $customer->get_billing_city(),
-				'state' => $customer->get_billing_state(),
-				'country' => $customer->get_billing_country(),
-				'postcode' => $customer->get_billing_postcode(),
-			);
-
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_first_name() ) . ' ' . esc_html( $customer->get_billing_last_name() ) . '</div>';
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_company() ) . '</div>';
-			$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_phone() ) . '</div>';
-		}
-
-		$html .= '</div>';
-
-		return apply_filters( 'fc_substep_billing_address_text', $html );
-	}
-
-	/**
 	 * Add billing address text format as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_billing_address_text_fragment( $fragments ) {
-		$html = $this->get_substep_text_billing_address();
+		$html = $this->get_substep_text_formatted_address( 'billing' );
 		$fragments['.fc-step__substep-text-content--billing-address'] = $html;
 		return $fragments;
 	}
@@ -2195,7 +2250,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output billing address substep in text format for when the step is completed.
 	 */
 	public function output_substep_text_billing_address() {
-		echo $this->get_substep_text_billing_address();
+		echo $this->get_substep_text_formatted_address( 'billing' );
 	}
 
 
@@ -2234,7 +2289,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_billing_same_as_shipping_field() {
 		// Output a hidden field when shipping country not allowed for billing, or shipping not needed
-		if ( ! WC()->cart->needs_shipping_address() || $this->is_shipping_country_allowed_for_billing() === null || ! $this->is_shipping_country_allowed_for_billing() ) : ?>
+		if ( apply_filters( 'fc_output_billing_same_as_shipping_as_hidden_field', false ) || ! $this->is_shipping_address_available_for_billing() ) : ?>
 			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
 		<?php
 		// Output the checkbox when shipping country is allowed for billing
@@ -2251,6 +2306,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Check whether a country is allowed for shipping.
+	 *
+	 * @param   string  $country_code  Country code to check against site settings.
+	 *
+	 * @return  bool                   `true` when the country is allowed for shipping addresses, `false` otherwise.
+	 */
+	public function is_country_allowed_for_shipping( $country_code ) {
+		$allowed_countries = WC()->countries->get_shipping_countries();
+		return in_array( $country_code, array_keys( $allowed_countries ) );
+	}
+
+	/**
+	 * Check whether a country is allowed for billing.
+	 *
+	 * @param   string  $country_code  Country code to check against site settings.
+	 *
+	 * @return  bool                   `true` when the country is allowed for billing addresses, `false` otherwise.
+	 */
+	public function is_country_allowed_for_billing( $country_code ) {
+		$allowed_countries = WC()->countries->get_allowed_countries();
+		return in_array( $country_code, array_keys( $allowed_countries ) );
+	}
+
+	/**
 	 * Check whether the selected shipping country is also available for billing country.
 	 *
 	 * @return  mixed  `true` if the selected shipping country is also available for billing country, `false` if the shipping country is not allowed for billing, and `null` if the shipping country is not set.
@@ -2259,6 +2338,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get shipping value from customer data
 		$customer = WC()->customer;
 		$shipping_country = $customer->get_shipping_country();
+
+		// Try get value from session
+		$shipping_country_session = $this->get_checkout_field_value_from_session( 'shipping_country' );
+		if ( isset( $shipping_country_session ) && ! empty( $shipping_country_session ) ) {
+			$shipping_country = $shipping_country_session;
+		}
 
 		// Use posted data when doing checkout update
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
@@ -2273,29 +2358,93 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Shipping country is defined, return bool
-		if ( $shipping_country != null && ! empty( $shipping_country ) ) {
-			$allowed_billing_countries = WC()->countries->get_allowed_countries();
-			return in_array( $shipping_country, array_keys( $allowed_billing_countries ) );
+		if ( null !== $shipping_country && ! empty( $shipping_country ) ) {
+			return $this->is_country_allowed_for_billing( $shipping_country );
 		}
 
 		return null;
 	}
 
+	/**
+	 * Check whether the shipping address is available to be used for the billing address.
+	 */
+	public function is_shipping_address_available_for_billing() {
+		return WC()->cart->needs_shipping_address() && true === $this->is_shipping_country_allowed_for_billing();
+	}
 
+
+
+	/**
+	 * Determine if billing address field values are the same as shipping address.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function is_billing_address_data_same_as_shipping( $posted_data = array() ) {
+		// Get parsed posted data
+		if ( empty( $posted_data ) ) {
+			$posted_data = $this->get_parsed_posted_data();
+		}
+
+		// Get list of billing fields to copy from shipping fields
+		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
+
+		// Get shipping fields
+		$shipping_fields = WC()->checkout->get_checkout_fields( 'shipping' );
+
+		// Iterate posted data
+		foreach( $billing_copy_shipping_field_keys as $field_key ) {
+
+			// Get shipping field key
+			$shipping_field_key = str_replace( 'billing_', 'shipping_', $field_key );
+			
+			// Check billing field values against shipping
+			if ( array_key_exists( $shipping_field_key, $shipping_fields ) ) {
+				$billing_field_value = null;
+				$shipping_field_value = null;
+
+				// Maybe get field values from posted data
+				if ( isset( $_POST['post_data'] ) ) {
+					$billing_field_value = $posted_data[ $field_key ];
+					$shipping_field_value = $posted_data[ $shipping_field_key ];
+				}
+				// Maybe get field values from checkout fields
+				else {
+					$billing_field_value = WC()->checkout->get_value( $field_key );
+					$shipping_field_value = WC()->checkout->get_value( $shipping_field_key );
+				}
+
+				if ( $billing_field_value !== $shipping_field_value ) {
+					return false;
+				}
+			}
+
+		}
+
+		return true;
+	}
 
 	/**
 	 * Check whether the checkbox "billing address same as shipping" is checked.
 	 * This function will return `true` even if the shipping country is not allowed for billing,
 	 * use `is_billing_same_as_shipping` to also check if the shipping country is allowed for billing.
+	 * 
+	 * @param  array  $posted_data   Post data for all checkout fields.
 	 *
 	 * @return  bool  `true` checkbox "billing address same as shipping" is checked, `false` otherwise.
 	 */
-	public function is_billing_same_as_shipping_checked() {
+	public function is_billing_same_as_shipping_checked( $posted_data = array() ) {
 		// Get parsed posted data
-		$posted_data = $this->get_parsed_posted_data();
+		if ( empty( $posted_data ) ) {
+			$posted_data = $this->get_parsed_posted_data();
+		}
 
 		// Set default value
-		$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', get_option( 'fc_default_to_billing_same_as_shipping', 'yes' ) == 'yes' );
+		$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === get_option( 'fc_default_to_billing_same_as_shipping', 'yes' ) );
+		
+		// Maybe set as same as shipping for logged users
+		if ( is_user_logged_in() ) {
+			$billing_same_as_shipping = $this->is_billing_address_data_same_as_shipping( $posted_data );
+		}
 
 		// Try get value from the post_data
 		if ( isset( $_POST['post_data'] ) ) {
@@ -2315,6 +2464,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$billing_same_as_shipping = false;
 		}
 
+		// Filter to allow for customizations
+		$billing_same_as_shipping = apply_filters( 'fc_is_billing_same_as_shipping_checked', $billing_same_as_shipping );
+
 		return $billing_same_as_shipping;
 	}
 
@@ -2322,12 +2474,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Get value for whether the billing address is the same as the shipping address.
+	 * 
+	 * @param  array  $posted_data   Post data for all checkout fields.
 	 *
 	 * @return  bool  `true` if the billing address is the same as the shipping address, `false` otherwise.
 	 */
-	public function is_billing_same_as_shipping() {
+	public function is_billing_same_as_shipping( $posted_data = array() ) {
 		// Set to different billing address when shipping country not allowed
-		if ( $this->is_shipping_country_allowed_for_billing() !== null && ! $this->is_shipping_country_allowed_for_billing() ) {
+		if ( null === $this->is_shipping_country_allowed_for_billing() || ! $this->is_shipping_country_allowed_for_billing() ) {
 			return false;
 		}
 
@@ -2336,7 +2490,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return false;
 		}
 
-		return $this->is_billing_same_as_shipping_checked();
+		return $this->is_billing_same_as_shipping_checked( $posted_data );
 	}
 
 	/**
@@ -2415,19 +2569,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Maybe set billing address fields values to same as shipping address from the posted data.
 	 *
-	 * @param array $posted_data Post data for all checkout fields.
+	 * @param  array  $posted_data   Post data for all checkout fields.
 	 */
 	public function maybe_set_billing_address_same_as_shipping( $posted_data ) {
 		// Get value for billing same as shipping
-		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping();
-		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked();
+		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping( $posted_data );
+		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked( $posted_data );
 
 		// Save checked state of the billing same as shipping field to the session,
 		// for the case the shipping country changes again and the new value is also accepted for billing.
 		$this->set_billing_same_as_shipping_session( $is_billing_same_as_shipping_checked );
-
-		// Get parsed posted data
-		$parsed_posted_data = $this->get_parsed_posted_data();
 
 		// Maybe set post data for billing same as shipping
 		if ( $is_billing_same_as_shipping ) {
@@ -2436,7 +2587,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
 
 			// Get list of posted data keys
-			$posted_data_field_keys = array_keys( $parsed_posted_data );
+			$posted_data_field_keys = array_keys( $posted_data );
 
 			// Iterate posted data
 			foreach( $billing_copy_shipping_field_keys as $field_key ) {
@@ -2446,8 +2597,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Update billing field values
 				if ( in_array( $shipping_field_key, $posted_data_field_keys ) ) {
-					$parsed_posted_data[ $field_key ] = isset( $parsed_posted_data[ $shipping_field_key ] ) ? $parsed_posted_data[ $shipping_field_key ] : null;
-					$_POST[ $field_key ] = isset( $parsed_posted_data[ $shipping_field_key ] ) ? $parsed_posted_data[ $shipping_field_key ] : null;
+					$new_field_value = isset( $posted_data[ $shipping_field_key ] ) ? $posted_data[ $shipping_field_key ] : null;
+					$posted_data[ $field_key ] = $new_field_value;
+					$_POST[ $field_key ] = $new_field_value;
 				}
 
 			}
@@ -2936,13 +3088,59 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Parse the data from the `post_data` request parameter into an `array`.
+	 */
+	public function set_parsed_posted_data() {
+		// Get sanitized posted data as a string
+		$posted_data = isset( $_POST['post_data'] ) ? wp_unslash( $_POST['post_data'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+		// Parsing posted data into an array
+		$new_posted_data = array();
+		$vars = explode( '&', $posted_data );
+		foreach ( $vars as $k => $value ) {
+			$v = explode( '=', urldecode( $value ) );
+			$new_posted_data[ $v[0] ] = array_key_exists( 1, $v) ? wc_clean( wp_unslash( $v[1] ) ) : null;
+		}
+
+		// Maybe apply filter
+		if ( ! $this->set_parsed_posted_data_filter_applied ) {
+			$this->set_parsed_posted_data_filter_applied = true;
+
+			// Updated cached posted data
+			$this->posted_data = $new_posted_data;
+			
+			// Filter to allow customizations
+			$new_posted_data = apply_filters( 'fc_set_parsed_posted_data', $new_posted_data );
+		}
+
+		// Updated cached posted data
+		$this->posted_data = $new_posted_data;
+	}
+
+	/**
+	 * Parse the data from the `post_data` request parameter into an `array`.
+	 *
+	 * @return  array  Post data for all checkout fields parsed into an `array`.
+	 */
+	public function get_parsed_posted_data() {
+		// Maybe initialize posted data
+		if ( null === $this->posted_data ) {
+			$this->set_parsed_posted_data();
+		}
+
+		return $this->posted_data;
+	}
+
+	/**
 	 * Update the customer's data to the WC_Customer object.
 	 *
 	 * @param string $posted_data Post data for all checkout fields.
 	 */
 	public function update_customer_persisted_data( $posted_data ) {
 		// Get parsed posted data
-		$parsed_posted_data = $this->get_parsed_posted_data();
+		if ( empty( $posted_data ) ) {
+			$posted_data = $this->get_parsed_posted_data();
+		}
 
 		// Get customer object and supported field keys
 		$customer = WC()->customer;
@@ -2956,8 +3154,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Check if the setter method is supported
 			if ( is_callable( array( $customer, $setter ) ) ) {
 				// Set property value to the customer object
-				if ( array_key_exists( $field_key, $parsed_posted_data ) ) {
-					$customer->{$setter}( $parsed_posted_data[ $field_key ] );
+				if ( array_key_exists( $field_key, $posted_data ) ) {
+					$customer->{$setter}( $posted_data[ $field_key ] );
 				}
 			}
 		}
@@ -2972,9 +3170,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach ( $session_field_keys as $field_key ) {
 
 			// Set property value to the customer object
-			if ( array_key_exists( $field_key, $parsed_posted_data ) ) {
+			if ( array_key_exists( $field_key, $posted_data ) ) {
 				// Set session value
-				WC()->session->set( self::SESSION_PREFIX . $field_key, $parsed_posted_data[ $field_key ] );
+				WC()->session->set( self::SESSION_PREFIX . $field_key, $posted_data[ $field_key ] );
 			}
 			else {
 				// Set session value as empty
@@ -2982,6 +3180,37 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 		}
+
+		return $posted_data;
+	}
+
+
+
+	/**
+	 * Get the list of address fields to update on the checkout form.
+	 *
+	 * @param   string  $address_type  The address type.
+	 */
+	public function get_address_field_keys( $address_type ) {
+		$field_key_prefix = $address_type . '_';
+
+		// Get field keys from checkout fields
+		$fields = WC()->checkout()->get_checkout_fields( $address_type );
+		$field_keys = array_keys( $fields );
+
+		// Skip some fields
+		$skip_field_keys = apply_filters( 'fc_adress_field_keys_skip_list', array( $field_key_prefix.'email' ) );
+		$field_keys = array_diff( $field_keys, $skip_field_keys );
+
+		// Maybe remove billing only fields
+		if ( 'billing' === $address_type ) {
+			$field_keys = array_diff( $field_keys, $this->get_billing_only_fields_keys() );
+		}
+
+		// Filter to allow customizations
+		$field_keys = apply_filters( 'fc_address_field_keys', $field_keys, $address_type );
+
+		return $field_keys;
 	}
 
 
