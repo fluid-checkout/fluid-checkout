@@ -1,0 +1,25 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+.fc-wrapper .fc-checkout-step[data-step-id="payment"] > .cptch_block {
+	margin-bottom: 0;
+	padding: $checkout-substep-padding;
+	padding-bottom: 0;
+}
+
+.fc-wrapper .fc-checkout-step[data-step-id="payment"] > #cptch_slide_captcha_container {
+	padding: $checkout-substep-padding;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.fc-wrapper .fc-checkout-step[data-step-id="payment"] > input[name="cptch_form"] + p:empty {
+	margin: 0;
+}
+
+
+
+.fc-wrapper .place-order > .cptch_block {
+	margin-top: $global-spacing-small;
+}

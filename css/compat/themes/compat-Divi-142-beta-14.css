@@ -1,0 +1,29 @@
+body.theme-Divi div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after,
+body.theme-Divi div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper:after {
+  top: 14px;
+}
+body.theme-Divi div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after {
+  right: 20px;
+}
+
+div.woocommerce form #billing_country_field,
+div.woocommerce form #shipping_country_field,
+div.woocommerce form .form-row .select2-container--default,
+div.woocommerce form .form-row .select2-container .select2-selection {
+  height: auto;
+}
+
+div.woocommerce form .form-row select {
+  padding: 14px;
+  border-radius: 3px;
+  height: 50px;
+}
+
+div.woocommerce form .form-row .select2-container .select2-selection__rendered,
+div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+  line-height: 49px;
+}
+
+div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+  top: 12px;
+}

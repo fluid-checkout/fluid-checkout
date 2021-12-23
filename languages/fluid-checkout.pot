@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-03 15:34+0000\n"
+"POT-Creation-Date: 2021-12-23 09:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "(Required)"
 msgstr ""
 
-#: fluid-checkout.php:362
+#: fluid-checkout.php:371
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -46,15 +46,15 @@ msgstr ""
 msgid "Add a gift message"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:145
+#: inc/admin/admin-settings-general.php:155
 msgid "Add a phone field to the shipping address form"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:246
+#: inc/admin/admin-settings-general.php:256
 msgid "Add widget areas to the checkout page"
 msgstr ""
 
-#: inc/checkout-steps.php:1633
+#: inc/checkout-steps.php:1711
 msgid "Additional notes"
 msgstr ""
 
@@ -62,17 +62,17 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:216
+#: inc/admin/admin-settings-general.php:226
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
 "order."
 msgstr ""
 
-#: templates/fc/checkout/form-contact-login.php:23
+#: templates/fc/checkout/form-contact-login.php:24
 msgid "Already have an account?"
 msgstr ""
 
-#: inc/checkout-steps.php:1417
+#: inc/checkout-steps.php:1495
 msgid "An account will be created with the information provided."
 msgstr ""
 
@@ -84,15 +84,15 @@ msgstr ""
 msgid "Applies only to multi-step layouts."
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:134
+#: inc/admin/admin-settings-general.php:144
 msgid "Billing Address"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:135
+#: inc/admin/admin-settings-general.php:145
 msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 
-#: inc/checkout-steps.php:2064
+#: inc/checkout-steps.php:2150
 msgid "Billing to"
 msgstr ""
 
@@ -110,7 +110,21 @@ msgctxt "Button label for applying coupon codes"
 msgid "Apply"
 msgstr ""
 
-#: inc/checkout-steps.php:347
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:68
+msgctxt "Captcha position"
+msgid "Before place order button"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:67
+msgctxt "Captcha position"
+msgid "Before place order section"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:63
+msgid "Captcha Pro by BestWebSoft"
+msgstr ""
+
+#: inc/checkout-steps.php:425
 msgid "Cart total:"
 msgstr ""
 
@@ -118,7 +132,7 @@ msgstr ""
 msgid "Change email address to: {suggestion-value}"
 msgstr ""
 
-#: inc/checkout-steps.php:1143
+#: inc/checkout-steps.php:1221
 #, php-format
 msgid "Change: %s"
 msgstr ""
@@ -127,11 +141,15 @@ msgstr ""
 msgid "Checkout"
 msgstr ""
 
-#: inc/checkout-widget-areas.php:40
+#: inc/checkout-widget-areas.php:85
+msgid "Checkout Below Place Order"
+msgstr ""
+
+#: inc/checkout-widget-areas.php:41
 msgid "Checkout Header - Desktop"
 msgstr ""
 
-#: inc/checkout-widget-areas.php:50
+#: inc/checkout-widget-areas.php:51
 msgid "Checkout Header - Mobile"
 msgstr ""
 
@@ -139,41 +157,45 @@ msgstr ""
 msgid "Checkout Layout"
 msgstr ""
 
-#: inc/checkout-widget-areas.php:62
+#: inc/checkout-widget-areas.php:75
+msgid "Checkout Order Summary"
+msgstr ""
+
+#: inc/checkout-widget-areas.php:63
 msgid "Checkout Sidebar"
 msgstr ""
 
-#: inc/checkout-steps.php:847
+#: inc/checkout-steps.php:925
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr ""
 
-#: inc/checkout-steps.php:826
+#: inc/checkout-steps.php:904
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr ""
 
-#: inc/checkout-steps.php:856
+#: inc/checkout-steps.php:934
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr ""
 
-#: inc/checkout-steps.php:836
+#: inc/checkout-steps.php:914
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr ""
 
-#: inc/checkout-steps.php:1143
+#: inc/checkout-steps.php:1221
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr ""
 
-#: inc/checkout-steps.php:1144
+#: inc/checkout-steps.php:1222
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:245
+#: inc/admin/admin-settings-general.php:255
 msgid "Checkout Widget Areas"
 msgstr ""
 
@@ -183,17 +205,23 @@ msgid ""
 "using the plugin's checkout header."
 msgstr ""
 
+#: inc/admin/admin-settings-general.php:91
+msgid ""
+"Choose a background color for the checkout page. Color is applied to the <em>"
+"body</em> element."
+msgstr ""
+
 #: inc/admin/admin-settings-general.php:72
 msgid ""
 "Choose an image to be displayed on the checkout page header. Only applies "
 "when using the plugin's checkout header."
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:158
+#: inc/admin/admin-settings-general.php:168
 msgid "Choose in which step to display the shipping phone"
 msgstr ""
 
-#: inc/checkout-steps.php:347
+#: inc/checkout-steps.php:425
 msgid "Click to go to the order summary"
 msgstr ""
 
@@ -228,7 +256,31 @@ msgstr ""
 msgid "Debug options"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:192
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:64
+msgid ""
+"Define the position to display the captcha section. Some positions might not "
+"work depending on the captcha type chosen."
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:101
+msgid ""
+"Define the position to display the legal checkboxes. <br/>The legal "
+"checkboxes will be displayed in the payment section if the place order "
+"button is set to display in the payment section.<br/><span style=\"color:"
+"#f00;\"><strong>Disclaimer:</strong> by changing these settings, I confirm "
+"that I understand the legal implications of changing the position of the "
+"legal checkboxes on my checkout page.</span>"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:89
+msgid ""
+"Define the position to display the place order button. <br/><span "
+"style=\"color:#f00;\"><strong>Disclaimer:</strong> by changing these "
+"settings, I confirm that I understand the legal implications of changing the "
+"position of the legal checkboxes on my checkout page.</span>"
+msgstr ""
+
+#: inc/admin/admin-settings-general.php:202
 msgid "Define the visibility of the additional order notes field."
 msgstr ""
 
@@ -254,51 +306,55 @@ msgstr ""
 msgid "Dismiss Notice"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:215
+#: inc/admin/admin-settings-general.php:225
 msgid "Display gift message and other gift options at the checkout page"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:181
+#: inc/admin/admin-settings-general.php:191
 msgid "Display the coupon codes section title"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:234
+#: inc/admin/admin-settings-general.php:244
 msgid ""
 "Display the gift message as part of the order details table instead of a "
 "separate section"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:225
+#: inc/admin/admin-settings-general.php:235
 msgid "Display the gift message fields always expanded"
 msgstr ""
 
-#: inc/checkout-widget-areas.php:52
+#: inc/checkout-widget-areas.php:53
 msgid ""
 "Display widgets below the checkout header for mobile devices. Only displayed "
 "if using the plugin's checkout header."
 msgstr ""
 
-#: inc/checkout-widget-areas.php:76
+#: inc/checkout-widget-areas.php:87
+msgid "Display widgets below the place order button at the checkout page."
+msgstr ""
+
+#: inc/checkout-widget-areas.php:77
 msgid "Display widgets inside the order summary at the checkout page."
 msgstr ""
 
-#: inc/checkout-widget-areas.php:42
+#: inc/checkout-widget-areas.php:43
 msgid ""
 "Display widgets on the checkout header for large screens. Only displayed if "
 "using the plugin's checkout header."
 msgstr ""
 
-#: inc/checkout-widget-areas.php:64
+#: inc/checkout-widget-areas.php:65
 msgid "Display widgets on the checkout sidebar after the order summary."
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:206
+#: inc/admin/admin-settings-general.php:216
 msgid ""
 "Displays the express checkout section at checkout when supported payment "
 "gateways have this feature enabled."
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:123
+#: inc/admin/admin-settings-general.php:133
 msgid "Do not hide \"Address line 2\" fields behind a link button"
 msgstr ""
 
@@ -307,12 +363,12 @@ msgstr ""
 msgid "Edit Cart"
 msgstr ""
 
-#: inc/checkout-gift-options.php:349
+#: inc/checkout-gift-options.php:352
 msgctxt "Edit gift options link on admin order details screen"
 msgid "Edit"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:205
+#: inc/admin/admin-settings-general.php:215
 msgid "Enable the express checkout section at checkout"
 msgstr ""
 
@@ -321,11 +377,11 @@ msgid "Enter your code here"
 msgstr ""
 
 #: inc/checkout-express-checkout.php:34
-#: inc/admin/admin-settings-general.php:204
+#: inc/admin/admin-settings-general.php:214
 msgid "Express checkout"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:95
+#: inc/admin/admin-settings-general.php:105
 msgid "Features"
 msgstr ""
 
@@ -343,21 +399,29 @@ msgstr ""
 msgid "Fluid Checkout for WooCommerce"
 msgstr ""
 
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:88
+msgid "Germanized for WooCommerce"
+msgstr ""
+
+#: inc/admin/admin.php:80
+msgid "Get PRO"
+msgstr ""
+
 #: inc/checkout-gift-options.php:179
 msgid "Gift message"
 msgstr ""
 
-#: inc/checkout-gift-options.php:449
+#: inc/checkout-gift-options.php:464
 #: templates/fc/order/order-details-gift-options-email-plain-text.php:28
 msgid "Gift message from:"
 msgstr ""
 
-#: inc/checkout-gift-options.php:441
+#: inc/checkout-gift-options.php:456
 #: templates/fc/order/order-details-gift-options-email-plain-text.php:23
 msgid "Gift message:"
 msgstr ""
 
-#: inc/checkout-gift-options.php:87 inc/admin/admin-settings-general.php:214
+#: inc/checkout-gift-options.php:87 inc/admin/admin-settings-general.php:224
 msgid "Gift options"
 msgstr ""
 
@@ -371,7 +435,7 @@ msgctxt "Gift options section title in the order details"
 msgid "Gift message:"
 msgstr ""
 
-#: templates/fc/checkout/checkout-header.php:31
+#: templates/fc/checkout/checkout-header.php:27
 msgid "Go to the home page"
 msgstr ""
 
@@ -383,7 +447,7 @@ msgstr ""
 msgid "Header background color"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:103
+#: inc/admin/admin-settings-general.php:113
 msgid "Hide optional fields behind a link button"
 msgstr ""
 
@@ -392,6 +456,7 @@ msgid "House number and street name."
 msgstr ""
 
 #: inc/admin/admin-settings-general.php:82
+#: inc/admin/admin-settings-general.php:92
 msgid "HTML color value. ie: #f3f3f3"
 msgstr ""
 
@@ -415,7 +480,7 @@ msgid ""
 "gift message for order with a gift message added."
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:170
+#: inc/admin/admin-settings-general.php:180
 msgid "Integrated Coupon Codes"
 msgstr ""
 
@@ -423,7 +488,7 @@ msgstr ""
 msgid "Integrations"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:104
+#: inc/admin/admin-settings-general.php:114
 msgid ""
 "It is recommended to keep this options checked to reduce the number of open "
 "input fields, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
@@ -431,7 +496,7 @@ msgid ""
 "link\" target=\"_blank\">read the research</a>."
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:136
+#: inc/admin/admin-settings-general.php:146
 msgid ""
 "It is recommended to leave this option checked. The billing address at "
 "checkout will start with the option \"Billing same as shipping\" checked by "
@@ -451,6 +516,16 @@ msgstr ""
 msgid "Layout"
 msgstr ""
 
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:105
+msgctxt "Legal checkboxes position"
+msgid "Before place order button"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:104
+msgctxt "Legal checkboxes position"
+msgid "Order summary (before products)"
+msgstr ""
+
 #: inc/admin/admin-settings-advanced.php:141
 msgid "Load unminified assets"
 msgstr ""
@@ -461,17 +536,17 @@ msgid ""
 "option while troubleshooting."
 msgstr ""
 
-#: templates/fc/checkout/form-contact-login.php:23
+#: templates/fc/checkout/form-contact-login.php:24
 msgctxt "Log in link label at checkout contact step"
 msgid "Log in"
 msgstr ""
 
-#: templates/fc/checkout/form-contact-login.php:27
+#: templates/fc/checkout/form-contact-login.php:35
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr ""
 
-#: templates/fc/checkout/form-contact-login.php:29
+#: templates/fc/checkout/form-contact-login.php:37
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue checkout below"
 msgstr ""
@@ -480,7 +555,7 @@ msgstr ""
 msgid "Logo image"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:113
+#: inc/admin/admin-settings-general.php:123
 msgid "Make \"Add\" link buttons lowercase <code>lowercase</code>"
 msgstr ""
 
@@ -488,7 +563,7 @@ msgstr ""
 msgid "Make the checkout progress bar stay visible while scrolling"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:114
+#: inc/admin/admin-settings-general.php:124
 msgid ""
 "Make the labels of optional field \"Add\" link button as <code>"
 "lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone number\")"
@@ -498,11 +573,11 @@ msgstr ""
 msgid "Make the order summary stay visible while scrolling"
 msgstr ""
 
-#: inc/checkout-steps.php:262
+#: inc/checkout-steps.php:340
 msgid "Multi-step"
 msgstr ""
 
-#: inc/checkout-steps.php:1371
+#: inc/checkout-steps.php:1449
 msgid "My contact"
 msgstr ""
 
@@ -522,7 +597,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr ""
 
-#: inc/checkout-steps.php:1771
+#: inc/checkout-steps.php:1857
 msgid "Not selected yet."
 msgstr ""
 
@@ -536,12 +611,12 @@ msgctxt "Notice for no gift options provided"
 msgid "None."
 msgstr ""
 
-#: inc/checkout-steps.php:1818
+#: inc/checkout-steps.php:1904
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:172
+#: inc/admin/admin-settings-general.php:182
 msgid ""
 "Only applicable if use of coupon codes are enabled in the WooCommerce "
 "settings."
@@ -556,7 +631,7 @@ msgstr ""
 msgid "Only used for shipping-related questions."
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:102
+#: inc/admin/admin-settings-general.php:112
 msgid "Optional fields"
 msgstr ""
 
@@ -564,16 +639,16 @@ msgstr ""
 msgid "Order and tracking number will be sent to this email address."
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:191
+#: inc/admin/admin-settings-general.php:201
 msgid "Order notes"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:195
+#: inc/admin/admin-settings-general.php:205
 msgctxt "Order notes field visibility"
 msgid "Hidden"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:196
+#: inc/admin/admin-settings-general.php:206
 msgctxt "Order notes field visibility"
 msgid "Optional"
 msgstr ""
@@ -582,8 +657,7 @@ msgstr ""
 msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 
-#: inc/checkout-widget-areas.php:74 inc/checkout-steps.php:2686
-#: inc/admin/admin-settings-advanced.php:85
+#: inc/checkout-steps.php:2772 inc/admin/admin-settings-advanced.php:85
 #: inc/admin/admin-settings-advanced.php:104
 msgid "Order summary"
 msgstr ""
@@ -592,7 +666,11 @@ msgstr ""
 msgid "Packing Slips"
 msgstr ""
 
-#: inc/checkout-steps.php:2582
+#: inc/admin/admin-settings-general.php:90
+msgid "Page background color"
+msgstr ""
+
+#: inc/checkout-steps.php:2668
 msgid "Payment method"
 msgstr ""
 
@@ -604,8 +682,18 @@ msgstr ""
 msgid "Pickup point"
 msgstr ""
 
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:92
+msgctxt "Place order position"
+msgid "Order summary (after totals)"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:93
+msgctxt "Place order position"
+msgid "Payment step"
+msgstr ""
+
 #. Next checkout step title
-#: inc/checkout-steps.php:721
+#: inc/checkout-steps.php:799
 #, php-format
 msgid "Proceed to %s"
 msgstr ""
@@ -632,7 +720,7 @@ msgid ""
 "cart, and product variations do not take too much space on the order summary."
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:124
+#: inc/admin/admin-settings-general.php:134
 msgid ""
 "Recommended only whe most customers actually need the \"Address line 2\" "
 "field, or when getting the right shipping address is crucial (ie. if "
@@ -643,7 +731,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: inc/checkout-steps.php:2214
+#: inc/checkout-steps.php:2300
 msgid "Same as shipping address"
 msgstr ""
 
@@ -658,7 +746,7 @@ msgctxt "Separator label for the express checkout section"
 msgid "Or"
 msgstr ""
 
-#: inc/admin/admin.php:70
+#: inc/admin/admin.php:72
 msgid "Settings"
 msgstr ""
 
@@ -667,45 +755,45 @@ msgctxt "Settings section title"
 msgid "Integrations"
 msgstr ""
 
-#: inc/checkout-steps.php:1609
+#: inc/checkout-steps.php:1687
 msgid "Shipping method"
 msgstr ""
 
 #: inc/checkout-shipping-phone-field.php:77
-#: inc/admin/admin-settings-general.php:144
+#: inc/admin/admin-settings-general.php:154
 msgid "Shipping phone"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:162
+#: inc/admin/admin-settings-general.php:172
 msgctxt "Shipping phone field position"
 msgid "Contact"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:161
+#: inc/admin/admin-settings-general.php:171
 msgctxt "Shipping phone field position"
 msgid "Shipping address"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:148
+#: inc/admin/admin-settings-general.php:158
 msgctxt "Shipping phone field visibility"
 msgid "Hidden"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:149
+#: inc/admin/admin-settings-general.php:159
 msgctxt "Shipping phone field visibility"
 msgid "Optional"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:150
+#: inc/admin/admin-settings-general.php:160
 msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr ""
 
-#: inc/checkout-local-pickup.php:170 inc/checkout-steps.php:1585
+#: inc/checkout-local-pickup.php:170 inc/checkout-steps.php:1663
 msgid "Shipping to"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:171
+#: inc/admin/admin-settings-general.php:181
 msgid "Show coupon codes as a substep of the payment step"
 msgstr ""
 
@@ -713,7 +801,7 @@ msgstr ""
 msgid "Sign in to your account"
 msgstr ""
 
-#: inc/checkout-steps.php:263
+#: inc/checkout-steps.php:341
 msgid "Single step"
 msgstr ""
 
@@ -726,9 +814,13 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr ""
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:963
+#: inc/checkout-steps.php:1041
 #, php-format
 msgid "Step %1$s of %2$s"
+msgstr ""
+
+#: inc/admin/admin.php:73
+msgid "Support"
 msgstr ""
 
 #: inc/admin/admin-notice-review-request.php:41
@@ -748,7 +840,7 @@ msgstr ""
 msgid "Theme Impreza"
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:247
+#: inc/admin/admin-settings-general.php:257
 msgid "These widget areas are used to add trust symbols on the checkout page."
 msgstr ""
 
@@ -764,7 +856,7 @@ msgstr ""
 msgid "This is not a valid email address."
 msgstr ""
 
-#: inc/admin/admin-settings-general.php:235
+#: inc/admin/admin-settings-general.php:245
 msgid ""
 "This option affects the order confirmation page (thank you page), order "
 "details at account pages, emails and packing slips."
