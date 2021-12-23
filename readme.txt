@@ -238,6 +238,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Updated: `collapsible-block` library to version 1.1.7.
 * Improved: Block the place order button with attribute and class `disabled` when processing the order to prevent user from submitting duplicate orders.
 * Improved: Compatibility with plugin Germanized for WooCommerce.
+* Improved: Color contrast set by Fluid Checkout to pass WCAG 2.1 AA.
 * Fixed: Display coupon code messages below the substep title, instead of above.
 * Fixed: Re-focus on email field after applying email typo suggestion.
 * Fixed: Also consider a link button as focusable when setting focus while opening a section.

@@ -172,7 +172,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 		top: 50%;
 		transform: translateY( -50% );
 		border-radius: 100%;
-		background-color: $checkout-substep-text-color;
+		background-color: $checkout-substep-title-color--completed;
 		color: $white;
 	}
 }
