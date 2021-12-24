@@ -226,6 +226,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Function to get list of address field keys, necessary for Address Book (PRO) feature.
 * Improved: Renamed the checkout settings subtab from "Checkout options" to "Checkout".
 * Improved: Added support and PRO promotion links on the plugins list.
+* Improved: Compatibility with plugin Checkout Field Editor for WooCommerce. Add option to make changes to checkout fields affect account edit address screen.
 * Fixed: Shipping and billing phone numbers being displayed twice on order confirmation page.
 * Fixed: Missing borders between some steps and substeps.
 * Fixed: Maybe get shipping country value from session when appropriate.
