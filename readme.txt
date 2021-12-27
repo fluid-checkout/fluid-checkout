@@ -225,7 +225,6 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: New filter `fc_checkout_update_fields_selectors` for CSS selectors used to trigger update the checkout fragments.
 * Added: New filters `fc_is_billing_same_as_shipping_checked` and `fc_output_billing_same_as_shipping_as_hidden_field` for billing same as shipping.
 * Added: Function to get list of address field keys, necessary for Address Book (PRO) feature.
-* Added: Compatibility with plugin WooCommerce Amazon Pay.
 * Improved: Color contrast set by Fluid Checkout to pass WCAG 2.1 AA.
 * Improved: Renamed the checkout settings subtab from "Checkout options" to "Checkout".
 * Improved: Added support and PRO promotion links on the plugins list.
@@ -242,6 +241,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Compatibility with plugin German Market.
 * Added: Compatibility with plugin WooCommerce Authorize.Net Gateway.
 * Added: Compatibility with plugin Captcha Pro by BestWebSoft.
+* Added: Compatibility with plugin WooCommerce Amazon Pay.
 * Added: Compatibility with theme Hello Elementor.
 * Added: Compatibility with theme Orchid Store.
 * Added: New widget area to display trust symbols below the place order button.
