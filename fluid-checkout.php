@@ -465,7 +465,7 @@ class FluidCheckout {
 			}
 		}
 
-		// Return false if not found
+		// Return null if not found
 		return null;
 	}
 
