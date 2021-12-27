@@ -472,7 +472,7 @@ class FluidCheckout {
 		$callbacks = $wp_filter[ $tag ]->callbacks;
 
 		// Bail if hook priority doesn't exist
-		if ( ! array_key_exists( $priority, $callbacks ) ) { return false; }
+		if ( ! is_array( $callbacks ) || ! array_key_exists( $priority, $callbacks ) ) { return false; }
 
 		$priority_callbacks = $callbacks[ $priority ];
 		
@@ -509,7 +509,7 @@ class FluidCheckout {
 		$callbacks = $wp_filter[ $tag ]->callbacks;
 
 		// Bail if hook priority doesn't exist
-		if ( ! array_key_exists( $priority, $callbacks ) ) { return false; }
+		if ( ! is_array( $callbacks ) || ! array_key_exists( $priority, $callbacks ) ) { return false; }
 
 		$priority_callbacks = $callbacks[ $priority ];
 
