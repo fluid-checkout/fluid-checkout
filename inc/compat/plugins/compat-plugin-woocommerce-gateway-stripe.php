@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Compatibility with plugin: WooCommerce Stripe Gateway (by WooCommerce).
  */
-class FluidCheckout_PaymentMethodStripe extends FluidCheckout {
+class FluidCheckout_WooCommerceGatewayStripe extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -73,4 +73,4 @@ class FluidCheckout_PaymentMethodStripe extends FluidCheckout {
 
 }
 
-FluidCheckout_PaymentMethodStripe::instance();
+FluidCheckout_WooCommerceGatewayStripe::instance();
