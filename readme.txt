@@ -226,6 +226,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Compatibility with plugin German Market.
 * Added: Compatibility with plugin WooCommerce Authorize.Net Gateway.
 * Added: Compatibility with plugin Captcha Pro by BestWebSoft.
+* Added: Compatibility with plugin WooCommerce Amazon Pay.
 * Added: Compatibility with theme Hello Elementor.
 * Added: Compatibility with theme Orchid Store.
 * Added: New widget area to display trust symbols below the place order button.

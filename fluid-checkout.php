@@ -455,6 +455,35 @@ class FluidCheckout {
 
 
 	/**
+	 * Get object by class name from registered hooks.
+	 *
+	 * @param   string  $class_name  Class name.
+	 *
+	 * @return  mixed                The first object for the class found in registered hooks, or `null` if not found.
+	 */
+	public function get_object_by_class_name_from_hooks( $class_name ) {
+		global $wp_filter;
+
+		foreach ( $wp_filter as $tag => $callbacks ) {
+			foreach ( $callbacks as $priority => $priority_callbacks) {
+				foreach ( $priority_callbacks as $callback ) {
+					try {
+						// Check target class
+						if ( is_array( $callback ) && array_key_exists( 'function', $callback ) && is_array( $callback[ 'function' ] ) && array_key_exists( 0, $callback[ 'function' ] ) && $callback[ 'function' ][0] instanceof $class_name ) {
+							return $callback[ 'function' ][0];
+						}
+					} catch ( Exception $ex ) {
+						// Ignore and continue.
+					}
+				}
+			}
+		}
+
+		// Return null if not found
+		return null;
+	}
+
+	/**
 	 * Get hook callbacks by class name.
 	 *
 	 * @param   string  $tag         Hook name.
