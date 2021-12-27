@@ -470,7 +470,15 @@ class FluidCheckout {
 		if ( ! array_key_exists( $tag, $wp_filter ) ) { return false; }
 
 		$callbacks = $wp_filter[ $tag ]->callbacks;
+
+		// Bail if hook priority doesn't exist
+		if ( ! is_array( $callbacks ) || ! array_key_exists( $priority, $callbacks ) ) { return false; }
+
 		$priority_callbacks = $callbacks[ $priority ];
+		
+		// Bail if priority callbacks are not on the expected format
+		if ( ! is_array( $priority_callbacks ) ) { return false; }
+		
 		$class_callbacks = array();
 
 		foreach ( $priority_callbacks as $callback ) {
@@ -499,6 +507,10 @@ class FluidCheckout {
 		if ( ! array_key_exists( $tag, $wp_filter ) ) { return false; }
 
 		$callbacks = $wp_filter[ $tag ]->callbacks;
+
+		// Bail if hook priority doesn't exist
+		if ( ! is_array( $callbacks ) || ! array_key_exists( $priority, $callbacks ) ) { return false; }
+
 		$priority_callbacks = $callbacks[ $priority ];
 
 		// Return false if no functions hooked
@@ -523,7 +535,7 @@ class FluidCheckout {
 		$class_callbacks = $this->get_hooked_function_for_class( $tag, $class_name, $priority );
 
 		// Bail when no hooks found for that class
-		if ( ! $class_callbacks ) { return false; }
+		if ( ! is_array( $class_callbacks ) ) { return false; }
 
 		foreach ( $class_callbacks as $callback ) {
 			if ( $callback['function'][1] == $function_name ) {
@@ -562,7 +574,7 @@ class FluidCheckout {
 		$priority_callbacks = $this->get_hooked_function_for_priority( $tag, $priority );
 
 		// Bail when no hooks found for that class
-		if ( ! $priority_callbacks ) { return false; }
+		if ( ! is_array( $priority_callbacks ) ) { return false; }
 
 		foreach ( $priority_callbacks as $callback ) {
 			if ( $callback['function'] instanceof Closure ) {
