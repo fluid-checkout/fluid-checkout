@@ -368,7 +368,7 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
 .fc-checkout-header .fc-checkout__branding img {
   max-height: 46px;
   max-width: 130px;
-  width: auto;
+  width: 100%;
   -o-object-fit: contain;
   object-fit: contain;
 }
