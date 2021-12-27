@@ -32,6 +32,7 @@ class FluidCheckout_ThemeCompat_Neve extends FluidCheckout {
 		// Contact substep
 		$this->remove_action_for_closure( 'woocommerce_checkout_before_customer_details', 0 );
 		$this->remove_action_for_class( 'woocommerce_checkout_after_customer_details', array( 'Neve\Compatibility\Woocommerce', 'close_div' ), 10 );
+		$this->remove_action_for_class( 'woocommerce_checkout_after_customer_details', array( 'Neve\Compatibility\Woocommerce', 'close_div' ), PHP_INT_MAX );
 
 		// Order summary
 		$this->remove_action_for_closure( 'woocommerce_checkout_before_order_review_heading', 10 );

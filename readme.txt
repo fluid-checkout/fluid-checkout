@@ -72,6 +72,7 @@ With themes that are highly stylized such as Storefront Deli -- when comparing t
 
 We are working to bring to you the following PRO features:
 
+* Address book
 * Cart page optimization
 * Edit cart at checkout
 * Thank you / Order confirmation page
@@ -224,6 +225,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: New filter `fc_checkout_update_fields_selectors` for CSS selectors used to trigger update the checkout fragments.
 * Added: New filters `fc_is_billing_same_as_shipping_checked` and `fc_output_billing_same_as_shipping_as_hidden_field` for billing same as shipping.
 * Added: Function to get list of address field keys, necessary for Address Book (PRO) feature.
+* Improved: Color contrast set by Fluid Checkout to pass WCAG 2.1 AA.
 * Improved: Renamed the checkout settings subtab from "Checkout options" to "Checkout".
 * Improved: Added support and PRO promotion links on the plugins list.
 * Improved: Compatibility with plugin Checkout Field Editor for WooCommerce. Add option to make changes to checkout fields affect account edit address screen.
@@ -251,7 +253,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Updated: `collapsible-block` library to version 1.1.7.
 * Improved: Block the place order button with attribute and class `disabled` when processing the order to prevent user from submitting duplicate orders.
 * Improved: Compatibility with plugin Germanized for WooCommerce.
-* Improved: Color contrast set by Fluid Checkout to pass WCAG 2.1 AA.
+* Improved: Compatibility with theme Neve.
 * Fixed: Display coupon code messages below the substep title, instead of above.
 * Fixed: Re-focus on email field after applying email typo suggestion.
 * Fixed: Also consider a link button as focusable when setting focus while opening a section.
