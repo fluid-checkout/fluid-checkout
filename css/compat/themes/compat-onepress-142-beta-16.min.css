@@ -1,1 +1,11 @@
-div.woocommerce form .form-row .select2-selection,div.woocommerce form .form-row .select2-selection__rendered{height:41px;line-height:41px}div.woocommerce form .form-row .select2-selection__arrow{height:38px;line-height:38px}
+div.woocommerce form .form-row .select2-selection,
+div.woocommerce form .form-row .select2-selection__rendered {
+  height: 41px;
+  line-height: 41px;
+}
+
+div.woocommerce form .form-row .select2-selection__arrow {
+  height: 38px;
+  line-height: 38px;
+}
+/*# sourceMappingURL=maps/compat-onepress-142-beta-16.min.css.map */
