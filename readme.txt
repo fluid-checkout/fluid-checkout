@@ -240,6 +240,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Block the place order button with attribute and class `disabled` when processing the order to prevent user from submitting duplicate orders.
 * Improved: Compatibility with plugin Germanized for WooCommerce.
 * Improved: Compatibility with theme Neve.
+* Improved: Compatibility with theme Astra.
 * Fixed: Display coupon code messages below the substep title, instead of above.
 * Fixed: Re-focus on email field after applying email typo suggestion.
 * Fixed: Also consider a link button as focusable when setting focus while opening a section.
