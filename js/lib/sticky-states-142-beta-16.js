@@ -366,20 +366,7 @@
 
 		// Try getting instace from other types of elements
 		if ( ! instance )  { instance = _publicMethods.getInstanceFromInner( element ); }
-		if ( ! instance )  { instance = _publicMethods.getInstanceFromContainer( element ); }
 
-		return instance;
-	}
-
-	/**
-	 * Get manager instance for containerElement.
-	 */
-	_publicMethods.getInstanceFromContainer = function ( containerElement ) {
-		var instance;
-		for ( var i = 0; i < _publicMethods.managers.length; i++ ) {
-			var manager = _publicMethods.managers[i];
-			if ( manager.containerElement == containerElement ) { instance = manager; break; }
-		}
 		return instance;
 	}
 

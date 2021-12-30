@@ -1,16 +1,16 @@
 /*------------------------------------*\
   #STICKY STATES
 \*------------------------------------*/
-[data-sticky-states].is-sticky [data-sticky-states-inner] {
+[data-sticky-states].is-sticky > [data-sticky-states-inner] {
   z-index: 300;
   position: fixed;
 }
 
-[data-sticky-states].is-sticky--top [data-sticky-states-inner] {
+[data-sticky-states].is-sticky--top > [data-sticky-states-inner] {
   top: 0;
 }
 
-[data-sticky-states].is-sticky--bottom [data-sticky-states-inner] {
+[data-sticky-states].is-sticky--bottom > [data-sticky-states-inner] {
   bottom: 0;
 }
 
@@ -18,6 +18,6 @@
   position: relative;
 }
 
-[data-sticky-states].is-end-position [data-sticky-states-inner] {
+[data-sticky-states].is-end-position > [data-sticky-states-inner] {
   position: absolute;
 }
