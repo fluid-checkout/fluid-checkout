@@ -1,1 +1,10 @@
-body.theme-astra .woocommerce #fc-substep__fields--shipping_method ul#shipping_method li.shipping-method__option{padding:0;text-indent:0}body.theme-astra.woocommerce-page.woocommerce-checkout form.woocommerce-checkout #fc-wrapper.fc-wrapper #order_review{padding:0;border:0}
+body.theme-astra .woocommerce #fc-substep__fields--shipping_method ul#shipping_method li.shipping-method__option {
+  padding: 0;
+  text-indent: 0;
+}
+
+body.theme-astra.woocommerce-page.woocommerce-checkout form.woocommerce-checkout #fc-wrapper.fc-wrapper #order_review {
+  padding: 0;
+  border: 0;
+}
+/*# sourceMappingURL=maps/compat-astra-142-beta-16.min.css.map */
