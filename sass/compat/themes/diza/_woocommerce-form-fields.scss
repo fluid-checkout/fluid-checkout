@@ -1,0 +1,11 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+div.woocommerce form .form-row input,
+div.woocommerce form .form-row textarea,
+div.woocommerce form .form-row select,
+div.woocommerce form .form-row .select2-container,
+div.woocommerce form .form-row .select2-container .select2-selection {
+	margin-bottom: 0 !important; // Needed to override `!important` directive added by the theme.
+}

@@ -1,0 +1,24 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body.theme-diza .woocommerce-checkout-payment .payment_methods li label {
+	padding: $global-spacing-extra-small $global-spacing-small $global-spacing-extra-small remsize( 4.4rem ) !important; // Needed to override `!important` directive added by the theme.
+}
+
+body.theme-diza .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] + label:before {
+	top: remsize( 1.3rem );
+}
+
+body.theme-diza .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child + label:after{
+	top: remsize( 1.3rem );
+}
+
+body.theme-diza .woocommerce table.shop_table > thead > tr > th .woocommerce-Price-amount,
+body.theme-diza .woocommerce table.shop_table > thead > tr > td .woocommerce-Price-amount,
+body.theme-diza .woocommerce table.shop_table > tbody > tr > td .woocommerce-Price-amount,
+body.theme-diza .woocommerce table.shop_table > tbody > tr > th .woocommerce-Price-amount,
+body.theme-diza .woocommerce table.shop_table > tfoot > tr > td .woocommerce-Price-amount,
+body.theme-diza .woocommerce table.shop_table > tfoot > tr > th .woocommerce-Price-amount {
+	color: inherit;
+}
