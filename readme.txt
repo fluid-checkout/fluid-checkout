@@ -280,6 +280,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: New filter `fc_checkout_update_fields_selectors` for CSS selectors used to trigger update the checkout fragments.
 * Added: New filters `fc_is_billing_same_as_shipping_checked` and `fc_output_billing_same_as_shipping_as_hidden_field` for billing same as shipping.
 * Added: Function to get list of address field keys, necessary for Address Book (PRO) feature.
+* Added: New class `fc-no-validation-icon` for checkout field classes to prevent or remove the validation check icon.
 * Improved: Color contrast set by Fluid Checkout to pass WCAG 2.1 AA.
 * Improved: Renamed the checkout settings subtab from "Checkout options" to "Checkout".
 * Improved: Added support and PRO promotion links on the plugins list.

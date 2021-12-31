@@ -95,8 +95,8 @@ div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-i
 	}
 
 	// "valid" field check icon
-	.select2-selection:after,
-	.woocommerce-input-wrapper:after {
+	&:not( .fc-no-validation-icon ) .select2-selection:after,
+	&:not( .fc-no-validation-icon ) .woocommerce-input-wrapper:after {
 		@include icon( 'i-check-small' );
 		@include icon-size( $icon-size );
 
