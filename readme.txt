@@ -297,6 +297,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Compatibility with plugin Germanized for WooCommerce.
 * Improved: Compatibility with theme Neve.
 * Improved: Compatibility with theme Astra.
+* Improved: Compatibility with various themes and possibly plugins that add a payment section after the order review section.
 * Fixed: Display coupon code messages below the substep title, instead of above.
 * Fixed: Re-focus on email field after applying email typo suggestion.
 * Fixed: Also consider a link button as focusable when setting focus while opening a section.

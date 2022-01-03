@@ -110,6 +110,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
 		add_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_action( 'fc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
 		add_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
