@@ -25,7 +25,7 @@ Better accessibility at the checkout page with support for keyboard-only navigat
 
 [View detailed list of features on our website](https://fluidcheckout.com/features/)
 
-= Demos =
+== Demos ==
 
 * [Multi step layout](https://demos.fluidcheckout.com/multi-step/cart/?add-to-cart=14&quantity=2)
 Make sure to test the checkout flow by adding to the cart and completing the purchase at least two times to see how the plugin streamlines the process for repeat customers.
@@ -36,7 +36,7 @@ Single step checkout is recommended when only a few fields are required, usually
 * [Highly stylized theme](https://demos.fluidcheckout.com/theme-deli/cart/?add-to-cart=14&quantity=2)
 With themes that are highly stylized such as Storefront Deli -- when comparing to a plain theme such as the default Storefront theme, Fluid Checkout adapts itself with part of the theme's styles, keeping the same look and feel while improving the experience.
 
-= Lite Version (Free) =
+== Lite Version (Free) ==
 
 * **Multi-step or Single-step**: Choose between multi-step and one-step checkout layouts. While Fluid Checkout changes the layout of the checkout page, it will still look and feel like your website.
 
@@ -68,10 +68,11 @@ With themes that are highly stylized such as Storefront Deli -- when comparing t
 * **Log-in without leaving the checkout**: Repeat customers with an account registered can log in from the checkout page directly without having to visit another page and make their way back to checkout.
 
 
-= PRO Version =
+== PRO Version ==
 
 We are working to bring to you the following PRO features:
 
+* Address book
 * Cart page optimization
 * Edit cart at checkout
 * Thank you / Order confirmation page
@@ -83,46 +84,101 @@ We are working to bring to you the following PRO features:
 **[Google Address Autocomplete for WooCommerce](https://fluidcheckout.com/product/fc-google-address-autocomplete/) is now available as a stand-alone plugin**.
 
 
-= Need more features? =
+== Need more features? ==
 
 **[Request a feature](https://support.fluidcheckout.com/).**
 
 
-= Tested WooCommerce Themes =
+== Tested WooCommerce Themes ==
 
 By default, Fluid Checkout works with every WooCommerce theme. Some themes may need adjustments due to not using WooCommerce standards hooks or styles. We've tested certain third-party WooCommerce themes to ensure better compatibility with Fluid Checkout:
 
-* Astra
-* Blocksy
-* Divi
-* Flatsome
-* Generate Press
-* Hello Elementor
-* Kadence
-* Neve
-* Ocean WP
-* Shoptimizer
-* Storefront
-* OnePress
-* Phlox
-* Woodmart
-* Woostify
-* Zakra
+= Free Themes =
 
-** Don't see your theme in the list? No problem, try Fluid Checkout now and if you experience any issues please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.**
+* Astra - by Brainstorm Force
+* Blocksy - by CreativeThemes
+* Divi - by Elegant Themes
+* Flatsome - by UX-Themes
+* Generate Press - by Tom Usborne
+* Go - by GoDaddy
+* Hello Elementor - by Elementor Team
+* Hestia - by ThemeIsle
+* Kadence - by Kadence WP
+* Neve - by ThemeIsle
+* Ocean WP - by OceanWP
+* OnePress - by FameThemes
+* Orchid Store - by themebeez
+* Page Builder Framework - by David Vongries
+* Phlox - by averta
+* PopularFX - by Pagelayer
+* Storefront - by WooCommerce
+* Woostify - by Woostify
+* Zakra - by ThemeGrill
+
+= Premium Themes =
+
+* Aora - by Thembay
+* Hazel - by Select Themes
+* Impreza - by UpSolution
+* Kentha - by QantumThemes
+* Mr. Tailor - by Get Bowtied
+* OnAir2 - by QantumThemes
+* Riode - by D-THEMES
+* Shoptimizer - by CommerceGurus
+* Woodmart - by XTemos
+
+** Don't see your theme in the list? No problem. **
+
+Only the themes that we have added explicit compatibility with, or that we have tested and works as expected are listed above.
+
+If your theme is not on the list it **does not mean it won't work**. Only that we have not tested it yet.
+
+Try Fluid Checkout now and if you experience any issues please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.
 
 
-= Compatible with popular plugins =
+== Compatible with popular plugins ==
 
+= Payment Gateways (Free and Premium) =
+
+* Integration Rede for WooCommerce - by MarcosAlexandre
+* Mercado Pago payments for WooCommerce - by Mercado Pago
+* Payment Plugins for Stripe WooCommerce - by Payment Plugins
+* Rede WooCommerce - by Rede
+* WooCommerce Amazon Pay - by WooCommerce
+* WooCommerce Authorize.Net Gateway - by SkyVerge
+* WooCommerce PayPal Payments - by WooCommerce
+* WooCommerce Stripe Gateway - by WooCommerce
+* WooCommerce Stripe Payment Gateway - by WooCommerce
+
+= Free Plugins =
+
+* Checkout Field Editor for WooCommerce - by ThemeHigh
+* Delivery & Pickup Date Time for WooCommerce - by CodeRockz
+* Elementor - by Elementor Team
 * Germanized for WooCommerce - by vendidero
-* German Market - by MarketPress
+* SG Map to Address - by Sevengits
+* SG Checkout Location Picker for WooCommerce - by Sevengits
+* MailPoet - by MailPoet
+* WooCommerce Correios - by Claudio Sanches
 * WooCommerce PDF Invoices & Packing Slips - by Ewout Fernhout
+
+= Premium Plugins =
+
+* Captcha Pro - by BestWebSoft
+* German Market - by MarketPress
+* WooCommerce Delivery & Pickup Date Time Pro - by CodeRockz
 * WooCommerce Print Invoices/Packing Lists - by SkyVerge
 
-** Don't see a plugin in the list? No problem, try Fluid Checkout now and if you experience any issues please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.**
+** Don't see a plugin in the list? No problem. **
+
+Only the plugins that we have added explicit compatibility with, or that we have tested and works as expected are listed above.
+
+If your theme is not on the list it **does not mean it won't work**. Only that we have not tested it yet.
+
+Try Fluid Checkout now and if you experience any issues please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.
 
 
-= Fully Customizable =
+== Fully Customizable ==
 
 In addition to a number of default settings (including a custom header/logo), multi-step or single step layout types and easily enabling/disabling features from settings page, the plugin contains HTML/PHP based templates and provides many filters and action hooks that allow for customization.
 
