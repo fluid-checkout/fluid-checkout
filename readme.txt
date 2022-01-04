@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -118,6 +118,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 = Premium Themes =
 
 * Aora - by Thembay
+* Diza - by Thembay
 * Hazel - by Select Themes
 * Impreza - by UpSolution
 * Kentha - by QantumThemes
@@ -178,7 +179,7 @@ If your theme is not on the list it **does not mean it won't work**. Only that w
 Try Fluid Checkout now and if you experience any issues please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.
 
 
-= Fully Customizable =
+== Fully Customizable ==
 
 In addition to a number of default settings (including a custom header/logo), multi-step or single step layout types and easily enabling/disabling features from settings page, the plugin contains HTML/PHP based templates and provides many filters and action hooks that allow for customization.
 
@@ -290,7 +291,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Maybe get shipping country value from session when appropriate.
 * Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
 
-= Unreleased =
+= 1.4.2 - 2022-01-04 =
 
 * Bump minimum required version to PHP 7.4.
 * Added: Translation to Spanish (Spain). Thanks to Giomar Morales from senseiwpacademy.com.
@@ -300,6 +301,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Compatibility with plugin WooCommerce Amazon Pay.
 * Added: Compatibility with theme Hello Elementor.
 * Added: Compatibility with theme Orchid Store.
+* Added: Compatibility with theme Diza.
 * Added: New widget area to display trust symbols below the place order button.
 * Added: Option to set a background color for the checkout page. Refactor checkout header background color to output custom styles in a `<style>` tag.
 * Added: New filter `fc_display_checkout_page_title` to make the checkout page title visible. When hidden, checkout page title is output as `screen-reader-only`. Defaults to hidden.
@@ -311,6 +313,8 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Block the place order button with attribute and class `disabled` when processing the order to prevent user from submitting duplicate orders.
 * Improved: Compatibility with plugin Germanized for WooCommerce.
 * Improved: Compatibility with theme Neve.
+* Improved: Compatibility with theme Astra.
+* Improved: Compatibility with various themes and possibly plugins that add a payment section after the order review section.
 * Fixed: Display coupon code messages below the substep title, instead of above.
 * Fixed: Re-focus on email field after applying email typo suggestion.
 * Fixed: Also consider a link button as focusable when setting focus while opening a section.

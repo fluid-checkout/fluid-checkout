@@ -1,0 +1,11 @@
+@use "sass:math" as math;
+
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
+
+// Fix layout for the `#order_review` element
+body.theme-astra.woocommerce-page.woocommerce-checkout form.woocommerce-checkout #fc-wrapper.fc-wrapper #order_review {
+	padding: 0;
+	border: 0;
+}
