@@ -1,5 +1,5 @@
 body.theme-orchid-store #payment div.payment_box {
-  color: #6d6d6d;
+  color: inherit;
 }
 
 body.theme-orchid-store .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] + label:before,

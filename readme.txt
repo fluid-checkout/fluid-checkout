@@ -118,6 +118,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 = Premium Themes =
 
 * Aora - by Thembay
+* Diza - by Thembay
 * Hazel - by Select Themes
 * Impreza - by UpSolution
 * Kentha - by QantumThemes
@@ -285,6 +286,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Compatibility with plugin WooCommerce Amazon Pay.
 * Added: Compatibility with theme Hello Elementor.
 * Added: Compatibility with theme Orchid Store.
+* Added: Compatibility with theme Diza.
 * Added: New widget area to display trust symbols below the place order button.
 * Added: Option to set a background color for the checkout page. Refactor checkout header background color to output custom styles in a `<style>` tag.
 * Added: New filter `fc_display_checkout_page_title` to make the checkout page title visible. When hidden, checkout page title is output as `screen-reader-only`. Defaults to hidden.
