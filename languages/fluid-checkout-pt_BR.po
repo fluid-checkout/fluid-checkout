@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2021-12-21 11:35+0000\n"
+"PO-Revision-Date: 2022-01-04 08:54+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -62,7 +62,7 @@ msgstr "Adicione um campo de telefone ao formulário de endereço de entrega"
 msgid "Add widget areas to the checkout page"
 msgstr "Adicione áreas de widget à página de checkout"
 
-#: inc/checkout-steps.php:1629
+#: inc/checkout-steps.php:1630
 msgid "Additional notes"
 msgstr "Notas Adicionais"
 
@@ -82,7 +82,17 @@ msgstr ""
 msgid "Already have an account?"
 msgstr "Já tem uma conta?"
 
-#: inc/checkout-steps.php:1413
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-amazon-payments-advanced.php:101
+msgctxt "Amazon Pay Express elements"
+msgid "Button and message"
+msgstr "Botão e mensagem"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-amazon-payments-advanced.php:100
+msgctxt "Amazon Pay Express elements"
+msgid "Only button"
+msgstr "Somente o botão"
+
+#: inc/checkout-steps.php:1414
 msgid "An account will be created with the information provided."
 msgstr "Sua conta será criada com as informações fornecidas."
 
@@ -104,7 +114,7 @@ msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 "Endereço de faturamento igual ao endereço de entrega marcado por padrão"
 
-#: inc/checkout-steps.php:2063
+#: inc/checkout-steps.php:2064
 msgid "Billing to"
 msgstr "Faturamento para"
 
@@ -122,7 +132,21 @@ msgctxt "Button label for applying coupon codes"
 msgid "Apply"
 msgstr "Aplicar"
 
-#: inc/checkout-steps.php:403
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:68
+msgctxt "Captcha position"
+msgid "Before place order button"
+msgstr "Antes do botão de finalização do pedido"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:67
+msgctxt "Captcha position"
+msgid "Before place order section"
+msgstr "Antes da seção de finalização do pedido"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:63
+msgid "Captcha Pro by BestWebSoft"
+msgstr "Captcha Pro by BestWebSoft"
+
+#: inc/checkout-steps.php:404
 msgid "Cart total:"
 msgstr "Total no carrinho:"
 
@@ -130,7 +154,7 @@ msgstr "Total no carrinho:"
 msgid "Change email address to: {suggestion-value}"
 msgstr "Alterar o endereço de e-mail para: {suggestion-value}"
 
-#: inc/checkout-steps.php:1143
+#: inc/checkout-steps.php:1144
 #, php-format
 msgid "Change: %s"
 msgstr "Alterar: %s"
@@ -163,32 +187,32 @@ msgstr "Resumo do pedido no checkout"
 msgid "Checkout Sidebar"
 msgstr "Barra lateral do checkout"
 
-#: inc/checkout-steps.php:885
+#: inc/checkout-steps.php:886
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Cobrança"
 
-#: inc/checkout-steps.php:864
+#: inc/checkout-steps.php:865
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Contato"
 
-#: inc/checkout-steps.php:894
+#: inc/checkout-steps.php:895
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Pagamento"
 
-#: inc/checkout-steps.php:874
+#: inc/checkout-steps.php:875
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Entrega"
 
-#: inc/checkout-steps.php:1143
+#: inc/checkout-steps.php:1144
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Alterar"
 
-#: inc/checkout-steps.php:1144
+#: inc/checkout-steps.php:1145
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Salvar alterações"
@@ -227,7 +251,7 @@ msgstr ""
 msgid "Choose in which step to display the shipping phone"
 msgstr "Escolha em qual etapa exibir o telefone de entrega"
 
-#: inc/checkout-steps.php:403
+#: inc/checkout-steps.php:404
 msgid "Click to go to the order summary"
 msgstr "Clique para ir para o resumo do pedido"
 
@@ -267,6 +291,14 @@ msgstr "Criar uma conta"
 msgid "Debug options"
 msgstr "Solução de problemas"
 
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:64
+msgid ""
+"Define the position to display the captcha section. Some positions might not "
+"work depending on the captcha type chosen."
+msgstr ""
+"Defina a posição para exibir a seção captcha. Algumas posições podem não "
+"funcionar, dependendo do tipo de captcha escolhido."
+
 #: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:101
 msgid ""
 "Define the position to display the legal checkboxes. <br/>The legal "
@@ -300,6 +332,13 @@ msgstr ""
 #: inc/admin/admin-settings-general.php:202
 msgid "Define the visibility of the additional order notes field."
 msgstr "Define a visibilidade do campo notas adicionais do pedido."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-amazon-payments-advanced.php:97
+msgid ""
+"Define which components of the Amazon Pay express checkout button to display."
+msgstr ""
+"Definir quais componentes do botão de pagamento expresso da Amazon Pay devem "
+"ser exibidos."
 
 #: inc/compat/plugins/compat-plugin-woo-delivery.php:112
 msgid "Delivery Date"
@@ -628,11 +667,11 @@ msgid "Make the order summary stay visible while scrolling"
 msgstr ""
 "Faça com que o resumo do pedido fique visível enquanto rola-se a página"
 
-#: inc/checkout-steps.php:318
+#: inc/checkout-steps.php:319
 msgid "Multi-step"
 msgstr "Multi-etapas"
 
-#: inc/checkout-steps.php:1367
+#: inc/checkout-steps.php:1368
 msgid "My contact"
 msgstr "Meu contato"
 
@@ -654,7 +693,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:1770
+#: inc/checkout-steps.php:1771
 msgid "Not selected yet."
 msgstr "Não selecionado."
 
@@ -668,7 +707,7 @@ msgctxt "Notice for no gift options provided"
 msgid "None."
 msgstr "Nenhuma."
 
-#: inc/checkout-steps.php:1817
+#: inc/checkout-steps.php:1818
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Nenhuma."
@@ -720,7 +759,7 @@ msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 "O número do pedido e o recibo serão enviados para este endereço de e-mail."
 
-#: inc/checkout-steps.php:2620 inc/admin/admin-settings-advanced.php:85
+#: inc/checkout-steps.php:2621 inc/admin/admin-settings-advanced.php:85
 #: inc/admin/admin-settings-advanced.php:104
 #| msgid "Order Summary"
 msgid "Order summary"
@@ -734,7 +773,7 @@ msgstr "Guias de remessa"
 msgid "Page background color"
 msgstr "Cor de fundo da página"
 
-#: inc/checkout-steps.php:2516
+#: inc/checkout-steps.php:2517
 msgid "Payment method"
 msgstr "Forma de pagamento"
 
@@ -757,7 +796,7 @@ msgid "Payment step"
 msgstr "Etapa de pagamento"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:759
+#: inc/checkout-steps.php:760
 #, php-format
 msgid "Proceed to %s"
 msgstr "Prosseguir para %s"
@@ -807,7 +846,7 @@ msgstr ""
 msgid "Remove"
 msgstr "Remover"
 
-#: inc/checkout-steps.php:2160 inc/checkout-steps.php:2245
+#: inc/checkout-steps.php:2161 inc/checkout-steps.php:2246
 msgid "Same as shipping address"
 msgstr "Igual ao endereço de entrega"
 
@@ -831,7 +870,7 @@ msgctxt "Settings section title"
 msgid "Integrations"
 msgstr "Integrações"
 
-#: inc/checkout-steps.php:1605
+#: inc/checkout-steps.php:1606
 msgid "Shipping method"
 msgstr "Método de entrega"
 
@@ -865,7 +904,7 @@ msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr "Obrigatório"
 
-#: inc/checkout-local-pickup.php:170 inc/checkout-steps.php:1581
+#: inc/checkout-local-pickup.php:170 inc/checkout-steps.php:1582
 msgid "Shipping to"
 msgstr "Enviando para"
 
@@ -877,7 +916,7 @@ msgstr "Mostrar códigos de cupom como uma seção no passo de pagamento"
 msgid "Sign in to your account"
 msgstr "Faça login em sua conta"
 
-#: inc/checkout-steps.php:319
+#: inc/checkout-steps.php:320
 msgid "Single step"
 msgstr "Passo único"
 
@@ -890,7 +929,7 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Espaçamento para cabeçalho do site na página de checkout (em pixels)"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:963
+#: inc/checkout-steps.php:964
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Passo %1$s de %2$s"
@@ -969,6 +1008,10 @@ msgstr ""
 "distrações na página de checkout. <a href=\"https://baymard.com/blog/cart-"
 "abandonment\" target=\"_blank\">Leia a pesquisa sobre abandono de carrinhos "
 "de compra (em inglês)</a> ."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-amazon-payments-advanced.php:96
+msgid "WooCommerce Amazon Pay"
+msgstr "WooCommerce Amazon Pay"
 
 #: inc/checkout-gift-options.php:180
 msgid "Write a gift message..."
