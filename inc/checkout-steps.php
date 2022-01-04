@@ -46,6 +46,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
+
+		// Custom styles
+		add_filter( 'wp_head', array( $this, 'add_custom_styles' ), 10 );
+		add_action( 'fc_output_custom_styles', array( $this, 'output_checkout_header_custom_styles' ), 10 );
+		add_action( 'fc_output_custom_styles', array( $this, 'output_checkout_page_custom_styles' ), 10 );
+
+		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_order_details_styles' ), 10 );
 
@@ -103,6 +110,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
 		add_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_action( 'fc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
 		add_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
@@ -162,6 +170,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			}
 		}
+		
+		// Run order notes hooks for better compatibility with plugins that rely on them,
+		// because they originally run regardless of the order notes fields existence.
+		if ( ! in_array( 'order', array_keys( $all_fields ) ) || ! apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) ) {
+			$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields' );
+			$order_notes_substep_priority = apply_filters( 'fc_do_order_notes_hooks_priority', 100 );
+			add_action( $order_notes_substep_position, array( $this, 'do_order_notes_hooks' ), $order_notes_substep_priority );
+		}
 	}
 
 
@@ -169,13 +185,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add page body class for feature detection.
 	 *
-		 * @param array $classes Classes for the body element.
+	 * @param array $classes Classes for the body element.
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
 
-		$add_classes = array( 'has-checkout-layout--' . $this->get_checkout_layout() );
+		$add_classes = array(
+			'has-fluid-checkout',
+			'has-checkout-layout--' . $this->get_checkout_layout(),
+		);
 
 		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
 		if ( $this->get_hide_site_header_footer_at_checkout() ) {
@@ -189,6 +208,56 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return array_merge( $classes, $add_classes );
+	}
+
+
+
+	/**
+	 * Output custom styles to the checkout page.
+	 */
+	public function add_custom_styles() {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+
+		// Baii if no custom styles were added
+		if ( ! has_action( 'fc_output_custom_styles' ) ) { return; }
+		?>
+		<style id="fc-custom-styles">
+			<?php do_action( 'fc_output_custom_styles' ); ?>
+		</style>
+		<?php
+	}
+
+	/**
+	 * Output the custom styles for the checkout header background color.
+	 */
+	public function output_checkout_header_custom_styles() {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+		
+		// Get header background color
+		$header_background_color = trim( get_option( 'fc_checkout_header_background_color', '' ) );
+
+		// Bail if color is empty
+		if ( empty( $header_background_color ) ) { return; }
+
+		echo 'header.fc-checkout-header{background-color:'. $header_background_color .'}';
+	}
+
+	/**
+	 * Output the custom styles for the checkout page background color.
+	 */
+	public function output_checkout_page_custom_styles() {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+		
+		// Get header background color
+		$page_background_color = trim( get_option( 'fc_checkout_page_background_color', '' ) );
+
+		// Bail if color is empty
+		if ( empty( $page_background_color ) ) { return; }
+
+		echo 'body.has-fluid-checkout{background-color:'. $page_background_color .'}';
 	}
 
 
@@ -1573,6 +1642,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
+	}
+
+	/**
+	 * Run additional order notes hooks, for when the order notes fields are disabled.
+	 */
+	public function do_order_notes_hooks() {
+		do_action( 'woocommerce_before_order_notes', WC()->checkout() );
+		do_action( 'woocommerce_after_order_notes', WC()->checkout() );
 	}
 
 

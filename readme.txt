@@ -1,7 +1,7 @@
 === Fluid Checkout for WooCommerce ===
 Contributors: fluidwebco, diegoversiani, luiggiab
 Tags: woocommerce, checkout, conversion, multi-step, one-page
-Requires PHP: 7.2
+Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 5.8
 Stable tag: 1.4.1
@@ -25,7 +25,7 @@ Better accessibility at the checkout page with support for keyboard-only navigat
 
 [View detailed list of features on our website](https://fluidcheckout.com/features/)
 
-= Demos =
+== Demos ==
 
 * [Multi step layout](https://demos.fluidcheckout.com/multi-step/cart/?add-to-cart=14&quantity=2)
 Make sure to test the checkout flow by adding to the cart and completing the purchase at least two times to see how the plugin streamlines the process for repeat customers.
@@ -36,7 +36,7 @@ Single step checkout is recommended when only a few fields are required, usually
 * [Highly stylized theme](https://demos.fluidcheckout.com/theme-deli/cart/?add-to-cart=14&quantity=2)
 With themes that are highly stylized such as Storefront Deli -- when comparing to a plain theme such as the default Storefront theme, Fluid Checkout adapts itself with part of the theme's styles, keeping the same look and feel while improving the experience.
 
-= Lite Version (Free) =
+== Lite Version (Free) ==
 
 * **Multi-step or Single-step**: Choose between multi-step and one-step checkout layouts. While Fluid Checkout changes the layout of the checkout page, it will still look and feel like your website.
 
@@ -68,10 +68,11 @@ With themes that are highly stylized such as Storefront Deli -- when comparing t
 * **Log-in without leaving the checkout**: Repeat customers with an account registered can log in from the checkout page directly without having to visit another page and make their way back to checkout.
 
 
-= PRO Version =
+== PRO Version ==
 
 We are working to bring to you the following PRO features:
 
+* Address book
 * Cart page optimization
 * Edit cart at checkout
 * Thank you / Order confirmation page
@@ -83,45 +84,102 @@ We are working to bring to you the following PRO features:
 **[Google Address Autocomplete for WooCommerce](https://fluidcheckout.com/product/fc-google-address-autocomplete/) is now available as a stand-alone plugin**.
 
 
-= Need more features? =
+== Need more features? ==
 
 **[Request a feature](https://support.fluidcheckout.com/).**
 
 
-= Tested WooCommerce Themes =
+== Tested WooCommerce Themes ==
 
 By default, Fluid Checkout works with every WooCommerce theme. Some themes may need adjustments due to not using WooCommerce standards hooks or styles. We've tested certain third-party WooCommerce themes to ensure better compatibility with Fluid Checkout:
 
-* Astra
-* Blocksy
-* Divi
-* Flatsome
-* Generate Press
-* Hello Elementor
-* Kadence
-* Neve
-* Ocean WP
-* Shoptimizer
-* Storefront
-* OnePress
-* Phlox
-* Woodmart
-* Woostify
-* Zakra
+= Free Themes =
 
-** Don't see your theme in the list? No problem, try Fluid Checkout now and if you experience any issues please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.**
+* Astra - by Brainstorm Force
+* Blocksy - by CreativeThemes
+* Divi - by Elegant Themes
+* Flatsome - by UX-Themes
+* Generate Press - by Tom Usborne
+* Go - by GoDaddy
+* Hello Elementor - by Elementor Team
+* Hestia - by ThemeIsle
+* Kadence - by Kadence WP
+* Neve - by ThemeIsle
+* Ocean WP - by OceanWP
+* OnePress - by FameThemes
+* Orchid Store - by themebeez
+* Page Builder Framework - by David Vongries
+* Phlox - by averta
+* PopularFX - by Pagelayer
+* Storefront - by WooCommerce
+* Woostify - by Woostify
+* Zakra - by ThemeGrill
+
+= Premium Themes =
+
+* Aora - by Thembay
+* Diza - by Thembay
+* Hazel - by Select Themes
+* Impreza - by UpSolution
+* Kentha - by QantumThemes
+* Mr. Tailor - by Get Bowtied
+* OnAir2 - by QantumThemes
+* Riode - by D-THEMES
+* Shoptimizer - by CommerceGurus
+* Woodmart - by XTemos
+
+** Don't see your theme in the list? No problem. **
+
+Only the themes that we have added explicit compatibility with, or that we have tested and works as expected are listed above.
+
+If your theme is not on the list it **does not mean it won't work**. Only that we have not tested it yet.
+
+Try Fluid Checkout now and if you experience any issues please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.
 
 
-= Compatible with popular plugins =
+== Compatible with popular plugins ==
 
+= Payment Gateways (Free and Premium) =
+
+* Integration Rede for WooCommerce - by MarcosAlexandre
+* Mercado Pago payments for WooCommerce - by Mercado Pago
+* Payment Plugins for Stripe WooCommerce - by Payment Plugins
+* Rede WooCommerce - by Rede
+* WooCommerce Amazon Pay - by WooCommerce
+* WooCommerce Authorize.Net Gateway - by SkyVerge
+* WooCommerce PayPal Payments - by WooCommerce
+* WooCommerce Stripe Gateway - by WooCommerce
+* WooCommerce Stripe Payment Gateway - by WooCommerce
+
+= Free Plugins =
+
+* Checkout Field Editor for WooCommerce - by ThemeHigh
+* Delivery & Pickup Date Time for WooCommerce - by CodeRockz
+* Elementor - by Elementor Team
 * Germanized for WooCommerce - by vendidero
+* SG Map to Address - by Sevengits
+* SG Checkout Location Picker for WooCommerce - by Sevengits
+* MailPoet - by MailPoet
+* WooCommerce Correios - by Claudio Sanches
 * WooCommerce PDF Invoices & Packing Slips - by Ewout Fernhout
+
+= Premium Plugins =
+
+* Captcha Pro - by BestWebSoft
+* German Market - by MarketPress
+* WooCommerce Delivery & Pickup Date Time Pro - by CodeRockz
 * WooCommerce Print Invoices/Packing Lists - by SkyVerge
 
-** Don't see a plugin in the list? No problem, try Fluid Checkout now and if you experience any issues please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.**
+** Don't see a plugin in the list? No problem. **
+
+Only the plugins that we have added explicit compatibility with, or that we have tested and works as expected are listed above.
+
+If your theme is not on the list it **does not mean it won't work**. Only that we have not tested it yet.
+
+Try Fluid Checkout now and if you experience any issues please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.
 
 
-= Fully Customizable =
+== Fully Customizable ==
 
 In addition to a number of default settings (including a custom header/logo), multi-step or single step layout types and easily enabling/disabling features from settings page, the plugin contains HTML/PHP based templates and provides many filters and action hooks that allow for customization.
 
@@ -134,20 +192,22 @@ If you need more control, you can remove the plugin styles and add your own comp
 
 == Translations ==
 
-All labels and other texts added or changed by the plugin are translatable using the built in WordPress functions.
+All labels and other texts added or changed by the plugin are translatable using the built-in WordPress functions.
 
 Currently the plugin is translated into the languages below, and more are comming soon:
 
 * English (Default)
+* German - Germany (thanks to @reilix, felix-gudowius.de)
 * Portuguese - Brazil
+* Spanish - Spain (thanks to @gio15, senseiwpacademy.com)
+* Swedish - Sweden (thanks to @kozley, @tobifjellner, @elbogen)
 
 ** Comming soon **
 
-* Spanish - Argentina (soon)
 * Dutch (soon)
-* German (soon)
 * German - Formal (soon)
 * Italian (soon)
+* Spanish - Argentina (soon)
 
 ** Note: **
 Fluid Checkout is fully localized/translatable. This is very important for all users worldwide.
@@ -216,6 +276,40 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+
+* Bump minimum required version to PHP 7.4.
+* Added: Translation to Spanish (Spain). Thanks to Giomar Morales from senseiwpacademy.com.
+* Added: Compatibility with plugin German Market.
+* Added: Compatibility with plugin WooCommerce Authorize.Net Gateway.
+* Added: Compatibility with plugin Captcha Pro by BestWebSoft.
+* Added: Compatibility with plugin WooCommerce Amazon Pay.
+* Added: Compatibility with theme Hello Elementor.
+* Added: Compatibility with theme Orchid Store.
+* Added: Compatibility with theme Diza.
+* Added: New widget area to display trust symbols below the place order button.
+* Added: Option to set a background color for the checkout page. Refactor checkout header background color to output custom styles in a `<style>` tag.
+* Added: New filter `fc_display_checkout_page_title` to make the checkout page title visible. When hidden, checkout page title is output as `screen-reader-only`. Defaults to hidden.
+* Added: New filter `fc_checkout_express_checkout_section_title` to allow changing the express checkout section title.
+* Added: New filter `fc_output_checkout_contact_login_cta` to control whether to display the call to action "Already have an account? Log in." in the contact step.
+* Added: New action `fc_checkout_below_contact_login_cta` to allow adding content to the contact login substep.
+* Added: New option `checkoutEnablePreventUnload` to the `fcSettings` to allow disabling the "data loss protection" script when closing the browser tab with unsaved changes to checkout fields.
+* Updated: `collapsible-block` library to version 1.1.7.
+* Improved: Block the place order button with attribute and class `disabled` when processing the order to prevent user from submitting duplicate orders.
+* Improved: Compatibility with plugin Germanized for WooCommerce.
+* Improved: Compatibility with theme Neve.
+* Improved: Compatibility with theme Astra.
+* Improved: Compatibility with various themes and possibly plugins that add a payment section after the order review section.
+* Fixed: Display coupon code messages below the substep title, instead of above.
+* Fixed: Re-focus on email field after applying email typo suggestion.
+* Fixed: Also consider a link button as focusable when setting focus while opening a section.
+* Fixed: Run additional order notes hooks `woocommerce_before_order_notes` and `woocommerce_after_order_notes` when order notes field is disabled or removed.
+* Fixed: Scroll position when proceeding to next steps was being calculated wrong on some themes.
+* Fixed: Removed background color from `fieldset` elements on payment method fields section.
+* Fixed: Billing address form not displaying when the shipping country was not yet selected on single-step layout mode.
+* Fixed: Certain SVG logo images not being displayed on the checkout header.
+* Fixed: Fatal error when activating Fluid Checkout on older versions of PHP.
+
 = 1.4.1 - 2021-12-03 =
 * Added: Translation to German. Thanks to @reilix.
 * Added: Compatibility with theme Kentha.
@@ -224,6 +318,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Compatibility with WooCommerce Delivery & Pickup Date Time Pro by CodeRockz.
 * Added: Conditionally add the shipping package name to the shipping method section. Added the hook `fc_shipping_method_display_package_name` to control whether to display the package name.
 * Added: Filter to change button classes for "Proceed to next step" buttons.
+* Added: New filter `fc_substep_title_<substep_id>` to allow changing the titles of each substep.
 * Improved: Compatibility with theme Woodmart.
 * Improved: Added function to allow unregistering checkout steps.
 * Improved: Allow collapsible sections to be created without a toggle link when toggle label is `null`.

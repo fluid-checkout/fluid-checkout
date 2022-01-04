@@ -5,7 +5,7 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message, and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 1.4.1
+Version: 1.4.2-beta-17
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
@@ -45,7 +45,7 @@ register_activation_hook( __FILE__, array( 'FluidCheckout_Activation', 'on_activ
 class FluidCheckout {
 
 	// A single instance of this class.
-	public static $instances   = array();
+	public static $instances = array();
 	public static $directory_path;
 	public static $directory_url;
 	public static $plugin = 'Fluid Checkout for WooCommerce';
@@ -73,7 +73,7 @@ class FluidCheckout {
 	 *
 	 * @var string
 	 */
-	public const SESSION_PREFIX = 'fc_';
+	const SESSION_PREFIX = 'fc_';
 
 
 	/**
@@ -455,6 +455,35 @@ class FluidCheckout {
 
 
 	/**
+	 * Get object by class name from registered hooks.
+	 *
+	 * @param   string  $class_name  Class name.
+	 *
+	 * @return  mixed                The first object for the class found in registered hooks, or `null` if not found.
+	 */
+	public function get_object_by_class_name_from_hooks( $class_name ) {
+		global $wp_filter;
+
+		foreach ( $wp_filter as $tag => $callbacks ) {
+			foreach ( $callbacks as $priority => $priority_callbacks) {
+				foreach ( $priority_callbacks as $callback ) {
+					try {
+						// Check target class
+						if ( is_array( $callback ) && array_key_exists( 'function', $callback ) && is_array( $callback[ 'function' ] ) && array_key_exists( 0, $callback[ 'function' ] ) && $callback[ 'function' ][0] instanceof $class_name ) {
+							return $callback[ 'function' ][0];
+						}
+					} catch ( Exception $ex ) {
+						// Ignore and continue.
+					}
+				}
+			}
+		}
+
+		// Return null if not found
+		return null;
+	}
+
+	/**
 	 * Get hook callbacks by class name.
 	 *
 	 * @param   string  $tag         Hook name.
@@ -470,7 +499,15 @@ class FluidCheckout {
 		if ( ! array_key_exists( $tag, $wp_filter ) ) { return false; }
 
 		$callbacks = $wp_filter[ $tag ]->callbacks;
+
+		// Bail if hook priority doesn't exist
+		if ( ! is_array( $callbacks ) || ! array_key_exists( $priority, $callbacks ) ) { return false; }
+
 		$priority_callbacks = $callbacks[ $priority ];
+		
+		// Bail if priority callbacks are not on the expected format
+		if ( ! is_array( $priority_callbacks ) ) { return false; }
+		
 		$class_callbacks = array();
 
 		foreach ( $priority_callbacks as $callback ) {
@@ -499,6 +536,10 @@ class FluidCheckout {
 		if ( ! array_key_exists( $tag, $wp_filter ) ) { return false; }
 
 		$callbacks = $wp_filter[ $tag ]->callbacks;
+
+		// Bail if hook priority doesn't exist
+		if ( ! is_array( $callbacks ) || ! array_key_exists( $priority, $callbacks ) ) { return false; }
+
 		$priority_callbacks = $callbacks[ $priority ];
 
 		// Return false if no functions hooked
@@ -523,7 +564,7 @@ class FluidCheckout {
 		$class_callbacks = $this->get_hooked_function_for_class( $tag, $class_name, $priority );
 
 		// Bail when no hooks found for that class
-		if ( ! $class_callbacks ) { return false; }
+		if ( ! is_array( $class_callbacks ) ) { return false; }
 
 		foreach ( $class_callbacks as $callback ) {
 			if ( $callback['function'][1] == $function_name ) {
@@ -562,7 +603,7 @@ class FluidCheckout {
 		$priority_callbacks = $this->get_hooked_function_for_priority( $tag, $priority );
 
 		// Bail when no hooks found for that class
-		if ( ! $priority_callbacks ) { return false; }
+		if ( ! is_array( $priority_callbacks ) ) { return false; }
 
 		foreach ( $priority_callbacks as $callback ) {
 			if ( $callback['function'] instanceof Closure ) {

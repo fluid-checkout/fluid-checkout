@@ -1,0 +1,16 @@
+body.theme-orchid-store #payment div.payment_box {
+  color: inherit;
+}
+
+body.theme-orchid-store .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] + label:before,
+body.theme-orchid-store .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:after {
+  top: 5.5px;
+}
+
+.fc-wrapper .woocommerce-billing-fields.woocommerce-billing-fields {
+  background-color: transparent;
+}
+
+.fc-wrapper .fc-step__substep-title.fc-step__substep-title {
+  border: none;
+}
