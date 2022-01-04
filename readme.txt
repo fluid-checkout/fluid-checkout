@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -276,7 +276,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
-= Unreleased =
+= 1.4.2 - 2022-01-04 =
 
 * Bump minimum required version to PHP 7.4.
 * Added: Translation to Spanish (Spain). Thanks to Giomar Morales from senseiwpacademy.com.
