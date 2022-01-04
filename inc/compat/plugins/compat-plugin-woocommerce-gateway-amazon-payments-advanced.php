@@ -55,7 +55,7 @@ class FluidCheckout_WooCommerceGatewayAmazonPaymentsAdvanced extends FluidChecko
 			$this->amazon_pay_gateway_legacy = $this->get_object_by_class_name_from_hooks( 'WC_Gateway_Amazon_Payments_Advanced_Legacy' );
 
 			if ( null !== $this->amazon_pay_gateway_legacy ) {
-				// // Run checkout initialization later
+				// Run checkout initialization later
 				remove_action( 'woocommerce_checkout_init', array( $this->amazon_pay_gateway_legacy, 'checkout_init' ) );
 				$this->amazon_pay_gateway_legacy->checkout_init( WC()->checkout );
 			}
