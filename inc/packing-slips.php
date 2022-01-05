@@ -87,6 +87,15 @@ class FluidCheckout_PackingSlips extends FluidCheckout {
 		// Bail if there is no message body
 		if ( empty( $args['message_body'] ) ) { return ''; };
 
+		$allowed_html = array(
+			'a' => array(
+				'href' => array(),
+				'title' => array()
+			),
+			'em' => array(),
+			'strong' => array(),
+		);
+
 		// Start buffer
 		ob_start();
 		?>
@@ -97,12 +106,12 @@ class FluidCheckout_PackingSlips extends FluidCheckout {
 				<div class="packing-list__message-body <?php echo esc_attr( $args['message_body_extra_classes'] ); ?>"><?php echo wp_kses_post( $args['message_body'] ); ?></div>
 
 				<?php if ( ! empty( $args['message_footer'] ) ) : ?>
-					<div class="packing-list__message-footer"><?php echo esc_html( $args['message_footer'] ); ?></div>
+					<div class="packing-list__message-footer"><?php echo wp_kses( $args['message_footer'], $allowed_html ); ?></div>
 				<?php endif; ?>
 			</div>
 
 			<?php if ( ! empty( $args['info_text'] ) ) : ?>
-				<div class="packing-list__info-text"><?php echo esc_html( $args['info_text'] ); ?></div>
+				<div class="packing-list__info-text"><?php echo wp_kses( $args['info_text'], $allowed_html ); ?></div>
 			<?php endif; ?>
 		</div>
 		<?php
