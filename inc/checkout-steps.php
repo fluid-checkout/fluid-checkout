@@ -3050,12 +3050,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Get list of checkout field keys that are not supported by `WC_Customer` object, and therefore needs to be saved to the session.
+	 * 
+	 * @param   array  $parsed_posted_data  The parsed posted data.
 	 *
-	 * @return  array  List of checkout field keys.
+	 * @return  array                       List of checkout field keys.
 	 */
-	public function get_customer_session_field_keys() {
+	public function get_customer_session_field_keys( $parsed_posted_data = null ) {
 		// Get parsed posted data
-		$parsed_posted_data = $this->get_parsed_posted_data();
+		if ( null === $parsed_posted_data ) {
+			$parsed_posted_data = $this->get_parsed_posted_data();
+		}
 
 		// Get list of field keys posted
 		$session_field_keys = array_keys( $parsed_posted_data );
@@ -3165,7 +3169,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		WC()->customer->save();
 
 		// Get list of fields to save to the session
-		$session_field_keys = $this->get_customer_session_field_keys();
+		$session_field_keys = $this->get_customer_session_field_keys( $posted_data );
 
 		// Save customer data to the session
 		foreach ( $session_field_keys as $field_key ) {

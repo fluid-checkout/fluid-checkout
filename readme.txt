@@ -291,6 +291,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Maybe get shipping country value from session when appropriate.
 * Fixed: Allow HTML elements for gift message text, message footer and information text on Packing Slip documents.
 * Fixed: Display gift message section on Packing Slip documents even when option to display gift message as part of the totals table is enabled.
+* Fixed: Use filtered parsed posted data when getting field keys to save to customer session.
 * Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
 
 = 1.4.2 - 2022-01-04 =
