@@ -289,7 +289,8 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Shipping and billing phone numbers being displayed twice on order confirmation page.
 * Fixed: Missing borders between some steps and substeps.
 * Fixed: Maybe get shipping country value from session when appropriate.
-* Fixed: Allow HTML elements for gift message text, message footer and information text in Packing Slip documents.
+* Fixed: Allow HTML elements for gift message text, message footer and information text on Packing Slip documents.
+* Fixed: Display gift message section on Packing Slip documents even when option to display gift message as part of the totals table is enabled.
 * Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
 
 = 1.4.2 - 2022-01-04 =

@@ -20,7 +20,7 @@ class FluidCheckout_PackingSlips extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Admin Settings
-		add_filter( 'fc_checkout_general_settings', array( $this, 'add_packing_list_info_message_setting' ), 10 );
+		add_filter( 'fc_checkout_general_settings', array( $this, 'add_setting' ), 10 );
 	}
 
 
@@ -30,7 +30,7 @@ class FluidCheckout_PackingSlips extends FluidCheckout {
 	 *
 	 * @param   array  $settings  Admin settings array.
 	 */
-	public function add_packing_list_info_message_setting( $settings ) {
+	public function add_setting( $settings ) {
 		// Define positions for new settings
 		$index = count( $settings ) - 1;
 

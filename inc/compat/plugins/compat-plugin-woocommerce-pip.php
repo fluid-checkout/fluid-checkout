@@ -28,9 +28,13 @@ class FluidCheckout_WooCommercePIP extends FluidCheckout {
 	 */
 	public function late_hooks() {
 		// Packing Slips customizations
-		if ( class_exists( 'FluidCheckout_PackingSlips' ) && class_exists( 'FluidCheckout_GiftOptions' ) && ! FluidCheckout_GiftOptions::instance()->is_gift_message_in_order_details() ) {
+		if ( class_exists( 'FluidCheckout_PackingSlips' ) && class_exists( 'FluidCheckout_GiftOptions' ) ) {
+			// Packing slips
 			add_action( 'wc_pip_before_body', array( $this, 'output_message_box_for_packing_slips' ), 10, 4 );
 			add_action( 'wc_pip_styles', array( $this, 'add_message_box_styles_for_packing_slips' ), 10 );
+
+			// Invoices
+			add_filter( 'wc_pip_document_table_footer', array( $this, 'remove_order_total_items_invoice' ), 10, 3 );
 		}
 	}
 
@@ -52,6 +56,7 @@ class FluidCheckout_WooCommercePIP extends FluidCheckout {
 	}
 
 
+
 	/**
 	 * Output gift message for packing list.
 	 */
@@ -68,6 +73,21 @@ class FluidCheckout_WooCommercePIP extends FluidCheckout {
 				line-height: 26px;
 			}
 		';
+	}
+
+
+
+	/**
+	 * Remove order total items from invoice documents.
+	 */
+	public function remove_order_total_items_invoice( $rows, $document_type, $order_id ) {
+		// Bail if not invoice document
+		if ( 'invoice' !== $document_type ) { return $rows; }
+
+		unset( $rows[ 'gift_message' ] );
+		unset( $rows[ 'gift_message_from' ] );
+
+		return $rows;
 	}
 
 }
