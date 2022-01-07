@@ -293,6 +293,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Display gift message section on Packing Slip documents even when option to display gift message as part of the totals table is enabled.
 * Fixed: Use filtered parsed posted data when getting field keys to save to customer session.
 * Fixed: Typo in the filter name, renaming `fc_adress_field_keys_skip_list` to `fc_address_field_keys_skip_list`.
+* Fixed: Checks for shipping and billing address when determining if the steps are complete to use the correct country values when addresses were changed by hooks.
 * Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
 
 = 1.4.2 - 2022-01-04 =

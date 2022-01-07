@@ -1941,9 +1941,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Check required data for shipping address
 		if ( WC()->cart->needs_shipping_address() ) {
-			$fields = $checkout->get_checkout_fields( 'shipping' );
-			foreach ( $fields as $field_key => $field ) {
-				if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
+			// Get shipping country
+			$shipping_country = WC()->customer->get_shipping_country();
+
+			// Try get value from session
+			$shipping_country_session = $this->get_checkout_field_value_from_session( 'shipping_country' );
+			if ( isset( $shipping_country_session ) && ! empty( $shipping_country_session ) ) {
+				$shipping_country = $shipping_country_session;
+			}
+
+			// Get address fields for country
+			$address_fields = WC()->countries->get_address_fields( $shipping_country, 'shipping_' );
+			
+			// Check each required country field
+			foreach ( $address_fields as $field_key => $field ) {
+				if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( $checkout->get_value( $field_key ) ) ) {
 					$is_step_complete = false;
 					break;
 				}
@@ -2265,16 +2277,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$checkout = WC()->checkout();
 		$is_step_complete = true;
 
+		// Get billing country
+		$billing_country = WC()->customer->get_billing_country();
+
+		// Try get value from session
+		$billing_country_session = $this->get_checkout_field_value_from_session( 'billing_country' );
+		if ( isset( $billing_country_session ) && ! empty( $billing_country_session ) ) {
+			$billing_country = $billing_country_session;
+		}
+
+		// Get address fields for country
+		$address_fields = WC()->countries->get_address_fields( $billing_country, 'billing_' );
+
 		// Get billing fields moved to contact step
 		$contact_display_field_keys = $this->get_contact_step_display_field_ids();
-
-		// Check required data for billing company
-		$fields = $checkout->get_checkout_fields( 'billing' );
-		foreach ( $fields as $field_key => $field ) {
+		
+		// Check each required country field
+		foreach ( $address_fields as $field_key => $field ) {
 			// Skip billing fields moved to contact step
 			if ( in_array( $field_key, $contact_display_field_keys ) ) { continue; }
 
-			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
+			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( $checkout->get_value( $field_key ) ) ) {
 				$is_step_complete = false;
 				break;
 			}
@@ -3236,7 +3259,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		
 		// Maybe return field value from session
 		$field_session_value = $this->get_checkout_field_value_from_session( $input );
-		if ( $field_session_value !== null ) {
+		if ( null !== $field_session_value ) {
 			return $field_session_value;
 		}
 
