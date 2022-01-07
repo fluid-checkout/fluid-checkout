@@ -292,6 +292,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Allow HTML elements for gift message text, message footer and information text on Packing Slip documents.
 * Fixed: Display gift message section on Packing Slip documents even when option to display gift message as part of the totals table is enabled.
 * Fixed: Use filtered parsed posted data when getting field keys to save to customer session.
+* Fixed: Typo in the filter name, renaming `fc_adress_field_keys_skip_list` to `fc_address_field_keys_skip_list`.
 * Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
 
 = 1.4.2 - 2022-01-04 =

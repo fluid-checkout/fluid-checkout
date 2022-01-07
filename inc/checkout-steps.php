@@ -3204,7 +3204,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$field_keys = array_keys( $fields );
 
 		// Skip some fields
-		$skip_field_keys = apply_filters( 'fc_adress_field_keys_skip_list', array( $field_key_prefix.'email' ) );
+		$skip_field_keys = apply_filters( 'fc_address_field_keys_skip_list', array( $field_key_prefix.'email' ) );
 		$field_keys = array_diff( $field_keys, $skip_field_keys );
 
 		// Maybe remove billing only fields
