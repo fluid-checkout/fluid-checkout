@@ -3177,11 +3177,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Set property value to the customer object
 			if ( array_key_exists( $field_key, $posted_data ) ) {
 				// Set session value
-				WC()->session->set( self::SESSION_PREFIX . $field_key, $posted_data[ $field_key ] );
+				$this->set_checkout_field_value_to_session( $field_key, $posted_data[ $field_key ] );
 			}
 			else {
 				// Set session value as empty
-				WC()->session->set( self::SESSION_PREFIX . $field_key, null );
+				$this->set_checkout_field_value_to_session( $field_key, null );
 			}
 
 		}
@@ -3247,6 +3247,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Get values for a checkout field from the session.
 	 *
 	 * @param   string  $field_key  Checkout field key name (ie. order_comments ).
+	 * 
 	 * @return  mixed               The value of the field from the saved session.
 	 */
 	public function get_checkout_field_value_from_session( $field_key ) {
@@ -3254,6 +3255,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! function_exists( 'wC' ) || ! isset( WC()->session ) ) { return; }
 
 		return WC()->session->get( self::SESSION_PREFIX . $field_key );
+	}
+
+	/**
+	 * Set values for a checkout field to the session.
+	 *
+	 * @param   string  $field_key  Checkout field key name (ie. order_comments ).
+	 * @param   mixed   $value      Value of the field.
+	 * 
+	 * @return  mixed               The value of the field from the saved session.
+	 */
+	public function set_checkout_field_value_to_session( $field_key, $value ) {
+		// Bail if WC or session not available yet
+		if ( ! function_exists( 'wC' ) || ! isset( WC()->session ) ) { return; }
+
+		return WC()->session->set( self::SESSION_PREFIX . $field_key, $value );
 	}
 
 	/**
