@@ -61,3 +61,8 @@ $collapsible_initial_state = WC()->cart->needs_shipping_address() && FluidChecko
 
 	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
 </div>
+
+<?php
+	// CHANGE: Added for compatibility with plugins that use this action hook
+	do_action( 'woocommerce_checkout_after_customer_details' );
+?>
