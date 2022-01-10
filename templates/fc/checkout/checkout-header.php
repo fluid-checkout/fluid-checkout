@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.4.2
+ * @version 1.4.3
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -66,13 +66,13 @@ defined( 'ABSPATH' ) || exit;
 			?>
 		</div>
 
+		<?php do_action( 'fc_checkout_header_widgets' ); ?>
+
 		<?php if ( has_action( 'fc_checkout_header_cart_link' ) ) : ?>
 		<div class="fc-checkout__cart-link-wrapper">
 			<?php do_action( 'fc_checkout_header_cart_link' ); ?>
 		</div>
 		<?php endif; ?>
-
-		<?php do_action( 'fc_checkout_header_widgets' ); ?>
 
 	</div>
 </header>
