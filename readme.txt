@@ -276,6 +276,11 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: New actions `fc_checkout_header_widgets_inside_before` and `fc_checkout_header_widgets_inside_after` to add content inside the checkout header widget area via PHP code.
+* Improved: Moved checkout header widgets to before the cart icon link in the template file `fc/checkout/checkout-header.php`.
+
 = 1.4.2 - 2022-01-04 =
 
 * Bump minimum required version to PHP 7.4.

@@ -101,9 +101,11 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 * Output widget area on the checkout header.
 	 */
 	public function output_widget_area_checkout_header() {
-		if ( is_active_sidebar( 'fc_checkout_header' ) ) :
+		if ( is_active_sidebar( 'fc_checkout_header' ) || has_action( 'fc_checkout_header_widgets_inside_before' ) || has_action( 'fc_checkout_header_widgets_inside_after' ) ) :
 			echo '<div class="fc-checkout__header-widgets">';
+			do_action( 'fc_checkout_header_widgets_inside_before' );
 			dynamic_sidebar( 'fc_checkout_header' );
+			do_action( 'fc_checkout_header_widgets_inside_after' );
 			echo '</div>';
 		endif;
 	}
