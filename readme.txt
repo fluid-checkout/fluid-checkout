@@ -294,6 +294,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Use filtered parsed posted data when getting field keys to save to customer session.
 * Fixed: Typo in the filter name, renaming `fc_adress_field_keys_skip_list` to `fc_address_field_keys_skip_list`.
 * Fixed: Checks for shipping and billing address when determining if the steps are complete to use the correct country values when addresses were changed by hooks.
+* Fixed: Prevents fatal error on admin pages by checking for available resources before calling them.
 * Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
 
 = Unreleased =

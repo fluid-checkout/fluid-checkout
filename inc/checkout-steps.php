@@ -2337,6 +2337,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  bool                   `true` when the country is allowed for shipping addresses, `false` otherwise.
 	 */
 	public function is_country_allowed_for_shipping( $country_code ) {
+		// Bail if countries object not available
+		if ( ! function_exists( 'WC' ) || null === WC()->countries ) { return false; }
+
 		$allowed_countries = WC()->countries->get_shipping_countries();
 		return in_array( $country_code, array_keys( $allowed_countries ) );
 	}
@@ -2349,6 +2352,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  bool                   `true` when the country is allowed for billing addresses, `false` otherwise.
 	 */
 	public function is_country_allowed_for_billing( $country_code ) {
+		// Bail if countries object not available
+		if ( ! function_exists( 'WC' ) || null === WC()->countries ) { return false; }
+
 		$allowed_countries = WC()->countries->get_allowed_countries();
 		return in_array( $country_code, array_keys( $allowed_countries ) );
 	}
@@ -2359,6 +2365,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  mixed  `true` if the selected shipping country is also available for billing country, `false` if the shipping country is not allowed for billing, and `null` if the shipping country is not set.
 	 */
 	public function is_shipping_country_allowed_for_billing() {
+		// Bail if customer object not available
+		if ( ! function_exists( 'WC' ) || null === WC()->customer ) { return null; }
+
 		// Get shipping value from customer data
 		$customer = WC()->customer;
 		$shipping_country = $customer->get_shipping_country();
@@ -2393,6 +2402,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Check whether the shipping address is available to be used for the billing address.
 	 */
 	public function is_shipping_address_available_for_billing() {
+		// Bail if cart is not available
+		if ( ! function_exists( 'WC' ) || null === WC()->cart ) { return false; }
+
 		return WC()->cart->needs_shipping_address() && true === $this->is_shipping_country_allowed_for_billing();
 	}
 
