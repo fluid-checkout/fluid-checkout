@@ -550,10 +550,10 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 * @param   string    $css    CSS code for the email styles.
 	 * @param   WC_Email  $email  WooCommerce email object.
 	 */
-	public function add_email_styles( $css, $email ) {
-		// Bail if email does not have gift message
+	public function add_email_styles( $css, $email = null ) {
+		// Bail if email type does not have gift message, skip email type check and output the styles if the `$email` variable is null
 		$allowed_email_ids = array( 'new_order', 'customer_invoice', 'failed_order', 'cancelled_order', 'customer_completed_order', 'customer_note', 'customer_on_hold_order', 'customer_processing_order', 'customer_refunded_order' );
-		if ( ! in_array( $email->id, $allowed_email_ids ) ) { return $css; }
+		if ( null !== $email && ! in_array( $email->id, $allowed_email_ids ) ) { return $css; }
 
 		$css_file_path = self::$directory_path . 'css/gift-message-email-styles'. self::$asset_version . '.css';
 
