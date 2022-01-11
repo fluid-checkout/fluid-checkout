@@ -521,7 +521,6 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		if ( ! array_key_exists( '_fc_gift_message', $gift_options ) || empty( $gift_options['_fc_gift_message'] ) ) { return; }
 
 		if ( $plain_text ) {
-
 			// Output gift options section template
 			wc_get_template(
 				'fc/order/order-details-gift-options-email-plain-text.php',
