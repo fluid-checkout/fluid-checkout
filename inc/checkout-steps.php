@@ -1473,8 +1473,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		wc_get_template(
 			'fc/checkout/form-contact.php',
 			array(
-				'checkout'			=> WC()->checkout(),
-				'display_fields'	=> $this->get_contact_step_display_field_ids(),
+				'checkout'             => WC()->checkout(),
+				'contact_field_ids'    => $this->get_contact_step_display_field_ids(),
 			)
 		);
 	}
@@ -1485,9 +1485,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Get contact substep in text format for when the step is completed.
 	 */
 	public function get_substep_text_contact() {
-		$customer = WC()->customer;
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--contact">';
-		$html .= '<div class="fc-step__substep-text-line">' . esc_html( $customer->get_billing_email() ) . '</div>';
+
+		// Get contact field ids
+		$contact_field_ids = $this->get_contact_step_display_field_ids();
+		
+		// Add a text line for each field
+		foreach( $contact_field_ids as $field_key ) {
+			$html .= '<div class="fc-step__substep-text-line">' . esc_html( WC()->checkout->get_value( $field_key ) ) . '</div>';
+		}
 
 		// Maybe add notice for account creation
 		if ( get_option( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) === 'true' ) {
@@ -1566,9 +1572,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Return list of checkout fields for contact step.
 	 */
 	public function get_contact_step_display_field_ids() {
-		return apply_filters( 'fc_checkout_contact_step_field_ids', array(
+		return array_unique( apply_filters( 'fc_checkout_contact_step_field_ids', array(
 			'billing_email',
-		) );
+		) ) );
 	}
 
 
