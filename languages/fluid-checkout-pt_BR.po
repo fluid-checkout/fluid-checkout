@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2022-01-04 08:54+0000\n"
+"PO-Revision-Date: 2022-01-12 17:54+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -366,6 +366,10 @@ msgstr "Fechar Aviso"
 msgid "Display gift message and other gift options at the checkout page"
 msgstr "Exibir opções de presente na página de checkout"
 
+#: inc/admin/admin-settings-general.php:123
+msgid "Display the \"Add\" link buttons in lowercase"
+msgstr "Exibir os botões de link \"Adicionar\" em letras minúsculas"
+
 #: inc/admin/admin-settings-general.php:191
 msgid "Display the coupon codes section title"
 msgstr "Exibir título da seção de código de cupom"
@@ -641,12 +645,6 @@ msgstr "Ou continue abaixo"
 #: inc/admin/admin-settings-general.php:71
 msgid "Logo image"
 msgstr "Imagem de logo"
-
-#: inc/admin/admin-settings-general.php:123
-msgid "Make \"Add\" link buttons lowercase <code>lowercase</code>"
-msgstr ""
-"Mostre o texto dos botões \"Adicionar &lt;campo&gt;\" em letras <code>"
-"minúsculas</code>"
 
 #: inc/admin/admin-settings-advanced.php:95
 msgid "Make the checkout progress bar stay visible while scrolling"
