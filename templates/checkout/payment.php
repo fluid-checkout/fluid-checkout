@@ -12,13 +12,13 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 3.5.3
- * @fc-version 1.2.0
+ * @version 6.1.0
+ * @fc-version 1.4.3
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( ! is_ajax() ) {
+if ( ! wp_doing_ajax() ) {
 	do_action( 'woocommerce_review_order_before_payment' );
 }
 ?>
@@ -55,6 +55,6 @@ if ( ! is_ajax() ) {
 
 
 <?php
-if ( ! is_ajax() ) {
+if ( ! wp_doing_ajax() ) {
 	do_action( 'woocommerce_review_order_after_payment' );
 }

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Fluid Checkout for WooCommerce - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-01-04 09:01+0000\n"
+"PO-Revision-Date: 2022-01-12 17:55+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -341,6 +341,10 @@ msgstr ""
 "Zeige Geschenknachricht und andere geschenkbezogene Optionen auf der "
 "Checkout Seite"
 
+#: inc/admin/admin-settings-general.php:123
+msgid "Display the \"Add\" link buttons in lowercase"
+msgstr ""
+
 #: inc/admin/admin-settings-general.php:191
 msgid "Display the coupon codes section title"
 msgstr "Zeige den Gutscheincode Sektion Titel"
@@ -606,12 +610,6 @@ msgstr "Oder unten mit Bestellvorgang fortfahren"
 #: inc/admin/admin-settings-general.php:71
 msgid "Logo image"
 msgstr "Logo-Bild"
-
-#: inc/admin/admin-settings-general.php:123
-msgid "Make \"Add\" link buttons lowercase <code>lowercase</code>"
-msgstr ""
-"Die Schaltflächen für den Link \"Hinzufügen\" klein schreiben <code>"
-"lowercase</code>"
 
 #: inc/admin/admin-settings-advanced.php:95
 msgid "Make the checkout progress bar stay visible while scrolling"
