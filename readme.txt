@@ -281,6 +281,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: New actions `fc_checkout_header_widgets_inside_before` and `fc_checkout_header_widgets_inside_after` to add content inside the checkout header widget area via PHP code.
 * Improved: Moved checkout header widgets to before the cart icon link in the template file `fc/checkout/checkout-header.php`.
 * Improved: Compatibility with plugin WooCommerce Stripe Payment Gateway - by WooCommerce.
+* Fixed: Use of deprecated function `is_ajax` on payment.php template file since WooCommerce 6.1.0.
 
 = 1.4.2 - 2022-01-04 =
 
