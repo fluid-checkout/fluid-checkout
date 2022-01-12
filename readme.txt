@@ -183,9 +183,9 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 In addition to a number of default settings (including a custom header/logo), multi-step or single step layout types and easily enabling/disabling features from settings page, the plugin contains HTML/PHP based templates and provides many filters and action hooks that allow for customization.
 
-To customize template files, copy the templates to your theme folder, add a hook to the filter `fc_override_template_with_theme_file` to allow the plugin's version of the template to be overriden by the your customized template file.
+To customize template files, copy the templates to your theme folder, add a hook to the filter `fc_override_template_with_theme_file` to allow the plugin's version of the template to be overriden by the your customized template file. For more information and examples, see our guide [How to customize template files](https://support.fluidcheckout.com/portal/en/kb/articles/how-to-customize-template-files).
 
-To customize styles, when making small adjustments just add your custom CSS through your theme, the Customizer Custom CSS field or using a plugin.
+To customize styles when making small adjustments, just add your custom CSS through your theme, the Customizer Custom CSS field or using a plugin.
 
 If you need more control, you can remove the plugin styles and add your own complete custom CSS files. If you are familiar with SASS and other code building tools, the original SASS files are included in the plugin and can be modified and rebuilt, most styles make use of SASS variables that can make the process a lot easier.
 
