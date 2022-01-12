@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -183,9 +183,9 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 In addition to a number of default settings (including a custom header/logo), multi-step or single step layout types and easily enabling/disabling features from settings page, the plugin contains HTML/PHP based templates and provides many filters and action hooks that allow for customization.
 
-To customize template files, copy the templates to your theme folder, add a hook to the filter `fc_override_template_with_theme_file` to allow the plugin's version of the template to be overriden by the your customized template file.
+To customize template files, copy the templates to your theme folder, add a hook to the filter `fc_override_template_with_theme_file` to allow the plugin's version of the template to be overriden by the your customized template file. For more information and examples, see our guide [How to customize template files](https://support.fluidcheckout.com/portal/en/kb/articles/how-to-customize-template-files).
 
-To customize styles, when making small adjustments just add your custom CSS through your theme, the Customizer Custom CSS field or using a plugin.
+To customize styles when making small adjustments, just add your custom CSS through your theme, the Customizer Custom CSS field or using a plugin.
 
 If you need more control, you can remove the plugin styles and add your own complete custom CSS files. If you are familiar with SASS and other code building tools, the original SASS files are included in the plugin and can be modified and rebuilt, most styles make use of SASS variables that can make the process a lot easier.
 
@@ -301,10 +301,13 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Validation of fields in the contact substep.
 * Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
 
-= Unreleased =
+= 1.4.3 - 2022-01-12 =
 
 * Added: New actions `fc_checkout_header_widgets_inside_before` and `fc_checkout_header_widgets_inside_after` to add content inside the checkout header widget area via PHP code.
 * Improved: Moved checkout header widgets to before the cart icon link in the template file `fc/checkout/checkout-header.php`.
+* Improved: Compatibility with plugin WooCommerce Stripe Payment Gateway - by WooCommerce.
+* Fixed: Use of deprecated function `is_ajax` on payment.php template file since WooCommerce 6.1.0.
+* Fixed: Fatal error while adding gift message styles to email notifications if only one parameter is provider, while two parameters are expected.
 
 = 1.4.2 - 2022-01-04 =
 
@@ -330,6 +333,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Compatibility with theme Neve.
 * Improved: Compatibility with theme Astra.
 * Improved: Compatibility with various themes and possibly plugins that add a payment section after the order review section.
+* Improved: Compatibility of email styles from the Gift Options feature with other plugins.
 * Fixed: Display coupon code messages below the substep title, instead of above.
 * Fixed: Re-focus on email field after applying email typo suggestion.
 * Fixed: Also consider a link button as focusable when setting focus while opening a section.

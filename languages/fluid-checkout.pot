@@ -4,9 +4,13 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 <<<<<<< HEAD
+<<<<<<< HEAD
 "POT-Creation-Date: 2021-12-23 09:58+0000\n"
 =======
 "POT-Creation-Date: 2022-01-04 08:54+0000\n"
+>>>>>>> main
+=======
+"POT-Creation-Date: 2022-01-12 17:54+0000\n"
 >>>>>>> main
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -377,6 +381,10 @@ msgstr ""
 msgid "Display gift message and other gift options at the checkout page"
 msgstr ""
 
+#: inc/admin/admin-settings-general.php:123
+msgid "Display the \"Add\" link buttons in lowercase"
+msgstr ""
+
 #: inc/admin/admin-settings-general.php:191
 msgid "Display the coupon codes section title"
 msgstr ""
@@ -620,10 +628,6 @@ msgstr ""
 
 #: inc/admin/admin-settings-general.php:71
 msgid "Logo image"
-msgstr ""
-
-#: inc/admin/admin-settings-general.php:123
-msgid "Make \"Add\" link buttons lowercase <code>lowercase</code>"
 msgstr ""
 
 #: inc/admin/admin-settings-advanced.php:95
