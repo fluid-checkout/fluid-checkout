@@ -298,6 +298,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Checks for shipping and billing address when determining if the steps are complete to use the correct country values when addresses were changed by hooks.
 * Fixed: Prevents fatal error on admin pages by checking for available resources before calling them.
 * Fixed: Added the missing hook `woocommerce_checkout_after_customer_details` back to the checkout page after the billing form.
+* Fixed: Validation of fields in the contact substep.
 * Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
 
 = Unreleased =
