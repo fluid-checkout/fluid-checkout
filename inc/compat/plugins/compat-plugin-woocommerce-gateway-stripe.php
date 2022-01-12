@@ -25,9 +25,7 @@ class FluidCheckout_PaymentMethodStripe extends FluidCheckout {
 		// Styles
 		add_filter( 'wc_stripe_elements_styling', array( $this, 'change_stripe_fields_styles' ), 10 );
 	}
-	
-	
-	
+
 	/**
 	 * Add or remove late hooks.
 	 */
@@ -39,10 +37,41 @@ class FluidCheckout_PaymentMethodStripe extends FluidCheckout {
 
 			// Add actions
 			if ( 'yes' === apply_filters( 'fc_woocommerce_gateway_stripe_show_buttons', 'yes' ) && is_array( WC_Stripe_Payment_Request::instance()->stripe_settings ) && array_key_exists( 'payment_request', WC_Stripe_Payment_Request::instance()->stripe_settings ) && 'yes' === WC_Stripe_Payment_Request::instance()->stripe_settings[ 'payment_request' ] && WC_Stripe_Payment_Request::instance()->should_show_payment_request_button() ) {
-				add_filter( 'wc_stripe_show_payment_request_on_checkout', '__return_true', 10 );
-				add_action( 'fc_checkout_express_checkout', array( WC_Stripe_Payment_Request::instance(), 'display_payment_request_button_html' ), 10 );
+
+				// Get plugin version
+				$stripe_plugin_version = $this->get_plugin_version();
+				
+				// Versions prior to 5.5.0
+				if ( version_compare( $stripe_plugin_version, '5.5.0', '<' ) ) {
+					add_filter( 'wc_stripe_show_payment_request_on_checkout', '__return_true', 10 );
+					add_action( 'fc_checkout_express_checkout', array( WC_Stripe_Payment_Request::instance(), 'display_payment_request_button_html' ), 10 );
+				}
+				// Versions 5.5.0+
+				else if ( version_compare( $stripe_plugin_version, '5.5.0', '>=' ) ) {
+					// Get Stripe button position setting
+					$button_locations = WC_Stripe_Payment_Request::instance()->get_button_locations();
+
+					// Check if button should be displayed on the checkout page
+					if ( is_array( $button_locations ) && in_array( 'checkout', $button_locations ) ) {
+						add_action( 'fc_checkout_express_checkout', array( WC_Stripe_Payment_Request::instance(), 'display_payment_request_button_html' ), 10 );
+					}
+				}
 			}
 		}
+	}
+
+
+
+	/**
+	 * Get the plugin version number.
+	 */
+	public function get_plugin_version() {
+		$stripe_plugin_file = trailingslashit( WP_PLUGIN_DIR ) . 'woocommerce-gateway-stripe/woocommerce-gateway-stripe.php';
+		if ( file_exists( $stripe_plugin_file ) ) {
+			return get_file_data( $stripe_plugin_file , ['Version' => 'Version'], 'plugin')['Version'];
+		}
+
+		return null;
 	}
 
 
