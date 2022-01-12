@@ -282,6 +282,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Moved checkout header widgets to before the cart icon link in the template file `fc/checkout/checkout-header.php`.
 * Improved: Compatibility with plugin WooCommerce Stripe Payment Gateway - by WooCommerce.
 * Fixed: Use of deprecated function `is_ajax` on payment.php template file since WooCommerce 6.1.0.
+* Fixed: Fatal error while adding gift message styles to email notifications if only one parameter is provider, while two parameters are expected.
 
 = 1.4.2 - 2022-01-04 =
 
