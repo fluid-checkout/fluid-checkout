@@ -37,7 +37,6 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		if ( 'contact' === get_option( 'fc_shipping_phone_field_position', 'shipping_address' ) ) {
 			// Add shipping phone to contact fields
 			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_shipping_phone_field_to_contact_fields' ), 10 );
-			add_filter( 'fc_substep_contact_text', array( $this, 'add_shipping_phone_to_substep_text_format' ), 10 );
 
 			// Remove phone field from shipping address data
 			add_filter( 'fc_shipping_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
@@ -179,24 +178,6 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	}
 
 
-
-	/**
-	 * Add shipping phone field to the shipping address text.
-	 *
-	 * @param   array  $html  HTML for the substep text.
-	 */
-	public function add_shipping_phone_to_substep_text_format( $html ) {
-		$shipping_phone = $this->checkout_steps()->get_checkout_field_value_from_session( 'shipping_phone' );
-
-		// Insert the phone field in the text
-		if ( $shipping_phone != null && ! empty( $shipping_phone ) ) {
-			$shipping_phone_text = '<div class="fc-step__substep-text-line">' . $shipping_phone . '</div>';
-			$last_div_position = strrpos( $html, '</div>' );
-			$html = substr_replace( $html, $shipping_phone_text, $last_div_position, 0 );
-		}
-
-		return $html;
-	}
 
 	/**
 	 * Remove phone from address data.

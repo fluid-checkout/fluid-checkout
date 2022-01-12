@@ -1534,18 +1534,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
 	 */
 	public function is_step_complete_contact() {
-		$checkout = WC()->checkout();
 		$is_step_complete = true;
 
-		// Check required data
-		$fields = $checkout->get_checkout_fields( 'billing' );
-		$contact_display_field_keys = $this->get_contact_step_display_field_ids();
-
-		foreach ( $contact_display_field_keys as $field_key ) {
-			$field = array_key_exists( $field_key, $fields ) ? $fields[ $field_key ] : array();
-			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && ! $checkout->get_value( $field_key ) ) {
-				$is_step_complete = false;
-				break;
+		// Get contact fields
+		$contact_field_ids = $this->get_contact_step_display_field_ids();
+		
+		// Get all checkout fields
+		$field_groups = WC()->checkout()->get_checkout_fields();
+			
+		// Iterate contact field ids
+		foreach( $contact_field_ids as $field_key ) {
+			foreach ( $field_groups as $group_key => $fields ) {
+				// Check field exists
+				if ( array_key_exists( $field_key, $fields ) ) {
+					// Check required fields
+					if ( array_key_exists( 'required', $fields[ $field_key ] ) && $fields[ $field_key ][ 'required' ] === true && ! WC()->checkout()->get_value( $field_key ) ) {
+						$is_step_complete = false;
+						break 2;
+					}
+				}
 			}
 		}
 
