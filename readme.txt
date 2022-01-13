@@ -282,6 +282,10 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Compatibility with plugin WooCommerce Stripe Payment Gateway - by WooCommerce, will now show Express Checkout section if the Stripe payment gateway is not available.
+
 = 1.4.3 - 2022-01-12 =
 
 * Added: New actions `fc_checkout_header_widgets_inside_before` and `fc_checkout_header_widgets_inside_after` to add content inside the checkout header widget area via PHP code.
