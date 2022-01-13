@@ -22,6 +22,9 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Plugin settings link
 		add_filter( 'plugin_action_links_' . self::$plugin_basename, array( $this, 'add_plugin_settings_link' ), 10 );
 		
+		// Setting types
+		add_action( 'init', array( $this, 'load_setting_types' ), 10 );
+
 		// WooCommerce Settings
 		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_settings_pages' ), 50 );
 
@@ -43,6 +46,15 @@ class FluidCheckout_Admin extends FluidCheckout {
 	}
 
 
+
+	/**
+	 * Add new WooCommerce settings pages/tabs.
+	 */
+	public function load_setting_types() {
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-paragraph.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-layout-selector.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-image-uploader.php';
+	}
 
 	/**
 	 * Add new WooCommerce settings pages/tabs.

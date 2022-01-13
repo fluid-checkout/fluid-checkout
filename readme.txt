@@ -288,6 +288,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Compatibility with plugin Checkout Field Editor for WooCommerce. Add option to make changes to checkout fields affect account edit address screen.
 * Improved: Display contact substep fields based on the order of field keys in the contact fields list.
 * Improved: Dynamically display contact substep field values on the substep review text when the step is completed.
+* Improved: Refactor custom admin setting types moving each type to their own files.
 * Fixed: Shipping and billing phone numbers being displayed twice on order confirmation page.
 * Fixed: Missing borders between some steps and substeps.
 * Fixed: Maybe get shipping country value from session when appropriate.
