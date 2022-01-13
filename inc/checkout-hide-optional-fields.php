@@ -64,7 +64,7 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 	 */
 	public function add_optional_form_field_link_button( $field, $key, $args, $value ) {
 		// Bail if field is required
-		if ( array_key_exists( 'required', $args ) && $args['required'] == true ) { return $field; }
+		if ( array_key_exists( 'required', $args ) && $args[ 'required' ] == true ) { return $field; }
 
 		// Bail if field is not empty
 		if ( ! empty( $value ) ) { return $field; }
@@ -73,10 +73,18 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		// Needed for compatibility with plugins that call `woocommerce_form_field` multiple times for the same field
 		if ( false !== strpos( $field, 'id="fc-expansible-form-section__toggle--' . $key ) ) { return $field; }
 
-		// Bail if optional field by its type
-		if ( in_array( $args['type'], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'checkbox', 'radio', 'hidden' ) ) ) ) { return $field; }
+		// Maybe skip optional field by type
+		if ( in_array( $args[ 'type' ], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'checkbox', 'radio', 'hidden' ) ) ) ) { return $field; }
 
-		// Check if should skip current field
+		// Maybe skip optional field by class
+		$skip_field_container_classes = apply_filters( 'fc_hide_optional_fields_skip_by_class', array( 'fc-skip-hide-optional-field' ) );
+		foreach ( $skip_field_container_classes as $skip_class ) {
+			foreach ( $args[ 'class' ] as $field_class ) {
+				if ( -1 < strpos( $field_class, $skip_class ) ) { return $field; }
+			}
+		}
+
+		// Maybe skip optional field by id
 		if ( in_array( $key, $this->get_hide_optional_fields_skip_list() ) ) { return $field; }
 
 		// Set attribute `data-autofocus` to focus on the optional field when expanding the section
