@@ -34,6 +34,9 @@ class FluidCheckout_Admin_SettingType_ImageUploader extends FluidCheckout {
 	 * @param   string  $hook  Current admin page hook.
 	 */
 	public function register_scripts_styles( $hook ) {
+		// Bail if not on WooCommerce Settings
+		if ( 'woocommerce_page_wc-settings' !== $hook ) { return; }
+		
 		wp_register_script( 'fc-admin-image-uploader', FluidCheckout::$directory_url . '/js/admin/admin-image-uploader'. FluidCheckout::$asset_version . '.js' , array( 'jquery', 'media-upload', 'media-views' ), null, true );
 	}
 
