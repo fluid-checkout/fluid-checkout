@@ -91,9 +91,9 @@ class WC_Settings_FluidCheckout_Integrations_Settings extends WC_Settings_Page {
 			// Maybe add notice when no integrations are available
 			if ( 0 == count( $settings_add ) ) {
 				$settings_add[] = array(
-					'type'  => 'fc_paragraph',
-					'desc'  => __( 'No integrations available at the moment on this section. The options related to each plugin will only appear here if that plugin is activated.', 'fluid-checkout' ),
-					'id'    => 'fc_no_integrations',
+					'type'        => 'fc_paragraph',
+					'desc'        => __( 'No integrations available at the moment on this section. The options related to each plugin will only appear here if that plugin is activated.', 'fluid-checkout' ),
+					'id'          => 'fc_no_integrations',
 				);
 			}
 
