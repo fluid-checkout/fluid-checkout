@@ -283,6 +283,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Function to get list of address field keys, necessary for Address Book (PRO) feature.
 * Added: New class `fc-no-validation-icon` for checkout field classes to prevent or remove the validation check icon.
 * Added: New class `fc-skip-hide-optional-field` to skip hiding optional checkout fields.
+* Added: New debug mode advanced option.
 * Improved: Color contrast set by Fluid Checkout to pass WCAG 2.1 AA.
 * Improved: Renamed the checkout settings subtab from "Checkout options" to "Checkout".
 * Improved: Added support and PRO promotion links on the plugins list.
