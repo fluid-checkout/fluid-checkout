@@ -285,6 +285,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 = Unreleased =
 
 * Improved: Compatibility with plugin WooCommerce Stripe Payment Gateway - by WooCommerce, will now show Express Checkout section if the Stripe payment gateway is not available.
+* Improved: Compatibility with theme Neve, login form is now displayed in the modal as expected.
 
 = 1.4.3 - 2022-01-12 =
 
