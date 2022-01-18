@@ -133,9 +133,9 @@ jQuery( function( $ ) {
 				}
 			}
 		},
-		// CHANGE: Update checkout when page gets hidden
+		// CHANGE: Update checkout when page gets hidden or visible again
 		maybe_update_checkout_visibility_change: function() {
-			if ( document.visibilityState == 'hidden' ) {
+			if ( 'hidden' == document.visibilityState || 'visible' == document.visibilityState ) {
 				$( document.body ).trigger( 'update_checkout' );
 			}
 		},
