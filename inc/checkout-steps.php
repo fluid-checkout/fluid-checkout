@@ -2158,7 +2158,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--billing-address">';
 
 		if ( $this->is_billing_same_as_shipping_checked() ) {
-			$html .= '<div class="fc-step__substep-text-line"><em>' . __( 'Same as shipping address', 'fluid-checkout' ) . '</em></div>';
+			$html .= '<div class="fc-step__substep-text-line"><em>' . $this->get_option_label_billing_same_as_shipping() . '</em></div>';
 		}
 		else {
 			$address_data = array(
@@ -2229,6 +2229,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 
+	/**
+	 * Get the label for billing same as shipping option.
+	 */
+	public function get_option_label_billing_same_as_shipping() {
+		return apply_filters( 'fc_billing_same_as_shipping_option_label', __( 'Same as shipping address', 'fluid-checkout' ) );
+	}
 
 	/**
 	 * Output field for billing address same as shipping.
@@ -2243,7 +2249,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		?>
 			<p id="billing_same_as_shipping_field" class="form-row form-row-wide">
 				<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>>
-				<label for="billing_same_as_shipping"><?php echo esc_html( __( 'Same as shipping address', 'fluid-checkout' ) ); ?></label>
+				<label for="billing_same_as_shipping"><?php echo esc_html( $this->get_option_label_billing_same_as_shipping() ); ?></label>
 			</p>
 		<?php
 		endif;

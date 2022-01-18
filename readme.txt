@@ -284,6 +284,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Added: New filter `fc_billing_same_as_shipping_option_label` to change the label for the option "billing address same as shipping".
 * Improved: Compatibility with plugin WooCommerce Stripe Payment Gateway - by WooCommerce, will now show Express Checkout section if the Stripe payment gateway is not available.
 * Improved: Compatibility with theme Neve, login form is now displayed in the modal as expected.
 * Improved: Also update the checkout form and order summary when the browser tab gets visible again, as when changing tabs.
