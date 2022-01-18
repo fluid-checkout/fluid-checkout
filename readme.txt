@@ -151,6 +151,12 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 * WooCommerce Stripe Gateway - by WooCommerce
 * WooCommerce Stripe Payment Gateway - by WooCommerce
 
+= Payment Gateways (with Express Checkout) =
+
+* WooCommerce Amazon Pay - by WooCommerce
+* WooCommerce Stripe Gateway - by WooCommerce
+* WooCommerce Stripe Payment Gateway - by WooCommerce
+
 = Free Plugins =
 
 * Checkout Field Editor for WooCommerce - by ThemeHigh
@@ -303,6 +309,13 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Added the missing hook `woocommerce_checkout_after_customer_details` back to the checkout page after the billing form.
 * Fixed: Validation of fields in the contact substep.
 * Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
+
+= Unreleased =
+
+* Added: New filter `fc_billing_same_as_shipping_option_label` to change the label for the option "billing address same as shipping".
+* Improved: Compatibility with plugin WooCommerce Stripe Payment Gateway - by WooCommerce, will now show Express Checkout section if the Stripe payment gateway is not available.
+* Improved: Compatibility with theme Neve, login form is now displayed in the modal as expected.
+* Improved: Also update the checkout form and order summary when the browser tab gets visible again, as when changing tabs.
 
 = 1.4.3 - 2022-01-12 =
 
