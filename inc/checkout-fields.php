@@ -33,6 +33,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		add_filter( 'woocommerce_billing_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
+
+		// Select2 field class
+		add_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_select2_field_class' ), 100, 3 );
 	}
 
 
@@ -280,6 +283,32 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		$field_group = 'order';
 		$fields[ $field_group ] = $this->change_checkout_field_args( $fields[ $field_group ] );
 		return $fields;
+	}
+
+
+
+	/**
+	 * Add extra class for `select2` fields.
+	 *
+	 * @param   array   $args   Checkout field args.
+	 * @param   string  $key    Field key.
+	 * @param   mixed   $value  Field value.
+	 *
+	 * @return  array           Modified checkout field args.
+	 */
+	public function add_checkout_field_select2_field_class( $args, $key, $value ) {
+		$select2_field_types = apply_filters( 'fc_select2_field_types', array( 'country', 'state', 'select' ) );
+
+		// Bail if field type
+		if ( ! array_key_exists( 'type', $args ) || ! in_array( $args[ 'type' ], $select2_field_types ) ) { return $args; }
+
+		// Initialize class argument if not existing yet
+		if ( ! array_key_exists( 'class', $args ) ) { $args['class'] = array(); }
+
+		// Add extra class
+		$args['class'] = array_merge( $args['class'], array( 'fc-select2-field' ) );
+
+		return $args;
 	}
 
 }
