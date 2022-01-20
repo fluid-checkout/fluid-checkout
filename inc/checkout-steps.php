@@ -3151,10 +3151,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function set_parsed_posted_data() {
 		// Get sanitized posted data as a string
-		$posted_data = isset( $_POST['post_data'] ) ? wp_unslash( $_POST['post_data'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$posted_data = isset( $_POST[ 'post_data' ] ) ? wp_unslash( $_POST[ 'post_data' ] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+		// Define new posted data
+		$new_posted_data = array();
+
+		// Set as posted data as empty array if `post_data` was not sent
+		if ( '' === $posted_data ) {
+			// Updated cached posted data
+			$this->posted_data = $new_posted_data;
+			return;
+		}
 
 		// Parsing posted data into an array
-		$new_posted_data = array();
 		$vars = explode( '&', $posted_data );
 		foreach ( $vars as $k => $value ) {
 			$v = explode( '=', urldecode( $value ) );
@@ -3191,9 +3200,44 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Clear persisted data for remaining checkout fields, usually optional empty `checkbox`, `radio` and `select` fields.
+	 *
+	 * @param  string  $posted_data  Post data for all checkout fields.
+	 */
+	public function reset_remaining_customer_persisted_data( $posted_data ) {
+		// Bail if not updating via AJAX call
+		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) { return $posted_data; }
+		
+		// Get parsed posted data
+		if ( empty( $posted_data ) ) {
+			$posted_data = $this->get_parsed_posted_data();
+		}
+
+		// Bail if no posted data is available
+		if ( empty( $posted_data ) ) { return $posted_data; }
+
+		// Get all checkout fields
+		$field_groups = WC()->checkout()->get_checkout_fields();
+		
+		// Iterate checkout fields
+		foreach ( $field_groups as $group_key => $fields ) {
+			foreach( $fields as $field_key => $field_args ) {
+				// Skip fields in posted data
+				if ( in_array( $field_key, array_keys( $posted_data ) ) ) { continue; }
+
+				// Set session value as empty
+				$this->set_checkout_field_value_to_session( $field_key, '' );
+				$posted_data[ $field_key ] = '';
+			}
+		}
+
+		return $posted_data;
+	}
+
+	/**
 	 * Update the customer's data to the WC_Customer object.
 	 *
-	 * @param string $posted_data Post data for all checkout fields.
+	 * @param  string  $posted_data  Post data for all checkout fields.
 	 */
 	public function update_customer_persisted_data( $posted_data ) {
 		// Get parsed posted data
@@ -3202,7 +3246,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Get customer object and supported field keys
-		$customer = WC()->customer;
 		$customer_supported_field_keys = $this->get_supported_customer_property_field_keys();
 
 		// Use the `WC_Customer` object for supported properties
@@ -3211,10 +3254,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$setter = "set_$field_key";
 
 			// Check if the setter method is supported
-			if ( is_callable( array( $customer, $setter ) ) ) {
+			if ( is_callable( array( WC()->customer, $setter ) ) ) {
 				// Set property value to the customer object
 				if ( array_key_exists( $field_key, $posted_data ) ) {
-					$customer->{$setter}( $posted_data[ $field_key ] );
+					WC()->customer->{$setter}( $posted_data[ $field_key ] );
 				}
 			}
 		}
@@ -3239,6 +3282,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 		}
+
+		// Clear values for remaining checkout fields
+		// Usually optional empty `checkbox`, `radio` and `select` fields
+		$posted_data = $this->reset_remaining_customer_persisted_data( $posted_data );
 
 		return $posted_data;
 	}

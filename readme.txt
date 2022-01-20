@@ -299,6 +299,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Dynamically display contact substep field values on the substep review text when the step is completed.
 * Improved: Refactor custom admin setting types moving each type to their own files.
 * Improved: Add `state`, `country` and `select` field types to the optional fields to hide behind an "add" link.
+* Fixed: Skip setting posted data to session or customer object when the `post_data` request parameter is not provided, avoiding the values from being cleared unintentionally. Also remove field values from session in case they are not provided with the `post_data` parameter, fixes not being able to unselect/uncheck optional `checkbox`, `radio` and `select` fields.
 * Fixed: Shipping and billing phone numbers being displayed twice on order confirmation page.
 * Fixed: Missing borders between some steps and substeps.
 * Fixed: Maybe get shipping country value from session when appropriate.
@@ -507,7 +508,7 @@ Fixed: Fix build process to save theme compat files in the right place.
 == Upgrade Notice ==
 
 = 1.5 =
-* Lays the foundations for the PRO version, and fixes many issues. Remove hook `fc_general_settings` and renamed hook `fc_adress_field_keys_skip_list` to `fc_address_field_keys_skip_list` can break customizations that use those hooks.
+* Lays the foundations for the PRO version. Change the way field values are persisted between requests. Remove hook `fc_general_settings` and renamed hook `fc_adress_field_keys_skip_list` to `fc_address_field_keys_skip_list` can break customizations that use those hooks.
 
 = 1.4 =
 * Changes to "Proceed to <next_step>" button labels, custom translations will need to be updated. Changes the way customer session data is cleared. Renamed hook `fc_customer_persisted_data_clear_fields` to `fc_customer_persisted_data_clear_fields_order_processed` can break customizations that use this hook.
