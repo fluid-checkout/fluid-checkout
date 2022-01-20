@@ -505,8 +505,11 @@ Fixed: Fix build process to save theme compat files in the right place.
 
 == Upgrade Notice ==
 
+= 1.5 =
+* Lays the foundations for the PRO version, and fixes many issues. Remove hook `fc_general_settings` and renamed hook `fc_adress_field_keys_skip_list` to `fc_address_field_keys_skip_list` can break customizations that use those hooks.
+
 = 1.4 =
-Changes to "Proceed to <next_step>" button labels, custom translations will need to be updated. Changes the way customer session data is cleared. Renamed hook `fc_customer_persisted_data_clear_fields` to `fc_customer_persisted_data_clear_fields_order_processed` can break customizations use this hook.
+* Changes to "Proceed to <next_step>" button labels, custom translations will need to be updated. Changes the way customer session data is cleared. Renamed hook `fc_customer_persisted_data_clear_fields` to `fc_customer_persisted_data_clear_fields_order_processed` can break customizations that use this hook.
 
 = 1.3 =
-Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
+* Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
