@@ -115,6 +115,10 @@ div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-i
 	&:not( .fc-no-validation-icon ) .select2-selection:after {
 		right: remsize( 2rem );
 	}
+	// Select2 Fields (optional, with "clear" button)
+	&.fc-select2-field:not( .fc-no-validation-icon ) select:not( [required] ) ~ .select2-container .select2-selection:after {
+		right: remsize( 3rem );
+	}
 
 	// Exclusions for "valid" field check icon
 	.woocommerce-terms-and-conditions-wrapper &,

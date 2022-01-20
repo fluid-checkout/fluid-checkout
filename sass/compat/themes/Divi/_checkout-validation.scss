@@ -7,7 +7,7 @@ body.theme-Divi div.woocommerce form .form-row.woocommerce-validated:not( [class
 
 	// "valid" field check icon
 	.select2-selection:after,
-	.woocommerce-input-wrapper:after {
+	&:not( .fc-no-validation-icon ):not( .fc-select2-field ) .woocommerce-input-wrapper:after {
 		top: remsize( 1.4rem );
 	}
 

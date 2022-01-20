@@ -6,8 +6,8 @@
 body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
 
 	// "valid" field check icon
-	.select2-selection:after,
-	.woocommerce-input-wrapper:after {
+	&:not( .fc-no-validation-icon ) .select2-selection:after,
+	&:not( .fc-no-validation-icon ):not( .fc-select2-field ) .woocommerce-input-wrapper:after {
 		top: remsize( 1.2rem );
 	}
 

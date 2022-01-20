@@ -300,7 +300,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		$select2_field_types = apply_filters( 'fc_select2_field_types', array( 'country', 'state', 'select' ) );
 
 		// Bail if field type
-		if ( ! array_key_exists( 'type', $args ) || ! in_array( $args[ 'type' ], $select2_field_types ) ) { return $args; }
+		if ( ! in_array( $args[ 'type' ], $select2_field_types ) ) { return $args; }
 
 		// Initialize class argument if not existing yet
 		if ( ! array_key_exists( 'class', $args ) ) { $args['class'] = array(); }
