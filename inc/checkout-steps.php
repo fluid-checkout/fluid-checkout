@@ -3207,7 +3207,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function reset_remaining_customer_persisted_data( $posted_data ) {
 		// Bail if not updating via AJAX call
 		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) { return $posted_data; }
-		
+
 		// Get parsed posted data
 		if ( empty( $posted_data ) ) {
 			$posted_data = $this->get_parsed_posted_data();
@@ -3378,6 +3378,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 **/
 	public function unset_session_customer_persisted_data_order_processed() {
 		$clear_field_keys = array(
+			'account_username',
+			'account_password',
 			'order_comments',
 		);
 
