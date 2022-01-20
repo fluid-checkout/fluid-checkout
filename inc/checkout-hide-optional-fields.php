@@ -74,7 +74,7 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		if ( false !== strpos( $field, 'id="fc-expansible-form-section__toggle--' . $key ) ) { return $field; }
 
 		// Maybe skip optional field by type
-		if ( in_array( $args[ 'type' ], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'checkbox', 'radio', 'hidden' ) ) ) ) { return $field; }
+		if ( in_array( $args[ 'type' ], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'state', 'country', 'select', 'checkbox', 'radio', 'hidden' ) ) ) ) { return $field; }
 
 		// Maybe skip optional field by class
 		$skip_field_container_classes = apply_filters( 'fc_hide_optional_fields_skip_by_class', array( 'fc-skip-hide-optional-field' ) );
