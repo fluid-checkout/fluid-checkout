@@ -200,6 +200,10 @@ div.woocommerce form .form-row {
 		width: 100%;
 	}
 
+	.select2-container {
+		width: 100% !important; // Needed to override inline styles
+	}
+
 	textarea {
 		min-height: remsize( 10rem );
 	}
