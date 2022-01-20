@@ -2,9 +2,9 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with plugin: Checkout Field Editor for WooCommerce (by ThemeHigh).
+ * Compatibility with plugin: Checkout Field Editor for WooCommerce (free version) (by ThemeHigh).
  */
-class FluidCheckout_CaptchaPro extends FluidCheckout {
+class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 
 	private static $thwcfd_public = null;
 
@@ -105,4 +105,4 @@ class FluidCheckout_CaptchaPro extends FluidCheckout {
 
 }
 
-FluidCheckout_CaptchaPro::instance();
+FluidCheckout_WooCheckoutFieldEditorPro::instance();
