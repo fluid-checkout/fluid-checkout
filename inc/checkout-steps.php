@@ -3165,9 +3165,29 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Parsing posted data into an array
 		$vars = explode( '&', $posted_data );
-		foreach ( $vars as $k => $value ) {
-			$v = explode( '=', urldecode( $value ) );
-			$new_posted_data[ $v[0] ] = array_key_exists( 1, $v) ? wc_clean( wp_unslash( $v[1] ) ) : null;
+		foreach ( $vars as $key => $value ) {
+			// Get decoded data
+			$decoded_data = explode( '=', urldecode( $value ) );
+			$field_key = $decoded_data[0];
+			
+			// Handle multi value fields
+			$needle = '[]';
+			$needle_len = strlen( $needle );
+        	if ( $needle_len === 0 || 0 === substr_compare( $field_key, $needle, - $needle_len ) ) {
+				// Get new field key, without the multi value markers
+				$new_field_key = str_replace( $needle, '', $field_key );
+
+				// Initialize field array on posted data
+				if ( ! array_key_exists( $new_field_key, $new_posted_data ) ) {
+					$new_posted_data[ $new_field_key ] = array();
+				}
+				// Add new field value
+				$new_posted_data[ $new_field_key ][] = array_key_exists( 1, $decoded_data ) ? wc_clean( wp_unslash( $decoded_data[1] ) ) : null;
+			}
+			// Handle single value fields
+			else {
+				$new_posted_data[ $field_key ] = array_key_exists( 1, $decoded_data ) ? wc_clean( wp_unslash( $decoded_data[1] ) ) : null;
+			}
 		}
 
 		// Maybe apply filter

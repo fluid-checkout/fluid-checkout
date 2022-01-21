@@ -299,13 +299,15 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Dynamically display contact substep field values on the substep review text when the step is completed.
 * Improved: Refactor custom admin setting types moving each type to their own files.
 * Improved: Add `state`, `country` and `select` field types to the optional fields to hide behind an "add" link.
-* Fixed: Skip setting posted data to session or customer object when the `post_data` request parameter is not provided, avoiding the values from being cleared unintentionally. Also remove field values from session in case they are not provided with the `post_data` parameter, fixes not being able to unselect/uncheck optional `checkbox`, `radio` and `select` fields.
+* Fixed: Skip setting posted data to session or customer object when the `post_data` request parameter is not provided, avoiding the values from being cleared unintentionally.
+* Fixed: Remove field values from session in case they are not provided with the `post_data` parameter, fixes not being able to unselect/uncheck optional `checkbox`, `radio` and `select` fields.
+* Fixed: Parse posted data for multiple-value/multi-select fields as arrays.
+* Fixed: Use filtered parsed posted data when getting field keys to save to customer session.
 * Fixed: Shipping and billing phone numbers being displayed twice on order confirmation page.
 * Fixed: Missing borders between some steps and substeps.
 * Fixed: Maybe get shipping country value from session when appropriate.
 * Fixed: Allow HTML elements for gift message text, message footer and information text on Packing Slip documents.
 * Fixed: Display gift message section on Packing Slip documents even when option to display gift message as part of the totals table is enabled.
-* Fixed: Use filtered parsed posted data when getting field keys to save to customer session.
 * Fixed: Typo in the filter name, renaming `fc_adress_field_keys_skip_list` to `fc_address_field_keys_skip_list`.
 * Fixed: Checks for shipping and billing address when determining if the steps are complete to use the correct country values when addresses were changed by hooks.
 * Fixed: Prevents fatal error on admin pages by checking for available resources before calling them.
