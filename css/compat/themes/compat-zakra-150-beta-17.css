@@ -1,10 +1,23 @@
-div.woocommerce form .form-row .select2-selection,
-div.woocommerce form .form-row .select2-selection__rendered {
+body.theme-zakra div.woocommerce form .form-row .select2-selection,
+body.theme-zakra div.woocommerce form .form-row .select2-selection__rendered {
   height: 39.16px;
   line-height: 39.16px;
 }
 
-div.woocommerce form .form-row .select2-selection__arrow {
+body.theme-zakra div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-zakra div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  margin-top: 0;
+  top: 0;
   height: 37px;
   line-height: 37px;
+}
+
+body.theme-zakra div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  height: 27px;
+  line-height: 27px;
+}
+
+body.theme-zakra div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  height: 37px;
+  line-height: 36px;
 }
