@@ -1,6 +1,6 @@
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
-body:not( .has-checkout-header ).theme-Impreza div.woocommerce {
+body.theme-Impreza:not( .has-checkout-header ).theme-Impreza div.woocommerce {
 	padding-top: remsize( 12rem );
 }

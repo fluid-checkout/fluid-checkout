@@ -1,31 +1,52 @@
 // ------------------------------------
-// WOOCOMMERCE FORM-ROW
+// SELECT2 FORM FIELDS
 // ------------------------------------
 
-body.theme-storefront div.woocommerce form .form-row .select2-selection,
-body.theme-storefront div.woocommerce form .form-row .select2-selection__rendered {
-	height: remsize( 4.5625rem );
-	line-height: remsize( 4.5625rem );
-}
+
+
+// // Local variables
+// $_select2-inner-spacing:               remsize( .5rem ) !default;
+// $_select2-selection-height:            remsize( 4.5625rem ) !default;
+// $_select2-selection-height--single:    $_select2-selection-height !default;
+// $_select2-selection-height--multiple:  #{ $_select2-selection-height - ( $_select2-inner-spacing * 2 ) - remsize( .4rem ) } !default;
+// $_select2-inner-component-height:      $_select2-selection-height--multiple !default;
+// $_select2-inner-component-line-height: $_select2-selection-height--multiple !default;
 
 
 
-body.theme-storefront div.woocommerce form .form-row .select2-selection .select2-selection__clear,
-body.theme-storefront div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-	margin-top: 0;
-	top: 0;
-	height: remsize( 4.5625rem );
-	line-height: remsize( 4.5625rem );
-}
+// body.theme-storefront div.woocommerce form .form-row .select2-selection,
+// body.theme-storefront div.woocommerce form .form-row .select2-selection__rendered {
+// 	min-height: $_select2-selection-height;
+// 	line-height: 0;
+// }
 
 
 
-body.theme-storefront div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
-	height: remsize( 3.3625rem );
-	line-height: remsize( 3.2625rem );
-}
+// body.theme-storefront div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+// body.theme-storefront div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+// 	top: 0;
+// 	margin-top: $_select2-inner-spacing;
+// 	min-height: $_select2-inner-component-height;
+// 	line-height: $_select2-inner-component-line-height;
+// }
 
-body.theme-storefront div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
-	height: remsize( 3.3625rem );
-	line-height: remsize( 3.2625rem );
-}
+
+
+// body.theme-storefront div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+// 	line-height: $_select2-selection-height--single;
+// }
+
+// body.theme-storefront div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+// 	padding-bottom: $_select2-inner-spacing;
+// 	min-height: $_select2-selection-height--multiple;
+// 	line-height: $_select2-selection-height--multiple;
+// }
+
+// body.theme-storefront div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+// 	line-height: $_select2-inner-component-line-height;
+// }
+
+// body.theme-storefront div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+// 	min-height: $_select2-inner-component-height;
+// 	line-height: $_select2-inner-component-line-height;
+// }

@@ -7,10 +7,10 @@ body.theme-orchid-store .fc-wrapper #payment ul.payment_methods > .wc_payment_me
   top: 5.5px;
 }
 
-.fc-wrapper .woocommerce-billing-fields.woocommerce-billing-fields {
+body.theme-orchid-store .fc-wrapper .woocommerce-billing-fields.woocommerce-billing-fields {
   background-color: transparent;
 }
 
-.fc-wrapper .fc-step__substep-title.fc-step__substep-title {
+body.theme-orchid-store .fc-wrapper .fc-step__substep-title.fc-step__substep-title {
   border: none;
 }

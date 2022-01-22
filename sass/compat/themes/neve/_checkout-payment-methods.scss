@@ -2,6 +2,6 @@
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
 
-.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
+body.theme-neve.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
 	border: $payment-method-border !important;
 }

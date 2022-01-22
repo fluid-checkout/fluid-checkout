@@ -1,8 +1,8 @@
-div.woocommerce form .form-row input,
-div.woocommerce form .form-row textarea,
-div.woocommerce form .form-row select,
-div.woocommerce form .form-row .select2-container,
-div.woocommerce form .form-row .select2-container .select2-selection {
+body.theme-diza div.woocommerce form .form-row input,
+body.theme-diza div.woocommerce form .form-row textarea,
+body.theme-diza div.woocommerce form .form-row select,
+body.theme-diza div.woocommerce form .form-row .select2-container,
+body.theme-diza div.woocommerce form .form-row .select2-container .select2-selection {
   margin-bottom: 0 !important;
 }
 

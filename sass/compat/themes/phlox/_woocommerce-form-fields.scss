@@ -2,23 +2,23 @@
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-div.woocommerce form #billing_country_field,
-div.woocommerce form #shipping_country_field,
-div.woocommerce form .form-row .select2-container--default,
-div.woocommerce form .form-row .select2-container .select2-selection {
+body.theme-phlox div.woocommerce form #billing_country_field,
+body.theme-phlox div.woocommerce form #shipping_country_field,
+body.theme-phlox div.woocommerce form .form-row .select2-container--default,
+body.theme-phlox div.woocommerce form .form-row .select2-container .select2-selection {
 	height: auto;
 }
 
 
 
-div.woocommerce form .form-row .select2-container .select2-selection__rendered,
-div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+body.theme-phlox div.woocommerce form .form-row .select2-container .select2-selection__rendered,
+body.theme-phlox div.woocommerce form .form-row .select2-container .select2-selection__arrow {
 	line-height: remsize( 5.5rem );
 }
 
 
 
-div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+body.theme-phlox div.woocommerce form .form-row .select2-container .select2-selection__arrow {
 	top: remsize( .7rem );
 }
 
@@ -29,7 +29,7 @@ div.woocommerce form .form-row .select2-container .select2-selection__arrow {
 // ------------------------------------
 
 // Position and outline styles
-div.woocommerce form .form-row {
+body.theme-phlox div.woocommerce form .form-row {
 	textarea,
 	select,
 	input[type="email"],
@@ -46,6 +46,3 @@ div.woocommerce form .form-row {
 		max-width: none;
 	}
 }
-
-
-

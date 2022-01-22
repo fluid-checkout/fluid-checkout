@@ -1,16 +1,16 @@
-.fc-checkout-notices .form-row.form-row:before,
-.fc-checkout-notices .form-row.form-row:after {
+body.theme-riode .fc-checkout-notices .form-row.form-row:before,
+body.theme-riode .fc-checkout-notices .form-row.form-row:after {
   display: none;
 }
 
-.fc-checkout-notices .input-wrapper-inline.input-wrapper-inline {
+body.theme-riode .fc-checkout-notices .input-wrapper-inline.input-wrapper-inline {
   max-width: 100%;
 }
 
-.fc-wrapper .wc_payment_method label img {
+body.theme-riode .fc-wrapper .wc_payment_method label img {
   min-width: auto;
 }
 
-.fc-login-form .login {
+body.theme-riode .fc-login-form .login {
   display: block;
 }

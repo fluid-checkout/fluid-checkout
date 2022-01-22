@@ -1,1 +1,24 @@
-body.theme-onepress div.woocommerce form .form-row .select2-selection,body.theme-onepress div.woocommerce form .form-row .select2-selection__rendered{height:41px;line-height:41px}body.theme-onepress div.woocommerce form .form-row .select2-selection .select2-selection__arrow,body.theme-onepress div.woocommerce form .form-row .select2-selection .select2-selection__clear{margin-top:0;top:0;height:38px;line-height:38px}body.theme-onepress div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice{height:28px;line-height:28px}body.theme-onepress div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline{height:28px;line-height:27px}
+body.theme-onepress div.woocommerce form .form-row .select2-selection,
+body.theme-onepress div.woocommerce form .form-row .select2-selection__rendered {
+  height: 41px;
+  line-height: 41px;
+}
+
+body.theme-onepress div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-onepress div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  margin-top: 0;
+  top: 0;
+  height: 38px;
+  line-height: 38px;
+}
+
+body.theme-onepress div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  height: 28px;
+  line-height: 28px;
+}
+
+body.theme-onepress div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  height: 28px;
+  line-height: 27px;
+}
+/*# sourceMappingURL=maps/compat-onepress-150-beta-17.min.css.map */
