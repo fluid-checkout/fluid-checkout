@@ -2,13 +2,30 @@
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-div.woocommerce form .form-row .select2-selection,
-div.woocommerce form .form-row .select2-selection__rendered {
+body.theme-popularfx div.woocommerce form .form-row .select2-selection,
+body.theme-popularfx div.woocommerce form .form-row .select2-selection__rendered {
+	height: remsize( 4rem );
+	line-height: remsize( 3rem );
+}
+
+
+
+body.theme-popularfx div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-popularfx div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+	margin-top: 0;
+	top: 0;
 	height: remsize( 4rem );
 	line-height: remsize( 4rem );
 }
 
-div.woocommerce form .form-row .select2-selection__arrow {
-	height: remsize( 3.8rem );
-	line-height: remsize( 3.8rem );
+
+
+body.theme-popularfx div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+	height: remsize( 3rem );
+	line-height: remsize( 3rem );
+}
+
+body.theme-popularfx div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+	height: remsize( 3rem );
+	line-height: remsize( 2.9rem );
 }
