@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
- * @fc-version 1.3.1
+ * @fc-version 1.5.0
  * @global WC_Checkout $checkout
  */
 
@@ -35,21 +35,27 @@ defined( 'ABSPATH' ) || exit;
 			<?php do_action( 'woocommerce_before_checkout_shipping_form', $checkout ); ?>
 
 			<div class="woocommerce-shipping-fields__field-wrapper">
+				<?php // CHANGE: Display shipping fields which might be copied from shipping to billing fields ?>
 				<?php
-				$fields = $checkout->get_checkout_fields( 'shipping' );
-
-				foreach ( $fields as $key => $field ) {
-					// CHANGE: Only display fields from allowed list
-					/**
-					 * The variable `$display_fields` is passed as a paramenter to this template file
-					 * @see Hook `fc_checkout_contact_step_field_ids`
-					 */
-					if ( in_array( $key, $display_fields ) ) {
-						woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
-					}
+				foreach ( $shipping_same_as_billing_fields as $key => $field ) {
+					woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
 				}
 				?>
 			</div>
+
+			<?php // CHANGE: Display shipping only fields ?>
+			<?php do_action( 'fc_before_checkout_shipping_only_form', $checkout ); ?>
+
+			<?php // CHANGE: Display shipping only fields ?>
+			<?php if ( count( $shipping_only_fields ) > 0 ) : ?>
+			<div class="woocommerce-shipping-only-fields__field-wrapper">
+				<?php
+				foreach ( $shipping_only_fields as $key => $field ) {
+					woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+				}
+				?>
+			</div>
+			<?php endif; ?>
 
 			<?php do_action( 'woocommerce_after_checkout_shipping_form', $checkout ); ?>
 
