@@ -316,6 +316,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Added the missing hook `woocommerce_checkout_after_customer_details` back to the checkout page after the billing form.
 * Fixed: Validation of fields in the contact substep.
 * Fixed: Styles for `select2` fields to fill 100% width of available field container space.
+* Fixed: Styles for `select2` multiple selection fields for various themes.
 * Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
 
 = Unreleased =

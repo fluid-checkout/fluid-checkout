@@ -1,10 +1,23 @@
-div.woocommerce form .form-row .select2-selection,
-div.woocommerce form .form-row .select2-selection__rendered {
-  height: 44.75px;
-  line-height: 44.75px;
+body.theme-storefront div.woocommerce form .form-row .select2-selection,
+body.theme-storefront div.woocommerce form .form-row .select2-selection__rendered {
+  height: 45.625px;
+  line-height: 45.625px;
 }
 
-div.woocommerce form .form-row .select2-selection__arrow {
-  height: 40px;
-  line-height: 40px;
+body.theme-storefront div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-storefront div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  margin-top: 0;
+  top: 0;
+  height: 45.625px;
+  line-height: 45.625px;
+}
+
+body.theme-storefront div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  height: 33.625px;
+  line-height: 32.625px;
+}
+
+body.theme-storefront div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  height: 33.625px;
+  line-height: 32.625px;
 }

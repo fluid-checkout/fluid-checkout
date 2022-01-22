@@ -1,10 +1,23 @@
-div.woocommerce form .form-row .select2-selection,
-div.woocommerce form .form-row .select2-selection__rendered {
+body.theme-popularfx div.woocommerce form .form-row .select2-selection,
+body.theme-popularfx div.woocommerce form .form-row .select2-selection__rendered {
+  height: 40px;
+  line-height: 30px;
+}
+
+body.theme-popularfx div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-popularfx div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  margin-top: 0;
+  top: 0;
   height: 40px;
   line-height: 40px;
 }
 
-div.woocommerce form .form-row .select2-selection__arrow {
-  height: 38px;
-  line-height: 38px;
+body.theme-popularfx div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  height: 30px;
+  line-height: 30px;
+}
+
+body.theme-popularfx div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  height: 30px;
+  line-height: 29px;
 }
