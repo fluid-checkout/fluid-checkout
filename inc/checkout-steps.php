@@ -214,8 +214,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Add extra class if displaying the `must-log-in` notice
-		$checkout = WC()->checkout();
-		if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
+		if ( ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() && ! is_user_logged_in() ) {
 			$add_classes[] = 'has-checkout-must-login-notice';
 		}
 
@@ -322,11 +321,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if WooCommerce class not available
 		if ( ! function_exists( 'WC' ) ) { return false; }
 
-		// Get checkout object.
-		$checkout = WC()->checkout();
-
 		// Check if checkout page is showing the checkout form, then check the settings to show theme header or plugin header
-		return ( ! ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) ) && 'yes' === get_option( 'fc_hide_site_header_footer_at_checkout', 'yes' );
+		return ( ! ( ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() && ! is_user_logged_in() ) ) && 'yes' === get_option( 'fc_hide_site_header_footer_at_checkout', 'yes' );
 	}
 
 
@@ -338,8 +334,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_allowed_checkout_layouts() {
 		return apply_filters( 'fc_allowed_checkout_layouts', array(
-			'multi-step' => __( 'Multi-step', 'fluid-checkout' ),
-			'single-step' => __( 'Single step', 'fluid-checkout' ),
+			'multi-step'     => __( 'Multi-step', 'fluid-checkout' ),
+			'single-step'    => __( 'Single step', 'fluid-checkout' ),
 		) );
 	}
 
@@ -1765,19 +1761,29 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output shipping address step fields.
 	 */
 	public function output_substep_shipping_address_fields() {
-		$checkout = WC()->checkout();
-		
 		// Filter out shipping fields moved to another step
-		$shipping_fields = $checkout->get_checkout_fields( 'shipping' );
+		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
 		$shipping_fields = array_filter( $shipping_fields, function( $key ) {
 			return ! in_array( $key, $this->get_shipping_address_ignored_shipping_field_ids() );
+		}, ARRAY_FILTER_USE_KEY );
+
+		// Get list of shipping fields that might be copied from shipping to billing fields
+		$shipping_same_as_billing_fields = array_filter( $shipping_fields, function( $key ) {
+			return in_array( $key, $this->get_shipping_same_billing_fields_keys() );
+		}, ARRAY_FILTER_USE_KEY );
+
+		// Get list of billing only fields
+		$shipping_only_fields = array_filter( $shipping_fields, function( $key ) {
+			return in_array( $key, $this->get_shipping_only_fields_keys() );
 		}, ARRAY_FILTER_USE_KEY );
 
 		wc_get_template(
 			'checkout/form-shipping.php',
 			array(
-				'checkout'          => $checkout,
-				'display_fields'	=> array_keys( $shipping_fields ),
+				'checkout'                            => WC()->checkout(),
+				'display_fields'                      => array_keys( $shipping_fields ),
+				'shipping_same_as_billing_fields'     => $shipping_same_as_billing_fields,
+				'shipping_only_fields'                => $shipping_only_fields,
 			)
 		);
 	}
@@ -1949,7 +1955,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
 	 */
 	public function is_step_complete_shipping() {
-		$checkout = WC()->checkout();
 		$is_step_complete = true;
 
 		// Check required data for shipping address
@@ -1968,7 +1973,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			
 			// Check each required country field
 			foreach ( $address_fields as $field_key => $field ) {
-				if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( $checkout->get_value( $field_key ) ) ) {
+				if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( WC()->checkout()->get_value( $field_key ) ) ) {
 					$is_step_complete = false;
 					break;
 				}
@@ -2208,10 +2213,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output billing address fields, except those already added at the contact step.
 	 */
 	public function output_substep_billing_address_fields() {
-
 		// Get checkout object and billing fields, with ignored billing fields removed
-		$checkout = WC()->checkout();
-		$billing_fields = $checkout->get_checkout_fields( 'billing' );
+		$billing_fields = WC()->checkout()->get_checkout_fields( 'billing' );
 		$billing_fields = array_filter( $billing_fields, function( $key ) {
 			return ! in_array( $key, $this->get_billing_address_ignored_billing_field_ids() );
 		}, ARRAY_FILTER_USE_KEY );
@@ -2231,7 +2234,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		wc_get_template(
 			'checkout/form-billing.php',
 			array(
-				'checkout'                         => $checkout,
+				'checkout'                         => WC()->checkout(),
 				'billing_same_as_shipping_fields'  => $billing_same_as_shipping_fields,
 				'billing_only_fields'              => $billing_only_fields,
 				'is_billing_same_as_shipping'      => $this->is_billing_same_as_shipping(),
@@ -2287,7 +2290,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
 	 */
 	public function is_step_complete_billing() {
-		$checkout = WC()->checkout();
 		$is_step_complete = true;
 
 		// Get billing country
@@ -2310,7 +2312,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Skip billing fields moved to contact step
 			if ( in_array( $field_key, $contact_display_field_keys ) ) { continue; }
 
-			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( $checkout->get_value( $field_key ) ) ) {
+			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( WC()->checkout()->get_value( $field_key ) ) ) {
 				$is_step_complete = false;
 				break;
 			}
@@ -2557,9 +2559,43 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 
+	/**
+	 * Get list of shipping checkout field keys which values are to be copied from shipping to billing fields.
+	 *
+	 * @return  array  List of checkout field keys.
+	 */
+	public function get_shipping_same_billing_fields_keys() {
+		// Intialize list of supported field keys
+		$shipping_copy_shipping_field_keys = array();
+
+		// Get checkout object and fields
+		$billing_fields = WC()->checkout()->get_checkout_fields( 'billing' );
+		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
+
+		// Get list of billing fields to skip copying from shipping fields
+		$skip_field_keys = apply_filters( 'fc_shipping_same_as_billing_skip_fields', array() );
+
+		// Use the `WC_Customer` object for supported properties
+		foreach ( $shipping_fields as $field_key => $field_args ) {
+
+			// Get billing field key
+			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+
+			// Maybe add field key to the list of fields to copy
+			if ( ! in_array( $field_key, $skip_field_keys ) && array_key_exists( $billing_field_key, $billing_fields ) ) {
+				$shipping_copy_shipping_field_keys[] = $field_key;
+			}
+
+		}
+
+		// Remove ignored shipping fields
+		$shipping_copy_shipping_field_keys = array_diff( $shipping_copy_shipping_field_keys, $this->get_shipping_address_ignored_shipping_field_ids() );
+
+		return apply_filters( 'fc_shipping_same_as_billing_field_keys', $shipping_copy_shipping_field_keys );
+	}
 
 	/**
-	 * Get list of checkout field keys which values are to be copied from shipping fields.
+	 * Get list of billing checkout field keys which values are to be copied from shipping to billing fields.
 	 *
 	 * @return  array  List of checkout field keys.
 	 */
@@ -2567,10 +2603,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Intialize list of supported field keys
 		$billing_copy_shipping_field_keys = array();
 
-		// Get checkout object and fields
-		$checkout = WC()->checkout();
-		$billing_fields = $checkout->get_checkout_fields( 'billing' );
-		$shipping_fields = $checkout->get_checkout_fields( 'shipping' );
+		// Get checkout fields
+		$billing_fields = WC()->checkout()->get_checkout_fields( 'billing' );
+		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
 
 		// Get list of billing fields to skip copying from shipping fields
 		$skip_field_keys = apply_filters( 'fc_billing_same_as_shipping_skip_fields', array() );
@@ -2598,16 +2633,38 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Get list of shipping only fields, that is, fields that are not present on both shipping and billing fields,
+	 * which would be copied when "Billing same as shipping" is cheched. Also remove the fields which are to be
+	 * ignored when copying values from the shipping to billing.
+	 *
+	 * @return  array  List of checkout field keys.
+	 */
+	public function get_shipping_only_fields_keys() {
+		// Get checkout object and fields
+		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
+
+		// Get list of shipping fields to copy from shipping to billing
+		$shipping_copy_shipping_field_keys = $this->get_shipping_same_billing_fields_keys();
+
+		// Get list of shipping only fields
+		$shipping_only_field_keys = array_diff( array_keys( $shipping_fields ), $shipping_copy_shipping_field_keys );
+
+		// Remove ignored shipping fields
+		$shipping_only_field_keys = array_diff( $shipping_only_field_keys, $this->get_shipping_address_ignored_shipping_field_ids() );
+
+		return $shipping_only_field_keys;
+	}
+
+	/**
 	 * Get list of billing only fields, that is, fields that are not present on both shipping and billing fields,
-	 * which would be copied when "Billing same as shipping" is cheched. Also returns the fields which are to be
+	 * which would be copied when "Billing same as shipping" is cheched. Also remove the fields which are to be
 	 * ignored when copying values from the shipping to billing.
 	 *
 	 * @return  array  List of checkout field keys.
 	 */
 	public function get_billing_only_fields_keys() {
 		// Get checkout object and fields
-		$checkout = WC()->checkout();
-		$billing_fields = $checkout->get_checkout_fields( 'billing' );
+		$billing_fields = WC()->checkout()->get_checkout_fields( 'billing' );
 
 		// Get list of billing fields to copy from shipping fields
 		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
@@ -3076,9 +3133,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get customer object
 		$customer = WC()->customer;
 
-		// Get checkout object and fields
-		$checkout = WC()->checkout();
-		$fields = $checkout->get_checkout_fields();
+		// Get checkout fields
+		$fields = WC()->checkout()->get_checkout_fields();
 
 		// Use the `WC_Customer` object for supported properties
 		foreach ( $fields as $fieldset_key => $fieldset ) {

@@ -105,7 +105,6 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 	 * @return  boolean  `true` if the selected shipping method is `local_pickup`. Defaults to `false`.
 	 */
 	public function is_shipping_method_local_pickup_selected() {
-		$checkout = WC()->checkout();
 		$is_shipping_method_local_pickup_selected = false;
 		
 		// Make sure chosen shipping method is set
@@ -137,7 +136,6 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 		// Bail if not on checkout or cart page or doing AJAX call
 		if ( ! function_exists( 'is_checkout' ) || ! ( is_checkout() || is_cart() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) ) { return false; }
 
-		$checkout = WC()->checkout();
 		$is_local_pickup_available = false;
 
 		// Make sure chosen shipping method is set
