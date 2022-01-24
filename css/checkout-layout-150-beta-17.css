@@ -1324,6 +1324,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   margin: 0 0 0;
   padding: 0;
   text-indent: 0;
+  line-height: 1.6;
 }
 
 .shipping-method__option input[type=radio] {
@@ -1344,6 +1345,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   font-weight: normal;
   cursor: pointer;
   transition: all 0.15s linear;
+  line-height: 1.6;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option:last-child .shipping-method__option-label {
@@ -1478,6 +1480,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   margin: 0;
   padding: 0;
   border: 0;
+  line-height: 1.6;
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] {
@@ -1503,6 +1506,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   border-bottom: solid 1px #D8D8D8;
   background-color: #fff;
   font-weight: normal;
+  line-height: 1.6;
   cursor: pointer;
   transition: all 0.15s linear;
 }

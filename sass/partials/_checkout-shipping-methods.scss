@@ -28,6 +28,7 @@
 	margin: 0 0 $shipping-method-space-between-options;
 	padding: 0;
 	text-indent: 0;
+	line-height: 1.6;
 }
 
 
@@ -53,6 +54,7 @@
 	font-weight: $shipping-method-font-weight;
 	cursor: pointer;
 	transition: all $global-animation-duration-fast linear;
+	line-height: 1.6;
 }
 .woocommerce ul#shipping_method .shipping-method__option:last-child .shipping-method__option-label {
 	border-bottom: none;
