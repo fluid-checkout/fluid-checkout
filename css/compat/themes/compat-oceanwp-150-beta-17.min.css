@@ -1,3 +1,7 @@
+body.woocommerce-checkout #main.fc-main {
+  border: 0;
+}
+
 body.theme-oceanwp div.woocommerce form .form-row .select2-selection,
 body.theme-oceanwp div.woocommerce form .form-row .select2-selection__rendered {
   min-height: 38px;
