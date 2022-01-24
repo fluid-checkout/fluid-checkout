@@ -2,23 +2,23 @@
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body.theme-phlox div.woocommerce form #billing_country_field,
-body.theme-phlox div.woocommerce form #shipping_country_field,
-body.theme-phlox div.woocommerce form .form-row .select2-container--default,
-body.theme-phlox div.woocommerce form .form-row .select2-container .select2-selection {
+#{ $_body-theme-selector-prefix } div.woocommerce form #billing_country_field,
+#{ $_body-theme-selector-prefix } div.woocommerce form #shipping_country_field,
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-container--default,
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-container .select2-selection {
 	height: auto;
 }
 
 
 
-body.theme-phlox div.woocommerce form .form-row .select2-container .select2-selection__rendered,
-body.theme-phlox div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-container .select2-selection__rendered,
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-container .select2-selection__arrow {
 	line-height: remsize( 5.5rem );
 }
 
 
 
-body.theme-phlox div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-container .select2-selection__arrow {
 	top: remsize( .7rem );
 }
 
@@ -29,7 +29,7 @@ body.theme-phlox div.woocommerce form .form-row .select2-container .select2-sele
 // ------------------------------------
 
 // Position and outline styles
-body.theme-phlox div.woocommerce form .form-row {
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row {
 	textarea,
 	select,
 	input[type="email"],

@@ -2,7 +2,7 @@
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body.theme-blocksy div.woocommerce form .form-row input[type="checkbox"],
-body.theme-blocksy div.woocommerce form .form-row input[type="radio"] {
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row input[type="checkbox"],
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row input[type="radio"] {
 	background-color: $white;
 }

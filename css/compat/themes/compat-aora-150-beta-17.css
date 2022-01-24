@@ -47,8 +47,8 @@ body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .sel
 }
 
 body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
-  margin-top: 4.5px;
-  margin-right: 4.5px;
+  margin-top: 4px;
+  margin-right: 4px;
 }
 
 body.theme-aora div.woocommerce form .form-row .select2-selection,
@@ -60,9 +60,9 @@ body.theme-aora div.woocommerce form .form-row .select2-selection__rendered {
 body.theme-aora div.woocommerce form .form-row .select2-selection .select2-selection__clear,
 body.theme-aora div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
   top: 0;
-  margin-top: 4.5px;
-  min-height: 31px;
-  line-height: 31px;
+  margin-top: 4px;
+  min-height: 34px;
+  line-height: 34px;
 }
 
 body.theme-aora div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
@@ -70,22 +70,22 @@ body.theme-aora div.woocommerce form .form-row .select2-selection--single .selec
 }
 
 body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
-  padding-bottom: 4.5px;
-  min-height: 31px;
-  line-height: 31px;
+  padding-bottom: 4px;
+  min-height: 34px;
+  line-height: 34px;
   white-space: normal;
 }
 
 body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
-  line-height: 31px;
+  line-height: 34px;
   overflow: hidden;
 }
 
 body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
-  min-height: 31px;
-  line-height: 31px;
+  min-height: 34px;
+  line-height: 34px;
 }
 
 body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
-  height: 31px;
+  height: 34px;
 }

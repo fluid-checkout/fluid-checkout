@@ -2,7 +2,7 @@
 // CHECKOUT HEADER
 // ------------------------------------
 
-body.theme-hazel header.fc-checkout-header {
+#{ $_body-theme-selector-prefix } header.fc-checkout-header {
 	position: fixed !important; // Needed to override theme styles breaking the layout
 	top: 0 !important;
 
@@ -11,7 +11,7 @@ body.theme-hazel header.fc-checkout-header {
 	}
 }
 // With admin bar
-body.theme-hazel.admin-bar header.fc-checkout-header {
+#{ $_body-theme-selector-prefix }.admin-bar header.fc-checkout-header {
 	top: 46px !important; // Needed to override theme styles breaking the layout. Uses pixels to match WordPress admin bar.
 
 	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar

@@ -3,7 +3,7 @@
 // ------------------------------------
 
 // Sticky progress bar, page with admin bar
-body.theme-hazel:not( .has-checkout-header ).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+#{ $_body-theme-selector-prefix }:not( .has-checkout-header ).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
 	transform: translateY( 0 );
 
 	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar

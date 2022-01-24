@@ -2,6 +2,6 @@
 // WOOCOMMERCE FORM FIELDS
 // ------------------------------------
 
-body.theme-shoptimizer #payment .fc-payment-methods__wrapper .payment_methods li:last-child:not( .woocommerce-notice ) {
+#{ $_body-theme-selector-prefix } #payment .fc-payment-methods__wrapper .payment_methods li:last-child:not( .woocommerce-notice ) {
 	padding-bottom: 0;
 }

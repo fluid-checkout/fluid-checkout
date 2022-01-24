@@ -8,6 +8,17 @@
 
 
 // ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-flatsome' !default;
+$_select2-inner-spacing:               remsize( .5rem ) !default;
+$_select2-selection-height:            remsize( 3.91rem ) !default;
+
+
+
+
+
+// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import

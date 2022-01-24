@@ -1,6 +1,6 @@
 // ------------------------------------
 // CHECKOUT COUPON CODE
 // ------------------------------------
-body.theme-neve .fc-wrapper .fc-expansible-form-section__content--coupon_code .fc-coupon-code__apply {
+#{ $_body-theme-selector-prefix } .fc-wrapper .fc-expansible-form-section__content--coupon_code .fc-coupon-code__apply {
 	line-height: 1;
 }

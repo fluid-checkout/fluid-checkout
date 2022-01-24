@@ -2,11 +2,11 @@
 // CHECKOUT COUPON CODE
 // ------------------------------------
 
-body.theme-riode .fc-checkout-notices .form-row.form-row:before, 
-body.theme-riode .fc-checkout-notices .form-row.form-row:after {
+#{ $_body-theme-selector-prefix } .fc-checkout-notices .form-row.form-row:before, 
+#{ $_body-theme-selector-prefix } .fc-checkout-notices .form-row.form-row:after {
 	display: none;
 }
 
-body.theme-riode .fc-checkout-notices .input-wrapper-inline.input-wrapper-inline {
+#{ $_body-theme-selector-prefix } .fc-checkout-notices .input-wrapper-inline.input-wrapper-inline {
 	max-width: 100%;
 }

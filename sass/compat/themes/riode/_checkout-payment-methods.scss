@@ -2,6 +2,6 @@
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
 
-body.theme-riode .fc-wrapper .wc_payment_method label img {
+#{ $_body-theme-selector-prefix } .fc-wrapper .wc_payment_method label img {
 	min-width: auto;
 }
