@@ -20,4 +20,5 @@ $_body-theme-selector-prefix:          'body.theme-onepress' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"onepress/woocommerce-form-fields";
+	"../../partials/woocommerce-form-fields-select2",
+	"onepress/woocommerce-form-fields-select2";

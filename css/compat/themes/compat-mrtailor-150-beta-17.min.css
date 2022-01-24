@@ -69,6 +69,7 @@ body.theme-mrtailor div.woocommerce form .form-row .select2-selection--multiple 
 }
 
 body.theme-mrtailor div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
   height: 35px;
   min-height: auto;
 }

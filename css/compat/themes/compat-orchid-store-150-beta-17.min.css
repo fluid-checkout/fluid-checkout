@@ -63,6 +63,7 @@ body.theme-orchid-store div.woocommerce form .form-row .select2-selection--multi
 }
 
 body.theme-orchid-store div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
   height: 30px;
   min-height: auto;
 }

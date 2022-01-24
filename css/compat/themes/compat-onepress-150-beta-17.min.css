@@ -1,5 +1,53 @@
 body.theme-onepress div.woocommerce form .form-row .select2-selection,
 body.theme-onepress div.woocommerce form .form-row .select2-selection__rendered {
+  min-height: 45.625px;
+  line-height: 0;
+}
+
+body.theme-onepress div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-onepress div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  top: 0;
+  margin-top: 5px;
+  min-height: 31.625px;
+  line-height: 31.625px;
+}
+
+body.theme-onepress div.woocommerce form .form-row .select2-selection--single {
+  padding: 0;
+}
+
+body.theme-onepress div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 45.625px;
+}
+
+body.theme-onepress div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+  padding-bottom: 5px;
+  min-height: 31.625px;
+  line-height: 31.625px;
+  white-space: normal;
+}
+
+body.theme-onepress div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5px;
+  line-height: 31.625px;
+  overflow: hidden;
+}
+
+body.theme-onepress div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  min-height: 31.625px;
+  line-height: 31.625px;
+}
+
+body.theme-onepress div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
+  height: 31.625px;
+  min-height: auto;
+}
+
+body.theme-onepress div.woocommerce form .form-row .select2-selection,
+body.theme-onepress div.woocommerce form .form-row .select2-selection__rendered {
   height: 41px;
   line-height: 41px;
 }

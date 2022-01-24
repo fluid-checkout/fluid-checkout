@@ -66,6 +66,7 @@ $_select2-inner-component-line-height: $_select2-selection-height--multiple !def
 }
 
 #{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+	margin-top: 0;
 	height: $_select2-inner-component-height;
 	min-height: auto;
 }

@@ -53,6 +53,7 @@ body.theme-neve div.woocommerce form .form-row .select2-selection--multiple .sel
 }
 
 body.theme-neve div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
   height: 36px;
   min-height: auto;
 }

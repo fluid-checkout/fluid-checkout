@@ -54,6 +54,7 @@ body.theme-onair2 div.woocommerce form .form-row .select2-selection--multiple .s
 }
 
 body.theme-onair2 div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
   height: 34px;
   min-height: auto;
 }

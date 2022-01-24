@@ -41,6 +41,7 @@ body.theme-page-builder-framework div.woocommerce form .form-row .select2-select
 }
 
 body.theme-page-builder-framework div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
   height: 32px;
   min-height: auto;
 }

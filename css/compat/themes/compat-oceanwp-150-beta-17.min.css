@@ -45,6 +45,7 @@ body.theme-oceanwp div.woocommerce form .form-row .select2-selection--multiple .
 }
 
 body.theme-oceanwp div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
   height: 26px;
   min-height: auto;
 }

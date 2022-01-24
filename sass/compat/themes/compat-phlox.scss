@@ -11,7 +11,9 @@
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
 $_body-theme-selector-prefix:          'body.theme-phlox' !default;
-
+$_select2-inner-spacing:               remsize( .5rem ) !default;
+$_select2-selection-height:            remsize( 5.319rem ) !default;
+$_select2-selection-height--multiple:  #{ $_select2-selection-height - ( $_select2-inner-spacing * 2 ) - remsize( .2rem ) } !default;
 
 
 
@@ -21,4 +23,6 @@ $_body-theme-selector-prefix:          'body.theme-phlox' !default;
 // ------------------------------------
 @import
 	"phlox/checkout-payment-methods",
-	"phlox/woocommerce-form-fields";
+	"phlox/checkout-validation",
+	"phlox/woocommerce-form-fields",
+	"../../partials/woocommerce-form-fields-select2";
