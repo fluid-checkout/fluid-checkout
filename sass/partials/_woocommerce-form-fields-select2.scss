@@ -49,7 +49,13 @@ $_select2-inner-component-line-height: $_select2-selection-height--multiple !def
 	overflow: hidden;
 }
 
+
+
 #{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
 	min-height: $_select2-inner-component-height;
 	line-height: $_select2-inner-component-line-height;
+}
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+    height: $_select2-inner-component-height;
 }

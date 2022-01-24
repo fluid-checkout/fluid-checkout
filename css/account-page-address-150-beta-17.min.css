@@ -229,6 +229,10 @@ div.woocommerce form .form-row .select2-selection--multiple .select2-search--inl
   line-height: 31.625px;
 }
 
+div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  height: 31.625px;
+}
+
 div.woocommerce .fc-expansible-form-section {
   background-color: transparent;
   box-shadow: none;

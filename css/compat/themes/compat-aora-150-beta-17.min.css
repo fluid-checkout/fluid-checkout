@@ -85,4 +85,8 @@ body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .sel
   min-height: 31px;
   line-height: 31px;
 }
+
+body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  height: 31px;
+}
 /*# sourceMappingURL=maps/compat-aora-150-beta-17.min.css.map */

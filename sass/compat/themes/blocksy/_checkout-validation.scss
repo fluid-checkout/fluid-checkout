@@ -4,10 +4,19 @@
 
 // VALID FIELDS
 body.theme-blocksy div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+
+	// Password
+	&:not( .fc-no-validation-icon ):not( .fc-select2-field ) .woocommerce-input-wrapper.password-input:after {
+		right: remsize( 3rem );
+	}
 	
 	// Select2 Fields
 	&:not( .fc-no-validation-icon ) .select2-selection:after {
 		right: remsize( 3rem );
+	}
+	// Select2 Fields (optional, with "clear" button)
+	&.fc-select2-field:not( .fc-no-validation-icon ) select:not( [required] ) ~ .select2-container .select2-selection.select2-selection--single:after {
+		right: remsize( 4.2rem );
 	}
 	
 }
