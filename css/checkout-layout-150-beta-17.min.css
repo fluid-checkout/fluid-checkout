@@ -1222,7 +1222,8 @@ body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=tel],
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=url],
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=password],
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection {
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection,
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection .select2-selection__rendered {
   background-color: #fff;
   color: inherit;
 }
@@ -1297,7 +1298,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=tel],
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=url],
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=password],
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection {
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection,
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection .select2-selection__rendered {
   background-color: #fff;
   color: inherit;
 }
@@ -1968,6 +1970,9 @@ div.woocommerce form .form-row .select2-selection:focus {
   outline: solid 2px #535156;
   outline-offset: 2px;
 }
+div.woocommerce form .form-row .show-password-input {
+  z-index: 10;
+}
 
 div.woocommerce input[type=checkbox]:focus,
 div.woocommerce input[type=radio]:focus {
@@ -2014,6 +2019,8 @@ div.woocommerce form .form-row .select2-selection--single {
 }
 
 div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-top: 0;
+  padding-bottom: 0;
   line-height: 45.625px;
 }
 

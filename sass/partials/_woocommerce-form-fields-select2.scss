@@ -38,6 +38,8 @@ $_select2-inner-component-line-height: $_select2-selection-height--multiple !def
 
 
 #{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+	padding-top: 0;
+	padding-bottom: 0;
 	line-height: $_select2-selection-height--single;
 }
 

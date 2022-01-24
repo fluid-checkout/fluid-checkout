@@ -11,10 +11,5 @@
 	&:not( .fc-no-validation-icon ):not( .fc-select2-field ) .woocommerce-input-wrapper:after {
 		top: remsize( 1.1rem );
 	}
-
-	// Select2 Fields (optional, with "clear" button)
-	&.fc-select2-field:not( .fc-no-validation-icon ) select:not( [required] ) ~ .select2-container:after {
-		// right: remsize( 2rem );
-	}
 	
 }

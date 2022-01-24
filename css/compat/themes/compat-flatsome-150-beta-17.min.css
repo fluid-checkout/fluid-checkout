@@ -39,6 +39,8 @@ body.theme-flatsome div.woocommerce form .form-row .select2-selection--single {
 }
 
 body.theme-flatsome div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-top: 0;
+  padding-bottom: 0;
   line-height: 39.1px;
 }
 
