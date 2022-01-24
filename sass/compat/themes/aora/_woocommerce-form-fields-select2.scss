@@ -10,7 +10,7 @@ $_select2-selection-height:            remsize( 4.4rem ) !default;
 
 #{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__clear,
 #{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-    transform: none;
+	transform: none;
 }
 
 
@@ -23,5 +23,5 @@ $_select2-selection-height:            remsize( 4.4rem ) !default;
 
 #{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
 	margin-top: $_select2-inner-spacing;
-    margin-right: $_select2-inner-spacing;
+	margin-right: $_select2-inner-spacing;
 }
