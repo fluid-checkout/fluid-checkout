@@ -22,6 +22,10 @@ body.theme-astra div.woocommerce form .form-row .select2-selection .select2-sele
   line-height: 28px;
 }
 
+body.theme-astra div.woocommerce form .form-row .select2-selection--single {
+  padding: 0;
+}
+
 body.theme-astra div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   line-height: 40.5px;
 }

@@ -21,6 +21,10 @@ body.theme-hestia div.woocommerce form .form-row .select2-selection .select2-sel
   line-height: 22px;
 }
 
+body.theme-hestia div.woocommerce form .form-row .select2-selection--single {
+  padding: 0;
+}
+
 body.theme-hestia div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   line-height: 30px;
 }

@@ -27,6 +27,10 @@ body.theme-blocksy div.woocommerce form .form-row .select2-selection .select2-se
   line-height: 27.5px;
 }
 
+body.theme-blocksy div.woocommerce form .form-row .select2-selection--single {
+  padding: 0;
+}
+
 body.theme-blocksy div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   line-height: 40px;
 }
