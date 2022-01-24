@@ -8,21 +8,6 @@ body.theme-astra.woocommerce-page.woocommerce-checkout form.woocommerce-checkout
   border: 0;
 }
 
-body.theme-astra div.woocommerce form .form-row .select2-selection--single,
-body.theme-astra div.woocommerce form .form-row .select2-selection--multiple {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-body.theme-astra div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
-  padding-right: 10.5px;
-}
-
-body.theme-astra div.woocommerce form .form-row .select2-selection .select2-selection__clear,
-body.theme-astra div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-  transform: none;
-}
-
 body.theme-astra div.woocommerce form .form-row .select2-selection,
 body.theme-astra div.woocommerce form .form-row .select2-selection__rendered {
   min-height: 40.5px;
@@ -61,4 +46,19 @@ body.theme-astra div.woocommerce form .form-row .select2-selection--multiple .se
 
 body.theme-astra div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   height: 28px;
+}
+
+body.theme-astra div.woocommerce form .form-row .select2-selection--single,
+body.theme-astra div.woocommerce form .form-row .select2-selection--multiple {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+body.theme-astra div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-right: 10.5px;
+}
+
+body.theme-astra div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-astra div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  transform: none;
 }

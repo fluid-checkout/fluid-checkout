@@ -13,19 +13,6 @@ body.theme-blocksy div.woocommerce form .form-row input[type=radio] {
   background-color: #fff;
 }
 
-body.theme-blocksy div.woocommerce form .form-row span.select2-container {
-  height: auto;
-}
-
-body.theme-blocksy div.woocommerce form .form-row .select2-selection.select2-selection--single .select2-selection__arrow {
-  margin-top: 0;
-}
-
-body.theme-blocksy div.woocommerce form .form-row .select2-selection.select2-selection--single .select2-selection__clear {
-  margin-top: 0;
-  margin-right: 20px;
-}
-
 body.theme-blocksy div.woocommerce form .form-row .select2-selection,
 body.theme-blocksy div.woocommerce form .form-row .select2-selection__rendered {
   min-height: 40px;
@@ -64,5 +51,18 @@ body.theme-blocksy div.woocommerce form .form-row .select2-selection--multiple .
 
 body.theme-blocksy div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   height: 27.5px;
+}
+
+body.theme-blocksy div.woocommerce form .form-row span.select2-container {
+  height: auto;
+}
+
+body.theme-blocksy div.woocommerce form .form-row .select2-selection.select2-selection--single .select2-selection__arrow {
+  margin-top: 0;
+}
+
+body.theme-blocksy div.woocommerce form .form-row .select2-selection.select2-selection--single .select2-selection__clear {
+  margin-top: 0;
+  margin-right: 20px;
 }
 /*# sourceMappingURL=maps/compat-blocksy-150-beta-17.min.css.map */

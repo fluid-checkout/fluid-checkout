@@ -10,16 +10,6 @@ body.theme-go div.woocommerce form .form-row.woocommerce-validated:not([class*=w
   top: 12px;
 }
 
-body.theme-go div.woocommerce form .form-row .select2-selection--single,
-body.theme-go div.woocommerce form .form-row .select2-selection--multiple {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-body.theme-go div.woocommerce form .form-row .select2-selection--multiple {
-  border-width: 2px;
-}
-
 body.theme-go div.woocommerce form .form-row .select2-selection,
 body.theme-go div.woocommerce form .form-row .select2-selection__rendered {
   min-height: 49px;
@@ -58,5 +48,15 @@ body.theme-go div.woocommerce form .form-row .select2-selection--multiple .selec
 
 body.theme-go div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   height: 38px;
+}
+
+body.theme-go div.woocommerce form .form-row .select2-selection--single,
+body.theme-go div.woocommerce form .form-row .select2-selection--multiple {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+body.theme-go div.woocommerce form .form-row .select2-selection--multiple {
+  border-width: 2px;
 }
 /*# sourceMappingURL=maps/compat-go-150-beta-17.min.css.map */
