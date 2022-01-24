@@ -2,41 +2,15 @@
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix } .fc-wrapper #payment ul.payment_methods > .wc_payment_method.wc_payment_method > input[type=radio]:first-child:checked + label:after {
-	top: remsize( .9rem );
-	left: remsize( .8rem );
-}
-
-#{ $_body-theme-selector-prefix } .fc-content [type="radio"]:not(:checked)+label, 
-#{ $_body-theme-selector-prefix } .fc-content [type="radio"]:checked+label {
+#{ $_body-theme-selector-prefix } .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
 	height: auto;
 }
 
-#{ $_body-theme-selector-prefix } .fc-content [type="radio"] + label:before, 
-#{ $_body-theme-selector-prefix } .fc-content [type="radio"] + label:after {
-	margin: auto;
-	transition: none;
-}
 
-#{ $_body-theme-selector-prefix } .fc-content [type="radio"]:checked + label:after, 
-#{ $_body-theme-selector-prefix } .fc-content .with-gap[type="radio"]:checked + label:after {
+
+#{ $_body-theme-selector-prefix } .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:after {
+	top: remsize( .5rem );
+	left: remsize( .4rem );
+	border-color: transparent;
 	background-color: transparent;
-}
-
-#{ $_body-theme-selector-prefix } .fc-content [type="radio"]:checked + label:after, 
-#{ $_body-theme-selector-prefix } .fc-content .with-gap[type="radio"]:checked + label:before, 
-#{ $_body-theme-selector-prefix } .fc-content .with-gap[type="radio"]:checked + label:after {
-	border: remsize( .2rem ) solid transparent;
-}
-
-#{ $_body-theme-selector-prefix } .fc-step__substep-fields-inner input[type=text], 
-#{ $_body-theme-selector-prefix } .fc-step__substep-fields-inner input[type=number], 
-#{ $_body-theme-selector-prefix } .fc-step__substep-fields-inner input[type=email], 
-#{ $_body-theme-selector-prefix } .fc-step__substep-fields-inner input[type=tel], 
-#{ $_body-theme-selector-prefix } .fc-step__substep-fields-inner input[type=url], 
-#{ $_body-theme-selector-prefix } .fc-step__substep-fields-inner input[type=password], 
-#{ $_body-theme-selector-prefix } .fc-step__substep-fields-inner input[type=search], 
-#{ $_body-theme-selector-prefix } .fc-step__substep-fields-inner textarea, 
-#{ $_body-theme-selector-prefix } .fc-step__substep-fields-inner .input-text {
-	padding: remsize( 1rem );
 }

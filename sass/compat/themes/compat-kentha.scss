@@ -22,6 +22,8 @@ $_select2-selection-height:            remsize( 4.8rem ) !default;
 // ------------------------------------
 @import
 	"kentha/checkout-content-area",
+	"kentha/checkout-steps",
 	"kentha/woocommerce-form-fields",
-	"kentha/checkout-payment-methods";
+	"kentha/checkout-payment-methods",
+	"kentha/checkout-shipping-methods";
 
