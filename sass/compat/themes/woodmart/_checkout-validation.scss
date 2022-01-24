@@ -1,22 +1,11 @@
 // ------------------------------------
-// CHECKOUT FIELD VALIDATION
+// CHECKOUT VALIDATION MESSAGES
 // ------------------------------------
-
-// VALID FIELDS
-body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
-
-	// Select2 Fields
-	&:not( .fc-no-validation-icon ) .select2-selection:after {
-		right: remsize( 2.6rem );
-	}
-
-}
-
-body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error:before {
+#{ $_body-theme-selector-prefix } div.woocommerce .form-row.form-row .woocommerce-error:before {
 	padding-top: remsize( .6rem );
 }
 
-body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error {
+#{ $_body-theme-selector-prefix } div.woocommerce .form-row.form-row .woocommerce-error {
 	background-color: none;
 	-webkit-transform: none;
 	-webkit-animation: none;
@@ -27,7 +16,29 @@ body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error {
 	min-height: 0;
 }
 
-body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error::after {
+#{ $_body-theme-selector-prefix } div.woocommerce .form-row.form-row .woocommerce-error::after {
 	display: none;
 }
 
+
+
+
+
+// ------------------------------------
+// CHECKOUT FIELD VALIDATION
+// ------------------------------------
+
+// VALID FIELDS
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+
+	// Select2 Fields
+	&:not( .fc-no-validation-icon ) .select2-selection:after {
+		top: remsize( .7rem );
+		right: remsize( 2rem );
+	}
+	// Select2 Fields (optional, with "clear" button)
+	&.fc-select2-field:not( .fc-no-validation-icon ) select:not( [required] ) ~ .select2-container .select2-selection:after {
+		right: remsize( 3rem );
+	}
+
+}

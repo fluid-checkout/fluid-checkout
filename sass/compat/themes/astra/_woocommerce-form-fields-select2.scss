@@ -1,0 +1,22 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--single,
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+    padding-right: $_select2-inner-spacing + remsize( .5rem );
+}
+
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+	transform: none;
+}

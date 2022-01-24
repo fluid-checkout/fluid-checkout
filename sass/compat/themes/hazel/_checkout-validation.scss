@@ -3,7 +3,7 @@
 // ------------------------------------
 
 // VALID FIELDS
-body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
 
 	// "valid" field check icon
 	&:not( .fc-no-validation-icon ) .select2-selection:after,

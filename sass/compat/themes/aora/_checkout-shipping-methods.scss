@@ -3,6 +3,6 @@
 // ------------------------------------
 
 // Hide default radio elements with opacity to allow for keyboard navigation
-body.theme-aora .shipping-method__option input[type="radio"] {
+#{ $_body-theme-selector-prefix } .shipping-method__option input[type="radio"] {
 	display: block !important;
 }

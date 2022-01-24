@@ -8,8 +8,23 @@
 
 
 // ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-blocksy' !default;
+$_select2-inner-spacing:               remsize( .55rem ) !default;
+$_select2-selection-height:            remsize( 4rem ) !default;
+$_select2-selection-height--multiple:  #{ $_select2-selection-height - ( $_select2-inner-spacing * 2 ) - remsize( .15rem ) } !default;
+$_select2-inner-component-height:      $_select2-selection-height--multiple !default;
+
+
+
+
+
+// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
 	"blocksy/checkout-validation",	
-	"blocksy/woocommerce-form-fields";
+	"blocksy/woocommerce-form-fields",
+	"../../partials/woocommerce-form-fields-select2",
+	"blocksy/woocommerce-form-fields-select2";

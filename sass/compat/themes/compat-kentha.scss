@@ -8,10 +8,22 @@
 
 
 // ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-kentha' !default;
+$_select2-selection-height:            remsize( 4.8rem ) !default;
+
+
+
+
+
+// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
 	"kentha/checkout-content-area",
+	"kentha/checkout-steps",
 	"kentha/woocommerce-form-fields",
-	"kentha/checkout-payment-methods";
+	"kentha/checkout-payment-methods",
+	"kentha/checkout-shipping-methods";
 

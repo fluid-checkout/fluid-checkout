@@ -8,7 +8,22 @@
 
 
 // ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-mrtailor' !default;
+$_select2-inner-spacing:               remsize( .5rem ) !default;
+$_select2-selection-height:            remsize( 4.5rem ) !default;
+$_select2-selection-height--multiple:  #{ $_select2-selection-height - ( $_select2-inner-spacing * 2 ) } !default;
+
+
+
+
+
+// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"mrtailor/order-summary";
+	"mrtailor/order-summary",
+	"mrtailor/checkout-validation",
+	"../../partials/woocommerce-form-fields-select2",
+	"mrtailor/woocommerce-form-fields-select2";

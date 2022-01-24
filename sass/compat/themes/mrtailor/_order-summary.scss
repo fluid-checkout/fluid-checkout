@@ -2,10 +2,17 @@
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-.woocommerce-checkout .woocommerce form.woocommerce-checkout .fc-checkout-order-review__inner .woocommerce-checkout-review-order.woocommerce-checkout-review-order {
+#{ $_body-theme-selector-prefix }.woocommerce-checkout .woocommerce form.woocommerce-checkout .fc-checkout-order-review__inner .woocommerce-checkout-review-order.woocommerce-checkout-review-order {
     background-image: none;
 }
 
-.woocommerce-checkout .fc-checkout-order-review__inner #order_review table.shop_table tbody tr td:last-child {
+#{ $_body-theme-selector-prefix }.woocommerce-checkout .fc-checkout-order-review__inner #order_review table.shop_table tbody tr td:last-child {
     padding: remsize( 1rem ) remsize( 2rem );
+}
+
+
+
+
+#{ $_body-theme-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total td .includes_tax .amount {
+	font-size: inherit;
 }

@@ -1222,7 +1222,8 @@ body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=tel],
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=url],
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=password],
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection {
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection,
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection .select2-selection__rendered {
   background-color: #fff;
   color: inherit;
 }
@@ -1297,7 +1298,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=tel],
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=url],
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=password],
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection {
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection,
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection .select2-selection__rendered {
   background-color: #fff;
   color: inherit;
 }
@@ -1324,6 +1326,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   margin: 0 0 0;
   padding: 0;
   text-indent: 0;
+  line-height: 1.6;
 }
 
 .shipping-method__option input[type=radio] {
@@ -1344,6 +1347,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   font-weight: normal;
   cursor: pointer;
   transition: all 0.15s linear;
+  line-height: 1.6;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option:last-child .shipping-method__option-label {
@@ -1478,6 +1482,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   margin: 0;
   padding: 0;
   border: 0;
+  line-height: 1.6;
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] {
@@ -1503,6 +1508,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   border-bottom: solid 1px #D8D8D8;
   background-color: #fff;
   font-weight: normal;
+  line-height: 1.6;
   cursor: pointer;
   transition: all 0.15s linear;
 }
@@ -1964,6 +1970,9 @@ div.woocommerce form .form-row .select2-selection:focus {
   outline: solid 2px #535156;
   outline-offset: 2px;
 }
+div.woocommerce form .form-row .show-password-input {
+  z-index: 10;
+}
 
 div.woocommerce input[type=checkbox]:focus,
 div.woocommerce input[type=radio]:focus {
@@ -1989,6 +1998,54 @@ div.woocommerce form .form-row .select2-container {
 }
 div.woocommerce form .form-row textarea {
   min-height: 100px;
+}
+
+div.woocommerce form .form-row .select2-selection,
+div.woocommerce form .form-row .select2-selection__rendered {
+  min-height: 45.625px;
+  line-height: 0;
+}
+
+div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  top: 0;
+  margin-top: 5px;
+  min-height: 31.625px;
+  line-height: 31.625px;
+}
+
+div.woocommerce form .form-row .select2-selection--single {
+  padding: 0;
+}
+
+div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 45.625px;
+}
+
+div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+  padding-bottom: 5px;
+  min-height: 31.625px;
+  line-height: 31.625px;
+  white-space: normal;
+}
+
+div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5px;
+  line-height: 31.625px;
+  overflow: hidden;
+}
+
+div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  min-height: 31.625px;
+  line-height: 31.625px;
+}
+
+div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
+  height: 31.625px;
+  min-height: auto;
 }
 
 .fc-wrapper .fc-checkout-order-review {

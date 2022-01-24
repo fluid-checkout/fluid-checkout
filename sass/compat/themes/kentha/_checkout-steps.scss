@@ -1,0 +1,12 @@
+// ------------------------------------
+// CHECKOUT STEPS
+// ------------------------------------
+
+#{ $_body-theme-selector-prefix }.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h1,
+#{ $_body-theme-selector-prefix }.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h2,
+#{ $_body-theme-selector-prefix }.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h3,
+#{ $_body-theme-selector-prefix }.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h4,
+#{ $_body-theme-selector-prefix }.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h5,
+#{ $_body-theme-selector-prefix }.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h6 {
+	color: inherit;
+}

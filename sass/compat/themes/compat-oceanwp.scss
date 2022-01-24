@@ -1,0 +1,28 @@
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
+@import "../../abstract/_all";
+
+
+
+
+
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-oceanwp' !default;
+$_select2-inner-spacing:               remsize( .5rem ) !default;
+$_select2-selection-height:            remsize( 3.8rem ) !default;
+$_select2-selection-height--multiple:  #{ $_select2-selection-height - ( $_select2-inner-spacing * 2 ) - remsize( .2rem ) } !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"oceanwp/checkout-content-area",
+	"../../partials/woocommerce-form-fields-select2",
+	"oceanwp/woocommerce-form-fields-select2";

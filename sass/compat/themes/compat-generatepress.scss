@@ -1,0 +1,25 @@
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
+@import "../../abstract/_all";
+
+
+
+
+
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-generatepress' !default;
+$_select2-inner-spacing:               remsize( .5rem ) !default;
+$_select2-selection-height:            remsize( 4.2rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"../../partials/woocommerce-form-fields-select2";

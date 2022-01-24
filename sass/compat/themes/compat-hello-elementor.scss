@@ -8,8 +8,16 @@
 
 
 // ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-hello-elementor' !default;
+
+
+
+
+
+// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"hello-elementor/checkout-payment-methods",
 	"hello-elementor/woocommerce-form-fields";

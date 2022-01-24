@@ -3,10 +3,10 @@
 // ------------------------------------
 
 // Checkout header, With admin bar
-.theme-flatsome.admin-bar .fc-checkout-header {
+#{ $_body-theme-selector-prefix }.admin-bar .fc-checkout-header {
 	top: 0;
 }
 
-.theme-flatsome.admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+#{ $_body-theme-selector-prefix }.admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
 	transform: translateY(0);
 }

@@ -167,6 +167,9 @@ div.woocommerce form .form-row .select2-selection:focus {
   outline: solid 2px #535156;
   outline-offset: 2px;
 }
+div.woocommerce form .form-row .show-password-input {
+  z-index: 10;
+}
 
 div.woocommerce input[type=checkbox]:focus,
 div.woocommerce input[type=radio]:focus {
@@ -192,6 +195,54 @@ div.woocommerce form .form-row .select2-container {
 }
 div.woocommerce form .form-row textarea {
   min-height: 100px;
+}
+
+div.woocommerce form .form-row .select2-selection,
+div.woocommerce form .form-row .select2-selection__rendered {
+  min-height: 45.625px;
+  line-height: 0;
+}
+
+div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  top: 0;
+  margin-top: 5px;
+  min-height: 31.625px;
+  line-height: 31.625px;
+}
+
+div.woocommerce form .form-row .select2-selection--single {
+  padding: 0;
+}
+
+div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 45.625px;
+}
+
+div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+  padding-bottom: 5px;
+  min-height: 31.625px;
+  line-height: 31.625px;
+  white-space: normal;
+}
+
+div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5px;
+  line-height: 31.625px;
+  overflow: hidden;
+}
+
+div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  min-height: 31.625px;
+  line-height: 31.625px;
+}
+
+div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
+  height: 31.625px;
+  min-height: auto;
 }
 
 div.woocommerce .fc-expansible-form-section {

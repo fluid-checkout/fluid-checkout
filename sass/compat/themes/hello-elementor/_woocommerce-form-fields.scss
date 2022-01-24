@@ -2,18 +2,18 @@
 // WOOCOMMERCE FORM-FIELDS
 // ------------------------------------
 
-body.theme-hello-elementor .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
-	padding: remsize(.5rem) remsize(1.6rem);
+#{ $_body-theme-selector-prefix } .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+	padding: remsize( .5rem ) remsize( 1.6rem );
 }
 
-body.theme-hello-elementor .fc-wrapper .select2-container--default .select2-selection--single .select2-selection__rendered {
+#{ $_body-theme-selector-prefix } .fc-wrapper .select2-container--default .select2-selection--single .select2-selection__rendered {
 	line-height: 1.6;
 }
 
-body.theme-hello-elementor .fc-wrapper .select2-container .select2-selection--single {
-	height: remsize(3.6rem);
+#{ $_body-theme-selector-prefix } .fc-wrapper .select2-container .select2-selection--single {
+	height: remsize( 3.6rem );
 }
 
-body.theme-hello-elementor .fc-content .fc-wrapper .form-row.woocommerce-validated:not([class *= woocommerce-invalid]) .select2-selection:after {
+#{ $_body-theme-selector-prefix } .fc-content .fc-wrapper .form-row.woocommerce-validated:not([class *= woocommerce-invalid]) .select2-selection:after {
 	line-height: 0.8;
 }

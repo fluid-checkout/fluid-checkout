@@ -2,10 +2,10 @@
 // WOOCOMMERCE FORM FIELDS
 // ------------------------------------
 
-.fc-wrapper .woocommerce-billing-fields.woocommerce-billing-fields {
+#{ $_body-theme-selector-prefix } .fc-wrapper .woocommerce-billing-fields.woocommerce-billing-fields {
 	background-color: transparent;
 }
 
-.fc-wrapper .fc-step__substep-title.fc-step__substep-title {
+#{ $_body-theme-selector-prefix } .fc-wrapper .fc-step__substep-title.fc-step__substep-title {
 	border: none;
 }
