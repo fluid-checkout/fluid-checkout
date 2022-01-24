@@ -40,9 +40,3 @@
 #{ $_body-theme-selector-prefix } .fc-step__substep-fields-inner .input-text {
 	padding: remsize( 1rem );
 }
-
-#{ $_body-theme-selector-prefix } .fc-step__substep-fields-inner .select2-selection.select2-selection, 
-#{ $_body-theme-selector-prefix } .fc-step__substep-fields-inner .select2-selection__rendered.select2-selection__rendered {
-	height: remsize( 4rem );
-	line-height: remsize( 4rem );
-}

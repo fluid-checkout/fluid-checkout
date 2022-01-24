@@ -44,10 +44,4 @@ body.theme-kentha .fc-step__substep-fields-inner textarea,
 body.theme-kentha .fc-step__substep-fields-inner .input-text {
   padding: 10px;
 }
-
-body.theme-kentha .fc-step__substep-fields-inner .select2-selection.select2-selection,
-body.theme-kentha .fc-step__substep-fields-inner .select2-selection__rendered.select2-selection__rendered {
-  height: 40px;
-  line-height: 40px;
-}
 /*# sourceMappingURL=maps/compat-kentha-150-beta-17.min.css.map */
