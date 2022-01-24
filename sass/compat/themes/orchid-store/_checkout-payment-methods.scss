@@ -5,8 +5,3 @@
 #{ $_body-theme-selector-prefix } #payment div.payment_box {
 	color: inherit;
 }
-
-#{ $_body-theme-selector-prefix } .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] + label:before,
-#{ $_body-theme-selector-prefix } .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:after { 
-	top: remsize( .55rem );
-}

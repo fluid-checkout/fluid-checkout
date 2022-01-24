@@ -2,9 +2,10 @@ body.theme-orchid-store #payment div.payment_box {
   color: inherit;
 }
 
-body.theme-orchid-store .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] + label:before,
-body.theme-orchid-store .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:after {
-  top: 5.5px;
+body.theme-orchid-store .fc-wrapper .woocommerce-additional-fields {
+  padding: 0;
+  border: 0;
+  box-shadow: none;
 }
 
 body.theme-orchid-store div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
