@@ -2,30 +2,6 @@
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection,
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection__rendered {
-	height: remsize( 4.1rem );
-	line-height: remsize( 4.1rem );
-}
-
-
-
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__clear,
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-	margin-top: 0;
-	top: 0;
-	height: remsize( 3.8rem );
-	line-height: remsize( 3.8rem );
-}
-
-
-
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
-	height: remsize( 2.8rem );
-	line-height: remsize( 2.8rem );
-}
-
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
-	height: remsize( 2.8rem );
-	line-height: remsize( 2.7rem );
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection{
+	height: auto;
 }
