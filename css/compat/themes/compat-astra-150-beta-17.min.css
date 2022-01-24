@@ -52,6 +52,7 @@ body.theme-astra div.woocommerce form .form-row .select2-selection--multiple .se
 
 body.theme-astra div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   height: 28px;
+  min-height: auto;
 }
 
 body.theme-astra div.woocommerce form .form-row .select2-selection--single,

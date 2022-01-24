@@ -70,6 +70,7 @@ body.theme-mrtailor div.woocommerce form .form-row .select2-selection--multiple 
 
 body.theme-mrtailor div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   height: 35px;
+  min-height: auto;
 }
 
 body.theme-mrtailor div.woocommerce form .form-row .select2-selection .select2-selection__arrow {

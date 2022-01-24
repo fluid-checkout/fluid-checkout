@@ -64,6 +64,7 @@ body.theme-flatsome div.woocommerce form .form-row .select2-selection--multiple 
 
 body.theme-flatsome div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   height: 25.1px;
+  min-height: auto;
 }
 
 body.theme-flatsome div.woocommerce form .form-row .select2-selection--multiple {

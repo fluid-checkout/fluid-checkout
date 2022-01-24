@@ -68,4 +68,5 @@ body.theme-Divi div.woocommerce form .form-row .select2-selection--multiple .sel
 
 body.theme-Divi div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   height: 39px;
+  min-height: auto;
 }

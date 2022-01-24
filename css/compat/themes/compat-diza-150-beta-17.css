@@ -78,6 +78,7 @@ body.theme-diza div.woocommerce form .form-row .select2-selection--multiple .sel
 
 body.theme-diza div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   height: 33px;
+  min-height: auto;
 }
 
 body.theme-diza div.woocommerce form .form-row .select2-selection .select2-selection__clear,

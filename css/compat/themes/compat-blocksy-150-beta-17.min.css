@@ -57,6 +57,7 @@ body.theme-blocksy div.woocommerce form .form-row .select2-selection--multiple .
 
 body.theme-blocksy div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   height: 27.5px;
+  min-height: auto;
 }
 
 body.theme-blocksy div.woocommerce form .form-row span.select2-container {

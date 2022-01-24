@@ -54,6 +54,7 @@ body.theme-neve div.woocommerce form .form-row .select2-selection--multiple .sel
 
 body.theme-neve div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   height: 36px;
+  min-height: auto;
 }
 
 body.theme-neve div.woocommerce form .form-row .select2-selection.select2-selection--single .select2-selection__arrow {

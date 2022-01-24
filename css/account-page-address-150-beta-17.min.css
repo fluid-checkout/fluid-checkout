@@ -241,6 +241,7 @@ div.woocommerce form .form-row .select2-selection--multiple .select2-search--inl
 
 div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   height: 31.625px;
+  min-height: auto;
 }
 
 div.woocommerce .fc-expansible-form-section {

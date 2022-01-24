@@ -51,5 +51,6 @@ body.theme-hestia div.woocommerce form .form-row .select2-selection--multiple .s
 
 body.theme-hestia div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   height: 22px;
+  min-height: auto;
 }
 /*# sourceMappingURL=maps/compat-hestia-150-beta-17.min.css.map */
