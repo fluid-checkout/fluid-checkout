@@ -49,6 +49,7 @@ body.theme-astra div.woocommerce form .form-row .select2-selection--multiple .se
 }
 
 body.theme-astra div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5.5px;
   line-height: 28px;
   overflow: hidden;
 }

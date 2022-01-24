@@ -77,6 +77,7 @@ body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .sel
 }
 
 body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 4px;
   line-height: 34px;
   overflow: hidden;
 }

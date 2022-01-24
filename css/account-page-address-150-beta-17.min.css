@@ -220,6 +220,7 @@ div.woocommerce form .form-row .select2-selection--multiple .select2-selection__
 }
 
 div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5px;
   line-height: 31.625px;
   overflow: hidden;
 }

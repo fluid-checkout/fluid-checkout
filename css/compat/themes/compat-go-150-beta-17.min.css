@@ -46,6 +46,7 @@ body.theme-go div.woocommerce form .form-row .select2-selection--multiple .selec
 }
 
 body.theme-go div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5.5px;
   line-height: 38px;
   overflow: hidden;
 }

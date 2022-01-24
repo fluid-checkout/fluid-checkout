@@ -50,6 +50,7 @@ body.theme-Divi div.woocommerce form .form-row .select2-selection--multiple .sel
 }
 
 body.theme-Divi div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5px;
   line-height: 39px;
   overflow: hidden;
 }

@@ -52,6 +52,7 @@ body.theme-blocksy div.woocommerce form .form-row .select2-selection--multiple .
 }
 
 body.theme-blocksy div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5.5px;
   line-height: 27.5px;
   overflow: hidden;
 }

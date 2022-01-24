@@ -45,6 +45,7 @@ $_select2-inner-component-line-height: $_select2-selection-height--multiple !def
 }
 
 #{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+	margin-top: $_select2-inner-spacing;
 	line-height: $_select2-inner-component-line-height;
 	overflow: hidden;
 }
