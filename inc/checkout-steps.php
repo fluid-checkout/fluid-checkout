@@ -1887,6 +1887,109 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 
+	/**
+	 * Get the display value for the custom checkout fields.
+	 *
+	 * @param   mixed  $field_display_value  The display value for the custom checkout field.
+	 */
+	public function get_field_display_value_from_array( $field_display_value ) {
+		// Bail if not an array value
+		if ( ! is_array( $field_display_value ) ) { return $field_display_value; }
+		
+		// Initialize resulting string value
+		$new_field_display_value = '';
+		
+		// Iterate each array value to add to the new display value
+		$first = true;
+		foreach ( $field_display_value as $value ) {
+			if ( ! $first ) { $new_field_display_value .= ', '; }
+			$new_field_display_value .= $value;
+			$first = false;
+		}
+
+		return $new_field_display_value;
+	}
+
+	/**
+	 * Get the display value for the custom checkout fields with multiple options object.
+	 *
+	 * @param   string  $field_value       The field value.
+	 * @param   array   $field_options     The field options object.
+	 * @param   string  $field_label       The field label.
+	 * @param   bool    $show_field_label  Whether to show the field label on the display value.
+	 */
+	public function get_field_display_value_from_field_options_args( $field_value, $field_options, $field_label, $show_field_label = false ) {
+		// Bail if not valid field value or options object
+		if ( empty( $field_value ) || ! is_array( $field_options ) ) { return ''; }
+
+		$field_display_value = '';
+		$selected_option_text = $field_options[ $field_value ];
+
+		// Get field display value
+		if ( $show_field_label ) {
+			/* translators: %1$s the selected option text, %2$s the field label. */
+			$field_display_value = sprintf( _x( '%2$s (%1$s)', 'Custom field review text format: option fields', 'fluid-checkout' ), $selected_option_text, $field_label );
+		}
+		else {
+			/* translators: %1$s the selected option text, %2$s the field label. */
+			$field_display_value = sprintf( _x( '%1$s', 'Custom field review text format: option fields', 'fluid-checkout' ), $selected_option_text, $field_label );
+		}
+
+		return $field_display_value;
+	}
+
+	/**
+	 * Get the display value for the custom checkout fields.
+	 *
+	 * @param   mixed   $field_value  The field value.
+	 * @param   string  $field_key    The field key.
+	 * @param   array   $field_args   The custom field arguments.
+	 */
+	public function get_field_display_value( $field_value, $field_key, $field_args ) {
+		$field_display_value = $field_value;
+		$field_label = ! empty( $field_args[ 'label' ] ) ? $field_args[ 'label' ] : $field_key;
+
+		// Only process if field value is not empty
+		if ( ! empty( $field_value ) ) {
+
+			// Get field display values based on type
+			switch ( $field_args[ 'type' ] ) {
+				case 'hidden':
+				case 'heading':
+				case 'label':
+					$field_display_value = null;
+					break;
+				case 'number':
+					if ( ! empty( $field_value ) ) {
+						$field_display_value = sprintf( _x( '%2$s (%1$s)', 'Custom field review text format: number', 'fluid-checkout' ), $field_value, $field_label );
+					}
+					break;
+				case 'checkbox':
+					if ( ! empty( $field_value ) ) {
+						$field_display_value = sprintf( _x( '%2$s (%1$s)', 'Custom field review text format: checkbox', 'fluid-checkout' ), $field_value, $field_label );
+					}
+					break;
+				case 'password':
+					$field_display_value = str_repeat( apply_filters( 'fc_substep_text_display_value_' . $field_args[ 'type' ] . '_char', '*' ), strlen( $field_value ) );
+					break;
+				case 'radio':
+				case 'select':
+					$field_options = $field_args[ 'options' ];
+					$field_display_value = $this->get_field_display_value_from_field_options_args( $field_value, $field_options, $field_label, apply_filters( 'fc_substep_text_display_value_show_field_label_single_option', true ) );
+					break;
+				default:
+					$field_display_value = $this->get_field_display_value_from_array( $field_display_value );
+					break;
+			}
+		}
+
+		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_args[ 'type' ], $field_display_value, $field_value, $field_key, $field_args );
+		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_key, $field_display_value, $field_value, $field_key, $field_args );
+
+		return $field_display_value;
+	}
+
+
 
 	/**
 	 * Get the address substep review text for the address type.
@@ -1914,6 +2017,55 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return WC()->countries->get_formatted_address( $address_data );
 	}
 
+	/**
+	 * Add the address substep review text lines for the address type.
+	 * 
+	 * @param   string  $address_type  The address type.
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function get_substep_text_lines_address_type( $address_type, $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Add formatted address line
+		$review_text_lines[] = $this->get_substep_text_formatted_address_text_line( $address_type );
+
+		// Get shipping fields
+		$shipping_fields = WC()->checkout->get_checkout_fields( $address_type );
+
+		// Define list of address fields to skip as the formatted address has already been added
+		$field_keys_skip_list = apply_filters( "fc_substep_text_{$address_type}_address_field_keys_skip_list", array(
+			$address_type . '_first_name',
+			$address_type . '_last_name',
+			$address_type . '_company',
+			$address_type . '_country',
+			$address_type . '_address_1',
+			$address_type . '_address_2',
+			$address_type . '_city',
+			$address_type . '_state',
+			$address_type . '_postcode',
+			$address_type . '_phone',
+			$address_type . '_email',
+		) );
+
+		// Add extra fields lines
+		foreach ( $shipping_fields as $field_key => $field_args ) {
+			// Skip some fields
+			if ( in_array( $field_key, $field_keys_skip_list ) ) { continue; }
+			
+			// Get field display value
+			$field_value = WC()->checkout->get_value( $field_key );
+			$field_display_value = $this->get_field_display_value( $field_value, $field_key, $field_args );
+
+			// Maybe add field
+			if ( ! empty( $field_display_value ) ) {
+				$review_text_lines[] = $field_display_value;
+			}
+		}
+
+		return $review_text_lines;
+	}
+
 
 
 	/**
@@ -1922,15 +2074,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_shipping_address( $review_text_lines = array() ) {
-		// Bail if not an array
-		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
-
-		// Add formatted address line
-		$review_text_lines[] = $this->get_substep_text_formatted_address_text_line( 'shipping' );
-
-		// TODO: Add lines for extra fields
-
-		return $review_text_lines;
+		return $this->get_substep_text_lines_address_type( 'shipping', $review_text_lines );
 	}
 
 	/**
@@ -2385,20 +2529,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_billing_address( $review_text_lines = array() ) {
-		// Bail if not an array
-		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
-
-		// Add formatted address line
-		if ( 'true' === apply_filters( 'fc_show_billing_same_as_shipping_notice_checkout_contact_step_text', 'true' ) && $this->is_billing_address_data_same_as_shipping() ) {
-			$review_text_lines[] = '<em>' . apply_filters( 'fc_billing_same_as_shipping_option_label_step_text', __( 'Billing address same as shipping', 'fluid-checkout' ) ) . '</em>';
-		}
-		else {
-			$review_text_lines[] = $this->get_substep_text_formatted_address_text_line( 'billing' );
-		}
-
-		// TODO: Add lines for extra fields
-
-		return $review_text_lines;
+		return $this->get_substep_text_lines_address_type( 'billing', $review_text_lines );
 	}
 
 	/**
