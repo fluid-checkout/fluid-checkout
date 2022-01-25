@@ -148,16 +148,12 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	float: left;
 	width: 75%;
 	padding: $global-spacing-tiny;
-	padding-left: #{ $order-summary-image-width + $global-spacing-small };
-	min-height: #{ $order-summary-image-width };
 	background-color: transparent;
 	text-align: left;
 	line-height: 1.2;
-
-	@media (#{$bp-larger-than-desktop}) {
-		padding-left: #{ $order-summary-image-width--large-screen + $global-spacing-small };
-		min-height: #{ $order-summary-image-width--large-screen };
-	}
+}
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-name:after {
+	@include clearfix();
 }
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total,
@@ -170,19 +166,28 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 }
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table img {
-	position: absolute;
-	top: 0;
-	left: - #{ $order-summary-image-padding };
+	float: left;
+	margin-left: - #{ $order-summary-image-padding + $global-spacing-tiny };
 	padding: $order-summary-image-padding;
 	width: $order-summary-image-width !important; // Needed to override inline styles added by some themes
-	height: $order-summary-image-width !important; // Needed to override inline styles added by some themes
+	height: auto !important; // Needed to override inline styles added by some themes
 	background-color: $order-summary-image-background-color;
 	border: $order-summary-image-border;
 	border-radius: $order-summary-image-border-radius;
 
 	@media (#{$bp-larger-than-desktop}) {
 		width: $order-summary-image-width--large-screen !important; // Needed to override inline styles added by some themes
-		height: $order-summary-image-width--large-screen !important;  // Needed to override inline styles added by some themes
+		height: auto !important;  // Needed to override inline styles added by some themes
+	}
+}
+
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
+	float: left;
+	padding-left: $global-spacing-small;
+	width: calc( 100% - $order-summary-image-width );
+
+	@media (#{$bp-larger-than-desktop}) {
+		width: calc( 100% - $order-summary-image-width--large-screen );
 	}
 }
 
