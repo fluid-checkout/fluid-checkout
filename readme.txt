@@ -303,6 +303,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Refactor replace use of `$checkout` variable from `WC()->checkout()` in multiple places.
 * Improved: Display shipping only fields after the fields in common with the billing section (same as billing only fields).
 * Improved: Refactor normalize theme compat styles to use theme specific selector `body.theme-slug`, where `slug` is the actual theme slug.
+* Improved: Refactor functions to generate substep review text with array of lines for easier customization.
 * Fixed: Skip setting posted data to session or customer object when the `post_data` request parameter is not provided, avoiding the values from being cleared unintentionally.
 * Fixed: Remove field values from session in case they are not provided with the `post_data` parameter, fixes not being able to unselect/uncheck optional `checkbox`, `radio` and `select` fields.
 * Fixed: Parse posted data for multiple-value/multi-select fields as arrays.

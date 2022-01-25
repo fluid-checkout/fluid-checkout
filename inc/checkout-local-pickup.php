@@ -200,7 +200,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 				'postcode' => WC()->countries->get_base_postcode(),
 			);
 
-			$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping-address">';
+			$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping_address">';
 			$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
 			$html .= '</div>';
 		}
