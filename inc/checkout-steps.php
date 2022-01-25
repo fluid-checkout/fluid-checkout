@@ -1983,7 +1983,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
-		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_args[ 'type' ], $field_display_value, $field_value, $field_args );
+		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_args[ 'type' ], $field_display_value, $field_value, $field_key, $field_args );
+		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_key, $field_display_value, $field_value, $field_key, $field_args );
 
 		return $field_display_value;
 	}
@@ -2019,9 +2020,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add the address substep review text lines for the address type.
 	 * 
+	 * @param   string  $address_type  The address type.
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
-	public function get_substep_text_lines_address_type( $review_text_lines = array(), $address_type ) {
+	public function get_substep_text_lines_address_type( $address_type, $review_text_lines = array() ) {
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
@@ -2072,7 +2074,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_shipping_address( $review_text_lines = array() ) {
-		return $this->get_substep_text_lines_address_type( $review_text_lines, 'shipping' );
+		return $this->get_substep_text_lines_address_type( 'shipping', $review_text_lines );
 	}
 
 	/**
@@ -2527,7 +2529,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_billing_address( $review_text_lines = array() ) {
-		return $this->get_substep_text_lines_address_type( $review_text_lines, 'billing' );
+		return $this->get_substep_text_lines_address_type( 'billing', $review_text_lines );
 	}
 
 	/**
