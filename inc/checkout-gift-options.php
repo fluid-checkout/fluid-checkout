@@ -156,19 +156,6 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 		// Define gift options fields
 		$message_maxlength = apply_filters( 'fc_gift_options_message_length', false );
 		$gift_option_fields = array(
-			'_fc_gift_from' => array(
-				'type'          => 'text',
-				'class'         => array( 'form-row-wide '),
-				'label'         => _x( 'From', 'Field label for person sending the gift', 'fluid-checkout' ),
-				'placeholder'   => __( 'Your name', 'fluid-checkout' ),
-				'description'   => __( 'Name of who is sending the gift, printed on the packing slip.', 'fluid-checkout' ),
-				'default'		=> is_checkout() ? WC()->customer->get_display_name() : null,
-				'maxlength'		=> apply_filters( 'fc_gift_options_from_length', false ),
-				'custom_attributes' => array(
-					'data-autofocus' => true,
-				),
-			),
-
 			'_fc_gift_message' => array(
 				'type'          => 'textarea',
 				'class'         => array( 'form-row-wide '),
@@ -177,6 +164,19 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 				'description'   => $message_maxlength ? sprintf( __( 'Brief message with up to %d characters, printed on the packing slip.', 'fluid-checkout' ), $message_maxlength ) : __( 'Brief message, printed on the packing slip.', 'fluid-checkout' ),
 				'default'		=> is_checkout() ? WC()->checkout()->get_value( '_fc_gift_message' ) : null,
 				'maxlength'		=> $message_maxlength,
+				'custom_attributes' => array(
+					'data-autofocus' => true,
+				),
+			),
+
+			'_fc_gift_from' => array(
+				'type'          => 'text',
+				'class'         => array( 'form-row-wide '),
+				'label'         => _x( 'From', 'Field label for person sending the gift', 'fluid-checkout' ),
+				'placeholder'   => __( 'Your name', 'fluid-checkout' ),
+				'description'   => __( 'Name of who is sending the gift, printed on the packing slip.', 'fluid-checkout' ),
+				'default'		=> is_checkout() ? WC()->customer->get_display_name() : null,
+				'maxlength'		=> apply_filters( 'fc_gift_options_from_length', false ),
 			),
 		);
 

@@ -3,7 +3,7 @@ Contributors: fluidwebco, diegoversiani, luiggiab
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 5.8
+Tested up to: 5.9
 Stable tag: 1.4.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -160,6 +160,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 = Free Plugins =
 
 * Checkout Field Editor for WooCommerce - by ThemeHigh
+* Creative Mail - by Constant Contact
 * Delivery & Pickup Date Time for WooCommerce - by CodeRockz
 * Elementor - by Elementor Team
 * Germanized for WooCommerce - by vendidero
@@ -322,10 +323,14 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Bump tested up to WordPress 5.9 and WooCommerce 6.1
+* Added: Compatibility with plugin Creative Mail.
 * Added: New filter `fc_billing_same_as_shipping_option_label` to change the label for the option "billing address same as shipping".
 * Improved: Compatibility with plugin WooCommerce Stripe Payment Gateway - by WooCommerce, will now show Express Checkout section if the Stripe payment gateway is not available.
 * Improved: Compatibility with theme Neve, login form is now displayed in the modal as expected.
 * Improved: Also update the checkout form and order summary when the browser tab gets visible again, as when changing tabs.
+* Improved: Change order of gift message field to before the gift from/sender field to make it consistent with other parts of the website.
+* Fixed: Stretched product images on the checkout order summary.
 
 = 1.4.3 - 2022-01-12 =
 
