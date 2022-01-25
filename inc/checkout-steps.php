@@ -1914,6 +1914,46 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return WC()->countries->get_formatted_address( $address_data );
 	}
 
+	/**
+	 * Add the address substep review text lines for the address type.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function get_substep_text_lines_address_type( $review_text_lines = array(), $address_type ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Add formatted address line
+		$review_text_lines[] = $this->get_substep_text_formatted_address_text_line( $address_type );
+
+		// Get shipping fields
+		$shipping_fields = WC()->checkout->get_checkout_fields( $address_type );
+
+		// Define list of address fields to skip as the formatted address has already been added
+		$field_keys_skip_list = apply_filters( "fc_substep_text_{$address_type}_address_field_keys_skip_list", array(
+			$address_type . '_first_name',
+			$address_type . '_last_name',
+			$address_type . '_company',
+			$address_type . '_country',
+			$address_type . '_address_1',
+			$address_type . '_address_2',
+			$address_type . '_city',
+			$address_type . '_state',
+			$address_type . '_postcode',
+			$address_type . '_phone',
+		) );
+
+		// Add extra fields lines
+		foreach ( $shipping_fields as $field_key => $field_args ) {
+			// Skip some fields
+			if ( in_array( $field_key, $field_keys_skip_list ) ) { continue; }
+			
+			$review_text_lines[] = WC()->checkout->get_value( $field_key );
+		}
+
+		return $review_text_lines;
+	}
+
 
 
 	/**
@@ -1922,15 +1962,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_shipping_address( $review_text_lines = array() ) {
-		// Bail if not an array
-		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
-
-		// Add formatted address line
-		$review_text_lines[] = $this->get_substep_text_formatted_address_text_line( 'shipping' );
-
-		// TODO: Add lines for extra fields
-
-		return $review_text_lines;
+		return $this->get_substep_text_lines_address_type( $review_text_lines, 'shipping' );
 	}
 
 	/**
@@ -2385,20 +2417,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_billing_address( $review_text_lines = array() ) {
-		// Bail if not an array
-		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
-
-		// Add formatted address line
-		if ( 'true' === apply_filters( 'fc_show_billing_same_as_shipping_notice_checkout_contact_step_text', 'true' ) && $this->is_billing_address_data_same_as_shipping() ) {
-			$review_text_lines[] = '<em>' . apply_filters( 'fc_billing_same_as_shipping_option_label_step_text', __( 'Billing address same as shipping', 'fluid-checkout' ) ) . '</em>';
-		}
-		else {
-			$review_text_lines[] = $this->get_substep_text_formatted_address_text_line( 'billing' );
-		}
-
-		// TODO: Add lines for extra fields
-
-		return $review_text_lines;
+		return $this->get_substep_text_lines_address_type( $review_text_lines, 'billing' );
 	}
 
 	/**
