@@ -186,7 +186,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 
 
 	/**
-	 * Output shipping address substep in text format for when the step is completed.
+	 * Change the shipping address substep review text.
 	 */
 	public function change_substep_text_shipping_address( $html ) {
 		// Use store base address for `local_pickup`
@@ -200,7 +200,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 				'postcode' => WC()->countries->get_base_postcode(),
 			);
 
-			$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping-address">';
+			$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping_address">';
 			$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
 			$html .= '</div>';
 		}

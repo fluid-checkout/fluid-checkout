@@ -90,6 +90,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
 		add_action( 'wp_footer', array( $this, 'output_login_form_flyout' ), 10 );
 		add_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
+		add_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_text_fragment' ), 10 );
 
 		// Account creation
@@ -100,6 +101,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
 		add_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
+		add_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_shipping_address' ), 10 );
+		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
+		add_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
@@ -109,6 +113,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Billing Address
 		add_action( 'fc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
+		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_billing_address' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_billing_address_text_fragment' ), 10 );
 
 		// Billing Same as Shipping
@@ -1320,6 +1325,31 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the substep review text.
+	 */
+	public function get_substep_review_text( $substep_id ) {
+		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--' . $substep_id . '">';
+
+		$review_text_lines = apply_filters( "fc_substep_{$substep_id}_text_lines", array() );
+
+		// Maybe add notice for empty substep text
+		if ( ! is_array( $review_text_lines ) || count ( $review_text_lines ) == 0 ) {
+			$review_text_lines[] = apply_filters( 'fc_no_substep_review_text_notice', _x( 'None.', 'Substep review text', 'fluid-checkout' ) );
+		}
+
+		// Add each review text line to the output html
+		foreach( $review_text_lines as $text_line ) {
+			$html .= '<div class="fc-step__substep-text-line">' . wp_kses_post( $text_line ) . '</div>';
+		}
+
+		$html .= '</div>';
+
+		return apply_filters( "fc_substep_{$substep_id}_text", $html );
+	}
+
+
+
+	/**
 	 * Output checkout expansible form section start tag.
 	 *
 	 * @param   string  $section_id    ID of the expansible section.
@@ -1478,34 +1508,49 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get contact substep in text format for when the step is completed.
+	 * Add the contact substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
-	public function get_substep_text_contact() {
-		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--contact">';
+	public function add_substep_text_lines_contact( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
-		// Get contact field ids
+		// Get fields
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
+		$checkout_fields = WC()->checkout->get_checkout_fields();
 		
 		// Add a text line for each field
 		foreach( $contact_field_ids as $field_key ) {
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( WC()->checkout->get_value( $field_key ) ) . '</div>';
-		}
-
-		// Maybe add notice for account creation
-		if ( get_option( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) === 'true' ) {
-			$parsed_posted_data = $this->get_parsed_posted_data();
-			if ( array_key_exists( 'createaccount', $parsed_posted_data ) && $parsed_posted_data[ 'createaccount' ] == '1' ) {
-				$html .= '<div class="fc-step__substep-text-line"><em>' . esc_html( __( 'An account will be created with the information provided.', 'fluid-checkout' ) ) . '</em></div>';
+			// Iterate checkout fields
+			foreach ( $checkout_fields as $field_group => $field_group_fields ) {
+				if ( array_key_exists( $field_key, $field_group_fields ) ) {
+					$review_text_lines[] = WC()->checkout->get_value( $field_key );
+					continue 2;
+				}
 			}
 		}
 
-		$html .= '</div>';
+		// Maybe add notice for account creation
+		if ( 'true' === get_option( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) ) {
+			$parsed_posted_data = $this->get_parsed_posted_data();
+			if ( array_key_exists( 'createaccount', $parsed_posted_data ) && $parsed_posted_data[ 'createaccount' ] == '1' ) {
+				$review_text_lines[] = '<em>' . __( 'An account will be created with the information provided.', 'fluid-checkout' ) . '</em>';
+			}
+		}
 
-		return apply_filters( 'fc_substep_contact_text', $html );
+		return $review_text_lines;
 	}
 
 	/**
-	 * Add Contact text format as checkout fragment.
+	 * Get contact substep review text.
+	 */
+	public function get_substep_text_contact() {
+		return $this->get_substep_review_text( 'contact' );
+	}
+
+	/**
+	 * Add contact substep review text as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
@@ -1516,7 +1561,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Output contact substep in text format for when the step is completed.
+	 * Output contact substep review text.
 	 */
 	public function output_substep_text_contact() {
 		echo $this->get_substep_text_contact();
@@ -1811,7 +1856,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output address substep in text format for when the step is completed.
+	 * Output address substep review text.
+	 * 
+	 * @param   string  $address_type  The address type.
 	 */
 	public function get_substep_text_formatted_address( $address_type ) {
 		// Field prefix
@@ -1840,35 +1887,89 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 
+
 	/**
-	 * Add shipping address text as checkout fragment.
+	 * Get the address substep review text for the address type.
+	 * 
+	 * @param   string  $address_type  The address type.
+	 */
+	public function get_substep_text_formatted_address_text_line( $address_type ) {
+		// Field prefix
+		$field_key_prefix = $address_type . '_';
+
+		// Get field keys from checkout fields
+		$address_data = array();
+		$fields = WC()->checkout()->get_checkout_fields( $address_type );
+		$field_keys = array_keys( $fields );
+		
+		// Get data from checkout fields
+		foreach ( $field_keys as $field_key ) {
+			// Get field key
+			$address_field_key = str_replace( $field_key_prefix, '', $field_key );
+			$address_data[ $address_field_key ] = WC()->checkout->get_value( $field_key );
+		}
+
+		$address_data = apply_filters( 'fc_'.$address_type.'_substep_text_address_data', $address_data );
+
+		return WC()->countries->get_formatted_address( $address_data );
+	}
+
+
+
+	/**
+	 * Add the shipping address substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_shipping_address( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Add formatted address line
+		$review_text_lines[] = $this->get_substep_text_formatted_address_text_line( 'shipping' );
+
+		// TODO: Add lines for extra fields
+
+		return $review_text_lines;
+	}
+
+	/**
+	 * Get shipping address substep review text.
+	 */
+	public function get_substep_text_shipping_address() {
+		return $this->get_substep_review_text( 'shipping_address' );
+	}
+
+	/**
+	 * Add shipping address substep review text as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_shipping_address_text_fragment( $fragments ) {
-		$html = $this->get_substep_text_formatted_address( 'shipping' );
-		$fragments['.fc-step__substep-text-content--shipping-address'] = $html;
+		$html = $this->get_substep_text_shipping_address();
+		$fragments['.fc-step__substep-text-content--shipping_address'] = $html;
 		return $fragments;
 	}
 
 	/**
-	 * Output shipping address available.
-	 *
-	 * @access public
+	 * Output shipping address substep review text.
 	 */
 	public function output_substep_text_shipping_address() {
-		echo $this->get_substep_text_formatted_address( 'shipping' );
+		echo $this->get_substep_text_shipping_address();
 	}
 
 
 
 	/**
-	 * Get shipping method substep in text format for when the step is completed.
+	 * Add the shipping methods substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
-	public function get_substep_text_shipping_method() {
-		$packages = WC()->shipping()->get_packages();
+	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
-		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping-method">';
+		$packages = WC()->shipping()->get_packages();
 
 		foreach ( $packages as $i => $package ) {
 			$available_methods = $package['rates'];
@@ -1879,27 +1980,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// TODO: Maybe handle multiple packages
 			// $package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
 
-			$html .= '<div class="fc-step__substep-text-line">' . wp_kses( $chosen_method_label, array( 'span' => array( 'class' => '' ), 'bdi' => array(), 'strong' => array() ) ) . '</div>';
+			$review_text_lines[] = wp_kses( $chosen_method_label, array( 'span' => array( 'class' => '' ), 'bdi' => array(), 'strong' => array() ) );
 		}
 
-		$html .= '</div>';
-
-		return apply_filters( 'fc_substep_shipping_methods_text', $html );
+		return $review_text_lines;
 	}
 
 	/**
-	 * Add shipping methods text format as checkout fragment.
+	 * Get shipping methods substep review text.
+	 */
+	public function get_substep_text_shipping_method() {
+		return $this->get_substep_review_text( 'shipping_method' );
+	}
+
+	/**
+	 * Add shipping methods substep review text as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_shipping_methods_text_fragment( $fragments ) {
 		$html = $this->get_substep_text_shipping_method();
-		$fragments['.fc-step__substep-text-content--shipping-method'] = $html;
+		$fragments['.fc-step__substep-text-content--shipping_method'] = $html;
 		return $fragments;
 	}
 
 	/**
-	 * Output shipping method substep in text format for when the step is completed.
+	 * Output shipping method substep review text.
 	 */
 	public function output_substep_text_shipping_method() {
 		echo $this->get_substep_text_shipping_method();
@@ -1908,40 +2014,49 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output order notes substep in text format for when the step is completed.
+	 * Add the order notes substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
-	public function get_substep_text_order_notes() {
-		$order_notes = $this->get_checkout_field_value_from_session( 'order_comments' );
+	public function add_substep_text_lines_order_notes( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
-		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--order-notes">';
+		// Get order notes
+		$order_notes = WC()->checkout()->get_value( 'order_comments' );
 
 		// The order notes value
 		if ( ! empty( $order_notes ) ) {
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( $order_notes ) . '</div>';
+			$review_text_lines[] = $order_notes;
 		}
 		// "No order notes" notice.
 		else {
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_no_order_notes_order_review_notice', _x( 'None.', 'Notice for no order notes provided', 'fluid-checkout' ) ) ) . '</div>';
+			$review_text_lines[] = apply_filters( 'fc_no_order_notes_order_review_notice', _x( 'None.', 'Notice for no order notes provided', 'fluid-checkout' ) );
 		}
 
-		$html .= '</div>';
-
-		return apply_filters( 'fc_substep_order_notes_text', $html );
+		return $review_text_lines;
 	}
 
 	/**
-	 * Add order notes text format as checkout fragment.
+	 * Get order notes substep review text.
+	 */
+	public function get_substep_text_order_notes() {
+		return $this->get_substep_review_text( 'order_notes' );
+	}
+
+	/**
+	 * Add order notes substep review text as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_order_notes_text_fragment( $fragments ) {
 		$html = $this->get_substep_text_order_notes();
-		$fragments['.fc-step__substep-text-content--order-notes'] = $html;
+		$fragments['.fc-step__substep-text-content--order_notes'] = $html;
 		return $fragments;
 	}
 
 	/**
-	 * Output order notes substep in text format for when the step is completed.
+	 * Output order notes substep review text.
 	 */
 	public function output_substep_text_order_notes() {
 		echo $this->get_substep_text_order_notes();
@@ -2265,21 +2380,50 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Add billing address text format as checkout fragment.
+	 * Add the billing methods substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_billing_address( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Add formatted address line
+		if ( 'true' === apply_filters( 'fc_show_billing_same_as_shipping_notice_checkout_contact_step_text', 'true' ) && $this->is_billing_address_data_same_as_shipping() ) {
+			$review_text_lines[] = '<em>' . apply_filters( 'fc_billing_same_as_shipping_option_label_step_text', __( 'Billing address same as shipping', 'fluid-checkout' ) ) . '</em>';
+		}
+		else {
+			$review_text_lines[] = $this->get_substep_text_formatted_address_text_line( 'billing' );
+		}
+
+		// TODO: Add lines for extra fields
+
+		return $review_text_lines;
+	}
+
+	/**
+	 * Get billing address substep review text.
+	 */
+	public function get_substep_text_billing_address() {
+		return $this->get_substep_review_text( 'billing_address' );
+	}
+
+	/**
+	 * Add billing address substep review text as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_billing_address_text_fragment( $fragments ) {
-		$html = $this->get_substep_text_formatted_address( 'billing' );
-		$fragments['.fc-step__substep-text-content--billing-address'] = $html;
+		$html = $this->get_substep_text_billing_address();
+		$fragments['.fc-step__substep-text-content--billing_address'] = $html;
 		return $fragments;
 	}
 
 	/**
-	 * Output billing address substep in text format for when the step is completed.
+	 * Output billing address substep review text.
 	 */
 	public function output_substep_text_billing_address() {
-		echo $this->get_substep_text_formatted_address( 'billing' );
+		echo $this->get_substep_text_billing_address();
 	}
 
 
@@ -2461,8 +2605,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Maybe get field values from posted data
 				if ( isset( $_POST['post_data'] ) ) {
-					$billing_field_value = $posted_data[ $field_key ];
-					$shipping_field_value = $posted_data[ $shipping_field_key ];
+					$billing_field_value = array_key_exists( $field_key, $posted_data ) ? $posted_data[ $field_key ] : null;
+					$shipping_field_value = array_key_exists( $shipping_field_key, $posted_data ) ? $posted_data[ $shipping_field_key ] : null;
 				}
 				// Maybe get field values from checkout fields
 				else {

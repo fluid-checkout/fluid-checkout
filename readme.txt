@@ -303,6 +303,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Refactor replace use of `$checkout` variable from `WC()->checkout()` in multiple places.
 * Improved: Display shipping only fields after the fields in common with the billing section (same as billing only fields).
 * Improved: Refactor normalize theme compat styles to use theme specific selector `body.theme-slug`, where `slug` is the actual theme slug.
+* Improved: Refactor functions to generate substep review text with array of lines for easier customization.
 * Fixed: Skip setting posted data to session or customer object when the `post_data` request parameter is not provided, avoiding the values from being cleared unintentionally.
 * Fixed: Remove field values from session in case they are not provided with the `post_data` parameter, fixes not being able to unselect/uncheck optional `checkbox`, `radio` and `select` fields.
 * Fixed: Parse posted data for multiple-value/multi-select fields as arrays.
@@ -319,6 +320,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Validation of fields in the contact substep.
 * Fixed: Styles for `select2` fields to fill 100% width of available field container space.
 * Fixed: Styles for `select2` multiple selection fields for various themes.
+* Fixed: Only display shipping phone in the contact step review text when the field is available.
 * Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
 
 = Unreleased =

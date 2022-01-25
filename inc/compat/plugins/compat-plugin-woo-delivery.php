@@ -65,7 +65,8 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 			add_action( $hook, array( $this, 'output_substep_delivery_options' ), $priority );
 
 			// Add substep review text fragment
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_delivery_options_text_fragment' ), 10 );
+			add_filter( 'fc_substep_delivery_date_text_lines', array( $this, 'add_substep_text_lines_delivery_date' ), 10 );
+			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_delivery_date_text_fragment' ), 10 );
 
 			// Get delivery date value from session
 			add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_field_values_from_session' ), 10, 2 );
@@ -142,9 +143,14 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 
 	/**
-	 * Output delivery options substep in text format for when the step is completed.
+	 * Add the delivery date substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
-	public function get_substep_text_delivery_options() {
+	public function add_substep_text_lines_delivery_date( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
 		// Get settings
 		$delivery_option_settings = get_option( 'coderockz_woo_delivery_option_delivery_settings' );
 		
@@ -165,70 +171,73 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		$has_pickup_date = $pickup_date !== null && ! empty( $pickup_date );
 		$has_pickup_time = $pickup_time !== null && ! empty( $pickup_time );
 		$has_values = $has_delivery_date || $has_delivery_time || $has_pickup_date || $has_pickup_time;
-
-		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--delivery-date">';
 		
 		if ( $has_values ) {
 
 			// Delivery
 			if ( ( $delivery_option_settings['enable_option_time_pickup'] !== true || 'delivery' == $order_type ) && ( $has_delivery_date || $has_delivery_time ) ) {
 				// Delivery label
-				$html .= '<div class="fc-step__substep-text-line"><strong>' . esc_html( $delivery_field_label ) . '</strong></div>';
+				$review_text_lines[] = '<strong>' . esc_html( $delivery_field_label ) . '</strong>';
 
 				// Delivery Date
 				if ( $has_delivery_date ) {
-					$html .= '<div class="fc-step__substep-text-line">' . esc_html( $delivery_date ) . '</div>';
+					$review_text_lines[] = $delivery_date;
 				}
 
 				// Delivery Time
 				if ( $has_delivery_time ) {
-					$html .= '<div class="fc-step__substep-text-line">' . esc_html( $delivery_time ) . '</div>';
+					$review_text_lines[] = $delivery_time;
 				}
 			}
 
 			// Pickup
 			if ( ( $delivery_option_settings['enable_option_time_pickup'] !== true || 'pickup' == $order_type ) && ( $has_pickup_date || $has_pickup_time ) ) {
 				// Pickup label
-				$html .= '<div class="fc-step__substep-text-line"><strong>' . esc_html( $pickup_field_label ) . '</strong></div>';
+				$review_text_lines[] = '<strong>' . esc_html( $pickup_field_label ) . '</strong>';
 
 				// Pickup Date
 				if ( $has_pickup_date ) {
-					$html .= '<div class="fc-step__substep-text-line">' . esc_html( $pickup_date ) . '</div>';
+					$review_text_lines[] = $pickup_date;
 				}
 
 				// Pickup Time
 				if ( $has_pickup_time ) {
-					$html .= '<div class="fc-step__substep-text-line">' . esc_html( $pickup_time ) . '</div>';
+					$review_text_lines[] = $pickup_time;
 				}
 			}
 
 		}
 		// "No delivery or pickup date" notice.
 		else {
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( apply_filters( 'fc_woodelivery_no_delivery_options_order_review_notice', _x( 'None.', 'Notice for no delivery or pickup options provided', 'fluid-checkout' ) ) ) . '</div>';
+			$review_text_lines[] = apply_filters( 'fc_woodelivery_no_delivery_options_order_review_notice', _x( 'None.', 'Notice for no delivery or pickup options provided', 'fluid-checkout' ) );
 		}
 
-		$html .= '</div>';
-
-		return apply_filters( 'fc_substep_delivery_date_text', $html );
+		return $review_text_lines;
 	}
 
 	/**
-	 * Add delivery options text format as checkout fragment.
+	 * Get delivery date substep review text.
+	 */
+	public function get_substep_text_delivery_date() {
+		return FluidCheckout_Steps::instance()->get_substep_review_text( 'delivery_date' );
+	}
+
+	/**
+	 * Add delivery date substep review text as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
-	public function add_delivery_options_text_fragment( $fragments ) {
-		$html = $this->get_substep_text_delivery_options();
-		$fragments['.fc-step__substep-text-content--delivery-date'] = $html;
+	public function add_delivery_date_text_fragment( $fragments ) {
+		$html = $this->get_substep_text_delivery_date();
+		$fragments['.fc-step__substep-text-content--delivery_date'] = $html;
 		return $fragments;
 	}
 
 	/**
-	 * Output delivery options substep in text format for when the step is completed.
+	 * Output delivery date substep review text.
 	 */
 	public function output_substep_text_delivery_options() {
-		echo $this->get_substep_text_delivery_options();
+		echo $this->get_substep_text_delivery_date();
 	}
 
 
