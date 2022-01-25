@@ -1485,10 +1485,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get contact field ids
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
+
+		// Get all checkout fields
+		$checkout_fields = WC()->checkout->get_checkout_fields();
 		
 		// Add a text line for each field
 		foreach( $contact_field_ids as $field_key ) {
-			$html .= '<div class="fc-step__substep-text-line">' . esc_html( WC()->checkout->get_value( $field_key ) ) . '</div>';
+			// Iterate checkout fields
+			foreach ( $checkout_fields as $field_group => $field_group_fields ) {
+				if ( array_key_exists( $field_key, $field_group_fields ) ) {
+					$html .= '<div class="fc-step__substep-text-line">' . esc_html( WC()->checkout->get_value( $field_key ) ) . '</div>';
+					continue 2;
+				}
+			}
 		}
 
 		// Maybe add notice for account creation

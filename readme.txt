@@ -319,6 +319,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Validation of fields in the contact substep.
 * Fixed: Styles for `select2` fields to fill 100% width of available field container space.
 * Fixed: Styles for `select2` multiple selection fields for various themes.
+* Fixed: Only display shipping phone in the contact step review text when the field is available.
 * Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
 
 = Unreleased =
