@@ -104,11 +104,16 @@ div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-i
 		z-index: z( 'above' );
 		position: absolute;
 		right: remsize( .5rem );
-		top: remsize( .8rem );
+		top: remsize( 1rem );
 		border-radius: 100%;
 		background-color: transparentize( $white, .25 );
 		color: $success-color;
 		pointer-events: none;
+	}
+
+	// Password
+	&:not( .fc-no-validation-icon ):not( .fc-select2-field ) .woocommerce-input-wrapper.password-input:after {
+		right: remsize( 3rem );
 	}
 
 	// Select2 Fields

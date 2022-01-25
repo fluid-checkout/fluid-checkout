@@ -197,18 +197,30 @@ div.woocommerce form .form-row textarea {
   min-height: 100px;
 }
 
-div.woocommerce form .form-row .select2-selection,
-div.woocommerce form .form-row .select2-selection__rendered {
-  min-height: 45.625px;
+div.woocommerce form .form-row span.select2-container {
+  height: auto;
+}
+
+div.woocommerce form .form-row .select2-selection {
+  height: auto;
+  min-height: 43.625px;
+  border-radius: 0;
   line-height: 0;
+}
+
+div.woocommerce form .form-row .select2-selection__rendered {
+  min-height: 43.625px;
+  border-radius: 0;
 }
 
 div.woocommerce form .form-row .select2-selection .select2-selection__clear,
 div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
   top: 0;
   margin-top: 5px;
+  height: auto;
   min-height: 31.625px;
   line-height: 31.625px;
+  transform: none;
 }
 
 div.woocommerce form .form-row .select2-selection--single {
@@ -218,13 +230,17 @@ div.woocommerce form .form-row .select2-selection--single {
 div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   padding-top: 0;
   padding-bottom: 0;
-  line-height: 45.625px;
+  line-height: 43.625px;
+}
+
+div.woocommerce form .form-row .select2-selection--multiple {
+  border-width: 1px;
 }
 
 div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
   padding-bottom: 5px;
-  min-height: 31.625px;
-  line-height: 31.625px;
+  min-height: 33.625px;
+  line-height: 33.625px;
   white-space: normal;
 }
 
@@ -235,13 +251,14 @@ div.woocommerce form .form-row .select2-selection--multiple .select2-selection__
 }
 
 div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  margin-top: 5px;
   min-height: 31.625px;
   line-height: 31.625px;
 }
 
 div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   margin-top: 0;
-  height: 31.625px;
+  height: 33.625px;
   min-height: auto;
 }
 

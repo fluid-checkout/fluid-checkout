@@ -4,7 +4,7 @@
 
 #{ $_body-theme-selector-prefix } header.fc-checkout-header {
 	position: fixed !important; // Needed to override theme styles breaking the layout
-	top: 0 !important;
+	top: 0 !important; // Needed to override theme styles breaking the layout
 
 	@media (#{$bp-larger-than-desktop}) {
 		position: static !important; // Needed to override theme styles breaking the layout

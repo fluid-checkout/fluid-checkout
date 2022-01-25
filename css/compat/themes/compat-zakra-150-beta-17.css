@@ -5,18 +5,30 @@ body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class
   top: 6px;
 }
 
-body.theme-zakra div.woocommerce form .form-row .select2-selection,
+body.theme-zakra div.woocommerce form .form-row span.select2-container {
+  height: auto;
+}
+
+body.theme-zakra div.woocommerce form .form-row .select2-selection {
+  height: auto;
+  min-height: 37.16px;
+  border-radius: 0;
+  line-height: 0;
+}
+
 body.theme-zakra div.woocommerce form .form-row .select2-selection__rendered {
   min-height: 37.16px;
-  line-height: 0;
+  border-radius: 0;
 }
 
 body.theme-zakra div.woocommerce form .form-row .select2-selection .select2-selection__clear,
 body.theme-zakra div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
   top: 0;
   margin-top: 5px;
+  height: auto;
   min-height: 25.16px;
   line-height: 25.16px;
+  transform: none;
 }
 
 body.theme-zakra div.woocommerce form .form-row .select2-selection--single {
@@ -29,10 +41,14 @@ body.theme-zakra div.woocommerce form .form-row .select2-selection--single .sele
   line-height: 37.16px;
 }
 
+body.theme-zakra div.woocommerce form .form-row .select2-selection--multiple {
+  border-width: 1px;
+}
+
 body.theme-zakra div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
   padding-bottom: 5px;
-  min-height: 25.16px;
-  line-height: 25.16px;
+  min-height: 27.16px;
+  line-height: 27.16px;
   white-space: normal;
 }
 
@@ -43,28 +59,13 @@ body.theme-zakra div.woocommerce form .form-row .select2-selection--multiple .se
 }
 
 body.theme-zakra div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  margin-top: 5px;
   min-height: 25.16px;
   line-height: 25.16px;
 }
 
 body.theme-zakra div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   margin-top: 0;
-  height: 25.16px;
+  height: 27.16px;
   min-height: auto;
-}
-
-body.theme-zakra .fc-wrapper .select2-container .select2-selection {
-  height: auto;
-}
-
-body.theme-zakra .fc-wrapper .select2-container .select2-selection .select2-selection__rendered {
-  height: auto;
-}
-
-body.theme-zakra div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-  height: auto;
-}
-
-body.theme-zakra div.woocommerce form .form-row .select2-selection .select2-selection__clear {
-  height: auto;
 }

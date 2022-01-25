@@ -5,18 +5,30 @@ body.theme-woostify div.woocommerce form .form-row.woocommerce-validated:not([cl
   top: 10px;
 }
 
-body.theme-woostify div.woocommerce form .form-row .select2-selection,
+body.theme-woostify div.woocommerce form .form-row span.select2-container {
+  height: auto;
+}
+
+body.theme-woostify div.woocommerce form .form-row .select2-selection {
+  height: auto;
+  min-height: 48px;
+  border-radius: 2px;
+  line-height: 0;
+}
+
 body.theme-woostify div.woocommerce form .form-row .select2-selection__rendered {
   min-height: 48px;
-  line-height: 0;
+  border-radius: 2px;
 }
 
 body.theme-woostify div.woocommerce form .form-row .select2-selection .select2-selection__clear,
 body.theme-woostify div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
   top: 0;
   margin-top: 5px;
+  height: auto;
   min-height: 36px;
   line-height: 36px;
+  transform: none;
 }
 
 body.theme-woostify div.woocommerce form .form-row .select2-selection--single {
@@ -29,10 +41,14 @@ body.theme-woostify div.woocommerce form .form-row .select2-selection--single .s
   line-height: 48px;
 }
 
+body.theme-woostify div.woocommerce form .form-row .select2-selection--multiple {
+  border-width: 1px;
+}
+
 body.theme-woostify div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
   padding-bottom: 5px;
-  min-height: 36px;
-  line-height: 36px;
+  min-height: 38px;
+  line-height: 38px;
   white-space: normal;
 }
 
@@ -43,27 +59,15 @@ body.theme-woostify div.woocommerce form .form-row .select2-selection--multiple 
 }
 
 body.theme-woostify div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  margin-top: 5px;
   min-height: 36px;
   line-height: 36px;
 }
 
 body.theme-woostify div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   margin-top: 0;
-  height: 36px;
+  height: 38px;
   min-height: auto;
-}
-
-body.theme-woostify .fc-wrapper .select2-container .select2-selection--single {
-  height: auto;
-}
-
-body.theme-woostify .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
-  height: auto;
-}
-
-body.theme-woostify div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-  transform: none;
-  height: auto;
 }
 
 body.theme-woostify div.woocommerce form .form-row .select2-selection .select2-selection__clear {

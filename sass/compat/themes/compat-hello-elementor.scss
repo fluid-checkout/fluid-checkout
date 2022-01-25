@@ -11,6 +11,9 @@
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
 $_body-theme-selector-prefix:          'body.theme-hello-elementor' !default;
+$_select2-border-width:                remsize( .1rem ) !default;
+$_select2-border-radius:               remsize( .3rem ) !default;
+$_select2-selection-height:            remsize( 3.6rem ) !default;
 
 
 
@@ -20,4 +23,5 @@ $_body-theme-selector-prefix:          'body.theme-hello-elementor' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"hello-elementor/woocommerce-form-fields";
+	"hello-elementor/checkout-validation",
+	"../../partials/woocommerce-form-fields-select2";

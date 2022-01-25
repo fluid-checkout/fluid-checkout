@@ -2,13 +2,6 @@
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__clear,
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-	transform: none;
-}
-
-
-
 #{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
 	padding-top: 0;
 }

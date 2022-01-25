@@ -1,30 +1,4 @@
 // ------------------------------------
-// WOOCOMMERCE FORM-ROW
-// ------------------------------------
-
-#{ $_body-theme-selector-prefix } div.woocommerce form #billing_country_field,
-#{ $_body-theme-selector-prefix } div.woocommerce form #shipping_country_field,
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-container--default,
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-container .select2-selection {
-	height: auto;
-}
-
-
-
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-container .select2-selection__rendered,
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-container .select2-selection__arrow {
-	line-height: remsize( 5.5rem );
-}
-
-
-
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-container .select2-selection__arrow {
-	top: remsize( .7rem );
-}
-
-
-
-// ------------------------------------
 // WOOCOMMERCE FORM FIELDS
 // ------------------------------------
 

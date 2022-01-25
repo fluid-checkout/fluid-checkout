@@ -11,8 +11,9 @@
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
 $_body-theme-selector-prefix:          'body.theme-flatsome' !default;
-$_select2-inner-spacing:               remsize( .5rem ) !default;
-$_select2-selection-height:            remsize( 3.91rem ) !default;
+$_select2-border-width:                remsize( .1rem ) !default;
+$_select2-border-radius:               remsize( .3rem ) !default;
+$_select2-selection-height:            remsize( 3.891rem ) !default;
 
 
 

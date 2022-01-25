@@ -11,9 +11,9 @@
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
 $_body-theme-selector-prefix:          'body.theme-riode' !default;
-$_select2-inner-spacing:               remsize( .5rem ) !default;
-$_select2-selection-height:            remsize( 4.35rem ) !default;
-$_select2-selection-height--multiple:  #{ $_select2-selection-height - ( $_select2-inner-spacing * 2 ) - remsize( .2rem ) } !default;
+$_select2-border-width:                remsize( .1rem ) !default;
+$_select2-border-radius:               0 !default;
+$_select2-selection-height:            remsize( 4.55rem ) !default;
 
 
 

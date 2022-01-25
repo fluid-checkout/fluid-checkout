@@ -4,5 +4,5 @@
 
 // Hide default radio elements with opacity to allow for keyboard navigation
 #{ $_body-theme-selector-prefix } .shipping-method__option input[type="radio"] {
-	display: block !important;
+	display: block !important; // Needed to override theme styles set with `!important`
 }

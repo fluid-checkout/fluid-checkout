@@ -11,12 +11,9 @@
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
 $_body-theme-selector-prefix:          'body.theme-hestia' !default;
-$_select2-inner-spacing:               remsize( .2rem ) !default;
+$_select2-border-width:                remsize( .1rem ) !default;
+$_select2-border-radius:               0 !default;
 $_select2-selection-height:            remsize( 3rem ) !default;
-$_select2-selection-height--single:    $_select2-selection-height !default;
-$_select2-selection-height--multiple:  #{ $_select2-selection-height - ( $_select2-inner-spacing * 2 ) - remsize( .4rem ) } !default;
-$_select2-inner-component-height:      $_select2-selection-height--multiple !default;
-$_select2-inner-component-line-height: $_select2-selection-height--multiple !default;
 
 
 
@@ -27,4 +24,5 @@ $_select2-inner-component-line-height: $_select2-selection-height--multiple !def
 // ------------------------------------
 @import
 	"hestia/checkout-validation",
-    "../../partials/woocommerce-form-fields-select2";
+    "../../partials/woocommerce-form-fields-select2",
+    "hestia/woocommerce-form-fields-select2";

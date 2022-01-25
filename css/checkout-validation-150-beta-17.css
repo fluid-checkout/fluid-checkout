@@ -99,11 +99,14 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-inv
   z-index: 10;
   position: absolute;
   right: 5px;
-  top: 8px;
+  top: 10px;
   border-radius: 100%;
   background-color: rgba(255, 255, 255, 0.75);
   color: #00A854;
   pointer-events: none;
+}
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
+  right: 30px;
 }
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
   right: 20px;

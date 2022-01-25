@@ -13,22 +13,6 @@ body.theme-phlox div.woocommerce form .form-row.woocommerce-validated:not([class
   right: 32px;
 }
 
-body.theme-phlox div.woocommerce form #billing_country_field,
-body.theme-phlox div.woocommerce form #shipping_country_field,
-body.theme-phlox div.woocommerce form .form-row .select2-container--default,
-body.theme-phlox div.woocommerce form .form-row .select2-container .select2-selection {
-  height: auto;
-}
-
-body.theme-phlox div.woocommerce form .form-row .select2-container .select2-selection__rendered,
-body.theme-phlox div.woocommerce form .form-row .select2-container .select2-selection__arrow {
-  line-height: 55px;
-}
-
-body.theme-phlox div.woocommerce form .form-row .select2-container .select2-selection__arrow {
-  top: 7px;
-}
-
 body.theme-phlox div.woocommerce form .form-row textarea,
 body.theme-phlox div.woocommerce form .form-row select,
 body.theme-phlox div.woocommerce form .form-row input[type=email],
@@ -45,18 +29,30 @@ body.theme-phlox div.woocommerce form .form-row .select2-selection {
   max-width: none;
 }
 
-body.theme-phlox div.woocommerce form .form-row .select2-selection,
-body.theme-phlox div.woocommerce form .form-row .select2-selection__rendered {
-  min-height: 53.19px;
+body.theme-phlox div.woocommerce form .form-row span.select2-container {
+  height: auto;
+}
+
+body.theme-phlox div.woocommerce form .form-row .select2-selection {
+  height: auto;
+  min-height: 53.2px;
+  border-radius: 0;
   line-height: 0;
+}
+
+body.theme-phlox div.woocommerce form .form-row .select2-selection__rendered {
+  min-height: 53.2px;
+  border-radius: 0;
 }
 
 body.theme-phlox div.woocommerce form .form-row .select2-selection .select2-selection__clear,
 body.theme-phlox div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
   top: 0;
   margin-top: 5px;
-  min-height: 41.19px;
-  line-height: 41.19px;
+  height: auto;
+  min-height: 41.2px;
+  line-height: 41.2px;
+  transform: none;
 }
 
 body.theme-phlox div.woocommerce form .form-row .select2-selection--single {
@@ -66,29 +62,34 @@ body.theme-phlox div.woocommerce form .form-row .select2-selection--single {
 body.theme-phlox div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   padding-top: 0;
   padding-bottom: 0;
-  line-height: 53.19px;
+  line-height: 53.2px;
+}
+
+body.theme-phlox div.woocommerce form .form-row .select2-selection--multiple {
+  border-width: 1px;
 }
 
 body.theme-phlox div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
   padding-bottom: 5px;
-  min-height: 41.19px;
-  line-height: 41.19px;
+  min-height: 43.2px;
+  line-height: 43.2px;
   white-space: normal;
 }
 
 body.theme-phlox div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
   margin-top: 5px;
-  line-height: 41.19px;
+  line-height: 41.2px;
   overflow: hidden;
 }
 
 body.theme-phlox div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
-  min-height: 41.19px;
-  line-height: 41.19px;
+  margin-top: 5px;
+  min-height: 41.2px;
+  line-height: 41.2px;
 }
 
 body.theme-phlox div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   margin-top: 0;
-  height: 41.19px;
+  height: 43.2px;
   min-height: auto;
 }

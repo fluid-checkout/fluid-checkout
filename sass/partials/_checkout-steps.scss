@@ -38,7 +38,7 @@
 }
 
 .fc-wrapper .fc-step__substep[data-substep-visible="no"] {
-	display: none !important;
+	display: none !important; // Needed to override theme styles set with `!important`
 }
 
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-edit,
