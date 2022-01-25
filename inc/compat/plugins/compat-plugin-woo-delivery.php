@@ -144,9 +144,12 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 	/**
 	 * Add the delivery date substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
-	public function add_substep_text_lines_delivery_date( $review_text_lines ) {
-		$review_text_lines = array();
+	public function add_substep_text_lines_delivery_date( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
 		// Get settings
 		$delivery_option_settings = get_option( 'coderockz_woo_delivery_option_delivery_settings' );

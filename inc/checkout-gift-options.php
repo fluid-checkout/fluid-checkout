@@ -106,10 +106,13 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 	/**
 	 * Add the gift options substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
-	public function add_substep_text_lines_gift_options( $review_text_lines ) {
-		$review_text_lines = array();
-
+	public function add_substep_text_lines_gift_options( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+		
 		// Get gift options fields
 		$gift_options_fields = $this->get_gift_options_fields();
 

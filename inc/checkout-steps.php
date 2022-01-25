@@ -1509,9 +1509,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Add the contact substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
-	public function add_substep_text_lines_contact( $review_text_lines ) {
-		$review_text_lines = array();
+	public function add_substep_text_lines_contact( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
 		// Get fields
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
@@ -1911,9 +1914,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Add the shipping address substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
-	public function add_substep_text_lines_shipping_address( $review_text_lines ) {
-		$review_text_lines = array();
+	public function add_substep_text_lines_shipping_address( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
 		// Add formatted address line
 		$review_text_lines[] = $this->get_substep_text_formatted_address_text_line( 'shipping' );
@@ -1952,9 +1958,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Add the shipping methods substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
-	public function add_substep_text_lines_shipping_method( $review_text_lines ) {
-		$review_text_lines = array();
+	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
 		$packages = WC()->shipping()->get_packages();
 
@@ -2002,9 +2011,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Add the order notes substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
-	public function add_substep_text_lines_order_notes( $review_text_lines ) {
-		$review_text_lines = array();
+	public function add_substep_text_lines_order_notes( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
 		// Get order notes
 		$order_notes = WC()->checkout()->get_value( 'order_comments' );
@@ -2365,9 +2377,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Add the billing methods substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
-	public function add_substep_text_lines_billing_address( $review_text_lines ) {
-		$review_text_lines = array();
+	public function add_substep_text_lines_billing_address( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
 		// Add formatted address line
 		if ( 'true' === apply_filters( 'fc_show_billing_same_as_shipping_notice_checkout_contact_step_text', 'true' ) && $this->is_billing_address_data_same_as_shipping() ) {
