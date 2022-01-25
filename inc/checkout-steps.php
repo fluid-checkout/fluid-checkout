@@ -1325,7 +1325,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get the substep review text for when the step is completed.
+	 * Get the substep review text.
 	 */
 	public function get_substep_review_text( $substep_id ) {
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--' . $substep_id . '">';
@@ -1550,7 +1550,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Add contact subtext review text format as checkout fragment.
+	 * Add contact substep review text as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
@@ -1856,7 +1856,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output address substep in text format for when the step is completed.
+	 * Output address substep review text.
+	 * 
+	 * @param   string  $address_type  The address type.
 	 */
 	public function get_substep_text_formatted_address( $address_type ) {
 		// Field prefix
@@ -1887,7 +1889,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output address substep in text format for when the step is completed.
+	 * Get the address substep review text for the address type.
+	 * 
+	 * @param   string  $address_type  The address type.
 	 */
 	public function get_substep_text_formatted_address_text_line( $address_type ) {
 		// Field prefix

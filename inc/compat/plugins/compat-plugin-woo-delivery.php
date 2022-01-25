@@ -223,7 +223,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	}
 
 	/**
-	 * Add delivery options text format as checkout fragment.
+	 * Add delivery date substep review text as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
@@ -234,7 +234,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	}
 
 	/**
-	 * Output delivery options substep in text format for when the step is completed.
+	 * Output delivery date substep review text.
 	 */
 	public function output_substep_text_delivery_options() {
 		echo $this->get_substep_text_delivery_date();

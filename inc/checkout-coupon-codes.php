@@ -166,7 +166,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	}
 
 	/**
-	 * Add coupon codes text format as checkout fragment.
+	 * Add coupon codes substep review text as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
@@ -177,7 +177,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	}
 
 	/**
-	 * Output coupon codes substep in text format for when the step is completed.
+	 * Output coupon codes substep review text.
 	 */
 	public function output_substep_text_coupon_codes() {
 		echo $this->get_substep_text_coupon_codes();

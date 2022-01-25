@@ -186,7 +186,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 
 
 	/**
-	 * Output shipping address substep in text format for when the step is completed.
+	 * Change the shipping address substep review text.
 	 */
 	public function change_substep_text_shipping_address( $html ) {
 		// Use store base address for `local_pickup`
