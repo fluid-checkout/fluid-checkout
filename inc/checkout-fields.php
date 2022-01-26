@@ -35,7 +35,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
 
 		// Select2 field class
-		add_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_select2_field_class' ), 100, 3 );
+		add_filter( 'woocommerce_form_field_args', array( $this, 'add_select2_field_class' ), 100, 3 );
 	}
 
 
@@ -296,10 +296,10 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 *
 	 * @return  array           Modified checkout field args.
 	 */
-	public function add_checkout_field_select2_field_class( $args, $key, $value ) {
+	public function add_select2_field_class( $args, $key, $value ) {
 		$select2_field_types = apply_filters( 'fc_select2_field_types', array( 'country', 'state', 'select' ) );
 
-		// Bail if field type
+		// Bail if field type is not a select2 field
 		if ( ! in_array( $args[ 'type' ], $select2_field_types ) ) { return $args; }
 
 		// Initialize class argument if not existing yet
