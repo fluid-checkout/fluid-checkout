@@ -561,7 +561,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if current step is not defined
 		if ( false === $current_step ) { return $complete_steps; }
 
-		// Remove the current steps and steps after that,
+		// Remove the current step and steps after that,
 		// leaving only the complete steps in the list.
 		$current_step_index = array_keys( $current_step )[0];
 		foreach ( $complete_steps as $step_index => $step_args ) {
