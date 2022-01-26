@@ -69,7 +69,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_delivery_date_text_fragment' ), 10 );
 
 			// Get delivery date value from session
-			add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_field_values_from_session' ), 10, 2 );
+			add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_field_values_from_session' ), 200, 2 );
 
 			// Change delivery date field args
 			add_filter( 'woocommerce_form_field_args', array( $this, 'change_delivery_date_field_args' ), 10, 3 );
