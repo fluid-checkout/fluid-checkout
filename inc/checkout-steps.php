@@ -555,8 +555,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
-		// Remove steps after the current steps
+		// Get the current step
 		$current_step = $this->get_current_step();
+
+		// Bail if current step is not defined
+		if ( false === $current_step ) { return $complete_steps; }
+
+		// Remove the current steps and steps after that,
+		// leaving only the complete steps in the list.
 		$current_step_index = array_keys( $current_step )[0];
 		foreach ( $complete_steps as $step_index => $step_args ) {
 			if ( $step_index >= $current_step_index ) {
@@ -653,6 +659,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
+		// Defaults to the first step
+		if ( is_array( $_checkout_steps ) && count( $_checkout_steps ) > 0 ) {
+			return array( 0 => $_checkout_steps[ 0 ] );
+		}
+
 		return false;
 	}
 
@@ -668,6 +679,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function is_current_step( $step_id ) {
 		// Get checkout current step
 		$current_step = $this->get_current_step();
+
+		// Bail if current step is not defined
+		if ( false === $current_step ) { return false; }
+
+		// Get current steps arguments
 		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the registered checkout steps list
 		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
 
@@ -952,6 +968,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get checkout current step
 		$current_step = $this->get_current_step();
+
+		// Bail if current step is not defined
+		if ( false === $current_step ) { return; }
+
+		// Get current steps arguments
 		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the registered checkout steps list
 		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
 		$current_step_number = $current_step_index + 1;
