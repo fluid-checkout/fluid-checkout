@@ -293,6 +293,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Also update the checkout form and order summary when the browser tab gets visible again, as when changing tabs.
 * Improved: Change order of gift message field to before the gift from/sender field to make it consistent with other parts of the website.
 * Fixed: Stretched product images on the checkout order summary.
+* Fixed: Fatal error while editing the checkout page on Elementor, and possibly other page editors.
 
 = 1.4.3 - 2022-01-12 =
 

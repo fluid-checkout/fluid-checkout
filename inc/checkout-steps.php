@@ -653,6 +653,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
+		// Defaults to the first step
+		if ( is_array( $_checkout_steps ) && count( $_checkout_steps ) > 0 ) {
+			return array( 0 => $_checkout_steps[ 0 ] );
+		}
+
 		return false;
 	}
 
