@@ -303,10 +303,10 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		if ( ! in_array( $args[ 'type' ], $select2_field_types ) ) { return $args; }
 
 		// Initialize class argument if not existing yet
-		if ( ! array_key_exists( 'class', $args ) ) { $args['class'] = array(); }
+		if ( ! array_key_exists( 'class', $args ) ) { $args[ 'class' ] = array(); }
 
 		// Add extra class
-		$args['class'] = array_merge( $args['class'], array( 'fc-select2-field' ) );
+		$args[ 'class' ] = array_merge( $args[ 'class' ], array( 'fc-select2-field' ) );
 
 		return $args;
 	}
