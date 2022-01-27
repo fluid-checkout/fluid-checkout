@@ -2062,7 +2062,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$review_text_lines[] = $this->get_substep_text_formatted_address_text_line( $address_type );
 
 		// Get shipping fields
-		$shipping_fields = WC()->checkout->get_checkout_fields( $address_type );
+		$address_fields = WC()->checkout->get_checkout_fields( $address_type );
 
 		// Define list of address fields to skip as the formatted address has already been added
 		$field_keys_skip_list = apply_filters( "fc_substep_text_{$address_type}_address_field_keys_skip_list", array(
@@ -2080,7 +2080,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		) );
 
 		// Add extra fields lines
-		foreach ( $shipping_fields as $field_key => $field_args ) {
+		foreach ( $address_fields as $field_key => $field_args ) {
 			// Skip some fields
 			if ( in_array( $field_key, $field_keys_skip_list ) ) { continue; }
 			
@@ -2748,6 +2748,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$posted_data = $this->get_parsed_posted_data();
 		}
 
+		// Allow developers to hijack the returning value
+		$value_from_filter = apply_filters( 'fc_is_billing_address_data_same_as_shipping_before', null );
+		if ( null !== $value_from_filter ) {
+			return $value_from_filter;
+		}
+
+		$is_billing_same_as_shipping = true;
+		
 		// Get list of billing fields to copy from shipping fields
 		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
 
@@ -2777,13 +2785,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 
 				if ( $billing_field_value !== $shipping_field_value ) {
-					return false;
+					$is_billing_same_as_shipping = false;
+					break;
 				}
 			}
 
 		}
 
-		return true;
+		return $is_billing_same_as_shipping;
 	}
 
 	/**
@@ -3710,10 +3719,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string   $input   Checkout field key (ie. order_comments ).
 	 */
 	public function change_default_checkout_field_value_from_session_or_posted_data( $value, $input ) {
-		if ( 'test_field_radio' === $input ) {
-			$value = $value;
-		}
-		
+
 		// Maybe return field value from posted data
 		$posted_data = $this->get_parsed_posted_data();
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && array_key_exists( $input, $posted_data ) ) {

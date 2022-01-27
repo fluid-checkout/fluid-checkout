@@ -292,6 +292,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: New class `fc-skip-hide-optional-field` to skip hiding optional checkout fields.
 * Added: New debug mode advanced option.
 * Added: New "Tools" settings section. Only available where there are tools to be displayed.
+* Added: New filter `fc_is_billing_address_data_same_as_shipping_before` to allow developers to hijack the returning value for the function `FluidCheckout_Steps::is_billing_address_data_same_as_shipping_before()`.
 * Improved: Color contrast set by Fluid Checkout to pass WCAG 2.1 AA.
 * Improved: Renamed the checkout settings subtab from "Checkout options" to "Checkout".
 * Improved: Added support and PRO promotion links on the plugins list.
