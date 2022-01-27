@@ -90,6 +90,8 @@ class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 		return self::$thwcfd_public->prepare_address_fields( get_option( 'wc_fields_billing' ), $country, $fields, 'billing' );
 	}
 
+
+
 	/**
 	 * Apply changes to the shipping fields on edit address screen.
 	 *
