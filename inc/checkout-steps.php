@@ -1914,36 +1914,56 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Get the display value for the custom checkout fields with multiple options object.
 	 *
 	 * @param   string  $field_value       The field value.
+	 * @param   string  $field_key         The field key.
 	 * @param   array   $field_options     The field options object.
 	 * @param   string  $field_label       The field label.
 	 * @param   bool    $show_field_label  Whether to show the field label on the display value.
 	 */
-	public function get_field_display_value_from_field_options_args( $field_value, $field_options, $field_label, $show_field_label = false ) {
-		// Bail if not valid field value or options object
-		if ( empty( $field_value ) || ! is_array( $field_options ) ) { return ''; }
+	public function get_field_display_value_with_pattern( $field_value, $field_key, $field_options, $field_label, $show_field_label = false ) {
+		$field_display_value = $field_value;
+		
+		/* translators: %1$s the selected option text, %2$s the field label. */
+		$field_display_value_pattern = _x( '%1$s', 'Substep review field format', 'fluid-checkout' );
 
-		$field_display_value = '';
-		$selected_option_text = $field_options[ $field_value ];
-
-		// Get field display value
+		// // Get field display value pattern
 		if ( $show_field_label ) {
 			/* translators: %1$s the selected option text, %2$s the field label. */
-			$field_display_value = sprintf( _x( '%2$s (%1$s)', 'Custom field review text format: option fields', 'fluid-checkout' ), $selected_option_text, $field_label );
+			$field_display_value_pattern = _x( '%2$s: %1$s', 'Substep review field format: with label', 'fluid-checkout' );
 		}
-		else {
-			/* translators: %1$s the selected option text, %2$s the field label. */
-			$field_display_value = sprintf( _x( '%1$s', 'Custom field review text format: option fields', 'fluid-checkout' ), $selected_option_text, $field_label );
+
+		// Apply field display value pattern
+		if ( ! empty( $field_display_value ) ) {
+			$field_display_value = sprintf( $field_display_value_pattern, $field_value, $field_label );
 		}
 
 		return $field_display_value;
 	}
 
 	/**
+	 * Get the display value for the custom checkout fields with multiple options object.
+	 *
+	 * @param   string  $field_value       The field value.
+	 * @param   string  $field_key         The field key.
+	 * @param   array   $field_args        The custom field arguments.
+	 * @param   string  $field_label       The field label.
+	 * @param   bool    $show_field_label  Whether to show the field label on the display value.
+	 */
+	public function get_field_display_value_from_field_options( $field_value, $field_key, $field_args, $field_label, $show_field_label = false ) {
+		// Bail if not valid field value or option value non existent
+		if ( empty( $field_value ) || ! array_key_exists( 'options', $field_args ) || ! is_array( $field_args[ 'options' ] ) || ! array_key_exists( $field_value, $field_args[ 'options' ] ) ) { return $field_value; }
+
+		// Get selected option display text
+		$field_display_value = $field_args[ 'options' ][ $field_value ];
+
+		return $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, $show_field_label );
+	}
+
+	/**
 	 * Get the display value for the custom checkout fields.
 	 *
-	 * @param   mixed   $field_value  The field value.
-	 * @param   string  $field_key    The field key.
-	 * @param   array   $field_args   The custom field arguments.
+	 * @param   mixed   $field_value       The field value.
+	 * @param   string  $field_key         The field key.
+	 * @param   array   $field_args        The custom field arguments.
 	 */
 	public function get_field_display_value( $field_value, $field_key, $field_args ) {
 		$field_display_value = $field_value;
@@ -1952,33 +1972,44 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Only process if field value is not empty
 		if ( ! empty( $field_value ) ) {
 
+			// Get show label flag
+			$show_field_label = apply_filters( 'fc_substep_text_display_value_show_field_label', false );
+
 			// Get field display values based on type
-			switch ( $field_args[ 'type' ] ) {
+			switch ( $field_args[ 'type' ] ) {				
 				case 'hidden':
-				case 'heading':
-				case 'label':
 					$field_display_value = null;
 					break;
-				case 'number':
-					if ( ! empty( $field_value ) ) {
-						$field_display_value = sprintf( _x( '%2$s (%1$s)', 'Custom field review text format: number', 'fluid-checkout' ), $field_value, $field_label );
-					}
+				case 'text':
+				case 'textarea':
+				case 'datetime':
+				case 'datetime-local':
+				case 'date':
+				case 'month':
+				case 'time':
+				case 'week':
+				case 'email':
+				case 'url':
+				case 'tel':
+					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", $show_field_label ) );
 					break;
+				case 'number':
 				case 'checkbox':
-					if ( ! empty( $field_value ) ) {
-						$field_display_value = sprintf( _x( '%2$s (%1$s)', 'Custom field review text format: checkbox', 'fluid-checkout' ), $field_value, $field_label );
-					}
+					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", true ) );
 					break;
 				case 'password':
 					$field_display_value = str_repeat( apply_filters( 'fc_substep_text_display_value_' . $field_args[ 'type' ] . '_char', '*' ), strlen( $field_value ) );
+					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", $show_field_label ) );
 					break;
+				case 'country':
+				case 'state':
 				case 'radio':
 				case 'select':
-					$field_options = $field_args[ 'options' ];
-					$field_display_value = $this->get_field_display_value_from_field_options_args( $field_value, $field_options, $field_label, apply_filters( 'fc_substep_text_display_value_show_field_label_single_option', true ) );
+					$field_display_value = $this->get_field_display_value_from_field_options( $field_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", $show_field_label ) );
 					break;
 				default:
 					$field_display_value = $this->get_field_display_value_from_array( $field_display_value );
+					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", $show_field_label ) );
 					break;
 			}
 		}
