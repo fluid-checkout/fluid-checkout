@@ -40,7 +40,7 @@ $collapsible_initial_state = WC()->cart->needs_shipping_address() && FluidChecko
 		</div>
 	</div>
 
-	<?php // CHANGE: Display billing only fields ?>
+	<?php // CHANGE: Add action hook before the billing only fields ?>
 	<?php do_action( 'fc_before_checkout_billing_only_form', $checkout ); ?>
 
 	<?php // CHANGE: Display billing only fields ?>
