@@ -102,6 +102,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
 		add_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_shipping_address' ), 10 );
+		add_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_shipping_address' ), 20 );
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 		add_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
@@ -114,6 +115,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_billing_address' ), 10 );
+		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_billing_address' ), 20 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_billing_address_text_fragment' ), 10 );
 
 		// Billing Same as Shipping
@@ -2052,7 +2054,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add the address substep review text lines for the address type.
 	 * 
 	 * @param   string  $address_type  The address type.
-	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 * @param   array   $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function get_substep_text_lines_address_type( $address_type, $review_text_lines = array() ) {
 		// Bail if not an array
@@ -2061,7 +2063,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Add formatted address line
 		$review_text_lines[] = $this->get_substep_text_formatted_address_text_line( $address_type );
 
-		// Get shipping fields
+		return $review_text_lines;
+	}
+
+	/**
+	 * Add the address substep review text lines for extra fields of the address type.
+	 * 
+	 * @param   string  $address_type  The address type.
+	 * @param   array   $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function get_substep_text_lines_extra_fields_address_type( $address_type, $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Get address fields
 		$address_fields = WC()->checkout->get_checkout_fields( $address_type );
 
 		// Define list of address fields to skip as the formatted address has already been added
@@ -2106,6 +2121,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_substep_text_lines_shipping_address( $review_text_lines = array() ) {
 		return $this->get_substep_text_lines_address_type( 'shipping', $review_text_lines );
+	}
+
+	/**
+	 * Add the shipping address substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_extra_fields_shipping_address( $review_text_lines = array() ) {
+		return $this->get_substep_text_lines_extra_fields_address_type( 'shipping', $review_text_lines );
 	}
 
 	/**
@@ -2561,6 +2585,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_substep_text_lines_billing_address( $review_text_lines = array() ) {
 		return $this->get_substep_text_lines_address_type( 'billing', $review_text_lines );
+	}
+
+	/**
+	 * Add the billing address substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_extra_fields_billing_address( $review_text_lines = array() ) {
+		return $this->get_substep_text_lines_extra_fields_address_type( 'billing', $review_text_lines );
 	}
 
 	/**
