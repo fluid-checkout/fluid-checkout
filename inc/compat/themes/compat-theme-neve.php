@@ -37,6 +37,9 @@ class FluidCheckout_ThemeCompat_Neve extends FluidCheckout {
 		// Order summary
 		$this->remove_action_for_closure( 'woocommerce_checkout_before_order_review_heading', 10 );
 		$this->remove_action_for_class( 'woocommerce_checkout_after_order_review', array( 'Neve\Compatibility\Woocommerce', 'close_div' ), 10 );
+
+		// Login and coupon code form position
+		$this->remove_action_for_class( 'woocommerce_before_checkout_form', array( 'Neve\Compatibility\Woocommerce', 'move_coupon' ), 10 );
 	}
 
 }

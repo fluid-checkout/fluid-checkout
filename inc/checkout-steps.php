@@ -555,8 +555,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
-		// Remove steps after the current steps
+		// Get the current step
 		$current_step = $this->get_current_step();
+
+		// Bail if current step is not defined
+		if ( false === $current_step ) { return $complete_steps; }
+
+		// Remove the current step and steps after that,
+		// leaving only the complete steps in the list.
 		$current_step_index = array_keys( $current_step )[0];
 		foreach ( $complete_steps as $step_index => $step_args ) {
 			if ( $step_index >= $current_step_index ) {
@@ -653,6 +659,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
+		// Defaults to the first step
+		if ( is_array( $_checkout_steps ) && count( $_checkout_steps ) > 0 ) {
+			return array( 0 => $_checkout_steps[ 0 ] );
+		}
+
 		return false;
 	}
 
@@ -668,6 +679,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function is_current_step( $step_id ) {
 		// Get checkout current step
 		$current_step = $this->get_current_step();
+
+		// Bail if current step is not defined
+		if ( false === $current_step ) { return false; }
+
+		// Get current steps arguments
 		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the registered checkout steps list
 		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
 
@@ -952,6 +968,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get checkout current step
 		$current_step = $this->get_current_step();
+
+		// Bail if current step is not defined
+		if ( false === $current_step ) { return; }
+
+		// Get current steps arguments
 		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the registered checkout steps list
 		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
 		$current_step_number = $current_step_index + 1;
@@ -2158,7 +2179,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--billing-address">';
 
 		if ( $this->is_billing_same_as_shipping_checked() ) {
-			$html .= '<div class="fc-step__substep-text-line"><em>' . __( 'Same as shipping address', 'fluid-checkout' ) . '</em></div>';
+			$html .= '<div class="fc-step__substep-text-line"><em>' . $this->get_option_label_billing_same_as_shipping() . '</em></div>';
 		}
 		else {
 			$address_data = array(
@@ -2229,6 +2250,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 
+	/**
+	 * Get the label for billing same as shipping option.
+	 */
+	public function get_option_label_billing_same_as_shipping() {
+		return apply_filters( 'fc_billing_same_as_shipping_option_label', __( 'Same as shipping address', 'fluid-checkout' ) );
+	}
 
 	/**
 	 * Output field for billing address same as shipping.
@@ -2243,7 +2270,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		?>
 			<p id="billing_same_as_shipping_field" class="form-row form-row-wide">
 				<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>>
-				<label for="billing_same_as_shipping"><?php echo esc_html( __( 'Same as shipping address', 'fluid-checkout' ) ); ?></label>
+				<label for="billing_same_as_shipping"><?php echo esc_html( $this->get_option_label_billing_same_as_shipping() ); ?></label>
 			</p>
 		<?php
 		endif;
