@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-28 11:12+0000\n"
+"POT-Creation-Date: 2022-01-28 11:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -94,12 +94,6 @@ msgstr ""
 msgid "Applies only to multi-step layouts."
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woo-checkout-field-editor-pro.php:68
-msgid ""
-"Apply the checkout fields changes from Checkout Field Editor for WooCommerce "
-"also on the address edit screen"
-msgstr ""
-
 #: inc/admin/admin-settings-general.php:144
 msgid "Billing Address"
 msgstr ""
@@ -155,10 +149,6 @@ msgstr ""
 
 #: inc/checkout-widget-areas.php:85
 msgid "Checkout Below Place Order"
-msgstr ""
-
-#: inc/compat/plugins/compat-plugin-woo-checkout-field-editor-pro.php:66
-msgid "Checkout Field Editor for WooCommerce"
 msgstr ""
 
 #: inc/checkout-widget-areas.php:41
@@ -395,11 +385,6 @@ msgstr ""
 #: inc/checkout-gift-options.php:352
 msgctxt "Edit gift options link on admin order details screen"
 msgid "Edit"
-msgstr ""
-
-#: inc/compat/plugins/compat-plugin-woo-checkout-field-editor-pro.php:67
-msgid ""
-"Enable checkout fields customizations on the account address edit screen"
 msgstr ""
 
 #: inc/admin/admin-settings-general.php:215
