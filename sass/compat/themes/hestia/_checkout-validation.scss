@@ -2,8 +2,8 @@
 // CHECKOUT VALIDATION MESSAGES
 // ------------------------------------
 
-div.woocommerce .form-row .woocommerce-error,
-div.woocommerce .form-row .fc-mailcheck-suggestion {
+#{ $_body-theme-selector-prefix } div.woocommerce .form-row .woocommerce-error,
+#{ $_body-theme-selector-prefix } div.woocommerce .form-row .fc-mailcheck-suggestion {
 	padding: $checkout-message-error-padding !important; // Needed to override theme styles set with `!important`
 }
 
