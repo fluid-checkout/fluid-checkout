@@ -187,7 +187,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 * @return  array           Modified checkout field args.
 	 */
 	public function add_checkout_field_validation_icon_hide_class( $args, $key, $value ) {
-		$no_validation_icon_field_types = apply_filters( 'fc_no_validation_icon_field_types', array( 'checkbox', 'radio' ) );
+		$no_validation_icon_field_types = apply_filters( 'fc_no_validation_icon_field_types', array( 'hidden', 'checkbox', 'radio' ) );
 		$no_validation_icon_field_keys = apply_filters( 'fc_no_validation_icon_field_keys', array() );
 
 		// Bail if field type
