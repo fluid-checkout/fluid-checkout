@@ -5,12 +5,16 @@ msgstr ""
 "POT-Creation-Date: 2021-08-19 07:56+0000\n"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 "PO-Revision-Date: 2021-12-23 09:59+0000\n"
 =======
 "PO-Revision-Date: 2022-01-04 08:59+0000\n"
 >>>>>>> main
 =======
 "PO-Revision-Date: 2022-01-12 17:55+0000\n"
+>>>>>>> main
+=======
+"PO-Revision-Date: 2022-01-28 11:18+0000\n"
 >>>>>>> main
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Spanish (Spain)\n"
@@ -68,9 +72,13 @@ msgid "Add widget areas to the checkout page"
 msgstr "Agregar áreas de widgets a la página de pago"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:1711
 =======
 #: inc/checkout-steps.php:1630
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:1651
 >>>>>>> main
 msgid "Additional notes"
 msgstr "Notas adicionales"
@@ -104,7 +112,11 @@ msgctxt "Amazon Pay Express elements"
 msgid "Only button"
 msgstr "Solo botón"
 
+<<<<<<< HEAD
 #: inc/checkout-steps.php:1414
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:1435
 >>>>>>> main
 msgid "An account will be created with the information provided."
 msgstr "Se creará una cuenta con la información proporcionada."
@@ -128,19 +140,23 @@ msgstr ""
 "predeterminada"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:2150
 =======
 #: inc/checkout-steps.php:2064
 >>>>>>> main
+=======
+#: inc/checkout-steps.php:2085
+>>>>>>> main
 msgid "Billing to"
 msgstr "Facturación a"
 
-#: inc/checkout-gift-options.php:181
+#: inc/checkout-gift-options.php:168
 #, php-format
 msgid "Brief message with up to %d characters, printed on the packing slip."
 msgstr "Breve mensaje con hasta %d caracteres, impreso en el albarán."
 
-#: inc/checkout-gift-options.php:181
+#: inc/checkout-gift-options.php:168
 msgid "Brief message, printed on the packing slip."
 msgstr "Breve mensaje, impreso en el albarán."
 
@@ -186,9 +202,13 @@ msgid "Change email address to: {suggestion-value}"
 msgstr "Cambiar la dirección de correo electrónico a: {suggestion-value}"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:1221
 =======
 #: inc/checkout-steps.php:1144
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:1165
 >>>>>>> main
 #, php-format
 msgid "Change: %s"
@@ -200,7 +220,7 @@ msgstr ""
 
 #: inc/checkout-widget-areas.php:85
 msgid "Checkout Below Place Order"
-msgstr ""
+msgstr "Página de pago - Abajo Hacer el pedido"
 
 #: inc/checkout-widget-areas.php:41
 msgid "Checkout Header - Desktop"
@@ -216,61 +236,85 @@ msgstr "Diseño de página de pago"
 
 #: inc/checkout-widget-areas.php:75
 msgid "Checkout Order Summary"
-msgstr ""
+msgstr "Página de pago - Resumen del pedido"
 
 #: inc/checkout-widget-areas.php:63
 msgid "Checkout Sidebar"
 msgstr "Barra lateral de página de pago"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:925
 =======
 #: inc/checkout-steps.php:886
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:902
 >>>>>>> main
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Facturación"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:904
 =======
 #: inc/checkout-steps.php:865
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:881
 >>>>>>> main
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Contacto"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:934
 =======
 #: inc/checkout-steps.php:895
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:911
 >>>>>>> main
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Pago"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:914
 =======
 #: inc/checkout-steps.php:875
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:891
 >>>>>>> main
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Envío"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:1221
 =======
 #: inc/checkout-steps.php:1144
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:1165
 >>>>>>> main
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Cambiar"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:1222
 =======
 #: inc/checkout-steps.php:1145
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:1166
 >>>>>>> main
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
@@ -506,7 +550,7 @@ msgstr "Pago exprés"
 msgid "Features"
 msgstr "Funciones"
 
-#: inc/checkout-gift-options.php:166
+#: inc/checkout-gift-options.php:179
 msgctxt "Field label for person sending the gift"
 msgid "From"
 msgstr "De"
@@ -524,11 +568,15 @@ msgstr "Fluid Checkout for WooCommerce"
 msgid "Germanized for WooCommerce"
 msgstr "Germanized for WooCommerce"
 
+<<<<<<< HEAD
 #: inc/admin/admin.php:80
 msgid "Get PRO"
 msgstr ""
 
 #: inc/checkout-gift-options.php:179
+=======
+#: inc/checkout-gift-options.php:166
+>>>>>>> main
 msgid "Gift message"
 msgstr "Mensaje de regalo"
 
@@ -720,12 +768,16 @@ msgstr "Multi-step"
 msgid "Multi-step"
 msgstr "Multi-step"
 
+<<<<<<< HEAD
 #: inc/checkout-steps.php:1368
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:1389
 >>>>>>> main
 msgid "My contact"
 msgstr "Mi contacto"
 
-#: inc/checkout-gift-options.php:168
+#: inc/checkout-gift-options.php:181
 msgid "Name of who is sending the gift, printed on the packing slip."
 msgstr "Nombre de quién envía el regalo, impreso en el albarán."
 
@@ -745,9 +797,13 @@ msgid "--"
 msgstr "--"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:1857
 =======
 #: inc/checkout-steps.php:1771
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:1792
 >>>>>>> main
 msgid "Not selected yet."
 msgstr "Aún no seleccionado."
@@ -763,9 +819,13 @@ msgid "None."
 msgstr "Ninguna."
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:1904
 =======
 #: inc/checkout-steps.php:1818
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:1839
 >>>>>>> main
 msgctxt "Notice for no order notes provided"
 msgid "None."
@@ -821,9 +881,13 @@ msgstr ""
 "electrónico."
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:2772 inc/admin/admin-settings-advanced.php:85
 =======
 #: inc/checkout-steps.php:2621 inc/admin/admin-settings-advanced.php:85
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:2648 inc/admin/admin-settings-advanced.php:85
 >>>>>>> main
 #: inc/admin/admin-settings-advanced.php:104
 msgid "Order summary"
@@ -838,9 +902,13 @@ msgid "Page background color"
 msgstr "Color de fondo de la página"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:2668
 =======
 #: inc/checkout-steps.php:2517
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:2544
 >>>>>>> main
 msgid "Payment method"
 msgstr "Forma de pago"
@@ -865,9 +933,13 @@ msgstr "Paso de pago"
 
 #. Next checkout step title
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:799
 =======
 #: inc/checkout-steps.php:760
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:776
 >>>>>>> main
 #, php-format
 msgid "Proceed to %s"
@@ -919,9 +991,13 @@ msgid "Remove"
 msgstr "Eliminar"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:2300
 =======
 #: inc/checkout-steps.php:2161 inc/checkout-steps.php:2246
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:2257
 >>>>>>> main
 msgid "Same as shipping address"
 msgstr "Igual que la dirección de envío"
@@ -947,9 +1023,13 @@ msgid "Integrations"
 msgstr "Integraciones"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:1687
 =======
 #: inc/checkout-steps.php:1606
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:1627
 >>>>>>> main
 msgid "Shipping method"
 msgstr "Método de envío"
@@ -985,9 +1065,13 @@ msgid "Required"
 msgstr "Obligatorio"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-local-pickup.php:170 inc/checkout-steps.php:1663
 =======
 #: inc/checkout-local-pickup.php:170 inc/checkout-steps.php:1582
+>>>>>>> main
+=======
+#: inc/checkout-local-pickup.php:170 inc/checkout-steps.php:1603
 >>>>>>> main
 msgid "Shipping to"
 msgstr "Envío a"
@@ -1018,9 +1102,13 @@ msgstr "Espacio para el encabezado del sitio en la página de pago (en píxeles)
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: inc/checkout-steps.php:1041
 =======
 #: inc/checkout-steps.php:964
+>>>>>>> main
+=======
+#: inc/checkout-steps.php:985
 >>>>>>> main
 #, php-format
 msgid "Step %1$s of %2$s"
@@ -1111,7 +1199,7 @@ msgstr ""
 msgid "WooCommerce Amazon Pay"
 msgstr "WooCommerce Amazon Pay"
 
-#: inc/checkout-gift-options.php:180
+#: inc/checkout-gift-options.php:167
 msgid "Write a gift message..."
 msgstr "Escribe un mensaje de regalo..."
 
@@ -1125,7 +1213,7 @@ msgstr ""
 "<br>Por favor, danos una calificación rápida, funciona como un impulso para "
 "que sigamos trabajando en el plugin :)"
 
-#: inc/checkout-gift-options.php:167
+#: inc/checkout-gift-options.php:180
 msgid "Your name"
 msgstr "Tu nombre"
 
