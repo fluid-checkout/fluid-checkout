@@ -1879,38 +1879,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Output address substep review text.
-	 * 
-	 * @param   string  $address_type  The address type.
-	 */
-	public function get_substep_text_formatted_address( $address_type ) {
-		// Field prefix
-		$field_key_prefix = $address_type . '_';
-
-		// Get field keys from checkout fields
-		$address_data = array();
-		$fields = WC()->checkout()->get_checkout_fields( $address_type );
-		$field_keys = array_keys( $fields );
-		
-		// Get data from checkout fields
-		foreach ( $field_keys as $field_key ) {
-			// Get field key
-			$address_field_key = str_replace( $field_key_prefix, '', $field_key );
-			$address_data[ $address_field_key ] = WC()->checkout->get_value( $field_key );
-		}
-
-		$address_data = apply_filters( 'fc_'.$address_type.'_substep_text_address_data', $address_data );
-
-		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--'.$address_type.'_address">';
-		$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
-		$html .= '</div>';
-
-		return apply_filters( 'fc_substep_'.$address_type.'_address_text', $html );
-	}
-
-
-
-	/**
 	 * Get the display value for the custom checkout fields.
 	 *
 	 * @param   mixed  $field_display_value  The display value for the custom checkout field.
