@@ -1,4 +1,0 @@
-div.woocommerce form #mailpoet_woocommerce_checkout_optin_field.form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after,
-div.woocommerce form #mailpoet_woocommerce_checkout_optin_present_field.form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
-  display: none;
-}
