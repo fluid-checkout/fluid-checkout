@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php
 		$first = true;
 		foreach ( $available_methods as $method ) :
-			$checked_method = ! $chosen_method ? $first === true : $method->id == $chosen_method;
+			$checked_method = $chosen_method && $method->id == $chosen_method;
 
 			echo apply_filters( 'fc_shipping_method_option_markup',
 				sprintf( '<li class="shipping-method__option"><input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />
