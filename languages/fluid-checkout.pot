@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-12 17:54+0000\n"
+"POT-Creation-Date: 2022-01-28 11:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Add widget areas to the checkout page"
 msgstr ""
 
-#: inc/checkout-steps.php:1630
+#: inc/checkout-steps.php:1651
 msgid "Additional notes"
 msgstr ""
 
@@ -82,7 +82,7 @@ msgctxt "Amazon Pay Express elements"
 msgid "Only button"
 msgstr ""
 
-#: inc/checkout-steps.php:1414
+#: inc/checkout-steps.php:1435
 msgid "An account will be created with the information provided."
 msgstr ""
 
@@ -94,6 +94,12 @@ msgstr ""
 msgid "Applies only to multi-step layouts."
 msgstr ""
 
+#: inc/compat/plugins/compat-plugin-woo-checkout-field-editor-pro.php:68
+msgid ""
+"Apply the checkout fields changes from Checkout Field Editor for WooCommerce "
+"also on the address edit screen"
+msgstr ""
+
 #: inc/admin/admin-settings-general.php:144
 msgid "Billing Address"
 msgstr ""
@@ -102,16 +108,16 @@ msgstr ""
 msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 
-#: inc/checkout-steps.php:2064
+#: inc/checkout-steps.php:2085
 msgid "Billing to"
 msgstr ""
 
-#: inc/checkout-gift-options.php:181
+#: inc/checkout-gift-options.php:168
 #, php-format
 msgid "Brief message with up to %d characters, printed on the packing slip."
 msgstr ""
 
-#: inc/checkout-gift-options.php:181
+#: inc/checkout-gift-options.php:168
 msgid "Brief message, printed on the packing slip."
 msgstr ""
 
@@ -142,13 +148,17 @@ msgstr ""
 msgid "Change email address to: {suggestion-value}"
 msgstr ""
 
-#: inc/checkout-steps.php:1144
+#: inc/checkout-steps.php:1165
 #, php-format
 msgid "Change: %s"
 msgstr ""
 
 #: inc/checkout-widget-areas.php:85
 msgid "Checkout Below Place Order"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woo-checkout-field-editor-pro.php:66
+msgid "Checkout Field Editor for WooCommerce"
 msgstr ""
 
 #: inc/checkout-widget-areas.php:41
@@ -175,32 +185,32 @@ msgstr ""
 msgid "Checkout Sidebar"
 msgstr ""
 
-#: inc/checkout-steps.php:886
+#: inc/checkout-steps.php:902
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr ""
 
-#: inc/checkout-steps.php:865
+#: inc/checkout-steps.php:881
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr ""
 
-#: inc/checkout-steps.php:895
+#: inc/checkout-steps.php:911
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr ""
 
-#: inc/checkout-steps.php:875
+#: inc/checkout-steps.php:891
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr ""
 
-#: inc/checkout-steps.php:1144
+#: inc/checkout-steps.php:1165
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr ""
 
-#: inc/checkout-steps.php:1145
+#: inc/checkout-steps.php:1166
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr ""
@@ -387,6 +397,11 @@ msgctxt "Edit gift options link on admin order details screen"
 msgid "Edit"
 msgstr ""
 
+#: inc/compat/plugins/compat-plugin-woo-checkout-field-editor-pro.php:67
+msgid ""
+"Enable checkout fields customizations on the account address edit screen"
+msgstr ""
+
 #: inc/admin/admin-settings-general.php:215
 msgid "Enable the express checkout section at checkout"
 msgstr ""
@@ -404,7 +419,7 @@ msgstr ""
 msgid "Features"
 msgstr ""
 
-#: inc/checkout-gift-options.php:166
+#: inc/checkout-gift-options.php:179
 msgctxt "Field label for person sending the gift"
 msgid "From"
 msgstr ""
@@ -422,7 +437,7 @@ msgstr ""
 msgid "Germanized for WooCommerce"
 msgstr ""
 
-#: inc/checkout-gift-options.php:179
+#: inc/checkout-gift-options.php:166
 msgid "Gift message"
 msgstr ""
 
@@ -588,11 +603,11 @@ msgstr ""
 msgid "Multi-step"
 msgstr ""
 
-#: inc/checkout-steps.php:1368
+#: inc/checkout-steps.php:1389
 msgid "My contact"
 msgstr ""
 
-#: inc/checkout-gift-options.php:168
+#: inc/checkout-gift-options.php:181
 msgid "Name of who is sending the gift, printed on the packing slip."
 msgstr ""
 
@@ -608,7 +623,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr ""
 
-#: inc/checkout-steps.php:1771
+#: inc/checkout-steps.php:1792
 msgid "Not selected yet."
 msgstr ""
 
@@ -622,7 +637,7 @@ msgctxt "Notice for no gift options provided"
 msgid "None."
 msgstr ""
 
-#: inc/checkout-steps.php:1818
+#: inc/checkout-steps.php:1839
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr ""
@@ -668,7 +683,7 @@ msgstr ""
 msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 
-#: inc/checkout-steps.php:2621 inc/admin/admin-settings-advanced.php:85
+#: inc/checkout-steps.php:2648 inc/admin/admin-settings-advanced.php:85
 #: inc/admin/admin-settings-advanced.php:104
 msgid "Order summary"
 msgstr ""
@@ -681,7 +696,7 @@ msgstr ""
 msgid "Page background color"
 msgstr ""
 
-#: inc/checkout-steps.php:2517
+#: inc/checkout-steps.php:2544
 msgid "Payment method"
 msgstr ""
 
@@ -704,7 +719,7 @@ msgid "Payment step"
 msgstr ""
 
 #. Next checkout step title
-#: inc/checkout-steps.php:760
+#: inc/checkout-steps.php:776
 #, php-format
 msgid "Proceed to %s"
 msgstr ""
@@ -742,7 +757,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: inc/checkout-steps.php:2161 inc/checkout-steps.php:2246
+#: inc/checkout-steps.php:2257
 msgid "Same as shipping address"
 msgstr ""
 
@@ -766,7 +781,7 @@ msgctxt "Settings section title"
 msgid "Integrations"
 msgstr ""
 
-#: inc/checkout-steps.php:1606
+#: inc/checkout-steps.php:1627
 msgid "Shipping method"
 msgstr ""
 
@@ -800,7 +815,7 @@ msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr ""
 
-#: inc/checkout-local-pickup.php:170 inc/checkout-steps.php:1582
+#: inc/checkout-local-pickup.php:170 inc/checkout-steps.php:1603
 msgid "Shipping to"
 msgstr ""
 
@@ -825,7 +840,7 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr ""
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:964
+#: inc/checkout-steps.php:985
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr ""
@@ -888,7 +903,7 @@ msgstr ""
 msgid "WooCommerce Amazon Pay"
 msgstr ""
 
-#: inc/checkout-gift-options.php:180
+#: inc/checkout-gift-options.php:167
 msgid "Write a gift message..."
 msgstr ""
 
@@ -899,7 +914,7 @@ msgid ""
 "working on the plugin :)"
 msgstr ""
 
-#: inc/checkout-gift-options.php:167
+#: inc/checkout-gift-options.php:180
 msgid "Your name"
 msgstr ""
 
