@@ -10,9 +10,9 @@
 // Named colors
 $raisin-black:                  #1E212B !default;
 $dark-liver-grey:               #535156 !default;
-$rocket-mettallic-grey:         #888181 !default;
-$light-grey:                    #D6D8D8 !default;
-$cultured-grey:                 #F0F4F4 !default;
+$sonic-silver-grey:             #7B7575 !default;
+$light-grey:                    #D8D8D8 !default;
+$cultured-grey:                 #F4F4F4 !default;
 $green-pigment:                 #00A854 !default;
 $viridian-green:                #30989C !default;
 $maximum-blue-green:            #44C1C5 !default;
@@ -25,7 +25,7 @@ $crayola-yellow:                #FED766 !default;
 $black:                         #000 !default;
 $darker-grey:                   $raisin-black !default;
 $dark-grey:                     $dark-liver-grey !default;
-$grey:                          $rocket-mettallic-grey !default;
+$grey:                          $sonic-silver-grey !default;
 $light-grey:                    $light-grey !default;
 $lighter-grey:                  $cultured-grey !default;
 $white:                         #fff !default;
@@ -351,20 +351,23 @@ $checkout-substep-complete-title-padding:                 0 $global-spacing-larg
 $checkout-substep-complete-title-padding--large-screen:   0 $global-spacing-tiny 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
 
 $checkout-substep-title-color:                   $dark-grey !default;
+$checkout-substep-title-color--completed:        $grey !default;
 $checkout-substep-title-font-size:               $font-size-small !default;
 $checkout-substep-title-font-size--large-screen: $font-size-small--large-screen !default;
 $checkout-substep-title-font-weight:             bold !default;
 $checkout-substep-title-text-transform:          uppercase !default;
 $checkout-substep-title-text-align:              left !default;
 
-$checkout-substep-padding:                       $global-spacing-small $container-spacing-mobile !default;
-$checkout-substep-padding--large-screen:         $global-spacing-small $container-spacing-mobile !default;
-$checkout-substep-border-radius:                 $global-radius !default;
+$checkout-substep-margin-expand:                      $global-spacing-small #{ - $container-spacing-mobile } !default;
+$checkout-substep-margin-expand--large-screen:        $global-spacing-small #{ - $container-spacing-mobile } !default;
+$checkout-substep-padding:                            $global-spacing-small $container-spacing-mobile !default;
+$checkout-substep-padding--large-screen:              $global-spacing-small $container-spacing-mobile !default;
+$checkout-substep-border-radius:                      $global-radius !default;
 
 $checkout-substep-text-margin:                   0 !default;
 $checkout-substep-text-margin--large-screen:     0 !default;
 $checkout-substep-text-padding:                  0 0 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
-$checkout-substep-text-color:                    $grey !default;
+$checkout-substep-text-color:                    $dark-grey !default;
 $checkout-substep-text-font-size:                $font-size-extra-small !default;
 $checkout-substep-text-font-size--large-screen:  $font-size-extra-small--large-screen !default;
 $checkout-substep-text-font-weight:              normal !default;

@@ -1,0 +1,13 @@
+// ------------------------------------
+// CHECKOUT FIELD VALIDATION
+// ------------------------------------
+
+// VALID FIELDS
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+
+	// Password
+	&:not( .fc-no-validation-icon ):not( .fc-select2-field ) .woocommerce-input-wrapper.password-input:after {
+		right: remsize( 3.2rem );
+	}
+
+}

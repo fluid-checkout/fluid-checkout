@@ -1,0 +1,96 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+// Local variables
+$_body-theme-selector-prefix:          '' !default;
+$_select2-inner-spacing:               remsize( .5rem ) !default;
+$_select2-border-width:                remsize( .1rem ) !default;
+$_select2-border-radius:               0 !default;
+$_select2-selection-height:            remsize( 4.5625rem ) !default;
+$_select2-selection-height--single:    $_select2-selection-height - ( $_select2-border-width * 2 ) !default;
+$_select2-selection-height--multiple:  $_select2-selection-height--single - ( $_select2-inner-spacing * 2 ) !default;
+$_select2-inner-component-height:      $_select2-selection-height--multiple - ( $_select2-border-width * 2 ) !default;
+$_select2-inner-component-line-height: $_select2-inner-component-height !default;
+
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row span.select2-container {
+    height: auto;
+}
+
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection {
+	height: auto;
+	min-height: $_select2-selection-height--single;
+	border-radius: $_select2-border-radius;
+	line-height: 0;
+}
+
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection__rendered {
+	min-height: $_select2-selection-height--single;
+	border-radius: $_select2-border-radius;
+}
+
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+	top: 0;
+	margin-top: $_select2-inner-spacing;
+	height: auto;
+	min-height: $_select2-inner-component-height;
+	line-height: $_select2-inner-component-line-height;
+	transform: none;
+}
+
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--single {
+	padding: 0;
+}
+
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+	padding-top: 0;
+	padding-bottom: 0;
+	line-height: $_select2-selection-height--single;
+}
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple {
+	border-width: $_select2-border-width;
+}
+
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+	padding-bottom: $_select2-inner-spacing;
+	min-height: $_select2-selection-height--multiple;
+	line-height: $_select2-selection-height--multiple;
+	white-space: normal;
+}
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+	margin-top: $_select2-inner-spacing;
+	line-height: $_select2-inner-component-line-height;
+	overflow: hidden;
+}
+
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+	margin-top: $_select2-inner-spacing;
+	min-height: $_select2-inner-component-height;
+	line-height: $_select2-inner-component-line-height;
+}
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+	margin-top: 0;
+	height: $_select2-selection-height--multiple;
+	min-height: auto;
+}

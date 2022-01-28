@@ -2,8 +2,8 @@
 // FLYOUT ORDER SUMMARY
 // ------------------------------------
 
-body.theme-woodmart .fc-checkout-order-review .woodmart-table-wrapper,
-body.theme-woodmart .fc-checkout-order-review .wd-table-wrapper {
+#{ $_body-theme-selector-prefix } .fc-checkout-order-review .woodmart-table-wrapper,
+#{ $_body-theme-selector-prefix } .fc-checkout-order-review .wd-table-wrapper {
 	margin: 0;
 	padding: 0;
 	overflow: visible;
@@ -12,6 +12,6 @@ body.theme-woodmart .fc-checkout-order-review .wd-table-wrapper {
 
 
 
-body.theme-woodmart form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon {
+#{ $_body-theme-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon {
 	margin-right: - $global-spacing-extra-small;
 }

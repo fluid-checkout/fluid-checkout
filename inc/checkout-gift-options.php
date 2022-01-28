@@ -24,6 +24,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 		// Checkout
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_gift_options' ), 90 );
+		add_filter( 'fc_substep_gift_options_text_lines', array( $this, 'add_substep_text_lines_gift_options' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_gift_options_text_fragment' ), 10 );
 
 		// Order Admin Screen
@@ -104,42 +105,50 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 
 
 	/**
-	 * Output gift options substep in text format for when the step is completed.
+	 * Add the gift options substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
-	public function get_substep_text_gift_options() {
-		// Get gift options values
-		$gift_options = $this->get_gift_options_session();
+	public function add_substep_text_lines_gift_options( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+		
+		// Get gift options fields
+		$gift_options_fields = $this->get_gift_options_fields();
 
-		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--gift-options">';
-
-		// Display gift options values
-		if ( isset( $gift_options['_fc_gift_message'] ) && ! empty( $gift_options['_fc_gift_message'] ) ) {
-			$html .= '<div class="fc-step__substep-text-line fc-step__substep-text-line--gift-message">' . esc_html( $gift_options['_fc_gift_message'] ) . '</div>';
-			$html .= '<div class="fc-step__substep-text-line fc-step__substep-text-line--gift-from">' . esc_html( $gift_options['_fc_gift_from'] ) . '</div>';
+		// Only display gift options text when a message is added
+		if ( array_key_exists( '_fc_gift_message', $gift_options_fields ) && ! empty( WC()->checkout()->get_value( '_fc_gift_message' ) ) ) {
+			foreach ( $gift_options_fields as $field_key => $field_args ) {
+				$review_text_lines[] = WC()->checkout()->get_value( $field_key );
+			}
 		}
-		// Display "no gift options" notice.
 		else {
-			$html .= '<div class="fc-step__substep-text-line">' . apply_filters( 'fc_no_gift_options_order_review_notice', _x( 'None.', 'Notice for no gift options provided', 'fluid-checkout' ) ) . '</div>';
+			$review_text_lines[] = apply_filters( 'fc_no_gift_options_order_review_notice', _x( 'None.', 'Notice for no gift options provided', 'fluid-checkout' ) );
 		}
 
-		$html .= '</div>';
-
-		return apply_filters( 'fc_substep_gift_options_text', $html );
+		return $review_text_lines;
 	}
 
 	/**
-	 * Add gift options text format as checkout fragment.
+	 * Get gift options substep review text.
+	 */
+	public function get_substep_text_gift_options() {
+		return FluidCheckout_Steps::instance()->get_substep_review_text( 'gift_options' );
+	}
+
+	/**
+	 * Add gift options substep review text as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_gift_options_text_fragment( $fragments ) {
 		$html = $this->get_substep_text_gift_options();
-		$fragments['.fc-step__substep-text-content--gift-options'] = $html;
+		$fragments['.fc-step__substep-text-content--gift_options'] = $html;
 		return $fragments;
 	}
 
 	/**
-	 * Output gift options substep in text format for when the step is completed.
+	 * Output gift options substep review text.
 	 */
 	public function output_substep_text_gift_options() {
 		echo $this->get_substep_text_gift_options();
@@ -153,10 +162,6 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 * @return  array  Gift options fields array in the format expected by WooCommerce.
 	 */
 	public function get_gift_options_fields() {
-		// Get checkout object.
-		$checkout = WC()->checkout();
-		$customer = WC()->customer;
-
 		// Define gift options fields
 		$message_maxlength = apply_filters( 'fc_gift_options_message_length', false );
 		$gift_option_fields = array(
@@ -166,7 +171,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 				'label'         => __( 'Gift message', 'fluid-checkout' ),
 				'placeholder'   => __( 'Write a gift message...', 'fluid-checkout' ),
 				'description'   => $message_maxlength ? sprintf( __( 'Brief message with up to %d characters, printed on the packing slip.', 'fluid-checkout' ), $message_maxlength ) : __( 'Brief message, printed on the packing slip.', 'fluid-checkout' ),
-				'default'		=> is_checkout() ? $checkout->get_value( '_fc_gift_message' ) : null,
+				'default'		=> is_checkout() ? WC()->checkout()->get_value( '_fc_gift_message' ) : null,
 				'maxlength'		=> $message_maxlength,
 				'custom_attributes' => array(
 					'data-autofocus' => true,
@@ -179,7 +184,7 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 				'label'         => _x( 'From', 'Field label for person sending the gift', 'fluid-checkout' ),
 				'placeholder'   => __( 'Your name', 'fluid-checkout' ),
 				'description'   => __( 'Name of who is sending the gift, printed on the packing slip.', 'fluid-checkout' ),
-				'default'		=> is_checkout() ? $customer->get_display_name() : null,
+				'default'		=> is_checkout() ? WC()->customer->get_display_name() : null,
 				'maxlength'		=> apply_filters( 'fc_gift_options_from_length', false ),
 			),
 		);

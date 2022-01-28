@@ -286,15 +286,54 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 = Unreleased =
 
 * Bump tested up to WordPress 5.9 and WooCommerce 6.1
-* Added: Compatibility with plugin Creative Mail.
+* Added: New filter `fc_checkout_update_fields_selectors` for CSS selectors used to trigger update the checkout fragments.
+* Added: New filters `fc_is_billing_same_as_shipping_checked` and `fc_output_billing_same_as_shipping_as_hidden_field` for billing same as shipping.
+* Added: New filter `fc_is_billing_address_data_same_as_shipping_before` to allow developers to hijack the returning value for the function `FluidCheckout_Steps::is_billing_address_data_same_as_shipping_before()`.
+* Added: Function to get list of address field keys, necessary for Address Book (PRO) feature.
+* Added: New class `fc-no-validation-icon` for checkout field classes to prevent or remove the validation check icon.
+* Added: New class `fc-skip-hide-optional-field` to skip hiding optional checkout fields.
+* Added: New debug mode advanced option.
+* Added: New "Tools" settings section. Only available where there are tools to be displayed.
 * Added: New filter `fc_billing_same_as_shipping_option_label` to change the label for the option "billing address same as shipping".
+* Added: Compatibility with plugin Creative Mail.
+* Improved: Color contrast set by Fluid Checkout to pass WCAG 2.1 AA.
+* Improved: Renamed the checkout settings subtab from "Checkout options" to "Checkout".
 * Improved: Compatibility with plugin WooCommerce Stripe Payment Gateway - by WooCommerce, will not show Express Checkout section if the Stripe payment gateway is not available.
 * Improved: Compatibility with plugin Checkout Field Editor for WooCommerce (free) - by Themehigh, now the changes applied to billing and shipping fields are also applied to the address edit form on the account pages.
 * Improved: Compatibility with theme Neve, login form is now displayed in the modal as expected.
+* Improved: Compatibility with plugin Checkout Field Editor for WooCommerce. Add option to make changes to checkout fields affect account edit address screen.
+* Improved: Display contact substep fields based on the order of field keys in the contact fields list.
+* Improved: Dynamically display contact substep field values on the substep review text when the step is completed.
+* Improved: Refactor custom admin setting types moving each type to their own files.
+* Improved: Add `state`, `country` and `select` field types to the optional fields to hide behind an "add" link.
+* Improved: Refactor replace use of `$checkout` variable from `WC()->checkout()` in multiple places.
+* Improved: Display shipping only fields after the fields in common with the billing section (same as billing only fields).
+* Improved: Refactor normalize theme compat styles to use theme specific selector `body.theme-slug`, where `slug` is the actual theme slug.
+* Improved: Refactor functions to generate substep review text with array of lines for easier customization.
+* Improved: Display custom fields in the substep review text.
+* Improved: Change function priority get checkout field values from persisted posted data or session to `100`, previously `10`.
 * Improved: Also update the checkout form and order summary when the browser tab gets visible again, as when changing tabs.
 * Improved: Change order of gift message field to before the gift from/sender field to make it consistent with other parts of the website.
 * Fixed: Stretched product images on the checkout order summary.
 * Fixed: Fatal error while editing the checkout page on Elementor, and possibly other page editors.
+* Fixed: Skip setting posted data to session or customer object when the `post_data` request parameter is not provided, avoiding the values from being cleared unintentionally.
+* Fixed: Remove field values from session in case they are not provided with the `post_data` parameter, fixes not being able to unselect/uncheck optional `checkbox`, `radio` and `select` fields.
+* Fixed: Parse posted data for multiple-value/multi-select fields as arrays.
+* Fixed: Use filtered parsed posted data when getting field keys to save to customer session.
+* Fixed: Shipping and billing phone numbers being displayed twice on order confirmation page.
+* Fixed: Missing borders between some steps and substeps.
+* Fixed: Maybe get shipping country value from session when appropriate.
+* Fixed: Allow HTML elements for gift message text, message footer and information text on Packing Slip documents.
+* Fixed: Display gift message section on Packing Slip documents even when option to display gift message as part of the totals table is enabled.
+* Fixed: Typo in the filter name, renaming `fc_adress_field_keys_skip_list` to `fc_address_field_keys_skip_list`.
+* Fixed: Checks for shipping and billing address when determining if the steps are complete to use the correct country values when addresses were changed by hooks.
+* Fixed: Prevents fatal error on admin pages by checking for available resources before calling them.
+* Fixed: Added the missing hook `woocommerce_checkout_after_customer_details` back to the checkout page after the billing form.
+* Fixed: Validation of fields in the contact substep.
+* Fixed: Styles for `select2` fields to fill 100% width of available field container space.
+* Fixed: Styles for `select2` multiple selection fields for various themes.
+* Fixed: Only display shipping phone in the contact step review text when the field is available.
+* Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
 
 = 1.4.3 - 2022-01-12 =
 
@@ -482,8 +521,11 @@ Fixed: Fix build process to save theme compat files in the right place.
 
 == Upgrade Notice ==
 
-= 1.3 =
-Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.
+= 1.5 =
+* Lays the foundations for the PRO version. Change the way field values are persisted between requests. Remove hook `fc_general_settings` and renamed hook `fc_adress_field_keys_skip_list` to `fc_address_field_keys_skip_list` can break customizations that use those hooks.
 
 = 1.4 =
-Changes to "Proceed to <next_step>" button labels, custom translations will need to be updated. Changes the way customer session data is cleared. Renamed hook `fc_customer_persisted_data_clear_fields` to `fc_customer_persisted_data_clear_fields_order_processed` can break customizations use this hook.
+* Changes to "Proceed to <next_step>" button labels, custom translations will need to be updated. Changes the way customer session data is cleared. Renamed hook `fc_customer_persisted_data_clear_fields` to `fc_customer_persisted_data_clear_fields_order_processed` can break customizations that use this hook.
+
+= 1.3 =
+* Moved local pickup functions and customizations to a new class, potentially breaking sites with customizations that rely on these functions.

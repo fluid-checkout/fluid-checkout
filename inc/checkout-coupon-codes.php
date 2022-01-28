@@ -93,7 +93,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$key = 'coupon_code';
 		$coupon_code_field_args = array(
 			'required'                   => false,
-			'fc_skip_server_validation' => true,
+			'fc_skip_server_validation'  => true,
 			'class'                      => array( 'form-row-wide' ),
 			'placeholder'                => $coupon_code_field_placeholder,
 			'custom_attributes'          => array(
@@ -110,8 +110,8 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		// Output coupon code field and button in an expansible form section
 		$coupon_code_toggle_label = get_option( 'fc_optional_fields_link_label_lowercase', 'yes' ) === 'yes' ? strtolower( $coupon_code_field_label ) : $coupon_code_field_label;
-		$coupon_code_toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), $coupon_code_toggle_label ) );
 		/* translators: %s: Form field label */
+		$coupon_code_toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), $coupon_code_toggle_label ) );
 		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, $coupon_code_toggle_label, $coupon_code_expansible_args );
 		woocommerce_form_field( $key, $coupon_code_field_args );
 		?>
@@ -166,7 +166,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	}
 
 	/**
-	 * Add coupon codes text format as checkout fragment.
+	 * Add coupon codes substep review text as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
@@ -177,7 +177,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	}
 
 	/**
-	 * Output coupon codes substep in text format for when the step is completed.
+	 * Output coupon codes substep review text.
 	 */
 	public function output_substep_text_coupon_codes() {
 		echo $this->get_substep_text_coupon_codes();

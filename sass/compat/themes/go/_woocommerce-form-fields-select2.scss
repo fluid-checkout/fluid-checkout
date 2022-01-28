@@ -1,0 +1,15 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--single,
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple {
+	border-width: remsize( .2rem );
+}

@@ -46,7 +46,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 	public function add_settings( $settings, $current_section ) {
 		if ( empty( $current_section ) ) {
 
-			$settings_new = apply_filters(
+			$settings = apply_filters(
 				'fc_checkout_general_settings',
 				array(
 					array(
@@ -141,39 +141,39 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'         => __( 'Billing Address', 'fluid-checkout' ),
-						'desc'          => __( 'Billing address same as the shipping address checked by default', 'fluid-checkout' ),
-						'desc_tip'      => __( 'It is recommended to leave this option checked. The billing address at checkout will start with the option "Billing same as shipping" checked by default. This will reduce significantly the number of open input fields at the checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
-						'id'            => 'fc_default_to_billing_same_as_shipping',
-						'default'       => 'yes',
-						'type'          => 'checkbox',
-						'autoload'      => false,
+						'title'             => __( 'Billing Address', 'fluid-checkout' ),
+						'desc'              => __( 'Billing address same as the shipping address checked by default', 'fluid-checkout' ),
+						'desc_tip'          => __( 'It is recommended to leave this option checked. The billing address at checkout will start with the option "Billing same as shipping" checked by default. This will reduce significantly the number of open input fields at the checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
+						'id'                => 'fc_default_to_billing_same_as_shipping',
+						'default'           => 'yes',
+						'type'              => 'checkbox',
+						'autoload'          => false,
 					),
 
 					array(
-						'title'         => __( 'Shipping phone', 'fluid-checkout' ),
-						'desc'          => __( 'Add a phone field to the shipping address form', 'fluid-checkout' ),
-						'id'            => 'fc_shipping_phone_field_visibility',
-						'options'       => array(
-							'no'        => _x( 'Hidden', 'Shipping phone field visibility', 'fluid-checkout' ),
-							'optional'  => _x( 'Optional', 'Shipping phone field visibility', 'fluid-checkout' ),
-							'required'  => _x( 'Required', 'Shipping phone field visibility', 'fluid-checkout' ),
+						'title'             => __( 'Shipping phone', 'fluid-checkout' ),
+						'desc'              => __( 'Add a phone field to the shipping address form', 'fluid-checkout' ),
+						'id'                => 'fc_shipping_phone_field_visibility',
+						'options'           => array(
+							'no'            => _x( 'Hidden', 'Shipping phone field visibility', 'fluid-checkout' ),
+							'optional'      => _x( 'Optional', 'Shipping phone field visibility', 'fluid-checkout' ),
+							'required'      => _x( 'Required', 'Shipping phone field visibility', 'fluid-checkout' ),
 						),
-						'default'       => 'no',
-						'type'          => 'select',
-						'autoload'      => false,
+						'default'           => 'no',
+						'type'              => 'select',
+						'autoload'          => false,
 					),
 
 					array(
-						'desc'          => __( 'Choose in which step to display the shipping phone', 'fluid-checkout' ),
-						'id'            => 'fc_shipping_phone_field_position',
-						'options'       => array(
+						'desc'              => __( 'Choose in which step to display the shipping phone', 'fluid-checkout' ),
+						'id'                => 'fc_shipping_phone_field_position',
+						'options'           => array(
 							'shipping_address' => _x( 'Shipping address', 'Shipping phone field position', 'fluid-checkout' ),
 							'contact'          => _x( 'Contact', 'Shipping phone field position', 'fluid-checkout' ),
 						),
-						'default'       => 'shipping_address',
-						'type'          => 'select',
-						'autoload'      => false,
+						'default'           => 'shipping_address',
+						'type'              => 'select',
+						'autoload'          => false,
 					),
 
 					array(
@@ -198,26 +198,26 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'         => __( 'Order notes', 'fluid-checkout' ),
-						'desc'          => __( 'Define the visibility of the additional order notes field.', 'fluid-checkout' ),
-						'id'            => 'woocommerce_enable_order_comments',
-						'options'       => array(
-							'no'        => _x( 'Hidden', 'Order notes field visibility', 'fluid-checkout' ),
-							'yes'       => _x( 'Optional', 'Order notes field visibility', 'fluid-checkout' ),
+						'title'             => __( 'Order notes', 'fluid-checkout' ),
+						'desc'              => __( 'Define the visibility of the additional order notes field.', 'fluid-checkout' ),
+						'id'                => 'woocommerce_enable_order_comments',
+						'options'           => array(
+							'no'            => _x( 'Hidden', 'Order notes field visibility', 'fluid-checkout' ),
+							'yes'           => _x( 'Optional', 'Order notes field visibility', 'fluid-checkout' ),
 						),
-						'default'       => 'yes',
-						'type'          => 'select',
-						'autoload'      => false,
+						'default'           => 'yes',
+						'type'              => 'select',
+						'autoload'          => false,
 					),
 
 					array(
-						'title'         => __( 'Express checkout', 'fluid-checkout' ),
-						'desc'          => __( 'Enable the express checkout section at checkout', 'fluid-checkout' ),
-						'desc_tip'      => __( 'Displays the express checkout section at checkout when supported payment gateways have this feature enabled.', 'fluid-checkout' ),
-						'id'            => 'fc_enable_checkout_express_checkout',
-						'default'       => 'yes',
-						'type'          => 'checkbox',
-						'autoload'      => false,
+						'title'             => __( 'Express checkout', 'fluid-checkout' ),
+						'desc'              => __( 'Enable the express checkout section at checkout', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Displays the express checkout section at checkout when supported payment gateways have this feature enabled.', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_express_checkout',
+						'default'           => 'yes',
+						'type'              => 'checkbox',
+						'autoload'          => false,
 					),
 
 					array(
@@ -267,8 +267,6 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 				)
 			);
-
-			$settings = apply_filters( 'fc_general_settings', $settings_new, $current_section );
 		}
 
 		return $settings;

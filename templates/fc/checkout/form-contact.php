@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.3.1
+ * @version 1.5.0
  * @wc-version 3.6.0
  * @wc-original checkout/form-billing.php
  */
@@ -27,17 +27,20 @@ defined( 'ABSPATH' ) || exit;
 	<div class="fc-contact-fields__wrapper">
 		<?php do_action( 'fc_checkout_contact_before_fields' ); ?>
 
-		<?php // CHANGE: Display only fields in the contact step display list ?>
+		<?php // CHANGE: Only display fields in the contact substep fields list, field priority is set by the order in which the field keys are added to the contact field ids list ?>
 		<?php
-		$field_groups = $checkout->get_checkout_fields();
-		foreach ( $field_groups as $group_key => $fields ) {
-			foreach ( $fields as $key => $field ) {
-				/**
-				 * The variable `$display_fields` is passed as a paramenter to this template file
-				 * @see Hook `fc_checkout_contact_step_field_ids`
-				 */
-				if ( in_array( $key, $display_fields ) ) {
-					woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+		// Check contact field ids list
+		if ( is_array( $contact_field_ids ) ) {
+			// Get all checkout fields
+			$field_groups = $checkout->get_checkout_fields();
+			
+			// Iterate contact field ids
+			foreach( $contact_field_ids as $field_key ) {
+				foreach ( $field_groups as $group_key => $fields ) {
+					// Check field exists
+					if ( array_key_exists( $field_key, $fields ) ) {
+						woocommerce_form_field( $field_key, $fields[ $field_key ], $checkout->get_value( $field_key ) );
+					}
 				}
 			}
 		}

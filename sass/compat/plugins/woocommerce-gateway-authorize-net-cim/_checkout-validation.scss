@@ -6,8 +6,8 @@
 div.woocommerce form .form-row#wc-authorize-net-cim-credit-card-account-number_field.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
 
 	// "valid" field check icon
-	.woocommerce-input-wrapper:after {
-		right: remsize( 6rem );
+	&:not( .fc-no-validation-icon ):not( .fc-select2-field ) .woocommerce-input-wrapper:after {
+		right: remsize( 6.5rem );
 	}
 
 }

@@ -1,0 +1,34 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+#{ $_body-theme-selector-prefix } .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+	padding: 0 remsize( 1.6rem ) !important; // Needed to override theme styles set with `!important`
+}
+
+#{ $_body-theme-selector-prefix } .fc-wrapper .select2-container .select2-selection--multiple .select2-selection__rendered {
+	display: block;
+	margin-bottom: 0;
+	padding-left: $_select2-inner-spacing !important; // Needed to override theme styles set with `!important`
+	padding-right: $_select2-inner-spacing !important; // Needed to override theme styles set with `!important`
+}
+
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+	right: remsize( .5rem ) !important; // Needed to override theme styles set with `!important`
+}
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__clear {
+	right: remsize( 2.4rem );
+}
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__clear {
+	right: remsize( .5rem );
+}
+
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+	margin-top: $_select2-inner-spacing;
+}

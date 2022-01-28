@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT SHIPPING METHODS
+// ------------------------------------
+
+#{ $_body-theme-selector-prefix } .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:before {
+	background-color: $success-color !important; // Needed to override theme styles set with `!important`
+}

@@ -2,47 +2,15 @@
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
 
-body.theme-kentha .fc-wrapper #payment ul.payment_methods > .wc_payment_method.wc_payment_method > input[type=radio]:first-child:checked + label:after {
-	top: remsize( .9rem );
-	left: remsize( .8rem );
-}
-
-body.theme-kentha .fc-content [type="radio"]:not(:checked)+label, 
-body.theme-kentha .fc-content [type="radio"]:checked+label {
+#{ $_body-theme-selector-prefix } .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
 	height: auto;
 }
 
-body.theme-kentha .fc-content [type="radio"] + label:before, 
-body.theme-kentha .fc-content [type="radio"] + label:after {
-	margin: auto;
-	transition: none;
-}
 
-body.theme-kentha .fc-content [type="radio"]:checked + label:after, 
-body.theme-kentha .fc-content .with-gap[type="radio"]:checked + label:after {
+
+#{ $_body-theme-selector-prefix } .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:after {
+	top: remsize( .5rem );
+	left: remsize( .4rem );
+	border-color: transparent;
 	background-color: transparent;
-}
-
-body.theme-kentha .fc-content [type="radio"]:checked + label:after, 
-body.theme-kentha .fc-content .with-gap[type="radio"]:checked + label:before, 
-body.theme-kentha .fc-content .with-gap[type="radio"]:checked + label:after {
-	border: remsize( .2rem ) solid transparent;
-}
-
-body.theme-kentha .fc-step__substep-fields-inner input[type=text], 
-body.theme-kentha .fc-step__substep-fields-inner input[type=number], 
-body.theme-kentha .fc-step__substep-fields-inner input[type=email], 
-body.theme-kentha .fc-step__substep-fields-inner input[type=tel], 
-body.theme-kentha .fc-step__substep-fields-inner input[type=url], 
-body.theme-kentha .fc-step__substep-fields-inner input[type=password], 
-body.theme-kentha .fc-step__substep-fields-inner input[type=search], 
-body.theme-kentha .fc-step__substep-fields-inner textarea, 
-body.theme-kentha .fc-step__substep-fields-inner .input-text {
-	padding: remsize( 1rem );
-}
-
-body.theme-kentha .fc-step__substep-fields-inner .select2-selection.select2-selection, 
-body.theme-kentha .fc-step__substep-fields-inner .select2-selection__rendered.select2-selection__rendered {
-	height: remsize( 4rem );
-	line-height: remsize( 4rem );
 }

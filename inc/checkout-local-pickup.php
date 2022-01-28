@@ -105,7 +105,6 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 	 * @return  boolean  `true` if the selected shipping method is `local_pickup`. Defaults to `false`.
 	 */
 	public function is_shipping_method_local_pickup_selected() {
-		$checkout = WC()->checkout();
 		$is_shipping_method_local_pickup_selected = false;
 		
 		// Make sure chosen shipping method is set
@@ -137,7 +136,6 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 		// Bail if not on checkout or cart page or doing AJAX call
 		if ( ! function_exists( 'is_checkout' ) || ! ( is_checkout() || is_cart() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) ) { return false; }
 
-		$checkout = WC()->checkout();
 		$is_local_pickup_available = false;
 
 		// Make sure chosen shipping method is set
@@ -188,7 +186,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 
 
 	/**
-	 * Output shipping address substep in text format for when the step is completed.
+	 * Change the shipping address substep review text.
 	 */
 	public function change_substep_text_shipping_address( $html ) {
 		// Use store base address for `local_pickup`
@@ -202,7 +200,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 				'postcode' => WC()->countries->get_base_postcode(),
 			);
 
-			$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping-address">';
+			$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--shipping_address">';
 			$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
 			$html .= '</div>';
 		}

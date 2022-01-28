@@ -1,7 +1,7 @@
 // ------------------------------------
 // CHECKOUT BILLING STEP
 // ------------------------------------
-div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
 	background-color: $lighter-grey;
 
 	// Make fields background white
@@ -15,10 +15,21 @@ div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
 	input[type="tel"],
 	input[type="url"],
 	input[type="password"],
-	.select2-selection {
+	.select2-selection,
+	.select2-selection .select2-selection__rendered {
 		background-color: $white;
 		color: inherit;
 	}
+}
+
+
+
+div.woocommerce form .woocommerce-billing-only-fields__field-wrapper {
+	margin-top: $global-spacing-small;
+}
+div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:before,
+div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:after {
+	@include clearfix();
 }
 
 

@@ -170,6 +170,10 @@ div.woocommerce form .form-row {
 			outline-offset: $focus-outline-offset-field;
 		}
 	}
+
+	.show-password-input {
+		z-index: z( 'above' );
+	}
 }
 // Add styles for fields not wrapper by a `.form-field` only for detected issues
 div.woocommerce {
@@ -198,6 +202,10 @@ div.woocommerce form .form-row {
 	input[type="password"],
 	.select2-selection {
 		width: 100%;
+	}
+
+	.select2-container {
+		width: 100% !important; // Needed to override inline styles
 	}
 
 	textarea {

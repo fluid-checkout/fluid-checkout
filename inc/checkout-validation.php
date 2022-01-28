@@ -33,6 +33,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		// Add validation status classes to checkout fields
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_status_classes' ), 100, 3 );
+		add_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_icon_hide_class' ), 100, 3 );
 
 		// Fix required marker accessibility
 		add_filter( 'woocommerce_form_field', array( $this, 'change_required_field_attributes' ), 100, 4 );
@@ -172,6 +173,31 @@ class FluidCheckout_Validation extends FluidCheckout {
 		if ( true == $field_valid ) {
 			$args['class'] = array_merge( $args['class'], array( 'woocommerce-validated' ) );
 		}
+
+		return $args;
+	}
+
+	/**
+	 * Add extra class to checkout fields to hide the validation icon.
+	 *
+	 * @param   array   $args   Checkout field args.
+	 * @param   string  $key    Field key.
+	 * @param   mixed   $value  Field value.
+	 *
+	 * @return  array           Modified checkout field args.
+	 */
+	public function add_checkout_field_validation_icon_hide_class( $args, $key, $value ) {
+		$no_validation_icon_field_types = apply_filters( 'fc_no_validation_icon_field_types', array( 'hidden', 'checkbox', 'radio' ) );
+		$no_validation_icon_field_keys = apply_filters( 'fc_no_validation_icon_field_keys', array() );
+
+		// Bail if field type
+		if ( ! in_array( $args[ 'type' ], $no_validation_icon_field_types ) && ! in_array( $args[ 'id' ], $no_validation_icon_field_keys ) ) { return $args; }
+
+		// Initialize class argument if not existing yet
+		if ( ! array_key_exists( 'class', $args ) ) { $args['class'] = array(); }
+
+		// Add extra class
+		$args['class'] = array_merge( $args['class'], array( 'fc-no-validation-icon' ) );
 
 		return $args;
 	}

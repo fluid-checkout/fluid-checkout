@@ -1,0 +1,97 @@
+body.theme-riode .fc-checkout-notices .form-row.form-row:before,
+body.theme-riode .fc-checkout-notices .form-row.form-row:after {
+  display: none;
+}
+
+body.theme-riode .fc-checkout-notices .input-wrapper-inline.input-wrapper-inline {
+  max-width: 100%;
+}
+
+body.theme-riode .fc-wrapper .wc_payment_method label img {
+  min-width: auto;
+}
+
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection.select2-selection--single:after {
+  right: 32px;
+}
+
+body.theme-riode .fc-login-form .login {
+  display: block;
+}
+
+body.theme-riode div.woocommerce form .form-row span.select2-container {
+  height: auto;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection {
+  height: auto;
+  min-height: 43.5px;
+  border-radius: 0;
+  line-height: 0;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection__rendered {
+  min-height: 43.5px;
+  border-radius: 0;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-riode div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  top: 0;
+  margin-top: 5px;
+  height: auto;
+  min-height: 31.5px;
+  line-height: 31.5px;
+  transform: none;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection--single {
+  padding: 0;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 43.5px;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection--multiple {
+  border-width: 1px;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+  padding-bottom: 5px;
+  min-height: 33.5px;
+  line-height: 33.5px;
+  white-space: normal;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5px;
+  line-height: 31.5px;
+  overflow: hidden;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  margin-top: 5px;
+  min-height: 31.5px;
+  line-height: 31.5px;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
+  height: 33.5px;
+  min-height: auto;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  margin-top: 0;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection .select2-selection__arrow:before {
+  right: 0;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection .select2-selection__clear {
+  right: 5px;
+}

@@ -5,7 +5,7 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message, and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 1.4.4-beta-6
+Version: 1.5.0-beta-18
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
@@ -60,13 +60,6 @@ class FluidCheckout {
 	 * @var array
 	 */
 	private static $features = array();
-
-	/**
-	 * Hold cached values for parsed `post_data`.
-	 *
-	 * @var array
-	 */
-	private $posted_data = null;
 
 	/**
 	 * User session keys prefix.
@@ -346,13 +339,22 @@ class FluidCheckout {
 
 	/**
 	 * Check to see if Woocommerce is active on a single install or network wide.
-	 * Otherwise, will display an admin notice.
 	 *
 	 * @since 1.0.0
 	 */
 	public function is_woocommerce_activated() {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		return is_plugin_active( 'woocommerce/woocommerce.php' );
+	}
+
+	/**
+	 * Check to see if Fluid Checkout PRO is active on a single install or network wide.
+	 *
+	 * @since 1.5.0
+	 */
+	public function is_pro_activated() {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		return is_plugin_active( 'fluid-checkout-pro/fluid-checkout-pro.php' );
 	}
 
 
@@ -425,31 +427,15 @@ class FluidCheckout {
 
 
 	/**
-	 * Parse the data from the `post_data` request parameter into an `array`.
+	 * Parse the data from the `post_data` request parameter into an `array`. Alias for the method with the same name from the `FluidCheckout` main class.
 	 *
 	 * @return  array  Post data for all checkout fields parsed into an `array`.
 	 */
 	public function get_parsed_posted_data() {
-		// Return cached parsed data
-		if ( is_array( $this->posted_data ) ) {
-			return $this->posted_data;
-		}
+		// Bail if class not available
+		if ( ! class_exists( 'FluidCheckout_Steps' ) ) { return; }
 
-		// Get sanitized posted data as a string
-		$posted_data = isset( $_POST['post_data'] ) ? wp_unslash( $_POST['post_data'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-
-		// Parsing posted data into an array
-		$new_posted_data = array();
-		$vars = explode( '&', $posted_data );
-		foreach ( $vars as $k => $value ) {
-			$v = explode( '=', urldecode( $value ) );
-			$new_posted_data[ $v[0] ] = array_key_exists( 1, $v) ? wc_clean( wp_unslash( $v[1] ) ) : null;
-		}
-
-		// Updated cached posted data
-		$this->posted_data = $new_posted_data;
-
-		return $this->posted_data;
+		return FluidCheckout_Steps::instance()->get_parsed_posted_data();
 	}
 
 
@@ -512,7 +498,7 @@ class FluidCheckout {
 
 		foreach ( $priority_callbacks as $callback ) {
 			// Check target class
-			if ( $callback[ 'function' ][0] instanceof $class_name ) {
+			if ( is_array( $callback ) && array_key_exists( 'function', $callback ) && is_array( $callback[ 'function' ] ) && array_key_exists( 0, $callback[ 'function' ] ) && $callback[ 'function' ][0] instanceof $class_name ) {
 				$class_callbacks[] = $callback;
 			}
 		}

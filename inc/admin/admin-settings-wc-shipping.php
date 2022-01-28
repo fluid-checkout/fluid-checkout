@@ -47,7 +47,7 @@ class WC_Settings_FluidCheckout_WCShippingSettings extends WC_Settings_Page {
 
 			// Disable shipping destination options and change tooltip/description explaining why it was disabled
 			$setting_args[ 'custom_attributes' ]['disabled'] = true;
-			$setting_args[ 'desc' ] = __( 'The shipping destination is always set to "Default to customer shipping address" when Fluid Checkout is activated. Customers can still provide different shipping and billing addresses during checkout, an option for setting the default billing address to be the same as the shipping address is available at WooCommerce > Settings > Fluid Checkout > Address Fields.', 'fluid-checkout' );
+			$setting_args[ 'desc' ] = __( 'The shipping destination is always set to "Default to customer shipping address" when Fluid Checkout is activated. Customers can still provide different shipping and billing addresses during checkout, an option for setting the default billing address to be the same as the shipping address is available at WooCommerce > Settings > Fluid Checkout.', 'fluid-checkout' );
 			$settings[ $key ] = $setting_args;
 		}
 
