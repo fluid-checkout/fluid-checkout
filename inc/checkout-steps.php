@@ -1901,7 +1901,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$address_data = apply_filters( 'fc_'.$address_type.'_substep_text_address_data', $address_data );
 
-		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--'.$address_type.'-address">';
+		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--'.$address_type.'_address">';
 		$html .= '<div class="fc-step__substep-text-line">' . WC()->countries->get_formatted_address( $address_data ) . '</div>'; // WPCS: XSS ok.
 		$html .= '</div>';
 
