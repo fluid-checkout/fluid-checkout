@@ -26,14 +26,15 @@
 	var _settings = {
 		bodyClass: 'fc-checkout-validation--active',
 		formSelector: 'form.checkout',
-		formRowSelector: '.form-row',
-		validateFieldsSelector: '.input-text, select',
+		formRowSelector: '.form-row, .shipping-method__package',
+		validateFieldsSelector: '.input-text, select, .shipping-method__options',
 		clearValidationCountryChangedSelector: '#state, #shipping_state, #billing_state',
 		alwaysValidateFieldsSelector: '',
 		select2Selector: '.select2, .select2-hidden-accessible',
 		typeRequiredSelector: '.validate-required',
 		typeEmailSelector: '.validate-email',
 		typeConfirmationSelector: '[data-confirm-with]',
+		typeShippingMethodSelector: '.shipping-method__package',
 		validClass: 'woocommerce-validated',
 		invalidClass: 'woocommerce-invalid',
 		validationMessages: {
@@ -316,6 +317,31 @@
 		return { valid: true };
 	};
 
+	/**
+	 * Check if form row is required.
+	 * @param  {Field}    field Field for validation.
+	 * @param  {Element}  formRow Form row element.
+	 * @return {Boolean}          True if required.
+	 */
+	 var isShippingMethodField = function( field, formRow ) {
+		if ( ! formRow.matches( _settings.typeShippingMethodSelector ) ) { return false; }
+		return true;
+	};
+
+	/**
+	 * Validate required field.
+	 * @param  {Field}    field Field for validation.
+	 * @param  {Element}  formRow Form row element.
+	 */
+	var validateShippingMethod = function( field, formRow ) {
+		var selectedShippingMethod = formRow.querySelector( 'input[type="radio"]:checked' );
+
+		// Bail if field does not have a value
+		if ( ! selectedShippingMethod ) { return { valid: false, message: _settings.validationMessages.required }; }
+
+		return { valid: true };
+	};
+
 
 
 	/**
@@ -438,6 +464,7 @@
 		_publicMethods.registerValidationType( 'required', 'required-field', isRequiredField, validateRequired );
 		_publicMethods.registerValidationType( 'email', 'email', isEmailField, validateEmail );
 		_publicMethods.registerValidationType( 'confirmation', 'confirmation-field', isConfirmationField, validateConfirmation );
+		_publicMethods.registerValidationType( 'shipping-method', 'shipping-method-field', isShippingMethodField, validateShippingMethod );
 	}
 
 
