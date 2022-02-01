@@ -303,6 +303,9 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+- Fixed: Remove duplicate product image on checkout order summary for some themes.
+
 = 1.5.0 - 2022-01-28 =
 
 * Bump tested up to WordPress 5.9 and WooCommerce 6.1
