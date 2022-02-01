@@ -2008,10 +2008,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
-		if ( ! isset( $field_type ) ) {
-			$field_display_value = $field_display_value;
-		}
-
 		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_type, $field_display_value, $field_value, $field_key, $field_args );
 		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_key, $field_display_value, $field_value, $field_key, $field_args );
 
