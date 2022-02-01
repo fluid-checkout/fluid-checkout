@@ -33,6 +33,9 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 		remove_action( 'woocommerce_after_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 		remove_action( 'woocommerce_before_cart', 'shoptimizer_cart_progress', 10 );
 		remove_action( 'woocommerce_before_checkout_form', 'shoptimizer_cart_progress', 5 );
+
+		// Remove duplicate product image on order summary
+		remove_filter( 'woocommerce_cart_item_name', 'shoptimizer_product_thumbnail_in_checkout', 20, 3 );
 	}
 }
 
