@@ -1960,6 +1960,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$field_display_value = $field_value;
 		$field_label = ! empty( $field_args[ 'label' ] ) ? $field_args[ 'label' ] : $field_key;
 
+		// Get field type
+		$field_type = array_key_exists( 'type', $field_args ) ? $field_args[ 'type' ] : 'text';
+
 		// Only process if field value is not empty
 		if ( ! empty( $field_value ) ) {
 
@@ -1967,7 +1970,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$show_field_label = apply_filters( 'fc_substep_text_display_value_show_field_label', false );
 
 			// Get field display values based on type
-			switch ( $field_args[ 'type' ] ) {				
+			switch ( $field_type ) {
 				case 'hidden':
 					$field_display_value = null;
 					break;
@@ -1982,30 +1985,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 				case 'email':
 				case 'url':
 				case 'tel':
-					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", $show_field_label ) );
+					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", $show_field_label ) );
 					break;
 				case 'number':
 				case 'checkbox':
-					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", true ) );
+					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", true ) );
 					break;
 				case 'password':
-					$field_display_value = str_repeat( apply_filters( 'fc_substep_text_display_value_' . $field_args[ 'type' ] . '_char', '*' ), strlen( $field_value ) );
-					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", $show_field_label ) );
+					$field_display_value = str_repeat( apply_filters( 'fc_substep_text_display_value_' . $field_type . '_char', '*' ), strlen( $field_value ) );
+					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", $show_field_label ) );
 					break;
 				case 'country':
 				case 'state':
 				case 'radio':
 				case 'select':
-					$field_display_value = $this->get_field_display_value_from_field_options( $field_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", $show_field_label ) );
+					$field_display_value = $this->get_field_display_value_from_field_options( $field_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", $show_field_label ) );
 					break;
 				default:
 					$field_display_value = $this->get_field_display_value_from_array( $field_display_value );
-					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", $show_field_label ) );
+					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", $show_field_label ) );
 					break;
 			}
 		}
 
-		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_args[ 'type' ], $field_display_value, $field_value, $field_key, $field_args );
+		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_type, $field_display_value, $field_value, $field_key, $field_args );
 		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_key, $field_display_value, $field_value, $field_key, $field_args );
 
 		return $field_display_value;

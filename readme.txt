@@ -307,6 +307,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Validate shipping methods fields selection on the client-side.
 * Fixed: Remove duplicate product image on checkout order summary for some themes.
 * Fixed: Do not set first shipping method as selected from the template file, instead, let WooCommerce manage the chosen shipping method.
+* Fixed: PHP warning `Undefined array key "type"` when trying to get the substep review text for custom fields.
 
 = 1.5.0 - 2022-01-28 =
 
