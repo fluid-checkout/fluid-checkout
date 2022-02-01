@@ -305,6 +305,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 - Fixed: Remove duplicate product image on checkout order summary for some themes.
+- Fixed: Do not set first shipping method as selected from the template file, instead, let WooCommerce manage the chosen shipping method.
 
 = 1.5.0 - 2022-01-28 =
 
