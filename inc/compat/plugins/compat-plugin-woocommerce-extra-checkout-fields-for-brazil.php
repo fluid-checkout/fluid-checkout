@@ -22,6 +22,9 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
+		// Force change options
+		add_filter( 'option_wcbcf_settings', array( $this, 'disable_mailcheck_option' ), 10 );
+
 		// New checkout fields.
 		add_filter( 'wcbcf_billing_fields', array( $this, 'make_billing_fields_required' ), 110 );
 	}
@@ -30,6 +33,18 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
+	}
+
+
+
+	/**
+	 * Disable the Mailcheck feature from the plugin settings.
+	 *
+	 * @param   array  $settings  The plugin settings.
+	 */
+	public function disable_mailcheck_option( $settings ) {
+		unset( $settings[ 'mailcheck' ] );
+		return $settings;
 	}
 
 
