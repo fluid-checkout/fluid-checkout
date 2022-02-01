@@ -25,6 +25,15 @@ Better accessibility at the checkout page with support for keyboard-only navigat
 
 [View detailed list of features on our website](https://fluidcheckout.com/features/)
 
+<blockquote>
+<strong>Top notch plugin and support team!</strong>
+
+Cleanest and easiest checkout plugin on the market - it will save you a lot of headache in setting up your checkout flow and the support team is active/responsive and consistently working to improve. Just go ahead download and activate this one 🔥🔥🔥
+
+<cite>@vsonacci</cite>
+</blockquote>
+
+
 == Demos ==
 
 * [Multi step layout](https://demos.fluidcheckout.com/multi-step/cart/?add-to-cart=14&quantity=2)
@@ -35,6 +44,17 @@ Single step checkout is recommended when only a few fields are required, usually
 
 * [Highly stylized theme](https://demos.fluidcheckout.com/theme-deli/cart/?add-to-cart=14&quantity=2)
 With themes that are highly stylized such as Storefront Deli -- when comparing to a plain theme such as the default Storefront theme, Fluid Checkout adapts itself with part of the theme's styles, keeping the same look and feel while improving the experience.
+
+<blockquote>
+<strong> Insane how great this is!</strong>
+
+This plugin radically modernizes and cleans up the WooCommerce checkout.
+While doing a better job at UX & Conversion Optimization, it's also more compatible with plugins… even ahead of the new Gutenberg WooCommerce Checkout block that's been under development!
+Quite insane how the developer is doing this. And a free plugin!!
+
+<cite>@allancaeg</cite>
+</blockquote>
+
 
 == Lite Version (Free) ==
 
@@ -282,6 +302,9 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 
 == Changelog ==
+
+= Unreleased =
+- Fixed: Remove duplicate product image on checkout order summary for some themes.
 
 = 1.5.0 - 2022-01-28 =
 
