@@ -81,16 +81,17 @@ class FluidCheckout_Validation extends FluidCheckout {
 	public function add_checkout_validation_js_settings( $settings ) {
 
 		$settings[ 'checkoutValidation' ] = apply_filters( 'fc_checkout_validation_script_settings', array(
-			'validateFieldsSelector' => '.input-text, select',
-			'alwaysValidateFieldsSelector' => '',
-			'mailcheckSuggestions' => array(
+			'formRowSelector'                    => '.form-row, .shipping-method__package',
+			'validateFieldsSelector'             => '.input-text, select, .shipping-method__options',
+			'alwaysValidateFieldsSelector'       => '',
+			'mailcheckSuggestions'               => array(
 				/* translators: %s: html for the email address typo correction suggestion link */
-				'suggestedElementTemplate'    => '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( __( 'Did you mean %s?', 'fluid-checkout' ), '<a class="mailcheck-suggestion" href="#apply-suggestion" role="button" aria-label="'.esc_attr( __( 'Change email address to: {suggestion-value}', 'fluid-checkout' ) ).'" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
+				'suggestedElementTemplate'       => '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( __( 'Did you mean %s?', 'fluid-checkout' ), '<a class="mailcheck-suggestion" href="#apply-suggestion" role="button" aria-label="'.esc_attr( __( 'Change email address to: {suggestion-value}', 'fluid-checkout' ) ).'" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
 			),
-			'validationMessages' => array(
-				'required'                    => __( 'This is a required field.', 'fluid-checkout' ),
-				'email'                       => __( 'This is not a valid email address.', 'fluid-checkout' ),
-				'confirmation'                => __( 'This does not match the related field value.', 'fluid-checkout' ),
+			'validationMessages'                 => array(
+				'required'                       => __( 'This is a required field.', 'fluid-checkout' ),
+				'email'                          => __( 'This is not a valid email address.', 'fluid-checkout' ),
+				'confirmation'                   => __( 'This does not match the related field value.', 'fluid-checkout' ),
 			),
 		) );
 

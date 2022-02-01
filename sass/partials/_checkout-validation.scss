@@ -2,13 +2,15 @@
 // CHECKOUT VALIDATION MESSAGES
 // ------------------------------------
 
-div.woocommerce .form-row .woocommerce-error:not( .invalid-country-not-allowed ) {
+div.woocommerce .form-row .woocommerce-error:not( .invalid-country-not-allowed ),
+div.woocommerce .shipping-method__package .woocommerce-error:not( .invalid-country-not-allowed ) {
 	display: block;
 }
 
 
 
 div.woocommerce .form-row .woocommerce-error,
+div.woocommerce .shipping-method__package .woocommerce-error,
 div.woocommerce .form-row .fc-mailcheck-suggestion {
 	position: relative;
 	margin: 0;
@@ -29,10 +31,20 @@ div.woocommerce .form-row .fc-mailcheck-suggestion .mailcheck-suggestion {
 	}
 }
 
-div.woocommerce .form-row .woocommerce-error {
+div.woocommerce .form-row .woocommerce-error,
+div.woocommerce .shipping-method__package .woocommerce-error {
 	color: $checkout-message-error-color;
 }
-div.woocommerce .form-row .woocommerce-error:before {
+
+div.woocommerce .shipping-method__package .woocommerce-error {
+	padding-left: #{ $global-spacing-extra-small + $shipping-method-radio-size + $shipping-method-padding-horizontal + remsize( .1rem ) };
+	background-color: transparent;
+}
+
+
+
+div.woocommerce .form-row .woocommerce-error:before,
+div.woocommerce .shipping-method__package .woocommerce-error:before {
 	@include icon( $checkout-message-error-icon );
 	@include icon-size( $checkout-message-error-icon-size );
 
@@ -41,6 +53,10 @@ div.woocommerce .form-row .woocommerce-error:before {
 	left: $checkout-message-error-icon-position-left;
 	transform: translateY( -50% );
 	color: inherit;
+}
+
+div.woocommerce .shipping-method__package .woocommerce-error:before {
+	left: $global-spacing-extra-small + $global-spacing-tiny;
 }
 
 
@@ -64,6 +80,11 @@ div.woocommerce form .form-row[class*='woocommerce-invalid'] {
 	input[type="url"],
 	input[type="password"],
 	.select2-selection {
+		border-color: $error-color;
+	}
+}
+div.woocommerce form .shipping-method__package[class*='woocommerce-invalid'] {
+	#shipping_method.shipping-method__options {
 		border-color: $error-color;
 	}
 }

@@ -1,8 +1,10 @@
-div.woocommerce .form-row .woocommerce-error:not(.invalid-country-not-allowed) {
+div.woocommerce .form-row .woocommerce-error:not(.invalid-country-not-allowed),
+div.woocommerce .shipping-method__package .woocommerce-error:not(.invalid-country-not-allowed) {
   display: block;
 }
 
 div.woocommerce .form-row .woocommerce-error,
+div.woocommerce .shipping-method__package .woocommerce-error,
 div.woocommerce .form-row .fc-mailcheck-suggestion {
   position: relative;
   margin: 0;
@@ -21,11 +23,18 @@ div.woocommerce .form-row .fc-mailcheck-suggestion .mailcheck-suggestion:focus {
   outline-offset: 1px;
 }
 
-div.woocommerce .form-row .woocommerce-error {
+div.woocommerce .form-row .woocommerce-error,
+div.woocommerce .shipping-method__package .woocommerce-error {
   color: #CC1818;
 }
 
-div.woocommerce .form-row .woocommerce-error:before {
+div.woocommerce .shipping-method__package .woocommerce-error {
+  padding-left: 45px;
+  background-color: transparent;
+}
+
+div.woocommerce .form-row .woocommerce-error:before,
+div.woocommerce .shipping-method__package .woocommerce-error:before {
   display: inline-block;
   font-family: "fluid-checkout-icons" !important;
   font-style: normal !important;
@@ -48,6 +57,10 @@ div.woocommerce .form-row .woocommerce-error:before {
   color: inherit;
 }
 
+div.woocommerce .shipping-method__package .woocommerce-error:before {
+  left: 15px;
+}
+
 div.woocommerce form .form-row[class*=woocommerce-invalid] textarea,
 div.woocommerce form .form-row[class*=woocommerce-invalid] select,
 div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=email],
@@ -59,6 +72,10 @@ div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=tel],
 div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=url],
 div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=password],
 div.woocommerce form .form-row[class*=woocommerce-invalid] .select2-selection {
+  border-color: #CC1818;
+}
+
+div.woocommerce form .shipping-method__package[class*=woocommerce-invalid] #shipping_method.shipping-method__options {
   border-color: #CC1818;
 }
 
