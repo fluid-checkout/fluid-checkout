@@ -19,8 +19,8 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Late hooks
-		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+		// Enqueue
+		add_action( 'wp_enqueue_scripts', array( $this, 'replace_wcbcf_script' ), 20 );
 
 		// Force change options
 		add_filter( 'option_wcbcf_settings', array( $this, 'disable_mailcheck_option' ), 10 );
@@ -29,10 +29,35 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		add_filter( 'wcbcf_billing_fields', array( $this, 'make_billing_fields_required' ), 110 );
 	}
 
+
+
 	/**
-	 * Add or remove late hooks.
+	 * Replace plugin scripts with modified versions.
 	 */
-	public function late_hooks() {
+	public function replace_wcbcf_script() {
+		// Replace frontend script
+		wp_deregister_script( 'woocommerce-extra-checkout-fields-for-brazil-front' );
+		wp_enqueue_script( 'woocommerce-extra-checkout-fields-for-brazil-front', self::$directory_url . 'js/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend'. self::$asset_version . '.js', array( 'jquery', 'jquery-mask' ), NULL, true );
+		
+		// Add localized script params
+		// Copied from the original plugin
+		$settings = get_option( 'wcbcf_settings' );
+		$autofill = isset( $settings[ 'addresscomplete' ] ) ? 'yes' : 'no';
+		wp_localize_script (
+			'woocommerce-extra-checkout-fields-for-brazil-front',
+			'wcbcf_public_params',
+			array(
+				'state'              => esc_js( __( 'State', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
+				'required'           => esc_js( __( 'required', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
+				// CHANGE: Always set mailcheck feature as disabled
+				'mailcheck'          => 'no',
+				'maskedinput'        => isset( $settings[ 'maskedinput' ] ) ? 'yes' : 'no',
+				'addresscomplete'    => apply_filters( 'woocommerce_correios_enable_autofill_addresses', false ) ? false : $autofill,
+				'person_type'        => absint( $settings[ 'person_type' ] ),
+				'only_brazil'        => isset( $settings[ 'only_brazil' ] ) ? 'yes' : 'no',
+				'sort_state_country' => version_compare( WC_VERSION, '3.0', '>=' ),
+			)
+		);
 	}
 
 
