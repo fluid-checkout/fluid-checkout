@@ -2276,9 +2276,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Get address fields for country
 			$address_fields = WC()->countries->get_address_fields( $shipping_country, 'shipping_' );
-			
+
+			// Get fields skip list
+			$step_complete_field_keys_skip_list = apply_filters( 'fc_is_step_complete_shipping_field_keys_skip_list', $this->get_contact_step_display_field_ids() );
+
 			// Check each required country field
 			foreach ( $address_fields as $field_key => $field ) {
+				// Skip checking some fields
+				if ( in_array( $field_key, $step_complete_field_keys_skip_list ) ) { continue; }
+
 				if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( WC()->checkout()->get_value( $field_key ) ) ) {
 					$is_step_complete = false;
 					break;
@@ -2644,13 +2650,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get address fields for country
 		$address_fields = WC()->countries->get_address_fields( $billing_country, 'billing_' );
 
-		// Get billing fields moved to contact step
-		$contact_display_field_keys = $this->get_contact_step_display_field_ids();
+		// Get fields skip list
+		$step_complete_field_keys_skip_list = apply_filters( 'fc_is_step_complete_billing_field_keys_skip_list', $this->get_contact_step_display_field_ids() );
 		
 		// Check each required country field
 		foreach ( $address_fields as $field_key => $field ) {
-			// Skip billing fields moved to contact step
-			if ( in_array( $field_key, $contact_display_field_keys ) ) { continue; }
+			// Skip checking some fields
+			if ( in_array( $field_key, $step_complete_field_keys_skip_list ) ) { continue; }
 
 			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( WC()->checkout()->get_value( $field_key ) ) ) {
 				$is_step_complete = false;
