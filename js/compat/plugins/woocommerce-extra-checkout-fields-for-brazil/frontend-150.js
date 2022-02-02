@@ -50,6 +50,10 @@ jQuery( function( $ ) {
 			if ($('#billing_country').val() === 'BR' ) {
 				wc_ecfb_frontend.maskBilling();
 			}
+			// CHANGE: Also mask shipping when initializing
+			if ($('#shipping_country').val() === 'BR' ) {
+				wc_ecfb_frontend.maskShipping();
+			}
 		},
 
 		/**
@@ -128,11 +132,14 @@ jQuery( function( $ ) {
 		},
 
 		maskShipping: function() {
+			// CHANGE: Add mask to shipping phone if field exists
+			wc_ecfb_frontend.maskPhone( '#shipping_phone' );
 			$( '#shipping_postcode' ).mask( '00000-000' ).attr( 'type', 'tel' );
 		},
 
 		unmaskShipping: function() {
-			$( '#shipping_postcode' ).unmask().attr( 'type', 'text' );
+			// CHANGE: Remove mask from shipping phone if field exists
+			$( '#shipping_postcode', '#shipping_phone' ).unmask().attr( 'type', 'text' );
 		},
 
 		maskGeneral: function() {
@@ -151,6 +158,8 @@ jQuery( function( $ ) {
 							field.mask(MaskBehavior.apply({}, arguments), options);
 						}
 					};
+
+			console.log( $element );
 
 			$element.mask(MaskBehavior, maskOptions);
 		},
