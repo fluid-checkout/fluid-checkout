@@ -25,6 +25,9 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		// Force change options
 		add_filter( 'option_wcbcf_settings', array( $this, 'disable_mailcheck_option' ), 10 );
 
+		// Checkout fields args
+		add_filter( 'fc_checkout_field_args', array( $this, 'change_checkout_field_args' ), 110 );
+
 		// Make fields required
 		add_filter( 'wcbcf_billing_fields', array( $this, 'make_person_type_fields_required' ), 110 );
 
@@ -82,6 +85,66 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	public function disable_mailcheck_option( $settings ) {
 		unset( $settings[ 'mailcheck' ] );
 		return $settings;
+	}
+
+
+
+	/**
+	 * Change checkout fields args.
+	 *
+	 * @param   array  $field_args  Contains checkout field arguments.
+	 */
+	public function change_checkout_field_args( $field_args ) {
+
+		$new_field_args = array (
+			'billing_first_name'       => array( 'priority' => 10 ),
+			'billing_last_name'        => array( 'priority' => 20 ),
+			'billing_phone'            => array( 'priority' => 30 ),
+			'billing_company'          => array( 'priority' => 40, 'class' => array( 'form-row-wide' ) ),
+			'billing_country'          => array( 'priority' => 50, 'class' => array( 'form-row-wide' ) ),
+			'billing_postcode'         => array( 'priority' => 60, 'class' => array( 'form-row-first' ) ),
+			'billing_address_1'        => array( 'priority' => 70, 'class' => array( 'form-row-first', 'form-row-two-thirds' ) ),
+			'billing_number'           => array( 'priority' => 80, 'class' => array( 'form-row-last', 'form-row-one-third' ) ),
+			'billing_address_2'        => array( 'priority' => 90, 'class' => array( 'form-row-wide' ) ),
+			'billing_neighborhood'     => array( 'priority' => 100, 'class' => array( 'form-row-first' ) ),
+			'billing_city'             => array( 'priority' => 110, 'class' => array( 'form-row-last' ) ),
+			'billing_state'            => array( 'priority' => 120, 'class' => array( 'form-row-wide' ) ),
+
+			'shipping_first_name'       => array( 'priority' => 10 ),
+			'shipping_last_name'        => array( 'priority' => 20 ),
+			'shipping_phone'            => array( 'priority' => 30 ),
+			'shipping_company'          => array( 'priority' => 40, 'class' => array( 'form-row-wide' ) ),
+			'shipping_country'          => array( 'priority' => 50, 'class' => array( 'form-row-wide' ) ),
+			'shipping_postcode'         => array( 'priority' => 60, 'class' => array( 'form-row-first' ) ),
+			'shipping_address_1'        => array( 'priority' => 70, 'class' => array( 'form-row-first', 'form-row-two-thirds' ) ),
+			'shipping_number'           => array( 'priority' => 80, 'class' => array( 'form-row-last', 'form-row-one-third' ) ),
+			'shipping_address_2'        => array( 'priority' => 90, 'class' => array( 'form-row-wide' ) ),
+			'shipping_neighborhood'     => array( 'priority' => 100, 'class' => array( 'form-row-first' ) ),
+			'shipping_city'             => array( 'priority' => 110, 'class' => array( 'form-row-last' ) ),
+			'shipping_state'            => array( 'priority' => 120, 'class' => array( 'form-row-wide' ) ),
+		);
+
+		// Merge class arguments with existing values
+		foreach ( $new_field_args as $field_key => $new_args ) {
+			// Skip if class attribute is not set on the original attributes
+			if ( ! array_key_exists( $field_key, $field_args ) || ! array_key_exists( 'class', $field_args[ $field_key ] ) || ! is_array( $field_args[ $field_key ][ 'class' ] ) ) { continue; }
+
+			// Skip if class attribute is not set
+			if ( ! array_key_exists( 'class', $new_args ) || ! is_array( $new_args[ 'class' ] ) ) { continue; }
+
+			// Merge classes
+			$new_args[ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $field_args[ $field_key ][ 'class' ], $new_args[ 'class' ] );
+		}
+
+		// Merge class arguments with existing values
+		foreach ( $new_field_args as $field_key => $new_args ) {
+			// Skip if field args not yet set to the original attributes
+			if ( ! array_key_exists( $field_key, $field_args ) ) { continue; }
+			
+			$new_field_args[ $field_key ] = array_merge( $field_args[ $field_key ], $new_args );
+		}
+		
+		return $new_field_args;
 	}
 
 
