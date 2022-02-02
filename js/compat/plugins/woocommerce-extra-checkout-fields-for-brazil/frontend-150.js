@@ -86,7 +86,10 @@ jQuery( function( $ ) {
 						$( '.person-type-field' ).removeClass( 'validate-required' );
 						$( '.person-type-field label .required' ).remove();
 					}
-				}).change();
+				// CHANGE: Do not trigger field `change` event after updating the field attributes
+				// to prevent an infinite loop where the `change` event triggers the `update_checkout` event,
+				// which in turn, would run this code again and trigger the field `change` event, and so on.
+				} );
 			}
 
 			if ( '1' === wcbcf_public_params.person_type ) {
