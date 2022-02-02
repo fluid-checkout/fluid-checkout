@@ -305,6 +305,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 * Added: New filters `fc_is_step_complete_shipping_field_keys_skip_list` and `fc_is_step_complete_billing_field_keys_skip_list` to skip validating required fields in order to determine if the steps are complete or not.
+* Added: Add new classes for form fields `form-row-one-third`, `form-row-two-thirds` and `form-row-middle`.
 * Improved: Validate shipping methods fields selection on the client-side.
 * Fixed: Remove duplicate product image on checkout order summary for some themes.
 * Fixed: Do not set first shipping method as selected from the template file, instead, let WooCommerce manage the chosen shipping method.
