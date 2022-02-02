@@ -24,6 +24,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 
 		// Force change options
 		add_filter( 'option_wcbcf_settings', array( $this, 'disable_mailcheck_option' ), 10 );
+		add_filter( 'gettext', array( $this, 'change_mailcheck_options_text' ), 10, 3 );
 
 		// Checkout fields args
 		add_filter( 'fc_checkout_field_args', array( $this, 'change_checkout_field_args' ), 110 );
@@ -89,6 +90,29 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	public function disable_mailcheck_option( $settings ) {
 		unset( $settings[ 'mailcheck' ] );
 		return $settings;
+	}
+
+
+
+	/**
+	 * Change text for the mailcheck features from this plugin.
+	 *
+	 * @param   string  $translated   The translated text.
+	 * @param   string  $text         The original text.
+	 * @param   string  $text_domain  The text domain.
+	 */
+	public function change_mailcheck_options_text( $translated, $text, $text_domain ) {
+		// Bail if not the targetted text domain
+		if ( 'woocommerce-extra-checkout-fields-for-brazil' !== $text_domain ) { return $translated; }
+
+		if ( 'Enable Mail Check:' === $text ) {
+			$translated = __( 'Enable Mail Check: (disabled feature)', 'fluid-checkout' );
+		}
+		else if ( 'If checked informs typos in email to users.' === $text ) {
+			$translated = __( 'If checked informs typos in email to users. (This feature has been disabled because Fluid Checkout offers the feature. Changes to this option will not take effect)', 'fluid-checkout' );
+		}
+
+		return $translated;
 	}
 
 
