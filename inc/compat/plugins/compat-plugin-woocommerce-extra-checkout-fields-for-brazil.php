@@ -33,6 +33,12 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 
 		// Prevent hiding optional gift option fields behind a link button
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_person_type_fields' ), 10 );
+
+		// Shipping phone
+		if ( class_exists( 'FluidCheckout_CheckoutShippingPhoneField' ) ) {
+			add_filter( 'wcbcf_shipping_fields', array( FluidCheckout_CheckoutShippingPhoneField::instance(), 'add_shipping_phone_field' ), 5 );
+			add_filter( 'wcbcf_shipping_fields' , array( FluidCheckout_CheckoutShippingPhoneField::instance(), 'change_shipping_company_field_args' ), 10 );
+		}
 	}
 
 
