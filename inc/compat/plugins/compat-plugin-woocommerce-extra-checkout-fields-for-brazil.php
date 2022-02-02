@@ -37,6 +37,10 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		// Prevent hiding optional gift option fields behind a link button
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_person_type_fields' ), 10 );
 
+		// Substep review text
+		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'add_substep_text_extra_fields_skip_list_shipping' ), 10 );
+		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'add_substep_text_extra_fields_skip_list_billing' ), 10 );
+
 		// Shipping phone
 		if ( class_exists( 'FluidCheckout_CheckoutShippingPhoneField' ) ) {
 			add_filter( 'wcbcf_shipping_fields', array( FluidCheckout_CheckoutShippingPhoneField::instance(), 'add_shipping_phone_field' ), 5 );
@@ -189,6 +193,39 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		$skip_list[] = 'billing_cpf';
 		$skip_list[] = 'billing_rg';
 		return $skip_list;
+	}
+
+
+
+	/**
+	 * Add extra fields to skip for the substep review text by address type.
+	 *
+	 * @param   array   $skip_list     List of fields to skip adding to the substep review text.
+	 * @param   string  $address_type  The address type.
+	 */
+	public function add_substep_text_extra_fields_skip_list_by_address_type( $skip_list, $address_type ) {
+		$skip_list[] = $address_type . '_persontype';
+		$skip_list[] = $address_type . '_number';
+		$skip_list[] = $address_type . '_neighborhood';
+		return $skip_list;
+	}
+
+	/**
+	 * Add shipping extra fields to skip for the substep review text.
+	 *
+	 * @param   array  $skip_list  List of fields to skip adding to the substep review text.
+	 */
+	public function add_substep_text_extra_fields_skip_list_shipping( $skip_list ) {
+		return $this->add_substep_text_extra_fields_skip_list_by_address_type( $skip_list, 'shipping' );
+	}
+
+	/**
+	 * Add billing extra fields to skip for the substep review text.
+	 *
+	 * @param   array  $skip_list  List of fields to skip adding to the substep review text.
+	 */
+	public function add_substep_text_extra_fields_skip_list_billing( $skip_list ) {
+		return $this->add_substep_text_extra_fields_skip_list_by_address_type( $skip_list, 'billing' );
 	}
 
 
