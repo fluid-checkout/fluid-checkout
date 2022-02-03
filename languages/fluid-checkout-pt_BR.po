@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2022-01-28 15:35+0000\n"
+"PO-Revision-Date: 2022-02-03 13:52+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -31,7 +31,7 @@ msgid "(Experimental) Use theme's page header and footer for the checkout page"
 msgstr ""
 "(Experimental) Use o cabeçalho e rodapé do tema para a página de checkout"
 
-#: inc/checkout-validation.php:221
+#: inc/checkout-validation.php:222
 msgid "(Required)"
 msgstr "(Obrigatório)"
 
@@ -114,7 +114,7 @@ msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 "Endereço de faturamento igual ao endereço de entrega marcado por padrão"
 
-#: inc/checkout-steps.php:2484
+#: inc/checkout-steps.php:2493
 msgid "Billing to"
 msgstr "Faturamento para"
 
@@ -150,7 +150,7 @@ msgstr "Captcha Pro by BestWebSoft"
 msgid "Cart total:"
 msgstr "Total no carrinho:"
 
-#: inc/checkout-validation.php:88
+#: inc/checkout-validation.php:89
 msgid "Change email address to: {suggestion-value}"
 msgstr "Alterar o endereço de e-mail para: {suggestion-value}"
 
@@ -357,7 +357,7 @@ msgid "Delivery or Pickup"
 msgstr "Entrega ou Retirada"
 
 #. %s: html for the email address typo correction suggestion link
-#: inc/checkout-validation.php:88
+#: inc/checkout-validation.php:89
 #, php-format
 msgid "Did you mean %s?"
 msgstr "Você quis dizer %s?"
@@ -447,6 +447,10 @@ msgstr "Editar carrinho"
 msgctxt "Edit gift options link on admin order details screen"
 msgid "Edit"
 msgstr "Alterar"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:116
+msgid "Enable Mail Check: (disabled feature)"
+msgstr "Habilitar Sugestões de E-mail: (funcionalidade desativada)"
 
 #: inc/admin/admin-settings-general.php:215
 msgid "Enable the express checkout section at checkout"
@@ -545,6 +549,16 @@ msgstr "https://fluidcheckout.com/"
 #: inc/admin/admin-notice-review-request.php:45
 msgid "I Need Help!"
 msgstr "Eu preciso de ajuda!"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:119
+msgid ""
+"If checked informs typos in email to users. (This feature has been disabled "
+"because Fluid Checkout offers the feature. Changes to this option will not "
+"take effect)"
+msgstr ""
+"Caso esteja marcado exibe dicas quando o usuário digita o e-mail de forma "
+"errada. (Este recurso foi desativado porque o plugin Fluid Checkout oferece "
+"o mesmo recurso. As alterações nesta opção não terão efeito)"
 
 #: inc/admin/admin-setting-type-fc-image-uploader.php:85
 msgctxt "Image uploader."
@@ -684,7 +698,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2166
+#: inc/checkout-steps.php:2169
 msgid "Not selected yet."
 msgstr "Não selecionado."
 
@@ -698,7 +712,7 @@ msgctxt "Notice for no gift options provided"
 msgid "None."
 msgstr "Nenhuma."
 
-#: inc/checkout-steps.php:2222
+#: inc/checkout-steps.php:2225
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Nenhuma."
@@ -717,7 +731,7 @@ msgid ""
 msgstr ""
 "Aplicável apenas ao usar o cabeçalho do tema Impreza na página de checkout."
 
-#: inc/checkout-shipping-phone-field.php:77
+#: inc/checkout-shipping-phone-field.php:56
 msgid "Only used for shipping-related questions."
 msgstr "Usado apenas para perguntas relacionadas à entrega."
 
@@ -750,7 +764,7 @@ msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 "O número do pedido e o recibo serão enviados para este endereço de e-mail."
 
-#: inc/checkout-steps.php:3230 inc/admin/admin-settings-advanced.php:85
+#: inc/checkout-steps.php:3239 inc/admin/admin-settings-advanced.php:85
 #: inc/admin/admin-settings-advanced.php:104
 #| msgid "Order Summary"
 msgid "Order summary"
@@ -764,7 +778,7 @@ msgstr "Guias de remessa"
 msgid "Page background color"
 msgstr "Cor de fundo da página"
 
-#: inc/checkout-steps.php:3126
+#: inc/checkout-steps.php:3135
 msgid "Payment method"
 msgstr "Forma de pagamento"
 
@@ -837,7 +851,7 @@ msgstr ""
 msgid "Remove"
 msgstr "Remover"
 
-#: inc/checkout-steps.php:2666
+#: inc/checkout-steps.php:2675
 msgid "Same as shipping address"
 msgstr "Igual ao endereço de entrega"
 
@@ -870,7 +884,7 @@ msgstr "Ferramentas"
 msgid "Shipping method"
 msgstr "Método de entrega"
 
-#: inc/checkout-shipping-phone-field.php:76
+#: inc/checkout-shipping-phone-field.php:55
 #: inc/admin/admin-settings-general.php:154
 msgid "Shipping phone"
 msgstr "Telefone de entrega"
@@ -989,15 +1003,15 @@ msgstr ""
 "Essas áreas de widget são usadas para adicionar símbolos de confiança na "
 "página de checkout."
 
-#: inc/checkout-validation.php:93
+#: inc/checkout-validation.php:94
 msgid "This does not match the related field value."
 msgstr "Isso não corresponde ao valor do campo relacionado."
 
-#: inc/checkout-validation.php:91
+#: inc/checkout-validation.php:92
 msgid "This is a required field."
 msgstr "Este é um campo obrigatório."
 
-#: inc/checkout-validation.php:92
+#: inc/checkout-validation.php:93
 msgid "This is not a valid email address."
 msgstr "Este não é um endereço de e-mail válido."
 
