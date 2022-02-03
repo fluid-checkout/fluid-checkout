@@ -28,6 +28,8 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 
 		// Checkout fields args
 		add_filter( 'fc_checkout_field_args', array( $this, 'change_checkout_field_args' ), 110 );
+		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 110 );
+		// add_filter( 'woocommerce_get_country_locale', array( $this, 'address_fields_priority' ), 110 );
 
 		// Make fields required
 		add_filter( 'wcbcf_billing_fields', array( $this, 'make_person_type_fields_required' ), 110 );
@@ -125,31 +127,92 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	public function change_checkout_field_args( $field_args ) {
 
 		$new_field_args = array (
-			'billing_first_name'       => array( 'priority' => 10 ),
-			'billing_last_name'        => array( 'priority' => 20 ),
-			'billing_phone'            => array( 'priority' => 30 ),
-			'billing_company'          => array( 'priority' => 40, 'class' => array( 'form-row-wide' ) ),
-			'billing_country'          => array( 'priority' => 50, 'class' => array( 'form-row-wide' ) ),
-			'billing_postcode'         => array( 'priority' => 60, 'class' => array( 'form-row-first' ) ),
-			'billing_address_1'        => array( 'priority' => 70, 'class' => array( 'form-row-first', 'form-row-two-thirds' ) ),
-			'billing_number'           => array( 'priority' => 80, 'class' => array( 'form-row-last', 'form-row-one-third' ) ),
-			'billing_address_2'        => array( 'priority' => 90, 'class' => array( 'form-row-wide' ) ),
-			'billing_neighborhood'     => array( 'priority' => 100, 'class' => array( 'form-row-first' ) ),
-			'billing_city'             => array( 'priority' => 110, 'class' => array( 'form-row-last' ) ),
-			'billing_state'            => array( 'priority' => 120, 'class' => array( 'form-row-wide' ) ),
+			'billing_email'            => array( 'priority' => 10 ),
+			
+			'billing_first_name'       => array( 'priority' => 20 ),
+			'billing_last_name'        => array( 'priority' => 30 ),
+			'billing_phone'            => array( 'priority' => 40 ),
+			'billing_cellphone'        => array( 'priority' => 50 ),
 
-			'shipping_first_name'       => array( 'priority' => 10 ),
-			'shipping_last_name'        => array( 'priority' => 20 ),
-			'shipping_phone'            => array( 'priority' => 30 ),
-			'shipping_company'          => array( 'priority' => 40, 'class' => array( 'form-row-wide' ) ),
-			'shipping_country'          => array( 'priority' => 50, 'class' => array( 'form-row-wide' ) ),
-			'shipping_postcode'         => array( 'priority' => 60, 'class' => array( 'form-row-first' ) ),
-			'shipping_address_1'        => array( 'priority' => 70, 'class' => array( 'form-row-first', 'form-row-two-thirds' ) ),
-			'shipping_number'           => array( 'priority' => 80, 'class' => array( 'form-row-last', 'form-row-one-third' ) ),
-			'shipping_address_2'        => array( 'priority' => 90, 'class' => array( 'form-row-wide' ) ),
-			'shipping_neighborhood'     => array( 'priority' => 100, 'class' => array( 'form-row-first' ) ),
-			'shipping_city'             => array( 'priority' => 110, 'class' => array( 'form-row-last' ) ),
-			'shipping_state'            => array( 'priority' => 120, 'class' => array( 'form-row-wide' ) ),
+			'billing_country'          => array( 'priority' => 70, 'class' => array( 'form-row-wide' ) ),
+			'billing_postcode'         => array( 'priority' => 80, 'class' => array( 'form-row-first' ) ),
+			'billing_address_1'        => array( 'priority' => 90, 'class' => array( 'form-row-first', 'form-row-two-thirds' ) ),
+			'billing_number'           => array( 'priority' => 100, 'class' => array( 'form-row-last', 'form-row-one-third' ) ),
+			'billing_address_2'        => array( 'priority' => 110, 'class' => array( 'form-row-wide' ) ),
+			'billing_neighborhood'     => array( 'priority' => 120, 'class' => array( 'form-row-first' ) ),
+			'billing_city'             => array( 'priority' => 130, 'class' => array( 'form-row-last' ) ),
+			'billing_state'            => array( 'priority' => 140, 'class' => array( 'form-row-wide' ) ),
+
+			'billing_persontype'       => array( 'priority' => 150, 'class' => array( 'form-row-wide' ) ),
+			'billing_company'          => array( 'priority' => 160, 'class' => array( 'form-row-wide' ) ),
+			'billing_cpf'              => array( 'priority' => 170, 'class' => array( 'form-row-first' ) ),
+			'billing_rg'               => array( 'priority' => 180, 'class' => array( 'form-row-last' ) ),
+			'billing_cnpj'             => array( 'priority' => 190, 'class' => array( 'form-row-first' ) ),
+			'billing_ie'               => array( 'priority' => 200, 'class' => array( 'form-row-last' ) ),
+			'billing_birthdate'        => array( 'priority' => 210, 'class' => array( 'form-row-first' ) ),
+			'billing_sex'              => array( 'priority' => 220, 'class' => array( 'form-row-last' ) ),
+
+			'shipping_first_name'      => array( 'priority' => 20 ),
+			'shipping_last_name'       => array( 'priority' => 30 ),
+			'shipping_phone'           => array( 'priority' => 40 ),
+			'shipping_cellphone'       => array( 'priority' => 50 ),
+			'shipping_company'         => array( 'priority' => 60, 'class' => array( 'form-row-wide' ) ),
+
+			'shipping_country'         => array( 'priority' => 70, 'class' => array( 'form-row-wide' ) ),
+			'shipping_postcode'        => array( 'priority' => 80, 'class' => array( 'form-row-first' ) ),
+			'shipping_address_1'       => array( 'priority' => 90, 'class' => array( 'form-row-first', 'form-row-two-thirds' ) ),
+			'shipping_number'          => array( 'priority' => 100, 'class' => array( 'form-row-last', 'form-row-one-third' ) ),
+			'shipping_address_2'       => array( 'priority' => 110, 'class' => array( 'form-row-wide' ) ),
+			'shipping_neighborhood'    => array( 'priority' => 120, 'class' => array( 'form-row-first' ) ),
+			'shipping_city'            => array( 'priority' => 130, 'class' => array( 'form-row-last' ) ),
+			'shipping_state'           => array( 'priority' => 140, 'class' => array( 'form-row-wide' ) ),
+		);
+
+		// Merge class arguments with existing values
+		foreach ( $new_field_args as $field_key => $new_args ) {
+			// Skip if class attribute is not set on the original attributes
+			if ( ! array_key_exists( $field_key, $field_args ) || ! array_key_exists( 'class', $field_args[ $field_key ] ) || ! is_array( $field_args[ $field_key ][ 'class' ] ) ) { continue; }
+
+			// Skip if class attribute is not set
+			if ( ! array_key_exists( 'class', $new_args ) || ! is_array( $new_args[ 'class' ] ) ) { continue; }
+
+			// Merge classes
+			$new_args[ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $field_args[ $field_key ][ 'class' ], $new_args[ 'class' ] );
+		}
+
+		// Merge class arguments with existing values
+		foreach ( $new_field_args as $field_key => $new_args ) {
+			// Skip if field args not yet set to the original attributes
+			if ( ! array_key_exists( $field_key, $field_args ) ) { continue; }
+			
+			$new_field_args[ $field_key ] = array_merge( $field_args[ $field_key ], $new_args );
+		}
+		
+		return $new_field_args;
+	}
+
+	/**
+	 * Change address fields args.
+	 *
+	 * @param   array  $field_args  Contains locale address field arguments.
+	 */
+	public function change_default_locale_field_args( $field_args ) {
+
+		$new_field_args = array (
+			'first_name'       => array( 'priority' => 20 ),
+			'last_name'        => array( 'priority' => 30 ),
+			'phone'            => array( 'priority' => 40 ),
+			'cellphone'        => array( 'priority' => 50 ),
+			'country'          => array( 'priority' => 70, 'class' => array( 'form-row-wide' ) ),
+			'postcode'         => array( 'priority' => 80, 'class' => array( 'form-row-first' ) ),
+			'address_1'        => array( 'priority' => 90, 'class' => array( 'form-row-first', 'form-row-two-thirds' ) ),
+			'number'           => array( 'priority' => 100, 'class' => array( 'form-row-last', 'form-row-one-third' ) ),
+			'address_2'        => array( 'priority' => 110, 'class' => array( 'form-row-wide' ) ),
+			'neighborhood'     => array( 'priority' => 120, 'class' => array( 'form-row-first' ) ),
+			'city'             => array( 'priority' => 130, 'class' => array( 'form-row-last' ) ),
+			'state'            => array( 'priority' => 140, 'class' => array( 'form-row-wide' ) ),
+
+			'company'          => array( 'priority' => 60, 'class' => array( 'form-row-wide' ) ),
 		);
 
 		// Merge class arguments with existing values
@@ -216,6 +279,8 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		$skip_list[] = 'billing_ie';
 		$skip_list[] = 'billing_cpf';
 		$skip_list[] = 'billing_rg';
+		$skip_list[] = 'billing_company';
+
 		return $skip_list;
 	}
 
