@@ -40,9 +40,14 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		// Prevent hiding optional gift option fields behind a link button
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_person_type_fields' ), 10 );
 
+		// Address format
+		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'change_address_format' ), 20 );
+		add_filter( 'fc_billing_substep_text_address_data', array( $this, 'change_billing_address_data_for_substep_text_lines' ), 10 );
+
 		// Substep review text
-		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'add_substep_text_extra_fields_skip_list_shipping' ), 10 );
-		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'add_substep_text_extra_fields_skip_list_billing' ), 10 );
+		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_shipping' ), 10 );
+		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_billing' ), 10 );
+		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_by_person_type' ), 10 );
 
 		// Shipping phone
 		if ( class_exists( 'FluidCheckout_CheckoutShippingPhoneField' ) ) {
@@ -253,7 +258,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	}
 
 
-	
+
 	/**
 	 * Make billing fields registered as required.
 	 *
@@ -306,7 +311,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 * @param   array   $skip_list     List of fields to skip adding to the substep review text.
 	 * @param   string  $address_type  The address type.
 	 */
-	public function add_substep_text_extra_fields_skip_list_by_address_type( $skip_list, $address_type ) {
+	public function change_substep_text_extra_fields_skip_list_by_address_type( $skip_list, $address_type ) {
 		$skip_list[] = $address_type . '_persontype';
 		$skip_list[] = $address_type . '_number';
 		$skip_list[] = $address_type . '_neighborhood';
@@ -318,8 +323,8 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 *
 	 * @param   array  $skip_list  List of fields to skip adding to the substep review text.
 	 */
-	public function add_substep_text_extra_fields_skip_list_shipping( $skip_list ) {
-		return $this->add_substep_text_extra_fields_skip_list_by_address_type( $skip_list, 'shipping' );
+	public function change_substep_text_extra_fields_skip_list_shipping( $skip_list ) {
+		return $this->change_substep_text_extra_fields_skip_list_by_address_type( $skip_list, 'shipping' );
 	}
 
 	/**
@@ -327,8 +332,51 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 *
 	 * @param   array  $skip_list  List of fields to skip adding to the substep review text.
 	 */
-	public function add_substep_text_extra_fields_skip_list_billing( $skip_list ) {
-		return $this->add_substep_text_extra_fields_skip_list_by_address_type( $skip_list, 'billing' );
+	public function change_substep_text_extra_fields_skip_list_billing( $skip_list ) {
+		return $this->change_substep_text_extra_fields_skip_list_by_address_type( $skip_list, 'billing' );
+	}
+
+	/**
+	 * Remove billing company from extra fields to skip for the substep review text.
+	 *
+	 * @param   array  $skip_list  List of fields to skip adding to the substep review text.
+	 */
+	public function change_substep_text_extra_fields_skip_list_by_person_type( $skip_list ) {
+		$person_type = WC()->checkout()->get_value( 'billing_persontype' );
+
+		if ( 1 == $person_type ) { // 1 = Individual
+			$skip_list = array_merge( $skip_list, array( 'billing_cnpj', 'billing_ie' ) );
+		}
+		else if ( 2 == $person_type ) { // 2 = Legal Person
+			$skip_list = array_diff( $skip_list, array( 'billing_company' ) );
+			$skip_list = array_merge( $skip_list, array( 'billing_cpf', 'billing_rg' ) );
+		}
+
+		return $skip_list;
+	}
+
+
+
+	/**
+	 * Change country address formats for Brazil.
+	 *
+	 * @param  array  $formats  Default address formats.
+	 */
+	public function change_address_format( $formats ) {
+		$formats['BR'] = str_replace( '{name}', "{name}\n{company}", $formats['BR'] );
+		return $formats;
+	}
+
+
+
+	/**
+	 * Remove billing company from the billing address data used for the substep review text.
+	 *
+	 * @param   array   $address_data  The address data for the substep review text.
+	 */
+	public function change_billing_address_data_for_substep_text_lines( $address_data ) {
+		unset( $address_data[ 'company' ] );
+		return $address_data;
 	}
 
 
