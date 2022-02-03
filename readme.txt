@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 5.9
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -304,7 +304,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
-= Unreleased =
+= 1.5.1 - 2022-02-03 =
 * Added: Compatibility with plugin Brazilian Market on WooCommerce - by Claudio Sanches.
 * Added: New filters `fc_is_step_complete_shipping_field_keys_skip_list` and `fc_is_step_complete_billing_field_keys_skip_list` to skip validating required fields in order to determine if the steps are complete or not.
 * Added: Add new classes for form fields `form-row-one-third`, `form-row-two-thirds` and `form-row-middle`.
