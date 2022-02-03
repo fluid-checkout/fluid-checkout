@@ -209,7 +209,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	public function merge_form_field_class_args( $field_classes, $new_classes ) {
 
 		// Maybe remove form-row-XX classes
-		$form_row_classes = array( 'form-row-first', 'form-row-last', 'form-row-wide' );
+		$form_row_classes = array( 'form-row-first', 'form-row-last', 'form-row-wide', 'form-row-middle' );
 
 		if ( array_intersect( $new_classes, $form_row_classes ) ) {
 			$field_classes = array_diff( $field_classes, $form_row_classes );

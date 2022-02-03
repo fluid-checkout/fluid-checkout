@@ -41,27 +41,6 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 			// Remove phone field from shipping address data
 			add_filter( 'fc_shipping_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
 		}
-
-		// TODO: Move to a plugin compatibility class
-		// Support for plugin "Brazilian Market on WooCommerce"
-		add_filter( 'wcbcf_shipping_fields', array( $this, 'add_shipping_phone_field' ), 5 );
-		add_filter( 'wcbcf_shipping_fields' , array( $this, 'change_shipping_company_field_args' ), 10 );
-	}
-
-
-
-	/**
-	 * Return Checkout Steps class instance.
-	 */
-	public function checkout_steps() {
-		return FluidCheckout_Steps::instance();
-	}
-
-	/**
-	 * Return Checkout Fields class instance.
-	 */
-	public function checkout_fields() {
-		return FluidCheckout_CheckoutFields::instance();
 	}
 
 
@@ -130,7 +109,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	public function add_shipping_phone_field( $fields ) {
 		$fields['shipping_phone'] = $this->get_shipping_phone_field();
 
-		$field_args = $this->checkout_fields()->get_checkout_field_args();
+		$field_args = FluidCheckout_CheckoutFields::instance()->get_checkout_field_args();
 		foreach( $field_args as $field => $values ) {
 			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
 		}
