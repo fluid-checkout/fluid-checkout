@@ -1960,6 +1960,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$field_display_value = $field_value;
 		$field_label = ! empty( $field_args[ 'label' ] ) ? $field_args[ 'label' ] : $field_key;
 
+		// Get field type
+		$field_type = array_key_exists( 'type', $field_args ) ? $field_args[ 'type' ] : 'text';
+
 		// Only process if field value is not empty
 		if ( ! empty( $field_value ) ) {
 
@@ -1967,7 +1970,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$show_field_label = apply_filters( 'fc_substep_text_display_value_show_field_label', false );
 
 			// Get field display values based on type
-			switch ( $field_args[ 'type' ] ) {				
+			switch ( $field_type ) {
 				case 'hidden':
 					$field_display_value = null;
 					break;
@@ -1982,30 +1985,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 				case 'email':
 				case 'url':
 				case 'tel':
-					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", $show_field_label ) );
+					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", $show_field_label ) );
 					break;
 				case 'number':
 				case 'checkbox':
-					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", true ) );
+					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", true ) );
 					break;
 				case 'password':
-					$field_display_value = str_repeat( apply_filters( 'fc_substep_text_display_value_' . $field_args[ 'type' ] . '_char', '*' ), strlen( $field_value ) );
-					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", $show_field_label ) );
+					$field_display_value = str_repeat( apply_filters( 'fc_substep_text_display_value_' . $field_type . '_char', '*' ), strlen( $field_value ) );
+					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", $show_field_label ) );
 					break;
 				case 'country':
 				case 'state':
 				case 'radio':
 				case 'select':
-					$field_display_value = $this->get_field_display_value_from_field_options( $field_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", $show_field_label ) );
+					$field_display_value = $this->get_field_display_value_from_field_options( $field_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", $show_field_label ) );
 					break;
 				default:
 					$field_display_value = $this->get_field_display_value_from_array( $field_display_value );
-					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_args[ 'type' ]}", $show_field_label ) );
+					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", $show_field_label ) );
 					break;
 			}
 		}
 
-		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_args[ 'type' ], $field_display_value, $field_value, $field_key, $field_args );
+		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_type, $field_display_value, $field_value, $field_key, $field_args );
 		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_key, $field_display_value, $field_value, $field_key, $field_args );
 
 		return $field_display_value;
@@ -2273,9 +2276,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Get address fields for country
 			$address_fields = WC()->countries->get_address_fields( $shipping_country, 'shipping_' );
-			
+
+			// Get fields skip list
+			$step_complete_field_keys_skip_list = apply_filters( 'fc_is_step_complete_shipping_field_keys_skip_list', $this->get_contact_step_display_field_ids() );
+
 			// Check each required country field
 			foreach ( $address_fields as $field_key => $field ) {
+				// Skip checking some fields
+				if ( in_array( $field_key, $step_complete_field_keys_skip_list ) ) { continue; }
+
 				if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( WC()->checkout()->get_value( $field_key ) ) ) {
 					$is_step_complete = false;
 					break;
@@ -2641,13 +2650,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get address fields for country
 		$address_fields = WC()->countries->get_address_fields( $billing_country, 'billing_' );
 
-		// Get billing fields moved to contact step
-		$contact_display_field_keys = $this->get_contact_step_display_field_ids();
+		// Get fields skip list
+		$step_complete_field_keys_skip_list = apply_filters( 'fc_is_step_complete_billing_field_keys_skip_list', $this->get_contact_step_display_field_ids() );
 		
 		// Check each required country field
 		foreach ( $address_fields as $field_key => $field ) {
-			// Skip billing fields moved to contact step
-			if ( in_array( $field_key, $contact_display_field_keys ) ) { continue; }
+			// Skip checking some fields
+			if ( in_array( $field_key, $step_complete_field_keys_skip_list ) ) { continue; }
 
 			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( WC()->checkout()->get_value( $field_key ) ) ) {
 				$is_step_complete = false;

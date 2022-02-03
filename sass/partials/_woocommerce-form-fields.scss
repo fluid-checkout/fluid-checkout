@@ -33,11 +33,7 @@ div.woocommerce form .form-row .select2-container .select2-selection {
 
 
 div.woocommerce form .form-row.form-row-first,
-div.woocommerce form .form-row.form-row-wide {
-	clear: left;
-}
-
-div.woocommerce form .form-row.form-row-first,
+div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form .form-row.form-row-last {
 	clear: left;
 	float: none;
@@ -50,10 +46,25 @@ div.woocommerce form .form-row.form-row-last {
 	}
 }
 
-div.woocommerce form .form-row.form-row-first {
-	@media (#{$bp-larger-than-tablet}) {
-		margin-right: 4%;
-	}
+div.woocommerce form .form-row.form-row-first,
+div.woocommerce form .form-row.form-row-wide {
+	clear: left;
+	@media (#{$bp-larger-than-tablet}) { clear: left; }
+}
+
+div.woocommerce form .form-row.form-row-one-third {
+	width: 100%;
+	@media (#{$bp-larger-than-tablet}) { width: 30.666%; }
+}
+
+div.woocommerce form .form-row.form-row-two-thirds {
+	width: 100%;
+	@media (#{$bp-larger-than-tablet}) { width: 65.33%; }
+}
+
+div.woocommerce form .form-row.form-row-first,
+div.woocommerce form .form-row.form-row-middle {
+	@media (#{$bp-larger-than-tablet}) { margin-right: 4%; }
 }
 
 

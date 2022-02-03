@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 5.9
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -25,6 +25,15 @@ Better accessibility at the checkout page with support for keyboard-only navigat
 
 [View detailed list of features on our website](https://fluidcheckout.com/features/)
 
+<blockquote>
+<strong>Top notch plugin and support team!</strong>
+
+Cleanest and easiest checkout plugin on the market - it will save you a lot of headache in setting up your checkout flow and the support team is active/responsive and consistently working to improve. Just go ahead download and activate this one 🔥🔥🔥
+
+<cite>@vsonacci</cite>
+</blockquote>
+
+
 == Demos ==
 
 * [Multi step layout](https://demos.fluidcheckout.com/multi-step/cart/?add-to-cart=14&quantity=2)
@@ -35,6 +44,17 @@ Single step checkout is recommended when only a few fields are required, usually
 
 * [Highly stylized theme](https://demos.fluidcheckout.com/theme-deli/cart/?add-to-cart=14&quantity=2)
 With themes that are highly stylized such as Storefront Deli -- when comparing to a plain theme such as the default Storefront theme, Fluid Checkout adapts itself with part of the theme's styles, keeping the same look and feel while improving the experience.
+
+<blockquote>
+<strong> Insane how great this is!</strong>
+
+This plugin radically modernizes and cleans up the WooCommerce checkout.
+While doing a better job at UX & Conversion Optimization, it's also more compatible with plugins… even ahead of the new Gutenberg WooCommerce Checkout block that's been under development!
+Quite insane how the developer is doing this. And a free plugin!!
+
+<cite>@allancaeg</cite>
+</blockquote>
+
 
 == Lite Version (Free) ==
 
@@ -159,6 +179,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 = Free Plugins =
 
+* Brazilian Market on WooCommerce - by Claudio Sanches
 * Checkout Field Editor for WooCommerce - by ThemeHigh
 * Creative Mail - by Constant Contact
 * Delivery & Pickup Date Time for WooCommerce - by CodeRockz
@@ -282,6 +303,15 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 
 == Changelog ==
+
+= 1.5.1 - 2022-02-03 =
+* Added: Compatibility with plugin Brazilian Market on WooCommerce - by Claudio Sanches.
+* Added: New filters `fc_is_step_complete_shipping_field_keys_skip_list` and `fc_is_step_complete_billing_field_keys_skip_list` to skip validating required fields in order to determine if the steps are complete or not.
+* Added: Add new classes for form fields `form-row-one-third`, `form-row-two-thirds` and `form-row-middle`.
+* Improved: Validate shipping methods fields selection on the client-side.
+* Fixed: Remove duplicate product image on checkout order summary for some themes.
+* Fixed: Do not set first shipping method as selected from the template file, instead, let WooCommerce manage the chosen shipping method.
+* Fixed: PHP warning `Undefined array key "type"` when trying to get the substep review text for custom fields.
 
 = 1.5.0 - 2022-01-28 =
 
