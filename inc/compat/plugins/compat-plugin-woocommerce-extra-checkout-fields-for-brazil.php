@@ -29,7 +29,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		// Checkout fields args
 		add_filter( 'fc_checkout_field_args', array( $this, 'change_checkout_field_args' ), 110 );
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 110 );
-		// add_filter( 'woocommerce_get_country_locale', array( $this, 'address_fields_priority' ), 110 );
+		add_filter( 'fc_billing_same_as_shipping_field_keys' , array( $this, 'remove_billing_company_from_copy_shipping_field_keys' ), 10 );
 
 		// Make fields required
 		add_filter( 'wcbcf_billing_fields', array( $this, 'make_person_type_fields_required' ), 110 );
@@ -236,6 +236,20 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		}
 		
 		return $new_field_args;
+	}
+
+
+
+	/**
+	 * Remove billing company from fields to copy from shipping address.
+	 *
+	 * @param   array  $billing_copy_shipping_field_keys  List of billing field ids to copy from the shipping address.
+	 */
+	public function remove_billing_company_from_copy_shipping_field_keys( $billing_copy_shipping_field_keys ) {
+		if ( in_array( 'billing_company', $billing_copy_shipping_field_keys ) ) {
+			$billing_copy_shipping_field_keys = array_diff( $billing_copy_shipping_field_keys, array( 'billing_company' ) );
+		}
+		return $billing_copy_shipping_field_keys;
 	}
 
 
