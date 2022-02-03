@@ -179,7 +179,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 = Free Plugins =
 
-* Brazilian Market on WooCommerce - by Claudio Sanches
+* Brazilian Market on WooCommerce - by Claudio Sanches ([see demo](https://demos.fluidcheckout.com/google-address-autocomplete-brazilian-market/cart/?add-to-cart=14&quantity=1))
 * Checkout Field Editor for WooCommerce - by ThemeHigh
 * Creative Mail - by Constant Contact
 * Delivery & Pickup Date Time for WooCommerce - by CodeRockz
