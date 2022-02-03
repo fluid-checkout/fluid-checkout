@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with plugin: Brazilian Market for WooCommerce (by Claudio Sanches).
+ * Compatibility with plugin: Brazilian Market on WooCommerce (by Claudio Sanches).
  */
 class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckout {
 
