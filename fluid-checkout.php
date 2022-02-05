@@ -99,7 +99,7 @@ class FluidCheckout {
 		$this->set_plugin_vars();
 		$this->load_admin_notices();
 		$this->add_features();
-		
+
 		// Schedule hooks initialization after all plugins have been loaded
 		add_action( 'plugins_loaded', array( $this, 'hooks' ), 10 );
 	}
