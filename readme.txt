@@ -304,7 +304,12 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Prevent fatal errors when using the Plugin Organizer or similar plugins. Also checks if the function `WC` is available before before loading the plugin features.
+
 = 1.5.1 - 2022-02-03 =
+
 * Added: Compatibility with plugin Brazilian Market on WooCommerce - by Claudio Sanches.
 * Added: New filters `fc_is_step_complete_shipping_field_keys_skip_list` and `fc_is_step_complete_billing_field_keys_skip_list` to skip validating required fields in order to determine if the steps are complete or not.
 * Added: Add new classes for form fields `form-row-one-third`, `form-row-two-thirds` and `form-row-middle`.
