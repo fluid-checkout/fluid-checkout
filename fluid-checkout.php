@@ -344,7 +344,7 @@ class FluidCheckout {
 	 */
 	public function is_woocommerce_activated() {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		return is_plugin_active( 'woocommerce/woocommerce.php' );
+		return is_plugin_active( 'woocommerce/woocommerce.php' ) && function_exists( 'WC' );
 	}
 
 	/**
