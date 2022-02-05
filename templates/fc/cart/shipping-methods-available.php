@@ -29,19 +29,23 @@ defined( 'ABSPATH' ) || exit;
 		foreach ( $available_methods as $method ) :
 			$checked_method = $chosen_method && $method->id == $chosen_method;
 
+			// Get contents after the shipping rate
+			ob_start();
+			do_action( 'woocommerce_after_shipping_rate', $method, $package_index );
+			$after_shipping_rate = ob_get_clean();
+
 			echo apply_filters( 'fc_shipping_method_option_markup',
 				sprintf( '<li class="shipping-method__option"><input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />
-					<label for="shipping_method_%1$d_%2$s" class="shipping-method__option-label has-price">%5$s</label>
+					<label for="shipping_method_%1$d_%2$s" class="shipping-method__option-label has-price">%5$s%6$s</label>
 				</li>',
 				$package_index,
 				// The function `sanitize_title` is used below to convert the string into a CSS-class-like string
 				sanitize_title( $method->id ),
 				esc_attr( $method->id ),
 				checked( $checked_method, true, false ),
-				FluidCheckout_Steps::instance()->get_cart_shipping_methods_label( $method )
+				FluidCheckout_Steps::instance()->get_cart_shipping_methods_label( $method ),
+				$after_shipping_rate
 			), $method, $package_index, $chosen_method, $first );
-
-			do_action( 'woocommerce_after_shipping_rate', $method, $package_index );
 
 			$first = false;
 		endforeach; ?>

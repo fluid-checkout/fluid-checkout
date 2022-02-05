@@ -306,6 +306,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Fixed: Position for the hook `woocommerce_after_shipping_rate` to be displayed inside the shipping method `<label>` element.
 * Fixed: Prevent fatal errors when using the Plugin Organizer or similar plugins. Also checks if the function `WC` is available before before loading the plugin features.
 
 = 1.5.1 - 2022-02-03 =
