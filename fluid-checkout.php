@@ -99,7 +99,9 @@ class FluidCheckout {
 		$this->set_plugin_vars();
 		$this->load_admin_notices();
 		$this->add_features();
-		$this->hooks();
+		
+		// Schedule hooks initialization after all plugins have been loaded
+		add_action( 'plugins_loaded', array( $this, 'hooks' ), 10 );
 	}
 
 
@@ -338,7 +340,7 @@ class FluidCheckout {
 
 
 	/**
-	 * Check to see if Woocommerce is active on a single install or network wide.
+	 * Check if Woocommerce is active on a single install or network wide.
 	 *
 	 * @since 1.0.0
 	 */
@@ -348,7 +350,7 @@ class FluidCheckout {
 	}
 
 	/**
-	 * Check to see if Fluid Checkout PRO is active on a single install or network wide.
+	 * Check if Fluid Checkout PRO is active on a single install or network wide.
 	 *
 	 * @since 1.5.0
 	 */
