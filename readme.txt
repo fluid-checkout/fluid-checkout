@@ -184,6 +184,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 * Creative Mail - by Constant Contact
 * Delivery & Pickup Date Time for WooCommerce - by CodeRockz
 * Elementor - by Elementor Team
+* Flexible Shipping - by WP Desk
 * Germanized for WooCommerce - by vendidero
 * SG Map to Address - by Sevengits
 * SG Checkout Location Picker for WooCommerce - by Sevengits
@@ -306,6 +307,8 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Added: Compatibility with plugin Flexible Shipping.
+* Fixed: Position for the hook `woocommerce_after_shipping_rate` to be displayed inside the shipping method `<label>` element.
 * Fixed: Prevent fatal errors when using the Plugin Organizer or similar plugins. Also checks if the function `WC` is available before before loading the plugin features.
 
 = 1.5.1 - 2022-02-03 =
