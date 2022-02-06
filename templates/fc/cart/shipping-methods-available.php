@@ -6,7 +6,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.4.1
+ * @version 1.5.2
  * @wc-version 3.6.0
  * @wc-original cart/cart-shipping.php
  */
