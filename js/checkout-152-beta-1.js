@@ -144,7 +144,9 @@ jQuery( function( $ ) {
 			// Ignore some fields
 			if ( e && e.target.closest( '.payment_box, input#createaccount' ) ) { return; }
 
-			if ( ! _updateBeforeUnload ) {
+			var should_update_before_unload = window.fcSettings !== null && window.fcSettings.hasOwnProperty( 'checkoutUpdateBeforeUnload' ) ? 'yes' === window.fcSettings.checkoutUpdateBeforeUnload : true;
+
+			if ( should_update_before_unload && ! _updateBeforeUnload ) {
 
 				var preventUnload = function( e ) {
 					// Prompt user if there is unsaved data
