@@ -1,0 +1,44 @@
+// ------------------------------------
+// CHECKOUT VALIDATION MESSAGES
+// ------------------------------------
+
+#{ $_body-theme-selector-prefix } div.woocommerce .form-row.woocommerce-invalid:after {
+	content: "\0021";
+	display: block;
+	z-index: z( 'above' );
+	width: 1.375em;
+    height: 1.375em;
+    right: -.6em;
+	top: 6.2em;
+}
+
+
+
+#{ $_body-theme-selector-prefix } div.woocommerce .form-row.woocommerce-invalid > .validation-message {
+	display: none;
+}
+
+
+
+
+
+// ------------------------------------
+// CHECKOUT FIELD VALIDATION
+// ------------------------------------
+
+// VALID FIELDS
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+
+	// "valid" field check icon
+	// skip fields with `fc-no-validation-icon` and `fc-select2-field` classes
+	&:not( .fc-no-validation-icon ) .select2-selection:after,
+	&:not( .fc-no-validation-icon ):not( .fc-select2-field ) .woocommerce-input-wrapper:after {
+		top: remsize( 1.4rem );
+	}
+
+	// Password
+	&:not( .fc-no-validation-icon ):not( .fc-select2-field ) .woocommerce-input-wrapper.password-input:after {
+		right: remsize( 3.2rem );
+	}
+	
+}

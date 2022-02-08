@@ -1,0 +1,17 @@
+// ------------------------------------
+// CHECKOUT SHIPPING METHODS
+// ------------------------------------
+
+#{ $_body-theme-selector-prefix } .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label span {
+	vertical-align: baseline;
+}
+
+
+
+#{ $_body-theme-selector-prefix } .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:before {
+	top: remsize( 1.2rem );
+}
+
+#{ $_body-theme-selector-prefix } .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:after {
+	top: remsize( 1.2rem );
+}
