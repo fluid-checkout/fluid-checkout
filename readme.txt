@@ -146,6 +146,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 * OnAir2 - by QantumThemes
 * Riode - by D-THEMES
 * Shoptimizer - by CommerceGurus
+* The Hanger - by Get Bowtied
 * Woodmart - by XTemos
 
 ** Don't see your theme in the list? No problem. **
@@ -309,6 +310,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 * Added: New filter `fc_checkout_update_before_unload` to let developers control whether the checkout page should prevent users from leaving when there are unsaved changes.
 * Added: Compatibility with plugin Flexible Shipping.
+* Added: Compatibility with theme The Hanger.
 * Fixed: Position for the hook `woocommerce_after_shipping_rate` to be displayed inside the shipping method `<label>` element.
 * Fixed: Prevent fatal errors when using the Plugin Organizer or similar plugins. Also checks if the function `WC` is available before before loading the plugin features.
 
