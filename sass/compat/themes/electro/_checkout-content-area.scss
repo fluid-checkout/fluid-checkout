@@ -1,0 +1,26 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+// Remove margins inherited from some themes
+#{ $_body-theme-selector-prefix }.electro-dark.woocommerce-checkout .fc-content {
+	color: $checkout-substep-text-color;
+}
+
+
+
+#{ $_body-theme-selector-prefix }.electro-dark.woocommerce-checkout a {
+	color: $checkout-substep-text-color;
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: $grey;
+	}
+}
+
+
+
+#{ $_body-theme-selector-prefix }.electro-dark.woocommerce-checkout table {
+	color: $checkout-substep-text-color;
+}

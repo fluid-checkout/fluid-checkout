@@ -1,3 +1,7 @@
+body.theme-orchid-store .fc-wrapper .fc-step__substep-title.fc-step__substep-title {
+  border: none;
+}
+
 body.theme-orchid-store #payment div.payment_box {
   color: inherit;
 }
@@ -17,10 +21,6 @@ body.theme-orchid-store div.woocommerce form .form-row.woocommerce-validated:not
 
 body.theme-orchid-store .fc-wrapper .woocommerce-billing-fields.woocommerce-billing-fields {
   background-color: transparent;
-}
-
-body.theme-orchid-store .fc-wrapper .fc-step__substep-title.fc-step__substep-title {
-  border: none;
 }
 
 body.theme-orchid-store div.woocommerce form .form-row span.select2-container {

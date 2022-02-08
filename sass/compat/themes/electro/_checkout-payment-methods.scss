@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+#{ $_body-theme-selector-prefix } .fc-wrapper #payment .payment_methods > .wc_payment_method {
+	padding: 0 !important; // Needed to override theme styles set with `!important`
+}
