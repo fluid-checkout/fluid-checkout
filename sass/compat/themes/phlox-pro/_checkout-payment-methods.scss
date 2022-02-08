@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+#{ $_body-theme-selector-prefix } .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"] + label:before {
+	top: remsize( 1.2rem );
+}
+
+#{ $_body-theme-selector-prefix } .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type="radio"]:first-child + label:after {
+	top: remsize( 1.2rem );
+}

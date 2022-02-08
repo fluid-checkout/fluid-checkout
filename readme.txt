@@ -145,6 +145,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 * Kentha - by QantumThemes
 * Mr. Tailor - by Get Bowtied
 * OnAir2 - by QantumThemes
+* Phlox PRO - by averta
 * Riode - by D-THEMES
 * Shoptimizer - by CommerceGurus
 * The Hanger - by Get Bowtied
@@ -314,6 +315,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Compatibility with plugin Flexible Shipping.
 * Added: Compatibility with theme Electro.
 * Added: Compatibility with theme The Hanger.
+* Added: Compatibility with theme Phlox PRO.
 * Added: Compatibility with theme Zota.
 * Fixed: Position for the hook `woocommerce_after_shipping_rate` to be displayed inside the shipping method `<label>` element.
 * Fixed: Prevent fatal errors when using the Plugin Organizer or similar plugins. Also checks if the function `WC` is available before before loading the plugin features.
