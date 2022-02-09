@@ -23,8 +23,6 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 	}
 
-
-
 	/**
 	 * Add or remove very late hooks.
 	 */
