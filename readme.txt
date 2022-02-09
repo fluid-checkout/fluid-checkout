@@ -138,6 +138,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 = Premium Themes =
 
 * Aora - by Thembay
+* Avada - by ThemeFusion
 * Diza - by Thembay
 * Electro - by MandrasThemes
 * Hazel - by Select Themes
@@ -313,11 +314,12 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
-* Added: Compatibility with plugin Flexible Shipping.
+* Added: Compatibility with theme Avada.
 * Added: Compatibility with theme Electro.
 * Added: Compatibility with theme The Hanger.
 * Added: Compatibility with theme Phlox PRO.
 * Added: Compatibility with theme Zota.
+* Added: Compatibility with plugin Flexible Shipping.
 * Added: Compatibility with plugin PagSeguro for WooCommerce.
 * Added: New filter `fc_checkout_update_before_unload` to let developers control whether to try to save users data when leaving the checkout page.
 * Improved: Compatibility with plugin WooCommerce PayPal Payments - by WooCommerce. Now the buttons are displayed below the terms checkbox as expected.
