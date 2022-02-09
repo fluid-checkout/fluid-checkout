@@ -172,6 +172,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 * WooCommerce Amazon Pay - by WooCommerce
 * WooCommerce Authorize.Net Gateway - by SkyVerge
 * WooCommerce PayPal Payments - by WooCommerce
+* WooCommerce PayPal Checkout Gateway - by WooCommerce
 * WooCommerce Stripe Gateway - by WooCommerce
 * WooCommerce Stripe Payment Gateway - by WooCommerce
 
