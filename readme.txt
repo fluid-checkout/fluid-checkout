@@ -311,12 +311,13 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
-* Added: New filter `fc_checkout_update_before_unload` to let developers control whether the checkout page should prevent users from leaving when there are unsaved changes.
 * Added: Compatibility with plugin Flexible Shipping.
 * Added: Compatibility with theme Electro.
 * Added: Compatibility with theme The Hanger.
 * Added: Compatibility with theme Phlox PRO.
 * Added: Compatibility with theme Zota.
+* Added: New filter `fc_checkout_update_before_unload` to let developers control whether to try to save users data when leaving the checkout page.
+* Improved: Refactor checkout script to make better use of `fcSettings`.
 * Fixed: Position for the hook `woocommerce_after_shipping_rate` to be displayed inside the shipping method `<label>` element.
 * Fixed: Prevent fatal errors when using the Plugin Organizer or similar plugins. Also checks if the function `WC` is available before before loading the plugin features.
 

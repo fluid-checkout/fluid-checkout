@@ -17,17 +17,59 @@ jQuery( function( $ ) {
 
 	$.blockUI.defaults.overlayCSS.cursor = 'default';
 
-	// CHANGE: Add custom css selectors for place order button and terms checkbox
-	var _place_order_selector = '#place_order, .fc-place-order-button';
-	var _terms_selector = '.fc-terms-checkbox';
-
 	// CHANGE: Add flag to up prevent users from leaving the page when there is unsaved data
 	var _updateBeforeUnload = false;
 
-	// CHANGE: Move CSS selector for fields that updated the checkout when value is changed
-	// CHANGE: Prevent billing address fields change from updating checkout
-	var _update_checkout_fields_selector = '.woocommerce-shipping-fields__field-wrapper .address-field input.input-text, .update_totals_on_change input.input-text';
+	// CHANGE: Add default settings object
+	var _settings = {
+		checkoutPlaceOrderSelector: '#place_order, .fc-place-order-button',
+		checkoutTermsSelector: '.fc-terms-checkbox',
+		checkoutUpdateFieldsSelector: '.woocommerce-shipping-fields__field-wrapper .address-field input.input-text, .update_totals_on_change input.input-text',
+		checkoutUpdateBeforeUnload: 'yes',
+	};
 
+	// CHANGE: Add auxiliar function to merge objects
+	/*!
+	* Merge two or more objects together.
+	* (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
+	* @param   {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
+	* @param   {Object}   objects  The objects to merge together
+	* @returns {Object}            Merged values of defaults and options
+	*/
+	var extend = function () {
+		// Variables
+		var extended = {};
+		var deep = false;
+		var i = 0;
+
+		// Check if a deep merge
+		if ( Object.prototype.toString.call( arguments[0] ) === '[object Boolean]' ) {
+			deep = arguments[0];
+			i++;
+		}
+
+		// Merge the object into the extended object
+		var merge = function (obj) {
+			for (var prop in obj) {
+				if (obj.hasOwnProperty(prop)) {
+					// If property is an object, merge properties
+					if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
+						extended[prop] = extend(extended[prop], obj[prop]);
+					} else {
+						extended[prop] = obj[prop];
+					}
+				}
+			}
+		};
+
+		// Loop through each object and conduct a merge
+		for (; i < arguments.length; i++) {
+			var obj = arguments[i];
+			merge(obj);
+		}
+
+		return extended;
+    };
 
 	var wc_checkout_form = {
 		updateTimer: false,
@@ -37,6 +79,9 @@ jQuery( function( $ ) {
 		$order_review: $( '#order_review' ),
 		$checkout_form: $( 'form.checkout' ),
 		init: function() {
+			// CHANGE: Merge default settings object with values from the server settings object
+			_settings = extend( true, _settings, window.fcSettings );
+
 			$( document.body ).on( 'update_checkout', this.update_checkout );
 			$( document.body ).on( 'init_checkout', this.init_checkout );
 
@@ -66,10 +111,9 @@ jQuery( function( $ ) {
 			this.$checkout_form.on( 'change', 'select.shipping_method, input[name^="shipping_method"], .update_totals_on_change select, .update_totals_on_change input[type="radio"], .update_totals_on_change input[type="checkbox"]', this.trigger_update_checkout ); // eslint-disable-line max-len
 			this.$checkout_form.on( 'change', '.address-field select', this.input_changed );
 			
-			// CHANGE: Move CSS selector for fields that updated the checkout when value is changed, and check for customizations of the selector
-			var update_fields_selector = window.fcSettings !== null && window.fcSettings.hasOwnProperty( 'checkoutUpdateFieldsSelector' ) ? window.fcSettings.checkoutUpdateFieldsSelector : _update_checkout_fields_selector;
-			this.$checkout_form.on( 'change', update_fields_selector, this.maybe_input_changed ); // eslint-disable-line max-len
-			this.$checkout_form.on( 'keydown', update_fields_selector, this.queue_update_checkout ); // eslint-disable-line max-len
+			// CHANGE: Move CSS selector for fields that trigger update checkout when value is changed
+			this.$checkout_form.on( 'change', _settings.checkoutUpdateFieldsSelector, this.maybe_input_changed ); // eslint-disable-line max-len
+			this.$checkout_form.on( 'keydown', _settings.checkoutUpdateFieldsSelector, this.queue_update_checkout ); // eslint-disable-line max-len
 
 			// Address fields
 			// CHANGE: Removed shipping to different address checkout `change` listener
@@ -77,10 +121,9 @@ jQuery( function( $ ) {
 			// CHANGE: Update checkout totals to save data to session when user switches tabs, apps, goes to homescreen, etc.
 			document.addEventListener( 'visibilitychange', this.maybe_update_checkout_visibility_change );
 
-			// CHANGE: Maybe prevent `unload` after they change fields in the page
-			var enable_prevent_unload = window.fcSettings !== null && window.fcSettings.hasOwnProperty( 'checkoutEnablePreventUnload' ) ? window.fcSettings.checkoutEnablePreventUnload : 'yes';
-			if ( 'yes' === enable_prevent_unload ) {
-				this.$checkout_form.on( 'change', 'select, input, textarea', this.maybe_prevent_unload );
+			// CHANGE: Maybe prevent leaving the page if there are unsaved changes, and trigger `update_checkout` to save the data.
+			if ( 'yes' === _settings.checkoutUpdateBeforeUnload ) {
+				this.$checkout_form.on( 'change, input', 'select, input, textarea', this.maybe_prevent_unload );
 			}
 
 			// CHANGE: Update checkout when "billing same as shipping" checked state changes
@@ -88,7 +131,7 @@ jQuery( function( $ ) {
 			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_collapsible_blocks );
 
 			// CHANGE: Add event listener to sync terms checkbox state
-			this.$checkout_form.on( 'change', _terms_selector, this.terms_checked_changed );
+			this.$checkout_form.on( 'change', _settings.checkoutTermsSelector, this.terms_checked_changed );
 
 			// Trigger events
 			// CHANGE: Removed shipping to different address checkout `change` trigger
@@ -144,9 +187,7 @@ jQuery( function( $ ) {
 			// Ignore some fields
 			if ( e && e.target.closest( '.payment_box, input#createaccount' ) ) { return; }
 
-			var should_update_before_unload = window.fcSettings !== null && window.fcSettings.hasOwnProperty( 'checkoutUpdateBeforeUnload' ) ? 'yes' === window.fcSettings.checkoutUpdateBeforeUnload : true;
-
-			if ( should_update_before_unload && ! _updateBeforeUnload ) {
+			if ( ! _updateBeforeUnload ) {
 
 				var preventUnload = function( e ) {
 					// Prompt user if there is unsaved data
@@ -219,10 +260,10 @@ jQuery( function( $ ) {
 
 			if ( $( this ).data( 'order_button_text' ) ) {
 				// CHANGE: replaced the place order button css selector with an extended custom selector
-				$( _place_order_selector ).text( $( this ).data( 'order_button_text' ) );
+				$( _settings.checkoutPlaceOrderSelector ).text( $( this ).data( 'order_button_text' ) );
 			} else {
 				// CHANGE: replaced the place order button css selector with an extended custom selector
-				$( _place_order_selector ).text( $( _place_order_selector ).data( 'value' ) );
+				$( _settings.checkoutPlaceOrderSelector ).text( $( _settings.checkoutPlaceOrderSelector ).data( 'value' ) );
 			}
 
 			var selectedPaymentMethod = $( '.woocommerce-checkout input[name="payment_method"]:checked' ).attr( 'id' );
@@ -253,7 +294,7 @@ jQuery( function( $ ) {
 		// CHANGE: Add function to sync the terms checkbox state
 		terms_checked_changed: function( e ) {
 			var termsCheckBoxChecked = $( e.target ).prop( 'checked' );
-			$( _terms_selector ).prop( 'checked', termsCheckBoxChecked );
+			$( _settings.checkoutTermsSelector ).prop( 'checked', termsCheckBoxChecked );
 		},
 		input_changed: function( e ) {
 			wc_checkout_form.dirtyInput = e.target;
@@ -509,7 +550,7 @@ jQuery( function( $ ) {
 					$( '.woocommerce-NoticeGroup-updateOrderReview' ).remove();
 
 					// CHANGE: replaced the terms checkbox css selector
-					var termsCheckBoxChecked = $( _terms_selector ).prop( 'checked' );
+					var termsCheckBoxChecked = $( _settings.checkoutTermsSelector ).prop( 'checked' );
 
 					// Save payment details to a temporary object
 					var paymentDetails = {};
@@ -546,7 +587,7 @@ jQuery( function( $ ) {
 					// Recheck the terms and conditions box, if needed
 					if ( termsCheckBoxChecked ) {
 						// CHANGE: replaced the terms checkbox css selector
-						$( _terms_selector ).prop( 'checked', true );
+						$( _settings.checkoutTermsSelector ).prop( 'checked', true );
 					}
 
 					// Fill in the payment details if possible without overwriting data if set.
@@ -653,8 +694,8 @@ jQuery( function( $ ) {
 				
 				// CHANGE: Disable place order button
 				var currentFocusedElement = document.activeElement;
-				$( _place_order_selector ).attr( 'disabled', 'disabled' );
-				$( _place_order_selector ).addClass( 'disabled' );
+				$( _settings.checkoutPlaceOrderSelector ).attr( 'disabled', 'disabled' );
+				$( _settings.checkoutPlaceOrderSelector ).addClass( 'disabled' );
 				// END - Disable place order button
 
 				wc_checkout_form.blockOnSubmit( $form );
@@ -720,8 +761,8 @@ jQuery( function( $ ) {
 							}
 
 							// CHANGE: Unblock the place order button
-							$( _place_order_selector ).removeAttr( 'disabled' );
-							$( _place_order_selector ).removeClass( 'disabled' );
+							$( _settings.checkoutPlaceOrderSelector ).removeAttr( 'disabled' );
+							$( _settings.checkoutPlaceOrderSelector ).removeClass( 'disabled' );
 							wc_checkout_form.maybe_refocus_element( currentFocusedElement );
 							// END - Unblock the place order button
 
@@ -754,8 +795,8 @@ jQuery( function( $ ) {
 			wc_checkout_form.$checkout_form.prepend( '<div class="woocommerce-NoticeGroup woocommerce-NoticeGroup-checkout">' + error_message + '</div>' ); // eslint-disable-line max-len
 			wc_checkout_form.$checkout_form.removeClass( 'processing' ).unblock();
 			// CHANGE: Unblock the place order button
-			$( _place_order_selector ).removeAttr( 'disabled' );
-			$( _place_order_selector ).removeClass( 'disabled' );
+			$( _settings.checkoutPlaceOrderSelector ).removeAttr( 'disabled' );
+			$( _settings.checkoutPlaceOrderSelector ).removeClass( 'disabled' );
 			// END - Unblock the place order button
 			wc_checkout_form.$checkout_form.find( '.input-text, select, input:checkbox' ).trigger( 'validate' ).trigger( 'blur' );
 			wc_checkout_form.scroll_to_notices();
