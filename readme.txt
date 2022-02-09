@@ -167,6 +167,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 * Integration Rede for WooCommerce - by MarcosAlexandre
 * Mercado Pago payments for WooCommerce - by Mercado Pago
+* PagSeguro for WooCommerce - by Claudio Sanches
 * Payment Plugins for Stripe WooCommerce - by Payment Plugins
 * Rede WooCommerce - by Rede
 * WooCommerce Amazon Pay - by WooCommerce
@@ -317,6 +318,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Compatibility with theme The Hanger.
 * Added: Compatibility with theme Phlox PRO.
 * Added: Compatibility with theme Zota.
+* Added: Compatibility with plugin PagSeguro for WooCommerce.
 * Added: New filter `fc_checkout_update_before_unload` to let developers control whether to try to save users data when leaving the checkout page.
 * Improved: Compatibility with plugin WooCommerce PayPal Payments - by WooCommerce. Now the buttons are displayed below the terms checkbox as expected.
 * Improved: Refactor checkout script to make better use of `fcSettings`.
