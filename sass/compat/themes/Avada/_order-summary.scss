@@ -1,0 +1,13 @@
+// ------------------------------------
+// FLYOUT ORDER SUMMARY
+// ------------------------------------
+
+#{ $_body-theme-selector-prefix } div.woocommerce form.woocommerce-checkout .fc-wrapper #order_review {
+	display: block !important; // Needed to override theme styles set with `!important`
+}
+
+
+
+#{ $_body-theme-selector-prefix }.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title {
+	border: 0;
+}
