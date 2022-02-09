@@ -1,0 +1,23 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper div.place-order {
+	margin-bottom: 0;
+}
+
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-place-order {
+	padding: 0;
+}
+
+
+
+.fc-wrapper #ppc-button {
+	padding: $place-order-padding;
+	padding-top: 0;
+	
+	@media (#{$bp-larger-than-desktop}) {
+		padding: $place-order-padding--large-screen;
+		padding-top: 0;
+	}
+}

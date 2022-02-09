@@ -272,6 +272,10 @@ jQuery( function( $ ) {
 				$( document.body ).trigger( 'payment_method_selected' );
 			}
 
+			// CHANGE: Add body class for selected payment method
+			document.body.classList.remove( 'has-payment-method-selected--' + wc_checkout_form.selectedPaymentMethod );
+			document.body.classList.add( 'has-payment-method-selected--' + selectedPaymentMethod );
+
 			wc_checkout_form.selectedPaymentMethod = selectedPaymentMethod;
 		},
 		toggle_create_account: function() {
