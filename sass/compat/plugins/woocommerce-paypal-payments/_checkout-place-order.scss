@@ -1,0 +1,13 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+.fc-wrapper #ppc-button {
+	margin-top: $global-spacing;
+}
+
+
+
+.fc-wrapper  #ppc-button:not( [style="display: none;"] ) + .fc-place-order {
+	padding-top: 0;
+}
