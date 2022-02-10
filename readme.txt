@@ -171,6 +171,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 * PagSeguro for WooCommerce - by Claudio Sanches
 * Payment Plugins for Stripe WooCommerce - by Payment Plugins
 * Rede WooCommerce - by Rede
+* WooCommerce Affirm Gateway - by WooCommerce
 * WooCommerce Amazon Pay - by WooCommerce
 * WooCommerce Authorize.Net Gateway - by SkyVerge
 * WooCommerce PayPal Payments - by WooCommerce
@@ -321,6 +322,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Compatibility with theme Zota.
 * Added: Compatibility with plugin Flexible Shipping.
 * Added: Compatibility with plugin PagSeguro for WooCommerce.
+* Added: Compatibility with plugin WooCommerce Affirm Gateway.
 * Added: New filter `fc_checkout_update_before_unload` to let developers control whether to try to save users data when leaving the checkout page.
 * Improved: Compatibility with plugin WooCommerce PayPal Payments - by WooCommerce. Now the buttons are displayed below the terms checkbox as expected.
 * Improved: Refactor checkout script to make better use of `fcSettings`.
