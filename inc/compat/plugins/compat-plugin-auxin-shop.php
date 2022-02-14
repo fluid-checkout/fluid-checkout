@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with plugin: Auxin Shop (by MarcosAlexandre).
+ * Compatibility with plugin: Auxin Shop (by Averta).
  */
 class FluidCheckout_AuxinShop extends FluidCheckout {
 
