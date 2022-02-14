@@ -1,0 +1,22 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+// Position and outline styles
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="search"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"],
+	input[type="checkbox"],
+	input[type="radio"],
+	.select2-selection {
+		max-width: none;
+	}
+}

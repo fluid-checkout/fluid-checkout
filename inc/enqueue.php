@@ -92,16 +92,17 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 				'jsLibPath'                      => self::$directory_url . 'js/lib/',
 				'cssPath'                        => self::$directory_url . 'css/',
 				'ajaxUrl'                        => admin_url( 'admin-ajax.php' ),
+				'flyoutBlock'                    => array(
+					'openAnimationClass'         => 'fade-in-up',
+					'closeAnimationClass'        => 'fade-out-down',
+				),
+				'collapsibleBlock'               => array(),
+				'stickyStates'                   => array(),
+				'checkoutUpdateBeforeUnload'     => apply_filters( 'fc_checkout_update_before_unload', 'yes' ),
 				'checkoutUpdateFieldsSelector'   => join( ',', apply_filters( 'fc_checkout_update_fields_selectors', array(
 					'.woocommerce-shipping-fields__field-wrapper .address-field input.input-text',
 					'.update_totals_on_change input.input-text',
 				) ) ),
-				'flyoutBlock'                    => array(
-					'openAnimationClass' => 'fade-in-up',
-					'closeAnimationClass' => 'fade-out-down',
-				),
-				'collapsibleBlock'               => array(),
-				'stickyStates'                   => array(),
 			) )
 		);
 	}

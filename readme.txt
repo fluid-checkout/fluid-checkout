@@ -138,15 +138,20 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 = Premium Themes =
 
 * Aora - by Thembay
+* Avada - by ThemeFusion
 * Diza - by Thembay
+* Electro - by MandrasThemes
 * Hazel - by Select Themes
 * Impreza - by UpSolution
 * Kentha - by QantumThemes
 * Mr. Tailor - by Get Bowtied
 * OnAir2 - by QantumThemes
+* Phlox PRO - by averta
 * Riode - by D-THEMES
 * Shoptimizer - by CommerceGurus
+* The Hanger - by Get Bowtied
 * Woodmart - by XTemos
+* Zota - by Thembay
 
 ** Don't see your theme in the list? No problem. **
 
@@ -163,11 +168,14 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 * Integration Rede for WooCommerce - by MarcosAlexandre
 * Mercado Pago payments for WooCommerce - by Mercado Pago
+* PagSeguro for WooCommerce - by Claudio Sanches
 * Payment Plugins for Stripe WooCommerce - by Payment Plugins
 * Rede WooCommerce - by Rede
+* WooCommerce Affirm Gateway - by WooCommerce
 * WooCommerce Amazon Pay - by WooCommerce
 * WooCommerce Authorize.Net Gateway - by SkyVerge
 * WooCommerce PayPal Payments - by WooCommerce
+* WooCommerce PayPal Checkout Gateway - by WooCommerce
 * WooCommerce Stripe Gateway - by WooCommerce
 * WooCommerce Stripe Payment Gateway - by WooCommerce
 
@@ -179,11 +187,12 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 = Free Plugins =
 
-* Brazilian Market on WooCommerce - by Claudio Sanches
+* Brazilian Market on WooCommerce - by Claudio Sanches ([see demo](https://demos.fluidcheckout.com/google-address-autocomplete-brazilian-market/cart/?add-to-cart=14&quantity=1))
 * Checkout Field Editor for WooCommerce - by ThemeHigh
 * Creative Mail - by Constant Contact
 * Delivery & Pickup Date Time for WooCommerce - by CodeRockz
 * Elementor - by Elementor Team
+* Flexible Shipping - by WP Desk
 * Germanized for WooCommerce - by vendidero
 * SG Map to Address - by Sevengits
 * SG Checkout Location Picker for WooCommerce - by Sevengits
@@ -304,7 +313,24 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Compatibility with theme Avada.
+* Added: Compatibility with theme Electro.
+* Added: Compatibility with theme The Hanger.
+* Added: Compatibility with theme Phlox PRO.
+* Added: Compatibility with theme Zota.
+* Added: Compatibility with plugin Flexible Shipping.
+* Added: Compatibility with plugin PagSeguro for WooCommerce.
+* Added: Compatibility with plugin WooCommerce Affirm Gateway.
+* Added: New filter `fc_checkout_update_before_unload` to let developers control whether to try to save users data when leaving the checkout page.
+* Improved: Compatibility with plugin WooCommerce PayPal Payments - by WooCommerce. Now the buttons are displayed below the terms checkbox as expected.
+* Improved: Refactor checkout script to make better use of `fcSettings`.
+* Fixed: Position for the hook `woocommerce_after_shipping_rate` to be displayed inside the shipping method `<label>` element.
+* Fixed: Prevent fatal errors when using the Plugin Organizer or similar plugins. Also checks if the function `WC` is available before before loading the plugin features.
+
 = 1.5.1 - 2022-02-03 =
+
 * Added: Compatibility with plugin Brazilian Market on WooCommerce - by Claudio Sanches.
 * Added: New filters `fc_is_step_complete_shipping_field_keys_skip_list` and `fc_is_step_complete_billing_field_keys_skip_list` to skip validating required fields in order to determine if the steps are complete or not.
 * Added: Add new classes for form fields `form-row-one-third`, `form-row-two-thirds` and `form-row-middle`.

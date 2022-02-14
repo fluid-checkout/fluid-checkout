@@ -92,6 +92,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr {
 	border: 0;
 	border-bottom: $order-summary-cell-border;
+	height: auto;
 }
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child {
 	border-top: $order-summary-cell-border;
