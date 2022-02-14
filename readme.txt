@@ -248,8 +248,16 @@ Currently the plugin is translated into the languages below, and more are commin
 
 ** Note: **
 Fluid Checkout is fully localized/translatable. This is very important for all users worldwide.
-Please contribute your language to the plugin to make it even more useful.
-For translating we recommend the plugin ["Loco Translate - By Tim Whitlock"](https://wordpress.org/plugins/loco-translate/).
+For translating Fluid Checkout, we recommend the plugin ["Loco Translate - By Tim Whitlock"](https://wordpress.org/plugins/loco-translate/).
+Please contribute your language to the plugin to make it even more useful. Send your translation files through our [support channel](https://fluidcheckout.com/support/).
+
+
+== Contributions are welcome ==
+
+Your are more than welcome to contribute to the project with your code, feature request and feedback.
+
+If you found and fixed a bug, implemented a new feature, or translated the plugin.
+[Please fork the repository from Github](https://github.com/fluidweb-co/fluid-checkout) and submit a Pull Request.
 
 
 == Installation ==
