@@ -1,5 +1,8 @@
-div.woocommerce .form-row .woocommerce-error:not(.invalid-country-not-allowed),
-div.woocommerce .shipping-method__package .woocommerce-error:not(.invalid-country-not-allowed) {
+div.woocommerce .form-row .woocommerce-error:not(.invalid-country-not-allowed) {
+  display: none;
+}
+
+div.woocommerce .form-row.woocommerce-invalid .woocommerce-error {
   display: block;
 }
 
