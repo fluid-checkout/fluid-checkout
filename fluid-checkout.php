@@ -367,10 +367,20 @@ class FluidCheckout {
 	 * @param  array  $notices  Admin notices from the plugin.
 	 */
 	public function add_woocommerce_required_notice( $notices = array() ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
+			return;
+		}
+
+		if ( is_wp_error( validate_plugin( 'woocommerce/woocommerce.php' ) ) ) {
+			$description = sprintf( wp_kses_post( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%3$s">Go to Plugin Search</a>', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', admin_url( 'plugin-install.php?s=woocommerce&tab=search&type=term' ) );
+		} else {
+			$description = sprintf( wp_kses_post( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%3$s">Activate WooCommerce</a>', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=woocommerce/woocommerce.php' ), 'activate-plugin_woocommerce/woocommerce.php' ) );
+		}
+		
 		$notices[] = array(
-			'name' => 'woocommerce_required',
-			'error' => true,
-			'description' => sprintf( wp_kses_post( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%3$s">Go to Plugin Search</a>', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', admin_url( 'plugin-install.php?s=woocommerce&tab=search&type=term' ) ),
+			'name'        => 'woocommerce_required',
+			'error'       => true,
+			'description' => $description,
 			'dismissable' => false,
 		);
 		return $notices;

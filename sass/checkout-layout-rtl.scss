@@ -1,0 +1,98 @@
+$checkout-rtl-alignment-right: right;
+$checkout-rtl-alignment-left: left;
+
+div.woocommerce form .form-row label,
+div.woocommerce form #billing_address_2_field > label,
+div.woocommerce form #shipping_address_2_field > label {
+	text-align: $checkout-rtl-alignment-right;
+}
+
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep:before,
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep:after,
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:before,
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:after,
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:before,
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:after {
+	text-align: $checkout-rtl-alignment-right;
+}
+
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields,
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title,
+div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus,
+.has-checkout-layout--multi-step .fc-step__substep-text-line,
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
+	text-align: $checkout-rtl-alignment-right;
+}
+
+.has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title:before {
+    right: 0px;
+}
+
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total, form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td {
+    text-align: $checkout-rtl-alignment-left;
+}
+
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name, form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-name {
+    float: $checkout-rtl-alignment-right;
+    text-align: $checkout-rtl-alignment-right;
+}
+
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table img {
+    float: $checkout-rtl-alignment-right;
+    margin-right: -8px;
+}
+
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total, form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-total {
+    float: $checkout-rtl-alignment-left;
+}
+
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
+    float: $checkout-rtl-alignment-right;
+    padding-right: 20px;
+}
+
+form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-quantity {
+    right: 65px;
+    left: auto;
+    transform: translateX(100%) translateY(-25%);
+}
+
+.fc-checkout-order-review__inner > .fc-checkout-order-review__edit-cart {
+    float: $checkout-rtl-alignment-left;
+    margin: 0 0px 0 -10px;
+}
+
+.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title {
+    display: inline-block;
+    float: $checkout-rtl-alignment-right;
+}
+
+.has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title {
+    float: $checkout-rtl-alignment-right;
+    padding: 0 28px 0 0px;
+}
+
+body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
+    float: $checkout-rtl-alignment-left;
+}
+
+.has-checkout-layout--multi-step .fc-step__substep-text {
+    float: $checkout-rtl-alignment-left;
+    padding-left: 0;
+    padding-right: 80px;
+    width: calc( 100% - 230px );
+}
+
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit {
+    left: 0;
+}
+
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after,
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
+    left: 20px;
+    right: auto !important;
+}
+
+.woocommerce-terms-and-conditions-wrapper, .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
+    text-align: $checkout-rtl-alignment-right;
+}
