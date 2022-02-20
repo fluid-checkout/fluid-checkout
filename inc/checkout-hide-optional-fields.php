@@ -20,7 +20,10 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 	 */
 	public function hooks() {
 		// WooCommerce fields output
-		add_filter( 'woocommerce_form_field', array( $this, 'add_optional_form_field_link_button' ), 100, 4 );
+
+		if ( ! is_admin() ) {
+			add_filter( 'woocommerce_form_field', array( $this, 'add_optional_form_field_link_button' ), 100, 4 );
+		}
 	}
 
 

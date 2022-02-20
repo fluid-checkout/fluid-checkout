@@ -19,6 +19,10 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		if ( is_admin() ) {
+			return;
+		}
+
 		// Body class
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
