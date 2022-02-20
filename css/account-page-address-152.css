@@ -127,6 +127,7 @@ div.woocommerce form #shipping_address_2_field > label {
   overflow: unset;
   white-space: normal;
   line-height: 1.2;
+  text-align: left;
 }
 
 .fc-content div.woocommerce form .fc-wrapper .fc-field-group {
@@ -303,6 +304,7 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
   text-decoration: none;
   line-height: 1.2;
   font-size: 15px;
+  text-align: left;
 }
 @media (min-width: 750px) {
   div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {

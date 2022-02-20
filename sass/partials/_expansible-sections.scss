@@ -18,6 +18,7 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
 	text-decoration: $checkout-expansible-section-text-decoration;
 	line-height: 1.2;
 	font-size: $font-size-small;
+	text-align: $checkout-rtl-alignment-left;
 
 	@media (#{$bp-larger-than_tablet}) {
 		font-size: $font-size-small--large-screen;

@@ -4,6 +4,16 @@
 // VARIABLES
 // ------------------------------------
 
+// Alignment support with rtl
+$checkout-rtl-alignment-right: right !default;
+$checkout-rtl-alignment-left: left !default;
+$wc-checkout-review-order-table-img: remsize( 0rem ) !default;
+$wc-checkout-review-order-table-product-details: 0 0 0 remsize( 2rem ) !default;
+$coupon-code-fc-coupon-code-apply-right: remsize( .5rem ) !default;
+$coupon-code-fc-coupon-code-apply-left: auto !default;
+$wc-complete-fc-step-substep-edit-left: auto !default;
+$wc-complete-fc-step-substep-edit-right: 0 !default;
+
 // ----------------------------------------
 // COLORS
 
