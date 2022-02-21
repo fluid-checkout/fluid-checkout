@@ -289,6 +289,18 @@ Although Fluid Checkout was built in a way that it should be compatible with mos
 
 **If you have any issues using Fluid Checkout with other plugins please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.**
 
+= Is Fluid Checkout compliant with privacy laws (GDPR/RGPD/CCPA/LGPD)? =
+
+We value your privacy and your customers' privacy.
+
+While we cannot guarantee that the plugin is fully compliant with privacy laws in every country.
+
+**We assure you that Fluid Checkout does not, and will not, collect any customer data from your shop.**
+
+In the future, **and with your explicit consent**, we might collect some non-sensitive usage data from your website such as the plugin and WooCommerce settings, which other plugins and themes you have installed on your shop to help us to improve the plugin.
+
+Details and examples of the data collected will be shown on the plugin interface for you to review prior to sending the data to our servers for collection and storage.
+
 = Is Fluid Checkout fully compatible with ADA/WCAG 2.1 Level AA requirements? Will it make my webshop compliant? =
 
 No. While Fluid Checkout does improve the accessibility of the checkout page by implementing support for keyboard-only navigation and screen readers, **we can't say if your webshop will be 100% compliant or not** with ADA, WCAG or any other accessibility requirements. 
