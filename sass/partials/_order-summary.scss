@@ -186,7 +186,6 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
 	float: $checkout-rtl-alignment-left;
-	//padding-left: $global-spacing-small;
 	padding: $wc-checkout-review-order-table-product-details;
 	width: calc( 100% - $order-summary-image-width );
 

@@ -4,7 +4,9 @@
 // VARIABLES
 // ------------------------------------
 
-// Alignment support with rtl
+// ----------------------------------------
+// RTL SUPPORTED
+
 $checkout-rtl-alignment-right: left !default;
 $checkout-rtl-alignment-left: right !default;
 $checkout-substep-title-text-align: right !default;
@@ -15,3 +17,6 @@ $coupon-code-fc-coupon-code-apply-right: auto !default;
 $coupon-code-fc-coupon-code-apply-left: remsize( .5rem ) !default;
 $wc-complete-fc-step-substep-edit-left: 0 !default;
 $wc-complete-fc-step-substep-edit-right: auto !default;
+
+// END - RTL SUPPORTED
+// ----------------------------------------

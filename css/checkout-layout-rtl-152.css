@@ -2567,12 +2567,12 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
 }
 
 .has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title:before {
-  right: 0px;
+  right: 0;
 }
 
 .has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title {
   float: right;
-  padding: 0 28px 0 0px;
+  padding: 0 28px 0 0;
 }
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-quantity {
