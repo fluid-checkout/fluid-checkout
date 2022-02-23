@@ -12,11 +12,21 @@
 
 
 // ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector-prefix:          'body.woocommerce-checkout' !default;
+
+
+
+
+
+// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
 	"partials/collapsible-blocks",
 	"partials/checkout-content-area",
+	"partials/checkout-columns",
 	"partials/checkout-header",
 	"partials/checkout-progress-bar",
 	"partials/checkout-steps",

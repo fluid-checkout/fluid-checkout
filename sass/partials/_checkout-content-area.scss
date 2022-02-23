@@ -1,14 +1,14 @@
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
-body.woocommerce-checkout {
+#{ $_body-page-selector-prefix } {
 	overflow-x: hidden;
 }
 
 
 
 // Remove margins inherited from some themes
-body.woocommerce-checkout .fc-content,
+#{ $_body-page-selector-prefix } .fc-content,
 form.woocommerce-checkout {
 	display: block !important; // Needed to override theme styles breaking the layout
 	margin: 0;
@@ -24,7 +24,7 @@ form.woocommerce-checkout {
 
 
 
-body.woocommerce-checkout #main.fc-main {
+#{ $_body-page-selector-prefix } #main.fc-main {
 	position: static;
 	float: none;
 	margin: 0 auto;
@@ -48,12 +48,12 @@ body.woocommerce-checkout #main.fc-main {
 
 
 
-body.woocommerce-checkout .fc-content,
-body.woocommerce-checkout .fc-content * {
+#{ $_body-page-selector-prefix } .fc-content,
+#{ $_body-page-selector-prefix } .fc-content * {
 	box-sizing: border-box !important; // Needed to override theme styles breaking the layout
 }
 
-body.woocommerce-checkout .fc-content {
+#{ $_body-page-selector-prefix } .fc-content {
 	box-sizing: border-box;
 	float: none !important; // Needed to override theme styles breaking the layout
 	margin: 0 auto;
@@ -62,7 +62,7 @@ body.woocommerce-checkout .fc-content {
 	border: 0;
 	text-align: left;
 }
-body.woocommerce-checkout .fc-content.fc-container {
+#{ $_body-page-selector-prefix } .fc-content.fc-container {
 	// max-width
 	@media (#{$bp-larger-than-desktop}) { max-width: $container-width-desktop; }
 	@media (#{$bp-larger-than-desktop-medium}) { max-width: $container-width-desktop-medium; }
@@ -78,7 +78,7 @@ body.woocommerce-checkout .fc-content.fc-container {
 	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large $global-spacing-medium; }
 }
 
-body.woocommerce-checkout.has-checkout-header .fc-content {
+#{ $_body-page-selector-prefix }.has-checkout-header .fc-content {
 	min-height: 100vh;
 
 	@media (#{$bp-larger-than-desktop}) {
@@ -88,102 +88,10 @@ body.woocommerce-checkout.has-checkout-header .fc-content {
 
 
 
-body.woocommerce-checkout .fc-content > div.woocommerce {
+#{ $_body-page-selector-prefix } .fc-content > div.woocommerce {
 	position: static;
 
 	@media (#{$bp-larger-than-desktop-medium}) {
 		margin: 0 auto;
 	}
-}
-
-
-
-
-
-// ------------------------------------
-// CHECKOUT COLUMNS LAYOUT
-// ------------------------------------
-body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-message,
-body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-info,
-body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-error,
-body:not( .has-checkout-must-login-notice ) .fc-checkout-notices,
-body:not( .has-checkout-must-login-notice ).woocommerce-checkout .woocommerce-NoticeGroup,
-body:not( .has-checkout-must-login-notice ) .fc-progress-bar,
-body:not( .has-checkout-must-login-notice ) .fc-inside {
-	@media (#{$bp-larger-than-desktop}) {
-		float: left;
-		width: $checkout-steps-width--large-screen;
-		padding-right: $checkout-column-gap--large-screen;
-	}
-}
-body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-message,
-body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-info,
-body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-error {
-	width: calc( #{ $checkout-steps-width--large-screen } - #{ $checkout-column-gap--large-screen } );
-}
-
-
-
-body:not( .has-checkout-must-login-notice ) .fc-inside {
-	@media (#{$bp-larger-than-desktop}) {
-		padding-top: $global-spacing-tiny;
-	}
-}
-
-
-
-.fc-wrapper {
-	position: relative;
-}
-
-
-
-.fc-sidebar {
-	position: static;
-
-	@media (#{$bp-larger-than-desktop}) {
-		z-index: z( 'default' ) + 1;
-		float: right;
-		width: $checkout-overview-width--large-screen;
-	}
-}
-
-.fc-sidebar__inner {
-	z-index: z( 'above' );
-
-	@media (#{$bp-larger-than-desktop}) {
-		position: relative;
-		width: 100%;
-		padding-top: $global-spacing-tiny;
-	}
-}
-// With admin bar
-.admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
-	@media (#{$bp-larger-than-desktop}) {
-		padding-top: calc( #{ $global-spacing-tiny } + 32px ); // Use pixels to match styles of the WordPress Admin bar
-	}
-}
-
-
-
-
-
-// ------------------------------------
-// CHECKOUT WIDGETS
-// ------------------------------------
-.fc-checkout-header .widget,
-.fc-main .widget {
-	margin: 0;
-}
-
-
-
-
-
-// ------------------------------------
-// CLEAR FIX
-// ------------------------------------
-.fc-clearfix:before,
-.fc-clearfix:after {
-	@include clearfix();
 }

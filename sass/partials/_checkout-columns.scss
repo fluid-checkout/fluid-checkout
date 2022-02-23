@@ -1,0 +1,87 @@
+// ------------------------------------
+// CHECKOUT COLUMNS LAYOUT
+// ------------------------------------
+body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-message,
+body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-info,
+body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-error,
+body:not( .has-checkout-must-login-notice ) .fc-checkout-notices,
+body:not( .has-checkout-must-login-notice ).woocommerce-checkout .woocommerce-NoticeGroup,
+body:not( .has-checkout-must-login-notice ) .fc-progress-bar,
+body:not( .has-checkout-must-login-notice ) .fc-inside {
+	@media (#{$bp-larger-than-desktop}) {
+		float: left;
+		width: $checkout-steps-width--large-screen;
+		padding-right: $checkout-column-gap--large-screen;
+	}
+}
+body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-message,
+body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-info,
+body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-error {
+	width: calc( #{ $checkout-steps-width--large-screen } - #{ $checkout-column-gap--large-screen } );
+}
+
+
+
+body:not( .has-checkout-must-login-notice ) .fc-inside {
+	@media (#{$bp-larger-than-desktop}) {
+		padding-top: $global-spacing-tiny;
+	}
+}
+
+
+
+.fc-wrapper {
+	position: relative;
+}
+
+
+
+.fc-sidebar {
+	position: static;
+
+	@media (#{$bp-larger-than-desktop}) {
+		z-index: z( 'default' ) + 1;
+		float: right;
+		width: $checkout-overview-width--large-screen;
+	}
+}
+
+.fc-sidebar__inner {
+	z-index: z( 'above' );
+
+	@media (#{$bp-larger-than-desktop}) {
+		position: relative;
+		width: 100%;
+		padding-top: $global-spacing-tiny;
+	}
+}
+// With admin bar
+.admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
+	@media (#{$bp-larger-than-desktop}) {
+		padding-top: calc( #{ $global-spacing-tiny } + 32px ); // Use pixels to match styles of the WordPress Admin bar
+	}
+}
+
+
+
+
+
+// ------------------------------------
+// CHECKOUT WIDGETS
+// ------------------------------------
+.fc-checkout-header .widget,
+.fc-main .widget {
+	margin: 0;
+}
+
+
+
+
+
+// ------------------------------------
+// CLEAR FIX
+// ------------------------------------
+.fc-clearfix:before,
+.fc-clearfix:after {
+	@include clearfix();
+}
