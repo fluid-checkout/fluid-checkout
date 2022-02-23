@@ -61,6 +61,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_output_custom_styles', array( $this, 'output_checkout_page_custom_styles' ), 10 );
 
 		// Enqueue
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_order_details_styles' ), 10 );
 
@@ -293,16 +294,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Enqueue scripts.
 	 */
+	public function register_assets() {
+		// Styles
+		wp_register_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout'. self::$asset_version . '.css', NULL, NULL );
+
+		// Checkout steps scripts
+		wp_register_script( 'fc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
 	public function enqueue_assets() {
 		// Bail if not at checkout
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
 
 		// Styles
-		wp_enqueue_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout'. self::$asset_version . '.css', NULL, NULL );
+		wp_enqueue_style( 'fc-checkout-layout' );
 
 		// Checkout steps scripts
-		wp_enqueue_script( 'fc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
+		wp_enqueue_script( 'fc-checkout-steps' );
 	}
 
 
