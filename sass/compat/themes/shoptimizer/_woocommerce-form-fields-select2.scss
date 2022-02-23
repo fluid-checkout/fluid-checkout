@@ -2,13 +2,13 @@
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
 	margin-top: 0;
 }
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__arrow:before {
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__arrow:before {
 	right: 0;
 }
 
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__clear {
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__clear {
 	right: remsize( .5rem );
 }

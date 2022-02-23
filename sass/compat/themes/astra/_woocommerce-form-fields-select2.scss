@@ -2,12 +2,12 @@
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix } .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+body#{ $_body-theme-selector } .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
 	padding: remsize( .5rem ) remsize( 1.6rem );
 }
 
 
 
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__clear {
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__clear {
     right: remsize( .5rem );
 }

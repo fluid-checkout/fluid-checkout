@@ -10,7 +10,8 @@
 // ------------------------------------
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
-$_body-theme-selector-prefix:          'body.theme-hazel' !default;
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-hazel' !default;
 
 
 

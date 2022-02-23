@@ -2,17 +2,17 @@
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix } .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+body#{ $_body-theme-selector } .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
 	padding-left: remsize( 2rem );
 	padding-right: remsize( 2rem );
 }
 
 
 
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
 	right: 0;
 }
 
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__arrow b {
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__arrow b {
 	position: static;
 }

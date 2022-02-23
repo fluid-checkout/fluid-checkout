@@ -3,7 +3,7 @@
 // ------------------------------------
 
 // VALID FIELDS
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
 
 	// Select2 Fields (optional, with "clear" button)
 	&.fc-select2-field:not( .fc-no-validation-icon ) select:not( [required] ) ~ .select2-container .select2-selection.select2-selection--single:after {

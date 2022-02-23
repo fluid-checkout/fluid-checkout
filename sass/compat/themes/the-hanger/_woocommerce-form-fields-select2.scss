@@ -2,7 +2,7 @@
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix } .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+body#{ $_body-theme-selector } .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
 	padding-left: remsize( 1.2rem );
 	padding-right: remsize( 1.2rem );
 }

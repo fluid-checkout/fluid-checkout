@@ -2,6 +2,6 @@
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix } .fc-login-form .login {
+body#{ $_body-theme-selector } .fc-login-form .login {
 	display: block;
 }

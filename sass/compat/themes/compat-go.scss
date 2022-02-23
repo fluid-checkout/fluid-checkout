@@ -10,7 +10,8 @@
 // ------------------------------------
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
-$_body-theme-selector-prefix:          'body.theme-go' !default;
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-go' !default;
 $_select2-border-width:                remsize( .2rem ) !default;
 $_select2-border-radius:               remsize( .4rem ) !default;
 $_select2-selection-height:            remsize( 5.218rem ) !default;
