@@ -71,7 +71,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
 
 		// Container class
-		add_filter( 'fc_content_section_class', array( $this, 'fc_content_section_class' ), 10 );
+		add_filter( 'fc_content_section_class', array( $this, 'add_content_section_class' ), 10 );
 
 		// Checkout steps
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout/cart notices
@@ -482,7 +482,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param string $class Main content element classes.
 	 */
-	public function fc_content_section_class( $class ) {
+	public function add_content_section_class( $class ) {
 		// Bail if using the plugin's header and footer
 		if ( $this->get_hide_site_header_footer_at_checkout() ) { return $class; }
 
