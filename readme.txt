@@ -335,6 +335,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Improved: Refactor make SCSS code reusable by using variables like `$_body-theme-selector` and `$_body-page-selector`.
 * Fixed: State field validation message for required field displaying even when field is optional.
 
 = 1.5.2 - 2022-02-14 =
