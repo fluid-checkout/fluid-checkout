@@ -17,7 +17,7 @@
 
 
 // Fix layout for the `#order_review` element
-#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review {
+body#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review {
 	float: none;
 	padding: 0;
 	margin: 0;
@@ -29,7 +29,7 @@
 
 
 
-#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title {
+body#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title {
 	display: inline-block;
 	margin: 0 0 remsize( 1.5rem );
 	padding: 0;
@@ -44,8 +44,8 @@
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-title-font-size--large-screen; }
 }
-#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title:before,
-#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title:after {
+body#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title:before,
+body#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title:after {
 	width: auto;
 }
 
@@ -70,13 +70,13 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	}
 }
 
-#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table thead,
-#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody,
-#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot {
+body#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table thead,
+body#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody,
+body#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot {
 	border: none;
 }
 
-#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody::after {
+body#{ $_body-page-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody::after {
 	display: none;
 }
 

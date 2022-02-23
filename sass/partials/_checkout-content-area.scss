@@ -1,14 +1,14 @@
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
-#{ $_body-page-selector-prefix } {
+body#{ $_body-page-selector-prefix } {
 	overflow-x: hidden;
 }
 
 
 
 // Remove margins inherited from some themes
-#{ $_body-page-selector-prefix } .fc-content,
+body#{ $_body-page-selector-prefix } .fc-content,
 form.woocommerce-checkout {
 	display: block !important; // Needed to override theme styles breaking the layout
 	margin: 0;
@@ -24,7 +24,7 @@ form.woocommerce-checkout {
 
 
 
-#{ $_body-page-selector-prefix } #main.fc-main {
+body#{ $_body-page-selector-prefix } #main.fc-main {
 	position: static;
 	float: none;
 	margin: 0 auto;
@@ -48,12 +48,12 @@ form.woocommerce-checkout {
 
 
 
-#{ $_body-page-selector-prefix } .fc-content,
-#{ $_body-page-selector-prefix } .fc-content * {
+body#{ $_body-page-selector-prefix } .fc-content,
+body#{ $_body-page-selector-prefix } .fc-content * {
 	box-sizing: border-box !important; // Needed to override theme styles breaking the layout
 }
 
-#{ $_body-page-selector-prefix } .fc-content {
+body#{ $_body-page-selector-prefix } .fc-content {
 	box-sizing: border-box;
 	float: none !important; // Needed to override theme styles breaking the layout
 	margin: 0 auto;
@@ -62,7 +62,7 @@ form.woocommerce-checkout {
 	border: 0;
 	text-align: left;
 }
-#{ $_body-page-selector-prefix } .fc-content.fc-container {
+body#{ $_body-page-selector-prefix } .fc-content.fc-container {
 	// max-width
 	@media (#{$bp-larger-than-desktop}) { max-width: $container-width-desktop; }
 	@media (#{$bp-larger-than-desktop-medium}) { max-width: $container-width-desktop-medium; }
@@ -78,7 +78,7 @@ form.woocommerce-checkout {
 	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large $global-spacing-medium; }
 }
 
-#{ $_body-page-selector-prefix }.has-checkout-header .fc-content {
+body#{ $_body-page-selector-prefix }.has-checkout-header .fc-content {
 	min-height: 100vh;
 
 	@media (#{$bp-larger-than-desktop}) {
@@ -88,7 +88,7 @@ form.woocommerce-checkout {
 
 
 
-#{ $_body-page-selector-prefix } .fc-content > div.woocommerce {
+body#{ $_body-page-selector-prefix } .fc-content > div.woocommerce {
 	position: static;
 
 	@media (#{$bp-larger-than-desktop-medium}) {
