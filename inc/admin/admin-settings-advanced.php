@@ -80,16 +80,7 @@ class WC_Settings_FluidCheckout_Advanced_Settings extends WC_Settings_Page {
 					'desc'  => '',
 					'id'    => 'fc_checkout_advanced_layout_options',
 				),
-
-				array(
-					'title'            => __( 'Order summary', 'fluid-checkout' ),
-					'desc'             => __( 'Make the order summary stay visible while scrolling', 'fluid-checkout' ),
-					'id'               => 'fc_enable_checkout_sticky_order_summary',
-					'default'          => 'yes',
-					'type'             => 'checkbox',
-					'autoload'         => false,
-				),
-
+	
 				array(
 					'title'            => __( 'Progress bar', 'fluid-checkout' ),
 					'desc'             => __( 'Make the checkout progress bar stay visible while scrolling', 'fluid-checkout' ),
@@ -102,6 +93,14 @@ class WC_Settings_FluidCheckout_Advanced_Settings extends WC_Settings_Page {
 
 				array(
 					'title'            => __( 'Order summary', 'fluid-checkout' ),
+					'desc'             => __( 'Make the order summary stay visible while scrolling', 'fluid-checkout' ),
+					'id'               => 'fc_enable_checkout_sticky_order_summary',
+					'default'          => 'yes',
+					'type'             => 'checkbox',
+					'autoload'         => false,
+				),
+
+				array(
 					'desc'             => __( '(Experimental) Display an additional "Place order" and terms checkbox below the order summary in the sidebar.', 'fluid-checkout' ),
 					'desc_tip'         => __( 'Recommended if most of the orders have only a few different products in the cart, and product variations do not take too much space on the order summary.', 'fluid-checkout' ),
 					'id'               => 'fc_enable_checkout_place_order_sidebar',
