@@ -211,7 +211,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 Only the plugins that we have added explicit compatibility with, or that we have tested and works as expected are listed above.
 
-If your theme is not on the list it **does not mean it won't work**. Only that we have not tested it yet.
+If a plugin or payment method is not on the list it **does not mean it won't work**. Only that we have not tested it yet.
 
 Try Fluid Checkout now and if you experience any issues please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.
 
