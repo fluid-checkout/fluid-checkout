@@ -1,3 +1,5 @@
+@use "sass:math" as math;
+
 // ------------------------------------
 // CHECKOUT SHIPPING METHODS
 // ------------------------------------
@@ -130,6 +132,10 @@
 	right: $shipping-method-padding-horizontal;
 	display: block;
 	text-align: right;
+}
+.woocommerce ul#shipping_method .shipping-method__option .has-tax-notes .shipping-method__option-price {
+	top: #{ math.div( $shipping-method-padding-vertical, 2 ) };
+	line-height: 1.2;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .amount {
