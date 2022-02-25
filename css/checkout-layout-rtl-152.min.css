@@ -179,9 +179,10 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-notices,
 body:not(.has-checkout-must-login-notice).woocommerce-checkout .woocommerce-NoticeGroup,
 body:not(.has-checkout-must-login-notice) .fc-progress-bar,
 body:not(.has-checkout-must-login-notice) .fc-inside {
-    float: left;
+    float: right;
     width: 62.5%;
-    padding-right: 50px;
+    padding-right: 0;
+    padding-left: 50px;
   }
 }
 
@@ -207,7 +208,7 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
 @media (min-width: 1000px) {
   .fc-sidebar {
     z-index: 2;
-    float: right;
+    float: left;
     width: 37.5%;
   }
 }
@@ -948,7 +949,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit {
   position: absolute;
   top: 0;
-  right: 0;
+  right: auto;
   left: 0;
   display: inline-block;
 }
@@ -1541,7 +1542,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   content: "";
   position: absolute;
   top: 10px;
-  left: 10px;
+  left: auto;
+  right: 10px;
   display: block;
   margin: 0;
   width: 24px;
@@ -1606,7 +1608,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   font-size: 24px;
   position: absolute;
   top: 10px;
-  left: 10px;
+  left: auto;
+  right: 10px;
   color: transparent;
 }
 
@@ -1896,6 +1899,7 @@ div.woocommerce form .form-row.form-row-two-thirds {
   div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle {
     margin-right: 4%;
+    margin-left: 0;
   }
 }
 
@@ -2582,8 +2586,8 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 }
 
 .has-checkout-layout--multi-step .fc-step__substep-text {
-  padding-left: 0;
-  padding-right: 80px;
+  padding-left: 80px;
+  padding-right: 0;
   width: calc(100% - 230px);
 }
 
@@ -2591,5 +2595,19 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-inv
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
   left: 20px;
   right: auto !important;
+}
+
+.fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+  padding: 10px 44px 10px 20px;
+}
+
+div.woocommerce .form-row .woocommerce-error:before,
+div.woocommerce .shipping-method__package .woocommerce-error:before {
+  left: auto;
+  right: 5px;
+}
+
+div.woocommerce .form-row .woocommerce-error, div.woocommerce .shipping-method__package .woocommerce-error, div.woocommerce .form-row .fc-mailcheck-suggestion {
+  padding: 5px 28px 5px 10px !important;
 }
 /*# sourceMappingURL=maps/checkout-layout-rtl-152.min.css.map */

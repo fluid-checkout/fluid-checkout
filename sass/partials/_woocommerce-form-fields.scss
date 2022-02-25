@@ -64,7 +64,7 @@ div.woocommerce form .form-row.form-row-two-thirds {
 
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle {
-	@media (#{$bp-larger-than-tablet}) { margin-right: 4%; }
+	@media (#{$bp-larger-than-tablet}) { margin-right: 4%; margin-left: $wc-form-row-form-row-first; }
 }
 
 

@@ -100,7 +100,8 @@
 	content: '';
 	position: absolute;
 	top: $payment-method-padding-vertical;
-	left: $global-spacing-extra-small;
+	left: $spacing-extra-small-wc-payment-method-input-left;
+	right: $spacing-extra-small-wc-payment-method-input-right;
 	display: block;
 	margin: 0;
 	width: $payment-method-radio-size;
@@ -141,7 +142,8 @@
 
 	position: absolute;
 	top: $payment-method-padding-vertical;
-	left: $global-spacing-extra-small;
+	left: $spacing-extra-small-wc-payment-method-input-left;
+	right: $spacing-extra-small-wc-payment-method-input-right;
 	color: transparent;
 }
 .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:after {

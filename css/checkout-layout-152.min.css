@@ -182,6 +182,7 @@ body:not(.has-checkout-must-login-notice) .fc-inside {
     float: left;
     width: 62.5%;
     padding-right: 50px;
+    padding-left: 0;
   }
 }
 
@@ -948,7 +949,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit {
   position: absolute;
   top: 0;
-  right: auto;
+  right: 0;
   left: auto;
   display: inline-block;
 }
@@ -1542,6 +1543,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   position: absolute;
   top: 10px;
   left: 10px;
+  right: auto;
   display: block;
   margin: 0;
   width: 24px;
@@ -1607,6 +1609,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   position: absolute;
   top: 10px;
   left: 10px;
+  right: auto;
   color: transparent;
 }
 
@@ -1896,6 +1899,7 @@ div.woocommerce form .form-row.form-row-two-thirds {
   div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle {
     margin-right: 4%;
+    margin-left: inherit;
   }
 }
 
