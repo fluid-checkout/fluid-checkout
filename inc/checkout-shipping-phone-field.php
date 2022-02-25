@@ -109,9 +109,12 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	public function add_shipping_phone_field( $fields ) {
 		$fields['shipping_phone'] = $this->get_shipping_phone_field();
 
-		$field_args = FluidCheckout_CheckoutFields::instance()->get_checkout_field_args();
-		foreach( $field_args as $field => $values ) {
-			if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
+		// Merge with existing checkout fields arguments
+		if ( class_exists( 'FluidCheckout_CheckoutFields' ) ) {
+			$field_args = FluidCheckout_CheckoutFields::instance()->get_checkout_field_args();
+			foreach( $field_args as $field => $values ) {
+				if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
+			}
 		}
 
 		return $fields;
