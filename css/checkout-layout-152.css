@@ -1368,6 +1368,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   position: absolute;
   top: 10px;
   left: 10px;
+  right: auto;
   display: block;
   width: 24px;
   height: 24px;
@@ -1427,6 +1428,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   position: absolute;
   top: 10px;
   left: 10px;
+  right: auto;
   color: transparent;
 }
 
@@ -1443,7 +1445,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
   position: absolute;
   top: 10px;
-  right: 10px;
+  left: auto;
+  right: 5px;
   display: block;
   text-align: right;
 }
@@ -1899,7 +1902,7 @@ div.woocommerce form .form-row.form-row-two-thirds {
   div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle {
     margin-right: 4%;
-    margin-left: inherit;
+    margin-left: 0;
   }
 }
 

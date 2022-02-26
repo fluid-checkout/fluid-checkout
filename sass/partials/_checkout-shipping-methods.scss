@@ -72,7 +72,8 @@
 	content: '';
 	position: absolute;
 	top: $shipping-method-padding-vertical;
-	left: $global-spacing-extra-small;
+	left: $shipping-method-spacing-extra-small-left;
+	right: $shipping-method-spacing-extra-small-right;
 	display: block;
 	width: $shipping-method-radio-size;
 	height: $shipping-method-radio-size;
@@ -107,7 +108,8 @@
 
 	position: absolute;
 	top: $shipping-method-padding-vertical;
-	left: $global-spacing-extra-small;
+	left: $shipping-method-spacing-extra-small-left;
+	right: $shipping-method-spacing-extra-small-right;
 	color: transparent;
 }
 .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:after {
@@ -127,7 +129,8 @@
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
 	position: absolute;
 	top: $shipping-method-padding-vertical;
-	right: $shipping-method-padding-horizontal;
+	left: $shipping-method-padding-horizontal-left;
+	right: $shipping-method-padding-horizontal-right;
 	display: block;
 	text-align: right;
 }

@@ -89,7 +89,7 @@ div.woocommerce form .form-row.form-row-two-thirds {
   div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle {
     margin-right: 4%;
-    margin-left: inherit;
+    margin-left: 0;
   }
 }
 

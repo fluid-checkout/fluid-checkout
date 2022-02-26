@@ -24,6 +24,13 @@ $spacing-large-fc-step-substep-text-right: 0 !default;
 $spacing-large-fc-step-substep-text-left: remsize( 8rem ) !default;
 $spacing-extra-small-wc-payment-method-input-left: auto !default;
 $spacing-extra-small-wc-payment-method-input-right: remsize( 1rem ) !default;
+$checkout-substep-action-button-margin: remsize( 1.2rem ) 0 0 remsize( 1rem );
+$shipping-method-padding-horizontal-left: remsize( 0.5rem ) !default;
+$shipping-method-padding-horizontal-right: auto !default;
+$shipping-method-spacing-extra-small-left: auto !default;
+$shipping-method-spacing-extra-small-right: remsize( 1rem ) !default;
+$woocommerce-form-row-first-margin-left: 4% !default;
+$woocommerce-form-row-first-margin-right: 0 !default;
 
 // END - RTL SUPPORTED
 // ----------------------------------------
