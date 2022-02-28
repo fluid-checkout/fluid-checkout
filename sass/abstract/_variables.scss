@@ -1,8 +1,8 @@
 @use "sass:math" as math;
 
-// ------------------------------------
+// ----------------------------------------
 // VARIABLES
-// ------------------------------------
+// ----------------------------------------
 
 // ----------------------------------------
 // COLORS
@@ -56,8 +56,11 @@ $focus-outline-offset-button:   $focus-outline-offset-field;
 // ----------------------------------------
 
 
+
+
+
 // ----------------------------------------
-// RTL SUPPORTED
+// ALIGNMENT & RTL SUPPORT
 
 $alignment-right:                           right !default;
 $alignment-left:                            left !default;
@@ -82,8 +85,12 @@ $shipping-method-spacing-extra-small-right: auto !default;
 $woocommerce-form-row-first-margin-left: 0 !default;
 $woocommerce-form-row-first-margin-right: 4% !default;
 
-// END - RTL SUPPORTED
+// END - ALIGNMENT & RTL SUPPORT
 // ----------------------------------------
+
+
+
+
 
 // ----------------------------------------
 // SPACING & BOX SYSTEM
