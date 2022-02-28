@@ -5,7 +5,7 @@ body.theme-zota.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.pa
 body.theme-zota .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
   display: flex !important;
   padding: 10px 20px !important;
-  padding-left: 44px !important;
+  padding-right: 44px !important;
 }
 
 body.theme-zota div.woocommerce form .form-row span.select2-container {
