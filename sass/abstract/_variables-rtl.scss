@@ -20,8 +20,6 @@ $checkout-column-gap--large-screen-fc-inside-left: remsize( 5rem ) !default;
 $spacing-extra-small-wc-payment-method-input-left: auto !default;
 $spacing-extra-small-wc-payment-method-input-right: remsize( 1rem ) !default;
 
-$checkout-substep-action-button-margin:      remsize( 1.2rem ) 0 0 remsize( 1rem );
-
 $shipping-method-padding-horizontal-left:    remsize( .5rem ) !default;
 $shipping-method-padding-horizontal-right:   auto !default;
 $shipping-method-spacing-extra-small-left:   auto !default;
@@ -39,11 +37,23 @@ $woocommerce-form-row-first-margin-right:    0 !default;
 
 
 // ----------------------------------------
+// CHECKOUT STEPS
+
+$checkout-substep-action-button-margin:      remsize( 1.2rem ) 0 0 remsize( 1rem ); // TODO: Refactor to use `$global-spacing` variables
+
+// END - CHECKOUT STEPS
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
 // ORDER SUMMARY
 
 $order-summary-quantity-transform:          translateX( 100% ) translateY( -25% ) !default;
 
-$order-summary-edit-cart-button-margin:     0 0 0 -1rem !default; // TODO: Try refactor to use $global-spacing-extra-small as the original variable
+$order-summary-edit-cart-button-margin:     0 0 0 -1rem !default; // TODO: Refactor to use `$global-spacing` variables
 
 // END - ORDER SUMMARY
 // ----------------------------------------
