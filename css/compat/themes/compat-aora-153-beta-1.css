@@ -11,7 +11,8 @@ body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method {
 }
 
 body.theme-aora .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
-  padding: 10px 20px 10px 44px !important;
+  padding: 10px 20px !important;
+  padding-left: 44px !important;
 }
 
 body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method:last-child {
