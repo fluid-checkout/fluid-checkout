@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body.woocommerce-checkout #payment div.payment_box input.js-sv-wc-payment-gateway-credit-card-form-account-number {
+	background-position: #{ $alignment-right } remsize( 1rem ) center;
+}

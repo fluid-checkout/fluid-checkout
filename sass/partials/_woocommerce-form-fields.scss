@@ -63,7 +63,9 @@ div.woocommerce form .form-row.form-row-two-thirds {
 }
 
 div.woocommerce form .form-row.form-row-first,
-div.woocommerce form .form-row.form-row-middle {
+div.woocommerce form .form-row.form-row-middle,
+div.woocommerce form #payment .form-row.form-row-first,
+div.woocommerce form #payment .form-row.form-row-middle {
 	@media (#{$bp-larger-than-tablet}) {
 		margin-#{ $alignment-left }: 0;
 		margin-#{ $alignment-right }: 4%;
