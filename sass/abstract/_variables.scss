@@ -382,7 +382,7 @@ $checkout-substep-title-font-size:               $font-size-small !default;
 $checkout-substep-title-font-size--large-screen: $font-size-small--large-screen !default;
 $checkout-substep-title-font-weight:             bold !default;
 $checkout-substep-title-text-transform:          uppercase !default;
-$checkout-substep-title-text-align:              left !default;
+$checkout-substep-title-text-align:              $alignment-left !default;
 
 $checkout-substep-margin-expand:                      $global-spacing-small #{ - $container-spacing-mobile } !default;
 $checkout-substep-margin-expand--large-screen:        $global-spacing-small #{ - $container-spacing-mobile } !default;
