@@ -299,8 +299,8 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit {
 	position: absolute;
 	top: 0;
-	right: $wc-complete-fc-step-substep-edit-right;
-	left: $wc-complete-fc-step-substep-edit-left;
+	#{ $alignment-left }: auto;
+	#{ $alignment-right }: 0;
 	display: inline-block;
 }
 
