@@ -1,0 +1,30 @@
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
+@import
+	"../../abstract/_all-early",
+	"../../abstract/_variables-rtl",
+	"../../abstract/_all";
+
+
+
+
+
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-hazel' !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"hazel/checkout-content-area",
+	"hazel/checkout-header",
+	"hazel/checkout-progress-bar",
+	"hazel/checkout-validation",
+	"hazel/woocommerce-form-fields";

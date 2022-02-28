@@ -3,5 +3,5 @@
 // ------------------------------------
 
 #{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__clear {
-	right: remsize( .5rem );
+	#{ $alignment-right }: remsize( .5rem );
 }

@@ -7,7 +7,8 @@ body.theme-diza div.woocommerce form .form-row .select2-container .select2-selec
 }
 
 body.theme-diza .woocommerce-checkout-payment .payment_methods li label {
-  padding: 10px 20px 10px 44px !important;
+  padding: 10px 20px !important;
+  padding-left: 44px !important;
 }
 
 body.theme-diza .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] + label:before {

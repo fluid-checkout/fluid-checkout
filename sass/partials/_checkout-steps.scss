@@ -51,6 +51,8 @@
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
 	margin: $checkout-substep-title-margin;
 	padding: $checkout-substep-title-padding;
+	// padding: $checkout-substep-title-padding;
+	// padding: $checkout-substep-title-padding;
 	color: $checkout-substep-title-color;
 	font-weight: $checkout-substep-title-font-weight;
 	font-size: $checkout-substep-title-font-size;
@@ -80,7 +82,8 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
-	float: left;
+	float: $alignment-left;
+	text-align: $alignment-left;
 }
 
 
@@ -152,12 +155,14 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	display: block;
 	margin: 0 0 $global-radius-extra-small;
 	padding: $checkout-substep-complete-title-padding;
+	padding-#{ $alignment-left }: $checkout-substep-complete-title-padding-left;
 	color: $checkout-substep-text-color;
 
 	@media (#{$bp-larger-than-desktop}) {
-		float: left;
+		float: $alignment-left;
 		margin: 0;
 		padding: $checkout-substep-complete-title-padding--large-screen;
+		padding-#{ $alignment-left }: $checkout-substep-complete-title-padding-left--large-screen;
 		width: remsize( 20rem );
 	}
 
@@ -168,7 +173,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 		@include icon-size( $icon-size-small );
 
 		position: absolute;
-		left: $checkout-substep-title-check-icon-spacing;
+		#{ $alignment-left }: $checkout-substep-title-check-icon-spacing;
 		top: 50%;
 		transform: translateY( -50% );
 		border-radius: 100%;
@@ -203,9 +208,9 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	line-height: 1.4;
 
 	@media (#{$bp-larger-than-desktop}) {
-		float: right;
-		padding-left: 0;
-		padding-right: $global-spacing-large;
+		float: $alignment-right;
+		padding-#{ $alignment-left }: 0;
+		padding-#{ $alignment-right }: $global-spacing-large;
 		margin: $checkout-substep-text-margin--large-screen;
 		width: calc( 100% - #{ remsize( 20rem ) } );
 		font-size: $checkout-substep-text-font-size--large-screen;
@@ -224,6 +229,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .has-checkout-layout--multi-step .fc-step__substep-text-line {
 	display: block;
 	width: 100%;
+	text-align: $alignment-left;
 }
 
 
@@ -298,7 +304,8 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit {
 	position: absolute;
 	top: 0;
-	right: 0;
+	#{ $alignment-left }: auto;
+	#{ $alignment-right }: 0;
 	display: inline-block;
 }
 

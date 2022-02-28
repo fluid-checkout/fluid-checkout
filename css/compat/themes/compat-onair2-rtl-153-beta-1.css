@@ -1,0 +1,82 @@
+body.theme-onair2 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, body.theme-onair2 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
+  top: 10px;
+}
+body.theme-onair2 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
+  left: 32px;
+}
+body.theme-onair2 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
+  left: 20px;
+}
+body.theme-onair2 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection.select2-selection--single:after {
+  left: 32px;
+}
+
+body.theme-onair2 div.woocommerce form .form-row span.select2-container {
+  height: auto;
+}
+
+body.theme-onair2 div.woocommerce form .form-row .select2-selection {
+  height: auto;
+  min-height: 46px;
+  border-radius: 0;
+  line-height: 0;
+}
+
+body.theme-onair2 div.woocommerce form .form-row .select2-selection__rendered {
+  min-height: 46px;
+  border-radius: 0;
+}
+
+body.theme-onair2 div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-onair2 div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  top: 0;
+  margin-top: 5px;
+  height: auto;
+  min-height: 34px;
+  line-height: 34px;
+  transform: none;
+}
+
+body.theme-onair2 div.woocommerce form .form-row .select2-selection--single {
+  padding: 0;
+}
+
+body.theme-onair2 div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 46px;
+}
+
+body.theme-onair2 div.woocommerce form .form-row .select2-selection--multiple {
+  border-width: 1px;
+}
+
+body.theme-onair2 div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+  padding-bottom: 5px;
+  min-height: 36px;
+  line-height: 36px;
+  white-space: normal;
+}
+
+body.theme-onair2 div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5px;
+  line-height: 34px;
+  overflow: hidden;
+}
+
+body.theme-onair2 div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  margin-top: 5px;
+  min-height: 34px;
+  line-height: 34px;
+}
+
+body.theme-onair2 div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
+  height: 36px;
+  min-height: auto;
+}
+
+body.theme-onair2 div.woocommerce form .form-row .select2-selection--single,
+body.theme-onair2 div.woocommerce form .form-row .select2-selection--multiple {
+  text-align: right;
+}

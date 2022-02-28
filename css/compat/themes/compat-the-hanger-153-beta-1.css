@@ -8,7 +8,9 @@ body.theme-the-hanger .woocommerce ul#shipping_method .shipping-method__option i
 
 body.theme-the-hanger .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
   display: flex !important;
-  padding: 10px 20px 10px 44px !important;
+  margin: 0 !important;
+  padding: 10px 20px !important;
+  padding-left: 44px !important;
 }
 
 body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-first,

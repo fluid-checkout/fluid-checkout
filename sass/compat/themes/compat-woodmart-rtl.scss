@@ -1,0 +1,33 @@
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
+@import
+	"../../abstract/_all-early",
+	"../../abstract/_variables-rtl",
+	"../../abstract/_all";
+
+
+
+
+
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-woodmart' !default;
+$_select2-border-width:                remsize( .2rem ) !default;
+$_select2-border-radius:               remsize( .3rem ) !default;
+$_select2-selection-height:            remsize( 4.2rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"woodmart/checkout-validation",
+	"woodmart/checkout-coupon-code",
+	"woodmart/order-summary",
+	"../../partials/woocommerce-form-fields-select2",
+	"woodmart/woocommerce-form-fields-select2";

@@ -75,3 +75,8 @@ body.theme-onair2 div.woocommerce form .form-row .select2-selection--multiple .s
   height: 36px;
   min-height: auto;
 }
+
+body.theme-onair2 div.woocommerce form .form-row .select2-selection--single,
+body.theme-onair2 div.woocommerce form .form-row .select2-selection--multiple {
+  text-align: left;
+}

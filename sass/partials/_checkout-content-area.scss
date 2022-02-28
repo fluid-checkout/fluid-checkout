@@ -111,9 +111,10 @@ body:not( .has-checkout-must-login-notice ).woocommerce-checkout .woocommerce-No
 body:not( .has-checkout-must-login-notice ) .fc-progress-bar,
 body:not( .has-checkout-must-login-notice ) .fc-inside {
 	@media (#{$bp-larger-than-desktop}) {
-		float: left;
+		float: $alignment-left;
 		width: $checkout-steps-width--large-screen;
-		padding-right: $checkout-column-gap--large-screen;
+		padding-#{ $alignment-left }: 0;
+		padding-#{ $alignment-right }: $checkout-column-gap--large-screen;
 	}
 }
 body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-message,
@@ -143,7 +144,7 @@ body:not( .has-checkout-must-login-notice ) .fc-inside {
 
 	@media (#{$bp-larger-than-desktop}) {
 		z-index: z( 'default' ) + 1;
-		float: right;
+		float: $alignment-right;
 		width: $checkout-overview-width--large-screen;
 	}
 }

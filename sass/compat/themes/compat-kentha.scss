@@ -1,7 +1,9 @@
 // ------------------------------------
 // IMPORT ABSTRACT
 // ------------------------------------
-@import "../../abstract/_all";
+@import
+	"../../abstract/_all-early",
+	"../../abstract/_all";
 
 
 
@@ -28,5 +30,5 @@ $_select2-selection-height:            remsize( 4.8rem ) !default;
 	"kentha/woocommerce-form-fields",
 	"kentha/checkout-payment-methods",
 	"kentha/checkout-shipping-methods",
-	"../../partials/woocommerce-form-fields-select2";
-
+	"../../partials/woocommerce-form-fields-select2",
+	"kentha/woocommerce-form-fields-select2";
