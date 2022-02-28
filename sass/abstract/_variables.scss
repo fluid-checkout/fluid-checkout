@@ -571,7 +571,8 @@ $checkout-message-error-icon-size:                    $icon-size-small !default;
 $checkout-message-error-icon-position-top:            remsize( 1.6rem ) !default;
 $checkout-message-error-icon-position-left:           $global-spacing-tiny !default;
 
-$checkout-message-error-padding:                      $global-spacing-tiny $global-spacing-extra-small $global-spacing-tiny #{ $checkout-message-error-icon-position-left + $checkout-message-error-icon-size + $global-spacing-tiny } !default;
+$checkout-message-error-padding:                      $global-spacing-tiny $global-spacing-extra-small $global-spacing-tiny !default;
+$checkout-message-error-padding-left:                 #{ $checkout-message-error-icon-position-left + $checkout-message-error-icon-size + $global-spacing-tiny } !default;
 $checkout-message-error-color:                        $error-color !default;
 $checkout-message-error-background-color:             $lighter-grey !default;
 $checkout-message-error-font-size:                    $font-size-extra-small !default;

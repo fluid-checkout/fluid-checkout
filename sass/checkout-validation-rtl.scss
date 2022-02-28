@@ -3,15 +3,15 @@
 // ------------------------------------
 @import
 	"abstract/_all-early",
+	"abstract/variables-rtl",
 	"abstract/_all";
-@import	"../node_modules/sticky-states/sass/abstract/variables";
 
 
 
 
-	
+
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"../node_modules/sticky-states/sass/theme/sticky-states";
+	"partials/checkout-validation";

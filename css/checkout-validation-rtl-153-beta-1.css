@@ -12,7 +12,7 @@ div.woocommerce .form-row .fc-mailcheck-suggestion {
   position: relative;
   margin: 0;
   padding: 5px 10px 5px;
-  padding-left: 28px;
+  padding-right: 28px;
   border: 0;
   background-color: #F4F4F4;
   font-size: 13px;
@@ -56,13 +56,13 @@ div.woocommerce .shipping-method__package .woocommerce-error:before {
   font-size: 18px;
   position: absolute;
   top: 16px;
-  left: 5px;
+  right: 5px;
   transform: translateY(-50%);
   color: inherit;
 }
 
 div.woocommerce .shipping-method__package .woocommerce-error:before {
-  left: 15px;
+  right: 15px;
 }
 
 div.woocommerce form .form-row[class*=woocommerce-invalid] textarea,
@@ -119,7 +119,7 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-inv
   font-size: 24px;
   z-index: 10;
   position: absolute;
-  right: 5px;
+  left: 5px;
   top: 10px;
   border-radius: 100%;
   background-color: rgba(255, 255, 255, 0.75);
@@ -127,16 +127,15 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-inv
   pointer-events: none;
 }
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
-  right: 30px;
+  left: 30px;
 }
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
-  right: 20px;
+  left: 20px;
 }
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection:after {
-  right: 30px;
+  left: 30px;
 }
 .woocommerce-terms-and-conditions-wrapper div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):after, div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).create-account:after {
   content: "";
   display: none;
 }
-/*# sourceMappingURL=maps/checkout-validation-153-beta-1.min.css.map */

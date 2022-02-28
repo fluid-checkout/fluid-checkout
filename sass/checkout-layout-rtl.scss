@@ -2,11 +2,9 @@
 // IMPORT ABSTRACT
 // ------------------------------------
 @import
-	"abstract/functions/_all-early", // Should be imported before `_variables`
+	"abstract/_all-early",
 	"abstract/variables-rtl",
-	"abstract/variables",
-	"abstract/functions/_all",
-	"abstract/mixins/_all";
+	"abstract/_all";
 
 
 
