@@ -2292,7 +2292,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
   float: right;
-  padding: 0 20px 0 0;
+  padding-right: 20px;
   width: calc(100% - 50px);
 }
 @media (min-width: 1000px) {
@@ -2633,10 +2633,5 @@ div.woocommerce .form-row .woocommerce-error, div.woocommerce .shipping-method__
     padding-left: 80px;
     padding-right: 0;
     width: calc(100% - 230px);
-  }
-}
-@media (max-width: 500px) {
-  form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
-    padding: 0 30px 0 0;
   }
 }

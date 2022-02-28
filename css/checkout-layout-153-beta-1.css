@@ -2292,7 +2292,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
   float: left;
-  padding: 0 0 0 20px;
+  padding-left: 20px;
   width: calc(100% - 50px);
 }
 @media (min-width: 1000px) {

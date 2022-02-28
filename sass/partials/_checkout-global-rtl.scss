@@ -61,9 +61,3 @@ div.woocommerce .form-row .woocommerce-error, div.woocommerce .shipping-method__
         width: calc( 100% - remsize(23rem) );
     }
 }
-
-@media (max-width: 500px) {
-    form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
-        padding: 0 remsize(3rem) 0 0;
-    }
-}
