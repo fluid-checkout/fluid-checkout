@@ -15,12 +15,6 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus{
     padding: 0 remsize(2.8rem) 0 0;
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-quantity {
-    right: 65px;
-    left: auto;
-    transform: translateX(100%) translateY(-25%);
-}
-
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
     left: remsize(2rem);
     right: auto !important; // Needed to override inline styles added by some themes

@@ -452,6 +452,7 @@ $order-summary-image-background-color:           $white !default;
 $order-summary-image-border:                     solid remsize( .1rem ) $border-color !default;
 $order-summary-image-border-radius:              $global-radius-extra-small !default;
 
+$order-summary-quantity-transform:               translateX( -100% ) translateY( -25% ) !default;
 $order-summary-quantity-background-color:        $dark-grey !default;
 $order-summary-quantity-text-color:              $white !default;
 $order-summary-quantity-font-size:               $font-size-extra-small !default;

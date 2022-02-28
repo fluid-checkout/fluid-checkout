@@ -28,6 +28,9 @@
 
 
 
+.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review__head {
+	text-align: $alignment-left;
+}
 
 .woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title {
 	display: inline-block;
@@ -41,7 +44,6 @@
 	text-align: $checkout-substep-title-text-align;
 	line-height: 1;
 	overflow: unset;
-	float: $alignment-left;
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-title-font-size--large-screen; }
 }
@@ -197,8 +199,10 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	z-index: z( 'above' );
 	position: absolute;
 	top: 0;
-	left: #{ $order-summary-image-width + $global-spacing-tiny };
-	transform: translateX( -100% ) translateY( -25% );
+	#{ $alignment-left }: #{ $order-summary-image-width + $global-spacing-tiny };
+	// transform: translateX( 100% ) translateY( -25% );
+	// transform: translateX( -100% ) translateY( -25% );
+	transform: $order-summary-quantity-transform;
 	display: block;
 	padding: remsize( .1rem ) remsize( .6rem ) remsize( .2rem ) $global-spacing-tiny;
 	border-radius: #{ math.div( $font-size-extra-small + remsize( .4rem ), 2 ) };
@@ -210,7 +214,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	letter-spacing: 0;
 
 	@media (#{$bp-larger-than-desktop}) {
-		left: #{ $order-summary-image-width--large-screen + $global-spacing-tiny };
+		#{ $alignment-left }: #{ $order-summary-image-width--large-screen + $global-spacing-tiny };
 	}
 }
 
@@ -401,7 +405,7 @@ form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review .fc-checkout-ord
 
 
 
-.fc-checkout-order-review__inner > .fc-checkout-order-review__edit-cart {
+.fc-checkout-order-review__head .fc-checkout-order-review__edit-cart {
 	display: none;
 
 	@media (#{$bp-larger-than-desktop}) {
