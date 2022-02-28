@@ -22,12 +22,12 @@
 .fc-wrapper .fc-expansible-form-section__content--coupon_code .fc-coupon-code__apply {
 	z-index: z( 'above' ) + 1;
 	position: absolute;
-	top: remsize( .5rem );
+	top: $global-spacing-tiny;
 	margin: 0;
 	padding-left: $global-spacing-small;
 	padding-right: $global-spacing-small;
-	right: $coupon-code-fc-coupon-code-apply-right;
-	left: $coupon-code-fc-coupon-code-apply-left;
+	#{ $alignment-left }: auto;
+	#{ $alignment-right }: $global-spacing-tiny;
 	height: remsize( 4.5rem );
 	width: auto;
 

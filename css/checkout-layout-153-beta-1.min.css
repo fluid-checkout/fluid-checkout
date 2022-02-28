@@ -1711,8 +1711,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   margin: 0;
   padding-left: 20px;
   padding-right: 20px;
-  right: 5px;
   left: auto;
+  right: 5px;
   height: 45px;
   width: auto;
 }
