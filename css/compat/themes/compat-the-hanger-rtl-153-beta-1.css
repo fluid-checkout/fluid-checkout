@@ -10,13 +10,13 @@ body.theme-the-hanger .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment
   display: flex !important;
   margin: 0 !important;
   padding: 10px 20px !important;
-  padding-left: 44px !important;
+  padding-right: 44px !important;
 }
 
 body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
 body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-middle,
 body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-last {
-  clear: left;
+  clear: right;
   float: none;
   width: 100%;
   padding: 0;
@@ -26,19 +26,19 @@ body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-r
 body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-middle,
 body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-last {
     clear: none;
-    float: left;
+    float: right;
     width: 48%;
   }
 }
 
 body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
 body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-wide {
-  clear: left;
+  clear: right;
 }
 @media (min-width: 750px) {
   body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
 body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-wide {
-    clear: left;
+    clear: right;
   }
 }
 
@@ -63,7 +63,7 @@ body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-r
 @media (min-width: 750px) {
   body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
 body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-middle {
-    margin-right: 4%;
+    margin-left: 4%;
   }
 }
 
@@ -137,6 +137,6 @@ body.theme-the-hanger div.woocommerce form .form-row .select2-selection--multipl
 }
 
 body.theme-the-hanger .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
-  padding-left: 12px;
   padding-right: 12px;
+  padding-left: 12px;
 }

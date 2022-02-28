@@ -4,22 +4,22 @@
 #{ $_body-theme-selector-prefix }.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
 #{ $_body-theme-selector-prefix }.woocommerce-checkout div.woocommerce form .form-row.form-row-middle,
 #{ $_body-theme-selector-prefix }.woocommerce-checkout div.woocommerce form .form-row.form-row-last {
-	clear: left;
+	clear: #{ $alignment-left };
 	float: none;
 	width: 100%;
 	padding: 0;
 
 	@media (#{$bp-larger-than-tablet}) {
 		clear: none;
-		float: left;
+		float: #{ $alignment-left };
 		width: 48%;
 	}
 }
 
 #{ $_body-theme-selector-prefix }.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
 #{ $_body-theme-selector-prefix }.woocommerce-checkout div.woocommerce form .form-row.form-row-wide {
-	clear: left;
-	@media (#{$bp-larger-than-tablet}) { clear: left; }
+	clear: #{ $alignment-left };
+	@media (#{$bp-larger-than-tablet}) { clear: #{ $alignment-left }; }
 }
 
 #{ $_body-theme-selector-prefix }.woocommerce-checkout div.woocommerce form .form-row.form-row-one-third {
@@ -34,7 +34,7 @@
 
 #{ $_body-theme-selector-prefix }.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
 #{ $_body-theme-selector-prefix }.woocommerce-checkout div.woocommerce form .form-row.form-row-middle {
-	@media (#{$bp-larger-than-tablet}) { margin-right: 4%; }
+	@media (#{$bp-larger-than-tablet}) { margin-#{ $alignment-right }: 4%; }
 }
 
 

@@ -35,7 +35,7 @@ div.woocommerce form .form-row .select2-container .select2-selection {
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form .form-row.form-row-last {
-	clear: left;
+	clear: $alignment-left;
 	float: none;
 	width: 100%;
 
@@ -48,8 +48,8 @@ div.woocommerce form .form-row.form-row-last {
 
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-wide {
-	clear: left;
-	@media (#{$bp-larger-than-tablet}) { clear: left; }
+	clear: $alignment-left;
+	@media (#{$bp-larger-than-tablet}) { clear: $alignment-left; }
 }
 
 div.woocommerce form .form-row.form-row-one-third {
