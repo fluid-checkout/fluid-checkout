@@ -1347,13 +1347,17 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   position: relative;
   display: block;
   margin: 0;
-  padding: 10px 90px 10px 44px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 44px;
+  padding-left: 90px;
   width: 100%;
   border-bottom: solid 1px #D8D8D8;
   font-weight: normal;
   cursor: pointer;
-  transition: all 0.15s linear;
+  text-align: right;
   line-height: 1.6;
+  transition: all 0.15s linear;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option:last-child .shipping-method__option-label {
@@ -1370,8 +1374,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   content: "";
   position: absolute;
   top: 10px;
-  left: auto;
   right: 10px;
+  left: auto;
   display: block;
   width: 24px;
   height: 24px;
@@ -1430,8 +1434,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   font-size: 24px;
   position: absolute;
   top: 10px;
-  left: auto;
   right: 10px;
+  left: auto;
   color: transparent;
 }
 
@@ -1448,8 +1452,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
   position: absolute;
   top: 10px;
-  left: 5px;
   right: auto;
+  left: 10px;
   display: block;
   text-align: right;
 }
@@ -1514,7 +1518,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0;
-  padding: 10px 20px 10px 44px;
+  padding: 10px 20px;
+  padding-right: 44px;
   width: 100%;
   border-top: 0;
   border-left: 0;
@@ -1553,8 +1558,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   content: "";
   position: absolute;
   top: 10px;
-  left: auto;
   right: 10px;
+  left: auto;
   display: block;
   margin: 0;
   width: 24px;
@@ -1619,8 +1624,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   font-size: 24px;
   position: absolute;
   top: 10px;
-  left: auto;
   right: 10px;
+  left: auto;
   color: transparent;
 }
 
@@ -1630,7 +1635,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label .payment-method__label-text {
   display: inline-block;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label img {

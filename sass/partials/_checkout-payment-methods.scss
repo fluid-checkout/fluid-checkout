@@ -58,7 +58,8 @@
 	justify-content: space-between;
 	flex-wrap: wrap;
 	margin: 0;
-	padding: $payment-method-padding-vertical #{ $payment-method-padding-horizontal } $payment-method-padding-vertical #{ $payment-method-radio-size + $payment-method-padding-horizontal };
+	padding: $payment-method-padding-vertical $payment-method-padding-horizontal;
+	padding-#{ $alignment-left }: #{ $payment-method-radio-size + $payment-method-padding-horizontal };
 	width: 100%;
 	border-top: 0;
 	border-left: 0;
@@ -100,8 +101,8 @@
 	content: '';
 	position: absolute;
 	top: $payment-method-padding-vertical;
-	left: $spacing-extra-small-wc-payment-method-input-left;
-	right: $spacing-extra-small-wc-payment-method-input-right;
+	#{ $alignment-left }: $global-spacing-extra-small;
+	#{ $alignment-right }: auto;
 	display: block;
 	margin: 0;
 	width: $payment-method-radio-size;
@@ -142,8 +143,8 @@
 
 	position: absolute;
 	top: $payment-method-padding-vertical;
-	left: $spacing-extra-small-wc-payment-method-input-left;
-	right: $spacing-extra-small-wc-payment-method-input-right;
+	#{ $alignment-left }: $global-spacing-extra-small;
+	#{ $alignment-right }: auto;
 	color: transparent;
 }
 .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:after {
@@ -156,7 +157,7 @@
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label .payment-method__label-text {
 	display: inline-block;
-	margin-right: $global-spacing-extra-small;
+	margin-#{ $alignment-right }: $global-spacing-extra-small;
 }
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label img {

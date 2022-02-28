@@ -1347,13 +1347,17 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   position: relative;
   display: block;
   margin: 0;
-  padding: 10px 90px 10px 44px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 44px;
+  padding-right: 90px;
   width: 100%;
   border-bottom: solid 1px #D8D8D8;
   font-weight: normal;
   cursor: pointer;
-  transition: all 0.15s linear;
+  text-align: left;
   line-height: 1.6;
+  transition: all 0.15s linear;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option:last-child .shipping-method__option-label {
@@ -1449,7 +1453,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   position: absolute;
   top: 10px;
   left: auto;
-  right: 5px;
+  right: 10px;
   display: block;
   text-align: right;
 }
@@ -1514,7 +1518,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0;
-  padding: 10px 20px 10px 44px;
+  padding: 10px 20px;
+  padding-left: 44px;
   width: 100%;
   border-top: 0;
   border-left: 0;

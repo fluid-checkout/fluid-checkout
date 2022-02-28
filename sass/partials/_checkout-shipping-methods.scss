@@ -50,13 +50,17 @@
 	position: relative;
 	display: block;
 	margin: 0;
-	padding: $shipping-method-padding-vertical #{ $shipping-method-padding-horizontal + $shipping-method-price-width } $shipping-method-padding-vertical #{ $global-spacing-extra-small + $shipping-method-radio-size + $shipping-method-padding-horizontal };
+	padding-top: $shipping-method-padding-vertical;
+	padding-bottom: $shipping-method-padding-vertical;
+	padding-#{ $alignment-left }: #{ $global-spacing-extra-small + $shipping-method-radio-size + $shipping-method-padding-horizontal };
+	padding-#{ $alignment-right }: #{ $shipping-method-padding-horizontal + $shipping-method-price-width };
 	width: 100%;
 	border-bottom: $shipping-method-border;
 	font-weight: $shipping-method-font-weight;
 	cursor: pointer;
-	transition: all $global-animation-duration-fast linear;
+	text-align: #{ $alignment-left };
 	line-height: 1.6;
+	transition: all $global-animation-duration-fast linear;
 }
 .woocommerce ul#shipping_method .shipping-method__option:last-child .shipping-method__option-label {
 	border-bottom: none;
@@ -74,8 +78,8 @@
 	content: '';
 	position: absolute;
 	top: $shipping-method-padding-vertical;
-	left: $shipping-method-spacing-extra-small-left;
-	right: $shipping-method-spacing-extra-small-right;
+	#{ $alignment-left }: $global-spacing-extra-small;
+	#{ $alignment-right }: auto;
 	display: block;
 	width: $shipping-method-radio-size;
 	height: $shipping-method-radio-size;
@@ -110,8 +114,9 @@
 
 	position: absolute;
 	top: $shipping-method-padding-vertical;
-	left: $shipping-method-spacing-extra-small-left;
-	right: $shipping-method-spacing-extra-small-right;
+	#{ $alignment-left }: $global-spacing-extra-small;
+	#{ $alignment-right }: auto;
+
 	color: transparent;
 }
 .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:after {
@@ -131,8 +136,8 @@
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
 	position: absolute;
 	top: $shipping-method-padding-vertical;
-	left: $shipping-method-padding-horizontal-left;
-	right: $shipping-method-padding-horizontal-right;
+	#{ $alignment-left }: auto;
+	#{ $alignment-right }: $shipping-method-padding-horizontal;
 	display: block;
 	text-align: right;
 }
