@@ -52,7 +52,7 @@ $woocommerce-form-row-first-margin-right:    0 !default;
 
 $order-summary-quantity-transform:          translateX( 100% ) translateY( -25% ) !default;
 
-$order-summary-edit-cart-button-margin:     0 0 0 -1rem !default; // $global-spacing-extra-small
+$order-summary-edit-cart-button-margin:     0 0 0 -1rem !default; // TODO: Try refactor to use $global-spacing-extra-small as the original variable
 
 // END - ORDER SUMMARY
 // ----------------------------------------
