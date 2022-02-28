@@ -162,8 +162,16 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			// Maybe skip compat file
 			if ( apply_filters( 'fc_enable_compat_theme_style_' . $theme_slug, true ) === false ) { continue; }
 
+			// Maybe load RTL file
+			$rlt_suffix = is_rtl() ? '-rtl' : '';
+
 			// Get current theme's compatibility style file name
-			$theme_compat_file_path = 'css/compat/themes/compat-' . $theme_slug . self::$asset_version . '.css';
+			$theme_compat_file_path = 'css/compat/themes/compat-' . $theme_slug . $rlt_suffix . self::$asset_version . '.css';
+
+			// Revert to default compat style file if RTL file does not exist
+			if ( is_rtl() && ! file_exists( self::$directory_path . $theme_compat_file_path ) ) {
+				$theme_compat_file_path = 'css/compat/themes/compat-' . $theme_slug . self::$asset_version . '.css';
+			}
 
 			// Maybe load theme's compatibility file
 			if ( file_exists( self::$directory_path . $theme_compat_file_path ) ) {
@@ -188,14 +196,23 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		foreach ( $plugins_installed as $plugin_file => $plugin_meta ) {
 			// Skip plugins not activated
 			if ( ! is_plugin_active( $plugin_file ) ) { continue; }
+
 			// Get plugin slug
 			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
 
 			// Maybe skip compat file
 			if ( apply_filters( 'fc_enable_compat_plugin_style_' . $plugin_slug, true ) === false ) { continue; }
 
+			// Maybe load RTL file
+			$rlt_suffix = is_rtl() ? '-rtl' : '';
+
 			// Get current plugin's compatibility style file name
-			$plugin_compat_file_path = 'css/compat/plugins/compat-' . $plugin_slug . self::$asset_version . '.css';
+			$plugin_compat_file_path = 'css/compat/plugins/compat-' . $plugin_slug . $rlt_suffix . self::$asset_version . '.css';
+
+			// Revert to default compat style file if RTL file does not exist
+			if ( is_rtl() && ! file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
+				$plugin_compat_file_path = 'css/compat/plugins/compat-' . $plugin_slug . self::$asset_version . '.css';
+			}
 
 			// Maybe load plugin's compatibility file
 			if ( file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
