@@ -13,7 +13,7 @@
 // ------------------------------------
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
-$_body-theme-selector-prefix:          'body.theme-kentha' !default;
+$_body-theme-selector-prefix:          'body.theme-onair2' !default;
 $_select2-border-width:                remsize( .1rem ) !default;
 $_select2-border-radius:               0 !default;
 $_select2-selection-height:            remsize( 4.8rem ) !default;
@@ -26,10 +26,6 @@ $_select2-selection-height:            remsize( 4.8rem ) !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"kentha/checkout-content-area",
-	"kentha/checkout-steps",
-	"kentha/woocommerce-form-fields",
-	"kentha/checkout-payment-methods",
-	"kentha/checkout-shipping-methods",
+	"onair2/checkout-validation",
 	"../../partials/woocommerce-form-fields-select2",
-	"kentha/woocommerce-form-fields-select2";
+	"onair2/woocommerce-form-fields-select2";

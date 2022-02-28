@@ -94,4 +94,8 @@ body.theme-mrtailor div.woocommerce form .form-row .select2-selection--multiple 
   height: 33px;
   min-height: auto;
 }
+
+body.theme-mrtailor div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  top: 8px;
+}
 /*# sourceMappingURL=maps/compat-mrtailor-153-beta-1.min.css.map */
