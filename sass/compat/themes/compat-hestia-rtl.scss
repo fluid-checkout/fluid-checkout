@@ -1,0 +1,31 @@
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
+@import
+	"../../abstract/_all-early",
+	"../../abstract/_variables-rtl",
+	"../../abstract/_all";
+
+
+
+
+
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-hestia' !default;
+$_select2-border-width:                remsize( .1rem ) !default;
+$_select2-border-radius:               0 !default;
+$_select2-selection-height:            remsize( 3rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"hestia/checkout-validation",
+    "../../partials/woocommerce-form-fields-select2",
+    "hestia/woocommerce-form-fields-select2";
