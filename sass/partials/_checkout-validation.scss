@@ -22,6 +22,8 @@ div.woocommerce .form-row .fc-mailcheck-suggestion {
 	border: 0;
 	background-color: $checkout-message-error-background-color;
 	font-size: $font-size-extra-small;
+	text-align: #{ $alignment-left };
+	line-height: 1.6;
 }
 
 div.woocommerce .form-row .fc-mailcheck-suggestion {
