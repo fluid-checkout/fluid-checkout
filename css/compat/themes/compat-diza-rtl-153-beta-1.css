@@ -8,7 +8,7 @@ body.theme-diza div.woocommerce form .form-row .select2-container .select2-selec
 
 body.theme-diza .woocommerce-checkout-payment .payment_methods li label {
   padding: 10px 20px !important;
-  padding-left: 44px !important;
+  padding-right: 44px !important;
 }
 
 body.theme-diza .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] + label:before {
@@ -29,13 +29,13 @@ body.theme-diza .woocommerce table.shop_table > tfoot > tr > th .woocommerce-Pri
 }
 
 body.theme-diza div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
-  right: 25px;
+  left: 25px;
 }
 body.theme-diza div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection:after {
-  right: 37px;
+  left: 37px;
 }
 body.theme-diza div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection.select2-selection--multiple:after {
-  right: 5px;
+  left: 5px;
 }
 
 body.theme-diza div.woocommerce form .form-row span.select2-container {
@@ -109,5 +109,5 @@ body.theme-diza div.woocommerce form .form-row .select2-selection--multiple .sel
 
 body.theme-diza div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
   margin-top: 5px;
-  margin-right: 5px;
+  margin-left: 5px;
 }
