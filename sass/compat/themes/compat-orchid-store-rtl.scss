@@ -1,0 +1,35 @@
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
+@import
+	"../../abstract/_all-early",
+	"../../abstract/_variables-rtl",
+	"../../abstract/_all";
+
+
+
+
+
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-orchid-store' !default;
+$_select2-border-width:                remsize( .2rem ) !default;
+$_select2-border-radius:               0 !default;
+$_select2-selection-height:            remsize( 4.6rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"orchid-store/checkout-steps",
+	"orchid-store/checkout-payment-methods",
+	"orchid-store/checkout-additional-notes",
+	"orchid-store/checkout-validation",
+	"orchid-store/woocommerce-form-fields",
+	"../../partials/woocommerce-form-fields-select2",
+	"orchid-store/woocommerce-form-fields-select2";
