@@ -1,0 +1,34 @@
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
+@import
+	"../../abstract/_all-early",
+	"../../abstract/_variables-rtl",
+	"../../abstract/_all";
+
+
+
+
+
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-electro' !default;
+$_select2-border-width:                remsize( .1rem ) !default;
+$_select2-border-radius:               remsize( 2.249rem ) !default;
+$_select2-selection-height:            remsize( 4.498rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"electro/checkout-content-area",
+	"electro/checkout-steps",
+	"electro/checkout-shipping-methods",
+	"electro/checkout-payment-methods",
+	"electro/checkout-validation",
+	"../../partials/woocommerce-form-fields-select2";
