@@ -6,6 +6,10 @@ body.theme-mrtailor.woocommerce-checkout .fc-checkout-order-review__inner #order
   padding: 10px 20px;
 }
 
+body.theme-mrtailor form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
+  padding-right: 20px;
+}
+
 body.theme-mrtailor form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total td .includes_tax .amount {
   font-size: inherit;
 }

@@ -1,0 +1,32 @@
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
+@import
+	"../../abstract/_all-early",
+	"../../abstract/_variables-rtl",
+	"../../abstract/_all";
+
+
+
+
+
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-mrtailor' !default;
+$_select2-border-width:                remsize( .1rem ) !default;
+$_select2-border-radius:               remsize( .3rem ) !default;
+$_select2-selection-height:            remsize( 4.5rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"mrtailor/order-summary",
+	"mrtailor/checkout-validation",
+	"../../partials/woocommerce-form-fields-select2",
+	"mrtailor/woocommerce-form-fields-select2";
