@@ -113,8 +113,8 @@ body:not( .has-checkout-must-login-notice ) .fc-inside {
 	@media (#{$bp-larger-than-desktop}) {
 		float: $alignment-left;
 		width: $checkout-steps-width--large-screen;
-		padding-right: $checkout-column-gap--large-screen-fc-inside-right;
-		padding-left: $checkout-column-gap--large-screen-fc-inside-left;
+		padding-#{ $alignment-left }: 0;
+		padding-#{ $alignment-right }: $checkout-column-gap--large-screen;
 	}
 }
 body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-message,

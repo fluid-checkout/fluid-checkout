@@ -181,8 +181,8 @@ body:not(.has-checkout-must-login-notice) .fc-progress-bar,
 body:not(.has-checkout-must-login-notice) .fc-inside {
     float: left;
     width: 62.5%;
-    padding-right: 50px;
     padding-left: 0;
+    padding-right: 50px;
   }
 }
 
