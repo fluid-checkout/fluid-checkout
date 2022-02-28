@@ -51,6 +51,8 @@
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
 	margin: $checkout-substep-title-margin;
 	padding: $checkout-substep-title-padding;
+	// padding: $checkout-substep-title-padding;
+	// padding: $checkout-substep-title-padding;
 	color: $checkout-substep-title-color;
 	font-weight: $checkout-substep-title-font-weight;
 	font-size: $checkout-substep-title-font-size;
@@ -81,6 +83,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
 	float: $alignment-left;
+	text-align: $alignment-left;
 }
 
 
@@ -152,12 +155,14 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	display: block;
 	margin: 0 0 $global-radius-extra-small;
 	padding: $checkout-substep-complete-title-padding;
+	padding-#{ $alignment-left }: $checkout-substep-complete-title-padding-left;
 	color: $checkout-substep-text-color;
 
 	@media (#{$bp-larger-than-desktop}) {
 		float: $alignment-left;
 		margin: 0;
 		padding: $checkout-substep-complete-title-padding--large-screen;
+		padding-#{ $alignment-left }: $checkout-substep-complete-title-padding-left--large-screen;
 		width: remsize( 20rem );
 	}
 
@@ -168,7 +173,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 		@include icon-size( $icon-size-small );
 
 		position: absolute;
-		left: $checkout-substep-title-check-icon-spacing;
+		#{ $alignment-left }: $checkout-substep-title-check-icon-spacing;
 		top: 50%;
 		transform: translateY( -50% );
 		border-radius: 100%;

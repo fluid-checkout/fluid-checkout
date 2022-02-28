@@ -24,6 +24,9 @@ $alignment-left:                            right !default;
 // ----------------------------------------
 // CHECKOUT STEPS
 
+$checkout-substep-complete-title-padding:                 0 $global-spacing-large 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
+$checkout-substep-complete-title-padding--large-screen:   0 $global-spacing-tiny 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
+
 $checkout-substep-action-button-margin:      remsize( 1.2rem ) 0 0 remsize( 1rem ); // TODO: Refactor to use `$global-spacing` variables
 
 // END - CHECKOUT STEPS

@@ -746,6 +746,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
   float: left;
+  text-align: left;
 }
 
 .fc-wrapper .fc-step__substep-text {
@@ -803,14 +804,16 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   position: relative;
   display: block;
   margin: 0 0 3px;
-  padding: 0 80px 0 28px;
+  padding: 0 80px 0;
+  padding-left: 28px;
   color: #535156;
 }
 @media (min-width: 1000px) {
   .has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title {
     float: left;
     margin: 0;
-    padding: 0 5px 0 28px;
+    padding: 0 5px 0;
+    padding-left: 28px;
     width: 200px;
   }
 }

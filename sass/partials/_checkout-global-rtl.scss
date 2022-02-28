@@ -1,14 +1,6 @@
 // ------------------------------------
 // IF NOT EXITS WITH VARIABLES
 // ------------------------------------
-// body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields,
-// div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus{
-// 	text-align: $alignment-left;
-// }
-
-// .has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title:before {
-//     right: 0;
-// }
 
 // .has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title {
 //     float: right;
@@ -25,10 +17,6 @@
 //     right: auto !important; // Needed to override inline styles added by some themes
 // }
 
-// .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
-// 	padding: $payment-method-padding-vertical #{ $payment-method-radio-size + $payment-method-padding-horizontal } $payment-method-padding-vertical #{ $payment-method-padding-horizontal };
-// }
-
 // div.woocommerce .form-row .woocommerce-error:before,
 // div.woocommerce .shipping-method__package .woocommerce-error:before {
 // 	left: auto;
@@ -37,13 +25,4 @@
 
 // div.woocommerce .form-row .woocommerce-error, div.woocommerce .shipping-method__package .woocommerce-error, div.woocommerce .form-row .fc-mailcheck-suggestion {
 //     padding: remsize(0.5rem) remsize(2.8rem) remsize(0.5rem) remsize(1rem) !important; // Needed to override inline styles added by some themes
-// }
-
-// .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label {
-// 	padding: remsize(1rem) remsize(4.2rem) remsize(1rem) remsize(9rem);
-// }
-
-// .fc-checkout-header .fc-checkout__cart-link-wrapper {
-// 	right: auto;
-// 	left: remsize( 1rem );
 // }
