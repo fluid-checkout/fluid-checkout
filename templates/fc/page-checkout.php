@@ -41,11 +41,11 @@ else {
 </div>
 
 <?php
-// Replace site header with our implementation
+// Replace site footer with our implementation
 if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) {
 	wc_get_template( 'fc/footer-checkout.php' );
 }
-// Display the site's default header
+// Display the site's default footer
 else {
 	get_footer( 'checkout' );
 }

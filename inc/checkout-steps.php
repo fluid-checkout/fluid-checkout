@@ -2428,7 +2428,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			} else {
 
-				$method_costs = wc_price( $method->cost + $method->get_shipping_tax() );
+				$method_costs = wc_price( $method->cost );
 				if ( $method->get_shipping_tax() > 0 && wc_prices_include_tax() ) {
 					$method_costs .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
 				}
