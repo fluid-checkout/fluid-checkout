@@ -246,6 +246,10 @@ Currently the plugin is translated into the languages below, and more are commin
 * Italian (soon)
 * Spanish - Argentina (soon)
 
+** RTL Support **
+
+* Although currently there are no official transations to any RTL language, the plugin will adjust its layout to RTL languages accordingly.
+
 ** Note: **
 Fluid Checkout is fully localized/translatable. This is very important for all users worldwide.
 For translating Fluid Checkout, we recommend the plugin ["Loco Translate - By Tim Whitlock"](https://wordpress.org/plugins/loco-translate/).
@@ -335,6 +339,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Added: Support for RTL languages.
 * Added: New filter `fc_checkout_login_button_class` for changing login button classes.
 * Fixed: Shipping costs being shown with tax included when tax settings is set to display without tax included.
 * Fixed: State field validation message for required field displaying even when field is optional.
