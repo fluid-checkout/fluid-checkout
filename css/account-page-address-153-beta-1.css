@@ -300,7 +300,8 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
   position: relative;
   display: inline-block;
   width: auto;
-  padding: 0 0 0 26px;
+  padding: 0;
+  padding-left: 26px;
   cursor: pointer;
   text-decoration: none;
   line-height: 1.2;
@@ -329,8 +330,8 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:bef
   height: 24px;
   font-size: 24px;
   position: absolute;
-  left: -3px;
   top: 50%;
+  left: -3px;
   transform: translateY(-50%);
 }
 div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:focus {

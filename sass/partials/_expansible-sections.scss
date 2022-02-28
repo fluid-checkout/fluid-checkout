@@ -13,7 +13,8 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
 	position: relative;
 	display: inline-block;
 	width: auto;
-	padding: 0 0 0 #{ $checkout-expansible-section-icon-size + $checkout-expansible-section-icon-spacing-left + $checkout-expansible-section-icon-spacing-right };
+	padding: 0;
+	padding-#{ $alignment-left }: #{ $checkout-expansible-section-icon-size + $checkout-expansible-section-icon-spacing-left + $checkout-expansible-section-icon-spacing-right };
 	cursor: pointer;
 	text-decoration: $checkout-expansible-section-text-decoration;
 	line-height: 1.2;
@@ -29,8 +30,8 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
 		@include icon-size( $checkout-expansible-section-icon-size );
 		
 		position: absolute;
-		left: $checkout-expansible-section-icon-spacing-left;
 		top: 50%;
+		#{ $alignment-left }: $checkout-expansible-section-icon-spacing-left;
 		transform: translateY( -50% );
 	}
 
