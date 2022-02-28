@@ -1,0 +1,34 @@
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
+@import
+	"../../abstract/_all-early",
+	"../../abstract/_all";
+
+
+
+
+
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-phlox-pro' !default;
+$_select2-border-width:                remsize( .1rem ) !default;
+$_select2-border-radius:               0 !default;
+$_select2-selection-height:            remsize( 5.52rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"phlox-pro/checkout-shipping-methods",
+	"phlox-pro/checkout-payment-methods",
+	"phlox-pro/checkout-validation",
+	"phlox-pro/checkout-place-order",
+	"phlox-pro/woocommerce-form-fields",
+	"../../partials/woocommerce-form-fields-select2",
+	"phlox-pro/woocommerce-form-fields-select2";
