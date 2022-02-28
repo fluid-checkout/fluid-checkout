@@ -864,8 +864,8 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 @media (min-width: 1000px) {
   .has-checkout-layout--multi-step .fc-step__substep-text {
     float: left;
-    padding-left: 0;
-    padding-right: 80px;
+    padding-right: 0;
+    padding-left: 80px;
     margin: 0;
     width: calc( 100% - 200px );
     font-size: 13px;
