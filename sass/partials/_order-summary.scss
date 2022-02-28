@@ -41,7 +41,7 @@
 	text-align: $checkout-substep-title-text-align;
 	line-height: 1;
 	overflow: unset;
-	float: $checkout-rtl-alignment-left;
+	float: $alignment-left;
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-title-font-size--large-screen; }
 }
@@ -112,14 +112,14 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
 	vertical-align: middle;
 	width: 50%;
-	text-align: $checkout-rtl-alignment-left;
+	text-align: $alignment-left;
 }
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total,
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td {
 	width: 50%;
 	font-size: $order-summary-font-size;
-	text-align: $checkout-rtl-alignment-right;
+	text-align: $alignment-right;
 	line-height: 1;
 	vertical-align: middle;
 }
@@ -147,11 +147,11 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name,
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-name {
 	position: relative;
-	float: $checkout-rtl-alignment-left;
+	float: $alignment-left;
 	width: 75%;
 	padding: $global-spacing-tiny;
 	background-color: transparent;
-	text-align: $checkout-rtl-alignment-left;
+	text-align: $alignment-left;
 	line-height: 1.2;
 }
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-name:after {
@@ -163,12 +163,12 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	display: block;
 	padding: $global-spacing-tiny 0;
 	width: 25%;
-	float: $checkout-rtl-alignment-right;
+	float: $alignment-right;
 	background-color: transparent;
 }
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table img {
-	float: $checkout-rtl-alignment-left;
+	float: $alignment-left;
 	margin-left: - #{ $order-summary-image-padding + $global-spacing-tiny };
 	padding: $order-summary-image-padding;
 	width: $order-summary-image-width !important; // Needed to override inline styles added by some themes
@@ -185,7 +185,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 }
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
-	float: $checkout-rtl-alignment-left;
+	float: $alignment-left;
 	padding: $wc-checkout-review-order-table-product-details;
 	width: calc( 100% - $order-summary-image-width );
 
@@ -406,7 +406,7 @@ form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review .fc-checkout-ord
 	display: none;
 
 	@media (#{$bp-larger-than-desktop}) {
-		float: $checkout-rtl-alignment-right;
+		float: $alignment-right;
 		display: block;
 
 		margin: $order-summary-edit-cart-button-margin;

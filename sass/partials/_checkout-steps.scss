@@ -80,7 +80,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
-	float: $checkout-rtl-alignment-left;
+	float: $alignment-left;
 }
 
 
@@ -155,7 +155,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	color: $checkout-substep-text-color;
 
 	@media (#{$bp-larger-than-desktop}) {
-		float: $checkout-rtl-alignment-left;
+		float: $alignment-left;
 		margin: 0;
 		padding: $checkout-substep-complete-title-padding--large-screen;
 		width: remsize( 20rem );
@@ -203,7 +203,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 	line-height: 1.4;
 
 	@media (#{$bp-larger-than-desktop}) {
-		float: $checkout-rtl-alignment-right;
+		float: $alignment-right;
 		padding-left: 0;
 		padding-right: $global-spacing-large;
 		margin: $checkout-substep-text-margin--large-screen;
@@ -224,7 +224,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .has-checkout-layout--multi-step .fc-step__substep-text-line {
 	display: block;
 	width: 100%;
-	text-align: $checkout-rtl-alignment-left;
+	text-align: $alignment-left;
 }
 
 

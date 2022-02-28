@@ -3,7 +3,7 @@
 // ------------------------------------
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields,
 div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus{
-	text-align: $checkout-rtl-alignment-left;
+	text-align: $alignment-left;
 }
 
 .has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title:before {

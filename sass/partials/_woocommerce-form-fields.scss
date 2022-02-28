@@ -41,7 +41,7 @@ div.woocommerce form .form-row.form-row-last {
 
 	@media (#{$bp-larger-than-tablet}) {
 		clear: none;
-		float: $checkout-rtl-alignment-left;
+		float: $alignment-left;
 		width: 48%;
 	}
 }
@@ -109,7 +109,7 @@ div.woocommerce form #shipping_address_2_field > label {
 	overflow: unset;
 	white-space: normal;
 	line-height: 1.2;
-	text-align: $checkout-rtl-alignment-left;
+	text-align: $alignment-left;
 }
 
 

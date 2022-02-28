@@ -5,10 +5,11 @@
 // ------------------------------------
 
 // ----------------------------------------
-// RTL SUPPORTED
+// ALIGNMENT & RTL SUPPORT
 
-$checkout-rtl-alignment-right: left !default;
-$checkout-rtl-alignment-left: right !default;
+$alignment-right:                           left !default;
+$alignment-left:                            right !default;
+
 $checkout-substep-title-text-align: right !default;
 $wc-checkout-review-order-table-img: remsize( -.8rem ) !default;
 $wc-checkout-review-order-table-product-details: 0 remsize( 2rem ) 0 0 !default;
@@ -32,5 +33,5 @@ $shipping-method-spacing-extra-small-right: remsize( 1rem ) !default;
 $woocommerce-form-row-first-margin-left: 4% !default;
 $woocommerce-form-row-first-margin-right: 0 !default;
 
-// END - RTL SUPPORTED
+// END - ALIGNMENT & RTL SUPPORT
 // ----------------------------------------
