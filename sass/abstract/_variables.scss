@@ -56,8 +56,33 @@ $focus-outline-offset-button:   $focus-outline-offset-field;
 // ----------------------------------------
 
 
+// ----------------------------------------
+// RTL SUPPORTED
 
+$checkout-rtl-alignment-right: right !default;
+$checkout-rtl-alignment-left: left !default;
+$wc-checkout-review-order-table-img: remsize( 0rem ) !default;
+$wc-checkout-review-order-table-product-details: 0 0 0 remsize( 2rem ) !default;
+$coupon-code-fc-coupon-code-apply-right: remsize( .5rem ) !default;
+$coupon-code-fc-coupon-code-apply-left: auto !default;
+$wc-complete-fc-step-substep-edit-left: auto !default;
+$wc-complete-fc-step-substep-edit-right: 0 !default;
+$wc-form-row-form-row-first: inherit !default;
+$checkout-column-gap--large-screen-fc-inside-right: remsize( 5rem ) !default;
+$checkout-column-gap--large-screen-fc-inside-left: 0 !default;
+$spacing-large-fc-step-substep-text-right: remsize( 8rem ) !default;
+$spacing-large-fc-step-substep-text-left: 0 !default;
+$spacing-extra-small-wc-payment-method-input-left: remsize( 1rem ) !default;
+$spacing-extra-small-wc-payment-method-input-right: auto !default;
+$shipping-method-padding-horizontal-left: auto !default;
+$shipping-method-padding-horizontal-right: remsize( 0.5rem ) !default;
+$shipping-method-spacing-extra-small-left: remsize( 1rem ) !default;
+$shipping-method-spacing-extra-small-right: auto !default;
+$woocommerce-form-row-first-margin-left: 0 !default;
+$woocommerce-form-row-first-margin-right: 4% !default;
 
+// END - RTL SUPPORTED
+// ----------------------------------------
 
 // ----------------------------------------
 // SPACING & BOX SYSTEM

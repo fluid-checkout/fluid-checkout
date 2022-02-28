@@ -41,7 +41,7 @@ div.woocommerce form .form-row.form-row-last {
 
 	@media (#{$bp-larger-than-tablet}) {
 		clear: none;
-		float: left;
+		float: $checkout-rtl-alignment-left;
 		width: 48%;
 	}
 }
@@ -64,7 +64,7 @@ div.woocommerce form .form-row.form-row-two-thirds {
 
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle {
-	@media (#{$bp-larger-than-tablet}) { margin-right: 4%; }
+	@media (#{$bp-larger-than-tablet}) { margin-right: $woocommerce-form-row-first-margin-right; margin-left: $woocommerce-form-row-first-margin-left; }
 }
 
 
@@ -109,6 +109,7 @@ div.woocommerce form #shipping_address_2_field > label {
 	overflow: unset;
 	white-space: normal;
 	line-height: 1.2;
+	text-align: $checkout-rtl-alignment-left;
 }
 
 

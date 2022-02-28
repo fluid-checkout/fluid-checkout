@@ -182,6 +182,7 @@ body:not(.has-checkout-must-login-notice) .fc-inside {
     float: left;
     width: 62.5%;
     padding-right: 50px;
+    padding-left: 0;
   }
 }
 
@@ -887,6 +888,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .has-checkout-layout--multi-step .fc-step__substep-text-line {
   display: block;
   width: 100%;
+  text-align: left;
 }
 
 .has-checkout-layout--multi-step .fc-step__actions {
@@ -948,6 +950,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   position: absolute;
   top: 0;
   right: 0;
+  left: auto;
   display: inline-block;
 }
 
@@ -1365,6 +1368,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   position: absolute;
   top: 10px;
   left: 10px;
+  right: auto;
   display: block;
   width: 24px;
   height: 24px;
@@ -1424,6 +1428,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   position: absolute;
   top: 10px;
   left: 10px;
+  right: auto;
   color: transparent;
 }
 
@@ -1440,7 +1445,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
   position: absolute;
   top: 10px;
-  right: 10px;
+  left: auto;
+  right: 5px;
   display: block;
   text-align: right;
 }
@@ -1540,6 +1546,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   position: absolute;
   top: 10px;
   left: 10px;
+  right: auto;
   display: block;
   margin: 0;
   width: 24px;
@@ -1605,6 +1612,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   position: absolute;
   top: 10px;
   left: 10px;
+  right: auto;
   color: transparent;
 }
 
@@ -1696,6 +1704,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   padding-left: 20px;
   padding-right: 20px;
   right: 5px;
+  left: auto;
   height: 45px;
   width: auto;
 }
@@ -1759,6 +1768,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 .woocommerce-terms-and-conditions-wrapper,
 .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
   margin-bottom: 0;
+  text-align: left;
 }
 
 .woocommerce-privacy-policy-text:not(:last-child):not(:empty) {
@@ -1892,6 +1902,7 @@ div.woocommerce form .form-row.form-row-two-thirds {
   div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle {
     margin-right: 4%;
+    margin-left: 0;
   }
 }
 
@@ -1930,6 +1941,7 @@ div.woocommerce form #shipping_address_2_field > label {
   overflow: unset;
   white-space: normal;
   line-height: 1.2;
+  text-align: left;
 }
 
 .fc-content div.woocommerce form .fc-wrapper .fc-field-group {
@@ -2124,6 +2136,7 @@ div.woocommerce form .form-row .select2-selection--multiple .select2-search--inl
   text-align: left;
   line-height: 1;
   overflow: unset;
+  float: left;
 }
 @media (min-width: 1000px) {
   .woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title {
@@ -2260,6 +2273,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
   height: auto !important;
   background-color: #fff;
   border: solid 1px #D8D8D8;
+  margin-right: 0px;
   border-radius: 3px;
 }
 @media (min-width: 1000px) {
@@ -2271,7 +2285,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
   float: left;
-  padding-left: 20px;
+  padding: 0 0 0 20px;
   width: calc(100% - 50px);
 }
 @media (min-width: 1000px) {
@@ -2504,6 +2518,7 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
   text-decoration: none;
   line-height: 1.2;
   font-size: 15px;
+  text-align: left;
 }
 @media (min-width: 750px) {
   div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {

@@ -26,7 +26,8 @@
 	margin: 0;
 	padding-left: $global-spacing-small;
 	padding-right: $global-spacing-small;
-	right: remsize( .5rem );
+	right: $coupon-code-fc-coupon-code-apply-right;
+	left: $coupon-code-fc-coupon-code-apply-left;
 	height: remsize( 4.5rem );
 	width: auto;
 
