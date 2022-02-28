@@ -299,8 +299,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Styles
 		if ( is_rtl() ) {
-			wp_enqueue_style( 'fc-checkout-layout-rtl', self::$directory_url . 'css/checkout-layout-rtl'. self::$asset_version . '.css', NULL, NULL );
-		} else {
+			wp_enqueue_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout-rtl'. self::$asset_version . '.css', NULL, NULL );
+		}
+		else {
 			wp_enqueue_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout'. self::$asset_version . '.css', NULL, NULL );
 		}
 	
