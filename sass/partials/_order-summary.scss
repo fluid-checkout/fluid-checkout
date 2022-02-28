@@ -169,13 +169,12 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table img {
 	float: $alignment-left;
-	margin-left: - #{ $order-summary-image-padding + $global-spacing-tiny };
+	margin-#{ $alignment-left }: - #{ $order-summary-image-padding + $global-spacing-tiny };
 	padding: $order-summary-image-padding;
 	width: $order-summary-image-width !important; // Needed to override inline styles added by some themes
 	height: auto !important; // Needed to override inline styles added by some themes
 	background-color: $order-summary-image-background-color;
 	border: $order-summary-image-border;
-	margin-right: $wc-checkout-review-order-table-img;// -8px;
 	border-radius: $order-summary-image-border-radius;
 
 	@media (#{$bp-larger-than-desktop}) {

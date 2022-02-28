@@ -2275,13 +2275,12 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table img {
   float: right;
-  margin-left: -8px;
+  margin-right: -8px;
   padding: 3px;
   width: 50px !important;
   height: auto !important;
   background-color: #fff;
   border: solid 1px #D8D8D8;
-  margin-right: -8px;
   border-radius: 3px;
 }
 @media (min-width: 1000px) {

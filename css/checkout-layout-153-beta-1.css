@@ -2281,7 +2281,6 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
   height: auto !important;
   background-color: #fff;
   border: solid 1px #D8D8D8;
-  margin-right: 0px;
   border-radius: 3px;
 }
 @media (min-width: 1000px) {
