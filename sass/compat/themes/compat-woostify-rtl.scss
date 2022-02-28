@@ -1,0 +1,31 @@
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
+@import
+	"../../abstract/_all-early",
+	"../../abstract/_variables-rtl",
+	"../../abstract/_all";
+
+
+
+
+
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-woostify' !default;
+$_select2-border-width:                remsize( .1rem ) !default;
+$_select2-border-radius:               remsize( .2rem ) !default;
+$_select2-selection-height:            remsize( 5rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"woostify/checkout-validation",
+	"../../partials/woocommerce-form-fields-select2",
+	"woostify/woocommerce-form-fields-select2";
