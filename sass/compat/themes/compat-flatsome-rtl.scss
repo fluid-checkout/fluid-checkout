@@ -1,0 +1,35 @@
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
+@import
+	"../../abstract/_all-early",
+	"../../abstract/_variables-rtl",
+	"../../abstract/_all";
+
+
+
+
+
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-flatsome' !default;
+$_select2-border-width:                remsize( .1rem ) !default;
+$_select2-border-radius:               remsize( .3rem ) !default;
+$_select2-selection-height:            remsize( 3.891rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"flatsome/checkout-content-area",
+	"flatsome/checkout-header",
+	"flatsome/checkout-validation",
+	"flatsome/woocommerce-form-fields",
+	"../../partials/woocommerce-form-fields-select2",
+	"flatsome/woocommerce-form-fields-select2",
+	"flatsome/order-summary";
