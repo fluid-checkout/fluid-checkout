@@ -36,7 +36,7 @@ body.theme-phlox-pro div.woocommerce form .form-row.woocommerce-validated:not([c
   top: 14px;
 }
 body.theme-phlox-pro div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
-  right: 32px;
+  left: 32px;
 }
 
 body.theme-phlox-pro .fc-wrapper .fc-place-order .fc-place-order-button {
@@ -125,12 +125,12 @@ body.theme-phlox-pro div.woocommerce form .form-row .select2-selection--multiple
 }
 
 body.theme-phlox-pro .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
-  left: 20px;
   right: 20px;
+  left: 20px;
 }
 
 body.theme-phlox-pro div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-  right: 0;
+  left: 0;
 }
 
 body.theme-phlox-pro div.woocommerce form .form-row .select2-selection .select2-selection__arrow b {

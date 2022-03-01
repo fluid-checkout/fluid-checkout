@@ -1,0 +1,20 @@
+// ----------------------------------------
+// SPACING & BOX SYSTEM
+
+$global-spacing-tiny:                       remsize( .5rem ) !default;
+$global-spacing-extra-small:                remsize( 1rem ) !default;
+$global-spacing-small:                      remsize( 2rem ) !default;
+$global-spacing:                            remsize( 3rem ) !default;
+$global-spacing-medium:                     remsize( 5rem ) !default;
+$global-spacing-large:                      remsize( 8rem ) !default;
+$global-spacing-extra-large:                remsize( 13rem ) !default;
+
+$global-radius-extra-small:                 remsize( .3rem ) !default;
+$global-radius-small:                       remsize( .5rem ) !default;
+$global-radius:                             remsize( .8rem ) !default;
+$global-radius-medium:                      remsize( 1.3rem ) !default;
+$global-radius-large:                       remsize( 2.1rem ) !default;
+$global-radius-extra-large:                 remsize( 3.4rem ) !default;
+
+// END - SPACING & BOX SYSTEM
+// ----------------------------------------

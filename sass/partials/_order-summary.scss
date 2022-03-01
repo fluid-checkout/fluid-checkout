@@ -200,8 +200,6 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	position: absolute;
 	top: 0;
 	#{ $alignment-left }: #{ $order-summary-image-width + $global-spacing-tiny };
-	// transform: translateX( 100% ) translateY( -25% );
-	// transform: translateX( -100% ) translateY( -25% );
 	transform: $order-summary-quantity-transform;
 	display: block;
 	padding: remsize( .1rem ) remsize( .6rem ) remsize( .2rem ) $global-spacing-tiny;
@@ -409,6 +407,9 @@ form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review .fc-checkout-ord
 	display: none;
 
 	@media (#{$bp-larger-than-desktop}) {
+		position: relative;
+		#{ $alignment-right }: $order-summary-edit-cart-button-right;
+
 		float: $alignment-right;
 		display: block;
 

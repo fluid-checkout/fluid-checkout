@@ -270,7 +270,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 // ------------------------------------
 .has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-edit {
 	display: none;
-
 	margin: $checkout-substep-action-button-margin;
 	padding: $checkout-substep-action-button-padding;
 	font-size: $checkout-substep-action-button-font-size;
@@ -303,9 +302,9 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit {
 	position: absolute;
-	top: 0;
+	top: $checkout-substep-action-button-top;
 	#{ $alignment-left }: auto;
-	#{ $alignment-right }: 0;
+	#{ $alignment-right }: $checkout-substep-action-button-right;
 	display: inline-block;
 }
 

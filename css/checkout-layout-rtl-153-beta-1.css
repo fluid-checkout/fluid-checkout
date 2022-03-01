@@ -918,7 +918,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 .has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-edit {
   display: none;
-  margin: 12px 0 0 10px;
+  margin: 0;
   padding: 5px 10px;
   font-size: 15px;
   font-weight: normal;
@@ -951,9 +951,9 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit {
   position: absolute;
-  top: 0;
+  top: 12px;
   right: auto;
-  left: 0;
+  left: 10px;
   display: inline-block;
 }
 
@@ -2506,9 +2506,11 @@ form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review .fc-checkout-ord
 }
 @media (min-width: 1000px) {
   .fc-checkout-order-review__head .fc-checkout-order-review__edit-cart {
+    position: relative;
+    left: -10px;
     float: left;
     display: block;
-    margin: 0 0 0 -1rem;
+    margin: 0;
     padding: 5px 10px;
     font-size: 15px;
     font-weight: normal;
