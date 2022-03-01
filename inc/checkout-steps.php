@@ -3074,13 +3074,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Get related field keys
 				$shipping_field_key = str_replace( 'billing_', 'shipping_', $field_key );
-				$save_billing_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
+				$save_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
 
 				// Update billing field values
 				if ( in_array( $shipping_field_key, $posted_data_field_keys ) ) {
 					// Maybe save billing address data
-					if ( '0' === $is_billing_same_as_shipping_previous ) {
-						$posted_data[ $save_billing_field_key ] = $posted_data[ $field_key ];
+					if ( '0' === $is_billing_same_as_shipping_previous && ! apply_filters( 'fc_save_new_address_data_billing_skip_update', false ) ) {
+						$posted_data[ $save_field_key ] = $posted_data[ $field_key ];
 					}
 
 					// Copy field value from shipping fields
@@ -3093,16 +3093,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		}
 		// When switching to "billing same as shipping" unchecked, copy from saved billing address fields.
-		// Current value for "billing same as shipping" is presumed to be `false` at this point.
 		else if ( '1' === $is_billing_same_as_shipping_previous ) {
 
 			// Iterate posted data
 			foreach( $billing_copy_shipping_field_keys as $field_key ) {
 
 				// Get related field keys
-				$save_billing_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
+				$save_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
 
-				$new_field_value = $this->get_checkout_field_value_from_session( $save_billing_field_key );
+				$new_field_value = $this->get_checkout_field_value_from_session( $save_field_key );
 				$posted_data[ $field_key ] = $new_field_value;
 				$_POST[ $field_key ] = $new_field_value;
 
