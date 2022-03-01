@@ -2592,9 +2592,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$review_text_lines[] = '<em>' . $this->get_option_label_billing_same_as_shipping() . '</em>';
 		}
 		// Otherwise, display the address data
-		else {
+		// else {
 			$review_text_lines = $this->get_substep_text_lines_address_type( 'billing', $review_text_lines );
-		}
+		// }
 
 		return $review_text_lines;
 	}
@@ -2697,6 +2697,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 			</p>
 		<?php
 		endif;
+
+		// Output the current value as a hidden field
+		// to be able to detect when the value changes
+		?>
+		<input type="hidden" name="billing_same_as_shipping_previous" id="billing_same_as_shipping_previous" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
+		<?php
+
 	}
 
 
@@ -3045,6 +3052,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_set_billing_address_same_as_shipping( $posted_data ) {
 		// Get value for billing same as shipping
+		$is_billing_same_as_shipping_previous = $posted_data[ 'billing_same_as_shipping_previous' ];
 		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping( $posted_data );
 		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked( $posted_data );
 
@@ -3052,27 +3060,51 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// for the case the shipping country changes again and the new value is also accepted for billing.
 		$this->set_billing_same_as_shipping_session( $is_billing_same_as_shipping_checked );
 
+		// Get list of billing fields to copy from shipping fields
+		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
+
+		// Get list of posted data keys
+		$posted_data_field_keys = array_keys( $posted_data );
+
 		// Maybe set post data for billing same as shipping
 		if ( $is_billing_same_as_shipping ) {
-
-			// Get list of billing fields to copy from shipping fields
-			$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
-
-			// Get list of posted data keys
-			$posted_data_field_keys = array_keys( $posted_data );
 
 			// Iterate posted data
 			foreach( $billing_copy_shipping_field_keys as $field_key ) {
 
-				// Get shipping field key
+				// Get related field keys
 				$shipping_field_key = str_replace( 'billing_', 'shipping_', $field_key );
+				$save_billing_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
 
 				// Update billing field values
 				if ( in_array( $shipping_field_key, $posted_data_field_keys ) ) {
+					// Maybe save billing address data
+					if ( '0' === $is_billing_same_as_shipping_previous ) {
+						$posted_data[ $save_billing_field_key ] = $posted_data[ $field_key ];
+					}
+
+					// Copy field value from shipping fields
 					$new_field_value = isset( $posted_data[ $shipping_field_key ] ) ? $posted_data[ $shipping_field_key ] : null;
 					$posted_data[ $field_key ] = $new_field_value;
 					$_POST[ $field_key ] = $new_field_value;
 				}
+
+			}
+
+		}
+		// When switching to "billing same as shipping" unchecked, copy from saved billing address fields.
+		// Current value for "billing same as shipping" is presumed to be `false` at this point.
+		else if ( '1' === $is_billing_same_as_shipping_previous ) {
+
+			// Iterate posted data
+			foreach( $billing_copy_shipping_field_keys as $field_key ) {
+
+				// Get related field keys
+				$save_billing_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
+
+				$new_field_value = $this->get_checkout_field_value_from_session( $save_billing_field_key );
+				$posted_data[ $field_key ] = $new_field_value;
+				$_POST[ $field_key ] = $new_field_value;
 
 			}
 

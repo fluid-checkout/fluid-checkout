@@ -342,6 +342,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Support for RTL languages.
 * Added: New filter `fc_checkout_login_button_class` for changing login button classes.
 * Improved: Compatibility with WooCommerce PayPal Payments, fixes missing spacing around the payment buttons.
+* Fixed: Restore previous values entered for the billing address when switching back to new billing address ("same as shipping" checkbox unchecked).
 * Fixed: Shipping costs being shown with tax included when tax settings is set to display without tax included.
 * Fixed: State field validation message for required field displaying even when field is optional.
 * Fixed: Fatal error when our checkout fields optimization feature is disabled.
