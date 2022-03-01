@@ -2926,6 +2926,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 
+
 	/**
 	 * Get list of shipping checkout field keys which values are to be copied from shipping to billing fields.
 	 *
