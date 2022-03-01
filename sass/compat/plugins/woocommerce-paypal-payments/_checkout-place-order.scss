@@ -13,6 +13,7 @@ body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-pl
 
 
 .fc-wrapper #ppc-button {
+	margin: $global-spacing-small 0;
 	padding: $place-order-padding;
 	padding-top: 0;
 	
