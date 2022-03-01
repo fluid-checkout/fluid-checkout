@@ -391,7 +391,9 @@ $checkout-substep-text-font-size:                $font-size-extra-small !default
 $checkout-substep-text-font-size--large-screen:  $font-size-extra-small--large-screen !default;
 $checkout-substep-text-font-weight:              normal !default;
 
-$checkout-substep-action-button-margin:          remsize( 1.2rem ) $global-spacing-extra-small 0 0 !default; // Used to position the substep "Change" action buttons
+$checkout-substep-action-button-top:             remsize( 1.2rem ) !default;
+$checkout-substep-action-button-right:           $global-spacing-extra-small !default;
+$checkout-substep-action-button-margin:          0 !default;
 $checkout-substep-action-button-padding:         $global-spacing-tiny $global-spacing-extra-small !default;
 $checkout-substep-action-button-font-size:       $font-size-small !default;
 $checkout-substep-action-button-font-size--large-screen:  $font-size-small--large-screen !default;
@@ -448,7 +450,8 @@ $order-summary-quantity-font-size:               $font-size-extra-small !default
 $order-summary-font-size:                        $font-size-small !default;
 $order-summary-font-size--large-screen:          $font-size-small--large-screen !default;
 
-$order-summary-edit-cart-button-margin:          0 #{ - $global-spacing-extra-small } 0 0 !default;
+$order-summary-edit-cart-button-margin:          0 !default;
+$order-summary-edit-cart-button-right:           #{ - $global-spacing-extra-small } !default;
 $order-summary-edit-cart-button-padding:         $global-spacing-tiny $global-spacing-extra-small !default;
 $order-summary-edit-cart-button-font-size--large-screen:  $checkout-substep-action-button-font-size--large-screen !default;
 $order-summary-edit-cart-button-font-weight:     $checkout-substep-action-button-font-weight !default;
