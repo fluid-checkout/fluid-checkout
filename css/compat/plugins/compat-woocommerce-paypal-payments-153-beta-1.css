@@ -7,6 +7,7 @@ body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-pl
 }
 
 .fc-wrapper #ppc-button {
+  margin: 20px 0;
   padding: 0 20px 0;
   padding-top: 0;
 }
