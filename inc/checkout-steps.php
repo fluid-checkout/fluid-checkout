@@ -2592,9 +2592,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$review_text_lines[] = '<em>' . $this->get_option_label_billing_same_as_shipping() . '</em>';
 		}
 		// Otherwise, display the address data
-		// else {
+		else {
 			$review_text_lines = $this->get_substep_text_lines_address_type( 'billing', $review_text_lines );
-		// }
+		}
 
 		return $review_text_lines;
 	}
