@@ -340,6 +340,8 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 = Unreleased =
 
 * Added: Support for RTL languages.
+* Added: New option to enable/disable Local Pickup features.
+* Added: New option to select position for the shipping methods substep (before or after shipping address).
 * Added: New filter `fc_checkout_login_button_class` for changing login button classes.
 * Improved: Compatibility with WooCommerce PayPal Payments, fixes missing spacing around the payment buttons.
 * Fixed: Restore previous values entered for the billing address when switching back to new billing address ("same as shipping" checkbox unchecked).

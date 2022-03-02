@@ -177,6 +177,28 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'title'             => __( 'Shipping methods', 'fluid-checkout' ),
+						'desc'              => __( 'Choose in which position to display the shipping methods', 'fluid-checkout' ),
+						'id'                => 'fc_shipping_methods_substep_position',
+						'options'           => array(
+							'before_shipping_address' => _x( 'Before shipping address', 'Shipping methods substep position', 'fluid-checkout' ),
+							'after_shipping_address'  => _x( 'After shipping address', 'Shipping methods substep position', 'fluid-checkout' ),
+						),
+						'default'           => 'after_shipping_address',
+						'type'              => 'select',
+						'autoload'          => false,
+					),
+
+					array(
+						'title'             => __( 'Local Pickup', 'fluid-checkout' ),
+						'desc'              => __( 'Removes shipping address section when a Local Pickup shipping method is selected', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_local_pickup',
+						'default'           => 'yes',
+						'type'              => 'checkbox',
+						'autoload'          => false,
+					),
+
+					array(
 						'title'             => __( 'Integrated Coupon Codes', 'fluid-checkout' ),
 						'desc'              => __( 'Show coupon codes as a substep of the payment step', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'fluid-checkout' ),

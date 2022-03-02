@@ -98,8 +98,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Shipping
 		add_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
-		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
-		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
+		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), $this->get_shipping_address_hook_priority() );
+		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), $this->get_shipping_methods_hook_priority() );
 		add_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_shipping_address' ), 10 );
 		add_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_shipping_address' ), 20 );
@@ -2327,6 +2327,36 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function set_ship_to_different_address_true() {
 		return 1;
+	}
+
+
+
+	/**
+	 * Get hook priority for the shipping address substep.
+	 */
+	public function get_shipping_address_hook_priority() {
+		$priority = 10;
+
+		// Change priority depending on the settings
+		if ( 'before_shipping_address' === get_option( 'fc_shipping_methods_substep_position', 'after_shipping_address' ) ) {
+			$priority = 20;
+		}
+
+		return $priority;
+	}
+
+	/**
+	 * Get hook priority for the shipping methods substep.
+	 */
+	public function get_shipping_methods_hook_priority() {
+		$priority = 20;
+
+		// Change priority depending on the settings
+		if ( 'before_shipping_address' === get_option( 'fc_shipping_methods_substep_position', 'after_shipping_address' ) ) {
+			$priority = 10;
+		}
+
+		return $priority;
 	}
 
 

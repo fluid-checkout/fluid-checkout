@@ -32,10 +32,6 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 
 		// Hide shipping address for local pickup
 		if ( $this->is_local_pickup_available() ) {
-			remove_action( 'fc_output_step_shipping', array( FluidCheckout_Steps::instance(), 'output_substep_shipping_address' ), 10 );
-			remove_action( 'fc_output_step_shipping', array( FluidCheckout_Steps::instance(), 'output_substep_shipping_method' ), 20 );
-			add_action( 'fc_output_step_shipping', array( FluidCheckout_Steps::instance(), 'output_substep_shipping_method' ), 10 );
-			add_action( 'fc_output_step_shipping', array( FluidCheckout_Steps::instance(), 'output_substep_shipping_address' ), 20 );
 			add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'change_substep_attributes_shipping_address' ), 10 );
 			add_action( 'fc_checkout_after_step_shipping_fields', array( $this, 'output_substep_state_hidden_fields_shipping_fields' ), 10 );
 			add_action( 'fc_checkout_after_step_shipping_fields', array( $this, 'maybe_output_shipping_address_text' ), 10 );
