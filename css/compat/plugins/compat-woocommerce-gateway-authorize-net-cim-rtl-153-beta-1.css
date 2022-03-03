@@ -1,0 +1,7 @@
+body.woocommerce-checkout #payment div.payment_box input.js-sv-wc-payment-gateway-credit-card-form-account-number {
+  background-position: left 10px center;
+}
+
+div.woocommerce form .form-row#wc-authorize-net-cim-credit-card-account-number_field.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
+  left: 65px;
+}

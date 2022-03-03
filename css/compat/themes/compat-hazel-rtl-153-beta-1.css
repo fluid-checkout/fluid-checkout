@@ -1,0 +1,58 @@
+body.theme-hazel:not(.has-checkout-header) {
+  padding-top: 120px;
+}
+
+body.theme-hazel:not(.has-checkout-header).admin-bar .fc-sidebar[data-sticky-states].is-sticky--top .fc-sidebar__inner {
+  padding-top: 5px;
+}
+
+body.theme-hazel header.fc-checkout-header {
+  position: fixed !important;
+  top: 0 !important;
+}
+@media (min-width: 1000px) {
+  body.theme-hazel header.fc-checkout-header {
+    position: static !important;
+  }
+}
+
+body.theme-hazel.admin-bar header.fc-checkout-header {
+  top: 46px !important;
+}
+@media screen and (min-width: 783px) {
+  body.theme-hazel.admin-bar header.fc-checkout-header {
+    top: 32px !important;
+  }
+}
+
+body.theme-hazel:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+  transform: translateY(0);
+}
+@media screen and (min-width: 783px) {
+  body.theme-hazel:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+    transform: translateY(5px);
+  }
+}
+
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
+  top: 12px;
+}
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after {
+  left: 24px;
+}
+
+body.theme-hazel div.woocommerce form #billing_country_field,
+body.theme-hazel div.woocommerce form #shipping_country_field,
+body.theme-hazel div.woocommerce form .form-row .select2-container--default,
+body.theme-hazel div.woocommerce form .form-row .select2-container .select2-selection {
+  height: auto;
+}
+
+body.theme-hazel div.woocommerce form .form-row .select2-container .select2-selection__rendered,
+body.theme-hazel div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+  line-height: 45px;
+}
+
+body.theme-hazel div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+  left: 10px;
+}

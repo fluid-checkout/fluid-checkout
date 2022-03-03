@@ -1,8 +1,12 @@
 @use "sass:math" as math;
 
-// ------------------------------------
+// ----------------------------------------
 // VARIABLES
-// ------------------------------------
+// ----------------------------------------
+
+
+
+
 
 // ----------------------------------------
 // COLORS
@@ -60,22 +64,35 @@ $focus-outline-offset-button:   $focus-outline-offset-field;
 
 
 // ----------------------------------------
+// ALIGNMENT
+
+$alignment-right:                           right !default;
+$alignment-left:                            left !default;
+
+// END - ALIGNMENT
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
 // SPACING & BOX SYSTEM
 
-$global-spacing-tiny:               remsize( .5rem ) !default;
-$global-spacing-extra-small:        remsize( 1rem ) !default;
-$global-spacing-small:              remsize( 2rem ) !default;
-$global-spacing:                    remsize( 3rem ) !default;
-$global-spacing-medium:             remsize( 5rem ) !default;
-$global-spacing-large:              remsize( 8rem ) !default;
-$global-spacing-extra-large:        remsize( 13rem ) !default;
+$global-spacing-tiny:                       remsize( .5rem ) !default;
+$global-spacing-extra-small:                remsize( 1rem ) !default;
+$global-spacing-small:                      remsize( 2rem ) !default;
+$global-spacing:                            remsize( 3rem ) !default;
+$global-spacing-medium:                     remsize( 5rem ) !default;
+$global-spacing-large:                      remsize( 8rem ) !default;
+$global-spacing-extra-large:                remsize( 13rem ) !default;
 
-$global-radius-extra-small:         remsize( .3rem ) !default;
-$global-radius-small:               remsize( .5rem ) !default;
-$global-radius:                     remsize( .8rem ) !default;
-$global-radius-medium:              remsize( 1.3rem ) !default;
-$global-radius-large:               remsize( 2.1rem ) !default;
-$global-radius-extra-large:         remsize( 3.4rem ) !default;
+$global-radius-extra-small:                 remsize( .3rem ) !default;
+$global-radius-small:                       remsize( .5rem ) !default;
+$global-radius:                             remsize( .8rem ) !default;
+$global-radius-medium:                      remsize( 1.3rem ) !default;
+$global-radius-large:                       remsize( 2.1rem ) !default;
+$global-radius-extra-large:                 remsize( 3.4rem ) !default;
 
 // END - SPACING & BOX SYSTEM
 // ----------------------------------------
@@ -88,21 +105,21 @@ $global-radius-extra-large:         remsize( 3.4rem ) !default;
 // TYPOGRAPHY
 
 // Font sizes
-$font-size-tiny:                        remsize( 1rem ) !default;
-$font-size-extra-small:                 remsize( 1.3rem ) !default;
-$font-size-small:                       remsize( 1.5rem ) !default;
-$font-size:                             remsize( 1.6rem ) !default; // Should be at least 16px to prevent auto-zoom issues on Safari Mobile
-$font-size-medium:                      remsize( 2rem ) !default;
-$font-size-large:                       remsize( 2.8rem ) !default;
-$font-size-extra-large:                 remsize( 4rem ) !default;
+$font-size-tiny:                            remsize( 1rem ) !default;
+$font-size-extra-small:                     remsize( 1.3rem ) !default;
+$font-size-small:                           remsize( 1.5rem ) !default;
+$font-size:                                 remsize( 1.6rem ) !default; // Should be at least 16px to prevent auto-zoom issues on Safari Mobile
+$font-size-medium:                          remsize( 2rem ) !default;
+$font-size-large:                           remsize( 2.8rem ) !default;
+$font-size-extra-large:                     remsize( 4rem ) !default;
 
-$font-size-tiny--large-screen:          remsize( 1rem ) !default;
-$font-size-extra-small--large-screen:   remsize( 1.3rem ) !default;
-$font-size-small--large-screen:         remsize( 1.5rem ) !default;
-$font-size--large-screen:               remsize( 1.8rem ) !default;
-$font-size-medium--large-screen:        remsize( 2.4rem ) !default;
-$font-size-large--large-screen:         remsize( 3.2rem ) !default;
-$font-size-extra-large--large-screen:   remsize( 5rem ) !default;
+$font-size-tiny--large-screen:              remsize( 1rem ) !default;
+$font-size-extra-small--large-screen:       remsize( 1.3rem ) !default;
+$font-size-small--large-screen:             remsize( 1.5rem ) !default;
+$font-size--large-screen:                   remsize( 1.8rem ) !default;
+$font-size-medium--large-screen:            remsize( 2.4rem ) !default;
+$font-size-large--large-screen:             remsize( 3.2rem ) !default;
+$font-size-extra-large--large-screen:       remsize( 5rem ) !default;
 
 // END - TYPOGRAPHY
 // ----------------------------------------
@@ -347,8 +364,10 @@ $checkout-substep-title-margin:                  0 0 $global-spacing-extra-small
 $checkout-substep-title-margin--large-screen:    $checkout-substep-title-margin !default;
 $checkout-substep-title-padding:                 0 !default;
 $checkout-substep-title-padding--large-screen:   0 $global-spacing-tiny 0 0 !default;
-$checkout-substep-complete-title-padding:                 0 $global-spacing-large 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
-$checkout-substep-complete-title-padding--large-screen:   0 $global-spacing-tiny 0 #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
+$checkout-substep-complete-title-padding:                       0 $global-spacing-large 0 !default;
+$checkout-substep-complete-title-padding-left:                  #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
+$checkout-substep-complete-title-padding--large-screen:         0 $global-spacing-tiny 0 !default;
+$checkout-substep-complete-title-padding-left--large-screen:    #{ $global-spacing-extra-small + $checkout-substep-title-check-icon-spacing + $checkout-substep-title-check-icon-size } !default;
 
 $checkout-substep-title-color:                   $dark-grey !default;
 $checkout-substep-title-color--completed:        $grey !default;
@@ -356,13 +375,13 @@ $checkout-substep-title-font-size:               $font-size-small !default;
 $checkout-substep-title-font-size--large-screen: $font-size-small--large-screen !default;
 $checkout-substep-title-font-weight:             bold !default;
 $checkout-substep-title-text-transform:          uppercase !default;
-$checkout-substep-title-text-align:              left !default;
+$checkout-substep-title-text-align:              $alignment-left !default;
 
-$checkout-substep-margin-expand:                      $global-spacing-small #{ - $container-spacing-mobile } !default;
-$checkout-substep-margin-expand--large-screen:        $global-spacing-small #{ - $container-spacing-mobile } !default;
-$checkout-substep-padding:                            $global-spacing-small $container-spacing-mobile !default;
-$checkout-substep-padding--large-screen:              $global-spacing-small $container-spacing-mobile !default;
-$checkout-substep-border-radius:                      $global-radius !default;
+$checkout-substep-margin-expand:                 $global-spacing-small #{ - $container-spacing-mobile } !default;
+$checkout-substep-margin-expand--large-screen:   $global-spacing-small #{ - $container-spacing-mobile } !default;
+$checkout-substep-padding:                       $global-spacing-small $container-spacing-mobile !default;
+$checkout-substep-padding--large-screen:         $global-spacing-small $container-spacing-mobile !default;
+$checkout-substep-border-radius:                 $global-radius !default;
 
 $checkout-substep-text-margin:                   0 !default;
 $checkout-substep-text-margin--large-screen:     0 !default;
@@ -372,7 +391,9 @@ $checkout-substep-text-font-size:                $font-size-extra-small !default
 $checkout-substep-text-font-size--large-screen:  $font-size-extra-small--large-screen !default;
 $checkout-substep-text-font-weight:              normal !default;
 
-$checkout-substep-action-button-margin:          remsize( 1.2rem ) $global-spacing-extra-small 0 0 !default; // Used to position the substep "Change" action buttons
+$checkout-substep-action-button-top:             remsize( 1.2rem ) !default;
+$checkout-substep-action-button-right:           $global-spacing-extra-small !default;
+$checkout-substep-action-button-margin:          0 !default;
 $checkout-substep-action-button-padding:         $global-spacing-tiny $global-spacing-extra-small !default;
 $checkout-substep-action-button-font-size:       $font-size-small !default;
 $checkout-substep-action-button-font-size--large-screen:  $font-size-small--large-screen !default;
@@ -421,6 +442,7 @@ $order-summary-image-background-color:           $white !default;
 $order-summary-image-border:                     solid remsize( .1rem ) $border-color !default;
 $order-summary-image-border-radius:              $global-radius-extra-small !default;
 
+$order-summary-quantity-transform:               translateX( -100% ) translateY( -25% ) !default;
 $order-summary-quantity-background-color:        $dark-grey !default;
 $order-summary-quantity-text-color:              $white !default;
 $order-summary-quantity-font-size:               $font-size-extra-small !default;
@@ -428,7 +450,8 @@ $order-summary-quantity-font-size:               $font-size-extra-small !default
 $order-summary-font-size:                        $font-size-small !default;
 $order-summary-font-size--large-screen:          $font-size-small--large-screen !default;
 
-$order-summary-edit-cart-button-margin:          0 #{ - $global-spacing-extra-small } 0 0 !default;
+$order-summary-edit-cart-button-margin:          0 !default;
+$order-summary-edit-cart-button-right:           #{ - $global-spacing-extra-small } !default;
 $order-summary-edit-cart-button-padding:         $global-spacing-tiny $global-spacing-extra-small !default;
 $order-summary-edit-cart-button-font-size--large-screen:  $checkout-substep-action-button-font-size--large-screen !default;
 $order-summary-edit-cart-button-font-weight:     $checkout-substep-action-button-font-weight !default;
@@ -551,7 +574,8 @@ $checkout-message-error-icon-size:                    $icon-size-small !default;
 $checkout-message-error-icon-position-top:            remsize( 1.6rem ) !default;
 $checkout-message-error-icon-position-left:           $global-spacing-tiny !default;
 
-$checkout-message-error-padding:                      $global-spacing-tiny $global-spacing-extra-small $global-spacing-tiny #{ $checkout-message-error-icon-position-left + $checkout-message-error-icon-size + $global-spacing-tiny } !default;
+$checkout-message-error-padding:                      $global-spacing-tiny $global-spacing-extra-small $global-spacing-tiny !default;
+$checkout-message-error-padding-left:                 #{ $checkout-message-error-icon-position-left + $checkout-message-error-icon-size + $global-spacing-tiny } !default;
 $checkout-message-error-color:                        $error-color !default;
 $checkout-message-error-background-color:             $lighter-grey !default;
 $checkout-message-error-font-size:                    $font-size-extra-small !default;

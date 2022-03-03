@@ -3,7 +3,9 @@
 // ------------------------------------
 // IMPORT ABSTRACT
 // ------------------------------------
-@import "abstract/_all";
+@import
+	"abstract/_all-early",
+	"abstract/_all";
 
 
 

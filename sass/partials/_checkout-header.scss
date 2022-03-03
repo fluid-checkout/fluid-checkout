@@ -106,7 +106,7 @@
 .fc-checkout-header .fc-checkout__cart-link-wrapper {
 	position: absolute;
 	top: 0;
-	right: #{ $container-spacing-mobile - $global-spacing-extra-small };
+	#{ $alignment-right }: #{ $container-spacing-mobile - $global-spacing-extra-small };
 	margin: 0;
 
 	display: flex;
@@ -115,8 +115,8 @@
 	height: $checkout-header-height;
 	line-height: 1;
 
-	@media (#{$bp-larger-than-mobile}) { right: #{ $container-spacing-mobile }; } // Larger mobile devices
-	@media (#{$bp-larger-than-tablet}) { right: #{ $container-spacing-tablet }; }
+	@media (#{$bp-larger-than-mobile}) { #{ $alignment-right }: #{ $container-spacing-mobile }; } // Larger mobile devices
+	@media (#{$bp-larger-than-tablet}) { #{ $alignment-right }: #{ $container-spacing-tablet }; }
 	@media (#{$bp-larger-than-desktop}) { display: none; }
 }
 .fc-checkout-header .fc-checkout__cart-link {

@@ -1,0 +1,7 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+	top: remsize( .8rem );
+}

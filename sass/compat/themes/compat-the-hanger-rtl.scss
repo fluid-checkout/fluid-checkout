@@ -1,0 +1,33 @@
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
+@import
+	"../../abstract/_all-early",
+    "../../abstract/_variables-rtl",
+	"../../abstract/_all";
+
+
+
+
+
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-theme-selector-prefix:          'body.theme-the-hanger' !default;
+$_select2-border-width:                remsize( .1rem ) !default;
+$_select2-border-radius:               0 !default;
+$_select2-selection-height:            remsize( 4.8rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"the-hanger/checkout-shipping-methods",
+	"the-hanger/checkout-payment-methods",
+	"the-hanger/woocommerce-form-fields",
+	"../../partials/woocommerce-form-fields-select2",
+	"the-hanger/woocommerce-form-fields-select2";

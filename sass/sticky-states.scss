@@ -1,7 +1,9 @@
 // ------------------------------------
 // IMPORT ABSTRACT
 // ------------------------------------
-@import "abstract/_all";
+@import
+	"abstract/_all-early",
+	"abstract/_all";
 @import	"../node_modules/sticky-states/sass/abstract/variables";
 
 

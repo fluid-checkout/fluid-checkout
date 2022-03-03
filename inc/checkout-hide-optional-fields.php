@@ -19,6 +19,9 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Bail if not on front end
+		if ( is_admin() ) { return; }
+
 		// WooCommerce fields output
 		add_filter( 'woocommerce_form_field', array( $this, 'add_optional_form_field_link_button' ), 100, 4 );
 	}

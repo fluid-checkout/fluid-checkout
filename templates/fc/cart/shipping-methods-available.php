@@ -22,6 +22,8 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php if ( count( $available_methods ) > 0 ) : ?>
 
+		<?php // CHANGE: Conditionally add  ?>
+
 		<?php echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
 
 		<?php
@@ -34,9 +36,18 @@ defined( 'ABSPATH' ) || exit;
 			do_action( 'woocommerce_after_shipping_rate', $method, $package_index );
 			$after_shipping_rate = ob_get_clean();
 
+			// Maybe add extra class
+			$label_extra_classes = '';
+			if (
+				( WC()->cart->display_prices_including_tax() && $method->get_shipping_tax() > 0 && ! wc_prices_include_tax() )
+				|| ( ! WC()->cart->display_prices_including_tax() && $method->get_shipping_tax() > 0 && wc_prices_include_tax() )
+			) {
+				$label_extra_classes = 'has-tax-notes';
+			}
+
 			echo apply_filters( 'fc_shipping_method_option_markup',
 				sprintf( '<li class="shipping-method__option"><input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />
-					<label for="shipping_method_%1$d_%2$s" class="shipping-method__option-label has-price">%5$s%6$s</label>
+					<label for="shipping_method_%1$d_%2$s" class="shipping-method__option-label has-price %7$s">%5$s%6$s</label>
 				</li>',
 				$package_index,
 				// The function `sanitize_title` is used below to convert the string into a CSS-class-like string
@@ -44,7 +55,8 @@ defined( 'ABSPATH' ) || exit;
 				esc_attr( $method->id ),
 				checked( $checked_method, true, false ),
 				FluidCheckout_Steps::instance()->get_cart_shipping_methods_label( $method ),
-				$after_shipping_rate
+				$after_shipping_rate,
+				$label_extra_classes
 			), $method, $package_index, $chosen_method, $first );
 
 			$first = false;

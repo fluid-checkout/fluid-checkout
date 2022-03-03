@@ -35,21 +35,21 @@ div.woocommerce form .form-row .select2-container .select2-selection {
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form .form-row.form-row-last {
-	clear: left;
+	clear: $alignment-left;
 	float: none;
 	width: 100%;
 
 	@media (#{$bp-larger-than-tablet}) {
 		clear: none;
-		float: left;
+		float: $alignment-left;
 		width: 48%;
 	}
 }
 
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-wide {
-	clear: left;
-	@media (#{$bp-larger-than-tablet}) { clear: left; }
+	clear: $alignment-left;
+	@media (#{$bp-larger-than-tablet}) { clear: $alignment-left; }
 }
 
 div.woocommerce form .form-row.form-row-one-third {
@@ -63,8 +63,13 @@ div.woocommerce form .form-row.form-row-two-thirds {
 }
 
 div.woocommerce form .form-row.form-row-first,
-div.woocommerce form .form-row.form-row-middle {
-	@media (#{$bp-larger-than-tablet}) { margin-right: 4%; }
+div.woocommerce form .form-row.form-row-middle,
+div.woocommerce form #payment .form-row.form-row-first,
+div.woocommerce form #payment .form-row.form-row-middle {
+	@media (#{$bp-larger-than-tablet}) {
+		margin-#{ $alignment-left }: 0;
+		margin-#{ $alignment-right }: 4%;
+	}
 }
 
 
@@ -109,6 +114,7 @@ div.woocommerce form #shipping_address_2_field > label {
 	overflow: unset;
 	white-space: normal;
 	line-height: 1.2;
+	text-align: $alignment-left;
 }
 
 

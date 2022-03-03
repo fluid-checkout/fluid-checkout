@@ -5,7 +5,7 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message, and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 1.5.2
+Version: 1.5.3-beta-1
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
@@ -367,10 +367,20 @@ class FluidCheckout {
 	 * @param  array  $notices  Admin notices from the plugin.
 	 */
 	public function add_woocommerce_required_notice( $notices = array() ) {
+		// Bail if user does not have enough permissions
+		if ( ! current_user_can( 'install_plugins' ) ) { return; }
+
+		if ( is_wp_error( validate_plugin( 'woocommerce/woocommerce.php' ) ) ) {
+			$description = sprintf( wp_kses_post( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%3$s">Go to Plugin Search</a>', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', admin_url( 'plugin-install.php?s=woocommerce&tab=search&type=term' ) );
+		}
+		else {
+			$description = sprintf( wp_kses_post( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%3$s">Activate WooCommerce</a>', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=woocommerce/woocommerce.php' ), 'activate-plugin_woocommerce/woocommerce.php' ) );
+		}
+		
 		$notices[] = array(
-			'name' => 'woocommerce_required',
-			'error' => true,
-			'description' => sprintf( wp_kses_post( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%3$s">Go to Plugin Search</a>', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', admin_url( 'plugin-install.php?s=woocommerce&tab=search&type=term' ) ),
+			'name'        => 'woocommerce_required',
+			'error'       => true,
+			'description' => $description,
 			'dismissable' => false,
 		);
 		return $notices;
