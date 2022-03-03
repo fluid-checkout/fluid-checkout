@@ -209,7 +209,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 	public function output_substep_pickup_point( $step_id ) {
 		$substep_id = 'pickup_point';
 		$substep_title = __( 'Pickup point', 'fluid-checkout' );
-		FluidCheckout_Steps::instance()->output_substep_start_tag( $step_id, $substep_id, $substep_title, apply_filters( "fc_substep_{$substep_id}_attributes", array() ) );
+		FluidCheckout_Steps::instance()->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		FluidCheckout_Steps::instance()->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_pickup_point_fields();
