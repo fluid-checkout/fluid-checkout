@@ -99,7 +99,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Shipping
 		add_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
-		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
+		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 80 );
 		add_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_shipping_address' ), 10 );
 		add_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_shipping_address' ), 20 );
@@ -932,7 +932,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$this->register_checkout_step( array(
 				'step_id' => 'shipping',
 				'step_title' => _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ),
-				'priority' => 20,
+				'priority' => 25,
 				'render_callback' => array( $this, 'output_step_shipping' ),
 				'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
 				'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
