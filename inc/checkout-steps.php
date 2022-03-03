@@ -3723,9 +3723,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Iterate checkout fields
 		foreach ( $field_groups as $group_key => $fields ) {
 			// Skip shipping fields if shipping address is not needed
-			if ( 'shipping' === $group_key && ! WC()->cart->needs_shipping_address() ) {
-				continue;
-			}
+			if ( 'shipping' === $group_key && ! WC()->cart->needs_shipping_address() ) { continue; }
 
 			foreach( $fields as $field_key => $field_args ) {
 				// Skip fields in posted data
