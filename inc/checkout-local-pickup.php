@@ -31,19 +31,16 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 		// Bail if not on checkout or cart page or doing AJAX call
 		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
-		// Local pickup hooks
-		if ( $this->is_local_pickup_available() ) {
-			// Local Pickup substep
-			add_action( 'fc_output_step_shipping', array( $this, 'output_substep_pickup_point' ), $this->get_pickup_point_hook_priority() );
-			add_filter( 'fc_substep_pickup_point_attributes', array( $this, 'change_substep_attributes_pickup_point' ), 10 );
-			add_filter( 'fc_substep_pickup_point_text_lines', array( $this, 'add_substep_text_lines_pickup_point' ), 10 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_pickup_point_fields_fragment' ), 10 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_pickup_point_text_fragment' ), 10 );
+		// Local Pickup substep
+		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_pickup_point' ), $this->get_pickup_point_hook_priority() );
+		add_filter( 'fc_substep_pickup_point_attributes', array( $this, 'change_substep_attributes_pickup_point' ), 10 );
+		add_filter( 'fc_substep_pickup_point_text_lines', array( $this, 'add_substep_text_lines_pickup_point' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_pickup_point_fields_fragment' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_pickup_point_text_fragment' ), 10 );
 
-			// Shipping Address
-			add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'change_substep_attributes_shipping_address' ), 10 );
-			add_action( 'fc_checkout_after_step_shipping_fields', array( $this, 'output_substep_state_hidden_fields_shipping_address' ), 10 );
-		}
+		// Shipping Address
+		add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'change_substep_attributes_shipping_address' ), 10 );
+		add_action( 'fc_checkout_after_step_shipping_fields', array( $this, 'output_substep_state_hidden_fields_shipping_address' ), 10 );
 	}
 
 	/**
@@ -54,9 +51,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
 		// Needs shipping address
-		if ( $this->is_local_pickup_available() ) {
-			add_filter( 'woocommerce_cart_needs_shipping_address', array( $this, 'maybe_change_needs_shipping_address' ), 10 );
-		}
+		add_filter( 'woocommerce_cart_needs_shipping_address', array( $this, 'maybe_change_needs_shipping_address' ), 10 );
 	}
 	
 
