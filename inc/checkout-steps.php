@@ -3673,6 +3673,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$this->set_parsed_posted_data_filter_applied = true;
 
 			// Updated cached posted data
+			// Needed to make already parsed data available for all functions,
+			// especially those used by filters hooked to `fc_set_parsed_posted_data` below.
 			$this->posted_data = $new_posted_data;
 			
 			// Filter to allow customizations
@@ -3719,6 +3721,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		
 		// Iterate checkout fields
 		foreach ( $field_groups as $group_key => $fields ) {
+			// Skip shipping fields if shipping address is not needed
+			if ( 'shipping' === $group_key && ! WC()->cart->needs_shipping_address() ) {
+				continue;
+			}
+
 			foreach( $fields as $field_key => $field_args ) {
 				// Skip fields in posted data
 				if ( in_array( $field_key, array_keys( $posted_data ) ) ) { continue; }

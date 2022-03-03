@@ -21,6 +21,9 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 	public function hooks() {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
+		// Needs shipping
+		add_action( 'wp', array( $this, 'maybe_add_needs_shipping_hooks' ), 90 ); // Needs to run before the FluidCheckout_Steps very late hooks
 	}
 
 	/**
@@ -42,9 +45,22 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 			// Shipping Address
 			add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'change_substep_attributes_shipping_address' ), 10 );
 			add_action( 'fc_checkout_after_step_shipping_fields', array( $this, 'output_substep_state_hidden_fields_shipping_address' ), 10 );
+		}
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function maybe_add_needs_shipping_hooks() {
+		// Bail if not on checkout or cart page or doing AJAX call
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
+
+		// Hide shipping address for local pickup
+		if ( $this->is_local_pickup_available() ) {
 			add_filter( 'woocommerce_cart_needs_shipping_address', array( $this, 'maybe_change_needs_shipping_address' ), 10 );
 		}
 	}
+	
 
 
 
