@@ -402,6 +402,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the checkout header.
 	 */
 	public function output_checkout_notices_wrapper_start_tag() {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
+
 		?>
 		<div class="fc-checkout-notices">
 		<?php
@@ -411,6 +414,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the checkout header.
 	 */
 	public function output_checkout_notices_wrapper_end_tag() {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
+
 		?>
 		</div>
 		<?php
@@ -445,6 +451,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_checkout_header_cart_link_fragment( $fragments ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ $fragments; }
+
 		$html = $this->get_checkout_header_cart_link();
 		$fragments['.fc-checkout__cart-link'] = $html;
 		return $fragments;
@@ -996,6 +1005,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $formats  Default localisation formats.
 	 */
 	public function add_phone_localisation_address_formats( $formats ) {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ $formats; }
+
 		// Bail if should not display phone in formatted addresses
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $formats; }
 
@@ -1016,6 +1028,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   array  $address       Contains address fields.
 	 */
 	public function add_phone_formatted_address_replacements( $replacements, $args ) {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ $replacements; }
+
 		// Bail if should not display phone in formatted addresses
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $replacements; }
 
@@ -1039,6 +1054,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the checkout progress bar.
 	 */
 	public function output_checkout_progress_bar() {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
+
 		// Bail if not multi-step checkout layout
 		if ( ! $this->is_checkout_layout_multistep() ) { return; }
 
@@ -1578,6 +1596,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_contact_text_fragment( $fragments ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
+
 		$html = $this->get_substep_text_contact();
 		$fragments['.fc-step__substep-text-content--contact'] = $html;
 		return $fragments;
@@ -1871,6 +1892,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_shipping_address_fields_fragment( $fragments ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ $fragments; }
+
 		$html = $this->get_substep_shipping_address_fields();
 		$fragments['.woocommerce-shipping-fields'] = $html;
 		return $fragments;
@@ -2137,6 +2161,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_shipping_address_text_fragment( $fragments ) {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ $fragments; }
+
 		$html = $this->get_substep_text_shipping_address();
 		$fragments['.fc-step__substep-text-content--shipping_address'] = $html;
 		return $fragments;
@@ -2190,6 +2217,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_shipping_methods_text_fragment( $fragments ) {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ $fragments; }
+
 		$html = $this->get_substep_text_shipping_method();
 		$fragments['.fc-step__substep-text-content--shipping_method'] = $html;
 		return $fragments;
@@ -2380,6 +2410,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_shipping_methods_fields_fragment( $fragments ) {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ $fragments; }
+
 		$html = $this->get_shipping_methods_available();
 		$fragments['.fc-shipping-method__packages'] = $html;
 		return $fragments;
@@ -2569,6 +2602,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add billing address fields section as a checkout fragment.
 	 */
 	function add_checkout_billing_address_fields_fragment( $fragments ) {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ $fragments; }
+
 		$html = $this->get_substep_billing_address_fields();
 		$fragments['.woocommerce-billing-fields'] = $html;
 		return $fragments;
@@ -2616,6 +2652,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_billing_address_text_fragment( $fragments ) {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ $fragments; }
+
 		$html = $this->get_substep_text_billing_address();
 		$fragments['.fc-step__substep-text-content--billing_address'] = $html;
 		return $fragments;
@@ -2679,6 +2718,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output field for billing address same as shipping.
 	 */
 	public function output_billing_same_as_shipping_field() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
+
 		// Output a hidden field when shipping country not allowed for billing, or shipping not needed
 		if ( apply_filters( 'fc_output_billing_same_as_shipping_as_hidden_field', false ) || ! $this->is_shipping_address_available_for_billing() ) : ?>
 			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
@@ -3162,6 +3204,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Remove links and fix accessibility attributes for payment method icons.
 	 */
 	public function change_payment_gateway_icon_html( $icon, $id = null ) {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ $icon; }
 
 		// Remove links from the icon html
 		$pattern = '/(<a [^<]*)([^<]*)(<\/a>)/';
@@ -3385,6 +3429,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_place_order_fragment( $fragments ) {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ $fragments; }
+
 		$html = $this->get_checkout_place_order_html();
 		$fragments['.place-order'] = $html;
 		return $fragments;
@@ -3396,6 +3443,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add wrapper element and custom class for the checkout place order button.
 	 */
 	public function add_place_order_button_wrapper( $button_html ) {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ $button_html; }
+
 		$button_html = str_replace( 'class="button alt', 'class="' . esc_attr( apply_filters( 'fc_place_order_button_classes', 'button alt' ) ) . ' fc-place-order-button', $button_html );
 		return '<div class="fc-place-order">' . $button_html . '</div>';
 	}
@@ -3759,6 +3809,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string   $input   Checkout field key (ie. order_comments ).
 	 */
 	public function change_default_checkout_field_value_from_session_or_posted_data( $value, $input ) {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ $value; }
 
 		// Maybe return field value from posted data
 		$posted_data = $this->get_parsed_posted_data();
@@ -3809,6 +3861,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Clear session values for checkout fields when the order is processed.
 	 **/
 	public function unset_session_customer_persisted_data_order_processed() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
+
 		$clear_field_keys = array(
 			'account_username',
 			'account_password',
