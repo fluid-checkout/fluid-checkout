@@ -98,8 +98,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Shipping
 		add_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
-		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), 10 );
-		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), 20 );
+		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), $this->get_shipping_address_hook_priority() );
+		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), $this->get_shipping_methods_hook_priority() );
 		add_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_shipping_address' ), 10 );
 		add_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_shipping_address' ), 20 );
@@ -1224,6 +1224,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   array   $additional_attributes  Additional HTML attributes to add to the substep element.
 	 */
 	public function output_substep_start_tag( $step_id, $substep_id, $substep_title, $additional_attributes = array() ) {
+		$additional_attributes = apply_filters( "fc_substep_{$substep_id}_attributes", $additional_attributes );
 		$substep_attributes = array_merge( $additional_attributes, array(
 			'class' => array_key_exists( 'class', $additional_attributes ) ? 'fc-step__substep ' . $additional_attributes['class'] : 'fc-step__substep',
 			'data-substep-id' => $substep_id,
@@ -1502,7 +1503,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_substep_contact( $step_id ) {
 		$substep_id = 'contact';
 		$substep_title = __( 'My contact', 'fluid-checkout' );
-		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title, apply_filters( "fc_substep_{$substep_id}_attributes", array() ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_step_contact_fields();
@@ -1695,7 +1696,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( is_user_logged_in() ) { return; };
 
 		$substep_id = 'contact_login';
-		$this->output_substep_start_tag( $step_id, $substep_id, null, apply_filters( "fc_substep_{$substep_id}_attributes", array() ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, null );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_contact_login_button();
@@ -1744,7 +1745,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_substep_shipping_address( $step_id ) {
 		$substep_id = 'shipping_address';
 		$substep_title = __( 'Shipping to', 'fluid-checkout' );
-		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title, apply_filters( "fc_substep_{$substep_id}_attributes", array() ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_shipping_address_fields();
@@ -1768,7 +1769,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_substep_shipping_method( $step_id ) {
 		$substep_id = 'shipping_method';
 		$substep_title = __( 'Shipping method', 'fluid-checkout' );
-		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title, apply_filters( "fc_substep_{$substep_id}_attributes", array() ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_shipping_methods_available();
@@ -1792,7 +1793,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_substep_order_notes( $step_id ) {
 		$substep_id = 'order_notes';
 		$substep_title = __( 'Additional notes', 'fluid-checkout' );
-		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title, apply_filters( "fc_substep_{$substep_id}_attributes", array() ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_additional_fields();
@@ -2332,6 +2333,36 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get hook priority for the shipping address substep.
+	 */
+	public function get_shipping_address_hook_priority() {
+		$priority = 10;
+
+		// Change priority depending on the settings
+		if ( 'before_shipping_address' === get_option( 'fc_shipping_methods_substep_position', 'before_shipping_address' ) ) {
+			$priority = 20;
+		}
+
+		return $priority;
+	}
+
+	/**
+	 * Get hook priority for the shipping methods substep.
+	 */
+	public function get_shipping_methods_hook_priority() {
+		$priority = 20;
+
+		// Change priority depending on the settings
+		if ( 'before_shipping_address' === get_option( 'fc_shipping_methods_substep_position', 'before_shipping_address' ) ) {
+			$priority = 10;
+		}
+
+		return $priority;
+	}
+
+
+
+	/**
 	 * Get shipping methods available markup.
 	 *
 	 * @access public
@@ -2496,7 +2527,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_substep_billing_address( $step_id ) {
 		$substep_id = 'billing_address';
 		$substep_title = __( 'Billing to', 'fluid-checkout' );
-		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title, apply_filters( "fc_substep_{$substep_id}_attributes", array() ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_billing_address_fields();
@@ -3170,7 +3201,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_substep_payment( $step_id ) {
 		$substep_id = 'payment';
 		$substep_title = __( 'Payment method', 'fluid-checkout' );
-		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title, apply_filters( "fc_substep_{$substep_id}_attributes", array() ) );
+		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_payment_fields();
@@ -3643,6 +3674,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$this->set_parsed_posted_data_filter_applied = true;
 
 			// Updated cached posted data
+			// Needed to make already parsed data available for all functions,
+			// especially those used by filters hooked to `fc_set_parsed_posted_data` below.
 			$this->posted_data = $new_posted_data;
 			
 			// Filter to allow customizations
@@ -3689,6 +3722,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		
 		// Iterate checkout fields
 		foreach ( $field_groups as $group_key => $fields ) {
+			// Skip shipping fields if shipping address is not needed
+			if ( 'shipping' === $group_key && ! WC()->cart->needs_shipping_address() ) { continue; }
+
 			foreach( $fields as $field_key => $field_args ) {
 				// Skip fields in posted data
 				if ( in_array( $field_key, array_keys( $posted_data ) ) ) { continue; }
