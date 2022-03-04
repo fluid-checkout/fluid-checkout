@@ -235,7 +235,7 @@ Currently the plugin is translated into the languages below, and more are commin
 
 * English (Default)
 * German - Germany (thanks to @reilix, felix-gudowius.de)
-* Italian - Italia (thanks to Samuele, floralgarden.it)
+* Italian - Italy (thanks to Samuele, floralgarden.it)
 * Portuguese - Brazil
 * Spanish - Spain (thanks to @gio15, senseiwpacademy.com)
 * Swedish - Sweden (thanks to @kozley, @tobifjellner, @elbogen)
