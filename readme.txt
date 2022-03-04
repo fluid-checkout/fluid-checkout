@@ -235,6 +235,7 @@ Currently the plugin is translated into the languages below, and more are commin
 
 * English (Default)
 * German - Germany (thanks to @reilix, felix-gudowius.de)
+* Italian - Italia (thanks to Samuele, floralgarden.it)
 * Portuguese - Brazil
 * Spanish - Spain (thanks to @gio15, senseiwpacademy.com)
 * Swedish - Sweden (thanks to @kozley, @tobifjellner, @elbogen)
@@ -243,7 +244,6 @@ Currently the plugin is translated into the languages below, and more are commin
 
 * Dutch (soon)
 * German - Formal (soon)
-* Italian (soon)
 * Spanish - Argentina (soon)
 
 ** RTL Support **
@@ -336,6 +336,10 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Added: Translation to Italian (Italy). Thanks to Samuele from floralgarden.it.
 
 = 1.5.3 - 2022-03-03 =
 
