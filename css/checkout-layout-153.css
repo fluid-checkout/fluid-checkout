@@ -2213,7 +2213,7 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review {
   background-color: transparent;
 }
 
-.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review__head {
+body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review__head {
   text-align: left;
 }
 

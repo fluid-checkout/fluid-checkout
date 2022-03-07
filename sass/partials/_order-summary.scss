@@ -28,7 +28,7 @@ body#{ $_body-page-selector } div.woocommerce .fc-wrapper #order_review {
 
 
 
-.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review__head {
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-review__head {
 	text-align: $alignment-left;
 }
 
