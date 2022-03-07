@@ -47,7 +47,7 @@
 
 
 
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
 	margin: $checkout-substep-title-margin;
 	padding: $checkout-substep-title-padding;
 	color: $checkout-substep-title-color;

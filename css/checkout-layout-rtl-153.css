@@ -713,7 +713,7 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   display: none;
 }
 
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
+body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
   margin: 0 0 10px 0;
   padding: 0;
   color: #535156;
@@ -725,7 +725,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   overflow: unset;
 }
 @media (min-width: 1000px) {
-  body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
+  body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
     margin: 0 0 10px 0;
     padding: 0 5px 0 0;
     font-size: 15px;
