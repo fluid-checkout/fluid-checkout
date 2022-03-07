@@ -34,11 +34,11 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-valida
 	// Select2 Fields
 	&:not( .fc-no-validation-icon ) .select2-selection:after {
 		top: remsize( .7rem );
-		right: remsize( 2rem );
+		#{ $alignment-right }: remsize( 2rem );
 	}
 	// Select2 Fields (optional, with "clear" button)
 	&.fc-select2-field:not( .fc-no-validation-icon ) select:not( [required] ) ~ .select2-container .select2-selection:after {
-		right: remsize( 3rem );
+		#{ $alignment-right }: remsize( 3rem );
 	}
 
 }

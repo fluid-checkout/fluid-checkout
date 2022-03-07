@@ -3,14 +3,14 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
-	padding-left: remsize( 2rem );
-	padding-right: remsize( 2rem );
+	#{ $alignment-left }: remsize( 2rem );
+	#{ $alignment-right }: remsize( 2rem );
 }
 
 
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-	right: 0;
+	#{ $alignment-right }: 0;
 }
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__arrow b {

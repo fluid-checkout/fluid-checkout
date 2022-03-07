@@ -1,6 +1,8 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project will be documented in this file and the plugin's readme.txt file.
+
+To avoid duplicate work, changes are first added to the [plugin's readme.txt file](https://github.com/fluidweb-co/fluid-checkout/blob/main/readme.txt), then after a few iterations, they are moved to this file.
 
 The format is based on the [WordPress plugin readme file standard](https://developer.wordpress.org/plugins/wordpress-org/how-your-readme-txt-works/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -15,7 +17,7 @@ Additional labels for beta builds are available as extensions to the MAJOR.MINOR
 
 # CHANGES
 
-[See latest changes in the plugin readme.txt](https://github.com/fluidweb-co/fluid-checkout/blob/main/readme.txt)
+[See latest changes in the plugin's readme.txt](https://github.com/fluidweb-co/fluid-checkout/blob/main/readme.txt)
 
 = 1.4.3 - 2022-01-12 =
 * Added: New actions `fc_checkout_header_widgets_inside_before` and `fc_checkout_header_widgets_inside_after` to add content inside the checkout header widget area via PHP code.

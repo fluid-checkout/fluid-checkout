@@ -28,6 +28,9 @@ body#{ $_body-page-selector } div.woocommerce .fc-wrapper #order_review {
 
 
 
+.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review__head {
+	text-align: $alignment-left;
+}
 
 body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-review-title {
 	display: inline-block;
@@ -111,14 +114,14 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
 	vertical-align: middle;
 	width: 50%;
-	text-align: left;
+	text-align: $alignment-left;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total,
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td {
 	width: 50%;
 	font-size: $order-summary-font-size;
-	text-align: right;
+	text-align: $alignment-right;
 	line-height: 1;
 	vertical-align: middle;
 }
@@ -146,11 +149,11 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name,
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-name {
 	position: relative;
-	float: left;
+	float: $alignment-left;
 	width: 75%;
 	padding: $global-spacing-tiny;
 	background-color: transparent;
-	text-align: left;
+	text-align: $alignment-left;
 	line-height: 1.2;
 }
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-name:after {
@@ -162,13 +165,13 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	display: block;
 	padding: $global-spacing-tiny 0;
 	width: 25%;
-	float: right;
+	float: $alignment-right;
 	background-color: transparent;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table img {
-	float: left;
-	margin-left: - #{ $order-summary-image-padding + $global-spacing-tiny };
+	float: $alignment-left;
+	margin-#{ $alignment-left }: - #{ $order-summary-image-padding + $global-spacing-tiny };
 	padding: $order-summary-image-padding;
 	width: $order-summary-image-width !important; // Needed to override inline styles added by some themes
 	height: auto !important; // Needed to override inline styles added by some themes
@@ -183,8 +186,8 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
-	float: left;
-	padding-left: $global-spacing-small;
+	float: $alignment-left;
+	padding-#{ $alignment-left }: $global-spacing-small;
 	width: calc( 100% - $order-summary-image-width );
 
 	@media (#{$bp-larger-than-desktop}) {
@@ -196,8 +199,8 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	z-index: z( 'above' );
 	position: absolute;
 	top: 0;
-	left: #{ $order-summary-image-width + $global-spacing-tiny };
-	transform: translateX( -100% ) translateY( -25% );
+	#{ $alignment-left }: #{ $order-summary-image-width + $global-spacing-tiny };
+	transform: $order-summary-quantity-transform;
 	display: block;
 	padding: remsize( .1rem ) remsize( .6rem ) remsize( .2rem ) $global-spacing-tiny;
 	border-radius: #{ math.div( $font-size-extra-small + remsize( .4rem ), 2 ) };
@@ -209,7 +212,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	letter-spacing: 0;
 
 	@media (#{$bp-larger-than-desktop}) {
-		left: #{ $order-summary-image-width--large-screen + $global-spacing-tiny };
+		#{ $alignment-left }: #{ $order-summary-image-width--large-screen + $global-spacing-tiny };
 	}
 }
 
@@ -400,11 +403,14 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 
 
 
-.fc-checkout-order-review__inner > .fc-checkout-order-review__edit-cart {
+.fc-checkout-order-review__head .fc-checkout-order-review__edit-cart {
 	display: none;
 
 	@media (#{$bp-larger-than-desktop}) {
-		float: right;
+		position: relative;
+		#{ $alignment-right }: $order-summary-edit-cart-button-right;
+
+		float: $alignment-right;
 		display: block;
 
 		margin: $order-summary-edit-cart-button-margin;

@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.2.0
+ * @version 1.5.3
  * @wc-version 3.5.0
  * @wc-original checkout/form-checkout.php
  */
@@ -33,11 +33,15 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
-		<h3 class="fc-checkout-order-review-title fc-step__substep-title"><?php echo esc_html( $order_review_title ); ?></h3>
+		<div class="fc-checkout-order-review__head">
 
-		<?php if ( $is_sidebar_widget && apply_filters( 'fc_order_summary_display_desktop_edit_cart_link', true ) ) : ?>
-			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__edit-cart"><?php echo esc_html( __( 'Edit Cart', 'fluid-checkout' ) ); ?></a>
-		<?php endif; ?>
+			<h3 class="fc-checkout-order-review-title fc-step__substep-title"><?php echo esc_html( $order_review_title ); ?></h3>
+
+			<?php if ( $is_sidebar_widget && apply_filters( 'fc_order_summary_display_desktop_edit_cart_link', true ) ) : ?>
+				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__edit-cart"><?php echo esc_html( __( 'Edit Cart', 'fluid-checkout' ) ); ?></a>
+			<?php endif; ?>
+
+		</div>
 
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 

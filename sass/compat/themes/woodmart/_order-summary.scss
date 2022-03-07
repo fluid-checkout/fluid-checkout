@@ -13,5 +13,5 @@ body#{ $_body-theme-selector } .fc-checkout-order-review .wd-table-wrapper {
 
 
 body#{ $_body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon {
-	margin-right: - $global-spacing-extra-small;
+	margin-#{ $alignment-right }: - $global-spacing-extra-small;
 }

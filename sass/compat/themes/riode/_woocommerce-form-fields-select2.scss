@@ -6,9 +6,9 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection
 	margin-top: 0;
 }
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__arrow:before {
-	right: 0;
+	#{ $alignment-right }: 0;
 }
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__clear {
-	right: remsize( .5rem );
+	#{ $alignment-right }: remsize( .5rem );
 }

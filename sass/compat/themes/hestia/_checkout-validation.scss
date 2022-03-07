@@ -4,7 +4,8 @@
 
 body#{ $_body-theme-selector } div.woocommerce .form-row .woocommerce-error,
 body#{ $_body-theme-selector } div.woocommerce .form-row .fc-mailcheck-suggestion {
-	padding: $checkout-message-error-padding !important; // Needed to override theme styles set with `!important`
+	padding: $checkout-message-error-padding !important; // Needed to override theme styles set with `!important`;
+	padding-#{ $alignment-left }: $checkout-message-error-padding-left !important; // Needed to override theme styles set with `!important`;
 }
 
 

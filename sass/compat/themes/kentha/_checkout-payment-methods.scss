@@ -10,7 +10,7 @@ body#{ $_body-theme-selector } .fc-wrapper #payment ul.wc_payment_methods > li.w
 
 body#{ $_body-theme-selector } .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:after {
 	top: remsize( .5rem );
-	left: remsize( .4rem );
+	#{ $alignment-left }: remsize( .4rem );
 	border-color: transparent;
 	background-color: transparent;
 }

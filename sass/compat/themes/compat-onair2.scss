@@ -1,7 +1,9 @@
 // ------------------------------------
 // IMPORT ABSTRACT
 // ------------------------------------
-@import "../../abstract/_all";
+@import
+	"../../abstract/_all-early",
+	"../../abstract/_all";
 
 
 
@@ -25,4 +27,5 @@ $_select2-selection-height:            remsize( 4.8rem ) !default;
 // ------------------------------------
 @import
 	"onair2/checkout-validation",
-	"../../partials/woocommerce-form-fields-select2";
+	"../../partials/woocommerce-form-fields-select2",
+	"onair2/woocommerce-form-fields-select2";

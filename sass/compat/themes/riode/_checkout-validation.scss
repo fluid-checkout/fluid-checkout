@@ -7,7 +7,7 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-valida
 
 	// Select2 Fields (optional, with "clear" button)
 	&.fc-select2-field:not( .fc-no-validation-icon ) select:not( [required] ) ~ .select2-container .select2-selection.select2-selection--single:after {
-		right: remsize( 3.2rem );
+		#{ $alignment-right }: remsize( 3.2rem );
 	}
 
 }

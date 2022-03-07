@@ -38,7 +38,7 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-valida
 
 	// Password
 	&:not( .fc-no-validation-icon ):not( .fc-select2-field ) .woocommerce-input-wrapper.password-input:after {
-		right: remsize( 3.2rem );
+		#{ $alignment-right }: remsize( 3.2rem );
 	}
 	
 }

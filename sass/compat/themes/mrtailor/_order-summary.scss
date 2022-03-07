@@ -12,6 +12,12 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-checkout-order-revie
 
 
 
+body#{ $_body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
+    padding-right: $order-summary-cell-padding-horizontal; // Targets only the right side, should not use `$alignment-right` in this case
+}
+
+
+
 
 body#{ $_body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total td .includes_tax .amount {
 	font-size: inherit;

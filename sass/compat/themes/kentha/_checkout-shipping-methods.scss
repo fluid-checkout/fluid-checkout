@@ -10,12 +10,12 @@ body#{ $_body-theme-selector } .woocommerce ul#shipping_method .shipping-method_
 
 body#{ $_body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:before {
 	top: remsize( .6rem );
-	left: remsize( .6rem );
+	#{ $alignment-left }: remsize( .6rem );
 }
 
 body#{ $_body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:after {
 	top: remsize( .5rem );
-	left: remsize( .4rem );
+	#{ $alignment-left }: remsize( .4rem );
 	border-color: transparent;
 	background-color: transparent;
 }

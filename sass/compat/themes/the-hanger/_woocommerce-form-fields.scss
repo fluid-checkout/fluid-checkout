@@ -1,25 +1,26 @@
 // ------------------------------------
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
+
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-first,
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-middle,
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-last {
-	clear: left;
+	clear: #{ $alignment-left };
 	float: none;
 	width: 100%;
 	padding: 0;
 
 	@media (#{$bp-larger-than-tablet}) {
 		clear: none;
-		float: left;
+		float: #{ $alignment-left };
 		width: 48%;
 	}
 }
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-first,
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-wide {
-	clear: left;
-	@media (#{$bp-larger-than-tablet}) { clear: left; }
+	clear: #{ $alignment-left };
+	@media (#{$bp-larger-than-tablet}) { clear: #{ $alignment-left }; }
 }
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-one-third {
@@ -34,7 +35,7 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .fo
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-first,
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-middle {
-	@media (#{$bp-larger-than-tablet}) { margin-right: 4%; }
+	@media (#{$bp-larger-than-tablet}) { margin-#{ $alignment-right }: 4%; }
 }
 
 

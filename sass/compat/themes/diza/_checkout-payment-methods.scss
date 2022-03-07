@@ -3,7 +3,8 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } .woocommerce-checkout-payment .payment_methods li label {
-	padding: $global-spacing-extra-small $global-spacing-small $global-spacing-extra-small remsize( 4.4rem ) !important; // Needed to override `!important` directive added by the theme.
+	padding: $payment-method-padding-vertical $payment-method-padding-horizontal !important; // Needed to override `!important` directive added by the theme.;
+	padding-#{ $alignment-left }: #{ $payment-method-radio-size + $payment-method-padding-horizontal } !important; // Needed to override `!important` directive added by the theme.;
 }
 
 body#{ $_body-theme-selector } .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] + label:before {

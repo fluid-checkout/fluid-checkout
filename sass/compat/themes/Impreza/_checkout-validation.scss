@@ -13,6 +13,6 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-valida
 
 	// Select2 Fields
 	.select2-selection:after {
-		right: remsize( 2.4rem );
+		#{ $alignment-right }: remsize( 2.4rem );
 	}
 }

@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 5.9
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -211,7 +211,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 Only the plugins that we have added explicit compatibility with, or that we have tested and works as expected are listed above.
 
-If your theme is not on the list it **does not mean it won't work**. Only that we have not tested it yet.
+If a plugin or payment method is not on the list it **does not mean it won't work**. Only that we have not tested it yet.
 
 Try Fluid Checkout now and if you experience any issues please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.
 
@@ -235,6 +235,7 @@ Currently the plugin is translated into the languages below, and more are commin
 
 * English (Default)
 * German - Germany (thanks to @reilix, felix-gudowius.de)
+* Italian - Italy (thanks to Samuele, floralgarden.it)
 * Portuguese - Brazil
 * Spanish - Spain (thanks to @gio15, senseiwpacademy.com)
 * Swedish - Sweden (thanks to @kozley, @tobifjellner, @elbogen)
@@ -243,8 +244,11 @@ Currently the plugin is translated into the languages below, and more are commin
 
 * Dutch (soon)
 * German - Formal (soon)
-* Italian (soon)
 * Spanish - Argentina (soon)
+
+** RTL Support **
+
+* Although currently there are no official transations to any RTL language, the plugin will adjust its layout to RTL languages accordingly.
 
 ** Note: **
 Fluid Checkout is fully localized/translatable. This is very important for all users worldwide.
@@ -336,7 +340,22 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 = Unreleased =
 
 * Improved: Refactor make SCSS code reusable by using variables like `$_body-theme-selector` and `$_body-page-selector`.
+* Added: Translation to Italian (Italy). Thanks to Samuele from floralgarden.it.
+
+= 1.5.3 - 2022-03-03 =
+
+* Added: Support for RTL languages.
+* Added: New option to enable/disable Local Pickup features.
+* Added: New option to select position for the shipping methods substep (before or after shipping address).
+* Added: New filter `fc_checkout_login_button_class` for changing login button classes.
+* Improved: Compatibility with WooCommerce PayPal Payments, fixes missing spacing around the payment buttons.
+* Improved: Refactor move pickup point to its own substep, instead of using the shipping address substep to display the shop address.
+* Improved: Refactor make filters `fc_substep_{$substep_id}_attributes` available to all substeps.
+* Fixed: Restore previous values entered for the billing address when switching back to new billing address ("same as shipping" checkbox unchecked).
+* Fixed: Restore previous values entered for the shipping address when switching between "Local pickup" and other shipping methods.
+* Fixed: Shipping costs being shown with tax included when tax settings is set to display without tax included.
 * Fixed: State field validation message for required field displaying even when field is optional.
+* Fixed: Fatal error when our checkout fields optimization feature is disabled.
 
 = 1.5.2 - 2022-02-14 =
 
