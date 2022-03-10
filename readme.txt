@@ -196,6 +196,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 * Germanized for WooCommerce - by vendidero
 * SG Map to Address - by Sevengits
 * SG Checkout Location Picker for WooCommerce - by Sevengits
+* MailerLite WooCommerce Integration - by MailerLite
 * MailPoet - by MailPoet
 * WooCommerce Correios - by Claudio Sanches
 * WooCommerce PDF Invoices & Packing Slips - by Ewout Fernhout
@@ -339,6 +340,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Added: Compatibility with plugin MailerLite WooCommerce Integration.
 * Added: Translation to Italian (Italy). Thanks to Samuele from floralgarden.it.
 
 = 1.5.3 - 2022-03-03 =
