@@ -205,6 +205,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 = Premium Plugins =
 
 * Captcha Pro - by BestWebSoft
+* FluentCRM Pro - by Fluent CRM
 * German Market - by MarketPress
 * WooCommerce Delivery & Pickup Date Time Pro - by CodeRockz
 * WooCommerce Print Invoices/Packing Lists - by SkyVerge
@@ -341,8 +342,9 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
-* Added: Compatibility with plugin MailerLite WooCommerce Integration.
+* Added: Compatibility with plugin Fluent CRM.
 * Added: Compatibility with plugin Klaviyo.
+* Added: Compatibility with plugin MailerLite WooCommerce Integration.
 * Added: Translation to Italian (Italy). Thanks to Samuele from floralgarden.it.
 
 = 1.5.3 - 2022-03-03 =
