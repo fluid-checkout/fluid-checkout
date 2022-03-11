@@ -21,12 +21,12 @@ class FluidCheckout_FluentCRM extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-        // Get the fluent campaign woo init objects
+		// Get the fluent campaign woo init objects
 		$this->fluent_campaign_woo_init = $this->get_object_by_class_name_from_hooks( 'FluentCampaign\App\Services\Integrations\WooCommerce\WooInit' );
 		
 		if ( null !== $this->fluent_campaign_woo_init ) {
-			remove_action( 'woocommerce_checkout_billing', [ $this->fluent_campaign_woo_init, 'addSubscribeBox' ], 999 );
-			add_action( 'fc_checkout_contact_after_fields', [ $this->fluent_campaign_woo_init, 'addSubscribeBox' ], 10 );
+			remove_action( 'woocommerce_checkout_billing', array( $this->fluent_campaign_woo_init, 'addSubscribeBox' ), 999 );
+			add_action( 'fc_checkout_contact_after_fields', array( $this->fluent_campaign_woo_init, 'addSubscribeBox' ), 10 );
 		}
 	}
 
