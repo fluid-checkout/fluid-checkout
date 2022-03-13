@@ -32,7 +32,7 @@ defined( 'ABSPATH' ) || exit;
 			if ( ! empty( get_option( 'fc_checkout_logo_image', '' ) ) ) {
 				echo sprintf(
 					'<a href="%1$s" class="custom-logo-link" rel="home">%2$s</a>',
-					esc_url( home_url( '/' ) ),
+					apply_filters( 'fc_checkout_header_logo_home_url', esc_url( home_url( '/' ) ) ),
 					wp_get_attachment_image( get_option( 'fc_checkout_logo_image', '' ), 'full' )
 				);
 			}
@@ -45,7 +45,7 @@ defined( 'ABSPATH' ) || exit;
 			else {
 				echo sprintf(
 					'<a href="%1$s" class="custom-logo-link" rel="home">%2$s</a>',
-					esc_url( home_url( '/' ) ),
+					apply_filters( 'fc_checkout_header_logo_home_url', esc_url( home_url( '/' ) ) ),
 					'<span class="fc-checkout__site-name">' . esc_html( get_bloginfo( 'name' ) ) . '</span>'
 				);
 			}
