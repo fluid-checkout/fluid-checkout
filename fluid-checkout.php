@@ -638,28 +638,28 @@ class FluidCheckout {
      * @return  void
      */
     public function remove_class_action( $tag, $class_name, $function_name ) {
-		global $wp_filter;
-		
-		if ( isset( $wp_filter[ $tag ] ) ) {
-			$len = strlen( $function_name );
-	
-			foreach ( $wp_filter[ $tag ] as $priority => $actions ) {
-				foreach ( $actions as $action_name => $action_args ) {
-					if (
-						substr( $action_name, -$len ) === $function_name  &&
-						is_array( $action_args[ 'function' ] ) &&
-						get_class( $action_args['function'][0] ) == $class_name
-					) {
-						if ( is_object( $wp_filter[ $tag ] ) && isset( $wp_filter[ $tag ]->callbacks ) ) {
-							unset( $wp_filter[ $tag ]->callbacks[ $priority ][ $action_name ] );
-						} else {
-							unset( $wp_filter[ $tag ][ $priority ][ $action_name ] );
-						}
-					}
-				}
-			}
-		}
-	}
+        global $wp_filter;
+        
+        if ( isset( $wp_filter[ $tag ] ) ) {
+            $len = strlen( $function_name );
+    
+            foreach ( $wp_filter[ $tag ] as $priority => $actions ) {
+                foreach ( $actions as $action_name => $action_args ) {
+                    if (
+                        substr( $action_name, -$len ) === $function_name  &&
+                        is_array( $action_args[ 'function' ] ) &&
+                        get_class( $action_args['function'][0] ) == $class_name
+                    ) {
+                        if ( is_object( $wp_filter[ $tag ] ) && isset( $wp_filter[ $tag ]->callbacks ) ) {
+                            unset( $wp_filter[ $tag ]->callbacks[ $priority ][ $action_name ] );
+                        } else {
+                            unset( $wp_filter[ $tag ][ $priority ][ $action_name ] );
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 }
 
