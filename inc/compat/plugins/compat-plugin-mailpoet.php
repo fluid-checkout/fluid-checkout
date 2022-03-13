@@ -6,17 +6,17 @@ defined( 'ABSPATH' ) || exit;
  */
 class FluidCheckout_MailPoet extends FluidCheckout {
 
-	/**
-	 * __construct function.
-	 */
-	public function __construct( ) {
+    /**
+     * __construct function.
+     */
+    public function __construct( ) {
         add_action( 'init', [ $this, 'hooks' ] );
-	}
+    }
 
-	/**
-	 * Initialize hooks.
-	 */
-	public function hooks() {
+    /**
+     * Initialize hooks.
+     */
+    public function hooks() {
         // Bail when no mail poet class
         if ( ! class_exists( MailPoet\Config\HooksWooCommerce::class ) ) {
             return;
@@ -24,7 +24,7 @@ class FluidCheckout_MailPoet extends FluidCheckout {
 
         $this->remove_class_action( 'woocommerce_checkout_before_terms_and_conditions', 'MailPoet\Config\HooksWooCommerce',  'extendWooCommerceCheckoutForm' );
         add_action( 'fc_checkout_contact_after_fields', [ $this, 'extend_woocommerce_checkout_form' ], 10 );
-	}
+    }
 
     /**
      * Extend WooCommerce checkout form for checkbox

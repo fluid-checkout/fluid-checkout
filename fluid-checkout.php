@@ -629,14 +629,14 @@ class FluidCheckout {
 	}
 
 	/**
-	 * Remove hook callback for class method.
-	 *
-	 * @param   string  $action Hook name.
-	 * @param   string  $class  Class name.
-	 * @param   string  $method Class method name.
-	 *
-	 * @return  void
-	 */
+     * Remove hook callback for class method.
+     *
+     * @param   string  $action Hook name.
+     * @param   string  $class  Class name.
+     * @param   string  $method Class method name.
+     *
+     * @return  void
+     */
     public function remove_class_action( $action, $class, $method ) {
         global $wp_filter ;
         
