@@ -628,7 +628,7 @@ class FluidCheckout {
 		return $this->remove_filter_for_closure( $tag, $priority, $all_occurencies );
 	}
 
-	/**
+    /**
      * Remove hook callback for class method.
      *
      * @param   string  $action Hook name.
@@ -637,29 +637,29 @@ class FluidCheckout {
      *
      * @return  void
      */
-    public function remove_class_action( $action, $class, $method ) {
-        global $wp_filter ;
-        
-        if ( isset( $wp_filter[$action] ) ) {
-            $len = strlen( $method );
-
-            foreach ( $wp_filter[$action] as $pri => $actions ) {
-                foreach ( $actions as $name => $def ) {
-                    if ( substr( $name, -$len ) === $method ) {
-                        if ( is_array( $def['function'] ) ) {
-                            if ( get_class( $def['function'][0] ) == $class ) {
-                                if ( is_object( $wp_filter[$action] ) && isset( $wp_filter[$action]->callbacks ) ) {
-                                    unset( $wp_filter[$action]->callbacks[$pri][$name] ) ;
-                                } else {
-                                    unset( $wp_filter[$action][$pri][$name] ) ;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+    public function remove_class_action( $tag, $class_name, $function_name ) {
+		global $wp_filter;
+		
+		if ( isset( $wp_filter[ $tag ] ) ) {
+			$len = strlen( $function_name );
+	
+			foreach ( $wp_filter[ $tag ] as $priority => $actions ) {
+				foreach ( $actions as $action_name => $action_args ) {
+					if (
+						substr( $action_name, -$len ) === $function_name  &&
+						is_array( $action_args[ 'function' ] ) &&
+						get_class( $action_args['function'][0] ) == $class_name
+					) {
+						if ( is_object( $wp_filter[ $tag ] ) && isset( $wp_filter[ $tag ]->callbacks ) ) {
+							unset( $wp_filter[ $tag ]->callbacks[ $priority ][ $action_name ] );
+						} else {
+							unset( $wp_filter[ $tag ][ $priority ][ $action_name ] );
+						}
+					}
+				}
+			}
+		}
+	}
 
 }
 

@@ -18,18 +18,16 @@ class FluidCheckout_MailPoet extends FluidCheckout {
      */
     public function hooks() {
         // Bail when no mail poet class
-        if ( ! class_exists( MailPoet\Config\HooksWooCommerce::class ) ) {
-            return;
-        }
+        if ( ! class_exists( MailPoet\Config\HooksWooCommerce::class ) ) { return; }
 
         $this->remove_class_action( 'woocommerce_checkout_before_terms_and_conditions', 'MailPoet\Config\HooksWooCommerce',  'extendWooCommerceCheckoutForm' );
-        add_action( 'fc_checkout_contact_after_fields', [ $this, 'extend_woocommerce_checkout_form' ], 10 );
+        add_action( 'fc_checkout_contact_after_fields', array( $this, 'extend_woocommerce_checkout_form' ), 10 );
     }
 
     /**
      * Extend WooCommerce checkout form for checkbox
      *
-     * @return html
+     * @return void
      */
     public function extend_woocommerce_checkout_form() {
         $setting   = $this->get_settings();
