@@ -10,7 +10,7 @@ class FluidCheckout_MailPoet extends FluidCheckout {
      * __construct function.
      */
     public function __construct( ) {
-        add_action( 'init', [ $this, 'hooks' ] );
+        add_action( 'init', array( $this, 'hooks' ) );
     }
 
     /**
@@ -84,10 +84,10 @@ class FluidCheckout_MailPoet extends FluidCheckout {
     private function get_subscription_presence_check_field() {
         $field = woocommerce_form_field(
           'mailpoet_woocommerce_checkout_optin_present',
-          [
+          array(
             'type' => 'hidden',
             'return' => true,
-          ],
+          ),
           1
         );
 
@@ -97,10 +97,10 @@ class FluidCheckout_MailPoet extends FluidCheckout {
 
         $field = woocommerce_form_field(
           'mailpoet_woocommerce_checkout_optin_present',
-          [
+          array(
             'type' => 'text',
             'return' => true,
-          ],
+          ),
           1
         );
         return str_replace( 'type="text', 'type="hidden"', $field );
@@ -118,14 +118,14 @@ class FluidCheckout_MailPoet extends FluidCheckout {
     private function get_subscription_field( $inputName, $checked, $labelString ) {
         return woocommerce_form_field(
             esc_attr( $inputName ),
-            [
+            array(
                 'type'              => 'checkbox',
                 'label'             => esc_html( $labelString ),
-                'input_class'       => ['woocommerce-form__input', 'woocommerce-form__input-checkbox', 'input-checkbox'],
-                'label_class'       => ['woocommerce-form__label', 'woocommerce-form__label-for-checkbox', 'checkbox'],
-                'custom_attributes' => ['data-automation-id' => 'woo-commerce-subscription-opt-in'],
+                'input_class'       => array( 'woocommerce-form__input', 'woocommerce-form__input-checkbox', 'input-checkbox' ),
+                'label_class'       => array( 'woocommerce-form__label', 'woocommerce-form__label-for-checkbox', 'checkbox' ),
+                'custom_attributes' => array( 'data-automation-id' => 'woo-commerce-subscription-opt-in' ),
                 'return'            => true,
-            ],
+            ),
           $checked ? '1' : '0'
         );
     }
