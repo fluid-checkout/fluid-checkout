@@ -348,7 +348,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Compatibility with plugin MailerLite WooCommerce Integration.
 * Added: Compatibility with plugin Polylang.
 * Added: Translation to Italian (Italy). Thanks to Samuele from floralgarden.it.
-* Added: Translation to Turkish (Turkey). Thanks to Orkunakca.
+* Added: Translation to Turkish (Turkey). Thanks to Orkun Akça.
 * Fixed: Email validation should consider an empty optional email field as valid.
 * Fixed: Layout and alignment of the place order section.
 
