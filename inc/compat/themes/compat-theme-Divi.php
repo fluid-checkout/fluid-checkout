@@ -50,7 +50,7 @@ class FluidCheckout_ThemeCompat_Divi extends FluidCheckout {
 
             ob_start();
             ?>
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                <a href="<?php echo esc_url( apply_filters( 'fc_checkout_header_logo_home_url', home_url( '/' ) ) ); ?>">
                     <img src="<?php echo esc_attr( $logo ); ?>" width="<?php echo esc_attr( $logo_width ); ?>" height="<?php echo esc_attr( $logo_height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" id="logo" data-height-percentage="<?php echo esc_attr( et_get_option( 'logo_height', '54' ) ); ?>" />
                 </a>
             <?php
