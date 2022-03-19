@@ -349,6 +349,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Translation to Italian (Italy). Thanks to Samuele from floralgarden.it.
 * Added: Translation to Turkish (Turkey). Thanks to Orkunakca.
 * Fixed: Email validation should consider an empty optional email field as valid.
+* Fixed: Layout and alignment of the place order section.
 
 = 1.5.3 - 2022-03-03 =
 
