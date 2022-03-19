@@ -194,15 +194,18 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 * Elementor - by Elementor Team
 * Flexible Shipping - by WP Desk
 * Germanized for WooCommerce - by vendidero
+* Klaviyo - by Klaviyo.
+* MailerLite WooCommerce Integration - by MailerLite
+* MailPoet - by MailPoet
 * SG Map to Address - by Sevengits
 * SG Checkout Location Picker for WooCommerce - by Sevengits
-* MailPoet - by MailPoet
 * WooCommerce Correios - by Claudio Sanches
 * WooCommerce PDF Invoices & Packing Slips - by Ewout Fernhout
 
 = Premium Plugins =
 
 * Captcha Pro - by BestWebSoft
+* FluentCRM Pro - by Fluent CRM
 * German Market - by MarketPress
 * WooCommerce Delivery & Pickup Date Time Pro - by CodeRockz
 * WooCommerce Print Invoices/Packing Lists - by SkyVerge
@@ -235,6 +238,7 @@ Currently the plugin is translated into the languages below, and more are commin
 
 * English (Default)
 * German - Germany (thanks to @reilix, felix-gudowius.de)
+* Italian - Italy (thanks to Samuele, floralgarden.it)
 * Portuguese - Brazil
 * Spanish - Spain (thanks to @gio15, senseiwpacademy.com)
 * Swedish - Sweden (thanks to @kozley, @tobifjellner, @elbogen)
@@ -243,7 +247,6 @@ Currently the plugin is translated into the languages below, and more are commin
 
 * Dutch (soon)
 * German - Formal (soon)
-* Italian (soon)
 * Spanish - Argentina (soon)
 
 ** RTL Support **
@@ -336,6 +339,14 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Added: Compatibility with plugin Fluent CRM.
+* Added: Compatibility with plugin Klaviyo.
+* Added: Compatibility with plugin MailerLite WooCommerce Integration.
+* Added: Translation to Italian (Italy). Thanks to Samuele from floralgarden.it.
+* Fixed: Email validation should consider an empty optional email field as valid.
 
 = 1.5.3 - 2022-03-03 =
 
