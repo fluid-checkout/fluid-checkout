@@ -555,7 +555,7 @@ class FluidCheckout {
 	 */
 	public function remove_filter_for_class( $tag, $function_array, $priority ) {
 		// Bail if function_array isn't an array or doens't have 2 string values
-		if ( ! is_array( $function_array ) || count( $function_array ) < 2 || ! is_string( $function_array[0] ) || ! is_string( $function_array[1] ) ) { return false; }
+		if ( ! is_array( $function_array ) || count( $function_array ) < 2 || ! is_string( $function_array[1] ) ) { return false; }
 
 		$class_name = $function_array[0];
 		$function_name = $function_array[1];

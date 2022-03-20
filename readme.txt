@@ -346,6 +346,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Compatibility with plugin Fluent CRM.
 * Added: Compatibility with plugin Klaviyo.
 * Added: Compatibility with plugin MailerLite WooCommerce Integration.
+* Added: Compatibility with plugin MailPoet.
 * Added: Compatibility with plugin Polylang.
 * Added: Translation to Italian (Italy). Thanks to Samuele from floralgarden.it.
 * Added: Translation to Turkish (Turkey). Thanks to Orkun Akça.
