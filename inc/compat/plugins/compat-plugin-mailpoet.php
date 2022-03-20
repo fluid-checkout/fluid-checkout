@@ -18,7 +18,7 @@ class FluidCheckout_MailPoet extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Get MailPoet object instance
-		$mailpoet_hooks_instance = $this->get_object_by_class_name_from_hooks( MailPoet\Config\HooksWooCommerce::class );
+		$mailpoet_hooks_instance = $this->get_object_by_class_name_from_hooks( 'MailPoet\Config\HooksWooCommerce' );
 
 		// Bail if MailPoet object is not found in hooks
 		if ( ! $mailpoet_hooks_instance ) { return; }
