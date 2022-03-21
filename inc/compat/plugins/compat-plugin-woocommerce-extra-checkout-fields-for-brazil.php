@@ -279,8 +279,8 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		if ( array_key_exists( 'billing_persontype', $new_fields ) ) { $new_fields[ 'billing_persontype' ][ 'required' ] = true; }
 		if ( array_key_exists( 'billing_cpf', $new_fields ) ) { $new_fields[ 'billing_cpf' ][ 'required' ] = true; }
 		if ( array_key_exists( 'billing_rg', $new_fields ) ) { $new_fields[ 'billing_rg' ][ 'required' ] = true; }
-		if ( array_key_exists( 'billing_cnpj', $new_fields ) ) { $new_fields[ 'billing_cnpj' ][ 'required' ] = true; }
-		if ( array_key_exists( 'billing_ie', $new_fields ) ) { $new_fields[ 'billing_ie' ][ 'required' ] = true; }
+		if ( array_key_exists( 'billing_cnpj', $new_fields) && $_POST['billing_persontype'] != 1 ) { $new_fields[ 'billing_cnpj' ][ 'required' ] = true; }
+		if ( array_key_exists( 'billing_ie', $new_fields ) && $_POST['billing_persontype'] != 1 ) { $new_fields[ 'billing_ie' ][ 'required' ] = true; }
 
 		return $new_fields;
 	}
