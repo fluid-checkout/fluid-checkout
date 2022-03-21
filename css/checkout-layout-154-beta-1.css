@@ -1121,7 +1121,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   display: inline-block;
   padding: 0 10px;
   background-color: #fff;
-  text-transform: lowercase;
 }
 
 .woocommerce-checkout .fc-login-form form.login {

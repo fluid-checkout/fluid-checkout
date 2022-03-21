@@ -353,6 +353,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Fixed: Email validation should consider an empty optional email field as valid.
 * Fixed: Remove duplicate phone numbers on emails.
 * Fixed: Layout and alignment of the place order section.
+* Fixed: Letter case for guest checkout section separator.
 
 = 1.5.3 - 2022-03-03 =
 
