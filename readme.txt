@@ -350,6 +350,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Compatibility with plugin Polylang.
 * Added: Translation to Italian (Italy). Thanks to Samuele from floralgarden.it.
 * Added: Translation to Turkish (Turkey). Thanks to Orkun Akça.
+* Improved: Compatibility with Brazilian Market, set fields as required according to the person type selected.
 * Fixed: Email validation should consider an empty optional email field as valid.
 * Fixed: Remove duplicate phone numbers on emails.
 * Fixed: Layout and alignment of the place order section.
