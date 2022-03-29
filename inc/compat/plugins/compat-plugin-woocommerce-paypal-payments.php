@@ -35,8 +35,10 @@ class FluidCheckout_WooCommercePayPalPayments extends FluidCheckout {
 			add_action( 'fc_output_step_payment', array( $smart_button_module, 'button_renderer' ), 110 );
 
 			// Widget area after submit button
-			remove_action( 'woocommerce_review_order_after_submit', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 50 );
-			add_action( 'fc_output_step_payment', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 150 );
+			if ( class_exists( 'FluidCheckout_CheckoutWidgetAreas' ) ) {
+				remove_action( 'woocommerce_review_order_after_submit', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 50 );
+				add_action( 'fc_output_step_payment', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 150 );
+			}
 		}
 	}
 
