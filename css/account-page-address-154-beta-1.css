@@ -97,6 +97,7 @@ div.woocommerce form #payment .form-row.form-row-middle {
 
 div.woocommerce form .form-row.place-order {
   float: none;
+  display: block;
 }
 
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
