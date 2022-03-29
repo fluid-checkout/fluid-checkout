@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-03 18:58+0000\n"
-"PO-Revision-Date: 2022-03-18 20:10+0000\n"
+"PO-Revision-Date: 2022-03-29 12:58+0000\n"
 "Last-Translator: BeyazBirKutu\n"
-"Language-Team: Türkçe\n"
-"Language: tr-TR\n"
+"Language-Team: Turkish\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,7 +68,7 @@ msgstr "Sevkiyat adresi formuna bir telefon alanı ekleyin"
 msgid "Add widget areas to the checkout page"
 msgstr "Ödeme sayfasına widget alanları ekleyin"
 
-#: inc/checkout-steps.php:1795
+#: inc/checkout-steps.php:1798
 msgid "Additional notes"
 msgstr "Ek notlar"
 
@@ -98,7 +98,7 @@ msgctxt "Amazon Pay Express elements"
 msgid "Only button"
 msgstr "Yalnızca düğme"
 
-#: inc/checkout-steps.php:1567
+#: inc/checkout-steps.php:1570
 msgid "An account will be created with the information provided."
 msgstr "Verdiğiniz bilgilerle yeni bir hesap oluşturulacaktır."
 
@@ -119,7 +119,7 @@ msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 "\"Fatura adresi teslimat adresiyle aynı\" ayarı varsayılan olarak seçilir"
 
-#: inc/checkout-steps.php:2529
+#: inc/checkout-steps.php:2532
 msgid "Billing to"
 msgstr "Fatura Bilgileri"
 
@@ -159,7 +159,7 @@ msgstr "Sepet toplamı:"
 msgid "Change email address to: {suggestion-value}"
 msgstr "E-posta adresini şu şekilde değiştirin: {suggestion-value}"
 
-#: inc/checkout-steps.php:1252
+#: inc/checkout-steps.php:1255
 #, php-format
 msgid "Change: %s"
 msgstr "Değiştir: %s"
@@ -212,12 +212,12 @@ msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Gönderim"
 
-#: inc/checkout-steps.php:1252
+#: inc/checkout-steps.php:1255
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Değiştir"
 
-#: inc/checkout-steps.php:1253
+#: inc/checkout-steps.php:1256
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Değişiklikleri kaydet"
@@ -435,7 +435,7 @@ msgstr ""
 msgid "Do not hide \"Address line 2\" fields behind a link button"
 msgstr "Bir bağlantı düğmesinin arkasına \"Adres satırı 2\" alanlarını gizleme"
 
-#: templates/fc/checkout/review-order-section.php:41 
+#: templates/fc/checkout/review-order-section.php:41
 #: templates/fc/checkout/review-order-section.php:58
 msgid "Edit Cart"
 msgstr "Sepeti Düzenle"
@@ -457,7 +457,7 @@ msgstr "Ödeme sırasında hızlı ödeme bölümünü etkinleştirin"
 msgid "Enter your code here"
 msgstr "Kodunuzu buraya girin"
 
-#: inc/checkout-express-checkout.php:34 
+#: inc/checkout-express-checkout.php:34
 #: inc/admin/admin-settings-general.php:236
 msgid "Express checkout"
 msgstr "Hızlı ödeme"
@@ -488,12 +488,12 @@ msgstr "WooCommerce için Germanized"
 msgid "Gift message"
 msgstr "Hediye mesajı"
 
-#: inc/checkout-gift-options.php:469 
+#: inc/checkout-gift-options.php:469
 #: templates/fc/order/order-details-gift-options-email-plain-text.php:28
 msgid "Gift message from:"
 msgstr "Hediye mesajı:"
 
-#: inc/checkout-gift-options.php:461 
+#: inc/checkout-gift-options.php:461
 #: templates/fc/order/order-details-gift-options-email-plain-text.php:23
 msgid "Gift message:"
 msgstr "Hediye mesajı:"
@@ -532,7 +532,7 @@ msgstr "Bir bağlantı düğmesinin arkasındaki isteğe bağlı alanları gizle
 msgid "House number and street name."
 msgstr "Ev numarası ve sokak adı."
 
-#: inc/admin/admin-settings-general.php:82 
+#: inc/admin/admin-settings-general.php:82
 #: inc/admin/admin-settings-general.php:92
 msgid "HTML color value. ie: #f3f3f3"
 msgstr "HTML renk değeri. örn: #f3f3f3"
@@ -610,7 +610,7 @@ msgctxt "Label on the order details for person sending the gift"
 msgid "From:"
 msgstr "Kimden:"
 
-#: inc/admin/admin-settings-advanced.php:78 
+#: inc/admin/admin-settings-advanced.php:78
 #: inc/admin/admin-settings-general.php:53
 msgid "Layout"
 msgstr "Düzen"
@@ -674,7 +674,7 @@ msgstr "Kaydırırken sipariş özetinin görünür kalmasını sağlayın"
 msgid "Multi-step"
 msgstr "Çok adımlı"
 
-#: inc/checkout-steps.php:1505
+#: inc/checkout-steps.php:1508
 msgid "My contact"
 msgstr "İletişim"
 
@@ -697,7 +697,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2175
+#: inc/checkout-steps.php:2178
 msgid "Not selected yet."
 msgstr "Henüz seçilmedi."
 
@@ -711,7 +711,7 @@ msgctxt "Notice for no gift options provided"
 msgid "None."
 msgstr "Yok."
 
-#: inc/checkout-steps.php:2231
+#: inc/checkout-steps.php:2234
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Yok."
@@ -760,7 +760,7 @@ msgstr "Opsiyonel"
 msgid "Order number and receipt will be sent to this email address."
 msgstr "Sipariş numarası ve makbuz bu e-posta adresine gönderilecektir."
 
-#: inc/checkout-steps.php:3307 inc/admin/admin-settings-advanced.php:85 
+#: inc/checkout-steps.php:3310 inc/admin/admin-settings-advanced.php:85
 #: inc/admin/admin-settings-advanced.php:104
 msgid "Order summary"
 msgstr "Sipariş özeti"
@@ -773,7 +773,7 @@ msgstr "Paketleme Fişleri"
 msgid "Page background color"
 msgstr "Sayfa arka plan rengi"
 
-#: inc/checkout-steps.php:3203
+#: inc/checkout-steps.php:3206
 msgid "Payment method"
 msgstr "Ödeme yöntemi"
 
@@ -781,7 +781,7 @@ msgstr "Ödeme yöntemi"
 msgid "Pickup Date"
 msgstr "Alım Tarihi"
 
-#: inc/checkout-local-pickup.php:211
+#: inc/checkout-local-pickup.php:206
 msgid "Pickup point"
 msgstr "Alım noktası"
 
@@ -831,6 +831,10 @@ msgstr ""
 "varyasyonları sipariş özetinde çok fazla yer almıyorsa önerilir."
 
 #: inc/admin/admin-settings-general.php:134
+#| msgid ""
+#| "Recommended only whe most customers actually need the \"Address line 2\" "
+#| "field, or when getting the right shipping address is crucial (ie. if "
+#| "delivering food and other perishable products)."
 msgid ""
 "Recommended only when most customers actually need the \"Address line 2\" "
 "field, or when getting the right shipping address is crucial (ie. if "
@@ -852,12 +856,12 @@ msgstr ""
 "Yerel Teslim Alma gönderi yöntemi seçildiğinde gönderi adresi bölümünü "
 "kaldırır"
 
-#: inc/checkout-steps.php:2711
+#: inc/checkout-steps.php:2714
 msgid "Same as shipping address"
 msgstr "Sevkiyat adresiyle aynı"
 
-#: inc/admin/admin-setting-type-fc-image-uploader.php:97 
-#: inc/admin/admin-setting-type-fc-image-uploader.php:98 
+#: inc/admin/admin-setting-type-fc-image-uploader.php:97
+#: inc/admin/admin-setting-type-fc-image-uploader.php:98
 #: inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Bir resim seçin"
@@ -881,7 +885,7 @@ msgctxt "Settings section title"
 msgid "Tools"
 msgstr "Araçlar"
 
-#: inc/checkout-steps.php:1771
+#: inc/checkout-steps.php:1774
 msgid "Shipping method"
 msgstr "Kargo"
 
@@ -899,7 +903,7 @@ msgctxt "Shipping methods substep position"
 msgid "Before shipping address"
 msgstr "Sevkiyat adresinden önce"
 
-#: inc/checkout-shipping-phone-field.php:55 
+#: inc/checkout-shipping-phone-field.php:55
 #: inc/admin/admin-settings-general.php:154
 msgid "Shipping phone"
 msgstr "Telefon numarası"
@@ -929,7 +933,7 @@ msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr "Gerekli"
 
-#: inc/checkout-steps.php:1747
+#: inc/checkout-steps.php:1750
 msgid "Shipping to"
 msgstr "Alıcı Bilgileri"
 
@@ -954,26 +958,26 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Ödeme sayfasında site başlığı için boşluk (piksel olarak)"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1071
+#: inc/checkout-steps.php:1074
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Adım %1$s / %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:1923
+#: inc/checkout-steps.php:1926
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:1928
+#: inc/checkout-steps.php:1931
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:1366
+#: inc/checkout-steps.php:1369
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Yok."
