@@ -108,7 +108,6 @@
 }
 
 .woocommerce ul#shipping_method .shipping-method__option input[type="radio"] + .shipping-method__option-label:after {
-	@include icon-styles();
 	@include icon( 'i-check-small' );
 	@include icon-size( $shipping-method-radio-size );
 

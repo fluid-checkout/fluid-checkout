@@ -143,14 +143,12 @@
 	}
 }
 .fc-checkout-header .fc-checkout__cart-link:before {
-	@include icon-styles();
 	@include icon( 'i-cart' );
 	@include icon-size( $icon-size-small );
 
 	margin-right: $global-spacing-extra-small;
 }
 .fc-checkout-header .fc-checkout__cart-link:after {
-	@include icon-styles();
 	@include icon( 'i-chevron-down' );
 	@include icon-size( $icon-size-small );
 }

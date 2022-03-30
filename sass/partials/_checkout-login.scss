@@ -94,7 +94,6 @@
 	right: $global-spacing-small;
 }
 .fc-login-form .button--flyout-close:before {
-	@include icon-styles();
 	@include icon( 'i-x' );
 	@include icon-size( $icon-size );
 }
