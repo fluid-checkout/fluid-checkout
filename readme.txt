@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 5.9
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -194,15 +194,18 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 * Elementor - by Elementor Team
 * Flexible Shipping - by WP Desk
 * Germanized for WooCommerce - by vendidero
+* Klaviyo - by Klaviyo.
+* MailerLite WooCommerce Integration - by MailerLite
+* MailPoet - by MailPoet
 * SG Map to Address - by Sevengits
 * SG Checkout Location Picker for WooCommerce - by Sevengits
-* MailPoet - by MailPoet
 * WooCommerce Correios - by Claudio Sanches
 * WooCommerce PDF Invoices & Packing Slips - by Ewout Fernhout
 
 = Premium Plugins =
 
 * Captcha Pro - by BestWebSoft
+* FluentCRM Pro - by Fluent CRM
 * German Market - by MarketPress
 * WooCommerce Delivery & Pickup Date Time Pro - by CodeRockz
 * WooCommerce Print Invoices/Packing Lists - by SkyVerge
@@ -239,6 +242,7 @@ Currently the plugin is translated into the languages below, and more are commin
 * Portuguese - Brazil
 * Spanish - Spain (thanks to @gio15, senseiwpacademy.com)
 * Swedish - Sweden (thanks to @kozley, @tobifjellner, @elbogen)
+* Turkish - Turkey (thanks to @orkunakca)
 
 ** Comming soon **
 
@@ -340,7 +344,21 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 = Unreleased =
 
 * Improved: Refactor make SCSS code reusable by using variables like `$_body-theme-selector` and `$_body-page-selector`.
+
+= 1.5.4 - 2022-03-29 =
+
+* Added: Compatibility with plugin Fluent CRM.
+* Added: Compatibility with plugin Klaviyo.
+* Added: Compatibility with plugin MailerLite WooCommerce Integration.
+* Added: Compatibility with plugin MailPoet.
+* Added: Compatibility with plugin Polylang.
 * Added: Translation to Italian (Italy). Thanks to Samuele from floralgarden.it.
+* Added: Translation to Turkish (Turkey). Thanks to Orkun Akça.
+* Improved: Compatibility with Brazilian Market, set fields as required according to the person type selected.
+* Fixed: Email validation should consider an empty optional email field as valid.
+* Fixed: Remove duplicate phone numbers on emails.
+* Fixed: Layout and alignment of the place order section.
+* Fixed: Letter case for guest checkout section separator.
 
 = 1.5.3 - 2022-03-03 =
 

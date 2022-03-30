@@ -131,7 +131,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 					array(
 						'desc'              => __( 'Do not hide "Address line 2" fields behind a link button', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Recommended only whe most customers actually need the "Address line 2" field, or when getting the right shipping address is crucial (ie. if delivering food and other perishable products).', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Recommended only when most customers actually need the "Address line 2" field, or when getting the right shipping address is crucial (ie. if delivering food and other perishable products).', 'fluid-checkout' ),
 						'id'                => 'fc_hide_optional_fields_skip_address_2',
 						'default'           => 'no',
 						'type'              => 'checkbox',

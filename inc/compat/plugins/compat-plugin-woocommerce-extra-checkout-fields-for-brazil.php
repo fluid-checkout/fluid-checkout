@@ -275,12 +275,20 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		// Bail if person type fields are set as required only when billing country is Brazil
 		if ( $only_brazil && 'BR' !== $billing_country ) { return $new_fields; }
 
-		// Set existing fields are required
+		// Get person type
+		$person_type = WC()->checkout()->get_value( 'billing_persontype' );
+
+		// Set existing fields as required
 		if ( array_key_exists( 'billing_persontype', $new_fields ) ) { $new_fields[ 'billing_persontype' ][ 'required' ] = true; }
-		if ( array_key_exists( 'billing_cpf', $new_fields ) ) { $new_fields[ 'billing_cpf' ][ 'required' ] = true; }
-		if ( array_key_exists( 'billing_rg', $new_fields ) ) { $new_fields[ 'billing_rg' ][ 'required' ] = true; }
-		if ( array_key_exists( 'billing_cnpj', $new_fields ) ) { $new_fields[ 'billing_cnpj' ][ 'required' ] = true; }
-		if ( array_key_exists( 'billing_ie', $new_fields ) ) { $new_fields[ 'billing_ie' ][ 'required' ] = true; }
+
+		if ( 1 == $person_type ) { // 1 = Individual
+			if ( array_key_exists( 'billing_cpf', $new_fields ) ) { $new_fields[ 'billing_cpf' ][ 'required' ] = true; }
+			if ( array_key_exists( 'billing_rg', $new_fields ) ) { $new_fields[ 'billing_rg' ][ 'required' ] = true; }
+		}
+		else if ( 2 == $person_type ) { // 2 = Legal Person
+			if ( array_key_exists( 'billing_cnpj', $new_fields ) ) { $new_fields[ 'billing_cnpj' ][ 'required' ] = true; }
+			if ( array_key_exists( 'billing_ie', $new_fields ) ) { $new_fields[ 'billing_ie' ][ 'required' ] = true; }
+		}
 
 		return $new_fields;
 	}
