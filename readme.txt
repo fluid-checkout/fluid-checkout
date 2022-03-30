@@ -144,6 +144,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 * Hazel - by Select Themes
 * Impreza - by UpSolution
 * Kentha - by QantumThemes
+* LeadEngine - by Key-Design
 * Mr. Tailor - by Get Bowtied
 * OnAir2 - by QantumThemes
 * Phlox PRO - by averta
@@ -343,6 +344,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Added: Compatibility with theme LeadEngine.
 * Fixed: Fatal error when Checkout Widgets feature is disabled while WooCommerce PayPal Payments plugin is active.
 
 = 1.5.4 - 2022-03-29 =
