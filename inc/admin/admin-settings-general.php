@@ -50,14 +50,14 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 				'fc_checkout_general_settings',
 				array(
 					array(
-						'title' => __( 'Layout', 'fluid-checkout' ),
+						'title' => __( 'Checkout Layout', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'fc_checkout_layout_options',
 					),
 
 					array(
-						'title'             => __( 'Checkout Layout', 'fluid-checkout' ),
+						'title'             => __( 'Layout Options', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_layout',
 						'type'              => 'fc_layout_selector',
 						'options'           => FluidCheckout_Steps::instance()->get_allowed_checkout_layouts(),

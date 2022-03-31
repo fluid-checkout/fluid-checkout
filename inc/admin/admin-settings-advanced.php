@@ -75,7 +75,7 @@ class WC_Settings_FluidCheckout_Advanced_Settings extends WC_Settings_Page {
 
 			$settings = array(
 				array(
-					'title' => __( 'Layout', 'fluid-checkout' ),
+					'title' => __( 'Checkout', 'fluid-checkout' ),
 					'type'  => 'title',
 					'desc'  => '',
 					'id'    => 'fc_checkout_advanced_layout_options',
