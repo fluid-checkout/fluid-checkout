@@ -273,6 +273,13 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   position: relative;
 }
 
+.fc-wrapper::after {
+  content: "";
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
 .fc-sidebar {
   position: static;
 }

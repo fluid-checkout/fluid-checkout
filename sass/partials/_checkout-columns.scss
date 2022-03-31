@@ -33,6 +33,9 @@ body:not( .has-checkout-must-login-notice ) .fc-inside {
 .fc-wrapper {
 	position: relative;
 }
+.fc-wrapper::after {
+	@include clearfix();
+}
 
 
 
