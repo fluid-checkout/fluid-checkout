@@ -20,7 +20,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Widget Areas
-		add_action( 'widgets_init', array( $this, 'register_checkout_widgets_areas' ), 50 );
+		add_action( 'widgets_init', array( $this, 'register_widgets_areas' ), 50 );
 		add_action( 'fc_checkout_header_widgets', array( $this, 'output_widget_area_checkout_header' ), 50 );
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_widget_area_checkout_header_below' ), 3 ); // Displays widgets before the progress bar
 		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_widget_area_order_review_inside' ), 50 );
@@ -33,9 +33,9 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 
 
 	/**
-	 * Register widget areas for the checkout page.
+	 * Register widget areas.
 	 */
-	public function register_checkout_widgets_areas() {
+	public function register_widgets_areas() {
 
 		register_sidebar( array(
 			'name'          => __( 'Checkout Header - Desktop', 'fluid-checkout' ),
