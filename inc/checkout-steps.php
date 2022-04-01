@@ -2413,6 +2413,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
 				'package_index'				=> $i,
 				'chosen_method'				=> $chosen_method,
+				'first_package'             => $first_item
 			) );
 
 			$first_item = false;

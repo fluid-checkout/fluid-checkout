@@ -6,14 +6,39 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.5.2
+ * @version 1.6.0
  * @wc-version 3.6.0
  * @wc-original cart/cart-shipping.php
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$formatted_destination    = isset( $formatted_destination ) ? $formatted_destination : WC()->countries->get_formatted_address( $package['destination'], ', ' );
+$has_calculated_shipping  = ! empty( $has_calculated_shipping );
+$show_shipping_calculator = ! empty( $show_shipping_calculator );
+$calculator_text          = '';
 ?>
+
 <div class="shipping shipping-method__package" data-title="<?php echo esc_attr( $package_name ); ?>" data-package-index="<?php echo esc_attr( $package_index ); ?>">
+
+	<?php if ( is_cart() && $first_package ) : ?>
+		<p class="woocommerce-shipping-destination">
+			<?php
+			if ( $formatted_destination ) {
+				// Translators: $s shipping destination.
+				printf( esc_html__( 'Shipping to %s.', 'woocommerce' ) . ' ', '<strong>' . esc_html( $formatted_destination ) . '</strong>' );
+				$calculator_text = esc_html__( 'Change address', 'woocommerce' );
+			} else {
+				echo wp_kses_post( apply_filters( 'woocommerce_shipping_estimate_html', __( 'Shipping options will be updated during checkout.', 'woocommerce' ) ) );
+			}
+			?>
+		</p>
+
+		<?php if ( ! empty( $show_shipping_calculator ) ) : ?>
+			<?php woocommerce_shipping_calculator( $calculator_text ); ?>
+		<?php endif; ?>
+
+	<?php endif; ?>
 
 	<?php // CHANGE: Conditionally add the shipping package name ?>
 	<?php if ( true === apply_filters( 'fc_shipping_method_display_package_name', false ) ) : ?>
@@ -21,8 +46,6 @@ defined( 'ABSPATH' ) || exit;
 	<?php endif; ?>
 
 	<?php if ( count( $available_methods ) > 0 ) : ?>
-
-		<?php // CHANGE: Conditionally add  ?>
 
 		<?php echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
 
@@ -66,10 +89,6 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php if ( $show_package_details ) : ?>
 		<?php echo '<p class="woocommerce-shipping-contents"><small>' . esc_html( $package_details ) . '</small></p>'; ?>
-		<?php endif; ?>
-
-		<?php if ( ! empty( $show_shipping_calculator ) ) : ?>
-		<?php woocommerce_shipping_calculator(); ?>
 		<?php endif; ?>
 
 	<?php else: ?>
