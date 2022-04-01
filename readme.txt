@@ -343,6 +343,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Improved: Display the shipping calculator above the shipping methods in the cart page (PRO feature).
 * Improved: Refactor make SCSS code reusable by using variables like `$_body-theme-selector` and `$_body-page-selector`.
 
 = 1.5.4 - 2022-03-29 =
