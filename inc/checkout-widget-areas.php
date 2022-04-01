@@ -37,25 +37,30 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 */
 	public function register_widgets_areas() {
 
-		register_sidebar( array(
-			'name'          => __( 'Checkout Header - Desktop', 'fluid-checkout' ),
-			'id'            => 'fc_checkout_header',
-			'description'   => __( 'Display widgets on the checkout header for large screens. Only displayed if using the plugin\'s checkout header.', 'fluid-checkout' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		) );
+		// Only register header widget areas when using Fluid Checkout header
+		if ( 'yes' === get_option( 'fc_hide_site_header_footer_at_checkout', 'yes' ) ) {
 
-		register_sidebar( array(
-			'name'          => __( 'Checkout Header - Mobile', 'fluid-checkout' ),
-			'id'            => 'fc_checkout_below_header',
-			'description'   => __( 'Display widgets below the checkout header for mobile devices. Only displayed if using the plugin\'s checkout header.', 'fluid-checkout' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</div>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		) );
+			register_sidebar( array(
+				'name'          => __( 'Checkout Header - Desktop', 'fluid-checkout' ),
+				'id'            => 'fc_checkout_header',
+				'description'   => __( 'Display widgets on the checkout header for large screens. Only displayed if using the plugin\'s checkout header.', 'fluid-checkout' ),
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2 class="widget-title">',
+				'after_title'   => '</h2>',
+			) );
+
+			register_sidebar( array(
+				'name'          => __( 'Checkout Header - Mobile', 'fluid-checkout' ),
+				'id'            => 'fc_checkout_below_header',
+				'description'   => __( 'Display widgets below the checkout header for mobile devices. Only displayed if using the plugin\'s checkout header.', 'fluid-checkout' ),
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2 class="widget-title">',
+				'after_title'   => '</h2>',
+			) );
+
+		}
 
 
 
@@ -101,6 +106,9 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 * Output widget area on the checkout header.
 	 */
 	public function output_widget_area_checkout_header() {
+		// Bail if not on the checkout page
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) { return; }
+
 		if ( is_active_sidebar( 'fc_checkout_header' ) || has_action( 'fc_checkout_header_widgets_inside_before' ) || has_action( 'fc_checkout_header_widgets_inside_after' ) ) :
 			echo '<div class="fc-checkout__header-widgets">';
 			do_action( 'fc_checkout_header_widgets_inside_before' );
@@ -114,6 +122,9 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 * Output widget area below the checkout progress bar.
 	 */
 	public function output_widget_area_checkout_header_below() {
+		// Bail if not on the checkout page
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) { return; }
+
 		if ( is_active_sidebar( 'fc_checkout_below_header' ) ) :
 			echo '<div class="fc-checkout__below-header-widgets">';
 			dynamic_sidebar( 'fc_checkout_below_header' );

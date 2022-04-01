@@ -341,8 +341,9 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
-= Unreleased =
+= Unreleased - 1.6.0 =
 
+* Improved: Only register checkout header widget areas when using the Fluid Checkout header template.
 * Improved: Display the shipping calculator above the shipping methods in the cart page (PRO feature).
 * Improved: Refactor make SCSS code reusable by using variables like `$_body-theme-selector` and `$_body-page-selector`.
 
