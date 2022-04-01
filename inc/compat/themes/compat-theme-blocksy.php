@@ -22,7 +22,7 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 		// Bail if current theme is not blocksy
 		if ( 'blocksy' !== get_template() ) { return; }
 
-        // Bail if not on checkout or cart page or doing AJAX call
+		// Bail if not on checkout or cart page or doing AJAX call
 		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
 		// Very late hooks
