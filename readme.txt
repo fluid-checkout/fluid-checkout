@@ -238,6 +238,7 @@ All labels and other texts added or changed by the plugin are translatable using
 Currently the plugin is translated into the languages below, and more are comming soon:
 
 * English (Default)
+* Dutch - Netherlands (thanks to Robin Bak)
 * German - Germany (thanks to @reilix, felix-gudowius.de)
 * Italian - Italy (thanks to Samuele, floralgarden.it)
 * Portuguese - Brazil
@@ -245,11 +246,9 @@ Currently the plugin is translated into the languages below, and more are commin
 * Swedish - Sweden (thanks to @kozley, @tobifjellner, @elbogen)
 * Turkish - Turkey (thanks to @orkunakca)
 
-** Comming soon **
+** Want Fluid Checkout in your language? **
 
-* Dutch (soon)
-* German - Formal (soon)
-* Spanish - Argentina (soon)
+Please contribute your language to the plugin to make it even more useful. Send your translation files through our [support channel](https://fluidcheckout.com/support/).
 
 ** RTL Support **
 
@@ -258,7 +257,6 @@ Currently the plugin is translated into the languages below, and more are commin
 ** Note: **
 Fluid Checkout is fully localized/translatable. This is very important for all users worldwide.
 For translating Fluid Checkout, we recommend the plugin ["Loco Translate - By Tim Whitlock"](https://wordpress.org/plugins/loco-translate/).
-Please contribute your language to the plugin to make it even more useful. Send your translation files through our [support channel](https://fluidcheckout.com/support/).
 
 
 == Contributions are welcome ==
@@ -345,6 +343,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 = Unreleased =
 
 * Added: Compatibility with theme LeadEngine.
+* Added: Translation to Dutch (Netherlands). Thanks to Robin Bak.
 * Fixed: Fatal error when Checkout Widgets feature is disabled while WooCommerce PayPal Payments plugin is active.
 
 = 1.5.4 - 2022-03-29 =
