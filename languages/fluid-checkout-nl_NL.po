@@ -1,0 +1,1207 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Fluid Checkout for WooCommerce\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-26 08:40+0000\n"
+"PO-Revision-Date: 2022-04-02 11:33+0000\n"
+"Last-Translator: \n"
+"Language-Team: Dutch\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.6; wp-5.5.3\n"
+
+#: inc/admin/admin-settings-advanced.php:105
+#, fuzzy
+msgid ""
+"(Experimental) Display an additional \"Place order\" and terms checkbox "
+"below the order summary in the sidebar."
+msgstr ""
+"(Experimenteel) Toon een extra \"Plaats bestelling\" en voorwaarden "
+"selectievakje onder het besteloverzicht in de zijbalk."
+
+#: inc/admin/admin-settings-advanced.php:121
+#, fuzzy
+msgid "(Experimental) Use theme's page header and footer for the checkout page"
+msgstr ""
+"(Experimenteel) Gebruik de paginakoptekst en voettekst van het thema voor de "
+"afrekenpagina"
+
+#: inc/checkout-validation.php:230
+#, fuzzy
+msgid "(Required)"
+msgstr "(Vereist)"
+
+#: fluid-checkout.php:377
+#, fuzzy, php-format
+msgid ""
+"<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
+"activated. <a href=\"%3$s\">Activate WooCommerce</a>"
+msgstr ""
+"<strong>%1$s</strong> vereist dat <strong>%2$s</strong> geïnstalleerd en "
+"geactiveerd is. <a href=\"%3$s\">activeer WooCommerce</a>"
+
+#: fluid-checkout.php:374
+#, fuzzy, php-format
+msgid ""
+"<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
+"activated. <a href=\"%3$s\">Go to Plugin Search</a>"
+msgstr ""
+"<strong>%1$s</strong> vereist dat <strong>%2$s</strong> geïnstalleerd en "
+"geactiveerd is. <a href=\"%3$s\">Ga naar Plugin zoeken</a>"
+
+#. %s: Form field label
+#: inc/checkout-coupon-codes.php:114 inc/checkout-hide-optional-fields.php:113
+#, php-format
+msgid "Add %s"
+msgstr "Voeg %s toe"
+
+#: templates/fc/checkout/form-gift-options.php:52
+#, fuzzy
+msgid "Add a gift message"
+msgstr "Voeg een geschenkbericht toe"
+
+#: inc/admin/admin-settings-general.php:155
+#, fuzzy
+msgid "Add a phone field to the shipping address form"
+msgstr "Voeg een telefoonveld toe aan het formulier voor het verzendadres"
+
+#: inc/admin/admin-settings-general.php:278
+#, fuzzy
+msgid "Add widget areas to the checkout page"
+msgstr "Voeg widget-gebieden toe aan de afrekenpagina"
+
+#: inc/checkout-steps.php:1798
+msgid "Additional notes"
+msgstr "Bestelnotities"
+
+#: inc/admin/admin-settings-advanced.php:51
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+#: inc/admin/admin-settings-general.php:248
+#, fuzzy
+msgid ""
+"Allow customers to add a gift message and other gift related options to the "
+"order."
+msgstr ""
+"Sta klanten toe een geschenkboodschap en andere geschenkgerelateerde opties "
+"aan de bestelling toe te voegen."
+
+#: templates/fc/checkout/form-contact-login.php:24
+msgid "Already have an account?"
+msgstr "Heb je al een account?"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-amazon-payments-advanced.php:101
+#, fuzzy
+msgctxt "Amazon Pay Express elements"
+msgid "Button and message"
+msgstr "Knop en bericht"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-amazon-payments-advanced.php:100
+#, fuzzy
+msgctxt "Amazon Pay Express elements"
+msgid "Only button"
+msgstr "Alleen knop"
+
+#: inc/checkout-steps.php:1570
+msgid "An account will be created with the information provided."
+msgstr "Er wordt een account aangemaakt met de verstrekte informatie."
+
+#: inc/checkout-fields.php:96
+#, fuzzy
+msgid "Apartment, unit, building, floor, etc."
+msgstr "Appartement, eenheid, gebouw, verdieping, enz."
+
+#: inc/admin/admin-settings-advanced.php:96
+#, fuzzy
+msgid "Applies only to multi-step layouts."
+msgstr "Geldt alleen voor multi-step layouts."
+
+#: inc/admin/admin-settings-general.php:144
+#, fuzzy
+msgid "Billing Address"
+msgstr "Factureringsadres"
+
+#: inc/admin/admin-settings-general.php:145
+#, fuzzy
+msgid "Billing address same as the shipping address checked by default"
+msgstr "Factuuradres hetzelfde als het verzendadres standaard aangevinkt"
+
+#: inc/checkout-steps.php:2532
+msgid "Billing to"
+msgstr "Factuurgegevens"
+
+#: inc/checkout-gift-options.php:173
+#, fuzzy, php-format
+msgid "Brief message with up to %d characters, printed on the packing slip."
+msgstr "Korte boodschap van maximaal %d tekens, afgedrukt op de pakbon."
+
+#: inc/checkout-gift-options.php:173
+#, fuzzy
+msgid "Brief message, printed on the packing slip."
+msgstr "Korte boodschap, gedrukt op de pakbon."
+
+#: inc/checkout-coupon-codes.php:91
+msgctxt "Button label for applying coupon codes"
+msgid "Apply"
+msgstr "Toepassen"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:68
+#, fuzzy
+msgctxt "Captcha position"
+msgid "Before place order button"
+msgstr "Vóór plaats bestelling knop"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:67
+#, fuzzy
+msgctxt "Captcha position"
+msgid "Before place order section"
+msgstr "Vóór het plaatsen van de bestelling"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:63
+#, fuzzy
+msgid "Captcha Pro by BestWebSoft"
+msgstr "Captcha Pro door BestWebSoft"
+
+#: inc/checkout-steps.php:434
+#, fuzzy
+msgid "Cart total:"
+msgstr "Karretje totaal:"
+
+#: inc/checkout-validation.php:97
+#, fuzzy
+msgid "Change email address to: {suggestion-value}"
+msgstr "Verander e-mail adres in: {suggestie-waarde}"
+
+#: inc/checkout-steps.php:1255
+#, php-format
+msgid "Change: %s"
+msgstr "Wijzig %s"
+
+#: inc/admin/admin-settings-fluid-checkout.php:39
+#, fuzzy
+msgid "Checkout"
+msgstr "Kassa"
+
+#: inc/checkout-widget-areas.php:85
+#, fuzzy
+msgid "Checkout Below Place Order"
+msgstr "Hieronder afrekenen Bestelling plaatsen"
+
+#: inc/checkout-widget-areas.php:41
+#, fuzzy
+msgid "Checkout Header - Desktop"
+msgstr "Kassa koptekst - Desktop"
+
+#: inc/checkout-widget-areas.php:51
+#, fuzzy
+msgid "Checkout Header - Mobile"
+msgstr "Kassa koptekst - Mobiel"
+
+#: inc/admin/admin-settings-general.php:60
+#, fuzzy
+msgid "Checkout Layout"
+msgstr "Lay-out van de kassa"
+
+#: inc/checkout-widget-areas.php:75
+#, fuzzy
+msgid "Checkout Order Summary"
+msgstr "Overzicht bestelling afrekenen"
+
+#: inc/checkout-widget-areas.php:63
+#, fuzzy
+msgid "Checkout Sidebar"
+msgstr "Kassa zijbalk"
+
+#: inc/checkout-steps.php:950
+msgctxt "Checkout step title"
+msgid "Billing"
+msgstr "Betaling"
+
+#: inc/checkout-steps.php:929
+msgctxt "Checkout step title"
+msgid "Contact"
+msgstr "Contact"
+
+#: inc/checkout-steps.php:959
+msgctxt "Checkout step title"
+msgid "Payment"
+msgstr "Betaling"
+
+#: inc/checkout-steps.php:939
+msgctxt "Checkout step title"
+msgid "Shipping"
+msgstr "Verzending"
+
+#: inc/checkout-steps.php:1255
+msgctxt "Checkout substep change link label"
+msgid "Change"
+msgstr "Aanpassen"
+
+#: inc/checkout-steps.php:1256
+msgctxt "Checkout substep save link label"
+msgid "Save changes"
+msgstr "Sla aanpassing op"
+
+#: inc/admin/admin-settings-general.php:277
+#, fuzzy
+msgid "Checkout Widget Areas"
+msgstr "Afrekenen Widget Gebieden"
+
+#: inc/admin/admin-settings-general.php:81
+#, fuzzy
+msgid ""
+"Choose a background color for the checkout page header. Only applies when "
+"using the plugin's checkout header."
+msgstr ""
+"Kies een achtergrondkleur voor de koptekst van de afrekenpagina. Geldt "
+"alleen als je de koptekst van de plugin gebruikt."
+
+#: inc/admin/admin-settings-general.php:91
+#, fuzzy
+msgid ""
+"Choose a background color for the checkout page. Color is applied to the <em>"
+"body</em> element."
+msgstr ""
+"Kies een achtergrondkleur voor de kassapagina. De kleur wordt toegepast op "
+"het <em>body</em> element."
+
+#: inc/admin/admin-settings-general.php:72
+#, fuzzy
+msgid ""
+"Choose an image to be displayed on the checkout page header. Only applies "
+"when using the plugin's checkout header."
+msgstr ""
+"Kies een afbeelding die op de koptekst van de afrekenpagina getoond moet "
+"worden. Geldt alleen als je de koptekst van de plugin gebruikt."
+
+#: inc/admin/admin-settings-general.php:181
+#, fuzzy
+msgid "Choose in which position to display the shipping methods"
+msgstr "Kies in welke positie de verzendmethoden getoond moeten worden"
+
+#: inc/admin/admin-settings-general.php:168
+#, fuzzy
+msgid "Choose in which step to display the shipping phone"
+msgstr "Kies in welke stap je de verzendtelefoon wilt tonen"
+
+#: inc/checkout-steps.php:434
+#, fuzzy
+msgid "Click to go to the order summary"
+msgstr "Klik om naar het besteloverzicht te gaan"
+
+#: templates/fc/checkout/review-order-section.php:59
+msgid "Close and continue with checkout"
+msgstr "Sluiten en ga verder zonder afrekenen"
+
+#: templates/fc/checkout/form-contact-login-modal.php:25
+msgctxt "Close button aria-label"
+msgid "Close"
+msgstr "Sluiten"
+
+#: templates/fc/checkout/review-order-section.php:59
+msgid "Continue"
+msgstr "Doorgaan"
+
+#: inc/admin/admin-settings-advanced.php:116
+#, fuzzy
+msgid ""
+"Controls whether to use the Fluid Checkout page header and footer or keep "
+"the currently active theme's."
+msgstr ""
+"Bepaalt of de kop- en voettekst van de Fluid Checkout pagina gebruikt moeten "
+"worden of die van het huidige actieve thema moeten worden behouden."
+
+#: inc/checkout-coupon-codes.php:71 inc/checkout-coupon-codes.php:89
+msgid "Coupon code"
+msgstr "Kortingscode"
+
+#: templates/fc/checkout/form-account-creation.php:29
+#, fuzzy
+msgid "Create an account"
+msgstr "Maak een account aan"
+
+#: inc/admin/admin-settings-advanced.php:141
+#, fuzzy
+msgid "Debug mode"
+msgstr "Debug modus"
+
+#: inc/admin/admin-settings-advanced.php:140
+#, fuzzy
+msgid "Debug options"
+msgstr "Debug opties"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:64
+#, fuzzy
+msgid ""
+"Define the position to display the captcha section. Some positions might not "
+"work depending on the captcha type chosen."
+msgstr ""
+"Bepaal de positie om het captcha gedeelte te tonen. Sommige posities werken "
+"misschien niet, afhankelijk van het gekozen captcha type."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:101
+#, fuzzy
+msgid ""
+"Define the position to display the legal checkboxes. <br/>The legal "
+"checkboxes will be displayed in the payment section if the place order "
+"button is set to display in the payment section.<br/><span style=\"color:"
+"#f00;\"><strong>Disclaimer:</strong> by changing these settings, I confirm "
+"that I understand the legal implications of changing the position of the "
+"legal checkboxes on my checkout page.</span>"
+msgstr ""
+"Bepaal de plaats om de wettelijke checkboxen te tonen. <br/>De wettelijke "
+"checkboxen worden getoond in de betaalsectie als de plaats bestelling knop "
+"ingesteld is op weergave in de betaalsectie.<br/><span style=\"color:#f00;\">"
+"<strong>Disclaimer:</strong> Door deze instellingen te veranderen, bevestig "
+"ik dat ik de juridische implicaties begrijp van het veranderen van de "
+"positie van de wettelijke checkboxen op mijn afrekenpagina.</span>"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:89
+#, fuzzy
+msgid ""
+"Define the position to display the place order button. <br/><span "
+"style=\"color:#f00;\"><strong>Disclaimer:</strong> by changing these "
+"settings, I confirm that I understand the legal implications of changing the "
+"position of the legal checkboxes on my checkout page.</span>"
+msgstr ""
+"Bepaal de positie om de plaats bestelling knop te tonen. <br/><span "
+"style=\"color:#f00;\"><strong>Disclaimer:</strong> door deze instellingen te "
+"veranderen, bevestig ik dat ik de juridische implicaties begrijp van het "
+"veranderen van de positie van de wettelijke selectievakjes op mijn "
+"afrekenpagina.</span>"
+
+#: inc/admin/admin-settings-general.php:224
+#, fuzzy
+msgid "Define the visibility of the additional order notes field."
+msgstr "Bepaal de zichtbaarheid van het veld aanvullende ordernotities."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-amazon-payments-advanced.php:97
+#, fuzzy
+msgid ""
+"Define which components of the Amazon Pay express checkout button to display."
+msgstr ""
+"Bepaal welke onderdelen van de Amazon Pay express kassaknop getoond moeten "
+"worden."
+
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:113
+msgid "Delivery Date"
+msgstr "Afleverdatum"
+
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:105
+msgid "Delivery Options"
+msgstr "Afleveropties"
+
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:109
+msgid "Delivery or Pickup"
+msgstr "Afleveren of afhalen"
+
+#. %s: html for the email address typo correction suggestion link
+#: inc/checkout-validation.php:97
+#, fuzzy, php-format
+msgid "Did you mean %s?"
+msgstr "Bedoelde je %s?"
+
+#: inc/admin/admin-notices.php:55
+#, fuzzy
+msgid "Dismiss Notice"
+msgstr "Bericht van afwijzing"
+
+#: inc/admin/admin-settings-general.php:247
+#, fuzzy
+msgid "Display gift message and other gift options at the checkout page"
+msgstr "Toon geschenkboodschap en andere geschenkopties op de kassapagina"
+
+#: inc/admin/admin-settings-general.php:123
+#, fuzzy
+msgid "Display the \"Add\" link buttons in lowercase"
+msgstr "Geef de \"Add\" link knoppen in kleine letters weer"
+
+#: inc/admin/admin-settings-general.php:213
+#, fuzzy
+msgid "Display the coupon codes section title"
+msgstr "Geef de titel van de sectie couponcodes weer"
+
+#: inc/admin/admin-settings-general.php:266
+#, fuzzy
+msgid ""
+"Display the gift message as part of the order details table instead of a "
+"separate section"
+msgstr ""
+"Geef de geschenkboodschap weer als deel van de tabel met de bestelgegevens "
+"in plaats van een aparte rubriek"
+
+#: inc/admin/admin-settings-general.php:257
+#, fuzzy
+msgid "Display the gift message fields always expanded"
+msgstr "Geef de velden met geschenkberichten altijd uitgeklapt weer"
+
+#: inc/checkout-widget-areas.php:53
+#, fuzzy
+msgid ""
+"Display widgets below the checkout header for mobile devices. Only displayed "
+"if using the plugin's checkout header."
+msgstr ""
+"Toon widgets onder de koptekst van de kassa voor mobiele toestellen. Wordt "
+"alleen getoond als je de koptekst van de plugin gebruikt."
+
+#: inc/checkout-widget-areas.php:87
+#, fuzzy
+msgid "Display widgets below the place order button at the checkout page."
+msgstr "Toon widgets onder de plaats bestelling knop op de afrekenpagina."
+
+#: inc/checkout-widget-areas.php:77
+#, fuzzy
+msgid "Display widgets inside the order summary at the checkout page."
+msgstr "Toon widgets binnen het besteloverzicht op de afrekenpagina."
+
+#: inc/checkout-widget-areas.php:43
+#, fuzzy
+msgid ""
+"Display widgets on the checkout header for large screens. Only displayed if "
+"using the plugin's checkout header."
+msgstr ""
+"Toon widgets op de koptekst van de kassa voor grote schermen. Wordt alleen "
+"getoond als je de koptekst van de plugin gebruikt."
+
+#: inc/checkout-widget-areas.php:65
+#, fuzzy
+msgid "Display widgets on the checkout sidebar after the order summary."
+msgstr "Toon widgets op de checkout zijbalk na het besteloverzicht."
+
+#: inc/admin/admin-settings-general.php:238
+#, fuzzy
+msgid ""
+"Displays the express checkout section at checkout when supported payment "
+"gateways have this feature enabled."
+msgstr ""
+"Toont het express checkout gedeelte bij het afrekenen als ondersteunde "
+"betalingsgateways deze functie ingeschakeld hebben."
+
+#: inc/admin/admin-settings-general.php:133
+#, fuzzy
+msgid "Do not hide \"Address line 2\" fields behind a link button"
+msgstr "Verberg de velden \"Adresregel 2\" niet achter een linkknop"
+
+#: templates/fc/checkout/review-order-section.php:41
+#: templates/fc/checkout/review-order-section.php:58
+msgid "Edit Cart"
+msgstr "Wijzig winkelmand"
+
+#: inc/checkout-gift-options.php:357
+msgctxt "Edit gift options link on admin order details screen"
+msgid "Edit"
+msgstr "Bewerken"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:116
+#, fuzzy
+msgid "Enable Mail Check: (disabled feature)"
+msgstr "Mail Check inschakelen: (uitgeschakelde functie)"
+
+#: inc/admin/admin-settings-general.php:237
+#, fuzzy
+msgid "Enable the express checkout section at checkout"
+msgstr "Schakel het express checkout gedeelte in bij het afrekenen"
+
+#: inc/checkout-coupon-codes.php:90
+msgid "Enter your code here"
+msgstr "Vul hier je code in"
+
+#: inc/checkout-express-checkout.php:34
+#: inc/admin/admin-settings-general.php:236
+msgid "Express checkout"
+msgstr "Direct betalen"
+
+#: inc/admin/admin-settings-general.php:105
+#, fuzzy
+msgid "Features"
+msgstr "Kenmerken"
+
+#: inc/checkout-gift-options.php:184
+msgctxt "Field label for person sending the gift"
+msgid "From"
+msgstr "Van"
+
+#. Author of the plugin
+#: inc/admin/admin-settings-fluid-checkout.php:25
+#, fuzzy
+msgid "Fluid Checkout"
+msgstr "Vloeistof afrekenen"
+
+#. Name of the plugin
+#, fuzzy
+msgid "Fluid Checkout for WooCommerce"
+msgstr "Vloeiend afrekenen voor WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:88
+#, fuzzy
+msgid "Germanized for WooCommerce"
+msgstr "Vertaald voor WooCommerce"
+
+#: inc/checkout-gift-options.php:171
+msgid "Gift message"
+msgstr "Cadeau Bericht"
+
+#: inc/checkout-gift-options.php:469
+#: templates/fc/order/order-details-gift-options-email-plain-text.php:28
+msgid "Gift message from:"
+msgstr "Cadeau bericht van:"
+
+#: inc/checkout-gift-options.php:461
+#: templates/fc/order/order-details-gift-options-email-plain-text.php:23
+msgid "Gift message:"
+msgstr "Cadeau bericht:"
+
+#: inc/checkout-gift-options.php:88 inc/admin/admin-settings-general.php:246
+msgid "Gift options"
+msgstr "Cadeau opties"
+
+#: templates/fc/order/order-details-gift-options.php:23
+msgctxt "Gift options section title in the order details"
+msgid "Gift message"
+msgstr "Cadeau bericht"
+
+#: templates/fc/order/order-details-gift-options-email-plain-text.php:20
+msgctxt "Gift options section title in the order details"
+msgid "Gift message:"
+msgstr "Cadeau bericht:"
+
+#: templates/fc/checkout/checkout-header.php:27
+#, fuzzy
+msgid "Go to the home page"
+msgstr "Ga naar de startpagina"
+
+#: inc/admin/admin-settings-advanced.php:114
+#, fuzzy
+msgid "Header and Footer"
+msgstr "Koptekst en voettekst"
+
+#: inc/admin/admin-settings-general.php:80
+#, fuzzy
+msgid "Header background color"
+msgstr "Achtergrondkleur van de koptekst"
+
+#: inc/admin/admin-settings-general.php:113
+#, fuzzy
+msgid "Hide optional fields behind a link button"
+msgstr "Verberg optionele velden achter een link knop"
+
+#: inc/checkout-fields.php:95
+msgid "House number and street name."
+msgstr "Straat en huisnummer."
+
+#: inc/admin/admin-settings-general.php:82
+#: inc/admin/admin-settings-general.php:92
+#, fuzzy
+msgid "HTML color value. ie: #f3f3f3"
+msgstr "HTML kleurwaarde. ie: #f3f3f3"
+
+#. URI of the plugin
+#. Author URI of the plugin
+#, fuzzy
+msgid "https://fluidcheckout.com/"
+msgstr "https://fluidcheckout.com/"
+
+#: inc/admin/admin-notice-review-request.php:45
+#, fuzzy
+msgid "I Need Help!"
+msgstr "Ik heb hulp nodig!"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:119
+#, fuzzy
+msgid ""
+"If checked informs typos in email to users. (This feature has been disabled "
+"because Fluid Checkout offers the feature. Changes to this option will not "
+"take effect)"
+msgstr ""
+"Indien aangevinkt informeert typefouten in e-mail aan gebruikers. (Deze "
+"functie is uitgeschakeld omdat Fluid Checkout de functie aanbiedt. "
+"Wijzigingen aan deze optie worden niet van kracht)"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:85
+msgctxt "Image uploader."
+msgid "No image selected."
+msgstr "Geen afbeelding geselecteerd."
+
+#: inc/packing-slips.php:41
+#, fuzzy
+msgid ""
+"Information message printed on the packing slips. May be replaced with the "
+"gift message for order with a gift message added."
+msgstr ""
+"Informatieboodschap gedrukt op de pakbonnen. Kan vervangen worden door de "
+"geschenkboodschap voor bestellingen waaraan een geschenkboodschap is "
+"toegevoegd."
+
+#: inc/admin/admin-settings-general.php:202
+#, fuzzy
+msgid "Integrated Coupon Codes"
+msgstr "Geïntegreerde Coupon Codes"
+
+#: inc/admin/admin-settings-integrations.php:51
+#, fuzzy
+msgid "Integrations"
+msgstr "Integraties"
+
+#: inc/admin/admin-settings-general.php:114
+#, fuzzy
+msgid ""
+"It is recommended to keep this options checked to reduce the number of open "
+"input fields, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
+"fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-"
+"link\" target=\"_blank\">read the research</a>."
+msgstr ""
+"Het is aan te raden deze optie aangevinkt te houden om het aantal open "
+"invoervelden te verminderen, <a href=\"https://baymard.com/blog/checkout-"
+"flow-average-form-fields#1-address-line-2--company-name-can-safely-be-"
+"collapsed-behind-a-link\" target=\"_blank\">lees het onderzoek</a>."
+
+#: inc/admin/admin-settings-general.php:146
+#, fuzzy
+msgid ""
+"It is recommended to leave this option checked. The billing address at "
+"checkout will start with the option \"Billing same as shipping\" checked by "
+"default. This will reduce significantly the number of open input fields at "
+"the checkout, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
+"fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
+"target=\"_blank\">read the research</a>."
+msgstr ""
+"Het is aan te bevelen deze optie aangevinkt te laten. Het factuuradres bij "
+"het afrekenen begint met de optie \"Billing same as shipping\" die standaard "
+"aangevinkt is. Dit zal het aantal open invoervelden bij de kassa aanzienlijk "
+"verminderen, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
+"fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
+"target=\"_blank\">lees het onderzoek</a>."
+
+#: templates/fc/order/order-details-gift-options.php:35
+msgctxt "Label on the order details for person sending the gift"
+msgid "From:"
+msgstr "Van:"
+
+#: inc/admin/admin-settings-advanced.php:78
+#: inc/admin/admin-settings-general.php:53
+#, fuzzy
+msgid "Layout"
+msgstr "Lay-out"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:105
+#, fuzzy
+msgctxt "Legal checkboxes position"
+msgid "Before place order button"
+msgstr "Vóór plaats bestelling knop"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:104
+#, fuzzy
+msgctxt "Legal checkboxes position"
+msgid "Order summary (before products)"
+msgstr "Besteloverzicht (vóór producten)"
+
+#: inc/admin/admin-settings-advanced.php:151
+#, fuzzy
+msgid "Load unminified assets"
+msgstr "Laad niet geminimaliseerde activa"
+
+#: inc/admin/admin-settings-general.php:193
+#, fuzzy
+msgid "Local Pickup"
+msgstr "Lokaal afhalen"
+
+#: templates/fc/checkout/form-contact-login.php:24
+msgctxt "Log in link label at checkout contact step"
+msgid "Log in"
+msgstr "Inloggen"
+
+#: templates/fc/checkout/form-contact-login.php:35
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue as a guest"
+msgstr "Of ga door als gast"
+
+#: templates/fc/checkout/form-contact-login.php:37
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue checkout below"
+msgstr "Of ga hieronder door met afrekenen"
+
+#: inc/admin/admin-settings-general.php:71
+msgid "Logo image"
+msgstr "Logo afbeelding"
+
+#: inc/admin/admin-settings-advanced.php:95
+#, fuzzy
+msgid "Make the checkout progress bar stay visible while scrolling"
+msgstr ""
+"Laat de voortgangsbalk van de kassa zichtbaar blijven terwijl je scrollt"
+
+#: inc/admin/admin-settings-general.php:124
+#, fuzzy
+msgid ""
+"Make the labels of optional field \"Add\" link button as <code>"
+"lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone number\")"
+msgstr ""
+"Maak de labels van het optionele veld \"Toevoegen\" linkknop als <code>"
+"kleine letters</code>. (dwz. \"Add phone number\" in plaats van \"Add Phone "
+"number\")"
+
+#: inc/admin/admin-settings-advanced.php:86
+#, fuzzy
+msgid "Make the order summary stay visible while scrolling"
+msgstr "Zorg dat het besteloverzicht zichtbaar blijft tijdens het scrollen"
+
+#: inc/checkout-steps.php:349
+#, fuzzy
+msgid "Multi-step"
+msgstr "Meerstappen"
+
+#: inc/checkout-steps.php:1508
+msgid "My contact"
+msgstr "Mijn account"
+
+#: inc/checkout-gift-options.php:186
+msgid "Name of who is sending the gift, printed on the packing slip."
+msgstr "Naam van degene die de gift verstuurd, geprint op de pakbon."
+
+#: inc/admin/admin-settings-integrations.php:95
+msgid ""
+"No integrations available at the moment on this section. The options related "
+"to each plugin will only appear here if that plugin is activated."
+msgstr ""
+"Nog geen integraties beschikbaar op dit moment. De opties per plugin "
+"verschijnen hier alleen als de plugin is geactiveerd."
+
+#. %s shipping destination.
+#: templates/fc/checkout/review-order-shipping.php:31
+msgctxt "No shipping method chosen label for the order summary"
+msgid "--"
+msgstr "Nog geen verzendmethode geselecteerd voor de bestelling"
+
+#: inc/checkout-steps.php:2178
+msgid "Not selected yet."
+msgstr "Nog niet geselecteerd."
+
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:212
+msgctxt "Notice for no delivery or pickup options provided"
+msgid "None."
+msgstr "Geen."
+
+#: inc/checkout-gift-options.php:126
+msgctxt "Notice for no gift options provided"
+msgid "None."
+msgstr "Geen."
+
+#: inc/checkout-steps.php:2234
+msgctxt "Notice for no order notes provided"
+msgid "None."
+msgstr "Geen."
+
+#: inc/admin/admin-settings-general.php:204
+#, fuzzy
+msgid ""
+"Only applicable if use of coupon codes are enabled in the WooCommerce "
+"settings."
+msgstr ""
+"Alleen van toepassing als het gebruik van coupon codes is ingeschakeld in de "
+"WooCommerce instellingen."
+
+#: inc/compat/themes/compat-theme-Impreza.php:119
+#, fuzzy
+msgid ""
+"Only applicable when using the Impreza theme header at the checkout page."
+msgstr ""
+"Alleen van toepassing bij gebruik van de Impreza thema koptekst op de "
+"afrekenpagina."
+
+#: inc/checkout-shipping-phone-field.php:56
+#, fuzzy
+msgid "Only used for shipping-related questions."
+msgstr "Alleen gebruikt voor vragen over verzending."
+
+#: inc/admin/admin-settings-general.php:112
+msgid "Optional fields"
+msgstr "Optionele velden"
+
+#: inc/checkout-fields.php:48
+msgid "Order and tracking number will be sent to this email address."
+msgstr "Bestelling en trackingcode worden verzonden naar dit mailadres."
+
+#: inc/admin/admin-settings-general.php:223
+msgid "Order notes"
+msgstr "Bestelnotities"
+
+#: inc/admin/admin-settings-general.php:227
+msgctxt "Order notes field visibility"
+msgid "Hidden"
+msgstr "Verborgen"
+
+#: inc/admin/admin-settings-general.php:228
+msgctxt "Order notes field visibility"
+msgid "Optional"
+msgstr "Optioneel"
+
+#: inc/checkout-fields.php:48
+msgid "Order number and receipt will be sent to this email address."
+msgstr "Het ordernummer en factuur worden verzonden naar dit mailadres."
+
+#: inc/checkout-steps.php:3310 inc/admin/admin-settings-advanced.php:85
+#: inc/admin/admin-settings-advanced.php:104
+msgid "Order summary"
+msgstr "Mijn bestelling"
+
+#: inc/packing-slips.php:40
+msgid "Packing Slips"
+msgstr "Pakbon"
+
+#: inc/admin/admin-settings-general.php:90
+#, fuzzy
+msgid "Page background color"
+msgstr "Achtergrondkleur van de pagina"
+
+#: inc/checkout-steps.php:3206
+msgid "Payment method"
+msgstr "Betalingsmethode"
+
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:117
+msgid "Pickup Date"
+msgstr "Afhaaldatum"
+
+#: inc/checkout-local-pickup.php:206
+msgid "Pickup point"
+msgstr "Afhaalpunt"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:92
+#, fuzzy
+msgctxt "Place order position"
+msgid "Order summary (after totals)"
+msgstr "Besteloverzicht (na totalen)"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:93
+#, fuzzy
+msgctxt "Place order position"
+msgid "Payment step"
+msgstr "Betalingsstap"
+
+#. Next checkout step title
+#: inc/checkout-steps.php:824
+#, php-format
+msgid "Proceed to %s"
+msgstr "Ga door naar %s"
+
+#: inc/admin/admin-settings-advanced.php:94
+msgid "Progress bar"
+msgstr "Voortgangsbalk"
+
+#. Description of the plugin
+#, fuzzy
+msgid ""
+"Provides a distraction free checkout experience for any WooCommerce store. "
+"Ask for shipping information before billing in a truly linear multi-step or "
+"one-step checkout, add options for gift message, and display a coupon code "
+"field at the checkout page that does not distract your customers."
+msgstr ""
+"Biedt een afleidingsvrije kassa-ervaring voor elke WooCommerce winkel. Vraag "
+"om verzendinformatie vóór de facturering in een echt lineaire meerstaps of "
+"eenstaps kassa, voeg opties toe voor een geschenkboodschap, en toon een "
+"couponcode veld op de afrekenpagina dat je klanten niet afleidt."
+
+#: inc/admin/admin-notice-review-request.php:44
+msgid "Rate Us Now"
+msgstr "Beoordeel ons nu"
+
+#: inc/admin/admin-settings-advanced.php:106
+#, fuzzy
+msgid ""
+"Recommended if most of the orders have only a few different products in the "
+"cart, and product variations do not take too much space on the order summary."
+msgstr ""
+"Aanbevolen als de meeste bestellingen maar een paar verschillende producten "
+"in de winkelwagen hebben, en productvariaties niet te veel plaats innemen op "
+"het besteloverzicht."
+
+#: inc/admin/admin-settings-general.php:134
+#, fuzzy
+msgid ""
+"Recommended only when most customers actually need the \"Address line 2\" "
+"field, or when getting the right shipping address is crucial (ie. if "
+"delivering food and other perishable products)."
+msgstr ""
+"Alleen aan te bevelen wanneer de meeste klanten het veld \"Adresregel 2\" "
+"ook echt nodig hebben, of wanneer het juiste verzendadres van cruciaal "
+"belang is (bv. bij levering van voedsel en andere bederfelijke produkten)."
+
+#: inc/checkout-coupon-codes.php:150
+msgid "Remove"
+msgstr "Verwijderen"
+
+#: inc/admin/admin-settings-general.php:194
+#, fuzzy
+msgid ""
+"Removes shipping address section when a Local Pickup shipping method is "
+"selected"
+msgstr ""
+"Verwijdert verzendadres sectie wanneer een Local Pickup verzendmethode is "
+"gekozen"
+
+#: inc/checkout-steps.php:2714
+msgid "Same as shipping address"
+msgstr "Zelfde als verzendadres"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:97
+#: inc/admin/admin-setting-type-fc-image-uploader.php:98
+#: inc/admin/admin-setting-type-fc-image-uploader.php:101
+msgid "Select an image"
+msgstr "Selecteer een afbeelding"
+
+#: inc/checkout-express-checkout.php:43
+msgctxt "Separator label for the express checkout section"
+msgid "Or"
+msgstr "Of"
+
+#: inc/admin/admin.php:85
+msgid "Settings"
+msgstr "Instellingen"
+
+#: inc/admin/admin-settings-integrations.php:83
+msgctxt "Settings section title"
+msgid "Integrations"
+msgstr "Integraties"
+
+#: inc/admin/admin-settings-tools.php:93
+#, fuzzy
+msgctxt "Settings section title"
+msgid "Tools"
+msgstr "Gereedschap"
+
+#: inc/checkout-steps.php:1774
+msgid "Shipping method"
+msgstr "Verzendmethode"
+
+#: inc/admin/admin-settings-general.php:180
+#, fuzzy
+msgid "Shipping methods"
+msgstr "Verzendmethoden"
+
+#: inc/admin/admin-settings-general.php:185
+#, fuzzy
+msgctxt "Shipping methods substep position"
+msgid "After shipping address"
+msgstr "Na verzendadres"
+
+#: inc/admin/admin-settings-general.php:184
+#, fuzzy
+msgctxt "Shipping methods substep position"
+msgid "Before shipping address"
+msgstr "Voor verzendadres"
+
+#: inc/checkout-shipping-phone-field.php:55
+#: inc/admin/admin-settings-general.php:154
+msgid "Shipping phone"
+msgstr "Telefoonnummer verzendlocatie"
+
+#: inc/admin/admin-settings-general.php:172
+msgctxt "Shipping phone field position"
+msgid "Contact"
+msgstr "Contact"
+
+#: inc/admin/admin-settings-general.php:171
+msgctxt "Shipping phone field position"
+msgid "Shipping address"
+msgstr "Verzendadres"
+
+#: inc/admin/admin-settings-general.php:158
+msgctxt "Shipping phone field visibility"
+msgid "Hidden"
+msgstr "Verborgen"
+
+#: inc/admin/admin-settings-general.php:159
+msgctxt "Shipping phone field visibility"
+msgid "Optional"
+msgstr "Optioneel"
+
+#: inc/admin/admin-settings-general.php:160
+msgctxt "Shipping phone field visibility"
+msgid "Required"
+msgstr "Verplicht"
+
+#: inc/checkout-steps.php:1750
+msgid "Shipping to"
+msgstr "Verzenden naar"
+
+#: inc/admin/admin-settings-general.php:203
+#, fuzzy
+msgid "Show coupon codes as a substep of the payment step"
+msgstr "Toon couponcodes als substap van de betaalstap"
+
+#: templates/fc/checkout/form-contact-login-modal.php:28
+msgid "Sign in to your account"
+msgstr "Log in met je account"
+
+#: inc/checkout-steps.php:350
+#, fuzzy
+msgid "Single step"
+msgstr "Eén stap"
+
+#: templates/fc/header-checkout.php:36
+#, fuzzy
+msgid "Skip to content"
+msgstr "Overslaan naar inhoud"
+
+#: inc/compat/themes/compat-theme-Impreza.php:118
+#, fuzzy
+msgid "Spacing for site header at the checkout page (in pixels)"
+msgstr "Ruimte voor de koptekst van de site op de afrekenpagina (in pixels)"
+
+#. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
+#: inc/checkout-steps.php:1074
+#, fuzzy, php-format
+msgid "Step %1$s of %2$s"
+msgstr "Stap %1$s van %2$s"
+
+#. %1$s the selected option text, %2$s the field label.
+#: inc/checkout-steps.php:1926
+#, fuzzy, php-format
+msgctxt "Substep review field format"
+msgid "%1$s"
+msgstr "%1$s"
+
+#. %1$s the selected option text, %2$s the field label.
+#: inc/checkout-steps.php:1931
+#, fuzzy, php-format
+msgctxt "Substep review field format: with label"
+msgid "%2$s: %1$s"
+msgstr "%2$s: %1$s"
+
+#: inc/checkout-steps.php:1369
+#, fuzzy
+msgctxt "Substep review text"
+msgid "None."
+msgstr "Geen."
+
+#: inc/admin/admin.php:86
+#, fuzzy
+msgid "Support"
+msgstr "Steun"
+
+#: inc/admin/admin-notice-review-request.php:41
+#, fuzzy
+msgid "Thanks for choosing Fluid Checkout, you rock!"
+msgstr "Bedankt voor je keuze voor Fluid Checkout, je bent geweldig!"
+
+#: inc/admin/admin-settings-wc-shipping.php:50
+#, fuzzy
+msgid ""
+"The shipping destination is always set to \"Default to customer shipping "
+"address\" when Fluid Checkout is activated. Customers can still provide "
+"different shipping and billing addresses during checkout, an option for "
+"setting the default billing address to be the same as the shipping address "
+"is available at WooCommerce > Settings > Fluid Checkout."
+msgstr ""
+"De verzendbestemming wordt altijd ingesteld op \"Default to customer "
+"shipping address\" als Fluid Checkout geactiveerd is. Klanten kunnen nog "
+"steeds verschillende verzend- en factuuradressen opgeven bij het afrekenen, "
+"een optie om het standaard factuuradres hetzelfde te laten zijn als het "
+"verzendadres is beschikbaar bij WooCommerce > Instellingen > Fluid Checkout."
+
+#: inc/compat/themes/compat-theme-Impreza.php:117
+#, fuzzy
+msgid "Theme Impreza"
+msgstr "Thema Impreza"
+
+#: inc/admin/admin-settings-general.php:279
+#, fuzzy
+msgid "These widget areas are used to add trust symbols on the checkout page."
+msgstr ""
+"Deze widget-gebieden worden gebruikt om vertrouwenssymbolen op de "
+"kassapagina toe te voegen."
+
+#: inc/checkout-validation.php:102
+#, fuzzy
+msgid "This does not match the related field value."
+msgstr "Dit komt niet overeen met de waarde van het verwante veld."
+
+#: inc/checkout-validation.php:100
+msgid "This is a required field."
+msgstr "Dit veld is verplicht."
+
+#: inc/checkout-validation.php:101
+msgid "This is not a valid email address."
+msgstr "Dit is geen geldig mailadres."
+
+#: inc/admin/admin-settings-general.php:267
+#, fuzzy
+msgid ""
+"This option affects the order confirmation page (thank you page), order "
+"details at account pages, emails and packing slips."
+msgstr ""
+"Deze optie beïnvloedt de orderbevestigingspagina (dank je wel pagina), "
+"ordergegevens op account pagina's, e-mails en pakbonnen."
+
+#: inc/admin/admin-settings-tools.php:56
+#, fuzzy
+msgid "Tools"
+msgstr "Gereedschap"
+
+#: inc/admin/admin-settings-advanced.php:133
+#, fuzzy
+msgid "Troubleshooting"
+msgstr "Problemen oplossen"
+
+#: inc/admin/admin-settings-advanced.php:120
+#, fuzzy
+msgid "Use Fluid Checkout header and footer"
+msgstr "Gebruik de koptekst en voettekst van Fluid Checkout"
+
+#: inc/admin/admin-settings-advanced.php:142
+#, fuzzy
+msgid ""
+"Using debug mode affects the website performance. Only use this option while "
+"troubleshooting."
+msgstr ""
+"Het gebruik van debug modus beïnvloedt de prestaties van de website. Gebruik "
+"deze optie alleen bij het oplossen van problemen."
+
+#: inc/admin/admin-settings-advanced.php:115
+#, fuzzy
+msgid ""
+"We recommend using the Fluid Checkout header and footer to avoid "
+"distractions at the checkout page. <a href=\"https://baymard.com/blog/cart-"
+"abandonment\" target=\"_blank\">Read the research about cart abandonment</a>."
+msgstr ""
+"We raden aan de Fluid Checkout header en footer te gebruiken om afleiding op "
+"de afrekenpagina te voorkomen. <a href=\"https://baymard.com/blog/cart-"
+"abandonment\" target=\"_blank\">Lees het onderzoek over "
+"winkelwagenverlating</a>."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-amazon-payments-advanced.php:96
+#, fuzzy
+msgid "WooCommerce Amazon Pay"
+msgstr "WooCommerce Amazon Pay"
+
+#: inc/checkout-gift-options.php:172
+#, fuzzy
+msgid "Write a gift message..."
+msgstr "Schrijf een geschenkboodschap..."
+
+#: inc/admin/admin-notice-review-request.php:42
+#, fuzzy
+msgid ""
+"You have been using Fluid Checkout for a while. How do you like it so far? "
+"<br>Please give us a quick rating, it works as a boost for us to keep "
+"working on the plugin :)"
+msgstr ""
+"Je gebruikt Fluid Checkout al een tijdje. Hoe bevalt het je tot nu toe? <br>"
+"Geef ons snel een waardering, het werkt als een stimulans voor ons om aan de "
+"plugin te blijven werken :)"
+
+#: inc/checkout-gift-options.php:185
+msgid "Your name"
+msgstr "Je naam"
+
+#: templates/checkout/payment.php:46
+#, fuzzy, php-format
+msgid ""
+"Your order has a total amount due of %s. No&nbsp;further payment is needed."
+msgstr ""
+"Je bestelling heeft een totaal verschuldigd bedrag van %s. Er is geen&nbsp;"
+"verdere betaling nodig."
