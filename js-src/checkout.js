@@ -24,7 +24,7 @@ jQuery( function( $ ) {
 	var _settings = {
 		checkoutPlaceOrderSelector: '#place_order, .fc-place-order-button',
 		checkoutTermsSelector: '.fc-terms-checkbox',
-		checkoutUpdateFieldsSelector: '.woocommerce-shipping-fields__field-wrapper .address-field input.input-text, .update_totals_on_change input.input-text',
+		checkoutUpdateFieldsSelector: '.address-field input.input-text, .update_totals_on_change input.input-text',
 		checkoutUpdateBeforeUnload: 'yes',
 	};
 

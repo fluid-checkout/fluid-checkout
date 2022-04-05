@@ -225,7 +225,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	/**
 	 * Merge checkout field args.
 	 *
-	 * @param   array  $field_args  Contains checkout field arguments.
+	 * @param   array  $field_args      Contains checkout field arguments.
 	 * @param   array  $new_field_args  New field argument to be merged.
 	 *
 	 * @return  array  $field_args      Changed field arguments.

@@ -345,6 +345,8 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 = Unreleased =
 
 * Added: Compatibility with theme LeadEngine.
+* Fixed: Not updating checkout options while typing the postcode and other address fields when shipping phone feature is enabled.
+* Fixed: Not updating checkout options while entering the billing address.
 * Fixed: Fatal error when Checkout Widgets feature is disabled while WooCommerce PayPal Payments plugin is active.
 
 = 1.5.4 - 2022-03-29 =

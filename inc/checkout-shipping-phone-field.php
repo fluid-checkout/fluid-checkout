@@ -107,13 +107,16 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function add_shipping_phone_field( $fields ) {
-		$fields['shipping_phone'] = $this->get_shipping_phone_field();
+		$field_key = 'shipping_phone';
+		$fields[ $field_key ] = $this->get_shipping_phone_field();
 
-		// Merge with existing checkout fields arguments
+		// Maybe apply customizations from the Checkout Fields feature
 		if ( class_exists( 'FluidCheckout_CheckoutFields' ) ) {
-			$field_args = FluidCheckout_CheckoutFields::instance()->get_checkout_field_args();
-			foreach( $field_args as $field => $values ) {
-				if ( array_key_exists( $field, $fields ) ) { $fields[ $field ] = array_merge( $fields[ $field ], $values ); }
+			$new_fields_args = FluidCheckout_CheckoutFields::instance()->get_checkout_field_args();
+			
+			// Check if field args exists
+			if ( array_key_exists( $field_key, $new_fields_args ) ) {
+				$fields[ $field_key ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_args( $fields[ $field_key ], $new_fields_args[ $field_key ] );
 			}
 		}
 
