@@ -86,21 +86,7 @@ jQuery( function( $ ) {
 
 		// CHANGE: Rebuild `select2` fields for billing and shipping address after `updated_checkout`
 		$( document.body ).on( 'updated_checkout', function() {
-			$( 'select#billing_country, select#billing_state, select#shipping_country, select#shipping_state' ).each( function() {
-				var $this = $( this );
-
-				var select2_args = $.extend({
-					placeholder: $this.attr( 'data-placeholder' ) || $this.attr( 'placeholder' ) || '',
-					label: $this.attr( 'data-label' ) || null,
-					width: '100%'
-				}, getEnhancedSelectFormatString() );
-
-				$( this )
-					.on( 'select2:select', function() {
-						$( this ).trigger( 'focus' ); // Maintain focus after select https://github.com/select2/select2/issues/4384
-					} )
-					.selectWoo( select2_args );
-			});
+			wc_country_select_select2();
 		});
 	}
 
