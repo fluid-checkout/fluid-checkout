@@ -576,6 +576,11 @@ jQuery( function( $ ) {
 					
 					// Always update the fragments
 					if ( data && data.fragments ) {
+						// CHANGE: Try to remove select2 components from existing fields before replacing fragments
+						$( 'select.country_select, select.state_select' ).each( function() {
+							$( this ).selectWoo( 'destroy' );
+						});
+
 						$.each( data.fragments, function ( key, value ) {
 							if ( ! wc_checkout_form.fragments || wc_checkout_form.fragments[ key ] !== value ) {
 								$( key ).replaceWith( value );
