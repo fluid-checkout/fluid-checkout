@@ -24,7 +24,7 @@ jQuery( function( $ ) {
 	var _settings = {
 		checkoutPlaceOrderSelector: '#place_order, .fc-place-order-button',
 		checkoutTermsSelector: '.fc-terms-checkbox',
-		checkoutUpdateFieldsSelector: '.woocommerce-shipping-fields__field-wrapper .address-field input.input-text, .update_totals_on_change input.input-text',
+		checkoutUpdateFieldsSelector: '.address-field input.input-text, .update_totals_on_change input.input-text',
 		checkoutUpdateBeforeUnload: 'yes',
 	};
 
@@ -576,6 +576,11 @@ jQuery( function( $ ) {
 					
 					// Always update the fragments
 					if ( data && data.fragments ) {
+						// CHANGE: Try to remove select2 components from existing fields before replacing fragments
+						$( 'select.country_select, select.state_select' ).each( function() {
+							$( this ).selectWoo( 'destroy' );
+						});
+
 						$.each( data.fragments, function ( key, value ) {
 							if ( ! wc_checkout_form.fragments || wc_checkout_form.fragments[ key ] !== value ) {
 								$( key ).replaceWith( value );
