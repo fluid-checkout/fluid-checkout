@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 5.9
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -342,7 +342,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
-= Unreleased =
+= 1.5.5 - 2022-04-06 =
 
 * Added: Compatibility with theme LeadEngine.
 * Fixed: Not updating checkout options while typing the postcode and other address fields when shipping phone feature is enabled.
