@@ -345,7 +345,8 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
-* Fixed: Fatal JS error when `select2` script is disabled on the checkout page. Fixes issue with page fragments loading indefinitely.
+* Fixed: Fatal error (JS) when `select2` script is disabled on the checkout page. Fixes issue with page fragments loading indefinitely.
+* Fixed: Fatal error (PHP) when changing some checkout fields arguments.
 
 = 1.5.5 - 2022-04-06 =
 
