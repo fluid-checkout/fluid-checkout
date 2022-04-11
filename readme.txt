@@ -190,6 +190,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 * Brazilian Market on WooCommerce - by Claudio Sanches ([see demo](https://demos.fluidcheckout.com/google-address-autocomplete-brazilian-market/cart/?add-to-cart=14&quantity=1))
 * Checkout Field Editor for WooCommerce - by ThemeHigh
+* Flexible Checkout Fields for WooCommerce - by WP Desk
 * Creative Mail - by Constant Contact
 * Delivery & Pickup Date Time for WooCommerce - by CodeRockz
 * Elementor - by Elementor Team
@@ -341,6 +342,11 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Fixed: Fatal error (JS) when `select2` script is disabled on the checkout page. Fixes issue with page fragments loading indefinitely.
+* Fixed: Fatal error (PHP) when changing some checkout fields arguments.
 
 = 1.5.5 - 2022-04-06 =
 

@@ -92,8 +92,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 */
 	public function change_default_locale_field_args( $fields ) {
 		$new_field_args = array(
-			'address_1'           => array( 'class' => array( 'form-row-wide' ), 'description' => __( 'House number and street name.', 'fluid-checkout' ) ),
-			'address_2'           => array( 'class' => array( 'form-row-wide' ), 'label' => __( 'Apartment, unit, building, floor, etc.', 'fluid-checkout' ), 'placeholder' => __( 'Apartment, unit, building, floor, etc.', 'fluid-checkout' ) ),
+			'address_1' => array( 'class' => array( 'form-row-wide' ), 'description' => __( 'House number and street name.', 'fluid-checkout' ) ),
+			'address_2' => array( 'class' => array( 'form-row-wide' ), 'label' => __( 'Apartment, unit, building, floor, etc.', 'fluid-checkout' ), 'placeholder' => __( 'Apartment, unit, building, floor, etc.', 'fluid-checkout' ) ),
 		);
 
 		// Only apply class changes on checkout and account pages
@@ -107,14 +107,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 		foreach( $fields as $field_key => $original_args ) {
 			$new_args = array_key_exists( $field_key, $new_field_args ) ? $new_field_args[ $field_key ] : array();
-
-			// Merge class args and remove it from $new_args to avoid conflicts when merging all field args below
-			if ( array_key_exists( 'class', $new_args ) && array_key_exists( 'class', $original_args ) ) {
-				$original_args[ 'class' ] = $this->merge_form_field_class_args( $original_args[ 'class' ], $new_args[ 'class' ] );
-				unset( $new_args[ 'class' ] );
-			}
-
-			$fields[ $field_key ] = array_merge( $original_args, $new_args );
+			$fields[ $field_key ] = $this->merge_form_field_args( $original_args, $new_args );
 		}
 
 		return $fields;
@@ -223,26 +216,24 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 	/**
-	 * Merge checkout field args.
+	 * Merge args for one checkout field.
 	 *
-	 * @param   array  $field_args      Contains checkout field arguments.
-	 * @param   array  $new_field_args  New field argument to be merged.
+	 * @param   array  $field_args      The original field args.
+	 * @param   array  $new_field_args  The new field args to be merged.
 	 *
-	 * @return  array  $field_args      Changed field arguments.
+	 * @return  array                   Changed field arguments.
 	 */
 	public function merge_form_field_args( $field_args, $new_field_args ) {
+		// Bail if parameters are invalid
+		if ( ! is_array( $field_args ) || ! is_array( $new_field_args ) ) { return $field_args; }
 
-		foreach( $new_field_args as $field_key => $args ) {
-			$original_args = array_key_exists( $field_key, $field_args ) ? $field_args[ $field_key ] : array();
-
-			// Merge class args and remove it from $args to avoid conflicts when merging all field args below
-			if ( array_key_exists( 'class', $original_args ) && array_key_exists( 'class', $args ) ) {
-				$original_args[ 'class' ] = $this->merge_form_field_class_args( $original_args[ 'class' ], $args[ 'class' ] );
-				unset( $args[ 'class' ] );
-			}
-
-			$field_args[ $field_key ] = array_merge( $original_args, $args );
+		// Merge class args and remove it from $field_args to avoid conflicts when merging all field args below
+		if ( array_key_exists( 'class', $new_field_args ) && array_key_exists( 'class', $field_args ) ) {
+			$field_args[ 'class' ] = $this->merge_form_field_class_args( $new_field_args[ 'class' ], $field_args[ 'class' ] );
+			unset( $field_args[ 'class' ] );
 		}
+
+		$field_args = array_merge( $field_args, $new_field_args );
 
 		return $field_args;
 	}
@@ -259,14 +250,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 		foreach( $fields as $field_key => $original_args ) {
 			$new_args = array_key_exists( $field_key, $new_field_args ) ? $new_field_args[ $field_key ] : array();
-
-			// Merge class args and remove it from $new_args to avoid conflicts when merging all field args below
-			if ( array_key_exists( 'class', $new_args ) && array_key_exists( 'class', $original_args ) ) {
-				$original_args[ 'class' ] = $this->merge_form_field_class_args( $original_args[ 'class' ], $new_args[ 'class' ] );
-				unset( $new_args[ 'class' ] );
-			}
-
-			$fields[ $field_key ] = array_merge( $original_args, $new_args );
+			$fields[ $field_key ] = $this->merge_form_field_args( $original_args, $new_args );
 		}
 
 		return $fields;
