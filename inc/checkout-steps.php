@@ -2342,7 +2342,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$priority = 10;
 
 		// Change priority depending on the settings
-		if ( 'before_shipping_address' === get_option( 'fc_shipping_methods_substep_position', 'before_shipping_address' ) ) {
+		if ( 'before_shipping_address' === get_option( 'fc_shipping_methods_substep_position', 'after_shipping_address' ) ) {
 			$priority = 20;
 		}
 
@@ -2356,7 +2356,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$priority = 20;
 
 		// Change priority depending on the settings
-		if ( 'before_shipping_address' === get_option( 'fc_shipping_methods_substep_position', 'before_shipping_address' ) ) {
+		if ( 'before_shipping_address' === get_option( 'fc_shipping_methods_substep_position', 'after_shipping_address' ) ) {
 			$priority = 10;
 		}
 
