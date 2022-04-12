@@ -100,7 +100,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 				'stickyStates'                   => array(),
 				'checkoutUpdateBeforeUnload'     => apply_filters( 'fc_checkout_update_before_unload', 'yes' ),
 				'checkoutUpdateFieldsSelector'   => join( ',', apply_filters( 'fc_checkout_update_fields_selectors', array(
-					'.woocommerce-shipping-fields__field-wrapper .address-field input.input-text',
+					'.address-field input.input-text',
 					'.update_totals_on_change input.input-text',
 				) ) ),
 			) )

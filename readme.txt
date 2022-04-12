@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 5.9
-Stable tag: 1.5.4
+Stable tag: 1.5.7
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -144,6 +144,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 * Hazel - by Select Themes
 * Impreza - by UpSolution
 * Kentha - by QantumThemes
+* LeadEngine - by Key-Design
 * Mr. Tailor - by Get Bowtied
 * OnAir2 - by QantumThemes
 * Phlox PRO - by averta
@@ -189,6 +190,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 * Brazilian Market on WooCommerce - by Claudio Sanches ([see demo](https://demos.fluidcheckout.com/google-address-autocomplete-brazilian-market/cart/?add-to-cart=14&quantity=1))
 * Checkout Field Editor for WooCommerce - by ThemeHigh
+* Flexible Checkout Fields for WooCommerce - by WP Desk
 * Creative Mail - by Constant Contact
 * Delivery & Pickup Date Time for WooCommerce - by CodeRockz
 * Elementor - by Elementor Team
@@ -346,6 +348,24 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Only register checkout header widget areas when using the Fluid Checkout header template.
 * Improved: Display the shipping calculator above the shipping methods in the cart page (PRO feature).
 * Improved: Refactor make SCSS code reusable by using variables like `$_body-theme-selector` and `$_body-page-selector`.
+
+= 1.5.7 - 2022-04-12 =
+
+* Improved: Change the default position for the shipping methods section to after the shipping address. The position for the shipping methods section can be changed in the plugin settings.
+* Fixed: Checkout fields arguments merge functions replacing some existing classes.
+
+= 1.5.6 - 2022-04-11 =
+
+* Fixed: Fatal error (JS) when `select2` script is disabled on the checkout page. Fixes issue with page fragments loading indefinitely.
+* Fixed: Fatal error (PHP) when changing some checkout fields arguments.
+
+= 1.5.5 - 2022-04-06 =
+
+* Added: Compatibility with theme LeadEngine.
+* Fixed: Not updating checkout options while typing the postcode and other address fields when shipping phone feature is enabled.
+* Fixed: Not updating checkout options while entering the billing address.
+* Fixed: Jumping to the top of the page, most notably on mobile, when `select2` fields break while updating the checkout page.
+* Fixed: Fatal error when Checkout Widgets feature is disabled while WooCommerce PayPal Payments plugin is active.
 
 = 1.5.4 - 2022-03-29 =
 

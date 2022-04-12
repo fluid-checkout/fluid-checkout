@@ -185,7 +185,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			$new_args[ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $field_args[ $field_key ][ 'class' ], $new_args[ 'class' ] );
 		}
 
-		// Merge class arguments with existing values
+		// Merge field arguments with existing values
 		foreach ( $new_field_args as $field_key => $new_args ) {
 			// Skip if field args not yet set to the original attributes
 			if ( ! array_key_exists( $field_key, $field_args ) ) { continue; }
@@ -232,7 +232,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			$new_args[ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $field_args[ $field_key ][ 'class' ], $new_args[ 'class' ] );
 		}
 
-		// Merge class arguments with existing values
+		// Merge field arguments with existing values
 		foreach ( $new_field_args as $field_key => $new_args ) {
 			// Skip if field args not yet set to the original attributes
 			if ( ! array_key_exists( $field_key, $field_args ) ) { continue; }

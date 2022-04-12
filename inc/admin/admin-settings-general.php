@@ -184,7 +184,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 							'before_shipping_address' => _x( 'Before shipping address', 'Shipping methods substep position', 'fluid-checkout' ),
 							'after_shipping_address'  => _x( 'After shipping address', 'Shipping methods substep position', 'fluid-checkout' ),
 						),
-						'default'           => 'before_shipping_address',
+						'default'           => 'after_shipping_address',
 						'type'              => 'select',
 						'autoload'          => false,
 					),
