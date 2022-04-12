@@ -227,10 +227,10 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		// Bail if parameters are invalid
 		if ( ! is_array( $field_args ) || ! is_array( $new_field_args ) ) { return $field_args; }
 
-		// Merge class args and remove it from $field_args to avoid conflicts when merging all field args below
+		// Merge class args and remove it from $new_field_args to avoid conflicts when merging all field args below
 		if ( array_key_exists( 'class', $new_field_args ) && array_key_exists( 'class', $field_args ) ) {
-			$field_args[ 'class' ] = $this->merge_form_field_class_args( $new_field_args[ 'class' ], $field_args[ 'class' ] );
-			unset( $field_args[ 'class' ] );
+			$field_args[ 'class' ] = $this->merge_form_field_class_args( $field_args[ 'class' ], $new_field_args[ 'class' ] );
+			unset( $new_field_args[ 'class' ] );
 		}
 
 		$field_args = array_merge( $field_args, $new_field_args );

@@ -346,6 +346,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 = Unreleased =
 
 * Improved: Change the default position for the shipping methods section to after the shipping address. The position for the shipping methods section can be changed in the plugin settings.
+* Fixed: Checkout fields arguments merge functions replacing some existing classes.
 
 = 1.5.6 - 2022-04-11 =
 
