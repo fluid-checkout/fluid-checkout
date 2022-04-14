@@ -1240,10 +1240,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_start_tag( $step_id, $substep_id, $substep_title, $additional_attributes = array() ) {
 		$additional_attributes = apply_filters( "fc_substep_{$substep_id}_attributes", $additional_attributes );
+
+		// Make sure additional attributes is an array before using it
+		if ( null === $additional_attributes ) { $additional_attributes = array(); }
+		
 		$substep_attributes = array_merge( $additional_attributes, array(
 			'class' => array_key_exists( 'class', $additional_attributes ) ? 'fc-step__substep ' . $additional_attributes['class'] : 'fc-step__substep',
 			'data-substep-id' => $substep_id,
 		) );
+
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
 		<div <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
