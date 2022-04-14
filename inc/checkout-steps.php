@@ -3495,7 +3495,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_output_order_review_shipping_method_chosen() {
 		// Bail if not on checkout or cart page
-		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() ) ) { return; }
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
 		$packages = WC()->shipping()->get_packages();
 		$first    = true;
