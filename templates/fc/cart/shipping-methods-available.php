@@ -14,13 +14,14 @@
 defined( 'ABSPATH' ) || exit;
 
 $formatted_destination    = isset( $formatted_destination ) ? $formatted_destination : WC()->countries->get_formatted_address( $package['destination'], ', ' );
+$is_cart_page_or_fragment = ! empty( $is_cart_page_or_fragment );
 $show_shipping_calculator = ! empty( $show_shipping_calculator );
 $calculator_text          = '';
 ?>
 
 <div class="shipping shipping-method__package" data-title="<?php echo esc_attr( $package_name ); ?>" data-package-index="<?php echo esc_attr( $package_index ); ?>">
 
-	<?php if ( is_cart() && $first_package ) : ?>
+	<?php if ( $is_cart_page_or_fragment && $first_package ) : ?>
 
 		<?php if ( WC()->cart->show_shipping() ) : ?>
 

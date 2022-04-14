@@ -2383,6 +2383,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @access public
 	 */
 	public function get_shipping_methods_available() {
+		global $wp_query;
+		$ajax_action = $wp_query->get( 'wc-ajax' );
+
 		ob_start();
 
 		$packages = WC()->shipping->get_packages();
@@ -2407,7 +2410,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'package'					=> $package,
 				'available_methods'			=> $package['rates'],
 				'show_package_details'		=> sizeof( $packages ) > 1,
-				'show_shipping_calculator'	=> is_cart() && $first_item,
+				'is_cart_page_or_fragment'  => is_cart() || 'update_cart_fragments' === $ajax_action,
+				'show_shipping_calculator'	=> ( is_cart() || 'update_cart_fragments' === $ajax_action ) && $first_item,
 				'package_details'			=> implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
 				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
