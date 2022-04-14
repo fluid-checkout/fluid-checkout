@@ -517,7 +517,7 @@
 
 
 	/**
-	 * Maybe change visibility status of the shipping address edit buttons when shipping method is `local_pickup`.
+	 * Maybe change visibility status of checkout substep sections.
 	 *
 	 * @param   Event  _event  An unused `jQuery.Event` object.
 	 * @param   Array  data   The updated checkout data.
@@ -527,7 +527,7 @@
 		for ( var i = 0; i < substepElements.length; i++ ) {
 			var substepElement = substepElements[i];
 			
-			// Handle substep editable state
+			// Handle editable state
 			var editableHiddenField = substepElement.querySelector( _settings.substepEditableStateFieldSelector );
 			if ( editableHiddenField && 'no' === editableHiddenField.value ) {
 				substepElement.setAttribute( _settings.substepEditableStateAttribute, editableHiddenField.value );
@@ -536,7 +536,7 @@
 				substepElement.removeAttribute( _settings.substepEditableStateAttribute );
 			}
 
-			// Handle substep visibility state
+			// Handle visibility state
 			var visibilityHiddenField = substepElement.querySelector( _settings.substepVisibleStateFieldSelector );
 			if ( visibilityHiddenField && 'no' === visibilityHiddenField.value ) {
 				substepElement.setAttribute( _settings.substepVisibleStateAttribute, visibilityHiddenField.value );
