@@ -584,7 +584,7 @@
 
 		// ENTER or SPACE on handler element
 		if ( ( e.key == _key.ENTER || e.key == _key.SPACE ) && ( e.target.closest( _settings.substepEditButtonSelector ) || e.target.closest( _settings.substepSaveButtonSelector ) ) ) {
-			// Similate click
+			// Simulate click
 			handleClick( e );
 		}
 	};
