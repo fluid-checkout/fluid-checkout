@@ -345,6 +345,8 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased - 1.6.0 =
 
+* Added: New option to enable/disable the Checkout Progress Bar feature.
+* Improved: Moved some options from the "Advanced" to "Tools" and "Checkout" settings tabs. Removed the "Advanced" settings tab.
 * Improved: Only register checkout header widget areas when using the Fluid Checkout header template.
 * Improved: Display the shipping calculator above the shipping methods in the cart page (PRO feature).
 * Improved: Refactor make SCSS code reusable by using variables like `$_body-theme-selector` and `$_body-page-selector`.

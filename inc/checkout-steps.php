@@ -1059,6 +1059,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the checkout progress bar.
 	 */
 	public function output_checkout_progress_bar() {
+		// Bail if progress bar not enabled
+		if ( 'yes' !== get_option( 'fc_enable_checkout_progress_bar', 'yes' ) ) { return; }
+
 		// Bail if not multi-step checkout layout
 		if ( ! $this->is_checkout_layout_multistep() ) { return; }
 
