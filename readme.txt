@@ -343,6 +343,10 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Also display "edit cart" link on order summary for mobile devices.
+
 = 1.5.7 - 2022-04-12 =
 
 * Improved: Change the default position for the shipping methods section to after the shipping address. The position for the shipping methods section can be changed in the plugin settings.

@@ -2502,28 +2502,23 @@ form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review .fc-checkout-ord
 }
 
 .fc-checkout-order-review__head .fc-checkout-order-review__edit-cart {
-  display: none;
+  position: relative;
+  right: -10px;
+  float: right;
+  display: block;
+  margin: 0;
+  padding: 5px 10px;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 1;
+  text-decoration: underline;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
 }
-@media (min-width: 1000px) {
-  .fc-checkout-order-review__head .fc-checkout-order-review__edit-cart {
-    position: relative;
-    right: -10px;
-    float: right;
-    display: block;
-    margin: 0;
-    padding: 5px 10px;
-    font-size: 15px;
-    font-weight: normal;
-    line-height: 1;
-    text-decoration: underline;
-    color: inherit;
-    background-color: transparent;
-    cursor: pointer;
-  }
-  .fc-checkout-order-review__head .fc-checkout-order-review__edit-cart:focus {
-    outline: dotted 1px #535156;
-    outline-offset: 1px;
-  }
+.fc-checkout-order-review__head .fc-checkout-order-review__edit-cart:focus {
+  outline: dotted 1px #535156;
+  outline-offset: 1px;
 }
 
 div.woocommerce .fc-expansible-form-section {
