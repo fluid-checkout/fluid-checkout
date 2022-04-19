@@ -23,8 +23,6 @@ defined( 'ABSPATH' ) || exit;
 
 <div class="woocommerce-shipping-fields">
 
-	<?php // do_action( 'fc_checkout_before_step_shipping_fields' ); ?>
-
 	<?php if ( true === WC()->cart->needs_shipping_address() ) : ?>
 
 		<?php // CHANGE: Output "ship to different address" option via hook ?>
@@ -67,8 +65,6 @@ defined( 'ABSPATH' ) || exit;
 	// CHANGE: Added for compatibility with plugins that use this action hook
 	do_action( 'woocommerce_checkout_shipping', $checkout );
 	?>
-	
-	<?php // do_action( 'fc_checkout_after_step_shipping_fields' ); ?>
 
 </div>
 
