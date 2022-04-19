@@ -1841,6 +1841,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output shipping address step fields.
 	 */
 	public function output_substep_shipping_address_fields() {
+		do_action( 'fc_checkout_before_step_shipping_fields' );
+		echo $this->get_substep_shipping_address_fields();
+		do_action( 'fc_checkout_after_step_shipping_fields' );
+	}
+
+	/**
+	 * Get shipping address step fields html.
+	 */
+	public function get_substep_shipping_address_fields() {
+		ob_start();
+
 		// Filter out shipping fields moved to another step
 		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
 		$shipping_fields = array_filter( $shipping_fields, function( $key ) {
@@ -1866,14 +1877,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'shipping_only_fields'                => $shipping_only_fields,
 			)
 		);
-	}
 
-	/**
-	 * Get shipping address step fields html.
-	 */
-	public function get_substep_shipping_address_fields() {
-		ob_start();
-		$this->output_substep_shipping_address_fields();
 		return ob_get_clean();
 	}
 
