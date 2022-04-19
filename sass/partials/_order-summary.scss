@@ -404,29 +404,25 @@ form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review .fc-checkout-ord
 
 
 .fc-checkout-order-review__head .fc-checkout-order-review__edit-cart {
-	display: none;
+	position: relative;
+	#{ $alignment-right }: $order-summary-edit-cart-button-right;
 
-	@media (#{$bp-larger-than-desktop}) {
-		position: relative;
-		#{ $alignment-right }: $order-summary-edit-cart-button-right;
+	float: $alignment-right;
+	display: block;
 
-		float: $alignment-right;
-		display: block;
-
-		margin: $order-summary-edit-cart-button-margin;
-		padding: $order-summary-edit-cart-button-padding;
-		font-size: $order-summary-edit-cart-button-font-size--large-screen;
-		font-weight: $order-summary-edit-cart-button-font-weight;
-		line-height: 1;
-		text-decoration: $order-summary-edit-cart-button-text-decoration;
-		color: $order-summary-edit-cart-button-color;
-		background-color: $order-summary-edit-cart-button-background-color;
-		cursor: pointer;
+	margin: $order-summary-edit-cart-button-margin;
+	padding: $order-summary-edit-cart-button-padding;
+	font-size: $order-summary-edit-cart-button-font-size--large-screen;
+	font-weight: $order-summary-edit-cart-button-font-weight;
+	line-height: 1;
+	text-decoration: $order-summary-edit-cart-button-text-decoration;
+	color: $order-summary-edit-cart-button-color;
+	background-color: $order-summary-edit-cart-button-background-color;
+	cursor: pointer;
 
 
-		&:focus {
-			outline: $focus-outline-link;
-			outline-offset: $focus-outline-offset-link;
-		}
+	&:focus {
+		outline: $focus-outline-link;
+		outline-offset: $focus-outline-offset-link;
 	}
 }
