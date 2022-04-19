@@ -347,6 +347,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 * Improved: Also display "edit cart" link on order summary for mobile devices.
 * Fixed: Run hooks `fc_checkout_before_step_billing_fields` and `fc_checkout_after_step_billing_fields` only on initial page load skip on AJAX fragments requests.
+* Fixed: Moved hook `woocommerce_checkout_after_customer_details` out of the form-billing.php template file, now run on the hook `fc_checkout_after_step_billing_fields`.
 
 = 1.5.7 - 2022-04-12 =
 

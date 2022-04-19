@@ -83,6 +83,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), 100 );
 
+		// Customer details hooks
+		add_action( 'fc_checkout_after_step_billing_fields', array( $this, 'run_action_woocommerce_checkout_after_customer_details' ), 90 );
+
 		// Contact
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		add_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
@@ -3243,6 +3246,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$icon = preg_replace( $pattern, 'alt="" aria-hidden="true" role="presentation"', $icon );
 
 		return $icon;
+	}
+
+
+
+	/**
+	 * Run the action hook `woocommerce_checkout_after_customer_details`.
+	 */
+	public function run_action_woocommerce_checkout_after_customer_details() {
+		do_action( 'woocommerce_checkout_after_customer_details' );
 	}
 
 
