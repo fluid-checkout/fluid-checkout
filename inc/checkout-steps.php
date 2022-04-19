@@ -2564,6 +2564,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output billing address fields, except those already added at the contact step.
 	 */
 	public function output_substep_billing_address_fields() {
+		do_action( 'fc_checkout_before_step_billing_fields' );
+		echo $this->get_substep_billing_address_fields();
+		do_action( 'fc_checkout_after_step_billing_fields' );
+	}
+
+	/**
+	 * Get billing address fields, except those already added at the contact step.
+	 */
+	public function get_substep_billing_address_fields() {
+		ob_start();
+
 		// Get checkout object and billing fields, with ignored billing fields removed
 		$billing_fields = WC()->checkout()->get_checkout_fields( 'billing' );
 		$billing_fields = array_filter( $billing_fields, function( $key ) {
@@ -2580,8 +2591,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return in_array( $key, $this->get_billing_only_fields_keys() );
 		}, ARRAY_FILTER_USE_KEY );
 
-		do_action( 'fc_checkout_before_step_billing_fields' );
-
 		wc_get_template(
 			'checkout/form-billing.php',
 			array(
@@ -2592,15 +2601,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			)
 		);
 
-		do_action( 'fc_checkout_after_step_billing_fields' );
-	}
-
-	/**
-	 * Get billing address fields, except those already added at the contact step.
-	 */
-	public function get_substep_billing_address_fields() {
-		ob_start();
-		$this->output_substep_billing_address_fields();
 		return ob_get_clean();
 	}
 
