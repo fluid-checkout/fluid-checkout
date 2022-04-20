@@ -12,40 +12,14 @@
  */
 
 defined( 'ABSPATH' ) || exit;
-
-$formatted_destination    = isset( $formatted_destination ) ? $formatted_destination : WC()->countries->get_formatted_address( $package['destination'], ', ' );
 $is_cart_page_or_fragment = ! empty( $is_cart_page_or_fragment );
-$show_shipping_calculator = ! empty( $show_shipping_calculator );
-$calculator_text          = '';
 ?>
+
+<?php // CHANGE: Remove shipping totals table row elements ?>
 
 <div class="shipping shipping-method__package" data-title="<?php echo esc_attr( $package_name ); ?>" data-package-index="<?php echo esc_attr( $package_index ); ?>">
 
-	<?php if ( $is_cart_page_or_fragment && $first_package ) : ?>
-
-		<?php if ( WC()->cart->show_shipping() ) : ?>
-
-			<p class="woocommerce-shipping-destination">
-				<?php
-				if ( $formatted_destination ) {
-					// Translators: $s shipping destination.
-					printf( esc_html__( 'Shipping to %s.', 'woocommerce' ) . ' ', '<strong>' . esc_html( $formatted_destination ) . '</strong>' );
-					$calculator_text = esc_html__( 'Change address', 'woocommerce' );
-				} else {
-					echo wp_kses_post( apply_filters( 'woocommerce_shipping_estimate_html', __( 'Shipping options will be updated during checkout.', 'woocommerce' ) ) );
-				}
-				?>
-			</p>
-
-		<?php endif; ?>
-
-		<?php if ( ! empty( $show_shipping_calculator ) ) : ?>
-			<?php woocommerce_shipping_calculator( $calculator_text ); ?>
-		<?php endif; ?>
-
-	<?php endif; ?>
-
-	<?php if ( WC()->cart->show_shipping() ) : ?>
+	<?php if ( is_checkout() || ( $is_cart_page_or_fragment && WC()->cart->show_shipping() ) ) : ?>
 
 		<?php // CHANGE: Conditionally add the shipping package name ?>
 		<?php if ( true === apply_filters( 'fc_shipping_method_display_package_name', false ) ) : ?>
@@ -54,8 +28,10 @@ $calculator_text          = '';
 
 		<?php if ( count( $available_methods ) > 0 ) : ?>
 
+			<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element markup ?>
 			<?php echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
 
+			<?php // CHANGE: Add shipping methods elements markup ?>
 			<?php
 			$first = true;
 			foreach ( $available_methods as $method ) :
@@ -92,7 +68,10 @@ $calculator_text          = '';
 				$first = false;
 			endforeach; ?>
 
+			<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element closing tag ?>
 			<?php echo apply_filters( 'fc_shipping_method_option_end_tag_markup', '</ul>' ); ?>
+
+			<?php // CHANGE: Remove shipping calculator and related messages, moved to template file `fc-pro/cart/cart/shipping-methods-calculate-shipping.php` ?>
 
 			<?php if ( $show_package_details ) : ?>
 			<?php echo '<p class="woocommerce-shipping-contents"><small>' . esc_html( $package_details ) . '</small></p>'; ?>
@@ -102,12 +81,13 @@ $calculator_text          = '';
 
 	<?php endif; ?>
 
-	<?php if ( count( $available_methods ) == 0 || ! WC()->cart->show_shipping() ) : ?>
-
+	<?php // CHANGE: Conditionally display message for when no shipping methods are available for the package, only on the checkout page ?>
+	<?php if ( is_checkout() && count( $available_methods ) == 0 ) : ?>
 		<div class="fc-shipping-method__no-shipping-methods">
 			<?php echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce' ) ) ); ?>
 		</div>
-
 	<?php endif; ?>
 
 </div>
+
+<?php // CHANGE: Remove shipping totals table row closing elements ?>

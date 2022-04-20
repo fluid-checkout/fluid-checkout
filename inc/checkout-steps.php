@@ -2391,16 +2391,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @access public
 	 */
 	public function get_shipping_methods_available() {
-		global $wp_query;
-		$ajax_action = $wp_query->get( 'wc-ajax' );
-
-		ob_start();
+		// Calculate shipping before totals. This will ensure any shipping methods that affect things like taxes are chosen prior to final totals being calculated. Ref: #22708.
+		WC()->cart->calculate_shipping();
+		WC()->cart->calculate_totals();
 
 		$packages = WC()->shipping->get_packages();
 
-		do_action( 'fc_shipping_methods_before_packages' );
+		ob_start();
 
 		echo '<div class="fc-shipping-method__packages">';
+
+		do_action( 'fc_shipping_methods_before_packages_inside' );
 
 		$first_item = true;
 		foreach ( $packages as $i => $package ) {
@@ -2418,22 +2419,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'package'					=> $package,
 				'available_methods'			=> $package['rates'],
 				'show_package_details'		=> sizeof( $packages ) > 1,
-				'is_cart_page_or_fragment'  => is_cart() || 'update_cart_fragments' === $ajax_action,
-				'show_shipping_calculator'	=> ( is_cart() || 'update_cart_fragments' === $ajax_action ) && $first_item,
+				'is_cart_page_or_fragment'  => apply_filters( 'fc_is_cart_page_or_fragment', is_cart() ),
 				'package_details'			=> implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
 				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
 				'package_index'				=> $i,
 				'chosen_method'				=> $chosen_method,
-				'first_package'             => $first_item
 			) );
 
 			$first_item = false;
 		}
 
-		echo '</div>';
+		do_action( 'fc_shipping_methods_after_packages_inside' );
 
-		do_action( 'fc_shipping_methods_after_packages' );
+		echo '</div>';
 
 		return ob_get_clean();
 	}
@@ -2455,7 +2454,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @access public
 	 */
 	public function output_shipping_methods_available() {
+		do_action( 'fc_shipping_methods_before_packages' );
 		echo $this->get_shipping_methods_available();
+		do_action( 'fc_shipping_methods_after_packages' );
 	}
 
 	/**
