@@ -703,7 +703,7 @@ jQuery( function( $ ) {
 			if ( $form.triggerHandler( 'checkout_place_order' ) !== false && $form.triggerHandler( 'checkout_place_order_' + wc_checkout_form.get_payment_method() ) !== false ) {
 
 				$form.addClass( 'processing' );
-				
+
 				// CHANGE: Disable place order button
 				var currentFocusedElement = document.activeElement;
 				$( _settings.checkoutPlaceOrderSelector ).attr( 'disabled', 'disabled' );
@@ -866,6 +866,7 @@ jQuery( function( $ ) {
 				success:	function( code ) {
 					$( '.woocommerce-error, .woocommerce-message' ).remove();
 					$form.removeClass( 'processing' ).unblock();
+
 					if ( code ) {
 						$form.before( code );
 						$form.slideUp();
@@ -932,7 +933,7 @@ jQuery( function( $ ) {
 							$( 'form.woocommerce-checkout' ).before( code );
 						}
 
-						$( document.body ).trigger( 'removed_coupon_in_checkout', [ data.coupon_code ] );
+						$( document.body ).trigger( 'removed_coupon_in_checkout', [ data.coupon ] );
 						$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
 
 						// Remove coupon code from coupon field
