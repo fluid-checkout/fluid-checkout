@@ -352,8 +352,6 @@
 			dataType:   'json',
 			success:	function( response ) {
 
-				console.log( response );
-
 				if ( response.result && 'success' === response.result ) {
 					// Maybe add messages
 					if ( response.message ) {
@@ -389,12 +387,6 @@
 		// Add event listeners
 		window.addEventListener( 'click', handleClick );
 		document.addEventListener( 'keydown', handleKeyDown, true );
-
-		// // Add jQuery event listeners
-		// if ( _hasJQuery ) {
-		// 	$( document.body ).on( 'updated_checkout', maybeChangeSubstepState );
-		// 	$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
-		// }
 
 		// Add init class
 		document.body.classList.add( _settings.bodyClass );

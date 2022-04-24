@@ -826,12 +826,9 @@ jQuery( function( $ ) {
 
 	var wc_checkout_coupons = {
 		init: function() {
-			// $( document.body ).on( 'click', 'a.showcoupon', this.show_coupon_form );
-			// $( document.body ).on( 'click', '.woocommerce-remove-coupon', this.remove_coupon );
-			// $( 'form.checkout_coupon' ).hide().on( 'submit', this.submit );
-			// // CHANGE: Added event listeners for apply coupon via ajax
-			// $( document.body ).on( 'click', '[data-apply-coupon-button]', this.apply_coupon );
-			// wc_checkout_form.$checkout_form.on( 'keydown', 'input[name="coupon_code"]', this.maybe_apply_coupon_keydown );
+			$( document.body ).on( 'click', 'a.showcoupon', this.show_coupon_form );
+			$( document.body ).on( 'click', '.woocommerce-remove-coupon', this.remove_coupon );
+			$( 'form.checkout_coupon' ).hide().on( 'submit', this.submit );
 		},
 		show_coupon_form: function() {
 			$( '.checkout_coupon' ).slideToggle( 400, function() {
@@ -882,9 +879,11 @@ jQuery( function( $ ) {
 		remove_coupon: function( e ) {
 			e.preventDefault();
 
-			// CHANGE: Change container element to be the coupon code item if Fluid Checkout coupons feature is enabled
+			// CHANGE: Bail when Fluid Checkout integrated coupon code feature is enabled
 			var isFluidCheckoutCouponsEnabled = $( this ).parents( '.fc-coupon-codes__coupon' ).length > 0;
-			var container = isFluidCheckoutCouponsEnabled ? $( this ).parents( '.fc-coupon-codes__coupon' ) : $( this ).parents( '.woocommerce-checkout-review-order' ),
+			if ( isFluidCheckoutCouponsEnabled ) { return; }
+
+			var container = $( this ).parents( '.woocommerce-checkout-review-order' ),
 				coupon    = $( this ).data( 'coupon' );
 
 			container.addClass( 'processing' ).block({
@@ -900,46 +899,22 @@ jQuery( function( $ ) {
 				coupon:   coupon
 			};
 
-			// CHANGE: Remove existing messages previously to sending request
-			if ( isFluidCheckoutCouponsEnabled ) {
-				$( '.woocommerce-error, .woocommerce-message' ).remove();
-			}
-
 			$.ajax({
 				type:    'POST',
 				url:     wc_checkout_params.wc_ajax_url.toString().replace( '%%endpoint%%', 'remove_coupon' ),
 				data:    data,
 				success: function( code ) {
-					// CHANGE: Unblock container and remove messages if using native WooCommerce coupons feature
-					if ( ! isFluidCheckoutCouponsEnabled ) {
-						$( '.woocommerce-error, .woocommerce-message' ).remove();
-						container.removeClass( 'processing' ).unblock();
-					}
+					$( '.woocommerce-error, .woocommerce-message' ).remove();
+					container.removeClass( 'processing' ).unblock();
 
 					if ( code ) {
-						// CHANGE: Get the checkout substep elements
-						var $substep_title = $( '.fc-step__substep[data-substep-id="coupon_codes"] .fc-step__substep-title' );
-						var $substep = $( '.fc-step__substep[data-substep-id="coupon_codes"]' );
-
-						// CHANGE: Maybe display coupon code messages in the coupon code step instead of the top of the page
-						if ( isFluidCheckoutCouponsEnabled && $substep_title.length ) {
-							$( code ).insertAfter( $substep_title );
-						}
-						else if ( isFluidCheckoutCouponsEnabled && $substep.length > 0 ) {
-							$substep.prepend( code );
-						}
-						else {
-							$( 'form.woocommerce-checkout' ).before( code );
-						}
+						$( 'form.woocommerce-checkout' ).before( code );
 
 						$( document.body ).trigger( 'removed_coupon_in_checkout', [ data.coupon_code ] );
 						$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
 
 						// Remove coupon code from coupon field
 						$( 'form.checkout_coupon' ).find( 'input[name="coupon_code"]' ).val( '' );
-
-						// CHANGE: Remove coupon code from coupon field on the checkout form
-						$( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' ).val( '' );
 					}
 				},
 				error: function ( jqXHR ) {
@@ -950,106 +925,7 @@ jQuery( function( $ ) {
 				},
 				dataType: 'html'
 			});
-		},
-		// CHANGE: Add function to apply coupon via ajax from the checkout form
-		apply_coupon: function( e ) {
-			e.preventDefault();
-
-			var coupon_code    = $( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' ).val();
-			var coupon_field   = $( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' );
-			var apply_button   = $( 'form.woocommerce-checkout' ).find( '[data-apply-coupon-button]' );
-
-			var data = {
-				security: wc_checkout_params.apply_coupon_nonce,
-				coupon_code:   coupon_code
-			};
-
-			// Display loading/processing indication
-			var container = $( this ).parents( '.fc-expansible-form-section__content--coupon_code' );
-			container.addClass( 'processing' ).block({
-				message: null,
-				overlayCSS: {
-					background: '#fff',
-					opacity: 0.6
-				}
-			});
-
-			// Disable coupon and button
-			coupon_field.prop( 'disabled', true );
-			apply_button.prop( 'disabled', true );
-
-			$.ajax({
-				type:    'POST',
-				url:     wc_checkout_params.wc_ajax_url.toString().replace( '%%endpoint%%', 'apply_coupon' ),
-				data:    data,
-				success: function( code ) {
-					$( '.woocommerce-error, .woocommerce-message' ).remove();
-					
-					// Remove loading/processing indication and unblock coupon field and button
-					container.removeClass( 'processing' ).unblock();
-					coupon_field.prop( 'disabled', false );
-					apply_button.prop( 'disabled', false );
-
-					if ( code ) {
-						// Get the checkout substep elements
-						var $substep_title = $( '.fc-step__substep[data-substep-id="coupon_codes"] .fc-step__substep-title' );
-						var $substep = $( '.fc-step__substep[data-substep-id="coupon_codes"]' );
-
-						// Display response (`code`) as a message
-						if ( $substep_title.length > 0 ) {
-							$( code ).insertAfter( $substep_title );
-						}
-						else {
-							$substep.prepend( code );
-						}
-
-						$( document.body ).trigger( 'applied_coupon_in_checkout', [ data.coupon_code ] );
-						$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
-
-						// Remove coupon code from coupon field
-						$( 'form.checkout_coupon' ).find( 'input[name="coupon_code"]' ).val( '' );
-
-						// CHANGE: Remove coupon code from coupon field on the checkout form
-						$( 'form.woocommerce-checkout' ).find( 'input[name="coupon_code"]' ).val( '' );
-
-						// Close the coupon code field section
-						if ( window.CollapsibleBlock ) {
-
-							var expansibleCouponToggle = document.querySelector( 'form.woocommerce-checkout .fc-expansible-form-section__toggle--coupon_code' );
-							var expansibleCouponContent = document.querySelector( 'form.woocommerce-checkout .fc-expansible-form-section__content--coupon_code' );
-							var expansibleCouponToggleButton = document.querySelector( 'form.woocommerce-checkout .expansible-section__toggle-plus--coupon_code' );
-
-							if ( expansibleCouponToggle && expansibleCouponContent ) {
-								// Change expanded/collapsed states for the fields and text blocks
-								CollapsibleBlock.collapse( expansibleCouponContent );
-								CollapsibleBlock.expand( expansibleCouponToggle );
-
-								// Focus back to the add coupon code
-								if ( expansibleCouponToggleButton ) {
-									expansibleCouponToggleButton.focus();
-								}
-							}
-						}
-					}
-				},
-				error: function ( jqXHR ) {
-					if ( wc_checkout_params.debug_mode ) {
-						/* jshint devel: true */
-						console.log( jqXHR.responseText );
-					}
-				},
-				dataType: 'html'
-			});
-		},
-		// CHANGE: Added function to handle `ENTER` key on the coupon code field
-		maybe_apply_coupon_keydown: function( e ) {
-			var code = e.keyCode || e.which || 0;
-
-			if ( $( e.target ).is( 'form.woocommerce-checkout input[name="coupon_code"]' ) && code === 13 ) {
-				e.preventDefault();
-				wc_checkout_coupons.apply_coupon( e );
-			}
-		},
+		}
 	};
 
 	var wc_checkout_login_form = {

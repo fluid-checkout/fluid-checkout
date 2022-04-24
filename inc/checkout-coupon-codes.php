@@ -287,7 +287,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 			// Intercept notices to avoid them being displayed on other pages
 			ob_start();
 			wc_print_notices();
-			$message .= ob_get_clean();
+			$message = ob_get_clean();
 			
 			wp_send_json(
 				array(
