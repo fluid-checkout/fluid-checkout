@@ -292,7 +292,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Enqueue scripts.
+	 * Register assets.
 	 */
 	public function register_assets() {
 		// Styles
@@ -309,7 +309,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Enqueue scripts.
+	 * Enqueue assets.
 	 */
 	public function enqueue_assets() {
 		// Bail if not at checkout

@@ -826,12 +826,12 @@ jQuery( function( $ ) {
 
 	var wc_checkout_coupons = {
 		init: function() {
-			$( document.body ).on( 'click', 'a.showcoupon', this.show_coupon_form );
-			$( document.body ).on( 'click', '.woocommerce-remove-coupon', this.remove_coupon );
-			$( 'form.checkout_coupon' ).hide().on( 'submit', this.submit );
-			// CHANGE: Added event listeners for apply coupon via ajax
-			$( document.body ).on( 'click', '[data-apply-coupon-button]', this.apply_coupon );
-			wc_checkout_form.$checkout_form.on( 'keydown', 'input[name="coupon_code"]', this.maybe_apply_coupon_keydown );
+			// $( document.body ).on( 'click', 'a.showcoupon', this.show_coupon_form );
+			// $( document.body ).on( 'click', '.woocommerce-remove-coupon', this.remove_coupon );
+			// $( 'form.checkout_coupon' ).hide().on( 'submit', this.submit );
+			// // CHANGE: Added event listeners for apply coupon via ajax
+			// $( document.body ).on( 'click', '[data-apply-coupon-button]', this.apply_coupon );
+			// wc_checkout_form.$checkout_form.on( 'keydown', 'input[name="coupon_code"]', this.maybe_apply_coupon_keydown );
 		},
 		show_coupon_form: function() {
 			$( '.checkout_coupon' ).slideToggle( 400, function() {

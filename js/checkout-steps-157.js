@@ -130,7 +130,7 @@
 	/**
 	 * Check if the element is considered visible. Does not consider the CSS property `visibility: hidden;`.
 	 */
-	 var isVisible = function( element ) {
+	var isVisible = function( element ) {
 		return !!( element.offsetWidth || element.offsetHeight || element.getClientRects().length );
 	}
 
@@ -143,7 +143,7 @@
 	 *
 	 * @return  NodeList              All focusable elements withing the element passed in.
 	 */
-	 var getFocusableElements = function( element ) {
+	var getFocusableElements = function( element ) {
 		// Set element to `document` root if not passed in
 		if ( ! element ) { element = document; }
 		
@@ -292,7 +292,7 @@
 	 *
 	 * @param   HTMLElement  substepElement  Substep element to change the state of.
 	 */
-	 var maybeSaveSubstep = function( substepElement ) {
+	var maybeSaveSubstep = function( substepElement ) {
 		// Bail if editButton not valid
 		if ( ! substepElement ) { return; }
 		
@@ -578,13 +578,13 @@
 	/**
 	 * Handle keypress event.
 	 */
-	 var handleKeyDown = function( e ) {
+	var handleKeyDown = function( e ) {
 		// Should do nothing if the default action has been cancelled
 		if ( e.defaultPrevented ) { return; }
 
 		// ENTER or SPACE on handler element
 		if ( ( e.key == _key.ENTER || e.key == _key.SPACE ) && ( e.target.closest( _settings.substepEditButtonSelector ) || e.target.closest( _settings.substepSaveButtonSelector ) ) ) {
-			// Similate click
+			// Simulate click
 			handleClick( e );
 		}
 	};
@@ -594,7 +594,7 @@
 	/**
 	 * Finish to initialize component and set related handlers.
 	 */
-	 var finishInit = function() {
+	var finishInit = function() {
 		// Add event listeners
 		window.addEventListener( 'click', handleClick );
 		document.addEventListener( 'keydown', handleKeyDown, true );

@@ -25,6 +25,13 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		// Body Class
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
+		// Enqueue
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+
+		// Checkout validation settings
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
 		// Checkout Coupon Notice
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 
@@ -34,6 +41,10 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		// Prevent hiding coupon code field behind a link button, as it is implemented directly
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_coupon_code' ), 10 );
+
+		// Actions
+		add_action( 'wc_ajax_fc_add_coupon_code', array( $this, 'add_coupon_code' ), 10 );
+		add_action( 'wc_ajax_fc_remove_coupon_code', array( $this, 'remove_coupon_code' ), 10 );
 	}
 
 
@@ -53,6 +64,45 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 
 	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Scripts
+		wp_register_script( 'fc-checkout-coupons', self::$directory_url . 'js/checkout-coupons'. self::$asset_version . '.js', array( 'jquery', 'require-bundle' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-coupons', 'window.addEventListener("load",function(){CheckoutCoupons.init();})' );
+	}
+
+	/**
+	 * Enqueue assets.
+	 */
+	public function enqueue_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
+		
+		// Checkout steps scripts
+		wp_enqueue_script( 'fc-checkout-coupons' );
+	}
+
+
+
+	/**
+	 * Add Checkout Validation settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+
+		$settings[ 'checkoutCoupons' ] = apply_filters( 'fc_checkout_coupons_script_settings', array(
+			'addCouponCodeNonce' => wp_create_nonce( 'fc-add-coupon-code' ),
+			'removeCouponCodeNonce' => wp_create_nonce( 'fc-remove-coupon-code' ),
+		) );
+
+		return $settings;
+	}
+
+
+
+	/**
 	 * Output coupon codes substep.
 	 *
 	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
@@ -62,6 +112,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$substep_title = get_option( 'fc_display_coupon_code_section_title', 'no' ) === 'yes' ? apply_filters( 'fc_substep_coupon_codes_section_title', __( 'Coupon code', 'fluid-checkout' ) ) : null;
 		FluidCheckout_Steps::instance()->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
+		$this->output_coupon_codes_messages_container();
 		$this->output_substep_text_coupon_codes();
 
 		FluidCheckout_Steps::instance()->output_substep_fields_start_tag( $step_id, $substep_id, false );
@@ -172,6 +223,97 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function output_substep_text_coupon_codes() {
 		echo $this->get_substep_text_coupon_codes();
+	}
+
+	/**
+	 * Output the coupon codes messages container element.
+	 */
+	public function output_coupon_codes_messages_container() {
+		echo '<div class="fc-coupon-code-messages"></div>';
+	}
+
+
+
+	/**
+	 * AJAX Add a coupon code to the cart.
+	 * @see WC_AJAX::apply_coupon
+	 */
+	public function add_coupon_code() {
+		check_ajax_referer( 'fc-add-coupon-code', 'security' );
+
+		$coupon_code = sanitize_text_field( wp_unslash( $_REQUEST['coupon_code'] ) );
+
+		if ( ! empty( $coupon_code ) ) {
+			WC()->cart->add_discount( wc_format_coupon_code( $coupon_code ) );
+
+			// Intercept notices to avoid them being displayed on other pages
+			ob_start();
+			wc_print_notices();
+			$message = ob_get_clean();
+			
+			wp_send_json(
+				array(
+					'result'           => false === strpos( $message, 'woocommerce-error' ) ? 'success' : 'error',
+					'coupon_code'      => $coupon_code,
+					'message'          => $message,
+				)
+			);
+		}
+		else {
+			wp_send_json(
+				array(
+					'result'           => 'error',
+					'coupon_code'      => $coupon_code,
+					'error_slug'       => 'coupon_code_does_not_exist',
+					'message'          => WC_Coupon::get_generic_coupon_error( WC_Coupon::E_WC_COUPON_PLEASE_ENTER ),
+				)
+			);
+		}
+	}
+
+	/**
+	 * AJAX Remove a coupon code from the cart.
+	 * @see WC_AJAX::remove_coupon
+	 */
+	public function remove_coupon_code() {
+		check_ajax_referer( 'fc-remove-coupon-code', 'security' );
+
+		$coupon_code = sanitize_text_field( wp_unslash( $_REQUEST['coupon_code'] ) );
+
+		if ( ! empty( $coupon_code ) ) {
+			WC()->cart->remove_coupon( wc_format_coupon_code( $coupon_code ) );
+			wc_add_notice( __( 'Coupon has been removed.', 'woocommerce' ) );
+
+			// Intercept notices to avoid them being displayed on other pages
+			ob_start();
+			wc_print_notices();
+			$message .= ob_get_clean();
+			
+			wp_send_json(
+				array(
+					'result'           => false === strpos( $message, 'woocommerce-error' ) ? 'success' : 'error',
+					'coupon_code'      => $coupon_code,
+					'message'          => $message,
+				)
+			);
+		}
+		else {
+			wc_add_notice( __( 'Sorry there was a problem removing this coupon.', 'woocommerce' ), 'error' );
+
+			// Intercept notices to avoid them being displayed on other pages
+			ob_start();
+			wc_print_notices();
+			$message = ob_get_clean();
+
+			wp_send_json(
+				array(
+					'result'           => 'error',
+					'coupon_code'      => $coupon_code,
+					'error_slug'       => 'coupon_code_not_provided',
+					'message'          => $message,
+				)
+			);
+		}
 	}
 
 }
