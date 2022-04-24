@@ -352,6 +352,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Display the shipping calculator above the shipping methods in the cart page (PRO feature).
 * Improved: Refactor make SCSS code reusable by using variables like `$_body-theme-selector` and `$_body-page-selector`.
 * Improved: Only display no shipping methods message on the checkout page when using the template file shipping-methods-available.php.
+* Improved: Refactor integrated coupon code feature to use own AJAX functions and scripts.
 * Fixed: Hide shipping methods on the cart page when WooCommerce the option "Hide shipping costs until an address is entered" is checked.
 * Fixed: Run hooks `fc_shipping_methods_before_packages`, `fc_shipping_methods_after_packages` only on initial page load skip on AJAX fragments requests.
 
