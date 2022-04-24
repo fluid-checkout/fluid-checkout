@@ -39,15 +39,6 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 
 	/**
-	 * Return Checkout Steps class instance.
-	 */
-	public function checkout_steps() {
-		return FluidCheckout_Steps::instance();
-	}
-
-
-
-	/**
 	 * Add page body class for feature detection.
 	 *
 	 * @param   array  $classes  Body classes array.
@@ -69,15 +60,15 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	public function output_substep_coupon_codes( $step_id ) {
 		$substep_id = 'coupon_codes';
 		$substep_title = get_option( 'fc_display_coupon_code_section_title', 'no' ) === 'yes' ? apply_filters( 'fc_substep_coupon_codes_section_title', __( 'Coupon code', 'fluid-checkout' ) ) : null;
-		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, $substep_title );
+		FluidCheckout_Steps::instance()->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_text_coupon_codes();
 
-		$this->checkout_steps()->output_substep_fields_start_tag( $step_id, $substep_id, false );
+		FluidCheckout_Steps::instance()->output_substep_fields_start_tag( $step_id, $substep_id, false );
 		$this->output_substep_coupon_codes_fields();
-		$this->checkout_steps()->output_substep_fields_end_tag();
+		FluidCheckout_Steps::instance()->output_substep_fields_end_tag();
 
-		$this->checkout_steps()->output_substep_end_tag( $step_id, $substep_id, $substep_title, false );
+		FluidCheckout_Steps::instance()->output_substep_end_tag( $step_id, $substep_id, $substep_title, false );
 	}
 
 
@@ -112,12 +103,12 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$coupon_code_toggle_label = get_option( 'fc_optional_fields_link_label_lowercase', 'yes' ) === 'yes' ? strtolower( $coupon_code_field_label ) : $coupon_code_field_label;
 		/* translators: %s: Form field label */
 		$coupon_code_toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), $coupon_code_toggle_label ) );
-		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, $coupon_code_toggle_label, $coupon_code_expansible_args );
+		FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( $key, $coupon_code_toggle_label, $coupon_code_expansible_args );
 		woocommerce_form_field( $key, $coupon_code_field_args );
 		?>
 		<button type="button" class="fc-coupon-code__apply <?php echo esc_attr( apply_filters( 'fc_coupon_code_apply_button_classes', 'button' ) ); ?>" data-apply-coupon-button><?php echo esc_html( $coupon_code_button_label ); ?></button>
 		<?php
-		$this->checkout_steps()->output_expansible_form_section_end_tag();
+		FluidCheckout_Steps::instance()->output_expansible_form_section_end_tag();
 	}
 
 
