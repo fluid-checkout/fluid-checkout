@@ -295,13 +295,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
+		// Maybe load RTL file
+		$rtl_suffix = is_rtl() ? '-rtl' : '';
+		
 		// Styles
-		if ( is_rtl() ) {
-			wp_register_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout-rtl'. self::$asset_version . '.css', NULL, NULL );
-		}
-		else {
-			wp_register_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout'. self::$asset_version . '.css', NULL, NULL );
-		}
+		wp_register_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
 
 		// Checkout steps scripts
 		wp_register_script( 'fc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );

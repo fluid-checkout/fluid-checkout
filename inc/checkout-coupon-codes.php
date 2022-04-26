@@ -70,9 +70,15 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
+		// Maybe load RTL file
+		$rtl_suffix = is_rtl() ? '-rtl' : '';
+
 		// Scripts
 		wp_register_script( 'fc-checkout-coupons', self::$directory_url . 'js/checkout-coupons'. self::$asset_version . '.js', array( 'jquery', 'require-bundle' ), NULL, true );
 		wp_add_inline_script( 'fc-checkout-coupons', 'window.addEventListener("load",function(){CheckoutCoupons.init();})' );
+
+		// Styles
+		wp_register_style( 'fc-checkout-coupons', self::$directory_url . 'css/checkout-coupons'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
 	}
 
 	/**
@@ -82,6 +88,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		if ( is_checkout() && 'yes' === get_option( 'fc_enable_checkout_coupon_codes', 'yes' ) ) {
 			// Checkout steps scripts
 			wp_enqueue_script( 'fc-checkout-coupons' );
+			wp_enqueue_style( 'fc-checkout-coupons' );
 		}
 	}
 
