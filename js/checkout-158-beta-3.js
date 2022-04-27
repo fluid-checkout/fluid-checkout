@@ -704,7 +704,7 @@ jQuery( function( $ ) {
 			if ( $form.triggerHandler( 'checkout_place_order' ) !== false && $form.triggerHandler( 'checkout_place_order_' + wc_checkout_form.get_payment_method() ) !== false ) {
 
 				$form.addClass( 'processing' );
-				
+
 				// CHANGE: Disable place order button
 				var currentFocusedElement = document.activeElement;
 				$( _settings.checkoutPlaceOrderSelector ).attr( 'disabled', 'disabled' );
@@ -864,6 +864,7 @@ jQuery( function( $ ) {
 				success:	function( code ) {
 					$( '.woocommerce-error, .woocommerce-message' ).remove();
 					$form.removeClass( 'processing' ).unblock();
+
 					if ( code ) {
 						$form.before( code );
 						$form.slideUp();

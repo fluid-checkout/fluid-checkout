@@ -45,7 +45,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 				'before_billing' => array( 'fc_output_step_billing', 9 ),
 				'after_billing' => array( 'fc_output_step_billing', 11 ),
 				'before_shipping' => array( 'fc_output_step_shipping', 9 ),
-				'after_shipping' => array( 'fc_output_step_shipping', 11 ),
+				'after_shipping' => array( 'fc_output_step_shipping', 21 ),
 				'before_notes' => array( 'fc_output_step_shipping', 99 ),
 				'after_notes' => array( 'fc_output_step_shipping', 101 ),
 				'before_payment' => array( 'fc_output_step_payment', 89 ), // Intentionally same as for `before_your_order`

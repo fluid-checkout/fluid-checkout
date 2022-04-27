@@ -84,6 +84,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), 100 );
 
+		// Customer details hooks
+		add_action( 'fc_checkout_after_step_billing_fields', array( $this, 'run_action_woocommerce_checkout_after_customer_details' ), 90 );
+
 		// Contact
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		add_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
@@ -194,7 +197,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Run order notes hooks for better compatibility with plugins that rely on them,
 		// because they originally run regardless of the order notes fields existence.
 		if ( ! in_array( 'order', array_keys( $all_fields ) ) || ! apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) ) {
-			$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields' );
+			$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields_inside' );
 			$order_notes_substep_priority = apply_filters( 'fc_do_order_notes_hooks_priority', 100 );
 			add_action( $order_notes_substep_position, array( $this, 'do_order_notes_hooks' ), $order_notes_substep_priority );
 		}
@@ -1856,6 +1859,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output shipping address step fields.
 	 */
 	public function output_substep_shipping_address_fields() {
+		do_action( 'fc_checkout_before_step_shipping_fields' );
+		echo $this->get_substep_shipping_address_fields();
+		do_action( 'fc_checkout_after_step_shipping_fields' );
+	}
+
+	/**
+	 * Get shipping address step fields html.
+	 */
+	public function get_substep_shipping_address_fields() {
+		ob_start();
+
 		// Filter out shipping fields moved to another step
 		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
 		$shipping_fields = array_filter( $shipping_fields, function( $key ) {
@@ -1881,14 +1895,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'shipping_only_fields'                => $shipping_only_fields,
 			)
 		);
-	}
 
-	/**
-	 * Get shipping address step fields html.
-	 */
-	public function get_substep_shipping_address_fields() {
-		ob_start();
-		$this->output_substep_shipping_address_fields();
 		return ob_get_clean();
 	}
 
@@ -2588,6 +2595,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output billing address fields, except those already added at the contact step.
 	 */
 	public function output_substep_billing_address_fields() {
+		do_action( 'fc_checkout_before_step_billing_fields' );
+		echo $this->get_substep_billing_address_fields();
+		do_action( 'fc_checkout_after_step_billing_fields' );
+	}
+
+	/**
+	 * Get billing address fields, except those already added at the contact step.
+	 */
+	public function get_substep_billing_address_fields() {
+		ob_start();
+
 		// Get checkout object and billing fields, with ignored billing fields removed
 		$billing_fields = WC()->checkout()->get_checkout_fields( 'billing' );
 		$billing_fields = array_filter( $billing_fields, function( $key ) {
@@ -2604,8 +2622,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return in_array( $key, $this->get_billing_only_fields_keys() );
 		}, ARRAY_FILTER_USE_KEY );
 
-		do_action( 'fc_checkout_before_step_billing_fields' );
-
 		wc_get_template(
 			'checkout/form-billing.php',
 			array(
@@ -2616,15 +2632,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			)
 		);
 
-		do_action( 'fc_checkout_after_step_billing_fields' );
-	}
-
-	/**
-	 * Get billing address fields, except those already added at the contact step.
-	 */
-	public function get_substep_billing_address_fields() {
-		ob_start();
-		$this->output_substep_billing_address_fields();
 		return ob_get_clean();
 	}
 
@@ -3267,6 +3274,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$icon = preg_replace( $pattern, 'alt="" aria-hidden="true" role="presentation"', $icon );
 
 		return $icon;
+	}
+
+
+
+	/**
+	 * Run the action hook `woocommerce_checkout_after_customer_details`.
+	 */
+	public function run_action_woocommerce_checkout_after_customer_details() {
+		do_action( 'woocommerce_checkout_after_customer_details' );
 	}
 
 

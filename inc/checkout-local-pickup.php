@@ -40,7 +40,7 @@ class FluidCheckout_CheckoutLocalPickup extends FluidCheckout {
 
 		// Shipping Address
 		add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'change_substep_attributes_shipping_address' ), 10 );
-		add_action( 'fc_checkout_after_step_shipping_fields', array( $this, 'output_substep_state_hidden_fields_shipping_address' ), 10 );
+		add_action( 'fc_checkout_after_step_shipping_fields_inside', array( $this, 'output_substep_state_hidden_fields_shipping_address' ), 10 );
 	}
 
 	/**
