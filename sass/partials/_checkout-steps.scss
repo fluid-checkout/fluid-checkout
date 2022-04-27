@@ -3,7 +3,6 @@
 // ------------------------------------
 .fc-wrapper .fc-checkout-steps {
 	margin: $checkout-steps-container-margin;
-
 	@media (#{$bp-larger-than-tablet}) { margin: $checkout-steps-container-margin--large-screen; }
 }
 
@@ -48,7 +47,7 @@
 
 
 
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
 	margin: $checkout-substep-title-margin;
 	padding: $checkout-substep-title-padding;
 	color: $checkout-substep-title-color;
@@ -68,18 +67,18 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 
 
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep:before,
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep:after,
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:before,
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:after,
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:before,
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:after {
+body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep:before,
+body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep:after,
+body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:before,
+body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:after,
+body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:before,
+body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:after {
 	@include clearfix();
 }
 
 
 
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
+body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
 	float: $alignment-left;
 	text-align: $alignment-left;
 }

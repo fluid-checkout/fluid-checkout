@@ -92,6 +92,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 				'jsLibPath'                      => self::$directory_url . 'js/lib/',
 				'cssPath'                        => self::$directory_url . 'css/',
 				'ajaxUrl'                        => admin_url( 'admin-ajax.php' ),
+				'wcAjaxUrl'                      => WC_AJAX::get_endpoint( '%%endpoint%%' ),
 				'flyoutBlock'                    => array(
 					'openAnimationClass'         => 'fade-in-up',
 					'closeAnimationClass'        => 'fade-out-down',
@@ -163,10 +164,10 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			if ( apply_filters( 'fc_enable_compat_theme_style_' . $theme_slug, true ) === false ) { continue; }
 
 			// Maybe load RTL file
-			$rlt_suffix = is_rtl() ? '-rtl' : '';
+			$rtl_suffix = is_rtl() ? '-rtl' : '';
 
 			// Get current theme's compatibility style file name
-			$theme_compat_file_path = 'css/compat/themes/compat-' . $theme_slug . $rlt_suffix . self::$asset_version . '.css';
+			$theme_compat_file_path = 'css/compat/themes/compat-' . $theme_slug . $rtl_suffix . self::$asset_version . '.css';
 
 			// Revert to default compat style file if RTL file does not exist
 			if ( is_rtl() && ! file_exists( self::$directory_path . $theme_compat_file_path ) ) {
@@ -204,10 +205,10 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			if ( apply_filters( 'fc_enable_compat_plugin_style_' . $plugin_slug, true ) === false ) { continue; }
 
 			// Maybe load RTL file
-			$rlt_suffix = is_rtl() ? '-rtl' : '';
+			$rtl_suffix = is_rtl() ? '-rtl' : '';
 
 			// Get current plugin's compatibility style file name
-			$plugin_compat_file_path = 'css/compat/plugins/compat-' . $plugin_slug . $rlt_suffix . self::$asset_version . '.css';
+			$plugin_compat_file_path = 'css/compat/plugins/compat-' . $plugin_slug . $rtl_suffix . self::$asset_version . '.css';
 
 			// Revert to default compat style file if RTL file does not exist
 			if ( is_rtl() && ! file_exists( self::$directory_path . $plugin_compat_file_path ) ) {

@@ -12,7 +12,8 @@
 // ------------------------------------
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
-$_body-theme-selector-prefix:          'body.theme-blocksy' !default;
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-blocksy' !default;
 $_select2-border-width:                remsize( .1rem ) !default;
 $_select2-border-radius:               remsize( .3rem ) !default;
 $_select2-selection-height:            remsize( 4rem ) !default;

@@ -6,6 +6,9 @@
 	@include clearfix();
 }
 
+.fc-wrapper [data-collapsible-handler] {
+	cursor: pointer;
+}
 
 .fc-wrapper [data-collapsible].fc-expansible-form-section__content {
 	margin-top: 0;

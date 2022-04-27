@@ -343,6 +343,21 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased - 1.6.0 =
+
+* Added: New option to enable/disable the Checkout Progress Bar feature.
+* Added: New hooks `fc_shipping_methods_before_packages_inside` and `fc_shipping_methods_after_packages_inside`.
+* Improved: Moved some options from the "Advanced" to "Tools" and "Checkout" settings tabs. Removed the "Advanced" settings tab.
+* Improved: Only register checkout header widget areas when using the Fluid Checkout header template.
+* Improved: Display the shipping calculator above the shipping methods in the cart page (PRO feature).
+* Improved: Refactor make SCSS code reusable by using variables like `$_body-theme-selector` and `$_body-page-selector`.
+* Improved: Only display no shipping methods message on the checkout page when using the template file shipping-methods-available.php.
+* Improved: Refactor integrated coupon code feature to use own AJAX functions and scripts.
+* Improved: Refactor extract coupon code styles into a separate file.
+* Improved: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM when they contain any element with class `fc-fragment-replace`.
+* Fixed: Hide shipping methods on the cart page when WooCommerce the option "Hide shipping costs until an address is entered" is checked.
+* Fixed: Run hooks `fc_shipping_methods_before_packages`, `fc_shipping_methods_after_packages` only on initial page load skip on AJAX fragments requests.
+
 = Unreleased =
 
 * Added: New hooks `fc_checkout_before_step_shipping_fields_inside` and `fc_checkout_after_step_shipping_fields_inside` which contents are replaced with every checkout update.

@@ -203,7 +203,7 @@
 
 		// ENTER or SPACE on apply-suggestion element
 		if ( ( e.key == _key.ENTER || e.key == _key.SPACE ) && e.target.closest( _settings.suggestionApplySelector ) ) {
-			// Similate click
+			// Simulate click
 			handleClick( e );
 		}
 	};

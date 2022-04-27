@@ -2,6 +2,6 @@
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-body.woocommerce-checkout #main.fc-main {
+body#{ $_body-page-selector } #main.fc-main {
 	border: 0
 }

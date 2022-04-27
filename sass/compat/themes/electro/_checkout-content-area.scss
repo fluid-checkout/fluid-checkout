@@ -3,13 +3,13 @@
 // ------------------------------------
 
 // Remove margins inherited from some themes
-#{ $_body-theme-selector-prefix }.electro-dark.woocommerce-checkout .fc-content {
+body#{ $_body-theme-selector }#{ $_body-page-selector }.electro-dark .fc-content {
 	color: $checkout-substep-text-color;
 }
 
 
 
-#{ $_body-theme-selector-prefix }.electro-dark.woocommerce-checkout a {
+body#{ $_body-theme-selector }#{ $_body-page-selector }.electro-dark a {
 	color: $checkout-substep-text-color;
 
 	&:hover,
@@ -21,6 +21,6 @@
 
 
 
-#{ $_body-theme-selector-prefix }.electro-dark.woocommerce-checkout table {
+body#{ $_body-theme-selector }#{ $_body-page-selector }.electro-dark table {
 	color: $checkout-substep-text-color;
 }

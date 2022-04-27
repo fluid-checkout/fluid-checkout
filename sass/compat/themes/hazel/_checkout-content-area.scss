@@ -1,13 +1,13 @@
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
-#{ $_body-theme-selector-prefix }:not( .has-checkout-header ) {
+body#{ $_body-theme-selector }:not( .has-checkout-header ) {
 	padding-top: remsize( 12rem );
 }
 
 
 
 // Sticky sidebar, page with admin bar
-#{ $_body-theme-selector-prefix }:not( .has-checkout-header ).admin-bar .fc-sidebar[data-sticky-states].is-sticky--top .fc-sidebar__inner {
+body#{ $_body-theme-selector }:not( .has-checkout-header ).admin-bar .fc-sidebar[data-sticky-states].is-sticky--top .fc-sidebar__inner {
 	padding-top: $global-spacing-tiny;
 }

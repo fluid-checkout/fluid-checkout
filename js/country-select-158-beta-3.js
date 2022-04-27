@@ -80,14 +80,10 @@ jQuery( function( $ ) {
 
 		wc_country_select_select2();
 
-		$( document.body ).on( 'country_to_state_changed', function() {
-			wc_country_select_select2();
-		});
-
-		// CHANGE: Rebuild `select2` fields for billing and shipping address after `updated_checkout`
-		$( document.body ).on( 'updated_checkout', function() {
-			wc_country_select_select2();
-		});
+		// CHANGE: Rebuild `select2` fields in some cases
+		$( document.body ).on( 'country_to_state_changed', wc_country_select_select2 );
+		$( document.body ).on( 'updated_checkout', wc_country_select_select2 );
+		$( document.body ).on( 'wc_fragments_refreshed', wc_country_select_select2 );
 	}
 
 	/* State/Country select boxes */

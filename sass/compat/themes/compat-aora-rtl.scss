@@ -13,7 +13,8 @@
 // ------------------------------------
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
-$_body-theme-selector-prefix:          'body.theme-aora' !default;
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-aora' !default;
 $_select2-border-width:                remsize( .1rem ) !default;
 $_select2-border-radius:               remsize( .3rem ) !default;
 $_select2-selection-height:            remsize( 4.4rem ) !default;

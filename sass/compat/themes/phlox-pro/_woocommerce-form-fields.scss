@@ -3,7 +3,7 @@
 // ------------------------------------
 
 // Position and outline styles
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row {
+body#{ $_body-theme-selector } div.woocommerce form .form-row {
 	textarea,
 	select,
 	input[type="email"],
