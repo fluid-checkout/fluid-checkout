@@ -585,7 +585,8 @@ jQuery( function( $ ) {
 						});
 
 						$.each( data.fragments, function ( key, value ) {
-							if ( ! wc_checkout_form.fragments || wc_checkout_form.fragments[ key ] !== value ) {
+							// CHANGE: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM
+							if ( ! wc_checkout_form.fragments || wc_checkout_form.fragments[ key ] !== value || -1 !== value.indexOf( 'fc-fragment-replace' ) ) {
 								$( key ).replaceWith( value );
 							}
 							$( key ).unblock();
