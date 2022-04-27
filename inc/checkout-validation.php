@@ -26,6 +26,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
 		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
 		// Checkout validation settings
@@ -59,21 +60,35 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 
 	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Maybe load RTL file
+		$rtl_suffix = is_rtl() ? '-rtl' : '';
+		
+		// Styles
+		wp_register_style( 'fc-checkout-validation', self::$directory_url . 'css/checkout-validation'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
+
+		// Checkout steps scripts
+		wp_register_script( 'fc-checkout-validation', self::$directory_url . 'js/checkout-validation'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("load",function(){CheckoutValidation.init(fcSettings.checkoutValidation);})' );
+
+		wp_register_script( 'fc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
+	}
+
+	/**
 	 * Enqueue scripts.
 	 */
 	public function enqueue_assets() {
 		// Bail if not at checkout
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
 
-		// Maybe load RTL file
-		$rtl_suffix = is_rtl() ? '-rtl' : '';
-
 		// Styles
-		wp_enqueue_style( 'fc-checkout-validation', self::$directory_url . 'css/checkout-validation'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
+		wp_enqueue_style( 'fc-checkout-validation' );
 
 		// Checkout steps scripts
-		wp_enqueue_script( 'fc-checkout-validation', self::$directory_url . 'js/checkout-validation'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("load",function(){CheckoutValidation.init(fcSettings.checkoutValidation);})' );
+		wp_enqueue_script( 'fc-checkout-validation' );
 	}
 
 
