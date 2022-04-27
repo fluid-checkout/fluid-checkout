@@ -203,6 +203,7 @@ div.woocommerce form .form-row .show-password-input {
   z-index: 10;
 }
 
+div.woocommerce input[type=number]:focus,
 div.woocommerce input[type=checkbox]:focus,
 div.woocommerce input[type=radio]:focus {
   outline: solid 2px #535156;

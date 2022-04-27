@@ -195,6 +195,7 @@ div.woocommerce form .form-row {
 }
 // Add styles for fields not wrapper by a `.form-field` only for detected issues
 div.woocommerce {
+	input[type="number"],
 	input[type="checkbox"],
 	input[type="radio"] {
 		&:focus {
