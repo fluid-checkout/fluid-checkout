@@ -145,8 +145,8 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			'billing_number'           => array( 'priority' => 100, 'class' => array( 'form-row-last', 'form-row-one-third' ) ),
 			'billing_address_2'        => array( 'priority' => 110, 'class' => array( 'form-row-wide' ) ),
 			'billing_neighborhood'     => array( 'priority' => 120, 'class' => array( 'form-row-first' ) ),
-			'billing_city'             => array( 'priority' => 130, 'class' => array( 'form-row-last' ) ),
-			'billing_state'            => array( 'priority' => 140, 'class' => array( 'form-row-wide' ) ),
+			'billing_city'             => array( 'priority' => 130, 'class' => array( 'form-row-first' ) ),
+			'billing_state'            => array( 'priority' => 140, 'class' => array( 'form-row-last' ) ),
 
 			'billing_persontype'       => array( 'priority' => 150, 'class' => array( 'form-row-wide' ) ),
 			'billing_company'          => array( 'priority' => 160, 'class' => array( 'form-row-wide' ) ),
@@ -169,8 +169,8 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			'shipping_number'          => array( 'priority' => 100, 'class' => array( 'form-row-last', 'form-row-one-third' ) ),
 			'shipping_address_2'       => array( 'priority' => 110, 'class' => array( 'form-row-wide' ) ),
 			'shipping_neighborhood'    => array( 'priority' => 120, 'class' => array( 'form-row-first' ) ),
-			'shipping_city'            => array( 'priority' => 130, 'class' => array( 'form-row-last' ) ),
-			'shipping_state'           => array( 'priority' => 140, 'class' => array( 'form-row-wide' ) ),
+			'shipping_city'            => array( 'priority' => 130, 'class' => array( 'form-row-first' ) ),
+			'shipping_state'           => array( 'priority' => 140, 'class' => array( 'form-row-last' ) ),
 		);
 
 		// Merge class arguments with existing values
@@ -214,8 +214,8 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			'number'           => array( 'priority' => 100, 'class' => array( 'form-row-last', 'form-row-one-third' ) ),
 			'address_2'        => array( 'priority' => 110, 'class' => array( 'form-row-wide' ) ),
 			'neighborhood'     => array( 'priority' => 120, 'class' => array( 'form-row-first' ) ),
-			'city'             => array( 'priority' => 130, 'class' => array( 'form-row-last' ) ),
-			'state'            => array( 'priority' => 140, 'class' => array( 'form-row-wide' ) ),
+			'city'             => array( 'priority' => 130, 'class' => array( 'form-row-first' ) ),
+			'state'            => array( 'priority' => 140, 'class' => array( 'form-row-last' ) ),
 
 			'company'          => array( 'priority' => 60, 'class' => array( 'form-row-wide' ) ),
 		);
@@ -267,7 +267,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	public function make_person_type_fields_required( $new_fields ) {
 		// // Get plugin settings
 		$settings = get_option( 'wcbcf_settings' );
-		$only_brazil = isset( $settings[ 'only_brazil' ] ) ? true : false;
+		$only_brazil = isset( $settings[ 'only_brazil' ] ) && '1' == $settings[ 'only_brazil' ] ? true : false;
 
 		// Get billing country
 		$billing_country = WC()->checkout->get_value( 'billing_country' );
