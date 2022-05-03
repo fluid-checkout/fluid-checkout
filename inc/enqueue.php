@@ -19,13 +19,19 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Need to run before WooCommerce registers and enqueues its scripts, priority has to be less than 10
+		// Replace WooCommerce scripts, need to run before WooCommerce registers and enqueues its scripts, priority has to be less than 10
 		add_action( 'wp_enqueue_scripts', array( $this, 'replace_woocommerce_scripts' ), 5 );
 
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_require_bundle' ), 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_custom_fonts' ), 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_scripts' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_styles_edit_address' ), 10 );
+	
+		// Theme and Plugin Compatibility
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_styles' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_plugin_compat_styles' ), 10 );
 	}
@@ -45,41 +51,15 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 	/**
-	 * Maybe enqueue Require Bundle.
+	 * Register assets.
 	 */
-	public function maybe_enqueue_require_bundle() {
-		// Bail if not visiting pages affected by the plugin
-		if ( is_admin() || ( ! is_checkout() && ! is_account_page() ) ) { return; }
-
-		$this->enqueue_require_bundle();
-	}
-
-	/**
-	 * Enqueue Require Bundle.
-	 */
-	public function enqueue_require_bundle() {
-		// Require Bundle & Polyfills
-		if ( ! wp_script_is( 'require-bundle', 'registered' ) ) { wp_enqueue_script( 'require-bundle', self::$directory_url . 'js/lib/require-bundle'. self::$asset_version . '.js', NULL, NULL ); }
-		if ( ! wp_script_is( 'require-polyfills', 'registered' ) ) { wp_enqueue_script( 'require-polyfills', self::$directory_url . 'js/lib/require-polyfills'. self::$asset_version . '.js', NULL, NULL ); }
-	}
-
-
-
-	/**
-	 * Maybe enqueue scripts.
-	 */
-	public function maybe_enqueue_scripts() {
-		// Bail if not visiting pages affected by the plugin
-		if ( is_admin() || ( ! is_checkout() && ! is_account_page() ) ) { return; }
-
-		$this->enqueue_scripts();
-	}
-
-	/**
-	 * Enqueue scripts.
-	 */
-	public function enqueue_scripts() {
-		wp_enqueue_script( 'fc-bundles', self::$directory_url . 'js/bundles'. self::$asset_version . '.js', array( 'require-bundle' ), NULL, true );
+	public function register_assets() {
+		// Require Bundle and Polyfills
+		if ( ! wp_script_is( 'require-bundle', 'registered' ) ) { wp_register_script( 'require-bundle', self::$directory_url . 'js/lib/require-bundle'. self::$asset_version . '.js', NULL, NULL ); }
+		if ( ! wp_script_is( 'require-polyfills', 'registered' ) ) { wp_register_script( 'require-polyfills', self::$directory_url . 'js/lib/require-polyfills'. self::$asset_version . '.js', NULL, NULL ); }
+		
+		// Bundles
+		wp_register_script( 'fc-bundles', self::$directory_url . 'js/bundles'. self::$asset_version . '.js', array( 'require-bundle' ), NULL, true );
 		wp_localize_script(
 			'fc-bundles',
 			'fcSettings',
@@ -106,6 +86,52 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 				) ) ),
 			) )
 		);
+
+		// Custom fonts
+		wp_register_style( 'fc-fonts', self::$directory_url . 'css/fonts'. self::$asset_version . '.css', array(), null );
+
+		// Edit address styles
+		wp_register_style( 'fc-account-page-address', self::$directory_url . 'css/account-page-address'. self::$asset_version . '.css', array(), null );
+	}
+
+
+
+	/**
+	 * Maybe enqueue Require Bundle.
+	 */
+	public function maybe_enqueue_require_bundle() {
+		// Bail if not visiting pages affected by the plugin
+		if ( is_admin() || ( ! is_checkout() && ! is_account_page() ) ) { return; }
+
+		$this->enqueue_require_bundle();
+	}
+
+	/**
+	 * Enqueue Require Bundle.
+	 */
+	public function enqueue_require_bundle() {
+		// Require Bundle & Polyfills
+		wp_enqueue_script( 'require-bundle' );
+		wp_enqueue_script( 'require-polyfills' );
+	}
+
+
+
+	/**
+	 * Maybe enqueue scripts.
+	 */
+	public function maybe_enqueue_scripts() {
+		// Bail if not visiting pages affected by the plugin
+		if ( is_admin() || ( ! is_checkout() && ! is_account_page() ) ) { return; }
+
+		$this->enqueue_scripts();
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_scripts() {
+		wp_enqueue_script( 'fc-bundles' );
 	}
 
 
@@ -124,7 +150,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Enqueue custom fonts.
 	 */
 	function enqueue_custom_fonts() {
-		wp_enqueue_style( 'fc-fonts', self::$directory_url . 'css/fonts'. self::$asset_version . '.css', array(), null );
+		wp_enqueue_style( 'fc-fonts' );
 	}
 
 
@@ -143,7 +169,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Enqueue edit address styles.
 	 */
 	function enqueue_styles_edit_address() {
-		wp_enqueue_style( 'fc-account-page-address', self::$directory_url . 'css/account-page-address'. self::$asset_version . '.css', array(), null );
+		wp_enqueue_style( 'fc-account-page-address' );
 	}
 
 
