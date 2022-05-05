@@ -52,7 +52,7 @@
 	margin: 0;
 	padding-top: $shipping-method-padding-vertical;
 	padding-bottom: $shipping-method-padding-vertical;
-	padding-#{ $alignment-left }: #{ $global-spacing-extra-small + $shipping-method-radio-size + $shipping-method-padding-horizontal };
+	padding-#{ $alignment-left }: #{ $shipping-method-padding-horizontal + $shipping-method-radio-size + $global-spacing-extra-small };
 	padding-#{ $alignment-right }: #{ $shipping-method-padding-horizontal + $shipping-method-price-width };
 	width: 100%;
 	border-bottom: $shipping-method-border;
