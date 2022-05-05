@@ -30,7 +30,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
 		// Checkout validation settings
-		add_filter( 'fc_js_settings', array( $this, 'add_checkout_validation_js_settings' ), 10 );
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Mailcheck validation
 		add_filter( 'fc_checkout_field_args' , array( $this, 'change_checkout_email_field_args' ), 10 );
@@ -92,11 +92,11 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 
 	/**
-	 * Add Checkout Validation settings to the plugin settings JS object.
+	 * Add settings to the plugin settings JS object.
 	 *
 	 * @param   array  $settings  JS settings object of the plugin.
 	 */
-	public function add_checkout_validation_js_settings( $settings ) {
+	public function add_js_settings( $settings ) {
 
 		$settings[ 'checkoutValidation' ] = apply_filters( 'fc_checkout_validation_script_settings', array(
 			'formRowSelector'                    => '.form-row, .shipping-method__package',
