@@ -13,6 +13,10 @@
   margin-top: 0;
 }
 
+body:not(.has-collapsible-block) .fc-wrapper [data-collapsible].is-collapsed > .collapsible-content__inner {
+  display: none;
+}
+
 body.woocommerce-checkout {
   overflow-x: hidden;
 }
@@ -2549,11 +2553,6 @@ div.woocommerce .fc-expansible-form-section.form-row .form-row {
   div.woocommerce .fc-expansible-form-section.form-row.form-row-first + .form-row-last .fc-expansible-form-section__toggle .collapsible-content__inner {
     padding-top: 1.8em;
   }
-}
-
-body:not(.has-collapsible-block) .fc-expansible-form-section__toggle.is-collapsed .collapsible-content__inner,
-body:not(.has-collapsible-block) .fc-expansible-form-section__content.is-collapsed .collapsible-content__inner {
-  display: none;
 }
 
 /*------------------------------------*\

@@ -354,8 +354,3 @@ div.woocommerce .fc-expansible-form-section.form-row .form-row {
     padding-top: 1.8em;
   }
 }
-
-body:not(.has-collapsible-block) .fc-expansible-form-section__toggle.is-collapsed .collapsible-content__inner,
-body:not(.has-collapsible-block) .fc-expansible-form-section__content.is-collapsed .collapsible-content__inner {
-  display: none;
-}

@@ -56,13 +56,3 @@ div.woocommerce .fc-expansible-form-section.form-row.form-row-first + .form-row-
 		padding-top: 1.8em;
 	}
 }
-
-
-
-
-
-// Temporarily hide expansible form sections while the collapsible-block script is not yet loaded
-body:not( .has-collapsible-block ) .fc-expansible-form-section__toggle.is-collapsed .collapsible-content__inner,
-body:not( .has-collapsible-block ) .fc-expansible-form-section__content.is-collapsed .collapsible-content__inner {
-	display: none;
-}
