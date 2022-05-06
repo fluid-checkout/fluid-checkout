@@ -21,6 +21,9 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 	public function hooks() {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+
+		// Container class
+		add_filter( 'fc_add_container_class', '__return_false' );
 	}
 
 
