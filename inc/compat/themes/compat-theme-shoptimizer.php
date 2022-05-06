@@ -24,6 +24,10 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false' );
+
+		// Site header sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 30 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 30 );
 	}
 
 
@@ -45,6 +49,22 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 
 		// Remove duplicate product image on order summary
 		remove_filter( 'woocommerce_cart_item_name', 'shoptimizer_product_thumbnail_in_checkout', 20, 3 );
+	}
+
+
+
+	/**
+	 * Change the relative selector for sticky elements.
+	 *
+	 * @param   array  $attributes  The element HTML attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using the plugin's header and footer
+		if ( ! class_exists( 'FluidCheckout_Steps' ) || FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+	
+		$attributes['data-sticky-relative-to'] = '.col-full-nav';
+	
+		return $attributes;
 	}
 }
 
