@@ -12,7 +12,7 @@
  *
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 3.8.0
+ * @version 5.2.0
  * @fc-version 1.4.4
  */
 
@@ -20,6 +20,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <table class="shop_table woocommerce-checkout-review-order-table">
 	<thead>
+		<?php // CHANGE: Hide the table header visually while still allowing screen readers to see it ?>
 		<tr class="screen-reader-text">
 			<th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
 			<th class="product-total"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
