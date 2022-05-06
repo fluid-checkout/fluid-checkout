@@ -102,7 +102,9 @@
 	 */
 	var showNotices = function( content ) {
 		var messagesWrapper = document.querySelector( _settings.messagesWrapperSelector );
-		messagesWrapper.innerHTML = content;
+		if ( messagesWrapper ) {
+			messagesWrapper.innerHTML = content;
+		}
 	}
 
 	/**
@@ -112,7 +114,9 @@
 	 */
 	var clearNotices = function() {
 		var messagesWrapper = document.querySelector( _settings.messagesWrapperSelector );
-		messagesWrapper.innerHTML = '';
+		if ( messagesWrapper ) {
+			messagesWrapper.innerHTML = '';
+		}
 	}
 
 
