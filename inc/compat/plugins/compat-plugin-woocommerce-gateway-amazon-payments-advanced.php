@@ -96,12 +96,12 @@ class FluidCheckout_WooCommerceGatewayAmazonPaymentsAdvanced extends FluidChecko
 			'title'          => __( 'WooCommerce Amazon Pay', 'fluid-checkout' ),
 			'desc'           => __( 'Define which components of the Amazon Pay express checkout button to display.', 'fluid-checkout' ),
 			'id'             => 'fc_integration_woocommerce_gateway_amazon_payments_advanced_express_checkout_style',
+			'type'           => 'select',
 			'options'        => array(
 				'only_button'          => _x( 'Only button', 'Amazon Pay Express elements', 'fluid-checkout' ),
 				'button_and_message'   => _x( 'Button and message', 'Amazon Pay Express elements', 'fluid-checkout' ),
 			),
 			'default'        => 'only_button',
-			'type'           => 'select',
 			'autoload'       => false,
 		);
 

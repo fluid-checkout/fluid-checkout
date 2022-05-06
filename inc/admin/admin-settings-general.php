@@ -77,17 +77,17 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'            => __( 'Header and Footer', 'fluid-checkout' ),
-						'desc'             => __( 'We recommend using the Fluid Checkout header and footer to avoid distractions at the checkout page. <a href="https://baymard.com/blog/cart-abandonment" target="_blank">Read the research about cart abandonment</a>.', 'fluid-checkout' ),
-						'desc_tip'         => __( 'Controls whether to use the Fluid Checkout page header and footer or keep the currently active theme\'s.', 'fluid-checkout' ),
-						'id'               => 'fc_hide_site_header_footer_at_checkout',
-						'type'             => 'radio',
-						'options'          => array(
-							'yes'          => __( 'Use Fluid Checkout header and footer', 'fluid-checkout' ),
-							'no'           => __( '(Experimental) Use theme\'s page header and footer for the checkout page', 'fluid-checkout' ),
+						'title'             => __( 'Header and Footer', 'fluid-checkout' ),
+						'desc'              => __( 'We recommend using the Fluid Checkout header and footer to avoid distractions at the checkout page. <a href="https://baymard.com/blog/cart-abandonment" target="_blank">Read the research about cart abandonment</a>.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Controls whether to use the Fluid Checkout page header and footer or keep the currently active theme\'s.', 'fluid-checkout' ),
+						'id'                => 'fc_hide_site_header_footer_at_checkout',
+						'type'              => 'select',
+						'options'           => array(
+							'yes'           => __( 'Use Fluid Checkout header and footer', 'fluid-checkout' ),
+							'no'            => __( '(Experimental) Use theme\'s page header and footer for the checkout page', 'fluid-checkout' ),
 						),
-						'default'          => 'yes',
-						'autoload'         => false,
+						'default'           => 'yes',
+						'autoload'          => false,
 					),
 
 					array(
@@ -340,12 +340,13 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 	
 					array(
-						'desc'             => __( '(Experimental) Display an additional "Place order" and terms checkbox below the order summary in the sidebar.', 'fluid-checkout' ),
-						'desc_tip'         => __( 'Recommended if most of the orders have only a few different products in the cart, and product variations do not take too much space on the order summary.', 'fluid-checkout' ),
-						'id'               => 'fc_enable_checkout_place_order_sidebar',
-						'default'          => 'no',
-						'type'             => 'checkbox',
-						'autoload'         => false,
+						'title'             => __( 'Place order', 'fluid-checkout' ),
+						'desc'              => __( '(Experimental) Display an additional "Place order" and terms checkbox below the order summary in the sidebar.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Recommended if most of the orders have only a few different products in the cart, and product variations do not take too much space on the order summary.', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_place_order_sidebar',
+						'default'           => 'no',
+						'type'              => 'checkbox',
+						'autoload'          => false,
 					),
 	
 					array(

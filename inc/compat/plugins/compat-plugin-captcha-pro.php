@@ -63,12 +63,12 @@ class FluidCheckout_CaptchaPro extends FluidCheckout {
 			'title'          => __( 'Captcha Pro by BestWebSoft', 'fluid-checkout' ),
 			'desc'           => __( 'Define the position to display the captcha section. Some positions might not work depending on the captcha type chosen.', 'fluid-checkout' ),
 			'id'             => 'fc_integration_captcha_pro_captcha_position',
+			'type'           => 'select',
 			'options'        => array(
 				'before_place_order_section'     => _x( 'Before place order section', 'Captcha position', 'fluid-checkout' ),
 				'before_place_order_button'      => _x( 'Before place order button', 'Captcha position', 'fluid-checkout' ),
 			),
 			'default'        => 'before_place_order_section',
-			'type'           => 'select',
 			'autoload'       => false,
 		);
 
