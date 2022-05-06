@@ -1787,7 +1787,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 .fc-wrapper .fc-place-order .fc-place-order-button {
   margin: 0;
   width: 100%;
-  min-width: 280px;
+  min-width: 240px;
   min-height: 50px;
   text-align: center;
 }
