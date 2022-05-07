@@ -13,6 +13,10 @@
   margin-top: 0;
 }
 
+body:not(.has-collapsible-block) .fc-wrapper [data-collapsible].is-collapsed > .collapsible-content__inner {
+  display: none;
+}
+
 body.woocommerce-checkout {
   overflow-x: hidden;
 }
@@ -1105,6 +1109,10 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   background-color: #fff;
 }
 
+.has-checkout-layout--multi-step [data-step-complete] [data-substep-id=contact_login] {
+  display: none;
+}
+
 .woocommerce-checkout .fc-login-form form.login {
   margin: 0;
   padding: 0;
@@ -1173,10 +1181,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .woocommerce-checkout .fc-login-form form.login .lost_password {
   float: none;
   text-align: center;
-}
-
-.has-checkout-layout--multi-step [data-step-complete] [data-substep-id=contact_login] {
-  display: none;
 }
 
 .fc-content div.woocommerce form .fc-wrapper .form-row.create-account {
@@ -1705,7 +1709,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 .fc-wrapper .fc-place-order .fc-place-order-button {
   margin: 0;
   width: 100%;
-  min-width: 280px;
+  min-width: 240px;
   min-height: 50px;
   text-align: center;
 }
@@ -2471,11 +2475,6 @@ div.woocommerce .fc-expansible-form-section.form-row .form-row {
   div.woocommerce .fc-expansible-form-section.form-row.form-row-first + .form-row-last .fc-expansible-form-section__toggle .collapsible-content__inner {
     padding-top: 1.8em;
   }
-}
-
-body:not(.has-collapsible-block) .fc-expansible-form-section__toggle.is-collapsed .collapsible-content__inner,
-body:not(.has-collapsible-block) .fc-expansible-form-section__content.is-collapsed .collapsible-content__inner {
-  display: none;
 }
 
 /*------------------------------------*\

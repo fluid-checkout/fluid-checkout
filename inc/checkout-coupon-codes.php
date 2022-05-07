@@ -95,7 +95,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 
 	/**
-	 * Add Checkout Validation settings to the plugin settings JS object.
+	 * Add settings to the plugin settings JS object.
 	 *
 	 * @param   array  $settings  JS settings object of the plugin.
 	 */
