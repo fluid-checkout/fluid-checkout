@@ -3155,7 +3155,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_set_billing_address_same_as_shipping( $posted_data ) {
 		// Get value for billing same as shipping
-		$is_billing_same_as_shipping_previous = $posted_data[ 'billing_same_as_shipping_previous' ];
+		$is_billing_same_as_shipping_previous = isset( $posted_data[ 'billing_same_as_shipping_previous' ] ) ? $posted_data[ 'billing_same_as_shipping_previous' ] : null;
 		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping( $posted_data );
 		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked( $posted_data );
 
