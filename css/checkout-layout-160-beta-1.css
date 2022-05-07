@@ -1187,6 +1187,10 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   background-color: #fff;
 }
 
+.has-checkout-layout--multi-step [data-step-complete] [data-substep-id=contact_login] {
+  display: none;
+}
+
 .woocommerce-checkout .fc-login-form form.login {
   margin: 0;
   padding: 0;
@@ -1255,10 +1259,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .woocommerce-checkout .fc-login-form form.login .lost_password {
   float: none;
   text-align: center;
-}
-
-.has-checkout-layout--multi-step [data-step-complete] [data-substep-id=contact_login] {
-  display: none;
 }
 
 .fc-content div.woocommerce form .fc-wrapper .form-row.create-account {
