@@ -417,7 +417,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$plugin_path  = self::$directory_path . 'templates/';
 		$new_template = $this->locate_template( $template, $template_name, $plugin_path );
 
-		// Check if th file exists
+		// Check if the file exists
 		if ( file_exists( $new_template ) ) {
 			$template = $new_template;
 		}
