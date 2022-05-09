@@ -2185,6 +2185,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
   border: 0;
   border-bottom: solid 1px #e7e7e7;
   height: auto;
+  display: table-row;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child {

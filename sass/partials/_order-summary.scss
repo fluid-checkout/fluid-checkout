@@ -96,6 +96,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	border: 0;
 	border-bottom: $order-summary-cell-border;
 	height: auto;
+	display: table-row;
 }
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child {
 	border-top: $order-summary-cell-border;
