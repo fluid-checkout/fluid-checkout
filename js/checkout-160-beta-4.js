@@ -579,8 +579,11 @@ jQuery( function( $ ) {
 						// CHANGE: Try to remove select2 components from existing fields before replacing fragments
 						$( 'select.country_select, select.state_select' ).each( function() {
 							var field = $( this );
-							if ( field && field.selectWoo && 'function' === typeof field.selectWoo ) {
-								field.selectWoo( 'destroy' );
+							try {
+								field.select2( 'destroy' );
+							} catch ( error ) {
+								try { field.selectWoo( 'destroy' ); }
+								catch ( error2 ) { /* Do nothing */ }
 							}
 						});
 
