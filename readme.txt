@@ -359,6 +359,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Compatibility with themes, set expected styles for cart items rows in the order summary.
 * Fixed: Hide shipping methods on the cart page when WooCommerce the option "Hide shipping costs until an address is entered" is checked.
 * Fixed: Run hooks `fc_shipping_methods_before_packages`, `fc_shipping_methods_after_packages` only on initial page load skip on AJAX fragments requests.
+* Fixed: Do not attempt to output the admin Gift Message edit form on the front end.
 
 = 1.5.8 - 2022-05-03 =
 
