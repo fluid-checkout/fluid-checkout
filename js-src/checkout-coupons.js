@@ -262,7 +262,7 @@
 
 		// Add security nonce
 		var data = {
-			security: fcSettings.checkoutCoupons.addCouponCodeNonce,
+			security: _settings.addCouponCodeNonce,
 			coupon_code: couponCode,
 		}
 
@@ -345,7 +345,7 @@
 
 		// Add security nonce
 		var data = {
-			security: fcSettings.checkoutCoupons.removeCouponCodeNonce,
+			security: _settings.removeCouponCodeNonce,
 			coupon_code: couponCode,
 		}
 
@@ -416,6 +416,8 @@
 		else if( window.RequireBundle ) {
 			RequireBundle.require( [ 'collapsible-block' ], function() { finishInit(); } );
 		}
+
+		console.log( _settings.addCouponCodeNonce );
 	};
 
 
