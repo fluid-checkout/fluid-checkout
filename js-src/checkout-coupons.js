@@ -27,6 +27,8 @@
 		uiProcessingClass: 'processing',
 
 		messagesWrapperSelector: '.fc-coupon-code-messages',
+		suppressSuccessMessages: 'no',
+
 		couponAddedSectionSelector: '.fc-step__substep-text-content--coupon-codes',
 		couponFieldSelector: 'input[name="coupon_code"]',
 		addCouponButtonSelector: '.fc-coupon-code__apply',
@@ -275,7 +277,7 @@
 
 				if ( response.result && 'success' === response.result ) {
 					// Maybe add messages
-					if ( response.message ) {
+					if ( response.message && 'no' === _settings.suppressSuccessMessages ) {
 						showNotices( response.message );
 					}
 
@@ -358,7 +360,7 @@
 
 				if ( response.result && 'success' === response.result ) {
 					// Maybe add messages
-					if ( response.message ) {
+					if ( response.message && 'no' === _settings.suppressSuccessMessages ) {
 						showNotices( response.message );
 					}
 					
@@ -416,8 +418,6 @@
 		else if( window.RequireBundle ) {
 			RequireBundle.require( [ 'collapsible-block' ], function() { finishInit(); } );
 		}
-
-		console.log( _settings.addCouponCodeNonce );
 	};
 
 
