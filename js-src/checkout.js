@@ -110,7 +110,7 @@ jQuery( function( $ ) {
 			// CHANGE: Removed selector `#ship-to-different-address input`
 			this.$checkout_form.on( 'change', 'select.shipping_method, input[name^="shipping_method"], .update_totals_on_change select, .update_totals_on_change input[type="radio"], .update_totals_on_change input[type="checkbox"]', this.trigger_update_checkout ); // eslint-disable-line max-len
 			this.$checkout_form.on( 'change', '.address-field select', this.input_changed );
-			
+
 			// CHANGE: Move CSS selector for fields that trigger update checkout when value is changed
 			this.$checkout_form.on( 'change', _settings.checkoutUpdateFieldsSelector, this.maybe_input_changed ); // eslint-disable-line max-len
 			this.$checkout_form.on( 'keydown', _settings.checkoutUpdateFieldsSelector, this.queue_update_checkout ); // eslint-disable-line max-len
@@ -168,7 +168,7 @@ jQuery( function( $ ) {
 				var collapsibleBlocks = document.querySelectorAll( '[data-collapsible]' );
 				for ( var i = 0; i < collapsibleBlocks.length; i++ ) {
 					var collapsibleBlock = collapsibleBlocks[i];
-					
+
 					// Maybe initialize the collapsible block
 					if ( ! CollapsibleBlock.getInstance( collapsibleBlock ) ) {
 						CollapsibleBlock.initializeElement( collapsibleBlock );
@@ -194,7 +194,7 @@ jQuery( function( $ ) {
 					if ( _updateBeforeUnload ) {
 						e.preventDefault();
 						e.returnValue = '';
-	
+
 						// Proceed to update the checkout totals if the user cancel the event
 						$( document.body ).trigger( 'update_checkout' );
 
@@ -339,7 +339,7 @@ jQuery( function( $ ) {
 				wc_checkout_form.trigger_update_checkout();
 			}
 		},
-        // CHANGE: Removed shipping to different address checkout `change` listener handler function
+		// CHANGE: Removed shipping to different address checkout `change` listener handler function
 		reset_update_checkout_timer: function() {
 			clearTimeout( wc_checkout_form.updateTimer );
 		},
@@ -442,7 +442,7 @@ jQuery( function( $ ) {
 					if ( null !== currentValue && currentValue !== elementToFocus.value ) {
 						elementToFocus.value = currentValue;
 					}
-					
+
 					// Set keyboard track position back to that previously to update
 					setTimeout( function(){
 						if ( currentFocusedElement.selectionStart && currentFocusedElement.selectionEnd ) {
@@ -497,7 +497,7 @@ jQuery( function( $ ) {
 				});
 			}
 
-            // CHANGE: Removed if handling of different shipping address checkbox, always get shipping address values from shipping fields (see above)
+			// CHANGE: Removed if handling of different shipping address checkbox, always get shipping address values from shipping fields (see above)
 
 			var data = {
 				security        : wc_checkout_params.update_order_review_nonce,
@@ -573,7 +573,7 @@ jQuery( function( $ ) {
 					// CHANGE: Get current element with focus, will reset after updating the fragments
 					var currentFocusedElement = document.activeElement;
 					var currentValue = document.activeElement.value;
-					
+
 					// Always update the fragments
 					if ( data && data.fragments ) {
 						// CHANGE: Try to remove select2 components from existing fields before replacing fragments
