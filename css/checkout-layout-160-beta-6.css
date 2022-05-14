@@ -251,6 +251,21 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   width: 100%;
 }
 
+.fc-wrapper .fc-checkout-order-review__widgets-inside {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.fc-wrapper .fc-checkout__below-place-order-widgets {
+  margin-bottom: 20px;
+}
+
+.fc-wrapper .fc-checkout-order-review__widgets-inside .widget:last-child,
+.fc-wrapper .fc-checkout__below-place-order-widgets .widget:last-child,
+.fc-wrapper .fc-checkout-order-review__widgets-outside .widget:last-child {
+  margin-bottom: 0;
+}
+
 @media (min-width: 1000px) {
   body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-message,
 body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-info,
@@ -2336,11 +2351,6 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon:focus {
   outline: dotted 1px #535156;
   outline-offset: 1px;
-}
-
-.fc-wrapper .fc-checkout-order-review__widgets-inside {
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 .fc-checkout-step[data-step-id=payment] .fc-checkout-order-review {

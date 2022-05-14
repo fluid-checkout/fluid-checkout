@@ -358,6 +358,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM when they contain any element with class `fc-fragment-always-replace`.
 * Improved: Compatibility with Shoptimizer theme.
 * Improved: Compatibility with themes, set expected styles for cart items rows in the order summary.
+* Improved: Spacing around trust symbols widget areas.
 * Fixed: Hide shipping methods on the cart page when WooCommerce the option "Hide shipping costs until an address is entered" is checked.
 * Fixed: Run hooks `fc_shipping_methods_before_packages`, `fc_shipping_methods_after_packages` only on initial page load skip on AJAX fragments requests.
 * Fixed: Do not attempt to output the admin Gift Message edit form on the front end.

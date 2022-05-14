@@ -1,5 +1,4 @@
 body.theme-shoptimizer .site.overlay .site-content:after,
-body.theme-shoptimizer.drawer-open:before,
 body.theme-shoptimizer .mobile-overlay {
   z-index: 1999;
 }
