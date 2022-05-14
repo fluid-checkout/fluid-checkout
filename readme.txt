@@ -347,6 +347,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 * Added: New option to enable/disable the Checkout Progress Bar feature.
 * Added: New hooks `fc_shipping_methods_before_packages_inside` and `fc_shipping_methods_after_packages_inside`.
+* Improved: Clear object cache with `wp_cache_flush` when saving settings or updating the plugin.
 * Improved: Moved some options from the "Advanced" to "Tools" and "Checkout" settings tabs. Removed the "Advanced" settings tab.
 * Improved: Only register checkout header widget areas when using the Fluid Checkout header template.
 * Improved: Display the shipping calculator above the shipping methods in the cart page (PRO feature).

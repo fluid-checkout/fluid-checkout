@@ -33,9 +33,11 @@ defined( 'ABSPATH' ) || exit;
 
 
 
-// Plugin activation
+// Plugin activation and deactivation
 require_once plugin_dir_path( __FILE__ ) . 'inc/plugin-activation.php';
+require_once plugin_dir_path( __FILE__ ) . 'inc/plugin-deactivation.php';
 register_activation_hook( __FILE__, array( 'FluidCheckout_Activation', 'on_activation' ) );
+register_deactivation_hook( __FILE__, array( 'FluidCheckout_Deactivation', 'on_deactivation' ) );
 
 
 
@@ -148,6 +150,27 @@ class FluidCheckout {
 
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
+
+		// Clear cache after upgrading the plugin
+		add_action( 'upgrader_process_complete', array( $this, 'clear_cache_on_updates' ), 10, 2 );
+	}
+
+
+
+	/**
+	 * Fires when the plugin is successfully updated.
+	 */
+	public static function clear_cache_on_updates( $upgrader_object, $options ) {
+		// Get current plugin path name
+		$current_plugin_path_name = plugin_basename( __FILE__ );
+ 
+		if ( 'update' === $options[ 'action' ] && 'plugin' === $options[ 'type' ] ) {
+			foreach( $options[ 'plugins' ] as $plugin_path_name ) {
+				if ( $plugin_path_name === $current_plugin_path_name ) {
+					wp_cache_flush();
+				}
+			}
+		}
 	}
 
 
