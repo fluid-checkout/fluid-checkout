@@ -392,19 +392,31 @@ class FluidCheckout {
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( 'install_plugins' ) ) { return; }
 
-		if ( is_wp_error( validate_plugin( 'woocommerce/woocommerce.php' ) ) ) {
-			$description = sprintf( wp_kses_post( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%3$s">Go to Plugin Search</a>', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', admin_url( 'plugin-install.php?s=woocommerce&tab=search&type=term' ) );
-		}
-		else {
-			$description = sprintf( wp_kses_post( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%3$s">Activate WooCommerce</a>', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=woocommerce/woocommerce.php' ), 'activate-plugin_woocommerce/woocommerce.php' ) );
+		$required_plugin_name = __( 'WooCommerce', 'fluid-checkout' );
+		$required_plugin_path_name = 'woocommerce/woocommerce.php';
+		$required_plugin_search_term = 'woocommerce';
+		$action_label = wp_kses_post( __( 'Go to Plugin Search', 'fluid-checkout' ) );
+		$action_url = admin_url( 'plugin-install.php?s=' . $required_plugin_search_term . '&tab=search&type=term' );
+
+		if ( ! is_wp_error( validate_plugin( $required_plugin_path_name ) ) ) {
+			$action_label = wp_kses_post( sprintf( __( 'Activate %s', 'fluid-checkout' ), $required_plugin_name ) );
+			$action_url = wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $required_plugin_path_name ), 'activate-plugin_' . $required_plugin_path_name );
 		}
 		
+		$description = wp_kses_post( sprintf( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%4$s">%3$s</a>', 'fluid-checkout' ),
+			self::$plugin,
+			$required_plugin_name,
+			$action_label,
+			$action_url
+		) );
+
 		$notices[] = array(
 			'name'        => 'woocommerce_required',
 			'error'       => true,
 			'description' => $description,
 			'dismissable' => false,
 		);
+
 		return $notices;
 	}
 
