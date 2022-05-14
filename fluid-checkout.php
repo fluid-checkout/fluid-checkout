@@ -193,7 +193,7 @@ class FluidCheckout {
 	private function add_features() {
 		self::$features = array(
 			'checkout-steps'                      => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
-			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ),
+			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ), // Class needs to be loaded for PRO version, checks that the feature is enabled inside the class.
 
 			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'fc_apply_checkout_field_args', 'enable_default' => 'yes' ),
 			'checkout-hide-optional-fields'       => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'fc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),
