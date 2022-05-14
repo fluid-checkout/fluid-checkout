@@ -1,3 +1,30 @@
+body.theme-shoptimizer .site.overlay .site-content:after,
+body.theme-shoptimizer.drawer-open:before,
+body.theme-shoptimizer .mobile-overlay {
+  z-index: 1999;
+}
+
+body.theme-shoptimizer:not(.header-4):not(.mobile-toggled).sticky-m .site-header {
+  z-index: 2000;
+}
+
+body.theme-shoptimizer:not(.header-4).sticky-d .col-full-nav {
+  z-index: 2000;
+}
+
+body.theme-shoptimizer .main-navigation ul.menu > li.menu-item-has-children > .sub-menu-wrapper {
+  z-index: 2000;
+}
+
+body.theme-shoptimizer .mobile-menu.close-drawer,
+body.theme-shoptimizer.drawer-open:before {
+  z-index: 2010;
+}
+
+body.theme-shoptimizer .shoptimizer-mini-cart-wrap {
+  z-index: 2020;
+}
+
 body.theme-shoptimizer div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, body.theme-shoptimizer div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
   top: 8px;
 }

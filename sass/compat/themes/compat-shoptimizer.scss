@@ -25,6 +25,7 @@ $_select2-selection-height:            remsize( 4rem ) !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"shoptimizer/zindex",
 	"shoptimizer/checkout-validation",
 	"shoptimizer/woocommerce-form-fields",
 	"shoptimizer/order-summary",
