@@ -3,7 +3,6 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } .site.overlay .site-content:after,
-body#{ $_body-theme-selector }.drawer-open:before,
 body#{ $_body-theme-selector } .mobile-overlay {
 	z-index: z( 'header-element' ) - 1;
 }
