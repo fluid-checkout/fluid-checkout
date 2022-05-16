@@ -256,6 +256,7 @@ Please contribute your language to the plugin to make it even more useful. Send 
 * Although currently there are no official transations to any RTL language, the plugin will adjust its layout to RTL languages accordingly.
 
 ** Note: **
+
 Fluid Checkout is fully localized/translatable. This is very important for all users worldwide.
 For translating Fluid Checkout, we recommend the plugin ["Loco Translate - By Tim Whitlock"](https://wordpress.org/plugins/loco-translate/).
 
