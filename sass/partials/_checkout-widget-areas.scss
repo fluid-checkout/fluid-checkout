@@ -1,0 +1,20 @@
+// ------------------------------------
+// CHECKOUT WIDGET AREAS
+// ------------------------------------
+
+.fc-wrapper .fc-checkout-order-review__widgets-inside {
+	margin-top: $global-spacing-small;
+	margin-bottom: $global-spacing-small;
+}
+
+.fc-wrapper .fc-checkout__below-place-order-widgets {
+	margin-bottom: $global-spacing-small;
+}
+
+
+
+.fc-wrapper .fc-checkout-order-review__widgets-inside .widget:last-child,
+.fc-wrapper .fc-checkout__below-place-order-widgets .widget:last-child,
+.fc-wrapper .fc-checkout-order-review__widgets-outside .widget:last-child {
+	margin-bottom: 0;
+}

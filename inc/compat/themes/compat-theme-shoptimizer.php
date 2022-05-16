@@ -62,7 +62,7 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 		// Bail if using the plugin's header and footer
 		if ( ! class_exists( 'FluidCheckout_Steps' ) || FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
 	
-		$attributes['data-sticky-relative-to'] = '.col-full-nav';
+		$attributes['data-sticky-relative-to'] = '{ "xs": { "breakpointInitial": 0, "breakpointFinal": 992, "selector": ".site-header" }, "sm": { "breakpointInitial": 993, "breakpointFinal": 100000, "selector": ".col-full-nav" } }';
 	
 		return $attributes;
 	}

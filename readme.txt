@@ -342,11 +342,12 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
-= Unreleased - 1.6.0 =
+= Unreleased =
 
 * Added: New option to enable/disable the Checkout Progress Bar feature.
 * Added: New hooks `fc_shipping_methods_before_packages_inside` and `fc_shipping_methods_after_packages_inside`.
 * Added: Translation to Dutch (Netherlands). Thanks to Robin Bak, Duncan - magnesium-minerals.nl, Damy Bosch - advice.nl.
+* Improved: Clear object cache with `wp_cache_flush` when saving settings or updating the plugin.
 * Improved: Moved some options from the "Advanced" to "Tools" and "Checkout" settings tabs. Removed the "Advanced" settings tab.
 * Improved: Only register checkout header widget areas when using the Fluid Checkout header template.
 * Improved: Display the shipping calculator above the shipping methods in the cart page (PRO feature).
@@ -354,9 +355,10 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Only display no shipping methods message on the checkout page when using the template file shipping-methods-available.php.
 * Improved: Refactor integrated coupon code feature to use own AJAX functions and scripts.
 * Improved: Refactor extract coupon code styles into a separate file.
-* Improved: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM when they contain any element with class `fc-fragment-replace`.
+* Improved: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM when they contain any element with class `fc-fragment-always-replace`.
 * Improved: Compatibility with Shoptimizer theme.
 * Improved: Compatibility with themes, set expected styles for cart items rows in the order summary.
+* Improved: Spacing around trust symbols widget areas.
 * Fixed: Hide shipping methods on the cart page when WooCommerce the option "Hide shipping costs until an address is entered" is checked.
 * Fixed: Run hooks `fc_shipping_methods_before_packages`, `fc_shipping_methods_after_packages` only on initial page load skip on AJAX fragments requests.
 * Fixed: Do not attempt to output the admin Gift Message edit form on the front end.

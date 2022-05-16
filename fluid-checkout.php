@@ -5,7 +5,7 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message, and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 1.6.0-beta-5
+Version: 1.6.0-beta-6
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
@@ -33,9 +33,11 @@ defined( 'ABSPATH' ) || exit;
 
 
 
-// Plugin activation
+// Plugin activation and deactivation
 require_once plugin_dir_path( __FILE__ ) . 'inc/plugin-activation.php';
+require_once plugin_dir_path( __FILE__ ) . 'inc/plugin-deactivation.php';
 register_activation_hook( __FILE__, array( 'FluidCheckout_Activation', 'on_activation' ) );
+register_deactivation_hook( __FILE__, array( 'FluidCheckout_Deactivation', 'on_deactivation' ) );
 
 
 
@@ -148,6 +150,27 @@ class FluidCheckout {
 
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
+
+		// Clear cache after upgrading the plugin
+		add_action( 'upgrader_process_complete', array( $this, 'clear_cache_on_updates' ), 10, 2 );
+	}
+
+
+
+	/**
+	 * Fires when the plugin is successfully updated.
+	 */
+	public static function clear_cache_on_updates( $upgrader_object, $options ) {
+		// Get current plugin path name
+		$current_plugin_path_name = plugin_basename( __FILE__ );
+ 
+		if ( 'update' === $options[ 'action' ] && 'plugin' === $options[ 'type' ] ) {
+			foreach( $options[ 'plugins' ] as $plugin_path_name ) {
+				if ( $plugin_path_name === $current_plugin_path_name ) {
+					wp_cache_flush();
+				}
+			}
+		}
 	}
 
 
@@ -170,7 +193,7 @@ class FluidCheckout {
 	private function add_features() {
 		self::$features = array(
 			'checkout-steps'                      => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
-			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ),
+			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ), // Class needs to be loaded for PRO version, checks that the feature is enabled inside the class.
 
 			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'fc_apply_checkout_field_args', 'enable_default' => 'yes' ),
 			'checkout-hide-optional-fields'       => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'fc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),
@@ -369,19 +392,31 @@ class FluidCheckout {
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( 'install_plugins' ) ) { return; }
 
-		if ( is_wp_error( validate_plugin( 'woocommerce/woocommerce.php' ) ) ) {
-			$description = sprintf( wp_kses_post( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%3$s">Go to Plugin Search</a>', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', admin_url( 'plugin-install.php?s=woocommerce&tab=search&type=term' ) );
-		}
-		else {
-			$description = sprintf( wp_kses_post( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%3$s">Activate WooCommerce</a>', 'fluid-checkout' ) ), self::$plugin, 'WooCommerce', wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=woocommerce/woocommerce.php' ), 'activate-plugin_woocommerce/woocommerce.php' ) );
+		$required_plugin_name = __( 'WooCommerce', 'fluid-checkout' );
+		$required_plugin_path_name = 'woocommerce/woocommerce.php';
+		$required_plugin_search_term = 'woocommerce';
+		$action_label = wp_kses_post( __( 'Go to Plugin Search', 'fluid-checkout' ) );
+		$action_url = admin_url( 'plugin-install.php?s=' . $required_plugin_search_term . '&tab=search&type=term' );
+
+		if ( ! is_wp_error( validate_plugin( $required_plugin_path_name ) ) ) {
+			$action_label = wp_kses_post( sprintf( __( 'Activate %s', 'fluid-checkout' ), $required_plugin_name ) );
+			$action_url = wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $required_plugin_path_name ), 'activate-plugin_' . $required_plugin_path_name );
 		}
 		
+		$description = wp_kses_post( sprintf( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%4$s">%3$s</a>', 'fluid-checkout' ),
+			self::$plugin,
+			$required_plugin_name,
+			$action_label,
+			$action_url
+		) );
+
 		$notices[] = array(
 			'name'        => 'woocommerce_required',
 			'error'       => true,
 			'description' => $description,
 			'dismissable' => false,
 		);
+
 		return $notices;
 	}
 
