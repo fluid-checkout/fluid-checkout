@@ -238,11 +238,11 @@ All labels and other texts added or changed by the plugin are translatable using
 Currently the plugin is translated into the languages below, and more are comming soon:
 
 * English (Default)
-* Dutch - Netherlands (thanks to Robin Bak)
-* German - Germany (thanks to @reilix, felix-gudowius.de)
-* Italian - Italy (thanks to Samuele, floralgarden.it)
+* Dutch - Netherlands (thanks to Robin Bak, Duncan - magnesium-minerals.nl, Damy Bosch - advice.nl)
+* German - Germany (thanks to @reilix - felix-gudowius.de)
+* Italian - Italy (thanks to Samuele - floralgarden.it)
 * Portuguese - Brazil
-* Spanish - Spain (thanks to @gio15, senseiwpacademy.com)
+* Spanish - Spain (thanks to @gio15 - senseiwpacademy.com)
 * Swedish - Sweden (thanks to @kozley, @tobifjellner, @elbogen)
 * Turkish - Turkey (thanks to @orkunakca)
 
