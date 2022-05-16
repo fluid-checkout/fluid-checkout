@@ -5,7 +5,7 @@
 // ------------------------------------
 
 // Fix layout for the `#order_review` element
-#{ $_body-theme-selector-prefix }.woocommerce-page.woocommerce-checkout form.woocommerce-checkout #fc-wrapper.fc-wrapper #order_review {
+body#{ $_body-theme-selector }.woocommerce-page.woocommerce-checkout form.woocommerce-checkout #fc-wrapper.fc-wrapper #order_review {
 	padding: 0;
 	border: 0;
 }

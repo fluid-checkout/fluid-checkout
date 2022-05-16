@@ -3,6 +3,6 @@
 // ------------------------------------
 
 // Place order button
-#{ $_body-theme-selector-prefix } .fc-wrapper .fc-place-order .fc-place-order-button {
+body#{ $_body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-button {
 	font-size: 1.2em; // Intentionally uses `em` unit, instead of `rem`.
 }

@@ -2,7 +2,7 @@
 // ORDER SUMMARY
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review .woocommerce-checkout-review-order-table .product-name .product-item-thumbnail {
+body#{ $_body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review .woocommerce-checkout-review-order-table .product-name .product-item-thumbnail {
 	width: auto;
 	padding: 0;
 }

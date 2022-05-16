@@ -6,7 +6,17 @@
 	@include clearfix();
 }
 
+.fc-wrapper [data-collapsible-handler] {
+	cursor: pointer;
+}
 
 .fc-wrapper [data-collapsible].fc-expansible-form-section__content {
 	margin-top: 0;
+}
+
+
+
+// Temporarily hide collapsible block contents while the collapsible-block script is not yet loaded
+body:not( .has-collapsible-block ) .fc-wrapper [data-collapsible].is-collapsed > .collapsible-content__inner {
+	display: none;
 }

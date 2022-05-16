@@ -5,7 +5,7 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message, and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 1.5.5-beta-2
+Version: 1.6.0-beta-5
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
@@ -74,7 +74,7 @@ class FluidCheckout {
 	 *
 	 * @access public
 	 * @static
-	 * @return void
+	 * @return object
 	 * @since  1.0.0
 	 */
 	public static function instance() {
@@ -170,7 +170,7 @@ class FluidCheckout {
 	private function add_features() {
 		self::$features = array(
 			'checkout-steps'                      => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
-			'checkout-page-template'              => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php', 'enable_option' => 'fc_enable_checkout_page_template', 'enable_default' => 'yes' ),
+			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ),
 
 			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'fc_apply_checkout_field_args', 'enable_default' => 'yes' ),
 			'checkout-hide-optional-fields'       => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'fc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),
@@ -179,7 +179,6 @@ class FluidCheckout {
 			'checkout-local-pickup'               => array( 'file' => self::$directory_path . 'inc/checkout-local-pickup.php', 'enable_option' => 'fc_enable_checkout_local_pickup', 'enable_default' => 'yes' ),
 			'checkout-validation'                 => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'fc_enable_checkout_validation', 'enable_default' => 'yes' ),
 			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'fc_enable_checkout_gift_options', 'enable_default' => 'no' ),
-			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php', 'enable_option' => 'fc_enable_checkout_coupon_codes', 'enable_default' => 'yes' ),
 			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'fc_enable_checkout_widget_areas', 'enable_default' => 'yes' ),
 			'packing-slips'                       => array( 'file' => self::$directory_path . 'inc/packing-slips.php', 'enable_option' => 'fc_enable_packing_slips_options', 'enable_default' => 'yes' ),
 		);

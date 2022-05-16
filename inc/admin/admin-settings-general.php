@@ -50,14 +50,14 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 				'fc_checkout_general_settings',
 				array(
 					array(
-						'title' => __( 'Layout', 'fluid-checkout' ),
+						'title' => __( 'Checkout Layout', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'fc_checkout_layout_options',
 					),
 
 					array(
-						'title'             => __( 'Checkout Layout', 'fluid-checkout' ),
+						'title'             => __( 'Layout Options', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_layout',
 						'type'              => 'fc_layout_selector',
 						'options'           => FluidCheckout_Steps::instance()->get_allowed_checkout_layouts(),
@@ -74,6 +74,20 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'type'              => 'fc_image_uploader',
 						'autoload'          => false,
 						'wrapper_class'     => 'fc-checkout-logo-image',
+					),
+
+					array(
+						'title'             => __( 'Header and Footer', 'fluid-checkout' ),
+						'desc'              => __( 'We recommend using the Fluid Checkout header and footer to avoid distractions at the checkout page. <a href="https://baymard.com/blog/cart-abandonment" target="_blank">Read the research about cart abandonment</a>.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Controls whether to use the Fluid Checkout page header and footer or keep the currently active theme\'s.', 'fluid-checkout' ),
+						'id'                => 'fc_hide_site_header_footer_at_checkout',
+						'type'              => 'select',
+						'options'           => array(
+							'yes'           => __( 'Use Fluid Checkout header and footer', 'fluid-checkout' ),
+							'no'            => __( '(Experimental) Use theme\'s page header and footer for the checkout page', 'fluid-checkout' ),
+						),
+						'default'           => 'yes',
+						'autoload'          => false,
 					),
 
 					array(
@@ -94,6 +108,36 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'type'              => 'text',
 						'autoload'          => false,
 						'class'             => 'colorpick',
+					),
+
+					array(
+						'title'             => __( 'Progress bar', 'fluid-checkout' ),
+						'desc'              => __( 'Display the checkout progress bar', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Applies only to multi-step layouts.', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_progress_bar',
+						'default'           => 'yes',
+						'type'              => 'checkbox',
+						'checkboxgroup'     => 'start',
+						'show_if_checked'   => 'option',
+						'autoload'          => false,
+					),
+					array(
+						'desc'              => __( 'Make the checkout progress bar stay visible while scrolling', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_sticky_progress_bar',
+						'default'           => 'yes',
+						'type'              => 'checkbox',
+						'checkboxgroup'     => 'end',
+						'show_if_checked'   => 'yes',
+						'autoload'          => false,
+					),
+	
+					array(
+						'title'             => __( 'Order summary', 'fluid-checkout' ),
+						'desc'              => __( 'Make the order summary stay visible while scrolling', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_sticky_order_summary',
+						'default'           => 'yes',
+						'type'              => 'checkbox',
+						'autoload'          => false,
 					),
 
 					array(
@@ -184,7 +228,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 							'before_shipping_address' => _x( 'Before shipping address', 'Shipping methods substep position', 'fluid-checkout' ),
 							'after_shipping_address'  => _x( 'After shipping address', 'Shipping methods substep position', 'fluid-checkout' ),
 						),
-						'default'           => 'before_shipping_address',
+						'default'           => 'after_shipping_address',
 						'type'              => 'select',
 						'autoload'          => false,
 					),
@@ -199,7 +243,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Integrated Coupon Codes', 'fluid-checkout' ),
+						'title'             => __( 'Coupon Codes', 'fluid-checkout' ),
 						'desc'              => __( 'Show coupon codes as a substep of the payment step', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_coupon_codes',
@@ -287,6 +331,29 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'type' => 'sectionend',
 						'id'   => 'fc_checkout_features_options',
 					),
+
+					array(
+						'title' => __( 'Advanced', 'fluid-checkout' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'fc_checkout_advanced_layout_options',
+					),
+	
+					array(
+						'title'             => __( 'Place order', 'fluid-checkout' ),
+						'desc'              => __( '(Experimental) Display an additional "Place order" and terms checkbox below the order summary in the sidebar.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Recommended if most of the orders have only a few different products in the cart, and product variations do not take too much space on the order summary.', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_place_order_sidebar',
+						'default'           => 'no',
+						'type'              => 'checkbox',
+						'autoload'          => false,
+					),
+	
+					array(
+						'type' => 'sectionend',
+						'id'   => 'fc_checkout_advanced_layout_options',
+					),
+
 				)
 			);
 		}

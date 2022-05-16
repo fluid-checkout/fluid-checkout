@@ -332,6 +332,9 @@ class FluidCheckout_GiftOptions extends FluidCheckout {
 	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function display_gift_options_fields_order_admin_screen( $order ) {
+		// Bail if not on admin pages
+		if ( ! is_admin() ) { return $order; }
+
 		$order_id = $order->get_id();
 
 		// Map field types from the frontend to the field types available in the admin area

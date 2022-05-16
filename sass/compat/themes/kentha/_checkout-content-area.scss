@@ -2,6 +2,6 @@
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix } .fc-content {
+body#{ $_body-theme-selector } .fc-content {
 	color: $dark-grey;
 }

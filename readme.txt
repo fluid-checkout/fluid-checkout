@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 5.9
-Stable tag: 1.5.4
+Stable tag: 1.5.8
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -190,6 +190,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 * Brazilian Market on WooCommerce - by Claudio Sanches ([see demo](https://demos.fluidcheckout.com/google-address-autocomplete-brazilian-market/cart/?add-to-cart=14&quantity=1))
 * Checkout Field Editor for WooCommerce - by ThemeHigh
+* Flexible Checkout Fields for WooCommerce - by WP Desk
 * Creative Mail - by Constant Contact
 * Delivery & Pickup Date Time for WooCommerce - by CodeRockz
 * Elementor - by Elementor Team
@@ -340,10 +341,49 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
-= Unreleased =
+= Unreleased - 1.6.0 =
+
+* Added: New option to enable/disable the Checkout Progress Bar feature.
+* Added: New hooks `fc_shipping_methods_before_packages_inside` and `fc_shipping_methods_after_packages_inside`.
+* Added: Translation to Dutch (Netherlands). Thanks to Robin Bak, Duncan - magnesium-minerals.nl, Damy Bosch - advice.nl.
+* Improved: Moved some options from the "Advanced" to "Tools" and "Checkout" settings tabs. Removed the "Advanced" settings tab.
+* Improved: Only register checkout header widget areas when using the Fluid Checkout header template.
+* Improved: Display the shipping calculator above the shipping methods in the cart page (PRO feature).
+* Improved: Refactor make SCSS code reusable by using variables like `$_body-theme-selector` and `$_body-page-selector`.
+* Improved: Only display no shipping methods message on the checkout page when using the template file shipping-methods-available.php.
+* Improved: Refactor integrated coupon code feature to use own AJAX functions and scripts.
+* Improved: Refactor extract coupon code styles into a separate file.
+* Improved: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM when they contain any element with class `fc-fragment-replace`.
+* Improved: Compatibility with Shoptimizer theme.
+* Improved: Compatibility with themes, set expected styles for cart items rows in the order summary.
+* Fixed: Hide shipping methods on the cart page when WooCommerce the option "Hide shipping costs until an address is entered" is checked.
+* Fixed: Run hooks `fc_shipping_methods_before_packages`, `fc_shipping_methods_after_packages` only on initial page load skip on AJAX fragments requests.
+* Fixed: Do not attempt to output the admin Gift Message edit form on the front end.
+
+= 1.5.8 - 2022-05-03 =
+
+* Added: New hooks `fc_checkout_before_step_shipping_fields_inside` and `fc_checkout_after_step_shipping_fields_inside` which contents are replaced with every checkout update.
+* Improved: Compatibility with WooCommerce Delivery & Pickup Date Time Pro by CodeRockz, when selecting the delivery fields position as "After the shipping address", it will be displayed after the "Shipping Methods" section when shipping methods are displayed after the "Shipping Address" section in the checkout page.
+* Improved: Also display "edit cart" link on order summary for mobile devices.
+* Fixed: Run hooks `fc_checkout_before_step_billing_fields`, `fc_checkout_after_step_billing_fields`, `fc_checkout_before_step_shipping_fields` and `fc_checkout_after_step_shipping_fields` only on initial page load skip on AJAX fragments requests.
+* Fixed: Moved hook `woocommerce_checkout_after_customer_details` out of the form-billing.php template file, now run on the hook `fc_checkout_after_step_billing_fields`.
+
+= 1.5.7 - 2022-04-12 =
+
+* Improved: Change the default position for the shipping methods section to after the shipping address. The position for the shipping methods section can be changed in the plugin settings.
+* Fixed: Checkout fields arguments merge functions replacing some existing classes.
+
+= 1.5.6 - 2022-04-11 =
+
+* Fixed: Fatal error (JS) when `select2` script is disabled on the checkout page. Fixes issue with page fragments loading indefinitely.
+* Fixed: Fatal error (PHP) when changing some checkout fields arguments.
+
+= 1.5.5 - 2022-04-06 =
 
 * Added: Compatibility with theme LeadEngine.
-* Added: Translation to Dutch (Netherlands). Thanks to Robin Bak.
+* Fixed: Not updating checkout options while typing the postcode and other address fields when shipping phone feature is enabled.
+* Fixed: Not updating checkout options while entering the billing address.
+* Fixed: Jumping to the top of the page, most notably on mobile, when `select2` fields break while updating the checkout page.
 * Fixed: Fatal error when Checkout Widgets feature is disabled while WooCommerce PayPal Payments plugin is active.
 
 = 1.5.4 - 2022-03-29 =

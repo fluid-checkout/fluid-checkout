@@ -2,23 +2,23 @@
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix }.woocommerce-checkout .woocommerce form.woocommerce-checkout .fc-checkout-order-review__inner .woocommerce-checkout-review-order.woocommerce-checkout-review-order {
+body#{ $_body-theme-selector }#{ $_body-page-selector } .woocommerce form.woocommerce-checkout .fc-checkout-order-review__inner .woocommerce-checkout-review-order.woocommerce-checkout-review-order {
     background-image: none;
 }
 
-#{ $_body-theme-selector-prefix }.woocommerce-checkout .fc-checkout-order-review__inner #order_review table.shop_table tbody tr td:last-child {
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-checkout-order-review__inner #order_review table.shop_table tbody tr td:last-child {
     padding: remsize( 1rem ) remsize( 2rem );
 }
 
 
 
-#{ $_body-theme-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
+body#{ $_body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
     padding-right: $order-summary-cell-padding-horizontal; // Targets only the right side, should not use `$alignment-right` in this case
 }
 
 
 
 
-#{ $_body-theme-selector-prefix } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total td .includes_tax .amount {
+body#{ $_body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total td .includes_tax .amount {
 	font-size: inherit;
 }

@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
- * @fc-version 1.5.0
+ * @fc-version 1.5.8
  * @global WC_Checkout $checkout
  */
 
@@ -61,8 +61,3 @@ $collapsible_initial_state = WC()->cart->needs_shipping_address() && FluidChecko
 
 	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
 </div>
-
-<?php
-	// CHANGE: Added for compatibility with plugins that use this action hook
-	do_action( 'woocommerce_checkout_after_customer_details' );
-?>

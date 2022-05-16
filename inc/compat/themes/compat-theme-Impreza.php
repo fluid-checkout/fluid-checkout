@@ -28,7 +28,7 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
 		// Settings
-		add_filter( 'fc_advanced_settings', array( $this, 'add_settings' ), 10 );
+		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 	}
 
 
@@ -126,13 +126,6 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 
 		// Get token position
 		$position_index = count( $settings ) - 1;
-		for ( $index = 0; $index < count( $settings ) - 1; $index++ ) {
-			$args = $settings[ $index ];
-
-			if ( array_key_exists( 'id', $args ) && $args[ 'id' ] == 'fc_hide_site_header_footer_at_checkout' ) {
-				$position_index = $index + 1;
-			}
-		}
 
 		// Insert at token position
 		$new_settings  = array_slice( $settings, 0, $position_index );
