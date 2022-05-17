@@ -672,7 +672,6 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   padding: 0;
   border: solid 1px #D8D8D8;
   border-radius: 0;
-  overflow: hidden;
   background-color: #fff;
 }
 @media (min-width: 750px) {
@@ -756,6 +755,11 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 .has-checkout-layout--multi-step .fc-checkout-step[data-step-complete] {
   margin: 0 0 -1px;
+}
+
+.has-checkout-layout--multi-step .fc-checkout-step .fc-step__substep:first-of-type {
+  margin-top: 0;
+  border-top: 0;
 }
 
 @media (min-width: 750px) {
