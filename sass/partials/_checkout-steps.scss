@@ -13,7 +13,6 @@
 	padding: $checkout-step-padding;
 	border: solid remsize( .1rem ) $border-color;
 	border-radius: 0;
-	overflow: hidden;
 	background-color: $white;
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-step-padding--large-screen; }
@@ -98,6 +97,11 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 // ------------------------------------
 .has-checkout-layout--multi-step .fc-checkout-step[data-step-complete] {
 	margin: 0 0 remsize( -.1rem ); // Prevent double borders
+}
+// .has-checkout-layout--multi-step .fc-checkout-step:not( .fc-checkout-step--prev-step-complete ) .fc-step__substep:first-of-type,
+.has-checkout-layout--multi-step .fc-checkout-step .fc-step__substep:first-of-type {
+	margin-top: 0;
+	border-top: 0;
 }
 // FIRST step
 .has-checkout-layout--multi-step .fc-checkout-step:first-child {
