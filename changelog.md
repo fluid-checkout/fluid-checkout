@@ -19,6 +19,140 @@ Additional labels for beta builds are available as extensions to the MAJOR.MINOR
 
 [See latest changes in the plugin's readme.txt](https://github.com/fluidweb-co/fluid-checkout/blob/main/readme.txt)
 
+= 1.5.8 - 2022-05-03 =
+
+* Added: New hooks `fc_checkout_before_step_shipping_fields_inside` and `fc_checkout_after_step_shipping_fields_inside` which contents are replaced with every checkout update.
+* Improved: Compatibility with WooCommerce Delivery & Pickup Date Time Pro by CodeRockz, when selecting the delivery fields position as "After the shipping address", it will be displayed after the "Shipping Methods" section when shipping methods are displayed after the "Shipping Address" section in the checkout page.
+* Improved: Also display "edit cart" link on order summary for mobile devices.
+* Fixed: Run hooks `fc_checkout_before_step_billing_fields`, `fc_checkout_after_step_billing_fields`, `fc_checkout_before_step_shipping_fields` and `fc_checkout_after_step_shipping_fields` only on initial page load skip on AJAX fragments requests.
+* Fixed: Moved hook `woocommerce_checkout_after_customer_details` out of the form-billing.php template file, now run on the hook `fc_checkout_after_step_billing_fields`.
+
+= 1.5.7 - 2022-04-12 =
+
+* Improved: Change the default position for the shipping methods section to after the shipping address. The position for the shipping methods section can be changed in the plugin settings.
+* Fixed: Checkout fields arguments merge functions replacing some existing classes.
+
+= 1.5.6 - 2022-04-11 =
+
+* Fixed: Fatal error (JS) when `select2` script is disabled on the checkout page. Fixes issue with page fragments loading indefinitely.
+* Fixed: Fatal error (PHP) when changing some checkout fields arguments.
+
+= 1.5.5 - 2022-04-06 =
+
+* Added: Compatibility with theme LeadEngine.
+* Fixed: Not updating checkout options while typing the postcode and other address fields when shipping phone feature is enabled.
+* Fixed: Not updating checkout options while entering the billing address.
+* Fixed: Jumping to the top of the page, most notably on mobile, when `select2` fields break while updating the checkout page.
+* Fixed: Fatal error when Checkout Widgets feature is disabled while WooCommerce PayPal Payments plugin is active.
+
+= 1.5.4 - 2022-03-29 =
+
+* Added: Compatibility with plugin Fluent CRM.
+* Added: Compatibility with plugin Klaviyo.
+* Added: Compatibility with plugin MailerLite WooCommerce Integration.
+* Added: Compatibility with plugin MailPoet.
+* Added: Compatibility with plugin Polylang.
+* Added: Translation to Italian (Italy). Thanks to Samuele from floralgarden.it.
+* Added: Translation to Turkish (Turkey). Thanks to Orkun Akça.
+* Improved: Compatibility with Brazilian Market, set fields as required according to the person type selected.
+* Fixed: Email validation should consider an empty optional email field as valid.
+* Fixed: Remove duplicate phone numbers on emails.
+* Fixed: Layout and alignment of the place order section.
+* Fixed: Letter case for guest checkout section separator.
+
+= 1.5.3 - 2022-03-03 =
+
+* Added: Support for RTL languages.
+* Added: New option to enable/disable Local Pickup features.
+* Added: New option to select position for the shipping methods substep (before or after shipping address).
+* Added: New filter `fc_checkout_login_button_class` for changing login button classes.
+* Improved: Compatibility with WooCommerce PayPal Payments, fixes missing spacing around the payment buttons.
+* Improved: Refactor move pickup point to its own substep, instead of using the shipping address substep to display the shop address.
+* Improved: Refactor make filters `fc_substep_{$substep_id}_attributes` available to all substeps.
+* Fixed: Restore previous values entered for the billing address when switching back to new billing address ("same as shipping" checkbox unchecked).
+* Fixed: Restore previous values entered for the shipping address when switching between "Local pickup" and other shipping methods.
+* Fixed: Shipping costs being shown with tax included when tax settings is set to display without tax included.
+* Fixed: State field validation message for required field displaying even when field is optional.
+* Fixed: Fatal error when our checkout fields optimization feature is disabled.
+
+= 1.5.2 - 2022-02-14 =
+
+* Added: Compatibility with theme Avada.
+* Added: Compatibility with theme Electro.
+* Added: Compatibility with theme The Hanger.
+* Added: Compatibility with theme Phlox PRO.
+* Added: Compatibility with theme Zota.
+* Added: Compatibility with plugin Flexible Shipping.
+* Added: Compatibility with plugin PagSeguro for WooCommerce.
+* Added: Compatibility with plugin WooCommerce Affirm Gateway.
+* Added: New filter `fc_checkout_update_before_unload` to let developers control whether to try to save users data when leaving the checkout page.
+* Improved: Compatibility with plugin WooCommerce PayPal Payments - by WooCommerce. Now the buttons are displayed below the terms checkbox as expected.
+* Improved: Refactor checkout script to make better use of `fcSettings`.
+* Fixed: Position for the hook `woocommerce_after_shipping_rate` to be displayed inside the shipping method `<label>` element.
+* Fixed: Prevent fatal errors when using the Plugin Organizer or similar plugins. Also checks if the function `WC` is available before before loading the plugin features.
+
+= 1.5.1 - 2022-02-03 =
+
+* Added: Compatibility with plugin Brazilian Market on WooCommerce - by Claudio Sanches.
+* Added: New filters `fc_is_step_complete_shipping_field_keys_skip_list` and `fc_is_step_complete_billing_field_keys_skip_list` to skip validating required fields in order to determine if the steps are complete or not.
+* Added: Add new classes for form fields `form-row-one-third`, `form-row-two-thirds` and `form-row-middle`.
+* Improved: Validate shipping methods fields selection on the client-side.
+* Fixed: Remove duplicate product image on checkout order summary for some themes.
+* Fixed: Do not set first shipping method as selected from the template file, instead, let WooCommerce manage the chosen shipping method.
+* Fixed: PHP warning `Undefined array key "type"` when trying to get the substep review text for custom fields.
+
+= 1.5.0 - 2022-01-28 =
+
+* Bump tested up to WordPress 5.9 and WooCommerce 6.1
+* Added: New filter `fc_checkout_update_fields_selectors` for CSS selectors used to trigger update the checkout fragments.
+* Added: New filters `fc_is_billing_same_as_shipping_checked` and `fc_output_billing_same_as_shipping_as_hidden_field` for billing same as shipping.
+* Added: New filter `fc_is_billing_address_data_same_as_shipping_before` to allow developers to hijack the returning value for the function `FluidCheckout_Steps::is_billing_address_data_same_as_shipping_before()`.
+* Added: Function to get list of address field keys, necessary for Address Book (PRO) feature.
+* Added: New class `fc-no-validation-icon` for checkout field classes to prevent or remove the validation check icon.
+* Added: New class `fc-skip-hide-optional-field` to skip hiding optional checkout fields.
+* Added: New debug mode advanced option.
+* Added: New "Tools" settings section. Only available where there are tools to be displayed.
+* Added: New filter `fc_billing_same_as_shipping_option_label` to change the label for the option "billing address same as shipping".
+* Added: Compatibility with plugin Creative Mail.
+* Improved: Color contrast set by Fluid Checkout to pass WCAG 2.1 AA.
+* Improved: Renamed the checkout settings subtab from "Checkout options" to "Checkout".
+* Improved: Compatibility with plugin WooCommerce Stripe Payment Gateway - by WooCommerce, will not show Express Checkout section if the Stripe payment gateway is not available.
+* Improved: Compatibility with plugin Checkout Field Editor for WooCommerce (free) - by Themehigh, now the changes applied to billing and shipping fields are also applied to the address edit form on the account pages.
+* Improved: Compatibility with theme Neve, login form is now displayed in the modal as expected.
+* Improved: Compatibility with plugin Checkout Field Editor for WooCommerce. Add option to make changes to checkout fields affect account edit address screen.
+* Improved: Display contact substep fields based on the order of field keys in the contact fields list.
+* Improved: Dynamically display contact substep field values on the substep review text when the step is completed.
+* Improved: Refactor custom admin setting types moving each type to their own files.
+* Improved: Add `state`, `country` and `select` field types to the optional fields to hide behind an "add" link.
+* Improved: Refactor replace use of `$checkout` variable from `WC()->checkout()` in multiple places.
+* Improved: Display shipping only fields after the fields in common with the billing section (same as billing only fields).
+* Improved: Refactor normalize theme compat styles to use theme specific selector `body.theme-slug`, where `slug` is the actual theme slug.
+* Improved: Refactor functions to generate substep review text with array of lines for easier customization.
+* Improved: Display custom fields in the substep review text.
+* Improved: Change function priority get checkout field values from persisted posted data or session to `100`, previously `10`.
+* Improved: Also update the checkout form and order summary when the browser tab gets visible again, as when changing tabs.
+* Improved: Change order of gift message field to before the gift from/sender field to make it consistent with other parts of the website.
+* Fixed: Stretched product images on the checkout order summary.
+* Fixed: Fatal error while editing the checkout page on Elementor, and possibly other page editors.
+* Fixed: Skip setting posted data to session or customer object when the `post_data` request parameter is not provided, avoiding the values from being cleared unintentionally.
+* Fixed: Remove field values from session in case they are not provided with the `post_data` parameter, fixes not being able to unselect/uncheck optional `checkbox`, `radio` and `select` fields.
+* Fixed: Parse posted data for multiple-value/multi-select fields as arrays.
+* Fixed: Use filtered parsed posted data when getting field keys to save to customer session.
+* Fixed: Shipping and billing phone numbers being displayed twice on order confirmation page.
+* Fixed: Missing borders between some steps and substeps.
+* Fixed: Maybe get shipping country value from session when appropriate.
+* Fixed: Allow HTML elements for gift message text, message footer and information text on Packing Slip documents.
+* Fixed: Display gift message section on Packing Slip documents even when option to display gift message as part of the totals table is enabled.
+* Fixed: Typo in the filter name, renaming `fc_adress_field_keys_skip_list` to `fc_address_field_keys_skip_list`.
+* Fixed: Checks for shipping and billing address when determining if the steps are complete to use the correct country values when addresses were changed by hooks.
+* Fixed: Prevents fatal error on admin pages by checking for available resources before calling them.
+* Fixed: Added the missing hook `woocommerce_checkout_after_customer_details` back to the checkout page after the billing form.
+* Fixed: Validation of fields in the contact substep.
+* Fixed: Styles for `select2` fields to fill 100% width of available field container space.
+* Fixed: Styles for `select2` multiple selection fields for various themes.
+* Fixed: Only display shipping phone in the contact step review text when the field is available.
+* Removed: Duplicate filter hook `fc_general_settings`, instead use the hook `fc_checkout_general_settings`.
+
 = 1.4.3 - 2022-01-12 =
 * Added: New actions `fc_checkout_header_widgets_inside_before` and `fc_checkout_header_widgets_inside_after` to add content inside the checkout header widget area via PHP code.
 * Improved: Moved checkout header widgets to before the cart icon link in the template file `fc/checkout/checkout-header.php`.
