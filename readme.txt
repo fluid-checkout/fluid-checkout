@@ -344,6 +344,8 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+POSSIBLY BREAKING CHANGES - Changes to the Order Summary and Express Checkout features might break customization code. Place order section position changed to below the order summary.
+
 * Added: New option to enable/disable the Checkout Progress Bar feature.
 * Added: New hooks `fc_shipping_methods_before_packages_inside` and `fc_shipping_methods_after_packages_inside`.
 * Added: Translation to Dutch (Netherlands). Thanks to Robin Bak, Duncan - magnesium-minerals.nl, Damy Bosch - advice.nl.
@@ -359,11 +361,15 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Compatibility with Shoptimizer theme.
 * Improved: Compatibility with themes, set expected styles for cart items rows in the order summary.
 * Improved: Spacing around trust symbols widget areas.
+* Improved: Express checkout now does not show the section title and borders to avoid it being displayed empty when no express checkout buttons are available for the customer's device.
+* Improved: RTL support on account address edit screens.
 * Fixed: Hide shipping methods on the cart page when WooCommerce the option "Hide shipping costs until an address is entered" is checked.
 * Fixed: Run hooks `fc_shipping_methods_before_packages`, `fc_shipping_methods_after_packages` only on initial page load skip on AJAX fragments requests.
 * Fixed: Do not attempt to output the admin Gift Message edit form on the front end.
-* Removed: Parameter `$is_sidebar_widget` from hooks `fc_checkout_before_order_review`, `fc_checkout_before_order_review_inside`, `fc_checkout_order_review_sidebar_before_actions`, `fc_checkout_after_order_review_inside` and `fc_checkout_after_order_review` can cause customization code to break or not work properly.
+* Removed: Parameter `$is_sidebar_widget` from hooks `fc_checkout_before_order_review`, `fc_checkout_before_order_review_inside`, `fc_checkout_order_review_sidebar_before_actions`, `fc_checkout_after_order_review_inside` and `fc_checkout_after_order_review`.
 * Removed: Action hook `fc_checkout_order_review_section`, replaced with `fc_checkout_sidebar_sections`.
+* Removed: Filter hook `fc_checkout_express_checkout_section_title` and `fc_checkout_login_separator_text` from the Express Checkout section.
+* Removed: Option to display an additional place order button on the sidebar, replaced with option to display additional button inside the last checkout step.
 
 [See older changes](https://github.com/fluidweb-co/fluid-checkout/blob/main/changelog.md)
 
@@ -371,7 +377,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 == Upgrade Notice ==
 
 = 1.6 =
-* Changes to order summary and sidebar action hooks can cause issues if your website has customizations using them. See details in the changelog section.
+* Changes to the Order Summary and Express Checkout feature hooks can cause customization code to break or not work properly. See details in the changelog section.
 
 = 1.5 =
 * Lays the foundations for the PRO version. Change the way field values are persisted between requests. Remove hook `fc_general_settings` and renamed hook `fc_adress_field_keys_skip_list` to `fc_address_field_keys_skip_list` can break customizations that use those hooks.

@@ -7,9 +7,7 @@ body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-e
 body:not( .has-checkout-must-login-notice ) .fc-checkout-notices,
 body:not( .has-checkout-must-login-notice )#{ $_body-page-selector } .woocommerce-NoticeGroup,
 body:not( .has-checkout-must-login-notice ) .fc-progress-bar,
-body:not( .has-checkout-must-login-notice ) .fc-checkout-steps,
-body:not( .has-checkout-must-login-notice ) .fc-place-order__wrapper,
-body:not( .has-checkout-must-login-notice ) .fc-express-checkout {
+body:not( .has-checkout-must-login-notice ) .fc-inside {
 	@media (#{$bp-larger-than-desktop}) {
 		float: $alignment-left;
 		width: calc( #{ $checkout-steps-width--large-screen } - #{ $checkout-column-gap--large-screen } );
