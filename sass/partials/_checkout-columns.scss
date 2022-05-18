@@ -29,6 +29,12 @@ body:not( .has-checkout-must-login-notice ) .fc-express-checkout {
 
 
 
+.fc-checkout-steps {
+	padding-top: $global-spacing-tiny;
+}
+
+
+
 .fc-sidebar {
 	position: static;
 
