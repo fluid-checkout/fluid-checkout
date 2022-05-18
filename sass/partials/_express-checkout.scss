@@ -4,13 +4,10 @@
 
 .fc-wrapper .fc-express-checkout__inner {
 	margin: 0 0 remsize( -.1rem ); // Prevent double borders
-	padding: $checkout-substep-padding;
-	border: solid remsize( .1rem ) $border-color;
+	padding: 0;
 	border-radius: $checkout-substep-border-radius;
 	overflow: hidden;
 	background-color: $white;
-
-	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
 }
 
 
