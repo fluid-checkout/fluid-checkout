@@ -379,8 +379,8 @@ BREAKING CHANGES - Some features where moved to the PRO version. Changes to the 
 
 == Upgrade Notice ==
 
-= 1.6 =
-* Changes to the Order Summary and Express Checkout feature hooks can cause customization code to break or not work properly. See details in the changelog section.
+= 2.0 =
+* BREAKING CHANGES - Some features where moved to the PRO version. Changes to the Order Summary and Express Checkout features might break customization code.
 
 = 1.5 =
 * Lays the foundations for the PRO version. Change the way field values are persisted between requests. Remove hook `fc_general_settings` and renamed hook `fc_adress_field_keys_skip_list` to `fc_address_field_keys_skip_list` can break customizations that use those hooks.
