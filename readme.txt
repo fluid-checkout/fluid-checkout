@@ -356,7 +356,8 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Refactor integrated coupon code feature to use own AJAX functions and scripts.
 * Improved: Refactor extract coupon code styles into a separate file.
 * Improved: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM when they contain any element with class `fc-fragment-always-replace`.
-* Improved: Compatibility with Shoptimizer theme.
+* Improved: Compatibility with plugin Brazilian Market.
+* Improved: Compatibility with theme Shoptimizer.
 * Improved: Compatibility with themes, set expected styles for cart items rows in the order summary.
 * Improved: Spacing around trust symbols widget areas.
 * Fixed: Hide shipping methods on the cart page when WooCommerce the option "Hide shipping costs until an address is entered" is checked (PRO feature).
