@@ -341,7 +341,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 	
 					array(
 						'title'             => __( 'Place order', 'fluid-checkout' ),
-						'desc'              => __( '(Experimental) Display an additional "Place order" and terms checkbox in the last checkout steps.', 'fluid-checkout' ),
+						'desc'              => __( '(Experimental) Display an additional "Place order" and terms checkbox in the last checkout step.', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_place_order_in_last_step',
 						'default'           => 'no',
 						'type'              => 'checkbox',
