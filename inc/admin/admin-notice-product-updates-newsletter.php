@@ -43,6 +43,7 @@ class FluidCheckout_AdminNotices_ProductUpdateNewsletter extends FluidCheckout {
 			'description'    => __( 'Important changes are coming soon with Fluid Checkout Lite 2.0. We encourage everyone using it to sign up to <strong>receive important updates</strong> about new versions.', 'fluid-checkout' ),
 			'actions'        => array(
 				sprintf( '<a href="%s" class="button button-primary" target="_blank">%s</a>', esc_url( 'https://fluidcheckout.com/product-update-signup/' ), __( 'Get important updates', 'fluid-checkout' ) ),
+				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', esc_url( 'https://fluidcheckout.com/product-update-signup/' ), __( 'More information', 'fluid-checkout' ) ),
 			),
 		);
 
