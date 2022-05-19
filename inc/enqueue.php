@@ -54,6 +54,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
+		// Maybe load RTL file
+		$rtl_suffix = is_rtl() ? '-rtl' : '';
+
 		// Require Bundle and Polyfills
 		if ( ! wp_script_is( 'require-bundle', 'registered' ) ) { wp_register_script( 'require-bundle', self::$directory_url . 'js/lib/require-bundle'. self::$asset_version . '.js', NULL, NULL ); }
 		if ( ! wp_script_is( 'require-polyfills', 'registered' ) ) { wp_register_script( 'require-polyfills', self::$directory_url . 'js/lib/require-polyfills'. self::$asset_version . '.js', NULL, NULL ); }
@@ -88,10 +91,10 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		);
 
 		// Custom fonts
-		wp_register_style( 'fc-fonts', self::$directory_url . 'css/fonts'. self::$asset_version . '.css', array(), null );
+		wp_register_style( 'fc-fonts', self::$directory_url . 'css/fonts' . self::$asset_version . '.css', array(), null );
 
 		// Edit address styles
-		wp_register_style( 'fc-account-page-address', self::$directory_url . 'css/account-page-address'. self::$asset_version . '.css', array(), null );
+		wp_register_style( 'fc-account-page-address', self::$directory_url . 'css/account-page-address' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 	}
 
 

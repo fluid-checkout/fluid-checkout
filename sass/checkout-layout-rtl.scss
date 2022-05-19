@@ -23,6 +23,7 @@ $_body-page-selector:                  '.woocommerce-checkout' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"partials/clearfix",
 	"partials/collapsible-blocks",
 	"partials/checkout-content-area",
 	"partials/checkout-widget-areas",

@@ -24,7 +24,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		add_action( 'fc_checkout_header_widgets', array( $this, 'output_widget_area_checkout_header' ), 50 );
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_widget_area_checkout_header_below' ), 3 ); // Displays widgets before the progress bar
 		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_widget_area_order_review_inside' ), 50 );
-		add_action( 'fc_checkout_after_order_review', array( $this, 'output_widget_area_order_review_outside' ), 50 );
+		add_action( 'fc_checkout_sidebar_sections', array( $this, 'output_widget_area_order_review_outside' ), 50 );
 		add_action( 'woocommerce_review_order_after_submit', array( $this, 'output_widget_area_checkout_place_order_below' ), 50 );
 	}
 
@@ -136,13 +136,8 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 
 	/**
 	 * Output widget area outside order review section.
-	 *
-	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
 	 */
-	public function output_widget_area_order_review_outside( $is_sidebar_widget ) {
-		// Bail if not outputting widget areas for the sidebar
-		if ( ! $is_sidebar_widget ) { return; }
-
+	public function output_widget_area_order_review_outside() {
 		if ( is_active_sidebar( 'fc_checkout_sidebar_after' ) ) :
 			echo '<div class="fc-checkout-order-review__widgets-outside">';
 			dynamic_sidebar( 'fc_checkout_sidebar_after' );
@@ -154,13 +149,8 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 
 	/**
 	 * Output widget area inside order review section.
-	 *
-	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
 	 */
-	public function output_widget_area_order_review_inside( $is_sidebar_widget ) {
-		// Bail if not outputting widget areas for the sidebar
-		if ( ! $is_sidebar_widget ) { return; }
-
+	public function output_widget_area_order_review_inside() {
 		if ( is_active_sidebar( 'fc_order_summary_after' ) ) :
 			echo '<div class="fc-checkout-order-review__widgets-inside">';
 			dynamic_sidebar( 'fc_order_summary_after' );

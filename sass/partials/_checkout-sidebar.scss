@@ -2,6 +2,11 @@
 // CHECKOUT SIDEBAR
 // ------------------------------------
 .fc-sidebar .fc-checkout-order-review__widgets-outside {
-    padding-left: $order-summary-cell-padding-horizontal;
-    padding-right: $order-summary-cell-padding-horizontal;
+    margin: $sidebar-widgets-container-margin;
+    padding: $sidebar-widgets-container-padding;
+
+    @media (#{$bp-larger-than-desktop}) {
+        margin: $sidebar-widgets-container-margin--large-screen;
+        padding: $sidebar-widgets-container-padding--large-screen;
+    }
 }

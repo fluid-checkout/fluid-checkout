@@ -341,9 +341,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 	
 					array(
 						'title'             => __( 'Place order', 'fluid-checkout' ),
-						'desc'              => __( '(Experimental) Display an additional "Place order" and terms checkbox below the order summary in the sidebar.', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Recommended if most of the orders have only a few different products in the cart, and product variations do not take too much space on the order summary.', 'fluid-checkout' ),
-						'id'                => 'fc_enable_checkout_place_order_sidebar',
+						'desc'              => __( '(Experimental) Display an additional "Place order" and terms checkbox in the last checkout step.', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_place_order_in_last_step',
 						'default'           => 'no',
 						'type'              => 'checkbox',
 						'autoload'          => false,
