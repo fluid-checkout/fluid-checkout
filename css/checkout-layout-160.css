@@ -2336,10 +2336,6 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
   outline-offset: 2px;
 }
 
-.fc-wrapper .fc-checkout-order-review.has-additional-content .fc-checkout-order-review__inner {
-  padding-bottom: 20px;
-}
-
 .fc-wrapper .fc-checkout-order-review[data-flyout].is-open .fc-checkout-order-review__inner {
   max-width: 100%;
   padding: 20px 20px 80px;

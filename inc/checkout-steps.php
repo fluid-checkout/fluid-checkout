@@ -3465,11 +3465,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'data-flyout-close-animation-class' => 'fade-out-up',
 		);
 
-		// Maybe add class for additional content inside the order summary section
-		if ( 'yes' === get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) || is_active_sidebar( 'fc_order_summary_after' ) ) {
-			$attributes[ 'class' ] = $attributes[ 'class' ] . ' has-additional-content';
-		}
-
 		return $attributes;
 	}
 
