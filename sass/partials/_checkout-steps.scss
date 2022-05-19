@@ -3,7 +3,6 @@
 // ------------------------------------
 .fc-wrapper .fc-checkout-steps {
 	margin: $checkout-steps-container-margin;
-
 	@media (#{$bp-larger-than-tablet}) { margin: $checkout-steps-container-margin--large-screen; }
 }
 
@@ -14,7 +13,6 @@
 	padding: $checkout-step-padding;
 	border: solid remsize( .1rem ) $border-color;
 	border-radius: 0;
-	overflow: hidden;
 	background-color: $white;
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-step-padding--large-screen; }
@@ -48,7 +46,7 @@
 
 
 
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
 	margin: $checkout-substep-title-margin;
 	padding: $checkout-substep-title-padding;
 	color: $checkout-substep-title-color;
@@ -68,18 +66,18 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 
 
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep:before,
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep:after,
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:before,
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:after,
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:before,
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:after {
+body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep:before,
+body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep:after,
+body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:before,
+body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:after,
+body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:before,
+body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:after {
 	@include clearfix();
 }
 
 
 
-body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
+body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
 	float: $alignment-left;
 	text-align: $alignment-left;
 }
@@ -99,6 +97,11 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 // ------------------------------------
 .has-checkout-layout--multi-step .fc-checkout-step[data-step-complete] {
 	margin: 0 0 remsize( -.1rem ); // Prevent double borders
+}
+// .has-checkout-layout--multi-step .fc-checkout-step:not( .fc-checkout-step--prev-step-complete ) .fc-step__substep:first-of-type,
+.has-checkout-layout--multi-step .fc-checkout-step .fc-step__substep:first-of-type {
+	margin-top: 0;
+	border-top: 0;
 }
 // FIRST step
 .has-checkout-layout--multi-step .fc-checkout-step:first-child {

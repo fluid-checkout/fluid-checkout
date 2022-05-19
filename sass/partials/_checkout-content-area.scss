@@ -1,14 +1,14 @@
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
-body.woocommerce-checkout {
+body#{ $_body-page-selector } {
 	overflow-x: hidden;
 }
 
 
 
 // Remove margins inherited from some themes
-body.woocommerce-checkout .fc-content,
+body#{ $_body-page-selector } .fc-content,
 form.woocommerce-checkout {
 	display: block !important; // Needed to override theme styles breaking the layout
 	margin: 0;
@@ -24,7 +24,7 @@ form.woocommerce-checkout {
 
 
 
-body.woocommerce-checkout #main.fc-main {
+body#{ $_body-page-selector } #main.fc-main {
 	position: static;
 	float: none;
 	margin: 0 auto;
@@ -48,12 +48,12 @@ body.woocommerce-checkout #main.fc-main {
 
 
 
-body.woocommerce-checkout .fc-content,
-body.woocommerce-checkout .fc-content * {
+body#{ $_body-page-selector } .fc-content,
+body#{ $_body-page-selector } .fc-content * {
 	box-sizing: border-box !important; // Needed to override theme styles breaking the layout
 }
 
-body.woocommerce-checkout .fc-content {
+body#{ $_body-page-selector } .fc-content {
 	box-sizing: border-box;
 	float: none !important; // Needed to override theme styles breaking the layout
 	margin: 0 auto;
@@ -62,7 +62,7 @@ body.woocommerce-checkout .fc-content {
 	border: 0;
 	text-align: left;
 }
-body.woocommerce-checkout .fc-content.fc-container {
+body#{ $_body-page-selector } .fc-content.fc-container {
 	// max-width
 	@media (#{$bp-larger-than-desktop}) { max-width: $container-width-desktop; }
 	@media (#{$bp-larger-than-desktop-medium}) { max-width: $container-width-desktop-medium; }
@@ -78,7 +78,7 @@ body.woocommerce-checkout .fc-content.fc-container {
 	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large $global-spacing-medium; }
 }
 
-body.woocommerce-checkout.has-checkout-header .fc-content {
+body#{ $_body-page-selector }.has-checkout-header .fc-content {
 	min-height: 100vh;
 
 	@media (#{$bp-larger-than-desktop}) {
@@ -88,7 +88,7 @@ body.woocommerce-checkout.has-checkout-header .fc-content {
 
 
 
-body.woocommerce-checkout .fc-content > div.woocommerce {
+body#{ $_body-page-selector } .fc-content > div.woocommerce {
 	position: static;
 
 	@media (#{$bp-larger-than-desktop-medium}) {
@@ -107,7 +107,7 @@ body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-m
 body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-info,
 body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-error,
 body:not( .has-checkout-must-login-notice ) .fc-checkout-notices,
-body:not( .has-checkout-must-login-notice ).woocommerce-checkout .woocommerce-NoticeGroup,
+body:not( .has-checkout-must-login-notice )#{ $_body-page-selector } .woocommerce-NoticeGroup,
 body:not( .has-checkout-must-login-notice ) .fc-progress-bar,
 body:not( .has-checkout-must-login-notice ) .fc-inside {
 	@media (#{$bp-larger-than-desktop}) {

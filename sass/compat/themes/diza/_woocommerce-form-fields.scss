@@ -2,10 +2,10 @@
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row input,
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row textarea,
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row select,
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-container,
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-container .select2-selection {
+body#{ $_body-theme-selector } div.woocommerce form .form-row input,
+body#{ $_body-theme-selector } div.woocommerce form .form-row textarea,
+body#{ $_body-theme-selector } div.woocommerce form .form-row select,
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container,
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection {
 	margin-bottom: 0 !important; // Needed to override `!important` directive added by the theme.
 }

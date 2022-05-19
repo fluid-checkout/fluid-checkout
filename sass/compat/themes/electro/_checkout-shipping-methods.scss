@@ -2,6 +2,6 @@
 // CHECKOUT SHIPPING METHODS
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix } .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-text {
+body#{ $_body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-text {
 	position: static;
 }

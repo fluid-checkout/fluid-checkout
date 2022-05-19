@@ -2,6 +2,6 @@
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix }.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
+body#{ $_body-theme-selector }#{ $_body-page-selector }.woocommerce-page .fc-wrapper #payment ul.payment_methods {
 	border: $payment-method-border !important; // Needed to override theme styles set with `!important`
 }

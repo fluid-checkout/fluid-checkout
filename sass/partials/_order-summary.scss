@@ -17,7 +17,7 @@
 
 
 // Fix layout for the `#order_review` element
-.woocommerce-page.woocommerce-checkout form.woocommerce-checkout .fc-wrapper #order_review {
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper #order_review {
 	float: none;
 	padding: 0;
 	margin: 0;
@@ -28,11 +28,11 @@
 
 
 
-.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review__head {
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-review__head {
 	text-align: $alignment-left;
 }
 
-.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title {
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-review-title {
 	display: inline-block;
 	margin: 0 0 remsize( 1.5rem );
 	padding: 0;
@@ -47,8 +47,8 @@
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-title-font-size--large-screen; }
 }
-.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title:before,
-.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title:after {
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-review-title:before,
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-review-title:after {
 	width: auto;
 }
 
@@ -56,7 +56,7 @@
 
 
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table {
 	margin: $order-summary-table-margin;
 	padding: 0;
 	width: $order-summary-table-width;
@@ -73,52 +73,53 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	}
 }
 
-.woocommerce-checkout form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table thead,
-.woocommerce-checkout form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody,
-.woocommerce-checkout form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot {
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table thead,
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody,
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot {
 	border: none;
 }
 
-.woocommerce-checkout form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody::after {
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody::after {
 	display: none;
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table th,
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table td,
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child th,
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child td {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table th,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table td,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child th,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child td {
 	border: 0;
 	display: table-cell;
 	width: auto;
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr {
 	border: 0;
 	border-bottom: $order-summary-cell-border;
 	height: auto;
+	display: table-row;
 }
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child {
 	border-top: $order-summary-cell-border;
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table th,
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table td {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table th,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table td {
 	padding: $order-summary-cell-padding-vertical $order-summary-cell-padding-horizontal;
 	background-color: transparent;
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr:first-child {
-	border-top: 0;
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table:not( .fc-cart-review-order-table ) tfoot tr:first-child {
+	border-top-width: 0;
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
 	vertical-align: middle;
 	width: 50%;
 	text-align: $alignment-left;
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total,
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td {
 	width: 50%;
 	font-size: $order-summary-font-size;
 	text-align: $alignment-right;
@@ -126,10 +127,10 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	vertical-align: middle;
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total .tax_label,
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total .includes_tax,
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td .includes_tax,
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td .tax_label {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total .tax_label,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total .includes_tax,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td .includes_tax,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td .tax_label {
 	display: block;
 	width: 100%;
 	line-height: 1.2;
@@ -140,14 +141,14 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart_item td {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart_item td {
 	margin: 0;
 	width: 100%;
 	white-space: normal;
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name,
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-name {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-name {
 	position: relative;
 	float: $alignment-left;
 	width: 75%;
@@ -156,12 +157,12 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	text-align: $alignment-left;
 	line-height: 1.2;
 }
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-name:after {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-name:after {
 	@include clearfix();
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total,
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-total {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-total {
 	display: block;
 	padding: $global-spacing-tiny 0;
 	width: 25%;
@@ -169,7 +170,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	background-color: transparent;
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table img {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table img {
 	float: $alignment-left;
 	margin-#{ $alignment-left }: - #{ $order-summary-image-padding + $global-spacing-tiny };
 	padding: $order-summary-image-padding;
@@ -185,7 +186,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	}
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
 	float: $alignment-left;
 	padding-#{ $alignment-left }: $global-spacing-small;
 	width: calc( 100% - $order-summary-image-width );
@@ -195,7 +196,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	}
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-quantity {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-quantity {
 	z-index: z( 'above' );
 	position: absolute;
 	top: 0;
@@ -216,42 +217,33 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 	}
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table dl.variation {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table dl.variation {
 	margin-bottom: 0;
 	padding-left: 0;
 	color: $grey;
 	font-size: $font-size-extra-small;
 }
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table dl.variation dd {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table dl.variation dd {
 	margin: 0;
 	padding: 0;
 }
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total th {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total th {
 	text-transform: uppercase;
 }
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total th,
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total td {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total th,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total td {
 	padding-top: $order-summary-cell-padding-vertical--total;
 	padding-bottom: $order-summary-cell-padding-vertical--total;
 }
 
 
 
-form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon {
 	&:focus {
 		outline: $focus-outline-link;
 		outline-offset: $focus-outline-offset-link;
 	}
-}
-
-
-
-
-
-.fc-wrapper .fc-checkout-order-review__widgets-inside {
-	margin-top: $global-spacing-small;
-	margin-bottom: $global-spacing-small;
 }
 
 
@@ -306,7 +298,7 @@ form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-r
 
 
 
-form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
+div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
 	@media (#{$bp-larger-than-desktop}) {
 		margin: 0 0 $global-spacing-small;
 		padding: remsize( 1.2rem ) $global-spacing-small 0;

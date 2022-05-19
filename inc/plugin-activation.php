@@ -11,6 +11,7 @@ class FluidCheckout_Activation {
 	 */
 	public static function on_activation() {
 		self::set_first_activation_time_option();
+		wp_cache_flush();
 	}
 
 

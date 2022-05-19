@@ -88,24 +88,24 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 			'title'          => __( 'Germanized for WooCommerce', 'fluid-checkout' ),
 			'desc'           => __( 'Define the position to display the place order button. <br/><span style="color:#f00;"><strong>Disclaimer:</strong> by changing these settings, I confirm that I understand the legal implications of changing the position of the legal checkboxes on my checkout page.</span>', 'fluid-checkout' ),
 			'id'             => 'fc_integration_woocommerce_germanized_place_order_position',
+			'type'           => 'select',
 			'options'        => array(
 				'order_summary_after_total'      => _x( 'Order summary (after totals)', 'Place order position', 'fluid-checkout' ),
 				'payment_step'                   => _x( 'Payment step', 'Place order position', 'fluid-checkout' ),
 			),
 			'default'        => 'order_summary_after_total',
-			'type'           => 'select',
 			'autoload'       => false,
 		);
 
 		$settings[] = array(
 			'desc'           => __( 'Define the position to display the legal checkboxes. <br/>The legal checkboxes will be displayed in the payment section if the place order button is set to display in the payment section.<br/><span style="color:#f00;"><strong>Disclaimer:</strong> by changing these settings, I confirm that I understand the legal implications of changing the position of the legal checkboxes on my checkout page.</span>', 'fluid-checkout' ),
 			'id'             => 'fc_integration_woocommerce_germanized_legal_checkboxes_position',
+			'type'           => 'select',
 			'options'        => array(
 				'order_summary_before_products'  => _x( 'Order summary (before products)', 'Legal checkboxes position', 'fluid-checkout' ),
 				'before_place_order'             => _x( 'Before place order button', 'Legal checkboxes position', 'fluid-checkout' ),
 			),
 			'default'        => 'order_summary_before_products',
-			'type'           => 'select',
 			'autoload'       => false,
 		);
 

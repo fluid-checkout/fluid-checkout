@@ -54,7 +54,7 @@ class WC_Settings_FluidCheckout_Integrations_Settings extends WC_Settings_Page {
 		// Get token position
 		$position_index = count( $sections );
 		for ( $index = 0; $index < count( $sections ); $index++ ) {
-			if ( 'advanced' == array_keys( $sections )[ $index ] ) {
+			if ( 'tools' == array_keys( $sections )[ $index ] ) {
 				$position_index = $index;
 			}
 		}

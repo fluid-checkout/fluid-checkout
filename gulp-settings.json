@@ -1,6 +1,6 @@
 {
 	"watch": [
-		[ "./sass/**/*.scss", [ "build-css-dev" ] ],
+		[ "./sass/**/*.scss", [ "build-css" ] ],
 		[ "./js-src/**/*.js", [ "build-js" ] ]
 	],
 

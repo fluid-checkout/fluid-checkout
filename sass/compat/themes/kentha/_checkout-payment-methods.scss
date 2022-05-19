@@ -2,13 +2,13 @@
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix } .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+body#{ $_body-theme-selector } .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
 	height: auto;
 }
 
 
 
-#{ $_body-theme-selector-prefix } .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:after {
+body#{ $_body-theme-selector } .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:after {
 	top: remsize( .5rem );
 	#{ $alignment-left }: remsize( .4rem );
 	border-color: transparent;

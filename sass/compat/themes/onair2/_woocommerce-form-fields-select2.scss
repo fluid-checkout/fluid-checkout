@@ -2,7 +2,7 @@
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--single,
-#{ $_body-theme-selector-prefix } div.woocommerce form .form-row .select2-selection--multiple {
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single,
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple {
 	text-align: #{ $alignment-left };
 }
