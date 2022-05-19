@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Fluid Checkout for WooCommerce
+Plugin Name: Fluid Checkout for WooCommerce - Lite
 Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message, and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
@@ -9,11 +9,11 @@ Version: 1.6.0-beta-7
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 6.1
+WC tested up to: 6.5.1
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
-Copyright (C) 2021 Fluidweb OÜ
+Copyright (C) 2021-2022 Fluidweb OÜ
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -50,7 +50,7 @@ class FluidCheckout {
 	public static $instances = array();
 	public static $directory_path;
 	public static $directory_url;
-	public static $plugin = 'Fluid Checkout for WooCommerce';
+	public static $plugin = 'Fluid Checkout for WooCommerce - Lite';
 	public static $plugin_slug = 'fluid-checkout';
 	public static $plugin_basename = ''; // Values set at function `set_plugin_vars`
 	public static $version = ''; // Values set at function `set_plugin_vars`
