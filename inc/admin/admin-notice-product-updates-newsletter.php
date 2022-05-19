@@ -37,11 +37,12 @@ class FluidCheckout_AdminNotices_ProductUpdateNewsletter extends FluidCheckout {
 		if ( $past_date < $install_date ) { return; }
 
 		$notices[] = array(
-			'name' => 'fc_version_200',
-			'title' => __( 'Important changes coming with Fluid Checkout 2.0', 'fluid-checkout' ),
-			'description' => __( 'You have been using Fluid Checkout for a while. How do you like it so far? <br>Please give us a quick rating, it works as a boost for us to keep working on the plugin :)', 'fluid-checkout' ),
-			'actions' => array(
-				sprintf( '<a href="%s" class="button button-primary" target="_blank">%s</a>', esc_url( 'https://fluidcheckout.com/product-update-signup/' ), __( 'Signup', 'fluid-checkout' ) ),
+			'name'           => 'fc_version_200',
+			'error'          => true, // Not technically an `error`, but it needs to get attention. This line should be removed with version 2.0.
+			'title'          => __( 'Fluid Checkout Lite 2.0 will be released soon and your website might get impacted', 'fluid-checkout' ),
+			'description'    => __( 'Important changes are coming soon with Fluid Checkout Lite 2.0. We encourage everyone using it to sign up to <strong>receive important updates</strong> about new versions.', 'fluid-checkout' ),
+			'actions'        => array(
+				sprintf( '<a href="%s" class="button button-primary" target="_blank">%s</a>', esc_url( 'https://fluidcheckout.com/product-update-signup/' ), __( 'Get important updates', 'fluid-checkout' ) ),
 			),
 		);
 
