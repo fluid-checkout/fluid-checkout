@@ -1,10 +1,10 @@
-=== Fluid Checkout for WooCommerce ===
+=== Fluid Checkout for WooCommerce - Lite ===
 Contributors: fluidwebco, diegoversiani, luiggiab
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 5.9
-Stable tag: 1.5.8
+Stable tag: 1.6.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -342,9 +342,17 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
-= Unreleased =
+= Unreleased - 2.0.0 =
 
-POSSIBLY BREAKING CHANGES - Changes to the Order Summary and Express Checkout features might break customization code. Place order section position changed to below the order summary.
+BREAKING CHANGES - Some features where moved to the PRO version. Changes to the Order Summary and Express Checkout features might break customization code. Place order section position changed to below the order summary.
+
+* Improved: RTL support on account address edit screens.
+* Removed: Parameter `$is_sidebar_widget` from hooks `fc_checkout_before_order_review`, `fc_checkout_before_order_review_inside`, `fc_checkout_order_review_sidebar_before_actions`, `fc_checkout_after_order_review_inside` and `fc_checkout_after_order_review`.
+* Removed: Action hook `fc_checkout_order_review_section`, replaced with `fc_checkout_sidebar_sections`.
+* Removed: Filter hook `fc_checkout_express_checkout_section_title` and `fc_checkout_login_separator_text` from the Express Checkout section.
+* Removed: Option to display an additional place order button on the sidebar, replaced with option to display additional button inside the last checkout step.
+
+= 1.6.0 - 2022-05-19 =
 
 * Added: New option to enable/disable the Checkout Progress Bar feature.
 * Added: New hooks `fc_shipping_methods_before_packages_inside` and `fc_shipping_methods_after_packages_inside`.
@@ -358,18 +366,13 @@ POSSIBLY BREAKING CHANGES - Changes to the Order Summary and Express Checkout fe
 * Improved: Refactor integrated coupon code feature to use own AJAX functions and scripts.
 * Improved: Refactor extract coupon code styles into a separate file.
 * Improved: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM when they contain any element with class `fc-fragment-always-replace`.
-* Improved: Compatibility with Shoptimizer theme.
+* Improved: Compatibility with plugin Brazilian Market.
+* Improved: Compatibility with theme Shoptimizer.
 * Improved: Compatibility with themes, set expected styles for cart items rows in the order summary.
 * Improved: Spacing around trust symbols widget areas.
-* Improved: Express checkout now does not show the section title and borders to avoid it being displayed empty when no express checkout buttons are available for the customer's device.
-* Improved: RTL support on account address edit screens.
-* Fixed: Hide shipping methods on the cart page when WooCommerce the option "Hide shipping costs until an address is entered" is checked.
+* Fixed: Hide shipping methods on the cart page when WooCommerce the option "Hide shipping costs until an address is entered" is checked (PRO feature).
 * Fixed: Run hooks `fc_shipping_methods_before_packages`, `fc_shipping_methods_after_packages` only on initial page load skip on AJAX fragments requests.
 * Fixed: Do not attempt to output the admin Gift Message edit form on the front end.
-* Removed: Parameter `$is_sidebar_widget` from hooks `fc_checkout_before_order_review`, `fc_checkout_before_order_review_inside`, `fc_checkout_order_review_sidebar_before_actions`, `fc_checkout_after_order_review_inside` and `fc_checkout_after_order_review`.
-* Removed: Action hook `fc_checkout_order_review_section`, replaced with `fc_checkout_sidebar_sections`.
-* Removed: Filter hook `fc_checkout_express_checkout_section_title` and `fc_checkout_login_separator_text` from the Express Checkout section.
-* Removed: Option to display an additional place order button on the sidebar, replaced with option to display additional button inside the last checkout step.
 
 [See older changes](https://github.com/fluidweb-co/fluid-checkout/blob/main/changelog.md)
 
