@@ -30,6 +30,9 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 		// WooCommerce Settings Styles
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles'), 10 );
+
+		// Clear cache after saving settings
+		add_action( 'woocommerce_settings_saved', 'wp_cache_flush', 10 );
 	}
 
 
@@ -68,7 +71,6 @@ class FluidCheckout_Admin extends FluidCheckout {
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-general.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-integrations.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-tools.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-advanced.php';
 		
 		return $settings;
 	}

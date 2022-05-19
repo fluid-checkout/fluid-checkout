@@ -52,7 +52,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 			}
 
 			if ( $notice['dismissable'] ) {
-				$notice['actions'][] = '<a href="' . esc_url( add_query_arg( array( 'fc_action' => 'dismiss_notice', 'fc_notice' => $notice['name'] ) ) ) . '">' . __( 'Dismiss Notice', 'fluid-checkout' ) . '</a>';
+				$notice['actions'][] = '<a href="' . esc_url( add_query_arg( array( 'fc_action' => 'dismiss_notice', 'fc_notice' => $notice['name'] ) ) ) . '" style="margin: 0 20px;">' . __( 'Dismiss Notice', 'fluid-checkout' ) . '</a>';
 			}
 			
 			?>

@@ -61,19 +61,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_output_custom_styles', array( $this, 'output_checkout_page_custom_styles' ), 10 );
 
 		// Enqueue
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_order_details_styles' ), 10 );
 
+		// Checkout page template
+		add_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
+
 		// Checkout Header
-		add_action( 'fc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
-		add_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
+		if ( $this->get_hide_site_header_footer_at_checkout() ) {
+			add_action( 'fc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
+			add_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
+			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
+		}
 
 		// Container class
-		add_filter( 'fc_content_section_class', array( $this, 'fc_content_section_class' ), 10 );
+		add_filter( 'fc_content_section_class', array( $this, 'add_content_section_class' ), 10 );
 
 		// Checkout steps
-		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout/cart notices
+		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout notices
 		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for frontend requests
 		add_action( 'admin_init', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for AJAX requests
 		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
@@ -294,23 +300,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Enqueue scripts.
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Maybe load RTL file
+		$rtl_suffix = is_rtl() ? '-rtl' : '';
+		
+		// Styles
+		wp_register_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
+
+		// Checkout steps scripts
+		wp_register_script( 'fc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
+	}
+
+	/**
+	 * Enqueue assets.
 	 */
 	public function enqueue_assets() {
 		// Bail if not at checkout
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
 
 		// Styles
-		if ( is_rtl() ) {
-			wp_enqueue_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout-rtl'. self::$asset_version . '.css', NULL, NULL );
-		}
-		else {
-			wp_enqueue_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout'. self::$asset_version . '.css', NULL, NULL );
-		}
-	
+		wp_enqueue_style( 'fc-checkout-layout' );
+		
 		// Checkout steps scripts
-		wp_enqueue_script( 'fc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
+		wp_enqueue_script( 'fc-checkout-steps' );
 	}
 
 
@@ -381,6 +396,33 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function is_checkout_layout_multistep() {
 		return apply_filters( 'fc_is_checkout_layout_multistep', $this->get_checkout_layout() === 'multi-step' );
+	}
+
+
+
+	/**
+	 * Replace the checkout page template with our own file.
+	 *
+	 * @param   String  $template  Template file path.
+	 */
+	public function checkout_page_template( $template ) {
+		// Bail if checkout page template is not enabled
+		if ( 'yes' !== get_option( 'fc_enable_checkout_page_template', 'yes' ) ) { return $template; }
+		
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $template; }
+
+		// Locate new checkout page template
+		$template_name = 'fc/page-checkout.php';
+		$plugin_path  = self::$directory_path . 'templates/';
+		$new_template = $this->locate_template( $template, $template_name, $plugin_path );
+
+		// Check if the file exists
+		if ( file_exists( $new_template ) ) {
+			$template = $new_template;
+		}
+
+		return $template;
 	}
 
 
@@ -478,11 +520,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param string $class Main content element classes.
 	 */
-	public function fc_content_section_class( $class ) {
+	public function add_content_section_class( $class ) {
 		// Bail if using the plugin's header and footer
 		if ( $this->get_hide_site_header_footer_at_checkout() ) { return $class; }
 
-		return $class . ' fc-container';
+		// Maybe add the container class
+		if ( apply_filters( 'fc_add_container_class', true ) ) {
+			$class = $class . ' fc-container';
+		}
+
+		return $class;
 	}
 
 
@@ -1050,6 +1097,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the checkout progress bar.
 	 */
 	public function output_checkout_progress_bar() {
+		// Bail if progress bar not enabled
+		if ( 'yes' !== get_option( 'fc_enable_checkout_progress_bar', 'yes' ) ) { return; }
+
 		// Bail if not multi-step checkout layout
 		if ( ! $this->is_checkout_layout_multistep() ) { return; }
 
@@ -1231,10 +1281,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_start_tag( $step_id, $substep_id, $substep_title, $additional_attributes = array() ) {
 		$additional_attributes = apply_filters( "fc_substep_{$substep_id}_attributes", $additional_attributes );
+
+		// Make sure additional attributes is an array before using it
+		if ( null === $additional_attributes ) { $additional_attributes = array(); }
+		
 		$substep_attributes = array_merge( $additional_attributes, array(
 			'class' => array_key_exists( 'class', $additional_attributes ) ? 'fc-step__substep ' . $additional_attributes['class'] : 'fc-step__substep',
 			'data-substep-id' => $substep_id,
 		) );
+
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
 		<div <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
@@ -2378,13 +2433,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @access public
 	 */
 	public function get_shipping_methods_available() {
-		ob_start();
+		// Calculate shipping before totals. This will ensure any shipping methods that affect things like taxes are chosen prior to final totals being calculated. Ref: #22708.
+		WC()->cart->calculate_shipping();
+		WC()->cart->calculate_totals();
 
 		$packages = WC()->shipping->get_packages();
 
-		do_action( 'fc_shipping_methods_before_packages' );
+		ob_start();
 
 		echo '<div class="fc-shipping-method__packages">';
+
+		do_action( 'fc_shipping_methods_before_packages_inside' );
 
 		$first_item = true;
 		foreach ( $packages as $i => $package ) {
@@ -2402,7 +2461,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'package'					=> $package,
 				'available_methods'			=> $package['rates'],
 				'show_package_details'		=> sizeof( $packages ) > 1,
-				'show_shipping_calculator'	=> is_cart() && $first_item,
+				'is_cart_page_or_fragment'  => apply_filters( 'fc_is_cart_page_or_fragment', is_cart() ),
 				'package_details'			=> implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
 				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
@@ -2413,9 +2472,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$first_item = false;
 		}
 
-		echo '</div>';
+		do_action( 'fc_shipping_methods_after_packages_inside' );
 
-		do_action( 'fc_shipping_methods_after_packages' );
+		echo '</div>';
 
 		return ob_get_clean();
 	}
@@ -2437,7 +2496,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @access public
 	 */
 	public function output_shipping_methods_available() {
+		do_action( 'fc_shipping_methods_before_packages' );
 		echo $this->get_shipping_methods_available();
+		do_action( 'fc_shipping_methods_after_packages' );
 	}
 
 	/**
@@ -3094,7 +3155,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_set_billing_address_same_as_shipping( $posted_data ) {
 		// Get value for billing same as shipping
-		$is_billing_same_as_shipping_previous = $posted_data[ 'billing_same_as_shipping_previous' ];
+		$is_billing_same_as_shipping_previous = isset( $posted_data[ 'billing_same_as_shipping_previous' ] ) ? $posted_data[ 'billing_same_as_shipping_previous' ] : null;
 		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping( $posted_data );
 		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked( $posted_data );
 
@@ -3494,7 +3555,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_output_order_review_shipping_method_chosen() {
 		// Bail if not on checkout or cart page
-		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() ) ) { return; }
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
 		$packages = WC()->shipping()->get_packages();
 		$first    = true;

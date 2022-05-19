@@ -1,6 +1,6 @@
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
-#{ $_body-theme-selector-prefix } {
+body#{ $_body-theme-selector } {
 	background-color: $white;
 }

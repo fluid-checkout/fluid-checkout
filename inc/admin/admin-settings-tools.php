@@ -46,11 +46,6 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 	 * @param   array  $sections  Admin settings sections.
 	 */
 	public function add_sections( $sections ) {
-		$settings_add = apply_filters( 'fc_tools_settings_add', array(), 'tools' );
-
-		// Bail if there are no settings to display
-		if ( 0 >= count( $settings_add ) ) { return $sections; }
-		
 		// Define sections to insert
 		$insert_sections = array(
 			'tools' => __( 'Tools', 'fluid-checkout' ),
@@ -83,27 +78,44 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 	public function add_settings( $settings, $current_section ) {
 		if ( 'tools' === $current_section ) {
 
-			$settings_add = apply_filters( 'fc_'.$current_section.'_settings_add', array(), $current_section );
+			$settings = array(
 
-			// Bail if there are no settings to display
-			if ( 0 >= count( $settings_add ) ) { return $settings; }
-
-			$settings_new = array(
 				array(
-					'title' => _x( 'Tools', 'Settings section title', 'fluid-checkout' ),
+					'title' => __( 'Troubleshooting', 'fluid-checkout' ),
 					'type'  => 'title',
-					'id'    => 'fc_tools',
+					'desc'  => '',
+					'id'    => 'fc_checkout_advanced_debug_options',
 				),
-			);
 
-			$settings_new = array_merge( $settings_new, $settings_add, array(
+				array(
+					'title'            => __( 'Debug options', 'fluid-checkout' ),
+					'desc'             => __( 'Debug mode', 'fluid-checkout' ),
+					'desc_tip'         => __( 'Using debug mode affects the website performance. Only use this option while troubleshooting.', 'fluid-checkout' ),
+					'id'               => 'fc_debug_mode',
+					'default'          => 'no',
+					'type'             => 'checkbox',
+					'checkboxgroup'    => 'start',
+					'show_if_checked'  => 'option',
+					'autoload'         => false,
+				),
+				array(
+					'desc'             => __( 'Load unminified assets', 'fluid-checkout' ),
+					'id'               => 'fc_load_unminified_assets',
+					'default'          => 'no',
+					'type'             => 'checkbox',
+					'checkboxgroup'    => 'end',
+					'show_if_checked'  => 'yes',
+					'autoload'         => false,
+				),
+
 				array(
 					'type' => 'sectionend',
-					'id'   => 'fc_tools',
+					'id'   => 'fc_checkout_advanced_debug_options',
 				),
-			) );
 
-			$settings = apply_filters( 'fc_'.$current_section.'_settings', $settings_new, $current_section );
+			);
+
+			$settings = apply_filters( 'fc_'.$current_section.'_settings', $settings, $current_section );
 		}
 
 		return $settings;

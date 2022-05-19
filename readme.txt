@@ -1,4 +1,4 @@
-=== Fluid Checkout for WooCommerce ===
+=== Fluid Checkout for WooCommerce - Lite ===
 Contributors: fluidwebco, diegoversiani, luiggiab
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
@@ -239,27 +239,26 @@ All labels and other texts added or changed by the plugin are translatable using
 Currently the plugin is translated into the languages below, and more are comming soon:
 
 * English (Default)
-* German - Germany (thanks to @reilix, felix-gudowius.de)
-* Italian - Italy (thanks to Samuele, floralgarden.it)
+* Dutch - Netherlands (thanks to Robin Bak, Duncan - magnesium-minerals.nl, Damy Bosch - advice.nl)
+* German - Germany (thanks to @reilix - felix-gudowius.de)
+* Italian - Italy (thanks to Samuele - floralgarden.it)
 * Portuguese - Brazil
-* Spanish - Spain (thanks to @gio15, senseiwpacademy.com)
+* Spanish - Spain (thanks to @gio15 - senseiwpacademy.com)
 * Swedish - Sweden (thanks to @kozley, @tobifjellner, @elbogen)
 * Turkish - Turkey (thanks to @orkunakca)
 
-** Comming soon **
+** Want Fluid Checkout in your language? **
 
-* Dutch (soon)
-* German - Formal (soon)
-* Spanish - Argentina (soon)
+Please contribute your language to the plugin to make it even more useful. Send your translation files through our [support channel](https://fluidcheckout.com/support/).
 
 ** RTL Support **
 
 * Although currently there are no official transations to any RTL language, the plugin will adjust its layout to RTL languages accordingly.
 
 ** Note: **
+
 Fluid Checkout is fully localized/translatable. This is very important for all users worldwide.
 For translating Fluid Checkout, we recommend the plugin ["Loco Translate - By Tim Whitlock"](https://wordpress.org/plugins/loco-translate/).
-Please contribute your language to the plugin to make it even more useful. Send your translation files through our [support channel](https://fluidcheckout.com/support/).
 
 
 == Contributions are welcome ==
@@ -342,6 +341,28 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Added: New option to enable/disable the Checkout Progress Bar feature.
+* Added: New hooks `fc_shipping_methods_before_packages_inside` and `fc_shipping_methods_after_packages_inside`.
+* Added: Translation to Dutch (Netherlands). Thanks to Robin Bak, Duncan - magnesium-minerals.nl, Damy Bosch - advice.nl.
+* Improved: Clear object cache with `wp_cache_flush` when saving settings or updating the plugin.
+* Improved: Moved some options from the "Advanced" to "Tools" and "Checkout" settings tabs. Removed the "Advanced" settings tab.
+* Improved: Only register checkout header widget areas when using the Fluid Checkout header template.
+* Improved: Display the shipping calculator above the shipping methods in the cart page (PRO feature).
+* Improved: Refactor make SCSS code reusable by using variables like `$_body-theme-selector` and `$_body-page-selector`.
+* Improved: Only display no shipping methods message on the checkout page when using the template file shipping-methods-available.php.
+* Improved: Refactor integrated coupon code feature to use own AJAX functions and scripts.
+* Improved: Refactor extract coupon code styles into a separate file.
+* Improved: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM when they contain any element with class `fc-fragment-always-replace`.
+* Improved: Compatibility with plugin Brazilian Market.
+* Improved: Compatibility with theme Shoptimizer.
+* Improved: Compatibility with themes, set expected styles for cart items rows in the order summary.
+* Improved: Spacing around trust symbols widget areas.
+* Fixed: Hide shipping methods on the cart page when WooCommerce the option "Hide shipping costs until an address is entered" is checked (PRO feature).
+* Fixed: Run hooks `fc_shipping_methods_before_packages`, `fc_shipping_methods_after_packages` only on initial page load skip on AJAX fragments requests.
+* Fixed: Do not attempt to output the admin Gift Message edit form on the front end.
 
 = 1.5.8 - 2022-05-03 =
 

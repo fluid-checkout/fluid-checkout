@@ -93,7 +93,7 @@ Additional labels for beta builds are available as extensions to the MAJOR.MINOR
 * Improved: Refactor of the front-end checkout validation script to allow developers to add validation type extensions.
 * Improved: Compatibility with theme Neve.
 * Fixed: Checkout fields values should be replaced with data from registered customer profile when user logs from the checkout page or otherwise. Renamed hook `fc_customer_persisted_data_clear_fields` to `fc_customer_persisted_data_clear_fields_order_processed`.
-* Fixed: When adding new steps, functions to get current and next steps and outputing the progress bar now works as expected.
+* Fixed: When adding new steps, functions to get current and next steps and outputting the progress bar now works as expected.
 * Fixed: Translation of shipping package names to match what is used by WooCommerce.
 * Fixed: Coupon code "Add" link label now respects the option to make field labels `lowercase`, instead of always making it `lowercase`.
 * Removed: Step registration argument `next_step_button_label` is no longer used as the label of the button to proceed to next step is now retrieved dynamically.

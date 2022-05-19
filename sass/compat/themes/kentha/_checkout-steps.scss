@@ -2,11 +2,11 @@
 // CHECKOUT STEPS
 // ------------------------------------
 
-#{ $_body-theme-selector-prefix }.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h1,
-#{ $_body-theme-selector-prefix }.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h2,
-#{ $_body-theme-selector-prefix }.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h3,
-#{ $_body-theme-selector-prefix }.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h4,
-#{ $_body-theme-selector-prefix }.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h5,
-#{ $_body-theme-selector-prefix }.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h6 {
+body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper h1,
+body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper h2,
+body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper h3,
+body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper h4,
+body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper h5,
+body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper h6 {
 	color: inherit;
 }
