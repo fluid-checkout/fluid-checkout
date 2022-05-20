@@ -199,12 +199,8 @@ class FluidCheckout {
 			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'fc_apply_checkout_field_args', 'enable_default' => 'yes' ),
 			'checkout-hide-optional-fields'       => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'fc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),
 			'checkout-shipping-phone'             => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'fc_shipping_phone_field_visibility', 'enable_default' => 'no' ),
-			'checkout-express-checkout'           => array( 'file' => self::$directory_path . 'inc/checkout-express-checkout.php', 'enable_option' => 'fc_enable_checkout_express_checkout', 'enable_default' => 'yes' ),
-			'checkout-local-pickup'               => array( 'file' => self::$directory_path . 'inc/checkout-local-pickup.php', 'enable_option' => 'fc_enable_checkout_local_pickup', 'enable_default' => 'yes' ),
 			'checkout-validation'                 => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'fc_enable_checkout_validation', 'enable_default' => 'yes' ),
-			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'fc_enable_checkout_gift_options', 'enable_default' => 'no' ),
 			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'fc_enable_checkout_widget_areas', 'enable_default' => 'yes' ),
-			'packing-slips'                       => array( 'file' => self::$directory_path . 'inc/packing-slips.php', 'enable_option' => 'fc_enable_packing_slips_options', 'enable_default' => 'yes' ),
 		);
 	}
 

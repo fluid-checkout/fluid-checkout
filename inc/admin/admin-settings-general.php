@@ -234,15 +234,6 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Local Pickup', 'fluid-checkout' ),
-						'desc'              => __( 'Removes shipping address section when a Local Pickup shipping method is selected', 'fluid-checkout' ),
-						'id'                => 'fc_enable_checkout_local_pickup',
-						'default'           => 'yes',
-						'type'              => 'checkbox',
-						'autoload'          => false,
-					),
-
-					array(
 						'title'             => __( 'Coupon Codes', 'fluid-checkout' ),
 						'desc'              => __( 'Show coupon codes as a substep of the payment step', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'fluid-checkout' ),
@@ -273,47 +264,6 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						),
 						'default'           => 'yes',
 						'type'              => 'select',
-						'autoload'          => false,
-					),
-
-					array(
-						'title'             => __( 'Express checkout', 'fluid-checkout' ),
-						'desc'              => __( 'Enable the express checkout section at checkout', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Displays the express checkout section at checkout when supported payment gateways have this feature enabled.', 'fluid-checkout' ),
-						'id'                => 'fc_enable_checkout_express_checkout',
-						'default'           => 'yes',
-						'type'              => 'checkbox',
-						'autoload'          => false,
-					),
-
-					array(
-						'title'             => __( 'Gift options', 'fluid-checkout' ),
-						'desc'              => __( 'Display gift message and other gift options at the checkout page', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Allow customers to add a gift message and other gift related options to the order.', 'fluid-checkout' ),
-						'id'                => 'fc_enable_checkout_gift_options',
-						'default'           => 'no',
-						'type'              => 'checkbox',
-						'checkboxgroup'     => 'start',
-						'show_if_checked'   => 'option',
-						'autoload'          => false,
-					),
-					array(
-						'desc'              => __( 'Display the gift message fields always expanded', 'fluid-checkout' ),
-						'id'                => 'fc_default_gift_options_expanded',
-						'type'              => 'checkbox',
-						'default'           => 'no',
-						'checkboxgroup'     => '',
-						'show_if_checked'   => 'yes',
-						'autoload'          => false,
-					),
-					array(
-						'desc'              => __( 'Display the gift message as part of the order details table instead of a separate section', 'fluid-checkout' ),
-						'desc_tip'          => __( 'This option affects the order confirmation page (thank you page), order details at account pages, emails and packing slips.', 'fluid-checkout' ),
-						'id'                => 'fc_display_gift_message_in_order_details',
-						'type'              => 'checkbox',
-						'default'           => 'no',
-						'checkboxgroup'     => 'end',
-						'show_if_checked'   => 'yes',
 						'autoload'          => false,
 					),
 
