@@ -180,11 +180,10 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 * WooCommerce Stripe Gateway - by WooCommerce
 * WooCommerce Stripe Payment Gateway - by WooCommerce
 
-= Payment Gateways (with Express Checkout) =
+= Payment Gateways (with Express Checkout - PRO feature) =
 
 * WooCommerce Amazon Pay - by WooCommerce
 * WooCommerce Stripe Gateway - by WooCommerce
-* WooCommerce Stripe Payment Gateway - by WooCommerce
 
 = Free Plugins =
 
