@@ -63,7 +63,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_order_details_styles' ), 10 );
 
 		// Checkout page template
 		add_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
@@ -363,18 +362,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		
 		// Checkout steps scripts
 		wp_enqueue_script( 'fc-checkout-steps' );
-	}
-
-
-
-	/**
-	 * Enqueue scripts.
-	 */
-	public function enqueue_order_details_styles() {
-		// Bail if not on order details pages
-		if ( ! is_order_received_page() && ! is_wc_endpoint_url( 'view-order' ) ) { return; }
-
-		wp_enqueue_style( 'fc-order-details', self::$directory_url . 'css/order-details'. self::$asset_version . '.css', NULL, NULL );
 	}
 
 
