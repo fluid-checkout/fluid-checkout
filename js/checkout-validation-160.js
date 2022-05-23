@@ -449,7 +449,12 @@
 
 		// Get correct field when is select2
 		if ( isSelect2Field( e.target ) ) {
-			field = e.target.closest( _settings.formRowSelector ).querySelector( 'select' );
+			var formRow = e.target.closest( _settings.formRowSelector );
+
+			if ( formRow ) {
+				field = formRow.querySelector( 'select' );
+			}
+
 		}
 
 		_publicMethods.validateField( field );
