@@ -998,67 +998,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   padding: 0;
 }
 
-.fc-wrapper .fc-express-checkout__inner {
-  margin: 0 0 -1px;
-  padding: 0;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #fff;
-}
-
-.fc-wrapper .fc-express-checkout__title {
-  margin: 0 0 10px 0;
-  padding: 0;
-  color: #535156;
-  font-weight: bold;
-  font-size: 15px;
-  text-transform: uppercase;
-  text-align: left;
-  line-height: 1.2;
-  overflow: unset;
-}
-@media (min-width: 1000px) {
-  .fc-wrapper .fc-express-checkout__title {
-    margin: 0 0 10px 0;
-    padding: 0 5px 0 0;
-    font-size: 15px;
-  }
-}
-
-.fc-wrapper .fc-express-checkout__title:before,
-.fc-wrapper .fc-express-checkout__title:after {
-  content: "";
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-}
-
-.fc-wrapper .fc-express-checkout__separator {
-  position: relative;
-  margin: 20px 0;
-  text-align: center;
-}
-
-.fc-wrapper .fc-express-checkout__separator:before {
-  z-index: 1;
-  content: "";
-  position: absolute;
-  top: 56%;
-  display: block;
-  width: 100%;
-  height: 1px;
-  background-color: #D8D8D8;
-}
-
-.fc-wrapper .fc-express-checkout__separator-text {
-  z-index: 10;
-  position: relative;
-  display: inline-block;
-  padding: 0 10px;
-  background-color: #fff;
-  text-transform: uppercase;
-}
-
 .fc-login-form,
 .fc-login-form * {
   box-sizing: border-box !important;
