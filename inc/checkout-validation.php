@@ -109,7 +109,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 			'validationMessages'                 => array(
 				'required'                       => __( 'This is a required field.', 'fluid-checkout' ),
 				'email'                          => __( 'This is not a valid email address.', 'fluid-checkout' ),
-				'confirmation'                   => __( 'This does not match the related field value.', 'fluid-checkout' ),
+				'confirmation'                   => __( 'This field does not match the related field value.', 'fluid-checkout' ),
 			),
 		) );
 

@@ -40,7 +40,7 @@
 		validationMessages: {
 			required:         'This is a required field.',
 			email:            'This is not a valid email address.',
-			confirmation:     'This field does not match the related',
+			confirmation:     'This field does not match the related field value.',
 		},
 	};
 
