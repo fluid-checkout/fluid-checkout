@@ -40,7 +40,7 @@
 		validationMessages: {
 			required:         'This is a required field.',
 			email:            'This is not a valid email address.',
-			confirmation:     'This field does not match the related',
+			confirmation:     'This field does not match the related field value.',
 		},
 	};
 
@@ -449,7 +449,12 @@
 
 		// Get correct field when is select2
 		if ( isSelect2Field( e.target ) ) {
-			field = e.target.closest( _settings.formRowSelector ).querySelector( 'select' );
+			var formRow = e.target.closest( _settings.formRowSelector );
+
+			if ( formRow ) {
+				field = formRow.querySelector( 'select' );
+			}
+
 		}
 
 		_publicMethods.validateField( field );
