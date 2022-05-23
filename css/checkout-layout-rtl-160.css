@@ -207,6 +207,64 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
   margin-bottom: 0;
 }
 
+@media (min-width: 1000px) {
+  body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-message,
+body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-info,
+body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-error,
+body:not(.has-checkout-must-login-notice) .fc-checkout-notices,
+body:not(.has-checkout-must-login-notice).woocommerce-checkout .woocommerce-NoticeGroup,
+body:not(.has-checkout-must-login-notice) .fc-progress-bar,
+body:not(.has-checkout-must-login-notice) .fc-inside {
+    float: right;
+    width: calc( 62.5% - 50px );
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.fc-wrapper {
+  position: relative;
+}
+
+.fc-wrapper::after {
+  content: "";
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.fc-checkout-steps {
+  padding-top: 5px;
+}
+
+.fc-sidebar {
+  position: static;
+}
+@media (min-width: 1000px) {
+  .fc-sidebar {
+    z-index: 2;
+    float: left;
+    width: 37.5%;
+  }
+}
+
+.fc-sidebar__inner {
+  z-index: 10;
+}
+@media (min-width: 1000px) {
+  .fc-sidebar__inner {
+    position: relative;
+    width: 100%;
+    padding-top: 5px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
+    padding-top: calc( 5px + 32px );
+  }
+}
+
 .fc-checkout-header {
   z-index: 300;
   box-sizing: border-box;
