@@ -612,21 +612,3 @@ $checkout-field-group-padding--large-screen:          $global-spacing-small !def
 
 // END - CHECKOUT FIELDS
 // ----------------------------------------
-
-
-
-
-
-// ----------------------------------------
-// GIFT MESSAGE
-
-$gift-message-margin:                       0 0 $global-spacing !default;
-$gift-message-padding:                      $global-spacing $global-spacing-small !default;
-$gift-message-border:                       dashed remsize( .1rem ) $border-color !default;
-$gift-message-border-radius:                $global-radius-small !default;
-$gift-message-text-align:                   center !default;
-$gift-message-font-size:                    1.2em !default;
-$gift-message-font-style:                   italic !default;
-
-// END - GIFT MESSAGE
-// ----------------------------------------

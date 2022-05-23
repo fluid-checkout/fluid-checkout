@@ -2,7 +2,7 @@
 /*
 Plugin Name: Fluid Checkout for WooCommerce - Lite
 Plugin URI: https://fluidcheckout.com/
-Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message, and display a coupon code field at the checkout page that does not distract your customers.
+Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
 Version: 1.6.0

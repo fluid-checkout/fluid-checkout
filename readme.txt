@@ -330,7 +330,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 == Screenshots ==
 
 1. Step 1 - Contact: Email, account creation and newsletter sign-up
-2. Step 2 - Shipping: Shipping address, shipping method, gift options, additional order notes
+2. Step 2 - Shipping: Shipping address, shipping method, additional order notes
 3. Step 3 - Billing: Billing address and company information
 4. Step 4 - Payment: Payment options and discounts
 5. Single Step: All fields are displayed in one single step.
@@ -347,7 +347,6 @@ BREAKING CHANGES - Some features where moved to the PRO version. Changes to the 
 * Improved: RTL support on account address edit screens.
 * Removed: Parameter `$is_sidebar_widget` from hooks `fc_checkout_before_order_review`, `fc_checkout_before_order_review_inside`, `fc_checkout_order_review_sidebar_before_actions`, `fc_checkout_after_order_review_inside` and `fc_checkout_after_order_review`.
 * Removed: Action hook `fc_checkout_order_review_section`, replaced with `fc_checkout_sidebar_sections`.
-* Removed: Filter hook `fc_checkout_express_checkout_section_title` and `fc_checkout_login_separator_text` from the Express Checkout section.
 * Removed: Option to display an additional place order button on the sidebar, replaced with option to display additional button inside the last checkout step.
 * Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version. Read details at https://fluidcheckout.com/product-update-signup/
 
