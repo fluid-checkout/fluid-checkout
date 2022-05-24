@@ -342,6 +342,10 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Translations to Dutch.
+
 = 1.6.0 - 2022-05-19 =
 
 * Added: New option to enable/disable the Checkout Progress Bar feature.
