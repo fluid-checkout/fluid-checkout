@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-29 12:58+0000\n"
-"PO-Revision-Date: 2022-05-19 10:05+0000\n"
+"PO-Revision-Date: 2022-05-24 13:57+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -385,7 +385,7 @@ msgstr "Geef de koppelingsknoppen “Toevoegen” in kleine letters weer"
 
 #: inc/admin/admin-settings-general.php:115
 msgid "Display the checkout progress bar"
-msgstr ""
+msgstr "Toon voortgangsbalk op de afrekenpagina"
 
 #: inc/admin/admin-settings-general.php:257
 msgid "Display the coupon codes section title"
@@ -490,10 +490,13 @@ msgid "Fluid Checkout for WooCommerce - Lite"
 msgstr "Fluid Checkout for WooCommerce - Lite"
 
 #: inc/admin/admin-notice-product-updates-newsletter.php:42
+#, fuzzy
 msgid ""
 "Fluid Checkout Lite 2.0 will be released soon and your website might get "
 "impacted"
 msgstr ""
+"Fluid Checkout Lite 2.0 komt binnenkort uit en je website kan er last van "
+"krijgen"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:88
 msgid "Germanized for WooCommerce"
@@ -501,8 +504,9 @@ msgstr ""
 "Germanized for WooCommerce\n"
 
 #: inc/admin/admin-notice-product-updates-newsletter.php:45
+#, fuzzy
 msgid "Get important updates"
-msgstr ""
+msgstr "Ontvang belangrijke updates"
 
 #: inc/checkout-gift-options.php:171
 msgid "Gift message"
@@ -586,11 +590,15 @@ msgid "No image selected."
 msgstr "Geen afbeelding geselecteerd."
 
 #: inc/admin/admin-notice-product-updates-newsletter.php:43
+#, fuzzy
 msgid ""
 "Important changes are coming soon with Fluid Checkout Lite 2.0. We encourage "
 "everyone using it to sign up to <strong>receive important updates</strong> "
 "about new versions."
 msgstr ""
+"Binnenkort komen er belangrijke veranderingen met Fluid Checkout Lite 2.0. "
+"We moedigen iedereen die het gebruikt aan zich aan te melden om <strong>"
+"belangrijke updates</strong> te ontvangen over nieuwe versies."
 
 #: inc/packing-slips.php:41
 msgid ""
@@ -638,8 +646,9 @@ msgid "From:"
 msgstr "Van:"
 
 #: inc/admin/admin-settings-general.php:60
+#, fuzzy
 msgid "Layout Options"
-msgstr ""
+msgstr "Lay-out opties"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:106
 msgctxt "Legal checkboxes position"
@@ -699,8 +708,9 @@ msgstr ""
 "Zorg ervoor dat het besteloverzicht zichtbaar blijft tijdens het scrollen"
 
 #: inc/admin/admin-notice-product-updates-newsletter.php:46
+#, fuzzy
 msgid "More information"
-msgstr ""
+msgstr "Meer informatie"
 
 #: inc/checkout-steps.php:367
 msgid "Multi-step"
@@ -795,7 +805,7 @@ msgstr "Bestelnummer en ontvangstbewijs worden naar dit e-mailadres gestuurd."
 
 #: inc/checkout-steps.php:3387 inc/admin/admin-settings-general.php:135
 msgid "Order summary"
-msgstr "Bestel samenvattingen"
+msgstr "Besteloverzicht"
 
 #: inc/packing-slips.php:40
 msgid "Packing Slips"
@@ -807,7 +817,7 @@ msgstr "Achtergrondkleur pagina"
 
 #: inc/checkout-steps.php:3274
 msgid "Payment method"
-msgstr "Payment method"
+msgstr "Betaalmethoden"
 
 #: inc/compat/plugins/compat-plugin-woo-delivery.php:117
 msgid "Pickup Date"
@@ -819,7 +829,7 @@ msgstr "Ophaalpunt"
 
 #: inc/admin/admin-settings-general.php:343
 msgid "Place order"
-msgstr ""
+msgstr "Plaats bestelling"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:93
 msgctxt "Place order position"
@@ -962,7 +972,7 @@ msgstr "Verplicht"
 
 #: inc/checkout-steps.php:1808
 msgid "Shipping to"
-msgstr "Verschepen naar"
+msgstr "Verzenden naar"
 
 #: inc/admin/admin-settings-general.php:247
 msgid "Show coupon codes as a substep of the payment step"
@@ -1106,11 +1116,15 @@ msgid "Write a gift message..."
 msgstr "Schrijf een cadeaubericht…"
 
 #: inc/admin/admin-notice-review-request.php:42
+#, fuzzy
 msgid ""
 "You have been using Fluid Checkout for a while. How do you like it so far? "
 "<br>Please give us a quick rating, we appreciate every feedback and it "
 "encourage us to keep improving the plugin :)"
 msgstr ""
+"Je gebruikt Fluid Checkout al een tijdje. Hoe bevalt het je tot nu toe? <br>"
+"Geef ons snel een waardering, we waarderen elke feedback en het moedigt ons "
+"aan om de plugin te blijven verbeteren :)"
 
 #: inc/checkout-gift-options.php:185
 msgid "Your name"
