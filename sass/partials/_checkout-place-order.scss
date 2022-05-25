@@ -2,28 +2,22 @@
 // CHECKOUT PLACE ORDER
 // ------------------------------------
 
-.fc-wrapper .fc-checkout-step .fc-place-order__section {
+.fc-wrapper .fc-inside div.place-order {
+	padding: $place-order-padding;
+
+	@media (#{$bp-larger-than-desktop}) {
+		padding: $place-order-padding--large-screen;
+	}
+}
+
+.fc-sidebar div.place-order {
 	display: none;
 
 	@media (#{$bp-larger-than-desktop}) {
 		display: block;
-		padding: $checkout-substep-padding;
-		padding-top: 0;
-		padding-bottom: 0;
+		padding: $place-order-padding-sidebar--large-screen;
 	}
 }
-
-
-
-div.woocommerce form .fc-wrapper .form-row.place-order {
-	float: none;
-	display: block;
-	margin: $place-order-padding;
-	margin-#{ $alignment-left }: 0;
-	margin-#{ $alignment-right }: 0;
-	padding: 0;
-}
-
 
 
 .woocommerce-terms-and-conditions-wrapper,
@@ -57,15 +51,16 @@ div.woocommerce form .fc-wrapper .form-row.place-order {
 
 
 
-.fc-wrapper .fc-place-order {
-	margin: $global-spacing-small 0 0;
+.fc-place-order {
+	padding: $global-spacing 0;
+	text-align: center;
 }
+
 
 
 // Place order button
 .fc-wrapper .fc-place-order .fc-place-order-button {
 	margin: 0;
-	padding: 0;
 	width: 100%;
 	min-width: remsize( 24rem );
 	min-height: remsize( 5rem );
@@ -75,6 +70,11 @@ div.woocommerce form .fc-wrapper .form-row.place-order {
 		outline: $focus-outline-button;
 		outline-offset: $focus-outline-offset-button;
 	}
+}
+
+// Place order button on the sidebar
+.fc-sidebar .fc-place-order .fc-place-order-button {
+	margin: $global-spacing-extra-small auto 0;
 }
 
 
