@@ -757,7 +757,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
  	 * Get the first checkout step.
  	 */
-	  public function get_first_step() {
+	public function get_first_step() {
 		$_checkout_steps = $this->get_checkout_steps();
 
 		// Bail if no steps are registered
