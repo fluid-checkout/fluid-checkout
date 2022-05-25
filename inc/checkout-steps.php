@@ -145,14 +145,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
 		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
 
-		// // Order Review
-		// add_action( 'fc_checkout_after', array( $this, 'output_order_review' ), 20 );
-		// add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
-		
-		// // Place order
-		// add_action( 'fc_checkout_after', array( $this, 'output_checkout_place_order' ), 50, 2 );
-		// add_action( 'fc_checkout_after_order_review_inside', array( $this, 'maybe_output_checkout_place_order_sidebar' ), 1 );
-
 		// Formatted Address
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ) );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
@@ -3408,7 +3400,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Maybe add class for additional content inside the order summary section
-		if ( get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) === 'yes' || is_active_sidebar( 'fc_order_summary_after' ) ) {
+		if ( 'yes' === get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) || is_active_sidebar( 'fc_order_summary_after' ) ) {
 			$attributes[ 'class' ] = $attributes[ 'class' ] . ' has-additional-content';
 		}
 
