@@ -754,6 +754,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return false;
 	}
 
+	/**
+ 	 * Get the first checkout step.
+ 	 */
+	  public function get_first_step() {
+		$_checkout_steps = $this->get_checkout_steps();
+
+		// Bail if no steps are registered
+		if ( ! is_array( $_checkout_steps ) || count( $_checkout_steps ) === 0 ) { return false; }
+
+		return array( 0 => $_checkout_steps[ 0 ] );
+	}
+
+	/**
+	 * Get the last checkout step.
+	 */
+	public function get_last_step() {
+		$_checkout_steps = $this->get_checkout_steps();
+
+		// Bail if no steps are registered
+		if ( ! is_array( $_checkout_steps ) || count( $_checkout_steps ) === 0 ) { return false; }
+
+		$last_step_index = array_key_last( $_checkout_steps );
+
+		return array( $last_step_index => $_checkout_steps[ $last_step_index ] );
+	}
+
 
 
 	/**
