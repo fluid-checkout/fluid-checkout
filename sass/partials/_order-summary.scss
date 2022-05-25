@@ -253,16 +253,12 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 // ------------------------------------
 // ORDER REVIEW VISIBILITY
 // ------------------------------------
-.fc-wrapper .fc-checkout-order-review {
-	display: block !important; // TODO: FIND BETTER SELECTOR TO AVOID !IMPORTANT
-	margin: $checkout-steps-container-margin;
+.fc-checkout-step[data-step-id="payment"] .fc-checkout-order-review {
+	margin-bottom: $global-spacing-small;
 
-	@media (#{$bp-smaller-than-desktop}) {
-		margin: $checkout-steps-container-margin;
-		padding: 0;
+	@media (#{$bp-larger-than-desktop}) {
+		display: none;
 	}
-
-	@media (#{$bp-larger-than-tablet}) { margin: $checkout-steps-container-margin--large-screen; }
 }
 
 
@@ -303,14 +299,9 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 
 
 div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
-	padding: $order-summary-container-padding;
-	padding-bottom: 0;
-	border-bottom: solid remsize( .1rem ) $border-color;
-
-	@media (#{$bp-larger-than-tablet}) {
+	@media (#{$bp-larger-than-desktop}) {
 		margin: 0 0 $global-spacing-small;
 		padding: remsize( 1.2rem ) $global-spacing-small 0;
-		padding-bottom: 0;
 		max-width: none;
 		border: solid remsize( .1rem ) $border-color;
 		border-radius: $checkout-substep-border-radius;

@@ -345,9 +345,6 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 BREAKING CHANGES - Some features where moved to the PRO version. Changes to the Order Summary and Express Checkout features might break customization code. Place order section position changed to below the order summary.
 
 * Improved: RTL support on account address edit screens.
-* Removed: Parameter `$is_sidebar_widget` from hooks `fc_checkout_before_order_review`, `fc_checkout_before_order_review_inside`, `fc_checkout_order_review_sidebar_before_actions`, `fc_checkout_after_order_review_inside` and `fc_checkout_after_order_review`.
-* Removed: Action hook `fc_checkout_order_review_section`, replaced with `fc_checkout_sidebar_sections`.
-* Removed: Option to display an additional place order button on the sidebar, replaced with option to display additional button inside the last checkout step.
 * Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version. Read details at https://fluidcheckout.com/blog/fc-release-notes-2-0-0/
 
 = 1.6.0 - 2022-05-19 =
@@ -379,6 +376,9 @@ BREAKING CHANGES - Some features where moved to the PRO version. Changes to the 
 
 = 2.0 =
 * BREAKING CHANGES - Some features where moved to the PRO version. Changes to the Order Summary and Express Checkout features might break customization code.
+
+= 1.6 =
+* Changes to order summary and sidebar action hooks can cause issues if your website has customizations using them. See details in the changelog section.
 
 = 1.5 =
 * Lays the foundations for the PRO version. Change the way field values are persisted between requests. Remove hook `fc_general_settings` and renamed hook `fc_adress_field_keys_skip_list` to `fc_address_field_keys_skip_list` can break customizations that use those hooks.
