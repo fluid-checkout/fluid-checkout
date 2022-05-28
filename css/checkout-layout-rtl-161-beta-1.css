@@ -161,9 +161,6 @@ body.woocommerce-checkout .fc-content.fc-container {
   }
 }
 
-body.woocommerce-checkout.has-checkout-header .fc-content {
-  min-height: 100vh;
-}
 @media (min-width: 1000px) {
   body.woocommerce-checkout.has-checkout-header .fc-content {
     padding-top: 10px;
