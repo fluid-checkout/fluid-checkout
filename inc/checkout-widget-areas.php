@@ -26,6 +26,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_widget_area_order_review_inside' ), 50 );
 		add_action( 'fc_checkout_after_order_review', array( $this, 'output_widget_area_order_review_outside' ), 50 );
 		add_action( 'woocommerce_review_order_after_submit', array( $this, 'output_widget_area_checkout_place_order_below' ), 50 );
+		add_action( 'fc_checkout_footer_widgets', array( $this, 'output_widget_area_checkout_footer' ), 50 );
 	}
 
 
@@ -95,6 +96,23 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 			'before_title'  => '<h4 class="widget-title">',
 			'after_title'   => '</h4>',
 		) );
+
+
+
+		// Only register footer widget areas when using Fluid Checkout footer
+		if ( 'yes' === get_option( 'fc_hide_site_header_footer_at_checkout', 'yes' ) ) {
+
+			register_sidebar( array(
+				'name'          => __( 'Checkout Footer', 'fluid-checkout' ),
+				'id'            => 'fc_checkout_footer',
+				'description'   => __( 'Display widgets on the checkout footer. Only displayed if using the plugin\'s checkout footer.', 'fluid-checkout' ),
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2 class="widget-title">',
+				'after_title'   => '</h2>',
+			) );
+
+		}
 
 	}
 
@@ -178,6 +196,22 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 			echo '<div class="fc-checkout__below-place-order-widgets">';
 			dynamic_sidebar( 'fc_place_order_after' );
 			echo '</div>';
+		endif;
+	}
+
+
+
+	/**
+	 * Output widget area on the checkout footer.
+	 */
+	public function output_widget_area_checkout_footer() {
+		// Bail if not on the checkout page
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) { return; }
+
+		if ( is_active_sidebar( 'fc_checkout_footer' ) || has_action( 'fc_checkout_footer_widgets_inside_before' ) || has_action( 'fc_checkout_footer_widgets_inside_after' ) ) :
+			do_action( 'fc_checkout_footer_widgets_inside_before' );
+			dynamic_sidebar( 'fc_checkout_footer' );
+			do_action( 'fc_checkout_footer_widgets_inside_after' );
 		endif;
 	}
 

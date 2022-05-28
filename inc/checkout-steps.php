@@ -71,11 +71,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Checkout page template
 		add_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
 
-		// Checkout Header
+		// Checkout header and footer
 		if ( $this->get_hide_site_header_footer_at_checkout() ) {
+			// Header
 			add_action( 'fc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
 			add_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
+
+			// Footer
+			add_action( 'fc_checkout_footer', array( $this, 'output_checkout_footer' ), 100 );
 		}
 
 		// Container class
@@ -560,6 +564,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return $class;
+	}
+
+
+
+	/**
+	 * Output the checkout footer.
+	 */
+	public function output_checkout_footer() {
+		// Only display our checkout footer if the site footer is hidden
+		if ( ! $this->get_hide_site_header_footer_at_checkout() ) { return; }
+
+		wc_get_template(
+			'fc/checkout/checkout-footer.php',
+			array( 'checkout' => WC()->checkout() )
+		);
 	}
 
 
