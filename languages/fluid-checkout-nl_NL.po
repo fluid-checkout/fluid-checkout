@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-29 12:58+0000\n"
-"PO-Revision-Date: 2022-05-23 14:13+0000\n"
+"PO-Revision-Date: 2022-05-24 13:57+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -340,7 +340,7 @@ msgstr "Geef de koppelingsknoppen “Toevoegen” in kleine letters weer"
 #: inc/admin/admin-settings-general.php:115
 #, fuzzy
 msgid "Display the checkout progress bar"
-msgstr "Toon de voortgangsbalk van het afrekenen"
+msgstr "Toon voortgangsbalk op de afrekenpagina"
 
 #: inc/admin/admin-settings-general.php:257
 msgid "Display the coupon codes section title"
@@ -405,7 +405,7 @@ msgstr "Fluid Checkout"
 msgid "Fluid Checkout for WooCommerce - Lite"
 msgstr "Fluid Checkout for WooCommerce - Lite"
 
-#: inc/admin/admin-notice-product-updates-newsletter.php:36
+#: inc/admin/admin-notice-product-updates-newsletter.php:42
 #, fuzzy
 msgid ""
 "Fluid Checkout Lite 2.0 will be released soon and your website might get "
@@ -419,10 +419,14 @@ msgid "Germanized for WooCommerce"
 msgstr ""
 "Germanized for WooCommerce\n"
 
-#: inc/admin/admin-notice-product-updates-newsletter.php:39
+#: inc/admin/admin-notice-product-updates-newsletter.php:45
 #, fuzzy
 msgid "Get important updates"
 msgstr "Ontvang belangrijke updates"
+
+#: inc/checkout-gift-options.php:171
+msgid "Gift message"
+msgstr "Cadeau bericht"
 
 #: fluid-checkout.php:395
 msgid "Go to Plugin Search"
@@ -477,16 +481,24 @@ msgctxt "Image uploader."
 msgid "No image selected."
 msgstr "Geen afbeelding geselecteerd."
 
-#: inc/admin/admin-notice-product-updates-newsletter.php:37
+#: inc/admin/admin-notice-product-updates-newsletter.php:43
 #, fuzzy
 msgid ""
 "Important changes are coming soon with Fluid Checkout Lite 2.0. We encourage "
 "everyone using it to sign up to <strong>receive important updates</strong> "
 "about new versions."
 msgstr ""
-"Er komen binnenkort belangrijke veranderingen met Fluid Checkout Lite 2.0. "
+"Binnenkort komen er belangrijke veranderingen met Fluid Checkout Lite 2.0. "
 "We moedigen iedereen die het gebruikt aan zich aan te melden om <strong>"
 "belangrijke updates</strong> te ontvangen over nieuwe versies."
+
+#: inc/packing-slips.php:41
+msgid ""
+"Information message printed on the packing slips. May be replaced with the "
+"gift message for order with a gift message added."
+msgstr ""
+"Informatiebericht afgedrukt op de pakbonnen. Kan worden vervangen door het "
+"cadeaubericht voor bestelling met een toegevoegd cadeaubericht."
 
 #: inc/admin/admin-settings-integrations.php:51
 msgid "Integrations"
@@ -578,7 +590,7 @@ msgid "Make the order summary stay visible while scrolling"
 msgstr ""
 "Zorg ervoor dat het besteloverzicht zichtbaar blijft tijdens het scrollen"
 
-#: inc/admin/admin-notice-product-updates-newsletter.php:40
+#: inc/admin/admin-notice-product-updates-newsletter.php:46
 #, fuzzy
 msgid "More information"
 msgstr "Meer informatie"
@@ -667,7 +679,7 @@ msgstr "Bestelnummer en ontvangstbewijs worden naar dit e-mailadres gestuurd."
 
 #: inc/checkout-steps.php:3437 inc/admin/admin-settings-general.php:135
 msgid "Order summary"
-msgstr "Bestel samenvattingen"
+msgstr "Besteloverzicht"
 
 #: inc/admin/admin-settings-general.php:104
 msgid "Page background color"
@@ -675,7 +687,7 @@ msgstr "Achtergrondkleur pagina"
 
 #: inc/checkout-steps.php:3324
 msgid "Payment method"
-msgstr "Payment method"
+msgstr "Betaalmethoden"
 
 #: inc/compat/plugins/compat-plugin-woo-delivery.php:117
 msgid "Pickup Date"
@@ -805,7 +817,7 @@ msgstr "Verplicht"
 
 #: inc/checkout-steps.php:1858
 msgid "Shipping to"
-msgstr "Verschepen naar"
+msgstr "Verzenden naar"
 
 #: inc/admin/admin-settings-general.php:247
 msgid "Show coupon codes as a substep of the payment step"
@@ -940,8 +952,12 @@ msgid ""
 "encourage us to keep improving the plugin :)"
 msgstr ""
 "Je gebruikt Fluid Checkout al een tijdje. Hoe bevalt het je tot nu toe? <br>"
-"Geef ons snel een waardering, we stellen elke feedback op prijs en het "
-"moedigt ons aan de plugin te blijven verbeteren :)"
+"Geef ons snel een waardering, we waarderen elke feedback en het moedigt ons "
+"aan om de plugin te blijven verbeteren :)"
+
+#: inc/checkout-gift-options.php:185
+msgid "Your name"
+msgstr "Uw naam"
 
 #: templates/checkout/payment.php:46
 #, php-format

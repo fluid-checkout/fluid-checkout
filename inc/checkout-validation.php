@@ -29,7 +29,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
-		// Checkout validation settings
+		// Checkout JS settings
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Mailcheck validation

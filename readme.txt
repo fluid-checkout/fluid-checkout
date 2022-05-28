@@ -347,6 +347,16 @@ BREAKING CHANGES - Some features where moved to the PRO version. Changes to the 
 * Improved: RTL support on account address edit screens.
 * Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version. Read details at https://fluidcheckout.com/blog/fc-release-notes-2-0-0/
 
+= Unreleased - 1.6.1 =
+
+* Added: Body class `fc-checkout-step-current--<step_id>` to let developers change elements styles based on the currently active step.
+* Added: Feature to disable the place order buttons when not in the last step, activated by default. Use filter `` to deactivate changes to the place order button `disabled` state.
+* Improved: Translations to Dutch.
+* Improved: Compatibility with plugin Brazilian Market.
+* Improved: Compatibility with plugin German Market.
+* Fixed: Order summary height too big on desktop view in some instances, resulting in extra whitespace.
+* Fixed: Duplicate IDs and field names when the additional place order section is displayed on the sidebar.
+
 = 1.6.0 - 2022-05-19 =
 
 * Added: New option to enable/disable the Checkout Progress Bar feature.
