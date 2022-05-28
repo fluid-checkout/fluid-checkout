@@ -281,7 +281,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( empty( $custom_styles ) ) { return; }
 		?>
 		<style id="fc-custom-styles">
-			<?php echo wp_kses_post( $custom_styles ); ?>
+			<?php echo $custom_styles; // XSS ok. ?>
 		</style>
 		<?php
 	}
