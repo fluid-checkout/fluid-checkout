@@ -65,6 +65,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_order_details_styles' ), 10 );
 
+		// Checkout JS settings
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
 		// Checkout page template
 		add_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
 
@@ -141,7 +144,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
 		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_sidebar' ), 1 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
-		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper' ), 10 );
+		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
 
 		// Formatted Address
@@ -229,6 +232,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$add_classes[] = 'has-checkout-header';
 		}
 
+		// Add extra class for current step
+		$current_step = $this->get_current_step();
+		if ( $this->is_checkout_layout_multistep() && false !== $current_step ) {
+			$current_step_index = array_keys( $current_step )[0];
+			$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
+			$add_classes[] = 'fc-checkout-step-current--' . $current_step_id ;
+		}
+
 		// Add extra class if displaying the `must-log-in` notice
 		if ( ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() && ! is_user_logged_in() ) {
 			$add_classes[] = 'has-checkout-must-login-notice';
@@ -311,7 +322,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Checkout steps scripts
 		wp_register_script( 'fc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init();})' );
+		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init(fcSettings.checkoutSteps);})' );
 	}
 
 	/**
@@ -338,6 +349,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! is_order_received_page() && ! is_wc_endpoint_url( 'view-order' ) ) { return; }
 
 		wp_enqueue_style( 'fc-order-details', self::$directory_url . 'css/order-details'. self::$asset_version . '.css', NULL, NULL );
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+
+		$settings[ 'checkoutSteps' ] = apply_filters( 'fc_checkout_steps_script_settings', array(
+			'isMultistepLayout'             => $this->is_checkout_layout_multistep(),
+			'maybeDisablePlaceOrderButton'  => apply_filters( 'fc_checkout_maybe_disable_place_order_button', 'yes' ),
+		) );
+
+		return $settings;
 	}
 
 
@@ -764,6 +792,33 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		return false;
 	}
+
+	/**
+ 	 * Get the first checkout step.
+ 	 */
+	  public function get_first_step() {
+		$_checkout_steps = $this->get_checkout_steps();
+
+		// Bail if no steps are registered
+		if ( ! is_array( $_checkout_steps ) || count( $_checkout_steps ) === 0 ) { return false; }
+
+		return array( 0 => $_checkout_steps[ 0 ] );
+	}
+
+	/**
+	 * Get the last checkout step.
+	 */
+	public function get_last_step() {
+		$_checkout_steps = $this->get_checkout_steps();
+
+		// Bail if no steps are registered
+		if ( ! is_array( $_checkout_steps ) || count( $_checkout_steps ) === 0 ) { return false; }
+
+		$last_step_index = array_key_last( $_checkout_steps );
+
+		return array( $last_step_index => $_checkout_steps[ $last_step_index ] );
+	}
+
 
 
 
@@ -1205,6 +1260,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'data-step-complete' => $this->is_step_complete( $step_id ),
 			'data-step-current' => $this->is_current_step( $step_id ),
 		);
+
+		// Maybe attribute for first step
+		$first_step = $this->get_first_step();
+		if ( false !== $first_step ) {
+			$first_step_index = array_keys( $first_step )[0];
+			$first_step_id = $first_step[ $first_step_index ][ 'step_id' ];
+			if ( $step_id === $first_step_id ) {
+				$step_attributes[ 'data-step-first' ] = true;
+			}
+		}
+
+		// Maybe attribute for last step
+		$last_step = $this->get_last_step();
+		if ( false !== $last_step ) {
+			$last_step_index = array_keys( $last_step )[0];
+			$last_step_id = $last_step[ $last_step_index ][ 'step_id' ];
+			if ( $step_id === $last_step_id ) {
+				$step_attributes[ 'data-step-last' ] = true;
+			}
+		}
 
 		// Maybe add class for previous step completed
 		if ( $this->is_prev_step_complete( $step_id ) ) {
@@ -3543,8 +3618,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add wrapper element and custom class for the checkout place order button.
 	 */
-	public function add_place_order_button_wrapper( $button_html ) {
+	public function add_place_order_button_wrapper_and_attributes( $button_html ) {
+		// Maybe disable the place order button if not in the last step
+		if (  'yes' === apply_filters( 'fc_checkout_maybe_disable_place_order_button', 'yes' ) && $this->is_checkout_layout_multistep() ) {
+			$current_step = $this->get_current_step();
+			$current_step_index = array_keys( $current_step )[0];
+			$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
+
+			$last_step = $this->get_last_step();
+			$last_step_index = array_keys( $last_step )[0];
+			$last_step_id = $last_step[ $last_step_index ][ 'step_id' ];
+
+			if ( $current_step_id !== $last_step_id ) {
+				// Disable button
+				$button_html = str_replace( 'class="button', 'disabled class="button', $button_html );
+			}
+		}
+		
+		// Add extra button class and filter
 		$button_html = str_replace( 'class="button alt', 'class="' . esc_attr( apply_filters( 'fc_place_order_button_classes', 'button alt' ) ) . ' fc-place-order-button', $button_html );
+
+		// Add button wrapper and return
 		return '<div class="fc-place-order">' . $button_html . '</div>';
 	}
 
