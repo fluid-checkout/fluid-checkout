@@ -344,6 +344,8 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 = Unreleased =
 
+* Added: Body class `fc-checkout-step-current--<step_id>` to let developers change elements styles based on the currently active step.
+* Added: Feature to disable the place order buttons when not in the last step, activated by default. Use filter `` to deactivate changes to the place order button `disabled` state.
 * Improved: Translations to Dutch.
 * Improved: Compatibility with plugin Brazilian Market.
 * Fixed: Order summary height too big on desktop view in some instances, resulting in extra whitespace.

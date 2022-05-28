@@ -25,6 +25,9 @@
 		bodyClass: 'has-fc-checkout-steps',
 		bodyClassActiveStepPattern: 'fc-checkout-step--active-{ID}',
 
+		isMultistepLayout: 'yes',
+		maybeDisablePlaceOrderButton: 'yes',
+
 		wrapperSelector: '.fc-wrapper',
 
 		progressBarSelector: '.fc-progress-bar',
@@ -34,6 +37,7 @@
 		stepsWrapperSelector: '.fc-checkout-steps',
 		stepSelector: '.fc-checkout-step',
 		currentStepSelector: '[data-step-current]',
+		lastStepSelector: '[data-step-last]',
 		nextStepSelector: '[data-step-current] ~ .fc-checkout-step',
 		nextStepButtonSelector: '[data-step-next]',
 		focusableElementsSelector: 'a[role="button"], a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), details, summary, iframe, object, embed, [contenteditable] [tabindex]:not([tabindex="-1"])',
@@ -52,12 +56,14 @@
 		stepCompleteAttribute: 'data-step-complete',
 		stepCurrentAttribute: 'data-step-current',
 		stepIndexAttribute: 'data-step-index',
+		stepIdAttribute: 'data-step-id',
 
 		isEditingClass: 'is-editing',
 		isLoadingClass: 'is-loading',
 		isCurrentClass: 'is-current',
 		isCompleteClass: 'is-complete',
 		stepNextIncompleteClass: 'fc-checkout-step--next-step-incomplete',
+		currentStepClassTemplate: 'fc-checkout-step-current--##STEP_ID##',
 
 		substepEditableStateFieldSelector: '.fc-substep-editable-state[type="hidden"]',
 		substepEditableStateAttribute: 'data-substep-editable',
@@ -65,6 +71,8 @@
 		substepVisibleStateAttribute: 'data-substep-visible',
 
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
+
+		placeOrderButtonSelector: '.fc-place-order-button',
 
 		scrollOffsetSelector: '.fc-checkout-header',
 		scrollBehavior: 'smooth',
@@ -517,6 +525,69 @@
 
 
 	/**
+	 * Update the body classes for step states.
+	 */
+	var updateStepBodyClasses = function() {
+		// Bail if not using multistep layout
+		if ( 'yes' !== _settings.maybeDisablePlaceOrderButton || 'yes' !== _settings.isMultistepLayout ) { return; }
+
+		// Remove current step class
+		var allSteps = getAllSteps();
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			var step = allSteps[i];
+			var stepId = step.getAttribute( _settings.stepIdAttribute );
+			var className = _settings.currentStepClassTemplate.replace( '##STEP_ID##', stepId );
+			document.body.classList.remove( className );
+		}
+
+		// Maybe add current step class
+		var currentStepElement = document.querySelector( _settings.currentStepSelector );
+		if ( currentStepElement ) {
+			var stepId = currentStepElement.getAttribute( _settings.stepIdAttribute );
+			var className = _settings.currentStepClassTemplate.replace( '##STEP_ID##', stepId );
+			document.body.classList.add( className );
+		}
+	}
+
+	/**
+	 * Maybe disable the place order buttons.
+	 */
+	var maybeDisablePlaceOrderButton = function() {
+		// Bail if not using multistep layout
+		if ( 'yes' !== _settings.maybeDisablePlaceOrderButton || 'yes' !== _settings.isMultistepLayout ) { return; }
+
+		// Check if current step is same as last step
+		var currentStepElement = document.querySelector( _settings.currentStepSelector );
+		var lastStepElement = document.querySelector( _settings.lastStepSelector );
+		if ( currentStepElement && lastStepElement ) {
+			var currentStepId = currentStepElement.getAttribute( _settings.stepIdAttribute );
+			var lastStepId = lastStepElement.getAttribute( _settings.stepIdAttribute );
+			var isDisabled = currentStepId !== lastStepId;
+
+			var placeOrderButtons = document.querySelectorAll( _settings.placeOrderButtonSelector );
+			for ( var i = 0; i < placeOrderButtons.length; i++ ) {
+				var button = placeOrderButtons[i];
+				button.disabled = isDisabled;
+			}
+		}
+	}
+
+
+
+	/**
+	 * Update the global state of steps.
+	 *
+	 * @param   Event  _event  An unused `jQuery.Event` object.
+	 * @param   Array  data   The updated checkout data.
+	 */
+	var updateGlobalStepStates = function( _event, data ) {
+		updateStepBodyClasses();
+		maybeDisablePlaceOrderButton();
+	}
+
+
+
+	/**
 	 * Maybe change visibility status of checkout substep sections.
 	 *
 	 * @param   Event  _event  An unused `jQuery.Event` object.
@@ -601,6 +672,7 @@
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
+			$( document.body ).on( 'updated_checkout', updateGlobalStepStates );
 			$( document.body ).on( 'updated_checkout', maybeChangeSubstepState );
 			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
 		}
