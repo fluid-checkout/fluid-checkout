@@ -57,8 +57,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Custom styles
 		add_filter( 'wp_head', array( $this, 'add_custom_styles' ), 10 );
-		add_action( 'fc_output_custom_styles', array( $this, 'output_checkout_header_custom_styles' ), 10 );
-		add_action( 'fc_output_custom_styles', array( $this, 'output_checkout_page_custom_styles' ), 10 );
+		add_filter( 'fc_output_custom_styles', array( $this, 'output_checkout_header_custom_styles' ), 10 );
+		add_filter( 'fc_output_custom_styles', array( $this, 'output_checkout_page_custom_styles' ), 10 );
+		add_filter( 'fc_output_custom_styles', array( $this, 'output_checkout_footer_custom_styles' ), 10 );
 
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
@@ -273,11 +274,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if not on checkout page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
 
-		// Baii if no custom styles were added
-		if ( ! has_action( 'fc_output_custom_styles' ) ) { return; }
+		// Get styles
+		$custom_styles = apply_filters( 'fc_output_custom_styles', '' );
+
+		// Bail if styles are empty
+		if ( empty( $custom_styles ) ) { return; }
 		?>
 		<style id="fc-custom-styles">
-			<?php do_action( 'fc_output_custom_styles' ); ?>
+			<?php echo wp_kses_post( $custom_styles ); ?>
 		</style>
 		<?php
 	}
@@ -285,33 +289,55 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output the custom styles for the checkout header background color.
 	 */
-	public function output_checkout_header_custom_styles() {
+	public function output_checkout_header_custom_styles( $custom_styles ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $custom_styles; }
 		
 		// Get header background color
 		$header_background_color = trim( get_option( 'fc_checkout_header_background_color', '' ) );
 
 		// Bail if color is empty
-		if ( empty( $header_background_color ) ) { return; }
+		if ( empty( $header_background_color ) ) { return $custom_styles; }
 
-		echo 'header.fc-checkout-header{background-color:'. $header_background_color .'}';
+		$custom_styles .= 'header.fc-checkout-header{background-color:'. $header_background_color .'}';
+
+		return $custom_styles;
 	}
 
 	/**
 	 * Output the custom styles for the checkout page background color.
 	 */
-	public function output_checkout_page_custom_styles() {
+	public function output_checkout_page_custom_styles( $custom_styles ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $custom_styles; }
 		
 		// Get header background color
 		$page_background_color = trim( get_option( 'fc_checkout_page_background_color', '' ) );
 
 		// Bail if color is empty
-		if ( empty( $page_background_color ) ) { return; }
+		if ( empty( $page_background_color ) ) { return $custom_styles; }
 
-		echo 'body.has-fluid-checkout{background-color:'. $page_background_color .'}';
+		$custom_styles .= 'body.has-fluid-checkout{background-color:'. $page_background_color .'}';
+
+		return $custom_styles;
+	}
+
+	/**
+	 * Output the custom styles for the checkout footer background color.
+	 */
+	public function output_checkout_footer_custom_styles( $custom_styles ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $custom_styles; }
+		
+		// Get footer background color
+		$footer_background_color = trim( get_option( 'fc_checkout_footer_background_color', '' ) );
+
+		// Bail if color is empty
+		if ( empty( $footer_background_color ) ) { return $custom_styles; }
+
+		$custom_styles .= 'footer.fc-checkout-footer{background-color:'. $footer_background_color .'}';
+
+		return $custom_styles;
 	}
 
 
