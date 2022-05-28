@@ -44,6 +44,9 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 			// General
 			add_filter( 'body_class', array( $this, 'add_body_class_button_placement' ), 10 );
 
+			// Place order
+			remove_action( 'fc_checkout_after_order_review_inside', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_for_sidebar' ), 1 );
+
 			// Place order button on payment section
 			add_filter( 'woocommerce_order_button_html', array( $this, 'retrieve_order_button_html' ), 9998 );
 			add_filter( 'woocommerce_order_button_html', array( $this, 'restore_order_button_html' ), 10000 );
