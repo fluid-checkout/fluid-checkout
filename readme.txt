@@ -345,6 +345,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 = Unreleased =
 
 * Improved: Translations to Dutch.
+* Improved: Compatibility with plugin Brazilian Market.
 
 = 1.6.0 - 2022-05-19 =
 
