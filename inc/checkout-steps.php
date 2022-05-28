@@ -601,6 +601,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Only display our checkout footer if the site footer is hidden
 		if ( ! $this->get_hide_site_header_footer_at_checkout() ) { return; }
 
+		// Bail if nothing was added to the footer
+		if ( ! has_action( 'fc_checkout_footer_widgets' ) || ! ( is_active_sidebar( 'fc_checkout_footer' ) || has_action( 'fc_checkout_footer_widgets_inside_before' ) || has_action( 'fc_checkout_footer_widgets_inside_after' ) ) ) { return; }
+
 		wc_get_template(
 			'fc/checkout/checkout-footer.php',
 			array( 'checkout' => WC()->checkout() )
