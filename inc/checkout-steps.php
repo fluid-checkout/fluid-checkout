@@ -3597,7 +3597,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! $is_sidebar_widget ) { return; }
 
 		// Bail if additional place order section is not enabled
-		if ( get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) === 'no' ) { return; }
+		if ( 'no' === get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) ) { return; }
 
 		$this->output_checkout_place_order( '__sidebar', true );
 	}
@@ -3610,6 +3610,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function add_place_order_fragment( $fragments ) {
 		$html = $this->get_checkout_place_order_html();
 		$fragments['.place-order'] = $html;
+		
+		// Maybe add fragment for additional sidebar place order
+		if ( 'yes' === get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) ) {
+			$html_for_sidebar = $this->get_checkout_place_order_html( '__sidebar', true );
+			$fragments['.fc-sidebar .place-order'] = $html_for_sidebar;
+		}
+
 		return $fragments;
 	}
 
