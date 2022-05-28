@@ -79,8 +79,6 @@ body#{ $_body-page-selector } .fc-content.fc-container {
 }
 
 body#{ $_body-page-selector }.has-checkout-header .fc-content {
-	min-height: 100vh;
-
 	@media (#{$bp-larger-than-desktop}) {
 		padding-top: $global-spacing-extra-small;
 	}
@@ -173,6 +171,7 @@ body:not( .has-checkout-must-login-notice ) .fc-inside {
 // CHECKOUT WIDGETS
 // ------------------------------------
 .fc-checkout-header .widget,
+.fc-checkout-footer .widget,
 .fc-main .widget {
 	margin: 0;
 }
