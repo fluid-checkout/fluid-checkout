@@ -672,7 +672,6 @@
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
-			// $( document.body ).on( 'updated_checkout', updateStepBodyClasses );
 			$( document.body ).on( 'updated_checkout', updateGlobalStepStates );
 			$( document.body ).on( 'updated_checkout', maybeChangeSubstepState );
 			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
