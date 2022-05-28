@@ -1803,6 +1803,10 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   text-align: center;
 }
 
+.fc-sidebar .fc-place-order {
+  padding: 20px 0;
+}
+
 .fc-wrapper .fc-place-order .fc-place-order-button {
   margin: 0;
   width: 100%;
@@ -1815,8 +1819,9 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   outline-offset: 2px;
 }
 
-.fc-sidebar .fc-place-order .fc-place-order-button {
-  margin: 10px auto 0;
+.fc-sidebar div.place-order {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 div.place-order .woocommerce-terms-and-conditions-link:focus,

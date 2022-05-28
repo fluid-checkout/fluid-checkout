@@ -56,6 +56,11 @@
 	text-align: center;
 }
 
+// Place order button on the sidebar
+.fc-sidebar .fc-place-order {
+	padding: $global-spacing-small 0;
+}
+
 
 
 // Place order button
@@ -72,12 +77,12 @@
 	}
 }
 
-// Place order button on the sidebar
-.fc-sidebar .fc-place-order .fc-place-order-button {
-	margin: $global-spacing-extra-small auto 0;
+
+
+.fc-sidebar div.place-order {
+	margin-top: $global-spacing-small;
+	margin-bottom: $global-spacing-small;
 }
-
-
 
 div.place-order .woocommerce-terms-and-conditions-link,
 div.place-order .woocommerce-privacy-policy-link {

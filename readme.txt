@@ -347,6 +347,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Translations to Dutch.
 * Improved: Compatibility with plugin Brazilian Market.
 * Fixed: Order summary height too big on desktop view in some instances, resulting in extra whitespace.
+* Fixed: Duplicate IDs and field names when the additional place order section is displayed on the sidebar.
 
 = 1.6.0 - 2022-05-19 =
 
