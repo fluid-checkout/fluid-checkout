@@ -361,7 +361,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function add_js_settings( $settings ) {
 
 		$settings[ 'checkoutSteps' ] = apply_filters( 'fc_checkout_steps_script_settings', array(
-			'isMultistepLayout'             => $this->is_checkout_layout_multistep(),
+			'isMultistepLayout'             => $this->is_checkout_layout_multistep() ? 'yes' : 'no',
 			'maybeDisablePlaceOrderButton'  => apply_filters( 'fc_checkout_maybe_disable_place_order_button', 'yes' ),
 		) );
 
