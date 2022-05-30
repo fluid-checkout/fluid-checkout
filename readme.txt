@@ -345,6 +345,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 BREAKING CHANGES - Some features where moved to the PRO version. Changes to the Order Summary and Express Checkout features might break customization code. Place order section position changed to below the order summary.
 
 * Improved: RTL support on account address edit screens.
+* Improved: Do not load checkout assets on order received page.
 * Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version. Read details at https://fluidcheckout.com/blog/fc-release-notes-2-0-0/
 
 = Unreleased - 1.6.1 =
