@@ -79,7 +79,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 */
 	public function enqueue_assets() {
 		// Bail if not at checkout
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
 
 		// Styles
 		wp_enqueue_style( 'fc-checkout-validation' );
