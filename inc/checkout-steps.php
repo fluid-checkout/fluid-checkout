@@ -91,9 +91,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'admin_init', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for AJAX requests
 		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 
-		// Sidebar
-		add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
-
 		// Notices
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), 100 );
@@ -183,6 +180,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add or remove very late hooks.
 	 */
 	public function very_late_hooks() {
+		// Order notes
+		$this->order_notes_hooks();
+
+		// Maybe output sidebar
+		if ( has_action( 'fc_checkout_order_review_section' ) ) {
+			add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
+		}
+	}
+
+	/**
+	 * Order notes hooks.
+	 */
+	public function order_notes_hooks() {
 		// Bail if not on checkout or cart page or doing AJAX call
 		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
@@ -234,6 +244,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'has-fluid-checkout',
 			'has-checkout-layout--' . $this->get_checkout_layout(),
 		);
+
+		// Add extra class when sidebar is present
+		if ( has_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ) ) ) {
+			$classes[] = 'has-fc-sidebar';
+		}
 
 		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
 		if ( $this->get_hide_site_header_footer_at_checkout() ) {

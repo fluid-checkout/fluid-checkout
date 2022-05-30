@@ -214,6 +214,7 @@ body:not(.has-checkout-must-login-notice) .fc-progress-bar,
 body:not(.has-checkout-must-login-notice) .fc-inside {
     float: left;
     width: calc( 62.5% - 50px );
+    padding-top: 5px;
     padding-left: 0;
     padding-right: 0;
   }
@@ -245,7 +246,6 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
 
 .fc-sidebar {
   position: static;
-  background-color: fuchsia;
 }
 @media (min-width: 1000px) {
   .fc-sidebar {
@@ -666,7 +666,6 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
 
 .fc-wrapper .fc-checkout-steps {
   margin: 0 -20px 30px;
-  padding-top: 5px;
 }
 @media (min-width: 750px) {
   .fc-wrapper .fc-checkout-steps {
