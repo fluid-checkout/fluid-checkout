@@ -143,6 +143,13 @@
 			// Bail if coupon code field was not found
 			if ( ! couponField ) { return; }
 
+			// Focus on add coupon button and bail if coupon field is empty
+			if ( '' === couponField.value.trim() ) {
+				couponField.value = ''; // Clear space chars if any
+				couponField.focus();
+				return;
+			}
+
 			couponCode = couponField.value;
 		}
 
