@@ -27,7 +27,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
 		// Checkout JS settings
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -82,14 +82,21 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	}
 
 	/**
+	 * Maybe enqueue assets on the checkout page.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if ( ! function_exists( 'is_checkout' ) || ! ( is_checkout() && ! is_order_received_page() && 'yes' === get_option( 'fc_enable_checkout_coupon_codes', 'yes' ) ) ) { return; }
+
+		$this->enqueue_assets();
+	}
+
+	/**
 	 * Enqueue assets.
 	 */
 	public function enqueue_assets() {
-		if ( is_checkout() && 'yes' === get_option( 'fc_enable_checkout_coupon_codes', 'yes' ) ) {
-			// Checkout steps scripts
-			wp_enqueue_script( 'fc-checkout-coupons' );
-			wp_enqueue_style( 'fc-checkout-coupons' );
-		}
+		wp_enqueue_script( 'fc-checkout-coupons' );
+		wp_enqueue_style( 'fc-checkout-coupons' );
 	}
 
 
