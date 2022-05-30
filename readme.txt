@@ -351,6 +351,7 @@ BREAKING CHANGES - Some features where moved to the PRO version. Changes to the 
 
 * Added: Body class `fc-checkout-step-current--<step_id>` to let developers change elements styles based on the currently active step.
 * Added: Feature to disable the place order buttons when not in the last step, activated by default. Use filter `` to deactivate changes to the place order button `disabled` state.
+* Added: Compatibility with plugin CurieRO.
 * Improved: Translations to Dutch.
 * Improved: Compatibility with plugin Brazilian Market.
 * Improved: Compatibility with plugin German Market.
