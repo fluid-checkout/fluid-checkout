@@ -3,6 +3,7 @@
 // ------------------------------------
 .fc-wrapper .fc-checkout-steps {
 	margin: $checkout-steps-container-margin;
+	padding-top: $global-spacing-tiny;
 	@media (#{$bp-larger-than-tablet}) { margin: $checkout-steps-container-margin--large-screen; }
 }
 

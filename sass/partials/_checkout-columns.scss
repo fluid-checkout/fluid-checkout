@@ -27,14 +27,9 @@ body:not( .has-checkout-must-login-notice ) .fc-inside {
 
 
 
-.fc-checkout-steps {
-	padding-top: $global-spacing-tiny;
-}
-
-
-
 .fc-sidebar {
 	position: static;
+	background-color: fuchsia; // TODO: REMOVE THIS
 
 	@media (#{$bp-larger-than-desktop}) {
 		z-index: z( 'default' ) + 1;
