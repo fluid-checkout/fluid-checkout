@@ -59,7 +59,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not at checkout
-		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ) { return $classes; }
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
 
 		return array_merge( $classes, array( 'has-fc-coupon-code-fields' ) );
 	}
@@ -97,7 +97,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		if ( 'yes' !== get_option( 'fc_enable_checkout_coupon_codes', 'yes' ) ) { return; }
 
 		// Bail if not at checkout
-		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ) { return; }
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		$this->enqueue_assets();
 	}

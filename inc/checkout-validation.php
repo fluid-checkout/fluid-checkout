@@ -52,7 +52,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ) { return $classes; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
 
 		return array_merge( $classes, array( 'has-fc-checkout-validation' ) );
 	}
@@ -79,7 +79,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 */
 	public function enqueue_assets() {
 		// Bail if not at checkout
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ) { return; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		// Styles
 		wp_enqueue_style( 'fc-checkout-validation' );
