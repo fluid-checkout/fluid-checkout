@@ -65,7 +65,7 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 	 */
 	public function change_theme_mod_header_sticky( $current_mod ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $current_mod; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ){ return $current_mod; }
 
 		return 0; // Disabled
 	}

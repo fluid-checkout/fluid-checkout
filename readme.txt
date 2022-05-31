@@ -346,6 +346,7 @@ BREAKING CHANGES - Some features where moved to the PRO version. Changes to the 
 
 * Improved: RTL support on account address edit screens.
 * Improved: Do not load checkout assets on order received page.
+* Fixed: Lite version should not affect order pay or order received pages.
 * Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version. Read details at https://fluidcheckout.com/blog/fc-release-notes-2-0-0/
 
 = Unreleased - 1.6.1 =

@@ -68,7 +68,7 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 	 */
 	public function maybe_output_header_css() {
 		// Bail if not on checkout page
-		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ) { return; }
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ) { return; }
 		
 		// Bail if using the plugin's header and footer
 		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return; }

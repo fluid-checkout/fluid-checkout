@@ -67,7 +67,7 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ){ return $classes; }
 
 		$classes[] = 'has-fc-compat-german-market';
 		return $classes;
@@ -80,7 +80,7 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 	 */
 	public function add_body_class_button_placement( $classes ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ){ return $classes; }
 
 		$classes[] = 'has-fc-compat-german-market-button-placement';
 		return $classes;

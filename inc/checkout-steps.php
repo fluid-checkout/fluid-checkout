@@ -103,7 +103,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
 		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact_login' ), 10 );
 		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
-		add_action( 'wp_footer', array( $this, 'output_login_form_flyout' ), 10 );
+		add_action( 'wp_footer', array( $this, 'output_login_form_modal' ), 10 );
 		add_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
 		add_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_text_fragment' ), 10 );
@@ -238,7 +238,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ){ return $classes; }
 
 		$add_classes = array(
 			'has-fluid-checkout',
@@ -288,7 +288,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_custom_styles() {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ){ return; }
 
 		// Get styles
 		$custom_styles = apply_filters( 'fc_output_custom_styles', '' );
@@ -307,7 +307,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_header_custom_styles( $custom_styles ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $custom_styles; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ){ return $custom_styles; }
 		
 		// Get header background color
 		$header_background_color = trim( get_option( 'fc_checkout_header_background_color', '' ) );
@@ -325,7 +325,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_page_custom_styles( $custom_styles ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $custom_styles; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ){ return $custom_styles; }
 		
 		// Get header background color
 		$page_background_color = trim( get_option( 'fc_checkout_page_background_color', '' ) );
@@ -343,7 +343,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_footer_custom_styles( $custom_styles ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $custom_styles; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ){ return $custom_styles; }
 		
 		// Get footer background color
 		$footer_background_color = trim( get_option( 'fc_checkout_footer_background_color', '' ) );
@@ -378,7 +378,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function enqueue_assets() {
 		// Bail if not at checkout
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ){ return; }
 
 		// Styles
 		wp_enqueue_style( 'fc-checkout-layout' );
@@ -474,7 +474,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( 'yes' !== get_option( 'fc_enable_checkout_page_template', 'yes' ) ) { return $template; }
 		
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $template; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ){ return $template; }
 
 		// Locate new checkout page template
 		$template_name = 'fc/page-checkout.php';
@@ -1162,8 +1162,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if should not display phone in formatted addresses
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $formats; }
 
-		// Bail if viewing order confirmation page
-		if ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) { return $formats; }
+		// Bail if viewing order confirmation or order pay page
+		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ) ) { return $formats; }
 
 		// Bail when displaying addresses for email messages
 		if ( did_action( 'woocommerce_email_customer_details' ) ) { return $formats; }
@@ -1185,8 +1185,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if should not display phone in formatted addresses
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $replacements; }
 
-		// Bail if viewing order confirmation page
-		if ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) { return $replacements; }
+		// Bail if viewing order confirmation or order pay page
+		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ) ) { return $replacements; }
 
 		$replacements['{phone}'] = isset( $args['phone'] ) ? $args['phone'] : '';
 		return $replacements;
@@ -1848,9 +1848,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output the login form flyout block for the checkout page.
 	 */
-	public function output_login_form_flyout() {
+	public function output_login_form_modal() {
+		// Bail if not at checkout page
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ) { return; }
+
 		// Bail if user already logged in or login at checkout is disabled
-		if ( ! is_checkout() || is_user_logged_in() || 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
+		if ( is_user_logged_in() || 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
 
 		wc_get_template(
 			'fc/checkout/form-contact-login-modal.php',
