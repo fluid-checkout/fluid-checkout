@@ -352,6 +352,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Improved: Compatibility with plugin German Market.
 * Fixed: Order summary height too big on desktop view in some instances, resulting in extra whitespace.
 * Fixed: Duplicate IDs and field names when the additional place order section is displayed on the sidebar.
+* Fixed: JS error on checkout fragments script when fragments are returned in an unexpected format.
 
 = 1.6.0 - 2022-05-19 =
 
