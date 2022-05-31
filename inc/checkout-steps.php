@@ -88,8 +88,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Checkout page title
 		add_filter( 'fc_display_checkout_page_title', array( $this, 'maybe_display_checkout_page_title' ), 10 );
 
-		// Checkout steps
+		// Checkout progress bar
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout notices
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_remove_progress_bar_if_cart_expired' ), 10 );
+
+		// Checkout steps
 		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for frontend requests
 		add_action( 'admin_init', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for AJAX requests
 		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
@@ -559,7 +562,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add cart link for the checkout header as a checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_checkout_header_cart_link_fragment( $fragments ) {
 		$html = $this->get_checkout_header_cart_link();
@@ -1313,6 +1316,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 		<?php
 	}
 
+	/**
+	 * Maybe add empty progress bar fragment if cart expired.
+	 *
+	 * @param   array  $fragments  Checkout fragments.
+	 */
+	public function maybe_remove_progress_bar_if_cart_expired ( $fragments ) {
+		// Add empty progress bar fragment if cart expired
+		if ( WC()->cart->is_empty() && ! is_customize_preview() && apply_filters( 'woocommerce_checkout_update_order_review_expired', true ) ) {
+			$fragments['.fc-progress-bar'] = '';
+		}
+
+		return $fragments;
+	}
+
 
 
 	/**
@@ -1792,7 +1809,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add contact substep review text as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_contact_text_fragment( $fragments ) {
 		$html = $this->get_substep_text_contact();
@@ -2092,7 +2109,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add shipping address fields as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_shipping_address_fields_fragment( $fragments ) {
 		$html = $this->get_substep_shipping_address_fields();
@@ -2358,7 +2375,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add shipping address substep review text as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_shipping_address_text_fragment( $fragments ) {
 		$html = $this->get_substep_text_shipping_address();
@@ -2411,7 +2428,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add shipping methods substep review text as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_shipping_methods_text_fragment( $fragments ) {
 		$html = $this->get_substep_text_shipping_method();
@@ -2462,7 +2479,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add order notes substep review text as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_order_notes_text_fragment( $fragments ) {
 		$html = $this->get_substep_text_order_notes();
@@ -2635,7 +2652,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add shipping methods available as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_shipping_methods_fields_fragment( $fragments ) {
 		$html = $this->get_shipping_methods_available();
@@ -2873,7 +2890,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add billing address substep review text as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_billing_address_text_fragment( $fragments ) {
 		$html = $this->get_substep_text_billing_address();
@@ -3683,7 +3700,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add place order section as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_place_order_fragment( $fragments ) {
 		$html = $this->get_checkout_place_order_html();
