@@ -71,7 +71,7 @@ class FluidCheckout_AuxinShop extends FluidCheckout {
 		}
 
 		// Use default template
-		if ( ! $_template ){
+		if ( ! $_template ) {
 			$_template = $template;
 		}
 

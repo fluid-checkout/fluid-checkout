@@ -58,8 +58,8 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * @param   array  $classes  Body classes array.
 	 */
 	public function add_body_class( $classes ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return $classes; }
+		// Bail if not at checkout
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-pay' ) ) { return $classes; }
 
 		return array_merge( $classes, array( 'has-fc-coupon-code-fields' ) );
 	}
