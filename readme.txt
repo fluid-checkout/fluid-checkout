@@ -345,6 +345,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 BREAKING CHANGES - Some features where moved to the PRO version. Changes to the Order Summary and Express Checkout features might break customization code. Place order section position changed to below the order summary.
 
 * Improved: RTL support on account address edit screens.
+* Improved: Utility colors (success, error, alert, info) to meet accessibility constrast criterias.
 * Improved: Do not load checkout assets on order received page.
 * Fixed: Lite version should not affect order pay or order received pages or when user must log in before being able to checkout.
 * Fixed: Remove progress bar if cart is expired.

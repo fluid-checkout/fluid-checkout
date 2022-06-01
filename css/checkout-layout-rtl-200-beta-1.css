@@ -287,7 +287,7 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
   .fc-checkout-header {
     position: static;
     min-height: 80px;
-    border-bottom: solid 1px #D8D8D8;
+    border-bottom: solid 1px #d8d8d8;
     box-shadow: none;
   }
 }
@@ -444,7 +444,7 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
   margin: 5px 0;
   padding: 10px 8px 8px 10px;
   background-color: #fff;
-  border: solid 1px #F4F4F4;
+  border: solid 1px #f3f3f3;
   border-radius: 8px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
   font-size: 15px;
@@ -500,7 +500,7 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
 }
 
 .has-flyout--open-fc-checkout-order-review .fc-checkout-header .fc-checkout__cart-link {
-  background-color: #F4F4F4;
+  background-color: #f3f3f3;
   box-shadow: none;
   transform: translateY(1px);
 }
@@ -597,7 +597,7 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
   height: 5px;
   border: none;
   border-radius: 2.5px;
-  background-color: #D8D8D8;
+  background-color: #d8d8d8;
   overflow: hidden;
 }
 
@@ -607,16 +607,16 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
   margin: 0;
   width: 0;
   height: 5px;
-  background-color: #D8D8D8;
+  background-color: #d8d8d8;
   transition: width 0.3s linear, background-color 0.3s linear;
 }
 
 .fc-progress-bar__bar.is-complete {
-  background-color: #00A854;
+  background-color: #007a3d;
 }
 
 .fc-progress-bar__bar.is-current {
-  background-color: rgba(0, 168, 84, 0.3);
+  background-color: rgba(0, 122, 61, 0.3);
 }
 
 .fc-progress-bar__bars[data-step-count="2"] .fc-progress-bar__bar.is-complete,
@@ -676,7 +676,7 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
 .fc-wrapper .fc-checkout-step {
   margin: -1px 0 0;
   padding: 0;
-  border: solid 1px #D8D8D8;
+  border: solid 1px #d8d8d8;
   border-radius: 0;
   background-color: #fff;
 }
@@ -702,7 +702,7 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
   position: relative;
   padding: 20px 20px;
   margin: -1px 0 0;
-  border-top: solid 1px #D8D8D8;
+  border-top: solid 1px #d8d8d8;
 }
 @media (min-width: 750px) {
   .fc-wrapper .fc-step__substep {
@@ -854,7 +854,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   top: 50%;
   transform: translateY(-50%);
   border-radius: 100%;
-  background-color: #7B7575;
+  background-color: #7b7575;
   color: #fff;
 }
 
@@ -1056,7 +1056,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   display: block;
   width: 100%;
   height: 1px;
-  background-color: #D8D8D8;
+  background-color: #d8d8d8;
 }
 
 .fc-contact-login__separator-text {
@@ -1151,7 +1151,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 }
 
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] {
-  background-color: #F4F4F4;
+  background-color: #f3f3f3;
 }
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] textarea,
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] select,
@@ -1227,7 +1227,7 @@ div.woocommerce form #billing_same_as_shipping_field.form-row label {
 }
 
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] {
-  background-color: #F4F4F4;
+  background-color: #f3f3f3;
 }
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] textarea,
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select,
@@ -1246,10 +1246,10 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 }
 
 .woocommerce .fc-shipping-method__no-shipping-methods {
-  border: solid 1px #D8D8D8;
+  border: solid 1px #d8d8d8;
   border-radius: 13px;
-  border-color: #CC1818;
-  color: #CC1818;
+  border-color: #cc1818;
+  color: #cc1818;
   padding: 10px 10px;
 }
 
@@ -1257,7 +1257,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   list-style-type: none;
   margin: 0;
   padding: 0;
-  border: solid 1px #D8D8D8;
+  border: solid 1px #d8d8d8;
   border-radius: 13px;
   overflow: hidden;
 }
@@ -1287,7 +1287,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   padding-right: 44px;
   padding-left: 90px;
   width: 100%;
-  border-bottom: solid 1px #D8D8D8;
+  border-bottom: solid 1px #d8d8d8;
   font-weight: normal;
   cursor: pointer;
   text-align: right;
@@ -1300,7 +1300,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 }
 
 .woocommerce ul#shipping_method .shipping-method__option input[type=radio]:checked + .shipping-method__option-label {
-  background-color: #F4F4F4;
+  background-color: #f3f3f3;
   color: #1E212B;
 }
 
@@ -1314,7 +1314,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   display: block;
   width: 24px;
   height: 24px;
-  border: solid 2px #D8D8D8;
+  border: solid 2px #d8d8d8;
   border-radius: 100%;
   background-color: transparent;
   box-shadow: none;
@@ -1322,8 +1322,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 }
 
 .woocommerce ul#shipping_method .shipping-method__option input[type=radio]:checked + .shipping-method__option-label:before {
-  border-color: #00A854;
-  background-color: #00A854;
+  border-color: #007a3d;
+  background-color: #007a3d;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option input[type=radio]:focus + .shipping-method__option-label:before {
@@ -1332,7 +1332,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 }
 
 .woocommerce ul#shipping_method .shipping-method__option.shipping-method__option .shipping-method__option-label:hover {
-  background-color: #F4F4F4;
+  background-color: #f3f3f3;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:hover:before,
@@ -1414,7 +1414,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   padding: 0;
   display: block;
   width: 100%;
-  border: solid 1px #D8D8D8;
+  border: solid 1px #d8d8d8;
   border-radius: 13px;
   overflow: hidden;
 }
@@ -1448,7 +1448,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-bottom: solid 1px #D8D8D8;
+  border-bottom: solid 1px #d8d8d8;
   background-color: #fff;
   font-weight: normal;
   line-height: 1.6;
@@ -1473,7 +1473,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  background-color: #F4F4F4;
+  background-color: #f3f3f3;
   color: #1E212B;
 }
 
@@ -1488,7 +1488,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   margin: 0;
   width: 24px;
   height: 24px;
-  border: solid 2px #D8D8D8;
+  border: solid 2px #d8d8d8;
   border-radius: 100%;
   background-color: transparent;
   box-shadow: none;
@@ -1502,12 +1502,12 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:before {
   content: "";
-  border-color: #00A854;
-  background-color: #00A854;
+  border-color: #007a3d;
+  background-color: #007a3d;
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > label:hover {
-  background-color: #F4F4F4;
+  background-color: #f3f3f3;
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > label:hover:before,
@@ -1572,8 +1572,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
   margin: 0;
   padding: 20px;
-  border-bottom: solid 1px #D8D8D8;
-  background-color: #F4F4F4;
+  border-bottom: solid 1px #d8d8d8;
+  background-color: #f3f3f3;
 }
 @media (min-width: 750px) {
   .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
@@ -1793,7 +1793,7 @@ div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
   padding: 5px 10px;
   border: 0;
   background-color: transparent;
-  color: #7B7575;
+  color: #7b7575;
   font-size: 13px;
   line-height: 1.2;
 }
@@ -1823,7 +1823,7 @@ div.woocommerce form #shipping_address_2_field > label {
 .fc-content div.woocommerce form .fc-wrapper .fc-field-group {
   margin: 0 -20px -20px;
   padding: 20px;
-  background-color: #F4F4F4;
+  background-color: #f3f3f3;
 }
 @media (min-width: 1000px) {
   .fc-content div.woocommerce form .fc-wrapper .fc-field-group {
@@ -2068,13 +2068,13 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr {
   border: 0;
-  border-bottom: solid 1px #e7e7e7;
+  border-bottom: solid 1px #e6e6e6;
   height: auto;
   display: table-row;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child {
-  border-top: solid 1px #e7e7e7;
+  border-top: solid 1px #e6e6e6;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table th,
@@ -2109,7 +2109,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
   display: block;
   width: 100%;
   line-height: 1.2;
-  color: #7B7575;
+  color: #7b7575;
   white-space: normal;
 }
 
@@ -2153,7 +2153,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
   width: 50px !important;
   height: auto !important;
   background-color: #fff;
-  border: solid 1px #D8D8D8;
+  border: solid 1px #d8d8d8;
   border-radius: 3px;
 }
 @media (min-width: 1000px) {
@@ -2199,7 +2199,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table dl.variation {
   margin-bottom: 0;
   padding-left: 0;
-  color: #7B7575;
+  color: #7b7575;
   font-size: 13px;
 }
 
@@ -2267,7 +2267,7 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
     margin: 0 0 20px;
     padding: 12px 20px 0;
     max-width: none;
-    border: solid 1px #D8D8D8;
+    border: solid 1px #d8d8d8;
     border-radius: 8px;
     background-color: #fff;
     overflow: hidden;
@@ -2441,7 +2441,7 @@ div.woocommerce .fc-expansible-form-section.form-row .form-row {
 }
 
 .fc-checkout-footer {
-  border-top: solid 1px #D8D8D8;
+  border-top: solid 1px #d8d8d8;
 }
 
 .fc-checkout-footer__inner {
