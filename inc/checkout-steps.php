@@ -1188,7 +1188,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_checkout_pay_page() ) ) { return $formats; }
 
 		// Bail when displaying addresses for email messages
-		if ( did_action( 'woocommerce_email_customer_details' ) ) { return $formats; }
+		if ( did_action( 'woocommerce_email' ) ) { return $formats; }
 
 		foreach ( $formats as $locale => $format) {
 			$formats[ $locale ] = $format . "\n{phone}";
