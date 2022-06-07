@@ -30,7 +30,7 @@ class FluidCheckout_ThemeCompat_Phlox extends FluidCheckout {
 	 */
 	public function maybe_dequeue_scripts() {
 		// Bail if not on checkout page
-		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ) { return; }
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		// Bail if use of theme header is enabled
 		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return; }

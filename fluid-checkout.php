@@ -82,7 +82,7 @@ class FluidCheckout {
 	public static function instance() {
 		$calledClass = get_called_class();
 
-		if ( ! array_key_exists( $calledClass, self::$instances ) || self::$instances[ $calledClass ] === null ){
+		if ( ! array_key_exists( $calledClass, self::$instances ) || self::$instances[ $calledClass ] === null ) {
 			self::$instances[ $calledClass ] = new $calledClass();
 		}
 
@@ -244,7 +244,7 @@ class FluidCheckout {
 		}
 
 		// Use default template
-		if ( ! $_template ){
+		if ( ! $_template ) {
 			$_template = $template;
 		}
 

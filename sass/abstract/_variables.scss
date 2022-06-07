@@ -11,34 +11,20 @@
 // ----------------------------------------
 // COLORS
 
-// Named colors
-$raisin-black:                  #1E212B !default;
-$dark-liver-grey:               #535156 !default;
-$sonic-silver-grey:             #7B7575 !default;
-$light-grey:                    #D8D8D8 !default;
-$cultured-grey:                 #F4F4F4 !default;
-$green-pigment:                 #00A854 !default;
-$viridian-green:                #30989C !default;
-$maximum-blue-green:            #44C1C5 !default;
-$venetian-red:                  #CC1818 !default;
-$crayola-yellow:                #FED766 !default;
-
-// ----------
-
 // Greys
 $black:                         #000 !default;
-$darker-grey:                   $raisin-black !default;
-$dark-grey:                     $dark-liver-grey !default;
-$grey:                          $sonic-silver-grey !default;
-$light-grey:                    $light-grey !default;
-$lighter-grey:                  $cultured-grey !default;
+$darker-grey:                   #1E212B !default;
+$dark-grey:                     #535156 !default;
+$grey:                          #7b7575 !default;
+$light-grey:                    #d8d8d8 !default;
+$lighter-grey:                  #f3f3f3 !default;
 $white:                         #fff !default;
 
 // Utility colors
-$success-color:                 $green-pigment !default;
-$error-color:                   $venetian-red !default;
-$alert-color:                   $crayola-yellow !default;
-$info-color:                    $maximum-blue-green !default;
+$success-color:                 #007a3d !default;
+$error-color:                   #cc1818 !default;
+$alert-color:                   #c95000 !default;
+$info-color:                    #1f01b9 !default;
 
 $border-color:                  $light-grey !default;
 $border-light-color:            $lighter-grey !default;
@@ -228,6 +214,7 @@ $icon-size-extra-large:          remsize( 8rem ) !default;
 
 $icons: (
 	'i-alert-octagon': '\e800',
+	'i-alert-triangle': '\e801',
 	'i-arrow-left': '\e802',
 	'i-arrow-right': '\e803',
 	'i-check-small': '\e805',

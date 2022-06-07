@@ -1,3 +1,5 @@
+@use "sass:math" as math;
+
 // ------------------------------------
 // CHECKOUT COLUMNS LAYOUT
 // ------------------------------------
@@ -11,8 +13,22 @@ body:not( .has-checkout-must-login-notice ) .fc-inside {
 	@media (#{$bp-larger-than-desktop}) {
 		float: $alignment-left;
 		width: calc( #{ $checkout-steps-width--large-screen } - #{ $checkout-column-gap--large-screen } );
+		padding-top: $global-spacing-tiny;
 		padding-#{ $alignment-left }: 0;
 		padding-#{ $alignment-right }: 0;
+	}
+}
+
+body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-checkout-header ~ .woocommerce-message,
+body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-checkout-header ~ .woocommerce-info,
+body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-checkout-header ~ .woocommerce-error,
+body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-checkout-notices,
+body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar )#{ $_body-page-selector } .woocommerce-NoticeGroup,
+body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-progress-bar,
+body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-inside {
+	@media (#{$bp-larger-than-desktop}) {
+		width: $checkout-steps-width--large-screen;
+		margin-#{ $alignment-left }: math.div( 100 - $checkout-steps-width--large-screen, 2 );
 	}
 }
 
@@ -23,12 +39,6 @@ body:not( .has-checkout-must-login-notice ) .fc-inside {
 }
 .fc-wrapper::after {
 	@include clearfix();
-}
-
-
-
-.fc-checkout-steps {
-	padding-top: $global-spacing-tiny;
 }
 
 

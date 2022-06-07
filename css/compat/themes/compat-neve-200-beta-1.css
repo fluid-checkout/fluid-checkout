@@ -3,7 +3,7 @@ body.theme-neve .fc-wrapper .fc-expansible-form-section__content--coupon_code .f
 }
 
 body.theme-neve.woocommerce-checkout.woocommerce-page .fc-wrapper #payment ul.payment_methods {
-  border: solid 1px #D8D8D8 !important;
+  border: solid 1px #d8d8d8 !important;
 }
 
 body.theme-neve div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, body.theme-neve div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {

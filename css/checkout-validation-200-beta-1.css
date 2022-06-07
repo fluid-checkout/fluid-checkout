@@ -14,7 +14,7 @@ div.woocommerce .form-row .fc-mailcheck-suggestion {
   padding: 5px 10px 5px;
   padding-left: 28px;
   border: 0;
-  background-color: #F4F4F4;
+  background-color: #f3f3f3;
   font-size: 13px;
   text-align: left;
   line-height: 1.6;
@@ -31,7 +31,7 @@ div.woocommerce .form-row .fc-mailcheck-suggestion .mailcheck-suggestion:focus {
 
 div.woocommerce .form-row .woocommerce-error,
 div.woocommerce .shipping-method__package .woocommerce-error {
-  color: #CC1818;
+  color: #cc1818;
 }
 
 div.woocommerce .shipping-method__package .woocommerce-error {
@@ -78,11 +78,11 @@ div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=tel],
 div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=url],
 div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=password],
 div.woocommerce form .form-row[class*=woocommerce-invalid] .select2-selection {
-  border-color: #CC1818;
+  border-color: #cc1818;
 }
 
 div.woocommerce form .shipping-method__package[class*=woocommerce-invalid] #shipping_method.shipping-method__options {
-  border-color: #CC1818;
+  border-color: #cc1818;
 }
 
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) textarea,
@@ -96,7 +96,7 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-inv
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=url],
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=password],
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection {
-  border-color: #00A854;
+  border-color: #007a3d;
 }
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .woocommerce-input-wrapper {
   position: relative;
@@ -125,7 +125,7 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-inv
   top: 10px;
   border-radius: 100%;
   background-color: rgba(255, 255, 255, 0.75);
-  color: #00A854;
+  color: #007a3d;
   pointer-events: none;
 }
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {

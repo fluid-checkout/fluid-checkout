@@ -3,7 +3,7 @@ body.theme-aora .shipping-method__option input[type=radio] {
 }
 
 body.theme-aora.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
-  border: solid 1px #D8D8D8 !important;
+  border: solid 1px #d8d8d8 !important;
 }
 
 body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method {
@@ -20,7 +20,7 @@ body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method:last-
 }
 
 body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:before {
-  background-color: #00A854 !important;
+  background-color: #007a3d !important;
 }
 
 body.theme-aora .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box:after {

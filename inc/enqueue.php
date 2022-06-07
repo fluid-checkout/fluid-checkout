@@ -100,16 +100,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 	/**
-	 * Maybe enqueue Require Bundle.
-	 */
-	public function maybe_enqueue_require_bundle() {
-		// Bail if not visiting pages affected by the plugin
-		if ( is_admin() || ( ! is_checkout() && ! is_account_page() ) ) { return; }
-
-		$this->enqueue_require_bundle();
-	}
-
-	/**
 	 * Enqueue Require Bundle.
 	 */
 	public function enqueue_require_bundle() {
@@ -118,23 +108,33 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_enqueue_script( 'require-polyfills' );
 	}
 
-
-
 	/**
-	 * Maybe enqueue scripts.
+	 * Maybe enqueue Require Bundle.
 	 */
-	public function maybe_enqueue_scripts() {
+	public function maybe_enqueue_require_bundle() {
 		// Bail if not visiting pages affected by the plugin
-		if ( is_admin() || ( ! is_checkout() && ! is_account_page() ) ) { return; }
+		if ( is_admin() || ( ( ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) && ! is_account_page() ) ) { return; }
 
-		$this->enqueue_scripts();
+		$this->enqueue_require_bundle();
 	}
+
+
 
 	/**
 	 * Enqueue scripts.
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_script( 'fc-bundles' );
+	}
+
+	/**
+	 * Maybe enqueue scripts.
+	 */
+	public function maybe_enqueue_scripts() {
+		// Bail if not visiting pages affected by the plugin
+		if ( is_admin() || ( ( ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) && ! is_account_page() ) ) { return; }
+
+		$this->enqueue_scripts();
 	}
 
 
@@ -144,7 +144,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 */
 	function maybe_enqueue_custom_fonts() {
 		// Bail if not visiting pages affected by the plugin
-		if ( is_admin() || ( ! is_checkout() && ! is_account_page() ) ) { return; }
+		if ( is_admin() || ( ( ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) && ! is_account_page() ) ) { return; }
 
 		$this->enqueue_custom_fonts();
 	}
@@ -183,7 +183,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 */
 	public function enqueue_theme_compat_styles() {
 		// Bail if not visiting pages affected by the plugin
-		if ( is_admin() || ( ! is_checkout() && ! is_account_page() ) ) { return; }
+		if ( is_admin() || ( ( ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) && ! is_account_page() ) ) { return; }
 
 		// Get currently active theme and child theme
 		$theme_slugs = array( get_template(), get_stylesheet() );
@@ -218,7 +218,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 */
 	public function enqueue_plugin_compat_styles() {
 		// Bail if not visiting pages affected by the plugin
-		if ( is_admin() || ( ! is_checkout() && ! is_account_page() ) ) { return; }
+		if ( is_admin() || ( ( ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) && ! is_account_page() ) ) { return; }
 
 		// Get all plugins installed
 		$plugins_installed = get_plugins();
