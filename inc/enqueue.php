@@ -158,14 +158,14 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 	/**
-	 * Enqueue edit address styles.
+	 * Enqueue edit address assets.
 	 */
 	function enqueue_assets_edit_address() {
 		wp_enqueue_style( 'fc-edit-address-page' );
 	}
 
 	/**
-	 * Maybe enqueue edit address styles.
+	 * Maybe enqueue edit address assets.
 	 */
 	function maybe_enqueue_assets_edit_address() {
 		// Bail if not on checkout page or address edit page
