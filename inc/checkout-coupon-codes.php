@@ -19,7 +19,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Late hooks
+		// Late hooks// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 	}
 
