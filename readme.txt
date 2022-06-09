@@ -203,6 +203,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 * SG Checkout Location Picker for WooCommerce - by Sevengits
 * WooCommerce Correios - by Claudio Sanches
 * WooCommerce PDF Invoices & Packing Slips - by Ewout Fernhout
+* WP Crowdfunding - by Themeum
 
 = Premium Plugins =
 
@@ -347,6 +348,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Body class `fc-checkout-step-current--<step_id>` to let developers change elements styles based on the currently active step.
 * Added: Feature to disable the place order buttons when not in the last step, activated by default. Use filter `` to deactivate changes to the place order button `disabled` state.
 * Added: Compatibility with plugin CurieRO.
+* Added: Compatibility with plugin WP Crowdfunding.
 * Improved: Translations to Dutch.
 * Improved: Compatibility with plugin Brazilian Market.
 * Improved: Compatibility with plugin German Market.
