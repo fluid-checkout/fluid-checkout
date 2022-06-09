@@ -94,7 +94,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_style( 'fc-fonts', self::$directory_url . 'css/fonts' . self::$asset_version . '.css', array(), null );
 
 		// Edit address styles
-		wp_register_style( 'fc-account-page-address', self::$directory_url . 'css/account-page-address' . $rtl_suffix . self::$asset_version . '.css', array(), null );
+		wp_register_style( 'fc-edit-address-page', self::$directory_url . 'css/edit-address-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 	}
 
 
@@ -177,7 +177,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Enqueue edit address styles.
 	 */
 	function enqueue_styles_edit_address() {
-		wp_enqueue_style( 'fc-account-page-address' );
+		wp_enqueue_style( 'fc-edit-address-page' );
 	}
 
 
