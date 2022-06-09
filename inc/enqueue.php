@@ -112,8 +112,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Maybe enqueue Require Bundle.
 	 */
 	public function maybe_enqueue_require_bundle() {
-		// Bail if not visiting pages affected by the plugin
-		if ( is_admin() || ( ( ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) && ! is_account_page() ) ) { return; }
+		// Bail if not on checkout page
+		if ( is_admin() || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		$this->enqueue_require_bundle();
 	}
@@ -131,8 +131,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Maybe enqueue scripts.
 	 */
 	public function maybe_enqueue_scripts() {
-		// Bail if not visiting pages affected by the plugin
-		if ( is_admin() || ( ( ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) && ! is_account_page() ) ) { return; }
+		// Bail if not on checkout page
+		if ( is_admin() || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		$this->enqueue_scripts();
 	}
@@ -143,8 +143,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Maybe enqueue custom fonts.
 	 */
 	function maybe_enqueue_custom_fonts() {
-		// Bail if not visiting pages affected by the plugin
-		if ( is_admin() || ( ( ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) && ! is_account_page() ) ) { return; }
+		// Bail if not on checkout page
+		if ( is_admin() || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		$this->enqueue_custom_fonts();
 	}
@@ -165,6 +165,11 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Bail if not visiting pages affected by the plugin
 		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'edit-address' ) ) { return; }
 
+		// Fluid Checkout Lite assets
+		$this->enqueue_require_bundle();
+		$this->enqueue_scripts();
+		$this->enqueue_custom_fonts();
+		
 		$this->enqueue_styles_edit_address();
 	}
 

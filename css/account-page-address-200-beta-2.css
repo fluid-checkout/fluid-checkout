@@ -6,6 +6,25 @@
   width: 100%;
 }
 
+.fc-wrapper .collapsible-content__inner:after {
+  content: "";
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.fc-wrapper [data-collapsible-handler] {
+  cursor: pointer;
+}
+
+.fc-wrapper [data-collapsible].fc-expansible-form-section__content {
+  margin-top: 0;
+}
+
+body:not(.has-collapsible-block) .fc-wrapper [data-collapsible].is-collapsed > .collapsible-content__inner {
+  display: none;
+}
+
 .woocommerce-MyAccount-content .woocommerce-address-fields__field-wrapper {
   margin-bottom: 50px;
 }
