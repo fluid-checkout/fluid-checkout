@@ -3,7 +3,17 @@
 // ------------------------------------
 @import
 	"abstract/_all-early",
+	"abstract/_variables-rtl",
 	"abstract/_all";
+
+
+
+
+
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-edit-address' !default;
 
 
 
@@ -14,6 +24,7 @@
 // ------------------------------------
 @import
 	"partials/clearfix",
+	"partials/collapsible-blocks",
 	"partials/woocommerce-account-page-addresses",
 	"partials/woocommerce-form-fields",
 	"partials/woocommerce-form-fields-select2",
