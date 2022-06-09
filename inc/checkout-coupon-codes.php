@@ -19,14 +19,14 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Late hooks
-		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 	}
 
 	/**
-	 * Add or remove late hooks.
+	 * Add or remove very late hooks.
 	 */
-	public function late_hooks() {
+	public function very_late_hooks() {
 		// Bail if use of coupons not enabled
 		if ( ! wc_coupons_enabled() ) { return; }
 
