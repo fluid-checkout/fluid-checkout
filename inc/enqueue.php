@@ -162,7 +162,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Maybe enqueue edit address styles.
 	 */
 	function maybe_enqueue_styles_edit_address() {
-		// Bail if not visiting pages affected by the plugin
+		// Bail if not on checkout page or address edit page
 		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'edit-address' ) ) { return; }
 
 		// Fluid Checkout Lite assets
@@ -187,8 +187,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * @since 1.2.0
 	 */
 	public function enqueue_theme_compat_styles() {
-		// Bail if not on checkout page
-		if ( is_admin() || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+		// Bail if not on checkout page or address edit page
+		if ( is_admin() || ! ( is_checkout() || ( is_account_page() && is_wc_endpoint_url( 'edit-address' ) ) ) || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		// Get currently active theme and child theme
 		$theme_slugs = array( get_template(), get_stylesheet() );
@@ -222,8 +222,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * @since 1.2.4
 	 */
 	public function enqueue_plugin_compat_styles() {
-		// Bail if not on checkout page
-		if ( is_admin() || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+		// Bail if not on checkout pag// Bail if not on checkout page or address edit page
+		if ( is_admin() || ! ( is_checkout() || ( is_account_page() && is_wc_endpoint_url( 'edit-address' ) ) ) || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		// Get all plugins installed
 		$plugins_installed = get_plugins();
