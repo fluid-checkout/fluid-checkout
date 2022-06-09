@@ -203,6 +203,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 * SG Map to Address - by Sevengits
 * WooCommerce Correios - by Claudio Sanches
 * WooCommerce Delivery & Pickup Date Time Pro - by CodeRockz
+* WP Crowdfunding - by Themeum
 
 = Plugins (PRO feature) =
 
@@ -356,12 +357,14 @@ BREAKING CHANGES - Some features where moved to the PRO version. Changes to the 
 * Added: Body class `fc-checkout-step-current--<step_id>` to let developers change elements styles based on the currently active step.
 * Added: Feature to disable the place order buttons when not in the last step, activated by default. Use filter `` to deactivate changes to the place order button `disabled` state.
 * Added: Compatibility with plugin CurieRO.
+* Added: Compatibility with plugin WP Crowdfunding.
 * Improved: Translations to Dutch.
 * Improved: Compatibility with plugin Brazilian Market.
 * Improved: Compatibility with plugin German Market.
 * Fixed: Order summary height too big on desktop view in some instances, resulting in extra whitespace.
 * Fixed: Duplicate IDs and field names when the additional place order section is displayed on the sidebar.
 * Fixed: JS error on checkout fragments script when fragments are returned in an unexpected format.
+* Fixed: Fatal error related to coupon code fields functions calling `wc_coupon_enabled` too early.
 
 = 1.6.0 - 2022-05-19 =
 
