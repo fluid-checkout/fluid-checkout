@@ -63,7 +63,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
 		// Checkout JS settings
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -383,14 +383,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Enqueue assets.
 	 */
 	public function enqueue_assets() {
-		// Bail if not at checkout
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
-
 		// Styles
 		wp_enqueue_style( 'fc-checkout-layout' );
 		
 		// Checkout steps scripts
 		wp_enqueue_script( 'fc-checkout-steps' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 
