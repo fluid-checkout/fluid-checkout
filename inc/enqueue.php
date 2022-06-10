@@ -215,8 +215,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * @since 1.2.0
 	 */
 	public function enqueue_theme_compat_styles() {
-		// Bail if not on checkout page or address edit page
-		if ( is_admin() || ! ( is_checkout() || ( is_account_page() && is_wc_endpoint_url( 'edit-address' ) ) ) || is_order_received_page() || is_checkout_pay_page() ) { return; }
+		// Bail if not on checkout, address edit or add payment method pages
+		if ( is_admin() || ! ( is_checkout() || ( is_account_page() && ( is_wc_endpoint_url( 'edit-address' ) || is_wc_endpoint_url( 'add-payment-method' ) )  ) ) || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		// Get currently active theme and child theme
 		$theme_slugs = array( get_template(), get_stylesheet() );
@@ -250,8 +250,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * @since 1.2.4
 	 */
 	public function enqueue_plugin_compat_styles() {
-		// Bail if not on checkout pag// Bail if not on checkout page or address edit page
-		if ( is_admin() || ! ( is_checkout() || ( is_account_page() && is_wc_endpoint_url( 'edit-address' ) ) ) || is_order_received_page() || is_checkout_pay_page() ) { return; }
+		// Bail if not on checkout, address edit or add payment method pages
+		if ( is_admin() || ! ( is_checkout() || ( is_account_page() && ( is_wc_endpoint_url( 'edit-address' ) || is_wc_endpoint_url( 'add-payment-method' ) )  ) ) || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		// Get all plugins installed
 		$plugins_installed = get_plugins();
