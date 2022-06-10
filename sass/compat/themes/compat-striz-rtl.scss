@@ -15,9 +15,6 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-striz' !default;
-$_select2-border-width:                remsize( .1rem ) !default;
-$_select2-border-radius:               remsize( .3rem ) !default;
-$_select2-selection-height:            remsize( 4.4rem ) !default;
 
 
 
@@ -27,9 +24,4 @@ $_select2-selection-height:            remsize( 4.4rem ) !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	// "striz/checkout-shipping-methods"
 	"striz/checkout-payment-methods";
-	// "striz/checkout-place-order",
-	// "striz/checkout-validation",
-	// "../../partials/woocommerce-form-fields-select2"
-	// "striz/woocommerce-form-fields-select2";
