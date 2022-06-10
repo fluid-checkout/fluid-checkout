@@ -15,15 +15,19 @@ div.woocommerce .form-row.woocommerce-invalid .woocommerce-error {
 div.woocommerce .form-row .woocommerce-error,
 div.woocommerce .shipping-method__package .woocommerce-error,
 div.woocommerce .form-row .fc-mailcheck-suggestion {
+	z-index: z( 'default' ) + 1;
 	position: relative;
 	margin: 0;
 	padding: $checkout-message-error-padding;
 	padding-#{ $alignment-left }: $checkout-message-error-padding-left;
+	min-height: auto;
 	border: 0;
 	background-color: $checkout-message-error-background-color;
 	font-size: $font-size-extra-small;
 	text-align: #{ $alignment-left };
 	line-height: 1.6;
+	animation: none;
+	transform: none;
 }
 
 div.woocommerce .form-row .fc-mailcheck-suggestion {
@@ -63,6 +67,13 @@ div.woocommerce .shipping-method__package .woocommerce-error:before {
 
 div.woocommerce .shipping-method__package .woocommerce-error:before {
 	#{ $alignment-left }: $global-spacing-extra-small + $global-spacing-tiny;
+}
+
+
+
+div.woocommerce .form-row .woocommerce-error:after,
+div.woocommerce .shipping-method__package .woocommerce-error:after {
+	display: none;
 }
 
 
