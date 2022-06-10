@@ -2060,6 +2060,11 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review {
   background-color: transparent;
 }
 
+body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review:before,
+body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review:after {
+  display: none;
+}
+
 body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review__head {
   text-align: right;
 }
