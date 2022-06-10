@@ -375,6 +375,7 @@ BREAKING CHANGES - Some features where moved to the PRO version. Changes to the 
 * Improved: Renamed `account-page-address` style handle and files to `edit-address-page` to better indicate where the styles are loaded and keep consistency across the plugins.
 * Fixed: Lite version should not affect order pay or order received pages or when user must log in before being able to checkout.
 * Fixed: Remove progress bar if cart is expired.
+* Fixed: Missing styles for the add payment method page on account pages.
 * Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version. Read details at https://fluidcheckout.com/blog/fc-release-notes-2-0-0/
 
 = Unreleased - 1.6.1 =

@@ -1400,7 +1400,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   position: relative;
 }
 
-.woocommerce-page.woocommerce-checkout .fc-wrapper #payment {
+div.woocommerce .fc-wrapper #payment,
+div.woocommerce #add_payment_method .fc-wrapper #payment {
   margin: 0;
   padding: 0;
   border: 0;
@@ -1408,7 +1409,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   background-color: transparent;
 }
 
-.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
+div.woocommerce .fc-wrapper #payment ul.payment_methods,
+div.woocommerce #add_payment_method .fc-wrapper #payment ul.payment_methods {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -1419,7 +1421,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   overflow: hidden;
 }
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method {
+.fc-wrapper #payment .payment_methods > .wc_payment_method,
+#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -1569,14 +1572,16 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   vertical-align: middle;
 }
 
-.fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
+.fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box,
+#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
   margin: 0;
   padding: 20px;
   border-bottom: solid 1px #d8d8d8;
   background-color: #f3f3f3;
 }
 @media (min-width: 750px) {
-  .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
+  .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box,
+#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
     padding: 20px 44px;
   }
 }
@@ -1589,7 +1594,17 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=text],
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=tel],
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=url],
-.fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=password] {
+.fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=password],
+#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box textarea,
+#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box select,
+#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=email],
+#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=number],
+#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=date],
+#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=search],
+#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=text],
+#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=tel],
+#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=url],
+#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=password] {
   background-color: #fff;
 }
 
