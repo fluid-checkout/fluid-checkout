@@ -448,7 +448,7 @@
 		var field = e.target;
 
 		// Get correct field when is select2
-		if ( isSelect2Field( e.target ) ) {
+		if ( isSelect2Field( e.target ) && e.target.closest( _settings.formRowSelector ) && e.target.closest( _settings.formRowSelector ).querySelector( 'select' ) ) {
 			field = e.target.closest( _settings.formRowSelector ).querySelector( 'select' );
 		}
 
