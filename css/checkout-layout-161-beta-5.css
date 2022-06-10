@@ -1318,6 +1318,11 @@ div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:after {
   width: 100%;
 }
 
+div.woocommerce form .woocommerce-billing-fields__field-wrapper {
+  display: block;
+  margin: 0;
+}
+
 div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:not(:last-child),
 div.woocommerce form .woocommerce-billing-fields__field-wrapper:not(:last-child) {
   padding-bottom: 20px;
@@ -1948,6 +1953,7 @@ div.woocommerce form .form-row label,
 div.woocommerce form #billing_address_2_field > label,
 div.woocommerce form #shipping_address_2_field > label {
   z-index: 2;
+  margin-top: 0;
   margin-bottom: 5px;
   width: auto;
   opacity: unset;
@@ -2136,6 +2142,11 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review {
   border: 0;
   width: 100%;
   background-color: transparent;
+}
+
+body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review:before,
+body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review:after {
+  display: none;
 }
 
 body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review__head {

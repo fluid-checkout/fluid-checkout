@@ -9,6 +9,7 @@
 }
 
 .fc-wrapper .fc-expansible-form-section__content--coupon_code input#coupon_code {
+  margin: 0;
   height: 55px;
 }
 

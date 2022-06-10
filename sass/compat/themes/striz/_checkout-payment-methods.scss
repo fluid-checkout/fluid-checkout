@@ -1,0 +1,15 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper #payment .payment_methods > li.wc_payment_method > input[type="radio"]:first-child:checked + label:before {
+	margin: 0;
+	width: $payment-method-radio-size;
+	height: $payment-method-radio-size;
+}
+
+
+
+body#{ $_body-theme-selector } .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box a {
+	float: none;
+}
