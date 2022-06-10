@@ -1851,8 +1851,10 @@ div.woocommerce form .form-row:last-child {
 }
 
 div.woocommerce form .form-row {
+  display: block;
   margin-bottom: 20px;
   padding: 0;
+  max-width: 100%;
 }
 
 div.woocommerce form .form-row.has-description:not(:last-child) {
