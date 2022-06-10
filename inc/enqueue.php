@@ -30,6 +30,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_custom_fonts' ), 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_edit_address' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_add_payment_method' ), 10 );
 	
 		// Theme and Plugin Compatibility
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_styles' ), 10 );
@@ -95,6 +96,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Edit address styles
 		wp_register_style( 'fc-edit-address-page', self::$directory_url . 'css/edit-address-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
+
+		// Add payment methods styles
+		wp_register_style( 'fc-add-payment-method-page', self::$directory_url . 'css/add-payment-method-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 	}
 
 
@@ -157,15 +161,16 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	}
 
 
+
 	/**
-	 * Enqueue edit address assets.
+	 * Enqueue assets for the edit address page.
 	 */
 	function enqueue_assets_edit_address() {
 		wp_enqueue_style( 'fc-edit-address-page' );
 	}
 
 	/**
-	 * Maybe enqueue edit address assets.
+	 * Maybe enqueue assets for the edit address page.
 	 */
 	function maybe_enqueue_assets_edit_address() {
 		// Bail if not on checkout page or address edit page
@@ -177,6 +182,30 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		$this->enqueue_assets();
 		
 		$this->enqueue_assets_edit_address();
+	}
+
+
+
+	/**
+	 * Enqueue assets for the add payment method page.
+	 */
+	function enqueue_assets_add_payment_method() {
+		wp_enqueue_style( 'fc-add-payment-method-page' );
+	}
+
+	/**
+	 * Maybe enqueue assets for the add payment method page.
+	 */
+	function maybe_enqueue_assets_add_payment_method() {
+		// Bail if not on checkout page or address edit page
+		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'add-payment-method' ) ) { return; }
+
+		// Fluid Checkout Lite assets
+		$this->enqueue_custom_fonts();
+		$this->enqueue_require_bundle();
+		$this->enqueue_assets();
+		
+		$this->enqueue_assets_add_payment_method();
 	}
 
 

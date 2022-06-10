@@ -7,7 +7,7 @@
 }
 
 
-.woocommerce-page.woocommerce-checkout .fc-wrapper #payment {
+div.woocommerce .fc-wrapper #payment {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -17,7 +17,7 @@
 
 
 
-.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
+div.woocommerce .fc-wrapper #payment ul.payment_methods {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
