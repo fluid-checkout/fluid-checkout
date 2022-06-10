@@ -1953,6 +1953,7 @@ div.woocommerce form .form-row label,
 div.woocommerce form #billing_address_2_field > label,
 div.woocommerce form #shipping_address_2_field > label {
   z-index: 2;
+  margin-top: 0;
   margin-bottom: 5px;
   width: auto;
   opacity: unset;
