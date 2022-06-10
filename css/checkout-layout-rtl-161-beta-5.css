@@ -1240,6 +1240,11 @@ div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:after {
   width: 100%;
 }
 
+div.woocommerce form .woocommerce-billing-fields__field-wrapper {
+  display: block;
+  margin: 0;
+}
+
 div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:not(:last-child),
 div.woocommerce form .woocommerce-billing-fields__field-wrapper:not(:last-child) {
   padding-bottom: 20px;
