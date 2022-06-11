@@ -2,7 +2,7 @@
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
 
-body#top#{ $_body-theme-selector }#{ $_body-page-selector }.woocommerce-page .fc-wrapper #payment {
+body#{ $_body-theme-selector }#{ $_body-page-selector }#top.woocommerce-page .fc-wrapper #payment {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -11,7 +11,7 @@ body#top#{ $_body-theme-selector }#{ $_body-page-selector }.woocommerce-page .fc
 
 
 
-body#top#{ $_body-theme-selector }#{ $_body-page-selector }.woocommerce-page .fc-wrapper #payment ul.payment_methods {
+body#{ $_body-theme-selector }#{ $_body-page-selector }#top.woocommerce-page .fc-wrapper #payment ul.payment_methods {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -19,7 +19,7 @@ body#top#{ $_body-theme-selector }#{ $_body-page-selector }.woocommerce-page .fc
 
 
 
-body#top#{ $_body-theme-selector }#{ $_body-page-selector } .fc-wrapper #payment .payment_methods > .wc_payment_method {
+body#{ $_body-theme-selector }#{ $_body-page-selector }#top .fc-wrapper #payment .payment_methods > .wc_payment_method {
 	width: 100%;
 	margin: $payment-method-margin;
 	padding: 0;
@@ -29,14 +29,14 @@ body#top#{ $_body-theme-selector }#{ $_body-page-selector } .fc-wrapper #payment
 
 
 
-body#top#{ $_body-theme-selector }#{ $_body-page-selector } .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+body#{ $_body-theme-selector }#{ $_body-page-selector }#top .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
 	position: relative;
 	display: flex;
 }
 
 
 
-body#top#{ $_body-theme-selector }#{ $_body-page-selector } .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
+body#{ $_body-theme-selector }#{ $_body-page-selector }#top .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
 	position: static;
 	display: block;
 	margin: 0;

@@ -1,17 +1,17 @@
-body#top.theme-enfold.woocommerce-checkout.woocommerce-page .fc-wrapper #payment {
+body.theme-enfold.woocommerce-checkout#top.woocommerce-page .fc-wrapper #payment {
   margin: 0;
   padding: 0;
   border: 0;
   border-radius: 0;
 }
 
-body#top.theme-enfold.woocommerce-checkout.woocommerce-page .fc-wrapper #payment ul.payment_methods {
+body.theme-enfold.woocommerce-checkout#top.woocommerce-page .fc-wrapper #payment ul.payment_methods {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-body#top.theme-enfold.woocommerce-checkout .fc-wrapper #payment .payment_methods > .wc_payment_method {
+body.theme-enfold.woocommerce-checkout#top .fc-wrapper #payment .payment_methods > .wc_payment_method {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -19,12 +19,12 @@ body#top.theme-enfold.woocommerce-checkout .fc-wrapper #payment .payment_methods
   line-height: 1.6;
 }
 
-body#top.theme-enfold.woocommerce-checkout .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+body.theme-enfold.woocommerce-checkout#top .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
   position: relative;
   display: flex;
 }
 
-body#top.theme-enfold.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
+body.theme-enfold.woocommerce-checkout#top .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
   position: static;
   display: block;
   margin: 0;
@@ -38,11 +38,20 @@ body.theme-enfold div.woocommerce form .form-row.woocommerce-validated:not([clas
   top: 6px;
 }
 
+body.theme-enfold#top div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name,
+body.theme-enfold#top div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-name {
+  border: 0;
+}
+
+body.theme-enfold#top div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-quantity {
+  display: block !important;
+}
+
 @media (min-width: 750px) {
-  body#top.theme-enfold div.woocommerce form .form-row.form-row-first,
-body#top.theme-enfold div.woocommerce form .form-row.form-row-middle,
-body#top.theme-enfold div.woocommerce form #payment .form-row.form-row-first,
-body#top.theme-enfold div.woocommerce form #payment .form-row.form-row-middle {
+  body.theme-enfold#top div.woocommerce form .form-row.form-row-first,
+body.theme-enfold#top div.woocommerce form .form-row.form-row-middle,
+body.theme-enfold#top div.woocommerce form #payment .form-row.form-row-first,
+body.theme-enfold#top div.woocommerce form #payment .form-row.form-row-middle {
     margin-left: 0;
     margin-right: 4%;
   }
