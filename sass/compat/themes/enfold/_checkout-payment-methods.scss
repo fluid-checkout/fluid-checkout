@@ -1,0 +1,47 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector }#top.woocommerce-page .fc-wrapper #payment {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+}
+
+
+
+body#{ $_body-theme-selector }#{ $_body-page-selector }#top.woocommerce-page .fc-wrapper #payment ul.payment_methods {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+body#{ $_body-theme-selector }#{ $_body-page-selector }#top .fc-wrapper #payment .payment_methods > .wc_payment_method {
+	width: 100%;
+	margin: $payment-method-margin;
+	padding: 0;
+	border: 0;
+	line-height: 1.6;
+}
+
+
+
+body#{ $_body-theme-selector }#{ $_body-page-selector }#top .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+	position: relative;
+	display: flex;
+}
+
+
+
+body#{ $_body-theme-selector }#{ $_body-page-selector }#top .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
+	position: static;
+	display: block;
+	margin: 0;
+	padding: $global-spacing-small;
+	width: 100%;
+	border-bottom: $payment-method-border;
+	background-color: $lighter-grey;
+}

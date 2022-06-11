@@ -1,0 +1,30 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body#{ $_body-theme-selector }#top .fc-wrapper .fc-inside div.place-order {
+	padding: $place-order-padding;
+
+	@media (#{$bp-larger-than-desktop}) {
+		padding: $place-order-padding--large-screen;
+	}
+}
+
+
+
+body#{ $_body-theme-selector }#top .fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
+	display: none;
+
+	@media (#{$bp-larger-than-desktop}) {
+		display: block;
+		margin-top: $global-spacing-small;
+		margin-bottom: $global-spacing-small;
+		padding: $place-order-padding-sidebar--large-screen;
+	}
+}
+
+
+
+body#{ $_body-theme-selector }#top .fc-wrapper .fc-place-order .fc-place-order-button {
+	float: none;
+}

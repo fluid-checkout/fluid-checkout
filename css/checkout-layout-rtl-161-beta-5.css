@@ -254,10 +254,6 @@ body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-err
   margin-bottom: 20px;
 }
 
-.fc-wrapper .fc-checkout__below-place-order-widgets {
-  margin-bottom: 20px;
-}
-
 .fc-wrapper .fc-checkout-order-review__widgets-inside .widget:last-child,
 .fc-wrapper .fc-checkout__below-place-order-widgets .widget:last-child,
 .fc-wrapper .fc-checkout-order-review__widgets-outside .widget:last-child {
@@ -1759,9 +1755,11 @@ div.place-order .woocommerce-privacy-policy-link:focus {
   outline-offset: 1px !important;
 }
 
-.fc-sidebar .fc-checkout-order-review__widgets-outside {
-  padding-left: 20px;
-  padding-right: 20px;
+@media (min-width: 1000px) {
+  .fc-sidebar .fc-checkout-order-review__widgets-outside {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 div.woocommerce form .form-row:before,
