@@ -1,3 +1,39 @@
+body#top.theme-enfold.woocommerce-checkout.woocommerce-page .fc-wrapper #payment {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+body#top.theme-enfold.woocommerce-checkout.woocommerce-page .fc-wrapper #payment ul.payment_methods {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+body#top.theme-enfold.woocommerce-checkout .fc-wrapper #payment .payment_methods > .wc_payment_method {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  line-height: 1.6;
+}
+
+body#top.theme-enfold.woocommerce-checkout .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+  position: relative;
+  display: flex;
+}
+
+body#top.theme-enfold.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
+  position: static;
+  display: block;
+  margin: 0;
+  padding: 20px;
+  width: 100%;
+  border-bottom: solid 1px #D8D8D8;
+  background-color: #F4F4F4;
+}
+
 body.theme-enfold div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, body.theme-enfold div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
   top: 6px;
 }
