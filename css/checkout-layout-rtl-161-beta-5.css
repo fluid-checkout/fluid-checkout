@@ -1683,6 +1683,8 @@ body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_
 }
 
 .fc-wrapper .fc-inside div.place-order {
+  float: none;
+  display: block;
   padding: 0 20px 0;
 }
 @media (min-width: 1000px) {
@@ -1691,13 +1693,16 @@ body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_
   }
 }
 
-.fc-sidebar div.place-order {
+.fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
   display: none;
 }
 @media (min-width: 1000px) {
-  .fc-sidebar div.place-order {
+  .fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
+    float: none;
     display: block;
-    padding: 10px 0 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0;
   }
 }
 
@@ -1746,11 +1751,6 @@ body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_
 .fc-wrapper .fc-place-order .fc-place-order-button:focus {
   outline: solid 2px #535156;
   outline-offset: 2px;
-}
-
-.fc-sidebar div.place-order {
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 div.place-order .woocommerce-terms-and-conditions-link:focus,
@@ -1849,11 +1849,6 @@ div.woocommerce form #payment .form-row.form-row-middle {
     margin-right: 0;
     margin-left: 4%;
   }
-}
-
-div.woocommerce form .form-row.place-order {
-  float: none;
-  display: block;
 }
 
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
