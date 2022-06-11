@@ -1,0 +1,36 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"collapsible-blocks",
+	"checkout-content-area",
+	"checkout-widget-areas",
+	"checkout-columns",
+	"checkout-header",
+	"checkout-progress-bar",
+	"checkout-steps",
+	"express-checkout",
+	"checkout-login",
+	"checkout-contact",
+	"checkout-billing",
+	"checkout-shipping",
+	"checkout-shipping-methods",
+	"checkout-payment-methods",
+	"checkout-place-order",
+	"checkout-sidebar",
+	"woocommerce-form-fields",
+	"woocommerce-form-fields-select2",
+	"order-summary",
+	"expansible-sections",
+	"checkout-footer",
+	
+	"../../node_modules/flyout-block/sass/theme/animations";
