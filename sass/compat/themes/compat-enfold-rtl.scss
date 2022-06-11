@@ -26,10 +26,12 @@ $_select2-selection-height:            remsize( 4.4rem ) !default;
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-// @import
-// 	"enfold/checkout-shipping-methods",
-// 	"enfold/checkout-payment-methods",
-// 	"enfold/checkout-place-order",
-// 	"enfold/checkout-validation",
-// 	"../../partials/woocommerce-form-fields-select2",
-// 	"enfold/woocommerce-form-fields-select2";
+@import
+	"enfold/checkout-content-area",
+	"enfold/checkout-payment-methods",
+	"enfold/checkout-place-order",
+	"enfold/checkout-validation",
+	"enfold/checkout-widget-areas",
+	"enfold/order-summary",
+	"enfold/woocommerce-form-fields",
+	"../../partials/woocommerce-form-fields-select2";
