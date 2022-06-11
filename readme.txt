@@ -156,6 +156,7 @@ Some themes may need adjustments due to not using WooCommerce standards hooks or
 * Avada - by ThemeFusion
 * Diza - by Thembay
 * Electro - by MandrasThemes
+* Enfold - by Kriesi
 * Hazel - by Select Themes
 * Impreza - by UpSolution
 * Kentha - by QantumThemes
@@ -163,8 +164,10 @@ Some themes may need adjustments due to not using WooCommerce standards hooks or
 * Mr. Tailor - by Get Bowtied
 * OnAir2 - by QantumThemes
 * Phlox PRO - by averta
+* Razzi - by DrFuri
 * Riode - by D-THEMES
 * Shoptimizer - by CommerceGurus
+* Striz - by Opal Team
 * The Hanger - by Get Bowtied
 * Woodmart - by XTemos
 * Zota - by Thembay
@@ -382,6 +385,9 @@ BREAKING CHANGES - Some features where moved to the PRO version. Changes to the 
 
 * Added: Body class `fc-checkout-step-current--<step_id>` to let developers change elements styles based on the currently active step.
 * Added: Feature to disable the place order buttons when not in the last step, activated by default. Use filter `` to deactivate changes to the place order button `disabled` state.
+* Added: Compatibility with theme Enfold.
+* Added: Compatibility with theme Striz.
+* Added: Compatibility with theme Razzi.
 * Added: Compatibility with plugin CurieRO.
 * Added: Compatibility with plugin WP Crowdfunding.
 * Improved: Translations to Dutch.
@@ -389,6 +395,7 @@ BREAKING CHANGES - Some features where moved to the PRO version. Changes to the 
 * Improved: Compatibility with plugin German Market.
 * Fixed: Order summary height too big on desktop view in some instances, resulting in extra whitespace.
 * Fixed: Duplicate IDs and field names when the additional place order section is displayed on the sidebar.
+* Fixed: Missing compatibility RTL support for some themes.
 * Fixed: JS error on checkout fragments script when fragments are returned in an unexpected format.
 * Fixed: Fatal error related to coupon code fields functions calling `wc_coupon_enabled` too early.
 

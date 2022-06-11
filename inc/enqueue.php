@@ -57,7 +57,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	public function register_assets() {
 		// Maybe load RTL file
 		$rtl_suffix = is_rtl() ? '-rtl' : '';
-
+		
 		// Require Bundle and Polyfills
 		if ( ! wp_script_is( 'require-bundle', 'registered' ) ) { wp_register_script( 'require-bundle', self::$directory_url . 'js/lib/require-bundle'. self::$asset_version . '.js', NULL, NULL ); }
 		if ( ! wp_script_is( 'require-polyfills', 'registered' ) ) { wp_register_script( 'require-polyfills', self::$directory_url . 'js/lib/require-polyfills'. self::$asset_version . '.js', NULL, NULL ); }

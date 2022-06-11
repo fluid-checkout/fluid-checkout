@@ -26,6 +26,8 @@ body:not(.has-collapsible-block) .fc-wrapper [data-collapsible].is-collapsed > .
 }
 
 .woocommerce-MyAccount-content .woocommerce-address-fields__field-wrapper {
+  display: block;
+  margin: 0;
   margin-bottom: 50px;
 }
 
@@ -50,8 +52,10 @@ div.woocommerce form .form-row:last-child {
 }
 
 div.woocommerce form .form-row {
+  display: block;
   margin-bottom: 20px;
   padding: 0;
+  max-width: 100%;
 }
 
 div.woocommerce form .form-row.has-description:not(:last-child) {
@@ -122,11 +126,6 @@ div.woocommerce form #payment .form-row.form-row-middle {
   }
 }
 
-div.woocommerce form .form-row.place-order {
-  float: none;
-  display: block;
-}
-
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
   position: static;
   display: block;
@@ -152,6 +151,7 @@ div.woocommerce form .form-row label,
 div.woocommerce form #billing_address_2_field > label,
 div.woocommerce form #shipping_address_2_field > label {
   z-index: 2;
+  margin-top: 0;
   margin-bottom: 5px;
   width: auto;
   opacity: unset;

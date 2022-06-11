@@ -3,6 +3,8 @@
 // ------------------------------------
 
 .fc-wrapper .fc-inside div.place-order {
+	float: none;
+	display: block;
 	padding: $place-order-padding;
 
 	@media (#{$bp-larger-than-desktop}) {
@@ -10,11 +12,16 @@
 	}
 }
 
-.fc-sidebar div.place-order {
+
+
+.fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
 	display: none;
 
 	@media (#{$bp-larger-than-desktop}) {
+		float: none;
 		display: block;
+		margin-top: $global-spacing-small;
+		margin-bottom: $global-spacing-small;
 		padding: $place-order-padding-sidebar--large-screen;
 	}
 }
@@ -78,11 +85,6 @@
 }
 
 
-
-.fc-sidebar div.place-order {
-	margin-top: $global-spacing-small;
-	margin-bottom: $global-spacing-small;
-}
 
 div.place-order .woocommerce-terms-and-conditions-link,
 div.place-order .woocommerce-privacy-policy-link {

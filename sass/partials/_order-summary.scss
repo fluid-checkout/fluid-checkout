@@ -25,6 +25,10 @@ body#{ $_body-page-selector } div.woocommerce .fc-wrapper #order_review {
 	width: 100%;
 	background-color: transparent;
 }
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper #order_review:before,
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper #order_review:after {
+	display: none;
+}
 
 
 

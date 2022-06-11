@@ -2,13 +2,14 @@
   position: relative;
 }
 
-.fc-wrapper .fc-expansible-form-section__content--coupon_code .form-row {
+.fc-wrapper .fc-expansible-form-section__content--coupon_code #coupon_code_field.form-row {
   float: none;
   margin: 0;
   padding: 0;
 }
 
 .fc-wrapper .fc-expansible-form-section__content--coupon_code input#coupon_code {
+  margin: 0;
   height: 55px;
 }
 

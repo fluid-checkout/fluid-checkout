@@ -454,7 +454,6 @@
 			if ( formRow ) {
 				field = formRow.querySelector( 'select' );
 			}
-
 		}
 
 		_publicMethods.validateField( field );
