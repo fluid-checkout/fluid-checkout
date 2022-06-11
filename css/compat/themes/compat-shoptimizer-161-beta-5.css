@@ -24,6 +24,10 @@ body.theme-shoptimizer .shoptimizer-mini-cart-wrap {
   z-index: 2020;
 }
 
+body.theme-shoptimizer .fc-wrapper .fc-place-order #place_order.fc-place-order-button {
+  margin: 0;
+}
+
 body.theme-shoptimizer div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, body.theme-shoptimizer div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
   top: 8px;
 }
