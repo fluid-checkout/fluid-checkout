@@ -123,14 +123,14 @@ body.theme-enfold div.woocommerce form .form-row span.select2-container {
 
 body.theme-enfold div.woocommerce form .form-row .select2-selection {
   height: auto;
-  min-height: 42px;
-  border-radius: 3px;
+  min-height: 34px;
+  border-radius: 0;
   line-height: 0;
 }
 
 body.theme-enfold div.woocommerce form .form-row .select2-selection__rendered {
-  min-height: 42px;
-  border-radius: 3px;
+  min-height: 34px;
+  border-radius: 0;
 }
 
 body.theme-enfold div.woocommerce form .form-row .select2-selection .select2-selection__clear,
@@ -138,8 +138,8 @@ body.theme-enfold div.woocommerce form .form-row .select2-selection .select2-sel
   top: 0;
   margin-top: 5px;
   height: auto;
-  min-height: 30px;
-  line-height: 30px;
+  min-height: 22px;
+  line-height: 22px;
   transform: none;
 }
 
@@ -150,7 +150,7 @@ body.theme-enfold div.woocommerce form .form-row .select2-selection--single {
 body.theme-enfold div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   padding-top: 0;
   padding-bottom: 0;
-  line-height: 42px;
+  line-height: 34px;
 }
 
 body.theme-enfold div.woocommerce form .form-row .select2-selection--multiple {
@@ -159,25 +159,25 @@ body.theme-enfold div.woocommerce form .form-row .select2-selection--multiple {
 
 body.theme-enfold div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
   padding-bottom: 5px;
-  min-height: 32px;
-  line-height: 32px;
+  min-height: 24px;
+  line-height: 24px;
   white-space: normal;
 }
 
 body.theme-enfold div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
   margin-top: 5px;
-  line-height: 30px;
+  line-height: 22px;
   overflow: hidden;
 }
 
 body.theme-enfold div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
   margin-top: 5px;
-  min-height: 30px;
-  line-height: 30px;
+  min-height: 22px;
+  line-height: 22px;
 }
 
 body.theme-enfold div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   margin-top: 0;
-  height: 32px;
+  height: 24px;
   min-height: auto;
 }
