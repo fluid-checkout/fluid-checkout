@@ -26,9 +26,6 @@ $_select2-selection-height:            remsize( 5rem ) !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	// "razzi/checkout-shipping-methods",
-	// "razzi/checkout-payment-methods";
-	// "razzi/checkout-place-order",
-	// "razzi/checkout-validation",
+	"razzi/checkout-widget-areas",
 	"../../partials/woocommerce-form-fields-select2",
 	"razzi/woocommerce-form-fields-select2";
