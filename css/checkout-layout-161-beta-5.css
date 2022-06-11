@@ -1542,7 +1542,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   position: relative;
 }
 
-.woocommerce-page.woocommerce-checkout .fc-wrapper #payment {
+body.woocommerce-checkout.woocommerce-page .fc-wrapper #payment {
   margin: 0;
   padding: 0;
   border: 0;
@@ -1550,7 +1550,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   background-color: transparent;
 }
 
-.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
+body.woocommerce-checkout.woocommerce-page .fc-wrapper #payment ul.payment_methods {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -1635,6 +1635,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   background-color: transparent;
   box-shadow: none;
   transition: all 0.15s linear;
+  transform: none;
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio]:focus + label:before {
@@ -1657,7 +1658,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   border-color: #b2b2b2;
 }
 
-.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:before {
+body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:before {
   content: "";
 }
 
@@ -1693,6 +1694,9 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   left: 10px;
   right: auto;
   color: transparent;
+  background-color: transparent;
+  transition: all 0.15s linear;
+  transform: none;
 }
 
 .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:after {
