@@ -11,25 +11,7 @@
 
 
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-riode' !default;
-$_select2-border-width:                remsize( .1rem ) !default;
-$_select2-border-radius:               0 !default;
-$_select2-selection-height:            remsize( 4.55rem ) !default;
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"riode/checkout-coupon-code",
-	"riode/checkout-payment-methods",
-	"riode/checkout-validation",
-	"riode/woocommerce-form-fields",
-	"../../partials/woocommerce-form-fields-select2",
-	"riode/woocommerce-form-fields-select2";
+	"riode/__imports";

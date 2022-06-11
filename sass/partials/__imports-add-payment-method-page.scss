@@ -1,0 +1,15 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-add-payment-method' !default;
+
+
+
+
+	
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"partials/clearfix",
+	"partials/checkout-payment-methods";

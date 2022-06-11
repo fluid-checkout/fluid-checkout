@@ -10,25 +10,7 @@
 
 
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-shoptimizer' !default;
-$_select2-border-width:                remsize( .1rem ) !default;
-$_select2-border-radius:               remsize( .3rem ) !default;
-$_select2-selection-height:            remsize( 4rem ) !default;
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"shoptimizer/zindex",
-	"shoptimizer/checkout-place-order",
-	"shoptimizer/checkout-validation",
-	"shoptimizer/woocommerce-form-fields",
-	"shoptimizer/order-summary",
-	"../../partials/woocommerce-form-fields-select2",
-	"shoptimizer/woocommerce-form-fields-select2";
+	"shoptimizer/__imports";

@@ -10,25 +10,7 @@
 
 
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-aora' !default;
-$_select2-border-width:                remsize( .1rem ) !default;
-$_select2-border-radius:               remsize( .3rem ) !default;
-$_select2-selection-height:            remsize( 4.4rem ) !default;
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"aora/checkout-shipping-methods",
-	"aora/checkout-payment-methods",
-	"aora/checkout-place-order",
-	"aora/checkout-validation",
-	"../../partials/woocommerce-form-fields-select2",
-	"aora/woocommerce-form-fields-select2";
+	"aora/__imports";

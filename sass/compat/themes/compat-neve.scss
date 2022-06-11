@@ -10,24 +10,7 @@
 
 
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-neve' !default;
-$_select2-border-width:                remsize( .2rem ) !default;
-$_select2-border-radius:               remsize( .3rem ) !default;
-$_select2-selection-height:            remsize( 5.12rem ) !default;
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"neve/checkout-coupon-code",
-	"neve/checkout-payment-methods",
-	"neve/checkout-validation",
-	"../../partials/woocommerce-form-fields-select2",
-	"neve/woocommerce-form-fields-select2";
+	"neve/__imports";

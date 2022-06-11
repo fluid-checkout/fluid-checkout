@@ -11,23 +11,7 @@
 
 
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-blocksy' !default;
-$_select2-border-width:                remsize( .1rem ) !default;
-$_select2-border-radius:               remsize( .3rem ) !default;
-$_select2-selection-height:            remsize( 4rem ) !default;
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"blocksy/checkout-validation",	
-	"blocksy/woocommerce-form-fields",
-	"../../partials/woocommerce-form-fields-select2",
-	"blocksy/woocommerce-form-fields-select2";
+	"blocksy/__imports";

@@ -1,0 +1,24 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-orchid-store' !default;
+$_select2-border-width:                remsize( .2rem ) !default;
+$_select2-border-radius:               0 !default;
+$_select2-selection-height:            remsize( 4.6rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"checkout-steps",
+	"checkout-payment-methods",
+	"checkout-additional-notes",
+	"checkout-validation",
+	"woocommerce-form-fields",
+	"../../partials/woocommerce-form-fields-select2",
+	"woocommerce-form-fields-select2";
