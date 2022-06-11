@@ -1,0 +1,19 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-edit-address' !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"clearfix",
+	"collapsible-blocks",
+	"woocommerce-account-page-addresses",
+	"woocommerce-form-fields",
+	"woocommerce-form-fields-select2",
+	"expansible-sections";

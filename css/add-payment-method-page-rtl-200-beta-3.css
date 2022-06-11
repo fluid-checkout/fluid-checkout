@@ -10,8 +10,8 @@
   position: relative;
 }
 
-body.woocommerce-add-payment-method .fc-wrapper #payment,
-body.woocommerce-add-payment-method #add_payment_method .fc-wrapper #payment {
+body.woocommerce-add-payment-method div.woocommerce .fc-wrapper #payment,
+body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrapper #payment {
   margin: 0;
   padding: 0;
   border: 0;
@@ -19,8 +19,8 @@ body.woocommerce-add-payment-method #add_payment_method .fc-wrapper #payment {
   background-color: transparent;
 }
 
-body.woocommerce-add-payment-method .fc-wrapper #payment ul.payment_methods,
-body.woocommerce-add-payment-method #add_payment_method .fc-wrapper #payment ul.payment_methods {
+body.woocommerce-add-payment-method div.woocommerce .fc-wrapper #payment ul.payment_methods,
+body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrapper #payment ul.payment_methods {
   list-style-type: none;
   margin: 0;
   padding: 0;
