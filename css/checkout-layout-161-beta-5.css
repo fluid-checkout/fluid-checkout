@@ -1833,9 +1833,11 @@ div.place-order .woocommerce-privacy-policy-link:focus {
   outline-offset: 1px !important;
 }
 
-.fc-sidebar .fc-checkout-order-review__widgets-outside {
-  padding-left: 20px;
-  padding-right: 20px;
+@media (min-width: 1000px) {
+  .fc-sidebar .fc-checkout-order-review__widgets-outside {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 div.woocommerce form .form-row:before,
