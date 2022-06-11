@@ -1,17 +1,15 @@
 // ------------------------------------
-// IMPORT ABSTRACT
+// DEFINE LOCAL VARIABLES
 // ------------------------------------
-@import
-	"abstract/_all-early",
-	"abstract/_variables-rtl",
-	"abstract/_all";
+$_body-page-selector:                  '.woocommerce-add-payment-method' !default;
 
 
 
 
-
+	
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"partials/_imports-add-payment-method-page";
+	"partials/clearfix",
+	"partials/checkout-payment-methods";
