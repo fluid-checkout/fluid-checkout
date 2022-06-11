@@ -1542,7 +1542,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   position: relative;
 }
 
-.woocommerce-page.woocommerce-checkout .fc-wrapper #payment {
+body.woocommerce-checkout.woocommerce-page .fc-wrapper #payment {
   margin: 0;
   padding: 0;
   border: 0;
@@ -1550,7 +1550,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   background-color: transparent;
 }
 
-.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
+body.woocommerce-checkout.woocommerce-page .fc-wrapper #payment ul.payment_methods {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -1635,6 +1635,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   background-color: transparent;
   box-shadow: none;
   transition: all 0.15s linear;
+  transform: none;
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio]:focus + label:before {
@@ -1657,7 +1658,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   border-color: #b2b2b2;
 }
 
-.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:before {
+body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:before {
   content: "";
 }
 
@@ -1693,6 +1694,9 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   left: 10px;
   right: auto;
   color: transparent;
+  background-color: transparent;
+  transition: all 0.15s linear;
+  transform: none;
 }
 
 .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:after {
@@ -1757,6 +1761,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 }
 
 .fc-wrapper .fc-inside div.place-order {
+  float: none;
+  display: block;
   padding: 0 20px 0;
 }
 @media (min-width: 1000px) {
@@ -1765,13 +1771,16 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   }
 }
 
-.fc-sidebar div.place-order {
+.fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
   display: none;
 }
 @media (min-width: 1000px) {
-  .fc-sidebar div.place-order {
+  .fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
+    float: none;
     display: block;
-    padding: 10px 0 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0;
   }
 }
 
@@ -1820,11 +1829,6 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 .fc-wrapper .fc-place-order .fc-place-order-button:focus {
   outline: solid 2px #535156;
   outline-offset: 2px;
-}
-
-.fc-sidebar div.place-order {
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 div.place-order .woocommerce-terms-and-conditions-link:focus,
@@ -1923,11 +1927,6 @@ div.woocommerce form #payment .form-row.form-row-middle {
     margin-left: 0;
     margin-right: 4%;
   }
-}
-
-div.woocommerce form .form-row.place-order {
-  float: none;
-  display: block;
 }
 
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description {

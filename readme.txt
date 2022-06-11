@@ -148,6 +148,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 * Mr. Tailor - by Get Bowtied
 * OnAir2 - by QantumThemes
 * Phlox PRO - by averta
+* Razzi - by DrFuri
 * Riode - by D-THEMES
 * Shoptimizer - by CommerceGurus
 * Striz - by Opal Team
@@ -349,6 +350,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 * Added: Body class `fc-checkout-step-current--<step_id>` to let developers change elements styles based on the currently active step.
 * Added: Feature to disable the place order buttons when not in the last step, activated by default. Use filter `` to deactivate changes to the place order button `disabled` state.
 * Added: Compatibility with theme Striz.
+* Added: Compatibility with theme Razzi.
 * Added: Compatibility with plugin CurieRO.
 * Added: Compatibility with plugin WP Crowdfunding.
 * Improved: Translations to Dutch.
