@@ -10,17 +10,7 @@
 
 
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-striz' !default;
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"striz/checkout-payment-methods";
+	"striz/__imports";
