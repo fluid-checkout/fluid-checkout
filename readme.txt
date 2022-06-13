@@ -350,7 +350,7 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 * Bump tested up to WordPress 6.0 and WooCommerce 6.5.1
 * Added: Body class `fc-checkout-step-current--<step_id>` to let developers change elements styles based on the currently active step.
-* Added: Feature to disable the place order buttons when not in the last step, activated by default. Use filter `` to deactivate changes to the place order button `disabled` state.
+* Added: Feature to disable the place order buttons when not in the last step, activated by default. Use filter `fc_checkout_maybe_disable_place_order_button` to deactivate changes to the place order button `disabled` state.
 * Added: Compatibility with theme Enfold.
 * Added: Compatibility with theme Striz.
 * Added: Compatibility with theme Razzi.
