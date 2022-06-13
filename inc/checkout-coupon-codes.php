@@ -19,6 +19,14 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
 		// Bail if use of coupons not enabled
 		if ( ! wc_coupons_enabled() ) { return; }
 
@@ -29,7 +37,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
-		// Checkout validation settings
+		// Checkout JS settings
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Prevent hiding coupon code field behind a link button, as it is implemented directly

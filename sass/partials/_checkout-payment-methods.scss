@@ -7,7 +7,7 @@
 }
 
 
-.woocommerce-page.woocommerce-checkout .fc-wrapper #payment {
+body#{ $_body-page-selector }.woocommerce-page .fc-wrapper #payment {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -17,7 +17,7 @@
 
 
 
-.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
+body#{ $_body-page-selector }.woocommerce-page .fc-wrapper #payment ul.payment_methods {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -112,12 +112,12 @@
 	background-color: transparent;
 	box-shadow: none;
 	transition: all $global-animation-duration-fast linear;
+	transform: none;
 }
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:focus + label:before {
 	outline: $focus-outline-field;
 	outline-offset: $focus-outline-offset-field;
 }
-
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:before {
 	content: '';
@@ -133,9 +133,12 @@
 	border-color: darken( $payment-method-border-color, 15% );
 }
 
-.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:before {
+body#{ $_body-page-selector } .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:before {
 	content: '';
 }
+
+
+
 .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type="radio"]:first-child + label:after {
 	@include icon-styles();
 	@include icon( 'i-check-small' );
@@ -146,6 +149,9 @@
 	#{ $alignment-left }: $global-spacing-extra-small;
 	#{ $alignment-right }: auto;
 	color: transparent;
+	background-color: transparent;
+	transition: all $global-animation-duration-fast linear;
+	transform: none;
 }
 .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:after {
 	color: $white;

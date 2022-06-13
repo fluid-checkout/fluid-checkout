@@ -1,0 +1,33 @@
+// ------------------------------------
+// CHECKOUT FOOTER
+// ------------------------------------
+.fc-checkout-footer {
+	border-top: solid remsize( .1rem ) $border-color;
+}
+
+.fc-checkout-footer__inner {
+	box-sizing: border-box;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	width: 100%;
+
+	// max-width
+	max-width: $container-width-mobile;
+	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
+	@media (#{$bp-larger-than-desktop}) { max-width: $container-width-desktop; }
+	@media (#{$bp-larger-than-desktop-medium}) { max-width: $container-width-desktop-medium; }
+	@media (#{$bp-larger-than-desktop-large}) { max-width: $container-width-desktop-large; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { max-width: $container-width-desktop-extra-large; }
+
+	// padding
+	padding: 0 $container-spacing-mobile;
+	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet; }
+	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop; }
+	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium; }
+	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large; }
+}

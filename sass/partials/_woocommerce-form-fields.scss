@@ -15,8 +15,10 @@ div.woocommerce form .form-row:last-child {
 
 
 div.woocommerce form .form-row {
+	display: block;
 	margin-bottom: $global-spacing-small;
 	padding: 0;
+	max-width: 100%;
 }
 div.woocommerce form .form-row.has-description:not( :last-child ) {
 	margin-bottom: remsize( .8rem );
@@ -74,13 +76,6 @@ div.woocommerce form #payment .form-row.form-row-middle {
 
 
 
-div.woocommerce form .form-row.place-order {
-	float: none;
-	display: block;
-}
-
-
-
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
 	position: static;
 	display: block;
@@ -109,6 +104,7 @@ div.woocommerce form .form-row label,
 div.woocommerce form #billing_address_2_field > label,
 div.woocommerce form #shipping_address_2_field > label {
 	z-index: z( 'default' ) + 1;
+	margin-top: 0;
 	margin-bottom: $global-spacing-tiny;
 	width: auto;
 	opacity: unset;

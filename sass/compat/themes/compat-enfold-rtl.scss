@@ -1,0 +1,37 @@
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
+@import
+	"../../abstract/_all-early",
+	"../../abstract/variables-rtl",
+	"../../abstract/_all";
+
+
+
+
+
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-enfold' !default;
+$_select2-border-width:                remsize( .1rem ) !default;
+$_select2-border-radius:               0 !default;
+$_select2-selection-height:            remsize( 3.6rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"enfold/checkout-content-area",
+	"enfold/checkout-payment-methods",
+	"enfold/checkout-place-order",
+	"enfold/checkout-validation",
+	"enfold/checkout-widget-areas",
+	"enfold/order-summary",
+	"enfold/woocommerce-form-fields",
+	"../../partials/woocommerce-form-fields-select2";

@@ -1,0 +1,24 @@
+// ------------------------------------
+// CHECKOUT SHIPPING METHODS
+// ------------------------------------
+
+.woocommerce .wc_shipping_dpd_boxes_header,
+.woocommerce .wc_shipping_fan_collectpoint_header,
+.woocommerce .wc_shipping_sameday_lockers_header {
+	padding-top: $global-spacing-small;
+}
+
+
+
+.woocommerce .wc_shipping_dpd_boxes,
+.woocommerce .wc_shipping_sameday_lockers,
+.woocommerce .wc_shipping_fan_collectpoint {
+	padding-top: $global-spacing-tiny;
+}
+
+
+
+.woocommerce .wc_shipping_sameday_lockers + .shipping-pickup-store > div {
+	padding-top: $global-spacing-tiny;
+	text-align: #{ $alignment-right };
+}

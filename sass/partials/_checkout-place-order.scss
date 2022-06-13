@@ -3,6 +3,8 @@
 // ------------------------------------
 
 .fc-wrapper .fc-inside div.place-order {
+	float: none;
+	display: block;
 	padding: $place-order-padding;
 
 	@media (#{$bp-larger-than-desktop}) {
@@ -10,11 +12,16 @@
 	}
 }
 
-.fc-sidebar div.place-order {
+
+
+.fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
 	display: none;
 
 	@media (#{$bp-larger-than-desktop}) {
+		float: none;
 		display: block;
+		margin-top: $global-spacing-small;
+		margin-bottom: $global-spacing-small;
 		padding: $place-order-padding-sidebar--large-screen;
 	}
 }
@@ -56,6 +63,11 @@
 	text-align: center;
 }
 
+// Place order button on the sidebar
+.fc-sidebar .fc-place-order {
+	padding: $global-spacing-small 0;
+}
+
 
 
 // Place order button
@@ -70,11 +82,6 @@
 		outline: $focus-outline-button;
 		outline-offset: $focus-outline-offset-button;
 	}
-}
-
-// Place order button on the sidebar
-.fc-sidebar .fc-place-order .fc-place-order-button {
-	margin: $global-spacing-extra-small auto 0;
 }
 
 

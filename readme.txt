@@ -3,7 +3,7 @@ Contributors: fluidwebco, diegoversiani, luiggiab
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 5.9
+Tested up to: 6.0
 Stable tag: 1.6.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -141,6 +141,7 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 * Avada - by ThemeFusion
 * Diza - by Thembay
 * Electro - by MandrasThemes
+* Enfold - by Kriesi
 * Hazel - by Select Themes
 * Impreza - by UpSolution
 * Kentha - by QantumThemes
@@ -148,8 +149,10 @@ By default, Fluid Checkout works with every WooCommerce theme. Some themes may n
 * Mr. Tailor - by Get Bowtied
 * OnAir2 - by QantumThemes
 * Phlox PRO - by averta
+* Razzi - by DrFuri
 * Riode - by D-THEMES
 * Shoptimizer - by CommerceGurus
+* Striz - by Opal Team
 * The Hanger - by Get Bowtied
 * Woodmart - by XTemos
 * Zota - by Thembay
@@ -203,6 +206,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 * SG Checkout Location Picker for WooCommerce - by Sevengits
 * WooCommerce Correios - by Claudio Sanches
 * WooCommerce PDF Invoices & Packing Slips - by Ewout Fernhout
+* WP Crowdfunding - by Themeum
 
 = Premium Plugins =
 
@@ -341,6 +345,25 @@ We are working on building the PRO version of Fluid Checkout. Visit [our website
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Bump tested up to WordPress 6.0 and WooCommerce 6.5.1
+* Added: Body class `fc-checkout-step-current--<step_id>` to let developers change elements styles based on the currently active step.
+* Added: Feature to disable the place order buttons when not in the last step, activated by default. Use filter `` to deactivate changes to the place order button `disabled` state.
+* Added: Compatibility with theme Enfold.
+* Added: Compatibility with theme Striz.
+* Added: Compatibility with theme Razzi.
+* Added: Compatibility with plugin CurieRO.
+* Added: Compatibility with plugin WP Crowdfunding.
+* Improved: Translations to Dutch.
+* Improved: Compatibility with plugin Brazilian Market.
+* Improved: Compatibility with plugin German Market.
+* Fixed: Order summary height too big on desktop view in some instances, resulting in extra whitespace.
+* Fixed: Duplicate IDs and field names when the additional place order section is displayed on the sidebar.
+* Fixed: Missing compatibility RTL support for some themes.
+* Fixed: JS error on checkout fragments script when fragments are returned in an unexpected format.
+* Fixed: Fatal error related to coupon code fields functions calling `wc_coupon_enabled` too early.
 
 = 1.6.0 - 2022-05-19 =
 
