@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-13 09:18+0000\n"
+"POT-Creation-Date: 2022-06-13 09:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -221,7 +221,7 @@ msgstr ""
 #: inc/admin/admin-settings-general.php:115
 msgid ""
 "Choose a background color for the checkout page footer. Only applies when "
-"using the plugin's checkout header."
+"using the plugin's checkout footer."
 msgstr ""
 
 #: inc/admin/admin-settings-general.php:95
