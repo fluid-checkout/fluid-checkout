@@ -1,0 +1,10 @@
+body.theme-Impreza:not(.has-checkout-header).theme-Impreza div.woocommerce {
+  padding-top: 120px;
+}
+
+body.theme-Impreza div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, body.theme-Impreza div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
+  top: 10px;
+}
+body.theme-Impreza div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after {
+  right: 24px;
+}

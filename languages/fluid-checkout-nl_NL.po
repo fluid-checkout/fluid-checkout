@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-29 12:58+0000\n"
-"PO-Revision-Date: 2022-05-24 13:57+0000\n"
+"PO-Revision-Date: 2022-06-13 09:27+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -14,8 +14,7 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.6.1; wp-5.9.3"
 
-#: inc/admin/admin-settings-general.php:145
-#, fuzzy
+#: inc/admin/admin-settings-general.php:354
 msgid ""
 "(Experimental) Display an additional \"Place order\" and terms checkbox in "
 "the last checkout step."
@@ -51,28 +50,54 @@ msgid "Activate %s"
 msgstr "Activeer %s"
 
 #. %s: Form field label
-#: inc/checkout-coupon-codes.php:167 inc/checkout-hide-optional-fields.php:113
+#: inc/checkout-coupon-codes.php:175 inc/checkout-hide-optional-fields.php:113
 #, php-format
 msgid "Add %s"
 msgstr "Toevoegen %s"
 
-#: inc/admin/admin-settings-general.php:208
+#: templates/fc/checkout/form-gift-options.php:52
+msgid "Add a gift message"
+msgstr "Voeg een cadeau bericht toe"
+
+#: inc/admin/admin-settings-general.php:209
 msgid "Add a phone field to the shipping address form"
 msgstr "Voeg een telefoonveld toe aan het verzendadresformulier"
 
-#: inc/admin/admin-settings-general.php:281
+#: inc/admin/admin-settings-general.php:332
 msgid "Add widget areas to the checkout page"
 msgstr "Widgetgebieden toevoegen aan de afrekenpagina"
 
-#: inc/checkout-steps.php:1906
+#: inc/checkout-steps.php:1981
 msgid "Additional notes"
 msgstr "Extra notities"
+
+#: inc/admin/admin-settings-general.php:346
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+#: inc/admin/admin-settings-general.php:302
+msgid ""
+"Allow customers to add a gift message and other gift related options to the "
+"order."
+msgstr ""
+"Laat klanten een cadeaubericht en andere cadeaugerelateerde opties aan de "
+"bestelling toevoegen."
 
 #: templates/fc/checkout/form-contact-login.php:24
 msgid "Already have an account?"
 msgstr "Heb je al een account?"
 
-#: inc/checkout-steps.php:1678
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-amazon-payments-advanced.php:102
+msgctxt "Amazon Pay Express elements"
+msgid "Button and message"
+msgstr "Knop en bericht"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-amazon-payments-advanced.php:101
+msgctxt "Amazon Pay Express elements"
+msgid "Only button"
+msgstr "Alleen knop"
+
+#: inc/checkout-steps.php:1753
 msgid "An account will be created with the information provided."
 msgstr "Er wordt een account aangemaakt met de verstrekte gegevens."
 
@@ -80,24 +105,33 @@ msgstr "Er wordt een account aangemaakt met de verstrekte gegevens."
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Appartement, unit, gebouw, verdieping, etc."
 
-#: inc/admin/admin-settings-general.php:116
+#: inc/admin/admin-settings-general.php:126
 msgid "Applies only to multi-step layouts."
 msgstr "Geldt alleen voor lay-outs met meerdere stappen."
 
-#: inc/admin/admin-settings-general.php:197
+#: inc/admin/admin-settings-general.php:198
 msgid "Billing Address"
 msgstr "Facturatie adres"
 
-#: inc/admin/admin-settings-general.php:198
+#: inc/admin/admin-settings-general.php:199
 msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 "Factuuradres hetzelfde als het verzendadres dat standaard is aangevinkt"
 
-#: inc/checkout-steps.php:2650
+#: inc/checkout-steps.php:2725
 msgid "Billing to"
 msgstr "Facturering aan"
 
-#: inc/checkout-coupon-codes.php:145
+#: inc/checkout-gift-options.php:173
+#, php-format
+msgid "Brief message with up to %d characters, printed on the packing slip."
+msgstr "Kort bericht met maximaal %d tekens, afgedrukt op de pakbon."
+
+#: inc/checkout-gift-options.php:173
+msgid "Brief message, printed on the packing slip."
+msgstr "Kort bericht, afgedrukt op de pakbon."
+
+#: inc/checkout-coupon-codes.php:153
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
 msgstr "Toepassen"
@@ -116,7 +150,7 @@ msgstr "Voordat plaats bestelling sectie"
 msgid "Captcha Pro by BestWebSoft"
 msgstr "Captcha Pro van BestWebSoft"
 
-#: inc/checkout-steps.php:503
+#: inc/checkout-steps.php:539
 msgid "Cart total:"
 msgstr "Totaal winkelwagen:"
 
@@ -124,7 +158,7 @@ msgstr "Totaal winkelwagen:"
 msgid "Change email address to: {suggestion-value}"
 msgstr "E-mailadres wijzigen in: {suggestion-value}"
 
-#: inc/checkout-steps.php:1363
+#: inc/checkout-steps.php:1438
 #, php-format
 msgid "Change: %s"
 msgstr "Veranderingen: %s"
@@ -133,15 +167,19 @@ msgstr "Veranderingen: %s"
 msgid "Checkout"
 msgstr "Afrekenen"
 
-#: inc/checkout-widget-areas.php:90
+#: inc/checkout-widget-areas.php:91
 msgid "Checkout Below Place Order"
 msgstr "Afrekenen Hieronder Bestelling plaatsen"
 
-#: inc/checkout-widget-areas.php:44
+#: inc/checkout-widget-areas.php:106
+msgid "Checkout Footer"
+msgstr "Afrekenen voettekst"
+
+#: inc/checkout-widget-areas.php:45
 msgid "Checkout Header - Desktop"
 msgstr "Afrekenkop - Desktop"
 
-#: inc/checkout-widget-areas.php:54
+#: inc/checkout-widget-areas.php:55
 msgid "Checkout Header - Mobile"
 msgstr "Afrekenkop - Mobiel"
 
@@ -149,47 +187,56 @@ msgstr "Afrekenkop - Mobiel"
 msgid "Checkout Layout"
 msgstr "Afrekenen lay-out"
 
-#: inc/checkout-widget-areas.php:80
+#: inc/checkout-widget-areas.php:81
 msgid "Checkout Order Summary"
 msgstr "Afrekenen Bestellingsoverzicht"
 
-#: inc/checkout-widget-areas.php:68
+#: inc/checkout-widget-areas.php:69
 msgid "Checkout Sidebar"
 msgstr "Afrekenen Sidebar"
 
-#: inc/checkout-steps.php:1050
+#: inc/checkout-steps.php:1105
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Facturering"
 
-#: inc/checkout-steps.php:1029
+#: inc/checkout-steps.php:1084
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Contact"
 
-#: inc/checkout-steps.php:1059
+#: inc/checkout-steps.php:1114
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Betaling"
 
-#: inc/checkout-steps.php:1039
+#: inc/checkout-steps.php:1094
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Verzending"
 
-#: inc/checkout-steps.php:1363
+#: inc/checkout-steps.php:1438
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Veranderen"
 
-#: inc/checkout-steps.php:1364
+#: inc/checkout-steps.php:1439
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Sla op"
 
-#: inc/admin/admin-settings-general.php:280
+#: inc/admin/admin-settings-general.php:331
 msgid "Checkout Widget Areas"
 msgstr "Widgetgebieden afrekenen"
+
+#: inc/admin/admin-settings-general.php:115
+#, fuzzy
+msgid ""
+"Choose a background color for the checkout page footer. Only applies when "
+"using the plugin's checkout footer."
+msgstr ""
+"Kies een achtergrondkleur voor de kassa pagina voettekst. Geldt alleen als "
+"je de kassa voettekst van de plugin gebruikt."
 
 #: inc/admin/admin-settings-general.php:95
 msgid ""
@@ -216,15 +263,15 @@ msgstr ""
 "betaalpagina. Alleen van toepassing bij gebruik van de checkout-header van "
 "de plug-in."
 
-#: inc/admin/admin-settings-general.php:234
+#: inc/admin/admin-settings-general.php:235
 msgid "Choose in which position to display the shipping methods"
 msgstr "Kies in welke positie u de verzendmethoden wilt weergeven"
 
-#: inc/admin/admin-settings-general.php:221
+#: inc/admin/admin-settings-general.php:222
 msgid "Choose in which step to display the shipping phone"
 msgstr "Kies in welke stap je de verzendtelefoon wilt weergeven"
 
-#: inc/checkout-steps.php:503
+#: inc/checkout-steps.php:539
 msgid "Click to go to the order summary"
 msgstr "Klik om naar het besteloverzicht te gaan"
 
@@ -249,11 +296,11 @@ msgstr ""
 "Bepaalt of u de kop- en voettekst van de Fluid Checkout-pagina wilt "
 "gebruiken of de momenteel actieve thema’s wilt behouden."
 
-#: inc/checkout-coupon-codes.php:121 inc/checkout-coupon-codes.php:143
+#: inc/checkout-coupon-codes.php:129 inc/checkout-coupon-codes.php:151
 msgid "Coupon code"
 msgstr "Coupon code"
 
-#: inc/admin/admin-settings-general.php:246
+#: inc/admin/admin-settings-general.php:256
 msgid "Coupon Codes"
 msgstr "Coupon codes"
 
@@ -307,7 +354,7 @@ msgstr ""
 "begrijp van het wijzigen van de positie van de juridische selectievakjes op "
 "mijn betaalpagina .</span>"
 
-#: inc/admin/admin-settings-general.php:268
+#: inc/admin/admin-settings-general.php:278
 msgid "Define the visibility of the additional order notes field."
 msgstr "Definieer de zichtbaarheid van het veld aanvullende ordernotities."
 
@@ -333,20 +380,36 @@ msgstr "Bedoelde je %s?"
 msgid "Dismiss Notice"
 msgstr "Kennisgeving afwijzen"
 
-#: inc/admin/admin-settings-general.php:176
+#: inc/admin/admin-settings-general.php:301
+msgid "Display gift message and other gift options at the checkout page"
+msgstr ""
+"Geef een cadeaubericht en andere cadeau-opties weer op de afrekenpagina"
+
+#: inc/admin/admin-settings-general.php:177
 msgid "Display the \"Add\" link buttons in lowercase"
 msgstr "Geef de koppelingsknoppen “Toevoegen” in kleine letters weer"
 
-#: inc/admin/admin-settings-general.php:115
-#, fuzzy
+#: inc/admin/admin-settings-general.php:125
 msgid "Display the checkout progress bar"
 msgstr "Toon voortgangsbalk op de afrekenpagina"
 
-#: inc/admin/admin-settings-general.php:257
+#: inc/admin/admin-settings-general.php:267
 msgid "Display the coupon codes section title"
 msgstr "Geef de titel van de couponcodes weer"
 
-#: inc/checkout-widget-areas.php:56
+#: inc/admin/admin-settings-general.php:320
+msgid ""
+"Display the gift message as part of the order details table instead of a "
+"separate section"
+msgstr ""
+"Geef het cadeaubericht weer als onderdeel van de tabel met bestelgegevens in "
+"plaats van een apart gedeelte"
+
+#: inc/admin/admin-settings-general.php:311
+msgid "Display the gift message fields always expanded"
+msgstr "Geef de velden voor cadeauberichten altijd uitgevouwen weer"
+
+#: inc/checkout-widget-areas.php:57
 msgid ""
 "Display widgets below the checkout header for mobile devices. Only displayed "
 "if using the plugin's checkout header."
@@ -354,15 +417,24 @@ msgstr ""
 "Widgets weergeven onder de afrekenkop voor mobiele apparaten. Alleen "
 "weergegeven bij gebruik van de checkout-header van de plug-in."
 
-#: inc/checkout-widget-areas.php:92
+#: inc/checkout-widget-areas.php:93
 msgid "Display widgets below the place order button at the checkout page."
 msgstr "Geef widgets weer onder de bestelknop op de afrekenpagina."
 
-#: inc/checkout-widget-areas.php:82
+#: inc/checkout-widget-areas.php:83
 msgid "Display widgets inside the order summary at the checkout page."
 msgstr "Geef widgets weer in het besteloverzicht op de afrekenpagina."
 
-#: inc/checkout-widget-areas.php:46
+#: inc/checkout-widget-areas.php:108
+#, fuzzy
+msgid ""
+"Display widgets on the checkout footer. Only displayed if using the plugin's "
+"checkout footer."
+msgstr ""
+"Toon widgets in de kassa voettekst. Wordt alleen getoond als je de kassa "
+"voettekst van de plugin gebruikt."
+
+#: inc/checkout-widget-areas.php:47
 msgid ""
 "Display widgets on the checkout header for large screens. Only displayed if "
 "using the plugin's checkout header."
@@ -370,11 +442,19 @@ msgstr ""
 "Widgets weergeven in de kassakop voor grote schermen. Alleen weergegeven bij "
 "gebruik van de checkout-header van de plug-in."
 
-#: inc/checkout-widget-areas.php:70
+#: inc/checkout-widget-areas.php:71
 msgid "Display widgets on the checkout sidebar after the order summary."
 msgstr "Widgets weergeven in de kassa-zijbalk na het besteloverzicht."
 
-#: inc/admin/admin-settings-general.php:186
+#: inc/admin/admin-settings-general.php:292
+msgid ""
+"Displays the express checkout section at checkout when supported payment "
+"gateways have this feature enabled."
+msgstr ""
+"Geeft het gedeelte voor snel afrekenen weer bij het afrekenen wanneer "
+"ondersteunde betalingsgateways deze functie hebben ingeschakeld."
+
+#: inc/admin/admin-settings-general.php:187
 msgid "Do not hide \"Address line 2\" fields behind a link button"
 msgstr "Verberg de velden “Adresregel 2” niet achter een linkknop"
 
@@ -387,11 +467,20 @@ msgstr "Winkelwagen bewerken"
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "E-mailcontrole inschakelen: (functie uitgeschakeld)"
 
-#: inc/checkout-coupon-codes.php:144
+#: inc/admin/admin-settings-general.php:291
+msgid "Enable the express checkout section at checkout"
+msgstr "Schakel het gedeelte voor snel afrekenen in bij het afrekenen"
+
+#: inc/checkout-coupon-codes.php:152
 msgid "Enter your code here"
 msgstr "Vul hier je code in"
 
-#: inc/admin/admin-settings-general.php:158
+#: inc/checkout-express-checkout.php:34
+#: inc/admin/admin-settings-general.php:290
+msgid "Express checkout"
+msgstr "Snel afrekenen"
+
+#: inc/admin/admin-settings-general.php:159
 msgid "Features"
 msgstr "Functies"
 
@@ -405,7 +494,7 @@ msgstr "Fluid Checkout"
 msgid "Fluid Checkout for WooCommerce - Lite"
 msgstr "Fluid Checkout for WooCommerce - Lite"
 
-#: inc/admin/admin-notice-product-updates-newsletter.php:42
+#: inc/admin/admin-notice-product-updates-newsletter.php:36
 #, fuzzy
 msgid ""
 "Fluid Checkout Lite 2.0 will be released soon and your website might get "
@@ -414,12 +503,16 @@ msgstr ""
 "Fluid Checkout Lite 2.0 komt binnenkort uit en je website kan er last van "
 "krijgen"
 
+#: inc/admin/admin-settings-general.php:114
+msgid "Footer background color"
+msgstr "Achtergrondkleur voettekst"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:88
 msgid "Germanized for WooCommerce"
 msgstr ""
 "Germanized for WooCommerce\n"
 
-#: inc/admin/admin-notice-product-updates-newsletter.php:45
+#: inc/admin/admin-notice-product-updates-newsletter.php:39
 #, fuzzy
 msgid "Get important updates"
 msgstr "Ontvang belangrijke updates"
@@ -428,7 +521,31 @@ msgstr "Ontvang belangrijke updates"
 msgid "Gift message"
 msgstr "Cadeau bericht"
 
-#: fluid-checkout.php:395
+#: inc/checkout-gift-options.php:472
+#: templates/fc/order/order-details-gift-options-email-plain-text.php:28
+msgid "Gift message from:"
+msgstr "Cadeaubericht van:"
+
+#: inc/checkout-gift-options.php:464
+#: templates/fc/order/order-details-gift-options-email-plain-text.php:23
+msgid "Gift message:"
+msgstr "Cadeau bericht:"
+
+#: inc/checkout-gift-options.php:88 inc/admin/admin-settings-general.php:300
+msgid "Gift options"
+msgstr "Cadeau opties"
+
+#: templates/fc/order/order-details-gift-options.php:23
+msgctxt "Gift options section title in the order details"
+msgid "Gift message"
+msgstr "Cadeau bericht"
+
+#: templates/fc/order/order-details-gift-options-email-plain-text.php:20
+msgctxt "Gift options section title in the order details"
+msgid "Gift message:"
+msgstr "Cadeau bericht:"
+
+#: fluid-checkout.php:399
 msgid "Go to Plugin Search"
 msgstr "Ga naar Plugin zoeken"
 
@@ -444,7 +561,7 @@ msgstr "Header en Footer"
 msgid "Header background color"
 msgstr "Achtergrondkleur van de Header"
 
-#: inc/admin/admin-settings-general.php:166
+#: inc/admin/admin-settings-general.php:167
 msgid "Hide optional fields behind a link button"
 msgstr "Verberg optionele velden achter een link knop"
 
@@ -454,6 +571,7 @@ msgstr "Huisnummer en straatnaam."
 
 #: inc/admin/admin-settings-general.php:96
 #: inc/admin/admin-settings-general.php:106
+#: inc/admin/admin-settings-general.php:116
 msgid "HTML color value. ie: #f3f3f3"
 msgstr "HTML kleurwaarde. ie: #f3f3f3"
 
@@ -481,7 +599,7 @@ msgctxt "Image uploader."
 msgid "No image selected."
 msgstr "Geen afbeelding geselecteerd."
 
-#: inc/admin/admin-notice-product-updates-newsletter.php:43
+#: inc/admin/admin-notice-product-updates-newsletter.php:37
 #, fuzzy
 msgid ""
 "Important changes are coming soon with Fluid Checkout Lite 2.0. We encourage "
@@ -504,7 +622,7 @@ msgstr ""
 msgid "Integrations"
 msgstr "Integraties"
 
-#: inc/admin/admin-settings-general.php:167
+#: inc/admin/admin-settings-general.php:168
 msgid ""
 "It is recommended to keep this options checked to reduce the number of open "
 "input fields, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
@@ -516,7 +634,7 @@ msgstr ""
 "average-form-fields#1-address-line-2- -company-name-can-safely-be-collapsed-"
 "behind-a-link” target=“_blank”>lees het onderzoek</a>."
 
-#: inc/admin/admin-settings-general.php:199
+#: inc/admin/admin-settings-general.php:200
 msgid ""
 "It is recommended to leave this option checked. The billing address at "
 "checkout will start with the option \"Billing same as shipping\" checked by "
@@ -551,6 +669,10 @@ msgstr "Besteloverzicht (voordat producten)"
 msgid "Load unminified assets"
 msgstr "Niet-geminimaliseerde activa laden"
 
+#: inc/admin/admin-settings-general.php:247
+msgid "Local Pickup"
+msgstr "Lokaal ophalen"
+
 #: templates/fc/checkout/form-contact-login.php:24
 msgctxt "Log in link label at checkout contact step"
 msgid "Log in"
@@ -570,13 +692,13 @@ msgstr "Of ga hieronder verder met afrekenen"
 msgid "Logo image"
 msgstr "Logo afbeelding"
 
-#: inc/admin/admin-settings-general.php:125
+#: inc/admin/admin-settings-general.php:135
 msgid "Make the checkout progress bar stay visible while scrolling"
 msgstr ""
 "Zorg ervoor dat de voortgangsbalk voor het afrekenen zichtbaar blijft "
 "tijdens het scrollen"
 
-#: inc/admin/admin-settings-general.php:177
+#: inc/admin/admin-settings-general.php:178
 msgid ""
 "Make the labels of optional field \"Add\" link button as <code>"
 "lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone number\")"
@@ -585,21 +707,21 @@ msgstr ""
 "letters</code>. (bijv. “Telefoonnummer toevoegen” in plaats van "
 "“Telefoonnummer toevoegen”)"
 
-#: inc/admin/admin-settings-general.php:136
+#: inc/admin/admin-settings-general.php:146
 msgid "Make the order summary stay visible while scrolling"
 msgstr ""
 "Zorg ervoor dat het besteloverzicht zichtbaar blijft tijdens het scrollen"
 
-#: inc/admin/admin-notice-product-updates-newsletter.php:46
+#: inc/admin/admin-notice-product-updates-newsletter.php:40
 #, fuzzy
 msgid "More information"
 msgstr "Meer informatie"
 
-#: inc/checkout-steps.php:391
+#: inc/checkout-steps.php:427
 msgid "Multi-step"
 msgstr "Meerdere stappen"
 
-#: inc/checkout-steps.php:1616
+#: inc/checkout-steps.php:1691
 msgid "My contact"
 msgstr "Contactgegevens"
 
@@ -618,7 +740,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2290
+#: inc/checkout-steps.php:2365
 msgid "Not selected yet."
 msgstr "Nog niet geselecteerd."
 
@@ -627,12 +749,17 @@ msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr "Geen."
 
-#: inc/checkout-steps.php:2346
+#: inc/checkout-gift-options.php:126
+msgctxt "Notice for no gift options provided"
+msgid "None."
+msgstr "Geen."
+
+#: inc/checkout-steps.php:2421
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Geen."
 
-#: inc/admin/admin-settings-general.php:248
+#: inc/admin/admin-settings-general.php:258
 msgid ""
 "Only applicable if use of coupon codes are enabled in the WooCommerce "
 "settings."
@@ -651,7 +778,7 @@ msgstr ""
 msgid "Only used for shipping-related questions."
 msgstr "Alleen gebruikt voor verzending gerelateerde vragen."
 
-#: inc/admin/admin-settings-general.php:165
+#: inc/admin/admin-settings-general.php:166
 msgid "Optional fields"
 msgstr "Optionele velden"
 
@@ -659,16 +786,16 @@ msgstr "Optionele velden"
 msgid "Order and tracking number will be sent to this email address."
 msgstr "Het order- en trackingnummer worden naar dit e-mailadres verzonden."
 
-#: inc/admin/admin-settings-general.php:267
+#: inc/admin/admin-settings-general.php:277
 msgid "Order notes"
 msgstr "Bestel notities"
 
-#: inc/admin/admin-settings-general.php:271
+#: inc/admin/admin-settings-general.php:281
 msgctxt "Order notes field visibility"
 msgid "Hidden"
 msgstr "Verborgen"
 
-#: inc/admin/admin-settings-general.php:272
+#: inc/admin/admin-settings-general.php:282
 msgctxt "Order notes field visibility"
 msgid "Optional"
 msgstr "Optioneel"
@@ -677,7 +804,7 @@ msgstr "Optioneel"
 msgid "Order number and receipt will be sent to this email address."
 msgstr "Bestelnummer en ontvangstbewijs worden naar dit e-mailadres gestuurd."
 
-#: inc/checkout-steps.php:3437 inc/admin/admin-settings-general.php:135
+#: inc/checkout-steps.php:3512 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Besteloverzicht"
 
@@ -685,7 +812,7 @@ msgstr "Besteloverzicht"
 msgid "Page background color"
 msgstr "Achtergrondkleur pagina"
 
-#: inc/checkout-steps.php:3324
+#: inc/checkout-steps.php:3399
 msgid "Payment method"
 msgstr "Betaalmethoden"
 
@@ -693,8 +820,11 @@ msgstr "Betaalmethoden"
 msgid "Pickup Date"
 msgstr "Ophaaldatum"
 
-#: inc/admin/admin-settings-general.php:144
-#, fuzzy
+#: inc/checkout-local-pickup.php:206
+msgid "Pickup point"
+msgstr "Ophaalpunt"
+
+#: inc/admin/admin-settings-general.php:353
 msgid "Place order"
 msgstr "Plaats bestelling"
 
@@ -709,12 +839,12 @@ msgid "Payment step"
 msgstr "Betaalstap"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:924
+#: inc/checkout-steps.php:979
 #, php-format
 msgid "Proceed to %s"
 msgstr "Ga verder naar %s"
 
-#: inc/admin/admin-settings-general.php:114
+#: inc/admin/admin-settings-general.php:124
 msgid "Progress bar"
 msgstr "Voortgangsbalk"
 
@@ -734,7 +864,16 @@ msgstr ""
 msgid "Rate Us Now"
 msgstr "Beoordeel ons nu"
 
-#: inc/admin/admin-settings-general.php:187
+#: inc/admin/admin-settings-general.php:355
+msgid ""
+"Recommended if most of the orders have only a few different products in the "
+"cart, and product variations do not take too much space on the order summary."
+msgstr ""
+"Aanbevolen als de meeste bestellingen slechts een paar verschillende "
+"producten in de winkelwagen hebben en productvariaties niet te veel ruimte "
+"in beslag nemen op het besteloverzicht."
+
+#: inc/admin/admin-settings-general.php:188
 msgid ""
 "Recommended only when most customers actually need the \"Address line 2\" "
 "field, or when getting the right shipping address is crucial (ie. if "
@@ -744,11 +883,19 @@ msgstr ""
 "nodig hebben, of wanneer het verkrijgen van het juiste verzendadres cruciaal "
 "is (bijv. bij het bezorgen van voedsel en andere bederfelijke producten)."
 
-#: inc/checkout-coupon-codes.php:203
+#: inc/checkout-coupon-codes.php:211
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: inc/checkout-steps.php:2832
+#: inc/admin/admin-settings-general.php:248
+msgid ""
+"Removes shipping address section when a Local Pickup shipping method is "
+"selected"
+msgstr ""
+"Verwijdert het gedeelte met het verzendadres wanneer een verzendmethode voor "
+"lokaal ophalen is geselecteerd"
+
+#: inc/checkout-steps.php:2907
 msgid "Same as shipping address"
 msgstr "Zelfde als verzendadres"
 
@@ -767,59 +914,59 @@ msgctxt "Settings section title"
 msgid "Integrations"
 msgstr "Integraties"
 
-#: inc/checkout-steps.php:1882
+#: inc/checkout-steps.php:1957
 msgid "Shipping method"
 msgstr "Verzendmethode"
 
-#: inc/admin/admin-settings-general.php:233
+#: inc/admin/admin-settings-general.php:234
 msgid "Shipping methods"
 msgstr "Verzendmethoden"
 
-#: inc/admin/admin-settings-general.php:238
+#: inc/admin/admin-settings-general.php:239
 msgctxt "Shipping methods substep position"
 msgid "After shipping address"
 msgstr "Na verzendadres"
 
-#: inc/admin/admin-settings-general.php:237
+#: inc/admin/admin-settings-general.php:238
 msgctxt "Shipping methods substep position"
 msgid "Before shipping address"
 msgstr "Voor verzending adres"
 
 #: inc/checkout-shipping-phone-field.php:55
-#: inc/admin/admin-settings-general.php:207
+#: inc/admin/admin-settings-general.php:208
 msgid "Shipping phone"
 msgstr "Verzending telefoon"
 
-#: inc/admin/admin-settings-general.php:225
+#: inc/admin/admin-settings-general.php:226
 msgctxt "Shipping phone field position"
 msgid "Contact"
 msgstr "Contact"
 
-#: inc/admin/admin-settings-general.php:224
+#: inc/admin/admin-settings-general.php:225
 msgctxt "Shipping phone field position"
 msgid "Shipping address"
 msgstr "Afleveradres"
 
-#: inc/admin/admin-settings-general.php:211
+#: inc/admin/admin-settings-general.php:212
 msgctxt "Shipping phone field visibility"
 msgid "Hidden"
 msgstr "Verborgen"
 
-#: inc/admin/admin-settings-general.php:212
+#: inc/admin/admin-settings-general.php:213
 msgctxt "Shipping phone field visibility"
 msgid "Optional"
 msgstr "Optioneel"
 
-#: inc/admin/admin-settings-general.php:213
+#: inc/admin/admin-settings-general.php:214
 msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr "Verplicht"
 
-#: inc/checkout-steps.php:1858
+#: inc/checkout-steps.php:1933
 msgid "Shipping to"
 msgstr "Verzenden naar"
 
-#: inc/admin/admin-settings-general.php:247
+#: inc/admin/admin-settings-general.php:257
 msgid "Show coupon codes as a substep of the payment step"
 msgstr "Toon couponcodes als een substap van de betalingsstap"
 
@@ -827,11 +974,12 @@ msgstr "Toon couponcodes als een substap van de betalingsstap"
 msgid "Sign in to your account"
 msgstr "Log in op uw account"
 
-#: inc/checkout-steps.php:392
+#: inc/checkout-steps.php:428
 msgid "Single step"
 msgstr "Enkele stap"
 
 #: templates/fc/header-checkout.php:36
+#: templates/compat/themes/enfold/fc/header-checkout.php:239
 msgid "Skip to content"
 msgstr "Doorgaan naar artikel"
 
@@ -840,26 +988,26 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Ruimte voor sitekoptekst op de afrekenpagina (in pixels)"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1177
+#: inc/checkout-steps.php:1232
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Stap %1$s van %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2038
+#: inc/checkout-steps.php:2113
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2043
+#: inc/checkout-steps.php:2118
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:1477
+#: inc/checkout-steps.php:1552
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Geen."
@@ -891,7 +1039,7 @@ msgstr ""
 msgid "Theme Impreza"
 msgstr "Thema Impreza"
 
-#: inc/admin/admin-settings-general.php:282
+#: inc/admin/admin-settings-general.php:333
 msgid "These widget areas are used to add trust symbols on the checkout page."
 msgstr ""
 "Deze widgetgebieden worden gebruikt om vertrouwenssymbolen toe te voegen op "
@@ -908,6 +1056,14 @@ msgstr "Dit is een verplicht veld."
 #: inc/checkout-validation.php:111
 msgid "This is not a valid email address."
 msgstr "Dit is geen geldig e-mail adres."
+
+#: inc/admin/admin-settings-general.php:321
+msgid ""
+"This option affects the order confirmation page (thank you page), order "
+"details at account pages, emails and packing slips."
+msgstr ""
+"Deze optie is van invloed op de orderbevestigingspagina (bedankpagina), "
+"bestelgegevens op accountpagina’s, e-mails en pakbonnen."
 
 #: inc/admin/admin-settings-tools.php:51
 msgid "Tools"

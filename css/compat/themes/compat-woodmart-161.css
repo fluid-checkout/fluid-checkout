@@ -1,0 +1,157 @@
+body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error:before {
+  padding-top: 6px;
+}
+
+body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error {
+  background-color: none;
+  -webkit-transform: none;
+  -webkit-animation: none;
+  transform: none;
+  animation: none;
+  z-index: 0;
+  cursor: auto;
+  min-height: 0;
+}
+
+body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error::after {
+  display: none;
+}
+
+body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
+  top: 7px;
+  right: 20px;
+}
+body.theme-woodmart div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection:after {
+  right: 30px;
+}
+
+body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
+  position: relative;
+  margin-left: 5px;
+  margin-right: -5px;
+  width: 30px;
+  height: 30px;
+  line-height: inherit;
+  text-decoration: none;
+  text-indent: -10000px;
+}
+body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon:focus {
+  outline: dotted 1px #535156;
+  outline-offset: 1px;
+}
+
+body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon::before {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  text-indent: 0;
+}
+
+body.theme-woodmart .fc-checkout-order-review .woodmart-table-wrapper,
+body.theme-woodmart .fc-checkout-order-review .wd-table-wrapper {
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  box-shadow: none;
+}
+
+body.theme-woodmart form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon {
+  margin-right: -10px;
+}
+
+body.theme-woodmart div.woocommerce form .form-row span.select2-container {
+  height: auto;
+}
+
+body.theme-woodmart div.woocommerce form .form-row .select2-selection {
+  height: auto;
+  min-height: 38px;
+  border-radius: 3px;
+  line-height: 0;
+}
+
+body.theme-woodmart div.woocommerce form .form-row .select2-selection__rendered {
+  min-height: 38px;
+  border-radius: 3px;
+}
+
+body.theme-woodmart div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-woodmart div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  top: 0;
+  margin-top: 5px;
+  height: auto;
+  min-height: 24px;
+  line-height: 24px;
+  transform: none;
+}
+
+body.theme-woodmart div.woocommerce form .form-row .select2-selection--single {
+  padding: 0;
+}
+
+body.theme-woodmart div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 38px;
+}
+
+body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple {
+  border-width: 2px;
+}
+
+body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+  padding-bottom: 5px;
+  min-height: 28px;
+  line-height: 28px;
+  white-space: normal;
+}
+
+body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  margin-top: 5px;
+  min-height: 24px;
+  line-height: 24px;
+}
+
+body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
+  height: 28px;
+  min-height: auto;
+}
+
+body.theme-woodmart .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+  padding: 0 16px !important;
+}
+
+body.theme-woodmart .fc-wrapper .select2-container .select2-selection--multiple .select2-selection__rendered {
+  display: block;
+  margin-bottom: 0;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+body.theme-woodmart div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  right: 5px !important;
+}
+
+body.theme-woodmart div.woocommerce form .form-row .select2-selection .select2-selection__clear {
+  right: 24px;
+}
+
+body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple .select2-selection__clear {
+  right: 5px;
+}
+
+body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  margin-top: 5px;
+}

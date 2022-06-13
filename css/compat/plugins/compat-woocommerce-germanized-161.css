@@ -1,0 +1,24 @@
+.fc-wrapper .wc-gzd-order-submit {
+  padding-top: 20px;
+}
+
+.fc-checkout-order-review .fc-place-order {
+  padding: 20px 0;
+}
+
+.fc-wrapper .fc-inside .wc-gzd-order-submit div.place-order {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.fc-wrapper .fc-sidebar .wc-gzd-order-submit div.place-order {
+  padding-top: 0;
+}
+
+.fc-wrapper .fc-sidebar .fc-checkout-order-review .fc-place-order .fc-place-order-button {
+  margin: 0;
+}
+
+.fc-wrapper .wc-gzd-checkbox-placeholder {
+  margin-bottom: 10px;
+}

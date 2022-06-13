@@ -3,8 +3,8 @@ Contributors: fluidwebco, diegoversiani, luiggiab
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 5.9
-Stable tag: 1.6.0
+Tested up to: 6.0
+Stable tag: 1.6.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -381,10 +381,11 @@ BREAKING CHANGES - Some features where moved to the PRO version. Changes to the 
 * Fixed: Missing styles for the add payment method page on account pages.
 * Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version. Read details at https://fluidcheckout.com/blog/fc-release-notes-2-0-0/
 
-= Unreleased - 1.6.1 =
+= 1.6.1 - 2022-06-13 =
 
+* Bump tested up to WordPress 6.0 and WooCommerce 6.5.1
 * Added: Body class `fc-checkout-step-current--<step_id>` to let developers change elements styles based on the currently active step.
-* Added: Feature to disable the place order buttons when not in the last step, activated by default. Use filter `` to deactivate changes to the place order button `disabled` state.
+* Added: Feature to disable the place order buttons when not in the last step, activated by default. Use filter `fc_checkout_maybe_disable_place_order_button` to deactivate changes to the place order button `disabled` state.
 * Added: Compatibility with theme Enfold.
 * Added: Compatibility with theme Striz.
 * Added: Compatibility with theme Razzi.

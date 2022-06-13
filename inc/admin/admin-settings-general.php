@@ -112,7 +112,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Footer background color', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Choose a background color for the checkout page footer. Only applies when using the plugin\'s checkout header.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Choose a background color for the checkout page footer. Only applies when using the plugin\'s checkout footer.', 'fluid-checkout' ),
 						'desc'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_footer_background_color',
 						'type'              => 'text',

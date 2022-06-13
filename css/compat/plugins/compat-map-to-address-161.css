@@ -1,0 +1,25 @@
+.sg-del-add-section:before,
+.sg-del-add-section:after {
+  content: "";
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.addresses-section .sg-del-address-list-inner > .address-inline {
+  margin-top: 20px;
+  margin-bottom: 0;
+  width: 100%;
+  min-height: 100px;
+  background-color: #fff;
+}
+
+.sg-del-add-selected-address {
+  margin-top: 20px;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+.sg-overlay {
+  z-index: 301;
+}
