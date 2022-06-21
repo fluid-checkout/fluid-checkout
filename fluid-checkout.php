@@ -181,6 +181,7 @@ class FluidCheckout {
 	 */
 	private function load_admin_notices() {
 		require_once self::$directory_path . 'inc/admin/admin-notices.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-breaking-changes-version-200.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-review-request.php';
 	}
 
