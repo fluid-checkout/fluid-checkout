@@ -79,9 +79,9 @@ class FluidCheckout_AdminNotices_BreakingChanges_Version_200 extends FluidChecko
 			'description'    => __( '<strong>Express checkout</strong>, <strong>Local pickup</strong>, <strong>Gift message</strong> and <strong>Packing list templates</strong> have been moved to Fluid Checkout PRO. <br>For a limited time, you can get these features at no extra cost.', 'fluid-checkout' ),
 			'error'          => true,
 			'actions'        => array(
-				sprintf( '<a href="%s" class="button button-primary" target="_blank">%s</a>', esc_url( 'https://fluidcheckout.com/version-2-moved-features/' ), __( 'Keep using moved features', 'fluid-checkout' ) ),
-				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', esc_url( 'https://fluidcheckout.com/product/fluid-checkout-pro/' ), __( 'Upgrade to PRO', 'fluid-checkout' ) ),
-				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', esc_url( 'https://wordpress.org/support/plugin/fluid-checkout/' ), __( 'I need help!', 'fluid-checkout' ) ),
+				sprintf( '<a href="%s" class="button button-primary" target="_blank">%s</a>', 'https://fluidcheckout.com/version-2-moved-features/', __( 'Keep using moved features', 'fluid-checkout' ) ),
+				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', 'https://fluidcheckout.com/product/fluid-checkout-pro/', __( 'Upgrade to PRO', 'fluid-checkout' ) ),
+				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', 'https://wordpress.org/support/plugin/fluid-checkout/', __( 'I need help!', 'fluid-checkout' ) ),
 			),
 			'dismiss_label'  => __( 'Do not show again', 'fluid-checkout' ),
 		);
