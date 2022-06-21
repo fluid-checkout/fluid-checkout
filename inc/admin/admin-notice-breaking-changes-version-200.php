@@ -28,7 +28,7 @@ class FluidCheckout_AdminNotices_BreakingChanges_Version_200 extends FluidChecko
 	 * Check if Fluid Checkout (PRO) is activated on a single install or network wide.
 	 * Otherwise, will display an admin notice.
 	 */
-	public function is_pro_version_activated() {
+	public function is_fluid_checkout_pro_activated() {
 		$pro_plugin_path_name = 'fluid-checkout-pro/fluid-checkout-pro.php';
 
 		// Get lite version file path
@@ -70,8 +70,8 @@ class FluidCheckout_AdminNotices_BreakingChanges_Version_200 extends FluidChecko
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( 'install_plugins' ) ) { return $notices; }
 
-		// Check if features are already available from PRO or V1 plugins
-		if ( $this->is_pro_version_activated() || $this->is_fluid_checkout_v1_activated() ) { return $notices; }
+		// Bail if either Fluid Checkout PRO or V1 plugins are activated
+		if ( $this->is_fluid_checkout_pro_activated() || $this->is_fluid_checkout_v1_activated() ) { return $notices; }
 
 		$notices[] = array(
 			'name'           => 'breaking_changes_version_200',
