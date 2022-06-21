@@ -42,7 +42,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 			'error'          => false,
 			'actions'        => array(),
 			'dismissable'    => true,
-			'dismiss_label'  => __( 'Dismiss', 'fluid-checkout' ),
+			'dismiss_label'  => __( 'Don\'t show this again', 'fluid-checkout' ),
 		);
 
 		foreach ( $notices as $notice ) {

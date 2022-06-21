@@ -83,7 +83,6 @@ class FluidCheckout_AdminNotices_BreakingChanges_Version_200 extends FluidChecko
 				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', 'https://fluidcheckout.com/product/fluid-checkout-pro/', __( 'Upgrade to PRO', 'fluid-checkout' ) ),
 				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', 'https://wordpress.org/support/plugin/fluid-checkout/', __( 'I need help!', 'fluid-checkout' ) ),
 			),
-			'dismiss_label'  => __( 'Don\'t show this again', 'fluid-checkout' ),
 		);
 
 		return $notices;
