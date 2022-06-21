@@ -370,8 +370,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased - 2.0.0 =
 
-BREAKING CHANGES - Some features where moved to the PRO version. Changes to the Order Summary and Express Checkout features might break customization code. Place order section position changed to below the order summary.
+BREAKING CHANGES - Some features were moved to the PRO version.
 
+* Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version. Read details at https://fluidcheckout.com/blog/fc-release-notes-2-0-0/
+* Bump tested up to WooCommerce 6.6
 * Improved: RTL support on account address edit screens.
 * Improved: Utility colors (success, error, alert, info) to meet accessibility constrast criterias.
 * Improved: Do not load checkout assets on other pages.
@@ -379,7 +381,6 @@ BREAKING CHANGES - Some features where moved to the PRO version. Changes to the 
 * Fixed: Lite version should not affect order pay or order received pages or when user must log in before being able to checkout.
 * Fixed: Remove progress bar if cart is expired.
 * Fixed: Missing styles for the add payment method page on account pages.
-* Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version. Read details at https://fluidcheckout.com/blog/fc-release-notes-2-0-0/
 
 = 1.6.1 - 2022-06-13 =
 
