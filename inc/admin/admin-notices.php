@@ -28,7 +28,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	/**
 	 * Display notices if they exist.
 	 */
-	public static function display_notices() {
+	public function display_notices() {
 		$notices = apply_filters( 'fc_admin_notices', array() );
 
 		if ( empty( $notices ) ) {
@@ -36,23 +36,24 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		}
 
 		$default_options = array(
-			'name'        => null,
-			'title'       => '',
-			'description' => '',
-			'error'       => false,
-			'actions'     => array(),
-			'dismissable' => true,
+			'name'           => null,
+			'title'          => '',
+			'description'    => '',
+			'error'          => false,
+			'actions'        => array(),
+			'dismissable'    => true,
+			'dismiss_label'  => __( 'Dismiss', 'fluid-checkout' ),
 		);
 
 		foreach ( $notices as $notice ) {
 			$notice = wp_parse_args( $notice, $default_options );
 
-			if ( is_null( $notice['name'] ) || self::is_dismissed( $notice['name'] ) ) {
+			if ( is_null( $notice['name'] ) || $this->is_dismissed( $notice['name'] ) ) {
 				continue;
 			}
 
 			if ( $notice['dismissable'] ) {
-				$notice['actions'][] = '<a href="' . esc_url( add_query_arg( array( 'fc_action' => 'dismiss_notice', 'fc_notice' => $notice['name'] ) ) ) . '" style="margin: 0 20px;">' . __( 'Dismiss Notice', 'fluid-checkout' ) . '</a>';
+				$notice['actions'][] = '<a href="' . esc_url( add_query_arg( array( 'fc_action' => 'dismiss_notice', 'fc_notice' => $notice['name'] ) ) ) . '" style="margin: 0 20px;">' . $notice['dismiss_label'] . '</a>';
 			}
 			
 			?>
@@ -80,7 +81,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	 *
 	 * @return bool
 	 */
-	public static function is_dismissed( $name ) {
+	public function is_dismissed( $name ) {
 		return (bool) get_option( 'fc_dismissed_notice_' . $name, false );
 	}
 
@@ -89,7 +90,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	/**
 	 * Dismiss notices.
 	 */
-	public static function dismiss_notice() {
+	public function dismiss_notice() {
 		// Permissions check.
 		if ( ! current_user_can( 'install_plugins' ) ) {
 			return;
