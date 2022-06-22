@@ -1427,7 +1427,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get the checkout substep title text.
+	 * Get the checkout substep title text with filters applied.
 	 * 
 	 * @param   string  $substep_id     Id of the substep.
 	 * @param   string  $substep_title  Title of the substep.
