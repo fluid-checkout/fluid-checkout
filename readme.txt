@@ -373,7 +373,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 BREAKING CHANGES - Some features were moved to the PRO version.
 
 * Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version. Read details at https://fluidcheckout.com/version-2-moved-features/
-* Bump tested up to WooCommerce 6.6
+* Bump tested up to WooCommerce 6.6.1
 * Improved: RTL support on account address edit screens.
 * Improved: Utility colors (success, error, alert, info) to meet accessibility constrast criterias.
 * Improved: Do not load checkout assets on other pages.
