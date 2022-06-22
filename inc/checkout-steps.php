@@ -1427,6 +1427,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the checkout substep title text with filters applied.
+	 * 
+	 * @param   string  $substep_id     Id of the substep.
+	 * @param   string  $substep_title  Title of the substep.
+	 */
+	public function get_substep_title_with_filters( $substep_id, $substep_title ) {
+		return apply_filters( "fc_substep_title_{$substep_id}", $substep_title );
+	}
+
+	/**
 	 * Get the checkout substep title html.
 	 *
 	 * @param   string  $substep_id     Id of the substep.
@@ -1434,7 +1444,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_substep_title_html( $substep_id, $substep_title ) {
 		$html = '';
-		$substep_title = apply_filters( "fc_substep_title_{$substep_id}", $substep_title );
+		$substep_title = $this->get_substep_title_with_filters( $substep_id, $substep_title );
 		
 		if ( ! empty( $substep_title ) ) {
 			$html = '<h3 class="fc-step__substep-title fc-step__substep-title--' . esc_attr( $substep_id ) . '">' . wp_kses( $substep_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h3>';
