@@ -381,6 +381,7 @@ BREAKING CHANGES - Some features were moved to the PRO version.
 * Fixed: Lite version should not affect order pay or order received pages or when user must log in before being able to checkout.
 * Fixed: Remove progress bar if cart is expired.
 * Fixed: Missing styles for the add payment method page on account pages.
+* Fixed: Missing the border on corners of some steps.
 
 = 1.6.1 - 2022-06-13 =
 
