@@ -119,7 +119,7 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 	}
 }
 // LAST Complete
-.has-checkout-layout--multi-step .fc-checkout-step[data-step-complete].fc-checkout-step--next-step-incomplete > div:nth-last-of-type( 2 ) {
+.has-checkout-layout--multi-step .fc-checkout-step[data-step-complete].fc-checkout-step--next-step-incomplete > div:nth-last-of-type( 2 ) { // Targets the last substep inside the last step that is completed
 	@media (#{$bp-larger-than-tablet}) {
 		border-bottom-right-radius: $checkout-substep-border-radius;
 		border-bottom-left-radius: $checkout-substep-border-radius;
