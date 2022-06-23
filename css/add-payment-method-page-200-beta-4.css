@@ -74,7 +74,8 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   border-right: 0;
 }
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method:last-child {
+.fc-wrapper #payment .payment_methods > .wc_payment_method:last-child,
+#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:last-child {
   margin-bottom: -1px;
 }
 
