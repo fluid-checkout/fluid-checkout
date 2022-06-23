@@ -1084,6 +1084,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .woocommerce-checkout .fc-login-form form.login {
   margin: 0;
   padding: 0;
+  width: 100%;
   border: 0;
 }
 
