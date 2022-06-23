@@ -370,7 +370,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased - 2.0.0 =
 
-BREAKING CHANGES - Some features were moved to the PRO version.
+BREAKING CHANGES - Some features were removed from the Lite version and moved to the PRO version.
 
 * Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version. Read details at https://fluidcheckout.com/version-2-moved-features/
 * Bump tested up to WooCommerce 6.6.1
