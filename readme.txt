@@ -374,6 +374,7 @@ BREAKING CHANGES - Some features were moved to the PRO version.
 
 * Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version. Read details at https://fluidcheckout.com/version-2-moved-features/
 * Bump tested up to WooCommerce 6.6.1
+* Added: New filter `fc_output_checkout_contact_logout_cta_section` to enable displaying a logout link on the "My contact" substep when user is logged in. Defaults to "disabled".
 * Improved: RTL support on account address edit screens.
 * Improved: Utility colors (success, error, alert, info) to meet accessibility constrast criterias.
 * Improved: Do not load checkout assets on other pages.
@@ -382,6 +383,7 @@ BREAKING CHANGES - Some features were moved to the PRO version.
 * Fixed: Remove progress bar if cart is expired.
 * Fixed: Missing styles for the add payment method page on account pages.
 * Fixed: Missing the border on corners of some steps.
+* Fixed: Moved login section to inside the "My contact" substep. Fixes the issue with login section not being displayed if user has already entered an email address.
 
 = 1.6.1 - 2022-06-13 =
 
