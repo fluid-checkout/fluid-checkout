@@ -612,7 +612,7 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
 }
 
 .fc-progress-bar__bar.is-current {
-  background-color: rgba(0, 122, 61, 0.3);
+  background-color: #007a3d;
 }
 
 .fc-progress-bar__bars[data-step-count="2"] .fc-progress-bar__bar.is-complete,
