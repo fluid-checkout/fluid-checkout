@@ -370,13 +370,14 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased - 2.0.0 =
 
-BREAKING CHANGES - Some features were moved to the PRO version.
+BREAKING CHANGES - Some features were removed from the Lite version and moved to the PRO version.
 
 * Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version. Read details at https://fluidcheckout.com/version-2-moved-features/
 * Bump tested up to WooCommerce 6.6.1
 * Added: New filter `fc_output_checkout_contact_logout_cta_section` to enable displaying a logout link on the "My contact" substep when user is logged in. Defaults to "disabled".
 * Improved: RTL support on account address edit screens.
-* Improved: Utility colors (success, error, alert, info) to meet accessibility constrast criterias.
+* Improved: Utility colors (success, error, alert, info) to meet WCAG 2.1 level AA for accessibility constrast criterias. Although, this does not guarantee all elements meet the accessibility criterias.
+* Improved: Change color for current step in the progress bar to same as complete steps, as there seems to be a consensus that this better communicates the current progress status.
 * Improved: Do not load checkout assets on other pages.
 * Improved: Renamed `account-page-address` style handle and files to `edit-address-page` to better indicate where the styles are loaded and keep consistency across the plugins.
 * Improved: Set width for the login form which improves compatibility with various themes.
