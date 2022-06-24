@@ -434,7 +434,7 @@ BREAKING CHANGES - Some features were removed from the Lite version and moved to
 == Upgrade Notice ==
 
 = 2.0 =
-* BREAKING CHANGES - Some features where moved to the PRO version. Changes to the Order Summary and Express Checkout features might break customization code.
+* BREAKING CHANGES - Some features where moved to the PRO version.
 
 = 1.6 =
 * Changes to order summary and sidebar action hooks can cause issues if your website has customizations using them. See details in the changelog section.
