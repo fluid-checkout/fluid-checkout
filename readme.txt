@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 1.6.1
+Stable tag: 2.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -368,7 +368,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= 2.0.0 - 2022-06-27 =
 
 BREAKING CHANGES - Some features were removed from the Lite version and moved to the PRO version. Read details at https://fluidcheckout.com/version-2-moved-features/
 
