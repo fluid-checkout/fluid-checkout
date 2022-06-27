@@ -2,14 +2,14 @@
 /*
 Plugin Name: Fluid Checkout for WooCommerce - Lite
 Plugin URI: https://fluidcheckout.com/
-Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout, add options for gift message, and display a coupon code field at the checkout page that does not distract your customers.
+Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 1.6.1
+Version: 2.0.0-beta-5
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 6.5.1
+WC tested up to: 6.6.1
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
@@ -82,7 +82,7 @@ class FluidCheckout {
 	public static function instance() {
 		$calledClass = get_called_class();
 
-		if ( ! array_key_exists( $calledClass, self::$instances ) || self::$instances[ $calledClass ] === null ){
+		if ( ! array_key_exists( $calledClass, self::$instances ) || self::$instances[ $calledClass ] === null ) {
 			self::$instances[ $calledClass ] = new $calledClass();
 		}
 
@@ -181,8 +181,8 @@ class FluidCheckout {
 	 */
 	private function load_admin_notices() {
 		require_once self::$directory_path . 'inc/admin/admin-notices.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-breaking-changes-version-200.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-review-request.php';
-		require_once self::$directory_path . 'inc/admin/admin-notice-product-updates-newsletter.php';
 	}
 
 
@@ -199,12 +199,8 @@ class FluidCheckout {
 			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'fc_apply_checkout_field_args', 'enable_default' => 'yes' ),
 			'checkout-hide-optional-fields'       => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'fc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),
 			'checkout-shipping-phone'             => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'fc_shipping_phone_field_visibility', 'enable_default' => 'no' ),
-			'checkout-express-checkout'           => array( 'file' => self::$directory_path . 'inc/checkout-express-checkout.php', 'enable_option' => 'fc_enable_checkout_express_checkout', 'enable_default' => 'yes' ),
-			'checkout-local-pickup'               => array( 'file' => self::$directory_path . 'inc/checkout-local-pickup.php', 'enable_option' => 'fc_enable_checkout_local_pickup', 'enable_default' => 'yes' ),
 			'checkout-validation'                 => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'fc_enable_checkout_validation', 'enable_default' => 'yes' ),
-			'checkout-gift-options'               => array( 'file' => self::$directory_path . 'inc/checkout-gift-options.php', 'enable_option' => 'fc_enable_checkout_gift_options', 'enable_default' => 'no' ),
 			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'fc_enable_checkout_widget_areas', 'enable_default' => 'yes' ),
-			'packing-slips'                       => array( 'file' => self::$directory_path . 'inc/packing-slips.php', 'enable_option' => 'fc_enable_packing_slips_options', 'enable_default' => 'yes' ),
 		);
 	}
 
@@ -249,7 +245,7 @@ class FluidCheckout {
 		}
 
 		// Use default template
-		if ( ! $_template ){
+		if ( ! $_template ) {
 			$_template = $template;
 		}
 

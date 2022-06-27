@@ -11,34 +11,20 @@
 // ----------------------------------------
 // COLORS
 
-// Named colors
-$raisin-black:                  #1E212B !default;
-$dark-liver-grey:               #535156 !default;
-$sonic-silver-grey:             #7B7575 !default;
-$light-grey:                    #D8D8D8 !default;
-$cultured-grey:                 #F4F4F4 !default;
-$green-pigment:                 #00A854 !default;
-$viridian-green:                #30989C !default;
-$maximum-blue-green:            #44C1C5 !default;
-$venetian-red:                  #CC1818 !default;
-$crayola-yellow:                #FED766 !default;
-
-// ----------
-
 // Greys
 $black:                         #000 !default;
-$darker-grey:                   $raisin-black !default;
-$dark-grey:                     $dark-liver-grey !default;
-$grey:                          $sonic-silver-grey !default;
-$light-grey:                    $light-grey !default;
-$lighter-grey:                  $cultured-grey !default;
+$darker-grey:                   #1E212B !default;
+$dark-grey:                     #535156 !default;
+$grey:                          #7b7575 !default;
+$light-grey:                    #d8d8d8 !default;
+$lighter-grey:                  #f3f3f3 !default;
 $white:                         #fff !default;
 
 // Utility colors
-$success-color:                 $green-pigment !default;
-$error-color:                   $venetian-red !default;
-$alert-color:                   $crayola-yellow !default;
-$info-color:                    $maximum-blue-green !default;
+$success-color:                 #007a3d !default;
+$error-color:                   #cc1818 !default;
+$alert-color:                   #c95000 !default;
+$info-color:                    #1f01b9 !default;
 
 $border-color:                  $light-grey !default;
 $border-light-color:            $lighter-grey !default;
@@ -228,6 +214,7 @@ $icon-size-extra-large:          remsize( 8rem ) !default;
 
 $icons: (
 	'i-alert-octagon': '\e800',
+	'i-alert-triangle': '\e801',
 	'i-arrow-left': '\e802',
 	'i-arrow-right': '\e803',
 	'i-check-small': '\e805',
@@ -333,7 +320,7 @@ $checkout-progress-bar-border:                        none !default;
 $checkout-progress-bar-border-radius:                 math.div( $checkout-progress-bar-height, 2 ) !default;
 $checkout-progress-bar-color:                         $light-grey !default;
 $checkout-progress-bar-complete-color:                $success-color !default;
-$checkout-progress-bar-current-color:                 transparentize( $checkout-progress-bar-complete-color, .7 ) !default; // Stands for 30% opacity of the color `$checkout-progress-bar-complete-color`
+$checkout-progress-bar-current-color:                 $checkout-progress-bar-complete-color !default;
 
 $checkout-step-count-margin:                          0 0 $global-spacing-tiny !default;
 $checkout-step-count-margin--large-screen:            0 0 $global-spacing-tiny !default;
@@ -410,8 +397,6 @@ $checkout-expansible-section-icon-size:          $icon-size !default;
 $checkout-expansible-section-icon-spacing-left:  remsize( -.3rem ) !default;
 $checkout-expansible-section-icon-spacing-right: $global-spacing-tiny !default;
 $checkout-expansible-section-text-decoration:    none !default;
-
-$express-checkout-title-text-transform:          uppercase !default;
 
 // END - CHECKOUT STEPS
 // ----------------------------------------
@@ -599,22 +584,4 @@ $checkout-field-group-padding:                        $global-spacing-small !def
 $checkout-field-group-padding--large-screen:          $global-spacing-small !default;
 
 // END - CHECKOUT FIELDS
-// ----------------------------------------
-
-
-
-
-
-// ----------------------------------------
-// GIFT MESSAGE
-
-$gift-message-margin:                       0 0 $global-spacing !default;
-$gift-message-padding:                      $global-spacing $global-spacing-small !default;
-$gift-message-border:                       dashed remsize( .1rem ) $border-color !default;
-$gift-message-border-radius:                $global-radius-small !default;
-$gift-message-text-align:                   center !default;
-$gift-message-font-size:                    1.2em !default;
-$gift-message-font-style:                   italic !default;
-
-// END - GIFT MESSAGE
 // ----------------------------------------

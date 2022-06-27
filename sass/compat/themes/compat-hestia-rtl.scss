@@ -11,22 +11,7 @@
 
 
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-hestia' !default;
-$_select2-border-width:                remsize( .1rem ) !default;
-$_select2-border-radius:               0 !default;
-$_select2-selection-height:            remsize( 3rem ) !default;
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"hestia/checkout-validation",
-    "../../partials/woocommerce-form-fields-select2",
-    "hestia/woocommerce-form-fields-select2";
+	"hestia/__imports";

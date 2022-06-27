@@ -10,23 +10,7 @@
 
 
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-Avada' !default;
-$_select2-border-width:                remsize( .1rem ) !default;
-$_select2-border-radius:               remsize( .7rem ) !default;
-$_select2-selection-height:            remsize( 5rem ) !default;
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"Avada/checkout-steps",
-	"Avada/checkout-shipping-methods",
-	"Avada/checkout-validation",
-	"Avada/order-summary",
-	"../../partials/woocommerce-form-fields-select2";
+	"Avada/__imports";

@@ -2,6 +2,13 @@
 // CHECKOUT WIDGET AREAS
 // ------------------------------------
 
+.fc-checkout-header .widget,
+.fc-main .widget {
+	margin: 0;
+}
+
+
+
 .fc-wrapper .fc-checkout-order-review__widgets-inside {
 	margin-top: $global-spacing-small;
 	margin-bottom: $global-spacing-small;

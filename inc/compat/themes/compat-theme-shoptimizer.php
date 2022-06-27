@@ -49,6 +49,9 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 
 		// Remove duplicate product image on order summary
 		remove_filter( 'woocommerce_cart_item_name', 'shoptimizer_product_thumbnail_in_checkout', 20, 3 );
+
+		// Remove quantity customizations
+		remove_filter( 'woocommerce_checkout_cart_item_quantity', 'shoptimizer_woocommerce_checkout_cart_item_quantity', 10, 3 );
 	}
 
 

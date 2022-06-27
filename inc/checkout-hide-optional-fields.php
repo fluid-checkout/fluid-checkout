@@ -29,14 +29,6 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 
 
 	/**
-	 * Return Checkout Steps class instance.
-	 */
-	public function checkout_steps() {
-		return FluidCheckout_Steps::instance();
-	}
-
-
-	/**
 	 * Get the list of field ids to skip hidding when hide optional fields is enabled.
 	 *
 	 * @return  Array  List of field ids to skip hidding.
@@ -111,9 +103,9 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		$form_field_label = get_option( 'fc_optional_fields_link_label_lowercase', 'yes' ) === 'yes' ? strtolower( $args['label'] ) : $args['label'];
 		/* translators: %s: Form field label */
 		$toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), $form_field_label ) );
-		$this->checkout_steps()->output_expansible_form_section_start_tag( $key, $toggle_label, $expansible_section_args );
+		FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( $key, $toggle_label, $expansible_section_args );
 		echo $field; // WPCS: XSS ok.
-		$this->checkout_steps()->output_expansible_form_section_end_tag();
+		FluidCheckout_Steps::instance()->output_expansible_form_section_end_tag();
 
 		// Get value and clear buffer
 		$field = ob_get_clean();

@@ -63,8 +63,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_order_details_styles' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
 		// Checkout JS settings
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -86,12 +85,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_content_section_class', array( $this, 'add_content_section_class' ), 10 );
 
-		// Checkout steps
+		// Checkout page title
+		add_filter( 'fc_display_checkout_page_title', array( $this, 'maybe_display_checkout_page_title' ), 10 );
+
+		// Checkout progress bar
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout notices
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_remove_progress_bar_if_cart_expired' ), 10 );
+
+		// Checkout steps
 		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for frontend requests
 		add_action( 'admin_init', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for AJAX requests
 		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
-		add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
 
 		// Notices
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
@@ -103,9 +107,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Contact
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		add_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
-		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact_login' ), 10 );
 		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
-		add_action( 'wp_footer', array( $this, 'output_login_form_flyout' ), 10 );
+		add_action( 'wp_footer', array( $this, 'output_login_form_modal' ), 10 );
 		add_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
 		add_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_text_fragment' ), 10 );
@@ -182,6 +185,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add or remove very late hooks.
 	 */
 	public function very_late_hooks() {
+		// Order notes
+		$this->order_notes_hooks();
+
+		// Maybe output sidebar
+		if ( has_action( 'fc_checkout_order_review_section' ) ) {
+			add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
+		}
+	}
+
+	/**
+	 * Order notes hooks.
+	 */
+	public function order_notes_hooks() {
 		// Bail if not on checkout or cart page or doing AJAX call
 		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
@@ -227,12 +243,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
 
 		$add_classes = array(
 			'has-fluid-checkout',
 			'has-checkout-layout--' . $this->get_checkout_layout(),
 		);
+
+		// Add extra class when sidebar is present
+		if ( has_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ) ) ) {
+			$classes[] = 'has-fc-sidebar';
+		}
 
 		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
 		if ( $this->get_hide_site_header_footer_at_checkout() ) {
@@ -272,7 +293,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_custom_styles() {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		// Get styles
 		$custom_styles = apply_filters( 'fc_output_custom_styles', '' );
@@ -291,7 +312,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_header_custom_styles( $custom_styles ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $custom_styles; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
 		
 		// Get header background color
 		$header_background_color = trim( get_option( 'fc_checkout_header_background_color', '' ) );
@@ -309,7 +330,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_page_custom_styles( $custom_styles ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $custom_styles; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
 		
 		// Get header background color
 		$page_background_color = trim( get_option( 'fc_checkout_page_background_color', '' ) );
@@ -327,7 +348,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_footer_custom_styles( $custom_styles ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $custom_styles; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
 		
 		// Get footer background color
 		$footer_background_color = trim( get_option( 'fc_checkout_footer_background_color', '' ) );
@@ -361,9 +382,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Enqueue assets.
 	 */
 	public function enqueue_assets() {
-		// Bail if not at checkout
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
-
 		// Styles
 		wp_enqueue_style( 'fc-checkout-layout' );
 		
@@ -371,16 +389,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		wp_enqueue_script( 'fc-checkout-steps' );
 	}
 
-
-
 	/**
-	 * Enqueue scripts.
+	 * Maybe enqueue assets.
 	 */
-	public function enqueue_order_details_styles() {
-		// Bail if not on order details pages
-		if ( ! is_order_received_page() && ! is_wc_endpoint_url( 'view-order' ) ) { return; }
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
-		wp_enqueue_style( 'fc-order-details', self::$directory_url . 'css/order-details'. self::$asset_version . '.css', NULL, NULL );
+		$this->enqueue_assets();
 	}
 
 
@@ -470,7 +486,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( 'yes' !== get_option( 'fc_enable_checkout_page_template', 'yes' ) ) { return $template; }
 		
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $template; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $template; }
 
 		// Locate new checkout page template
 		$template_name = 'fc/page-checkout.php';
@@ -552,7 +568,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add cart link for the checkout header as a checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_checkout_header_cart_link_fragment( $fragments ) {
 		$html = $this->get_checkout_header_cart_link();
@@ -565,7 +581,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_woocommerce_login_form_redirect_hidden_field() {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		$raw_referrer_url = wc_get_raw_referer() ? wc_get_raw_referer() : wc_get_page_permalink( 'myaccount' );
 		$referrer_url = ( is_checkout() || ( array_key_exists( '_redirect', $_GET ) && $_GET[ '_redirect' ] == 'checkout' ) ) ? wc_get_checkout_url() : $raw_referrer_url;
@@ -590,6 +606,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return $class;
+	}
+
+
+
+	/**
+	 * Conditionally display the title of the checkout page.
+	 *
+	 * @param   boolean  $display_title  Whether to display the checkout page title or not.
+	 */
+	public function maybe_display_checkout_page_title( $display_title ) {
+		// Display title if user must log in before checkout
+		if ( ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() && ! is_user_logged_in() ) {
+			$display_title = true;
+		}
+
+		return $display_title;
 	}
 
 
@@ -868,7 +900,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		return array( $last_step_index => $_checkout_steps[ $last_step_index ] );
 	}
-
 
 
 
@@ -1159,11 +1190,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if should not display phone in formatted addresses
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $formats; }
 
-		// Bail if viewing order confirmation page
-		if ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) { return $formats; }
+		// Bail if viewing order confirmation or order pay page
+		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_checkout_pay_page() ) ) { return $formats; }
 
 		// Bail when displaying addresses for email messages
-		if ( did_action( 'woocommerce_email_customer_details' ) ) { return $formats; }
+		if ( did_action( 'woocommerce_email' ) ) { return $formats; }
 
 		foreach ( $formats as $locale => $format) {
 			$formats[ $locale ] = $format . "\n{phone}";
@@ -1182,8 +1213,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if should not display phone in formatted addresses
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $replacements; }
 
-		// Bail if viewing order confirmation page
-		if ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) { return $replacements; }
+		// Bail if viewing order confirmation or order pay page
+		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_checkout_pay_page() ) ) { return $replacements; }
 
 		$replacements['{phone}'] = isset( $args['phone'] ) ? $args['phone'] : '';
 		return $replacements;
@@ -1207,6 +1238,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Bail if not multi-step checkout layout
 		if ( ! $this->is_checkout_layout_multistep() ) { return; }
+
+		// Bail if user must log in before checkout
+		if ( ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() && ! is_user_logged_in() ) { return; }
 
 		$_checkout_steps = $this->get_checkout_steps();
 
@@ -1286,6 +1320,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 			</div>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Maybe add empty progress bar fragment if cart expired.
+	 *
+	 * @param   array  $fragments  Checkout fragments.
+	 */
+	public function maybe_remove_progress_bar_if_cart_expired ( $fragments ) {
+		// Add empty progress bar fragment if cart expired
+		if ( WC()->cart->is_empty() && ! is_customize_preview() && apply_filters( 'woocommerce_checkout_update_order_review_expired', true ) ) {
+			$fragments['.fc-progress-bar'] = '';
+		}
+
+		return $fragments;
 	}
 
 
@@ -1378,6 +1426,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the checkout substep title text with filters applied.
+	 * 
+	 * @param   string  $substep_id     Id of the substep.
+	 * @param   string  $substep_title  Title of the substep.
+	 */
+	public function get_substep_title_with_filters( $substep_id, $substep_title ) {
+		return apply_filters( "fc_substep_title_{$substep_id}", $substep_title );
+	}
+
+	/**
 	 * Get the checkout substep title html.
 	 *
 	 * @param   string  $substep_id     Id of the substep.
@@ -1385,7 +1443,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_substep_title_html( $substep_id, $substep_title ) {
 		$html = '';
-		$substep_title = apply_filters( "fc_substep_title_{$substep_id}", $substep_title );
+		$substep_title = $this->get_substep_title_with_filters( $substep_id, $substep_title );
 		
 		if ( ! empty( $substep_title ) ) {
 			$html = '<h3 class="fc-step__substep-title fc-step__substep-title--' . esc_attr( $substep_id ) . '">' . wp_kses( $substep_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h3>';
@@ -1692,6 +1750,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
+		$this->output_substep_contact_login_link_section();
 		$this->output_step_contact_fields();
 		$this->output_substep_fields_end_tag();
 
@@ -1767,7 +1826,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add contact substep review text as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_contact_text_fragment( $fragments ) {
 		$html = $this->get_substep_text_contact();
@@ -1845,9 +1904,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output the login form flyout block for the checkout page.
 	 */
-	public function output_login_form_flyout() {
+	public function output_login_form_modal() {
+		// Bail if not at checkout page
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
 		// Bail if user already logged in or login at checkout is disabled
-		if ( ! is_checkout() || is_user_logged_in() || 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
+		if ( is_user_logged_in() || 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
 
 		wc_get_template(
 			'fc/checkout/form-contact-login-modal.php',
@@ -1860,7 +1922,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output contact step fields.
 	 */
-	public function output_substep_contact_login_button() {
+	public function output_substep_contact_login_link_section() {
 		// Do not output if login at checkout is disabled
 		if ( 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; }
 
@@ -1872,25 +1934,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 	}
 
-	/**
-	 * Output contact substep.
-	 *
-	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
-	 */
-	public function output_substep_contact_login( $step_id ) {
-		// Bail if user already logged in
-		if ( is_user_logged_in() ) { return; };
-
-		$substep_id = 'contact_login';
-		$this->output_substep_start_tag( $step_id, $substep_id, null );
-
-		$this->output_substep_fields_start_tag( $step_id, $substep_id );
-		$this->output_substep_contact_login_button();
-		$this->output_substep_fields_end_tag();
-
-		$this->output_substep_end_tag( $step_id, $substep_id, '', false );
-	}
-
 
 
 	/**
@@ -1899,8 +1942,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $message_html  Error message for email existent while creating a new account.
 	 */
 	public function change_message_registration_error_email_exists( $message_html ) {
-		// Bail if not at the checkout page
-		if ( ! is_checkout() ) { return $message_html; }
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $template; }
 
 		$message_html = str_replace( '<a href="#" class="showlogin', '<a href="#" data-flyout-toggle data-flyout-target="[data-flyout-checkout-login]" class="', $message_html );
 		return $message_html;
@@ -2064,7 +2107,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add shipping address fields as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_shipping_address_fields_fragment( $fragments ) {
 		$html = $this->get_substep_shipping_address_fields();
@@ -2330,7 +2373,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add shipping address substep review text as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_shipping_address_text_fragment( $fragments ) {
 		$html = $this->get_substep_text_shipping_address();
@@ -2383,7 +2426,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add shipping methods substep review text as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_shipping_methods_text_fragment( $fragments ) {
 		$html = $this->get_substep_text_shipping_method();
@@ -2434,7 +2477,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add order notes substep review text as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_order_notes_text_fragment( $fragments ) {
 		$html = $this->get_substep_text_order_notes();
@@ -2607,7 +2650,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add shipping methods available as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_shipping_methods_fields_fragment( $fragments ) {
 		$html = $this->get_shipping_methods_available();
@@ -2845,7 +2888,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add billing address substep review text as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_billing_address_text_fragment( $fragments ) {
 		$html = $this->get_substep_text_billing_address();
@@ -3536,7 +3579,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Maybe add class for additional content inside the order summary section
-		if ( get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) === 'yes' || is_active_sidebar( 'fc_order_summary_after' ) ) {
+		if ( 'yes' === get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) || is_active_sidebar( 'fc_order_summary_after' ) ) {
 			$attributes[ 'class' ] = $attributes[ 'class' ] . ' has-additional-content';
 		}
 
@@ -3655,7 +3698,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add place order section as checkout fragment.
 	 *
-	 * @param array $fragments Checkout fragments.
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function add_place_order_fragment( $fragments ) {
 		$html = $this->get_checkout_place_order_html();

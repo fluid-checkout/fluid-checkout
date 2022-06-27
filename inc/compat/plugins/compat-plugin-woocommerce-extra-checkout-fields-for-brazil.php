@@ -37,7 +37,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		// Step complete billing
 		add_filter( 'fc_is_step_complete_billing_field_keys_skip_list', array( $this, 'maybe_add_step_complete_billing_field_skip_list_by_person_type' ), 10 );
 
-		// Prevent hiding optional gift option fields behind a link button
+		// Prevent hiding optional fields behind a link button
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_person_type_fields' ), 10 );
 
 		// Address format

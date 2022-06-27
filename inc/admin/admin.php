@@ -90,11 +90,10 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 		$links = array_merge( $new_links, $links );
 
-		// TODO: Show PRO version promotion when released
 		// Maybe add PRO version promotion
-		// if ( ! FluidCheckout::instance()->is_pro_activated() ) {
-		// 	$links[] = sprintf( '<a href="%s" style="color:#007F01;font-weight:bold;">%s</a>', 'https://fluidcheckout.com/product/fluid-checkout-pro/', esc_html( __( 'Get PRO', 'fluid-checkout' ) ) );
-		// }
+		if ( ! FluidCheckout::instance()->is_pro_activated() ) {
+			$links[] = sprintf( '<a href="%s" style="color:#007F01;font-weight:bold;">%s</a>', 'https://fluidcheckout.com/product/fluid-checkout-pro/', esc_html( __( 'Upgrade to PRO', 'fluid-checkout' ) ) );
+		}
 
 		return $links;
 	}

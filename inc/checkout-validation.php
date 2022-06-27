@@ -27,7 +27,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		// Enqueue assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
 		// Checkout JS settings
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -52,7 +52,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ){ return $classes; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
 
 		return array_merge( $classes, array( 'has-fc-checkout-validation' ) );
 	}
@@ -69,7 +69,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		// Styles
 		wp_register_style( 'fc-checkout-validation', self::$directory_url . 'css/checkout-validation'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
 
-		// Checkout steps scripts
+		// Scripts
 		wp_register_script( 'fc-checkout-validation', self::$directory_url . 'js/checkout-validation'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
 		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("load",function(){CheckoutValidation.init(fcSettings.checkoutValidation);})' );
 	}
@@ -78,14 +78,21 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 * Enqueue scripts.
 	 */
 	public function enqueue_assets() {
-		// Bail if not at checkout
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() ){ return; }
-
 		// Styles
 		wp_enqueue_style( 'fc-checkout-validation' );
 
-		// Checkout steps scripts
+		// Scripts
 		wp_enqueue_script( 'fc-checkout-validation' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 
@@ -109,7 +116,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 			'validationMessages'                 => array(
 				'required'                       => __( 'This is a required field.', 'fluid-checkout' ),
 				'email'                          => __( 'This is not a valid email address.', 'fluid-checkout' ),
-				'confirmation'                   => __( 'This does not match the related field value.', 'fluid-checkout' ),
+				'confirmation'                   => __( 'This field does not match the related field value.', 'fluid-checkout' ),
 			),
 		) );
 

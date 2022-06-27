@@ -7,7 +7,8 @@
 }
 
 
-body#{ $_body-page-selector }.woocommerce-page .fc-wrapper #payment {
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper #payment,
+body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #payment {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -17,7 +18,8 @@ body#{ $_body-page-selector }.woocommerce-page .fc-wrapper #payment {
 
 
 
-body#{ $_body-page-selector }.woocommerce-page .fc-wrapper #payment ul.payment_methods {
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper #payment ul.payment_methods,
+body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #payment ul.payment_methods {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -30,7 +32,8 @@ body#{ $_body-page-selector }.woocommerce-page .fc-wrapper #payment ul.payment_m
 
 
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method {
+.fc-wrapper #payment .payment_methods > .wc_payment_method,
+#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method {
 	width: 100%;
 	margin: $payment-method-margin;
 	padding: 0;
@@ -79,7 +82,8 @@ body#{ $_body-page-selector }.woocommerce-page .fc-wrapper #payment ul.payment_m
 		border-right: 0;
 	}
 }
-.fc-wrapper #payment .payment_methods > .wc_payment_method:last-child {
+.fc-wrapper #payment .payment_methods > .wc_payment_method:last-child,
+#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:last-child {
 	margin-bottom: #{ - remsize( .1rem ) };
 }
 .fc-wrapper #payment .payment_methods > li.wc_payment_method:not( .woocommerce-notice ) {
@@ -177,7 +181,8 @@ body#{ $_body-page-selector } .fc-wrapper #payment ul.payment_methods > .wc_paym
 
 
 
-.fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
+.fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box,
+#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
 	margin: 0;
 	padding: $global-spacing-small;
 	border-bottom: $payment-method-border;

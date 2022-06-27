@@ -1,0 +1,7 @@
+// ------------------------------------
+// CLEAR FIX
+// ------------------------------------
+.fc-clearfix:before,
+.fc-clearfix:after {
+	@include clearfix();
+}
