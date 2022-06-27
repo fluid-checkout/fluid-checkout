@@ -368,7 +368,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased - 2.0.0 =
+= Unreleased =
 
 BREAKING CHANGES - Some features were removed from the Lite version and moved to the PRO version.
 
