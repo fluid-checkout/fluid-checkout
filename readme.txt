@@ -217,6 +217,7 @@ Only the themes that we have added explicit compatibility with or that we have t
 * Klaviyo - by Klaviyo.
 * MailerLite WooCommerce Integration - by MailerLite
 * MailPoet - by MailPoet
+* Oxygen Builder - Soflyy
 * SG Checkout Location Picker for WooCommerce - by Sevengits
 * SG Map to Address - by Sevengits
 * WooCommerce Correios - by Claudio Sanches
