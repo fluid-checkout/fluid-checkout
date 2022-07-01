@@ -612,7 +612,7 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
 }
 
 .fc-progress-bar__bar.is-current {
-  background-color: rgba(0, 122, 61, 0.3);
+  background-color: #007a3d;
 }
 
 .fc-progress-bar__bars[data-step-count="2"] .fc-progress-bar__bar.is-complete,
@@ -683,13 +683,15 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
 }
 
 @media (min-width: 750px) {
-  .fc-wrapper .fc-checkout-step:first-child {
+  .fc-wrapper .fc-checkout-step:first-child,
+.fc-wrapper .fc-checkout-step:first-child > div:first-of-type {
     border-radius: 8px 8px 0 0;
   }
 }
 
 @media (min-width: 750px) {
-  .fc-wrapper .fc-checkout-step:last-child {
+  .fc-wrapper .fc-checkout-step:last-child,
+.fc-wrapper .fc-checkout-step:last-child > div:last-of-type {
     border-radius: 0 0 8px 8px;
   }
 }
@@ -765,20 +767,6 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 }
 
 @media (min-width: 750px) {
-  .has-checkout-layout--multi-step .fc-checkout-step:first-child {
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-  }
-}
-
-@media (min-width: 750px) {
-  .has-checkout-layout--multi-step .fc-checkout-step:last-child {
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-  }
-}
-
-@media (min-width: 750px) {
   .has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--prev-step-complete {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
@@ -793,7 +781,15 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 }
 
 @media (min-width: 750px) {
-  .has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete {
+  .has-checkout-layout--multi-step .fc-checkout-step[data-step-complete].fc-checkout-step--next-step-incomplete > div:nth-last-of-type(2) {
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+}
+
+@media (min-width: 750px) {
+  .has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete,
+.has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete > div:last-of-type {
     margin-bottom: 20px;
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
@@ -804,6 +800,22 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   .has-checkout-layout--multi-step .fc-checkout-step[data-step-current]:not([data-step-index="0"]),
 .has-checkout-layout--multi-step .fc-checkout-step:not([data-step-complete]) {
     border-radius: 8px;
+  }
+}
+
+@media (min-width: 750px) {
+  .has-checkout-layout--multi-step .fc-checkout-step[data-step-current] > div:first-of-type {
+    margin-top: 0;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+  }
+}
+
+@media (min-width: 750px) {
+  .has-checkout-layout--multi-step .fc-checkout-step[data-step-current] > div:last-of-type {
+    margin-bottom: 0;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
   }
 }
 
@@ -1021,6 +1033,12 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   border-top: 0;
 }
 
+.fc-contact-login__content {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f3f3f3;
+}
+
 .fc-contact-login__cta-text {
   margin-bottom: 0;
   text-align: center;
@@ -1040,7 +1058,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 .fc-contact-login__separator {
   position: relative;
-  margin-top: 20px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -1063,13 +1081,10 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   background-color: #fff;
 }
 
-.has-checkout-layout--multi-step [data-step-complete] [data-substep-id=contact_login] {
-  display: none;
-}
-
 .woocommerce-checkout .fc-login-form form.login {
   margin: 0;
   padding: 0;
+  width: 100%;
   border: 0;
 }
 
@@ -1465,7 +1480,8 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   border-right: 0;
 }
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method:last-child {
+.fc-wrapper #payment .payment_methods > .wc_payment_method:last-child,
+#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:last-child {
   margin-bottom: -1px;
 }
 

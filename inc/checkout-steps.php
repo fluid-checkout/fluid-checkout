@@ -107,7 +107,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Contact
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		add_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
-		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact_login' ), 10 );
 		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
 		add_action( 'wp_footer', array( $this, 'output_login_form_modal' ), 10 );
 		add_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
@@ -1427,6 +1426,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the checkout substep title text with filters applied.
+	 * 
+	 * @param   string  $substep_id     Id of the substep.
+	 * @param   string  $substep_title  Title of the substep.
+	 */
+	public function get_substep_title_with_filters( $substep_id, $substep_title ) {
+		return apply_filters( "fc_substep_title_{$substep_id}", $substep_title );
+	}
+
+	/**
 	 * Get the checkout substep title html.
 	 *
 	 * @param   string  $substep_id     Id of the substep.
@@ -1434,7 +1443,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_substep_title_html( $substep_id, $substep_title ) {
 		$html = '';
-		$substep_title = apply_filters( "fc_substep_title_{$substep_id}", $substep_title );
+		$substep_title = $this->get_substep_title_with_filters( $substep_id, $substep_title );
 		
 		if ( ! empty( $substep_title ) ) {
 			$html = '<h3 class="fc-step__substep-title fc-step__substep-title--' . esc_attr( $substep_id ) . '">' . wp_kses( $substep_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h3>';
@@ -1741,6 +1750,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
+		$this->output_substep_contact_login_link_section();
 		$this->output_step_contact_fields();
 		$this->output_substep_fields_end_tag();
 
@@ -1912,7 +1922,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output contact step fields.
 	 */
-	public function output_substep_contact_login_button() {
+	public function output_substep_contact_login_link_section() {
 		// Do not output if login at checkout is disabled
 		if ( 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; }
 
@@ -1922,25 +1932,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'checkout'			=> WC()->checkout(),
 			)
 		);
-	}
-
-	/**
-	 * Output contact substep.
-	 *
-	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
-	 */
-	public function output_substep_contact_login( $step_id ) {
-		// Bail if user already logged in
-		if ( is_user_logged_in() ) { return; };
-
-		$substep_id = 'contact_login';
-		$this->output_substep_start_tag( $step_id, $substep_id, null );
-
-		$this->output_substep_fields_start_tag( $step_id, $substep_id );
-		$this->output_substep_contact_login_button();
-		$this->output_substep_fields_end_tag();
-
-		$this->output_substep_end_tag( $step_id, $substep_id, '', false );
 	}
 
 

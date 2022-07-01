@@ -320,7 +320,7 @@ $checkout-progress-bar-border:                        none !default;
 $checkout-progress-bar-border-radius:                 math.div( $checkout-progress-bar-height, 2 ) !default;
 $checkout-progress-bar-color:                         $light-grey !default;
 $checkout-progress-bar-complete-color:                $success-color !default;
-$checkout-progress-bar-current-color:                 transparentize( $checkout-progress-bar-complete-color, .7 ) !default; // Stands for 30% opacity of the color `$checkout-progress-bar-complete-color`
+$checkout-progress-bar-current-color:                 $checkout-progress-bar-complete-color !default;
 
 $checkout-step-count-margin:                          0 0 $global-spacing-tiny !default;
 $checkout-step-count-margin--large-screen:            0 0 $global-spacing-tiny !default;

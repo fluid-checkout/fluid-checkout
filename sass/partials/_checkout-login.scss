@@ -24,6 +24,14 @@
 
 
 
+.fc-contact-login__content {
+	margin-bottom: $global-spacing-small;
+	padding: $global-spacing-small;
+	background-color: $lighter-grey;
+}
+
+
+
 .fc-contact-login__cta-text {
 	margin-bottom: 0;
 	text-align: center;
@@ -47,7 +55,7 @@
 
 .fc-contact-login__separator {
 	position: relative;
-	margin-top: $global-spacing-small;
+	margin-bottom: $global-spacing;
 	text-align: center;
 }
 .fc-contact-login__separator:before {
@@ -71,12 +79,6 @@
 
 
 
-.has-checkout-layout--multi-step [data-step-complete] [data-substep-id="contact_login"] {
-	display: none;
-}
-
-
-
 
 
 // ------------------------------------
@@ -85,6 +87,7 @@
 .woocommerce-checkout .fc-login-form form.login {
 	margin: 0;
 	padding: 0;
+	width: 100%;
 	border: 0;
 }
 

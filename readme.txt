@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: 1.6.1
+Stable tag: 2.0.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -217,6 +217,8 @@ Only the themes that we have added explicit compatibility with or that we have t
 * Klaviyo - by Klaviyo.
 * MailerLite WooCommerce Integration - by MailerLite
 * MailPoet - by MailPoet
+* Oxygen Builder - Soflyy
+* Sendinblue - WooCommerce Email Marketing (by Sendinblue)
 * SG Checkout Location Picker for WooCommerce - by Sevengits
 * SG Map to Address - by Sevengits
 * WooCommerce Correios - by Claudio Sanches
@@ -368,19 +370,28 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased - 2.0.0 =
+= Unreleased =
 
-BREAKING CHANGES - Some features were moved to the PRO version.
+* Added: Compatibility with plugin Sendinblue - WooCommerce Email Marketing.
 
-* Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version. Read details at https://fluidcheckout.com/blog/fc-release-notes-2-0-0/
-* Bump tested up to WooCommerce 6.6
+= 2.0.0 - 2022-06-27 =
+
+BREAKING CHANGES - Some features were removed from the Lite version and moved to the PRO version. Read details at https://fluidcheckout.com/version-2-moved-features/
+
+* Removed: Moved features "Express Checkout", "Gift Options", "Local Pickup" and "Packing Slips" from Lite version to the PRO version.
+* Bump tested up to WooCommerce 6.6.1
+* Added: New filter `fc_output_checkout_contact_logout_cta_section` to enable displaying a logout link on the "My contact" substep when user is logged in. Defaults to "disabled".
 * Improved: RTL support on account address edit screens.
-* Improved: Utility colors (success, error, alert, info) to meet accessibility constrast criterias.
+* Improved: Utility colors (success, error, alert, info) to meet WCAG 2.1 level AA for accessibility constrast criterias. Although, this does not guarantee all elements meet the accessibility criterias.
+* Improved: Change color for current step in the progress bar to same as complete steps, as there seems to be a consensus that this better communicates the current progress status.
 * Improved: Do not load checkout assets on other pages.
 * Improved: Renamed `account-page-address` style handle and files to `edit-address-page` to better indicate where the styles are loaded and keep consistency across the plugins.
+* Improved: Set width for the login form which improves compatibility with various themes.
 * Fixed: Lite version should not affect order pay or order received pages or when user must log in before being able to checkout.
 * Fixed: Remove progress bar if cart is expired.
 * Fixed: Missing styles for the add payment method page on account pages.
+* Fixed: Missing the border on corners of some steps.
+* Fixed: Moved login section to inside the "My contact" substep. Fixes the issue with login section not being displayed if user has already entered an email address.
 
 = 1.6.1 - 2022-06-13 =
 
@@ -429,7 +440,7 @@ BREAKING CHANGES - Some features were moved to the PRO version.
 == Upgrade Notice ==
 
 = 2.0 =
-* BREAKING CHANGES - Some features where moved to the PRO version. Changes to the Order Summary and Express Checkout features might break customization code.
+* BREAKING CHANGES - Some features where moved to the PRO version.
 
 = 1.6 =
 * Changes to order summary and sidebar action hooks can cause issues if your website has customizations using them. See details in the changelog section.

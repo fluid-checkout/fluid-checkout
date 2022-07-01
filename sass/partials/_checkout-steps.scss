@@ -17,10 +17,12 @@
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-step-padding--large-screen; }
 }
-.fc-wrapper .fc-checkout-step:first-child {
+.fc-wrapper .fc-checkout-step:first-child,
+.fc-wrapper .fc-checkout-step:first-child > div:first-of-type {
 	@media (#{$bp-larger-than-tablet}) { border-radius: $checkout-substep-border-radius $checkout-substep-border-radius 0 0; }
 }
-.fc-wrapper .fc-checkout-step:last-child {
+.fc-wrapper .fc-checkout-step:last-child,
+.fc-wrapper .fc-checkout-step:last-child > div:last-of-type {
 	@media (#{$bp-larger-than-tablet}) { border-radius: 0 0 $checkout-substep-border-radius $checkout-substep-border-radius; }
 }
 
@@ -98,24 +100,9 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 .has-checkout-layout--multi-step .fc-checkout-step[data-step-complete] {
 	margin: 0 0 remsize( -.1rem ); // Prevent double borders
 }
-// .has-checkout-layout--multi-step .fc-checkout-step:not( .fc-checkout-step--prev-step-complete ) .fc-step__substep:first-of-type,
 .has-checkout-layout--multi-step .fc-checkout-step .fc-step__substep:first-of-type {
 	margin-top: 0;
 	border-top: 0;
-}
-// FIRST step
-.has-checkout-layout--multi-step .fc-checkout-step:first-child {
-	@media (#{$bp-larger-than-tablet}) {
-		border-top-right-radius: $checkout-substep-border-radius;
-		border-top-left-radius: $checkout-substep-border-radius;
-	}
-}
-// LAST step
-.has-checkout-layout--multi-step .fc-checkout-step:last-child {
-	@media (#{$bp-larger-than-tablet}) {
-		border-bottom-right-radius: $checkout-substep-border-radius;
-		border-bottom-left-radius: $checkout-substep-border-radius;
-	}
 }
 // PREV Complete
 .has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--prev-step-complete {
@@ -131,8 +118,16 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 		border-bottom-left-radius: 0;
 	}
 }
+// LAST Complete
+.has-checkout-layout--multi-step .fc-checkout-step[data-step-complete].fc-checkout-step--next-step-incomplete > div:nth-last-of-type( 2 ) { // Targets the last substep inside the last step that is completed
+	@media (#{$bp-larger-than-tablet}) {
+		border-bottom-right-radius: $checkout-substep-border-radius;
+		border-bottom-left-radius: $checkout-substep-border-radius;
+	}
+}
 // NEXT Incomplete
-.has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete {
+.has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete,
+.has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete > div:last-of-type {
 	@media (#{$bp-larger-than-tablet}) {
 		margin-bottom: $global-spacing-small;
 		border-bottom-right-radius: $checkout-substep-border-radius;
@@ -148,7 +143,20 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 		border-radius: $checkout-substep-border-radius;
 	}
 }
-
+.has-checkout-layout--multi-step .fc-checkout-step[data-step-current] > div:first-of-type {
+	@media (#{$bp-larger-than-tablet}) {
+		margin-top: 0;
+		border-top-right-radius: $checkout-substep-border-radius;
+		border-top-left-radius: $checkout-substep-border-radius;
+	}
+}
+.has-checkout-layout--multi-step .fc-checkout-step[data-step-current] > div:last-of-type {
+	@media (#{$bp-larger-than-tablet}) {
+		margin-bottom: 0;
+		border-bottom-right-radius: $checkout-substep-border-radius;
+		border-bottom-left-radius: $checkout-substep-border-radius;
+	}
+}
 
 
 .has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title {
