@@ -13,7 +13,7 @@
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.5.0
- * @fc-version 1.2.0
+ * @fc-version 2.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -24,9 +24,11 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
 if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
+	// CHANGE: Add element wrapping "must login" message
 	echo '<div class="fc-must-login-notice">';
 	echo esc_html( apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'woocommerce' ) ) );
 	echo '</div>';
+	// CHANGE: END - Add element wrapping "must login" message
 	return;
 }
 
@@ -34,6 +36,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
+	<?php // CHANGE: Replace checkout fields and order summary output with new page structure and hooks ?>
 	<div id="fc-wrapper" class="fc-wrapper <?php echo esc_attr( apply_filters( 'fc_wrapper_classes', '' ) ); ?>">
 
 		<?php do_action( 'fc_checkout_before', $checkout ); ?>
@@ -53,6 +56,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 		<?php do_action( 'fc_checkout_after', $checkout ); ?>
 
 	</div>
+	<?php // CHANGE: END - Replace checkout fields and order summary output with new page structure and hooks ?>
 
 </form>
 

@@ -218,6 +218,7 @@ Only the themes that we have added explicit compatibility with or that we have t
 * MailerLite WooCommerce Integration - by MailerLite
 * MailPoet - by MailPoet
 * Oxygen Builder - Soflyy
+* Sendinblue - WooCommerce Email Marketing (by Sendinblue)
 * SG Checkout Location Picker for WooCommerce - by Sevengits
 * SG Map to Address - by Sevengits
 * WooCommerce Correios - by Claudio Sanches
@@ -368,6 +369,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Added: Compatibility with plugin Sendinblue - WooCommerce Email Marketing.
 
 = 2.0.0 - 2022-06-27 =
 
