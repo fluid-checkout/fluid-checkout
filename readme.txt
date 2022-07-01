@@ -374,6 +374,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Compatibility with plugin Sendinblue - WooCommerce Email Marketing.
 * Fixed: Spacing around checkout widgets.
+* Fixed: Set default background color for the checkout footer when using the plugin's footer template.
 
 = 2.0.0 - 2022-06-27 =
 

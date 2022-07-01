@@ -2487,6 +2487,7 @@ div.woocommerce .fc-expansible-form-section.form-row .form-row {
 
 .fc-checkout-footer {
   border-top: solid 1px #d8d8d8;
+  background-color: #fff;
 }
 
 .fc-checkout-footer__inner {
