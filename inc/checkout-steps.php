@@ -56,10 +56,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
 		// Custom styles
-		add_filter( 'wp_head', array( $this, 'add_custom_styles' ), 10 );
-		add_filter( 'fc_output_custom_styles', array( $this, 'output_checkout_header_custom_styles' ), 10 );
-		add_filter( 'fc_output_custom_styles', array( $this, 'output_checkout_page_custom_styles' ), 10 );
-		add_filter( 'fc_output_custom_styles', array( $this, 'output_checkout_footer_custom_styles' ), 10 );
+		add_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
+		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_header_custom_styles' ), 10 );
+		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
+		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_footer_custom_styles' ), 10 );
 
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
@@ -291,10 +291,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output custom styles to the checkout page.
 	 */
-	public function add_custom_styles() {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
-
+	public function output_custom_styles() {
 		// Get styles
 		$custom_styles = apply_filters( 'fc_output_custom_styles', '' );
 
@@ -308,12 +305,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Output the custom styles for the checkout header background color.
+	 * Add the custom styles for the checkout header background color.
 	 */
-	public function output_checkout_header_custom_styles( $custom_styles ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
-		
+	public function add_checkout_header_custom_styles( $custom_styles ) {		
 		// Get header background color
 		$header_background_color = trim( get_option( 'fc_checkout_header_background_color', '' ) );
 
@@ -326,12 +320,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Output the custom styles for the checkout page background color.
+	 * Add the custom styles for the checkout page background color.
 	 */
-	public function output_checkout_page_custom_styles( $custom_styles ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
-		
+	public function add_checkout_page_custom_styles( $custom_styles ) {		
 		// Get header background color
 		$page_background_color = trim( get_option( 'fc_checkout_page_background_color', '' ) );
 
@@ -344,12 +335,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Output the custom styles for the checkout footer background color.
+	 * Add the custom styles for the checkout footer background color.
 	 */
-	public function output_checkout_footer_custom_styles( $custom_styles ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
-		
+	public function add_checkout_footer_custom_styles( $custom_styles ) {
 		// Get footer background color
 		$footer_background_color = trim( get_option( 'fc_checkout_footer_background_color', '' ) );
 
@@ -360,6 +348,50 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		return $custom_styles;
 	}
+
+
+
+	/**
+	 * Maybe output custom styles to the checkout page.
+	 */
+	public function maybe_output_custom_styles() {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		$this->output_custom_styles();
+	}
+
+	/**
+	 * Maybe add the custom styles for the checkout header background color.
+	 */
+	public function maybe_add_checkout_header_custom_styles( $custom_styles ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
+
+		return $this->add_checkout_header_custom_styles( $custom_styles );
+	}
+
+	/**
+	 * Maybe add the custom styles for the checkout page background color.
+	 */
+	public function maybe_add_checkout_page_custom_styles( $custom_styles ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
+
+		return $this->add_checkout_page_custom_styles( $custom_styles );
+	}
+
+	/**
+	 * Maybe add the custom styles for the checkout footer background color.
+	 */
+	public function maybe_add_checkout_footer_custom_styles( $custom_styles ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
+
+		return $this->add_checkout_footer_custom_styles( $custom_styles );
+	}
+
+	
 
 
 
@@ -636,10 +668,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if nothing was added to the footer
 		if ( ! has_action( 'fc_checkout_footer_widgets' ) || ! ( is_active_sidebar( 'fc_checkout_footer' ) || has_action( 'fc_checkout_footer_widgets_inside_before' ) || has_action( 'fc_checkout_footer_widgets_inside_after' ) ) ) { return; }
 
-		wc_get_template(
-			'fc/checkout/checkout-footer.php',
-			array( 'checkout' => WC()->checkout() )
-		);
+		wc_get_template( 'fc/checkout/checkout-footer.php' );
 	}
 
 

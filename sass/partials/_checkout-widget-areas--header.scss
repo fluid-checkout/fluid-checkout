@@ -1,0 +1,27 @@
+// ------------------------------------
+// CHECKOUT WIDGET AREAS - HEADER
+// ------------------------------------
+
+.fc-checkout-header .fc-checkout__header-widgets {
+	display: none;
+
+	@media (#{$bp-larger-than-desktop}) {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		margin: 0;
+	}
+}
+
+
+
+.fc-main .fc-checkout__below-header-widgets {
+	@media (#{$bp-larger-than-desktop}) { display: none; }
+}
+
+
+
+.fc-checkout__header-widgets p:last-child,
+.fc-main .fc-checkout__below-header-widgets p:last-child {
+	margin-bottom: 0;
+}

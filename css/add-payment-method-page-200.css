@@ -223,7 +223,8 @@ body.woocommerce-add-payment-method .fc-wrapper #payment ul.payment_methods > .w
   background-color: #fff;
 }
 
-.fc-wrapper #payment .payment_methods > li .payment_box:before {
+.fc-wrapper #payment .payment_methods > li .payment_box:before,
+#add_payment_method .fc-wrapper #payment .payment_methods > li .payment_box:before {
   display: none;
 }
 

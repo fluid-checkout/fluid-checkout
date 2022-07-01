@@ -2,22 +2,13 @@
 // CHECKOUT WIDGET AREAS
 // ------------------------------------
 
-.fc-checkout-header .widget,
-.fc-main .widget {
+.fc-widget-area .widget {
 	margin: 0;
 }
 
 
 
-.fc-wrapper .fc-checkout-order-review__widgets-inside {
-	margin-top: $global-spacing-small;
-	margin-bottom: $global-spacing-small;
-}
-
-
-
-.fc-wrapper .fc-checkout-order-review__widgets-inside .widget:last-child,
-.fc-wrapper .fc-checkout__below-place-order-widgets .widget:last-child,
-.fc-wrapper .fc-checkout-order-review__widgets-outside .widget:last-child {
+.fc-widget-area .widget:last-child,
+.fc-widget-area p:last-child {
 	margin-bottom: 0;
 }

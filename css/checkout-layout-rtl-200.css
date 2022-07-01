@@ -184,20 +184,41 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
   }
 }
 
-.fc-checkout-header .widget,
-.fc-main .widget {
+.fc-widget-area .widget {
   margin: 0;
+}
+
+.fc-widget-area .widget:last-child,
+.fc-widget-area p:last-child {
+  margin-bottom: 0;
+}
+
+.fc-checkout-header .fc-checkout__header-widgets {
+  display: none;
+}
+@media (min-width: 1000px) {
+  .fc-checkout-header .fc-checkout__header-widgets {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+  }
+}
+
+@media (min-width: 1000px) {
+  .fc-main .fc-checkout__below-header-widgets {
+    display: none;
+  }
+}
+
+.fc-checkout__header-widgets p:last-child,
+.fc-main .fc-checkout__below-header-widgets p:last-child {
+  margin-bottom: 0;
 }
 
 .fc-wrapper .fc-checkout-order-review__widgets-inside {
   margin-top: 20px;
   margin-bottom: 20px;
-}
-
-.fc-wrapper .fc-checkout-order-review__widgets-inside .widget:last-child,
-.fc-wrapper .fc-checkout__below-place-order-widgets .widget:last-child,
-.fc-wrapper .fc-checkout-order-review__widgets-outside .widget:last-child {
-  margin-bottom: 0;
 }
 
 @media (min-width: 1000px) {
@@ -514,24 +535,6 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   content: "\e80e";
-}
-
-.fc-checkout-header .fc-checkout__header-widgets {
-  display: none;
-}
-@media (min-width: 1000px) {
-  .fc-checkout-header .fc-checkout__header-widgets {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin: 0;
-  }
-}
-
-@media (min-width: 1000px) {
-  .fc-main .fc-checkout__below-header-widgets {
-    display: none;
-  }
 }
 
 .fc-progress-bar {
@@ -1629,7 +1632,8 @@ body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_
   background-color: #fff;
 }
 
-.fc-wrapper #payment .payment_methods > li .payment_box:before {
+.fc-wrapper #payment .payment_methods > li .payment_box:before,
+#add_payment_method .fc-wrapper #payment .payment_methods > li .payment_box:before {
   display: none;
 }
 
@@ -2483,6 +2487,7 @@ div.woocommerce .fc-expansible-form-section.form-row .form-row {
 
 .fc-checkout-footer {
   border-top: solid 1px #d8d8d8;
+  background-color: #fff;
 }
 
 .fc-checkout-footer__inner {
