@@ -373,6 +373,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with plugin Sendinblue - WooCommerce Email Marketing.
+* Fixed: Spacing around checkout widgets.
 
 = 2.0.0 - 2022-06-27 =
 
