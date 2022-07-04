@@ -32,25 +32,32 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	public function late_hooks() {
 		// Bail if SendInBlue class is not available
 		if ( ! class_exists( 'WC_Sendinblue_Integration' ) || ! array_key_exists( 'WC_Sendinblue_Integration', $GLOBALS ) ) { return; }
+		
+		// Get instance for the Sendinblue WooCommerce integration class
+		$sendinblue_woocommerce = $GLOBALS['WC_Sendinblue_Integration'];
+
+		// Replace the function that adds the checkbox as a checkout field
+		// because it outputs the nonce in the wrong place if `WC()->checkout()->get_checkout_fields()` is called early
+		remove_filter( 'woocommerce_checkout_fields', array( $sendinblue_woocommerce, 'maybe_add_checkout_fields' ), 10 );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_checkout_fields_to_billing' ), 10 );
+		add_action( 'fc_checkout_after_step_billing_fields', array( $this, 'output_nonce_field' ), 10 );
 
 		// Bail if should not move field to contact step
 		if ( 'yes' !== get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step', 'yes' ) ) { return; }
-
-		$sendinblue_woocommerce = $GLOBALS['WC_Sendinblue_Integration'];
 
 		// Terms and conditions position
 		$ws_opt_field     = isset( $sendinblue_woocommerce->customizations['ws_opt_field'] ) ? $sendinblue_woocommerce->customizations['ws_opt_field'] : 'no';
 		$display_location = isset( $sendinblue_woocommerce->customizations['ws_opt_checkbox_location'] ) ? $sendinblue_woocommerce->customizations['ws_opt_checkbox_location'] : '';
 		if ( 'yes' == $ws_opt_field && 'terms_condition' == $display_location ) {
-			remove_action( 'woocommerce_checkout_after_terms_and_conditions', array( $sendinblue_woocommerce, 'maybe_add_checkout_fields_terms' ) );
-			add_action( 'fc_checkout_after_contact_fields', array( $sendinblue_woocommerce, 'maybe_add_checkout_fields_terms' ) );
+			remove_action( 'woocommerce_checkout_after_terms_and_conditions', array( $sendinblue_woocommerce, 'maybe_add_checkout_fields_terms' ), 10 );
+			add_action( 'fc_checkout_after_contact_fields', array( $sendinblue_woocommerce, 'maybe_add_checkout_fields_terms' ), 10 );
 		}
 
 		// Billing or order fields position
 		if ( 'yes' == $ws_opt_field && ( empty( $display_location ) || 'billing' == $display_location || 'order' == $display_location ) ) {
-			remove_filter( 'woocommerce_checkout_fields', array( $sendinblue_woocommerce, 'maybe_add_checkout_fields' ) );
-			add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_checkout_fields_to_billing' ) );
-			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'move_signup_field_to_contact_substep' ) );
+			remove_filter( 'woocommerce_checkout_fields', array( $sendinblue_woocommerce, 'maybe_add_checkout_fields' ), 10 );
+			add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_checkout_fields_to_billing' ), 10 );
+			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'move_signup_field_to_contact_substep' ), 10 );
 		}
 	}
 
@@ -112,12 +119,19 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 				'default' => 'checked' == $sendinblue_woocommerce->customizations['ws_opt_default_status'] ? 1 : 0,
 			);
 		}
-		if ( strtoupper( $_SERVER['REQUEST_METHOD'] ) === 'GET' ) {
-			?>
-			<input type="hidden" class="ws_opt_in_nonce" name="ws_opt_in_nonce" value="<?php echo wp_create_nonce( 'order_checkout_nonce' ); ?>">
-			<?php
-		}
+
+		// CHANGE: Removed nonce field output for `GET` requests, moved to a more appropriate place
+
 		return $checkout_fields;
+	}
+
+	/**
+	 * Output the Sendinblue opt in nonce field.
+	 */
+	public function output_nonce_field() {
+		?>
+		<input type="hidden" class="ws_opt_in_nonce" name="ws_opt_in_nonce" value="<?php echo wp_create_nonce( 'order_checkout_nonce' ); ?>">
+		<?php
 	}
 
 
