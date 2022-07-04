@@ -445,12 +445,25 @@ jQuery( function( $ ) {
 
 					// Set keyboard track position back to that previously to update
 					setTimeout( function(){
-						if ( currentFocusedElement.selectionStart && currentFocusedElement.selectionEnd ) {
-							elementToFocus.selectionStart = currentFocusedElement.selectionStart;
-							elementToFocus.selectionEnd = currentFocusedElement.selectionEnd;
+						// Try to set the same track position
+						if( null !== elementToFocus.selectionStart && null !== elementToFocus.selectionEnd ) {
+							if ( currentFocusedElement.selectionStart && currentFocusedElement.selectionEnd ) {
+								elementToFocus.selectionStart = currentFocusedElement.selectionStart;
+								elementToFocus.selectionEnd = currentFocusedElement.selectionEnd;
+							}
+							// Otherwise try set the track position to the end of the field
+							// @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange
+							// @see https://html.spec.whatwg.org/multipage/input.html#concept-input-apply
+							else {
+								elementToFocus.selectionStart = elementToFocus.selectionEnd = Number.MAX_SAFE_INTEGER || 10000;
+							}
 						}
-						else if( elementToFocus.selectionStart && elementToFocus.selectionEnd ) {
-							elementToFocus.selectionStart = elementToFocus.selectionEnd = Number.MAX_SAFE_INTEGER || 10000;
+						// Try to select the entire content of the field
+						// @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select
+						// @see https://html.spec.whatwg.org/multipage/input.html#concept-input-apply
+						else {
+							try { elementToFocus.select(); }
+							catch { /* Do nothing */ }
 						}
 					}, 0 );
 				}
