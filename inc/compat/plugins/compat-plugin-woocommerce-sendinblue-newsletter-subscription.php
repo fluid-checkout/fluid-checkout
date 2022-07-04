@@ -55,9 +55,9 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 
 		// Billing or order fields position
 		if ( 'yes' == $ws_opt_field && ( empty( $display_location ) || 'billing' == $display_location || 'order' == $display_location ) ) {
-			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'move_signup_field_to_contact_substep' ), 10 );
 			remove_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_checkout_fields' ), 10 );
 			add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_checkout_fields_to_billing' ), 10 );
+			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'move_signup_field_to_contact_substep' ), 10 );
 		}
 	}
 
