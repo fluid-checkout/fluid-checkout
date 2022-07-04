@@ -204,9 +204,12 @@ body#{ $_body-page-selector } .fc-wrapper #payment ul.payment_methods > .wc_paym
 		background-color: $white;
 	}
 }
-.fc-wrapper #payment .payment_methods > li .payment_box:before {
+.fc-wrapper #payment .payment_methods > li .payment_box:before,
+#add_payment_method .fc-wrapper #payment .payment_methods > li .payment_box:before {
 	display: none;
 }
+
+
 
 .fc-wrapper .payment_box > p:last-child {
 	margin-bottom: 0;

@@ -128,7 +128,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) { return; }
 
 		if ( is_active_sidebar( 'fc_checkout_header' ) || has_action( 'fc_checkout_header_widgets_inside_before' ) || has_action( 'fc_checkout_header_widgets_inside_after' ) ) :
-			echo '<div class="fc-checkout__header-widgets">';
+			echo '<div class="fc-widget-area fc-checkout__header-widgets">';
 			do_action( 'fc_checkout_header_widgets_inside_before' );
 			dynamic_sidebar( 'fc_checkout_header' );
 			do_action( 'fc_checkout_header_widgets_inside_after' );
@@ -144,7 +144,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) { return; }
 
 		if ( is_active_sidebar( 'fc_checkout_below_header' ) ) :
-			echo '<div class="fc-checkout__below-header-widgets">';
+			echo '<div class="fc-widget-area fc-checkout__below-header-widgets">';
 			dynamic_sidebar( 'fc_checkout_below_header' );
 			echo '</div>';
 		endif;
@@ -162,7 +162,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		if ( ! $is_sidebar_widget ) { return; }
 
 		if ( is_active_sidebar( 'fc_checkout_sidebar_after' ) ) :
-			echo '<div class="fc-checkout-order-review__widgets-outside">';
+			echo '<div class="fc-widget-area fc-checkout-order-review__widgets-outside">';
 			dynamic_sidebar( 'fc_checkout_sidebar_after' );
 			echo '</div>';
 		endif;
@@ -180,7 +180,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		if ( ! $is_sidebar_widget ) { return; }
 
 		if ( is_active_sidebar( 'fc_order_summary_after' ) ) :
-			echo '<div class="fc-checkout-order-review__widgets-inside">';
+			echo '<div class="fc-widget-area fc-checkout-order-review__widgets-inside">';
 			dynamic_sidebar( 'fc_order_summary_after' );
 			echo '</div>';
 		endif;
@@ -193,7 +193,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 */
 	public function output_widget_area_checkout_place_order_below() {
 		if ( is_active_sidebar( 'fc_place_order_after' ) ) :
-			echo '<div class="fc-checkout__below-place-order-widgets">';
+			echo '<div class="fc-widget-area fc-checkout__below-place-order-widgets">';
 			dynamic_sidebar( 'fc_place_order_after' );
 			echo '</div>';
 		endif;
