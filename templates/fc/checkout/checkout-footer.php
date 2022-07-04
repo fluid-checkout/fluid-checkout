@@ -12,14 +12,14 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.6.1
+ * @version 2.0.2
  */
 
 defined( 'ABSPATH' ) || exit;
 ?>
 
 <footer class="fc-checkout-footer">
-	<div class="fc-checkout-footer__inner">
+	<div class="fc-widget-area fc-checkout-footer__inner">
 
 		<?php do_action( 'fc_checkout_footer_widgets' ); ?>
 
