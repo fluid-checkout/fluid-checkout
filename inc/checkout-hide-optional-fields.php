@@ -101,8 +101,15 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 
 		// Add expansible block markup for the field
 		$form_field_label = get_option( 'fc_optional_fields_link_label_lowercase', 'yes' ) === 'yes' ? strtolower( $args['label'] ) : $args['label'];
+		
 		/* translators: %s: Form field label */
 		$toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), $form_field_label ) );
+
+		// Maybe add "optional" to toggle label
+		if ( true === apply_filters( 'fc_expansible_section_toggle_label_add_optional_text', true ) ) {
+			$toggle_label .= ' ' . sprintf( __( '(%s)', 'fluid-checkout' ), __( 'optional', 'woocommerce' ) );
+		}
+
 		FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( $key, $toggle_label, $expansible_section_args );
 		echo $field; // WPCS: XSS ok.
 		FluidCheckout_Steps::instance()->output_expansible_form_section_end_tag();
