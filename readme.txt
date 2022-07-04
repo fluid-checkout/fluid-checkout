@@ -370,6 +370,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Add text "(optional)" to link buttons for optional fields.
+
 = 2.0.1 - 2022-07-04 =
 
 * Added: Compatibility with plugin Sendinblue - WooCommerce Email Marketing.
