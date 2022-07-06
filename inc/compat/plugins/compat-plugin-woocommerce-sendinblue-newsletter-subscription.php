@@ -32,9 +32,11 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	public function late_hooks() {
 		// Bail if SendInBlue class is not available
 		if ( ! class_exists( 'WC_Sendinblue_Integration' ) || ! array_key_exists( 'WC_Sendinblue_Integration', $GLOBALS ) ) { return; }
-		
-		// Get instance for the Sendinblue WooCommerce integration class
+
+		// Get instance and variables for the Sendinblue WooCommerce integration class
 		$sendinblue_woocommerce = $GLOBALS['WC_Sendinblue_Integration'];
+		$ws_opt_field = isset( $sendinblue_woocommerce->customizations['ws_opt_field'] ) ? $sendinblue_woocommerce->customizations['ws_opt_field'] : 'no';
+		$display_location = isset( $sendinblue_woocommerce->customizations['ws_opt_checkbox_location'] ) ? $sendinblue_woocommerce->customizations['ws_opt_checkbox_location'] : '';
 
 		// Replace the function that adds the checkbox as a checkout field
 		// because it outputs the nonce in the wrong place if `WC()->checkout()->get_checkout_fields()` is called early
@@ -42,12 +44,28 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_checkout_fields' ), 10 );
 		add_action( 'fc_checkout_after_step_billing_fields', array( $this, 'output_nonce_field' ), 10 );
 
+		// Order fields position
+		if ( 'yes' == $ws_opt_field && 'order' == $display_location && 'yes' !== get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step', 'yes' ) ) {
+			add_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
+		}
+
+		// Maybe move checkbox to the contact step
+		$this->move_checkbox_to_contact_step_hooks();
+	}
+
+	/**
+	 * Add or remove hooks for displaying the signup checkbox on the contact step.
+	 */
+	public function move_checkbox_to_contact_step_hooks() {
 		// Bail if should not move field to contact step
 		if ( 'yes' !== get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step', 'yes' ) ) { return; }
 
-		// Terms and conditions position
-		$ws_opt_field     = isset( $sendinblue_woocommerce->customizations['ws_opt_field'] ) ? $sendinblue_woocommerce->customizations['ws_opt_field'] : 'no';
+		// Get instance and variables for the Sendinblue WooCommerce integration class
+		$sendinblue_woocommerce = $GLOBALS['WC_Sendinblue_Integration'];
+		$ws_opt_field = isset( $sendinblue_woocommerce->customizations['ws_opt_field'] ) ? $sendinblue_woocommerce->customizations['ws_opt_field'] : 'no';
 		$display_location = isset( $sendinblue_woocommerce->customizations['ws_opt_checkbox_location'] ) ? $sendinblue_woocommerce->customizations['ws_opt_checkbox_location'] : '';
+
+		// Terms and conditions position
 		if ( 'yes' == $ws_opt_field && 'terms_condition' == $display_location ) {
 			remove_action( 'woocommerce_checkout_after_terms_and_conditions', array( $sendinblue_woocommerce, 'maybe_add_checkout_fields_terms' ), 10 );
 			add_action( 'fc_checkout_after_contact_fields', array( $sendinblue_woocommerce, 'maybe_add_checkout_fields_terms' ), 10 );
@@ -172,6 +190,30 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 		$contact_field_ids = array_merge( $contact_field_ids, array( 'ws_opt_in' ) );
 
 		return $contact_field_ids;
+	}
+
+
+
+	/**
+	 * Add the signup value to order notes substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_order_notes( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+		
+		// Get checkout field
+		$field_key = 'ws_opt_in';
+		$checkout_order_fields = WC()->checkout->get_checkout_fields( 'order' );
+		$field_value = WC()->checkout()->get_value( $field_key );
+
+		// The order notes value
+		if ( ! empty( $field_value ) && array_key_exists( $field_key, $checkout_order_fields ) ) {
+			$review_text_lines[] = FluidCheckout_Steps::instance()->get_field_display_value( $field_value, $field_key, $checkout_order_fields[ $field_key ] );
+		}
+
+		return $review_text_lines;
 	}
 
 }
