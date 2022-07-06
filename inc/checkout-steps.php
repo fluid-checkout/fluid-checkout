@@ -1828,7 +1828,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Iterate checkout fields
 			foreach ( $checkout_fields as $field_group => $field_group_fields ) {
 				if ( array_key_exists( $field_key, $field_group_fields ) ) {
-					$review_text_lines[] = WC()->checkout->get_value( $field_key );
+					$field_value = WC()->checkout->get_value( $field_key );
+					$review_text_lines[] = $this->get_field_display_value( $field_value, $field_key, $field_group_fields[ $field_key ] );
 					continue 2;
 				}
 			}
