@@ -165,6 +165,9 @@ jQuery( function( $ ) {
 		// CHANGE: Reinitialize billing fields collapsible block after checkout update
 		maybe_reinitialize_collapsible_blocks: function() {
 			if ( window.CollapsibleBlock ) {
+				// Try to initialize collapsible blocks if not yet initialized
+				CollapsibleBlock.init( window.fcSettings ? fcSettings.collapsibleBlock : null );
+
 				var collapsibleBlocks = document.querySelectorAll( '[data-collapsible]' );
 				for ( var i = 0; i < collapsibleBlocks.length; i++ ) {
 					var collapsibleBlock = collapsibleBlocks[i];

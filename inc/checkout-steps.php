@@ -516,7 +516,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function checkout_page_template( $template ) {
 		// Bail if checkout page template is not enabled
 		if ( 'yes' !== get_option( 'fc_enable_checkout_page_template', 'yes' ) ) { return $template; }
-		
+
 		// Bail if not on checkout page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $template; }
 
