@@ -19,23 +19,12 @@ class FluidCheckout_Oxygen extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'pre_option_fc_enable_checkout_page_template', array( $this, 'maybe_disable_checkout_page_template' ), 10, 3 );
-	}
-
-
-
-	/**
-	 * Maybe disable the checkout page template.
-	 *
-	 * @param   mixed   $pre_option       Pre-value for the option.
-	 * @param   string  $option           Option name.
-	 * @param   mixed   $default          The fallback value to return if the option does not exist.
-	 */
-	public function maybe_disable_checkout_page_template( $pre_option, $option, $default ) {
-		// Bail if using the plugin's checkout page header
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $pre_option; }
-		
-		return 'no';
+		// Maybe remove checkout page template
+		// - when editing the checkout page
+		// - when using the plugin's header and footer on the front-end
+		if ( isset( $_GET[ 'ct_builder' ] ) || isset( $_GET[ 'action' ] ) || ! FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) {
+			remove_filter( 'template_include', array( FluidCheckout_Steps::instance(), 'checkout_page_template' ), 100 );
+		}
 	}
 
 }
