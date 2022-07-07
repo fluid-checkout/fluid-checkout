@@ -70,7 +70,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	border-bottom: $payment-method-border;
 	background-color: $white;
 	font-weight: $payment-method-font-weight;
-	line-height: 1.6;
+	line-height: $payment-method-radio-size;
 	cursor: pointer;
 	transition: all $global-animation-duration-fast linear;
 

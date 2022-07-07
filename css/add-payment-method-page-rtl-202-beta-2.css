@@ -64,7 +64,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   border-bottom: solid 1px #d8d8d8;
   background-color: #fff;
   font-weight: normal;
-  line-height: 1.6;
+  line-height: 24px;
   cursor: pointer;
   transition: all 0.15s linear;
 }

@@ -1319,7 +1319,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   font-weight: normal;
   cursor: pointer;
   text-align: right;
-  line-height: 1.6;
+  line-height: 24px;
   transition: all 0.15s linear;
 }
 
@@ -1482,7 +1482,7 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   border-bottom: solid 1px #d8d8d8;
   background-color: #fff;
   font-weight: normal;
-  line-height: 1.6;
+  line-height: 24px;
   cursor: pointer;
   transition: all 0.15s linear;
 }
