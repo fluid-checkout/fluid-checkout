@@ -59,7 +59,7 @@
 	font-weight: $shipping-method-font-weight;
 	cursor: pointer;
 	text-align: #{ $alignment-left };
-	line-height: 1.6;
+	line-height: $shipping-method-radio-size;
 	transition: all $global-animation-duration-fast linear;
 }
 .woocommerce ul#shipping_method .shipping-method__option:last-child .shipping-method__option-label {
