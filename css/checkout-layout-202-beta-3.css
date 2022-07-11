@@ -52,7 +52,7 @@ body.woocommerce-checkout #main.fc-main {
   float: none;
   margin: 0 auto;
   max-width: 100%;
-  padding: 60px 20px 50px;
+  padding: 60px 20px 0;
 }
 @media (min-width: 750px) {
   body.woocommerce-checkout #main.fc-main {
@@ -81,27 +81,27 @@ body.woocommerce-checkout #main.fc-main {
 }
 @media (min-width: 750px) {
   body.woocommerce-checkout #main.fc-main {
-    padding: 60px 30px 50px;
+    padding: 60px 30px 0;
   }
 }
 @media (min-width: 1000px) {
   body.woocommerce-checkout #main.fc-main {
-    padding: 0 50px 50px;
+    padding: 0 50px 0;
   }
 }
 @media (min-width: 1280px) {
   body.woocommerce-checkout #main.fc-main {
-    padding: 0 50px 50px;
+    padding: 0 50px 0;
   }
 }
 @media (min-width: 1500px) {
   body.woocommerce-checkout #main.fc-main {
-    padding: 0 50px 50px;
+    padding: 0 50px 0;
   }
 }
 @media (min-width: 2000px) {
   body.woocommerce-checkout #main.fc-main {
-    padding: 0 50px 50px;
+    padding: 0 50px 0;
   }
 }
 
@@ -114,14 +114,14 @@ body.woocommerce-checkout .fc-content {
   box-sizing: border-box;
   float: none !important;
   margin: 0 auto;
-  padding-bottom: 50px;
+  padding-bottom: 80px;
   width: 100%;
   border: 0;
   text-align: left;
 }
 
 body.woocommerce-checkout .fc-content.fc-container {
-  padding: 0 20px 50px;
+  padding: 0 20px 80px;
 }
 @media (min-width: 1000px) {
   body.woocommerce-checkout .fc-content.fc-container {
@@ -145,27 +145,27 @@ body.woocommerce-checkout .fc-content.fc-container {
 }
 @media (min-width: 750px) {
   body.woocommerce-checkout .fc-content.fc-container {
-    padding: 0 30px 50px;
+    padding: 0 30px 80px;
   }
 }
 @media (min-width: 1000px) {
   body.woocommerce-checkout .fc-content.fc-container {
-    padding: 0 50px 50px;
+    padding: 0 50px 80px;
   }
 }
 @media (min-width: 1280px) {
   body.woocommerce-checkout .fc-content.fc-container {
-    padding: 0 50px 50px;
+    padding: 0 50px 80px;
   }
 }
 @media (min-width: 1500px) {
   body.woocommerce-checkout .fc-content.fc-container {
-    padding: 0 50px 50px;
+    padding: 0 50px 80px;
   }
 }
 @media (min-width: 2000px) {
   body.woocommerce-checkout .fc-content.fc-container {
-    padding: 0 50px 50px;
+    padding: 0 50px 80px;
   }
 }
 

@@ -377,6 +377,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Add text "(optional)" to link buttons for optional fields.
 * Improved: Styles for the create account section when account creation is mandatory.
 * Fixed: Spacing around checkout widgets below the place order button.
+* Fixed: Spacing around Fluid Checkout page content element.
 
 = 2.0.1 - 2022-07-04 =
 
