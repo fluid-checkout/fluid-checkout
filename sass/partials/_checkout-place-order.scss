@@ -27,8 +27,15 @@
 }
 
 
-.woocommerce-terms-and-conditions-wrapper,
-.woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
+
+.fc-wrapper .woocommerce-terms-and-conditions-wrapper {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-align: $alignment-left;
+}
+
+.fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
 	margin-bottom: 0;
 	text-align: $alignment-left;
 }
@@ -61,6 +68,9 @@
 .fc-place-order {
 	padding: $global-spacing 0;
 	text-align: center;
+}
+.fc-place-order:last-of-type {
+	padding-bottom: $global-spacing-extra-small;
 }
 
 // Place order button on the sidebar

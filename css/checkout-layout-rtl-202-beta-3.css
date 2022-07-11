@@ -1678,11 +1678,11 @@ body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_
 .fc-wrapper .fc-inside div.place-order {
   float: none;
   display: block;
-  padding: 0 20px 0;
+  padding: 0 20px;
 }
 @media (min-width: 1000px) {
   .fc-wrapper .fc-inside div.place-order {
-    padding: 20px 20px 0;
+    padding: 20px 20px;
   }
 }
 
@@ -1699,8 +1699,14 @@ body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_
   }
 }
 
-.woocommerce-terms-and-conditions-wrapper,
-.woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
+.fc-wrapper .woocommerce-terms-and-conditions-wrapper {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: right;
+}
+
+.fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
   margin-bottom: 0;
   text-align: right;
 }
@@ -1728,6 +1734,10 @@ body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_
 .fc-place-order {
   padding: 30px 0;
   text-align: center;
+}
+
+.fc-place-order:last-of-type {
+  padding-bottom: 10px;
 }
 
 .fc-sidebar .fc-place-order {

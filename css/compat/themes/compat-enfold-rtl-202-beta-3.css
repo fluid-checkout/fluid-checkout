@@ -65,11 +65,11 @@ body.theme-enfold.woocommerce-checkout#top .fc-wrapper #payment ul.payment_metho
 }
 
 body.theme-enfold#top .fc-wrapper .fc-inside div.place-order {
-  padding: 0 20px 0;
+  padding: 0 20px;
 }
 @media (min-width: 1000px) {
   body.theme-enfold#top .fc-wrapper .fc-inside div.place-order {
-    padding: 20px 20px 0;
+    padding: 20px 20px;
   }
 }
 

@@ -376,6 +376,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with plugin Oxygen.
 * Improved: Add text "(optional)" to link buttons for optional fields.
 * Improved: Styles for the create account section when account creation is mandatory.
+* Fixed: Spacing around checkout widgets below the place order button.
 
 = 2.0.1 - 2022-07-04 =
 

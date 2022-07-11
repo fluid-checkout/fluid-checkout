@@ -457,8 +457,8 @@ $order-summary-edit-cart-button-background-color:  $checkout-substep-action-butt
 // ----------------------------------------
 // PLACE ORDER
 
-$place-order-padding:                       0 $container-spacing-mobile 0 !default;
-$place-order-padding--large-screen:         $global-spacing-small $global-spacing-small 0 !default;
+$place-order-padding:                       0 $container-spacing-mobile !default;
+$place-order-padding--large-screen:         $global-spacing-small $global-spacing-small !default;
 $place-order-padding-sidebar--large-screen: 0 !default;
 
 // END - PLACE ORDER
