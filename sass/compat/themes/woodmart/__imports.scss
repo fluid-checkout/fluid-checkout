@@ -15,6 +15,7 @@ $_select2-selection-height:            remsize( 4.2rem ) !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"woodmart-checkout-steps-section",
 	"checkout-validation",
 	"checkout-coupon-code",
 	"order-summary",

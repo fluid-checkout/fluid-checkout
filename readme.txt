@@ -374,6 +374,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Improved: Compatibility with plugin Sendinblue - WooCommerce Email Marketing.
 * Improved: Compatibility with plugin Oxygen.
+* Improved: Compatibility with theme Woodmart. You can now choose to display the Woodmart checkout steps section when using the Fluid Checkout header and footer.
 * Improved: Add text "(optional)" to link buttons for optional fields.
 * Improved: Styles for the create account section when account creation is mandatory.
 * Fixed: Spacing around checkout widgets below the place order button.
