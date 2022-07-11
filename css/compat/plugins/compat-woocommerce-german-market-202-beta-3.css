@@ -35,10 +35,6 @@ body.has-fc-compat-german-market-button-placement .fc-sidebar .woocommerce-check
   }
 }
 
-body.has-fc-compat-german-market-button-placement .fc-wrapper .fc-checkout-order-review.has-additional-content .fc-checkout-order-review__inner {
-  padding-bottom: 0;
-}
-
 body.has-fc-compat-german-market-button-placement form.woocommerce-checkout .fc-wrapper #order_review .fc-checkout__below-place-order-widgets {
   display: none;
 }

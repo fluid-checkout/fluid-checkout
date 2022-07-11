@@ -22,6 +22,9 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 
+		// Container class
+		add_filter( 'fc_add_container_class', '__return_false' );
+
 		// Header elements
 		add_action( 'fc_checkout_header', array( $this, 'output_woodmart_checkout_steps_section' ), 20 );
 
