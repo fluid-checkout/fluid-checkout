@@ -1,0 +1,8 @@
+// ------------------------------------
+// CART CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .content-layout-wrapper {
+	margin-#{ $alignment-left }: 0;
+	margin-#{ $alignment-right }: 0;
+}

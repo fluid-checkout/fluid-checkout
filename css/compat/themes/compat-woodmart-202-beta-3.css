@@ -1,3 +1,12 @@
+body.theme-woodmart.has-checkout-header .page-title {
+  margin-top: 0;
+}
+
+body.theme-woodmart.woocommerce-checkout .content-layout-wrapper {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error:before {
   padding-top: 6px;
 }

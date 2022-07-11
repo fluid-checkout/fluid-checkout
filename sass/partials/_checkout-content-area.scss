@@ -38,12 +38,12 @@ body#{ $_body-page-selector } #main.fc-main {
 	@media (#{$bp-larger-than-desktop-extra-large}) { max-width: $container-width-desktop-extra-large; }
 
 	// padding
-	padding: $checkout-header-height $container-spacing-mobile $global-spacing-medium;
-	@media (#{$bp-larger-than-tablet}) { padding: $checkout-header-height $container-spacing-tablet $global-spacing-medium; }
-	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop $global-spacing-medium; }
-	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium $global-spacing-medium; }
-	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large $global-spacing-medium; }
-	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large $global-spacing-medium; }
+	padding: $checkout-header-height $container-spacing-mobile 0;
+	@media (#{$bp-larger-than-tablet}) { padding: $checkout-header-height $container-spacing-tablet 0; }
+	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop 0; }
+	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium 0; }
+	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large 0; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large 0; }
 }
 
 
@@ -57,7 +57,7 @@ body#{ $_body-page-selector } .fc-content {
 	box-sizing: border-box;
 	float: none !important; // Needed to override theme styles breaking the layout
 	margin: 0 auto;
-	padding-bottom: $global-spacing-medium;
+	padding-bottom: $global-spacing-large;
 	width: 100%;
 	border: 0;
 	text-align: left;
@@ -70,12 +70,12 @@ body#{ $_body-page-selector } .fc-content.fc-container {
 	@media (#{$bp-larger-than-desktop-extra-large}) { max-width: $container-width-desktop-extra-large; }
 
 	// padding
-	padding: 0 $container-spacing-mobile $global-spacing-medium;
-	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet $global-spacing-medium; }
-	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop $global-spacing-medium; }
-	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium $global-spacing-medium; }
-	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large $global-spacing-medium; }
-	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large $global-spacing-medium; }
+	padding: 0 $container-spacing-mobile $global-spacing-large;
+	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet $global-spacing-large; }
+	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop $global-spacing-large; }
+	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium $global-spacing-large; }
+	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large $global-spacing-large; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large $global-spacing-large; }
 }
 
 body#{ $_body-page-selector }.has-checkout-header .fc-content {
