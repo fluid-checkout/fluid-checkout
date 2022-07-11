@@ -1,6 +1,12 @@
 // ------------------------------------
-// CHECKOUT CONTACT STEP
+// CHECKOUT CREATE ACCOUNT
 // ------------------------------------
+
+.fc-content div.woocommerce form .fc-wrapper .woocommerce-account-fields {
+	margin: 0;
+}
+
+
 
 .fc-content div.woocommerce form .fc-wrapper .form-row.create-account {
 	margin-top: $global-spacing-extra-small;
@@ -9,4 +15,13 @@
 
 .fc-content div.woocommerce form .fc-wrapper .form-row.create-account + div.create-account {
 	margin-top: $global-spacing-extra-small;
+}
+
+
+.fc-content div.woocommerce form .fc-wrapper div.create-account {
+	border: 0;
+}
+
+.has-checkout-must-create-account .fc-content div.woocommerce form .fc-wrapper div.create-account {
+	background-color: transparent;
 }

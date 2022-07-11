@@ -273,6 +273,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$add_classes[] = 'has-checkout-must-login-notice';
 		}
 
+		// Add extra class if account creation is mandatory
+		if ( WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() && ! is_user_logged_in() ) {
+			$add_classes[] = 'has-checkout-must-create-account';
+		}
+
 		// Add extra class to highlight the shipping section
 		if ( true === apply_filters( 'fc_show_shipping_section_highlighted', true ) ) {
 			$add_classes[] = 'has-highlighted-shipping-section';

@@ -1164,6 +1164,10 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   text-align: center;
 }
 
+.fc-content div.woocommerce form .fc-wrapper .woocommerce-account-fields {
+  margin: 0;
+}
+
 .fc-content div.woocommerce form .fc-wrapper .form-row.create-account {
   margin-top: 10px;
   margin-bottom: 0;
@@ -1171,6 +1175,14 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 .fc-content div.woocommerce form .fc-wrapper .form-row.create-account + div.create-account {
   margin-top: 10px;
+}
+
+.fc-content div.woocommerce form .fc-wrapper div.create-account {
+  border: 0;
+}
+
+.has-checkout-must-create-account .fc-content div.woocommerce form .fc-wrapper div.create-account {
+  background-color: transparent;
 }
 
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] {
