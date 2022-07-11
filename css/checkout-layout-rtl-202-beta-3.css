@@ -1009,6 +1009,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 .fc-wrapper .woocommerce-shipping-fields,
 .fc-wrapper .woocommerce-billing-fields {
+  margin: 0;
   padding: 0;
   border: 0;
 }
