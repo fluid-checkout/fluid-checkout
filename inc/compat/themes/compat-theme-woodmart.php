@@ -26,7 +26,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		add_filter( 'fc_add_container_class', '__return_false' );
 
 		// Header elements
-		add_action( 'fc_checkout_header', array( $this, 'output_woodmart_checkout_steps_section' ), 20 );
+		add_action( 'fc_checkout_header', array( $this, 'maybe_output_woodmart_checkout_steps_section' ), 20 );
 
 		// Template files
 		add_filter( 'fc_override_template_with_theme_file', array( $this, 'override_template_with_theme_file' ), 10, 4 );
@@ -85,7 +85,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 	/**
 	 * Maybe output the checkout steps section from the Woodmart theme.
 	 */
-	public function output_woodmart_checkout_steps_section() {
+	public function maybe_output_woodmart_checkout_steps_section() {
 		// Bail if Woodmart section output is disabled in the plugin settings
 		if ( 'yes' !== get_option( 'fc_compat_theme_woodmart_output_checkout_steps_section', 'no' ) ) { return; }
 
