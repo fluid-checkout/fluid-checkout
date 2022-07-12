@@ -273,6 +273,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$add_classes[] = 'has-checkout-must-login-notice';
 		}
 
+		// Add extra class if account creation is mandatory
+		if ( WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() && ! is_user_logged_in() ) {
+			$add_classes[] = 'has-checkout-must-create-account';
+		}
+
 		// Add extra class to highlight the shipping section
 		if ( true === apply_filters( 'fc_show_shipping_section_highlighted', true ) ) {
 			$add_classes[] = 'has-highlighted-shipping-section';
@@ -516,7 +521,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function checkout_page_template( $template ) {
 		// Bail if checkout page template is not enabled
 		if ( 'yes' !== get_option( 'fc_enable_checkout_page_template', 'yes' ) ) { return $template; }
-		
+
 		// Bail if not on checkout page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $template; }
 
@@ -1828,7 +1833,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Iterate checkout fields
 			foreach ( $checkout_fields as $field_group => $field_group_fields ) {
 				if ( array_key_exists( $field_key, $field_group_fields ) ) {
-					$review_text_lines[] = WC()->checkout->get_value( $field_key );
+					$field_value = WC()->checkout->get_value( $field_key );
+					$review_text_lines[] = $this->get_field_display_value( $field_value, $field_key, $field_group_fields[ $field_key ] );
 					continue 2;
 				}
 			}
@@ -2297,9 +2303,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$address_data = array();
 		$fields = WC()->checkout()->get_checkout_fields( $address_type );
 		$field_keys = array_keys( $fields );
+
+		// Get contact step fields
+		$contact_field_ids = $this->get_contact_step_display_field_ids();
 		
 		// Get data from checkout fields
 		foreach ( $field_keys as $field_key ) {
+			// Skip fields moved to the contact step
+			if ( in_array( $field_key, $contact_field_ids ) ) { continue; }
+
 			// Get field key
 			$address_field_key = str_replace( $field_key_prefix, '', $field_key );
 			$address_data[ $address_field_key ] = WC()->checkout->get_value( $field_key );
@@ -2339,8 +2351,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get address fields
 		$address_fields = WC()->checkout->get_checkout_fields( $address_type );
 
+		// Get contact step fields
+		$contact_field_ids = $this->get_contact_step_display_field_ids();
+
 		// Define list of address fields to skip as the formatted address has already been added
-		$field_keys_skip_list = apply_filters( "fc_substep_text_{$address_type}_address_field_keys_skip_list", array(
+		$field_keys_skip_list = apply_filters( "fc_substep_text_{$address_type}_address_field_keys_skip_list", array_merge( $contact_field_ids, array(
 			$address_type . '_first_name',
 			$address_type . '_last_name',
 			$address_type . '_company',
@@ -2352,7 +2367,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$address_type . '_postcode',
 			$address_type . '_phone',
 			$address_type . '_email',
-		) );
+		) ) );
 
 		// Add extra fields lines
 		foreach ( $address_fields as $field_key => $field_args ) {

@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+.oxy-woo-checkout .fc-wrapper .fc-inside div.place-order {
+	padding: $place-order-padding;
+	@media (#{$bp-larger-than-desktop}) { padding: $place-order-padding--large-screen; }
+}

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-03 18:58+0000\n"
-"PO-Revision-Date: 2022-07-04 13:21+0000\n"
+"PO-Revision-Date: 2022-07-12 17:20+0000\n"
 "Last-Translator: BeyazBirKutu\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -56,7 +56,7 @@ msgid "Activate %s"
 msgstr "Etkinleştir %s"
 
 #. %s: Form field label
-#: inc/checkout-coupon-codes.php:185 inc/checkout-hide-optional-fields.php:105
+#: inc/checkout-coupon-codes.php:185 inc/checkout-hide-optional-fields.php:106
 #, php-format
 msgid "Add %s"
 msgstr "%s ekle"
@@ -69,7 +69,7 @@ msgstr "Sevkiyat adresi formuna bir telefon alanı ekleyin"
 msgid "Add widget areas to the checkout page"
 msgstr "Ödeme sayfasına widget alanları ekleyin"
 
-#: inc/checkout-steps.php:2053
+#: inc/checkout-steps.php:2059
 msgid "Additional notes"
 msgstr "Ek notlar"
 
@@ -81,7 +81,7 @@ msgstr "Gelişmiş"
 msgid "Already have an account?"
 msgstr "Zaten bir hesabınız var mı?"
 
-#: inc/checkout-steps.php:1841
+#: inc/checkout-steps.php:1847
 msgid "An account will be created with the information provided."
 msgstr "Verdiğiniz bilgilerle yeni bir hesap oluşturulacaktır."
 
@@ -102,7 +102,7 @@ msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 "\"Fatura adresi teslimat adresiyle aynı\" ayarı varsayılan olarak seçilir"
 
-#: inc/checkout-steps.php:2797
+#: inc/checkout-steps.php:2812
 msgid "Billing to"
 msgstr "Fatura Bilgileri"
 
@@ -125,7 +125,7 @@ msgstr "Sipariş bölümünden önce"
 msgid "Captcha Pro by BestWebSoft"
 msgstr "BestWebSoft'tan Captcha Pro"
 
-#: inc/checkout-steps.php:587
+#: inc/checkout-steps.php:592
 msgid "Cart total:"
 msgstr "Sepet toplamı:"
 
@@ -133,7 +133,7 @@ msgstr "Sepet toplamı:"
 msgid "Change email address to: {suggestion-value}"
 msgstr "E-posta adresini şu şekilde değiştirin: {suggestion-value}"
 
-#: inc/checkout-steps.php:1525
+#: inc/checkout-steps.php:1530
 #, php-format
 msgid "Change: %s"
 msgstr "Değiştir: %s"
@@ -170,32 +170,32 @@ msgstr "Ödeme Sayfası Sipariş Özeti"
 msgid "Checkout Sidebar"
 msgstr "Ödeme Sayfası Kenar Çubuğu"
 
-#: inc/checkout-steps.php:1165
+#: inc/checkout-steps.php:1170
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Faturalandırma"
 
-#: inc/checkout-steps.php:1144
+#: inc/checkout-steps.php:1149
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "İletişim"
 
-#: inc/checkout-steps.php:1174
+#: inc/checkout-steps.php:1179
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Ödeme"
 
-#: inc/checkout-steps.php:1154
+#: inc/checkout-steps.php:1159
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Gönderim"
 
-#: inc/checkout-steps.php:1525
+#: inc/checkout-steps.php:1530
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Değiştir"
 
-#: inc/checkout-steps.php:1526
+#: inc/checkout-steps.php:1531
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Değişiklikleri kaydet"
@@ -242,7 +242,7 @@ msgstr "Gönderim yöntemlerinin hangi konumda görüntüleneceğini seçin"
 msgid "Choose in which step to display the shipping phone"
 msgstr "Gönderim telefonunun hangi adımda görüntüleneceğini seçin"
 
-#: inc/checkout-steps.php:587
+#: inc/checkout-steps.php:592
 msgid "Click to go to the order summary"
 msgstr "Sipariş özetine gitmek için tıklayın"
 
@@ -594,15 +594,15 @@ msgstr ""
 msgid "Make the order summary stay visible while scrolling"
 msgstr "Kaydırırken sipariş özetinin görünür kalmasını sağlayın"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:73
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:98
 msgid "Move the sign up checkbox to the contact step"
 msgstr ""
 
-#: inc/checkout-steps.php:475
+#: inc/checkout-steps.php:480
 msgid "Multi-step"
 msgstr "Çok adımlı"
 
-#: inc/checkout-steps.php:1778
+#: inc/checkout-steps.php:1783
 msgid "My contact"
 msgstr "İletişim"
 
@@ -620,7 +620,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2437
+#: inc/checkout-steps.php:2452
 msgid "Not selected yet."
 msgstr "Henüz seçilmedi."
 
@@ -629,7 +629,7 @@ msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr "Yok."
 
-#: inc/checkout-steps.php:2493
+#: inc/checkout-steps.php:2508
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Yok."
@@ -678,15 +678,21 @@ msgstr "Opsiyonel"
 msgid "Order number and receipt will be sent to this email address."
 msgstr "Sipariş numarası ve makbuz bu e-posta adresine gönderilecektir."
 
-#: inc/checkout-steps.php:3584 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3599 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Sipariş özeti"
+
+#: inc/compat/themes/compat-theme-woodmart.php:51
+msgid ""
+"Output the checkout steps section from the Woodmart theme when using Fluid "
+"Checkout header and footer"
+msgstr ""
 
 #: inc/admin/admin-settings-general.php:104
 msgid "Page background color"
 msgstr "Sayfa arka plan rengi"
 
-#: inc/checkout-steps.php:3471
+#: inc/checkout-steps.php:3486
 msgid "Payment method"
 msgstr "Ödeme yöntemi"
 
@@ -709,7 +715,7 @@ msgid "Payment step"
 msgstr "Ödeme adımı"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1039
+#: inc/checkout-steps.php:1044
 #, php-format
 msgid "Proceed to %s"
 msgstr "%s'ye ilerleyin"
@@ -756,7 +762,7 @@ msgstr ""
 msgid "Remove"
 msgstr "Kaldır"
 
-#: inc/checkout-steps.php:2979
+#: inc/checkout-steps.php:2994
 msgid "Same as shipping address"
 msgstr "Sevkiyat adresiyle aynı"
 
@@ -766,7 +772,7 @@ msgstr "Sevkiyat adresiyle aynı"
 msgid "Select an image"
 msgstr "Bir resim seçin"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:72
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:97
 msgid "Sendinblue - WooCommerce Email Marketing"
 msgstr "Sendinblue - WooCommerce Email Marketing"
 
@@ -779,7 +785,7 @@ msgctxt "Settings section title"
 msgid "Integrations"
 msgstr "Entegrasyonlar"
 
-#: inc/checkout-steps.php:2029
+#: inc/checkout-steps.php:2035
 msgid "Shipping method"
 msgstr "Kargo"
 
@@ -827,7 +833,7 @@ msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr "Gerekli"
 
-#: inc/checkout-steps.php:2005
+#: inc/checkout-steps.php:2011
 msgid "Shipping to"
 msgstr "Alıcı Bilgileri"
 
@@ -839,7 +845,7 @@ msgstr "Ödeme adımının bir alt adımı olarak kupon kodlarını göster"
 msgid "Sign in to your account"
 msgstr "Hesabınızda oturum açın"
 
-#: inc/checkout-steps.php:476
+#: inc/checkout-steps.php:481
 msgid "Single step"
 msgstr "Tek adım"
 
@@ -853,26 +859,26 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Ödeme sayfasında site başlığı için boşluk (piksel olarak)"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1295
+#: inc/checkout-steps.php:1300
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Adım %1$s / %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2185
+#: inc/checkout-steps.php:2191
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2190
+#: inc/checkout-steps.php:2196
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:1639
+#: inc/checkout-steps.php:1644
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Yok."
@@ -903,6 +909,10 @@ msgstr ""
 #: inc/compat/themes/compat-theme-Impreza.php:117
 msgid "Theme Impreza"
 msgstr "Impreza Teması"
+
+#: inc/compat/themes/compat-theme-woodmart.php:50
+msgid "Theme Woodmart"
+msgstr ""
 
 #: inc/admin/admin-settings-general.php:283
 msgid "These widget areas are used to add trust symbols on the checkout page."
@@ -960,7 +970,7 @@ msgstr ""
 "//baymard.com/blog/cart-abandonment\" target=\"_blank\">Sepeti terk etmeyle "
 "ilgili araştırmayı okuyun</a>."
 
-#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:74
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:99
 msgid ""
 "When enabled, the checkbox will be moved to the contact step independently "
 "of the display location defined in the Sendinblue plugin settings."
