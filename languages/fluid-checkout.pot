@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-04 13:10+0000\n"
+"POT-Creation-Date: 2022-07-12 16:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -50,7 +50,7 @@ msgid "Activate %s"
 msgstr ""
 
 #. %s: Form field label
-#: inc/checkout-coupon-codes.php:185 inc/checkout-hide-optional-fields.php:105
+#: inc/checkout-coupon-codes.php:185 inc/checkout-hide-optional-fields.php:106
 #, php-format
 msgid "Add %s"
 msgstr ""
@@ -63,7 +63,7 @@ msgstr ""
 msgid "Add widget areas to the checkout page"
 msgstr ""
 
-#: inc/checkout-steps.php:2053
+#: inc/checkout-steps.php:2059
 msgid "Additional notes"
 msgstr ""
 
@@ -75,7 +75,7 @@ msgstr ""
 msgid "Already have an account?"
 msgstr ""
 
-#: inc/checkout-steps.php:1841
+#: inc/checkout-steps.php:1847
 msgid "An account will be created with the information provided."
 msgstr ""
 
@@ -95,7 +95,7 @@ msgstr ""
 msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 
-#: inc/checkout-steps.php:2797
+#: inc/checkout-steps.php:2812
 msgid "Billing to"
 msgstr ""
 
@@ -118,7 +118,7 @@ msgstr ""
 msgid "Captcha Pro by BestWebSoft"
 msgstr ""
 
-#: inc/checkout-steps.php:587
+#: inc/checkout-steps.php:592
 msgid "Cart total:"
 msgstr ""
 
@@ -126,7 +126,7 @@ msgstr ""
 msgid "Change email address to: {suggestion-value}"
 msgstr ""
 
-#: inc/checkout-steps.php:1525
+#: inc/checkout-steps.php:1530
 #, php-format
 msgid "Change: %s"
 msgstr ""
@@ -163,32 +163,32 @@ msgstr ""
 msgid "Checkout Sidebar"
 msgstr ""
 
-#: inc/checkout-steps.php:1165
+#: inc/checkout-steps.php:1170
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr ""
 
-#: inc/checkout-steps.php:1144
+#: inc/checkout-steps.php:1149
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr ""
 
-#: inc/checkout-steps.php:1174
+#: inc/checkout-steps.php:1179
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr ""
 
-#: inc/checkout-steps.php:1154
+#: inc/checkout-steps.php:1159
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr ""
 
-#: inc/checkout-steps.php:1525
+#: inc/checkout-steps.php:1530
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr ""
 
-#: inc/checkout-steps.php:1526
+#: inc/checkout-steps.php:1531
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr ""
@@ -229,7 +229,7 @@ msgstr ""
 msgid "Choose in which step to display the shipping phone"
 msgstr ""
 
-#: inc/checkout-steps.php:587
+#: inc/checkout-steps.php:592
 msgid "Click to go to the order summary"
 msgstr ""
 
@@ -541,15 +541,15 @@ msgstr ""
 msgid "Make the order summary stay visible while scrolling"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:73
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:98
 msgid "Move the sign up checkbox to the contact step"
 msgstr ""
 
-#: inc/checkout-steps.php:475
+#: inc/checkout-steps.php:480
 msgid "Multi-step"
 msgstr ""
 
-#: inc/checkout-steps.php:1778
+#: inc/checkout-steps.php:1783
 msgid "My contact"
 msgstr ""
 
@@ -565,7 +565,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr ""
 
-#: inc/checkout-steps.php:2437
+#: inc/checkout-steps.php:2452
 msgid "Not selected yet."
 msgstr ""
 
@@ -574,7 +574,7 @@ msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr ""
 
-#: inc/checkout-steps.php:2493
+#: inc/checkout-steps.php:2508
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr ""
@@ -620,15 +620,21 @@ msgstr ""
 msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 
-#: inc/checkout-steps.php:3584 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3599 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
+msgstr ""
+
+#: inc/compat/themes/compat-theme-woodmart.php:51
+msgid ""
+"Output the checkout steps section from the Woodmart theme when using Fluid "
+"Checkout header and footer"
 msgstr ""
 
 #: inc/admin/admin-settings-general.php:104
 msgid "Page background color"
 msgstr ""
 
-#: inc/checkout-steps.php:3471
+#: inc/checkout-steps.php:3486
 msgid "Payment method"
 msgstr ""
 
@@ -651,7 +657,7 @@ msgid "Payment step"
 msgstr ""
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1039
+#: inc/checkout-steps.php:1044
 #, php-format
 msgid "Proceed to %s"
 msgstr ""
@@ -689,7 +695,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: inc/checkout-steps.php:2979
+#: inc/checkout-steps.php:2994
 msgid "Same as shipping address"
 msgstr ""
 
@@ -699,7 +705,7 @@ msgstr ""
 msgid "Select an image"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:72
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:97
 msgid "Sendinblue - WooCommerce Email Marketing"
 msgstr ""
 
@@ -712,7 +718,7 @@ msgctxt "Settings section title"
 msgid "Integrations"
 msgstr ""
 
-#: inc/checkout-steps.php:2029
+#: inc/checkout-steps.php:2035
 msgid "Shipping method"
 msgstr ""
 
@@ -760,7 +766,7 @@ msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr ""
 
-#: inc/checkout-steps.php:2005
+#: inc/checkout-steps.php:2011
 msgid "Shipping to"
 msgstr ""
 
@@ -772,7 +778,7 @@ msgstr ""
 msgid "Sign in to your account"
 msgstr ""
 
-#: inc/checkout-steps.php:476
+#: inc/checkout-steps.php:481
 msgid "Single step"
 msgstr ""
 
@@ -786,26 +792,26 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr ""
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1295
+#: inc/checkout-steps.php:1300
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr ""
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2185
+#: inc/checkout-steps.php:2191
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr ""
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2190
+#: inc/checkout-steps.php:2196
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr ""
 
-#: inc/checkout-steps.php:1639
+#: inc/checkout-steps.php:1644
 msgctxt "Substep review text"
 msgid "None."
 msgstr ""
@@ -829,6 +835,10 @@ msgstr ""
 
 #: inc/compat/themes/compat-theme-Impreza.php:117
 msgid "Theme Impreza"
+msgstr ""
+
+#: inc/compat/themes/compat-theme-woodmart.php:50
+msgid "Theme Woodmart"
 msgstr ""
 
 #: inc/admin/admin-settings-general.php:283
@@ -877,7 +887,7 @@ msgid ""
 "abandonment\" target=\"_blank\">Read the research about cart abandonment</a>."
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:74
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:99
 msgid ""
 "When enabled, the checkbox will be moved to the contact step independently "
 "of the display location defined in the Sendinblue plugin settings."
