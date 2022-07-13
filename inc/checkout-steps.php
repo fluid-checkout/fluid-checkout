@@ -588,8 +588,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		ob_start();
 		wc_cart_totals_order_total_html();
 		$link_label_html = str_replace( 'includes_tax', 'includes_tax screen-reader-text', ob_get_clean() );
+		$link_label_html = apply_filters( 'fc_checkout_header_cart_link_label_html', $link_label_html );
 		?>
-		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout__cart-link" aria-description="<?php echo esc_attr( __( 'Click to go to the order summary', 'fluid-checkout' ) ); ?>" data-flyout-toggle data-flyout-target="[data-flyout-order-review]"><span class="screen-reader-text"><?php echo esc_html( __( 'Cart total:', 'fluid-checkout' ) ); ?></span> <?php echo $link_label_html; // WPCS: XSS ok. ?></a>
+		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout__cart-link" aria-description="<?php echo esc_attr( __( 'Click to go to the order summary', 'fluid-checkout' ) ); ?>" data-flyout-toggle data-flyout-target="[data-flyout-order-review]"><span class="screen-reader-text"><?php echo esc_html( __( 'Cart total:', 'fluid-checkout' ) ); ?></span> <?php echo wp_kses_post( $link_label_html ); ?></a>
 		<?php
 	}
 
