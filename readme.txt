@@ -370,6 +370,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: New filter `fc_checkout_header_cart_link_label_html` to allow customizing the cart link on the site header for mobile view.
+
+
 = 2.0.2 - 2022-07-12 =
 
 * Improved: Compatibility with plugin Sendinblue - WooCommerce Email Marketing.
