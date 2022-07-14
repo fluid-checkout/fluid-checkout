@@ -85,6 +85,10 @@ jQuery( function( $ ) {
 			$( document.body ).on( 'update_checkout', this.update_checkout );
 			$( document.body ).on( 'init_checkout', this.init_checkout );
 
+			// Set autocomplete attributes
+			$( document.body ).on( 'init_checkout', this.set_autocomplete_attribute_from_data );
+			$( document.body ).on( 'updated_checkout', this.set_autocomplete_attribute_from_data );
+
 			// Payment methods
 			this.$checkout_form.on( 'click', 'input[name="payment_method"]', this.payment_method_selected );
 
@@ -297,6 +301,15 @@ jQuery( function( $ ) {
 			if ( wc_checkout_form.dirtyInput ) {
 				wc_checkout_form.input_changed( e );
 			}
+		},
+		// CHANGE: Add function to set the autocomplete attribute values form data attributes. This fixes issue with lost user data when refreshing the page while using the Firefox Browser.
+		set_autocomplete_attribute_from_data: function( e ) {
+			var $fields = $( 'form.checkout' ).find( 'input, select, textarea' );
+			$fields.each( function() {
+				if ( $( this ).attr( 'data-autocomplete' ) ) {
+					$( this ).attr( 'autocomplete', $( this ).attr( 'data-autocomplete' ) );
+				}
+			} );
 		},
 		// CHANGE: Add function to sync the terms checkbox state
 		terms_checked_changed: function( e ) {

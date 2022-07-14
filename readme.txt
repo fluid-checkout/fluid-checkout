@@ -373,6 +373,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: New filter `fc_checkout_header_cart_link_label_html` to allow customizing the cart link on the site header for mobile view.
+* Fixed: Country and State being replaced with default values when using Firefox and refreshing the page.
 
 
 = 2.0.2 - 2022-07-12 =
