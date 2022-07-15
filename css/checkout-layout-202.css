@@ -105,6 +105,10 @@ body.woocommerce-checkout #main.fc-main {
   }
 }
 
+body.woocommerce-checkout.has-flyout--open #main.fc-main {
+  z-index: unset;
+}
+
 body.woocommerce-checkout .fc-content,
 body.woocommerce-checkout .fc-content * {
   box-sizing: border-box !important;
