@@ -374,7 +374,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: New filter `fc_checkout_header_cart_link_label_html` to allow customizing the cart link on the site header for mobile view.
 * Improved: Compatibility with theme Flatsome. Restore floating labels functionality.
-
+* Fixed: Mobile order summary "greyed out" when clicking the cart link on the site header in some themes.
 
 = 2.0.2 - 2022-07-12 =
 
