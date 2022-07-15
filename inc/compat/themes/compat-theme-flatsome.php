@@ -22,6 +22,10 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
+		// Enqueue
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
 		// Page container class
 		remove_filter( 'fc_content_section_class', array( FluidCheckout_Steps::instance(), 'fc_content_section_class' ), 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
@@ -40,6 +44,35 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 		// Revert Flatsome changes to the privacy policy placement at the checkout page
 		remove_action( 'woocommerce_checkout_after_order_review', 'wc_checkout_privacy_policy_text', 1 );
 		add_action( 'woocommerce_checkout_terms_and_conditions', 'wc_checkout_privacy_policy_text', 20 );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Scripts
+		wp_register_script( 'fc-compat-flatsome-floating-labels', self::$directory_url . 'js/compat/themes/flatsome/float-labels'. self::$asset_version . '.js', array( 'jquery', 'flatsome-woocommerce-floating-labels' ), NULL, true );
+		wp_add_inline_script( 'fc-compat-flatsome-floating-labels', 'window.addEventListener("load",function(){FlatsomeFloatLabels.init();})' );
+	}
+
+	/**
+	 * Enqueue assets.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-compat-flatsome-floating-labels' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 
