@@ -375,6 +375,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: New filter `fc_checkout_header_cart_link_label_html` to allow customizing the cart link on the site header for mobile view.
 * Improved: Compatibility with theme Flatsome. Restore floating labels functionality.
 * Improved: Replaced text "Sign in" with "Log in" to make it consistent with other parts of the plugin and WooCommerce.
+* Improved: Change email field description to "Order number and receipt will be sent to this email address." and make it easier to change it through the new filter hook `fc_checkout_email_field_description`.
 * Fixed: Mobile order summary "greyed out" when clicking the cart link on the site header in some themes.
 
 = 2.0.2 - 2022-07-12 =
