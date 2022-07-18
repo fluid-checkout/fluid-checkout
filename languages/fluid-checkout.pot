@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-18 15:31+0000\n"
+"POT-Creation-Date: 2022-07-18 16:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -79,7 +79,7 @@ msgstr ""
 msgid "An account will be created with the information provided."
 msgstr ""
 
-#: inc/checkout-fields.php:96
+#: inc/checkout-fields.php:95
 msgid "Apartment, unit, building, floor, etc."
 msgstr ""
 
@@ -426,7 +426,7 @@ msgstr ""
 msgid "Hide optional fields behind a link button"
 msgstr ""
 
-#: inc/checkout-fields.php:95
+#: inc/checkout-fields.php:94
 msgid "House number and street name."
 msgstr ""
 
@@ -514,7 +514,7 @@ msgstr ""
 
 #: templates/fc/checkout/form-contact-login.php:56
 msgctxt "Log in separator label at for when guest checkout is disabled"
-msgid "Or continue checkout below"
+msgid "Or continue below"
 msgstr ""
 
 #: templates/fc/checkout/form-contact-login-modal.php:28
@@ -602,10 +602,6 @@ msgstr ""
 msgid "Optional fields"
 msgstr ""
 
-#: inc/checkout-fields.php:48
-msgid "Order and tracking number will be sent to this email address."
-msgstr ""
-
 #: inc/admin/admin-settings-general.php:268
 msgid "Order notes"
 msgstr ""
@@ -620,7 +616,7 @@ msgctxt "Order notes field visibility"
 msgid "Optional"
 msgstr ""
 
-#: inc/checkout-fields.php:48
+#: inc/checkout-fields.php:47
 msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 

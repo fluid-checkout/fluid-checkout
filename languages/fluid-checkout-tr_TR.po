@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-03 18:58+0000\n"
-"PO-Revision-Date: 2022-07-18 15:32+0000\n"
+"PO-Revision-Date: 2022-07-18 16:20+0000\n"
 "Last-Translator: BeyazBirKutu\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -85,7 +85,7 @@ msgstr "Zaten bir hesabınız var mı?"
 msgid "An account will be created with the information provided."
 msgstr "Verdiğiniz bilgilerle yeni bir hesap oluşturulacaktır."
 
-#: inc/checkout-fields.php:96
+#: inc/checkout-fields.php:95
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Daire, birim, bina, kat, vb."
 
@@ -460,7 +460,7 @@ msgstr "Header arka plan rengi"
 msgid "Hide optional fields behind a link button"
 msgstr "Bir bağlantı düğmesinin arkasındaki isteğe bağlı alanları gizle"
 
-#: inc/checkout-fields.php:95
+#: inc/checkout-fields.php:94
 msgid "House number and street name."
 msgstr "Ev numarası ve sokak adı."
 
@@ -562,9 +562,10 @@ msgid "Or continue as a guest"
 msgstr "Veya bir misafir olarak devam et"
 
 #: templates/fc/checkout/form-contact-login.php:56
+#| msgid "Or continue checkout below"
 msgctxt "Log in separator label at for when guest checkout is disabled"
-msgid "Or continue checkout below"
-msgstr "Veya ödemeye aşağıdan devam edin"
+msgid "Or continue below"
+msgstr "Veya aşağıdan devam edin"
 
 #: templates/fc/checkout/form-contact-login-modal.php:28
 #, fuzzy
@@ -662,10 +663,6 @@ msgstr " Sadece gönderim ile ilgili sorular içindir."
 msgid "Optional fields"
 msgstr "Opsiyonel alanlar"
 
-#: inc/checkout-fields.php:48
-msgid "Order and tracking number will be sent to this email address."
-msgstr "Sipariş ve takip numarası bu e-posta adresine gönderilecektir."
-
 #: inc/admin/admin-settings-general.php:268
 msgid "Order notes"
 msgstr "Sipariş notları"
@@ -680,7 +677,7 @@ msgctxt "Order notes field visibility"
 msgid "Optional"
 msgstr "Opsiyonel"
 
-#: inc/checkout-fields.php:48
+#: inc/checkout-fields.php:47
 msgid "Order number and receipt will be sent to this email address."
 msgstr "Sipariş numarası ve makbuz bu e-posta adresine gönderilecektir."
 

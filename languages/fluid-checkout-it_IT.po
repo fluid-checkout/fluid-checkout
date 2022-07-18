@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-03 13:49+0000\n"
-"PO-Revision-Date: 2022-07-18 15:32+0000\n"
+"PO-Revision-Date: 2022-07-18 16:20+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -85,7 +85,7 @@ msgstr "Hai già un account?"
 msgid "An account will be created with the information provided."
 msgstr "Verrà creato un account con le informazioni fornite."
 
-#: inc/checkout-fields.php:96
+#: inc/checkout-fields.php:95
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Appartamento, unità, edificio, piano, ecc."
 
@@ -476,7 +476,7 @@ msgstr "Colore di sfondo dell'intestazione"
 msgid "Hide optional fields behind a link button"
 msgstr "Nascondi i campi facoltativi dietro un pulsante di collegamento"
 
-#: inc/checkout-fields.php:95
+#: inc/checkout-fields.php:94
 msgid "House number and street name."
 msgstr "Numero civico e nome della via."
 
@@ -578,9 +578,10 @@ msgid "Or continue as a guest"
 msgstr "Oppure continua come ospite"
 
 #: templates/fc/checkout/form-contact-login.php:56
+#| msgid "Or continue checkout below"
 msgctxt "Log in separator label at for when guest checkout is disabled"
-msgid "Or continue checkout below"
-msgstr "Oppure continua il checkout qui sotto"
+msgid "Or continue below"
+msgstr "Oppure continua qui sotto"
 
 #: templates/fc/checkout/form-contact-login-modal.php:28
 #| msgid "Sign in to your account"
@@ -678,12 +679,6 @@ msgstr "Utilizzato solo per domande relative alla spedizione."
 msgid "Optional fields"
 msgstr "Campi facoltativi"
 
-#: inc/checkout-fields.php:48
-msgid "Order and tracking number will be sent to this email address."
-msgstr ""
-"L'ordine e il numero di tracciamento verranno inviati a questo indirizzo "
-"email."
-
 #: inc/admin/admin-settings-general.php:268
 msgid "Order notes"
 msgstr "Note ordine"
@@ -698,7 +693,7 @@ msgctxt "Order notes field visibility"
 msgid "Optional"
 msgstr "Opzionale"
 
-#: inc/checkout-fields.php:48
+#: inc/checkout-fields.php:47
 msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 "Il numero dell'ordine e la ricevuta verranno inviati a questo indirizzo "

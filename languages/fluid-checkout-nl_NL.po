@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-29 12:58+0000\n"
-"PO-Revision-Date: 2022-07-18 15:32+0000\n"
+"PO-Revision-Date: 2022-07-18 16:19+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -85,7 +85,7 @@ msgstr "Heb je al een account?"
 msgid "An account will be created with the information provided."
 msgstr "Er wordt een account aangemaakt met de verstrekte gegevens."
 
-#: inc/checkout-fields.php:96
+#: inc/checkout-fields.php:95
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Appartement, unit, gebouw, verdieping, etc."
 
@@ -469,7 +469,7 @@ msgstr "Achtergrondkleur van de Header"
 msgid "Hide optional fields behind a link button"
 msgstr "Verberg optionele velden achter een link knop"
 
-#: inc/checkout-fields.php:95
+#: inc/checkout-fields.php:94
 msgid "House number and street name."
 msgstr "Huisnummer en straatnaam."
 
@@ -572,9 +572,10 @@ msgid "Or continue as a guest"
 msgstr "Of ga verder als gast"
 
 #: templates/fc/checkout/form-contact-login.php:56
+#| msgid "Or continue checkout below"
 msgctxt "Log in separator label at for when guest checkout is disabled"
-msgid "Or continue checkout below"
-msgstr "Of ga hieronder verder met afrekenen"
+msgid "Or continue below"
+msgstr "Of ga hieronder verder"
 
 #: templates/fc/checkout/form-contact-login-modal.php:28
 #| msgid "Sign in to your account"
@@ -675,10 +676,6 @@ msgstr "Alleen gebruikt voor verzending gerelateerde vragen."
 msgid "Optional fields"
 msgstr "Optionele velden"
 
-#: inc/checkout-fields.php:48
-msgid "Order and tracking number will be sent to this email address."
-msgstr "Het order- en trackingnummer worden naar dit e-mailadres verzonden."
-
 #: inc/admin/admin-settings-general.php:268
 msgid "Order notes"
 msgstr "Bestel notities"
@@ -693,7 +690,7 @@ msgctxt "Order notes field visibility"
 msgid "Optional"
 msgstr "Optioneel"
 
-#: inc/checkout-fields.php:48
+#: inc/checkout-fields.php:47
 msgid "Order number and receipt will be sent to this email address."
 msgstr "Bestelnummer en ontvangstbewijs worden naar dit e-mailadres gestuurd."
 
