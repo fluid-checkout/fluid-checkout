@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Fluid Checkout for WooCommerce - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-07-12 17:21+0000\n"
+"PO-Revision-Date: 2022-07-18 15:33+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -70,7 +70,7 @@ msgstr "Füge ein Telefonnummer Feld zu dem Lieferadresse Formular hinzu"
 msgid "Add widget areas to the checkout page"
 msgstr "Füge Widget-Bereiche zur Checkout Seite hinzu"
 
-#: inc/checkout-steps.php:2059
+#: inc/checkout-steps.php:2060
 msgid "Additional notes"
 msgstr "Zusätzliche Notizen"
 
@@ -82,7 +82,7 @@ msgstr "Erweitert"
 msgid "Already have an account?"
 msgstr "Du hast bereits ein Konto?"
 
-#: inc/checkout-steps.php:1847
+#: inc/checkout-steps.php:1848
 msgid "An account will be created with the information provided."
 msgstr "Es wird ein Konto mit den angegebenen Informationen erstellt."
 
@@ -102,7 +102,7 @@ msgstr "Rechnungsadresse"
 msgid "Billing address same as the shipping address checked by default"
 msgstr "Rechungsadresse gleich der Lieferadresse angewählt als Standard."
 
-#: inc/checkout-steps.php:2812
+#: inc/checkout-steps.php:2813
 msgid "Billing to"
 msgstr "Rechnungsstellung an"
 
@@ -125,7 +125,7 @@ msgstr ""
 msgid "Captcha Pro by BestWebSoft"
 msgstr "Captcha Pro by BestWebSoft"
 
-#: inc/checkout-steps.php:592
+#: inc/checkout-steps.php:593
 msgid "Cart total:"
 msgstr "Warenkorb-Summe:"
 
@@ -133,7 +133,7 @@ msgstr "Warenkorb-Summe:"
 msgid "Change email address to: {suggestion-value}"
 msgstr "Ändere die E-Mail Adresse zu: {suggestion-value}"
 
-#: inc/checkout-steps.php:1530
+#: inc/checkout-steps.php:1531
 msgid "Change: %s"
 msgstr "Änderung: %s"
 
@@ -169,32 +169,32 @@ msgstr ""
 msgid "Checkout Sidebar"
 msgstr "Kasse Seitenleiste"
 
-#: inc/checkout-steps.php:1170
+#: inc/checkout-steps.php:1171
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Abrechnung"
 
-#: inc/checkout-steps.php:1149
+#: inc/checkout-steps.php:1150
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Kontakt"
 
-#: inc/checkout-steps.php:1179
+#: inc/checkout-steps.php:1180
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Bezahlung"
 
-#: inc/checkout-steps.php:1159
+#: inc/checkout-steps.php:1160
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Versand"
 
-#: inc/checkout-steps.php:1530
+#: inc/checkout-steps.php:1531
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Ändern"
 
-#: inc/checkout-steps.php:1531
+#: inc/checkout-steps.php:1532
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Änderungen speichern"
@@ -239,7 +239,7 @@ msgstr ""
 msgid "Choose in which step to display the shipping phone"
 msgstr "Wähle aus, in welchem Schritt die Liefer-Telefonnummer angezeigt wird"
 
-#: inc/checkout-steps.php:592
+#: inc/checkout-steps.php:593
 msgid "Click to go to the order summary"
 msgstr "Klicke um zur Bestellzusammenfassung zu gelangen"
 
@@ -550,6 +550,11 @@ msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue checkout below"
 msgstr "Oder unten mit Bestellvorgang fortfahren"
 
+#: templates/fc/checkout/form-contact-login-modal.php:28
+#| msgid "Sign in to your account"
+msgid "Log in to your account"
+msgstr "In deinem Konto anmelden"
+
 #. 1: user display name 2: logout url
 #: templates/fc/checkout/form-contact-login.php:32
 #, fuzzy, php-format
@@ -585,7 +590,7 @@ msgstr ""
 msgid "Multi-step"
 msgstr "Mehrstufig"
 
-#: inc/checkout-steps.php:1783
+#: inc/checkout-steps.php:1784
 msgid "My contact"
 msgstr "Kontaktdaten"
 
@@ -604,7 +609,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2452
+#: inc/checkout-steps.php:2453
 msgid "Not selected yet."
 msgstr "Noch nicht ausgewählt."
 
@@ -613,7 +618,7 @@ msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr "Keine."
 
-#: inc/checkout-steps.php:2508
+#: inc/checkout-steps.php:2509
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Keine."
@@ -664,7 +669,7 @@ msgstr "Optional"
 msgid "Order number and receipt will be sent to this email address."
 msgstr "Bestellnummer und Rechnung werden an diese E-Mail gesendet"
 
-#: inc/checkout-steps.php:3599 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3600 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Zusammenfassung der Bestellung"
 
@@ -678,7 +683,7 @@ msgstr ""
 msgid "Page background color"
 msgstr ""
 
-#: inc/checkout-steps.php:3486
+#: inc/checkout-steps.php:3487
 msgid "Payment method"
 msgstr "Zahlungsmethode"
 
@@ -701,7 +706,7 @@ msgid "Payment step"
 msgstr ""
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1044
+#: inc/checkout-steps.php:1045
 msgid "Proceed to %s"
 msgstr "Weiter zu %s"
 
@@ -749,7 +754,7 @@ msgstr ""
 msgid "Remove"
 msgstr "Entfernen"
 
-#: inc/checkout-steps.php:2994
+#: inc/checkout-steps.php:2995
 msgid "Same as shipping address"
 msgstr "Gleiche Adresse wie die Lieferadresse"
 
@@ -772,7 +777,7 @@ msgctxt "Settings section title"
 msgid "Integrations"
 msgstr "Integrationen"
 
-#: inc/checkout-steps.php:2035
+#: inc/checkout-steps.php:2036
 msgid "Shipping method"
 msgstr "Versandart"
 
@@ -820,17 +825,13 @@ msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr "Benötigt"
 
-#: inc/checkout-steps.php:2011
+#: inc/checkout-steps.php:2012
 msgid "Shipping to"
 msgstr "Versand an"
 
 #: inc/admin/admin-settings-general.php:248
 msgid "Show coupon codes as a substep of the payment step"
 msgstr "Gutscheincodes als Teilschritt des Zahlungsschritts anzeigen"
-
-#: templates/fc/checkout/form-contact-login-modal.php:28
-msgid "Sign in to your account"
-msgstr "In deinem Konto anmelden"
 
 #: inc/checkout-steps.php:481
 msgid "Single step"
@@ -846,25 +847,25 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Abstände für den Seiten Header auf der Checkout Seite (in Pixeln)"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1300
+#: inc/checkout-steps.php:1301
 msgid "Step %1$s of %2$s"
 msgstr "Schritt %1$s von %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2191
+#: inc/checkout-steps.php:2192
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2196
+#: inc/checkout-steps.php:2197
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:1644
+#: inc/checkout-steps.php:1645
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Keine."
