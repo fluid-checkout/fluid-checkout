@@ -46,6 +46,10 @@ body#{ $_body-page-selector } #main.fc-main {
 	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large 0; }
 }
 
+body#{ $_body-page-selector }.has-flyout--open #main.fc-main {
+	z-index: unset;
+}
+
 
 
 body#{ $_body-page-selector } .fc-content,

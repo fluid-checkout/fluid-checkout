@@ -44,8 +44,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * Get the checkout fields args.
 	 */
 	public function get_checkout_field_args() {
-		$needs_shipping = is_checkout() ? WC()->cart->needs_shipping() : true;
-		$billing_email_description = $needs_shipping ? __( 'Order and tracking number will be sent to this email address.', 'fluid-checkout' ) : __( 'Order number and receipt will be sent to this email address.', 'fluid-checkout' );
+		$billing_email_description = apply_filters( 'fc_checkout_email_field_description', __( 'Order number and receipt will be sent to this email address.', 'fluid-checkout' ) );
 		$billing_company_class = get_option( 'woocommerce_checkout_phone_field', 'required' ) === 'required' ? 'form-row-last' : 'form-row-wide';
 
 		$fields_args = array(
