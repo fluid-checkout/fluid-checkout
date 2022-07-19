@@ -169,6 +169,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100, 2 );
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
+		add_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_before_save' ), 10, 2 );
 		add_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
 	}
 
@@ -4172,6 +4173,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function change_default_checkout_field_value_from_session_or_posted_data( $value, $input ) {
 
+		if ( 'shipping_address_label' === $input ) {
+			$test_value = $value;
+		}
+
 		// Maybe return field value from posted data
 		$posted_data = $this->get_parsed_posted_data();
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && array_key_exists( $input, $posted_data ) ) {
@@ -4253,6 +4258,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Clear customer data from the session
 		foreach ( $clear_field_keys as $field_key ) {
 			WC()->session->__unset( self::SESSION_PREFIX . $field_key );
+		}
+	}
+
+	/**
+	 * Clear the customer meta data for address label fields.
+	 *
+	 * @param   WC_Customer  $customer  The customer object.
+	 * @param   array        $data      The posted data.
+	 */
+	public function clear_customer_meta_before_save( $customer, $data ) {
+		// Filter clear customer meta fields to allow developers to add more fields to be cleared
+		$clear_customer_meta_field_keys = apply_filters( 'fc_customer_meta_data_clear_fields_order_processed', array() );
+		
+		foreach ( $clear_customer_meta_field_keys as $field_key ) {
+			$customer->delete_meta_data( $field_key );
 		}
 	}
 
