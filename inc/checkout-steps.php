@@ -4173,10 +4173,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function change_default_checkout_field_value_from_session_or_posted_data( $value, $input ) {
 
-		if ( 'shipping_address_label' === $input ) {
-			$test_value = $value;
-		}
-
 		// Maybe return field value from posted data
 		$posted_data = $this->get_parsed_posted_data();
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && array_key_exists( $input, $posted_data ) ) {
