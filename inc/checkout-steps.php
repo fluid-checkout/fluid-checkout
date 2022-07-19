@@ -3394,13 +3394,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Update billing field values
 				if ( in_array( $shipping_field_key, $posted_data_field_keys ) ) {
-					// Maybe save billing address data
+					// Maybe update new address data
 					if ( '0' === $is_billing_same_as_shipping_previous && ! apply_filters( 'fc_save_new_address_data_billing_skip_update', false ) ) {
 						$posted_data[ $save_field_key ] = $posted_data[ $field_key ];
 					}
 
-					// Copy field value from shipping fields
-					$new_field_value = isset( $posted_data[ $shipping_field_key ] ) ? $posted_data[ $shipping_field_key ] : null;
+					// Copy field value from shipping fields, maybe set field as empty if not found in shipping fields
+					$new_field_value = isset( $posted_data[ $shipping_field_key ] ) ? $posted_data[ $shipping_field_key ] : '';
+
+					// Update post data
 					$posted_data[ $field_key ] = $new_field_value;
 					$_POST[ $field_key ] = $new_field_value;
 				}
@@ -3408,19 +3410,37 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 		}
-		// When switching to "billing same as shipping" unchecked, copy from saved billing address fields.
+		// When switching to "billing (NOT) same as shipping", restore new billing address fields.
 		else if ( '1' === $is_billing_same_as_shipping_previous ) {
 
 			// Iterate posted data
 			foreach( $billing_copy_shipping_field_keys as $field_key ) {
-
 				// Get related field keys
 				$save_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
 
+				// Get field value from new address session
 				$new_field_value = $this->get_checkout_field_value_from_session( $save_field_key );
+
+				// Maybe set field as empty if not found in session
+				$new_field_value = null !== $new_field_value ? $new_field_value : '';
+
+				// Maybe set country and state to the default location
+				if ( empty( $new_field_value ) && ( strpos( $field_key, '_country' ) > 0 || strpos( $field_key, '_state' ) > 0 ) ) {
+					// Get customer default location
+					$customer_default_location = wc_get_customer_default_location();
+					
+					// Get field key without the address type
+					$default_location_field_key = str_replace( 'billing_', '', str_replace( 'shipping_', '', $field_key ) );
+
+					// Set field value to default location
+					if ( is_array( $customer_default_location ) && array_key_exists( $default_location_field_key, $customer_default_location ) ) {
+						$new_field_value = $customer_default_location[ $default_location_field_key ];
+					}
+				}
+
+				// Update post data
 				$posted_data[ $field_key ] = $new_field_value;
 				$_POST[ $field_key ] = $new_field_value;
-
 			}
 
 		}
