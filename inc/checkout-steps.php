@@ -4227,6 +4227,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'order_comments',
 		);
 
+		// Maybe set shipping fields to be cleared
+		if ( is_user_logged_in() ) {
+			$shipping_country = WC()->checkout()->get_value( 'shipping_country' );
+			$address_fields = WC()->countries->get_address_fields( $shipping_country, 'shipping_' );
+			foreach ( $address_fields as $field_key => $field_args ) {
+				$clear_field_keys[] = $field_key;
+			}
+		}
+
+		// Maybe set billing fields to be cleared
+		if ( is_user_logged_in() || $this->is_billing_same_as_shipping() ) {
+			$billing_country = WC()->checkout()->get_value( 'billing_country' );
+			$address_fields = WC()->countries->get_address_fields( $billing_country, 'billing_' );
+			foreach ( $address_fields as $field_key => $field_args ) {
+				$save_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
+				$clear_field_keys[] = $field_key;
+				$clear_field_keys[] = $save_field_key;
+			}
+		}
+
 		// Filter clear fields to allow developers to add more fields to be cleared
 		$clear_field_keys = apply_filters( 'fc_customer_persisted_data_clear_fields_order_processed', $clear_field_keys );
 
