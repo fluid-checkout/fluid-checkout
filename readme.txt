@@ -373,11 +373,15 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: New filter `fc_checkout_header_cart_link_label_html` to allow customizing the cart link on the site header for mobile view.
+* Added: New filter `fc_customer_meta_data_clear_fields_order_processed` to allow clearing customer meta fields when completing an order.
 * Improved: Compatibility with theme Flatsome. Restore floating labels functionality.
 * Improved: Replaced text "Sign in" with "Log in" to make it consistent with other parts of the plugin and WooCommerce.
 * Improved: Change email field description to "Order number and receipt will be sent to this email address." and make it easier to change it through the new filter hook `fc_checkout_email_field_description`.
 * Fixed: Show account creation notice also when guest checkout is disabled.
 * Fixed: Mobile order summary "greyed out" when clicking the cart link on the site header in some themes.
+* Fixed: Empty billing address fields and set default country and state entering a new address.
+* Fixed: Country and State being replaced with default values when using Firefox and refreshing the page. This happened because Firefox tries to preserve user type information between requests.
+* Fixed: Error on `select2` scripts when updating checkout causing usability and accessibility issues.
 
 = 2.0.2 - 2022-07-12 =
 

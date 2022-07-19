@@ -48,28 +48,28 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		$billing_company_class = get_option( 'woocommerce_checkout_phone_field', 'required' ) === 'required' ? 'form-row-last' : 'form-row-wide';
 
 		$fields_args = array(
-			'billing_email'         => array( 'priority' => 5, 'autocomplete' => 'contact email', 'description' => $billing_email_description, 'type' => 'email' ),
+			'billing_email'         => array( 'priority' => 5, 'description' => $billing_email_description, 'type' => 'email', 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'contact email' ) ),
 
-			'billing_first_name'    => array( 'priority' => 10, 'autocomplete' => 'contact given-name' ),
-			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'contact family-name' ),
-			'billing_phone'         => array( 'priority' => 30, 'autocomplete' => 'contact tel', 'class' => array( 'form-row-first' ), 'type' => 'tel' ),
-			'billing_company'       => array( 'priority' => 40, 'autocomplete' => 'billing organization', 'class' => array( $billing_company_class ) ),
-			'billing_address_1'     => array( 'autocomplete' => 'billing address-line1' ),
-			'billing_address_2'     => array( 'autocomplete' => 'billing address-line2' ),
-			'billing_city'          => array( 'autocomplete' => 'billing address-level2' ),
-			'billing_state'         => array( 'autocomplete' => 'billing address-level1' ),
-			'billing_country'       => array( 'autocomplete' => 'billing country' ),
-			'billing_postcode'      => array( 'autocomplete' => 'billing postal-code' ),
+			'billing_first_name'    => array( 'priority' => 10, 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'contact given-name' ) ),
+			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'contact family-name' ) ),
+			'billing_phone'         => array( 'priority' => 30, 'class' => array( 'form-row-first' ), 'type' => 'tel', 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'contact tel' ) ),
+			'billing_company'       => array( 'priority' => 40, 'class' => array( $billing_company_class ), 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'billing organization' ) ),
+			'billing_address_1'     => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'billing address-line1' ) ),
+			'billing_address_2'     => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'billing address-line2' ) ),
+			'billing_city'          => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'billing address-level2' ) ),
+			'billing_state'         => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'billing address-level1' ) ),
+			'billing_country'       => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'billing country' ) ),
+			'billing_postcode'      => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'billing postal-code' ) ),
 
-			'shipping_first_name'   => array( 'priority' => 10, 'autocomplete' => 'shipping given-name' ),
-			'shipping_last_name'    => array( 'priority' => 20, 'autocomplete' => 'shipping family-name' ),
-			'shipping_company'      => array( 'priority' => 30, 'autocomplete' => 'shipping organization', 'class' => array( 'form-row-wide' ) ),
-			'shipping_address_1'    => array( 'autocomplete' => 'shipping address-line1' ),
-			'shipping_address_2'    => array( 'autocomplete' => 'shipping address-line2' ),
-			'shipping_city'         => array( 'autocomplete' => 'shipping address-level2' ),
-			'shipping_state'        => array( 'autocomplete' => 'shipping address-level1' ),
-			'shipping_country'      => array( 'autocomplete' => 'shipping country' ),
-			'shipping_postcode'     => array( 'autocomplete' => 'shipping postal-code' ),
+			'shipping_first_name'   => array( 'priority' => 10, 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'shipping given-name' ) ),
+			'shipping_last_name'    => array( 'priority' => 20, 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'shipping family-name' ) ),
+			'shipping_company'      => array( 'priority' => 30, 'class' => array( 'form-row-wide' ), 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'shipping organization' ) ),
+			'shipping_address_1'    => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'shipping address-line1' ) ),
+			'shipping_address_2'    => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'shipping address-line2' ) ),
+			'shipping_city'         => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'shipping address-level2' ) ),
+			'shipping_state'        => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'shipping address-level1' ) ),
+			'shipping_country'      => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'shipping country' ) ),
+			'shipping_postcode'     => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'shipping postal-code' ) ),
 		);
 
 		// Only apply class changes on checkout and account pages

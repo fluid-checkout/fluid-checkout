@@ -169,6 +169,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100, 2 );
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
+		add_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10, 2 );
 		add_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
 	}
 
@@ -3394,13 +3395,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Update billing field values
 				if ( in_array( $shipping_field_key, $posted_data_field_keys ) ) {
-					// Maybe save billing address data
+					// Maybe update new address data
 					if ( '0' === $is_billing_same_as_shipping_previous && ! apply_filters( 'fc_save_new_address_data_billing_skip_update', false ) ) {
 						$posted_data[ $save_field_key ] = $posted_data[ $field_key ];
 					}
 
-					// Copy field value from shipping fields
-					$new_field_value = isset( $posted_data[ $shipping_field_key ] ) ? $posted_data[ $shipping_field_key ] : null;
+					// Copy field value from shipping fields, maybe set field as empty if not found in shipping fields
+					$new_field_value = isset( $posted_data[ $shipping_field_key ] ) ? $posted_data[ $shipping_field_key ] : '';
+
+					// Update post data
 					$posted_data[ $field_key ] = $new_field_value;
 					$_POST[ $field_key ] = $new_field_value;
 				}
@@ -3408,19 +3411,37 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 		}
-		// When switching to "billing same as shipping" unchecked, copy from saved billing address fields.
+		// When switching to "billing (NOT) same as shipping", restore new billing address fields.
 		else if ( '1' === $is_billing_same_as_shipping_previous ) {
 
 			// Iterate posted data
 			foreach( $billing_copy_shipping_field_keys as $field_key ) {
-
 				// Get related field keys
 				$save_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
 
+				// Get field value from new address session
 				$new_field_value = $this->get_checkout_field_value_from_session( $save_field_key );
+
+				// Maybe set field as empty if not found in session
+				$new_field_value = null !== $new_field_value ? $new_field_value : '';
+
+				// Maybe set country and state to the default location
+				if ( empty( $new_field_value ) && ( strpos( $field_key, '_country' ) > 0 || strpos( $field_key, '_state' ) > 0 ) ) {
+					// Get customer default location
+					$customer_default_location = wc_get_customer_default_location();
+					
+					// Get field key without the address type
+					$default_location_field_key = str_replace( 'billing_', '', str_replace( 'shipping_', '', $field_key ) );
+
+					// Set field value to default location
+					if ( is_array( $customer_default_location ) && array_key_exists( $default_location_field_key, $customer_default_location ) ) {
+						$new_field_value = $customer_default_location[ $default_location_field_key ];
+					}
+				}
+
+				// Update post data
 				$posted_data[ $field_key ] = $new_field_value;
 				$_POST[ $field_key ] = $new_field_value;
-
 			}
 
 		}
@@ -4207,12 +4228,47 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'order_comments',
 		);
 
+		// Maybe set shipping fields to be cleared
+		if ( is_user_logged_in() ) {
+			$shipping_country = WC()->checkout()->get_value( 'shipping_country' );
+			$address_fields = WC()->countries->get_address_fields( $shipping_country, 'shipping_' );
+			foreach ( $address_fields as $field_key => $field_args ) {
+				$clear_field_keys[] = $field_key;
+			}
+		}
+
+		// Maybe set billing fields to be cleared
+		if ( is_user_logged_in() || $this->is_billing_same_as_shipping() ) {
+			$billing_country = WC()->checkout()->get_value( 'billing_country' );
+			$address_fields = WC()->countries->get_address_fields( $billing_country, 'billing_' );
+			foreach ( $address_fields as $field_key => $field_args ) {
+				$save_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
+				$clear_field_keys[] = $field_key;
+				$clear_field_keys[] = $save_field_key;
+			}
+		}
+
 		// Filter clear fields to allow developers to add more fields to be cleared
 		$clear_field_keys = apply_filters( 'fc_customer_persisted_data_clear_fields_order_processed', $clear_field_keys );
 
 		// Clear customer data from the session
 		foreach ( $clear_field_keys as $field_key ) {
 			WC()->session->__unset( self::SESSION_PREFIX . $field_key );
+		}
+	}
+
+	/**
+	 * Clear customer meta data fields when completing an order.
+	 *
+	 * @param   WC_Customer  $customer  The customer object.
+	 * @param   array        $data      The posted data.
+	 */
+	public function clear_customer_meta_order_processed( $customer, $data ) {
+		// Filter clear customer meta fields to allow developers to add more fields to be cleared
+		$clear_customer_meta_field_keys = apply_filters( 'fc_customer_meta_data_clear_fields_order_processed', array() );
+
+		foreach ( $clear_customer_meta_field_keys as $field_key ) {
+			$customer->delete_meta_data( $field_key );
 		}
 	}
 
