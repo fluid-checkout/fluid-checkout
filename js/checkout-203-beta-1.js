@@ -433,21 +433,18 @@ jQuery( function( $ ) {
 			requestAnimationFrame( function() {
 				var elementToFocus;
 
+				// Try findind the `select2` focusable element
+				if ( currentFocusedElement.matches( '.fc-select2-field' ) ) {
+					elementToFocus = document.querySelector( '.form-row[id="' + currentFocusedElement.id + '"] .select2-selection' );
+				}
 				// Try findind the the current focused element after updating updated element by ID
-				if ( currentFocusedElement.id ) {
+				else if ( currentFocusedElement.id ) {
 					elementToFocus = document.getElementById( currentFocusedElement.id );
 				}
 				// Try findind the updated element by classes
 				else if ( currentFocusedElement.getAttribute( 'name' ) ) {
 					var nameAttr = currentFocusedElement.getAttribute( 'name' );
 					elementToFocus = document.querySelector( '[name="'+nameAttr+'"]' );
-				}
-				// Try findind the `select2` focusable element
-				else if ( currentFocusedElement.closest( '.form-row' ) ) {
-					var formRow = currentFocusedElement.closest( '.form-row' );
-					if ( formRow.id ) {
-						elementToFocus = document.querySelector( '.form-row[id="'+formRow.id+'"] .select2-selection' );
-					}
 				}
 
 				// Try setting focus if element is found
@@ -599,22 +596,34 @@ jQuery( function( $ ) {
 						}
 					});
 
-					// CHANGE: Get current element with focus, will reset after updating the fragments
+					// CHANGE: Get current element with focus, will re-set focus after updating the fragments
 					var currentFocusedElement = document.activeElement;
 					var currentValue = document.activeElement.value;
+
+					// Remove focus from current element as it will be replaced
+					// This fixes an issue where `select2` fields would not work properly
+					// after checkout is updated while focus is on a `select2` field
+					if ( currentFocusedElement ) { currentFocusedElement.blur(); }
+
+					// Maybe set current element with focus to the form row for `select2` fields
+					var currentFocusedFormRow = currentFocusedElement.closest( '.fc-select2-field' );
+					if ( currentFocusedFormRow ) {
+						currentFocusedElement = currentFocusedFormRow;
+					}
+					// CHANGE: END - Get current element with focus, will re-set focus after updating the fragments
 
 					// Always update the fragments
 					if ( data && data.fragments ) {
 						// CHANGE: Try to remove select2 components from existing fields before replacing fragments
 						$( 'select.country_select, select.state_select' ).each( function() {
 							var field = $( this );
-							try {
-								field.select2( 'destroy' );
-							} catch ( error ) {
-								try { field.selectWoo( 'destroy' ); }
-								catch ( error2 ) { /* Do nothing */ }
+							if ( field.hasClass( 'select2-hidden-accessible' ) ) { // Field has `select2` initialized
+								if ( typeof field.selectWoo === 'function' ) { field.selectWoo( 'destroy' ); }
+								else if ( typeof field.select2 === 'function' ) { field.select2( 'destroy' ); }
+								field.off( 'select2:select' );
 							}
-						});
+						} );
+						// CHANGE: END - Try to remove select2 components from existing fields before replacing fragments
 
 						$.each( data.fragments, function ( key, value ) {
 							// CHANGE: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM

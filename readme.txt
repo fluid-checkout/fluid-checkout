@@ -379,6 +379,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Show account creation notice also when guest checkout is disabled.
 * Fixed: Mobile order summary "greyed out" when clicking the cart link on the site header in some themes.
 * Fixed: Country and State being replaced with default values when using Firefox and refreshing the page. This happened because Firefox tries to preserve user type information between requests.
+* Fixed: Error on `select2` scripts when updating checkout causing usability and accessibility issues.
 
 = 2.0.2 - 2022-07-12 =
 
