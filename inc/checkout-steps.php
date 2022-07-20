@@ -154,7 +154,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ) );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
 
-		// Order Review
+		// Order summary
 		add_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
@@ -214,6 +214,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		else if ( 'below_order_summary' === $place_order_position ) {
 			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_sidebar_main' ), 1 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_sidebar_main' ), 10 );
+			remove_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
 		}
 	}
 
@@ -309,6 +310,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Add extra class to highlight the billing section
 		if ( true === apply_filters( 'fc_show_billing_section_highlighted', true ) ) {
 			$add_classes[] = 'has-highlighted-billing-section';
+		}
+
+		// Maybe add extra class for place order position
+		$place_order_position = get_option( 'fc_checkout_place_order_position', 'below_payment_section' );
+		if ( 'below_order_summary' === $place_order_position ) {
+			$add_classes[] = 'has-place-order-sidebar-only';
 		}
 
 		return array_merge( $classes, $add_classes );
