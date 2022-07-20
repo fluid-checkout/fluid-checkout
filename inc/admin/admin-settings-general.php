@@ -151,6 +151,21 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'title'             => __( 'Place order', 'fluid-checkout' ),
+						'desc'              => __( 'Define the position to display "Place order" and terms checkbox section.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Some options might not be compatible with some plugins and themes.', 'fluid-checkout' ),
+						'id'                => 'fc_checkout_place_order_position',
+						'options'           => array(
+							'below_payment_section'             => _x( 'Below the payment section', 'Place order position', 'fluid-checkout' ),
+							'below_order_summary'               => _x( 'Below the order summary', 'Place order position', 'fluid-checkout' ),
+							'both_payment_and_order_summary'    => _x( 'Both below the payment section and the order summary', 'Place order position', 'fluid-checkout' ),
+						),
+						'default'           => 'below_payment_section',
+						'type'              => 'select',
+						'autoload'          => false,
+					),
+
+					array(
 						'type' => 'sectionend',
 						'id'   => 'fc_checkout_layout_options',
 					),
@@ -290,33 +305,6 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'type' => 'sectionend',
 						'id'   => 'fc_checkout_features_options',
-					),
-
-					array(
-						'title' => __( 'Advanced', 'fluid-checkout' ),
-						'type'  => 'title',
-						'desc'  => '',
-						'id'    => 'fc_checkout_advanced_layout_options',
-					),
-
-					array(
-						'title'             => __( 'Place order', 'fluid-checkout' ),
-						'desc'              => __( 'Define the position to display "Place order" and terms checkbox section.', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Some options might not be compatible with some plugins and themes.', 'fluid-checkout' ),
-						'id'                => 'fc_checkout_place_order_position',
-						'options'           => array(
-							'below_payment_section'             => _x( 'Below the payment section', 'Place order position', 'fluid-checkout' ),
-							'below_order_summary'               => _x( 'Below the order summary', 'Place order position', 'fluid-checkout' ),
-							'both_payment_and_order_summary'    => _x( 'Both below the payment section and the order summary', 'Place order position', 'fluid-checkout' ),
-						),
-						'default'           => 'below_payment_section',
-						'type'              => 'select',
-						'autoload'          => false,
-					),
-	
-					array(
-						'type' => 'sectionend',
-						'id'   => 'fc_checkout_advanced_layout_options',
 					),
 
 				)
