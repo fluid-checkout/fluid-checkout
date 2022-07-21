@@ -19,6 +19,6 @@
   margin: 0;
 }
 
-.fc-wrapper .wc-gzd-checkbox-placeholder {
+.fc-wrapper .wc-gzd-checkbox-placeholder:not(:empty) {
   margin-bottom: 10px;
 }

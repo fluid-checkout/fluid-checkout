@@ -27,6 +27,6 @@
 
 
 
-.fc-wrapper .wc-gzd-checkbox-placeholder {
+.fc-wrapper .wc-gzd-checkbox-placeholder:not( :empty ) {
 	margin-bottom: $global-spacing-extra-small;
 }
