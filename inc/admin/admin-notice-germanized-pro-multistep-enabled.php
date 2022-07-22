@@ -60,7 +60,7 @@ class FluidCheckout_AdminNotices_GermanizedPRO_MultistepFeatureEnabled extends F
 		$notices[] = array(
 			'name'           => 'germanized_pro_multistep_feature_enabled',
 			'title'          => __( 'Germanized PRO multistep checkout feature needs to be disabled when using Fluid Checkout', 'fluid-checkout' ),
-			'description'    => __( 'When using Fluid Checkout, the multistep feature from the Germanized PRO plugin becomes unnecessary and can cause <strong>critical errors while processing new orders</strong>. Please disable the Gemanized PRO multistep checkout feature in the plugin settings.', 'fluid-checkout' ),
+			'description'    => __( 'When using Fluid Checkout, the multistep feature from the Germanized PRO plugin becomes unnecessary and can cause <strong>critical errors while processing new orders</strong>. Please disable the Germanized PRO multistep checkout feature in the plugin settings.', 'fluid-checkout' ),
 			'dismissable'    => false,
 			'error'          => true,
 			'actions'        => array(
