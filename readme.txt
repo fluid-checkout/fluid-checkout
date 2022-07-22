@@ -383,6 +383,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Empty billing address fields and set default country and state entering a new address.
 * Fixed: Country and State being replaced with default values when using Firefox and refreshing the page. This happened because Firefox tries to preserve user type information between requests.
 * Fixed: Error on `select2` scripts when updating checkout causing usability and accessibility issues.
+* Fixed: Compatibility with Germanized where the orders would not be processed for new customers in some cases.
 
 = 2.0.2 - 2022-07-12 =
 
