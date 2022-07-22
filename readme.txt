@@ -3,7 +3,7 @@ Contributors: fluidwebco, diegoversiani, luiggiab
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.0
+Tested up to: 6.0.1
 Stable tag: 2.0.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -370,6 +370,22 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Bump tested up to WordPress 6.0.1 and WooCommerce 6.7
+* Added: New filter `fc_checkout_header_cart_link_label_html` to allow customizing the cart link on the site header for mobile view.
+* Added: New filter `fc_customer_meta_data_clear_fields_order_processed` to allow clearing customer meta fields when completing an order.
+* Added: Compatibility with plugin Germanized PRO. Add notice for when the multistep checkout feature from the Germanized PRO plugin is enabled.
+* Improved: Compatibility with theme Flatsome. Restore floating labels functionality.
+* Improved: Replaced text "Sign in" with "Log in" to make it consistent with other parts of the plugin and WooCommerce.
+* Improved: Change email field description to "Order number and receipt will be sent to this email address." and make it easier to change it through the new filter hook `fc_checkout_email_field_description`.
+* Fixed: Show account creation notice also when guest checkout is disabled.
+* Fixed: Mobile order summary "greyed out" when clicking the cart link on the site header in some themes.
+* Fixed: Empty billing address fields and set default country and state entering a new address.
+* Fixed: Country and State being replaced with default values when using Firefox and refreshing the page. This happened because Firefox tries to preserve user type information between requests.
+* Fixed: Error on `select2` scripts when updating checkout causing usability and accessibility issues.
+* Fixed: Compatibility with Germanized where the orders would not be processed for new customers in some cases.
+
 = 2.0.2 - 2022-07-12 =
 
 * Improved: Compatibility with plugin Sendinblue - WooCommerce Email Marketing.
@@ -404,47 +420,6 @@ BREAKING CHANGES - Some features were removed from the Lite version and moved to
 * Fixed: Missing styles for the add payment method page on account pages.
 * Fixed: Missing the border on corners of some steps.
 * Fixed: Moved login section to inside the "My contact" substep. Fixes the issue with login section not being displayed if user has already entered an email address.
-
-= 1.6.1 - 2022-06-13 =
-
-* Bump tested up to WordPress 6.0 and WooCommerce 6.5.1
-* Added: Body class `fc-checkout-step-current--<step_id>` to let developers change elements styles based on the currently active step.
-* Added: Feature to disable the place order buttons when not in the last step, activated by default. Use filter `fc_checkout_maybe_disable_place_order_button` to deactivate changes to the place order button `disabled` state.
-* Added: Compatibility with theme Enfold.
-* Added: Compatibility with theme Striz.
-* Added: Compatibility with theme Razzi.
-* Added: Compatibility with plugin CurieRO.
-* Added: Compatibility with plugin WP Crowdfunding.
-* Improved: Translations to Dutch.
-* Improved: Compatibility with plugin Brazilian Market.
-* Improved: Compatibility with plugin German Market.
-* Fixed: Order summary height too big on desktop view in some instances, resulting in extra whitespace.
-* Fixed: Duplicate IDs and field names when the additional place order section is displayed on the sidebar.
-* Fixed: Missing compatibility RTL support for some themes.
-* Fixed: JS error on checkout fragments script when fragments are returned in an unexpected format.
-* Fixed: Fatal error related to coupon code fields functions calling `wc_coupon_enabled` too early.
-
-= 1.6.0 - 2022-05-19 =
-
-* Added: New option to enable/disable the Checkout Progress Bar feature.
-* Added: New hooks `fc_shipping_methods_before_packages_inside` and `fc_shipping_methods_after_packages_inside`.
-* Added: Translation to Dutch (Netherlands). Thanks to Robin Bak, Duncan - magnesium-minerals.nl, Damy Bosch - advice.nl.
-* Improved: Clear object cache with `wp_cache_flush` when saving settings or updating the plugin.
-* Improved: Moved some options from the "Advanced" to "Tools" and "Checkout" settings tabs. Removed the "Advanced" settings tab.
-* Improved: Only register checkout header widget areas when using the Fluid Checkout header template.
-* Improved: Display the shipping calculator above the shipping methods in the cart page (PRO feature).
-* Improved: Refactor make SCSS code reusable by using variables like `$_body-theme-selector` and `$_body-page-selector`.
-* Improved: Only display no shipping methods message on the checkout page when using the template file shipping-methods-available.php.
-* Improved: Refactor integrated coupon code feature to use own AJAX functions and scripts.
-* Improved: Refactor extract coupon code styles into a separate file.
-* Improved: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM when they contain any element with class `fc-fragment-always-replace`.
-* Improved: Compatibility with plugin Brazilian Market.
-* Improved: Compatibility with theme Shoptimizer.
-* Improved: Compatibility with themes, set expected styles for cart items rows in the order summary.
-* Improved: Spacing around trust symbols widget areas.
-* Fixed: Hide shipping methods on the cart page when WooCommerce the option "Hide shipping costs until an address is entered" is checked (PRO feature).
-* Fixed: Run hooks `fc_shipping_methods_before_packages`, `fc_shipping_methods_after_packages` only on initial page load skip on AJAX fragments requests.
-* Fixed: Do not attempt to output the admin Gift Message edit form on the front end.
 
 [See older changes](https://github.com/fluidweb-co/fluid-checkout/blob/main/changelog.md)
 

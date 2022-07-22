@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-12 16:21+0000\n"
+"POT-Creation-Date: 2022-07-22 12:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "(Required)"
 msgstr ""
 
-#: fluid-checkout.php:403
+#: fluid-checkout.php:404
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -44,7 +44,7 @@ msgid ""
 "features at no extra cost."
 msgstr ""
 
-#: fluid-checkout.php:399
+#: fluid-checkout.php:400
 #, php-format
 msgid "Activate %s"
 msgstr ""
@@ -63,7 +63,7 @@ msgstr ""
 msgid "Add widget areas to the checkout page"
 msgstr ""
 
-#: inc/checkout-steps.php:2059
+#: inc/checkout-steps.php:2061
 msgid "Additional notes"
 msgstr ""
 
@@ -75,11 +75,11 @@ msgstr ""
 msgid "Already have an account?"
 msgstr ""
 
-#: inc/checkout-steps.php:1847
+#: inc/checkout-steps.php:1849
 msgid "An account will be created with the information provided."
 msgstr ""
 
-#: inc/checkout-fields.php:96
+#: inc/checkout-fields.php:95
 msgid "Apartment, unit, building, floor, etc."
 msgstr ""
 
@@ -95,7 +95,7 @@ msgstr ""
 msgid "Billing address same as the shipping address checked by default"
 msgstr ""
 
-#: inc/checkout-steps.php:2812
+#: inc/checkout-steps.php:2814
 msgid "Billing to"
 msgstr ""
 
@@ -118,7 +118,7 @@ msgstr ""
 msgid "Captcha Pro by BestWebSoft"
 msgstr ""
 
-#: inc/checkout-steps.php:592
+#: inc/checkout-steps.php:594
 msgid "Cart total:"
 msgstr ""
 
@@ -126,7 +126,7 @@ msgstr ""
 msgid "Change email address to: {suggestion-value}"
 msgstr ""
 
-#: inc/checkout-steps.php:1530
+#: inc/checkout-steps.php:1532
 #, php-format
 msgid "Change: %s"
 msgstr ""
@@ -163,32 +163,32 @@ msgstr ""
 msgid "Checkout Sidebar"
 msgstr ""
 
-#: inc/checkout-steps.php:1170
+#: inc/checkout-steps.php:1172
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr ""
 
-#: inc/checkout-steps.php:1149
+#: inc/checkout-steps.php:1151
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr ""
 
-#: inc/checkout-steps.php:1179
+#: inc/checkout-steps.php:1181
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr ""
 
-#: inc/checkout-steps.php:1159
+#: inc/checkout-steps.php:1161
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr ""
 
-#: inc/checkout-steps.php:1530
+#: inc/checkout-steps.php:1532
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr ""
 
-#: inc/checkout-steps.php:1531
+#: inc/checkout-steps.php:1533
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr ""
@@ -229,7 +229,7 @@ msgstr ""
 msgid "Choose in which step to display the shipping phone"
 msgstr ""
 
-#: inc/checkout-steps.php:592
+#: inc/checkout-steps.php:594
 msgid "Click to go to the order summary"
 msgstr ""
 
@@ -278,7 +278,7 @@ msgid ""
 "work depending on the captcha type chosen."
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:101
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:145
 msgid ""
 "Define the position to display the legal checkboxes. <br/>The legal "
 "checkboxes will be displayed in the payment section if the place order "
@@ -288,7 +288,7 @@ msgid ""
 "legal checkboxes on my checkout page.</span>"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:89
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:133
 msgid ""
 "Define the position to display the place order button. <br/><span "
 "style=\"color:#f00;\"><strong>Disclaimer:</strong> by changing these "
@@ -402,11 +402,21 @@ msgstr ""
 msgid "Footer background color"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:88
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:132
 msgid "Germanized for WooCommerce"
 msgstr ""
 
-#: fluid-checkout.php:395
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
+msgid ""
+"Germanized PRO multistep checkout feature needs to be disabled when using "
+"Fluid Checkout"
+msgstr ""
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:67
+msgid "Go to Germanized settings"
+msgstr ""
+
+#: fluid-checkout.php:396
 msgid "Go to Plugin Search"
 msgstr ""
 
@@ -426,7 +436,7 @@ msgstr ""
 msgid "Hide optional fields behind a link button"
 msgstr ""
 
-#: inc/checkout-fields.php:95
+#: inc/checkout-fields.php:94
 msgid "House number and street name."
 msgstr ""
 
@@ -488,12 +498,12 @@ msgstr ""
 msgid "Layout Options"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:106
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:150
 msgctxt "Legal checkboxes position"
 msgid "Before place order button"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:105
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:149
 msgctxt "Legal checkboxes position"
 msgid "Order summary (before products)"
 msgstr ""
@@ -514,7 +524,11 @@ msgstr ""
 
 #: templates/fc/checkout/form-contact-login.php:56
 msgctxt "Log in separator label at for when guest checkout is disabled"
-msgid "Or continue checkout below"
+msgid "Or continue below"
+msgstr ""
+
+#: templates/fc/checkout/form-contact-login-modal.php:28
+msgid "Log in to your account"
 msgstr ""
 
 #. 1: user display name 2: logout url
@@ -545,11 +559,11 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr ""
 
-#: inc/checkout-steps.php:480
+#: inc/checkout-steps.php:481
 msgid "Multi-step"
 msgstr ""
 
-#: inc/checkout-steps.php:1783
+#: inc/checkout-steps.php:1785
 msgid "My contact"
 msgstr ""
 
@@ -565,7 +579,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr ""
 
-#: inc/checkout-steps.php:2452
+#: inc/checkout-steps.php:2454
 msgid "Not selected yet."
 msgstr ""
 
@@ -574,7 +588,7 @@ msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr ""
 
-#: inc/checkout-steps.php:2508
+#: inc/checkout-steps.php:2510
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr ""
@@ -598,10 +612,6 @@ msgstr ""
 msgid "Optional fields"
 msgstr ""
 
-#: inc/checkout-fields.php:48
-msgid "Order and tracking number will be sent to this email address."
-msgstr ""
-
 #: inc/admin/admin-settings-general.php:268
 msgid "Order notes"
 msgstr ""
@@ -616,11 +626,11 @@ msgctxt "Order notes field visibility"
 msgid "Optional"
 msgstr ""
 
-#: inc/checkout-fields.php:48
+#: inc/checkout-fields.php:47
 msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 
-#: inc/checkout-steps.php:3599 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3621 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr ""
 
@@ -634,7 +644,7 @@ msgstr ""
 msgid "Page background color"
 msgstr ""
 
-#: inc/checkout-steps.php:3486
+#: inc/checkout-steps.php:3508
 msgid "Payment method"
 msgstr ""
 
@@ -646,18 +656,18 @@ msgstr ""
 msgid "Place order"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:93
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:137
 msgctxt "Place order position"
 msgid "Order summary (after totals)"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:94
+#: inc/compat/plugins/compat-plugin-woocommerce-germanized.php:138
 msgctxt "Place order position"
 msgid "Payment step"
 msgstr ""
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1044
+#: inc/checkout-steps.php:1046
 #, php-format
 msgid "Proceed to %s"
 msgstr ""
@@ -695,7 +705,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: inc/checkout-steps.php:2994
+#: inc/checkout-steps.php:2996
 msgid "Same as shipping address"
 msgstr ""
 
@@ -718,7 +728,7 @@ msgctxt "Settings section title"
 msgid "Integrations"
 msgstr ""
 
-#: inc/checkout-steps.php:2035
+#: inc/checkout-steps.php:2037
 msgid "Shipping method"
 msgstr ""
 
@@ -766,7 +776,7 @@ msgctxt "Shipping phone field visibility"
 msgid "Required"
 msgstr ""
 
-#: inc/checkout-steps.php:2011
+#: inc/checkout-steps.php:2013
 msgid "Shipping to"
 msgstr ""
 
@@ -774,11 +784,7 @@ msgstr ""
 msgid "Show coupon codes as a substep of the payment step"
 msgstr ""
 
-#: templates/fc/checkout/form-contact-login-modal.php:28
-msgid "Sign in to your account"
-msgstr ""
-
-#: inc/checkout-steps.php:481
+#: inc/checkout-steps.php:482
 msgid "Single step"
 msgstr ""
 
@@ -792,26 +798,26 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr ""
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1300
+#: inc/checkout-steps.php:1302
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr ""
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2191
+#: inc/checkout-steps.php:2193
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr ""
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2196
+#: inc/checkout-steps.php:2198
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr ""
 
-#: inc/checkout-steps.php:1644
+#: inc/checkout-steps.php:1646
 msgctxt "Substep review text"
 msgid "None."
 msgstr ""
@@ -893,7 +899,15 @@ msgid ""
 "of the display location defined in the Sendinblue plugin settings."
 msgstr ""
 
-#: fluid-checkout.php:392
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
+msgid ""
+"When using Fluid Checkout, the multistep feature from the Germanized PRO "
+"plugin becomes unnecessary and can cause <strong>critical errors while "
+"processing new orders</strong>. Please disable the Germanized PRO multistep "
+"checkout feature in the plugin settings."
+msgstr ""
+
+#: fluid-checkout.php:393
 msgid "WooCommerce"
 msgstr ""
 
