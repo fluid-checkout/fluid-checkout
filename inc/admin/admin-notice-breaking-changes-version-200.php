@@ -29,16 +29,16 @@ class FluidCheckout_AdminNotices_BreakingChanges_Version_200 extends FluidChecko
 	 * Otherwise, will display an admin notice.
 	 */
 	public function is_fluid_checkout_pro_activated() {
-		$pro_plugin_path_name = 'fluid-checkout-pro/fluid-checkout-pro.php';
+		$plugin_path_name = 'fluid-checkout-pro/fluid-checkout-pro.php';
 
-		// Get lite version file path
-		$pro_version_file = trailingslashit( WP_PLUGIN_DIR ) . $pro_plugin_path_name;
+		// Get plugin file path
+		$plugin_file = trailingslashit( WP_PLUGIN_DIR ) . $plugin_path_name;
 		
-		// Bail if lite version file does not exist
-		if ( ! file_exists( $pro_version_file ) ) { return false; }
+		// Bail if plugin file does not exist
+		if ( ! file_exists( $plugin_file ) ) { return false; }
 		
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		return is_plugin_active( $pro_plugin_path_name ) && class_exists( 'FluidCheckout_PRO' );
+		return is_plugin_active( $plugin_path_name ) && class_exists( 'FluidCheckout_PRO' );
 	}
 
 
@@ -48,16 +48,16 @@ class FluidCheckout_AdminNotices_BreakingChanges_Version_200 extends FluidChecko
 	 * Otherwise, will display an admin notice.
 	 */
 	public function is_fluid_checkout_v1_activated() {
-		$pro_plugin_path_name = 'fluid-checkout-v1/fluid-checkout-v1.php';
+		$plugin_path_name = 'fluid-checkout-v1/fluid-checkout-v1.php';
 
-		// Get lite version file path
-		$pro_version_file = trailingslashit( WP_PLUGIN_DIR ) . $pro_plugin_path_name;
+		// Get plugin file path
+		$plugin_file = trailingslashit( WP_PLUGIN_DIR ) . $plugin_path_name;
 		
-		// Bail if lite version file does not exist
-		if ( ! file_exists( $pro_version_file ) ) { return false; }
+		// Bail if plugin file does not exist
+		if ( ! file_exists( $plugin_file ) ) { return false; }
 		
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		return is_plugin_active( $pro_plugin_path_name ) && class_exists( 'FluidCheckout_v1' );
+		return is_plugin_active( $plugin_path_name ) && class_exists( 'FluidCheckout_v1' );
 	}
 
 
