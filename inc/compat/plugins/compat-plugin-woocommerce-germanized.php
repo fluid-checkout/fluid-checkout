@@ -22,8 +22,15 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
+		// Template file loader
+		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 1600, 3 ); // Priority needs to be higher than that used by Germanized (1500)
+
 		// Admin settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10, 2 );
+
+		// Place order fragments
+		// Remove place order section fragment because Germanized already updates it
+		remove_filter( 'woocommerce_update_order_review_fragments', array( FluidCheckout_Steps::instance(), 'add_place_order_fragment' ), 10 );
 	}
 
 	/**
@@ -70,6 +77,43 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 			}
 		}
 
+	}
+
+
+
+	/**
+	 * Locate template files from this plugin.
+	 */
+	public function locate_template( $template, $template_name, $template_path ) {
+		global $woocommerce;
+		$_template = null;
+
+		// Set template path to default value when not provided
+		if ( ! $template_path ) { $template_path = $woocommerce->template_url; };
+
+		// Get plugin path
+		$plugin_path  = self::$directory_path . 'templates/compat/plugins/woocommerce-germanized/';
+
+		// Get the template from this plugin, if it exists
+		if ( file_exists( $plugin_path . $template_name ) ) {
+			$_template = $plugin_path . $template_name;
+
+			// Look for template file in the theme
+			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
+				$_template = locate_template( array(
+					$template_path . $template_name,
+					$template_name,
+				) );
+			}
+		}
+
+		// Use default template
+		if ( ! $_template ) {
+			$_template = $template;
+		}
+
+		// Return what we found
+		return $_template;
 	}
 
 

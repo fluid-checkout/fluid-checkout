@@ -5,11 +5,11 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 2.0.3-beta-2
+Version: 2.0.3
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 6.6.1
+WC tested up to: 6.7
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
@@ -183,6 +183,7 @@ class FluidCheckout {
 		require_once self::$directory_path . 'inc/admin/admin-notices.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-breaking-changes-version-200.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-review-request.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
 	}
 
 
