@@ -12,13 +12,15 @@ body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-pl
 
 
 
-.fc-wrapper #ppc-button {
+body:not( .has-place-order-sidebar-only ) .fc-wrapper #ppc-button {
 	margin: $global-spacing-small 0;
-	padding: $place-order-padding;
+	padding-#{ $alignment-left }: $container-spacing-mobile;
+	padding-#{ $alignment-right }: $container-spacing-mobile;
 	padding-top: 0;
+	padding-bottom: 0;
 	
 	@media (#{$bp-larger-than-desktop}) {
-		padding: $place-order-padding--large-screen;
-		padding-top: 0;
+		padding-#{ $alignment-left }: $container-spacing-mobile;
+		padding-#{ $alignment-right }: $container-spacing-mobile;
 	}
 }

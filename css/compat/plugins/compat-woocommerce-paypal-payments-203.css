@@ -6,14 +6,16 @@ body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-pl
   padding: 0;
 }
 
-.fc-wrapper #ppc-button {
+body:not(.has-place-order-sidebar-only) .fc-wrapper #ppc-button {
   margin: 20px 0;
-  padding: 20px 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-top: 0;
+  padding-bottom: 0;
 }
 @media (min-width: 1000px) {
-  .fc-wrapper #ppc-button {
-    padding: 20px 20px;
-    padding-top: 0;
+  body:not(.has-place-order-sidebar-only) .fc-wrapper #ppc-button {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
