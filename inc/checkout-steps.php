@@ -143,6 +143,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
 
+		// Billing phone
+		// Maybe move billing phone to contact step
+		if ( 'contact' === get_option( 'fc_billing_phone_field_position', 'billing_address' ) ) {
+			// Add billing phone to contact fields
+			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
+
+			// Remove phone field from billing address data
+			add_filter( 'fc_billing_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
+		}
+
 		// Payment
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
@@ -3477,6 +3487,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return $post_data;
+	}
+
+
+
+	/**
+	 * Add the billing phone to the list of fields to display on the contact step.
+	 *
+	 * @param   array  $display_fields  List of fields to display on the contact step.
+	 */
+	public function add_billing_phone_field_to_contact_fields( $display_fields ) {
+		$display_fields[] = 'billing_phone';
+		return $display_fields;
+	}
+
+
+
+	/**
+	 * Remove phone from address data.
+	 *
+	 * @param   array  $html  HTML for the substep text.
+	 */
+	public function remove_phone_address_data( $address_data ) {
+		unset( $address_data[ 'phone' ] );
+		return $address_data;
 	}
 
 
