@@ -370,6 +370,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: New options to define visibility and section where to display the Billing Phone field.
+
 = 2.0.3 - 2022-07-22 =
 
 * Bump tested up to WordPress 6.0.1 and WooCommerce 6.7

@@ -209,9 +209,9 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Add a phone field to the shipping address form', 'fluid-checkout' ),
 						'id'                => 'fc_shipping_phone_field_visibility',
 						'options'           => array(
-							'no'            => _x( 'Hidden', 'Shipping phone field visibility', 'fluid-checkout' ),
-							'optional'      => _x( 'Optional', 'Shipping phone field visibility', 'fluid-checkout' ),
-							'required'      => _x( 'Required', 'Shipping phone field visibility', 'fluid-checkout' ),
+							'no'            => __( 'Hidden', 'fluid-checkout' ),
+							'optional'      => __( 'Optional', 'fluid-checkout' ),
+							'required'      => __( 'Required', 'fluid-checkout' ),
 						),
 						'default'           => 'no',
 						'type'              => 'select',
@@ -222,10 +222,36 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Choose in which step to display the shipping phone', 'fluid-checkout' ),
 						'id'                => 'fc_shipping_phone_field_position',
 						'options'           => array(
-							'shipping_address' => _x( 'Shipping address', 'Shipping phone field position', 'fluid-checkout' ),
-							'contact'          => _x( 'Contact', 'Shipping phone field position', 'fluid-checkout' ),
+							'shipping_address' => __( 'Shipping address', 'fluid-checkout' ),
+							'contact'          => __( 'Contact step', 'fluid-checkout' ),
 						),
 						'default'           => 'shipping_address',
+						'type'              => 'select',
+						'autoload'          => false,
+					),
+
+					array(
+						'title'             => __( 'Billing phone', 'fluid-checkout' ),
+						'desc'              => __( 'Add a phone field to the billing address form', 'fluid-checkout' ),
+						'id'                => 'woocommerce_checkout_phone_field',
+						'options'           => array(
+							'hidden'        => __( 'Hidden', 'fluid-checkout' ),
+							'optional'      => __( 'Optional', 'fluid-checkout' ),
+							'required'      => __( 'Required', 'fluid-checkout' ),
+						),
+						'default'           => 'required',
+						'type'              => 'select',
+						'autoload'          => false,
+					),
+
+					array(
+						'desc'              => __( 'Choose in which step to display the billing phone', 'fluid-checkout' ),
+						'id'                => 'fc_billing_phone_field_position',
+						'options'           => array(
+							'shipping_address' => __( 'Billing address', 'fluid-checkout' ),
+							'contact'          => __( 'Contact step', 'fluid-checkout' ),
+						),
+						'default'           => 'billing_address',
 						'type'              => 'select',
 						'autoload'          => false,
 					),
@@ -235,8 +261,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Choose in which position to display the shipping methods', 'fluid-checkout' ),
 						'id'                => 'fc_shipping_methods_substep_position',
 						'options'           => array(
-							'before_shipping_address' => _x( 'Before shipping address', 'Shipping methods substep position', 'fluid-checkout' ),
-							'after_shipping_address'  => _x( 'After shipping address', 'Shipping methods substep position', 'fluid-checkout' ),
+							'before_shipping_address' => __( 'Before shipping address', 'fluid-checkout' ),
+							'after_shipping_address'  => __( 'After shipping address', 'fluid-checkout' ),
 						),
 						'default'           => 'after_shipping_address',
 						'type'              => 'select',
@@ -269,8 +295,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Define the visibility of the additional order notes field.', 'fluid-checkout' ),
 						'id'                => 'woocommerce_enable_order_comments',
 						'options'           => array(
-							'no'            => _x( 'Hidden', 'Order notes field visibility', 'fluid-checkout' ),
-							'yes'           => _x( 'Optional', 'Order notes field visibility', 'fluid-checkout' ),
+							'no'            => __( 'Hidden', 'fluid-checkout' ),
+							'yes'           => __( 'Optional', 'fluid-checkout' ),
 						),
 						'default'           => 'yes',
 						'type'              => 'select',
