@@ -205,32 +205,6 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Shipping phone', 'fluid-checkout' ),
-						'desc'              => __( 'Add a phone field to the shipping address form', 'fluid-checkout' ),
-						'id'                => 'fc_shipping_phone_field_visibility',
-						'options'           => array(
-							'no'            => __( 'Hidden', 'fluid-checkout' ),
-							'optional'      => __( 'Optional', 'fluid-checkout' ),
-							'required'      => __( 'Required', 'fluid-checkout' ),
-						),
-						'default'           => 'no',
-						'type'              => 'select',
-						'autoload'          => false,
-					),
-
-					array(
-						'desc'              => __( 'Choose in which step to display the shipping phone', 'fluid-checkout' ),
-						'id'                => 'fc_shipping_phone_field_position',
-						'options'           => array(
-							'shipping_address' => __( 'Shipping address', 'fluid-checkout' ),
-							'contact'          => __( 'Contact step', 'fluid-checkout' ),
-						),
-						'default'           => 'shipping_address',
-						'type'              => 'select',
-						'autoload'          => false,
-					),
-
-					array(
 						'title'             => __( 'Billing phone', 'fluid-checkout' ),
 						'desc'              => __( 'Add a phone field to the billing address form', 'fluid-checkout' ),
 						'id'                => 'woocommerce_checkout_phone_field',
@@ -252,6 +226,32 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 							'contact'          => __( 'Contact step', 'fluid-checkout' ),
 						),
 						'default'           => 'billing_address',
+						'type'              => 'select',
+						'autoload'          => false,
+					),
+
+					array(
+						'title'             => __( 'Shipping phone', 'fluid-checkout' ),
+						'desc'              => __( 'Add a phone field to the shipping address form', 'fluid-checkout' ),
+						'id'                => 'fc_shipping_phone_field_visibility',
+						'options'           => array(
+							'no'            => __( 'Hidden', 'fluid-checkout' ),
+							'optional'      => __( 'Optional', 'fluid-checkout' ),
+							'required'      => __( 'Required', 'fluid-checkout' ),
+						),
+						'default'           => 'no',
+						'type'              => 'select',
+						'autoload'          => false,
+					),
+
+					array(
+						'desc'              => __( 'Choose in which step to display the shipping phone', 'fluid-checkout' ),
+						'id'                => 'fc_shipping_phone_field_position',
+						'options'           => array(
+							'shipping_address' => __( 'Shipping address', 'fluid-checkout' ),
+							'contact'          => __( 'Contact step', 'fluid-checkout' ),
+						),
+						'default'           => 'shipping_address',
 						'type'              => 'select',
 						'autoload'          => false,
 					),
