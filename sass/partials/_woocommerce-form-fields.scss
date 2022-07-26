@@ -185,6 +185,12 @@ div.woocommerce form .form-row {
 		}
 	}
 
+	.woocommerce-input-wrapper {
+		position: relative;
+		display: block;
+		width: 100%;
+	}
+
 	.show-password-input {
 		z-index: z( 'above' );
 	}

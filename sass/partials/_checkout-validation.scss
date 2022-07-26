@@ -125,13 +125,6 @@ div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-i
 		border-color: $success-color;
 	}
 
-	// Container for "valid" check icon
-	.woocommerce-input-wrapper {
-		position: relative;
-		display: block;
-		width: 100%;
-	}
-
 	// "valid" field check icon
 	// skip fields with `fc-no-validation-icon` and `fc-select2-field` classes
 	&:not( .fc-no-validation-icon ) .select2-selection:after,
