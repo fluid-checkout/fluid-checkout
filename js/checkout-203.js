@@ -26,6 +26,8 @@ jQuery( function( $ ) {
 		checkoutTermsSelector: '.fc-terms-checkbox',
 		checkoutUpdateFieldsSelector: '.address-field input.input-text, .update_totals_on_change input.input-text',
 		checkoutUpdateBeforeUnload: 'yes',
+
+		phoneFieldSelector: 'input[type="tel"], [data-phone-field], input.js-phone-field, .js-phone-field input',
 	};
 
 	// CHANGE: Add auxiliar function to merge objects
@@ -624,6 +626,18 @@ jQuery( function( $ ) {
 							}
 						} );
 						// CHANGE: END - Try to remove select2 components from existing fields before replacing fragments
+
+						// CHANGE: Try to remove intl-tel-input components from existing fields before replacing fragments
+						if ( window.intlTelInput && window.intlTelInputGlobals ) {
+							var allPhoneFields = document.querySelectorAll( _settings.phoneFieldSelector );
+							for ( var i = 0; i < allPhoneFields.length; i++ ) {
+								var phoneField = window.intlTelInputGlobals.getInstance( allPhoneFields[i] );
+								if ( phoneField ) {
+									phoneField.destroy();
+								}
+							}
+						}
+						// CHANGE: END - Try to remove intl-tel-input components from existing fields before replacing fragments
 
 						$.each( data.fragments, function ( key, value ) {
 							// CHANGE: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM
