@@ -631,9 +631,12 @@ jQuery( function( $ ) {
 						if ( window.intlTelInput && window.intlTelInputGlobals ) {
 							var allPhoneFields = document.querySelectorAll( _settings.phoneFieldSelector );
 							for ( var i = 0; i < allPhoneFields.length; i++ ) {
-								var phoneField = window.intlTelInputGlobals.getInstance( allPhoneFields[i] );
+								var field = allPhoneFields[i];
+								var phoneField = window.intlTelInputGlobals.getInstance( field );
 								if ( phoneField ) {
+									var preservedValue = phoneField.getNumber();
 									phoneField.destroy();
+									field.value = preservedValue;
 								}
 							}
 						}
