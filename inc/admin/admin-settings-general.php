@@ -222,7 +222,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Choose in which step to display the billing phone', 'fluid-checkout' ),
 						'id'                => 'fc_billing_phone_field_position',
 						'options'           => array(
-							'shipping_address' => __( 'Billing address', 'fluid-checkout' ),
+							'billing_address' => __( 'Billing address', 'fluid-checkout' ),
 							'contact'          => __( 'Contact step', 'fluid-checkout' ),
 						),
 						'default'           => 'billing_address',
