@@ -18,29 +18,34 @@
 	'use strict';
 
 	var $ = jQuery;
+	var _hasJQuery = ( $ != null );
 
 	var _hasInitialized = false;
-	var _hasJQuery = ( $ != null );
-	var _publicMethods = { };
+	var _publicMethods = {};
 	var _validationTypes = {};
 	var _settings = {
-		bodyClass: 'fc-checkout-validation--active',
-		formSelector: 'form.checkout',
-		formRowSelector: '.form-row, .shipping-method__package',
-		validateFieldsSelector: '.input-text, select, .shipping-method__options',
-		clearValidationCountryChangedSelector: '#state, #shipping_state, #billing_state',
-		alwaysValidateFieldsSelector: '',
-		select2Selector: '.select2, .select2-hidden-accessible',
-		typeRequiredSelector: '.validate-required',
-		typeEmailSelector: '.validate-email',
-		typeConfirmationSelector: '[data-confirm-with]',
-		typeShippingMethodSelector: '.shipping-method__package',
-		validClass: 'woocommerce-validated',
-		invalidClass: 'woocommerce-invalid',
+		bodyClass:                               'fc-checkout-validation--active',
+		formSelector:                            'form.checkout',
+		formRowSelector:                         '.form-row, .shipping-method__package',
+		inputWrapperSelector:                    '.woocommerce-input-wrapper',
+		validateFieldsSelector:                  '.input-text, select, .shipping-method__options',
+		referenceNodeSelector:                   '.input-text, select, .shipping-method__options', // Usually same as `validateFieldsSelector`
+		clearValidationCountryChangedSelector:   '#state, #shipping_state, #billing_state',
+		alwaysValidateFieldsSelector:            '',
+		select2Selector:                         '.select2, .select2-hidden-accessible',
+
+		typeRequiredSelector:                    '.validate-required',
+		typeEmailSelector:                       '.validate-email',
+		typeConfirmationSelector:                '[data-confirm-with]',
+		typeShippingMethodSelector:              '.shipping-method__package',
+		
+		validClass:                              'woocommerce-validated',
+		invalidClass:                            'woocommerce-invalid',
+
 		validationMessages: {
-			required:         'This is a required field.',
-			email:            'This is not a valid email address.',
-			confirmation:     'This field does not match the related field value.',
+			required:                            'This is a required field.',
+			email:                               'This is not a valid email address.',
+			confirmation:                        'This field does not match the related field value.',
 		},
 	};
 
@@ -151,7 +156,8 @@
 		// Bail if message is empty
 		if ( ! message || message.length == 0 ) { return; }
 
-		var referenceNode = field;
+		var inputWrapper = field.closest( _settings.inputWrapperSelector );
+		var referenceNode = inputWrapper.querySelector( _settings.referenceNodeSelector );
 
 		// Change reference field for select2
 		if ( isSelect2Field( field ) ) {
@@ -160,7 +166,7 @@
 		}
 
 		// Create message element and add it after the field.
-		var parent = field.parentNode;
+		var parent = referenceNode.parentNode;
 		var element = document.createElement( 'span' );
 		element.className = 'woocommerce-error invalid-' + invalidClass;
 		element.innerText = message;
