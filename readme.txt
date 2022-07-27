@@ -373,6 +373,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: New options to define visibility and section where to display the Billing Phone field.
+* Added: New filter `fc_checkout_is_valid_phone_number` to allow customizing the checks for phone field validation.
 
 = 2.0.3 - 2022-07-22 =
 

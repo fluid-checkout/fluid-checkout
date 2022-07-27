@@ -127,6 +127,18 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 
 	/**
+	 * Checks whether a phone number is valid.
+	 *
+	 * @param   string  $phone_number  The phone number to validate.
+	 */
+	public function is_valid_phone_number( $phone_number ) {
+		$is_valid = WC_Validation::is_phone( $phone_number );
+		return apply_filters( 'fc_checkout_is_valid_phone_number', $is_valid, $phone_number );
+	}
+
+
+
+	/**
 	 * Change email fields to include custom attribute for Mailcheck selector.
 	 *
 	 * @param   array  $field_args  Contains checkout field arguments.
@@ -179,7 +191,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		}
 
 		// Validate phone fields
-		if ( $field_valid && in_array( 'phone', $format, true ) && '' !== $value && ! WC_Validation::is_phone( $value ) ) {
+		if ( $field_valid && in_array( 'phone', $format, true ) && '' !== $value && ! $this->is_valid_phone_number( $value ) ) {
 			$field_valid = false;
 			$args['class'] = array_merge( $args['class'], array( 'woocommerce-invalid', 'woocommerce-invalid-phone' ) );
 		}
