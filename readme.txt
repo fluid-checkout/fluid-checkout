@@ -374,6 +374,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: New options for displaying the place order section.
 * Removed: Deprecated option `fc_enable_checkout_place_order_sidebar`, which was replaced by the new options for displaying the place order section.
+* Fixed: PHP Warning from Fluid Checkout after updating any plugin.
 
 = 2.0.3 - 2022-07-22 =
 
