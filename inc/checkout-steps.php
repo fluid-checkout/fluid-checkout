@@ -2762,26 +2762,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$label .= sprintf( $method_description_markup, $method_description );
 
 		if ( $has_cost && ! $hide_cost ) {
+			$method_costs = '';
 
 			if ( WC()->cart->display_prices_including_tax() ) {
-
 				$method_costs = wc_price( $method->cost + $method->get_shipping_tax() );
 				if ( $method->get_shipping_tax() > 0 && ! wc_prices_include_tax() ) {
 					$method_costs .= ' <small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
 				}
-
-				$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>' ), $method_costs );
-
 			} else {
-
 				$method_costs = wc_price( $method->cost );
 				if ( $method->get_shipping_tax() > 0 && wc_prices_include_tax() ) {
 					$method_costs .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
 				}
-
-				$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>' ), $method_costs );
-
 			}
+
+			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>' ), $method_costs );
 		}
 
 		return $label;
