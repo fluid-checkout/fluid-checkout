@@ -1,0 +1,8 @@
+// ------------------------------------
+// ORDER SUMMARY - WITH GERMANIZED
+// ------------------------------------
+
+body#{ $_body-theme-selector } .wc-gzd-checkbox-placeholder-legal .woocommerce-gzd-legal-checkbox-text {
+	display: inline;
+    padding-#{ $alignment-left }: 0;
+}
