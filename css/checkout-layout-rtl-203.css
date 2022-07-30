@@ -206,6 +206,10 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
   margin-block-end: 0;
 }
 
+.fc-wrapper .fc-inside .fc-widget-area.fc-checkout__below-place-order-widgets:last-child {
+  margin-bottom: 20px;
+}
+
 .fc-checkout-header .fc-checkout__header-widgets {
   display: none;
 }
@@ -2412,8 +2416,10 @@ body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review .fc-chec
 }
 @media (max-width: 749px) {
   body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
   }
 }
 @media (min-width: 750px) {

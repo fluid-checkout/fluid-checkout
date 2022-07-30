@@ -357,8 +357,10 @@ body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review .fc-chec
 	overflow: unset;
 
 	@media (#{$bp-smaller-than-tablet}) {
-		padding-top: 0;
-		padding-bottom: 0;
+		padding-top: $global-spacing-small;
+		padding-bottom: $global-spacing-small;
+		padding-#{ $alignment-left }: $container-spacing-mobile;
+		padding-#{ $alignment-right }: $container-spacing-mobile;
 	}
 
 	@media (#{$bp-larger-than-tablet}) {

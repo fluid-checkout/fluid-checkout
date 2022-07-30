@@ -6,8 +6,15 @@ body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper div.pl
 	margin-bottom: 0;
 }
 
-body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-place-order {
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-inside .fc-place-order,
+body.has-place-order-sidebar-only.has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .fc-place-order {
 	padding: 0;
+}
+
+
+
+.fc-wrapper #ppc-button {
+	margin-top: $global-spacing-small;
 }
 
 
@@ -23,4 +30,11 @@ body:not( .has-place-order-sidebar-only ) .fc-wrapper #ppc-button {
 		padding-#{ $alignment-left }: $container-spacing-mobile;
 		padding-#{ $alignment-right }: $container-spacing-mobile;
 	}
+}
+
+
+
+// Compatibility between PayPal Payments and Germanized
+body.woocommerce-gzd-checkout .fc-wrapper .ppc-button-wrapper ~ .fc-checkout__below-place-order-widgets {
+	margin-top: #{ -$global-spacing-extra-small };
 }

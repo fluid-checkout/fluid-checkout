@@ -3964,7 +3964,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if color is not defined
 		if ( empty( $color ) ) { return; }
 
-		$custom_css = ".fc-wrapper .fc-checkout-order-review { background-color: $color; }";
+		$custom_css = "body div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner { background-color: $color; }";
 		wp_add_inline_style( 'fc-checkout-layout', $custom_css );
 	}
 
