@@ -140,9 +140,18 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
 					),
-	
+
 					array(
 						'title'             => __( 'Order summary', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Choose a background color for the order summary section.', 'fluid-checkout' ),
+						'desc'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'id'                => 'fc_checkout_order_review_highlight_color',
+						'type'              => 'text',
+						'autoload'          => false,
+						'class'             => 'colorpick',
+					),
+
+					array(
 						'desc'              => __( 'Make the order summary stay visible while scrolling', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_sticky_order_summary',
 						'default'           => 'yes',
@@ -162,6 +171,24 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						),
 						'default'           => 'below_payment_section',
 						'type'              => 'select',
+						'autoload'          => false,
+					),
+
+					array(
+						'title'             => __( 'Shipping address', 'fluid-checkout' ),
+						'desc'              => __( 'Highlight the shipping address section in the checkout form', 'fluid-checkout' ),
+						'id'                => 'fc_show_shipping_section_highlighted',
+						'default'           => 'yes',
+						'type'              => 'checkbox',
+						'autoload'          => false,
+					),
+
+					array(
+						'title'             => __( 'Billing address', 'fluid-checkout' ),
+						'desc'              => __( 'Highlight the billing address section in the checkout form', 'fluid-checkout' ),
+						'id'                => 'fc_show_billing_section_highlighted',
+						'default'           => 'yes',
+						'type'              => 'checkbox',
 						'autoload'          => false,
 					),
 
@@ -210,7 +237,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Billing Address', 'fluid-checkout' ),
+						'title'             => __( 'Billing address', 'fluid-checkout' ),
 						'desc'              => __( 'Billing address same as the shipping address checked by default', 'fluid-checkout' ),
 						'desc_tip'          => __( 'It is recommended to leave this option checked. The billing address at checkout will start with the option "Billing same as shipping" checked by default. This will reduce significantly the number of open input fields at the checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
 						'id'                => 'fc_default_to_billing_same_as_shipping',
@@ -259,7 +286,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Coupon Codes', 'fluid-checkout' ),
+						'title'             => __( 'Coupon codes', 'fluid-checkout' ),
 						'desc'              => __( 'Show coupon codes as a substep of the payment step', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_coupon_codes',
@@ -293,7 +320,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Checkout Widget Areas', 'fluid-checkout' ),
+						'title'             => __( 'Checkout widget areas', 'fluid-checkout' ),
 						'desc'              => __( 'Add widget areas to the checkout page', 'fluid-checkout' ),
 						'desc_tip'          => __( 'These widget areas are used to add trust symbols on the checkout page.', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_widget_areas',

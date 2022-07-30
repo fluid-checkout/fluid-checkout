@@ -6,15 +6,15 @@
   width: 100%;
 }
 
+.fc-wrapper [data-collapsible-handler] {
+  cursor: pointer;
+}
+
 .fc-wrapper .collapsible-content__inner:after {
   content: "";
   display: table;
   table-layout: fixed;
   width: 100%;
-}
-
-.fc-wrapper [data-collapsible-handler] {
-  cursor: pointer;
 }
 
 .fc-wrapper [data-collapsible].fc-expansible-form-section__content {

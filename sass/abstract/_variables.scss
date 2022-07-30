@@ -408,8 +408,8 @@ $checkout-expansible-section-text-decoration:    none !default;
 // ----------------------------------------
 // ORDER SUMMARY
 
-$order-summary-container-margin:                 $global-spacing-small 0 0 !default;
-$order-summary-container-padding:                0 $container-spacing-mobile !default;
+$order-summary-container-margin:                 0 !default;
+$order-summary-container-padding:                $global-spacing-small $container-spacing-mobile 0 !default;
 $order-summary-container-margin--large-screen:   0 !default;
 $order-summary-container-padding--large-screen:  0 !default;
 

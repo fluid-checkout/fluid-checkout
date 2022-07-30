@@ -24,59 +24,44 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 1600, 3 ); // Priority needs to be higher than that used by Germanized (1500)
-
-		// Admin settings
-		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10, 2 );
-
-		// Place order fragments
-		// Remove place order section fragment because Germanized already updates it
-		remove_filter( 'woocommerce_update_order_review_fragments', array( FluidCheckout_Steps::instance(), 'add_place_order_fragment' ), 10 );
 	}
 
 	/**
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
+		// Bail if Germanized functions are not available
+		if ( ! function_exists( 'wc_gzd_get_hook_priority' ) ) { return; }
 
-		if ( function_exists( 'wc_gzd_get_hook_priority' ) ) {
+		// Remove payment title heading
+		remove_action( 'woocommerce_review_order_before_payment', 'woocommerce_gzd_template_checkout_payment_title', 10 );
 
-			// Remove payment title heading
-			remove_action( 'woocommerce_review_order_before_payment', 'woocommerce_gzd_template_checkout_payment_title', 10 );
+		// Order summary products
+		remove_action( 'woocommerce_review_order_before_cart_contents', 'woocommerce_gzd_template_checkout_table_content_replacement', 10 );
+		remove_action( 'woocommerce_review_order_after_cart_contents', 'woocommerce_gzd_template_checkout_table_product_hide_filter_removal', 10 );
+		add_action( 'woocommerce_review_order_before_cart_contents', array( $this,'do_action_woocommerce_gzd_review_order_before_cart_contents' ), 10 );
 
-			// Order summary products
-			remove_action( 'woocommerce_review_order_before_cart_contents', 'woocommerce_gzd_template_checkout_table_content_replacement' );
-			remove_action( 'woocommerce_review_order_after_cart_contents', 'woocommerce_gzd_template_checkout_table_product_hide_filter_removal' );
-			add_action( 'woocommerce_review_order_before_cart_contents', array( $this,'do_action_woocommerce_gzd_review_order_before_cart_contents' ), 10 );
+		// Remove extraneous payment section from order summary
+		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 10 );
 
-			// Remove extraneous payment section from order summary
-			remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 10 );
+		// Legal checkboxes
+		remove_action( 'woocommerce_review_order_after_payment', 'woocommerce_gzd_template_render_checkout_checkboxes', 10 );
+		remove_action( 'woocommerce_review_order_after_payment', 'woocommerce_gzd_template_checkout_set_terms_manually', wc_gzd_get_hook_priority( 'checkout_set_terms' ) );
+		add_action( 'woocommerce_checkout_before_order_review', 'woocommerce_gzd_template_render_checkout_checkboxes', 10 );
+		add_action( 'woocommerce_checkout_before_order_review', 'woocommerce_gzd_template_checkout_set_terms_manually', 20 );
 
-			// Place order position
-			$place_order_position = get_option( 'fc_integration_woocommerce_germanized_place_order_position', 'order_summary_after_total' );
-			if ( 'payment_step' === $place_order_position ) {
-				remove_action( 'woocommerce_checkout_order_review', 'woocommerce_gzd_template_order_submit', wc_gzd_get_hook_priority( 'checkout_order_submit' ) );
-				remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_gzd_template_order_submit', 30 );
-				remove_action( 'woocommerce_review_order_before_submit', 'woocommerce_gzd_template_set_order_button_remove_filter', 1500 );
-				remove_action( 'woocommerce_review_order_after_submit', 'woocommerce_gzd_template_set_order_button_show_filter', 1500 );
-				remove_action( 'woocommerce_gzd_review_order_before_submit', 'woocommerce_gzd_template_set_order_button_show_filter', 1500 );
-			}
-			
-			// Legal checkboxes position
-			$legal_checkboxes_position = 'payment_step' === $place_order_position ? 'before_place_order' : get_option( 'fc_integration_woocommerce_germanized_legal_checkboxes_position', 'order_summary_before_products' );
-			if ( 'order_summary_before_products' === $legal_checkboxes_position ) {
-				remove_action( 'woocommerce_review_order_after_payment', 'woocommerce_gzd_template_render_checkout_checkboxes', 10 );
-				remove_action( 'woocommerce_review_order_after_payment', 'woocommerce_gzd_template_checkout_set_terms_manually', wc_gzd_get_hook_priority( 'checkout_set_terms' ) );
-				add_action( 'woocommerce_checkout_before_order_review', 'woocommerce_gzd_template_render_checkout_checkboxes', 10 );
-				add_action( 'woocommerce_checkout_before_order_review', 'woocommerce_gzd_template_checkout_set_terms_manually', 20 );
-			}
-			else if( 'before_place_order' ) {
-				remove_action( 'woocommerce_review_order_after_payment', 'woocommerce_gzd_template_render_checkout_checkboxes', 10 );
-				remove_action( 'woocommerce_review_order_after_payment', 'woocommerce_gzd_template_checkout_set_terms_manually', wc_gzd_get_hook_priority( 'checkout_set_terms' ) );
-				add_action( 'woocommerce_review_order_before_submit', 'woocommerce_gzd_template_render_checkout_checkboxes', 10 );
-				add_action( 'woocommerce_review_order_before_submit', 'woocommerce_gzd_template_checkout_set_terms_manually', 20 );
-			}
+		// Place order, remove section because Germanized already adds it
+		remove_action( 'fc_output_step_payment', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order' ), 100, 2 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( FluidCheckout_Steps::instance(), 'add_place_order_fragment' ), 10 );
+
+		// Display back to cart button
+		if ( get_option( 'woocommerce_gzd_display_checkout_back_to_cart_button' ) === 'yes' ) {
+			remove_action( 'woocommerce_review_order_after_cart_contents', 'woocommerce_gzd_template_checkout_back_to_cart', 10 );
+			add_action( 'woocommerce_review_order_after_cart_contents', array( $this, 'output_gzd_template_checkout_back_to_cart' ), 10 );
 		}
 
+		// Add products table highlight background color custom styles
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_product_table_background_inline_styles' ), 30 );
 	}
 
 
@@ -119,50 +104,38 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 
 	/**
-	 * Add new settings to the Fluid Checkout admin settings sections.
-	 *
-	 * @param   array   $settings         Array with all settings for the current section.
-	 * @param   string  $current_section  Current section name.
+	 * Execute actions from the Germanized template `review-order-product-table.php` for compatibility.
 	 */
-	public function add_settings( $settings, $current_section ) {
-		// Bail if settings display are explicitly enabled
-		if ( true !== apply_filters( 'fc_integration_woocommerce_germanized_settings', false ) ) { return $settings; }
-
-		$settings[] = array(
-			'title'          => __( 'Germanized for WooCommerce', 'fluid-checkout' ),
-			'desc'           => __( 'Define the position to display the place order button. <br/><span style="color:#f00;"><strong>Disclaimer:</strong> by changing these settings, I confirm that I understand the legal implications of changing the position of the legal checkboxes on my checkout page.</span>', 'fluid-checkout' ),
-			'id'             => 'fc_integration_woocommerce_germanized_place_order_position',
-			'type'           => 'select',
-			'options'        => array(
-				'order_summary_after_total'      => _x( 'Order summary (after totals)', 'Place order position', 'fluid-checkout' ),
-				'payment_step'                   => _x( 'Payment step', 'Place order position', 'fluid-checkout' ),
-			),
-			'default'        => 'order_summary_after_total',
-			'autoload'       => false,
-		);
-
-		$settings[] = array(
-			'desc'           => __( 'Define the position to display the legal checkboxes. <br/>The legal checkboxes will be displayed in the payment section if the place order button is set to display in the payment section.<br/><span style="color:#f00;"><strong>Disclaimer:</strong> by changing these settings, I confirm that I understand the legal implications of changing the position of the legal checkboxes on my checkout page.</span>', 'fluid-checkout' ),
-			'id'             => 'fc_integration_woocommerce_germanized_legal_checkboxes_position',
-			'type'           => 'select',
-			'options'        => array(
-				'order_summary_before_products'  => _x( 'Order summary (before products)', 'Legal checkboxes position', 'fluid-checkout' ),
-				'before_place_order'             => _x( 'Before place order button', 'Legal checkboxes position', 'fluid-checkout' ),
-			),
-			'default'        => 'order_summary_before_products',
-			'autoload'       => false,
-		);
-
-		return $settings;
+	public function do_action_woocommerce_gzd_review_order_before_cart_contents() {
+		do_action( 'woocommerce_gzd_review_order_before_cart_contents' );
 	}
 
 
 
 	/**
-	 * Execute actions from the Germanized template `review-order-product-table.php` for compatibility.
+	 * Fix columns count for the Germanized template function `woocommerce_gzd_template_checkout_back_to_cart` for compatibility.
 	 */
-	public function do_action_woocommerce_gzd_review_order_before_cart_contents() {
-		do_action( 'woocommerce_gzd_review_order_before_cart_contents' );
+	public function output_gzd_template_checkout_back_to_cart() {
+		// Get html generated from the target function
+		ob_start();
+		woocommerce_gzd_template_checkout_back_to_cart();
+		$html = ob_get_clean();
+
+		// Fix column count
+		$html = str_replace( 'colspan="5"', 'colspan="2"', $html );
+
+		echo $html; // XSS ok
+	}
+
+
+
+	/**
+	 * Adds checkout products table background highlight color as inline css.
+	 */
+	public function add_product_table_background_inline_styles() {
+		$color = get_option( 'woocommerce_gzd_display_checkout_table_color' ) ? get_option( 'woocommerce_gzd_display_checkout_table_color' ) : '#f3f3f3';
+		$custom_css = "body.woocommerce-checkout .fc-wrapper .shop_table { background-color: $color; }";
+		wp_add_inline_style( 'woocommerce-gzd-layout', $custom_css );
 	}
 
 }

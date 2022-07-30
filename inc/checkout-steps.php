@@ -158,6 +158,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_order_review_background_inline_styles' ), 30 );
 
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
@@ -303,12 +304,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Add extra class to highlight the shipping section
-		if ( true === apply_filters( 'fc_show_shipping_section_highlighted', true ) ) {
+		if ( true === apply_filters( 'fc_show_shipping_section_highlighted', ( 'yes' === get_option( 'fc_show_shipping_section_highlighted', 'yes' ) ) ) ) {
 			$add_classes[] = 'has-highlighted-shipping-section';
 		}
 
 		// Add extra class to highlight the billing section
-		if ( true === apply_filters( 'fc_show_billing_section_highlighted', true ) ) {
+		if ( true === apply_filters( 'fc_show_billing_section_highlighted', ( 'yes' === get_option( 'fc_show_billing_section_highlighted', 'yes' ) ) ) ) {
 			$add_classes[] = 'has-highlighted-billing-section';
 		}
 
@@ -3918,6 +3919,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $shipping_total_label;
 	}
 
+
+
+	/**
+	 * Adds order summary background highlight color as inline css.
+	 */
+	public function add_order_review_background_inline_styles() {
+		$color = get_option( 'fc_checkout_order_review_highlight_color', '' );
+
+		// Bail if color is not defined
+		if ( empty( $color ) ) { return; }
+
+		$custom_css = ".fc-wrapper .fc-checkout-order-review { background-color: $color; }";
+		wp_add_inline_style( 'fc-checkout-layout', $custom_css );
+	}
 
 
 	/**
