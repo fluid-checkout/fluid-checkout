@@ -210,12 +210,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Place order elements
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
-		// Place order position
-		$place_order_position = get_option( 'fc_checkout_place_order_position', 'below_payment_section' );
-		if ( 'below_payment_section' === $place_order_position ) {
-			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
+		// Get place order position option
+		$place_order_position = get_option( 'fc_checkout_place_order_position' ); // Should not use default value on this line because we need to check below if the value is set in the database
+
+		// Maybe handle deprecated option `fc_enable_checkout_place_order_sidebar`
+		if ( false === $place_order_position && 'yes' === get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) ) {
+			$place_order_position = 'both_payment_and_order_summary';
 		}
+
+		// Place order position
 		if ( 'both_payment_and_order_summary' === $place_order_position ) {
 			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
 			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_sidebar' ), 1 );
@@ -226,6 +229,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_sidebar_main' ), 1 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_sidebar_main' ), 10 );
 			remove_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
+		}
+		// Defaults to `below_payment_section`
+		else {
+			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
+			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
 		}
 	}
 
