@@ -62,6 +62,10 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		// Add products table highlight background color custom styles
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_product_table_background_inline_styles' ), 30 );
+
+		// Substep review text
+		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_shipping' ), 10 );
+		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_billing' ), 10 );
 	}
 
 
@@ -136,6 +140,37 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		$color = get_option( 'woocommerce_gzd_display_checkout_table_color' ) ? get_option( 'woocommerce_gzd_display_checkout_table_color' ) : '#f3f3f3';
 		$custom_css = "body.woocommerce-checkout .fc-wrapper .shop_table { background-color: $color; }";
 		wp_add_inline_style( 'woocommerce-gzd-layout', $custom_css );
+	}
+
+
+
+	/**
+	 * Add extra fields to skip for the substep review text by address type.
+	 *
+	 * @param   array   $skip_list     List of fields to skip adding to the substep review text.
+	 * @param   string  $address_type  The address type.
+	 */
+	public function change_substep_text_extra_fields_skip_list_by_address_type( $skip_list, $address_type ) {
+		$skip_list[] = $address_type . '_title';
+		return $skip_list;
+	}
+
+	/**
+	 * Add shipping extra fields to skip for the substep review text.
+	 *
+	 * @param   array  $skip_list  List of fields to skip adding to the substep review text.
+	 */
+	public function change_substep_text_extra_fields_skip_list_shipping( $skip_list ) {
+		return $this->change_substep_text_extra_fields_skip_list_by_address_type( $skip_list, 'shipping' );
+	}
+
+	/**
+	 * Add billing extra fields to skip for the substep review text.
+	 *
+	 * @param   array  $skip_list  List of fields to skip adding to the substep review text.
+	 */
+	public function change_substep_text_extra_fields_skip_list_billing( $skip_list ) {
+		return $this->change_substep_text_extra_fields_skip_list_by_address_type( $skip_list, 'billing' );
 	}
 
 }
