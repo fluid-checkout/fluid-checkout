@@ -69,16 +69,16 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	/**
 	 * Change shipping phone `required` argument when billing phone field is required.
 	 *
-	 * @param   array  $field_args  Contains shipping field arguments.
+	 * @param   array  $shipping_fields  Contains shipping fields arguments.
 	 */
-	public function maybe_set_shipping_phone_required( $field_args ) {
+	public function maybe_set_shipping_phone_required( $shipping_fields ) {
 		// Bail if shipping phone not present, or billing phone field not required
-		if ( ! array_key_exists( 'shipping_phone', $field_args ) || get_option( 'woocommerce_checkout_phone_field', 'required' ) !== 'required' ) { return $field_args; }
+		if ( ! array_key_exists( 'shipping_phone', $shipping_fields ) || get_option( 'woocommerce_checkout_phone_field', 'required' ) !== 'required' || 'billing_address' !== get_option( 'fc_billing_phone_field_position', 'billing_address' ) ) { return $shipping_fields; }
 
 		// Set shipping phone as required
-		$field_args['shipping_phone']['required'] = true;
+		$shipping_fields['shipping_phone']['required'] = true;
 
-		return $field_args;
+		return $shipping_fields;
 	}
 
 

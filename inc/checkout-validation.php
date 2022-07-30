@@ -29,7 +29,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
-		// Checkout JS settings
+		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Mailcheck validation
@@ -108,6 +108,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		$settings[ 'checkoutValidation' ] = apply_filters( 'fc_checkout_validation_script_settings', array(
 			'formRowSelector'                    => '.form-row, .shipping-method__package',
 			'validateFieldsSelector'             => '.input-text, select, .shipping-method__options',
+			'referenceNodeSelector'              => '.input-text, select, .shipping-method__options',
 			'alwaysValidateFieldsSelector'       => '',
 			'mailcheckSuggestions'               => array(
 				/* translators: %s: html for the email address typo correction suggestion link */
@@ -121,6 +122,18 @@ class FluidCheckout_Validation extends FluidCheckout {
 		) );
 
 		return $settings;
+	}
+
+
+
+	/**
+	 * Checks whether a phone number is valid.
+	 *
+	 * @param   string  $phone_number  The phone number to validate.
+	 */
+	public function is_valid_phone_number( $phone_number ) {
+		$is_valid = WC_Validation::is_phone( $phone_number );
+		return apply_filters( 'fc_checkout_is_valid_phone_number', $is_valid, $phone_number );
 	}
 
 
@@ -178,7 +191,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		}
 
 		// Validate phone fields
-		if ( $field_valid && in_array( 'phone', $format, true ) && '' !== $value && ! WC_Validation::is_phone( $value ) ) {
+		if ( $field_valid && in_array( 'phone', $format, true ) && '' !== $value && ! $this->is_valid_phone_number( $value ) ) {
 			$field_valid = false;
 			$args['class'] = array_merge( $args['class'], array( 'woocommerce-invalid', 'woocommerce-invalid-phone' ) );
 		}

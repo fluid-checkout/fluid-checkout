@@ -1972,6 +1972,11 @@ div.woocommerce form .form-row .select2-selection:focus {
   outline: solid 2px #535156;
   outline-offset: 2px;
 }
+div.woocommerce form .form-row .woocommerce-input-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+}
 div.woocommerce form .form-row .show-password-input {
   z-index: 10;
 }
