@@ -140,11 +140,53 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
 					),
-	
+
 					array(
 						'title'             => __( 'Order summary', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Choose a background color for the order summary section.', 'fluid-checkout' ),
+						'desc'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'id'                => 'fc_checkout_order_review_highlight_color',
+						'type'              => 'text',
+						'autoload'          => false,
+						'class'             => 'colorpick',
+					),
+
+					array(
 						'desc'              => __( 'Make the order summary stay visible while scrolling', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_sticky_order_summary',
+						'default'           => 'yes',
+						'type'              => 'checkbox',
+						'autoload'          => false,
+					),
+
+					array(
+						'title'             => __( 'Place order', 'fluid-checkout' ),
+						'desc'              => __( 'Define the position to display "Place order" and terms checkbox section.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Some options might not be compatible with some plugins and themes.', 'fluid-checkout' ),
+						'id'                => 'fc_checkout_place_order_position',
+						'options'           => array(
+							'below_payment_section'             => _x( 'Below the payment section', 'Place order position', 'fluid-checkout' ),
+							'below_order_summary'               => _x( 'Below the order summary', 'Place order position', 'fluid-checkout' ),
+							'both_payment_and_order_summary'    => _x( 'Both below the payment section and the order summary', 'Place order position', 'fluid-checkout' ),
+						),
+						'default'           => 'below_payment_section',
+						'type'              => 'select',
+						'autoload'          => false,
+					),
+
+					array(
+						'title'             => __( 'Shipping address', 'fluid-checkout' ),
+						'desc'              => __( 'Highlight the shipping address section in the checkout form', 'fluid-checkout' ),
+						'id'                => 'fc_show_shipping_section_highlighted',
+						'default'           => 'yes',
+						'type'              => 'checkbox',
+						'autoload'          => false,
+					),
+
+					array(
+						'title'             => __( 'Billing address', 'fluid-checkout' ),
+						'desc'              => __( 'Highlight the billing address section in the checkout form', 'fluid-checkout' ),
+						'id'                => 'fc_show_billing_section_highlighted',
 						'default'           => 'yes',
 						'type'              => 'checkbox',
 						'autoload'          => false,
@@ -195,7 +237,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Billing Address', 'fluid-checkout' ),
+						'title'             => __( 'Billing address', 'fluid-checkout' ),
 						'desc'              => __( 'Billing address same as the shipping address checked by default', 'fluid-checkout' ),
 						'desc_tip'          => __( 'It is recommended to leave this option checked. The billing address at checkout will start with the option "Billing same as shipping" checked by default. This will reduce significantly the number of open input fields at the checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
 						'id'                => 'fc_default_to_billing_same_as_shipping',
@@ -270,7 +312,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Coupon Codes', 'fluid-checkout' ),
+						'title'             => __( 'Coupon codes', 'fluid-checkout' ),
 						'desc'              => __( 'Show coupon codes as a substep of the payment step', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_coupon_codes',
@@ -304,7 +346,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Checkout Widget Areas', 'fluid-checkout' ),
+						'title'             => __( 'Checkout widget areas', 'fluid-checkout' ),
 						'desc'              => __( 'Add widget areas to the checkout page', 'fluid-checkout' ),
 						'desc_tip'          => __( 'These widget areas are used to add trust symbols on the checkout page.', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_widget_areas',
@@ -316,28 +358,6 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'type' => 'sectionend',
 						'id'   => 'fc_checkout_features_options',
-					),
-
-					array(
-						'title' => __( 'Advanced', 'fluid-checkout' ),
-						'type'  => 'title',
-						'desc'  => '',
-						'id'    => 'fc_checkout_advanced_layout_options',
-					),
-	
-					array(
-						'title'             => __( 'Place order', 'fluid-checkout' ),
-						'desc'              => __( '(Experimental) Display an additional "Place order" and terms checkbox below the order summary in the sidebar.', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Recommended if most of the orders have only a few different products in the cart, and product variations do not take too much space on the order summary.', 'fluid-checkout' ),
-						'id'                => 'fc_enable_checkout_place_order_sidebar',
-						'default'           => 'no',
-						'type'              => 'checkbox',
-						'autoload'          => false,
-					),
-	
-					array(
-						'type' => 'sectionend',
-						'id'   => 'fc_checkout_advanced_layout_options',
 					),
 
 				)

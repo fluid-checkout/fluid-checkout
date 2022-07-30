@@ -44,6 +44,11 @@ body.theme-shoptimizer form.woocommerce-checkout .fc-wrapper #order_review .wooc
   padding: 0;
 }
 
+body.theme-shoptimizer .wc-gzd-checkbox-placeholder-legal .woocommerce-gzd-legal-checkbox-text {
+  display: inline;
+  padding-right: 0;
+}
+
 body.theme-shoptimizer div.woocommerce form .form-row span.select2-container {
   height: auto;
 }

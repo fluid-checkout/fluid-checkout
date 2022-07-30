@@ -6,15 +6,15 @@
   width: 100%;
 }
 
+.fc-wrapper [data-collapsible-handler] {
+  cursor: pointer;
+}
+
 .fc-wrapper .collapsible-content__inner:after {
   content: "";
   display: table;
   table-layout: fixed;
   width: 100%;
-}
-
-.fc-wrapper [data-collapsible-handler] {
-  cursor: pointer;
 }
 
 .fc-wrapper [data-collapsible].fc-expansible-form-section__content {
@@ -204,6 +204,10 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
   margin-bottom: 0;
   -webkit-margin-after: 0;
   margin-block-end: 0;
+}
+
+.fc-wrapper .fc-inside .fc-widget-area.fc-checkout__below-place-order-widgets:last-child {
+  margin-bottom: 20px;
 }
 
 .fc-checkout-header .fc-checkout__header-widgets {
@@ -1250,27 +1254,6 @@ div.woocommerce form #billing_same_as_shipping_field.form-row label {
   display: inline-block;
 }
 
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields,
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:not(:last-child),
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .shipping_address:not(:last-child) {
-  padding-bottom: 20px;
-}
-
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields:after,
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:after,
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .shipping_address:after {
-  content: "";
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-}
-
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] {
   background-color: #f3f3f3;
 }
@@ -1288,6 +1271,39 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection .select2-selection__rendered {
   background-color: #fff;
   color: inherit;
+}
+
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields,
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper {
+  margin-top: 20px;
+}
+
+div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:before,
+div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
+  content: "";
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:not(:last-child),
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .shipping_address:not(:last-child) {
+  padding-bottom: 20px;
+}
+
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields:after,
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:after,
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .shipping_address:after {
+  content: "";
+  display: table;
+  table-layout: fixed;
+  width: 100%;
 }
 
 .woocommerce .fc-shipping-method__no-shipping-methods {
@@ -1692,16 +1708,15 @@ body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_
 }
 
 .fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
-  display: none;
+  float: none;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0;
 }
-@media (min-width: 1000px) {
-  .fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
-    float: none;
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 0;
-  }
+
+.fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-checkout-order-review[data-flyout].is-open div.place-order {
+  display: none;
 }
 
 .fc-wrapper .woocommerce-terms-and-conditions-wrapper {
@@ -2063,8 +2078,8 @@ body div.woocommerce form .form-row .select2-selection--multiple .select2-search
 }
 
 .fc-wrapper .fc-checkout-order-review {
-  margin: 20px 0 0;
-  padding: 0 20px;
+  margin: 0;
+  padding: 20px 20px 0;
 }
 @media (min-width: 1000px) {
   .fc-wrapper .fc-checkout-order-review {
@@ -2374,6 +2389,61 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 @media (min-width: 750px) {
   .fc-wrapper .fc-checkout-order-review[data-flyout].is-open .fc-checkout-order-review__inner {
     padding: 20px 30px 80px;
+  }
+}
+
+body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review {
+  display: block;
+  margin-right: -20px;
+  margin-left: -20px;
+  padding: 0;
+}
+@media (max-width: 749px) {
+  body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review {
+    border-bottom: solid 1px #d8d8d8;
+  }
+}
+@media (min-width: 750px) {
+  body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
+  max-width: none;
+  overflow: unset;
+}
+@media (max-width: 749px) {
+  body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+@media (min-width: 750px) {
+  body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
+    margin: 0 0 20px;
+    padding: 12px 20px 0;
+    max-width: none;
+    border: solid 1px #d8d8d8;
+    border-radius: 8px;
+    background-color: #fff;
+    overflow: hidden;
+  }
+}
+
+body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review[data-flyout].is-activated.is-open .fc-checkout-order-review__inner {
+  border: 0;
+  border-radius: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+@media (max-width: 749px) {
+  body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-steps {
+    margin-bottom: 0;
   }
 }
 

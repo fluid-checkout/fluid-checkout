@@ -23,23 +23,3 @@ body.has-fc-compat-german-market-button-placement .fc-sidebar .fc-place-order .f
     margin-bottom: 10px;
   }
 }
-
-body.has-fc-compat-german-market-button-placement .fc-sidebar .woocommerce-checkout-review-order .woocommerce-terms-and-conditions + p.form-row,
-body.has-fc-compat-german-market-button-placement .fc-sidebar .woocommerce-checkout-review-order .german-market-checkbox-p {
-  display: none;
-}
-@media (min-width: 1000px) {
-  body.has-fc-compat-german-market-button-placement .fc-sidebar .woocommerce-checkout-review-order .woocommerce-terms-and-conditions + p.form-row,
-body.has-fc-compat-german-market-button-placement .fc-sidebar .woocommerce-checkout-review-order .german-market-checkbox-p {
-    display: block;
-  }
-}
-
-body.has-fc-compat-german-market-button-placement form.woocommerce-checkout .fc-wrapper #order_review .fc-checkout__below-place-order-widgets {
-  display: none;
-}
-@media (min-width: 1000px) {
-  body.has-fc-compat-german-market-button-placement form.woocommerce-checkout .fc-wrapper #order_review .fc-checkout__below-place-order-widgets {
-    display: block;
-  }
-}

@@ -32,13 +32,24 @@ class FluidCheckout_WooCommercePayPalPayments extends FluidCheckout {
 		if ( $smart_button_module ) {
 			// PayPal buttons
 			remove_action( 'woocommerce_review_order_after_payment', array( $smart_button_module, 'button_renderer' ), 10 );
-			add_action( 'fc_output_step_payment', array( $smart_button_module, 'button_renderer' ), 110 );
 
-			// Widget area after submit button
-			if ( class_exists( 'FluidCheckout_CheckoutWidgetAreas' ) ) {
-				remove_action( 'woocommerce_review_order_after_submit', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 50 );
-				add_action( 'fc_output_step_payment', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 150 );
+			// Place order position
+			$place_order_position = get_option( 'fc_checkout_place_order_position', 'below_payment_section' );
+			if ( 'below_payment_section' === $place_order_position || 'both_payment_and_order_summary' === $place_order_position ) {
+				// PayPal buttons
+				add_action( 'fc_output_step_payment', array( $smart_button_module, 'button_renderer' ), 110 );
+
+				// Widget area after submit button
+				if ( class_exists( 'FluidCheckout_CheckoutWidgetAreas' ) ) {
+					remove_action( 'woocommerce_review_order_after_submit', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 50 );
+					add_action( 'fc_output_step_payment', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 150 );
+				}
 			}
+			else if ( 'below_order_summary' === $place_order_position ) {
+				// PayPal buttons
+				add_action( 'woocommerce_review_order_after_submit', array( $smart_button_module, 'button_renderer' ), 40 );
+			}
+			
 		}
 	}
 

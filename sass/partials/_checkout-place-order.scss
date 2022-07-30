@@ -7,23 +7,21 @@
 	display: block;
 	padding: $place-order-padding;
 
-	@media (#{$bp-larger-than-desktop}) {
-		padding: $place-order-padding--large-screen;
-	}
+	@media (#{$bp-larger-than-desktop}) { padding: $place-order-padding--large-screen; }
 }
 
 
 
 .fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
-	display: none;
+	float: none;
+	display: block;
+	margin-top: $global-spacing-small;
+	margin-bottom: $global-spacing-small;
+	padding: $place-order-padding-sidebar;
+}
 
-	@media (#{$bp-larger-than-desktop}) {
-		float: none;
-		display: block;
-		margin-top: $global-spacing-small;
-		margin-bottom: $global-spacing-small;
-		padding: $place-order-padding-sidebar--large-screen;
-	}
+.fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-checkout-order-review[data-flyout].is-open div.place-order {
+	display: none;
 }
 
 

@@ -161,14 +161,18 @@ class FluidCheckout {
 	 * Fires when the plugin is successfully updated.
 	 */
 	public static function clear_cache_on_updates( $upgrader_object, $options ) {
+		// Bail if necessary options data are not available
+		if ( ! is_array( $options ) || ! array_key_exists( 'action', $options ) || ! array_key_exists( 'type', $options ) || ! array_key_exists( 'plugins', $options ) ) { return; }
+
+		// Bail if not updating plugins
+		if ( 'update' !== $options[ 'action' ] || 'plugin' !== $options[ 'type' ] || ! is_array( $options[ 'plugins' ] ) ) { return; }
+
 		// Get current plugin path name
 		$current_plugin_path_name = plugin_basename( __FILE__ );
- 
-		if ( 'update' === $options[ 'action' ] && 'plugin' === $options[ 'type' ] ) {
-			foreach( $options[ 'plugins' ] as $plugin_path_name ) {
-				if ( $plugin_path_name === $current_plugin_path_name ) {
-					wp_cache_flush();
-				}
+			
+		foreach( $options[ 'plugins' ] as $plugin_path_name ) {
+			if ( $plugin_path_name === $current_plugin_path_name ) {
+				wp_cache_flush();
 			}
 		}
 	}
