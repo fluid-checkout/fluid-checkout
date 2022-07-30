@@ -24,6 +24,9 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 1600, 3 ); // Priority needs to be higher than that used by Germanized (1500)
+
+		// Place order position
+		add_filter( 'pre_option_fc_checkout_place_order_position', array( $this, 'change_place_order_position_option' ), 10, 3 );
 	}
 
 	/**
@@ -33,16 +36,14 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Bail if Germanized functions are not available
 		if ( ! function_exists( 'wc_gzd_get_hook_priority' ) ) { return; }
 
-		// Remove payment title heading
+		// Payment
 		remove_action( 'woocommerce_review_order_before_payment', 'woocommerce_gzd_template_checkout_payment_title', 10 );
+		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 10 );
 
 		// Order summary products
 		remove_action( 'woocommerce_review_order_before_cart_contents', 'woocommerce_gzd_template_checkout_table_content_replacement', 10 );
 		remove_action( 'woocommerce_review_order_after_cart_contents', 'woocommerce_gzd_template_checkout_table_product_hide_filter_removal', 10 );
 		add_action( 'woocommerce_review_order_before_cart_contents', array( $this,'do_action_woocommerce_gzd_review_order_before_cart_contents' ), 10 );
-
-		// Remove extraneous payment section from order summary
-		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 10 );
 
 		// Legal checkboxes
 		remove_action( 'woocommerce_review_order_after_payment', 'woocommerce_gzd_template_render_checkout_checkboxes', 10 );
@@ -51,7 +52,9 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		add_action( 'woocommerce_checkout_before_order_review', 'woocommerce_gzd_template_checkout_set_terms_manually', 20 );
 
 		// Place order, remove section because Germanized already adds it
-		remove_action( 'fc_output_step_payment', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order' ), 100, 2 );
+		remove_action( 'fc_output_step_payment', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order' ), 100 );
+		remove_action( 'fc_checkout_after_order_review_inside', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_for_sidebar' ), 1 );
+		remove_action( 'fc_checkout_after_order_review_inside', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_for_sidebar_main' ), 1 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( FluidCheckout_Steps::instance(), 'add_place_order_fragment' ), 10 );
 
 		// Display back to cart button
@@ -103,6 +106,19 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		// Return what we found
 		return $_template;
+	}
+
+
+
+	/**
+	 * Change the option for the place order position to always `below_order_summary` when using Germanized.
+	 *
+	 * @param  mixed   $pre_option   The value to return instead of the option value.
+	 * @param  string  $option       Option name.
+	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 */
+	public function change_place_order_position_option( $pre_option, $option, $default ) {
+		return 'below_order_summary';
 	}
 
 

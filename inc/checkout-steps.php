@@ -176,15 +176,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
 		add_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10, 2 );
 		add_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
-
-		// Place order
-		$this->place_order_hooks();
 	}
 
 	/**
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
+		// Place order
+		$this->place_order_hooks();
+
 		// Unhook WooCommerce functions
 		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
 		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
