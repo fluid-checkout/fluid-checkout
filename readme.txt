@@ -380,6 +380,7 @@ Using the Germanized plugin? Please read the details for the changes to compatib
 * Improved: Compatibility with plugin Germanized. Removed hidden options to move the checkboxes and place order button. The position of those elements set by Germanized are now respected. Read more about why Germanized moves those elements here: https://vendidero.de/dokument/umsetzung-der-button-loesung-im-woocommerce-checkout
 * Improved: Compatibility with plugin German Market. Checkboxes are now displayed before the order products when that option is enabled.
 * Improved: Compatibility with PayPal Payments when using Germanized or German Market plugins.
+* Improved: Filter hooks `fc_shipping_method_option_label_markup`, `fc_shipping_method_option_description_markup` and `fc_shipping_method_option_price_markup` now pass the `$method` parameter with the current shipping method being filtered.
 * Removed: Deprecated option `fc_enable_checkout_place_order_sidebar`, which was replaced by the new options for displaying the place order section.
 * Fixed: PHP Warning from Fluid Checkout after updating any plugin.
 

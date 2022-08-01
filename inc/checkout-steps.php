@@ -2771,13 +2771,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return string $label Shipping rate label.
 	 */
 	public function get_cart_shipping_methods_label( $method ) {
-		$label     = sprintf( apply_filters( 'fc_shipping_method_option_label_markup', '<span class="shipping-method__option-text">%s</span>' ), $method->get_label() );
+		$label     = sprintf( apply_filters( 'fc_shipping_method_option_label_markup', '<span class="shipping-method__option-text">%s</span>', $method ), $method->get_label() );
 		$has_cost  = 0 < $method->cost;
 		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
 
 		// Maybe add shipping method description
 		$method_description = apply_filters( 'fc_shipping_method_option_description', '', $method );
-		$method_description_markup = ! empty( $method_description ) ? apply_filters( 'fc_shipping_method_option_description_markup', ' <span class="shipping-method__option-description">%s</span>' ) : '';
+		$method_description_markup = ! empty( $method_description ) ? apply_filters( 'fc_shipping_method_option_description_markup', ' <span class="shipping-method__option-description">%s</span>', $method ) : '';
 		$label .= sprintf( $method_description_markup, $method_description );
 
 		if ( $has_cost && ! $hide_cost ) {
@@ -2795,7 +2795,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 			}
 
-			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>' ), $method_costs );
+			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>', $method ), $method_costs );
 		}
 
 		return $label;
