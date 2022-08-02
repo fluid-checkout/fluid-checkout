@@ -165,9 +165,9 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc_tip'          => __( 'Some options might not be compatible with some plugins and themes.', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_place_order_position',
 						'options'           => array(
-							'below_payment_section'             => _x( 'Below the payment section', 'Place order position', 'fluid-checkout' ),
-							'below_order_summary'               => _x( 'Below the order summary', 'Place order position', 'fluid-checkout' ),
-							'both_payment_and_order_summary'    => _x( 'Both below the payment section and the order summary', 'Place order position', 'fluid-checkout' ),
+							'below_payment_section'             => __( 'Below the payment section', 'fluid-checkout' ),
+							'below_order_summary'               => __( 'Below the order summary', 'fluid-checkout' ),
+							'both_payment_and_order_summary'    => __( 'Both below the payment section and the order summary', 'fluid-checkout' ),
 						),
 						'default'           => 'below_payment_section',
 						'type'              => 'select',
