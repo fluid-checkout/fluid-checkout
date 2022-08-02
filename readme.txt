@@ -95,7 +95,7 @@ Quite insane how the developer is doing this. And a free plugin!!
 
 * **Address book**: allow customers to save multiple addresses to their account and choose which ones to use at the checkout and cart pages.
 
-* **Cart page optimization**: always updated cart, with operations processed via AJAX, cart cross-sells display, and layout consistent with the checkout page.
+* **Cart page optimization**: always updated cart, with operations processed via AJAX, cart cross-sells display, coupon code field, and layout consistent with the checkout page.
 
 * **Thank you / Order confirmation page**: order details layout consistent with the checkout page on the order received page and account view order pages.
 
@@ -105,12 +105,14 @@ Quite insane how the developer is doing this. And a free plugin!!
 
 * **Local pickup**: hide shipping address when a local pickup shipping method is selected.
 
+* **International phone number**: format and validate phone fields on the checkout and account pages based on the country.
+
 Future features:
 
-* More layout and design options
-* Delayed account creation
-* Account matching, let registered customers complete the purchase without logging in and attach the order to their account
 * Edit cart at checkout
+* Account matching, let registered customers complete the purchase without logging in and attach the order to their account
+* Delayed account creation
+* More layout and design options
 * Customize checkout steps and fields
 * ... and a lot more smaller features.
 
