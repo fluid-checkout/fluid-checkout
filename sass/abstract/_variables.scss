@@ -250,6 +250,8 @@ $icons: (
 $option-box-padding-vertical:               $global-spacing-extra-small !default;
 $option-box-padding-horizontal:             $global-spacing-extra-small !default;
 
+$option-box-background-color:               $white !default;
+
 $option-box-border-color:                   $border-color !default;
 $option-box-border:                         solid remsize( .1rem ) $option-box-border-color !default;
 $option-box-border-radius:                  $global-radius-medium !default;
@@ -478,6 +480,8 @@ $shipping-method-space-between-options:     0 !default;
 
 $shipping-method-font-weight:               normal !default;
 
+$shipping-method-background-color:          $option-box-background-color !default;
+
 $shipping-method-price-font-weight:         bold !default;
 $shipping-method-price-width:               $global-spacing-large !default;
 
@@ -503,23 +507,25 @@ $shipping-method-checked-color:             $option-box-checked-color !default;
 // ----------------------------------------
 // PAYMENT METHODS
 
-$payment-method-margin:                    0 !default;
-$payment-method-padding-vertical:          $option-box-padding-vertical !default;
-$payment-method-padding-horizontal:        $global-spacing-small !default;
+$payment-method-margin:                     0 !default;
+$payment-method-padding-vertical:           $option-box-padding-vertical !default;
+$payment-method-padding-horizontal:         $global-spacing-small !default;
 
-$payment-method-font-weight:               normal !default;
+$payment-method-font-weight:                normal !default;
 
-$payment-method-border-color:              $option-box-border-color !default;
-$payment-method-border:                    $option-box-border !default;
-$payment-method-border-radius:             $option-box-border-radius !default;
+$payment-method-background-color:           $option-box-background-color !default;
 
-$payment-method-radio-size:                $option-box-radio-size !default;
-$payment-method-radio-border:              $option-box-radio-border !default;
+$payment-method-border-color:               $option-box-border-color !default;
+$payment-method-border:                     $option-box-border !default;
+$payment-method-border-radius:              $option-box-border-radius !default;
 
-$payment-method-checked-radio-color:       $option-box-checked-radio-color !default;
-$payment-method-checked-icon-color:        $option-box-checked-icon-color !default;
-$payment-method-checked-background-color:  $option-box-checked-background-color !default;
-$payment-method-checked-color:             $option-box-checked-color !default;
+$payment-method-radio-size:                 $option-box-radio-size !default;
+$payment-method-radio-border:               $option-box-radio-border !default;
+
+$payment-method-checked-radio-color:        $option-box-checked-radio-color !default;
+$payment-method-checked-icon-color:         $option-box-checked-icon-color !default;
+$payment-method-checked-background-color:   $option-box-checked-background-color !default;
+$payment-method-checked-color:              $option-box-checked-color !default;
 
 // END - PAYMENT METHODS
 // ----------------------------------------

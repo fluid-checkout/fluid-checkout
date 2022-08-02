@@ -55,6 +55,7 @@
 	padding-#{ $alignment-left }: #{ $shipping-method-padding-horizontal + $shipping-method-radio-size + $global-spacing-extra-small };
 	padding-#{ $alignment-right }: #{ $shipping-method-padding-horizontal + $shipping-method-price-width };
 	width: 100%;
+	background-color: $shipping-method-background-color;
 	border-bottom: $shipping-method-border;
 	font-weight: $shipping-method-font-weight;
 	cursor: pointer;

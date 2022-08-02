@@ -68,7 +68,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	border-left: 0;
 	border-right: 0;
 	border-bottom: $payment-method-border;
-	background-color: $white;
+	background-color: $payment-method-background-color;
 	font-weight: $payment-method-font-weight;
 	line-height: $payment-method-radio-size;
 	cursor: pointer;

@@ -1348,6 +1348,7 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
   padding-left: 44px;
   padding-right: 90px;
   width: 100%;
+  background-color: #fff;
   border-bottom: solid 1px #d8d8d8;
   font-weight: normal;
   cursor: pointer;
