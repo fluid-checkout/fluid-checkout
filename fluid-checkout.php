@@ -5,7 +5,7 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 2.0.3
+Version: 2.0.4-beta-1
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
@@ -161,14 +161,18 @@ class FluidCheckout {
 	 * Fires when the plugin is successfully updated.
 	 */
 	public static function clear_cache_on_updates( $upgrader_object, $options ) {
+		// Bail if necessary options data are not available
+		if ( ! is_array( $options ) || ! array_key_exists( 'action', $options ) || ! array_key_exists( 'type', $options ) || ! array_key_exists( 'plugins', $options ) ) { return; }
+
+		// Bail if not updating plugins
+		if ( 'update' !== $options[ 'action' ] || 'plugin' !== $options[ 'type' ] || ! is_array( $options[ 'plugins' ] ) ) { return; }
+
 		// Get current plugin path name
 		$current_plugin_path_name = plugin_basename( __FILE__ );
- 
-		if ( 'update' === $options[ 'action' ] && 'plugin' === $options[ 'type' ] ) {
-			foreach( $options[ 'plugins' ] as $plugin_path_name ) {
-				if ( $plugin_path_name === $current_plugin_path_name ) {
-					wp_cache_flush();
-				}
+			
+		foreach( $options[ 'plugins' ] as $plugin_path_name ) {
+			if ( $plugin_path_name === $current_plugin_path_name ) {
+				wp_cache_flush();
 			}
 		}
 	}
@@ -195,7 +199,7 @@ class FluidCheckout {
 	private function add_features() {
 		self::$features = array(
 			'checkout-steps'                      => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
-			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ), // Class needs to be loaded for PRO version, checks that the feature is enabled inside the class.
+			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ), // Class needs to be loaded for PRO version, checks that the feature is enabled happens inside the class.
 
 			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'fc_apply_checkout_field_args', 'enable_default' => 'yes' ),
 			'checkout-hide-optional-fields'       => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'fc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),

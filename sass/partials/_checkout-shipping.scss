@@ -1,25 +1,6 @@
 // ------------------------------------
 // CHECKOUT SHIPPING STEP
 // ------------------------------------
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields,
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
-
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:not( :last-child ),
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .shipping_address:not( :last-child ) {
-	padding-bottom: $global-spacing-small;
-}
-
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields:after,
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:after,
-.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .shipping_address:after {
-	@include clearfix();
-}
-
-
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
 	background-color: $lighter-grey;
 
@@ -39,4 +20,36 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 		background-color: $white;
 		color: inherit;
 	}
+}
+
+
+
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields,
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+
+
+div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper {
+	margin-top: $global-spacing-small;
+}
+div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:before,
+div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
+	@include clearfix();
+}
+
+
+
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:not( :last-child ),
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .shipping_address:not( :last-child ) {
+	padding-bottom: $global-spacing-small;
+}
+
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields:after,
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:after,
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .shipping_address:after {
+	@include clearfix();
 }

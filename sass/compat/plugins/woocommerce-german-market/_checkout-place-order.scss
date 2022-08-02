@@ -25,21 +25,3 @@ body.has-fc-compat-german-market-button-placement .fc-sidebar .fc-place-order .f
 	}
 }
 
-body.has-fc-compat-german-market-button-placement .fc-sidebar .woocommerce-checkout-review-order .woocommerce-terms-and-conditions + p.form-row,
-body.has-fc-compat-german-market-button-placement .fc-sidebar .woocommerce-checkout-review-order .german-market-checkbox-p {
-	display: none;
-	
-	@media (#{$bp-larger-than-desktop}) {
-		display: block;
-	}
-}
-
-
-
-body.has-fc-compat-german-market-button-placement form.woocommerce-checkout .fc-wrapper #order_review .fc-checkout__below-place-order-widgets {
-	display: none;
-
-	@media (#{$bp-larger-than-desktop}) {
-		display: block;
-	}
-}
