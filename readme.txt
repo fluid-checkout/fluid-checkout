@@ -372,6 +372,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Compatibility with plugin Checkout Field Editor for WooCommerce by Themehigh (free version). Custom email fields now will suggest corrections for typos.
+
 = 2.0.4 - 2022-08-02 =
 
 Using the Germanized plugin? Please read the details for the changes to compatibility with Germanized below.

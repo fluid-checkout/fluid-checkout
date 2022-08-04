@@ -23,6 +23,9 @@ class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 	public function hooks() {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+
+		// Checkout field args
+		add_filter( 'woocommerce_form_field_args', array( $this, 'add_mailcheck_attributes' ), 100, 3 );
 	}
 
 	/**
@@ -47,6 +50,30 @@ class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 			}
 		}
 
+	}
+
+
+
+	/**
+	 * Add custom attributes for email fields.
+	 *
+	 * @param   array   $args   Checkout field args.
+	 * @param   string  $key    Field key.
+	 * @param   mixed   $value  Field value.
+	 *
+	 * @return  array           Modified checkout field args.
+	 */
+	public function add_mailcheck_attributes( $args, $key, $value ) {
+		// Bail if field is not an email field
+		if ( ! array_key_exists( 'type', $args ) || 'email' !== $args[ 'type' ] ) { return $args; }
+
+		// Initialize custom attributes argument if not existing yet
+		if ( ! array_key_exists( 'custom_attributes', $args ) ) { $args[ 'custom_attributes' ] = array(); }
+
+		// Add mailcheck attributes
+		$args[ 'custom_attributes' ] = array_merge( $args[ 'custom_attributes' ], array( 'data-mailcheck' => 1 ) );
+
+		return $args;
 	}
 
 
