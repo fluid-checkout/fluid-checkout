@@ -108,6 +108,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		add_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
 		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
+		add_action( 'woocommerce_checkout_before_customer_details', array( $this, 'output_substep_contact_login_link_section' ), 1 );
 		add_action( 'wp_footer', array( $this, 'output_login_form_modal' ), 10 );
 		add_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
 		add_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
@@ -1834,7 +1835,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
-		$this->output_substep_contact_login_link_section();
+		// $this->output_substep_contact_login_link_section();
 		$this->output_step_contact_fields();
 		$this->output_substep_fields_end_tag();
 
