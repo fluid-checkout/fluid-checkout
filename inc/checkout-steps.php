@@ -1976,12 +1976,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Return default list of checkout fields for contact step.
+	 */
+	public function get_default_contact_step_display_field_ids() {
+		return array( 'billing_email' );
+	}
+
+	/**
 	 * Return list of checkout fields for contact step.
 	 */
 	public function get_contact_step_display_field_ids() {
-		return array_unique( apply_filters( 'fc_checkout_contact_step_field_ids', array(
-			'billing_email',
-		) ) );
+		return array_unique( apply_filters( 'fc_checkout_contact_step_field_ids', $this->get_default_contact_step_display_field_ids() ) );
 	}
 
 
