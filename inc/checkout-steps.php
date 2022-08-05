@@ -14,7 +14,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *      ['step_title']                   string      The checkout step title visible to the user.
 	 *      ['priority']                     int         Defines the order the checkout step will be displayed.
 	 *      ['next_step_button_classes']     array       Array of CSS classes to add to the "Next step" button.
-	 *      ['render_next_step_button']      bool        Whether to display a "Next Step" button at the end of the step. Defaults to `true`.
 	 *      ['render_callback']              callable    Function name or callable array to display the contents of the checkout step.
 	 *      ['render_condition_callback']    callable    (optional) Function name or callable array to determine if the step should be rendered. If a callback is not provided the checkout step will be displayed.
 	 *      ['is_complete_callback']         callable    (optional) Function name or callable array to determine if all required date for the step has been provided. Defaults to `false`, considering the step as 'incomplete' if a callback is not provided.
@@ -1120,9 +1119,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$step_args[ 'step_id' ] = sanitize_title( $step_args[ 'step_id' ] );
 		$step_id = $step_args[ 'step_id' ];
 
-		// Sanitize value for `render_next_step_button` flag and set default value if needed
-		$step_args[ 'render_next_step_button' ] = array_key_exists( 'render_next_step_button', $step_args ) && $step_args[ 'render_next_step_button' ] === false ? false : true;
-
 		// Sanitize "next step" button classes
 		$step_args[ 'next_step_button_classes' ] = array_key_exists( 'next_step_button_classes', $step_args ) && is_array( $step_args[ 'next_step_button_classes' ] ) ? $step_args[ 'next_step_button_classes' ] : array();
 		foreach ( $step_args[ 'next_step_button_classes' ] as $key => $class ) {
@@ -1231,7 +1227,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'priority' => 100,
 			'render_callback' => array( $this, 'output_step_payment' ),
 			'is_complete_callback' => '__return_false', // Payment step is only complete when the order has been placed and the payment has been accepted, during the checkout process it will always be considered 'incomplete'.
-			'render_next_step_button' => false,
 		) );
 
 		do_action( 'fc_register_steps' );
@@ -1489,20 +1484,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   array  $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
 	 */
 	public function output_step_end_tag( $step_args, $step_index ) {
-		// Maybe output the "Next step" button
-		if ( $this->is_checkout_layout_multistep() && array_key_exists( 'render_next_step_button', $step_args ) && $step_args[ 'render_next_step_button' ] ) :
-			$button_label = apply_filters( 'fc_next_step_button_label', $this->get_next_step_button_label( $step_args[ 'step_id' ] ), $step_args[ 'step_id' ] );
+		if ( $this->is_checkout_layout_multistep() ) :
+			// Get last step index
+			$last_step = $this->get_last_step();
+			$last_step_index = array_keys( $last_step )[0];
 
-			$button_attributes = array(
-				'class' => implode( ' ', array_merge( array( 'fc-step__next-step' ), apply_filters( 'fc_next_step_button_classes', array( 'button' ) ), $step_args[ 'next_step_button_classes' ] ) ),
-				'data-step-next' => true,
-			);
-			$button_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $button_attributes ), $button_attributes ) );
-			?>
-			<div class="fc-step__actions">
-				<button type="button" <?php echo $button_attributes_str; // WPCS: XSS ok. ?>><?php echo esc_html( $button_label ); ?></button>
-			</div>
-			<?php
+			// Maybe output next step button if not on last step
+			if ( $step_index !== $last_step_index ) :
+				// Maybe output the "Next step" button
+				$button_label = apply_filters( 'fc_next_step_button_label', $this->get_next_step_button_label( $step_args[ 'step_id' ] ), $step_args[ 'step_id' ] );
+
+				$button_attributes = array(
+					'class' => implode( ' ', array_merge( array( 'fc-step__next-step' ), apply_filters( 'fc_next_step_button_classes', array( 'button' ) ), $step_args[ 'next_step_button_classes' ] ) ),
+					'data-step-next' => true,
+				);
+				$button_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $button_attributes ), $button_attributes ) );
+				?>
+				<div class="fc-step__actions">
+					<button type="button" <?php echo $button_attributes_str; // WPCS: XSS ok. ?>><?php echo esc_html( $button_label ); ?></button>
+				</div>
+				<?php
+			endif;
 		endif;
 
 		echo '</section>';
