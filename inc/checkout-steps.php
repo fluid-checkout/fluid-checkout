@@ -159,6 +159,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_action( 'fc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
 		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
+		add_filter( 'fc_substep_payment_method_text_lines', array( $this, 'add_substep_text_lines_payment_method' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_payment_method_text_fragment' ), 10 );
 
 		// Formatted Address
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
@@ -3587,6 +3589,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_payment_fields();
 		$this->output_substep_fields_end_tag();
 
+		// Only output substep text format for multi-step checkout layout
+		if ( $this->is_checkout_layout_multistep() ) {
+			$this->output_substep_text_start_tag( $step_id, $substep_id );
+			$this->output_substep_text_payment_method();
+			$this->output_substep_text_end_tag();
+		}
+
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, false );
 	}
 
@@ -3602,6 +3611,61 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'checkout'          => WC()->checkout(),
 			)
 		);
+	}
+
+
+
+	/**
+	 * Add the payment method substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_payment_method( $review_text_lines = array() ) {
+		if ( WC()->cart->needs_payment() ) {
+			// Get chosen and available payment gateways
+			$available_gateways = WC()->payment_gateways()->get_available_payment_gateways();
+			$chosen_payment_method = WC()->session->get( 'chosen_payment_method' );
+
+			// Make sure we have an array of chosen payment methods
+			if ( ! is_array( $chosen_payment_method ) ) { $chosen_payment_method = array( $chosen_payment_method ); }
+
+			// Add a review text line for each chosen method
+			foreach ( $chosen_payment_method as $chosen_method_key ) {
+				$gateway = $available_gateways[ $chosen_method_key ];
+
+				$payment_method_review_text = '<span class="payment-method-icon">' . $gateway->get_icon() . '</span>' . '<span class="payment-method-title">' . $gateway->get_title() . '</span>';
+				$payment_method_review_text = apply_filters( 'fc_payment_method_review_text_' . $chosen_method_key, $payment_method_review_text, $gateway );
+
+				$review_text_lines[] = $payment_method_review_text;
+			}
+		}
+
+		return $review_text_lines;
+	}
+
+	/**
+	 * Get payment method address substep review text.
+	 */
+	public function get_substep_text_payment_method() {
+		return $this->get_substep_review_text( 'payment_method' );
+	}
+
+	/**
+	 * Add payment method address substep review text as checkout fragment.
+	 *
+	 * @param   array  $fragments  Checkout fragments.
+	 */
+	public function add_payment_method_text_fragment( $fragments ) {
+		$html = $this->get_substep_text_payment_method();
+		$fragments['.fc-step__substep-text-content--payment_method'] = $html;
+		return $fragments;
+	}
+
+	/**
+	 * Output payment method address substep review text.
+	 */
+	public function output_substep_text_payment_method() {
+		echo $this->get_substep_text_payment_method();
 	}
 
 
