@@ -839,6 +839,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$complete_steps = array();
 
 		for ( $step_index = 0; $step_index < count( $_checkout_steps ); $step_index++ ) {
+			// Get last step index
+			$last_step = $this->get_last_step();
+			$last_step_index = array_keys( $last_step )[0];
+
+			// Maybe skip checking last step
+			if ( $step_index === $last_step_index ) { continue; }
+
 			$step_args = $_checkout_steps[ $step_index ];
 			$step_id = $step_args[ 'step_id' ];
 			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
@@ -940,22 +947,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  array  An array with only one value, the first checkout step which is considered incomplete, for `false` if not step is found. The index is preserved from the registered checkout steps list.
 	 */
 	public function get_current_step() {
-		$_checkout_steps = $this->get_checkout_steps();
+		// Get incomplete steps
+		$incomplete_steps = $this->get_incomplete_steps();
 
-		for ( $step_index = 0; $step_index < count( $_checkout_steps ); $step_index++ ) {
-			$step_args = $_checkout_steps[ $step_index ];
-			$step_id = $step_args[ 'step_id' ];
-			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
-
-			// Return first incomplete step
-			if ( $is_complete_callback && is_callable( $is_complete_callback ) && ! call_user_func( $is_complete_callback ) ) {
-				return array( $step_index => $step_args );
-			}
+		// Try to get the first incomplete step
+		if ( is_array( $incomplete_steps ) && count( $incomplete_steps ) > 0 ) {
+			$current_step_index = array_keys( $incomplete_steps )[ 0 ];
+			return array( $current_step_index => $incomplete_steps[ $current_step_index ] );
 		}
 
-		// Defaults to the first step
+		// Get all steps
+		$_checkout_steps = $this->get_checkout_steps();
+
+		// Defaults to the last step
 		if ( is_array( $_checkout_steps ) && count( $_checkout_steps ) > 0 ) {
-			return array( 0 => $_checkout_steps[ 0 ] );
+			$checkout_steps_keys = array_keys( $_checkout_steps );
+			$current_step_index = end( $checkout_steps_keys );
+			return array( $current_step_index => $_checkout_steps[ $current_step_index ] );
 		}
 
 		return false;
