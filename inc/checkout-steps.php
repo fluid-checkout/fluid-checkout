@@ -3631,11 +3631,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Add a review text line for each chosen method
 			foreach ( $chosen_payment_method as $chosen_method_key ) {
+				// Maybe skip if gateway was not found
+				if ( ! array_key_exists( $chosen_method_key, $available_gateways ) ) { continue; }
+
+				// Get gateway
 				$gateway = $available_gateways[ $chosen_method_key ];
 
+				// Get review text line
 				$payment_method_review_text = '<span class="payment-method-icon">' . $gateway->get_icon() . '</span>' . '<span class="payment-method-title">' . $gateway->get_title() . '</span>';
 				$payment_method_review_text = apply_filters( 'fc_payment_method_review_text_' . $chosen_method_key, $payment_method_review_text, $gateway );
 
+				// Add review text line
 				$review_text_lines[] = $payment_method_review_text;
 			}
 		}
