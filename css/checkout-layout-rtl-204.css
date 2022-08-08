@@ -955,8 +955,12 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   outline-offset: 2px;
 }
 
-.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-edit {
+.fc-wrapper .fc-step__substep-edit {
   display: none;
+  position: absolute;
+  top: 12px;
+  right: auto;
+  left: 10px;
   margin: 0;
   padding: 5px 10px;
   font-size: 15px;
@@ -968,11 +972,11 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   cursor: pointer;
 }
 @media (min-width: 1000px) {
-  .has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-edit {
+  .fc-wrapper .fc-step__substep-edit {
     font-size: 15px;
   }
 }
-.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-edit:focus {
+.fc-wrapper .fc-step__substep-edit:focus {
   outline: dotted 1px #535156;
   outline-offset: 1px;
 }
@@ -988,14 +992,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   outline-offset: 2px;
 }
 
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit {
-  position: absolute;
-  top: 12px;
-  right: auto;
-  left: 10px;
-  display: inline-block;
-}
-
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit,
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-save {
   display: inline-block;
 }

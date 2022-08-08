@@ -39,7 +39,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_shipping_phone_field_to_contact_fields' ), 10 );
 
 			// Remove phone field from shipping address data
-			add_filter( 'fc_shipping_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
+			add_filter( 'fc_shipping_substep_text_address_data', array( FluidCheckout_Steps::instance(), 'remove_phone_address_data' ), 10 );
 		}
 	}
 
@@ -160,18 +160,6 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		$shipping_phone = get_post_meta( $order->get_id(), '_shipping_phone', true );
 		if ( ! empty( $shipping_phone ) ) { $address['shipping_phone'] = $shipping_phone; }
 		return $address;
-	}
-
-
-
-	/**
-	 * Remove phone from address data.
-	 *
-	 * @param   array  $html  HTML for the substep text.
-	 */
-	public function remove_phone_address_data( $address_data ) {
-		unset( $address_data[ 'phone' ] );
-		return $address_data;
 	}
 
 
