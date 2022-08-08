@@ -1847,7 +1847,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
-		// $this->output_substep_contact_login_link_section();
 		$this->output_step_contact_fields();
 		$this->output_substep_fields_end_tag();
 
