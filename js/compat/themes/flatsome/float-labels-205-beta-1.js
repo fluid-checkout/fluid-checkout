@@ -49,8 +49,12 @@
 		if ( _hasInitialized ) return;
 
 		if ( _hasJQuery ) {
-			$( document.body ).on( 'updated_checkout', maybeRebuildFloatLabels );
+			// Rebuild on updates
+			$( document.body ).on( 'init_checkout updated_checkout', maybeRebuildFloatLabels );
 		}
+
+		// Rebuild on initialization
+		setTimeout( maybeRebuildFloatLabels, 100 );
 
 		_hasInitialized = true;
 	};
