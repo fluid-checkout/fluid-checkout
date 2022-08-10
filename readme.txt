@@ -379,6 +379,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with theme Flatsome. When using floating labels on form fields, they should now appear inside the fields as expected after refreshing the page or when the checkout form is updated.
 * Improved: Better performance while loading plugin and theme compatibility classes on websites with a big database. Replaced use of options (from database) with filter hooks.
 * Improved: Change the way the current step is determined, and defaults to the last step if all steps are already completed.
+* Fixed: Checkout coupon code script not replaced completely when using coupon code features from the plugin.
 
 = 2.0.4 - 2022-08-02 =
 

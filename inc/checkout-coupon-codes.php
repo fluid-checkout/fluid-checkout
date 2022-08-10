@@ -120,8 +120,9 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	public function add_js_settings( $settings ) {
 
 		$settings[ 'checkoutCoupons' ] = apply_filters( 'fc_checkout_coupons_script_settings', array(
-			'addCouponCodeNonce' => wp_create_nonce( 'fc-add-coupon-code' ),
-			'removeCouponCodeNonce' => wp_create_nonce( 'fc-remove-coupon-code' ),
+			'isEnabled'                => get_option( 'fc_enable_checkout_coupon_codes', 'yes' ),
+			'addCouponCodeNonce'       => wp_create_nonce( 'fc-add-coupon-code' ),
+			'removeCouponCodeNonce'    => wp_create_nonce( 'fc-remove-coupon-code' ),
 		) );
 
 		return $settings;

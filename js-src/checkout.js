@@ -941,11 +941,10 @@ jQuery( function( $ ) {
 			return false;
 		},
 		remove_coupon: function( e ) {
-			e.preventDefault();
-
 			// CHANGE: Bail when Fluid Checkout integrated coupon code feature is enabled
-			var isFluidCheckoutCouponsEnabled = $( this ).parents( '.fc-coupon-codes__coupon' ).length > 0;
-			if ( isFluidCheckoutCouponsEnabled ) { return; }
+			if ( _settings.checkoutCoupons && 'yes' === _settings.checkoutCoupons.isEnabled ) { return; }
+
+			e.preventDefault();
 
 			var container = $( this ).parents( '.woocommerce-checkout-review-order' ),
 				coupon    = $( this ).data( 'coupon' );

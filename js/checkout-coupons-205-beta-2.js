@@ -284,7 +284,7 @@
 
 				if ( response.result && 'success' === response.result ) {
 					// Maybe add messages
-					if ( response.message && 'no' === _settings.suppressSuccessMessages ) {
+					if ( response.message && 'yes' !== _settings.suppressSuccessMessages ) {
 						showNotices( response.message );
 					}
 
@@ -367,7 +367,7 @@
 
 				if ( response.result && 'success' === response.result ) {
 					// Maybe add messages
-					if ( response.message && 'no' === _settings.suppressSuccessMessages ) {
+					if ( response.message && 'yes' !== _settings.suppressSuccessMessages ) {
 						showNotices( response.message );
 					}
 					
