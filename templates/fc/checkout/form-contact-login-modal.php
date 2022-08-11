@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 			<a href="#close" class="button--flyout-close" data-flyout-close aria-label="<?php echo esc_html( _x( 'Close', 'Close button aria-label', 'fluid-checkout' ) ); ?>"></a>
 		</div>
 
-		<div class="fc-login-form__title"><?php echo esc_html( __( 'Log in to your account', 'fluid-checkout' ) ); ?></div>
+		<div class="fc-login-form__title"><?php echo esc_html( apply_filters( 'fc_checkout_login_modal_title', __( 'Log in to your account', 'fluid-checkout' ) ) ); ?></div>
 
 		<?php woocommerce_login_form(); ?>
 
