@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 	<div class="fc-login-form__inner" data-flyout-content>
 
 		<div class="fc-login-form__close-wrapper">
-			<a href="#close" class="button--flyout-close" title="<?php esc_attr_e( 'Close login form', 'fluidtheme' ) ?>" data-flyout-close aria-label="<?php echo esc_html( _x( 'Close', 'Close button aria-label', 'fluid-checkout' ) ); ?>"></a>
+			<a href="#close" class="button--flyout-close" data-flyout-close aria-label="<?php echo esc_html( _x( 'Close', 'Close button aria-label', 'fluid-checkout' ) ); ?>"></a>
 		</div>
 
 		<div class="fc-login-form__title"><?php echo esc_html( __( 'Log in to your account', 'fluid-checkout' ) ); ?></div>
