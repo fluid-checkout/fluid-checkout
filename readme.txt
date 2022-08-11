@@ -379,7 +379,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with plugin Checkout Field Editor for WooCommerce by Themehigh (free version). Custom email fields now will suggest corrections for typos.
 * Improved: Compatibility with theme Flatsome. When using floating labels on form fields, they should now appear inside the fields as expected after refreshing the page or when the checkout form is updated.
 * Improved: Better performance while loading plugin and theme compatibility classes on websites with a big database. Replaced use of options (from database) with filter hooks.
-* Improved: Change the way the current step is determined, and defaults to the last step if all steps are already completed.
+* Improved: Changed the way the current step is determined, and defaults to the last step if all steps are already completed.
+* Improved: Changed login button label on global WooCommerce login form template to be consistent across checkout.
 * Fixed: Checkout coupon code script not replaced completely when using coupon code features from the plugin.
 
 = 2.0.4 - 2022-08-02 =
