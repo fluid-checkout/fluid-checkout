@@ -152,3 +152,11 @@ body.has-flyout--open {
   height: 24px;
   font-size: 24px;
 }
+
+.has-flyout--open .flyout-overlay {
+  left: 0;
+}
+
+.has-flyout [data-flyout].is-activated.is-open {
+  left: 0;
+}

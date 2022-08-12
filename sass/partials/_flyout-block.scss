@@ -25,10 +25,20 @@
 .button--flyout-close {
 	position: absolute;
 	top: $global-spacing-small;
-	right: $global-spacing-small;
+	#{ $alignment-right }: $global-spacing-small;
     color: inherit;
 }
 .button--flyout-close:before {
 	@include icon( 'i-x' );
 	@include icon-size( $icon-size );
+}
+
+
+
+.has-flyout--open .flyout-overlay {
+    #{ $alignment-left }: 0;
+}
+
+.has-flyout [data-flyout].is-activated.is-open{
+    #{ $alignment-left }: 0;
 }
