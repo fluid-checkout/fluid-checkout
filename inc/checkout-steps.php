@@ -171,6 +171,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_order_review_background_inline_styles' ), 30 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'replace_order_summary_table_fragments' ), 10 );
 
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
@@ -228,9 +229,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_sidebar' ), 10 );
 		}
 		else if ( 'below_order_summary' === $place_order_position ) {
+			remove_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
+			remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'replace_order_summary_table_fragments' ), 10 );
 			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_sidebar_main' ), 1 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_sidebar_main' ), 10 );
-			remove_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
 		}
 		// Defaults to `below_payment_section`
 		else {
@@ -1749,6 +1751,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$section_toggle_attributes = array(
 			'id' => 'fc-expansible-form-section__toggle--' . $section_id_esc,
 			'class' => 'fc-expansible-form-section__toggle fc-expansible-form-section__toggle--' . $section_id_esc . ' ' . ( $initial_state === 'expanded' ? 'is-collapsed' : 'is-expanded' ), // Toggle is collapsed when the section is set to expanded
+			'data-section-key' => $section_id_esc,
 			'data-collapsible' => true,
 			'data-collapsible-content' => true,
 			'data-collapsible-initial-state' => $initial_state === 'expanded' ? 'collapsed' : 'expanded', // Toggle is collapsed when the section is set to expanded
@@ -1761,8 +1764,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Toggle element attributes
 		$toggle_attributes = array(
+			'id' => 'fc-expansible-form-section__toggle-plus--' . $section_id_esc,
 			'href' => '#fc-expansible-form-section__content--' . $section_id_esc,
 			'class' => 'expansible-section__toggle-plus expansible-section__toggle-plus--' . $section_id_esc,
+			'data-section-key' => $section_id_esc,
 			'data-collapsible-handler' => true,
 			'data-collapsible-targets' => implode( ',', array(
 				'fc-expansible-form-section__toggle--' . $section_id_esc,
@@ -1774,6 +1779,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$section_content_attributes = array(
 			'id' => 'fc-expansible-form-section__content--' . $section_id_esc,
 			'class' => 'fc-expansible-form-section__content fc-expansible-form-section__content--' . $section_id_esc . ' ' . ( $initial_state === 'expanded' ? 'is-expanded' : 'is-collapsed' ),
+			'data-section-key' => $section_id_esc,
 			'data-collapsible' => true,
 			'data-collapsible-content' => true,
 			'data-collapsible-initial-state' => $initial_state,
@@ -4059,6 +4065,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$custom_css = "body div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner { background-color: $color; }";
 		wp_add_inline_style( 'fc-checkout-layout', $custom_css );
+	}
+
+
+
+	/**
+	 * Replace the order summary table fragment with specific fragments main and sidebar order summary sections.
+	 *
+	 * @param   array  $fragments  Checkout fragments.
+	 */
+	public function replace_order_summary_table_fragments( $fragments ) {
+		// Remove original
+		unset( $fragments['.woocommerce-checkout-review-order-table'] );
+
+		// Get order review fragment for main section
+		ob_start();
+		woocommerce_order_review();
+		$html = ob_get_clean();
+		$fragments['.fc-inside .woocommerce-checkout-review-order-table'] = $html;
+
+		// Get order review fragment for sidebar.
+		ob_start();
+		woocommerce_order_review();
+		$html = ob_get_clean();
+		$fragments['.fc-sidebar .woocommerce-checkout-review-order-table'] = $html;
+
+		return $fragments;
 	}
 
 

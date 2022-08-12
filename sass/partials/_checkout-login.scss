@@ -92,21 +92,6 @@
 }
 
 
-.fc-login-form .fc-login-form__close-wrapper {
-	text-align: right;
-}
-
-.fc-login-form .button--flyout-close {
-	position: absolute;
-	top: $global-spacing-small;
-	right: $global-spacing-small;
-}
-.fc-login-form .button--flyout-close:before {
-	@include icon( 'i-x' );
-	@include icon-size( $icon-size );
-}
-
-
 
 .fc-login-form__title {
 	margin-top: $global-spacing;

@@ -128,7 +128,7 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 		$position_index = count( $settings ) - 1;
 
 		// Insert at token position
-		$new_settings  = array_slice( $settings, 0, $position_index );
+		$new_settings = array_slice( $settings, 0, $position_index );
 		$new_settings = array_merge( $new_settings, $insert_settings );
 		$new_settings = array_merge( $new_settings, array_slice( $settings, $position_index, count( $settings ) ) );
 

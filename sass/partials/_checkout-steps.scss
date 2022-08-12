@@ -36,6 +36,9 @@
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
 }
+.fc-wrapper .fc-step__substep[data-substep-id="payment"] + .fc-step__substep {
+	border-bottom: solid remsize( .1rem ) $border-color;
+}
 
 .fc-wrapper .fc-step__substep[data-substep-visible="no"] {
 	display: none !important; // Needed to override theme styles set with `!important`

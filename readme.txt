@@ -375,10 +375,16 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Payment method review text, in preparation for some features of the PRO version.
+* Added: New action hook `fc_pro_checkout_review_order_after_coupon_code` for adding elements in the order summary after the coupon code, in preparation for some features of the PRO version.
+* Improved: Added coupon code field section element and reference to element used to add or remove coupons, in preparation for some features of the PRO version.
 * Improved: Compatibility with plugin Checkout Field Editor for WooCommerce by Themehigh (free version). Custom email fields now will suggest corrections for typos.
 * Improved: Compatibility with theme Flatsome. When using floating labels on form fields, they should now appear inside the fields as expected after refreshing the page or when the checkout form is updated.
 * Improved: Better performance while loading plugin and theme compatibility classes on websites with a big database. Replaced use of options (from database) with filter hooks.
-* Improved: Change the way the current step is determined, and defaults to the last step if all steps are already completed.
+* Improved: Changed the way the current step is determined, and defaults to the last step if all steps are already completed.
+* Improved: Changed login button label on global WooCommerce login form template to be consistent across checkout.
+* Improved: Use separate fragments for the order summary table on the checkout steps and sidebar sections.
+* Fixed: Refocus on focused collapsible section toggle elements when updating the checkout fragments.
+* Fixed: Checkout coupon code scripts from WooCommerce not being completely replaced when using coupon code features from the plugin.
 
 = 2.0.4 - 2022-08-02 =
 

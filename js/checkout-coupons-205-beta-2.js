@@ -26,6 +26,8 @@
 
 		uiProcessingClass: 'processing',
 
+		sectionWrapperSelector: '.fc-step__substep',
+		generalNoticesSelector: '.woocommerce-notices-wrapper',
 		messagesWrapperSelector: '.fc-coupon-code-messages',
 		suppressSuccessMessages: 'no',
 
@@ -33,11 +35,16 @@
 		couponFieldSelector: 'input[name="coupon_code"]',
 		addCouponButtonSelector: '.fc-coupon-code__apply',
 		removeCouponButtonSelector: '.woocommerce-remove-coupon',
+		
 		couponCodeAttribute: 'data-coupon',
+		referenceIdAttribute: 'data-reference-id',
+		expansibleCouponSectionKeyAttribute: 'data-section-key',
 
-		expansibleCouponToggleSelector: '.fc-expansible-form-section__toggle--coupon_code',
-		expansibleCouponContentSelector: '.fc-expansible-form-section__content--coupon_code',
-		expansibleCouponToggleButtonSelector: '.expansible-section__toggle-plus--coupon_code',
+		expansibleCouponContentSelector: '.fc-expansible-form-section__content',
+		expansibleCouponToggleSelector: '.fc-expansible-form-section__toggle--###SECTION_KEY###',
+		expansibleCouponToggleButtonSelector: '.expansible-section__toggle-plus--###SECTION_KEY###',
+
+		section_key_placeholder:  '###SECTION_KEY###',
 
 	}
 	var _key = {
@@ -102,8 +109,18 @@
 	 *
 	 * @param   HTML  content  HTML content to be displayed.
 	 */
-	var showNotices = function( content ) {
-		var messagesWrapper = document.querySelector( _settings.messagesWrapperSelector );
+	var showNotices = function( content, referenceElement ) {
+		// Maybe get specific messages wrapper
+		var messagesWrapper;
+		var sectionWrapper = referenceElement ? referenceElement.closest( _settings.sectionWrapperSelector ) : null;
+		if ( sectionWrapper ) {
+			messagesWrapper = sectionWrapper.querySelector( _settings.messagesWrapperSelector );
+		}
+		else {
+			messagesWrapper = document.querySelector( _settings.generalNoticesSelector );
+		}
+		
+		// Add message
 		if ( messagesWrapper ) {
 			messagesWrapper.innerHTML = content;
 		}
@@ -115,6 +132,11 @@
 	 * @param   HTML  content  HTML content to be displayed.
 	 */
 	var clearNotices = function() {
+		var generalNotices = document.querySelector( _settings.generalNoticesSelector );
+		if ( generalNotices ) {
+			generalNotices.innerHTML = '';
+		}
+
 		var messagesWrapper = document.querySelector( _settings.messagesWrapperSelector );
 		if ( messagesWrapper ) {
 			messagesWrapper.innerHTML = '';
@@ -126,19 +148,20 @@
 	/**
 	 * Process adding a coupon code to the cart from the add coupon button.
 	 *
-	 * @param   HTMLElement  addCouponButton  The cart item element.
+	 * @param   HTMLElement  referenceElement  The element which was used to trigger adding the coupon.
 	 */
-	var processAddCoupon = function( addCouponButton ) {
+	var processAddCoupon = function( referenceElement ) {
 		var couponCode = '';
 
-		// Try to get coupon code from button attributes
-		if ( addCouponButton && addCouponButton.hasAttribute( _settings.couponCodeAttribute ) ) {
-			couponCode = addCouponButton.getAttribute( _settings.couponCodeAttribute );
+		// Try to get coupon code from attributes
+		if ( referenceElement && referenceElement.hasAttribute( _settings.couponCodeAttribute ) ) {
+			couponCode = referenceElement.getAttribute( _settings.couponCodeAttribute );
 		}
 
 		// Try to get coupon code from coupon field
 		if ( ! couponCode || '' == couponCode ) {
-			var couponField = document.querySelector( _settings.couponFieldSelector );
+			var couponSection = referenceElement.closest( '.fc-coupon-code-section' );
+			var couponField = couponSection.querySelector( _settings.couponFieldSelector );
 
 			// Bail if coupon code field was not found
 			if ( ! couponField ) { return; }
@@ -156,29 +179,29 @@
 		// Bail if coupon code was not provided
 		if ( ! couponCode || '' == couponCode ) { return; }
 
-		_publicMethods.addCouponCode( couponCode );
+		_publicMethods.addCouponCode( couponCode, referenceElement );
 	}
 	
 	/**
-	 * Process adding a coupon code to the cart from the add coupon button.
+	 * Process removing a coupon code to the cart from the add coupon button.
 	 *
-	 * @param   HTMLElement  removeCouponButton  The cart item element.
+	 * @param   HTMLElement  referenceElement  The remove coupon button element.
 	 */
-	var processRemoveCoupon = function( removeCouponButton ) {
+	var processRemoveCoupon = function( referenceElement ) {
 		// Bail if add coupon button not provided
-		if ( ! removeCouponButton ) { return; }
+		if ( ! referenceElement ) { return; }
 
 		var couponCode = '';
 
 		// Try to get coupon code from button attributes
-		if ( removeCouponButton.hasAttribute( _settings.couponCodeAttribute ) ) {
-			couponCode = removeCouponButton.getAttribute( _settings.couponCodeAttribute );
+		if ( referenceElement.hasAttribute( _settings.couponCodeAttribute ) ) {
+			couponCode = referenceElement.getAttribute( _settings.couponCodeAttribute );
 		}
 
 		// Bail if coupon code was not provided
 		if ( ! couponCode || '' == couponCode ) { return; }
 
-		_publicMethods.removeCouponCode( couponCode );
+		_publicMethods.removeCouponCode( couponCode, referenceElement );
 	}
 
 
@@ -216,7 +239,7 @@
 			e.preventDefault();
 
 			// ADD COUPON
-			processAddCoupon();
+			processAddCoupon( e.target.closest( _settings.couponFieldSelector ) );
 		}
 	};
 
@@ -230,6 +253,9 @@
 	 * @param   HTMLElement  element  Element to block the UI and show the loading indicator.
 	 */
 	_publicMethods.blockUI = function( element ) {
+		// Bail if element is invalid
+		if ( ! element ) { return; }
+
 		$( element ).addClass( _settings.uiProcessingClass ).block( {
 			message: null,
 			overlayCSS: {
@@ -257,22 +283,27 @@
 	 *
 	 * @param   string  couponCode  The coupon code to be added to the cart.
 	 */
-	_publicMethods.addCouponCode = function( couponCode ) {
+	_publicMethods.addCouponCode = function( couponCode, referenceElement ) {
 		// Bail if coupon code was not provided
 		if ( ! couponCode || '' == couponCode ) { return; }
 
 		clearNotices();
 
+		// Get reference id and save to reference element
+		var reference_id = Math.floor( Math.random() * 1000 );
+		if ( referenceElement ) {
+			referenceElement.setAttribute( _settings.referenceIdAttribute, reference_id );
+		}
+
 		// Block coupon section
 		var couponAddedSection = document.querySelector( _settings.couponAddedSectionSelector );
-		if ( couponAddedSection ) {
-			_publicMethods.blockUI( couponAddedSection );
-		}
+		_publicMethods.blockUI( couponAddedSection );
 
 		// Add security nonce
 		var data = {
 			security: _settings.addCouponCodeNonce,
 			coupon_code: couponCode,
+			reference_id: reference_id,
 		}
 
 		$.ajax({
@@ -282,10 +313,17 @@
 			dataType:   'json',
 			success:	function( response ) {
 
+				// Get back the reference id
+				var referenceElement;
+				if ( response.reference_id ) {
+					referenceElement = document.querySelector( '[' + _settings.referenceIdAttribute + '="' + response.reference_id + '"]' );
+				}
+
+				// Maybe process success
 				if ( response.result && 'success' === response.result ) {
 					// Maybe add messages
-					if ( response.message && 'no' === _settings.suppressSuccessMessages ) {
-						showNotices( response.message );
+					if ( response.message && 'yes' !== _settings.suppressSuccessMessages ) {
+						showNotices( response.message, referenceElement );
 					}
 
 					// Maybe remove coupon code value from the field
@@ -297,16 +335,25 @@
 					// Maybe close the coupon code field section
 					if ( window.CollapsibleBlock ) {
 
-						var expansibleCouponToggle = document.querySelector( _settings.expansibleCouponToggleSelector );
-						var expansibleCouponContent = document.querySelector( _settings.expansibleCouponContentSelector );
-						var expansibleCouponToggleButton = document.querySelector( _settings.expansibleCouponToggleButtonSelector );
+						// Get expansible content section
+						var expansibleCouponContent = referenceElement.closest( _settings.expansibleCouponContentSelector );
 
-						if ( expansibleCouponToggle && expansibleCouponContent ) {
-							// Change expanded/collapsed states for the fields and text blocks
+						// Maybe collapse/expanse sections after adding coupon
+						if ( expansibleCouponContent ) {
+							// Collapse the coupon code field content section
 							CollapsibleBlock.collapse( expansibleCouponContent );
-							CollapsibleBlock.expand( expansibleCouponToggle );
 
-							// Focus back to the add coupon code
+							// Get section key and toggle elements
+							var section_key = expansibleCouponContent.getAttribute( _settings.expansibleCouponSectionKeyAttribute );
+							var expansibleCouponToggle = document.querySelector( _settings.expansibleCouponToggleSelector.replace( _settings.section_key_placeholder, section_key ) );
+							var expansibleCouponToggleButton = document.querySelector( _settings.expansibleCouponToggleButtonSelector.replace( _settings.section_key_placeholder, section_key ) );
+
+							// Maybe expand coupon code toggle section
+							if ( expansibleCouponToggle ) {
+								CollapsibleBlock.expand( expansibleCouponToggle );
+							}
+
+							// Maybe focus back to the add coupon code button
 							if ( expansibleCouponToggleButton ) {
 								expansibleCouponToggleButton.focus();
 							}
@@ -317,9 +364,10 @@
 					$( document.body ).trigger( 'applied_coupon_in_checkout', [ data.coupon_code ] );
 					$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
 				}
+				// Maybe process error
 				else if ( response.result && 'error' === response.result ) {
 					// Display new messages
-					showNotices( response.message );
+					showNotices( response.message, referenceElement );
 
 					// Unblock coupon section
 					var couponAddedSection = document.querySelector( _settings.couponAddedSectionSelector );
@@ -340,22 +388,27 @@
 	 *
 	 * @param   string  couponCode  The coupon code to be removed from the cart.
 	 */
-	_publicMethods.removeCouponCode = function( couponCode ) {
+	_publicMethods.removeCouponCode = function( couponCode, referenceElement ) {
 		// Bail if coupon code was not provided
 		if ( ! couponCode || '' == couponCode ) { return; }
 
 		clearNotices();
 
+		// Get reference id and save to reference element
+		var reference_id = Math.floor( Math.random() * 1000 );
+		if ( referenceElement ) {
+			referenceElement.setAttribute( _settings.referenceIdAttribute, reference_id );
+		}
+
 		// Block coupon section
 		var couponAddedSection = document.querySelector( _settings.couponAddedSectionSelector );
-		if ( couponAddedSection ) {
-			_publicMethods.blockUI( couponAddedSection );
-		}
+		_publicMethods.blockUI( couponAddedSection );
 
 		// Add security nonce
 		var data = {
 			security: _settings.removeCouponCodeNonce,
 			coupon_code: couponCode,
+			reference_id: reference_id,
 		}
 
 		$.ajax({
@@ -364,20 +417,27 @@
 			data:		data,
 			dataType:   'json',
 			success:	function( response ) {
+				// Get back the reference id
+				var referenceElement;
+				if ( response.reference_id ) {
+					referenceElement = document.querySelector( '[' + _settings.referenceIdAttribute + '="' + response.reference_id + '"]' );
+				}
 
+				// Maybe process success
 				if ( response.result && 'success' === response.result ) {
 					// Maybe add messages
-					if ( response.message && 'no' === _settings.suppressSuccessMessages ) {
-						showNotices( response.message );
+					if ( response.message && 'yes' !== _settings.suppressSuccessMessages ) {
+						showNotices( response.message, referenceElement );
 					}
 					
 					$( document.body ).trigger( 'wc_fragment_refresh' );
 					$( document.body ).trigger( 'removed_coupon_in_checkout', [ data.coupon_code ] );
 					$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
 				}
+				// Maybe process error
 				else if ( response.result && 'error' === response.result ) {
 					// Display new messages
-					showNotices( response.message );
+					showNotices( response.message, referenceElement );
 
 					// Unblock coupon section
 					var couponAddedSection = document.querySelector( _settings.couponAddedSectionSelector );
