@@ -163,7 +163,8 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$coupon_code_field_placeholder = apply_filters( 'fc_coupon_code_field_placeholder', __( 'Enter your code here', 'fluid-checkout' ) );
 		$coupon_code_button_label = apply_filters( 'fc_coupon_code_button_label', _x( 'Apply', 'Button label for applying coupon codes', 'fluid-checkout' ) );
 
-		$key = 'coupon_code';
+		$section_key = 'coupon_code--' . rand();
+		$field_key = 'coupon_code';
 		$coupon_code_field_args = array_merge( array(
 			'required'                   => false,
 			'fc_skip_server_validation'  => true,
@@ -178,16 +179,19 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		// Expansible section args
 		$coupon_code_expansible_args = array_merge( array(
 			'initial_state' => true === apply_filters( 'fc_coupon_code_field_initially_expanded', false ) ? 'expanded' : 'collapsed',
+			'section_attributes' => array(
+				'class' => 'fc-coupon_code__collapsible',
+			),
 		), $expansible_section_args );
 
 		// Output coupon code field and button in an expansible form section
 		$coupon_code_toggle_label = get_option( 'fc_optional_fields_link_label_lowercase', 'yes' ) === 'yes' ? strtolower( $coupon_code_field_label ) : $coupon_code_field_label;
 		/* translators: %s: Form field label */
-		$coupon_code_toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), $coupon_code_toggle_label ) );
-		FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( $key, $coupon_code_toggle_label, $coupon_code_expansible_args );
+		$coupon_code_toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$section_key, sprintf( __( 'Add %s', 'fluid-checkout' ), $coupon_code_toggle_label ) );
+		FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( $section_key, $coupon_code_toggle_label, $coupon_code_expansible_args );
 		?>
 		<div class="fc-coupon-code-section">
-			<?php woocommerce_form_field( $key, $coupon_code_field_args ); ?>
+			<?php woocommerce_form_field( $field_key, $coupon_code_field_args ); ?>
 			<button type="button" class="fc-coupon-code__apply <?php echo esc_attr( apply_filters( 'fc_coupon_code_apply_button_classes', 'button' ) ); ?>" data-apply-coupon-button><?php echo esc_html( $coupon_code_button_label ); ?></button>
 		</div>
 		<?php

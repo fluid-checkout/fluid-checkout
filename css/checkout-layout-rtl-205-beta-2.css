@@ -2294,6 +2294,10 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
   outline-offset: 1px;
 }
 
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .coupon-code-form td {
+  text-align: right;
+}
+
 @media (min-width: 1000px) {
   .fc-checkout-step[data-step-id=payment] .fc-checkout-order-review {
     display: none;

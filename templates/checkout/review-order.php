@@ -13,7 +13,7 @@
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 5.2.0
- * @fc-version 1.4.4
+ * @fc-version 2.0.5
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -73,6 +73,9 @@ defined( 'ABSPATH' ) || exit;
 				<td><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
 			</tr>
 		<?php endforeach; ?>
+
+		<?php // CHANGE: Add action after the coupon codes row ?>
+		<?php do_action( 'fc_pro_checkout_review_order_after_coupon_code' ); ?>
 
 		<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
 
