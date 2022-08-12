@@ -2,6 +2,23 @@
 // CHECKOUT COUPON CODE
 // ------------------------------------
 
+.fc-wrapper .fc-coupon-code-section__inner {
+	width: 100%;
+}
+
+.fc-wrapper .fc-coupon-code-section__message {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.fc-wrapper .fc-coupon-code-section__inner .fc-coupon-code-section {
+	margin-top: $global-spacing-extra-small;
+}
+
+
+
 .fc-wrapper .fc-coupon_code__collapsible .collapsible-content__inner {
 	position: relative;
 }

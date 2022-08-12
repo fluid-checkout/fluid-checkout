@@ -1,0 +1,22 @@
+// ------------------------------------
+// DISCOUNT SECTIONS
+// ------------------------------------
+
+.fc-wrapper .fc-discount-section {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 0 0 $global-spacing-extra-small;
+	padding: $checkout-substep-padding;
+	padding-top: $global-spacing-extra-small;
+	padding-bottom: $global-spacing-extra-small;
+	border: $coupon-code-coupon-border;
+	border-radius: $checkout-substep-border-radius;
+	border-color: $success-color;
+	line-height: 1.2;
+	
+	@media (#{$bp-smaller-than-tablet}) {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
