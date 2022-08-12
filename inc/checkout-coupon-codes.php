@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Feature for adding coupon codes or gift certificate codes to checkout
+ * Feature for adding coupon codes to checkout.
  */
 class FluidCheckout_CouponCodes extends FluidCheckout {
 
