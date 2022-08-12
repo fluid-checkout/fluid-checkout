@@ -748,6 +748,10 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
   }
 }
 
+.fc-wrapper .fc-step__substep[data-substep-id=payment] + .fc-step__substep {
+  border-bottom: solid 1px #d8d8d8;
+}
+
 .fc-wrapper .fc-step__substep[data-substep-visible=no] {
   display: none !important;
 }
