@@ -24,10 +24,10 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		// Integrated coupon code section at checkout
 		if ( 'yes' === get_option( 'fc_enable_checkout_coupon_codes', 'yes' ) ) {
-			// Checkout Coupon Notice
+			// Checkout coupon notice
 			remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 
-			// Coupon Code Substep
+			// Coupon code substep
 			add_action( 'fc_output_step_payment', array( $this, 'output_substep_coupon_codes' ), 10 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_coupon_codes_text_fragment' ), 10 );
 		}
