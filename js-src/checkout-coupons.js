@@ -40,9 +40,11 @@
 		referenceIdAttribute: 'data-reference-id',
 		expansibleCouponSectionKeyAttribute: 'data-section-key',
 
-		expansibleCouponToggleSelector: '.fc-expansible-form-section__toggle',
 		expansibleCouponContentSelector: '.fc-expansible-form-section__content',
-		expansibleCouponToggleButtonSelector: '.expansible-section__toggle-plus',
+		expansibleCouponToggleSelector: '.fc-expansible-form-section__toggle--###SECTION_KEY###',
+		expansibleCouponToggleButtonSelector: '.expansible-section__toggle-plus--###SECTION_KEY###',
+
+		section_key_placeholder:  '###SECTION_KEY###',
 
 	}
 	var _key = {
@@ -343,8 +345,8 @@
 
 							// Get section key and toggle elements
 							var section_key = expansibleCouponContent.getAttribute( _settings.expansibleCouponSectionKeyAttribute );
-							var expansibleCouponToggle = document.querySelector( _settings.expansibleCouponToggleSelector + '--' + section_key );
-							var expansibleCouponToggleButton = document.querySelector( _settings.expansibleCouponToggleButtonSelector + '--' + section_key );
+							var expansibleCouponToggle = document.querySelector( _settings.expansibleCouponToggleSelector.replace( _settings.section_key_placeholder, section_key ) );
+							var expansibleCouponToggleButton = document.querySelector( _settings.expansibleCouponToggleButtonSelector.replace( _settings.section_key_placeholder, section_key ) );
 
 							// Maybe expand coupon code toggle section
 							if ( expansibleCouponToggle ) {
