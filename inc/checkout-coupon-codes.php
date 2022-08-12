@@ -158,12 +158,18 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * @param   array  $field_args               The coupon code field arguments. Will use default values if attributes are not passed in.
 	 * @param   array  $expansible_section_args  The attributes for the coupon code expansible section. Will use default values if attributes are not passed in.
 	 */
-	public function output_substep_coupon_codes_fields( $field_args = array(), $expansible_section_args = array() ) {
+	public function output_substep_coupon_codes_fields( $field_args = array(), $expansible_section_args = array(), $output_handle = true, $section_key = null ) {
 		$coupon_code_field_label = apply_filters( 'fc_coupon_code_field_label', __( 'Coupon code', 'fluid-checkout' ) );
 		$coupon_code_field_placeholder = apply_filters( 'fc_coupon_code_field_placeholder', __( 'Enter your code here', 'fluid-checkout' ) );
 		$coupon_code_button_label = apply_filters( 'fc_coupon_code_button_label', _x( 'Apply', 'Button label for applying coupon codes', 'fluid-checkout' ) );
 
-		$section_key = 'coupon_code--' . rand();
+		// Maybe define section key
+		$section_id = 'coupon_code';
+		if ( empty( $section_key ) ) {
+			$section_key = $section_id . '--' . rand();
+		}
+
+		// Coupon code field args
 		$field_key = 'coupon_code';
 		$coupon_code_field_args = array_merge( array(
 			'required'                   => false,
@@ -184,10 +190,16 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 			),
 		), $expansible_section_args );
 
-		// Output coupon code field and button in an expansible form section
-		$coupon_code_toggle_label = get_option( 'fc_optional_fields_link_label_lowercase', 'yes' ) === 'yes' ? strtolower( $coupon_code_field_label ) : $coupon_code_field_label;
-		/* translators: %s: Form field label */
-		$coupon_code_toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$section_key, sprintf( __( 'Add %s', 'fluid-checkout' ), $coupon_code_toggle_label ) );
+		// Define toggle label
+		$coupon_code_toggle_label = null;
+		if ( $output_handle ) {
+			// Output coupon code field and button in an expansible form section
+			$coupon_code_toggle_label = 'yes' === get_option( 'fc_optional_fields_link_label_lowercase', 'yes' ) ? strtolower( $coupon_code_field_label ) : $coupon_code_field_label;
+			/* translators: %s: Form field label */
+			$coupon_code_toggle_label = apply_filters( 'fc_expansible_section_toggle_label_' . $section_id, sprintf( __( 'Add %s', 'fluid-checkout' ), $coupon_code_toggle_label ) );
+		}
+
+		// Output section
 		FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( $section_key, $coupon_code_toggle_label, $coupon_code_expansible_args );
 		?>
 		<div class="fc-coupon-code-section">

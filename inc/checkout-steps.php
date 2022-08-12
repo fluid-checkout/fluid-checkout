@@ -1751,6 +1751,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$section_toggle_attributes = array(
 			'id' => 'fc-expansible-form-section__toggle--' . $section_id_esc,
 			'class' => 'fc-expansible-form-section__toggle fc-expansible-form-section__toggle--' . $section_id_esc . ' ' . ( $initial_state === 'expanded' ? 'is-collapsed' : 'is-expanded' ), // Toggle is collapsed when the section is set to expanded
+			'data-section-key' => $section_id_esc,
 			'data-collapsible' => true,
 			'data-collapsible-content' => true,
 			'data-collapsible-initial-state' => $initial_state === 'expanded' ? 'collapsed' : 'expanded', // Toggle is collapsed when the section is set to expanded
@@ -1765,6 +1766,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$toggle_attributes = array(
 			'href' => '#fc-expansible-form-section__content--' . $section_id_esc,
 			'class' => 'expansible-section__toggle-plus expansible-section__toggle-plus--' . $section_id_esc,
+			'data-section-key' => $section_id_esc,
 			'data-collapsible-handler' => true,
 			'data-collapsible-targets' => implode( ',', array(
 				'fc-expansible-form-section__toggle--' . $section_id_esc,
@@ -1776,6 +1778,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$section_content_attributes = array(
 			'id' => 'fc-expansible-form-section__content--' . $section_id_esc,
 			'class' => 'fc-expansible-form-section__content fc-expansible-form-section__content--' . $section_id_esc . ' ' . ( $initial_state === 'expanded' ? 'is-expanded' : 'is-collapsed' ),
+			'data-section-key' => $section_id_esc,
 			'data-collapsible' => true,
 			'data-collapsible-content' => true,
 			'data-collapsible-initial-state' => $initial_state,

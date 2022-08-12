@@ -38,10 +38,11 @@
 		
 		couponCodeAttribute: 'data-coupon',
 		referenceIdAttribute: 'data-reference-id',
+		expansibleCouponSectionKeyAttribute: 'data-section-key',
 
-		expansibleCouponToggleSelector: '.fc-expansible-form-section__toggle--coupon_code',
-		expansibleCouponContentSelector: '.fc-expansible-form-section__content--coupon_code',
-		expansibleCouponToggleButtonSelector: '.expansible-section__toggle-plus--coupon_code',
+		expansibleCouponToggleSelector: '.fc-expansible-form-section__toggle',
+		expansibleCouponContentSelector: '.fc-expansible-form-section__content',
+		expansibleCouponToggleButtonSelector: '.expansible-section__toggle-plus',
 
 	}
 	var _key = {
@@ -110,8 +111,6 @@
 		// Maybe get specific messages wrapper
 		var messagesWrapper;
 		var sectionWrapper = referenceElement ? referenceElement.closest( _settings.sectionWrapperSelector ) : null;
-		console.log( referenceElement );
-		console.log( sectionWrapper );
 		if ( sectionWrapper ) {
 			messagesWrapper = sectionWrapper.querySelector( _settings.messagesWrapperSelector );
 		}
@@ -151,8 +150,6 @@
 	 */
 	var processAddCoupon = function( referenceElement ) {
 		var couponCode = '';
-
-		console.log( referenceElement );
 
 		// Try to get coupon code from attributes
 		if ( referenceElement && referenceElement.hasAttribute( _settings.couponCodeAttribute ) ) {
@@ -336,16 +333,25 @@
 					// Maybe close the coupon code field section
 					if ( window.CollapsibleBlock ) {
 
-						var expansibleCouponToggle = document.querySelector( _settings.expansibleCouponToggleSelector );
-						var expansibleCouponContent = document.querySelector( _settings.expansibleCouponContentSelector );
-						var expansibleCouponToggleButton = document.querySelector( _settings.expansibleCouponToggleButtonSelector );
+						// Get expansible content section
+						var expansibleCouponContent = referenceElement.closest( _settings.expansibleCouponContentSelector );
 
-						if ( expansibleCouponToggle && expansibleCouponContent ) {
-							// Change expanded/collapsed states for the fields and text blocks
+						// Maybe collapse/expanse sections after adding coupon
+						if ( expansibleCouponContent ) {
+							// Collapse the coupon code field content section
 							CollapsibleBlock.collapse( expansibleCouponContent );
-							CollapsibleBlock.expand( expansibleCouponToggle );
 
-							// Focus back to the add coupon code
+							// Get section key and toggle elements
+							var section_key = expansibleCouponContent.getAttribute( _settings.expansibleCouponSectionKeyAttribute );
+							var expansibleCouponToggle = document.querySelector( _settings.expansibleCouponToggleSelector + '--' + section_key );
+							var expansibleCouponToggleButton = document.querySelector( _settings.expansibleCouponToggleButtonSelector + '--' + section_key );
+
+							// Maybe expand coupon code toggle section
+							if ( expansibleCouponToggle ) {
+								CollapsibleBlock.expand( expansibleCouponToggle );
+							}
+
+							// Maybe focus back to the add coupon code button
 							if ( expansibleCouponToggleButton ) {
 								expansibleCouponToggleButton.focus();
 							}
