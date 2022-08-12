@@ -383,7 +383,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Changed the way the current step is determined, and defaults to the last step if all steps are already completed.
 * Improved: Changed login button label on global WooCommerce login form template to be consistent across checkout.
 * Improved: Use separate fragments for the order summary table on the checkout steps and sidebar sections.
-* Fixed: Checkout coupon code script not replaced completely when using coupon code features from the plugin.
+* Fixed: Refocus on focused collapsible section toggle elements when updating the checkout fragments.
+* Fixed: Checkout coupon code scripts from WooCommerce not being completely replaced when using coupon code features from the plugin.
 
 = 2.0.4 - 2022-08-02 =
 

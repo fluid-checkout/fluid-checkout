@@ -1764,6 +1764,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Toggle element attributes
 		$toggle_attributes = array(
+			'id' => 'fc-expansible-form-section__toggle-plus--' . $section_id_esc,
 			'href' => '#fc-expansible-form-section__content--' . $section_id_esc,
 			'class' => 'expansible-section__toggle-plus expansible-section__toggle-plus--' . $section_id_esc,
 			'data-section-key' => $section_id_esc,

@@ -432,6 +432,8 @@ jQuery( function( $ ) {
 			// Bail if no element to focus
 			if ( null === currentFocusedElement ) { return; }
 
+			console.log( currentFocusedElement );
+
 			requestAnimationFrame( function() {
 				var elementToFocus;
 
@@ -448,6 +450,8 @@ jQuery( function( $ ) {
 					var nameAttr = currentFocusedElement.getAttribute( 'name' );
 					elementToFocus = document.querySelector( '[name="'+nameAttr+'"]' );
 				}
+
+				console.log( elementToFocus );
 
 				// Try setting focus if element is found
 				if ( elementToFocus ) {
@@ -602,6 +606,8 @@ jQuery( function( $ ) {
 					var currentFocusedElement = document.activeElement;
 					var currentValue = document.activeElement.value;
 
+					console.log( currentFocusedElement );
+
 					// Remove focus from current element as it will be replaced
 					// This fixes an issue where `select2` fields would not work properly
 					// after checkout is updated while focus is on a `select2` field
@@ -651,6 +657,8 @@ jQuery( function( $ ) {
 						} );
 						wc_checkout_form.fragments = data.fragments;
 					}
+
+					console.log( document.activeElement );
 
 					// CHANGE: Re-set focus to the element with focus previously to updating fragments
 					wc_checkout_form.maybe_refocus_element( currentFocusedElement, currentValue );
