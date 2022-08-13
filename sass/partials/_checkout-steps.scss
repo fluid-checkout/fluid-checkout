@@ -36,6 +36,9 @@
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
 }
+.fc-wrapper .fc-step__substep[data-substep-id="payment"] + .fc-step__substep {
+	border-bottom: solid remsize( .1rem ) $border-color;
+}
 
 .fc-wrapper .fc-step__substep[data-substep-visible="no"] {
 	display: none !important; // Needed to override theme styles set with `!important`
@@ -277,8 +280,12 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 // ------------------------------------
 // CHECKOUT SUB-STEP EDIT
 // ------------------------------------
-.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-edit {
+.fc-wrapper .fc-step__substep-edit {
 	display: none;
+	position: absolute;
+	top: $checkout-substep-action-button-top;
+	#{ $alignment-left }: auto;
+	#{ $alignment-right }: $checkout-substep-action-button-right;
 	margin: $checkout-substep-action-button-margin;
 	padding: $checkout-substep-action-button-padding;
 	font-size: $checkout-substep-action-button-font-size;
@@ -309,14 +316,7 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 	}
 }
 
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit {
-	position: absolute;
-	top: $checkout-substep-action-button-top;
-	#{ $alignment-left }: auto;
-	#{ $alignment-right }: $checkout-substep-action-button-right;
-	display: inline-block;
-}
-
+.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit,
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-save {
 	display: inline-block;
 }

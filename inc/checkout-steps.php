@@ -14,7 +14,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *      ['step_title']                   string      The checkout step title visible to the user.
 	 *      ['priority']                     int         Defines the order the checkout step will be displayed.
 	 *      ['next_step_button_classes']     array       Array of CSS classes to add to the "Next step" button.
-	 *      ['render_next_step_button']      bool        Whether to display a "Next Step" button at the end of the step. Defaults to `true`.
 	 *      ['render_callback']              callable    Function name or callable array to display the contents of the checkout step.
 	 *      ['render_condition_callback']    callable    (optional) Function name or callable array to determine if the step should be rendered. If a callback is not provided the checkout step will be displayed.
 	 *      ['is_complete_callback']         callable    (optional) Function name or callable array to determine if all required date for the step has been provided. Defaults to `false`, considering the step as 'incomplete' if a callback is not provided.
@@ -108,6 +107,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		add_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
 		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
+		add_action( 'woocommerce_checkout_before_customer_details', array( $this, 'output_substep_contact_login_link_section' ), 1 );
 		add_action( 'wp_footer', array( $this, 'output_login_form_modal' ), 10 );
 		add_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
 		add_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
@@ -159,6 +159,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_action( 'fc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
 		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
+		add_filter( 'fc_substep_payment_method_text_lines', array( $this, 'add_substep_text_lines_payment_method' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_payment_method_text_fragment' ), 10 );
 
 		// Formatted Address
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
@@ -169,6 +171,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_order_review_background_inline_styles' ), 30 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'replace_order_summary_table_fragments' ), 10 );
 
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
@@ -226,9 +229,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_sidebar' ), 10 );
 		}
 		else if ( 'below_order_summary' === $place_order_position ) {
+			remove_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
+			remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'replace_order_summary_table_fragments' ), 10 );
 			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_sidebar_main' ), 1 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_sidebar_main' ), 10 );
-			remove_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
 		}
 		// Defaults to `below_payment_section`
 		else {
@@ -837,6 +841,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$complete_steps = array();
 
 		for ( $step_index = 0; $step_index < count( $_checkout_steps ); $step_index++ ) {
+			// Get last step index
+			$last_step = $this->get_last_step();
+			$last_step_index = array_keys( $last_step )[0];
+
+			// Maybe skip checking last step
+			if ( $step_index === $last_step_index ) { continue; }
+
 			$step_args = $_checkout_steps[ $step_index ];
 			$step_id = $step_args[ 'step_id' ];
 			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
@@ -938,22 +949,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  array  An array with only one value, the first checkout step which is considered incomplete, for `false` if not step is found. The index is preserved from the registered checkout steps list.
 	 */
 	public function get_current_step() {
-		$_checkout_steps = $this->get_checkout_steps();
+		// Get incomplete steps
+		$incomplete_steps = $this->get_incomplete_steps();
 
-		for ( $step_index = 0; $step_index < count( $_checkout_steps ); $step_index++ ) {
-			$step_args = $_checkout_steps[ $step_index ];
-			$step_id = $step_args[ 'step_id' ];
-			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
-
-			// Return first incomplete step
-			if ( $is_complete_callback && is_callable( $is_complete_callback ) && ! call_user_func( $is_complete_callback ) ) {
-				return array( $step_index => $step_args );
-			}
+		// Try to get the first incomplete step
+		if ( is_array( $incomplete_steps ) && count( $incomplete_steps ) > 0 ) {
+			$current_step_index = array_keys( $incomplete_steps )[ 0 ];
+			return array( $current_step_index => $incomplete_steps[ $current_step_index ] );
 		}
 
-		// Defaults to the first step
+		// Get all steps
+		$_checkout_steps = $this->get_checkout_steps();
+
+		// Defaults to the last step
 		if ( is_array( $_checkout_steps ) && count( $_checkout_steps ) > 0 ) {
-			return array( 0 => $_checkout_steps[ 0 ] );
+			$checkout_steps_keys = array_keys( $_checkout_steps );
+			$current_step_index = end( $checkout_steps_keys );
+			return array( $current_step_index => $_checkout_steps[ $current_step_index ] );
 		}
 
 		return false;
@@ -1119,9 +1131,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$step_args[ 'step_id' ] = sanitize_title( $step_args[ 'step_id' ] );
 		$step_id = $step_args[ 'step_id' ];
 
-		// Sanitize value for `render_next_step_button` flag and set default value if needed
-		$step_args[ 'render_next_step_button' ] = array_key_exists( 'render_next_step_button', $step_args ) && $step_args[ 'render_next_step_button' ] === false ? false : true;
-
 		// Sanitize "next step" button classes
 		$step_args[ 'next_step_button_classes' ] = array_key_exists( 'next_step_button_classes', $step_args ) && is_array( $step_args[ 'next_step_button_classes' ] ) ? $step_args[ 'next_step_button_classes' ] : array();
 		foreach ( $step_args[ 'next_step_button_classes' ] as $key => $class ) {
@@ -1230,7 +1239,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'priority' => 100,
 			'render_callback' => array( $this, 'output_step_payment' ),
 			'is_complete_callback' => '__return_false', // Payment step is only complete when the order has been placed and the payment has been accepted, during the checkout process it will always be considered 'incomplete'.
-			'render_next_step_button' => false,
 		) );
 
 		do_action( 'fc_register_steps' );
@@ -1488,20 +1496,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   array  $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
 	 */
 	public function output_step_end_tag( $step_args, $step_index ) {
-		// Maybe output the "Next step" button
-		if ( $this->is_checkout_layout_multistep() && array_key_exists( 'render_next_step_button', $step_args ) && $step_args[ 'render_next_step_button' ] ) :
-			$button_label = apply_filters( 'fc_next_step_button_label', $this->get_next_step_button_label( $step_args[ 'step_id' ] ), $step_args[ 'step_id' ] );
+		if ( $this->is_checkout_layout_multistep() ) :
+			// Get last step index
+			$last_step = $this->get_last_step();
+			$last_step_index = array_keys( $last_step )[0];
 
-			$button_attributes = array(
-				'class' => implode( ' ', array_merge( array( 'fc-step__next-step' ), apply_filters( 'fc_next_step_button_classes', array( 'button' ) ), $step_args[ 'next_step_button_classes' ] ) ),
-				'data-step-next' => true,
-			);
-			$button_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $button_attributes ), $button_attributes ) );
-			?>
-			<div class="fc-step__actions">
-				<button type="button" <?php echo $button_attributes_str; // WPCS: XSS ok. ?>><?php echo esc_html( $button_label ); ?></button>
-			</div>
-			<?php
+			// Maybe output next step button if not on last step
+			if ( $step_index !== $last_step_index ) :
+				// Maybe output the "Next step" button
+				$button_label = apply_filters( 'fc_next_step_button_label', $this->get_next_step_button_label( $step_args[ 'step_id' ] ), $step_args[ 'step_id' ] );
+
+				$button_attributes = array(
+					'class' => implode( ' ', array_merge( array( 'fc-step__next-step' ), apply_filters( 'fc_next_step_button_classes', array( 'button' ) ), $step_args[ 'next_step_button_classes' ] ) ),
+					'data-step-next' => true,
+				);
+				$button_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $button_attributes ), $button_attributes ) );
+				?>
+				<div class="fc-step__actions">
+					<button type="button" <?php echo $button_attributes_str; // WPCS: XSS ok. ?>><?php echo esc_html( $button_label ); ?></button>
+				</div>
+				<?php
+			endif;
 		endif;
 
 		echo '</section>';
@@ -1736,6 +1751,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$section_toggle_attributes = array(
 			'id' => 'fc-expansible-form-section__toggle--' . $section_id_esc,
 			'class' => 'fc-expansible-form-section__toggle fc-expansible-form-section__toggle--' . $section_id_esc . ' ' . ( $initial_state === 'expanded' ? 'is-collapsed' : 'is-expanded' ), // Toggle is collapsed when the section is set to expanded
+			'data-section-key' => $section_id_esc,
 			'data-collapsible' => true,
 			'data-collapsible-content' => true,
 			'data-collapsible-initial-state' => $initial_state === 'expanded' ? 'collapsed' : 'expanded', // Toggle is collapsed when the section is set to expanded
@@ -1748,8 +1764,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Toggle element attributes
 		$toggle_attributes = array(
+			'id' => 'fc-expansible-form-section__toggle-plus--' . $section_id_esc,
 			'href' => '#fc-expansible-form-section__content--' . $section_id_esc,
 			'class' => 'expansible-section__toggle-plus expansible-section__toggle-plus--' . $section_id_esc,
+			'data-section-key' => $section_id_esc,
 			'data-collapsible-handler' => true,
 			'data-collapsible-targets' => implode( ',', array(
 				'fc-expansible-form-section__toggle--' . $section_id_esc,
@@ -1761,6 +1779,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$section_content_attributes = array(
 			'id' => 'fc-expansible-form-section__content--' . $section_id_esc,
 			'class' => 'fc-expansible-form-section__content fc-expansible-form-section__content--' . $section_id_esc . ' ' . ( $initial_state === 'expanded' ? 'is-expanded' : 'is-collapsed' ),
+			'data-section-key' => $section_id_esc,
 			'data-collapsible' => true,
 			'data-collapsible-content' => true,
 			'data-collapsible-initial-state' => $initial_state,
@@ -1834,7 +1853,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
-		$this->output_substep_contact_login_link_section();
 		$this->output_step_contact_fields();
 		$this->output_substep_fields_end_tag();
 
@@ -1976,12 +1994,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Return default list of checkout fields for contact step.
+	 */
+	public function get_default_contact_step_display_field_ids() {
+		return array( 'billing_email' );
+	}
+
+	/**
 	 * Return list of checkout fields for contact step.
 	 */
 	public function get_contact_step_display_field_ids() {
-		return array_unique( apply_filters( 'fc_checkout_contact_step_field_ids', array(
-			'billing_email',
-		) ) );
+		return array_unique( apply_filters( 'fc_checkout_contact_step_field_ids', $this->get_default_contact_step_display_field_ids() ) );
 	}
 
 
@@ -3579,6 +3602,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_payment_fields();
 		$this->output_substep_fields_end_tag();
 
+		// Only output substep text format for multi-step checkout layout
+		if ( $this->is_checkout_layout_multistep() ) {
+			$this->output_substep_text_start_tag( $step_id, $substep_id );
+			$this->output_substep_text_payment_method();
+			$this->output_substep_text_end_tag();
+		}
+
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, false );
 	}
 
@@ -3594,6 +3624,67 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'checkout'          => WC()->checkout(),
 			)
 		);
+	}
+
+
+
+	/**
+	 * Add the payment method substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_payment_method( $review_text_lines = array() ) {
+		if ( WC()->cart->needs_payment() ) {
+			// Get chosen and available payment gateways
+			$available_gateways = WC()->payment_gateways()->get_available_payment_gateways();
+			$chosen_payment_method = WC()->session->get( 'chosen_payment_method' );
+
+			// Make sure we have an array of chosen payment methods
+			if ( ! is_array( $chosen_payment_method ) ) { $chosen_payment_method = array( $chosen_payment_method ); }
+
+			// Add a review text line for each chosen method
+			foreach ( $chosen_payment_method as $chosen_method_key ) {
+				// Maybe skip if gateway was not found
+				if ( ! array_key_exists( $chosen_method_key, $available_gateways ) ) { continue; }
+
+				// Get gateway
+				$gateway = $available_gateways[ $chosen_method_key ];
+
+				// Get review text line
+				$payment_method_review_text = '<span class="payment-method-icon">' . $gateway->get_icon() . '</span>' . '<span class="payment-method-title">' . $gateway->get_title() . '</span>';
+				$payment_method_review_text = apply_filters( 'fc_payment_method_review_text_' . $chosen_method_key, $payment_method_review_text, $gateway );
+
+				// Add review text line
+				$review_text_lines[] = $payment_method_review_text;
+			}
+		}
+
+		return $review_text_lines;
+	}
+
+	/**
+	 * Get payment method address substep review text.
+	 */
+	public function get_substep_text_payment_method() {
+		return $this->get_substep_review_text( 'payment_method' );
+	}
+
+	/**
+	 * Add payment method address substep review text as checkout fragment.
+	 *
+	 * @param   array  $fragments  Checkout fragments.
+	 */
+	public function add_payment_method_text_fragment( $fragments ) {
+		$html = $this->get_substep_text_payment_method();
+		$fragments['.fc-step__substep-text-content--payment_method'] = $html;
+		return $fragments;
+	}
+
+	/**
+	 * Output payment method address substep review text.
+	 */
+	public function output_substep_text_payment_method() {
+		echo $this->get_substep_text_payment_method();
 	}
 
 
@@ -3974,6 +4065,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$custom_css = "body div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner { background-color: $color; }";
 		wp_add_inline_style( 'fc-checkout-layout', $custom_css );
+	}
+
+
+
+	/**
+	 * Replace the order summary table fragment with specific fragments main and sidebar order summary sections.
+	 *
+	 * @param   array  $fragments  Checkout fragments.
+	 */
+	public function replace_order_summary_table_fragments( $fragments ) {
+		// Remove original
+		unset( $fragments['.woocommerce-checkout-review-order-table'] );
+
+		// Get order review fragment for main section
+		ob_start();
+		woocommerce_order_review();
+		$html = ob_get_clean();
+		$fragments['.fc-inside .woocommerce-checkout-review-order-table'] = $html;
+
+		// Get order review fragment for sidebar.
+		ob_start();
+		woocommerce_order_review();
+		$html = ob_get_clean();
+		$fragments['.fc-sidebar .woocommerce-checkout-review-order-table'] = $html;
+
+		return $fragments;
 	}
 
 
