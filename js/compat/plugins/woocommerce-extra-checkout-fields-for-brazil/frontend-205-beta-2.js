@@ -159,8 +159,6 @@ jQuery( function( $ ) {
 						}
 					};
 
-			console.log( $element );
-
 			$element.mask(MaskBehavior, maskOptions);
 		},
 
