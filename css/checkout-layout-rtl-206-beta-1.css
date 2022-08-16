@@ -2357,7 +2357,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 
 .has-flyout.has-flyout--open-fc-checkout-order-review .flyout-overlay {
-  z-index: 199;
+  display: none;
 }
 
 div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
