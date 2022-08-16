@@ -375,6 +375,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Order summary background color and spacing styles.
+* Fixed: Mobile order summary "greyed out" when clicking the cart link on the site header in some themes.
 
 = 2.0.5 - 2022-08-13 =
 
