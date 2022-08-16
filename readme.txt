@@ -372,6 +372,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Order summary background color and spacing styles.
+
 = 2.0.5 - 2022-08-13 =
 
 * Bump tested up to WooCommerce 6.8

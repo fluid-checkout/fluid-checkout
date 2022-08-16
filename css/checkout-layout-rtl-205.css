@@ -281,6 +281,11 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
 .fc-sidebar {
   position: static;
 }
+@media (min-width: 750px) and (max-width: 999px) {
+  .fc-sidebar {
+    margin-top: 20px;
+  }
+}
 @media (min-width: 1000px) {
   .fc-sidebar {
     z-index: 2;
@@ -2357,12 +2362,15 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 
 div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
   height: auto;
+  margin: 0 -20px;
+  padding: 12px 20px 0;
+  width: calc( 100% + 40px );
 }
 @media (min-width: 1000px) {
   div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
     margin: 0 0 20px;
-    padding: 12px 20px 0;
-    max-width: none;
+    width: 100%;
+    max-width: 100%;
     border: solid 1px #d8d8d8;
     border-radius: 8px;
     background-color: #fff;
@@ -2376,36 +2384,13 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 
 .fc-wrapper .fc-checkout-order-review[data-flyout].is-open .fc-checkout-order-review__inner {
   height: 100%;
-  max-width: 100%;
-  padding: 20px 20px 80px;
-}
-@media (min-width: 750px) {
-  .fc-wrapper .fc-checkout-order-review[data-flyout].is-open .fc-checkout-order-review__inner {
-    max-width: 100%;
-  }
-}
-@media (min-width: 750px) {
-  .fc-wrapper .fc-checkout-order-review[data-flyout].is-open .fc-checkout-order-review__inner {
-    padding: 20px 30px 80px;
-  }
+  width: 100%;
+  margin: 0;
 }
 
 body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review {
   display: block;
-  margin-right: -20px;
-  margin-left: -20px;
   padding: 0;
-}
-@media (max-width: 749px) {
-  body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review {
-    border-bottom: solid 1px #d8d8d8;
-  }
-}
-@media (min-width: 750px) {
-  body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review {
-    margin-right: 0;
-    margin-left: 0;
-  }
 }
 
 body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
@@ -2414,7 +2399,6 @@ body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review .fc-chec
 }
 @media (max-width: 749px) {
   body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
-    padding-top: 20px;
     padding-bottom: 20px;
     padding-right: 20px;
     padding-left: 20px;
@@ -2424,7 +2408,8 @@ body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review .fc-chec
   body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
     margin: 0 0 20px;
     padding: 12px 20px 0;
-    max-width: none;
+    width: 100%;
+    max-width: 100%;
     border: solid 1px #d8d8d8;
     border-radius: 8px;
     background-color: #fff;
