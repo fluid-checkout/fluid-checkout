@@ -8,10 +8,30 @@
 
 .fc-wrapper .fc-coupon-code-section__message {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
+
+	@media (#{$bp-larger-than-tablet}) {
+		flex-direction: row;
+	}
 }
+
+.fc-wrapper .fc-coupon-code-section__message-text {
+	@media (#{$bp-smaller-than-tablet}) {
+		margin-bottom: $global-spacing-extra-small;
+	}
+}
+
+.fc-wrapper .fc-coupon-code-section__message .button {
+	@media (#{$bp-smaller-than-tablet}) {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+
 
 .fc-wrapper .fc-coupon-code-section__inner .fc-coupon-code-section {
 	margin-top: $global-spacing-extra-small;

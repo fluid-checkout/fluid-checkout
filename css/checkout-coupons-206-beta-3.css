@@ -4,9 +4,28 @@
 
 .fc-wrapper .fc-coupon-code-section__message {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+@media (min-width: 750px) {
+  .fc-wrapper .fc-coupon-code-section__message {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 749px) {
+  .fc-wrapper .fc-coupon-code-section__message-text {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 749px) {
+  .fc-wrapper .fc-coupon-code-section__message .button {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .fc-wrapper .fc-coupon-code-section__inner .fc-coupon-code-section {
