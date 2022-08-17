@@ -2,6 +2,12 @@ body.theme-Avada .fusion-header-wrapper {
   z-index: 2000;
 }
 
+@media (max-width: 749px) {
+  html:not(.avada-has-site-width-percent) body.theme-Avada #main {
+    padding: 60px 20px 0;
+  }
+}
+
 body.theme-Avada.woocommerce-checkout #wrapper div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
   font-size: 15px;
 }
