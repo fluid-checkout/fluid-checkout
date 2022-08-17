@@ -1,3 +1,7 @@
+body.theme-Avada .fusion-header-wrapper {
+  z-index: 2000;
+}
+
 body.theme-Avada.woocommerce-checkout #wrapper div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
   font-size: 15px;
 }

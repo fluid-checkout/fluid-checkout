@@ -155,8 +155,10 @@ body.has-flyout--open {
 
 .has-flyout--open .flyout-overlay {
   left: 0;
+  z-index: 4999;
 }
 
 .has-flyout [data-flyout].is-activated.is-open {
   left: 0;
+  z-index: 5000;
 }
