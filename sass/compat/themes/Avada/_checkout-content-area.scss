@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+html:not( .avada-has-site-width-percent ) body#{ $_body-theme-selector } #main {
+	// padding
+	@media (#{$bp-smaller-than-tablet}) { padding: $checkout-header-height $container-spacing-mobile 0; }
+}

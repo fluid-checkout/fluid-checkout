@@ -375,6 +375,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: New filter `fc_step_title_<substep_id>` to allow changing the titles of each step and the corresponding labels for the "Proceed to <step>" buttons.
+* Improved: Compatibility with theme Avada.
 * Fixed: Order summary background color and spacing styles.
 * Fixed: Mobile order summary "greyed out" when clicking the cart link on the site header in some themes.
 
