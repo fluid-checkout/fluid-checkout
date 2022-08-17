@@ -1,9 +1,23 @@
+body.theme-Avada.woocommerce-checkout #wrapper div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
+  font-size: 15px;
+}
+@media (min-width: 1000px) {
+  body.theme-Avada.woocommerce-checkout #wrapper div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
+    font-size: 15px;
+  }
+}
+
 body.theme-Avada.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
   border: 0;
 }
 
 body.theme-Avada .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label {
   text-align: left;
+}
+
+body.theme-Avada .fc-wrapper .payment_box > p:first-child {
+  -webkit-margin-before: 0;
+  margin-block-start: 0;
 }
 
 body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
@@ -14,6 +28,11 @@ body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class
 }
 body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection:after {
   right: 50px;
+}
+
+body.theme-Avada.woocommerce-checkout #wrapper div.woocommerce .fc-wrapper .fc-checkout-order-review-title {
+  padding-top: 5px;
+  font-size: 15px;
 }
 
 body.theme-Avada div.woocommerce form.woocommerce-checkout .fc-wrapper #order_review {
