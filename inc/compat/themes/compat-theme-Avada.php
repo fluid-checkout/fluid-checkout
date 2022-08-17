@@ -24,6 +24,10 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false' );
+
+		// Page header
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 	}
 
 	/**
@@ -44,6 +48,37 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 			remove_action( 'woocommerce_checkout_billing', array( $avada_woocommerce, 'checkout_billing' ), 20 );
 			remove_action( 'woocommerce_checkout_shipping', array( $avada_woocommerce, 'checkout_shipping' ), 20 );
 		}
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if Avada class and settings object not available
+		if ( ! function_exists( 'Avada' ) || ! Avada()->settings ) { return $attributes; }
+
+		// Bail if using the plugin's header and footer
+		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+
+		// Get header style
+		$header_style = Avada()->settings->get( 'header_layout' );
+		
+		// Define relative element based on the header style
+		switch ( $header_style ) {
+			case 'v4':
+			case 'v5':
+				$attributes['data-sticky-relative-to'] =  '.fusion-is-sticky .fusion-secondary-main-menu';
+				break;
+			default:
+				$attributes['data-sticky-relative-to'] = '.fusion-is-sticky .fusion-header';
+				break;
+		}
+
+		return $attributes;
 	}
 
 }
