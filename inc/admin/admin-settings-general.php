@@ -313,7 +313,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Coupon codes', 'fluid-checkout' ),
-						'desc'              => __( 'Show coupon codes as a substep of the payment step', 'fluid-checkout' ),
+						'desc'              => __( 'Enable integrated coupon code section', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_coupon_codes',
 						'default'           => 'yes',
@@ -324,6 +324,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 					array(
 						'desc'              => __( 'Display the coupon codes section title', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Only applicable when coupon code is displayed as a separate section on the checkout or cart pages.', 'fluid-checkout-pro' ),
 						'id'                => 'fc_display_coupon_code_section_title',
 						'type'              => 'checkbox',
 						'default'           => 'no',
