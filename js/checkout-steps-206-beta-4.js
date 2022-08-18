@@ -42,6 +42,8 @@
 		nextStepButtonSelector: '[data-step-next]',
 		focusableElementsSelector: 'a[role="button"], a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), details, summary, iframe, object, embed, [contenteditable] [tabindex]:not([tabindex="-1"])',
 
+		fieldSubmitFormSelector: 'input[type="text"], input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="radio"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"]',
+
 		substepSelector: '.fc-step__substep',
 		substepTextContentSelector: '.fc-step__substep-text-content',
 		substepFieldsSelector: '.fc-step__substep-fields',
@@ -653,10 +655,18 @@
 		// Should do nothing if the default action has been cancelled
 		if ( e.defaultPrevented ) { return; }
 
-		// ENTER or SPACE on handler element
+		// ENTER or SPACE on handler elements
 		if ( ( e.key == _key.ENTER || e.key == _key.SPACE ) && ( e.target.closest( _settings.substepEditButtonSelector ) || e.target.closest( _settings.substepSaveButtonSelector ) ) ) {
 			// Simulate click
 			handleClick( e );
+		}
+		else if ( e.key == _key.ENTER && e.target.closest( _settings.fieldSubmitFormSelector ) ) {
+			e.preventDefault();
+			// Maybe validate field
+			if ( window.CheckoutValidation ) {
+				var field = e.target.closest( _settings.fieldSubmitFormSelector );
+				CheckoutValidation.validateField( field );
+			}
 		}
 	};
 

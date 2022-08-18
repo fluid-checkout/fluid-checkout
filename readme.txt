@@ -378,6 +378,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with theme Avada.
 * Fixed: Order summary background color and spacing styles.
 * Fixed: Mobile order summary "greyed out" when clicking the cart link on the site header in some themes.
+* Fixed: Prevent checkout form submit, save substep, or try to advance to next step when pressing `ENTER` on some form fields. Instead, validate the field currently in focus.
 
 = 2.0.5 - 2022-08-13 =
 
