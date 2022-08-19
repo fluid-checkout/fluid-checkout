@@ -394,6 +394,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Use separate fragments for the order summary table on the checkout steps and sidebar sections.
 * Fixed: Refocus on focused collapsible section toggle elements when updating the checkout fragments.
 * Fixed: Checkout coupon code scripts from WooCommerce not being completely replaced when using coupon code features from the plugin.
+* Fixed: Set scroll position to the top of the last completed step after moving to the next step on mobile.
 
 = 2.0.4 - 2022-08-02 =
 

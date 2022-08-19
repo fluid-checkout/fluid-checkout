@@ -426,14 +426,30 @@
 			}
 		}
 
+		// Maybe set focusElement to the first focusable element that is visible
+		var focusElement = null;
+		var focusableElements = Array.from( getFocusableElements( nextStepElement ) );
+		for ( var i = 0; i < focusableElements.length; i++ ) {
+			var focusableElement = focusableElements[i];
+			if ( isVisible( focusableElement ) ) {
+				focusElement = focusableElement;
+				break;
+			}
+		}
+
+		// Set focus
+		if ( focusElement ) {
+			focusElement.focus();
+		}
+
 		// Scroll to the top of the collapsed step
 		var stepElementOffset = getOffsetTop( stepElement ) + ( _settings.scrollOffset * -1 ) + ( stickyElementsOffset * -1 );
-		requestAnimationFrame( function() {
+		window.setTimeout( function() {
 			window.scrollTo( {
 				top: stepElementOffset,
 				behavior: _settings.scrollBehavior,
 			} );
-		} );
+		}, 50 );
 	}
 
 
@@ -501,22 +517,6 @@
 
 		// Change scroll position after moving to next step
 		scrollAfterStepChange( stepElement, nextStepElement );
-
-		// Maybe set focusElement to the first focusable element that is visible
-		var focusElement = null;
-		var focusableElements = Array.from( getFocusableElements( nextStepElement ) );
-		for ( var i = 0; i < focusableElements.length; i++ ) {
-			var focusableElement = focusableElements[i];
-			if ( isVisible( focusableElement ) ) {
-				focusElement = focusableElement;
-				break;
-			}
-		}
-
-		// Set focus
-		if ( focusElement ) {
-			focusElement.focus();
-		}
 
 		// Trigger update checkout
 		if ( _hasJQuery ) {
