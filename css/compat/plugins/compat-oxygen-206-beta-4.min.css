@@ -1,9 +1,1 @@
-.oxy-woo-checkout .fc-wrapper .fc-inside div.place-order {
-  padding: 20px 20px;
-}
-@media (min-width: 1000px) {
-  .oxy-woo-checkout .fc-wrapper .fc-inside div.place-order {
-    padding: 20px 20px;
-  }
-}
-/*# sourceMappingURL=maps/compat-oxygen-206-beta-4.min.css.map */
+.oxy-woo-checkout .fc-wrapper .fc-inside div.place-order{padding:20px}@media (min-width:1000px){.oxy-woo-checkout .fc-wrapper .fc-inside div.place-order{padding:20px}}
