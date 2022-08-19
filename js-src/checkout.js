@@ -27,6 +27,8 @@ jQuery( function( $ ) {
 		checkoutUpdateFieldsSelector: '.address-field input.input-text, .update_totals_on_change input.input-text',
 		checkoutUpdateBeforeUnload: 'yes',
 
+		focusedFieldSkipFragmentReplaceSelector: 'input[type="text"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"], select, textarea, .fc-select2-field',
+
 		phoneFieldSelector: 'input[type="tel"], [data-phone-field], input.js-phone-field, .js-phone-field input',
 	};
 
@@ -450,7 +452,7 @@ jQuery( function( $ ) {
 				}
 
 				// Try setting focus if element is found
-				if ( elementToFocus ) {
+				if ( elementToFocus && elementToFocus !== currentFocusedElement ) {
 					elementToFocus.focus();
 
 					// Try to set current value to the focused element
@@ -602,14 +604,14 @@ jQuery( function( $ ) {
 					var currentFocusedElement = document.activeElement;
 					var currentValue = document.activeElement.value;
 
-					// Remove focus from current element as it will be replaced
-					// This fixes an issue where `select2` fields would not work properly
-					// after checkout is updated while focus is on a `select2` field
-					if ( currentFocusedElement ) { currentFocusedElement.blur(); }
-
 					// Maybe set current element with focus to the form row for `select2` fields
 					var currentFocusedFormRow = currentFocusedElement.closest( '.fc-select2-field' );
 					if ( currentFocusedFormRow ) {
+						// Remove focus from current element as it will be replaced
+						// This fixes an issue where `select2` fields would not work properly
+						// after checkout is updated while focus is on a `select2` field
+						if ( currentFocusedElement ) { currentFocusedElement.blur(); }
+
 						currentFocusedElement = currentFocusedFormRow;
 					}
 					// CHANGE: END - Get current element with focus, will re-set focus after updating the fragments
@@ -643,10 +645,18 @@ jQuery( function( $ ) {
 						// CHANGE: END - Try to remove intl-tel-input components from existing fields before replacing fragments
 
 						$.each( data.fragments, function ( key, value ) {
+							// CHANGE: Maybe set to skip fragment with the focus within it. This avoids unexpected closing of mobile keyboard and lost of focus when updating fragments.
+							var fragmentToReplace = document.querySelector( key );
+							var skipReplace = false;
+							if ( fragmentToReplace && currentFocusedElement.closest( key ) && currentFocusedElement.closest( _settings.focusedFieldSkipFragmentReplaceSelector ) ) {
+								skipReplace = true;
+							}
+							
 							// CHANGE: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM
-							if ( ! wc_checkout_form.fragments || wc_checkout_form.fragments[ key ] !== value || ( value && -1 !== value.toString().indexOf( 'fc-fragment-always-replace' ) ) ) {
+							if ( ! skipReplace && ( ! wc_checkout_form.fragments || wc_checkout_form.fragments[ key ] !== value || ( value && -1 !== value.toString().indexOf( 'fc-fragment-always-replace' ) ) ) ) {
 								$( key ).replaceWith( value );
 							}
+
 							$( key ).unblock();
 						} );
 						wc_checkout_form.fragments = data.fragments;

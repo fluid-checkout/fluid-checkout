@@ -1824,15 +1824,15 @@ div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form .form-row.form-row-last {
   clear: left;
   float: none;
-  width: 100%;
+  width: 100% !important;
 }
-@media (min-width: 750px) {
+@media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form .form-row.form-row-last {
     clear: none;
     float: left;
-    width: 48%;
+    width: 48% !important;
   }
 }
 
@@ -1840,7 +1840,7 @@ div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-wide {
   clear: left;
 }
-@media (min-width: 750px) {
+@media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-wide {
     clear: left;
@@ -1848,24 +1848,24 @@ div.woocommerce form .form-row.form-row-wide {
 }
 
 div.woocommerce form .form-row.form-row-one-third {
-  width: 100%;
+  width: 100% !important;
 }
-@media (min-width: 750px) {
+@media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-one-third {
     width: 30.666%;
   }
 }
 
 div.woocommerce form .form-row.form-row-two-thirds {
-  width: 100%;
+  width: 100% !important;
 }
-@media (min-width: 750px) {
+@media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-two-thirds {
     width: 65.33%;
   }
 }
 
-@media (min-width: 750px) {
+@media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form #payment .form-row.form-row-first,
