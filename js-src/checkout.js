@@ -27,6 +27,8 @@ jQuery( function( $ ) {
 		checkoutUpdateFieldsSelector: '.address-field input.input-text, .update_totals_on_change input.input-text',
 		checkoutUpdateBeforeUnload: 'yes',
 
+		focusedFieldSkipFragmentReplaceSelector: 'input[type="text"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"], select, textarea, .fc-select2-field',
+
 		phoneFieldSelector: 'input[type="tel"], [data-phone-field], input.js-phone-field, .js-phone-field input',
 	};
 
@@ -646,7 +648,7 @@ jQuery( function( $ ) {
 							// CHANGE: Maybe set to skip fragment with the focus within it. This avoids unexpected closing of mobile keyboard and lost of focus when updating fragments.
 							var fragmentToReplace = document.querySelector( key );
 							var skipReplace = false;
-							if ( fragmentToReplace && currentFocusedElement.closest( key ) ) {
+							if ( fragmentToReplace && currentFocusedElement.closest( key ) && currentFocusedElement.closest( _settings.focusedFieldSkipFragmentReplaceSelector ) ) {
 								skipReplace = true;
 							}
 							
