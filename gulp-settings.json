@@ -4,6 +4,12 @@
 		[ "./js-src/**/*.js", [ "build-js" ] ]
 	],
 
+	"browserSyncWatch": [
+		"./css/**/*.min.css",
+		"./js/**/*.min.js",
+		"./**/*.php"
+	],
+
 	"changelogFile": "./readme.txt",
 
 	"sassSources": {
