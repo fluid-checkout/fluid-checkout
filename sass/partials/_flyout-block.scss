@@ -1,5 +1,5 @@
 // ------------------------------------
-// CHECKOUT LOGIN
+// FLYOUT BLOCK
 // ------------------------------------
 
 [data-flyout-content] {
@@ -37,8 +37,10 @@
 
 .has-flyout--open .flyout-overlay {
 	#{ $alignment-left }: 0;
+	z-index: z( 'modal' ) - 1;
 }
 
-.has-flyout [data-flyout].is-activated.is-open{
+.has-flyout [data-flyout].is-activated.is-open {
 	#{ $alignment-left }: 0;
+	z-index: z( 'modal' );
 }

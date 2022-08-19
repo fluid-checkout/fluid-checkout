@@ -1205,7 +1205,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// CONTACT
 		$this->register_checkout_step( array(
 			'step_id' => 'contact',
-			'step_title' => _x( 'Contact', 'Checkout step title', 'fluid-checkout' ),
+			'step_title' => apply_filters( 'fc_step_title_contact', _x( 'Contact', 'Checkout step title', 'fluid-checkout' ) ),
 			'priority' => 10,
 			'render_callback' => array( $this, 'output_step_contact' ),
 			'is_complete_callback' => array( $this, 'is_step_complete_contact' ),
@@ -1215,7 +1215,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( WC()->cart->needs_shipping() ) {
 			$this->register_checkout_step( array(
 				'step_id' => 'shipping',
-				'step_title' => _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ),
+				'step_title' => apply_filters( 'fc_step_title_shipping', _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ) ),
 				'priority' => 20,
 				'render_callback' => array( $this, 'output_step_shipping' ),
 				'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
@@ -1226,7 +1226,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// BILLING
 		$this->register_checkout_step( array(
 			'step_id' => 'billing',
-			'step_title' => _x( 'Billing', 'Checkout step title', 'fluid-checkout' ),
+			'step_title' => apply_filters( 'fc_step_title_billing', _x( 'Billing', 'Checkout step title', 'fluid-checkout' ) ),
 			'priority' => 30,
 			'render_callback' => array( $this, 'output_step_billing' ),
 			'is_complete_callback' => array( $this, 'is_step_complete_billing' ),
@@ -1235,7 +1235,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// PAYMENT
 		$this->register_checkout_step( array(
 			'step_id' => 'payment',
-			'step_title' => _x( 'Payment', 'Checkout step title', 'fluid-checkout' ),
+			'step_title' => apply_filters( 'fc_step_title_payment', _x( 'Payment', 'Checkout step title', 'fluid-checkout' ) ),
 			'priority' => 100,
 			'render_callback' => array( $this, 'output_step_payment' ),
 			'is_complete_callback' => '__return_false', // Payment step is only complete when the order has been placed and the payment has been accepted, during the checkout process it will always be considered 'incomplete'.

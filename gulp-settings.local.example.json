@@ -1,0 +1,6 @@
+{
+	"browserSyncOptions": {
+		"proxy": "fluidcheckout.local",
+		"notify": false
+	}
+}

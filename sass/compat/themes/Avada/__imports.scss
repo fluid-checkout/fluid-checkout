@@ -14,8 +14,11 @@ $_select2-selection-height:            remsize( 5rem ) !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"z-index",
+	"checkout-content-area",
 	"checkout-steps",
 	"checkout-shipping-methods",
+	"checkout-payment-methods",
 	"checkout-validation",
 	"order-summary",
 	"../../partials/woocommerce-form-fields-select2";

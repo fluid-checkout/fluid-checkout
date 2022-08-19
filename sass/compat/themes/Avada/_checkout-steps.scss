@@ -2,6 +2,12 @@
 // CHECKOUT STEPS
 // ------------------------------------
 
+body#{ $_body-theme-selector }#{ $_body-page-selector } #wrapper div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
+	font-size: $checkout-substep-title-font-size;
+	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-title-font-size--large-screen; }
+}
+
+
 body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
 	border: 0;
 }

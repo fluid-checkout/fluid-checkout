@@ -1,0 +1,7 @@
+// ------------------------------------
+// Z-INDEX FIXES
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fusion-header-wrapper {
+	z-index: z( 'header-element' );
+}

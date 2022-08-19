@@ -22,6 +22,9 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false' );
 
@@ -52,6 +55,23 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 
 		// Remove quantity customizations
 		remove_filter( 'woocommerce_checkout_cart_item_quantity', 'shoptimizer_woocommerce_checkout_cart_item_quantity', 10, 3 );
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Bail if using the plugin's header and footer
+		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $settings; }
+
+		// Add settings
+		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = '.site-header, .col-full-nav';
+
+		return $settings;
 	}
 
 

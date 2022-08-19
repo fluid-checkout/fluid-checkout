@@ -19,12 +19,32 @@ class FluidCheckout_ThemeCompat_Hazel extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
 		// Use theme's logo
 		add_action( 'fc_checkout_header_logo', array( $this, 'output_checkout_header_logo' ), 10 );
 
-		// Page header
+		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Bail if using the plugin's header and footer
+		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $settings; }
+
+		// Add settings
+		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = 'header.page_header';
+
+		return $settings;
 	}
 
 
