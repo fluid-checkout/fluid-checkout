@@ -79,6 +79,7 @@
 		scrollOffsetSelector: '.fc-checkout-header',
 		scrollBehavior: 'smooth',
 		scrollOffset: 0,
+		scrollDelay: 50,
 	}
 	var _key = {
 		ENTER: 'Enter',
@@ -238,7 +239,7 @@
 		var substepFieldsElement = substepElement.querySelector( _settings.substepFieldsSelector );
 		var substepTextElement = substepElement.querySelector( _settings.substepTextSelector );
 
-		// Change expanded/collapsed states for the fields and text blocks
+		// // Change expanded/collapsed states for the fields and text blocks
 		CollapsibleBlock.collapse( substepFieldsElement );
 		CollapsibleBlock.expand( substepTextElement );
 
@@ -250,6 +251,9 @@
 		if ( editbutton ) {
 			editbutton.focus();
 		}
+
+		// Change scroll position after collapsing substep
+		scrollTo( substepElement );
 	}
 
 
@@ -395,14 +399,10 @@
 	}
 
 
-
 	/**
-	 * Change scroll position after changing steps.
-	 *
-	 * @param   HTMLElement  stepElement      The element of the step that was just completed.
-	 * @param   HTMLElement  nextStepElement  The element of the next step.
+	 * Get the scroll offset position for the sticky elements.
 	 */
-	var scrollAfterStepChange = function( stepElement, nextStepElement ) {
+	var getStickyElementsOffset = function() {
 		var stickyElementsOffset = 0;
 
 		// Maybe add height of the progress bar to scroll position
@@ -426,30 +426,26 @@
 			}
 		}
 
-		// Maybe set focusElement to the first focusable element that is visible
-		var focusElement = null;
-		var focusableElements = Array.from( getFocusableElements( nextStepElement ) );
-		for ( var i = 0; i < focusableElements.length; i++ ) {
-			var focusableElement = focusableElements[i];
-			if ( isVisible( focusableElement ) ) {
-				focusElement = focusableElement;
-				break;
-			}
-		}
+		return stickyElementsOffset;
+	}
 
-		// Set focus
-		if ( focusElement ) {
-			focusElement.focus();
-		}
+	/**
+	 * Change scroll position to top of the element after the sticky elements.
+	 *
+	 * @param   HTMLElement  element      The element of to scroll to.
+	 */
+	var scrollTo = function( element ) {
+		// Bail if step element not provided
+		if ( ! element ) { return; }
 
-		// Scroll to the top of the collapsed step
-		var stepElementOffset = getOffsetTop( stepElement ) + ( _settings.scrollOffset * -1 ) + ( stickyElementsOffset * -1 );
+		var stickyElementsOffset = getStickyElementsOffset();
+		var elementOffset = getOffsetTop( element ) + ( _settings.scrollOffset * -1 ) + ( stickyElementsOffset * -1 );
 		window.setTimeout( function() {
 			window.scrollTo( {
-				top: stepElementOffset,
+				top: elementOffset,
 				behavior: _settings.scrollBehavior,
 			} );
-		}, 50 );
+		}, _settings.scrollDelay );
 	}
 
 
@@ -515,8 +511,24 @@
 		// Update progress bar
 		updateProgressBar();
 
+		// Maybe set focusElement to the first focusable element that is visible
+		var focusElement = null;
+		var focusableElements = Array.from( getFocusableElements( nextStepElement ) );
+		for ( var i = 0; i < focusableElements.length; i++ ) {
+			var focusableElement = focusableElements[i];
+			if ( isVisible( focusableElement ) ) {
+				focusElement = focusableElement;
+				break;
+			}
+		}
+
+		// Set focus
+		if ( focusElement ) {
+			focusElement.focus();
+		}
+
 		// Change scroll position after moving to next step
-		scrollAfterStepChange( stepElement, nextStepElement );
+		scrollTo( stepElement );
 
 		// Trigger update checkout
 		if ( _hasJQuery ) {
