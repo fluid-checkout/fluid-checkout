@@ -25,7 +25,10 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false' );
 
-		// Page header
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
+		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 	}
@@ -48,6 +51,26 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 			remove_action( 'woocommerce_checkout_billing', array( $avada_woocommerce, 'checkout_billing' ), 20 );
 			remove_action( 'woocommerce_checkout_shipping', array( $avada_woocommerce, 'checkout_shipping' ), 20 );
 		}
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Bail if Avada class and settings object not available
+		if ( ! function_exists( 'Avada' ) || ! Avada()->settings ) { return $settings; }
+
+		// Bail if using the plugin's header and footer
+		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $settings; }
+
+		// Add settings
+		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = '.fusion-secondary-main-menu, .fusion-header';
+
+		return $settings;
 	}
 
 
