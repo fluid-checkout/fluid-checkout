@@ -379,6 +379,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Order summary background color and spacing styles.
 * Fixed: Mobile order summary "greyed out" when clicking the cart link on the site header in some themes.
 * Fixed: Prevent checkout form submit, save substep, or try to advance to next step when pressing `ENTER` on some form fields. Instead, validate the field currently in focus.
+* Fixed: Layout of form fields broken for some themes on small screens.
+* Fixed: Set scroll position to the top of the last completed step after moving to the next step on mobile.
+* Fixed: Set scroll position to the top of the substep when saving changes to it.
+* Fixed: Stop closing keyboard on mobile devices while updating checkout fragments.
 
 = 2.0.5 - 2022-08-13 =
 
@@ -394,10 +398,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Use separate fragments for the order summary table on the checkout steps and sidebar sections.
 * Fixed: Refocus on focused collapsible section toggle elements when updating the checkout fragments.
 * Fixed: Checkout coupon code scripts from WooCommerce not being completely replaced when using coupon code features from the plugin.
-* Fixed: Layout of form fields broken for some themes on small screens.
-* Fixed: Set scroll position to the top of the last completed step after moving to the next step on mobile.
-* Fixed: Set scroll position to the top of the substep when saving changes to it.
-* Fixed: Stop closing keyboard on mobile devices while updating checkout fragments.
 
 = 2.0.4 - 2022-08-02 =
 
