@@ -239,7 +239,7 @@
 		var substepFieldsElement = substepElement.querySelector( _settings.substepFieldsSelector );
 		var substepTextElement = substepElement.querySelector( _settings.substepTextSelector );
 
-		// // Change expanded/collapsed states for the fields and text blocks
+		// Change expanded/collapsed states for the fields and text blocks
 		CollapsibleBlock.collapse( substepFieldsElement );
 		CollapsibleBlock.expand( substepTextElement );
 
