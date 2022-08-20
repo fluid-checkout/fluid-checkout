@@ -7,6 +7,11 @@ body.has-place-order-sidebar-only.has-payment-method-selected--payment_method_pp
   padding: 0;
 }
 
+body:not(.has-place-order-sidebar-only).has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .fc-place-order,
+body:not(.has-place-order-sidebar-only).has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .woocommerce-terms-and-conditions-wrapper {
+  display: none;
+}
+
 .fc-wrapper #ppc-button {
   margin-top: 20px;
   display: flex;
@@ -14,15 +19,18 @@ body.has-place-order-sidebar-only.has-payment-method-selected--payment_method_pp
   align-items: center;
 }
 
-body:not(.has-place-order-sidebar-only) .fc-wrapper #ppc-button {
+.fc-wrapper .ppc-button-wrapper {
   margin: 20px 0;
+}
+
+.fc-wrapper .fc-inside .ppc-button-wrapper {
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 0;
   padding-bottom: 0;
 }
 @media (min-width: 1000px) {
-  body:not(.has-place-order-sidebar-only) .fc-wrapper #ppc-button {
+  .fc-wrapper .fc-inside .ppc-button-wrapper {
     padding-left: 20px;
     padding-right: 20px;
   }

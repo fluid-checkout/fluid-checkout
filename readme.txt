@@ -372,6 +372,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Compatibility with plugin PayPal Payments version 1.9.2+.
+
 = 2.0.6 - 2022-08-19 =
 
 * Added: New filter `fc_step_title_<substep_id>` to allow changing the titles of each step and the corresponding labels for the "Proceed to <step>" buttons.
