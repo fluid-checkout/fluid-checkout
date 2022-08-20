@@ -664,6 +664,26 @@ class FluidCheckout {
 		return $this->remove_filter_for_closure( $tag, $priority, $all_occurencies );
 	}
 
+
+
+	/**
+	 * Get the plugin version number for Fluid Checkout or other plugins.
+	 *
+	 * @param   string       $main_plugin_file  (optional) The plugin folder and main file name for the plugin to get the version number from. Ie. `fluid-checkout/fluid-checkout.php`.
+	 *                                          Defaults to Fluid Checkout main file.
+	 *
+	 * @return  string|bool                     The plugin version number, or `false` of the plugin was not found.
+	 */
+	public function get_plugin_version( $main_plugin_file = 'fluid-checkout/fluid-checkout.php' ) {
+		$plugin_file = trailingslashit( WP_PLUGIN_DIR ) . $main_plugin_file;
+
+		if ( file_exists( $plugin_file ) ) {
+			return get_file_data( $plugin_file , ['Version' => 'Version'], 'plugin')['Version'];
+		}
+
+		return false;
+	}
+
 }
 
 FluidCheckout::instance();
