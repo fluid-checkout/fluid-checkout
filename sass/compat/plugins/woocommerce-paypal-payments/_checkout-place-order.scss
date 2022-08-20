@@ -11,6 +11,11 @@ body.has-place-order-sidebar-only.has-payment-method-selected--payment_method_pp
 	padding: 0;
 }
 
+body:not( .has-place-order-sidebar-only ).has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .fc-place-order,
+body:not( .has-place-order-sidebar-only ).has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .woocommerce-terms-and-conditions-wrapper {
+	display: none;
+}
+
 
 
 .fc-wrapper #ppc-button {
