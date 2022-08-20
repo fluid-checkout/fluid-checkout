@@ -19,15 +19,18 @@ body:not(.has-place-order-sidebar-only).has-payment-method-selected--payment_met
   align-items: center;
 }
 
-body:not(.has-place-order-sidebar-only) .fc-wrapper #ppc-button {
+.fc-wrapper .ppc-button-wrapper {
   margin: 20px 0;
+}
+
+.fc-wrapper .fc-inside .ppc-button-wrapper {
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 0;
   padding-bottom: 0;
 }
 @media (min-width: 1000px) {
-  body:not(.has-place-order-sidebar-only) .fc-wrapper #ppc-button {
+  .fc-wrapper .fc-inside .ppc-button-wrapper {
     padding-left: 20px;
     padding-right: 20px;
   }

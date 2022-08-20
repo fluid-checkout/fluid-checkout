@@ -27,8 +27,11 @@ body:not( .has-place-order-sidebar-only ).has-payment-method-selected--payment_m
 
 
 
-body:not( .has-place-order-sidebar-only ) .fc-wrapper #ppc-button {
+.fc-wrapper .ppc-button-wrapper {
 	margin: $global-spacing-small 0;
+}
+
+.fc-wrapper .fc-inside .ppc-button-wrapper {
 	padding-#{ $alignment-left }: $container-spacing-mobile;
 	padding-#{ $alignment-right }: $container-spacing-mobile;
 	padding-top: 0;
