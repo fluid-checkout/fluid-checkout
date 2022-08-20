@@ -375,6 +375,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Improved: Compatibility with plugin PayPal Payments version 1.9.2+.
+* Improved: Compatibility with theme Flatsome.
 
 = 2.0.6 - 2022-08-19 =
 
