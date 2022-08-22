@@ -377,6 +377,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme Understrap.
 * Added: Compatibility with plugin Checkout Field Editor PRO by Themehigh, only basic features. For advanced features, you'll need Fluid Checkout PRO.
 * Improved: Compatibility with plugin PayPal Payments version 1.9.2+.
 * Improved: Compatibility with theme Flatsome.
