@@ -107,6 +107,8 @@ Quite insane how the developer is doing this. And a free plugin!!
 
 * **International phone number**: format and validate phone fields on the checkout and account pages based on the country.
 
+* **Integrated coupon code field at the checkout**: more options for positions to display the coupon code field.
+
 Future features:
 
 * Edit cart at checkout
@@ -207,6 +209,7 @@ Only the themes that we have added explicit compatibility with or that we have t
 
 * Brazilian Market on WooCommerce - by Claudio Sanches ([see demo](https://demos.fluidcheckout.com/google-address-autocomplete-brazilian-market/cart/?add-to-cart=14&quantity=1))
 * Checkout Field Editor for WooCommerce - by ThemeHigh
+* Checkout Field Editor for WooCommerce PRO - by ThemeHigh, only basic features. For advanced features, you'll need [Fluid Checkout PRO](https://fluidcheckout.com/product/fluid-checkout-pro/).
 * Captcha Pro - by BestWebSoft
 * Creative Mail - by Constant Contact
 * Delivery & Pickup Date Time for WooCommerce - by CodeRockz
@@ -374,6 +377,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin Checkout Field Editor PRO by Themehigh, only basic features. For advanced features, you'll need Fluid Checkout PRO.
 * Improved: Compatibility with plugin PayPal Payments version 1.9.2+.
 * Improved: Compatibility with theme Flatsome.
 
