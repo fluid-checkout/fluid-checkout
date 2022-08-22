@@ -22,10 +22,6 @@ class FluidCheckout_ThemeCompat_Understrap extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false' );
 		add_filter( 'fc_content_section_class', array( $this, 'add_content_section_class' ), 10 );
-		
-		// Container class
-		add_filter( 'fc_pro_add_container_class_cart', '__return_false' );
-		add_filter( 'fc_pro_content_section_class_cart', array( $this, 'add_content_section_class' ), 10 );
 	}
 
 
