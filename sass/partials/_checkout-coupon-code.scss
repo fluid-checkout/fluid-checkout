@@ -49,6 +49,10 @@
 	padding: 0;
 }
 
+.fc-wrapper .fc-coupon_code__collapsible .woocommerce-input-wrapper {
+	width: 100% !important; // Needed to override theme styles set with `!important`
+}
+
 .fc-wrapper .fc-coupon_code__collapsible input#coupon_code {
 	margin: 0;
 	width: 100% !important; // Needed to override theme styles set with `!important`
