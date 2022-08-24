@@ -382,6 +382,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with plugin PayPal Payments version 1.9.2+.
 * Improved: Compatibility with theme Flatsome.
 * Fixed: Order summary footer display styles on some themes.
+* Fixed: Prevent copying shipping address to billing address when shipping address is not available in some cases.
 
 = 2.0.6 - 2022-08-19 =
 
