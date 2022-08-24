@@ -381,6 +381,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin Checkout Field Editor PRO by Themehigh, only basic features. For advanced features, you'll need Fluid Checkout PRO.
 * Improved: Compatibility with plugin PayPal Payments version 1.9.2+.
 * Improved: Compatibility with theme Flatsome.
+* Fixed: Order summary footer display styles on some themes.
 
 = 2.0.6 - 2022-08-19 =
 
