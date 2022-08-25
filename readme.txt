@@ -195,6 +195,7 @@ Only the themes that we have added explicit compatibility with or that we have t
 * WooCommerce Affirm Gateway - by WooCommerce
 * WooCommerce Amazon Pay - by WooCommerce
 * WooCommerce Authorize.Net Gateway - by SkyVerge
+* WooCommerce PayPal Standard - integration which comes with WooCommerce
 * WooCommerce PayPal Payments - by WooCommerce
 * WooCommerce PayPal Checkout Gateway - by WooCommerce
 * WooCommerce Stripe Gateway - by WooCommerce
