@@ -43,7 +43,7 @@ if ( ! wp_doing_ajax() ) {
 		</div>
 	<?php // CHANGE: Display info message when payment is not needed ?>
 	<?php else: ?>
-		<div class="woocommerce-info"><?php echo apply_filters( 'fc_payment_not_needed_message', sprintf( esc_html( __( 'Your order has a total amount due of %s. No&nbsp;further payment is needed.', 'fluid-checkout' ) ), wc_price( 0 ) ) ); ?></div>
+		<div class="woocommerce-info"><?php echo apply_filters( 'fc_payment_not_needed_message', sprintf( esc_html( __( 'Your order has a total amount due of %s. No further payment is needed.', 'fluid-checkout' ) ), wc_price( 0 ) ) ); ?></div>
 	<?php endif; ?>
 
 	<?php // CHANGE: Removed place order section, moved to templates/fc/checkout/place-order.php ?>
