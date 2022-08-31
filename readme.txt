@@ -263,9 +263,10 @@ All labels and other texts added or changed by the plugin are translatable using
 
 Currently the plugin is translated into the languages below, and more are comming soon:
 
-* English (Default - professionally revised for grammar mistakes and typos)
+* English (Default)
 * Dutch - Netherlands (thanks to Robin Bak, Duncan - magnesium-minerals.nl, Damy Bosch - advice.nl)
-* German - Germany (thanks to @reilix - felix-gudowius.de)
+* French - France
+* German - Germany
 * Italian - Italy (thanks to Samuele - floralgarden.it)
 * Portuguese - Brazil
 * Spanish - Spain (thanks to @gio15 - senseiwpacademy.com)
@@ -380,9 +381,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Compatibility with theme Understrap.
 * Added: Compatibility with plugin Checkout Field Editor PRO by Themehigh, only basic features. For advanced features, you'll need Fluid Checkout PRO.
+* Added: Translation to French (France).
+* Improved: Translation to German (Germany).
+* Improved: Original text in English US has been professionally revised for grammar mistakes and typos.
 * Improved: Compatibility with plugin PayPal Payments version 1.9.2+.
 * Improved: Compatibility with theme Flatsome.
-* Improved: Original text in English US has been professionally revised for grammar mistakes and typos.
 * Fixed: Order summary footer display styles on some themes.
 * Fixed: Prevent copying shipping address to billing address when shipping address is not available in some cases.
 
