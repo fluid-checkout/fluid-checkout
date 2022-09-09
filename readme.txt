@@ -261,7 +261,7 @@ If you need more control, you can remove the plugin styles and add your own comp
 
 All labels and other texts added or changed by the plugin are translatable using the built-in WordPress functions.
 
-Currently the plugin is translated into the languages below, and more are comming soon:
+Currently the plugin is translated into the languages below, and more are coming soon:
 
 * English (Default)
 * Dutch - Netherlands (thanks to Robin Bak, Duncan - magnesium-minerals.nl, Damy Bosch - advice.nl)
@@ -314,16 +314,12 @@ If you want to tweak the settings, head over to WP Admin > WooCommerce > Setting
 
 = Is there a Fluid Checkout PRO version? =
 
-Yes. You can get the Fluid Checkout PRO version [our website](https://fluidcheckout.com/product/fluid-checkout-pro/).
-
-[View detailed list of PRO features on our website](https://fluidcheckout.com/product/fluid-checkout-pro/)
-
-[Fluid Checkout PRO demo site](https://demos.fluidcheckout.com/pro/?add-to-cart=14&quantity=2)
+Yes. You can view all details and list of features of the Fluid Checkout PRO version on [our website](https://fluidcheckout.com).
 
 
 = Will Fluid Checkout work with my theme? =
 
-Yes! Fluid Checkout should work with most theme out-of-the-box. However some themes may need adjustments due to not using WooCommerce standard hooks or styles.
+Yes! Fluid Checkout should work with most theme out-of-the-box. However some themes may need adjustments due to not using WooCommerce standard hooks or styles or if they add their own customizations which might conflict with Fluid Checkout.
 
 **If you have any issues using Fluid Checkout with your theme please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.**
 
@@ -335,7 +331,7 @@ Although Fluid Checkout was built in a way that it should be compatible with mos
 **If you have any issues using Fluid Checkout with other plugins please let us know through the [support forum](https://wordpress.org/support/plugin/fluid-checkout/) and we'll fix it asap.**
 
 
-= Is Fluid Checkout compliant with privacy laws (GDPR/RGPD/CCPA/LGPD)? =
+= Is Fluid Checkout compliant with privacy laws (GDPR / RGPD / CCPA / LGPD)? =
 
 We value your privacy and your customers' privacy.
 
@@ -355,8 +351,6 @@ No. While Fluid Checkout does improve the accessibility of the checkout page by 
 Did you know that only about 30% of accessibility issues can be detected with automated tools? The majority of the issues can only be detected with manual testing on each page of the website. Read the article: [Automated Accessibility Testing Tools: How Much Do Scans Catch?](https://www.essentialaccessibility.com/blog/automated-accessibility-testing-tools-how-much-do-scans-catch).
 
 We have plans to add an "accessible layout" feature that will ensure most accessibility issues will be fixed.
-
-**[Contact us](https://fluidcheckout.com/support/) if you need help with making your webshop accessible to people with disabilities.**
 
 
 = How do I add trust symbols to the checkout page? =
