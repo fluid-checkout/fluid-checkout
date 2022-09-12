@@ -378,6 +378,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Translation to French (France).
 * Improved: Translation to German (Germany).
 * Improved: Original text in English US has been professionally revised for grammar mistakes and typos.
+* Improved: Compatibility with plugin "Stripe For WooCommerce" by Payment Plugins.
 * Improved: Compatibility with plugin PayPal Payments version 1.9.2+.
 * Improved: Compatibility with theme Flatsome.
 * Fixed: Order summary footer display styles on some themes.
