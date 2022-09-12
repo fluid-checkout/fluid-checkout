@@ -3,11 +3,11 @@ body.theme-shoptimizer .mobile-overlay {
   z-index: 1999;
 }
 
-body.theme-shoptimizer:not(.header-4):not(.mobile-toggled).sticky-m .site-header {
+body.theme-shoptimizer .site-header {
   z-index: 2000;
 }
 
-body.theme-shoptimizer:not(.header-4).sticky-d .col-full-nav {
+body.theme-shoptimizer .col-full-nav {
   z-index: 2000;
 }
 
