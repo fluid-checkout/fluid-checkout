@@ -9,11 +9,11 @@ body#{ $_body-theme-selector } .mobile-overlay {
 
 
 
-body#{ $_body-theme-selector }:not( .header-4 ):not( .mobile-toggled ).sticky-m .site-header {
+body#{ $_body-theme-selector } .site-header {
 	z-index: z( 'header-element' )
 }
 
-body#{ $_body-theme-selector }:not( .header-4 ).sticky-d .col-full-nav {
+body#{ $_body-theme-selector } .col-full-nav {
 	z-index: z( 'header-element' );
 }
 
