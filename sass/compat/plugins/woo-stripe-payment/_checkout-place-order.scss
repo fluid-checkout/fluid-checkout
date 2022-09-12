@@ -1,0 +1,14 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body:not( .has-place-order-sidebar-only ).has-payment-method-selected--payment_method_stripe_googlepay .fc-sidebar .fc-place-order,
+body:not( .has-place-order-sidebar-only ).has-payment-method-selected--payment_method_stripe_googlepay .fc-sidebar .woocommerce-terms-and-conditions-wrapper,
+body:not( .has-place-order-sidebar-only ).has-payment-method-selected--payment_method_stripe_applepay .fc-sidebar .fc-place-order,
+body:not( .has-place-order-sidebar-only ).has-payment-method-selected--payment_method_stripe_applepay .fc-sidebar .woocommerce-terms-and-conditions-wrapper,
+body:not( .has-place-order-sidebar-only ).has-payment-method-selected--payment_method_stripe_payment_request .fc-sidebar .fc-place-order,
+body:not( .has-place-order-sidebar-only ).has-payment-method-selected--payment_method_stripe_payment_request .fc-sidebar .woocommerce-terms-and-conditions-wrapper,
+body:not( .has-place-order-sidebar-only ).has-payment-method-selected--payment_method_ppcp .fc-sidebar .fc-place-order,
+body:not( .has-place-order-sidebar-only ).has-payment-method-selected--payment_method_ppcp .fc-sidebar .woocommerce-terms-and-conditions-wrapper {
+	display: none;
+}
