@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-02 11:34+0000\n"
-"PO-Revision-Date: 2022-08-31 14:21+0000\n"
+"PO-Revision-Date: 2022-09-13 09:43+0000\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -269,16 +269,18 @@ msgid "Choose in which position to display the shipping methods"
 msgstr "Position der Versandarten festlegen"
 
 #: inc/admin/admin-settings-general.php:264
-#, fuzzy
 #| msgid "Choose in which step to display the billing phone"
 msgid "Choose in which step to display the billing phone field"
-msgstr "Schritt für die Anzeige der Telefonnummer (Rechnungsadresse) festlegen"
+msgstr ""
+"Wähle aus, in welchem Schritt das Feld für das Rechnungstelefon angezeigt "
+"werden soll"
 
 #: inc/admin/admin-settings-general.php:290
-#, fuzzy
 #| msgid "Choose in which step to display the shipping phone"
 msgid "Choose in which step to display the shipping phone field"
-msgstr "Schritt für die Anzeige der Telefonnummer (Lieferadresse) festlegen"
+msgstr ""
+"Wähle aus, in welchem Schritt das Feld für die Versandtelefonnummer "
+"angezeigt werden soll"
 
 #: inc/checkout-steps.php:646
 msgid "Click to go to the order summary"
@@ -555,18 +557,18 @@ msgstr "Integrationen"
 
 #: inc/admin/admin-settings-general.php:210
 #| msgid ""
-#| "It is recommended to keep this option checked to reduce the number of "
+#| "It is recommended to keep this options checked to reduce the number of "
 #| "open input fields, <a href=\"https://baymard.com/blog/checkout-flow-"
 #| "average-form-fields#1-address-line-2--company-name-can-safely-be-"
 #| "collapsed-behind-a-link\" target=\"_blank\">read the research</a>."
 msgid ""
-"It is recommended to keep this options checked to reduce the number of open "
+"It is recommended to keep this option checked to reduce the number of open "
 "input fields, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
 "fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-"
 "link\" target=\"_blank\">read the research</a>."
 msgstr ""
 "Es wird empfohlen, diese Option aktiviert zu lassen, um die Anzahl der "
-"offenen Eingabefelder zu reduzieren. Für mehr Informationen<a href=\"https:"
+"offenen Eingabefelder zu reduzieren. Für mehr Informationen <a href=\"https:"
 "//baymard.com/blog/checkout-flow-average-form-fields#1-address-line-2--"
 "company-name-can-safely-be-collapsed-behind-a-link\" target=\"_blank\">lesen "
 "Sie diesen Artikel</a>."

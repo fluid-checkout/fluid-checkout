@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-29 12:58+0000\n"
-"PO-Revision-Date: 2022-08-19 13:11+0000\n"
+"PO-Revision-Date: 2022-09-13 09:35+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -37,12 +37,17 @@ msgstr ""
 "geactiveerd is. <a href=\"%4$s\">%3$s</a>"
 
 #: inc/admin/admin-notice-breaking-changes-version-200.php:79
+#, fuzzy
 msgid ""
 "<strong>Express checkout</strong>, <strong>Local pickup</strong>, <strong>"
 "Gift message</strong> and <strong>Packing list templates</strong> have been "
 "moved to Fluid Checkout PRO. <br>For a limited time, you can get these "
 "features at no extra cost."
 msgstr ""
+"<strong>Express checkout</strong>, <strong>Local pickup</strong>, <strong>"
+"Gift message</strong> en <strong>Packing list templates</strong> zijn "
+"verplaatst naar Fluid Checkout PRO. <br>Voor een beperkte tijd kun je deze "
+"functies zonder extra kosten krijgen."
 
 #: fluid-checkout.php:404
 #, php-format
@@ -253,7 +258,7 @@ msgstr ""
 
 #: inc/admin/admin-settings-general.php:146
 msgid "Choose a background color for the order summary section."
-msgstr ""
+msgstr "Kies een achtergrondkleur voor het gedeelte met het besteloverzicht."
 
 #: inc/admin/admin-settings-general.php:72
 msgid ""
@@ -269,12 +274,15 @@ msgid "Choose in which position to display the shipping methods"
 msgstr "Kies in welke positie u de verzendmethoden wilt weergeven"
 
 #: inc/admin/admin-settings-general.php:264
-msgid "Choose in which step to display the billing phone"
-msgstr ""
+#, fuzzy
+msgid "Choose in which step to display the billing phone field"
+msgstr "Kies in welke stap je het veld factureringstelefoon wilt tonen"
 
 #: inc/admin/admin-settings-general.php:290
-msgid "Choose in which step to display the shipping phone"
-msgstr "Kies in welke stap je de verzendtelefoon wilt weergeven"
+#, fuzzy
+#| msgid "Choose in which step to display the shipping phone"
+msgid "Choose in which step to display the shipping phone field"
+msgstr "Kies in welke stap je het veld verzendtelefoon wilt tonen"
 
 #: inc/checkout-steps.php:646
 msgid "Click to go to the order summary"
@@ -430,8 +438,9 @@ msgid "Edit Cart"
 msgstr "Winkelwagen bewerken"
 
 #: inc/admin/admin-settings-general.php:316
+#, fuzzy
 msgid "Enable integrated coupon code section"
-msgstr ""
+msgstr "Geïntegreerde couponcodesectie inschakelen"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:116
 msgid "Enable Mail Check: (disabled feature)"
@@ -451,8 +460,9 @@ msgid "Fluid Checkout"
 msgstr "Fluid Checkout"
 
 #: inc/admin/admin-notice-breaking-changes-version-200.php:78
+#, fuzzy
 msgid "Fluid Checkout 2.0 - Important changes!"
-msgstr ""
+msgstr "Fluid Checkout 2.0 - Belangrijke veranderingen!"
 
 #. Name of the plugin
 #| msgid "Fluid Checkout for WooCommerce"
@@ -464,14 +474,18 @@ msgid "Footer background color"
 msgstr "Achtergrondkleur voettekst"
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
+#, fuzzy
 msgid ""
 "Germanized PRO multistep checkout feature needs to be disabled when using "
 "Fluid Checkout"
 msgstr ""
+"Gegermaniseerd PRO meerstaps afrekenen moet uitgeschakeld worden bij gebruik "
+"van Fluid Checkout"
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:67
+#, fuzzy
 msgid "Go to Germanized settings"
-msgstr ""
+msgstr "Ga naar Germaanse instellingen"
 
 #: fluid-checkout.php:400
 msgid "Go to Plugin Search"
@@ -551,8 +565,14 @@ msgid "Integrations"
 msgstr "Integraties"
 
 #: inc/admin/admin-settings-general.php:210
+#, fuzzy
+#| msgid ""
+#| "It is recommended to keep this options checked to reduce the number of "
+#| "open input fields, <a href=\"https://baymard.com/blog/checkout-flow-"
+#| "average-form-fields#1-address-line-2--company-name-can-safely-be-"
+#| "collapsed-behind-a-link\" target=\"_blank\">read the research</a>."
 msgid ""
-"It is recommended to keep this options checked to reduce the number of open "
+"It is recommended to keep this option checked to reduce the number of open "
 "input fields, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
 "fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-"
 "link\" target=\"_blank\">read the research</a>."
@@ -563,10 +583,18 @@ msgstr ""
 "behind-a-link” target=“_blank”>lees het onderzoek</a>."
 
 #: inc/admin/admin-settings-general.php:242
+#, fuzzy
+#| msgid ""
+#| "It is recommended to leave this option checked. The billing address at "
+#| "checkout will start with the option \"Billing same as shipping\" checked "
+#| "by default. This will reduce significantly the number of open input "
+#| "fields at the checkout, <a href=\"https://baymard.com/blog/checkout-flow-"
+#| "average-form-fields#3-default-billing--shipping-and-hide-the-fields-"
+#| "entirely\" target=\"_blank\">read the research</a>."
 msgid ""
 "It is recommended to leave this option checked. The billing address at "
 "checkout will start with the option \"Billing same as shipping\" checked by "
-"default. This will reduce significantly the number of open input fields at "
+"default. This will significantly reduce the number of open input fields at "
 "the checkout, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
 "fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
 "target=\"_blank\">read the research</a>."
@@ -579,8 +607,9 @@ msgstr ""
 "entirely” target=“_blank”>lees het onderzoek</a>."
 
 #: inc/admin/admin-notice-breaking-changes-version-200.php:82
+#, fuzzy
 msgid "Keep using moved features"
-msgstr ""
+msgstr "Blijf bewogen functies gebruiken"
 
 #: inc/admin/admin-settings-general.php:60
 msgid "Layout Options"
@@ -721,21 +750,24 @@ msgstr "Bestel notities"
 msgid "Order number and receipt will be sent to this email address."
 msgstr "Bestelnummer en ontvangstbewijs worden naar dit e-mailadres gestuurd."
 
-#: inc/checkout-steps.php:3779 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3782 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Besteloverzicht"
 
 #: inc/compat/themes/compat-theme-woodmart.php:51
+#, fuzzy
 msgid ""
 "Output the checkout steps section from the Woodmart theme when using Fluid "
 "Checkout header and footer"
 msgstr ""
+"Uitvoer van de kassastappen sectie uit het Woodmart thema bij gebruik van "
+"Fluid Checkout header en footer"
 
 #: inc/admin/admin-settings-general.php:104
 msgid "Page background color"
 msgstr "Achtergrondkleur pagina"
 
-#: inc/checkout-steps.php:3598
+#: inc/checkout-steps.php:3601
 msgid "Payment method"
 msgstr "Betaalmethoden"
 
@@ -758,16 +790,22 @@ msgid "Progress bar"
 msgstr "Voortgangsbalk"
 
 #. Description of the plugin
+#, fuzzy
 msgid ""
 "Provides a distraction free checkout experience for any WooCommerce store. "
 "Ask for shipping information before billing in a truly linear multi-step or "
 "one-step checkout and display a coupon code field at the checkout page that "
 "does not distract your customers."
 msgstr ""
+"Biedt een afleidingsvrije kassa-ervaring voor elke WooCommerce winkel. Vraag "
+"om verzendinformatie vóór de facturering in een echt lineaire meerstaps of "
+"eenstaps kassa en toon een coupon code veld op de afrekenpagina dat je "
+"klanten niet afleidt."
 
 #: inc/admin/admin-notice-review-request.php:47
+#, fuzzy
 msgid "Rate the plugin"
-msgstr ""
+msgstr "Beoordeel de plugin"
 
 #: inc/admin/admin-settings-general.php:230
 msgid ""
@@ -963,18 +1001,27 @@ msgstr ""
 "verlaten van winkelwagens</a>."
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:99
+#, fuzzy
 msgid ""
 "When enabled, the checkbox will be moved to the contact step independently "
 "of the display location defined in the Sendinblue plugin settings."
 msgstr ""
+"Wanneer ingeschakeld, wordt het selectievakje naar de contactstap verplaatst,"
+" onafhankelijk van de weergaveplaats die in de Sendinblue plugin "
+"instellingen is gedefinieerd."
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
+#, fuzzy
 msgid ""
 "When using Fluid Checkout, the multistep feature from the Germanized PRO "
 "plugin becomes unnecessary and can cause <strong>critical errors while "
 "processing new orders</strong>. Please disable the Germanized PRO multistep "
 "checkout feature in the plugin settings."
 msgstr ""
+"Bij gebruik van Fluid Checkout wordt de meerstapsfunctie uit de Germanized "
+"PRO plugin overbodig en kan deze <strong>kritieke fouten veroorzaken bij het "
+"verwerken van nieuwe bestellingen</strong>. Schakel de meerstaps kassa "
+"functie van Germanized PRO uit in de plugin instellingen."
 
 #: fluid-checkout.php:397
 msgid "WooCommerce"
@@ -983,22 +1030,24 @@ msgstr "WooCommerce"
 #: inc/admin/admin-notice-review-request.php:45
 #, fuzzy
 #| msgid ""
-#| "You have been using Fluid Checkout for a while. How do you like it so far?"
+#| "You have been using the plugin for a while now. How do you like it so far?"
 #| " <br>Please give us a quick rating, we appreciate every feedback and it "
-#| "encourage us to keep improving the plugin :)"
+#| "encourages us to keep improving the plugin :)"
 msgid ""
 "You have been using the plugin for a while now. How do you like it so far? "
-"<br>Please give us a quick rating, we appreciate every feedback and it "
-"encourages us to keep improving the plugin :)"
+"<br>Please give us a quick rating, we appreciate every bit of feedback and "
+"it encourages us to keep improving the plugin :)"
 msgstr ""
 "Je gebruikt Fluid Checkout al een tijdje. Hoe bevalt het je tot nu toe? <br>"
 "Geef ons snel een waardering, we waarderen elke feedback en het moedigt ons "
 "aan om de plugin te blijven verbeteren :)"
 
 #: templates/checkout/payment.php:46
-#, php-format
-msgid ""
-"Your order has a total amount due of %s. No&nbsp;further payment is needed."
+#, fuzzy, php-format
+#| msgid ""
+#| "Your order has a total amount due of %s. No&nbsp;further payment is "
+#| "needed."
+msgid "Your order has a total amount due of %s. No further payment is needed."
 msgstr ""
 "Uw bestelling heeft een totaal verschuldigd bedrag van %s. U hoeft niet "
 "verder te betalen."
