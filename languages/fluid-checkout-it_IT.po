@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-03 13:49+0000\n"
-"PO-Revision-Date: 2022-08-19 13:11+0000\n"
+"PO-Revision-Date: 2022-09-13 09:37+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -274,12 +274,16 @@ msgid "Choose in which position to display the shipping methods"
 msgstr "Scegli in quale posizione visualizzare i metodi di spedizione"
 
 #: inc/admin/admin-settings-general.php:264
-msgid "Choose in which step to display the billing phone"
-msgstr "Scegli in quale passaggio visualizzare il telefono di fatturazione"
+#| msgid "Choose in which step to display the billing phone"
+msgid "Choose in which step to display the billing phone field"
+msgstr ""
+"Scegli in quale passaggio visualizzare il campo del telefono di fatturazione"
 
 #: inc/admin/admin-settings-general.php:290
-msgid "Choose in which step to display the shipping phone"
-msgstr "Scegli in quale passaggio visualizzare il telefono di spedizione"
+#| msgid "Choose in which step to display the shipping phone"
+msgid "Choose in which step to display the shipping phone field"
+msgstr ""
+"Scegli in quale passaggio visualizzare il campo del telefono di spedizione"
 
 #: inc/checkout-steps.php:646
 msgid "Click to go to the order summary"
@@ -564,8 +568,13 @@ msgid "Integrations"
 msgstr "Integrazioni"
 
 #: inc/admin/admin-settings-general.php:210
+#| msgid ""
+#| "It is recommended to keep this options checked to reduce the number of "
+#| "open input fields, <a href=\"https://baymard.com/blog/checkout-flow-"
+#| "average-form-fields#1-address-line-2--company-name-can-safely-be-"
+#| "collapsed-behind-a-link\" target=\"_blank\">read the research</a>."
 msgid ""
-"It is recommended to keep this options checked to reduce the number of open "
+"It is recommended to keep this option checked to reduce the number of open "
 "input fields, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
 "fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-"
 "link\" target=\"_blank\">read the research</a>."
@@ -576,10 +585,17 @@ msgstr ""
 "behind-a-link\" target=\"_blank\">leggi la ricerca</a>."
 
 #: inc/admin/admin-settings-general.php:242
+#| msgid ""
+#| "It is recommended to leave this option checked. The billing address at "
+#| "checkout will start with the option \"Billing same as shipping\" checked "
+#| "by default. This will reduce significantly the number of open input "
+#| "fields at the checkout, <a href=\"https://baymard.com/blog/checkout-flow-"
+#| "average-form-fields#3-default-billing--shipping-and-hide-the-fields-"
+#| "entirely\" target=\"_blank\">read the research</a>."
 msgid ""
 "It is recommended to leave this option checked. The billing address at "
 "checkout will start with the option \"Billing same as shipping\" checked by "
-"default. This will reduce significantly the number of open input fields at "
+"default. This will significantly reduce the number of open input fields at "
 "the checkout, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
 "fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
 "target=\"_blank\">read the research</a>."
@@ -733,7 +749,7 @@ msgstr ""
 "Il numero dell'ordine e la ricevuta verranno inviati a questo indirizzo "
 "email."
 
-#: inc/checkout-steps.php:3779 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3782 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Riepilogo Ordine"
 
@@ -749,7 +765,7 @@ msgstr ""
 msgid "Page background color"
 msgstr "Colore di sfondo della pagina"
 
-#: inc/checkout-steps.php:3598
+#: inc/checkout-steps.php:3601
 msgid "Payment method"
 msgstr "Metodo di Pagamento"
 
@@ -1016,13 +1032,13 @@ msgstr "WooCommerce"
 
 #: inc/admin/admin-notice-review-request.php:45
 #| msgid ""
-#| "You have been using Fluid Checkout for a while. How do you like it so far?"
+#| "You have been using the plugin for a while now. How do you like it so far?"
 #| " <br>Please give us a quick rating, we appreciate every feedback and it "
-#| "encourage us to keep improving the plugin :)"
+#| "encourages us to keep improving the plugin :)"
 msgid ""
 "You have been using the plugin for a while now. How do you like it so far? "
-"<br>Please give us a quick rating, we appreciate every feedback and it "
-"encourages us to keep improving the plugin :)"
+"<br>Please give us a quick rating, we appreciate every bit of feedback and "
+"it encourages us to keep improving the plugin :)"
 msgstr ""
 "Stai usando Fluid Checkout da un po'. Ti è piaciuto finora? <br>Ti preghiamo "
 "di darci una rapida valutazione, apprezziamo ogni feedback e ci incoraggia a "
@@ -1030,8 +1046,10 @@ msgstr ""
 
 #: templates/checkout/payment.php:46
 #, php-format
-msgid ""
-"Your order has a total amount due of %s. No&nbsp;further payment is needed."
+#| msgid ""
+#| "Your order has a total amount due of %s. No&nbsp;further payment is "
+#| "needed."
+msgid "Your order has a total amount due of %s. No further payment is needed."
 msgstr ""
 "Il tuo ordine ha un importo totale dovuto di %s. Non è necessario alcun "
 "ulteriore pagamento."

@@ -11,6 +11,11 @@ body.has-place-order-sidebar-only.has-payment-method-selected--payment_method_pp
 	padding: 0;
 }
 
+body:not( .has-place-order-sidebar-only ).has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .fc-place-order,
+body:not( .has-place-order-sidebar-only ).has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .woocommerce-terms-and-conditions-wrapper {
+	display: none;
+}
+
 
 
 .fc-wrapper #ppc-button {
@@ -22,8 +27,11 @@ body.has-place-order-sidebar-only.has-payment-method-selected--payment_method_pp
 
 
 
-body:not( .has-place-order-sidebar-only ) .fc-wrapper #ppc-button {
+.fc-wrapper .ppc-button-wrapper {
 	margin: $global-spacing-small 0;
+}
+
+.fc-wrapper .fc-inside .ppc-button-wrapper {
 	padding-#{ $alignment-left }: $container-spacing-mobile;
 	padding-#{ $alignment-right }: $container-spacing-mobile;
 	padding-top: 0;

@@ -1,0 +1,41 @@
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper div.place-order {
+  margin-bottom: 0;
+}
+
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-inside .fc-place-order,
+body.has-place-order-sidebar-only.has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .fc-place-order {
+  padding: 0;
+}
+
+body:not(.has-place-order-sidebar-only).has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .fc-place-order,
+body:not(.has-place-order-sidebar-only).has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .woocommerce-terms-and-conditions-wrapper {
+  display: none;
+}
+
+.fc-wrapper #ppc-button {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fc-wrapper .ppc-button-wrapper {
+  margin: 20px 0;
+}
+
+.fc-wrapper .fc-inside .ppc-button-wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+@media (min-width: 1000px) {
+  .fc-wrapper .fc-inside .ppc-button-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+body.woocommerce-gzd-checkout .fc-wrapper .ppc-button-wrapper ~ .fc-checkout__below-place-order-widgets {
+  margin-top: -10px;
+}

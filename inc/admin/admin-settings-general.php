@@ -207,7 +207,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'title'             => __( 'Optional fields', 'fluid-checkout' ),
 						'desc'              => __( 'Hide optional fields behind a link button', 'fluid-checkout' ),
-						'desc_tip'          => __( 'It is recommended to keep this options checked to reduce the number of open input fields, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-link" target="_blank">read the research</a>.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'It is recommended to keep this option checked to reduce the number of open input fields, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-link" target="_blank">read the research</a>.', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_hide_optional_fields',
 						'default'           => 'yes',
 						'type'              => 'checkbox',
@@ -239,7 +239,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'title'             => __( 'Billing address', 'fluid-checkout' ),
 						'desc'              => __( 'Billing address same as the shipping address checked by default', 'fluid-checkout' ),
-						'desc_tip'          => __( 'It is recommended to leave this option checked. The billing address at checkout will start with the option "Billing same as shipping" checked by default. This will reduce significantly the number of open input fields at the checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'It is recommended to leave this option checked. The billing address at checkout will start with the option "Billing same as shipping" checked by default. This will significantly reduce the number of open input fields at the checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
 						'id'                => 'fc_default_to_billing_same_as_shipping',
 						'default'           => 'yes',
 						'type'              => 'checkbox',
@@ -261,7 +261,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'              => __( 'Choose in which step to display the billing phone', 'fluid-checkout' ),
+						'desc'              => __( 'Choose in which step to display the billing phone field', 'fluid-checkout' ),
 						'id'                => 'fc_billing_phone_field_position',
 						'options'           => array(
 							'billing_address' => __( 'Billing address', 'fluid-checkout' ),
@@ -287,7 +287,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'              => __( 'Choose in which step to display the shipping phone', 'fluid-checkout' ),
+						'desc'              => __( 'Choose in which step to display the shipping phone field', 'fluid-checkout' ),
 						'id'                => 'fc_shipping_phone_field_position',
 						'options'           => array(
 							'shipping_address' => __( 'Shipping address', 'fluid-checkout' ),
