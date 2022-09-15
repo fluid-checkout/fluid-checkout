@@ -34,51 +34,51 @@ class FluidCheckout_WooCommercePayPalPayments extends FluidCheckout {
 		if ( $this->smart_button_module ) {
 			$plugin_version = $this->get_plugin_version( 'woocommerce-paypal-payments/woocommerce-paypal-payments.php' );
 
-			// PayPal buttons
+			// Place order position
+			$place_order_position = get_option( 'fc_checkout_place_order_position', 'below_payment_section' );
+
+			// PayPal hooks
 			$checkout_button_renderer_hook = apply_filters( 'woocommerce_paypal_payments_checkout_button_renderer_hook', 'woocommerce_review_order_after_payment' );
+			$checkout_dcc_renderer_hook = apply_filters( 'woocommerce_paypal_payments_checkout_dcc_renderer_hook', 'woocommerce_review_order_after_submit' );
 
 			// Versions 1.9.2+
 			if ( version_compare( $plugin_version, '1.9.2', '>=' ) ) {
 				$this->remove_action_for_closure( $checkout_button_renderer_hook, 10 );
+				remove_action( $checkout_dcc_renderer_hook, array( $this->smart_button_module, 'message_renderer' ), 11 );
+
+				if ( 'below_payment_section' === $place_order_position || 'both_payment_and_order_summary' === $place_order_position ) {
+					// PayPal buttons
+					add_action( 'fc_output_step_payment', array( $this, 'output_button_wrappers' ), 110 );
+					add_action( 'fc_output_step_payment', array( $this->smart_button_module, 'message_renderer' ), 111 );
+				}
+				else if ( 'below_order_summary' === $place_order_position ) {
+					// PayPal buttons
+					add_action( 'woocommerce_review_order_after_submit', array( $this, 'output_button_wrappers' ), 40 );
+					add_action( 'woocommerce_review_order_after_submit', array( $this->smart_button_module, 'message_renderer' ), 41 );
+				}
 			}
 			// Versions up to 1.9.1
 			else {
 				remove_action( $checkout_button_renderer_hook, array( $this->smart_button_module, 'button_renderer' ), 10 );
-			}
+				remove_action( $checkout_dcc_renderer_hook, array( $this->smart_button_module, 'message_renderer' ), 11 );
 
-			// Place order position
-			$place_order_position = get_option( 'fc_checkout_place_order_position', 'below_payment_section' );
-			if ( 'below_payment_section' === $place_order_position || 'both_payment_and_order_summary' === $place_order_position ) {
-				// Versions 1.9.2+
-				if ( version_compare( $plugin_version, '1.9.2', '>=' ) ) {
-					// PayPal buttons
-					add_action( 'fc_output_step_payment', array( $this, 'output_button_wrappers' ), 110 );
-				}
-				// Versions up to 1.9.1
-				else {
+				if ( 'below_payment_section' === $place_order_position || 'both_payment_and_order_summary' === $place_order_position ) {
 					// PayPal buttons
 					add_action( 'fc_output_step_payment', array( $this->smart_button_module, 'button_renderer' ), 110 );
+					add_action( 'fc_output_step_payment', array( $this->smart_button_module, 'message_renderer' ), 111 );
 				}
-
-				// Widget area after submit button
-				if ( class_exists( 'FluidCheckout_CheckoutWidgetAreas' ) ) {
-					remove_action( 'woocommerce_review_order_after_submit', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 50 );
-					add_action( 'fc_output_step_payment', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 150 );
-				}
-			}
-			else if ( 'below_order_summary' === $place_order_position ) {
-				// Versions 1.9.2+
-				if ( version_compare( $plugin_version, '1.9.2', '>=' ) ) {
-					// PayPal buttons
-					add_action( 'woocommerce_review_order_after_submit', array( $this, 'output_button_wrappers' ), 40 );
-				}
-				// Versions up to 1.9.1
-				else {
+				else if ( 'below_order_summary' === $place_order_position ) {
 					// PayPal buttons
 					add_action( 'woocommerce_review_order_after_submit', array( $this->smart_button_module, 'button_renderer' ), 40 );
+					add_action( 'woocommerce_review_order_after_submit', array( $this->smart_button_module, 'message_renderer' ), 41 );
 				}
 			}
-			
+
+			// Widget area after submit button
+			if ( class_exists( 'FluidCheckout_CheckoutWidgetAreas' ) && ( 'below_payment_section' === $place_order_position || 'both_payment_and_order_summary' === $place_order_position ) ) {
+				remove_action( 'woocommerce_review_order_after_submit', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 50 );
+				add_action( 'fc_output_step_payment', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 150 );
+			}
 		}
 	}
 
@@ -86,7 +86,7 @@ class FluidCheckout_WooCommercePayPalPayments extends FluidCheckout {
 
 	/**
 	 * Output the button wrappers.
-	 * @see annonymous function added to checkout button hook in `SmartButton::render_button_wrapper_registrar`
+	 * @see anonymous function added to checkout button hook in `SmartButton::render_button_wrapper_registrar`
 	 */
 	public function output_button_wrappers() {
 		// Bail if PayPal Smart Button module or gateway classes are not available
