@@ -3362,15 +3362,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Use the `WC_Customer` object for supported properties
 		foreach ( $shipping_fields as $field_key => $field_args ) {
-
 			// Get billing field key
 			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
 
-			// Maybe add field key to the list of fields to copy
-			if ( ! in_array( $billing_field_key, $skip_field_keys ) ) {
-				$billing_copy_shipping_field_keys[] = $billing_field_key;
-			}
+			// Skip some fields
+			if ( in_array( $billing_field_key, $skip_field_keys ) ) { continue; }
 
+			$billing_copy_shipping_field_keys[] = $billing_field_key;
 		}
 
 		// Filter list leaving only billing fields that actually exist
@@ -3527,22 +3525,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Maybe set posted data for billing address to same as shipping
 		if ( ! $this->is_billing_same_as_shipping() ) { return $post_data; }
 
+		// Get list of billing fields to copy from shipping fields
+		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
+
+		// Get list of billing fields to skip copying from shipping fields
+		$skip_field_keys = apply_filters( 'fc_billing_same_as_shipping_skip_fields', array() );
+
 		// Iterate posted data
-		foreach( $post_data as $field_key => $field_value ) {
-			// Only process shipping fields
-			if ( strpos( $field_key, 'shipping_' ) === 0 ) {
+		foreach( $billing_copy_shipping_field_keys as $field_key ) {
+			// Skip some fields
+			if ( in_array( $field_key, $skip_field_keys ) ) { continue; }
+			
+			// Get shipping field key
+			$shipping_field_key = str_replace( 'billing_', 'shipping_', $field_key );
 
-				// Get billing field key
-				$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
-
-				// Maybe skip field
-				$skip_field_keys = apply_filters( 'fc_billing_same_as_shipping_skip_fields', array() );
-				if ( ! in_array( $billing_field_key, $skip_field_keys ) ) {
-					// Update billing field values
-					$post_data[ $billing_field_key ] = isset( $post_data[ $field_key ] ) ? $post_data[ $field_key ] : null;
-				}
-
-			}
+			// Update billing field values
+			$post_data[ $field_key ] = isset( $post_data[ $shipping_field_key ] ) ? $post_data[ $shipping_field_key ] : null;
 		}
 
 		return $post_data;
