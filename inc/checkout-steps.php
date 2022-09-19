@@ -3360,7 +3360,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get list of billing fields to skip copying from shipping fields
 		$skip_field_keys = apply_filters( 'fc_billing_same_as_shipping_skip_fields', array() );
 
-		// Use the `WC_Customer` object for supported properties
+		// Iterate shipping fields
 		foreach ( $shipping_fields as $field_key => $field_args ) {
 			// Get billing field key
 			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
