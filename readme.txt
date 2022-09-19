@@ -371,6 +371,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Billing phone required message being displayed when billing phone is displayed in the "Contact" step and "Billing same as shipping address" checkbox is checked and the shipping phone field is empty.
+
 = 2.0.7 - 2022-09-13 =
 
 * Bump tested up to WordPress 6.0.2 and WooCommerce 6.8.2
