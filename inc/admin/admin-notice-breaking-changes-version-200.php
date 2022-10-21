@@ -80,7 +80,7 @@ class FluidCheckout_AdminNotices_BreakingChanges_Version_200 extends FluidChecko
 			'error'          => true,
 			'actions'        => array(
 				sprintf( '<a href="%s" class="button button-primary" target="_blank">%s</a>', 'https://fluidcheckout.com/version-2-moved-features/', __( 'Keep using moved features', 'fluid-checkout' ) ),
-				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', 'https://fluidcheckout.com/product/fluid-checkout-pro/', __( 'Upgrade to PRO', 'fluid-checkout' ) ),
+				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', 'https://fluidcheckout.com/pricing/', __( 'Upgrade to PRO', 'fluid-checkout' ) ),
 				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', 'https://wordpress.org/support/plugin/fluid-checkout/', __( 'I need help!', 'fluid-checkout' ) ),
 			),
 		);
