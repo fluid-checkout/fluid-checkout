@@ -103,6 +103,8 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		$title_class .= ' title-design-' . $title_design;
 		$title_class .= ' color-scheme-' . $title_color;
 
+		woodmart_enqueue_inline_style( 'page-title' );
+
 		// Bail if title disabled
 		if ( 'disabled' === $title_design ) { return; }
 		?>
