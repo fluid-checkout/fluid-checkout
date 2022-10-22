@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper #payment .payment_methods > li > label img {
+	max-height: none;
+	max-width: none;
+}
