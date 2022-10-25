@@ -31,9 +31,6 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 110 );
 		add_filter( 'fc_billing_same_as_shipping_field_keys' , array( $this, 'remove_billing_company_from_copy_shipping_field_keys' ), 10 );
 
-		// Make fields required
-		add_filter( 'wcbcf_billing_fields', array( $this, 'make_person_type_fields_required' ), 110 );
-
 		// Step complete billing
 		add_filter( 'fc_is_step_complete_billing_field_keys_skip_list', array( $this, 'maybe_add_step_complete_billing_field_skip_list_by_person_type' ), 10 );
 
@@ -255,42 +252,6 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			$billing_copy_shipping_field_keys = array_diff( $billing_copy_shipping_field_keys, array( 'billing_company' ) );
 		}
 		return $billing_copy_shipping_field_keys;
-	}
-
-
-
-	/**
-	 * Make billing fields registered as required.
-	 *
-	 * @param   array  $new_fields  Checkout field args
-	 */
-	public function make_person_type_fields_required( $new_fields ) {
-		// // Get plugin settings
-		$settings = get_option( 'wcbcf_settings' );
-		$only_brazil = isset( $settings[ 'only_brazil' ] ) && '1' == $settings[ 'only_brazil' ] ? true : false;
-
-		// Get billing country
-		$billing_country = WC()->checkout->get_value( 'billing_country' );
-
-		// Bail if person type fields are set as required only when billing country is Brazil
-		if ( $only_brazil && 'BR' !== $billing_country ) { return $new_fields; }
-
-		// Get person type
-		$person_type = WC()->checkout()->get_value( 'billing_persontype' );
-
-		// Set existing fields as required
-		if ( array_key_exists( 'billing_persontype', $new_fields ) ) { $new_fields[ 'billing_persontype' ][ 'required' ] = true; }
-
-		if ( 1 == $person_type ) { // 1 = Individual
-			if ( array_key_exists( 'billing_cpf', $new_fields ) ) { $new_fields[ 'billing_cpf' ][ 'required' ] = true; }
-			if ( array_key_exists( 'billing_rg', $new_fields ) ) { $new_fields[ 'billing_rg' ][ 'required' ] = true; }
-		}
-		else if ( 2 == $person_type ) { // 2 = Legal Person
-			if ( array_key_exists( 'billing_cnpj', $new_fields ) ) { $new_fields[ 'billing_cnpj' ][ 'required' ] = true; }
-			if ( array_key_exists( 'billing_ie', $new_fields ) ) { $new_fields[ 'billing_ie' ][ 'required' ] = true; }
-		}
-
-		return $new_fields;
 	}
 
 
