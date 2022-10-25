@@ -142,9 +142,7 @@ jQuery( function( $ ) {
 							if ( window.CheckoutValidation ) {
 								CheckoutValidation.clearValidationResults( document.querySelector( '#billing_company' ), document.querySelector( '#billing_company_field' ) );
 							}
-							// $( '#billing_company_field' ).removeClass( 'woocommerce-invalid-required-field' );
-							// $( '#billing_company_field' ).removeClass( 'woocommerce-invalid' );
-						}
+						}c
 					}
 				}).change();
 			}
