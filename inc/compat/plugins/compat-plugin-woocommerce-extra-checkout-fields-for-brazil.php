@@ -269,6 +269,12 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		$skip_list[] = 'billing_cpf';
 		$skip_list[] = 'billing_rg';
 		$skip_list[] = 'billing_company';
+		$skip_list[] = 'persontype';
+		$skip_list[] = 'cnpj';
+		$skip_list[] = 'ie';
+		$skip_list[] = 'cpf';
+		$skip_list[] = 'rg';
+		$skip_list[] = 'company';
 
 		return $skip_list;
 	}
