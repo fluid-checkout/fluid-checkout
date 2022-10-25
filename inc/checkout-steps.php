@@ -1803,7 +1803,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			<div <?php echo $section_toggle_attributes_str; // WPCS: XSS ok. ?>>
 				<div <?php echo $section_content_inner_attributes_str; // WPCS: XSS ok. ?>>
 					<a <?php echo $toggle_attributes_str; // WPCS: XSS ok. ?>>
-						<?php echo esc_html( $toggle_label ); ?>
+						<?php echo wp_kses( $toggle_label, array( 'span' => array(), 'strong' => array(), 'small' => array() ) ); ?>
 					</a>
 				</div>
 			</div>
