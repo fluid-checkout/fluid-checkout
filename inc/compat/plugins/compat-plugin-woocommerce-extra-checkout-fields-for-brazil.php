@@ -73,6 +73,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			array(
 				'state'              => esc_js( __( 'State', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
 				'required'           => esc_js( __( 'required', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
+				// CHANGE: Added new parameter to hold label for optional fields
 				'optional'           => esc_js( __( 'optional', 'woocommerce' ) ),
 				// CHANGE: Always set mailcheck feature as disabled
 				'mailcheck'          => 'no',
