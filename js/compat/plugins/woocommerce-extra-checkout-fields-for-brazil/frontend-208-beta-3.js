@@ -128,11 +128,22 @@ jQuery( function( $ ) {
 						// CHANGE: Maybe make company field `required` on the frontend in cases which
 						// the company field is validated as required on the server-side.
 						var currentCountry = $( '#billing_country' ).val();
+						$( '#billing_company_field label .optional' ).remove();
+						$( '#billing_company_field label .required' ).remove();
 						if ( 'no' === wcbcf_public_params.only_brazil || 'BR' === currentCountry ) {
-							$( '#billing_company_field label .required' ).remove();
-							$( '#billing_company_field label .optional' ).remove();
 							$( '#billing_company_field' ).addClass( 'validate-required' );
 							$( '#billing_company_field label' ).append( ' <abbr class="required" title="' + wcbcf_public_params.required + '">*</abbr>' );
+						}
+						else {
+							$( '#billing_company_field' ).removeClass( 'validate-required' );
+							$( '#billing_company_field label' ).append( '<span class="optional">(' + wcbcf_public_params.optional + ')</span>' );
+
+							// Maybe clear Fluid Checkout inline validation results for the company field
+							if ( window.CheckoutValidation ) {
+								CheckoutValidation.clearValidationResults( document.querySelector( '#billing_company' ), document.querySelector( '#billing_company_field' ) );
+							}
+							// $( '#billing_company_field' ).removeClass( 'woocommerce-invalid-required-field' );
+							// $( '#billing_company_field' ).removeClass( 'woocommerce-invalid' );
 						}
 					}
 				}).change();
