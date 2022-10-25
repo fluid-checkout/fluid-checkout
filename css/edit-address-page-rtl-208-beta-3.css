@@ -383,8 +383,8 @@ div.woocommerce .fc-expansible-form-section.form-row .form-row {
   width: 100%;
 }
 
-@media (min-width: 750px) {
-  div.woocommerce .fc-expansible-form-section.form-row.form-row-first + .form-row-last .fc-expansible-form-section__toggle .collapsible-content__inner {
-    padding-top: 1.8em;
-  }
+div.woocommerce form .fc-expansible-form-section.form-row + .form-row {
+  clear: left;
+  margin-right: 0;
+  margin-left: 0;
 }
