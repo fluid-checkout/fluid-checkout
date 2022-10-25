@@ -2051,7 +2051,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function change_message_registration_error_email_exists( $message_html ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $template; }
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $message_html; }
 
 		$message_html = str_replace( '<a href="#" class="showlogin', '<a href="#" data-flyout-toggle data-flyout-target="[data-flyout-checkout-login]" class="', $message_html );
 		return $message_html;
