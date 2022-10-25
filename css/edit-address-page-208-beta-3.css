@@ -103,7 +103,8 @@ div.woocommerce form .form-row.form-row-one-third {
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-one-third {
-    width: 30.666%;
+    width: 30.666% !important;
+    /* Needed to override theme styles */
   }
 }
 
@@ -112,7 +113,8 @@ div.woocommerce form .form-row.form-row-two-thirds {
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-two-thirds {
-    width: 65.33%;
+    width: 65.33% !important;
+    /* Needed to override theme styles */
   }
 }
 
@@ -381,8 +383,7 @@ div.woocommerce .fc-expansible-form-section.form-row .form-row {
   width: 100%;
 }
 
-@media (min-width: 750px) {
-  div.woocommerce .fc-expansible-form-section.form-row.form-row-first + .form-row-last .fc-expansible-form-section__toggle .collapsible-content__inner {
-    padding-top: 1.8em;
-  }
+div.woocommerce form .fc-expansible-form-section.form-row,
+div.woocommerce form .fc-expansible-form-section.form-row + .form-row {
+  clear: left;
 }

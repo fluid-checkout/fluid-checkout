@@ -54,6 +54,9 @@ jQuery( function( $ ) {
 			if ($('#shipping_country').val() === 'BR' ) {
 				wc_ecfb_frontend.maskShipping();
 			}
+
+			// CHANGE: Apply billing country changes to fields on initialization
+			$( document.body ).on( 'updated_checkout', wc_ecfb_frontend.billing_country_change );
 		},
 
 		/**
@@ -72,28 +75,34 @@ jQuery( function( $ ) {
 			}
 		},
 
-		person_type_fields: function() {
-			// Required fields.
-			if ( 'no' === wcbcf_public_params.only_brazil ) {
-                $( '.person-type-field label .required' ).remove();
+		// CHANGE: Move billing country change handler function to a named function that can be reused
+		billing_country_change: function () {
+			// CHANGE: Get value from the field element directly, instead of using reference from `this` keyword
+			var current = $( '#billing_country' ).val();
+
+			if ( 'BR' === current ) {
+				$( '.person-type-field label .required' ).remove();
 				$( '.person-type-field' ).addClass( 'validate-required' );
 				$( '.person-type-field label' ).append( ' <abbr class="required" title="' + wcbcf_public_params.required + '">*</abbr>' );
 			} else {
-				$( '#billing_country' ).on( 'change', function () {
-					var current = $( this ).val();
+				$( '.person-type-field' ).removeClass( 'validate-required' );
+				$( '.person-type-field label .required' ).remove();
+			}
 
-					if ( 'BR' === current ) {
-                        $( '.person-type-field label .required' ).remove();
-						$( '.person-type-field' ).addClass( 'validate-required' );
-						$( '.person-type-field label' ).append( ' <abbr class="required" title="' + wcbcf_public_params.required + '">*</abbr>' );
-					} else {
-						$( '.person-type-field' ).removeClass( 'validate-required' );
-						$( '.person-type-field label .required' ).remove();
-					}
-				// CHANGE: Do not trigger field `change` event after updating the field attributes
-				// to prevent an infinite loop where the `change` event triggers the `update_checkout` event,
-				// which in turn, would run this code again and trigger the field `change` event, and so on.
-				} );
+			// CHANGE: Do not trigger field `change` event after updating the field attributes
+			// to prevent an infinite loop where the `change` event triggers the `update_checkout` event,
+			// which in turn, would run this code again and trigger the field `change` event, and so on.
+		},
+
+		person_type_fields: function() {
+			// Required fields.
+			if ( 'no' === wcbcf_public_params.only_brazil ) {
+				$( '.person-type-field label .required' ).remove();
+				$( '.person-type-field' ).addClass( 'validate-required' );
+				$( '.person-type-field label' ).append( ' <abbr class="required" title="' + wcbcf_public_params.required + '">*</abbr>' );
+			} else {
+				// CHANGE: Use billing country change handler from named function
+				$( '#billing_country' ).on( 'change', wc_ecfb_frontend.billing_country_change );
 			}
 
 			if ( '1' === wcbcf_public_params.person_type ) {
@@ -115,6 +124,25 @@ jQuery( function( $ ) {
 						$( '#billing_company_field' ).show();
 						$( '#billing_cnpj_field' ).show();
 						$( '#billing_ie_field' ).show();
+
+						// CHANGE: Maybe make company field `required` on the frontend in cases which
+						// the company field is validated as required on the server-side.
+						var currentCountry = $( '#billing_country' ).val();
+						$( '#billing_company_field label .optional' ).remove();
+						$( '#billing_company_field label .required' ).remove();
+						if ( 'no' === wcbcf_public_params.only_brazil || 'BR' === currentCountry ) {
+							$( '#billing_company_field' ).addClass( 'validate-required' );
+							$( '#billing_company_field label' ).append( ' <abbr class="required" title="' + wcbcf_public_params.required + '">*</abbr>' );
+						}
+						else {
+							$( '#billing_company_field' ).removeClass( 'validate-required' );
+							$( '#billing_company_field label' ).append( '<span class="optional">(' + wcbcf_public_params.optional + ')</span>' );
+
+							// Maybe clear Fluid Checkout inline validation results for the company field
+							if ( window.CheckoutValidation ) {
+								CheckoutValidation.clearValidationResults( document.querySelector( '#billing_company' ), document.querySelector( '#billing_company_field' ) );
+							}
+						}c
 					}
 				}).change();
 			}

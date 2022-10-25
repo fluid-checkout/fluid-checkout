@@ -493,6 +493,7 @@
 		for ( var i = 0; i < validationTypeKeys.length; i++ ) {
 			var type = validationTypeKeys[i];
 			formRow.classList.remove( _settings.invalidClass +'-'+ type );
+			formRow.classList.remove( _settings.invalidClass +'-'+ type + '-field' );
 		}
 
 		// Remove valid/invalid classes
