@@ -1852,7 +1852,8 @@ div.woocommerce form .form-row.form-row-one-third {
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-one-third {
-    width: 30.666%;
+    width: 30.666% !important;
+    /* Needed to override theme styles */
   }
 }
 
@@ -1861,7 +1862,8 @@ div.woocommerce form .form-row.form-row-two-thirds {
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-two-thirds {
-    width: 65.33%;
+    width: 65.33% !important;
+    /* Needed to override theme styles */
   }
 }
 
