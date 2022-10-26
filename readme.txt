@@ -376,6 +376,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with theme Woodmart, fixing the styles for the Woodmart checkout steps section on the checkout page when using the plugin's header.
 * Improved: Compatibility with theme Blocksy, fixing payment method logos stretched and checkboxes missing checked state styles.
 * Improved: Remove checkout field validation classes ending with `-field` when clearing checkout field validation state.
+* Removed: Admin notice about features moved to the PRO version.
 * Fixed: Position of optional fields to always start a new row in the checkout form, making it easier to scan and find optional fields and fixes layout issues.
 * Fixed: Returning invalid variable when trying to show login link on checkout error message for user already registered.
 * Fixed: Billing phone required message being displayed when billing phone is displayed in the "Contact" step and "Billing same as shipping address" checkbox is checked and the shipping phone field is empty.

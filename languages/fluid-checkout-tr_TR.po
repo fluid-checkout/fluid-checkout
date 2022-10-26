@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-03 18:58+0000\n"
-"PO-Revision-Date: 2022-09-13 09:35+0000\n"
+"PO-Revision-Date: 2022-10-26 11:26+0000\n"
 "Last-Translator: BeyazBirKutu\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "(Required)"
 msgstr "(Gerekli)"
 
-#: fluid-checkout.php:408
+#: fluid-checkout.php:407
 #, php-format
 #| msgid ""
 #| "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -36,15 +36,7 @@ msgstr ""
 "<strong> %1$s</strong>, <strong>%2$s</strong>'nin yüklenmesini ve "
 "etkinleştirilmesini gerektirir. <a href=\"%4$s\">%3$s</a>"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:79
-msgid ""
-"<strong>Express checkout</strong>, <strong>Local pickup</strong>, <strong>"
-"Gift message</strong> and <strong>Packing list templates</strong> have been "
-"moved to Fluid Checkout PRO. <br>For a limited time, you can get these "
-"features at no extra cost."
-msgstr ""
-
-#: fluid-checkout.php:404
+#: fluid-checkout.php:403
 #, fuzzy, php-format
 msgid "Activate %s"
 msgstr "Etkinleştir %s"
@@ -428,7 +420,7 @@ msgstr "Sepeti Düzenle"
 msgid "Enable integrated coupon code section"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:116
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:115
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Posta Kontrolünü Etkinleştir: (devre dışı bırakılmış özellik)"
 
@@ -444,10 +436,6 @@ msgstr "Özellikler"
 #: inc/admin/admin-settings-fluid-checkout.php:25
 msgid "Fluid Checkout"
 msgstr "Fluid Checkout"
-
-#: inc/admin/admin-notice-breaking-changes-version-200.php:78
-msgid "Fluid Checkout 2.0 - Important changes!"
-msgstr ""
 
 #. Name of the plugin
 #| msgid "Fluid Checkout for WooCommerce"
@@ -468,7 +456,7 @@ msgstr ""
 msgid "Go to Germanized settings"
 msgstr ""
 
-#: fluid-checkout.php:400
+#: fluid-checkout.php:399
 msgid "Go to Plugin Search"
 msgstr "Eklenti Aramaya Git"
 
@@ -518,13 +506,12 @@ msgstr "HTML renk değeri. örn: #f3f3f3"
 msgid "https://fluidcheckout.com/"
 msgstr "https://fluidcheckout.com/"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:84
 #: inc/admin/admin-notice-review-request.php:48
 #| msgid "I Need Help!"
 msgid "I need help!"
 msgstr "Yardıma İhtiyacım Var!"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:119
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:118
 msgid ""
 "If checked informs typos in email to users. (This feature has been disabled "
 "because Fluid Checkout offers the feature. Changes to this option will not "
@@ -584,10 +571,6 @@ msgstr ""
 "azaltacaktır, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
 "fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
 "target=\"_blank\">araştırmayı okuyun</a>."
-
-#: inc/admin/admin-notice-breaking-changes-version-200.php:82
-msgid "Keep using moved features"
-msgstr ""
 
 #: inc/admin/admin-settings-general.php:60
 #, fuzzy
@@ -725,7 +708,7 @@ msgstr "Sipariş notları"
 msgid "Order number and receipt will be sent to this email address."
 msgstr "Sipariş numarası ve makbuz bu e-posta adresine gönderilecektir."
 
-#: inc/checkout-steps.php:3782 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3780 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Sipariş özeti"
 
@@ -739,7 +722,7 @@ msgstr ""
 msgid "Page background color"
 msgstr "Sayfa arka plan rengi"
 
-#: inc/checkout-steps.php:3601
+#: inc/checkout-steps.php:3599
 msgid "Payment method"
 msgstr "Ödeme yöntemi"
 
@@ -942,7 +925,6 @@ msgstr "Araçlar"
 msgid "Troubleshooting"
 msgstr "Sorun Giderme"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:83
 #: inc/admin/admin.php:95
 msgid "Upgrade to PRO"
 msgstr ""
@@ -984,7 +966,7 @@ msgid ""
 "checkout feature in the plugin settings."
 msgstr ""
 
-#: fluid-checkout.php:397
+#: fluid-checkout.php:396
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
