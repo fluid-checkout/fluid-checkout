@@ -56,12 +56,12 @@ div.woocommerce form .form-row.form-row-wide {
 
 div.woocommerce form .form-row.form-row-one-third {
 	width: 100% !important; // Needed to override theme styles
-	@media (#{$bp-larger-than-phablet}) { width: 30.666%; }
+	@media (#{$bp-larger-than-phablet}) { width: 30.666% !important; /* Needed to override theme styles */ }
 }
 
 div.woocommerce form .form-row.form-row-two-thirds {
 	width: 100% !important; // Needed to override theme styles
-	@media (#{$bp-larger-than-phablet}) { width: 65.33%; }
+	@media (#{$bp-larger-than-phablet}) { width: 65.33% !important; /* Needed to override theme styles */ }
 }
 
 div.woocommerce form .form-row.form-row-first,

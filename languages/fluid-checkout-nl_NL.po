@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-13 09:20+0000\n"
-"PO-Revision-Date: 2022-10-19 16:35+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: nl\n"
+"POT-Creation-Date: 2022-03-29 12:58+0000\n"
+"PO-Revision-Date: 2022-10-26 11:26+0000\n"
+"Last-Translator: Diego Versiani\n"
+"Language-Team: Dutch\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,22 +22,14 @@ msgstr "(Experimenteel) Gebruik de kop- en voettekst van de pagina van het thema
 msgid "(Required)"
 msgstr "(Verplicht)"
 
-#: fluid-checkout.php:408
+#: fluid-checkout.php:407
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
 "activated. <a href=\"%4$s\">%3$s</a>"
 msgstr "<strong>%1$s</strong> vereist dat <strong>%2$s</strong> moet worden geïnstalleerd en geactiveerd. <a href=\"%4$s\">%3$s</a>"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:79
-msgid ""
-"<strong>Express checkout</strong>, <strong>Local pickup</strong>, "
-"<strong>Gift message</strong> and <strong>Packing list templates</strong> "
-"have been moved to Fluid Checkout PRO. <br>For a limited time, you can get "
-"these features at no extra cost."
-msgstr "<strong>Express checkout</strong>, <strong>Lokaal ophalen</strong>, <strong>Cadeaubericht</strong> en <strong>Paklijst sjablonen</strong> zijn verplaatst naar Fluid Checkout PRO. <br>Voor een beperkte tijd, kun je deze functies krijgen zonder extra kosten."
-
-#: fluid-checkout.php:404
+#: fluid-checkout.php:403
 #, php-format
 msgid "Activate %s"
 msgstr "%s activeren"
@@ -396,7 +388,7 @@ msgstr "Winkelwagen bijwerken"
 msgid "Enable integrated coupon code section"
 msgstr "Geïntegreerde kortingscodesectie inschakelen"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:116
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:115
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "E-mailcontrole inschakelen: (uitgeschakelde functie)"
 
@@ -412,10 +404,6 @@ msgstr "Functies"
 #: inc/admin/admin-settings-fluid-checkout.php:25
 msgid "Fluid Checkout"
 msgstr "Fluid Checkout"
-
-#: inc/admin/admin-notice-breaking-changes-version-200.php:78
-msgid "Fluid Checkout 2.0 - Important changes!"
-msgstr "Fluid Checkout 2.0 - Belangrijke wijzigingen!"
 
 #. Name of the plugin
 msgid "Fluid Checkout for WooCommerce - Lite"
@@ -435,7 +423,7 @@ msgstr "Duitse PRO meerstappen afrekenfunctie moet worden uitgeschakeld bij het 
 msgid "Go to Germanized settings"
 msgstr "Ga naar Duitse instellingen"
 
-#: fluid-checkout.php:400
+#: fluid-checkout.php:399
 msgid "Go to Plugin Search"
 msgstr "Ga naar Plugin zoeken"
 
@@ -485,12 +473,11 @@ msgstr "HTML-kleurwaarde. dwz: #f3f3f3"
 msgid "https://fluidcheckout.com/"
 msgstr "https://fluidcheckout.com/"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:84
 #: inc/admin/admin-notice-review-request.php:48
 msgid "I need help!"
 msgstr "Ik heb hulp nodig!"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:119
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:118
 msgid ""
 "If checked informs typos in email to users. (This feature has been disabled "
 "because Fluid Checkout offers the feature. Changes to this option will not "
@@ -523,10 +510,6 @@ msgid ""
 "fields#3-default-billing--shipping-and-hide-the-fields-entirely\" target="
 "\"_blank\">read the research</a>."
 msgstr "Het wordt aanbevolen om deze optie aangevinkt te laten. Het factuuradres bij het afrekenen begint met de optie \"Facturering hetzelfde als verzending\" die standaard is aangevinkt. Dit zal het aantal open invoervelden bij het afrekenen aanzienlijk verminderen, <a href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">lees het onderzoek</a>."
-
-#: inc/admin/admin-notice-breaking-changes-version-200.php:82
-msgid "Keep using moved features"
-msgstr "Verplaatste functies blijven gebruiken"
 
 #: inc/admin/admin-settings-general.php:60
 msgid "Layout Options"
@@ -651,7 +634,7 @@ msgstr "Notities bij bestelling"
 msgid "Order number and receipt will be sent to this email address."
 msgstr "Bestelnummer en ontvangstbewijs worden naar dit e-mailadres verzonden."
 
-#: inc/checkout-steps.php:3782 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3780 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Besteloverzicht"
 
@@ -665,7 +648,7 @@ msgstr "Voer de sectie Afrekenstappen uit het Woodmart-thema uit wanneer je de k
 msgid "Page background color"
 msgstr "Achtergrondkleur van pagina"
 
-#: inc/checkout-steps.php:3601
+#: inc/checkout-steps.php:3599
 msgid "Payment method"
 msgstr "Betaalmethode"
 
@@ -851,7 +834,6 @@ msgstr "Tools"
 msgid "Troubleshooting"
 msgstr "Problemen oplossen"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:83
 #: inc/admin/admin.php:95
 msgid "Upgrade to PRO"
 msgstr "Upgraden naar PRO"
@@ -887,7 +869,7 @@ msgid ""
 "checkout feature in the plugin settings."
 msgstr "Bij het gebruik van Fluid Checkout wordt de meerstappen-functie van de Duitse PRO-plugin overbodig en kan deze <strong>kritieke fouten veroorzaken tijdens het verwerken van nieuwe bestellingen</strong>. Schakel de Duitse PRO meestappen afrekenfunctie uit in de plugin-instellingen."
 
-#: fluid-checkout.php:397
+#: fluid-checkout.php:396
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
