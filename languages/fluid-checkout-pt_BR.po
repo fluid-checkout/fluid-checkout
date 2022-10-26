@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2022-09-13 09:27+0000\n"
+"PO-Revision-Date: 2022-10-26 11:26+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "(Required)"
 msgstr "(Obrigatório)"
 
-#: fluid-checkout.php:408
+#: fluid-checkout.php:407
 #, php-format
 #| msgid ""
 #| "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -36,19 +36,7 @@ msgstr ""
 "<strong>%1$s</strong> requer que <strong>%2$s</strong> esteja instalado e "
 "ativado. <a href=\"%4$s\">%3$s</a>"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:79
-msgid ""
-"<strong>Express checkout</strong>, <strong>Local pickup</strong>, <strong>"
-"Gift message</strong> and <strong>Packing list templates</strong> have been "
-"moved to Fluid Checkout PRO. <br>For a limited time, you can get these "
-"features at no extra cost."
-msgstr ""
-"<strong>Checkout expresso</strong>, <strong>Retirada no local</strong>, "
-"<strong>Mensagem de presente</strong> e <strong>Modelos de lista de "
-"embalagem</strong> foram movidos para o Fluid Checkout PRO. <br>Por um tempo "
-"limitado, você pode obter esses recursos sem custo extra."
-
-#: fluid-checkout.php:404
+#: fluid-checkout.php:403
 #, php-format
 msgid "Activate %s"
 msgstr "Ativar %s"
@@ -448,7 +436,7 @@ msgstr "Editar carrinho"
 msgid "Enable integrated coupon code section"
 msgstr "Habilitar seção de código de cupom integrado"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:116
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:115
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Habilitar Sugestões de E-mail: (funcionalidade desativada)"
 
@@ -464,10 +452,6 @@ msgstr "Funções do plugin"
 #: inc/admin/admin-settings-fluid-checkout.php:25
 msgid "Fluid Checkout"
 msgstr "Fluid Checkout"
-
-#: inc/admin/admin-notice-breaking-changes-version-200.php:78
-msgid "Fluid Checkout 2.0 - Important changes!"
-msgstr "Fluid Checkout 2.0 - Mudanças importantes!"
 
 #. Name of the plugin
 #| msgid "Fluid Checkout for WooCommerce"
@@ -490,7 +474,7 @@ msgstr ""
 msgid "Go to Germanized settings"
 msgstr "Ir para configurações do plugin Germanized"
 
-#: fluid-checkout.php:400
+#: fluid-checkout.php:399
 msgid "Go to Plugin Search"
 msgstr "Ir para Busca de Plugin"
 
@@ -540,13 +524,12 @@ msgstr "Valor de cor para HTML. Ex: #f3f3f3"
 msgid "https://fluidcheckout.com/"
 msgstr "https://fluidcheckout.com/"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:84
 #: inc/admin/admin-notice-review-request.php:48
 #| msgid "I Need Help!"
 msgid "I need help!"
 msgstr "Eu preciso de ajuda!"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:119
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:118
 msgid ""
 "If checked informs typos in email to users. (This feature has been disabled "
 "because Fluid Checkout offers the feature. Changes to this option will not "
@@ -604,10 +587,6 @@ msgstr ""
 "abertos no checkout, <a href=\"https://baymard.com/blog/checkout-flow-"
 "average-form-fields#3-default-billing--shipping-and-hide-the-fields-"
 "entirely\" target=\"_blank\">leia a pesquisa (em inglês)</a>."
-
-#: inc/admin/admin-notice-breaking-changes-version-200.php:82
-msgid "Keep using moved features"
-msgstr "Continuar usando recursos movidos"
 
 #: inc/admin/admin-settings-general.php:60
 msgid "Layout Options"
@@ -745,7 +724,7 @@ msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 "O número do pedido e o recibo serão enviados para este endereço de e-mail."
 
-#: inc/checkout-steps.php:3782 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3780 inc/admin/admin-settings-general.php:145
 #| msgid "Order Summary"
 msgid "Order summary"
 msgstr "Resumo do pedido"
@@ -762,7 +741,7 @@ msgstr ""
 msgid "Page background color"
 msgstr "Cor de fundo da página"
 
-#: inc/checkout-steps.php:3601
+#: inc/checkout-steps.php:3599
 msgid "Payment method"
 msgstr "Forma de pagamento"
 
@@ -976,7 +955,6 @@ msgstr "Ferramentas"
 msgid "Troubleshooting"
 msgstr "Solução de problemas"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:83
 #: inc/admin/admin.php:95
 msgid "Upgrade to PRO"
 msgstr "Atualize para versão PRO"
@@ -1033,7 +1011,7 @@ msgstr ""
 "novos pedidos</strong>. Desative o recurso de check-out em várias etapas do "
 "Germanized PRO nas configurações do plug-in."
 
-#: fluid-checkout.php:397
+#: fluid-checkout.php:396
 msgid "WooCommerce"
 msgstr "WooCommerce"
 

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-03 13:49+0000\n"
-"PO-Revision-Date: 2022-09-13 09:37+0000\n"
+"PO-Revision-Date: 2022-10-26 11:26+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "(Required)"
 msgstr "(Richiesto)"
 
-#: fluid-checkout.php:408
+#: fluid-checkout.php:407
 #, php-format
 #| msgid ""
 #| "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -36,20 +36,7 @@ msgstr ""
 "<strong>%1$s</strong> richiede che <strong>%2$s</strong> sia installato e "
 "attivato. <a href=\"%4$s\">%3$s</a>"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:79
-msgid ""
-"<strong>Express checkout</strong>, <strong>Local pickup</strong>, <strong>"
-"Gift message</strong> and <strong>Packing list templates</strong> have been "
-"moved to Fluid Checkout PRO. <br>For a limited time, you can get these "
-"features at no extra cost."
-msgstr ""
-"<strong>Pagamento rapido</strong>, <strong>Ritiro in loco</strong>, <strong>"
-"Messaggio regalo</strong> e <strong>Modelli di distinta di "
-"imballaggio</strong> sono stati spostati in Fluid Checkout PRO. <br>Per un "
-"periodo di tempo limitato, puoi ottenere queste funzionalità senza costi "
-"aggiuntivi."
-
-#: fluid-checkout.php:404
+#: fluid-checkout.php:403
 #, php-format
 msgid "Activate %s"
 msgstr "Attiva %s"
@@ -448,7 +435,7 @@ msgstr "Modifica Carrello"
 msgid "Enable integrated coupon code section"
 msgstr "Abilita sezione codice coupon integrato"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:116
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:115
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Abilita Mail Check: (funzione disabilitata)"
 
@@ -464,10 +451,6 @@ msgstr "Caratteristiche"
 #: inc/admin/admin-settings-fluid-checkout.php:25
 msgid "Fluid Checkout"
 msgstr "Fluid Checkout"
-
-#: inc/admin/admin-notice-breaking-changes-version-200.php:78
-msgid "Fluid Checkout 2.0 - Important changes!"
-msgstr "Fluid Checkout 2.0 - Cambiamenti importanti!"
 
 #. Name of the plugin
 #| msgid "Fluid Checkout for WooCommerce"
@@ -490,7 +473,7 @@ msgstr ""
 msgid "Go to Germanized settings"
 msgstr "Vai alle impostazioni di Germanized"
 
-#: fluid-checkout.php:400
+#: fluid-checkout.php:399
 msgid "Go to Plugin Search"
 msgstr "Vai alla ricerca dei plugin"
 
@@ -542,13 +525,12 @@ msgstr "Valore del colore HTML. Ad esempio: #f3f3f3"
 msgid "https://fluidcheckout.com/"
 msgstr "https://fluidcheckout.com/"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:84
 #: inc/admin/admin-notice-review-request.php:48
 #| msgid "I Need Help!"
 msgid "I need help!"
 msgstr "Ho bisogno di aiuto!"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:119
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:118
 msgid ""
 "If checked informs typos in email to users. (This feature has been disabled "
 "because Fluid Checkout offers the feature. Changes to this option will not "
@@ -607,10 +589,6 @@ msgstr ""
 "href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
 "billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">leggi la "
 "ricerca</a>."
-
-#: inc/admin/admin-notice-breaking-changes-version-200.php:82
-msgid "Keep using moved features"
-msgstr "Continua a utilizzare le funzioni spostate"
 
 #: inc/admin/admin-settings-general.php:60
 msgid "Layout Options"
@@ -749,7 +727,7 @@ msgstr ""
 "Il numero dell'ordine e la ricevuta verranno inviati a questo indirizzo "
 "email."
 
-#: inc/checkout-steps.php:3782 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3780 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Riepilogo Ordine"
 
@@ -765,7 +743,7 @@ msgstr ""
 msgid "Page background color"
 msgstr "Colore di sfondo della pagina"
 
-#: inc/checkout-steps.php:3601
+#: inc/checkout-steps.php:3599
 msgid "Payment method"
 msgstr "Metodo di Pagamento"
 
@@ -977,7 +955,6 @@ msgstr "Strumenti"
 msgid "Troubleshooting"
 msgstr "Risoluzione dei problemi"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:83
 #: inc/admin/admin.php:95
 msgid "Upgrade to PRO"
 msgstr "Passa a PRO"
@@ -1026,7 +1003,7 @@ msgstr ""
 "durante l'elaborazione di nuovi ordini</strong>. Disattiva la funzione di "
 "verifica multistep PRO germanizzata nelle impostazioni del plug-in."
 
-#: fluid-checkout.php:397
+#: fluid-checkout.php:396
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
