@@ -264,14 +264,16 @@ All labels and other texts added or changed by the plugin are translatable using
 Currently the plugin is translated into the languages below, and more are coming soon:
 
 * English (Default)
-* Dutch - Netherlands (thanks to Robin Bak, Duncan - magnesium-minerals.nl, Damy Bosch - advice.nl)
+* Dutch - Netherlands
 * French - France
 * German - Germany
-* Italian - Italy (thanks to Samuele - floralgarden.it)
+* Italian - Italy
 * Portuguese - Brazil
-* Spanish - Spain (thanks to @gio15 - senseiwpacademy.com)
+* Spanish - Spain
 * Swedish - Sweden (thanks to @kozley, @tobifjellner, @elbogen)
 * Turkish - Turkey (thanks to @orkunakca)
+
+NOTE: All languages are translated using automated methods such as Google Translate or DeepL. If you encounter any errors in the transation to your language, please report them to use and we'll fix it.
 
 ** Want Fluid Checkout in your language? **
 
