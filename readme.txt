@@ -373,6 +373,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Translations for Dutch, French, German, Italian, Spanish and Portuguese Brazil.
 * Improved: Compatibility with theme Woodmart, fixing the styles for the Woodmart checkout steps section on the checkout page when using the plugin's header.
 * Improved: Compatibility with theme Blocksy, fixing payment method logos stretched and checkboxes missing checked state styles.
 * Improved: Remove checkout field validation classes ending with `-field` when clearing checkout field validation state.

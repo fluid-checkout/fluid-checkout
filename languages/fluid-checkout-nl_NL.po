@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-29 12:58+0000\n"
-"PO-Revision-Date: 2022-10-26 11:26+0000\n"
+"PO-Revision-Date: 2022-10-27 22:59+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -11,12 +11,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
-"X-Loco-Version: 2.4.6; wp-5.5.3\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.3; wp-6.0.3"
 
 #: inc/admin/admin-settings-general.php:87
 msgid "(Experimental) Use theme's page header and footer for the checkout page"
-msgstr "(Experimenteel) Gebruik de kop- en voettekst van de pagina van het thema voor de afrekenpagina"
+msgstr ""
+"(Experimenteel) Gebruik de kop- en voettekst van de pagina van het thema "
+"voor de afrekenpagina"
 
 #: inc/checkout-validation.php:260
 msgid "(Required)"
@@ -27,7 +29,9 @@ msgstr "(Verplicht)"
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
 "activated. <a href=\"%4$s\">%3$s</a>"
-msgstr "<strong>%1$s</strong> vereist dat <strong>%2$s</strong> moet worden geïnstalleerd en geactiveerd. <a href=\"%4$s\">%3$s</a>"
+msgstr ""
+"<strong>%1$s</strong> vereist dat <strong>%2$s</strong> moet worden "
+"geïnstalleerd en geactiveerd. <a href=\"%4$s\">%3$s</a>"
 
 #: fluid-checkout.php:403
 #, php-format
@@ -212,19 +216,25 @@ msgstr "Afrekenen widgetgebieden"
 msgid ""
 "Choose a background color for the checkout page footer. Only applies when "
 "using the plugin's checkout footer."
-msgstr "Kies een achtergrondkleur voor de voettekst van de afrekenpagina. Alleen van toepassing wanneer de afrekenvoettekst van de plugin wordt gebruikt."
+msgstr ""
+"Kies een achtergrondkleur voor de voettekst van de afrekenpagina. Alleen van "
+"toepassing wanneer de afrekenvoettekst van de plugin wordt gebruikt."
 
 #: inc/admin/admin-settings-general.php:95
 msgid ""
 "Choose a background color for the checkout page header. Only applies when "
 "using the plugin's checkout header."
-msgstr "Kies een achtergrondkleur voor de koptekst van de afrekenpagina. Alleen van toepassing wanneer de afrekenkoptekst van de plugin wordt gebruikt."
+msgstr ""
+"Kies een achtergrondkleur voor de koptekst van de afrekenpagina. Alleen van "
+"toepassing wanneer de afrekenkoptekst van de plugin wordt gebruikt."
 
 #: inc/admin/admin-settings-general.php:105
 msgid ""
-"Choose a background color for the checkout page. Color is applied to the "
-"<em>body</em> element."
-msgstr "Kies een achtergrondkleur voor de afrekenpagina. Kleur wordt toegepast op het <em>hoofdtekst</em>element."
+"Choose a background color for the checkout page. Color is applied to the <em>"
+"body</em> element."
+msgstr ""
+"Kies een achtergrondkleur voor de afrekenpagina. Kleur wordt toegepast op "
+"het <em>hoofdtekst</em>element."
 
 #: inc/admin/admin-settings-general.php:146
 msgid "Choose a background color for the order summary section."
@@ -234,7 +244,10 @@ msgstr "Kies een achtergrondkleur voor de sectie Besteloverzicht."
 msgid ""
 "Choose an image to be displayed on the checkout page header. Only applies "
 "when using the plugin's checkout header."
-msgstr "Kies een afbeelding die moet worden weergegeven op de koptekst van de afrekenpagina. Alleen van toepassing wanneer de afrekenkoptekst van de plugin wordt gebruikt."
+msgstr ""
+"Kies een afbeelding die moet worden weergegeven op de koptekst van de "
+"afrekenpagina. Alleen van toepassing wanneer de afrekenkoptekst van de "
+"plugin wordt gebruikt."
 
 #: inc/admin/admin-settings-general.php:303
 msgid "Choose in which position to display the shipping methods"
@@ -274,7 +287,9 @@ msgstr "Doorgaan"
 msgid ""
 "Controls whether to use the Fluid Checkout page header and footer or keep "
 "the currently active theme's."
-msgstr "Hiermee bepaal je of je de kop- en voettekst van deFluid Checkout-pagina wilt gebruiken of de momenteel actieve thema's wilt behouden."
+msgstr ""
+"Hiermee bepaal je of je de kop- en voettekst van deFluid Checkout-pagina "
+"wilt gebruiken of de momenteel actieve thema's wilt behouden."
 
 #: inc/checkout-coupon-codes.php:140 inc/checkout-coupon-codes.php:162
 msgid "Coupon code"
@@ -299,13 +314,17 @@ msgstr "Debug-opties"
 #: inc/admin/admin-settings-general.php:164
 msgid ""
 "Define the position to display \"Place order\" and terms checkbox section."
-msgstr "Definieer de positie om het selectievakje 'Bestelling plaatsen' en de voorwaarden weer te geven."
+msgstr ""
+"Definieer de positie om het selectievakje 'Bestelling plaatsen' en de "
+"voorwaarden weer te geven."
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:64
 msgid ""
 "Define the position to display the captcha section. Some positions might not "
 "work depending on the captcha type chosen."
-msgstr "Definieer de positie om de captcha-sectie weer te geven. Sommige posities werken mogelijk niet, afhankelijk van het gekozen captcha-type."
+msgstr ""
+"Definieer de positie om de captcha-sectie weer te geven. Sommige posities "
+"werken mogelijk niet, afhankelijk van het gekozen captcha-type."
 
 #: inc/admin/admin-settings-general.php:338
 msgid "Define the visibility of the additional order notes field."
@@ -345,11 +364,14 @@ msgstr "De sectietitel van de kortingscodes weergeven"
 msgid ""
 "Display widgets below the checkout header for mobile devices. Only displayed "
 "if using the plugin's checkout header."
-msgstr "Widgets onder de afrekenkoptekst weergeven voor mobiele apparaten. Alleen weergegeven als de afrekenkoptekst van de plugin wordt gebruikt."
+msgstr ""
+"Widgets onder de afrekenkoptekst weergeven voor mobiele apparaten. Alleen "
+"weergegeven als de afrekenkoptekst van de plugin wordt gebruikt."
 
 #: inc/checkout-widget-areas.php:93
 msgid "Display widgets below the place order button at the checkout page."
-msgstr "Widgets weergeven onder de knop Bestelling plaatsen op de afrekenpagina."
+msgstr ""
+"Widgets weergeven onder de knop Bestelling plaatsen op de afrekenpagina."
 
 #: inc/checkout-widget-areas.php:83
 msgid "Display widgets inside the order summary at the checkout page."
@@ -359,17 +381,22 @@ msgstr "Widgets weergeven in het besteloverzicht op de afrekenpagina."
 msgid ""
 "Display widgets on the checkout footer. Only displayed if using the plugin's "
 "checkout footer."
-msgstr "Widgets op de afrekenvoettekst weergeven. Alleen weergegeven als de afrekenvoettekst van de plugin wordt gebruikt."
+msgstr ""
+"Widgets op de afrekenvoettekst weergeven. Alleen weergegeven als de "
+"afrekenvoettekst van de plugin wordt gebruikt."
 
 #: inc/checkout-widget-areas.php:47
 msgid ""
 "Display widgets on the checkout header for large screens. Only displayed if "
 "using the plugin's checkout header."
-msgstr "Widgets op de afrekenkoptekst weergeven voor grote schermen. Alleen weergegeven als de afrekenkoptekst van de plugin wordt gebruikt."
+msgstr ""
+"Widgets op de afrekenkoptekst weergeven voor grote schermen. Alleen "
+"weergegeven als de afrekenkoptekst van de plugin wordt gebruikt."
 
 #: inc/checkout-widget-areas.php:71
 msgid "Display widgets on the checkout sidebar after the order summary."
-msgstr "Widgets weergeven op de zijbalk van de winkelwagen na het besteloverzicht."
+msgstr ""
+"Widgets weergeven op de zijbalk van de winkelwagen na het besteloverzicht."
 
 #: inc/admin/admin-settings-general.php:229
 msgid "Do not hide \"Address line 2\" fields behind a link button"
@@ -417,7 +444,9 @@ msgstr "Voettekst achtergrondkleur"
 msgid ""
 "Germanized PRO multistep checkout feature needs to be disabled when using "
 "Fluid Checkout"
-msgstr "Duitse PRO meerstappen afrekenfunctie moet worden uitgeschakeld bij het gebruik van Fluid Checkout"
+msgstr ""
+"Duitse PRO meerstappen afrekenfunctie moet worden uitgeschakeld bij het "
+"gebruik van Fluid Checkout"
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:67
 msgid "Go to Germanized settings"
@@ -482,7 +511,10 @@ msgid ""
 "If checked informs typos in email to users. (This feature has been disabled "
 "because Fluid Checkout offers the feature. Changes to this option will not "
 "take effect)"
-msgstr "Indien aangevinkt, informeert typefouten in e-mail aan gebruikers. (Deze functie is uitgeschakeld omdat Fluid Checkout de functie biedt. Wijzigingen in deze optie worden niet van kracht)"
+msgstr ""
+"Indien aangevinkt, informeert typefouten in e-mail aan gebruikers. (Deze "
+"functie is uitgeschakeld omdat Fluid Checkout de functie biedt. Wijzigingen "
+"in deze optie worden niet van kracht)"
 
 #: inc/admin/admin-setting-type-fc-image-uploader.php:85
 msgctxt "Image uploader."
@@ -497,9 +529,13 @@ msgstr "Integraties"
 msgid ""
 "It is recommended to keep this option checked to reduce the number of open "
 "input fields, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
-"fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-link"
-"\" target=\"_blank\">read the research</a>."
-msgstr "Het wordt aanbevolen om deze optie aangevinkt te houden om het aantal open invoervelden te verminderen, <a href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-link\" target=\"_blank\">lees het onderzoek</a>."
+"fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-"
+"link\" target=\"_blank\">read the research</a>."
+msgstr ""
+"Het wordt aanbevolen om deze optie aangevinkt te houden om het aantal open "
+"invoervelden te verminderen, <a href=\"https://baymard.com/blog/checkout-"
+"flow-average-form-fields#1-address-line-2--company-name-can-safely-be-"
+"collapsed-behind-a-link\" target=\"_blank\">lees het onderzoek</a>."
 
 #: inc/admin/admin-settings-general.php:242
 msgid ""
@@ -507,9 +543,15 @@ msgid ""
 "checkout will start with the option \"Billing same as shipping\" checked by "
 "default. This will significantly reduce the number of open input fields at "
 "the checkout, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
-"fields#3-default-billing--shipping-and-hide-the-fields-entirely\" target="
-"\"_blank\">read the research</a>."
-msgstr "Het wordt aanbevolen om deze optie aangevinkt te laten. Het factuuradres bij het afrekenen begint met de optie \"Facturering hetzelfde als verzending\" die standaard is aangevinkt. Dit zal het aantal open invoervelden bij het afrekenen aanzienlijk verminderen, <a href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">lees het onderzoek</a>."
+"fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
+"target=\"_blank\">read the research</a>."
+msgstr ""
+"Het wordt aanbevolen om deze optie aangevinkt te laten. Het factuuradres bij "
+"het afrekenen begint met de optie \"Facturering hetzelfde als verzending\" "
+"die standaard is aangevinkt. Dit zal het aantal open invoervelden bij het "
+"afrekenen aanzienlijk verminderen, <a href=\"https://baymard."
+"com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-"
+"hide-the-fields-entirely\" target=\"_blank\">lees het onderzoek</a>."
 
 #: inc/admin/admin-settings-general.php:60
 msgid "Layout Options"
@@ -551,13 +593,22 @@ msgstr "Logo-afbeelding"
 
 #: inc/admin/admin-settings-general.php:135
 msgid "Make the checkout progress bar stay visible while scrolling"
-msgstr "Zorg ervoor dat de voortgangsbalk van het afrekenen zichtbaar blijft tijdens het scrollen"
+msgstr ""
+"Zorg ervoor dat de voortgangsbalk van het afrekenen zichtbaar blijft tijdens "
+"het scrollen"
 
 #: inc/admin/admin-settings-general.php:220
+#| msgid ""
+#| "Make the labels of optional field \"Add\" link button as <code>"
+#| "lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone "
+#| "number\")"
 msgid ""
-"Make the labels of optional field \"Add\" link button as <code>lowercase</"
-"code>. (ie. \"Add phone number\" instead of \"Add Phone number\")"
-msgstr "Maak de labels van het optionele veld \"Toevoegen\" link knop als <code>kleine letters</code>. (dwz. \"Telefoonnummer toevoegen\" in plaats van \"Telefoonnummer toevoegen\")"
+"Make the labels of optional field \"Add\" link button as <code>"
+"lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone Number\")"
+msgstr ""
+"Maak de labels van het optionele veld \"Toevoegen\" link knop als <code>"
+"kleine letters</code>. (dwz. \"Telefoonnummer toevoegen\" in plaats van "
+"\"Telefoonnummer toevoegen\")"
 
 #: inc/admin/admin-settings-general.php:155
 msgid "Make the order summary stay visible while scrolling"
@@ -579,7 +630,10 @@ msgstr "Mijn contact"
 msgid ""
 "No integrations available at the moment on this section. The options related "
 "to each plugin will only appear here if that plugin is activated."
-msgstr "Er zijn op dit moment geen integraties beschikbaar in deze sectie. De opties die aan elke plugin zijn gekoppeld, worden hier alleen weergegeven als die plugin is geactiveerd."
+msgstr ""
+"Er zijn op dit moment geen integraties beschikbaar in deze sectie. De opties "
+"die aan elke plugin zijn gekoppeld, worden hier alleen weergegeven als die "
+"plugin is geactiveerd."
 
 #. %s shipping destination.
 #: templates/fc/checkout/review-order-shipping.php:31
@@ -605,12 +659,16 @@ msgstr "Geen."
 msgid ""
 "Only applicable if use of coupon codes are enabled in the WooCommerce "
 "settings."
-msgstr "Alleen van toepassing als het gebruik van kortingscodes is ingeschakeld in de WooCommerce-instellingen."
+msgstr ""
+"Alleen van toepassing als het gebruik van kortingscodes is ingeschakeld in "
+"de WooCommerce-instellingen."
 
 #: inc/compat/themes/compat-theme-Impreza.php:54
 msgid ""
 "Only applicable when using the Impreza theme header at the checkout page."
-msgstr "Alleen van toepassing als je de koptekst van het Impreza-thema gebruikt op de afrekenpagina."
+msgstr ""
+"Alleen van toepassing als je de koptekst van het Impreza-thema gebruikt op "
+"de afrekenpagina."
 
 #: inc/checkout-shipping-phone-field.php:56
 msgid "Only used for shipping-related questions."
@@ -642,7 +700,9 @@ msgstr "Besteloverzicht"
 msgid ""
 "Output the checkout steps section from the Woodmart theme when using Fluid "
 "Checkout header and footer"
-msgstr "Voer de sectie Afrekenstappen uit het Woodmart-thema uit wanneer je de kop- en voettekst voor Fluid Checkout gebruikt"
+msgstr ""
+"Voer de sectie Afrekenstappen uit het Woodmart-thema uit wanneer je de kop- "
+"en voettekst voor Fluid Checkout gebruikt"
 
 #: inc/admin/admin-settings-general.php:104
 msgid "Page background color"
@@ -654,7 +714,7 @@ msgstr "Betaalmethode"
 
 #: inc/compat/plugins/compat-plugin-woo-delivery.php:117
 msgid "Pickup Date"
-msgstr "Startdatum"
+msgstr "Ophaaldatum"
 
 #: inc/admin/admin-settings-general.php:163
 msgid "Place order"
@@ -676,7 +736,11 @@ msgid ""
 "Ask for shipping information before billing in a truly linear multi-step or "
 "one-step checkout and display a coupon code field at the checkout page that "
 "does not distract your customers."
-msgstr "Biedt een afleidingsvrije betaalervaring voor elke WooCommerce-winkel. Vraag om verzendinformatie voordat je factureert in een echt liniair afrekensysteem in één of meer stappen en geef een kortingscodeveld weer op de betaalpagina die je klanten niet afleidt."
+msgstr ""
+"Biedt een afleidingsvrije betaalervaring voor elke WooCommerce-winkel. Vraag "
+"om verzendinformatie voordat je factureert in een echt liniair "
+"afrekensysteem in één of meer stappen en geef een kortingscodeveld weer op "
+"de betaalpagina die je klanten niet afleidt."
 
 #: inc/admin/admin-notice-review-request.php:47
 msgid "Rate the plugin"
@@ -687,7 +751,11 @@ msgid ""
 "Recommended only when most customers actually need the \"Address line 2\" "
 "field, or when getting the right shipping address is crucial (ie. if "
 "delivering food and other perishable products)."
-msgstr "Alleen aanbevolen wanneer de meeste klanten daadwerkelijk het veld 'Adresregel 2' nodig hebben, of wanneer het verkrijgen van het juiste verzendadres cruciaal is (bijv. als het bezorgen van voedsel en andere bederfelijke producten)."
+msgstr ""
+"Alleen aanbevolen wanneer de meeste klanten daadwerkelijk het veld "
+"'Adresregel 2' nodig hebben, of wanneer het verkrijgen van het juiste "
+"verzendadres cruciaal is (bijv. als het bezorgen van voedsel en andere "
+"bederfelijke producten)."
 
 #: inc/checkout-coupon-codes.php:240
 msgid "Remove"
@@ -696,7 +764,7 @@ msgstr "Verwijderen"
 #: inc/admin/admin-settings-general.php:256
 #: inc/admin/admin-settings-general.php:282
 msgid "Required"
-msgstr "Vereist"
+msgstr "Verplicht"
 
 #: inc/checkout-steps.php:3062
 msgid "Same as shipping address"
@@ -710,7 +778,7 @@ msgstr "Selecteer een afbeelding"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:97
 msgid "Sendinblue - WooCommerce Email Marketing"
-msgstr "Sendinblue - WooCommerce-e-mailmarketing"
+msgstr "Sendinblue - WooCommerce Email Marketing"
 
 #: inc/admin/admin.php:87
 msgid "Settings"
@@ -754,7 +822,8 @@ msgstr "Ga naar content"
 
 #: inc/admin/admin-settings-general.php:165
 msgid "Some options might not be compatible with some plugins and themes."
-msgstr "Sommige opties zijn mogelijk niet compatibel met sommige plug-ins en thema's."
+msgstr ""
+"Sommige opties zijn mogelijk niet compatibel met sommige plug-ins en thema's."
 
 #: inc/compat/themes/compat-theme-Impreza.php:53
 msgid "Spacing for site header at the checkout page (in pixels)"
@@ -800,7 +869,12 @@ msgid ""
 "different shipping and billing addresses during checkout, an option for "
 "setting the default billing address to be the same as the shipping address "
 "is available at WooCommerce > Settings > Fluid Checkout."
-msgstr "De verzendbestemming wordt altijd ingesteld op \"Standaard naar klant verzendadres\" wanneer Fluid Checkout is geactiveerd. Klanten kunnen tijdens het afrekenen nog steeds verschillende verzend- en factuuradressen opgeven, een optie om het standaard factuuradres in te stellen op hetzelfde als het verzendadres beschikbaar is bij WooCommerce > Instellingen > Fluid Checkout."
+msgstr ""
+"De verzendbestemming wordt altijd ingesteld op \"Standaard naar klant "
+"verzendadres\" wanneer Fluid Checkout is geactiveerd. Klanten kunnen tijdens "
+"het afrekenen nog steeds verschillende verzend- en factuuradressen opgeven, "
+"een optie om het standaard factuuradres in te stellen op hetzelfde als het "
+"verzendadres beschikbaar is bij WooCommerce > Instellingen > Fluid Checkout."
 
 #: inc/compat/themes/compat-theme-Impreza.php:52
 msgid "Theme Impreza"
@@ -812,7 +886,9 @@ msgstr "Thema Woodmart"
 
 #: inc/admin/admin-settings-general.php:352
 msgid "These widget areas are used to add trust symbols on the checkout page."
-msgstr "Deze widgetgebieden worden gebruikt om vertrouwenssymbolen toe te voegen op de afrekenpagina."
+msgstr ""
+"Deze widgetgebieden worden gebruikt om vertrouwenssymbolen toe te voegen op "
+"de afrekenpagina."
 
 #: inc/checkout-validation.php:120
 msgid "This field does not match the related field value."
@@ -846,20 +922,29 @@ msgstr "Fluid Checkout kop- en voettekst gebruiken"
 msgid ""
 "Using debug mode affects the website performance. Only use this option while "
 "troubleshooting."
-msgstr "Het gebruik van de debug-modus heeft invloed op de prestaties van de website. Gebruik deze optie alleen tijdens het oplossen van problemen."
+msgstr ""
+"Het gebruik van de debug-modus heeft invloed op de prestaties van de website."
+" Gebruik deze optie alleen tijdens het oplossen van problemen."
 
 #: inc/admin/admin-settings-general.php:81
 msgid ""
 "We recommend using the Fluid Checkout header and footer to avoid "
 "distractions at the checkout page. <a href=\"https://baymard.com/blog/cart-"
 "abandonment\" target=\"_blank\">Read the research about cart abandonment</a>."
-msgstr "We raden aan de kop- en voettekst van Fluidd Checkout te gebruiken om afleidingen op de afrekenpagina te voorkomen. <a href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Lees het onderzoek over het verlaten van een winkelwagen</a>."
+msgstr ""
+"We raden aan de kop- en voettekst van Fluidd Checkout te gebruiken om "
+"afleidingen op de afrekenpagina te voorkomen. <a href=\"https://baymard."
+"com/blog/cart-abandonment\" target=\"_blank\">Lees het onderzoek over het "
+"verlaten van een winkelwagen</a>."
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:99
 msgid ""
 "When enabled, the checkbox will be moved to the contact step independently "
 "of the display location defined in the Sendinblue plugin settings."
-msgstr "Indien ingeschakeld, wordt het selectievakje verplaatst naar de contactstap, onafhankelijk van de weergavelocatie die is gedefinieerd in de instellingen van de Sendinblue-plugin."
+msgstr ""
+"Indien ingeschakeld, wordt het selectievakje verplaatst naar de contactstap, "
+"onafhankelijk van de weergavelocatie die is gedefinieerd in de instellingen "
+"van de Sendinblue-plugin."
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
 msgid ""
@@ -867,7 +952,11 @@ msgid ""
 "plugin becomes unnecessary and can cause <strong>critical errors while "
 "processing new orders</strong>. Please disable the Germanized PRO multistep "
 "checkout feature in the plugin settings."
-msgstr "Bij het gebruik van Fluid Checkout wordt de meerstappen-functie van de Duitse PRO-plugin overbodig en kan deze <strong>kritieke fouten veroorzaken tijdens het verwerken van nieuwe bestellingen</strong>. Schakel de Duitse PRO meestappen afrekenfunctie uit in de plugin-instellingen."
+msgstr ""
+"Bij het gebruik van Fluid Checkout wordt de meerstappen-functie van de "
+"Duitse PRO-plugin overbodig en kan deze <strong>kritieke fouten veroorzaken "
+"tijdens het verwerken van nieuwe bestellingen</strong>. Schakel de Duitse "
+"PRO meestappen afrekenfunctie uit in de plugin-instellingen."
 
 #: fluid-checkout.php:396
 msgid "WooCommerce"
@@ -878,9 +967,14 @@ msgid ""
 "You have been using the plugin for a while now. How do you like it so far? "
 "<br>Please give us a quick rating, we appreciate every bit of feedback and "
 "it encourages us to keep improving the plugin :)"
-msgstr "Je gebruikt de plugin al een tijdje. Hoe bevalt het tot nu toe? <br>Geef ons een snelle beoordeling, we waarderen elk stukje feedback en het moedigt ons aan om de plugin te blijven verbeteren :)"
+msgstr ""
+"Je gebruikt de plugin al een tijdje. Hoe bevalt het tot nu toe? <br>Geef ons "
+"een snelle beoordeling, we waarderen elk stukje feedback en het moedigt ons "
+"aan om de plugin te blijven verbeteren :)"
 
 #: templates/checkout/payment.php:46
 #, php-format
 msgid "Your order has a total amount due of %s. No further payment is needed."
-msgstr "Je bestelling heeft een totaalbedrag van %s. Er is geen verdere betaling nodig."
+msgstr ""
+"Je bestelling heeft een totaalbedrag van %s. Er is geen verdere betaling "
+"nodig."
