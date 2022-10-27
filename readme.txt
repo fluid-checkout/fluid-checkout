@@ -264,14 +264,16 @@ All labels and other texts added or changed by the plugin are translatable using
 Currently the plugin is translated into the languages below, and more are coming soon:
 
 * English (Default)
-* Dutch - Netherlands (thanks to Robin Bak, Duncan - magnesium-minerals.nl, Damy Bosch - advice.nl)
+* Dutch - Netherlands
 * French - France
 * German - Germany
-* Italian - Italy (thanks to Samuele - floralgarden.it)
+* Italian - Italy
 * Portuguese - Brazil
-* Spanish - Spain (thanks to @gio15 - senseiwpacademy.com)
-* Swedish - Sweden (thanks to @kozley, @tobifjellner, @elbogen)
-* Turkish - Turkey (thanks to @orkunakca)
+* Spanish - Spain
+* Swedish - Sweden
+* Turkish - Turkey
+
+NOTE: All languages are translated using automated methods such as Google Translate or DeepL. If you encounter any errors in the translation to your language, please report them to us and we'll fix it.
 
 ** Want Fluid Checkout in your language? **
 
@@ -373,6 +375,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Translations for Dutch, French, German, Italian, Spanish and Portuguese Brazil.
 * Improved: Compatibility with theme Woodmart, fixing the styles for the Woodmart checkout steps section on the checkout page when using the plugin's header.
 * Improved: Compatibility with theme Blocksy, fixing payment method logos stretched and checkboxes missing checked state styles.
 * Improved: Remove checkout field validation classes ending with `-field` when clearing checkout field validation state.

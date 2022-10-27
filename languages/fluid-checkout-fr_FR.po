@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-02 11:34+0000\n"
-"PO-Revision-Date: 2022-10-26 11:26+0000\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2022-10-27 12:56+0000\n"
+"Last-Translator: Diego Versiani\n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.4.6; wp-5.5.3\n"
+"X-Loco-Version: 2.6.3; wp-6.0.3"
 
 #: inc/admin/admin-settings-general.php:87
 msgid "(Experimental) Use theme's page header and footer for the checkout page"
@@ -123,12 +123,12 @@ msgstr "Appliquer"
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:69
 msgctxt "Captcha position"
 msgid "Before place order button"
-msgstr "Bouton Avant de passer la commande"
+msgstr "Avant le bouton de commande"
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:68
 msgctxt "Captcha position"
 msgid "Before place order section"
-msgstr "Avant de passer la section de commande"
+msgstr "Avant la section de commande"
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:63
 msgid "Captcha Pro by BestWebSoft"
@@ -153,7 +153,7 @@ msgstr "Paiement"
 
 #: inc/checkout-widget-areas.php:91
 msgid "Checkout Below Place Order"
-msgstr "Paiement ci-dessous Passer commande"
+msgstr "Paiement ci-dessous bouton de commande"
 
 #: inc/checkout-widget-areas.php:106
 msgid "Checkout Footer"
@@ -324,8 +324,7 @@ msgstr "Options de débogage"
 msgid ""
 "Define the position to display \"Place order\" and terms checkbox section."
 msgstr ""
-"Définissez la position pour afficher la section \"Passer commande\" et les "
-"termes."
+"Définissez la position pour afficher la section \"Commander\" et les termes."
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:64
 msgid ""
@@ -381,8 +380,7 @@ msgstr ""
 #: inc/checkout-widget-areas.php:93
 msgid "Display widgets below the place order button at the checkout page."
 msgstr ""
-"Affichez les widgets sous le bouton Passer la commande sur la page de "
-"paiement."
+"Affichez les widgets sous le bouton de commande sur la page de paiement."
 
 #: inc/checkout-widget-areas.php:83
 msgid "Display widgets inside the order summary at the checkout page."
@@ -628,13 +626,17 @@ msgstr ""
 "Rendre la barre de progression du paiement visible pendant le défilement"
 
 #: inc/admin/admin-settings-general.php:220
+#| msgid ""
+#| "Make the labels of optional field \"Add\" link button as <code>"
+#| "lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone "
+#| "number\")"
 msgid ""
 "Make the labels of optional field \"Add\" link button as <code>"
-"lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone number\")"
+"lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone Number\")"
 msgstr ""
-"Faire les étiquettes du champ optionnel \"Ajouter\" bouton de lien <code>en "
+"Faire les étiquettes du champ optionnel \"Ajouter\" bouton de lien en <code>"
 "minuscules</code>. (à savoir \"Ajouter un numéro de téléphone\" au lieu de "
-"\"Ajouter un numéro de Téléphone\")"
+"\"Ajouter un Numéro de Téléphone\")"
 
 #: inc/admin/admin-settings-general.php:155
 msgid "Make the order summary stay visible while scrolling"
@@ -744,7 +746,7 @@ msgstr "Date de retrait"
 
 #: inc/admin/admin-settings-general.php:163
 msgid "Place order"
-msgstr "Passer la commande"
+msgstr "Commander"
 
 #. Next checkout step title
 #: inc/checkout-steps.php:1106

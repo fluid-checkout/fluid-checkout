@@ -217,7 +217,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 					array(
 						'desc'              => __( 'Display the "Add" link buttons in lowercase', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Make the labels of optional field "Add" link button as <code>lowercase</code>. (ie. "Add phone number" instead of "Add Phone number")', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Make the labels of optional field "Add" link button as <code>lowercase</code>. (ie. "Add phone number" instead of "Add Phone Number")', 'fluid-checkout' ),
 						'id'                => 'fc_optional_fields_link_label_lowercase',
 						'default'           => 'yes',
 						'type'              => 'checkbox',
