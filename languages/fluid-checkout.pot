@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-26 11:26+0000\n"
+"POT-Creation-Date: 2022-10-26 20:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -557,7 +557,7 @@ msgstr ""
 #: inc/admin/admin-settings-general.php:220
 msgid ""
 "Make the labels of optional field \"Add\" link button as <code>"
-"lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone number\")"
+"lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone Number\")"
 msgstr ""
 
 #: inc/admin/admin-settings-general.php:155
