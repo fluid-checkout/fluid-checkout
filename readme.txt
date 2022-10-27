@@ -270,8 +270,8 @@ Currently the plugin is translated into the languages below, and more are coming
 * Italian - Italy
 * Portuguese - Brazil
 * Spanish - Spain
-* Swedish - Sweden (thanks to @kozley, @tobifjellner, @elbogen)
-* Turkish - Turkey (thanks to @orkunakca)
+* Swedish - Sweden
+* Turkish - Turkey
 
 NOTE: All languages are translated using automated methods such as Google Translate or DeepL. If you encounter any errors in the translation to your language, please report them to use and we'll fix it.
 
