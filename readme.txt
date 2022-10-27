@@ -273,7 +273,7 @@ Currently the plugin is translated into the languages below, and more are coming
 * Swedish - Sweden
 * Turkish - Turkey
 
-NOTE: All languages are translated using automated methods such as Google Translate or DeepL. If you encounter any errors in the translation to your language, please report them to use and we'll fix it.
+NOTE: All languages are translated using automated methods such as Google Translate or DeepL. If you encounter any errors in the translation to your language, please report them to us and we'll fix it.
 
 ** Want Fluid Checkout in your language? **
 
