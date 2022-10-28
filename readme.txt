@@ -3,7 +3,7 @@ Contributors: fluidwebco, diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.0.2
+Tested up to: 6.0.3
 Stable tag: 2.0.8
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -375,6 +375,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = 2.0.8 - 2022-10-28 =
 
+* Bump tested up to WordPress 6.0.3 and WooCommerce 7.0.0
 * Improved: Translations for Dutch, French, German, Italian, Spanish and Portuguese Brazil.
 * Improved: Compatibility with theme Woodmart, fixing the styles for the Woodmart checkout steps section on the checkout page when using the plugin's header.
 * Improved: Compatibility with theme Blocksy, fixing payment method logos stretched and checkboxes missing checked state styles.
