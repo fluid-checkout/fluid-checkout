@@ -32,7 +32,7 @@
     "uglify-js": "^3.15.5"
   },
   "dependencies": {
-    "collapsible-block": "^1.1.7",
+    "collapsible-block": "^1.1.8",
     "flyout-block": "^1.1.4",
     "mailcheck": "^1.1.1",
     "require-bundle-js": "^1.0.0",

@@ -437,7 +437,7 @@
 	/**
 	 * Finish the change to the "expanded" state.
 	 *
-	 * @param   mixed  element  The content element of the collapsible block as a HTMLElement, or an Event dispatched on that element.
+	 * @param   mixed    element     The content element of the collapsible block as a HTMLElement, or an Event dispatched on that element.
 	 */
 	var finishExpand = function ( element ) {
 		// Bail if element is invalid
@@ -451,16 +451,17 @@
 			element = element.target;
 		}
 
-		var manager = _publicMethods.getInstance( element.closest( _settings.elementSelector ) );
-
+		
 		// Remove content element properties when transition is complete
 		element.style.height = '';
 		element.style.overflow = '';
-
+		
 		// Syncronize `aria-expanded` for every handler on the page
 		syncAriaExpanded( element, true );
-
-		if ( manager && manager.isActivated === true ) {
+		
+		// Maybe set focus state
+		var manager = _publicMethods.getInstance( element.closest( _settings.elementSelector ) );
+		if ( manager && manager.isActivated === true && manager.withFocus ) {
 			var focusElement = null;
 
 			// Maybe set focus to the child element marked as auto-focus that is visible, skipping those in nested collapsible blocks
@@ -496,6 +497,9 @@
 				}
 			}
 		}
+
+		// Reset `withFocus` flag on the manager back to default behavior
+		manager.withFocus = true;
 
 		// Remove the event handler so it runs only once
 		element.removeEventListener( getTransitionEndEvent(), finishExpand );
@@ -605,9 +609,10 @@
 	 * Expand element.
 	 *
 	 * @param   HTMLElement  element         Collapsible block main element.
-	 * @param   Boolean      withTransition  Whether to use transitions between states.
+	 * @param   Boolean      withTransition  Whether to use transitions between states. Defaults to `true`.
+	 * @param   Boolean      withFocus       Whether to set the focus to the field when expanding. Cannot be used with `withTransition = true`. Defaults to `true`.
 	 */
-	_publicMethods.expand = function( element, withTransition ) {
+	_publicMethods.expand = function( element, withTransition, withFocus ) {
 		// Get element manager
 		var manager = _publicMethods.getInstance( element );
 
@@ -615,8 +620,12 @@
 		// TODO: Maybe try to initialize collapsible and manager on the fly
 		if ( ! manager ) { return; }
 
-		// Set default value for withTransition
+		// Set default value for parameters
 		withTransition = withTransition === false ? false : true;
+		withFocus = withFocus === false ? false : true;
+
+		// Set flag `withFocus` to the element manager
+		manager.withFocus = withFocus;
 
 		// Show the element again on the screen and add it back to the accessibility tree
 		manager.contentElement.style.display = '';
@@ -648,7 +657,7 @@
 
 			// Make sure to finish the "expand" state change when transitions are not used
 			if ( ! withTransition ) {
-				finishExpand( manager.contentElement );
+				// finishExpand( manager.contentElement );
 			}
 		} );
 	}
@@ -760,6 +769,9 @@
 		manager.element = element;
 		// TODO: Refactor to remove `manager.settings` as it will always be a copy of the high-level `_settings` variable, with more properties that can be added directly to the `manager` variable.
 		manager.settings = extend( _settings );
+
+		// Set default behavior for setting focus when expanding the element
+		manager.withFocus = true;
 
 		// Get content element
 		manager.contentElement = manager.element.matches( _settings.contentElementSelector ) ? manager.element : manager.element.querySelector( manager.settings.contentElementSelector );
