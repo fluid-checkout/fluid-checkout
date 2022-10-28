@@ -85,14 +85,14 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Add links before existing ones
 		$new_links = array(
 			sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=wc-settings&tab=fc_checkout' ), esc_html( __( 'Settings', 'fluid-checkout' ) ) ),
-			sprintf( '<a href="%s" target="_blank">%s</a>', 'https://support.fluidcheckout.com', esc_html( __( 'Support', 'fluid-checkout' ) ) ),
+			sprintf( '<a href="%s" target="_blank">%s</a>', 'https://fluidcheckout.com/support/', esc_html( __( 'Support', 'fluid-checkout' ) ) ),
 		);
 
 		$links = array_merge( $new_links, $links );
 
 		// Maybe add PRO version promotion
 		if ( ! FluidCheckout::instance()->is_pro_activated() ) {
-			$links[] = sprintf( '<a href="%s" style="color:#007F01;font-weight:bold;">%s</a>', 'https://fluidcheckout.com/product/fluid-checkout-pro/', esc_html( __( 'Upgrade to PRO', 'fluid-checkout' ) ) );
+			$links[] = sprintf( '<a href="%s" style="color:#007F01;font-weight:bold;">%s</a>', 'https://fluidcheckout.com/pricing/', esc_html( __( 'Upgrade to PRO', 'fluid-checkout' ) ) );
 		}
 
 		return $links;

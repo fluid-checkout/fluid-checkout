@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.0.2
-Stable tag: 2.0.7
+Stable tag: 2.0.8
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -125,7 +125,7 @@ Future features:
 
 == Need more features? ==
 
-[Request a feature](https://support.fluidcheckout.com/)
+[Request a feature](https://fluidcheckout.com/support/)
 
 
 == Tested WooCommerce Themes ==
@@ -250,7 +250,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 In addition to a number of default settings (including a custom header/logo), multi-step or single step layout types and easily enabling/disabling features from settings page, the plugin contains HTML/PHP based templates and provides many filters and action hooks that allow for customization.
 
-To customize template files, copy the templates to your theme folder, add a hook to the filter `fc_override_template_with_theme_file` to allow the plugin's version of the template to be overriden by the your customized template file. For more information and examples, see our guide [How to customize template files](https://support.fluidcheckout.com/portal/en/kb/articles/how-to-customize-template-files).
+To customize template files, copy the templates to your theme folder, add a hook to the filter `fc_override_template_with_theme_file` to allow the plugin's version of the template to be overriden by the your customized template file. For more information and examples, see our guide [How to customize template files](https://fluidcheckout.com/support/portal/en/kb/articles/how-to-customize-template-files).
 
 To customize styles when making small adjustments, just add your custom CSS through your theme, the Customizer Custom CSS field or using a plugin.
 
@@ -264,14 +264,16 @@ All labels and other texts added or changed by the plugin are translatable using
 Currently the plugin is translated into the languages below, and more are coming soon:
 
 * English (Default)
-* Dutch - Netherlands (thanks to Robin Bak, Duncan - magnesium-minerals.nl, Damy Bosch - advice.nl)
+* Dutch - Netherlands
 * French - France
 * German - Germany
-* Italian - Italy (thanks to Samuele - floralgarden.it)
+* Italian - Italy
 * Portuguese - Brazil
-* Spanish - Spain (thanks to @gio15 - senseiwpacademy.com)
-* Swedish - Sweden (thanks to @kozley, @tobifjellner, @elbogen)
-* Turkish - Turkey (thanks to @orkunakca)
+* Spanish - Spain
+* Swedish - Sweden
+* Turkish - Turkey
+
+NOTE: All languages are translated using automated methods such as Google Translate or DeepL. If you encounter any errors in the translation to your language, please report them to us and we'll fix it.
 
 ** Want Fluid Checkout in your language? **
 
@@ -370,6 +372,17 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 
 == Changelog ==
+
+= 2.0.8 - 2022-10-28 =
+
+* Improved: Translations for Dutch, French, German, Italian, Spanish and Portuguese Brazil.
+* Improved: Compatibility with theme Woodmart, fixing the styles for the Woodmart checkout steps section on the checkout page when using the plugin's header.
+* Improved: Compatibility with theme Blocksy, fixing payment method logos stretched and checkboxes missing checked state styles.
+* Improved: Remove checkout field validation classes ending with `-field` when clearing checkout field validation state.
+* Removed: Admin notice about features moved to the PRO version.
+* Fixed: Position of optional fields to always start a new row in the checkout form, making it easier to scan and find optional fields and fixes layout issues.
+* Fixed: Returning invalid variable when trying to show login link on checkout error message for user already registered.
+* Fixed: Billing phone required message being displayed when billing phone is displayed in the "Contact" step and "Billing same as shipping address" checkbox is checked and the shipping phone field is empty.
 
 = 2.0.7 - 2022-09-13 =
 

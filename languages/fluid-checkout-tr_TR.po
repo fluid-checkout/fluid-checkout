@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-03 18:58+0000\n"
-"PO-Revision-Date: 2022-09-13 09:35+0000\n"
-"Last-Translator: BeyazBirKutu\n"
+"PO-Revision-Date: 2022-10-26 20:19+0000\n"
+"Last-Translator: Diego Versiani\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.1; wp-5.9.2"
+"X-Loco-Version: 2.6.3; wp-6.0.3"
 
 #: inc/admin/admin-settings-general.php:87
 msgid "(Experimental) Use theme's page header and footer for the checkout page"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "(Required)"
 msgstr "(Gerekli)"
 
-#: fluid-checkout.php:408
+#: fluid-checkout.php:407
 #, php-format
 #| msgid ""
 #| "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -36,16 +36,8 @@ msgstr ""
 "<strong> %1$s</strong>, <strong>%2$s</strong>'nin yüklenmesini ve "
 "etkinleştirilmesini gerektirir. <a href=\"%4$s\">%3$s</a>"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:79
-msgid ""
-"<strong>Express checkout</strong>, <strong>Local pickup</strong>, <strong>"
-"Gift message</strong> and <strong>Packing list templates</strong> have been "
-"moved to Fluid Checkout PRO. <br>For a limited time, you can get these "
-"features at no extra cost."
-msgstr ""
-
-#: fluid-checkout.php:404
-#, fuzzy, php-format
+#: fluid-checkout.php:403
+#, php-format
 msgid "Activate %s"
 msgstr "Etkinleştir %s"
 
@@ -57,7 +49,7 @@ msgstr "%s ekle"
 
 #: inc/admin/admin-settings-general.php:251
 msgid "Add a phone field to the billing address form"
-msgstr ""
+msgstr "Fatura adresi formuna bir telefon alanı ekleyin"
 
 #: inc/admin/admin-settings-general.php:277
 msgid "Add a phone field to the shipping address form"
@@ -73,7 +65,7 @@ msgstr "Ek notlar"
 
 #: inc/admin/admin-settings-general.php:307
 msgid "After shipping address"
-msgstr ""
+msgstr "Gönderim adresinden sonra"
 
 #: templates/fc/checkout/form-contact-login.php:42
 msgid "Already have an account?"
@@ -93,20 +85,19 @@ msgstr "Yalnızca çok adımlı düzenler için geçerlidir."
 
 #: inc/admin/admin-settings-general.php:306
 msgid "Before shipping address"
-msgstr ""
+msgstr "Gönderim adresinden önce"
 
 #: inc/admin/admin-settings-general.php:169
 msgid "Below the order summary"
-msgstr ""
+msgstr "Sipariş özetinin altında"
 
 #: inc/admin/admin-settings-general.php:168
 msgid "Below the payment section"
-msgstr ""
+msgstr "Ödeme bölümünün altında"
 
 #: inc/admin/admin-settings-general.php:187
 #: inc/admin/admin-settings-general.php:240
 #: inc/admin/admin-settings-general.php:267
-#, fuzzy
 #| msgid "Billing Address"
 msgid "Billing address"
 msgstr "Fatura Adresi"
@@ -118,7 +109,7 @@ msgstr ""
 
 #: inc/admin/admin-settings-general.php:250
 msgid "Billing phone"
-msgstr ""
+msgstr "Fatura telefonu"
 
 #: inc/checkout-steps.php:2880
 msgid "Billing to"
@@ -126,7 +117,7 @@ msgstr "Fatura Bilgileri"
 
 #: inc/admin/admin-settings-general.php:170
 msgid "Both below the payment section and the order summary"
-msgstr ""
+msgstr "Hem ödeme bölümünün hem de sipariş özetinin altında"
 
 #: inc/checkout-coupon-codes.php:164
 msgctxt "Button label for applying coupon codes"
@@ -170,7 +161,7 @@ msgstr "Sipariş Bilgilerinin Altında Ödeme Seçenekleri"
 
 #: inc/checkout-widget-areas.php:106
 msgid "Checkout Footer"
-msgstr ""
+msgstr "Ödeme Altbilgisi"
 
 #: inc/checkout-widget-areas.php:45
 msgid "Checkout Header - Desktop"
@@ -223,7 +214,6 @@ msgid "Save changes"
 msgstr "Değişiklikleri kaydet"
 
 #: inc/admin/admin-settings-general.php:350
-#, fuzzy
 #| msgid "Checkout Widget Areas"
 msgid "Checkout widget areas"
 msgstr "Ödeme Sayfası Widget Alanları"
@@ -233,6 +223,8 @@ msgid ""
 "Choose a background color for the checkout page footer. Only applies when "
 "using the plugin's checkout footer."
 msgstr ""
+"Ödeme sayfası altbilgisi için bir arka plan rengi seçin. Yalnızca eklentinin "
+"ödeme altbilgisi kullanıldığında geçerlidir."
 
 #: inc/admin/admin-settings-general.php:95
 msgid ""
@@ -252,7 +244,7 @@ msgstr ""
 
 #: inc/admin/admin-settings-general.php:146
 msgid "Choose a background color for the order summary section."
-msgstr ""
+msgstr "Sipariş özeti bölümü için bir arka plan rengi seçin."
 
 #: inc/admin/admin-settings-general.php:72
 msgid ""
@@ -268,10 +260,9 @@ msgstr "Gönderim yöntemlerinin hangi konumda görüntüleneceğini seçin"
 
 #: inc/admin/admin-settings-general.php:264
 msgid "Choose in which step to display the billing phone field"
-msgstr ""
+msgstr "Fatura telefon alanının hangi adımda görüntüleneceğini seçin"
 
 #: inc/admin/admin-settings-general.php:290
-#, fuzzy
 #| msgid "Choose in which step to display the shipping phone"
 msgid "Choose in which step to display the shipping phone field"
 msgstr "Gönderim telefonunun hangi adımda görüntüleneceğini seçin"
@@ -292,7 +283,7 @@ msgstr "Kapat"
 #: inc/admin/admin-settings-general.php:268
 #: inc/admin/admin-settings-general.php:294
 msgid "Contact step"
-msgstr ""
+msgstr "İletişim adımı"
 
 #: templates/fc/checkout/review-order-section.php:59
 msgid "Continue"
@@ -311,7 +302,6 @@ msgid "Coupon code"
 msgstr "Kupon kodu"
 
 #: inc/admin/admin-settings-general.php:315
-#, fuzzy
 #| msgid "Coupon Codes"
 msgid "Coupon codes"
 msgstr "Kupon kodu"
@@ -332,6 +322,8 @@ msgstr "Hata ayıklama seçenekleri"
 msgid ""
 "Define the position to display \"Place order\" and terms checkbox section."
 msgstr ""
+"\"Sipariş ver\" ve şartlar onay kutusu bölümünün görüntüleneceği konumu "
+"tanımlayın."
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:64
 msgid ""
@@ -397,6 +389,8 @@ msgid ""
 "Display widgets on the checkout footer. Only displayed if using the plugin's "
 "checkout footer."
 msgstr ""
+"Ödeme altbilgisinde widget'ları görüntüleyin. Yalnızca eklentinin ödeme "
+"altbilgisi kullanılıyorsa görüntülenir."
 
 #: inc/checkout-widget-areas.php:47
 msgid ""
@@ -417,7 +411,7 @@ msgstr "Bir bağlantı düğmesinin arkasına \"Adres satırı 2\" alanlarını 
 
 #: inc/admin/admin-notices.php:45
 msgid "Don't show this again"
-msgstr ""
+msgstr "Bunu bir daha gösterme"
 
 #: templates/fc/checkout/review-order-section.php:41
 #: templates/fc/checkout/review-order-section.php:58
@@ -426,9 +420,9 @@ msgstr "Sepeti Düzenle"
 
 #: inc/admin/admin-settings-general.php:316
 msgid "Enable integrated coupon code section"
-msgstr ""
+msgstr "Entegre kupon kodu bölümünü etkinleştirin"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:116
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:115
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Posta Kontrolünü Etkinleştir: (devre dışı bırakılmış özellik)"
 
@@ -445,10 +439,6 @@ msgstr "Özellikler"
 msgid "Fluid Checkout"
 msgstr "Fluid Checkout"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:78
-msgid "Fluid Checkout 2.0 - Important changes!"
-msgstr ""
-
 #. Name of the plugin
 #| msgid "Fluid Checkout for WooCommerce"
 msgid "Fluid Checkout for WooCommerce - Lite"
@@ -456,19 +446,21 @@ msgstr "Fluid Checkout for WooCommerce - Lite"
 
 #: inc/admin/admin-settings-general.php:114
 msgid "Footer background color"
-msgstr ""
+msgstr "Altbilgi arka plan rengi"
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
 msgid ""
 "Germanized PRO multistep checkout feature needs to be disabled when using "
 "Fluid Checkout"
 msgstr ""
+"Fluid Checkout kullanılırken Almanlaştırılmış PRO çok adımlı ödeme "
+"özelliğinin devre dışı bırakılması gerekiyor"
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:67
 msgid "Go to Germanized settings"
-msgstr ""
+msgstr "Almanlaştırılmış ayarlara git"
 
-#: fluid-checkout.php:400
+#: fluid-checkout.php:399
 msgid "Go to Plugin Search"
 msgstr "Eklenti Aramaya Git"
 
@@ -488,7 +480,7 @@ msgstr "Header arka plan rengi"
 #: inc/admin/admin-settings-general.php:280
 #: inc/admin/admin-settings-general.php:341
 msgid "Hidden"
-msgstr ""
+msgstr "Gizli"
 
 #: inc/admin/admin-settings-general.php:209
 msgid "Hide optional fields behind a link button"
@@ -496,11 +488,11 @@ msgstr "Bir bağlantı düğmesinin arkasındaki isteğe bağlı alanları gizle
 
 #: inc/admin/admin-settings-general.php:188
 msgid "Highlight the billing address section in the checkout form"
-msgstr ""
+msgstr "Ödeme formunda fatura adresi bölümünü vurgulayın"
 
 #: inc/admin/admin-settings-general.php:179
 msgid "Highlight the shipping address section in the checkout form"
-msgstr ""
+msgstr "Ödeme formunda gönderim adresi bölümünü vurgulayın"
 
 #: inc/checkout-fields.php:94
 msgid "House number and street name."
@@ -518,13 +510,12 @@ msgstr "HTML renk değeri. örn: #f3f3f3"
 msgid "https://fluidcheckout.com/"
 msgstr "https://fluidcheckout.com/"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:84
 #: inc/admin/admin-notice-review-request.php:48
 #| msgid "I Need Help!"
 msgid "I need help!"
 msgstr "Yardıma İhtiyacım Var!"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:119
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:118
 msgid ""
 "If checked informs typos in email to users. (This feature has been disabled "
 "because Fluid Checkout offers the feature. Changes to this option will not "
@@ -544,7 +535,6 @@ msgid "Integrations"
 msgstr "Entegrasyonlar"
 
 #: inc/admin/admin-settings-general.php:210
-#, fuzzy
 #| msgid ""
 #| "It is recommended to keep this options checked to reduce the number of "
 #| "open input fields, <a href=\"https://baymard.com/blog/checkout-flow-"
@@ -562,7 +552,6 @@ msgstr ""
 "link\" target=\"_blank\">araştırmayı okuyun</a>."
 
 #: inc/admin/admin-settings-general.php:242
-#, fuzzy
 #| msgid ""
 #| "It is recommended to leave this option checked. The billing address at "
 #| "checkout will start with the option \"Billing same as shipping\" checked "
@@ -585,12 +574,7 @@ msgstr ""
 "fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
 "target=\"_blank\">araştırmayı okuyun</a>."
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:82
-msgid "Keep using moved features"
-msgstr ""
-
 #: inc/admin/admin-settings-general.php:60
-#, fuzzy
 msgid "Layout Options"
 msgstr "Yerleşim Seçenekleri"
 
@@ -616,16 +600,15 @@ msgid "Or continue below"
 msgstr "Veya aşağıdan devam edin"
 
 #: templates/fc/checkout/form-contact-login-modal.php:28
-#, fuzzy
 #| msgid "Sign in to your account"
 msgid "Log in to your account"
 msgstr "Hesabınızda oturum açın"
 
 #. 1: user display name 2: logout url
 #: templates/fc/checkout/form-contact-login.php:32
-#, fuzzy, php-format
+#, php-format
 msgid "Logged in as %1$s. <a href=\"%2$s\">Log out</a>"
-msgstr "1$s olarak oturum açıldı. <a href=\"%2$s\">Çıkış</a>"
+msgstr "%1$s olarak oturum açıldı. <a href=\"%2$s\">Çıkış</a>"
 
 #: inc/admin/admin-settings-general.php:71
 msgid "Logo image"
@@ -651,7 +634,7 @@ msgstr "Kaydırırken sipariş özetinin görünür kalmasını sağlayın"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:98
 msgid "Move the sign up checkbox to the contact step"
-msgstr ""
+msgstr "Kaydol onay kutusunu iletişim adımına taşıyın"
 
 #: inc/checkout-steps.php:533
 msgid "Multi-step"
@@ -711,7 +694,7 @@ msgstr " Sadece gönderim ile ilgili sorular içindir."
 #: inc/admin/admin-settings-general.php:281
 #: inc/admin/admin-settings-general.php:342
 msgid "Optional"
-msgstr ""
+msgstr "Opsiyonel"
 
 #: inc/admin/admin-settings-general.php:208
 msgid "Optional fields"
@@ -725,7 +708,7 @@ msgstr "Sipariş notları"
 msgid "Order number and receipt will be sent to this email address."
 msgstr "Sipariş numarası ve makbuz bu e-posta adresine gönderilecektir."
 
-#: inc/checkout-steps.php:3782 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3780 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Sipariş özeti"
 
@@ -734,12 +717,14 @@ msgid ""
 "Output the checkout steps section from the Woodmart theme when using Fluid "
 "Checkout header and footer"
 msgstr ""
+"Fluid Checkout üstbilgisi ve altbilgisi kullanılırken Woodmart temasından "
+"ödeme adımları bölümünün çıktısı"
 
 #: inc/admin/admin-settings-general.php:104
 msgid "Page background color"
 msgstr "Sayfa arka plan rengi"
 
-#: inc/checkout-steps.php:3601
+#: inc/checkout-steps.php:3599
 msgid "Payment method"
 msgstr "Ödeme yöntemi"
 
@@ -768,10 +753,14 @@ msgid ""
 "one-step checkout and display a coupon code field at the checkout page that "
 "does not distract your customers."
 msgstr ""
+"Herhangi bir WooCommerce mağazası için dikkat dağıtmayan bir ödeme deneyimi "
+"sağlar. Gerçekten doğrusal çok adımlı veya tek adımlı bir ödeme işleminde "
+"faturalandırmadan önce kargo bilgilerini isteyin ve ödeme sayfasında "
+"müşterilerinizin dikkatini dağıtmayan bir kupon kodu alanı görüntüleyin."
 
 #: inc/admin/admin-notice-review-request.php:47
 msgid "Rate the plugin"
-msgstr ""
+msgstr "Eklentiyi değerlendirin"
 
 #: inc/admin/admin-settings-general.php:230
 #| msgid ""
@@ -794,7 +783,7 @@ msgstr "Kaldır"
 #: inc/admin/admin-settings-general.php:256
 #: inc/admin/admin-settings-general.php:282
 msgid "Required"
-msgstr ""
+msgstr "Gerekli"
 
 #: inc/checkout-steps.php:3062
 msgid "Same as shipping address"
@@ -822,7 +811,7 @@ msgstr "Entegrasyonlar"
 #: inc/admin/admin-settings-general.php:178
 #: inc/admin/admin-settings-general.php:293
 msgid "Shipping address"
-msgstr ""
+msgstr "Nakliye adresi"
 
 #: inc/checkout-steps.php:2108
 msgid "Shipping method"
@@ -852,7 +841,7 @@ msgstr "İçeriğe geç"
 
 #: inc/admin/admin-settings-general.php:165
 msgid "Some options might not be compatible with some plugins and themes."
-msgstr ""
+msgstr "Bazı seçenekler bazı eklentiler ve temalarla uyumlu olmayabilir."
 
 #: inc/compat/themes/compat-theme-Impreza.php:53
 msgid "Spacing for site header at the checkout page (in pixels)"
@@ -912,7 +901,7 @@ msgstr "Impreza Teması"
 
 #: inc/compat/themes/compat-theme-woodmart.php:50
 msgid "Theme Woodmart"
-msgstr ""
+msgstr "Tema Woodmart"
 
 #: inc/admin/admin-settings-general.php:352
 msgid "These widget areas are used to add trust symbols on the checkout page."
@@ -921,7 +910,6 @@ msgstr ""
 "kullanılır."
 
 #: inc/checkout-validation.php:120
-#, fuzzy
 #| msgid "This does not match the related field value."
 msgid "This field does not match the related field value."
 msgstr "Bu, ilgili alan değeriyle eşleşmiyor."
@@ -942,10 +930,9 @@ msgstr "Araçlar"
 msgid "Troubleshooting"
 msgstr "Sorun Giderme"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:83
 #: inc/admin/admin.php:95
 msgid "Upgrade to PRO"
-msgstr ""
+msgstr "PRO'ya Yükseltme"
 
 #: inc/admin/admin-settings-general.php:86
 msgid "Use Fluid Checkout header and footer"
@@ -975,6 +962,8 @@ msgid ""
 "When enabled, the checkbox will be moved to the contact step independently "
 "of the display location defined in the Sendinblue plugin settings."
 msgstr ""
+"Etkinleştirildiğinde, onay kutusu Sendinblue eklenti ayarlarında tanımlanan "
+"görüntüleme konumundan bağımsız olarak kişi adımına taşınacaktır."
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
 msgid ""
@@ -983,13 +972,16 @@ msgid ""
 "processing new orders</strong>. Please disable the Germanized PRO multistep "
 "checkout feature in the plugin settings."
 msgstr ""
+"Fluid Checkout kullanıldığında, Germanized PRO eklentisinin çok adımlı "
+"özelliği gereksiz hale gelir ve yeni siparişler işlenirken <strong>kritik "
+"hatalara</strong> neden olabilir. Lütfen eklenti ayarlarından Germanized PRO "
+"çok adımlı ödeme özelliğini devre dışı bırakın."
 
-#: fluid-checkout.php:397
+#: fluid-checkout.php:396
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
 #: inc/admin/admin-notice-review-request.php:45
-#, fuzzy
 #| msgid ""
 #| "You have been using the plugin for a while now. How do you like it so far?"
 #| " <br>Please give us a quick rating, we appreciate every feedback and it "
@@ -1004,7 +996,7 @@ msgstr ""
 "eklentiyi geliştirmeye devam etmemiz için bizi teşvik ediyor :)"
 
 #: templates/checkout/payment.php:46
-#, fuzzy, php-format
+#, php-format
 #| msgid ""
 #| "Your order has a total amount due of %s. No&nbsp;further payment is "
 #| "needed."

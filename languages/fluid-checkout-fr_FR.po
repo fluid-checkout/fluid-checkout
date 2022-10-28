@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-02 11:34+0000\n"
-"PO-Revision-Date: 2022-09-13 09:28+0000\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2022-10-27 12:56+0000\n"
+"Last-Translator: Diego Versiani\n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.4.6; wp-5.5.3\n"
+"X-Loco-Version: 2.6.3; wp-6.0.3"
 
 #: inc/admin/admin-settings-general.php:87
 msgid "(Experimental) Use theme's page header and footer for the checkout page"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "(Required)"
 msgstr "(Requis)"
 
-#: fluid-checkout.php:408
+#: fluid-checkout.php:407
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -33,19 +33,7 @@ msgstr ""
 "<strong>%1$s</strong> nécessite <strong>%2$s</strong> d'être installé et "
 "activé. <a href=\"%4$s\">%3$s</a>"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:79
-msgid ""
-"<strong>Express checkout</strong>, <strong>Local pickup</strong>, <strong>"
-"Gift message</strong> and <strong>Packing list templates</strong> have been "
-"moved to Fluid Checkout PRO. <br>For a limited time, you can get these "
-"features at no extra cost."
-msgstr ""
-"les modèles <strong>Express checkout</strong>, <strong>Local pickup</strong>,"
-" <strong>Gift message</strong> et <strong>Packing list </strong> ont été "
-"déplacés vers Fluid Checkout PRO. <br>Pour une durée limitée, vous pouvez "
-"obtenir ces fonctionnalités sans frais supplémentaires."
-
-#: fluid-checkout.php:404
+#: fluid-checkout.php:403
 #, php-format
 msgid "Activate %s"
 msgstr "Activer %s"
@@ -135,12 +123,12 @@ msgstr "Appliquer"
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:69
 msgctxt "Captcha position"
 msgid "Before place order button"
-msgstr "Bouton Avant de passer la commande"
+msgstr "Avant le bouton de commande"
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:68
 msgctxt "Captcha position"
 msgid "Before place order section"
-msgstr "Avant de passer la section de commande"
+msgstr "Avant la section de commande"
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:63
 msgid "Captcha Pro by BestWebSoft"
@@ -165,7 +153,7 @@ msgstr "Paiement"
 
 #: inc/checkout-widget-areas.php:91
 msgid "Checkout Below Place Order"
-msgstr "Paiement ci-dessous Passer commande"
+msgstr "Paiement ci-dessous bouton de commande"
 
 #: inc/checkout-widget-areas.php:106
 msgid "Checkout Footer"
@@ -336,8 +324,7 @@ msgstr "Options de débogage"
 msgid ""
 "Define the position to display \"Place order\" and terms checkbox section."
 msgstr ""
-"Définissez la position pour afficher la section \"Passer commande\" et les "
-"termes."
+"Définissez la position pour afficher la section \"Commander\" et les termes."
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:64
 msgid ""
@@ -393,8 +380,7 @@ msgstr ""
 #: inc/checkout-widget-areas.php:93
 msgid "Display widgets below the place order button at the checkout page."
 msgstr ""
-"Affichez les widgets sous le bouton Passer la commande sur la page de "
-"paiement."
+"Affichez les widgets sous le bouton de commande sur la page de paiement."
 
 #: inc/checkout-widget-areas.php:83
 msgid "Display widgets inside the order summary at the checkout page."
@@ -442,7 +428,7 @@ msgstr "Modifier le panier"
 msgid "Enable integrated coupon code section"
 msgstr "Activer la section intégrée des codes de promo"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:116
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:115
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Activer la vérification du mail : (fonctionnalité désactivée)"
 
@@ -458,10 +444,6 @@ msgstr "Fonctionnalités"
 #: inc/admin/admin-settings-fluid-checkout.php:25
 msgid "Fluid Checkout"
 msgstr "Fluid Checkout"
-
-#: inc/admin/admin-notice-breaking-changes-version-200.php:78
-msgid "Fluid Checkout 2.0 - Important changes!"
-msgstr "Fluid Checkout 2.0 - Changements importants !"
 
 #. Name of the plugin
 msgid "Fluid Checkout for WooCommerce - Lite"
@@ -483,7 +465,7 @@ msgstr ""
 msgid "Go to Germanized settings"
 msgstr "Accéder aux paramètres germanisés"
 
-#: fluid-checkout.php:400
+#: fluid-checkout.php:399
 msgid "Go to Plugin Search"
 msgstr "Aller à la recherche de plugin"
 
@@ -537,12 +519,11 @@ msgstr "Valeur de couleur HTML. ex : #f3f3f3"
 msgid "https://fluidcheckout.com/"
 msgstr "https://fluidcheckout.com/"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:84
 #: inc/admin/admin-notice-review-request.php:48
 msgid "I need help!"
 msgstr "J'ai besoin d'aide !"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:119
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:118
 msgid ""
 "If checked informs typos in email to users. (This feature has been disabled "
 "because Fluid Checkout offers the feature. Changes to this option will not "
@@ -601,10 +582,6 @@ msgstr ""
 "average-form-fields#3-default-billing--shipping-and-hide-the-fields-"
 "entirely\" target=\"_blank\">lire la recherche</a>."
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:82
-msgid "Keep using moved features"
-msgstr "Continuer à utiliser les fonctionnalités déplacées"
-
 #: inc/admin/admin-settings-general.php:60
 msgid "Layout Options"
 msgstr "Options de mise en page"
@@ -649,13 +626,17 @@ msgstr ""
 "Rendre la barre de progression du paiement visible pendant le défilement"
 
 #: inc/admin/admin-settings-general.php:220
+#| msgid ""
+#| "Make the labels of optional field \"Add\" link button as <code>"
+#| "lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone "
+#| "number\")"
 msgid ""
 "Make the labels of optional field \"Add\" link button as <code>"
-"lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone number\")"
+"lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone Number\")"
 msgstr ""
-"Faire les étiquettes du champ optionnel \"Ajouter\" bouton de lien <code>en "
+"Faire les étiquettes du champ optionnel \"Ajouter\" bouton de lien en <code>"
 "minuscules</code>. (à savoir \"Ajouter un numéro de téléphone\" au lieu de "
-"\"Ajouter un numéro de Téléphone\")"
+"\"Ajouter un Numéro de Téléphone\")"
 
 #: inc/admin/admin-settings-general.php:155
 msgid "Make the order summary stay visible while scrolling"
@@ -739,7 +720,7 @@ msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 "Le numéro de commande et le reçu seront envoyés à cette adresse e-mail."
 
-#: inc/checkout-steps.php:3782 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3780 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Récapitulatif de la commande"
 
@@ -755,7 +736,7 @@ msgstr ""
 msgid "Page background color"
 msgstr "Couleur de fond de la page"
 
-#: inc/checkout-steps.php:3601
+#: inc/checkout-steps.php:3599
 msgid "Payment method"
 msgstr "Méthode de paiement"
 
@@ -765,7 +746,7 @@ msgstr "Date de retrait"
 
 #: inc/admin/admin-settings-general.php:163
 msgid "Place order"
-msgstr "Passer la commande"
+msgstr "Commander"
 
 #. Next checkout step title
 #: inc/checkout-steps.php:1106
@@ -960,7 +941,6 @@ msgstr "Outils"
 msgid "Troubleshooting"
 msgstr "Dépannage"
 
-#: inc/admin/admin-notice-breaking-changes-version-200.php:83
 #: inc/admin/admin.php:95
 msgid "Upgrade to PRO"
 msgstr "Mise à niveau vers PRO"
@@ -1010,7 +990,7 @@ msgstr ""
 "désactiver la fonctionnalité de paiement en plusieurs étapes Germanized PRO "
 "dans les paramètres du plugin."
 
-#: fluid-checkout.php:397
+#: fluid-checkout.php:396
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
