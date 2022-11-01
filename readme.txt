@@ -373,6 +373,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Order summary table styles for better compatibility with various themes.
+
 = 2.0.8 - 2022-10-28 =
 
 * Bump tested up to WordPress 6.0.3 and WooCommerce 7.0.0

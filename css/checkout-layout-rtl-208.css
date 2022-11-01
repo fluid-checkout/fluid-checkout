@@ -2132,6 +2132,7 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review-
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table {
+  display: table;
   margin: 0 -20px;
   padding: 0;
   width: calc( 100% + 40px );
