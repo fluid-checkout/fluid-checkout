@@ -42,7 +42,7 @@ class FluidCheckout_PaypalBrasilParaWooCommerce extends FluidCheckout {
 		// Bail if billing country is not Brazil
 		if ( ! array_key_exists( 'billing_country', $posted_data ) || 'BR' !== $posted_data[ 'billing_country' ] ) { return $data; }
 
-		// Used parsed billing data as the shipping address
+		// Use parsed billing address data as the shipping address
 		$data['postcode'] = array_key_exists( 'billing_postcode', $posted_data ) ? $posted_data[ 'billing_postcode' ] : '';
 		$data['address'] = array_key_exists( 'billing_address_1', $posted_data ) ? $posted_data[ 'billing_address_1' ] : '';
 		$data['address_2'] = array_key_exists( 'billing_address_2', $posted_data ) ? $posted_data[ 'billing_address_2' ] : '';
@@ -64,7 +64,7 @@ class FluidCheckout_PaypalBrasilParaWooCommerce extends FluidCheckout {
 		// Bail if billing country is not Brazil
 		if ( ! array_key_exists( 'country', $data ) || 'BR' === $data[ 'country' ] ) { return $data; }
 
-		// Used parsed billing data as the shipping address
+		// Clear address data
 		$data['postcode'] = '';
 		$data['address'] = '';
 		$data['address_2'] = '';
