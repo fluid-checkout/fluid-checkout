@@ -378,6 +378,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Bump tested up to WordPress 6.1.0 and WooCommerce 7.1.0
 * Added: Compatibility with the upcoming feature WooCommerce HPOS (High Performance Order Storage).
 * Added: Compatibility with plugin PayPal Brasil para WooCommerce.
+* Improved: Refactor styles for shipping methods pricing labels to automatically align to the center vertically when more elements are displayed.
 * Fixed: Order summary table styles for better compatibility with various themes.
 
 = 2.0.8 - 2022-10-28 =
