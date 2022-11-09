@@ -375,6 +375,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with the upcoming feature WooCommerce HPOS (High Performance Order Storage).
 * Added: Compatibility with plugin PayPal Brasil para WooCommerce.
 * Fixed: Order summary table styles for better compatibility with various themes.
 

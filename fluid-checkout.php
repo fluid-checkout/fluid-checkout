@@ -142,6 +142,9 @@ class FluidCheckout {
 			return;
 		}
 
+		// Declare compatibility with WooCommerce HPOS (High Performance Order Storage)
+		add_action( 'before_woocommerce_init', array( $this, 'declare_woocommerce_hpos_compatibility' ), 10 );
+
 		// Load features
 		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_features' ), 10 );
@@ -371,6 +374,19 @@ class FluidCheckout {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		return is_plugin_active( 'woocommerce/woocommerce.php' ) && function_exists( 'WC' );
 	}
+
+
+	
+	/**
+	 * Declare compatibility with the WooCommerce High Performance Order Storage feature.
+	 */
+	public function declare_woocommerce_hpos_compatibility() {
+		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+		}
+	}
+
+
 
 	/**
 	 * Check if Fluid Checkout PRO is active on a single install or network wide.
