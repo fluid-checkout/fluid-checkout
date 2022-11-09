@@ -26,7 +26,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		// Admin fields
 		if ( is_admin() ) {
 			add_filter( 'woocommerce_admin_shipping_fields', array( $this, 'add_shipping_phone_to_admin_screen' ), 10 );
-			add_filter( 'woocommerce_order_formatted_shipping_address', array( $this, 'output_order_formatted_shipping_address_with_phone' ), PHP_INT_MAX, 2 );
+			add_filter( 'woocommerce_order_formatted_shipping_address', array( $this, 'output_order_formatted_shipping_address_with_phone' ), 1, 2 );
 		}
 
 		// Change shipping field args
