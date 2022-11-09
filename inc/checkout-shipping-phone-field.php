@@ -176,7 +176,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		if ( method_exists( $order, 'get_shipping_phone' ) ) { return $address; }
 	
 		// Maybe add the shipping phone to the address data
-		$shipping_phone = $order->get_meta( '_shipping_phone' );
+		$shipping_phone = $order->get_meta( '_shipping_phone', true );
 		if ( ! empty( $shipping_phone ) ) { $address['phone'] = $shipping_phone; }
 
 		return $address;
