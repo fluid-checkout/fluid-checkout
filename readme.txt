@@ -378,6 +378,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Bump tested up to WordPress 6.1.0 and WooCommerce 7.1.0
 * Added: Compatibility with the upcoming feature WooCommerce HPOS (High Performance Order Storage).
 * Added: Compatibility with plugin PayPal Brasil para WooCommerce.
+* Added: Compatibility with theme Astra PRO (Astra PRO add-on plugin).
+* Improved: Compatibility with theme Astra.
 * Fixed: Order summary table styles for better compatibility with various themes.
 
 = 2.0.8 - 2022-10-28 =
