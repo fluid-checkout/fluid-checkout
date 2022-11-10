@@ -37,9 +37,13 @@ class FluidCheckout_AstraAddon extends FluidCheckout {
 		$theme_options[ 'checkout-labels-as-placeholders' ] = false;
 		$theme_options[ 'checkout-persistence-form-data' ] = false;
 
-		// Set display order notes option to `yes` to prevent it from removing the field from the checkout page
-		// The Fluid Checkout option to show/hide the order notes field superseeds the theme option
+		// Set display order notes option to `yes` to prevent it from removing the field from the checkout page.
+		// Fluid Checkout option to show/hide the order notes field superseeds the theme option.
 		$theme_options[ 'checkout-order-notes-display' ] = 'yes';
+
+		// Remove order summary and payment section colors from the theme
+		$theme_options[ 'order-summary-background-color' ] = '';
+		$theme_options[ 'payment-option-content-background-color' ] = '';
 
 		return $theme_options;
 	}
