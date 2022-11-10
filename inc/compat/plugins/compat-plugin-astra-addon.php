@@ -26,7 +26,7 @@ class FluidCheckout_AstraAddon extends FluidCheckout {
 
 
 	/**
-	 * 
+	 * Force changing the theme addon feature options to avoid conflicts with Fluid Checkout.
 	 */
 	public function force_change_theme_options( $theme_options, $option, $default ) {
 		// Disable Astra PRO checkout options
