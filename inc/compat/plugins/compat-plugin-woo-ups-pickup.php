@@ -33,6 +33,9 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 
 		// Maybe set step as incomplete
 		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
+
+		// Add substep review text lines
+		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 	}
 
 	/**
@@ -213,6 +216,46 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 		}
 
 		return $is_step_complete;
+	}
+
+
+
+	/**
+	 * Add the shipping methods substep review text lines for the selected pickup location.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Get shipping packages
+		$packages = WC()->shipping->get_packages();
+		foreach ( $packages as $i => $package ) {
+			// Get chosen shipping method for the current package
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+
+			// Skip package if shipping method selected is not UPS pickup location
+			if ( 'woo-ups-pickups' != $chosen_method ) { continue; }
+
+			// Get pickup location code
+			$pickups_location1_value = WC()->checkout->get_value( 'pickups_location1' );
+			$pickups_location2_value = WC()->checkout->get_value( 'pickups_location2' );
+			$pickups_location1_prefix = substr( $pickups_location1_value, 0, 4 );
+
+			// Maybe mark step as incomplete if pickup location code is not accepted
+			if ( $pickups_location1_prefix == 'PKPS' || $pickups_location1_prefix == 'PKPL' ) {
+				// Get parsed data of the selected location
+				$pickups_location2_value_parsed = json_decode( $pickups_location2_value );
+
+				// Add review text lines
+				$review_text_lines[] = '<strong>' . $pickups_location2_value_parsed->title . '</strong>&nbsp;(' . $pickups_location2_value_parsed->iid . ')';
+				$review_text_lines[] = $pickups_location2_value_parsed->city . ', ' . $pickups_location2_value_parsed->street;
+				$review_text_lines[] = '<small>' . $pickups_location2_value_parsed->zip . '</small>';
+			}
+		}
+
+		return $review_text_lines;
 	}
 
 }
