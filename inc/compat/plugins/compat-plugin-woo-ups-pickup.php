@@ -21,15 +21,12 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 	public function hooks() {
 		// Template redirect hooks
 		add_action( 'template_redirect', array( $this, 'template_redirect_hooks' ), 100 );
-		
+
 		// Very late hooks
 		add_action( 'woocommerce_after_template_part', array( $this, 'template_part_hooks' ), 1 );
 
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
-
-		// Checkout fields
-		add_action( 'woocommerce_checkout_fields', array( $this, 'add_pickup_custom_checkout_fields' ), 10000 );
 
 		// Persisted fields
 		add_filter( 'fc_customer_persisted_data_clear_fields_order_processed', array( $this, 'change_customer_persisted_data_clear_fields_order_processed' ), 10 );
@@ -67,6 +64,7 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 			$ups_pickup_class_object = $this->get_object_by_class_name_from_hooks( WC_Ups_PickUps::METHOD_CLASS_NAME );
 			remove_action( 'woocommerce_after_template_part', array( $ups_pickup_class_object, 'review_order_shipping_pickups_location' ), 10 );
 			add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'review_order_shipping_pickups_location' ), 10, 4 );
+			add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_pickup_location_hidden_fields' ), 10 );
 		}
 	}
 
@@ -147,45 +145,30 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 
 
 	/**
-	 * Add custom checkout fields to hold the value for the selected location.
-	 *
-	 * @param   Array  $fields  The checkout fields groups with all field attributes.
+	 * Output pickup location hidden fields.
 	 */
-	public function add_pickup_custom_checkout_fields( $fields ) {
-        // Detect if cart has only virutal products
+	public function output_pickup_location_hidden_fields() {
+		// Detect if cart has only virutal products
 		$is_virtual = true;
-        $cart_items = WC()->cart->cart_contents;
-        foreach ( $cart_items as $item ) {
-            $product = $item['data'];
-            if ( is_callable( array( $product, 'is_virtual' ) ) && ! $product->is_virtual() ) {
-                $is_virtual = false;
-                break;
-            }
-        }
+		$cart_items = WC()->cart->cart_contents;
+		foreach ( $cart_items as $item ) {
+			$product = $item['data'];
+			if ( is_callable( array( $product, 'is_virtual' ) ) && ! $product->is_virtual() ) {
+				$is_virtual = false;
+				break;
+			}
+		}
 
 		// Bail if cart has only virtual products
-        if ( $is_virtual ) { return $fields; }
-
-		// Add pickup location 1 field
-        $fields['billing']['pickups_location1'] = array(
-            'label' => __( 'Number', 'woocommerce' ),
-            'placeholder' => _x( 'Please select point', 'placeholder', 'woocommerce' ),
-            'required' => false,
-            'class' => array( 'form-row-wide' ),
-			'type' => 'hidden',
-        );
-
-		// Add pickup location 2 field
-        $fields['billing']['pickups_location2'] = array(
-            'label' => __( 'Point', 'woocommerce' ),
-            'placeholder' => _x( 'Please select point', 'placeholder', 'woocommerce' ),
-            'required' => false,
-            'class' => array( 'form-row-wide' ),
-			'type' => 'hidden',
-        );
-
-        return $fields;
-    }
+		if ( $is_virtual ) { return $fields; }
+		
+		$pickups_location1_value = WC()->checkout->get_value( 'pickups_location1' );
+		$pickups_location2_value = WC()->checkout->get_value( 'pickups_location2' );
+		?>
+		<input type="hidden" name="pickups_location1" value="<?php echo esc_attr( $pickups_location1_value ); ?>" />
+		<input type="hidden" name="pickups_location2" value="<?php echo esc_attr( $pickups_location2_value ); ?>" />
+		<?php
+	}
 
 
 
