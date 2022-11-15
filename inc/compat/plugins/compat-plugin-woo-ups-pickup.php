@@ -201,7 +201,7 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 		$pickups_location1_value = WC()->checkout->get_value( 'pickups_location1' );
 		$pickups_location2_value = WC()->checkout->get_value( 'pickups_location2' );
 		?>
-		<div class="ups-pickup-location-hidden-fields form-row validate-required">
+		<div class="ups-pickup-location-hidden-fields form-row validate-required fc-no-validation-icon">
 			<span class="woocommerce-input-wrapper">
 				<input type="hidden" name="pickups_location1" value="<?php echo esc_attr( $pickups_location1_value ); ?>" />
 				<input type="hidden" name="pickups_location2" value="<?php echo esc_attr( $pickups_location2_value ); ?>" />
