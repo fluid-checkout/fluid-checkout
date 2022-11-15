@@ -30,6 +30,9 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 
 		// Checkout fields
 		add_action( 'woocommerce_checkout_fields', array( $this, 'wc_pickup_custom_override_checkout_fields' ), 10000 );
+
+		// Maybe set step as incomplete
+		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
 	}
 
 	/**
@@ -177,6 +180,40 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 
         return $fields;
     }
+
+
+
+	/**
+	 * Set the shipping step as incomplete when shipping method is UPS pickup location but a location has not yet been selected.
+	 *
+	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 */
+	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
+		// Bail if step is already incomplete
+		if ( ! $is_step_complete ) { return $is_step_complete; }
+
+		// Get shipping packages
+		$packages = WC()->shipping->get_packages();
+		foreach ( $packages as $i => $package ) {
+			// Get chosen shipping method for the current package
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+
+			// Skip package if shipping method selected is not UPS pickup location
+			if ( 'woo-ups-pickups' != $chosen_method ) { continue; }
+
+			// Get pickup location code
+			$pickups_location1_value = WC()->checkout->get_value( 'pickups_location1' );
+			$pickups_location1_prefix = substr( $pickups_location1_value, 0, 4 );
+
+			// Maybe mark step as incomplete if pickup location code is not accepted
+			if ( $pickups_location1_prefix !== 'PKPS' && $pickups_location1_prefix !== 'PKPL' ) {
+				$is_step_complete = false;
+				break;
+			}
+		}
+
+		return $is_step_complete;
+	}
 
 }
 
