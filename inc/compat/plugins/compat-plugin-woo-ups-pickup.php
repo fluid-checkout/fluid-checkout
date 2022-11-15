@@ -31,6 +31,9 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 		// Persisted fields
 		add_filter( 'fc_customer_persisted_data_clear_fields_order_processed', array( $this, 'change_customer_persisted_data_clear_fields_order_processed' ), 10 );
 
+		// Checkout validation settings
+		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation_reference_node' ), 10 );
+
 		// Maybe set step as incomplete
 		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
 
@@ -142,8 +145,6 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 		}
 	}
 
-
-
 	/**
 	 * Output pickup location hidden fields.
 	 */
@@ -165,9 +166,34 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 		$pickups_location1_value = WC()->checkout->get_value( 'pickups_location1' );
 		$pickups_location2_value = WC()->checkout->get_value( 'pickups_location2' );
 		?>
-		<input type="hidden" name="pickups_location1" value="<?php echo esc_attr( $pickups_location1_value ); ?>" />
-		<input type="hidden" name="pickups_location2" value="<?php echo esc_attr( $pickups_location2_value ); ?>" />
+		<div class="ups-pickup-location-hidden-fields form-row validate-required">
+			<span class="woocommerce-input-wrapper">
+				<input type="hidden" name="pickups_location1" value="<?php echo esc_attr( $pickups_location1_value ); ?>" />
+				<input type="hidden" name="pickups_location2" value="<?php echo esc_attr( $pickups_location2_value ); ?>" />
+			</span>
+		</div>
 		<?php
+	}
+
+	/**
+	 * Add settings to the plugin settings JS object for the checkout validation message reference node.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function change_js_settings_checkout_validation_reference_node( $settings ) {
+		// Get current values
+		$current_form_row_selector = array_key_exists( 'formRowSelector', $settings ) ? $settings[ 'formRowSelector' ] : '';
+		$current_validate_field_selector = array_key_exists( 'validateFieldsSelector', $settings ) ? $settings[ 'validateFieldsSelector' ] : '';
+		$current_reference_node_selector = array_key_exists( 'referenceNodeSelector', $settings ) ? $settings[ 'referenceNodeSelector' ] : '';
+		$current_always_validate_selector = array_key_exists( 'alwaysValidateFieldsSelector', $settings ) ? $settings[ 'alwaysValidateFieldsSelector' ] : '';
+
+		// Prepend new values to existing settings
+		$settings[ 'formRowSelector' ] = '.ups-pickup-location-hidden-fields' . ( ! empty( $current_form_row_selector ) ? ', ' : '' ) . $current_form_row_selector;
+		$settings[ 'validateFieldsSelector' ] = 'input[name="pickups_location1"]' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
+		$settings[ 'referenceNodeSelector' ] = 'input[name="pickups_location1"]' . ( ! empty( $current_reference_node_selector ) ? ', ' : '' ) . $current_reference_node_selector;
+		$settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="pickups_location1"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
+
+		return $settings;
 	}
 
 
