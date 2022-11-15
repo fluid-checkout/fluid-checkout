@@ -65,6 +65,9 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 	 * Add or remove very late hooks.
 	 */
 	public function template_part_hooks() {
+		// Bail if not on checkout or doing AJAX call
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
+
 		// Bail if UPS Pickup class is not present
 		if ( ! class_exists( 'WC_Ups_PickUps' ) ) { return; }
 
@@ -154,6 +157,9 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 	 * @param $args
 	 */
 	public function review_order_shipping_pickups_location() {
+		// Bail if not on checkout or doing AJAX call
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
+
 		// Check if plugin folder exists
 		$plugin_dir = WP_PLUGIN_DIR . '/woo-ups-pickup';
 		if ( ! is_dir( $plugin_dir ) ) { return; }
