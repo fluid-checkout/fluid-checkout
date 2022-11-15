@@ -19,17 +19,37 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Template redirect hooks
+		add_action( 'template_redirect', array( $this, 'template_redirect_hooks' ), 100 );
+		
 		// Very late hooks
-		add_action( 'woocommerce_after_template_part', array( $this, 'very_late_hooks' ), 1 );
+		add_action( 'woocommerce_after_template_part', array( $this, 'template_part_hooks' ), 1 );
 
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
+
+		// Checkout fields
+		add_action( 'woocommerce_checkout_fields', array( $this, 'wc_pickup_custom_override_checkout_fields' ), 10000 );
 	}
 
 	/**
 	 * Add or remove very late hooks.
 	 */
-	public function very_late_hooks() {
+	public function template_redirect_hooks() {
+		// Bail if UPS Pickup class is not present
+		if ( ! class_exists( 'WC_Ups_PickUps' ) ) { return; }
+
+		// UPS Pickup
+		if ( class_exists( WC_Ups_PickUps::METHOD_CLASS_NAME ) ) {
+			$ups_pickup_class_object = $this->get_object_by_class_name_from_hooks( WC_Ups_PickUps::METHOD_CLASS_NAME );
+			remove_filter( 'woocommerce_checkout_fields', array( $ups_pickup_class_object, 'wc_pickup_custom_override_checkout_fields' ), 10000 );
+		}
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function template_part_hooks() {
 		// Bail if UPS Pickup class is not present
 		if ( ! class_exists( 'WC_Ups_PickUps' ) ) { return; }
 
@@ -97,7 +117,7 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 		$ups_pickup_class_object = $this->get_object_by_class_name_from_hooks( WC_Ups_PickUps::METHOD_CLASS_NAME );
 
 		// Load pickup locations template
-		include_once( $plugin_dir . '/includes/templates/pickup-location.php');
+		wc_get_template( 'cart/pickup-location.php' );
 
 		// Get shipping packages
 		$packages = WC()->shipping->get_packages();
@@ -114,6 +134,49 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 			}
 		}
 	}
+
+
+
+	/**
+	 * Add custom checkout fields to hold the value for the selected location.
+	 *
+	 * @param   Array  $fields  The checkout fields groups with all field attributes.
+	 */
+	public function wc_pickup_custom_override_checkout_fields( $fields ) {
+        // Detect if cart has only virutal products
+		$is_virtual = true;
+        $cart_items = WC()->cart->cart_contents;
+        foreach ( $cart_items as $item ) {
+            $product = $item['data'];
+            if ( is_callable( array( $product, 'is_virtual' ) ) && ! $product->is_virtual() ) {
+                $is_virtual = false;
+                break;
+            }
+        }
+
+		// Bail if cart has only virtual products
+        if ( $is_virtual ) { return $fields; }
+
+		// Add pickup location 1 field
+        $fields['billing']['pickups_location1'] = array(
+            'label' => __( 'Number', 'woocommerce' ),
+            'placeholder' => _x( 'Please select point', 'placeholder', 'woocommerce' ),
+            'required' => false,
+            'class' => array( 'form-row-wide' ),
+			'type' => 'hidden',
+        );
+
+		// Add pickup location 2 field
+        $fields['billing']['pickups_location2'] = array(
+            'label' => __( 'Point', 'woocommerce' ),
+            'placeholder' => _x( 'Please select point', 'placeholder', 'woocommerce' ),
+            'required' => false,
+            'class' => array( 'form-row-wide' ),
+			'type' => 'hidden',
+        );
+
+        return $fields;
+    }
 
 }
 
