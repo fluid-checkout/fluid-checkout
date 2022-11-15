@@ -28,6 +28,12 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
 		// Persisted fields
 		add_filter( 'fc_customer_persisted_data_clear_fields_order_processed', array( $this, 'change_customer_persisted_data_clear_fields_order_processed' ), 10 );
 
@@ -106,6 +112,35 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 
 		// Return what we found
 		return $_template;
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Scripts
+		wp_register_script( 'fc-compat-woo-ups-pickup-location-handler', self::$directory_url . 'js/compat/plugins/woo-ups-pickup/ups-pickup-location-handler' . self::$asset_version . '.js', array(), NULL );
+		wp_add_inline_script( 'fc-compat-woo-ups-pickup-location-handler', 'window.addEventListener("load",function(){UpsPickupLocationHandler.init();})' );
+	}
+
+	/**
+	 * Enqueue assets.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-compat-woo-ups-pickup-location-handler' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 
