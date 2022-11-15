@@ -29,7 +29,10 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
 		// Checkout fields
-		add_action( 'woocommerce_checkout_fields', array( $this, 'wc_pickup_custom_override_checkout_fields' ), 10000 );
+		add_action( 'woocommerce_checkout_fields', array( $this, 'add_pickup_custom_checkout_fields' ), 10000 );
+
+		// Persisted fields
+		add_filter( 'fc_customer_persisted_data_clear_fields_order_processed', array( $this, 'change_customer_persisted_data_clear_fields_order_processed' ), 10 );
 
 		// Maybe set step as incomplete
 		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
@@ -148,7 +151,7 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 	 *
 	 * @param   Array  $fields  The checkout fields groups with all field attributes.
 	 */
-	public function wc_pickup_custom_override_checkout_fields( $fields ) {
+	public function add_pickup_custom_checkout_fields( $fields ) {
         // Detect if cart has only virutal products
 		$is_virtual = true;
         $cart_items = WC()->cart->cart_contents;
@@ -183,6 +186,21 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 
         return $fields;
     }
+
+
+
+	/**
+	 * Add pickup location fields to be cleared when order is processed.
+	 *
+	 * @param   array  $clear_field_keys  Checkout field keys to clear from the session after placing an order.
+	 */
+	public function change_customer_persisted_data_clear_fields_order_processed( $clear_field_keys ) {
+		// Define skip fields
+		$clear_field_keys[] = 'pickups_location1';
+		$clear_field_keys[] = 'pickups_location2';
+
+		return $clear_field_keys;
+	}
 
 
 
