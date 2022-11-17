@@ -373,6 +373,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased - edit quantity in checkout =
+
+* Added: New filter `fc_pro_checkout_review_order_table_classes` to add additional classes to the order summary table.
+* Improved: Refactor use of class `fc-fragment-always-replace` to force replacing checkout page fragments.
+
 = Unreleased =
 
 * Bump tested up to WordPress 6.1.0 and WooCommerce 7.1.0
