@@ -13,7 +13,7 @@
  * @see         https://docs.woocommerce.com/document/template-structure/
  * @package     WooCommerce\Templates
  * @version     3.6.0
- * @fc-version 2.0.5
+ * @fc-version  2.0.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -54,7 +54,7 @@ if ( is_user_logged_in() ) {
     <?php // CHANGE: Move login button to its own section ?>
     <p class="fc-login-button">
         <?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
-		<input type="hidden" name="redirect" value="<?php echo esc_url( $redirect ); ?>" />
+		<?php // CHANGE: Removed hidden redirect field which is added via hook `woocommerce_login_form_end` ?>
 		<?php // CHANGE: Change login button label to be consistent across checkout ?>
 		<button type="submit" class="woocommerce-button button woocommerce-form-login__submit" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>"><?php echo esc_html( apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) ) ); ?></button>
     </p>
