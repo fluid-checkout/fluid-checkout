@@ -673,7 +673,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_woocommerce_login_form_redirect_hidden_field() {
 		// Bail if visiting the checkout page.
 		if( ! function_exists( 'is_checkout' ) || ( is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) ) { return; }
-		
+
 		// Get redirect URL
 		$redirect_url = array_key_exists( '_redirect', $_GET ) ? esc_url_raw( $_GET[ '_redirect' ] ) : wc_get_page_permalink( 'myaccount' );
 
