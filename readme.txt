@@ -384,6 +384,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with theme Astra.
 * Improved: Compatibility with plugin Delivery & Pickup Date Time for WooCommerce (by CodeRockz). Refactor compatibility class to use checkout steps class directly.
 * Fixed: Order summary table styles for better compatibility with various themes.
+* Fixed: Always redirect back to checkout page after login when customer is logging in from the checkout page or login link button from the checkout page.
 
 = 2.0.8 - 2022-10-28 =
 

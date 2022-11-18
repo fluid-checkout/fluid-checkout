@@ -12,8 +12,8 @@
  *
  * @see         https://docs.woocommerce.com/document/template-structure/
  * @package     WooCommerce\Templates
- * @version     3.6.0
- * @fc-version 2.0.5
+ * @version     7.1.0
+ * @fc-version  2.0.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -25,7 +25,7 @@ if ( is_user_logged_in() ) {
 }
 
 ?>
-<form class="woocommerce-form woocommerce-form-login login" method="post" <?php echo ( $hidden ) ? 'style="display:none;"' : ''; // WPCS: XSS ok. ?>>
+<form class="woocommerce-form woocommerce-form-login login" method="post" <?php echo ( $hidden ) ? 'style="display:none;"' : ''; ?>>
 
 	<?php do_action( 'woocommerce_login_form_start' ); ?>
 
@@ -39,7 +39,7 @@ if ( is_user_logged_in() ) {
     <?php // CHANGE: Form row class to `form-row-wide` ?>
 	<p class="form-row form-row-wide">
 		<label for="password"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-		<input class="input-text" type="password" name="password" id="password" autocomplete="current-password" />
+		<input class="input-text woocommerce-Input" type="password" name="password" id="password" autocomplete="current-password" />
 	</p>
 	<div class="clear"></div>
 
