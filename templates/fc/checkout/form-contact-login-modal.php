@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 2.0.9
+ * @version 2.0.3
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || exit;
 
 		<div class="fc-login-form__title"><?php echo esc_html( apply_filters( 'fc_checkout_login_modal_title', __( 'Log in to your account', 'fluid-checkout' ) ) ); ?></div>
 
-		<?php woocommerce_login_form( array( 'redirect' => wc_get_checkout_url() ) ); ?>
+		<?php woocommerce_login_form(); ?>
 
 	</div>
 </div>
