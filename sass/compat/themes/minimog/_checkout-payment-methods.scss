@@ -2,6 +2,6 @@
 // CHECKOUT PAYMENT METHOD
 // ------------------------------------
 
-body#{ $_body-theme-selector } .wc_payment_methods li+li{
-    margin: 0!important;
+body#{ $_body-theme-selector } .wc_payment_methods li + li{
+    margin: 0 !important; //original property from the theme css uses !important
 }
