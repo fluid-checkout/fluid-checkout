@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || exit;
 
 		<div class="fc-login-form__title"><?php echo esc_html( apply_filters( 'fc_checkout_login_modal_title', __( 'Log in to your account', 'fluid-checkout' ) ) ); ?></div>
 
-		<?php woocommerce_login_form(); ?>
+		<?php woocommerce_login_form( array( 'redirect' => wc_get_checkout_url() ) ); ?>
 
 	</div>
 </div>
