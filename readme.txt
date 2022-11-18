@@ -380,6 +380,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Astra PRO (Astra PRO add-on plugin).
 * Added: Compatibility with plugin PayPal Brasil para WooCommerce.
 * Added: Compatibility with plugin Woocommerce UPS Israel Domestic Printing Plugin.
+* Added: Translation to German Formal (Sie). It is a copy of the German (Germany) translation which is already translated as German Formal (Sie).
 * Improved: Compatibility with theme Astra.
 * Improved: Compatibility with plugin Delivery & Pickup Date Time for WooCommerce (by CodeRockz). Refactor compatibility class to use checkout steps class directly.
 * Fixed: Order summary table styles for better compatibility with various themes.
