@@ -144,7 +144,7 @@
 	#{ $alignment-right }: $shipping-method-padding-horizontal;
 	height: 100%;
 	line-height: 1.2;
-	text-align: right;
+	text-align: #{ $alignment-right };
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .amount {

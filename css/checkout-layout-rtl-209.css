@@ -1444,7 +1444,7 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
   left: 10px;
   height: 100%;
   line-height: 1.2;
-  text-align: right;
+  text-align: left;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .amount {
