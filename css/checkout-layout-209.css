@@ -1435,16 +1435,16 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
   position: absolute;
-  top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  top: 0;
   left: auto;
   right: 10px;
-  display: block;
-  text-align: right;
-}
-
-.woocommerce ul#shipping_method .shipping-method__option .has-tax-notes .shipping-method__option-price {
-  top: 5px;
+  height: 100%;
   line-height: 1.2;
+  text-align: right;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .amount {

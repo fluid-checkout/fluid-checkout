@@ -373,6 +373,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Refactor styles for shipping methods pricing labels to automatically align to the center vertically when more elements are displayed.
+
 = 2.0.9 - 2022-11-21 =
 
 * Bump tested up to WordPress 6.1.1 and WooCommerce 7.1.0
