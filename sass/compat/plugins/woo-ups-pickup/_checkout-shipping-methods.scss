@@ -1,0 +1,17 @@
+// ------------------------------------
+// CHECKOUT SHIPPING METHODS
+// ------------------------------------
+
+.fc-content .shipping-method__package {
+	margin-bottom: $global-spacing-extra-small;
+}
+
+.fc-content .ups-pickups {
+	float: $alignment-left !important; // Needed to override plugin styles
+}
+
+.fc-content .ups-pickups-info {
+	float: $alignment-left !important; // Needed to override plugin styles
+	margin-#{ $alignment-left }: 0;
+	margin-#{ $alignment-right }: 0;
+}
