@@ -61,6 +61,7 @@ body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-rev
 
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table {
+	display: table;
 	margin: $order-summary-table-margin;
 	padding: 0;
 	width: $order-summary-table-width;

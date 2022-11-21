@@ -5,11 +5,11 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 2.0.8
+Version: 2.0.9-beta-4
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 7.0.0
+WC tested up to: 7.1.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
@@ -141,6 +141,9 @@ class FluidCheckout {
 			add_action( 'fc_admin_notices', array( $this, 'add_woocommerce_required_notice' ), 10 );
 			return;
 		}
+
+		// Declare compatibility with WooCommerce HPOS (High Performance Order Storage)
+		add_action( 'before_woocommerce_init', array( $this, 'declare_woocommerce_hpos_compatibility' ), 10 );
 
 		// Load features
 		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
@@ -371,6 +374,19 @@ class FluidCheckout {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		return is_plugin_active( 'woocommerce/woocommerce.php' ) && function_exists( 'WC' );
 	}
+
+
+	
+	/**
+	 * Declare compatibility with the WooCommerce High Performance Order Storage feature.
+	 */
+	public function declare_woocommerce_hpos_compatibility() {
+		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+		}
+	}
+
+
 
 	/**
 	 * Check if Fluid Checkout PRO is active on a single install or network wide.

@@ -132,7 +132,19 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function update_order_meta_with_shipping_phone( $order_id ) {
 		$shipping_phone = isset( $_POST['shipping_phone'] ) ? sanitize_text_field( $_POST['shipping_phone'] ) : '';
-		update_post_meta( $order_id, '_shipping_phone', $shipping_phone );
+
+		// Bail if shipping phone was not provided
+		if ( empty( $shipping_phone ) ) { return; }
+
+		// Get the order object
+		$order = wc_get_order( $order_id );
+
+		// Bail if order was not found
+		if ( ! $order ) { return; }
+
+		// Update order
+		$order->update_meta_data( '_shipping_phone', $shipping_phone );
+		$order->save();
 	}
 
 	/**
@@ -157,8 +169,16 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function output_order_formatted_shipping_address_with_phone( $address, $order ) {
-		$shipping_phone = get_post_meta( $order->get_id(), '_shipping_phone', true );
-		if ( ! empty( $shipping_phone ) ) { $address['shipping_phone'] = $shipping_phone; }
+		// Bail if order parameter is invalid
+		if ( ! $order instanceof WC_Order ) { return $address; }
+
+		// Bail if WooCommerce already has the methods to get shipping phone field value
+		if ( method_exists( $order, 'get_shipping_phone' ) ) { return $address; }
+	
+		// Maybe add the shipping phone to the address data
+		$shipping_phone = $order->get_meta( '_shipping_phone', true );
+		if ( ! empty( $shipping_phone ) ) { $address['phone'] = $shipping_phone; }
+
 		return $address;
 	}
 

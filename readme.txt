@@ -3,7 +3,7 @@ Contributors: fluidwebco, diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.0.3
+Tested up to: 6.1.1
 Stable tag: 2.0.8
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -372,6 +372,19 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Bump tested up to WordPress 6.1.1 and WooCommerce 7.1.0
+* Added: Compatibility with the upcoming feature WooCommerce HPOS (High Performance Order Storage).
+* Added: Compatibility with theme Astra PRO (Astra PRO add-on plugin).
+* Added: Compatibility with plugin PayPal Brasil para WooCommerce.
+* Added: Compatibility with plugin Woocommerce UPS Israel Domestic Printing Plugin.
+* Added: Translation to German Formal (Sie). It is a copy of the German (Germany) translation which is already translated as German Formal (Sie).
+* Improved: Compatibility with theme Astra.
+* Improved: Compatibility with plugin Delivery & Pickup Date Time for WooCommerce (by CodeRockz). Refactor compatibility class to use checkout steps class directly.
+* Fixed: Order summary table styles for better compatibility with various themes.
+* Fixed: Always redirect back to checkout page after login when customer is logging in from the checkout page or login link button from the checkout page.
 
 = 2.0.8 - 2022-10-28 =
 
