@@ -88,3 +88,7 @@ body.theme-Divi div.woocommerce form .form-row .select2-selection--multiple .sel
   height: 39px;
   min-height: auto;
 }
+
+body.theme-Divi div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
+  will-change: none;
+}
