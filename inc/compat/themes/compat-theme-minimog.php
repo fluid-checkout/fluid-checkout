@@ -25,12 +25,8 @@ class FluidCheckout_ThemeCompat_Minimog extends FluidCheckout {
 
 		// Remove checkout payment info heading
 		add_filter( 'fc_content_section_class', array( $this, 'remove_checkout_payment_heading' ), 20 );
-	}
 
-	 /**
-	 * remove checkout payment info heading added by the theme
-	 */
-	public function remove_checkout_payment_heading() {
+		// Remove checkout payment info heading added by the theme
 		remove_action( 'woocommerce_checkout_after_order_review',array( Minimog\Woo\Checkout::instance(), 'template_checkout_payment_title' ),10 );
 	}
 
