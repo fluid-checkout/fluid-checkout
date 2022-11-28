@@ -2,10 +2,6 @@ body.theme-Divi div.woocommerce form .form-row.woocommerce-validated:not([class*
   top: 12px;
 }
 
-body.theme-Divi .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
-  line-height: 1 !important;
-}
-
 body.theme-Divi div.woocommerce form #billing_country_field,
 body.theme-Divi div.woocommerce form #shipping_country_field,
 body.theme-Divi div.woocommerce form .form-row .select2-container--default,
