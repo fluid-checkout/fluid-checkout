@@ -2477,12 +2477,12 @@ body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review[data-fly
   }
 }
 
-.fc-checkout-order-review__actions-mobile .fc-checkout-order-review__edit-cart {
+.fc-checkout-order-review__actions-mobile .fc-checkout-order-review__header-link {
   margin: 0 0 0 -10px;
   padding-left: 10px;
   padding-right: 10px;
 }
-.fc-checkout-order-review__actions-mobile .fc-checkout-order-review__edit-cart:focus {
+.fc-checkout-order-review__actions-mobile .fc-checkout-order-review__header-link:focus {
   outline: dotted 1px #535156;
   outline-offset: 1px;
 }
@@ -2505,7 +2505,7 @@ body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review[data-fly
   }
 }
 
-.fc-checkout-order-review__head .fc-checkout-order-review__edit-cart {
+.fc-checkout-order-review__head .fc-checkout-order-review__header-link {
   position: relative;
   left: -10px;
   float: left;
@@ -2520,7 +2520,7 @@ body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review[data-fly
   background-color: transparent;
   cursor: pointer;
 }
-.fc-checkout-order-review__head .fc-checkout-order-review__edit-cart:focus {
+.fc-checkout-order-review__head .fc-checkout-order-review__header-link:focus {
   outline: dotted 1px #535156;
   outline-offset: 1px;
 }

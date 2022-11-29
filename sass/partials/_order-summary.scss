@@ -420,7 +420,7 @@ body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-steps {
 
 
 
-.fc-checkout-order-review__actions-mobile .fc-checkout-order-review__edit-cart {
+.fc-checkout-order-review__actions-mobile .fc-checkout-order-review__header-link {
 	margin: 0 0 0 #{ - $global-spacing-extra-small };
 	padding-left: $global-spacing-extra-small;
 	padding-right: $global-spacing-extra-small;
@@ -452,7 +452,7 @@ body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-steps {
 
 
 
-.fc-checkout-order-review__head .fc-checkout-order-review__edit-cart {
+.fc-checkout-order-review__head .fc-checkout-order-review__header-link {
 	position: relative;
 	#{ $alignment-right }: $order-summary-edit-cart-button-right;
 
