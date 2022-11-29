@@ -88,7 +88,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'fc_display_checkout_page_title', array( $this, 'maybe_display_checkout_page_title' ), 10 );
 
 		// Checkout progress bar
-		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout notices
+		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout notices
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_remove_progress_bar_if_cart_expired' ), 10 );
 
 		// Checkout steps
@@ -97,7 +97,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 
 		// Notices
-		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
+		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), 100 );
 
 		// Customer details hooks
