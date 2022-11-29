@@ -88,7 +88,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'fc_display_checkout_page_title', array( $this, 'maybe_display_checkout_page_title' ), 10 );
 
 		// Checkout progress bar
-		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout notices
+		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout form and notices
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_remove_progress_bar_if_cart_expired' ), 10 );
 
 		// Checkout steps
@@ -97,7 +97,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 
 		// Notices
-		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
+		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), 100 );
 
 		// Customer details hooks
@@ -169,6 +169,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Order summary
 		add_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
+		add_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_order_review_background_inline_styles' ), 30 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'replace_order_summary_table_fragments' ), 10 );
@@ -3865,6 +3866,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'attributes_inner'   => $this->get_order_review_html_attributes_inner( true ),
 			)
 		);
+	}
+
+	/**
+	 * Output the edit cart link to the order summary header section.
+	 *
+	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
+	 */
+	public function output_order_review_header_edit_cart_link( $is_sidebar_widget ) {
+		// Bail if not sidebar widget or edit cart link is disabled
+		if ( ! $is_sidebar_widget || true !== apply_filters( 'fc_order_summary_display_desktop_edit_cart_link', true ) ) { return; }
+
+		?>
+		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__header-link fc-checkout-order-review__edit-cart"><?php echo esc_html( __( 'Edit cart', 'fluid-checkout' ) ); ?></a>
+		<?php
 	}
 
 

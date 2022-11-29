@@ -424,6 +424,7 @@ $order-summary-cell-padding-horizontal:          $global-spacing-small !default;
 $order-summary-cell-padding-vertical:            $global-spacing-extra-small !default;
 $order-summary-cell-padding-vertical--total:     $order-summary-cell-padding-vertical + $global-spacing-tiny !default;
 $order-summary-cell-border:                      solid remsize( .1rem ) darken( $lighter-grey, 5% ) !default;
+$order-summary-cell-border--products:            dashed remsize( .1rem ) $border-color !default;
 
 $order-summary-image-width:                      remsize( 5rem ) !default;
 $order-summary-image-width--large-screen:        remsize( 6rem ) !default;

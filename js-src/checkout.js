@@ -645,15 +645,21 @@ jQuery( function( $ ) {
 						// CHANGE: END - Try to remove intl-tel-input components from existing fields before replacing fragments
 
 						$.each( data.fragments, function ( key, value ) {
-							// CHANGE: Maybe set to skip fragment with the focus within it. This avoids unexpected closing of mobile keyboard and lost of focus when updating fragments.
+							// CHANGE: Declare local variables needed for some checks before replacing the fragment
 							var fragmentToReplace = document.querySelector( key );
-							var skipReplace = false;
+							var replaceFragment = true;
+							
+							// CHANGE: Maybe set to skip fragment with the focus within it. This avoids unexpected closing of mobile keyboard and lost of focus when updating fragments.
 							if ( fragmentToReplace && currentFocusedElement.closest( key ) && currentFocusedElement.closest( _settings.focusedFieldSkipFragmentReplaceSelector ) ) {
-								skipReplace = true;
+								replaceFragment = false;
+							}
+
+							// CHANGE: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM
+							if ( value && -1 !== value.toString().indexOf( 'fc-fragment-always-replace' ) ) {
+								replaceFragment = true;
 							}
 							
-							// CHANGE: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM
-							if ( ! skipReplace && ( ! wc_checkout_form.fragments || wc_checkout_form.fragments[ key ] !== value || ( value && -1 !== value.toString().indexOf( 'fc-fragment-always-replace' ) ) ) ) {
+							if ( replaceFragment && ( ! wc_checkout_form.fragments || wc_checkout_form.fragments[ key ] !== value ) ) {
 								$( key ).replaceWith( value );
 							}
 
