@@ -82,15 +82,6 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 
 	/**
-	 * Return Checkout Steps class instance.
-	 */
-	public function checkout_steps() {
-		return FluidCheckout_Steps::instance();
-	}
-
-
-
-	/**
 	 * Output delivery date substep.
 	 *
 	 * @param   string  $step_id  Id of the step in which the substep will be rendered.
@@ -120,24 +111,24 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		$substep_title = apply_filters( 'fc_woodelivery_substep_title', $substep_title );
 
 		$substep_id = 'coderockz_delivery_date';
-		$this->checkout_steps()->output_substep_start_tag( $step_id, $substep_id, $substep_title );
+		FluidCheckout_Steps::instance()->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		// Get Woo Delivery instances
 		$woodelivery_main = new Coderockz_Woo_Delivery();
 		$woodelivery_public = new Coderockz_Woo_Delivery_Public( $woodelivery_main->get_plugin_name(), $woodelivery_main->get_version() );
 
-		$this->checkout_steps()->output_substep_fields_start_tag( $step_id, $substep_id );
+		FluidCheckout_Steps::instance()->output_substep_fields_start_tag( $step_id, $substep_id );
 		$woodelivery_public->coderockz_woo_delivery_add_custom_field();
-		$this->checkout_steps()->output_substep_fields_end_tag();
+		FluidCheckout_Steps::instance()->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
-		if ( $this->checkout_steps()->is_checkout_layout_multistep() ) {
-			$this->checkout_steps()->output_substep_text_start_tag( $step_id, $substep_id );
+		if ( FluidCheckout_Steps::instance()->is_checkout_layout_multistep() ) {
+			FluidCheckout_Steps::instance()->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_delivery_options();
-			$this->checkout_steps()->output_substep_text_end_tag();
+			FluidCheckout_Steps::instance()->output_substep_text_end_tag();
 		}
 
-		$this->checkout_steps()->output_substep_end_tag( $step_id, $substep_id, $substep_title );
+		FluidCheckout_Steps::instance()->output_substep_end_tag( $step_id, $substep_id, $substep_title );
 	}
 
 
@@ -155,11 +146,11 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		$delivery_option_settings = get_option( 'coderockz_woo_delivery_option_delivery_settings' );
 		
 		// Get field values
-		$order_type = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_delivery_selection_box' );
-		$delivery_date = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_date_field' );
-		$delivery_time = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_time_field' );
-		$pickup_date = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_date_field' );
-		$pickup_time = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_time_field' );
+		$order_type = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_delivery_selection_box' );
+		$delivery_date = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_date_field' );
+		$delivery_time = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_time_field' );
+		$pickup_date = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_date_field' );
+		$pickup_time = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_time_field' );
 
 		// Get field labels
 		$delivery_field_label = ( isset( $delivery_option_settings['delivery_label'] ) && ! empty( $delivery_option_settings['delivery_label'] ) ) ? stripslashes( $delivery_option_settings['delivery_label'] ) : __( 'Delivery', 'woo-delivery' );
@@ -254,7 +245,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		if ( ! in_array( $input, $allowed_field_ids ) ) { return $value; }
 
 		// Get field value from session
-		$field_session_value = $this->checkout_steps()->get_checkout_field_value_from_session( $input );
+		$field_session_value = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( $input );
 
 		// Maybe return field value from session
 		$date_field_ids = array( 'coderockz_woo_delivery_date_field', 'coderockz_woo_delivery_pickup_date_field' );
@@ -307,11 +298,11 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		$pickup_time_settings = get_option('coderockz_woo_delivery_pickup_settings');
 
 		// Get field values
-		$order_type = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_delivery_selection_box' );
-		$delivery_date = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_date_field' );
-		$delivery_time = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_time_field' );
-		$pickup_date = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_date_field' );
-		$pickup_time = $this->checkout_steps()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_time_field' );
+		$order_type = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_delivery_selection_box' );
+		$delivery_date = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_date_field' );
+		$delivery_time = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_time_field' );
+		$pickup_date = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_date_field' );
+		$pickup_time = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_time_field' );
 
 		// Check order type
 		if ( $delivery_option_settings['enable_option_time_pickup'] === true ) {
