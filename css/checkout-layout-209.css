@@ -1695,6 +1695,10 @@ body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_
   margin-bottom: 0;
 }
 
+.fc-wrapper div.place-order {
+  border: 0;
+}
+
 .fc-wrapper .fc-inside div.place-order {
   float: none;
   display: block;

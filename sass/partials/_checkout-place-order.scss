@@ -2,6 +2,10 @@
 // CHECKOUT PLACE ORDER
 // ------------------------------------
 
+.fc-wrapper div.place-order {
+	border: 0;
+}
+
 .fc-wrapper .fc-inside div.place-order {
 	float: none;
 	display: block;
@@ -9,8 +13,6 @@
 
 	@media (#{$bp-larger-than-desktop}) { padding: $place-order-padding--large-screen; }
 }
-
-
 
 .fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
 	float: none;
