@@ -1,0 +1,35 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+body#{ $_body-theme-selector }.eltdf-woocommerce-page .woocommerce-checkout input[type=radio] {
+	position: absolute;
+}
+
+
+.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save,
+.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
+	font-size: 11px;
+    line-height: 2.7em; // Value provided by the theme for the buttons elements.
+    letter-spacing: .3em; // Value provided by the theme for the buttons elements.
+    text-transform: uppercase;
+	padding: 17px 42px; // Values provided by the theme for the buttons elements.
+    color: #fff;
+    background-color: #1c1c1c;
+    border: 1px solid transparent;
+}
+
+
+
+body .select2-container--default .select2-selection--single{
+	border: none;
+    border-bottom: 1px solid #000;
+	border-radius: 0;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .3em; // Value provided by the theme for the input fields.
+    padding: remsize( .7rem ) remsize( .5rem ) 0 !important; // Needed to override theme value.
+}
