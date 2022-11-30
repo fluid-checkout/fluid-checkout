@@ -6,6 +6,10 @@ body.theme-oceanwp div.woocommerce form .form-row.woocommerce-validated:not([cla
   top: 8px;
 }
 
+body.theme-oceanwp.has-fc-address-book-entries.has-highlighted-shipping-section .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
+  margin-top: 20px;
+}
+
 body.theme-oceanwp div.woocommerce form .form-row span.select2-container {
   height: auto;
 }
