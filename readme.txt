@@ -59,7 +59,7 @@ Quite insane how the developer is doing this. And a free plugin!!
 </blockquote>
 
 
-== Lite Version (Free) ==
+== Lite features (Free) ==
 
 * **Multi-step or Single-step**: Choose between multi-step and one-step checkout layouts. While Fluid Checkout changes the layout of the checkout page, it will still look and feel like your website.
 
@@ -89,7 +89,9 @@ Quite insane how the developer is doing this. And a free plugin!!
 * **Log-in without leaving the checkout**: Repeat customers with an account registered can log in from the checkout page directly without having to visit another page and make their way back to checkout.
 
 
-== PRO Version ==
+== PRO features ==
+
+* **Edit cart at checkout**: Let customers edit product quantity or remove products directly from the checkout page. You might even want to ditch the cart page entirely.
 
 * **Express checkout**: display express checkout buttons from popular payment methods at the checkout page.
 
