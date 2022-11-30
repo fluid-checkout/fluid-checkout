@@ -35,11 +35,11 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 		<div class="fc-checkout-order-review__head">
 
+			<?php do_action( 'fc_checkout_after_order_review_title_before', $is_sidebar_widget ); ?>
+
 			<h3 class="fc-checkout-order-review-title fc-step__substep-title"><?php echo esc_html( $order_review_title ); ?></h3>
 
-			<?php if ( $is_sidebar_widget && apply_filters( 'fc_order_summary_display_desktop_edit_cart_link', true ) ) : ?>
-				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__edit-cart"><?php echo esc_html( __( 'Edit Cart', 'fluid-checkout' ) ); ?></a>
-			<?php endif; ?>
+			<?php do_action( 'fc_checkout_after_order_review_title_after', $is_sidebar_widget ); ?>
 
 		</div>
 
