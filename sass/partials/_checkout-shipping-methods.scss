@@ -135,15 +135,16 @@
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
 	position: absolute;
-	top: $shipping-method-padding-vertical;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: center;
+	top: 0;
 	#{ $alignment-left }: auto;
 	#{ $alignment-right }: $shipping-method-padding-horizontal;
-	display: block;
-	text-align: right;
-}
-.woocommerce ul#shipping_method .shipping-method__option .has-tax-notes .shipping-method__option-price {
-	top: #{ math.div( $shipping-method-padding-vertical, 2 ) };
+	height: 100%;
 	line-height: 1.2;
+	text-align: #{ $alignment-right };
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .amount {
