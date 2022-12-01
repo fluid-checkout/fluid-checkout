@@ -101,10 +101,15 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 
 			// Look for template file in the theme
 			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
-				$_template = locate_template( array(
+				$_template_override = locate_template( array(
 					$template_path . $template_name,
 					$template_name,
 				) );
+	
+				// Check if files exist before changing template
+				if ( file_exists( $_template_override ) ) {
+					$_template = $_template_override;
+				}
 			}
 		}
 
