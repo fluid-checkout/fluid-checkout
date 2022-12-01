@@ -109,9 +109,9 @@ body.theme-enfold#top div.woocommerce .fc-wrapper #order_review table.woocommerc
 
 @media (min-width: 750px) {
   body.theme-enfold#top div.woocommerce form .form-row.form-row-first,
-body.theme-enfold#top div.woocommerce form .form-row.form-row-middle,
-body.theme-enfold#top div.woocommerce form #payment .form-row.form-row-first,
-body.theme-enfold#top div.woocommerce form #payment .form-row.form-row-middle {
+  body.theme-enfold#top div.woocommerce form .form-row.form-row-middle,
+  body.theme-enfold#top div.woocommerce form #payment .form-row.form-row-first,
+  body.theme-enfold#top div.woocommerce form #payment .form-row.form-row-middle {
     margin-right: 0;
     margin-left: 4%;
   }

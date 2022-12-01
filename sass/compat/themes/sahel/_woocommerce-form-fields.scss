@@ -7,8 +7,8 @@ body#{ $_body-theme-selector }.eltdf-woocommerce-page .woocommerce-checkout inpu
 }
 
 
-.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save,
-.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
+body#{ $_body-theme-selector }.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save,
+body#{ $_body-theme-selector }.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
 	font-size: 11px;
     line-height: 2.7em; // Value provided by the theme for the buttons elements.
     letter-spacing: .3em; // Value provided by the theme for the buttons elements.
@@ -21,7 +21,7 @@ body#{ $_body-theme-selector }.eltdf-woocommerce-page .woocommerce-checkout inpu
 
 
 
-body .select2-container--default .select2-selection--single{
+body#{ $_body-theme-selector } .select2-container--default .select2-selection--single {
 	border: none;
     border-bottom: 1px solid #000;
 	border-radius: 0;
