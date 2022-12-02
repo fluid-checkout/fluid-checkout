@@ -687,10 +687,10 @@ class FluidCheckout {
 
 
 	/**
-	 * Get the plugin version number for Fluid Checkout or other plugins.
+	 * Get the plugin version number for this or other plugins.
 	 *
-	 * @param   string       $main_plugin_file  (optional) The plugin folder and main file name for the plugin to get the version number from. Ie. `fluid-checkout/fluid-checkout.php`.
-	 *                                          Defaults to Fluid Checkout main file.
+	 * @param   string       $main_plugin_file  (optional) The plugin folder and main file name for the plugin to get the version number from. Ie. `woocommerce/woocommerce.php`.
+	 *                                          Defaults to main file of this plugin.
 	 *
 	 * @return  string|bool                     The plugin version number, or `false` of the plugin was not found.
 	 */

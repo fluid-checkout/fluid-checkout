@@ -1046,6 +1046,8 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   margin: 0;
   padding: 0;
   border: 0;
+  background-color: transparent;
+  box-shadow: none;
 }
 .fc-wrapper .woocommerce-shipping-fields:before, .fc-wrapper .woocommerce-shipping-fields:after,
 .fc-wrapper .woocommerce-billing-fields:before,
@@ -1693,6 +1695,10 @@ body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_
 
 .fc-wrapper #payment .payment_methods > .woocommerce-notice {
   margin-bottom: 0;
+}
+
+.fc-wrapper div.place-order {
+  border: 0;
 }
 
 .fc-wrapper .fc-inside div.place-order {

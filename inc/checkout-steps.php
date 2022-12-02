@@ -300,7 +300,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Add extra class when sidebar is present
 		if ( has_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ) ) ) {
-			$classes[] = 'has-fc-sidebar';
+			$add_classes[] = 'has-fc-sidebar';
 		}
 
 		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
@@ -747,6 +747,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function is_billing_phone_enabled() {
 		return 'hidden' !== get_option( 'woocommerce_checkout_phone_field', 'required' );
+	}
+
+
+
+	/**
+	 * Returns whether the current page is the checkout page or requesting for checkout fragments.
+	 */
+	public function is_checkout_page_or_fragment() {
+		global $wp_query;
+		$ajax_action = $wp_query->get( 'wc-ajax' );
+
+		return ( is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) || 'update_order_review' === $ajax_action || ( array_key_exists( 'wc-ajax', $_GET ) && 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) );
+	}
+
+	/**
+	 * Returns whether the current page is the cart page or requesting for cart fragments.
+	 */
+	public function is_cart_page_or_fragment() {
+		global $wp_query;
+		$ajax_action = $wp_query->get( 'wc-ajax' );
+
+		return is_cart() || 'fc_pro_update_cart_fragments' === $ajax_action || ( array_key_exists( 'wc-ajax', $_GET ) && 'fc_pro_update_cart_fragments' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) );
 	}
 
 
@@ -2747,7 +2769,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'package'					=> $package,
 				'available_methods'			=> $package['rates'],
 				'show_package_details'		=> sizeof( $packages ) > 1,
-				'is_cart_page_or_fragment'  => apply_filters( 'fc_is_cart_page_or_fragment', is_cart() ),
+				'is_cart_page_or_fragment'  => $this->is_cart_page_or_fragment(),
 				'package_details'			=> implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
 				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
