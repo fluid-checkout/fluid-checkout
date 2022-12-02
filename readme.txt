@@ -167,6 +167,7 @@ Some themes may need adjustments due to not using WooCommerce standards hooks or
 * Impreza - by UpSolution
 * Kentha - by QantumThemes
 * LeadEngine - by Key-Design
+* Minimog - by ThemeMove
 * Mr. Tailor - by Get Bowtied
 * OnAir2 - by QantumThemes
 * Phlox PRO - by averta
@@ -379,6 +380,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Support for new PRO feature to edit cart items at checkout.
 * Added: New filter `fc_pro_checkout_review_order_table_classes` to add additional classes to the order summary table.
+* Added: Compatibility with theme Minimog.
+* Improved: Compatibility with theme Divi.
+* Improved: Compatibility with theme Orchid Store.
+* Improved: Compatibility with theme Woostify.
 * Improved: Refactor use of class `fc-fragment-always-replace` to force replacing checkout page fragments.
 * Improved: Refactor styles for shipping methods pricing labels to automatically align to the center vertically when more elements are displayed.
 * Improved: Check if template file exists in the override path before trying to use it.
