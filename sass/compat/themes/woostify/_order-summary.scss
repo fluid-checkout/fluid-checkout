@@ -1,0 +1,9 @@
+@use "sass:math" as math;
+
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
+
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.shipping td {
+	text-align: $alignment-right !important; // Needed to override theme styles
+}
