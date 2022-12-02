@@ -300,7 +300,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Add extra class when sidebar is present
 		if ( has_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ) ) ) {
-			$classes[] = 'has-fc-sidebar';
+			$add_classes[] = 'has-fc-sidebar';
 		}
 
 		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
