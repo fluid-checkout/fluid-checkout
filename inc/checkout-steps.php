@@ -4163,8 +4163,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( true !== apply_filters( 'fc_enable_order_summary_cart_item_unit_price', true ) ) { return; }
 
 		// Item unit price
-		$item_price_html = '<div class="cart-item__element cart-item__price"><span class="screen-reader-text">' . esc_html( 'Price', 'woocommerce' ) . ': </span>' . WC()->cart->get_product_price( $product ) . '</div>';
-		echo apply_filters( 'woocommerce_cart_item_price', $item_price_html, $cart_item, $cart_item_key ); // PHPCS: XSS ok.
+		echo '<div class="cart-item__element cart-item__price">' . apply_filters( 'woocommerce_cart_item_price', '<span class="screen-reader-text">' . esc_html( 'Price', 'woocommerce' ) . ': </span>' . WC()->cart->get_product_price( $product ), $cart_item, $cart_item_key ) . '</div>'; // PHPCS: XSS ok.
 	}
 
 	/**
