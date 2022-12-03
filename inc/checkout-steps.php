@@ -174,6 +174,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_order_review_background_inline_styles' ), 30 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'replace_order_summary_table_fragments' ), 10 );
 
+		// Order summary cart items details
+		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_product_name' ), 10, 3 );
+		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_unit_price' ), 30, 3 );
+		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_meta_data' ), 40, 3 );
+		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_quantity' ), 90, 3 );
+
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100, 2 );
@@ -4129,6 +4135,64 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$fragments['.fc-sidebar .woocommerce-checkout-review-order-table'] = $html;
 
 		return $fragments;
+	}
+
+
+
+	/**
+	 * Output the cart item remove button.
+	 *
+	 * @param   array       $cart_item      Cart item object.
+	 * @param   string      $cart_item_key  Cart item key.
+	 * @param   WC_Product  $product        The product object.
+	 */
+	public function output_order_summary_cart_item_product_name( $cart_item, $cart_item_key, $product ) {
+		// CHANGE: Remove no-break-space from the end of the product name
+		echo apply_filters( 'woocommerce_cart_item_name', $product->get_name(), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+
+	/**
+	 * Output the cart item unit price.
+	 *
+	 * @param   array       $cart_item      Cart item object.
+	 * @param   string      $cart_item_key  Cart item key.
+	 * @param   WC_Product  $product        The product object.
+	 */
+	public function output_order_summary_cart_item_unit_price( $cart_item, $cart_item_key, $product ) {
+		// Bail if option is disabled
+		if ( true !== apply_filters( 'fc_enable_order_summary_cart_item_unit_price', true ) ) { return; }
+
+		// Item unit price
+		echo '<div class="cart-item__element cart-item__price">' . apply_filters( 'woocommerce_cart_item_price', '<span class="screen-reader-text">' . esc_html( 'Price', 'woocommerce' ) . ': </span>' . WC()->cart->get_product_price( $product ), $cart_item, $cart_item_key ) . '</div>'; // PHPCS: XSS ok.
+	}
+
+	/**
+	 * Output the cart item meta data.
+	 *
+	 * @param   array       $cart_item      Cart item object.
+	 * @param   string      $cart_item_key  Cart item key.
+	 * @param   WC_Product  $product        The product object.
+	 */
+	public function output_order_summary_cart_item_meta_data( $cart_item, $cart_item_key, $product ) {
+		// Get meta data
+		$item_meta_data = wc_get_formatted_cart_item_data( $cart_item );
+
+		// Bail if meta data is empty
+		if ( empty( $item_meta_data ) ) { return; }
+
+		$item_meta_html = '<div class="cart-item__element cart-item__meta">' . $item_meta_data . '</div>';
+		echo $item_meta_html; // PHPCS: XSS ok.
+	}
+
+	/**
+	 * Output the cart item quantity field.
+	 *
+	 * @param   array       $cart_item      Cart item object.
+	 * @param   string      $cart_item_key  Cart item key.
+	 * @param   WC_Product  $product        The product object.
+	 */
+	public function output_order_summary_cart_item_quantity( $cart_item, $cart_item_key, $product ) {
+		echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 

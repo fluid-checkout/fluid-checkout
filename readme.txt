@@ -381,6 +381,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Support for new PRO feature to edit cart items at checkout.
 * Added: New filter `fc_pro_checkout_review_order_table_classes` to add additional classes to the order summary table.
 * Added: Compatibility with theme Minimog.
+* Added: Order summary will now display the product unit price below the product name.
 * Improved: Compatibility with theme Divi.
 * Improved: Compatibility with theme Orchid Store.
 * Improved: Compatibility with theme Woostify.
