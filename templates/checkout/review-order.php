@@ -13,7 +13,7 @@
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 5.2.0
- * @fc-version 2.0.5
+ * @fc-version 2.0.10
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -41,14 +41,15 @@ defined( 'ABSPATH' ) || exit;
 					<?php // CHANGE: Use `div` as columns to allow better control over the columns sizing ?>
 					<td colspan="2" role="none">
 						<div class="product-name" role="cell">
+
 							<?php // CHANGE: Add product images ?>
 							<?php echo apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-							<?php // CHANGE: Add product details wrapper ?>
+
+							<?php // CHANGE: Add product details wrapper and move all details content to output via hooks ?>
 							<div class="product-details">
-								<?php echo apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-								<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-								<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+								<?php do_action( 'fc_order_summary_cart_item_details', $cart_item, $cart_item_key, $_product ); ?>
 							</div>
+
 						</div>
 						<div class="product-total" role="cell">
 							<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
