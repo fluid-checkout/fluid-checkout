@@ -4163,7 +4163,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( true !== apply_filters( 'fc_enable_order_summary_cart_item_unit_price', true ) ) { return; }
 
 		// Item unit price
-		$item_price_html = '<div class="cart-item__price"><span class="screen-reader-text">' . esc_html( 'Price', 'woocommerce' ) . ': </span>' . WC()->cart->get_product_price( $product ) . '</div>';
+		$item_price_html = '<div class="cart-item__element cart-item__price"><span class="screen-reader-text">' . esc_html( 'Price', 'woocommerce' ) . ': </span>' . WC()->cart->get_product_price( $product ) . '</div>';
 		echo apply_filters( 'woocommerce_cart_item_price', $item_price_html, $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 	}
 
@@ -4181,7 +4181,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if meta data is empty
 		if ( empty( $item_meta_data ) ) { return; }
 
-		$item_meta_html = '<div class="cart-item__meta">' . $item_meta_data . '</div>';
+		$item_meta_html = '<div class="cart-item__element cart-item__meta">' . $item_meta_data . '</div>';
 		echo $item_meta_html; // PHPCS: XSS ok.
 	}
 

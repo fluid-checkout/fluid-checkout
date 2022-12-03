@@ -208,14 +208,17 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	}
 }
 
-div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-item__price {
+
+
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-item__element {
 	margin-top: $global-spacing-extra-small;
+}
+
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-item__price {
 	font-size: 80%;
 }
 
-div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-item__meta {
-	margin-top: $global-spacing-extra-small;
-}
+
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-quantity {
 	z-index: z( 'above' );

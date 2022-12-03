@@ -2293,13 +2293,12 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
   }
 }
 
-div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-item__price {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-item__element {
   margin-top: 10px;
-  font-size: 80%;
 }
 
-div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-item__meta {
-  margin-top: 10px;
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-item__price {
+  font-size: 80%;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-quantity {
