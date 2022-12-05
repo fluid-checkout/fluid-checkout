@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.1.1
-Stable tag: 2.0.9
+Stable tag: 2.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -376,7 +376,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= 2.1.0 - 2022-12-05 =
 
 * Added: Support for new PRO feature to edit cart items at checkout.
 * Added: New filter `fc_pro_checkout_review_order_table_classes` to add additional classes to the order summary table.
