@@ -50,6 +50,12 @@
 .fc-contact-login__action--underline {
 	text-decoration: underline;
 }
+.fc-contact-login__action:not( [role="button"] ) {
+	cursor: not-allowed;
+	text-decoration: none;
+	color: $grey;
+	opacity: .5;
+}
 
 
 

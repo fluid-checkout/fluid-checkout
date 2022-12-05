@@ -376,6 +376,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Disable the "Log in" link button while loading the scripts which enable it to open the login popup section.
+
 = 2.1.0 - 2022-12-05 =
 
 * Added: Support for new PRO feature to edit cart items at checkout.

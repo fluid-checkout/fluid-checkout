@@ -1105,6 +1105,13 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   text-decoration: underline;
 }
 
+.fc-contact-login__action:not([role=button]) {
+  cursor: not-allowed;
+  text-decoration: none;
+  color: #7b7575;
+  opacity: 0.5;
+}
+
 .fc-contact-login__separator {
   position: relative;
   margin-bottom: 30px;
