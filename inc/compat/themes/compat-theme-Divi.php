@@ -47,7 +47,7 @@ class FluidCheckout_ThemeCompat_Divi extends FluidCheckout {
 		return $settings;
 	}
 
-	
+
 
 	/**
 	 * Output the theme logo on the plugin's checkout header.
