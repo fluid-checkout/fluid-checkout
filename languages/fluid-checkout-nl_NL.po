@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-29 12:58+0000\n"
-"PO-Revision-Date: 2022-10-27 22:59+0000\n"
+"PO-Revision-Date: 2022-12-05 11:16+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "(Required)"
 msgstr "(Verplicht)"
 
-#: fluid-checkout.php:407
+#: fluid-checkout.php:428
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -33,7 +33,7 @@ msgstr ""
 "<strong>%1$s</strong> vereist dat <strong>%2$s</strong> moet worden "
 "geïnstalleerd en geactiveerd. <a href=\"%4$s\">%3$s</a>"
 
-#: fluid-checkout.php:403
+#: fluid-checkout.php:424
 #, php-format
 msgid "Activate %s"
 msgstr "%s activeren"
@@ -56,7 +56,7 @@ msgstr "Voeg een telefoonnummer toe aan het verzendadresformulier"
 msgid "Add widget areas to the checkout page"
 msgstr "Widgetgebieden toevoegen aan de afrekenpagina"
 
-#: inc/checkout-steps.php:2132
+#: inc/checkout-steps.php:2161
 msgid "Additional notes"
 msgstr "Aanvullende opmerkingen"
 
@@ -68,7 +68,7 @@ msgstr "Na verzendadres"
 msgid "Already have an account?"
 msgstr "Heb je al een account?"
 
-#: inc/checkout-steps.php:1915
+#: inc/checkout-steps.php:1944
 msgid "An account will be created with the information provided."
 msgstr "Er wordt een account aangemaakt met de verstrekte informatie."
 
@@ -106,7 +106,7 @@ msgstr "Factuuradres hetzelfde als het standaard gecontroleerde verzendadres"
 msgid "Billing phone"
 msgstr "Facturering telefoon"
 
-#: inc/checkout-steps.php:2880
+#: inc/checkout-steps.php:2909
 msgid "Billing to"
 msgstr "Facturering aan"
 
@@ -133,7 +133,7 @@ msgstr "Voor sectie Bestelling plaatsen"
 msgid "Captcha Pro by BestWebSoft"
 msgstr "Captcha Pro van BestWebSoft"
 
-#: inc/checkout-steps.php:646
+#: inc/checkout-steps.php:653
 msgid "Cart total:"
 msgstr "Winkelwagen totaal:"
 
@@ -141,7 +141,7 @@ msgstr "Winkelwagen totaal:"
 msgid "Change email address to: {suggestion-value}"
 msgstr "E-mailadres wijzigen in: {suggestion-value}"
 
-#: inc/checkout-steps.php:1595
+#: inc/checkout-steps.php:1624
 #, php-format
 msgid "Change: %s"
 msgstr "Wijzigingen: %s"
@@ -178,32 +178,32 @@ msgstr "Overzicht Bestelling afrekenen"
 msgid "Checkout Sidebar"
 msgstr "Afrekenen zijbalk"
 
-#: inc/checkout-steps.php:1229
+#: inc/checkout-steps.php:1258
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Facturering"
 
-#: inc/checkout-steps.php:1208
+#: inc/checkout-steps.php:1237
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Contact"
 
-#: inc/checkout-steps.php:1238
+#: inc/checkout-steps.php:1267
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Betaling"
 
-#: inc/checkout-steps.php:1218
+#: inc/checkout-steps.php:1247
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Verzending"
 
-#: inc/checkout-steps.php:1595
+#: inc/checkout-steps.php:1624
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Wijzigen"
 
-#: inc/checkout-steps.php:1596
+#: inc/checkout-steps.php:1625
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Wijzigingen opslaan"
@@ -261,7 +261,7 @@ msgstr "Kies in welke stap het factureringstelefoonveld wordt weergegeven"
 msgid "Choose in which step to display the shipping phone field"
 msgstr "Kies in welke stap het telefoonveld voor verzending wordt weergegeven"
 
-#: inc/checkout-steps.php:646
+#: inc/checkout-steps.php:653
 msgid "Click to go to the order summary"
 msgstr "Klik om naar het besteloverzicht te gaan"
 
@@ -330,15 +330,15 @@ msgstr ""
 msgid "Define the visibility of the additional order notes field."
 msgstr "Definieer de zichtbaarheid van het veld aanvullende bestelnotities."
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:113
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:104
 msgid "Delivery Date"
 msgstr "Bezorgdatum"
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:105
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:96
 msgid "Delivery Options"
 msgstr "Bezorgopties"
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:109
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:100
 msgid "Delivery or Pickup"
 msgstr "Bezorgen of ophalen"
 
@@ -406,9 +406,10 @@ msgstr "\"Adresregel 2\"-velden niet achter een koppelingsknop verbergen"
 msgid "Don't show this again"
 msgstr "Dit niet meer weergeven"
 
-#: templates/fc/checkout/review-order-section.php:41
+#: inc/checkout-steps.php:3909
 #: templates/fc/checkout/review-order-section.php:58
-msgid "Edit Cart"
+#| msgid "Edit Cart"
+msgid "Edit cart"
 msgstr "Winkelwagen bijwerken"
 
 #: inc/admin/admin-settings-general.php:316
@@ -452,7 +453,7 @@ msgstr ""
 msgid "Go to Germanized settings"
 msgstr "Ga naar Duitse instellingen"
 
-#: fluid-checkout.php:399
+#: fluid-checkout.php:420
 msgid "Go to Plugin Search"
 msgstr "Ga naar Plugin zoeken"
 
@@ -618,11 +619,11 @@ msgstr "Maak het overzicht van de bestelling zichtbaar tijdens het scrollen"
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Het aanmeldingsvakje naar de contactstap verplaatsen"
 
-#: inc/checkout-steps.php:533
+#: inc/checkout-steps.php:540
 msgid "Multi-step"
 msgstr "Meerstappen"
 
-#: inc/checkout-steps.php:1852
+#: inc/checkout-steps.php:1881
 msgid "My contact"
 msgstr "Mijn contact"
 
@@ -641,16 +642,16 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2525
+#: inc/checkout-steps.php:2554
 msgid "Not selected yet."
 msgstr "Nog niet geselecteerd."
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:212
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:203
 msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr "Geen."
 
-#: inc/checkout-steps.php:2581
+#: inc/checkout-steps.php:2610
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Geen."
@@ -692,7 +693,7 @@ msgstr "Notities bij bestelling"
 msgid "Order number and receipt will be sent to this email address."
 msgstr "Bestelnummer en ontvangstbewijs worden naar dit e-mailadres verzonden."
 
-#: inc/checkout-steps.php:3780 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3809 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Besteloverzicht"
 
@@ -708,11 +709,11 @@ msgstr ""
 msgid "Page background color"
 msgstr "Achtergrondkleur van pagina"
 
-#: inc/checkout-steps.php:3599
+#: inc/checkout-steps.php:3628
 msgid "Payment method"
 msgstr "Betaalmethode"
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:117
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:108
 msgid "Pickup Date"
 msgstr "Ophaaldatum"
 
@@ -721,7 +722,7 @@ msgid "Place order"
 msgstr "Bestelling plaatsen"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1106
+#: inc/checkout-steps.php:1135
 #, php-format
 msgid "Proceed to %s"
 msgstr "Doorgaan naar %s"
@@ -766,7 +767,7 @@ msgstr "Verwijderen"
 msgid "Required"
 msgstr "Verplicht"
 
-#: inc/checkout-steps.php:3062
+#: inc/checkout-steps.php:3091
 msgid "Same as shipping address"
 msgstr "Hetzelfde als verzendadres"
 
@@ -794,7 +795,7 @@ msgstr "Integraties"
 msgid "Shipping address"
 msgstr "Verzendadres"
 
-#: inc/checkout-steps.php:2108
+#: inc/checkout-steps.php:2137
 msgid "Shipping method"
 msgstr "Verzendmethode"
 
@@ -807,11 +808,11 @@ msgstr "Verzendmethoden"
 msgid "Shipping phone"
 msgstr "Telefoonnummer voor verzending"
 
-#: inc/checkout-steps.php:2084
+#: inc/checkout-steps.php:2113
 msgid "Shipping to"
 msgstr "Verzenden naar"
 
-#: inc/checkout-steps.php:534
+#: inc/checkout-steps.php:541
 msgid "Single step"
 msgstr "Enkele stap"
 
@@ -830,26 +831,26 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Spatiëring voor sitekoptekst bij de afrekenpagina (in pixels)"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1358
+#: inc/checkout-steps.php:1387
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Stap %1$s van %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2264
+#: inc/checkout-steps.php:2293
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2269
+#: inc/checkout-steps.php:2298
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:1709
+#: inc/checkout-steps.php:1738
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Geen."
@@ -958,7 +959,7 @@ msgstr ""
 "tijdens het verwerken van nieuwe bestellingen</strong>. Schakel de Duitse "
 "PRO meestappen afrekenfunctie uit in de plugin-instellingen."
 
-#: fluid-checkout.php:396
+#: fluid-checkout.php:417
 msgid "WooCommerce"
 msgstr "WooCommerce"
 

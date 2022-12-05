@@ -2,6 +2,10 @@
 // CHECKOUT PLACE ORDER
 // ------------------------------------
 
+.fc-wrapper div.place-order {
+	border: 0;
+}
+
 .fc-wrapper .fc-inside div.place-order {
 	float: none;
 	display: block;
@@ -9,8 +13,6 @@
 
 	@media (#{$bp-larger-than-desktop}) { padding: $place-order-padding--large-screen; }
 }
-
-
 
 .fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
 	float: none;
@@ -35,6 +37,7 @@
 
 .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
 	margin-bottom: 0;
+	padding: 0;
 	text-align: $alignment-left;
 }
 

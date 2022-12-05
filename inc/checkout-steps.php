@@ -88,7 +88,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'fc_display_checkout_page_title', array( $this, 'maybe_display_checkout_page_title' ), 10 );
 
 		// Checkout progress bar
-		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout notices
+		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout form and notices
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_remove_progress_bar_if_cart_expired' ), 10 );
 
 		// Checkout steps
@@ -97,7 +97,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 
 		// Notices
-		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
+		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), 100 );
 
 		// Customer details hooks
@@ -169,9 +169,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Order summary
 		add_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
+		add_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_order_review_background_inline_styles' ), 30 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'replace_order_summary_table_fragments' ), 10 );
+
+		// Order summary cart items details
+		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_product_name' ), 10, 3 );
+		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_unit_price' ), 30, 3 );
+		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_meta_data' ), 40, 3 );
+		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_quantity' ), 90, 3 );
 
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
@@ -248,7 +255,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if not on checkout or cart page or doing AJAX call
 		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
-		// Bail if no additional order fields are present
+		// Get checkout fields
 		$all_fields = WC()->checkout()->get_checkout_fields();
 		
 		// Prepare the hooks related to the additional order notes substep.
@@ -257,7 +264,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
 			$order_notes_substep_position = 'fc_output_step_shipping';
 			
-			// Bail if no additional order fields are present
+			// Check if no additional order fields are present
 			if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
 				
 				// Maybe change output to the billing step
@@ -299,7 +306,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Add extra class when sidebar is present
 		if ( has_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ) ) ) {
-			$classes[] = 'has-fc-sidebar';
+			$add_classes[] = 'has-fc-sidebar';
 		}
 
 		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
@@ -746,6 +753,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function is_billing_phone_enabled() {
 		return 'hidden' !== get_option( 'woocommerce_checkout_phone_field', 'required' );
+	}
+
+
+
+	/**
+	 * Returns whether the current page is the checkout page or requesting for checkout fragments.
+	 */
+	public function is_checkout_page_or_fragment() {
+		global $wp_query;
+		$ajax_action = $wp_query->get( 'wc-ajax' );
+
+		return ( is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) || 'update_order_review' === $ajax_action || ( array_key_exists( 'wc-ajax', $_GET ) && 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) );
+	}
+
+	/**
+	 * Returns whether the current page is the cart page or requesting for cart fragments.
+	 */
+	public function is_cart_page_or_fragment() {
+		global $wp_query;
+		$ajax_action = $wp_query->get( 'wc-ajax' );
+
+		return is_cart() || 'fc_pro_update_cart_fragments' === $ajax_action || ( array_key_exists( 'wc-ajax', $_GET ) && 'fc_pro_update_cart_fragments' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) );
 	}
 
 
@@ -2746,7 +2775,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'package'					=> $package,
 				'available_methods'			=> $package['rates'],
 				'show_package_details'		=> sizeof( $packages ) > 1,
-				'is_cart_page_or_fragment'  => apply_filters( 'fc_is_cart_page_or_fragment', is_cart() ),
+				'is_cart_page_or_fragment'  => $this->is_cart_page_or_fragment(),
 				'package_details'			=> implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
 				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
@@ -3867,6 +3896,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 	}
 
+	/**
+	 * Output the edit cart link to the order summary header section.
+	 *
+	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
+	 */
+	public function output_order_review_header_edit_cart_link( $is_sidebar_widget ) {
+		// Bail if not sidebar widget or edit cart link is disabled
+		if ( ! $is_sidebar_widget || true !== apply_filters( 'fc_order_summary_display_desktop_edit_cart_link', true ) ) { return; }
+
+		?>
+		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__header-link fc-checkout-order-review__edit-cart"><?php echo esc_html( __( 'Edit cart', 'fluid-checkout' ) ); ?></a>
+		<?php
+	}
+
 
 
 	/**
@@ -4092,6 +4135,64 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$fragments['.fc-sidebar .woocommerce-checkout-review-order-table'] = $html;
 
 		return $fragments;
+	}
+
+
+
+	/**
+	 * Output the cart item remove button.
+	 *
+	 * @param   array       $cart_item      Cart item object.
+	 * @param   string      $cart_item_key  Cart item key.
+	 * @param   WC_Product  $product        The product object.
+	 */
+	public function output_order_summary_cart_item_product_name( $cart_item, $cart_item_key, $product ) {
+		// CHANGE: Remove no-break-space from the end of the product name
+		echo apply_filters( 'woocommerce_cart_item_name', $product->get_name(), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+
+	/**
+	 * Output the cart item unit price.
+	 *
+	 * @param   array       $cart_item      Cart item object.
+	 * @param   string      $cart_item_key  Cart item key.
+	 * @param   WC_Product  $product        The product object.
+	 */
+	public function output_order_summary_cart_item_unit_price( $cart_item, $cart_item_key, $product ) {
+		// Bail if option is disabled
+		if ( true !== apply_filters( 'fc_enable_order_summary_cart_item_unit_price', true ) ) { return; }
+
+		// Item unit price
+		echo '<div class="cart-item__element cart-item__price">' . apply_filters( 'woocommerce_cart_item_price', '<span class="screen-reader-text">' . esc_html( 'Price', 'woocommerce' ) . ': </span>' . WC()->cart->get_product_price( $product ), $cart_item, $cart_item_key ) . '</div>'; // PHPCS: XSS ok.
+	}
+
+	/**
+	 * Output the cart item meta data.
+	 *
+	 * @param   array       $cart_item      Cart item object.
+	 * @param   string      $cart_item_key  Cart item key.
+	 * @param   WC_Product  $product        The product object.
+	 */
+	public function output_order_summary_cart_item_meta_data( $cart_item, $cart_item_key, $product ) {
+		// Get meta data
+		$item_meta_data = wc_get_formatted_cart_item_data( $cart_item );
+
+		// Bail if meta data is empty
+		if ( empty( $item_meta_data ) ) { return; }
+
+		$item_meta_html = '<div class="cart-item__element cart-item__meta">' . $item_meta_data . '</div>';
+		echo $item_meta_html; // PHPCS: XSS ok.
+	}
+
+	/**
+	 * Output the cart item quantity field.
+	 *
+	 * @param   array       $cart_item      Cart item object.
+	 * @param   string      $cart_item_key  Cart item key.
+	 * @param   WC_Product  $product        The product object.
+	 */
+	public function output_order_summary_cart_item_quantity( $cart_item, $cart_item_key, $product ) {
+		echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 
