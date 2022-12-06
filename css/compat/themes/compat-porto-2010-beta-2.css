@@ -1,0 +1,12 @@
+body.theme-porto .fc-wrapper .fc-place-order .fc-place-order-button {
+  min-width: unset;
+}
+
+body.theme-porto div.quantity .minus,
+body.theme-porto div.quantity .plus {
+  display: none;
+}
+
+body.theme-porto div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding: 2px 12px;
+}

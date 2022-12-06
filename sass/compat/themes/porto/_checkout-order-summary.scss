@@ -1,0 +1,14 @@
+// ------------------------------------
+// CHECKOUT ORDER SUMMARY
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-button {
+	min-width: unset;
+}
+
+
+
+body#{ $_body-theme-selector } div.quantity .minus, 
+body#{ $_body-theme-selector } div.quantity .plus {
+	display: none;
+}
