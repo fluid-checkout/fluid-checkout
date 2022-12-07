@@ -47,7 +47,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function hooks() {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
-		
+
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
@@ -266,7 +266,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			
 			// Check if no additional order fields are present
 			if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
-				
+
 				// Maybe change output to the billing step
 				if ( ! WC()->cart->needs_shipping() ) {
 					$order_notes_substep_position = 'fc_output_step_billing';
@@ -278,7 +278,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			}
 		}
-		
+
 		// Run order notes hooks for better compatibility with plugins that rely on them,
 		// because they originally run regardless of the order notes fields existence.
 		if ( ! in_array( 'order', array_keys( $all_fields ) ) || ! apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) ) {
@@ -466,7 +466,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function register_assets() {
 		// Maybe load RTL file
 		$rtl_suffix = is_rtl() ? '-rtl' : '';
-		
+
 		// Styles
 		wp_register_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
 
@@ -481,7 +481,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function enqueue_assets() {
 		// Styles
 		wp_enqueue_style( 'fc-checkout-layout' );
-		
+
 		// Checkout steps scripts
 		wp_enqueue_script( 'fc-checkout-steps' );
 	}
@@ -1104,11 +1104,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Return `true` if next step id is found in the complete steps list
 		foreach ( $complete_steps as $step_index => $step_args ) {
-			
+
 			// Get next step args
 			$next_step_index = $step_index + 1;
 			$next_step_args = array_key_exists( $next_step_index, $complete_steps ) ? $complete_steps[ $next_step_index ] : false;
-			
+
 			// Maybe skip `shipping` step
 			if ( is_array( $next_step_args ) && 'shipping' == $next_step_args[ 'step_id' ] && ! WC()->cart->needs_shipping() ) {
 				$next_step_index++;
@@ -1572,7 +1572,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_substep_title_html( $substep_id, $substep_title ) {
 		$html = '';
 		$substep_title = $this->get_substep_title_with_filters( $substep_id, $substep_title );
-		
+
 		if ( ! empty( $substep_title ) ) {
 			$html = '<h3 class="fc-step__substep-title fc-step__substep-title--' . esc_attr( $substep_id ) . '">' . wp_kses( $substep_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h3>';
 		}
@@ -1827,7 +1827,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$section_content_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_content_inner_attributes ), $section_content_inner_attributes ) );
 		?>
 		<div <?php echo $section_attributes_str; // WPCS: XSS ok. ?>>
-			
+
 			<?php if ( ! empty( $toggle_label ) ) : ?>
 			<div <?php echo $section_toggle_attributes_str; // WPCS: XSS ok. ?>>
 				<div <?php echo $section_content_inner_attributes_str; // WPCS: XSS ok. ?>>
@@ -1924,7 +1924,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get fields
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
 		$checkout_fields = WC()->checkout->get_checkout_fields();
-		
+
 		// Add a text line for each field
 		foreach( $contact_field_ids as $field_key ) {
 			// Iterate checkout fields
@@ -1985,10 +1985,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get contact fields
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
-		
+
 		// Get all checkout fields
 		$field_groups = WC()->checkout()->get_checkout_fields();
-			
+
 		// Iterate contact field ids
 		foreach( $contact_field_ids as $field_key ) {
 			foreach ( $field_groups as $group_key => $fields ) {
@@ -2262,10 +2262,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_field_display_value_from_array( $field_display_value ) {
 		// Bail if not an array value
 		if ( ! is_array( $field_display_value ) ) { return $field_display_value; }
-		
+
 		// Initialize resulting string value
 		$new_field_display_value = '';
-		
+
 		// Iterate each array value to add to the new display value
 		$first = true;
 		foreach ( $field_display_value as $value ) {
@@ -2288,7 +2288,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_field_display_value_with_pattern( $field_value, $field_key, $field_options, $field_label, $show_field_label = false ) {
 		$field_display_value = $field_value;
-		
+
 		/* translators: %1$s the selected option text, %2$s the field label. */
 		$field_display_value_pattern = _x( '%1$s', 'Substep review field format', 'fluid-checkout' );
 
@@ -2408,7 +2408,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get contact step fields
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
-		
+
 		// Get data from checkout fields
 		foreach ( $field_keys as $field_key ) {
 			// Skip fields moved to the contact step
@@ -3068,7 +3068,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get fields skip list
 		$step_complete_field_keys_skip_list = apply_filters( 'fc_is_step_complete_billing_field_keys_skip_list', $this->get_contact_step_display_field_ids() );
-		
+
 		// Check each required country field
 		foreach ( $address_fields as $field_key => $field ) {
 			// Skip checking some fields
@@ -3230,7 +3230,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Get shipping field key
 			$shipping_field_key = str_replace( 'billing_', 'shipping_', $field_key );
-			
+
 			// Check billing field values against shipping
 			if ( array_key_exists( $shipping_field_key, $shipping_fields ) ) {
 				$billing_field_value = null;
@@ -3525,7 +3525,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				if ( empty( $new_field_value ) && ( strpos( $field_key, '_country' ) > 0 || strpos( $field_key, '_state' ) > 0 ) ) {
 					// Get customer default location
 					$customer_default_location = wc_get_customer_default_location();
-					
+
 					// Get field key without the address type
 					$default_location_field_key = str_replace( 'billing_', '', str_replace( 'shipping_', '', $field_key ) );
 
@@ -3564,7 +3564,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach( $billing_copy_shipping_field_keys as $field_key ) {
 			// Skip some fields
 			if ( in_array( $field_key, $skip_field_keys ) ) { continue; }
-			
+
 			// Get shipping field key
 			$shipping_field_key = str_replace( 'billing_', 'shipping_', $field_key );
 
@@ -3723,6 +3723,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Remove links and fix accessibility attributes for payment method icons.
 	 */
 	public function change_payment_gateway_icon_html( $icon, $id = null ) {
+		// Bail if icon html is empty
+		if ( empty( $icon ) ) { return $icon; }
 
 		// Remove links from the icon html
 		$pattern = '/(<a [^<]*)([^<]*)(<\/a>)/';
@@ -4028,7 +4030,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				$button_html = str_replace( 'class="button', 'disabled class="button', $button_html );
 			}
 		}
-		
+
 		// Add extra button class and filter
 		$button_html = str_replace( 'class="button alt', 'class="' . esc_attr( apply_filters( 'fc_place_order_button_classes', 'button alt' ) ) . ' fc-place-order-button', $button_html );
 
@@ -4314,11 +4316,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Get decoded data
 			$decoded_data = explode( '=', urldecode( $value ) );
 			$field_key = $decoded_data[0];
-			
+
 			// Handle multi value fields
 			$needle = '[]';
 			$needle_len = strlen( $needle );
-        	if ( $needle_len === 0 || 0 === substr_compare( $field_key, $needle, - $needle_len ) ) {
+			if ( $needle_len === 0 || 0 === substr_compare( $field_key, $needle, - $needle_len ) ) {
 				// Get new field key, without the multi value markers
 				$new_field_key = str_replace( $needle, '', $field_key );
 
@@ -4343,7 +4345,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Needed to make already parsed data available for all functions,
 			// especially those used by filters hooked to `fc_set_parsed_posted_data` below.
 			$this->posted_data = $new_posted_data;
-			
+
 			// Filter to allow customizations
 			$new_posted_data = apply_filters( 'fc_set_parsed_posted_data', $new_posted_data );
 		}
@@ -4385,7 +4387,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get all checkout fields
 		$field_groups = WC()->checkout()->get_checkout_fields();
-		
+
 		// Iterate checkout fields
 		foreach ( $field_groups as $group_key => $fields ) {
 			// Skip shipping fields if shipping address is not needed
@@ -4505,7 +4507,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$field_posted_data_value = $posted_data[ $input ];
 			return $field_posted_data_value;
 		}
-		
+
 		// Maybe return field value from session
 		$field_session_value = $this->get_checkout_field_value_from_session( $input );
 		if ( null !== $field_session_value ) {
