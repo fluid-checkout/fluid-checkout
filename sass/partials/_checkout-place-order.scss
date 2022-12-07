@@ -6,23 +6,43 @@
 	border: 0;
 }
 
+// PLACE ORDER INSIDE PAYMENT METHOD
 .fc-wrapper .fc-inside div.place-order {
 	float: none;
-	display: block;
-	padding: $place-order-padding;
+	display: none;
 
-	@media (#{$bp-larger-than-desktop}) { padding: $place-order-padding--large-screen; }
+	@media (#{$bp-larger-than-desktop}) {
+		display: block;
+		padding: $place-order-padding--large-screen;
+	}
 }
-
+// PLACE ORDER INSIDE PAYMENT METHOD FOR DESKTOP VIEW
+body.has-place-order--below_order_summary .fc-wrapper .fc-inside div.place-order {
+	@media (#{$bp-larger-than-desktop}) {
+		display: none;
+	}
+}
+// PLACE ORDER ON ORDER SUMMARY
 .fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
 	float: none;
 	display: block;
 	margin-top: $global-spacing-small;
 	margin-bottom: $global-spacing-small;
 	padding: $place-order-padding-sidebar;
-}
 
-.fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-checkout-order-review[data-flyout].is-open div.place-order {
+	@media (#{$bp-larger-than-desktop}) {
+		display: none;
+	}
+}
+// PLACE ORDER INSIDE ORDER SUMMARY FOR DESKTOP VIEW
+body.has-place-order--below_order_summary .fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order,
+body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
+	@media (#{$bp-larger-than-desktop}) {
+		display: block;
+	}
+}
+// WHEN CART FLYOUT IS OPEN ON MOBILE
+.fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-checkout-order-review[ data-flyout ].is-open div.place-order {
 	display: none;
 }
 

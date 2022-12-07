@@ -4,6 +4,7 @@
 // ORDER SUMMARY
 // ------------------------------------
 .fc-wrapper .fc-checkout-order-review {
+	display: block;
 	margin: $order-summary-container-margin;
 	padding: $order-summary-container-padding;
 
@@ -12,7 +13,10 @@
 		padding: $order-summary-container-padding--large-screen;
 	}
 }
-
+body:not( .has-checkout-layout--multi-step ) .fc-wrapper .fc-checkout-order-review,
+body.has-checkout-layout--multi-step.fc-checkout-step-current-last .fc-wrapper .fc-checkout-order-review {
+	display: block;
+}
 
 
 
@@ -280,19 +284,6 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 
 
 // ------------------------------------
-// ORDER REVIEW VISIBILITY
-// ------------------------------------
-.fc-checkout-step[data-step-id="payment"] .fc-checkout-order-review {
-	@media (#{$bp-larger-than-desktop}) {
-		display: none;
-	}
-}
-
-
-
-
-
-// ------------------------------------
 // FLYOUT ORDER SUMMARY
 // ------------------------------------
 .fc-wrapper .fc-checkout-order-review[data-flyout] {
@@ -353,50 +344,6 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	margin: 0;
 }
 
-
-
-// ------------------------------------
-// PLACE ORDER ONLY IN SIDEBAR
-// ------------------------------------
-body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review {
-	display: block;
-	padding: 0;
-}
-
-body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
-	max-width: none;
-	overflow: unset;
-
-	@media (#{$bp-smaller-than-tablet}) {
-		padding-bottom: $global-spacing-small;
-		padding-#{ $alignment-left }: $container-spacing-mobile;
-		padding-#{ $alignment-right }: $container-spacing-mobile;
-	}
-
-	@media (#{$bp-larger-than-tablet}) {
-		margin: 0 0 $global-spacing-small;
-		padding: remsize( 1.2rem ) $global-spacing-small 0;
-		width: 100%;
-		max-width: 100%;
-		border: solid remsize( .1rem ) $border-color;
-		border-radius: $checkout-substep-border-radius;
-		background-color: $white;
-		overflow: hidden;
-	}
-}
-
-body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-order-review[data-flyout].is-activated.is-open .fc-checkout-order-review__inner {
-	border: 0;
-	border-radius: 0;
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-
-body.has-place-order-sidebar-only .fc-wrapper .fc-checkout-steps {
-	@media (#{$bp-smaller-than-tablet}) {
-		margin-bottom: 0;
-	}
-}
 
 
 

@@ -66,6 +66,7 @@
 		isCompleteClass: 'is-complete',
 		stepNextIncompleteClass: 'fc-checkout-step--next-step-incomplete',
 		currentStepClassTemplate: 'fc-checkout-step-current--##STEP_ID##',
+		currentLastStepClass: 'fc-checkout-step-current-last',
 
 		substepEditableStateFieldSelector: '.fc-substep-editable-state[type="hidden"]',
 		substepEditableStateAttribute: 'data-substep-editable',
@@ -556,10 +557,22 @@
 
 		// Maybe add current step class
 		var currentStepElement = document.querySelector( _settings.currentStepSelector );
+		var lastStepElement = document.querySelector( _settings.lastStepSelector );
 		if ( currentStepElement ) {
 			var stepId = currentStepElement.getAttribute( _settings.stepIdAttribute );
+			
+			// Add current step class
 			var className = _settings.currentStepClassTemplate.replace( '##STEP_ID##', stepId );
 			document.body.classList.add( className );
+			
+			// Maybe add last step class
+			if ( lastStepElement ) {
+				var currentStepId = currentStepElement.getAttribute( _settings.stepIdAttribute );
+				var lastStepId = lastStepElement.getAttribute( _settings.stepIdAttribute );
+				if ( lastStepId === currentStepId ) {
+					document.body.classList.add( _settings.currentLastStepClass );
+				}
+			}
 		}
 	}
 

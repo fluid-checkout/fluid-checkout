@@ -167,8 +167,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
 
 		// Order summary
-		add_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
-		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
+		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		add_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_order_review_background_inline_styles' ), 30 );
@@ -221,31 +220,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Get place order position option
-		$place_order_position = get_option( 'fc_checkout_place_order_position' ); // Should not use default value on this line because we need to check below if the value is set in the database
+		$place_order_position = $this->get_place_order_position();
 
-		// Maybe handle deprecated option `fc_enable_checkout_place_order_sidebar`
-		if ( false === $place_order_position && 'yes' === get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) ) {
-			$place_order_position = 'both_payment_and_order_summary';
-		}
-
-		// Place order position
-		if ( 'both_payment_and_order_summary' === $place_order_position ) {
+		// // Place order position
+		// if ( 'both_payment_and_order_summary' === $place_order_position ) {
+		// 	add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
+		// 	add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_order_summary' ), 1 );
+		// 	add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
+		// 	add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_order_summary' ), 10 );
+		// }
+		// else if ( 'below_order_summary' === $place_order_position ) {
+		// 	remove_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
+		// 	remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'replace_order_summary_table_fragments' ), 10 );
+		// 	add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_order_summary_main' ), 1 );
+		// 	add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_order_main' ), 10 );
+		// }
+		// // Defaults to `below_payment_section`
+		// else {
 			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
-			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_sidebar' ), 1 );
+			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_order_summary' ), 1 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_sidebar' ), 10 );
-		}
-		else if ( 'below_order_summary' === $place_order_position ) {
-			remove_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
-			remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'replace_order_summary_table_fragments' ), 10 );
-			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_sidebar_main' ), 1 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_sidebar_main' ), 10 );
-		}
-		// Defaults to `below_payment_section`
-		else {
-			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
-		}
+			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_order_summary' ), 10 );
+		// }
 	}
 
 	/**
@@ -301,8 +297,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$add_classes = array(
 			'has-fluid-checkout',
-			'has-checkout-layout--' . $this->get_checkout_layout(),
+			'has-checkout-layout--' . esc_attr( $this->get_checkout_layout() ),
 		);
+
+		// Add extra class for place order position
+		$place_order_position = $this->get_place_order_position();
+		$add_classes[] = 'has-place-order--' . esc_attr( $place_order_position );
+
+		// Add extra class for current step
+		$current_step = $this->get_current_step();
+		$last_step = $this->get_last_step();
+		if ( $this->is_checkout_layout_multistep() && false !== $current_step ) {
+			$current_step_index = array_keys( $current_step )[0];
+			$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
+			$add_classes[] = 'fc-checkout-step-current--' . esc_attr( $current_step_id );
+			
+			// Maybe add current last step class
+			$last_step_index = array_keys( $last_step )[0];
+			if ( $current_step_index === $last_step_index ) {
+				$add_classes[] = 'fc-checkout-step-current-last';
+			}
+		}
 
 		// Add extra class when sidebar is present
 		if ( has_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ) ) ) {
@@ -312,14 +327,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
 		if ( $this->get_hide_site_header_footer_at_checkout() ) {
 			$add_classes[] = 'has-checkout-header';
-		}
-
-		// Add extra class for current step
-		$current_step = $this->get_current_step();
-		if ( $this->is_checkout_layout_multistep() && false !== $current_step ) {
-			$current_step_index = array_keys( $current_step )[0];
-			$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
-			$add_classes[] = 'fc-checkout-step-current--' . $current_step_id ;
 		}
 
 		// Add extra class if displaying the `must-log-in` notice
@@ -340,12 +347,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Add extra class to highlight the billing section
 		if ( true === apply_filters( 'fc_show_billing_section_highlighted', ( 'yes' === get_option( 'fc_show_billing_section_highlighted', 'yes' ) ) ) ) {
 			$add_classes[] = 'has-highlighted-billing-section';
-		}
-
-		// Maybe add extra class for place order position
-		$place_order_position = get_option( 'fc_checkout_place_order_position', 'below_payment_section' );
-		if ( 'below_order_summary' === $place_order_position ) {
-			$add_classes[] = 'has-place-order-sidebar-only';
 		}
 
 		return array_merge( $classes, $add_classes );
@@ -540,6 +541,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'multi-step'     => __( 'Multi-step', 'fluid-checkout' ),
 			'single-step'    => __( 'Single step', 'fluid-checkout' ),
 		) );
+	}
+
+
+
+	/**
+	 * Return the list of values accepted for checkout layout.
+	 *
+	 * @return  array  List of values accepted for checkout layout.
+	 */
+	public function get_place_order_position() {
+		// Get place order position option
+		$place_order_position = get_option( 'fc_checkout_place_order_position' ); // Should not use default value on this line because we need to check below if the value is set in the database
+
+		// Maybe handle deprecated option `fc_enable_checkout_place_order_sidebar`
+		if ( false === $place_order_position && 'yes' === get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) ) {
+			$place_order_position = 'both_payment_and_order_summary';
+		}
+
+		return $place_order_position;
 	}
 
 
@@ -3820,23 +3840,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_order_review_html_attributes( $is_sidebar_widget = false ) {
 		$attributes = array(
+			'id' => 'fc-checkout-order-review',
 			'class' => 'fc-checkout-order-review',
+			'data-flyout' => true,
+			'data-flyout-order-review' => true,
+			'data-flyout-open-animation-class' => 'fade-in-down',
+			'data-flyout-close-animation-class' => 'fade-out-up',
 		);
-
-		// Sidebar widget
-		if ( $is_sidebar_widget ) {
-			$attributes = array_merge( $attributes, array(
-				'id' => 'fc-checkout-order-review',
-				'data-flyout' => true,
-				'data-flyout-order-review' => true,
-				'data-flyout-open-animation-class' => 'fade-in-down',
-				'data-flyout-close-animation-class' => 'fade-out-up',
-			) );
-		}
 
 		// Maybe add class for additional content inside the order summary section
 		$additional_content_place_order_positions = array( 'below_order_summary', 'both_payment_and_order_summary' );
-		$place_order_position = get_option( 'fc_checkout_place_order_position', 'below_payment_section' );
+		$place_order_position = $this->get_place_order_position();
 		if ( in_array( $place_order_position, $additional_content_place_order_positions ) || is_active_sidebar( 'fc_order_summary_after' ) ) {
 			$attributes[ 'class' ] = $attributes[ 'class' ] . ' has-additional-content';
 		}
@@ -3854,14 +3868,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_order_review_html_attributes_inner( $is_sidebar_widget = false ) {
 		$attributes = array(
 			'class' => 'fc-checkout-order-review__inner',
+			'data-flyout-content' => true,
 		);
-
-		// Sidebar widget
-		if ( $is_sidebar_widget ) {
-			$attributes = array_merge( $attributes, array(
-				'data-flyout-content' => true,
-			) );
-		}
 
 		return $attributes;
 	}
@@ -3878,22 +3886,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'is_sidebar_widget'  => false,
 				'attributes'         => $this->get_order_review_html_attributes(),
 				'attributes_inner'   => $this->get_order_review_html_attributes_inner(),
-			)
-		);
-	}
-
-	/**
-	 * Output Order Review for sidebar.
-	 */
-	public function output_order_review_for_sidebar() {
-		wc_get_template(
-			'fc/checkout/review-order-section.php',
-			array(
-				'checkout'           => WC()->checkout(),
-				'order_review_title' => $this->get_order_review_title(),
-				'is_sidebar_widget'  => true,
-				'attributes'         => $this->get_order_review_html_attributes( true ),
-				'attributes_inner'   => $this->get_order_review_html_attributes_inner( true ),
 			)
 		);
 	}
@@ -3957,11 +3949,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
 	 */
-	public function output_checkout_place_order_for_sidebar( $is_sidebar_widget ) {
-		// Bail if not ouputting for the sidebar
-		if ( ! $is_sidebar_widget ) { return; }
-
-		$this->output_checkout_place_order( '__sidebar', $is_sidebar_widget );
+	public function output_checkout_place_order_for_order_summary( $is_sidebar_widget ) {
+		$this->output_checkout_place_order( '__sidebar', true );
 	}
 
 	/**
@@ -3969,7 +3958,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
 	 */
-	public function output_checkout_place_order_for_sidebar_main( $is_sidebar_widget ) {
+	public function output_checkout_place_order_for_order_summary_main( $is_sidebar_widget ) {
 		// Bail if not ouputting for the sidebar
 		if ( ! $is_sidebar_widget ) { return; }
 
@@ -3992,9 +3981,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param   array  $fragments  Checkout fragments.
 	 */
-	public function add_place_order_fragment_for_sidebar( $fragments ) {
+	public function add_place_order_fragment_for_order_summary( $fragments ) {
 		$html_for_sidebar = $this->get_checkout_place_order_html( '__sidebar', true );
-		$fragments['.fc-sidebar .place-order'] = $html_for_sidebar;
+		$fragments['.fc-checkout-order-review .place-order'] = $html_for_sidebar;
 		return $fragments;
 	}
 
