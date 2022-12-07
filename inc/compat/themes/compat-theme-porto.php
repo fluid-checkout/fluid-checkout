@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with theme: Porto (by Brainstorm Force).
+ * Compatibility with theme: Porto (by P-THEMES).
  */
 class FluidCheckout_ThemeCompat_Porto extends FluidCheckout {
 

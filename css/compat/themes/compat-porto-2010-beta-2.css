@@ -10,3 +10,11 @@ body.theme-porto div.quantity .plus {
 body.theme-porto div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   padding: 2px 12px;
 }
+
+body.theme-porto div.woocommerce form .form-row.woocommerce-validated .select2-selection:after {
+  right: 5px !important;
+}
+
+body.theme-porto .payment_methods .payment_method_paypal img {
+  width: auto;
+}
