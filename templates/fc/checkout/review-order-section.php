@@ -12,15 +12,20 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 2.1.0
+ * @version 2.2.0
  * @wc-version 3.5.0
  * @wc-original checkout/form-checkout.php
  */
 
 defined( 'ABSPATH' ) || exit;
 
+// Prepare attribute strings
 $attributes_str = implode( ' ', array_map( array( FluidCheckout::instance(), 'map_html_attributes' ), array_keys( $attributes ), $attributes ) );
 $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(), 'map_html_attributes' ), array_keys( $attributes_inner ), $attributes_inner ) );
+
+// Since version 2.2.0 the order summary is always output to the sidebar
+// We need to keep passing this variables as a parameter to all custom action hooks for backwards compatibility
+$is_sidebar_widget = true;
 ?>
 
 <?php do_action( 'fc_checkout_before_order_review', $is_sidebar_widget ); ?>
