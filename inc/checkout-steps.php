@@ -166,28 +166,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
 
+		// Place order
+		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10, 2 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
+		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
+
 		// Place order position
 		$place_order_position = $this->get_place_order_position();
-		if ( 'below_order_summary' === $place_order_position ) {
-			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order' ), 1 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
+		if ( 'below_payment_section' === $place_order_position ) {
+			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
 		}
-		else {
-			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
-			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_order_summary' ), 1 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
+		else if ( 'below_order_summary' === $place_order_position ) {
+			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section' ), 1, 2 );
+		}
+		else if ( 'both_payment_and_order_summary' === $place_order_position ) {
+			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
+			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section' ), 1, 2 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_order_summary' ), 10 );
 		}
-
-		// Place order button
-		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Order summary
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		add_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_order_review_background_inline_styles' ), 30 );
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'replace_order_summary_table_fragments' ), 10 );
 
 		// Order summary cart items details
 		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_product_name' ), 10, 3 );
@@ -3899,6 +3901,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Make sure there are no duplicate fields for outputting place order on the sidebar
 		if ( $is_sidebar ) {
+			// $place_order_html = str_replace( 'class="form-row place-order', 'class="form-row place-order place-order__sidebar', $place_order_html );
 			$place_order_html = str_replace( 'id="terms"', '', $place_order_html );
 			$place_order_html = str_replace( 'id="place_order"', '', $place_order_html );
 			$place_order_html = str_replace( 'id="woocommerce-process-checkout-nonce"', '', $place_order_html );
@@ -3909,6 +3912,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return $place_order_html; // WPCS: XSS ok.
+	}
+
+	/**
+	 * Output checkout place order section.
+	 */
+	public function output_checkout_place_order_section( $step_id = 'payment', $is_sidebar = false ) {
+		echo '<div class="fc-place-order__section">';
+		do_action( 'fc_place_order', $step_id, $is_sidebar );
+		echo '</div>';
 	}
 
 	/**
@@ -3944,17 +3956,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function add_place_order_fragment_for_order_summary( $fragments ) {
 		$html_for_sidebar = $this->get_checkout_place_order_html( '__sidebar', true );
 		$fragments['.fc-checkout-order-review .place-order'] = $html_for_sidebar;
-		return $fragments;
-	}
-
-	/**
-	 * Add checkout fragment for the place order section for the sidebar as the main section.
-	 *
-	 * @param   array  $fragments  Checkout fragments.
-	 */
-	public function add_place_order_fragment_for_sidebar_main( $fragments ) {
-		$html_for_sidebar = $this->get_checkout_place_order_html( '__sidebar', false );
-		$fragments['.fc-sidebar .place-order'] = $html_for_sidebar;
 		return $fragments;
 	}
 
@@ -4060,32 +4061,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$custom_css = "body div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner { background-color: $color; }";
 		wp_add_inline_style( 'fc-checkout-layout', $custom_css );
-	}
-
-
-
-	/**
-	 * Replace the order summary table fragment with specific fragments main and sidebar order summary sections.
-	 *
-	 * @param   array  $fragments  Checkout fragments.
-	 */
-	public function replace_order_summary_table_fragments( $fragments ) {
-		// Remove original
-		unset( $fragments['.woocommerce-checkout-review-order-table'] );
-
-		// Get order review fragment for main section
-		ob_start();
-		woocommerce_order_review();
-		$html = ob_get_clean();
-		$fragments['.fc-inside .woocommerce-checkout-review-order-table'] = $html;
-
-		// Get order review fragment for sidebar.
-		ob_start();
-		woocommerce_order_review();
-		$html = ob_get_clean();
-		$fragments['.fc-sidebar .woocommerce-checkout-review-order-table'] = $html;
-
-		return $fragments;
 	}
 
 

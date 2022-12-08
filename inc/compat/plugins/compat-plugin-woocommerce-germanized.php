@@ -53,8 +53,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		// Place order, remove section because Germanized already adds it
 		remove_action( 'fc_output_step_payment', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order' ), 100 );
-		remove_action( 'fc_checkout_after_order_review_inside', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_for_sidebar' ), 1 );
-		remove_action( 'fc_checkout_after_order_review_inside', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_for_sidebar_main' ), 1 );
+		remove_action( 'fc_checkout_after_order_review_inside', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_for_order_summary' ), 1 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( FluidCheckout_Steps::instance(), 'add_place_order_fragment' ), 10 );
 
 		// Display back to cart button

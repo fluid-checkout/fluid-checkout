@@ -2,20 +2,40 @@
 // CHECKOUT PLACE ORDER
 // ------------------------------------
 
-body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper div.place-order {
-	margin-bottom: 0;
+body:not( .has-place-order--below_order_summary ).has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section,
+body:not( .has-place-order--below_order_summary ).has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-sidebar .woocommerce-terms-and-conditions-wrapper,
+body:not( .has-place-order--below_order_summary ).has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section,
+body:not( .has-place-order--below_order_summary ).has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wrapper .fc-sidebar .woocommerce-terms-and-conditions-wrapper {
+	display: none;
 }
 
-body.has-payment-method-selected--payment_method_ppcp-gateway .fc-place-order,
-body.has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-place-order {
+
+
+.fc-wrapper .fc-place-order__woocommerce-paypal-payments {
+	display: none;
+}
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-place-order__woocommerce-paypal-payments,
+body.has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wrapper .fc-place-order__woocommerce-paypal-payments {
+	display: block;
+}
+
+
+
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-place-order,
+body.has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wrapper .fc-place-order {
 	padding: 0;
 }
 
-body:not( .has-place-order--below_order_summary ).has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order,
-body:not( .has-place-order--below_order_summary ).has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-sidebar .woocommerce-terms-and-conditions-wrapper,
-body:not( .has-place-order--below_order_summary ).has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order,
-body:not( .has-place-order--below_order_summary ).has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wrapper .fc-sidebar .woocommerce-terms-and-conditions-wrapper {
-	display: none;
+
+
+.fc-wrapper .fc-place-order__woocommerce-paypal-payments {
+	margin: $global-spacing-small 0 $global-spacing-extra-small;
+}
+
+
+
+.fc-wrapper .fc-inside .ppc-button-wrapper {
+	padding: 0;
 }
 
 
@@ -25,29 +45,4 @@ body:not( .has-place-order--below_order_summary ).has-payment-method-selected--p
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-
-
-
-.fc-wrapper .ppc-button-wrapper {
-	margin: $global-spacing-small 0;
-}
-
-.fc-wrapper .fc-inside .ppc-button-wrapper {
-	padding-#{ $alignment-left }: $container-spacing-mobile;
-	padding-#{ $alignment-right }: $container-spacing-mobile;
-	padding-top: 0;
-	padding-bottom: 0;
-	
-	@media (#{$bp-larger-than-desktop}) {
-		padding-#{ $alignment-left }: $container-spacing-mobile;
-		padding-#{ $alignment-right }: $container-spacing-mobile;
-	}
-}
-
-
-
-// Compatibility between PayPal Payments and Germanized
-body.woocommerce-gzd-checkout .fc-wrapper .ppc-button-wrapper ~ .fc-checkout__below-place-order-widgets {
-	margin-top: #{ -$global-spacing-extra-small };
 }
