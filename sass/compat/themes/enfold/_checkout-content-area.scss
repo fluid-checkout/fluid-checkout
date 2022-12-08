@@ -13,3 +13,9 @@ body#{ $_body-theme-selector }#{ $_body-page-selector }#top #main.fc-main {
 	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large $global-spacing-large !important; } // Needed to override inline styles added by some themes
 	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large $global-spacing-large !important; } // Needed to override inline styles added by some themes
 }
+
+
+
+body#{ $_body-theme-selector } [data-sticky-states].is-sticky--top > [data-sticky-states-inner] {
+	top: 45px
+}

@@ -27,4 +27,11 @@ body#{ $_body-theme-selector }#top .fc-wrapper .fc-sidebar .fc-sidebar__inner di
 
 body#{ $_body-theme-selector }#top .fc-wrapper .fc-place-order .fc-place-order-button {
 	float: none;
+	background-color: #719430;
+	color: #ffffff;
+	font-size: remsize( 1.6rem );
+	font-weight: bold;
+	&:hover{
+		background-color: #8bba34;
+	}
 }

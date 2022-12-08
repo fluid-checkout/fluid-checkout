@@ -240,12 +240,12 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
 
 @media (min-width: 1000px) {
   body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-message,
-body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-info,
-body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-error,
-body:not(.has-checkout-must-login-notice) .fc-checkout-notices,
-body:not(.has-checkout-must-login-notice).woocommerce-checkout .woocommerce-NoticeGroup,
-body:not(.has-checkout-must-login-notice) .fc-progress-bar,
-body:not(.has-checkout-must-login-notice) .fc-inside {
+  body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-info,
+  body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-error,
+  body:not(.has-checkout-must-login-notice) .fc-checkout-notices,
+  body:not(.has-checkout-must-login-notice).woocommerce-checkout .woocommerce-NoticeGroup,
+  body:not(.has-checkout-must-login-notice) .fc-progress-bar,
+  body:not(.has-checkout-must-login-notice) .fc-inside {
     float: left;
     width: calc( 62.5% - 50px );
     padding-top: 5px;
@@ -256,12 +256,12 @@ body:not(.has-checkout-must-login-notice) .fc-inside {
 
 @media (min-width: 1000px) {
   body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-checkout-header ~ .woocommerce-message,
-body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-checkout-header ~ .woocommerce-info,
-body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-checkout-header ~ .woocommerce-error,
-body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-checkout-notices,
-body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar).woocommerce-checkout .woocommerce-NoticeGroup,
-body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-progress-bar,
-body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
+  body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-checkout-header ~ .woocommerce-info,
+  body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-checkout-header ~ .woocommerce-error,
+  body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-checkout-notices,
+  body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar).woocommerce-checkout .woocommerce-NoticeGroup,
+  body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-progress-bar,
+  body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
     width: 62.5%;
     margin-left: 18.75%;
   }
@@ -729,14 +729,14 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
 
 @media (min-width: 750px) {
   .fc-wrapper .fc-checkout-step:first-child,
-.fc-wrapper .fc-checkout-step:first-child > div:first-of-type {
+  .fc-wrapper .fc-checkout-step:first-child > div:first-of-type {
     border-radius: 8px 8px 0 0;
   }
 }
 
 @media (min-width: 750px) {
   .fc-wrapper .fc-checkout-step:last-child,
-.fc-wrapper .fc-checkout-step:last-child > div:last-of-type {
+  .fc-wrapper .fc-checkout-step:last-child > div:last-of-type {
     border-radius: 0 0 8px 8px;
   }
 }
@@ -838,7 +838,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 @media (min-width: 750px) {
   .has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete,
-.has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete > div:last-of-type {
+  .has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--next-step-incomplete > div:last-of-type {
     margin-bottom: 20px;
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
@@ -847,7 +847,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 @media (min-width: 750px) {
   .has-checkout-layout--multi-step .fc-checkout-step[data-step-current]:not([data-step-index="0"]),
-.has-checkout-layout--multi-step .fc-checkout-step:not([data-step-complete]) {
+  .has-checkout-layout--multi-step .fc-checkout-step:not([data-step-complete]) {
     border-radius: 8px;
   }
 }
@@ -1655,7 +1655,7 @@ body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_
 }
 @media (min-width: 750px) {
   .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box,
-#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
+  #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
     padding: 20px 44px;
   }
 }
@@ -1842,8 +1842,8 @@ div.woocommerce form .form-row.form-row-last {
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,
-div.woocommerce form .form-row.form-row-middle,
-div.woocommerce form .form-row.form-row-last {
+  div.woocommerce form .form-row.form-row-middle,
+  div.woocommerce form .form-row.form-row-last {
     clear: none;
     float: left;
     width: 48% !important;
@@ -1856,7 +1856,7 @@ div.woocommerce form .form-row.form-row-wide {
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,
-div.woocommerce form .form-row.form-row-wide {
+  div.woocommerce form .form-row.form-row-wide {
     clear: left;
   }
 }
@@ -1866,8 +1866,7 @@ div.woocommerce form .form-row.form-row-one-third {
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-one-third {
-    width: 30.666% !important;
-    /* Needed to override theme styles */
+    width: 30.666% !important; /* Needed to override theme styles */
   }
 }
 
@@ -1876,16 +1875,15 @@ div.woocommerce form .form-row.form-row-two-thirds {
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-two-thirds {
-    width: 65.33% !important;
-    /* Needed to override theme styles */
+    width: 65.33% !important; /* Needed to override theme styles */
   }
 }
 
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,
-div.woocommerce form .form-row.form-row-middle,
-div.woocommerce form #payment .form-row.form-row-first,
-div.woocommerce form #payment .form-row.form-row-middle {
+  div.woocommerce form .form-row.form-row-middle,
+  div.woocommerce form #payment .form-row.form-row-first,
+  div.woocommerce form #payment .form-row.form-row-middle {
     margin-left: 0;
     margin-right: 4%;
   }
