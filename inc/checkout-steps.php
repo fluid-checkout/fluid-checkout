@@ -168,6 +168,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Place order
 		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10, 2 );
+		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order_custom_buttons' ), 20, 2 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
@@ -3920,6 +3921,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_checkout_place_order_section( $step_id = 'payment', $is_sidebar = false ) {
 		echo '<div class="fc-place-order__section">';
 		do_action( 'fc_place_order', $step_id, $is_sidebar );
+		echo '</div>';
+	}
+
+	/**
+	 * Output checkout place order custom buttons.
+	 */
+	public function output_checkout_place_order_custom_buttons( $step_id = 'payment', $is_sidebar = false ) {
+		echo '<div class="fc-place-order__custom-buttons">';
+		do_action( 'fc_place_order_custom_buttons', $step_id, $is_sidebar );
 		echo '</div>';
 	}
 

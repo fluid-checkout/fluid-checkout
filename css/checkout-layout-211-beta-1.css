@@ -1741,6 +1741,10 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
   display: none;
 }
 
+.fc-wrapper .fc-place-order__custom-buttons {
+  margin: 20px 0 10px;
+}
+
 .fc-wrapper .fc-inside div.place-order,
 .fc-wrapper .fc-sidebar div.place-order {
   border: 0;

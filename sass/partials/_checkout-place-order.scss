@@ -44,6 +44,12 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 
 
 
+.fc-wrapper .fc-place-order__custom-buttons {
+	margin: $global-spacing-small 0 $global-spacing-extra-small;
+}
+
+
+
 .fc-wrapper .fc-inside div.place-order,
 .fc-wrapper .fc-sidebar div.place-order {
 	border: 0;

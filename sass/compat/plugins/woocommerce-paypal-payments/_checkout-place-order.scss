@@ -28,14 +28,9 @@ body.has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wr
 
 
 
-.fc-wrapper .fc-place-order__woocommerce-paypal-payments {
+.fc-wrapper .fc-place-order__custom-buttons .ppc-button-wrapper,
+.fc-wrapper .fc-place-order__custom-buttons #ppcp-hosted-fields {
 	margin: $global-spacing-small 0 $global-spacing-extra-small;
-}
-
-
-
-.fc-wrapper .fc-inside .ppc-button-wrapper {
-	padding: 0;
 }
 
 

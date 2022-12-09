@@ -19,12 +19,9 @@ body.has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wr
   padding: 0;
 }
 
-.fc-wrapper .fc-place-order__woocommerce-paypal-payments {
+.fc-wrapper .fc-place-order__custom-buttons .ppc-button-wrapper,
+.fc-wrapper .fc-place-order__custom-buttons #ppcp-hosted-fields {
   margin: 20px 0 10px;
-}
-
-.fc-wrapper .fc-inside .ppc-button-wrapper {
-  padding: 0;
 }
 
 .fc-wrapper #ppc-button {
