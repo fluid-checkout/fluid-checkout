@@ -379,6 +379,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Improved: Disable the "Log in" link button while loading the scripts which enable it to open the login popup section.
+* Fixed: Fix required fields marker for accessibility. Stop adding `required` attribute to required fields as this sometimes breaks form validation.
 
 = 2.1.0 - 2022-12-05 =
 
