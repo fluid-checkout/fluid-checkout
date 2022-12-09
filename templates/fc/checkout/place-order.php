@@ -12,8 +12,8 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.2.0
- * @wc-version 3.5.3
+ * @version 2.1.1
+ * @wc-version 7.0.1
  * @wc-original checkout/payment.php
  */
 
