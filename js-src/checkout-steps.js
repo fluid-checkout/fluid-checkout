@@ -76,6 +76,11 @@
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
 
 		placeOrderButtonSelector: '.fc-place-order-button',
+		placeOrderSkipMoveSelector: '.has-place-order--below_order_summary',
+		placeOrderSectionMainSelector: '.fc-place-order__section--main',
+		placeOrderPlaceholderMainSelector: '.fc-inside .fc-place-order__section-placeholder',
+		placeOrderPlaceholderSidebarSelector: '.fc-sidebar .fc-place-order__section-placeholder',
+		placeOrderRefreshRate: 50,
 
 		scrollOffsetSelector: '.fc-checkout-header',
 		scrollBehavior: 'smooth',
@@ -86,6 +91,7 @@
 		ENTER: 'Enter',
 		SPACE: ' ',
 	}
+	var _resizeObserver;
 
 
 
@@ -136,6 +142,38 @@
 
 		return extended;
     };
+
+
+
+	/**
+	 * Returns a function, that, as long as it continues to be invoked, will not
+	 * be triggered. The function will be called after it stops being called for
+	 * N milliseconds. If `immediate` is passed, trigger the function on the
+	 * leading edge, instead of the trailing.
+	 *
+	 * @param   {[type]}  func       Function to be executed.
+	 * @param   {[type]}  wait       Wait time in milliseconds.
+	 * @param   {[type]}  immediate  Trigger the function on the leading edge.
+	 *
+	 * @return  function              Function to be executed, incapsulated in a timed function.
+	 */
+	var _debounce = function ( func, wait, immediate ) {
+		var timeout;
+
+		return function() {
+		  var context = this, args = arguments;
+		  var later = function() {
+			timeout = null;
+			if (!immediate) func.apply( context, args );
+		  };
+
+		  var callNow = immediate && !timeout;
+		  clearTimeout( timeout );
+		  timeout = setTimeout( later, wait );
+
+		  if ( callNow ) func.apply( context, args );
+		};
+	};
 
 
 
@@ -648,6 +686,33 @@
 
 
 	/**
+	 * Maybe move place order section to order summary for small screens.
+	 */
+	var maybeMovePlaceOrderSection = function() {
+		// Bail if displaying the place order only on the sidebar. In this case there is no need to move the sections.
+		if ( document.body.matches( _settings.placeOrderSkipMoveSelector ) ) { return; }
+
+		// Get viewport width
+		var viewportWidth = window.innerWidth;
+
+		// Get place order sections
+		var placeOrderMain = document.querySelector( _settings.placeOrderSectionMainSelector );
+		var placeOrderPlaceholderMain = document.querySelector( _settings.placeOrderPlaceholderMainSelector );
+		var placeOrderPlaceholderSidebar = document.querySelector( _settings.placeOrderPlaceholderSidebarSelector );
+
+		// Maybe move to sidebar section
+		if ( viewportWidth < 1000 && placeOrderPlaceholderSidebar.parentNode !== placeOrderMain.parentNode ) {
+			placeOrderPlaceholderSidebar.parentNode.insertBefore( placeOrderMain, placeOrderPlaceholderSidebar.nextSibling );
+		}
+		// Maybe move to steps section
+		else if ( viewportWidth >= 1000 && placeOrderPlaceholderMain.parentNode !== placeOrderMain.parentNode ) {
+			placeOrderPlaceholderMain.parentNode.insertBefore( placeOrderMain, placeOrderPlaceholderMain.nextSibling );
+		}
+	};
+
+
+
+	/**
 	 * Handle document clicks and route to the appropriate function.
 	 */
 	var handleClick = function( e ) {
@@ -728,6 +793,13 @@
 
 		// Merge settings
 		_settings = extend( _settings, options );
+
+		// Maybe move place order section, and initialize resize observers
+		maybeMovePlaceOrderSection();
+		if ( window.ResizeObserver ) {
+			_resizeObserver = new ResizeObserver( _debounce( maybeMovePlaceOrderSection, _settings.placeOrderRefreshRate ) );
+			_resizeObserver.observe( document.body );
+		}
 
 		// Finish initialization, maybe load dependencies first
 		if ( window.CollapsibleBlock ) {

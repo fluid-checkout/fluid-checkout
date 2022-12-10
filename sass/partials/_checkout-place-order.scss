@@ -5,34 +5,26 @@
 // PLACE ORDER INSIDE PAYMENT METHOD
 .fc-wrapper .fc-inside .fc-place-order__section {
 	float: none;
-	display: none;
 
 	@media (#{$bp-larger-than-desktop}) {
 		display: block;
 		padding: $place-order-padding--large-screen;
 	}
 }
-// PLACE ORDER INSIDE PAYMENT METHOD FOR DESKTOP VIEW
-body.has-place-order--below_order_summary .fc-wrapper .fc-inside .fc-place-order__section {
-	@media (#{$bp-larger-than-desktop}) {
-		display: none;
-	}
-}
 // PLACE ORDER ON ORDER SUMMARY
-.fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__section {
+.fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__section--sidebar {
 	float: none;
 	display: block;
 	margin-top: $global-spacing-small;
 	margin-bottom: $global-spacing-small;
 	padding: $place-order-padding-sidebar;
-
-	@media (#{$bp-larger-than-desktop}) {
-		display: none;
-	}
 }
-// PLACE ORDER INSIDE ORDER SUMMARY FOR DESKTOP VIEW
-body.has-place-order--below_order_summary .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__section,
-body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__section {
+// PLACE ORDER (SIDEBAR) INSIDE ORDER SUMMARY
+body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__section--sidebar {
+	// FOR MOBILE VIEW
+	display: none;
+
+	// FOR DESKTOP VIEW
 	@media (#{$bp-larger-than-desktop}) {
 		display: block;
 	}

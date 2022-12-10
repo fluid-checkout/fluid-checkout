@@ -172,17 +172,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
+		// Place order placeholder
+		add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_placeholder' ), 100, 2 );
+		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_placeholder' ), 1 );
+
 		// Place order position
 		$place_order_position = $this->get_place_order_position();
 		if ( 'below_payment_section' === $place_order_position ) {
 			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
 		}
 		else if ( 'below_order_summary' === $place_order_position ) {
-			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section' ), 1, 2 );
+			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section' ), 1 );
 		}
 		else if ( 'both_payment_and_order_summary' === $place_order_position ) {
 			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
-			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section' ), 1, 2 );
+			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section_for_sidebar' ), 1 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_order_summary' ), 10 );
 		}
 
@@ -3902,7 +3906,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Make sure there are no duplicate fields for outputting place order on the sidebar
 		if ( $is_sidebar ) {
-			// $place_order_html = str_replace( 'class="form-row place-order', 'class="form-row place-order place-order__sidebar', $place_order_html );
+			$place_order_html = str_replace( 'class="form-row place-order', 'class="form-row place-order place-order--sidebar', $place_order_html );
 			$place_order_html = str_replace( 'id="terms"', '', $place_order_html );
 			$place_order_html = str_replace( 'id="place_order"', '', $place_order_html );
 			$place_order_html = str_replace( 'id="woocommerce-process-checkout-nonce"', '', $place_order_html );
@@ -3911,6 +3915,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$place_order_html = str_replace( 'name="woocommerce-process-checkout-nonce"', '', $place_order_html );
 			$place_order_html = str_replace( 'name="_wp_http_referer"', '', $place_order_html );
 		}
+		else {
+			$place_order_html = str_replace( 'class="form-row place-order', 'class="form-row place-order place-order--main', $place_order_html );
+		}
 
 		return $place_order_html; // WPCS: XSS ok.
 	}
@@ -3918,10 +3925,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout place order section.
 	 */
+	public function output_checkout_place_order_placeholder() {
+		// Output place order section placeholder
+		echo '<div class="fc-place-order__section-placeholder"></div>';
+	}
+
+	/**
+	 * Output checkout place order section.
+	 */
 	public function output_checkout_place_order_section( $step_id = 'payment', $is_sidebar = false ) {
-		echo '<div class="fc-place-order__section">';
+		// Output place order section
+		$section_class = $is_sidebar ? 'fc-place-order__section--sidebar' : 'fc-place-order__section--main';
+		echo '<div class="fc-place-order__section ' . esc_attr( $section_class ) . '">';
 		do_action( 'fc_place_order', $step_id, $is_sidebar );
 		echo '</div>';
+	}
+
+	/**
+	 * Output checkout place order section for the sidebar.
+	 */
+	public function output_checkout_place_order_section_for_sidebar( $is_sidebar_widget ) {
+		$this->output_checkout_place_order_section( '__sidebar', true );
 	}
 
 	/**
@@ -3954,7 +3978,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_place_order_fragment( $fragments ) {
 		$html = $this->get_checkout_place_order_html();
-		$fragments['.fc-inside .place-order'] = $html;
+		$fragments['.place-order--main'] = $html;
 		return $fragments;
 	}
 
@@ -3965,7 +3989,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_place_order_fragment_for_order_summary( $fragments ) {
 		$html_for_sidebar = $this->get_checkout_place_order_html( '__sidebar', true );
-		$fragments['.fc-checkout-order-review .place-order'] = $html_for_sidebar;
+		$fragments['.place-order--sidebar'] = $html_for_sidebar;
 		return $fragments;
 	}
 

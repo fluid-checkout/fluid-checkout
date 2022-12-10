@@ -1,7 +1,5 @@
-body:not(.has-place-order--below_order_summary).has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section,
-body:not(.has-place-order--below_order_summary).has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-sidebar .woocommerce-terms-and-conditions-wrapper,
-body:not(.has-place-order--below_order_summary).has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section,
-body:not(.has-place-order--below_order_summary).has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wrapper .fc-sidebar .woocommerce-terms-and-conditions-wrapper {
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar,
+body.has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar {
   display: none;
 }
 
