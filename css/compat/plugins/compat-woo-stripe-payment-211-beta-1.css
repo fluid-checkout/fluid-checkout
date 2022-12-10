@@ -13,3 +13,7 @@ body:not(.has-place-order--below_order_summary).has-payment-method-selected--pay
 body:not(.has-place-order--below_order_summary).has-payment-method-selected--payment_method_ppcp .fc-wrapper .fc-sidebar .woocommerce-terms-and-conditions-wrapper {
   display: none;
 }
+
+body.woocommerce-checkout .fc-wrapper #wc-stripe-payment-request-container {
+  width: 100%;
+}
