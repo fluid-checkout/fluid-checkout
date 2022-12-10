@@ -378,7 +378,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Improved: Disable the "Log in" link button while loading the scripts which enable it to open the login popup section.
+* Improved: Disable the "Log in" link button while loading the scripts.
+* Fixed: Hide login modal and other flyout elements while loading the page.
 
 = 2.1.0 - 2022-12-05 =
 
