@@ -176,20 +176,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_placeholder' ), 100, 2 );
 		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_placeholder' ), 1 );
 
-		// Place order position
-		$place_order_position = $this->get_place_order_position();
-		if ( 'below_payment_section' === $place_order_position ) {
-			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
-		}
-		else if ( 'below_order_summary' === $place_order_position ) {
-			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section' ), 1 );
-		}
-		else if ( 'both_payment_and_order_summary' === $place_order_position ) {
-			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
-			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section_for_sidebar' ), 1 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_order_summary' ), 10 );
-		}
-
 		// Order summary
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		add_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
@@ -217,6 +203,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Unhook WooCommerce functions
 		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
 		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+
+		// Place order position
+		$place_order_position = $this->get_place_order_position();
+		if ( 'below_payment_section' === $place_order_position ) {
+			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
+		}
+		else if ( 'below_order_summary' === $place_order_position ) {
+			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section' ), 1 );
+		}
+		else if ( 'both_payment_and_order_summary' === $place_order_position ) {
+			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
+			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section_for_sidebar' ), 1 );
+			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_order_summary' ), 10 );
+		}
 	}
 
 	/**
