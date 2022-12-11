@@ -2203,6 +2203,49 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $shipping_ignored_field_ids;
 	}
 
+	/**
+	 * Get shipping fields, filtering out the fields that were moved to other sections.
+	 */
+	public function get_shipping_fields_filtered() {
+		// Filter out shipping fields moved to another step
+		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
+		$shipping_fields = array_filter( $shipping_fields, function( $key ) {
+			return ! in_array( $key, $this->get_shipping_address_ignored_shipping_field_ids() );
+		}, ARRAY_FILTER_USE_KEY );
+		
+		return $shipping_fields;
+	}
+
+	/**
+	 * Get shipping fields that have a correponding field in the billing section.
+	 */
+	public function get_shipping_same_billing_fields() {
+		// Get filtered shipping fields
+		$shipping_fields = $this->get_shipping_fields_filtered();
+
+		// Get list of shipping fields that might be copied from shipping to billing fields
+		$shipping_same_as_billing_fields = array_filter( $shipping_fields, function( $key ) {
+			return in_array( $key, $this->get_shipping_same_billing_fields_keys() );
+		}, ARRAY_FILTER_USE_KEY );
+
+		return $shipping_same_as_billing_fields;
+	}
+
+	/**
+	 * Get shipping fields that only present on the shipping section and do not have a correnpondent field in the billing section.
+	 */
+	public function get_shipping_only_fields() {
+		// Get filtered shipping fields
+		$shipping_fields = $this->get_shipping_fields_filtered();
+
+		// Get list of shipping only fields
+		$shipping_only_fields = array_filter( $shipping_fields, function( $key ) {
+			return in_array( $key, $this->get_shipping_only_fields_keys() );
+		}, ARRAY_FILTER_USE_KEY );
+
+		return $shipping_only_fields;
+	}
+
 
 
 	/**
@@ -2219,33 +2262,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_substep_shipping_address_fields() {
 		ob_start();
-
-		// Filter out shipping fields moved to another step
-		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
-		$shipping_fields = array_filter( $shipping_fields, function( $key ) {
-			return ! in_array( $key, $this->get_shipping_address_ignored_shipping_field_ids() );
-		}, ARRAY_FILTER_USE_KEY );
-
-		// Get list of shipping fields that might be copied from shipping to billing fields
-		$shipping_same_as_billing_fields = array_filter( $shipping_fields, function( $key ) {
-			return in_array( $key, $this->get_shipping_same_billing_fields_keys() );
-		}, ARRAY_FILTER_USE_KEY );
-
-		// Get list of billing only fields
-		$shipping_only_fields = array_filter( $shipping_fields, function( $key ) {
-			return in_array( $key, $this->get_shipping_only_fields_keys() );
-		}, ARRAY_FILTER_USE_KEY );
-
-		wc_get_template(
-			'checkout/form-shipping.php',
-			array(
-				'checkout'                            => WC()->checkout(),
-				'display_fields'                      => array_keys( $shipping_fields ),
-				'shipping_same_as_billing_fields'     => $shipping_same_as_billing_fields,
-				'shipping_only_fields'                => $shipping_only_fields,
-			)
-		);
-
+		wc_get_template( 'checkout/form-shipping.php', array( 'checkout' => WC()->checkout() ) );
 		return ob_get_clean();
 	}
 

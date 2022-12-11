@@ -13,11 +13,15 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
- * @fc-version 1.5.8
+ * @fc-version 2.2.0
  * @global WC_Checkout $checkout
  */
 
 defined( 'ABSPATH' ) || exit;
+
+// CHANGE: Get shipping fields lists separately
+$shipping_same_as_billing_fields = FluidCheckout_Steps::instance()->get_shipping_same_billing_fields();
+$shipping_only_fields = FluidCheckout_Steps::instance()->get_shipping_only_fields();
 ?>
 
 
