@@ -322,12 +322,13 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	margin: $order-summary-table-margin;
 	padding: remsize( 1.2rem ) $order-summary-cell-padding-horizontal 0;
 	width: $order-summary-table-width;
+	max-width: $order-summary-table-width;
 
-	@media (#{$bp-larger-than-desktop}) {
+	@media (#{$bp-larger-than-tablet}) {
 		margin: 0 0 $global-spacing-small;
 		width: 100%;
 		max-width: 100%;
-		border: solid remsize( .1rem ) $border-color;
+		border: $order-summary-border;
 		border-radius: $checkout-substep-border-radius;
 		background-color: $white;
 		overflow: hidden;

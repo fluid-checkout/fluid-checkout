@@ -881,7 +881,7 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
 }
 
 .fc-wrapper .fc-checkout-steps {
-  margin: 0 -20px 30px;
+  margin: 0 -20px 0;
 }
 @media (min-width: 750px) {
   .fc-wrapper .fc-checkout-steps {
@@ -2289,7 +2289,7 @@ body div.woocommerce form .form-row .select2-selection--multiple .select2-search
 .fc-wrapper .fc-checkout-order-review {
   display: block;
   margin: 0;
-  padding: 20px 20px 0;
+  padding: 0;
 }
 @media (min-width: 1000px) {
   .fc-wrapper .fc-checkout-order-review {
@@ -2595,8 +2595,9 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
   margin: 0 -20px;
   padding: 12px 20px 0;
   width: calc( 100% + 40px );
+  max-width: calc( 100% + 40px );
 }
-@media (min-width: 1000px) {
+@media (min-width: 750px) {
   div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
     margin: 0 0 20px;
     width: 100%;
