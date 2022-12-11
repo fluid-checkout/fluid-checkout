@@ -2,10 +2,8 @@
 // IMPORT ABSTRACT
 // ------------------------------------
 @import
-	"abstract/_all-early",
-	"abstract/_variables-rtl",
-	"abstract/_all",
-	"../node_modules/flyout-block/sass/abstract/variables";
+	"../../abstract/_all-early",
+	"../../abstract/_all";
 
 
 
@@ -15,4 +13,4 @@
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"partials/__imports-checkout-layout";
+	"paypal-brasil-para-woocommerce/__imports";

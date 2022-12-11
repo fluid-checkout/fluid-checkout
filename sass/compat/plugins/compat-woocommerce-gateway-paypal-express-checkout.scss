@@ -2,17 +2,15 @@
 // IMPORT ABSTRACT
 // ------------------------------------
 @import
-	"abstract/_all-early",
-	"abstract/_all";
-@import "../node_modules/flyout-block/sass/abstract/variables";
+	"../../abstract/_all-early",
+	"../../abstract/_all";
 
 
 
 
-	
+
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"../node_modules/flyout-block/sass/theme/flyout-block",
-	"partials/flyout-block";
+	"woocommerce-gateway-paypal-express-checkout/__imports";
