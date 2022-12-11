@@ -385,6 +385,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Disable the "Log in" link button while loading the scripts.
 * Improved: Execute script on `DOMContentLoaded` instead of page `load` event to enable interactive elements earlier.
 * Fixed: Hide login modal and other flyout elements while loading the page.
+* Improved: Update customized template files with latest changes in WooCommerce 7.2.
+* Improved: Disable the "Log in" link button while loading the scripts which enable it to open the login popup section.
+* Fixed: Fix required fields marker for accessibility. Stop adding `required` attribute to required fields as this sometimes breaks form validation.
 
 = 2.1.0 - 2022-12-05 =
 

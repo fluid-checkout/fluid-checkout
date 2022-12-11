@@ -302,8 +302,9 @@ class FluidCheckout_Validation extends FluidCheckout {
 				break;
 		}
 
+		// Maybe add required attribute for accessibility
 		if ( ! empty( $search_str ) ) {
-			$field = str_replace( $search_str, $search_str . ' required aria-required="true" ', $field );
+			$field = str_replace( $search_str, $search_str . ' aria-required="true" ', $field );
 		}
 
 		return $field;
