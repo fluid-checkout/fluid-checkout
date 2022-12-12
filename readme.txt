@@ -387,6 +387,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Execute script on `DOMContentLoaded` instead of page `load` event to enable interactive elements earlier.
 * Improved: Update customized template files with latest changes in WooCommerce 7.2.
 * Improved: Disable the "Log in" link button while loading the scripts which enable it to open the login popup section.
+* Improved: Compatibility with theme Woodmart when setting a background color for the order summary section.
 * Fixed: Hide login modal and other flyout elements while loading the page.
 * Fixed: Fix required fields marker for accessibility. Stop adding `required` attribute to required fields as this sometimes breaks form validation.
 * Fixed: Fatal error when using other plugins or themes that calls the template file `checkout/form-shipping.php` directly.
