@@ -381,6 +381,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Bump tested up to WooCommerce 7.2.0
 * Added: Compatibility with plugin Payment Plugins for PayPal WooCommerce - by Payment Plugins.
+* Added: Display the checkout page with cart items errors message, instead of a message to return to cart.
 * Improved: Remove duplicate order summary section, which was causing compatibility issues with many plugins.
 * Improved: Disable the "Log in" link button while loading the scripts.
 * Improved: Execute script on `DOMContentLoaded` instead of page `load` event to enable interactive elements earlier.
