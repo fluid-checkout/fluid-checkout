@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-03 18:58+0000\n"
-"PO-Revision-Date: 2022-12-05 11:17+0000\n"
+"PO-Revision-Date: 2022-12-12 11:02+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.3; wp-6.0.3"
+"X-Loco-Version: 2.6.3; wp-6.1.1"
 
 #: inc/admin/admin-settings-general.php:87
 msgid "(Experimental) Use theme's page header and footer for the checkout page"
@@ -621,7 +621,6 @@ msgstr ""
 "Kaydırma sırasında ödeme ilerleme durumu çubuğunun görünür kalmasını sağlayın"
 
 #: inc/admin/admin-settings-general.php:220
-#, fuzzy
 #| msgid ""
 #| "Make the labels of optional field \"Add\" link button as <code>"
 #| "lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone "
@@ -632,7 +631,7 @@ msgid ""
 msgstr ""
 "İsteğe bağlı alan \"Ekle\" bağlantı düğmesinin etiketlerini <code>küçük "
 "harf</code> olarak yapın. (ör. \"Telefon numarası ekle\" yerine \"Telefon "
-"numarası ekle\")"
+"Numarası ekle\")"
 
 #: inc/admin/admin-settings-general.php:155
 msgid "Make the order summary stay visible while scrolling"

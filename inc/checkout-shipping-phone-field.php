@@ -22,7 +22,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		// Add shipping phone field
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'add_shipping_phone_field' ), 5 );
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_shipping_phone' ), 10 );
-		
+
 		// Admin fields
 		if ( is_admin() ) {
 			add_filter( 'woocommerce_admin_shipping_fields', array( $this, 'add_shipping_phone_to_admin_screen' ), 10 );
@@ -113,7 +113,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		// Maybe apply customizations from the Checkout Fields feature
 		if ( class_exists( 'FluidCheckout_CheckoutFields' ) ) {
 			$new_fields_args = FluidCheckout_CheckoutFields::instance()->get_checkout_field_args();
-			
+
 			// Check if field args exists
 			if ( array_key_exists( $field_key, $new_fields_args ) ) {
 				$fields[ $field_key ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_args( $fields[ $field_key ], $new_fields_args[ $field_key ] );
@@ -142,8 +142,15 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		// Bail if order was not found
 		if ( ! $order ) { return; }
 
+		// Update shipping phone value
+		if ( is_callable( array( $order, 'set_shipping_phone' ) ) ) {
+			$order->set_shipping_phone( $shipping_phone );
+		}
+		else {
+			$order->update_meta_data( '_shipping_phone', $shipping_phone );
+		}
+
 		// Update order
-		$order->update_meta_data( '_shipping_phone', $shipping_phone );
 		$order->save();
 	}
 
@@ -172,11 +179,16 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		// Bail if order parameter is invalid
 		if ( ! $order instanceof WC_Order ) { return $address; }
 
-		// Bail if WooCommerce already has the methods to get shipping phone field value
-		if ( method_exists( $order, 'get_shipping_phone' ) ) { return $address; }
-	
+		// Get shipping phone
+		$shipping_phone = null;
+		if ( is_callable( array( $order, 'get_shipping_phone' ) ) ) {
+			$shipping_phone = $order->get_shipping_phone();
+		}
+		else {
+			$shipping_phone = $order->get_meta( '_shipping_phone', true );
+		}
+
 		// Maybe add the shipping phone to the address data
-		$shipping_phone = $order->get_meta( '_shipping_phone', true );
 		if ( ! empty( $shipping_phone ) ) { $address['phone'] = $shipping_phone; }
 
 		return $address;

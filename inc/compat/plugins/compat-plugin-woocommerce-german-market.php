@@ -49,8 +49,6 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 
 			// Place order
 			remove_action( 'woocommerce_review_order_after_submit', array( 'WGM_Template', 'print_order_button_html' ), 9999 );
-			remove_action( 'fc_checkout_after_order_review_inside', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_for_sidebar' ), 1 );
-			remove_action( 'fc_checkout_after_order_review_inside', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_for_sidebar' ), 1 );
 			add_filter( 'woocommerce_order_button_html', array( $this, 'retrieve_order_button_html' ), 9998 );
 			add_filter( 'woocommerce_order_button_html', array( $this, 'restore_order_button_html' ), 10000 );
 
@@ -58,12 +56,6 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 			if ( get_option( 'gm_order_review_checkboxes_before_order_review', 'off' ) == 'on' ) {
 				remove_action( 'woocommerce_de_checkout_payment', array( 'WGM_Template', 'add_review_order' ), 10 );
 				add_action( 'woocommerce_checkout_before_order_review', array( 'WGM_Template', 'add_review_order' ), 10 );
-			}
-
-			// Widget area after submit button
-			if ( class_exists( 'FluidCheckout_CheckoutWidgetAreas' ) ) {
-				remove_action( 'woocommerce_review_order_after_submit', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 50 );
-				add_action( 'woocommerce_review_order_after_submit', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 11000 );
 			}
 		}
 	}

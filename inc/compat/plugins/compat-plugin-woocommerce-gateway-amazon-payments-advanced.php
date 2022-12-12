@@ -34,7 +34,7 @@ class FluidCheckout_WooCommerceGatewayAmazonPaymentsAdvanced extends FluidChecko
 		// Maybe run initialization
 		if ( class_exists( 'WC_Gateway_Amazon_Payments_Advanced' ) ) {
 
-			// Get the Amazon Pay objects
+			// Get the gateway object
 			$this->amazon_pay_gateway = $this->get_object_by_class_name_from_hooks( 'WC_Gateway_Amazon_Payments_Advanced' );
 			
 			if ( null !== $this->amazon_pay_gateway ) {

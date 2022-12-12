@@ -12,15 +12,20 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 2.1.0
+ * @version 2.2.0
  * @wc-version 3.5.0
  * @wc-original checkout/form-checkout.php
  */
 
 defined( 'ABSPATH' ) || exit;
 
+// Prepare attribute strings
 $attributes_str = implode( ' ', array_map( array( FluidCheckout::instance(), 'map_html_attributes' ), array_keys( $attributes ), $attributes ) );
 $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(), 'map_html_attributes' ), array_keys( $attributes_inner ), $attributes_inner ) );
+
+// Since version 2.2.0 the order summary is always output to the sidebar
+// We need to keep passing this variables as a parameter to all custom action hooks for backwards compatibility
+$is_sidebar_widget = true;
 ?>
 
 <?php do_action( 'fc_checkout_before_order_review', $is_sidebar_widget ); ?>
@@ -51,14 +56,12 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 		<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
-		<?php if ( $is_sidebar_widget ) : ?>
-			<?php do_action( 'fc_checkout_order_review_sidebar_before_actions', $is_sidebar_widget ); ?>
+		<?php do_action( 'fc_checkout_order_review_sidebar_before_actions', $is_sidebar_widget ); ?>
 
-			<div class="fc-checkout-order-review__actions-mobile">
-				<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__edit-cart"><?php echo esc_html( __( 'Edit cart', 'fluid-checkout' ) ); ?></a>
-				<button type="button" class="fc-checkout-order-review__close-order-summary <?php echo esc_attr( apply_filters( 'fc_order_summary_continue_button_classes', 'button' ) ); ?>" data-flyout-close aria-label="<?php echo esc_html( __( 'Close and continue with checkout', 'fluid-checkout' ) ); ?>"><?php echo esc_html( __( 'Continue', 'fluid-checkout' ) ); ?></button>
-			</div>
-		<?php endif; ?>
+		<div class="fc-checkout-order-review__actions-mobile">
+			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__edit-cart"><?php echo esc_html( __( 'Edit cart', 'fluid-checkout' ) ); ?></a>
+			<button type="button" class="fc-checkout-order-review__close-order-summary <?php echo esc_attr( apply_filters( 'fc_order_summary_continue_button_classes', 'button' ) ); ?>" data-flyout-close aria-label="<?php echo esc_html( __( 'Close and continue with checkout', 'fluid-checkout' ) ); ?>"><?php echo esc_html( __( 'Continue', 'fluid-checkout' ) ); ?></button>
+		</div>
 
 		<?php do_action( 'fc_checkout_after_order_review_inside', $is_sidebar_widget ); ?>
 

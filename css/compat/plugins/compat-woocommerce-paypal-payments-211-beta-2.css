@@ -1,0 +1,30 @@
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar,
+body.has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar {
+  display: none;
+}
+
+.fc-wrapper .fc-place-order__woocommerce-paypal-payments {
+  display: none;
+}
+
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-place-order__woocommerce-paypal-payments,
+body.has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wrapper .fc-place-order__woocommerce-paypal-payments {
+  display: block;
+}
+
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-place-order,
+body.has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wrapper .fc-place-order {
+  padding: 0;
+}
+
+.fc-wrapper .fc-place-order__custom-buttons .ppc-button-wrapper,
+.fc-wrapper .fc-place-order__custom-buttons #ppcp-hosted-fields {
+  margin: 20px 0 10px;
+}
+
+.fc-wrapper #ppc-button {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
