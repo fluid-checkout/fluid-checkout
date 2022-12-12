@@ -2,9 +2,15 @@
 // CHECKOUT PLACE ORDER
 // ------------------------------------
 
+.fc-wrapper .fc-place-order__section {
+	margin-top: $global-spacing-small;
+	margin-bottom: $global-spacing-small;
+}
+
 // PLACE ORDER INSIDE PAYMENT METHOD
 .fc-wrapper .fc-inside .fc-place-order__section {
 	float: none;
+	margin: 0;
 
 	@media (#{$bp-larger-than-desktop}) {
 		display: block;
@@ -15,8 +21,6 @@
 .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__section--sidebar {
 	float: none;
 	display: block;
-	margin-top: $global-spacing-small;
-	margin-bottom: $global-spacing-small;
 	padding: $place-order-padding-sidebar;
 }
 // PLACE ORDER (SIDEBAR) INSIDE ORDER SUMMARY

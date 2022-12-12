@@ -1888,8 +1888,14 @@ body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_
   margin-bottom: 0;
 }
 
+.fc-wrapper .fc-place-order__section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .fc-wrapper .fc-inside .fc-place-order__section {
   float: none;
+  margin: 0;
 }
 @media (min-width: 1000px) {
   .fc-wrapper .fc-inside .fc-place-order__section {
@@ -1901,8 +1907,6 @@ body.woocommerce-checkout .fc-wrapper #payment ul.payment_methods > .wc_payment_
 .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__section--sidebar {
   float: none;
   display: block;
-  margin-top: 20px;
-  margin-bottom: 20px;
   padding: 0;
 }
 

@@ -67,6 +67,7 @@ body.theme-woodmart .fc-checkout-order-review .wd-table-wrapper {
   padding: 0;
   overflow: visible;
   box-shadow: none;
+  background-color: transparent;
 }
 
 body.theme-woodmart form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon {
