@@ -206,16 +206,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Place order position
 		$place_order_position = $this->get_place_order_position();
-		if ( 'below_payment_section' === $place_order_position ) {
-			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
-		}
-		else if ( 'below_order_summary' === $place_order_position ) {
+		// Below order summary
+		if ( 'below_order_summary' === $place_order_position ) {
 			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section' ), 1 );
 		}
+		// Both below payment section and order summary
 		else if ( 'both_payment_and_order_summary' === $place_order_position ) {
 			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
 			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section_for_sidebar' ), 1 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_order_summary' ), 10 );
+		}
+		// Defaults to below the payment section `below_payment_section`
+		else {
+			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
 		}
 	}
 
@@ -545,6 +548,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Maybe handle deprecated option `fc_enable_checkout_place_order_sidebar`
 		if ( false === $place_order_position && 'yes' === get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) ) {
 			$place_order_position = 'both_payment_and_order_summary';
+		}
+		// Defaults to below the payment section `below_payment_section`
+		else if ( false === $place_order_position ) {
+			$place_order_position = 'below_payment_section';
 		}
 
 		return $place_order_position;
