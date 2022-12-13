@@ -13,6 +13,9 @@ $_body-page-selector:                  '.woocommerce-edit-address' !default;
 @import
 	"clearfix",
 	"collapsible-blocks",
+	"../../fluid-checkout/node_modules/flyout-block/sass/theme/flyout-block",
+	"../../fluid-checkout/sass/partials/flyout-block",
+	
 	"woocommerce-account-page-addresses",
 	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2",
