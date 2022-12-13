@@ -12,8 +12,4 @@ $_body-page-selector:                  '.woocommerce-add-payment-method' !defaul
 // ------------------------------------
 @import
 	"partials/clearfix",
-
-	"../../node_modules/flyout-block/sass/theme/flyout-block",
-	"flyout-block",
-
 	"partials/checkout-payment-methods";
