@@ -99,6 +99,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Add payment methods styles
 		wp_register_style( 'fc-add-payment-method-page', self::$directory_url . 'css/add-payment-method-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
+
+		// Flyout block
+		wp_register_style( 'fc-flyout-block', self::$directory_url . 'css/flyout-block' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 	}
 
 
@@ -132,6 +135,13 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	}
 
 	/**
+	 * Enqueue assets for flyout block components.
+	 */
+	public function enqueue_assets_flyout_block() {
+		wp_enqueue_style( 'fc-flyout-block' );
+	}
+
+	/**
 	 * Maybe enqueue assets.
 	 */
 	public function maybe_enqueue_assets() {
@@ -139,6 +149,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		if ( is_admin() || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		$this->enqueue_assets();
+		$this->enqueue_assets_flyout_block();
 	}
 
 
