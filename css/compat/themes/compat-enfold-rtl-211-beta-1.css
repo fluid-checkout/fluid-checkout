@@ -28,10 +28,6 @@ body.theme-enfold.woocommerce-checkout#top #main.fc-main {
   }
 }
 
-body.theme-enfold [data-sticky-states].is-sticky--top > [data-sticky-states-inner] {
-  top: 45px;
-}
-
 body.theme-enfold.woocommerce-checkout#top.woocommerce-page .fc-wrapper #payment {
   margin: 0;
   padding: 0;

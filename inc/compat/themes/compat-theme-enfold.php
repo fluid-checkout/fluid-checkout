@@ -21,6 +21,10 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 	public function hooks() {
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
+
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 	}
 
 
@@ -63,6 +67,22 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 
 		// Return what we found
 		return $_template;
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using the plugin's header and footer
+		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = '#header';
+
+		return $attributes;
 	}
 
 }
