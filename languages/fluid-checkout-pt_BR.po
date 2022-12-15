@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2022-12-05 11:16+0000\n"
+"PO-Revision-Date: 2022-12-12 11:01+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.1; wp-5.9.3"
+"X-Loco-Version: 2.6.3; wp-6.1.1"
 
 #: inc/admin/admin-settings-general.php:87
 #| msgid "Use theme's page header and footer for the checkout page"
@@ -634,7 +634,6 @@ msgstr ""
 "Faça com que o barra de progresso continue visível enquanto rola-se a página"
 
 #: inc/admin/admin-settings-general.php:220
-#, fuzzy
 #| msgid ""
 #| "Make the labels of optional field \"Add\" link button as <code>"
 #| "lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone "
@@ -643,9 +642,9 @@ msgid ""
 "Make the labels of optional field \"Add\" link button as <code>"
 "lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone Number\")"
 msgstr ""
-"Mostre o texto dos botões \"Adicionar &lt;campo&gt;\" de campos opcionais em "
-"letras <code>minúsculas</code>. (Ex. \"Adicionar número de telefone\" ao "
-"invés de \"Adicionar Número de telefone\")"
+"Mostre o texto dos botões \"Adicionar\" campos opcionais em letras <code>"
+"minúsculas</code>. (Ex. \"Adicionar número de telefone\" ao invés de "
+"\"Adicionar Número de telefone\")"
 
 #: inc/admin/admin-settings-general.php:155
 msgid "Make the order summary stay visible while scrolling"

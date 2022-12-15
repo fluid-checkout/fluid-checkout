@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.1.1
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -193,6 +193,7 @@ Only the themes that we have added explicit compatibility with or that we have t
 * Integration Rede for WooCommerce - by MarcosAlexandre
 * Mercado Pago payments for WooCommerce - by Mercado Pago
 * PagSeguro for WooCommerce - by Claudio Sanches
+* Payment Plugins for PayPal WooCommerce - by Payment Plugins
 * Payment Plugins for Stripe WooCommerce - by Payment Plugins
 * Rede WooCommerce - by Rede
 * WooCommerce Affirm Gateway - by WooCommerce
@@ -378,7 +379,22 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Modal styles not being loaded on all pages that use it.
+
+= 2.2.0 - 2022-12-12 =
+
+* Bump tested up to WooCommerce 7.2.0
+* Added: Compatibility with plugin Payment Plugins for PayPal WooCommerce - by Payment Plugins.
+* Added: Display the checkout page with cart items errors message, instead of a message to return to cart.
+* Improved: Remove duplicate order summary section, which was causing compatibility issues with many plugins.
+* Improved: Disable the "Log in" link button while loading the scripts.
+* Improved: Execute script on `DOMContentLoaded` instead of page `load` event to enable interactive elements earlier.
+* Improved: Update customized template files with latest changes in WooCommerce 7.2.
 * Improved: Disable the "Log in" link button while loading the scripts which enable it to open the login popup section.
+* Improved: Compatibility with theme Woodmart when setting a background color for the order summary section.
+* Fixed: Hide login modal and other flyout elements while loading the page.
+* Fixed: Fix required fields marker for accessibility. Stop adding `required` attribute to required fields as this sometimes breaks form validation.
+* Fixed: Fatal error when using other plugins or themes that calls the template file `checkout/form-shipping.php` directly.
 
 = 2.1.0 - 2022-12-05 =
 

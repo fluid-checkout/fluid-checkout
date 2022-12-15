@@ -71,7 +71,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		// Scripts
 		wp_register_script( 'fc-checkout-validation', self::$directory_url . 'js/checkout-validation'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("load",function(){CheckoutValidation.init(fcSettings.checkoutValidation);})' );
+		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("DOMContentLoaded",function(){CheckoutValidation.init(fcSettings.checkoutValidation);})' );
 	}
 
 	/**
@@ -302,8 +302,9 @@ class FluidCheckout_Validation extends FluidCheckout {
 				break;
 		}
 
+		// Maybe add required attribute for accessibility
 		if ( ! empty( $search_str ) ) {
-			$field = str_replace( $search_str, $search_str . ' required aria-required="true" ', $field );
+			$field = str_replace( $search_str, $search_str . ' aria-required="true" ', $field );
 		}
 
 		return $field;
