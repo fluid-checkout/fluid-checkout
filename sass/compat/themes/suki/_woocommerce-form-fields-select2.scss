@@ -1,0 +1,11 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__rendered {
+	padding-left: remsize( 1.2rem );
+}
+
+body#{ $_body-theme-selector } .select2-dropdown {
+	margin-top: remsize( -3.2rem );
+}
