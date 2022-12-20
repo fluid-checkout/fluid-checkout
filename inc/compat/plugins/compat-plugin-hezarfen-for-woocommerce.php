@@ -26,9 +26,6 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 		add_filter( 'fc_checkout_field_args', array( $this, 'change_checkout_field_args' ), 110 );
 		add_filter( 'woocommerce_get_country_locale', array( $this, 'change_locale_fields_args' ), 110 );
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 110 );
-
-		// Prevent hiding optional fields
-		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_gift_options' ), 10 );
 	}
 
 
@@ -220,32 +217,6 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 		}
 
 		return $locales;
-	}
-
-
-
-	/**
-	 * Prevent hiding optional gift option fields behind a link button.
-	 *
-	 * @param   array  $skip_list  List of optional fields to skip hidding.
-	 */
-	public function prevent_hide_optional_fields_gift_options( $skip_list ) {
-		// Get country field values
-		$billing_country = WC()->checkout()->get_value( 'billing_country' );
-		$shipping_country = WC()->checkout()->get_value( 'shipping_country' );
-		
-		// Hide postcode field when option is enabled on the Hezarfen plugin settings
-		if ( 'yes' === get_option( 'hezarfen_hide_checkout_postcode_fields', 'no' ) ) {
-			if ( 'TR' === $billing_country ) {
-				$skip_list[] = 'billing_postcode';
-			}
-
-			if ( 'TR' === $shipping_country ) {
-				$skip_list[] = 'shipping_postcode';
-			}
-		}
-
-		return $skip_list;
 	}
 
 }
