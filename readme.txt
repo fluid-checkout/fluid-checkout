@@ -379,6 +379,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin Hezarfen for WooCommerce.
 * Fixed: Modal styles not being loaded on all pages that use it.
 
 = 2.2.0 - 2022-12-12 =

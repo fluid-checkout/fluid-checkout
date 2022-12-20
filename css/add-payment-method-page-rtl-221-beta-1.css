@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.fc-hidden {
+  display: none !important;
+}
+
 .fc-wrapper .fc-payment-methods__wrapper {
   position: relative;
 }
