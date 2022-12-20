@@ -199,6 +199,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @return  array  $field_classes  Changed field classes.
 	 */
 	public function merge_form_field_class_args( $field_classes, $new_classes ) {
+		// Set default value
+		$field_classes = is_array( $field_classes ) ? $field_classes : array();
+		$new_classes = is_array( $new_classes ) ? $new_classes : array();
 
 		// Maybe remove form-row-XX classes
 		$form_row_classes = array( 'form-row-first', 'form-row-last', 'form-row-wide', 'form-row-middle' );

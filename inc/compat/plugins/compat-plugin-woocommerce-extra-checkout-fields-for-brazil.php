@@ -181,7 +181,9 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			if ( ! array_key_exists( 'class', $new_args ) || ! is_array( $new_args[ 'class' ] ) ) { continue; }
 
 			// Merge classes
-			$new_args[ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $field_args[ $field_key ][ 'class' ], $new_args[ 'class' ] );
+			if ( class_exists( 'FluidCheckout_CheckoutFields' ) ) {
+				$new_args[ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $field_args[ $field_key ][ 'class' ], $new_args[ 'class' ] );
+			}
 		}
 
 		// Merge field arguments with existing values
@@ -228,7 +230,9 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			if ( ! array_key_exists( 'class', $new_args ) || ! is_array( $new_args[ 'class' ] ) ) { continue; }
 
 			// Merge classes
-			$new_field_args[ $field_key ][ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $field_args[ $field_key ][ 'class' ], $new_args[ 'class' ] );
+			if ( class_exists( 'FluidCheckout_CheckoutFields' ) ) {
+				$new_field_args[ $field_key ][ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $field_args[ $field_key ][ 'class' ], $new_args[ 'class' ] );
+			}
 		}
 
 		// Merge field arguments with existing values
