@@ -1765,6 +1765,11 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
   text-align: left;
 }
 
+.fc-wrapper .woocommerce-terms-and-conditions-wrapper .form-row {
+  display: block;
+  float: none;
+}
+
 .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
   margin-bottom: 0;
   padding: 0;
