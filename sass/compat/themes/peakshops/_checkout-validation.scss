@@ -1,0 +1,23 @@
+// ------------------------------------
+// CHECKOUT VALIDATION MESSAGES
+// ------------------------------------
+
+// VALID FIELDS
+body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+
+	// "valid" field check icon for select fields which where supposed to be `select2` fields
+	&:not( .fc-no-validation-icon ).fc-select2-field .woocommerce-input-wrapper:after {
+		@include icon( 'i-check-small' );
+		@include icon-size( $icon-size );
+
+		z-index: z( 'above' );
+		position: absolute;
+		#{ $alignment-right }: remsize( 3rem );
+		top: remsize( 1rem );
+		border-radius: 100%;
+		background-color: transparentize( $white, .25 );
+		color: $success-color;
+		pointer-events: none;
+	}
+
+}
