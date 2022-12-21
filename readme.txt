@@ -219,6 +219,7 @@ Only the themes that we have added explicit compatibility with or that we have t
 * Creative Mail - by Constant Contact
 * Delivery & Pickup Date Time for WooCommerce - by CodeRockz
 * Elementor - by Elementor Team
+* Elementor PRO - by Elementor Team
 * Flexible Checkout Fields for WooCommerce - by WP Desk
 * FluentCRM Pro - by Fluent CRM
 * Flexible Shipping - by WP Desk
@@ -381,6 +382,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Compatibility with theme PeakShops.
 * Added: Compatibility with plugin Hezarfen for WooCommerce.
+* Added: Compatibility with plugin Elementor PRO. Replace the custom checkout widget from Elementor PRO with Fluid Checkout.
+* Improved: Moved remove default WooCommerce hooks later at `init` hook for better compatibility with various plugins.
 * Fixed: Modal styles not being loaded on all pages that use it.
 * Fixed: Prevent fatal errors when trying to merge field class arguments using the checkout fields class.
 
