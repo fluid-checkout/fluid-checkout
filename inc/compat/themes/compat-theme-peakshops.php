@@ -27,6 +27,10 @@ class FluidCheckout_ThemeCompat_PeakShops extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_before_customer_details', 'thb_checkout_before_customer_details', 5 );
 		remove_action( 'woocommerce_checkout_after_customer_details', 'thb_checkout_after_customer_details', 30 );
 		remove_action( 'woocommerce_checkout_after_order_review', 'thb_checkout_after_order_review', 30 );
+
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 	}
 
 
@@ -44,6 +48,25 @@ class FluidCheckout_ThemeCompat_PeakShops extends FluidCheckout {
 		$class = $class . ' row align-middle';
 
 		return $class;
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using the plugin's header and footer
+		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+
+		// Bail if fixed header option is disabled
+		if ( ! function_exists( 'ot_get_option' ) || 'on' !== ot_get_option( 'fixed_header', 'on' ) ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = '.header.fixed';
+
+		return $attributes;
 	}
 
 }
