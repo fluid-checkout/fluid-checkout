@@ -146,7 +146,7 @@ class FluidCheckout_ElementorPRO_Checkout extends Base_Widget {
 
 	protected function render() {
 		// CHANGE: Removed simulation of guest customer
-        // CHANGE: Removed extra actions and filters
+		// CHANGE: Removed extra actions and filters
 
 		// Display our Widget.
 		echo do_shortcode( '[woocommerce_checkout]' );
