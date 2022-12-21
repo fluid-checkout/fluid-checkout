@@ -145,25 +145,14 @@ class FluidCheckout_ElementorPRO_Checkout extends Base_Widget {
 	}
 
 	protected function render() {
-		$is_editor = Plugin::elementor()->editor->is_edit_mode();
-
-		// Simulate a logged out user so that all WooCommerce sections will render in the Editor
-		if ( $is_editor ) {
-			$store_current_user = wp_get_current_user()->ID;
-			wp_set_current_user( 0 );
-		}
-
+		// CHANGE: Removed simulation of guest customer
         // CHANGE: Removed extra actions and filters
 
 		// Display our Widget.
 		echo do_shortcode( '[woocommerce_checkout]' );
 
 		// CHANGE: Removed extra actions and filters
-
-		// Return to existing logged-in user after widget is rendered.
-		if ( $is_editor ) {
-			wp_set_current_user( $store_current_user );
-		}
+		// CHANGE: Removed simulation of guest customer
 	}
 
 	public function get_group_name() {
