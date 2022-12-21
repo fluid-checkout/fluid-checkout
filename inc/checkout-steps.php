@@ -177,6 +177,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_placeholder' ), 1 );
 
 		// Order summary
+		add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		add_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
@@ -228,11 +229,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function very_late_hooks() {
 		// Order notes
 		$this->order_notes_hooks();
-
-		// Maybe output sidebar
-		if ( has_action( 'fc_checkout_order_review_section' ) ) {
-			add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
-		}
 	}
 
 	/**
@@ -1242,9 +1238,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function register_default_checkout_steps() {
 		// Bail if has already registered steps
 		if ( count( $this->checkout_steps ) > 0 ) { return; }
-		
-		// Bail if not on checkout or cart page or doing AJAX call
-		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
+
+		// Bail if not checkout or cart page or fragments, or admin request
+		if ( ! $this->is_checkout_page_or_fragment() && ! $this->is_cart_page_or_fragment() && ( ! has_filter( 'fc_force_register_steps' ) || false !== apply_filters( 'fc_force_register_steps', false ) ) ) { return; }
 
 		// CONTACT
 		$this->register_checkout_step( array(
@@ -1256,16 +1252,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		) );
 
 		// SHIPPING
-		if ( WC()->cart->needs_shipping() ) {
-			$this->register_checkout_step( array(
-				'step_id' => 'shipping',
-				'step_title' => apply_filters( 'fc_step_title_shipping', _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ) ),
-				'priority' => 20,
-				'render_callback' => array( $this, 'output_step_shipping' ),
-				'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
-				'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
-			) );
-		}
+		$this->register_checkout_step( array(
+			'step_id' => 'shipping',
+			'step_title' => apply_filters( 'fc_step_title_shipping', _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ) ),
+			'priority' => 20,
+			'render_callback' => array( $this, 'output_step_shipping' ),
+			'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
+			'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
+		) );
 
 		// BILLING
 		$this->register_checkout_step( array(
