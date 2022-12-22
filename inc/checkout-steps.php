@@ -104,7 +104,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_after_step_billing_fields', array( $this, 'run_action_woocommerce_checkout_after_customer_details' ), 90 );
 
 		// Contact
-		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		add_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
 		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
 		add_action( 'woocommerce_checkout_before_customer_details', array( $this, 'output_substep_contact_login_link_section' ), 1 );
@@ -154,8 +153,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Payment
-		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
-		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
 		add_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_action( 'fc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
 		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
@@ -177,6 +174,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_placeholder' ), 1 );
 
 		// Order summary
+		add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		add_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
@@ -203,6 +201,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Unhook WooCommerce functions
 		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
 		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
 
 		// Place order position
 		$place_order_position = $this->get_place_order_position();
@@ -228,11 +229,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function very_late_hooks() {
 		// Order notes
 		$this->order_notes_hooks();
-
-		// Maybe output sidebar
-		if ( has_action( 'fc_checkout_order_review_section' ) ) {
-			add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
-		}
 	}
 
 	/**
@@ -1242,9 +1238,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function register_default_checkout_steps() {
 		// Bail if has already registered steps
 		if ( count( $this->checkout_steps ) > 0 ) { return; }
-		
-		// Bail if not on checkout or cart page or doing AJAX call
-		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
+
+		// Bail if not checkout or cart page or fragments
+		if ( ! $this->is_checkout_page_or_fragment() && ! $this->is_cart_page_or_fragment() && ( ! has_filter( 'fc_force_register_steps' ) || false !== apply_filters( 'fc_force_register_steps', false ) ) ) { return; }
 
 		// CONTACT
 		$this->register_checkout_step( array(
@@ -1256,16 +1252,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		) );
 
 		// SHIPPING
-		if ( WC()->cart->needs_shipping() ) {
-			$this->register_checkout_step( array(
-				'step_id' => 'shipping',
-				'step_title' => apply_filters( 'fc_step_title_shipping', _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ) ),
-				'priority' => 20,
-				'render_callback' => array( $this, 'output_step_shipping' ),
-				'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
-				'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
-			) );
-		}
+		$this->register_checkout_step( array(
+			'step_id' => 'shipping',
+			'step_title' => apply_filters( 'fc_step_title_shipping', _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ) ),
+			'priority' => 20,
+			'render_callback' => array( $this, 'output_step_shipping' ),
+			'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
+			'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
+		) );
 
 		// BILLING
 		$this->register_checkout_step( array(

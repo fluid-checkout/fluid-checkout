@@ -1,16 +1,17 @@
+
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
+// IMPORT ABSTRACT
 // ------------------------------------
-$_body-page-selector:                  '.woocommerce-add-payment-method' !default;
+@import
+	"../../abstract/_all-early",
+	"../../abstract/_all";
 
 
 
 
-	
+
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"clearfix",
-	"fc-hidden",
-	"checkout-payment-methods";
+	"elementor-pro/__imports";
