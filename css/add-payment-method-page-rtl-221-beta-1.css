@@ -196,7 +196,7 @@ body.woocommerce-add-payment-method .fc-wrapper #payment ul.payment_methods > .w
 }
 @media (min-width: 750px) {
   .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box,
-#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
+  #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
     padding: 20px 44px;
   }
 }

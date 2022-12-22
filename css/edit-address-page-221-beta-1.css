@@ -79,8 +79,8 @@ div.woocommerce form .form-row.form-row-last {
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,
-div.woocommerce form .form-row.form-row-middle,
-div.woocommerce form .form-row.form-row-last {
+  div.woocommerce form .form-row.form-row-middle,
+  div.woocommerce form .form-row.form-row-last {
     clear: none;
     float: left;
     width: 48% !important;
@@ -93,7 +93,7 @@ div.woocommerce form .form-row.form-row-wide {
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,
-div.woocommerce form .form-row.form-row-wide {
+  div.woocommerce form .form-row.form-row-wide {
     clear: left;
   }
 }
@@ -103,8 +103,7 @@ div.woocommerce form .form-row.form-row-one-third {
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-one-third {
-    width: 30.666% !important;
-    /* Needed to override theme styles */
+    width: 30.666% !important; /* Needed to override theme styles */
   }
 }
 
@@ -113,16 +112,15 @@ div.woocommerce form .form-row.form-row-two-thirds {
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-two-thirds {
-    width: 65.33% !important;
-    /* Needed to override theme styles */
+    width: 65.33% !important; /* Needed to override theme styles */
   }
 }
 
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,
-div.woocommerce form .form-row.form-row-middle,
-div.woocommerce form #payment .form-row.form-row-first,
-div.woocommerce form #payment .form-row.form-row-middle {
+  div.woocommerce form .form-row.form-row-middle,
+  div.woocommerce form #payment .form-row.form-row-first,
+  div.woocommerce form #payment .form-row.form-row-middle {
     margin-left: 0;
     margin-right: 4%;
   }
