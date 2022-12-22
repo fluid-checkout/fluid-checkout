@@ -2,6 +2,34 @@ body.theme-suki .quantity .suki-qty-increment {
   display: none;
 }
 
+body.theme-suki #place_order {
+  margin-top: 0;
+}
+
+body.theme-suki.woocommerce-checkout .fc-content.fc-container {
+  max-width: unset;
+}
+@media (min-width: 750px) {
+  body.theme-suki.woocommerce-checkout .fc-content.fc-container {
+    padding: 0 0 80px;
+  }
+}
+@media (min-width: 1000px) {
+  body.theme-suki.woocommerce-checkout .fc-content.fc-container {
+    padding: 0 0 80px;
+  }
+}
+@media (min-width: 1280px) {
+  body.theme-suki.woocommerce-checkout .fc-content.fc-container {
+    padding: 0 0 80px;
+  }
+}
+@media (min-width: 1500px) {
+  body.theme-suki.woocommerce-checkout .fc-content.fc-container {
+    padding: 0 0 80px;
+  }
+}
+
 body.theme-suki div.woocommerce form .form-row .select2-selection .select2-selection__rendered {
   padding-left: 12px;
 }

@@ -5,3 +5,7 @@
 body#{ $_body-theme-selector } .quantity .suki-qty-increment { 
 	display: none;
 }
+
+body#{ $_body-theme-selector } #place_order{
+	margin-top: 0;
+}

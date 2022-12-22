@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content.fc-container {
+	max-width: unset;
+ 	@media (#{$bp-larger-than-tablet}) { padding: 0 0 $global-spacing-large; }
+ 	@media (#{$bp-larger-than-desktop}) { padding: 0 0 $global-spacing-large; }
+ 	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 0 $global-spacing-large; }
+ 	@media (#{$bp-larger-than-desktop-large}) { padding: 0 0 $global-spacing-large; } 
+}
