@@ -51,12 +51,6 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		add_action( 'woocommerce_checkout_before_order_review', 'woocommerce_gzd_template_render_checkout_checkboxes', 10 );
 		add_action( 'woocommerce_checkout_before_order_review', 'woocommerce_gzd_template_checkout_set_terms_manually', 20 );
 
-		// Place order, remove section because Germanized already adds it
-		remove_action( 'fc_output_step_payment', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order' ), 100 );
-		remove_action( 'fc_checkout_after_order_review_inside', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_for_sidebar' ), 1 );
-		remove_action( 'fc_checkout_after_order_review_inside', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_for_sidebar_main' ), 1 );
-		remove_filter( 'woocommerce_update_order_review_fragments', array( FluidCheckout_Steps::instance(), 'add_place_order_fragment' ), 10 );
-
 		// Display back to cart button
 		if ( get_option( 'woocommerce_gzd_display_checkout_back_to_cart_button' ) === 'yes' ) {
 			remove_action( 'woocommerce_review_order_after_cart_contents', 'woocommerce_gzd_template_checkout_back_to_cart', 10 );
@@ -92,10 +86,15 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 			// Look for template file in the theme
 			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
-				$_template = locate_template( array(
+				$_template_override = locate_template( array(
 					$template_path . $template_name,
 					$template_name,
 				) );
+	
+				// Check if files exist before changing template
+				if ( file_exists( $_template_override ) ) {
+					$_template = $_template_override;
+				}
 			}
 		}
 

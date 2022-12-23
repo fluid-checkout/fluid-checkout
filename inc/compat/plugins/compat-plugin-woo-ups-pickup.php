@@ -101,10 +101,15 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 
 			// Look for template file in the theme
 			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
-				$_template = locate_template( array(
+				$_template_override = locate_template( array(
 					$template_path . $template_name,
 					$template_name,
 				) );
+	
+				// Check if files exist before changing template
+				if ( file_exists( $_template_override ) ) {
+					$_template = $_template_override;
+				}
 			}
 		}
 
@@ -125,7 +130,7 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-compat-woo-ups-pickup-location-handler', self::$directory_url . 'js/compat/plugins/woo-ups-pickup/ups-pickup-location-handler' . self::$asset_version . '.js', array(), NULL );
-		wp_add_inline_script( 'fc-compat-woo-ups-pickup-location-handler', 'window.addEventListener("load",function(){UpsPickupLocationHandler.init();})' );
+		wp_add_inline_script( 'fc-compat-woo-ups-pickup-location-handler', 'window.addEventListener("DOMContentLoaded",function(){UpsPickupLocationHandler.init();})' );
 	}
 
 	/**

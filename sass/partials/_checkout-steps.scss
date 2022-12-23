@@ -348,6 +348,8 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 	margin: 0;
 	padding: 0;
 	border: 0;
+	background-color: transparent;
+	box-shadow: none;
 
 	&:before,
 	&:after {

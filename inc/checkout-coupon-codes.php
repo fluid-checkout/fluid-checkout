@@ -19,24 +19,14 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Very late hooks
-		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
-
-		// Integrated coupon code section at checkout
-		if ( 'yes' === get_option( 'fc_enable_checkout_coupon_codes', 'yes' ) ) {
-			// Checkout coupon notice
-			remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
-
-			// Coupon code substep
-			add_action( 'fc_output_step_payment', array( $this, 'output_substep_coupon_codes' ), 10 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_coupon_codes_text_fragment' ), 10 );
-		}
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 	}
 
 	/**
-	 * Add or remove very late hooks.
+	 * Add or remove late hooks.
 	 */
-	public function very_late_hooks() {
+	public function late_hooks() {
 		// Bail if use of coupons not enabled
 		if ( ! wc_coupons_enabled() ) { return; }
 
@@ -56,6 +46,16 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		// Actions
 		add_action( 'wc_ajax_fc_add_coupon_code', array( $this, 'add_coupon_code' ), 10 );
 		add_action( 'wc_ajax_fc_remove_coupon_code', array( $this, 'remove_coupon_code' ), 10 );
+
+		// Integrated coupon code section at checkout
+		if ( 'yes' === get_option( 'fc_enable_checkout_coupon_codes', 'yes' ) ) {
+			// Checkout coupon notice
+			remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+
+			// Coupon code substep
+			add_action( 'fc_output_step_payment', array( $this, 'output_substep_coupon_codes' ), 10 );
+			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_coupon_codes_text_fragment' ), 10 );
+		}
 	}
 
 
@@ -83,7 +83,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		// Scripts
 		wp_register_script( 'fc-checkout-coupons', self::$directory_url . 'js/checkout-coupons'. self::$asset_version . '.js', array( 'jquery', 'require-bundle' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-coupons', 'window.addEventListener("load",function(){CheckoutCoupons.init(fcSettings.checkoutCoupons);})' );
+		wp_add_inline_script( 'fc-checkout-coupons', 'window.addEventListener("DOMContentLoaded",function(){CheckoutCoupons.init(fcSettings.checkoutCoupons);})' );
 
 		// Styles
 		wp_register_style( 'fc-checkout-coupons', self::$directory_url . 'css/checkout-coupons'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );

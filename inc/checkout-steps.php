@@ -47,7 +47,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function hooks() {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
-		
+
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
@@ -104,7 +104,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_after_step_billing_fields', array( $this, 'run_action_woocommerce_checkout_after_customer_details' ), 90 );
 
 		// Contact
-		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		add_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
 		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
 		add_action( 'woocommerce_checkout_before_customer_details', array( $this, 'output_substep_contact_login_link_section' ), 1 );
@@ -154,8 +153,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Payment
-		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
-		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
 		add_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_action( 'fc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
 		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
@@ -166,13 +163,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
 
+		// Place order
+		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10, 2 );
+		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order_custom_buttons' ), 20, 2 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
+		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
+
+		// Place order placeholder
+		add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_placeholder' ), 100, 2 );
+		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_placeholder' ), 1 );
+
 		// Order summary
-		add_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
-		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review_for_sidebar' ), 10 );
+		add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
+		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		add_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_order_review_background_inline_styles' ), 30 );
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'replace_order_summary_table_fragments' ), 10 );
+
+		// Order summary cart items details
+		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_product_name' ), 10, 3 );
+		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_unit_price' ), 30, 3 );
+		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_meta_data' ), 40, 3 );
+		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_quantity' ), 90, 3 );
 
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
@@ -186,12 +198,29 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
-		// Place order
-		$this->place_order_hooks();
-
 		// Unhook WooCommerce functions
 		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
 		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
+
+		// Place order position
+		$place_order_position = $this->get_place_order_position();
+		// Below order summary
+		if ( 'below_order_summary' === $place_order_position ) {
+			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section' ), 1 );
+		}
+		// Both below payment section and order summary
+		else if ( 'both_payment_and_order_summary' === $place_order_position ) {
+			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
+			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section_for_sidebar' ), 1 );
+			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_order_summary' ), 10 );
+		}
+		// Defaults to below the payment section `below_payment_section`
+		else {
+			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
+		}
 	}
 
 	/**
@@ -200,46 +229,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function very_late_hooks() {
 		// Order notes
 		$this->order_notes_hooks();
-
-		// Maybe output sidebar
-		if ( has_action( 'fc_checkout_order_review_section' ) ) {
-			add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
-		}
-	}
-
-	/**
-	 * Place order hooks.
-	 */
-	public function place_order_hooks() {
-		// Place order elements
-		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
-
-		// Get place order position option
-		$place_order_position = get_option( 'fc_checkout_place_order_position' ); // Should not use default value on this line because we need to check below if the value is set in the database
-
-		// Maybe handle deprecated option `fc_enable_checkout_place_order_sidebar`
-		if ( false === $place_order_position && 'yes' === get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) ) {
-			$place_order_position = 'both_payment_and_order_summary';
-		}
-
-		// Place order position
-		if ( 'both_payment_and_order_summary' === $place_order_position ) {
-			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
-			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_sidebar' ), 1 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_sidebar' ), 10 );
-		}
-		else if ( 'below_order_summary' === $place_order_position ) {
-			remove_action( 'fc_output_step_payment', array( $this, 'output_order_review' ), 90 );
-			remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'replace_order_summary_table_fragments' ), 10 );
-			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_for_sidebar_main' ), 1 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_sidebar_main' ), 10 );
-		}
-		// Defaults to `below_payment_section`
-		else {
-			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order' ), 100, 2 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
-		}
 	}
 
 	/**
@@ -260,7 +249,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			
 			// Check if no additional order fields are present
 			if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
-				
+
 				// Maybe change output to the billing step
 				if ( ! WC()->cart->needs_shipping() ) {
 					$order_notes_substep_position = 'fc_output_step_billing';
@@ -272,7 +261,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			}
 		}
-		
+
 		// Run order notes hooks for better compatibility with plugins that rely on them,
 		// because they originally run regardless of the order notes fields existence.
 		if ( ! in_array( 'order', array_keys( $all_fields ) ) || ! apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) ) {
@@ -295,25 +284,36 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$add_classes = array(
 			'has-fluid-checkout',
-			'has-checkout-layout--' . $this->get_checkout_layout(),
+			'has-checkout-layout--' . esc_attr( $this->get_checkout_layout() ),
 		);
+
+		// Add extra class for place order position
+		$place_order_position = $this->get_place_order_position();
+		$add_classes[] = 'has-place-order--' . esc_attr( $place_order_position );
+
+		// Add extra class for current step
+		$current_step = $this->get_current_step();
+		$last_step = $this->get_last_step();
+		if ( $this->is_checkout_layout_multistep() && false !== $current_step ) {
+			$current_step_index = array_keys( $current_step )[0];
+			$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
+			$add_classes[] = 'fc-checkout-step-current--' . esc_attr( $current_step_id );
+			
+			// Maybe add current last step class
+			$last_step_index = array_keys( $last_step )[0];
+			if ( $current_step_index === $last_step_index ) {
+				$add_classes[] = 'fc-checkout-step-current-last';
+			}
+		}
 
 		// Add extra class when sidebar is present
 		if ( has_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ) ) ) {
-			$classes[] = 'has-fc-sidebar';
+			$add_classes[] = 'has-fc-sidebar';
 		}
 
 		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
 		if ( $this->get_hide_site_header_footer_at_checkout() ) {
 			$add_classes[] = 'has-checkout-header';
-		}
-
-		// Add extra class for current step
-		$current_step = $this->get_current_step();
-		if ( $this->is_checkout_layout_multistep() && false !== $current_step ) {
-			$current_step_index = array_keys( $current_step )[0];
-			$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
-			$add_classes[] = 'fc-checkout-step-current--' . $current_step_id ;
 		}
 
 		// Add extra class if displaying the `must-log-in` notice
@@ -334,12 +334,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Add extra class to highlight the billing section
 		if ( true === apply_filters( 'fc_show_billing_section_highlighted', ( 'yes' === get_option( 'fc_show_billing_section_highlighted', 'yes' ) ) ) ) {
 			$add_classes[] = 'has-highlighted-billing-section';
-		}
-
-		// Maybe add extra class for place order position
-		$place_order_position = get_option( 'fc_checkout_place_order_position', 'below_payment_section' );
-		if ( 'below_order_summary' === $place_order_position ) {
-			$add_classes[] = 'has-place-order-sidebar-only';
 		}
 
 		return array_merge( $classes, $add_classes );
@@ -460,13 +454,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function register_assets() {
 		// Maybe load RTL file
 		$rtl_suffix = is_rtl() ? '-rtl' : '';
-		
+
 		// Styles
 		wp_register_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
 
 		// Checkout steps scripts
 		wp_register_script( 'fc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init(fcSettings.checkoutSteps);})' );
+		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("DOMContentLoaded",function(){CheckoutSteps.init(fcSettings.checkoutSteps);})' );
 	}
 
 	/**
@@ -475,7 +469,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function enqueue_assets() {
 		// Styles
 		wp_enqueue_style( 'fc-checkout-layout' );
-		
+
 		// Checkout steps scripts
 		wp_enqueue_script( 'fc-checkout-steps' );
 	}
@@ -534,6 +528,29 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'multi-step'     => __( 'Multi-step', 'fluid-checkout' ),
 			'single-step'    => __( 'Single step', 'fluid-checkout' ),
 		) );
+	}
+
+
+
+	/**
+	 * Return the list of values accepted for checkout layout.
+	 *
+	 * @return  array  List of values accepted for checkout layout.
+	 */
+	public function get_place_order_position() {
+		// Get place order position option
+		$place_order_position = get_option( 'fc_checkout_place_order_position' ); // Should not use default value on this line because we need to check below if the value is set in the database
+
+		// Maybe handle deprecated option `fc_enable_checkout_place_order_sidebar`
+		if ( false === $place_order_position && 'yes' === get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) ) {
+			$place_order_position = 'both_payment_and_order_summary';
+		}
+		// Defaults to below the payment section `below_payment_section`
+		else if ( false === $place_order_position ) {
+			$place_order_position = 'below_payment_section';
+		}
+
+		return $place_order_position;
 	}
 
 
@@ -747,6 +764,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function is_billing_phone_enabled() {
 		return 'hidden' !== get_option( 'woocommerce_checkout_phone_field', 'required' );
+	}
+
+
+
+	/**
+	 * Returns whether the current page is the checkout page or requesting for checkout fragments.
+	 */
+	public function is_checkout_page_or_fragment() {
+		global $wp_query;
+		$ajax_action = $wp_query->get( 'wc-ajax' );
+
+		return ( is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) || 'update_order_review' === $ajax_action || ( array_key_exists( 'wc-ajax', $_GET ) && 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) );
+	}
+
+	/**
+	 * Returns whether the current page is the cart page or requesting for cart fragments.
+	 */
+	public function is_cart_page_or_fragment() {
+		global $wp_query;
+		$ajax_action = $wp_query->get( 'wc-ajax' );
+
+		return is_cart() || 'fc_pro_update_cart_fragments' === $ajax_action || ( array_key_exists( 'wc-ajax', $_GET ) && 'fc_pro_update_cart_fragments' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) );
 	}
 
 
@@ -1076,11 +1115,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Return `true` if next step id is found in the complete steps list
 		foreach ( $complete_steps as $step_index => $step_args ) {
-			
+
 			// Get next step args
 			$next_step_index = $step_index + 1;
 			$next_step_args = array_key_exists( $next_step_index, $complete_steps ) ? $complete_steps[ $next_step_index ] : false;
-			
+
 			// Maybe skip `shipping` step
 			if ( is_array( $next_step_args ) && 'shipping' == $next_step_args[ 'step_id' ] && ! WC()->cart->needs_shipping() ) {
 				$next_step_index++;
@@ -1199,9 +1238,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function register_default_checkout_steps() {
 		// Bail if has already registered steps
 		if ( count( $this->checkout_steps ) > 0 ) { return; }
-		
-		// Bail if not on checkout or cart page or doing AJAX call
-		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
+
+		// Bail if not checkout or cart page or fragments
+		if ( ! $this->is_checkout_page_or_fragment() && ! $this->is_cart_page_or_fragment() && ( ! has_filter( 'fc_force_register_steps' ) || false !== apply_filters( 'fc_force_register_steps', false ) ) ) { return; }
 
 		// CONTACT
 		$this->register_checkout_step( array(
@@ -1213,16 +1252,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		) );
 
 		// SHIPPING
-		if ( WC()->cart->needs_shipping() ) {
-			$this->register_checkout_step( array(
-				'step_id' => 'shipping',
-				'step_title' => apply_filters( 'fc_step_title_shipping', _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ) ),
-				'priority' => 20,
-				'render_callback' => array( $this, 'output_step_shipping' ),
-				'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
-				'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
-			) );
-		}
+		$this->register_checkout_step( array(
+			'step_id' => 'shipping',
+			'step_title' => apply_filters( 'fc_step_title_shipping', _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ) ),
+			'priority' => 20,
+			'render_callback' => array( $this, 'output_step_shipping' ),
+			'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
+			'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
+		) );
 
 		// BILLING
 		$this->register_checkout_step( array(
@@ -1544,7 +1581,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_substep_title_html( $substep_id, $substep_title ) {
 		$html = '';
 		$substep_title = $this->get_substep_title_with_filters( $substep_id, $substep_title );
-		
+
 		if ( ! empty( $substep_title ) ) {
 			$html = '<h3 class="fc-step__substep-title fc-step__substep-title--' . esc_attr( $substep_id ) . '">' . wp_kses( $substep_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h3>';
 		}
@@ -1799,7 +1836,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$section_content_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $section_content_inner_attributes ), $section_content_inner_attributes ) );
 		?>
 		<div <?php echo $section_attributes_str; // WPCS: XSS ok. ?>>
-			
+
 			<?php if ( ! empty( $toggle_label ) ) : ?>
 			<div <?php echo $section_toggle_attributes_str; // WPCS: XSS ok. ?>>
 				<div <?php echo $section_content_inner_attributes_str; // WPCS: XSS ok. ?>>
@@ -1896,7 +1933,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get fields
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
 		$checkout_fields = WC()->checkout->get_checkout_fields();
-		
+
 		// Add a text line for each field
 		foreach( $contact_field_ids as $field_key ) {
 			// Iterate checkout fields
@@ -1957,10 +1994,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get contact fields
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
-		
+
 		// Get all checkout fields
 		$field_groups = WC()->checkout()->get_checkout_fields();
-			
+
 		// Iterate contact field ids
 		foreach( $contact_field_ids as $field_key ) {
 			foreach ( $field_groups as $group_key => $fields ) {
@@ -2167,6 +2204,49 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $shipping_ignored_field_ids;
 	}
 
+	/**
+	 * Get shipping fields, filtering out the fields that were moved to other sections.
+	 */
+	public function get_shipping_fields_filtered() {
+		// Filter out shipping fields moved to another step
+		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
+		$shipping_fields = array_filter( $shipping_fields, function( $key ) {
+			return ! in_array( $key, $this->get_shipping_address_ignored_shipping_field_ids() );
+		}, ARRAY_FILTER_USE_KEY );
+		
+		return $shipping_fields;
+	}
+
+	/**
+	 * Get shipping fields that have a correponding field in the billing section.
+	 */
+	public function get_shipping_same_billing_fields() {
+		// Get filtered shipping fields
+		$shipping_fields = $this->get_shipping_fields_filtered();
+
+		// Get list of shipping fields that might be copied from shipping to billing fields
+		$shipping_same_as_billing_fields = array_filter( $shipping_fields, function( $key ) {
+			return in_array( $key, $this->get_shipping_same_billing_fields_keys() );
+		}, ARRAY_FILTER_USE_KEY );
+
+		return $shipping_same_as_billing_fields;
+	}
+
+	/**
+	 * Get shipping fields that only present on the shipping section and do not have a correnpondent field in the billing section.
+	 */
+	public function get_shipping_only_fields() {
+		// Get filtered shipping fields
+		$shipping_fields = $this->get_shipping_fields_filtered();
+
+		// Get list of shipping only fields
+		$shipping_only_fields = array_filter( $shipping_fields, function( $key ) {
+			return in_array( $key, $this->get_shipping_only_fields_keys() );
+		}, ARRAY_FILTER_USE_KEY );
+
+		return $shipping_only_fields;
+	}
+
 
 
 	/**
@@ -2183,33 +2263,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_substep_shipping_address_fields() {
 		ob_start();
-
-		// Filter out shipping fields moved to another step
-		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
-		$shipping_fields = array_filter( $shipping_fields, function( $key ) {
-			return ! in_array( $key, $this->get_shipping_address_ignored_shipping_field_ids() );
-		}, ARRAY_FILTER_USE_KEY );
-
-		// Get list of shipping fields that might be copied from shipping to billing fields
-		$shipping_same_as_billing_fields = array_filter( $shipping_fields, function( $key ) {
-			return in_array( $key, $this->get_shipping_same_billing_fields_keys() );
-		}, ARRAY_FILTER_USE_KEY );
-
-		// Get list of billing only fields
-		$shipping_only_fields = array_filter( $shipping_fields, function( $key ) {
-			return in_array( $key, $this->get_shipping_only_fields_keys() );
-		}, ARRAY_FILTER_USE_KEY );
-
-		wc_get_template(
-			'checkout/form-shipping.php',
-			array(
-				'checkout'                            => WC()->checkout(),
-				'display_fields'                      => array_keys( $shipping_fields ),
-				'shipping_same_as_billing_fields'     => $shipping_same_as_billing_fields,
-				'shipping_only_fields'                => $shipping_only_fields,
-			)
-		);
-
+		wc_get_template( 'checkout/form-shipping.php', array( 'checkout' => WC()->checkout() ) );
 		return ob_get_clean();
 	}
 
@@ -2234,10 +2288,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_field_display_value_from_array( $field_display_value ) {
 		// Bail if not an array value
 		if ( ! is_array( $field_display_value ) ) { return $field_display_value; }
-		
+
 		// Initialize resulting string value
 		$new_field_display_value = '';
-		
+
 		// Iterate each array value to add to the new display value
 		$first = true;
 		foreach ( $field_display_value as $value ) {
@@ -2260,7 +2314,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_field_display_value_with_pattern( $field_value, $field_key, $field_options, $field_label, $show_field_label = false ) {
 		$field_display_value = $field_value;
-		
+
 		/* translators: %1$s the selected option text, %2$s the field label. */
 		$field_display_value_pattern = _x( '%1$s', 'Substep review field format', 'fluid-checkout' );
 
@@ -2380,7 +2434,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get contact step fields
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
-		
+
 		// Get data from checkout fields
 		foreach ( $field_keys as $field_key ) {
 			// Skip fields moved to the contact step
@@ -2747,7 +2801,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'package'					=> $package,
 				'available_methods'			=> $package['rates'],
 				'show_package_details'		=> sizeof( $packages ) > 1,
-				'is_cart_page_or_fragment'  => apply_filters( 'fc_is_cart_page_or_fragment', is_cart() ),
+				'is_cart_page_or_fragment'  => $this->is_cart_page_or_fragment(),
 				'package_details'			=> implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
 				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
@@ -3040,7 +3094,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get fields skip list
 		$step_complete_field_keys_skip_list = apply_filters( 'fc_is_step_complete_billing_field_keys_skip_list', $this->get_contact_step_display_field_ids() );
-		
+
 		// Check each required country field
 		foreach ( $address_fields as $field_key => $field ) {
 			// Skip checking some fields
@@ -3202,7 +3256,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Get shipping field key
 			$shipping_field_key = str_replace( 'billing_', 'shipping_', $field_key );
-			
+
 			// Check billing field values against shipping
 			if ( array_key_exists( $shipping_field_key, $shipping_fields ) ) {
 				$billing_field_value = null;
@@ -3497,7 +3551,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				if ( empty( $new_field_value ) && ( strpos( $field_key, '_country' ) > 0 || strpos( $field_key, '_state' ) > 0 ) ) {
 					// Get customer default location
 					$customer_default_location = wc_get_customer_default_location();
-					
+
 					// Get field key without the address type
 					$default_location_field_key = str_replace( 'billing_', '', str_replace( 'shipping_', '', $field_key ) );
 
@@ -3536,7 +3590,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach( $billing_copy_shipping_field_keys as $field_key ) {
 			// Skip some fields
 			if ( in_array( $field_key, $skip_field_keys ) ) { continue; }
-			
+
 			// Get shipping field key
 			$shipping_field_key = str_replace( 'billing_', 'shipping_', $field_key );
 
@@ -3695,6 +3749,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Remove links and fix accessibility attributes for payment method icons.
 	 */
 	public function change_payment_gateway_icon_html( $icon, $id = null ) {
+		// Bail if icon html is empty
+		if ( empty( $icon ) ) { return $icon; }
 
 		// Remove links from the icon html
 		$pattern = '/(<a [^<]*)([^<]*)(<\/a>)/';
@@ -3784,29 +3840,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get attributes for the order review section element.
 	 *
-	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
-	 *
-	 * @return  array                    Array of key/value html attributes.
+	 * @return  array   Array of key/value html attributes.
 	 */
-	public function get_order_review_html_attributes( $is_sidebar_widget = false ) {
+	public function get_order_review_html_attributes() {
 		$attributes = array(
+			'id' => 'fc-checkout-order-review',
 			'class' => 'fc-checkout-order-review',
+			'data-flyout' => true,
+			'data-flyout-order-review' => true,
+			'data-flyout-open-animation-class' => 'fade-in-down',
+			'data-flyout-close-animation-class' => 'fade-out-up',
 		);
-
-		// Sidebar widget
-		if ( $is_sidebar_widget ) {
-			$attributes = array_merge( $attributes, array(
-				'id' => 'fc-checkout-order-review',
-				'data-flyout' => true,
-				'data-flyout-order-review' => true,
-				'data-flyout-open-animation-class' => 'fade-in-down',
-				'data-flyout-close-animation-class' => 'fade-out-up',
-			) );
-		}
 
 		// Maybe add class for additional content inside the order summary section
 		$additional_content_place_order_positions = array( 'below_order_summary', 'both_payment_and_order_summary' );
-		$place_order_position = get_option( 'fc_checkout_place_order_position', 'below_payment_section' );
+		$place_order_position = $this->get_place_order_position();
 		if ( in_array( $place_order_position, $additional_content_place_order_positions ) || is_active_sidebar( 'fc_order_summary_after' ) ) {
 			$attributes[ 'class' ] = $attributes[ 'class' ] . ' has-additional-content';
 		}
@@ -3817,21 +3865,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get attributes for the order review section inner element.
 	 *
-	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
-	 *
-	 * @return  array                    Array of key/value html attributes.
+	 * @return  array  Array of key/value html attributes.
 	 */
-	public function get_order_review_html_attributes_inner( $is_sidebar_widget = false ) {
+	public function get_order_review_html_attributes_inner() {
 		$attributes = array(
 			'class' => 'fc-checkout-order-review__inner',
+			'data-flyout-content' => true,
 		);
-
-		// Sidebar widget
-		if ( $is_sidebar_widget ) {
-			$attributes = array_merge( $attributes, array(
-				'data-flyout-content' => true,
-			) );
-		}
 
 		return $attributes;
 	}
@@ -3845,7 +3885,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			array(
 				'checkout'           => WC()->checkout(),
 				'order_review_title' => $this->get_order_review_title(),
-				'is_sidebar_widget'  => false,
 				'attributes'         => $this->get_order_review_html_attributes(),
 				'attributes_inner'   => $this->get_order_review_html_attributes_inner(),
 			)
@@ -3853,29 +3892,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Output Order Review for sidebar.
-	 */
-	public function output_order_review_for_sidebar() {
-		wc_get_template(
-			'fc/checkout/review-order-section.php',
-			array(
-				'checkout'           => WC()->checkout(),
-				'order_review_title' => $this->get_order_review_title(),
-				'is_sidebar_widget'  => true,
-				'attributes'         => $this->get_order_review_html_attributes( true ),
-				'attributes_inner'   => $this->get_order_review_html_attributes_inner( true ),
-			)
-		);
-	}
-
-	/**
 	 * Output the edit cart link to the order summary header section.
-	 *
-	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
 	 */
-	public function output_order_review_header_edit_cart_link( $is_sidebar_widget ) {
-		// Bail if not sidebar widget or edit cart link is disabled
-		if ( ! $is_sidebar_widget || true !== apply_filters( 'fc_order_summary_display_desktop_edit_cart_link', true ) ) { return; }
+	public function output_order_review_header_edit_cart_link() {
+		// Bail if edit cart link is disabled
+		if ( true !== apply_filters( 'fc_order_summary_display_desktop_edit_cart_link', true ) ) { return; }
 
 		?>
 		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__header-link fc-checkout-order-review__edit-cart"><?php echo esc_html( __( 'Edit cart', 'fluid-checkout' ) ); ?></a>
@@ -3903,6 +3924,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Make sure there are no duplicate fields for outputting place order on the sidebar
 		if ( $is_sidebar ) {
+			$place_order_html = str_replace( 'class="form-row place-order', 'class="form-row place-order place-order--sidebar', $place_order_html );
 			$place_order_html = str_replace( 'id="terms"', '', $place_order_html );
 			$place_order_html = str_replace( 'id="place_order"', '', $place_order_html );
 			$place_order_html = str_replace( 'id="woocommerce-process-checkout-nonce"', '', $place_order_html );
@@ -3911,8 +3933,46 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$place_order_html = str_replace( 'name="woocommerce-process-checkout-nonce"', '', $place_order_html );
 			$place_order_html = str_replace( 'name="_wp_http_referer"', '', $place_order_html );
 		}
+		else {
+			$place_order_html = str_replace( 'class="form-row place-order', 'class="form-row place-order place-order--main', $place_order_html );
+		}
 
 		return $place_order_html; // WPCS: XSS ok.
+	}
+
+	/**
+	 * Output checkout place order section.
+	 */
+	public function output_checkout_place_order_placeholder() {
+		// Output place order section placeholder
+		echo '<div class="fc-place-order__section-placeholder"></div>';
+	}
+
+	/**
+	 * Output checkout place order section.
+	 */
+	public function output_checkout_place_order_section( $step_id = 'payment', $is_sidebar = false ) {
+		// Output place order section
+		$section_class = $is_sidebar ? 'fc-place-order__section--sidebar' : 'fc-place-order__section--main';
+		echo '<div class="fc-place-order__section ' . esc_attr( $section_class ) . '">';
+		do_action( 'fc_place_order', $step_id, $is_sidebar );
+		echo '</div>';
+	}
+
+	/**
+	 * Output checkout place order section for the sidebar.
+	 */
+	public function output_checkout_place_order_section_for_sidebar( $is_sidebar_widget ) {
+		$this->output_checkout_place_order_section( '__sidebar', true );
+	}
+
+	/**
+	 * Output checkout place order custom buttons.
+	 */
+	public function output_checkout_place_order_custom_buttons( $step_id = 'payment', $is_sidebar = false ) {
+		echo '<div class="fc-place-order__custom-buttons">';
+		do_action( 'fc_place_order_custom_buttons', $step_id, $is_sidebar );
+		echo '</div>';
 	}
 
 	/**
@@ -3924,26 +3984,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Output checkout place order section as an additional section in the sidebar.
-	 *
-	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
 	 */
-	public function output_checkout_place_order_for_sidebar( $is_sidebar_widget ) {
-		// Bail if not ouputting for the sidebar
-		if ( ! $is_sidebar_widget ) { return; }
-
-		$this->output_checkout_place_order( '__sidebar', $is_sidebar_widget );
-	}
-
-	/**
-	 * Output checkout place order section as the main section in the sidebar.
-	 *
-	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
-	 */
-	public function output_checkout_place_order_for_sidebar_main( $is_sidebar_widget ) {
-		// Bail if not ouputting for the sidebar
-		if ( ! $is_sidebar_widget ) { return; }
-
-		$this->output_checkout_place_order( '__sidebar', false );
+	public function output_checkout_place_order_for_order_summary() {
+		$this->output_checkout_place_order( '__sidebar', true );
 	}
 
 	/**
@@ -3953,7 +3996,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_place_order_fragment( $fragments ) {
 		$html = $this->get_checkout_place_order_html();
-		$fragments['.fc-inside .place-order'] = $html;
+		$fragments['.place-order--main'] = $html;
 		return $fragments;
 	}
 
@@ -3962,20 +4005,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param   array  $fragments  Checkout fragments.
 	 */
-	public function add_place_order_fragment_for_sidebar( $fragments ) {
+	public function add_place_order_fragment_for_order_summary( $fragments ) {
 		$html_for_sidebar = $this->get_checkout_place_order_html( '__sidebar', true );
-		$fragments['.fc-sidebar .place-order'] = $html_for_sidebar;
-		return $fragments;
-	}
-
-	/**
-	 * Add checkout fragment for the place order section for the sidebar as the main section.
-	 *
-	 * @param   array  $fragments  Checkout fragments.
-	 */
-	public function add_place_order_fragment_for_sidebar_main( $fragments ) {
-		$html_for_sidebar = $this->get_checkout_place_order_html( '__sidebar', false );
-		$fragments['.fc-sidebar .place-order'] = $html_for_sidebar;
+		$fragments['.place-order--sidebar'] = $html_for_sidebar;
 		return $fragments;
 	}
 
@@ -4000,7 +4032,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				$button_html = str_replace( 'class="button', 'disabled class="button', $button_html );
 			}
 		}
-		
+
 		// Add extra button class and filter
 		$button_html = str_replace( 'class="button alt', 'class="' . esc_attr( apply_filters( 'fc_place_order_button_classes', 'button alt' ) ) . ' fc-place-order-button', $button_html );
 
@@ -4086,27 +4118,59 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Replace the order summary table fragment with specific fragments main and sidebar order summary sections.
+	 * Output the cart item remove button.
 	 *
-	 * @param   array  $fragments  Checkout fragments.
+	 * @param   array       $cart_item      Cart item object.
+	 * @param   string      $cart_item_key  Cart item key.
+	 * @param   WC_Product  $product        The product object.
 	 */
-	public function replace_order_summary_table_fragments( $fragments ) {
-		// Remove original
-		unset( $fragments['.woocommerce-checkout-review-order-table'] );
+	public function output_order_summary_cart_item_product_name( $cart_item, $cart_item_key, $product ) {
+		// CHANGE: Remove no-break-space from the end of the product name
+		echo apply_filters( 'woocommerce_cart_item_name', $product->get_name(), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
 
-		// Get order review fragment for main section
-		ob_start();
-		woocommerce_order_review();
-		$html = ob_get_clean();
-		$fragments['.fc-inside .woocommerce-checkout-review-order-table'] = $html;
+	/**
+	 * Output the cart item unit price.
+	 *
+	 * @param   array       $cart_item      Cart item object.
+	 * @param   string      $cart_item_key  Cart item key.
+	 * @param   WC_Product  $product        The product object.
+	 */
+	public function output_order_summary_cart_item_unit_price( $cart_item, $cart_item_key, $product ) {
+		// Bail if option is disabled
+		if ( true !== apply_filters( 'fc_enable_order_summary_cart_item_unit_price', true ) ) { return; }
 
-		// Get order review fragment for sidebar.
-		ob_start();
-		woocommerce_order_review();
-		$html = ob_get_clean();
-		$fragments['.fc-sidebar .woocommerce-checkout-review-order-table'] = $html;
+		// Item unit price
+		echo '<div class="cart-item__element cart-item__price">' . apply_filters( 'woocommerce_cart_item_price', '<span class="screen-reader-text">' . esc_html( 'Price', 'woocommerce' ) . ': </span>' . WC()->cart->get_product_price( $product ), $cart_item, $cart_item_key ) . '</div>'; // PHPCS: XSS ok.
+	}
 
-		return $fragments;
+	/**
+	 * Output the cart item meta data.
+	 *
+	 * @param   array       $cart_item      Cart item object.
+	 * @param   string      $cart_item_key  Cart item key.
+	 * @param   WC_Product  $product        The product object.
+	 */
+	public function output_order_summary_cart_item_meta_data( $cart_item, $cart_item_key, $product ) {
+		// Get meta data
+		$item_meta_data = wc_get_formatted_cart_item_data( $cart_item );
+
+		// Bail if meta data is empty
+		if ( empty( $item_meta_data ) ) { return; }
+
+		$item_meta_html = '<div class="cart-item__element cart-item__meta">' . $item_meta_data . '</div>';
+		echo $item_meta_html; // PHPCS: XSS ok.
+	}
+
+	/**
+	 * Output the cart item quantity field.
+	 *
+	 * @param   array       $cart_item      Cart item object.
+	 * @param   string      $cart_item_key  Cart item key.
+	 * @param   WC_Product  $product        The product object.
+	 */
+	public function output_order_summary_cart_item_quantity( $cart_item, $cart_item_key, $product ) {
+		echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 
@@ -4228,11 +4292,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Get decoded data
 			$decoded_data = explode( '=', urldecode( $value ) );
 			$field_key = $decoded_data[0];
-			
+
 			// Handle multi value fields
 			$needle = '[]';
 			$needle_len = strlen( $needle );
-        	if ( $needle_len === 0 || 0 === substr_compare( $field_key, $needle, - $needle_len ) ) {
+			if ( $needle_len === 0 || 0 === substr_compare( $field_key, $needle, - $needle_len ) ) {
 				// Get new field key, without the multi value markers
 				$new_field_key = str_replace( $needle, '', $field_key );
 
@@ -4257,7 +4321,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Needed to make already parsed data available for all functions,
 			// especially those used by filters hooked to `fc_set_parsed_posted_data` below.
 			$this->posted_data = $new_posted_data;
-			
+
 			// Filter to allow customizations
 			$new_posted_data = apply_filters( 'fc_set_parsed_posted_data', $new_posted_data );
 		}
@@ -4299,7 +4363,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get all checkout fields
 		$field_groups = WC()->checkout()->get_checkout_fields();
-		
+
 		// Iterate checkout fields
 		foreach ( $field_groups as $group_key => $fields ) {
 			// Skip shipping fields if shipping address is not needed
@@ -4419,7 +4483,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$field_posted_data_value = $posted_data[ $input ];
 			return $field_posted_data_value;
 		}
-		
+
 		// Maybe return field value from session
 		$field_session_value = $this->get_checkout_field_value_from_session( $input );
 		if ( null !== $field_session_value ) {

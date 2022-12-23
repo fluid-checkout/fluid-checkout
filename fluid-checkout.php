@@ -5,11 +5,11 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 2.0.10-beta-2
+Version: 2.2.1-beta-4
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 7.1.0
+WC tested up to: 7.2.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
@@ -245,10 +245,15 @@ class FluidCheckout {
 
 		// Look for template file in the theme
 		if ( ! $_template || apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
-			$_template = locate_template( array(
+			$_template_override = locate_template( array(
 				$template_path . $template_name,
 				$template_name,
 			) );
+
+			// Check if files exist before changing template
+			if ( file_exists( $_template_override ) ) {
+				$_template = $_template_override;
+			}
 		}
 
 		// Use default template
@@ -682,10 +687,10 @@ class FluidCheckout {
 
 
 	/**
-	 * Get the plugin version number for Fluid Checkout or other plugins.
+	 * Get the plugin version number for this or other plugins.
 	 *
-	 * @param   string       $main_plugin_file  (optional) The plugin folder and main file name for the plugin to get the version number from. Ie. `fluid-checkout/fluid-checkout.php`.
-	 *                                          Defaults to Fluid Checkout main file.
+	 * @param   string       $main_plugin_file  (optional) The plugin folder and main file name for the plugin to get the version number from. Ie. `woocommerce/woocommerce.php`.
+	 *                                          Defaults to main file of this plugin.
 	 *
 	 * @return  string|bool                     The plugin version number, or `false` of the plugin was not found.
 	 */

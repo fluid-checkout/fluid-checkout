@@ -1,0 +1,15 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body.has-payment-method-selected--payment_method_ppcp .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar {
+	display: none;
+}
+
+
+
+
+// Hide duplicate pay later description sections
+.fc-wrapper #wc-ppcp-paylater-msg-checkout + #wc-ppcp-paylater-msg-checkout {
+	display: none;
+}

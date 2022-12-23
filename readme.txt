@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.1.1
-Stable tag: 2.0.9
+Stable tag: 2.2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -167,6 +167,7 @@ Some themes may need adjustments due to not using WooCommerce standards hooks or
 * Impreza - by UpSolution
 * Kentha - by QantumThemes
 * LeadEngine - by Key-Design
+* Minimog - by ThemeMove
 * Mr. Tailor - by Get Bowtied
 * OnAir2 - by QantumThemes
 * Phlox PRO - by averta
@@ -192,6 +193,7 @@ Only the themes that we have added explicit compatibility with or that we have t
 * Integration Rede for WooCommerce - by MarcosAlexandre
 * Mercado Pago payments for WooCommerce - by Mercado Pago
 * PagSeguro for WooCommerce - by Claudio Sanches
+* Payment Plugins for PayPal WooCommerce - by Payment Plugins
 * Payment Plugins for Stripe WooCommerce - by Payment Plugins
 * Rede WooCommerce - by Rede
 * WooCommerce Affirm Gateway - by WooCommerce
@@ -217,6 +219,7 @@ Only the themes that we have added explicit compatibility with or that we have t
 * Creative Mail - by Constant Contact
 * Delivery & Pickup Date Time for WooCommerce - by CodeRockz
 * Elementor - by Elementor Team
+* Elementor PRO - by Elementor Team
 * Flexible Checkout Fields for WooCommerce - by WP Desk
 * FluentCRM Pro - by Fluent CRM
 * Flexible Shipping - by WP Desk
@@ -377,10 +380,40 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme PeakShops.
+* Added: Compatibility with plugin Hezarfen for WooCommerce.
+* Added: Compatibility with plugin Elementor PRO. Replace the custom checkout widget from Elementor PRO with Fluid Checkout.
+* Improved: Moved remove default WooCommerce hooks later at `init` hook for better compatibility with various plugins.
+* Fixed: Modal styles not being loaded on all pages that use it.
+* Fixed: Prevent fatal errors when trying to merge field class arguments using the checkout fields class.
+
+= 2.2.0 - 2022-12-12 =
+
+* Bump tested up to WooCommerce 7.2.0
+* Added: Compatibility with plugin Payment Plugins for PayPal WooCommerce - by Payment Plugins.
+* Added: Display the checkout page with cart items errors message, instead of a message to return to cart.
+* Improved: Remove duplicate order summary section, which was causing compatibility issues with many plugins.
+* Improved: Disable the "Log in" link button while loading the scripts.
+* Improved: Execute script on `DOMContentLoaded` instead of page `load` event to enable interactive elements earlier.
+* Improved: Update customized template files with latest changes in WooCommerce 7.2.
+* Improved: Disable the "Log in" link button while loading the scripts which enable it to open the login popup section.
+* Improved: Compatibility with theme Woodmart when setting a background color for the order summary section.
+* Fixed: Hide login modal and other flyout elements while loading the page.
+* Fixed: Fix required fields marker for accessibility. Stop adding `required` attribute to required fields as this sometimes breaks form validation.
+* Fixed: Fatal error when using other plugins or themes that calls the template file `checkout/form-shipping.php` directly.
+
+= 2.1.0 - 2022-12-05 =
+
 * Added: Support for new PRO feature to edit cart items at checkout.
 * Added: New filter `fc_pro_checkout_review_order_table_classes` to add additional classes to the order summary table.
+* Added: Compatibility with theme Minimog.
+* Added: Order summary will now display the product unit price below the product name.
+* Improved: Compatibility with theme Divi.
+* Improved: Compatibility with theme Orchid Store.
+* Improved: Compatibility with theme Woostify.
 * Improved: Refactor use of class `fc-fragment-always-replace` to force replacing checkout page fragments.
 * Improved: Refactor styles for shipping methods pricing labels to automatically align to the center vertically when more elements are displayed.
+* Improved: Check if template file exists in the override path before trying to use it.
 
 = 2.0.9 - 2022-11-21 =
 
