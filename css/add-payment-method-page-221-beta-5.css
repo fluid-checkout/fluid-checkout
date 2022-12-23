@@ -44,7 +44,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   line-height: 1.6;
 }
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] {
+.fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method] {
   position: absolute;
   display: block;
   width: 1px;
@@ -78,16 +78,26 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   border-right: 0;
 }
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method:last-child,
-#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:last-child {
-  margin-bottom: -1px;
+.fc-wrapper #payment .payment_methods > .wc_payment_method:first-of-type > label,
+#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:first-of-type > label {
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+}
+
+.fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name=payment_method]:not(:checked) ~ label,
+#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name=payment_method]:not(:checked) ~ label,
+.fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name=payment_method]:checked ~ .payment_box,
+#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name=payment_method]:checked ~ .payment_box {
+  border-bottom: 0;
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
 }
 
 .fc-wrapper #payment .payment_methods > li.wc_payment_method:not(.woocommerce-notice) {
   background-color: transparent;
 }
 
-.fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[type=radio]:first-child:checked + label {
+.fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name=payment_method]:first-child:checked + label {
   border-top: 0;
   border-left: 0;
   border-right: 0;
@@ -95,7 +105,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   color: #1E212B;
 }
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] + label:before {
+.fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method] + label:before {
   box-sizing: border-box;
   content: "";
   position: absolute;
@@ -114,12 +124,12 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   transform: none;
 }
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio]:focus + label:before {
+.fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method]:focus + label:before {
   outline: solid 2px #535156;
   outline-offset: 2px;
 }
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:before {
+.fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method]:checked + label:before {
   content: "";
   border-color: #007a3d;
   background-color: #007a3d;
@@ -134,11 +144,11 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   border-color: #b2b2b2;
 }
 
-body.woocommerce-add-payment-method .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:before {
+body.woocommerce-add-payment-method .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[name=payment_method]:checked + label:before {
   content: "";
 }
 
-.fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child + label:after {
+.fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[name=payment_method] + label:after {
   display: inline-block;
   font-family: "fluid-checkout-icons" !important;
   font-style: normal !important;
@@ -175,7 +185,7 @@ body.woocommerce-add-payment-method .fc-wrapper #payment ul.payment_methods > .w
   transform: none;
 }
 
-.fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:after {
+.fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[name=payment_method]:checked + label:after {
   color: #fff;
 }
 
