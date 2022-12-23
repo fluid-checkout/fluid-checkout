@@ -23,8 +23,8 @@ body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-r
 }
 @media (min-width: 750px) {
   body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
-  body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-middle,
-  body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-last {
+body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-middle,
+body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-last {
     clear: none;
     float: right;
     width: 48%;
@@ -37,7 +37,7 @@ body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-r
 }
 @media (min-width: 750px) {
   body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
-  body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-wide {
+body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-wide {
     clear: right;
   }
 }
@@ -62,7 +62,7 @@ body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-r
 
 @media (min-width: 750px) {
   body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
-  body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-middle {
+body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-middle {
     margin-left: 4%;
   }
 }
