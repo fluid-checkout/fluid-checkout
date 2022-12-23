@@ -2439,7 +2439,6 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
     border: solid 1px #d8d8d8;
     border-radius: 8px;
     background-color: #fff;
-    overflow: hidden;
   }
 }
 div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner:focus {
