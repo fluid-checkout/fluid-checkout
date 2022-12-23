@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } #payment ul.payment_methods {
+	padding: 0 !important; // Needed to override theme value.
+}

@@ -1,0 +1,14 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content.fc-container {
+	
+	// padding
+	padding-top: remsize( 12rem );
+	@media (#{$bp-larger-than-tablet}) { padding-top: remsize( 12rem ); }
+	@media (#{$bp-larger-than-desktop}) { padding-top: remsize( 12rem ); }
+	@media (#{$bp-larger-than-desktop-medium}) { padding-top: remsize( 12rem ); }
+	@media (#{$bp-larger-than-desktop-large}) { padding-top: remsize( 12rem ); }
+	@media (#{$bp-larger-than-desktop-extra-large}) { padding-top: remsize( 12rem ); }
+}
