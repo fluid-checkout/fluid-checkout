@@ -27,7 +27,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	width: 100%;
 	border: $payment-method-border;
 	border-radius: $payment-method-border-radius;
-	overflow: hidden;
+	overflow: visible;
 }
 
 

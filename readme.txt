@@ -384,6 +384,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin Hezarfen for WooCommerce.
 * Added: Compatibility with plugin Elementor PRO. Replace the custom checkout widget from Elementor PRO with Fluid Checkout.
 * Improved: Moved remove default WooCommerce hooks later at `init` hook for better compatibility with various plugins.
+* Fixed: Compatibility with plugin Payment Plugins for Stripe WooCommerce. Fixed iDeal bank dropdown field being cut off, and set its background color to white to make it stand out.
 * Fixed: Modal styles not being loaded on all pages that use it.
 * Fixed: Prevent fatal errors when trying to merge field class arguments using the checkout fields class.
 

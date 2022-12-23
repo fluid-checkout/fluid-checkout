@@ -32,7 +32,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   width: 100%;
   border: solid 1px #d8d8d8;
   border-radius: 13px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method,
@@ -200,7 +200,7 @@ body.woocommerce-add-payment-method .fc-wrapper #payment ul.payment_methods > .w
 }
 @media (min-width: 750px) {
   .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box,
-  #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
+#add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
     padding: 20px 44px;
   }
 }
