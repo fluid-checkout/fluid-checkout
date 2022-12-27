@@ -1,8 +1,8 @@
 <?php
 /**
- * The template for displaying the footer for the checkout page.
+ * Checkout footer template file.
  *
-  * This template can be overridden by copying it to yourtheme/woocommerce/fc/footer-checkout.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/checkout/checkout-footer.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -12,17 +12,16 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.2.0
+ * @version 2.0.2
  */
 
 defined( 'ABSPATH' ) || exit;
 ?>
 
-</main>
+<footer class="fc-checkout-footer">
+	<div class="fc-widget-area fc-checkout-footer__inner">
 
-<?php do_action( 'fc_checkout_footer' ); ?>
+		<?php do_action( 'fc_checkout_footer_widgets' ); ?>
 
-<?php wp_footer(); ?>
-
-</body>
-</html>
+	</div>
+</footer>

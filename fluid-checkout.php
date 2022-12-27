@@ -151,9 +151,6 @@ class FluidCheckout {
 		add_action( 'after_setup_theme', array( $this, 'load_plugin_compat_features' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_theme_compat_features' ), 10 );
 
-		// Template file loader
-		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
-
 		// Clear cache after upgrading the plugin
 		add_action( 'upgrader_process_complete', array( $this, 'clear_cache_on_updates' ), 10, 2 );
 	}
@@ -200,6 +197,7 @@ class FluidCheckout {
 	 */
 	private function add_features() {
 		self::$features = array(
+			'checkout-page-template'              => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php' ),
 			'checkout-steps'                      => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
 			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ), // Class needs to be loaded for PRO version, checks that the feature is enabled happens inside the class.
 
@@ -220,49 +218,6 @@ class FluidCheckout {
 		$asset_version = '-' . preg_replace( '/\./', '', self::$version );
 		$min = get_option( 'fc_load_unminified_assets', 'no' ) === 'yes' ? '' : '.min';
 		return $asset_version . $min;
-	}
-
-
-
-	/**
-	 * Locate template files from this plugin.
-	 * @since 1.0.2
-	 */
-	public function locate_template( $template, $template_name, $template_path ) {
-		global $woocommerce;
-		$_template = null;
-
-		// Set template path to default value when not provided
-		if ( ! $template_path ) { $template_path = $woocommerce->template_url; };
-
-		// Get plugin path
-		$plugin_path  = self::$directory_path . 'templates/';
-
-		// Get the template from this plugin, if it exists
-		if ( file_exists( $plugin_path . $template_name ) ) {
-			$_template = $plugin_path . $template_name;
-		}
-
-		// Look for template file in the theme
-		if ( ! $_template || apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
-			$_template_override = locate_template( array(
-				$template_path . $template_name,
-				$template_name,
-			) );
-
-			// Check if files exist before changing template
-			if ( file_exists( $_template_override ) ) {
-				$_template = $_template_override;
-			}
-		}
-
-		// Use default template
-		if ( ! $_template ) {
-			$_template = $template;
-		}
-
-		// Return what we found
-		return $_template;
 	}
 
 

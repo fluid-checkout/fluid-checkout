@@ -1,8 +1,8 @@
 <?php
 /**
- * Checkout footer template file.
+ * Checkout payment form
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/fc/checkout/checkout-footer.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/checkout/form-payment.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -12,16 +12,14 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 2.0.2
+ * @version 1.2.0
  */
 
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<footer class="fc-checkout-footer">
-	<div class="fc-widget-area fc-checkout-footer__inner">
+<?php do_action( 'fc_checkout_before_step_payment_fields' ); ?>
 
-		<?php do_action( 'fc_checkout_footer_widgets' ); ?>
+<?php do_action( 'fc_checkout_payment' ); ?>
 
-	</div>
-</footer>
+<?php do_action( 'fc_checkout_after_step_payment_fields' ); ?>

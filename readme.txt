@@ -378,6 +378,14 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased 2.3.0 =
+
+TODO: Add notice for instructions to upgrade template files structure.
+
+* Improved: Separate styles for checkout layout and checkout steps into different files, allowing to load them independently.
+* Improved: Moved template files to a better structure, making it consistent with the PRO plugin structure and easier to understand.
+* Fixed: Only load modifield WooCommerce script files on the affected pages.
+
 = Unreleased =
 
 * Added: Compatibility with theme PeakShops.

@@ -2,7 +2,7 @@
 /**
  * The checkout template file.
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/fc/page-checkout.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/checkout/page-checkout.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -18,8 +18,8 @@
 defined( 'ABSPATH' ) || exit;
 
 // Replace site header with our implementation
-if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) {
-	wc_get_template( 'fc/header-checkout.php' );
+if ( class_exists( 'FluidCheckout_Steps' ) && FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) {
+	wc_get_template( 'checkout/page-checkout-header.php' );
 }
 // Display the site's default header
 else {
@@ -42,8 +42,8 @@ else {
 
 <?php
 // Replace site footer with our implementation
-if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) {
-	wc_get_template( 'fc/footer-checkout.php' );
+if ( class_exists( 'FluidCheckout_Steps' ) && FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) {
+	wc_get_template( 'checkout/page-checkout-footer.php' );
 }
 // Display the site's default footer
 else {

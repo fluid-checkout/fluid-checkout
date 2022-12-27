@@ -73,6 +73,251 @@ body.has-flyout--open {
   }
 }
 
+/*------------------------------------*\
+  #ANIMATIONS
+\*------------------------------------*/
+.slide-in-up {
+  animation: slide-in-up 0.3s ease;
+}
+
+@keyframes slide-in-up {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slide-in-down {
+  animation: slide-in-down 0.3s ease;
+}
+
+@keyframes slide-in-down {
+  from {
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slide-in-left {
+  animation: slide-in-left cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s;
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slide-in-right {
+  animation: slide-in-right cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s;
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slide-out-up {
+  animation: slide-out-up 0.3s ease;
+}
+
+@keyframes slide-out-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+.slide-out-down {
+  animation: slide-out-down 0.3s ease;
+}
+
+@keyframes slide-out-down {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+.slide-out-left {
+  animation: slide-out-left 0.3s ease;
+}
+
+@keyframes slide-out-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+.slide-out-right {
+  animation: slide-out-right 0.3s ease;
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+.fade-in {
+  animation: fade-in 0.3s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.fade-out {
+  animation: fade-out 0.3s ease;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.fade-in-up {
+  animation: fade-in-up 0.3s ease;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.fade-in-down {
+  animation: fade-in-down 0.3s ease;
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -10%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.fade-in-left {
+  animation: fade-in-left 0.3s ease;
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translate3d(-10%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.fade-in-right {
+  animation: fade-in-right 0.3s ease;
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translate3d(10%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.fade-out-up {
+  animation: fade-out-up 0.3s ease;
+}
+
+@keyframes fade-out-up {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -10%, 0);
+  }
+}
+.fade-out-down {
+  animation: fade-out-down 0.3s ease;
+}
+
+@keyframes fade-out-down {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 10%, 0);
+  }
+}
+.fade-out-left {
+  animation: fade-out-left 0.3s ease;
+}
+
+@keyframes fade-out-left {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(-10%, 0, 0);
+  }
+}
+.fade-out-right {
+  animation: fade-out-right 0.3s ease;
+}
+
+@keyframes fade-out-right {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(10%, 0, 0);
+  }
+}
 [data-flyout-content] {
   display: none;
   max-width: 100%;

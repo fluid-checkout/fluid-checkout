@@ -3,17 +3,15 @@
 // ------------------------------------
 @import
 	"abstract/_all-early",
-	"abstract/_all",
-	"../node_modules/flyout-block/sass/abstract/variables";
+	"abstract/_variables-rtl",
+	"abstract/_all";
 
 
 
 
-	
+
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"../node_modules/flyout-block/sass/theme/flyout-block",
-	"../node_modules/flyout-block/sass/theme/animations",
-	"partials/flyout-block";
+	"partials/__imports-checkout-steps";
