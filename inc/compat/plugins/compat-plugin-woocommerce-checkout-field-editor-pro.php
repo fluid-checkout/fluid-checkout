@@ -32,10 +32,6 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 		// Change priority for Checkout Field Editor plugin hooks
 		add_filter( 'thwcfd_woocommerce_checkout_fields_hook_priority', array( $this, 'change_hook_priority' ), 10 );
 
-		// Shipping to different address field
-		remove_action( 'fc_before_checkout_shipping_address_wrapper', array( FluidCheckout_Steps::instance(), 'output_ship_to_different_address_hidden_field' ), 10 );
-		add_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
-
 		// Skip optional fields
 		add_filter( 'fc_hide_optional_fields_skip_types', array( $this, 'add_optional_fields_skip_types' ), 10 );
 		
@@ -68,6 +64,10 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 			add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
 			add_filter( 'fc_is_step_complete_billing', array( $this, 'maybe_set_step_incomplete_billing' ), 10 );
 		}
+
+		// Shipping to different address field
+		remove_action( 'fc_before_checkout_shipping_address_wrapper', array( FluidCheckout_Steps::instance(), 'output_ship_to_different_address_hidden_field' ), 10 );
+		add_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 	}
 
 

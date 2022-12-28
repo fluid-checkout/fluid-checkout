@@ -19,6 +19,14 @@ class FluidCheckout_Oxygen extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+	}
+
+	/**
+	 * Add or remove late hooks.
+	 */
+	public function late_hooks() {
 		// Maybe remove checkout page template
 		// - when editing the checkout page
 		// - when using the plugin's header and footer on the front-end
