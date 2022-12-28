@@ -74,7 +74,7 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 
 			// Run undo hooks
 			$class_name::instance()->undo_hooks();
-		}˝
+		}
 	}
 
 
