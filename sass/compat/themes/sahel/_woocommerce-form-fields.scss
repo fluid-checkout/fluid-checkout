@@ -9,7 +9,7 @@ body#{ $_body-theme-selector }.eltdf-woocommerce-page .woocommerce-checkout inpu
 
 body#{ $_body-theme-selector }.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save,
 body#{ $_body-theme-selector }.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
-	font-size: 11px;
+	font-size: 11px; // Value provided by the theme for the buttons elements.
     line-height: 2.7em; // Value provided by the theme for the buttons elements.
     letter-spacing: .3em; // Value provided by the theme for the buttons elements.
     text-transform: uppercase;
