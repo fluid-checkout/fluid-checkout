@@ -191,10 +191,12 @@ Only the themes that we have added explicit compatibility with or that we have t
 = Payment Gateways =
 
 * Integration Rede for WooCommerce - by MarcosAlexandre
+* Klarna Checkout for WooCommerce by Krokedil.
 * Mercado Pago payments for WooCommerce - by Mercado Pago
 * PagSeguro for WooCommerce - by Claudio Sanches
 * Payment Plugins for PayPal WooCommerce - by Payment Plugins
 * Payment Plugins for Stripe WooCommerce - by Payment Plugins
+* PaysonCheckout for WooCommerce by Krokedil.
 * Rede WooCommerce - by Rede
 * WooCommerce Affirm Gateway - by WooCommerce
 * WooCommerce Amazon Pay - by WooCommerce
@@ -382,6 +384,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 TODO: Add notice for instructions to upgrade template files structure.
 
+* Added: Compatibility with plugin Klarna Checkout for WooCommerce by Krokedil.
+* Added: Compatibility with plugin PaysonCheckout for WooCommerce by Krokedil.
 * Added: Functions `undo_hooks` to feature files to allow undoing hook changes in some rare cases.
 * Improved: Separate styles for checkout layout and checkout steps into different files, allowing to load them independently.
 * Improved: Moved template files to a better structure, making it consistent with the PRO plugin structure and easier to understand.
