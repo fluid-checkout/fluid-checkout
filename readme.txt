@@ -382,8 +382,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 TODO: Add notice for instructions to upgrade template files structure.
 
+* Added: Functions `undo_hooks` to feature files to allow undoing hook changes in some rare cases.
 * Improved: Separate styles for checkout layout and checkout steps into different files, allowing to load them independently.
 * Improved: Moved template files to a better structure, making it consistent with the PRO plugin structure and easier to understand.
+* Improved: Changed the way plugin feature files are registered.
+* Removed: Filter `fc_init_features_list` as it has no valid use case.
 * Fixed: Only load modifield WooCommerce script files on the affected pages.
 
 = Unreleased =

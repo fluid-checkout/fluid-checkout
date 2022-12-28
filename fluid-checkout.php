@@ -100,7 +100,7 @@ class FluidCheckout {
 	public function __construct() {
 		$this->set_plugin_vars();
 		$this->load_admin_notices();
-		$this->add_features();
+		$this->register_features();
 
 		// Run hooks initialization after all plugins have been loaded
 		add_action( 'plugins_loaded', array( $this, 'hooks' ), 10 );
@@ -195,18 +195,25 @@ class FluidCheckout {
 	 * Register plugin features.
 	 * @since 1.2.0
 	 */
-	private function add_features() {
+	private function register_features() {
 		self::$features = array(
-			'checkout-page-template'              => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php' ),
-			'checkout-steps'                      => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
-			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ), // Class needs to be loaded for PRO version, checks that the feature is enabled happens inside the class.
+			'FluidCheckout_CheckoutPageTemplate'           => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php' ),
+			'FluidCheckout_Steps'                          => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
+			'FluidCheckout_CouponCodes'                    => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ), // Class needs to be loaded for PRO version, checks that the feature is enabled happens inside the class.
 
-			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'fc_apply_checkout_field_args', 'enable_default' => 'yes' ),
-			'checkout-hide-optional-fields'       => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'fc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),
-			'checkout-shipping-phone'             => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'fc_shipping_phone_field_visibility', 'enable_default' => 'no' ),
-			'checkout-validation'                 => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'fc_enable_checkout_validation', 'enable_default' => 'yes' ),
-			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'fc_enable_checkout_widget_areas', 'enable_default' => 'yes' ),
+			'FluidCheckout_CheckoutFields'                 => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'fc_apply_checkout_field_args', 'enable_default' => 'yes' ),
+			'FluidCheckout_CheckoutHideOptionalFields'     => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'fc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),
+			'FluidCheckout_CheckoutShippingPhoneField'     => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'fc_shipping_phone_field_visibility', 'enable_default' => 'no' ),
+			'FluidCheckout_Validation'                     => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'fc_enable_checkout_validation', 'enable_default' => 'yes' ),
+			'FluidCheckout_CheckoutWidgetAreas'            => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'fc_enable_checkout_widget_areas', 'enable_default' => 'yes' ),
 		);
+	}
+
+	/**
+	 * Get the plugin features list.
+	 */
+	public function get_features_list() {
+		return self::$features;
 	}
 
 

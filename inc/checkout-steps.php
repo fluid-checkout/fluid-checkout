@@ -267,6 +267,168 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 	}
 
+	/**
+	 * Undo hooks.
+	 */
+	public function undo_hooks() {
+		// General
+		remove_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
+
+		// Custom styles
+		remove_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
+		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_header_custom_styles' ), 10 );
+		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
+		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_footer_custom_styles' ), 10 );
+
+		// Enqueue
+		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
+		// JS settings object
+		remove_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
+		// Template file loader
+		remove_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
+
+		// Checkout header and footer
+		if ( $this->get_hide_site_header_footer_at_checkout() ) {
+			// Cart link on header
+			remove_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
+			remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
+		}
+
+		// Container class
+		remove_filter( 'fc_content_section_class', array( $this, 'add_content_section_class' ), 10 );
+
+		// Checkout page title
+		remove_filter( 'fc_display_checkout_page_title', array( $this, 'maybe_display_checkout_page_title' ), 10 );
+
+		// Checkout progress bar
+		remove_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout form and notices
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_remove_progress_bar_if_cart_expired' ), 10 );
+
+		// Checkout steps (do not undo checkout step registration hooks)
+		remove_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
+
+		// Notices
+		remove_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
+		remove_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), 100 );
+
+		// Customer details hooks
+		remove_action( 'fc_checkout_after_step_billing_fields', array( $this, 'run_action_woocommerce_checkout_after_customer_details' ), 90 );
+
+		// Contact
+		remove_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
+		remove_action( 'fc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
+		remove_action( 'woocommerce_checkout_before_customer_details', array( $this, 'output_substep_contact_login_link_section' ), 1 );
+		remove_action( 'wp_footer', array( $this, 'output_login_form_modal' ), 10 );
+		remove_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
+		remove_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_text_fragment' ), 10 );
+
+		// Account creation
+		remove_action( 'fc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
+
+		// Shipping
+		remove_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
+		remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), $this->get_shipping_address_hook_priority() );
+		remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), $this->get_shipping_methods_hook_priority() );
+		remove_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
+		remove_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_shipping_address' ), 10 );
+		remove_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_shipping_address' ), 20 );
+		remove_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
+		remove_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
+		remove_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_fields_fragment' ), 10 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
+
+		// Billing Address
+		remove_action( 'fc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
+		remove_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_billing_address' ), 10 );
+		remove_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_billing_address' ), 20 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_billing_address_text_fragment' ), 10 );
+
+		// Billing Same as Shipping
+		remove_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_field' ), 100 );
+		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
+		remove_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
+
+		// Billing phone
+		// Maybe move billing phone to contact step
+		if ( 'contact' === get_option( 'fc_billing_phone_field_position', 'billing_address' ) ) {
+			// Add billing phone to contact fields
+			remove_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
+
+			// Remove phone field from billing address data
+			remove_filter( 'fc_billing_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
+		}
+
+		// Payment
+		remove_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
+		remove_action( 'fc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
+		remove_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
+		remove_filter( 'fc_substep_payment_method_text_lines', array( $this, 'add_substep_text_lines_payment_method' ), 10 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_payment_method_text_fragment' ), 10 );
+
+		// Formatted Address
+		remove_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
+		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
+
+		// Place order
+		remove_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10, 2 );
+		remove_action( 'fc_place_order', array( $this, 'output_checkout_place_order_custom_buttons' ), 20, 2 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
+		remove_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
+
+		// Place order placeholder
+		remove_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_placeholder' ), 100, 2 );
+		remove_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_placeholder' ), 1 );
+
+		// Order summary
+		remove_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
+		remove_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
+		remove_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
+		remove_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'add_order_review_background_inline_styles' ), 30 );
+
+		// Order summary cart items details
+		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_product_name' ), 10, 3 );
+		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_unit_price' ), 30, 3 );
+		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_meta_data' ), 40, 3 );
+		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_quantity' ), 90, 3 );
+
+		// Persisted data
+		remove_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
+		remove_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100, 2 );
+		remove_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
+		remove_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10, 2 );
+		remove_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
+		
+		// Re-hook removed WooCommerce functions
+		add_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
+		add_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+		add_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+		add_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+		add_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
+
+		// Place order position
+		remove_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section' ), 1 );
+		remove_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
+		remove_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section_for_sidebar' ), 1 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_order_summary' ), 10 );
+
+		// Order notes
+		remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_order_notes' ), 100 );
+		remove_action( 'fc_output_step_billing', array( $this, 'output_substep_order_notes' ), 100 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
+		$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields_inside' );
+		$order_notes_substep_priority = apply_filters( 'fc_do_order_notes_hooks_priority', 100 );
+		remove_action( $order_notes_substep_position, array( $this, 'do_order_notes_hooks' ), $order_notes_substep_priority );
+	}
+
 
 
 	/**
@@ -616,6 +778,34 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Return what we found
 		return $_template;
+	}
+
+
+
+	/**
+	 * Get the selected payment method key.
+	 * Should be used only with very late hooks (hook `wp`) as the necessary resources are not available before this hook.
+	 */
+	public function get_selected_payment_method() {
+		// Bail if necessary WooCommerce functions are not available
+		if ( ! function_exists( 'WC' ) || ! method_exists( WC(), 'payment_gateways' ) || ! method_exists( WC()->payment_gateways(), 'get_available_payment_gateways' ) ) { return; }
+
+		// Get available gateways
+		$available_gateways = WC()->payment_gateways()->get_available_payment_gateways();
+
+		// Bail no payment methods are available
+		if ( ! $available_gateways || ! is_array( $available_gateways ) || count( $available_gateways ) === 0 ) { return; }
+
+		// Get chosen payment method from session
+		$chosen_payment_method = WC()->session->get( 'chosen_payment_method' );
+
+		// Set chosen payment method to first one available when the chosen method saved to session is not available.
+		if ( ! $chosen_payment_method || '' === $chosen_payment_method || ! array_key_exists( $chosen_payment_method, $available_gateways ) ) {
+			reset( $available_gateways );
+			$chosen_payment_method = key( $available_gateways );
+		}
+
+		return $chosen_payment_method;
 	}
 
 

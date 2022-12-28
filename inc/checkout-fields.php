@@ -38,6 +38,29 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_select2_field_class' ), 100, 3 );
 	}
 
+	/**
+	 * Undo hooks.
+	 */
+	public function undo_hooks() {
+		// Checkout fields args
+		remove_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_args' ), 100 );
+		remove_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 100 );
+		remove_filter( 'woocommerce_checkout_fields', array( $this, 'change_order_field_args' ), 100 );
+		remove_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 100 );
+
+		// Remove `screen-reader-text` from some fields
+		remove_filter( 'woocommerce_default_address_fields', array( $this, 'remove_screen_reader_class_default_locale_field_args' ), 100 );
+
+		// Add class for fields with description
+		remove_filter( 'woocommerce_default_address_fields', array( $this, 'add_field_has_description_class_default_locale_field_args' ), 100 );
+		remove_filter( 'woocommerce_billing_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
+		remove_filter( 'woocommerce_shipping_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
+		remove_filter( 'woocommerce_checkout_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
+
+		// Select2 field class
+		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_select2_field_class' ), 100, 3 );
+	}
+
 
 
 	/**
