@@ -237,14 +237,11 @@ class FluidCheckout {
 		// Bail if features list is not valid
 		if ( ! is_array( self::$features )  ) { return; }
 
-		// Maybe extend plugin features
-		$_features = apply_filters( 'fc_init_features_list', self::$features );
-
 		// Load enqueue
 		require_once self::$directory_path . 'inc/enqueue.php';
 
 		// Load each features
-		foreach ( $_features as $feature_key => $feature ) {
+		foreach ( self::$features as $feature_key => $feature ) {
 
 			$feature_is_enabled = true;
 			$file = array_key_exists( 'file', $feature ) ? $feature[ 'file' ] : null;
