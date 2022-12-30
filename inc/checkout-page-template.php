@@ -36,6 +36,8 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		}
 	}
 
+
+
 	/**
 	 * Undo hooks.
 	 */

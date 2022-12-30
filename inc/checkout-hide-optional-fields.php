@@ -26,6 +26,8 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		add_filter( 'woocommerce_form_field', array( $this, 'add_optional_form_field_link_button' ), 100, 4 );
 	}
 
+
+
 	/**
 	 * Undo hooks.
 	 */

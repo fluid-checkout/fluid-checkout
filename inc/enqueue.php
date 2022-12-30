@@ -37,6 +37,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_plugin_compat_styles' ), 10 );
 	}
 
+
+
 	/**
 	 * Undo hooks.
 	 */

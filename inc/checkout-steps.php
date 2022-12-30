@@ -267,6 +267,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 	}
 
+
+
 	/**
 	 * Undo hooks.
 	 */

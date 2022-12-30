@@ -29,6 +29,8 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		add_action( 'fc_checkout_footer_widgets', array( $this, 'output_widget_area_checkout_footer' ), 50 );
 	}
 
+
+
 	/**
 	 * Undo hooks.
 	 */

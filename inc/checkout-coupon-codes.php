@@ -58,6 +58,8 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		}
 	}
 
+
+
 	/**
 	 * Undo hooks.
 	 */

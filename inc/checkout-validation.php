@@ -43,6 +43,8 @@ class FluidCheckout_Validation extends FluidCheckout {
 		add_filter( 'woocommerce_form_field', array( $this, 'change_required_field_attributes' ), 100, 4 );
 	}
 
+
+
 	/**
 	 * Undo hooks.
 	 */

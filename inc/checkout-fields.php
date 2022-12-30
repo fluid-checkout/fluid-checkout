@@ -38,6 +38,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_select2_field_class' ), 100, 3 );
 	}
 
+
+
 	/**
 	 * Undo hooks.
 	 */
