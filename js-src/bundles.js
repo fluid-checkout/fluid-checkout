@@ -18,6 +18,8 @@
 	if ( ! RequireBundle.hasBundle( 'polyfill-inert' ) ) { RequireBundle.register( 'polyfill-inert', [ settings.jsLibPath + 'inert' + ver + '.js' ] ); }
 	if ( ! RequireBundle.hasBundle( 'sticky-states' ) ) { RequireBundle.register( 'sticky-states', [ settings.jsLibPath + 'sticky-states' + ver + '.js', settings.cssPath + 'sticky-states' + ver + '.css' ], '[data-sticky-states]', function(){ StickyStates.init( settings.stickyStates ); } ); }
 
-	RequireBundle.register( 'mailcheck', [ settings.jsLibPath + 'mailcheck' + ver + '.js', settings.jsPath + 'mailcheck-init' + ver + '.js' ], '[data-mailcheck]', function(){ MailcheckInit.init( fcSettings.checkoutValidation.mailcheckSuggestions ); } );
+	if ( fcSettings.checkoutValidation && fcSettings.checkoutValidation.mailcheckSuggestions ) {
+		RequireBundle.register( 'mailcheck', [ settings.jsLibPath + 'mailcheck' + ver + '.js', settings.jsPath + 'mailcheck-init' + ver + '.js' ], '[data-mailcheck]', function(){ MailcheckInit.init( fcSettings.checkoutValidation.mailcheckSuggestions ); } );
+	}
 
 })();
