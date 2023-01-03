@@ -219,6 +219,7 @@ Only the themes that we have added explicit compatibility with or that we have t
 * Creative Mail - by Constant Contact
 * Delivery & Pickup Date Time for WooCommerce - by CodeRockz
 * Elementor - by Elementor Team
+* Elementor PRO - by Elementor Team
 * Flexible Checkout Fields for WooCommerce - by WP Desk
 * FluentCRM Pro - by Fluent CRM
 * Flexible Shipping - by WP Desk
@@ -376,6 +377,18 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Bump tested up to WooCommerce 7.2.2
+* Added: Compatibility with theme PeakShops.
+* Added: Compatibility with plugin Hezarfen for WooCommerce.
+* Added: Compatibility with plugin Elementor PRO. Replace the custom checkout widget from Elementor PRO with Fluid Checkout.
+* Improved: Moved remove default WooCommerce hooks later at `init` hook for better compatibility with various plugins.
+* Fixed: Compatibility with plugin Payment Plugins for Stripe WooCommerce. Fixed iDeal bank dropdown field being cut off, and set its background color to white to make it stand out.
+* Fixed: Do not cut off elements overflowing the payment and order summary elements' boundaries.
+* Fixed: Modal styles not being loaded on all pages that use it.
+* Fixed: Prevent fatal errors when trying to merge field class arguments using the checkout fields class.
 
 = 2.2.0 - 2022-12-12 =
 

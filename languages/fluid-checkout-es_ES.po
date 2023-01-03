@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-19 07:56+0000\n"
-"PO-Revision-Date: 2022-12-05 11:18+0000\n"
+"PO-Revision-Date: 2023-01-03 18:44+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es_ES\n"
@@ -23,6 +23,19 @@ msgstr ""
 #: inc/checkout-validation.php:260
 msgid "(Required)"
 msgstr "(Obligatorio)"
+
+#: inc/compat/plugins/elementor-pro/widgets/woocommerce/checkout.php:70
+msgid ""
+"<p>This widget has been replaced by Fluid Checkout. </p><p>When using Fluid "
+"Checkout, the checkout page needs to use the original WooCommerce shortcode "
+"<code>[woocommerce_checkout]</code> to work properly.</p><p>For more "
+"information, visit the Fluid Checkout documentation.</p>"
+msgstr ""
+"<p>Este widget ha sido reemplazado por Fluid Checkout. </p><p>Al utilizar "
+"Fluid Checkout, la página de pago debe utilizar el shortcode original de "
+"WooCommerce <code>[woocommerce_checkout]</code> para que funcione "
+"correctamente.</p><p>Para obtener más información, visite la documentación "
+"de Fluid Checkout.</p> <p>Este widget ha sido sustituido por Fluid Checkout"
 
 #: fluid-checkout.php:428
 #, php-format
@@ -56,7 +69,7 @@ msgstr "Añadir un campo de teléfono al formulario de dirección de envío"
 msgid "Add widget areas to the checkout page"
 msgstr "Añadir áreas de widgets a la página de pago"
 
-#: inc/checkout-steps.php:2161
+#: inc/checkout-steps.php:2170
 msgid "Additional notes"
 msgstr "Notas adicionales"
 
@@ -68,7 +81,7 @@ msgstr "Después de la dirección de envío"
 msgid "Already have an account?"
 msgstr "¿Ya tiene una cuenta?"
 
-#: inc/checkout-steps.php:1944
+#: inc/checkout-steps.php:1953
 msgid "An account will be created with the information provided."
 msgstr "Se creará una cuenta con la información proporcionada."
 
@@ -108,7 +121,7 @@ msgstr ""
 msgid "Billing phone"
 msgstr "Teléfono de facturación"
 
-#: inc/checkout-steps.php:2909
+#: inc/checkout-steps.php:2935
 msgid "Billing to"
 msgstr "Facturación a"
 
@@ -135,7 +148,7 @@ msgstr "Antes de la sección Realizar pedido"
 msgid "Captcha Pro by BestWebSoft"
 msgstr "Captcha Pro de BestWebSoft"
 
-#: inc/checkout-steps.php:653
+#: inc/checkout-steps.php:664
 msgid "Cart total:"
 msgstr "Total del carro:"
 
@@ -143,7 +156,7 @@ msgstr "Total del carro:"
 msgid "Change email address to: {suggestion-value}"
 msgstr "Cambiar la dirección de correo electrónico a: {suggestion-value}"
 
-#: inc/checkout-steps.php:1624
+#: inc/checkout-steps.php:1633
 #, php-format
 msgid "Change: %s"
 msgstr "Cambiar: %s"
@@ -180,32 +193,32 @@ msgstr "Resumen del pedido de pago"
 msgid "Checkout Sidebar"
 msgstr "Barra lateral de pago"
 
-#: inc/checkout-steps.php:1258
+#: inc/checkout-steps.php:1267
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Facturación"
 
-#: inc/checkout-steps.php:1237
+#: inc/checkout-steps.php:1248
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Contacto"
 
-#: inc/checkout-steps.php:1267
+#: inc/checkout-steps.php:1276
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Pago"
 
-#: inc/checkout-steps.php:1247
+#: inc/checkout-steps.php:1257
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Envío"
 
-#: inc/checkout-steps.php:1624
+#: inc/checkout-steps.php:1633
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Cambiar"
 
-#: inc/checkout-steps.php:1625
+#: inc/checkout-steps.php:1634
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Guardar los cambios"
@@ -262,11 +275,11 @@ msgstr "Elegir en qué paso mostrar el campo del teléfono de facturación"
 msgid "Choose in which step to display the shipping phone field"
 msgstr "Elegir en qué paso mostrar el campo del teléfono de envío"
 
-#: inc/checkout-steps.php:653
+#: inc/checkout-steps.php:664
 msgid "Click to go to the order summary"
 msgstr "Haga clic para ir al resumen del pedido"
 
-#: templates/fc/checkout/review-order-section.php:59
+#: templates/fc/checkout/review-order-section.php:63
 msgid "Close and continue with checkout"
 msgstr "Cerrar y continuar con el pago"
 
@@ -280,7 +293,7 @@ msgstr "Cerrar"
 msgid "Contact step"
 msgstr "Paso de contacto"
 
-#: templates/fc/checkout/review-order-section.php:59
+#: templates/fc/checkout/review-order-section.php:63
 msgid "Continue"
 msgstr "Continuar"
 
@@ -408,8 +421,8 @@ msgstr ""
 msgid "Don't show this again"
 msgstr "No volver a mostrar"
 
-#: inc/checkout-steps.php:3909
-#: templates/fc/checkout/review-order-section.php:58
+#: inc/checkout-steps.php:3902
+#: templates/fc/checkout/review-order-section.php:62
 #| msgid "Edit Cart"
 msgid "Edit cart"
 msgstr "Editar carro"
@@ -623,11 +636,11 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Mover la casilla de verificación de registro al paso de contacto"
 
-#: inc/checkout-steps.php:540
+#: inc/checkout-steps.php:528
 msgid "Multi-step"
 msgstr "Pasos múltiples"
 
-#: inc/checkout-steps.php:1881
+#: inc/checkout-steps.php:1890
 msgid "My contact"
 msgstr "Mi contacto"
 
@@ -646,7 +659,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2554
+#: inc/checkout-steps.php:2580
 msgid "Not selected yet."
 msgstr "Aún no seleccionado."
 
@@ -655,7 +668,7 @@ msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr "Ninguno."
 
-#: inc/checkout-steps.php:2610
+#: inc/checkout-steps.php:2636
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Ninguno."
@@ -699,7 +712,7 @@ msgstr ""
 "El número de pedido y el recibo se enviarán a esta dirección de correo "
 "electrónico."
 
-#: inc/checkout-steps.php:3809 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3837 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Resumen del pedido"
 
@@ -715,7 +728,7 @@ msgstr ""
 msgid "Page background color"
 msgstr "Color de fondo de la página"
 
-#: inc/checkout-steps.php:3628
+#: inc/checkout-steps.php:3654
 msgid "Payment method"
 msgstr "Modo de pago"
 
@@ -728,7 +741,7 @@ msgid "Place order"
 msgstr "Realizar pedido"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1135
+#: inc/checkout-steps.php:1146
 #, php-format
 msgid "Proceed to %s"
 msgstr "Proceder con %s"
@@ -773,7 +786,7 @@ msgstr "Eliminar"
 msgid "Required"
 msgstr "Obligatorio"
 
-#: inc/checkout-steps.php:3091
+#: inc/checkout-steps.php:3117
 msgid "Same as shipping address"
 msgstr "Igual que la dirección de envío"
 
@@ -801,7 +814,7 @@ msgstr "Integraciones"
 msgid "Shipping address"
 msgstr "Dirección de envío"
 
-#: inc/checkout-steps.php:2137
+#: inc/checkout-steps.php:2146
 msgid "Shipping method"
 msgstr "Método de envío"
 
@@ -814,11 +827,11 @@ msgstr "Métodos de envío"
 msgid "Shipping phone"
 msgstr "Teléfono de envío"
 
-#: inc/checkout-steps.php:2113
+#: inc/checkout-steps.php:2122
 msgid "Shipping to"
 msgstr "Envío"
 
-#: inc/checkout-steps.php:541
+#: inc/checkout-steps.php:529
 msgid "Single step"
 msgstr "Un solo paso"
 
@@ -837,26 +850,26 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Espacio para el encabezado del sitio en la página de pago (en píxeles)"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1387
+#: inc/checkout-steps.php:1396
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Paso %1$s de %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2293
+#: inc/checkout-steps.php:2319
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2298
+#: inc/checkout-steps.php:2324
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:1738
+#: inc/checkout-steps.php:1747
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Ninguno."
@@ -980,7 +993,7 @@ msgstr ""
 "agradecemos que nos des una calificación rápida, así como cualquier feedback,"
 " por breve que sea: nos anima a seguir mejorando el plugin :)"
 
-#: templates/checkout/payment.php:46
+#: templates/checkout/payment.php:48
 #, php-format
 msgid "Your order has a total amount due of %s. No further payment is needed."
 msgstr ""
