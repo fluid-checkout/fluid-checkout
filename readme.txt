@@ -380,6 +380,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 7.2.2
 * Added: Compatibility with theme PeakShops.
 * Added: Compatibility with plugin Hezarfen for WooCommerce.
 * Added: Compatibility with plugin Elementor PRO. Replace the custom checkout widget from Elementor PRO with Fluid Checkout.
