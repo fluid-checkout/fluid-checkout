@@ -378,6 +378,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Compatibility with theme Razzi.
+
 = 2.2.1 - 2023-01-03 =
 
 * Bump tested up to WooCommerce 7.2.2
