@@ -1462,11 +1462,16 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
   left: 10px;
   height: 100%;
   line-height: 1.2;
+  font-weight: bold;
   text-align: left;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .amount {
   display: block;
+  font-weight: bold;
+}
+
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .woocommerce-Price-currencySymbol {
   font-weight: bold;
 }
 
