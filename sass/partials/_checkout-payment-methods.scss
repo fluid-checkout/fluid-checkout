@@ -100,7 +100,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	background-color: transparent;
 }
 
-.fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name="payment_method"]:first-child:checked + label {
+.fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name="payment_method"]:checked + label {
 	border-top: 0;
 	border-left: 0;
 	border-right: 0;
@@ -135,8 +135,8 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name="payment_method"]:checked + label:before {
 	content: '';
-	border-color: $success-color;
-	background-color: $success-color;
+	border-color: $success-color !important; // Needed to override inline styles added by some themes
+	background-color: $success-color !important; // Needed to override inline styles added by some themes
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > label:hover {

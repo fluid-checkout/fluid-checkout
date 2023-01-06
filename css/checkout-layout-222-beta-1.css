@@ -1561,7 +1561,7 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   background-color: transparent;
 }
 
-.fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name=payment_method]:first-child:checked + label {
+.fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name=payment_method]:checked + label {
   border-top: 0;
   border-left: 0;
   border-right: 0;
@@ -1595,8 +1595,8 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method]:checked + label:before {
   content: "";
-  border-color: #007a3d;
-  background-color: #007a3d;
+  border-color: #007a3d !important;
+  background-color: #007a3d !important;
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > label:hover {
