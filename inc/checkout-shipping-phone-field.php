@@ -22,7 +22,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		// Add shipping phone field
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'add_shipping_phone_field' ), 5 );
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_shipping_phone' ), 10 );
-		
+
 		// Admin fields
 		if ( is_admin() ) {
 			add_filter( 'woocommerce_admin_shipping_fields', array( $this, 'add_shipping_phone_to_admin_screen' ), 10 );
@@ -39,7 +39,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_shipping_phone_field_to_contact_fields' ), 10 );
 
 			// Remove phone field from shipping address data
-			add_filter( 'fc_shipping_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
+			add_filter( 'fc_shipping_substep_text_address_data', array( FluidCheckout_Steps::instance(), 'remove_phone_address_data' ), 10 );
 		}
 	}
 
@@ -69,16 +69,16 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	/**
 	 * Change shipping phone `required` argument when billing phone field is required.
 	 *
-	 * @param   array  $field_args  Contains shipping field arguments.
+	 * @param   array  $shipping_fields  Contains shipping fields arguments.
 	 */
-	public function maybe_set_shipping_phone_required( $field_args ) {
+	public function maybe_set_shipping_phone_required( $shipping_fields ) {
 		// Bail if shipping phone not present, or billing phone field not required
-		if ( ! array_key_exists( 'shipping_phone', $field_args ) || get_option( 'woocommerce_checkout_phone_field', 'required' ) !== 'required' ) { return $field_args; }
+		if ( ! array_key_exists( 'shipping_phone', $shipping_fields ) || get_option( 'woocommerce_checkout_phone_field', 'required' ) !== 'required' || 'billing_address' !== get_option( 'fc_billing_phone_field_position', 'billing_address' ) ) { return $shipping_fields; }
 
 		// Set shipping phone as required
-		$field_args['shipping_phone']['required'] = true;
+		$shipping_fields['shipping_phone']['required'] = true;
 
-		return $field_args;
+		return $shipping_fields;
 	}
 
 
@@ -113,7 +113,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		// Maybe apply customizations from the Checkout Fields feature
 		if ( class_exists( 'FluidCheckout_CheckoutFields' ) ) {
 			$new_fields_args = FluidCheckout_CheckoutFields::instance()->get_checkout_field_args();
-			
+
 			// Check if field args exists
 			if ( array_key_exists( $field_key, $new_fields_args ) ) {
 				$fields[ $field_key ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_args( $fields[ $field_key ], $new_fields_args[ $field_key ] );
@@ -132,7 +132,26 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function update_order_meta_with_shipping_phone( $order_id ) {
 		$shipping_phone = isset( $_POST['shipping_phone'] ) ? sanitize_text_field( $_POST['shipping_phone'] ) : '';
-		update_post_meta( $order_id, '_shipping_phone', $shipping_phone );
+
+		// Bail if shipping phone was not provided
+		if ( empty( $shipping_phone ) ) { return; }
+
+		// Get the order object
+		$order = wc_get_order( $order_id );
+
+		// Bail if order was not found
+		if ( ! $order ) { return; }
+
+		// Update shipping phone value
+		if ( is_callable( array( $order, 'set_shipping_phone' ) ) ) {
+			$order->set_shipping_phone( $shipping_phone );
+		}
+		else {
+			$order->update_meta_data( '_shipping_phone', $shipping_phone );
+		}
+
+		// Update order
+		$order->save();
 	}
 
 	/**
@@ -157,21 +176,22 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * @param   WC_Order   $order   The Order object.
 	 */
 	public function output_order_formatted_shipping_address_with_phone( $address, $order ) {
-		$shipping_phone = get_post_meta( $order->get_id(), '_shipping_phone', true );
-		if ( ! empty( $shipping_phone ) ) { $address['shipping_phone'] = $shipping_phone; }
+		// Bail if order parameter is invalid
+		if ( ! $order instanceof WC_Order ) { return $address; }
+
+		// Get shipping phone
+		$shipping_phone = null;
+		if ( is_callable( array( $order, 'get_shipping_phone' ) ) ) {
+			$shipping_phone = $order->get_shipping_phone();
+		}
+		else {
+			$shipping_phone = $order->get_meta( '_shipping_phone', true );
+		}
+
+		// Maybe add the shipping phone to the address data
+		if ( ! empty( $shipping_phone ) ) { $address['phone'] = $shipping_phone; }
+
 		return $address;
-	}
-
-
-
-	/**
-	 * Remove phone from address data.
-	 *
-	 * @param   array  $html  HTML for the substep text.
-	 */
-	public function remove_phone_address_data( $address_data ) {
-		unset( $address_data[ 'phone' ] );
-		return $address_data;
 	}
 
 

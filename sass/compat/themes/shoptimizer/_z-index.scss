@@ -1,0 +1,35 @@
+// ------------------------------------
+// Z-INDEX FIXES
+// ------------------------------------
+
+body#{ $_body-theme-selector } .site.overlay .site-content:after,
+body#{ $_body-theme-selector } .mobile-overlay {
+	z-index: z( 'header-element' ) - 1;
+}
+
+
+
+body#{ $_body-theme-selector } .site-header {
+	z-index: z( 'header-element' )
+}
+
+body#{ $_body-theme-selector } .col-full-nav {
+	z-index: z( 'header-element' );
+}
+
+
+
+body#{ $_body-theme-selector } .main-navigation ul.menu > li.menu-item-has-children > .sub-menu-wrapper {
+	z-index: z( 'header-element' );
+}
+
+
+
+body#{ $_body-theme-selector } .mobile-menu.close-drawer,
+body#{ $_body-theme-selector }.drawer-open:before {
+	z-index: z( 'header-element' ) + 10;
+}
+
+body#{ $_body-theme-selector } .shoptimizer-mini-cart-wrap {
+	z-index: z( 'header-element' ) + 20;
+}

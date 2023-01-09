@@ -25,7 +25,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		add_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_widget_area_checkout_header_below' ), 3 ); // Displays widgets before the progress bar
 		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_widget_area_order_review_inside' ), 50 );
 		add_action( 'fc_checkout_after_order_review', array( $this, 'output_widget_area_order_review_outside' ), 50 );
-		add_action( 'woocommerce_review_order_after_submit', array( $this, 'output_widget_area_checkout_place_order_below' ), 50 );
+		add_action( 'fc_place_order', array( $this, 'output_widget_area_checkout_place_order_below' ), 50 );
 		add_action( 'fc_checkout_footer_widgets', array( $this, 'output_widget_area_checkout_footer' ), 50 );
 	}
 

@@ -2,28 +2,54 @@
 // CHECKOUT PLACE ORDER
 // ------------------------------------
 
-.fc-wrapper .fc-inside div.place-order {
+.fc-wrapper .fc-place-order__section {
+	margin-top: $global-spacing-small;
+	margin-bottom: $global-spacing-small;
+}
+
+// PLACE ORDER INSIDE PAYMENT METHOD
+.fc-wrapper .fc-inside .fc-place-order__section {
 	float: none;
-	display: block;
-	padding: $place-order-padding;
+	margin: 0;
 
 	@media (#{$bp-larger-than-desktop}) {
+		display: block;
 		padding: $place-order-padding--large-screen;
 	}
+}
+// PLACE ORDER ON ORDER SUMMARY
+.fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__section--sidebar {
+	float: none;
+	display: block;
+	padding: $place-order-padding-sidebar;
+}
+// PLACE ORDER (SIDEBAR) INSIDE ORDER SUMMARY
+body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__section--sidebar {
+	// FOR MOBILE VIEW
+	display: none;
+
+	// FOR DESKTOP VIEW
+	@media (#{$bp-larger-than-desktop}) {
+		display: block;
+	}
+}
+// WHEN CART FLYOUT IS OPEN ON MOBILE
+.fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-checkout-order-review[ data-flyout ].is-open .fc-place-order__section {
+	display: none;
 }
 
 
 
-.fc-wrapper .fc-sidebar .fc-sidebar__inner div.place-order {
-	display: none;
+.fc-wrapper .fc-place-order__custom-buttons {
+	margin: $global-spacing-small 0 $global-spacing-extra-small;
+}
 
-	@media (#{$bp-larger-than-desktop}) {
-		float: none;
-		display: block;
-		margin-top: $global-spacing-small;
-		margin-bottom: $global-spacing-small;
-		padding: $place-order-padding-sidebar--large-screen;
-	}
+
+
+.fc-wrapper .fc-inside div.place-order,
+.fc-wrapper .fc-sidebar div.place-order {
+	border: 0;
+	margin: 0;
 }
 
 
@@ -35,9 +61,19 @@
 	text-align: $alignment-left;
 }
 
+.fc-wrapper .woocommerce-terms-and-conditions-wrapper .form-row {
+	display: block;
+	float: none;
+}
+
 .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
 	margin-bottom: 0;
+	padding: 0;
 	text-align: $alignment-left;
+}
+
+.fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox input[type="checkbox"] {
+	top: 0;
 }
 
 
@@ -66,16 +102,15 @@
 
 
 .fc-place-order {
-	padding: $global-spacing 0;
+	padding: $global-spacing 0 $global-spacing-extra-small;
 	text-align: center;
 }
-.fc-place-order:last-of-type {
-	padding-bottom: $global-spacing-extra-small;
-}
 
-// Place order button on the sidebar
+
+
+// Place order button section on the sidebar
 .fc-sidebar .fc-place-order {
-	padding: $global-spacing-small 0;
+	padding: $global-spacing-small 0 $global-spacing-extra-small;
 }
 
 

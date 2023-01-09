@@ -100,7 +100,7 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		ob_start();
 
 		// Add expansible block markup for the field
-		$form_field_label = get_option( 'fc_optional_fields_link_label_lowercase', 'yes' ) === 'yes' ? strtolower( $args['label'] ) : $args['label'];
+		$form_field_label = 'yes' === get_option( 'fc_optional_fields_link_label_lowercase', 'yes' ) ? strtolower( $args['label'] ) : $args['label'];
 		
 		/* translators: %s: Form field label */
 		$toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), $form_field_label ) );

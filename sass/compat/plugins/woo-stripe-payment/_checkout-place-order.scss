@@ -1,0 +1,16 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body.has-payment-method-selected--payment_method_stripe_googlepay .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar,
+body.has-payment-method-selected--payment_method_stripe_applepay .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar,
+body.has-payment-method-selected--payment_method_stripe_payment_request .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar,
+body.has-payment-method-selected--payment_method_ppcp .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar {
+	display: none;
+}
+
+
+
+body.woocommerce-checkout .fc-wrapper #wc-stripe-payment-request-container {
+	width: 100%;
+}

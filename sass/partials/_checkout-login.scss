@@ -8,7 +8,9 @@
 
 .has-flyout [data-flyout][data-flyout-modal].is-activated .fc-login-form__inner[data-flyout-content] {
 	padding-bottom: $global-spacing-medium;
-	max-width: remsize( 42rem );
+
+	@media (#{$bp-larger-than-phablet}) { max-width: remsize( 42rem ); }
+	@media (#{$bp-larger-than-tablet}) { max-width: remsize( 50rem ); }
 }
 
 
@@ -50,6 +52,12 @@
 .fc-contact-login__action--underline {
 	text-decoration: underline;
 }
+.fc-contact-login__action:not( [role="button"] ) {
+	cursor: not-allowed;
+	text-decoration: none;
+	color: $grey;
+	opacity: .5;
+}
 
 
 
@@ -89,21 +97,6 @@
 	padding: 0;
 	width: 100%;
 	border: 0;
-}
-
-
-.fc-login-form .fc-login-form__close-wrapper {
-	text-align: right;
-}
-
-.fc-login-form .button--flyout-close {
-	position: absolute;
-	top: $global-spacing-small;
-	right: $global-spacing-small;
-}
-.fc-login-form .button--flyout-close:before {
-	@include icon( 'i-x' );
-	@include icon-size( $icon-size );
 }
 
 

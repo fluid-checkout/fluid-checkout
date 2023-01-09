@@ -26,9 +26,8 @@ var _package = {},
 
 
 // Try loading local gulpfile settings
-if ( fs.access( 'gulp-settings.local.json', function(){} ) ) {
-	_gulpSettingsLocal = loadJsonFile.sync( 'gulp-settings.local.json' );
-}
+try{ _gulpSettingsLocal = loadJsonFile.sync( 'gulp-settings.local.json' ); }
+catch ( err ) {}
 
 
 

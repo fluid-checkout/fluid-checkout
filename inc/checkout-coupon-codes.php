@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Feature for adding coupon codes or gift certificate codes to checkout
+ * Feature for adding coupon codes to checkout.
  */
 class FluidCheckout_CouponCodes extends FluidCheckout {
 
@@ -19,14 +19,14 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Very late hooks
-		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 	}
 
 	/**
-	 * Add or remove very late hooks.
+	 * Add or remove late hooks.
 	 */
-	public function very_late_hooks() {
+	public function late_hooks() {
 		// Bail if use of coupons not enabled
 		if ( ! wc_coupons_enabled() ) { return; }
 
@@ -37,7 +37,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
-		// Checkout JS settings
+		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Prevent hiding coupon code field behind a link button, as it is implemented directly
@@ -49,10 +49,10 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		// Integrated coupon code section at checkout
 		if ( 'yes' === get_option( 'fc_enable_checkout_coupon_codes', 'yes' ) ) {
-			// Checkout Coupon Notice
+			// Checkout coupon notice
 			remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 
-			// Coupon Code Substep
+			// Coupon code substep
 			add_action( 'fc_output_step_payment', array( $this, 'output_substep_coupon_codes' ), 10 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_coupon_codes_text_fragment' ), 10 );
 		}
@@ -83,7 +83,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		// Scripts
 		wp_register_script( 'fc-checkout-coupons', self::$directory_url . 'js/checkout-coupons'. self::$asset_version . '.js', array( 'jquery', 'require-bundle' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-coupons', 'window.addEventListener("load",function(){CheckoutCoupons.init(fcSettings.checkoutCoupons);})' );
+		wp_add_inline_script( 'fc-checkout-coupons', 'window.addEventListener("DOMContentLoaded",function(){CheckoutCoupons.init(fcSettings.checkoutCoupons);})' );
 
 		// Styles
 		wp_register_style( 'fc-checkout-coupons', self::$directory_url . 'css/checkout-coupons'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
@@ -120,8 +120,9 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	public function add_js_settings( $settings ) {
 
 		$settings[ 'checkoutCoupons' ] = apply_filters( 'fc_checkout_coupons_script_settings', array(
-			'addCouponCodeNonce' => wp_create_nonce( 'fc-add-coupon-code' ),
-			'removeCouponCodeNonce' => wp_create_nonce( 'fc-remove-coupon-code' ),
+			'isEnabled'                => get_option( 'fc_enable_checkout_coupon_codes', 'yes' ),
+			'addCouponCodeNonce'       => wp_create_nonce( 'fc-add-coupon-code' ),
+			'removeCouponCodeNonce'    => wp_create_nonce( 'fc-remove-coupon-code' ),
 		) );
 
 		return $settings;
@@ -157,12 +158,19 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * @param   array  $field_args               The coupon code field arguments. Will use default values if attributes are not passed in.
 	 * @param   array  $expansible_section_args  The attributes for the coupon code expansible section. Will use default values if attributes are not passed in.
 	 */
-	public function output_substep_coupon_codes_fields( $field_args = array(), $expansible_section_args = array() ) {
+	public function output_substep_coupon_codes_fields( $field_args = array(), $expansible_section_args = array(), $output_handle = true, $section_key = null ) {
 		$coupon_code_field_label = apply_filters( 'fc_coupon_code_field_label', __( 'Coupon code', 'fluid-checkout' ) );
 		$coupon_code_field_placeholder = apply_filters( 'fc_coupon_code_field_placeholder', __( 'Enter your code here', 'fluid-checkout' ) );
 		$coupon_code_button_label = apply_filters( 'fc_coupon_code_button_label', _x( 'Apply', 'Button label for applying coupon codes', 'fluid-checkout' ) );
 
-		$key = 'coupon_code';
+		// Maybe define section key
+		$section_id = 'coupon_code';
+		if ( empty( $section_key ) ) {
+			$section_key = $section_id . '--' . rand();
+		}
+
+		// Coupon code field args
+		$field_key = 'coupon_code';
 		$coupon_code_field_args = array_merge( array(
 			'required'                   => false,
 			'fc_skip_server_validation'  => true,
@@ -177,16 +185,27 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		// Expansible section args
 		$coupon_code_expansible_args = array_merge( array(
 			'initial_state' => true === apply_filters( 'fc_coupon_code_field_initially_expanded', false ) ? 'expanded' : 'collapsed',
+			'section_attributes' => array(
+				'class' => 'fc-coupon_code__collapsible',
+			),
 		), $expansible_section_args );
 
-		// Output coupon code field and button in an expansible form section
-		$coupon_code_toggle_label = get_option( 'fc_optional_fields_link_label_lowercase', 'yes' ) === 'yes' ? strtolower( $coupon_code_field_label ) : $coupon_code_field_label;
-		/* translators: %s: Form field label */
-		$coupon_code_toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), $coupon_code_toggle_label ) );
-		FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( $key, $coupon_code_toggle_label, $coupon_code_expansible_args );
-		woocommerce_form_field( $key, $coupon_code_field_args );
+		// Define toggle label
+		$coupon_code_toggle_label = null;
+		if ( $output_handle ) {
+			// Output coupon code field and button in an expansible form section
+			$coupon_code_toggle_label = 'yes' === get_option( 'fc_optional_fields_link_label_lowercase', 'yes' ) ? strtolower( $coupon_code_field_label ) : $coupon_code_field_label;
+			/* translators: %s: Form field label */
+			$coupon_code_toggle_label = apply_filters( 'fc_expansible_section_toggle_label_' . $section_id, sprintf( __( 'Add %s', 'fluid-checkout' ), $coupon_code_toggle_label ) );
+		}
+
+		// Output section
+		FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( $section_key, $coupon_code_toggle_label, $coupon_code_expansible_args );
 		?>
-		<button type="button" class="fc-coupon-code__apply <?php echo esc_attr( apply_filters( 'fc_coupon_code_apply_button_classes', 'button' ) ); ?>" data-apply-coupon-button><?php echo esc_html( $coupon_code_button_label ); ?></button>
+		<div class="fc-coupon-code-section">
+			<?php woocommerce_form_field( $field_key, $coupon_code_field_args ); ?>
+			<button type="button" class="fc-coupon-code__apply <?php echo esc_attr( apply_filters( 'fc_coupon_code_apply_button_classes', 'button' ) ); ?>" data-apply-coupon-button><?php echo esc_html( $coupon_code_button_label ); ?></button>
+		</div>
 		<?php
 		FluidCheckout_Steps::instance()->output_expansible_form_section_end_tag();
 	}
@@ -271,6 +290,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		check_ajax_referer( 'fc-add-coupon-code', 'security' );
 
 		$coupon_code = sanitize_text_field( wp_unslash( $_REQUEST['coupon_code'] ) );
+		$reference_id = sanitize_text_field( wp_unslash( $_REQUEST['reference_id'] ) );
 
 		if ( ! empty( $coupon_code ) ) {
 			WC()->cart->add_discount( wc_format_coupon_code( $coupon_code ) );
@@ -284,6 +304,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 				array(
 					'result'           => false === strpos( $message, 'woocommerce-error' ) ? 'success' : 'error',
 					'coupon_code'      => $coupon_code,
+					'reference_id'     => $reference_id,
 					'message'          => $message,
 				)
 			);
@@ -293,6 +314,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 				array(
 					'result'           => 'error',
 					'coupon_code'      => $coupon_code,
+					'reference_id'     => $reference_id,
 					'error_slug'       => 'coupon_code_does_not_exist',
 					'message'          => WC_Coupon::get_generic_coupon_error( WC_Coupon::E_WC_COUPON_PLEASE_ENTER ),
 				)
@@ -308,6 +330,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		check_ajax_referer( 'fc-remove-coupon-code', 'security' );
 
 		$coupon_code = sanitize_text_field( wp_unslash( $_REQUEST['coupon_code'] ) );
+		$reference_id = sanitize_text_field( wp_unslash( $_REQUEST['reference_id'] ) );
 
 		if ( ! empty( $coupon_code ) ) {
 			WC()->cart->remove_coupon( wc_format_coupon_code( $coupon_code ) );
@@ -322,6 +345,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 				array(
 					'result'           => false === strpos( $message, 'woocommerce-error' ) ? 'success' : 'error',
 					'coupon_code'      => $coupon_code,
+					'reference_id'     => $reference_id,
 					'message'          => $message,
 				)
 			);
@@ -338,6 +362,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 				array(
 					'result'           => 'error',
 					'coupon_code'      => $coupon_code,
+					'reference_id'     => $reference_id,
 					'error_slug'       => 'coupon_code_not_provided',
 					'message'          => $message,
 				)

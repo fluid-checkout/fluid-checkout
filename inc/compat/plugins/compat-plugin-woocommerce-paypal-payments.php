@@ -6,6 +6,8 @@ defined( 'ABSPATH' ) || exit;
  */
 class FluidCheckout_WooCommercePayPalPayments extends FluidCheckout {
 
+	public $smart_button_module;
+
 	/**
 	 * __construct function.
 	 */
@@ -19,27 +21,18 @@ class FluidCheckout_WooCommercePayPalPayments extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Very late hooks
-		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+		// Place order
+		add_filter( 'woocommerce_paypal_payments_checkout_button_renderer_hook', array( $this, 'change_paypal_button_hook_name' ), 100 );
+		add_filter( 'woocommerce_paypal_payments_checkout_dcc_renderer_hook', array( $this, 'change_paypal_button_hook_name' ), 100 );
 	}
 
+
+
 	/**
-	 * Add or remove very late hooks.
+	 * Change the position of the PayPal payment buttons to the payment step.
 	 */
-	public function very_late_hooks() {
-		$smart_button_module = FluidCheckout::instance()->get_object_by_class_name_from_hooks( 'WooCommerce\PayPalCommerce\Button\Assets\SmartButton' );
-
-		if ( $smart_button_module ) {
-			// PayPal buttons
-			remove_action( 'woocommerce_review_order_after_payment', array( $smart_button_module, 'button_renderer' ), 10 );
-			add_action( 'fc_output_step_payment', array( $smart_button_module, 'button_renderer' ), 110 );
-
-			// Widget area after submit button
-			if ( class_exists( 'FluidCheckout_CheckoutWidgetAreas' ) ) {
-				remove_action( 'woocommerce_review_order_after_submit', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 50 );
-				add_action( 'fc_output_step_payment', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 150 );
-			}
-		}
+	public function change_paypal_button_hook_name( $hook_name ) {
+		return 'fc_place_order_custom_buttons';
 	}
 
 }

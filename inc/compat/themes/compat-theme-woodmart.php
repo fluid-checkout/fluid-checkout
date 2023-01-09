@@ -60,7 +60,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		$position_index = count( $settings ) - 1;
 
 		// Insert at token position
-		$new_settings  = array_slice( $settings, 0, $position_index );
+		$new_settings = array_slice( $settings, 0, $position_index );
 		$new_settings = array_merge( $new_settings, $insert_settings );
 		$new_settings = array_merge( $new_settings, array_slice( $settings, $position_index, count( $settings ) ) );
 
@@ -102,6 +102,8 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		$title_class .= ' title-size-' . $title_size;
 		$title_class .= ' title-design-' . $title_design;
 		$title_class .= ' color-scheme-' . $title_color;
+
+		woodmart_enqueue_inline_style( 'page-title' );
 
 		// Bail if title disabled
 		if ( 'disabled' === $title_design ) { return; }

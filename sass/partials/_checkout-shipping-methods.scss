@@ -55,6 +55,7 @@
 	padding-#{ $alignment-left }: #{ $shipping-method-padding-horizontal + $shipping-method-radio-size + $global-spacing-extra-small };
 	padding-#{ $alignment-right }: #{ $shipping-method-padding-horizontal + $shipping-method-price-width };
 	width: 100%;
+	background-color: $shipping-method-background-color;
 	border-bottom: $shipping-method-border;
 	font-weight: $shipping-method-font-weight;
 	cursor: pointer;
@@ -134,19 +135,26 @@
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
 	position: absolute;
-	top: $shipping-method-padding-vertical;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: center;
+	top: 0;
 	#{ $alignment-left }: auto;
 	#{ $alignment-right }: $shipping-method-padding-horizontal;
-	display: block;
-	text-align: right;
-}
-.woocommerce ul#shipping_method .shipping-method__option .has-tax-notes .shipping-method__option-price {
-	top: #{ math.div( $shipping-method-padding-vertical, 2 ) };
+	height: 100%;
 	line-height: 1.2;
+	font-weight: $shipping-method-price-font-weight;
+	text-align: #{ $alignment-right };
 }
+
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .amount {
 	display: block;
+	font-weight: $shipping-method-price-font-weight;
+}
+
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .woocommerce-Price-currencySymbol {
 	font-weight: $shipping-method-price-font-weight;
 }
 

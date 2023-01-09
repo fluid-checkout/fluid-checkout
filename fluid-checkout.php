@@ -5,11 +5,11 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 2.0.3-beta-2
+Version: 2.2.2-beta-1
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 6.6.1
+WC tested up to: 7.2.2
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
@@ -142,6 +142,9 @@ class FluidCheckout {
 			return;
 		}
 
+		// Declare compatibility with WooCommerce HPOS (High Performance Order Storage)
+		add_action( 'before_woocommerce_init', array( $this, 'declare_woocommerce_hpos_compatibility' ), 10 );
+
 		// Load features
 		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_features' ), 10 );
@@ -161,14 +164,18 @@ class FluidCheckout {
 	 * Fires when the plugin is successfully updated.
 	 */
 	public static function clear_cache_on_updates( $upgrader_object, $options ) {
+		// Bail if necessary options data are not available
+		if ( ! is_array( $options ) || ! array_key_exists( 'action', $options ) || ! array_key_exists( 'type', $options ) || ! array_key_exists( 'plugins', $options ) ) { return; }
+
+		// Bail if not updating plugins
+		if ( 'update' !== $options[ 'action' ] || 'plugin' !== $options[ 'type' ] || ! is_array( $options[ 'plugins' ] ) ) { return; }
+
 		// Get current plugin path name
 		$current_plugin_path_name = plugin_basename( __FILE__ );
- 
-		if ( 'update' === $options[ 'action' ] && 'plugin' === $options[ 'type' ] ) {
-			foreach( $options[ 'plugins' ] as $plugin_path_name ) {
-				if ( $plugin_path_name === $current_plugin_path_name ) {
-					wp_cache_flush();
-				}
+			
+		foreach( $options[ 'plugins' ] as $plugin_path_name ) {
+			if ( $plugin_path_name === $current_plugin_path_name ) {
+				wp_cache_flush();
 			}
 		}
 	}
@@ -181,8 +188,8 @@ class FluidCheckout {
 	 */
 	private function load_admin_notices() {
 		require_once self::$directory_path . 'inc/admin/admin-notices.php';
-		require_once self::$directory_path . 'inc/admin/admin-notice-breaking-changes-version-200.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-review-request.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
 	}
 
 
@@ -194,7 +201,7 @@ class FluidCheckout {
 	private function add_features() {
 		self::$features = array(
 			'checkout-steps'                      => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
-			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ), // Class needs to be loaded for PRO version, checks that the feature is enabled inside the class.
+			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ), // Class needs to be loaded for PRO version, checks that the feature is enabled happens inside the class.
 
 			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'fc_apply_checkout_field_args', 'enable_default' => 'yes' ),
 			'checkout-hide-optional-fields'       => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'fc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),
@@ -238,10 +245,15 @@ class FluidCheckout {
 
 		// Look for template file in the theme
 		if ( ! $_template || apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
-			$_template = locate_template( array(
+			$_template_override = locate_template( array(
 				$template_path . $template_name,
 				$template_name,
 			) );
+
+			// Check if files exist before changing template
+			if ( file_exists( $_template_override ) ) {
+				$_template = $_template_override;
+			}
 		}
 
 		// Use default template
@@ -320,7 +332,7 @@ class FluidCheckout {
 			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
 
 			// Maybe skip compat file
-			if ( get_option( 'fc_enable_compat_plugin_' . $plugin_slug, true ) === 'false' ) { continue; }
+			if ( true !== apply_filters( 'fc_enable_compat_plugin_' . $plugin_slug, true ) ) { continue; }
 
 			// Get plugin file path
 			$plugin_compat_file_path = self::$directory_path . 'inc/compat/plugins/compat-plugin-' . $plugin_slug . '.php';
@@ -344,7 +356,7 @@ class FluidCheckout {
 
 		foreach ( $theme_slugs as $theme_slug ) {
 			// Maybe skip compat file
-			if ( get_option( 'fc_enable_compat_theme_' . $theme_slug, true ) === 'false' ) { continue; }
+			if ( true !== apply_filters( 'fc_enable_compat_theme_' . $theme_slug, true ) ) { continue; }
 
 			// Get current theme's compatibility file name
 			$theme_compat_file_path = self::$directory_path . 'inc/compat/themes/compat-theme-' . $theme_slug . '.php';
@@ -367,6 +379,19 @@ class FluidCheckout {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		return is_plugin_active( 'woocommerce/woocommerce.php' ) && function_exists( 'WC' );
 	}
+
+
+	
+	/**
+	 * Declare compatibility with the WooCommerce High Performance Order Storage feature.
+	 */
+	public function declare_woocommerce_hpos_compatibility() {
+		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+		}
+	}
+
+
 
 	/**
 	 * Check if Fluid Checkout PRO is active on a single install or network wide.
@@ -657,6 +682,26 @@ class FluidCheckout {
 	 */
 	public function remove_action_for_closure( $tag, $priority, $all_occurencies = false ) {
 		return $this->remove_filter_for_closure( $tag, $priority, $all_occurencies );
+	}
+
+
+
+	/**
+	 * Get the plugin version number for this or other plugins.
+	 *
+	 * @param   string       $main_plugin_file  (optional) The plugin folder and main file name for the plugin to get the version number from. Ie. `woocommerce/woocommerce.php`.
+	 *                                          Defaults to main file of this plugin.
+	 *
+	 * @return  string|bool                     The plugin version number, or `false` of the plugin was not found.
+	 */
+	public function get_plugin_version( $main_plugin_file = 'fluid-checkout/fluid-checkout.php' ) {
+		$plugin_file = trailingslashit( WP_PLUGIN_DIR ) . $main_plugin_file;
+
+		if ( file_exists( $plugin_file ) ) {
+			return get_file_data( $plugin_file , ['Version' => 'Version'], 'plugin')['Version'];
+		}
+
+		return false;
 	}
 
 }

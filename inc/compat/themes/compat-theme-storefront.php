@@ -19,8 +19,8 @@ class FluidCheckout_ThemeCompat_Storefront extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Page container class
-		remove_filter( 'fc_content_section_class', array( FluidCheckout_Steps::instance(), 'fc_content_section_class' ), 10 );
+		// Container class
+		add_filter( 'fc_add_container_class', '__return_false' );
 
 		// Coupon code button style
 		add_filter('fc_coupon_code_apply_button_classes', array( $this, 'change_coupon_code_apply_button_class' ), 10 );

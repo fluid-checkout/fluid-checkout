@@ -42,7 +42,7 @@ class FluidCheckout_AdminNotices_ReviewRequest extends FluidCheckout {
 		$notices[] = array(
 			'name'           => 'review_request_timed',
 			'title'          => __( 'Thanks for choosing Fluid Checkout!', 'fluid-checkout' ),
-			'description'    => __( 'You have been using the plugin for a while now. How do you like it so far? <br>Please give us a quick rating, we appreciate every feedback and it encourages us to keep improving the plugin :)', 'fluid-checkout' ),
+			'description'    => __( 'You have been using the plugin for a while now. How do you like it so far? <br>Please give us a quick rating, we appreciate every bit of feedback and it encourages us to keep improving the plugin :)', 'fluid-checkout' ),
 			'actions'        => array(
 				sprintf( '<a href="%s" class="button button-primary" target="_blank">%s</a>', 'https://wordpress.org/support/plugin/fluid-checkout/reviews/', __( 'Rate the plugin', 'fluid-checkout' ) ),
 				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', 'https://wordpress.org/support/plugin/fluid-checkout/', __( 'I need help!', 'fluid-checkout' ) ),

@@ -3,7 +3,15 @@
 // ------------------------------------
 
 .fc-wrapper .wc-gzd-order-submit {
-	padding-top: $global-spacing-small;
+	padding: 0;
+}
+
+
+
+.fc-wrapper .fc-inside .form-row.place-order.wc-gzd-place-order {
+	padding-top: 0;
+	padding-#{ $alignment-left }: 0;
+	padding-#{ $alignment-right }: 0;
 }
 
 
@@ -11,22 +19,19 @@
 .fc-checkout-order-review .fc-place-order {
 	padding: $global-spacing-small 0;
 }
-.fc-wrapper .fc-inside .wc-gzd-order-submit div.place-order {
-	padding-left: 0;
-	padding-right: 0;
+
+
+
+.fc-wrapper .fc-sidebar .fc-sidebar__inner .wc-gzd-order-submit div.place-order {
+	margin-top: 0;
 }
 
-
-
-.fc-wrapper .fc-sidebar .wc-gzd-order-submit div.place-order {
-	padding-top: 0;
-}
 .fc-wrapper .fc-sidebar .fc-checkout-order-review .fc-place-order .fc-place-order-button {
 	margin: 0;
 }
 
 
 
-.fc-wrapper .wc-gzd-checkbox-placeholder {
+.fc-wrapper .wc-gzd-checkbox-placeholder:not( :empty ) {
 	margin-bottom: $global-spacing-extra-small;
 }

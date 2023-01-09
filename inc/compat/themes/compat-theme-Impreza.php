@@ -19,16 +19,72 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Settings
+		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
 		// Styles
 		add_action( 'wp_head', array( $this, 'maybe_output_theme_options_css' ), 10 );
 		add_action( 'wp_head', array( $this, 'maybe_output_header_css' ), 10 );
 
-		// Page header
+		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+	}
 
-		// Settings
-		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
+
+
+	/**
+	 * Add new settings to the Fluid Checkout admin settings sections.
+	 *
+	 * @param   array   $settings         Array with all settings for the current section.
+	 * @param   string  $current_section  Current section name.
+	 */
+	public function add_settings( $settings ) {
+		// Define positions for new settings
+		$index = count( $settings ) - 1;
+
+		// Define setting to insert
+		$insert_settings = array(
+			array(
+				'title'           => __( 'Theme Impreza', 'fluid-checkout' ),
+				'desc'            => __( 'Spacing for site header at the checkout page (in pixels)', 'fluid-checkout' ),
+				'desc_tip'        => __( 'Only applicable when using the Impreza theme header at the checkout page.', 'fluid-checkout' ),
+				'id'              => 'fc_compat_theme_impreza_header_spacing',
+				'placeholder'     => '120',
+				'type'            => 'number',
+				'autoload'        => false,
+			),
+		);
+
+		// Get token position
+		$position_index = count( $settings ) - 1;
+
+		// Insert at token position
+		$new_settings = array_slice( $settings, 0, $position_index );
+		$new_settings = array_merge( $new_settings, $insert_settings );
+		$new_settings = array_merge( $new_settings, array_slice( $settings, $position_index, count( $settings ) ) );
+
+		return $new_settings;
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Bail if using the plugin's header and footer
+		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $settings; }
+
+		// Add settings
+		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = '#page-header';
+
+		return $settings;
 	}
 
 
@@ -97,42 +153,6 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 		$attributes['data-sticky-relative-to'] = '#page-header';
 
 		return $attributes;
-	}
-
-
-
-	/**
-	 * Add new settings to the Fluid Checkout admin settings sections.
-	 *
-	 * @param   array   $settings         Array with all settings for the current section.
-	 * @param   string  $current_section  Current section name.
-	 */
-	public function add_settings( $settings ) {
-		// Define positions for new settings
-		$index = count( $settings ) - 1;
-
-		// Define setting to insert
-		$insert_settings = array(
-			array(
-				'title'           => __( 'Theme Impreza', 'fluid-checkout' ),
-				'desc'            => __( 'Spacing for site header at the checkout page (in pixels)', 'fluid-checkout' ),
-				'desc_tip'        => __( 'Only applicable when using the Impreza theme header at the checkout page.', 'fluid-checkout' ),
-				'id'              => 'fc_compat_theme_impreza_header_spacing',
-				'placeholder'     => '120',
-				'type'            => 'number',
-				'autoload'        => false,
-			),
-		);
-
-		// Get token position
-		$position_index = count( $settings ) - 1;
-
-		// Insert at token position
-		$new_settings  = array_slice( $settings, 0, $position_index );
-		$new_settings = array_merge( $new_settings, $insert_settings );
-		$new_settings = array_merge( $new_settings, array_slice( $settings, $position_index, count( $settings ) ) );
-
-		return $new_settings;
 	}
 
 }

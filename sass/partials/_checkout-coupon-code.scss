@@ -1,27 +1,69 @@
 // ------------------------------------
 // CHECKOUT COUPON CODE
 // ------------------------------------
-.fc-wrapper .fc-expansible-form-section__content--coupon_code .collapsible-content__inner {
+
+.fc-wrapper .fc-coupon-code-section__inner {
+	width: 100%;
+}
+
+.fc-wrapper .fc-coupon-code-section__message {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+
+	@media (#{$bp-larger-than-tablet}) {
+		flex-direction: row;
+	}
+}
+
+.fc-wrapper .fc-coupon-code-section__message-text {
+	@media (#{$bp-smaller-than-tablet}) {
+		margin-bottom: $global-spacing-extra-small;
+	}
+}
+
+.fc-wrapper .fc-coupon-code-section__message .button {
+	@media (#{$bp-smaller-than-tablet}) {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+
+
+.fc-wrapper .fc-coupon-code-section__inner .fc-coupon-code-section {
+	margin-top: $global-spacing-extra-small;
+}
+
+
+
+.fc-wrapper .fc-coupon_code__collapsible .collapsible-content__inner {
 	position: relative;
 }
 
-.fc-wrapper .fc-expansible-form-section__content--coupon_code #coupon_code_field.form-row {
+.fc-wrapper .fc-coupon_code__collapsible #coupon_code_field.form-row {
 	float: none;
 	margin: 0;
 	padding: 0;
 }
 
-.fc-wrapper .fc-expansible-form-section__content--coupon_code input#coupon_code {
+.fc-wrapper .fc-coupon_code__collapsible .woocommerce-input-wrapper {
+	width: 100% !important; // Needed to override theme styles set with `!important`
+}
+
+.fc-wrapper .fc-coupon_code__collapsible input#coupon_code {
 	margin: 0;
-	width: 100%;
+	width: 100% !important; // Needed to override theme styles set with `!important`
 	height: remsize( 5.5rem );
 }
-.fc-wrapper .fc-expansible-form-section__content--coupon_code input#coupon_code:focus {
+.fc-wrapper .fc-coupon_code__collapsible input#coupon_code:focus {
 	position: relative;
 	z-index: z( 'above' );
 }
 
-.fc-wrapper .fc-expansible-form-section__content--coupon_code .fc-coupon-code__apply {
+.fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
 	z-index: z( 'above' ) + 1;
 	position: absolute;
 	top: $global-spacing-tiny;

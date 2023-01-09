@@ -31,9 +31,6 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 110 );
 		add_filter( 'fc_billing_same_as_shipping_field_keys' , array( $this, 'remove_billing_company_from_copy_shipping_field_keys' ), 10 );
 
-		// Make fields required
-		add_filter( 'wcbcf_billing_fields', array( $this, 'make_person_type_fields_required' ), 110 );
-
 		// Step complete billing
 		add_filter( 'fc_is_step_complete_billing_field_keys_skip_list', array( $this, 'maybe_add_step_complete_billing_field_skip_list_by_person_type' ), 10 );
 
@@ -76,6 +73,8 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			array(
 				'state'              => esc_js( __( 'State', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
 				'required'           => esc_js( __( 'required', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
+				// CHANGE: Added new parameter to hold label for optional fields
+				'optional'           => esc_js( __( 'optional', 'woocommerce' ) ),
 				// CHANGE: Always set mailcheck feature as disabled
 				'mailcheck'          => 'no',
 				'maskedinput'        => isset( $settings[ 'maskedinput' ] ) ? 'yes' : 'no',
@@ -148,14 +147,14 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			'billing_city'             => array( 'priority' => 130, 'class' => array( 'form-row-first' ) ),
 			'billing_state'            => array( 'priority' => 140, 'class' => array( 'form-row-last' ) ),
 
-			'billing_persontype'       => array( 'priority' => 150, 'class' => array( 'form-row-wide' ) ),
-			'billing_company'          => array( 'priority' => 160, 'class' => array( 'form-row-wide' ) ),
-			'billing_cpf'              => array( 'priority' => 170, 'class' => array( 'form-row-first' ) ),
-			'billing_rg'               => array( 'priority' => 180, 'class' => array( 'form-row-last' ) ),
-			'billing_cnpj'             => array( 'priority' => 190, 'class' => array( 'form-row-first' ) ),
-			'billing_ie'               => array( 'priority' => 200, 'class' => array( 'form-row-last' ) ),
-			'billing_birthdate'        => array( 'priority' => 210, 'class' => array( 'form-row-first' ) ),
-			'billing_sex'              => array( 'priority' => 220, 'class' => array( 'form-row-last' ) ),
+			'billing_persontype'       => array( 'priority' => 300, 'class' => array( 'form-row-wide' ) ),
+			'billing_company'          => array( 'priority' => 310, 'class' => array( 'form-row-wide' ) ),
+			'billing_cpf'              => array( 'priority' => 320, 'class' => array( 'form-row-first' ) ),
+			'billing_rg'               => array( 'priority' => 330, 'class' => array( 'form-row-last' ) ),
+			'billing_cnpj'             => array( 'priority' => 340, 'class' => array( 'form-row-first' ) ),
+			'billing_ie'               => array( 'priority' => 350, 'class' => array( 'form-row-last' ) ),
+			'billing_birthdate'        => array( 'priority' => 360, 'class' => array( 'form-row-first' ) ),
+			'billing_sex'              => array( 'priority' => 370, 'class' => array( 'form-row-last' ) ),
 
 			'shipping_first_name'      => array( 'priority' => 20 ),
 			'shipping_last_name'       => array( 'priority' => 30 ),
@@ -182,7 +181,9 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			if ( ! array_key_exists( 'class', $new_args ) || ! is_array( $new_args[ 'class' ] ) ) { continue; }
 
 			// Merge classes
-			$new_args[ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $field_args[ $field_key ][ 'class' ], $new_args[ 'class' ] );
+			if ( class_exists( 'FluidCheckout_CheckoutFields' ) ) {
+				$new_args[ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $field_args[ $field_key ][ 'class' ], $new_args[ 'class' ] );
+			}
 		}
 
 		// Merge field arguments with existing values
@@ -229,7 +230,9 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			if ( ! array_key_exists( 'class', $new_args ) || ! is_array( $new_args[ 'class' ] ) ) { continue; }
 
 			// Merge classes
-			$new_field_args[ $field_key ][ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $field_args[ $field_key ][ 'class' ], $new_args[ 'class' ] );
+			if ( class_exists( 'FluidCheckout_CheckoutFields' ) ) {
+				$new_field_args[ $field_key ][ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $field_args[ $field_key ][ 'class' ], $new_args[ 'class' ] );
+			}
 		}
 
 		// Merge field arguments with existing values
@@ -260,42 +263,6 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 
 
 	/**
-	 * Make billing fields registered as required.
-	 *
-	 * @param   array  $new_fields  Checkout field args
-	 */
-	public function make_person_type_fields_required( $new_fields ) {
-		// // Get plugin settings
-		$settings = get_option( 'wcbcf_settings' );
-		$only_brazil = isset( $settings[ 'only_brazil' ] ) && '1' == $settings[ 'only_brazil' ] ? true : false;
-
-		// Get billing country
-		$billing_country = WC()->checkout->get_value( 'billing_country' );
-
-		// Bail if person type fields are set as required only when billing country is Brazil
-		if ( $only_brazil && 'BR' !== $billing_country ) { return $new_fields; }
-
-		// Get person type
-		$person_type = WC()->checkout()->get_value( 'billing_persontype' );
-
-		// Set existing fields as required
-		if ( array_key_exists( 'billing_persontype', $new_fields ) ) { $new_fields[ 'billing_persontype' ][ 'required' ] = true; }
-
-		if ( 1 == $person_type ) { // 1 = Individual
-			if ( array_key_exists( 'billing_cpf', $new_fields ) ) { $new_fields[ 'billing_cpf' ][ 'required' ] = true; }
-			if ( array_key_exists( 'billing_rg', $new_fields ) ) { $new_fields[ 'billing_rg' ][ 'required' ] = true; }
-		}
-		else if ( 2 == $person_type ) { // 2 = Legal Person
-			if ( array_key_exists( 'billing_cnpj', $new_fields ) ) { $new_fields[ 'billing_cnpj' ][ 'required' ] = true; }
-			if ( array_key_exists( 'billing_ie', $new_fields ) ) { $new_fields[ 'billing_ie' ][ 'required' ] = true; }
-		}
-
-		return $new_fields;
-	}
-
-
-
-	/**
 	 * Prevent hiding optional person type related fields behind a link button.
 	 *
 	 * @param   array  $skip_list  List of optional fields to skip hidding.
@@ -307,6 +274,12 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		$skip_list[] = 'billing_cpf';
 		$skip_list[] = 'billing_rg';
 		$skip_list[] = 'billing_company';
+		$skip_list[] = 'persontype';
+		$skip_list[] = 'cnpj';
+		$skip_list[] = 'ie';
+		$skip_list[] = 'cpf';
+		$skip_list[] = 'rg';
+		$skip_list[] = 'company';
 
 		return $skip_list;
 	}
