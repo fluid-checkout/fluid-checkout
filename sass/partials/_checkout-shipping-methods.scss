@@ -144,11 +144,17 @@
 	#{ $alignment-right }: $shipping-method-padding-horizontal;
 	height: 100%;
 	line-height: 1.2;
+	font-weight: $shipping-method-price-font-weight;
 	text-align: #{ $alignment-right };
 }
 
+
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .amount {
 	display: block;
+	font-weight: $shipping-method-price-font-weight;
+}
+
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .woocommerce-Price-currencySymbol {
 	font-weight: $shipping-method-price-font-weight;
 }
 

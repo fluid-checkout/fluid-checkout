@@ -3,9 +3,8 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-Avada' !default;
-$_select2-border-width:                remsize( .1rem ) !default;
+$_field-height:                        remsize( 5rem ) !default;
 $_select2-border-radius:               remsize( .7rem ) !default;
-$_select2-selection-height:            remsize( 5rem ) !default;
 
 
 
@@ -19,6 +18,7 @@ $_select2-selection-height:            remsize( 5rem ) !default;
 	"checkout-steps",
 	"checkout-shipping-methods",
 	"checkout-payment-methods",
+	"../../partials/checkout-validation-check",
 	"checkout-validation",
 	"order-summary",
 	"../../partials/woocommerce-form-fields-select2";

@@ -55,6 +55,7 @@ body.woocommerce-checkout #main.fc-main {
   position: static;
   float: none;
   margin: 0 auto;
+  width: 100%;
   max-width: 100%;
   padding: 60px 20px 0;
 }
@@ -1462,11 +1463,16 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
   right: 10px;
   height: 100%;
   line-height: 1.2;
+  font-weight: bold;
   text-align: right;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .amount {
   display: block;
+  font-weight: bold;
+}
+
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .woocommerce-Price-currencySymbol {
   font-weight: bold;
 }
 
@@ -1561,7 +1567,7 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   background-color: transparent;
 }
 
-.fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name=payment_method]:first-child:checked + label {
+.fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name=payment_method]:checked + label {
   border-top: 0;
   border-left: 0;
   border-right: 0;
@@ -1595,8 +1601,8 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method]:checked + label:before {
   content: "";
-  border-color: #007a3d;
-  background-color: #007a3d;
+  border-color: #007a3d !important;
+  background-color: #007a3d !important;
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > label:hover {
@@ -1784,6 +1790,10 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
   margin-bottom: 0;
   padding: 0;
   text-align: left;
+}
+
+.fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox input[type=checkbox] {
+  top: 0;
 }
 
 .woocommerce-privacy-policy-text:not(:last-child):not(:empty) {
@@ -2084,10 +2094,10 @@ body div.woocommerce form .form-row .select2-selection__rendered {
 body div.woocommerce form .form-row .select2-selection .select2-selection__clear,
 body div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
   top: 0;
-  margin-top: 5px;
+  margin-top: 0;
   height: auto;
-  min-height: 31.625px;
-  line-height: 31.625px;
+  min-height: 43.625px;
+  line-height: 43.625px;
   transform: none;
 }
 
@@ -2114,14 +2124,14 @@ body div.woocommerce form .form-row .select2-selection--multiple .select2-select
 
 body div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
   margin-top: 5px;
-  line-height: 31.625px;
+  line-height: 43.625px;
   overflow: hidden;
 }
 
 body div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
   margin-top: 5px;
-  min-height: 31.625px;
-  line-height: 31.625px;
+  min-height: 43.625px;
+  line-height: 43.625px;
 }
 
 body div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {

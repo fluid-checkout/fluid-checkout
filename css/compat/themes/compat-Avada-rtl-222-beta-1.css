@@ -30,9 +30,58 @@ body.theme-Avada .fc-wrapper .payment_box > p:first-child {
   margin-block-start: 0;
 }
 
-body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
-  top: 12px;
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) textarea,
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) select,
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=email],
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=number],
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=search],
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=text],
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=date],
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=tel],
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=url],
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=password],
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection {
+  border-color: #007a3d;
 }
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "\e805";
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  z-index: 10;
+  position: absolute;
+  left: 5px;
+  top: 13px;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  color: #007a3d;
+  pointer-events: none;
+}
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
+  left: 25px;
+}
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
+  left: 15px;
+}
+body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection:after {
+  left: 25px;
+}
+.woocommerce-terms-and-conditions-wrapper body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):after, body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).create-account:after {
+  content: "";
+  display: none;
+}
+
 body.theme-Avada div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
   left: 40px;
 }
@@ -72,10 +121,10 @@ body.theme-Avada div.woocommerce form .form-row .select2-selection__rendered {
 body.theme-Avada div.woocommerce form .form-row .select2-selection .select2-selection__clear,
 body.theme-Avada div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
   top: 0;
-  margin-top: 5px;
+  margin-top: 0;
   height: auto;
-  min-height: 36px;
-  line-height: 36px;
+  min-height: 48px;
+  line-height: 48px;
   transform: none;
 }
 
@@ -102,14 +151,14 @@ body.theme-Avada div.woocommerce form .form-row .select2-selection--multiple .se
 
 body.theme-Avada div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
   margin-top: 5px;
-  line-height: 36px;
+  line-height: 48px;
   overflow: hidden;
 }
 
 body.theme-Avada div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
   margin-top: 5px;
-  min-height: 36px;
-  line-height: 36px;
+  min-height: 48px;
+  line-height: 48px;
 }
 
 body.theme-Avada div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
