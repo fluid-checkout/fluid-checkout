@@ -1792,6 +1792,10 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
   text-align: right;
 }
 
+.fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox input[type=checkbox] {
+  top: 0;
+}
+
 .woocommerce-privacy-policy-text:not(:last-child):not(:empty) {
   margin-bottom: 20px;
 }
