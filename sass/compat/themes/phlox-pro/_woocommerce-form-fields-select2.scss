@@ -14,5 +14,5 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection
 }
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__arrow b {
-	position: static;
+	position: absolute;
 }

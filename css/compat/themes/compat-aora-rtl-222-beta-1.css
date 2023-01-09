@@ -31,11 +31,56 @@ body.theme-aora .fc-place-order {
   padding-top: 0;
 }
 
-body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
+body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) textarea,
+body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) select,
+body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=email],
+body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=number],
+body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=search],
+body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=text],
+body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=date],
+body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=tel],
+body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=url],
+body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=password],
+body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection {
+  border-color: #007a3d;
+}
+body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "\e805";
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  z-index: 10;
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  color: #007a3d;
+  pointer-events: none;
+}
+body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
   left: 25px;
 }
+body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
+  left: 15px;
+}
 body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection:after {
-  left: 37px;
+  left: 25px;
+}
+.woocommerce-terms-and-conditions-wrapper body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):after, body.theme-aora div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).create-account:after {
+  content: "";
+  display: none;
 }
 
 body.theme-aora div.woocommerce form .form-row span.select2-container {
@@ -57,10 +102,10 @@ body.theme-aora div.woocommerce form .form-row .select2-selection__rendered {
 body.theme-aora div.woocommerce form .form-row .select2-selection .select2-selection__clear,
 body.theme-aora div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
   top: 0;
-  margin-top: 5px;
+  margin-top: 0;
   height: auto;
-  min-height: 30px;
-  line-height: 30px;
+  min-height: 42px;
+  line-height: 42px;
   transform: none;
 }
 
@@ -87,14 +132,14 @@ body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .sel
 
 body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
   margin-top: 5px;
-  line-height: 30px;
+  line-height: 42px;
   overflow: hidden;
 }
 
 body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
   margin-top: 5px;
-  min-height: 30px;
-  line-height: 30px;
+  min-height: 42px;
+  line-height: 42px;
 }
 
 body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
