@@ -380,6 +380,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme Qi.
 * Improved: Compatibility with theme Razzi.
 * Improved: Refactor validation check icon styles to make it reusable for theme compatibility styles.
 * Fixed: Initially set page content area width to 100%.
