@@ -385,6 +385,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Refactor validation check icon styles to make it reusable for theme compatibility styles.
 * Fixed: Initially set page content area width to 100%.
 * Fixed: Position for the terms and conditions checkbox in relation to the label text.
+* Fixed: Fatal error at checkout page when using WooCommerce versions prior to 7.1.0.
 
 = 2.2.1 - 2023-01-03 =
 
