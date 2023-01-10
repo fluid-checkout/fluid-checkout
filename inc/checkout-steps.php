@@ -973,11 +973,37 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$_checkout_steps = $this->get_checkout_steps();
 
 		foreach ( $_checkout_steps as $step_index => $step_args ) {
-			if ( $step_id == $step_args[ 'step_id' ] ) {
-				$next_step_index = $step_index + 1;
+			// Maybe skip step until target step id is found
+			if ( $step_id !== $step_args[ 'step_id' ] ) { continue; }
+
+			// Get next step index
+			$next_step_index = $step_index + 1;
+
+			// Get the next step args
+			$next_step_args = array_key_exists( $next_step_index, $_checkout_steps ) ? $_checkout_steps[ $next_step_index ] : false;
+
+			// Maybe skip if next step args is not available
+			if ( false === $next_step_args ) { continue; }
+
+			// Get next step render conditional callback
+			$render_conditional_callback = array_key_exists( 'render_condition_callback', $next_step_args ) ? $next_step_args[ 'render_condition_callback' ] : null;
+
+			// Make sure the next step is available, otherwise skip to following step
+			while ( $render_conditional_callback && is_callable( $render_conditional_callback ) && ! call_user_func( $render_conditional_callback ) ) {
+				// Skip to next step index
+				$next_step_index++;
+
+				// Get the next step args
 				$next_step_args = array_key_exists( $next_step_index, $_checkout_steps ) ? $_checkout_steps[ $next_step_index ] : false;
-				return $next_step_args;
+
+				// Maybe skip if next step args is not available
+				if ( false === $next_step_args ) { continue; }
+
+				// Get next step render conditional callback
+				$render_conditional_callback = array_key_exists( 'render_condition_callback', $next_step_args ) ? $next_step_args[ 'render_condition_callback' ] : null;
 			}
+			
+			return $next_step_args;
 		}
 
 		return false;
