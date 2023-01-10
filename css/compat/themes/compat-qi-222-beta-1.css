@@ -1,3 +1,40 @@
+body.theme-qi .fc-content.fc-container {
+  padding: 0 !important;
+}
+
+body.theme-qi .fc-content.fc-container .fc-checkout-notices {
+  width: unset !important;
+}
+
+body.theme-qi div.woocommerce form .form-row {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 1025px) {
+  body.theme-qi #qodef-woo-page.qodef--checkout #order_review {
+    width: 100%;
+  }
+}
+
+body.theme-qi #qodef-woo-page.qodef--checkout #order_review table {
+  border: 0;
+}
+
+body.theme-qi #qodef-woo-page.qodef--checkout #order_review table tr td,
+body.theme-qi #qodef-woo-page.qodef--checkout #order_review table tr th {
+  padding: 10px 20px;
+  border-left: 0;
+  border-right: 0;
+}
+
+body.theme-qi.woocommerce-page div.woocommerce .shop_table th {
+  font-size: 15px;
+}
+
+body.theme-qi #qodef-woo-page .fc-checkout-order-review__actions-mobile .fc-checkout-order-review__close-order-summary {
+  line-height: 1;
+}
+
 body.theme-qi div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) textarea,
 body.theme-qi div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) select,
 body.theme-qi div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=email],
@@ -50,39 +87,11 @@ body.theme-qi div.woocommerce form .form-row.woocommerce-validated:not([class*=w
   display: none;
 }
 
-body.theme-qi .fc-content.fc-container {
-  padding: 0 !important;
+body.theme-qi div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
+  right: 40px;
 }
-
-body.theme-qi .fc-content.fc-container .fc-checkout-notices {
-  width: unset !important;
-}
-
-body.theme-qi .fc-step__substep-save.button,
-body.theme-qi .fc-step__next-step.button {
-  width: 100%;
-  min-height: 50px;
-  font-size: 16px;
-  line-height: 2em;
-  font-weight: 500;
-  padding: 13px 46px;
-  color: #fff;
-  background-color: #1e1e1e;
-  border: 0;
-  border-radius: 0;
-}
-
-body.theme-qi div.woocommerce form .form-row .select2-selection .select2-selection__rendered {
-  padding-left: 20px;
-}
-
-.fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
-  font-weight: 500;
-  padding: 13px 46px;
-  color: #fff;
-  background-color: #1e1e1e;
-  border: 0;
-  border-radius: 0;
+body.theme-qi div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection:after {
+  right: 40px;
 }
 
 body.theme-qi div.woocommerce form .form-row span.select2-container {
@@ -148,4 +157,8 @@ body.theme-qi div.woocommerce form .form-row .select2-selection--multiple .selec
   margin-top: 0;
   height: 49px;
   min-height: auto;
+}
+
+body.theme-qi .select2-container--default .select2-selection--single .select2-selection__rendered {
+  padding-left: 20px;
 }

@@ -118,7 +118,7 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 // Place order button
 .fc-wrapper .fc-place-order .fc-place-order-button {
 	margin: 0;
-	width: 100%;
+	width: 100% !important; // Needed to override theme styles
 	min-width: remsize( 24rem );
 	min-height: remsize( 5rem );
 	text-align: center;

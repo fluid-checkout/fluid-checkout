@@ -1,0 +1,7 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .select2-container--default .select2-selection--single .select2-selection__rendered {
+	padding-#{ $alignment-left }: remsize( 2rem );
+}
