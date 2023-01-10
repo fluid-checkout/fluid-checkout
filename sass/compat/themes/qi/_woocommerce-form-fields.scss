@@ -1,31 +1,7 @@
 // ------------------------------------
-// WOOCOMMERCE FORM-ROW
+// WOOCOMMERCE FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-step__substep-save.button,
-body#{ $_body-theme-selector } .fc-step__next-step.button {
-	// All values from the css of the theme buttons
-	width: 100%;
-	min-height: 50px;
-	font-size: 16px;
-	line-height: 2em;
-	font-weight: 500;
-	padding: 13px 46px;
-	color: #fff;
-	background-color: #1e1e1e;
-	border: 0;
-	border-radius: 0;
-}
-
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__rendered {
-	padding-#{ $alignment-left }: remsize( 2rem );
-}
-
-.fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
-	font-weight: 500;
-	padding: 13px 46px;
-	color: #fff;
-	background-color: #1e1e1e;
-	border: 0;
-	border-radius: 0;
+body#{ $_body-theme-selector } div.woocommerce form .form-row {
+	margin-bottom: $global-spacing-small;
 }

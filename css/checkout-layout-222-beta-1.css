@@ -977,7 +977,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
   margin: 0;
   min-width: 280px;
-  width: 100%;
+  width: 100% !important;
   text-align: center;
 }
 .has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:focus {
@@ -1012,10 +1012,10 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 }
 
 .has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save {
-  display: none;
-  margin: 20px 0 0;
-  width: 100%;
-  text-align: center;
+  display: none !important;
+  margin: 20px 0 0 !important;
+  width: 100% !important;
+  text-align: center !important;
 }
 .has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save:focus {
   outline: solid 2px #535156;
@@ -1024,12 +1024,12 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit,
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-save {
-  display: inline-block;
+  display: inline-block !important;
 }
 
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-edit,
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-save {
-  display: none;
+  display: none !important;
 }
 
 .fc-wrapper .fc-step__substep-fields-inner {
@@ -1827,7 +1827,7 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 
 .fc-wrapper .fc-place-order .fc-place-order-button {
   margin: 0;
-  width: 100%;
+  width: 100% !important;
   min-width: 240px;
   min-height: 50px;
   text-align: center;
@@ -2450,6 +2450,7 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
   padding: 12px 20px 0;
   width: calc( 100% + 40px );
   max-width: calc( 100% + 40px );
+  overflow: visible;
 }
 @media (min-width: 750px) {
   div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner {
@@ -2467,9 +2468,11 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 }
 
 .fc-wrapper .fc-checkout-order-review[data-flyout].is-open .fc-checkout-order-review__inner {
-  height: 100%;
+  padding-bottom: 80px;
   width: 100%;
+  height: 100%;
   margin: 0;
+  overflow: auto;
 }
 
 .fc-checkout-order-review__actions-mobile {
