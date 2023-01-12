@@ -3,9 +3,8 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-zakra' !default;
-$_select2-border-width:                remsize( .1rem ) !default;
+$_field-height:                        remsize( 3.916rem ) !default;
 $_select2-border-radius:               0 !default;
-$_select2-selection-height:            remsize( 3.916rem ) !default;
 
 
 
@@ -15,5 +14,6 @@ $_select2-selection-height:            remsize( 3.916rem ) !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"../../partials/checkout-validation-check",
 	"checkout-validation",
 	"../../partials/woocommerce-form-fields-select2";

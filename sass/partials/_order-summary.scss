@@ -323,6 +323,7 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	padding: remsize( 1.2rem ) $order-summary-cell-padding-horizontal 0;
 	width: $order-summary-table-width;
 	max-width: $order-summary-table-width;
+	overflow: visible;
 
 	@media (#{$bp-larger-than-tablet}) {
 		margin: 0 0 $global-spacing-small;
@@ -340,9 +341,11 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 }
 
 .fc-wrapper .fc-checkout-order-review[data-flyout].is-open .fc-checkout-order-review__inner {
-	height: 100%;
+	padding-bottom: $global-spacing-large;
 	width: 100%;
+	height: 100%;
 	margin: 0;
+	overflow: auto;
 }
 
 

@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.1.1
-Stable tag: 2.2.0
+Stable tag: 2.2.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -380,7 +380,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased 2.3.0 =
+= Unreleased =
 
 TODO: Add notice for instructions to upgrade template files structure.
 
@@ -393,8 +393,19 @@ TODO: Add notice for instructions to upgrade template files structure.
 * Removed: Filter `fc_init_features_list` as it has no valid use case.
 * Fixed: Only load modifield WooCommerce script files on the affected pages.
 
-= Unreleased =
+= 2.2.2 - 2023-01-12 =
 
+* Added: Compatibility with theme Qi.
+* Improved: Compatibility with theme Razzi.
+* Improved: Refactor validation check icon styles to make it reusable for theme compatibility styles.
+* Fixed: Initially set page content area width to 100%.
+* Fixed: Position for the terms and conditions checkbox in relation to the label text.
+* Fixed: Error while determining the next step when shipping is not needed for the order.
+* Fixed: Fatal error at checkout page when using WooCommerce versions prior to 7.1.0.
+
+= 2.2.1 - 2023-01-03 =
+
+* Bump tested up to WooCommerce 7.2.2
 * Added: Compatibility with theme PeakShops.
 * Added: Compatibility with plugin Hezarfen for WooCommerce.
 * Added: Compatibility with plugin Elementor PRO. Replace the custom checkout widget from Elementor PRO with Fluid Checkout.
@@ -457,7 +468,7 @@ TODO: Add notice for instructions to upgrade template files structure.
 * Fixed: Returning invalid variable when trying to show login link on checkout error message for user already registered.
 * Fixed: Billing phone required message being displayed when billing phone is displayed in the "Contact" step and "Billing same as shipping address" checkbox is checked and the shipping phone field is empty.
 
-[See older changes](https://github.com/fluidweb-co/fluid-checkout/blob/main/changelog.md)
+[See complete changelog](https://fluidcheckout.com/docs/changelog-fluid-checkout/)
 
 
 == Upgrade Notice ==
