@@ -61,6 +61,43 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 
 	/**
+	 * Undo hooks.
+	 */
+	public function undo_hooks() {
+		// Bail if use of coupons not enabled
+		if ( ! wc_coupons_enabled() ) { return; }
+
+		// Body Class
+		remove_filter( 'body_class', array( $this, 'add_body_class' ) );
+
+		// Enqueue
+		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
+		// JS settings object
+		remove_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
+		// Prevent hiding coupon code field behind a link button, as it is implemented directly
+		remove_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_coupon_code' ), 10 );
+
+		// Actions
+		remove_action( 'wc_ajax_fc_add_coupon_code', array( $this, 'add_coupon_code' ), 10 );
+		remove_action( 'wc_ajax_fc_remove_coupon_code', array( $this, 'remove_coupon_code' ), 10 );
+
+		// Integrated coupon code section at checkout
+		if ( 'yes' === get_option( 'fc_enable_checkout_coupon_codes', 'yes' ) ) {
+			// Checkout coupon notice
+			add_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+
+			// Coupon code substep
+			remove_action( 'fc_output_step_payment', array( $this, 'output_substep_coupon_codes' ), 10 );
+			remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_coupon_codes_text_fragment' ), 10 );
+		}
+	}
+
+
+
+	/**
 	 * Add page body class for feature detection.
 	 *
 	 * @param   array  $classes  Body classes array.

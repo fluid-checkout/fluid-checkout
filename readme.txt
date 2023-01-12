@@ -191,10 +191,12 @@ Only the themes that we have added explicit compatibility with or that we have t
 = Payment Gateways =
 
 * Integration Rede for WooCommerce - by MarcosAlexandre
+* Klarna Checkout for WooCommerce by Krokedil.
 * Mercado Pago payments for WooCommerce - by Mercado Pago
 * PagSeguro for WooCommerce - by Claudio Sanches
 * Payment Plugins for PayPal WooCommerce - by Payment Plugins
 * Payment Plugins for Stripe WooCommerce - by Payment Plugins
+* PaysonCheckout for WooCommerce by Krokedil.
 * Rede WooCommerce - by Rede
 * WooCommerce Affirm Gateway - by WooCommerce
 * WooCommerce Amazon Pay - by WooCommerce
@@ -378,6 +380,19 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause customizations to those files to stop working. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/) and fix possible issues with your customizations.
+
+* Added: Compatibility with plugin Klarna Checkout for WooCommerce by Krokedil.
+* Added: Compatibility with plugin PaysonCheckout for WooCommerce by Krokedil.
+* Added: Functions `undo_hooks` to feature files to allow undoing hook changes in some rare cases.
+* Improved: Separate styles for checkout layout and checkout steps into different files, allowing to load them independently.
+* Improved: Moved template files to a better structure, making it consistent with the PRO plugin structure and easier to understand. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/)  and fix possible issues with your customizations.
+* Improved: Changed the way plugin feature files are registered.
+* Removed: Filter `fc_init_features_list` as it has no valid use case.
+* Fixed: Only load modifield WooCommerce script files on the affected pages.
+
 = 2.2.2 - 2023-01-12 =
 
 * Added: Compatibility with theme Qi.
@@ -457,6 +472,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 
 == Upgrade Notice ==
+
+= 2.3 =
+* POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause customizations to those files to stop working. See details in the changelog section.
 
 = 2.0 =
 * BREAKING CHANGES - Some features where moved to the PRO version.

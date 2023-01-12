@@ -1,0 +1,35 @@
+// ------------------------------------
+// CHECKOUT LAYOUT
+// ------------------------------------
+
+div.woocommerce #pco-wrapper {
+	margin: $global-spacing 0;
+}
+div.woocommerce #pco-wrapper::before,
+div.woocommerce #pco-wrapper::after {
+	@include clearfix();
+}
+
+
+
+div.woocommerce #pco-order-review {
+	width: 100%;
+
+	@media (#{$bp-larger-than-tablet}) {
+		float: $alignment-left;
+		width: 40%;
+		padding-#{ $alignment-right }: remsize( 2rem );
+		box-sizing: border-box;
+	}
+}
+
+div.woocommerce #pco-iframe {
+	width: 100%;
+	
+	@media (#{$bp-larger-than-tablet}) {
+		float: $alignment-right;
+		width: 60%;
+		padding-#{ $alignment-left }: remsize( 2rem );
+		box-sizing: border-box;
+	}
+}
