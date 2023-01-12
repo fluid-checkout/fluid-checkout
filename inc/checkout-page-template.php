@@ -46,10 +46,10 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
-        // Checkout page template
+		// Checkout page template
 		remove_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
 
-        // Template file loader
+		// Template file loader
 		remove_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
 		// Checkout header and footer

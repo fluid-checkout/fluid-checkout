@@ -252,52 +252,6 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
   }
 }
 
-.fc-widget-area .widget {
-  margin: 0;
-}
-
-.fc-widget-area .widget:first-child,
-.fc-widget-area p:first-child {
-  margin-top: 0;
-  -webkit-margin-before: 0;
-  margin-block-start: 0;
-}
-
-.fc-widget-area .widget:last-child,
-.fc-widget-area p:last-child {
-  margin-bottom: 0;
-  -webkit-margin-after: 0;
-  margin-block-end: 0;
-}
-
-.fc-checkout-header .fc-checkout__header-widgets {
-  display: none;
-}
-@media (min-width: 1000px) {
-  .fc-checkout-header .fc-checkout__header-widgets {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin: 0;
-  }
-}
-
-@media (min-width: 1000px) {
-  .fc-main .fc-checkout__below-header-widgets {
-    display: none;
-  }
-}
-
-.fc-checkout__header-widgets p:last-child,
-.fc-main .fc-checkout__below-header-widgets p:last-child {
-  margin-bottom: 0;
-}
-
-.fc-wrapper .fc-checkout-order-review__widgets-inside {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
 @media (min-width: 1000px) {
   body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-message,
 body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-info,
@@ -685,6 +639,52 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
   .fc-checkout-footer__inner {
     padding: 0 50px;
   }
+}
+
+.fc-widget-area .widget {
+  margin: 0;
+}
+
+.fc-widget-area .widget:first-child,
+.fc-widget-area p:first-child {
+  margin-top: 0;
+  -webkit-margin-before: 0;
+  margin-block-start: 0;
+}
+
+.fc-widget-area .widget:last-child,
+.fc-widget-area p:last-child {
+  margin-bottom: 0;
+  -webkit-margin-after: 0;
+  margin-block-end: 0;
+}
+
+.fc-checkout-header .fc-checkout__header-widgets {
+  display: none;
+}
+@media (min-width: 1000px) {
+  .fc-checkout-header .fc-checkout__header-widgets {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+  }
+}
+
+@media (min-width: 1000px) {
+  .fc-main .fc-checkout__below-header-widgets {
+    display: none;
+  }
+}
+
+.fc-checkout__header-widgets p:last-child,
+.fc-main .fc-checkout__below-header-widgets p:last-child {
+  margin-bottom: 0;
+}
+
+.fc-wrapper .fc-checkout-order-review__widgets-inside {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /*------------------------------------*\
