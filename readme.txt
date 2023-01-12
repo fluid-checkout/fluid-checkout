@@ -453,7 +453,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Returning invalid variable when trying to show login link on checkout error message for user already registered.
 * Fixed: Billing phone required message being displayed when billing phone is displayed in the "Contact" step and "Billing same as shipping address" checkbox is checked and the shipping phone field is empty.
 
-[See older changes](https://github.com/fluidweb-co/fluid-checkout/blob/main/changelog.md)
+[See complete changelog](https://fluidcheckout.com/docs/changelog-fluid-checkout/)
 
 
 == Upgrade Notice ==
