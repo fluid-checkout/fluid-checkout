@@ -382,13 +382,13 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-TODO: Add notice for instructions to upgrade template files structure.
+POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause customizations to those files to stop working. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/) and fix possible issues with your customizations.
 
 * Added: Compatibility with plugin Klarna Checkout for WooCommerce by Krokedil.
 * Added: Compatibility with plugin PaysonCheckout for WooCommerce by Krokedil.
 * Added: Functions `undo_hooks` to feature files to allow undoing hook changes in some rare cases.
 * Improved: Separate styles for checkout layout and checkout steps into different files, allowing to load them independently.
-* Improved: Moved template files to a better structure, making it consistent with the PRO plugin structure and easier to understand.
+* Improved: Moved template files to a better structure, making it consistent with the PRO plugin structure and easier to understand. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/)  and fix possible issues with your customizations.
 * Improved: Changed the way plugin feature files are registered.
 * Removed: Filter `fc_init_features_list` as it has no valid use case.
 * Fixed: Only load modifield WooCommerce script files on the affected pages.
@@ -472,6 +472,9 @@ TODO: Add notice for instructions to upgrade template files structure.
 
 
 == Upgrade Notice ==
+
+= 2.3 =
+* POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause customizations to those files to stop working. See details in the changelog section.
 
 = 2.0 =
 * BREAKING CHANGES - Some features where moved to the PRO version.
