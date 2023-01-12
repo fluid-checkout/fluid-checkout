@@ -1,0 +1,107 @@
+body.theme-hazel:not(.has-checkout-header) {
+  padding-top: 120px;
+}
+
+body.theme-hazel:not(.has-checkout-header).admin-bar .fc-sidebar[data-sticky-states].is-sticky--top .fc-sidebar__inner {
+  padding-top: 5px;
+}
+
+body.theme-hazel header.fc-checkout-header {
+  position: fixed !important;
+  top: 0 !important;
+}
+@media (min-width: 1000px) {
+  body.theme-hazel header.fc-checkout-header {
+    position: static !important;
+  }
+}
+
+body.theme-hazel.admin-bar header.fc-checkout-header {
+  top: 46px !important;
+}
+@media screen and (min-width: 783px) {
+  body.theme-hazel.admin-bar header.fc-checkout-header {
+    top: 32px !important;
+  }
+}
+
+body.theme-hazel:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+  transform: translateY(0);
+}
+@media screen and (min-width: 783px) {
+  body.theme-hazel:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+    transform: translateY(5px);
+  }
+}
+
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) textarea,
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) select,
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=email],
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=number],
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=search],
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=text],
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=date],
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=tel],
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=url],
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=password],
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection {
+  border-color: #007a3d;
+}
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "\e805";
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  z-index: 10;
+  position: absolute;
+  left: 5px;
+  top: 11.5px;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  color: #007a3d;
+  pointer-events: none;
+}
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
+  left: 25px;
+}
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
+  left: 15px;
+}
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection:after {
+  left: 25px;
+}
+.woocommerce-terms-and-conditions-wrapper body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):after, body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).create-account:after {
+  content: "";
+  display: none;
+}
+
+body.theme-hazel div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection:after {
+  left: 24px;
+}
+
+body.theme-hazel div.woocommerce form #billing_country_field,
+body.theme-hazel div.woocommerce form #shipping_country_field,
+body.theme-hazel div.woocommerce form .form-row .select2-container--default,
+body.theme-hazel div.woocommerce form .form-row .select2-container .select2-selection {
+  height: auto;
+}
+
+body.theme-hazel div.woocommerce form .form-row .select2-container .select2-selection__rendered,
+body.theme-hazel div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+  line-height: 45px;
+}
+
+body.theme-hazel div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+  left: 10px;
+}

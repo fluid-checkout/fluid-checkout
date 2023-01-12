@@ -1,0 +1,120 @@
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) textarea,
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) select,
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=email],
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=number],
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=search],
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=text],
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=date],
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=tel],
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=url],
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=password],
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection {
+  border-color: #007a3d;
+}
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "\e805";
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  z-index: 10;
+  position: absolute;
+  left: 5px;
+  top: 7.58px;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  color: #007a3d;
+  pointer-events: none;
+}
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
+  left: 25px;
+}
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
+  left: 15px;
+}
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection:after {
+  left: 25px;
+}
+.woocommerce-terms-and-conditions-wrapper body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):after, body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).create-account:after {
+  content: "";
+  display: none;
+}
+
+body.theme-zakra div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
+  left: 32px;
+}
+
+body.theme-zakra div.woocommerce form .form-row span.select2-container {
+  height: auto;
+}
+
+body.theme-zakra div.woocommerce form .form-row .select2-selection {
+  height: auto;
+  min-height: 37.16px;
+  border-radius: 0;
+  line-height: 0;
+}
+
+body.theme-zakra div.woocommerce form .form-row .select2-selection__rendered {
+  min-height: 37.16px;
+  border-radius: 0;
+}
+
+body.theme-zakra div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-zakra div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  top: 0;
+  margin-top: 0;
+  height: auto;
+  min-height: 37.16px;
+  line-height: 37.16px;
+  transform: none;
+}
+
+body.theme-zakra div.woocommerce form .form-row .select2-selection--single {
+  padding: 0;
+}
+
+body.theme-zakra div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 37.16px;
+}
+
+body.theme-zakra div.woocommerce form .form-row .select2-selection--multiple {
+  border-width: 1px;
+}
+
+body.theme-zakra div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+  padding-bottom: 5px;
+  min-height: 27.16px;
+  line-height: 27.16px;
+  white-space: normal;
+}
+
+body.theme-zakra div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5px;
+  line-height: 37.16px;
+  overflow: hidden;
+}
+
+body.theme-zakra div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  margin-top: 5px;
+  min-height: 37.16px;
+  line-height: 37.16px;
+}
+
+body.theme-zakra div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
+  height: 27.16px;
+  min-height: auto;
+}

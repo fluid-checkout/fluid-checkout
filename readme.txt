@@ -378,6 +378,16 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Compatibility with theme Qi.
+* Improved: Compatibility with theme Razzi.
+* Improved: Refactor validation check icon styles to make it reusable for theme compatibility styles.
+* Fixed: Initially set page content area width to 100%.
+* Fixed: Position for the terms and conditions checkbox in relation to the label text.
+* Fixed: Error while determining the next step when shipping is not needed for the order.
+* Fixed: Fatal error at checkout page when using WooCommerce versions prior to 7.1.0.
+
 = 2.2.1 - 2023-01-03 =
 
 * Bump tested up to WooCommerce 7.2.2
