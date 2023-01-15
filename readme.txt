@@ -391,6 +391,7 @@ POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause cust
 * Improved: Moved template files to a better structure, making it consistent with the PRO plugin structure and easier to understand. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/)  and fix possible issues with your customizations.
 * Improved: Changed the way plugin feature files are registered.
 * Removed: Filter `fc_init_features_list` as it has no valid use case.
+* Fixed: Missing login form styles on some themes.
 * Fixed: Only load modifield WooCommerce script files on the affected pages.
 * Fixed: Compatibility with plugin Hezarfen causing pages to stop processing.
 

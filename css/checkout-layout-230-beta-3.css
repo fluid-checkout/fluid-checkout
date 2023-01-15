@@ -641,6 +641,11 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
   }
 }
 
+.fc-login-form__wrapper {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .fc-widget-area .widget {
   margin: 0;
 }

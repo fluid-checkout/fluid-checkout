@@ -839,6 +839,7 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 }
 
 .woocommerce ul#shipping_method .shipping-method__option input[type=radio]:checked + .shipping-method__option-label:before {
+  content: "";
   border-color: #007a3d;
   background-color: #007a3d;
 }
