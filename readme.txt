@@ -392,6 +392,7 @@ POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause cust
 * Improved: Changed the way plugin feature files are registered.
 * Removed: Filter `fc_init_features_list` as it has no valid use case.
 * Fixed: Only load modifield WooCommerce script files on the affected pages.
+* Fixed: Compatibility with plugin Hezarfen causing pages to stop processing.
 
 = 2.2.2 - 2023-01-12 =
 
