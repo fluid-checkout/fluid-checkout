@@ -544,8 +544,8 @@ jQuery( function($) {
 		klarna_payments.setRadioButtonValues();
 	});
 
+	// CHANGE: Use a class selector for the place order button as more than one place order button might exist on the same page
 	$('body').on( 'click', '.fc-place-order-button', function( e ) {
-		console.log( 'passed' );
 		if( "true" === klarna_payments_params.pay_for_order ) {
 			klarna_payments.klarnaPayForOrder( e );
 		} else {
