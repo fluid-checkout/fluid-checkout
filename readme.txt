@@ -386,6 +386,7 @@ POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause cust
 
 * Added: Compatibility with theme Martfury.
 * Added: Compatibility with plugin Klarna Checkout for WooCommerce by Krokedil.
+* Added: Compatibility with plugin Klarna Payments for WooCommerce by Krokedil.
 * Added: Compatibility with plugin PaysonCheckout for WooCommerce by Krokedil.
 * Added: Functions `undo_hooks` to feature files to allow undoing hook changes in some rare cases.
 * Improved: Separate styles for checkout layout and checkout steps into different files, allowing to load them independently.
