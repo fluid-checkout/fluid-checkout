@@ -4172,7 +4172,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_place_order_placeholder() {
 		// Output place order section placeholder
-		echo '<section class="fc-place-order__section-placeholder"></section>';
+		echo '<div class="fc-place-order__section-placeholder"></div>';
 	}
 
 	/**
