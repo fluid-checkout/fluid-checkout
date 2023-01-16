@@ -384,6 +384,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause customizations to those files to stop working. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/) and fix possible issues with your customizations.
 
+* Added: Compatibility with theme Martfury.
 * Added: Compatibility with plugin Klarna Checkout for WooCommerce by Krokedil.
 * Added: Compatibility with plugin PaysonCheckout for WooCommerce by Krokedil.
 * Added: Functions `undo_hooks` to feature files to allow undoing hook changes in some rare cases.
