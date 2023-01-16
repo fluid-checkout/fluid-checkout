@@ -74,6 +74,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	border-collapse: collapse;
 	border-spacing: 0;
 	font-size: $order-summary-font-size;
+	background-color: transparent;
 
 	@media (#{$bp-larger-than-desktop}) {
 		margin: $order-summary-table-margin--large-screen;
@@ -114,6 +115,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:last-child {
 	border-bottom: $order-summary-cell-border;
 }
+
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody tr {
 	border-bottom: $order-summary-cell-border--products;
 }
@@ -255,6 +257,12 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table dl.variation dd {
 	margin: 0;
 	padding: 0;
+}
+
+div.woocommerce .fc-wrapper .fc-checkout-order-review:not( .has-additional-content ) #order_review table.woocommerce-checkout-review-order-table tr.order-total {
+	@media (#{$bp-larger-than-desktop}) {
+		border-bottom: 0;
+	}
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total th {
