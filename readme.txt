@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.1.1
-Stable tag: 2.2.0
+Stable tag: 2.2.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -191,10 +191,12 @@ Only the themes that we have added explicit compatibility with or that we have t
 = Payment Gateways =
 
 * Integration Rede for WooCommerce - by MarcosAlexandre
+* Klarna Checkout for WooCommerce by Krokedil.
 * Mercado Pago payments for WooCommerce - by Mercado Pago
 * PagSeguro for WooCommerce - by Claudio Sanches
 * Payment Plugins for PayPal WooCommerce - by Payment Plugins
 * Payment Plugins for Stripe WooCommerce - by Payment Plugins
+* PaysonCheckout for WooCommerce by Krokedil.
 * Rede WooCommerce - by Rede
 * WooCommerce Affirm Gateway - by WooCommerce
 * WooCommerce Amazon Pay - by WooCommerce
@@ -219,6 +221,7 @@ Only the themes that we have added explicit compatibility with or that we have t
 * Creative Mail - by Constant Contact
 * Delivery & Pickup Date Time for WooCommerce - by CodeRockz
 * Elementor - by Elementor Team
+* Elementor PRO - by Elementor Team
 * Flexible Checkout Fields for WooCommerce - by WP Desk
 * FluentCRM Pro - by Fluent CRM
 * Flexible Shipping - by WP Desk
@@ -379,7 +382,42 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause customizations to those files to stop working. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/) and fix possible issues with your customizations.
+
+* Added: Compatibility with theme Martfury.
+* Added: Compatibility with plugin Klarna Checkout for WooCommerce by Krokedil.
+* Added: Compatibility with plugin Klarna Payments for WooCommerce by Krokedil.
+* Added: Compatibility with plugin PaysonCheckout for WooCommerce by Krokedil.
+* Added: Functions `undo_hooks` to feature files to allow undoing hook changes in some rare cases.
+* Improved: Separate styles for checkout layout and checkout steps into different files, allowing to load them independently.
+* Improved: Moved template files to a better structure, making it consistent with the PRO plugin structure and easier to understand. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/)  and fix possible issues with your customizations.
+* Improved: Changed the way plugin feature files are registered.
+* Removed: Filter `fc_init_features_list` as it has no valid use case.
+* Fixed: Missing login form styles on some themes.
+* Fixed: Only load modifield WooCommerce script files on the affected pages.
+* Fixed: Compatibility with plugin Hezarfen causing pages to stop processing.
+
+= 2.2.2 - 2023-01-12 =
+
+* Added: Compatibility with theme Qi.
+* Improved: Compatibility with theme Razzi.
+* Improved: Refactor validation check icon styles to make it reusable for theme compatibility styles.
+* Fixed: Initially set page content area width to 100%.
+* Fixed: Position for the terms and conditions checkbox in relation to the label text.
+* Fixed: Error while determining the next step when shipping is not needed for the order.
+* Fixed: Fatal error at checkout page when using WooCommerce versions prior to 7.1.0.
+
+= 2.2.1 - 2023-01-03 =
+
+* Bump tested up to WooCommerce 7.2.2
+* Added: Compatibility with theme PeakShops.
+* Added: Compatibility with plugin Hezarfen for WooCommerce.
+* Added: Compatibility with plugin Elementor PRO. Replace the custom checkout widget from Elementor PRO with Fluid Checkout.
+* Improved: Moved remove default WooCommerce hooks later at `init` hook for better compatibility with various plugins.
+* Fixed: Compatibility with plugin Payment Plugins for Stripe WooCommerce. Fixed iDeal bank dropdown field being cut off, and set its background color to white to make it stand out.
+* Fixed: Do not cut off elements overflowing the payment and order summary elements' boundaries.
 * Fixed: Modal styles not being loaded on all pages that use it.
+* Fixed: Prevent fatal errors when trying to merge field class arguments using the checkout fields class.
 
 = 2.2.0 - 2022-12-12 =
 
@@ -434,10 +472,13 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Returning invalid variable when trying to show login link on checkout error message for user already registered.
 * Fixed: Billing phone required message being displayed when billing phone is displayed in the "Contact" step and "Billing same as shipping address" checkbox is checked and the shipping phone field is empty.
 
-[See older changes](https://github.com/fluidweb-co/fluid-checkout/blob/main/changelog.md)
+[See complete changelog](https://fluidcheckout.com/docs/changelog-fluid-checkout/)
 
 
 == Upgrade Notice ==
+
+= 2.3 =
+* POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause customizations to those files to stop working. See details in the changelog section.
 
 = 2.0 =
 * BREAKING CHANGES - Some features where moved to the PRO version.

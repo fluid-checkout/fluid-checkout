@@ -1,0 +1,23 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-qi' !default;
+$_field-height:                        remsize( 6.1rem ) !default;
+$_select2-border-radius:               0 !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"checkout-content-area",
+	"woocommerce-form-fields",
+	"order-summary",
+	"../../partials/checkout-validation-check",
+	"checkout-validation-check",
+	"../../partials/woocommerce-form-fields-select2",
+	"woocommerce-form-fields-select2";

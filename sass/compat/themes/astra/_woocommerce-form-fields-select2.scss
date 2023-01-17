@@ -8,6 +8,12 @@ body#{ $_body-theme-selector } .fc-wrapper .select2-container .select2-selection
 
 
 
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__arrow b {
+    display: block;
+}
+
+
+
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__clear {
     #{ $alignment-right }: remsize( .5rem );
 }

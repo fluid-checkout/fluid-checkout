@@ -3,6 +3,8 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-hazel' !default;
+$_field-height:                        remsize( 4.7rem ) !default;
+$_select2-border-radius:               0 !default;
 
 
 
@@ -15,5 +17,6 @@ $_body-theme-selector:                 '.theme-hazel' !default;
 	"checkout-content-area",
 	"checkout-header",
 	"checkout-progress-bar",
+	"../../partials/checkout-validation-check",
 	"checkout-validation",
 	"woocommerce-form-fields";

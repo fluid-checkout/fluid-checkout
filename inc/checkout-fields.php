@@ -41,6 +41,31 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 	/**
+	 * Undo hooks.
+	 */
+	public function undo_hooks() {
+		// Checkout fields args
+		remove_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_args' ), 100 );
+		remove_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 100 );
+		remove_filter( 'woocommerce_checkout_fields', array( $this, 'change_order_field_args' ), 100 );
+		remove_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 100 );
+
+		// Remove `screen-reader-text` from some fields
+		remove_filter( 'woocommerce_default_address_fields', array( $this, 'remove_screen_reader_class_default_locale_field_args' ), 100 );
+
+		// Add class for fields with description
+		remove_filter( 'woocommerce_default_address_fields', array( $this, 'add_field_has_description_class_default_locale_field_args' ), 100 );
+		remove_filter( 'woocommerce_billing_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
+		remove_filter( 'woocommerce_shipping_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
+		remove_filter( 'woocommerce_checkout_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
+
+		// Select2 field class
+		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_select2_field_class' ), 100, 3 );
+	}
+
+
+
+	/**
 	 * Get the checkout fields args.
 	 */
 	public function get_checkout_field_args() {
@@ -199,6 +224,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @return  array  $field_classes  Changed field classes.
 	 */
 	public function merge_form_field_class_args( $field_classes, $new_classes ) {
+		// Set default value
+		$field_classes = is_array( $field_classes ) ? $field_classes : array();
+		$new_classes = is_array( $new_classes ) ? $new_classes : array();
 
 		// Maybe remove form-row-XX classes
 		$form_row_classes = array( 'form-row-first', 'form-row-last', 'form-row-wide', 'form-row-middle' );

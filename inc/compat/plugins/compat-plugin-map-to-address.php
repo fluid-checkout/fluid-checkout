@@ -23,8 +23,6 @@ class FluidCheckout_MapToAddress extends FluidCheckout {
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 	}
 
-
-
 	/**
 	 * Add or remove late hooks.
 	 */
