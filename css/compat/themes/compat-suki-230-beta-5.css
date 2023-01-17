@@ -1,0 +1,104 @@
+body.theme-suki .quantity .suki-qty-increment {
+  display: none;
+}
+
+body.theme-suki #place_order {
+  margin-top: 0;
+}
+
+body.theme-suki.woocommerce-checkout .fc-content.fc-container {
+  max-width: unset;
+}
+@media (min-width: 750px) {
+  body.theme-suki.woocommerce-checkout .fc-content.fc-container {
+    padding: 0 0 80px;
+  }
+}
+@media (min-width: 1000px) {
+  body.theme-suki.woocommerce-checkout .fc-content.fc-container {
+    padding: 0 0 80px;
+  }
+}
+@media (min-width: 1280px) {
+  body.theme-suki.woocommerce-checkout .fc-content.fc-container {
+    padding: 0 0 80px;
+  }
+}
+@media (min-width: 1500px) {
+  body.theme-suki.woocommerce-checkout .fc-content.fc-container {
+    padding: 0 0 80px;
+  }
+}
+
+body.theme-suki div.woocommerce form .form-row .select2-selection .select2-selection__rendered {
+  padding-left: 12px;
+}
+
+body.theme-suki .select2-dropdown {
+  margin-top: -32px;
+}
+
+body.theme-suki div.woocommerce form .form-row span.select2-container {
+  height: auto;
+}
+
+body.theme-suki div.woocommerce form .form-row .select2-selection {
+  height: auto;
+  min-height: 41.2px;
+  border-radius: 3px;
+  line-height: 0;
+}
+
+body.theme-suki div.woocommerce form .form-row .select2-selection__rendered {
+  min-height: 41.2px;
+  border-radius: 3px;
+}
+
+body.theme-suki div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-suki div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  top: 0;
+  margin-top: 0;
+  height: auto;
+  min-height: 41.2px;
+  line-height: 41.2px;
+  transform: none;
+}
+
+body.theme-suki div.woocommerce form .form-row .select2-selection--single {
+  padding: 0;
+}
+
+body.theme-suki div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 41.2px;
+}
+
+body.theme-suki div.woocommerce form .form-row .select2-selection--multiple {
+  border-width: 1px;
+}
+
+body.theme-suki div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+  padding-bottom: 5px;
+  min-height: 31.2px;
+  line-height: 31.2px;
+  white-space: normal;
+}
+
+body.theme-suki div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5px;
+  line-height: 41.2px;
+  overflow: hidden;
+}
+
+body.theme-suki div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  margin-top: 5px;
+  min-height: 41.2px;
+  line-height: 41.2px;
+}
+
+body.theme-suki div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
+  height: 31.2px;
+  min-height: auto;
+}

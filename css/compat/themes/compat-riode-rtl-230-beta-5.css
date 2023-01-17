@@ -1,0 +1,149 @@
+body.theme-riode .fc-checkout-notices .form-row.form-row:before,
+body.theme-riode .fc-checkout-notices .form-row.form-row:after {
+  display: none;
+}
+
+body.theme-riode .fc-checkout-notices .input-wrapper-inline.input-wrapper-inline {
+  max-width: 100%;
+}
+
+body.theme-riode .fc-wrapper .wc_payment_method label img {
+  min-width: auto;
+}
+
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) textarea,
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) select,
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=email],
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=number],
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=search],
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=text],
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=date],
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=tel],
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=url],
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=password],
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection {
+  border-color: #007a3d;
+}
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "\e805";
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  z-index: 10;
+  position: absolute;
+  left: 5px;
+  top: 10.8125px;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  color: #007a3d;
+  pointer-events: none;
+}
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
+  left: 25px;
+}
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
+  left: 15px;
+}
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection:after {
+  left: 25px;
+}
+.woocommerce-terms-and-conditions-wrapper body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):after, body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).create-account:after {
+  content: "";
+  display: none;
+}
+
+body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection.select2-selection--single:after {
+  left: 32px;
+}
+
+body.theme-riode .fc-login-form .login {
+  display: block;
+}
+
+body.theme-riode div.woocommerce form .form-row span.select2-container {
+  height: auto;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection {
+  height: auto;
+  min-height: 43.625px;
+  border-radius: 0;
+  line-height: 0;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection__rendered {
+  min-height: 43.625px;
+  border-radius: 0;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-riode div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  top: 0;
+  margin-top: 0;
+  height: auto;
+  min-height: 43.625px;
+  line-height: 43.625px;
+  transform: none;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection--single {
+  padding: 0;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 43.625px;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection--multiple {
+  border-width: 1px;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+  padding-bottom: 5px;
+  min-height: 33.625px;
+  line-height: 33.625px;
+  white-space: normal;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5px;
+  line-height: 43.625px;
+  overflow: hidden;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  margin-top: 5px;
+  min-height: 43.625px;
+  line-height: 43.625px;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
+  height: 33.625px;
+  min-height: auto;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  margin-top: 0;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection .select2-selection__arrow:before {
+  left: 0;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection .select2-selection__clear {
+  left: 5px;
+}
