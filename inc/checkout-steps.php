@@ -2288,12 +2288,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if user already logged in or login at checkout is disabled
 		if ( is_user_logged_in() || 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
 
-		wc_get_template(
-			'checkout/form-contact-login-modal.php',
-			array(
-				'checkout'			=> WC()->checkout(),
-			)
-		);
+		wc_get_template( 'checkout/form-contact-login-modal.php' );
 	}
 
 	/**
@@ -2303,12 +2298,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Do not output if login at checkout is disabled
 		if ( 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; }
 
-		wc_get_template(
-			'checkout/form-contact-login.php',
-			array(
-				'checkout'			=> WC()->checkout(),
-			)
-		);
+		wc_get_template( 'checkout/form-contact-login.php' );
 	}
 
 
