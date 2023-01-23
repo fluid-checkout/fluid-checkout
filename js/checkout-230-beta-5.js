@@ -22,14 +22,17 @@ jQuery( function( $ ) {
 
 	// CHANGE: Add default settings object
 	var _settings = {
+		formRowSelector:                         '.form-row',
 		checkoutPlaceOrderSelector: '#place_order, .fc-place-order-button',
 		checkoutTermsSelector: '.fc-terms-checkbox',
 		checkoutUpdateFieldsSelector: '.address-field input.input-text, .update_totals_on_change input.input-text',
-		checkoutUpdateBeforeUnload: 'yes',
-
+		checkoutLoadingInputSelector: '.loading_indicator_on_change input.input-text',
 		focusedFieldSkipFragmentReplaceSelector: 'input[type="text"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"], select, textarea, .fc-select2-field',
-
 		phoneFieldSelector: 'input[type="tel"], [data-phone-field], input.js-phone-field, .js-phone-field input',
+
+		checkoutLoadingFieldsClass: 'fc-loading',
+
+		checkoutUpdateBeforeUnload: 'yes',
 	};
 
 	// CHANGE: Add auxiliar function to merge objects
@@ -320,9 +323,20 @@ jQuery( function( $ ) {
 			var termsCheckBoxChecked = $( e.target ).prop( 'checked' );
 			$( _settings.checkoutTermsSelector ).prop( 'checked', termsCheckBoxChecked );
 		},
+		// CHANGE: Maybe add loading class to the form row
+		maybe_set_form_row_loading: function( e ) {
+			if ( e.target && e.target.matches( _settings.checkoutLoadingInputSelector ) ) {
+				var formRow = e.target.closest( _settings.formRowSelector );
+				if ( formRow ) {
+					formRow.classList.add( _settings.checkoutLoadingFieldsClass );
+				}
+			}
+		},
+		// CHANGE: END - Maybe add loading class to the form row
 		input_changed: function( e ) {
 			wc_checkout_form.dirtyInput = e.target;
 			wc_checkout_form.maybe_update_checkout();
+			wc_checkout_form.maybe_set_form_row_loading( e );
 		},
 		queue_update_checkout: function( e ) {
 			var code = e.keyCode || e.which || 0;
@@ -335,6 +349,7 @@ jQuery( function( $ ) {
 			wc_checkout_form.dirtyInput = this;
 			wc_checkout_form.reset_update_checkout_timer();
 			wc_checkout_form.updateTimer = setTimeout( wc_checkout_form.maybe_update_checkout, '1000' );
+			wc_checkout_form.maybe_set_form_row_loading( e );
 		},
 		trigger_update_checkout: function() {
 			wc_checkout_form.reset_update_checkout_timer();
@@ -722,7 +737,19 @@ jQuery( function( $ ) {
 
 					// Fire updated_checkout event.
 					$( document.body ).trigger( 'updated_checkout', [ data ] );
+				},
+				// CHANGE: Maybe remove loading class from form rows when completing the ajax request
+				complete: function() {
+					var maybeLoadingFields = document.querySelectorAll( _settings.checkoutLoadingInputSelector );
+					for ( var i = 0; i < maybeLoadingFields.length; i++ ) {
+						var input = maybeLoadingFields[ i ];
+						var formRow = input.closest( _settings.formRowSelector );
+						if ( formRow ) {
+							formRow.classList.remove( _settings.checkoutLoadingFieldsClass );
+						}
+					}
 				}
+				// CHANGE: END - Maybe remove loading class from form rows when completing the ajax request
 
 			});
 		},

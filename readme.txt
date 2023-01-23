@@ -389,6 +389,7 @@ POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause cust
 * Added: Compatibility with plugin Klarna Payments for WooCommerce by Krokedil.
 * Added: Compatibility with plugin PaysonCheckout for WooCommerce by Krokedil.
 * Added: Functions `undo_hooks` to feature files to allow undoing hook changes in some rare cases.
+* Added: New class `fc-loading` to handle loading indicator on some input fields.
 * Improved: Separate styles for checkout layout and checkout steps into different files, allowing to load them independently.
 * Improved: Moved template files to a better structure, making it consistent with the PRO plugin structure and easier to understand. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/)  and fix possible issues with your customizations.
 * Improved: Changed the way plugin feature files are registered.
