@@ -22,17 +22,18 @@ jQuery( function( $ ) {
 
 	// CHANGE: Add default settings object
 	var _settings = {
-		formRowSelector:                         '.form-row',
-		checkoutPlaceOrderSelector: '#place_order, .fc-place-order-button',
-		checkoutTermsSelector: '.fc-terms-checkbox',
-		checkoutUpdateFieldsSelector: '.address-field input.input-text, .update_totals_on_change input.input-text',
-		checkoutLoadingInputSelector: '.loading_indicator_on_change input.input-text',
-		focusedFieldSkipFragmentReplaceSelector: 'input[type="text"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"], select, textarea, .fc-select2-field',
-		phoneFieldSelector: 'input[type="tel"], [data-phone-field], input.js-phone-field, .js-phone-field input',
+		formRowSelector:                              '.form-row',
+		checkoutPlaceOrderSelector:                   '#place_order, .fc-place-order-button',
+		checkoutTermsSelector:                        '.fc-terms-checkbox',
+		checkoutUpdateFieldsSelector:                 '.address-field input.input-text, .update_totals_on_change input.input-text',
+		checkoutLoadingInputSelector:                 '.loading_indicator_on_change input.input-text',
+		focusedFieldSkipFragmentReplaceSelector:      'input[type="text"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"], select, textarea, .fc-select2-field',
+		phoneFieldSelector:                           'input[type="tel"], [data-phone-field], input.js-phone-field, .js-phone-field input',
 
-		checkoutLoadingFieldsClass: 'fc-loading',
+		loadingClass:                                 'fc-loading',
 
-		checkoutUpdateBeforeUnload: 'yes',
+		checkoutPlaceOrderApplyLoadingClass:          'yes',
+		checkoutUpdateBeforeUnload:                   'yes',
 	};
 
 	// CHANGE: Add auxiliar function to merge objects
@@ -328,7 +329,7 @@ jQuery( function( $ ) {
 			if ( e.target && e.target.matches( _settings.checkoutLoadingInputSelector ) ) {
 				var formRow = e.target.closest( _settings.formRowSelector );
 				if ( formRow ) {
-					formRow.classList.add( _settings.checkoutLoadingFieldsClass );
+					formRow.classList.add( _settings.loadingClass );
 				}
 			}
 		},
@@ -745,7 +746,7 @@ jQuery( function( $ ) {
 						var input = maybeLoadingFields[ i ];
 						var formRow = input.closest( _settings.formRowSelector );
 						if ( formRow ) {
-							formRow.classList.remove( _settings.checkoutLoadingFieldsClass );
+							formRow.classList.remove( _settings.loadingClass );
 						}
 					}
 				}
@@ -810,6 +811,9 @@ jQuery( function( $ ) {
 				var currentFocusedElement = document.activeElement;
 				$( _settings.checkoutPlaceOrderSelector ).attr( 'disabled', 'disabled' );
 				$( _settings.checkoutPlaceOrderSelector ).addClass( 'disabled' );
+				if ( 'yes' === _settings.checkoutPlaceOrderApplyLoadingClass ) {
+					$( _settings.checkoutPlaceOrderSelector ).addClass( _settings.loadingClass );
+				}
 				// END - Disable place order button
 
 				wc_checkout_form.blockOnSubmit( $form );
@@ -875,6 +879,9 @@ jQuery( function( $ ) {
 							}
 
 							// CHANGE: Unblock the place order button
+							if ( 'yes' === _settings.checkoutPlaceOrderApplyLoadingClass ) {
+								$( _settings.checkoutPlaceOrderSelector ).removeClass( _settings.loadingClass );
+							}
 							$( _settings.checkoutPlaceOrderSelector ).removeAttr( 'disabled' );
 							$( _settings.checkoutPlaceOrderSelector ).removeClass( 'disabled' );
 							wc_checkout_form.maybe_refocus_element( currentFocusedElement );
