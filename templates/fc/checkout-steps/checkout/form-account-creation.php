@@ -42,7 +42,7 @@ $collapsible_initial_state = $create_account_checked ? 'expanded' : 'collapsed';
 		<?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
 
 			<?php // CHANGE: Add class `fc-field-group` and collapsible block attributes ?>
-			<div class="create-account fc-field-group <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
+			<div class="create-account fc-field-group <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" data-collapsible data-collapsible-content data-autofocus data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
 				<div class="collapsible-content__inner">
 					<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
 						<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
