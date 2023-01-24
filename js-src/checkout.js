@@ -816,6 +816,9 @@ jQuery( function( $ ) {
 				}
 				// END - Disable place order button
 
+				// CHANGE: Block checkout update requests
+				window.can_update_checkout = false;
+
 				wc_checkout_form.blockOnSubmit( $form );
 
 				// Attach event to block reloading the page when the form has been submitted
@@ -877,6 +880,9 @@ jQuery( function( $ ) {
 								window.location.reload();
 								return;
 							}
+
+							// CHANGE: Block checkout update requests
+							window.can_update_checkout = true;
 
 							// CHANGE: Unblock the place order button
 							if ( 'yes' === _settings.checkoutPlaceOrderApplyLoadingClass ) {
