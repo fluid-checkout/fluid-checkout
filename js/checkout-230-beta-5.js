@@ -140,7 +140,10 @@ jQuery( function( $ ) {
 
 			// CHANGE: Update checkout when "billing same as shipping" checked state changes
 			this.$checkout_form.on( 'change', '#billing_same_as_shipping', this.billing_same_shipping_changed );
+
+			// CHANGE: Trigger reinitialization functions after checkout is updated
 			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_collapsible_blocks );
+			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_flyout_blocks );
 
 			// CHANGE: Add event listener to sync terms checkbox state
 			this.$checkout_form.on( 'change', _settings.checkoutTermsSelector, this.terms_checked_changed );
@@ -175,10 +178,11 @@ jQuery( function( $ ) {
 
 			$( document.body ).trigger( 'update_checkout' );
 		},
-		// CHANGE: Reinitialize billing fields collapsible block after checkout update
+		// CHANGE: Reinitialize collapsible blocks after checkout update
 		maybe_reinitialize_collapsible_blocks: function() {
 			// Bail if collapsible blocks are not available
 			if ( ! window.CollapsibleBlock ) { return; }
+
 			// Try to initialize collapsible blocks if not yet initialized
 			CollapsibleBlock.init( window.fcSettings ? fcSettings.collapsibleBlock : null );
 
@@ -191,6 +195,13 @@ jQuery( function( $ ) {
 					CollapsibleBlock.initializeElement( collapsibleBlock );
 				}
 			}
+		},
+		// CHANGE: Reinitialize flyout blocks after checkout update
+		maybe_reinitialize_flyout_blocks: function() {
+			// Bail if flyout blocks are not available
+			if ( ! window.FlyoutBlock ) { return; }
+
+			FlyoutBlock.initTriggers();
 		},
 		// CHANGE: Update checkout when page gets hidden or visible again
 		maybe_update_checkout_visibility_change: function() {

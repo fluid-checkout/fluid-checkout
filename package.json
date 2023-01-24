@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "collapsible-block": "^1.1.8",
-    "flyout-block": "^1.1.4",
+    "flyout-block": "^1.1.5",
     "mailcheck": "^1.1.1",
     "require-bundle-js": "^1.0.0",
     "require-polyfills": "^1.0.1",

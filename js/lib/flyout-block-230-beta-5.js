@@ -494,6 +494,17 @@
 			trigger.removeAttribute( 'href' );
 		}
 	}
+
+	/**
+	 * Initialize Script.
+	 */
+	_publicMethods.initTriggers = function() {
+		// Iterate trigger elements
+		var triggers = document.querySelectorAll( _settings.triggerSelectors );
+		for ( var i = 0; i < triggers.length; i++ ) {
+			_publicMethods.initializeTrigger( triggers[ i ] );
+		}
+	}
 	
 
 
@@ -574,10 +585,7 @@
 		}
 
 		// Iterate trigger elements
-		var triggers = document.querySelectorAll( _settings.triggerSelectors );
-		for ( var i = 0; i < triggers.length; i++ ) {
-			_publicMethods.initializeTrigger( triggers[ i ] );
-		}
+		_publicMethods.initTriggers();
 
 		// Add flyout overlay
 		var overlayElement = document.createElement('div');
