@@ -2180,7 +2180,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Maybe add notice for account creation
 		if ( ! is_user_logged_in() && 'true' === get_option( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) && 'true' === apply_filters( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) ) {
 			$parsed_posted_data = $this->get_parsed_posted_data();
-			if ( ( WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() ) || ( array_key_exists( 'createaccount', $parsed_posted_data ) && $parsed_posted_data[ 'createaccount' ] == '1' ) ) {
+			if ( ( WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() ) || ( '1' === WC()->checkout()->get_value( 'createaccount' ) || 'true' === WC()->checkout()->get_value( 'createaccount' ) ) ) {
 				$review_text_lines[] = '<em>' . __( 'An account will be created with the information provided.', 'fluid-checkout' ) . '</em>';
 			}
 		}
@@ -4600,6 +4600,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
+		// Other fields
+		$other_fields_keys = array( 'createaccount' );
+		foreach ( $other_fields_keys as $field_key ) {
+			if ( ! in_array( $field_key, array_keys( $posted_data ) ) ) {
+				$this->set_checkout_field_value_to_session( $field_key, '' );
+				$posted_data[ $field_key ] = '';
+			}
+		}
+
 		return $posted_data;
 	}
 
@@ -4639,13 +4648,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Save customer data to the session
 		foreach ( $session_field_keys as $field_key ) {
-
 			// Set property value to the customer object
 			if ( array_key_exists( $field_key, $posted_data ) ) {
 				// Set session value
 				$this->set_checkout_field_value_to_session( $field_key, $posted_data[ $field_key ] );
 			}
 			else {
+				if ( 'createaccount' === $field_key ) {
+					$field_key = $field_key;
+				}
 				// Set session value as empty
 				$this->set_checkout_field_value_to_session( $field_key, null );
 			}

@@ -389,6 +389,7 @@ POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause cust
 * Added: Compatibility with plugin Klarna Payments for WooCommerce by Krokedil.
 * Added: Compatibility with plugin PaysonCheckout for WooCommerce by Krokedil.
 * Added: Functions `undo_hooks` to feature files to allow undoing hook changes in some rare cases.
+* Improved: Persist checked state for create account checkbox and use Collapsible Block script to show/hide the account fields section.
 * Improved: Add loading indicator on the place order button, and other buttons and input fields.
 * Improved: Prevent starting "update checkout" requests while processing place order submit.
 * Improved: Separate styles for checkout layout and checkout steps into different files, allowing to load them independently.

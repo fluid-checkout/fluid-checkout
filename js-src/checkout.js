@@ -154,7 +154,8 @@ jQuery( function( $ ) {
 				$( document.body ).trigger( 'init_checkout' );
 			}
 			if ( wc_checkout_params.option_guest_checkout === 'yes' ) {
-				$( 'input#createaccount' ).on( 'change', this.toggle_create_account ).trigger( 'change' );
+				// CHANGE: Use native `change` event instead jQuery to handle create account checkbox toggle
+				document.addEventListener( 'change', this.toggle_create_account, true );
 			}
 		},
 		// CHANGE: Update checkout when "billing same as shipping" checked state changes
@@ -176,18 +177,18 @@ jQuery( function( $ ) {
 		},
 		// CHANGE: Reinitialize billing fields collapsible block after checkout update
 		maybe_reinitialize_collapsible_blocks: function() {
-			if ( window.CollapsibleBlock ) {
-				// Try to initialize collapsible blocks if not yet initialized
-				CollapsibleBlock.init( window.fcSettings ? fcSettings.collapsibleBlock : null );
+			// Bail if collapsible blocks are not available
+			if ( ! window.CollapsibleBlock ) { return; }
+			// Try to initialize collapsible blocks if not yet initialized
+			CollapsibleBlock.init( window.fcSettings ? fcSettings.collapsibleBlock : null );
 
-				var collapsibleBlocks = document.querySelectorAll( '[data-collapsible]' );
-				for ( var i = 0; i < collapsibleBlocks.length; i++ ) {
-					var collapsibleBlock = collapsibleBlocks[i];
+			var collapsibleBlocks = document.querySelectorAll( '[data-collapsible]' );
+			for ( var i = 0; i < collapsibleBlocks.length; i++ ) {
+				var collapsibleBlock = collapsibleBlocks[i];
 
-					// Maybe initialize the collapsible block
-					if ( ! CollapsibleBlock.getInstance( collapsibleBlock ) ) {
-						CollapsibleBlock.initializeElement( collapsibleBlock );
-					}
+				// Maybe initialize the collapsible block
+				if ( ! CollapsibleBlock.getInstance( collapsibleBlock ) ) {
+					CollapsibleBlock.initializeElement( collapsibleBlock );
 				}
 			}
 		},
@@ -293,13 +294,22 @@ jQuery( function( $ ) {
 
 			wc_checkout_form.selectedPaymentMethod = selectedPaymentMethod;
 		},
-		toggle_create_account: function() {
-			$( 'div.create-account' ).hide();
+		toggle_create_account: function( e ) {
+			// Bail if not target element
+			if ( ! e.target || ! e.target.matches( 'input#createaccount' ) ) { return; }
 
-			if ( $( this ).is( ':checked' ) ) {
-				// Ensure password is not pre-populated.
-				$( '#account_password' ).val( '' ).trigger( 'change' );
-				$( 'div.create-account' ).slideDown();
+			// Bail if collapsible block not available
+			if ( ! window.CollapsibleBlock ) { return; }
+
+			var checkbox = document.querySelector( 'input#createaccount' );
+			var createAccountBlock = document.querySelector( 'div.create-account' );
+
+			// Toggle state
+			if ( checkbox.checked ) {
+				CollapsibleBlock.expand( createAccountBlock );
+			}
+			else {
+				CollapsibleBlock.collapse( createAccountBlock );
 			}
 		},
 		init_checkout: function() {
