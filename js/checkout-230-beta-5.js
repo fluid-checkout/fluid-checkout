@@ -29,6 +29,9 @@ jQuery( function( $ ) {
 		checkoutLoadingInputSelector:                 '.loading_indicator_on_change input.input-text',
 		focusedFieldSkipFragmentReplaceSelector:      'input[type="text"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"], select, textarea, .fc-select2-field',
 		phoneFieldSelector:                           'input[type="tel"], [data-phone-field], input.js-phone-field, .js-phone-field input',
+		loginButtonSelector:                          '.fc-contact-login__action',
+		emailFieldSelector:                           'form.woocommerce-checkout input[name="billing_email"]',
+		usernameFieldSelector:                        '.fc-login-form__inner input[name="username"]',
 
 		loadingClass:                                 'fc-loading',
 
@@ -160,6 +163,9 @@ jQuery( function( $ ) {
 				// CHANGE: Use native `change` event instead jQuery to handle create account checkbox toggle
 				document.addEventListener( 'change', this.toggle_create_account, true );
 			}
+
+			// CHANGE: Add handler for login form modal initialization
+			document.addEventListener( 'click', this.maybe_copy_email_to_login_form, true );
 		},
 		// CHANGE: Update checkout when "billing same as shipping" checked state changes
 		billing_same_shipping_changed: function( e ) {
@@ -305,7 +311,9 @@ jQuery( function( $ ) {
 
 			wc_checkout_form.selectedPaymentMethod = selectedPaymentMethod;
 		},
+		// CHANGE: Add `e` parameter needed for checking target element
 		toggle_create_account: function( e ) {
+			// CHANGE: Use collapsible block instead of jQuery to show/hide accoung fields section
 			// Bail if not target element
 			if ( ! e.target || ! e.target.matches( 'input#createaccount' ) ) { return; }
 
@@ -322,7 +330,23 @@ jQuery( function( $ ) {
 			else {
 				CollapsibleBlock.collapse( createAccountBlock );
 			}
+			// CHANGE: END - Use collapsible block instead of jQuery to show/hide accoung fields section
 		},
+		// CHANGE: Add function to copy email field value to the login form username field
+		maybe_copy_email_to_login_form: function( e ) {
+			// CHANGE: Use collapsible block instead of jQuery to show/hide accoung fields section
+			// Bail if not target element
+			if ( ! e.target || ! e.target.closest( _settings.loginButtonSelector ) ) { return; }
+
+			var billingEmailField = document.querySelector( _settings.emailFieldSelector );
+			var usernameField = document.querySelector( _settings.usernameFieldSelector );
+			
+			// Maybe copy email to username field
+			if ( billingEmailField && usernameField ) {
+				usernameField.value = billingEmailField.value;
+			}
+		},
+		// CHANGE: END - Add function to copy email field value to the login form username field
 		init_checkout: function() {
 			$( document.body ).trigger( 'update_checkout' );
 		},
