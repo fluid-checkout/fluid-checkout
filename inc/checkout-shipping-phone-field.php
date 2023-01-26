@@ -49,8 +49,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * Undo hooks that are run early.
 	 * 
 	 * Needs to run before hook `wp` priority `100`.
-	 * At that priority, the shipping phone field would have already
-	 * been added into cache and removing some hooks would not take affect.
+	 * At that priority, changes might have already been added into cache and removing some hooks would not take affect.
 	 */
 	public function undo_hooks_early() {
 		// Add shipping phone field
