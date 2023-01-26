@@ -4654,9 +4654,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 				$this->set_checkout_field_value_to_session( $field_key, $posted_data[ $field_key ] );
 			}
 			else {
-				if ( 'createaccount' === $field_key ) {
-					$field_key = $field_key;
-				}
 				// Set session value as empty
 				$this->set_checkout_field_value_to_session( $field_key, null );
 			}
