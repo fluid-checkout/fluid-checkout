@@ -639,6 +639,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 .fc-content div.woocommerce form .fc-wrapper .form-row.create-account + div.create-account {
   margin-top: 10px;
+  margin-bottom: 0;
 }
 
 .fc-content div.woocommerce form .fc-wrapper div.create-account {

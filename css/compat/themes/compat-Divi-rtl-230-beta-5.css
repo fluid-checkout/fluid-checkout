@@ -29,8 +29,8 @@ body.theme-Divi div.woocommerce form .form-row.woocommerce-validated:not([class*
   font-size: 24px;
   z-index: 10;
   position: absolute;
-  left: 5px;
   top: 13.5px;
+  left: 5px;
   border-radius: 100%;
   background-color: rgba(255, 255, 255, 0.75);
   color: #007a3d;
@@ -139,4 +139,76 @@ body.theme-Divi div.woocommerce form .form-row .select2-selection--multiple .sel
 
 body.theme-Divi div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
   will-change: none;
+}
+
+body.theme-Divi div.woocommerce .form-row.fc-loading .woocommerce-input-wrapper:after {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "\e816";
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  z-index: 10;
+  content: "\e816" !important;
+  position: absolute;
+  top: 13.5px;
+  left: 5px;
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 24px !important;
+  line-height: 1 !important;
+  border-radius: 100%;
+  background-color: transparent !important;
+  animation: loader-spin 0.75s linear infinite;
+  color: inherit !important;
+  pointer-events: none;
+}
+
+body.theme-Divi div.woocommerce button.fc-loading,
+body.theme-Divi div.woocommerce .button.fc-loading {
+  position: relative;
+  color: transparent !important;
+}
+
+body.theme-Divi div.woocommerce button.fc-loading:after,
+body.theme-Divi div.woocommerce .button.fc-loading:after {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "\e816";
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  left: 10px;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  line-height: 1;
+  border-radius: 100%;
+  background-color: transparent;
+  animation: loader-spin-centered 0.75s linear infinite;
+  color: #fff !important;
+  pointer-events: none;
 }

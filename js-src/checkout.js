@@ -22,14 +22,21 @@ jQuery( function( $ ) {
 
 	// CHANGE: Add default settings object
 	var _settings = {
-		checkoutPlaceOrderSelector: '#place_order, .fc-place-order-button',
-		checkoutTermsSelector: '.fc-terms-checkbox',
-		checkoutUpdateFieldsSelector: '.address-field input.input-text, .update_totals_on_change input.input-text',
-		checkoutUpdateBeforeUnload: 'yes',
+		formRowSelector:                              '.form-row',
+		checkoutPlaceOrderSelector:                   '#place_order, .fc-place-order-button',
+		checkoutTermsSelector:                        '.fc-terms-checkbox',
+		checkoutUpdateFieldsSelector:                 '.address-field input.input-text, .update_totals_on_change input.input-text',
+		checkoutLoadingInputSelector:                 '.loading_indicator_on_change input.input-text',
+		focusedFieldSkipFragmentReplaceSelector:      'input[type="text"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"], select, textarea, .fc-select2-field',
+		phoneFieldSelector:                           'input[type="tel"], [data-phone-field], input.js-phone-field, .js-phone-field input',
+		loginButtonSelector:                          '.fc-contact-login__action',
+		emailFieldSelector:                           'form.woocommerce-checkout input[name="billing_email"]',
+		usernameFieldSelector:                        '.fc-login-form__inner input[name="username"]',
 
-		focusedFieldSkipFragmentReplaceSelector: 'input[type="text"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"], select, textarea, .fc-select2-field',
+		loadingClass:                                 'fc-loading',
 
-		phoneFieldSelector: 'input[type="tel"], [data-phone-field], input.js-phone-field, .js-phone-field input',
+		checkoutPlaceOrderApplyLoadingClass:          'yes',
+		checkoutUpdateBeforeUnload:                   'yes',
 	};
 
 	// CHANGE: Add auxiliar function to merge objects
@@ -136,7 +143,10 @@ jQuery( function( $ ) {
 
 			// CHANGE: Update checkout when "billing same as shipping" checked state changes
 			this.$checkout_form.on( 'change', '#billing_same_as_shipping', this.billing_same_shipping_changed );
+
+			// CHANGE: Trigger reinitialization functions after checkout is updated
 			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_collapsible_blocks );
+			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_flyout_blocks );
 
 			// CHANGE: Add event listener to sync terms checkbox state
 			this.$checkout_form.on( 'change', _settings.checkoutTermsSelector, this.terms_checked_changed );
@@ -150,8 +160,12 @@ jQuery( function( $ ) {
 				$( document.body ).trigger( 'init_checkout' );
 			}
 			if ( wc_checkout_params.option_guest_checkout === 'yes' ) {
-				$( 'input#createaccount' ).on( 'change', this.toggle_create_account ).trigger( 'change' );
+				// CHANGE: Use native `change` event instead jQuery to handle create account checkbox toggle
+				document.addEventListener( 'change', this.toggle_create_account, true );
 			}
+
+			// CHANGE: Add handler for login form modal initialization
+			document.addEventListener( 'click', this.maybe_copy_email_to_login_form, true );
 		},
 		// CHANGE: Update checkout when "billing same as shipping" checked state changes
 		billing_same_shipping_changed: function( e ) {
@@ -170,22 +184,30 @@ jQuery( function( $ ) {
 
 			$( document.body ).trigger( 'update_checkout' );
 		},
-		// CHANGE: Reinitialize billing fields collapsible block after checkout update
+		// CHANGE: Reinitialize collapsible blocks after checkout update
 		maybe_reinitialize_collapsible_blocks: function() {
-			if ( window.CollapsibleBlock ) {
-				// Try to initialize collapsible blocks if not yet initialized
-				CollapsibleBlock.init( window.fcSettings ? fcSettings.collapsibleBlock : null );
+			// Bail if collapsible blocks are not available
+			if ( ! window.CollapsibleBlock ) { return; }
 
-				var collapsibleBlocks = document.querySelectorAll( '[data-collapsible]' );
-				for ( var i = 0; i < collapsibleBlocks.length; i++ ) {
-					var collapsibleBlock = collapsibleBlocks[i];
+			// Try to initialize collapsible blocks if not yet initialized
+			CollapsibleBlock.init( window.fcSettings ? fcSettings.collapsibleBlock : null );
 
-					// Maybe initialize the collapsible block
-					if ( ! CollapsibleBlock.getInstance( collapsibleBlock ) ) {
-						CollapsibleBlock.initializeElement( collapsibleBlock );
-					}
+			var collapsibleBlocks = document.querySelectorAll( '[data-collapsible]' );
+			for ( var i = 0; i < collapsibleBlocks.length; i++ ) {
+				var collapsibleBlock = collapsibleBlocks[i];
+
+				// Maybe initialize the collapsible block
+				if ( ! CollapsibleBlock.getInstance( collapsibleBlock ) ) {
+					CollapsibleBlock.initializeElement( collapsibleBlock );
 				}
 			}
+		},
+		// CHANGE: Reinitialize flyout blocks after checkout update
+		maybe_reinitialize_flyout_blocks: function() {
+			// Bail if flyout blocks are not available
+			if ( ! window.FlyoutBlock ) { return; }
+
+			FlyoutBlock.initTriggers();
 		},
 		// CHANGE: Update checkout when page gets hidden or visible again
 		maybe_update_checkout_visibility_change: function() {
@@ -289,15 +311,42 @@ jQuery( function( $ ) {
 
 			wc_checkout_form.selectedPaymentMethod = selectedPaymentMethod;
 		},
-		toggle_create_account: function() {
-			$( 'div.create-account' ).hide();
+		// CHANGE: Add `e` parameter needed for checking target element
+		toggle_create_account: function( e ) {
+			// CHANGE: Use collapsible block instead of jQuery to show/hide accoung fields section
+			// Bail if not target element
+			if ( ! e.target || ! e.target.matches( 'input#createaccount' ) ) { return; }
 
-			if ( $( this ).is( ':checked' ) ) {
-				// Ensure password is not pre-populated.
-				$( '#account_password' ).val( '' ).trigger( 'change' );
-				$( 'div.create-account' ).slideDown();
+			// Bail if collapsible block not available
+			if ( ! window.CollapsibleBlock ) { return; }
+
+			var checkbox = document.querySelector( 'input#createaccount' );
+			var createAccountBlock = document.querySelector( 'div.create-account' );
+
+			// Toggle state
+			if ( checkbox.checked ) {
+				CollapsibleBlock.expand( createAccountBlock );
+			}
+			else {
+				CollapsibleBlock.collapse( createAccountBlock );
+			}
+			// CHANGE: END - Use collapsible block instead of jQuery to show/hide accoung fields section
+		},
+		// CHANGE: Add function to copy email field value to the login form username field
+		maybe_copy_email_to_login_form: function( e ) {
+			// CHANGE: Use collapsible block instead of jQuery to show/hide accoung fields section
+			// Bail if not target element
+			if ( ! e.target || ! e.target.closest( _settings.loginButtonSelector ) ) { return; }
+
+			var billingEmailField = document.querySelector( _settings.emailFieldSelector );
+			var usernameField = document.querySelector( _settings.usernameFieldSelector );
+			
+			// Maybe copy email to username field
+			if ( billingEmailField && usernameField ) {
+				usernameField.value = billingEmailField.value;
 			}
 		},
+		// CHANGE: END - Add function to copy email field value to the login form username field
 		init_checkout: function() {
 			$( document.body ).trigger( 'update_checkout' );
 		},
@@ -320,9 +369,20 @@ jQuery( function( $ ) {
 			var termsCheckBoxChecked = $( e.target ).prop( 'checked' );
 			$( _settings.checkoutTermsSelector ).prop( 'checked', termsCheckBoxChecked );
 		},
+		// CHANGE: Maybe add loading class to the form row
+		maybe_set_form_row_loading: function( e ) {
+			if ( e.target && e.target.matches( _settings.checkoutLoadingInputSelector ) ) {
+				var formRow = e.target.closest( _settings.formRowSelector );
+				if ( formRow ) {
+					formRow.classList.add( _settings.loadingClass );
+				}
+			}
+		},
+		// CHANGE: END - Maybe add loading class to the form row
 		input_changed: function( e ) {
 			wc_checkout_form.dirtyInput = e.target;
 			wc_checkout_form.maybe_update_checkout();
+			wc_checkout_form.maybe_set_form_row_loading( e );
 		},
 		queue_update_checkout: function( e ) {
 			var code = e.keyCode || e.which || 0;
@@ -335,6 +395,7 @@ jQuery( function( $ ) {
 			wc_checkout_form.dirtyInput = this;
 			wc_checkout_form.reset_update_checkout_timer();
 			wc_checkout_form.updateTimer = setTimeout( wc_checkout_form.maybe_update_checkout, '1000' );
+			wc_checkout_form.maybe_set_form_row_loading( e );
 		},
 		trigger_update_checkout: function() {
 			wc_checkout_form.reset_update_checkout_timer();
@@ -722,7 +783,19 @@ jQuery( function( $ ) {
 
 					// Fire updated_checkout event.
 					$( document.body ).trigger( 'updated_checkout', [ data ] );
+				},
+				// CHANGE: Maybe remove loading class from form rows when completing the ajax request
+				complete: function() {
+					var maybeLoadingFields = document.querySelectorAll( _settings.checkoutLoadingInputSelector );
+					for ( var i = 0; i < maybeLoadingFields.length; i++ ) {
+						var input = maybeLoadingFields[ i ];
+						var formRow = input.closest( _settings.formRowSelector );
+						if ( formRow ) {
+							formRow.classList.remove( _settings.loadingClass );
+						}
+					}
 				}
+				// CHANGE: END - Maybe remove loading class from form rows when completing the ajax request
 
 			});
 		},
@@ -783,7 +856,13 @@ jQuery( function( $ ) {
 				var currentFocusedElement = document.activeElement;
 				$( _settings.checkoutPlaceOrderSelector ).attr( 'disabled', 'disabled' );
 				$( _settings.checkoutPlaceOrderSelector ).addClass( 'disabled' );
+				if ( 'yes' === _settings.checkoutPlaceOrderApplyLoadingClass ) {
+					$( _settings.checkoutPlaceOrderSelector ).addClass( _settings.loadingClass );
+				}
 				// END - Disable place order button
+
+				// CHANGE: Block checkout update requests
+				window.can_update_checkout = false;
 
 				wc_checkout_form.blockOnSubmit( $form );
 
@@ -847,7 +926,13 @@ jQuery( function( $ ) {
 								return;
 							}
 
+							// CHANGE: Block checkout update requests
+							window.can_update_checkout = true;
+
 							// CHANGE: Unblock the place order button
+							if ( 'yes' === _settings.checkoutPlaceOrderApplyLoadingClass ) {
+								$( _settings.checkoutPlaceOrderSelector ).removeClass( _settings.loadingClass );
+							}
 							$( _settings.checkoutPlaceOrderSelector ).removeAttr( 'disabled' );
 							$( _settings.checkoutPlaceOrderSelector ).removeClass( 'disabled' );
 							wc_checkout_form.maybe_refocus_element( currentFocusedElement );

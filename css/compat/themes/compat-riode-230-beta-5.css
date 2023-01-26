@@ -42,8 +42,8 @@ body.theme-riode div.woocommerce form .form-row.woocommerce-validated:not([class
   font-size: 24px;
   z-index: 10;
   position: absolute;
-  right: 5px;
   top: 10.8125px;
+  right: 5px;
   border-radius: 100%;
   background-color: rgba(255, 255, 255, 0.75);
   color: #007a3d;

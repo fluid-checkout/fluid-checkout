@@ -1,0 +1,2 @@
+Font files generated with https://fontello.com
+To make modifications, load the files *.config.json into Fontello.

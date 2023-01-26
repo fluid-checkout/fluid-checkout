@@ -15,4 +15,5 @@ $_field-height:                        remsize( 4rem ) !default;
 @import
 	"checkout-content-area",
 	"../../partials/checkout-validation-check",
-	"checkout-validation";
+	"checkout-validation",
+	"../../partials/loading-indicator";

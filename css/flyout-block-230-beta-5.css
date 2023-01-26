@@ -421,3 +421,7 @@ body.has-flyout--open {
     height: auto;
   }
 }
+
+.has-flyout a[data-flyout-toggle][role=button] {
+  cursor: pointer;
+}
