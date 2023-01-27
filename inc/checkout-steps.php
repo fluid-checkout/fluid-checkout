@@ -3046,12 +3046,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'package'					=> $package,
 				'available_methods'			=> $package['rates'],
 				'show_package_details'		=> sizeof( $packages ) > 1,
-				'is_cart_page_or_fragment'  => $this->is_cart_page_or_fragment(),
 				'package_details'			=> implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
 				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
 				'package_index'				=> $i,
 				'chosen_method'				=> $chosen_method,
+				'formatted_destination'    => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
+				'has_calculated_shipping'  => WC()->customer->has_calculated_shipping(),
 			) );
 
 			$first_item = false;

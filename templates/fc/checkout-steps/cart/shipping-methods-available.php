@@ -6,20 +6,23 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.6.0
+ * @version 2.3.1
  * @wc-version 3.6.0
  * @wc-original cart/cart-shipping.php
  */
 
 defined( 'ABSPATH' ) || exit;
-$is_cart_page_or_fragment = ! empty( $is_cart_page_or_fragment );
+$formatted_destination    = isset( $formatted_destination ) ? $formatted_destination : WC()->countries->get_formatted_address( $package['destination'], ', ' );
+$has_calculated_shipping  = ! empty( $has_calculated_shipping );
+$show_shipping_calculator = ! empty( $show_shipping_calculator );
+$calculator_text          = '';
 ?>
 
 <?php // CHANGE: Remove shipping totals table row elements ?>
 
 <div class="shipping shipping-method__package" data-title="<?php echo esc_attr( $package_name ); ?>" data-package-index="<?php echo esc_attr( $package_index ); ?>">
 
-	<?php if ( is_checkout() || ( $is_cart_page_or_fragment && WC()->cart->show_shipping() ) ) : ?>
+	<?php if ( is_checkout() || ( FluidCheckout_Steps::instance()->is_cart_page_or_fragment() && WC()->cart->show_shipping() ) ) : ?>
 
 		<?php // CHANGE: Conditionally add the shipping package name ?>
 		<?php if ( true === apply_filters( 'fc_shipping_method_display_package_name', false ) ) : ?>
@@ -83,9 +86,15 @@ $is_cart_page_or_fragment = ! empty( $is_cart_page_or_fragment );
 
 	<?php // CHANGE: Conditionally display message for when no shipping methods are available for the package, only on the checkout page ?>
 	<?php if ( is_checkout() && count( $available_methods ) == 0 ) : ?>
-		<div class="fc-shipping-method__no-shipping-methods">
-			<?php echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce' ) ) ); ?>
-		</div>
+		<?php if ( $has_calculated_shipping && $formatted_destination ) : ?>
+			<div class="fc-shipping-method__no-shipping-methods">
+				<?php echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce' ) ) ); ?>
+			</div>
+		<?php else: ?>
+			<div class="fc-shipping-method__incomplete-address">
+				<?php echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'woocommerce' ) ) ); ?>
+			</div>
+		<?php endif; ?>
 	<?php endif; ?>
 
 </div>

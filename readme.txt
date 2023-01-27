@@ -380,6 +380,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Display notice to enter complete shipping address to see shipping methods available, instead of an error message from the start.
+
 = 2.3.0 - 2023-01-27 =
 
 POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause customizations to those files to stop working. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/) and fix possible issues with your customizations.
