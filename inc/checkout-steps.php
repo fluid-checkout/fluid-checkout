@@ -3043,14 +3043,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			wc_get_template( 'cart/shipping-methods-available.php', array(
-				'package'					=> $package,
-				'available_methods'			=> $package['rates'],
-				'show_package_details'		=> sizeof( $packages ) > 1,
-				'package_details'			=> implode( ', ', $product_names ),
+				'package'                   => $package,
+				'available_methods'         => $package['rates'],
+				'show_package_details'      => sizeof( $packages ) > 1,
+				'package_details'           => implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
 				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
-				'package_index'				=> $i,
-				'chosen_method'				=> $chosen_method,
+				'package_index'             => $i,
+				'chosen_method'             => $chosen_method,
 				'formatted_destination'    => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
 				'has_calculated_shipping'  => WC()->customer->has_calculated_shipping(),
 			) );
