@@ -995,6 +995,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 
+	/**
+	 * Returns whether the create account checkbox is checked or registration is required.
+	 */
+	public function is_create_account_checked() {
+		return ( WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() ) || ( '1' === WC()->checkout()->get_value( 'createaccount' ) || true === WC()->checkout()->get_value( 'createaccount' ) );
+	}
+
+
+
 
 
 	/**
@@ -2180,7 +2189,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Maybe add notice for account creation
 		if ( ! is_user_logged_in() && 'true' === get_option( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) && 'true' === apply_filters( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) ) {
 			$parsed_posted_data = $this->get_parsed_posted_data();
-			if ( ( WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() ) || ( '1' === WC()->checkout()->get_value( 'createaccount' ) || 'true' === WC()->checkout()->get_value( 'createaccount' ) ) ) {
+			if ( $this->is_create_account_checked() ) {
 				$review_text_lines[] = '<em>' . __( 'An account will be created with the information provided.', 'fluid-checkout' ) . '</em>';
 			}
 		}
@@ -2239,6 +2248,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 						$is_step_complete = false;
 						break 2;
 					}
+				}
+			}
+		}
+
+		// Iterate create account fields when option to create account is checked
+		if ( $this->is_create_account_checked() ) {
+			$account_fields = WC()->checkout()->get_checkout_fields( 'account' );
+			foreach ( $account_fields as $field_key => $field_args ) {
+				// Check required fields
+				if ( array_key_exists( 'required', $field_args ) && $field_args[ 'required' ] === true && ! WC()->checkout()->get_value( $field_key ) ) {
+					$is_step_complete = false;
+					break;
 				}
 			}
 		}
