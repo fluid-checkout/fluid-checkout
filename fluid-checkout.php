@@ -330,6 +330,22 @@ class FluidCheckout {
 
 
 	/**
+	 * Locate template files from this plugin.
+	 * @deprecated Use FluidCheckout_Steps::instance()->locate_template() instead. This will be removed in version 3.0.0
+	 */
+	public function locate_template( $template, $template_name, $template_path ) {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_Steps::instance()->locate_template() instead.', '2.3.0' );
+		
+		// Bail if class `FluidCheckout_Steps` is not yet loaded
+		if ( ! class_exists( 'FluidCheckout_Steps' ) ) { return $template; }
+
+		return FluidCheckout_Steps::instance()->locate_template( $template, $template_name, $template_path );
+	}
+
+
+
+	/**
 	 * Check if Woocommerce is active on a single install or network wide.
 	 *
 	 * @since 1.0.0
