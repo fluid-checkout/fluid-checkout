@@ -21,7 +21,7 @@ class FluidCheckout_ThemeCompat_Minimog extends FluidCheckout {
 	public function hooks() {
 		// Scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'deregister_woocommerce_scripts' ), 20 );
-		add_action( 'wp_enqueue_scripts', array( FluidCheckout_Enqueue::instance(), 'replace_woocommerce_scripts' ), 20 );
+		add_action( 'wp_enqueue_scripts', array( FluidCheckout_Enqueue::instance(), 'maybe_replace_woocommerce_scripts' ), 20 );
 
 		// Remove checkout payment info heading
 		if ( class_exists( 'Minimog\Woo\Checkout' ) ) {

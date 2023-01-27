@@ -1,0 +1,27 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"checkout-progress-bar",
+	"discount-sections",
+	"checkout-steps",
+	"checkout-login",
+	"checkout-create-account",
+	"checkout-billing",
+	"checkout-shipping",
+	"checkout-shipping-methods",
+	"checkout-payment-methods",
+	"checkout-place-order",
+	"checkout-sidebar",
+	"woocommerce-form-fields",
+	"woocommerce-form-fields-select2",
+	"order-summary";

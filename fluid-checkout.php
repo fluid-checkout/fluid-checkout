@@ -5,11 +5,11 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 2.2.2
+Version: 2.3.0-beta-5
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 7.2.2
+WC tested up to: 7.4.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
@@ -100,7 +100,7 @@ class FluidCheckout {
 	public function __construct() {
 		$this->set_plugin_vars();
 		$this->load_admin_notices();
-		$this->add_features();
+		$this->register_features();
 
 		// Run hooks initialization after all plugins have been loaded
 		add_action( 'plugins_loaded', array( $this, 'hooks' ), 10 );
@@ -151,9 +151,6 @@ class FluidCheckout {
 		add_action( 'after_setup_theme', array( $this, 'load_plugin_compat_features' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_theme_compat_features' ), 10 );
 
-		// Template file loader
-		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
-
 		// Clear cache after upgrading the plugin
 		add_action( 'upgrader_process_complete', array( $this, 'clear_cache_on_updates' ), 10, 2 );
 	}
@@ -198,17 +195,25 @@ class FluidCheckout {
 	 * Register plugin features.
 	 * @since 1.2.0
 	 */
-	private function add_features() {
+	private function register_features() {
 		self::$features = array(
-			'checkout-steps'                      => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
-			'checkout-coupon-codes'               => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ), // Class needs to be loaded for PRO version, checks that the feature is enabled happens inside the class.
+			'FluidCheckout_CheckoutPageTemplate'           => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php' ),
+			'FluidCheckout_Steps'                          => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
+			'FluidCheckout_CouponCodes'                    => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ), // Class needs to be loaded for PRO version, checks that the feature is enabled happens inside the class.
 
-			'checkout-fields'                     => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'fc_apply_checkout_field_args', 'enable_default' => 'yes' ),
-			'checkout-hide-optional-fields'       => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'fc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),
-			'checkout-shipping-phone'             => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'fc_shipping_phone_field_visibility', 'enable_default' => 'no' ),
-			'checkout-validation'                 => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'fc_enable_checkout_validation', 'enable_default' => 'yes' ),
-			'checkout-widget-areas'               => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'fc_enable_checkout_widget_areas', 'enable_default' => 'yes' ),
+			'FluidCheckout_CheckoutFields'                 => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'fc_apply_checkout_field_args', 'enable_default' => 'yes' ),
+			'FluidCheckout_CheckoutHideOptionalFields'     => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'fc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),
+			'FluidCheckout_CheckoutShippingPhoneField'     => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'fc_shipping_phone_field_visibility', 'enable_default' => 'no' ),
+			'FluidCheckout_Validation'                     => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'fc_enable_checkout_validation', 'enable_default' => 'yes' ),
+			'FluidCheckout_CheckoutWidgetAreas'            => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'fc_enable_checkout_widget_areas', 'enable_default' => 'yes' ),
 		);
+	}
+
+	/**
+	 * Get the plugin features list.
+	 */
+	public function get_features_list() {
+		return self::$features;
 	}
 
 
@@ -225,49 +230,6 @@ class FluidCheckout {
 
 
 	/**
-	 * Locate template files from this plugin.
-	 * @since 1.0.2
-	 */
-	public function locate_template( $template, $template_name, $template_path ) {
-		global $woocommerce;
-		$_template = null;
-
-		// Set template path to default value when not provided
-		if ( ! $template_path ) { $template_path = $woocommerce->template_url; };
-
-		// Get plugin path
-		$plugin_path  = self::$directory_path . 'templates/';
-
-		// Get the template from this plugin, if it exists
-		if ( file_exists( $plugin_path . $template_name ) ) {
-			$_template = $plugin_path . $template_name;
-		}
-
-		// Look for template file in the theme
-		if ( ! $_template || apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
-			$_template_override = locate_template( array(
-				$template_path . $template_name,
-				$template_name,
-			) );
-
-			// Check if files exist before changing template
-			if ( file_exists( $_template_override ) ) {
-				$_template = $_template_override;
-			}
-		}
-
-		// Use default template
-		if ( ! $_template ) {
-			$_template = $template;
-		}
-
-		// Return what we found
-		return $_template;
-	}
-
-
-
-	/**
 	 * Load the plugin features
 	 * @since 1.2.0
 	 */
@@ -275,14 +237,11 @@ class FluidCheckout {
 		// Bail if features list is not valid
 		if ( ! is_array( self::$features )  ) { return; }
 
-		// Maybe extend plugin features
-		$_features = apply_filters( 'fc_init_features_list', self::$features );
-
 		// Load enqueue
 		require_once self::$directory_path . 'inc/enqueue.php';
 
 		// Load each features
-		foreach ( $_features as $feature_key => $feature ) {
+		foreach ( self::$features as $feature_key => $feature ) {
 
 			$feature_is_enabled = true;
 			$file = array_key_exists( 'file', $feature ) ? $feature[ 'file' ] : null;
@@ -366,6 +325,22 @@ class FluidCheckout {
 				require_once $theme_compat_file_path;
 			}
 		}
+	}
+
+
+
+	/**
+	 * Locate template files from this plugin.
+	 * @deprecated Use FluidCheckout_Steps::instance()->locate_template() instead. This will be removed in version 3.0.0
+	 */
+	public function locate_template( $template, $template_name, $template_path ) {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_Steps::instance()->locate_template() instead.', '2.3.0' );
+		
+		// Bail if class `FluidCheckout_Steps` is not yet loaded
+		if ( ! class_exists( 'FluidCheckout_Steps' ) ) { return $template; }
+
+		return FluidCheckout_Steps::instance()->locate_template( $template, $template_name, $template_path );
 	}
 
 

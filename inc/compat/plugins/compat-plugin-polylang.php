@@ -19,9 +19,6 @@ class FluidCheckout_Polylang extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Bail when no polylang function
-		if ( ! function_exists( 'PLL' ) ) { return; }
-
 		add_filter( 'fc_checkout_header_logo_home_url', array( $this, 'update_home_url' ), 10, 2 );
 	}
 
@@ -29,10 +26,11 @@ class FluidCheckout_Polylang extends FluidCheckout {
 
 	/**
 	 * Get home url depend on current lang.
-	 *
-	 * @return string
 	 */
-	public function update_home_url() {
+	public function update_home_url( $home_url ) {
+		// Bail if polylang function is not available
+		if ( ! function_exists( 'PLL' ) ) { return $home_url; }
+
 		return PLL()->links->get_home_url();
 	}
 

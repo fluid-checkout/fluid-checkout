@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg">
-<metadata>Copyright (C) 2022 by original authors @ fontello.com</metadata>
+<metadata>Copyright (C) 2023 by original authors @ fontello.com</metadata>
 <defs>
 <font id="fluid-checkout-icons" horiz-adv-x="1000" >
 <font-face font-family="fluid-checkout-icons" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
@@ -35,6 +35,8 @@
 <glyph glyph-name="chevron-up" unicode="&#xe80e;" d="M779 203c-8-8-16-12-29-12-12 0-21 4-29 12l-221 221-221-221c-16-16-41-16-58 0-17 17-17 42 0 59l250 250c17 16 42 16 58 0l250-250c17-17 17-42 0-59z" horiz-adv-x="1000" />
 
 <glyph glyph-name="x-circle" unicode="&#xe815;" d="M824 674c-180 180-468 180-648 0s-180-468 0-648 468-180 648 0 180 468 0 648z m-589-589c-147 147-147 383 0 530s383 148 530 0 148-383 0-530-383-148-530 0z m412 118c-17-18-41-18-59 0l-88 88-88-88c-18-18-42-18-59 0s-18 41 0 59l88 88-88 88c-18 18-18 42 0 59s41 18 59 0l88-88 88 88c18 18 42 18 59 0s18-41 0-59l-88-88 88-88c18-18 18-42 0-59z" horiz-adv-x="1000" />
+
+<glyph glyph-name="loader-circle" unicode="&#xe816;" d="M183 621c120 140 318 185 487 110 19-9 27-31 19-50-9-19-31-28-50-20-138 62-300 25-398-89-98-115-109-281-27-407 82-127 238-185 383-142 144 43 244 176 244 327v35c0 21 17 38 38 38 21 0 38-17 38-38v-35c0-185-122-347-299-400s-367 18-467 173c-101 155-88 358 32 498z" horiz-adv-x="1000" />
 
 <glyph glyph-name="minus" unicode="&#xe818;" d="M147 330c-12 0-21 3-30 11-9 9-12 18-12 30 0 23 18 41 42 41h707c23 0 41-18 41-41 0-24-18-41-41-41h-707z" horiz-adv-x="1000" />
 

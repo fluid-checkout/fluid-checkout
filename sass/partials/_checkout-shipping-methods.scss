@@ -92,6 +92,7 @@
 }
 
 .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:before {
+	content: '';
 	border-color: $success-color;
 	background-color: $success-color;
 }

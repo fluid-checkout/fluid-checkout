@@ -46,6 +46,36 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 
 	/**
+	 * Undo hooks.
+	 */
+	public function undo_hooks() {
+		// Bail if not on front end
+		if ( is_admin() ) { return; }
+
+		// Body class
+		remove_filter( 'body_class', array( $this, 'add_body_class' ) );
+
+		// Enqueue assets
+		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
+		// JS settings object
+		remove_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
+		// Mailcheck validation
+		remove_filter( 'fc_checkout_field_args' , array( $this, 'change_checkout_email_field_args' ), 10 );
+
+		// Add validation status classes to checkout fields
+		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_status_classes' ), 100, 3 );
+		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_icon_hide_class' ), 100, 3 );
+
+		// Fix required marker accessibility
+		remove_filter( 'woocommerce_form_field', array( $this, 'change_required_field_attributes' ), 100, 4 );
+	}
+
+
+
+	/**
 	 * Add page body class for feature detection.
 	 *
 	 * @param array  $classes  Current classes.
