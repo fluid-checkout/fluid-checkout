@@ -36,7 +36,7 @@ class FluidCheckout_ThemeCompat_LeadEngine extends FluidCheckout {
 	 */
 	public function add_js_settings( $settings ) {
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $settings; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $settings; }
 
 		// Add settings
 		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = '.navbar-default';
@@ -53,7 +53,7 @@ class FluidCheckout_ThemeCompat_LeadEngine extends FluidCheckout {
 	 */
 	public function change_sticky_elements_relative_header( $attributes ) {
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
 
 		$attributes['data-sticky-relative-to'] = '.navbar-default';
 

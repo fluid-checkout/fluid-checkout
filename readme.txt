@@ -397,6 +397,8 @@ POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause cust
 * Improved: Moved template files to a better structure, making it consistent with the PRO plugin structure and easier to understand. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/)  and fix possible issues with your customizations.
 * Improved: Changed the way plugin feature files are registered.
 * Removed: Filter `fc_init_features_list` as it has no valid use case.
+* Deprecated: FluidCheckout::locate_template, use FluidCheckout_Steps::locate_template instead.
+* Deprecated: FluidCheckout_Steps::get_hide_site_header_footer_at_checkout, use FluidCheckout_CheckoutPageTemplate::get_hide_site_header_footer_at_checkout instead.
 * Fixed: Set contact step as incomplete when create account checkbox is checked and required fields do not have a value.
 * Fixed: Missing login form styles on some themes.
 * Fixed: Only load modifield WooCommerce script files on the affected pages.

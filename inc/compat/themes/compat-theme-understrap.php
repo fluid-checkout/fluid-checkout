@@ -33,7 +33,7 @@ class FluidCheckout_ThemeCompat_Understrap extends FluidCheckout {
 	 */
 	public function add_content_section_class( $class ) {
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $class; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $class; }
 
 		// Maybe add the container class
 		$class = $class . ' container';

@@ -42,7 +42,7 @@ class FluidCheckout_ThemeCompat_PeakShops extends FluidCheckout {
 	 */
 	public function add_content_section_class( $class ) {
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $class; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $class; }
 
 		// Maybe add the container class
 		$class = $class . ' row align-middle';
@@ -59,7 +59,7 @@ class FluidCheckout_ThemeCompat_PeakShops extends FluidCheckout {
 	 */
 	public function change_sticky_elements_relative_header( $attributes ) {
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
 
 		// Bail if fixed header option is disabled
 		if ( ! function_exists( 'ot_get_option' ) || 'on' !== ot_get_option( 'fixed_header', 'on' ) ) { return $attributes; }
