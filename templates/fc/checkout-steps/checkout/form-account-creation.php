@@ -20,7 +20,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // CHANGE: Determine create account checked state
-$create_account_checked = ( '1' === $checkout->get_value( 'createaccount' ) || true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) );
+$create_account_checked = FluidCheckout_Steps::instance()->is_create_account_checked() || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) );
 $collapsible_initial_state = $create_account_checked ? 'expanded' : 'collapsed';
 ?>
 
