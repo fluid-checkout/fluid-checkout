@@ -31,6 +31,20 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 
 
 
+	/**
+	 * Undo hooks.
+	 */
+	public function undo_hooks() {
+		// Widget Areas
+		remove_action( 'widgets_init', array( $this, 'register_widgets_areas' ), 50 );
+		remove_action( 'fc_checkout_header_widgets', array( $this, 'output_widget_area_checkout_header' ), 50 );
+		remove_action( 'woocommerce_before_checkout_form_cart_notices', array( $this, 'output_widget_area_checkout_header_below' ), 3 ); // Displays widgets before the progress bar
+		remove_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_widget_area_order_review_inside' ), 50 );
+		remove_action( 'fc_checkout_after_order_review', array( $this, 'output_widget_area_order_review_outside' ), 50 );
+		remove_action( 'fc_place_order', array( $this, 'output_widget_area_checkout_place_order_below' ), 50 );
+		remove_action( 'fc_checkout_footer_widgets', array( $this, 'output_widget_area_checkout_footer' ), 50 );
+	}
+
 
 
 	/**

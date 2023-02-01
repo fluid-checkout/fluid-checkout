@@ -74,6 +74,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	border-collapse: collapse;
 	border-spacing: 0;
 	font-size: $order-summary-font-size;
+	background-color: transparent;
 
 	@media (#{$bp-larger-than-desktop}) {
 		margin: $order-summary-table-margin--large-screen;
@@ -114,6 +115,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:last-child {
 	border-bottom: $order-summary-cell-border;
 }
+
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody tr {
 	border-bottom: $order-summary-cell-border--products;
 }
@@ -257,6 +259,12 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	padding: 0;
 }
 
+div.woocommerce .fc-wrapper .fc-checkout-order-review:not( .has-additional-content ) #order_review table.woocommerce-checkout-review-order-table tr.order-total {
+	@media (#{$bp-larger-than-desktop}) {
+		border-bottom: 0;
+	}
+}
+
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total th {
 	text-transform: uppercase;
 }
@@ -323,6 +331,7 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	padding: remsize( 1.2rem ) $order-summary-cell-padding-horizontal 0;
 	width: $order-summary-table-width;
 	max-width: $order-summary-table-width;
+	overflow: visible;
 
 	@media (#{$bp-larger-than-tablet}) {
 		margin: 0 0 $global-spacing-small;
@@ -331,7 +340,6 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 		border: $order-summary-border;
 		border-radius: $checkout-substep-border-radius;
 		background-color: $white;
-		overflow: hidden;
 	}
 
 	&:focus {
@@ -341,9 +349,11 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 }
 
 .fc-wrapper .fc-checkout-order-review[data-flyout].is-open .fc-checkout-order-review__inner {
-	height: 100%;
+	padding-bottom: $global-spacing-large;
 	width: 100%;
+	height: 100%;
 	margin: 0;
+	overflow: auto;
 }
 
 

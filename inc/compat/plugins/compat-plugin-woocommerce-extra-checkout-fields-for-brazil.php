@@ -19,6 +19,9 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'replace_wcbcf_script' ), 20 );
 
@@ -45,7 +48,12 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_shipping' ), 10 );
 		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_billing' ), 10 );
 		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_by_person_type' ), 10 );
+	}
 
+	/**
+	 * Add or remove late hooks.
+	 */
+	public function late_hooks() {
 		// Shipping phone
 		if ( class_exists( 'FluidCheckout_CheckoutShippingPhoneField' ) ) {
 			add_filter( 'wcbcf_shipping_fields', array( FluidCheckout_CheckoutShippingPhoneField::instance(), 'add_shipping_phone_field' ), 5 );

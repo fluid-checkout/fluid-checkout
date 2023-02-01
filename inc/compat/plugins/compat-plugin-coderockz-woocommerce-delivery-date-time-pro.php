@@ -25,6 +25,9 @@ class FluidCheckout_CodeRockz_WooCommerceDelivery extends FluidCheckout {
 
 
 
+	/**
+	 * Load compatibility with Lite version of the same plugin.
+	 */
 	public function load_compat_plugin_woo_delivery() {
 		$compat_file = FluidCheckout::$directory_path . 'inc/compat/plugins/compat-plugin-woo-delivery.php';
 		if ( file_exists( $compat_file ) ) {

@@ -3,9 +3,8 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-qi' !default;
-$_select2-border-width:                remsize( .1rem ) !default;
-$_select2-border-radius:               remsize( 0rem ) !default;
-$_select2-selection-height:            remsize( 6.1rem ) !default;
+$_field-height:                        remsize( 6.1rem ) !default;
+$_select2-border-radius:               0 !default;
 
 
 
@@ -15,7 +14,11 @@ $_select2-selection-height:            remsize( 6.1rem ) !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"checkout-validation",
-	"checkout-content",
+	"checkout-content-area",
 	"woocommerce-form-fields",
-	"../../partials/woocommerce-form-fields-select2";
+	"order-summary",
+	"../../partials/checkout-validation-check",
+	"checkout-validation-check",
+	"../../partials/woocommerce-form-fields-select2",
+	"woocommerce-form-fields-select2",
+	"../../partials/loading-indicator";

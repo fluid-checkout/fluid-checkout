@@ -3,9 +3,8 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-aora' !default;
-$_select2-border-width:                remsize( .1rem ) !default;
+$_field-height:                        remsize( 4.4rem ) !default;
 $_select2-border-radius:               remsize( .3rem ) !default;
-$_select2-selection-height:            remsize( 4.4rem ) !default;
 
 
 
@@ -18,6 +17,7 @@ $_select2-selection-height:            remsize( 4.4rem ) !default;
 	"checkout-shipping-methods",
 	"checkout-payment-methods",
 	"checkout-place-order",
-	"checkout-validation",
+	"../../partials/checkout-validation-check",
 	"../../partials/woocommerce-form-fields-select2",
-	"woocommerce-form-fields-select2";
+	"woocommerce-form-fields-select2",
+	"../../partials/loading-indicator";

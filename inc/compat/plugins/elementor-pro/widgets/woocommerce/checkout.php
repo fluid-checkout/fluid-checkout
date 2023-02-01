@@ -67,7 +67,7 @@ class FluidCheckout_ElementorPRO_Checkout extends Base_Widget {
 			'important_note',
 			[
 				'type' => Controls_Manager::RAW_HTML,
-				'raw' => wp_kses_post( __( '<p>This widget has been replaced by Fluid Checkout. </p><p>When using Fluid Checkout, the checkout page needs to use the original WooCommerce shortcode <code>[woocommerce_checkout]</code>` to work properly.</p><p>For more information, visit the Fluid Checkout documentation.</p>', 'fluid-checkout' ) ),
+				'raw' => wp_kses_post( __( '<p>This widget has been replaced by Fluid Checkout. </p><p>When using Fluid Checkout, the checkout page needs to use the original WooCommerce shortcode <code>[woocommerce_checkout]</code> to work properly.</p><p>For more information, visit the Fluid Checkout documentation.</p>', 'fluid-checkout' ) ),
 			]
 		);
 		// CHANGE: END - Replace all widget controls with a notice
