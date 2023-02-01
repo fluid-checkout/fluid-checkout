@@ -37,7 +37,7 @@ class FluidCheckout_ThemeCompat_Martfury extends FluidCheckout {
 	 */
 	public function change_fc_content_section_class( $class ) {
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $class; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $class; }
 
 		return $class . ' container';
 	}
@@ -51,7 +51,7 @@ class FluidCheckout_ThemeCompat_Martfury extends FluidCheckout {
 	 */
 	public function change_sticky_elements_relative_header( $attributes ) {
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
 
 		$attributes['data-sticky-relative-to'] = '.header-main';
 

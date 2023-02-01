@@ -1,0 +1,13 @@
+// ------------------------------------
+// ANIMATIONS
+// ------------------------------------
+
+@keyframes loader-spin {
+	0% { transform: rotate( 0deg ); }
+	100% { transform: rotate( 360deg ); }
+}
+
+@keyframes loader-spin-centered {
+	0% { transform: translateX( -50% ) translateY( -50% ) rotate( 0deg ); }
+	100% { transform: translateX( -50% ) translateY( -50% ) rotate( 360deg ); }
+}

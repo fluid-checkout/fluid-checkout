@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.1.1
-Stable tag: 2.2.2
+Stable tag: 2.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -382,17 +382,28 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Display notice to enter complete shipping address to see shipping methods available, instead of an error message from the start.
+
+= 2.3.0 - 2023-01-27 =
+
 POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause customizations to those files to stop working. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/) and fix possible issues with your customizations.
 
+* Bump tested up to WooCommerce 7.4.0
 * Added: Compatibility with theme Martfury.
 * Added: Compatibility with plugin Klarna Checkout for WooCommerce by Krokedil.
 * Added: Compatibility with plugin Klarna Payments for WooCommerce by Krokedil.
 * Added: Compatibility with plugin PaysonCheckout for WooCommerce by Krokedil.
 * Added: Functions `undo_hooks` to feature files to allow undoing hook changes in some rare cases.
+* Improved: Persist checked state for create account checkbox and use Collapsible Block script to show/hide the account fields section.
+* Improved: Add loading indicator on the place order button, and other buttons and input fields.
+* Improved: Prevent starting "update checkout" requests while processing place order submit.
 * Improved: Separate styles for checkout layout and checkout steps into different files, allowing to load them independently.
 * Improved: Moved template files to a better structure, making it consistent with the PRO plugin structure and easier to understand. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/)  and fix possible issues with your customizations.
 * Improved: Changed the way plugin feature files are registered.
 * Removed: Filter `fc_init_features_list` as it has no valid use case.
+* Deprecated: FluidCheckout::locate_template, use FluidCheckout_Steps::locate_template instead.
+* Deprecated: FluidCheckout_Steps::get_hide_site_header_footer_at_checkout, use FluidCheckout_CheckoutPageTemplate::get_hide_site_header_footer_at_checkout instead.
+* Fixed: Set contact step as incomplete when create account checkbox is checked and required fields do not have a value.
 * Fixed: Missing login form styles on some themes.
 * Fixed: Only load modifield WooCommerce script files on the affected pages.
 * Fixed: Compatibility with plugin Hezarfen causing pages to stop processing.

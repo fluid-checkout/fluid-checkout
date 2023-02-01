@@ -71,7 +71,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
 		// Checkout header and footer
-		if ( $this->get_hide_site_header_footer_at_checkout() ) {
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) {
 			// Cart link on header
 			add_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
@@ -100,13 +100,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_after_step_billing_fields', array( $this, 'run_action_woocommerce_checkout_after_customer_details' ), 90 );
 
 		// Contact
-		add_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
 		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
+		add_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_text_fragment' ), 10 );
+		
+		// Log in
 		add_action( 'woocommerce_checkout_before_customer_details', array( $this, 'output_substep_contact_login_link_section' ), 1 );
 		add_action( 'wp_footer', array( $this, 'output_login_form_modal' ), 10 );
 		add_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
-		add_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_text_fragment' ), 10 );
+		add_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
 
 		// Account creation
 		add_action( 'fc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
@@ -293,7 +295,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
 		// Checkout header and footer
-		if ( $this->get_hide_site_header_footer_at_checkout() ) {
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) {
 			// Cart link on header
 			remove_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
 			remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
@@ -320,13 +322,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_checkout_after_step_billing_fields', array( $this, 'run_action_woocommerce_checkout_after_customer_details' ), 90 );
 
 		// Contact
-		remove_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
 		remove_action( 'fc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
+		remove_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_text_fragment' ), 10 );
+		
+		// Log in
 		remove_action( 'woocommerce_checkout_before_customer_details', array( $this, 'output_substep_contact_login_link_section' ), 1 );
 		remove_action( 'wp_footer', array( $this, 'output_login_form_modal' ), 10 );
 		remove_action( 'woocommerce_login_form_end', array( $this, 'output_woocommerce_login_form_redirect_hidden_field'), 10 );
-		remove_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
-		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_text_fragment' ), 10 );
+		remove_filter( 'woocommerce_registration_error_email_exists', array( $this, 'change_message_registration_error_email_exists' ), 10 );
 
 		// Account creation
 		remove_action( 'fc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
@@ -472,7 +476,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
-		if ( $this->get_hide_site_header_footer_at_checkout() ) {
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) {
 			$add_classes[] = 'has-checkout-header';
 		}
 
@@ -666,10 +670,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get option for hiding the site's original header and footer at the checkout page.
 	 *
-	 * @return  boolean  True if should hide the site's original header and footer at the checkout page, false otherwise.
-	 * @deprecated       Use `FluidCheckout_CheckoutPageTemplate::get_hide_site_header_footer_at_checkout` instead.
+	 * @return       boolean  True if should hide the site's original header and footer at the checkout page, false otherwise.
+	 * @deprecated            Use `FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout()` instead.
 	 */
 	public function get_hide_site_header_footer_at_checkout() {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() instead.', '2.3.0' );
+
 		return FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout();
 	}
 
@@ -825,7 +832,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_header() {
 		// Only display our checkout header if the site header is hidden
-		if ( ! $this->get_hide_site_header_footer_at_checkout() ) { return; }
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
 
 		wc_get_template(
 			'checkout/checkout-header.php',
@@ -908,7 +915,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_content_section_class( $class ) {
 		// Bail if using the plugin's header and footer
-		if ( $this->get_hide_site_header_footer_at_checkout() ) { return $class; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $class; }
 
 		// Maybe add the container class
 		if ( apply_filters( 'fc_add_container_class', true ) ) {
@@ -941,7 +948,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_footer() {
 		// Only display our checkout footer if the site footer is hidden
-		if ( ! $this->get_hide_site_header_footer_at_checkout() ) { return; }
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
 
 		// Bail if nothing was added to the footer
 		if ( ! has_action( 'fc_checkout_footer_widgets' ) || ! ( is_active_sidebar( 'fc_checkout_footer' ) || has_action( 'fc_checkout_footer_widgets_inside_before' ) || has_action( 'fc_checkout_footer_widgets_inside_after' ) ) ) { return; }
@@ -987,6 +994,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$ajax_action = $wp_query->get( 'wc-ajax' );
 
 		return is_cart() || 'fc_pro_update_cart_fragments' === $ajax_action || ( array_key_exists( 'wc-ajax', $_GET ) && 'fc_pro_update_cart_fragments' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) );
+	}
+
+
+
+	/**
+	 * Returns whether the create account checkbox is checked or registration is required.
+	 */
+	public function is_create_account_checked() {
+		return ( WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() ) || ( '1' === WC()->checkout()->get_value( 'createaccount' ) || true === WC()->checkout()->get_value( 'createaccount' ) );
 	}
 
 
@@ -2174,9 +2190,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Maybe add notice for account creation
-		if ( ! is_user_logged_in() && 'true' === get_option( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) ) {
+		if ( ! is_user_logged_in() && 'true' === get_option( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) && 'true' === apply_filters( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) ) {
 			$parsed_posted_data = $this->get_parsed_posted_data();
-			if ( ( WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() ) || ( array_key_exists( 'createaccount', $parsed_posted_data ) && $parsed_posted_data[ 'createaccount' ] == '1' ) ) {
+			if ( $this->is_create_account_checked() ) {
 				$review_text_lines[] = '<em>' . __( 'An account will be created with the information provided.', 'fluid-checkout' ) . '</em>';
 			}
 		}
@@ -2239,6 +2255,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
+		// Iterate create account fields when option to create account is checked
+		if ( $this->is_create_account_checked() ) {
+			$account_fields = WC()->checkout()->get_checkout_fields( 'account' );
+			foreach ( $account_fields as $field_key => $field_args ) {
+				// Check required fields
+				if ( array_key_exists( 'required', $field_args ) && $field_args[ 'required' ] === true && ! WC()->checkout()->get_value( $field_key ) ) {
+					$is_step_complete = false;
+					break;
+				}
+			}
+		}
+
 		return apply_filters( 'fc_is_step_complete_contact', $is_step_complete );
 	}
 
@@ -2284,12 +2312,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if user already logged in or login at checkout is disabled
 		if ( is_user_logged_in() || 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
 
-		wc_get_template(
-			'checkout/form-contact-login-modal.php',
-			array(
-				'checkout'			=> WC()->checkout(),
-			)
-		);
+		wc_get_template( 'checkout/form-contact-login-modal.php' );
 	}
 
 	/**
@@ -2299,12 +2322,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Do not output if login at checkout is disabled
 		if ( 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; }
 
-		wc_get_template(
-			'checkout/form-contact-login.php',
-			array(
-				'checkout'			=> WC()->checkout(),
-			)
-		);
+		wc_get_template( 'checkout/form-contact-login.php' );
 	}
 
 
@@ -2316,7 +2334,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function change_message_registration_error_email_exists( $message_html ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $message_html; }
+		if ( ! $this->is_checkout_page_or_fragment() ) { return $message_html; }
 
 		$message_html = str_replace( '<a href="#" class="showlogin', '<a href="#" data-flyout-toggle data-flyout-target="[data-flyout-checkout-login]" class="', $message_html );
 		return $message_html;
@@ -3025,15 +3043,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			wc_get_template( 'cart/shipping-methods-available.php', array(
-				'package'					=> $package,
-				'available_methods'			=> $package['rates'],
-				'show_package_details'		=> sizeof( $packages ) > 1,
-				'is_cart_page_or_fragment'  => $this->is_cart_page_or_fragment(),
-				'package_details'			=> implode( ', ', $product_names ),
+				'package'                   => $package,
+				'available_methods'         => $package['rates'],
+				'show_package_details'      => sizeof( $packages ) > 1,
+				'package_details'           => implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
 				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
-				'package_index'				=> $i,
-				'chosen_method'				=> $chosen_method,
+				'package_index'             => $i,
+				'chosen_method'             => $chosen_method,
+				'formatted_destination'     => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
+				'has_calculated_shipping'   => WC()->customer->has_calculated_shipping(),
 			) );
 
 			$first_item = false;
@@ -4606,6 +4625,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
+		// Other fields
+		$other_fields_keys = array( 'createaccount' );
+		foreach ( $other_fields_keys as $field_key ) {
+			if ( ! in_array( $field_key, array_keys( $posted_data ) ) ) {
+				$this->set_checkout_field_value_to_session( $field_key, '' );
+				$posted_data[ $field_key ] = '';
+			}
+		}
+
 		return $posted_data;
 	}
 
@@ -4645,7 +4673,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Save customer data to the session
 		foreach ( $session_field_keys as $field_key ) {
-
 			// Set property value to the customer object
 			if ( array_key_exists( $field_key, $posted_data ) ) {
 				// Set session value
