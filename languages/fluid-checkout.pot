@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-26 20:23+0000\n"
+"POT-Creation-Date: 2023-01-03 18:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -23,14 +23,22 @@ msgstr ""
 msgid "(Required)"
 msgstr ""
 
-#: fluid-checkout.php:407
+#: inc/compat/plugins/elementor-pro/widgets/woocommerce/checkout.php:70
+msgid ""
+"<p>This widget has been replaced by Fluid Checkout. </p><p>When using Fluid "
+"Checkout, the checkout page needs to use the original WooCommerce shortcode "
+"<code>[woocommerce_checkout]</code> to work properly.</p><p>For more "
+"information, visit the Fluid Checkout documentation.</p>"
+msgstr ""
+
+#: fluid-checkout.php:428
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
 "activated. <a href=\"%4$s\">%3$s</a>"
 msgstr ""
 
-#: fluid-checkout.php:403
+#: fluid-checkout.php:424
 #, php-format
 msgid "Activate %s"
 msgstr ""
@@ -53,7 +61,7 @@ msgstr ""
 msgid "Add widget areas to the checkout page"
 msgstr ""
 
-#: inc/checkout-steps.php:2132
+#: inc/checkout-steps.php:2170
 msgid "Additional notes"
 msgstr ""
 
@@ -65,7 +73,7 @@ msgstr ""
 msgid "Already have an account?"
 msgstr ""
 
-#: inc/checkout-steps.php:1915
+#: inc/checkout-steps.php:1953
 msgid "An account will be created with the information provided."
 msgstr ""
 
@@ -103,7 +111,7 @@ msgstr ""
 msgid "Billing phone"
 msgstr ""
 
-#: inc/checkout-steps.php:2880
+#: inc/checkout-steps.php:2935
 msgid "Billing to"
 msgstr ""
 
@@ -130,7 +138,7 @@ msgstr ""
 msgid "Captcha Pro by BestWebSoft"
 msgstr ""
 
-#: inc/checkout-steps.php:646
+#: inc/checkout-steps.php:664
 msgid "Cart total:"
 msgstr ""
 
@@ -138,7 +146,7 @@ msgstr ""
 msgid "Change email address to: {suggestion-value}"
 msgstr ""
 
-#: inc/checkout-steps.php:1595
+#: inc/checkout-steps.php:1633
 #, php-format
 msgid "Change: %s"
 msgstr ""
@@ -175,32 +183,32 @@ msgstr ""
 msgid "Checkout Sidebar"
 msgstr ""
 
-#: inc/checkout-steps.php:1229
+#: inc/checkout-steps.php:1267
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr ""
 
-#: inc/checkout-steps.php:1208
+#: inc/checkout-steps.php:1248
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr ""
 
-#: inc/checkout-steps.php:1238
+#: inc/checkout-steps.php:1276
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr ""
 
-#: inc/checkout-steps.php:1218
+#: inc/checkout-steps.php:1257
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr ""
 
-#: inc/checkout-steps.php:1595
+#: inc/checkout-steps.php:1633
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr ""
 
-#: inc/checkout-steps.php:1596
+#: inc/checkout-steps.php:1634
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr ""
@@ -249,11 +257,11 @@ msgstr ""
 msgid "Choose in which step to display the shipping phone field"
 msgstr ""
 
-#: inc/checkout-steps.php:646
+#: inc/checkout-steps.php:664
 msgid "Click to go to the order summary"
 msgstr ""
 
-#: templates/fc/checkout/review-order-section.php:59
+#: templates/fc/checkout/review-order-section.php:63
 msgid "Close and continue with checkout"
 msgstr ""
 
@@ -267,7 +275,7 @@ msgstr ""
 msgid "Contact step"
 msgstr ""
 
-#: templates/fc/checkout/review-order-section.php:59
+#: templates/fc/checkout/review-order-section.php:63
 msgid "Continue"
 msgstr ""
 
@@ -312,15 +320,15 @@ msgstr ""
 msgid "Define the visibility of the additional order notes field."
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:113
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:104
 msgid "Delivery Date"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:105
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:96
 msgid "Delivery Options"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:109
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:100
 msgid "Delivery or Pickup"
 msgstr ""
 
@@ -380,9 +388,9 @@ msgstr ""
 msgid "Don't show this again"
 msgstr ""
 
-#: templates/fc/checkout/review-order-section.php:41
-#: templates/fc/checkout/review-order-section.php:58
-msgid "Edit Cart"
+#: inc/checkout-steps.php:3902
+#: templates/fc/checkout/review-order-section.php:62
+msgid "Edit cart"
 msgstr ""
 
 #: inc/admin/admin-settings-general.php:316
@@ -424,7 +432,7 @@ msgstr ""
 msgid "Go to Germanized settings"
 msgstr ""
 
-#: fluid-checkout.php:399
+#: fluid-checkout.php:420
 msgid "Go to Plugin Search"
 msgstr ""
 
@@ -568,11 +576,11 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr ""
 
-#: inc/checkout-steps.php:533
+#: inc/checkout-steps.php:528
 msgid "Multi-step"
 msgstr ""
 
-#: inc/checkout-steps.php:1852
+#: inc/checkout-steps.php:1890
 msgid "My contact"
 msgstr ""
 
@@ -588,16 +596,16 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr ""
 
-#: inc/checkout-steps.php:2525
+#: inc/checkout-steps.php:2580
 msgid "Not selected yet."
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:212
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:203
 msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr ""
 
-#: inc/checkout-steps.php:2581
+#: inc/checkout-steps.php:2636
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr ""
@@ -635,7 +643,7 @@ msgstr ""
 msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 
-#: inc/checkout-steps.php:3780 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:3837 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr ""
 
@@ -649,11 +657,11 @@ msgstr ""
 msgid "Page background color"
 msgstr ""
 
-#: inc/checkout-steps.php:3599
+#: inc/checkout-steps.php:3654
 msgid "Payment method"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:117
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:108
 msgid "Pickup Date"
 msgstr ""
 
@@ -662,7 +670,7 @@ msgid "Place order"
 msgstr ""
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1106
+#: inc/checkout-steps.php:1146
 #, php-format
 msgid "Proceed to %s"
 msgstr ""
@@ -699,7 +707,7 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
-#: inc/checkout-steps.php:3062
+#: inc/checkout-steps.php:3117
 msgid "Same as shipping address"
 msgstr ""
 
@@ -727,7 +735,7 @@ msgstr ""
 msgid "Shipping address"
 msgstr ""
 
-#: inc/checkout-steps.php:2108
+#: inc/checkout-steps.php:2146
 msgid "Shipping method"
 msgstr ""
 
@@ -740,11 +748,11 @@ msgstr ""
 msgid "Shipping phone"
 msgstr ""
 
-#: inc/checkout-steps.php:2084
+#: inc/checkout-steps.php:2122
 msgid "Shipping to"
 msgstr ""
 
-#: inc/checkout-steps.php:534
+#: inc/checkout-steps.php:529
 msgid "Single step"
 msgstr ""
 
@@ -762,26 +770,26 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr ""
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1358
+#: inc/checkout-steps.php:1396
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr ""
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2264
+#: inc/checkout-steps.php:2319
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr ""
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2269
+#: inc/checkout-steps.php:2324
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr ""
 
-#: inc/checkout-steps.php:1709
+#: inc/checkout-steps.php:1747
 msgctxt "Substep review text"
 msgid "None."
 msgstr ""
@@ -870,7 +878,7 @@ msgid ""
 "checkout feature in the plugin settings."
 msgstr ""
 
-#: fluid-checkout.php:396
+#: fluid-checkout.php:417
 msgid "WooCommerce"
 msgstr ""
 
@@ -881,7 +889,7 @@ msgid ""
 "it encourages us to keep improving the plugin :)"
 msgstr ""
 
-#: templates/checkout/payment.php:46
+#: templates/checkout/payment.php:48
 #, php-format
 msgid "Your order has a total amount due of %s. No further payment is needed."
 msgstr ""

@@ -5,12 +5,6 @@
 // VALID FIELDS
 body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
 
-	// "valid" field check icon
-	&:not( .fc-no-validation-icon ) .select2-selection:after,
-	&:not( .fc-no-validation-icon ):not( .fc-select2-field ) .woocommerce-input-wrapper:after {
-		top: remsize( 1.2rem );
-	}
-
 	// Select2 Fields
 	.select2-selection:after {
 		#{ $alignment-right }: remsize( 2.4rem );

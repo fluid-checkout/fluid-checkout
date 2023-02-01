@@ -217,6 +217,7 @@ $icons: (
 	'i-alert-triangle': '\e801',
 	'i-arrow-left': '\e802',
 	'i-arrow-right': '\e803',
+	'i-cart': '\e828',
 	'i-check-small': '\e805',
 	'i-check': '\e806',
 	'i-check-circle': '\e82b',
@@ -228,13 +229,13 @@ $icons: (
 	'i-chevron-right': '\e80c',
 	'i-chevron-up-medium': '\e80d',
 	'i-chevron-up': '\e80e',
+	'i-loader-circle': '\e816',
 	'i-minus': '\e818',
 	'i-plus': '\e81b',
 	'i-plus-circle': '\e82a',
 	'i-trash': '\e822',
 	'i-x': '\e827',
 	'i-x-circle': '\e815',
-	'i-cart': '\e828',
 ) !default;
 
 // END - ICONS
@@ -299,7 +300,6 @@ $checkout-steps-width--large-screen:        62.5% !default;
 
 $checkout-overview-width--large-screen:     #{ 100% - $checkout-steps-width--large-screen } !default;
 $checkout-overview-background:              linear-gradient( 90deg, darken( $lighter-grey, 5% ) 0%, $lighter-grey .5%, $lighter-grey 100% ) !default;
-$checkout-overview-border-left:             none !default;
 
 // END - CHECKOUT LAYOUT
 // ----------------------------------------
@@ -343,7 +343,7 @@ $checkout-step-count-text-align:                      center !default;
 // ----------------------------------------
 // CHECKOUT STEPS
 
-$checkout-steps-container-margin:                0 #{ - $container-spacing-mobile } $global-spacing !default;
+$checkout-steps-container-margin:                0 #{ - $container-spacing-mobile } 0 !default;
 $checkout-steps-container-margin--large-screen:  0 !default;
 
 $checkout-step-padding:                          0 !default;
@@ -410,8 +410,12 @@ $checkout-expansible-section-text-decoration:    none !default;
 // ----------------------------------------
 // ORDER SUMMARY
 
+$order-summary-border-color:                     $border-color !default;
+$order-summary-border:                           solid remsize( .1rem ) $order-summary-border-color !default;
+$order-summary-border-radius:                    $checkout-substep-border-radius !default;
+
 $order-summary-container-margin:                 0 !default;
-$order-summary-container-padding:                $global-spacing-small $container-spacing-mobile 0 !default;
+$order-summary-container-padding:                0 !default;
 $order-summary-container-margin--large-screen:   0 !default;
 $order-summary-container-padding--large-screen:  0 !default;
 

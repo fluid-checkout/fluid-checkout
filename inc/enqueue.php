@@ -20,7 +20,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Replace WooCommerce scripts, need to run before WooCommerce registers and enqueues its scripts, priority has to be less than 10
-		add_action( 'wp_enqueue_scripts', array( $this, 'replace_woocommerce_scripts' ), 5 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_woocommerce_scripts' ), 5 );
 
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
@@ -40,13 +40,48 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 	/**
-	 * Replace WooCommerce scripts with modified version.
+	 * Undo hooks.
 	 */
-	public function replace_woocommerce_scripts() {
+	public function undo_hooks() {
+		// Replace WooCommerce scripts, need to run before WooCommerce registers and enqueues its scripts, priority has to be less than 10
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_woocommerce_scripts' ), 5 );
+
+		// Register assets
+		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_require_bundle' ), 1 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_custom_fonts' ), 1 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_edit_address' ), 10 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_add_payment_method' ), 10 );
+	
+		// Theme and Plugin Compatibility
+		// Should not remove theme and plugin compatibility hooks. Keep this comment here for future reference.
+	}
+
+
+
+	/**
+	 * Pre-register WooCommerce scripts with modified version in order to replace them.
+	 * This function is intended to be used with hook `wp_enqueue_scripts` at priority lower than `10`,
+	 * which is the priority used by WooCommerce to register its scripts.
+	 */
+	public function pre_register_woocommerce_scripts() {
 		wp_register_script( 'woocommerce', self::$directory_url . 'js/woocommerce'. self::$asset_version . '.js', array( 'jquery', 'jquery-blockui', 'js-cookie' ), NULL, true );
 		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
 		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
 		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n' ), NULL, true );
+	}
+
+	/**
+	 * Replace WooCommerce scripts with modified version.
+	 */
+	public function maybe_replace_woocommerce_scripts() {
+		// Bail if not on checkout page or address edit page
+		if ( is_admin() || ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_wc_endpoint_url( 'edit-address' ) ) ) { return; }
+
+		$this->pre_register_woocommerce_scripts();
 	}
 
 
@@ -99,6 +134,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Add payment methods styles
 		wp_register_style( 'fc-add-payment-method-page', self::$directory_url . 'css/add-payment-method-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
+
+		// Flyout block
+		wp_register_style( 'fc-flyout-block', self::$directory_url . 'css/flyout-block' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 	}
 
 
@@ -132,6 +170,13 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	}
 
 	/**
+	 * Enqueue assets for flyout block components.
+	 */
+	public function enqueue_assets_flyout_block() {
+		wp_enqueue_style( 'fc-flyout-block' );
+	}
+
+	/**
 	 * Maybe enqueue assets.
 	 */
 	public function maybe_enqueue_assets() {
@@ -139,6 +184,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		if ( is_admin() || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		$this->enqueue_assets();
+		$this->enqueue_assets_flyout_block();
 	}
 
 

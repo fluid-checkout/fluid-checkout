@@ -1,0 +1,153 @@
+body.theme-martfury .fc-content.container {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+@media (min-width: 992px) {
+  body.theme-martfury .fc-content.container {
+    padding-right: 0;
+    padding-left: 0;
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  body.theme-martfury .fc-content.container {
+    width: 1170px;
+  }
+}
+
+body.theme-martfury div.woocommerce form .form-row span.select2-container {
+  height: auto;
+}
+
+body.theme-martfury div.woocommerce form .form-row .select2-selection {
+  height: auto;
+  min-height: 48.5px;
+  border-radius: 0;
+  line-height: 0;
+}
+
+body.theme-martfury div.woocommerce form .form-row .select2-selection__rendered {
+  min-height: 48.5px;
+  border-radius: 0;
+}
+
+body.theme-martfury div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-martfury div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  top: 0;
+  margin-top: 0;
+  height: auto;
+  min-height: 48.5px;
+  line-height: 48.5px;
+  transform: none;
+}
+
+body.theme-martfury div.woocommerce form .form-row .select2-selection--single {
+  padding: 0;
+}
+
+body.theme-martfury div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 48.5px;
+}
+
+body.theme-martfury div.woocommerce form .form-row .select2-selection--multiple {
+  border-width: 1px;
+}
+
+body.theme-martfury div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+  padding-bottom: 5px;
+  min-height: 38.5px;
+  line-height: 38.5px;
+  white-space: normal;
+}
+
+body.theme-martfury div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: 5px;
+  line-height: 48.5px;
+  overflow: hidden;
+}
+
+body.theme-martfury div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+  margin-top: 5px;
+  min-height: 48.5px;
+  line-height: 48.5px;
+}
+
+body.theme-martfury div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+  margin-top: 0;
+  height: 38.5px;
+  min-height: auto;
+}
+
+body.theme-martfury div.woocommerce .form-row.fc-loading .woocommerce-input-wrapper:after {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "\e816";
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  z-index: 10;
+  content: "\e816" !important;
+  position: absolute;
+  top: 13.25px;
+  left: 5px;
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 24px !important;
+  line-height: 1 !important;
+  border-radius: 100%;
+  background-color: transparent !important;
+  animation: loader-spin 0.75s linear infinite;
+  color: inherit !important;
+  pointer-events: none;
+}
+
+body.theme-martfury div.woocommerce button.fc-loading,
+body.theme-martfury div.woocommerce .button.fc-loading {
+  position: relative;
+  color: transparent !important;
+}
+
+body.theme-martfury div.woocommerce button.fc-loading:after,
+body.theme-martfury div.woocommerce .button.fc-loading:after {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "\e816";
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  left: 10px;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  line-height: 1;
+  border-radius: 100%;
+  background-color: transparent;
+  animation: loader-spin-centered 0.75s linear infinite;
+  color: #fff !important;
+  pointer-events: none;
+}

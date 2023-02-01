@@ -7,23 +7,3 @@ body#{ $_body-theme-selector } div.woocommerce .form-row .fc-mailcheck-suggestio
 	padding: $checkout-message-error-padding !important; // Needed to override theme styles set with `!important`;
 	padding-#{ $alignment-left }: $checkout-message-error-padding-left !important; // Needed to override theme styles set with `!important`;
 }
-
-
-
-
-
-// ------------------------------------
-// CHECKOUT FIELD VALIDATION
-// ------------------------------------
-
-// VALID FIELDS
-body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
-
-	// "valid" field check icon
-	// skip fields with `fc-no-validation-icon` and `fc-select2-field` classes
-	&:not( .fc-no-validation-icon ) .select2-selection:after,
-	&:not( .fc-no-validation-icon ):not( .fc-select2-field ) .woocommerce-input-wrapper:after {
-		top: remsize( .2rem );
-	}
-	
-}

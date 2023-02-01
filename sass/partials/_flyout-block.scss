@@ -3,6 +3,8 @@
 // ------------------------------------
 
 [data-flyout-content] {
+	display: none;
+
 	// max-width
 	max-width: $container-width-mobile;
 	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
@@ -18,6 +20,10 @@
 	@media (#{$bp-larger-than-desktop-medium}) { padding: $global-spacing-small $container-spacing-desktop-medium; }
 	@media (#{$bp-larger-than-desktop-large}) { padding: $global-spacing-small $container-spacing-desktop-large; }
 	@media (#{$bp-larger-than-desktop-extra-large}) { padding: $global-spacing-small $container-spacing-desktop-extra-large; }
+}
+
+[data-flyout].is-activated.is-open [data-flyout-content] {
+	display: block;
 }
 
 
@@ -43,4 +49,21 @@
 .has-flyout [data-flyout].is-activated.is-open {
 	#{ $alignment-left }: 0;
 	z-index: z( 'modal' );
+}
+
+
+
+.has-flyout [data-flyout][data-flyout-modal].is-activated [data-flyout-content] {
+    @media (#{$bp-larger-than-phablet}) {
+        margin: 10vh auto;
+        max-height: 80vh;
+        max-width: 80%;
+        height: auto;
+    }
+}
+
+
+
+.has-flyout a[data-flyout-toggle][role="button"] {
+	cursor: pointer;
 }

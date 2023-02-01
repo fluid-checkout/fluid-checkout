@@ -79,7 +79,7 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 	 */
 	public function add_js_settings( $settings ) {
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $settings; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $settings; }
 
 		// Add settings
 		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = '#page-header';
@@ -97,7 +97,7 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ) { return; }
 
 		// Bail if using the theme's header and footer
-		if ( ! FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
 
 		// Bail if required functions are not available
 		if ( ! function_exists( 'us_get_theme_options_css' ) ) { return; }
@@ -127,7 +127,7 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 		
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
 
 		// Custom spacing
 		$header_spacing = get_option( 'fc_compat_theme_impreza_header_spacing' );
@@ -148,7 +148,7 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 	 */
 	public function change_sticky_elements_relative_header( $attributes ) {
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
 
 		$attributes['data-sticky-relative-to'] = '#page-header';
 

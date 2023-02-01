@@ -29,6 +29,16 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 
 
 	/**
+	 * Undo hooks.
+	 */
+	public function undo_hooks() {
+		// WooCommerce fields output
+		remove_filter( 'woocommerce_form_field', array( $this, 'add_optional_form_field_link_button' ), 100, 4 );
+	}
+
+
+
+	/**
 	 * Get the list of field ids to skip hidding when hide optional fields is enabled.
 	 *
 	 * @return  Array  List of field ids to skip hidding.
