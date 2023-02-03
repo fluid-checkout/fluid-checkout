@@ -275,6 +275,7 @@ Currently the plugin is translated into the languages below, and more are coming
 * French - France
 * German - Germany
 * Italian - Italy
+* Polish - Poland
 * Portuguese - Brazil
 * Spanish - Spain
 * Swedish - Sweden
@@ -382,6 +383,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Translation to Polish (Poland).
 * Fixed: Display notice to enter complete shipping address to see shipping methods available, instead of an error message from the start.
 
 = 2.3.0 - 2023-01-27 =
