@@ -2,7 +2,7 @@
 /**
  * Cart shipping methods available
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/fc/cart/shipping-methods-available.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/cart/shipping-methods-available.php.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
