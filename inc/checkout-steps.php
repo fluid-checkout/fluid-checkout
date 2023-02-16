@@ -983,7 +983,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 		global $wp_query;
 		$ajax_action = $wp_query->get( 'wc-ajax' );
 
-		return ( is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) || 'update_order_review' === $ajax_action || ( array_key_exists( 'wc-ajax', $_GET ) && 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) );
+		// Return `true` if any of the following conditions are met:
+		if ( is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) { return true; }
+		if ( 'update_order_review' === $ajax_action ) { return true; }
+		if ( 'checkout' === $ajax_action ) { return true; }
+		if ( array_key_exists( 'wc-ajax', $_GET ) && 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) ) { return true; }
+		if ( array_key_exists( 'wc-ajax', $_GET ) && 'checkout' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) ) { return true; }
+
+		// Filter to allow other plugins to add their own conditions
+		if ( true === apply_filters( 'fc_is_checkout_page_or_fragment', false ) ) { return true; }
+
+		// Otherwise, return `false`
+		return false;
 	}
 
 	/**
