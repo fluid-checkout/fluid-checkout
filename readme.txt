@@ -384,6 +384,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Translation to Polish (Poland).
+* Added: New filter `fc_is_checkout_page_or_fragment` to set the current request as a checkout request in some cases.
 * Fixed: Display notice to enter complete shipping address to see shipping methods available, instead of an error message from the start.
 
 = 2.3.0 - 2023-01-27 =
