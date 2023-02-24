@@ -4274,9 +4274,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add wrapper element and custom class for the checkout place order button.
 	 */
 	public function add_place_order_button_wrapper_and_attributes( $button_html ) {
+		// Get current checkout step
+		$current_step = $this->get_current_step();
+
 		// Maybe disable the place order button if not in the last step
-		if (  'yes' === apply_filters( 'fc_checkout_maybe_disable_place_order_button', 'yes' ) && $this->is_checkout_layout_multistep() ) {
-			$current_step = $this->get_current_step();
+		if ( false !== $current_step && 'yes' === apply_filters( 'fc_checkout_maybe_disable_place_order_button', 'yes' ) && $this->is_checkout_layout_multistep() ) {
 			$current_step_index = array_keys( $current_step )[0];
 			$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
 
