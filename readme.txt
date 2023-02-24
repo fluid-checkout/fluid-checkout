@@ -388,6 +388,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin YITH WooCommerce Uploads Premium.
 * Fixed: Display notice to enter complete shipping address to see shipping methods available, instead of an error message from the start.
 * Fixed: Login link when matching account is detected while trying to place an order with the PayPal plugin from Webtoffee.
+* Fixed: Additional notes field not visible when previously hidden using the Elementor PRO Checkout widget.
 * Fixed: Fatal error trying to save changes to the checkout page when using Elementor editor.
 
 = 2.3.0 - 2023-01-27 =
