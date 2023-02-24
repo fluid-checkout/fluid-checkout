@@ -386,6 +386,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Translation to Polish (Poland).
 * Added: New filter `fc_is_checkout_page_or_fragment` to set the current request as a checkout request in some cases.
 * Added: Compatibility with plugin YITH WooCommerce Uploads Premium.
+* Fixed: Compatibility with plugin Sendinblue - WooCommerce Email Marketing versions 3.0.0+.
 * Fixed: Display notice to enter complete shipping address to see shipping methods available, instead of an error message from the start.
 * Fixed: Login link when matching account is detected while trying to place an order with the PayPal plugin from Webtoffee.
 * Fixed: Additional notes field not visible when previously hidden using the Elementor PRO Checkout widget.
