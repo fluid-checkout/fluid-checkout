@@ -270,7 +270,7 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 			$checkout_fields['billing']['ws_opt_in'] = array(
 				'type'    => 'checkbox',
 				'label'   => esc_attr( $this->checkout_label() ),
-				'default' => 'checked' == empty( $this->v3_settings[SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_CHECKED ] ) ? 0 : 1,
+				'default' => 'checked' == empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_CHECKED ] ) ? 0 : 1,
 			);
 		}
 
@@ -296,7 +296,7 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 		$checkout_fields['billing']['ws_opt_in'] = array(
 			'type'    => 'checkbox',
 			'label'   => esc_attr( $this->checkout_label() ),
-			'default' => 'checked' == empty( $this->v3_settings[SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_CHECKED ] ) ? 0 : 1,
+			'default' => 'checked' == empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_CHECKED ] ) ? 0 : 1,
 		);
 
 		return $checkout_fields;
