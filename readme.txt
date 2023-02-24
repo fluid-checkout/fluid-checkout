@@ -91,7 +91,9 @@ Quite insane how the developer is doing this. And a free plugin!!
 
 == PRO features ==
 
-* **Edit cart at checkout**: Let customers edit product quantity or remove products directly from the checkout page. You might even want to ditch the cart page entirely.
+* NEW **Account matching**: let registered customers complete the purchase without logging in and associate the order to existing customer account.
+
+* NEW **Edit cart at checkout**: let customers edit product quantity or remove products directly from the checkout page. You might even want to ditch the cart page entirely.
 
 * **Express checkout**: display express checkout buttons from popular payment methods at the checkout page.
 
@@ -113,8 +115,6 @@ Quite insane how the developer is doing this. And a free plugin!!
 
 Future features:
 
-* Edit cart at checkout
-* Account matching, let registered customers complete the purchase without logging in and attach the order to their account
 * Delayed account creation
 * More layout and design options
 * Customize checkout steps and fields
