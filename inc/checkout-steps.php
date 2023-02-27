@@ -1240,7 +1240,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get the current checkout step. The first checkout step which is considered incomplete.
 	 *
-	 * @return  array  An array with only one value, the first checkout step which is considered incomplete, for `false` if not step is found. The index is preserved from the registered checkout steps list.
+	 * @return  array  An array with only one value, the first checkout step which is considered incomplete, for `false` when no step was found. The index is preserved from the registered checkout steps list. When no step is incomplete, the last step is returned.
 	 */
 	public function get_current_step() {
 		// Get incomplete steps
@@ -1252,23 +1252,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return array( $current_step_index => $incomplete_steps[ $current_step_index ] );
 		}
 
-		// Get all steps
-		$_checkout_steps = $this->get_checkout_steps();
-
 		// Defaults to the last step
-		if ( is_array( $_checkout_steps ) && count( $_checkout_steps ) > 0 ) {
-			$checkout_steps_keys = array_keys( $_checkout_steps );
-			$current_step_index = end( $checkout_steps_keys );
-			return array( $current_step_index => $_checkout_steps[ $current_step_index ] );
-		}
-
-		return false;
+		// Needs to be last step instead of first, otherwise the customer would always return
+		// to first step when all steps are completed, which does not make sense.
+		return $this->get_last_step();
 	}
 
 	/**
  	 * Get the first checkout step.
  	 */
-	  public function get_first_step() {
+	public function get_first_step() {
 		$_checkout_steps = $this->get_checkout_steps();
 
 		// Bail if no steps are registered
