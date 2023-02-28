@@ -91,7 +91,9 @@ Quite insane how the developer is doing this. And a free plugin!!
 
 == PRO features ==
 
-* **Edit cart at checkout**: Let customers edit product quantity or remove products directly from the checkout page. You might even want to ditch the cart page entirely.
+* NEW **Account matching**: let registered customers complete the purchase without logging in and associate the order to existing customer account.
+
+* NEW **Edit cart at checkout**: let customers edit product quantity or remove products directly from the checkout page. You might even want to ditch the cart page entirely.
 
 * **Express checkout**: display express checkout buttons from popular payment methods at the checkout page.
 
@@ -113,8 +115,6 @@ Quite insane how the developer is doing this. And a free plugin!!
 
 Future features:
 
-* Edit cart at checkout
-* Account matching, let registered customers complete the purchase without logging in and attach the order to their account
 * Delayed account creation
 * More layout and design options
 * Customize checkout steps and fields
@@ -275,6 +275,7 @@ Currently the plugin is translated into the languages below, and more are coming
 * French - France
 * German - Germany
 * Italian - Italy
+* Polish - Poland
 * Portuguese - Brazil
 * Spanish - Spain
 * Swedish - Sweden
@@ -379,6 +380,17 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Added: Translation to Polish (Poland).
+* Added: New filter `fc_is_checkout_page_or_fragment` to set the current request as a checkout request in some cases.
+* Added: Compatibility with plugin YITH WooCommerce Uploads Premium.
+* Fixed: Compatibility with plugin Sendinblue - WooCommerce Email Marketing versions 3.0.0+.
+* Fixed: Display notice to enter complete shipping address to see shipping methods available, instead of an error message from the start.
+* Fixed: Login link when matching account is detected while trying to place an order with the PayPal plugin from Webtoffee.
+* Fixed: Additional notes field not visible when previously hidden using the Elementor PRO Checkout widget.
+* Fixed: Fatal error trying to save changes to the checkout page when using Elementor editor.
 
 = 2.3.0 - 2023-01-27 =
 

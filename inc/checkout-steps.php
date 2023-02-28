@@ -983,7 +983,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 		global $wp_query;
 		$ajax_action = $wp_query->get( 'wc-ajax' );
 
-		return ( is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) || 'update_order_review' === $ajax_action || ( array_key_exists( 'wc-ajax', $_GET ) && 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) );
+		// Return `true` if any of the following conditions are met:
+		if ( is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) { return true; }
+		if ( 'update_order_review' === $ajax_action ) { return true; }
+		if ( 'checkout' === $ajax_action ) { return true; }
+		if ( array_key_exists( 'wc-ajax', $_GET ) && 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) ) { return true; }
+		if ( array_key_exists( 'wc-ajax', $_GET ) && 'checkout' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) ) { return true; }
+
+		// Filter to allow other plugins to add their own conditions
+		if ( true === apply_filters( 'fc_is_checkout_page_or_fragment', false ) ) { return true; }
+
+		// Otherwise, return `false`
+		return false;
 	}
 
 	/**
@@ -1229,7 +1240,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get the current checkout step. The first checkout step which is considered incomplete.
 	 *
-	 * @return  array  An array with only one value, the first checkout step which is considered incomplete, for `false` if not step is found. The index is preserved from the registered checkout steps list.
+	 * @return  array  An array with only one value, the first checkout step which is considered incomplete, for `false` when no step was found. The index is preserved from the registered checkout steps list. When no step is incomplete, the last step is returned.
 	 */
 	public function get_current_step() {
 		// Get incomplete steps
@@ -1241,23 +1252,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return array( $current_step_index => $incomplete_steps[ $current_step_index ] );
 		}
 
-		// Get all steps
-		$_checkout_steps = $this->get_checkout_steps();
-
 		// Defaults to the last step
-		if ( is_array( $_checkout_steps ) && count( $_checkout_steps ) > 0 ) {
-			$checkout_steps_keys = array_keys( $_checkout_steps );
-			$current_step_index = end( $checkout_steps_keys );
-			return array( $current_step_index => $_checkout_steps[ $current_step_index ] );
-		}
-
-		return false;
+		// Needs to be last step instead of first, otherwise the customer would always return
+		// to first step when all steps are completed, which does not make sense.
+		return $this->get_last_step();
 	}
 
 	/**
  	 * Get the first checkout step.
  	 */
-	  public function get_first_step() {
+	public function get_first_step() {
 		$_checkout_steps = $this->get_checkout_steps();
 
 		// Bail if no steps are registered
@@ -3043,15 +3047,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			wc_get_template( 'cart/shipping-methods-available.php', array(
-				'package'					=> $package,
-				'available_methods'			=> $package['rates'],
-				'show_package_details'		=> sizeof( $packages ) > 1,
-				'is_cart_page_or_fragment'  => $this->is_cart_page_or_fragment(),
-				'package_details'			=> implode( ', ', $product_names ),
+				'package'                   => $package,
+				'available_methods'         => $package['rates'],
+				'show_package_details'      => sizeof( $packages ) > 1,
+				'package_details'           => implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
 				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
-				'package_index'				=> $i,
-				'chosen_method'				=> $chosen_method,
+				'package_index'             => $i,
+				'chosen_method'             => $chosen_method,
+				'formatted_destination'     => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
+				'has_calculated_shipping'   => WC()->customer->has_calculated_shipping(),
 			) );
 
 			$first_item = false;
@@ -4262,9 +4267,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add wrapper element and custom class for the checkout place order button.
 	 */
 	public function add_place_order_button_wrapper_and_attributes( $button_html ) {
+		// Get current checkout step
+		$current_step = $this->get_current_step();
+
 		// Maybe disable the place order button if not in the last step
-		if (  'yes' === apply_filters( 'fc_checkout_maybe_disable_place_order_button', 'yes' ) && $this->is_checkout_layout_multistep() ) {
-			$current_step = $this->get_current_step();
+		if ( false !== $current_step && 'yes' === apply_filters( 'fc_checkout_maybe_disable_place_order_button', 'yes' ) && $this->is_checkout_layout_multistep() ) {
 			$current_step_index = array_keys( $current_step )[0];
 			$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
 
