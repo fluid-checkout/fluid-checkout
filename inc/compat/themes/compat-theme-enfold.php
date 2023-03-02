@@ -45,7 +45,7 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 			// Look for template file in the theme
 			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
 				$_template_override = locate_template( array(
-					$template_path . $template_name,
+					trailingslashit( $template_path ) . $template_name,
 					$template_name,
 				) );
 	
