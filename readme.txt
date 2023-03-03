@@ -383,9 +383,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Improved: Changed option `fc_enable_checkout_page_template` to a filter hook for easier customization, since an interface for this will not be added to the admin plugin settings page.
-* Fixed: Path to load template files of compatible plugins or themes that were modified by Fluid Checkout, when further customizing it with a custom theme or child theme.
-* Fixed: Template files being overridden by theme files even without using the filter `fc_override_template_with_theme_file`.
+* Fixed: Multiple issues when trying to customize template files.
 
 = 2.3.1 - 2023-02-28 =
 
