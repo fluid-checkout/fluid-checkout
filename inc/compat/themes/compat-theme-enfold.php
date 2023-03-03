@@ -29,11 +29,10 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 	 * Locate template files from this plugin.
 	 */
 	public function locate_template( $template, $template_name, $template_path ) {
-		global $woocommerce;
 		$_template = null;
 
 		// Set template path to default value when not provided
-		if ( ! $template_path ) { $template_path = $woocommerce->template_url; };
+		if ( ! $template_path ) { $template_path = 'woocommerce/'; };
 
 		// Get plugin path
 		$plugin_path  = self::$directory_path . 'templates/compat/themes/enfold/';

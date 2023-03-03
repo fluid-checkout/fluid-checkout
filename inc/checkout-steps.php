@@ -753,11 +753,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @since 2.3.0
 	 */
 	public function locate_template( $template, $template_name, $template_path ) {
-		global $woocommerce;
 		$_template = null;
 
 		// Set template path to default value when not provided
-		if ( ! $template_path ) { $template_path = $woocommerce->template_url; };
+		if ( ! $template_path ) { $template_path = 'woocommerce/'; };
 
 		// Get plugin path
 		$plugin_path  = self::$directory_path . 'templates/fc/checkout-steps/';
