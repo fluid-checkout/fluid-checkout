@@ -56,11 +56,10 @@ class FluidCheckout_AuxinShop extends FluidCheckout {
 	 * Locate template files from the Auxin Shop plugin.
 	 */
 	public function auxshp_locate_template( $template, $template_name, $template_path ) {
-		global $woocommerce;
 		$_template = null;
 
 		// Set template path to default value when not provided
-		if ( ! $template_path ) { $template_path = $woocommerce->template_url; };
+		if ( ! $template_path ) { $template_path = 'woocommerce/'; };
 
 		// Get plugin path
 		$plugin_path = AUXSHP()->template_path() . 'woocommerce/';

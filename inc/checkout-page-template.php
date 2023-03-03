@@ -65,11 +65,10 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 * Locate template files from this plugin.
 	 */
 	public function locate_template( $template, $template_name, $template_path ) {
-		global $woocommerce;
 		$_template = null;
 
 		// Set template path to default value when not provided
-		if ( ! $template_path ) { $template_path = $woocommerce->template_url; };
+		if ( ! $template_path ) { $template_path = 'woocommerce/'; };
 
 		// Get plugin path
 		$plugin_path  = self::$directory_path . 'templates/fc/checkout-page-template/';
@@ -80,7 +79,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		}
 
 		// Look for template file in the theme
-		if ( ! $_template || apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
+		if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
 			$_template_override = locate_template( array(
 				trailingslashit( $template_path ) . $template_name,
 				$template_name,
@@ -110,19 +109,17 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 */
 	public function checkout_page_template( $template ) {
 		// Bail if checkout page template is not enabled
-		if ( 'yes' !== get_option( 'fc_enable_checkout_page_template', 'yes' ) ) { return $template; }
+		if ( true !== apply_filters( 'fc_enable_checkout_page_template', true ) ) { return $template; }
 
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $template; }
+		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $template; }
 
 		// Locate new checkout page template
-		$template_name = 'checkout/page-checkout.php';
-		$plugin_path  = self::$directory_path . 'templates/fc/checkout-page-template/';
-		$new_template = $this->locate_template( $template, $template_name, $plugin_path );
+		$_template  = $this->locate_template( $template, 'checkout/page-checkout.php', null );
 
 		// Check if the file exists
-		if ( file_exists( $new_template ) ) {
-			$template = $new_template;
+		if ( file_exists( $_template ) ) {
+			$template = $_template;
 		}
 
 		return $template;
