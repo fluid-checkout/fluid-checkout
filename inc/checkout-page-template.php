@@ -80,7 +80,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		}
 
 		// Look for template file in the theme
-		if ( ! $_template || apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
+		if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
 			$_template_override = locate_template( array(
 				trailingslashit( $template_path ) . $template_name,
 				$template_name,
@@ -110,7 +110,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 */
 	public function checkout_page_template( $template ) {
 		// Bail if checkout page template is not enabled
-		if ( 'yes' !== get_option( 'fc_enable_checkout_page_template', 'yes' ) ) { return $template; }
+		if ( true !== apply_filters( 'fc_enable_checkout_page_template', true ) ) { return $template; }
 
 		// Bail if not on checkout page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $template; }

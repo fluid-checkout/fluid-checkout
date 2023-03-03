@@ -768,7 +768,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Look for template file in the theme
-		if ( ! $_template || apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
+		if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
 			$_template_override = locate_template( array(
 				trailingslashit( $template_path ) . $template_name,
 				$template_name,
@@ -824,21 +824,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Checkout Header.
 	 */
-
-
-
-	/**
-	 * Output the checkout header.
-	 */
-	public function output_checkout_header() {
-		// Only display our checkout header if the site header is hidden
-		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
-
-		wc_get_template(
-			'checkout/checkout-header.php',
-			array( 'checkout' => WC()->checkout() )
-		);
-	}
 
 	/**
 	 * Output the checkout header.
