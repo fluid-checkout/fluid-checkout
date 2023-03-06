@@ -795,9 +795,6 @@ jQuery( function( $ ) {
 					// Check for error
 					if ( data && 'failure' === data.result ) {
 
-						// TODO: Maybe remove commented code or reactivate it if needed
-						// var $form = $( 'form.checkout' );
-
 						// Remove notices from all sources
 						$( '.woocommerce-error, .woocommerce-message' ).remove();
 
