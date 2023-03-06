@@ -36,17 +36,14 @@ Cleanest and easiest checkout plugin on the market - it will save you a lot of h
 
 == Demos ==
 
+* [Fluid Checkout PRO](https://demos.fluidcheckout.com/pro/?add-to-cart=14&quantity=2)
+All the awesomeness of the Lite version, with even more features to make your customer's checkout experience excelent.
+
 * [Multi step layout](https://demos.fluidcheckout.com/multi-step/cart/?add-to-cart=14&quantity=2)
 Make sure to test the checkout flow by adding to the cart and completing the purchase at least two times to see how the plugin streamlines the process for repeat customers.
 
 * [Single step layout](https://demos.fluidcheckout.com/single-step/cart/?add-to-cart=22&quantity=2)
 Single step checkout is recommended when only a few fields are required, usually when selling digital products or when a shipping address is not needed.
-
-* [Highly stylized theme](https://demos.fluidcheckout.com/theme-deli/cart/?add-to-cart=14&quantity=2)
-With themes that are highly stylized such as Storefront Deli -- when comparing to a plain theme such as the default Storefront theme, Fluid Checkout adapts itself with part of the theme's styles, keeping the same look and feel while improving the experience.
-
-* [Fluid Checkout PRO](https://demos.fluidcheckout.com/pro/?add-to-cart=14&quantity=2)
-All the awesomeness of the Lite version, with even more features to make your customer's checkout experience excelent.
 
 <blockquote>
 <strong> Insane how great this is!</strong>
