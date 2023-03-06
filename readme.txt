@@ -383,6 +383,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Update file checkout.js with latest changes to the original file on the WooCommerce plugin.
+* Improved: Add security check to dismiss admin notice links and fix related PHP 8.1 deprecated notices.
 * Fixed: Multiple issues when trying to customize template files.
 
 = 2.3.1 - 2023-02-28 =
