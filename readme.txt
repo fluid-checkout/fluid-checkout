@@ -380,6 +380,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Set constants `WOOCOMMERCE_CART` and `WOOCOMMERCE_CHECKOUT` when processing cart and checkout fragment requests respectively. This should fix compatibilty with some plugins.
 * Improved: Update file checkout.js with latest changes to the original file on the WooCommerce plugin.
 * Improved: Add security check to dismiss admin notice links and fix related PHP 8.1 deprecated notices.
 * Fixed: Multiple issues when trying to customize template files.

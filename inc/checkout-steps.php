@@ -51,6 +51,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
+		// Maybe set WooCommerce constants
+		add_action( 'woocommerce_init', array( $this, 'maybe_set_woocommerce_constants' ), 1 );
+
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
@@ -275,6 +278,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Undo hooks.
 	 */
 	public function undo_hooks() {
+		// Maybe set WooCommerce constants
+		remove_action( 'woocommerce_init', array( $this, 'maybe_set_woocommerce_constants' ), 1 );
+		
 		// General
 		remove_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
@@ -433,6 +439,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields_inside' );
 		$order_notes_substep_priority = apply_filters( 'fc_do_order_notes_hooks_priority', 100 );
 		remove_action( $order_notes_substep_position, array( $this, 'do_order_notes_hooks' ), $order_notes_substep_priority );
+	}
+
+
+
+	/**
+	 * Maybe set WooCommerce constants.
+	 */
+	public function maybe_set_woocommerce_constants() {
+		// Maybe define constants
+		if ( ! defined( 'WOOCOMMERCE_CHECKOUT' ) && $this->is_checkout_page_or_fragment() ) { define( 'WOOCOMMERCE_CHECKOUT', true ); }
+		if ( ! defined( 'WOOCOMMERCE_CART' ) && $this->is_cart_page_or_fragment() ) { define( 'WOOCOMMERCE_CART', true ); }
 	}
 
 
