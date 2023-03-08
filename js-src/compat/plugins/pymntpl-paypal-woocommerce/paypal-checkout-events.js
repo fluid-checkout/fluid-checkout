@@ -39,7 +39,6 @@
 	 */
 	var maybeSetCheckoutUpdatableState = function( e, source ) {
 		window.can_update_checkout = ( 'wc_ppcp_on_click' !== e.type );
-		console.log( 'can_update_checkout: ' +  window.can_update_checkout );
 	};
 
 
