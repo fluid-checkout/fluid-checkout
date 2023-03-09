@@ -126,8 +126,65 @@ class FluidCheckout {
 	/**
 	 * Load plugin textdomain.
 	 */
-	public function load_textdomain() {
-		load_plugin_textdomain( 'fluid-checkout', false, 'fluid-checkout/languages' );
+	public function load_textdomain() {		
+		load_plugin_textdomain( self::$plugin_slug, false, self::$plugin_slug . '/languages' );
+	}
+
+	/**
+	 * Get the locales to be used for each language variant.
+	 */
+	public function get_locale_language_variants() {
+		return apply_filters( 'fc_locale_language_variant', array(
+			'de_DE'          => 'de_DE_formal',
+			'de_AT'          => 'de_DE_formal',
+			'de_CH'          => 'de_DE_formal',
+			'de_CH_informal' => 'de_DE_formal',
+			'es_AR'          => 'es_ES',
+			'es_CL'          => 'es_ES',
+			'es_CO'          => 'es_ES',
+			'es_CR'          => 'es_ES',
+			'es_DO'          => 'es_ES',
+			'es_GT'          => 'es_ES',
+			'es_MX'          => 'es_ES',
+			'es_PE'          => 'es_ES',
+			'es_PR'          => 'es_ES',
+			'es_UY'          => 'es_ES',
+			'es_VE'          => 'es_ES',
+			'fr_CA'          => 'fr_FR',
+			'fr_BE'          => 'fr_FR',
+			'nl_BE'          => 'nl_NL',
+			'nl_NL_formal'   => 'nl_NL',			
+			'pt_PT'          => 'pt_BR',
+			'pt_AO'          => 'pt_BR',
+			'pt_PT_ao90'     => 'pt_BR',
+		) );
+	}
+
+	/**
+	 * Maybe set a different locale for the plugin language files for the language variants.
+	 *
+	 * @param   string  $locale  The locale to be used for the plugin language files.
+	 * @param   string  $domain  The text domain.
+	 */
+	public function maybe_set_locale_for_language_variants( $locale, $domain ) {
+		// Bail if not loading the plugin text domain.
+		if ( self::$plugin_slug !== $domain ) { return $locale; }
+
+		// Bail if language variant file exists in the WP_LANG_DIR.
+		if ( file_exists( trailingslashit( WP_LANG_DIR ) . 'plugins/' . self::$plugin_slug . '-' . $locale . '.mo' ) ) { return $locale; }
+
+		// Bail if language variant file exists in the plugin language dir.
+		if ( file_exists( self::$directory_path . 'languages/' . self::$plugin_slug . '-' . $locale . '.mo' ) ) { return $locale; }
+
+		// Define language to load for the language variants.
+		$locale_language_variants = $this->get_locale_language_variants();
+
+		// Maybe set locale for the language variant.
+		if ( array_key_exists( $locale, $locale_language_variants ) ) {
+			$locale = $locale_language_variants[ $locale ];
+		}
+
+		return $locale;
 	}
 
 
@@ -145,6 +202,9 @@ class FluidCheckout {
 		// Declare compatibility with WooCommerce HPOS (High Performance Order Storage)
 		add_action( 'before_woocommerce_init', array( $this, 'declare_woocommerce_hpos_compatibility' ), 10 );
 
+		// Language locale
+		add_filter( 'plugin_locale', array( $this, 'maybe_set_locale_for_language_variants' ), 10, 2 );
+
 		// Load features
 		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_features' ), 10 );
@@ -158,7 +218,7 @@ class FluidCheckout {
 
 
 	/**
-	 * Fires when the plugin is successfully updated.
+	 * Flush caches when the plugin is successfully updated.
 	 */
 	public static function clear_cache_on_updates( $upgrader_object, $options ) {
 		// Bail if necessary options data are not available

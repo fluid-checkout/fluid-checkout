@@ -268,30 +268,28 @@ All labels and other texts added or changed by the plugin are translatable using
 Currently the plugin is translated into the languages below, and more are coming soon:
 
 * English (Default)
-* Dutch - Netherlands
-* French - France
-* German - Germany
-* Italian - Italy
-* Polish - Poland
-* Portuguese - Brazil
-* Spanish - Spain
-* Swedish - Sweden
-* Turkish - Turkey
+* Dutch
+* French
+* German
+* Italian
+* Polish
+* Portuguese
+* Spanish
+* Swedish
+* Turkish
 
-NOTE: All languages are translated using automated methods such as Google Translate or DeepL. If you encounter any errors in the translation to your language, please report them to us and we'll fix it.
+IMPORTANT NOTES:
+- Fluid Checkout is fully localized and translatable. We understand this is very important to all users worldwide.
+- Languages with variations will use the same language file. For example, when the website is in German the translation used will be German (Formal). For all Spanish speaking countries, the translation used will be Spanish (Spain).
+- All languages are translated using automated methods such as Google Translate or DeepL. If you encounter any errors in the translation to your language, please report them to us and we'll fix it.
 
-** Want Fluid Checkout in your language? **
+** Want Fluid Checkout in your language? Or want to customize an existing translation? **
 
-Please contribute your language to the plugin to make it even more useful. Send your translation files through our [support channel](https://fluidcheckout.com/support/).
+Follow our documentation article [How to translate Fluid Checkout plugins into your language ](https://fluidcheckout.com/docs/how-to-translate-fluid-checkout-plugins/).
 
 ** RTL Support **
 
-* Although currently there are no official transations to any RTL language, the plugin will adjust its layout to RTL languages accordingly.
-
-** Note: **
-
-Fluid Checkout is fully localized/translatable. This is very important for all users worldwide.
-For translating Fluid Checkout, we recommend the plugin ["Loco Translate - By Tim Whitlock"](https://wordpress.org/plugins/loco-translate/).
+* Although currently there are no official transations to RTL languages, the plugin will adjust its layout to RTL languages as expected.
 
 
 == Contributions are welcome ==
@@ -380,6 +378,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Support for language variations to use the main language translation. (Ie.: `es_AR` will use `es_ES` for the translation).
 * Improved: Set constants `WOOCOMMERCE_CART` and `WOOCOMMERCE_CHECKOUT` when processing cart and checkout fragment requests respectively. This should fix compatibilty with some plugins.
 * Improved: Update file checkout.js with latest changes to the original file on the WooCommerce plugin.
 * Improved: Add security check to dismiss admin notice links and fix related PHP 8.1 deprecated notices.
