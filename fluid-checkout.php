@@ -127,6 +127,7 @@ class FluidCheckout {
 	 * Load plugin textdomain.
 	 */
 	public function load_textdomain() {		
+		$this->maybe_load_translation_from_safe_location();
 		load_plugin_textdomain( self::$plugin_slug, false, self::$plugin_slug . '/languages' );
 	}
 
@@ -161,6 +162,52 @@ class FluidCheckout {
 	}
 
 	/**
+	 * Check if a translation file exists for the locale in the safe, global or plugin language directories.
+	 *
+	 * @param   string  $locale  The locale to be used for the plugin language files.
+	 */
+	public function locale_translation_file_exists( $locale ) {
+		// Check if language variant file exists in the plugin safe language dir.
+		if ( file_exists( trailingslashit( WP_LANG_DIR ) . self::$plugin_slug . '/' . self::$plugin_slug . '-' . $locale . '.mo' ) ) { return true; }
+
+		// Check if language variant file exists in the WP_LANG_DIR.
+		if ( file_exists( trailingslashit( WP_LANG_DIR ) . 'plugins/' . self::$plugin_slug . '-' . $locale . '.mo' ) ) { return true; }
+
+		// Check if language variant file exists in the plugin language dir.
+		if ( file_exists( self::$directory_path . 'languages/' . self::$plugin_slug . '-' . $locale . '.mo' ) ) { return true; }
+
+		return false;
+	}
+
+	/**
+	 * Maybe load plugin textdomain from the safe language dir.
+	 */
+	public function maybe_load_translation_from_safe_location() {
+		// Get locale
+		$locale = apply_filters( 'plugin_locale', determine_locale(), self::$plugin_slug );
+
+		// Maybe fall back to main locale translation file.
+		if ( ! $this->locale_translation_file_exists( $locale ) ) {
+			// Get main locale for the language variant.
+			$locale_language_variants = $this->get_locale_language_variants();
+			if ( array_key_exists( $locale, $locale_language_variants ) ) {
+				$locale = $locale_language_variants[ $locale ];
+			}
+		}
+
+		// Get translation file
+		$translation_file = trailingslashit( WP_LANG_DIR ) . self::$plugin_slug . '/' . self::$plugin_slug . '-' . $locale . '.mo';
+		
+		// Bail if language variant file does not exist in the plugin safe language dir.
+		if ( ! file_exists( $translation_file ) ) { return false; }
+	
+		unload_textdomain( self::$plugin_slug );
+		load_textdomain( self::$plugin_slug, $translation_file );
+
+		return false;
+	}
+
+	/**
 	 * Maybe set a different locale for the plugin language files for the language variants.
 	 *
 	 * @param   string  $locale  The locale to be used for the plugin language files.
@@ -170,11 +217,8 @@ class FluidCheckout {
 		// Bail if not loading the plugin text domain.
 		if ( self::$plugin_slug !== $domain ) { return $locale; }
 
-		// Bail if language variant file exists in the WP_LANG_DIR.
-		if ( file_exists( trailingslashit( WP_LANG_DIR ) . 'plugins/' . self::$plugin_slug . '-' . $locale . '.mo' ) ) { return $locale; }
-
-		// Bail if language variant file exists in the plugin language dir.
-		if ( file_exists( self::$directory_path . 'languages/' . self::$plugin_slug . '-' . $locale . '.mo' ) ) { return $locale; }
+		// Bail if a translation file was found for the locale.
+		if ( $this->locale_translation_file_exists( $locale ) ) { return $locale; }
 
 		// Define language to load for the language variants.
 		$locale_language_variants = $this->get_locale_language_variants();
