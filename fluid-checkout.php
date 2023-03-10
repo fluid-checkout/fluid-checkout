@@ -248,9 +248,9 @@ class FluidCheckout {
 
 		// Language locale
 		add_filter( 'plugin_locale', array( $this, 'maybe_set_locale_for_language_variants' ), 10, 2 );
+		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
 
 		// Load features
-		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_features' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_plugin_compat_features' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_theme_compat_features' ), 10 );
