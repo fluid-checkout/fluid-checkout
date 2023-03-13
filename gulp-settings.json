@@ -56,8 +56,7 @@
 		],
 
 		"pluginCompat": [
-			"./js-src/compat/plugins/**/*.js",
-			"./js-src/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend.js"
+			"./js-src/compat/plugins/**/*.js"
 		]
 	}
 }

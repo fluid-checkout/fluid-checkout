@@ -7,6 +7,13 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_AdminNotices extends FluidCheckout {
 
 	/**
+	 * Plugin prefix for the admin notices options.
+	 */
+	private static $plugin_prefix = 'fc';
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -29,7 +36,10 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	 * Display notices if they exist.
 	 */
 	public function display_notices() {
-		$notices = apply_filters( 'fc_admin_notices', array() );
+		// Bail if user does not have necessary permissions
+		if ( ! current_user_can( 'install_plugins' ) ) { return; }
+
+		$notices = apply_filters( self::$plugin_prefix . '_admin_notices', array() );
 
 		if ( empty( $notices ) ) {
 			return;
@@ -48,16 +58,16 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		foreach ( $notices as $notice ) {
 			$notice = wp_parse_args( $notice, $default_options );
 
-			if ( is_null( $notice['name'] ) || $this->is_dismissed( $notice['name'] ) ) {
-				continue;
-			}
+			// Maybe skip notice if it's already dismissed
+			if ( is_null( $notice['name'] ) || $this->is_dismissed( $notice['name'] ) ) { continue; }
 
+			// Maybe add dismiss action
 			if ( $notice['dismissable'] ) {
-				$notice['actions'][] = '<a href="' . esc_url( add_query_arg( array( 'fc_action' => 'dismiss_notice', 'fc_notice' => $notice['name'] ) ) ) . '" style="margin: 0 20px;">' . $notice['dismiss_label'] . '</a>';
+				$notice['actions'][] = '<a href="' . esc_url( add_query_arg( array( self::$plugin_prefix . '_action' => 'dismiss_notice', self::$plugin_prefix . '_notice' => $notice['name'], '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ) . '" style="margin: 0 20px;">' . $notice['dismiss_label'] . '</a>';
 			}
 			
 			?>
-			<div class="notice fc-admin-notice <?php echo $notice['error'] === true ? 'notice-error' : ''; ?>" <?php echo $notice['error'] === true ? '' : 'style="border-left-color: #0047e1;"'; ?>>
+			<div class="notice <?php echo esc_attr( self::$plugin_prefix ); ?>-admin-notice <?php echo $notice['error'] === true ? 'notice-error' : ''; ?>" <?php echo $notice['error'] === true ? '' : 'style="border-left-color: #0047e1;"'; ?>>
 				<?php if ( ! empty( $notice['title'] ) ) : ?>
 					<p><strong><?php echo wp_kses_post( $notice['title'] ); ?></strong></p>
 				<?php endif; ?>
@@ -82,7 +92,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	 * @return bool
 	 */
 	public function is_dismissed( $name ) {
-		return (bool) get_option( 'fc_dismissed_notice_' . $name, false );
+		return (bool) get_option( self::$plugin_prefix . '_dismissed_notice_' . $name, false );
 	}
 
 
@@ -91,27 +101,18 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	 * Dismiss notices.
 	 */
 	public function dismiss_notice() {
-		// Permissions check.
-		if ( ! current_user_can( 'install_plugins' ) ) {
-			return;
-		}
+		// Bail if nonce is invalid
+		if ( ! array_key_exists( '_wpnonce', $_GET ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET[ '_wpnonce' ] ) ), 'dismiss-notice' ) ) { return; }
 
-		$action = filter_input( INPUT_GET, 'fc_action', FILTER_SANITIZE_STRING );
+		// Bail if user does not have necessary permissions
+		if ( ! current_user_can( 'install_plugins' ) ) { return; }
 
-		// Bail if not our notices.
-		if ( 'dismiss_notice' !== $action ) {
-			return;
-		}
-
-		// Get notice.
-		$name = filter_input( INPUT_GET, 'fc_notice', FILTER_SANITIZE_STRING );
-
-		if ( ! $name ) {
-			return;
-		}
+		// Bail if not dismissing notices
+		if ( ! array_key_exists( self::$plugin_prefix . '_action', $_GET ) || 'dismiss_notice' !== sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_action' ] ) ) || ! array_key_exists( self::$plugin_prefix . '_notice', $_GET ) || empty( sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_notice' ] ) ) ) ) { return; }
 
 		// Update notice dismiss option
-		update_option( 'fc_dismissed_notice_' . $name, 1 );
+		$name = sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_notice' ] ) );
+		update_option( self::$plugin_prefix . '_dismissed_notice_' . $name, 1 );
 	}
 	
 }

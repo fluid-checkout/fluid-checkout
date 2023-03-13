@@ -51,6 +51,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
+		// Maybe set WooCommerce constants
+		add_action( 'woocommerce_init', array( $this, 'maybe_set_woocommerce_constants' ), 1 );
+
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
@@ -275,6 +278,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Undo hooks.
 	 */
 	public function undo_hooks() {
+		// Maybe set WooCommerce constants
+		remove_action( 'woocommerce_init', array( $this, 'maybe_set_woocommerce_constants' ), 1 );
+		
 		// General
 		remove_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
@@ -433,6 +439,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields_inside' );
 		$order_notes_substep_priority = apply_filters( 'fc_do_order_notes_hooks_priority', 100 );
 		remove_action( $order_notes_substep_position, array( $this, 'do_order_notes_hooks' ), $order_notes_substep_priority );
+	}
+
+
+
+	/**
+	 * Maybe set WooCommerce constants.
+	 */
+	public function maybe_set_woocommerce_constants() {
+		// Maybe define constants
+		if ( ! defined( 'WOOCOMMERCE_CHECKOUT' ) && $this->is_checkout_page_or_fragment() ) { define( 'WOOCOMMERCE_CHECKOUT', true ); }
+		if ( ! defined( 'WOOCOMMERCE_CART' ) && $this->is_cart_page_or_fragment() ) { define( 'WOOCOMMERCE_CART', true ); }
 	}
 
 
@@ -753,11 +770,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @since 2.3.0
 	 */
 	public function locate_template( $template, $template_name, $template_path ) {
-		global $woocommerce;
 		$_template = null;
 
 		// Set template path to default value when not provided
-		if ( ! $template_path ) { $template_path = $woocommerce->template_url; };
+		if ( ! $template_path ) { $template_path = 'woocommerce/'; };
 
 		// Get plugin path
 		$plugin_path  = self::$directory_path . 'templates/fc/checkout-steps/';
@@ -768,9 +784,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Look for template file in the theme
-		if ( ! $_template || apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
+		if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
 			$_template_override = locate_template( array(
-				$template_path . $template_name,
+				trailingslashit( $template_path ) . $template_name,
 				$template_name,
 			) );
 
@@ -824,21 +840,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Checkout Header.
 	 */
-
-
-
-	/**
-	 * Output the checkout header.
-	 */
-	public function output_checkout_header() {
-		// Only display our checkout header if the site header is hidden
-		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
-
-		wc_get_template(
-			'checkout/checkout-header.php',
-			array( 'checkout' => WC()->checkout() )
-		);
-	}
 
 	/**
 	 * Output the checkout header.

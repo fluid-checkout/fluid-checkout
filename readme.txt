@@ -36,17 +36,14 @@ Cleanest and easiest checkout plugin on the market - it will save you a lot of h
 
 == Demos ==
 
+* [Fluid Checkout PRO](https://demos.fluidcheckout.com/pro/?add-to-cart=14&quantity=2)
+All the awesomeness of the Lite version, with even more features to make your customer's checkout experience excelent.
+
 * [Multi step layout](https://demos.fluidcheckout.com/multi-step/cart/?add-to-cart=14&quantity=2)
 Make sure to test the checkout flow by adding to the cart and completing the purchase at least two times to see how the plugin streamlines the process for repeat customers.
 
 * [Single step layout](https://demos.fluidcheckout.com/single-step/cart/?add-to-cart=22&quantity=2)
 Single step checkout is recommended when only a few fields are required, usually when selling digital products or when a shipping address is not needed.
-
-* [Highly stylized theme](https://demos.fluidcheckout.com/theme-deli/cart/?add-to-cart=14&quantity=2)
-With themes that are highly stylized such as Storefront Deli -- when comparing to a plain theme such as the default Storefront theme, Fluid Checkout adapts itself with part of the theme's styles, keeping the same look and feel while improving the experience.
-
-* [Fluid Checkout PRO](https://demos.fluidcheckout.com/pro/?add-to-cart=14&quantity=2)
-All the awesomeness of the Lite version, with even more features to make your customer's checkout experience excelent.
 
 <blockquote>
 <strong> Insane how great this is!</strong>
@@ -271,30 +268,28 @@ All labels and other texts added or changed by the plugin are translatable using
 Currently the plugin is translated into the languages below, and more are coming soon:
 
 * English (Default)
-* Dutch - Netherlands
-* French - France
-* German - Germany
-* Italian - Italy
-* Polish - Poland
-* Portuguese - Brazil
-* Spanish - Spain
-* Swedish - Sweden
-* Turkish - Turkey
+* Dutch
+* French
+* German
+* Italian
+* Polish
+* Portuguese
+* Spanish
+* Swedish
+* Turkish
 
-NOTE: All languages are translated using automated methods such as Google Translate or DeepL. If you encounter any errors in the translation to your language, please report them to us and we'll fix it.
+IMPORTANT NOTES:
+- Fluid Checkout is fully localized and translatable. We understand this is very important to all users worldwide.
+- Languages with variations will use the same language file. For example, when the website is in German the translation used will be German (Formal). For all Spanish speaking countries, the translation used will be Spanish (Spain).
+- All languages are translated using automated methods such as Google Translate or DeepL. If you encounter any errors in the translation to your language, please report them to us and we'll fix it.
 
-** Want Fluid Checkout in your language? **
+** Want Fluid Checkout in your language? Or want to customize an existing translation? **
 
-Please contribute your language to the plugin to make it even more useful. Send your translation files through our [support channel](https://fluidcheckout.com/support/).
+Follow instructions on our documentation article [How to translate Fluid Checkout plugins into your language ](https://fluidcheckout.com/docs/how-to-translate-fluid-checkout-plugins/).
 
 ** RTL Support **
 
-* Although currently there are no official transations to any RTL language, the plugin will adjust its layout to RTL languages accordingly.
-
-** Note: **
-
-Fluid Checkout is fully localized/translatable. This is very important for all users worldwide.
-For translating Fluid Checkout, we recommend the plugin ["Loco Translate - By Tim Whitlock"](https://wordpress.org/plugins/loco-translate/).
+* Although currently there are no official transations to RTL languages, the plugin will adjust its layout to RTL languages as expected.
 
 
 == Contributions are welcome ==
@@ -381,6 +376,19 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+IMPORTANT FIX: Compatibility with plugin Payment Plugins for PayPal WooCommerce not working properly on mobile devices.
+
+* Bump tested up to WooCommerce 7.5
+* Improved: Add a safe location for translation files at `wp-content/languages/fluid-checkout/`.
+* Improved: Support for language variations to use the main language translation. (Ie.: `es_AR` will use `es_ES` for the translation).
+* Improved: Set constants `WOOCOMMERCE_CART` and `WOOCOMMERCE_CHECKOUT` when processing cart and checkout fragment requests respectively. This should fix compatibilty with some plugins.
+* Improved: Update file checkout.js with latest changes to the original file on the WooCommerce plugin.
+* Improved: Add security check to dismiss admin notice links and fix related PHP 8.1 deprecated notices.
+* Fixed: Multiple issues when trying to customize template files.
+* Fixed: Critical issue on compatibility with Payment Plugins for PayPal WooCommerce (version 1.0.25+) where the PayPal buttons and secure popup did not work properly on mobile devices, and sometimes also not on desktop devices.
+
 = 2.3.1 - 2023-02-28 =
 
 * Added: Translation to Polish (Poland).
@@ -415,81 +423,6 @@ POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause cust
 * Fixed: Missing login form styles on some themes.
 * Fixed: Only load modifield WooCommerce script files on the affected pages.
 * Fixed: Compatibility with plugin Hezarfen causing pages to stop processing.
-
-= 2.2.2 - 2023-01-12 =
-
-* Added: Compatibility with theme Qi.
-* Improved: Compatibility with theme Razzi.
-* Improved: Refactor validation check icon styles to make it reusable for theme compatibility styles.
-* Fixed: Initially set page content area width to 100%.
-* Fixed: Position for the terms and conditions checkbox in relation to the label text.
-* Fixed: Error while determining the next step when shipping is not needed for the order.
-* Fixed: Fatal error at checkout page when using WooCommerce versions prior to 7.1.0.
-
-= 2.2.1 - 2023-01-03 =
-
-* Bump tested up to WooCommerce 7.2.2
-* Added: Compatibility with theme PeakShops.
-* Added: Compatibility with plugin Hezarfen for WooCommerce.
-* Added: Compatibility with plugin Elementor PRO. Replace the custom checkout widget from Elementor PRO with Fluid Checkout.
-* Improved: Moved remove default WooCommerce hooks later at `init` hook for better compatibility with various plugins.
-* Fixed: Compatibility with plugin Payment Plugins for Stripe WooCommerce. Fixed iDeal bank dropdown field being cut off, and set its background color to white to make it stand out.
-* Fixed: Do not cut off elements overflowing the payment and order summary elements' boundaries.
-* Fixed: Modal styles not being loaded on all pages that use it.
-* Fixed: Prevent fatal errors when trying to merge field class arguments using the checkout fields class.
-
-= 2.2.0 - 2022-12-12 =
-
-* Bump tested up to WooCommerce 7.2.0
-* Added: Compatibility with plugin Payment Plugins for PayPal WooCommerce - by Payment Plugins.
-* Added: Display the checkout page with cart items errors message, instead of a message to return to cart.
-* Improved: Remove duplicate order summary section, which was causing compatibility issues with many plugins.
-* Improved: Disable the "Log in" link button while loading the scripts.
-* Improved: Execute script on `DOMContentLoaded` instead of page `load` event to enable interactive elements earlier.
-* Improved: Update customized template files with latest changes in WooCommerce 7.2.
-* Improved: Disable the "Log in" link button while loading the scripts which enable it to open the login popup section.
-* Improved: Compatibility with theme Woodmart when setting a background color for the order summary section.
-* Fixed: Hide login modal and other flyout elements while loading the page.
-* Fixed: Fix required fields marker for accessibility. Stop adding `required` attribute to required fields as this sometimes breaks form validation.
-* Fixed: Fatal error when using other plugins or themes that calls the template file `checkout/form-shipping.php` directly.
-
-= 2.1.0 - 2022-12-05 =
-
-* Added: Support for new PRO feature to edit cart items at checkout.
-* Added: New filter `fc_pro_checkout_review_order_table_classes` to add additional classes to the order summary table.
-* Added: Compatibility with theme Minimog.
-* Added: Order summary will now display the product unit price below the product name.
-* Improved: Compatibility with theme Divi.
-* Improved: Compatibility with theme Orchid Store.
-* Improved: Compatibility with theme Woostify.
-* Improved: Refactor use of class `fc-fragment-always-replace` to force replacing checkout page fragments.
-* Improved: Refactor styles for shipping methods pricing labels to automatically align to the center vertically when more elements are displayed.
-* Improved: Check if template file exists in the override path before trying to use it.
-
-= 2.0.9 - 2022-11-21 =
-
-* Bump tested up to WordPress 6.1.1 and WooCommerce 7.1.0
-* Added: Compatibility with the upcoming feature WooCommerce HPOS (High Performance Order Storage).
-* Added: Compatibility with theme Astra PRO (Astra PRO add-on plugin).
-* Added: Compatibility with plugin PayPal Brasil para WooCommerce.
-* Added: Compatibility with plugin Woocommerce UPS Israel Domestic Printing Plugin.
-* Added: Translation to German Formal (Sie). It is a copy of the German (Germany) translation which is already translated as German Formal (Sie).
-* Improved: Compatibility with theme Astra.
-* Improved: Compatibility with plugin Delivery & Pickup Date Time for WooCommerce (by CodeRockz). Refactor compatibility class to use checkout steps class directly.
-* Fixed: Order summary table styles for better compatibility with various themes.
-* Fixed: Always redirect back to checkout page after login when customer is logging in from the checkout page or login link button from the checkout page.
-
-= 2.0.8 - 2022-10-28 =
-
-* Bump tested up to WordPress 6.0.3 and WooCommerce 7.0.0
-* Improved: Translations for Dutch, French, German, Italian, Spanish and Portuguese Brazil.
-* Improved: Compatibility with theme Woodmart, fixing the styles for the Woodmart checkout steps section on the checkout page when using the plugin's header.
-* Improved: Compatibility with theme Blocksy, fixing payment method logos stretched and checkboxes missing checked state styles.
-* Improved: Remove checkout field validation classes ending with `-field` when clearing checkout field validation state.
-* Removed: Admin notice about features moved to the PRO version.
-* Fixed: Position of optional fields to always start a new row in the checkout form, making it easier to scan and find optional fields and fixes layout issues.
-* Fixed: Returning invalid variable when trying to show login link on checkout error message for user already registered.
-* Fixed: Billing phone required message being displayed when billing phone is displayed in the "Contact" step and "Billing same as shipping address" checkbox is checked and the shipping phone field is empty.
 
 [See complete changelog](https://fluidcheckout.com/docs/changelog-fluid-checkout/)
 

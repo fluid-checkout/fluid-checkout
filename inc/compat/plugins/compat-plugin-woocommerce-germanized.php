@@ -71,11 +71,10 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	 * Locate template files from this plugin.
 	 */
 	public function locate_template( $template, $template_name, $template_path ) {
-		global $woocommerce;
 		$_template = null;
 
 		// Set template path to default value when not provided
-		if ( ! $template_path ) { $template_path = $woocommerce->template_url; };
+		if ( ! $template_path ) { $template_path = 'woocommerce/'; };
 
 		// Get plugin path
 		$plugin_path  = self::$directory_path . 'templates/compat/plugins/woocommerce-germanized/';
@@ -87,7 +86,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 			// Look for template file in the theme
 			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
 				$_template_override = locate_template( array(
-					$template_path . $template_name,
+					trailingslashit( $template_path ) . $template_name,
 					$template_name,
 				) );
 	
