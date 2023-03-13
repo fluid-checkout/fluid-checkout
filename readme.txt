@@ -378,6 +378,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 7.5
 * Improved: Add a safe location for translation files at `wp-content/languages/fluid-checkout/`.
 * Improved: Support for language variations to use the main language translation. (Ie.: `es_AR` will use `es_ES` for the translation).
 * Improved: Set constants `WOOCOMMERCE_CART` and `WOOCOMMERCE_CHECKOUT` when processing cart and checkout fragment requests respectively. This should fix compatibilty with some plugins.
