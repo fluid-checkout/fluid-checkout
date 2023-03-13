@@ -378,6 +378,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+IMPORTANT FIX: Compatibility with plugin Payment Plugins for PayPal WooCommerce not working properly on mobile devices.
+
 * Bump tested up to WooCommerce 7.5
 * Improved: Add a safe location for translation files at `wp-content/languages/fluid-checkout/`.
 * Improved: Support for language variations to use the main language translation. (Ie.: `es_AR` will use `es_ES` for the translation).
@@ -385,7 +387,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Update file checkout.js with latest changes to the original file on the WooCommerce plugin.
 * Improved: Add security check to dismiss admin notice links and fix related PHP 8.1 deprecated notices.
 * Fixed: Multiple issues when trying to customize template files.
-* Fixed: Critical issue on compatibility with Payment Plugins for PayPal where the PayPal buttons and secure popup did not work properly on mobile devices, and sometimes also not on desktop devices.
+* Fixed: Critical issue on compatibility with Payment Plugins for PayPal WooCommerce (version 1.0.25+) where the PayPal buttons and secure popup did not work properly on mobile devices, and sometimes also not on desktop devices.
 
 = 2.3.1 - 2023-02-28 =
 
