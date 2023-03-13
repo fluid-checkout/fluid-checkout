@@ -197,7 +197,7 @@ class FluidCheckout {
 
 		// Get translation file
 		$translation_file = trailingslashit( WP_LANG_DIR ) . self::$plugin_slug . '/' . self::$plugin_slug . '-' . $locale . '.mo';
-		
+
 		// Bail if language variant file does not exist in the plugin safe language dir.
 		if ( ! file_exists( $translation_file ) ) { return false; }
 	
@@ -273,7 +273,7 @@ class FluidCheckout {
 
 		// Get current plugin path name
 		$current_plugin_path_name = plugin_basename( __FILE__ );
-			
+
 		foreach( $options[ 'plugins' ] as $plugin_path_name ) {
 			if ( $plugin_path_name === $current_plugin_path_name ) {
 				wp_cache_flush();
