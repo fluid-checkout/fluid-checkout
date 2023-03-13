@@ -285,7 +285,7 @@ IMPORTANT NOTES:
 
 ** Want Fluid Checkout in your language? Or want to customize an existing translation? **
 
-Follow our documentation article [How to translate Fluid Checkout plugins into your language ](https://fluidcheckout.com/docs/how-to-translate-fluid-checkout-plugins/).
+Follow instructions on our documentation article [How to translate Fluid Checkout plugins into your language ](https://fluidcheckout.com/docs/how-to-translate-fluid-checkout-plugins/).
 
 ** RTL Support **
 
