@@ -106,7 +106,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
 		add_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_text_fragment' ), 10 );
-		
+
 		// Log in
 		add_action( 'woocommerce_checkout_before_customer_details', array( $this, 'output_substep_contact_login_link_section' ), 1 );
 		add_action( 'wp_footer', array( $this, 'output_login_form_modal' ), 10 );
@@ -247,7 +247,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Get additional order fields
 			$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
 			$order_notes_substep_position = 'fc_output_step_shipping';
-			
+
 			// Check if no additional order fields are present
 			if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
 
@@ -280,7 +280,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function undo_hooks() {
 		// Maybe set WooCommerce constants
 		remove_action( 'woocommerce_init', array( $this, 'maybe_set_woocommerce_constants' ), 1 );
-		
+
 		// General
 		remove_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
@@ -331,7 +331,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_output_step_contact', array( $this, 'output_substep_contact' ), 20 );
 		remove_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_text_fragment' ), 10 );
-		
+
 		// Log in
 		remove_action( 'woocommerce_checkout_before_customer_details', array( $this, 'output_substep_contact_login_link_section' ), 1 );
 		remove_action( 'wp_footer', array( $this, 'output_login_form_modal' ), 10 );
@@ -418,7 +418,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
 		remove_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10, 2 );
 		remove_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
-		
+
 		// Re-hook removed WooCommerce functions
 		add_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
 		add_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
@@ -479,7 +479,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$current_step_index = array_keys( $current_step )[0];
 			$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
 			$add_classes[] = 'fc-checkout-step-current--' . esc_attr( $current_step_id );
-			
+
 			// Maybe add current last step class
 			$last_step_index = array_keys( $last_step )[0];
 			if ( $current_step_index === $last_step_index ) {
@@ -2248,6 +2248,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Iterate contact field ids
 		foreach( $contact_field_ids as $field_key ) {
+			// Maybe break if email field is not valid
+			if ( 'billing_email' === $field_key && ! is_email( WC()->checkout()->get_value( $field_key ) ) ) {
+				$is_step_complete = false;
+				break;
+			}
+
+			// Iterate fields
 			foreach ( $field_groups as $group_key => $fields ) {
 				// Check field exists
 				if ( array_key_exists( $field_key, $fields ) ) {
@@ -4660,6 +4667,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Use the `WC_Customer` object for supported properties
 		foreach ( $customer_supported_field_keys as $field_key ) {
+			// Maybe skip email field if value is invalid
+			if ( 'billing_email' === $field_key && ! is_email( $posted_data[ $field_key ] ) ) { continue; }
+
 			// Get the setter method name for the customer property
 			$setter = "set_$field_key";
 
