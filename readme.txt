@@ -376,6 +376,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Fatal error when trying to update checkout parts and the email field has an invalid email value.
+
 = 2.3.2 - 2023-03-13 =
 
 IMPORTANT FIX: Compatibility with plugin Payment Plugins for PayPal WooCommerce not working properly on mobile devices.

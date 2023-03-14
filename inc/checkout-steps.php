@@ -74,14 +74,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
 		// Checkout header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) {
+		if ( class_exists( 'FluidCheckout_CheckoutPageTemplate' ) && FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) {
 			// Cart link on header
 			add_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
 		}
 
 		// Container class
-		add_filter( 'fc_content_section_class', array( $this, 'add_content_section_class' ), 10 );
+	add_filter( 'fc_content_section_class', array( $this, 'add_content_section_class' ), 10 );
 
 		// Checkout page title
 		add_filter( 'fc_display_checkout_page_title', array( $this, 'maybe_display_checkout_page_title' ), 10 );
@@ -2248,6 +2248,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Iterate contact field ids
 		foreach( $contact_field_ids as $field_key ) {
+			// Maybe break if email field is not valid
+			if ( 'billing_email' === $field_key && ! is_email( WC()->checkout()->get_value( $field_key ) ) ) {
+				$is_step_complete = false;
+				break;
+			}
+
+			// Iterate fields
 			foreach ( $field_groups as $group_key => $fields ) {
 				// Check field exists
 				if ( array_key_exists( $field_key, $fields ) ) {
@@ -4660,6 +4667,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Use the `WC_Customer` object for supported properties
 		foreach ( $customer_supported_field_keys as $field_key ) {
+			// Maybe skip email field if value is invalid
+			if ( 'billing_email' === $field_key && ! is_email( $posted_data[ $field_key ] ) ) { continue; }
+
 			// Get the setter method name for the customer property
 			$setter = "set_$field_key";
 
