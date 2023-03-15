@@ -208,6 +208,8 @@ Only the themes that we have added explicit compatibility with or that we have t
 
 * WooCommerce Amazon Pay - by WooCommerce
 * WooCommerce Stripe Gateway - by WooCommerce
+* Payment Plugins for PayPal WooCommerce - by Payment Plugins
+* Payment Plugins for Stripe WooCommerce - by Payment Plugins
 
 = Plugins =
 
