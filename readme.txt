@@ -381,6 +381,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Shipping address and shipping method not updating correctly on the checkout page when address is changed from the shipping calculator on the cart page.
+* Fixed: Error on Brazilian Market plugin scripts introduced in previous versions of Fluid Checkout Lite.
 * Fixed: Fatal error when trying to update checkout parts and the email field has an invalid email value.
 
 = 2.3.2 - 2023-03-13 =

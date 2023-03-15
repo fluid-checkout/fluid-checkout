@@ -142,7 +142,7 @@ jQuery( function( $ ) {
 							if ( window.CheckoutValidation ) {
 								CheckoutValidation.clearValidationResults( document.querySelector( '#billing_company' ), document.querySelector( '#billing_company_field' ) );
 							}
-						}c
+						}
 					}
 				}).change();
 			}
