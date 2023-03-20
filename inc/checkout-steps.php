@@ -2928,8 +2928,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
 	 */
-	public function is_step_complete_shipping() {
-		$is_step_complete = true;
+	public function is_substep_complete_shipping_address() {
+		$is_substep_complete = true;
 
 		// Check required data for shipping address
 		if ( WC()->cart->needs_shipping_address() ) {
@@ -2954,10 +2954,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 				if ( in_array( $field_key, $step_complete_field_keys_skip_list ) ) { continue; }
 
 				if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( WC()->checkout()->get_value( $field_key ) ) ) {
-					$is_step_complete = false;
+					$is_substep_complete = false;
 					break;
 				}
 			}
+		}
+
+		return $is_substep_complete;
+	}
+
+	/**
+	 * Determines if all required data for the shipping step has been provided.
+	 *
+	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
+	 */
+	public function is_step_complete_shipping() {
+		$is_step_complete = true;
+
+		// Bail if shipping address substep is not complete
+		if ( ! $this->is_substep_complete_shipping_address() ) {
+			$is_step_complete = false;
 		}
 
 		// Check chosen shipping method
