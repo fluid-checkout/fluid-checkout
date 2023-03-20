@@ -247,6 +247,8 @@
 	 * Expand the substep fields for edition, and collapse the substep values in text format.
 	 *
 	 * @param   HTMLElement  substepElement  Substep element to change the state of.
+	 * @param   Boolean      withTransition  Whether to use transitions between states. Defaults to `true`.
+	 * @param   Boolean      withFocus       Whether to set the focus to the field when expanding. Cannot be used with `withTransition = true`. Defaults to `true`.
 	 */
 	var expandSubstepEdit = function( substepElement, withTransition, withFocus ) {
 		// Bail if editButton not valid
