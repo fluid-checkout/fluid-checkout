@@ -3479,7 +3479,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if cart is not available
 		if ( ! function_exists( 'WC' ) || null === WC()->cart ) { return false; }
 
-		return WC()->cart->needs_shipping_address() && true === $this->is_shipping_country_allowed_for_billing();
+		$is_available = WC()->cart->needs_shipping_address() && true === $this->is_shipping_country_allowed_for_billing();
+
+		return apply_filters( 'fc_is_shipping_address_available_for_billing', $is_available );
 	}
 
 
@@ -3601,6 +3603,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function is_billing_same_as_shipping( $posted_data = array() ) {
 		// Set to different billing address when shipping address not needed
 		if ( ! WC()->cart->needs_shipping_address() ) {
+			return false;
+		}
+
+		// Bail if shipping address not available for billing
+		if ( ! $this->is_shipping_address_available_for_billing() ) {
 			return false;
 		}
 
