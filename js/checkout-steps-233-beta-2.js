@@ -682,7 +682,7 @@
 			var expandedHiddenField = substepElement.querySelector( _settings.substepExpandedStateFieldSelector );
 			if ( expandedHiddenField && 'yes' === expandedHiddenField.value ) {
 				var substepElement = expandedHiddenField.closest( _settings.substepSelector );
-				expandSubstepEdit( substepElement, true, true );
+				expandSubstepEdit( substepElement, true, false );
 			}
 		}
 	}
