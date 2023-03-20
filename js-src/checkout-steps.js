@@ -51,10 +51,6 @@
 		substepEditButtonSelector: '[data-step-edit]',
 		substepSaveButtonSelector: '[data-step-save]',
 
-		expansibleSectionToggleSelector: '[data-expansible-section-toggle]',
-		expansibleSectionExpandAttribute: 'data-expansible-section-expand',
-		expansibleSectionCollapseAttribute: 'data-expansible-section-collapse',
-
 		stepCompleteAttribute: 'data-step-complete',
 		stepCurrentAttribute: 'data-step-current',
 		stepIndexAttribute: 'data-step-index',
@@ -72,6 +68,7 @@
 		substepEditableStateAttribute: 'data-substep-editable',
 		substepVisibleStateFieldSelector: '.fc-substep-visible-state[type="hidden"]',
 		substepVisibleStateAttribute: 'data-substep-visible',
+		substepExpandedStateFieldSelector: '.fc-substep-expanded-state[type="hidden"]',
 
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
 
@@ -251,7 +248,7 @@
 	 *
 	 * @param   HTMLElement  substepElement  Substep element to change the state of.
 	 */
-	var expandSubstepEdit = function( substepElement ) {
+	var expandSubstepEdit = function( substepElement, withTransition, withFocus ) {
 		// Bail if editButton not valid
 		if ( ! substepElement ) { return; }
 
@@ -259,8 +256,8 @@
 		var substepTextElement = substepElement.querySelector( _settings.substepTextSelector );
 
 		// Change expanded/collapsed states for the fields and text blocks
-		CollapsibleBlock.expand( substepFieldsElement );
-		CollapsibleBlock.collapse( substepTextElement );
+		CollapsibleBlock.expand( substepFieldsElement, withTransition, withFocus );
+		CollapsibleBlock.collapse( substepTextElement, withTransition );
 
 		// Add editing class to the substep element
 		substepElement.classList.add( _settings.isEditingClass );
@@ -679,6 +676,13 @@
 			}
 			else {
 				substepElement.removeAttribute( _settings.substepVisibleStateAttribute );
+			}
+
+			// Handle expanded state
+			var expandedHiddenField = substepElement.querySelector( _settings.substepExpandedStateFieldSelector );
+			if ( expandedHiddenField && 'yes' === expandedHiddenField.value ) {
+				var substepElement = expandedHiddenField.closest( _settings.substepSelector );
+				expandSubstepEdit( substepElement, true, true );
 			}
 		}
 	}
