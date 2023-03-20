@@ -4735,45 +4735,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get list of checkout field keys that are supported by `WC_Order` object.
-	 *
-	 * @return  array  List of checkout field keys.
-	 */
-	public function get_supported_order_property_field_keys() {
-		// Initialize list of supported field keys
-		$order_supported_field_keys = array();
-
-		// Get generic order object
-		$order = new WC_Order();
-
-		// Get checkout fields
-		$fields = WC()->checkout()->get_checkout_fields();
-
-		// Use the `WC_Order` object for supported properties
-		foreach ( $fields as $fieldset_key => $fieldset ) {
-
-			// Iterate checkout fieldset groups (ie. billing, shipping, account)
-			foreach ( $fieldset as $field_key => $field ) {
-
-				// Get the setter method name for the order property
-				$setter = "set_$field_key";
-
-				// Check if the setter method is supported
-				if ( is_callable( array( $order, $setter ) ) ) {
-					// Add field key to the list of already saved values
-					$order_supported_field_keys[] = $field_key;
-				}
-
-			}
-
-		}
-
-		return $order_supported_field_keys;
-	}
-
-
-
-	/**
 	 * Get the list of address fields to update on the checkout form.
 	 *
 	 * @param   string  $address_type  The address type.
