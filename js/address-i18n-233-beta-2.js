@@ -12,9 +12,27 @@ jQuery( function( $ ) {
 		return false;
 	}
 
+	var _settings = {
+		formRowExpansibleSelector: '.form-row.fc-expansible-form-section',
+		expansibleToggleSelector: '.fc-expansible-form-section__toggle',
+		expansibleContentSelector: '.fc-expansible-form-section__content',
+		inputSelector: 'input, select, textarea',
+	};
+
 	var locale_json = wc_address_i18n_params.locale.replace( /&quot;/g, '"' ), locale = JSON.parse( locale_json );
 
 	function field_is_required( field, is_required ) {
+		// CHANGE: Get collapsible field elements
+		var formRow, fieldCollapsibleToggle, fieldCollapsibleContent, input;
+		if ( window.CollapsibleBlock && field.length > 0 ) {
+			formRow = field[0].closest( _settings.formRowExpansibleSelector );
+			if ( formRow ) {
+				fieldCollapsibleToggle = formRow.querySelector( _settings.expansibleToggleSelector );
+				fieldCollapsibleContent = formRow.querySelector( _settings.expansibleContentSelector );
+			}
+		}
+		// CHANGE: END - Get collapsible field elements
+		
 		if ( is_required ) {
 			field.find( 'label .optional' ).remove();
 			field.addClass( 'validate-required' );
@@ -26,6 +44,13 @@ jQuery( function( $ ) {
 					'">*</abbr>'
 				);
 			}
+			
+			// CHANGE: Try to expand if the field is required
+			if ( fieldCollapsibleToggle && fieldCollapsibleContent ) {
+				CollapsibleBlock.collapse( fieldCollapsibleToggle, false ); // Collapse without transitions
+				CollapsibleBlock.expand( fieldCollapsibleContent, false, false ); // Expand without transitions and without setting focus
+			}
+			// CHANGE: END - Try to expand if the field is required
 		} else {
 			field.find( 'label .required' ).remove();
 			field.removeClass( 'validate-required woocommerce-invalid woocommerce-invalid-required-field' );
@@ -33,6 +58,16 @@ jQuery( function( $ ) {
 			if ( field.find( 'label .optional' ).length === 0 ) {
 				field.find( 'label' ).append( '&nbsp;<span class="optional">(' + wc_address_i18n_params.i18n_optional_text + ')</span>' );
 			}
+
+			// CHANGE: Try to collapse if the field is optional and empty
+			if ( fieldCollapsibleToggle && fieldCollapsibleContent ) {
+				var input = field[0].querySelector( _settings.inputSelector );
+				if ( input && '' == input.value ) {
+					CollapsibleBlock.expand( fieldCollapsibleToggle, false, false ); // Expand without transitions and without setting focus
+					CollapsibleBlock.collapse( fieldCollapsibleContent, false ); // Collapse without transitions
+				}
+			}
+			// CHANGE: END - Try to collapse if the field is optional and empty
 		}
 	}
 
