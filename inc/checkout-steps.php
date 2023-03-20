@@ -2960,7 +2960,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
-		return $is_substep_complete;
+		return apply_filters( 'fc_is_substep_complete_shipping_address', $is_substep_complete );
 	}
 
 	/**
