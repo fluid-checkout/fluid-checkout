@@ -20,7 +20,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @var array
 	 **/
-	private $checkout_steps   = array();
+	private $registered_checkout_steps = array();
 
 	/**
 	 * Hold cached values for parsed `post_data`.
@@ -29,6 +29,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	private $posted_data = null;
 	private $set_parsed_posted_data_filter_applied = false;
+
+	/**
+	 * Hold cached values to improve performance.
+	 */
+	private $cached_values = array();
 
 
 
@@ -1056,9 +1061,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @return  boolean           `true` if a checkout step is registered with the `step_id`, `false` otherwise.
 	 */
-	public function has_checkout_step( $step_id ) {
+	public function is_checkout_step_registered( $step_id ) {
 		// Look for a step with the same id
-		foreach ( $this->get_checkout_steps() as $step_args ) {
+		foreach ( $this->get_registered_checkout_steps() as $step_args ) {
 			if ( $step_args[ 'step_id' ] == sanitize_title( $step_id ) ) {
 				return true;
 			}
@@ -1070,12 +1075,38 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get the registered checkout steps.
+	 * Get the registered checkout steps to be rendered. Should only be used after the action `init` has been fired.
 	 *
-	 * @return  array  An array of the registered checkout steps. For more details of what is expected see the documentation of the private property `$checkout_steps` of this class.
+	 * @return  array  An array of the registered checkout steps to be rendered. For more details of what is expected see the documentation of the private property `$checkout_steps` of this class.
 	 */
 	public function get_checkout_steps() {
-		return $this->checkout_steps;
+		// Try to return value from cache
+		$cache_handle = 'checkout_steps_to_render';
+		if ( array_key_exists( $cache_handle, $this->cached_values ) ) {
+			// Return value from cache
+			return $this->cached_values[ $cache_handle ];
+		}
+
+		// Get registered steps
+		$_checkout_steps = $this->get_registered_checkout_steps();
+
+		// Iterate all steps and check if they should be rendered
+		foreach ( $_checkout_steps as $step_index => $step_args ) {
+			// Maybe remove the step from the count
+			if ( array_key_exists( 'render_condition_callback', $step_args ) && ! call_user_func( $step_args[ 'render_condition_callback' ] ) ) {
+				unset( $_checkout_steps[ $step_index ] );
+			}
+		}
+
+		// Reassign the steps indexes based on the steps position in the array
+		$_checkout_steps = array_values( $_checkout_steps );
+
+		// Set cache
+		if ( count( $_checkout_steps ) > 0 ) {
+			$this->cached_values[ $cache_handle ] = $_checkout_steps;
+		}
+
+		return $_checkout_steps;
 	}
 
 
@@ -1397,6 +1428,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the registered checkout steps.
+	 *
+	 * @return  array  An array of the registered checkout steps. For more details of what is expected see the documentation of the private property `$checkout_steps` of this class.
+	 */
+	private function get_registered_checkout_steps() {
+		return $this->registered_checkout_steps;
+	}
+
+	/**
 	 * Register a new checkout step.
 	 *
 	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
@@ -1426,13 +1466,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Check for duplicate step_id
-		if ( $this->has_checkout_step( $step_id ) ) {
+		if ( $this->is_checkout_step_registered( $step_id ) ) {
 			trigger_error( "A checkout step with `step_id = {$step_id}` already exists. Skipping step.", E_USER_WARNING );
 			return false;
 		}
 
 		// Add step to the list
-		$_checkout_steps = $this->get_checkout_steps();
+		$_checkout_steps = $this->get_registered_checkout_steps();
 		$_checkout_steps[] = $step_args;
 
 		// Sort steps based on priority.
@@ -1440,7 +1480,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$_checkout_steps = array_values( $_checkout_steps );
 
 		// Update registered checkout steps
-		$this->checkout_steps = $_checkout_steps;
+		$this->registered_checkout_steps = $_checkout_steps;
 
 		return true;
 	}
@@ -1454,18 +1494,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function unregister_checkout_step( $step_id ) {
 		// Bail if checkout step is not registered
-		if ( ! $this->has_checkout_step( $step_id ) ) { return false; }
+		if ( ! $this->is_checkout_step_registered( $step_id ) ) { return false; }
 		
-		// Look for a step with the same id
+		// Look for a step with the same id and get the step index
 		$step_index = false;
-		foreach ( $this->get_checkout_steps() as $key => $step_args ) {
+		foreach ( $this->get_registered_checkout_steps() as $key => $step_args ) {
 			if ( $step_args[ 'step_id' ] == sanitize_title( $step_id ) ) {
 				$step_index = $key;
 			}
 		}
 
-		// Add step to the list
-		$_checkout_steps = $this->get_checkout_steps();
+		// Bail if step index not found
+		if ( false === $step_index ) { return false; }
+
+		// Remove step from the registered steps
+		$_checkout_steps = $this->get_registered_checkout_steps();
 		unset( $_checkout_steps[ $step_index ] );
 
 		// Sort steps based on priority.
@@ -1473,7 +1516,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$_checkout_steps = array_values( $_checkout_steps );
 
 		// Update registered checkout steps
-		$this->checkout_steps = $_checkout_steps;
+		$this->registered_checkout_steps = $_checkout_steps;
 
 		return true;
 	}
@@ -1485,7 +1528,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function register_default_checkout_steps() {
 		// Bail if has already registered steps
-		if ( count( $this->checkout_steps ) > 0 ) { return; }
+		if ( count( $this->registered_checkout_steps ) > 0 ) { return; }
 
 		// Bail if not checkout or cart page or fragments
 		if ( ! $this->is_checkout_page_or_fragment() && ! $this->is_cart_page_or_fragment() && ( ! has_filter( 'fc_force_register_steps' ) || false !== apply_filters( 'fc_force_register_steps', false ) ) ) { return; }
@@ -1536,19 +1579,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the contents of each registered checkout step.
 	 */
 	public function output_checkout_steps() {
+		// Iterate checkout steps
 		foreach ( $this->get_checkout_steps() as $step_index => $step_args ) {
-			$step_id = $step_args[ 'step_id' ];
+			// Maybe skip if render callback is not callable
 			$render_callback = array_key_exists( 'render_callback', $step_args ) ? $step_args[ 'render_callback' ] : null;
-			$render_conditional_callback = array_key_exists( 'render_condition_callback', $step_args ) ? $step_args[ 'render_condition_callback' ] : null;
-
-			// Skip step if step `render` function not callable
-			if ( ! $render_callback || ! is_callable( $render_callback ) ) {
-				trigger_error( "The output function for the checkout step with `step_id = {$step_id}` is not callable. Skipping step render.", E_USER_WARNING );
-				continue;
-			}
-
-			// Skip step if `render` conditional is not met
-			if ( $render_conditional_callback && is_callable( $render_conditional_callback ) && ! call_user_func( $render_conditional_callback ) ) { continue; }
+			if ( ! $render_callback || ! is_callable( $render_callback ) ) { continue; }
 
 			// Output the step
 			$this->output_step_start_tag( $step_args, $step_index );
@@ -1632,7 +1667,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( false === $current_step ) { return; }
 
 		// Get current steps arguments
-		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the registered checkout steps list
+		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the registered checkout steps list.
 		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
 		$current_step_number = $current_step_index + 1;
 
