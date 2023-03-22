@@ -1092,7 +1092,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Iterate all steps and check if they should be rendered
 		foreach ( $_checkout_steps as $step_index => $step_args ) {
-			// Maybe remove the step from the list
+			// Maybe remove the step from the list if it has a render condition callback and it returns `false`.
 			if ( array_key_exists( 'render_condition_callback', $step_args ) && ! call_user_func( $step_args[ 'render_condition_callback' ] ) ) {
 				unset( $_checkout_steps[ $step_index ] );
 			}
