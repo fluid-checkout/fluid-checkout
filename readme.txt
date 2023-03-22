@@ -380,11 +380,13 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+IMPORTANT FIX: Critical error with the checkout steps count when shipping is not needed for the order, and the multi-step layout is used.
+
 * Improved: Remove option to set billing address to same as shipping when the shipping address is not usable for billing.
 * Improved: Try to expand or collapse fields after changing country on address sections.
 * Fixed: Shipping address and shipping method not updating correctly on the checkout page when address is changed from the shipping calculator on the cart page.
 * Fixed: Error on Brazilian Market plugin scripts introduced in previous versions of Fluid Checkout Lite.
-* Fixed: Critical error counting available checkout steps when shipping is not needed for the order.
+* Fixed: Critical error with the checkout steps count when shipping is not needed for the order, and the multi-step layout is used.
 * Fixed: Fatal error when trying to update checkout parts and the email field has an invalid email value.
 
 = 2.3.2 - 2023-03-13 =
