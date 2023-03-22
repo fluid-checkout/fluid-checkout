@@ -208,6 +208,8 @@ Only the themes that we have added explicit compatibility with or that we have t
 
 * WooCommerce Amazon Pay - by WooCommerce
 * WooCommerce Stripe Gateway - by WooCommerce
+* Payment Plugins for PayPal WooCommerce - by Payment Plugins
+* Payment Plugins for Stripe WooCommerce - by Payment Plugins
 
 = Plugins =
 
@@ -375,6 +377,17 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 
 == Changelog ==
+
+= Unreleased =
+
+IMPORTANT FIX: Critical error with the checkout steps count when shipping is not needed for the order, and the multi-step layout is used.
+
+* Improved: Remove option to set billing address to same as shipping when the shipping address is not usable for billing.
+* Improved: Try to expand or collapse fields after changing country on address sections.
+* Fixed: Shipping address and shipping method not updating correctly on the checkout page when address is changed from the shipping calculator on the cart page.
+* Fixed: Error on Brazilian Market plugin scripts introduced in previous versions of Fluid Checkout Lite.
+* Fixed: Critical error with the checkout steps count when shipping is not needed for the order, and the multi-step layout is used.
+* Fixed: Fatal error when trying to update checkout parts and the email field has an invalid email value.
 
 = 2.3.2 - 2023-03-13 =
 
