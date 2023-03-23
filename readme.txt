@@ -381,6 +381,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with plugin Woo Additional Terms by MyPreview.
+* Improved: Added new JS events `fc_checkout_fragments_replace_before` and `fc_checkout_fragments_replace_after` to allow external scripts to run processes before and after replacing checkout fragments.
 * Improved: Added new filter `fc_coupon_code_field_description` to change or add a description below the coupon code field.
 * Fixed: Order summary getting sticky state on mobile when it should not, causing other elements to be overlapping and hidden.
 
