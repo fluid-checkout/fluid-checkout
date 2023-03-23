@@ -4119,7 +4119,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( get_option( 'fc_enable_checkout_sticky_order_summary', 'yes' ) === 'yes' ) {
 			$sidebar_attributes = array_merge( $sidebar_attributes, array(
 				'data-sticky-states' => true,
-				'data-sticky-container' => 'div.woocommerce',
+				'data-sticky-container' => '.fc-wrapper',
 			) );
 			$sidebar_attributes_inner = array_merge( $sidebar_attributes_inner, array(
 				'data-sticky-states-inner' => true,

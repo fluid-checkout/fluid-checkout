@@ -381,6 +381,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Improved: Added new filter `fc_coupon_code_field_description` to change or add a description below the coupon code field.
+* Fixed: Order summary getting sticky state on mobile when it should not, causing other elements to be overlapping and hidden.
 
 = 2.3.3 - 2023-03-22 =
 
