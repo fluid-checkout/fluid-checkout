@@ -412,7 +412,17 @@ jQuery( function( $ ) {
 				}
 			}
 		},
-		// CHANGE: END - Maybe add loading class to the form row
+		// CHANGE: Add function to remove loading classes from elements after updating the checkout fragments
+		maybe_stop_form_row_loading_indicator: function() {
+			var maybeLoadingFields = document.querySelectorAll( _settings.checkoutLoadingInputSelector );
+			for ( var i = 0; i < maybeLoadingFields.length; i++ ) {
+				var input = maybeLoadingFields[ i ];
+				var formRow = input.closest( _settings.formRowSelector );
+				if ( formRow ) {
+					formRow.classList.remove( _settings.loadingClass );
+				}
+			}
+		},
 		input_changed: function( e ) {
 			wc_checkout_form.dirtyInput = e.target;
 			wc_checkout_form.maybe_update_checkout();
@@ -825,17 +835,13 @@ jQuery( function( $ ) {
 
 					// Fire updated_checkout event.
 					$( document.body ).trigger( 'updated_checkout', [ data ] );
+
+					// CHANGE: Maybe remove loading class from form rows when completing the ajax request
+					wc_checkout_form.maybe_stop_form_row_loading_indicator();
 				},
 				// CHANGE: Maybe remove loading class from form rows when completing the ajax request
-				complete: function() {
-					var maybeLoadingFields = document.querySelectorAll( _settings.checkoutLoadingInputSelector );
-					for ( var i = 0; i < maybeLoadingFields.length; i++ ) {
-						var input = maybeLoadingFields[ i ];
-						var formRow = input.closest( _settings.formRowSelector );
-						if ( formRow ) {
-							formRow.classList.remove( _settings.loadingClass );
-						}
-					}
+				error: function() {
+					wc_checkout_form.maybe_stop_form_row_loading_indicator();
 				}
 				// CHANGE: END - Maybe remove loading class from form rows when completing the ajax request
 
