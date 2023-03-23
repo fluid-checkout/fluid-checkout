@@ -10,10 +10,20 @@ $_field-height:                        remsize( 4rem ) !default;
 
 
 // ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	--fluidcheckout--checkout-field--height: #{ remsize( 4rem ) };
+}
+
+
+
+
+
+// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
 	"checkout-content-area",
 	"../../partials/checkout-validation-check",
-	"checkout-validation",
-	"../../partials/loading-indicator";
+	"checkout-validation";

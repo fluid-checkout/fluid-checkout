@@ -1,3 +1,7 @@
+:root {
+  --fluidcheckout--checkout-field--height: 36px;
+}
+
 body.theme-hello-elementor div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) textarea,
 body.theme-hello-elementor div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) select,
 body.theme-hello-elementor div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=email],
@@ -29,7 +33,7 @@ body.theme-hello-elementor div.woocommerce form .form-row.woocommerce-validated:
   font-size: 24px;
   z-index: 10;
   position: absolute;
-  top: 6px;
+  top: calc(( var(--fluidcheckout--checkout-field--height, 45.625px) / 2 ) - ( 24px / 2 ));
   right: 5px;
   border-radius: 100%;
   background-color: rgba(255, 255, 255, 0.75);
@@ -56,13 +60,13 @@ body.theme-hello-elementor div.woocommerce form .form-row span.select2-container
 
 body.theme-hello-elementor div.woocommerce form .form-row .select2-selection {
   height: auto;
-  min-height: 34px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
   border-radius: 3px;
   line-height: 0;
 }
 
 body.theme-hello-elementor div.woocommerce form .form-row .select2-selection__rendered {
-  min-height: 34px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
   border-radius: 3px;
 }
 
@@ -71,8 +75,8 @@ body.theme-hello-elementor div.woocommerce form .form-row .select2-selection .se
   top: 0;
   margin-top: 0;
   height: auto;
-  min-height: 34px;
-  line-height: 34px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
   transform: none;
 }
 
@@ -83,7 +87,7 @@ body.theme-hello-elementor div.woocommerce form .form-row .select2-selection--si
 body.theme-hello-elementor div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   padding-top: 0;
   padding-bottom: 0;
-  line-height: 34px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
 }
 
 body.theme-hello-elementor div.woocommerce form .form-row .select2-selection--multiple {
@@ -92,97 +96,25 @@ body.theme-hello-elementor div.woocommerce form .form-row .select2-selection--mu
 
 body.theme-hello-elementor div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
   padding-bottom: 5px;
-  min-height: 24px;
-  line-height: 24px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px-10px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px-10px;
   white-space: normal;
 }
 
 body.theme-hello-elementor div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
   margin-top: 5px;
-  line-height: 34px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
   overflow: hidden;
 }
 
 body.theme-hello-elementor div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
   margin-top: 5px;
-  min-height: 34px;
-  line-height: 34px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
 }
 
 body.theme-hello-elementor div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   margin-top: 0;
-  height: 24px;
+  height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px-10px;
   min-height: auto;
-}
-
-body.theme-hello-elementor div.woocommerce .form-row.fc-loading .woocommerce-input-wrapper:after {
-  display: inline-block;
-  font-family: "fluid-checkout-icons" !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  vertical-align: middle;
-  content: "\e816";
-  width: 24px;
-  height: 24px;
-  font-size: 24px;
-  z-index: 10;
-  content: "\e816" !important;
-  position: absolute;
-  top: 6px;
-  right: 5px;
-  width: 24px !important;
-  height: 24px !important;
-  font-size: 24px !important;
-  line-height: 1 !important;
-  border-radius: 100%;
-  background-color: transparent !important;
-  animation: loader-spin 0.75s linear infinite;
-  color: inherit !important;
-  pointer-events: none;
-}
-
-body.theme-hello-elementor div.woocommerce button.fc-loading,
-body.theme-hello-elementor div.woocommerce .button.fc-loading {
-  position: relative;
-  color: transparent !important;
-}
-
-body.theme-hello-elementor div.woocommerce button.fc-loading:after,
-body.theme-hello-elementor div.woocommerce .button.fc-loading:after {
-  display: inline-block;
-  font-family: "fluid-checkout-icons" !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  vertical-align: middle;
-  content: "\e816";
-  width: 24px;
-  height: 24px;
-  font-size: 24px;
-  z-index: 10;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  right: 10px;
-  width: 24px;
-  height: 24px;
-  font-size: 24px;
-  line-height: 1;
-  border-radius: 100%;
-  background-color: transparent;
-  animation: loader-spin-centered 0.75s linear infinite;
-  color: #fff !important;
-  pointer-events: none;
 }

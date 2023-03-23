@@ -1,3 +1,7 @@
+:root {
+  --fluidcheckout--checkout-field--height: 50px;
+}
+
 body.theme-woostify div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) textarea,
 body.theme-woostify div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) select,
 body.theme-woostify div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=email],
@@ -29,7 +33,7 @@ body.theme-woostify div.woocommerce form .form-row.woocommerce-validated:not([cl
   font-size: 24px;
   z-index: 10;
   position: absolute;
-  top: 13px;
+  top: calc(( var(--fluidcheckout--checkout-field--height, 45.625px) / 2 ) - ( 24px / 2 ));
   left: 5px;
   border-radius: 100%;
   background-color: rgba(255, 255, 255, 0.75);
@@ -60,13 +64,13 @@ body.theme-woostify div.woocommerce form .form-row span.select2-container {
 
 body.theme-woostify div.woocommerce form .form-row .select2-selection {
   height: auto;
-  min-height: 48px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
   border-radius: 2px;
   line-height: 0;
 }
 
 body.theme-woostify div.woocommerce form .form-row .select2-selection__rendered {
-  min-height: 48px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
   border-radius: 2px;
 }
 
@@ -75,8 +79,8 @@ body.theme-woostify div.woocommerce form .form-row .select2-selection .select2-s
   top: 0;
   margin-top: 0;
   height: auto;
-  min-height: 48px;
-  line-height: 48px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
   transform: none;
 }
 
@@ -87,7 +91,7 @@ body.theme-woostify div.woocommerce form .form-row .select2-selection--single {
 body.theme-woostify div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   padding-top: 0;
   padding-bottom: 0;
-  line-height: 48px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
 }
 
 body.theme-woostify div.woocommerce form .form-row .select2-selection--multiple {
@@ -96,26 +100,26 @@ body.theme-woostify div.woocommerce form .form-row .select2-selection--multiple 
 
 body.theme-woostify div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
   padding-bottom: 5px;
-  min-height: 38px;
-  line-height: 38px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px-10px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px-10px;
   white-space: normal;
 }
 
 body.theme-woostify div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
   margin-top: 5px;
-  line-height: 48px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
   overflow: hidden;
 }
 
 body.theme-woostify div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
   margin-top: 5px;
-  min-height: 48px;
-  line-height: 48px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
 }
 
 body.theme-woostify div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   margin-top: 0;
-  height: 38px;
+  height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px-10px;
   min-height: auto;
 }
 
@@ -125,76 +129,4 @@ body.theme-woostify div.woocommerce form .form-row .select2-selection .select2-s
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.shipping td {
   text-align: left !important;
-}
-
-body.theme-woostify div.woocommerce .form-row.fc-loading .woocommerce-input-wrapper:after {
-  display: inline-block;
-  font-family: "fluid-checkout-icons" !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  vertical-align: middle;
-  content: "\e816";
-  width: 24px;
-  height: 24px;
-  font-size: 24px;
-  z-index: 10;
-  content: "\e816" !important;
-  position: absolute;
-  top: 13px;
-  left: 5px;
-  width: 24px !important;
-  height: 24px !important;
-  font-size: 24px !important;
-  line-height: 1 !important;
-  border-radius: 100%;
-  background-color: transparent !important;
-  animation: loader-spin 0.75s linear infinite;
-  color: inherit !important;
-  pointer-events: none;
-}
-
-body.theme-woostify div.woocommerce button.fc-loading,
-body.theme-woostify div.woocommerce .button.fc-loading {
-  position: relative;
-  color: transparent !important;
-}
-
-body.theme-woostify div.woocommerce button.fc-loading:after,
-body.theme-woostify div.woocommerce .button.fc-loading:after {
-  display: inline-block;
-  font-family: "fluid-checkout-icons" !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  vertical-align: middle;
-  content: "\e816";
-  width: 24px;
-  height: 24px;
-  font-size: 24px;
-  z-index: 10;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  left: 10px;
-  width: 24px;
-  height: 24px;
-  font-size: 24px;
-  line-height: 1;
-  border-radius: 100%;
-  background-color: transparent;
-  animation: loader-spin-centered 0.75s linear infinite;
-  color: #fff !important;
-  pointer-events: none;
 }

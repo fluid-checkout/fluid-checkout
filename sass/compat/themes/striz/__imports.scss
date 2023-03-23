@@ -9,10 +9,21 @@ $_select2-border-radius:               0 !default;
 
 
 
+
+// ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	--fluidcheckout--checkout-field--height: #{ remsize( 5.3rem ) };
+}
+
+
+
+
+
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
 	"../../partials/checkout-validation-check",
-	"checkout-payment-methods",
-	"../../partials/loading-indicator";
+	"checkout-payment-methods";

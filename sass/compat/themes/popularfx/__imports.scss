@@ -10,11 +10,21 @@ $_select2-border-radius:               remsize( .3rem ) !default;
 
 
 // ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	--fluidcheckout--checkout-field--height: #{ remsize( 4rem ) };
+}
+
+
+
+
+
+// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
 	"../../partials/checkout-validation-check",
 	"checkout-validation",
 	"../../partials/woocommerce-form-fields-select2",
-	"woocommerce-form-fields-select2",
-	"../../partials/loading-indicator";
+	"woocommerce-form-fields-select2";
