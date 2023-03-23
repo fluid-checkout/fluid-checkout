@@ -9,7 +9,7 @@
 
 .fc-wrapper .wc-stripe-link-icon {
   z-index: 3;
-  top: calc(var(--fluidcheckout--checkout-field--height, 45.625px) / 2);
+  top: calc(var(--fluidcheckout--field--height, 45.625px) / 2);
   right: 34px;
 }
 

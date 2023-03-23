@@ -7,7 +7,7 @@ $_icon-name:                                                    'i-loader-circle
 $_loader-animation-name:                                        loader-spin !default;
 $_loader-animation-name--button:                                loader-spin-centered !default;
 $_loader-animation-speed:                                       $global-animation-duration-slow !default;
-$_loader-icon-top:                                              calc( ( #{ $checkout-field-height } / 2 ) - ( #{ $icon-size } / 2 ) ) !default;
+$_loader-icon-top:                                              calc( ( #{ $form-field-height } / 2 ) - ( #{ $icon-size } / 2 ) ) !default;
 $_loader-icon-horizontal-spacing:                               remsize( .5rem ) !default;
 
 

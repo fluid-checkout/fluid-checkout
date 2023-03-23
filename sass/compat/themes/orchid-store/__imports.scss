@@ -4,8 +4,6 @@
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-orchid-store' !default;
 $_field-height:                        remsize( 4.6rem ) !default;
-$_select2-border-width:                remsize( .2rem ) !default;
-$_select2-border-radius:               0 !default;
 
 
 
@@ -15,7 +13,8 @@ $_select2-border-radius:               0 !default;
 // DEFINE CSS VARIABLES
 // ------------------------------------
 :root {
-	--fluidcheckout--checkout-field--height: #{ remsize( 4.6rem ) };
+	--fluidcheckout--field--height: #{ remsize( 4.6rem ) };
+	--fluidcheckout--field--border-width: #{ remsize( .2rem ) };
 }
 
 
@@ -32,5 +31,4 @@ $_select2-border-radius:               0 !default;
 	"../../partials/checkout-validation-check",
 	"checkout-validation",
 	"woocommerce-form-fields",
-	"../../partials/woocommerce-form-fields-select2",
 	"woocommerce-form-fields-select2";

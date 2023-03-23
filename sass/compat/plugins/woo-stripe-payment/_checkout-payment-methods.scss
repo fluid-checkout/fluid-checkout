@@ -37,6 +37,6 @@ $_checkout-validation-check-horizontal-spacing:                 remsize( .5rem )
 
 .fc-wrapper .wc-stripe-link-icon {
 	z-index: z( 'default' ) + 2;
-	top: calc( $checkout-field-height / 2 );
+	top: calc( $form-field-height / 2 );
 	#{ $alignment-right }: #{ $_checkout-validation-check-horizontal-spacing + $icon-size + $global-spacing-tiny };
 }

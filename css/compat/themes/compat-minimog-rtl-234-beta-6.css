@@ -1,5 +1,6 @@
 :root {
-  --fluidcheckout--checkout-field--height: 45px;
+  --fluidcheckout--field--height: 45px;
+  --fluidcheckout--field--border-radius: 3px;
 }
 
 body.theme-minimog .wc_payment_methods li + li {
@@ -37,7 +38,7 @@ body.theme-minimog div.woocommerce form .form-row.woocommerce-validated:not([cla
   font-size: 24px;
   z-index: 10;
   position: absolute;
-  top: calc(( var(--fluidcheckout--checkout-field--height, 45.625px) / 2 ) - ( 24px / 2 ));
+  top: calc(( var(--fluidcheckout--field--height, 45.625px) / 2 ) - ( 24px / 2 ));
   left: 5px;
   border-radius: 100%;
   background-color: rgba(255, 255, 255, 0.75);

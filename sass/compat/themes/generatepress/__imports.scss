@@ -4,7 +4,6 @@
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-generatepress' !default;
 $_field-height:                        remsize( 4.2rem ) !default;
-$_select2-border-radius:               0 !default;
 
 
 
@@ -14,7 +13,7 @@ $_select2-border-radius:               0 !default;
 // DEFINE CSS VARIABLES
 // ------------------------------------
 :root {
-	--fluidcheckout--checkout-field--height: #{ remsize( 4.2rem ) };
+	--fluidcheckout--field--height: #{ remsize( 4.2rem ) };
 }
 
 
@@ -25,5 +24,4 @@ $_select2-border-radius:               0 !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"../../partials/checkout-validation-check",
-	"../../partials/woocommerce-form-fields-select2";
+	"../../partials/checkout-validation-check";

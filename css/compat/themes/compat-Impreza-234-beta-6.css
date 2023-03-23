@@ -1,5 +1,5 @@
 :root {
-  --fluidcheckout--checkout-field--height: 44.8px;
+  --fluidcheckout--field--height: 44.8px;
 }
 
 body.theme-Impreza:not(.has-checkout-header).theme-Impreza div.woocommerce {
@@ -37,7 +37,7 @@ body.theme-Impreza div.woocommerce form .form-row.woocommerce-validated:not([cla
   font-size: 24px;
   z-index: 10;
   position: absolute;
-  top: calc(( var(--fluidcheckout--checkout-field--height, 45.625px) / 2 ) - ( 24px / 2 ));
+  top: calc(( var(--fluidcheckout--field--height, 45.625px) / 2 ) - ( 24px / 2 ));
   right: 5px;
   border-radius: 100%;
   background-color: rgba(255, 255, 255, 0.75);

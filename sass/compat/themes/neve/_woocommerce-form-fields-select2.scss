@@ -25,6 +25,6 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection
 
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
-	padding-#{ $alignment-left }: $_select2-inner-spacing !important; // Needed to override theme styles set with `!important`
-	padding-bottom: $_select2-inner-spacing !important; // Needed to override theme styles set with `!important`
+	padding-#{ $alignment-left }: $form-field-select2-inner-spacing !important; // Needed to override theme styles set with `!important`
+	padding-bottom: $form-field-select2-inner-spacing !important; // Needed to override theme styles set with `!important`
 }

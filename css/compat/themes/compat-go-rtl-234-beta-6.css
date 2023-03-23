@@ -1,5 +1,7 @@
 :root {
-  --fluidcheckout--checkout-field--height: 52.18px;
+  --fluidcheckout--field--height: 52.18px;
+  --fluidcheckout--field--border-radius: 4px;
+  --fluidcheckout--field--border-width: 2px;
 }
 
 body.theme-go .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:before {
@@ -41,7 +43,7 @@ body.theme-go div.woocommerce form .form-row.woocommerce-validated:not([class*=w
   font-size: 24px;
   z-index: 10;
   position: absolute;
-  top: calc(( var(--fluidcheckout--checkout-field--height, 45.625px) / 2 ) - ( 24px / 2 ));
+  top: calc(( var(--fluidcheckout--field--height, 45.625px) / 2 ) - ( 24px / 2 ));
   left: 5px;
   border-radius: 100%;
   background-color: rgba(255, 255, 255, 0.75);
@@ -60,71 +62,6 @@ body.theme-go div.woocommerce form .form-row.woocommerce-validated:not([class*=w
 .woocommerce-terms-and-conditions-wrapper body.theme-go div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):after, body.theme-go div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).create-account:after {
   content: "";
   display: none;
-}
-
-body.theme-go div.woocommerce form .form-row span.select2-container {
-  height: auto;
-}
-
-body.theme-go div.woocommerce form .form-row .select2-selection {
-  height: auto;
-  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-4px;
-  border-radius: 4px;
-  line-height: 0;
-}
-
-body.theme-go div.woocommerce form .form-row .select2-selection__rendered {
-  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-4px;
-  border-radius: 4px;
-}
-
-body.theme-go div.woocommerce form .form-row .select2-selection .select2-selection__clear,
-body.theme-go div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-  top: 0;
-  margin-top: 0;
-  height: auto;
-  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-4px;
-  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-4px;
-  transform: none;
-}
-
-body.theme-go div.woocommerce form .form-row .select2-selection--single {
-  padding: 0;
-}
-
-body.theme-go div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
-  padding-top: 0;
-  padding-bottom: 0;
-  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-4px;
-}
-
-body.theme-go div.woocommerce form .form-row .select2-selection--multiple {
-  border-width: 2px;
-}
-
-body.theme-go div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
-  padding-bottom: 5px;
-  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-4px-10px;
-  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-4px-10px;
-  white-space: normal;
-}
-
-body.theme-go div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
-  margin-top: 5px;
-  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-4px;
-  overflow: hidden;
-}
-
-body.theme-go div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
-  margin-top: 5px;
-  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-4px;
-  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-4px;
-}
-
-body.theme-go div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
-  margin-top: 0;
-  height: var(--fluidcheckout--checkout-field--height, 45.625px)-4px-10px;
-  min-height: auto;
 }
 
 body.theme-go div.woocommerce form .form-row .select2-selection--single,

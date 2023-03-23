@@ -4,7 +4,6 @@
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-phlox-pro' !default;
 $_field-height:                        remsize( 5.52rem ) !default;
-$_select2-border-radius:               0 !default;
 
 
 
@@ -14,7 +13,7 @@ $_select2-border-radius:               0 !default;
 // DEFINE CSS VARIABLES
 // ------------------------------------
 :root {
-	--fluidcheckout--checkout-field--height: #{ remsize( 5.52rem ) };
+	--fluidcheckout--field--height: #{ remsize( 5.52rem ) };
 }
 
 
@@ -31,5 +30,4 @@ $_select2-border-radius:               0 !default;
 	"checkout-validation",
 	"checkout-place-order",
 	"woocommerce-form-fields",
-	"../../partials/woocommerce-form-fields-select2",
 	"woocommerce-form-fields-select2";
