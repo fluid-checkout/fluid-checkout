@@ -61,11 +61,17 @@ body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-inside {
 
 .fc-sidebar__inner {
 	z-index: z( 'above' );
+	width: 100%;
 
 	@media (#{$bp-larger-than-desktop}) {
 		position: relative;
-		width: 100%;
 		padding-top: $global-spacing-tiny;
+	}
+}
+// Sticky state on mobile
+.fc-wrapper .fc-sidebar .fc-sidebar__inner {
+	@media (#{$bp-smaller-than-desktop}) {
+		position: static !important;
 	}
 }
 // With admin bar

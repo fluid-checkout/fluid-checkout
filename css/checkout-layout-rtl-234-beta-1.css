@@ -312,12 +312,18 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
 
 .fc-sidebar__inner {
   z-index: 10;
+  width: 100%;
 }
 @media (min-width: 1000px) {
   .fc-sidebar__inner {
     position: relative;
-    width: 100%;
     padding-top: 5px;
+  }
+}
+
+@media (max-width: 999px) {
+  .fc-wrapper .fc-sidebar .fc-sidebar__inner {
+    position: static !important;
   }
 }
 
