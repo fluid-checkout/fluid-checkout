@@ -569,6 +569,7 @@ $checkout-field-description-color:                    $grey !default;
 $checkout-field-description-background-color:         transparent !default;
 $checkout-field-description-font-size:                $font-size-extra-small !default;
 $checkout-field-description-font-size--large-screen:  $font-size-extra-small !default;
+$checkout-field-height:                               var( --fluidcheckout--checkout-field--height, remsize( 4.5625rem ) ) !default;
 
 $checkout-message-error-icon:                         'i-alert-octagon' !default;
 $checkout-message-error-icon-size:                    $icon-size-small !default;

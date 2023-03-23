@@ -1,3 +1,7 @@
+:root {
+  --fluidcheckout--checkout-field--height: 50.5px;
+}
+
 body.theme-martfury .fc-content.container {
   padding-left: 20px;
   padding-right: 20px;
@@ -21,13 +25,13 @@ body.theme-martfury div.woocommerce form .form-row span.select2-container {
 
 body.theme-martfury div.woocommerce form .form-row .select2-selection {
   height: auto;
-  min-height: 48.5px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
   border-radius: 0;
   line-height: 0;
 }
 
 body.theme-martfury div.woocommerce form .form-row .select2-selection__rendered {
-  min-height: 48.5px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
   border-radius: 0;
 }
 
@@ -36,8 +40,8 @@ body.theme-martfury div.woocommerce form .form-row .select2-selection .select2-s
   top: 0;
   margin-top: 0;
   height: auto;
-  min-height: 48.5px;
-  line-height: 48.5px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
   transform: none;
 }
 
@@ -48,7 +52,7 @@ body.theme-martfury div.woocommerce form .form-row .select2-selection--single {
 body.theme-martfury div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   padding-top: 0;
   padding-bottom: 0;
-  line-height: 48.5px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
 }
 
 body.theme-martfury div.woocommerce form .form-row .select2-selection--multiple {
@@ -57,26 +61,26 @@ body.theme-martfury div.woocommerce form .form-row .select2-selection--multiple 
 
 body.theme-martfury div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
   padding-bottom: 5px;
-  min-height: 38.5px;
-  line-height: 38.5px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px-10px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px-10px;
   white-space: normal;
 }
 
 body.theme-martfury div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
   margin-top: 5px;
-  line-height: 48.5px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
   overflow: hidden;
 }
 
 body.theme-martfury div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
   margin-top: 5px;
-  min-height: 48.5px;
-  line-height: 48.5px;
+  min-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
+  line-height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px;
 }
 
 body.theme-martfury div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   margin-top: 0;
-  height: 38.5px;
+  height: var(--fluidcheckout--checkout-field--height, 45.625px)-2px-10px;
   min-height: auto;
 }
 
@@ -99,12 +103,12 @@ body.theme-martfury div.woocommerce .form-row.fc-loading .woocommerce-input-wrap
   z-index: 10;
   content: "\e816" !important;
   position: absolute;
-  top: 13.25px;
+  top: calc(( var(--fluidcheckout--checkout-field--height, 45.625px) / 2 ) - ( 24px / 2 ));
   right: 5px;
   width: 24px !important;
   height: 24px !important;
   font-size: 24px !important;
-  line-height: 1 !important;
+  line-height: 24px !important;
   border-radius: 100%;
   background-color: transparent !important;
   animation: loader-spin 0.75s linear infinite;

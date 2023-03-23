@@ -1,13 +1,10 @@
-@use "sass:math" as math;
-
 // ------------------------------------
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
 
 $_body-page-selector:                                           '.woocommerce-checkout' !default;
 $_body-theme-selector:                                          '' !default;
-$_field-height:                                                 remsize( 4.5625rem ) !default;
-$_checkout-validation-check-top:                                math.div( $_field-height, 2 ) - math.div( $icon-size, 2 ) !default;
+$_checkout-validation-check-top:                                calc( ( #{ $checkout-field-height } / 2 ) - ( #{ $icon-size } / 2 ) ) !default;
 $_checkout-validation-check-horizontal-spacing:                 remsize( .5rem ) !default;
 $_checkout-validation-check-horizontal-spacing--select:         remsize( 1.5rem ) !default;
 $_checkout-validation-check-horizontal-spacing--select-alt:     remsize( 2.5rem ) !default;

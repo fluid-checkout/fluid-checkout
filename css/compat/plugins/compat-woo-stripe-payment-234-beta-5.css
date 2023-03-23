@@ -7,6 +7,12 @@
   background-color: #fff;
 }
 
+.fc-wrapper .wc-stripe-link-icon {
+  z-index: 3;
+  top: calc(var(--fluidcheckout--checkout-field--height, 45.625px) / 2);
+  right: 34px;
+}
+
 body.has-payment-method-selected--payment_method_stripe_googlepay .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar,
 body.has-payment-method-selected--payment_method_stripe_applepay .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar,
 body.has-payment-method-selected--payment_method_stripe_payment_request .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar,

@@ -1,6 +1,12 @@
+@use "sass:math" as math;
+
 // ------------------------------------
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
+
+$_checkout-validation-check-horizontal-spacing:                 remsize( .5rem ) !default;
+
+
 
 .fc-wrapper #payment ul.payment_methods {
 	
@@ -25,4 +31,12 @@
 
 .fc-wrapper .payment_box.payment_method_stripe_ideal #wc_stripe_local_payment_stripe_ideal {
 	background-color: $white;
+}
+
+
+
+.fc-wrapper .wc-stripe-link-icon {
+	z-index: z( 'default' ) + 2;
+	top: calc( $checkout-field-height / 2 );
+	#{ $alignment-right }: #{ $_checkout-validation-check-horizontal-spacing + $icon-size + $global-spacing-tiny };
 }

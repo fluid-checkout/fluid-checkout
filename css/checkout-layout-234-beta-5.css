@@ -719,12 +719,12 @@ body div.woocommerce .form-row.fc-loading .woocommerce-input-wrapper:after {
   z-index: 10;
   content: "\e816" !important;
   position: absolute;
-  top: 10.8125px;
+  top: calc(( var(--fluidcheckout--checkout-field--height, 45.625px) / 2 ) - ( 24px / 2 ));
   right: 5px;
   width: 24px !important;
   height: 24px !important;
   font-size: 24px !important;
-  line-height: 1 !important;
+  line-height: 24px !important;
   border-radius: 100%;
   background-color: transparent !important;
   animation: loader-spin 0.75s linear infinite;
