@@ -1,5 +1,5 @@
 /**
- * Handle phone fields using `intl-tel-input` component.
+ * Save additional terms checkboxes states between when updating checkout fragments.
  */
 
 (function (root, factory) {
