@@ -413,7 +413,7 @@ jQuery( function( $ ) {
 			}
 		},
 		// CHANGE: Add function to remove loading classes from elements after updating the checkout fragments
-		maybe_stop_form_row_loading_indicator: function() {
+		maybe_stop_form_row_loading_indicators: function() {
 			var maybeLoadingFields = document.querySelectorAll( _settings.checkoutLoadingInputSelector );
 			for ( var i = 0; i < maybeLoadingFields.length; i++ ) {
 				var input = maybeLoadingFields[ i ];
@@ -837,11 +837,11 @@ jQuery( function( $ ) {
 					$( document.body ).trigger( 'updated_checkout', [ data ] );
 
 					// CHANGE: Maybe remove loading class from form rows when completing the ajax request
-					wc_checkout_form.maybe_stop_form_row_loading_indicator();
+					wc_checkout_form.maybe_stop_form_row_loading_indicators();
 				},
 				// CHANGE: Maybe remove loading class from form rows when completing the ajax request
 				error: function() {
-					wc_checkout_form.maybe_stop_form_row_loading_indicator();
+					wc_checkout_form.maybe_stop_form_row_loading_indicators();
 				}
 				// CHANGE: END - Maybe remove loading class from form rows when completing the ajax request
 
