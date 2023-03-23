@@ -8,7 +8,7 @@
 	} else if ( typeof exports === 'object' ) {
 		module.exports = factory(root);
 	} else {
-		root.UpsPickupLocationHandler = factory(root);
+		root.WooAdditionalTermsCheckboxStates = factory(root);
 	}
 })(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
@@ -19,6 +19,10 @@
 
 	var _hasInitialized = false;
 	var _publicMethods = {};
+	var _settings = {
+		additionalTermsCheckboxSelector: '.woocommerce-terms-and-conditions-wrapper.woo-additional-terms input[type="checkbox"]',
+	};
+	var _checkboxStates = {};
 
 
 
@@ -74,13 +78,36 @@
 
 
 	/**
-	 * Trigger updating the checkout form fragments after a small delay, to let the other scripts fill up the necessary fields.
+	 * Save the additional checkout states to a local variable.
 	 */
-	var delayedTriggerUpdateCheckout = function() {
-		requestAnimationFrame( function() {
-			// Trigger update checkout
-			$( document.body ).trigger( 'update_checkout' );
-		} );
+	var saveCheckboxesStates = function() {
+		// Clear checkboxes states
+		_checkboxStates = {};
+
+		// Get all additional terms checkboxes
+		var checkboxes = document.querySelectorAll( _settings.additionalTermsCheckboxSelector );
+		
+		// Iterate and save additional terms checkboxes states
+		for ( var i = 0; i < checkboxes.length; i++ ) {
+			var checkbox = checkboxes[ i ];
+			_checkboxStates[ checkbox.name ] = checkbox.checked;
+		}
+	}
+
+	/**
+	 * Restore the additional checkboxes states to a local variable.
+	 */
+	var restoreCheckboxesStates = function() {
+		// Get all additional terms checkboxes
+		var checkboxes = document.querySelectorAll( _settings.additionalTermsCheckboxSelector );
+		
+		// Iterate and restore additional terms checkboxes states
+		for ( var i = 0; i < checkboxes.length; i++ ) {
+			var checkbox = checkboxes[ i ];
+			if ( _checkboxStates[ checkbox.name ] ) {
+				checkbox.checked = _checkboxStates[ checkbox.name ];
+			}
+		}
 	}
 
 
@@ -93,7 +120,8 @@
 
 		// Set jQuery event listeners
 		if ( _hasJQuery ) {
-			$( document.body ).on( 'pickups-after-choosen', delayedTriggerUpdateCheckout );
+			$( document.body ).on( 'fc_checkout_fragments_replace_before', saveCheckboxesStates );
+			$( document.body ).on( 'fc_checkout_fragments_replace_after', restoreCheckboxesStates );
 		}
 
 		_hasInitialized = true;

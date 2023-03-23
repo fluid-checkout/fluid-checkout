@@ -19,8 +19,6 @@
 
 	var _hasInitialized = false;
 	var _publicMethods = {};
-	var _settings = {
-	};
 
 
 

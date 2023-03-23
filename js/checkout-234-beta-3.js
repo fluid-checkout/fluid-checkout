@@ -717,6 +717,9 @@ jQuery( function( $ ) {
 
 					// Always update the fragments
 					if ( data && data.fragments ) {
+						// CHANGE: Trigger custom event before fragments are replaced.
+						$( document.body ).trigger( 'fc_checkout_fragments_replace_before', [ data ] );
+
 						// CHANGE: Try to remove select2 components from existing fields before replacing fragments
 						$( 'select.country_select, select.state_select' ).each( function() {
 							var field = $( this );
@@ -765,6 +768,9 @@ jQuery( function( $ ) {
 							$( key ).unblock();
 						} );
 						wc_checkout_form.fragments = data.fragments;
+
+						// CHANGE: Trigger custom event after fragments are replaced.
+						$( document.body ).trigger( 'fc_checkout_fragments_replace_after', [ data ] );
 					}
 
 					// CHANGE: Re-set focus to the element with focus previously to updating fragments
