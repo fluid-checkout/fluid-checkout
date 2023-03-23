@@ -196,9 +196,10 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * @param   array  $expansible_section_args  The attributes for the coupon code expansible section. Will use default values if attributes are not passed in.
 	 */
 	public function output_substep_coupon_codes_fields( $field_args = array(), $expansible_section_args = array(), $output_handle = true, $section_key = null ) {
-		$coupon_code_field_label = apply_filters( 'fc_coupon_code_field_label', __( 'Coupon code', 'fluid-checkout' ) );
+		$coupon_code_field_label       = apply_filters( 'fc_coupon_code_field_label', __( 'Coupon code', 'fluid-checkout' ) );
+		$coupon_code_field_description = apply_filters( 'fc_coupon_code_field_description', '' );
 		$coupon_code_field_placeholder = apply_filters( 'fc_coupon_code_field_placeholder', __( 'Enter your code here', 'fluid-checkout' ) );
-		$coupon_code_button_label = apply_filters( 'fc_coupon_code_button_label', _x( 'Apply', 'Button label for applying coupon codes', 'fluid-checkout' ) );
+		$coupon_code_button_label      = apply_filters( 'fc_coupon_code_button_label', _x( 'Apply', 'Button label for applying coupon codes', 'fluid-checkout' ) );
 
 		// Maybe define section key
 		$section_id = 'coupon_code';
@@ -213,11 +214,14 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 			'fc_skip_server_validation'  => true,
 			'class'                      => array( 'form-row-wide' ),
 			'placeholder'                => $coupon_code_field_placeholder,
+			'description'                => $coupon_code_field_description,
 			'custom_attributes'          => array(
 				'aria-label'             => $coupon_code_field_label,
 				'data-autofocus'         => true,
 			),
 		), $field_args );
+
+		
 
 		// Expansible section args
 		$coupon_code_expansible_args = array_merge( array(

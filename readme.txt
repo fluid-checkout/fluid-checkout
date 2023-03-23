@@ -378,6 +378,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Added new filter `fc_coupon_code_field_description` to change or add a description below the coupon code field.
+
 = 2.3.3 - 2023-03-22 =
 
 IMPORTANT FIX: Critical error with the checkout steps count when shipping is not needed for the order, and the multi-step layout is used.
