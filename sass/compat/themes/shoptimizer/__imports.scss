@@ -5,8 +5,6 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-shoptimizer' !default;
-$_field-height:                        remsize( 4rem ) !default;
-$_select2-border-radius:               remsize( .5rem ) !default;
 
 
 
@@ -16,7 +14,8 @@ $_select2-border-radius:               remsize( .5rem ) !default;
 // DEFINE CSS VARIABLES
 // ------------------------------------
 :root {
-	--fluidcheckout--checkout-field--height: #{ remsize( 4rem ) };
+	--fluidcheckout--field--height: #{ remsize( 4rem ) };
+	--fluidcheckout--field--border-radius: #{ remsize( .5rem ) };
 }
 
 
@@ -29,9 +28,7 @@ $_select2-border-radius:               remsize( .5rem ) !default;
 @import
 	"z-index",
 	"checkout-place-order",
-	"../../partials/checkout-validation-check",
 	"woocommerce-form-fields",
 	"order-summary",
 	"order-summary--germanized",
-	"../../partials/woocommerce-form-fields-select2",
 	"woocommerce-form-fields-select2";

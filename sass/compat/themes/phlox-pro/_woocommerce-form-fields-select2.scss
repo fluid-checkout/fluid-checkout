@@ -12,7 +12,6 @@ body#{ $_body-theme-selector } .fc-wrapper .select2-container .select2-selection
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
 	#{ $alignment-right }: 0;
 }
-
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__arrow b {
 	position: absolute;
 }

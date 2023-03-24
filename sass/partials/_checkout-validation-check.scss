@@ -1,24 +1,8 @@
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-
-$_body-page-selector:                                           '.woocommerce-checkout' !default;
-$_body-theme-selector:                                          '' !default;
-$_checkout-validation-check-top:                                calc( ( #{ $checkout-field-height } / 2 ) - ( #{ $icon-size } / 2 ) ) !default;
-$_checkout-validation-check-horizontal-spacing:                 remsize( .5rem ) !default;
-$_checkout-validation-check-horizontal-spacing--select:         remsize( 1.5rem ) !default;
-$_checkout-validation-check-horizontal-spacing--select-alt:     remsize( 2.5rem ) !default;
-$_checkout-validation-check-horizontal-spacing--password:       remsize( 2.5rem ) !default;
-
-
-
-
-
-// ------------------------------------
 // CHECKOUT FIELD VALIDATION
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
 
 	textarea,
 	select,
