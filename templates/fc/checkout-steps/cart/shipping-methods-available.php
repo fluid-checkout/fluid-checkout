@@ -95,6 +95,9 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 		<?php endif; ?>
 	<?php endif; ?>
 
+	<?php // CHANGE: Output the current shipping method to detect changes to this value later ?>
+	<input type="hidden" name="fc_previous_selected_shipping_method" value="<?php echo esc_attr( $chosen_method ); ?>" />
+
 </div>
 
 <?php // CHANGE: Remove shipping totals table row closing elements ?>
