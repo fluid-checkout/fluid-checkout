@@ -1,19 +1,8 @@
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-
-$_body-page-selector:                                           '.woocommerce-checkout' !default;
-$_body-theme-selector:                                          '' !default;
-
-
-
-
-
-// ------------------------------------
 // CHECKOUT FIELD VALIDATION
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
 
 	textarea,
 	select,
