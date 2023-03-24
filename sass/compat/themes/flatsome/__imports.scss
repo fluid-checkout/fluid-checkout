@@ -15,6 +15,10 @@ $_body-theme-selector:                 '.theme-flatsome' !default;
 	--fluidcheckout--field--height: #{ remsize( 3.891rem ) };
 	--fluidcheckout--field--border-radius: #{ remsize( .3rem ) };
 }
+:root body.fl-labels {
+	--fluidcheckout--field--height: #{ remsize( 4.669rem ) };
+}
+
 
 
 

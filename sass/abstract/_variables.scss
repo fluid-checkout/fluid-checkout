@@ -614,7 +614,7 @@ $checkout-field-group-padding--large-screen:          $global-spacing-small !def
 // ----------------------------------------
 // CHECKOUT VALIDATION
 
-$_checkout-validation-check-top:                                var( --fluidcheckout--validation-check--top, calc( ( #{ $form-field-height } / 2 ) - ( #{ $icon-size } / 2 ) ) ) !default;
+$_checkout-validation-check-top:                                calc( ( #{ $form-field-height } / 2 ) - ( #{ $icon-size } / 2 ) ) !default;
 $_checkout-validation-check-horizontal-spacing:                 var( --fluidcheckout--validation-check--horizontal-spacing, remsize( .5rem ) ) !default;
 $_checkout-validation-check-horizontal-spacing--select:         var( --fluidcheckout--validation-check--horizontal-spacing--select, remsize( 1.5rem ) ) !default;
 $_checkout-validation-check-horizontal-spacing--select-alt:     var( --fluidcheckout--validation-check--horizontal-spacing--select-alt, remsize( 2.5rem ) ) !default;

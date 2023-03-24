@@ -3,6 +3,10 @@
   --fluidcheckout--field--border-radius: 3px;
 }
 
+:root body.fl-labels {
+  --fluidcheckout--field--height: 46.69px;
+}
+
 body.theme-flatsome {
   background-color: #fff;
 }
