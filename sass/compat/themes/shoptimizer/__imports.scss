@@ -5,7 +5,6 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-shoptimizer' !default;
-$_field-height:                        remsize( 4rem ) !default;
 
 
 
@@ -29,7 +28,6 @@ $_field-height:                        remsize( 4rem ) !default;
 @import
 	"z-index",
 	"checkout-place-order",
-	"../../partials/checkout-validation-check",
 	"woocommerce-form-fields",
 	"order-summary",
 	"order-summary--germanized",

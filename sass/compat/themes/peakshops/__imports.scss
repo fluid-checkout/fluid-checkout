@@ -3,7 +3,6 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-peakshops' !default;
-$_field-height:                        remsize( 4rem ) !default;
 
 
 
@@ -14,6 +13,8 @@ $_field-height:                        remsize( 4rem ) !default;
 // ------------------------------------
 :root {
 	--fluidcheckout--field--height: #{ remsize( 4rem ) };
+
+	--fluidcheckout--validation-check--horizontal-spacing--select: #{ remsize( 3rem ) };
 }
 
 
@@ -25,5 +26,4 @@ $_field-height:                        remsize( 4rem ) !default;
 // ------------------------------------
 @import
 	"checkout-content-area",
-	"../../partials/checkout-validation-check",
 	"checkout-validation";

@@ -3,7 +3,18 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-riode' !default;
-$_fuekd-height:                        remsize( 4.55rem ) !default;
+
+
+
+
+// ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	--fluidcheckout--field--height: #{ remsize( 4.55rem ) };
+
+	--fluidcheckout--validation-check--horizontal-spacing--select-alt: #{ remsize( 3.2rem ) };
+}
 
 
 
@@ -15,7 +26,5 @@ $_fuekd-height:                        remsize( 4.55rem ) !default;
 @import
 	"checkout-coupon-code",
 	"checkout-payment-methods",
-	"../../partials/checkout-validation-check",
-	"checkout-validation",
 	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2";

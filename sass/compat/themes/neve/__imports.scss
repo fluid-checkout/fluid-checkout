@@ -3,7 +3,6 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-neve' !default;
-$_field-height:                        remsize( 5.12rem ) !default;
 
 
 
@@ -28,5 +27,4 @@ $_field-height:                        remsize( 5.12rem ) !default;
 @import
 	"checkout-coupon-code",
 	"checkout-payment-methods",
-	"../../partials/checkout-validation-check",
 	"woocommerce-form-fields-select2";

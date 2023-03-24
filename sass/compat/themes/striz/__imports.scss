@@ -3,7 +3,6 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-striz' !default;
-$_field-height:                        remsize( 5.3rem ) !default;
 
 
 
@@ -24,5 +23,4 @@ $_field-height:                        remsize( 5.3rem ) !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"../../partials/checkout-validation-check",
 	"checkout-payment-methods";

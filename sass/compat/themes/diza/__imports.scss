@@ -3,7 +3,6 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-diza' !default;
-$_field-height:                        remsize( 4.2rem ) !default;
 
 
 
@@ -15,6 +14,8 @@ $_field-height:                        remsize( 4.2rem ) !default;
 :root {
 	--fluidcheckout--field--height: #{ remsize( 4.2rem ) };
 	--fluidcheckout--field--border-radius: #{ remsize( .3rem ) };
+
+	--fluidcheckout--validation-check--horizontal-spacing--select-alt: #{ remsize( 3rem ) };
 }
 
 
@@ -27,6 +28,5 @@ $_field-height:                        remsize( 4.2rem ) !default;
 @import
 	"woocommerce-form-fields",
 	"checkout-payment-methods",
-	"../../partials/checkout-validation-check",
 	"checkout-validation",
 	"woocommerce-form-fields-select2";

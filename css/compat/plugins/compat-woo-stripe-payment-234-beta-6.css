@@ -10,7 +10,7 @@
 .fc-wrapper .wc-stripe-link-icon {
   z-index: 3;
   top: calc(var(--fluidcheckout--field--height, 45.625px) / 2);
-  right: 34px;
+  right: calc( $_checkout-validation-check-horizontal-spacing + 24px + 5px );
 }
 
 body.has-payment-method-selected--payment_method_stripe_googlepay .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar,

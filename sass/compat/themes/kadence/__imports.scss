@@ -3,7 +3,6 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-kadence' !default;
-$_field-height:                        remsize( 4.28rem ) !default;
 
 
 
@@ -16,13 +15,3 @@ $_field-height:                        remsize( 4.28rem ) !default;
 	--fluidcheckout--field--height: #{ remsize( 4.28rem ) };
 	--fluidcheckout--field--border-radius: #{ remsize( .3rem ) };
 }
-
-
-
-
-
-// ------------------------------------
-// IMPORT STYLES
-// ------------------------------------
-@import
-	"../../partials/checkout-validation-check";

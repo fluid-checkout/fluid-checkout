@@ -3,7 +3,6 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-mrtailor' !default;
-$_field-height:                        remsize( 4.5rem ) !default;
 
 
 
@@ -15,6 +14,10 @@ $_field-height:                        remsize( 4.5rem ) !default;
 :root {
 	--fluidcheckout--field--height: #{ remsize( 4.5rem ) };
 	--fluidcheckout--field--border-radius: #{ remsize( .3rem ) };
+
+	--fluidcheckout--validation-check--horizontal-spacing--select: #{ remsize( 3.2rem ) };
+	--fluidcheckout--validation-check--horizontal-spacing--select-alt: #{ remsize( 3.2rem ) };
+	--fluidcheckout--validation-check--horizontal-spacing--password: #{ remsize( 3.2rem ) };
 }
 
 
@@ -26,6 +29,5 @@ $_field-height:                        remsize( 4.5rem ) !default;
 // ------------------------------------
 @import
 	"order-summary",
-	"../../partials/checkout-validation-check",
-	"checkout-validation",
+	"checkout-validation-check",
 	"woocommerce-form-fields-select2";

@@ -3,7 +3,6 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-onepress' !default;
-$_field-height:                        remsize( 4.1rem ) !default;
 
 
 
@@ -14,15 +13,6 @@ $_field-height:                        remsize( 4.1rem ) !default;
 // ------------------------------------
 :root {
 	--fluidcheckout--field--height: #{ remsize( 4.1rem ) };
+
+	--fluidcheckout--validation-check--horizontal-spacing--password: #{ remsize( 3.2rem ) };
 }
-
-
-
-
-
-// ------------------------------------
-// IMPORT STYLES
-// ------------------------------------
-@import
-	"../../partials/checkout-validation-check",
-	"checkout-validation";

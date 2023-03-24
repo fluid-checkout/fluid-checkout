@@ -125,21 +125,21 @@ body div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerc
   font-size: 24px;
   z-index: 10;
   position: absolute;
-  top: calc(( var(--fluidcheckout--field--height, 45.625px) / 2 ) - ( 24px / 2 ));
-  left: 5px;
+  top: var(--fluidcheckout--validation-check--top, calc(( var(--fluidcheckout--field--height, 45.625px) / 2 ) - ( 24px / 2 )));
+  left: var(--fluidcheckout--validation-check--horizontal-spacing, 5px);
   border-radius: 100%;
   background-color: rgba(255, 255, 255, 0.75);
   color: #007a3d;
   pointer-events: none;
 }
 body div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
-  left: 25px;
+  left: var(--fluidcheckout--validation-check--horizontal-spacing--password, 25px);
 }
 body div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
-  left: 15px;
+  left: var(--fluidcheckout--validation-check--horizontal-spacing--select, 15px);
 }
 body div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection:after {
-  left: 25px;
+  left: var(--fluidcheckout--validation-check--horizontal-spacing--select-alt, 25px);
 }
 .woocommerce-terms-and-conditions-wrapper body div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):after, body div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).create-account:after {
   content: "";

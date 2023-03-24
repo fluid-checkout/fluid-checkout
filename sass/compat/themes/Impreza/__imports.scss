@@ -3,7 +3,6 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-Impreza' !default;
-$_field-height:                        remsize( 4.48rem ) !default;
 
 
 
@@ -24,5 +23,4 @@ $_field-height:                        remsize( 4.48rem ) !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"checkout-content-area",
-	"../../partials/checkout-validation-check";
+	"checkout-content-area";

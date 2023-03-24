@@ -3,7 +3,6 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-oceanwp' !default;
-$_field-height:                        remsize( 4rem ) !default;
 
 
 
@@ -26,6 +25,5 @@ $_field-height:                        remsize( 4rem ) !default;
 // ------------------------------------
 @import
 	"checkout-content-area",
-	"../../partials/checkout-validation-check",
 	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2";

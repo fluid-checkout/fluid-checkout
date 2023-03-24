@@ -3,7 +3,6 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-woodmart' !default;
-$_field-height:                        remsize( 4.2rem ) !default;
 
 
 
@@ -16,6 +15,9 @@ $_field-height:                        remsize( 4.2rem ) !default;
 	--fluidcheckout--field--height: #{ remsize( 4.2rem ) };
 	--fluidcheckout--field--border-radius: #{ remsize( .2rem ) };
 	--fluidcheckout--field--border-width: #{ remsize( .3rem ) };
+
+	--fluidcheckout--validation-check--horizontal-spacing--select: #{ remsize( 2rem ) };
+	--fluidcheckout--validation-check--horizontal-spacing--select-alt: #{ remsize( 3rem ) };
 }
 
 
@@ -28,7 +30,6 @@ $_field-height:                        remsize( 4.2rem ) !default;
 @import
 	"woodmart-checkout-steps-section",
 	"checkout-content-area",
-	"../../partials/checkout-validation-check",
 	"checkout-validation",
 	"checkout-coupon-code",
 	"order-summary",

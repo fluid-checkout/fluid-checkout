@@ -3,7 +3,6 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-Divi' !default;
-$_field-height:                        remsize( 5.1rem ) !default;
 
 
 
@@ -25,6 +24,5 @@ $_field-height:                        remsize( 5.1rem ) !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"../../partials/checkout-validation-check",
 	"woocommerce-form-fields",
 	"order-summary";
