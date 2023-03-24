@@ -706,6 +706,9 @@
 		var placeOrderPlaceholderMain = document.querySelector( _settings.placeOrderPlaceholderMainSelector );
 		var placeOrderPlaceholderSidebar = document.querySelector( _settings.placeOrderPlaceholderSidebarSelector );
 
+		// Bail if elements are not found
+		if ( ! placeOrderMain || ! placeOrderPlaceholderMain || ! placeOrderPlaceholderSidebar ) { return; }
+
 		// Maybe move to sidebar section
 		if ( viewportWidth < 1000 && placeOrderPlaceholderSidebar.parentNode !== placeOrderMain.parentNode ) {
 			placeOrderPlaceholderSidebar.parentNode.insertBefore( placeOrderMain, placeOrderPlaceholderSidebar.nextSibling );
