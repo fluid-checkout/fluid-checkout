@@ -389,6 +389,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Form loading indicator getting stuck after updating the checkout.js file to use native `fetch` function instead of jQuery Ajax.
 * Fixed: Order summary getting sticky state on mobile when it should not, causing other elements to be overlapping and hidden.
 * Fixed: Logic for the filter `fc_force_register_steps`.
+* Fixed: Fatal error when trying to determine if a checkout step should be rendered too early.
 
 = 2.3.3 - 2023-03-22 =
 
