@@ -31,7 +31,15 @@ class FluidCheckout_Elementor extends FluidCheckout {
 	 * @param   bool  $force_register_steps  The widgets manager.
 	 */
 	public function change_force_register_steps( $force_register_steps ) {
-		$force_register_steps = ! empty( $_REQUEST['action'] ) && 'elementor_ajax' === $_REQUEST['action']; // phpcs:ignore
+		// Elementor request
+		if ( ! empty( $_REQUEST['action'] ) && 'elementor' === $_REQUEST['action'] ) { // phpcs:ignore
+			$force_register_steps = true;
+		}
+
+		// Elementor ajax request
+		if ( ! empty( $_REQUEST['action'] ) && 'elementor_ajax' === $_REQUEST['action'] ) { // phpcs:ignore
+			$force_register_steps = true;
+		}
 
 		return $force_register_steps;
 	}

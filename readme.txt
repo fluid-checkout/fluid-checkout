@@ -384,6 +384,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin Woo Additional Terms PRO by MyPreview.
 * Improved: Compatibility with theme Divi, load checkout page preview when editing the page with the Divi Builder editor.
 * Improved: Compatibility with plugin Payment Plugins for Stripe WooCommerce, fixing the position for the Stripe Link logo.
+* Improved: Compatibility with plugin Elementor, display checkout steps when editing the checkout page on Elementor.
 * Improved: Added new JS events `fc_checkout_fragments_replace_before` and `fc_checkout_fragments_replace_after` to allow external scripts to run processes before and after replacing checkout fragments.
 * Improved: Added new filter `fc_coupon_code_field_description` to change or add a description below the coupon code field.
 * Fixed: Form loading indicator getting stuck after updating the checkout.js file to use native `fetch` function instead of jQuery Ajax.
