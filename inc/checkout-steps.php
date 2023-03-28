@@ -1102,7 +1102,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$_checkout_steps = array_values( $_checkout_steps );
 
 		// Set cache
-		if ( count( $_checkout_steps ) > 0 ) {
+		if ( count( $_checkout_steps ) > 0 && ( did_action( 'wp' ) || doing_action( 'wp' ) ) ) {
 			$this->cached_values[ $cache_handle ] = $_checkout_steps;
 		}
 
@@ -1548,7 +1548,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'step_title' => apply_filters( 'fc_step_title_shipping', _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ) ),
 			'priority' => 20,
 			'render_callback' => array( $this, 'output_step_shipping' ),
-			'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
+			// Need to set condition as an anonymous function that returns checks if shipping is needed directly,
+			// because if the step is registered before the object `WC()->cart` is available, the condition will always return false.
+			'render_condition_callback' => function() { return WC()->cart && WC()->cart->needs_shipping(); },
 			'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
 		) );
 
