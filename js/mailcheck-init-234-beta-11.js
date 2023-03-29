@@ -21,6 +21,7 @@
 		mailFieldSelector: '[data-mailcheck]',
 		mailFieldSuggestedClass: 'has-email-suggestion',
 		formFieldWrapperSelector: '.form-row',
+		inputFieldWrapperSelector: '.woocommerce-input-wrapper',
 		suggestionElementSelector: '[data-mailcheck-suggestion]',
 		suggestionApplySelector: '[data-mailcheck-apply]',
 		suggestionValueAttr: 'data-suggestion-value',
@@ -91,7 +92,7 @@
 	var removeSuggestions = function() {
 		if ( _tempTarget === null ) return;
 		
-		var parent = _tempTarget.parentNode;
+		var parent = _tempTarget.closest( _settings.inputFieldWrapperSelector );
 		var suggestions = parent.querySelectorAll( _settings.suggestionElementSelector );
 		
 		for ( var i = 0; i < suggestions.length; i++ ) {
