@@ -700,6 +700,18 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
   margin-bottom: 20px;
 }
 
+@media (max-width: 999px) {
+  body.has-checkout-layout--multi-step.has-fc-sidebar-widget-area-last-step-only:not(.fc-checkout-step-current-last) .fc-wrapper .fc-checkout-order-review__widgets-outside {
+    display: none;
+  }
+}
+
+@media (max-width: 999px) {
+  body.has-checkout-layout--multi-step.has-fc-sidebar-widget-area-last-step-only.fc-checkout-step-current-last .fc-wrapper .fc-checkout-order-review__widgets-outside {
+    display: block;
+  }
+}
+
 body div.woocommerce .form-row.fc-loading .woocommerce-input-wrapper:after {
   display: inline-block;
   font-family: "fluid-checkout-icons" !important;
