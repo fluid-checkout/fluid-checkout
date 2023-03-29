@@ -63,7 +63,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
 
 		// Maybe add extra body class
-		if ( 'yes' === get_option( 'fc_enable_checkout_widget_area_sidebar_latest_step', 'no' ) ) {
+		if ( 'yes' === get_option( 'fc_enable_checkout_widget_area_sidebar_last_step', 'no' ) ) {
 			$classes[] = 'has-fc-sidebar-widget-area-last-step-only';
 		}
 
@@ -201,7 +201,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		if ( ! $is_sidebar_widget ) { return; }
 
 		if ( is_active_sidebar( 'fc_checkout_sidebar_after' ) ) :
-			$additional_classes = 'yes' === get_option( 'fc_enable_checkout_widget_area_sidebar_latest_step', 'no' ) ? 'last-step-only' : '';
+			$additional_classes = 'yes' === get_option( 'fc_enable_checkout_widget_area_sidebar_last_step', 'no' ) ? 'last-step-only' : '';
 			echo '<div class="fc-widget-area fc-checkout-order-review__widgets-outside ' . $additional_classes . '">';
 			dynamic_sidebar( 'fc_checkout_sidebar_after' );
 			echo '</div>';

@@ -360,7 +360,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'desc'              => __( 'Only display checkout sidebar widgets when at the last checkout step on mobile devices', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Applies only to multi-step layouts.', 'fluid-checkout' ),
-						'id'                => 'fc_enable_checkout_widget_area_sidebar_latest_step',
+						'id'                => 'fc_enable_checkout_widget_area_sidebar_last_step',
 						'type'              => 'checkbox',
 						'default'           => 'no',
 						'checkboxgroup'     => 'end',
