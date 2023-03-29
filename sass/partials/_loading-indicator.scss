@@ -35,7 +35,7 @@ body#{ $_body-theme-selector } div.woocommerce .form-row.fc-loading .woocommerce
     border-radius: 100%;
     background-color: transparent !important; // Needed to override validation icon styles as both target the same element
     animation: $_loader-animation-name $_loader-animation-speed linear infinite;
-    color: inherit !important; // Needed to override validation icon styles as both target the same element
+    color: $grey !important; // Needed to override validation icon styles as both target the same element
     pointer-events: none;
 }
 

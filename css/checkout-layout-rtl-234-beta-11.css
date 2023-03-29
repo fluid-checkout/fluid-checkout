@@ -740,7 +740,7 @@ body div.woocommerce .form-row.fc-loading .woocommerce-input-wrapper:after {
   border-radius: 100%;
   background-color: transparent !important;
   animation: loader-spin 0.75s linear infinite;
-  color: inherit !important;
+  color: #7b7575 !important;
   pointer-events: none;
 }
 
