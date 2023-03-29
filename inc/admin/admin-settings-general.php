@@ -353,6 +353,18 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'id'                => 'fc_enable_checkout_widget_areas',
 						'default'           => 'yes',
 						'type'              => 'checkbox',
+						'checkboxgroup'     => 'start',
+						'show_if_checked'   => 'option',
+						'autoload'          => false,
+					),
+					array(
+						'desc'              => __( 'Display checkout sidebar widgets on mobile only at the latest checkout step', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Applies only to multi-step layouts.', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_widget_area_sidebar_latest_step',
+						'type'              => 'checkbox',
+						'default'           => 'no',
+						'checkboxgroup'     => 'end',
+						'show_if_checked'   => 'yes',
 						'autoload'          => false,
 					),
 

@@ -19,6 +19,9 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// General
+		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
+
 		// Widget Areas
 		add_action( 'widgets_init', array( $this, 'register_widgets_areas' ), 50 );
 		add_action( 'fc_checkout_header_widgets', array( $this, 'output_widget_area_checkout_header' ), 50 );
@@ -35,6 +38,9 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 * Undo hooks.
 	 */
 	public function undo_hooks() {
+		// General
+		remove_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
+
 		// Widget Areas
 		remove_action( 'widgets_init', array( $this, 'register_widgets_areas' ), 50 );
 		remove_action( 'fc_checkout_header_widgets', array( $this, 'output_widget_area_checkout_header' ), 50 );
@@ -43,6 +49,25 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		remove_action( 'fc_checkout_after_order_review', array( $this, 'output_widget_area_order_review_outside' ), 50 );
 		remove_action( 'fc_place_order', array( $this, 'output_widget_area_checkout_place_order_below' ), 50 );
 		remove_action( 'fc_checkout_footer_widgets', array( $this, 'output_widget_area_checkout_footer' ), 50 );
+	}
+
+
+
+	/**
+	 * Add page body class for feature detection.
+	 *
+	 * @param array $classes Classes for the body element.
+	 */
+	public function add_body_class( $classes ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
+
+		// Maybe add extra body class
+		if ( 'yes' === get_option( 'fc_enable_checkout_widget_area_sidebar_latest_step', 'no' ) ) {
+			$classes[] = 'has-fc-sidebar-widget-area-last-step-only';
+		}
+
+		return $classes;
 	}
 
 
@@ -176,7 +201,8 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		if ( ! $is_sidebar_widget ) { return; }
 
 		if ( is_active_sidebar( 'fc_checkout_sidebar_after' ) ) :
-			echo '<div class="fc-widget-area fc-checkout-order-review__widgets-outside">';
+			$additional_classes = 'yes' === get_option( 'fc_enable_checkout_widget_area_sidebar_latest_step', 'no' ) ? 'last-step-only' : '';
+			echo '<div class="fc-widget-area fc-checkout-order-review__widgets-outside ' . $additional_classes . '">';
 			dynamic_sidebar( 'fc_checkout_sidebar_after' );
 			echo '</div>';
 		endif;
