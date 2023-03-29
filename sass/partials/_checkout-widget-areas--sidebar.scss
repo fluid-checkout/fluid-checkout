@@ -8,7 +8,6 @@ body.has-checkout-layout--multi-step.has-fc-sidebar-widget-area-last-step-only:n
     }
 }
 
-// body:not(.has-checkout-layout--multi-step) .fc-wrapper .fc-checkout-order-review__widgets-outside,
 body.has-checkout-layout--multi-step.has-fc-sidebar-widget-area-last-step-only.fc-checkout-step-current-last .fc-wrapper .fc-checkout-order-review__widgets-outside {
     @media (#{$bp-smaller-than-desktop}) {
         display: block;
