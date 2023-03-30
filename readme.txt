@@ -383,6 +383,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: New option to only show checkout sidebar widgets when viewing the last step of checkout on mobile devices.
 * Added: Compatibility with plugin Woo Additional Terms by MyPreview.
 * Added: Compatibility with plugin Woo Additional Terms PRO by MyPreview.
+* Added: Compatibility with plugin YITH WooCommerce Wishlist by YITH.
 * Improved: Compatibility with theme Divi, load checkout page preview when editing the page with the Divi Builder editor.
 * Improved: Compatibility with theme Flatsome, correctly recover field focus on desktop devices when updating checkout fragments if the theme feature Float Labels is activated -- this does not work well for mobile devices due to browser limitations.
 * Improved: Compatibility with plugin Payment Plugins for Stripe WooCommerce, fixing the position for the Stripe Link logo.

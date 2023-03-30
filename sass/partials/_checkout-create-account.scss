@@ -18,6 +18,11 @@
 	margin-bottom: 0;
 }
 
+.fc-content div.woocommerce form .fc-wrapper .form-row.create-account + div.create-account.is-activated[ data-collapsible ] {
+	display: block;
+}
+
+
 
 .fc-content div.woocommerce form .fc-wrapper div.create-account {
 	border: 0;
