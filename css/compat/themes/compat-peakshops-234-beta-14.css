@@ -1,0 +1,35 @@
+:root {
+  --fluidcheckout--field--height: 40px;
+  --fluidcheckout--validation-check--horizontal-spacing--select: 30px;
+}
+
+body.theme-peakshops .fc-content.row.align-middle div.woocommerce {
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+}
+
+body.theme-peakshops div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon).fc-select2-field .woocommerce-input-wrapper:after {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "\e805";
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  z-index: 10;
+  position: absolute;
+  right: var(--fluidcheckout--validation-check--horizontal-spacing--select, 15px);
+  top: 10px;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  color: #007a3d;
+  pointer-events: none;
+}

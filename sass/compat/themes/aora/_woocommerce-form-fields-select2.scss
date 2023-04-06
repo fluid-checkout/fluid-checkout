@@ -9,6 +9,6 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection
 
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
-	margin-top: $_select2-inner-spacing;
-	margin-#{ $alignment-right }: $_select2-inner-spacing;
+	margin-top: $form-field-select2-inner-spacing;
+	margin-#{ $alignment-right }: $form-field-select2-inner-spacing;
 }

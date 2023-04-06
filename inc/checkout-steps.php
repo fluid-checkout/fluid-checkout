@@ -1093,7 +1093,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Iterate all steps and check if they should be rendered
 		foreach ( $_checkout_steps as $step_index => $step_args ) {
 			// Maybe remove the step from the list if it has a render condition callback and it returns `false`.
-			if ( array_key_exists( 'render_condition_callback', $step_args ) && ! call_user_func( $step_args[ 'render_condition_callback' ] ) ) {
+			if ( array_key_exists( 'render_condition_callback', $step_args ) && ( ! is_callable( $step_args[ 'render_condition_callback' ] ) || ! call_user_func( $step_args[ 'render_condition_callback' ] ) ) ) {
 				unset( $_checkout_steps[ $step_index ] );
 			}
 		}
@@ -1102,7 +1102,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$_checkout_steps = array_values( $_checkout_steps );
 
 		// Set cache
-		if ( count( $_checkout_steps ) > 0 ) {
+		if ( count( $_checkout_steps ) > 0 && ( did_action( 'wp' ) || doing_action( 'wp' ) ) ) {
 			$this->cached_values[ $cache_handle ] = $_checkout_steps;
 		}
 
@@ -1531,7 +1531,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( count( $this->registered_checkout_steps ) > 0 ) { return; }
 
 		// Bail if not checkout or cart page or fragments
-		if ( ! $this->is_checkout_page_or_fragment() && ! $this->is_cart_page_or_fragment() && ( ! has_filter( 'fc_force_register_steps' ) || false !== apply_filters( 'fc_force_register_steps', false ) ) ) { return; }
+		if ( ! $this->is_checkout_page_or_fragment() && ! $this->is_cart_page_or_fragment() && ( ! has_filter( 'fc_force_register_steps' ) || false === apply_filters( 'fc_force_register_steps', false ) ) ) { return; }
 
 		// CONTACT
 		$this->register_checkout_step( array(
@@ -1548,7 +1548,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'step_title' => apply_filters( 'fc_step_title_shipping', _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ) ),
 			'priority' => 20,
 			'render_callback' => array( $this, 'output_step_shipping' ),
-			'render_condition_callback' => array( WC()->cart, 'needs_shipping' ),
+			// Need to set condition as an anonymous function that returns checks if shipping is needed directly,
+			// because if the step is registered before the object `WC()->cart` is available, the condition will always return false.
+			'render_condition_callback' => function() { return WC()->cart && WC()->cart->needs_shipping(); },
 			'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
 		) );
 
@@ -4119,7 +4121,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( get_option( 'fc_enable_checkout_sticky_order_summary', 'yes' ) === 'yes' ) {
 			$sidebar_attributes = array_merge( $sidebar_attributes, array(
 				'data-sticky-states' => true,
-				'data-sticky-container' => 'div.woocommerce',
+				'data-sticky-container' => '.fc-wrapper',
 			) );
 			$sidebar_attributes_inner = array_merge( $sidebar_attributes_inner, array(
 				'data-sticky-states-inner' => true,

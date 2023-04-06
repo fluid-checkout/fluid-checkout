@@ -1,0 +1,14 @@
+:root {
+  --fluidcheckout--field--height: 48px;
+  --fluidcheckout--field--border-radius: 4px;
+}
+
+body.theme-zota.woocommerce-checkout.woocommerce-page .fc-wrapper #payment ul.payment_methods {
+  border: solid 1px #d8d8d8 !important;
+}
+
+body.theme-zota .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+  display: flex !important;
+  padding: 10px 20px !important;
+  padding-right: 44px !important;
+}

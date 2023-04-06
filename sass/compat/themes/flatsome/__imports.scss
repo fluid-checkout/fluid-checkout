@@ -3,8 +3,22 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-flatsome' !default;
-$_field-height:                        remsize( 3.891rem ) !default;
-$_select2-border-radius:               remsize( .3rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	--fluidcheckout--field--height: #{ remsize( 3.891rem ) };
+	--fluidcheckout--field--border-radius: #{ remsize( .3rem ) };
+}
+:root body.fl-labels {
+	--fluidcheckout--field--height: #{ remsize( 4.669rem ) };
+}
+
 
 
 
@@ -17,8 +31,5 @@ $_select2-border-radius:               remsize( .3rem ) !default;
 	"checkout-content-area",
 	"checkout-header",
 	"woocommerce-form-fields",
-	"../../partials/checkout-validation-check",
-	"../../partials/woocommerce-form-fields-select2",
 	"woocommerce-form-fields-select2",
-	"order-summary",
-	"../../partials/loading-indicator";
+	"order-summary";

@@ -3,17 +3,14 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-generatepress' !default;
-$_field-height:                        remsize( 4.2rem ) !default;
-$_select2-border-radius:               0 !default;
 
 
 
 
 
 // ------------------------------------
-// IMPORT STYLES
+// DEFINE CSS VARIABLES
 // ------------------------------------
-@import
-	"../../partials/checkout-validation-check",
-	"../../partials/woocommerce-form-fields-select2",
-	"../../partials/loading-indicator";
+:root {
+	--fluidcheckout--field--height: #{ remsize( 4.2rem ) };
+}

@@ -3,7 +3,7 @@ Contributors: fluidwebco, diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.1.1
+Tested up to: 6.2
 Stable tag: 2.3.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -377,6 +377,26 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Bump tested up to WordPress 6.2 and WooCommerce 7.5.1
+* Added: New option to only show checkout sidebar widgets when viewing the last step of checkout on mobile devices.
+* Added: Compatibility with plugin Woo Additional Terms by MyPreview.
+* Added: Compatibility with plugin Woo Additional Terms PRO by MyPreview.
+* Added: Compatibility with plugin YITH WooCommerce Wishlist by YITH.
+* Improved: Compatibility with theme Divi, load checkout page preview when editing the page with the Divi Builder editor.
+* Improved: Compatibility with theme Flatsome, correctly recover field focus on desktop devices when updating checkout fragments if the theme feature Float Labels is activated -- this does not work well for mobile devices due to browser limitations.
+* Improved: Compatibility with plugin Payment Plugins for Stripe WooCommerce, fixing the position for the Stripe Link logo.
+* Improved: Compatibility with plugin Elementor, display checkout steps when editing the checkout page on Elementor.
+* Improved: Added new JS events `fc_checkout_fragments_replace_before` and `fc_checkout_fragments_replace_after` to allow external scripts to run processes before and after replacing checkout fragments.
+* Improved: Added new filter `fc_coupon_code_field_description` to change or add a description below the coupon code field.
+* Fixed: Duplicated MailCheck suggestion message.
+* Fixed: Form loading indicator getting stuck after updating the checkout.js file to use native `fetch` function instead of jQuery Ajax.
+* Fixed: Order summary getting sticky state on mobile when it should not, causing other elements to be overlapping and hidden.
+* Fixed: Logic for the filter `fc_force_register_steps`.
+* Fixed: Shipping step not working in some circunstances.
+* Fixed: Fatal error when trying to determine if a checkout step should be rendered too early.
 
 = 2.3.3 - 2023-03-22 =
 

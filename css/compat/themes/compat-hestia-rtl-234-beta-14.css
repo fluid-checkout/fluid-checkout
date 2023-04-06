@@ -1,0 +1,13 @@
+:root {
+  --fluidcheckout--field--height: 30.5px;
+}
+
+body.theme-hestia div.woocommerce .form-row .woocommerce-error,
+body.theme-hestia div.woocommerce .form-row .fc-mailcheck-suggestion {
+  padding: 5px 10px 5px !important;
+  padding-right: 28px !important;
+}
+
+body.theme-hestia div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  margin-top: 0;
+}

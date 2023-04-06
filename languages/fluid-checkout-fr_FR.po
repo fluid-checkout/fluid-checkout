@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-02 11:34+0000\n"
-"PO-Revision-Date: 2023-01-03 18:38+0000\n"
+"PO-Revision-Date: 2023-04-06 15:27+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
@@ -20,7 +20,7 @@ msgstr ""
 "(Expérimental) Utiliser l’en-tête et le pied de page du thème pour la page "
 "de paiement"
 
-#: inc/checkout-validation.php:260
+#: inc/checkout-validation.php:290
 msgid "(Required)"
 msgstr "(Requis)"
 
@@ -36,7 +36,7 @@ msgstr ""
 "d'origine <code>[woocommerce_checkout]</code> pour fonctionner correctement."
 "</p><p>Pour plus d'informations, visitez le Fluid Documents de paiement.</p>"
 
-#: fluid-checkout.php:428
+#: fluid-checkout.php:508
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -45,13 +45,13 @@ msgstr ""
 "<strong>%1$s</strong> nécessite <strong>%2$s</strong> d'être installé et "
 "activé. <a href=\"%4$s\">%3$s</a>"
 
-#: fluid-checkout.php:424
+#: fluid-checkout.php:504
 #, php-format
 msgid "Activate %s"
 msgstr "Activer %s"
 
 #. %s: Form field label
-#: inc/checkout-coupon-codes.php:199 inc/checkout-hide-optional-fields.php:106
+#: inc/checkout-coupon-codes.php:240 inc/checkout-hide-optional-fields.php:116
 #, php-format
 msgid "Add %s"
 msgstr "Ajouter %s"
@@ -68,7 +68,7 @@ msgstr "Ajouter un champ de téléphone au formulaire d’adresse de livraison"
 msgid "Add widget areas to the checkout page"
 msgstr "Ajouter des zones de widget à la page de paiement"
 
-#: inc/checkout-steps.php:2170
+#: inc/checkout-steps.php:2464
 msgid "Additional notes"
 msgstr "Notes complémentaires"
 
@@ -76,19 +76,20 @@ msgstr "Notes complémentaires"
 msgid "After shipping address"
 msgstr "Après l’adresse de livraison"
 
-#: templates/fc/checkout/form-contact-login.php:42
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42
 msgid "Already have an account?"
 msgstr "Vous avez déjà un compte ?"
 
-#: inc/checkout-steps.php:1953
+#: inc/checkout-steps.php:2238
 msgid "An account will be created with the information provided."
 msgstr "Un compte sera créé avec les informations fournies."
 
-#: inc/checkout-fields.php:95
+#: inc/checkout-fields.php:120
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Appartement, unité, immeuble, étage, etc."
 
 #: inc/admin/admin-settings-general.php:126
+#: inc/admin/admin-settings-general.php:362
 msgid "Applies only to multi-step layouts."
 msgstr "S’applique uniquement aux mises en page en plusieurs étapes."
 
@@ -119,7 +120,7 @@ msgstr ""
 msgid "Billing phone"
 msgstr "Téléphone pour la facturation"
 
-#: inc/checkout-steps.php:2935
+#: inc/checkout-steps.php:3246
 msgid "Billing to"
 msgstr "Facturation à"
 
@@ -127,7 +128,7 @@ msgstr "Facturation à"
 msgid "Both below the payment section and the order summary"
 msgstr "Ci-dessous la section de paiement et le récapitulatif de la commande"
 
-#: inc/checkout-coupon-codes.php:164
+#: inc/checkout-coupon-codes.php:202
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
 msgstr "Appliquer"
@@ -146,15 +147,15 @@ msgstr "Avant la section de commande"
 msgid "Captcha Pro by BestWebSoft"
 msgstr "Captcha Pro par BestWebSoft"
 
-#: inc/checkout-steps.php:664
+#: inc/checkout-steps.php:878
 msgid "Cart total:"
 msgstr "Total du panier :"
 
-#: inc/checkout-validation.php:115
+#: inc/checkout-validation.php:145
 msgid "Change email address to: {suggestion-value}"
 msgstr "Remplacez l’adresse e-mail par : {suggestion-value}"
 
-#: inc/checkout-steps.php:1633
+#: inc/checkout-steps.php:1918
 #, php-format
 msgid "Change: %s"
 msgstr "Modification : %s"
@@ -163,19 +164,19 @@ msgstr "Modification : %s"
 msgid "Checkout"
 msgstr "Paiement"
 
-#: inc/checkout-widget-areas.php:91
+#: inc/checkout-widget-areas.php:130
 msgid "Checkout Below Place Order"
 msgstr "Paiement ci-dessous bouton de commande"
 
-#: inc/checkout-widget-areas.php:106
+#: inc/checkout-widget-areas.php:145
 msgid "Checkout Footer"
 msgstr "Pied de page de paiement"
 
-#: inc/checkout-widget-areas.php:45
+#: inc/checkout-widget-areas.php:84
 msgid "Checkout Header - Desktop"
 msgstr "En-tête de paiement - Bureau"
 
-#: inc/checkout-widget-areas.php:55
+#: inc/checkout-widget-areas.php:94
 msgid "Checkout Header - Mobile"
 msgstr "En-tête de paiement - Mobile"
 
@@ -183,40 +184,40 @@ msgstr "En-tête de paiement - Mobile"
 msgid "Checkout Layout"
 msgstr "Mise en page de la commande"
 
-#: inc/checkout-widget-areas.php:81
+#: inc/checkout-widget-areas.php:120
 msgid "Checkout Order Summary"
 msgstr "Résumé de la commande de paiement"
 
-#: inc/checkout-widget-areas.php:69
+#: inc/checkout-widget-areas.php:108
 msgid "Checkout Sidebar"
 msgstr "Barre latérale de caisse"
 
-#: inc/checkout-steps.php:1267
+#: inc/checkout-steps.php:1560
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Facturation"
 
-#: inc/checkout-steps.php:1248
+#: inc/checkout-steps.php:1539
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Contact"
 
-#: inc/checkout-steps.php:1276
+#: inc/checkout-steps.php:1569
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Paiement"
 
-#: inc/checkout-steps.php:1257
+#: inc/checkout-steps.php:1548
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Livraison"
 
-#: inc/checkout-steps.php:1633
+#: inc/checkout-steps.php:1918
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Changement"
 
-#: inc/checkout-steps.php:1634
+#: inc/checkout-steps.php:1919
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Enregistrer les modifications"
@@ -282,15 +283,15 @@ msgid "Choose in which step to display the shipping phone field"
 msgstr ""
 "Choisissez l’étape à laquelle afficher le champ du téléphone d’expédition"
 
-#: inc/checkout-steps.php:664
+#: inc/checkout-steps.php:878
 msgid "Click to go to the order summary"
 msgstr "Cliquez pour accéder au récapitulatif de la commande"
 
-#: templates/fc/checkout/review-order-section.php:63
+#: templates/fc/checkout-steps/checkout/review-order-section.php:63
 msgid "Close and continue with checkout"
 msgstr "Fermer et continuer vers le paiement"
 
-#: templates/fc/checkout/form-contact-login-modal.php:25
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:27
 msgctxt "Close button aria-label"
 msgid "Close"
 msgstr "Fermer"
@@ -300,7 +301,7 @@ msgstr "Fermer"
 msgid "Contact step"
 msgstr "Étape de contact"
 
-#: templates/fc/checkout/review-order-section.php:63
+#: templates/fc/checkout-steps/checkout/review-order-section.php:63
 msgid "Continue"
 msgstr "Continuer"
 
@@ -312,7 +313,7 @@ msgstr ""
 "Contrôle s’il faut utiliser l’en-tête et le pied de page de la page Fluid "
 "Checkout ou conserver les thèmes actuellement actifs."
 
-#: inc/checkout-coupon-codes.php:140 inc/checkout-coupon-codes.php:162
+#: inc/checkout-coupon-codes.php:177 inc/checkout-coupon-codes.php:199
 msgid "Coupon code"
 msgstr "Code promo"
 
@@ -320,7 +321,7 @@ msgstr "Code promo"
 msgid "Coupon codes"
 msgstr "Codes promo"
 
-#: templates/fc/checkout/form-account-creation.php:29
+#: templates/fc/checkout-steps/checkout/form-account-creation.php:34
 msgid "Create an account"
 msgstr "Créer un compte"
 
@@ -364,7 +365,7 @@ msgid "Delivery or Pickup"
 msgstr "Livraison ou retrait sur place"
 
 #. %s: html for the email address typo correction suggestion link
-#: inc/checkout-validation.php:115
+#: inc/checkout-validation.php:145
 #, php-format
 msgid "Did you mean %s?"
 msgstr "Vouliez-vous dire %s ?"
@@ -381,7 +382,7 @@ msgstr "Afficher la barre de progression de la commande"
 msgid "Display the coupon codes section title"
 msgstr "Afficher le titre de la section des codes de promo"
 
-#: inc/checkout-widget-areas.php:57
+#: inc/checkout-widget-areas.php:96
 msgid ""
 "Display widgets below the checkout header for mobile devices. Only displayed "
 "if using the plugin's checkout header."
@@ -389,18 +390,18 @@ msgstr ""
 "Afficher les widgets sous l'en-tête de paiement pour les appareils mobiles. "
 "Uniquement affiché si vous utilisez l'en-tête de paiement du plugin."
 
-#: inc/checkout-widget-areas.php:93
+#: inc/checkout-widget-areas.php:132
 msgid "Display widgets below the place order button at the checkout page."
 msgstr ""
 "Affichez les widgets sous le bouton de commande sur la page de paiement."
 
-#: inc/checkout-widget-areas.php:83
+#: inc/checkout-widget-areas.php:122
 msgid "Display widgets inside the order summary at the checkout page."
 msgstr ""
 "Affichez les widgets dans le récapitulatif de la commande sur la page de "
 "paiement."
 
-#: inc/checkout-widget-areas.php:108
+#: inc/checkout-widget-areas.php:147
 msgid ""
 "Display widgets on the checkout footer. Only displayed if using the plugin's "
 "checkout footer."
@@ -408,7 +409,7 @@ msgstr ""
 "Affichez les widgets sur le pied de page de paiement. Uniquement affiché si "
 "vous utilisez le pied de page de paiement du plugin."
 
-#: inc/checkout-widget-areas.php:47
+#: inc/checkout-widget-areas.php:86
 msgid ""
 "Display widgets on the checkout header for large screens. Only displayed if "
 "using the plugin's checkout header."
@@ -416,7 +417,7 @@ msgstr ""
 "Affichez les widgets sur l'en-tête de paiement pour les grands écrans. "
 "Uniquement affiché si vous utilisez l'en-tête de paiement du plugin."
 
-#: inc/checkout-widget-areas.php:71
+#: inc/checkout-widget-areas.php:110
 msgid "Display widgets on the checkout sidebar after the order summary."
 msgstr ""
 "Affichez les widgets dans la barre latérale de paiement après le "
@@ -427,12 +428,12 @@ msgid "Do not hide \"Address line 2\" fields behind a link button"
 msgstr ""
 "Ne cachez pas les champs « Ligne d’adresse 2 » derrière un bouton de lien"
 
-#: inc/admin/admin-notices.php:45
+#: inc/admin/admin-notices.php:55
 msgid "Don't show this again"
 msgstr "Ne plus afficher"
 
-#: inc/checkout-steps.php:3902
-#: templates/fc/checkout/review-order-section.php:62
+#: inc/checkout-steps.php:4220
+#: templates/fc/checkout-steps/checkout/review-order-section.php:62
 #| msgid "Edit Cart"
 msgid "Edit cart"
 msgstr "Modifier le panier"
@@ -441,11 +442,11 @@ msgstr "Modifier le panier"
 msgid "Enable integrated coupon code section"
 msgstr "Activer la section intégrée des codes de promo"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:115
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:123
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Activer la vérification du mail : (fonctionnalité désactivée)"
 
-#: inc/checkout-coupon-codes.php:163
+#: inc/checkout-coupon-codes.php:201
 msgid "Enter your code here"
 msgstr "Entrer votre code ici"
 
@@ -478,11 +479,11 @@ msgstr ""
 msgid "Go to Germanized settings"
 msgstr "Accéder aux paramètres germanisés"
 
-#: fluid-checkout.php:420
+#: fluid-checkout.php:500
 msgid "Go to Plugin Search"
 msgstr "Aller à la recherche de plugin"
 
-#: templates/fc/checkout/checkout-header.php:27
+#: templates/fc/checkout-page-template/checkout/checkout-header.php:27
 msgid "Go to the home page"
 msgstr "Accéder à la page d’accueil"
 
@@ -516,7 +517,7 @@ msgstr ""
 "Mettez en surbrillance la section adresse de livraison dans le formulaire de "
 "paiement"
 
-#: inc/checkout-fields.php:94
+#: inc/checkout-fields.php:119
 msgid "House number and street name."
 msgstr "Numéro et nom de la rue."
 
@@ -536,7 +537,7 @@ msgstr "https://fluidcheckout.com/"
 msgid "I need help!"
 msgstr "J'ai besoin d'aide !"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:118
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:126
 msgid ""
 "If checked informs typos in email to users. (This feature has been disabled "
 "because Fluid Checkout offers the feature. Changes to this option will not "
@@ -603,28 +604,28 @@ msgstr "Options de mise en page"
 msgid "Load unminified assets"
 msgstr "Charger des ressources non minifiées"
 
-#: templates/global/form-login.php:59
-#: templates/fc/checkout/form-contact-login.php:42
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42
+#: templates/fc/checkout-steps/global/form-login.php:59
 msgctxt "Log in link label at checkout contact step"
 msgid "Log in"
 msgstr "Se connecter"
 
-#: templates/fc/checkout/form-contact-login.php:54
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:54
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Ou continuer en tant qu’invité"
 
-#: templates/fc/checkout/form-contact-login.php:56
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:56
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue below"
 msgstr "Ou continuer ci-dessous"
 
-#: templates/fc/checkout/form-contact-login-modal.php:28
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:30
 msgid "Log in to your account"
 msgstr "Connectez-vous à votre compte"
 
 #. 1: user display name 2: logout url
-#: templates/fc/checkout/form-contact-login.php:32
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:32
 #, php-format
 msgid "Logged in as %1$s. <a href=\"%2$s\">Log out</a>"
 msgstr "Connecté en tant que%1$s. <a href=\"%2$s\">Déconnexion</a>"
@@ -655,15 +656,15 @@ msgstr ""
 msgid "Make the order summary stay visible while scrolling"
 msgstr "Rendre le récapitulatif de la commande visible pendant le défilement"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:98
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:177
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Déplacer la case à cocher d'inscription à l'étape de contact"
 
-#: inc/checkout-steps.php:528
+#: inc/checkout-steps.php:714
 msgid "Multi-step"
 msgstr "En plusieurs étapes"
 
-#: inc/checkout-steps.php:1890
+#: inc/checkout-steps.php:2175
 msgid "My contact"
 msgstr "Mon contact"
 
@@ -676,12 +677,12 @@ msgstr ""
 "liées à chaque plugin n'apparaîtront ici que si ce plugin est activé."
 
 #. %s shipping destination.
-#: templates/fc/checkout/review-order-shipping.php:31
+#: templates/fc/checkout-steps/checkout/review-order-shipping.php:31
 msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2580
+#: inc/checkout-steps.php:2874
 msgid "Not selected yet."
 msgstr "Pas encore sélectionné."
 
@@ -690,7 +691,7 @@ msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr "Aucun."
 
-#: inc/checkout-steps.php:2636
+#: inc/checkout-steps.php:2930
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Aucun."
@@ -710,7 +711,15 @@ msgstr ""
 "Applicable uniquement lors de l’utilisation de l’en-tête du thème Impreza "
 "sur la page de paiement."
 
-#: inc/checkout-shipping-phone-field.php:56
+#: inc/admin/admin-settings-general.php:361
+msgid ""
+"Only display checkout sidebar widgets when at the last checkout step on "
+"mobile devices"
+msgstr ""
+"Afficher les widgets de la barre latérale de paiement uniquement lors de la "
+"dernière étape de paiement sur les appareils mobiles"
+
+#: inc/checkout-shipping-phone-field.php:88
 msgid "Only used for shipping-related questions."
 msgstr "Utilisé uniquement pour les questions liées à l’expédition."
 
@@ -728,12 +737,12 @@ msgstr "Champs facultatifs"
 msgid "Order notes"
 msgstr "Notes de réservation"
 
-#: inc/checkout-fields.php:47
+#: inc/checkout-fields.php:72
 msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 "Le numéro de commande et le reçu seront envoyés à cette adresse e-mail."
 
-#: inc/checkout-steps.php:3837 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:4155 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Récapitulatif de la commande"
 
@@ -749,7 +758,7 @@ msgstr ""
 msgid "Page background color"
 msgstr "Couleur de fond de la page"
 
-#: inc/checkout-steps.php:3654
+#: inc/checkout-steps.php:3972
 msgid "Payment method"
 msgstr "Méthode de paiement"
 
@@ -762,7 +771,7 @@ msgid "Place order"
 msgstr "Commander"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1146
+#: inc/checkout-steps.php:1425
 #, php-format
 msgid "Proceed to %s"
 msgstr "Procéder à %s"
@@ -799,7 +808,7 @@ msgstr ""
 "adresse de livraison (c’est-à-dire si vous livrez de la nourriture et "
 "d’autres produits périssables)."
 
-#: inc/checkout-coupon-codes.php:240
+#: inc/checkout-coupon-codes.php:281
 msgid "Remove"
 msgstr "Supprimer"
 
@@ -808,7 +817,7 @@ msgstr "Supprimer"
 msgid "Required"
 msgstr "Requis"
 
-#: inc/checkout-steps.php:3117
+#: inc/checkout-steps.php:3428
 msgid "Same as shipping address"
 msgstr "Identique à l'adresse de livraison"
 
@@ -818,7 +827,7 @@ msgstr "Identique à l'adresse de livraison"
 msgid "Select an image"
 msgstr "Sélectionner une image"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:97
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:176
 msgid "Sendinblue - WooCommerce Email Marketing"
 msgstr "Sendinblue - WooCommerce Email Marketing"
 
@@ -836,7 +845,7 @@ msgstr "Intégrations"
 msgid "Shipping address"
 msgstr "Adresse de livraison"
 
-#: inc/checkout-steps.php:2146
+#: inc/checkout-steps.php:2440
 msgid "Shipping method"
 msgstr "Mode de livraison"
 
@@ -844,20 +853,20 @@ msgstr "Mode de livraison"
 msgid "Shipping methods"
 msgstr "Modes de livraison"
 
-#: inc/checkout-shipping-phone-field.php:55
+#: inc/checkout-shipping-phone-field.php:87
 #: inc/admin/admin-settings-general.php:276
 msgid "Shipping phone"
 msgstr "Téléphone d'expédition"
 
-#: inc/checkout-steps.php:2122
+#: inc/checkout-steps.php:2416
 msgid "Shipping to"
 msgstr "Livraison à"
 
-#: inc/checkout-steps.php:529
+#: inc/checkout-steps.php:715
 msgid "Single step"
 msgstr "Étape unique"
 
-#: templates/fc/header-checkout.php:36
+#: templates/fc/checkout-page-template/checkout/page-checkout-header.php:36
 #: templates/compat/themes/enfold/fc/header-checkout.php:239
 msgid "Skip to content"
 msgstr "Passer au contenu"
@@ -873,26 +882,26 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Espacement de l’en-tête du site sur la page de paiement (en pixels)"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1396
+#: inc/checkout-steps.php:1681
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Étape %1$s sur %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2319
+#: inc/checkout-steps.php:2613
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2324
+#: inc/checkout-steps.php:2618
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:1747
+#: inc/checkout-steps.php:2032
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Aucun."
@@ -934,15 +943,15 @@ msgstr ""
 "Ces zones de widget sont utilisées pour ajouter des symboles de confiance "
 "sur la page de paiement."
 
-#: inc/checkout-validation.php:120
+#: inc/checkout-validation.php:150
 msgid "This field does not match the related field value."
 msgstr "Ce champ ne correspond pas à la valeur de champ associée."
 
-#: inc/checkout-validation.php:118
+#: inc/checkout-validation.php:148
 msgid "This is a required field."
 msgstr "Ce champ est obligatoire."
 
-#: inc/checkout-validation.php:119
+#: inc/checkout-validation.php:149
 msgid "This is not a valid email address."
 msgstr "Ceci n'est pas une adresse électronique valide."
 
@@ -981,7 +990,7 @@ msgstr ""
 "href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Lisez "
 "la recherche sur l'abandon du panier</a>."
 
-#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:99
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:178
 msgid ""
 "When enabled, the checkbox will be moved to the contact step independently "
 "of the display location defined in the Sendinblue plugin settings."
@@ -1003,7 +1012,7 @@ msgstr ""
 "désactiver la fonctionnalité de paiement en plusieurs étapes Germanized PRO "
 "dans les paramètres du plugin."
 
-#: fluid-checkout.php:417
+#: fluid-checkout.php:497
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
@@ -1022,7 +1031,7 @@ msgstr ""
 "apprécions chaque commentaire et cela nous encourage à continuer à améliorer "
 "le plugin :)"
 
-#: templates/checkout/payment.php:48
+#: templates/fc/checkout-steps/checkout/payment.php:48
 #, php-format
 #| msgid ""
 #| "Your order has a total amount due of %s. No&nbsp;further payment is "

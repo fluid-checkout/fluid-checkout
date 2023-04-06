@@ -3,8 +3,18 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-zota' !default;
-$_field-height:                        remsize( 4.8rem ) !default;
-$_select2-border-radius:               remsize( .4rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	--fluidcheckout--field--height: #{ remsize( 4.8rem ) };
+	--fluidcheckout--field--border-radius: #{ remsize( .4rem ) };
+}
 
 
 
@@ -14,7 +24,4 @@ $_select2-border-radius:               remsize( .4rem ) !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"checkout-payment-methods",
-	"../../partials/checkout-validation-check",
-	"../../partials/woocommerce-form-fields-select2",
-	"../../partials/loading-indicator";
+	"checkout-payment-methods";
