@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.2
-Stable tag: 2.3.3
+Stable tag: 2.3.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -378,7 +378,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= 2.3.4 - 2023-04-06 =
 
 * Bump tested up to WordPress 6.2 and WooCommerce 7.5.1
 * Added: New option to only show checkout sidebar widgets when viewing the last step of checkout on mobile devices.
