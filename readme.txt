@@ -378,6 +378,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Do not display "+ Add" link buttons for optional fields that are also hidden from the page.
+
 = 2.3.4 - 2023-04-06 =
 
 * Bump tested up to WordPress 6.2 and WooCommerce 7.5.1
