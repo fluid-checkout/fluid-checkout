@@ -380,6 +380,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Update file checkout.js with latest changes to the original file on the WooCommerce plugin.
 * Fixed: Do not display "+ Add" link buttons for optional fields that are also hidden from the page.
 
 = 2.3.4 - 2023-04-06 =
