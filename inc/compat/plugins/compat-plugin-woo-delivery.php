@@ -175,8 +175,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		// Note that `enable_option_time_pickup` means that the user can choose between delivery and pickup
 		$is_allowed_order_type = false;
 		if ( is_array( $delivery_option_settings ) && true === $delivery_option_settings[ 'enable_option_time_pickup' ] ) {
-			$allowed_order_type_values = $this->get_allowed_order_type_values();
-			$is_allowed_order_type = in_array( $order_type, $allowed_order_type_values );
+			$is_allowed_order_type = in_array( $order_type, $this->get_allowed_order_type_values() );
 		}
 
 		if ( $has_values ) {
@@ -336,8 +335,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		// Check order type
 		// Note that `enable_option_time_pickup` means that the user can choose between delivery and pickup
 		if ( is_array( $delivery_option_settings ) && true === $delivery_option_settings[ 'enable_option_time_pickup' ] ) {
-			$allowed_order_type_values = $this->get_allowed_order_type_values();
-			if ( ! in_array( $order_type, $allowed_order_type_values ) ) {
+			if ( ! in_array( $order_type, $this->get_allowed_order_type_values() ) ) {
 				$is_step_complete = false;
 			}
 		}
