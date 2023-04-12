@@ -92,7 +92,7 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 		if ( ! $template_path ) { $template_path = 'woocommerce/'; };
 
 		// Get plugin path
-		$plugin_path  = self::$directory_path . 'templates/compat/plugins/woo-ups-pickup/';
+		$plugin_path = self::$directory_path . 'templates/compat/plugins/woo-ups-pickup/';
 
 		// Get the template from this plugin, if it exists
 		if ( file_exists( $plugin_path . $template_name ) ) {

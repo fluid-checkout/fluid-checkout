@@ -35,7 +35,7 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 		if ( ! $template_path ) { $template_path = 'woocommerce/'; };
 
 		// Get plugin path
-		$plugin_path  = self::$directory_path . 'templates/compat/themes/enfold/';
+		$plugin_path = self::$directory_path . 'templates/compat/themes/enfold/';
 
 		// Get the template from this plugin, if it exists
 		if ( file_exists( $plugin_path . $template_name ) ) {
