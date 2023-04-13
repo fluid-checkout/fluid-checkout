@@ -31,7 +31,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
-		add_filter( 'script_loader_tag', array( $this, 'add_custom_script_tag_attributes_cloudflare_bypass_rocket_loader' ), 10, 2 );
 
 		// Enqueue assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_custom_fonts' ), 1 );
@@ -133,11 +132,11 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_script( 'fc-polyfill-inert', self::$directory_url . 'js/lib/inert'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
 		wp_register_script( 'fc-animate-helper', self::$directory_url . 'js/lib/animate-helper'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
 		wp_register_script( 'fc-collapsible-block', self::$directory_url . 'js/lib/collapsible-block'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
-		wp_add_inline_script( 'fc-collapsible-block', 'window.addEventListener("DOMContentLoaded",function(){CollapsibleBlock.init(fcSettings.collapsibleBlock);})' );
+		wp_add_inline_script( 'fc-collapsible-block', 'window.addEventListener("load",function(){CollapsibleBlock.init(fcSettings.collapsibleBlock);})' );
 		wp_register_script( 'fc-flyout-block', self::$directory_url . 'js/lib/flyout-block'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
-		wp_add_inline_script( 'fc-flyout-block', 'window.addEventListener("DOMContentLoaded",function(){FlyoutBlock.init(fcSettings.flyoutBlock);})' );
+		wp_add_inline_script( 'fc-flyout-block', 'window.addEventListener("load",function(){FlyoutBlock.init(fcSettings.flyoutBlock);})' );
 		wp_register_script( 'fc-sticky-states', self::$directory_url . 'js/lib/sticky-states'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
-		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("DOMContentLoaded",function(){StickyStates.init(fcSettings.stickyStates);})' );
+		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("load",function(){StickyStates.init(fcSettings.stickyStates);})' );
 
 		// Register custom fonts
 		wp_register_style( 'fc-fonts', self::$directory_url . 'css/fonts' . self::$asset_version . '.css', array(), null );
@@ -151,26 +150,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 	/**
-	 * Add custom script tag attributes to bypass Cloudflare Rocket Loader feature.
-	 */
-	public function add_custom_script_tag_attributes_cloudflare_bypass_rocket_loader( $tag, $handle ) {
-		// Add the script handles to which you want to add the custom attribute
-		$scripts_handles = apply_filters( 'fc_cloudflare_bypass_rocket_loader_script_handles', array(
-			'jquery',
-		) );
-	  
-		// Check if the current script handle is in the array of scripts
-		if ( in_array( $handle, $scripts_handles ) ) {
-			// Add your custom attribute to the script tag
-			$tag = str_replace( 'src=', 'data-cfasync="false" src=', $tag );
-		}
-	  
-		return $tag;
-	}
-
-
-
-	/**
 	 * Enqueue Require Bundle.
 	 * @deprecated  Marked to be removed in version 3.0.0.
 	 */
@@ -178,15 +157,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Add deprecation notice
 		wc_doing_it_wrong( __FUNCTION__, 'Dependency on RequireBundle has been removed. This function will be removed in version 3.0.0.', '2.4.0' );
 	}
-
-	// /**
-	//  * Enqueue assets for flyout block components.
-	//  * @deprecated  Marked to be removed in version 3.0.0.
-	//  */
-	// public function enqueue_assets_flyout_block() {
-	// 	// Add deprecation notice
-	// 	wc_doing_it_wrong( __FUNCTION__, 'FlyoutBlock script and styles are now enqueue from the function `enqueue_assets`. This function will be removed in version 3.0.0.', '2.4.0' );
-	// }
 
 
 

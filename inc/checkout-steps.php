@@ -646,7 +646,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Checkout steps scripts
 		wp_register_script( 'fc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout', 'fc-collapsible-block' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("DOMContentLoaded",function(){CheckoutSteps.init(fcSettings.checkoutSteps);})' );
+		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init(fcSettings.checkoutSteps);})' );
 	}
 
 	/**
