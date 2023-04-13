@@ -6,6 +6,13 @@ defined( 'ABSPATH' ) || exit;
  */
 class FluidCheckout_Enqueue extends FluidCheckout {
 
+
+	/**
+	 * @var  string  $has_enqueued_settings  Whether the JS settings have been enqueued.
+	 */
+	public static $has_enqueued_settings = false;
+
+
 	/**
 	 * __construct function.
 	 */
@@ -24,9 +31,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		add_filter( 'script_loader_tag', array( $this, 'add_custom_script_tag_attributes_cloudflare_bypass_rocket_loader' ), 10, 2 );
 
 		// Enqueue assets
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_require_bundle' ), 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_custom_fonts' ), 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_edit_address' ), 10 );
@@ -50,7 +57,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
 		// Enqueue assets
-		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_require_bundle' ), 1 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_custom_fonts' ), 1 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_edit_address' ), 10 );
@@ -87,92 +93,132 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 	/**
+	 * Returns the JS settings for Fluid Checkout.
+	 *
+	 * @return  array  JS settings for Fluid Checkout. 
+	 */
+	public function get_fc_settings() {
+		return apply_filters( 'fc_js_settings', array(
+			'ver'                            => self::$version,
+			'assetsVersion'                  => self::$asset_version,
+			'cookiePath'                     => parse_url( get_option( 'siteurl' ), PHP_URL_PATH ),
+			'cookieDomain'                   => parse_url( get_option( 'siteurl' ), PHP_URL_HOST ),
+			'jsPath'                         => self::$directory_url . 'js/',
+			'jsLibPath'                      => self::$directory_url . 'js/lib/',
+			'cssPath'                        => self::$directory_url . 'css/',
+			'ajaxUrl'                        => admin_url( 'admin-ajax.php' ),
+			'wcAjaxUrl'                      => WC_AJAX::get_endpoint( '%%endpoint%%' ),
+			'flyoutBlock'                    => array(
+				'openAnimationClass'         => 'fade-in-up',
+				'closeAnimationClass'        => 'fade-out-down',
+			),
+			'collapsibleBlock'               => array(),
+			'stickyStates'                   => array(),
+			'checkoutUpdateBeforeUnload'     => apply_filters( 'fc_checkout_update_before_unload', 'yes' ),
+			'checkoutUpdateFieldsSelector'   => join( ',', apply_filters( 'fc_checkout_update_fields_selectors', array(
+				'.address-field input.input-text',
+				'.update_totals_on_change input.input-text',
+			) ) ),
+		) );
+	}
+
+	/**
 	 * Register assets.
 	 */
 	public function register_assets() {
 		// Maybe load RTL file
 		$rtl_suffix = is_rtl() ? '-rtl' : '';
-		
-		// Require Bundle and Polyfills
-		if ( ! wp_script_is( 'require-bundle', 'registered' ) ) { wp_register_script( 'require-bundle', self::$directory_url . 'js/lib/require-bundle'. self::$asset_version . '.js', NULL, NULL ); }
-		if ( ! wp_script_is( 'require-polyfills', 'registered' ) ) { wp_register_script( 'require-polyfills', self::$directory_url . 'js/lib/require-polyfills'. self::$asset_version . '.js', NULL, NULL ); }
-		
-		// Bundles
-		wp_register_script( 'fc-bundles', self::$directory_url . 'js/bundles'. self::$asset_version . '.js', array( 'require-bundle' ), NULL, true );
-		wp_localize_script(
-			'fc-bundles',
-			'fcSettings',
-			apply_filters( 'fc_js_settings', array(
-				'ver'                            => self::$version,
-				'assetsVersion'                  => self::$asset_version,
-				'cookiePath'                     => parse_url( get_option( 'siteurl' ), PHP_URL_PATH ),
-				'cookieDomain'                   => parse_url( get_option( 'siteurl' ), PHP_URL_HOST ),
-				'jsPath'                         => self::$directory_url . 'js/',
-				'jsLibPath'                      => self::$directory_url . 'js/lib/',
-				'cssPath'                        => self::$directory_url . 'css/',
-				'ajaxUrl'                        => admin_url( 'admin-ajax.php' ),
-				'wcAjaxUrl'                      => WC_AJAX::get_endpoint( '%%endpoint%%' ),
-				'flyoutBlock'                    => array(
-					'openAnimationClass'         => 'fade-in-up',
-					'closeAnimationClass'        => 'fade-out-down',
-				),
-				'collapsibleBlock'               => array(),
-				'stickyStates'                   => array(),
-				'checkoutUpdateBeforeUnload'     => apply_filters( 'fc_checkout_update_before_unload', 'yes' ),
-				'checkoutUpdateFieldsSelector'   => join( ',', apply_filters( 'fc_checkout_update_fields_selectors', array(
-					'.address-field input.input-text',
-					'.update_totals_on_change input.input-text',
-				) ) ),
-			) )
-		);
 
-		// Custom fonts
+		// Register library scripts
+		wp_register_script( 'fc-polyfill-inert', self::$directory_url . 'js/lib/inert'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
+		wp_register_script( 'fc-animate-helper', self::$directory_url . 'js/lib/animate-helper'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
+		wp_register_script( 'fc-collapsible-block', self::$directory_url . 'js/lib/collapsible-block'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
+		wp_add_inline_script( 'fc-collapsible-block', 'window.addEventListener("DOMContentLoaded",function(){CollapsibleBlock.init(fcSettings.collapsibleBlock);})' );
+		wp_register_script( 'fc-flyout-block', self::$directory_url . 'js/lib/flyout-block'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
+		wp_add_inline_script( 'fc-flyout-block', 'window.addEventListener("DOMContentLoaded",function(){FlyoutBlock.init(fcSettings.flyoutBlock);})' );
+		wp_register_script( 'fc-sticky-states', self::$directory_url . 'js/lib/sticky-states'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
+		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("DOMContentLoaded",function(){StickyStates.init(fcSettings.stickyStates);})' );
+
+		// Register custom fonts
 		wp_register_style( 'fc-fonts', self::$directory_url . 'css/fonts' . self::$asset_version . '.css', array(), null );
 
-		// Edit address styles
+		// Register styles
 		wp_register_style( 'fc-edit-address-page', self::$directory_url . 'css/edit-address-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
-
-		// Add payment methods styles
 		wp_register_style( 'fc-add-payment-method-page', self::$directory_url . 'css/add-payment-method-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
-
-		// Flyout block
 		wp_register_style( 'fc-flyout-block', self::$directory_url . 'css/flyout-block' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 	}
 
 
 
 	/**
-	 * Enqueue Require Bundle.
+	 * Add custom script tag attributes to bypass Cloudflare Rocket Loader feature.
 	 */
-	public function enqueue_require_bundle() {
-		// Require Bundle & Polyfills
-		wp_enqueue_script( 'require-bundle' );
-		wp_enqueue_script( 'require-polyfills' );
+	public function add_custom_script_tag_attributes_cloudflare_bypass_rocket_loader( $tag, $handle ) {
+		// Add the script handles to which you want to add the custom attribute
+		$scripts_handles = apply_filters( 'fc_cloudflare_bypass_rocket_loader_script_handles', array(
+			'jquery',
+		) );
+	  
+		// Check if the current script handle is in the array of scripts
+		if ( in_array( $handle, $scripts_handles ) ) {
+			// Add your custom attribute to the script tag
+			$tag = str_replace( 'src=', 'data-cfasync="false" src=', $tag );
+		}
+	  
+		return $tag;
 	}
+
+
 
 	/**
-	 * Maybe enqueue Require Bundle.
+	 * Enqueue Require Bundle.
+	 * @deprecated  Marked to be removed in version 3.0.0.
 	 */
-	public function maybe_enqueue_require_bundle() {
-		// Bail if not on checkout page
-		if ( is_admin() || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
-
-		$this->enqueue_require_bundle();
+	public function enqueue_require_bundle() {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Dependency on RequireBundle has been removed. This function will be removed in version 3.0.0.', '2.4.0' );
 	}
 
+	// /**
+	//  * Enqueue assets for flyout block components.
+	//  * @deprecated  Marked to be removed in version 3.0.0.
+	//  */
+	// public function enqueue_assets_flyout_block() {
+	// 	// Add deprecation notice
+	// 	wc_doing_it_wrong( __FUNCTION__, 'FlyoutBlock script and styles are now enqueue from the function `enqueue_assets`. This function will be removed in version 3.0.0.', '2.4.0' );
+	// }
 
+
+
+	/**
+	 * Enqueue JS settings object.
+	 */
+	public function enqueue_settings_inline_script( $handler = 'woocommerce' ) {
+		// Bail if already enqueued
+		if ( self::$has_enqueued_settings ) { return; }
+
+		// Enqueue settings
+		wp_localize_script( $handler, 'fcSettings', $this->get_fc_settings() );
+
+		// Set flag for settings enqueued
+		self::$has_enqueued_settings = true;
+	}
 
 	/**
 	 * Enqueue assets.
 	 */
 	public function enqueue_assets() {
-		wp_enqueue_script( 'fc-bundles' );
-	}
+		// Enqueue settings
+		$this->enqueue_settings_inline_script();
 
-	/**
-	 * Enqueue assets for flyout block components.
-	 */
-	public function enqueue_assets_flyout_block() {
+		// Scripts
+		wp_enqueue_script( 'fc-polyfill-inert' );
+		wp_enqueue_script( 'fc-animate-helper' );
+		wp_enqueue_script( 'fc-collapsible-block' );
+		wp_enqueue_script( 'fc-flyout-block' );
+		wp_enqueue_script( 'fc-sticky-states' );
+
+		// Styles
 		wp_enqueue_style( 'fc-flyout-block' );
 	}
 
@@ -183,8 +229,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Bail if not on checkout page
 		if ( is_admin() || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
+		// Enqueue assets
 		$this->enqueue_assets();
-		$this->enqueue_assets_flyout_block();
 	}
 
 
@@ -222,11 +268,11 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Bail if not on checkout page or address edit page
 		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'edit-address' ) ) { return; }
 
-		// Fluid Checkout Lite assets
+		// Enqueue assets
 		$this->enqueue_custom_fonts();
-		$this->enqueue_require_bundle();
 		$this->enqueue_assets();
 		
+		// Enqueue assets for the edit address page
 		$this->enqueue_assets_edit_address();
 	}
 
@@ -246,11 +292,11 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Bail if not on checkout page or address edit page
 		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'add-payment-method' ) ) { return; }
 
-		// Fluid Checkout Lite assets
+		// Enqueue assets
 		$this->enqueue_custom_fonts();
-		$this->enqueue_require_bundle();
 		$this->enqueue_assets();
 		
+		// Enqueue assets for the add payment method page
 		$this->enqueue_assets_add_payment_method();
 	}
 

@@ -102,6 +102,9 @@ class FluidCheckout_Validation extends FluidCheckout {
 		// Scripts
 		wp_register_script( 'fc-checkout-validation', self::$directory_url . 'js/checkout-validation'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
 		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("DOMContentLoaded",function(){CheckoutValidation.init(fcSettings.checkoutValidation);})' );
+		wp_register_script( 'fc-mailcheck', self::$directory_url . 'js/lib/mailcheck'. self::$asset_version . '.js', array( 'jquery' ), NULL );
+		wp_register_script( 'fc-mailcheck-init', self::$directory_url . 'js/mailcheck-init'. self::$asset_version . '.js', array( 'jquery', 'fc-mailcheck' ), NULL );
+		wp_add_inline_script( 'fc-mailcheck-init', 'window.addEventListener("DOMContentLoaded",function(){MailcheckInit.init(fcSettings.checkoutValidation.mailcheckSuggestions);})' );
 	}
 
 	/**
@@ -113,6 +116,8 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		// Scripts
 		wp_enqueue_script( 'fc-checkout-validation' );
+		wp_enqueue_script( 'fc-mailcheck' );
+		wp_enqueue_script( 'fc-mailcheck-init' );
 	}
 
 	/**

@@ -380,6 +380,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Removed dependency on the library RequireBundle to load scripts and styles.
 * Improved: Compatibility with Delivery & Pickup Date Time for WooCommerce - by CodeRockz, avoid PHP warning messages when that plugin settings are not saved yet.
 * Improved: Update file checkout.js with latest changes to the original file on the WooCommerce plugin.
 * Fixed: Do not display "+ Add" link buttons for optional fields that are also hidden from the page.
