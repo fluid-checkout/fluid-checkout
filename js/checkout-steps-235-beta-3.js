@@ -772,29 +772,6 @@
 
 
 	/**
-	 * Finish to initialize component and set related handlers.
-	 */
-	var finishInit = function() {
-		// Add event listeners
-		window.addEventListener( 'click', handleClick );
-		document.addEventListener( 'keydown', handleKeyDown, true );
-
-		// Add jQuery event listeners
-		if ( _hasJQuery ) {
-			$( document.body ).on( 'updated_checkout', updateGlobalStepStates );
-			$( document.body ).on( 'updated_checkout', maybeChangeSubstepState );
-			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
-		}
-
-		// Add init class
-		document.body.classList.add( _settings.bodyClass );
-
-		_hasInitialized = true;
-	}
-
-
-
-	/**
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.init = function( options ) {
@@ -810,13 +787,21 @@
 			_resizeObserver.observe( document.body );
 		}
 
-		// Finish initialization, maybe load dependencies first
-		if ( window.CollapsibleBlock ) {
-			finishInit();
+		// Add event listeners
+		window.addEventListener( 'click', handleClick );
+		document.addEventListener( 'keydown', handleKeyDown, true );
+
+		// Add jQuery event listeners
+		if ( _hasJQuery ) {
+			$( document.body ).on( 'updated_checkout', updateGlobalStepStates );
+			$( document.body ).on( 'updated_checkout', maybeChangeSubstepState );
+			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
 		}
-		else if( window.RequireBundle ) {
-			RequireBundle.require( [ 'collapsible-block' ], function() { finishInit(); } );
-		}
+
+		// Add init class
+		document.body.classList.add( _settings.bodyClass );
+
+		_hasInitialized = true;
 	};
 
 

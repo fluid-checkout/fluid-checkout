@@ -119,8 +119,8 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$rtl_suffix = is_rtl() ? '-rtl' : '';
 
 		// Scripts
-		wp_register_script( 'fc-checkout-coupons', self::$directory_url . 'js/checkout-coupons'. self::$asset_version . '.js', array( 'jquery', 'require-bundle' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-coupons', 'window.addEventListener("DOMContentLoaded",function(){CheckoutCoupons.init(fcSettings.checkoutCoupons);})' );
+		wp_register_script( 'fc-checkout-coupons', self::$directory_url . 'js/checkout-coupons'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'fc-collapsible-block' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-coupons', 'window.addEventListener("load",function(){CheckoutCoupons.init(fcSettings.checkoutCoupons);})' );
 
 		// Styles
 		wp_register_style( 'fc-checkout-coupons', self::$directory_url . 'css/checkout-coupons'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );

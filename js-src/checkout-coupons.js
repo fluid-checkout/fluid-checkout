@@ -454,9 +454,14 @@
 
 
 	/**
-	 * Finish to initialize component and set related handlers.
+	 * Initialize component and set related handlers.
 	 */
-	var finishInit = function() {
+	_publicMethods.init = function( options ) {
+		if ( _hasInitialized ) { return; }
+
+		// Merge settings
+		_settings = extend( _settings, options );
+
 		// Add event listeners
 		window.addEventListener( 'click', handleClick );
 		document.addEventListener( 'keydown', handleKeyDown, true );
@@ -465,26 +470,6 @@
 		document.body.classList.add( _settings.bodyClass );
 
 		_hasInitialized = true;
-	}
-
-
-
-	/**
-	 * Initialize component and set related handlers.
-	 */
-	_publicMethods.init = function( options ) {
-		if ( _hasInitialized ) return;
-
-		// Merge settings
-		_settings = extend( _settings, options );
-
-		// Finish initialization, maybe load dependencies first
-		if ( window.CollapsibleBlock ) {
-			finishInit();
-		}
-		else if( window.RequireBundle ) {
-			RequireBundle.require( [ 'collapsible-block' ], function() { finishInit(); } );
-		}
 	};
 
 
