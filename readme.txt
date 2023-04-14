@@ -380,6 +380,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+BREAKING CHANGES - Utility scripts replacing duplicate code in Fluid Checkout Lite 3.0.0 break functionality of Fluid Checkout PRO prior to version 2.0.0. This change only affects Fluid Checkout PRO. Please update both plugins to the latest version.
+
 * Bump tested up to WooCommerce 7.6.0
 * Improved: Refactored scripts to reduce duplicate code of utility functions and variables.
 * Improved: Removed dependency on the library RequireBundle to load scripts and styles.
@@ -472,6 +474,9 @@ POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause cust
 
 
 == Upgrade Notice ==
+
+= 3.0 =
+* BREAKING CHANGES - Utility scripts replacing duplicate code in Fluid Checkout Lite 3.0.0 break functionality of Fluid Checkout PRO prior to version 2.0.0.
 
 = 2.3 =
 * POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause customizations to those files to stop working. See details in the changelog section.
