@@ -12,6 +12,7 @@ jQuery( function( $ ) {
 		return false;
 	}
 
+	// CHANGE: Add settings
 	var _settings = {
 		formRowExpansibleSelector: '.form-row.fc-expansible-form-section',
 		expansibleToggleSelector: '.fc-expansible-form-section__toggle',
@@ -20,6 +21,7 @@ jQuery( function( $ ) {
 		countryFieldsSelector: '#billing_country, #shipping_country, #country',
 		addressFieldGroupSelector: '.woocommerce-billing-fields, .woocommerce-shipping-fields, .woocommerce-address-fields',
 	};
+	// CHANGE: END - Add settings
 
 	var locale_json = wc_address_i18n_params.locale.replace( /&quot;/g, '"' ), locale = JSON.parse( locale_json );
 
