@@ -138,6 +138,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_script( 'fc-sticky-states', self::$directory_url . 'js/lib/sticky-states'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
 		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("load",function(){StickyStates.init(fcSettings.stickyStates);})' );
 
+		// Register script utilities
+		wp_register_script( 'fc-utils', self::$directory_url . 'js/fc-utils'. self::$asset_version . '.js', array(), NULL );
+
 		// Register custom fonts
 		wp_register_style( 'fc-fonts', self::$directory_url . 'css/fonts' . self::$asset_version . '.css', array(), null );
 
@@ -145,6 +148,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_style( 'fc-edit-address-page', self::$directory_url . 'css/edit-address-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 		wp_register_style( 'fc-add-payment-method-page', self::$directory_url . 'css/add-payment-method-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 		wp_register_style( 'fc-flyout-block', self::$directory_url . 'css/flyout-block' . $rtl_suffix . self::$asset_version . '.css', array(), null );
+		wp_register_style( 'fc-sticky-states', self::$directory_url . 'css/sticky-states' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 	}
 
 
@@ -182,6 +186,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		$this->enqueue_settings_inline_script();
 
 		// Scripts
+		wp_enqueue_script( 'fc-utils' );
 		wp_enqueue_script( 'fc-polyfill-inert' );
 		wp_enqueue_script( 'fc-animate-helper' );
 		wp_enqueue_script( 'fc-collapsible-block' );
@@ -190,6 +195,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Styles
 		wp_enqueue_style( 'fc-flyout-block' );
+		wp_enqueue_style( 'fc-sticky-states' );
 	}
 
 	/**

@@ -143,38 +143,6 @@
 
 
 	/**
-	 * Returns a function, that, as long as it continues to be invoked, will not
-	 * be triggered. The function will be called after it stops being called for
-	 * N milliseconds. If `immediate` is passed, trigger the function on the
-	 * leading edge, instead of the trailing.
-	 *
-	 * @param   {[type]}  func       Function to be executed.
-	 * @param   {[type]}  wait       Wait time in milliseconds.
-	 * @param   {[type]}  immediate  Trigger the function on the leading edge.
-	 *
-	 * @return  function              Function to be executed, incapsulated in a timed function.
-	 */
-	var _debounce = function ( func, wait, immediate ) {
-		var timeout;
-
-		return function() {
-		  var context = this, args = arguments;
-		  var later = function() {
-			timeout = null;
-			if (!immediate) func.apply( context, args );
-		  };
-
-		  var callNow = immediate && !timeout;
-		  clearTimeout( timeout );
-		  timeout = setTimeout( later, wait );
-
-		  if ( callNow ) func.apply( context, args );
-		};
-	};
-
-
-
-	/**
 	 * Check if the element is considered visible. Does not consider the CSS property `visibility: hidden;`.
 	 */
 	var isVisible = function( element ) {
@@ -783,7 +751,7 @@
 		// Maybe move place order section, and initialize resize observers
 		maybeMovePlaceOrderSection();
 		if ( window.ResizeObserver ) {
-			_resizeObserver = new ResizeObserver( _debounce( maybeMovePlaceOrderSection, _settings.placeOrderRefreshRate ) );
+			_resizeObserver = new ResizeObserver( FCUtils.debounce( maybeMovePlaceOrderSection, _settings.placeOrderRefreshRate ) );
 			_resizeObserver.observe( document.body );
 		}
 
