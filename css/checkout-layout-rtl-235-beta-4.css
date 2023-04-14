@@ -654,13 +654,6 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
   padding: 0 !important;
 }
 
-.fc-widget-area {
-  content: "";
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-}
-
 .fc-widget-area .widget {
   margin: 0;
 }

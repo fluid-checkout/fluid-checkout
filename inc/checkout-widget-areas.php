@@ -202,7 +202,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 
 		if ( is_active_sidebar( 'fc_checkout_sidebar_after' ) ) :
 			$additional_classes = 'yes' === get_option( 'fc_enable_checkout_widget_area_sidebar_last_step', 'no' ) ? 'last-step-only' : '';
-			echo '<div class="fc-widget-area fc-checkout-order-review__widgets-outside ' . $additional_classes . '">';
+			echo '<div class="fc-widget-area fc-checkout-order-review__widgets-outside fc-clearfix ' . $additional_classes . '">';
 			dynamic_sidebar( 'fc_checkout_sidebar_after' );
 			echo '</div>';
 		endif;
@@ -220,7 +220,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		if ( ! $is_sidebar_widget ) { return; }
 
 		if ( is_active_sidebar( 'fc_order_summary_after' ) ) :
-			echo '<div class="fc-widget-area fc-checkout-order-review__widgets-inside">';
+			echo '<div class="fc-widget-area fc-checkout-order-review__widgets-inside fc-clearfix">';
 			dynamic_sidebar( 'fc_order_summary_after' );
 			echo '</div>';
 		endif;
@@ -233,7 +233,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 */
 	public function output_widget_area_checkout_place_order_below() {
 		if ( is_active_sidebar( 'fc_place_order_after' ) ) :
-			echo '<div class="fc-widget-area fc-checkout__below-place-order-widgets">';
+			echo '<div class="fc-widget-area fc-checkout__below-place-order-widgets fc-clearfix">';
 			dynamic_sidebar( 'fc_place_order_after' );
 			echo '</div>';
 		endif;
