@@ -380,6 +380,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 7.6.0
 * Improved: Removed dependency on the library RequireBundle to load scripts and styles.
 * Improved: Revert to execute scripts on `load` instead of page `DOMContentLoaded` for better compatibility. Most notably with Cloudflare Rocket Loader.
 * Improved: Compatibility with Delivery & Pickup Date Time for WooCommerce - by CodeRockz, avoid PHP warning messages when that plugin settings are not saved yet.
