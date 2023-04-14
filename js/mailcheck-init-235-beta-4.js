@@ -28,10 +28,6 @@
 		suggestedElementTemplate: '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>Did you mean <a class="mailcheck-suggestion" href="#apply-suggestion" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>?</div>',
 		suggestionTemplate: '{address}@<span class="mailcheck-suggestion-domain">{domain}</span>',
 	}
-	var _key = {
-		ENTER: 'Enter',
-		SPACE: ' ',
-	}
 	var _tempTarget = null;
 
 
@@ -159,7 +155,7 @@
 		if ( e.defaultPrevented ) { return; }
 
 		// ENTER or SPACE on apply-suggestion element
-		if ( ( e.key == _key.ENTER || e.key == _key.SPACE ) && e.target.closest( _settings.suggestionApplySelector ) ) {
+		if ( ( FCUtils.keyboardKeys.ENTER === e.key || FCUtils.keyboardKeys.SPACE === e.key ) && e.target.closest( _settings.suggestionApplySelector ) ) {
 			// Simulate click
 			handleClick( e );
 		}

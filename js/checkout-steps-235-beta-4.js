@@ -42,6 +42,7 @@
 		nextStepButtonSelector: '[data-step-next]',
 		focusableElementsSelector: 'a[role="button"], a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), details, summary, iframe, object, embed, [contenteditable] [tabindex]:not([tabindex="-1"])',
 
+		checkoutFormSelector: 'form.checkout',
 		fieldSubmitFormSelector: 'input[type="text"], input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="radio"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"]',
 
 		substepSelector: '.fc-step__substep',
@@ -83,10 +84,6 @@
 		scrollBehavior: 'smooth',
 		scrollOffset: 0,
 		scrollDelay: 50,
-	}
-	var _key = {
-		ENTER: 'Enter',
-		SPACE: ' ',
 	}
 	var _resizeObserver;
 
@@ -679,12 +676,15 @@
 		if ( e.defaultPrevented ) { return; }
 
 		// ENTER or SPACE on handler elements
-		if ( ( e.key == _key.ENTER || e.key == _key.SPACE ) && ( e.target.closest( _settings.substepEditButtonSelector ) || e.target.closest( _settings.substepSaveButtonSelector ) ) ) {
+		if ( ( FCUtils.keyboardKeys.ENTER === e.key || FCUtils.keyboardKeys.SPACE === e.key ) && ( e.target.closest( _settings.substepEditButtonSelector ) || e.target.closest( _settings.substepSaveButtonSelector ) ) ) {
 			// Simulate click
 			handleClick( e );
 		}
-		else if ( e.key == _key.ENTER && e.target.closest( _settings.fieldSubmitFormSelector ) ) {
+		// ENTER on form fields.
+		// Prevents submit of the checkout form when pressing ENTER on a field inside the checkout form.
+		else if ( FCUtils.keyboardKeys.ENTER === e.key && e.target.closest( _settings.checkoutFormSelector ) && e.target.closest( _settings.fieldSubmitFormSelector ) ) {
 			e.preventDefault();
+
 			// Maybe validate field
 			if ( window.CheckoutValidation ) {
 				var field = e.target.closest( _settings.fieldSubmitFormSelector );

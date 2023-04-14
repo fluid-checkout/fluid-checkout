@@ -21,7 +21,7 @@
 
 
 
-	function select_image_button_click() {
+	function select_image_button_click( event ) {
 		event.preventDefault();
 
 		dialog_title = $(this).data('dialog-title');
@@ -33,12 +33,12 @@
 
 		//Extend the wp.media object
 		custom_uploader = wp.media.frames.file_frame = wp.media({
-		title: dialog_title,
-		button: {
-			text: button_text
-		},
-		library : { type : library_type },
-		multiple: multiple
+			title: dialog_title,
+			button: {
+				text: button_text
+			},
+			library : { type : library_type },
+			multiple: multiple
 		});
 
 		// When a file is selected
@@ -52,7 +52,7 @@
 
 
 
-	function clear_image_button_click() {
+	function clear_image_button_click( event) {
 		event.preventDefault();
 
 		var preview_id, control_id, message;

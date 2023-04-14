@@ -45,11 +45,6 @@
 		expansibleCouponToggleButtonSelector: '.expansible-section__toggle-plus--###SECTION_KEY###',
 
 		section_key_placeholder:  '###SECTION_KEY###',
-
-	}
-	var _key = {
-		ENTER: 'Enter',
-		SPACE: ' ',
 	}
 
 
@@ -166,7 +161,7 @@
 	 * Handle document clicks and route to the appropriate function.
 	 */
 	var handleClick = function( e ) {
-		
+
 		// ADD COUPON
 		if ( e.target.closest( _settings.addCouponButtonSelector ) ) {
 			e.preventDefault();
@@ -179,18 +174,15 @@
 			var removeCouponButton = e.target.closest( _settings.removeCouponButtonSelector );
 			processRemoveCoupon( removeCouponButton );
 		}
-		
+
 	};
 
 	/**
 	 * Handle keypress event.
 	 */
 	 var handleKeyDown = function( e ) {
-		// Should do nothing if the default action has been cancelled
-		if ( e.defaultPrevented ) { return; }
-
 		// ENTER on input fields
-		if ( e.key == _key.ENTER && e.target.closest( _settings.couponFieldSelector ) ) {
+		if ( FCUtils.keyboardKeys.ENTER === e.key && e.target.closest( _settings.couponFieldSelector ) ) {
 			// Prevents submitting form
 			e.preventDefault();
 
@@ -315,7 +307,7 @@
 							}
 						}
 					}
-					
+
 					$( document.body ).trigger( 'wc_fragment_refresh' );
 					$( document.body ).trigger( 'applied_coupon_in_checkout', [ data.coupon_code ] );
 					$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
@@ -385,7 +377,7 @@
 					if ( response.message && 'yes' !== _settings.suppressSuccessMessages ) {
 						showNotices( response.message, referenceElement );
 					}
-					
+
 					$( document.body ).trigger( 'wc_fragment_refresh' );
 					$( document.body ).trigger( 'removed_coupon_in_checkout', [ data.coupon_code ] );
 					$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );

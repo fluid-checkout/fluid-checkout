@@ -36,19 +36,6 @@ jQuery( function( $ ) {
 		checkoutPlaceOrderApplyLoadingClass:          'yes',
 		checkoutUpdateBeforeUnload:                   'yes',
 	};
-	var _key = {
-		ENTER: 'Enter',
-		SPACE: ' ',
-		TAB: 'Tab',
-		SHIFT: 'Shift',
-		CONTROL: 'Control',
-		COMMAND_OR_WINDOWS: 'Meta', // This is the `Windows` logo key, or the `Command` or `⌘` key on Mac keyboards.
-		ALT: 'Alt',
-		ARROW_LEFT: 'ArrowLeft',
-		ARROW_RIGHT: 'ArrowRight',
-		ARROW_UP: 'ArrowUp',
-		ARROW_DOWN: 'ArrowDown',
-	}
 	// CHANGE: END - Add default settings object
 
 	$.blockUI.defaults.overlayCSS.cursor = 'default';
@@ -371,7 +358,7 @@ jQuery( function( $ ) {
 			var code = e.key;
 
 			// CHANGE: Also skip `update_checkout` when pressing other controls keys such as "Shift", "Control", "Command", "Alt" and "Arrows"
-			if ( _key.TAB === code || _key.SHIFT === code || _key.CONTROL === code || _key.ALT === code || _key.COMMAND_OR_WINDOWS === code || _key.ARROW_LEFT === code || _key.ARROW_RIGHT === code || _key.ARROW_UP === code || _key.ARROW_DOWN === code ) {
+			if ( FCUtils.keyboardKeys.TAB === code || FCUtils.keyboardKeys.SHIFT === code || FCUtils.keyboardKeys.CONTROL === code || FCUtils.keyboardKeys.ALT === code || FCUtils.keyboardKeys.COMMAND_OR_WINDOWS === code || FCUtils.keyboardKeys.ARROW_LEFT === code || FCUtils.keyboardKeys.ARROW_RIGHT === code || FCUtils.keyboardKeys.ARROW_UP === code || FCUtils.keyboardKeys.ARROW_DOWN === code ) {
 				return true;
 			}
 
