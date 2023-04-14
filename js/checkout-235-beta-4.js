@@ -36,6 +36,19 @@ jQuery( function( $ ) {
 		checkoutPlaceOrderApplyLoadingClass:          'yes',
 		checkoutUpdateBeforeUnload:                   'yes',
 	};
+	var _key = {
+		ENTER: 'Enter',
+		SPACE: ' ',
+		TAB: 'Tab',
+		SHIFT: 'Shift',
+		CONTROL: 'Control',
+		COMMAND_OR_WINDOWS: 'Meta', // This is the `Windows` logo key, or the `Command` or `⌘` key on Mac keyboards.
+		ALT: 'Alt',
+		ARROW_LEFT: 'ArrowLeft',
+		ARROW_RIGHT: 'ArrowRight',
+		ARROW_UP: 'ArrowUp',
+		ARROW_DOWN: 'ArrowDown',
+	}
 	// CHANGE: END - Add default settings object
 
 	// CHANGE: Add auxiliar function to merge objects
@@ -398,10 +411,11 @@ jQuery( function( $ ) {
 			wc_checkout_form.maybe_set_form_row_loading( e );
 		},
 		queue_update_checkout: function( e ) {
-			var code = e.keyCode || e.which || 0;
+			// CHANGE: Add key detection to use the `event.key` property which is more reliable than `event.keyCode` or `event.which`.
+			var code = e.key;
 
 			// CHANGE: Also skip `update_checkout` when pressing other controls keys such as "Shift", "Control", "Command", "Alt" and "Arrows"
-			if ( code === 9 || code === 16 || code === 17 || code === 18 || code === 91 || code === 92 || code === 37 || code === 38 || code === 39 || code === 40 ) {
+			if ( _key.TAB === code || _key.SHIFT === code || _key.CONTROL === code || _key.ALT === code || _key.COMMAND_OR_WINDOWS === code || _key.ARROW_LEFT === code || _key.ARROW_RIGHT === code || _key.ARROW_UP === code || _key.ARROW_DOWN === code ) {
 				return true;
 			}
 
