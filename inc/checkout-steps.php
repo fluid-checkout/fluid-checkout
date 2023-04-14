@@ -641,23 +641,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Maybe load RTL file
 		$rtl_suffix = is_rtl() ? '-rtl' : '';
 
+		// Scripts
+		wp_register_script( 'fc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout', 'fc-utils', 'fc-collapsible-block' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init(fcSettings.checkoutSteps);})' );
+
 		// Styles
 		wp_register_style( 'fc-checkout-steps', self::$directory_url . 'css/checkout-steps'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
-
-		// Checkout steps scripts
-		wp_register_script( 'fc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout', 'fc-collapsible-block' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init(fcSettings.checkoutSteps);})' );
 	}
 
 	/**
 	 * Enqueue assets.
 	 */
 	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-steps' );
+
 		// Styles
 		wp_enqueue_style( 'fc-checkout-steps' );
-
-		// Checkout steps scripts
-		wp_enqueue_script( 'fc-checkout-steps' );
 	}
 
 	/**

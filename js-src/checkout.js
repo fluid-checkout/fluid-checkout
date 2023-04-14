@@ -38,50 +38,6 @@ jQuery( function( $ ) {
 	};
 	// CHANGE: END - Add default settings object
 
-	// CHANGE: Add auxiliar function to merge objects
-	/*!
-	* Merge two or more objects together.
-	* (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
-	* @param   {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
-	* @param   {Object}   objects  The objects to merge together
-	* @returns {Object}            Merged values of defaults and options
-	*/
-	var extend = function () {
-		// Variables
-		var extended = {};
-		var deep = false;
-		var i = 0;
-
-		// Check if a deep merge
-		if ( Object.prototype.toString.call( arguments[0] ) === '[object Boolean]' ) {
-			deep = arguments[0];
-			i++;
-		}
-
-		// Merge the object into the extended object
-		var merge = function (obj) {
-			for (var prop in obj) {
-				if (obj.hasOwnProperty(prop)) {
-					// If property is an object, merge properties
-					if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
-						extended[prop] = extend(extended[prop], obj[prop]);
-					} else {
-						extended[prop] = obj[prop];
-					}
-				}
-			}
-		};
-
-		// Loop through each object and conduct a merge
-		for (; i < arguments.length; i++) {
-			var obj = arguments[i];
-			merge(obj);
-		}
-
-		return extended;
-    };
-	// CHANGE: END - Add auxiliar function to merge objects
-
 	$.blockUI.defaults.overlayCSS.cursor = 'default';
 
 	var wc_checkout_form = {
@@ -93,7 +49,7 @@ jQuery( function( $ ) {
 		$checkout_form: $( 'form.checkout' ),
 		init: function() {
 			// CHANGE: Merge default settings object with values from the server settings object
-			_settings = extend( true, _settings, window.fcSettings );
+			_settings = FCUtils.extendObject( true, _settings, window.fcSettings );
 
 			$( document.body ).on( 'update_checkout', this.update_checkout );
 			$( document.body ).on( 'init_checkout', this.init_checkout );
@@ -398,10 +354,11 @@ jQuery( function( $ ) {
 			wc_checkout_form.maybe_set_form_row_loading( e );
 		},
 		queue_update_checkout: function( e ) {
-			var code = e.keyCode || e.which || 0;
+			// CHANGE: Add key detection to use the `event.key` property which is more reliable than `event.keyCode` or `event.which`.
+			var code = e.key;
 
 			// CHANGE: Also skip `update_checkout` when pressing other controls keys such as "Shift", "Control", "Command", "Alt" and "Arrows"
-			if ( code === 9 || code === 16 || code === 17 || code === 18 || code === 91 || code === 92 || code === 37 || code === 38 || code === 39 || code === 40 ) {
+			if ( FCUtils.keyboardKeys.TAB === code || FCUtils.keyboardKeys.SHIFT === code || FCUtils.keyboardKeys.CONTROL === code || FCUtils.keyboardKeys.ALT === code || FCUtils.keyboardKeys.COMMAND_OR_WINDOWS === code || FCUtils.keyboardKeys.ARROW_LEFT === code || FCUtils.keyboardKeys.ARROW_RIGHT === code || FCUtils.keyboardKeys.ARROW_UP === code || FCUtils.keyboardKeys.ARROW_DOWN === code ) {
 				return true;
 			}
 

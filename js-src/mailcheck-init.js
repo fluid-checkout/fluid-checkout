@@ -28,10 +28,6 @@
 		suggestedElementTemplate: '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>Did you mean <a class="mailcheck-suggestion" href="#apply-suggestion" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>?</div>',
 		suggestionTemplate: '{address}@<span class="mailcheck-suggestion-domain">{domain}</span>',
 	}
-	var _key = {
-		ENTER: 'Enter',
-		SPACE: ' ',
-	}
 	var _tempTarget = null;
 
 
@@ -39,50 +35,6 @@
 	/**
 	 * METHODS
 	 */
-
-
-
-	/*!
-	* Merge two or more objects together.
-	* (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
-	* @param   {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
-	* @param   {Object}   objects  The objects to merge together
-	* @returns {Object}            Merged values of defaults and options
-	*/
-	var extend = function () {
-		// Variables
-		var extended = {};
-		var deep = false;
-		var i = 0;
-
-		// Check if a deep merge
-		if ( Object.prototype.toString.call( arguments[0] ) === '[object Boolean]' ) {
-			deep = arguments[0];
-			i++;
-		}
-
-		// Merge the object into the extended object
-		var merge = function (obj) {
-			for (var prop in obj) {
-				if (obj.hasOwnProperty(prop)) {
-					// If property is an object, merge properties
-					if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
-						extended[prop] = extend(extended[prop], obj[prop]);
-					} else {
-						extended[prop] = obj[prop];
-					}
-				}
-			}
-		};
-
-		// Loop through each object and conduct a merge
-		for (; i < arguments.length; i++) {
-			var obj = arguments[i];
-			merge(obj);
-		}
-
-		return extended;
-    };
 
 
 
@@ -203,7 +155,7 @@
 		if ( e.defaultPrevented ) { return; }
 
 		// ENTER or SPACE on apply-suggestion element
-		if ( ( e.key == _key.ENTER || e.key == _key.SPACE ) && e.target.closest( _settings.suggestionApplySelector ) ) {
+		if ( ( FCUtils.keyboardKeys.ENTER === e.key || FCUtils.keyboardKeys.SPACE === e.key ) && e.target.closest( _settings.suggestionApplySelector ) ) {
 			// Simulate click
 			handleClick( e );
 		}
@@ -218,7 +170,7 @@
 		if ( _hasInitialized ) return;
 
 		// Merge settings
-		_settings = extend( true, _settings, options );
+		_settings = FCUtils.extendObject( true, _settings, options );
 
 		// Add event listeners
 		window.addEventListener( 'keyup', handleTriggerEvents, true );

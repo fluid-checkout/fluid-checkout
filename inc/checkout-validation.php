@@ -100,10 +100,10 @@ class FluidCheckout_Validation extends FluidCheckout {
 		wp_register_style( 'fc-checkout-validation', self::$directory_url . 'css/checkout-validation'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
 
 		// Scripts
-		wp_register_script( 'fc-checkout-validation', self::$directory_url . 'js/checkout-validation'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
+		wp_register_script( 'fc-checkout-validation', self::$directory_url . 'js/checkout-validation'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout', 'fc-utils' ), NULL, true );
 		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("load",function(){CheckoutValidation.init(fcSettings.checkoutValidation);})' );
 		wp_register_script( 'fc-mailcheck', self::$directory_url . 'js/lib/mailcheck'. self::$asset_version . '.js', array( 'jquery' ), NULL );
-		wp_register_script( 'fc-mailcheck-init', self::$directory_url . 'js/mailcheck-init'. self::$asset_version . '.js', array( 'jquery', 'fc-mailcheck' ), NULL );
+		wp_register_script( 'fc-mailcheck-init', self::$directory_url . 'js/mailcheck-init'. self::$asset_version . '.js', array( 'jquery', 'fc-utils', 'fc-mailcheck' ), NULL );
 		wp_add_inline_script( 'fc-mailcheck-init', 'window.addEventListener("load",function(){MailcheckInit.init(fcSettings.checkoutValidation.mailcheckSuggestions);})' );
 	}
 
