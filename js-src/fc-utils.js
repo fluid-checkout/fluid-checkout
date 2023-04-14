@@ -84,7 +84,7 @@
 				if (obj.hasOwnProperty(prop)) {
 					// If property is an object, merge properties
 					if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
-						extended[prop] = extend(extended[prop], obj[prop]);
+						extended[prop] = _publicMethods.extendObject(extended[prop], obj[prop]);
 					} else {
 						extended[prop] = obj[prop];
 					}
