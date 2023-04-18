@@ -101,6 +101,13 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		$delivery_date_settings = get_option( 'coderockz_woo_delivery_date_settings' );
 		$pickup_date_settings = get_option( 'coderockz_woo_delivery_pickup_date_settings' );
 
+		// Bail if none of the delivery options are saved
+		if (
+			( ! is_array( $delivery_option_settings ) || true !== $delivery_option_settings[ 'enable_option_time_pickup' ] )
+			&& ! is_array( $delivery_date_settings )
+			&& ! is_array( $pickup_date_settings )
+		) { return; }
+
 		// Define substep title
 		$substep_title = __( 'Delivery Options', 'fluid-checkout' );
 		// Both delivery and pickup enabled
@@ -142,6 +149,66 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 
 	/**
+	 * Set the related checkout step as incomplete depending on the `woo-delivery` plugin settings and its field values.
+	 *
+	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 */
+	public function maybe_set_step_incomplete( $is_step_complete ) {
+		// Bail if step is already incomplete
+		if ( ! $is_step_complete ) { return $is_step_complete; }
+
+		// Get settings
+		$delivery_option_settings = get_option( 'coderockz_woo_delivery_option_delivery_settings' );
+		$delivery_date_settings = get_option( 'coderockz_woo_delivery_date_settings' );
+		$delivery_time_settings = get_option( 'coderockz_woo_delivery_time_settings' );
+		$pickup_date_settings = get_option( 'coderockz_woo_delivery_pickup_date_settings' );
+		$pickup_time_settings = get_option( 'coderockz_woo_delivery_pickup_settings' );
+
+		// Get field values
+		$order_type = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_delivery_selection_box' );
+		$delivery_date = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_date_field' );
+		$delivery_time = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_time_field' );
+		$pickup_date = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_date_field' );
+		$pickup_time = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_time_field' );
+
+		// Check order type
+		// Note that `enable_option_time_pickup` means that the user can choose between delivery and pickup
+		if ( is_array( $delivery_option_settings ) && true === $delivery_option_settings[ 'enable_option_time_pickup' ] && ! in_array( $order_type, $this->get_allowed_order_type_values() ) ) {
+			$is_step_complete = false;
+		}
+
+		// Always set set as incomplete if option to select between delivery and pickup is enabled
+		// This is a limitation of the since it does not allow to set a default value for that option
+		if ( is_array( $delivery_option_settings ) && true === $delivery_option_settings[ 'enable_option_time_pickup' ] ) {
+			$is_step_complete = false;
+		}
+
+		// Check delivery date is enabled and mandatory
+		if ( is_array( $delivery_date_settings ) && true === $delivery_date_settings[ 'enable_delivery_date' ] && true === $delivery_date_settings[ 'delivery_date_mandatory' ] && empty( $delivery_date ) ) {
+			$is_step_complete = false;
+		}
+
+		// Check delivery time is enabled and mandatory
+		if ( is_array( $delivery_time_settings ) && true === $delivery_time_settings[ 'enable_delivery_time' ] && true === $delivery_time_settings[ 'delivery_time_mandatory' ] && empty( $delivery_time ) ) {
+			$is_step_complete = false;
+		}
+
+		// Check pickup date is enabled and mandatory
+		if ( is_array( $pickup_date_settings ) && true === $pickup_date_settings[ 'enable_pickup_date' ] && true === $pickup_date_settings[ 'pickup_date_mandatory' ] && empty( $pickup_date ) ) {
+			$is_step_complete = false;
+		}
+
+		// Check pickup time is enabled and mandatory
+		if ( is_array( $pickup_time_settings ) && true === $pickup_time_settings[ 'enable_pickup_time' ] && true === $pickup_time_settings[ 'pickup_time_mandatory' ] && empty( $pickup_time ) ) {
+			$is_step_complete = false;
+		}
+
+		return $is_step_complete;
+	}
+
+
+
+	/**
 	 * Add the delivery date substep review text lines.
 	 * 
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
@@ -152,7 +219,11 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 		// Get settings
 		$delivery_option_settings = get_option( 'coderockz_woo_delivery_option_delivery_settings' );
-		
+		$delivery_date_settings = get_option( 'coderockz_woo_delivery_date_settings' );
+		$delivery_time_settings = get_option( 'coderockz_woo_delivery_time_settings' );
+		$pickup_date_settings = get_option( 'coderockz_woo_delivery_pickup_date_settings' );
+		$pickup_time_settings = get_option( 'coderockz_woo_delivery_pickup_settings' );
+
 		// Get field values
 		$order_type = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_delivery_selection_box' );
 		$delivery_date = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_date_field' );
@@ -164,13 +235,6 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		$delivery_field_label = ( isset( $delivery_option_settings[ 'delivery_label' ] ) && ! empty( $delivery_option_settings[ 'delivery_label' ] ) ) ? stripslashes( $delivery_option_settings[ 'delivery_label' ] ) : __( 'Delivery', 'woo-delivery' );
 		$pickup_field_label = ( isset( $delivery_option_settings[ 'pickup_label' ] ) && ! empty( $delivery_option_settings[ 'pickup_label' ] ) ) ? stripslashes( $delivery_option_settings[ 'pickup_label' ] ) : __( 'Pickup', 'woo-delivery' );
 
-		// Value flags
-		$has_delivery_date = ! empty( $delivery_date );
-		$has_delivery_time = ! empty( $delivery_time );
-		$has_pickup_date = ! empty( $pickup_date );
-		$has_pickup_time = ! empty( $pickup_time );
-		$has_values = $has_delivery_date || $has_delivery_time || $has_pickup_date || $has_pickup_time;
-
 		// Check order type
 		// Note that `enable_option_time_pickup` means that the user can choose between delivery and pickup
 		$is_allowed_order_type = false;
@@ -178,38 +242,57 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 			$is_allowed_order_type = in_array( $order_type, $this->get_allowed_order_type_values() );
 		}
 
-		if ( $has_values ) {
-
+		if (
+			// Order type is delivery or not enabled
+			( // Delivery
+				( is_array( $delivery_date_settings ) && true === $delivery_date_settings[ 'enable_delivery_date' ] && ! empty( $delivery_date ) ) // Delivery date is enabled and has a value
+				|| ( is_array( $delivery_time_settings ) && true === $delivery_time_settings[ 'enable_delivery_time' ] && ! empty( $delivery_time ) ) // Delivery time is enabled and has a value
+			)
+			|| ( // Pickup
+				( is_array( $pickup_date_settings ) && true === $pickup_date_settings[ 'enable_pickup_date' ] && ! empty( $pickup_date ) ) // Pickup date is enabled and has a value
+				|| ( is_array( $pickup_time_settings ) && true === $pickup_time_settings[ 'enable_pickup_time' ] && ! empty( $pickup_time ) ) // Pickup time is enabled and has a value
+			)
+		) {
 			// Delivery
-			// Note that `enable_option_time_pickup` means that the user can choose between delivery and pickup
-			if ( ( ( is_array( $delivery_option_settings ) && true !== $delivery_option_settings[ 'enable_option_time_pickup' ] ) || 'delivery' === $order_type ) && ( $has_delivery_date || $has_delivery_time ) ) {
+			if (
+				( ( is_array( $delivery_option_settings ) && true !== $delivery_option_settings[ 'enable_option_time_pickup' ] ) || 'delivery' === $order_type ) // Order type is delivery or not enabled
+				&& (
+					( is_array( $delivery_date_settings ) && true === $delivery_date_settings[ 'enable_delivery_date' ] && ! empty( $delivery_date ) ) // Delivery date is enabled and has a value
+					|| ( is_array( $delivery_time_settings ) && true === $delivery_time_settings[ 'enable_delivery_time' ] && ! empty( $delivery_time ) ) // Delivery time is enabled and has a value
+				)
+			) {
 				// Delivery label
 				$review_text_lines[] = '<strong>' . esc_html( $delivery_field_label ) . '</strong>';
 
-				// Delivery Date
-				if ( $has_delivery_date ) {
+				// Delivery date is enabled and has a value
+				if ( ( is_array( $delivery_date_settings ) && true === $delivery_date_settings[ 'enable_delivery_date' ] && ! empty( $delivery_date ) ) ) {
 					$review_text_lines[] = $delivery_date;
 				}
 
-				// Delivery Time
-				if ( $has_delivery_time ) {
+				// Delivery time is enabled and has a value
+				if ( ( is_array( $delivery_time_settings ) && true === $delivery_time_settings[ 'enable_delivery_time' ] && ! empty( $delivery_time ) ) ) {
 					$review_text_lines[] = $delivery_time;
 				}
 			}
 
 			// Pickup
-			// Note that `enable_option_time_pickup` means that the user can choose between delivery and pickup
-			if ( ( ( is_array( $delivery_option_settings ) && true !== $delivery_option_settings[ 'enable_option_time_pickup' ] ) || 'pickup' === $order_type ) && ( $has_pickup_date || $has_pickup_time ) ) {
+			if (
+				( ( is_array( $delivery_option_settings ) && true !== $delivery_option_settings[ 'enable_option_time_pickup' ] ) || 'pickup' === $order_type ) // Order type is pickup or not enabled
+				&& (
+					( is_array( $pickup_date_settings ) && true === $pickup_date_settings[ 'enable_pickup_date' ] && ! empty( $pickup_date ) ) // Pickup date is enabled and has a value
+					|| ( is_array( $pickup_time_settings ) && true === $pickup_time_settings[ 'enable_pickup_time' ] && ! empty( $pickup_time ) ) // Pickup time is enabled and has a value
+				)
+			) {
 				// Pickup label
 				$review_text_lines[] = '<strong>' . esc_html( $pickup_field_label ) . '</strong>';
 
-				// Pickup Date
-				if ( $has_pickup_date ) {
+				// Pickup date is enabled and has a value
+				if ( ( is_array( $pickup_date_settings ) && true === $pickup_date_settings[ 'enable_pickup_date' ] && ! empty( $pickup_date ) ) ) {
 					$review_text_lines[] = $pickup_date;
 				}
 
-				// Pickup Time
-				if ( $has_pickup_time ) {
+				// Pickup time is enabled and has a value
+				if ( ( is_array( $pickup_time_settings ) && true === $pickup_time_settings[ 'enable_pickup_time' ] && ! empty( $pickup_time ) ) ) {
 					$review_text_lines[] = $pickup_time;
 				}
 			}
@@ -305,74 +388,6 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		}
 
 		return $args;
-	}
-
-
-
-	/**
-	 * Set the related checkout step as incomplete depending on the `woo-delivery` plugin settings and its field values.
-	 *
-	 * @param   bool  $is_step_complete  Whether the step is complete or not.
-	 */
-	public function maybe_set_step_incomplete( $is_step_complete ) {
-		// Bail if step is already incomplete
-		if ( ! $is_step_complete ) { return $is_step_complete; }
-
-		// Get settings
-		$delivery_option_settings = get_option( 'coderockz_woo_delivery_option_delivery_settings' );
-		$delivery_date_settings = get_option( 'coderockz_woo_delivery_date_settings' );
-		$delivery_time_settings = get_option( 'coderockz_woo_delivery_time_settings' );
-		$pickup_date_settings = get_option( 'coderockz_woo_delivery_pickup_date_settings' );
-		$pickup_time_settings = get_option( 'coderockz_woo_delivery_pickup_settings' );
-
-		// Get field values
-		$order_type = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_delivery_selection_box' );
-		$delivery_date = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_date_field' );
-		$delivery_time = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_time_field' );
-		$pickup_date = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_date_field' );
-		$pickup_time = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'coderockz_woo_delivery_pickup_time_field' );
-
-		// Check order type
-		// Note that `enable_option_time_pickup` means that the user can choose between delivery and pickup
-		if ( is_array( $delivery_option_settings ) && true === $delivery_option_settings[ 'enable_option_time_pickup' ] ) {
-			if ( ! in_array( $order_type, $this->get_allowed_order_type_values() ) ) {
-				$is_step_complete = false;
-			}
-		}
-
-		// Check delivery values
-		// Note that `enable_option_time_pickup` means that the user can choose between delivery and pickup
-		if ( ( is_array( $delivery_option_settings ) && true !== $delivery_option_settings[ 'enable_option_time_pickup' ] ) || 'delivery' === $order_type ) {
-
-			// Check delivery date is enabled and mandatory
-			if ( is_array( $delivery_date_settings ) && true === $delivery_date_settings[ 'enable_delivery_date' ] && true === $delivery_date_settings[ 'delivery_date_mandatory' ] && empty( $delivery_date ) ) {
-				$is_step_complete = false;
-			}
-
-			// Check delivery time is enabled and mandatory
-			if ( is_array( $delivery_time_settings ) && true === $delivery_time_settings[ 'enable_delivery_time' ] && true === $delivery_time_settings[ 'delivery_time_mandatory' ] && empty( $delivery_time ) ) {
-				$is_step_complete = false;
-			}
-
-		}
-		
-		// Check pickup values
-		// Note that `enable_option_time_pickup` means that the user can choose between delivery and pickup
-		if ( ( is_array( $delivery_option_settings ) && true !== $delivery_option_settings[ 'enable_option_time_pickup' ] ) || 'pickup' === $order_type ) {
-
-			// Check pickup date is enabled and mandatory
-			if ( is_array( $pickup_date_settings ) && true === $pickup_date_settings[ 'enable_pickup_date' ] && $pickup_date_settings[ 'pickup_date_mandatory' ] === true && empty( $pickup_date ) ) {
-				$is_step_complete = false;
-			}
-
-			// Check pickup time is enabled and mandatory
-			if ( is_array( $pickup_time_settings ) && true === $pickup_time_settings[ 'enable_pickup_time' ] && $pickup_time_settings[ 'pickup_time_mandatory' ] === true && empty( $pickup_time ) ) {
-				$is_step_complete = false;
-			}
-
-		}
-
-		return $is_step_complete;
 	}
 
 }
