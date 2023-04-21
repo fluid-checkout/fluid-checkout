@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-02 11:34+0000\n"
-"PO-Revision-Date: 2023-04-06 15:25+0000\n"
+"PO-Revision-Date: 2023-04-21 14:09+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: German (Formal)\n"
 "Language: de_DE_formal\n"
@@ -19,7 +19,7 @@ msgid "(Experimental) Use theme's page header and footer for the checkout page"
 msgstr ""
 "(Experimentell) Header und Footer des Themes für die Checkout-Seite verwenden"
 
-#: inc/checkout-validation.php:290
+#: inc/checkout-validation.php:295
 msgid "(Required)"
 msgstr "(Pflichtfeld)"
 
@@ -154,7 +154,7 @@ msgstr "Captcha Pro von BestWebSoft"
 msgid "Cart total:"
 msgstr "Warenkorb gesamt:"
 
-#: inc/checkout-validation.php:145
+#: inc/checkout-validation.php:150
 msgid "Change email address to: {suggestion-value}"
 msgstr "Ändern Sie die E-Mail-Adresse in: {suggestion-value}"
 
@@ -354,20 +354,20 @@ msgstr ""
 "Sichtbarkeit des Feldes für zusätzliche Anmerkungen zur Bestellungen "
 "festlegen"
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:104
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:119
 msgid "Delivery Date"
 msgstr "Lieferdatum"
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:96
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:112
 msgid "Delivery Options"
 msgstr "Versandoptionen"
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:100
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:115
 msgid "Delivery or Pickup"
 msgstr "Lieferung oder Abholung"
 
 #. %s: html for the email address typo correction suggestion link
-#: inc/checkout-validation.php:145
+#: inc/checkout-validation.php:150
 #, php-format
 msgid "Did you mean %s?"
 msgstr "Meinten Sie %s?"
@@ -512,10 +512,6 @@ msgstr "Abschnitt „Rechnungsadresse“ im Checkout-Formular hervorheben"
 #: inc/admin/admin-settings-general.php:179
 msgid "Highlight the shipping address section in the checkout form"
 msgstr "Abschnitt „Lieferadresse“ im Checkout-Formular hervorheben"
-
-#: inc/checkout-fields.php:119
-msgid "House number and street name."
-msgstr "Straße und Hausnummer."
 
 #: inc/admin/admin-settings-general.php:96
 #: inc/admin/admin-settings-general.php:106
@@ -684,7 +680,7 @@ msgstr "--"
 msgid "Not selected yet."
 msgstr "Noch nicht ausgewählt."
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:203
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:320
 msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr "Keine."
@@ -759,7 +755,7 @@ msgstr "Hintergrundfarbe der Seite"
 msgid "Payment method"
 msgstr "Zahlungsmethode"
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:108
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:123
 msgid "Pickup Date"
 msgstr "Abholdatum"
 
@@ -939,15 +935,15 @@ msgstr ""
 "Diese Widget-Bereiche werden verwendet, um Vertrauenssymbole auf der "
 "Checkout-Seite hinzuzufügen."
 
-#: inc/checkout-validation.php:150
+#: inc/checkout-validation.php:155
 msgid "This field does not match the related field value."
 msgstr "Dieses Feld stimmt nicht mit dem entsprechenden Feldwert überein."
 
-#: inc/checkout-validation.php:148
+#: inc/checkout-validation.php:153
 msgid "This is a required field."
 msgstr "Dies ist ein Pflichtfeld."
 
-#: inc/checkout-validation.php:149
+#: inc/checkout-validation.php:154
 msgid "This is not a valid email address."
 msgstr "Dies ist keine gültige E-Mail-Adresse."
 
