@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-03 13:49+0000\n"
-"PO-Revision-Date: 2023-04-06 15:26+0000\n"
+"PO-Revision-Date: 2023-04-21 14:09+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -20,7 +20,7 @@ msgstr ""
 "(Sperimentale) Utilizza l'intestazione e il piè di pagina della pagina del "
 "tema per la pagina di checkout"
 
-#: inc/checkout-validation.php:290
+#: inc/checkout-validation.php:295
 msgid "(Required)"
 msgstr "(Obbligatorio)"
 
@@ -157,7 +157,7 @@ msgstr "Captcha Pro di BestWebSoft"
 msgid "Cart total:"
 msgstr "Totale carrello:"
 
-#: inc/checkout-validation.php:145
+#: inc/checkout-validation.php:150
 msgid "Change email address to: {suggestion-value}"
 msgstr "Modifica l'indirizzo e-mail in: {suggestion-value}"
 
@@ -354,20 +354,20 @@ msgstr ""
 msgid "Define the visibility of the additional order notes field."
 msgstr "Definisci la visibilità del campo Note aggiuntive per l'ordine."
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:104
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:119
 msgid "Delivery Date"
 msgstr "Data di consegna"
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:96
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:112
 msgid "Delivery Options"
 msgstr "Opzioni di consegna"
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:100
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:115
 msgid "Delivery or Pickup"
 msgstr "Consegna o ritiro"
 
 #. %s: html for the email address typo correction suggestion link
-#: inc/checkout-validation.php:145
+#: inc/checkout-validation.php:150
 #, php-format
 msgid "Did you mean %s?"
 msgstr "Intendevi %s?"
@@ -520,10 +520,6 @@ msgstr ""
 msgid "Highlight the shipping address section in the checkout form"
 msgstr ""
 "Evidenzia la sezione dell'indirizzo di spedizione nel modulo di checkout"
-
-#: inc/checkout-fields.php:119
-msgid "House number and street name."
-msgstr "Via e numero civico."
 
 #: inc/admin/admin-settings-general.php:96
 #: inc/admin/admin-settings-general.php:106
@@ -680,7 +676,7 @@ msgstr "--"
 msgid "Not selected yet."
 msgstr "Non ancora selezionato."
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:203
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:320
 msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr "Nessuno."
@@ -756,7 +752,7 @@ msgstr "Colore di sfondo della pagina"
 msgid "Payment method"
 msgstr "Modalità di pagamento"
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:108
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:123
 msgid "Pickup Date"
 msgstr "Data del ritiro"
 
@@ -936,15 +932,15 @@ msgstr ""
 "Queste aree widget vengono utilizzate per aggiungere simboli di fiducia "
 "nella pagina di checkout."
 
-#: inc/checkout-validation.php:150
+#: inc/checkout-validation.php:155
 msgid "This field does not match the related field value."
 msgstr "Questo campo non corrisponde al valore del campo correlato."
 
-#: inc/checkout-validation.php:148
+#: inc/checkout-validation.php:153
 msgid "This is a required field."
 msgstr "Questo campo è obbligatorio."
 
-#: inc/checkout-validation.php:149
+#: inc/checkout-validation.php:154
 msgid "This is not a valid email address."
 msgstr "Questo non è un indirizzo e-mail valido."
 

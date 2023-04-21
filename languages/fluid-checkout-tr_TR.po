@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-03 18:58+0000\n"
-"PO-Revision-Date: 2023-04-06 15:27+0000\n"
+"PO-Revision-Date: 2023-04-21 14:09+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -20,7 +20,7 @@ msgstr ""
 "(Deneysel) Ödeme sayfası için temanın sayfa üstbilgisini ve altbilgisini "
 "kullanın"
 
-#: inc/checkout-validation.php:290
+#: inc/checkout-validation.php:295
 msgid "(Required)"
 msgstr "(Gerekli)"
 
@@ -155,7 +155,7 @@ msgstr "BestWebSoft'tan Captcha Pro"
 msgid "Cart total:"
 msgstr "Sepet toplamı:"
 
-#: inc/checkout-validation.php:145
+#: inc/checkout-validation.php:150
 msgid "Change email address to: {suggestion-value}"
 msgstr "E-posta adresini şu şekilde değiştirin: {suggestion-value}"
 
@@ -350,20 +350,20 @@ msgstr ""
 msgid "Define the visibility of the additional order notes field."
 msgstr "Ek sipariş notları alanının görünürlüğünü tanımlayın."
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:104
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:119
 msgid "Delivery Date"
 msgstr "Teslimat Tarihi"
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:96
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:112
 msgid "Delivery Options"
 msgstr "Teslimat Seçenekleri"
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:100
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:115
 msgid "Delivery or Pickup"
 msgstr "Adrese Teslimat veya Adresten Teslim Alma"
 
 #. %s: html for the email address typo correction suggestion link
-#: inc/checkout-validation.php:145
+#: inc/checkout-validation.php:150
 #, php-format
 msgid "Did you mean %s?"
 msgstr "%s mi demek istediniz?"
@@ -507,10 +507,6 @@ msgstr "Ödeme formunda fatura adresi bölümünü vurgulayın"
 #: inc/admin/admin-settings-general.php:179
 msgid "Highlight the shipping address section in the checkout form"
 msgstr "Ödeme formunda gönderim adresi bölümünü vurgulayın"
-
-#: inc/checkout-fields.php:119
-msgid "House number and street name."
-msgstr "Ev numarası ve sokak adı."
 
 #: inc/admin/admin-settings-general.php:96
 #: inc/admin/admin-settings-general.php:106
@@ -680,7 +676,7 @@ msgstr "--"
 msgid "Not selected yet."
 msgstr "Henüz seçilmedi."
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:203
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:320
 msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr "Yok."
@@ -754,7 +750,7 @@ msgstr "Sayfa arka plan rengi"
 msgid "Payment method"
 msgstr "Ödeme yöntemi"
 
-#: inc/compat/plugins/compat-plugin-woo-delivery.php:108
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:123
 msgid "Pickup Date"
 msgstr "Alım Tarihi"
 
@@ -935,16 +931,16 @@ msgstr ""
 "Bu pencere öğesi alanları, ödeme sayfasına güven simgeleri eklemek için "
 "kullanılır."
 
-#: inc/checkout-validation.php:150
+#: inc/checkout-validation.php:155
 #| msgid "This does not match the related field value."
 msgid "This field does not match the related field value."
 msgstr "Bu, ilgili alan değeriyle eşleşmiyor."
 
-#: inc/checkout-validation.php:148
+#: inc/checkout-validation.php:153
 msgid "This is a required field."
 msgstr "Bu gerekli bir alandır."
 
-#: inc/checkout-validation.php:149
+#: inc/checkout-validation.php:154
 msgid "This is not a valid email address."
 msgstr "Bu geçerli bir e-posta adresi değil."
 

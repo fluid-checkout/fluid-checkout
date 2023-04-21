@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
 
 <footer class="fc-checkout-footer">
-	<div class="fc-widget-area fc-checkout-footer__inner">
+	<div class="fc-widget-area fc-checkout-footer__inner fc-clearfix">
 
 		<?php do_action( 'fc_checkout_footer_widgets' ); ?>
 

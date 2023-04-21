@@ -32,7 +32,7 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 	public function register_assets() {
 		// Checkout events
 		wp_register_script( 'fc-compat-pymntpl-paypal-woocommerce-checkout', self::$directory_url . 'js/compat/plugins/pymntpl-paypal-woocommerce/paypal-checkout-events' . self::$asset_version . '.js', array( 'jquery' ), NULL, true );
-		wp_add_inline_script( 'fc-compat-pymntpl-paypal-woocommerce-checkout', 'window.addEventListener("DOMContentLoaded",function(){PaymentPluginsPayPalCheckoutEvents.init();})' );
+		wp_add_inline_script( 'fc-compat-pymntpl-paypal-woocommerce-checkout', 'window.addEventListener("load",function(){PaymentPluginsPayPalCheckoutEvents.init();})' );
 	}
 
 	/**
