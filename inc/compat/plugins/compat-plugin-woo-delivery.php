@@ -242,20 +242,26 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 			$is_allowed_order_type = in_array( $order_type, $this->get_allowed_order_type_values() );
 		}
 
+		// Check delivery or pickup
 		if (
-			// Order type is delivery or not enabled
 			( // Delivery
-				( is_array( $delivery_date_settings ) && true === $delivery_date_settings[ 'enable_delivery_date' ] && ! empty( $delivery_date ) ) // Delivery date is enabled and has a value
-				|| ( is_array( $delivery_time_settings ) && true === $delivery_time_settings[ 'enable_delivery_time' ] && ! empty( $delivery_time ) ) // Delivery time is enabled and has a value
+				( ! is_array( $delivery_option_settings ) || ( is_array( $delivery_option_settings ) && true !== $delivery_option_settings[ 'enable_option_time_pickup' ] ) || 'delivery' === $order_type ) // Order type is delivery or not enabled
+				&& (
+					( is_array( $delivery_date_settings ) && true === $delivery_date_settings[ 'enable_delivery_date' ] && ! empty( $delivery_date ) ) // Delivery date is enabled and has a value
+					|| ( is_array( $delivery_time_settings ) && true === $delivery_time_settings[ 'enable_delivery_time' ] && ! empty( $delivery_time ) ) // Delivery time is enabled and has a value
+				)
 			)
 			|| ( // Pickup
-				( is_array( $pickup_date_settings ) && true === $pickup_date_settings[ 'enable_pickup_date' ] && ! empty( $pickup_date ) ) // Pickup date is enabled and has a value
-				|| ( is_array( $pickup_time_settings ) && true === $pickup_time_settings[ 'enable_pickup_time' ] && ! empty( $pickup_time ) ) // Pickup time is enabled and has a value
+				( ! is_array( $delivery_option_settings ) || ( is_array( $delivery_option_settings ) && true !== $delivery_option_settings[ 'enable_option_time_pickup' ] ) || 'pickup' === $order_type ) // Order type is pickup or not enabled
+				&& (
+					( is_array( $pickup_date_settings ) && true === $pickup_date_settings[ 'enable_pickup_date' ] && ! empty( $pickup_date ) ) // Pickup date is enabled and has a value
+					|| ( is_array( $pickup_time_settings ) && true === $pickup_time_settings[ 'enable_pickup_time' ] && ! empty( $pickup_time ) ) // Pickup time is enabled and has a value
+				)
 			)
 		) {
 			// Delivery
 			if (
-				( ( is_array( $delivery_option_settings ) && true !== $delivery_option_settings[ 'enable_option_time_pickup' ] ) || 'delivery' === $order_type ) // Order type is delivery or not enabled
+				( ! is_array( $delivery_option_settings ) || ( is_array( $delivery_option_settings ) && true !== $delivery_option_settings[ 'enable_option_time_pickup' ] ) || 'delivery' === $order_type ) // Order type is delivery or not enabled
 				&& (
 					( is_array( $delivery_date_settings ) && true === $delivery_date_settings[ 'enable_delivery_date' ] && ! empty( $delivery_date ) ) // Delivery date is enabled and has a value
 					|| ( is_array( $delivery_time_settings ) && true === $delivery_time_settings[ 'enable_delivery_time' ] && ! empty( $delivery_time ) ) // Delivery time is enabled and has a value
@@ -277,7 +283,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 			// Pickup
 			if (
-				( ( is_array( $delivery_option_settings ) && true !== $delivery_option_settings[ 'enable_option_time_pickup' ] ) || 'pickup' === $order_type ) // Order type is pickup or not enabled
+				( ! is_array( $delivery_option_settings ) || ( is_array( $delivery_option_settings ) && true !== $delivery_option_settings[ 'enable_option_time_pickup' ] ) || 'pickup' === $order_type ) // Order type is pickup or not enabled
 				&& (
 					( is_array( $pickup_date_settings ) && true === $pickup_date_settings[ 'enable_pickup_date' ] && ! empty( $pickup_date ) ) // Pickup date is enabled and has a value
 					|| ( is_array( $pickup_time_settings ) && true === $pickup_time_settings[ 'enable_pickup_time' ] && ! empty( $pickup_time ) ) // Pickup time is enabled and has a value
