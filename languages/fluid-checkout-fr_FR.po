@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-02 11:34+0000\n"
-"PO-Revision-Date: 2023-04-21 14:09+0000\n"
+"PO-Revision-Date: 2023-04-24 18:10+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.3; wp-6.0.3"
+"X-Loco-Version: 2.6.4; wp-6.2"
 
 #: inc/admin/admin-settings-general.php:87
 msgid "(Experimental) Use theme's page header and footer for the checkout page"
@@ -78,7 +78,7 @@ msgstr "Après l’adresse de livraison"
 
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:42
 msgid "Already have an account?"
-msgstr "Vous avez déjà un compte ?"
+msgstr "Vous avez déjà un compte?"
 
 #: inc/checkout-steps.php:2238
 msgid "An account will be created with the information provided."
