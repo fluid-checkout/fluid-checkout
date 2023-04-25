@@ -378,6 +378,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Unblock place order button if an unexpected error happens while trying to complete a purchase.
+
 = 2.4.0 - 2023-04-21 =
 
 * Bump tested up to WooCommerce 7.6.0

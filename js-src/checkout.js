@@ -900,7 +900,7 @@ jQuery( function( $ ) {
 								return;
 							}
 
-							// CHANGE: Block checkout update requests
+							// CHANGE: Unblock checkout update requests
 							window.can_update_checkout = true;
 
 							// CHANGE: Unblock the place order button
@@ -926,6 +926,18 @@ jQuery( function( $ ) {
 						}
 					},
 					error:	function( jqXHR, textStatus, errorThrown ) {
+						// CHANGE: Unblock checkout update requests
+						window.can_update_checkout = true;
+
+						// CHANGE: Unblock the place order button
+						if ( 'yes' === _settings.checkoutPlaceOrderApplyLoadingClass ) {
+							$( _settings.checkoutPlaceOrderSelector ).removeClass( _settings.loadingClass );
+						}
+						$( _settings.checkoutPlaceOrderSelector ).removeAttr( 'disabled' );
+						$( _settings.checkoutPlaceOrderSelector ).removeClass( 'disabled' );
+						wc_checkout_form.maybe_refocus_element( currentFocusedElement );
+						// END - Unblock the place order button
+
 						// Detach the unload handler that prevents a reload / redirect
 						wc_checkout_form.detachUnloadEventsOnSubmit();
 
