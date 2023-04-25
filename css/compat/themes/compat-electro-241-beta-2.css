@@ -43,3 +43,18 @@ body.theme-electro form.woocommerce-checkout {
 body.theme-electro .fc-wrapper #payment .payment_methods > .wc_payment_method {
   padding: 0 !important;
 }
+
+body.theme-electro .fc-wrapper .fc-place-order .fc-place-order-button {
+  border-color: var(--bs-ec-primary, #fed700) !important;
+  background-color: var(--bs-ec-primary, #fed700) !important;
+  font-size: 1.387em;
+  width: 100%;
+  font-weight: 700;
+  white-space: pre-wrap;
+  padding: 0.907rem 1rem;
+  border-radius: 50px;
+}
+body.theme-electro .fc-wrapper .fc-place-order .fc-place-order-button:hover, body.theme-electro .fc-wrapper .fc-place-order .fc-place-order-button:active, body.theme-electro .fc-wrapper .fc-place-order .fc-place-order-button:focus {
+  background-color: #000 !important;
+  border-color: #000 !important;
+}
