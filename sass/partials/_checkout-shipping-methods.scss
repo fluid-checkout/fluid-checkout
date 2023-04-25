@@ -126,6 +126,12 @@
 
 
 
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-text {
+	position: static;
+}
+
+
+
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-description {
 	display: block;
 	width: 100%;

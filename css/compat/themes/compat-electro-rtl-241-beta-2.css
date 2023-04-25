@@ -40,10 +40,6 @@ body.theme-electro form.woocommerce-checkout {
   margin-left: 0;
 }
 
-body.theme-electro .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-text {
-  position: static;
-}
-
 body.theme-electro .fc-wrapper #payment .payment_methods > .wc_payment_method {
   padding: 0 !important;
 }
