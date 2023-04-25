@@ -18,5 +18,6 @@ body#{ $_body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-butto
 	&:focus {
 		background-color: #000 !important; // Needed to override default theme styles 
 		border-color: #000 !important; // Needed to override default theme styles 
+		color: #fff !important; // Needed to override default theme styles
 	}
 }
