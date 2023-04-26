@@ -380,6 +380,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Contact step being defined as incomplete when account registration is required but user is already logged in.
 * Fixed: Unblock place order button if an unexpected error happens while trying to complete a purchase.
 
 = 2.4.0 - 2023-04-21 =

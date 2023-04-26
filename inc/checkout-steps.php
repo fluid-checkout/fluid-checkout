@@ -2305,7 +2305,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Iterate create account fields when option to create account is checked
-		if ( $this->is_create_account_checked() ) {
+		if ( ! is_user_logged_in() && $this->is_create_account_checked() ) {
 			$account_fields = WC()->checkout()->get_checkout_fields( 'account' );
 			foreach ( $account_fields as $field_key => $field_args ) {
 				// Check required fields
