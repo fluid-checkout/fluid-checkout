@@ -234,7 +234,7 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
 				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
 			)
-		) { return $classes; }
+		) { return; }
 
 		// Enqueue inline style
 		wp_add_inline_style( 'electro-style', $this->get_css_variables_styles() );
