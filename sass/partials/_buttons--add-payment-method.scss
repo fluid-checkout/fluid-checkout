@@ -1,0 +1,8 @@
+// ------------------------------------
+// BUTTONS -- ADD PAYMENT METHOD
+// ------------------------------------
+
+// Primary actions
+body.has-fc-button-colors #add_payment_method #place_order { // Targetting the "Add payment method" button
+	@extend %button-primary-actions;
+}
