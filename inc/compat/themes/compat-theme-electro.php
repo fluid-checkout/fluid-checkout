@@ -223,7 +223,7 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $classes; }
 
 		// Enqueue inline style
-		wp_add_inline_style( 'fc-checkout-steps', $this->get_css_variables_styles() );
+		wp_add_inline_style( 'fc-checkout-layout', $this->get_css_variables_styles() );
 	}
 
 }
