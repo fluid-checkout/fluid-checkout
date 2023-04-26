@@ -9,7 +9,7 @@
 
 .fc-progress-bar .fc-progress-bar__inner {
   padding: 10px 20px;
-  background-color: #fff;
+  background-color: var(--fluidcheckout--checkout-progress--background-color, #fff);
 }
 @media (min-width: 750px) {
   .fc-progress-bar .fc-progress-bar__inner {
@@ -38,7 +38,7 @@
 
 .fc-progress-bar__count {
   margin: 0 0 5px;
-  color: #535156;
+  color: var(--fluidcheckout--checkout-progress--step-count--text-color, #535156);
   font-weight: bold;
   font-size: 15px;
   text-transform: uppercase;
@@ -156,9 +156,9 @@
 .fc-wrapper .fc-checkout-step {
   margin: -1px 0 0;
   padding: 0;
-  border: solid 1px #d8d8d8;
+  border: solid 1px var(--fluidcheckout--checkout-step--border-color, #d8d8d8);
   border-radius: 0;
-  background-color: #fff;
+  background-color: var(--fluidcheckout--checkout-step--background-color, #fff);
 }
 @media (min-width: 750px) {
   .fc-wrapper .fc-checkout-step {
@@ -1906,6 +1906,7 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
   padding: 12px 20px 0;
   width: calc( 100% + 40px );
   max-width: calc( 100% + 40px );
+  background-color: var(--fluidcheckout--order-summary--background-color, #fff);
   overflow: visible;
 }
 @media (min-width: 750px) {
@@ -1913,9 +1914,8 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
     margin: 0 0 20px;
     width: 100%;
     max-width: 100%;
-    border: solid 1px #d8d8d8;
+    border: solid 1px var(--fluidcheckout--order-summary--border-color, #d8d8d8);
     border-radius: 8px;
-    background-color: #fff;
   }
 }
 div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner:focus {

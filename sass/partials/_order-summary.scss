@@ -331,6 +331,7 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	padding: remsize( 1.2rem ) $order-summary-cell-padding-horizontal 0;
 	width: $order-summary-table-width;
 	max-width: $order-summary-table-width;
+	background-color: $order-summary-background-color;
 	overflow: visible;
 
 	@media (#{$bp-larger-than-tablet}) {
@@ -339,7 +340,6 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 		max-width: 100%;
 		border: $order-summary-border;
 		border-radius: $checkout-substep-border-radius;
-		background-color: $white;
 	}
 
 	&:focus {

@@ -11,9 +11,9 @@
 .fc-wrapper .fc-checkout-step {
 	margin: remsize( -.1rem ) 0 0; // Prevent double borders
 	padding: $checkout-step-padding;
-	border: solid remsize( .1rem ) $border-color;
+	border: solid remsize( .1rem ) $checkout-step-border-color;
 	border-radius: 0;
-	background-color: $white;
+	background-color: $checkout-step-background-color;
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-step-padding--large-screen; }
 }
