@@ -1,29 +1,3 @@
-body.has-fc-button-colors .fc-wrapper .fc-place-order .fc-place-order-button,
-body.has-fc-button-colors.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
-  border-color: var(--fluidcheckout--button--primary--border-color, #000) !important;
-  background-color: var(--fluidcheckout--button--primary--background-color, #000) !important;
-  color: var(--fluidcheckout--button--primary--text-color, #fff) !important;
-}
-body.has-fc-button-colors .fc-wrapper .fc-place-order .fc-place-order-button:hover,
-body.has-fc-button-colors.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:hover, body.has-fc-button-colors .fc-wrapper .fc-place-order .fc-place-order-button:focus,
-body.has-fc-button-colors.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:focus, body.has-fc-button-colors .fc-wrapper .fc-place-order .fc-place-order-button:active,
-body.has-fc-button-colors.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:active {
-  border-color: var(--fluidcheckout--button--primary--border-color--hover, #1E212B) !important;
-  background-color: var(--fluidcheckout--button--primary--background-color--hover, #1E212B) !important;
-  color: var(--fluidcheckout--button--primary--text-color--hover, #fff) !important;
-}
-
-body.has-fc-button-colors.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save {
-  border-color: var(--fluidcheckout--button--secondary--border-color, #f3f3f3) !important;
-  background-color: var(--fluidcheckout--button--secondary--background-color, #f3f3f3) !important;
-  color: var(--fluidcheckout--button--secondary--text-color, #000) !important;
-}
-body.has-fc-button-colors.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save:hover, body.has-fc-button-colors.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save:focus, body.has-fc-button-colors.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save:active {
-  border-color: var(--fluidcheckout--button--secondary--border-color--hover, #d8d8d8) !important;
-  background-color: var(--fluidcheckout--button--secondary--background-color--hover, #d8d8d8) !important;
-  color: var(--fluidcheckout--button--secondary--text-color--hover, #000) !important;
-}
-
 .fc-progress-bar {
   margin: 0 -20px;
 }
