@@ -1,3 +1,14 @@
+body.has-fc-button-colors #add_payment_method #place_order {
+  border-color: var(--fluidcheckout--button--primary--border-color, #000) !important;
+  background-color: var(--fluidcheckout--button--primary--background-color, #000) !important;
+  color: var(--fluidcheckout--button--primary--text-color, #fff) !important;
+}
+body.has-fc-button-colors #add_payment_method #place_order:hover, body.has-fc-button-colors #add_payment_method #place_order:focus, body.has-fc-button-colors #add_payment_method #place_order:active {
+  border-color: var(--fluidcheckout--button--primary--border-color--hover, #1E212B) !important;
+  background-color: var(--fluidcheckout--button--primary--background-color--hover, #1E212B) !important;
+  color: var(--fluidcheckout--button--primary--text-color--hover, #fff) !important;
+}
+
 .fc-clearfix:before,
 .fc-clearfix:after {
   content: "";

@@ -1,0 +1,8 @@
+// ------------------------------------
+// BUTTONS -- EDIT ADDRESS
+// ------------------------------------
+
+// Primary actions
+body.has-fc-button-colors .woocommerce-address-fields button[type="submit"] {
+	@extend %button-primary-actions;
+}
