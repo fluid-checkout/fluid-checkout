@@ -246,6 +246,30 @@ $icons: (
 
 
 // ----------------------------------------
+// BUTTONS
+
+$button-primary-border-color:               var( --fluidcheckout--button--primary--border-color, #000 ) !default;
+$button-primary-background-color:           var( --fluidcheckout--button--primary--background-color, #000 ) !default;
+$button-primary-text-color:                 var( --fluidcheckout--button--primary--text-color, #fff ) !default;
+$button-primary-border-color--hover:        var( --fluidcheckout--button--primary--border-color--hover, #1E212B ) !default;
+$button-primary-background-color--hover:    var( --fluidcheckout--button--primary--background-color--hover, #1E212B ) !default;
+$button-primary-text-color--hover:          var( --fluidcheckout--button--primary--text-color--hover, #fff ) !default;
+
+$button-secondary-border-color:             var( --fluidcheckout--button--secondary--border-color, #f3f3f3 ) !default;
+$button-secondary-background-color:         var( --fluidcheckout--button--secondary--background-color, #f3f3f3 ) !default;
+$button-secondary-text-color:               var( --fluidcheckout--button--secondary--text-color, #000 ) !default;
+$button-secondary-border-color--hover:      var( --fluidcheckout--button--secondary--border-color--hover, #d8d8d8 ) !default;
+$button-secondary-background-color--hover:  var( --fluidcheckout--button--secondary--background-color--hover, #d8d8d8 ) !default;
+$button-secondary-text-color--hover:        var( --fluidcheckout--button--secondary--text-color--hover, #000 ) !default;
+
+// END - BUTTONS
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
 // OPTION BOX
 
 $option-box-padding-vertical:               $global-spacing-extra-small !default;

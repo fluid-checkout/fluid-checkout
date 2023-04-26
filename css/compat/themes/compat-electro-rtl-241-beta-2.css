@@ -41,14 +41,7 @@ body.theme-electro form.woocommerce-checkout {
 }
 
 body.theme-electro.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
-  border-color: var(--bs-ec-primary, #fed700) !important;
-  background-color: var(--bs-ec-primary, #fed700) !important;
   font-weight: 700;
-}
-body.theme-electro.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:hover, body.theme-electro.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:active, body.theme-electro.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:focus {
-  background-color: #000 !important;
-  border-color: #000 !important;
-  color: #fff !important;
 }
 
 body.theme-electro .fc-wrapper #payment .payment_methods > .wc_payment_method {
@@ -56,17 +49,10 @@ body.theme-electro .fc-wrapper #payment .payment_methods > .wc_payment_method {
 }
 
 body.theme-electro .fc-wrapper .fc-place-order .fc-place-order-button {
-  border-color: var(--bs-ec-primary, #fed700) !important;
-  background-color: var(--bs-ec-primary, #fed700) !important;
   font-size: 1.387em;
   width: 100%;
   font-weight: 700;
   white-space: pre-wrap;
   padding: 0.907rem 1rem;
   border-radius: 50px;
-}
-body.theme-electro .fc-wrapper .fc-place-order .fc-place-order-button:hover, body.theme-electro .fc-wrapper .fc-place-order .fc-place-order-button:active, body.theme-electro .fc-wrapper .fc-place-order .fc-place-order-button:focus {
-  background-color: #000 !important;
-  border-color: #000 !important;
-  color: #fff !important;
 }

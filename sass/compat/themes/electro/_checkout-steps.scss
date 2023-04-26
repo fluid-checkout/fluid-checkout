@@ -37,15 +37,5 @@ body#{ $_body-theme-selector } form.woocommerce-checkout {
 // ------------------------------------
 
 body#{ $_body-theme-selector }.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
-	border-color: var( --bs-ec-primary, #fed700 ) !important; // Needed to override default theme styles 
-	background-color: var( --bs-ec-primary, #fed700 ) !important; // Needed to override default theme styles 
 	font-weight: 700;
-
-	&:hover,
-	&:active,
-	&:focus {
-		background-color: #000 !important; // Needed to override default theme styles 
-		border-color: #000 !important; // Needed to override default theme styles 
-		color: #fff !important; // Needed to override default theme styles
-	}
 }
