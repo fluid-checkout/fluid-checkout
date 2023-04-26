@@ -48,8 +48,15 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 	 * @param array $classes Classes for the body element.
 	 */
 	public function add_body_class( $classes ) {
-		// Bail if not on checkout page.
-		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $classes; }
+		// Bail if not on affected pages.
+		if (
+			! function_exists( 'is_checkout' )
+			|| (
+				! is_checkout() // Checkout page
+				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
+				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
+			)
+		) { return $classes; }
 
 		// Add custom button color class
 		$classes[] = 'has-fc-button-colors';
@@ -201,7 +208,7 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 			--fluidcheckout--button--primary--border-color--hover: {$colors['primary-border-color--hover']};
 			--fluidcheckout--button--primary--background-color--hover: {$colors['primary-background-color--hover']};
 			--fluidcheckout--button--primary--text-color--hover: {$colors['primary-text-color--hover']};
-			
+
 			--fluidcheckout--button--secondary--border-color: {$colors['secondary-border-color']};
 			--fluidcheckout--button--secondary--background-color: {$colors['secondary-background-color']};
 			--fluidcheckout--button--secondary--text-color: {$colors['secondary-text-color']};
@@ -216,14 +223,21 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 
 
 	/**
-	 * Enqueue CSS variables to be used in the checkout page.
+	 * Enqueue inline CSS variables.
 	 */
 	public function enqueue_css_variables() {
-		// Bail if not on checkout page.
-		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $classes; }
+		// Bail if not on affected pages.
+		if (
+			! function_exists( 'is_checkout' )
+			|| (
+				! is_checkout() // Checkout page
+				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
+				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
+			)
+		) { return $classes; }
 
 		// Enqueue inline style
-		wp_add_inline_style( 'fc-checkout-layout', $this->get_css_variables_styles() );
+		wp_add_inline_style( 'electro-style', $this->get_css_variables_styles() );
 	}
 
 }
