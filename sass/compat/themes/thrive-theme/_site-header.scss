@@ -2,6 +2,6 @@
 // SITE HEADER
 // ------------------------------------
 
-#thrive-header {
+body:not( .has-checkout-header ) #thrive-header {
 	z-index: z( 'sticky-element' ) !important; // Needed to override theme styles
 }

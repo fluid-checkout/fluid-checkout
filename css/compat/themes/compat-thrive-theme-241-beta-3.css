@@ -7,7 +7,7 @@ body.theme-thrive-theme .fc-wrapper div {
   box-sizing: border-box !important;
 }
 
-body.theme-thrive-theme.woocommerce-checkout .fc-content {
+body.theme-thrive-theme.theme-thrive-theme:not(.has-checkout-header) .fc-content {
   max-width: 100% !important;
   width: 1080px;
   width: var(--header-content-width, var(--layout-content-width));
@@ -15,7 +15,7 @@ body.theme-thrive-theme.woocommerce-checkout .fc-content {
   padding-right: 20px !important;
 }
 
-#thrive-header {
+body:not(.has-checkout-header) #thrive-header {
   z-index: 300 !important;
 }
 
