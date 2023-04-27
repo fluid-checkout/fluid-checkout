@@ -1,0 +1,12 @@
+:root {
+  --fluidcheckout--field--height: 43px;
+  --fluidcheckout--field--border-radius: 3px;
+}
+
+body.theme-thrive-theme .fc-wrapper div {
+  box-sizing: border-box !important;
+}
+
+body.theme-thrive-theme .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-terms-and-conditions-checkbox-text {
+  padding: 0 !important;
+}

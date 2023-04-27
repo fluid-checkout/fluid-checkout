@@ -49,7 +49,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
 .fc-wrapper #payment .payment_methods > .wc_payment_method,
 #add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method {
   width: 100%;
-  margin: 0;
+  margin: 0 !important;
   padding: 0;
   border: 0;
   line-height: 1.6;

@@ -1,0 +1,7 @@
+// ------------------------------------
+// BOX SIZING FIX
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper div {
+	box-sizing: border-box !important; // Needed to override theme styles
+}

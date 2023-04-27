@@ -783,6 +783,13 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
   overflow: hidden;
 }
 
+.woocommerce .fc-shipping-method__packages ul#shipping_method {
+  float: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
 .woocommerce ul#shipping_method li.shipping-method__option {
   display: block;
   margin: 0 0 0;
@@ -956,7 +963,7 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 .fc-wrapper #payment .payment_methods > .wc_payment_method,
 #add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method {
   width: 100%;
-  margin: 0;
+  margin: 0 !important;
   padding: 0;
   border: 0;
   line-height: 1.6;
