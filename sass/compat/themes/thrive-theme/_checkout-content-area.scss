@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT CONTENT
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-theme-selector }:not( .has-checkout-header ) .fc-content {
+	max-width: 100% !important;
+	width: 1080px; // Needs to match unit in theme styles
+	width: #{ var( --header-content-width, var( --layout-content-width ) ) };
+	padding-#{ $alignment-left }: 20px !important; // Needs to match unit in theme styles
+	padding-#{ $alignment-right }: 20px !important; // Needs to match unit in theme styles
+}

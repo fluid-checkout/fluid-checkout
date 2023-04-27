@@ -25,4 +25,6 @@ $_body-theme-selector:                 '.theme-thrive-theme' !default;
 // ------------------------------------
 @import
 	"box-sizing",
+	"checkout-content-area",
+	"site-header",
 	"checkout-place-order";
