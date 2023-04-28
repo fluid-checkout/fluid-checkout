@@ -11,6 +11,11 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 	 */
 	public $thwcfe = null;
 
+	/**
+	 * Holds the cached values.
+	 */
+	private static $cached_values = array();
+
 
 
 	/**
@@ -167,6 +172,13 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 
 		// Iterate sections
 		foreach ( $sections as $sname ) {
+			// Maybe return from cache
+			$cache_key = 'section_incomplete_' . $sname;
+			if ( array_key_exists( $cache_key, self::$cached_values ) ) {
+				return self::$cached_values[ $cache_key ];
+			}
+
+			// Get section
 			$section = THWCFE_Utils::get_checkout_section( $sname, $cart_info );
 
 			// Skip invalid sections
@@ -190,6 +202,9 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 				// Check field value
 				$field_value = WC()->checkout->get_value( $field_key );
 				if ( empty( $field_value ) && 0 == strlen( strval( $field_value ) ) ) {
+					// Update cache
+					self::$cached_values[ $cache_key ] = false;
+
 					return false;
 				}
 			}
@@ -204,6 +219,9 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 					// Check field value
 					$field_value = WC()->checkout->get_value( $field_key );
 					if ( ! FluidCheckout_Validation::instance()->is_valid_phone_number( $field_value ) ) {
+						// Update cache
+						self::$cached_values[ $cache_key ] = false;
+
 						return false;
 					}
 				}
@@ -219,8 +237,20 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 	 * @param   bool   $is_step_complete  Whether the step is to be considered complete or not.
 	 */
 	public function maybe_set_step_incomplete_contact( $is_step_complete ) {
+		// Maybe return from cache
+		$cache_key = 'step_incomplete_contact';
+		if ( array_key_exists( $cache_key, self::$cached_values ) ) {
+			return self::$cached_values[ $cache_key ];
+		}
+
+		// Check if custom sections are complete
 		$hooks = array( 'before_customer_details', 'after_customer_details', 'before_checkout_registration_form', 'after_checkout_registration_form' );
-		return $this->maybe_set_step_incomplete( $is_step_complete, $hooks );
+		$is_step_complete = $this->maybe_set_step_incomplete( $is_step_complete, $hooks );
+
+		// Update cache
+		self::$cached_values[ $cache_key ] = $is_step_complete;
+
+		return $is_step_complete;
 	}
 
 	/**
@@ -229,8 +259,20 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 	 * @param   bool   $is_step_complete  Whether the step is to be considered complete or not.
 	 */
 	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
+		// Maybe return from cache
+		$cache_key = 'step_incomplete_shipping';
+		if ( array_key_exists( $cache_key, self::$cached_values ) ) {
+			return self::$cached_values[ $cache_key ];
+		}
+
+		// Check if custom sections are complete
 		$hooks = array( 'before_checkout_shipping_form', 'after_checkout_shipping_form', 'before_order_notes', 'after_order_notes' );
-		return $this->maybe_set_step_incomplete( $is_step_complete, $hooks );
+		$is_step_complete = $this->maybe_set_step_incomplete( $is_step_complete, $hooks );
+
+		// Update cache
+		self::$cached_values[ $cache_key ] = $is_step_complete;
+
+		return $is_step_complete;
 	}
 
 	/**
@@ -239,8 +281,20 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 	 * @param   bool   $is_step_complete  Whether the step is to be considered complete or not.
 	 */
 	public function maybe_set_step_incomplete_billing( $is_step_complete ) {
+		// Maybe return from cache
+		$cache_key = 'step_incomplete_billing';
+		if ( array_key_exists( $cache_key, self::$cached_values ) ) {
+			return self::$cached_values[ $cache_key ];
+		}
+
+		// Check if custom sections are complete
 		$hooks = array( 'before_checkout_billing_form', 'after_checkout_billing_form' );
-		return $this->maybe_set_step_incomplete( $is_step_complete, $hooks );
+		$is_step_complete = $this->maybe_set_step_incomplete( $is_step_complete, $hooks );
+
+		// Update cache
+		self::$cached_values[ $cache_key ] = $is_step_complete;
+
+		return $is_step_complete;
 	}
 
 
@@ -327,6 +381,11 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 	 * @param   array  $field_args  Contains checkout field arguments.
 	 */
 	public function change_checkout_field_args( $field_args ) {
+		// Maybe return from cache
+		$cache_key = 'checkout_field_args';
+		if ( array_key_exists( $cache_key, self::$cached_values ) ) {
+			return self::$cached_values[ $cache_key ];
+		}
 
 		// Remove previous priority changes, letting Checkout Field Editor plugin manage it
 		foreach ( $field_args as $field_key => $old_args ) {
@@ -334,7 +393,10 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 			unset( $new_args[ 'priority' ] );
 			$field_args[ $field_key ] = $new_args;
 		}
-		
+
+		// Update cache
+		self::$cached_values[ $cache_key ] = $field_args;
+
 		return $field_args;
 	}
 
