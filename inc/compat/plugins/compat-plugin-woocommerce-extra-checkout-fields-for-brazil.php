@@ -67,29 +67,30 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 * Replace plugin scripts with modified versions.
 	 */
 	public function replace_wcbcf_script() {
-		// Replace frontend script
+		// Replace frontend script, also removing dependency on Mailcheck script from the Brazilian Market plugin
 		wp_deregister_script( 'woocommerce-extra-checkout-fields-for-brazil-front' );
 		wp_enqueue_script( 'woocommerce-extra-checkout-fields-for-brazil-front', self::$directory_url . 'js/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend'. self::$asset_version . '.js', array( 'jquery', 'jquery-mask' ), NULL, true );
 		
-		// Add localized script params
-		// Copied from the original plugin
+		// Replace settings object for the Brazilian Market plugin
 		$settings = get_option( 'wcbcf_settings' );
-		$autofill = isset( $settings[ 'addresscomplete' ] ) ? 'yes' : 'no';
-		wp_localize_script (
+		$autofill = isset( $settings['addresscomplete'] ) ? 'yes' : 'no';
+		wp_localize_script(
 			'woocommerce-extra-checkout-fields-for-brazil-front',
-			'wcbcf_public_params',
+			'bmwPublicParams',
 			array(
-				'state'              => esc_js( __( 'State', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
-				'required'           => esc_js( __( 'required', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
+				'state'                => esc_js( __( 'State', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
+				'required'             => esc_js( __( 'required', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
 				// CHANGE: Added new parameter to hold label for optional fields
-				'optional'           => esc_js( __( 'optional', 'woocommerce' ) ),
-				// CHANGE: Always set mailcheck feature as disabled
-				'mailcheck'          => 'no',
-				'maskedinput'        => isset( $settings[ 'maskedinput' ] ) ? 'yes' : 'no',
-				'addresscomplete'    => apply_filters( 'woocommerce_correios_enable_autofill_addresses', false ) ? false : $autofill,
-				'person_type'        => absint( $settings[ 'person_type' ] ),
-				'only_brazil'        => isset( $settings[ 'only_brazil' ] ) ? 'yes' : 'no',
-				'sort_state_country' => version_compare( WC_VERSION, '3.0', '>=' ),
+				'optional'             => esc_js( __( 'optional', 'woocommerce' ) ),
+				// CHANGE: Always set mailcheck feature as disabled because we already provide this feature
+				'mailcheck'            => 'no',
+				// CHANGE: Maybe disable masked input when International phone number feature is enabled
+				'maskedPhoneInput'     => class_exists( 'FluidCheckout_PRO_CheckoutInternationalPhoneField' ) && 'yes' === get_option( 'fc_pro_enable_international_phone_fields', 'no' ) ? 'no' : 'yes',
+				'maskedinput'          => isset( $settings['maskedinput'] ) ? 'yes' : 'no',
+				'person_type'          => absint( $settings['person_type'] ),
+				'only_brazil'          => isset( $settings['only_brazil'] ) ? 'yes' : 'no',
+				/* translators: %hint%: email hint */
+				'suggest_text'         => esc_js( __( 'Did you mean: %hint%?', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
 			)
 		);
 	}
