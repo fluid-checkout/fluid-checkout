@@ -134,7 +134,6 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			'validateCNPJ'        => isset( $wcbcf_settings[ 'validate_cnpj' ] ) ? 'yes' : 'no',
 			'validationMessages'  => array(
 				'cpf_invalid'          => __( 'The CPF number "{cpf_number}" is invalid.', 'fluid-checkout' ),
-				'cep_invalid'          => __( 'The CEP number "{cep_number}" is invalid.', 'fluid-checkout' ),
 				'cnpj_invalid'         => __( 'The CNPJ number "{cnpj_number}" is invalid.', 'fluid-checkout' ),
 			),
 		) );
