@@ -35,7 +35,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 .fc-wrapper #payment .payment_methods > .wc_payment_method,
 #add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method {
 	width: 100%;
-	margin: $payment-method-margin;
+	margin: $payment-method-margin !important; // Needed to override theme styles
 	padding: 0;
 	border: 0;
 	line-height: 1.6;

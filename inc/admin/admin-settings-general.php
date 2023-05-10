@@ -324,7 +324,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 					array(
 						'desc'              => __( 'Display the coupon codes section title', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Only applicable when coupon code is displayed as a separate section on the checkout or cart pages.', 'fluid-checkout-pro' ),
+						'desc_tip'          => __( 'Only applicable when coupon code is displayed as a separate section on the checkout or cart pages.', 'fluid-checkout' ),
 						'id'                => 'fc_display_coupon_code_section_title',
 						'type'              => 'checkbox',
 						'default'           => 'no',

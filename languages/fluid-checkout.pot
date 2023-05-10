@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-21 14:08+0000\n"
+"POT-Creation-Date: 2023-05-10 10:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -398,7 +398,7 @@ msgstr ""
 msgid "Enable integrated coupon code section"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:123
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:170
 msgid "Enable Mail Check: (disabled feature)"
 msgstr ""
 
@@ -483,7 +483,7 @@ msgstr ""
 msgid "I need help!"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:126
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:173
 msgid ""
 "If checked informs typos in email to users. (This feature has been disabled "
 "because Fluid Checkout offers the feature. Changes to this option will not "
@@ -803,6 +803,14 @@ msgstr ""
 
 #: inc/admin/admin-notice-review-request.php:44
 msgid "Thanks for choosing Fluid Checkout!"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:137
+msgid "The CNPJ number \"{cnpj_number}\" is invalid."
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:136
+msgid "The CPF number \"{cpf_number}\" is invalid."
 msgstr ""
 
 #: inc/admin/admin-settings-wc-shipping.php:50
