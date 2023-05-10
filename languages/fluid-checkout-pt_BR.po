@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2023-04-21 14:09+0000\n"
+"PO-Revision-Date: 2023-05-10 10:42+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.3; wp-6.1.1"
+"X-Loco-Version: 2.6.4; wp-6.2"
 
 #: inc/admin/admin-settings-general.php:87
 #| msgid "Use theme's page header and footer for the checkout page"
@@ -454,7 +454,7 @@ msgstr "Editar carrinho"
 msgid "Enable integrated coupon code section"
 msgstr "Habilitar seção de código de cupom integrado"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:123
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:170
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Habilitar Sugestões de E-mail: (funcionalidade desativada)"
 
@@ -543,7 +543,7 @@ msgstr "https://fluidcheckout.com/"
 msgid "I need help!"
 msgstr "Eu preciso de ajuda!"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:126
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:173
 msgid ""
 "If checked informs typos in email to users. (This feature has been disabled "
 "because Fluid Checkout offers the feature. Changes to this option will not "
@@ -923,6 +923,14 @@ msgstr "Suporte"
 #| msgid "Thanks for choosing Fluid Checkout, you rock!"
 msgid "Thanks for choosing Fluid Checkout!"
 msgstr "Obrigado por escolher o Fluid Checkout!"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:137
+msgid "The CNPJ number \"{cnpj_number}\" is invalid."
+msgstr "O número de CNPJ \"{cnpj_number}\" é inválido."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:136
+msgid "The CPF number \"{cpf_number}\" is invalid."
+msgstr "O número de CPF \"{cpf_number}\" é inválido."
 
 #: inc/admin/admin-settings-wc-shipping.php:50
 #| msgid ""

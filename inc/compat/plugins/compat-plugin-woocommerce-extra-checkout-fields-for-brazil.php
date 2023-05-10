@@ -24,6 +24,10 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'replace_wcbcf_script' ), 20 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 20 );
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Force change options
 		add_filter( 'option_wcbcf_settings', array( $this, 'disable_mailcheck_option' ), 10 );
@@ -33,9 +37,6 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		add_filter( 'fc_checkout_field_args', array( $this, 'change_checkout_field_args' ), 110 );
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 110 );
 		add_filter( 'fc_billing_same_as_shipping_field_keys' , array( $this, 'remove_billing_company_from_copy_shipping_field_keys' ), 10 );
-
-		// Step complete billing
-		add_filter( 'fc_is_step_complete_billing_field_keys_skip_list', array( $this, 'maybe_add_step_complete_billing_field_skip_list_by_person_type' ), 10 );
 
 		// Prevent hiding optional fields behind a link button
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_person_type_fields' ), 10 );
@@ -48,6 +49,13 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_shipping' ), 10 );
 		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_billing' ), 10 );
 		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_by_person_type' ), 10 );
+
+		// Step complete billing
+		add_filter( 'fc_is_step_complete_billing_field_keys_skip_list', array( $this, 'maybe_add_step_complete_billing_field_skip_list_by_person_type' ), 10 );
+		add_filter( 'fc_is_step_complete_billing', array( $this, 'maybe_set_step_incomplete_billing' ), 10 );
+
+		// Add validation status classes to checkout fields
+		add_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_status_classes' ), 100, 3 );
 	}
 
 	/**
@@ -67,31 +75,70 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 * Replace plugin scripts with modified versions.
 	 */
 	public function replace_wcbcf_script() {
-		// Replace frontend script
+		// Replace frontend script, also removing dependency on Mailcheck script from the Brazilian Market plugin
 		wp_deregister_script( 'woocommerce-extra-checkout-fields-for-brazil-front' );
 		wp_enqueue_script( 'woocommerce-extra-checkout-fields-for-brazil-front', self::$directory_url . 'js/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend'. self::$asset_version . '.js', array( 'jquery', 'jquery-mask' ), NULL, true );
 		
-		// Add localized script params
-		// Copied from the original plugin
+		// Replace settings object for the Brazilian Market plugin
 		$settings = get_option( 'wcbcf_settings' );
-		$autofill = isset( $settings[ 'addresscomplete' ] ) ? 'yes' : 'no';
-		wp_localize_script (
+		$autofill = isset( $settings['addresscomplete'] ) ? 'yes' : 'no';
+		wp_localize_script(
 			'woocommerce-extra-checkout-fields-for-brazil-front',
-			'wcbcf_public_params',
+			'bmwPublicParams',
 			array(
-				'state'              => esc_js( __( 'State', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
-				'required'           => esc_js( __( 'required', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
+				'state'                => esc_js( __( 'State', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
+				'required'             => esc_js( __( 'required', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
 				// CHANGE: Added new parameter to hold label for optional fields
-				'optional'           => esc_js( __( 'optional', 'woocommerce' ) ),
-				// CHANGE: Always set mailcheck feature as disabled
-				'mailcheck'          => 'no',
-				'maskedinput'        => isset( $settings[ 'maskedinput' ] ) ? 'yes' : 'no',
-				'addresscomplete'    => apply_filters( 'woocommerce_correios_enable_autofill_addresses', false ) ? false : $autofill,
-				'person_type'        => absint( $settings[ 'person_type' ] ),
-				'only_brazil'        => isset( $settings[ 'only_brazil' ] ) ? 'yes' : 'no',
-				'sort_state_country' => version_compare( WC_VERSION, '3.0', '>=' ),
+				'optional'             => esc_js( __( 'optional', 'woocommerce' ) ),
+				// CHANGE: Always set mailcheck feature as disabled because we already provide this feature
+				'mailcheck'            => 'no',
+				// CHANGE: Maybe disable masked input when International phone number feature is enabled
+				'maskedinput_phone'    => class_exists( 'FluidCheckout_PRO_CheckoutInternationalPhoneField' ) && 'yes' === get_option( 'fc_pro_enable_international_phone_fields', 'no' ) ? 'no' : 'yes',
+				'maskedinput'          => isset( $settings['maskedinput'] ) ? 'yes' : 'no',
+				'person_type'          => absint( $settings['person_type'] ),
+				'only_brazil'          => isset( $settings['only_brazil'] ) ? 'yes' : 'no',
+				/* translators: %hint%: email hint */
+				'suggest_text'         => esc_js( __( 'Did you mean: %hint%?', 'woocommerce-extra-checkout-fields-for-brazil' ) ),
 			)
 		);
+	}
+
+
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_scripts() {
+		// Bail if not checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Add validation script
+		wp_enqueue_script( 'fc-checkout-validation-brazilian-market-documents', self::$directory_url . 'js/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/checkout-validation'. self::$asset_version . '.js', array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-validation-brazilian-market-documents', 'window.addEventListener("load",function(){CheckoutValidationBrazilianMarketDocuments.init(fcSettings.checkoutValidationBrazilianMarketDocuments);})' );
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 * 
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Get Brazilian Market plugin settings
+		$wcbcf_settings = get_option( 'wcbcf_settings' );
+
+		// Add validation settings
+		$settings[ 'checkoutValidationBrazilianMarketDocuments' ] = apply_filters( 'fc_checkout_validation_brazilian_market_documents_script_settings', array(
+			'validateCPF'         => isset( $wcbcf_settings[ 'validate_cpf' ] ) ? 'yes' : 'no',
+			'validateCNPJ'        => isset( $wcbcf_settings[ 'validate_cnpj' ] ) ? 'yes' : 'no',
+			'validationMessages'  => array(
+				'cpf_invalid'          => __( 'The CPF number "{cpf_number}" is invalid.', 'fluid-checkout' ),
+				'cnpj_invalid'         => __( 'The CNPJ number "{cnpj_number}" is invalid.', 'fluid-checkout' ),
+			),
+		) );
+
+		return $settings;
 	}
 
 
@@ -147,7 +194,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 			'billing_cellphone'        => array( 'priority' => 50 ),
 
 			'billing_country'          => array( 'priority' => 70, 'class' => array( 'form-row-wide' ) ),
-			'billing_postcode'         => array( 'priority' => 80, 'class' => array( 'form-row-first' ) ),
+			'billing_postcode'         => array( 'priority' => 80, 'class' => array( 'form-row-first' ) ), // CEP validation class is dynamically added via JavaScript
 			'billing_address_1'        => array( 'priority' => 90, 'class' => array( 'form-row-first', 'form-row-two-thirds' ) ),
 			'billing_number'           => array( 'priority' => 100, 'class' => array( 'form-row-last', 'form-row-one-third' ) ),
 			'billing_address_2'        => array( 'priority' => 110, 'class' => array( 'form-row-wide' ) ),
@@ -157,9 +204,9 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 
 			'billing_persontype'       => array( 'priority' => 300, 'class' => array( 'form-row-wide' ) ),
 			'billing_company'          => array( 'priority' => 310, 'class' => array( 'form-row-wide' ) ),
-			'billing_cpf'              => array( 'priority' => 320, 'class' => array( 'form-row-first' ) ),
+			'billing_cpf'              => array( 'priority' => 320, 'class' => array( 'form-row-first', 'validate-cpf' ) ),
 			'billing_rg'               => array( 'priority' => 330, 'class' => array( 'form-row-last' ) ),
-			'billing_cnpj'             => array( 'priority' => 340, 'class' => array( 'form-row-first' ) ),
+			'billing_cnpj'             => array( 'priority' => 340, 'class' => array( 'form-row-first', 'validate-cnpj' ) ),
 			'billing_ie'               => array( 'priority' => 350, 'class' => array( 'form-row-last' ) ),
 			'billing_birthdate'        => array( 'priority' => 360, 'class' => array( 'form-row-first' ) ),
 			'billing_sex'              => array( 'priority' => 370, 'class' => array( 'form-row-last' ) ),
@@ -331,12 +378,21 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 * @param   array  $skip_list  List of fields to skip adding to the substep review text.
 	 */
 	public function change_substep_text_extra_fields_skip_list_by_person_type( $skip_list ) {
+		// Get plugin settings
+		$settings = get_option( 'wcbcf_settings' );
+		
 		$person_type = WC()->checkout()->get_value( 'billing_persontype' );
 
-		if ( 1 == $person_type ) { // 1 = Individual
+		// Maybe add legal person fields to skip list when individual person is enabled
+		// $settings['person_type']: 1 = Individuals and Legal Person, 2 = Individual person only
+		// $person_type: 1 = Individual Person
+		if ( 2 == $settings[ 'person_type' ] || ( 1 == $settings[ 'person_type' ] && 1 == $person_type ) ) {
 			$skip_list = array_merge( $skip_list, array( 'billing_cnpj', 'billing_ie' ) );
 		}
-		else if ( 2 == $person_type ) { // 2 = Legal Person
+		// Maybe add individual person fields to skip list when legal person is enabled
+		// $settings['person_type']: 1 = Individuals and Legal Person, 3 = Legal person only
+		// $person_type: 2 = Legal Person
+		else if ( 3 == $settings[ 'person_type' ] || ( 1 == $settings[ 'person_type' ] && 2 == $person_type ) ) {
 			$skip_list = array_diff( $skip_list, array( 'billing_company' ) );
 			$skip_list = array_merge( $skip_list, array( 'billing_cpf', 'billing_rg' ) );
 		}
@@ -398,6 +454,91 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		}
 
 		return $skip_list;
+	}
+
+	/**
+	 * Maybe set the billing step as incomplete if CPF or CNPJ field values are invalid.
+	 *
+	 * @param   bool   $is_step_complete  Whether the step is to be considered complete or not.
+	 */
+	public function maybe_set_step_incomplete_billing( $is_step_complete ) {
+		// Bail if required class does not exist
+		if ( ! class_exists( 'Extra_Checkout_Fields_For_Brazil_Formatting' ) ) { return $is_step_complete; }
+
+		// Get Brazilian Market plugin settings
+		$settings = get_option( 'wcbcf_settings' );
+
+		// Bail if person type is disabled
+		// 0 = None (person type field disabled)
+		if ( ! isset( $settings[ 'person_type' ] ) || 0 == $settings[ 'person_type' ] ) { return $is_step_complete; }
+
+		// Bail if person type is enabled but invalid
+		if ( 1 == $settings[ 'person_type' ] ) { // 1 = Individuals and Legal Person
+			$person_type = WC()->checkout()->get_value( 'billing_persontype' );
+			$allowed_person_types = array( 1, 2 );
+			if ( ! in_array( $person_type, $allowed_person_types ) ) { return $is_step_complete; }
+		}
+
+		// Maybe validate CPF
+		// $settings['person_type']: 1 = Individuals and Legal Person, 2 = Individual person only
+		// $person_type: 1 = Individual Person
+		if ( ( 2 == $settings[ 'person_type' ] || ( 1 == $settings[ 'person_type' ] && 1 == $person_type ) ) && isset( $settings[ 'validate_cpf' ] ) ) {
+			$billing_cpf = WC()->checkout()->get_value( 'billing_cpf' );
+			if ( ! Extra_Checkout_Fields_For_Brazil_Formatting::is_cpf( $billing_cpf ) ) {
+				return false;
+			}
+		}
+		// Maybe validate CNPJ
+		// $settings['person_type']: 1 = Individuals and Legal Person, 3 = Legal person only
+		// $person_type: 2 = Legal Person
+		else if ( ( 3 == $settings[ 'person_type' ] || ( 1 == $settings[ 'person_type' ] && 2 == $person_type ) ) && isset( $settings[ 'validate_cnpj' ] ) ) {
+			$billing_cnpj = WC()->checkout()->get_value( 'billing_cnpj' );
+			if ( ! Extra_Checkout_Fields_For_Brazil_Formatting::is_cnpj( $billing_cnpj ) ) {
+				return false;
+			}
+		}
+
+		return $is_step_complete;
+	}
+
+
+
+	/**
+	 * Add validation status classes to checkout fields args before outputting them to the page.
+	 *
+	 * @param   array   $args   Checkout field args.
+	 * @param   string  $key    Field key.
+	 * @param   mixed   $value  Field value.
+	 *
+	 * @return  array           Modified checkout field args.
+	 */
+	public function add_checkout_field_validation_status_classes( $args, $key, $value ) {
+		// Bail if fields are not to be validated
+		if ( 'billing_cpf' !== $key && 'billing_cnpj' !== $key ) { return $args; }
+
+		// Bail if required class does not exist
+		if ( ! class_exists( 'Extra_Checkout_Fields_For_Brazil_Formatting' ) ) { return $args; }
+
+		// Get Brazilian Market plugin settings
+		$settings = get_option( 'wcbcf_settings' );
+
+		// Maybe set CPF field as invalid
+		if ( 'billing_cpf' === $key && isset( $settings[ 'validate_cpf' ] ) ) {
+			$billing_cpf = WC()->checkout()->get_value( 'billing_cpf' );
+			if ( ! empty( $billing_cpf ) && ! Extra_Checkout_Fields_For_Brazil_Formatting::is_cpf( $billing_cpf ) ) {
+				$args[ 'class' ] = array_merge( $args[ 'class' ], array( 'woocommerce-invalid', 'woocommerce-invalid-cpf' ) );
+			}
+		}
+
+		// Maybe set CNPJ field as invalid
+		if ( 'billing_cnpj' === $key && isset( $settings[ 'validate_cnpj' ] ) ) {
+			$billing_cnpj = WC()->checkout()->get_value( 'billing_cnpj' );
+			if ( ! empty( $billing_cnpj ) && ! Extra_Checkout_Fields_For_Brazil_Formatting::is_cnpj( $billing_cnpj ) ) {
+				$args[ 'class' ] = array_merge( $args[ 'class' ], array( 'woocommerce-invalid', 'woocommerce-invalid-cnpj' ) );
+			}
+		}
+
+		return $args;
 	}
 
 }
