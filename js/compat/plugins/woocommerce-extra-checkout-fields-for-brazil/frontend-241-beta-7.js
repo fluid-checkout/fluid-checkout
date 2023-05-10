@@ -119,7 +119,7 @@ jQuery(function ($) {
 
 		maskBilling() {
 			// CHANGE: Maybe do not mask phone fields
-			if ( 'yes' === bmwPublicParams.maskedPhoneInput ) {
+			if ( 'yes' === bmwPublicParams.maskedinput_phone ) {
 				bmwFrontEnd.maskPhone('#billing_phone, #billing_cellphone');
 			}
 
@@ -140,7 +140,7 @@ jQuery(function ($) {
 
 		maskShipping() {
 			// CHANGE: Maybe mask shipping phone field
-			if ( 'yes' === bmwPublicParams.maskedPhoneInput ) {
+			if ( 'yes' === bmwPublicParams.maskedinput_phone ) {
 				bmwFrontEnd.maskPhone( '#shipping_phone' );
 			}
 
