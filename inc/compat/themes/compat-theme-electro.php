@@ -217,14 +217,13 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 			--fluidcheckout--button--secondary--text-color--hover: {$colors['secondary-text-color--hover']};
 		}
 		:root body.electro-dark {
-			--fluidcheckout--checkout-progress--background-color: #000;
-			--fluidcheckout--checkout-progress--step-count--text-color: #fff;
-
-			--fluidcheckout--checkout-step--border-color: #222;
-			--fluidcheckout--checkout-step--background-color: #000;
-			
-			--fluidcheckout--order-summary--border-color: #222;
-			--fluidcheckout--order-summary--background-color: #000;
+			--fluidcheckout--color--black: #fff;
+			--fluidcheckout--color--darker-grey: #f3f3f3;
+			--fluidcheckout--color--dark-grey: #d8d8d8;
+			--fluidcheckout--color--grey: #7b7575;
+			--fluidcheckout--color--light-grey: #28282a;
+			--fluidcheckout--color--lighter-grey: #191b24;
+			--fluidcheckout--color--white: #000;
 		}";
 
 		return $css_variables;

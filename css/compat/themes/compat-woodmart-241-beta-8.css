@@ -45,7 +45,7 @@ body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-rem
   text-indent: -10000px;
 }
 body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon:focus {
-  outline: dotted 1px #535156;
+  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156);
   outline-offset: 1px;
 }
 

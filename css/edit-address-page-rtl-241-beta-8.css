@@ -150,7 +150,7 @@ div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
   padding: 5px 10px;
   border: 0;
   background-color: transparent;
-  color: #7b7575;
+  color: var(--fluidcheckout--color--grey, #7b7575);
   font-size: 13px;
   line-height: 1.2;
 }
@@ -181,7 +181,7 @@ div.woocommerce form #shipping_address_2_field > label {
 .fc-content div.woocommerce form .fc-wrapper .fc-field-group {
   margin: 0 -20px -20px;
   padding: 20px;
-  background-color: #f3f3f3;
+  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
 }
 @media (min-width: 1000px) {
   .fc-content div.woocommerce form .fc-wrapper .fc-field-group {
@@ -208,7 +208,7 @@ div.woocommerce form #shipping_address_2_field > label {
 .fc-content div.woocommerce form .fc-wrapper .fc-field-group input[type=tel],
 .fc-content div.woocommerce form .fc-wrapper .fc-field-group input[type=url],
 .fc-content div.woocommerce form .fc-wrapper .fc-field-group input[type=password] {
-  background-color: #fff;
+  background-color: var(--fluidcheckout--color--white, #fff);
 }
 
 div.woocommerce form .form-row textarea,
@@ -240,7 +240,7 @@ div.woocommerce form .form-row input[type=password]:focus,
 div.woocommerce form .form-row input[type=checkbox]:focus,
 div.woocommerce form .form-row input[type=radio]:focus,
 div.woocommerce form .form-row .select2-selection:focus {
-  outline: solid 2px #535156;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
   outline-offset: 2px;
 }
 div.woocommerce form .form-row .woocommerce-input-wrapper {
@@ -255,7 +255,7 @@ div.woocommerce form .form-row .show-password-input {
 div.woocommerce input[type=number]:focus,
 div.woocommerce input[type=checkbox]:focus,
 div.woocommerce input[type=radio]:focus {
-  outline: solid 2px #535156;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
   outline-offset: 2px;
 }
 
@@ -388,7 +388,7 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:bef
   transform: translateY(-50%);
 }
 div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:focus {
-  outline: dotted 1px #535156;
+  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156);
   outline-offset: 1px;
 }
 

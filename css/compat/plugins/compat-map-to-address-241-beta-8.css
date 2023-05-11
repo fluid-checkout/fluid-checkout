@@ -11,13 +11,13 @@
   margin-bottom: 0;
   width: 100%;
   min-height: 100px;
-  background-color: #fff;
+  background-color: var(--fluidcheckout--color--white, #fff);
 }
 
 .sg-del-add-selected-address {
   margin-top: 20px;
   margin-bottom: 0;
-  background-color: #fff;
+  background-color: var(--fluidcheckout--color--white, #fff);
 }
 
 .sg-overlay {

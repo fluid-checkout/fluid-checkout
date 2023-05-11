@@ -9,7 +9,7 @@ body.theme-neve .fc-wrapper .fc-expansible-form-section__content--coupon_code .f
 }
 
 body.theme-neve.woocommerce-checkout.woocommerce-page .fc-wrapper #payment ul.payment_methods {
-  border: solid 1px #d8d8d8 !important;
+  border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8))) !important;
 }
 
 body.theme-neve div.woocommerce form .form-row .select2-selection.select2-selection--single .select2-selection__arrow {

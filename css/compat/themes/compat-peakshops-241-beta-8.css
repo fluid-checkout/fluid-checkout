@@ -29,7 +29,6 @@ body.theme-peakshops div.woocommerce form .form-row.woocommerce-validated:not([c
   right: var(--fluidcheckout--validation-check--horizontal-spacing--select, 15px);
   top: 10px;
   border-radius: 100%;
-  background-color: rgba(255, 255, 255, 0.75);
-  color: #007a3d;
+  color: var(--fluidcheckout--color--success, #007a3d);
   pointer-events: none;
 }
