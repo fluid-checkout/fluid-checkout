@@ -385,10 +385,10 @@ $checkout-steps-container-margin--large-screen:  0 !default;
 $checkout-step-padding:                          0 !default;
 $checkout-step-padding--large-screen:            0 !default;
 
-$checkout-step-border-width:                     var( --fluidcheckout--checkout-step--border-width, remsize( .1rem ) ) !default;
-$checkout-step-border-color:                     var( --fluidcheckout--checkout-step--border-color, $border-color ) !default;
+$checkout-step-border-width:                     var( --fluidcheckout--section--border-width, remsize( .1rem ) ) !default;
+$checkout-step-border-color:                     var( --fluidcheckout--section--border-color, $border-color ) !default;
 $checkout-step-border:                           solid $checkout-step-border-width $checkout-step-border-color !default;
-$checkout-step-background-color:                 var( --fluidcheckout--checkout-step--background-color, $white ) !default;
+$checkout-step-background-color:                 var( --fluidcheckout--section--background-color, $white ) !default;
 
 $checkout-substep-title-check-icon-size:         $icon-size-small !default;
 $checkout-substep-title-check-icon-spacing:      0 !default;
@@ -414,7 +414,8 @@ $checkout-substep-margin-expand:                 $global-spacing-small #{ - $con
 $checkout-substep-margin-expand--large-screen:   $global-spacing-small #{ - $container-spacing-mobile } !default;
 $checkout-substep-padding:                       $global-spacing-small $container-spacing-mobile !default;
 $checkout-substep-padding--large-screen:         $global-spacing-small $container-spacing-mobile !default;
-$checkout-substep-border-radius:                 $global-radius !default;
+
+$checkout-substep-border-radius:                 var( --fluidcheckout--section--border-radius, $global-radius ) !default;
 
 $checkout-substep-text-margin:                   0 !default;
 $checkout-substep-text-margin--large-screen:     0 !default;
