@@ -224,6 +224,10 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 			--fluidcheckout--color--light-grey: #28282a;
 			--fluidcheckout--color--lighter-grey: #191b24;
 			--fluidcheckout--color--white: #000;
+
+			--fluidcheckout--shadow-color--darker: rgba( 255, 255, 255, .30 );
+			--fluidcheckout--shadow-color--dark: rgba( 255, 255, 255, .15 );
+			--fluidcheckout--shadow-color--light: rgba( 0, 0, 0, .15 );
 		}";
 
 		return $css_variables;

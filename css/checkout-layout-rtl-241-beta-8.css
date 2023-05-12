@@ -533,7 +533,7 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
   background-color: var(--fluidcheckout--color--white, #fff);
   border: solid 1px var(--fluidcheckout--border-color--light, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
   border-radius: 8px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 15px var(--fluidcheckout--shadow-color--dark, rgba(0, 0, 0, 0.15));
   font-size: 15px;
   text-decoration: none;
   color: inherit;

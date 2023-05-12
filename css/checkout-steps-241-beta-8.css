@@ -1964,7 +1964,7 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
   justify-content: space-between;
   width: 100%;
   background-color: var(--fluidcheckout--color--white, #fff);
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 15px var(--fluidcheckout--shadow-color--dark, rgba(0, 0, 0, 0.15));
   max-width: 100%;
   padding: 10px 20px;
 }

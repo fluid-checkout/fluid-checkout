@@ -31,9 +31,9 @@ $border-dark-color:             var( --fluidcheckout--border-color--dark, $grey 
 $border-light-color:            var( --fluidcheckout--border-color--light, $lighter-grey ) !default;
 
 // Shadows
-$box-shadow-darker:             0 remsize( .2rem ) remsize( 1.5rem ) rgba( 0, 0, 0, .3 ) !default;
-$box-shadow-dark:               0 remsize( .2rem ) remsize( 1.5rem ) rgba( 0, 0, 0, .15 ) !default;
-$box-shadow-light:              0 remsize( .2rem ) remsize( 1.5rem ) rgba( 255, 255, 255, .15 ) !default;
+$box-shadow-darker:             0 remsize( .2rem ) remsize( 1.5rem ) var( --fluidcheckout--shadow-color--darker, rgba( 0, 0, 0, .30 ) ) !default;
+$box-shadow-dark:               0 remsize( .2rem ) remsize( 1.5rem ) var( --fluidcheckout--shadow-color--dark, rgba( 0, 0, 0, .15 ) ) !default;
+$box-shadow-light:              0 remsize( .2rem ) remsize( 1.5rem ) var( --fluidcheckout--shadow-color--light, rgba( 255, 255, 255, .15 ) ) !default;
 
 // Outline focus
 $focus-outline-field:           solid remsize( .2rem ) $dark-grey;
