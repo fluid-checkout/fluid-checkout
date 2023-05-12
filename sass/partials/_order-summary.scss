@@ -333,6 +333,7 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	max-width: $order-summary-table-width;
 	background-color: $order-summary-background-color;
 	overflow: visible;
+	box-shadow: $order-summary-box-shadow;
 
 	@media (#{$bp-larger-than-tablet}) {
 		margin: 0 0 $global-spacing-small;
@@ -340,6 +341,7 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 		max-width: 100%;
 		border: $order-summary-border;
 		border-radius: $checkout-substep-border-radius;
+		box-shadow: $order-summary-box-shadow--large-screen;
 	}
 
 	&:focus {
