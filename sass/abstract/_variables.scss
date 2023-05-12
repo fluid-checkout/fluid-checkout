@@ -577,8 +577,9 @@ $payment-method-font-weight:                normal !default;
 
 $coupon-code-coupon-margin:                 0 #{ - $global-spacing-extra-small } $global-spacing-tiny !default;
 $coupon-code-coupon-padding:                $global-spacing-tiny $global-spacing-extra-small !default;
-$coupon-code-coupon-border:                 dashed remsize( .1rem ) $border-color !default;
+$coupon-code-coupon-border:                 dashed remsize( .1rem ) var( --fluidcheckout--coupon-code--border-color, $border-color ) !default;
 $coupon-code-coupon-border-radius:          $global-radius-small !default;
+$coupon-code-coupon-background-color:       var( --fluidcheckout--coupon-code--background-color, transparent ) !default;
 
 $coupon-code-remove-spacing:                $global-spacing-extra-small !default;
 $coupon-code-remove-font-size:              $font-size-small !default;

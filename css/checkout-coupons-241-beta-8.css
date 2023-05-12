@@ -85,8 +85,9 @@
   justify-content: space-between;
   margin: 0 -10px 5px;
   padding: 5px 10px;
-  border: dashed 1px var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+  border: dashed 1px var(--fluidcheckout--coupon-code--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   border-radius: 5px;
+  background-color: var(--fluidcheckout--coupon-code--background-color, transparent);
 }
 
 .fc-wrapper .fc-coupon-codes__coupon-amount {
@@ -102,6 +103,9 @@
   text-decoration: underline;
   color: inherit;
   background-color: transparent;
+}
+.fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon:hover, .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon:active, .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon:focus {
+  color: var(--fluidcheckout--color--error, #cc1818);
 }
 .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon:focus {
   outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156);
