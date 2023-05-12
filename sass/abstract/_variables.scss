@@ -477,8 +477,8 @@ $order-summary-cell-padding-vertical--total:     $order-summary-cell-padding-ver
 $order-summary-cell-border-width:                var( --fluidcheckout--order-summary-cell--border-width, remsize( .1rem ) ) !default;
 $order-summary-cell-border-color:                var( --fluidcheckout--order-summary-cell--border-color, $border-color ) !default;
 $order-summary-cell-border:                      solid $order-summary-cell-border-width $order-summary-cell-border-color !default;
-$order-summary-cell-border-width--products:      var( --fluidcheckout--order-summary-cell--products--border-width, remsize( .1rem ) ) !default;
-$order-summary-cell-border-color--products:      var( --fluidcheckout--order-summary-cell--products--border-color, $border-color ) !default;
+$order-summary-cell-border-width--products:      var( --fluidcheckout--order-summary-cell--border-width--products, remsize( .1rem ) ) !default;
+$order-summary-cell-border-color--products:      var( --fluidcheckout--order-summary-cell--border-color--products, $border-color ) !default;
 $order-summary-cell-border--products:            dashed $order-summary-cell-border-width--products $order-summary-cell-border-color--products !default;
 
 $order-summary-image-width:                      remsize( 5rem ) !default;
