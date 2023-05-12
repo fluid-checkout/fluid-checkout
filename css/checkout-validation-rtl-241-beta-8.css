@@ -1,3 +1,4 @@
+/* offset-x | offset-y | blur-radius | color */
 div.woocommerce .form-row .woocommerce-error:not(.invalid-country-not-allowed) {
   display: none;
 }

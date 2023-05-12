@@ -1,3 +1,4 @@
+/* offset-x | offset-y | blur-radius | color */
 div.woocommerce form .form-row.coderockz_woo_delivery_delivery_selection_box.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after,
 div.woocommerce form .form-row.coderockz_woo_delivery_time_field.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after,
 div.woocommerce form .form-row.coderockz_woo_delivery_pickup_time_field.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after,

@@ -11,13 +11,14 @@
 	width: 100%;
 	min-height: $checkout-header-height;
 	background-color: $checkout-header-background-color;
+	border-bottom: $checkout-header-border;
 	box-shadow: $checkout-header-box-shadow;
 
 	@media (#{$bp-larger-than-desktop}) {
 		position: static;
 		min-height: $checkout-header-height--large-screen;
-		border-bottom: solid remsize( .1rem ) $border-color;
-		box-shadow: none;
+		border-bottom: $checkout-header-border--large-screen;
+		box-shadow: $checkout-header-box-shadow--large-screen;
 	}
 }
 // With admin bar

@@ -1,3 +1,4 @@
+/* offset-x | offset-y | blur-radius | color */
 .fc-wrapper .fc-checkout-step[data-step-id=payment] > .cptch_block {
   margin-bottom: 0;
   padding: 20px 20px;

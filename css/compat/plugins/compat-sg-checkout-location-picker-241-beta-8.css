@@ -1,3 +1,4 @@
+/* offset-x | offset-y | blur-radius | color */
 .sg-checkout-location-picker-wrapper:before,
 .sg-checkout-location-picker-wrapper:after {
   content: "";

@@ -1,3 +1,4 @@
+/* offset-x | offset-y | blur-radius | color */
 body.has-fc-button-colors .fc-wrapper .fc-place-order .fc-place-order-button,
 body.has-fc-button-colors.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
   border-color: var(--fluidcheckout--button--primary--border-color, #000) !important;
@@ -367,15 +368,16 @@ body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
   left: 0;
   width: 100%;
   min-height: 60px;
-  background-color: var(--fluidcheckout--color--white, #fff);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--fluidcheckout--header--background-color, var(--fluidcheckout--color--white, #fff));
+  border-bottom: var(--fluidcheckout--header--border-style--large-screen, solid) var(--fluidcheckout--header--border-width, 0) var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+  box-shadow: 0 2px 15px var(--fluidcheckout--header--shadow-color, rgba(0, 0, 0, 0.15));
 }
 @media (min-width: 1000px) {
   .fc-checkout-header {
     position: static;
     min-height: 80px;
-    border-bottom: solid 1px var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
-    box-shadow: none;
+    border-bottom: var(--fluidcheckout--header--border-style--large-screen, solid) var(--fluidcheckout--header--border-width--large-screen, 1px) var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+    box-shadow: 0 2px 15px var(--fluidcheckout--header--shadow-color--large-screen, transparent);
   }
 }
 

@@ -1,3 +1,4 @@
+/* offset-x | offset-y | blur-radius | color */
 body.has-fc-button-colors .woocommerce-address-fields button[type=submit] {
   border-color: var(--fluidcheckout--button--primary--border-color, #000) !important;
   background-color: var(--fluidcheckout--button--primary--background-color, #000) !important;

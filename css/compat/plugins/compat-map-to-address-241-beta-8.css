@@ -1,3 +1,4 @@
+/* offset-x | offset-y | blur-radius | color */
 .sg-del-add-section:before,
 .sg-del-add-section:after {
   content: "";
