@@ -380,8 +380,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Added CSS variables for many aspects of the design including: colors, borders, some sizing and spacing aspects.
 * Improved: Compatibility with plugin Brazilian Market v3.8.0 or newer. Fix issues and add instant validation for Brazilian documents fields CPF and CNPJ.
 * Improved: Compatibility with theme Electro. Support for all pre-defined theme colors and custom theme color.
+* Improved: Compatibility with theme Electro. Support for the theme's dark mode colors and features.
 * Fixed: Contact step being defined as incomplete when account registration is required but user is already logged in.
 * Fixed: Unblock place order button if an unexpected error happens while trying to complete a purchase.
 
