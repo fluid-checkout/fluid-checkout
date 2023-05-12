@@ -26,7 +26,7 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
 		// CSS variables
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_css_variables' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_css_variables' ), 10 );
 	}
 
 
@@ -235,6 +235,14 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 	 * Enqueue inline CSS variables.
 	 */
 	public function enqueue_css_variables() {
+		// Enqueue inline style
+		wp_add_inline_style( 'electro-style', $this->get_css_variables_styles() );
+	}
+
+	/**
+	 * Maybe enqueue inline CSS variables.
+	 */
+	public function maybe_enqueue_css_variables() {
 		// Bail if not on affected pages.
 		if (
 			! function_exists( 'is_checkout' )
@@ -245,8 +253,7 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 			)
 		) { return; }
 
-		// Enqueue inline style
-		wp_add_inline_style( 'electro-style', $this->get_css_variables_styles() );
+		$this->enqueue_css_variables();
 	}
 
 }
