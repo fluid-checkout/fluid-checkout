@@ -11,7 +11,7 @@
   "repository": {},
   "author": "Fluidweb.co",
   "license": "GPL-3.0",
-  "copyright": "Copyright (c) 2021-2022, Fluidweb OÜ",
+  "copyright": "Copyright (c) 2021-2023, Fluidweb OÜ",
   "homepage": "https://fluidcheckout.com",
   "devDependencies": {
     "browser-sync": "^2.27.9",
