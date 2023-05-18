@@ -184,22 +184,22 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		}
 
 		// Check delivery date is enabled and mandatory
-		if ( is_array( $delivery_date_settings ) && true === $delivery_date_settings[ 'enable_delivery_date' ] && true === $delivery_date_settings[ 'delivery_date_mandatory' ] && empty( $delivery_date ) ) {
+		if ( is_array( $delivery_date_settings ) && array_key_exists( 'enable_delivery_date', $delivery_date_settings ) && true === $delivery_date_settings[ 'enable_delivery_date' ] && true === $delivery_date_settings[ 'delivery_date_mandatory' ] && empty( $delivery_date ) ) {
 			$is_step_complete = false;
 		}
 
 		// Check delivery time is enabled and mandatory
-		if ( is_array( $delivery_time_settings ) && true === $delivery_time_settings[ 'enable_delivery_time' ] && true === $delivery_time_settings[ 'delivery_time_mandatory' ] && empty( $delivery_time ) ) {
+		if ( is_array( $delivery_time_settings ) && array_key_exists( 'enable_delivery_time', $delivery_date_settings ) && true === $delivery_time_settings[ 'enable_delivery_time' ] && true === $delivery_time_settings[ 'delivery_time_mandatory' ] && empty( $delivery_time ) ) {
 			$is_step_complete = false;
 		}
 
 		// Check pickup date is enabled and mandatory
-		if ( is_array( $pickup_date_settings ) && true === $pickup_date_settings[ 'enable_pickup_date' ] && true === $pickup_date_settings[ 'pickup_date_mandatory' ] && empty( $pickup_date ) ) {
+		if ( is_array( $pickup_date_settings ) && array_key_exists( 'enable_pickup_date', $delivery_date_settings ) && true === $pickup_date_settings[ 'enable_pickup_date' ] && true === $pickup_date_settings[ 'pickup_date_mandatory' ] && empty( $pickup_date ) ) {
 			$is_step_complete = false;
 		}
 
 		// Check pickup time is enabled and mandatory
-		if ( is_array( $pickup_time_settings ) && true === $pickup_time_settings[ 'enable_pickup_time' ] && true === $pickup_time_settings[ 'pickup_time_mandatory' ] && empty( $pickup_time ) ) {
+		if ( is_array( $pickup_time_settings ) && array_key_exists( 'enable_pickup_time', $delivery_date_settings ) && true === $pickup_time_settings[ 'enable_pickup_time' ] && true === $pickup_time_settings[ 'pickup_time_mandatory' ] && empty( $pickup_time ) ) {
 			$is_step_complete = false;
 		}
 
