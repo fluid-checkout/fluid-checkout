@@ -173,13 +173,13 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 		// Check order type
 		// Note that `enable_option_time_pickup` means that the user can choose between delivery and pickup
-		if ( is_array( $delivery_option_settings ) && true === $delivery_option_settings[ 'enable_option_time_pickup' ] && ! in_array( $order_type, $this->get_allowed_order_type_values() ) ) {
+		if ( is_array( $delivery_option_settings ) && array_key_exists( 'enable_option_time_pickup', $delivery_option_settings ) &&true === $delivery_option_settings[ 'enable_option_time_pickup' ] && ! in_array( $order_type, $this->get_allowed_order_type_values() ) ) {
 			$is_step_complete = false;
 		}
 
 		// Always set set as incomplete if option to select between delivery and pickup is enabled
 		// This is a limitation of the since it does not allow to set a default value for that option
-		if ( is_array( $delivery_option_settings ) && true === $delivery_option_settings[ 'enable_option_time_pickup' ] ) {
+		if ( is_array( $delivery_option_settings ) && array_key_exists( 'enable_option_time_pickup', $delivery_option_settings ) && true === $delivery_option_settings[ 'enable_option_time_pickup' ] ) {
 			$is_step_complete = false;
 		}
 
