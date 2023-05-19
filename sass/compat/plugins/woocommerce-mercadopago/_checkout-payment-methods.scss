@@ -3,6 +3,8 @@
 // ------------------------------------
 
 .fc-wrapper .mp-panel-custom-checkout,
+.fc-wrapper .mp-checkout-pro-content,
+.fc-wrapper .mp-checkout-ticket-container,
 .fc-wrapper .mp-checkout-custom-container {
 	padding: 0 !important; // Needed to override plugins styles
 	background-color: transparent !important; // Needed to override plugins styles
@@ -10,6 +12,13 @@
 
 
 
-.fc-wrapper .mp-wallet-button-container {
+.fc-wrapper .mp-input-document {
+	background-color: transparent !important; // Needed to override plugins styles
+}
+
+
+
+.fc-wrapper .mp-wallet-button-container,
+.fc-wrapper .mp-input-table-list {
 	background-color: $white !important; // Needed to override plugins styles
 }
