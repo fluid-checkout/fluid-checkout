@@ -19,6 +19,7 @@ class FluidCheckout_WooCommerceMercadoPago extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Payment methods
 		add_filter( 'fc_checkout_update_on_visibility_change', array( $this, 'disable_update_on_visibility_change' ), 100 );
 	}
 
