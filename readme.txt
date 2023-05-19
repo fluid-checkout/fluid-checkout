@@ -380,9 +380,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: Compatibility with plugin Mercado Pago payments for WooCommerce.
-* Improved: Compatibility with plugin Brazilian Market v3.8.0 or newer. Fix issues and add instant validation for Brazilian documents fields CPF and CNPJ.
 * Improved: Compatibility with theme Electro. Support for all pre-defined theme colors and custom theme color.
+* Improved: Compatibility with plugin Brazilian Market v3.8.0 or newer. Fix issues and add instant validation for Brazilian documents fields CPF and CNPJ.
+* Improved: Compatibility with plugin Mercado Pago payments for WooCommerce.
 * Improved: Compatibility with Delivery & Pickup Date Time for WooCommerce - by CodeRockz, avoid PHP warning messages when that plugin settings are not saved yet.
 * Improved: Prevent replacing the payment methods section while updating checkout fragments when user switches application or hide the browser app on their devices.
 * Fixed: Compatibility with plugin Oxygen Builder.
