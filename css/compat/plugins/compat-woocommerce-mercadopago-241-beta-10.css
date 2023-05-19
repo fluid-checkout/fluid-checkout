@@ -1,4 +1,9 @@
-.fc-wrapper .mp-panel-custom-checkout {
-  padding: 0;
-  background-color: transparent;
+.fc-wrapper .mp-panel-custom-checkout,
+.fc-wrapper .mp-checkout-custom-container {
+  padding: 0 !important;
+  background-color: transparent !important;
+}
+
+.fc-wrapper .mp-wallet-button-container {
+  background-color: #fff !important;
 }

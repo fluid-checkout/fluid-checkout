@@ -2,7 +2,14 @@
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
 
-.fc-wrapper .mp-panel-custom-checkout {
-	padding: 0;
-	background-color: transparent;
+.fc-wrapper .mp-panel-custom-checkout,
+.fc-wrapper .mp-checkout-custom-container {
+	padding: 0 !important; // Needed to override plugins styles
+	background-color: transparent !important; // Needed to override plugins styles
+}
+
+
+
+.fc-wrapper .mp-wallet-button-container {
+	background-color: $white !important; // Needed to override plugins styles
 }
