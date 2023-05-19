@@ -32,6 +32,7 @@ jQuery( function( $ ) {
 		usernameFieldSelector:                        '.fc-login-form__inner input[name="username"]',
 
 		loadingClass:                                 'fc-loading',
+		checkoutBlockUISelector:                      '.woocommerce-checkout-payment, .woocommerce-checkout-review-order-table .fc-shipping-method__packages',
 
 		checkoutPlaceOrderApplyLoadingClass:          'yes',
 		checkoutUpdateBeforeUnload:                   'yes',
@@ -170,7 +171,7 @@ jQuery( function( $ ) {
 		// CHANGE: Update checkout when page gets hidden or visible again
 		maybe_update_checkout_visibility_change: function() {
 			if ( 'hidden' == document.visibilityState || 'visible' == document.visibilityState ) {
-				$( document.body ).trigger( 'update_checkout' );
+				$( document.body ).trigger( 'update_checkout', { refresh_payment_methods: false } );
 			}
 		},
 		// CHANGE: Prompt user that they might lose data when closing tab or leaving the current page after they change some values in the checkout form
@@ -592,8 +593,17 @@ jQuery( function( $ ) {
 				data.shipping_method = shipping_methods;
 			}
 
-			// CHANGE: Also block the shipping methods section when updating
-			$( '.woocommerce-checkout-payment, .woocommerce-checkout-review-order-table .fc-shipping-method__packages' ).block({
+			// CHANGE: Define selector for blocking UI of sections as a variable, also block the shipping methods section when updating
+			var blockui_selector = _settings.checkoutBlockUISelector;
+
+			// CHANGE: Add flag to indicate whether payment methods fragment should be refreshed
+			if ( false === args.refresh_payment_methods ) {
+				blockui_selector = blockui_selector.replace( '.woocommerce-checkout-payment, ', '' );
+				data.refresh_payment_methods = 'false';
+			}
+
+			// CHANGE: Use selector from settings to Block UI elements
+			$( blockui_selector ).block({
 				message: null,
 				overlayCSS: {
 					background: '#fff',
@@ -706,6 +716,9 @@ jQuery( function( $ ) {
 						// CHANGE: Trigger custom event after fragments are replaced.
 						$( document.body ).trigger( 'fc_checkout_fragments_replace_after', [ data ] );
 					}
+
+					// CHANGE: Unblock remaining blocked fragments after updating.
+					$( _settings.checkoutBlockUISelector ).unblock();
 
 					// CHANGE: Re-set focus to the element with focus previously to updating fragments
 					wc_checkout_form.maybe_refocus_element( currentFocusedElement, currentValue );
