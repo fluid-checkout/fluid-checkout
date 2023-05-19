@@ -4076,11 +4076,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if payment method refresh flag is not set
 		if ( ! array_key_exists( 'refresh_payment_methods', $_POST ) ) { return $fragments; }
 
-		// Get value for payment method refresh flag
-		$refresh_payment_methods = wc_clean( wp_unslash( $_POST['refresh_payment_methods'] ) );
-
 		// Maybe suppress payment method fragment
-		if ( 'false' === $refresh_payment_methods ) {
+		if ( 'false' === wc_clean( wp_unslash( $_POST['refresh_payment_methods'] ) ) ) {
 			unset( $fragments[ '.woocommerce-checkout-payment' ] );
 		}
 
