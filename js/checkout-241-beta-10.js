@@ -36,6 +36,7 @@ jQuery( function( $ ) {
 
 		checkoutPlaceOrderApplyLoadingClass:          'yes',
 		checkoutUpdateBeforeUnload:                   'yes',
+		checkoutUpdateOnVisibilityChange:             'yes',
 	};
 	// CHANGE: END - Add default settings object
 
@@ -170,6 +171,10 @@ jQuery( function( $ ) {
 		},
 		// CHANGE: Update checkout when page gets hidden or visible again
 		maybe_update_checkout_visibility_change: function() {
+			// Bail if update on visibility change is disabled
+			if ( 'yes' !== _settings.checkoutUpdateOnVisibilityChange ) { return; }
+
+			// Trigger update if visibility state is changed to `hidden` or `visible`
 			if ( 'hidden' == document.visibilityState || 'visible' == document.visibilityState ) {
 				$( document.body ).trigger( 'update_checkout', { refresh_payment_methods: false } );
 			}
