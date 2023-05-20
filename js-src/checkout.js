@@ -75,8 +75,11 @@ jQuery( function( $ ) {
 			// Form submission
 			this.$checkout_form.on( 'submit', this.submit );
 
-			// Inline validation
-			this.$checkout_form.on( 'input validate change', '.input-text, select, input:checkbox', this.validate_field );
+			// CHANGE: Maybe disable inline validation from default WooCommerce checkout script when Fluid Checkout inline validation is enabled
+			if ( ! window.CheckoutValidation ) {
+				// Inline validation
+				this.$checkout_form.on( 'input validate change', '.input-text, select, input:checkbox', this.validate_field );
+			}
 
 			// Manual trigger
 			this.$checkout_form.on( 'update', this.trigger_update_checkout );

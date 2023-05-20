@@ -688,7 +688,7 @@
 			// Maybe validate field
 			if ( window.CheckoutValidation ) {
 				var field = e.target.closest( _settings.fieldSubmitFormSelector );
-				CheckoutValidation.validateField( field );
+				CheckoutValidation.validateField( field, 'step-validation' );
 			}
 		}
 	};

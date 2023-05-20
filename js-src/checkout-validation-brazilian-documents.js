@@ -14,7 +14,7 @@
 	} else if ( typeof exports === 'object' ) {
 		module.exports = factory(root);
 	} else {
-		root.CheckoutValidationBrazilianMarketDocuments = factory(root);
+		root.CheckoutValidationBrazilianDocuments = factory(root);
 	}
 })(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
@@ -44,11 +44,12 @@
 
 	/**
 	 * Check if form row is a CPF field.
-	 * @param  {Element}  field     Field element.
-	 * @param  {Element}  formRow   Form row element.
-	 * @return {Boolean}            `true` if a CPF field.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the field is a CPF field.
 	 */
-	var isCPFField = function( field, formRow ) {
+	var isCPFField = function( field, formRow, validationEvent ) {
 		// Bail if not a CPF field
 		if ( ! formRow.matches( _settings.typeCPFFieldSelector ) ) { return false; }
 
@@ -64,7 +65,7 @@
 	 */
 	var isCPF = function( cpf ) {
 		// Clear formatting
-		cpf = cpf.replace( regexClearFormatting, "" );
+		cpf = cpf.replace( regexClearFormatting, '' );
 
 		// Bail if value is empty
 		if ( cpf == "" ) { return false };
@@ -115,13 +116,21 @@
 	}
 
 	/**
-	 * Validate CPF field value.
-	 * @param  {Element}  field     Field element.
-	 * @param  {Element}  formRow   Form row element.
+	 * Validate CPF field.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the field has a valid CPF value.
 	 */
-	var validateCPFField = function( field, formRow ) {
-		// Bail if field does not have a value, return `true` to skip validation and let the required validation handle it
-		if ( ! CheckoutValidation.hasValue( field ) ) { return { valid: true }; }
+	var validateCPFField = function( field, formRow, validationEvent ) {
+		// Bail if field does not have a value, return as "null" to skip validation and let the required validation handle it
+		if ( ! CheckoutValidation.hasValue( field ) ) { return { valid: null }; }
+
+		// Clear formatting
+		var fieldValue = field.value.replace( regexClearFormatting, '' );
+
+		// Bail if user is still typing and field has not reached the minimum length, return as "null" to avoid showing error messages
+		if ( 'input' === validationEvent && fieldValue.length < 11 ) { return { valid: null }; }
 
 		// Bail if invalid CPF number
 		if ( ! isCPF( field.value ) ) { return { valid: false, message: _settings.validationMessages.cpf_invalid.replace( '{cpf_number}', field.value ) } }
@@ -134,11 +143,12 @@
 
 	/**
 	 * Check if form row is a CNPJ field.
-	 * @param  {Element}  field     Field element.
-	 * @param  {Element}  formRow   Form row element.
-	 * @return {Boolean}            `true` if a CNPJ field, `false` otherwise.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the field is a CNPF field.
 	 */
-	var isCNPJField = function( field, formRow ) {
+	var isCNPJField = function( field, formRow, validationEvent ) {
 		// Bail if not a CNPJ field
 		if ( ! formRow.matches( _settings.typeCNPJFieldSelector ) ) { return false; }
 
@@ -154,7 +164,7 @@
 	 */
 	var isCNPJ = function( cnpj ) {
 		// Clear formatting
-		cnpj = cnpj.replace( regexClearFormatting, "" );
+		cnpj = cnpj.replace( regexClearFormatting, '' );
 
 		// Bail if empty
 		if ( cnpj == "" ) { return false; }
@@ -212,12 +222,20 @@
 
 	/**
 	 * Validate CNPJ field value.
-	 * @param  {Element}  field     Field element.
-	 * @param  {Element}  formRow   Form row element.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the field has a valid CPF value.
 	 */
-	var validateCNPJField = function( field, formRow ) {
-		// Bail if field does not have a value, return `true` to skip validation and let the required validation handle it
-		if ( ! CheckoutValidation.hasValue( field ) ) { return { valid: true }; }
+	var validateCNPJField = function( field, formRow, validationEvent ) {
+		// Bail if field does not have a value, return as "null" to skip validation and let the required validation handle it
+		if ( ! CheckoutValidation.hasValue( field ) ) { return { valid: null }; }
+
+		// Clear formatting
+		var fieldValue = field.value.replace( regexClearFormatting, '' );
+
+		// Bail if user is still typing and field has not reached the minimum length, return as "null" to avoid showing error messages
+		if ( 'input' === validationEvent && fieldValue.length < 14 ) { return { valid: null }; }
 
 		// Bail if invalid CNPJ number
 		if ( ! isCNPJ( field.value ) ) { return { valid: false, message: _settings.validationMessages.cnpj_invalid.replace( '{cnpj_number}', field.value ) } }

@@ -380,12 +380,14 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Add instant validation for Brazilian documents fields CPF and CNPJ.
 * Improved: Compatibility with theme Electro. Support for all pre-defined theme colors and custom theme color.
-* Improved: Compatibility with plugin Brazilian Market v3.8.0 or newer. Fix issues and add instant validation for Brazilian documents fields CPF and CNPJ.
+* Improved: Compatibility with plugin Brazilian Market v3.8.0 or newer. Use new Brazilian documents validation.
 * Improved: Compatibility with plugin Mercado Pago payments for WooCommerce.
 * Improved: Compatibility with plugin PayPal Brasil para WooCommerce.
 * Improved: Compatibility with Delivery & Pickup Date Time for WooCommerce - by CodeRockz, avoid PHP warning messages when that plugin settings are not saved yet.
 * Improved: Prevent replacing the payment methods section while updating checkout fragments when user switches application or hide the browser app on their devices.
+* Improved: Disable default checkout validation from WooCommerce when validation from Fluid Checkout is enabled.
 * Fixed: Compatibility with plugin Oxygen Builder.
 * Fixed: Contact step being defined as incomplete when account registration is required but user is already logged in.
 * Fixed: Unblock place order button if an unexpected error happens while trying to complete a purchase.
