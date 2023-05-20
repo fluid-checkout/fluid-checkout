@@ -38,6 +38,9 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 110 );
 		add_filter( 'fc_billing_same_as_shipping_field_keys' , array( $this, 'remove_billing_company_from_copy_shipping_field_keys' ), 10 );
 
+		// Checkout fields validation
+		add_filter( 'woocommerce_billing_fields', array( $this, 'add_brazilian_documents_validation_classes' ), 1100 ); // Needs to be higher than 1000 to run after checkout field editor plugins
+
 		// Prevent hiding optional fields behind a link button
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_person_type_fields' ), 10 );
 
@@ -202,9 +205,9 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 
 			'billing_persontype'       => array( 'priority' => 300, 'class' => array( 'form-row-wide' ) ),
 			'billing_company'          => array( 'priority' => 310, 'class' => array( 'form-row-wide' ) ),
-			'billing_cpf'              => array( 'priority' => 320, 'class' => array( 'form-row-first', 'validate-cpf' ) ),
+			'billing_cpf'              => array( 'priority' => 320, 'class' => array( 'form-row-first' ) ),
 			'billing_rg'               => array( 'priority' => 330, 'class' => array( 'form-row-last' ) ),
-			'billing_cnpj'             => array( 'priority' => 340, 'class' => array( 'form-row-first', 'validate-cnpj' ) ),
+			'billing_cnpj'             => array( 'priority' => 340, 'class' => array( 'form-row-first' ) ),
 			'billing_ie'               => array( 'priority' => 350, 'class' => array( 'form-row-last' ) ),
 			'billing_birthdate'        => array( 'priority' => 360, 'class' => array( 'form-row-first' ) ),
 			'billing_sex'              => array( 'priority' => 370, 'class' => array( 'form-row-last' ) ),
@@ -297,6 +300,27 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		}
 		
 		return $field_args;
+	}
+
+
+
+	/**
+	 * Add Brazilian documents validation classes to checkout field arguments.
+	 */
+	public function add_brazilian_documents_validation_classes( $fields ) {
+		// Maybe add CPF validation class
+		if ( array_key_exists( 'billing_cpf', $fields ) ) {
+			$fields[ 'billing_cpf' ][ 'class' ] = array_key_exists( 'class', $fields[ 'billing_cpf' ] ) ? $fields[ 'billing_cpf' ][ 'class' ] : array();
+			$fields[ 'billing_cpf' ][ 'class' ][] = 'validate-cpf';
+		}
+
+		// Maybe add CNPJ validation class
+		if ( array_key_exists( 'billing_cnpj', $fields ) ) {
+			$fields[ 'billing_cnpj' ][ 'class' ] = array_key_exists( 'class', $fields[ 'billing_cnpj' ] ) ? $fields[ 'billing_cnpj' ][ 'class' ] : array();
+			$fields[ 'billing_cnpj' ][ 'class' ][] = 'validate-cnpj';
+		}
+
+		return $fields;
 	}
 
 
