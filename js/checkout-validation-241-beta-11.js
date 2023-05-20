@@ -59,8 +59,8 @@
 
 	/**
 	 * Check if field is hidden to the user.
-	 * @param  {Field}  field Field to test visibility.
-	 * @return {Boolean}      True if field is hidden to the user.
+	 * @param  {Field}  field  Field to test visibility.
+	 * @return {Boolean}       True if field is hidden to the user.
 	 */
 	var isFieldHidden = function( field ) {
 		return ( field.offsetParent === null );
@@ -86,8 +86,8 @@
 
 	/**
 	 * Get the form-row element related to the field.
-	 * @param  {Field} field Form field.
-	 * @return {Element}     Form row related to the passed field.
+	 * @param  {Field}  field  Form field.
+	 * @return {Element}       Form row related to the passed field.
 	 */
 	var getFormRow = function( field ) {
 		// Bail if field not valid
@@ -132,9 +132,9 @@
 
 	/**
 	 * Remove inline message from the field.
-	 * @param  {Field} field      Field to validate.
-	 * @param  {Element} formRow  Form row related to the field.
-	 * @param  {String}  invalidClass  Type of error used to identify which message is related to which error.
+	 * @param  {Field}    field         Field to validate.
+	 * @param  {Element}  formRow       Form row related to the field.
+	 * @param  {String}   invalidClass  Type of error used to identify which message is related to which error.
 	 */
 	var removeInlineMessage = function( field, formRow, invalidClass ) {
 		var messageElements = formRow.querySelectorAll( 'span.woocommerce-error.invalid-' + invalidClass );
@@ -195,21 +195,24 @@
 
 	/**
 	 * Check if form row is required.
-	 * @param  {Field}    field Field for validation.
-	 * @param  {Element}  formRow Form row element.
-	 * @return {Boolean}          True if required.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the field is required or not.
 	 */
-	var isRequiredField = function( field, formRow ) {
+	var isRequiredField = function( field, formRow, validationEvent ) {
 		if ( ! formRow.matches( _settings.typeRequiredSelector ) ) { return false; }
 		return true;
 	};
 
 	/**
 	 * Validate required field.
-	 * @param  {Field}    field Field for validation.
-	 * @param  {Element}  formRow Form row element.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the required field has a value or not.
 	 */
-	var validateRequired = function( field, formRow ) {
+	var validateRequired = function( field, formRow, validationEvent ) {
 		// Bail if field does not have a value
 		if ( ! _publicMethods.hasValue( field ) ) { return { valid: false, message: _settings.validationMessages.required }; }
 
@@ -220,21 +223,24 @@
 
 	/**
 	 * Check if form row is email field.
-	 * @param  {Field}    field Field for validation.
-	 * @param  {Element}  formRow Form row element.
-	 * @return {Boolean}          True if is email field.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the field is an email address field.
 	 */
-	var isEmailField = function( field, formRow ) {
+	var isEmailField = function( field, formRow, validationEvent ) {
 		if ( ! formRow.matches( _settings.typeEmailSelector ) ) { return false; }
 		return true;
 	};
 
 	/**
 	 * Validate email field.
-	 * @param  {Field}    field Field for validation.
-	 * @param  {Element}  formRow Form row element.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the field has a valid email address value.
 	 */
-	var validateEmail = function( field, formRow ) {
+	var validateEmail = function( field, formRow, validationEvent ) {
 		// Bail if does not have value
 		if ( ! _publicMethods.hasValue( field ) ) { return { valid: true }; }
 
@@ -251,21 +257,24 @@
 
 	/**
 	 * Check if form row is a confirmation field.
-	 * @param  {Field}    field Field for validation.
-	 * @param  {Element}  formRow Form row element.
-	 * @return {Boolean}          True if is a confimation field.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the field is a confirmation field that is related to another field in the form.
 	 */
-	var isConfirmationField = function( field, formRow ) {
+	var isConfirmationField = function( field, formRow, validationEvent ) {
 		if ( ! formRow.querySelector( _settings.typeConfirmationSelector ) ) { return false; }
 		return true;
 	};
 
 	/**
 	 * Validate confirmation field.
-	 * @param  {Field}    field Field for validation.
-	 * @param  {Element}  formRow Form row element.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the confirmation field has the same value as the field it is related to.
 	 */
-	var validateConfirmation = function( field, formRow ) {
+	var validateConfirmation = function( field, formRow, validationEvent ) {
 		// Bail if does not have value
 		if ( ! _publicMethods.hasValue( field ) ) { return { valid: false }; }
 
@@ -280,22 +289,25 @@
 	};
 
 	/**
-	 * Check if form row is required.
-	 * @param  {Field}    field Field for validation.
-	 * @param  {Element}  formRow Form row element.
-	 * @return {Boolean}          True if required.
+	 * Check if the form row is a shipping method field wrapper.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the form row is a shipping method field wrapper.
 	 */
-	 var isShippingMethodField = function( field, formRow ) {
+	 var isShippingMethodField = function( field, formRow, validationEvent ) {
 		if ( ! formRow.matches( _settings.typeShippingMethodSelector ) ) { return false; }
 		return true;
 	};
 
 	/**
-	 * Validate required field.
-	 * @param  {Field}    field Field for validation.
-	 * @param  {Element}  formRow Form row element.
+	 * Validate shipping method field.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether a shipping method has been selected in the form row.
 	 */
-	var validateShippingMethod = function( field, formRow ) {
+	var validateShippingMethod = function( field, formRow, validationEvent ) {
 		var selectedShippingMethod = formRow.querySelector( 'input[type="radio"]:checked' );
 
 		// Bail if field does not have a value
@@ -308,11 +320,12 @@
 
 	/**
 	 * Check if field needs validation.
-	 * @param  {Field} field      Field to validate.
-	 * @param  {Element} formRow  Form row for validation.
-	 * @return {Boolean}          True if field needs any validation.
+	 * @param  {Field}   field            Field to validate.
+	 * @param  {Element} formRow          Form row for validation.
+	 * @param  {String}  validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                  True if field needs any validation.
 	 */
-	var needsValidation = function( field, formRow ) {
+	var needsValidation = function( field, formRow, validationEvent ) {
 		// Bail if field should always validate
 		if ( isAlwaysValidate( field ) ) { return true; }
 
@@ -321,7 +334,7 @@
 		for ( var i = 0; i < validationTypeNames.length; i++) {
 			var validationTypeName = validationTypeNames[i];
 			var validationType = _validationTypes[ validationTypeName ];
-			if ( validationType.needsValidation( field, formRow ) ) {
+			if ( validationType.needsValidation( field, formRow, validationEvent ) ) {
 				return true;
 			}
 		}
@@ -333,10 +346,10 @@
 
 	/**
 	 * Process validation results of a field.
-	 * @param  {Field} field             Field to validation.
-	 * @param  {Element} formRow          Form row element.
-	 * @param  {Array} validationResults Validation results array.
-	 * @return {Boolean}           True if all fields are valid.
+	 * @param  {Field}    field              Field to validation.
+	 * @param  {Element}  formRow            Form row element.
+	 * @param  {Array}    validationResults  Validation results array.
+	 * @return {Boolean}                     True if all fields are valid.
 	 */
 	var processValidationResults = function( field, formRow, validationResults ) {
 		var valid = true;
@@ -350,22 +363,27 @@
 			var message = validationResults[ validationTypeName ].message;
 			var invalidClass = validationType.invalidClass;
 
-			// Remove messages for the current validation type
+			// Remove class and message for the current validation type
+			formRow.classList.remove( _settings.invalidClass +'-'+ validationType.invalidClass );
 			removeInlineMessage( field, formRow, invalidClass );
-
-			// Toggle validation `invalidClass` according to validation `result`
-			formRow.classList.toggle( _settings.invalidClass +'-'+ validationType.invalidClass, true !== result );
 
 			// Maybe set field as invalid
 			if ( true !== result ) {
 				valid = false;
-				addInlineMessage( field, formRow, message, invalidClass );
+
+				// Maybe display inline message and set field as invalid
+				if ( null !== result ) {
+					addInlineMessage( field, formRow, message, invalidClass );
+
+					// Add field validation invalid classes for the validation type
+					formRow.classList.add( _settings.invalidClass +'-'+ validationType.invalidClass );
+				}
 			}
 		}
 
 		// Toggle general field valid/invalid classes
 		formRow.classList.toggle( _settings.validClass, valid );
-		formRow.classList.toggle( _settings.invalidClass, !valid );
+		formRow.classList.toggle( _settings.invalidClass, ! valid );
 
 		return valid;
 	};
@@ -418,7 +436,7 @@
 			}
 		}
 
-		_publicMethods.validateField( field );
+		_publicMethods.validateField( field, e.type );
 	};
 
 
@@ -462,9 +480,10 @@
 	/**
 	 * Test multiple validations on the passed field.
 	 * @param  {Field} field    Field for validation.
+	 * @return {String}        Event that triggered the field validation. Can also be an arbitrary event name.
 	 * @return {Boolean}        True if field is valid.
 	 */
-	_publicMethods.validateField = function( field, validateHidden ) {
+	_publicMethods.validateField = function( field, validationEvent, validateHidden ) {
 		// Bail if field is null
 		if ( ! field ) { return true; }
 
@@ -478,15 +497,15 @@
 		if ( ! isAlwaysValidate( field ) && validateHidden !== true && isFieldHidden( field ) ) { return true; }
 
 		// Bail if field doesn't need validation
-		if ( ! needsValidation( field, formRow ) ) { return true; }
+		if ( ! needsValidation( field, formRow, validationEvent ) ) { return true; }
 
 		// Execute validate field for all applicable validation types
 		var validationTypeNames = Object.getOwnPropertyNames( _validationTypes );
 		for ( var i = 0; i < validationTypeNames.length; i++) {
 			var validationTypeName = validationTypeNames[i];
 			var validationType = _validationTypes[ validationTypeName ];
-			if ( validationType.needsValidation( field, formRow ) ) {
-				validationResults[ validationTypeName ] = validationType.validate( field, formRow );
+			if ( validationType.needsValidation( field, formRow, validationEvent ) ) {
+				validationResults[ validationTypeName ] = validationType.validate( field, formRow, validationEvent );
 			}
 		}
 
@@ -510,7 +529,7 @@
 		var fields = container.querySelectorAll( _settings.validateFieldsSelector );
 
 		for ( var i = 0; i < fields.length; i++ ) {
-			if ( ! _publicMethods.validateField( fields[i], validateHidden ) ) {
+			if ( ! _publicMethods.validateField( fields[i], 'validate-all', validateHidden ) ) {
 				all_valid = false;
 			}
 		}

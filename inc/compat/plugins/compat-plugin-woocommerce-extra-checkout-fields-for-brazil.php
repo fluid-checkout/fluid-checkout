@@ -24,7 +24,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'replace_wcbcf_script' ), 20 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 20 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_brazilian_documents_validation_scripts' ), 20 );
 
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -108,13 +108,15 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	/**
 	 * Enqueue scripts.
 	 */
-	public function enqueue_scripts() {
+	public function maybe_enqueue_brazilian_documents_validation_scripts() {
+		// Bail if checkout validation class is not available
+		if ( ! class_exists( 'FluidCheckout_Validation' ) ) { return; }
+		
 		// Bail if not checkout page
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
-		// Add validation script
-		wp_enqueue_script( 'fc-checkout-validation-brazilian-market-documents', self::$directory_url . 'js/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/checkout-validation'. self::$asset_version . '.js', array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-validation-brazilian-market-documents', 'window.addEventListener("load",function(){CheckoutValidationBrazilianMarketDocuments.init(fcSettings.checkoutValidationBrazilianMarketDocuments);})' );
+		// Enqueue validation scripts
+		FluidCheckout_Validation::instance()->enqueue_scripts_brazilian_documents_validation();
 	}
 
 
@@ -129,13 +131,9 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		$wcbcf_settings = get_option( 'wcbcf_settings' );
 
 		// Add validation settings
-		$settings[ 'checkoutValidationBrazilianMarketDocuments' ] = apply_filters( 'fc_checkout_validation_brazilian_market_documents_script_settings', array(
+		$settings[ 'checkoutValidationBrazilianDocuments' ] = array_merge( $settings[ 'checkoutValidationBrazilianDocuments' ], array(
 			'validateCPF'         => isset( $wcbcf_settings[ 'validate_cpf' ] ) ? 'yes' : 'no',
 			'validateCNPJ'        => isset( $wcbcf_settings[ 'validate_cnpj' ] ) ? 'yes' : 'no',
-			'validationMessages'  => array(
-				'cpf_invalid'          => __( 'The CPF number "{cpf_number}" is invalid.', 'fluid-checkout' ),
-				'cnpj_invalid'         => __( 'The CNPJ number "{cnpj_number}" is invalid.', 'fluid-checkout' ),
-			),
 		) );
 
 		return $settings;
