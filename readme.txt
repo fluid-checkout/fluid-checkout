@@ -381,7 +381,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Add instant validation for Brazilian documents fields CPF and CNPJ.
-* Improved: Compatibility with theme Electro. Support for all pre-defined theme colors and custom theme color.
+* Improved: Added CSS variables for many aspects of the design including: colors, borders, some sizing and spacing aspects.
+* Improved: Compatibility with theme Electro. Support for all pre-defined theme colors, custom theme color and dark mode.
 * Improved: Compatibility with plugin Brazilian Market v3.8.0 or newer. Use new Brazilian documents validation.
 * Improved: Compatibility with plugin Mercado Pago payments for WooCommerce.
 * Improved: Compatibility with plugin PayPal Brasil para WooCommerce.

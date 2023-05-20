@@ -64,8 +64,8 @@ body.theme-enfold.woocommerce-checkout#top .fc-wrapper #payment ul.payment_metho
   margin: 0;
   padding: 20px;
   width: 100%;
-  border-bottom: solid 1px #d8d8d8;
-  background-color: #f3f3f3;
+  border-bottom: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
+  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
 }
 
 body.theme-enfold#top .fc-wrapper .fc-inside div.place-order {

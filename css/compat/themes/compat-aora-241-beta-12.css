@@ -8,7 +8,7 @@ body.theme-aora .shipping-method__option input[type=radio] {
 }
 
 body.theme-aora.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
-  border: solid 1px #d8d8d8 !important;
+  border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8))) !important;
 }
 
 body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method {
@@ -16,8 +16,8 @@ body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method {
 }
 
 body.theme-aora .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
-  padding: 10px 20px !important;
-  padding-left: 44px !important;
+  padding: var(--fluidcheckout--option-box--spacing--vertical, 10px) var(--fluidcheckout--option-box--spacing--horizontal, 10px) !important;
+  padding-left: 24pxvar(--fluidcheckout--option-box--spacing--horizontal, 10px) !important;
 }
 
 body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method:last-child {
@@ -25,7 +25,7 @@ body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method:last-
 }
 
 body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:before {
-  background-color: #007a3d !important;
+  background-color: var(--fluidcheckout--color--success, #007a3d) !important;
 }
 
 body.theme-aora .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box:after {

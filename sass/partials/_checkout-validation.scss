@@ -47,7 +47,7 @@ div.woocommerce .shipping-method__package .woocommerce-error {
 }
 
 div.woocommerce .shipping-method__package .woocommerce-error {
-	padding-left: #{ $global-spacing-extra-small + $shipping-method-radio-size + $shipping-method-padding-horizontal + remsize( .1rem ) };
+	padding-#{ $alignment-left }: calc( #{ $global-spacing-extra-small } + #{ $option-box-radio-size } + #{ $option-box-padding-horizontal } + remsize( .1rem ) );
 	background-color: transparent;
 }
 

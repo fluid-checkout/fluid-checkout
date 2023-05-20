@@ -26,7 +26,7 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
 		// CSS variables
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_css_variables' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_css_variables' ), 10 );
 	}
 
 
@@ -215,6 +215,19 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 			--fluidcheckout--button--secondary--border-color--hover: {$colors['secondary-border-color--hover']};
 			--fluidcheckout--button--secondary--background-color--hover: {$colors['secondary-background-color--hover']};
 			--fluidcheckout--button--secondary--text-color--hover: {$colors['secondary-text-color--hover']};
+		}
+		:root body.electro-dark {
+			--fluidcheckout--color--black: #fff;
+			--fluidcheckout--color--darker-grey: #f3f3f3;
+			--fluidcheckout--color--dark-grey: #d8d8d8;
+			--fluidcheckout--color--grey: #7b7575;
+			--fluidcheckout--color--light-grey: #28282a;
+			--fluidcheckout--color--lighter-grey: #191b24;
+			--fluidcheckout--color--white: #000;
+
+			--fluidcheckout--shadow-color--darker: rgba( 255, 255, 255, .30 );
+			--fluidcheckout--shadow-color--dark: rgba( 255, 255, 255, .15 );
+			--fluidcheckout--shadow-color--light: rgba( 0, 0, 0, .15 );
 		}";
 
 		return $css_variables;
@@ -226,6 +239,14 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 	 * Enqueue inline CSS variables.
 	 */
 	public function enqueue_css_variables() {
+		// Enqueue inline style
+		wp_add_inline_style( 'electro-style', $this->get_css_variables_styles() );
+	}
+
+	/**
+	 * Maybe enqueue inline CSS variables.
+	 */
+	public function maybe_enqueue_css_variables() {
 		// Bail if not on affected pages.
 		if (
 			! function_exists( 'is_checkout' )
@@ -236,8 +257,7 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 			)
 		) { return; }
 
-		// Enqueue inline style
-		wp_add_inline_style( 'electro-style', $this->get_css_variables_styles() );
+		$this->enqueue_css_variables();
 	}
 
 }

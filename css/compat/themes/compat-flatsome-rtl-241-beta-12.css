@@ -8,7 +8,7 @@
 }
 
 body.theme-flatsome {
-  background-color: #fff;
+  background-color: var(--fluidcheckout--color--white, #fff);
 }
 
 body.theme-flatsome.admin-bar .fc-checkout-header {

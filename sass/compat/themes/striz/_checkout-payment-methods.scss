@@ -4,8 +4,8 @@
 
 body#{ $_body-theme-selector } .fc-wrapper #payment .payment_methods > li.wc_payment_method > input[type="radio"]:first-child:checked + label:before {
 	margin: 0;
-	width: $payment-method-radio-size;
-	height: $payment-method-radio-size;
+	width: $option-box-radio-size;
+	height: $option-box-radio-size;
 }
 
 

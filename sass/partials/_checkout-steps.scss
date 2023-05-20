@@ -11,9 +11,9 @@
 .fc-wrapper .fc-checkout-step {
 	margin: remsize( -.1rem ) 0 0; // Prevent double borders
 	padding: $checkout-step-padding;
-	border: solid remsize( .1rem ) $border-color;
+	border: $checkout-step-border;
 	border-radius: 0;
-	background-color: $white;
+	background-color: $checkout-step-background-color;
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-step-padding--large-screen; }
 }
@@ -32,12 +32,12 @@
 	position: relative;
 	padding: $checkout-substep-padding;
 	margin: remsize( -.1rem ) 0 0; // Prevent double borders
-	border-top: solid remsize( .1rem ) $border-color;
+	border-top: $checkout-step-border;
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
 }
 .fc-wrapper .fc-step__substep[data-substep-id="payment"] + .fc-step__substep {
-	border-bottom: solid remsize( .1rem ) $border-color;
+	border-bottom: $checkout-step-border;
 }
 
 .fc-wrapper .fc-step__substep[data-substep-visible="no"] {

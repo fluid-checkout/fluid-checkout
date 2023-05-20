@@ -12,5 +12,5 @@
 
 .fc-wrapper .mp-wallet-button-container,
 .fc-wrapper .mp-input-table-list {
-  background-color: #fff !important;
+  background-color: var(--fluidcheckout--color--white, #fff) !important;
 }

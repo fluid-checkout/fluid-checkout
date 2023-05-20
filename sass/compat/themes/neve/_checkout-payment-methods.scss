@@ -3,5 +3,5 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector }#{ $_body-page-selector }.woocommerce-page .fc-wrapper #payment ul.payment_methods {
-	border: $payment-method-border !important; // Needed to override theme styles set with `!important`
+	border: $option-box-border !important; // Needed to override theme styles set with `!important`
 }

@@ -3,7 +3,7 @@
 }
 
 body.theme-kentha .fc-content {
-  color: #535156;
+  color: var(--fluidcheckout--color--dark-grey, #535156);
 }
 
 body.theme-kentha.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h1,
