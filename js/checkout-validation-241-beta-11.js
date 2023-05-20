@@ -480,7 +480,7 @@
 	/**
 	 * Test multiple validations on the passed field.
 	 * @param  {Field} field    Field for validation.
-	 * @return {String}        Event that triggered the field validation. Can also be an arbitrary event name.
+	 * @return {String}         Event that triggered the field validation. Can also be an arbitrary event name.
 	 * @return {Boolean}        True if field is valid.
 	 */
 	_publicMethods.validateField = function( field, validationEvent, validateHidden ) {
