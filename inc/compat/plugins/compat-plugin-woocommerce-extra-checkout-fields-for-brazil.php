@@ -27,7 +27,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_brazilian_documents_validation_scripts' ), 20 );
 
 		// JS settings object
-		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+		add_filter( 'fc_checkout_validation_brazilian_documents_script_settings', array( $this, 'add_js_settings_checkout_validation_brazilian_documents' ), 10 );
 
 		// Force change options
 		add_filter( 'option_wcbcf_settings', array( $this, 'disable_mailcheck_option' ), 10 );
@@ -126,12 +126,12 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 * 
 	 * @param   array  $settings  JS settings object of the plugin.
 	 */
-	public function add_js_settings( $settings ) {
+	public function add_js_settings_checkout_validation_brazilian_documents( $settings ) {
 		// Get Brazilian Market plugin settings
 		$wcbcf_settings = get_option( 'wcbcf_settings' );
 
 		// Add validation settings
-		$settings[ 'checkoutValidationBrazilianDocuments' ] = array_merge( $settings[ 'checkoutValidationBrazilianDocuments' ], array(
+		$settings = array_merge( $settings, array(
 			'validateCPF'         => isset( $wcbcf_settings[ 'validate_cpf' ] ) ? 'yes' : 'no',
 			'validateCNPJ'        => isset( $wcbcf_settings[ 'validate_cnpj' ] ) ? 'yes' : 'no',
 		) );
