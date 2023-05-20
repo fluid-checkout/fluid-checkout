@@ -31,7 +31,6 @@ $border-dark-color:             var( --fluidcheckout--border-color--dark, $grey 
 $border-light-color:            var( --fluidcheckout--border-color--light, $lighter-grey ) !default;
 
 // Shadows
-/* offset-x | offset-y | blur-radius | color */
 $box-shadow-offset-x:           0 !default;
 $box-shadow-offset-y:           remsize( .5rem ) !default;
 $box-shadow-blur-radius:        remsize( 1.5rem ) !default;

@@ -164,6 +164,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
 		add_filter( 'fc_substep_payment_method_text_lines', array( $this, 'add_substep_text_lines_payment_method' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_payment_method_text_fragment' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_suppress_payment_methods_fragment' ), 1000 );
 
 		// Formatted Address
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
@@ -389,6 +390,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
 		remove_filter( 'fc_substep_payment_method_text_lines', array( $this, 'add_substep_text_lines_payment_method' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_payment_method_text_fragment' ), 10 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_suppress_payment_methods_fragment' ), 1000 );
 
 		// Formatted Address
 		remove_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
@@ -4008,29 +4010,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_payment_method( $review_text_lines = array() ) {
-		if ( WC()->cart->needs_payment() ) {
-			// Get chosen and available payment gateways
-			$available_gateways = WC()->payment_gateways()->get_available_payment_gateways();
-			$chosen_payment_method = WC()->session->get( 'chosen_payment_method' );
+		// Bail if payment is not required
+		if ( ! WC()->cart->needs_payment() ) { return $review_text_lines; }
 
-			// Make sure we have an array of chosen payment methods
-			if ( ! is_array( $chosen_payment_method ) ) { $chosen_payment_method = array( $chosen_payment_method ); }
+		// Get chosen and available payment gateways
+		$available_gateways = WC()->payment_gateways()->get_available_payment_gateways();
+		$chosen_payment_method = WC()->session->get( 'chosen_payment_method' );
 
-			// Add a review text line for each chosen method
-			foreach ( $chosen_payment_method as $chosen_method_key ) {
-				// Maybe skip if gateway was not found
-				if ( ! array_key_exists( $chosen_method_key, $available_gateways ) ) { continue; }
+		// Make sure we have an array of chosen payment methods
+		if ( ! is_array( $chosen_payment_method ) ) { $chosen_payment_method = array( $chosen_payment_method ); }
 
-				// Get gateway
-				$gateway = $available_gateways[ $chosen_method_key ];
+		// Add a review text line for each chosen method
+		foreach ( $chosen_payment_method as $chosen_method_key ) {
+			// Maybe skip if gateway was not found
+			if ( ! array_key_exists( $chosen_method_key, $available_gateways ) ) { continue; }
 
-				// Get review text line
-				$payment_method_review_text = '<span class="payment-method-icon">' . $gateway->get_icon() . '</span>' . '<span class="payment-method-title">' . $gateway->get_title() . '</span>';
-				$payment_method_review_text = apply_filters( 'fc_payment_method_review_text_' . $chosen_method_key, $payment_method_review_text, $gateway );
+			// Get gateway
+			$gateway = $available_gateways[ $chosen_method_key ];
 
-				// Add review text line
-				$review_text_lines[] = $payment_method_review_text;
-			}
+			// Get review text line
+			$payment_method_review_text = '<span class="payment-method-icon">' . $gateway->get_icon() . '</span>' . '<span class="payment-method-title">' . $gateway->get_title() . '</span>';
+			$payment_method_review_text = apply_filters( 'fc_payment_method_review_text_' . $chosen_method_key, $payment_method_review_text, $gateway );
+
+			// Add review text line
+			$review_text_lines[] = $payment_method_review_text;
 		}
 
 		return $review_text_lines;
@@ -4059,6 +4062,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_text_payment_method() {
 		echo $this->get_substep_text_payment_method();
+	}
+
+
+
+	/**
+	 * Maybe suppress payment method fragment.
+	 */
+	public function maybe_suppress_payment_methods_fragment( $fragments ) {
+		// Bail if payment is not required
+		if ( ! WC()->cart->needs_payment() ) { return $fragments; }
+
+		// Bail if payment method refresh flag is not set
+		if ( ! array_key_exists( 'refresh_payment_methods', $_POST ) ) { return $fragments; }
+
+		// Maybe suppress payment method fragment
+		if ( 'false' === wc_clean( wp_unslash( $_POST['refresh_payment_methods'] ) ) ) {
+			unset( $fragments[ '.woocommerce-checkout-payment' ] );
+		}
+
+		return $fragments;
 	}
 
 

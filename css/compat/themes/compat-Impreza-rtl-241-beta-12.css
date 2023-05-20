@@ -1,0 +1,7 @@
+:root {
+  --fluidcheckout--field--height: 44.8px;
+}
+
+body.theme-Impreza:not(.has-checkout-header).theme-Impreza div.woocommerce {
+  padding-top: 120px;
+}
