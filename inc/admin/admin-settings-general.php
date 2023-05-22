@@ -50,17 +50,17 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 				'fc_checkout_general_settings',
 				array(
 					array(
-						'title' => __( 'Checkout Layout', 'fluid-checkout' ),
+						'title' => __( 'Layout &amp; design', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'fc_checkout_layout_options',
 					),
 
 					array(
-						'title'             => __( 'Layout Options', 'fluid-checkout' ),
+						'title'             => __( 'Checkout layout', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_layout',
 						'type'              => 'fc_layout_selector',
-						'options'           => FluidCheckout_Steps::instance()->get_allowed_checkout_layouts(),
+						'options'           => FluidCheckout_Steps::instance()->get_checkout_layout_options(),
 						'default'           => 'multi-step',
 						'autoload'          => false,
 						'wrapper_class'     => 'fc-checkout-layout',
@@ -68,8 +68,55 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'title'             => __( 'Design template', 'fluid-checkout' ),
+						'desc'              => __( 'General styles for the checkout steps, order summary and other sections.', 'fluid-checkout' ) . ' ' . __( '<a target="_blank" href="https://fluidcheckout.com/pricing/">Upgrade to PRO</a> to unlock design template options.', 'fluid-checkout' ),
+						'id'                => 'fc_design_template',
+						'type'              => 'fc_template_selector',
+						'options'           => FluidCheckout_Steps::instance()->get_design_template_options(),
+						'default'           => 'classic',
+						'autoload'          => false,
+						'wrapper_class'     => 'fc-design-template',
+						'class'             => 'fc-design-template__option',
+					),
+
+					array(
+						'title'             => __( 'Dark mode', 'fluid-checkout' ),
+						'desc'              => __( 'Enable dark mode', 'fluid-checkout' ) . ' ' . __( '(experimental)', 'fluid-checkout' ),
+						'id'                => 'fc_enable_dark_mode_styles',
+						'default'           => 'no',
+						'type'              => 'checkbox',
+						'autoload'          => false,
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'fc_checkout_layout_options',
+					),
+
+					array(
+						'title' => __( 'Checkout header and footer', 'fluid-checkout' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'fc_checkout_header_footer_options',
+					),
+
+					array(
+						'title'             => __( 'Header and footer templates', 'fluid-checkout' ),
+						'desc'              => __( 'We recommend using the distraction free header and footer to avoid distractions at the checkout page. <a href="https://baymard.com/blog/cart-abandonment" target="_blank">Read the research about cart abandonment</a>.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Controls whether to use the distraction free page header and footer or keep the currently active theme\'s header and footer.', 'fluid-checkout' ),
+						'id'                => 'fc_hide_site_header_footer_at_checkout',
+						'type'              => 'select',
+						'options'           => array(
+							'yes'           => __( 'Distraction free header and footer', 'fluid-checkout' ),
+							'no'            => __( 'Theme\'s header and footer', 'fluid-checkout' ),
+						),
+						'default'           => 'yes',
+						'autoload'          => false,
+					),
+
+					array(
 						'title'             => __( 'Logo image', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Choose an image to be displayed on the checkout page header. Only applies when using the plugin\'s checkout header.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Choose an image to be displayed on the checkout page header. Only applies when using the distraction free header and footer.', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_logo_image',
 						'type'              => 'fc_image_uploader',
 						'autoload'          => false,
@@ -77,22 +124,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Header and Footer', 'fluid-checkout' ),
-						'desc'              => __( 'We recommend using the Fluid Checkout header and footer to avoid distractions at the checkout page. <a href="https://baymard.com/blog/cart-abandonment" target="_blank">Read the research about cart abandonment</a>.', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Controls whether to use the Fluid Checkout page header and footer or keep the currently active theme\'s.', 'fluid-checkout' ),
-						'id'                => 'fc_hide_site_header_footer_at_checkout',
-						'type'              => 'select',
-						'options'           => array(
-							'yes'           => __( 'Use Fluid Checkout header and footer', 'fluid-checkout' ),
-							'no'            => __( '(Experimental) Use theme\'s page header and footer for the checkout page', 'fluid-checkout' ),
-						),
-						'default'           => 'yes',
-						'autoload'          => false,
-					),
-
-					array(
 						'title'             => __( 'Header background color', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Choose a background color for the checkout page header. Only applies when using the plugin\'s checkout header.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Choose a background color for the checkout page header. Only applies when using the distraction free header and footer.', 'fluid-checkout' ),
 						'desc'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_header_background_color',
 						'type'              => 'text',
@@ -112,12 +145,24 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Footer background color', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Choose a background color for the checkout page footer. Only applies when using the plugin\'s checkout footer.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Choose a background color for the checkout page footer. Only applies when using the distraction free header and footer.', 'fluid-checkout' ),
 						'desc'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_footer_background_color',
 						'type'              => 'text',
 						'autoload'          => false,
 						'class'             => 'colorpick',
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'fc_checkout_header_footer_options',
+					),
+
+					array(
+						'title' => __( 'Checkout elements', 'fluid-checkout' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'fc_checkout_elements_options',
 					),
 
 					array(
@@ -175,33 +220,37 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Shipping address', 'fluid-checkout' ),
-						'desc'              => __( 'Highlight the shipping address section in the checkout form', 'fluid-checkout' ),
-						'id'                => 'fc_show_shipping_section_highlighted',
+						'title'             => __( 'Checkout widget areas', 'fluid-checkout' ),
+						'desc'              => __( 'Add widget areas to the checkout page', 'fluid-checkout' ),
+						'desc_tip'          => __( 'These widget areas are used to add trust symbols on the checkout page.', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_widget_areas',
 						'default'           => 'yes',
 						'type'              => 'checkbox',
+						'checkboxgroup'     => 'start',
+						'show_if_checked'   => 'option',
 						'autoload'          => false,
 					),
-
 					array(
-						'title'             => __( 'Billing address', 'fluid-checkout' ),
-						'desc'              => __( 'Highlight the billing address section in the checkout form', 'fluid-checkout' ),
-						'id'                => 'fc_show_billing_section_highlighted',
-						'default'           => 'yes',
+						'desc'              => __( 'Only display checkout sidebar widgets when at the last checkout step on mobile devices', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Applies only to multi-step layouts.', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_widget_area_sidebar_last_step',
 						'type'              => 'checkbox',
+						'default'           => 'no',
+						'checkboxgroup'     => 'end',
+						'show_if_checked'   => 'yes',
 						'autoload'          => false,
 					),
 
 					array(
 						'type' => 'sectionend',
-						'id'   => 'fc_checkout_layout_options',
+						'id'   => 'fc_checkout_elements_options',
 					),
 
 					array(
-						'title' => __( 'Features', 'fluid-checkout' ),
+						'title' => __( 'Checkout fields', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
-						'id'    => 'fc_checkout_features_options',
+						'id'    => 'fc_checkout_fields_options',
 					),
 
 					array(
@@ -238,16 +287,14 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Billing address', 'fluid-checkout' ),
-						'desc'              => __( 'Billing address same as the shipping address checked by default', 'fluid-checkout' ),
-						'desc_tip'          => __( 'It is recommended to leave this option checked. The billing address at checkout will start with the option "Billing same as shipping" checked by default. This will significantly reduce the number of open input fields at the checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
-						'id'                => 'fc_default_to_billing_same_as_shipping',
+						'desc'              => __( 'Highlight the billing address section in the checkout form', 'fluid-checkout' ),
+						'id'                => 'fc_show_billing_section_highlighted',
 						'default'           => 'yes',
 						'type'              => 'checkbox',
 						'autoload'          => false,
 					),
 
 					array(
-						'title'             => __( 'Billing phone', 'fluid-checkout' ),
 						'desc'              => __( 'Add a phone field to the billing address form', 'fluid-checkout' ),
 						'id'                => 'woocommerce_checkout_phone_field',
 						'options'           => array(
@@ -273,7 +320,24 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Shipping phone', 'fluid-checkout' ),
+						'desc'              => __( 'Billing address same as the shipping address checked by default', 'fluid-checkout' ),
+						'desc_tip'          => __( 'It is recommended to leave this option checked. The billing address at checkout will start with the option "Billing same as shipping" checked by default. This will significantly reduce the number of open input fields at the checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
+						'id'                => 'fc_default_to_billing_same_as_shipping',
+						'default'           => 'yes',
+						'type'              => 'checkbox',
+						'autoload'          => false,
+					),
+
+					array(
+						'title'             => __( 'Shipping address', 'fluid-checkout' ),
+						'desc'              => __( 'Highlight the shipping address section in the checkout form', 'fluid-checkout' ),
+						'id'                => 'fc_show_shipping_section_highlighted',
+						'default'           => 'yes',
+						'type'              => 'checkbox',
+						'autoload'          => false,
+					),
+
+					array(
 						'desc'              => __( 'Add a phone field to the shipping address form', 'fluid-checkout' ),
 						'id'                => 'fc_shipping_phone_field_visibility',
 						'options'           => array(
@@ -312,6 +376,19 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'title'             => __( 'Order notes', 'fluid-checkout' ),
+						'desc'              => __( 'Define the visibility of the additional order notes field.', 'fluid-checkout' ),
+						'id'                => 'woocommerce_enable_order_comments',
+						'options'           => array(
+							'no'            => __( 'Hidden', 'fluid-checkout' ),
+							'yes'           => __( 'Optional', 'fluid-checkout' ),
+						),
+						'default'           => 'yes',
+						'type'              => 'select',
+						'autoload'          => false,
+					),
+
+					array(
 						'title'             => __( 'Coupon codes', 'fluid-checkout' ),
 						'desc'              => __( 'Enable integrated coupon code section', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'fluid-checkout' ),
@@ -334,43 +411,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Order notes', 'fluid-checkout' ),
-						'desc'              => __( 'Define the visibility of the additional order notes field.', 'fluid-checkout' ),
-						'id'                => 'woocommerce_enable_order_comments',
-						'options'           => array(
-							'no'            => __( 'Hidden', 'fluid-checkout' ),
-							'yes'           => __( 'Optional', 'fluid-checkout' ),
-						),
-						'default'           => 'yes',
-						'type'              => 'select',
-						'autoload'          => false,
-					),
-
-					array(
-						'title'             => __( 'Checkout widget areas', 'fluid-checkout' ),
-						'desc'              => __( 'Add widget areas to the checkout page', 'fluid-checkout' ),
-						'desc_tip'          => __( 'These widget areas are used to add trust symbols on the checkout page.', 'fluid-checkout' ),
-						'id'                => 'fc_enable_checkout_widget_areas',
-						'default'           => 'yes',
-						'type'              => 'checkbox',
-						'checkboxgroup'     => 'start',
-						'show_if_checked'   => 'option',
-						'autoload'          => false,
-					),
-					array(
-						'desc'              => __( 'Only display checkout sidebar widgets when at the last checkout step on mobile devices', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Applies only to multi-step layouts.', 'fluid-checkout' ),
-						'id'                => 'fc_enable_checkout_widget_area_sidebar_last_step',
-						'type'              => 'checkbox',
-						'default'           => 'no',
-						'checkboxgroup'     => 'end',
-						'show_if_checked'   => 'yes',
-						'autoload'          => false,
-					),
-
-					array(
 						'type' => 'sectionend',
-						'id'   => 'fc_checkout_features_options',
+						'id'   => 'fc_checkout_fields_options',
 					),
 
 				)

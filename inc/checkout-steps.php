@@ -707,15 +707,48 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the allowed checkout layout options.
+	 *
+	 * @return  array  Design templates arguments.
+	 */
+	public function get_checkout_layout_options() {
+		return array(
+			'multi-step'  => array( 'label' => __( 'Multi-step', 'fluid-checkout' ) ),
+			'single-step' => array( 'label' => __( 'Single step', 'fluid-checkout' ) ),
+		);
+	}
+
+	/**
 	 * Return the list of values accepted for checkout layout.
 	 *
 	 * @return  array  List of values accepted for checkout layout.
 	 */
 	public function get_allowed_checkout_layouts() {
-		return apply_filters( 'fc_allowed_checkout_layouts', array(
-			'multi-step'     => __( 'Multi-step', 'fluid-checkout' ),
-			'single-step'    => __( 'Single step', 'fluid-checkout' ),
-		) );
+		return array_keys( $this->get_checkout_layout_options() );
+	}
+
+
+
+	/**
+	 * Get the design template option arguments.
+	 *
+	 * @return  array  Design templates arguments.
+	 */
+	public function get_design_template_options() {
+		return array(
+			'classic'     => array( 'label' => __( 'Classic', 'fluid-checkout' ) ),
+			'modern'      => array( 'label' => __( 'Modern', 'fluid-checkout' ), 'disabled' => true ),
+			'minimalist'  => array( 'label' => __( 'Minimalist', 'fluid-checkout' ), 'disabled' => true ),
+		);
+	}
+
+	/**
+	 * Return the list of values accepted for design templates.
+	 *
+	 * @return  array  List of values accepted for design templates.
+	 */
+	public function get_allowed_design_templates() {
+		return array_keys( $this->get_design_template_options() );
 	}
 
 
@@ -749,7 +782,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  string  The name of the currently selected checkout layout option. Defaults to `multi-step`.
 	 */
 	public function get_checkout_layout() {
-		$allowed_values = array_keys( $this->get_allowed_checkout_layouts() );
+		$allowed_values = $this->get_allowed_checkout_layouts();
 		$current_value = get_option( 'fc_checkout_layout' );
 		$default_value = 'multi-step';
 

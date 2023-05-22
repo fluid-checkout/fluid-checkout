@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Checkout admin options.
  */
-class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
+class FluidCheckout_Admin_SettingType_TemplateSelector extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -20,13 +20,13 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Field types
-		add_action( 'woocommerce_admin_field_fc_layout_selector', array( $this, 'output_field' ), 10 );
+		add_action( 'woocommerce_admin_field_fc_template_selector', array( $this, 'output_field' ), 10 );
 	}
 
 
 
 	/**
-	 * Output the layout selector setting field.
+	 * Output the template selector setting field.
 	 *
 	 * @param   array  $value  Admin settings args values.
 	 */
@@ -57,7 +57,7 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 					foreach ( $value['options'] as $key => $args ) {
 						?>
 						<li>
-							<label><input
+							<label <?php echo array_key_exists( 'disabled', $args ) && false !== $args[ 'disabled' ] ? 'class="disabled"' : ''; ?>><input
 								name="<?php echo esc_attr( $value['id'] ); ?>"
 								value="<?php echo esc_attr( $key ); ?>"
 								type="radio"
@@ -65,7 +65,7 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 								class="<?php echo esc_attr( $value['class'] ); ?>"
 								<?php echo implode( ' ', $custom_attributes_esc ); // WPCS: XSS ok. ?>
 								<?php checked( $key, $option_value ); ?>
-								<?php echo array_key_exists( 'disabled', $args ) && false !== $args[ 'disabled' ] ? 'disabled' : ''; ?>
+                                        <?php echo array_key_exists( 'disabled', $args ) && false !== $args[ 'disabled' ] ? 'disabled' : ''; ?>
 								/> <?php echo esc_html( $args[ 'label' ] ); ?></label>
 						</li>
 						<?php
@@ -76,9 +76,9 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 					<style>
 						<?php
 						foreach ( $value['options'] as $key => $val ) {
-							$option_image_url = apply_filters( 'fc_checkout_layout_option_image_url', FluidCheckout::$directory_url . 'images/admin/fc-layout-'. esc_attr( $key ) .'.png', $key, $val );
+							$option_image_url = apply_filters( 'fc_design_template_option_image_url', FluidCheckout::$directory_url . 'images/admin/fc-template-'. esc_attr( $key ) .'.png', $key, $val );
 							?>
-							.forminp-fc_layout_selector .fc-checkout-layout__option[value="<?php echo esc_attr( $key ); ?>"]:after {
+							.forminp-fc_template_selector .fc-design-template__option[value="<?php echo esc_attr( $key ); ?>"]:after {
 								background-image: url( <?php echo esc_url( $option_image_url ) ?> );
 							}
 							<?php
@@ -93,4 +93,4 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 
 }
 
-FluidCheckout_Admin_SettingType_LayoutSelector::instance();
+FluidCheckout_Admin_SettingType_TemplateSelector::instance();

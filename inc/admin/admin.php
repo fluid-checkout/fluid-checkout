@@ -56,6 +56,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	public function load_setting_types() {
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-paragraph.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-layout-selector.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-template-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-image-uploader.php';
 	}
 

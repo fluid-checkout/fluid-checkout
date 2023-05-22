@@ -2,40 +2,40 @@
 // CHECKOUT OPTIONS - LAYOUT
 // ------------------------------------
 .forminp-fc_layout_selector fieldset {
-    padding: 20px;
-    background-color: #fff;
+	padding: 20px;
+	background-color: #fff;
 }
 
 .forminp-fc_layout_selector ul {
-    margin: 0;
-    display: flex;
+	margin: 0;
+	display: flex;
 }
 
 .forminp-fc_layout_selector li {
-    position: relative;
-    display: block;
-    padding: 85px 2px 0;
-    width: 100px;
+	position: relative;
+	display: block;
+	padding: 85px 2px 0;
+	width: 100px;
 }
 .forminp-fc_layout_selector li + li {
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
 
 
 .forminp-fc_layout_selector .fc-checkout-layout__option:after {
-    content: '';
-    float: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100px;
-    height: 75px;
-    border: solid 2px #fff;
-    background-color: #F0EFF1;
-    background-size: 100% 100%;
+	content: '';
+	float: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100px;
+	height: 75px;
+	border: solid 2px #fff;
+	background-color: #F0EFF1;
+	background-size: 100% 100%;
 }
 .forminp-fc_layout_selector .fc-checkout-layout__option:checked:after {
-    border: solid 2px #3481C4;
+	border: solid 2px #3481C4;
 }
