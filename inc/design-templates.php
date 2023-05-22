@@ -19,6 +19,9 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// General
+		add_filter( 'body_class', array( $this, 'add_body_class_dark_mode' ), 10 );
+
 		// CSS variables
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_dark_mode_css_variables' ), 10 );
 	}
@@ -29,8 +32,38 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 * Undo hooks.
 	 */
 	public function undo_hooks() {
+		// General
+		remove_filter( 'body_class', array( $this, 'add_body_class_dark_mode' ), 10 );
+
 		// CSS variables
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_dark_mode_css_variables' ), 10 );
+	}
+
+
+
+	/**
+	 * Add page body class for feature detection.
+	 *
+	 * @param array $classes Classes for the body element.
+	 */
+	public function add_body_class_dark_mode( $classes ) {
+		// Bail if not on affected pages.
+		if (
+			! function_exists( 'is_checkout' )
+			|| (
+				! is_checkout() // Checkout page
+				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
+				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
+			)
+		) { return $classes; }
+
+		// Bail if dark mode is not enabled
+		if ( 'yes' !== get_option( 'fc_enable_dark_mode_styles', 'no' ) ) { return $classes; }
+
+		// Add dark mode class
+		$classes[] = 'has-fc-dark-mode';
+
+		return $classes;
 	}
 
 
