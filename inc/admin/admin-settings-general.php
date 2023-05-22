@@ -38,6 +38,15 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 
 
 	/**
+	 * Get HTML for the upgrade to PRO prompt to be used on settings descriptions.
+	 */
+	public function get_upgrade_pro_prompt_html() {
+		return ' <br>' . __( '<a target="_blank" href="https://fluidcheckout.com/pricing/">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' );
+	}
+
+
+
+	/**
 	 * Add new settings to the Fluid Checkout admin settings sections.
 	 *
 	 * @param   array   $settings         Array with all settings for the current section.
@@ -69,7 +78,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Design template', 'fluid-checkout' ),
-						'desc'              => __( 'General styles for the checkout steps, order summary and other sections.', 'fluid-checkout' ) . ' ' . __( '<a target="_blank" href="https://fluidcheckout.com/pricing/">Upgrade to PRO</a> to unlock design template options.', 'fluid-checkout' ),
+						'desc'              => __( 'General styles for the checkout steps, order summary and other sections.', 'fluid-checkout' ) . $this->get_upgrade_pro_prompt_html(),
 						'id'                => 'fc_design_template',
 						'type'              => 'fc_template_selector',
 						'options'           => FluidCheckout_DesignTemplates::instance()->get_design_template_options(),
@@ -92,6 +101,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'type' => 'sectionend',
 						'id'   => 'fc_checkout_layout_options',
 					),
+
+
 
 					array(
 						'title' => __( 'Checkout header and footer', 'fluid-checkout' ),
@@ -157,6 +168,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'type' => 'sectionend',
 						'id'   => 'fc_checkout_header_footer_options',
 					),
+
+
 
 					array(
 						'title' => __( 'Checkout elements', 'fluid-checkout' ),
@@ -245,6 +258,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'type' => 'sectionend',
 						'id'   => 'fc_checkout_elements_options',
 					),
+
+
 
 					array(
 						'title' => __( 'Checkout fields', 'fluid-checkout' ),
