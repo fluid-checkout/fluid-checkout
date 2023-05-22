@@ -44,6 +44,13 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 		return ' <br>' . __( '<a target="_blank" href="https://fluidcheckout.com/pricing/">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' );
 	}
 
+	/**
+	 * Get HTML experimental features label.
+	 */
+	public function get_experimental_feature_html() {
+		return ' ' . __( '(experimental)', 'fluid-checkout' );
+	}
+
 
 
 	/**
@@ -90,7 +97,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Dark mode', 'fluid-checkout' ),
-						'desc'              => __( 'Enable dark mode', 'fluid-checkout' ) . ' ' . __( '(experimental)', 'fluid-checkout' ),
+						'desc'              => __( 'Enable dark mode', 'fluid-checkout' ) . $this->get_experimental_feature_html(),
 						'id'                => 'fc_enable_dark_mode_styles',
 						'default'           => 'no',
 						'type'              => 'checkbox',
