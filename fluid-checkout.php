@@ -301,6 +301,7 @@ class FluidCheckout {
 	 */
 	private function register_features() {
 		self::$features = array(
+			'FluidCheckout_DesignTemplates'                => array( 'file' => self::$directory_path . 'inc/design-templates.php' ),
 			'FluidCheckout_CheckoutPageTemplate'           => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php' ),
 			'FluidCheckout_Steps'                          => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
 			'FluidCheckout_CouponCodes'                    => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ), // Class needs to be loaded for PRO version, checks that the feature is enabled happens inside the class.

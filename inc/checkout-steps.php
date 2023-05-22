@@ -730,30 +730,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get the design template option arguments.
-	 *
-	 * @return  array  Design templates arguments.
-	 */
-	public function get_design_template_options() {
-		return array(
-			'classic'     => array( 'label' => __( 'Classic', 'fluid-checkout' ) ),
-			'modern'      => array( 'label' => __( 'Modern', 'fluid-checkout' ), 'disabled' => true ),
-			'minimalist'  => array( 'label' => __( 'Minimalist', 'fluid-checkout' ), 'disabled' => true ),
-		);
-	}
-
-	/**
-	 * Return the list of values accepted for design templates.
-	 *
-	 * @return  array  List of values accepted for design templates.
-	 */
-	public function get_allowed_design_templates() {
-		return array_keys( $this->get_design_template_options() );
-	}
-
-
-
-	/**
 	 * Return the list of values accepted for checkout layout.
 	 *
 	 * @return  array  List of values accepted for checkout layout.

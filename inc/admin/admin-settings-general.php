@@ -72,7 +72,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'General styles for the checkout steps, order summary and other sections.', 'fluid-checkout' ) . ' ' . __( '<a target="_blank" href="https://fluidcheckout.com/pricing/">Upgrade to PRO</a> to unlock design template options.', 'fluid-checkout' ),
 						'id'                => 'fc_design_template',
 						'type'              => 'fc_template_selector',
-						'options'           => FluidCheckout_Steps::instance()->get_design_template_options(),
+						'options'           => FluidCheckout_DesignTemplates::instance()->get_design_template_options(),
 						'default'           => 'classic',
 						'autoload'          => false,
 						'wrapper_class'     => 'fc-design-template',
