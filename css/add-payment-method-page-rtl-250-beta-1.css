@@ -158,9 +158,9 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   background-color: var(--fluidcheckout--option-box--checked-background-color, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
 }
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method > label:hover:before,
-.fc-wrapper #payment .payment_methods > .wc_payment_method > label:focus:before {
-  border-color: var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
+.fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method] + label:hover:before,
+.fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method] + label:focus:before {
+  border-color: var(--fluidcheckout--option-box--border-color--hover, var(--fluidcheckout--border-color--dark, var(--fluidcheckout--color--grey, #7b7575)));
 }
 
 body.woocommerce-add-payment-method .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[name=payment_method]:checked + label:before {

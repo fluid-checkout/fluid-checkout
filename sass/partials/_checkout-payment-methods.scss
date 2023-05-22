@@ -149,9 +149,9 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 .fc-wrapper #payment .payment_methods > .wc_payment_method > label:hover {
 	background-color: $option-box-checked-background-color;
 }
-.fc-wrapper #payment .payment_methods > .wc_payment_method > label:hover:before,
-.fc-wrapper #payment .payment_methods > .wc_payment_method > label:focus:before {
-	border-color: $option-box-border-color;
+.fc-wrapper #payment .payment_methods > .wc_payment_method > input[name="payment_method"] + label:hover:before,
+.fc-wrapper #payment .payment_methods > .wc_payment_method > input[name="payment_method"] + label:focus:before {
+	border-color: $option-box-border-color--hover;
 }
 
 body#{ $_body-page-selector } .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[name="payment_method"]:checked + label:before {

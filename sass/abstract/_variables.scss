@@ -292,7 +292,6 @@ $option-box-border-style:                   var( --fluidcheckout--option-box--bo
 $option-box-border-width:                   var( --fluidcheckout--option-box--border-width, remsize( .1rem ) ) !default;
 $option-box-border:                         $option-box-border-style $option-box-border-width $option-box-border-color !default;
 
-
 $option-box-radio-size:                     $icon-size !default;
 $option-box-radio-border:                   solid remsize( .2rem ) $border-color !default;
 
