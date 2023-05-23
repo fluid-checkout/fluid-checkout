@@ -100,6 +100,31 @@ class FluidCheckout_Admin extends FluidCheckout {
 		return $links;
 	}
 
+
+
+	/**
+	 * Get HTML for "upgrade to PRO" to be used on settings descriptions.
+	 * 
+	 * @param  bool  $new_line  Whether to add a new line before.
+	 */
+	public function get_upgrade_pro_html( $new_line = true ) {
+		$html = __( '<a target="_blank" href="https://fluidcheckout.com/pricing/">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' );
+		
+		// Maybe add line break
+		if ( $new_line ) {
+			$html = ' <br>' . $html;
+		}
+	
+		return $html;
+	}
+
+	/**
+	 * Get HTML experimental features label.
+	 */
+	public function get_experimental_feature_html() {
+		return ' ' . __( '(experimental)', 'fluid-checkout' );
+	}
+
 }
 
 FluidCheckout_Admin::instance();

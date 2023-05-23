@@ -20,6 +20,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function hooks() {
 		// General
+		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 		add_filter( 'body_class', array( $this, 'add_body_class_dark_mode' ), 10 );
 
 		// CSS variables
@@ -33,6 +34,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function undo_hooks() {
 		// General
+		remove_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 		remove_filter( 'body_class', array( $this, 'add_body_class_dark_mode' ), 10 );
 
 		// CSS variables
@@ -40,6 +42,22 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	}
 
 
+
+	/**
+	 * Add page body class for feature detection.
+	 *
+	 * @param array $classes Classes for the body element.
+	 */
+	public function add_body_class( $classes ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
+
+		$add_classes = array(
+			'has-fc-design-template--' . FluidCheckout_Settings::instance()->get_option( 'fc_design_template' ),
+		);
+
+		return array_merge( $classes, $add_classes );
+	}
 
 	/**
 	 * Add page body class for feature detection.
@@ -58,7 +76,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		) { return $classes; }
 
 		// Bail if dark mode is not enabled
-		if ( 'yes' !== get_option( 'fc_enable_dark_mode_styles', 'no' ) ) { return $classes; }
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_dark_mode_styles' ) ) { return $classes; }
 
 		// Add dark mode class
 		$classes[] = 'has-fc-dark-mode';
@@ -145,7 +163,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		) { return; }
 
 		// Bail if dark mode is not enabled
-		if ( 'yes' !== get_option( 'fc_enable_dark_mode_styles', 'no' ) ) { return; }
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_dark_mode_styles' ) ) { return; }
 
 		$this->enqueue_dark_mode_css_variables();
 	}

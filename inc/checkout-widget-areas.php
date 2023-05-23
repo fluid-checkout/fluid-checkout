@@ -19,6 +19,9 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Bail if feature is not enabled
+		if( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_widget_areas' ) ) { return; }
+
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
@@ -63,7 +66,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
 
 		// Maybe add extra body class
-		if ( 'yes' === get_option( 'fc_enable_checkout_widget_area_sidebar_last_step', 'no' ) ) {
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_widget_area_sidebar_last_step' ) ) {
 			$classes[] = 'has-fc-sidebar-widget-area-last-step-only';
 		}
 
@@ -78,7 +81,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	public function register_widgets_areas() {
 
 		// Only register header widget areas when using Fluid Checkout header
-		if ( 'yes' === get_option( 'fc_hide_site_header_footer_at_checkout', 'yes' ) ) {
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_hide_site_header_footer_at_checkout' ) ) {
 
 			register_sidebar( array(
 				'name'          => __( 'Checkout Header - Desktop', 'fluid-checkout' ),
@@ -139,7 +142,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 
 
 		// Only register footer widget areas when using Fluid Checkout footer
-		if ( 'yes' === get_option( 'fc_hide_site_header_footer_at_checkout', 'yes' ) ) {
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_hide_site_header_footer_at_checkout' ) ) {
 
 			register_sidebar( array(
 				'name'          => __( 'Checkout Footer', 'fluid-checkout' ),
@@ -201,7 +204,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		if ( ! $is_sidebar_widget ) { return; }
 
 		if ( is_active_sidebar( 'fc_checkout_sidebar_after' ) ) :
-			$additional_classes = 'yes' === get_option( 'fc_enable_checkout_widget_area_sidebar_last_step', 'no' ) ? 'last-step-only' : '';
+			$additional_classes = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_widget_area_sidebar_last_step' ) ? 'last-step-only' : '';
 			echo '<div class="fc-widget-area fc-checkout-order-review__widgets-outside fc-clearfix ' . $additional_classes . '">';
 			dynamic_sidebar( 'fc_checkout_sidebar_after' );
 			echo '</div>';

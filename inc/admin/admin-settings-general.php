@@ -38,31 +38,6 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 
 
 	/**
-	 * Get HTML for "upgrade to PRO" to be used on settings descriptions.
-	 * 
-	 * @param  bool  $new_line  Whether to add a new line before.
-	 */
-	public function get_upgrade_pro_html( $new_line = true ) {
-		$html = __( '<a target="_blank" href="https://fluidcheckout.com/pricing/">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' );
-		
-		// Maybe add line break
-		if ( $new_line ) {
-			$html = ' <br>' . $html;
-		}
-	
-		return $html;
-	}
-
-	/**
-	 * Get HTML experimental features label.
-	 */
-	public function get_experimental_feature_html() {
-		return ' ' . __( '(experimental)', 'fluid-checkout' );
-	}
-
-
-
-	/**
 	 * Add new settings to the Fluid Checkout admin settings sections.
 	 *
 	 * @param   array   $settings         Array with all settings for the current section.
@@ -86,7 +61,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'id'                => 'fc_checkout_layout',
 						'type'              => 'fc_layout_selector',
 						'options'           => FluidCheckout_Steps::instance()->get_checkout_layout_options(),
-						'default'           => 'multi-step',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_layout' ),
 						'autoload'          => false,
 						'wrapper_class'     => 'fc-checkout-layout',
 						'class'             => 'fc-checkout-layout__option',
@@ -94,11 +69,11 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Design template', 'fluid-checkout' ),
-						'desc'              => __( 'General styles for the checkout steps, order summary and other sections.', 'fluid-checkout' ) . $this->get_upgrade_pro_html(),
+						'desc'              => __( 'General styles for the checkout steps, order summary and other sections.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_design_template',
 						'type'              => 'fc_template_selector',
 						'options'           => FluidCheckout_DesignTemplates::instance()->get_design_template_options(),
-						'default'           => 'classic',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_design_template' ),
 						'autoload'          => false,
 						'wrapper_class'     => 'fc-design-template',
 						'class'             => 'fc-design-template__option',
@@ -106,9 +81,9 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Dark mode', 'fluid-checkout' ),
-						'desc'              => __( 'Enable dark mode', 'fluid-checkout' ) . $this->get_experimental_feature_html(),
+						'desc'              => __( 'Enable dark mode', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
 						'id'                => 'fc_enable_dark_mode_styles',
-						'default'           => 'no',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_dark_mode_styles' ),
 						'type'              => 'checkbox',
 						'autoload'          => false,
 					),
@@ -137,7 +112,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 							'yes'           => __( 'Distraction free header and footer', 'fluid-checkout' ),
 							'no'            => __( 'Theme\'s header and footer', 'fluid-checkout' ),
 						),
-						'default'           => 'yes',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_hide_site_header_footer_at_checkout' ),
 						'autoload'          => false,
 					),
 
@@ -146,6 +121,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc_tip'          => __( 'Choose an image to be displayed on the checkout page header. Only applies when using the distraction free header and footer.', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_logo_image',
 						'type'              => 'fc_image_uploader',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_logo_image' ),
 						'autoload'          => false,
 						'wrapper_class'     => 'fc-checkout-logo-image',
 					),
@@ -156,6 +132,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_header_background_color',
 						'type'              => 'text',
+						'default'	          => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_header_background_color' ),
 						'autoload'          => false,
 						'class'             => 'colorpick',
 					),
@@ -166,6 +143,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_page_background_color',
 						'type'              => 'text',
+						'default'	          => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_page_background_color' ),
 						'autoload'          => false,
 						'class'             => 'colorpick',
 					),
@@ -176,6 +154,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_footer_background_color',
 						'type'              => 'text',
+						'default'	          => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_footer_background_color' ),
 						'autoload'          => false,
 						'class'             => 'colorpick',
 					),
@@ -198,7 +177,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'title'             => __( 'Progress bar', 'fluid-checkout' ),
 						'desc'              => __( 'Display the checkout progress bar when using multi-step checkout layout', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_progress_bar',
-						'default'           => 'yes',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_progress_bar' ),
 						'type'              => 'checkbox',
 						'checkboxgroup'     => 'start',
 						'show_if_checked'   => 'option',
@@ -207,7 +186,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'desc'              => __( 'Make the checkout progress bar stay visible while scrolling', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_sticky_progress_bar',
-						'default'           => 'yes',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_sticky_progress_bar' ),
 						'type'              => 'checkbox',
 						'checkboxgroup'     => 'end',
 						'show_if_checked'   => 'yes',
@@ -217,9 +196,9 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'title'             => __( 'Express checkout', 'fluid-checkout' ),
 						'desc'              => __( 'Enable the express checkout section', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Displays the express checkout section at checkout when supported payment gateways have this feature enabled.', 'fluid-checkout' ) . $this->get_upgrade_pro_html(),
+						'desc_tip'          => __( 'Displays the express checkout section at checkout when supported payment gateways have this feature enabled.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_enable_checkout_express_checkout',
-						'default'           => 'no',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_express_checkout' ),
 						'type'              => 'checkbox',
 						'checkboxgroup'     => 'start',
 						'show_if_checked'   => 'option',
@@ -230,7 +209,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Display express checkout buttons in one line for larger screens', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_express_checkout_inline_buttons',
 						'type'              => 'checkbox',
-						'default'           => 'no',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_express_checkout_inline_buttons' ),
 						'checkboxgroup'     => 'end',
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
@@ -243,6 +222,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_order_review_highlight_color',
 						'type'              => 'text',
+						'default'	          => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_order_review_highlight_color' ),
 						'autoload'          => false,
 						'class'             => 'colorpick',
 					),
@@ -250,13 +230,13 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'desc'              => __( 'Make the order summary stay visible while scrolling', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_sticky_order_summary',
-						'default'           => 'yes',
 						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_sticky_order_summary' ),
 						'autoload'          => false,
 					),
 
 					array(
-						'desc'              => __( 'Action link on the order summary at checkout.', 'fluid-checkout' ) . $this->get_upgrade_pro_html(),
+						'desc'              => __( 'Action link on the order summary at checkout.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_pro_checkout_edit_cart_replace_edit_cart_link',
 						'type'              => 'fc_select',
 						'options'           => array(
@@ -264,17 +244,17 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 							'cart_items_count'         => array( 'label' => __( 'Cart items count', 'fluid-checkout' ), 'disabled' => true ),
 							'shop_link'                => array( 'label' => __( 'Link to shop page', 'fluid-checkout' ), 'disabled' => true ),
 						),
-						'default'           => 'edit_cart_link',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_edit_cart_replace_edit_cart_link' ),
 						'autoload'          => false,
 					),
 
 					array(
 						'title'             => __( 'Cart items', 'fluid-checkout' ),
 						'desc'              => __( 'Enable options to edit cart items on the checkout page', 'fluid-checkout' ),
-						'desc_tip'          => $this->get_upgrade_pro_html( false ),
+						'desc_tip'          => FluidCheckout_Admin::instance()->get_upgrade_pro_html( false ),
 						'id'                => 'fc_pro_enable_checkout_edit_cart',
-						'default'           => 'no',
 						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_checkout_edit_cart' ),
 						'checkboxgroup'     => 'start',
 						'show_if_checked'   => 'option',
 						'autoload'          => false,
@@ -284,8 +264,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Hide cart items errors at the checkout page', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Do not display the cart items errors message at the top of the checkout page. When submitting the checkout form to complete the purchase, these error messages will always be displayed.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_cart_items_error_messages_hide_at_checkout',
-						'default'           => 'yes',
 						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_cart_items_error_messages_hide_at_checkout' ),
 						'checkboxgroup'     => 'end',
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
@@ -297,13 +277,13 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Define the position to display "Place order" and terms checkbox section.', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Some options might not be compatible with some plugins and themes.', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_place_order_position',
+						'type'              => 'select',
 						'options'           => array(
 							'below_payment_section'             => __( 'Below the payment section', 'fluid-checkout' ),
 							'below_order_summary'               => __( 'Below the order summary', 'fluid-checkout' ),
 							'both_payment_and_order_summary'    => __( 'Both below the payment section and the order summary', 'fluid-checkout' ),
 						),
-						'default'           => 'below_payment_section',
-						'type'              => 'select',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_place_order_position' ),
 						'autoload'          => false,
 					),
 
@@ -312,8 +292,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Add widget areas to the checkout page', 'fluid-checkout' ),
 						'desc_tip'          => __( 'These widget areas are used to add trust symbols and trust badges on the checkout page. LINK TO DOC', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_widget_areas',
-						'default'           => 'yes',
 						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_widget_areas' ),
 						'checkboxgroup'     => 'start',
 						'show_if_checked'   => 'option',
 						'autoload'          => false,
@@ -322,7 +302,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Display checkout sidebar widgets only when viewing the last checkout step on mobile devices when using multi-step checkout layout', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_widget_area_sidebar_last_step',
 						'type'              => 'checkbox',
-						'default'           => 'no',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_widget_area_sidebar_last_step' ),
 						'checkboxgroup'     => 'end',
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
@@ -347,8 +327,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Hide optional fields behind a link button', 'fluid-checkout' ),
 						'desc_tip'          => __( 'It is recommended to keep this option checked to reduce the number of open input fields, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-link" target="_blank">read the research</a>.', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_hide_optional_fields',
-						'default'           => 'yes',
 						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_hide_optional_fields' ),
 						'checkboxgroup'     => 'start',
 						'show_if_checked'   => 'option',
 						'autoload'          => false,
@@ -357,8 +337,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Display the "Add" link buttons in lowercase', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Make the labels of optional field "Add" link button as <code>lowercase</code>. (ie. "Add phone number" instead of "Add Phone Number")', 'fluid-checkout' ),
 						'id'                => 'fc_optional_fields_link_label_lowercase',
-						'default'           => 'yes',
 						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_optional_fields_link_label_lowercase' ),
 						'checkboxgroup'     => '',
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
@@ -367,8 +347,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Do not hide "Address line 2" fields behind a link button', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Recommended only when most customers actually need the "Address line 2" field, or when getting the right shipping address is crucial (ie. if delivering food and other perishable products).', 'fluid-checkout' ),
 						'id'                => 'fc_hide_optional_fields_skip_address_2',
-						'default'           => 'no',
 						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_hide_optional_fields_skip_address_2' ),
 						'checkboxgroup'     => 'end',
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
@@ -378,12 +358,12 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'title'             => __( 'Shipping methods', 'fluid-checkout' ),
 						'desc'              => __( 'Choose in which position to display the shipping methods section.', 'fluid-checkout' ),
 						'id'                => 'fc_shipping_methods_substep_position',
+						'type'              => 'select',
 						'options'           => array(
 							'before_shipping_address' => __( 'Before shipping address', 'fluid-checkout' ),
 							'after_shipping_address'  => __( 'After shipping address', 'fluid-checkout' ),
 						),
-						'default'           => 'after_shipping_address',
-						'type'              => 'select',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_substep_position' ),
 						'autoload'          => false,
 					),
 
@@ -391,8 +371,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'title'             => __( 'Local pickup', 'fluid-checkout' ),
 						'desc'              => __( 'Removes shipping address section when a local pickup shipping method is selected', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_local_pickup',
-						'default'           => 'no',
 						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_local_pickup' ),
 						'autoload'          => false,
 					),		
 
@@ -400,8 +380,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'title'             => __( 'Shipping address', 'fluid-checkout' ),
 						'desc'              => __( 'Highlight the shipping address section in the checkout form', 'fluid-checkout' ),
 						'id'                => 'fc_show_shipping_section_highlighted',
-						'default'           => 'yes',
 						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_show_shipping_section_highlighted' ),
 						'autoload'          => false,
 					),
 
@@ -409,43 +389,43 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'title'             => __( 'Billing address', 'fluid-checkout' ),
 						'desc'              => __( 'Highlight the billing address section in the checkout form', 'fluid-checkout' ),
 						'id'                => 'fc_show_billing_section_highlighted',
-						'default'           => 'yes',
 						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_show_billing_section_highlighted' ),
 						'autoload'          => false,
 					),
 					
 					array(
 						'desc'              => __( 'Billing address same as the shipping address checked by default', 'fluid-checkout' ),
 						'desc_tip'          => __( 'It is recommended to leave this option checked. The billing address at checkout will start with the option "Billing same as shipping" checked by default. This will significantly reduce the number of open input fields at the checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
-							'id'                => 'fc_default_to_billing_same_as_shipping',
-							'default'           => 'yes',
-							'type'              => 'checkbox',
-							'autoload'          => false,
-						),
+						'id'                => 'fc_default_to_billing_same_as_shipping',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_default_to_billing_same_as_shipping' ),
+						'autoload'          => false,
+					),
 						
 					array(
 						'title'             => __( 'Shipping phone', 'fluid-checkout' ),
 						'desc'              => __( 'Add shipping phone field to the checkout form.', 'fluid-checkout' ),
 						'id'                => 'fc_shipping_phone_field_visibility',
+						'type'              => 'select',
 						'options'           => array(
 							'no'            => __( 'Hidden (remove field)', 'fluid-checkout' ),
 							'optional'      => __( 'Optional', 'fluid-checkout' ),
 							'required'      => __( 'Required', 'fluid-checkout' ),
 						),
-						'default'           => 'no',
-						'type'              => 'select',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_phone_field_visibility' ),
 						'autoload'          => false,
 					),
 
 					array(
 						'desc'              => __( 'Choose in which step to display the shipping phone field.', 'fluid-checkout' ),
 						'id'                => 'fc_shipping_phone_field_position',
+						'type'              => 'select',
 						'options'           => array(
 							'shipping_address' => __( 'Shipping address', 'fluid-checkout' ),
 							'contact'          => __( 'Contact step', 'fluid-checkout' ),
 						),
-						'default'           => 'shipping_address',
-						'type'              => 'select',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_phone_field_position' ),
 						'autoload'          => false,
 					),
 
@@ -453,35 +433,35 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'title'             => __( 'Billing phone', 'fluid-checkout' ),
 						'desc'              => __( 'Add billing phone field to the checkout form.', 'fluid-checkout' ),
 						'id'                => 'woocommerce_checkout_phone_field',
+						'type'              => 'select',
 						'options'           => array(
 							'no'            => __( 'Hidden (remove field)', 'fluid-checkout' ),
 							'optional'      => __( 'Optional', 'fluid-checkout' ),
 							'required'      => __( 'Required', 'fluid-checkout' ),
 						),
-						'default'           => 'required',
-						'type'              => 'select',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'woocommerce_checkout_phone_field' ),
 						'autoload'          => false,
 					),
 
 					array(
 						'desc'              => __( 'Choose in which step to display the billing phone field.', 'fluid-checkout' ),
 						'id'                => 'fc_billing_phone_field_position',
+						'type'              => 'select',
 						'options'           => array(
 							'billing_address' => __( 'Billing address', 'fluid-checkout' ),
 							'contact'          => __( 'Contact step', 'fluid-checkout' ),
 						),
-						'default'           => 'billing_address',
-						'type'              => 'select',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_billing_phone_field_position' ),
 						'autoload'          => false,
 					),
 
 					array(
 						'title'             => __( 'International phone numbers', 'fluid-checkout' ),
 						'desc'              => __( 'Enable international phone number format and validation for phone fields', 'fluid-checkout' ),
-						'desc_tip'          => $this->get_upgrade_pro_html( false ),
+						'desc_tip'          => FluidCheckout_Admin::instance()->get_upgrade_pro_html( false ),
 						'id'                => 'fc_pro_enable_international_phone_fields',
-						'default'           => 'no',
 						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_fields' ),
 						'checkboxgroup'     => 'start',
 						'show_if_checked'   => 'option',
 						'autoload'          => false,
@@ -492,7 +472,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc_tip'          => __( 'When disabled, the phone field validation will not check if country or area codes are valid for the country.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_international_phone_validation',
 						'type'              => 'checkbox',
-						'default'           => 'no',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation' ),
 						'checkboxgroup'     => '',
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
@@ -502,7 +482,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Show country code beside the flag', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_international_phone_country_code',
 						'type'              => 'checkbox',
-						'default'           => 'yes',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_country_code' ),
 						'checkboxgroup'     => 'end',
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
@@ -518,7 +498,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 							'polite'        => __( 'Show if not defined', 'fluid-checkout' ),
 							'aggressive'    => __( 'Always show', 'fluid-checkout' ),
 						),
-						'default'           => 'off',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_international_phone_fields_placeholder' ),
 						'autoload'          => false,
 						'disabled'          => true,
 					),
@@ -532,17 +512,17 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 							'no'            => __( 'Hidden', 'fluid-checkout' ),
 							'yes'           => __( 'Optional', 'fluid-checkout' ),
 						),
-						'default'           => 'yes',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'woocommerce_enable_order_comments' ),
 						'autoload'          => false,
 					),
 
 					array(
 						'title'             => __( 'Gift options', 'fluid-checkout' ),
 						'desc'              => __( 'Display gift message and other gift options at the checkout page', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Allow customers to add a gift message and other gift related options to the order.', 'fluid-checkout' ) . $this->get_upgrade_pro_html(),
+						'desc_tip'          => __( 'Allow customers to add a gift message and other gift related options to the order.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_enable_checkout_gift_options',
 						'type'              => 'checkbox',
-						'default'           => 'no',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_gift_options' ),
 						'checkboxgroup'     => 'start',
 						'show_if_checked'   => 'option',
 						'autoload'          => false,
@@ -552,7 +532,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Display the gift message fields always expanded', 'fluid-checkout' ),
 						'id'                => 'fc_default_gift_options_expanded',
 						'type'              => 'checkbox',
-						'default'           => 'no',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_default_gift_options_expanded' ),
 						'checkboxgroup'     => '',
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
@@ -563,7 +543,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc_tip'          => __( 'This option affects the order confirmation page (thank you page) and order details on account pages, emails and packing slips.', 'fluid-checkout' ),
 						'id'                => 'fc_display_gift_message_in_order_details',
 						'type'              => 'checkbox',
-						'default'           => 'no',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_display_gift_message_in_order_details' ),
 						'checkboxgroup'     => 'end',
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
@@ -589,8 +569,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Enable integrated coupon code section', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'fluid-checkout' ),
 						'id'                => 'fc_enable_checkout_coupon_codes',
-						'default'           => 'yes',
 						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_coupon_codes' ),
 						'checkboxgroup'     => 'start',
 						'show_if_checked'   => 'option',
 						'autoload'          => false,
@@ -600,14 +580,14 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc_tip'          => __( 'Only applicable when coupon code is displayed as a separate section on the checkout or cart pages.', 'fluid-checkout' ),
 						'id'                => 'fc_display_coupon_code_section_title',
 						'type'              => 'checkbox',
-						'default'           => 'no',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_display_coupon_code_section_title' ),
 						'checkboxgroup'     => 'end',
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
 					),
 
 					array(
-						'desc'              => __( 'Select position where to display the coupon codes section on the checkout page.', 'fluid-checkout-pro' ) . $this->get_upgrade_pro_html(),
+						'desc'              => __( 'Select position where to display the coupon codes section on the checkout page.', 'fluid-checkout-pro' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_pro_checkout_coupon_codes_position',
 						'type'              => 'fc_select',
 						'options'           => array(
@@ -618,7 +598,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 							'before_order_totals'      => array( 'label' => __( 'Before the order totals', 'fluid-checkout-pro' ), 'disabled' => true ),
 							'after_order_totals'       => array( 'label' => __( 'After the order totals', 'fluid-checkout-pro' ), 'disabled' => true ),
 						),
-						'default'           => 'substep_before_payment',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_coupon_codes_position' ),
 						'autoload'          => false,
 					),
 		
@@ -630,7 +610,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 							'button'           => __( 'Default button style', 'fluid-checkout-pro' ),
 							'add_link_button'  => __( '"Add" link button', 'fluid-checkout-pro' ),
 						),
-						'default'           => 'add_link_button',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_coupon_code_message_button_style' ),
 						'autoload'          => false,
 						'disabled'          => true,
 					),
@@ -652,10 +632,10 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'title'             => __( 'Account matching', 'fluid-checkout' ),
 						'desc'              => __( 'Enable the account matching feature', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Associate guest customer orders with existing registered customer accounts.', 'fluid-checkout' ) . $this->get_upgrade_pro_html(),
+						'desc_tip'          => __( 'Associate guest customer orders with existing registered customer accounts.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_pro_enable_account_matching',
-						'default'           => 'no',
 						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_account_matching' ),
 						'checkboxgroup'     => 'start',
 						'show_if_checked'   => 'option',
 						'autoload'          => false,
@@ -665,8 +645,8 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'desc'              => __( 'Display message when an account exists with the email address provided', 'fluid-checkout' ),
 						'desc_tip'          => __( 'In some contexts, it might be recommended to leave this option disabled to protect the privacy of customers.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_account_matching_display_account_exists_message',
-						'default'           => 'yes',
 						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_account_matching_display_account_exists_message' ),
 						'checkboxgroup'     => '',
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,

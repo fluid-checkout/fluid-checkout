@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.2.10
+ * @version 3.0.0
  * @wc-version 3.6.0
  * @wc-original checkout/form-shipping.php
  * @global WC_Checkout $checkout
@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
 <div class="woocommerce-additional-fields">
 	<?php do_action( 'woocommerce_before_order_notes', $checkout ); ?>
 
-	<?php if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) ) : ?>
+	<?php if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_order_comments' ) ) ) : ?>
 
 		<?php // CHANGE: Remove section title "Additional Information" because it is already added as the substep title ?>
 

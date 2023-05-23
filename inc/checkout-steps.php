@@ -150,7 +150,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Billing phone
 		// Maybe move billing phone to contact step
-		if ( 'contact' === get_option( 'fc_billing_phone_field_position', 'billing_address' ) ) {
+		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
 			// Add billing phone to contact fields
 			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
 
@@ -255,7 +255,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$order_notes_substep_position = 'fc_output_step_shipping';
 
 			// Check if no additional order fields are present
-			if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
+			if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_order_comments' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
 
 				// Maybe change output to the billing step
 				if ( ! WC()->cart->needs_shipping() ) {
@@ -271,7 +271,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Run order notes hooks for better compatibility with plugins that rely on them,
 		// because they originally run regardless of the order notes fields existence.
-		if ( ! in_array( 'order', array_keys( $all_fields ) ) || ! apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) ) {
+		if ( ! in_array( 'order', array_keys( $all_fields ) ) || ! apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_order_comments' ) ) ) {
 			$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields_inside' );
 			$order_notes_substep_priority = apply_filters( 'fc_do_order_notes_hooks_priority', 100 );
 			add_action( $order_notes_substep_position, array( $this, 'do_order_notes_hooks' ), $order_notes_substep_priority );
@@ -376,7 +376,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Billing phone
 		// Maybe move billing phone to contact step
-		if ( 'contact' === get_option( 'fc_billing_phone_field_position', 'billing_address' ) ) {
+		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
 			// Add billing phone to contact fields
 			remove_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
 
@@ -515,12 +515,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Add extra class to highlight the shipping section
-		if ( true === apply_filters( 'fc_show_shipping_section_highlighted', ( 'yes' === get_option( 'fc_show_shipping_section_highlighted', 'yes' ) ) ) ) {
+		if ( true === apply_filters( 'fc_show_shipping_section_highlighted', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_show_shipping_section_highlighted' ) ) ) ) {
 			$add_classes[] = 'has-highlighted-shipping-section';
 		}
 
 		// Add extra class to highlight the billing section
-		if ( true === apply_filters( 'fc_show_billing_section_highlighted', ( 'yes' === get_option( 'fc_show_billing_section_highlighted', 'yes' ) ) ) ) {
+		if ( true === apply_filters( 'fc_show_billing_section_highlighted', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_show_billing_section_highlighted' ) ) ) ) {
 			$add_classes[] = 'has-highlighted-billing-section';
 		}
 
@@ -550,12 +550,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_checkout_header_custom_styles( $custom_styles ) {		
 		// Get header background color
-		$header_background_color = trim( get_option( 'fc_checkout_header_background_color', '' ) );
+		$header_background_color = trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_header_background_color' ) );
 
 		// Bail if color is empty
 		if ( empty( $header_background_color ) ) { return $custom_styles; }
 
-		$custom_styles .= 'header.fc-checkout-header{background-color:'. $header_background_color .'}';
+		// TODO: Use CSS variables to change color
+		$custom_styles .= 'header.fc-checkout-header{background-color:'. esc_attr( $header_background_color ) .'}';
 
 		return $custom_styles;
 	}
@@ -565,12 +566,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_checkout_page_custom_styles( $custom_styles ) {		
 		// Get header background color
-		$page_background_color = trim( get_option( 'fc_checkout_page_background_color', '' ) );
+		$page_background_color = trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_page_background_color' ) );
 
 		// Bail if color is empty
 		if ( empty( $page_background_color ) ) { return $custom_styles; }
 
-		$custom_styles .= 'body.has-fluid-checkout{background-color:'. $page_background_color .'}';
+		// TODO: Use CSS variables to change color
+		$custom_styles .= 'body.has-fluid-checkout{background-color:'. esc_attr( $page_background_color ) .'}';
 
 		return $custom_styles;
 	}
@@ -580,12 +582,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_checkout_footer_custom_styles( $custom_styles ) {
 		// Get footer background color
-		$footer_background_color = trim( get_option( 'fc_checkout_footer_background_color', '' ) );
+		$footer_background_color = trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_footer_background_color' ) );
 
 		// Bail if color is empty
 		if ( empty( $footer_background_color ) ) { return $custom_styles; }
 
-		$custom_styles .= 'footer.fc-checkout-footer{background-color:'. $footer_background_color .'}';
+		// TODO: Use CSS variables to change color
+		$custom_styles .= 'footer.fc-checkout-footer{background-color:'. esc_attr( $footer_background_color ) .'}';
 
 		return $custom_styles;
 	}
@@ -736,10 +739,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_place_order_position() {
 		// Get place order position option
-		$place_order_position = get_option( 'fc_checkout_place_order_position' ); // Should not use default value on this line because we need to check below if the value is set in the database
-
+		$place_order_position = FluidCheckout_Settings::instance()->get_option( 'fc_checkout_place_order_position', false ); // Pass in expected default value as `false` to detect if the option is not saved to the database yet.
+		
 		// Maybe handle deprecated option `fc_enable_checkout_place_order_sidebar`
-		if ( false === $place_order_position && 'yes' === get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) ) {
+		if ( false === $place_order_position && 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_place_order_sidebar' ) ) {
 			$place_order_position = 'both_payment_and_order_summary';
 		}
 		// Defaults to below the payment section `below_payment_section`
@@ -759,12 +762,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_checkout_layout() {
 		$allowed_values = $this->get_allowed_checkout_layouts();
-		$current_value = get_option( 'fc_checkout_layout' );
-		$default_value = 'multi-step';
+		$current_value = FluidCheckout_Settings::instance()->get_option( 'fc_checkout_layout' );
 
 		// Set layout to default value if value not set or not allowed
 		if ( ! in_array( $current_value, $allowed_values ) ) {
-			$current_value = $default_value;
+			$current_value = FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_layout' );
 		}
 
 		return apply_filters( 'fc_get_checkout_layout', $current_value );
@@ -776,7 +778,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  boolean  `true` if the current checkout layout option value is set to `multi-step`, `false` otherwise.
 	 */
 	public function is_checkout_layout_multistep() {
-		return apply_filters( 'fc_is_checkout_layout_multistep', $this->get_checkout_layout() === 'multi-step' );
+		return apply_filters( 'fc_is_checkout_layout_multistep', 'multi-step' === $this->get_checkout_layout() );
 	}
 
 
@@ -981,14 +983,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Check whether the shipping phone field is enabled to be used.
 	 */
 	public function is_shipping_phone_enabled() {
-		return 'no' !== get_option( 'fc_shipping_phone_field_visibility', 'no' );
+		return 'no' !== FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_visibility' );
 	}
 
 	/**
 	 * Check whether the billing phone field is enabled to be used.
 	 */
 	public function is_billing_phone_enabled() {
-		return 'hidden' !== get_option( 'woocommerce_checkout_phone_field', 'required' );
+		return 'hidden' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_checkout_phone_field' );
 	}
 
 
@@ -1660,7 +1662,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_progress_bar() {
 		// Bail if progress bar not enabled
-		if ( 'yes' !== get_option( 'fc_enable_checkout_progress_bar', 'yes' ) ) { return; }
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_progress_bar' ) ) { return; }
 
 		// Bail if not multi-step checkout layout
 		if ( ! $this->is_checkout_layout_multistep() ) { return; }
@@ -1708,7 +1710,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		// Sticky state attributes
-		if ( get_option( 'fc_enable_checkout_sticky_progress_bar', 'yes' ) === 'yes' ) {
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_sticky_progress_bar' ) ) {
 			$progress_bar_attributes = array_merge( $progress_bar_attributes, array(
 				'data-sticky-states' => true,
 				'data-sticky-relative-to' => '.fc-checkout-header',
@@ -3065,7 +3067,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$priority = 10;
 
 		// Change priority depending on the settings
-		if ( 'before_shipping_address' === get_option( 'fc_shipping_methods_substep_position', 'after_shipping_address' ) ) {
+		if ( 'before_shipping_address' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_substep_position' ) ) {
 			$priority = 20;
 		}
 
@@ -3079,7 +3081,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$priority = 20;
 
 		// Change priority depending on the settings
-		if ( 'before_shipping_address' === get_option( 'fc_shipping_methods_substep_position', 'after_shipping_address' ) ) {
+		if ( 'before_shipping_address' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_substep_position' ) ) {
 			$priority = 10;
 		}
 
@@ -3624,7 +3626,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Set default value
-		$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === get_option( 'fc_default_to_billing_same_as_shipping', 'yes' ) );
+		$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
 		
 		// Maybe set as same as shipping for logged users
 		if ( is_user_logged_in() ) {
@@ -4150,7 +4152,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		// Sticky state attributes
-		if ( get_option( 'fc_enable_checkout_sticky_order_summary', 'yes' ) === 'yes' ) {
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_sticky_order_summary' ) ) {
 			$sidebar_attributes = array_merge( $sidebar_attributes, array(
 				'data-sticky-states' => true,
 				'data-sticky-container' => '.fc-wrapper',
@@ -4458,12 +4460,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Adds order summary background highlight color as inline css.
 	 */
 	public function add_order_review_background_inline_styles() {
-		$color = get_option( 'fc_checkout_order_review_highlight_color', '' );
+		$color_esc = esc_attr( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_order_review_highlight_color' ) );
 
 		// Bail if color is not defined
-		if ( empty( $color ) ) { return; }
+		if ( empty( $color_esc ) ) { return; }
 
-		$custom_css = "body div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner { background-color: $color; }";
+		// TODO: Use CSS variables to change color
+		$custom_css = "body div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner { background-color: $color_esc; }";
 		wp_add_inline_style( 'fc-checkout-layout', $custom_css );
 	}
 

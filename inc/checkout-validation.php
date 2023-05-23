@@ -22,6 +22,9 @@ class FluidCheckout_Validation extends FluidCheckout {
 		// Bail if not on front end
 		if ( is_admin() ) { return; }
 
+		// Bail if feature is not enabled
+		if( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_validation' ) ) { return; }
+
 		// Body class
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 

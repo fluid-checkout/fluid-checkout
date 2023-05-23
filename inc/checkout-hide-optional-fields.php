@@ -22,6 +22,9 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		// Bail if not on front end
 		if ( is_admin() ) { return; }
 
+		// Bail if feature is not enabled
+		if( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_hide_optional_fields' ) ) { return; }
+
 		// WooCommerce fields output
 		add_filter( 'woocommerce_form_field', array( $this, 'add_optional_form_field_link_button' ), 100, 4 );
 	}
@@ -48,7 +51,7 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		$skip_list = array( 'state', 'billing_state', 'shipping_state' );
 
 		// Maybe skip "address line 2" fields
-		if ( get_option( 'fc_hide_optional_fields_skip_address_2', 'no' ) === 'yes' ) {
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_hide_optional_fields_skip_address_2' ) ) {
 			$skip_list[] = 'address_2';
 			$skip_list[] = 'shipping_address_2';
 			$skip_list[] = 'billing_address_2';
