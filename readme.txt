@@ -378,6 +378,13 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased - 3.0.0 =
+
+* Added: New feature to select design template for the checkout page. The selected template is also used on PRO features.
+* Added: PRO settings on the plugin settings page so users can easily discover PRO features.
+* Improved: Reorganized plugins settings in sections that are easier to understand and set up.
+* Improved: Refactor settings to use centralized class with default values.
+
 = Unreleased =
 
 * Added: Add instant validation for Brazilian documents fields CPF and CNPJ.
