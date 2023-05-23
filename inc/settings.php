@@ -31,7 +31,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * Get the default values for all options.
 	 */
 	public function get_default_option_values() {
-		return array(
+		$defaults = array(
 			// Settings without options in the admin panel.
 			'fc_apply_checkout_field_args'                                  => 'yes',
 			'fc_enable_checkout_validation'                                 => 'yes',
@@ -87,7 +87,10 @@ class FluidCheckout_Settings extends FluidCheckout {
 			// Deprecated settings.
 			'fc_enable_checkout_place_order_sidebar'                        => 'no',
 		);
+
+		return apply_filters( 'fc_default_option_values', $defaults );
 	}
+
 
 
 	/**
