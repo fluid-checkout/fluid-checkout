@@ -45,7 +45,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		// Add new settings
 		$settings_new = array(
 			array(
-				'title' => __( 'Theme Woodmart', 'fluid-checkout-pro' ),
+				'title' => __( 'Theme Woodmart', 'fluid-checkout' ),
 				'type'  => 'title',
 				'id'    => 'fc_integrations_theme_woodmart_options',
 			),

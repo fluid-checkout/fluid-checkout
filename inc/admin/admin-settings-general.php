@@ -345,28 +345,28 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'              => __( 'Select position where to display the coupon codes section on the checkout page.', 'fluid-checkout-pro' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'              => __( 'Select position where to display the coupon codes section on the checkout page.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_pro_checkout_coupon_codes_position',
 						'type'              => 'fc_select',
 						'options'           => array(
-							'before_checkout_steps'    => array( 'label' => __( 'Before the checkout steps', 'fluid-checkout-pro' ), 'disabled' => true ),
-							'substep_before_payment'   => array( 'label' => __( 'As a substep before payment methods', 'fluid-checkout-pro' ) ),
-							'substep_after_payment'    => array( 'label' => __( 'As a substep after payment methods', 'fluid-checkout-pro' ), 'disabled' => true ),
-							'inside_order_summary'     => array( 'label' => __( 'Inside the order summary', 'fluid-checkout-pro' ), 'disabled' => true ),
-							'before_order_totals'      => array( 'label' => __( 'Before the order totals', 'fluid-checkout-pro' ), 'disabled' => true ),
-							'after_order_totals'       => array( 'label' => __( 'After the order totals', 'fluid-checkout-pro' ), 'disabled' => true ),
+							'before_checkout_steps'    => array( 'label' => __( 'Before the checkout steps', 'fluid-checkout' ), 'disabled' => true ),
+							'substep_before_payment'   => array( 'label' => __( 'As a substep before payment methods', 'fluid-checkout' ) ),
+							'substep_after_payment'    => array( 'label' => __( 'As a substep after payment methods', 'fluid-checkout' ), 'disabled' => true ),
+							'inside_order_summary'     => array( 'label' => __( 'Inside the order summary', 'fluid-checkout' ), 'disabled' => true ),
+							'before_order_totals'      => array( 'label' => __( 'Before the order totals', 'fluid-checkout' ), 'disabled' => true ),
+							'after_order_totals'       => array( 'label' => __( 'After the order totals', 'fluid-checkout' ), 'disabled' => true ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_coupon_codes_position' ),
 						'autoload'          => false,
 					),
 		
 					array(
-						'desc'              => __( 'Select style of the "apply coupon" button. Only applicable when the coupon code section is displayed "Before the checkout steps" on the checkout page, or "Before the cart items section" on the cart page.', 'fluid-checkout-pro' ),
+						'desc'              => __( 'Select style of the "apply coupon" button. Only applicable when the coupon code section is displayed "Before the checkout steps" on the checkout page, or "Before the cart items section" on the cart page.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_checkout_coupon_code_message_button_style',
 						'type'              => 'fc_select',
 						'options'           => array(
-							'button'           => __( 'Default button style', 'fluid-checkout-pro' ),
-							'add_link_button'  => __( '"Add" link button', 'fluid-checkout-pro' ),
+							'button'           => __( 'Default button style', 'fluid-checkout' ),
+							'add_link_button'  => __( '"Add" link button', 'fluid-checkout' ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_coupon_code_message_button_style' ),
 						'autoload'          => false,

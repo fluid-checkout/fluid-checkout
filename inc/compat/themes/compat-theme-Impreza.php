@@ -47,7 +47,7 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 		// Add new settings
 		$settings_new = array(
 			array(
-				'title' => __( 'Theme Impreza', 'fluid-checkout-pro' ),
+				'title' => __( 'Theme Impreza', 'fluid-checkout' ),
 				'type'  => 'title',
 				'id'    => 'fc_integrations_theme_impreza_options',
 			),
