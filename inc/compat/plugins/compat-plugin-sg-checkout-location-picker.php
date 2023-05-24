@@ -30,7 +30,7 @@ class FluidCheckout_SGCheckoutLocationPicker extends FluidCheckout {
 	 */
 	public function late_hooks() {
 		if ( class_exists( 'Sg_Checkout_Location_Picker_Public' ) ) {
-			if ( get_option('sg_enable_picker') == 'enable' ) {
+			if ( 'enable' === FluidCheckout_Settings::instance()->get_option( 'sg_enable_picker' ) ) {
 				// Remove hooks
 				$this->remove_action_for_class( 'woocommerce_after_checkout_billing_form', array( 'Sg_Checkout_Location_Picker_Public', 'showBillingMap' ), 100 );
 				$this->remove_action_for_class( 'woocommerce_after_checkout_shipping_form', array( 'Sg_Checkout_Location_Picker_Public', 'showshippingMap' ), 100 );

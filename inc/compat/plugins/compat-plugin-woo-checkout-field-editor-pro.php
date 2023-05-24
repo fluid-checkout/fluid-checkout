@@ -88,7 +88,7 @@ class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 		// Bail if not on account edit address endpoint
 		if( ! is_wc_endpoint_url('edit-address') ) { return $fields; }
 
-		return self::$thwcfd_public->prepare_address_fields( get_option( 'wc_fields_billing' ), $country, $fields, 'billing' );
+		return self::$thwcfd_public->prepare_address_fields( FluidCheckout_Settings::instance()->get_option( 'wc_fields_billing' ), $country, $fields, 'billing' );
 	}
 
 
@@ -103,7 +103,7 @@ class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 		// Bail if not on account edit address endpoint
 		if( ! is_wc_endpoint_url('edit-address') ) { return $fields; }
 
-		return self::$thwcfd_public->prepare_address_fields( get_option( 'wc_fields_shipping' ), $country, $fields, 'shipping' );
+		return self::$thwcfd_public->prepare_address_fields( FluidCheckout_Settings::instance()->get_option( 'wc_fields_shipping' ), $country, $fields, 'shipping' );
 	}
 
 }

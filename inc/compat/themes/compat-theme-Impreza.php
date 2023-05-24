@@ -53,8 +53,9 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 				'desc'            => __( 'Spacing for site header at the checkout page (in pixels)', 'fluid-checkout' ),
 				'desc_tip'        => __( 'Only applicable when using the Impreza theme header at the checkout page.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_impreza_header_spacing',
-				'placeholder'     => '120',
 				'type'            => 'number',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_impreza_header_spacing' ),
+				'placeholder'     => '120',
 				'autoload'        => false,
 			),
 		);
@@ -130,7 +131,7 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
 
 		// Custom spacing
-		$header_spacing = get_option( 'fc_compat_theme_impreza_header_spacing' );
+		$header_spacing = FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_impreza_header_spacing' );
 		if ( ! empty( $header_spacing ) && intval( $header_spacing ) > 0 || '0' == $header_spacing ) {
 			$header_spacing = intval( $header_spacing );
 			?>

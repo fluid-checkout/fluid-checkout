@@ -39,7 +39,7 @@ class FluidCheckout_CaptchaPro extends FluidCheckout {
 
 
 	public function get_captcha_position_args() {
-		$captcha_position = get_option( 'fc_integration_captcha_pro_captcha_position', 'before_place_order_section' );
+		$captcha_position = FluidCheckout_Settings::instance()->get_option( 'fc_integration_captcha_pro_captcha_position' );
 		
 		$captcha_position_hook_priority = array(
 			'before_place_order_section' => array( 'hook' => 'fc_output_step_payment', 'priority' => 95, 'args_count' => 2 ),
@@ -68,7 +68,7 @@ class FluidCheckout_CaptchaPro extends FluidCheckout {
 				'before_place_order_section'     => _x( 'Before place order section', 'Captcha position', 'fluid-checkout' ),
 				'before_place_order_button'      => _x( 'Before place order button', 'Captcha position', 'fluid-checkout' ),
 			),
-			'default'        => 'before_place_order_section',
+			'default'        => FluidCheckout_Settings::instance()->get_option_default( 'fc_integration_captcha_pro_captcha_position' ),
 			'autoload'       => false,
 		);
 

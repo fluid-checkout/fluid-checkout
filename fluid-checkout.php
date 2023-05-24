@@ -332,6 +332,7 @@ class FluidCheckout {
 	 */
 	public function get_assets_version_number() {
 		$asset_version = '-' . preg_replace( '/\./', '', self::$version );
+		// Needs to use `get_option` directly as `FluidCheckout_Settings::get_option()` wrapper function is not available yet
 		$min = get_option( 'fc_load_unminified_assets', 'no' ) === 'yes' ? '' : '.min';
 		return $asset_version . $min;
 	}

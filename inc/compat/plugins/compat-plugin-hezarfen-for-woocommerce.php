@@ -84,7 +84,7 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 				) );
 
 				// Change field priority when option to sort fields is enabled on the Hezarfen plugin settings
-				if ( 'yes' === get_option( 'hezarfen_checkout_fields_auto_sort', 'no' ) ) {
+				if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'hezarfen_checkout_fields_auto_sort' ) ) {
 					$new_field_args[ 'billing_state' ][ 'priority' ] = 50;
 					$new_field_args[ 'billing_city' ][ 'priority' ] = 60;
 					$new_field_args[ 'billing_address_1' ][ 'priority' ] = 70;
@@ -93,7 +93,7 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 				}
 
 				// Hide postcode field when option is enabled on the Hezarfen plugin settings
-				if ( 'yes' === get_option( 'hezarfen_hide_checkout_postcode_fields', 'no' ) ) {
+				if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'hezarfen_hide_checkout_postcode_fields' ) ) {
 					$new_field_args[ 'billing_postcode' ][ 'required' ] = false;
 					$new_field_args[ 'billing_postcode' ][ 'type' ] = 'hidden';
 					$new_field_args[ 'billing_postcode' ][ 'hidden' ] = true;
@@ -113,7 +113,7 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 				) );
 
 				// Change field priority when option to sort fields is enabled on the Hezarfen plugin settings
-				if ( 'yes' === get_option( 'hezarfen_checkout_fields_auto_sort', 'no' ) ) {
+				if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'hezarfen_checkout_fields_auto_sort' ) ) {
 					$new_field_args[ 'shipping_state' ][ 'priority' ] = 50;
 					$new_field_args[ 'shipping_city' ][ 'priority' ] = 60;
 					$new_field_args[ 'shipping_address_1' ][ 'priority' ] = 70;
@@ -122,7 +122,7 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 				}
 
 				// Hide postcode field when option is enabled on the Hezarfen plugin settings
-				if ( 'yes' === get_option( 'hezarfen_hide_checkout_postcode_fields', 'no' ) ) {
+				if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'hezarfen_hide_checkout_postcode_fields' ) ) {
 					$new_field_args[ 'shipping_postcode' ][ 'required' ] = false;
 					$new_field_args[ 'shipping_postcode' ][ 'type' ] = 'hidden';
 					$new_field_args[ 'shipping_postcode' ][ 'hidden' ] = true;
@@ -176,7 +176,7 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 		);
 
 		// Set field priority when option to sort fields is enabled on the Hezarfen plugin settings
-		if ( 'yes' === get_option( 'hezarfen_checkout_fields_auto_sort', 'no' ) ) {
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'hezarfen_checkout_fields_auto_sort' ) ) {
 			$new_field_args[ 'state' ][ 'priority' ] = 50;
 			$new_field_args[ 'city' ][ 'priority' ] = 60;
 			$new_field_args[ 'address_1' ][ 'priority' ] = 70;
