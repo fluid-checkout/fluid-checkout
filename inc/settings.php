@@ -32,7 +32,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	public function get_default_option_values() {
 		$defaults = array(
-			// Settings with options in the admin panel.
+			// Settings checkout.
 			'fc_debug_mode'                                                 => 'no',
 			'fc_load_unminified_assets'                                     => 'no',
 			'fc_checkout_layout'                                            => 'multi-step',
@@ -81,6 +81,16 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_checkout_coupon_code_message_button_style'              => 'add_link_button',
 			'fc_pro_enable_account_matching'                                => 'no',
 			'fc_pro_account_matching_display_account_exists_message'        => 'yes',
+
+			// Settings cart.
+			'fc_pro_enable_cart_page'                                       => 'no',
+			'fc_pro_hide_site_header_footer_at_cart'                        => 'no',
+			'fc_pro_enable_cart_sticky_order_summary'                       => 'yes',
+			'fc_pro_cart_section_position_shipping'                         => 'inside_order_summary',
+			'fc_pro_cart_section_position_coupon_code'                      => 'inside_cart_items',
+			'fc_pro_cart_section_position_cross_sells'                      => 'after_cart_items',
+			'fc_pro_enable_cart_cross_sells'                                => 'yes',
+			'fc_pro_enable_cart_widget_areas'                               => 'yes',
 
 			// Settings without options in the admin panel.
 			'fc_plugin_activation_time'                                     => null,
