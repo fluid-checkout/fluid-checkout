@@ -125,6 +125,13 @@ class FluidCheckout_Admin extends FluidCheckout {
 		return ' ' . __( '(experimental)', 'fluid-checkout' );
 	}
 
+	/**
+	 * Get HTML for documentation link to be used on settings descriptions.
+	 */
+	public function get_documentation_link_html( $url = 'https://fluidcheckout.com/docs/' ) {
+		return sprintf( '<a target="_blank" href="%s">%s</a>', esc_url( $url ), __( 'Read the documentation.', 'fluid-checkout' ) );
+	}
+
 }
 
 FluidCheckout_Admin::instance();

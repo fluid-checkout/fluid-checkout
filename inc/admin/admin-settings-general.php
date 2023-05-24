@@ -96,7 +96,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 
 
 					array(
-						'title' => __( 'Checkout header and footer', 'fluid-checkout' ),
+						'title' => __( 'Header and footer', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'fc_checkout_header_footer_options',
@@ -196,7 +196,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'title'             => __( 'Express checkout', 'fluid-checkout' ),
 						'desc'              => __( 'Enable the express checkout section', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Displays the express checkout section at checkout when supported payment gateways have this feature enabled.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc_tip'          => __( 'Displays the express checkout section at checkout when supported payment gateways have this feature enabled.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-express-checkout/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_enable_checkout_express_checkout',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_express_checkout' ),
 						'type'              => 'checkbox',
@@ -251,7 +251,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'title'             => __( 'Cart items', 'fluid-checkout' ),
 						'desc'              => __( 'Enable options to edit cart items on the checkout page', 'fluid-checkout' ),
-						'desc_tip'          => FluidCheckout_Admin::instance()->get_upgrade_pro_html( false ),
+						'desc_tip'          => __( 'Allow customers to change product quantities or removing items directly at the checkout page.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-checkout-edit-cart/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_pro_enable_checkout_edit_cart',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_checkout_edit_cart' ),
@@ -290,7 +290,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'title'             => __( 'Trust symbols &amp; badges', 'fluid-checkout' ),
 						'desc'              => __( 'Add widget areas to the checkout page', 'fluid-checkout' ),
-						'desc_tip'          => __( 'These widget areas are used to add trust symbols and trust badges on the checkout page. LINK TO DOC', 'fluid-checkout' ),
+						'desc_tip'          => __( 'These widget areas are used to add trust symbols and trust badges on the checkout page.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-trust-symbols-badges/' ),
 						'id'                => 'fc_enable_checkout_widget_areas',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_widget_areas' ),
@@ -311,6 +311,71 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'type' => 'sectionend',
 						'id'   => 'fc_checkout_elements_options',
+					),
+
+
+
+					array(
+						'title' => __( 'Coupon codes', 'fluid-checkout' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'fc_checkout_coupon_code_options',
+					),
+
+					array(
+						'title'             => __( 'Coupon codes', 'fluid-checkout' ),
+						'desc'              => __( 'Enable integrated coupon code section', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_coupon_codes',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_coupon_codes' ),
+						'checkboxgroup'     => 'start',
+						'show_if_checked'   => 'option',
+						'autoload'          => false,
+					),
+					array(
+						'desc'              => __( 'Display the coupon codes section title', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Only applicable when coupon code is displayed as a separate section on the checkout or cart pages.', 'fluid-checkout' ),
+						'id'                => 'fc_display_coupon_code_section_title',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_display_coupon_code_section_title' ),
+						'checkboxgroup'     => 'end',
+						'show_if_checked'   => 'yes',
+						'autoload'          => false,
+					),
+
+					array(
+						'desc'              => __( 'Select position where to display the coupon codes section on the checkout page.', 'fluid-checkout-pro' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'id'                => 'fc_pro_checkout_coupon_codes_position',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'before_checkout_steps'    => array( 'label' => __( 'Before the checkout steps', 'fluid-checkout-pro' ), 'disabled' => true ),
+							'substep_before_payment'   => array( 'label' => __( 'As a substep before payment methods', 'fluid-checkout-pro' ) ),
+							'substep_after_payment'    => array( 'label' => __( 'As a substep after payment methods', 'fluid-checkout-pro' ), 'disabled' => true ),
+							'inside_order_summary'     => array( 'label' => __( 'Inside the order summary', 'fluid-checkout-pro' ), 'disabled' => true ),
+							'before_order_totals'      => array( 'label' => __( 'Before the order totals', 'fluid-checkout-pro' ), 'disabled' => true ),
+							'after_order_totals'       => array( 'label' => __( 'After the order totals', 'fluid-checkout-pro' ), 'disabled' => true ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_coupon_codes_position' ),
+						'autoload'          => false,
+					),
+		
+					array(
+						'desc'              => __( 'Select style of the "apply coupon" button. Only applicable when the coupon code section is displayed "Before the checkout steps" on the checkout page, or "Before the cart items section" on the cart page.', 'fluid-checkout-pro' ),
+						'id'                => 'fc_pro_checkout_coupon_code_message_button_style',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'button'           => __( 'Default button style', 'fluid-checkout-pro' ),
+							'add_link_button'  => __( '"Add" link button', 'fluid-checkout-pro' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_coupon_code_message_button_style' ),
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'fc_checkout_coupon_code_options',
 					),
 
 
@@ -369,11 +434,13 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Local pickup', 'fluid-checkout' ),
-						'desc'              => __( 'Removes shipping address section when a local pickup shipping method is selected', 'fluid-checkout' ),
+						'desc'              => __( 'Removes shipping address section when a local pickup shipping method is selected.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Replaces the shipping address with the pickup point location when a local pickup shipping method is selected.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/local-pickup-hide-shipping-address-when-local-pickup-is-selected/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_enable_checkout_local_pickup',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_local_pickup' ),
 						'autoload'          => false,
+						'disabled'          => true,
 					),		
 
 					array(
@@ -458,7 +525,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'title'             => __( 'International phone numbers', 'fluid-checkout' ),
 						'desc'              => __( 'Enable international phone number format and validation for phone fields', 'fluid-checkout' ),
-						'desc_tip'          => FluidCheckout_Admin::instance()->get_upgrade_pro_html( false ),
+						'desc_tip'          => __( 'Format and validate phone numbers according to each country.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-international-phone-numbers/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_pro_enable_international_phone_fields',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_fields' ),
@@ -558,71 +625,6 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 
 
 					array(
-						'title' => __( 'Coupon codes', 'fluid-checkout' ),
-						'type'  => 'title',
-						'desc'  => '',
-						'id'    => 'fc_checkout_coupon_code_options',
-					),
-
-					array(
-						'title'             => __( 'Coupon codes', 'fluid-checkout' ),
-						'desc'              => __( 'Enable integrated coupon code section', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Only applicable if use of coupon codes are enabled in the WooCommerce settings.', 'fluid-checkout' ),
-						'id'                => 'fc_enable_checkout_coupon_codes',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_coupon_codes' ),
-						'checkboxgroup'     => 'start',
-						'show_if_checked'   => 'option',
-						'autoload'          => false,
-					),
-					array(
-						'desc'              => __( 'Display the coupon codes section title', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Only applicable when coupon code is displayed as a separate section on the checkout or cart pages.', 'fluid-checkout' ),
-						'id'                => 'fc_display_coupon_code_section_title',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_display_coupon_code_section_title' ),
-						'checkboxgroup'     => 'end',
-						'show_if_checked'   => 'yes',
-						'autoload'          => false,
-					),
-
-					array(
-						'desc'              => __( 'Select position where to display the coupon codes section on the checkout page.', 'fluid-checkout-pro' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
-						'id'                => 'fc_pro_checkout_coupon_codes_position',
-						'type'              => 'fc_select',
-						'options'           => array(
-							'before_checkout_steps'    => array( 'label' => __( 'Before the checkout steps', 'fluid-checkout-pro' ), 'disabled' => true ),
-							'substep_before_payment'   => array( 'label' => __( 'As a substep before payment methods', 'fluid-checkout-pro' ) ),
-							'substep_after_payment'    => array( 'label' => __( 'As a substep after payment methods', 'fluid-checkout-pro' ), 'disabled' => true ),
-							'inside_order_summary'     => array( 'label' => __( 'Inside the order summary', 'fluid-checkout-pro' ), 'disabled' => true ),
-							'before_order_totals'      => array( 'label' => __( 'Before the order totals', 'fluid-checkout-pro' ), 'disabled' => true ),
-							'after_order_totals'       => array( 'label' => __( 'After the order totals', 'fluid-checkout-pro' ), 'disabled' => true ),
-						),
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_coupon_codes_position' ),
-						'autoload'          => false,
-					),
-		
-					array(
-						'desc'              => __( 'Select style of the "apply coupon" button. Only applicable when the coupon code section is displayed "Before the checkout steps" on the checkout page, or "Before the cart items section" on the cart page.', 'fluid-checkout-pro' ),
-						'id'                => 'fc_pro_checkout_coupon_code_message_button_style',
-						'type'              => 'fc_select',
-						'options'           => array(
-							'button'           => __( 'Default button style', 'fluid-checkout-pro' ),
-							'add_link_button'  => __( '"Add" link button', 'fluid-checkout-pro' ),
-						),
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_coupon_code_message_button_style' ),
-						'autoload'          => false,
-						'disabled'          => true,
-					),
-
-					array(
-						'type' => 'sectionend',
-						'id'   => 'fc_checkout_coupon_code_options',
-					),
-
-
-
-					array(
 						'title' => __( 'Account matching', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
@@ -632,7 +634,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					array(
 						'title'             => __( 'Account matching', 'fluid-checkout' ),
 						'desc'              => __( 'Enable the account matching feature', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Associate guest customer orders with existing registered customer accounts.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc_tip'          => __( 'Associate the guest customer\'s orders with their existing account when an account already exists with the customer\'s contact details.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_pro_enable_account_matching',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_account_matching' ),
@@ -643,7 +645,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 					),
 					array(
 						'desc'              => __( 'Display message when an account exists with the email address provided', 'fluid-checkout' ),
-						'desc_tip'          => __( 'In some contexts, it might be recommended to leave this option disabled to protect the privacy of customers.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Replaces the account creation fields with a notification and option to log in. In some contexts, it might be recommended to leave this option disabled to protect the privacy of customers.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_account_matching_display_account_exists_message',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_account_matching_display_account_exists_message' ),
