@@ -167,13 +167,17 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	 * @param   string  $current_section  Current section name.
 	 */
 	public function add_settings( $settings ) {
-		// Define positions for new settings
-		$index = count( $settings ) - 1;
 
-		// Define setting to insert
-		$insert_settings = array(
+		// Add new settings
+		$settings_new = array(
 			array(
-				'title'           => __( 'Sendinblue - WooCommerce Email Marketing', 'fluid-checkout' ),
+				'title' => __( 'Sendinblue - WooCommerce Email Marketing', 'fluid-checkout' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_sendinblue_options',
+			),
+
+			array(
+				'title'           => __( 'Sign up checkbox position', 'fluid-checkout' ),
 				'desc'            => __( 'Move the sign up checkbox to the contact step', 'fluid-checkout' ),
 				'desc_tip'        => __( 'When enabled, the checkbox will be moved to the contact step independently of the display location defined in the Sendinblue plugin settings.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step',
@@ -181,17 +185,16 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' ),
 				'autoload'        => false,
 			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_sendinblue_options',
+			),
 		);
 
-		// Get token position
-		$position_index = count( $settings ) - 1;
+		$settings = array_merge( $settings, $settings_new );
 
-		// Insert at token position
-		$new_settings = array_slice( $settings, 0, $position_index );
-		$new_settings = array_merge( $new_settings, $insert_settings );
-		$new_settings = array_merge( $new_settings, array_slice( $settings, $position_index, count( $settings ) ) );
-
-		return $new_settings;
+		return $settings;
 	}
 
 

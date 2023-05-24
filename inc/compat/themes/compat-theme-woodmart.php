@@ -41,30 +41,33 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 	 * @param   string  $current_section  Current section name.
 	 */
 	public function add_settings( $settings ) {
-		// Define positions for new settings
-		$index = count( $settings ) - 1;
 
-		// Define setting to insert
-		$insert_settings = array(
+		// Add new settings
+		$settings_new = array(
 			array(
-				'title'           => __( 'Theme Woodmart', 'fluid-checkout' ),
+				'title' => __( 'Theme Woodmart', 'fluid-checkout-pro' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_theme_woodmart_options',
+			),
+
+			array(
+				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
 				'desc'            => __( 'Output the checkout steps section from the Woodmart theme when using Fluid Checkout header and footer', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_woodmart_output_checkout_steps_section',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_woodmart_output_checkout_steps_section' ),
 				'autoload'        => false,
 			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_theme_woodmart_options',
+			),
 		);
 
-		// Get token position
-		$position_index = count( $settings ) - 1;
+		$settings = array_merge( $settings, $settings_new );
 
-		// Insert at token position
-		$new_settings = array_slice( $settings, 0, $position_index );
-		$new_settings = array_merge( $new_settings, $insert_settings );
-		$new_settings = array_merge( $new_settings, array_slice( $settings, $position_index, count( $settings ) ) );
-
-		return $new_settings;
+		return $settings;
 	}
 
 

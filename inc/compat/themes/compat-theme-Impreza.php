@@ -43,13 +43,17 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 	 * @param   string  $current_section  Current section name.
 	 */
 	public function add_settings( $settings ) {
-		// Define positions for new settings
-		$index = count( $settings ) - 1;
 
-		// Define setting to insert
-		$insert_settings = array(
+		// Add new settings
+		$settings_new = array(
 			array(
-				'title'           => __( 'Theme Impreza', 'fluid-checkout' ),
+				'title' => __( 'Theme Impreza', 'fluid-checkout-pro' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_theme_impreza_options',
+			),
+
+			array(
+				'title'           => __( 'Header', 'fluid-checkout' ),
 				'desc'            => __( 'Spacing for site header at the checkout page (in pixels)', 'fluid-checkout' ),
 				'desc_tip'        => __( 'Only applicable when using the Impreza theme header at the checkout page.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_impreza_header_spacing',
@@ -58,17 +62,16 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 				'placeholder'     => '120',
 				'autoload'        => false,
 			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_theme_impreza_options',
+			),
 		);
 
-		// Get token position
-		$position_index = count( $settings ) - 1;
+		$settings = array_merge( $settings, $settings_new );
 
-		// Insert at token position
-		$new_settings = array_slice( $settings, 0, $position_index );
-		$new_settings = array_merge( $new_settings, $insert_settings );
-		$new_settings = array_merge( $new_settings, array_slice( $settings, $position_index, count( $settings ) ) );
-
-		return $new_settings;
+		return $settings;
 	}
 
 

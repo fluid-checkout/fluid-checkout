@@ -97,12 +97,15 @@ class WC_Settings_FluidCheckout_Integrations_Settings extends WC_Settings_Page {
 				);
 			}
 
-			$settings_new = array_merge( $settings_new, $settings_add, array(
+			// Close integrations section to avoid errors with other sections
+			$settings_new = array_merge( $settings_new, array(
 				array(
 					'type' => 'sectionend',
 					'id'   => 'fc_integrations',
 				),
 			) );
+
+			$settings_new = array_merge( $settings_new, $settings_add );
 
 			$settings = apply_filters( 'fc_'.$current_section.'_settings', $settings_new, $current_section );
 		}

@@ -660,37 +660,6 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 						'id'   => 'fc_pro_account_matching_options',
 					),
 
-
-
-					array(
-						'title' => __( 'Packing slips', 'fluid-checkout-pro' ),
-						'type'  => 'title',
-						'id'    => 'fc_pro_packing_slips_options',
-					),
-		
-					array(
-						'title'             => __( 'Packing slips', 'fluid-checkout-pro' ),
-						'desc'              => __( 'Enable optimized packing slips templates', 'fluid-checkout-pro' ),
-						'desc_tip'          => __( 'Requires a compatible packing slips plugin.', 'fluid-checkout-pro' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
-						'id'                => 'fc_enable_packing_slips_options',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_packing_slips_options' ),
-						'autoload'          => false,
-						'disabled'          => true,
-					),
-					array(
-						'desc'              => __( 'Information message printed on the packing slips. May be replaced with the gift message for orders with a gift message added. You can use <code>[siteurl]</code> to print the current website URL.', 'fluid-checkout-pro' ),
-						'id'                => 'fc_packing_slips_message_box_body_text',
-						'type'              => 'fc_textarea',
-						'autoload'          => false,
-						'disabled'          => true,
-					),
-		
-					array(
-						'type' => 'sectionend',
-						'id'   => 'fc_pro_packing_slips_options',
-					),
-
 				)
 			);
 		}
