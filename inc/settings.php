@@ -35,8 +35,10 @@ class FluidCheckout_Settings extends FluidCheckout {
 			// Settings without options in the admin panel.
 			'fc_apply_checkout_field_args'                                  => 'yes',
 			'fc_enable_checkout_validation'                                 => 'yes',
+			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'true',
 
 			// Settings with options in the admin panel.
+			'fc_plugin_activation_time'                                     => null,
 			'fc_checkout_layout'                                            => 'multi-step',
 			'fc_design_template'                                            => 'classic',
 			'fc_enable_dark_mode_styles'                                    => 'no',
@@ -83,6 +85,20 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_checkout_coupon_code_message_button_style'              => 'add_link_button',
 			'fc_pro_enable_account_matching'                                => 'no',
 			'fc_pro_account_matching_display_account_exists_message'        => 'yes',
+
+			// Compatibility settings.
+			'fc_integration_captcha_pro_captcha_position'                   => 'before_place_order_section',
+			'hezarfen_checkout_fields_auto_sort'                            => 'no',
+			'hezarfen_hide_checkout_postcode_fields'                        => 'no',
+			'sg_enable_picker'                                              => 'enable',
+			'gm_order_review_checkboxes_before_order_review'                => 'off',
+			'woocommerce_gzd_display_checkout_back_to_cart_button'          => 'no',
+			'woocommerce_gzd_display_checkout_table_color'                  => '#eeeeee',
+			'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' => 'yes',
+			'fc_compat_theme_impreza_header_spacing'                        => null,
+			'woocommerce_enable_guest_checkout'                             => 'yes',
+			'woocommerce_tax_total_display'                                 => 'itemized',
+			'fc_compat_theme_woodmart_output_checkout_steps_section'        => 'no',
 
 			// Deprecated settings.
 			'fc_enable_checkout_place_order_sidebar'                        => 'no',

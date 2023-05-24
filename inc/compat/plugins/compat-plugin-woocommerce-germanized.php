@@ -52,7 +52,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		add_action( 'woocommerce_checkout_before_order_review', 'woocommerce_gzd_template_checkout_set_terms_manually', 20 );
 
 		// Display back to cart button
-		if ( get_option( 'woocommerce_gzd_display_checkout_back_to_cart_button' ) === 'yes' ) {
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_gzd_display_checkout_back_to_cart_button' ) ) {
 			remove_action( 'woocommerce_review_order_after_cart_contents', 'woocommerce_gzd_template_checkout_back_to_cart', 10 );
 			add_action( 'woocommerce_review_order_after_cart_contents', array( $this, 'output_gzd_template_checkout_back_to_cart' ), 10 );
 		}
@@ -151,8 +151,12 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	 * Adds checkout products table background highlight color as inline css.
 	 */
 	public function add_product_table_background_inline_styles() {
-		$color = get_option( 'woocommerce_gzd_display_checkout_table_color' ) ? get_option( 'woocommerce_gzd_display_checkout_table_color' ) : '#f3f3f3';
-		$custom_css = "body.woocommerce-checkout .fc-wrapper .shop_table { background-color: $color; }";
+		// Get color from settings
+		$color = FluidCheckout_Settings::instance()->get_option( 'woocommerce_gzd_display_checkout_table_color' );
+		$color_esc = ! empty( $color ) ? esc_attr( $color ) : '#f3f3f3';
+
+		// TODO: Use CSS variables to set background color
+		$custom_css = "body.woocommerce-checkout .fc-wrapper .shop_table { background-color: $color_esc; }";
 		wp_add_inline_style( 'woocommerce-gzd-layout', $custom_css );
 	}
 

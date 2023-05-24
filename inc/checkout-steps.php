@@ -2245,7 +2245,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Maybe add notice for account creation
-		if ( ! is_user_logged_in() && 'true' === get_option( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) && 'true' === apply_filters( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) ) {
+		if ( ! is_user_logged_in() && 'true' === FluidCheckout_Settings::instance()->get_option( 'fc_show_account_creation_notice_checkout_contact_step_text' ) && 'true' === apply_filters( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) ) {
 			$parsed_posted_data = $this->get_parsed_posted_data();
 			if ( $this->is_create_account_checked() ) {
 				$review_text_lines[] = '<em>' . __( 'An account will be created with the information provided.', 'fluid-checkout' ) . '</em>';
@@ -2372,7 +2372,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		// Bail if user already logged in or login at checkout is disabled
-		if ( is_user_logged_in() || 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
+		if ( is_user_logged_in() || 'yes' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
 
 		wc_get_template( 'checkout/form-contact-login-modal.php' );
 	}
@@ -2382,7 +2382,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_contact_login_link_section() {
 		// Do not output if login at checkout is disabled
-		if ( 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; }
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; }
 
 		wc_get_template( 'checkout/form-contact-login.php' );
 	}

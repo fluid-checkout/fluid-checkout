@@ -51,7 +51,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 				'desc'            => __( 'Output the checkout steps section from the Woodmart theme when using Fluid Checkout header and footer', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_woodmart_output_checkout_steps_section',
 				'type'            => 'checkbox',
-				'default'         => 'no',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_woodmart_output_checkout_steps_section' ),
 				'autoload'        => false,
 			),
 		);
@@ -87,7 +87,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 	 */
 	public function maybe_output_woodmart_checkout_steps_section() {
 		// Bail if Woodmart section output is disabled in the plugin settings
-		if ( 'yes' !== get_option( 'fc_compat_theme_woodmart_output_checkout_steps_section', 'no' ) ) { return; }
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_woodmart_output_checkout_steps_section' ) ) { return; }
 
 		// Bail if Woodmart checkout steps function not available
 		if ( ! function_exists( 'woodmart_checkout_steps' ) ) { return; }
