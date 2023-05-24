@@ -81,6 +81,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_checkout_coupon_code_message_button_style'              => 'add_link_button',
 			'fc_pro_enable_account_matching'                                => 'no',
 			'fc_pro_account_matching_display_account_exists_message'        => 'yes',
+			'fc_enable_packing_slips_options'                               => 'no',
+			'fc_packing_slips_message_box_body_text'                        => '',
 
 			// Settings without options in the admin panel.
 			'fc_plugin_activation_time'                                     => null,

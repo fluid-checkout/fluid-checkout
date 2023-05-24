@@ -26,7 +26,7 @@ class FluidCheckout_Admin_SettingType_TemplateSelector extends FluidCheckout {
 
 
 	/**
-	 * Output the template selector setting field.
+	 * Output the setting field.
 	 *
 	 * @param   array  $value  Admin settings args values.
 	 */

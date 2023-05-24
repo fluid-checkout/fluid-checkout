@@ -26,7 +26,7 @@ class FluidCheckout_Admin_SettingType_Select extends FluidCheckout {
 
 
 	/**
-	 * Output the select setting field.
+	 * Output the setting field.
 	 *
 	 * @param   array  $value  Admin settings args values.
 	 */
