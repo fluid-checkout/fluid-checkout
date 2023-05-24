@@ -92,6 +92,20 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_enable_cart_cross_sells'                                => 'yes',
 			'fc_pro_enable_cart_widget_areas'                               => 'yes',
 
+			// Settings order received.
+			'fc_pro_enable_order_received'                                  => 'no',
+			'fc_pro_enable_order_details_email_customizations'              => 'yes',
+			'fc_pro_enable_order_details_wide_layout'                       => 'no',
+			'fc_pro_order_details_order_actions_position'                   => 'inside_order_overview',
+			'fc_pro_enable_order_details_order_status_progress_bar'         => 'no',
+			'fc_pro_order_details_order_summary_position'                   => 'inside_order_items',
+			'fc_pro_order_details_order_downloads_position'                 => 'inside_order_items',
+			'fc_pro_order_details_gift_message_position'                    => 'before_order_items',
+			'fc_pro_order_details_order_notes_position'                     => 'inside_order_items',
+			'fc_pro_enable_order_received_widget_areas'                     => 'no',
+			'fc_pro_enable_address_book'                                    => 'no',
+			'fc_pro_enable_address_book_address_label'                      => 'yes',
+
 			// Settings without options in the admin panel.
 			'fc_plugin_activation_time'                                     => null,
 			'fc_apply_checkout_field_args'                                  => 'yes',
