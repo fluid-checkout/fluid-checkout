@@ -178,7 +178,7 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 				'desc_tip'        => __( 'When enabled, the checkbox will be moved to the contact step independently of the display location defined in the Sendinblue plugin settings.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step',
 				'type'            => 'checkbox',
-				'default'         => 'yes',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' ),
 				'autoload'        => false,
 			),
 		);
