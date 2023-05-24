@@ -23,6 +23,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 		add_filter( 'pre_option_fc_design_template', array( $this, 'set_option_lite_design_template' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_edit_cart_replace_edit_cart_link', array( $this, 'set_option_replace_edit_cart_link' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_coupon_codes_position', array( $this, 'set_option_coupon_code_position_checkout' ), 10, 3 );
+
+		// Settings save
+		add_action( 'woocommerce_admin_settings_sanitize_option', array( $this, 'maybe_prevent_change_disabled_settings_on_save' ), 10, 3 );
 	}
 
 
@@ -193,6 +196,31 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	public function set_option_coupon_code_position_checkout( $pre_option, $option, $default ) {
 		return $this->get_option_default( 'fc_pro_checkout_coupon_codes_position' );
+	}
+
+
+
+	/**
+	 * Maybe prevent changes to the option value when the option is disabled.
+	 * 
+	 * @param  mixed   $value      The option value.
+	 * @param  string  $option     The option arguments.
+	 * @param  mixed   $raw_value  The raw value of the option.
+	 */
+	public function maybe_prevent_change_disabled_settings_on_save( $value, $option, $raw_value ) {
+		global $current_tab, $current_section;
+
+		// Bail if not the plugin settings.
+		$plugin_sections = array( '', 'cart', 'order_received' );
+		if ( ! 'fc_checkout' === $current_tab || ! in_array( $current_section, $plugin_sections ) ) { return $value; }
+
+		// Maybe set the value to the saved value if the option is disabled.
+		if( array_key_exists( 'disabled', $option ) && true === $option[ 'disabled' ] ) {
+			$saved_value = get_option( $option[ 'id' ] );
+			$value = $saved_value;
+		}
+
+		return $value;
 	}
 
 }
