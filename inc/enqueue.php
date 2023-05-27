@@ -33,6 +33,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
 		// Enqueue assets
+		add_action( 'wp_head', array( $this, 'output_settings_inline_script' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_custom_fonts' ), 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_edit_address' ), 10 );
@@ -68,6 +69,16 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 	/**
+	 * Remove replaced WooCommerce scripts.
+	 */
+	public function deregister_woocommerce_scripts() {
+		wp_deregister_script( 'woocommerce' );
+		wp_deregister_script( 'wc-country-select' );
+		wp_deregister_script( 'wc-address-i18n' );
+		wp_deregister_script( 'wc-checkout' );
+	}
+
+	/**
 	 * Pre-register WooCommerce scripts with modified version in order to replace them.
 	 * This function is intended to be used with hook `wp_enqueue_scripts` at priority lower than `10`,
 	 * which is the priority used by WooCommerce to register its scripts.
@@ -76,7 +87,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_script( 'woocommerce', self::$directory_url . 'js/woocommerce'. self::$asset_version . '.js', array( 'jquery', 'jquery-blockui', 'js-cookie' ), NULL, true );
 		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
 		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
-		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, true );
+		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, true );
 	}
 
 	/**
@@ -86,6 +97,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Bail if not on checkout page or address edit page
 		if ( is_admin() || ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_wc_endpoint_url( 'edit-address' ) ) ) { return; }
 
+		$this->deregister_woocommerce_scripts();
 		$this->pre_register_woocommerce_scripts();
 	}
 
@@ -130,13 +142,13 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		$rtl_suffix = is_rtl() ? '-rtl' : '';
 
 		// Register library scripts
-		wp_register_script( 'fc-polyfill-inert', self::$directory_url . 'js/lib/inert'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
-		wp_register_script( 'fc-animate-helper', self::$directory_url . 'js/lib/animate-helper'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
-		wp_register_script( 'fc-collapsible-block', self::$directory_url . 'js/lib/collapsible-block'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
+		wp_register_script( 'fc-polyfill-inert', self::$directory_url . 'js/lib/inert'. self::$asset_version . '.js', array(), NULL );
+		wp_register_script( 'fc-animate-helper', self::$directory_url . 'js/lib/animate-helper'. self::$asset_version . '.js', array(), NULL );
+		wp_register_script( 'fc-collapsible-block', self::$directory_url . 'js/lib/collapsible-block'. self::$asset_version . '.js', array(), NULL );
 		wp_add_inline_script( 'fc-collapsible-block', 'window.addEventListener("load",function(){CollapsibleBlock.init(fcSettings.collapsibleBlock);})' );
-		wp_register_script( 'fc-flyout-block', self::$directory_url . 'js/lib/flyout-block'. self::$asset_version . '.js', array( 'woocommerce', 'fc-polyfill-inert', 'fc-animate-helper' ), NULL );
+		wp_register_script( 'fc-flyout-block', self::$directory_url . 'js/lib/flyout-block'. self::$asset_version . '.js', array( 'fc-polyfill-inert', 'fc-animate-helper' ), NULL );
 		wp_add_inline_script( 'fc-flyout-block', 'window.addEventListener("load",function(){FlyoutBlock.init(fcSettings.flyoutBlock);})' );
-		wp_register_script( 'fc-sticky-states', self::$directory_url . 'js/lib/sticky-states'. self::$asset_version . '.js', array( 'woocommerce' ), NULL );
+		wp_register_script( 'fc-sticky-states', self::$directory_url . 'js/lib/sticky-states'. self::$asset_version . '.js', array(), NULL );
 		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("load",function(){StickyStates.init(fcSettings.stickyStates);})' );
 
 		// Register script utilities
@@ -166,6 +178,14 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 	/**
+	 * Output JS settings object.
+	 */
+	public function output_settings_inline_script( $handler = 'woocommerce' ) {
+		// Output settings object
+		echo '<script type="text/javascript">var fcSettings = ' . wp_json_encode( $this->get_fc_settings() ) . ';</script>';
+	}
+
+	/**
 	 * Enqueue JS settings object.
 	 */
 	public function enqueue_settings_inline_script( $handler = 'woocommerce' ) {
@@ -183,9 +203,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Enqueue assets.
 	 */
 	public function enqueue_assets() {
-		// Enqueue settings
-		$this->enqueue_settings_inline_script();
-
 		// Scripts
 		wp_enqueue_script( 'fc-utils' );
 		wp_enqueue_script( 'fc-polyfill-inert' );
