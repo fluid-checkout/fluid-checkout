@@ -387,6 +387,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+IMPORTANT FIX: Critical error introduced in v2.4.0 where functionality was broken with some themes.
+
 * Added: Add instant validation for Brazilian documents fields CPF and CNPJ.
 * Improved: Added CSS variables for many aspects of the design including: colors, borders, some sizing and spacing aspects.
 * Improved: Compatibility with theme Electro. Support for all pre-defined theme colors, custom theme color and dark mode.
@@ -394,9 +396,12 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with plugin Mercado Pago payments for WooCommerce.
 * Improved: Compatibility with plugin PayPal Brasil para WooCommerce.
 * Improved: Compatibility with Delivery & Pickup Date Time for WooCommerce - by CodeRockz, avoid PHP warning messages when that plugin settings are not saved yet.
+* Improved: Output JS settings object directly to the page head element without being associated with enqueued scripts.
 * Improved: Prevent replacing the payment methods section while updating checkout fragments when user switches application or hide the browser app on their devices.
 * Improved: Disable default checkout validation from WooCommerce when validation from Fluid Checkout is enabled.
 * Fixed: Compatibility with plugin Oxygen Builder.
+* Fixed: Compatibility with theme Minimog, missing dependencies on cart page breaking functionality.
+* Fixed: Missing script dependencies breaking functionality on some themes.
 * Fixed: Contact step being defined as incomplete when account registration is required but user is already logged in.
 * Fixed: Unblock place order button if an unexpected error happens while trying to complete a purchase.
 
