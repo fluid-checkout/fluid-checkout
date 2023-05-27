@@ -84,6 +84,10 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * which is the priority used by WooCommerce to register its scripts.
 	 */
 	public function pre_register_woocommerce_scripts() {
+		// Deregsiter WooCommerce scripts if already registered
+		$this->deregister_woocommerce_scripts();
+
+		// Register WooCommerce scripts with modified version
 		wp_register_script( 'woocommerce', self::$directory_url . 'js/woocommerce'. self::$asset_version . '.js', array( 'jquery', 'jquery-blockui', 'js-cookie' ), NULL, true );
 		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
 		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
@@ -97,7 +101,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Bail if not on checkout page or address edit page
 		if ( is_admin() || ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_wc_endpoint_url( 'edit-address' ) ) ) { return; }
 
-		$this->deregister_woocommerce_scripts();
 		$this->pre_register_woocommerce_scripts();
 	}
 

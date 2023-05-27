@@ -32,7 +32,7 @@ class FluidCheckout_ThemeCompat_Minimog extends FluidCheckout {
 
 
 	/**
-	 * Remove WooCommerce scripts.
+	 * Maybe remove WooCommerce scripts.
 	 */
 	public function maybe_deregister_woocommerce_scripts() {
 		// Bail if not on checkout page
