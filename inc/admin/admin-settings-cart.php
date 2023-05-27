@@ -105,8 +105,8 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 						'id'                => 'fc_pro_hide_site_header_footer_at_cart',
 						'type'              => 'fc_select',
 						'options'           => array(
-							'no'            => __( 'Theme\'s header and footer', 'fluid-checkout' ), // Intentionally use text domain from Lite plugin to avoid duplicating this text in translation files.
 							'yes'           => __( 'Distraction free header and footer', 'fluid-checkout' ), // Intentionally use text domain from Lite plugin to avoid duplicating this text in translation files.
+							'no'            => __( 'Theme\'s header and footer', 'fluid-checkout' ), // Intentionally use text domain from Lite plugin to avoid duplicating this text in translation files.
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_hide_site_header_footer_at_cart' ),
 						'autoload'          => false,
@@ -197,8 +197,8 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 						'id'                => 'fc_pro_enable_cart_cross_sells',
 						'type'              => 'fc_select',
 						'options'           => array(
-							'yes'           => __( 'Use Fluid Checkout\'s horizontal cross-sells layout', 'fluid-checkout' ),
-							'no'            => __( 'Use theme\'s cross-sells layout', 'fluid-checkout' ),
+							'yes'           => __( 'Optimized horizontal cross-sells layout', 'fluid-checkout' ),
+							'no'            => __( 'Theme\'s cross-sells layout', 'fluid-checkout' ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_cart_cross_sells' ),
 						'autoload'          => false,
