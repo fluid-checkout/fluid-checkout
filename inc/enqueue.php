@@ -189,20 +189,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	}
 
 	/**
-	 * Enqueue JS settings object.
-	 */
-	public function enqueue_settings_inline_script( $handler = 'woocommerce' ) {
-		// Bail if already enqueued
-		if ( self::$has_enqueued_settings ) { return; }
-
-		// Enqueue settings
-		wp_localize_script( $handler, 'fcSettings', $this->get_fc_settings() );
-
-		// Set flag for settings enqueued
-		self::$has_enqueued_settings = true;
-	}
-
-	/**
 	 * Enqueue assets.
 	 */
 	public function enqueue_assets() {
