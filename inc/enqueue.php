@@ -6,13 +6,6 @@ defined( 'ABSPATH' ) || exit;
  */
 class FluidCheckout_Enqueue extends FluidCheckout {
 
-
-	/**
-	 * @var  string  $has_enqueued_settings  Whether the JS settings have been enqueued.
-	 */
-	public static $has_enqueued_settings = false;
-
-
 	/**
 	 * __construct function.
 	 */
@@ -33,7 +26,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
 		// Enqueue assets
-		add_action( 'wp_head', array( $this, 'output_settings_inline_script' ), 10 );
+		add_action( 'wp_head', array( $this, 'maybe_output_settings_inline_script' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_custom_fonts' ), 1 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_edit_address' ), 10 );
@@ -107,11 +100,11 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 	/**
-	 * Returns the JS settings for Fluid Checkout.
+	 * Returns the JS settings.
 	 *
-	 * @return  array  JS settings for Fluid Checkout. 
+	 * @return  array  JS settings.
 	 */
-	public function get_fc_settings() {
+	public function get_js_settings() {
 		return apply_filters( 'fc_js_settings', array(
 			'ver'                            => self::$version,
 			'assetsVersion'                  => self::$asset_version,
@@ -183,10 +176,24 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	/**
 	 * Output JS settings object.
 	 */
-	public function output_settings_inline_script( $handler = 'woocommerce' ) {
+	public function output_settings_inline_script() {
 		// Output settings object
-		echo '<script type="text/javascript">var fcSettings = ' . wp_json_encode( $this->get_fc_settings() ) . ';</script>';
+		echo '<script type="text/javascript">var fcSettings = ' . wp_json_encode( $this->get_js_settings() ) . ';</script>';
 	}
+
+	/**
+	 * Output JS settings object.
+	 */
+	public function maybe_output_settings_inline_script() {
+		// Bail if not on checkout, address edit or add payment method pages
+		if ( is_admin() || ! ( is_checkout() || ( is_account_page() && ( is_wc_endpoint_url( 'edit-address' ) || is_wc_endpoint_url( 'add-payment-method' ) )  ) ) || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		// Output settings object
+		$this->output_settings_inline_script();
+	}
+
+
+
 
 	/**
 	 * Enqueue assets.
@@ -248,7 +255,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Maybe enqueue assets for the edit address page.
 	 */
 	function maybe_enqueue_assets_edit_address() {
-		// Bail if not on checkout page or address edit page
+		// Bail if not on account address edit page
 		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'edit-address' ) ) { return; }
 
 		// Enqueue assets
@@ -272,7 +279,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Maybe enqueue assets for the add payment method page.
 	 */
 	function maybe_enqueue_assets_add_payment_method() {
-		// Bail if not on checkout page or address edit page
+		// Bail if not on account payment methods page
 		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'add-payment-method' ) ) { return; }
 
 		// Enqueue assets
