@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-03 18:58+0000\n"
-"PO-Revision-Date: 2023-04-21 14:09+0000\n"
+"PO-Revision-Date: 2023-05-29 17:17+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -20,7 +20,7 @@ msgstr ""
 "(Deneysel) Ödeme sayfası için temanın sayfa üstbilgisini ve altbilgisini "
 "kullanın"
 
-#: inc/checkout-validation.php:295
+#: inc/checkout-validation.php:317
 msgid "(Required)"
 msgstr "(Gerekli)"
 
@@ -71,7 +71,7 @@ msgstr "Sevkiyat adresi formuna bir telefon alanı ekleyin"
 msgid "Add widget areas to the checkout page"
 msgstr "Ödeme sayfasına widget alanları ekleyin"
 
-#: inc/checkout-steps.php:2464
+#: inc/checkout-steps.php:2466
 msgid "Additional notes"
 msgstr "Ek notlar"
 
@@ -83,7 +83,7 @@ msgstr "Gönderim adresinden sonra"
 msgid "Already have an account?"
 msgstr "Zaten bir hesabınız var mı?"
 
-#: inc/checkout-steps.php:2238
+#: inc/checkout-steps.php:2240
 msgid "An account will be created with the information provided."
 msgstr "Verdiğiniz bilgilerle yeni bir hesap oluşturulacaktır."
 
@@ -124,7 +124,7 @@ msgstr ""
 msgid "Billing phone"
 msgstr "Fatura telefonu"
 
-#: inc/checkout-steps.php:3246
+#: inc/checkout-steps.php:3248
 msgid "Billing to"
 msgstr "Fatura Bilgileri"
 
@@ -151,15 +151,15 @@ msgstr "Sipariş bölümünden önce"
 msgid "Captcha Pro by BestWebSoft"
 msgstr "BestWebSoft'tan Captcha Pro"
 
-#: inc/checkout-steps.php:878
+#: inc/checkout-steps.php:880
 msgid "Cart total:"
 msgstr "Sepet toplamı:"
 
-#: inc/checkout-validation.php:150
+#: inc/checkout-validation.php:162
 msgid "Change email address to: {suggestion-value}"
 msgstr "E-posta adresini şu şekilde değiştirin: {suggestion-value}"
 
-#: inc/checkout-steps.php:1918
+#: inc/checkout-steps.php:1920
 #, php-format
 msgid "Change: %s"
 msgstr "Değiştir: %s"
@@ -196,32 +196,32 @@ msgstr "Ödeme Sayfası Sipariş Özeti"
 msgid "Checkout Sidebar"
 msgstr "Ödeme Sayfası Kenar Çubuğu"
 
-#: inc/checkout-steps.php:1560
+#: inc/checkout-steps.php:1562
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Faturalandırma"
 
-#: inc/checkout-steps.php:1539
+#: inc/checkout-steps.php:1541
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "İletişim"
 
-#: inc/checkout-steps.php:1569
+#: inc/checkout-steps.php:1571
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Ödeme"
 
-#: inc/checkout-steps.php:1548
+#: inc/checkout-steps.php:1550
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Gönderim"
 
-#: inc/checkout-steps.php:1918
+#: inc/checkout-steps.php:1920
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Değiştir"
 
-#: inc/checkout-steps.php:1919
+#: inc/checkout-steps.php:1921
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Değişiklikleri kaydet"
@@ -280,7 +280,7 @@ msgstr "Fatura telefon alanının hangi adımda görüntüleneceğini seçin"
 msgid "Choose in which step to display the shipping phone field"
 msgstr "Gönderim telefonunun hangi adımda görüntüleneceğini seçin"
 
-#: inc/checkout-steps.php:878
+#: inc/checkout-steps.php:880
 msgid "Click to go to the order summary"
 msgstr "Sipariş özetine gitmek için tıklayın"
 
@@ -363,7 +363,7 @@ msgid "Delivery or Pickup"
 msgstr "Adrese Teslimat veya Adresten Teslim Alma"
 
 #. %s: html for the email address typo correction suggestion link
-#: inc/checkout-validation.php:150
+#: inc/checkout-validation.php:162
 #, php-format
 msgid "Did you mean %s?"
 msgstr "%s mi demek istediniz?"
@@ -426,7 +426,7 @@ msgstr "Bir bağlantı düğmesinin arkasına \"Adres satırı 2\" alanlarını 
 msgid "Don't show this again"
 msgstr "Bunu bir daha gösterme"
 
-#: inc/checkout-steps.php:4220
+#: inc/checkout-steps.php:4243
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 #| msgid "Edit Cart"
 msgid "Edit cart"
@@ -436,7 +436,7 @@ msgstr "Sepeti düzenle"
 msgid "Enable integrated coupon code section"
 msgstr "Entegre kupon kodu bölümünü etkinleştirin"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:123
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:171
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Posta Kontrolünü Etkinleştir: (devre dışı bırakılmış özellik)"
 
@@ -525,7 +525,7 @@ msgstr "https://fluidcheckout.com/"
 msgid "I need help!"
 msgstr "Yardıma İhtiyacım Var!"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:126
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:174
 msgid ""
 "If checked informs typos in email to users. (This feature has been disabled "
 "because Fluid Checkout offers the feature. Changes to this option will not "
@@ -650,11 +650,11 @@ msgstr "Kaydırırken sipariş özetinin görünür kalmasını sağlayın"
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Kaydol onay kutusunu iletişim adımına taşıyın"
 
-#: inc/checkout-steps.php:714
+#: inc/checkout-steps.php:716
 msgid "Multi-step"
 msgstr "Çok adımlı"
 
-#: inc/checkout-steps.php:2175
+#: inc/checkout-steps.php:2177
 msgid "My contact"
 msgstr "İletişim"
 
@@ -672,7 +672,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2874
+#: inc/checkout-steps.php:2876
 msgid "Not selected yet."
 msgstr "Henüz seçilmedi."
 
@@ -681,7 +681,7 @@ msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr "Yok."
 
-#: inc/checkout-steps.php:2930
+#: inc/checkout-steps.php:2932
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Yok."
@@ -693,6 +693,14 @@ msgid ""
 msgstr ""
 "Yalnızca WooCommerce ayarlarında kupon kodlarının kullanımı "
 "etkinleştirildiyse geçerlidir."
+
+#: inc/admin/admin-settings-general.php:327
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages."
+msgstr ""
+"Yalnızca kupon kodu ödeme veya sepet sayfalarında ayrı bir bölüm olarak "
+"görüntülendiğinde geçerlidir."
 
 #: inc/compat/themes/compat-theme-Impreza.php:54
 msgid ""
@@ -730,7 +738,7 @@ msgstr "Sipariş notları"
 msgid "Order number and receipt will be sent to this email address."
 msgstr "Sipariş numarası ve makbuz bu e-posta adresine gönderilecektir."
 
-#: inc/checkout-steps.php:4155 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:4178 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Sipariş özeti"
 
@@ -746,7 +754,7 @@ msgstr ""
 msgid "Page background color"
 msgstr "Sayfa arka plan rengi"
 
-#: inc/checkout-steps.php:3972
+#: inc/checkout-steps.php:3974
 msgid "Payment method"
 msgstr "Ödeme yöntemi"
 
@@ -759,7 +767,7 @@ msgid "Place order"
 msgstr "Sipariş verin"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1425
+#: inc/checkout-steps.php:1427
 #, php-format
 msgid "Proceed to %s"
 msgstr "%s'ye ilerleyin"
@@ -807,7 +815,7 @@ msgstr "Kaldır"
 msgid "Required"
 msgstr "Gerekli"
 
-#: inc/checkout-steps.php:3428
+#: inc/checkout-steps.php:3430
 msgid "Same as shipping address"
 msgstr "Sevkiyat adresiyle aynı"
 
@@ -835,7 +843,7 @@ msgstr "Entegrasyonlar"
 msgid "Shipping address"
 msgstr "Nakliye adresi"
 
-#: inc/checkout-steps.php:2440
+#: inc/checkout-steps.php:2442
 msgid "Shipping method"
 msgstr "Kargo"
 
@@ -848,11 +856,11 @@ msgstr "Gönderi yöntemleri"
 msgid "Shipping phone"
 msgstr "Telefon numarası"
 
-#: inc/checkout-steps.php:2416
+#: inc/checkout-steps.php:2418
 msgid "Shipping to"
 msgstr "Alıcı Bilgileri"
 
-#: inc/checkout-steps.php:715
+#: inc/checkout-steps.php:717
 msgid "Single step"
 msgstr "Tek adım"
 
@@ -870,26 +878,26 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Ödeme sayfasında site başlığı için boşluk (piksel olarak)"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1681
+#: inc/checkout-steps.php:1683
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Adım %1$s / %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2613
+#: inc/checkout-steps.php:2615
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2618
+#: inc/checkout-steps.php:2620
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:2032
+#: inc/checkout-steps.php:2034
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Yok."
@@ -902,6 +910,14 @@ msgstr "Destek"
 #| msgid "Thanks for choosing Fluid Checkout, you rock!"
 msgid "Thanks for choosing Fluid Checkout!"
 msgstr "Fluid Checkout'u seçtiğiniz için teşekkürler!"
+
+#: inc/checkout-validation.php:177
+msgid "The CNPJ number \"{cnpj_number}\" is invalid."
+msgstr "CNPJ numarası \"{cnpj_number}\" geçersiz."
+
+#: inc/checkout-validation.php:176
+msgid "The CPF number \"{cpf_number}\" is invalid."
+msgstr "CPF numarası \"{cpf_number}\" geçersiz."
 
 #: inc/admin/admin-settings-wc-shipping.php:50
 msgid ""
@@ -931,16 +947,16 @@ msgstr ""
 "Bu pencere öğesi alanları, ödeme sayfasına güven simgeleri eklemek için "
 "kullanılır."
 
-#: inc/checkout-validation.php:155
+#: inc/checkout-validation.php:167
 #| msgid "This does not match the related field value."
 msgid "This field does not match the related field value."
 msgstr "Bu, ilgili alan değeriyle eşleşmiyor."
 
-#: inc/checkout-validation.php:153
+#: inc/checkout-validation.php:165
 msgid "This is a required field."
 msgstr "Bu gerekli bir alandır."
 
-#: inc/checkout-validation.php:154
+#: inc/checkout-validation.php:166
 msgid "This is not a valid email address."
 msgstr "Bu geçerli bir e-posta adresi değil."
 
