@@ -15,7 +15,6 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-valida
 		#{ $alignment-right }: $_checkout-validation-check-horizontal-spacing--select;
 		top: remsize( 1rem );
 		border-radius: 100%;
-		background-color: transparentize( $white, .25 );
 		color: $success-color;
 		pointer-events: none;
 	}

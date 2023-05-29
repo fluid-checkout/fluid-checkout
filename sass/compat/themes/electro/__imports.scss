@@ -28,7 +28,6 @@ $_body-theme-selector:                 '.theme-electro' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"checkout-content-area",
 	"checkout-steps",
-	"checkout-shipping-methods",
-	"checkout-payment-methods";
+	"checkout-payment-methods",
+	"checkout-place-order";

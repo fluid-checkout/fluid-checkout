@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-03 18:38+0000\n"
-"PO-Revision-Date: 2023-04-21 14:09+0000\n"
+"PO-Revision-Date: 2023-05-29 17:18+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
@@ -19,7 +19,7 @@ msgstr ""
 msgid "(Experimental) Use theme's page header and footer for the checkout page"
 msgstr "(Eksperymentalne) Użyj nagłówka i stopki strony motywu dla strony kasy"
 
-#: inc/checkout-validation.php:295
+#: inc/checkout-validation.php:317
 msgid "(Required)"
 msgstr "(Wymagane)"
 
@@ -67,7 +67,7 @@ msgstr "Dodaj pole telefonu do formularza adresu wysyłki"
 msgid "Add widget areas to the checkout page"
 msgstr "Dodaj obszary widżetów do strony kasy"
 
-#: inc/checkout-steps.php:2464
+#: inc/checkout-steps.php:2466
 msgid "Additional notes"
 msgstr "Uwagi dodatkowe"
 
@@ -79,7 +79,7 @@ msgstr "Po adresie wysyłki"
 msgid "Already have an account?"
 msgstr "Masz już konto?"
 
-#: inc/checkout-steps.php:2238
+#: inc/checkout-steps.php:2240
 msgid "An account will be created with the information provided."
 msgstr "Konto zostanie utworzone na podstawie podanych informacji."
 
@@ -118,7 +118,7 @@ msgstr "Adres do faktury taki sam jak adres do wysyłki zaznaczone domyślnie"
 msgid "Billing phone"
 msgstr "Telefon rozliczeniowy"
 
-#: inc/checkout-steps.php:3246
+#: inc/checkout-steps.php:3248
 msgid "Billing to"
 msgstr "Rozliczenie z"
 
@@ -145,15 +145,15 @@ msgstr "Przed złożeniem zamówienia dział"
 msgid "Captcha Pro by BestWebSoft"
 msgstr "Captcha Pro by BestWebSoft"
 
-#: inc/checkout-steps.php:878
+#: inc/checkout-steps.php:880
 msgid "Cart total:"
 msgstr "Suma koszyka:"
 
-#: inc/checkout-validation.php:150
+#: inc/checkout-validation.php:162
 msgid "Change email address to: {suggestion-value}"
 msgstr "Zmień adres e-mail na: {sugestia-wartość}"
 
-#: inc/checkout-steps.php:1918
+#: inc/checkout-steps.php:1920
 #, php-format
 msgid "Change: %s"
 msgstr "Zmiana: %s"
@@ -190,32 +190,32 @@ msgstr "Kasa Podsumowanie zamówienia"
 msgid "Checkout Sidebar"
 msgstr "Pasek boczny kasy"
 
-#: inc/checkout-steps.php:1560
+#: inc/checkout-steps.php:1562
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Billing"
 
-#: inc/checkout-steps.php:1539
+#: inc/checkout-steps.php:1541
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Kontakt"
 
-#: inc/checkout-steps.php:1569
+#: inc/checkout-steps.php:1571
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Płatność"
 
-#: inc/checkout-steps.php:1548
+#: inc/checkout-steps.php:1550
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Wysyłka"
 
-#: inc/checkout-steps.php:1918
+#: inc/checkout-steps.php:1920
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Zmiana"
 
-#: inc/checkout-steps.php:1919
+#: inc/checkout-steps.php:1921
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Zapisz zmiany"
@@ -273,7 +273,7 @@ msgstr ""
 msgid "Choose in which step to display the shipping phone field"
 msgstr "Wybierz, w którym kroku ma być wyświetlane pole telefonu do wysyłki"
 
-#: inc/checkout-steps.php:878
+#: inc/checkout-steps.php:880
 msgid "Click to go to the order summary"
 msgstr "Kliknij, aby przejść do podsumowania zamówienia"
 
@@ -355,7 +355,7 @@ msgid "Delivery or Pickup"
 msgstr "Dostawa lub odbiór"
 
 #. %s: html for the email address typo correction suggestion link
-#: inc/checkout-validation.php:150
+#: inc/checkout-validation.php:162
 #, php-format
 msgid "Did you mean %s?"
 msgstr "Czy chodziło ci o %s?"
@@ -416,7 +416,7 @@ msgstr "Nie ukrywaj pola \"Linia adresowa 2\" za przyciskiem z linkiem"
 msgid "Don't show this again"
 msgstr "Nie pokazuj tego więcej"
 
-#: inc/checkout-steps.php:4220
+#: inc/checkout-steps.php:4243
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 msgid "Edit cart"
 msgstr "Wózek na zakupy"
@@ -425,7 +425,7 @@ msgstr "Wózek na zakupy"
 msgid "Enable integrated coupon code section"
 msgstr "Włącz zintegrowaną sekcję kodów kuponów"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:123
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:171
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Enable Mail Check: (funkcja wyłączona)"
 
@@ -512,7 +512,7 @@ msgstr "https://fluidcheckout.com/"
 msgid "I need help!"
 msgstr "Potrzebuję pomocy!"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:126
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:174
 msgid ""
 "If checked informs typos in email to users. (This feature has been disabled "
 "because Fluid Checkout offers the feature. Changes to this option will not "
@@ -618,11 +618,11 @@ msgstr "Spraw, aby podsumowanie zamówienia było widoczne podczas przewijania"
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Przenieś pole wyboru rejestracji do kroku kontaktowego"
 
-#: inc/checkout-steps.php:714
+#: inc/checkout-steps.php:716
 msgid "Multi-step"
 msgstr "Wieloetapowy"
 
-#: inc/checkout-steps.php:2175
+#: inc/checkout-steps.php:2177
 msgid "My contact"
 msgstr "Mój kontakt"
 
@@ -640,7 +640,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2874
+#: inc/checkout-steps.php:2876
 msgid "Not selected yet."
 msgstr "Jeszcze nie wybrano."
 
@@ -649,7 +649,7 @@ msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr "Nie."
 
-#: inc/checkout-steps.php:2930
+#: inc/checkout-steps.php:2932
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Nie."
@@ -661,6 +661,14 @@ msgid ""
 msgstr ""
 "Ma zastosowanie tylko wtedy, gdy użycie kodów kuponów jest włączone w "
 "ustawieniach WooCommerce."
+
+#: inc/admin/admin-settings-general.php:327
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages."
+msgstr ""
+"Dotyczy tylko sytuacji, gdy kod kuponu jest wyświetlany jako osobna sekcja "
+"na stronach kasy lub koszyka."
 
 #: inc/compat/themes/compat-theme-Impreza.php:54
 msgid ""
@@ -701,7 +709,7 @@ msgstr ""
 "Na ten adres e-mail zostanie wysłany numer zamówienia i potwierdzenie "
 "odbioru."
 
-#: inc/checkout-steps.php:4155 inc/admin/admin-settings-general.php:145
+#: inc/checkout-steps.php:4178 inc/admin/admin-settings-general.php:145
 msgid "Order summary"
 msgstr "Streszczenie zamówienia"
 
@@ -717,7 +725,7 @@ msgstr ""
 msgid "Page background color"
 msgstr "Kolor tła strony"
 
-#: inc/checkout-steps.php:3972
+#: inc/checkout-steps.php:3974
 msgid "Payment method"
 msgstr "Sposób płatności"
 
@@ -730,7 +738,7 @@ msgid "Place order"
 msgstr "Złóż zamówienie"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1425
+#: inc/checkout-steps.php:1427
 #, php-format
 msgid "Proceed to %s"
 msgstr "Przejdź do %s"
@@ -775,7 +783,7 @@ msgstr "Usuń"
 msgid "Required"
 msgstr "Wymagane"
 
-#: inc/checkout-steps.php:3428
+#: inc/checkout-steps.php:3430
 msgid "Same as shipping address"
 msgstr "Taki sam jak adres wysyłki"
 
@@ -803,7 +811,7 @@ msgstr "Integracje"
 msgid "Shipping address"
 msgstr "Adres do wysyłki"
 
-#: inc/checkout-steps.php:2440
+#: inc/checkout-steps.php:2442
 msgid "Shipping method"
 msgstr "Sposób wysyłki"
 
@@ -816,11 +824,11 @@ msgstr "Sposoby wysyłki"
 msgid "Shipping phone"
 msgstr "Telefon do wysyłki"
 
-#: inc/checkout-steps.php:2416
+#: inc/checkout-steps.php:2418
 msgid "Shipping to"
 msgstr "Wysyłka do"
 
-#: inc/checkout-steps.php:715
+#: inc/checkout-steps.php:717
 msgid "Single step"
 msgstr "Jeden krok"
 
@@ -839,26 +847,26 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Odstęp dla nagłówka witryny na stronie kasy (w pikselach)"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1681
+#: inc/checkout-steps.php:1683
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Krok %1$s z %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2613
+#: inc/checkout-steps.php:2615
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2618
+#: inc/checkout-steps.php:2620
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:2032
+#: inc/checkout-steps.php:2034
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Nie."
@@ -870,6 +878,14 @@ msgstr "Wsparcie"
 #: inc/admin/admin-notice-review-request.php:44
 msgid "Thanks for choosing Fluid Checkout!"
 msgstr "Dziękujemy za wybór Płynnej Kasy!"
+
+#: inc/checkout-validation.php:177
+msgid "The CNPJ number \"{cnpj_number}\" is invalid."
+msgstr "Numer CNPJ \"{cnpj_numer}\" jest nieprawidłowy."
+
+#: inc/checkout-validation.php:176
+msgid "The CPF number \"{cpf_number}\" is invalid."
+msgstr "Numer CPF \"{cpf_number}\" jest nieprawidłowy."
 
 #: inc/admin/admin-settings-wc-shipping.php:50
 msgid ""
@@ -898,15 +914,15 @@ msgid "These widget areas are used to add trust symbols on the checkout page."
 msgstr ""
 "Te obszary widżetów służą do dodawania symboli zaufania na stronie kasy."
 
-#: inc/checkout-validation.php:155
+#: inc/checkout-validation.php:167
 msgid "This field does not match the related field value."
 msgstr "To pole nie pasuje do wartości pola powiązanego."
 
-#: inc/checkout-validation.php:153
+#: inc/checkout-validation.php:165
 msgid "This is a required field."
 msgstr "Jest to pole wymagane."
 
-#: inc/checkout-validation.php:154
+#: inc/checkout-validation.php:166
 msgid "This is not a valid email address."
 msgstr "To nie jest prawidłowy adres e-mail."
 

@@ -1,5 +1,18 @@
 // ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	--fluidcheckout--field--height: #{ remsize( 3.5rem ) };
+	--fluidcheckout--field--border-radius: #{ remsize( .4rem ) };
+}
+
+
+
+
+
+// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"checkout-place-order";
+	"checkout-place-order",
+	"woocommerce-form-fields-select2";

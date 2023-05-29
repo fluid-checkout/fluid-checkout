@@ -1,0 +1,13 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+// Place order button
+body#{ $_body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-button {
+	font-size: 1.387em; // Unit needs to match the theme styles
+	width: 100%;
+	font-weight: 700;
+	white-space: pre-wrap;
+	padding: 0.907rem 1rem; // Unit needs to match the theme styles
+	border-radius: 50px; // Unit needs to match the theme styles
+}

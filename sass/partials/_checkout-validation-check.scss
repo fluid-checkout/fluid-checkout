@@ -30,7 +30,6 @@ div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-i
 		top: $_checkout-validation-check-top;
 		#{ $alignment-right }: $_checkout-validation-check-horizontal-spacing;
 		border-radius: 100%;
-		background-color: transparentize( $white, .25 );
 		color: $success-color;
 		pointer-events: none;
 	}

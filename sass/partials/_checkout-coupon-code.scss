@@ -97,6 +97,7 @@
 	padding: $coupon-code-coupon-padding;
 	border: $coupon-code-coupon-border;
 	border-radius: $coupon-code-coupon-border-radius;
+	background-color: $coupon-code-coupon-background-color;
 }
 
 .fc-wrapper .fc-coupon-codes__coupon-amount {
@@ -112,6 +113,12 @@
 	text-decoration: $coupon-code-remove-text-decoration;
 	color: $coupon-code-remove-color;
 	background-color: transparent;
+
+	&:hover,
+	&:active,
+	&:focus {
+		color: $error-color;
+	}
 
 	&:focus {
 		outline: $focus-outline-link;
