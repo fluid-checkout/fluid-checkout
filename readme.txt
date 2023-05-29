@@ -382,6 +382,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 IMPORTANT FIX: Critical error introduced in v2.4.0 where functionality was broken with some themes.
 
+* Bump tested up to WooCommerce 7.7.0
 * Added: Add instant validation for Brazilian documents fields CPF and CNPJ.
 * Improved: Added CSS variables for many aspects of the design including: colors, borders, some sizing and spacing aspects.
 * Improved: Compatibility with theme Electro. Support for all pre-defined theme colors, custom theme color and dark mode.
