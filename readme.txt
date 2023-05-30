@@ -380,6 +380,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin GP Premium by GeneratePress.
 * Fixed: Password visibility button not showing when the form section is replaced via checkout fragments.
 
 = 2.5.0 - 2023-05-29 =
