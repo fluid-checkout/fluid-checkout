@@ -253,8 +253,9 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 // ------------------------------------
 .has-checkout-layout--multi-step .fc-step__actions {
 	padding: $checkout-substep-padding;
-	padding-top: $global-spacing;
-	padding-bottom: $global-spacing;
+	padding-top: $global-spacing-small;
+	// padding-top: 0;
+	padding-bottom: $global-spacing-small;
 	text-align: center;
 }
 .has-checkout-layout--multi-step [data-step-complete] .fc-step__actions {
@@ -262,6 +263,7 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 }
 
 .has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
+	float: none;
 	margin: 0;
 	min-width: remsize( 28rem );
 	width: 100% !important; // Needed to override theme styles

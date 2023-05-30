@@ -11,13 +11,3 @@ body#{ $_body-theme-selector }#top div.woocommerce form #payment .form-row.form-
 		margin-#{ $alignment-right }: 4%;
 	}
 }
-
-
-
-body#{ $_body-theme-selector } .fc-step__substep-save.button {
-	background-color: #719430;
-	color: #ffffff;
-	&:hover{
-		background-color: #8bba34;
-	}
-}

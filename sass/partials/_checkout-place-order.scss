@@ -40,7 +40,7 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 
 
 
-.fc-wrapper .fc-place-order__custom-buttons {
+.fc-wrapper .fc-place-order__custom-buttons:not( :empty ) {
 	margin: $global-spacing-small 0 $global-spacing-extra-small;
 }
 
@@ -48,9 +48,10 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 
 .fc-wrapper .fc-inside div.place-order,
 .fc-wrapper .fc-sidebar div.place-order {
-	border: 0;
-	margin: 0;
-	float: none;
+	float: none !important; // Needed to override theme styles
+	margin: 0 !important; // Needed to override theme styles
+	padding: 0 !important; // Needed to override theme styles
+	border: 0 !important; // Needed to override theme styles
 }
 
 
@@ -123,6 +124,7 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 	min-width: remsize( 24rem );
 	min-height: remsize( 5rem );
 	text-align: center;
+	float: none;
 
 	&:focus {
 		outline: $focus-outline-button;
