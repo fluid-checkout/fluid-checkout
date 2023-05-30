@@ -28,9 +28,6 @@
 
 	"jsSources": {
 		"libraries": [
-			"./node_modules/require-polyfills/dist/require-polyfills.js",
-			"./node_modules/require-bundle-js/dist/require-bundle.js",
-
 			"./node_modules/animate-helper/dist/animate-helper.js",
 			"./node_modules/collapsible-block/dist/collapsible-block.js",
 			"./node_modules/flyout-block/dist/flyout-block.js",
@@ -56,8 +53,7 @@
 		],
 
 		"pluginCompat": [
-			"./js-src/compat/plugins/**/*.js",
-			"./js-src/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend.js"
+			"./js-src/compat/plugins/**/*.js"
 		]
 	}
 }

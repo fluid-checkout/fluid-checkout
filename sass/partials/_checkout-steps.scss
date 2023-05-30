@@ -11,9 +11,9 @@
 .fc-wrapper .fc-checkout-step {
 	margin: remsize( -.1rem ) 0 0; // Prevent double borders
 	padding: $checkout-step-padding;
-	border: solid remsize( .1rem ) $border-color;
+	border: $checkout-step-border;
 	border-radius: 0;
-	background-color: $white;
+	background-color: $checkout-step-background-color;
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-step-padding--large-screen; }
 }
@@ -32,12 +32,12 @@
 	position: relative;
 	padding: $checkout-substep-padding;
 	margin: remsize( -.1rem ) 0 0; // Prevent double borders
-	border-top: solid remsize( .1rem ) $border-color;
+	border-top: $checkout-step-border;
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
 }
 .fc-wrapper .fc-step__substep[data-substep-id="payment"] + .fc-step__substep {
-	border-bottom: solid remsize( .1rem ) $border-color;
+	border-bottom: $checkout-step-border;
 }
 
 .fc-wrapper .fc-step__substep[data-substep-visible="no"] {
@@ -264,7 +264,7 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 .has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
 	margin: 0;
 	min-width: remsize( 28rem );
-	width: 100%;
+	width: 100% !important; // Needed to override theme styles
 	text-align: center;
 
 	&:focus {
@@ -305,10 +305,10 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 }
 
 .has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save {
-	display: none;
-	margin: $global-spacing-small 0 0;
-	width: 100%;
-	text-align: center;
+	display: none !important; // Needed to override theme styles
+	margin: $global-spacing-small 0 0 !important; // Needed to override theme styles
+	width: 100% !important; // Needed to override theme styles
+	text-align: center !important; // Needed to override theme styles
 
 	&:focus {
 		outline: $focus-outline-button;
@@ -318,12 +318,12 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit,
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-save {
-	display: inline-block;
+	display: inline-block !important; // Needed to override theme styles
 }
 
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-edit,
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-save {
-	display: none;
+	display: none !important; // Needed to override theme styles
 }
 
 

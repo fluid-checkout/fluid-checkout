@@ -11,5 +11,8 @@ $_body-page-selector:                  '.woocommerce-add-payment-method' !defaul
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"partials/clearfix",
-	"partials/checkout-payment-methods";
+	"clearfix",
+	"fc-hidden",
+	"buttons--add-payment-method",
+
+	"checkout-payment-methods";

@@ -22,6 +22,9 @@ class FluidCheckout_ThemeCompat_Divi extends FluidCheckout {
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
+		// Force register steps
+		add_filter( 'fc_force_register_steps', array( $this, 'change_force_register_steps' ), 10 );
+
 		// Use theme's logo
 		add_action( 'fc_checkout_header_logo', array( $this, 'output_checkout_header_logo' ), 10 );
 
@@ -39,12 +42,28 @@ class FluidCheckout_ThemeCompat_Divi extends FluidCheckout {
 	 */
 	public function add_js_settings( $settings ) {
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $settings; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $settings; }
 
 		// Add settings
 		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = '#main-header';
 
 		return $settings;
+	}
+
+
+
+	/**
+	 * Whether to force register checkout steps.
+	 * 
+	 * @param   bool  $force_register_steps  The widgets manager.
+	 */
+	public function change_force_register_steps( $force_register_steps ) {
+		global $wp_query;
+		if ( 'true' === $wp_query->get( 'et_pb_preview' ) && isset( $_GET['et_pb_preview_nonce'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification -- This function does not change any state, and is therefore not susceptible to CSRF.
+			$force_register_steps = true;
+		}
+
+		return $force_register_steps;
 	}
 
 
@@ -88,7 +107,7 @@ class FluidCheckout_ThemeCompat_Divi extends FluidCheckout {
 	 */
 	public function change_sticky_elements_relative_header( $attributes ) {
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
 
 		$attributes['data-sticky-relative-to'] = '#main-header';
 

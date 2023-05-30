@@ -29,6 +29,9 @@ class FluidCheckout_PaypalBrasilParaWooCommerce extends FluidCheckout {
 		// Shipping address data
 		add_filter( 'wc_ppp_brasil_user_data', array( $this, 'maybe_copy_billing_to_shipping_address_data' ), 10 );
 		add_filter( 'wc_ppp_brasil_user_data', array( $this, 'maybe_clear_shipping_address_not_brazil' ), 20 );
+
+		// Payment methods
+		add_filter( 'fc_checkout_update_on_visibility_change', array( $this, 'disable_update_on_visibility_change' ), 100 );
 	}
 
 	/**
@@ -100,6 +103,15 @@ class FluidCheckout_PaypalBrasilParaWooCommerce extends FluidCheckout {
 		$data['country'] = '';
 		
 		return $data;
+	}
+
+
+
+	/**
+	 * Disable update on visibility change.
+	 */
+	public function disable_update_on_visibility_change( $update_enabled ) {
+		return 'no';
 	}
 
 }

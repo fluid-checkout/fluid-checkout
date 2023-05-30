@@ -33,7 +33,7 @@ class FluidCheckout_ThemeCompat_Phlox extends FluidCheckout {
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		// Bail if use of theme header is enabled
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
 		
 		wp_dequeue_script( 'auxin-plugins' );
 		wp_dequeue_script( 'auxin-scripts' );

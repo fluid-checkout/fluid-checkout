@@ -34,20 +34,7 @@ class FluidCheckout_AuxinShop extends FluidCheckout {
 		add_filter( 'woocommerce_locate_template', array( $this, 'auxshp_locate_template' ), 90, 3 );
 
 		// Scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'deregister_woocommerce_scripts' ), 20 );
-		add_action( 'wp_enqueue_scripts', array( FluidCheckout_Enqueue::instance(), 'replace_woocommerce_scripts' ), 20 );
-	}
-
-
-
-	/**
-	 * Remove WooCommerce scripts.
-	 */
-	public function deregister_woocommerce_scripts() {
-		wp_deregister_script( 'woocommerce' );
-		wp_deregister_script( 'wc-country-select' );
-		wp_deregister_script( 'wc-address-i18n' );
-		wp_deregister_script( 'wc-checkout' );
+		add_action( 'wp_enqueue_scripts', array( FluidCheckout_Enqueue::instance(), 'maybe_replace_woocommerce_scripts' ), 20 );
 	}
 
 
@@ -56,11 +43,10 @@ class FluidCheckout_AuxinShop extends FluidCheckout {
 	 * Locate template files from the Auxin Shop plugin.
 	 */
 	public function auxshp_locate_template( $template, $template_name, $template_path ) {
-		global $woocommerce;
 		$_template = null;
 
 		// Set template path to default value when not provided
-		if ( ! $template_path ) { $template_path = $woocommerce->template_url; };
+		if ( ! $template_path ) { $template_path = 'woocommerce/'; };
 
 		// Get plugin path
 		$plugin_path = AUXSHP()->template_path() . 'woocommerce/';

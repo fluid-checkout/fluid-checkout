@@ -1,0 +1,15 @@
+// ------------------------------------
+// CHECKOUT WIDGET AREAS - SIDEBAR
+// ------------------------------------
+
+body.has-checkout-layout--multi-step.has-fc-sidebar-widget-area-last-step-only:not( .fc-checkout-step-current-last ) .fc-wrapper .fc-checkout-order-review__widgets-outside {
+    @media (#{$bp-smaller-than-desktop}) {
+        display: none;
+    }
+}
+
+body.has-checkout-layout--multi-step.has-fc-sidebar-widget-area-last-step-only.fc-checkout-step-current-last .fc-wrapper .fc-checkout-order-review__widgets-outside {
+    @media (#{$bp-smaller-than-desktop}) {
+        display: block;
+    }
+}

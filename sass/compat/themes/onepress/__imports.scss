@@ -3,16 +3,16 @@
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
 $_body-theme-selector:                 '.theme-onepress' !default;
-$_select2-border-width:                remsize( .1rem ) !default;
-$_select2-border-radius:               0 !default;
-$_select2-selection-height:            remsize( 4.1rem ) !default;
+
 
 
 
 
 // ------------------------------------
-// IMPORT STYLES
+// DEFINE CSS VARIABLES
 // ------------------------------------
-@import
-	"checkout-validation",
-	"../../partials/woocommerce-form-fields-select2";
+:root {
+	--fluidcheckout--field--height: #{ remsize( 4.1rem ) };
+
+	--fluidcheckout--validation-check--horizontal-spacing--password: #{ remsize( 3.2rem ) };
+}

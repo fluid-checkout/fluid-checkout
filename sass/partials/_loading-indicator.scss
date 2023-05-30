@@ -1,0 +1,71 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+
+$_body-theme-selector:                                          '' !default;
+$_icon-name:                                                    'i-loader-circle' !default;
+$_loader-animation-name:                                        loader-spin !default;
+$_loader-animation-name--button:                                loader-spin-centered !default;
+$_loader-animation-speed:                                       $global-animation-duration-slow !default;
+$_loader-icon-top:                                              calc( ( #{ $form-field-height } / 2 ) - ( #{ $icon-size } / 2 ) ) !default;
+$_loader-icon-horizontal-spacing:                               remsize( .5rem ) !default;
+
+
+
+
+
+// ------------------------------------
+// CHECKOUT LOADING INDICATORS
+// ------------------------------------
+
+// FORM ROWS
+body#{ $_body-theme-selector } div.woocommerce .form-row.fc-loading .woocommerce-input-wrapper:after {
+    @include icon( $_icon-name );
+    @include icon-size( $icon-size );
+
+    z-index: z( 'above' );
+    content: icon-glyph( $_icon-name ) !important; // Needed to override validation icon styles as both target the same element
+    position: absolute;
+    top: $_loader-icon-top;
+    #{ $alignment-right }: $_loader-icon-horizontal-spacing;
+    width: $icon-size !important; // Needed to override validation icon styles as both target the same element
+    height: $icon-size !important; // Needed to override validation icon styles as both target the same element
+    font-size: $icon-size !important; // Needed to override validation icon styles as both target the same element
+    line-height: $icon-size !important; // Needed to override validation icon styles as both target the same element
+    border-radius: 100%;
+    background-color: transparent !important; // Needed to override validation icon styles as both target the same element
+    animation: $_loader-animation-name $_loader-animation-speed linear infinite;
+    color: $grey !important; // Needed to override validation icon styles as both target the same element
+    pointer-events: none;
+}
+
+
+
+// BUTTONS
+body#{ $_body-theme-selector } div.woocommerce button.fc-loading,
+body#{ $_body-theme-selector } div.woocommerce .button.fc-loading {
+    position: relative;
+    color: transparent !important; // Needed to override theme styles
+}
+
+body#{ $_body-theme-selector } div.woocommerce button.fc-loading:after,
+body#{ $_body-theme-selector } div.woocommerce .button.fc-loading:after {
+    @include icon( $_icon-name );
+    @include icon-size( $icon-size );
+
+    z-index: z( 'above' );
+    position: absolute;
+    top: 50%;
+    left: 50%; // Does not need to handle RTL
+    transform: translateX( -50% ) translateY( -50% );
+    #{ $alignment-right }: $global-spacing-extra-small;
+    width: $icon-size;
+    height: $icon-size;
+    font-size: $icon-size;
+    line-height: 1;
+    border-radius: 100%;
+    background-color: transparent;
+    animation: $_loader-animation-name--button $_loader-animation-speed linear infinite;
+    color: $white !important; // Needed to override theme styles
+    pointer-events: none;
+}

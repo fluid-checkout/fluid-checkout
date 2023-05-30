@@ -13,7 +13,7 @@
 
 .fc-progress-bar .fc-progress-bar__inner {
 	padding: $checkout-progress-padding;
-	background-color: $white;
+	background-color: $checkout-progress-background-color;
 
 	@media (#{$bp-larger-than-tablet}) {
 		padding: $checkout-progress-padding--large-screen;

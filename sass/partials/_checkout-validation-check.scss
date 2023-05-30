@@ -1,0 +1,60 @@
+// ------------------------------------
+// CHECKOUT FIELD VALIDATION
+// ------------------------------------
+
+div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="search"],
+	input[type="text"],
+	input[type="date"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"],
+	.select2-selection {
+		border-color: $success-color;
+	}
+
+	// "valid" field check icon
+	// skip fields with `fc-no-validation-icon` and `fc-select2-field` classes
+	&:not( .fc-no-validation-icon ) .select2-selection:after,
+	&:not( .fc-no-validation-icon ):not( .fc-select2-field ) .woocommerce-input-wrapper:after {
+		@include icon( 'i-check-small' );
+		@include icon-size( $icon-size );
+
+		z-index: z( 'above' );
+		position: absolute;
+		top: $_checkout-validation-check-top;
+		#{ $alignment-right }: $_checkout-validation-check-horizontal-spacing;
+		border-radius: 100%;
+		color: $success-color;
+		pointer-events: none;
+	}
+
+	// Password
+	&:not( .fc-no-validation-icon ):not( .fc-select2-field ) .woocommerce-input-wrapper.password-input:after {
+		#{ $alignment-right }: $_checkout-validation-check-horizontal-spacing--password;
+	}
+
+	// Select2 Fields
+	&:not( .fc-no-validation-icon ) .select2-selection:after {
+		#{ $alignment-right }: $_checkout-validation-check-horizontal-spacing--select;
+	}
+	// Select2 Fields (optional, with "clear" button)
+	&.fc-select2-field:not( .fc-no-validation-icon ) select:not( [required] ) ~ .select2-container .select2-selection:after {
+		#{ $alignment-right }: $_checkout-validation-check-horizontal-spacing--select-alt;
+	}
+
+	// Exclusions for "valid" field check icon
+	.woocommerce-terms-and-conditions-wrapper &,
+	&.create-account {
+		&:after {
+			content: '';
+			display: none;
+		}
+	}
+
+}

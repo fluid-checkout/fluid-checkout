@@ -20,8 +20,8 @@ class FluidCheckout_ThemeCompat_Minimog extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'deregister_woocommerce_scripts' ), 20 );
-		add_action( 'wp_enqueue_scripts', array( FluidCheckout_Enqueue::instance(), 'replace_woocommerce_scripts' ), 20 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_deregister_woocommerce_scripts' ), 20 );
+		add_action( 'wp_enqueue_scripts', array( FluidCheckout_Enqueue::instance(), 'maybe_replace_woocommerce_scripts' ), 21 );
 
 		// Remove checkout payment info heading
 		if ( class_exists( 'Minimog\Woo\Checkout' ) ) {
@@ -32,14 +32,14 @@ class FluidCheckout_ThemeCompat_Minimog extends FluidCheckout {
 
 
 	/**
-	 * Remove WooCommerce scripts.
+	 * Maybe remove WooCommerce scripts.
 	 */
-	public function deregister_woocommerce_scripts() {
-		wp_deregister_script( 'woocommerce' );
-		wp_deregister_script( 'wc-country-select' );
-		wp_deregister_script( 'wc-address-i18n' );
-		wp_deregister_script( 'wc-checkout' );
-	} 
+	public function maybe_deregister_woocommerce_scripts() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+		
+		FluidCheckout_Enqueue::instance()->deregister_woocommerce_scripts();
+	}
 }
 
 FluidCheckout_ThemeCompat_Minimog::instance();

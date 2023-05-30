@@ -3,5 +3,12 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-	top: remsize( .8rem );
+	display: flex;
+	align-items: center;
+	top: 0;
+	margin-top: 0;
+	height: auto;
+	min-height: $form-field-select2-inner-component-height !important; // Needed to override theme styles
+	line-height: $form-field-select2-inner-component-height !important; // Needed to override theme styles
+	transform: none;
 }

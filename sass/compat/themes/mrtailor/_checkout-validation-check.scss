@@ -1,0 +1,13 @@
+// ------------------------------------
+// CHECKOUT FIELD VALIDATION
+// ------------------------------------
+
+// VALID FIELDS
+body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+
+	// Select2 Fields (multiple)
+	&.fc-select2-field:not( .fc-no-validation-icon ) select:not( [required] ) ~ .select2-container .select2-selection.select2-selection--multiple:after {
+		#{ $alignment-right }: $global-spacing-tiny;
+	}
+	
+}

@@ -1,0 +1,18 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-content.container {
+	padding-#{ $alignment-left }: $global-spacing-small;
+	padding-#{ $alignment-right }: $global-spacing-small;
+
+	@media (min-width: 992px) { // Breakpoint value from theme
+		padding-#{ $alignment-left }: 0;
+		padding-#{ $alignment-right }: 0;
+		width: 970px;
+	}
+
+	@media (min-width: 1200px) { // Breakpoint value from theme
+		width: 1170px;
+	}
+}

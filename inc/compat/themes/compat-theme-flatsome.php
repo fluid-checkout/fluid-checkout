@@ -53,8 +53,8 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'fc-compat-flatsome-floating-labels', self::$directory_url . 'js/compat/themes/flatsome/float-labels'. self::$asset_version . '.js', array( 'jquery', 'flatsome-woocommerce-floating-labels' ), NULL, true );
-		wp_add_inline_script( 'fc-compat-flatsome-floating-labels', 'window.addEventListener("DOMContentLoaded",function(){FlatsomeFloatLabels.init();})' );
+		wp_register_script( 'fc-compat-flatsome-floating-labels', self::$directory_url . 'js/compat/themes/flatsome/float-labels'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
+		wp_add_inline_script( 'fc-compat-flatsome-floating-labels', 'window.addEventListener("load",function(){FlatsomeFloatLabels.init();})' );
 	}
 
 	/**
@@ -84,7 +84,7 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 	 */
 	public function change_fc_content_section_class( $class ) {
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $class; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $class; }
 
 		return $class . ' container';
 	}

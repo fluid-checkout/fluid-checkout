@@ -46,6 +46,36 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 
 	/**
+	 * Undo hooks.
+	 */
+	public function undo_hooks() {
+		// Bail if not on front end
+		if ( is_admin() ) { return; }
+
+		// Body class
+		remove_filter( 'body_class', array( $this, 'add_body_class' ) );
+
+		// Enqueue assets
+		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
+		// JS settings object
+		remove_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
+		// Mailcheck validation
+		remove_filter( 'fc_checkout_field_args' , array( $this, 'change_checkout_email_field_args' ), 10 );
+
+		// Add validation status classes to checkout fields
+		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_status_classes' ), 100, 3 );
+		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_icon_hide_class' ), 100, 3 );
+
+		// Fix required marker accessibility
+		remove_filter( 'woocommerce_form_field', array( $this, 'change_required_field_attributes' ), 100, 4 );
+	}
+
+
+
+	/**
 	 * Add page body class for feature detection.
 	 *
 	 * @param array  $classes  Current classes.
@@ -70,8 +100,15 @@ class FluidCheckout_Validation extends FluidCheckout {
 		wp_register_style( 'fc-checkout-validation', self::$directory_url . 'css/checkout-validation'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
 
 		// Scripts
-		wp_register_script( 'fc-checkout-validation', self::$directory_url . 'js/checkout-validation'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("DOMContentLoaded",function(){CheckoutValidation.init(fcSettings.checkoutValidation);})' );
+		wp_register_script( 'fc-checkout-validation', self::$directory_url . 'js/checkout-validation'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout', 'fc-utils' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("load",function(){CheckoutValidation.init(fcSettings.checkoutValidation);})' );
+		wp_register_script( 'fc-mailcheck', self::$directory_url . 'js/lib/mailcheck'. self::$asset_version . '.js', array( 'jquery' ), NULL );
+		wp_register_script( 'fc-mailcheck-init', self::$directory_url . 'js/mailcheck-init'. self::$asset_version . '.js', array( 'jquery', 'fc-utils', 'fc-mailcheck' ), NULL );
+		wp_add_inline_script( 'fc-mailcheck-init', 'window.addEventListener("load",function(){MailcheckInit.init(fcSettings.checkoutValidation.mailcheckSuggestions);})' );
+
+		// Add validation script
+		wp_register_script( 'fc-checkout-validation-brazilian-documents', self::$directory_url . 'js/checkout-validation-brazilian-documents'. self::$asset_version . '.js', array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-validation-brazilian-documents', 'window.addEventListener("load",function(){CheckoutValidationBrazilianDocuments.init(fcSettings.checkoutValidationBrazilianDocuments);})' );
 	}
 
 	/**
@@ -83,10 +120,20 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		// Scripts
 		wp_enqueue_script( 'fc-checkout-validation' );
+		wp_enqueue_script( 'fc-mailcheck' );
+		wp_enqueue_script( 'fc-mailcheck-init' );
 	}
 
 	/**
-	 * Enqueue scripts.
+	 * Enqueue scripts for Brazilian documents validation.
+	 */
+	public function enqueue_scripts_brazilian_documents_validation() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-validation-brazilian-documents' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
 	 */
 	public function maybe_enqueue_assets() {
 		// Bail if not at checkout
@@ -118,6 +165,16 @@ class FluidCheckout_Validation extends FluidCheckout {
 				'required'                       => __( 'This is a required field.', 'fluid-checkout' ),
 				'email'                          => __( 'This is not a valid email address.', 'fluid-checkout' ),
 				'confirmation'                   => __( 'This field does not match the related field value.', 'fluid-checkout' ),
+			),
+		) );
+
+		// Add validation settings
+		$settings[ 'checkoutValidationBrazilianDocuments' ] = apply_filters( 'fc_checkout_validation_brazilian_documents_script_settings', array(
+			'validateCPF'         => 'yes',
+			'validateCNPJ'        => 'yes',
+			'validationMessages'  => array(
+				'cpf_invalid'          => __( 'The CPF number "{cpf_number}" is invalid.', 'fluid-checkout' ),
+				'cnpj_invalid'         => __( 'The CNPJ number "{cnpj_number}" is invalid.', 'fluid-checkout' ),
 			),
 		) );
 
@@ -210,7 +267,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		// Maybe add `valid` classes
 		if ( true == $field_valid ) {
-			$args['class'] = array_merge( $args['class'], array( 'woocommerce-validated' ) );
+			// $args['class'] = array_merge( $args['class'], array( 'woocommerce-validated' ) );
 		}
 
 		return $args;

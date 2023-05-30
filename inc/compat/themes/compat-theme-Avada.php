@@ -65,7 +65,7 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 		if ( ! function_exists( 'Avada' ) || ! Avada()->settings ) { return $settings; }
 
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $settings; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $settings; }
 
 		// Add settings
 		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = '.fusion-secondary-main-menu, .fusion-header';
@@ -85,7 +85,7 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 		if ( ! function_exists( 'Avada' ) || ! Avada()->settings ) { return $attributes; }
 
 		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_Steps::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
 
 		// Get header style
 		$header_style = Avada()->settings->get( 'header_layout' );

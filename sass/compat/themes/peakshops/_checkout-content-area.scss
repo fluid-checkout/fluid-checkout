@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-content.row.align-middle div.woocommerce {
+	padding-#{ $alignment-left }: .9375rem; // Needs to keep `rem` units as it is used by the theme
+	padding-#{ $alignment-right }: .9375rem; // Needs to keep `rem` units as it is used by the theme
+}

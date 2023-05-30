@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with plugin: MailPoet integration.
+ * Compatibility with plugin: MailPoet (by Mailpoet).
  */
 class FluidCheckout_MailPoet extends FluidCheckout {
 
@@ -10,13 +10,21 @@ class FluidCheckout_MailPoet extends FluidCheckout {
 	 * __construct function.
 	 */
 	public function __construct( ) {
-		add_action( 'init', array( $this, 'hooks' ) );
+		$this->hooks();
 	}
 
 	/**
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+	}
+
+	/**
+	 * Add or remove late hooks.
+	 */
+	public function late_hooks() {
 		// Get MailPoet object instance
 		$mailpoet_hooks_instance = $this->get_object_by_class_name_from_hooks( 'MailPoet\Config\HooksWooCommerce' );
 

@@ -1,0 +1,32 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-qi' !default;
+
+
+
+
+
+// ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	--fluidcheckout--field--height: #{ remsize( 5.8rem ) };
+
+	--fluidcheckout--validation-check--horizontal-spacing--select: #{ remsize( 4rem ) };
+	--fluidcheckout--validation-check--horizontal-spacing--select-alt: #{ remsize( 4rem ) };
+}
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"checkout-content-area",
+	"woocommerce-form-fields",
+	"order-summary",
+	"woocommerce-form-fields-select2";

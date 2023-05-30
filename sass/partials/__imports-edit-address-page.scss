@@ -12,7 +12,10 @@ $_body-page-selector:                  '.woocommerce-edit-address' !default;
 // ------------------------------------
 @import
 	"clearfix",
+	"fc-hidden",
 	"collapsible-blocks",
+	"buttons--edit-address",
+
 	"woocommerce-account-page-addresses",
 	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2",

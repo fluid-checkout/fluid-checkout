@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT SHIPPING METHODS
+// ------------------------------------
+
+body.woocommerce-checkout .fc-content .widget_colissimo_grab {
+	box-sizing: content-box !important; // Needed to override `!important` from Fluid Checkout styles
+}

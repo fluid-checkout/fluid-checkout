@@ -46,6 +46,38 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 
 	/**
+	 * Undo hooks that are run early.
+	 * 
+	 * Needs to run before hook `wp` priority `100`.
+	 * At that priority, changes might have already been added into cache and removing some hooks would not take affect.
+	 */
+	public function undo_hooks_early() {
+		// Add shipping phone field
+		remove_filter( 'woocommerce_shipping_fields', array( $this, 'add_shipping_phone_field' ), 5 );
+	}
+
+	/**
+	 * Undo hooks.
+	 */
+	public function undo_hooks() {
+		// Add shipping phone field
+		remove_filter( 'woocommerce_shipping_fields', array( $this, 'add_shipping_phone_field' ), 5 );
+		remove_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_shipping_phone' ), 10 );
+
+		// Admin fields
+		if ( is_admin() ) {
+			remove_filter( 'woocommerce_admin_shipping_fields', array( $this, 'add_shipping_phone_to_admin_screen' ), 10 );
+			remove_filter( 'woocommerce_order_formatted_shipping_address', array( $this, 'output_order_formatted_shipping_address_with_phone' ), 1, 2 );
+		}
+
+		// Change shipping field args
+		remove_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_set_shipping_phone_required' ), 100 );
+		remove_filter( 'woocommerce_shipping_fields' , array( $this, 'change_shipping_company_field_args' ), 100 );
+	}
+
+
+
+	/**
 	 * Get shipping phone field for address forms.
 	 *
 	 * @return  array $args Arguments for adding shipping phone field.

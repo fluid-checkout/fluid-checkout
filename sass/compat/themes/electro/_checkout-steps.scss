@@ -4,7 +4,6 @@
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
 	padding-bottom: remsize( .3rem );
-	border-color: $light-grey;
 }
 
 
@@ -26,4 +25,16 @@ body#{ $_body-theme-selector }#{ $_body-page-selector }.has-checkout-layout--mul
 
 body#{ $_body-theme-selector } form.woocommerce-checkout {
 	margin-left: 0;
+}
+
+
+
+
+
+// ------------------------------------
+// CHECKOUT STEP ACTIONS
+// ------------------------------------
+
+body#{ $_body-theme-selector }.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
+	font-weight: 700;
 }

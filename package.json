@@ -1,17 +1,17 @@
 {
   "name": "fluid-checkout",
-  "version": "2.2.1-beta-1",
+  "version": "2.5.1-beta-1",
   "description": "Provides a fluid checkout experience for any WooCommerce store. Ask for shipping information before billing in a linear and multi-step checkout, add options for gift message and packaging and add a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.",
   "main": "fluid-checkout.php",
   "scripts": {
-    "version": "gulp update-ver-release && gulp build && git add -A",
+    "version": "git pull && gulp update-ver-release && gulp build && git add -A",
     "postversion": "git push && git push --tags",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {},
   "author": "Fluidweb.co",
   "license": "GPL-3.0",
-  "copyright": "Copyright (c) 2021-2022, Fluidweb OÜ",
+  "copyright": "Copyright (c) 2021-2023, Fluidweb OÜ",
   "homepage": "https://fluidcheckout.com",
   "devDependencies": {
     "browser-sync": "^2.27.9",
@@ -33,10 +33,8 @@
   },
   "dependencies": {
     "collapsible-block": "^1.1.8",
-    "flyout-block": "^1.1.4",
+    "flyout-block": "^1.1.5",
     "mailcheck": "^1.1.1",
-    "require-bundle-js": "^1.0.0",
-    "require-polyfills": "^1.0.1",
     "sticky-states": "^1.0.8"
   }
 }

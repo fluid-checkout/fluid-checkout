@@ -12,27 +12,34 @@
 // COLORS
 
 // Greys
-$black:                         #000 !default;
-$darker-grey:                   #1E212B !default;
-$dark-grey:                     #535156 !default;
-$grey:                          #7b7575 !default;
-$light-grey:                    #d8d8d8 !default;
-$lighter-grey:                  #f3f3f3 !default;
-$white:                         #fff !default;
+$black:                         var( --fluidcheckout--color--black, #000 ) !default;
+$darker-grey:                   var( --fluidcheckout--color--darker-grey, #1E212B ) !default;
+$dark-grey:                     var( --fluidcheckout--color--dark-grey, #535156 ) !default;
+$grey:                          var( --fluidcheckout--color--grey, #7b7575 ) !default;
+$light-grey:                    var( --fluidcheckout--color--light-grey, #d8d8d8 ) !default;
+$lighter-grey:                  var( --fluidcheckout--color--lighter-grey, #f3f3f3 ) !default;
+$white:                         var( --fluidcheckout--color--white, #fff ) !default;
 
 // Utility colors
-$success-color:                 #007a3d !default;
-$error-color:                   #cc1818 !default;
-$alert-color:                   #c95000 !default;
-$info-color:                    #1f01b9 !default;
+$success-color:                 var( --fluidcheckout--color--success, #007a3d ) !default;
+$error-color:                   var( --fluidcheckout--color--error, #cc1818 ) !default;
+$alert-color:                   var( --fluidcheckout--color--alert, #c95000 ) !default;
+$info-color:                    var( --fluidcheckout--color--info, #1f01b9 ) !default;
 
-$border-color:                  $light-grey !default;
-$border-light-color:            $lighter-grey !default;
+$border-color:                  var( --fluidcheckout--border-color, $light-grey ) !default;
+$border-dark-color:             var( --fluidcheckout--border-color--dark, $grey ) !default;
+$border-light-color:            var( --fluidcheckout--border-color--light, $lighter-grey ) !default;
 
 // Shadows
-$box-shadow-darker:             0 remsize( .2rem ) remsize( 1.5rem ) rgba( 0, 0, 0, .3 ) !default;
-$box-shadow-dark:               0 remsize( .2rem ) remsize( 1.5rem ) rgba( 0, 0, 0, .15 ) !default;
-$box-shadow-light:              0 remsize( .2rem ) remsize( 1.5rem ) rgba( 255, 255, 255, .15 ) !default;
+$box-shadow-offset-x:           0 !default;
+$box-shadow-offset-y:           remsize( .5rem ) !default;
+$box-shadow-blur-radius:        remsize( 1.5rem ) !default;
+$box-shadow-offset-x--small:    0 !default;
+$box-shadow-offset-y--small:    remsize( .3rem ) !default;
+$box-shadow-blur-radius--small: remsize( 1rem ) !default;
+$box-shadow-darker:             $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--shadow-color--darker, rgba( 0, 0, 0, .30 ) ) !default;
+$box-shadow-dark:               $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--shadow-color--dark, rgba( 0, 0, 0, .15 ) ) !default;
+$box-shadow-light:              $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--shadow-color--light, rgba( 255, 255, 255, .15 ) ) !default;
 
 // Outline focus
 $focus-outline-field:           solid remsize( .2rem ) $dark-grey;
@@ -217,6 +224,7 @@ $icons: (
 	'i-alert-triangle': '\e801',
 	'i-arrow-left': '\e802',
 	'i-arrow-right': '\e803',
+	'i-cart': '\e828',
 	'i-check-small': '\e805',
 	'i-check': '\e806',
 	'i-check-circle': '\e82b',
@@ -228,13 +236,13 @@ $icons: (
 	'i-chevron-right': '\e80c',
 	'i-chevron-up-medium': '\e80d',
 	'i-chevron-up': '\e80e',
+	'i-loader-circle': '\e816',
 	'i-minus': '\e818',
 	'i-plus': '\e81b',
 	'i-plus-circle': '\e82a',
 	'i-trash': '\e822',
 	'i-x': '\e827',
 	'i-x-circle': '\e815',
-	'i-cart': '\e828',
 ) !default;
 
 // END - ICONS
@@ -245,24 +253,53 @@ $icons: (
 
 
 // ----------------------------------------
+// BUTTONS
+
+$button-primary-border-color:               var( --fluidcheckout--button--primary--border-color, #000 ) !default;
+$button-primary-background-color:           var( --fluidcheckout--button--primary--background-color, #000 ) !default;
+$button-primary-text-color:                 var( --fluidcheckout--button--primary--text-color, #fff ) !default;
+$button-primary-border-color--hover:        var( --fluidcheckout--button--primary--border-color--hover, #1E212B ) !default;
+$button-primary-background-color--hover:    var( --fluidcheckout--button--primary--background-color--hover, #1E212B ) !default;
+$button-primary-text-color--hover:          var( --fluidcheckout--button--primary--text-color--hover, #fff ) !default;
+
+$button-secondary-border-color:             var( --fluidcheckout--button--secondary--border-color, #f3f3f3 ) !default;
+$button-secondary-background-color:         var( --fluidcheckout--button--secondary--background-color, #f3f3f3 ) !default;
+$button-secondary-text-color:               var( --fluidcheckout--button--secondary--text-color, #000 ) !default;
+$button-secondary-border-color--hover:      var( --fluidcheckout--button--secondary--border-color--hover, #d8d8d8 ) !default;
+$button-secondary-background-color--hover:  var( --fluidcheckout--button--secondary--background-color--hover, #d8d8d8 ) !default;
+$button-secondary-text-color--hover:        var( --fluidcheckout--button--secondary--text-color--hover, #000 ) !default;
+
+// END - BUTTONS
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
 // OPTION BOX
 
-$option-box-padding-vertical:               $global-spacing-extra-small !default;
-$option-box-padding-horizontal:             $global-spacing-extra-small !default;
+$option-box-padding-vertical:               var( --fluidcheckout--option-box--spacing--vertical, $global-spacing-extra-small ) !default;
+$option-box-padding-horizontal:             var( --fluidcheckout--option-box--spacing--horizontal, $global-spacing-extra-small ) !default;
+$option-box-space-between-options:          var( --fluidcheckout--option-box--spacing--between-options, 0 ) !default;
 
-$option-box-background-color:               $white !default;
+$option-box-background-color:               var( --fluidcheckout--option-box--background-color, $white ) !default;
 
-$option-box-border-color:                   $border-color !default;
-$option-box-border:                         solid remsize( .1rem ) $option-box-border-color !default;
-$option-box-border-radius:                  $global-radius-medium !default;
+$option-box-border-radius:                  var( --fluidcheckout--option-box--border-radius, $global-radius-medium ) !default;
+$option-box-border-color:                   var( --fluidcheckout--option-box--border-color, $border-color ) !default;
+$option-box-border-color--hover:            var( --fluidcheckout--option-box--border-color--hover, $border-dark-color ) !default;
+$option-box-border-style:                   var( --fluidcheckout--option-box--border-style, solid ) !default;
+$option-box-border-width:                   var( --fluidcheckout--option-box--border-width, remsize( .1rem ) ) !default;
+$option-box-border:                         $option-box-border-style $option-box-border-width $option-box-border-color !default;
+
 
 $option-box-radio-size:                     $icon-size !default;
 $option-box-radio-border:                   solid remsize( .2rem ) $border-color !default;
 
-$option-box-checked-radio-color:            $success-color !default;
-$option-box-checked-icon-color:             $white !default;
-$option-box-checked-background-color:       $lighter-grey !default;
-$option-box-checked-color:                  $darker-grey !default;
+$option-box-checked-radio-color:            var( --fluidcheckout--option-box--checked-radio-color, $success-color ) !default;
+$option-box-checked-icon-color:             var( --fluidcheckout--option-box--checked-icon-color, $white ) !default;
+$option-box-checked-background-color:       var( --fluidcheckout--option-box--checked-background-color, $lighter-grey ) !default;
+$option-box-checked-color:                  var( --fluidcheckout--option-box--cheched-color, $darker-grey ) !default;
 
 // END - OPTION BOX
 // ----------------------------------------
@@ -274,8 +311,11 @@ $option-box-checked-color:                  $darker-grey !default;
 // ----------------------------------------
 // CHECKOUT HEADER
 
-$checkout-header-background-color:          $white !default;
-$checkout-header-box-shadow:                0 remsize( .2rem ) remsize( 1rem ) rgba( 0, 0, 0, .1 ) !default;
+$checkout-header-background-color:          var( --fluidcheckout--header--background-color, $white ) !default;
+$checkout-header-box-shadow:                $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--header--shadow-color, rgba( 0, 0, 0, .15 ) ) !default;
+$checkout-header-box-shadow--large-screen:  $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--header--shadow-color--large-screen, transparent ) !default;
+$checkout-header-border:                    var( --fluidcheckout--header--border-style--large-screen, solid ) var( --fluidcheckout--header--border-width, 0 ) $border-color !default;
+$checkout-header-border--large-screen:      var( --fluidcheckout--header--border-style--large-screen, solid ) var( --fluidcheckout--header--border-width--large-screen, remsize( .1rem ) ) $border-color !default;
 
 $checkout-header-height:                    remsize( 6rem ) !default;
 $checkout-header-height--large-screen:      remsize( 8rem ) !default;
@@ -294,11 +334,8 @@ $checkout-logo-height--large-screen:        remsize( 4rem ) !default;
 // CHECKOUT LAYOUT
 
 $checkout-column-gap--large-screen:         $global-spacing-medium !default;
-
 $checkout-steps-width--large-screen:        62.5% !default;
-
 $checkout-overview-width--large-screen:     #{ 100% - $checkout-steps-width--large-screen } !default;
-$checkout-overview-background:              linear-gradient( 90deg, darken( $lighter-grey, 5% ) 0%, $lighter-grey .5%, $lighter-grey 100% ) !default;
 
 // END - CHECKOUT LAYOUT
 // ----------------------------------------
@@ -316,16 +353,18 @@ $checkout-progress-margin--large-screen:              0 !default;
 $checkout-progress-padding:                           $global-spacing-extra-small $container-spacing-mobile !default;
 $checkout-progress-padding--large-screen:             $global-spacing-extra-small $container-spacing-mobile !default;
 
+$checkout-progress-background-color:                  var( --fluidcheckout--checkout-progress--background-color, $white ) !default;
+
 $checkout-progress-bar-height:                        remsize( .5rem ) !default;
 $checkout-progress-bar-border:                        none !default;
 $checkout-progress-bar-border-radius:                 math.div( $checkout-progress-bar-height, 2 ) !default;
-$checkout-progress-bar-color:                         $light-grey !default;
-$checkout-progress-bar-complete-color:                $success-color !default;
-$checkout-progress-bar-current-color:                 $checkout-progress-bar-complete-color !default;
+$checkout-progress-bar-color:                         var( --fluidcheckout--checkout-progress--bar-color, $light-grey ) !default;
+$checkout-progress-bar-complete-color:                var( --fluidcheckout--checkout-progress--bar-color--complete, $success-color ) !default;
+$checkout-progress-bar-current-color:                 var( --fluidcheckout--checkout-progress--bar-color--current, $success-color ) !default;
 
 $checkout-step-count-margin:                          0 0 $global-spacing-tiny !default;
 $checkout-step-count-margin--large-screen:            0 0 $global-spacing-tiny !default;
-$checkout-step-count-color:                           $dark-grey !default;
+$checkout-step-count-color:                           var( --fluidcheckout--checkout-progress--step-count--text-color, $dark-grey ) !default;
 $checkout-step-count-font-size:                       $font-size-small !default;
 $checkout-step-count-font-size--large-screen:         $font-size-small--large-screen !default;
 $checkout-step-count-font-weight:                     bold !default;
@@ -347,6 +386,11 @@ $checkout-steps-container-margin--large-screen:  0 !default;
 
 $checkout-step-padding:                          0 !default;
 $checkout-step-padding--large-screen:            0 !default;
+
+$checkout-step-border-width:                     var( --fluidcheckout--section--border-width, remsize( .1rem ) ) !default;
+$checkout-step-border-color:                     var( --fluidcheckout--section--border-color, $border-color ) !default;
+$checkout-step-border:                           solid $checkout-step-border-width $checkout-step-border-color !default;
+$checkout-step-background-color:                 var( --fluidcheckout--section--background-color, $white ) !default;
 
 $checkout-substep-title-check-icon-size:         $icon-size-small !default;
 $checkout-substep-title-check-icon-spacing:      0 !default;
@@ -372,7 +416,8 @@ $checkout-substep-margin-expand:                 $global-spacing-small #{ - $con
 $checkout-substep-margin-expand--large-screen:   $global-spacing-small #{ - $container-spacing-mobile } !default;
 $checkout-substep-padding:                       $global-spacing-small $container-spacing-mobile !default;
 $checkout-substep-padding--large-screen:         $global-spacing-small $container-spacing-mobile !default;
-$checkout-substep-border-radius:                 $global-radius !default;
+
+$checkout-substep-border-radius:                 var( --fluidcheckout--section--border-radius, $global-radius ) !default;
 
 $checkout-substep-text-margin:                   0 !default;
 $checkout-substep-text-margin--large-screen:     0 !default;
@@ -409,9 +454,13 @@ $checkout-expansible-section-text-decoration:    none !default;
 // ----------------------------------------
 // ORDER SUMMARY
 
-$order-summary-border-color:                     $border-color !default;
-$order-summary-border:                           solid remsize( .1rem ) $order-summary-border-color !default;
+$order-summary-border-width:                     var( --fluidcheckout--order-summary--border-width, remsize( .1rem ) ) !default;
+$order-summary-border-color:                     var( --fluidcheckout--order-summary--border-color, $border-color ) !default;
+$order-summary-border:                           solid $order-summary-border-width $order-summary-border-color !default;
 $order-summary-border-radius:                    $checkout-substep-border-radius !default;
+$order-summary-box-shadow:                       $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--order-summary--shadow-color, transparent ) !default;
+$order-summary-box-shadow--large-screen:         $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--order-summary--shadow-color--large-screen, transparent ) !default;
+$order-summary-background-color:                 var( --fluidcheckout--order-summary--background-color, $white ) !default;
 
 $order-summary-container-margin:                 0 !default;
 $order-summary-container-padding:                0 !default;
@@ -426,19 +475,39 @@ $order-summary-table-width--large-screen:        calc( 100% + #{ $global-spacing
 $order-summary-cell-padding-horizontal:          $global-spacing-small !default;
 $order-summary-cell-padding-vertical:            $global-spacing-extra-small !default;
 $order-summary-cell-padding-vertical--total:     $order-summary-cell-padding-vertical + $global-spacing-tiny !default;
-$order-summary-cell-border:                      solid remsize( .1rem ) darken( $lighter-grey, 5% ) !default;
-$order-summary-cell-border--products:            dashed remsize( .1rem ) $border-color !default;
 
-$order-summary-image-width:                      remsize( 5rem ) !default;
-$order-summary-image-width--large-screen:        remsize( 6rem ) !default;
-$order-summary-image-padding:                    remsize( .3rem ) !default;
-$order-summary-image-background-color:           $white !default;
-$order-summary-image-border:                     solid remsize( .1rem ) $border-color !default;
-$order-summary-image-border-radius:              $global-radius-extra-small !default;
+$order-summary-cell-border-width:                var( --fluidcheckout--order-summary--cell-border-width, remsize( .1rem ) ) !default;
+$order-summary-cell-border-color:                var( --fluidcheckout--order-summary--cell-border-color, $border-color ) !default;
+$order-summary-cell-border:                      solid $order-summary-cell-border-width $order-summary-cell-border-color !default;
+$order-summary-cell-border-width--products-list: var( --fluidcheckout--order-summary--cell-border-width--products-list, remsize( .1rem ) ) !default;
+$order-summary-cell-border-color--products-list: var( --fluidcheckout--order-summary--cell-border-color--products-list, $border-color ) !default;
+$order-summary-cell-border--products-list:       solid $order-summary-cell-border-width--products-list $order-summary-cell-border-color--products-list !default;
+$order-summary-cell-border-width--products:      var( --fluidcheckout--order-summary--cell-border-width--products, remsize( .1rem ) ) !default;
+$order-summary-cell-border-color--products:      var( --fluidcheckout--order-summary--cell-border-color--products, $border-color ) !default;
+$order-summary-cell-border--products:            dashed $order-summary-cell-border-width--products $order-summary-cell-border-color--products !default;
+$order-summary-cell-border-width--summary:       var( --fluidcheckout--order-summary--cell-border-width--summary, remsize( .1rem ) ) !default;
+$order-summary-cell-border-color--summary:       var( --fluidcheckout--order-summary--cell-border-color--summary, $border-color ) !default;
+$order-summary-cell-border--summary:             solid $order-summary-cell-border-width--summary $order-summary-cell-border-color--summary !default;
+$order-summary-cell-border-width--totals-top:    var( --fluidcheckout--order-summary--cell-border-width--totals-top, remsize( .1rem ) ) !default;
+$order-summary-cell-border-color--totals-top:    var( --fluidcheckout--order-summary--cell-border-color--totals-top, $border-color ) !default;
+$order-summary-cell-border--totals-top:          solid $order-summary-cell-border-width--totals-top $order-summary-cell-border-color--totals-top !default;
+$order-summary-cell-border-width--totals-bottom: var( --fluidcheckout--order-summary--cell-border-width--totals-bottom, remsize( .1rem ) ) !default;
+$order-summary-cell-border-color--totals-bottom: var( --fluidcheckout--order-summary--cell-border-color--totals-bottom, $border-color ) !default;
+$order-summary-cell-border--totals-bottom:       solid $order-summary-cell-border-width--totals-bottom $order-summary-cell-border-color--totals-bottom !default;
+
+$order-summary-image-width:                      var( --fluidcheckout--order-summary--image-width, remsize( 5rem ) ) !default;
+$order-summary-image-width--large-screen:        var( --fluidcheckout--order-summary--image-width--large-screen, remsize( 6rem ) ) !default;
+$order-summary-image-padding:                    var( --fluidcheckout--order-summary--image-padding, remsize( .3rem ) ) !default;
+$order-summary-image-background-color:           var( --fluidcheckout--order-summary--image-background-color, $white ) !default;
+$order-summary-image-border-width:               var( --fluidcheckout--order-summary--image-border-width, remsize( .1rem ) ) !default;
+$order-summary-image-border-color:               var( --fluidcheckout--order-summary--image-border-color, $border-color ) !default;
+$order-summary-image-border:                     solid $order-summary-image-border-width $order-summary-image-border-color !default;
+$order-summary-image-border-radius:              var( --fluidcheckout--order-summary--image-border-radius, $global-radius-extra-small ) !default;
+$order-summary-image-box-shadow:                 $box-shadow-offset-x--small $box-shadow-offset-y--small $box-shadow-blur-radius--small var( --fluidcheckout--order-summary--image-shadow-color, transparent ) !default;
 
 $order-summary-quantity-transform:               translateX( -100% ) translateY( -25% ) !default;
-$order-summary-quantity-background-color:        $dark-grey !default;
-$order-summary-quantity-text-color:              $white !default;
+$order-summary-quantity-background-color:        var( --fluidcheckout--order-summary--quantity-background-color, $dark-grey ) !default;
+$order-summary-quantity-text-color:              var( --fluidcheckout--order-summary--quantity-background-color, $white ) !default;
 $order-summary-quantity-font-size:               $font-size-extra-small !default;
 
 $order-summary-font-size:                        $font-size-small !default;
@@ -478,28 +547,9 @@ $place-order-padding-sidebar--large-screen: 0 !default;
 // ----------------------------------------
 // SHIPPING METHODS
 
-$shipping-method-padding-vertical:          $option-box-padding-vertical !default;
-$shipping-method-padding-horizontal:        $option-box-padding-horizontal !default;
-$shipping-method-space-between-options:     0 !default;
-
 $shipping-method-font-weight:               normal !default;
-
-$shipping-method-background-color:          $option-box-background-color !default;
-
 $shipping-method-price-font-weight:         bold !default;
 $shipping-method-price-width:               $global-spacing-large !default;
-
-$shipping-method-border-color:              $option-box-border-color !default;
-$shipping-method-border:                    $option-box-border !default;
-$shipping-method-border-radius:             $option-box-border-radius !default;
-
-$shipping-method-radio-size:                $option-box-radio-size !default;
-$shipping-method-radio-border:              $option-box-radio-border !default;
-
-$shipping-method-checked-radio-color:       $option-box-checked-radio-color !default;
-$shipping-method-checked-icon-color:        $option-box-checked-icon-color !default;
-$shipping-method-checked-background-color:  $option-box-checked-background-color !default;
-$shipping-method-checked-color:             $option-box-checked-color !default;
 
 // END - SHIPPING METHODS
 // ----------------------------------------
@@ -512,24 +562,7 @@ $shipping-method-checked-color:             $option-box-checked-color !default;
 // PAYMENT METHODS
 
 $payment-method-margin:                     0 !default;
-$payment-method-padding-vertical:           $option-box-padding-vertical !default;
-$payment-method-padding-horizontal:         $global-spacing-small !default;
-
 $payment-method-font-weight:                normal !default;
-
-$payment-method-background-color:           $option-box-background-color !default;
-
-$payment-method-border-color:               $option-box-border-color !default;
-$payment-method-border:                     $option-box-border !default;
-$payment-method-border-radius:              $option-box-border-radius !default;
-
-$payment-method-radio-size:                 $option-box-radio-size !default;
-$payment-method-radio-border:               $option-box-radio-border !default;
-
-$payment-method-checked-radio-color:        $option-box-checked-radio-color !default;
-$payment-method-checked-icon-color:         $option-box-checked-icon-color !default;
-$payment-method-checked-background-color:   $option-box-checked-background-color !default;
-$payment-method-checked-color:              $option-box-checked-color !default;
 
 // END - PAYMENT METHODS
 // ----------------------------------------
@@ -543,8 +576,9 @@ $payment-method-checked-color:              $option-box-checked-color !default;
 
 $coupon-code-coupon-margin:                 0 #{ - $global-spacing-extra-small } $global-spacing-tiny !default;
 $coupon-code-coupon-padding:                $global-spacing-tiny $global-spacing-extra-small !default;
-$coupon-code-coupon-border:                 dashed remsize( .1rem ) $border-color !default;
+$coupon-code-coupon-border:                 dashed remsize( .1rem ) var( --fluidcheckout--coupon-code--border-color, $border-color ) !default;
 $coupon-code-coupon-border-radius:          $global-radius-small !default;
+$coupon-code-coupon-background-color:       var( --fluidcheckout--coupon-code--background-color, transparent ) !default;
 
 $coupon-code-remove-spacing:                $global-spacing-extra-small !default;
 $coupon-code-remove-font-size:              $font-size-small !default;
@@ -561,13 +595,22 @@ $coupon-code-remove-background-color:       transparent !default;
 
 
 // ----------------------------------------
-// CHECKOUT FIELDS
+// FORM FIELDS
 
 $checkout-field-description-padding:                  $global-spacing-tiny $global-spacing-extra-small !default;
 $checkout-field-description-color:                    $grey !default;
 $checkout-field-description-background-color:         transparent !default;
 $checkout-field-description-font-size:                $font-size-extra-small !default;
 $checkout-field-description-font-size--large-screen:  $font-size-extra-small !default;
+
+$form-field-height:                                   var( --fluidcheckout--field--height, remsize( 4.5625rem ) ) !default;
+$form-field-border-radius:                            var( --fluidcheckout--field--border-radius, 0 ) !default;
+$form-field-border-width:                             var( --fluidcheckout--field--border-width, remsize( .1rem ) ) !default;
+
+$form-field-select2-inner-spacing:                    var( --fluidcheckout--select2--inner-spacing, remsize( .5rem ) ) !default;
+$form-field-select2-inner-component-height:           var( --fluidcheckout--select2--inner-component-height, calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) ) ) !default;
+$form-field-select2-selection-height--single:         calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) ) !default;
+$form-field-select2-selection-height--multiple:       calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) - ( #{ $form-field-select2-inner-spacing } * 2 ) ) !default;
 
 $checkout-message-error-icon:                         'i-alert-octagon' !default;
 $checkout-message-error-icon-size:                    $icon-size-small !default;
@@ -594,5 +637,21 @@ $checkout-field-group-margin--large-screen:           0 #{ - $global-spacing-sma
 $checkout-field-group-padding:                        $global-spacing-small !default;
 $checkout-field-group-padding--large-screen:          $global-spacing-small !default;
 
-// END - CHECKOUT FIELDS
+// END - FORM FIELDS
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// CHECKOUT VALIDATION
+
+$_checkout-validation-check-top:                                calc( ( #{ $form-field-height } / 2 ) - ( #{ $icon-size } / 2 ) ) !default;
+$_checkout-validation-check-horizontal-spacing:                 var( --fluidcheckout--validation-check--horizontal-spacing, remsize( .5rem ) ) !default;
+$_checkout-validation-check-horizontal-spacing--select:         var( --fluidcheckout--validation-check--horizontal-spacing--select, remsize( 1.5rem ) ) !default;
+$_checkout-validation-check-horizontal-spacing--select-alt:     var( --fluidcheckout--validation-check--horizontal-spacing--select-alt, remsize( 2.5rem ) ) !default;
+$_checkout-validation-check-horizontal-spacing--password:       var( --fluidcheckout--validation-check--horizontal-spacing--password, remsize( 2.5rem ) ) !default;
+
+// END - CHECKOUT VALIDATION
 // ----------------------------------------
