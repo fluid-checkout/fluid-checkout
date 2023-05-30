@@ -524,7 +524,35 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$add_classes[] = 'has-highlighted-billing-section';
 		}
 
+		// Add custom button color class
+		if ( $this->is_button_styles_enabled() ) {
+			$classes[] = 'has-fc-button-colors';
+		}
+
 		return array_merge( $classes, $add_classes );
+	}
+
+
+
+	/**
+	 * Check whether custom buttons styles are enabled for the page.
+	 */
+	public function is_button_styles_enabled() {
+		// Bail if button styles not enabled
+		if ( false === apply_filters( 'fc_apply_button_colors_styles', false ) ) { return false; }
+
+		// Bail if not on affected pages
+		if ( ! function_exists( 'is_checkout' )
+			|| (
+				! is_checkout() // Checkout page
+				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
+				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
+			)
+		) {
+			return false;
+		}
+
+		return true;
 	}
 
 
