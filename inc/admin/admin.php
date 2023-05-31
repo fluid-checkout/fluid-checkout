@@ -59,7 +59,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Bail if not on WooCommerce settings page
 		if ( $hook_suffix !== 'woocommerce_page_wc-settings' ) { return; }
 
-		wp_enqueue_style( 'fc-admin-addons', self::$directory_url . 'css/admin-addons'. self::$asset_version . '.css', NULL, NULL );
+		wp_enqueue_style( 'fc-admin-dashboard', self::$directory_url . 'css/admin-dashboard'. self::$asset_version . '.css', NULL, NULL );
 	}
 
 
@@ -68,7 +68,11 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * Add new WooCommerce settings pages/tabs.
 	 */
 	public function load_setting_types() {
+		// Dashboard sections
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-setup.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-addons.php';
+
+		// Setting types
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-paragraph.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-select.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-textarea.php';
@@ -85,8 +89,9 @@ class FluidCheckout_Admin extends FluidCheckout {
 		if ( ! is_array( $settings ) ) { $settings = array( $settings ); }
 
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-wc-shipping.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-fluid-checkout.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-general.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-tab-fluid-checkout.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-dashboard.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-checkout.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-cart.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-received.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-integrations.php';

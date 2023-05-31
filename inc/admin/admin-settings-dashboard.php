@@ -45,25 +45,11 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 	 * @param   array  $sections  Admin settings sections.
 	 */
 	public function add_sections( $sections ) {
-		// Define sections to insert
-		$insert_sections = array(
-			'addons' => __( 'Add-ons', 'fluid-checkout' ),
-		);
-
-		// Get token position
-		$position_index = count( $sections );
-		for ( $index = 0; $index < count( $sections ); $index++ ) {
-			if ( 'advanced' == array_keys( $sections )[ $index ] ) {
-				$position_index = $index;
-			}
-		}
-
-		// Insert at token position
-		$new_sections = array_slice( $sections, 0, $position_index );
-		$new_sections = array_merge( $new_sections, $insert_sections );
-		$new_sections = array_merge( $new_sections, array_slice( $sections, $position_index, count( $sections ) ) );
+		$sections = array_merge( $sections, array(
+			'' => __( 'Dashboard', 'fluid-checkout' ),
+		) );
 		
-		return $new_sections;
+		return $sections;
 	}
 
 
@@ -75,7 +61,7 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 	 * @param   string  $current_section  Current section name.
 	 */
 	public function add_settings( $settings, $current_section ) {
-		if ( 'addons' === $current_section ) {
+		if ( '' === $current_section ) {
 
 			$settings = array(
 
@@ -84,6 +70,10 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 					'id'    => 'fc_checkout_addons_options',
 				),
 
+				array(
+					'type'             => 'fc_setup',
+					'autoload'         => false,
+				),
 				array(
 					'type'             => 'fc_addons',
 					'autoload'         => false,

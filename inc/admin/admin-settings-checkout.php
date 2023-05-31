@@ -8,14 +8,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_General_Settings', false ) ) {
-	return new WC_Settings_FluidCheckout_General_Settings();
+if ( class_exists( 'WC_Settings_FluidCheckout_Checkout_Settings', false ) ) {
+	return new WC_Settings_FluidCheckout_Checkout_Settings();
 }
 
 /**
- * WC_Settings_FluidCheckout_General_Settings.
+ * WC_Settings_FluidCheckout_Checkout_Settings.
  */
-class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
+class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 	/**
 	 * __construct function.
@@ -31,8 +31,26 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Sections
+		add_filter( 'woocommerce_get_sections_fc_checkout', array( $this, 'add_sections' ), 10 );
+
 		// Settings
 		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+	}
+
+
+
+	/**
+	 * Add new sections to the Fluid Checkout admin settings tab.
+	 *
+	 * @param   array  $sections  Admin settings sections.
+	 */
+	public function add_sections( $sections ) {
+		$sections = array_merge( $sections, array(
+			'checkout' => __( 'Checkout', 'fluid-checkout' ),
+		) );
+		
+		return $sections;
 	}
 
 
@@ -44,7 +62,7 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 	 * @param   string  $current_section  Current section name.
 	 */
 	public function add_settings( $settings, $current_section ) {
-		if ( empty( $current_section ) ) {
+		if ( 'checkout' === $current_section ) {
 
 			$settings = apply_filters(
 				'fc_checkout_general_settings',
@@ -669,4 +687,4 @@ class WC_Settings_FluidCheckout_General_Settings extends WC_Settings_Page {
 
 }
 
-return new WC_Settings_FluidCheckout_General_Settings();
+return new WC_Settings_FluidCheckout_Checkout_Settings();

@@ -1,0 +1,29 @@
+// ------------------------------------
+// DASHBOARD SECTIONS
+// ------------------------------------
+
+// Hide the submit button as there are not settings to be saved on this page
+p.submit {
+	display: none;
+}
+
+
+.fc-dashboard-section__row [class*="fc-"] {
+	box-sizing: border-box;
+}
+
+
+
+.fc-dashboard-section__row {
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 30px;
+	border-radius: 13px;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba( 0, 0, 0, .15 );
+}
+
+.fc-dashboard-section__row-title {
+	margin-top: 0;
+}

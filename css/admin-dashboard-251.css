@@ -2,23 +2,27 @@ p.submit {
   display: none;
 }
 
-.fc-addons__row [class*=fc-] {
+.fc-dashboard-section__row [class*=fc-] {
   box-sizing: border-box;
 }
 
-.fc-addons__row {
+.fc-dashboard-section__row {
   display: block;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 30px;
   border-radius: 13px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.fc-addons__row-title {
+.fc-dashboard-section__row-title {
   margin-top: 0;
-  margin-bottom: 30px;
+}
+
+.fc-dashboard-docs ul {
+  list-style: disc;
+  padding-left: 20px;
 }
 
 .fc-addons-list {
@@ -28,6 +32,7 @@ p.submit {
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
+  margin-top: 30px;
   padding: 0;
 }
 
@@ -40,6 +45,7 @@ p.submit {
   margin-bottom: 30px;
   padding: 30px;
   width: 100%;
+  border: solid 1px #f3f3f3;
   border-radius: 8px;
   background-color: #f9f9f9;
 }
@@ -67,7 +73,11 @@ p.submit {
   margin-bottom: 20px;
 }
 
-.fc-addons__image {
+.fc-addons__item--pro .fc-addons__item-header {
+  align-items: center;
+}
+
+.fc-addons__item-image {
   float: left;
   width: 70px;
   height: auto;
@@ -158,11 +168,11 @@ p.submit {
   color: #007a3d !important;
 }
 
-.fc-addons__disclaimer {
+.fc-dashboard__disclaimer {
   font-size: 12px;
 }
 
-.fc-addons__disclaimer ul {
+.fc-dashboard__disclaimer ul {
   list-style: circle;
   padding-left: 20px;
 }
