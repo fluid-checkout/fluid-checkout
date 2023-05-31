@@ -461,13 +461,47 @@ class FluidCheckout {
 
 
 	/**
+	 * Check if a plugin is installed on a single install or network wide.
+	 * 
+	 * @param  string  $plugin_file   The plugin file name.
+	 * @since 3.0.0
+	 */
+	public function is_plugin_installed( $plugin_file ) {
+		$is_installed = file_exists( trailingslashit( WP_PLUGIN_DIR ) . $plugin_file ) || $this->is_plugin_activated( $plugin_file );
+		return $is_installed;
+	}
+
+	/**
+	 * Check if Fluid Checkout PRO is active on a single install or network wide.
+	 * 
+	 * @param  string  $plugin_file   The plugin file name.
+	 * @since 3.0.0
+	 */
+	public function is_plugin_activated( $plugin_file ) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		return is_plugin_active( $plugin_file );
+	}
+
+
+
+
+
+	/**
+	 * Check if Fluid Checkout PRO is installed on a single install or network wide.
+	 *
+	 * @since 3.0.0
+	 */
+	public function is_pro_installed() {
+		return $this->is_plugin_installed( 'fluid-checkout-pro/fluid-checkout-pro.php' );
+	}
+
+	/**
 	 * Check if Fluid Checkout PRO is active on a single install or network wide.
 	 *
 	 * @since 1.5.0
 	 */
 	public function is_pro_activated() {
-		require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		return is_plugin_active( 'fluid-checkout-pro/fluid-checkout-pro.php' );
+		return $this->is_plugin_activated( 'fluid-checkout-pro/fluid-checkout-pro.php' );
 	}
 
 

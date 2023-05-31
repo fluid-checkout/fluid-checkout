@@ -80,19 +80,12 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 			$settings = array(
 
 				array(
-					'title' => __( 'Add-ons', 'fluid-checkout' ),
 					'type'  => 'title',
-					'desc'  => '',
 					'id'    => 'fc_checkout_addons_options',
 				),
 
 				array(
-					'title'            => __( 'Debug options', 'fluid-checkout' ),
-					'desc'             => __( 'Debug mode', 'fluid-checkout' ),
-					'desc_tip'         => __( 'Using debug mode affects the website performance. Only use this option while troubleshooting.', 'fluid-checkout' ),
 					'type'             => 'fc_addons',
-					'default'          => FluidCheckout_Settings::instance()->get_option_default( 'fc_debug_mode' ),
-					'checkboxgroup'    => 'start',
 					'autoload'         => false,
 				),
 

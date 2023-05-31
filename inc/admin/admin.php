@@ -30,6 +30,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 		// WooCommerce Settings Styles
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles'), 10 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_addon_styles'), 10 );
 
 		// Clear cache after saving settings
 		add_action( 'woocommerce_settings_saved', 'wp_cache_flush', 10 );
@@ -45,7 +46,20 @@ class FluidCheckout_Admin extends FluidCheckout {
 	public function enqueue_admin_styles( $hook_suffix ) {
 		// Bail if not on WooCommerce settings page
 		if ( $hook_suffix !== 'woocommerce_page_wc-settings' ) { return; }
+
 		wp_enqueue_style( 'fc-admin-options', self::$directory_url . 'css/admin-options'. self::$asset_version . '.css', NULL, NULL );
+	}
+
+	/**
+	 * Enqueue styles for the current admin settings page.
+	 *
+	 * @param int $hook_suffix Hook suffix for the current admin page.
+	 */
+	public function enqueue_admin_addon_styles( $hook_suffix ) {
+		// Bail if not on WooCommerce settings page
+		if ( $hook_suffix !== 'woocommerce_page_wc-settings' ) { return; }
+
+		wp_enqueue_style( 'fc-admin-addons', self::$directory_url . 'css/admin-addons'. self::$asset_version . '.css', NULL, NULL );
 	}
 
 
