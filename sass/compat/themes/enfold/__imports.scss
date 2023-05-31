@@ -13,7 +13,7 @@ $_body-theme-selector:                 '.theme-enfold' !default;
 // ------------------------------------
 :root {
 	--fluidcheckout--field--height: #{ remsize( 3.6rem ) };
-	--fluidcheckout--field--border-radius: #{ 0 };
+	--fluidcheckout--field--border-radius: 0;
 }
 
 
