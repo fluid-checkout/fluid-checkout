@@ -11,3 +11,44 @@ body#{ $_body-theme-selector }#top div.woocommerce form #payment .form-row.form-
 		margin-#{ $alignment-right }: 4%;
 	}
 }
+
+
+
+
+
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+// Outline styles
+body#{ $_body-theme-selector }#top div.woocommerce form .form-row {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="search"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"],
+	input[type="checkbox"],
+	input[type="radio"],
+	.select2-selection {
+		&:focus {
+			outline: $focus-outline-field;
+			outline-offset: $focus-outline-offset-field;
+		}
+	}
+}
+// Add styles for fields not wrapped by a `.form-field` only for detected issues
+body#{ $_body-theme-selector }#top div.woocommerce {
+	input[type="number"],
+	input[type="checkbox"],
+	input[type="radio"] {
+		&:focus {
+			outline: $focus-outline-field;
+			outline-offset: $focus-outline-offset-field;
+		}
+	}
+}
