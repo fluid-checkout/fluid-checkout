@@ -2,20 +2,6 @@
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } #main.fc-main {
-	margin: 0 auto;
-
-	// padding
-	padding: $checkout-header-height $container-spacing-mobile $global-spacing-large !important; // Needed to override inline styles added by some themes
-	@media (#{$bp-larger-than-tablet}) { padding: $checkout-header-height $container-spacing-tablet $global-spacing-large !important; } // Needed to override inline styles added by some themes
-	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop $global-spacing-large !important; } // Needed to override inline styles added by some themes
-	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium $global-spacing-large !important; } // Needed to override inline styles added by some themes
-	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large $global-spacing-large !important; } // Needed to override inline styles added by some themes
-	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large $global-spacing-large !important; } // Needed to override inline styles added by some themes
-}
-
-
-
 body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content.container {
 	@media (#{$bp-smaller-than-tablet}) { 
 		width: 100% !important; // Needed to override styles added by the theme

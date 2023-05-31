@@ -3,36 +3,6 @@
   --fluidcheckout--field--border-radius: 0;
 }
 
-body.theme-enfold.woocommerce-checkout #main.fc-main {
-  margin: 0 auto;
-  padding: 60px 20px 80px !important;
-}
-@media (min-width: 750px) {
-  body.theme-enfold.woocommerce-checkout #main.fc-main {
-    padding: 60px 30px 80px !important;
-  }
-}
-@media (min-width: 1000px) {
-  body.theme-enfold.woocommerce-checkout #main.fc-main {
-    padding: 0 50px 80px !important;
-  }
-}
-@media (min-width: 1280px) {
-  body.theme-enfold.woocommerce-checkout #main.fc-main {
-    padding: 0 50px 80px !important;
-  }
-}
-@media (min-width: 1500px) {
-  body.theme-enfold.woocommerce-checkout #main.fc-main {
-    padding: 0 50px 80px !important;
-  }
-}
-@media (min-width: 2000px) {
-  body.theme-enfold.woocommerce-checkout #main.fc-main {
-    padding: 0 50px 80px !important;
-  }
-}
-
 @media (max-width: 749px) {
   body.theme-enfold.woocommerce-checkout .fc-content.container {
     width: 100% !important;
