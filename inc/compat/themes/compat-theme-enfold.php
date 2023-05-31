@@ -32,7 +32,6 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 
 		// Button styles
 		add_filter( 'fc_apply_button_colors_styles', '__return_true' );
-		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_css_variables_button_styles' ), 10 );
 	}
 
 
@@ -104,82 +103,6 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 		$attributes['data-sticky-relative-to'] = '#header';
 
 		return $attributes;
-	}
-
-
-	/**
-	 * Get the color palette.
-	 */
-	public function get_color_palette() {
-		// global $electro_options;
-		global $avia_config, $avia_pages, $avia_elements, $avia_admin_values;
-		
-		echo '<pre>';
-		var_dump( avia_get_option( 'color_scheme' ) );
-		echo '</pre>';
-
-		// $color_palette = array(
-		// 	'primary--border-color' => $electro_options[ 'custom_primary_color' ],
-		// 	'primary--background-color' => $electro_options[ 'custom_primary_color' ],
-		// 	'primary--text-color' => $electro_options[ 'custom_primary_text_color' ],
-		// 	'primary--border-color--hover' => '#000',
-		// 	'primary--background-color--hover' => '#000',
-		// 	'primary--text-color--hover' => '#fff',
-
-		// 	'secondary--border-color' => '#efecec',
-		// 	'secondary--background-color' => '#efecec',
-		// 	'secondary--text-color' => '#333e48',
-		// 	'secondary--border-color--hover' => '#fff',
-		// 	'secondary--background-color--hover' => '#000',
-		// 	'secondary--text-color--hover' => '#fff',
-		// );
-
-		// return $color_palette;
-		return array();
-	}
-
-
-
-	/**
-	 * Get CSS variables styles.
-	 */
-	public function get_css_variables_styles() {
-		// Get the color palette
-		$colors = $this->get_color_palette();
-
-		// Define CSS variables
-		$css_variables = ":root {
-			--fluidcheckout--button--primary--border-color: {$colors['primary--border-color']};
-			--fluidcheckout--button--primary--background-color: {$colors['primary--background-color']};
-			--fluidcheckout--button--primary--text-color: {$colors['primary--text-color']};
-			--fluidcheckout--button--primary--border-color--hover: {$colors['primary--border-color--hover']};
-			--fluidcheckout--button--primary--background-color--hover: {$colors['primary--background-color--hover']};
-			--fluidcheckout--button--primary--text-color--hover: {$colors['primary--text-color--hover']};
-
-			--fluidcheckout--button--secondary--border-color: {$colors['secondary--border-color']};
-			--fluidcheckout--button--secondary--background-color: {$colors['secondary--background-color']};
-			--fluidcheckout--button--secondary--text-color: {$colors['secondary--text-color']};
-			--fluidcheckout--button--secondary--border-color--hover: {$colors['secondary--border-color--hover']};
-			--fluidcheckout--button--secondary--background-color--hover: {$colors['secondary--background-color--hover']};
-			--fluidcheckout--button--secondary--text-color--hover: {$colors['secondary--text-color--hover']};
-		}";
-
-		return $css_variables;
-	}
-
-
-
-	/**
-	 * Maybe add CSS variables for button styles.
-	 */
-	public function maybe_add_css_variables_button_styles( $custom_styles ) {
-		// Bail if button styles are not enabled
-		if ( ! FluidCheckout_Steps::instance()->is_button_styles_enabled() ) { return $custom_styles; }
-
-		// Add css variables for button styles
-		$custom_styles .= $this->get_css_variables_styles();
-
-		return $custom_styles;
 	}
 
 }
