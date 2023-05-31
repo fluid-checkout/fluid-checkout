@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.2
-Stable tag: 2.4.0
+Stable tag: 2.5.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -387,8 +387,14 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin GP Premium by GeneratePress.
+* Fixed: Password visibility button not showing when the form section is replaced via checkout fragments.
+
+= 2.5.0 - 2023-05-29 =
+
 IMPORTANT FIX: Critical error introduced in v2.4.0 where functionality was broken with some themes.
 
+* Bump tested up to WooCommerce 7.7.0
 * Added: Add instant validation for Brazilian documents fields CPF and CNPJ.
 * Improved: Added CSS variables for many aspects of the design including: colors, borders, some sizing and spacing aspects.
 * Improved: Compatibility with theme Electro. Support for all pre-defined theme colors, custom theme color and dark mode.
