@@ -66,7 +66,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 							</ul>
 						</div>
 						<div class="fc-addons__item-actions">
-							<a href="<?php echo esc_url( 'https://fluidcheckout.com/pricing/?mtm_campaign=addons&mtm_kwd=pro&mtm_source=lite-plugin' ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( __( 'Upgrade to PRO &mdash; 99 EUR', 'fluid-checkout' ) ); ?></a>
+							<a href="<?php echo esc_url( 'https://fluidcheckout.com/pricing/?mtm_campaign=addons&mtm_kwd=fc-pro&mtm_source=lite-plugin' ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( __( 'Upgrade to PRO &mdash; 99 EUR', 'fluid-checkout' ) ); ?></a>
 						</div>
 					</li>
 
@@ -88,7 +88,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 							</ul>
 						</div>
 						<div class="fc-addons__item-actions">
-							<a href="<?php echo esc_url( 'https://fluidcheckout.com/pricing/?mtm_campaign=addons&mtm_kwd=bundle&mtm_source=lite-plugin' ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( __( 'Get the bundle &mdash; Only 129 EUR', 'fluid-checkout' ) ); ?></a>
+							<a href="<?php echo esc_url( 'https://fluidcheckout.com/pricing/?mtm_campaign=addons&mtm_kwd=fc-pro-bundle&mtm_source=lite-plugin' ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( __( 'Get the bundle &mdash; Only 129 EUR', 'fluid-checkout' ) ); ?></a>
 						</div>
 					</li>
 				</ul>
@@ -126,7 +126,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 								<p><strong><?php echo esc_html( __( '187 EUR value (30% discount)', 'fluid-checkout' ) ); ?></strong></p>
 							</div>
 							<div class="fc-addons__item-actions">
-								<a href="<?php echo esc_url( 'https://fluidcheckout.com/pricing/?mtm_campaign=addons&mtm_kwd=bundle&mtm_source=lite-plugin' ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( __( 'Get the bundle &mdash; Only 129 EUR', 'fluid-checkout' ) ); ?></a>
+								<a href="<?php echo esc_url( 'https://fluidcheckout.com/pricing/?mtm_campaign=addons&mtm_kwd=fc-pro-bundle&mtm_source=lite-plugin' ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( __( 'Get the bundle &mdash; Only 129 EUR', 'fluid-checkout' ) ); ?></a>
 								<a href="<?php echo esc_url( add_query_arg( array( 'fc_action' => 'dismiss_notice', 'fc_notice' => 'bundle_offer', '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ); ?>" class="button"><?php echo esc_html( __( 'I already have it &mdash; Hide this offer', 'fluid-checkout' ) ); ?></a>
 							</div>
 						</li>

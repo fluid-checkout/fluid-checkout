@@ -113,7 +113,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 		// Maybe add PRO version promotion
 		if ( ! FluidCheckout::instance()->is_pro_activated() ) {
-			$links[] = sprintf( '<a href="%s" style="color:#007F01;font-weight:bold;">%s</a>', 'https://fluidcheckout.com/pricing/', esc_html( __( 'Upgrade to PRO', 'fluid-checkout' ) ) );
+			$links[] = sprintf( '<a href="%s" style="color:#007F01;font-weight:bold;">%s</a>', 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=plugins-list&mtm_source=lite-plugin', esc_html( __( 'Upgrade to PRO', 'fluid-checkout' ) ) );
 		}
 
 		return $links;
@@ -127,7 +127,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * @param  bool  $new_line  Whether to add a new line before.
 	 */
 	public function get_upgrade_pro_html( $new_line = true ) {
-		$html = __( '<a target="_blank" href="https://fluidcheckout.com/pricing/">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' );
+		$html = __( '<a target="_blank" href="https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=plugin-settings&mtm_source=lite-plugin">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' );
 		
 		// Maybe add line break
 		if ( $new_line ) {
