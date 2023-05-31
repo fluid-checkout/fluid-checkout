@@ -54,6 +54,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * Add new WooCommerce settings pages/tabs.
 	 */
 	public function load_setting_types() {
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-addons.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-paragraph.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-select.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-textarea.php';
@@ -76,6 +77,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-received.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-integrations.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-tools.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-addons.php';
 		
 		return $settings;
 	}
