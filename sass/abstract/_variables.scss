@@ -42,12 +42,12 @@ $box-shadow-dark:               $box-shadow-offset-x $box-shadow-offset-y $box-s
 $box-shadow-light:              $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--shadow-color--light, rgba( 255, 255, 255, .15 ) ) !default;
 
 // Outline focus
-$focus-outline-field:           solid remsize( .2rem ) $dark-grey;
-$focus-outline-offset-field:    remsize( .2rem );
-$focus-outline-link:            dotted remsize( .1rem ) $dark-grey;
-$focus-outline-offset-link:     remsize( .1rem );
-$focus-outline-button:          $focus-outline-field;
-$focus-outline-offset-button:   $focus-outline-offset-field;
+$focus-outline-field:           solid remsize( .2rem ) $dark-grey !default;
+$focus-outline-offset-field:    remsize( .2rem ) !default;
+$focus-outline-link:            dotted remsize( .1rem ) $dark-grey !default;
+$focus-outline-offset-link:     remsize( .1rem ) !default;
+$focus-outline-button:          $focus-outline-field !default;
+$focus-outline-offset-button:   $focus-outline-offset-field !default;
 
 // END - COLORS
 // ----------------------------------------

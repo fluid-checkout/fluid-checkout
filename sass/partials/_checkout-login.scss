@@ -93,10 +93,10 @@
 // CHECKOUT LOGIN FORM
 // ------------------------------------
 .woocommerce-checkout .fc-login-form form.login {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	border: 0;
+	margin: 0 !important; // Needed to override theme styles
+	padding: 0 !important; // Needed to override theme styles
+	width: 100% !important; // Needed to override theme styles
+	border: 0 !important; // Needed to override theme styles
 }
 
 
