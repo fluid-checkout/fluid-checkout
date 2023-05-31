@@ -40,7 +40,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 				<h3 class="fc-dashboard-section__row-title"><?php echo esc_html( __( 'Special offers', 'fluid-checkout' ) ); ?></h3>
 
-				<p><?php echo wp_kses_post( __( 'Extend all the goodness of Fluid Checkout to your cart page and order received pages.', 'fluid-checkout' ) ); ?></p>
+				<p><?php echo wp_kses_post( __( 'Extend all the goodness of Fluid Checkout to your cart page and thank you pages.', 'fluid-checkout' ) ); ?></p>
 
 				<ul class="fc-addons-list fc-addons-list--pro">
 					<li class="fc-addons__item fc-addons__item--pro">
@@ -60,7 +60,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 								<li><?php echo esc_html( __( 'Edit cart contents at checkout page', 'fluid-checkout' ) ); ?></li>
 								<li><?php echo esc_html( __( 'Account matching / user matching', 'fluid-checkout' ) ); ?></li>
 								<li><?php echo esc_html( __( 'Express Checkout buttons from supported payment methods', 'fluid-checkout' ) ); ?></li>
-								<li><?php echo esc_html( __( 'Trust symbols on the cart and order received pages', 'fluid-checkout' ) ); ?></li>
+								<li><?php echo esc_html( __( 'Trust symbols on the cart and thank you pages', 'fluid-checkout' ) ); ?></li>
 								<li><?php echo esc_html( __( 'More positions for the coupon code on the checkout page', 'fluid-checkout' ) ); ?></li>
 								<li><?php echo esc_html( __( 'Integrated coupon code field on the cart page', 'fluid-checkout' ) ); ?></li>
 								<li><?php echo esc_html( __( 'International phone numbers', 'fluid-checkout' ) ); ?></li>
