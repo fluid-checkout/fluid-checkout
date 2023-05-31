@@ -610,12 +610,15 @@
 	_publicMethods.init = function( options ) {
 		if ( _hasInitialized ) return;
 
-		// Finish initialization, maybe load dependencies first (AnimateHelper, and Inert Polyfill)
-		if ( window.AnimateHelper && Element.prototype.hasOwnProperty( 'inert' ) ) {
+		// Maybe finish initialization
+		if ( window.AnimateHelper && ( HTMLElement.prototype.hasOwnProperty('inert') || Element.prototype.hasOwnProperty( 'inert' ) ) ) {
 			finishInit( options );
 		}
-		else if( window.RequireBundle ) {
-			RequireBundle.require( [ 'animate-helper', 'polyfill-inert' ], function() { finishInit( options ); } );
+		else {
+			console.log( 'FlyoutBlock could not be initialized.' );
+			console.log( 'AnimateHelper loaded: ' + !! window.AnimateHelper );
+			console.log( 'HTMLElement has `inert` property: ' + !! HTMLElement.prototype.hasOwnProperty('inert') );
+			console.log( 'Element has `inert` property: ' + !! Element.prototype.hasOwnProperty('inert') );
 		}
 	};
 
