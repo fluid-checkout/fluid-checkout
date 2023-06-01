@@ -31,7 +31,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 		// WooCommerce Settings Styles
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles'), 10 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_addon_styles'), 10 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_dashboard_styles'), 10 );
 
 		// Clear cache after saving settings
 		add_action( 'woocommerce_settings_saved', 'wp_cache_flush', 10 );
@@ -56,9 +56,16 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 *
 	 * @param int $hook_suffix Hook suffix for the current admin page.
 	 */
-	public function enqueue_admin_addon_styles( $hook_suffix ) {
-		// Bail if not on WooCommerce settings page
-		if ( $hook_suffix !== 'woocommerce_page_wc-settings' ) { return; }
+	public function enqueue_admin_dashboard_styles( $hook_suffix ) {
+		// Get current screen
+		$current_screen = get_current_screen();
+		if ( $current_screen->id === 'woocommerce_page_wc-settings' ) {
+			$current_tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'general';
+			$current_section = isset( $_GET['section'] ) ? sanitize_text_field( $_GET['section'] ) : '';
+		}
+
+		// Bail if not on dashboard settings page
+		if ( 'fc_checkout' !== $current_tab || ! empty( $current_section ) ) { return; }
 
 		wp_enqueue_style( 'fc-admin-dashboard', self::$directory_url . 'css/admin-dashboard'. self::$asset_version . '.css', NULL, NULL );
 	}
