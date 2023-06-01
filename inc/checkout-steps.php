@@ -62,12 +62,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
-		// Custom styles
-		add_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
-		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_header_custom_styles' ), 10 );
-		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
-		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_footer_custom_styles' ), 10 );
-
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
@@ -527,117 +521,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return array_merge( $classes, $add_classes );
 	}
 
-
-
-	/**
-	 * Output custom styles to the checkout page.
-	 */
-	public function output_custom_styles() {
-		// Get styles
-		$custom_styles = apply_filters( 'fc_output_custom_styles', '' );
-
-		// Bail if styles are empty
-		if ( empty( $custom_styles ) ) { return; }
-		?>
-		<style id="fc-custom-styles">
-			<?php echo $custom_styles; // XSS ok. ?>
-		</style>
-		<?php
-	}
-
-	/**
-	 * Add the custom styles for the checkout header background color.
-	 */
-	public function add_checkout_header_custom_styles( $custom_styles ) {		
-		// Get header background color
-		$header_background_color = trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_header_background_color' ) );
-
-		// Bail if color is empty
-		if ( empty( $header_background_color ) ) { return $custom_styles; }
-
-		// TODO: Use CSS variables to change color
-		$custom_styles .= 'header.fc-checkout-header{background-color:'. esc_attr( $header_background_color ) .'}';
-
-		return $custom_styles;
-	}
-
-	/**
-	 * Add the custom styles for the checkout page background color.
-	 */
-	public function add_checkout_page_custom_styles( $custom_styles ) {		
-		// Get header background color
-		$page_background_color = trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_page_background_color' ) );
-
-		// Bail if color is empty
-		if ( empty( $page_background_color ) ) { return $custom_styles; }
-
-		// TODO: Use CSS variables to change color
-		$custom_styles .= 'body.has-fluid-checkout{background-color:'. esc_attr( $page_background_color ) .'}';
-
-		return $custom_styles;
-	}
-
-	/**
-	 * Add the custom styles for the checkout footer background color.
-	 */
-	public function add_checkout_footer_custom_styles( $custom_styles ) {
-		// Get footer background color
-		$footer_background_color = trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_footer_background_color' ) );
-
-		// Bail if color is empty
-		if ( empty( $footer_background_color ) ) { return $custom_styles; }
-
-		// TODO: Use CSS variables to change color
-		$custom_styles .= 'footer.fc-checkout-footer{background-color:'. esc_attr( $footer_background_color ) .'}';
-
-		return $custom_styles;
-	}
-
-
-
-	/**
-	 * Maybe output custom styles to the checkout page.
-	 */
-	public function maybe_output_custom_styles() {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
-
-		$this->output_custom_styles();
-	}
-
-	/**
-	 * Maybe add the custom styles for the checkout header background color.
-	 */
-	public function maybe_add_checkout_header_custom_styles( $custom_styles ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
-
-		return $this->add_checkout_header_custom_styles( $custom_styles );
-	}
-
-	/**
-	 * Maybe add the custom styles for the checkout page background color.
-	 */
-	public function maybe_add_checkout_page_custom_styles( $custom_styles ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
-
-		return $this->add_checkout_page_custom_styles( $custom_styles );
-	}
-
-	/**
-	 * Maybe add the custom styles for the checkout footer background color.
-	 */
-	public function maybe_add_checkout_footer_custom_styles( $custom_styles ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
-
-		return $this->add_checkout_footer_custom_styles( $custom_styles );
-	}
-
 	
-
-
 
 	/**
 	 * Register assets.
@@ -690,21 +574,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		) );
 
 		return $settings;
-	}
-
-
-
-	/**
-	 * Get option for hiding the site's original header and footer at the checkout page.
-	 *
-	 * @return       boolean  True if should hide the site's original header and footer at the checkout page, false otherwise.
-	 * @deprecated            Use `FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout()` instead.
-	 */
-	public function get_hide_site_header_footer_at_checkout() {
-		// Add deprecation notice
-		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() instead.', '2.3.0' );
-
-		return FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout();
 	}
 
 
@@ -4974,6 +4843,83 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * END - Persisted Data
+	 */
+
+
+
+
+
+	/**
+	 * DEPRECATED functions.
+	 */
+
+
+
+	/**
+	 * Get option for hiding the site's original header and footer at the checkout page.
+	 *
+	 * @return       boolean  True if should hide the site's original header and footer at the checkout page, false otherwise.
+	 * @deprecated            Use `FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout()` instead.
+	 */
+	public function get_hide_site_header_footer_at_checkout() {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() instead.', '2.3.0' );
+
+		return FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout();
+	}
+
+
+
+	/**
+	 * Get option for hiding the site's original header and footer at the checkout page.
+	 *
+	 * @return       boolean  True if should hide the site's original header and footer at the checkout page, false otherwise.
+	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->output_custom_styles()` instead.
+	 */
+	public function output_custom_styles() {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_DesignTemplates::instance()->output_custom_styles() instead.', '3.0.0' );
+
+		return FluidCheckout_DesignTemplates::instance()->output_custom_styles();
+	}
+
+	/**
+	 * Maybe add the custom styles for the cart header background color.
+	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->maybe_add_checkout_header_custom_styles()` instead.
+	 */
+	public function maybe_add_checkout_header_custom_styles( $custom_styles ) {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_DesignTemplates::instance()->maybe_add_checkout_header_custom_styles() instead.', '3.0.0' );
+
+		return FluidCheckout_DesignTemplates::instance()->maybe_add_checkout_header_custom_styles( $custom_styles );
+	}
+
+	/**
+	 * Maybe add the custom styles for the cart page background color.
+	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->add_checkout_page_custom_styles()` instead.
+	 */
+	public function add_checkout_page_custom_styles( $custom_styles ) {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_DesignTemplates::instance()->add_checkout_page_custom_styles() instead.', '3.0.0' );
+
+		return FluidCheckout_DesignTemplates::instance()->add_checkout_page_custom_styles( $custom_styles );
+	}
+
+	/**
+	 * Maybe add the custom styles for the cart footer background color.
+	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->maybe_add_checkout_footer_custom_styles()` instead.
+	 */
+	public function maybe_add_checkout_footer_custom_styles( $custom_styles ) {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_DesignTemplates::instance()->maybe_add_checkout_footer_custom_styles() instead.', '3.0.0' );
+
+		return FluidCheckout_DesignTemplates::instance()->maybe_add_checkout_footer_custom_styles( $custom_styles );
+	}
+
+
+
+	/**
+	 * END - DEPRECATED functions.
 	 */
 
 }
