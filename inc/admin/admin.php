@@ -59,10 +59,13 @@ class FluidCheckout_Admin extends FluidCheckout {
 	public function enqueue_admin_dashboard_styles( $hook_suffix ) {
 		// Get current screen
 		$current_screen = get_current_screen();
-		if ( $current_screen->id === 'woocommerce_page_wc-settings' ) {
-			$current_tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'general';
-			$current_section = isset( $_GET['section'] ) ? sanitize_text_field( $_GET['section'] ) : '';
-		}
+
+		// Bail if not on WooCommerce settings page
+		if ( $current_screen->id === 'woocommerce_page_wc-settings' ) { return; }
+		
+		// Get current tab and section
+		$current_tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'general';
+		$current_section = isset( $_GET['section'] ) ? sanitize_text_field( $_GET['section'] ) : '';
 
 		// Bail if not on dashboard settings page
 		if ( 'fc_checkout' !== $current_tab || ! empty( $current_section ) ) { return; }
