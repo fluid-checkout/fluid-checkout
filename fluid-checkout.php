@@ -102,10 +102,8 @@ class FluidCheckout {
 		$this->load_admin_notices();
 		$this->register_features();
 
-		// Load settings manager
-		require_once self::$directory_path . 'inc/settings.php';
-
 		// Run hooks initialization after all plugins have been loaded
+		add_action( 'plugins_loaded', array( $this, 'load_settings' ), 10 );
 		add_action( 'plugins_loaded', array( $this, 'hooks' ), 10 );
 	}
 
@@ -122,6 +120,15 @@ class FluidCheckout {
 		self::$plugin_basename = plugin_basename( __FILE__ );
 		self::$version = get_file_data( __FILE__ , ['Version' => 'Version'], 'plugin')['Version'];
 		self::$asset_version = $this->get_assets_version_number();
+	}
+
+
+
+	/**
+	 * Load settings manager.
+	 */
+	public function load_settings() {
+		require_once self::$directory_path . 'inc/settings.php';
 	}
 
 
