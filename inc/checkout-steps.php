@@ -4884,18 +4884,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Maybe add the custom styles for the cart header background color.
+	 * Add the custom styles for the cart header background color.
 	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->maybe_add_checkout_header_custom_styles()` instead.
 	 */
-	public function maybe_add_checkout_header_custom_styles( $custom_styles ) {
+	public function add_checkout_header_custom_styles( $custom_styles ) {
 		// Add deprecation notice
-		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_DesignTemplates::instance()->maybe_add_checkout_header_custom_styles() instead.', '3.0.0' );
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_DesignTemplates::instance()->add_checkout_header_custom_styles() instead.', '3.0.0' );
 
-		return FluidCheckout_DesignTemplates::instance()->maybe_add_checkout_header_custom_styles( $custom_styles );
+		return FluidCheckout_DesignTemplates::instance()->add_checkout_header_custom_styles( $custom_styles );
 	}
 
 	/**
-	 * Maybe add the custom styles for the cart page background color.
+	 * Add the custom styles for the cart page background color.
 	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->add_checkout_page_custom_styles()` instead.
 	 */
 	public function add_checkout_page_custom_styles( $custom_styles ) {
@@ -4906,14 +4906,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Maybe add the custom styles for the cart footer background color.
-	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->maybe_add_checkout_footer_custom_styles()` instead.
+	 * Add the custom styles for the cart footer background color.
+	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->add_checkout_footer_custom_styles()` instead.
 	 */
-	public function maybe_add_checkout_footer_custom_styles( $custom_styles ) {
+	public function add_checkout_footer_custom_styles( $custom_styles ) {
 		// Add deprecation notice
-		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_DesignTemplates::instance()->maybe_add_checkout_footer_custom_styles() instead.', '3.0.0' );
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_DesignTemplates::instance()->add_checkout_footer_custom_styles() instead.', '3.0.0' );
 
-		return FluidCheckout_DesignTemplates::instance()->maybe_add_checkout_footer_custom_styles( $custom_styles );
+		return FluidCheckout_DesignTemplates::instance()->add_checkout_footer_custom_styles( $custom_styles );
 	}
 
 
