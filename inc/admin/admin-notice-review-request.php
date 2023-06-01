@@ -33,7 +33,8 @@ class FluidCheckout_AdminNotices_ReviewRequest extends FluidCheckout {
 		if ( ! current_user_can( 'install_plugins' ) ) { return $notices; }
 
 		// Get install date
-		$install_date = FluidCheckout_Settings::instance()->get_option( 'fc_plugin_activation_time' );
+		// Need to get option directly as the Lite plugin might not be activated at this point
+		$install_date = get_option( 'fc_plugin_activation_time' );
 		$past_date = strtotime( '-7 days' );
 
 		// Bail if 7 days have not passed since installation
