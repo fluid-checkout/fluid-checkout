@@ -45,10 +45,10 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 
 				<div class="fc-dashboard-docs">
 					<ul>
-						<li><?php echo wp_kses_post( __( 'Setup layout and design on the <a href="%s">checkout options</a>.', 'fluid-checkout' ) ); ?></li>
-						<li><?php echo wp_kses_post( __( 'Check if there are any <a href="%s">integration options</a> available for other plugins you have installed.', 'fluid-checkout' ) ); ?></li>
-						<li><?php echo wp_kses_post( __( 'Visit <a href="%s">our documentation</a> for more information about Fluid Checkout features.', 'fluid-checkout' ) ); ?></li>
-						<li><?php echo wp_kses_post( __( 'If you ever need help, <a href="%s">open a support ticket</a> on our official support channel.', 'fluid-checkout' ) ); ?></li>
+						<li><?php echo wp_kses_post( sprintf( __( 'Setup layout and design on the <a href="%s">checkout options</a>.', 'fluid-checkout' ), admin_url( 'admin.php?page=wc-settings&tab=fc_checkout&section=checkout' ) ) ); ?></li>
+						<li><?php echo wp_kses_post( sprintf( __( 'Check if there are any <a href="%s">integration options</a> available for other plugins you have installed.', 'fluid-checkout' ), admin_url( 'admin.php?page=wc-settings&tab=fc_checkout&section=integrations' ) ) ); ?></li>
+						<li><?php echo wp_kses_post( sprintf( __( 'Visit <a href="%s" target="_blank">our documentation</a> for more information about Fluid Checkout features.', 'fluid-checkout' ), 'https://fluidcheckout.com/docs/' ) ); ?></li>
+						<li><?php echo wp_kses_post( sprintf( __( 'If you ever need help, <a href="%s" target="_blank">open a support ticket</a> on our official support channel.', 'fluid-checkout' ), 'https://fluidcheckout.com/support/' ) ); ?></li>
 					</ul>
 				</div>
 
