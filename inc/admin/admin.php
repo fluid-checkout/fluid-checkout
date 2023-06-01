@@ -30,8 +30,8 @@ class FluidCheckout_Admin extends FluidCheckout {
 		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_settings_pages' ), 50 );
 
 		// WooCommerce Settings Styles
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles'), 10 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_dashboard_styles'), 10 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ), 10 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_dashboard_styles' ), 10 );
 
 		// Clear cache after saving settings
 		add_action( 'woocommerce_settings_saved', 'wp_cache_flush', 10 );
@@ -61,7 +61,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		$current_screen = get_current_screen();
 
 		// Bail if not on WooCommerce settings page
-		if ( $current_screen->id === 'woocommerce_page_wc-settings' ) { return; }
+		if ( $current_screen->id !== 'woocommerce_page_wc-settings' ) { return; }
 		
 		// Get current tab and section
 		$current_tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'general';
