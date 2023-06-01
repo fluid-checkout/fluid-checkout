@@ -21,7 +21,6 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	public function hooks() {
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
-		add_filter( 'body_class', array( $this, 'add_body_class_dark_mode' ), 10 );
 
 		// CSS variables
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_dark_mode_css_variables' ), 10 );
@@ -35,7 +34,6 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	public function undo_hooks() {
 		// General
 		remove_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
-		remove_filter( 'body_class', array( $this, 'add_body_class_dark_mode' ), 10 );
 
 		// CSS variables
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_dark_mode_css_variables' ), 10 );
@@ -49,22 +47,6 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 * @param array $classes Classes for the body element.
 	 */
 	public function add_body_class( $classes ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
-
-		$add_classes = array(
-			'has-fc-design-template--' . FluidCheckout_Settings::instance()->get_option( 'fc_design_template' ),
-		);
-
-		return array_merge( $classes, $add_classes );
-	}
-
-	/**
-	 * Add page body class for feature detection.
-	 *
-	 * @param array $classes Classes for the body element.
-	 */
-	public function add_body_class_dark_mode( $classes ) {
 		// Bail if not on affected pages.
 		if (
 			! function_exists( 'is_checkout' )
@@ -75,13 +57,22 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 			)
 		) { return $classes; }
 
-		// Bail if dark mode is not enabled
-		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_dark_mode_styles' ) ) { return $classes; }
+		// Add design template class
+		$add_classes = array(
+			'has-fc-design-template--' . FluidCheckout_Settings::instance()->get_option( 'fc_design_template' ),
+		);
 
 		// Add dark mode class
-		$classes[] = 'has-fc-dark-mode';
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_dark_mode_styles' ) ) {
+			$add_classes[] = 'has-fc-dark-mode';
+		}
 
-		return $classes;
+		// Add custom button color class
+		if ( $this->is_button_styles_enabled() ) {
+			$add_classes[] = 'has-fc-button-colors';
+		}
+
+		return array_merge( $classes, $add_classes );
 	}
 
 
@@ -108,6 +99,17 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		return array_keys( $this->get_design_template_options() );
 	}
 
+
+
+	/**
+	 * Check whether custom buttons styles are enabled for the page.
+	 */
+	public function is_button_styles_enabled() {
+		// Bail if button styles not enabled
+		if ( false === apply_filters( 'fc_apply_button_colors_styles', false ) ) { return false; }
+
+		return true;
+	}
 
 
 
@@ -152,16 +154,6 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 * Maybe enqueue inline CSS variables.
 	 */
 	public function maybe_enqueue_dark_mode_css_variables() {
-		// Bail if not on affected pages.
-		if (
-			! function_exists( 'is_checkout' )
-			|| (
-				! is_checkout() // Checkout page
-				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
-				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
-			)
-		) { return; }
-
 		// Bail if dark mode is not enabled
 		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_dark_mode_styles' ) ) { return; }
 
