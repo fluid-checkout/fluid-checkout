@@ -29,7 +29,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_footer_custom_styles' ), 10 );
 
 		// CSS variables
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_dark_mode_css_variables' ), 10 );
+		add_action( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
 	}
 
 
@@ -42,7 +42,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		remove_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
 		// CSS variables
-		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_dark_mode_css_variables' ), 10 );
+		remove_action( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
 	}
 
 
@@ -120,20 +120,54 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 
 	/**
+	 * Get CSS variables styles.
+	 */
+	public function get_css_variables_styles() {
+		$css_variables = apply_filters( 'fc_css_variables', array() );
+
+		// Bail if no CSS variables
+		if ( ! is_array( $css_variables ) || empty( $css_variables ) ) { return ''; }
+		
+		// Transform array into string of CSS variables
+		$css_variables_str = join( ';', array_map( function( $value, $key ) {
+			return esc_attr( $key ) . ':' . esc_attr( $value );
+		}, $css_variables, array_keys( $css_variables ) ) );
+
+		// Define CSS variables styles
+		$css_variables_styles = ':root body {' . $css_variables_str . '}';
+
+		return $css_variables_styles;
+	}
+
+
+
+	/**
 	 * Output custom styles to the checkout page.
 	 */
 	public function output_custom_styles() {
 		// Get styles
 		$custom_styles = apply_filters( 'fc_output_custom_styles', '' );
 
+		// Prepend CSS variables
+		$custom_styles = $this->get_css_variables_styles() . $custom_styles . "\n";
+
 		// Bail if styles are empty
 		if ( empty( $custom_styles ) ) { return; }
-		?>
-		<style id="fc-custom-styles">
-			<?php echo $custom_styles; // XSS ok. ?>
-		</style>
-		<?php
+
+		echo '<style id="fc-custom-styles">' . sanitize_text_field( $custom_styles ) . '</style>';
 	}
+
+	/**
+	 * Maybe output custom styles to the checkout page.
+	 */
+	public function maybe_output_custom_styles() {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		$this->output_custom_styles();
+	}
+
+
 
 	/**
 	 * Add the custom styles for the checkout header background color.
@@ -186,18 +220,6 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 
 	/**
-	 * Maybe output custom styles to the checkout page.
-	 */
-	public function maybe_output_custom_styles() {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
-
-		$this->output_custom_styles();
-	}
-
-
-
-	/**
 	 * Maybe add the custom styles for the checkout header background color.
 	 */
 	public function maybe_add_checkout_header_custom_styles( $custom_styles ) {
@@ -230,50 +252,35 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 
 	/**
-	 * Get CSS variables styles.
+	 * Maybe add CSS variables for dark mode.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
-	public function get_dark_mode_css_variables_styles() {
-		// Define CSS variables
-		$css_variables = "
-			:root body {
-				--fluidcheckout--color--black: #fff;
-				--fluidcheckout--color--darker-grey: #f3f3f3;
-				--fluidcheckout--color--dark-grey: #d8d8d8;
-				--fluidcheckout--color--grey: #7b7575;
-				--fluidcheckout--color--light-grey: #323234;
-				--fluidcheckout--color--lighter-grey: #191b24;
-				--fluidcheckout--color--white: #000;
-
-				--fluidcheckout--color--success: #00cc66;
-				--fluidcheckout--color--error: #ec5b5b;
-				--fluidcheckout--color--alert: #ff781f;
-				--fluidcheckout--color--info: #2184fd;
-
-				--fluidcheckout--shadow-color--darker: rgba( 255, 255, 255, .30 );
-				--fluidcheckout--shadow-color--dark: rgba( 255, 255, 255, .15 );
-				--fluidcheckout--shadow-color--light: rgba( 0, 0, 0, .15 );
-			}
-			";
-
-		return $css_variables;
-	}
-
-	/**
-	 * Enqueue inline CSS variables.
-	 */
-	public function enqueue_dark_mode_css_variables( $handle = 'fc-checkout-steps' ) {
-		// Enqueue inline style
-		wp_add_inline_style( $handle, $this->get_dark_mode_css_variables_styles() );
-	}
-
-	/**
-	 * Maybe enqueue inline CSS variables.
-	 */
-	public function maybe_enqueue_dark_mode_css_variables() {
+	public function maybe_add_css_variables_dark_mode( $css_variables ) {
 		// Bail if dark mode is not enabled
-		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_dark_mode_styles' ) ) { return; }
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_dark_mode_styles' ) ) { return $css_variables; }
 
-		$this->enqueue_dark_mode_css_variables();
+		// Add CSS variables
+		$css_variables_dark_mode = array(
+			'--fluidcheckout--color--black'             => '#fff',
+			'--fluidcheckout--color--darker-grey'       => '#f3f3f3',
+			'--fluidcheckout--color--dark-grey'         => '#d8d8d8',
+			'--fluidcheckout--color--grey'              => '#7b7575',
+			'--fluidcheckout--color--light-grey'        => '#323234',
+			'--fluidcheckout--color--lighter-grey'      => '#191b24',
+			'--fluidcheckout--color--white'             => '#000',
+
+			'--fluidcheckout--color--success'           => '#00cc66',
+			'--fluidcheckout--color--error'             => '#ec5b5b',
+			'--fluidcheckout--color--alert'             => '#ff781f',
+			'--fluidcheckout--color--info'              => '#2184fd',
+
+			'--fluidcheckout--shadow-color--darker'     => 'rgba( 255, 255, 255, .30 )',
+			'--fluidcheckout--shadow-color--dark'       => 'rgba( 255, 255, 255, .15 )',
+			'--fluidcheckout--shadow-color--light'      => 'rgba( 0, 0, 0, .15 )',
+		);
+
+		return array_merge( $css_variables, $css_variables_dark_mode );
 	}
 
 }
