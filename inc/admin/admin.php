@@ -135,7 +135,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * Get HTML for "upgrade to PRO" to be used on settings descriptions.
 	 * 
 	 * @param  bool  $new_line  Whether to add a new line before.
-	 */˝
+	 */
 	public function get_upgrade_pro_html( $new_line = true ) {
 		$html = wp_kses_post( sprintf( __( '<a target="_blank" href="%s">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' ), 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=plugin-settings&mtm_source=lite-plugin' ) );
 		
