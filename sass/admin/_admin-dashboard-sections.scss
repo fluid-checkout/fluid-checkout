@@ -41,3 +41,16 @@ p.submit {
 .fc-dashboard-section__row td {
 	padding: 0;
 }
+
+
+
+.form-table td .fc-dashboard-section-title {
+	margin-bottom: 0;
+}
+
+.form-table td p.fc-dashboard-section__subtitle {
+	margin-bottom: 20px;
+	font-size: 16px;
+	font-weight: 500;
+	color: #666;
+}

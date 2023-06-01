@@ -29,6 +29,17 @@ p.submit {
   padding: 0;
 }
 
+.form-table td .fc-dashboard-section-title {
+  margin-bottom: 0;
+}
+
+.form-table td p.fc-dashboard-section__subtitle {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+}
+
 .fc-dashboard-docs ul {
   list-style: disc;
   padding-left: 20px;
@@ -102,10 +113,8 @@ p.submit {
   margin-bottom: 0;
 }
 
-.fc-addons__item-subtitle {
-  font-size: 15px;
-  font-weight: 500;
-  color: #666;
+.form-table td .fc-addons__item p.fc-dashboard-section__subtitle {
+  margin-bottom: 0;
 }
 
 .fc-addons__item-features-list {

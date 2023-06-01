@@ -48,7 +48,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 							<img class="fc-addons__item-image" src="<?php echo esc_url( FluidCheckout::$directory_url . 'images/admin/addons/fluid-checkout-pro-icon.png' ); ?>" alt="<?php echo esc_attr( __( 'Fluid Checkout PRO', 'fluid-checkout' ) ); ?>">
 							<div class="fc-addons__item-title-section">
 								<h3 class="fc-addons__item-title"><?php echo esc_html( __( 'Fluid Checkout PRO', 'fluid-checkout' ) ); ?></h3>
-								<div class="fc-addons__item-subtitle"><?php echo wp_kses_post( __( 'More features, more sales.', 'fluid-checkout' ) ); ?></div>
+								<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'More features, more sales.', 'fluid-checkout' ) ); ?></p>
 							</div>
 						</div>
 						<div class="fc-addons__item-description">
@@ -78,7 +78,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 							<img class="fc-addons__item-image" src="<?php echo esc_url( FluidCheckout::$directory_url . 'images/admin/addons/fluid-checkout-pro-bundle-icon.png' ); ?>" alt="<?php echo esc_attr( __( 'Fluid Checkout PRO - Bundle', 'fluid-checkout' ) ); ?>">
 							<div class="fc-addons__item-title-section">
 								<h3 class="fc-addons__item-title"><?php echo esc_html( __( 'Fluid Checkout PRO &mdash; Bundle', 'fluid-checkout' ) ); ?></h3>
-								<div class="fc-addons__item-subtitle"><?php echo wp_kses_post( __( 'All PRO features + All add-ons for a discounted price.', 'fluid-checkout' ) ); ?></div>
+								<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'All PRO features + All add-ons for a discounted price.', 'fluid-checkout' ) ); ?></p>
 							</div>
 						</div>
 						<div class="fc-addons__item-description">
@@ -111,7 +111,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			<td colspan="2" class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 				
 				<h3 class="fc-dashboard-section__row-title"><?php echo esc_html( __( 'Add-ons', 'fluid-checkout' ) ); ?></h3>
-				<p><?php echo wp_kses_post( __( 'Enhance your checkout experience with these add-ons.', 'fluid-checkout' ) ); ?></p>
+				<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'Enhance your checkout experience with these add-ons.', 'fluid-checkout' ) ); ?></p>
 				
 				<ul class="fc-addons-list">
 					<?php if ( FluidCheckout::instance()->is_pro_installed() ) : ?>
@@ -122,7 +122,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 								<img class="fc-addons__item-image" src="<?php echo esc_url( FluidCheckout::$directory_url . 'images/admin/addons/fluid-checkout-pro-bundle-icon.png' ); ?>" alt="<?php echo esc_attr( __( 'Fluid Checkout PRO - Bundle', 'fluid-checkout' ) ); ?>">
 								<div class="fc-addons__item-title-section">
 									<h3 class="fc-addons__item-title"><?php echo esc_html( __( 'Fluid Checkout PRO &mdash; Bundle', 'fluid-checkout' ) ); ?></h3>
-									<div class="fc-addons__item-subtitle"><?php echo wp_kses_post( __( 'All PRO features + All add-ons for a discounted price.', 'fluid-checkout' ) ); ?></div>
+									<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'All PRO features + All add-ons for a discounted price.', 'fluid-checkout' ) ); ?></p>
 								</div>
 							</div>
 							<div class="fc-addons__item-description">
@@ -141,7 +141,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 								<img class="fc-addons__item-image" src="<?php echo esc_url( FluidCheckout::$directory_url . 'images/admin/addons/fluid-checkout-pro-icon.png' ); ?>" alt="<?php echo esc_attr( __( 'Fluid Checkout PRO', 'fluid-checkout' ) ); ?>">
 								<div class="fc-addons__item-title-section">
 									<h3 class="fc-addons__item-title"><?php echo esc_html( __( 'Fluid Checkout PRO', 'fluid-checkout' ) ); ?></h3>
-									<div class="fc-addons__item-subtitle"><?php echo wp_kses_post( __( 'More features, more sales.', 'fluid-checkout' ) ); ?></div>
+									<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'More features, more sales.', 'fluid-checkout' ) ); ?></p>
 								</div>
 							</div>
 							<div class="fc-addons__item-description">
@@ -151,11 +151,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 								<?php if ( FluidCheckout::instance()->is_pro_activated() ) : ?>
 									<a href="javascript:void(0);" class="button button--activated disabled"><?php echo esc_html( __( 'Activated', 'fluid-checkout' ) ); ?></a>
 								<?php else : ?>
-									<?php
-									$current_url = esc_url( add_query_arg( $_GET, admin_url( 'admin.php' ) ) );
-									$activate_url = wp_nonce_url( 'plugins.php?s=fluid%20checkout&plugin_status=all&action=activate&plugin=' . urlencode( 'fluid-checkout-pro/fluid-checkout-pro.php' ) . '&redirect=' . urlencode( $current_url ), 'activate-plugin_fluid-checkout-pro/fluid-checkout-pro.php' );
-									?>
-									<a href="<?php echo esc_url( $activate_url ); ?>" class="button"><?php echo esc_html( __( 'Installed &mdash; Activate', 'fluid-checkout' ) ); ?></a>
+									<a href="<?php echo esc_url( add_query_arg( array( 'fc_action' => 'activate_plugin', 'plugin' => 'fluid-checkout-pro/fluid-checkout-pro.php', '_wpnonce' => wp_create_nonce( 'fc-activate-plugin' ) ) ) ); ?>" class="button"><?php echo esc_html( __( 'Installed &mdash; Activate', 'fluid-checkout' ) ); ?></a>
 								<?php endif; ?>
 							</div>
 						</li>
@@ -166,7 +162,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 							<img class="fc-addons__item-image" src="<?php echo esc_url( FluidCheckout::$directory_url . 'images/admin/addons/fc-google-address-autocomplete-icon.png' ); ?>" alt="<?php echo esc_attr( __( 'Google Address Autocomplete', 'fluid-checkout' ) ); ?>">
 							<div class="fc-addons__item-title-section">
 								<h3 class="fc-addons__item-title"><?php echo esc_html( __( 'Google Address Autocomplete', 'fluid-checkout' ) ); ?></h3>
-								<div class="fc-addons__item-subtitle"><?php echo wp_kses_post( __( 'Up to 40% less checkout fields to fill in.', 'fluid-checkout' ) ); ?></div>
+								<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'Up to 40% less checkout fields to fill in.', 'fluid-checkout' ) ); ?></p>
 							</div>
 						</div>
 						<div class="fc-addons__item-description">
@@ -176,11 +172,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 							<?php if ( FluidCheckout::instance()->is_plugin_activated( 'fc-google-address-autocomplete/fc-google-address-autocomplete.php' ) ) : ?>
 								<a href="javascript:void(0);" class="button button--activated disabled"><?php echo esc_html( __( 'Activated', 'fluid-checkout' ) ); ?></a>
 							<?php elseif ( FluidCheckout::instance()->is_plugin_installed( 'fc-google-address-autocomplete/fc-google-address-autocomplete.php' ) ) : ?>
-								<?php
-								$current_url = esc_url( add_query_arg( $_GET, admin_url( 'admin.php' ) ) );
-								$activate_url = wp_nonce_url( 'plugins.php?s=fluid%20checkout&plugin_status=all&action=activate&plugin=' . urlencode( 'fc-google-address-autocomplete/fc-google-address-autocomplete.php' ) . '&redirect=' . urlencode( $current_url ), 'activate-plugin_fc-google-address-autocomplete/fc-google-address-autocomplete.php' );
-								?>
-								<a href="<?php echo esc_url( $activate_url ); ?>" class="button"><?php echo esc_html( __( 'Installed &mdash; Activate', 'fluid-checkout' ) ); ?></a>
+								<a href="<?php echo esc_url( add_query_arg( array( 'fc_action' => 'activate_plugin', 'plugin' => 'fc-google-address-autocomplete/fc-google-address-autocomplete.php', '_wpnonce' => wp_create_nonce( 'fc-activate-plugin' ) ) ) ); ?>" class="button"><?php echo esc_html( __( 'Installed &mdash; Activate', 'fluid-checkout' ) ); ?></a>
 							<?php else : ?>
 								<a href="<?php echo esc_url( 'https://fluidcheckout.com/fc-google-address-autocomplete/?mtm_campaign=addons&mtm_kwd=fc-gaa&mtm_source=lite-plugin' ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( __( 'Get this add-on &mdash; 29 EUR', 'fluid-checkout' ) ); ?></a>
 							<?php endif; ?>
@@ -192,7 +184,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 							<img class="fc-addons__item-image" src="<?php echo esc_url( FluidCheckout::$directory_url . 'images/admin/addons/fc-address-book-icon.png' ); ?>" alt="<?php echo esc_attr( __( 'Address Book', 'fluid-checkout' ) ); ?>">
 							<div class="fc-addons__item-title-section">
 								<h3 class="fc-addons__item-title"><?php echo esc_html( __( 'Address book', 'fluid-checkout' ) ); ?></h3>
-								<div class="fc-addons__item-subtitle"><?php echo wp_kses_post( __( 'Multiple saved addresses for shipping and billing.', 'fluid-checkout' ) ); ?></div>
+								<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'Multiple saved addresses for shipping and billing.', 'fluid-checkout' ) ); ?></p>
 							</div>
 						</div>
 						<div class="fc-addons__item-description">
@@ -202,11 +194,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 							<?php if ( FluidCheckout::instance()->is_plugin_activated( 'fc-address-book/fc-address-book.php' ) ) : ?>
 								<a href="javascript:void(0);" class="button button--activated disabled"><?php echo esc_html( __( 'Activated', 'fluid-checkout' ) ); ?></a>
 							<?php elseif ( FluidCheckout::instance()->is_plugin_installed( 'fc-address-book/fc-address-book.php' ) ) : ?>
-								<?php
-								$current_url = esc_url( add_query_arg( $_GET, admin_url( 'admin.php' ) ) );
-								$activate_url = wp_nonce_url( 'plugins.php?s=fluid%20checkout&plugin_status=all&action=activate&plugin=' . urlencode( 'fc-address-book/fc-address-book.php' ) . '&redirect=' . urlencode( $current_url ), 'activate-plugin_fc-address-book/fc-address-book.php' );
-								?>
-								<a href="<?php echo esc_url( $activate_url ); ?>" class="button"><?php echo esc_html( __( 'Installed &mdash; Activate', 'fluid-checkout' ) ); ?></a>
+								<a href="<?php echo esc_url( add_query_arg( array( 'fc_action' => 'activate_plugin', 'plugin' => 'fc-address-book/fc-address-book.php', '_wpnonce' => wp_create_nonce( 'fc-activate-plugin' ) ) ) ); ?>" class="button"><?php echo esc_html( __( 'Installed &mdash; Activate', 'fluid-checkout' ) ); ?></a>
 							<?php else : ?>
 								<a href="<?php echo esc_url( 'https://fluidcheckout.com/fc-address-book/?mtm_campaign=addons&mtm_kwd=fc-ab&mtm_source=lite-plugin' ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( __( 'Get this add-on &mdash; 59 EUR', 'fluid-checkout' ) ); ?></a>
 							<?php endif; ?>

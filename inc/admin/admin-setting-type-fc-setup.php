@@ -39,7 +39,8 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 			
 				<img class="fc-dashboard__logo" src="<?php echo esc_url( FluidCheckout::$directory_url . 'images/admin/fluid-checkout-logo.png' ); ?>" alt="<?php echo esc_attr( __( 'Fluid Checkout PRO', 'fluid-checkout' ) ); ?>">
 				<h3 class="fc-dashboard-section-title"><?php echo esc_html( __( 'Setup & Documentation', 'fluid-checkout' ) ); ?></h3>
-				<p><?php echo wp_kses_post( __( 'Great! Your checkout page is now running on Fluid Checkout.', 'fluid-checkout' ) ); ?></p>
+				<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'Great! Your checkout page is now running on Fluid Checkout.', 'fluid-checkout' ) ); ?></p>
+				
 				<p><?php echo wp_kses_post( __( 'Here are a few resources for you to get started:', 'fluid-checkout' ) ); ?></p>
 
 				<div class="fc-dashboard-docs">

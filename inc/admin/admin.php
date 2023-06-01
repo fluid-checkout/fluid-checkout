@@ -23,6 +23,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		add_filter( 'plugin_action_links_' . self::$plugin_basename, array( $this, 'add_plugin_settings_link' ), 10 );
 		
 		// Setting types
+		add_action( 'init', array( $this, 'load_dashboard' ), 10 );
 		add_action( 'init', array( $this, 'load_setting_types' ), 10 );
 
 		// WooCommerce Settings
@@ -65,14 +66,18 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 
 	/**
-	 * Add new WooCommerce settings pages/tabs.
+	 * Load dashboard section types.
 	 */
-	public function load_setting_types() {
-		// Dashboard sections
+	public function load_dashboard() {
+		include_once self::$directory_path . 'inc/admin/admin-dashboard-actions.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-setup.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-addons.php';
+	}
 
-		// Setting types
+	/**
+	 * Load custom setting field types.
+	 */
+	public function load_setting_types() {
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-paragraph.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-select.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-textarea.php';
