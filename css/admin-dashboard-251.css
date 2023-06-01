@@ -2,6 +2,11 @@ p.submit {
   display: none;
 }
 
+.fc-dashboard__logo {
+  width: 200px;
+  height: auto;
+}
+
 .fc-dashboard-section__row [class*=fc-] {
   box-sizing: border-box;
 }
@@ -18,6 +23,10 @@ p.submit {
 
 .fc-dashboard-section__row-title {
   margin-top: 0;
+}
+
+.fc-dashboard-section__row td {
+  padding: 0;
 }
 
 .fc-dashboard-docs ul {
