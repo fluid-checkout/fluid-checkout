@@ -81,10 +81,10 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   padding-left: calc( var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px );
   padding-right: calc( var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 80px );
   width: 100%;
+  border: var(--fluidcheckout--option-box--label-border-style, solid) var(--fluidcheckout--option-box--label-border-width, 1px) var(--fluidcheckout--option-box--label-border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-bottom: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   background-color: var(--fluidcheckout--option-box--background-color, var(--fluidcheckout--color--white, #fff));
   font-weight: normal;
   line-height: 24px;
@@ -120,13 +120,14 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  background-color: var(--fluidcheckout--option-box--checked-background-color, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
-  color: var(--fluidcheckout--option-box--cheched-color, var(--fluidcheckout--color--darker-grey, #1E212B));
+  border-color: var(--fluidcheckout--option-box--label-border-color--checked, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
+  background-color: var(--fluidcheckout--option-box--background-color--checked, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
+  color: var(--fluidcheckout--option-box--label-color--checked, var(--fluidcheckout--color--darker-grey, #1E212B));
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method] + label:before {
   box-sizing: border-box;
-  content: "";
+  content: "" !important;
   position: absolute;
   top: var(--fluidcheckout--option-box--spacing--vertical, 10px);
   left: 10px;
@@ -135,7 +136,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   margin: 0;
   width: 24px;
   height: 24px;
-  border: solid 2px var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+  border: solid 2px var(--fluidcheckout--option-box--radio-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   border-radius: 100%;
   background-color: transparent;
   box-shadow: none;
@@ -149,22 +150,17 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method]:checked + label:before {
-  content: "";
-  border-color: var(--fluidcheckout--color--success, #007a3d) !important;
-  background-color: var(--fluidcheckout--color--success, #007a3d) !important;
+  border-color: var(--fluidcheckout--option-box--radio-color--checked, var(--fluidcheckout--color--success, #007a3d)) !important;
+  background-color: var(--fluidcheckout--option-box--radio-color--checked, var(--fluidcheckout--color--success, #007a3d)) !important;
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > label:hover {
-  background-color: var(--fluidcheckout--option-box--checked-background-color, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
+  background-color: var(--fluidcheckout--option-box--background-color--hover, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method] + label:hover:before,
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method] + label:focus:before {
   border-color: var(--fluidcheckout--option-box--border-color--hover, var(--fluidcheckout--border-color--dark, var(--fluidcheckout--color--grey, #7b7575)));
-}
-
-body.woocommerce-add-payment-method .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[name=payment_method]:checked + label:before {
-  content: "";
 }
 
 .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[name=payment_method] + label:after {
@@ -205,7 +201,7 @@ body.woocommerce-add-payment-method .fc-wrapper #payment ul.payment_methods > .w
 }
 
 .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[name=payment_method]:checked + label:after {
-  color: var(--fluidcheckout--color--white, #fff);
+  color: var(--fluidcheckout--option-box--radio-icon-color--checked, var(--fluidcheckout--color--white, #fff));
 }
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label .payment-method__label-text {
@@ -230,7 +226,7 @@ body.woocommerce-add-payment-method .fc-wrapper #payment ul.payment_methods > .w
 @media (min-width: 750px) {
   .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box,
   #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
-    padding: 20px 24pxvar(--fluidcheckout--option-box--spacing--horizontal, 10px);
+    padding: 20px calc( 24px + var(--fluidcheckout--option-box--spacing--horizontal, 10px) );
   }
 }
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box textarea,

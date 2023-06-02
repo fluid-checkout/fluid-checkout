@@ -71,10 +71,10 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	padding-#{ $alignment-left }: calc( #{ $option-box-padding-horizontal } + #{ $option-box-radio-size } + #{ $global-spacing-extra-small } );
 	padding-#{ $alignment-right }: calc( #{ $option-box-padding-horizontal } + #{ $shipping-method-price-width } );
 	width: 100%;
+	border: $option-box-label-border;
 	border-top: 0;
 	border-left: 0;
 	border-right: 0;
-	border-bottom: $option-box-border;
 	background-color: $option-box-background-color;
 	font-weight: $payment-method-font-weight;
 	line-height: $option-box-radio-size;
@@ -111,15 +111,16 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	border-top: 0;
 	border-left: 0;
 	border-right: 0;
-	background-color: $option-box-checked-background-color;
-	color: $option-box-checked-color;
+	border-color: $option-box-label-border-color--checked;
+	background-color: $option-box-background-color--checked;
+	color: $option-box-label-color--checked;
 }
 
 
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name="payment_method"] + label:before {
 	box-sizing: border-box;
-	content: '';
+	content: '' !important; // Needed to override theme styles
 	position: absolute;
 	top: $option-box-padding-vertical;
 	#{ $alignment-left }: $global-spacing-extra-small;
@@ -141,21 +142,16 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name="payment_method"]:checked + label:before {
-	content: '';
-	border-color: $success-color !important; // Needed to override inline styles added by some themes
-	background-color: $success-color !important; // Needed to override inline styles added by some themes
+	border-color: $option-box-radio-color--checked !important; // Needed to override inline styles added by some themes
+	background-color: $option-box-radio-color--checked !important; // Needed to override inline styles added by some themes
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > label:hover {
-	background-color: $option-box-checked-background-color;
+	background-color: $option-box-background-color--hover;
 }
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name="payment_method"] + label:hover:before,
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name="payment_method"] + label:focus:before {
 	border-color: $option-box-border-color--hover;
-}
-
-body#{ $_body-page-selector } .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[name="payment_method"]:checked + label:before {
-	content: '';
 }
 
 
@@ -175,7 +171,7 @@ body#{ $_body-page-selector } .fc-wrapper #payment ul.payment_methods > .wc_paym
 	transform: none;
 }
 .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[name="payment_method"]:checked + label:after {
-	color: $white;
+	color: $option-box-radio-icon-color--checked;
 }
 
 
@@ -205,7 +201,9 @@ body#{ $_body-page-selector } .fc-wrapper #payment ul.payment_methods > .wc_paym
 	border-bottom: $option-box-border;
 	background-color: $lighter-grey;
 
-	@media (#{$bp-larger-than-tablet}) { padding: $global-spacing-small #{ $option-box-radio-size + $option-box-padding-horizontal }; }
+	@media (#{$bp-larger-than-tablet}) {
+		padding: $global-spacing-small calc( #{ $option-box-radio-size } +  #{ $option-box-padding-horizontal } );
+	}
 
 	// Make fields background white
 	textarea,
