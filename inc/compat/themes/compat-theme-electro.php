@@ -22,11 +22,11 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
-		// General
-		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
-
 		// CSS variables
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_css_variables' ), 20 );
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
+		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 	}
 
 
@@ -38,30 +38,6 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_shipping', 'electro_shipping_details_header', 0 );
 		remove_action( 'woocommerce_checkout_before_order_review', 'electro_wrap_order_review', 0 );
 		remove_action( 'woocommerce_checkout_after_order_review', 'electro_wrap_order_review_close', 0 );
-	}
-
-
-
-	/**
-	 * Add page body class for feature detection.
-	 *
-	 * @param array $classes Classes for the body element.
-	 */
-	public function add_body_class( $classes ) {
-		// Bail if not on affected pages.
-		if (
-			! function_exists( 'is_checkout' )
-			|| (
-				! is_checkout() // Checkout page
-				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
-				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
-			)
-		) { return $classes; }
-
-		// Add custom button color class
-		$classes[] = 'has-fc-button-colors';
-
-		return $classes;
 	}
 
 
@@ -194,63 +170,35 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 
 
 	/**
-	 * Get CSS variables styles.
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
-	public function get_css_variables_styles() {
+	public function add_css_variables( $css_variables ) {
 		// Get the color palette
 		$colors = $this->get_color_palette();
 
-		// Define CSS variables
-		$css_variables = "
-			:root {
-				--fluidcheckout--button--primary--border-color: {$colors['primary-border-color']};
-				--fluidcheckout--button--primary--background-color: {$colors['primary-background-color']};
-				--fluidcheckout--button--primary--text-color: {$colors['primary-text-color']};
-				--fluidcheckout--button--primary--border-color--hover: {$colors['primary-border-color--hover']};
-				--fluidcheckout--button--primary--background-color--hover: {$colors['primary-background-color--hover']};
-				--fluidcheckout--button--primary--text-color--hover: {$colors['primary-text-color--hover']};
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				'--fluidcheckout--button--primary--border-color' => $colors['primary-border-color'],
+				'--fluidcheckout--button--primary--background-color' => $colors['primary-background-color'],
+				'--fluidcheckout--button--primary--text-color' => $colors['primary-text-color'],
+				'--fluidcheckout--button--primary--border-color--hover' => $colors['primary-border-color--hover'],
+				'--fluidcheckout--button--primary--background-color--hover' => $colors['primary-background-color--hover'],
+				'--fluidcheckout--button--primary--text-color--hover' => $colors['primary-text-color--hover'],
 
-				--fluidcheckout--button--secondary--border-color: {$colors['secondary-border-color']};
-				--fluidcheckout--button--secondary--background-color: {$colors['secondary-background-color']};
-				--fluidcheckout--button--secondary--text-color: {$colors['secondary-text-color']};
-				--fluidcheckout--button--secondary--border-color--hover: {$colors['secondary-border-color--hover']};
-				--fluidcheckout--button--secondary--background-color--hover: {$colors['secondary-background-color--hover']};
-				--fluidcheckout--button--secondary--text-color--hover: {$colors['secondary-text-color--hover']};
-			}
-			";
+				'--fluidcheckout--button--secondary--border-color' => $colors['secondary-border-color'],
+				'--fluidcheckout--button--secondary--background-color' => $colors['secondary-background-color'],
+				'--fluidcheckout--button--secondary--text-color' => $colors['secondary-text-color'],
+				'--fluidcheckout--button--secondary--border-color--hover' => $colors['secondary-border-color--hover'],
+				'--fluidcheckout--button--secondary--background-color--hover' => $colors['secondary-background-color--hover'],
+				'--fluidcheckout--button--secondary--text-color--hover' => $colors['secondary-text-color--hover'],
+			),
+			':root body.electro-dark' => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
+		);
 
-		// Get dark mode CSS variables and customize it for the theme
-		$dark_mode_css_variables = FluidCheckout_DesignTemplates::instance()->get_dark_mode_css_variables_styles();
-		$dark_mode_css_variables = str_replace( ':root body {', ':root body.electro-dark {', $dark_mode_css_variables );
-
-		return $css_variables . $dark_mode_css_variables;
-	}
-
-
-
-	/**
-	 * Enqueue inline CSS variables.
-	 */
-	public function enqueue_css_variables() {
-		// Enqueue inline style
-		wp_add_inline_style( 'electro-style', $this->get_css_variables_styles() );
-	}
-
-	/**
-	 * Maybe enqueue inline CSS variables.
-	 */
-	public function maybe_enqueue_css_variables() {
-		// Bail if not on affected pages.
-		if (
-			! function_exists( 'is_checkout' )
-			|| (
-				! is_checkout() // Checkout page
-				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
-				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
-			)
-		) { return; }
-
-		$this->enqueue_css_variables();
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }
