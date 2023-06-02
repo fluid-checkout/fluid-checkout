@@ -57,7 +57,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		if (
 			! function_exists( 'is_checkout' )
 			|| (
-				! is_checkout() // Checkout page
+				( ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) // Checkout page
 				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
 				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
 			)
@@ -195,8 +195,15 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 * Maybe output custom styles to the checkout page.
 	 */
 	public function maybe_output_custom_styles() {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+		// Bail if not on affected pages.
+		if (
+			! function_exists( 'is_checkout' )
+			|| (
+				( ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) // Checkout page
+				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
+				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
+			)
+		) { return; }
 
 		$this->output_custom_styles();
 	}
