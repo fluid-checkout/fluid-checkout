@@ -123,18 +123,28 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 * Get CSS variables styles.
 	 */
 	public function get_css_variables_styles() {
-		$css_variables = apply_filters( 'fc_css_variables', array() );
+		// Get CSS variables
+		$css_variables = apply_filters( 'fc_css_variables', array( ':root' => array() ) );
 
-		// Bail if no CSS variables
+		// Bail if no scope for CSS variables
 		if ( ! is_array( $css_variables ) || empty( $css_variables ) ) { return ''; }
-		
-		// Transform array into string of CSS variables
-		$css_variables_str = join( ';', array_map( function( $value, $key ) {
-			return esc_attr( $key ) . ':' . esc_attr( $value );
-		}, $css_variables, array_keys( $css_variables ) ) );
 
-		// Define CSS variables styles
-		$css_variables_styles = ':root body {' . $css_variables_str . '}';
+		// Define return styles
+		$css_variables_styles = '';
+
+		// Iterate through CSS variables scopes
+		foreach ( $css_variables as $scope => $properties ) {
+			// Maybe skip empty scope
+			if ( empty( $properties ) ) { continue; }
+		
+			// Transform array into string of CSS variables
+			$css_variables_str = join( ';', array_map( function( $value, $key ) {
+				return esc_attr( $key ) . ':' . esc_attr( $value );
+			}, $properties, array_keys( $properties ) ) );
+
+			// Define CSS variables styles
+			$css_variables_styles = $scope . ' {' . $css_variables_str . '}';
+		}
 
 		return $css_variables_styles;
 	}
@@ -262,22 +272,24 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 		// Add CSS variables
 		$css_variables_dark_mode = array(
-			'--fluidcheckout--color--black'             => '#fff',
-			'--fluidcheckout--color--darker-grey'       => '#f3f3f3',
-			'--fluidcheckout--color--dark-grey'         => '#d8d8d8',
-			'--fluidcheckout--color--grey'              => '#7b7575',
-			'--fluidcheckout--color--light-grey'        => '#323234',
-			'--fluidcheckout--color--lighter-grey'      => '#191b24',
-			'--fluidcheckout--color--white'             => '#000',
+			':root' => array(
+				'--fluidcheckout--color--black'             => '#fff',
+				'--fluidcheckout--color--darker-grey'       => '#f3f3f3',
+				'--fluidcheckout--color--dark-grey'         => '#d8d8d8',
+				'--fluidcheckout--color--grey'              => '#7b7575',
+				'--fluidcheckout--color--light-grey'        => '#323234',
+				'--fluidcheckout--color--lighter-grey'      => '#191b24',
+				'--fluidcheckout--color--white'             => '#000',
 
-			'--fluidcheckout--color--success'           => '#00cc66',
-			'--fluidcheckout--color--error'             => '#ec5b5b',
-			'--fluidcheckout--color--alert'             => '#ff781f',
-			'--fluidcheckout--color--info'              => '#2184fd',
+				'--fluidcheckout--color--success'           => '#00cc66',
+				'--fluidcheckout--color--error'             => '#ec5b5b',
+				'--fluidcheckout--color--alert'             => '#ff781f',
+				'--fluidcheckout--color--info'              => '#2184fd',
 
-			'--fluidcheckout--shadow-color--darker'     => 'rgba( 255, 255, 255, .30 )',
-			'--fluidcheckout--shadow-color--dark'       => 'rgba( 255, 255, 255, .15 )',
-			'--fluidcheckout--shadow-color--light'      => 'rgba( 0, 0, 0, .15 )',
+				'--fluidcheckout--shadow-color--darker'     => 'rgba( 255, 255, 255, .30 )',
+				'--fluidcheckout--shadow-color--dark'       => 'rgba( 255, 255, 255, .15 )',
+				'--fluidcheckout--shadow-color--light'      => 'rgba( 0, 0, 0, .15 )',
+			)
 		);
 
 		return array_merge( $css_variables, $css_variables_dark_mode );
