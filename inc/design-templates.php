@@ -295,7 +295,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 			'--fluidcheckout--color--dark-grey'         => '#d8d8d8',
 			'--fluidcheckout--color--grey'              => '#7b7575',
 			'--fluidcheckout--color--light-grey'        => '#323234',
-			'--fluidcheckout--color--lighter-grey'      => '#191b24',
+			'--fluidcheckout--color--lighter-grey'      => '#28282a',
 			'--fluidcheckout--color--white'             => '#000',
 
 			'--fluidcheckout--color--success'           => '#00cc66',
