@@ -134,6 +134,24 @@ gulp.task( 'build-css', gulp.series( 'update-ver', 'clean-css', function( done )
 		.pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest('./css/admin/')); // save .min.css
 	}
+
+	// DESIGN TEMPLATES STYLES
+	if ( _gulpSettings.sassSources.designTemplates ) {
+		gulp.src( _gulpSettings.sassSources.designTemplates )
+		.pipe(plumber())
+		// No source maps
+		.pipe(sassImportJson({
+			isScss: true
+		}))
+		.pipe(sass())
+		.pipe(autoprefixer({ cascade: false }))
+		.pipe(rename({suffix: _assetsVersion}))
+		.pipe(gulp.dest('./css/design-templates/')) // save .css
+		.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false}, reduceIdents: {keyframes: false} } ) )
+		.pipe(rename( { suffix: '.min' } ) )
+		.pipe(sourcemaps.write('maps'))
+		.pipe(gulp.dest('./css/design-templates/')); // save .min.css
+	}
 	
 	// PLUGIN COMPATIBILITY STYLES
 	if ( _gulpSettings.sassSources.pluginCompat ) {
@@ -216,6 +234,25 @@ gulp.task( 'build-css-dev', gulp.series( 'update-ver', 'clean-css', function( do
 		.pipe(rename( { suffix: '.min' } ) ) // Files are not minified on dev build but file name needs the .min sufix
 		.pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest('./css/admin/')) // save .min.css
+		.pipe(browserSync.stream());
+	}
+
+	// DESIGN TEMPLATES STYLES
+	if ( _gulpSettings.sassSources.designTemplates ) {
+		gulp.src( _gulpSettings.sassSources.designTemplates )
+		.pipe(plumber())
+		.pipe(sourcemaps.init())
+		.pipe(sassImportJson({
+			isScss: true
+		}))
+		.pipe(sass())
+		.pipe(autoprefixer({ cascade: false }))
+		.pipe(rename({suffix: _assetsVersion}))
+		.pipe(gulp.dest('./css/design-templates/')) // save .css
+		// No css nano
+		.pipe(rename( { suffix: '.min' } ) ) // Files are not minified on dev build but file name needs the .min sufix
+		.pipe(sourcemaps.write('maps'))
+		.pipe(gulp.dest('./css/design-templates/')) // save .min.css
 		.pipe(browserSync.stream());
 	}
 
