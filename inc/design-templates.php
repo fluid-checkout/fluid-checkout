@@ -20,7 +20,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function hooks() {
 		// General
-		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
+		add_filter( 'body_class', array( $this, 'maybe_add_body_class' ), 10 );
 
 		// Custom styles
 		add_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
@@ -39,7 +39,13 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function undo_hooks() {
 		// General
-		remove_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
+		remove_filter( 'body_class', array( $this, 'maybe_add_body_class' ), 10 );
+
+		// Custom styles
+		remove_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
+		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_header_custom_styles' ), 10 );
+		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
+		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_footer_custom_styles' ), 10 );
 
 		// CSS variables
 		remove_action( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
@@ -53,16 +59,6 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 * @param array $classes Classes for the body element.
 	 */
 	public function add_body_class( $classes ) {
-		// Bail if not on affected pages.
-		if (
-			! function_exists( 'is_checkout' )
-			|| (
-				( ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) // Checkout page
-				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
-				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
-			)
-		) { return $classes; }
-
 		// Add design template class
 		$add_classes = array(
 			'has-fc-design-template--' . FluidCheckout_Settings::instance()->get_option( 'fc_design_template' ),
@@ -79,6 +75,25 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		}
 
 		return array_merge( $classes, $add_classes );
+	}
+
+	/**
+	 * Add page body class for feature detection.
+	 *
+	 * @param array $classes Classes for the body element.
+	 */
+	public function maybe_add_body_class( $classes ) {
+		// Bail if not on affected pages.
+		if (
+			! function_exists( 'is_checkout' )
+			|| (
+				( ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) // Checkout page
+				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
+				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
+			)
+		) { return $classes; }
+
+		return $this->add_body_class( $classes );
 	}
 
 
