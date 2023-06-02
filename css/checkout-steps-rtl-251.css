@@ -799,7 +799,7 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
   line-height: 1.6;
 }
 
-.woocommerce ul#shipping_method li.shipping-method__option:first-child {
+.woocommerce ul#shipping_method li.shipping-method__option:first-of-type {
   margin-top: 0;
 }
 
@@ -975,8 +975,8 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   line-height: 1.6;
 }
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method:first-child,
-#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:first-child {
+.fc-wrapper #payment .payment_methods > .wc_payment_method:first-of-type,
+#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:first-of-type {
   margin-top: 0 !important;
 }
 

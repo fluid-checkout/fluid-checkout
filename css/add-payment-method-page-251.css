@@ -56,8 +56,8 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   line-height: 1.6;
 }
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method:first-child,
-#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:first-child {
+.fc-wrapper #payment .payment_methods > .wc_payment_method:first-of-type,
+#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:first-of-type {
   margin-top: 0 !important;
 }
 
