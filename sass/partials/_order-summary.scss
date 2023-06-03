@@ -319,6 +319,10 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 // With admin bar
 .admin-bar .fc-wrapper .fc-checkout-order-review[data-flyout].is-activated.is-open {
 	padding: calc( #{ $checkout-header-height } + 46px ) 0 0;
+
+	@media (min-width: 783px) {
+		padding: calc( #{ $checkout-header-height } + 32px ) 0 0;
+	}
 }
 
 
@@ -348,19 +352,24 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 		border-radius: $checkout-substep-border-radius;
 		box-shadow: $order-summary-box-shadow--large-screen;
 	}
-
-	&:focus {
-		outline: $focus-outline-field;
-		outline-offset: $focus-outline-offset-field;
-	}
 }
 
+.fc-wrapper .fc-checkout-order-review[data-flyout].is-open {
+	@media (#{$bp-smaller-than-desktop}) {
+		background-color: $order-summary-background-color--popup;
+	}
+}
 .fc-wrapper .fc-checkout-order-review[data-flyout].is-open .fc-checkout-order-review__inner {
 	padding-bottom: $global-spacing-large;
 	width: 100%;
 	height: 100%;
 	margin: 0;
 	overflow: auto;
+
+	@media (#{$bp-smaller-than-desktop}) {
+		border: 0;
+		border-radius: 0;
+	}
 }
 
 

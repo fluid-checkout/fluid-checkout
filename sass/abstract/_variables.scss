@@ -469,6 +469,7 @@ $order-summary-border-radius:                    $checkout-substep-border-radius
 $order-summary-box-shadow:                       $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--order-summary--shadow-color, transparent ) !default;
 $order-summary-box-shadow--large-screen:         $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--order-summary--shadow-color--large-screen, transparent ) !default;
 $order-summary-background-color:                 var( --fluidcheckout--order-summary--background-color, $white ) !default;
+$order-summary-background-color--popup:          var( --fluidcheckout--order-summary--background-color--popup, $white ) !default;
 
 $order-summary-container-margin:                 0 !default;
 $order-summary-container-padding:                0 !default;
