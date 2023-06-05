@@ -126,7 +126,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' => 'yes',
 			'fc_compat_theme_impreza_header_spacing'                        => null,
 			'woocommerce_enable_guest_checkout'                             => 'yes',
-			'woocommerce_tax_total_display'                                 => 'itemized',
 			'fc_compat_theme_woodmart_output_checkout_steps_section'        => 'no',
 
 			// Deprecated settings.
