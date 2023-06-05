@@ -92,8 +92,8 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	 * @return bool
 	 */
 	public function is_dismissed( $name ) {
-		// Needs to pass default value as these settings are set dynamically.
-		return (bool) FluidCheckout_Settings::instance()->get_option( self::$plugin_prefix . '_dismissed_notice_' . $name, false );
+		// Need to get option directly as the Lite plugin might not be activated at this point
+		return (bool) get_option( self::$plugin_prefix . '_dismissed_notice_' . $name, false );
 	}
 
 
