@@ -609,7 +609,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_place_order_position() {
 		// Get place order position option
 		$place_order_position = FluidCheckout_Settings::instance()->get_option( 'fc_checkout_place_order_position', false ); // Pass in expected default value as `false` to detect if the option is not saved to the database yet.
-		
+
 		// Maybe handle deprecated option `fc_enable_checkout_place_order_sidebar`
 		if ( false === $place_order_position && 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_place_order_sidebar' ) ) {
 			$place_order_position = 'both_payment_and_order_summary';
