@@ -50,7 +50,7 @@ defined( 'ABSPATH' ) || exit;
 		</div>
 
 		<div class="fc-contact-login__separator">
-			<?php if ( 'yes' === get_option( 'woocommerce_enable_guest_checkout' ) ) : ?>
+			<?php if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_guest_checkout' ) ) : ?>
 				<span class="fc-contact-login__separator-text"><?php echo esc_html( apply_filters( 'fc_checkout_login_separator_text', _x( 'Or continue as a guest', 'Log in separator label at for when guest checkout is disabled', 'fluid-checkout' ) ) ); ?></span>
 			<?php else: ?>
 				<span class="fc-contact-login__separator-text"><?php echo esc_html( apply_filters( 'fc_checkout_login_separator_text', _x( 'Or continue below', 'Log in separator label at for when guest checkout is disabled', 'fluid-checkout' ) ) ); ?></span>

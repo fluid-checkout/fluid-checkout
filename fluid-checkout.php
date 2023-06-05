@@ -5,7 +5,7 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 2.5.1-beta-1
+Version: 2.5.1
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
@@ -103,6 +103,7 @@ class FluidCheckout {
 		$this->register_features();
 
 		// Run hooks initialization after all plugins have been loaded
+		add_action( 'plugins_loaded', array( $this, 'load_settings' ), 10 );
 		add_action( 'plugins_loaded', array( $this, 'hooks' ), 10 );
 	}
 
@@ -119,6 +120,15 @@ class FluidCheckout {
 		self::$plugin_basename = plugin_basename( __FILE__ );
 		self::$version = get_file_data( __FILE__ , ['Version' => 'Version'], 'plugin')['Version'];
 		self::$asset_version = $this->get_assets_version_number();
+	}
+
+
+
+	/**
+	 * Load settings manager.
+	 */
+	public function load_settings() {
+		require_once self::$directory_path . 'inc/settings.php';
 	}
 
 
@@ -301,16 +311,17 @@ class FluidCheckout {
 	 */
 	private function register_features() {
 		self::$features = array(
+			'FluidCheckout_DesignTemplates'                => array( 'file' => self::$directory_path . 'inc/design-templates.php' ),
 			'FluidCheckout_CheckoutPageTemplate'           => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php' ),
 			'FluidCheckout_Steps'                          => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
-			'FluidCheckout_CouponCodes'                    => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ), // Class needs to be loaded for PRO version, checks that the feature is enabled happens inside the class.
+			'FluidCheckout_CouponCodes'                    => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ),
 			'FluidCheckout_CartShippingCalculator'         => array( 'file' => self::$directory_path . 'inc/cart-shipping-calculator.php' ),
 
-			'FluidCheckout_CheckoutFields'                 => array( 'file' => self::$directory_path . 'inc/checkout-fields.php', 'enable_option' => 'fc_apply_checkout_field_args', 'enable_default' => 'yes' ),
-			'FluidCheckout_CheckoutHideOptionalFields'     => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php', 'enable_option' => 'fc_enable_checkout_hide_optional_fields', 'enable_default' => 'yes' ),
-			'FluidCheckout_CheckoutShippingPhoneField'     => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php', 'enable_option' => 'fc_shipping_phone_field_visibility', 'enable_default' => 'no' ),
-			'FluidCheckout_Validation'                     => array( 'file' => self::$directory_path . 'inc/checkout-validation.php', 'enable_option' => 'fc_enable_checkout_validation', 'enable_default' => 'yes' ),
-			'FluidCheckout_CheckoutWidgetAreas'            => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php', 'enable_option' => 'fc_enable_checkout_widget_areas', 'enable_default' => 'yes' ),
+			'FluidCheckout_CheckoutFields'                 => array( 'file' => self::$directory_path . 'inc/checkout-fields.php' ),
+			'FluidCheckout_CheckoutHideOptionalFields'     => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php' ),
+			'FluidCheckout_CheckoutShippingPhoneField'     => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php' ),
+			'FluidCheckout_Validation'                     => array( 'file' => self::$directory_path . 'inc/checkout-validation.php' ),
+			'FluidCheckout_CheckoutWidgetAreas'            => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php' ),
 		);
 	}
 
@@ -328,7 +339,8 @@ class FluidCheckout {
 	 */
 	public function get_assets_version_number() {
 		$asset_version = '-' . preg_replace( '/\./', '', self::$version );
-		$min = get_option( 'fc_load_unminified_assets', 'no' ) === 'yes' ? '' : '.min';
+		// Needs to use `get_option` directly as `FluidCheckout_Settings::get_option()` wrapper function is not available yet
+		$min = 'yes' === get_option( 'fc_load_unminified_assets', 'no' )  ? '' : '.min';
 		return $asset_version . $min;
 	}
 
@@ -347,27 +359,9 @@ class FluidCheckout {
 
 		// Load each features
 		foreach ( self::$features as $feature_key => $feature ) {
-
-			$feature_is_enabled = true;
-			$file = array_key_exists( 'file', $feature ) ? $feature[ 'file' ] : null;
-			$enable_option = array_key_exists( 'enable_option', $feature ) ? $feature[ 'enable_option' ] : null;
-			$enable_default = array_key_exists( 'enable_default', $feature ) ? $feature[ 'enable_default' ] : 'no';
-
-			// Check if feature is set to enabled by option value in the database
-			if ( $enable_option !== null ) {
-				$enable_option_value = get_option( $enable_option, $enable_default );
-
-				// Check option value
-				if ( ( is_bool( $enable_option_value ) && $enable_option_value === true ) || ( strval( $enable_option_value ) !== 'no' && strval( $enable_option_value ) !== '0' && strval( $enable_option_value ) !== 'false' ) ) {
-					$feature_is_enabled = true;
-				}
-				else {
-					$feature_is_enabled = false;
-				}
-			}
-
 			// Load feature file if enabled, file exists, and file is inside our plugin folder
-			if ( $feature_is_enabled && file_exists( $file ) && strpos( $file, plugin_dir_path( __FILE__ ) ) === 0 ) {
+			$file = array_key_exists( 'file', $feature ) ? $feature[ 'file' ] : null;
+			if ( file_exists( $file ) && strpos( $file, plugin_dir_path( __FILE__ ) ) === 0 ) {
 				require_once $file;
 			}
 		}
@@ -474,13 +468,47 @@ class FluidCheckout {
 
 
 	/**
+	 * Check if a plugin is installed on a single install or network wide.
+	 * 
+	 * @param  string  $plugin_file   The plugin file name.
+	 * @since 3.0.0
+	 */
+	public function is_plugin_installed( $plugin_file ) {
+		$is_installed = file_exists( trailingslashit( WP_PLUGIN_DIR ) . $plugin_file ) || $this->is_plugin_activated( $plugin_file );
+		return $is_installed;
+	}
+
+	/**
+	 * Check if Fluid Checkout PRO is active on a single install or network wide.
+	 * 
+	 * @param  string  $plugin_file   The plugin file name.
+	 * @since 3.0.0
+	 */
+	public function is_plugin_activated( $plugin_file ) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		return is_plugin_active( $plugin_file );
+	}
+
+
+
+
+
+	/**
+	 * Check if Fluid Checkout PRO is installed on a single install or network wide.
+	 *
+	 * @since 3.0.0
+	 */
+	public function is_pro_installed() {
+		return $this->is_plugin_installed( 'fluid-checkout-pro/fluid-checkout-pro.php' );
+	}
+
+	/**
 	 * Check if Fluid Checkout PRO is active on a single install or network wide.
 	 *
 	 * @since 1.5.0
 	 */
 	public function is_pro_activated() {
-		require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		return is_plugin_active( 'fluid-checkout-pro/fluid-checkout-pro.php' );
+		return $this->is_plugin_activated( 'fluid-checkout-pro/fluid-checkout-pro.php' );
 	}
 
 

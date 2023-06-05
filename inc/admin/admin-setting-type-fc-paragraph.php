@@ -20,17 +20,17 @@ class FluidCheckout_Admin_SettingType_Paragraph extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Field types
-		add_action( 'woocommerce_admin_field_fc_paragraph', array( $this, 'output_field_type_fc_paragraph' ), 10 );
+		add_action( 'woocommerce_admin_field_fc_paragraph', array( $this, 'output_field' ), 10 );
 	}
 
 
 
 	/**
-	 * Output the paragraph setting field.
+	 * Output the setting field.
 	 *
 	 * @param   array  $value  Admin settings args values.
 	 */
-	public function output_field_type_fc_paragraph( $value ) {
+	public function output_field( $value ) {
 		$field_description = WC_Admin_Settings::get_field_description( $value );
 		$description       = $field_description['description'];
 		?>

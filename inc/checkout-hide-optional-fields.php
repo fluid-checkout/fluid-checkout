@@ -22,6 +22,9 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		// Bail if not on front end
 		if ( is_admin() ) { return; }
 
+		// Bail if feature is not enabled
+		if( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_hide_optional_fields' ) ) { return; }
+
 		// WooCommerce fields output
 		add_filter( 'woocommerce_form_field', array( $this, 'add_optional_form_field_link_button' ), 100, 4 );
 	}
@@ -48,7 +51,7 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		$skip_list = array( 'state', 'billing_state', 'shipping_state' );
 
 		// Maybe skip "address line 2" fields
-		if ( get_option( 'fc_hide_optional_fields_skip_address_2', 'no' ) === 'yes' ) {
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_hide_optional_fields_skip_address_2' ) ) {
 			$skip_list[] = 'address_2';
 			$skip_list[] = 'shipping_address_2';
 			$skip_list[] = 'billing_address_2';
@@ -110,7 +113,7 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		ob_start();
 
 		// Add expansible block markup for the field
-		$form_field_label = 'yes' === get_option( 'fc_optional_fields_link_label_lowercase', 'yes' ) ? strtolower( $args['label'] ) : $args['label'];
+		$form_field_label = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_optional_fields_link_label_lowercase' ) ? strtolower( $args['label'] ) : $args['label'];
 		
 		/* translators: %s: Form field label */
 		$toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), $form_field_label ) );

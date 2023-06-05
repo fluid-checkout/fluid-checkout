@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.4.3
+ * @version 3.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -25,15 +25,18 @@ defined( 'ABSPATH' ) || exit;
 			<?php
 			$site_title = get_bloginfo( 'name' );
 			$homepage_link_description = esc_attr( __( 'Go to the home page', 'fluid-checkout' ) );
+
+			// Get logo image from settings
+			$logo_image_option = FluidCheckout_Settings::instance()->get_option( 'fc_checkout_logo_image' );
 			
 			$logo_html = '';
 			ob_start();
 
-			if ( ! empty( get_option( 'fc_checkout_logo_image', '' ) ) ) {
+			if ( ! empty( $logo_image_option ) ) {
 				echo sprintf(
 					'<a href="%1$s" class="custom-logo-link" rel="home">%2$s</a>',
 					esc_url( apply_filters( 'fc_checkout_header_logo_home_url', home_url( '/' ) ) ),
-					wp_get_attachment_image( get_option( 'fc_checkout_logo_image', '' ), 'full' )
+					wp_get_attachment_image( $logo_image_option, 'full' )
 				);
 			}
 			else if ( has_action( 'fc_checkout_header_logo' ) ) {
@@ -50,6 +53,7 @@ defined( 'ABSPATH' ) || exit;
 				);
 			}
 
+			// Get logo HTML
 			$logo_html = ob_get_clean();
 			
 			// Maybe add `aria-description`

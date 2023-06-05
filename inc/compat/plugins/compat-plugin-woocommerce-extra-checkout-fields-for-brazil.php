@@ -83,7 +83,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		wp_enqueue_script( 'woocommerce-extra-checkout-fields-for-brazil-front', self::$directory_url . 'js/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend'. self::$asset_version . '.js', array( 'jquery', 'jquery-mask' ), NULL, true );
 		
 		// Replace settings object for the Brazilian Market plugin
-		$settings = get_option( 'wcbcf_settings' );
+		$settings = FluidCheckout_Settings::instance()->FluidCheckout_Settings::instance()->get_option( 'wcbcf_settings' );
 		$autofill = isset( $settings['addresscomplete'] ) ? 'yes' : 'no';
 		wp_localize_script(
 			'woocommerce-extra-checkout-fields-for-brazil-front',
@@ -96,7 +96,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 				// CHANGE: Always set mailcheck feature as disabled because we already provide this feature
 				'mailcheck'            => 'no',
 				// CHANGE: Maybe disable masked input when International phone number feature is enabled
-				'maskedinput_phone'    => class_exists( 'FluidCheckout_PRO_CheckoutInternationalPhoneField' ) && 'yes' === get_option( 'fc_pro_enable_international_phone_fields', 'no' ) ? 'no' : 'yes',
+				'maskedinput_phone'    => class_exists( 'FluidCheckout_PRO_CheckoutInternationalPhoneField' ) && 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_enable_international_phone_fields' ) ? 'no' : 'yes',
 				'maskedinput'          => isset( $settings['maskedinput'] ) ? 'yes' : 'no',
 				'person_type'          => absint( $settings['person_type'] ),
 				'only_brazil'          => isset( $settings['only_brazil'] ) ? 'yes' : 'no',
@@ -131,7 +131,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 */
 	public function add_js_settings_checkout_validation_brazilian_documents( $settings ) {
 		// Get Brazilian Market plugin settings
-		$wcbcf_settings = get_option( 'wcbcf_settings' );
+		$wcbcf_settings = FluidCheckout_Settings::instance()->FluidCheckout_Settings::instance()->get_option( 'wcbcf_settings' );
 
 		// Add validation settings
 		$settings = array_merge( $settings, array(
@@ -401,7 +401,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 */
 	public function change_substep_text_extra_fields_skip_list_by_person_type( $skip_list ) {
 		// Get plugin settings
-		$settings = get_option( 'wcbcf_settings' );
+		$settings = FluidCheckout_Settings::instance()->get_option( 'wcbcf_settings' );
 		
 		$person_type = WC()->checkout()->get_value( 'billing_persontype' );
 
@@ -455,7 +455,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 */
 	public function maybe_add_step_complete_billing_field_skip_list_by_person_type( $skip_list ) {
 		// Get plugin settings
-		$settings = get_option( 'wcbcf_settings' );
+		$settings = FluidCheckout_Settings::instance()->get_option( 'wcbcf_settings' );
 
 		// Bail if person type option does not allow both types at checkout
 		if ( 1 != $settings[ 'person_type' ] ) { return $skip_list; } // 1 = Individuals and Legal Person
@@ -488,7 +488,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		if ( ! class_exists( 'Extra_Checkout_Fields_For_Brazil_Formatting' ) ) { return $is_step_complete; }
 
 		// Get Brazilian Market plugin settings
-		$settings = get_option( 'wcbcf_settings' );
+		$settings = FluidCheckout_Settings::instance()->get_option( 'wcbcf_settings' );
 
 		// Bail if person type is disabled
 		// 0 = None (person type field disabled)
@@ -542,7 +542,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		if ( ! class_exists( 'Extra_Checkout_Fields_For_Brazil_Formatting' ) ) { return $args; }
 
 		// Get Brazilian Market plugin settings
-		$settings = get_option( 'wcbcf_settings' );
+		$settings = FluidCheckout_Settings::instance()->get_option( 'wcbcf_settings' );
 
 		// Maybe set CPF field as invalid
 		if ( 'billing_cpf' === $key && isset( $settings[ 'validate_cpf' ] ) ) {

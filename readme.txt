@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.2
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -378,9 +378,17 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= Unreleased - 3.0.0 =
+
+* Added: New feature to select design template for the checkout page. The selected template is also used on PRO features.
+* Added: PRO settings on the plugin settings page so users can easily discover PRO features.
+* Improved: Reorganized plugins settings in sections that are easier to understand and set up.
+* Improved: Refactor settings to use centralized class with default values.
+
+= 2.5.1 - 2023-05-31 =
 
 * Added: Compatibility with plugin GP Premium by GeneratePress.
+* Improved: Compatibility with theme Enfold.
 * Fixed: Password visibility button not showing when the form section is replaced via checkout fragments.
 
 = 2.5.0 - 2023-05-29 =

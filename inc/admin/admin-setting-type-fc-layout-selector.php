@@ -20,17 +20,17 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Field types
-		add_action( 'woocommerce_admin_field_fc_layout_selector', array( $this, 'output_field_type_fc_layout_seletor' ), 10 );
+		add_action( 'woocommerce_admin_field_fc_layout_selector', array( $this, 'output_field' ), 10 );
 	}
 
 
 
 	/**
-	 * Output the layout selector setting field.
+	 * Output the setting field.
 	 *
 	 * @param   array  $value  Admin settings args values.
 	 */
-	public function output_field_type_fc_layout_seletor( $value ) {
+	public function output_field( $value ) {
 		// Custom attribute handling.
 		$custom_attributes_esc = array();
 		if ( ! empty( $value['custom_attributes'] ) && is_array( $value['custom_attributes'] ) ) {
@@ -52,10 +52,9 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 			</th>
 			<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 				<fieldset>
-					<?php echo $description; // WPCS: XSS ok. ?>
 					<ul>
 					<?php
-					foreach ( $value['options'] as $key => $val ) {
+					foreach ( $value['options'] as $key => $args ) {
 						?>
 						<li>
 							<label><input
@@ -66,12 +65,14 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 								class="<?php echo esc_attr( $value['class'] ); ?>"
 								<?php echo implode( ' ', $custom_attributes_esc ); // WPCS: XSS ok. ?>
 								<?php checked( $key, $option_value ); ?>
-								/> <?php echo esc_html( $val ); ?></label>
+								<?php echo array_key_exists( 'disabled', $args ) && false !== $args[ 'disabled' ] ? 'disabled' : ''; ?>
+								/> <?php echo esc_html( $args[ 'label' ] ); ?></label>
 						</li>
 						<?php
 					}
 					?>
 					</ul>
+					<?php echo $description; // WPCS: XSS ok. ?>
 					<style>
 						<?php
 						foreach ( $value['options'] as $key => $val ) {

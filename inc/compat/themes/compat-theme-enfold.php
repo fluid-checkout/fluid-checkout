@@ -20,7 +20,15 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Template file loader
-		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
+		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template_checkout_page_template' ), 100, 3 );
+
+		// Container class
+		add_filter( 'fc_add_container_class', '__return_false' );
+		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
+
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 	}
 
 
@@ -28,14 +36,14 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 	/**
 	 * Locate template files from this plugin.
 	 */
-	public function locate_template( $template, $template_name, $template_path ) {
+	public function locate_template_checkout_page_template( $template, $template_name, $template_path ) {
 		$_template = null;
 
 		// Set template path to default value when not provided
 		if ( ! $template_path ) { $template_path = 'woocommerce/'; };
 
 		// Get plugin path
-		$plugin_path = self::$directory_path . 'templates/compat/themes/enfold/';
+		$plugin_path = self::$directory_path . 'templates/compat/themes/enfold/checkout-page-template/';
 
 		// Get the template from this plugin, if it exists
 		if ( file_exists( $plugin_path . $template_name ) ) {
@@ -62,6 +70,36 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 
 		// Return what we found
 		return $_template;
+	}
+
+
+
+	/**
+	 * Add container class to the main content element.
+	 *
+	 * @param string $class Main content element classes.
+	 */
+	public function change_fc_content_section_class( $class ) {
+		// Bail if using the plugin's header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $class; }
+
+		return $class . ' container';
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using the plugin's header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = '#header';
+
+		return $attributes;
 	}
 
 }

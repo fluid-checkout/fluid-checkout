@@ -109,8 +109,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		return apply_filters( 'fc_js_settings', array(
 			'ver'                            => self::$version,
 			'assetsVersion'                  => self::$asset_version,
-			'cookiePath'                     => parse_url( get_option( 'siteurl' ), PHP_URL_PATH ),
-			'cookieDomain'                   => parse_url( get_option( 'siteurl' ), PHP_URL_HOST ),
+			'cookiePath'                     => parse_url( FluidCheckout_Settings::instance()->get_option( 'siteurl' ), PHP_URL_PATH ),
+			'cookieDomain'                   => parse_url( FluidCheckout_Settings::instance()->get_option( 'siteurl' ), PHP_URL_HOST ),
 			'jsPath'                         => self::$directory_url . 'js/',
 			'jsLibPath'                      => self::$directory_url . 'js/lib/',
 			'cssPath'                        => self::$directory_url . 'css/',

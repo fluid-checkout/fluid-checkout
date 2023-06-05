@@ -42,12 +42,12 @@ $box-shadow-dark:               $box-shadow-offset-x $box-shadow-offset-y $box-s
 $box-shadow-light:              $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--shadow-color--light, rgba( 255, 255, 255, .15 ) ) !default;
 
 // Outline focus
-$focus-outline-field:           solid remsize( .2rem ) $dark-grey;
-$focus-outline-offset-field:    remsize( .2rem );
-$focus-outline-link:            dotted remsize( .1rem ) $dark-grey;
-$focus-outline-offset-link:     remsize( .1rem );
-$focus-outline-button:          $focus-outline-field;
-$focus-outline-offset-button:   $focus-outline-offset-field;
+$focus-outline-field:           solid remsize( .2rem ) $dark-grey !default;
+$focus-outline-offset-field:    remsize( .2rem ) !default;
+$focus-outline-link:            dotted remsize( .1rem ) $dark-grey !default;
+$focus-outline-offset-link:     remsize( .1rem ) !default;
+$focus-outline-button:          $focus-outline-field !default;
+$focus-outline-offset-button:   $focus-outline-offset-field !default;
 
 // END - COLORS
 // ----------------------------------------
@@ -283,8 +283,6 @@ $option-box-padding-vertical:               var( --fluidcheckout--option-box--sp
 $option-box-padding-horizontal:             var( --fluidcheckout--option-box--spacing--horizontal, $global-spacing-extra-small ) !default;
 $option-box-space-between-options:          var( --fluidcheckout--option-box--spacing--between-options, 0 ) !default;
 
-$option-box-background-color:               var( --fluidcheckout--option-box--background-color, $white ) !default;
-
 $option-box-border-radius:                  var( --fluidcheckout--option-box--border-radius, $global-radius-medium ) !default;
 $option-box-border-color:                   var( --fluidcheckout--option-box--border-color, $border-color ) !default;
 $option-box-border-color--hover:            var( --fluidcheckout--option-box--border-color--hover, $border-dark-color ) !default;
@@ -292,14 +290,24 @@ $option-box-border-style:                   var( --fluidcheckout--option-box--bo
 $option-box-border-width:                   var( --fluidcheckout--option-box--border-width, remsize( .1rem ) ) !default;
 $option-box-border:                         $option-box-border-style $option-box-border-width $option-box-border-color !default;
 
+$option-box-label-color--checked:           var( --fluidcheckout--option-box--label-color--checked, $darker-grey ) !default;
+$option-box-label-border-color:             var( --fluidcheckout--option-box--label-border-color, $border-color ) !default;
+$option-box-label-border-color--hover:      var( --fluidcheckout--option-box--label-border-color--hover, $border-dark-color ) !default;
+$option-box-label-border-color--checked:    var( --fluidcheckout--option-box--label-border-color--checked, $border-color ) !default;
+$option-box-label-border-style:             var( --fluidcheckout--option-box--label-border-style, solid ) !default;
+$option-box-label-border-width:             var( --fluidcheckout--option-box--label-border-width, remsize( .1rem ) ) !default;
+$option-box-label-border:                   $option-box-label-border-style $option-box-label-border-width $option-box-label-border-color !default;
+
+$option-box-background-color:               var( --fluidcheckout--option-box--background-color, $white ) !default;
+$option-box-background-color--hover:        var( --fluidcheckout--option-box--background-color--hover, $lighter-grey ) !default;
+$option-box-background-color--checked:      var( --fluidcheckout--option-box--background-color--checked, $lighter-grey ) !default;
 
 $option-box-radio-size:                     $icon-size !default;
-$option-box-radio-border:                   solid remsize( .2rem ) $border-color !default;
-
-$option-box-checked-radio-color:            var( --fluidcheckout--option-box--checked-radio-color, $success-color ) !default;
-$option-box-checked-icon-color:             var( --fluidcheckout--option-box--checked-icon-color, $white ) !default;
-$option-box-checked-background-color:       var( --fluidcheckout--option-box--checked-background-color, $lighter-grey ) !default;
-$option-box-checked-color:                  var( --fluidcheckout--option-box--cheched-color, $darker-grey ) !default;
+$option-box-radio-color:                    var( --fluidcheckout--option-box--radio-color, $border-color ) !default;
+$option-box-radio-color--hover:             var( --fluidcheckout--option-box--radio-color--hover, $border-color ) !default;
+$option-box-radio-color--checked:           var( --fluidcheckout--option-box--radio-color--checked, $success-color ) !default;
+$option-box-radio-icon-color--checked:      var( --fluidcheckout--option-box--radio-icon-color--checked, $white ) !default;
+$option-box-radio-border:                   solid remsize( .2rem ) $option-box-radio-color !default;
 
 // END - OPTION BOX
 // ----------------------------------------
@@ -461,6 +469,7 @@ $order-summary-border-radius:                    $checkout-substep-border-radius
 $order-summary-box-shadow:                       $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--order-summary--shadow-color, transparent ) !default;
 $order-summary-box-shadow--large-screen:         $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--order-summary--shadow-color--large-screen, transparent ) !default;
 $order-summary-background-color:                 var( --fluidcheckout--order-summary--background-color, $white ) !default;
+$order-summary-background-color--popup:          var( --fluidcheckout--order-summary--background-color--popup, $white ) !default;
 
 $order-summary-container-margin:                 0 !default;
 $order-summary-container-padding:                0 !default;
@@ -654,4 +663,16 @@ $_checkout-validation-check-horizontal-spacing--select-alt:     var( --fluidchec
 $_checkout-validation-check-horizontal-spacing--password:       var( --fluidcheckout--validation-check--horizontal-spacing--password, remsize( 2.5rem ) ) !default;
 
 // END - CHECKOUT VALIDATION
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// ADDRESS BOOK
+
+$address-book-entry-border-radius:                              var( --fc-adb--address-entry--border-radius, $global-radius-small ) !default;
+
+// END - ADDRESS BOOK
 // ----------------------------------------
