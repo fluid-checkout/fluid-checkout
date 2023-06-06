@@ -1,0 +1,1021 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Fluid Checkout for WooCommerce\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-29 17:17+0000\n"
+"PO-Revision-Date: 2023-06-06 12:34+0000\n"
+"Last-Translator: Diego Versiani\n"
+"Language-Team: Greek\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.4; wp-6.2.2"
+
+#: inc/admin/admin-settings-general.php:87
+msgid "(Experimental) Use theme's page header and footer for the checkout page"
+msgstr ""
+"(Πειραματικό) Χρησιμοποιήστε την κεφαλίδα και το υποσέλιδο της σελίδας του "
+"θέματος για τη σελίδα πληρωμής"
+
+#: inc/checkout-validation.php:317
+msgid "(Required)"
+msgstr "(Υποχρεωτικό)"
+
+#: inc/compat/plugins/elementor-pro/widgets/woocommerce/checkout.php:70
+msgid ""
+"<p>This widget has been replaced by Fluid Checkout. </p><p>When using Fluid "
+"Checkout, the checkout page needs to use the original WooCommerce shortcode "
+"<code>[woocommerce_checkout]</code> to work properly.</p><p>For more "
+"information, visit the Fluid Checkout documentation.</p>"
+msgstr ""
+"<p>Αυτό το widget έχει αντικατασταθεί από το Fluid Checkout. </p><p>Όταν "
+"χρησιμοποιείτε το Fluid Checkout, η σελίδα πληρωμής πρέπει να χρησιμοποιεί "
+"τον αρχικό σύντομο κώδικα του WooCommerce <code>[woocommerce_checkout]</code>"
+" για να λειτουργεί σωστά.</p><p>Για περισσότερες πληροφορίες, επισκεφθείτε "
+"την τεκμηρίωση του Fluid Checkout.</p>"
+
+#: fluid-checkout.php:508
+#, php-format
+msgid ""
+"<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
+"activated. <a href=\"%4$s\">%3$s</a>"
+msgstr ""
+"το <strong>%1$s</strong> απαιτεί την εγκατάσταση και ενεργοποίηση του "
+"<strong>%2$s</strong>. <a href=\"%4$s\">%3$s</a>"
+
+#: fluid-checkout.php:504
+#, php-format
+msgid "Activate %s"
+msgstr "Ενεργοποίηση %s"
+
+#. %s: Form field label
+#: inc/checkout-coupon-codes.php:240 inc/checkout-hide-optional-fields.php:116
+#, php-format
+msgid "Add %s"
+msgstr "Προσθήκη %s"
+
+#: inc/admin/admin-settings-general.php:251
+msgid "Add a phone field to the billing address form"
+msgstr "Προσθήκη πεδίου τηλεφώνου στη φόρμα διεύθυνσης χρέωσης"
+
+#: inc/admin/admin-settings-general.php:277
+msgid "Add a phone field to the shipping address form"
+msgstr "Προσθήκη πεδίου τηλεφώνου στη φόρμα διεύθυνσης αποστολής"
+
+#: inc/admin/admin-settings-general.php:351
+msgid "Add widget areas to the checkout page"
+msgstr "Προσθέστε περιοχές widget στη σελίδα πληρωμής"
+
+#: inc/checkout-steps.php:2466
+msgid "Additional notes"
+msgstr "Πρόσθετες σημειώσεις"
+
+#: inc/admin/admin-settings-general.php:307
+msgid "After shipping address"
+msgstr "Μετά τη διεύθυνση αποστολής"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42
+msgid "Already have an account?"
+msgstr "Έχετε ήδη λογαριασμό"
+
+#: inc/checkout-steps.php:2240
+msgid "An account will be created with the information provided."
+msgstr "Θα δημιουργηθεί ένας λογαριασμός με τις πληροφορίες που παρέχονται."
+
+#: inc/checkout-fields.php:120
+msgid "Apartment, unit, building, floor, etc."
+msgstr "Διαμέρισμα, μονάδα, κτίριο, όροφος κ.λπ."
+
+#: inc/admin/admin-settings-general.php:126
+#: inc/admin/admin-settings-general.php:362
+msgid "Applies only to multi-step layouts."
+msgstr "Ισχύει μόνο για διατάξεις πολλαπλών βημάτων."
+
+#: inc/admin/admin-settings-general.php:306
+msgid "Before shipping address"
+msgstr "Πριν από τη διεύθυνση αποστολής"
+
+#: inc/admin/admin-settings-general.php:169
+msgid "Below the order summary"
+msgstr "Κάτω από τη σύνοψη της παραγγελίας"
+
+#: inc/admin/admin-settings-general.php:168
+msgid "Below the payment section"
+msgstr "Κάτω από το τμήμα πληρωμής"
+
+#: inc/admin/admin-settings-general.php:187
+#: inc/admin/admin-settings-general.php:240
+#: inc/admin/admin-settings-general.php:267
+msgid "Billing address"
+msgstr "Διεύθυνση χρέωσης"
+
+#: inc/admin/admin-settings-general.php:241
+msgid "Billing address same as the shipping address checked by default"
+msgstr ""
+"Διεύθυνση χρέωσης ίδια με τη διεύθυνση αποστολής που έχει επιλεγεί από "
+"προεπιλογή"
+
+#: inc/admin/admin-settings-general.php:250
+msgid "Billing phone"
+msgstr "Τηλέφωνο χρέωσης"
+
+#: inc/checkout-steps.php:3248
+msgid "Billing to"
+msgstr "Χρέωση σε"
+
+#: inc/admin/admin-settings-general.php:170
+msgid "Both below the payment section and the order summary"
+msgstr ""
+"Τόσο κάτω από το τμήμα πληρωμής όσο και κάτω από τη σύνοψη της παραγγελίας"
+
+#: inc/checkout-coupon-codes.php:202
+msgctxt "Button label for applying coupon codes"
+msgid "Apply"
+msgstr "Εφαρμογή"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:69
+msgctxt "Captcha position"
+msgid "Before place order button"
+msgstr "Πριν από το κουμπί παραγγελίας"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:68
+msgctxt "Captcha position"
+msgid "Before place order section"
+msgstr "Πριν από το τμήμα παραγγελίας"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:63
+msgid "Captcha Pro by BestWebSoft"
+msgstr "Captcha Pro από την BestWebSoft"
+
+#: inc/checkout-steps.php:880
+msgid "Cart total:"
+msgstr "Σύνολο καλαθιού:"
+
+#: inc/checkout-validation.php:162
+msgid "Change email address to: {suggestion-value}"
+msgstr "Αλλαγή διεύθυνσης ηλεκτρονικού ταχυδρομείου σε: {suggestion-value}"
+
+#: inc/checkout-steps.php:1920
+#, php-format
+msgid "Change: %s"
+msgstr "Αλλαγή: %s"
+
+#: inc/admin/admin-settings-fluid-checkout.php:39
+msgid "Checkout"
+msgstr "Ταμείο"
+
+#: inc/checkout-widget-areas.php:130
+msgid "Checkout Below Place Order"
+msgstr "Ταμείο Παρακάτω Τοποθετήστε την παραγγελία"
+
+#: inc/checkout-widget-areas.php:145
+msgid "Checkout Footer"
+msgstr "Υποσέλιδο πληρωμής"
+
+#: inc/checkout-widget-areas.php:84
+msgid "Checkout Header - Desktop"
+msgstr "Επικεφαλίδα πληρωμής - Επιφάνεια εργασίας"
+
+#: inc/checkout-widget-areas.php:94
+msgid "Checkout Header - Mobile"
+msgstr "Επικεφαλίδα πληρωμής - Κινητό"
+
+#: inc/admin/admin-settings-general.php:53
+msgid "Checkout Layout"
+msgstr "Διάταξη ταμείου"
+
+#: inc/checkout-widget-areas.php:120
+msgid "Checkout Order Summary"
+msgstr "Σύνοψη παραγγελίας στο ταμείο"
+
+#: inc/checkout-widget-areas.php:108
+msgid "Checkout Sidebar"
+msgstr "Πλαϊνή μπάρα πληρωμής"
+
+#: inc/checkout-steps.php:1562
+msgctxt "Checkout step title"
+msgid "Billing"
+msgstr "Τιμολόγηση"
+
+#: inc/checkout-steps.php:1541
+msgctxt "Checkout step title"
+msgid "Contact"
+msgstr "Επικοινωνία"
+
+#: inc/checkout-steps.php:1571
+msgctxt "Checkout step title"
+msgid "Payment"
+msgstr "Πληρωμή"
+
+#: inc/checkout-steps.php:1550
+msgctxt "Checkout step title"
+msgid "Shipping"
+msgstr "Αποστολή"
+
+#: inc/checkout-steps.php:1920
+msgctxt "Checkout substep change link label"
+msgid "Change"
+msgstr "Αλλαγή"
+
+#: inc/checkout-steps.php:1921
+msgctxt "Checkout substep save link label"
+msgid "Save changes"
+msgstr "Αποθήκευση αλλαγών"
+
+#: inc/admin/admin-settings-general.php:350
+msgid "Checkout widget areas"
+msgstr "Περιοχές widget πληρωμής"
+
+#: inc/admin/admin-settings-general.php:115
+msgid ""
+"Choose a background color for the checkout page footer. Only applies when "
+"using the plugin's checkout footer."
+msgstr ""
+"Επιλέξτε ένα χρώμα φόντου για το υποσέλιδο της σελίδας πληρωμής. Ισχύει μόνο "
+"όταν χρησιμοποιείτε το υποσέλιδο του πρόσθετου πληρωμής."
+
+#: inc/admin/admin-settings-general.php:95
+msgid ""
+"Choose a background color for the checkout page header. Only applies when "
+"using the plugin's checkout header."
+msgstr ""
+"Επιλέξτε ένα χρώμα φόντου για την επικεφαλίδα της σελίδας πληρωμής. Ισχύει "
+"μόνο όταν χρησιμοποιείτε την επικεφαλίδα πληρωμής του πρόσθετου."
+
+#: inc/admin/admin-settings-general.php:105
+msgid ""
+"Choose a background color for the checkout page. Color is applied to the <em>"
+"body</em> element."
+msgstr ""
+"Επιλέξτε ένα χρώμα φόντου για τη σελίδα πληρωμής. Το χρώμα εφαρμόζεται στο "
+"στοιχείο <em>body</em>."
+
+#: inc/admin/admin-settings-general.php:146
+msgid "Choose a background color for the order summary section."
+msgstr "Επιλέξτε ένα χρώμα φόντου για την ενότητα σύνοψης της παραγγελίας."
+
+#: inc/admin/admin-settings-general.php:72
+msgid ""
+"Choose an image to be displayed on the checkout page header. Only applies "
+"when using the plugin's checkout header."
+msgstr ""
+"Επιλέξτε μια εικόνα που θα εμφανίζεται στην κεφαλίδα της σελίδας πληρωμής. "
+"Ισχύει μόνο όταν χρησιμοποιείτε την επικεφαλίδα πληρωμής του πρόσθετου."
+
+#: inc/admin/admin-settings-general.php:303
+msgid "Choose in which position to display the shipping methods"
+msgstr "Επιλέξτε σε ποια θέση θα εμφανίζονται οι μέθοδοι αποστολής"
+
+#: inc/admin/admin-settings-general.php:264
+msgid "Choose in which step to display the billing phone field"
+msgstr "Επιλέξτε σε ποιο βήμα θα εμφανιστεί το πεδίο τηλεφώνου χρέωσης"
+
+#: inc/admin/admin-settings-general.php:290
+msgid "Choose in which step to display the shipping phone field"
+msgstr "Επιλέξτε σε ποιο βήμα θα εμφανιστεί το πεδίο του τηλεφώνου αποστολής"
+
+#: inc/checkout-steps.php:880
+msgid "Click to go to the order summary"
+msgstr "Κάντε κλικ για να μεταβείτε στη σύνοψη της παραγγελίας"
+
+#: templates/fc/checkout-steps/checkout/review-order-section.php:63
+msgid "Close and continue with checkout"
+msgstr "Κλείστε και συνεχίστε με το checkout"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:27
+msgctxt "Close button aria-label"
+msgid "Close"
+msgstr "Κλείστε το"
+
+#: inc/admin/admin-settings-general.php:268
+#: inc/admin/admin-settings-general.php:294
+msgid "Contact step"
+msgstr "Βήμα επαφής"
+
+#: templates/fc/checkout-steps/checkout/review-order-section.php:63
+msgid "Continue"
+msgstr "Συνεχίστε"
+
+#: inc/admin/admin-settings-general.php:82
+msgid ""
+"Controls whether to use the Fluid Checkout page header and footer or keep "
+"the currently active theme's."
+msgstr ""
+"Ελέγχει αν θα χρησιμοποιηθεί η κεφαλίδα και το υποσέλιδο της σελίδας Fluid "
+"Checkout ή αν θα διατηρηθεί η κεφαλίδα και το υποσέλιδο του τρέχοντος "
+"ενεργού θέματος."
+
+#: inc/checkout-coupon-codes.php:177 inc/checkout-coupon-codes.php:199
+msgid "Coupon code"
+msgstr "Κωδικός κουπονιού"
+
+#: inc/admin/admin-settings-general.php:315
+msgid "Coupon codes"
+msgstr "Κωδικοί κουπονιών"
+
+#: templates/fc/checkout-steps/checkout/form-account-creation.php:34
+msgid "Create an account"
+msgstr "Δημιουργία λογαριασμού"
+
+#: inc/admin/admin-settings-tools.php:92
+msgid "Debug mode"
+msgstr "Λειτουργία εντοπισμού σφαλμάτων"
+
+#: inc/admin/admin-settings-tools.php:91
+msgid "Debug options"
+msgstr "Επιλογές εντοπισμού σφαλμάτων"
+
+#: inc/admin/admin-settings-general.php:164
+msgid ""
+"Define the position to display \"Place order\" and terms checkbox section."
+msgstr ""
+"Καθορίστε τη θέση εμφάνισης του τμήματος \"Τοποθετήστε παραγγελία\" και των "
+"όρων checkbox."
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:64
+msgid ""
+"Define the position to display the captcha section. Some positions might not "
+"work depending on the captcha type chosen."
+msgstr ""
+"Καθορίστε τη θέση εμφάνισης του τμήματος captcha. Ορισμένες θέσεις ενδέχεται "
+"να μην λειτουργούν ανάλογα με τον επιλεγμένο τύπο captcha."
+
+#: inc/admin/admin-settings-general.php:338
+msgid "Define the visibility of the additional order notes field."
+msgstr "Καθορίστε την ορατότητα του πεδίου πρόσθετες σημειώσεις παραγγελίας."
+
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:119
+msgid "Delivery Date"
+msgstr "Ημερομηνία παράδοσης"
+
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:112
+msgid "Delivery Options"
+msgstr "Επιλογές παράδοσης"
+
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:115
+msgid "Delivery or Pickup"
+msgstr "Παράδοση ή παραλαβή"
+
+#. %s: html for the email address typo correction suggestion link
+#: inc/checkout-validation.php:162
+#, php-format
+msgid "Did you mean %s?"
+msgstr "Εννοούσατε %s"
+
+#: inc/admin/admin-settings-general.php:219
+msgid "Display the \"Add\" link buttons in lowercase"
+msgstr "Εμφάνιση των κουμπιών συνδέσμου \"Προσθήκη\" με πεζά γράμματα"
+
+#: inc/admin/admin-settings-general.php:125
+msgid "Display the checkout progress bar"
+msgstr "Εμφάνιση της γραμμής προόδου πληρωμής"
+
+#: inc/admin/admin-settings-general.php:326
+msgid "Display the coupon codes section title"
+msgstr "Εμφάνιση του τίτλου της ενότητας κωδικών κουπονιών"
+
+#: inc/checkout-widget-areas.php:96
+msgid ""
+"Display widgets below the checkout header for mobile devices. Only displayed "
+"if using the plugin's checkout header."
+msgstr ""
+"Εμφάνιση widgets κάτω από την επικεφαλίδα πληρωμής για κινητές συσκευές. "
+"Εμφανίζεται μόνο αν χρησιμοποιείτε την κεφαλίδα πληρωμής του πρόσθετου."
+
+#: inc/checkout-widget-areas.php:132
+msgid "Display widgets below the place order button at the checkout page."
+msgstr "Εμφάνιση widgets κάτω από το κουμπί παραγγελίας στη σελίδα πληρωμής."
+
+#: inc/checkout-widget-areas.php:122
+msgid "Display widgets inside the order summary at the checkout page."
+msgstr "Εμφάνιση widgets μέσα στη σύνοψη της παραγγελίας στη σελίδα πληρωμής."
+
+#: inc/checkout-widget-areas.php:147
+msgid ""
+"Display widgets on the checkout footer. Only displayed if using the plugin's "
+"checkout footer."
+msgstr ""
+"Εμφάνιση widgets στο υποσέλιδο του checkout. Εμφανίζεται μόνο αν "
+"χρησιμοποιείτε το υποσέλιδο του plugin."
+
+#: inc/checkout-widget-areas.php:86
+msgid ""
+"Display widgets on the checkout header for large screens. Only displayed if "
+"using the plugin's checkout header."
+msgstr ""
+"Εμφάνιση widgets στην επικεφαλίδα πληρωμής για μεγάλες οθόνες. Εμφανίζεται "
+"μόνο αν χρησιμοποιείτε την κεφαλίδα πληρωμής του πρόσθετου."
+
+#: inc/checkout-widget-areas.php:110
+msgid "Display widgets on the checkout sidebar after the order summary."
+msgstr ""
+"Εμφάνιση widgets στην πλαϊνή μπάρα του ταμείου μετά τη σύνοψη της "
+"παραγγελίας."
+
+#: inc/admin/admin-settings-general.php:229
+msgid "Do not hide \"Address line 2\" fields behind a link button"
+msgstr ""
+"Μην κρύβετε τα πεδία \"Γραμμή διεύθυνσης 2\" πίσω από ένα κουμπί συνδέσμου"
+
+#: inc/admin/admin-notices.php:55
+msgid "Don't show this again"
+msgstr "Μην το ξαναδείξετε αυτό"
+
+#: inc/checkout-steps.php:4243
+#: templates/fc/checkout-steps/checkout/review-order-section.php:62
+msgid "Edit cart"
+msgstr "Επεξεργασία καλαθιού"
+
+#: inc/admin/admin-settings-general.php:316
+msgid "Enable integrated coupon code section"
+msgstr "Ενεργοποιήστε την ενότητα με τον ενσωματωμένο κωδικό κουπονιού"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:171
+msgid "Enable Mail Check: (disabled feature)"
+msgstr "Ενεργοποίηση ελέγχου αλληλογραφίας: (απενεργοποιημένη λειτουργία)"
+
+#: inc/checkout-coupon-codes.php:201
+msgid "Enter your code here"
+msgstr "Εισάγετε τον κωδικό σας εδώ"
+
+#: inc/admin/admin-settings-general.php:201
+msgid "Features"
+msgstr "Χαρακτηριστικά"
+
+#. Author of the plugin
+#: inc/admin/admin-settings-fluid-checkout.php:25
+msgid "Fluid Checkout"
+msgstr "Έλεγχος υγρών"
+
+#. Name of the plugin
+msgid "Fluid Checkout for WooCommerce - Lite"
+msgstr "Fluid Checkout για το WooCommerce - Lite"
+
+#: inc/admin/admin-settings-general.php:114
+msgid "Footer background color"
+msgstr "Χρώμα φόντου υποσέλιδου"
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
+msgid ""
+"Germanized PRO multistep checkout feature needs to be disabled when using "
+"Fluid Checkout"
+msgstr ""
+"Η λειτουργία πληρωμής πολλαπλών βημάτων του γερμανικού PRO πρέπει να "
+"απενεργοποιηθεί όταν χρησιμοποιείτε το Fluid Checkout"
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:67
+msgid "Go to Germanized settings"
+msgstr "Μεταβείτε στις γερμανικές ρυθμίσεις"
+
+#: fluid-checkout.php:500
+msgid "Go to Plugin Search"
+msgstr "Πηγαίνετε στην Αναζήτηση Plugin"
+
+#: templates/fc/checkout-page-template/checkout/checkout-header.php:27
+msgid "Go to the home page"
+msgstr "Μεταβείτε στην αρχική σελίδα"
+
+#: inc/admin/admin-settings-general.php:80
+msgid "Header and Footer"
+msgstr "Κεφαλίδα και υποσέλιδο"
+
+#: inc/admin/admin-settings-general.php:94
+msgid "Header background color"
+msgstr "Χρώμα φόντου κεφαλίδας"
+
+#: inc/admin/admin-settings-general.php:254
+#: inc/admin/admin-settings-general.php:280
+#: inc/admin/admin-settings-general.php:341
+msgid "Hidden"
+msgstr "Κρυφό"
+
+#: inc/admin/admin-settings-general.php:209
+msgid "Hide optional fields behind a link button"
+msgstr "Απόκρυψη προαιρετικών πεδίων πίσω από ένα κουμπί συνδέσμου"
+
+#: inc/admin/admin-settings-general.php:188
+msgid "Highlight the billing address section in the checkout form"
+msgstr "Επισημάνετε την ενότητα της διεύθυνσης χρέωσης στη φόρμα πληρωμής"
+
+#: inc/admin/admin-settings-general.php:179
+msgid "Highlight the shipping address section in the checkout form"
+msgstr "Επισημάνετε την ενότητα της διεύθυνσης αποστολής στη φόρμα πληρωμής"
+
+#: inc/admin/admin-settings-general.php:96
+#: inc/admin/admin-settings-general.php:106
+#: inc/admin/admin-settings-general.php:116
+#: inc/admin/admin-settings-general.php:147
+msgid "HTML color value. ie: #f3f3f3"
+msgstr "Τιμή χρώματος HTML. δηλ: #f3f3f3"
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://fluidcheckout.com/"
+msgstr "https://fluidcheckout.com/"
+
+#: inc/admin/admin-notice-review-request.php:48
+msgid "I need help!"
+msgstr "Χρειάζομαι βοήθεια!"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:174
+msgid ""
+"If checked informs typos in email to users. (This feature has been disabled "
+"because Fluid Checkout offers the feature. Changes to this option will not "
+"take effect)"
+msgstr ""
+"Εάν είναι επιλεγμένο, ενημερώνει για τυπογραφικά λάθη στο email προς τους "
+"χρήστες. (Αυτή η λειτουργία έχει απενεργοποιηθεί επειδή το Fluid Checkout "
+"προσφέρει αυτή τη δυνατότητα. Οι αλλαγές σε αυτή την επιλογή δεν θα έχουν "
+"ισχύ)"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:85
+msgctxt "Image uploader."
+msgid "No image selected."
+msgstr "Δεν έχει επιλεγεί εικόνα."
+
+#: inc/admin/admin-settings-integrations.php:51
+msgid "Integrations"
+msgstr "Ενσωματώσεις"
+
+#: inc/admin/admin-settings-general.php:210
+msgid ""
+"It is recommended to keep this option checked to reduce the number of open "
+"input fields, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
+"fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-"
+"link\" target=\"_blank\">read the research</a>."
+msgstr ""
+"Συνιστάται να διατηρείτε αυτήν την επιλογή ενεργοποιημένη για να μειώσετε "
+"τον αριθμό των ανοικτών πεδίων εισαγωγής, <a href=\"https://baymard."
+"com/blog/checkout-flow-average-form-fields#1-address-line-2--company-name-"
+"can-safely-be-collapsed-behind-a-link\" target=\"_blank\">διαβάστε την "
+"έρευνα</a>."
+
+#: inc/admin/admin-settings-general.php:242
+msgid ""
+"It is recommended to leave this option checked. The billing address at "
+"checkout will start with the option \"Billing same as shipping\" checked by "
+"default. This will significantly reduce the number of open input fields at "
+"the checkout, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
+"fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
+"target=\"_blank\">read the research</a>."
+msgstr ""
+"Συνιστάται να αφήσετε αυτήν την επιλογή επιλεγμένη. Η διεύθυνση χρέωσης στο "
+"ταμείο θα ξεκινήσει με την επιλογή \"Τιμολόγηση ίδια με την αποστολή\" "
+"ενεργοποιημένη από προεπιλογή. Αυτό θα μειώσει σημαντικά τον αριθμό των "
+"ανοιχτών πεδίων εισαγωγής στο ταμείο, <a href=\"https://baymard."
+"com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-"
+"hide-the-fields-entirely\" target=\"_blank\">διαβάστε την έρευνα</a>."
+
+#: inc/admin/admin-settings-general.php:60
+msgid "Layout Options"
+msgstr "Επιλογές διάταξης"
+
+#: inc/admin/admin-settings-tools.php:102
+msgid "Load unminified assets"
+msgstr "Φορτώστε μη μειωμένα περιουσιακά στοιχεία"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42
+#: templates/fc/checkout-steps/global/form-login.php:59
+msgctxt "Log in link label at checkout contact step"
+msgid "Log in"
+msgstr "Συνδεθείτε"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:54
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue as a guest"
+msgstr "Ή συνεχίστε ως επισκέπτης"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:56
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue below"
+msgstr "Ή συνεχίστε παρακάτω"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:30
+msgid "Log in to your account"
+msgstr "Συνδεθείτε στο λογαριασμό σας"
+
+#. 1: user display name 2: logout url
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:32
+#, php-format
+msgid "Logged in as %1$s. <a href=\"%2$s\">Log out</a>"
+msgstr "Συνδεθήκατε ως %1$s. <a href=\"%2$s\">Έξοδος</a>"
+
+#: inc/admin/admin-settings-general.php:71
+msgid "Logo image"
+msgstr "Εικόνα λογότυπου"
+
+#: inc/admin/admin-settings-general.php:135
+msgid "Make the checkout progress bar stay visible while scrolling"
+msgstr "Κάντε τη γραμμή προόδου του ταμείου να παραμένει ορατή κατά την κύλιση"
+
+#: inc/admin/admin-settings-general.php:220
+msgid ""
+"Make the labels of optional field \"Add\" link button as <code>"
+"lowercase</code>. (ie. \"Add phone number\" instead of \"Add Phone Number\")"
+msgstr ""
+"Κάντε τις ετικέτες του προαιρετικού πεδίου \"Προσθήκη\" του κουμπιού "
+"συνδέσμου <κωδικός>μικρά γράμματα</κωδικός>. (π.χ. \"Προσθήκη αριθμού "
+"τηλεφώνου\" αντί για \"Προσθήκη αριθμού τηλεφώνου\")"
+
+#: inc/admin/admin-settings-general.php:155
+msgid "Make the order summary stay visible while scrolling"
+msgstr "Κάντε τη σύνοψη της παραγγελίας να παραμένει ορατή κατά την κύλιση"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:177
+msgid "Move the sign up checkbox to the contact step"
+msgstr "Μετακινήστε το πλαίσιο ελέγχου εγγραφής στο βήμα επαφής"
+
+#: inc/checkout-steps.php:716
+msgid "Multi-step"
+msgstr "Πολλαπλών βημάτων"
+
+#: inc/checkout-steps.php:2177
+msgid "My contact"
+msgstr "Η επαφή μου"
+
+#: inc/admin/admin-settings-integrations.php:95
+msgid ""
+"No integrations available at the moment on this section. The options related "
+"to each plugin will only appear here if that plugin is activated."
+msgstr ""
+"Δεν υπάρχουν διαθέσιμες ενσωματώσεις προς το παρόν σε αυτό το τμήμα. Οι "
+"επιλογές που σχετίζονται με κάθε πρόσθετο θα εμφανίζονται εδώ μόνο αν το "
+"συγκεκριμένο πρόσθετο είναι ενεργοποιημένο."
+
+#. %s shipping destination.
+#: templates/fc/checkout-steps/checkout/review-order-shipping.php:31
+msgctxt "No shipping method chosen label for the order summary"
+msgid "--"
+msgstr "--"
+
+#: inc/checkout-steps.php:2876
+msgid "Not selected yet."
+msgstr "Δεν έχει επιλεγεί ακόμη."
+
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:320
+msgctxt "Notice for no delivery or pickup options provided"
+msgid "None."
+msgstr "Καμία."
+
+#: inc/checkout-steps.php:2932
+msgctxt "Notice for no order notes provided"
+msgid "None."
+msgstr "Καμία."
+
+#: inc/admin/admin-settings-general.php:317
+msgid ""
+"Only applicable if use of coupon codes are enabled in the WooCommerce "
+"settings."
+msgstr ""
+"Ισχύει μόνο εάν η χρήση κωδικών κουπονιών είναι ενεργοποιημένη στις "
+"ρυθμίσεις του WooCommerce."
+
+#: inc/admin/admin-settings-general.php:327
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages."
+msgstr ""
+"Ισχύει μόνο όταν ο κωδικός κουπονιού εμφανίζεται ως ξεχωριστή ενότητα στις "
+"σελίδες του ταμείου ή του καλαθιού."
+
+#: inc/compat/themes/compat-theme-Impreza.php:54
+msgid ""
+"Only applicable when using the Impreza theme header at the checkout page."
+msgstr ""
+"Ισχύει μόνο όταν χρησιμοποιείτε την επικεφαλίδα του θέματος Impreza στη "
+"σελίδα πληρωμής."
+
+#: inc/admin/admin-settings-general.php:361
+msgid ""
+"Only display checkout sidebar widgets when at the last checkout step on "
+"mobile devices"
+msgstr ""
+"Εμφανίστε τα widgets της πλαϊνής μπάρας πληρωμής μόνο όταν βρίσκεστε στο "
+"τελευταίο βήμα πληρωμής σε κινητές συσκευές"
+
+#: inc/checkout-shipping-phone-field.php:88
+msgid "Only used for shipping-related questions."
+msgstr "Χρησιμοποιείται μόνο για ερωτήσεις που σχετίζονται με τη ναυτιλία."
+
+#: inc/admin/admin-settings-general.php:255
+#: inc/admin/admin-settings-general.php:281
+#: inc/admin/admin-settings-general.php:342
+msgid "Optional"
+msgstr "Προαιρετικό"
+
+#: inc/admin/admin-settings-general.php:208
+msgid "Optional fields"
+msgstr "Προαιρετικά πεδία"
+
+#: inc/admin/admin-settings-general.php:337
+msgid "Order notes"
+msgstr "Σημειώσεις παραγγελίας"
+
+#: inc/checkout-fields.php:72
+msgid "Order number and receipt will be sent to this email address."
+msgstr ""
+"Ο αριθμός παραγγελίας και η απόδειξη θα σταλούν σε αυτή τη διεύθυνση "
+"ηλεκτρονικού ταχυδρομείου."
+
+#: inc/checkout-steps.php:4178 inc/admin/admin-settings-general.php:145
+msgid "Order summary"
+msgstr "Περίληψη παραγγελίας"
+
+#: inc/compat/themes/compat-theme-woodmart.php:51
+msgid ""
+"Output the checkout steps section from the Woodmart theme when using Fluid "
+"Checkout header and footer"
+msgstr ""
+"Εξαγωγή της ενότητας των βημάτων πληρωμής από το θέμα Woodmart όταν "
+"χρησιμοποιείτε την κεφαλίδα και το υποσέλιδο Fluid Checkout"
+
+#: inc/admin/admin-settings-general.php:104
+msgid "Page background color"
+msgstr "Χρώμα φόντου σελίδας"
+
+#: inc/checkout-steps.php:3974
+msgid "Payment method"
+msgstr "Μέθοδος πληρωμής"
+
+#: inc/compat/plugins/compat-plugin-woo-delivery.php:123
+msgid "Pickup Date"
+msgstr "Ημερομηνία παραλαβής"
+
+#: inc/admin/admin-settings-general.php:163
+msgid "Place order"
+msgstr "Τοποθετήστε την παραγγελία"
+
+#. Next checkout step title
+#: inc/checkout-steps.php:1427
+#, php-format
+msgid "Proceed to %s"
+msgstr "Προχωρήστε στο %s"
+
+#: inc/admin/admin-settings-general.php:124
+msgid "Progress bar"
+msgstr "Γραμμή προόδου"
+
+#. Description of the plugin
+msgid ""
+"Provides a distraction free checkout experience for any WooCommerce store. "
+"Ask for shipping information before billing in a truly linear multi-step or "
+"one-step checkout and display a coupon code field at the checkout page that "
+"does not distract your customers."
+msgstr ""
+"Παρέχει μια εμπειρία πληρωμής χωρίς περισπασμούς για οποιοδήποτε κατάστημα "
+"WooCommerce. Ζητήστε πληροφορίες αποστολής πριν από την τιμολόγηση σε ένα "
+"πραγματικά γραμμικό checkout πολλαπλών βημάτων ή ενός βήματος και εμφανίστε "
+"ένα πεδίο κωδικού κουπονιού στη σελίδα checkout που δεν αποσπά την προσοχή "
+"των πελατών σας."
+
+#: inc/admin/admin-notice-review-request.php:47
+msgid "Rate the plugin"
+msgstr "Βαθμολογήστε το plugin"
+
+#: inc/admin/admin-settings-general.php:230
+msgid ""
+"Recommended only when most customers actually need the \"Address line 2\" "
+"field, or when getting the right shipping address is crucial (ie. if "
+"delivering food and other perishable products)."
+msgstr ""
+"Συνιστάται μόνο όταν οι περισσότεροι πελάτες χρειάζονται πραγματικά το πεδίο "
+"\"Γραμμή διεύθυνσης 2\", ή όταν η σωστή διεύθυνση αποστολής είναι ζωτικής "
+"σημασίας (π.χ. αν παραδίδετε τρόφιμα και άλλα ευπαθή προϊόντα)."
+
+#: inc/checkout-coupon-codes.php:281
+msgid "Remove"
+msgstr "Αφαιρέστε το"
+
+#: inc/admin/admin-settings-general.php:256
+#: inc/admin/admin-settings-general.php:282
+msgid "Required"
+msgstr "Απαιτούμενο"
+
+#: inc/checkout-steps.php:3430
+msgid "Same as shipping address"
+msgstr "Ίδια με τη διεύθυνση αποστολής"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:97
+#: inc/admin/admin-setting-type-fc-image-uploader.php:98
+#: inc/admin/admin-setting-type-fc-image-uploader.php:101
+msgid "Select an image"
+msgstr "Επιλέξτε μια εικόνα"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:176
+msgid "Sendinblue - WooCommerce Email Marketing"
+msgstr "Sendinblue - Μάρκετινγκ ηλεκτρονικού ταχυδρομείου WooCommerce"
+
+#: inc/admin/admin.php:87
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: inc/admin/admin-settings-integrations.php:83
+msgctxt "Settings section title"
+msgid "Integrations"
+msgstr "Ενσωματώσεις"
+
+#: inc/admin/admin-settings-general.php:178
+#: inc/admin/admin-settings-general.php:293
+msgid "Shipping address"
+msgstr "Διεύθυνση αποστολής"
+
+#: inc/checkout-steps.php:2442
+msgid "Shipping method"
+msgstr "Μέθοδος αποστολής"
+
+#: inc/admin/admin-settings-general.php:302
+msgid "Shipping methods"
+msgstr "Μέθοδοι αποστολής"
+
+#: inc/checkout-shipping-phone-field.php:87
+#: inc/admin/admin-settings-general.php:276
+msgid "Shipping phone"
+msgstr "Τηλέφωνο αποστολής"
+
+#: inc/checkout-steps.php:2418
+msgid "Shipping to"
+msgstr "Αποστολή σε"
+
+#: inc/checkout-steps.php:717
+msgid "Single step"
+msgstr "Ενιαίο βήμα"
+
+#: templates/fc/checkout-page-template/checkout/page-checkout-header.php:36
+#: templates/compat/themes/enfold/fc/header-checkout.php:239
+msgid "Skip to content"
+msgstr "Μετάβαση στο περιεχόμενο"
+
+#: inc/admin/admin-settings-general.php:165
+msgid "Some options might not be compatible with some plugins and themes."
+msgstr ""
+"Ορισμένες επιλογές ενδέχεται να μην είναι συμβατές με ορισμένα πρόσθετα και "
+"θέματα."
+
+#: inc/compat/themes/compat-theme-Impreza.php:53
+msgid "Spacing for site header at the checkout page (in pixels)"
+msgstr ""
+"Απόσταση για την επικεφαλίδα του ιστότοπου στη σελίδα πληρωμής (σε pixels)"
+
+#. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
+#: inc/checkout-steps.php:1683
+#, php-format
+msgid "Step %1$s of %2$s"
+msgstr "Βήμα %1$s του %2$s"
+
+#. %1$s the selected option text, %2$s the field label.
+#: inc/checkout-steps.php:2615
+#, php-format
+msgctxt "Substep review field format"
+msgid "%1$s"
+msgstr "%1$s"
+
+#. %1$s the selected option text, %2$s the field label.
+#: inc/checkout-steps.php:2620
+#, php-format
+msgctxt "Substep review field format: with label"
+msgid "%2$s: %1$s"
+msgstr "%2$s: %1$s"
+
+#: inc/checkout-steps.php:2034
+msgctxt "Substep review text"
+msgid "None."
+msgstr "Καμία."
+
+#: inc/admin/admin.php:88
+msgid "Support"
+msgstr "Υποστήριξη"
+
+#: inc/admin/admin-notice-review-request.php:44
+msgid "Thanks for choosing Fluid Checkout!"
+msgstr "Ευχαριστούμε που επιλέξατε το Fluid Checkout!"
+
+#: inc/checkout-validation.php:177
+msgid "The CNPJ number \"{cnpj_number}\" is invalid."
+msgstr "Ο αριθμός CNPJ \"{cnpj_number}\" είναι άκυρος."
+
+#: inc/checkout-validation.php:176
+msgid "The CPF number \"{cpf_number}\" is invalid."
+msgstr "Ο αριθμός CPF \"{cpf_number}\" είναι άκυρος."
+
+#: inc/admin/admin-settings-wc-shipping.php:50
+msgid ""
+"The shipping destination is always set to \"Default to customer shipping "
+"address\" when Fluid Checkout is activated. Customers can still provide "
+"different shipping and billing addresses during checkout, an option for "
+"setting the default billing address to be the same as the shipping address "
+"is available at WooCommerce > Settings > Fluid Checkout."
+msgstr ""
+"Ο προορισμός αποστολής ορίζεται πάντα σε \"Προεπιλογή της διεύθυνσης "
+"αποστολής του πελάτη\" όταν είναι ενεργοποιημένο το Fluid Checkout. Οι "
+"πελάτες μπορούν ακόμα να παρέχουν διαφορετικές διευθύνσεις αποστολής και "
+"χρέωσης κατά τη διάρκεια της πληρωμής, μια επιλογή για τον καθορισμό της "
+"προεπιλεγμένης διεύθυνσης χρέωσης να είναι η ίδια με τη διεύθυνση αποστολής "
+"είναι διαθέσιμη στο WooCommerce > Ρυθμίσεις > Fluid Checkout."
+
+#: inc/compat/themes/compat-theme-Impreza.php:52
+msgid "Theme Impreza"
+msgstr "Θέμα Impreza"
+
+#: inc/compat/themes/compat-theme-woodmart.php:50
+msgid "Theme Woodmart"
+msgstr "Θέμα Woodmart"
+
+#: inc/admin/admin-settings-general.php:352
+msgid "These widget areas are used to add trust symbols on the checkout page."
+msgstr ""
+"Αυτές οι περιοχές widget χρησιμοποιούνται για την προσθήκη συμβόλων "
+"εμπιστοσύνης στη σελίδα πληρωμής."
+
+#: inc/checkout-validation.php:167
+msgid "This field does not match the related field value."
+msgstr "Αυτό το πεδίο δεν ταιριάζει με την τιμή του σχετικού πεδίου."
+
+#: inc/checkout-validation.php:165
+msgid "This is a required field."
+msgstr "Αυτό το πεδίο είναι υποχρεωτικό."
+
+#: inc/checkout-validation.php:166
+msgid "This is not a valid email address."
+msgstr "Αυτή δεν είναι έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου."
+
+#: inc/admin/admin-settings-tools.php:51
+msgid "Tools"
+msgstr "Εργαλεία"
+
+#: inc/admin/admin-settings-tools.php:84
+msgid "Troubleshooting"
+msgstr "Αντιμετώπιση προβλημάτων"
+
+#: inc/admin/admin.php:95
+msgid "Upgrade to PRO"
+msgstr "Αναβάθμιση σε PRO"
+
+#: inc/admin/admin-settings-general.php:86
+msgid "Use Fluid Checkout header and footer"
+msgstr "Χρήση κεφαλίδας και υποσέλιδου Fluid Checkout"
+
+#: inc/admin/admin-settings-tools.php:93
+msgid ""
+"Using debug mode affects the website performance. Only use this option while "
+"troubleshooting."
+msgstr ""
+"Η χρήση της λειτουργίας εντοπισμού σφαλμάτων επηρεάζει την απόδοση του "
+"ιστότοπου. Χρησιμοποιήστε αυτή την επιλογή μόνο κατά την αντιμετώπιση "
+"προβλημάτων."
+
+#: inc/admin/admin-settings-general.php:81
+msgid ""
+"We recommend using the Fluid Checkout header and footer to avoid "
+"distractions at the checkout page. <a href=\"https://baymard.com/blog/cart-"
+"abandonment\" target=\"_blank\">Read the research about cart abandonment</a>."
+msgstr ""
+"Συνιστούμε να χρησιμοποιείτε την κεφαλίδα και το υποσέλιδο Fluid Checkout "
+"για να αποφύγετε την απόσπαση της προσοχής στη σελίδα πληρωμής. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">"
+"Διαβάστε την έρευνα σχετικά με την εγκατάλειψη του καλαθιού</a>."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:178
+msgid ""
+"When enabled, the checkbox will be moved to the contact step independently "
+"of the display location defined in the Sendinblue plugin settings."
+msgstr ""
+"Όταν είναι ενεργοποιημένο, το πλαίσιο ελέγχου θα μετακινηθεί στο βήμα επαφής "
+"ανεξάρτητα από τη θέση εμφάνισης που ορίζεται στις ρυθμίσεις του πρόσθετου "
+"Sendinblue."
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
+msgid ""
+"When using Fluid Checkout, the multistep feature from the Germanized PRO "
+"plugin becomes unnecessary and can cause <strong>critical errors while "
+"processing new orders</strong>. Please disable the Germanized PRO multistep "
+"checkout feature in the plugin settings."
+msgstr ""
+"Όταν χρησιμοποιείτε το Fluid Checkout, η λειτουργία πολλαπλών βημάτων από το "
+"plugin Germanized PRO καθίσταται περιττή και μπορεί να προκαλέσει <strong>"
+"κρίσιμα σφάλματα κατά την επεξεργασία νέων παραγγελιών</strong>. Παρακαλούμε "
+"απενεργοποιήστε τη λειτουργία πληρωμής πολλαπλών βημάτων του Germanized PRO "
+"στις ρυθμίσεις του πρόσθετου."
+
+#: fluid-checkout.php:497
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: inc/admin/admin-notice-review-request.php:45
+msgid ""
+"You have been using the plugin for a while now. How do you like it so far? "
+"<br>Please give us a quick rating, we appreciate every bit of feedback and "
+"it encourages us to keep improving the plugin :)"
+msgstr ""
+"Χρησιμοποιείτε το πρόσθετο εδώ και αρκετό καιρό. Πώς σας αρέσει μέχρι "
+"στιγμής <br>Παρακαλούμε δώστε μας μια γρήγορη βαθμολογία, εκτιμούμε κάθε "
+"σχόλιο και μας ενθαρρύνει να συνεχίσουμε να βελτιώνουμε το πρόσθετο :)"
+
+#: templates/fc/checkout-steps/checkout/payment.php:48
+#, php-format
+msgid "Your order has a total amount due of %s. No further payment is needed."
+msgstr ""
+"Η παραγγελία σας έχει συνολικό οφειλόμενο ποσό %s. Δεν απαιτείται περαιτέρω "
+"πληρωμή."
