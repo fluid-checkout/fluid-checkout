@@ -369,14 +369,14 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
   min-height: 60px;
   background-color: var(--fluidcheckout--header--background-color, var(--fluidcheckout--color--white, #fff));
   border-bottom: var(--fluidcheckout--header--border-style--large-screen, solid) var(--fluidcheckout--header--border-width, 0) var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
-  box-shadow: 0 5px 15px var(--fluidcheckout--header--shadow-color, rgba(0, 0, 0, 0.15));
+  box-shadow: 0 3px 8px var(--fluidcheckout--header--shadow-color, rgba(0, 0, 0, 0.15));
 }
 @media (min-width: 1000px) {
   .fc-checkout-header {
     position: static;
     min-height: 80px;
     border-bottom: var(--fluidcheckout--header--border-style--large-screen, solid) var(--fluidcheckout--header--border-width--large-screen, 1px) var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
-    box-shadow: 0 5px 15px var(--fluidcheckout--header--shadow-color--large-screen, transparent);
+    box-shadow: 0 3px 8px var(--fluidcheckout--header--shadow-color--large-screen, transparent);
   }
 }
 
@@ -534,7 +534,7 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
   background-color: var(--fluidcheckout--color--white, #fff);
   border: solid 1px var(--fluidcheckout--border-color--light, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
   border-radius: 8px;
-  box-shadow: 0 5px 15px var(--fluidcheckout--shadow-color--dark, rgba(0, 0, 0, 0.15));
+  box-shadow: 0 3px 8px var(--fluidcheckout--shadow-color--dark, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
   font-size: 15px;
   text-decoration: none;
   color: inherit;

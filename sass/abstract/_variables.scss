@@ -32,14 +32,13 @@ $border-light-color:            var( --fluidcheckout--border-color--light, $ligh
 
 // Shadows
 $box-shadow-offset-x:           0 !default;
-$box-shadow-offset-y:           remsize( .5rem ) !default;
-$box-shadow-blur-radius:        remsize( 1.5rem ) !default;
+$box-shadow-offset-y:           remsize( .3rem ) !default;
+$box-shadow-blur-radius:        remsize( .8rem ) !default;
 $box-shadow-offset-x--small:    0 !default;
-$box-shadow-offset-y--small:    remsize( .3rem ) !default;
-$box-shadow-blur-radius--small: remsize( 1rem ) !default;
-$box-shadow-darker:             $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--shadow-color--darker, rgba( 0, 0, 0, .30 ) ) !default;
-$box-shadow-dark:               $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--shadow-color--dark, rgba( 0, 0, 0, .15 ) ) !default;
-$box-shadow-light:              $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--shadow-color--light, rgba( 255, 255, 255, .15 ) ) !default;
+$box-shadow-offset-y--small:    remsize( .1rem ) !default;
+$box-shadow-blur-radius--small: remsize( .5rem ) !default;
+$box-shadow-darker:             $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--shadow-color--darker, $light-grey ) !default;
+$box-shadow-dark:               $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--shadow-color--dark, $lighter-grey ) !default;
 
 // Outline focus
 $focus-outline-field:           solid remsize( .2rem ) $dark-grey !default;
@@ -399,6 +398,8 @@ $checkout-step-border-width:                     var( --fluidcheckout--section--
 $checkout-step-border-color:                     var( --fluidcheckout--section--border-color, $border-color ) !default;
 $checkout-step-border:                           solid $checkout-step-border-width $checkout-step-border-color !default;
 $checkout-step-background-color:                 var( --fluidcheckout--section--background-color, $white ) !default;
+$checkout-step-box-shadow:                       $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--section--shadow-color, transparent ) !default;
+$checkout-step-box-shadow--large-screen:         $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--section--shadow-color--large-screen, transparent ) !default;
 
 $checkout-substep-title-check-icon-size:         $icon-size-small !default;
 $checkout-substep-title-check-icon-spacing:      0 !default;
