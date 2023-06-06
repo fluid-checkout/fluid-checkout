@@ -378,6 +378,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Translation to Greek (Greece).
+
 = 2.5.1 - 2023-05-31 =
 
 * Added: Compatibility with plugin GP Premium by GeneratePress.
