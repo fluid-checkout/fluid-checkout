@@ -288,7 +288,7 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
   body:not(.has-checkout-must-login-notice) .fc-progress-bar,
   body:not(.has-checkout-must-login-notice) .fc-inside {
     float: right;
-    width: calc( 62.5% - 50px );
+    width: calc( 62.5% - var(--fluidcheckout--columns--gap, 50px) );
     padding-top: 5px;
     padding-right: 0;
     padding-left: 0;

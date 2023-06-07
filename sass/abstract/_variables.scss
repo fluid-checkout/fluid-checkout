@@ -340,7 +340,7 @@ $checkout-logo-height--large-screen:        remsize( 4rem ) !default;
 // ----------------------------------------
 // CHECKOUT LAYOUT
 
-$checkout-column-gap--large-screen:         $global-spacing-medium !default;
+$checkout-column-gap--large-screen:         var( --fluidcheckout--columns--gap, $global-spacing-medium ) !default;
 $checkout-steps-width--large-screen:        62.5% !default;
 $checkout-overview-width--large-screen:     #{ 100% - $checkout-steps-width--large-screen } !default;
 
