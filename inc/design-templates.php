@@ -29,7 +29,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_footer_custom_styles' ), 10 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
 	}
 
 
@@ -48,7 +48,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_footer_custom_styles' ), 10 );
 
 		// CSS variables
-		remove_action( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
+		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
 	}
 
 
