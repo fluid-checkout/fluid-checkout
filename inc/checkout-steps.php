@@ -284,12 +284,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// General
 		remove_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
-		// Custom styles
-		remove_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
-		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_header_custom_styles' ), 10 );
-		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
-		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_footer_custom_styles' ), 10 );
-
 		// Enqueue
 		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
