@@ -127,6 +127,7 @@ form.woocommerce-checkout {
 .fc-content form.woocommerce-checkout {
   clear: both;
   float: none;
+  margin: 0 !important;
 }
 
 .fc-content form.woocommerce-checkout:after {
