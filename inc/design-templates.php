@@ -106,7 +106,8 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	public function get_design_template_options() {
 		return array(
 			'classic'     => array( 'label' => __( 'Classic', 'fluid-checkout' ) ),
-			'modern'      => array( 'label' => __( 'Modern', 'fluid-checkout' ), 'disabled' => true ),
+			'boxed'       => array( 'label' => __( 'Boxed', 'fluid-checkout' ), 'disabled' => true ),
+			'split'       => array( 'label' => __( 'Split', 'fluid-checkout' ), 'disabled' => true ),
 			'minimalist'  => array( 'label' => __( 'Minimalist', 'fluid-checkout' ), 'disabled' => true ),
 		);
 	}
@@ -327,7 +328,6 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 			'--fluidcheckout--shadow-color--darker'     => 'rgba( 255, 255, 255, .30 )',
 			'--fluidcheckout--shadow-color--dark'       => 'rgba( 255, 255, 255, .15 )',
-			'--fluidcheckout--shadow-color--light'      => 'rgba( 0, 0, 0, .15 )',
 		);
 	}
 
