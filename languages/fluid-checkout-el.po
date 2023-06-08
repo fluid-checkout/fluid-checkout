@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-29 17:17+0000\n"
-"PO-Revision-Date: 2023-06-06 12:34+0000\n"
+"PO-Revision-Date: 2023-06-08 07:20+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Greek\n"
 "Language: el\n"
@@ -752,7 +752,7 @@ msgstr "Τοποθετήστε την παραγγελία"
 #: inc/checkout-steps.php:1427
 #, php-format
 msgid "Proceed to %s"
-msgstr "Προχωρήστε στο %s"
+msgstr "Προχωρήστε στην %s"
 
 #: inc/admin/admin-settings-general.php:124
 msgid "Progress bar"
@@ -863,7 +863,7 @@ msgstr ""
 #: inc/checkout-steps.php:1683
 #, php-format
 msgid "Step %1$s of %2$s"
-msgstr "Βήμα %1$s του %2$s"
+msgstr "Βήμα %1$s από %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
 #: inc/checkout-steps.php:2615
