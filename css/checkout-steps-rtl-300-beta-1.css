@@ -1961,8 +1961,8 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 }
 @media (max-width: 999px) {
   .fc-wrapper .fc-checkout-order-review[data-flyout].is-open .fc-checkout-order-review__inner {
-    border: 0;
-    border-radius: 0;
+    border: 0 !important;
+    border-radius: 0 !important;
   }
 }
 
