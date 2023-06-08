@@ -367,8 +367,8 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	overflow: auto;
 
 	@media (#{$bp-smaller-than-desktop}) {
-		border: 0;
-		border-radius: 0;
+		border: 0 !important; // Needed to override design template styles
+		border-radius: 0 !important; // Needed to override design template styles
 	}
 }
 

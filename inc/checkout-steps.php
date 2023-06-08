@@ -179,7 +179,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		add_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_order_review_background_inline_styles' ), 30 );
 
 		// Order summary cart items details
 		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_product_name' ), 10, 3 );
@@ -283,12 +282,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// General
 		remove_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
-
-		// Custom styles
-		remove_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
-		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_header_custom_styles' ), 10 );
-		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
-		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_footer_custom_styles' ), 10 );
 
 		// Enqueue
 		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
@@ -405,7 +398,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		remove_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		remove_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
-		remove_action( 'wp_enqueue_scripts', array( $this, 'add_order_review_background_inline_styles' ), 30 );
 
 		// Order summary cart items details
 		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_product_name' ), 10, 3 );
@@ -4326,22 +4318,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Adds order summary background highlight color as inline css.
-	 */
-	public function add_order_review_background_inline_styles() {
-		$color_esc = esc_attr( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_order_review_highlight_color' ) );
-
-		// Bail if color is not defined
-		if ( empty( $color_esc ) ) { return; }
-
-		// TODO: Use CSS variables to change color
-		$custom_css = "body div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner { background-color: $color_esc; }";
-		wp_add_inline_style( 'fc-checkout-layout', $custom_css );
-	}
-
-
-
-	/**
 	 * Output the cart item remove button.
 	 *
 	 * @param   array       $cart_item      Cart item object.
@@ -4884,17 +4860,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Add the custom styles for the cart header background color.
-	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->maybe_add_checkout_header_custom_styles()` instead.
-	 */
-	public function add_checkout_header_custom_styles( $custom_styles ) {
-		// Add deprecation notice
-		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_DesignTemplates::instance()->add_checkout_header_custom_styles() instead.', '3.0.0' );
-
-		return FluidCheckout_DesignTemplates::instance()->add_checkout_header_custom_styles( $custom_styles );
-	}
-
-	/**
 	 * Add the custom styles for the cart page background color.
 	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->add_checkout_page_custom_styles()` instead.
 	 */
@@ -4906,14 +4871,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Add the custom styles for the cart header background color.
+	 * @deprecated            Use CSS variable `--fluidcheckout--header--background-color` instead.
+	 */
+	public function add_checkout_header_custom_styles( $custom_styles ) {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use CSS variable `--fluidcheckout--header--background-color` instead.', '3.0.0' );
+
+		return $custom_styles;
+	}
+
+	/**
 	 * Add the custom styles for the cart footer background color.
-	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->add_checkout_footer_custom_styles()` instead.
+	 * @deprecated            Use CSS variable `--fluidcheckout--footer--background-color` instead.
 	 */
 	public function add_checkout_footer_custom_styles( $custom_styles ) {
 		// Add deprecation notice
-		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_DesignTemplates::instance()->add_checkout_footer_custom_styles() instead.', '3.0.0' );
+		wc_doing_it_wrong( __FUNCTION__, 'Use CSS variable `--fluidcheckout--footer--background-color` instead.', '3.0.0' );
 
-		return FluidCheckout_DesignTemplates::instance()->add_checkout_footer_custom_styles( $custom_styles );
+		return $custom_styles;
 	}
 
 
