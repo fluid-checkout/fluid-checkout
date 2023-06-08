@@ -25,8 +25,8 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		// Custom styles
 		add_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
 		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
-		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 10 );
-		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 10 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 100 );
 
 		// CSS variables
 		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
@@ -44,8 +44,8 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		// Custom styles
 		remove_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
 		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
-		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 10 );
-		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 10 );
+		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100 );
+		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 100 );
 
 		// CSS variables
 		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
