@@ -22,14 +22,15 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		// General
 		add_filter( 'body_class', array( $this, 'maybe_add_body_class' ), 10 );
 
+		// CSS variables
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 100 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_order_summary' ), 100 );
+
 		// Custom styles
 		add_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
 		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
-		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100 );
-		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 100 );
-
-		// CSS variables
-		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
 	}
 
 
@@ -41,14 +42,15 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		// General
 		remove_filter( 'body_class', array( $this, 'maybe_add_body_class' ), 10 );
 
+		// CSS variables
+		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
+		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100 );
+		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 100 );
+		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_order_summary' ), 100 );
+
 		// Custom styles
 		remove_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
 		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
-		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100 );
-		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 100 );
-
-		// CSS variables
-		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
 	}
 
 
@@ -358,6 +360,42 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $css_variables; }
 
 		return $this->add_css_variables_footer( $css_variables );
+	}
+
+
+
+	/**
+	 * Maybe add CSS variables for footer customization.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables_order_summary( $css_variables ) {
+		// Get footer background color
+		$color_esc = esc_attr( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_order_review_highlight_color' ) );
+
+		// Bail if color is empty
+		if ( empty( $color_esc ) ) { return $css_variables; }
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root body.woocommerce-page[class*="theme-"][class*="has-fc-design-template"]' => array(
+				'--fluidcheckout--order-summary--background-color' => $color_esc,
+			),
+		);
+
+		return $this->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+	/**
+	 * Maybe add CSS variables for order summary.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function maybe_add_css_variables_order_summary( $css_variables ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $css_variables; }
+
+		return $this->add_css_variables_order_summary( $css_variables );
 	}
 
 }
