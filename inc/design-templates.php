@@ -304,7 +304,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 		// Add CSS variables
 		$new_css_variables = array(
-			':root' => array(
+			':root body.woocommerce-page[class*="theme-"][class*="has-fc-design-template"]' => array(
 				'--fluidcheckout--header--background-color' => $header_background_color_esc,
 			),
 		);
@@ -340,7 +340,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 		// Add CSS variables
 		$new_css_variables = array(
-			':root' => array(
+			':root body.woocommerce-page[class*="theme-"][class*="has-fc-design-template"]' => array(
 				'--fluidcheckout--footer--background-color' => $footer_background_color_esc,
 			),
 		);
