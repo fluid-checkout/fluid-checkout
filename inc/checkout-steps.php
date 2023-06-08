@@ -179,7 +179,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		add_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
-		// add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_order_summary' ), 100 );
 
 		// Order summary cart items details
 		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_product_name' ), 10, 3 );
@@ -399,7 +398,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		remove_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		remove_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
-		// remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_order_summary' ), 100 );
 
 		// Order summary cart items details
 		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_product_name' ), 10, 3 );
