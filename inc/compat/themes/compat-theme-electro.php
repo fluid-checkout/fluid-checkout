@@ -25,12 +25,12 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
-		// Buttons
-		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
-
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
+		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 	}
 
 
