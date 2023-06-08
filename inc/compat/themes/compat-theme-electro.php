@@ -27,6 +27,10 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 	}
 
 
@@ -38,6 +42,22 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_shipping', 'electro_shipping_details_header', 0 );
 		remove_action( 'woocommerce_checkout_before_order_review', 'electro_wrap_order_review', 0 );
 		remove_action( 'woocommerce_checkout_after_order_review', 'electro_wrap_order_review_close', 0 );
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using the plugin's header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = '.site-header.stick-this';
+
+		return $attributes;
 	}
 
 
