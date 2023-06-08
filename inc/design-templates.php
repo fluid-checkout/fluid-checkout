@@ -24,9 +24,9 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 		// Custom styles
 		add_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
-		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_header_custom_styles' ), 10 );
 		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
-		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_footer_custom_styles' ), 10 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 10 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 10 );
 
 		// CSS variables
 		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
@@ -43,9 +43,9 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 		// Custom styles
 		remove_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
-		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_header_custom_styles' ), 10 );
 		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
-		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_footer_custom_styles' ), 10 );
+		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 10 );
+		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 10 );
 
 		// CSS variables
 		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
@@ -227,22 +227,6 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 
 	/**
-	 * Add the custom styles for the checkout header background color.
-	 */
-	public function add_checkout_header_custom_styles( $custom_styles ) {		
-		// Get header background color
-		$header_background_color = trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_header_background_color' ) );
-
-		// Bail if color is empty
-		if ( empty( $header_background_color ) ) { return $custom_styles; }
-
-		// TODO: Use CSS variables to change color
-		$custom_styles .= 'header.fc-checkout-header{background-color:'. esc_attr( $header_background_color ) .'}';
-
-		return $custom_styles;
-	}
-
-	/**
 	 * Add the custom styles for the checkout page background color.
 	 */
 	public function add_checkout_page_custom_styles( $custom_styles ) {		
@@ -252,38 +236,9 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		// Bail if color is empty
 		if ( empty( $page_background_color ) ) { return $custom_styles; }
 
-		// TODO: Use CSS variables to change color
 		$custom_styles .= 'body.has-fluid-checkout{background-color:'. esc_attr( $page_background_color ) .'}';
 
 		return $custom_styles;
-	}
-
-	/**
-	 * Add the custom styles for the checkout footer background color.
-	 */
-	public function add_checkout_footer_custom_styles( $custom_styles ) {
-		// Get footer background color
-		$footer_background_color = trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_footer_background_color' ) );
-
-		// Bail if color is empty
-		if ( empty( $footer_background_color ) ) { return $custom_styles; }
-
-		// TODO: Use CSS variables to change color
-		$custom_styles .= 'footer.fc-checkout-footer{background-color:'. esc_attr( $footer_background_color ) .'}';
-
-		return $custom_styles;
-	}
-
-
-
-	/**
-	 * Maybe add the custom styles for the checkout header background color.
-	 */
-	public function maybe_add_checkout_header_custom_styles( $custom_styles ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
-
-		return $this->add_checkout_header_custom_styles( $custom_styles );
 	}
 
 	/**
@@ -294,16 +249,6 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
 
 		return $this->add_checkout_page_custom_styles( $custom_styles );
-	}
-
-	/**
-	 * Maybe add the custom styles for the checkout footer background color.
-	 */
-	public function maybe_add_checkout_footer_custom_styles( $custom_styles ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
-
-		return $this->add_checkout_footer_custom_styles( $custom_styles );
 	}
 
 
@@ -341,6 +286,78 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_dark_mode_styles' ) ) { return $css_variables; }
 
 		return array_merge( $css_variables, array( ':root' => $this->get_css_variables_dark_mode() ) );
+	}
+
+
+
+	/**
+	 * Maybe add CSS variables for header customization.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables_header( $css_variables ) {
+		// Get header background color
+		$header_background_color_esc = esc_attr( trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_header_background_color' ) ) );
+
+		// Bail if color is empty
+		if ( empty( $header_background_color_esc ) ) { return $css_variables; }
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				'--fluidcheckout--header--background-color' => $header_background_color_esc,
+			),
+		);
+
+		return $this->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+	/**
+	 * Maybe add CSS variables for header customization.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function maybe_add_css_variables_header( $css_variables ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $css_variables; }
+
+		return $this->add_css_variables_header( $css_variables );
+	}
+
+
+
+	/**
+	 * Maybe add CSS variables for footer customization.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables_footer( $css_variables ) {
+		// Get footer background color
+		$footer_background_color_esc = esc_attr( trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_footer_background_color' ) ) );
+
+		// Bail if color is empty
+		if ( empty( $footer_background_color_esc ) ) { return $css_variables; }
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				'--fluidcheckout--footer--background-color' => $footer_background_color_esc,
+			),
+		);
+
+		return $this->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+	/**
+	 * Maybe add CSS variables for footer customization.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function maybe_add_css_variables_footer( $css_variables ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $css_variables; }
+
+		return $this->add_css_variables_footer( $css_variables );
 	}
 
 }

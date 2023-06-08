@@ -4889,17 +4889,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Add the custom styles for the cart header background color.
-	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->maybe_add_checkout_header_custom_styles()` instead.
-	 */
-	public function add_checkout_header_custom_styles( $custom_styles ) {
-		// Add deprecation notice
-		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_DesignTemplates::instance()->add_checkout_header_custom_styles() instead.', '3.0.0' );
-
-		return FluidCheckout_DesignTemplates::instance()->add_checkout_header_custom_styles( $custom_styles );
-	}
-
-	/**
 	 * Add the custom styles for the cart page background color.
 	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->add_checkout_page_custom_styles()` instead.
 	 */
@@ -4911,14 +4900,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Add the custom styles for the cart header background color.
+	 * @deprecated            Use CSS variable `--fluidcheckout--header--background-color` instead.
+	 */
+	public function add_checkout_header_custom_styles( $custom_styles ) {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use CSS variable `--fluidcheckout--header--background-color` instead.', '3.0.0' );
+
+		return $custom_styles;
+	}
+
+	/**
 	 * Add the custom styles for the cart footer background color.
-	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->add_checkout_footer_custom_styles()` instead.
+	 * @deprecated            Use CSS variable `--fluidcheckout--footer--background-color` instead.
 	 */
 	public function add_checkout_footer_custom_styles( $custom_styles ) {
 		// Add deprecation notice
-		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_DesignTemplates::instance()->add_checkout_footer_custom_styles() instead.', '3.0.0' );
+		wc_doing_it_wrong( __FUNCTION__, 'Use CSS variable `--fluidcheckout--footer--background-color` instead.', '3.0.0' );
 
-		return FluidCheckout_DesignTemplates::instance()->add_checkout_footer_custom_styles( $custom_styles );
+		return $custom_styles;
 	}
 
 

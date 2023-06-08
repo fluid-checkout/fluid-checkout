@@ -610,8 +610,13 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
 }
 
 .fc-checkout-footer {
-  border-top: solid 1px var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
-  background-color: var(--fluidcheckout--color--white, #fff);
+  border-top: var(--fluidcheckout--footer--border-style--large-screen, solid) var(--fluidcheckout--footer--border-width, 0) var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+  background-color: var(--fluidcheckout--footer--background-color, var(--fluidcheckout--color--white, #fff));
+}
+@media (min-width: 1000px) {
+  .fc-checkout-footer {
+    border-top: var(--fluidcheckout--footer--border-style--large-screen, solid) var(--fluidcheckout--footer--border-width--large-screen, 1px) var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+  }
 }
 
 .fc-checkout-footer__inner {

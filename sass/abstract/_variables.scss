@@ -338,6 +338,20 @@ $checkout-logo-height--large-screen:        remsize( 4rem ) !default;
 
 
 // ----------------------------------------
+// CHECKOUT FOOTER
+
+$checkout-footer-background-color:          var( --fluidcheckout--footer--background-color, $white ) !default;
+$checkout-footer-border:                    var( --fluidcheckout--footer--border-style--large-screen, solid ) var( --fluidcheckout--footer--border-width, 0 ) $border-color !default;
+$checkout-footer-border--large-screen:      var( --fluidcheckout--footer--border-style--large-screen, solid ) var( --fluidcheckout--footer--border-width--large-screen, remsize( .1rem ) ) $border-color !default;
+
+// END - CHECKOUT FOOTER
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
 // CHECKOUT LAYOUT
 
 $checkout-column-gap--large-screen:         var( --fluidcheckout--columns--gap, $global-spacing-medium ) !default;
