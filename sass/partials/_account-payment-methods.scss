@@ -1,0 +1,7 @@
+// ------------------------------------
+// ACCOUNT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #payment ul.payment_methods {
+	margin-bottom: $global-spacing !important; // Needed to override theme styles
+}

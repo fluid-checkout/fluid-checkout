@@ -37,12 +37,17 @@ body#{ $_body-page-selector } div.woocommerce .fc-wrapper #order_review:after {
 
 
 body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-review__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding-bottom: ( $global-spacing-extra-small + remsize( .2rem ) );
 	text-align: $alignment-left;
 }
 
 body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-review-title {
 	display: inline-block;
-	margin: 0 0 remsize( 1.5rem );
+	margin: 0;
 	padding: 0;
 	width: auto;
 	color: $checkout-substep-title-color;
@@ -50,7 +55,7 @@ body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-rev
 	font-size: $checkout-substep-title-font-size;
 	text-transform: $checkout-substep-title-text-transform;
 	text-align: $checkout-substep-title-text-align;
-	line-height: 1;
+	line-height: 1.2;
 	overflow: unset;
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-title-font-size--large-screen; }
@@ -337,7 +342,7 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	display: block;
 	height: auto;
 	margin: $order-summary-table-margin;
-	padding: remsize( 1.2rem ) $order-summary-cell-padding-horizontal 0;
+	padding: ( $global-spacing-extra-small + remsize( .2rem ) ) $order-summary-cell-padding-horizontal 0;
 	width: $order-summary-table-width;
 	max-width: $order-summary-table-width;
 	background-color: $order-summary-background-color;
@@ -451,7 +456,7 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	padding: $order-summary-edit-cart-button-padding;
 	font-size: $order-summary-edit-cart-button-font-size--large-screen;
 	font-weight: $order-summary-edit-cart-button-font-weight;
-	line-height: 1;
+	line-height: 1.2;
 	text-decoration: $order-summary-edit-cart-button-text-decoration;
 	color: $order-summary-edit-cart-button-color;
 	background-color: $order-summary-edit-cart-button-background-color;

@@ -539,7 +539,7 @@ $order-summary-font-size--large-screen:          $font-size-small--large-screen 
 
 $order-summary-edit-cart-button-margin:          0 !default;
 $order-summary-edit-cart-button-right:           #{ - $global-spacing-extra-small } !default;
-$order-summary-edit-cart-button-padding:         $global-spacing-tiny $global-spacing-extra-small !default;
+$order-summary-edit-cart-button-padding:         0 $global-spacing-extra-small !default;
 $order-summary-edit-cart-button-font-size--large-screen:  $checkout-substep-action-button-font-size--large-screen !default;
 $order-summary-edit-cart-button-font-weight:     $checkout-substep-action-button-font-weight !default;
 $order-summary-edit-cart-button-text-decoration: $checkout-substep-action-button-text-decoration !default;
