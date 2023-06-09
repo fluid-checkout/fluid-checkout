@@ -1798,7 +1798,8 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
   background-color: transparent;
 }
 
-div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table img {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > img,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > a img {
   float: right;
   margin-right: calc(-1 * ( var(--fluidcheckout--order-summary--image-padding, 3px) + 5px ));
   padding: var(--fluidcheckout--order-summary--image-padding, 3px);
@@ -1810,7 +1811,8 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
   box-shadow: 0 3px 10px var(--fluidcheckout--order-summary--image-shadow-color, transparent);
 }
 @media (min-width: 1000px) {
-  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table img {
+  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > img,
+  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > a img {
     width: var(--fluidcheckout--order-summary--image-width--large-screen, 60px) !important;
     height: auto !important;
   }
