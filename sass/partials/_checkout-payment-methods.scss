@@ -21,7 +21,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 body#{ $_body-page-selector } div.woocommerce .fc-wrapper #payment ul.payment_methods,
 body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #payment ul.payment_methods {
 	list-style-type: none;
-	margin: 0;
+	margin: 0 !important; // Needed to override theme styles
 	padding: 0;
 	display: block;
 	width: 100%;

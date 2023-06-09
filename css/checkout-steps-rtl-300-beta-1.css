@@ -957,7 +957,7 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 body.woocommerce-checkout div.woocommerce .fc-wrapper #payment ul.payment_methods,
 body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payment ul.payment_methods {
   list-style-type: none;
-  margin: 0;
+  margin: 0 !important;
   padding: 0;
   display: block;
   width: 100%;

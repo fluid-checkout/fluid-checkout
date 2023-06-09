@@ -37,7 +37,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
 body.woocommerce-add-payment-method div.woocommerce .fc-wrapper #payment ul.payment_methods,
 body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrapper #payment ul.payment_methods {
   list-style-type: none;
-  margin: 0;
+  margin: 0 !important;
   padding: 0;
   display: block;
   width: 100%;
@@ -272,4 +272,8 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
 
 .fc-wrapper #payment .payment_methods > .woocommerce-notice {
   margin-bottom: 0;
+}
+
+body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrapper #payment ul.payment_methods {
+  margin-bottom: 30px !important;
 }
