@@ -4,11 +4,13 @@
 // ORDER SUMMARY
 // ------------------------------------
 
-div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .tc-associated-table-product .product-details {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .tc-associated-table-product .product-details,
+.fc-wrapper table.cart .tc-associated-table-product .product-details {
 	padding-#{ $alignment-left }: $global-spacing-small + $global-spacing-small;
 }
 
-div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .tc-associated-table-product .product-details .tc-associated-table-product-name:before {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .tc-associated-table-product .product-details .tc-associated-table-product-name:before,
+.fc-wrapper table.cart .tc-associated-table-product .product-details .tc-associated-table-product-name:before {
 	// CHANGE: Copied from plugin woocommerce-tm-extra-product-options
 	font-family: tc-fontawesome, sans-serif;
 	font-size: 1em;
@@ -26,14 +28,24 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 
 
 
-div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .tc-associated-table-product .tc-associated-table-product-indent {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .tc-associated-table-product .tc-associated-table-product-indent,
+.fc-wrapper table.cart .tc-associated-table-product .tc-associated-table-product-indent {
 	margin: 0;
 	padding: 0;
 }
 
 
 
-div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .tc-associated-table-product .tc-associated-table-product-price:before {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .tc-associated-table-product .tc-associated-table-product-price:before,
+.fc-wrapper table.cart .tc-associated-table-product .tc-associated-table-product-price:before {
 	content: '';
 	display: none;
+}
+
+
+
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .fc-tc-associated-product-quantity,
+.fc-wrapper table.cart .fc-tc-associated-product-quantity {
+	display: inline-block;
+	padding-top: $global-spacing-tiny;
 }
