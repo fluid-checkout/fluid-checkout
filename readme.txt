@@ -381,6 +381,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Translation to Greek (Greece).
+* Added: Compatibility with plugin Extra Product Options & Add-Ons for WooCommerce by ThemeComplete.
 
 = 2.5.1 - 2023-05-31 =
 
