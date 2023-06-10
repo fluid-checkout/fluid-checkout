@@ -792,8 +792,8 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 }
 
 .woocommerce ul#shipping_method li.shipping-method__option {
-  display: block;
-  margin: var(--fluidcheckout--option-box--spacing--between-options, 0) 0 0;
+  display: block !important;
+  margin: var(--fluidcheckout--option-box--spacing--between-options, 0) 0 0 !important;
   padding: 0;
   text-indent: 0;
   line-height: 1.6;
@@ -814,18 +814,18 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label {
   position: relative;
   display: block;
-  margin: 0;
-  padding-top: var(--fluidcheckout--option-box--spacing--vertical, 10px);
-  padding-bottom: var(--fluidcheckout--option-box--spacing--vertical, 10px);
-  padding-right: calc( var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px );
-  padding-left: calc( var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 80px );
-  width: 100%;
+  margin: 0 !important;
+  padding-top: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
+  padding-bottom: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
+  padding-right: calc( var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px ) !important;
+  padding-left: calc( var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 80px ) !important;
+  width: 100% !important;
   background-color: var(--fluidcheckout--option-box--background-color, var(--fluidcheckout--color--white, #fff));
   border-bottom: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
-  font-weight: normal;
+  font-weight: normal !important;
   cursor: pointer;
-  text-align: right;
-  line-height: 24px;
+  text-align: right !important;
+  line-height: 24px !important;
   transition: all 0.15s linear;
 }
 
@@ -834,8 +834,8 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 }
 
 .woocommerce ul#shipping_method .shipping-method__option input[type=radio]:checked + .shipping-method__option-label {
-  background-color: var(--fluidcheckout--option-box--checked-background-color, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
-  color: var(--fluidcheckout--option-box--cheched-color, var(--fluidcheckout--color--darker-grey, #1E212B));
+  background-color: var(--fluidcheckout--option-box--checked-background-color, var(--fluidcheckout--color--lighter-grey, #f3f3f3)) !important;
+  color: var(--fluidcheckout--option-box--cheched-color, var(--fluidcheckout--color--darker-grey, #1E212B)) !important;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:before {
