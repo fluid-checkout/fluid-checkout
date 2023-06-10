@@ -13,6 +13,7 @@ body#{ $_body-theme-selector } .fc-wrapper #payment ul.payment_methods > li.wc_p
 body#{ $_body-theme-selector } #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
 	input[type="checkbox"],
 	input[type="radio"] {
+		margin-#{ $alignment-left }: 0 !important; // Needed to override theme styles
 		margin-#{ $alignment-right }: $global-spacing-tiny !important; // Needed to override theme styles
 		width: remsize( 1.6rem ) !important; // Needed to override theme styles
 		height: remsize( 1.6rem ) !important; // Needed to override theme styles

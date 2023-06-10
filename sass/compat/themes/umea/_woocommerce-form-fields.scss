@@ -25,9 +25,15 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row {
 	input[type="checkbox"],
 	input[type="checkbox"]:after,
 	input[type="radio"]:after {
+		margin-#{ $alignment-left }: 0 !important; // Needed to override theme styles
 		margin-#{ $alignment-right }: $global-spacing-tiny !important; // Needed to override theme styles
 		width: remsize( 1.6rem ) !important; // Needed to override theme styles
 		height: remsize( 1.6rem ) !important; // Needed to override theme styles
 		vertical-align: middle;
+	}
+
+	input[type="checkbox"]:after,
+	input[type="radio"]:after {
+		margin-#{ $alignment-right }: 0 !important; // Needed to override theme styles
 	}
 }

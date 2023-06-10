@@ -13,9 +13,6 @@ $_body-theme-selector:                 '.theme-umea' !default;
 // ------------------------------------
 :root {
 	--fluidcheckout--field--height: #{ remsize( 4.4rem ) };
-
-	// --fluidcheckout--validation-check--horizontal-spacing--select: #{ remsize( 4rem ) };
-	// --fluidcheckout--validation-check--horizontal-spacing--select-alt: #{ remsize( 4rem ) };
 }
 
 
@@ -26,8 +23,6 @@ $_body-theme-selector:                 '.theme-umea' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-// 	"checkout-content-area",
-// 	"order-summary",
 	"checkout-payment-methods",
 	"checkout-coupon-code",
 	"woocommerce-form-fields",
