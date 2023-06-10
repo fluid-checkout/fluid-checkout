@@ -1,0 +1,42 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row {
+	margin-bottom: $global-spacing-small !important; // Needed to override theme styles
+}
+body#{ $_body-theme-selector } div.woocommerce form .form-row:last-child {
+	margin-bottom: 0 !important; // Needed to override theme styles
+}
+
+
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="search"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"] {
+		margin-bottom: 0 !important; // Needed to override theme styles
+	}
+
+	input[type="checkbox"],
+	input[type="checkbox"]:after,
+	input[type="radio"]:after {
+		margin-#{ $alignment-left }: 0 !important; // Needed to override theme styles
+		margin-#{ $alignment-right }: $global-spacing-tiny !important; // Needed to override theme styles
+		width: remsize( 1.6rem ) !important; // Needed to override theme styles
+		height: remsize( 1.6rem ) !important; // Needed to override theme styles
+		vertical-align: middle;
+	}
+
+	input[type="checkbox"]:after,
+	input[type="radio"]:after {
+		margin-#{ $alignment-right }: 0 !important; // Needed to override theme styles
+	}
+}

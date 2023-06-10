@@ -255,6 +255,13 @@ $icons: (
 // ----------------------------------------
 // BUTTONS
 
+$button-border-width:                       var( --fluidcheckout--button--border-width, remsize( .1rem ) ) !default;
+$button-border-style:                       var( --fluidcheckout--button--border-style, solid ) !default;
+$button-border:                             $button-border-style $button-border-width transparent !default;
+$button-height:                             var( --fluidcheckout--button--height, remsize( 4.4rem ) ) !default;
+$button-font-weight:                        var( --fluidcheckout--button--font-weight, normal ) !default;
+$button-font-size:                          var( --fluidcheckout--button--font-size, inherit ) !default;
+
 $button-primary-border-color:               var( --fluidcheckout--button--primary--border-color, #000 ) !default;
 $button-primary-background-color:           var( --fluidcheckout--button--primary--background-color, #000 ) !default;
 $button-primary-text-color:                 var( --fluidcheckout--button--primary--text-color, #fff ) !default;
