@@ -40,6 +40,15 @@ body.theme-umea #add_payment_method .fc-wrapper #payment ul.payment_methods > li
   vertical-align: middle;
 }
 
+body.theme-umea .fc-wrapper .fc-coupon_code__collapsible input#coupon_code {
+  padding: 11px 18px !important;
+  border: solid 1px #959595 !important;
+}
+
+body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+  position: absolute !important;
+}
+
 body.theme-umea div.woocommerce form .form-row {
   margin-bottom: 20px !important;
 }
