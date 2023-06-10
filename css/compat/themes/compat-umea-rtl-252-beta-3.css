@@ -3,10 +3,10 @@ body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply 
   height: 44px !important;
   padding: 0 20px !important;
   border: var(--fluidcheckout--button--border-style, solid) var(--fluidcheckout--button--border-width, 1px) transparent !important;
-  cursor: pointer !important;
-  transition: all 0.3s !important;
   font-weight: var(--fluidcheckout--button--font-weight, normal) !important;
   font-size: var(--fluidcheckout--button--font-size, inherit) !important;
+  cursor: pointer !important;
+  transition: all 0.3s !important;
 }
 
 body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
