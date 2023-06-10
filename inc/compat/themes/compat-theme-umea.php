@@ -84,8 +84,17 @@ class FluidCheckout_ThemeCompat_Umea extends FluidCheckout {
 
 		// Define CSS variables
 		$css_variables = ":root {
+			--fluidcheckout--button--font-weight: bold;
+
 			--fluidcheckout--button--primary--border-color: {$main_color};
 			--fluidcheckout--button--primary--background-color: {$main_color};
+
+			--fluidcheckout--button--secondary--border-color: {$main_color};
+			--fluidcheckout--button--secondary--background-color: transparent;
+			--fluidcheckout--button--secondary--text-color: {$main_color};
+			--fluidcheckout--button--secondary--border-color--hover: {$main_color};
+			--fluidcheckout--button--secondary--background-color--hover: {$main_color};
+			--fluidcheckout--button--secondary--text-color--hover: var( --fluidcheckout--color--white, #fff );
 		}";
 
 		return $css_variables;

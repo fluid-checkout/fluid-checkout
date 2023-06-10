@@ -8,7 +8,9 @@
 	padding: 0 $global-spacing-small !important; // Needed to override theme styles
 	border: $button-border !important; // Needed to override theme styles
 	cursor: pointer !important; // Needed to override theme styles
-	transition: all $global-animation-duration;
+	transition: all $global-animation-duration !important; // Needed to override theme styles
+	font-weight: $button-font-weight !important; // Needed to override theme styles
+	font-size: $button-font-size !important; // Needed to override theme styles
 }
 
 

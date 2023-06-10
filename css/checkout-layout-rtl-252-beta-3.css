@@ -3,9 +3,11 @@ body.has-fc-button-styles.has-checkout-layout--multi-step .fc-step__actions .fc-
   min-height: var(--fluidcheckout--button--height, 44px) !important;
   height: 44px !important;
   padding: 0 20px !important;
-  border: var(--fluidcheckout--button--border-style, 1px) var(--fluidcheckout--button--border-width, 1px) transparent !important;
+  border: var(--fluidcheckout--button--border-style, solid) var(--fluidcheckout--button--border-width, 1px) transparent !important;
   cursor: pointer !important;
-  transition: all 0.3s;
+  transition: all 0.3s !important;
+  font-weight: var(--fluidcheckout--button--font-weight, normal) !important;
+  font-size: var(--fluidcheckout--button--font-size, inherit) !important;
 }
 
 body.has-fc-button-colors .fc-wrapper .fc-place-order .fc-place-order-button,
