@@ -5,6 +5,9 @@
 body#{ $_body-theme-selector } div.woocommerce form .form-row {
 	margin-bottom: $global-spacing-small !important; // Needed to override theme styles
 }
+body#{ $_body-theme-selector } div.woocommerce form .form-row:last-child {
+	margin-bottom: 0 !important; // Needed to override theme styles
+}
 
 
 
