@@ -5,9 +5,10 @@
 %button-styles {
 	min-height: $button-height !important; // Needed to override theme styles
 	height: remsize( 4.4rem ) !important; // Needed to override theme styles
-	padding: 0 !important; // Needed to override theme styles
+	padding: 0 $global-spacing-small !important; // Needed to override theme styles
 	border: $button-border !important; // Needed to override theme styles
 	cursor: pointer !important; // Needed to override theme styles
+	transition: all $global-animation-duration;
 }
 
 

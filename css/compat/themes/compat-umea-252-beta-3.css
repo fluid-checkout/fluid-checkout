@@ -1,3 +1,23 @@
+body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+  min-height: var(--fluidcheckout--button--height, 44px) !important;
+  height: 44px !important;
+  padding: 0 20px !important;
+  border: var(--fluidcheckout--button--border-style, 1px) var(--fluidcheckout--button--border-width, 1px) transparent !important;
+  cursor: pointer !important;
+  transition: all 0.3s;
+}
+
+body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+  border-color: var(--fluidcheckout--button--primary--border-color, #000) !important;
+  background-color: var(--fluidcheckout--button--primary--background-color, #000) !important;
+  color: var(--fluidcheckout--button--primary--text-color, #fff) !important;
+}
+body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply:hover, body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply:focus, body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply:active {
+  border-color: var(--fluidcheckout--button--primary--border-color--hover, #1E212B) !important;
+  background-color: var(--fluidcheckout--button--primary--background-color--hover, #1E212B) !important;
+  color: var(--fluidcheckout--button--primary--text-color--hover, #fff) !important;
+}
+
 :root {
   --fluidcheckout--field--height: 44px;
 }
