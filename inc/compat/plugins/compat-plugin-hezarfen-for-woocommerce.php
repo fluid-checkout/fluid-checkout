@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with plugin: 
+ * Compatibility with plugin: Hezarfen For Woocommerce (by Intense Yazılım Ltd.)
  */
 class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 
