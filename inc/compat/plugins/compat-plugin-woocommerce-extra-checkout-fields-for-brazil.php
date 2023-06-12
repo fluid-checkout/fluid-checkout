@@ -83,7 +83,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		wp_enqueue_script( 'woocommerce-extra-checkout-fields-for-brazil-front', self::$directory_url . 'js/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend'. self::$asset_version . '.js', array( 'jquery', 'jquery-mask' ), NULL, true );
 		
 		// Replace settings object for the Brazilian Market plugin
-		$settings = FluidCheckout_Settings::instance()->FluidCheckout_Settings::instance()->get_option( 'wcbcf_settings' );
+		$settings = FluidCheckout_Settings::instance()->get_option( 'wcbcf_settings' );
 		$autofill = isset( $settings['addresscomplete'] ) ? 'yes' : 'no';
 		wp_localize_script(
 			'woocommerce-extra-checkout-fields-for-brazil-front',
@@ -131,7 +131,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 */
 	public function add_js_settings_checkout_validation_brazilian_documents( $settings ) {
 		// Get Brazilian Market plugin settings
-		$wcbcf_settings = FluidCheckout_Settings::instance()->FluidCheckout_Settings::instance()->get_option( 'wcbcf_settings' );
+		$wcbcf_settings = FluidCheckout_Settings::instance()->get_option( 'wcbcf_settings' );
 
 		// Add validation settings
 		$settings = array_merge( $settings, array(
