@@ -106,8 +106,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_order_details_gift_message_position'                    => 'before_order_items',
 			'fc_pro_order_details_order_notes_position'                     => 'inside_order_items',
 			'fc_pro_enable_order_received_widget_areas'                     => 'no',
-			'fc_pro_enable_address_book'                                    => 'no',
-			'fc_pro_enable_address_book_address_label'                      => 'yes',
 
 			// Settings without options in the admin panel.
 			'fc_plugin_activation_time'                                     => null,
