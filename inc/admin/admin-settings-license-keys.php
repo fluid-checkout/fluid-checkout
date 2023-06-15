@@ -92,6 +92,9 @@ class WC_Settings_FluidCheckout_LicenseKeys_Settings extends WC_Settings_Page {
 				);
 			}
 
+			// Add new settings, if any
+			$settings_new = array_merge( $settings_new, $settings_add );
+
 			// Close integrations section to avoid errors with other sections
 			$settings_new = array_merge( $settings_new, array(
 				array(
@@ -99,8 +102,6 @@ class WC_Settings_FluidCheckout_LicenseKeys_Settings extends WC_Settings_Page {
 					'id'   => 'fc_license_keys',
 				),
 			) );
-
-			$settings_new = array_merge( $settings_new, $settings_add );
 
 			$settings = apply_filters( 'fc_'.$current_section.'_settings', $settings_new, $current_section );
 		}

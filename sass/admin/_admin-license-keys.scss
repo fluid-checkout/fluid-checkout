@@ -1,0 +1,20 @@
+// ------------------------------------
+// CHECKOUT OPTIONS - LICENSE KEYS
+// ------------------------------------
+.forminp-fc_license_key .fc-license-key__status-label--active {
+	color: $success-color;
+}
+
+
+
+.forminp-fc_license_key .fc-license-key__status-label--expired,
+.forminp-fc_license_key .fc-license-key__status-label--cancelled,
+.forminp-fc_license_key .fc-license-key__status-label--invalid {
+	color: $error-color;
+}
+
+
+
+.forminp-fc_license_key .fc-license-key__status-label--error {
+	color: $alert-color;
+}
