@@ -55,7 +55,7 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 		// Bail if Payson is not the selected payment method
 		if ( 'paysoncheckout' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 
-		// Undo hooks from Fluid Checkout classes
+		// Undo hooks from feature classes
 		$features_list = FluidCheckout::instance()->get_features_list();
 		$skip_undo_hooks_classes = array( 'FluidCheckout_CheckoutPageTemplate', 'FluidCheckout_CheckoutWidgetAreas' );
 		foreach ( $features_list as $class_name => $args ) {
@@ -85,7 +85,7 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 			FluidCheckout_Enqueue::instance()->undo_hooks();
 		}
 
-		// Undo hooks from Fluid Checkout classes
+		// Undo hooks from feature classes
 		$features_list = FluidCheckout::instance()->get_features_list();
 		$skip_undo_hooks_classes = array( 'FluidCheckout_CheckoutPageTemplate', 'FluidCheckout_CheckoutWidgetAreas' );
 		foreach ( $features_list as $class_name => $args ) {
