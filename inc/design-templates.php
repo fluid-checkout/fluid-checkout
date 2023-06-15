@@ -29,7 +29,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_order_summary' ), 100 );
 
 		// Custom styles
-		add_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
+		add_action( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
 		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
 	}
 
