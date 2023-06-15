@@ -105,3 +105,17 @@
 .forminp-fc_template_selector .fc-design-template__option:disabled {
   cursor: not-allowed;
 }
+
+.forminp-fc_license_key .fc-license-key__status-label--active {
+  color: var(--fluidcheckout--color--success, #007a3d);
+}
+
+.forminp-fc_license_key .fc-license-key__status-label--expired,
+.forminp-fc_license_key .fc-license-key__status-label--cancelled,
+.forminp-fc_license_key .fc-license-key__status-label--invalid {
+  color: var(--fluidcheckout--color--error, #cc1818);
+}
+
+.forminp-fc_license_key .fc-license-key__status-label--error {
+  color: var(--fluidcheckout--color--alert, #c95000);
+}
