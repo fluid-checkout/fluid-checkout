@@ -509,6 +509,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 .has-flyout [data-flyout][data-flyout-modal].is-activated .fc-login-form__inner[data-flyout-content] {
   padding-bottom: 50px;
+  background-color: var(--fluidcheckout--color--white, #fff);
 }
 @media (min-width: 550px) {
   .has-flyout [data-flyout][data-flyout-modal].is-activated .fc-login-form__inner[data-flyout-content] {
@@ -519,6 +520,10 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   .has-flyout [data-flyout][data-flyout-modal].is-activated .fc-login-form__inner[data-flyout-content] {
     max-width: 500px;
   }
+}
+
+.has-fc-dark-mode.has-flyout [data-flyout][data-flyout-modal].is-activated .fc-login-form__inner[data-flyout-content] {
+  box-shadow: 0 3px 8px var(--fluidcheckout--shadow-color--darker, var(--fluidcheckout--color--light-grey, #d8d8d8));
 }
 
 .fc-wrapper .fc-step__substep[data-substep-id=contact_login] {

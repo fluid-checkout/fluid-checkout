@@ -8,9 +8,13 @@
 
 .has-flyout [data-flyout][data-flyout-modal].is-activated .fc-login-form__inner[data-flyout-content] {
 	padding-bottom: $global-spacing-medium;
+	background-color: $white;
 
 	@media (#{$bp-larger-than-phablet}) { max-width: remsize( 42rem ); }
 	@media (#{$bp-larger-than-tablet}) { max-width: remsize( 50rem ); }
+}
+.has-fc-dark-mode.has-flyout [data-flyout][data-flyout-modal].is-activated .fc-login-form__inner[data-flyout-content] {
+	box-shadow: $box-shadow-darker;
 }
 
 
