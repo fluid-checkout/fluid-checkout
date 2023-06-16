@@ -40,3 +40,7 @@ body.theme-electro .fc-wrapper .fc-place-order .fc-place-order-button {
   padding: 0.907rem 1rem;
   border-radius: 50px;
 }
+
+.electro-dark.has-flyout [data-flyout][data-flyout-modal].is-activated .fc-login-form__inner[data-flyout-content] {
+  box-shadow: 0 3px 8px var(--fluidcheckout--shadow-color--darker, var(--fluidcheckout--color--light-grey, #d8d8d8));
+}
