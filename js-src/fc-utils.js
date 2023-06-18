@@ -14,6 +14,10 @@
 	'use strict';
 
 	var _publicMethods = { }
+	var _settings = {
+		select2FormRowSelector:                '.form-row.fc-select2-field',
+		select2FocusElementSelector:           '.select2-selection, input[type="text"]',
+	}
 
 
 
@@ -50,9 +54,6 @@
 
 
 	
-
-
-
 	/**
 	 * METHODS
 	 */
@@ -131,6 +132,73 @@
 
 		  if ( callNow ) func.apply( context, args );
 		};
+	};
+
+
+
+
+	/**
+	 * Maybe set focus back to the element that was focused before an update.
+	 * 
+	 * @param  {HTMLElement}  currentFocusedElement  The element that was currently focused before an update.
+	 * @param  {mixed}        currentValue           The value of the element in focus before an update.
+	 */
+	_publicMethods.maybeRefocusElement = function( currentFocusedElement, currentValue ) {
+		// Bail if no element to focus
+		if ( null === currentFocusedElement ) { return; }
+
+		requestAnimationFrame( function() {
+			var elementToFocus;
+
+			// Try findind the `select2` focusable element
+			if ( currentFocusedElement.closest( _settings.select2FormRowSelector ) ) {
+				var formRow = currentFocusedElement.closest( _settings.select2FormRowSelector );
+				elementToFocus = formRow.querySelector( _settings.select2FocusElementSelector );
+			}
+			// Try findind the the current focused element after updating updated element by ID
+			else if ( currentFocusedElement.id ) {
+				elementToFocus = document.getElementById( currentFocusedElement.id );
+			}
+			// Try findind the updated element by name attribute
+			else if ( currentFocusedElement.getAttribute( 'name' ) ) {
+				var nameAttr = currentFocusedElement.getAttribute( 'name' );
+				elementToFocus = document.querySelector( '[name="'+nameAttr+'"]' );
+			}
+
+			// Try setting focus if element is found
+			if ( elementToFocus ) {
+				elementToFocus.focus();
+
+				// Try to set current value to the focused element
+				if ( null !== currentValue && currentValue !== elementToFocus.value ) {
+					elementToFocus.value = currentValue;
+				}
+
+				// Set keyboard track position back to that previously to update
+				setTimeout( function(){
+					// Try to set the same track position
+					if( null !== elementToFocus.selectionStart && null !== elementToFocus.selectionEnd ) {
+						if ( currentFocusedElement.selectionStart && currentFocusedElement.selectionEnd ) {
+							elementToFocus.selectionStart = currentFocusedElement.selectionStart;
+							elementToFocus.selectionEnd = currentFocusedElement.selectionEnd;
+						}
+						// Otherwise try set the track position to the end of the field
+						// @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange
+						// @see https://html.spec.whatwg.org/multipage/input.html#concept-input-apply
+						else {
+							elementToFocus.selectionStart = elementToFocus.selectionEnd = Number.MAX_SAFE_INTEGER || 10000;
+						}
+					}
+					// Try to select the entire content of the field
+					// @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select
+					// @see https://html.spec.whatwg.org/multipage/input.html#concept-input-apply
+					else {
+						try { elementToFocus.select(); }
+						catch { /* Do nothing */ }
+					}
+				}, 0 );
+			}
+		} );
 	};
 
 
