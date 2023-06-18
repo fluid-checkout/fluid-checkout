@@ -212,18 +212,25 @@ jQuery( function( $ ) {
 
 	// CHANGE: END - Extract function to process country to state changing as it needs to be used when event `updated_checkout` is triggered
 	// CHANGE: Add function to handle country to state changing when event `updated_checkout` is triggered
-	var process_country_to_state_changing_updated_checkout = function() {
-		requestAnimationFrame( function() {
-			var country_fields = document.querySelectorAll( _settings.countryFieldsSelector );
+	var process_country_to_state_changing_updated_checkout = function() {		
+		// Get current element with focus, will re-set focus after updating the fragments
+		var currentFocusedElement = document.activeElement;
+		var currentValue = document.activeElement.value;
 
-			if ( country_fields.length > 0 ) {
-				for ( var i = 0; i < country_fields.length; i++ ) {
-					var field = country_fields[i];
-					var wrapper = field.closest( _settings.addressFieldGroupSelector );
-					process_country_to_state_changing( null, field.value, $( wrapper ) );
-				}
+		// Get all country fields on the page
+		var country_fields = document.querySelectorAll( _settings.countryFieldsSelector );
+
+		// Iterate all country fields and process country changing event for each one
+		if ( country_fields.length > 0 ) {
+			for ( var i = 0; i < country_fields.length; i++ ) {
+				var field = country_fields[i];
+				var wrapper = field.closest( _settings.addressFieldGroupSelector );
+				process_country_to_state_changing( null, field.value, $( wrapper ) );
 			}
-		} );
+		}
+
+		// Re-set focus to the element with focus previously to updating fragments
+		FCUtils.maybeRefocusElement( currentFocusedElement, currentValue );
 	}
 
 	// CHANGE: END - Add function to handle country to state changing when event `updated_checkout` is triggered
