@@ -385,6 +385,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin EU/UK VAT for WooCommerce by WPFactory.
 * Improved: Compatibility with theme Kadence. Use theme container class when using the theme's header and footer.
 * Fixed: Losing focus while typing on address fields in some cases.
+* Fixed: Compatibility with plugin German Market. Place order button missing on mobile in some cases.
 
 = 2.5.1 - 2023-05-31 =
 
