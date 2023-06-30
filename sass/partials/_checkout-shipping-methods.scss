@@ -35,8 +35,8 @@
 
 
 .woocommerce ul#shipping_method li.shipping-method__option {
-	display: block;
-	margin: $option-box-space-between-options 0 0;
+	display: block !important; // Needed to override theme styles
+	margin: $option-box-space-between-options 0 0 !important; // Needed to override theme styles
 	padding: 0;
 	text-indent: 0;
 	line-height: 1.6;
@@ -61,18 +61,18 @@
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label {
 	position: relative;
 	display: block;
-	margin: 0;
-	padding-top: $option-box-padding-vertical;
-	padding-bottom: $option-box-padding-vertical;
-	padding-#{ $alignment-left }: calc( #{ $option-box-padding-horizontal } + #{ $option-box-radio-size } + #{ $global-spacing-extra-small } );
-	padding-#{ $alignment-right }: calc( #{ $option-box-padding-horizontal } + #{ $shipping-method-price-width } );
-	width: 100%;
+	margin: 0 !important; // Needed to override theme styles
+	padding-top: $option-box-padding-vertical !important; // Needed to override theme styles
+	padding-bottom: $option-box-padding-vertical !important; // Needed to override theme styles
+	padding-#{ $alignment-left }: calc( #{ $option-box-padding-horizontal } + #{ $option-box-radio-size } + #{ $global-spacing-extra-small } )  !important; // Needed to override theme styles
+	padding-#{ $alignment-right }: calc( #{ $option-box-padding-horizontal } + #{ $shipping-method-price-width } ) !important; // Needed to override theme styles
+	width: 100% !important; // Needed to override theme styles
 	background-color: $option-box-background-color;
 	border-bottom: $option-box-border;
-	font-weight: $shipping-method-font-weight;
+	font-weight: $shipping-method-font-weight !important; // Needed to override theme styles
 	cursor: pointer;
-	text-align: #{ $alignment-left };
-	line-height: $option-box-radio-size;
+	text-align: #{ $alignment-left } !important; // Needed to override theme styles
+	line-height: $option-box-radio-size !important; // Needed to override theme styles
 	transition: all $global-animation-duration-fast linear;
 }
 .woocommerce ul#shipping_method .shipping-method__option:last-child .shipping-method__option-label {
@@ -80,8 +80,8 @@
 }
 
 .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label {
-	background-color: $option-box-checked-background-color;
-	color: $option-box-checked-color;
+	background-color: $option-box-checked-background-color !important; // Needed to override theme styles
+	color: $option-box-checked-color !important; // Needed to override theme styles
 }
 
 

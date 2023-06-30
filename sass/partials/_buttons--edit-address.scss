@@ -6,3 +6,7 @@
 body.has-fc-button-colors .woocommerce-address-fields button[type="submit"] {
 	@extend %button-primary-actions;
 }
+
+body.has-fc-button-styles .woocommerce-address-fields button[type="submit"] {
+	@extend %button-styles;
+}
