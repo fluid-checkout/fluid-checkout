@@ -32,6 +32,7 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 
 		// Hidden fields
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields' ), 10 );
+		add_filter( 'woocommerce_form_field', array( $this, 'add_optional_form_field_link_button' ), 100, 4 );
 	}
 
 
@@ -71,6 +72,33 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 			'wc_brt_fermopoint-pudo_id',
 		) );
 		return $skip_list;
+	}
+
+	/**
+	 * Get the checkout fields args.
+	 *
+	 * @param   string  $field  Field html markup to be changed.
+	 * @param   string  $key    Field key.
+	 * @param   array   $args   Field args.
+	 * @param   mixed   $value  Value of the field. Defaults to `null`.
+	 */
+	public function add_optional_form_field_link_button( $field, $key, $args, $value ) {
+		// Bail if not targetted fields
+		$target_fields = array(
+			'wc_brt_fermopoint-selected_pudo',
+			'wc_brt_fermopoint-pudo_id',
+		);
+		if ( ! in_array( $key, $target_fields ) ) { return $field; }
+
+		// Bail if field value is not empty
+		if ( ! empty( $value ) ) { return $field; }
+
+		
+		// Replace value with session value
+		$field_value = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( $key );
+		$field = str_replace( 'value=""', 'value="'. esc_attr( $field_value ) .'"', $field );
+
+		return $field;
 	}
 
 }
