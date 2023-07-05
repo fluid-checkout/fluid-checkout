@@ -35,8 +35,10 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 
 		// Checkout validation settings
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
+
+		// Add substep text lines
+		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 	}
-	
 
 
 
@@ -108,6 +110,45 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		// $settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="wc_brt_fermopoint-pudo_id"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
 
 		return $settings;
+	}
+
+
+
+	/**
+	 * Add the shipping methods substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		$packages = WC()->shipping()->get_packages();
+
+		foreach ( $packages as $i => $package ) {
+			$available_methods = $package['rates'];
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
+
+			// Check whether the chosen method is fermpoint
+			if ( $method && 'wc_brt_fermopoint_shipping_methods_custom' === $method->method_id ) {
+				// Get the selected fermopoint data
+				$pudo_data = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'wc_brt_fermopoint-selected_pudo' );
+
+				// Check whether the selected fermopoint data is available
+				if ( ! empty( $pudo_data ) ) {
+					// Try to convert pudo data from JSON
+					$pudo_data = json_decode( $pudo_data, true );
+
+					if ( is_array( $pudo_data ) && array_key_exists( 'pointName', $pudo_data ) ) {
+						// Add the chosen fermopoint PUDO
+						$review_text_lines[] = $pudo_data[ 'pointName' ];
+					}
+				}
+			}
+		}
+
+		return $review_text_lines;
 	}
 
 }
