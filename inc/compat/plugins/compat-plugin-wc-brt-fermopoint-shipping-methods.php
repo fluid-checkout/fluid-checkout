@@ -25,20 +25,16 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
-		// Enqueue assets
-		// add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
-
 		// Move fermopoint details section
 		remove_action( 'woocommerce_review_order_after_shipping', array( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'add_maps_or_list' ), 10 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'add_maps_or_list' ), 10 );
 
 		// Output hidden fields
-		remove_action( 'woocommerce_review_order_before_submit', array( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'my_custom_checkout_field' ) );
-		add_action( 'fc_shipping_methods_after_packages_inside', array( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'my_custom_checkout_field' ) );
+		remove_action( 'woocommerce_review_order_before_submit', array( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'my_custom_checkout_field' ), 10 );
+		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_custom_hidden_fields' ), 10 );
 
-		// Hidden fields
-		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields' ), 10 );
-		add_filter( 'woocommerce_form_field', array( $this, 'add_optional_form_field_link_button' ), 100, 4 );
+		// Checkout validation settings
+		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
 	}
 	
 
@@ -79,43 +75,39 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 
 
 	/**
-	 * Prevent hiding optional fields.
-	 *
-	 * @param   array  $skip_list  List of optional fields to skip hidding.
+	 * Output the custom hidden fields.
 	 */
-	public function prevent_hide_optional_fields( $skip_list ) {
-		$skip_list = array_merge( $skip_list, array(
-			'wc_brt_fermopoint-selected_pudo',
-			'wc_brt_fermopoint-pudo_id',
-		) );
-		return $skip_list;
+	public function output_custom_hidden_fields( $checkout ) {
+		// Get fields values from session
+		$pudo_data = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'wc_brt_fermopoint-selected_pudo' );
+		$pudo_id = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'wc_brt_fermopoint-pudo_id' );
+
+		// CHANGE: Remove `display: none` to keep the custom fields section visible as it is needed to display the validation message
+		echo '<div id="wc_brt_fermopoint-custom_checkout_fields">';
+		echo '<input type="hidden" id="wc_brt_fermopoint-selected_pudo" name="wc_brt_fermopoint-selected_pudo" value="'. esc_attr( $pudo_data ) .'">';
+		echo '<input type="hidden" id="wc_brt_fermopoint-pudo_id" name="wc_brt_fermopoint-pudo_id" value="'. esc_attr( $pudo_id ) .'">';
+		echo '</div>';
 	}
 
 	/**
-	 * Get the checkout fields args.
+	 * Add settings to the plugin settings JS object for the checkout validation.
 	 *
-	 * @param   string  $field  Field html markup to be changed.
-	 * @param   string  $key    Field key.
-	 * @param   array   $args   Field args.
-	 * @param   mixed   $value  Value of the field. Defaults to `null`.
+	 * @param   array  $settings  JS settings object of the plugin.
 	 */
-	public function add_optional_form_field_link_button( $field, $key, $args, $value ) {
-		// Bail if not targetted fields
-		$target_fields = array(
-			'wc_brt_fermopoint-selected_pudo',
-			'wc_brt_fermopoint-pudo_id',
-		);
-		if ( ! in_array( $key, $target_fields ) ) { return $field; }
+	public function change_js_settings_checkout_validation( $settings ) {
+		// Get current values
+		$current_form_row_selector = array_key_exists( 'formRowSelector', $settings ) ? $settings[ 'formRowSelector' ] : '';
+		$current_validate_field_selector = array_key_exists( 'validateFieldsSelector', $settings ) ? $settings[ 'validateFieldsSelector' ] : '';
+		$current_reference_node_selector = array_key_exists( 'referenceNodeSelector', $settings ) ? $settings[ 'referenceNodeSelector' ] : '';
+		// $current_always_validate_selector = array_key_exists( 'alwaysValidateFieldsSelector', $settings ) ? $settings[ 'alwaysValidateFieldsSelector' ] : '';
 
-		// Bail if field value is not empty
-		if ( ! empty( $value ) ) { return $field; }
+		// Prepend new values to existing settings
+		$settings[ 'formRowSelector' ] = '#wc_brt_fermopoint-custom_checkout_fields' . ( ! empty( $current_form_row_selector ) ? ', ' : '' ) . $current_form_row_selector;
+		$settings[ 'validateFieldsSelector' ] = 'input[name="wc_brt_fermopoint-pudo_id"]' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
+		$settings[ 'referenceNodeSelector' ] = 'input[name="wc_brt_fermopoint-pudo_id"]' . ( ! empty( $current_reference_node_selector ) ? ', ' : '' ) . $current_reference_node_selector;
+		// $settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="wc_brt_fermopoint-pudo_id"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
 
-		
-		// Replace value with session value
-		$field_value = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( $key );
-		$field = str_replace( 'value=""', 'value="'. esc_attr( $field_value ) .'"', $field );
-
-		return $field;
+		return $settings;
 	}
 
 }
