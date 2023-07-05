@@ -413,6 +413,16 @@ function updateShippingAddressWithPudo(pudo) {
 
 function addPudoToList(pudoArray) {
 	jQuery(document).ajaxComplete(function(){
+
+		// // CHANGE: Maybe show or hide the map and list
+		// if ( isSelectedBrtFermopointShippingMethod() ) {
+		// 	// Directly show the map and list, as calling the function `showMapOrList` does not work in this context because the ajax request has already been completed.
+		// 	jQuery('#wc_brt_fermopoint_shipping_methods_custom-tr_container, #wc_brt_fermopoint_shipping_methods_custom-div_container').show();
+		// } else {
+		// 	// Directly hide the map and list, as calling the function `hideMap` does not work in this context because the ajax request has already been completed.
+		// 	jQuery('#wc_brt_fermopoint_shipping_methods_custom-tr_container, #wc_brt_fermopoint_shipping_methods_custom-div_container').hide();
+		// }
+
 		var listContainer = jQuery('#wc_brt_fermopoint_shipping_methods_custom-list_container .pudo-list-scrollable');
 		var appendHtml = "";
 		const days = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"];
@@ -537,6 +547,8 @@ function checkPudableCartNew() {
 		updateShippingAddressWithPudo(null);
 	}
 }
+// CHANGE: Added call to function `checkPudableCartNew` on `updated_checkout` event.
+jQuery( 'body' ).on( 'updated_checkout', checkPudableCartNew );
 
 function disablePudoShippingMethodNew(idError) {
 	jQuery(document).ajaxComplete(function(){
