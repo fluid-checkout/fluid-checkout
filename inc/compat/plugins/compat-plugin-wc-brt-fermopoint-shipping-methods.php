@@ -25,6 +25,13 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		// Move fermopoint details section
 		remove_action( 'woocommerce_review_order_after_shipping', array( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'add_maps_or_list' ), 10 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'add_maps_or_list' ), 10 );
+
+		// Output hidden fields
+		remove_action( 'woocommerce_review_order_before_submit', array( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'my_custom_checkout_field' ) );
+		add_action( 'fc_checkout_after', array( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'my_custom_checkout_field' ) );
+
+		// Hidden fields
+		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields' ), 10 );
 	}
 
 
@@ -49,6 +56,21 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 
 		// Output
 		echo $html;
+	}
+
+
+
+	/**
+	 * Prevent hiding optional fields.
+	 *
+	 * @param   array  $skip_list  List of optional fields to skip hidding.
+	 */
+	public function prevent_hide_optional_fields( $skip_list ) {
+		$skip_list = array_merge( $skip_list, array(
+			'wc_brt_fermopoint-selected_pudo',
+			'wc_brt_fermopoint-pudo_id',
+		) );
+		return $skip_list;
 	}
 
 }
