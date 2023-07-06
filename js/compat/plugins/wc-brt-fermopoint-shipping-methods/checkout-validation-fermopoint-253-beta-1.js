@@ -21,6 +21,7 @@
 	var _publicMethods = { };
 	var _settings = {
 		typeFermopointFieldSelector: '.validate-fermopoint',
+		fermopointSectionSelector: '#wc_brt_fermopoint_shipping_methods_custom-tr_container',
 		validationMessages: {
 			fermopoint_not_selected: 'Selecting a collection point is required when shipping with FermoPoint.',
 		},
@@ -62,7 +63,16 @@
 	 */
 	var validateFermpoint = function( field, formRow, validationEvent ) {
 		// Bail if fermopoint field is empty
-		if ( '' === field.value ) { return { valid: false, message: _settings.validationMessages.fermopoint_not_selected } }
+		if ( '' === field.value ) {
+			// Scroll to fermopoint section
+			var fermopointSection = document.querySelector( _settings.fermopointSectionSelector );
+			if ( fermopointSection && fermopointSection.scrollIntoView ) {
+				fermopointSection.scrollIntoView();
+			}
+
+			// Return as invalid
+			return { valid: false, message: _settings.validationMessages.fermopoint_not_selected };
+		}
 
 		// Field is valid
 		return { valid: true };
