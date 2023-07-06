@@ -147,13 +147,11 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 	 */
 	public function change_js_settings_checkout_validation( $settings ) {
 		// Get current values
-		// $current_form_row_selector = array_key_exists( 'formRowSelector', $settings ) ? $settings[ 'formRowSelector' ] : '';
 		$current_validate_field_selector = array_key_exists( 'validateFieldsSelector', $settings ) ? $settings[ 'validateFieldsSelector' ] : '';
 		$current_reference_node_selector = array_key_exists( 'referenceNodeSelector', $settings ) ? $settings[ 'referenceNodeSelector' ] : '';
 		$current_always_validate_selector = array_key_exists( 'alwaysValidateFieldsSelector', $settings ) ? $settings[ 'alwaysValidateFieldsSelector' ] : '';
 
 		// Prepend new values to existing settings
-		// $settings[ 'formRowSelector' ] = '#wc_brt_fermopoint-custom_checkout_fields' . ( ! empty( $current_form_row_selector ) ? ', ' : '' ) . $current_form_row_selector;
 		$settings[ 'validateFieldsSelector' ] = 'input[name="wc_brt_fermopoint-pudo_id"]' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
 		$settings[ 'referenceNodeSelector' ] = 'input[name="wc_brt_fermopoint-pudo_id"]' . ( ! empty( $current_reference_node_selector ) ? ', ' : '' ) . $current_reference_node_selector;
 		$settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="wc_brt_fermopoint-pudo_id"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
