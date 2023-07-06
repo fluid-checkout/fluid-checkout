@@ -25,6 +25,12 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
 		// Move fermopoint details section
 		remove_action( 'woocommerce_review_order_after_shipping', array( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'add_maps_or_list' ), 10 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'add_maps_or_list' ), 10 );
@@ -48,6 +54,47 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'wc_brt_fermopoint_shipping_methods_js', self::$directory_url . 'js/compat/plugins/wc-brt-fermopoint-shipping-methods/wc_brt_fermopoint_shipping_methods_js' . self::$asset_version . '.js', array( 'jquery' ), NULL );
+
+		// Add validation script
+		wp_register_script( 'fc-checkout-validation-fermopoint', self::$directory_url . 'js/compat/plugins/wc-brt-fermopoint-shipping-methods/checkout-validation-fermopoint'. self::$asset_version . '.js', array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-validation-fermopoint', 'window.addEventListener("load",function(){CheckoutValidationFermopoint.init(fcSettings.checkoutValidationFermopoint);})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-validation-fermopoint' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		$this->enqueue_assets();
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+
+		// Add validation settings
+		$settings[ 'checkoutValidationBrazilianDocuments' ] = array(
+			'validationMessages'  => array(
+				'fermopoint_not_selected' => __( 'Selecting a collection point is required when shipping with FermoPoint.', 'fluid-checkout' ),
+			),
+		);
+
+		return $settings;
 	}
 
 
@@ -85,9 +132,11 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		$pudo_id = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'wc_brt_fermopoint-pudo_id' );
 
 		// CHANGE: Remove `display: none` to keep the custom fields section visible as it is needed to display the validation message
-		echo '<div id="wc_brt_fermopoint-custom_checkout_fields">';
+		echo '<div id="wc_brt_fermopoint-custom_checkout_fields" class="form-row">';
+		echo '<div class="woocommerce-input-wrapper">';
 		echo '<input type="hidden" id="wc_brt_fermopoint-selected_pudo" name="wc_brt_fermopoint-selected_pudo" value="'. esc_attr( $pudo_data ) .'">';
-		echo '<input type="hidden" id="wc_brt_fermopoint-pudo_id" name="wc_brt_fermopoint-pudo_id" value="'. esc_attr( $pudo_id ) .'">';
+		echo '<input type="hidden" id="wc_brt_fermopoint-pudo_id" name="wc_brt_fermopoint-pudo_id" value="'. esc_attr( $pudo_id ) .'" class="validate-fermopoint">';
+		echo '</div>';
 		echo '</div>';
 	}
 
@@ -98,16 +147,16 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 	 */
 	public function change_js_settings_checkout_validation( $settings ) {
 		// Get current values
-		$current_form_row_selector = array_key_exists( 'formRowSelector', $settings ) ? $settings[ 'formRowSelector' ] : '';
+		// $current_form_row_selector = array_key_exists( 'formRowSelector', $settings ) ? $settings[ 'formRowSelector' ] : '';
 		$current_validate_field_selector = array_key_exists( 'validateFieldsSelector', $settings ) ? $settings[ 'validateFieldsSelector' ] : '';
 		$current_reference_node_selector = array_key_exists( 'referenceNodeSelector', $settings ) ? $settings[ 'referenceNodeSelector' ] : '';
-		// $current_always_validate_selector = array_key_exists( 'alwaysValidateFieldsSelector', $settings ) ? $settings[ 'alwaysValidateFieldsSelector' ] : '';
+		$current_always_validate_selector = array_key_exists( 'alwaysValidateFieldsSelector', $settings ) ? $settings[ 'alwaysValidateFieldsSelector' ] : '';
 
 		// Prepend new values to existing settings
-		$settings[ 'formRowSelector' ] = '#wc_brt_fermopoint-custom_checkout_fields' . ( ! empty( $current_form_row_selector ) ? ', ' : '' ) . $current_form_row_selector;
+		// $settings[ 'formRowSelector' ] = '#wc_brt_fermopoint-custom_checkout_fields' . ( ! empty( $current_form_row_selector ) ? ', ' : '' ) . $current_form_row_selector;
 		$settings[ 'validateFieldsSelector' ] = 'input[name="wc_brt_fermopoint-pudo_id"]' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
 		$settings[ 'referenceNodeSelector' ] = 'input[name="wc_brt_fermopoint-pudo_id"]' . ( ! empty( $current_reference_node_selector ) ? ', ' : '' ) . $current_reference_node_selector;
-		// $settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="wc_brt_fermopoint-pudo_id"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
+		$settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="wc_brt_fermopoint-pudo_id"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
 
 		return $settings;
 	}
