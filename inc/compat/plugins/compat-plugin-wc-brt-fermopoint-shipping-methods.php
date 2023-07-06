@@ -134,7 +134,7 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		$pudo_data = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'wc_brt_fermopoint-selected_pudo' );
 		$pudo_id = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'wc_brt_fermopoint-pudo_id' );
 
-		// CHANGE: Remove `display: none` to keep the custom fields section visible as it is needed to display the validation message
+		// Output custom hidden fields
 		echo '<div id="wc_brt_fermopoint-custom_checkout_fields" class="form-row">';
 		echo '<div class="woocommerce-input-wrapper">';
 		echo '<input type="hidden" id="wc_brt_fermopoint-selected_pudo" name="wc_brt_fermopoint-selected_pudo" value="'. esc_attr( $pudo_data ) .'">';
