@@ -44,6 +44,9 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 
 		// Add substep text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
+
+		// Maybe set step as incomplete
+		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
 	}
 
 
@@ -173,6 +176,7 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		$packages = WC()->shipping()->get_packages();
 
 		foreach ( $packages as $i => $package ) {
+			// Get shipping method
 			$available_methods = $package['rates'];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
@@ -196,6 +200,41 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		}
 
 		return $review_text_lines;
+	}
+
+
+
+	/**
+	 * Set the shipping step as incomplete when shipping method is Fermopoint but a location has not yet been selected.
+	 *
+	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 */
+	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
+		// Bail if step is already incomplete
+		if ( ! $is_step_complete ) { return $is_step_complete; }
+
+		// Get shipping packages
+		$packages = WC()->shipping->get_packages();
+		foreach ( $packages as $i => $package ) {
+			// Get shipping method
+			$available_methods = $package['rates'];
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
+
+			// Skip package if shipping method selected is not UPS pickup location
+			if ( ! $method || 'wc_brt_fermopoint_shipping_methods_custom' !== $method->method_id ) { continue; }
+
+			// Get the selected pudo ID
+			$pudo_id = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'wc_brt_fermopoint-pudo_id' );
+
+			// Maybe mark step as incomplete if pickup location code is empty
+			if ( empty( $pudo_id ) ) {
+				$is_step_complete = false;
+				break;
+			}
+		}
+
+		return $is_step_complete;
 	}
 
 }
