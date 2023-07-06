@@ -194,7 +194,7 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 	 * Output pickup location hidden fields.
 	 */
 	public function output_pickup_location_hidden_fields() {
-		// Detect if cart has only virutal products
+		// Detect if cart has only virtual products
 		$is_virtual = true;
 		$cart_items = WC()->cart->cart_contents;
 		foreach ( $cart_items as $item ) {

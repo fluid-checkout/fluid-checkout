@@ -24,7 +24,7 @@ if ( is_user_logged_in() ) {
 	return;
 }
 
-// CHANGED: Define unique id for the login inputs
+// CHANGE: Define unique id for the login inputs
 $unique_id = uniqid();
 
 ?>

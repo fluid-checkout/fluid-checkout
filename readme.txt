@@ -378,6 +378,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Compatibility with plugin BRT Fermopoint by BRT.
+
 = 2.5.2 - 2023-06-30 =
 
 * Bump tested up to WordPress 6.2.2 and WooCommerce 7.8.1
