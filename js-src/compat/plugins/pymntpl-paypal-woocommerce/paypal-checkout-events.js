@@ -38,7 +38,9 @@
 	 * @param   object  source  The source data object from the PayPal plugin.
 	 */
 	var maybeSetCheckoutUpdatableState = function( e, source ) {
-		window.can_update_checkout = ( 'wc_ppcp_on_click' !== e.type );
+		if ( 'wc_ppcp_on_click' === e.type ) {
+			window.can_update_checkout = false;
+		}
 	};
 
 
