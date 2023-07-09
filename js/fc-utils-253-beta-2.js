@@ -145,12 +145,9 @@
 	 * @param  {mixed}        currentValue           The value of the element in focus before an update.
 	 */
 	_publicMethods.maybeRefocusElement = function( currentFocusedElement, currentValue ) {
-		// Maybe get current focused element from active element
-		if ( ! currentFocusedElement ) {
-			return;
-			// currentFocusedElement = document.activeElement;
-		}
-		
+		// Bail if no element to focus
+		if ( null === currentFocusedElement ) { return; }
+
 		// Bail if focus is set to the document body
 		if ( document.body === currentFocusedElement ) { return; }
 
