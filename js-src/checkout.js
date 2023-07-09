@@ -645,7 +645,7 @@ jQuery( function( $ ) {
 							// CHANGE: Declare local variables needed for some checks before replacing the fragment
 							var fragmentToReplace = document.querySelector( key );
 							var replaceFragment = true;
-							
+
 							// CHANGE: Maybe set to skip fragment with the focus within it. This avoids unexpected closing of mobile keyboard and lost of focus when updating fragments.
 							if ( fragmentToReplace && currentFocusedElement.closest( key ) && currentFocusedElement.closest( _settings.focusedFieldSkipFragmentReplaceSelector ) ) {
 								replaceFragment = false;
@@ -655,8 +655,12 @@ jQuery( function( $ ) {
 							if ( value && -1 !== value.toString().indexOf( 'fc-fragment-always-replace' ) ) {
 								replaceFragment = true;
 							}
-							
+
 							if ( replaceFragment && ( ! wc_checkout_form.fragments || wc_checkout_form.fragments[ key ] !== value ) ) {
+								// CHANGE: Log replaced fragment to console if debug mode is enabled.
+								if ( fcSettings.debugMode ) {
+									console.log( 'Replacing fragment: ' + key );
+								}
 								$( key ).replaceWith( value );
 							}
 

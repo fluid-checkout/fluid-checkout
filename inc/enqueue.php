@@ -116,6 +116,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			'cssPath'                        => self::$directory_url . 'css/',
 			'ajaxUrl'                        => admin_url( 'admin-ajax.php' ),
 			'wcAjaxUrl'                      => WC_AJAX::get_endpoint( '%%endpoint%%' ),
+			'debugMode'                      => get_option( 'fc_debug_mode', 'no' ),
 			'flyoutBlock'                    => array(
 				'openAnimationClass'         => 'fade-in-up',
 				'closeAnimationClass'        => 'fade-out-down',
