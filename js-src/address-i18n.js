@@ -14,6 +14,7 @@ jQuery( function( $ ) {
 
 	// CHANGE: Add settings
 	var _settings = {
+		formRowSelector: '.form-row',
 		formRowExpansibleSelector: '.form-row.fc-expansible-form-section',
 		expansibleToggleSelector: '.fc-expansible-form-section__toggle',
 		expansibleContentSelector: '.fc-expansible-form-section__content',
@@ -51,6 +52,9 @@ jQuery( function( $ ) {
 	// CHANGE: Extract function to process country to state changing as it needs to be used when event `updated_checkout` is triggered
 	var process_country_to_state_changing = function( event, country, wrapper ) {
 		var thisform = wrapper, thislocale;
+
+		// CHANGE: Get current focused element and its value
+		var currentFocusedElement = document.activeElement;
 
 		if ( typeof locale[ country ] !== 'undefined' ) {
 			thislocale = locale[ country ];
@@ -206,17 +210,71 @@ jQuery( function( $ ) {
 				return 0;
 			});
 
-			rows.detach().appendTo( wrapper );
-		});
+			// CHANGE: Detach rows and re-attach them in the correct order, without moving the row of the field currently focused.
+			// This prevents the field from losing focus and keeps the virtual keyboard on mobile devices open.
+
+			// Get focused row
+			var focusedRow, referenceNode;
+			var before = true;
+			var rowsBefore = [], rowsAfter = [];
+			var _rows = rows.toArray();
+			for ( var i = 0; i < _rows.length; i++) {
+				var row = _rows[ i ];
+				if ( row.contains( currentFocusedElement ) ) {
+					focusedRow = row;
+					referenceNode = focusedRow;
+					break;
+				}
+			}
+
+			// Iterate over rows
+			for ( var i = 0; i < _rows.length; i++) {
+				var row = _rows[ i ];
+
+				// Maybe skip row with the field currently focused
+				if ( row === focusedRow ) {
+					before = false;
+					continue;
+				}
+
+				// Set reference node to last child
+				if ( ! focusedRow ) {
+					referenceNode = row.parentNode.lastChild;
+				}
+
+				// Maybe add row to the before list
+				if ( before ) {
+					rowsBefore.push( row );
+				}
+				// Maybe add row to the after list
+				else {
+					rowsAfter.push( row );
+				}
+			}
+
+			// Re-attach rows before the field currently focused
+			for ( var j = 0; j < rowsBefore.length; j++ ) {
+				var row = rowsBefore[ j ];
+				row.parentNode.insertBefore( row, referenceNode );
+			}
+
+			// Re-attach rows after the field currently focused
+			rowsAfter = rowsAfter.reverse();
+			for ( var j = 0; j < rowsAfter.length; j++ ) {
+				var row = rowsAfter[ j ];
+				row.parentNode.insertBefore( row, referenceNode.nextSibling );
+			}
+
+			// CHANGE: END - Detach rows and re-attach them in the correct order, without moving the row of the field currently focused.
+		} );
+
+		// CHANGE: Re-set focus to the element previously with focus
+		FCUtils.maybeRefocusElement( currentFocusedElement );
 	};
 
 	// CHANGE: END - Extract function to process country to state changing as it needs to be used when event `updated_checkout` is triggered
 	// CHANGE: Add function to handle country to state changing when event `updated_checkout` is triggered
 	var process_country_to_state_changing_updated_checkout = function() {		
-		// Get current element with focus, will re-set focus after updating the fragments
-		var currentFocusedElement = document.activeElement;
-		var currentValue = document.activeElement.value;
-
 		// Get all country fields on the page
 		var country_fields = document.querySelectorAll( _settings.countryFieldsSelector );
 
@@ -228,9 +286,6 @@ jQuery( function( $ ) {
 				process_country_to_state_changing( null, field.value, $( wrapper ) );
 			}
 		}
-
-		// Re-set focus to the element with focus previously to updating fragments
-		FCUtils.maybeRefocusElement( currentFocusedElement, currentValue );
 	}
 
 	// CHANGE: END - Add function to handle country to state changing when event `updated_checkout` is triggered

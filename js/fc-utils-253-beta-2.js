@@ -145,8 +145,14 @@
 	 * @param  {mixed}        currentValue           The value of the element in focus before an update.
 	 */
 	_publicMethods.maybeRefocusElement = function( currentFocusedElement, currentValue ) {
-		// Bail if no element to focus
-		if ( null === currentFocusedElement ) { return; }
+		// Maybe get current focused element from active element
+		if ( ! currentFocusedElement ) {
+			return;
+			// currentFocusedElement = document.activeElement;
+		}
+		
+		// Bail if focus is set to the document body
+		if ( document.body === currentFocusedElement ) { return; }
 
 		requestAnimationFrame( function() {
 			var elementToFocus;
@@ -171,7 +177,7 @@
 				elementToFocus.focus();
 
 				// Try to set current value to the focused element
-				if ( null !== currentValue && currentValue !== elementToFocus.value ) {
+				if ( undefined !== currentValue && null !== currentValue && currentValue !== elementToFocus.value ) {
 					elementToFocus.value = currentValue;
 				}
 
@@ -187,15 +193,8 @@
 						// @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange
 						// @see https://html.spec.whatwg.org/multipage/input.html#concept-input-apply
 						else {
-							elementToFocus.selectionStart = elementToFocus.selectionEnd = Number.MAX_SAFE_INTEGER || 10000;
+							elementToFocus.selectionStart = elementToFocus.selectionEnd = 999999;
 						}
-					}
-					// Try to select the entire content of the field
-					// @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select
-					// @see https://html.spec.whatwg.org/multipage/input.html#concept-input-apply
-					else {
-						try { elementToFocus.select(); }
-						catch { /* Do nothing */ }
 					}
 				}, 0 );
 			}

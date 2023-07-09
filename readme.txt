@@ -381,6 +381,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with plugin BRT Fermopoint by BRT.
+* Fixed: Auto selecting and overwriting text of email fields while typing.
 
 = 2.5.2 - 2023-06-30 =
 
