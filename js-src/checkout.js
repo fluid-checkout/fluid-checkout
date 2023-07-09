@@ -658,7 +658,7 @@ jQuery( function( $ ) {
 
 							if ( replaceFragment && ( ! wc_checkout_form.fragments || wc_checkout_form.fragments[ key ] !== value ) ) {
 								// CHANGE: Log replaced fragment to console if debug mode is enabled.
-								if ( wc_checkout_params.debug_mode ) {
+								if ( fcSettings.debugMode ) {
 									console.log( 'Replacing fragment: ' + key );
 								}
 								$( key ).replaceWith( value );
