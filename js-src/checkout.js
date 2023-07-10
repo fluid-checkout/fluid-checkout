@@ -471,8 +471,12 @@ jQuery( function( $ ) {
 			wc_checkout_form.updateTimer = setTimeout( wc_checkout_form.update_checkout_action, '5', args );
 		},
 		update_checkout_action: function( args ) {
+			console.log( 'update_checkout_action before check' );
+
 			// CHANGE: Check flag that allows or block updating the checkout
 			if ( ! window.can_update_checkout ) { return; }
+
+			console.log( 'update_checkout_action after check' );
 
 			if ( wc_checkout_form.xhr ) {
 				wc_checkout_form.xhr.abort();
