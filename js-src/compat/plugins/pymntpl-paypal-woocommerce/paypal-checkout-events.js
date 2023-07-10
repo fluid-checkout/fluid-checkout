@@ -39,7 +39,6 @@
 	 */
 	var maybeSetCheckoutUpdatableState = function( e, source ) {
 		if ( 'wc_ppcp_on_click' === e.type ) {
-			console.log( 'PAYPAL CLICK' );
 			window.can_update_checkout = false;
 		}
 	};
