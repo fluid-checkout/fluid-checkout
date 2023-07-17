@@ -188,7 +188,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 							</div>
 						</div>
 						<div class="fc-addons__item-description">
-							<p><?php echo wp_kses_post( __( 'Let customers save multiple shipping and billing addresses on their account and choose which ones to use at checkout and cart pages.', 'fluid-checkout' ) ); ?></p>
+							<p><?php echo wp_kses_post( __( 'Let customers <strong>save multiple shipping and billing addresses</strong> on their account and choose which ones to use at checkout and cart pages.', 'fluid-checkout' ) ); ?></p>
 						</div>
 						<div class="fc-addons__item-actions">
 							<?php if ( FluidCheckout::instance()->is_plugin_activated( 'fc-address-book/fc-address-book.php' ) ) : ?>
