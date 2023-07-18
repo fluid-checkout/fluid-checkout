@@ -70,7 +70,7 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_checkout_fields' ), 10 );
 
 		// Order fields position
-		if ( 'yes' == $ws_opt_field && 'order' == $display_location && 'yes' !== get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step', 'yes' ) ) {
+		if ( 'yes' == $ws_opt_field && 'order' == $display_location && 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' ) ) {
 			add_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
 		}
 
@@ -105,7 +105,7 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 
 		// Order fields position
 		$is_order_display_location = ! empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_ENABLED ] ) && 2 == $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::DISPLAY_OPT_IN_LOCATION ]; // 2 = Order notes
-		if ( $is_order_display_location && 'yes' !== get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step', 'yes' ) ) {
+		if ( $is_order_display_location && 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' ) ) {
 			add_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
 		}
 
@@ -118,7 +118,7 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	 */
 	public function move_checkbox_to_contact_step_hooks_v2() {
 		// Bail if should not move field to contact step
-		if ( 'yes' !== get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step', 'yes' ) ) { return; }
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' ) ) { return; }
 
 		// Get instance and variables for the Sendinblue WooCommerce integration class
 		$sendinblue_woocommerce = $GLOBALS['WC_Sendinblue_Integration'];
@@ -144,7 +144,7 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	 */
 	public function move_checkbox_to_contact_step_hooks_v3() {
 		// Bail if should not move field to contact step
-		if ( 'yes' !== get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step', 'yes' ) ) { return; }
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' ) ) { return; }
 		
 		// Bail if optin field is not set to be displayed on the checkout page
 		if ( empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_ENABLED ] ) ) { return; }
@@ -167,31 +167,34 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	 * @param   string  $current_section  Current section name.
 	 */
 	public function add_settings( $settings ) {
-		// Define positions for new settings
-		$index = count( $settings ) - 1;
 
-		// Define setting to insert
-		$insert_settings = array(
+		// Add new settings
+		$settings_new = array(
 			array(
-				'title'           => __( 'Sendinblue - WooCommerce Email Marketing', 'fluid-checkout' ),
+				'title' => __( 'Sendinblue - WooCommerce Email Marketing', 'fluid-checkout' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_sendinblue_options',
+			),
+
+			array(
+				'title'           => __( 'Sign up checkbox position', 'fluid-checkout' ),
 				'desc'            => __( 'Move the sign up checkbox to the contact step', 'fluid-checkout' ),
 				'desc_tip'        => __( 'When enabled, the checkbox will be moved to the contact step independently of the display location defined in the Sendinblue plugin settings.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step',
 				'type'            => 'checkbox',
-				'default'         => 'yes',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' ),
 				'autoload'        => false,
+			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_sendinblue_options',
 			),
 		);
 
-		// Get token position
-		$position_index = count( $settings ) - 1;
+		$settings = array_merge( $settings, $settings_new );
 
-		// Insert at token position
-		$new_settings = array_slice( $settings, 0, $position_index );
-		$new_settings = array_merge( $new_settings, $insert_settings );
-		$new_settings = array_merge( $new_settings, array_slice( $settings, $position_index, count( $settings ) ) );
-
-		return $new_settings;
+		return $settings;
 	}
 
 

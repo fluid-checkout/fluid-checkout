@@ -62,12 +62,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
-		// Custom styles
-		add_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
-		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_header_custom_styles' ), 10 );
-		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
-		add_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_footer_custom_styles' ), 10 );
-
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
@@ -150,7 +144,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Billing phone
 		// Maybe move billing phone to contact step
-		if ( 'contact' === get_option( 'fc_billing_phone_field_position', 'billing_address' ) ) {
+		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
 			// Add billing phone to contact fields
 			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
 
@@ -185,7 +179,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		add_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_order_review_background_inline_styles' ), 30 );
 
 		// Order summary cart items details
 		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_product_name' ), 10, 3 );
@@ -255,7 +248,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$order_notes_substep_position = 'fc_output_step_shipping';
 
 			// Check if no additional order fields are present
-			if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
+			if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_order_comments' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
 
 				// Maybe change output to the billing step
 				if ( ! WC()->cart->needs_shipping() ) {
@@ -271,7 +264,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Run order notes hooks for better compatibility with plugins that rely on them,
 		// because they originally run regardless of the order notes fields existence.
-		if ( ! in_array( 'order', array_keys( $all_fields ) ) || ! apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) ) {
+		if ( ! in_array( 'order', array_keys( $all_fields ) ) || ! apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_order_comments' ) ) ) {
 			$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields_inside' );
 			$order_notes_substep_priority = apply_filters( 'fc_do_order_notes_hooks_priority', 100 );
 			add_action( $order_notes_substep_position, array( $this, 'do_order_notes_hooks' ), $order_notes_substep_priority );
@@ -289,12 +282,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// General
 		remove_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
-
-		// Custom styles
-		remove_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
-		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_header_custom_styles' ), 10 );
-		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_page_custom_styles' ), 10 );
-		remove_filter( 'fc_output_custom_styles', array( $this, 'maybe_add_checkout_footer_custom_styles' ), 10 );
 
 		// Enqueue
 		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
@@ -376,7 +363,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Billing phone
 		// Maybe move billing phone to contact step
-		if ( 'contact' === get_option( 'fc_billing_phone_field_position', 'billing_address' ) ) {
+		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
 			// Add billing phone to contact fields
 			remove_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
 
@@ -411,7 +398,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		remove_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		remove_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
-		remove_action( 'wp_enqueue_scripts', array( $this, 'add_order_review_background_inline_styles' ), 30 );
 
 		// Order summary cart items details
 		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_product_name' ), 10, 3 );
@@ -515,154 +501,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Add extra class to highlight the shipping section
-		if ( true === apply_filters( 'fc_show_shipping_section_highlighted', ( 'yes' === get_option( 'fc_show_shipping_section_highlighted', 'yes' ) ) ) ) {
+		if ( true === apply_filters( 'fc_show_shipping_section_highlighted', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_show_shipping_section_highlighted' ) ) ) ) {
 			$add_classes[] = 'has-highlighted-shipping-section';
 		}
 
 		// Add extra class to highlight the billing section
-		if ( true === apply_filters( 'fc_show_billing_section_highlighted', ( 'yes' === get_option( 'fc_show_billing_section_highlighted', 'yes' ) ) ) ) {
+		if ( true === apply_filters( 'fc_show_billing_section_highlighted', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_show_billing_section_highlighted' ) ) ) ) {
 			$add_classes[] = 'has-highlighted-billing-section';
-		}
-
-		// Add custom button color class
-		if ( $this->is_button_styles_enabled() ) {
-			$classes[] = 'has-fc-button-colors';
 		}
 
 		return array_merge( $classes, $add_classes );
 	}
 
-
-
-	/**
-	 * Check whether custom buttons styles are enabled for the page.
-	 */
-	public function is_button_styles_enabled() {
-		// Bail if button styles not enabled
-		if ( false === apply_filters( 'fc_apply_button_colors_styles', false ) ) { return false; }
-
-		// Bail if not on affected pages
-		if ( ! function_exists( 'is_checkout' )
-			|| (
-				! is_checkout() // Checkout page
-				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
-				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
-			)
-		) {
-			return false;
-		}
-
-		return true;
-	}
-
-
-
-	/**
-	 * Output custom styles to the checkout page.
-	 */
-	public function output_custom_styles() {
-		// Get styles
-		$custom_styles = apply_filters( 'fc_output_custom_styles', '' );
-
-		// Bail if styles are empty
-		if ( empty( $custom_styles ) ) { return; }
-		?>
-		<style id="fc-custom-styles">
-			<?php echo $custom_styles; // XSS ok. ?>
-		</style>
-		<?php
-	}
-
-	/**
-	 * Add the custom styles for the checkout header background color.
-	 */
-	public function add_checkout_header_custom_styles( $custom_styles ) {		
-		// Get header background color
-		$header_background_color = trim( get_option( 'fc_checkout_header_background_color', '' ) );
-
-		// Bail if color is empty
-		if ( empty( $header_background_color ) ) { return $custom_styles; }
-
-		$custom_styles .= 'header.fc-checkout-header{background-color:'. $header_background_color .'}';
-
-		return $custom_styles;
-	}
-
-	/**
-	 * Add the custom styles for the checkout page background color.
-	 */
-	public function add_checkout_page_custom_styles( $custom_styles ) {		
-		// Get header background color
-		$page_background_color = trim( get_option( 'fc_checkout_page_background_color', '' ) );
-
-		// Bail if color is empty
-		if ( empty( $page_background_color ) ) { return $custom_styles; }
-
-		$custom_styles .= 'body.has-fluid-checkout{background-color:'. $page_background_color .'}';
-
-		return $custom_styles;
-	}
-
-	/**
-	 * Add the custom styles for the checkout footer background color.
-	 */
-	public function add_checkout_footer_custom_styles( $custom_styles ) {
-		// Get footer background color
-		$footer_background_color = trim( get_option( 'fc_checkout_footer_background_color', '' ) );
-
-		// Bail if color is empty
-		if ( empty( $footer_background_color ) ) { return $custom_styles; }
-
-		$custom_styles .= 'footer.fc-checkout-footer{background-color:'. $footer_background_color .'}';
-
-		return $custom_styles;
-	}
-
-
-
-	/**
-	 * Maybe output custom styles to the checkout page.
-	 */
-	public function maybe_output_custom_styles() {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
-
-		$this->output_custom_styles();
-	}
-
-	/**
-	 * Maybe add the custom styles for the checkout header background color.
-	 */
-	public function maybe_add_checkout_header_custom_styles( $custom_styles ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
-
-		return $this->add_checkout_header_custom_styles( $custom_styles );
-	}
-
-	/**
-	 * Maybe add the custom styles for the checkout page background color.
-	 */
-	public function maybe_add_checkout_page_custom_styles( $custom_styles ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
-
-		return $this->add_checkout_page_custom_styles( $custom_styles );
-	}
-
-	/**
-	 * Maybe add the custom styles for the checkout footer background color.
-	 */
-	public function maybe_add_checkout_footer_custom_styles( $custom_styles ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $custom_styles; }
-
-		return $this->add_checkout_footer_custom_styles( $custom_styles );
-	}
-
 	
-
-
 
 	/**
 	 * Register assets.
@@ -720,19 +571,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get option for hiding the site's original header and footer at the checkout page.
+	 * Get the allowed checkout layout options.
 	 *
-	 * @return       boolean  True if should hide the site's original header and footer at the checkout page, false otherwise.
-	 * @deprecated            Use `FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout()` instead.
+	 * @return  array  Design templates arguments.
 	 */
-	public function get_hide_site_header_footer_at_checkout() {
-		// Add deprecation notice
-		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() instead.', '2.3.0' );
-
-		return FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout();
+	public function get_checkout_layout_options() {
+		return array(
+			'multi-step'  => array( 'label' => __( 'Multi-step', 'fluid-checkout' ) ),
+			'single-step' => array( 'label' => __( 'Single step', 'fluid-checkout' ) ),
+		);
 	}
-
-
 
 	/**
 	 * Return the list of values accepted for checkout layout.
@@ -740,10 +588,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  array  List of values accepted for checkout layout.
 	 */
 	public function get_allowed_checkout_layouts() {
-		return apply_filters( 'fc_allowed_checkout_layouts', array(
-			'multi-step'     => __( 'Multi-step', 'fluid-checkout' ),
-			'single-step'    => __( 'Single step', 'fluid-checkout' ),
-		) );
+		return array_keys( $this->get_checkout_layout_options() );
 	}
 
 
@@ -755,10 +600,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_place_order_position() {
 		// Get place order position option
-		$place_order_position = get_option( 'fc_checkout_place_order_position' ); // Should not use default value on this line because we need to check below if the value is set in the database
+		$place_order_position = FluidCheckout_Settings::instance()->get_option( 'fc_checkout_place_order_position', false ); // Pass in expected default value as `false` to detect if the option is not saved to the database yet.
 
 		// Maybe handle deprecated option `fc_enable_checkout_place_order_sidebar`
-		if ( false === $place_order_position && 'yes' === get_option( 'fc_enable_checkout_place_order_sidebar', 'no' ) ) {
+		if ( false === $place_order_position && 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_place_order_sidebar' ) ) {
 			$place_order_position = 'both_payment_and_order_summary';
 		}
 		// Defaults to below the payment section `below_payment_section`
@@ -777,13 +622,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  string  The name of the currently selected checkout layout option. Defaults to `multi-step`.
 	 */
 	public function get_checkout_layout() {
-		$allowed_values = array_keys( $this->get_allowed_checkout_layouts() );
-		$current_value = get_option( 'fc_checkout_layout' );
-		$default_value = 'multi-step';
+		$allowed_values = $this->get_allowed_checkout_layouts();
+		$current_value = FluidCheckout_Settings::instance()->get_option( 'fc_checkout_layout' );
 
 		// Set layout to default value if value not set or not allowed
 		if ( ! in_array( $current_value, $allowed_values ) ) {
-			$current_value = $default_value;
+			$current_value = FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_layout' );
 		}
 
 		return apply_filters( 'fc_get_checkout_layout', $current_value );
@@ -795,7 +639,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  boolean  `true` if the current checkout layout option value is set to `multi-step`, `false` otherwise.
 	 */
 	public function is_checkout_layout_multistep() {
-		return apply_filters( 'fc_is_checkout_layout_multistep', $this->get_checkout_layout() === 'multi-step' );
+		return apply_filters( 'fc_is_checkout_layout_multistep', 'multi-step' === $this->get_checkout_layout() );
 	}
 
 
@@ -1000,14 +844,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Check whether the shipping phone field is enabled to be used.
 	 */
 	public function is_shipping_phone_enabled() {
-		return 'no' !== get_option( 'fc_shipping_phone_field_visibility', 'no' );
+		return 'no' !== FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_visibility' );
 	}
 
 	/**
 	 * Check whether the billing phone field is enabled to be used.
 	 */
 	public function is_billing_phone_enabled() {
-		return 'hidden' !== get_option( 'woocommerce_checkout_phone_field', 'required' );
+		return 'hidden' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_checkout_phone_field' );
 	}
 
 
@@ -1679,7 +1523,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_progress_bar() {
 		// Bail if progress bar not enabled
-		if ( 'yes' !== get_option( 'fc_enable_checkout_progress_bar', 'yes' ) ) { return; }
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_progress_bar' ) ) { return; }
 
 		// Bail if not multi-step checkout layout
 		if ( ! $this->is_checkout_layout_multistep() ) { return; }
@@ -1727,7 +1571,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		// Sticky state attributes
-		if ( get_option( 'fc_enable_checkout_sticky_progress_bar', 'yes' ) === 'yes' ) {
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_sticky_progress_bar' ) ) {
 			$progress_bar_attributes = array_merge( $progress_bar_attributes, array(
 				'data-sticky-states' => true,
 				'data-sticky-relative-to' => '.fc-checkout-header',
@@ -2262,7 +2106,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Maybe add notice for account creation
-		if ( ! is_user_logged_in() && 'true' === get_option( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) && 'true' === apply_filters( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) ) {
+		if ( ! is_user_logged_in() && 'true' === FluidCheckout_Settings::instance()->get_option( 'fc_show_account_creation_notice_checkout_contact_step_text' ) && 'true' === apply_filters( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) ) {
 			$parsed_posted_data = $this->get_parsed_posted_data();
 			if ( $this->is_create_account_checked() ) {
 				$review_text_lines[] = '<em>' . __( 'An account will be created with the information provided.', 'fluid-checkout' ) . '</em>';
@@ -2389,7 +2233,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		// Bail if user already logged in or login at checkout is disabled
-		if ( is_user_logged_in() || 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
+		if ( is_user_logged_in() || 'yes' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; };
 
 		wc_get_template( 'checkout/form-contact-login-modal.php' );
 	}
@@ -2399,7 +2243,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_contact_login_link_section() {
 		// Do not output if login at checkout is disabled
-		if ( 'yes' !== get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; }
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_checkout_login_reminder' ) ) { return; }
 
 		wc_get_template( 'checkout/form-contact-login.php' );
 	}
@@ -3084,7 +2928,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$priority = 10;
 
 		// Change priority depending on the settings
-		if ( 'before_shipping_address' === get_option( 'fc_shipping_methods_substep_position', 'after_shipping_address' ) ) {
+		if ( 'before_shipping_address' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_substep_position' ) ) {
 			$priority = 20;
 		}
 
@@ -3098,7 +2942,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$priority = 20;
 
 		// Change priority depending on the settings
-		if ( 'before_shipping_address' === get_option( 'fc_shipping_methods_substep_position', 'after_shipping_address' ) ) {
+		if ( 'before_shipping_address' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_substep_position' ) ) {
 			$priority = 10;
 		}
 
@@ -3643,7 +3487,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Set default value
-		$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === get_option( 'fc_default_to_billing_same_as_shipping', 'yes' ) );
+		$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
 		
 		// Maybe set as same as shipping for logged users
 		if ( is_user_logged_in() ) {
@@ -4169,7 +4013,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		// Sticky state attributes
-		if ( get_option( 'fc_enable_checkout_sticky_order_summary', 'yes' ) === 'yes' ) {
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_sticky_order_summary' ) ) {
 			$sidebar_attributes = array_merge( $sidebar_attributes, array(
 				'data-sticky-states' => true,
 				'data-sticky-container' => '.fc-wrapper',
@@ -4469,21 +4313,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$shipping_total_label = str_replace( $method_label.': ', '', wc_cart_totals_shipping_method_label( $method ) );
 
 		return $shipping_total_label;
-	}
-
-
-
-	/**
-	 * Adds order summary background highlight color as inline css.
-	 */
-	public function add_order_review_background_inline_styles() {
-		$color = get_option( 'fc_checkout_order_review_highlight_color', '' );
-
-		// Bail if color is not defined
-		if ( empty( $color ) ) { return; }
-
-		$custom_css = "body div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner { background-color: $color; }";
-		wp_add_inline_style( 'fc-checkout-layout', $custom_css );
 	}
 
 
@@ -4990,6 +4819,83 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * END - Persisted Data
+	 */
+
+
+
+
+
+	/**
+	 * DEPRECATED functions.
+	 */
+
+
+
+	/**
+	 * Get option for hiding the site's original header and footer at the checkout page.
+	 *
+	 * @return       boolean  True if should hide the site's original header and footer at the checkout page, false otherwise.
+	 * @deprecated            Use `FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout()` instead.
+	 */
+	public function get_hide_site_header_footer_at_checkout() {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() instead.', '2.3.0' );
+
+		return FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout();
+	}
+
+
+
+	/**
+	 * Get option for hiding the site's original header and footer at the checkout page.
+	 *
+	 * @return       boolean  True if should hide the site's original header and footer at the checkout page, false otherwise.
+	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->output_custom_styles()` instead.
+	 */
+	public function output_custom_styles() {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_DesignTemplates::instance()->output_custom_styles() instead.', '3.0.0' );
+
+		return FluidCheckout_DesignTemplates::instance()->output_custom_styles();
+	}
+
+	/**
+	 * Add the custom styles for the cart page background color.
+	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->add_checkout_page_custom_styles()` instead.
+	 */
+	public function add_checkout_page_custom_styles( $custom_styles ) {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_DesignTemplates::instance()->add_checkout_page_custom_styles() instead.', '3.0.0' );
+
+		return FluidCheckout_DesignTemplates::instance()->add_checkout_page_custom_styles( $custom_styles );
+	}
+
+	/**
+	 * Add the custom styles for the cart header background color.
+	 * @deprecated            Use CSS variable `--fluidcheckout--header--background-color` instead.
+	 */
+	public function add_checkout_header_custom_styles( $custom_styles ) {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use CSS variable `--fluidcheckout--header--background-color` instead.', '3.0.0' );
+
+		return $custom_styles;
+	}
+
+	/**
+	 * Add the custom styles for the cart footer background color.
+	 * @deprecated            Use CSS variable `--fluidcheckout--footer--background-color` instead.
+	 */
+	public function add_checkout_footer_custom_styles( $custom_styles ) {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use CSS variable `--fluidcheckout--footer--background-color` instead.', '3.0.0' );
+
+		return $custom_styles;
+	}
+
+
+
+	/**
+	 * END - DEPRECATED functions.
 	 */
 
 }

@@ -1,0 +1,52 @@
+// ------------------------------------
+// CHECKOUT OPTIONS - DESIGN TEMPLATE
+// ------------------------------------
+.forminp-fc_template_selector fieldset {
+	padding: 20px;
+	background-color: #fff;
+}
+
+.forminp-fc_template_selector ul {
+	margin: 0;
+	display: flex;
+}
+
+.forminp-fc_template_selector li {
+	position: relative;
+	display: block;
+	padding: 85px 2px 0;
+	width: 100px;
+}
+.forminp-fc_template_selector li + li {
+	margin-left: 10px;
+}
+
+
+
+.forminp-fc_template_selector label.disabled {
+	cursor: not-allowed;
+	opacity: .5;
+}
+
+
+
+.forminp-fc_template_selector .fc-design-template__option:after {
+	content: '';
+	float: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100px;
+	height: 75px;
+	border: solid 2px #fff;
+	background-color: #F0EFF1;
+	background-size: 100% 100%;
+}
+.forminp-fc_template_selector .fc-design-template__option:checked:after {
+	border: solid 2px #3481C4;
+}
+
+.forminp-fc_template_selector .fc-design-template__option:disabled {
+	cursor: not-allowed;
+}

@@ -17,6 +17,7 @@ form.woocommerce-checkout {
 .fc-content form.woocommerce-checkout {
 	clear: both;
 	float: none;
+	margin: 0 !important; // Needed to override theme styles breaking the layout
 }
 .fc-content form.woocommerce-checkout:after {
 	@include clearfix();

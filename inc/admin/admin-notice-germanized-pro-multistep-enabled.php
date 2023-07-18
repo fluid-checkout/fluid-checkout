@@ -55,6 +55,7 @@ class FluidCheckout_AdminNotices_GermanizedPRO_MultistepFeatureEnabled extends F
 		if ( ! $this->is_germanized_pro_activated() ) { return $notices; }
 
 		// Bail if multistep feature is not enabled
+		// Need to get option directly as the Lite plugin might not be activated at this point
 		if ( 'yes' !== get_option( 'woocommerce_gzdp_checkout_enable' ) ) { return $notices; }
 
 		$notices[] = array(

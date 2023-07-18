@@ -7,6 +7,14 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_Enqueue extends FluidCheckout {
 
 	/**
+	 * Holds the flag to determine if the settings inline script has been output.
+	 */
+	private static $has_output_settings_inline_script = false;
+
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -109,13 +117,14 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		return apply_filters( 'fc_js_settings', array(
 			'ver'                            => self::$version,
 			'assetsVersion'                  => self::$asset_version,
-			'cookiePath'                     => parse_url( get_option( 'siteurl' ), PHP_URL_PATH ),
-			'cookieDomain'                   => parse_url( get_option( 'siteurl' ), PHP_URL_HOST ),
+			'cookiePath'                     => parse_url( FluidCheckout_Settings::instance()->get_option( 'siteurl' ), PHP_URL_PATH ),
+			'cookieDomain'                   => parse_url( FluidCheckout_Settings::instance()->get_option( 'siteurl' ), PHP_URL_HOST ),
 			'jsPath'                         => self::$directory_url . 'js/',
 			'jsLibPath'                      => self::$directory_url . 'js/lib/',
 			'cssPath'                        => self::$directory_url . 'css/',
 			'ajaxUrl'                        => admin_url( 'admin-ajax.php' ),
 			'wcAjaxUrl'                      => WC_AJAX::get_endpoint( '%%endpoint%%' ),
+			'debugMode'                      => get_option( 'fc_debug_mode', 'no' ),
 			'flyoutBlock'                    => array(
 				'openAnimationClass'         => 'fade-in-up',
 				'closeAnimationClass'        => 'fade-out-down',
@@ -178,6 +187,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * Output JS settings object.
 	 */
 	public function output_settings_inline_script() {
+		// Bail if already output settings object
+		if ( true === self::$has_output_settings_inline_script ) { return; }
+
 		// Output settings object
 		echo '<script type="text/javascript">var fcSettings = ' . wp_json_encode( $this->get_js_settings() ) . ';</script>';
 	}
