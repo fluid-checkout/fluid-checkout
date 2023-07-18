@@ -390,6 +390,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = 3.0.0 - 2023-07-18 =
 
+* Bump tested up to WooCommerce 7.9
 * Added: New feature to select design template for the checkout page, more design template options are available with [Fluid Checkout PRO](https://fluidcheckout.com/pricing/).
 * Added: PRO settings on the plugin settings page so users can easily discover PRO features.
 * Added: Compatibility with plugin BRT Fermopoint by BRT.
