@@ -470,63 +470,6 @@ jQuery( function( $ ) {
 			wc_checkout_form.reset_update_checkout_timer();
 			wc_checkout_form.updateTimer = setTimeout( wc_checkout_form.update_checkout_action, '5', args );
 		},
-		// CHANGE: Add function to re-focus and keep value of the element that was previously focused before submitting an ajax request
-		maybe_refocus_element: function( currentFocusedElement, currentValue ) {
-			// Bail if no element to focus
-			if ( null === currentFocusedElement ) { return; }
-
-			requestAnimationFrame( function() {
-				var elementToFocus;
-
-				// Try findind the `select2` focusable element
-				if ( currentFocusedElement.matches( '.fc-select2-field' ) ) {
-					elementToFocus = document.querySelector( '.form-row[id="' + currentFocusedElement.id + '"] .select2-selection' );
-				}
-				// Try findind the the current focused element after updating updated element by ID
-				else if ( currentFocusedElement.id ) {
-					elementToFocus = document.getElementById( currentFocusedElement.id );
-				}
-				// Try findind the updated element by classes
-				else if ( currentFocusedElement.getAttribute( 'name' ) ) {
-					var nameAttr = currentFocusedElement.getAttribute( 'name' );
-					elementToFocus = document.querySelector( '[name="'+nameAttr+'"]' );
-				}
-
-				// Try setting focus if element is found
-				if ( elementToFocus && elementToFocus !== currentFocusedElement ) {
-					elementToFocus.focus();
-
-					// Try to set current value to the focused element
-					if ( null !== currentValue && currentValue !== elementToFocus.value ) {
-						elementToFocus.value = currentValue;
-					}
-
-					// Set keyboard track position back to that previously to update
-					setTimeout( function(){
-						// Try to set the same track position
-						if( null !== elementToFocus.selectionStart && null !== elementToFocus.selectionEnd ) {
-							if ( currentFocusedElement.selectionStart && currentFocusedElement.selectionEnd ) {
-								elementToFocus.selectionStart = currentFocusedElement.selectionStart;
-								elementToFocus.selectionEnd = currentFocusedElement.selectionEnd;
-							}
-							// Otherwise try set the track position to the end of the field
-							// @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange
-							// @see https://html.spec.whatwg.org/multipage/input.html#concept-input-apply
-							else {
-								elementToFocus.selectionStart = elementToFocus.selectionEnd = Number.MAX_SAFE_INTEGER || 10000;
-							}
-						}
-						// Try to select the entire content of the field
-						// @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select
-						// @see https://html.spec.whatwg.org/multipage/input.html#concept-input-apply
-						else {
-							try { elementToFocus.select(); }
-							catch { /* Do nothing */ }
-						}
-					}, 0 );
-				}
-			} );
-		},
 		update_checkout_action: function( args ) {
 			// CHANGE: Check flag that allows or block updating the checkout
 			if ( ! window.can_update_checkout ) { return; }
@@ -702,7 +645,7 @@ jQuery( function( $ ) {
 							// CHANGE: Declare local variables needed for some checks before replacing the fragment
 							var fragmentToReplace = document.querySelector( key );
 							var replaceFragment = true;
-							
+
 							// CHANGE: Maybe set to skip fragment with the focus within it. This avoids unexpected closing of mobile keyboard and lost of focus when updating fragments.
 							if ( fragmentToReplace && currentFocusedElement.closest( key ) && currentFocusedElement.closest( _settings.focusedFieldSkipFragmentReplaceSelector ) ) {
 								replaceFragment = false;
@@ -712,8 +655,12 @@ jQuery( function( $ ) {
 							if ( value && -1 !== value.toString().indexOf( 'fc-fragment-always-replace' ) ) {
 								replaceFragment = true;
 							}
-							
+
 							if ( replaceFragment && ( ! wc_checkout_form.fragments || wc_checkout_form.fragments[ key ] !== value ) ) {
+								// CHANGE: Log replaced fragment to console if debug mode is enabled.
+								if ( fcSettings.debugMode ) {
+									console.log( 'Replacing fragment: ' + key );
+								}
 								$( key ).replaceWith( value );
 							}
 
@@ -729,7 +676,7 @@ jQuery( function( $ ) {
 					$( _settings.checkoutBlockUISelector ).unblock();
 
 					// CHANGE: Re-set focus to the element with focus previously to updating fragments
-					wc_checkout_form.maybe_refocus_element( currentFocusedElement, currentValue );
+					FCUtils.maybeRefocusElement( currentFocusedElement, currentValue );
 
 					// Recheck the terms and conditions box, if needed
 					if ( termsCheckBoxChecked ) {
@@ -930,7 +877,7 @@ jQuery( function( $ ) {
 							}
 							$( _settings.checkoutPlaceOrderSelector ).removeAttr( 'disabled' );
 							$( _settings.checkoutPlaceOrderSelector ).removeClass( 'disabled' );
-							wc_checkout_form.maybe_refocus_element( currentFocusedElement );
+							FCUtils.maybeRefocusElement( currentFocusedElement );
 							// END - Unblock the place order button
 
 							// Trigger update in case we need a fresh nonce
@@ -956,7 +903,7 @@ jQuery( function( $ ) {
 						}
 						$( _settings.checkoutPlaceOrderSelector ).removeAttr( 'disabled' );
 						$( _settings.checkoutPlaceOrderSelector ).removeClass( 'disabled' );
-						wc_checkout_form.maybe_refocus_element( currentFocusedElement );
+						FCUtils.maybeRefocusElement( currentFocusedElement );
 						// END - Unblock the place order button
 
 						// Detach the unload handler that prevents a reload / redirect
