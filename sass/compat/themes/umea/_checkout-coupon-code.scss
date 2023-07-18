@@ -1,0 +1,17 @@
+// ------------------------------------
+// CHECKOUT COUPON CODE
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon_code__collapsible input#coupon_code {
+	padding: remsize( 1.1rem ) remsize( 1.8rem ) !important; // Needed to override theme styles 
+	border: solid remsize( .1rem ) #959595 !important; // Needed to override theme styles. Uses specific color to match the theme default styles.
+}
+
+
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+	@extend %button-styles;
+	@extend %button-primary-actions;
+
+	position: absolute !important; // Needed to override theme styles
+}

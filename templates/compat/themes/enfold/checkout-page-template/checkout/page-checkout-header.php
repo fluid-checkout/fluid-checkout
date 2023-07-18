@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// CHANGED: Copied code from theme template file header.php
+// CHANGE: Copied code from theme template file header.php
 global $avia_config;
 
 $lightbox_option = avia_get_option( 'lightbox_active' );
@@ -168,19 +168,19 @@ $html_classes = implode( ' ', array_unique( array_filter( $html_classes ) ) );
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="<?php echo $html_classes; ?>">
-<?php // CHANGED: END - Copied code from theme template file header.php ?>
+<?php // CHANGE: END - Copied code from theme template file header.php ?>
 
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 
-<?php // CHANGED: Remove meta `viewport` as is supposed to be added by the theme, code from theme copied below ?>
+<?php // CHANGE: Remove meta `viewport` as is supposed to be added by the theme, code from theme copied below ?>
 
 <?php if ( isset( $meta_theme_color ) ) : ?>
     <meta name="theme-color" content="<?php echo esc_attr( $meta_theme_color ); ?>">
 <?php endif; ?>
 
-<?php // CHANGED: Copied code from theme template file header.php ?>
+<?php // CHANGE: Copied code from theme template file header.php ?>
 <?php
 /*
  * outputs a rel=follow or nofollow tag to circumvent google duplicate content for archives
@@ -203,12 +203,12 @@ $meta_viewport = ( strpos( $responsive, 'responsive' ) !== false ) ?  '<meta nam
  */
 echo apply_filters( 'avf_header_meta_viewport', $meta_viewport );
 ?>
-<?php // CHANGED: END - Copied code from theme template file header.php ?>
+<?php // CHANGE: END - Copied code from theme template file header.php ?>
 
 <?php wp_head(); ?>
 </head>
 
-<?php // CHANGED: Copied code from theme template file header.php ?>
+<?php // CHANGE: Copied code from theme template file header.php ?>
 <?php
 $body_classes[] = $avia_config['font_stack'];
 $body_classes = implode( ' ', array_unique( array_filter( $body_classes ) ) );
@@ -234,11 +234,11 @@ $body_classes = implode( ' ', array_unique( array_filter( $body_classes ) ) );
 	do_action( 'ava_after_body_opening_tag' );
 	?>
 
-<?php // CHANGED: END - Copied code from theme template file header.php ?>
+<?php // CHANGE: END - Copied code from theme template file header.php ?>
 
 <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'fluid-checkout' ); ?></a>
 
 <?php do_action( 'fc_checkout_header' ); ?>
 
-<?php // CHANGED: Added class and attributes from theme ?>
+<?php // CHANGE: Added class and attributes from theme ?>
 <main id="main" class="content-area fc-main all_colors" data-scroll-offset="<?php echo avia_header_setting( 'header_scroll_offset' ); ?>">

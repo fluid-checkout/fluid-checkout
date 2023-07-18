@@ -69,7 +69,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	padding-top: $option-box-padding-vertical;
 	padding-bottom: $option-box-padding-vertical;
 	padding-#{ $alignment-left }: calc( #{ $option-box-padding-horizontal } + #{ $option-box-radio-size } + #{ $global-spacing-extra-small } );
-	padding-#{ $alignment-right }: calc( #{ $option-box-padding-horizontal } + #{ $shipping-method-price-width } );
+	padding-#{ $alignment-right }: $option-box-padding-horizontal;
 	width: 100%;
 	border: $option-box-label-border;
 	border-top: 0;

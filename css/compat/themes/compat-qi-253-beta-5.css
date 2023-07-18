@@ -1,0 +1,46 @@
+:root {
+  --fluidcheckout--field--height: 58px;
+  --fluidcheckout--validation-check--horizontal-spacing--select: 40px;
+  --fluidcheckout--validation-check--horizontal-spacing--select-alt: 40px;
+}
+
+body.theme-qi .fc-content.fc-container {
+  padding: 0 !important;
+}
+
+body.theme-qi .fc-content.fc-container .fc-checkout-notices {
+  width: unset !important;
+}
+
+body.theme-qi div.woocommerce form .form-row {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 1025px) {
+  body.theme-qi #qodef-woo-page.qodef--checkout #order_review {
+    width: 100%;
+  }
+}
+
+body.theme-qi #qodef-woo-page.qodef--checkout #order_review table {
+  border: 0;
+}
+
+body.theme-qi #qodef-woo-page.qodef--checkout #order_review table tr td,
+body.theme-qi #qodef-woo-page.qodef--checkout #order_review table tr th {
+  padding: 10px 20px;
+  border-left: 0;
+  border-right: 0;
+}
+
+body.theme-qi.woocommerce-page div.woocommerce .shop_table th {
+  font-size: 15px;
+}
+
+body.theme-qi #qodef-woo-page .fc-checkout-order-review__actions-mobile .fc-checkout-order-review__close-order-summary {
+  line-height: 1;
+}
+
+body.theme-qi .select2-container--default .select2-selection--single .select2-selection__rendered {
+  padding-left: 20px;
+}
