@@ -37,7 +37,7 @@ class FluidCheckout_KlarnaCheckoutForWooCommerce extends FluidCheckout {
 		// Bail if Klarna is not the selected payment method
 		if ( 'kco' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 
-		// Undo hooks from Fluid Checkout classes
+		// Undo hooks from feature classes
 		$features_list = FluidCheckout::instance()->get_features_list();
 		$skip_undo_hooks_classes = array( 'FluidCheckout_CheckoutPageTemplate', 'FluidCheckout_CheckoutWidgetAreas' );
 		foreach ( $features_list as $class_name => $args ) {
@@ -63,11 +63,11 @@ class FluidCheckout_KlarnaCheckoutForWooCommerce extends FluidCheckout {
 		if ( 'kco' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 
 		// Undo enqueue hooks
-		if ( class_exists( 'FluidCheckout_PRO_Enqueue' ) ) {
-			FluidCheckout_PRO_Enqueue::instance()->undo_hooks();
+		if ( class_exists( 'FluidCheckout_Enqueue' ) ) {
+			FluidCheckout_Enqueue::instance()->undo_hooks();
 		}
 
-		// Undo hooks from Fluid Checkout classes
+		// Undo hooks from feature classes
 		$features_list = FluidCheckout::instance()->get_features_list();
 		$skip_undo_hooks_classes = array( 'FluidCheckout_CheckoutPageTemplate' );
 		foreach ( $features_list as $class_name => $args ) {

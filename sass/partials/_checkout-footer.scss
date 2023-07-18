@@ -2,8 +2,12 @@
 // CHECKOUT FOOTER
 // ------------------------------------
 .fc-checkout-footer {
-	border-top: solid remsize( .1rem ) $border-color;
-	background-color: $white;
+	border-top: $checkout-footer-border;
+	background-color: $checkout-footer-background-color;
+
+	@media (#{$bp-larger-than-desktop}) {
+		border-top: $checkout-footer-border--large-screen;
+	}
 }
 
 .fc-checkout-footer__inner {

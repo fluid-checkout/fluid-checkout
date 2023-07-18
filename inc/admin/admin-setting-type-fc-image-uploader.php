@@ -20,7 +20,7 @@ class FluidCheckout_Admin_SettingType_ImageUploader extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Field types
-		add_action( 'woocommerce_admin_field_fc_image_uploader', array( $this, 'output_field_type_fc_image_uploader' ), 10 );
+		add_action( 'woocommerce_admin_field_fc_image_uploader', array( $this, 'output_field' ), 10 );
 
 		// Scripts and styles
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts_styles' ), 10 );
@@ -43,11 +43,11 @@ class FluidCheckout_Admin_SettingType_ImageUploader extends FluidCheckout {
 
 
 	/**
-	 * Output the image selector setting field.
+	 * Output the setting field.
 	 *
 	 * @param   array  $value  Admin settings args values.
 	 */
-	public function output_field_type_fc_image_uploader( $value ) {
+	public function output_field( $value ) {
 		// Enqueue assets
 		wp_enqueue_media();
 		wp_enqueue_script( 'fc-admin-image-uploader' );

@@ -53,7 +53,7 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 			add_filter( 'woocommerce_order_button_html', array( $this, 'restore_order_button_html' ), 10000 );
 
 			// Legal checkboxes
-			if ( get_option( 'gm_order_review_checkboxes_before_order_review', 'off' ) == 'on' ) {
+			if ( 'on' === FluidCheckout_Settings::instance()->get_option( 'gm_order_review_checkboxes_before_order_review' ) ) {
 				remove_action( 'woocommerce_de_checkout_payment', array( 'WGM_Template', 'add_review_order' ), 10 );
 				add_action( 'woocommerce_checkout_before_order_review', array( 'WGM_Template', 'add_review_order' ), 10 );
 			}

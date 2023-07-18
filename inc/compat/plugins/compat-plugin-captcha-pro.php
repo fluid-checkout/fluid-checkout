@@ -39,7 +39,7 @@ class FluidCheckout_CaptchaPro extends FluidCheckout {
 
 
 	public function get_captcha_position_args() {
-		$captcha_position = get_option( 'fc_integration_captcha_pro_captcha_position', 'before_place_order_section' );
+		$captcha_position = FluidCheckout_Settings::instance()->get_option( 'fc_integration_captcha_pro_captcha_position' );
 		
 		$captcha_position_hook_priority = array(
 			'before_place_order_section' => array( 'hook' => 'fc_output_step_payment', 'priority' => 95, 'args_count' => 2 ),
@@ -58,19 +58,35 @@ class FluidCheckout_CaptchaPro extends FluidCheckout {
 	 * @param   string  $current_section  Current section name.
 	 */
 	public function add_settings( $settings, $current_section ) {
-		
-		$settings[] = array(
-			'title'          => __( 'Captcha Pro by BestWebSoft', 'fluid-checkout' ),
-			'desc'           => __( 'Define the position to display the captcha section. Some positions might not work depending on the captcha type chosen.', 'fluid-checkout' ),
-			'id'             => 'fc_integration_captcha_pro_captcha_position',
-			'type'           => 'select',
-			'options'        => array(
-				'before_place_order_section'     => _x( 'Before place order section', 'Captcha position', 'fluid-checkout' ),
-				'before_place_order_button'      => _x( 'Before place order button', 'Captcha position', 'fluid-checkout' ),
+
+		// Add new settings
+		$settings_new = array(
+			array(
+				'title' => __( 'Captcha Pro by BestWebSoft', 'fluid-checkout' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_captcha_pro_options',
 			),
-			'default'        => 'before_place_order_section',
-			'autoload'       => false,
+
+			array(
+				'title'          => __( 'Captcha position', 'fluid-checkout' ),
+				'desc'           => __( 'Define the position to display the captcha section. Some positions might not work depending on the captcha type chosen.', 'fluid-checkout' ),
+				'id'             => 'fc_integration_captcha_pro_captcha_position',
+				'type'           => 'select',
+				'options'        => array(
+					'before_place_order_section'     => _x( 'Before place order section', 'Captcha position', 'fluid-checkout' ),
+					'before_place_order_button'      => _x( 'Before place order button', 'Captcha position', 'fluid-checkout' ),
+				),
+				'default'        => FluidCheckout_Settings::instance()->get_option_default( 'fc_integration_captcha_pro_captcha_position' ),
+				'autoload'       => false,
+			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_captcha_pro_options',
+			),
 		);
+
+		$settings = array_merge( $settings, $settings_new );
 
 		return $settings;
 	}

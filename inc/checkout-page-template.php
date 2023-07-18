@@ -137,7 +137,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		if ( ! function_exists( 'WC' ) ) { return false; }
 
 		// Check if checkout page is showing the checkout form, then check the settings to show theme header or plugin header
-		return ( ! ( ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() && ! is_user_logged_in() ) ) && 'yes' === get_option( 'fc_hide_site_header_footer_at_checkout', 'yes' );
+		return ( ! ( ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() && ! is_user_logged_in() ) ) && 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_hide_site_header_footer_at_checkout' );
 	}
 
 

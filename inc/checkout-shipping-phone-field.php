@@ -19,6 +19,9 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Bail if feature is not enabled
+		if( 'no' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_visibility' ) ) { return; }
+
 		// Add shipping phone field
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'add_shipping_phone_field' ), 5 );
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta_with_shipping_phone' ), 10 );
@@ -34,7 +37,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_shipping_company_field_args' ), 100 );
 
 		// Move shipping phone to contact step
-		if ( 'contact' === get_option( 'fc_shipping_phone_field_position', 'shipping_address' ) ) {
+		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_position' ) ) {
 			// Add shipping phone to contact fields
 			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_shipping_phone_field_to_contact_fields' ), 10 );
 
@@ -86,7 +89,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		return apply_filters( 'fc_shipping_phone_field_args', array(
 			'label'        => __( 'Shipping phone', 'fluid-checkout' ),
 			'description'  => __( 'Only used for shipping-related questions.', 'fluid-checkout' ),
-			'required'     => get_option( 'fc_shipping_phone_field_visibility', 'no' ) === 'required',
+			'required'     => 'required' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_visibility' ),
 			'validate'     => array( 'phone' ),
 			'class'        => array( 'form-row-first' ),
 			'priority'     => 25,
@@ -105,7 +108,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function maybe_set_shipping_phone_required( $shipping_fields ) {
 		// Bail if shipping phone not present, or billing phone field not required
-		if ( ! array_key_exists( 'shipping_phone', $shipping_fields ) || get_option( 'woocommerce_checkout_phone_field', 'required' ) !== 'required' || 'billing_address' !== get_option( 'fc_billing_phone_field_position', 'billing_address' ) ) { return $shipping_fields; }
+		if ( ! array_key_exists( 'shipping_phone', $shipping_fields ) || 'required' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_checkout_phone_field' ) || 'billing_address' !== FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) { return $shipping_fields; }
 
 		// Set shipping phone as required
 		$shipping_fields['shipping_phone']['required'] = true;
@@ -122,7 +125,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function change_shipping_company_field_args( $field_args ) {
 		// Bail if not hidding optional fields behind a link button
-		if ( get_option( 'fc_enable_checkout_hide_optional_fields', 'yes' ) === 'yes' && array_key_exists( 'shipping_phone', $field_args ) && array_key_exists( 'required', $field_args['shipping_phone'] ) && $field_args['shipping_phone']['required'] != true ) { return $field_args; }
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_hide_optional_fields' ) && array_key_exists( 'shipping_phone', $field_args ) && array_key_exists( 'required', $field_args['shipping_phone'] ) && true != $field_args['shipping_phone']['required'] ) { return $field_args; }
 
 		if ( array_key_exists( 'shipping_company', $field_args ) ) {
 			$field_args['shipping_company']['class'] = array( 'form-row-last' );

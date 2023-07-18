@@ -35,11 +35,7 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	 * @return array
 	 */
 	public function get_sections() {
-		$sections = array(
-			'' => __( 'Checkout', 'fluid-checkout' ),
-		);
-
-		return apply_filters( 'woocommerce_get_sections_' . $this->id, $sections );
+		return apply_filters( 'woocommerce_get_sections_' . $this->id, array() );
 	}
 
 

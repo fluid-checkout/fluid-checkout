@@ -19,6 +19,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Bail if feature is not enabled
+		if( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_apply_checkout_field_args' ) ) { return; }
+		
 		// Checkout fields args
 		add_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_args' ), 100 );
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 100 );
@@ -70,7 +73,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 */
 	public function get_checkout_field_args() {
 		$billing_email_description = apply_filters( 'fc_checkout_email_field_description', __( 'Order number and receipt will be sent to this email address.', 'fluid-checkout' ) );
-		$billing_company_class = get_option( 'woocommerce_checkout_phone_field', 'required' ) === 'required' ? 'form-row-last' : 'form-row-wide';
+		$billing_company_class = 'required' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_checkout_phone_field' ) ? 'form-row-last' : 'form-row-wide';
 
 		$fields_args = array(
 			'billing_email'         => array( 'priority' => 5, 'description' => $billing_email_description, 'type' => 'email', 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'contact email' ) ),
