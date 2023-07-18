@@ -384,6 +384,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: PRO settings on the plugin settings page so users can easily discover PRO features.
 * Improved: Reorganized plugins settings in sections that are easier to understand and set up.
 * Improved: Refactor settings to use centralized class with default values.
+* Improved: Refactor CSS to use CSS variables for customization.
 
 = Unreleased =
 
