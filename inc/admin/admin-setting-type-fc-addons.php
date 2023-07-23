@@ -48,7 +48,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 							<img class="fc-addons__item-image" src="<?php echo esc_url( FluidCheckout::$directory_url . 'images/admin/addons/fluid-checkout-pro-icon.png' ); ?>" alt="<?php echo esc_attr( __( 'Fluid Checkout PRO', 'fluid-checkout' ) ); ?>">
 							<div class="fc-addons__item-title-section">
 								<h3 class="fc-addons__item-title"><?php echo esc_html( __( 'Fluid Checkout PRO', 'fluid-checkout' ) ); ?></h3>
-								<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'More features, more sales.', 'fluid-checkout' ) ); ?></p>
+								<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'Design templates, optimized cart and order received pages, account matching, and much more.', 'fluid-checkout' ) ); ?></p>
 							</div>
 						</div>
 						<div class="fc-addons__item-description">
@@ -141,7 +141,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 								<img class="fc-addons__item-image" src="<?php echo esc_url( FluidCheckout::$directory_url . 'images/admin/addons/fluid-checkout-pro-icon.png' ); ?>" alt="<?php echo esc_attr( __( 'Fluid Checkout PRO', 'fluid-checkout' ) ); ?>">
 								<div class="fc-addons__item-title-section">
 									<h3 class="fc-addons__item-title"><?php echo esc_html( __( 'Fluid Checkout PRO', 'fluid-checkout' ) ); ?></h3>
-									<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'More features, more sales.', 'fluid-checkout' ) ); ?></p>
+									<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'Design templates, optimized cart and order received pages, account matching and much more.', 'fluid-checkout' ) ); ?></p>
 								</div>
 							</div>
 							<div class="fc-addons__item-description">
