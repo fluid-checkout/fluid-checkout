@@ -1,0 +1,11 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+body.theme-astra div.woocommerce form .form-row > label {
+	z-index: z( 'default' ) + 2 !important; // Needed to override theme styles
+}
+
+body.theme-astra div.woocommerce form #shipping_address_2_field > label {
+	opacity: 0;
+}

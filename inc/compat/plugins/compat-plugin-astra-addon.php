@@ -19,11 +19,47 @@ class FluidCheckout_AstraAddon extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
 		// Disable theme addon features
 		add_filter( 'astra_get_option_array', array( $this, 'force_change_theme_options' ), 10, 3 );
 
 		// Adds placeholder for modern input.
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'label_fields_customization' ), 1100 );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Checkout events
+		wp_register_script( 'fc-compat-astra-addon-woo-common-input-event-handler', self::$directory_url . 'js/compat/plugins/astra-addon/woo-common-input-event-handler' . self::$asset_version . '.js', array(), NULL, true );
+		wp_add_inline_script( 'fc-compat-astra-addon-woo-common-input-event-handler', 'window.addEventListener("load",function(){WooCommonInputEventHandler.init();})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-compat-astra-addon-woo-common-input-event-handler' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Bail if not using the modern input style
+		if ( ! function_exists( 'astra_get_option' ) || 'modern' !== astra_get_option( 'woo-input-style-type' ) ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 
