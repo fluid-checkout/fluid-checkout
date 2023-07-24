@@ -21,6 +21,9 @@ class FluidCheckout_AstraAddon extends FluidCheckout {
 	public function hooks() {
 		// Disable theme addon features
 		add_filter( 'astra_get_option_array', array( $this, 'force_change_theme_options' ), 10, 3 );
+
+		// Adds placeholder for modern input.
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'label_fields_customization' ), 1100 );
 	}
 
 
@@ -34,7 +37,7 @@ class FluidCheckout_AstraAddon extends FluidCheckout {
 		$theme_options[ 'checkout-layout-type' ] = 'default';
 		$theme_options[ 'two-step-checkout' ] = false;
 		$theme_options[ 'checkout-coupon-display' ] = false;
-		$theme_options[ 'checkout-labels-as-placeholders' ] = false;
+		// $theme_options[ 'checkout-labels-as-placeholders' ] = false;
 		$theme_options[ 'checkout-persistence-form-data' ] = false;
 
 		// Set display order notes option to `yes` to prevent it from removing the field from the checkout page.
@@ -46,6 +49,58 @@ class FluidCheckout_AstraAddon extends FluidCheckout {
 		$theme_options[ 'payment-option-content-background-color' ] = '';
 
 		return $theme_options;
+	}
+
+
+
+	/**
+	 * Change order comments placeholder and label, and set billing phone number to not required.
+	 *
+	 * @param array $fields checkout fields.
+	 */
+	public function label_fields_customization( $fields ) {
+		// Bail if Astra functions are not available
+		if ( ! function_exists( 'astra_get_option' ) ) { return $fields; }
+
+		// COPIED from class ASTRA_Ext_WooCommerce_Markup
+
+		// CHANGE: Use checkout request conditional from Fluid Checkout instead of `is_checkout`.
+		if ( FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() && ! is_wc_endpoint_url( 'order-received' ) && 'modern' === astra_get_option( 'woo-input-style-type' ) ) {
+
+			$field_types = array(
+				'billing',
+				'shipping',
+				'account',
+				'order',
+			);
+
+			foreach ( $field_types as $type ) {
+
+				if ( isset( $fields[ $type ] ) && is_array( $fields[ $type ] ) ) {
+
+					foreach ( $fields[ $type ] as $key => $field ) {
+						// Add label as placeholder if the placeholder value is empty.
+						if ( empty( $fields[ $type ][ $key ]['placeholder'] ) ) {
+							$fields[ $type ][ $key ]['placeholder'] = $fields[ $type ][ $key ]['label'];
+
+							// CHANGED: Add `*` for required fields.
+							if ( isset( $fields[ $type ][ $key ]['required'] ) && $fields[ $type ][ $key ]['required'] ) {
+								$fields[ $type ][ $key ]['placeholder'] .= ' *';
+							}
+						}
+
+						// Remove screen-reader-text class from labels.
+						if ( isset( $fields[ $type ][ $key ]['label_class'] ) ) {
+							$fields[ $type ][ $key ]['label_class'] = array_diff( $fields[ $type ][ $key ]['label_class'], array( 'screen-reader-text' ) );
+						}
+					}
+				}
+			}
+		}
+
+		return $fields;
+
+		// END - COPIED from class ASTRA_Ext_WooCommerce_Markup
 	}
 
 }
