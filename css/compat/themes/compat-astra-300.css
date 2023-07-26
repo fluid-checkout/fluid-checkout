@@ -12,12 +12,9 @@ body.theme-astra.woocommerce-page.woocommerce-checkout form.woocommerce-checkout
   border: 0;
 }
 
-body.theme-astra .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
-  padding: 5px 16px;
-}
-
-body.theme-astra div.woocommerce form .form-row .select2-selection--single .select2-selection__arrow b {
-  display: block;
+body.theme-astra .select2-container .select2-selection--single .select2-selection__rendered {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 body.theme-astra div.woocommerce form .form-row .select2-selection .select2-selection__clear {

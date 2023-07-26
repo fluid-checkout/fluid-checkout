@@ -2,14 +2,9 @@
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
-	padding: remsize( .5rem ) remsize( 1.6rem );
-}
-
-
-
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__arrow b {
-    display: block;
+body#{ $_body-theme-selector } .select2-container .select2-selection--single .select2-selection__rendered {
+	padding-#{ $alignment-left }: remsize( 1rem );
+	padding-#{ $alignment-right }: remsize( 1rem );
 }
 
 
