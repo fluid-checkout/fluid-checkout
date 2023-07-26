@@ -13,7 +13,7 @@
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.5.0
- * @fc-version 2.0.1
+ * @fc-version 3.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -41,7 +41,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 		<?php do_action( 'fc_checkout_before', $checkout ); ?>
 
-		<div class="fc-inside">
+		<div class="fc-inside" <?php echo wp_kses_post( apply_filters( 'fc_checkout_wrapper_inside_element_custom_attributes', '' ) ); ?>>
 
 			<?php do_action( 'fc_checkout_before_steps', $checkout ); ?>
 

@@ -23,6 +23,9 @@ class FluidCheckout_AstraAddon extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
+		// Customer details element
+		add_filter( 'fc_checkout_wrapper_inside_element_custom_attributes', array( $this, 'add_customer_details_element_attributes' ) );
+
 		// Disable theme addon features
 		add_filter( 'astra_get_option_array', array( $this, 'force_change_theme_options' ), 10, 3 );
 
@@ -36,9 +39,12 @@ class FluidCheckout_AstraAddon extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
-		// Checkout events
+		// Modern input styles event handler
 		wp_register_script( 'fc-compat-astra-addon-woo-common-input-event-handler', self::$directory_url . 'js/compat/plugins/astra-addon/woo-common-input-event-handler' . self::$asset_version . '.js', array(), NULL, true );
 		wp_add_inline_script( 'fc-compat-astra-addon-woo-common-input-event-handler', 'window.addEventListener("load",function(){WooCommonInputEventHandler.init();})' );
+
+		// Label as placeholder
+		wp_register_script( 'astra-checkout-labels-as-placeholders', self::$directory_url . 'js/compat/plugins/astra-addon/checkout-labels-as-placeholders' . self::$asset_version . '.js', array( 'jquery', 'astra-addon-js' ), NULL );
 	}
 
 	/**
@@ -73,7 +79,6 @@ class FluidCheckout_AstraAddon extends FluidCheckout {
 		$theme_options[ 'checkout-layout-type' ] = 'default';
 		$theme_options[ 'two-step-checkout' ] = false;
 		$theme_options[ 'checkout-coupon-display' ] = false;
-		// $theme_options[ 'checkout-labels-as-placeholders' ] = false;
 		$theme_options[ 'checkout-persistence-form-data' ] = false;
 
 		// Set display order notes option to `yes` to prevent it from removing the field from the checkout page.
@@ -137,6 +142,25 @@ class FluidCheckout_AstraAddon extends FluidCheckout {
 		return $fields;
 
 		// END - COPIED from class ASTRA_Ext_WooCommerce_Markup
+	}
+
+
+
+	/**
+	 * Add custom attributes to the customer details element.
+	 *
+	 * @param   string   $attributes   HTML attributes.
+	 */
+	public function add_customer_details_element_attributes( $attributes ) {
+		// Bail if Astra functions are not available
+		if ( ! function_exists( 'astra_get_option' ) ) { return $attributes; }
+
+		// Bail if option for label as placeholder is not enabled
+		if ( true !== astra_get_option( 'checkout-labels-as-placeholders' ) ) { return $attributes; }
+
+		$attributes .= ' id="customer_details"';
+
+		return $attributes;
 	}
 
 }
