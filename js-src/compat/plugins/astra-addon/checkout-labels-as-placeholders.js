@@ -17,6 +17,11 @@ jQuery( function( $ ) {
 			$( document.body ).bind( 'init_checkout', this.init_checkout );
 
 			$('.input-text').trigger('input');
+
+			// CHANGE: Trigger `input` events on `updated_checkout` event.
+			$( document.body ).on( 'updated_checkout', function() {
+				$('.input-text').trigger('input');
+			});
 		},
 	
 		validate_field: function( e ) {
