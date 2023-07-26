@@ -1,0 +1,19 @@
+// ------------------------------------
+// CHECKOUT STEPS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper #customer_details .fc-step__substep-title.fc-step__substep-title {
+	padding: $checkout-substep-title-padding !important; // Needed to override theme styles
+	border-bottom: none !important; // Needed to override theme styles
+}
+
+
+
+body#{ $_body-theme-selector }.has-checkout-layout--multi-step.woocommerce-checkout .fc-wrapper #customer_details [data-step-complete] .fc-step__substep .fc-step__substep-title.fc-step__substep-title {
+	padding-#{ $alignment-left }: $checkout-substep-complete-title-padding-left !important; // Needed to override theme styles
+
+	@media (#{$bp-larger-than-desktop}) {
+		padding: $checkout-substep-complete-title-padding--large-screen !important; // Needed to override theme styles
+		padding-#{ $alignment-left }: $checkout-substep-complete-title-padding-left--large-screen !important; // Needed to override theme styles
+	}
+}

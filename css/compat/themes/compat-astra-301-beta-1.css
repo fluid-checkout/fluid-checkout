@@ -2,6 +2,21 @@
   --fluidcheckout--field--height: 42px;
 }
 
+body.theme-astra .fc-wrapper #customer_details .fc-step__substep-title.fc-step__substep-title {
+  padding: 0 !important;
+  border-bottom: none !important;
+}
+
+body.theme-astra.has-checkout-layout--multi-step.woocommerce-checkout .fc-wrapper #customer_details [data-step-complete] .fc-step__substep .fc-step__substep-title.fc-step__substep-title {
+  padding-left: 28px !important;
+}
+@media (min-width: 1000px) {
+  body.theme-astra.has-checkout-layout--multi-step.woocommerce-checkout .fc-wrapper #customer_details [data-step-complete] .fc-step__substep .fc-step__substep-title.fc-step__substep-title {
+    padding: 0 5px 0 !important;
+    padding-left: 28px !important;
+  }
+}
+
 body.theme-astra .woocommerce #fc-substep__fields--shipping_method ul#shipping_method li.shipping-method__option {
   padding: 0;
   text-indent: 0;
