@@ -32,6 +32,23 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 	return;
 }
 
+// CHANGE: Prepare wrapper inside element custom attributes
+$custom_attributes = apply_filters( 'fc_checkout_wrapper_inside_element_custom_attributes', array() );
+$custom_attributes_prep = array();
+$custom_attributes_esc = '';
+if ( ! empty( $custom_attributes ) && is_array( $custom_attributes ) ) {
+	foreach ( $custom_attributes as $attribute => $attribute_value ) {
+		if ( true === $attribute_value ) {
+			$custom_attributes_prep[] = esc_attr( $attribute );
+		}
+		else {
+			$custom_attributes_prep[] = esc_attr( $attribute ) . '="' . esc_attr( $attribute_value ) . '"';
+		}
+	}
+
+	$custom_attributes_esc = implode( ' ', $custom_attributes_prep );
+}
+// CHANGE: END - Prepare wrapper inside element custom attributes
 ?>
 
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
@@ -41,7 +58,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 		<?php do_action( 'fc_checkout_before', $checkout ); ?>
 
-		<div class="fc-inside" <?php echo wp_kses_post( apply_filters( 'fc_checkout_wrapper_inside_element_custom_attributes', '' ) ); ?>>
+		<div class="fc-inside" <?php echo $custom_attributes_esc; ?>>
 
 			<?php do_action( 'fc_checkout_before_steps', $checkout ); ?>
 

@@ -149,18 +149,18 @@ class FluidCheckout_AstraAddon extends FluidCheckout {
 	/**
 	 * Add custom attributes to the customer details element.
 	 *
-	 * @param   string   $attributes   HTML attributes.
+	 * @param   Array   $custom_attributes   HTML attributes.
 	 */
-	public function add_customer_details_element_attributes( $attributes ) {
+	public function add_customer_details_element_attributes( $custom_attributes ) {
 		// Bail if Astra functions are not available
-		if ( ! function_exists( 'astra_get_option' ) ) { return $attributes; }
+		if ( ! function_exists( 'astra_get_option' ) ) { return $custom_attributes; }
 
 		// Bail if option for label as placeholder is not enabled
-		if ( true !== astra_get_option( 'checkout-labels-as-placeholders' ) ) { return $attributes; }
+		if ( true !== astra_get_option( 'checkout-labels-as-placeholders' ) ) { return $custom_attributes; }
 
-		$attributes .= ' id="customer_details"';
+		$custom_attributes[ 'id' ] = 'customer_details';
 
-		return $attributes;
+		return $custom_attributes;
 	}
 
 }
