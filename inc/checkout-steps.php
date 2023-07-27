@@ -1480,7 +1480,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $formats; }
 
 		// Bail if viewing order confirmation or order pay page
-		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_checkout_pay_page() ) ) { return $formats; }
+		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) { return $formats; }
 
 		// Bail when displaying addresses for email messages
 		if ( did_action( 'woocommerce_email' ) ) { return $formats; }
@@ -1503,7 +1503,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $replacements; }
 
 		// Bail if viewing order confirmation or order pay page
-		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_checkout_pay_page() ) ) { return $replacements; }
+		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) { return $replacements; }
 
 		$replacements['{phone}'] = isset( $args['phone'] ) ? $args['phone'] : '';
 		return $replacements;
