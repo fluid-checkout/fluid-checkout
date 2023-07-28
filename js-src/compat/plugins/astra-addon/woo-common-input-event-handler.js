@@ -13,6 +13,9 @@
 
 	'use strict';
 
+	var $ = jQuery;
+	var _hasJQuery = ( $ != null );
+
 	var _hasInitialized = false;
 	var _publicMethods = { }
 	var _settings = {
@@ -24,6 +27,29 @@
 	/**
 	 * METHODS
 	 */
+
+
+
+	/**
+	 * Update the global state of steps.
+	 *
+	 * @param   Event  _event  An unused `jQuery.Event` object.
+	 * @param   Array  data   The updated checkout data.
+	 */
+	var triggerInputEvents = function( _event, data ) {
+		// Bail if required function is not available
+		if ( 'function' !== typeof window.addAnimateClass ) { return; }
+
+		requestAnimationFrame( function() {
+			// Get fields
+			var fields = document.querySelectorAll( _settings.fieldsSelector );
+			for ( var i = 0; i < fields.length; i++ ) {
+				var field = fields[ i ];
+				addAnimateClass( field );
+			}
+		} );
+
+	};
 
 
 
@@ -42,7 +68,6 @@
 
 
 
-
 	/**
 	 * Initialize component and set related handlers.
 	 */
@@ -51,6 +76,11 @@
 
 		// Add event listeners
 		window.addEventListener( 'input', handleInput );
+		
+		// Add jQuery event listeners
+		if ( _hasJQuery ) {
+			$( document.body ).on( 'updated_checkout', triggerInputEvents );
+		}
 
 		_hasInitialized = true;
 	};
