@@ -2,6 +2,10 @@
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
+body#{ $_body-theme-selector } .select2-container .select2-selection--single {
+	padding: 0 !important; // Needed to override theme styles
+}
+
 body#{ $_body-theme-selector } .select2-container .select2-selection--single .select2-selection__rendered {
 	padding-#{ $alignment-left }: remsize( 1rem );
 	padding-#{ $alignment-right }: remsize( 1rem );
