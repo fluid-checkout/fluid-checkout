@@ -93,10 +93,6 @@ p.submit {
   margin-bottom: 20px;
 }
 
-.fc-addons__item--pro .fc-addons__item-header {
-  align-items: center;
-}
-
 .fc-addons__item-image {
   float: left;
   width: 70px;
