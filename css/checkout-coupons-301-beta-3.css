@@ -51,10 +51,11 @@
   width: 100% !important;
   height: 55px;
 }
-
 .fc-wrapper .fc-coupon_code__collapsible input#coupon_code:focus {
-  position: relative;
   z-index: 10;
+  position: relative;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
+  outline-offset: 2px;
 }
 
 .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
@@ -66,7 +67,8 @@
   padding-right: 20px;
   left: auto;
   right: 5px;
-  height: 45px;
+  height: 45px !important;
+  line-height: 1 !important;
   width: auto;
 }
 .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply:focus {
