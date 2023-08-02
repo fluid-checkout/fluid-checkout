@@ -100,3 +100,11 @@ body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple 
 body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
   margin-top: var(--fluidcheckout--select2--inner-spacing, 5px);
 }
+
+body.theme-woodmart .fc-wrapper .wd-shipping-progress-bar {
+  margin-bottom: 20px;
+}
+
+body.theme-woodmart .fc-wrapper .wd-shipping-progress-bar .wd-progress-bar {
+  border-radius: var(--fluidcheckout--section--border-radius, 8px);
+}

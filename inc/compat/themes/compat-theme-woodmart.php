@@ -30,6 +30,27 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 
 		// Template files
 		add_filter( 'fc_override_template_with_theme_file', array( $this, 'override_template_with_theme_file' ), 10, 4 );
+
+		// Free shipping bar
+		add_action( 'wp', array( $this, 'init_free_shipping_bar_hooks' ), 150 );
+	}
+
+	/**
+	 * Initialize free shipping bar hooks.
+	 */
+	public function init_free_shipping_bar_hooks() {
+		// Bail if theme functions and classes are not available
+		if ( ! function_exists( 'woodmart_get_opt' ) || ! class_exists( 'XTS\Modules\Shipping_Progress_Bar\Main' ) || ! class_exists( 'XTS\Modules\Layouts\Main' ) ) { return; }
+
+		// Get theme class instances
+		$free_shipping_bar_instance = XTS\Modules\Shipping_Progress_Bar\Main::get_instance();
+		$builder_instance = XTS\Modules\Layouts\Main::get_instance();
+
+		// Checkout page
+		if ( woodmart_get_opt( 'shipping_progress_bar_location_checkout' ) ) {
+			remove_action( 'woocommerce_checkout_before_customer_details', array( $free_shipping_bar_instance, 'render_shipping_progress_bar_with_wrapper' ), 10 );
+			add_action( 'fc_checkout_before_steps', array( $free_shipping_bar_instance, 'render_shipping_progress_bar_with_wrapper' ), 5 ); // Right before coupon code section
+		}
 	}
 
 
