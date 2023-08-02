@@ -2,11 +2,17 @@
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+div.woocommerce form .form-row .select2-selection {
+	height: $form-field-height !important; // Needed to override styles from the plugin
+}
+
+
+
+body#{ $_body-theme-selector } div.woocommerce .select2-container .select2-selection--single .select2-selection__rendered {
 	padding: 0 remsize( 1.6rem ) !important; // Needed to override theme styles set with `!important`
 }
 
-body#{ $_body-theme-selector } .fc-wrapper .select2-container .select2-selection--multiple .select2-selection__rendered {
+body#{ $_body-theme-selector } div.woocommerce .select2-container .select2-selection--multiple .select2-selection__rendered {
 	display: block;
 	margin-bottom: 0;
 	padding-#{ $alignment-left }: $form-field-select2-inner-spacing !important; // Needed to override theme styles set with `!important`

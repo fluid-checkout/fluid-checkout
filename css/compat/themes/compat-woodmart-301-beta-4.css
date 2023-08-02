@@ -1,7 +1,7 @@
 :root {
-  --fluidcheckout--field--height: 42px;
-  --fluidcheckout--field--border-radius: 2px;
-  --fluidcheckout--field--border-width: 3px;
+  --fluidcheckout--field--height: var( --wd-form-height, 42px );
+  --fluidcheckout--field--border-radius: var( --wd-form-brd-radius, 2px );
+  --fluidcheckout--field--border-width: var( --wd-form-brd-width, 3px );
   --fluidcheckout--validation-check--horizontal-spacing--select: 20px;
   --fluidcheckout--validation-check--horizontal-spacing--select-alt: 30px;
 }
@@ -74,11 +74,15 @@ body.theme-woodmart form.woocommerce-checkout .fc-wrapper #order_review table.wo
   margin-right: -10px;
 }
 
-body.theme-woodmart .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+div.woocommerce form .form-row .select2-selection {
+  height: var(--fluidcheckout--field--height, 45.625px) !important;
+}
+
+body.theme-woodmart div.woocommerce .select2-container .select2-selection--single .select2-selection__rendered {
   padding: 0 16px !important;
 }
 
-body.theme-woodmart .fc-wrapper .select2-container .select2-selection--multiple .select2-selection__rendered {
+body.theme-woodmart div.woocommerce .select2-container .select2-selection--multiple .select2-selection__rendered {
   display: block;
   margin-bottom: 0;
   padding-left: var(--fluidcheckout--select2--inner-spacing, 5px) !important;
@@ -99,4 +103,12 @@ body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple 
 
 body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
   margin-top: var(--fluidcheckout--select2--inner-spacing, 5px);
+}
+
+body.theme-woodmart .fc-wrapper .wd-shipping-progress-bar {
+  margin-bottom: 20px;
+}
+
+body.theme-woodmart .fc-wrapper .wd-shipping-progress-bar .wd-progress-bar {
+  border-radius: var(--fluidcheckout--section--border-radius, 8px);
 }
