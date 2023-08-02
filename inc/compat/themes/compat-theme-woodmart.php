@@ -25,6 +25,9 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false' );
 
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
 		// Header elements
 		add_action( 'fc_checkout_header', array( $this, 'maybe_output_woodmart_checkout_steps_section' ), 20 );
 
@@ -136,6 +139,31 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 			<div class="container"><?php woodmart_checkout_steps(); ?></div>
 		</div>
 		<?php
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Bail if theme functions and classes are not available
+		if ( ! function_exists( 'woodmart_get_opt' ) ) { return $css_variables; }
+
+		// Get dark mode option from theme
+		$dark = woodmart_get_opt( 'dark_version' );
+
+		// Bail if not using the dark mode
+		if ( ! $dark ) { return $css_variables; }
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }
