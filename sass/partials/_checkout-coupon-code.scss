@@ -57,10 +57,13 @@
 	margin: 0;
 	width: 100% !important; // Needed to override theme styles set with `!important`
 	height: remsize( 5.5rem );
-}
-.fc-wrapper .fc-coupon_code__collapsible input#coupon_code:focus {
-	position: relative;
-	z-index: z( 'above' );
+
+	&:focus {
+		z-index: z( 'above' );
+		position: relative;
+		outline: $focus-outline-button;
+		outline-offset: $focus-outline-offset-button;
+	}
 }
 
 .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
@@ -72,7 +75,8 @@
 	padding-right: $global-spacing-small;
 	#{ $alignment-left }: auto;
 	#{ $alignment-right }: $global-spacing-tiny;
-	height: remsize( 4.5rem );
+	height: remsize( 4.5rem ) !important; // Needed to override theme styles
+	line-height: 1 !important; // Needed to override theme styles
 	width: auto;
 
 	&:focus {
