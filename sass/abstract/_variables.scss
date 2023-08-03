@@ -257,6 +257,9 @@ $icons: (
 $button-border-width:                       var( --fluidcheckout--button--border-width, remsize( .1rem ) ) !default;
 $button-border-style:                       var( --fluidcheckout--button--border-style, solid ) !default;
 $button-border:                             $button-border-style $button-border-width transparent !default;
+// TODO: Enable custom button styles via hook, similarly to how it's done for the button colors
+// TODO: Add button border radius variable and styles
+// TODO: Add button shadow variable and styles
 $button-height:                             var( --fluidcheckout--button--height, remsize( 4.4rem ) ) !default;
 $button-font-weight:                        var( --fluidcheckout--button--font-weight, normal ) !default;
 $button-font-size:                          var( --fluidcheckout--button--font-size, inherit ) !default;
