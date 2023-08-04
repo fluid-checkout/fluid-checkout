@@ -25,13 +25,12 @@ class FluidCheckout_ThemeCompat_Umea extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false' );
 
-		// General
-		// TODO: Replace this with specific hook and use CSS variables instead
-		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
-
 		// CSS variables
-		// TODO: Replace this with specific hook and use CSS variables instead
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_css_variables' ), 10 );
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
+		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
 	}
 
 	/**
@@ -48,83 +47,39 @@ class FluidCheckout_ThemeCompat_Umea extends FluidCheckout {
 
 
 	/**
-	 * Add page body class for feature detection.
-	 *
-	 * @param array $classes Classes for the body element.
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
-	public function add_body_class( $classes ) {
-		// Bail if not on affected pages.
-		if (
-			! function_exists( 'is_checkout' )
-			|| (
-				! is_checkout() // Checkout page
-				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
-				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
-			)
-		) { return $classes; }
-
-		// Add custom button color class
-		$classes[] = 'has-fc-button-colors';
-		$classes[] = 'has-fc-button-styles';
-
-		return $classes;
-	}
-
-
-
-	/**
-	 * Get CSS variables styles.
-	 */
-	public function get_css_variables_styles() {
+	public function add_css_variables( $css_variables ) {
 		// Bail if theme function is not available
-		if ( ! function_exists( 'umea_core_get_post_value_through_levels' ) ) { return ''; }
+		if ( ! function_exists( 'umea_core_get_post_value_through_levels' ) ) { return $css_variables; }
 
 		// Get theme main color
 		$main_color = umea_core_get_post_value_through_levels( 'qodef_main_color' );
 
-		// Define CSS variables
-		$css_variables = ":root {
-			--fluidcheckout--button--font-weight: bold;
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Primary button color
+				'--fluidcheckout--button--primary--border-color' => $main_color,
+				'--fluidcheckout--button--primary--background-color' => $main_color,
 
-			--fluidcheckout--button--primary--border-color: {$main_color};
-			--fluidcheckout--button--primary--background-color: {$main_color};
+				// Secondary button color
+				'--fluidcheckout--button--secondary--border-color' => $main_color,
+				'--fluidcheckout--button--secondary--background-color' => 'transparent',
+				'--fluidcheckout--button--secondary--text-color' => $main_color,
+				'--fluidcheckout--button--secondary--border-color--hover' => $main_color,
+				'--fluidcheckout--button--secondary--background-color--hover' => $main_color,
+				'--fluidcheckout--button--secondary--text-color--hover' => 'var( --fluidcheckout--color--white, #fff )',
 
-			--fluidcheckout--button--secondary--border-color: {$main_color};
-			--fluidcheckout--button--secondary--background-color: transparent;
-			--fluidcheckout--button--secondary--text-color: {$main_color};
-			--fluidcheckout--button--secondary--border-color--hover: {$main_color};
-			--fluidcheckout--button--secondary--background-color--hover: {$main_color};
-			--fluidcheckout--button--secondary--text-color--hover: var( --fluidcheckout--color--white, #fff );
-		}";
+				// Button design styles
+				'--fluidcheckout--button--height' => '50px',
+				'--fluidcheckout--button--font-weight' => 'bold',
+			),
+		);
 
-		return $css_variables;
-	}
-
-
-
-	/**
-	 * Enqueue inline CSS variables.
-	 */
-	public function enqueue_css_variables() {
-		// Enqueue inline style
-		wp_add_inline_style( 'umea-main', $this->get_css_variables_styles() );
-	}
-
-	/**
-	 * Maybe enqueue inline CSS variables.
-	 */
-	public function maybe_enqueue_css_variables() {
-		// Bail if not on affected pages.
-		if (
-			! function_exists( 'is_checkout' )
-			|| (
-				! is_checkout() // Checkout page
-				&& ! is_wc_endpoint_url( 'add-payment-method' ) // Add payment method page
-				&& ! is_wc_endpoint_url( 'edit-address' ) // Edit address page
-			)
-		) { return; }
-
-		$this->enqueue_css_variables();
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }

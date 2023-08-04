@@ -25,11 +25,35 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false' );
 
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
 		// Header elements
 		add_action( 'fc_checkout_header', array( $this, 'maybe_output_woodmart_checkout_steps_section' ), 20 );
 
 		// Template files
 		add_filter( 'fc_override_template_with_theme_file', array( $this, 'override_template_with_theme_file' ), 10, 4 );
+
+		// Free shipping bar
+		add_action( 'wp', array( $this, 'init_free_shipping_bar_hooks' ), 150 );
+	}
+
+	/**
+	 * Initialize free shipping bar hooks.
+	 */
+	public function init_free_shipping_bar_hooks() {
+		// Bail if theme functions and classes are not available
+		if ( ! function_exists( 'woodmart_get_opt' ) || ! class_exists( 'XTS\Modules\Shipping_Progress_Bar\Main' ) || ! class_exists( 'XTS\Modules\Layouts\Main' ) ) { return; }
+
+		// Get theme class instances
+		$free_shipping_bar_instance = XTS\Modules\Shipping_Progress_Bar\Main::get_instance();
+		$builder_instance = XTS\Modules\Layouts\Main::get_instance();
+
+		// Checkout page
+		if ( woodmart_get_opt( 'shipping_progress_bar_location_checkout' ) ) {
+			remove_action( 'woocommerce_checkout_before_customer_details', array( $free_shipping_bar_instance, 'render_shipping_progress_bar_with_wrapper' ), 10 );
+			add_action( 'fc_checkout_before_steps', array( $free_shipping_bar_instance, 'render_shipping_progress_bar_with_wrapper' ), 5 ); // Right before coupon code section
+		}
 	}
 
 
@@ -115,6 +139,31 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 			<div class="container"><?php woodmart_checkout_steps(); ?></div>
 		</div>
 		<?php
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Bail if theme functions and classes are not available
+		if ( ! function_exists( 'woodmart_get_opt' ) ) { return $css_variables; }
+
+		// Get dark mode option from theme
+		$dark = woodmart_get_opt( 'dark_version' );
+
+		// Bail if not using the dark mode
+		if ( ! $dark ) { return $css_variables; }
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }

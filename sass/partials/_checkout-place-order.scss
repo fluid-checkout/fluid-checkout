@@ -131,6 +131,9 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 		outline-offset: $focus-outline-offset-button;
 	}
 }
+.fc-wrapper .fc-place-order .fc-place-order-button:disabled {
+	cursor: not-allowed;
+}
 
 
 

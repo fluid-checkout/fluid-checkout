@@ -12,9 +12,9 @@ $_body-theme-selector:                 '.theme-woodmart' !default;
 // DEFINE CSS VARIABLES
 // ------------------------------------
 :root {
-	--fluidcheckout--field--height: #{ remsize( 4.2rem ) };
-	--fluidcheckout--field--border-radius: #{ remsize( .2rem ) };
-	--fluidcheckout--field--border-width: #{ remsize( .3rem ) };
+	--fluidcheckout--field--height: var( --wd-form-height, #{ remsize( 4.2rem ) } );
+	--fluidcheckout--field--border-radius: var( --wd-form-brd-radius, #{ remsize( .2rem ) } );
+	--fluidcheckout--field--border-width: var( --wd-form-brd-width, #{ remsize( .3rem ) } );
 
 	--fluidcheckout--validation-check--horizontal-spacing--select: #{ remsize( 2rem ) };
 	--fluidcheckout--validation-check--horizontal-spacing--select-alt: #{ remsize( 3rem ) };
@@ -30,7 +30,10 @@ $_body-theme-selector:                 '.theme-woodmart' !default;
 @import
 	"woodmart-checkout-steps-section",
 	"checkout-content-area",
+	"checkout-steps",
 	"checkout-validation",
 	"checkout-coupon-code",
+	"checkout-place-order",
 	"order-summary",
-	"woocommerce-form-fields-select2";
+	"woocommerce-form-fields-select2",
+	"free-shipping-bar";
