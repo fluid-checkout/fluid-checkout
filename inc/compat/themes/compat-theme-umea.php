@@ -74,6 +74,7 @@ class FluidCheckout_ThemeCompat_Umea extends FluidCheckout {
 				'--fluidcheckout--button--secondary--text-color--hover' => 'var( --fluidcheckout--color--white, #fff )',
 
 				// Button design styles
+				'--fluidcheckout--button--height' => '50px',
 				'--fluidcheckout--button--font-weight' => 'bold',
 			),
 		);

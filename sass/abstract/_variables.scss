@@ -261,7 +261,7 @@ $button-border-width:                       var( --fluidcheckout--button--border
 $button-border-style:                       var( --fluidcheckout--button--border-style, solid ) !default;
 $button-border:                             $button-border-style $button-border-width transparent !default;
 $button-border-radius:                      var( --fluidcheckout--button--border-radius, 0 ) !default;
-$button-box-shadow:                         $box-shadow-offset-x $box-shadow-offset-y var( --fluidcheckout--button--box-shadow-blur-radius, $box-shadow-blur-radius ) var( --fluidcheckout--button--box-shadow-color, var( --fluidcheckout--shadow-color--dark, $lighter-grey ) ) !default;
+$button-box-shadow:                         $box-shadow-offset-x $box-shadow-offset-y var( --fluidcheckout--button--box-shadow-blur-radius, $box-shadow-blur-radius ) var( --fluidcheckout--button--box-shadow-color, transparent ) !default;
 
 $button-primary-border-color:               var( --fluidcheckout--button--primary--border-color, #000 ) !default;
 $button-primary-background-color:           var( --fluidcheckout--button--primary--background-color, #000 ) !default;
