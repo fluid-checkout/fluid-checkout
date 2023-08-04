@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-29 12:58+0000\n"
-"PO-Revision-Date: 2023-07-18 16:34+0000\n"
+"PO-Revision-Date: 2023-08-04 14:41+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -348,7 +348,7 @@ msgstr "Facturering aan"
 msgid "Both below the payment section and the order summary"
 msgstr "Zowel onder het betaalgedeelte als het besteloverzicht"
 
-#: inc/design-templates.php:111
+#: inc/design-templates.php:116
 msgid "Boxed"
 msgstr "In doos"
 
@@ -460,7 +460,7 @@ msgstr "Indeling kassa"
 msgid "Checkout Order Summary"
 msgstr "Overzicht Bestelling afrekenen"
 
-#: inc/compat/themes/compat-theme-woodmart.php:54
+#: inc/compat/themes/compat-theme-woodmart.php:78
 msgid "Checkout progress"
 msgstr "Voortgang afrekenen"
 
@@ -563,7 +563,7 @@ msgstr "Kies in welke stap het factureringstelefoonveld wordt weergegeven."
 msgid "Choose in which step to display the shipping phone field."
 msgstr "Kies in welke stap het telefoonveld voor verzending wordt weergegeven."
 
-#: inc/design-templates.php:110
+#: inc/design-templates.php:115
 msgid "Classic"
 msgstr "Klassiek"
 
@@ -671,6 +671,15 @@ msgstr "Bezorgen of ophalen"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Ontwerpsjabloon"
+
+#: inc/admin/admin-setting-type-fc-addons.php:51
+#: inc/admin/admin-setting-type-fc-addons.php:144
+msgid ""
+"Design templates, optimized cart and order received pages, account matching, "
+"and much more."
+msgstr ""
+"Ontwerpsjablonen, geoptimaliseerde winkelwagen- en orderontvangstpagina's, "
+"accountmatching en nog veel meer."
 
 #. %s: html for the email address typo correction suggestion link
 #: inc/checkout-validation.php:165
@@ -1279,18 +1288,13 @@ msgstr ""
 msgid "Make the order summary stay visible while scrolling"
 msgstr "Maak het overzicht van de bestelling zichtbaar tijdens het scrollen"
 
-#: inc/design-templates.php:113
+#: inc/design-templates.php:118
 msgid "Minimalist"
 msgstr "Minimalistisch"
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
 msgstr "Meer ontwerpsjablonen"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51
-#: inc/admin/admin-setting-type-fc-addons.php:144
-msgid "More features, more sales."
-msgstr "Meer functies, meer verkoop."
 
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
@@ -1440,7 +1444,7 @@ msgstr "Bestelstatus"
 msgid "Order summary"
 msgstr "Besteloverzicht"
 
-#: inc/compat/themes/compat-theme-woodmart.php:55
+#: inc/compat/themes/compat-theme-woodmart.php:79
 msgid ""
 "Output the checkout steps section from the Woodmart theme when using Fluid "
 "Checkout header and footer"
@@ -1700,7 +1704,7 @@ msgstr "Spatiëring voor sitekoptekst bij de afrekenpagina (in pixels)"
 msgid "Special offers"
 msgstr "Speciale aanbiedingen"
 
-#: inc/design-templates.php:112
+#: inc/design-templates.php:117
 msgid "Split"
 msgstr "Gesplitst"
 
@@ -1791,7 +1795,7 @@ msgstr ""
 msgid "Theme Impreza"
 msgstr "Thema Impreza"
 
-#: inc/compat/themes/compat-theme-woodmart.php:48
+#: inc/compat/themes/compat-theme-woodmart.php:72
 msgid "Theme Woodmart"
 msgstr "Thema Woodmart"
 
