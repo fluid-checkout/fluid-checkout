@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2023-07-18 16:25+0000\n"
+"PO-Revision-Date: 2023-08-04 14:38+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -360,7 +360,7 @@ msgstr "Faturamento para"
 msgid "Both below the payment section and the order summary"
 msgstr "Ambos abaixo da seção de pagamento e do resumo do pedido"
 
-#: inc/design-templates.php:111
+#: inc/design-templates.php:116
 msgid "Boxed"
 msgstr "Em caixa"
 
@@ -473,7 +473,7 @@ msgstr "Layout do checkout"
 msgid "Checkout Order Summary"
 msgstr "Resumo do pedido no checkout"
 
-#: inc/compat/themes/compat-theme-woodmart.php:54
+#: inc/compat/themes/compat-theme-woodmart.php:78
 msgid "Checkout progress"
 msgstr "Progresso do checkout"
 
@@ -577,7 +577,7 @@ msgstr "Escolha em qual etapa exibir o campo telefone de faturamento."
 msgid "Choose in which step to display the shipping phone field."
 msgstr "Escolha em qual etapa exibir o campo telefone de entrega."
 
-#: inc/design-templates.php:110
+#: inc/design-templates.php:115
 msgid "Classic"
 msgstr "Clássico"
 
@@ -686,6 +686,18 @@ msgstr "Entrega ou Retirada"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Modelo de design"
+
+#: inc/admin/admin-setting-type-fc-addons.php:144
+msgid ""
+"Design templates, optimized cart and order received pages, account matching "
+"and much more."
+msgstr ""
+
+#: inc/admin/admin-setting-type-fc-addons.php:51
+msgid ""
+"Design templates, optimized cart and order received pages, account matching, "
+"and much more."
+msgstr ""
 
 #. %s: html for the email address typo correction suggestion link
 #: inc/checkout-validation.php:165
@@ -1320,18 +1332,13 @@ msgid "Make the order summary stay visible while scrolling"
 msgstr ""
 "Faça com que o resumo do pedido fique visível enquanto rola-se a página"
 
-#: inc/design-templates.php:113
+#: inc/design-templates.php:118
 msgid "Minimalist"
 msgstr "Minimalista"
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
 msgstr "Mais modelos de design"
-
-#: inc/admin/admin-setting-type-fc-addons.php:51
-#: inc/admin/admin-setting-type-fc-addons.php:144
-msgid "More features, more sales."
-msgstr "Mais recursos, mais vendas."
 
 #: inc/admin/admin-setting-type-fc-addons.php:64
 msgid "More positions for the coupon code on the checkout page"
@@ -1481,7 +1488,7 @@ msgstr "Status do pedido"
 msgid "Order summary"
 msgstr "Resumo do pedido"
 
-#: inc/compat/themes/compat-theme-woodmart.php:55
+#: inc/compat/themes/compat-theme-woodmart.php:79
 msgid ""
 "Output the checkout steps section from the Woodmart theme when using Fluid "
 "Checkout header and footer"
@@ -1746,7 +1753,7 @@ msgstr "Espaçamento para cabeçalho do site na página de checkout (em pixels)"
 msgid "Special offers"
 msgstr "Ofertas especiais"
 
-#: inc/design-templates.php:112
+#: inc/design-templates.php:117
 msgid "Split"
 msgstr "Dividir"
 
@@ -1846,7 +1853,7 @@ msgstr ""
 msgid "Theme Impreza"
 msgstr "Tema Impreza"
 
-#: inc/compat/themes/compat-theme-woodmart.php:48
+#: inc/compat/themes/compat-theme-woodmart.php:72
 msgid "Theme Woodmart"
 msgstr "Tema Woodmart"
 

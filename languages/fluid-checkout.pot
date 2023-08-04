@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-18 16:22+0000\n"
+"POT-Creation-Date: 2023-08-04 14:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -319,7 +319,7 @@ msgstr ""
 msgid "Both below the payment section and the order summary"
 msgstr ""
 
-#: inc/design-templates.php:111
+#: inc/design-templates.php:116
 msgid "Boxed"
 msgstr ""
 
@@ -427,7 +427,7 @@ msgstr ""
 msgid "Checkout Order Summary"
 msgstr ""
 
-#: inc/compat/themes/compat-theme-woodmart.php:54
+#: inc/compat/themes/compat-theme-woodmart.php:78
 msgid "Checkout progress"
 msgstr ""
 
@@ -516,7 +516,7 @@ msgstr ""
 msgid "Choose in which step to display the shipping phone field."
 msgstr ""
 
-#: inc/design-templates.php:110
+#: inc/design-templates.php:115
 msgid "Classic"
 msgstr ""
 
@@ -616,6 +616,18 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
+msgstr ""
+
+#: inc/admin/admin-setting-type-fc-addons.php:144
+msgid ""
+"Design templates, optimized cart and order received pages, account matching "
+"and much more."
+msgstr ""
+
+#: inc/admin/admin-setting-type-fc-addons.php:51
+msgid ""
+"Design templates, optimized cart and order received pages, account matching, "
+"and much more."
 msgstr ""
 
 #. %s: html for the email address typo correction suggestion link
@@ -1160,17 +1172,12 @@ msgstr ""
 msgid "Make the order summary stay visible while scrolling"
 msgstr ""
 
-#: inc/design-templates.php:113
+#: inc/design-templates.php:118
 msgid "Minimalist"
 msgstr ""
 
 #: inc/admin/admin-setting-type-fc-addons.php:57
 msgid "More design templates"
-msgstr ""
-
-#: inc/admin/admin-setting-type-fc-addons.php:51
-#: inc/admin/admin-setting-type-fc-addons.php:144
-msgid "More features, more sales."
 msgstr ""
 
 #: inc/admin/admin-setting-type-fc-addons.php:64
@@ -1309,7 +1316,7 @@ msgstr ""
 msgid "Order summary"
 msgstr ""
 
-#: inc/compat/themes/compat-theme-woodmart.php:55
+#: inc/compat/themes/compat-theme-woodmart.php:79
 msgid ""
 "Output the checkout steps section from the Woodmart theme when using Fluid "
 "Checkout header and footer"
@@ -1537,7 +1544,7 @@ msgstr ""
 msgid "Special offers"
 msgstr ""
 
-#: inc/design-templates.php:112
+#: inc/design-templates.php:117
 msgid "Split"
 msgstr ""
 
@@ -1618,7 +1625,7 @@ msgstr ""
 msgid "Theme Impreza"
 msgstr ""
 
-#: inc/compat/themes/compat-theme-woodmart.php:48
+#: inc/compat/themes/compat-theme-woodmart.php:72
 msgid "Theme Woodmart"
 msgstr ""
 
