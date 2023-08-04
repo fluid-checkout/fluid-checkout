@@ -71,9 +71,14 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 			$add_classes[] = 'has-fc-dark-mode';
 		}
 
-		// Add custom button color class
-		if ( $this->is_button_styles_enabled() ) {
+		// Add custom button color styles class
+		if ( $this->is_button_color_styles_enabled() ) {
 			$add_classes[] = 'has-fc-button-colors';
+		}
+
+		// Add custom button design styles class
+		if ( $this->is_button_design_styles_enabled() ) {
+			$add_classes[] = 'has-fc-button-styles';
 		}
 
 		return array_merge( $classes, $add_classes );
@@ -126,13 +131,17 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 
 	/**
-	 * Check whether custom buttons styles are enabled for the page.
+	 * Check whether custom button color styles are enabled for the page.
 	 */
-	public function is_button_styles_enabled() {
-		// Bail if button styles not enabled
-		if ( false === apply_filters( 'fc_apply_button_colors_styles', false ) ) { return false; }
+	public function is_button_color_styles_enabled() {
+		return true === apply_filters( 'fc_apply_button_colors_styles', false );
+	}
 
-		return true;
+	/**
+	 * Check whether custom button design styles are enabled for the page.
+	 */
+	public function is_button_design_styles_enabled() {
+		return true === apply_filters( 'fc_apply_button_design_styles', false );
 	}
 
 

@@ -392,6 +392,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Improved: Compatibility with theme Astra and companion plugin Astra PRO.
 * Improved: Compatibility with theme Woodmart.
+* Improved: Add more CSS variables for changing the look of buttons.
 * Fixed: Duplicate phone field data displayed on order received pages.
 
 = 3.0.0 - 2023-07-18 =
