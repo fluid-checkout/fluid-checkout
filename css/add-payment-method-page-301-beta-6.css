@@ -1,10 +1,13 @@
 body.has-fc-button-styles #add_payment_method #place_order {
   min-height: var(--fluidcheckout--button--height, 44px) !important;
-  height: 44px !important;
+  height: var(--fluidcheckout--button--height, 44px) !important;
+  line-height: calc( var(--fluidcheckout--button--height, 44px) - ( var(--fluidcheckout--button--border-width, 1px) * 2 ) ) !important;
   padding: 0 20px !important;
   border: var(--fluidcheckout--button--border-style, solid) var(--fluidcheckout--button--border-width, 1px) transparent !important;
+  border-radius: var(--fluidcheckout--button--border-radius, 0) !important;
   font-weight: var(--fluidcheckout--button--font-weight, normal) !important;
   font-size: var(--fluidcheckout--button--font-size, inherit) !important;
+  box-shadow: 0 3px var(--fluidcheckout--button--box-shadow-blur-radius, 8px) var(--fluidcheckout--button--box-shadow-color, var(--fluidcheckout--shadow-color--dark, var(--fluidcheckout--color--lighter-grey, #f3f3f3))) !important;
   cursor: pointer !important;
   transition: all 0.3s !important;
 }
