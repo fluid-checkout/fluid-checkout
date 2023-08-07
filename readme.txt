@@ -388,6 +388,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Compatibility with theme Woodmart. Disable theme checkout options by default.
+
 = 3.0.1 - 2023-08-04 =
 
 * Improved: Compatibility with theme Astra and companion plugin Astra PRO.
