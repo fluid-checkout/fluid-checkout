@@ -125,6 +125,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_theme_impreza_header_spacing'                        => null,
 			'woocommerce_enable_guest_checkout'                             => 'yes',
 			'fc_compat_theme_woodmart_output_checkout_steps_section'        => 'no',
+			'fc_compat_theme_woodmart_disable_theme_checkout_options'       => 'yes',
 
 			// Deprecated settings.
 			'fc_enable_checkout_place_order_sidebar'                        => 'no',
