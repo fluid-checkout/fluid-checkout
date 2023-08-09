@@ -574,6 +574,9 @@ jQuery( function( $ ) {
 						return;
 					}
 
+					// CHANGE: Set global flag for processing checkout update
+					window.processing_checkout_update = true;
+
 					// Remove any notices added previously
 					$( '.woocommerce-NoticeGroup-updateOrderReview' ).remove();
 
@@ -723,6 +726,9 @@ jQuery( function( $ ) {
 
 					// Re-init methods
 					wc_checkout_form.init_payment_methods();
+
+					// CHANGE: Unset global flag for processing checkout update
+					window.processing_checkout_update = false;
 
 					// CHANGE: Set to not prompt user before leaving the page
 					_updateBeforeUnload = false;

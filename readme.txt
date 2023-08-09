@@ -391,6 +391,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Improved: Compatibility with theme Woodmart. Disable theme checkout options by default.
+* Improved: Avoid triggering payment method field validation when updating checkout fragments.
 * Improved: Handle name fields as a single line for displaying on the substep review text.
 
 = 3.0.1 - 2023-08-04 =

@@ -27,7 +27,7 @@
 		bodyClass:                               'fc-checkout-validation--active',
 		formSelector:                            'form.checkout',
 		formRowSelector:                         '.form-row, .shipping-method__package',
-		inputWrapperSelector:                    '.woocommerce-input-wrapper',
+		inputWrapperSelector:                    '.woocommerce-input-wrapper, .form-row',
 		validateFieldsSelector:                  '.input-text, select, .shipping-method__options',
 		referenceNodeSelector:                   '.input-text, select, .shipping-method__options', // Usually same as `validateFieldsSelector`
 		clearValidationCountryChangedSelector:   '#state, #shipping_state, #billing_state',
@@ -425,6 +425,9 @@
 	 * Handle document clicks and route to the appropriate function.
 	 */
 	var handleValidateEvent = function( e ) {
+		// Bail if processing checkout update
+		if ( true === window.processing_checkout_update ) { return; }
+
 		var field = e.target;
 
 		// Get correct field when is select2
