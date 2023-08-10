@@ -39,6 +39,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 
 		// Free shipping bar
 		add_action( 'wp', array( $this, 'init_free_shipping_bar_hooks' ), 150 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_add_free_shipping_bar_fragment' ), 10 );
 	}
 
 	/**
@@ -194,6 +195,33 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+
+
+	/**
+	 * Maybe add free shipping bar a checkout fragment.
+	 *
+	 * @param   array  $fragments  Checkout fragments.
+	 */
+	public function maybe_add_free_shipping_bar_fragment( $fragments ) {
+		// Bail if theme functions and classes are not available
+		if ( ! function_exists( 'woodmart_get_opt' ) || ! class_exists( 'XTS\Modules\Shipping_Progress_Bar\Main' ) || ! class_exists( 'XTS\Modules\Layouts\Main' ) ) { return $fragments; }
+
+		// Get theme class instances
+		$free_shipping_bar_instance = XTS\Modules\Shipping_Progress_Bar\Main::get_instance();
+		$builder_instance = XTS\Modules\Layouts\Main::get_instance();
+
+		// Bail if shipping bar is disabled for the checkout page
+		if ( ! woodmart_get_opt( 'shipping_progress_bar_location_checkout' ) ) { return $fragments; }
+
+		// Get HTML for the free shipping bar
+		ob_start();
+		$free_shipping_bar_instance->render_shipping_progress_bar_with_wrapper();
+		$html = ob_get_clean();
+
+		$fragments['.wd-shipping-progress-bar'] = $html;
+		return $fragments;
 	}
 
 }
