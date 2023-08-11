@@ -394,6 +394,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Avoid triggering payment method field validation when updating checkout fragments.
 * Improved: Handle name fields as a single line for displaying on the substep review text.
 * Fixed: PHP warnings when setting shipping address from the shipping calculator on the cart page.
+* Fixed: Show password toggle buttons on popup login form not working.
 
 = 3.0.1 - 2023-08-04 =
 

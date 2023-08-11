@@ -57,29 +57,50 @@ jQuery( function( $ ) {
 	// CHANGE: Extract password visibility icon code into a function.
 	var handlePasswordVisibility = function() {
 		// Show password visibility hover icon on woocommerce forms
-		$( '.woocommerce form .woocommerce-Input[type="password"]' ).wrap( '<span class="password-input"></span>' );
-		// Add 'password-input' class to the password wrapper in checkout page.
-		$( '.woocommerce form input' ).filter(':password').parent('span').addClass('password-input');
-		$( '.password-input' ).append( '<span class="show-password-input"></span>' );
-
-		$( '.show-password-input' ).on( 'click',
-			function() {
-				if ( $( this ).hasClass( 'display-password' ) ) {
-					$( this ).removeClass( 'display-password' );
-				} else {
-					$( this ).addClass( 'display-password' );
-				}
-				if ( $( this ).hasClass( 'display-password' ) ) {
-					$( this ).siblings( ['input[type="password"]'] ).prop( 'type', 'text' );
-				} else {
-					$( this ).siblings( 'input[type="text"]' ).prop( 'type', 'password' );
-				}
+		// CHANGE: Only wrap password inputs if they aren't already wrapped.
+		$( '.woocommerce form .woocommerce-Input[type="password"]' ).each( function() {
+			if ( 0 === $( this ).closest( '.password-input' ).length ) {
+				$( this ).wrap( '<span class="password-input"></span>' );
 			}
-		);
+		} );
+		
+		// Add 'password-input' class to the password wrapper in checkout page.
+		// CHANGE: Only wrap password inputs if they aren't already wrapped.
+		$( $( '.woocommerce form input' ).filter(':password') ).each( function() {
+			if ( 0 === $( this ).closest( '.password-input' ).length ) {
+				$( this ).parent('span').addClass('password-input');
+			}
+		} );
+
+		// CHANGE: Only add the password visibility icon if it doesn't already exist.
+		$( '.password-input' ).each( function() {
+			if ( 0 === $( this ).find( '.show-password-input' ).length ) {
+				$( this ).append( '<span class="show-password-input"></span>' );
+			}
+		} );
+
+		// CHANGE: Extracted show password click handler into a reusable function.
 	}
 	handlePasswordVisibility();
 	// CHANGE: END - Extract password visibility icon code into a function.
 
 	// CHANGE: Also run password visibility icon code after replacing checkout fragments.
 	$( document.body ).on( 'updated_checkout', handlePasswordVisibility );
+
+	// CHANGE: Extract show password click handler into a reusable function.
+	var handleShowPasswordClick = function( e ) {
+		if ( $( this ).hasClass( 'display-password' ) ) {
+			$( this ).removeClass( 'display-password' );
+		} else {
+			$( this ).addClass( 'display-password' );
+		}
+		if ( $( this ).hasClass( 'display-password' ) ) {
+			$( this ).siblings( ['input[type="password"]'] ).prop( 'type', 'text' );
+		} else {
+			$( this ).siblings( 'input[type="text"]' ).prop( 'type', 'password' );
+		}
+	}
+	// CHANGE: END - Extract show password click handler into a reusable function.
+	// CHANGE: Handle captured show password click handler button click.
+	$( document.body ).on( 'click', '.show-password-input', handleShowPasswordClick );
 });
