@@ -53,17 +53,27 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_pickup_point_selection_ui' ), 10 );
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'maybe_change_substep_text_lines_shipping_methods' ), 10 );
 
-		// When shipping method is selected
-		if ( $this->is_shipping_method_vp_pont_selected() ) {
-			// Shipping Address
-			add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'maybe_change_substep_attributes_shipping_address' ), 10 );
-		}
+		// Shipping Address
+		add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'maybe_change_substep_attributes_shipping_address' ), 10 );
+		
+		// Order summary
+		add_filter( 'woocommerce_cart_shipping_method_full_label', array( $this, 'maybe_remove_hook_change_shipping_method_label' ), 5, 2 );
+	}
 
-		// When pickup point is selected
-		if ( $this->is_shipping_method_vp_pont_selected() && $this->is_vp_pont_location_selected() ) {
-			// Change shipping option label on the checkout page
-			remove_filter( 'woocommerce_cart_shipping_method_full_label', array( VP_Woo_Pont::instance(), 'change_shipping_method_label' ), 10, 2 );
-		}
+	/**
+	 * Maybe remove hook for outputting pickup point data.
+	 */
+	public function maybe_remove_hook_change_shipping_method_label( $label, $method ) {
+		// Bail if selected shipping method is not a Hungarian Pickup Points shipping method
+		if ( ! $this->is_shipping_method_vp_pont_selected() ) { return $label; }
+
+		// Bail if pickup point location is not yet selected
+		if ( ! $this->is_vp_pont_location_selected() ) { return $label; }
+
+		// Remove filter
+		remove_filter( 'woocommerce_cart_shipping_method_full_label', array( VP_Woo_Pont::instance(), 'change_shipping_method_label' ), 10, 2 );
+
+		return $label;
 	}
 
 
@@ -264,7 +274,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 	 * Maybe change the shipping methods substep text to display the selected Hungarian Pickup Points information.
 	 */
 	public function maybe_change_substep_text_lines_shipping_methods( $text_lines ) {
-		// Bail if select shipping method is not a Hungarian Pickup Points shipping method
+		// Bail if selected shipping method is not a Hungarian Pickup Points shipping method
 		if ( ! $this->is_shipping_method_vp_pont_selected() ) { return $text_lines; }
 
 		// Has pickup location selected
@@ -328,6 +338,9 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 	 * @param   array  $substep_attributes  HTML attributes for the substep element.
 	 */
 	public function maybe_change_substep_attributes_shipping_address( $substep_attributes ) {
+		// Bail if Hungarian Pickup Points shipping method is not selected
+		if ( ! $this->is_shipping_method_vp_pont_selected() ) { return $substep_attributes; }
+
 		$substep_attributes = array_merge( $substep_attributes, array(
 			'data-substep-visible' => $this->is_shipping_method_vp_pont_selected() ? 'no' : 'yes',
 		) );
