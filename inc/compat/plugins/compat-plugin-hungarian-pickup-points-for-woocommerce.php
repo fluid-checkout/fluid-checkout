@@ -23,7 +23,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		if ( ! class_exists( 'VP_Woo_Pont' ) ) { return; }
 
 		// Very late hooks
-		add_action( 'wp', array( $this, 'very_late_hooks' ), 200 );
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 150 );
 
 		// Maybe set step as incomplete
 		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
@@ -41,7 +41,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_pickup_point_selection_ui' ), 10 );
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'maybe_change_substep_text_lines_shipping_methods' ), 10 );
 
-		// Change shipping option label on the checkout page
+		// When shipping method is selected
 		if ( $this->is_shipping_method_vp_pont_selected() ) {
 			// Shipping Address
 			add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'maybe_change_substep_attributes_shipping_address' ), 10 );
@@ -69,13 +69,14 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 	 * Maybe evaluate Hungarian Pickup Points shipping methods as local pickup.
 	 */
 	public function is_shipping_method_vp_pont_selected() {
-		//Get selected shipping methd
-		$chosen_methods = WC()->session->chosen_shipping_methods;
-
-		//If vp_pont is chosen
 		$is_vp_pont_selected = false;
-		foreach ( $chosen_methods as $chosen_method ) {
-			if ( $this->is_shipping_method_vp_pont( $chosen_method ) ) {
+
+		// Check chosen shipping method
+		$packages = WC()->shipping()->get_packages();
+		foreach ( $packages as $i => $package ) {
+			// Check if `vp_pont` shipping method is selected
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			if ( $chosen_method && $this->is_shipping_method_vp_pont( $chosen_method ) ) {
 				$is_vp_pont_selected = true;
 				break;
 			}
