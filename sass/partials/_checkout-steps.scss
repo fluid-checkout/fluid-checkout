@@ -46,7 +46,7 @@
 
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-edit,
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-save {
-	display: none;
+	display: none !important; // Needed to override theme styles set with `!important`
 }
 
 
