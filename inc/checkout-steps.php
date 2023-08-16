@@ -2780,6 +2780,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
+			$chosen_method_label = apply_filters( 'fc_shipping_method_substep_text_chosen_method_label', $chosen_method_label, $method );
 
 			// TODO: Maybe handle multiple packages
 			// $package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
@@ -3069,7 +3070,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_cart_shipping_methods_label( $method ) {
 		$label     = sprintf( apply_filters( 'fc_shipping_method_option_label_markup', '<span class="shipping-method__option-text">%s</span>', $method ), $method->get_label() );
-		$has_cost  = 0 < $method->cost;
+		$has_cost  = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
 		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
 
 		// Maybe add shipping method description
@@ -3092,6 +3093,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 			}
 
+			// Filter method costs
+			$method_costs = apply_filters( 'fc_shipping_method_option_price', $method_costs, $method );
+
+			// Add shipping method costs to label
 			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>', $method ), $method_costs );
 		}
 

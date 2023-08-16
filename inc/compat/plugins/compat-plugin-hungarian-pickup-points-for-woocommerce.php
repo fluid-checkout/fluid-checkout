@@ -51,10 +51,15 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		// Pickup point selection
 		remove_action( 'woocommerce_review_order_after_shipping', array( VP_Woo_Pont::instance(), 'checkout_ui' ), 10 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_pickup_point_selection_ui' ), 10 );
-		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'maybe_change_substep_text_lines_shipping_methods' ), 10 );
+		add_filter( 'fc_shipping_method_substep_text_chosen_method_label', array( $this, 'maybe_change_shipping_method_substep_text_chosen_method_label' ), 10, 2 );
+		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'maybe_change_substep_text_lines_shipping_methods' ), 20 );
 
 		// Shipping Address
 		add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'maybe_change_substep_attributes_shipping_address' ), 10 );
+
+		// Shipping methods
+		add_filter( 'fc_shipping_method_has_cost', array( $this, 'maybe_set_shipping_method_has_cost' ), 10, 2 );
+		add_filter( 'fc_shipping_method_option_price', array( $this, 'maybe_change_shipping_method_option_costs' ), 10, 2 );
 		
 		// Order summary
 		add_filter( 'woocommerce_cart_shipping_method_full_label', array( $this, 'maybe_replace_hook_change_shipping_method_label' ), 5, 2 );
@@ -272,6 +277,19 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 	}
 
 	/**
+	 * Maybe change the shipping method substep text to display the shipping method name without price when a Hungarian Pickup Points shipping method is selected.
+	 */
+	public function maybe_change_shipping_method_substep_text_chosen_method_label( $chosen_method_label, $method ) {
+		// Bail if selected shipping method is not a Hungarian Pickup Points shipping method
+		if ( ! $this->is_shipping_method_vp_pont_selected() ) { return $chosen_method_label; }
+
+		// Use only the shipping method name
+		$chosen_method_label = $method->get_label();
+		
+		return $chosen_method_label;
+	}
+
+	/**
 	 * Maybe change the shipping methods substep text to display the selected Hungarian Pickup Points information.
 	 */
 	public function maybe_change_substep_text_lines_shipping_methods( $text_lines ) {
@@ -389,6 +407,92 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		$label = $method->get_label() . ': ' . $formatted_costs;
 
 		return $label;
+	}
+
+
+
+	/**
+	 * Maybe set shipping method option as having costs for Hungarian Pickup Points.
+	 */
+	public function maybe_set_shipping_method_has_cost( $has_cost, $method ) {
+		// Bail if not Hungarian Pickup Points shipping method
+		if ( ! $this->is_shipping_method_vp_pont( $method->method_id ) ) { return $has_cost; }
+
+		return true;
+	}
+
+	/**
+	 * Maybe change the shipping method option costs to display the minimum price for Hungarian Pickup Points.
+	 */
+	public function maybe_change_shipping_method_option_costs( $method_costs, $method ) {
+		// Bail if not Hungarian Pickup Points shipping method
+		if ( ! $this->is_shipping_method_vp_pont( $method->method_id ) ) { return $method_costs; }
+
+		// Get shippign cost
+		$shipping_cost = VP_Woo_Pont_Helpers::calculate_shipping_costs();
+
+		// Find the smallest cost
+		$minimum_cost = false;
+		$minimum_cost_count = array();
+		$has_free_shipping = false;
+		$min_cost_formatted = '';
+		$min_cost_label = '';
+		foreach ( $shipping_cost as $provider => $array ) {
+			if ( $array[ 'net' ] == 0 ) {
+				$has_free_shipping = true;
+			} else {
+				$minimum_cost_count[] = $array[ 'net' ];
+				if ( ! $minimum_cost ) {
+					$minimum_cost = $array;
+				}
+				elseif ( $array[ 'net' ] < $minimum_cost[ 'net' ] ) {
+					$minimum_cost = $array;
+				}
+			}
+		}
+
+		// Check how many different prices we have
+		$minimum_cost_count = array_unique( $minimum_cost_count );
+		$minimum_cost_count = count( $minimum_cost_count );
+
+		// Minimum cost label
+		if ( $minimum_cost ) {
+			if ( WC()->cart->display_prices_including_tax() ) {
+				$min_cost_formatted = $minimum_cost[ 'formatted_gross' ];
+			} else {
+				$min_cost_formatted = $minimum_cost[ 'formatted_net' ];
+			}
+		}
+
+		// Minimum cost label, only free shipping
+		if( $has_free_shipping && $minimum_cost_count == 0 ) {
+			$min_cost_label = esc_html_x( 'free', 'shipping cost summary on cart & checkout', 'vp-woo-pont' );
+		}
+
+		// Minimum cost label, only 1 paid shipping
+		if ( ! $has_free_shipping && $minimum_cost_count == 1 ) {
+			$min_cost_label = sprintf( esc_html_x( '%s', 'shipping cost summary on cart & checkout(one shipping cost only)', 'vp-woo-pont' ), '<em class="vp-woo-pont-shipping-method-label-cost">' . $min_cost_formatted . '</em>' );
+		}
+
+		// Minimum cost label, multiple paid shipping
+		if ( ! $has_free_shipping && $minimum_cost_count > 1 ) {
+			$min_cost_label = sprintf( esc_html_x( 'from %s', 'shipping cost summary on cart & checkout(multiple shipping costs)', 'vp-woo-pont' ) . ' ', '<em class="vp-woo-pont-shipping-method-label-cost">' . $min_cost_formatted . '</em>' );
+		}
+
+		// Minimum cost label, free shipping + paid shipping
+		if ( $has_free_shipping && $minimum_cost_count == 1 ) {
+			$min_cost_label = sprintf( esc_html_x( 'free or %s', 'shipping cost summary on cart & checkout(free & 1 shipping cost)', 'vp-woo-pont' ) . ' ', '<em class="vp-woo-pont-shipping-method-label-cost">' . $min_cost_formatted . '</em>' );
+		}
+
+		// Minimum cost label, free shipping + paid shipping
+		if ( $has_free_shipping && $minimum_cost_count > 1 ) {
+			$min_cost_label = sprintf( esc_html_x( 'free & from %s', 'shipping cost summary on cart & checkout(free & 1+ shipping cost)', 'vp-woo-pont' ) . ' ', '<em class="vp-woo-pont-shipping-method-label-cost">' . $min_cost_formatted . '</em>' );
+		}
+
+		// Create new labels with price and optional icons
+		$method_costs = '<span class="vp-woo-pont-shipping-method-label-price">' . $min_cost_label . '</span>';
+
+		return $method_costs;
 	}
 
 }
