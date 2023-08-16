@@ -57,21 +57,22 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		add_filter( 'fc_substep_shipping_address_attributes', array( $this, 'maybe_change_substep_attributes_shipping_address' ), 10 );
 		
 		// Order summary
-		add_filter( 'woocommerce_cart_shipping_method_full_label', array( $this, 'maybe_remove_hook_change_shipping_method_label' ), 5, 2 );
+		add_filter( 'woocommerce_cart_shipping_method_full_label', array( $this, 'maybe_replace_hook_change_shipping_method_label' ), 5, 2 );
 	}
 
 	/**
-	 * Maybe remove hook for outputting pickup point data.
+	 * Maybe replace hook for changing the shipping method label.
 	 */
-	public function maybe_remove_hook_change_shipping_method_label( $label, $method ) {
+	public function maybe_replace_hook_change_shipping_method_label( $label, $method ) {
 		// Bail if selected shipping method is not a Hungarian Pickup Points shipping method
 		if ( ! $this->is_shipping_method_vp_pont_selected() ) { return $label; }
 
 		// Bail if pickup point location is not yet selected
 		if ( ! $this->is_vp_pont_location_selected() ) { return $label; }
 
-		// Remove filter
+		// Replace filter
 		remove_filter( 'woocommerce_cart_shipping_method_full_label', array( VP_Woo_Pont::instance(), 'change_shipping_method_label' ), 10, 2 );
+		add_filter( 'woocommerce_cart_shipping_method_full_label', array( $this, 'maybe_change_shipping_method_full_label' ), 10, 2 );
 
 		return $label;
 	}
@@ -346,6 +347,48 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		) );
 
 		return $substep_attributes;
+	}
+
+
+
+	/**
+	 * Maybe change the shipping method label to display the selected Hungarian Pickup Points price.
+	 */
+	public function maybe_change_shipping_method_full_label( $label, $method ) {
+		// Bail if not Hungarian Pickup Points shipping method
+		if ( ! $this->is_shipping_method_vp_pont( $method->method_id ) ) { return $label; }
+
+		// Bail if pickup point location is not yet selected
+		if ( ! $this->is_vp_pont_location_selected() ) { return $label; }
+
+		// Get selected pont
+		$selected_vp_pont = WC()->session->get( 'selected_vp_pont' );
+
+		// Get shipping cost
+		$shipping_costs = VP_Woo_Pont_Helpers::calculate_shipping_costs();
+		$shipping_cost = VP_Woo_Pont_Helpers::get_shipping_cost();
+
+		// Convert shippings costs so it works as a data attribute
+		$shipping_costs_json = wp_json_encode( $shipping_costs );
+		$shipping_costs_attr = function_exists( 'wc_esc_json' ) ? wc_esc_json( $shipping_costs_json ) : _wp_specialchars( $shipping_costs_json, ENT_QUOTES, 'UTF-8', true );
+		$button_label = __( 'Select a pick-up point', 'vp-woo-pont' );
+		if ( '' != get_option('vp_woo_pont_custom_button_label', '' ) ) {
+			$button_label = get_option( 'vp_woo_pont_custom_button_label' );
+		}
+
+		// Costs
+		$formatted_costs = '';
+		if ( WC()->cart->display_prices_including_tax() ) {
+			$formatted_costs = $shipping_cost[ 'formatted_gross' ];
+		}
+		else {
+			$formatted_costs = $shipping_cost[ 'formatted_net' ];
+		}
+
+		// Change shipping method label
+		$label = $method->get_label() . ': ' . $formatted_costs;
+
+		return $label;
 	}
 
 }
