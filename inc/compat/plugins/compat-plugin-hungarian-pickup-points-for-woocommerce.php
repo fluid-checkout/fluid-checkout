@@ -25,6 +25,18 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 150 );
 
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
+		// Checkout validation settings
+		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
+
 		// Maybe set step as incomplete
 		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
 
@@ -52,6 +64,75 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 			// Change shipping option label on the checkout page
 			remove_filter( 'woocommerce_cart_shipping_method_full_label', array( VP_Woo_Pont::instance(), 'change_shipping_method_label' ), 10, 2 );
 		}
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Add validation script
+		wp_register_script( 'fc-checkout-validation-hungarian-shipping-methods', self::$directory_url . 'js/compat/plugins/hungarian-pickup-points-for-woocommerce/checkout-validation-hungarian-shipping-methods'. self::$asset_version . '.js', array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-validation-hungarian-shipping-methods', 'window.addEventListener("load",function(){CheckoutValidationHungarianShippingMethods.init(fcSettings.checkoutValidationHungarianShippingMethods);})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-validation-hungarian-shipping-methods' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		$this->enqueue_assets();
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+
+		// Add validation settings
+		$settings[ 'checkoutValidationHungarianShippingMethods' ] = array(
+			'validationMessages'  => array(
+				'pickup_point_not_selected' => __( 'Selecting a pickup point is required before proceeding.', 'fluid-checkout' ),
+			),
+		);
+
+		return $settings;
+	}
+
+	
+
+	/**
+	 * Add settings to the plugin settings JS object for the checkout validation.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function change_js_settings_checkout_validation( $settings ) {
+		// Get current values
+		$current_validate_field_selector = array_key_exists( 'validateFieldsSelector', $settings ) ? $settings[ 'validateFieldsSelector' ] : '';
+		$current_reference_node_selector = array_key_exists( 'referenceNodeSelector', $settings ) ? $settings[ 'referenceNodeSelector' ] : '';
+		$current_always_validate_selector = array_key_exists( 'alwaysValidateFieldsSelector', $settings ) ? $settings[ 'alwaysValidateFieldsSelector' ] : '';
+
+		// Prepend new values to existing settings
+		$settings[ 'validateFieldsSelector' ] = 'input[name="vp_pont_id"]' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
+		$settings[ 'referenceNodeSelector' ] = 'input[name="vp_pont_id"]' . ( ! empty( $current_reference_node_selector ) ? ', ' : '' ) . $current_reference_node_selector;
+		$settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="vp_pont_id"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
+
+		return $settings;
 	}
 
 
@@ -127,7 +208,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		}
 
 		// Start html
-		$html = '<div class="vp-woo-pont-pickup-location">';
+		$html = '<div class="vp-woo-pont-pickup-location form-row woocommerce-input-wrapper">';
 
 		// Maybe output the section title
 		if ( true === $show_title || '' === $show_title ) {
@@ -166,9 +247,12 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 
 			// Button
 			$html .= '<a href="#" id="vp-woo-pont-show-map" data-shipping-costs="' . $shipping_costs_attr . '">' . esc_html( 'Modify', 'vp-woo-pont' ) . '</a>';
-
+			
 			$html .= '</div>';
 		}
+
+		// Hidden fields
+		$html .= '<input type="hidden" id="vp_pont_id" name="vp_pont_id" value="'. esc_attr( $selected_vp_pont[ 'id' ] ) .'" class="validate-hungarian-shipping-method">';
 		
 		$html .= '</div>';
 

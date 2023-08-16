@@ -1,5 +1,5 @@
 /**
- * Manage checkout front-end validation for: BRT Fermopoint (by BRT)
+ * Manage checkout front-end validation for: Hungarian Pickup Points & Shipping Labels for WooCommerce (by Viszt Péter).
  *
  * DEPENDS ON:
  * - checkout-validation.js // Main checkout validation script from Fluid Checkout
@@ -11,7 +11,7 @@
 	} else if ( typeof exports === 'object' ) {
 		module.exports = factory(root);
 	} else {
-		root.CheckoutValidationFermopoint = factory(root);
+		root.CheckoutValidationHungarianShippingMethods = factory(root);
 	}
 })(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
@@ -20,10 +20,10 @@
 	var _hasInitialized = false;
 	var _publicMethods = { };
 	var _settings = {
-		typeFermopointFieldSelector: '.validate-fermopoint',
-		fermopointSectionSelector: '#wc_brt_fermopoint_shipping_methods_custom-tr_container',
+		typeFieldSelector: '.validate-hungarian-shipping-method',
+		sectionSelector: '.vp-woo-pont-pickup-location',
 		validationMessages: {
-			fermopoint_not_selected: 'Selecting a collection point is required when shipping with FermoPoint.',
+			pickup_point_not_selected: 'Selecting a pickup point is required before proceeding.',
 		},
 	};
 
@@ -42,12 +42,9 @@
 	 * @param  {String}   validationEvent  Event that triggered the validation.
 	 * @return {Boolean}                   Whether the field is a CNPF field.
 	 */
-	var isFermopointField = function( field, formRow, validationEvent ) {
-		// Bail if Fermopoint shipping method not selected
-		if ( ! isSelectedBrtFermopointShippingMethod() ) { return false; }
-
-		// Bail if not a Fermopoint field
-		if ( ! field.matches( _settings.typeFermopointFieldSelector ) ) { return false; }
+	var isValidateField = function( field, formRow, validationEvent ) {
+		// Bail if not a hungarian shipping method field
+		if ( ! field.matches( _settings.typeFieldSelector ) ) { return false; }
 
 		return true;
 	};
@@ -55,23 +52,23 @@
 
 
 	/**
-	 * Validate if a fermopoint collection point is selected.
+	 * Validate if a hungarian shipping method collection point is selected.
 	 * @param  {Field}    field            Field for validation.
 	 * @param  {Element}  formRow          Form row element.
 	 * @param  {String}   validationEvent  Event that triggered the validation.
-	 * @return {Boolean}                   Whether a fermopoint collection point has been selected.
+	 * @return {Boolean}                   Whether a hungarian shipping method collection point has been selected.
 	 */
-	var validateFermpoint = function( field, formRow, validationEvent ) {
-		// Bail if fermopoint field is empty
+	var validateField = function( field, formRow, validationEvent ) {
+		// Bail if hungarian shipping method field is empty
 		if ( '' === field.value ) {
-			// Scroll to fermopoint section
-			var fermopointSection = document.querySelector( _settings.fermopointSectionSelector );
-			if ( fermopointSection && fermopointSection.scrollIntoView ) {
-				fermopointSection.scrollIntoView();
+			// Scroll to section
+			var section = document.querySelector( _settings.sectionSelector );
+			if ( section && section.scrollIntoView ) {
+				section.scrollIntoView();
 			}
 
 			// Return as invalid
-			return { valid: false, message: _settings.validationMessages.fermopoint_not_selected };
+			return { valid: false, message: _settings.validationMessages.pickup_point_not_selected };
 		}
 
 		// Field is valid
@@ -84,7 +81,7 @@
 	 * Register validation types.
 	 */
 	var registerValidationTypes = function() {
-		CheckoutValidation.registerValidationType( 'fermopoint', 'fermopoint', isFermopointField, validateFermpoint );
+		CheckoutValidation.registerValidationType( 'hungarian-shipping-method', 'hungarian-shipping-method', isValidateField, validateField );
 	}
 
 
@@ -97,9 +94,6 @@
 
 		// Bail if `CheckoutValidation` is not available
 		if ( ! window.CheckoutValidation ) { return; }
-
-		// Bail if global functions from Fermpoint script are not available
-		if ( ! window.isSelectedBrtFermopointShippingMethod ) { return; }
 
 		// Merge settings
 		_settings = FCUtils.extendObject( _settings, options );
