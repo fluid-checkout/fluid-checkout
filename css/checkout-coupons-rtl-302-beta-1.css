@@ -54,8 +54,8 @@
 .fc-wrapper .fc-coupon_code__collapsible input#coupon_code:focus {
   z-index: 10;
   position: relative;
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 2px !important;
 }
 
 .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
@@ -72,8 +72,8 @@
   width: auto;
 }
 .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply:focus {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 2px !important;
 }
 
 .fc-wrapper .fc-step__substep-text-content--coupon-codes:not(:empty) {
@@ -109,6 +109,6 @@
   color: var(--fluidcheckout--color--error, #cc1818);
 }
 .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon:focus {
-  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 1px;
+  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 1px !important;
 }

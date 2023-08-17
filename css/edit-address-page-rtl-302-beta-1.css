@@ -155,6 +155,10 @@ div.woocommerce form .form-row.form-row-two-thirds {
   }
 }
 
+div.woocommerce form .form-row.form-row-last {
+  margin-right: 0;
+}
+
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
   position: static;
   display: block;
@@ -252,8 +256,8 @@ div.woocommerce form .form-row input[type=password]:focus,
 div.woocommerce form .form-row input[type=checkbox]:focus,
 div.woocommerce form .form-row input[type=radio]:focus,
 div.woocommerce form .form-row .select2-selection:focus {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 2px !important;
 }
 div.woocommerce form .form-row .woocommerce-input-wrapper {
   position: relative;
@@ -267,8 +271,8 @@ div.woocommerce form .form-row .show-password-input {
 div.woocommerce input[type=number]:focus,
 div.woocommerce input[type=checkbox]:focus,
 div.woocommerce input[type=radio]:focus {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 2px !important;
 }
 
 div.woocommerce form .form-row textarea,
@@ -400,8 +404,8 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:bef
   transform: translateY(-50%);
 }
 div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:focus {
-  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 1px;
+  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 1px !important;
 }
 
 div.woocommerce .fc-expansible-form-section.form-row .form-row {
