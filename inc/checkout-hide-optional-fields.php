@@ -72,7 +72,8 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 	 */
 	public function add_optional_form_field_link_button( $field, $key, $args, $value ) {
 		// Bail if field is required
-		if ( array_key_exists( 'required', $args ) && $args[ 'required' ] == true ) { return $field; }
+		// Use loose comparison for required attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+		if ( array_key_exists( 'required', $args ) && true == $args[ 'required' ] ) { return $field; }
 
 		// Bail if field is not empty
 		if ( ! empty( $value ) ) { return $field; }
