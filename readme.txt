@@ -391,6 +391,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Improved: Compatibility with theme Woodmart. Disable theme checkout options by default.
+* Fixed: Remove validation icon from coupon field.
 
 = 3.0.1 - 2023-08-04 =
 

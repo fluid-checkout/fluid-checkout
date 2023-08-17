@@ -212,7 +212,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$coupon_code_field_args = array_merge( array(
 			'required'                   => false,
 			'fc_skip_server_validation'  => true,
-			'class'                      => array( 'form-row-wide' ),
+			'class'                      => array( 'form-row-wide', 'fc-no-validation-icon' ),
 			'placeholder'                => $coupon_code_field_placeholder,
 			'description'                => $coupon_code_field_description,
 			'custom_attributes'          => array(
