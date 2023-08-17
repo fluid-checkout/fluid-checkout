@@ -62,7 +62,7 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 			$hp_cf = apply_filters( 'thwcfd_woocommerce_checkout_fields_hook_priority', $this->change_hook_priority() );
 
 			// Output hidden fields
-			add_action( 'fc_checkout_after', array( $this, 'output_checkout_form_hidden_fields' ), 10 );
+			add_filter( 'thwcfe_hidden_fields_display_position', array( $this, 'change_hidden_fields_display_position_hook' ), 10 );
 
 			// Set steps as incomplete
 			add_filter( 'fc_is_step_complete_contact', array( $this, 'maybe_set_step_incomplete_contact' ), 10 );
@@ -84,6 +84,14 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 	 */
 	public function change_hook_priority( $priority = 90 ) {
 		return 90;
+	}
+
+	/**
+	 * Change the hook to display the hidden fields.
+	 */
+	public function change_hidden_fields_display_position_hook( $hidden_fields_display_position ) {
+		$hidden_fields_display_position = 'fc_checkout_after';
+		return $hidden_fields_display_position;
 	}
 
 
@@ -129,18 +137,6 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 	public function add_no_validation_icon_field_types( $no_validation_icon_field_types ) {
 		$no_validation_icon_field_types = array_merge( $no_validation_icon_field_types, array( 'checkboxgroup' ) );
 		return $no_validation_icon_field_types;
-	}
-
-
-
-	/**
-	 * Output the compatibility hidden fields for Themehigh's Multistep plugin.
-	 */
-	public function output_checkout_form_hidden_fields() {
-		// Themehigh's Multistep plugin Support
-		if ( ! THWCFE_Utils::is_thwmsc_enabled() ) {
-			$this->thwcfe->output_checkout_form_hidden_fields();
-		}
 	}
 
 
