@@ -1,3 +1,11 @@
+.fc-checkout-header .fc-checkout__title.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  position: absolute !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden !important;
+}
+
 body.has-fc-button-styles.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save, body.has-fc-button-styles .fc-wrapper .fc-place-order .fc-place-order-button,
 body.has-fc-button-styles.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
   min-height: var(--fluidcheckout--button--height, 44px) !important;
@@ -472,14 +480,6 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
   .fc-checkout-header__inner {
     padding: 0 50px;
   }
-}
-
-.fc-checkout-header .fc-checkout__title.screen-reader-text {
-  clip: rect(1px, 1px, 1px, 1px);
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
 }
 
 .fc-checkout-header .fc-checkout__site-name {

@@ -19,6 +19,12 @@ class FluidCheckout_ThemeCompat_ZKNito extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// General
+		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
+
+		// Settings
+		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false' );
 		add_filter( 'fc_content_section_class', array( $this, 'add_content_section_class' ), 10 );
@@ -31,6 +37,64 @@ class FluidCheckout_ThemeCompat_ZKNito extends FluidCheckout {
 
 		// Form field labels
 		remove_filter( 'woocommerce_form_field_args' , 'zk_nito_override_woocommerce_form_field', 10 );
+	}
+
+
+
+	/**
+	 * Add page body class for feature detection.
+	 *
+	 * @param array $classes Classes for the body element.
+	 */
+	public function add_body_class( $classes ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
+
+		// Add extra class to highlight the billing section
+		$add_classes = array();
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_zk_nito_display_field_labels' ) ) {
+			$add_classes[] = 'has-visible-form-field-labels';
+		}
+
+		return array_merge( $classes, $add_classes );
+	}
+
+
+
+	/**
+	 * Add new settings to the Fluid Checkout admin settings sections.
+	 *
+	 * @param   array   $settings         Array with all settings for the current section.
+	 * @param   string  $current_section  Current section name.
+	 */
+	public function add_settings( $settings ) {
+
+		// Add new settings
+		$settings_new = array(
+			array(
+				'title' => __( 'Theme ZK Nito', 'fluid-checkout' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_theme_zk_nito_options',
+			),
+
+			array(
+				'title'           => __( 'Checkout fields', 'fluid-checkout' ),
+				'desc'            => __( 'Display the form field labels visible on the page', 'fluid-checkout' ),
+				'id'              => 'fc_compat_theme_zk_nito_display_field_labels',
+				'type'            => 'checkbox',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_zk_nito_display_field_labels' ),
+				'autoload'        => false,
+			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_theme_zk_nito_options',
+			),
+		);
+
+		$settings = array_merge( $settings, $settings_new );
+
+		return $settings;
 	}
 
 
