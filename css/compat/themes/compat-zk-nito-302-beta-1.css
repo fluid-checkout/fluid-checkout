@@ -5,3 +5,7 @@
 body.theme-zk-nito .fc-content .ef3-gtb-block.wp-block-shortcode {
   max-width: none;
 }
+
+body.theme-zk-nito .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox input[type=checkbox] {
+  position: static;
+}
