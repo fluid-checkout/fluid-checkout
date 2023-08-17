@@ -129,3 +129,10 @@
 		outline-offset: $focus-outline-offset-link !important; // Needed to override theme styles
 	}
 }
+
+
+
+.fc-wrapper .fc-coupon-code-messages .woocommerce-error,
+.fc-wrapper .fc-coupon-code-messages .woocommerce-message {
+	display: block;
+}
