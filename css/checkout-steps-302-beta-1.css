@@ -1764,14 +1764,14 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
   vertical-align: middle;
   width: 50%;
-  text-align: left;
+  text-align: left !important;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total,
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td {
   width: 50%;
   font-size: 15px;
-  text-align: right;
+  text-align: right !important;
   line-height: 1;
   vertical-align: middle;
 }
