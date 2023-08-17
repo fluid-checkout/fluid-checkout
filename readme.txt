@@ -390,7 +390,14 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin Hungarian Pickup Points & Shipping Labels for WooCommerce (by Viszt Péter).
 * Improved: Compatibility with theme Woodmart. Disable theme checkout options by default.
+* Improved: Avoid triggering payment method field validation when updating checkout fragments.
+* Improved: Handle name fields as a single line for displaying on the substep review text.
+* Fixed: PHP warnings when setting shipping address from the shipping calculator on the cart page.
+* Fixed: Show password toggle buttons on popup login form not working.
+* Fixed: Compasiron for checkout fields `required` attribute to accept type casting of non-boolean values.
+* Fixed: Compatibility with plugin Checkout Field Editor PRO by ThemeHigh causing checkout process to validate conditional fields as required when fields are not available.
 * Fixed: Remove validation icon from coupon field.
 
 = 3.0.1 - 2023-08-04 =

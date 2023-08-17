@@ -2170,7 +2170,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 				// Check field exists
 				if ( array_key_exists( $field_key, $fields ) ) {
 					// Check required fields
-					if ( array_key_exists( 'required', $fields[ $field_key ] ) && $fields[ $field_key ][ 'required' ] === true && ! WC()->checkout()->get_value( $field_key ) ) {
+					// Use loose comparison for required attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+					if ( array_key_exists( 'required', $fields[ $field_key ] ) && true == $fields[ $field_key ][ 'required' ] && ! WC()->checkout()->get_value( $field_key ) ) {
 						$is_step_complete = false;
 						break 2;
 					}
@@ -2183,7 +2184,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$account_fields = WC()->checkout()->get_checkout_fields( 'account' );
 			foreach ( $account_fields as $field_key => $field_args ) {
 				// Check required fields
-				if ( array_key_exists( 'required', $field_args ) && $field_args[ 'required' ] === true && ! WC()->checkout()->get_value( $field_key ) ) {
+				// Use loose comparison for required attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+				if ( array_key_exists( 'required', $field_args ) && true == $field_args[ 'required' ] && ! WC()->checkout()->get_value( $field_key ) ) {
 					$is_step_complete = false;
 					break;
 				}
@@ -2665,10 +2667,44 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$address_type . '_email',
 		) ) );
 
+		// Handle name fields as a single line
+		$name_field_keys = array(
+			$address_type . '_first_name',
+			$address_type . '_last_name',
+		);
+		$has_added_name_fields_as_single_line = false;
+
 		// Add extra fields lines
 		foreach ( $address_fields as $field_key => $field_args ) {
 			// Skip some fields
 			if ( in_array( $field_key, $field_keys_skip_list ) ) { continue; }
+
+			// Maybe skip other name fields if already added as a single line
+			if ( in_array( $field_key, $name_field_keys ) && $has_added_name_fields_as_single_line ) { continue; }
+
+			// Maybe add name fields as a single line, then skip to next field
+			if ( in_array( $field_key, $name_field_keys ) ) {
+				// Get value for all name fields
+				$name_field_values = array();
+				foreach ( $address_fields as $field_key_2 => $field_args_2 ) {
+					// Skip fields not in the name fields list
+					if ( ! in_array( $field_key_2, $name_field_keys ) ) { continue; }
+					
+					// Get field display value
+					$field_value = WC()->checkout->get_value( $field_key_2 );
+					$field_display_value = $this->get_field_display_value( $field_value, $field_key_2, $field_args_2 );
+
+					// Maybe add field
+					if ( ! empty( $field_display_value ) ) {
+						$name_field_values[] = $field_display_value;
+					}
+				}
+				
+				// Add name fields as a single line
+				$review_text_lines[] = implode( ' ', $name_field_values );
+				$has_added_name_fields_as_single_line = true;
+				continue;
+			}
 			
 			// Get field display value
 			$field_value = WC()->checkout->get_value( $field_key );
@@ -2746,6 +2782,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
+			$chosen_method_label = apply_filters( 'fc_shipping_method_substep_text_chosen_method_label', $chosen_method_label, $method );
 
 			// TODO: Maybe handle multiple packages
 			// $package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
@@ -2864,7 +2901,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 				// Skip checking some fields
 				if ( in_array( $field_key, $step_complete_field_keys_skip_list ) ) { continue; }
 
-				if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( WC()->checkout()->get_value( $field_key ) ) ) {
+				// Check required fields
+				// Use loose comparison for required attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+				if ( array_key_exists( 'required', $field ) && true == $field[ 'required' ] && empty( WC()->checkout()->get_value( $field_key ) ) ) {
 					$is_substep_complete = false;
 					break;
 				}
@@ -3035,7 +3074,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_cart_shipping_methods_label( $method ) {
 		$label     = sprintf( apply_filters( 'fc_shipping_method_option_label_markup', '<span class="shipping-method__option-text">%s</span>', $method ), $method->get_label() );
-		$has_cost  = 0 < $method->cost;
+		$has_cost  = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
 		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
 
 		// Maybe add shipping method description
@@ -3058,6 +3097,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 			}
 
+			// Filter method costs
+			$method_costs = apply_filters( 'fc_shipping_method_option_price', $method_costs, $method );
+
+			// Add shipping method costs to label
 			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>', $method ), $method_costs );
 		}
 
@@ -3285,7 +3328,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Skip checking some fields
 			if ( in_array( $field_key, $step_complete_field_keys_skip_list ) ) { continue; }
 
-			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( WC()->checkout()->get_value( $field_key ) ) ) {
+			// Check required fields
+			// Use loose comparison for required attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+			if ( array_key_exists( 'required', $field ) && true == $field[ 'required' ] && empty( WC()->checkout()->get_value( $field_key ) ) ) {
 				$is_step_complete = false;
 				break;
 			}
