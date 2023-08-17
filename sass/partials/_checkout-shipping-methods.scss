@@ -109,8 +109,8 @@
 	background-color: $option-box-radio-color--checked;
 }
 .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:focus + .shipping-method__option-label:before {
-	outline: $focus-outline-field;
-	outline-offset: $focus-outline-offset-field;
+	outline: $focus-outline-field !important; // Needed to override theme styles
+	outline-offset: $focus-outline-offset-field !important; // Needed to override theme styles
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:hover:before,

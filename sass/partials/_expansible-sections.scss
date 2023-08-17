@@ -36,8 +36,8 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
 	}
 
 	&:focus {
-		outline: $focus-outline-link;
-		outline-offset: $focus-outline-offset-link;
+		outline: $focus-outline-link !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-link !important; // Needed to override theme styles
 	}
 }
 
