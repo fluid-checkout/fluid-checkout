@@ -398,6 +398,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Show password toggle buttons on popup login form not working.
 * Fixed: Compasiron for checkout fields `required` attribute to accept type casting of non-boolean values.
 * Fixed: Compatibility with plugin Checkout Field Editor PRO by ThemeHigh causing checkout process to validate conditional fields as required when fields are not available.
+* Fixed: Force show coupon code related messages on some edge cases.
 
 = 3.0.1 - 2023-08-04 =
 
