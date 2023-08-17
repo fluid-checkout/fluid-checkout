@@ -28,6 +28,9 @@ class FluidCheckout_ThemeCompat_ZKNito extends FluidCheckout {
 
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+
+		// Form field labels
+		remove_filter( 'woocommerce_form_field_args' , 'zk_nito_override_woocommerce_form_field', 10 );
 	}
 
 
@@ -164,7 +167,6 @@ class FluidCheckout_ThemeCompat_ZKNito extends FluidCheckout {
 
 		// Maybe set colors for default button border colors
 		$primary_button_border_color = ! empty( $opt_theme_options[ 'wp_nito_btn_primary_border' ][ 'border-color' ] ) ? esc_attr( $opt_theme_options[ 'wp_nito_btn_primary_border' ][ 'border-color' ] ) : '#1f1f1f';
-		var_dump( $primary_button_border_color );
 		if ( ! empty( $primary_button_border_color ) && '#1f1f1f' !== strtolower( $primary_button_border_color ) ) {
 			$new_css_variables[ ':root' ][ '--fluidcheckout--button--primary--border-color' ] = $primary_button_border_color;
 			$new_css_variables[ ':root' ][ '--fluidcheckout--button--primary--border-color--hover' ] = $primary_button_border_color;
