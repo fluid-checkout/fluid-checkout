@@ -194,7 +194,8 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 			// Validate required fields
 			foreach( $fields as $field_key => $field_args ) {
 				// Get required property
-				$required = array_key_exists( 'required', $field_args ) && $field_args[ 'required' ] === true;
+				// Use loose comparison for required attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+				$required = array_key_exists( 'required', $field_args ) && true == $field_args[ 'required' ];
 
 				// Skip optional fields
 				if ( ! $required ) { continue; }

@@ -312,9 +312,9 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 * @param   mixed   $value  Value of the field. Defaults to `null`.
 	 */
 	public function change_required_field_attributes( $field, $key, $args, $value ) {
-		
 		// Bail if field is not required
-		if ( ! array_key_exists( 'required', $args ) || $args['required'] != true ) { return $field; }
+		// Use loose comparison for required attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+		if ( ! array_key_exists( 'required', $args ) || true != $args['required'] ) { return $field; }
 		
 		// Add `aria-label` to required field labels
 		$field = str_replace( '<abbr class="required"', '<abbr class="required" aria-label="' . __( '(Required)', 'fluid-checkout' ) . '" ', $field );
