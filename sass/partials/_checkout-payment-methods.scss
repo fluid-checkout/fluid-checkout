@@ -137,8 +137,8 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	transform: none;
 }
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name="payment_method"]:focus + label:before {
-	outline: $focus-outline-field;
-	outline-offset: $focus-outline-offset-field;
+	outline: $focus-outline-field !important; // Needed to override theme styles
+	outline-offset: $focus-outline-offset-field !important; // Needed to override theme styles
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name="payment_method"]:checked + label:before {
@@ -233,8 +233,8 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box a:focus {
-	outline: $focus-outline-link;
-	outline-offset: $focus-outline-offset-link;
+	outline: $focus-outline-link !important; // Needed to override theme styles
+	outline-offset: $focus-outline-offset-link !important; // Needed to override theme styles
 }
 
 

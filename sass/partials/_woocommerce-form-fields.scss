@@ -74,6 +74,10 @@ div.woocommerce form #payment .form-row.form-row-middle {
 	}
 }
 
+div.woocommerce form .form-row.form-row-last {
+	margin-#{ $alignment-left }: 0;
+}
+
 
 
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
@@ -180,8 +184,8 @@ div.woocommerce form .form-row {
 		position: relative;
 
 		&:focus {
-			outline: $focus-outline-field;
-			outline-offset: $focus-outline-offset-field;
+			outline: $focus-outline-field !important; // Needed to override theme styles
+			outline-offset: $focus-outline-offset-field !important; // Needed to override theme styles
 		}
 	}
 
@@ -201,8 +205,8 @@ div.woocommerce {
 	input[type="checkbox"],
 	input[type="radio"] {
 		&:focus {
-			outline: $focus-outline-field;
-			outline-offset: $focus-outline-offset-field;
+			outline: $focus-outline-field !important; // Needed to override theme styles
+			outline-offset: $focus-outline-offset-field !important; // Needed to override theme styles
 		}
 	}
 }

@@ -1,0 +1,7 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector }:not( .has-visible-form-field-labels ) div.woocommerce form .form-row > label:not( input[type="checkbox"] ~ label ):not( .place-order label ) {
+	@extend %screen-reader-text-styles;
+}

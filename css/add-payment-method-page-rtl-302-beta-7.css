@@ -159,8 +159,8 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method]:focus + label:before {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 2px !important;
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method]:checked + label:before {
@@ -276,8 +276,8 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
 }
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box a:focus {
-  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 1px;
+  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 1px !important;
 }
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box fieldset {

@@ -420,8 +420,8 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   text-align: center;
 }
 .has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:focus {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 2px !important;
 }
 
 .fc-wrapper .fc-step__substep-edit {
@@ -446,8 +446,8 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   }
 }
 .fc-wrapper .fc-step__substep-edit:focus {
-  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 1px;
+  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 1px !important;
 }
 
 .has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save {
@@ -457,8 +457,8 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   text-align: center !important;
 }
 .has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save:focus {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 2px !important;
 }
 
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit,
@@ -551,8 +551,8 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   cursor: pointer;
 }
 .fc-contact-login__action:focus {
-  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 1px;
+  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 1px !important;
 }
 
 .fc-contact-login__action--underline {
@@ -867,8 +867,8 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 }
 
 .woocommerce ul#shipping_method .shipping-method__option input[type=radio]:focus + .shipping-method__option-label:before {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 2px !important;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:hover:before,
@@ -1076,8 +1076,8 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method]:focus + label:before {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 2px !important;
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method]:checked + label:before {
@@ -1193,8 +1193,8 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 }
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box a:focus {
-  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 1px;
+  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 1px !important;
 }
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box fieldset {
@@ -1272,6 +1272,8 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 
 .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox input[type=checkbox] {
   top: 0;
+  margin-left: 0;
+  margin-right: 5px;
 }
 
 .woocommerce-privacy-policy-text:not(:last-child):not(:empty) {
@@ -1312,8 +1314,8 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
   float: none;
 }
 .fc-wrapper .fc-place-order .fc-place-order-button:focus {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 2px !important;
 }
 
 .fc-wrapper .fc-place-order .fc-place-order-button:disabled {
@@ -1420,6 +1422,10 @@ div.woocommerce form .form-row.form-row-two-thirds {
   }
 }
 
+div.woocommerce form .form-row.form-row-last {
+  margin-left: 0;
+}
+
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
   position: static;
   display: block;
@@ -1517,8 +1523,8 @@ div.woocommerce form .form-row input[type=password]:focus,
 div.woocommerce form .form-row input[type=checkbox]:focus,
 div.woocommerce form .form-row input[type=radio]:focus,
 div.woocommerce form .form-row .select2-selection:focus {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 2px !important;
 }
 div.woocommerce form .form-row .woocommerce-input-wrapper {
   position: relative;
@@ -1532,8 +1538,8 @@ div.woocommerce form .form-row .show-password-input {
 div.woocommerce input[type=number]:focus,
 div.woocommerce input[type=checkbox]:focus,
 div.woocommerce input[type=radio]:focus {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 2px !important;
 }
 
 div.woocommerce form .form-row textarea,
@@ -1758,14 +1764,14 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
   vertical-align: middle;
   width: 50%;
-  text-align: left;
+  text-align: left !important;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total,
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td {
   width: 50%;
   font-size: 15px;
-  text-align: right;
+  text-align: right !important;
   line-height: 1;
   vertical-align: middle;
 }
@@ -1906,8 +1912,8 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon:focus {
-  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 1px;
+  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 1px !important;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .coupon-code-form td {
@@ -2028,8 +2034,8 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
   padding-right: 10px;
 }
 .fc-checkout-order-review__actions-mobile .fc-checkout-order-review__header-link:focus {
-  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 1px;
+  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 1px !important;
 }
 
 .fc-checkout-order-review__actions-mobile .fc-checkout-order-review__close-order-summary {
@@ -2037,8 +2043,8 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
   height: 44px;
 }
 .fc-checkout-order-review__actions-mobile .fc-checkout-order-review__close-order-summary:focus {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 2px !important;
 }
 
 .fc-checkout-order-review__sidebar-actions {
@@ -2066,6 +2072,6 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
   cursor: pointer;
 }
 .fc-checkout-order-review__head .fc-checkout-order-review__header-link:focus {
-  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 1px;
+  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 1px !important;
 }

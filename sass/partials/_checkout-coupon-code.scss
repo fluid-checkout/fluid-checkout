@@ -61,8 +61,8 @@
 	&:focus {
 		z-index: z( 'above' );
 		position: relative;
-		outline: $focus-outline-button;
-		outline-offset: $focus-outline-offset-button;
+		outline: $focus-outline-button !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-button !important; // Needed to override theme styles
 	}
 }
 
@@ -80,8 +80,8 @@
 	width: auto;
 
 	&:focus {
-		outline: $focus-outline-button;
-		outline-offset: $focus-outline-offset-button;
+		outline: $focus-outline-button !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-button !important; // Needed to override theme styles
 	}
 }
 
@@ -125,8 +125,8 @@
 	}
 
 	&:focus {
-		outline: $focus-outline-link;
-		outline-offset: $focus-outline-offset-link;
+		outline: $focus-outline-link !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-link !important; // Needed to override theme styles
 	}
 }
 

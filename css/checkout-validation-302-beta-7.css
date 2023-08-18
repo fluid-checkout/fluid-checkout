@@ -29,8 +29,8 @@ div.woocommerce .form-row .fc-mailcheck-suggestion {
 }
 
 div.woocommerce .form-row .fc-mailcheck-suggestion .mailcheck-suggestion:focus {
-  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 1px;
+  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: 1px !important;
 }
 
 div.woocommerce .form-row .woocommerce-error,
