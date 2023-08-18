@@ -112,3 +112,8 @@
   outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156) !important;
   outline-offset: 1px !important;
 }
+
+.fc-wrapper .fc-coupon-code-messages .woocommerce-error,
+.fc-wrapper .fc-coupon-code-messages .woocommerce-message {
+  display: block;
+}

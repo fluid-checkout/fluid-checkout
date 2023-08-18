@@ -10,7 +10,8 @@ body.theme-zk-nito:not(.has-visible-form-field-labels) div.woocommerce form .for
   --fluidcheckout--field--height: 45px;
 }
 
-body.theme-zk-nito .fc-content .ef3-gtb-block.wp-block-shortcode {
+body.theme-zk-nito .fc-content > .ef3-gtb-block.wp-block-shortcode,
+body.theme-zk-nito .fc-content > .ef3-gtb-block.wp-block- {
   max-width: none;
 }
 
