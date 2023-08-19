@@ -53,12 +53,12 @@ class FluidCheckout_ThemeCompat_ZKNito extends FluidCheckout {
 	 * @param array $classes Classes for the body element.
 	 */
 	public function add_body_class( $classes ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
+		// Bail if not on checkout or edit address pages
+		if( ! function_exists( 'is_checkout' ) || ( ( ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) && ! is_wc_endpoint_url( 'edit-address' ) ) ) { return $classes; }
 
 		// Add extra class to highlight the billing section
 		$add_classes = array();
-		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_zk_nito_display_field_labels' ) ) {
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_zk_nito_display_field_labels' ) || is_wc_endpoint_url( 'edit-address' ) ) {
 			$add_classes[] = 'has-visible-form-field-labels';
 		}
 
