@@ -20,9 +20,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Use output buffer to avoid invalid when `get_icon` function outputs the contents instead of returning it
+// CHANGE: Get the payment method icon as html.
+// This avoids breaking update checkout AJAX calls when
+// the payment method plugin outputs HTML out of place while trying to get the icon.
 ob_start();
-$icon_html = $gateway->get_icon();
+$icon_html = $gateway->get_icon(); // WPCS: XSS ok.
 $icon_html_from_output = ob_get_clean();
 $has_icon_classes = ( null !== $icon_html_from_output && ! empty( $icon_html_from_output ) ) || ( null !== $icon_html && ! empty( trim( $icon_html ) ) ) ? 'has-icon' : ''; // WPCS: XSS ok.
 ?>
