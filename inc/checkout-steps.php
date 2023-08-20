@@ -3945,8 +3945,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Get gateway
 			$gateway = $available_gateways[ $chosen_method_key ];
 
+			// Get icon html
+			// This avoids breaking update checkout AJAX calls when
+			// the payment method plugin outputs HTML out of place while trying to get the icon.
+			ob_start();
+			echo $gateway->get_icon(); // WPCS: XSS ok.
+			$icon_html = ob_get_clean();
+
 			// Get review text line
-			$payment_method_review_text = '<span class="payment-method-icon">' . $gateway->get_icon() . '</span>' . '<span class="payment-method-title">' . $gateway->get_title() . '</span>';
+			$payment_method_review_text = '<span class="payment-method-icon">' . $icon_html . '</span>' . '<span class="payment-method-title">' . $gateway->get_title() . '</span>';
 			$payment_method_review_text = apply_filters( 'fc_payment_method_review_text_' . $chosen_method_key, $payment_method_review_text, $gateway );
 
 			// Add review text line
