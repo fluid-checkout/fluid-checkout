@@ -396,6 +396,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with theme Woodmart. Disable theme checkout options by default.
 * Improved: Avoid triggering payment method field validation when updating checkout fragments.
 * Improved: Handle name fields as a single line for displaying on the substep review text.
+* Improved: Added filter hooks `fc_apply_address_1_field_description` and `fc_apply_address_2_field_description` to stop changing the address fields description and placeholder.
 * Fixed: PHP warnings when setting shipping address from the shipping calculator on the cart page.
 * Fixed: Show password toggle buttons on popup login form not working.
 * Fixed: Compasiron for checkout fields `required` attribute to accept type casting of non-boolean values.
