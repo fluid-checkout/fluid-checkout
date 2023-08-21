@@ -3955,7 +3955,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$icon_html = ob_get_clean();
 
 			// Get review text line
-			$payment_method_review_text = '<span class="payment-method-icon">' . $icon_html . '</span>' . '<span class="payment-method-title">' . $gateway->get_title() . '</span>';
+			$payment_method_review_text = '<span class="payment-method-icon">' . $icon_html /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ . '</span>' . '<span class="payment-method-title">' . $gateway->get_title() /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ . '</span>';
 			$payment_method_review_text = apply_filters( 'fc_payment_method_review_text_' . $chosen_method_key, $payment_method_review_text, $gateway );
 
 			// Add review text line
