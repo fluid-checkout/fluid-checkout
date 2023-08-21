@@ -223,7 +223,11 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   margin-right: 10px;
 }
 
-.fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label img {
+.fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label .payment-method__label-icon {
+  text-align: right;
+}
+
+.fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label .payment-method__label-icon img {
   float: none;
   display: inline-block;
   margin-left: 5px;
