@@ -113,9 +113,14 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		// Start buffer
 		ob_start();
 
-		// Add expansible block markup for the field
-		$form_field_label = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_optional_fields_link_label_lowercase' ) ? strtolower( $args['label'] ) : $args['label'];
-		
+		// Prepare field label for the toggle
+		$form_field_label = array_key_exists( 'optional_expand_link_label', $args ) ? $args[ 'optional_expand_link_label' ] : $args[ 'label' ];
+
+		// Maybe set field label as lowercase
+		if ( ( ! array_key_exists( 'optional_expand_link_lowercase', $args ) || false !== $args[ 'optional_expand_link_lowercase' ] ) && 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_optional_fields_link_label_lowercase' ) ) {
+			$form_field_label = strtolower( $form_field_label );
+		}
+
 		/* translators: %s: Form field label */
 		$toggle_label = apply_filters( 'fc_expansible_section_toggle_label_'.$key, sprintf( __( 'Add %s', 'fluid-checkout' ), $form_field_label ) );
 

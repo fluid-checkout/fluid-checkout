@@ -397,6 +397,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Avoid triggering payment method field validation when updating checkout fragments.
 * Improved: Handle name fields as a single line for displaying on the substep review text.
 * Improved: Added filter hooks `fc_apply_address_1_field_description` and `fc_apply_address_2_field_description` to stop changing the address fields description and placeholder.
+* Improved: Handle new custom arguments `optional_expand_link_label` and `optional_expand_link_lowercase` for checkout fields array to customize how optional field "+ Add <field>" links are displayed.
 * Fixed: PHP warnings when setting shipping address from the shipping calculator on the cart page.
 * Fixed: Show password toggle buttons on popup login form not working.
 * Fixed: Compasiron for checkout fields `required` attribute to accept type casting of non-boolean values.
