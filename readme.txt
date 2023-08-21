@@ -391,6 +391,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme ZK Nito.
+* Added: Compatibility with plugin Tilopay.
 * Added: Compatibility with plugin Hungarian Pickup Points & Shipping Labels for WooCommerce (by Viszt Péter).
 * Improved: Compatibility with theme Woodmart. Disable theme checkout options by default.
 * Improved: Avoid triggering payment method field validation when updating checkout fragments.
