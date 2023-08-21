@@ -186,6 +186,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label img {
 	float: none;
 	display: inline-block;
+	margin-#{ $alignment-left }: $global-spacing-tiny;
 	height: $option-box-radio-size;
 	vertical-align: middle;
 }

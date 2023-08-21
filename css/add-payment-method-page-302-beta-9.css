@@ -226,6 +226,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label img {
   float: none;
   display: inline-block;
+  margin-left: 5px;
   height: 24px;
   vertical-align: middle;
 }
