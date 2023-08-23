@@ -26,8 +26,8 @@ class FluidCheckout_TIWooCommerceWishlistPremium extends FluidCheckout {
 
 
 	/**
-      * Add cart item element class to wishlist reference string.
-      */
+	 * Add cart item element class to wishlist reference string.
+	 */
 	public function add_cart_item_element_class_to_reference_string( $reference_string ) {
 		return str_replace( '<p>', '<p class="cart-item__element">', $reference_string );
 	}
