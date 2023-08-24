@@ -1,5 +1,5 @@
 // ------------------------------------
-// EXPRESS CHECKOUT
+// HUNGARIAN PICKUP POINTS
 // ------------------------------------
 
 .fc-wrapper .fc-step__substep .vp-woo-pont-pickup-location__title {
@@ -31,7 +31,7 @@
 .fc-wrapper .fc-step__substep .vp-woo-pont-review-order-selected {
 	position: relative;
 	display: block;
-	padding-#{ $alignment-left }: calc( 32px + #{ $global-spacing-extra-small } );
+	padding-#{ $alignment-left }: calc( 32px + #{ $global-spacing-extra-small } ); // 32px = icon width, size unit in `px` as defined by the related plugin.
 }
 
 
