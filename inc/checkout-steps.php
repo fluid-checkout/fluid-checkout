@@ -2172,7 +2172,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				// Check field exists
 				if ( array_key_exists( $field_key, $fields ) ) {
 					// Check required fields
-					// Use loose comparison for required attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+					// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
 					if ( array_key_exists( 'required', $fields[ $field_key ] ) && true == $fields[ $field_key ][ 'required' ] && ! WC()->checkout()->get_value( $field_key ) ) {
 						$is_step_complete = false;
 						break 2;
@@ -2186,7 +2186,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$account_fields = WC()->checkout()->get_checkout_fields( 'account' );
 			foreach ( $account_fields as $field_key => $field_args ) {
 				// Check required fields
-				// Use loose comparison for required attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+				// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
 				if ( array_key_exists( 'required', $field_args ) && true == $field_args[ 'required' ] && ! WC()->checkout()->get_value( $field_key ) ) {
 					$is_step_complete = false;
 					break;
@@ -2904,7 +2904,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				if ( in_array( $field_key, $step_complete_field_keys_skip_list ) ) { continue; }
 
 				// Check required fields
-				// Use loose comparison for required attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+				// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
 				if ( array_key_exists( 'required', $field ) && true == $field[ 'required' ] && empty( WC()->checkout()->get_value( $field_key ) ) ) {
 					$is_substep_complete = false;
 					break;
@@ -3331,7 +3331,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			if ( in_array( $field_key, $step_complete_field_keys_skip_list ) ) { continue; }
 
 			// Check required fields
-			// Use loose comparison for required attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+			// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
 			if ( array_key_exists( 'required', $field ) && true == $field[ 'required' ] && empty( WC()->checkout()->get_value( $field_key ) ) ) {
 				$is_step_complete = false;
 				break;
