@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-03 13:49+0000\n"
-"PO-Revision-Date: 2023-08-04 14:41+0000\n"
+"PO-Revision-Date: 2023-08-24 07:44+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.4; wp-6.2.2"
+"X-Loco-Version: 2.6.4; wp-6.3"
 
 #: inc/admin/admin-settings-checkout.php:387
 msgid "\"Add\" link button"
@@ -117,7 +117,7 @@ msgid "Activated"
 msgstr "Attivato"
 
 #. %s: Form field label
-#: inc/checkout-coupon-codes.php:240 inc/checkout-hide-optional-fields.php:119
+#: inc/checkout-coupon-codes.php:240 inc/checkout-hide-optional-fields.php:125
 #, php-format
 msgid "Add %s"
 msgstr "Aggiungi %s"
@@ -148,7 +148,7 @@ msgstr "Aggiungere aree widget alla pagina di ringraziamento"
 msgid "Add-ons"
 msgstr "Componenti aggiuntivi"
 
-#: inc/checkout-steps.php:2338
+#: inc/checkout-steps.php:2342
 msgid "Additional notes"
 msgstr "Note aggiuntive"
 
@@ -255,11 +255,11 @@ msgstr "Hai già un account?"
 msgid "Always show"
 msgstr "Mostra sempre"
 
-#: inc/checkout-steps.php:2112
+#: inc/checkout-steps.php:2114
 msgid "An account will be created with the information provided."
 msgstr "Verrà creato un account con le informazioni fornite."
 
-#: inc/checkout-fields.php:123
+#: inc/checkout-fields.php:130
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Appartamento, unità, edificio, piano, ecc."
 
@@ -346,7 +346,7 @@ msgstr ""
 msgid "Billing phone"
 msgstr "Telefono per la fatturazione"
 
-#: inc/checkout-steps.php:3120
+#: inc/checkout-steps.php:3165
 msgid "Billing to"
 msgstr "Fatturazione a"
 
@@ -401,7 +401,7 @@ msgstr "Layout del carrello"
 msgid "Cart optimizations"
 msgstr "Ottimizzazioni del carrello"
 
-#: inc/checkout-steps.php:752
+#: inc/checkout-steps.php:754
 msgid "Cart total:"
 msgstr "Totale carrello:"
 
@@ -409,7 +409,7 @@ msgstr "Totale carrello:"
 msgid "Change email address to: {suggestion-value}"
 msgstr "Modifica l'indirizzo e-mail in: {suggestion-value}"
 
-#: inc/checkout-steps.php:1792
+#: inc/checkout-steps.php:1794
 #, php-format
 msgid "Change: %s"
 msgstr "Modifica: %s"
@@ -443,6 +443,7 @@ msgid "Checkout elements"
 msgstr "Elementi della cassa"
 
 #: inc/admin/admin-settings-checkout.php:402
+#: inc/compat/themes/compat-theme-zk-nito.php:87
 msgid "Checkout fields"
 msgstr "Campi della cassa"
 
@@ -463,11 +464,15 @@ msgstr "Intestazione Checkout - dispositivi mobili"
 msgid "Checkout layout"
 msgstr "Layout di cassa"
 
+#: inc/compat/themes/compat-theme-woodmart.php:108
+msgid "Checkout options"
+msgstr "Opzioni di pagamento"
+
 #: inc/checkout-widget-areas.php:123
 msgid "Checkout Order Summary"
 msgstr "Riepilogo dell'ordine in checkout"
 
-#: inc/compat/themes/compat-theme-woodmart.php:78
+#: inc/compat/themes/compat-theme-woodmart.php:99
 msgid "Checkout progress"
 msgstr "Avanzamento della cassa"
 
@@ -475,32 +480,32 @@ msgstr "Avanzamento della cassa"
 msgid "Checkout Sidebar"
 msgstr "Barra laterale di checkout"
 
-#: inc/checkout-steps.php:1434
+#: inc/checkout-steps.php:1436
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Fatturazione"
 
-#: inc/checkout-steps.php:1413
+#: inc/checkout-steps.php:1415
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Contatto"
 
-#: inc/checkout-steps.php:1443
+#: inc/checkout-steps.php:1445
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Pagamento"
 
-#: inc/checkout-steps.php:1422
+#: inc/checkout-steps.php:1424
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Spedizione"
 
-#: inc/checkout-steps.php:1792
+#: inc/checkout-steps.php:1794
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Modifica"
 
-#: inc/checkout-steps.php:1793
+#: inc/checkout-steps.php:1795
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Salva modifiche"
@@ -581,7 +586,7 @@ msgstr ""
 msgid "Classic"
 msgstr "Classico"
 
-#: inc/checkout-steps.php:752
+#: inc/checkout-steps.php:754
 msgid "Click to go to the order summary"
 msgstr "Clicca per visualizzare il riepilogo dell'ordine"
 
@@ -700,6 +705,10 @@ msgstr ""
 msgid "Did you mean %s?"
 msgstr "Intendevi %s?"
 
+#: inc/compat/themes/compat-theme-woodmart.php:109
+msgid "Disable the theme checkout options"
+msgstr "Disattivare le opzioni di pagamento del tema"
+
 #: inc/admin/admin-settings-cart.php:170
 msgid "Display as a cart section"
 msgstr "Visualizzazione come sezione del carrello"
@@ -759,6 +768,10 @@ msgstr ""
 #: inc/admin/admin-settings-checkout.php:355
 msgid "Display the coupon codes section title"
 msgstr "Visualizza il titolo della sezione Codici coupon"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:88
+msgid "Display the form field labels visible on the page"
+msgstr "Visualizzare le etichette dei campi del modulo visibili nella pagina"
 
 #: inc/admin/admin-settings-checkout.php:627
 msgid ""
@@ -864,7 +877,7 @@ msgstr ""
 msgid "Don't show this again"
 msgstr "Non visualizzare più questo messaggio"
 
-#: inc/checkout-steps.php:4115
+#: inc/checkout-steps.php:4179
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 #| msgid "Edit Cart"
 msgid "Edit cart"
@@ -1343,7 +1356,7 @@ msgstr "Altre posizioni per il codice coupon nella pagina di checkout"
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Sposta la casella di controllo dell'iscrizione nell passo di contatto"
 
-#: inc/checkout-steps.php:580
+#: inc/checkout-steps.php:582
 msgid "Multi-step"
 msgstr "Multi-passo"
 
@@ -1351,7 +1364,7 @@ msgstr "Multi-passo"
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Indirizzi multipli salvati per la spedizione e la fatturazione."
 
-#: inc/checkout-steps.php:2049
+#: inc/checkout-steps.php:2051
 msgid "My contact"
 msgstr "Contatto"
 
@@ -1380,7 +1393,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2748
+#: inc/checkout-steps.php:2786
 msgid "Not selected yet."
 msgstr "Non ancora selezionato."
 
@@ -1389,7 +1402,7 @@ msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr "Nessuno."
 
-#: inc/checkout-steps.php:2804
+#: inc/checkout-steps.php:2843
 msgctxt "Notice for no order notes provided"
 msgid "None."
 msgstr "Nessuna."
@@ -1478,25 +1491,28 @@ msgstr ""
 msgid "Order status"
 msgstr "Stato dell'ordine"
 
-#: inc/checkout-steps.php:4050 inc/admin/admin-settings-cart.php:131
+#: inc/checkout-steps.php:4114 inc/admin/admin-settings-cart.php:131
 #: inc/admin/admin-settings-order-received.php:177
 #: inc/admin/admin-settings-checkout.php:238
 msgid "Order summary"
 msgstr "Riepilogo dell'ordine"
 
-#: inc/compat/themes/compat-theme-woodmart.php:79
+#: inc/compat/themes/compat-theme-woodmart.php:100
+#| msgid ""
+#| "Output the checkout steps section from the Woodmart theme when using "
+#| "Fluid Checkout header and footer"
 msgid ""
 "Output the checkout steps section from the Woodmart theme when using Fluid "
-"Checkout header and footer"
+"Checkout header and footer."
 msgstr ""
-"Genera la sezione dei passi di checkout dal tema Woodmart quando si "
-"utilizzano l'intestazione e il piè di pagina di Fluid Checkout"
+"Genera la sezione dei passaggi di pagamento dal tema Woodmart quando si "
+"utilizzano l'intestazione e il piè di pagina di Fluid Checkout."
 
 #: inc/admin/admin-settings-checkout.php:159
 msgid "Page background color"
 msgstr "Colore di sfondo della pagina"
 
-#: inc/checkout-steps.php:3846
+#: inc/checkout-steps.php:3893
 msgid "Payment method"
 msgstr "Modalità di pagamento"
 
@@ -1504,12 +1520,24 @@ msgstr "Modalità di pagamento"
 msgid "Pickup Date"
 msgstr "Data del ritiro"
 
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:231
+msgid "Pickup point"
+msgstr "Punto di prelievo"
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:313
+msgid "Pickup point not selected yet."
+msgstr "Punto di prelievo non ancora selezionato."
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:307
+msgid "Pickup point:"
+msgstr "Punto di raccolta:"
+
 #: inc/admin/admin-settings-checkout.php:294
 msgid "Place order"
 msgstr "Effettua l'ordine"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1299
+#: inc/checkout-steps.php:1301
 #, php-format
 msgid "Proceed to %s"
 msgstr "Procedere a %s"
@@ -1584,7 +1612,7 @@ msgstr ""
 msgid "Required"
 msgstr "Obbligatorio"
 
-#: inc/checkout-steps.php:3302
+#: inc/checkout-steps.php:3349
 msgid "Same as shipping address"
 msgstr "Uguale all'indirizzo di spedizione"
 
@@ -1644,6 +1672,10 @@ msgstr ""
 "La selezione di un punto di raccolta è necessaria quando si spedisce con "
 "FermoPoint."
 
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:126
+msgid "Selecting a pickup point is required before proceeding."
+msgstr "Prima di procedere è necessario selezionare un punto di prelievo."
+
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:174
 msgid "Sendinblue - WooCommerce Email Marketing"
 msgstr "Sendinblue - WooCommerce Email Marketing"
@@ -1692,7 +1724,7 @@ msgstr "Spedizione"
 msgid "Shipping address"
 msgstr "Indirizzo di spedizione"
 
-#: inc/checkout-steps.php:2314
+#: inc/checkout-steps.php:2318
 msgid "Shipping method"
 msgstr "Modalità di spedizione"
 
@@ -1705,7 +1737,7 @@ msgstr "Modalità di spedizione"
 msgid "Shipping phone"
 msgstr "Telefono di spedizione"
 
-#: inc/checkout-steps.php:2290
+#: inc/checkout-steps.php:2294
 msgid "Shipping to"
 msgstr "Spedizione"
 
@@ -1727,7 +1759,7 @@ msgstr "Mostra se non definito"
 msgid "Sign up checkbox position"
 msgstr "Posizione della casella di controllo per l'iscrizione"
 
-#: inc/checkout-steps.php:581
+#: inc/checkout-steps.php:583
 msgid "Single step"
 msgstr "Passo singolo"
 
@@ -1755,26 +1787,26 @@ msgid "Split"
 msgstr "Dividere"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1555
+#: inc/checkout-steps.php:1557
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Passo %1$s di %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2487
+#: inc/checkout-steps.php:2491
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2492
+#: inc/checkout-steps.php:2496
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:1906
+#: inc/checkout-steps.php:1908
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Nessuno."
@@ -1824,6 +1856,15 @@ msgstr "Il numero CNPJ \"{cnpj_number}\" non è valido."
 msgid "The CPF number \"{cpf_number}\" is invalid."
 msgstr "Il numero CPF \"{cpf_number}\" non è valido."
 
+#: inc/compat/themes/compat-theme-woodmart.php:110
+msgid ""
+"The options display product image, quantity field, remove button and link to "
+"product page added by the theme are disabled by default."
+msgstr ""
+"Le opzioni di visualizzazione dell'immagine del prodotto, del campo quantità,"
+" del pulsante di rimozione e del link alla pagina del prodotto aggiunte dal "
+"tema sono disattivate per impostazione predefinita."
+
 #: inc/admin/admin-settings-wc-shipping.php:50
 msgid ""
 "The shipping destination is always set to \"Default to customer shipping "
@@ -1843,9 +1884,13 @@ msgstr ""
 msgid "Theme Impreza"
 msgstr "Tema Impreza"
 
-#: inc/compat/themes/compat-theme-woodmart.php:72
+#: inc/compat/themes/compat-theme-woodmart.php:93
 msgid "Theme Woodmart"
 msgstr "Tema Woodmart"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:81
+msgid "Theme ZK Nito"
+msgstr "Tema ZK Nito"
 
 #: inc/admin/admin-settings-cart.php:201
 msgid "Theme's cross-sells layout"
