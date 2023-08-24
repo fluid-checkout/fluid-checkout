@@ -118,10 +118,18 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function change_default_locale_field_args( $fields ) {
-		$new_field_args = array(
-			'address_1' => array( 'class' => array( 'form-row-wide' ), 'description' => __( 'House number and street name', 'woocommerce' ) ),
-			'address_2' => array( 'class' => array( 'form-row-wide' ), 'label' => __( 'Apartment, unit, building, floor, etc.', 'fluid-checkout' ), 'placeholder' => __( 'Apartment, unit, building, floor, etc.', 'fluid-checkout' ) ),
-		);
+		$new_field_args = array();
+
+		// Maybe change address 1 field description
+		if ( true === apply_filters( 'fc_apply_address_1_field_description', true ) ) {
+			$new_field_args[ 'address_1' ] = array( 'class' => array( 'form-row-wide' ), 'description' => __( 'House number and street name', 'woocommerce' ), 'placeholder' => '' );
+		}
+
+		// Maybe change address 2 field description and place holder
+		if ( true === apply_filters( 'fc_apply_address_2_field_description', true ) ) {
+			$address_2_field_description = __( 'Apartment, unit, building, floor, etc.', 'fluid-checkout' );
+			$new_field_args[ 'address_2' ] = array( 'class' => array( 'form-row-wide' ), 'description' => $address_2_field_description, 'placeholder' => $address_2_field_description );
+		}
 
 		// Only apply class changes on checkout and account pages
 		if ( function_exists( 'is_checkout' ) && ( is_checkout() || is_account_page() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) ) {

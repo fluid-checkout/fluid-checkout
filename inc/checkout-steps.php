@@ -155,7 +155,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Payment
 		add_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_action( 'fc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
-		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
+		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html_remove_links' ), 10, 2 );
+		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html_fix_accessibility_attributes' ), 10, 2 );
 		add_filter( 'fc_substep_payment_method_text_lines', array( $this, 'add_substep_text_lines_payment_method' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_payment_method_text_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_suppress_payment_methods_fragment' ), 1000 );
@@ -374,7 +375,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Payment
 		remove_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'fc_output_step_payment', array( $this, 'output_substep_payment' ), 80 );
-		remove_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html' ), 10, 2 );
+		remove_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html_remove_links' ), 10, 2 );
+		remove_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html_fix_accessibility_attributes' ), 10, 2 );
 		remove_filter( 'fc_substep_payment_method_text_lines', array( $this, 'add_substep_text_lines_payment_method' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_payment_method_text_fragment' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_suppress_payment_methods_fragment' ), 1000 );
@@ -2170,7 +2172,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 				// Check field exists
 				if ( array_key_exists( $field_key, $fields ) ) {
 					// Check required fields
-					if ( array_key_exists( 'required', $fields[ $field_key ] ) && $fields[ $field_key ][ 'required' ] === true && ! WC()->checkout()->get_value( $field_key ) ) {
+					// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+					if ( array_key_exists( 'required', $fields[ $field_key ] ) && true == $fields[ $field_key ][ 'required' ] && ! WC()->checkout()->get_value( $field_key ) ) {
 						$is_step_complete = false;
 						break 2;
 					}
@@ -2183,7 +2186,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$account_fields = WC()->checkout()->get_checkout_fields( 'account' );
 			foreach ( $account_fields as $field_key => $field_args ) {
 				// Check required fields
-				if ( array_key_exists( 'required', $field_args ) && $field_args[ 'required' ] === true && ! WC()->checkout()->get_value( $field_key ) ) {
+				// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+				if ( array_key_exists( 'required', $field_args ) && true == $field_args[ 'required' ] && ! WC()->checkout()->get_value( $field_key ) ) {
 					$is_step_complete = false;
 					break;
 				}
@@ -2665,10 +2669,44 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$address_type . '_email',
 		) ) );
 
+		// Handle name fields as a single line
+		$name_field_keys = array(
+			$address_type . '_first_name',
+			$address_type . '_last_name',
+		);
+		$has_added_name_fields_as_single_line = false;
+
 		// Add extra fields lines
 		foreach ( $address_fields as $field_key => $field_args ) {
 			// Skip some fields
 			if ( in_array( $field_key, $field_keys_skip_list ) ) { continue; }
+
+			// Maybe skip other name fields if already added as a single line
+			if ( in_array( $field_key, $name_field_keys ) && $has_added_name_fields_as_single_line ) { continue; }
+
+			// Maybe add name fields as a single line, then skip to next field
+			if ( in_array( $field_key, $name_field_keys ) ) {
+				// Get value for all name fields
+				$name_field_values = array();
+				foreach ( $address_fields as $field_key_2 => $field_args_2 ) {
+					// Skip fields not in the name fields list
+					if ( ! in_array( $field_key_2, $name_field_keys ) ) { continue; }
+					
+					// Get field display value
+					$field_value = WC()->checkout->get_value( $field_key_2 );
+					$field_display_value = $this->get_field_display_value( $field_value, $field_key_2, $field_args_2 );
+
+					// Maybe add field
+					if ( ! empty( $field_display_value ) ) {
+						$name_field_values[] = $field_display_value;
+					}
+				}
+				
+				// Add name fields as a single line
+				$review_text_lines[] = implode( ' ', $name_field_values );
+				$has_added_name_fields_as_single_line = true;
+				continue;
+			}
 			
 			// Get field display value
 			$field_value = WC()->checkout->get_value( $field_key );
@@ -2746,6 +2784,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
+			$chosen_method_label = apply_filters( 'fc_shipping_method_substep_text_chosen_method_label', $chosen_method_label, $method );
 
 			// TODO: Maybe handle multiple packages
 			// $package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
@@ -2864,7 +2903,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 				// Skip checking some fields
 				if ( in_array( $field_key, $step_complete_field_keys_skip_list ) ) { continue; }
 
-				if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( WC()->checkout()->get_value( $field_key ) ) ) {
+				// Check required fields
+				// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+				if ( array_key_exists( 'required', $field ) && true == $field[ 'required' ] && empty( WC()->checkout()->get_value( $field_key ) ) ) {
 					$is_substep_complete = false;
 					break;
 				}
@@ -3035,7 +3076,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_cart_shipping_methods_label( $method ) {
 		$label     = sprintf( apply_filters( 'fc_shipping_method_option_label_markup', '<span class="shipping-method__option-text">%s</span>', $method ), $method->get_label() );
-		$has_cost  = 0 < $method->cost;
+		$has_cost  = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
 		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
 
 		// Maybe add shipping method description
@@ -3058,6 +3099,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 			}
 
+			// Filter method costs
+			$method_costs = apply_filters( 'fc_shipping_method_option_price', $method_costs, $method );
+
+			// Add shipping method costs to label
 			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>', $method ), $method_costs );
 		}
 
@@ -3285,7 +3330,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Skip checking some fields
 			if ( in_array( $field_key, $step_complete_field_keys_skip_list ) ) { continue; }
 
-			if ( array_key_exists( 'required', $field ) && $field[ 'required' ] === true && empty( WC()->checkout()->get_value( $field_key ) ) ) {
+			// Check required fields
+			// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+			if ( array_key_exists( 'required', $field ) && true == $field[ 'required' ] && empty( WC()->checkout()->get_value( $field_key ) ) ) {
 				$is_step_complete = false;
 				break;
 			}
@@ -3900,8 +3947,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Get gateway
 			$gateway = $available_gateways[ $chosen_method_key ];
 
+			// Get icon html
+			// This avoids breaking update checkout AJAX calls when
+			// the payment method plugin outputs HTML out of place while trying to get the icon.
+			ob_start();
+			echo $gateway->get_icon(); // WPCS: XSS ok.
+			$icon_html = ob_get_clean();
+
 			// Get review text line
-			$payment_method_review_text = '<span class="payment-method-icon">' . $gateway->get_icon() . '</span>' . '<span class="payment-method-title">' . $gateway->get_title() . '</span>';
+			$payment_method_review_text = '<span class="payment-method-icon">' . $icon_html /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ . '</span>' . '<span class="payment-method-title">' . $gateway->get_title() /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ . '</span>';
 			$payment_method_review_text = apply_filters( 'fc_payment_method_review_text_' . $chosen_method_key, $payment_method_review_text, $gateway );
 
 			// Add review text line
@@ -3959,15 +4013,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Remove links and fix accessibility attributes for payment method icons.
+	 * Remove link elements from payment method icons.
 	 */
-	public function change_payment_gateway_icon_html( $icon, $id = null ) {
+	public function change_payment_gateway_icon_html_remove_links( $icon, $id = null ) {
 		// Bail if icon html is empty
 		if ( empty( $icon ) ) { return $icon; }
 
 		// Remove links from the icon html
 		$pattern = '/(<a [^<]*)([^<]*)(<\/a>)/';
 		$icon = preg_replace( $pattern, '$2', $icon );
+
+		return $icon;
+	}
+
+	/**
+	 * Fix accessibility attributes for payment method icons.
+	 */
+	public function change_payment_gateway_icon_html_fix_accessibility_attributes( $icon, $id = null ) {
+		// Bail if icon html is empty
+		if ( empty( $icon ) ) { return $icon; }
 
 		// Fix accessibility attributes
 		$pattern = '/( alt="[^<]*")/';

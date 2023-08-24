@@ -3,7 +3,7 @@ Contributors: fluidwebco, diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.2.2
+Tested up to: 6.3
 Stable tag: 3.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -387,6 +387,24 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Bump tested up to WordPress 6.3 and WooCommerce 8.0.2
+* Added: Compatibility with theme ZK Nito.
+* Added: Compatibility with plugin Tilopay.
+* Added: Compatibility with plugin Hungarian Pickup Points & Shipping Labels for WooCommerce (by Viszt Péter).
+* Improved: Compatibility with theme Woodmart. Disable theme checkout options by default.
+* Improved: Avoid triggering payment method field validation when updating checkout fragments.
+* Improved: Handle name fields as a single line for displaying on the substep review text.
+* Improved: Added filter hooks `fc_apply_address_1_field_description` and `fc_apply_address_2_field_description` to stop changing the address fields description and placeholder.
+* Improved: Handle new custom arguments `optional_expand_link_label` and `optional_expand_link_lowercase` for checkout fields array to customize how optional field "+ Add <field>" links are displayed.
+* Fixed: PHP warnings when setting shipping address from the shipping calculator on the cart page.
+* Fixed: Show password toggle buttons on popup login form not working.
+* Fixed: Compasiron for checkout fields `required` attribute to accept type casting of non-boolean values.
+* Fixed: Compatibility with plugin Checkout Field Editor PRO by ThemeHigh causing checkout process to validate conditional fields as required when fields are not available.
+* Fixed: Remove validation icon from coupon field.
+* Fixed: Force show coupon code related messages on some edge cases.
 
 = 3.0.1 - 2023-08-04 =
 

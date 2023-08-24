@@ -540,7 +540,7 @@ $order-summary-image-box-shadow:                 $box-shadow-offset-x--small $bo
 
 $order-summary-quantity-transform:               translateX( -100% ) translateY( -25% ) !default;
 $order-summary-quantity-background-color:        var( --fluidcheckout--order-summary--quantity-background-color, $dark-grey ) !default;
-$order-summary-quantity-text-color:              var( --fluidcheckout--order-summary--quantity-background-color, $white ) !default;
+$order-summary-quantity-text-color:              var( --fluidcheckout--order-summary--quantity-text-color, $white ) !default;
 $order-summary-quantity-font-size:               $font-size-extra-small !default;
 
 $order-summary-font-size:                        $font-size-small !default;

@@ -1,0 +1,11 @@
+// ------------------------------------
+// ACCESSIBILITY
+// ------------------------------------
+
+%screen-reader-text-styles {
+	clip: rect( 1px, 1px, 1px, 1px ) !important; // Needed to make sure other style rules won't affect accessibility
+	position: absolute !important; // Needed to make sure other style rules won't affect accessibility
+	height: 1px !important; // Needed to make sure other style rules won't affect accessibility
+	width: 1px !important; // Needed to make sure other style rules won't affect accessibility
+	overflow: hidden !important; // Needed to make sure other style rules won't affect accessibility
+}

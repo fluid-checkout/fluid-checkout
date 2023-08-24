@@ -46,7 +46,7 @@
 
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-edit,
 .has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-save {
-	display: none;
+	display: none !important; // Needed to override theme styles set with `!important`
 }
 
 
@@ -269,8 +269,8 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 	text-align: center;
 
 	&:focus {
-		outline: $focus-outline-button;
-		outline-offset: $focus-outline-offset-button;
+		outline: $focus-outline-button !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-button !important; // Needed to override theme styles
 	}
 }
 
@@ -300,8 +300,8 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-substep-action-button-font-size--large-screen; }
 
 	&:focus {
-		outline: $focus-outline-link;
-		outline-offset: $focus-outline-offset-link;
+		outline: $focus-outline-link !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-link !important; // Needed to override theme styles
 	}
 }
 
@@ -312,8 +312,8 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 	text-align: center !important; // Needed to override theme styles
 
 	&:focus {
-		outline: $focus-outline-button;
-		outline-offset: $focus-outline-offset-button;
+		outline: $focus-outline-button !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-button !important; // Needed to override theme styles
 	}
 }
 

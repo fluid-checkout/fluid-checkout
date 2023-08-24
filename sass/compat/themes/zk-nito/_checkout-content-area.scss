@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT CONTENT
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-content > .ef3-gtb-block.wp-block-shortcode,
+body#{ $_body-theme-selector } .fc-content > .ef3-gtb-block.wp-block- { // Target the element on the cart page
+	max-width: none;
+}

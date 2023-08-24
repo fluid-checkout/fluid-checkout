@@ -34,8 +34,29 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		// Template files
 		add_filter( 'fc_override_template_with_theme_file', array( $this, 'override_template_with_theme_file' ), 10, 4 );
 
+		// Theme options
+		add_action( 'wp', array( $this, 'init_theme_options_hooks' ), 150 );
+
 		// Free shipping bar
 		add_action( 'wp', array( $this, 'init_free_shipping_bar_hooks' ), 150 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_add_free_shipping_bar_fragment' ), 10 );
+	}
+
+	/**
+	 * Initialize theme options hooks.
+	 */
+	public function init_theme_options_hooks() {
+		// Bail if theme functions and classes are not available
+		if ( ! class_exists( 'XTS\Modules\Checkout_Order_Table' ) ) { return; }
+
+		// Check whether to disable theme checkout options
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_woodmart_disable_theme_checkout_options' ) || true === apply_filters( 'fc_compat_theme_woodmart_disable_theme_checkout_options', false ) ) {
+			// Get theme class instances
+			$checkout_module_instance = XTS\Modules\Checkout_Order_Table::get_instance();
+
+			// Checkout cart items template
+			remove_action( 'woocommerce_review_order_before_cart_contents', array( $checkout_module_instance, 'checkout_table_content_replacement' ) );
+		}
 	}
 
 	/**
@@ -76,10 +97,20 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 
 			array(
 				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
-				'desc'            => __( 'Output the checkout steps section from the Woodmart theme when using Fluid Checkout header and footer', 'fluid-checkout' ),
+				'desc'            => __( 'Output the checkout steps section from the Woodmart theme when using Fluid Checkout header and footer.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/compat-theme-woodmart/' ),
 				'id'              => 'fc_compat_theme_woodmart_output_checkout_steps_section',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_woodmart_output_checkout_steps_section' ),
+				'autoload'        => false,
+			),
+
+			array(
+				'title'           => __( 'Checkout options', 'fluid-checkout' ),
+				'desc'            => __( 'Disable the theme checkout options', 'fluid-checkout' ),
+				'desc_tip'        => __( 'The options display product image, quantity field, remove button and link to product page added by the theme are disabled by default.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/compat-theme-woodmart/' ),
+				'id'              => 'fc_compat_theme_woodmart_disable_theme_checkout_options',
+				'type'            => 'checkbox',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_woodmart_disable_theme_checkout_options' ),
 				'autoload'        => false,
 			),
 
@@ -164,6 +195,33 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+
+
+	/**
+	 * Maybe add free shipping bar a checkout fragment.
+	 *
+	 * @param   array  $fragments  Checkout fragments.
+	 */
+	public function maybe_add_free_shipping_bar_fragment( $fragments ) {
+		// Bail if theme functions and classes are not available
+		if ( ! function_exists( 'woodmart_get_opt' ) || ! class_exists( 'XTS\Modules\Shipping_Progress_Bar\Main' ) || ! class_exists( 'XTS\Modules\Layouts\Main' ) ) { return $fragments; }
+
+		// Get theme class instances
+		$free_shipping_bar_instance = XTS\Modules\Shipping_Progress_Bar\Main::get_instance();
+		$builder_instance = XTS\Modules\Layouts\Main::get_instance();
+
+		// Bail if shipping bar is disabled for the checkout page
+		if ( ! woodmart_get_opt( 'shipping_progress_bar_location_checkout' ) ) { return $fragments; }
+
+		// Get HTML for the free shipping bar
+		ob_start();
+		$free_shipping_bar_instance->render_shipping_progress_bar_with_wrapper();
+		$html = ob_get_clean();
+
+		$fragments['.wd-shipping-progress-bar'] = $html;
+		return $fragments;
 	}
 
 }

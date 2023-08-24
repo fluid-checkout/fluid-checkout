@@ -76,6 +76,8 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 
 .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox input[type="checkbox"] {
 	top: 0;
+	margin-#{ $alignment-left }: 0;
+	margin-#{ $alignment-right }: $global-spacing-tiny;
 }
 
 
@@ -127,8 +129,8 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 	float: none;
 
 	&:focus {
-		outline: $focus-outline-button;
-		outline-offset: $focus-outline-offset-button;
+		outline: $focus-outline-button !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-button !important; // Needed to override theme styles
 	}
 }
 .fc-wrapper .fc-place-order .fc-place-order-button:disabled {

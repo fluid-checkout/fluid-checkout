@@ -66,11 +66,7 @@
 
 
 .fc-checkout-header .fc-checkout__title.screen-reader-text {
-	clip: rect( 1px, 1px, 1px, 1px );
-	position: absolute !important; // Needed to make sure other style rules won't affect accessibility
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
+	@extend %screen-reader-text-styles;
 }
 
 .fc-checkout-header .fc-checkout__site-name {
@@ -139,8 +135,8 @@
 	}
 
 	&:focus {
-		outline: $focus-outline-link;
-		outline-offset: $focus-outline-offset-link;
+		outline: $focus-outline-link !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-link !important; // Needed to override theme styles
 	}
 }
 .fc-checkout-header .fc-checkout__cart-link:before {
