@@ -388,6 +388,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Compatibility with plugin TI WooCommerce Wishlist Premium.
+
 = 3.0.2 - 2023-08-24 =
 
 * Bump tested up to WordPress 6.3 and WooCommerce 8.0.2
