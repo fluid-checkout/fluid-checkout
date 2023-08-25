@@ -13,14 +13,14 @@ body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply 
 }
 
 body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
-  border-color: var(--fluidcheckout--button--primary--border-color, #000) !important;
-  background-color: var(--fluidcheckout--button--primary--background-color, #000) !important;
-  color: var(--fluidcheckout--button--primary--text-color, #fff) !important;
+  border-color: var(--fluidcheckout--button--primary--border-color, var(--fluidcheckout--color--black, #000)) !important;
+  background-color: var(--fluidcheckout--button--primary--background-color, var(--fluidcheckout--color--black, #000)) !important;
+  color: var(--fluidcheckout--button--primary--text-color, var(--fluidcheckout--color--white, #fff)) !important;
 }
 body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply:hover, body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply:focus, body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply:active {
-  border-color: var(--fluidcheckout--button--primary--border-color--hover, #1E212B) !important;
-  background-color: var(--fluidcheckout--button--primary--background-color--hover, #1E212B) !important;
-  color: var(--fluidcheckout--button--primary--text-color--hover, #fff) !important;
+  border-color: var(--fluidcheckout--button--primary--border-color--hover, var(--fluidcheckout--color--darker-grey, #1E212B)) !important;
+  background-color: var(--fluidcheckout--button--primary--background-color--hover, var(--fluidcheckout--color--darker-grey, #1E212B)) !important;
+  color: var(--fluidcheckout--button--primary--text-color--hover, var(--fluidcheckout--color--white, #fff)) !important;
 }
 
 :root {

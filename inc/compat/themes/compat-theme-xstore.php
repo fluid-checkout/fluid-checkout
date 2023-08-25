@@ -28,6 +28,9 @@ class FluidCheckout_ThemeCompat_XStore extends FluidCheckout {
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
+		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 	}
 
 
@@ -58,6 +61,23 @@ class FluidCheckout_ThemeCompat_XStore extends FluidCheckout {
 	public function add_css_variables( $css_variables ) {
 		// Add CSS variables
 		$new_css_variables = array(
+			// Buttons
+			':root body' => array(
+				'--fluidcheckout--button--primary--border-color' => 'var( --et_btn-dark-br-color )',
+				'--fluidcheckout--button--primary--background-color' => 'var( --et_btn-dark-bg-color )',
+				'--fluidcheckout--button--primary--text-color' => 'var( --et_btn-dark-color )',
+				'--fluidcheckout--button--primary--border-color--hover' => 'var( --et_btn-dark-br-color-hover )',
+				'--fluidcheckout--button--primary--background-color--hover' => 'var( --et_btn-dark-bg-color-hover )',
+				'--fluidcheckout--button--primary--text-color--hover' => 'var( --et_btn-dark-color-hover )',
+
+				'--fluidcheckout--button--secondary--border-color' => 'var( --et_btn-br-color )',
+				'--fluidcheckout--button--secondary--background-color' => 'var( --et_btn-bg-color )',
+				'--fluidcheckout--button--secondary--text-color' => 'var( --et_btn-color )',
+				'--fluidcheckout--button--secondary--border-color--hover' => 'var( --et_btn-br-color-hover )',
+				'--fluidcheckout--button--secondary--background-color--hover' => 'var( --et_btn-bg-color-hover )',
+				'--fluidcheckout--button--secondary--text-color--hover' => 'var( --et_btn-color-hover )',
+			),
+
 			// Dark mode
 			':root body[data-mode="dark"]' => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
 		);
