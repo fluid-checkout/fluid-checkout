@@ -13,14 +13,14 @@ body.has-fc-button-styles .woocommerce-address-fields button[type=submit] {
 }
 
 body.has-fc-button-colors .woocommerce-address-fields button[type=submit] {
-  border-color: var(--fluidcheckout--button--primary--border-color, #000) !important;
-  background-color: var(--fluidcheckout--button--primary--background-color, #000) !important;
-  color: var(--fluidcheckout--button--primary--text-color, #fff) !important;
+  border-color: var(--fluidcheckout--button--primary--border-color, var(--fluidcheckout--color--black, #000)) !important;
+  background-color: var(--fluidcheckout--button--primary--background-color, var(--fluidcheckout--color--black, #000)) !important;
+  color: var(--fluidcheckout--button--primary--text-color, var(--fluidcheckout--color--white, #fff)) !important;
 }
 body.has-fc-button-colors .woocommerce-address-fields button[type=submit]:hover, body.has-fc-button-colors .woocommerce-address-fields button[type=submit]:focus, body.has-fc-button-colors .woocommerce-address-fields button[type=submit]:active {
-  border-color: var(--fluidcheckout--button--primary--border-color--hover, #1E212B) !important;
-  background-color: var(--fluidcheckout--button--primary--background-color--hover, #1E212B) !important;
-  color: var(--fluidcheckout--button--primary--text-color--hover, #fff) !important;
+  border-color: var(--fluidcheckout--button--primary--border-color--hover, var(--fluidcheckout--color--darker-grey, #1E212B)) !important;
+  background-color: var(--fluidcheckout--button--primary--background-color--hover, var(--fluidcheckout--color--darker-grey, #1E212B)) !important;
+  color: var(--fluidcheckout--button--primary--text-color--hover, var(--fluidcheckout--color--white, #fff)) !important;
 }
 
 .fc-clearfix:before,

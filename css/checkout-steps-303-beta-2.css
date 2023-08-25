@@ -809,11 +809,13 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 }
 
 .shipping-method__option input[type=radio] {
-  position: absolute;
-  display: block;
+  position: absolute !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
   width: 1px;
   height: 1px;
-  opacity: 0;
+  opacity: 0 !important;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label {
