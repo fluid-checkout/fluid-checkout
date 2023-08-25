@@ -1896,16 +1896,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the substep review text notice for when there is no review text.
+	 */
+	public function get_no_substep_review_text_notice( $substep_id ) {
+		return apply_filters( 'fc_no_substep_review_text_notice', _x( 'None.', 'Substep review text', 'fluid-checkout' ), $substep_id );
+	}
+
+	/**
 	 * Get the substep review text.
 	 */
 	public function get_substep_review_text( $substep_id ) {
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--' . $substep_id . '">';
 
+		// Get substep review text lines
 		$review_text_lines = apply_filters( "fc_substep_{$substep_id}_text_lines", array() );
 
 		// Maybe add notice for empty substep text
 		if ( ! is_array( $review_text_lines ) || count ( $review_text_lines ) == 0 ) {
-			$review_text_lines[] = apply_filters( 'fc_no_substep_review_text_notice', _x( 'None.', 'Substep review text', 'fluid-checkout' ) );
+			$review_text_lines[] = $this->get_no_substep_review_text_notice( $substep_id );
 		}
 
 		// Add each review text line to the output html
@@ -2840,7 +2848,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 		// "No order notes" notice.
 		else {
-			$review_text_lines[] = apply_filters( 'fc_no_order_notes_order_review_notice', _x( 'None.', 'Notice for no order notes provided', 'fluid-checkout' ) );
+			$review_text_lines[] = apply_filters( 'fc_no_order_notes_order_review_notice', $this->get_no_substep_review_text_notice( 'order_notes' ) );
 		}
 
 		return $review_text_lines;
