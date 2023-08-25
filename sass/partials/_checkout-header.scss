@@ -89,8 +89,8 @@
 .fc-checkout-header .fc-checkout__branding img {
 	max-height: remsize( 4.6rem );
 	max-width: remsize( 13rem );
-	width: 100%;
 	object-fit: contain;
+	object-position: $alignment-left;
 
 	@media (#{$bp-larger-than-mobile}) { max-width: remsize( 18rem ); } // Larger mobile devices
 	@media (#{$bp-larger-than-tablet}) { max-width: remsize( 20rem ); }
