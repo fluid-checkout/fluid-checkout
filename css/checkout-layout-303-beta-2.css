@@ -502,9 +502,10 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
 .fc-checkout-header .fc-checkout__branding img {
   max-height: 46px;
   max-width: 130px;
-  width: 100%;
   -o-object-fit: contain;
   object-fit: contain;
+  -o-object-position: left;
+  object-position: left;
 }
 @media (min-width: 400px) {
   .fc-checkout-header .fc-checkout__branding img {

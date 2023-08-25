@@ -393,6 +393,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin TI WooCommerce Wishlist Premium.
 * Improved: Added text "(optional)" to the create account checkbox label when registration is not required.
 * Improved: Pass `$substep_id` parameters to the filter `fc_no_substep_review_text_notice` so developers can change it for specific substeps.
+* Fixed: Missing SVG logo when using distraction free checkout header.
 
 = 3.0.2 - 2023-08-24 =
 
