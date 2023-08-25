@@ -49,11 +49,13 @@
 
 // Hide default radio elements with opacity to allow for keyboard navigation
 .shipping-method__option input[type="radio"] {
-	position: absolute;
-	display: block;
+	position: absolute !important; // Needed to override theme styles
+	display: block !important; // Needed to override theme styles
+	margin: 0 !important; // Needed to override theme styles
+	padding: 0 !important; // Needed to override theme styles
 	width: 1px; // Needs to be 1px to hide element visually but still allow for keyboard navigation
 	height: 1px; // Needs to be 1px to hide element visually but still allow for keyboard navigation
-	opacity: 0;
+	opacity: 0 !important; // Needed to override theme styles
 }
 
 
