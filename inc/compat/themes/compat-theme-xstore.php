@@ -2,9 +2,9 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with theme: Xstore (By 8theme).
+ * Compatibility with theme: XStore (By 8theme).
  */
-class FluidCheckout_ThemeCompat_Xstore extends FluidCheckout {
+class FluidCheckout_ThemeCompat_XStore extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -43,4 +43,4 @@ class FluidCheckout_ThemeCompat_Xstore extends FluidCheckout {
 
 }
 
-FluidCheckout_ThemeCompat_Xstore::instance();
+FluidCheckout_ThemeCompat_XStore::instance();
