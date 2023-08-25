@@ -23,4 +23,5 @@ $_body-theme-selector:                 '.theme-xstore' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-content-area",
 	"woocommerce-form-fields-select2";

@@ -19,9 +19,50 @@ class FluidCheckout_ThemeCompat_XStore extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Body attributes
+		add_filter( 'fc_checkout_body_custom_attributes', array( $this, 'add_body_attributes' ), 10 );
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false' );
 		add_filter( 'fc_content_section_class', array( $this, 'add_content_section_class' ), 10 );
+
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+	}
+
+
+
+	/**
+	 * Add custom attributes to the body element.
+	 *
+	 * @param  array  $custom_attributes   Body attributes.
+	 */
+	public function add_body_attributes( $custom_attributes ) {
+		// Bail if theme function is not available
+		if ( ! function_exists( 'etheme_get_option' ) ) { return $custom_attributes; }
+
+		// Add dark/light mode attribute
+		$mode = etheme_get_option( 'dark_styles', 0 ) ? 'dark' : 'light'; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited valid use case
+		$custom_attributes[ 'data-mode' ] = $mode;
+
+		return $custom_attributes;
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Add CSS variables
+		$new_css_variables = array(
+			// Dark mode
+			':root body[data-mode="dark"]' => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 

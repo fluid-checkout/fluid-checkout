@@ -1,0 +1,7 @@
+// ------------------------------------
+// CART CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } {
+	background-color: var( --et_container-bg-color, transparent );
+}
