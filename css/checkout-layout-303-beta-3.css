@@ -126,6 +126,12 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:foc
   outline-offset: 1px !important;
 }
 
+@media (min-width: 750px) {
+  div.woocommerce .form-row:not(.fc-expansible-form-section) + .fc-expansible-form-section.form-row.form-row-last .expansible-section__toggle-plus {
+    margin-top: calc(20px + ( var(--fluidcheckout--field--height, 45.625px) / 3 ));
+  }
+}
+
 div.woocommerce .fc-expansible-form-section.form-row .form-row {
   margin: 0;
   padding: 0;
