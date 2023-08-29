@@ -127,6 +127,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			// Compatibility settings for themes.
 			'fc_compat_theme_impreza_header_spacing'                        => null,
 			'fc_compat_theme_zk_nito_display_field_labels'                  => 'no',
+			'fc_compat_theme_zk_nito_add_extra_fields'                      => 'no',
 			'fc_compat_theme_woodmart_output_checkout_steps_section'        => 'no',
 			'fc_compat_theme_woodmart_disable_theme_checkout_options'       => 'yes',
 
