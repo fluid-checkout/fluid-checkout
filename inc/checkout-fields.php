@@ -171,10 +171,6 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		else if( 'required' === $field_visibility ) {
 			$fields[ 'shipping_company' ][ 'required' ] = true;
 		}
-		// Maybe set as optional
-		else if( 'optional' === $field_visibility ) {
-			$fields[ 'shipping_company' ][ 'required' ] = false;
-		}
 
 		return $fields;
 	}

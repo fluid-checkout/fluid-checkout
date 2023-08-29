@@ -491,6 +491,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					array(
 						'title'             => __( 'Shipping company', 'fluid-checkout' ),
 						'desc'              => __( 'Change visibility for the shipping company field on the checkout form.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'If field is set as optional, which is the default visibility state, no changes will be applied to let other plugins apply any changes they need.', 'fluid-checkout' ),
 						'id'                => 'fc_shipping_company_field_visibility',
 						'type'              => 'select',
 						'options'           => array(
