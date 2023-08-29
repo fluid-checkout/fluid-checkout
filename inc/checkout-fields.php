@@ -25,6 +25,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		// Checkout fields args
 		add_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_args' ), 100 );
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 100 );
+		add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_change_shipping_company_field_args' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'change_order_field_args' ), 100 );
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 100 );
 
@@ -143,6 +144,32 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		foreach( $fields as $field_key => $original_args ) {
 			$new_args = array_key_exists( $field_key, $new_field_args ) ? $new_field_args[ $field_key ] : array();
 			$fields[ $field_key ] = $this->merge_form_field_args( $original_args, $new_args );
+		}
+
+		return $fields;
+	}
+
+
+
+	/**
+	 * Maybe change shipping company field arguments to make it required, optional or remove the field.
+	 *
+	 * @param   array  $fields  Fields used in checkout.
+	 */
+	public function maybe_change_shipping_company_field_args( $fields ) {
+		// Bail if shipping company field is not available
+		if ( ! array_key_exists( 'shipping_company', $fields ) ) { return $fields; }
+
+		// Get field visibility option value
+		$field_visibility = FluidCheckout_Settings::instance()->get_option( 'fc_shipping_company_field_visibility' );
+
+		// Maybe remove the field
+		if ( 'no' === $field_visibility ) {
+			unset( $fields[ 'shipping_company' ] );
+		}
+		// Maybe set as required
+		else if( 'required' === $field_visibility ) {
+			$fields[ 'shipping_company' ][ 'required' ] = true;
 		}
 
 		return $fields;

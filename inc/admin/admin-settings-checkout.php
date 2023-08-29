@@ -487,6 +487,21 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_default_to_billing_same_as_shipping' ),
 						'autoload'          => false,
 					),
+
+					array(
+						'title'             => __( 'Shipping company', 'fluid-checkout' ),
+						'desc'              => __( 'Change visibility for the shipping company field on the checkout form.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'If field is set as "optional", which is the default visibility state, no changes will be applied to let other plugins apply any changes they need.', 'fluid-checkout' ),
+						'id'                => 'fc_shipping_company_field_visibility',
+						'type'              => 'select',
+						'options'           => array(
+							'no'            => __( 'Hidden (remove field)', 'fluid-checkout' ),
+							'optional'      => __( 'Optional', 'fluid-checkout' ),
+							'required'      => __( 'Required', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_company_field_visibility' ),
+						'autoload'          => false,
+					),
 						
 					array(
 						'title'             => __( 'Shipping phone', 'fluid-checkout' ),
