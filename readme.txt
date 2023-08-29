@@ -390,6 +390,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: New option to set visibility for the Shipping Company field as Required, Optional or Hidden (removed).
 * Added: Compatibility with theme XStore.
 * Added: Compatibility with plugin TI WooCommerce Wishlist Premium.
 * Improved: Compatibility with theme ZK Nito: add integration option to enable/disable extra shipping email and phone fields added by the theme.
