@@ -41,7 +41,7 @@ class FluidCheckout_ThemeCompat_ZKNito extends FluidCheckout {
 		remove_filter( 'woocommerce_checkout_fields', 'zk_nito_shipping_order_fields', 10 );
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_zk_nito_display_field_labels' ) ) {
 			remove_filter( 'woocommerce_checkout_fields', 'zk_nito_override_checkout_fields', 10 );
-			add_filter( 'woocommerce_checkout_fields', array( $this, 'add_extra_checkout_fields' ), 10 );
+			add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_add_extra_checkout_fields' ), 10 );
 		}
 	}
 
@@ -89,6 +89,15 @@ class FluidCheckout_ThemeCompat_ZKNito extends FluidCheckout {
 				'id'              => 'fc_compat_theme_zk_nito_display_field_labels',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_zk_nito_display_field_labels' ),
+				'autoload'        => false,
+			),
+
+			array(
+				'desc'            => __( 'Add extra fields to the checkout form', 'fluid-checkout' ),
+				'desc_tip'        => __( 'Adds an extra shipping email and shipping phone field to the shipping address section.', 'fluid-checkout' ),
+				'id'              => 'fc_compat_theme_zk_nito_add_extra_fields',
+				'type'            => 'checkbox',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_zk_nito_add_extra_fields' ),
 				'autoload'        => false,
 			),
 
@@ -254,23 +263,28 @@ class FluidCheckout_ThemeCompat_ZKNito extends FluidCheckout {
 	/**
 	 * Add extra checkout fields which were originaly added by the theme.
 	 */
-	public function add_extra_checkout_fields( $fields ) {
-		// COPIED FROM ZK NITO THEME
-		/* Add Email/ Phone on Shipping fields*/
-		$fields['shipping']['shipping_email'] = array(
-			'label'         => esc_html__( 'Email Address', 'zk-nito' ),
-			'placeholder'   => _x( 'Email Address', 'placeholder', 'zk-nito' ),
-			'required'      => false,
-			'class'         => array( 'form-row-first' ),
-			'clear'         => false
-		);
-		$fields['shipping']['shipping_phone'] = array(
+	public function maybe_add_extra_checkout_fields( $fields ) {
+		// Bail if option to add extra fields from theme integration is not enabled
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_zk_nito_add_extra_fields' ) ) { return $fields; }
+
+		// ADAPTED FROM ZK NITO THEME
+		/* Add Email/ Phone on Shipping fields */
+		$fields['shipping_phone'] = array(
 			'label'         => esc_html__( 'Phone', 'zk-nito' ),
 			'placeholder'   => _x( 'Phone', 'placeholder', 'zk-nito' ),
 			'required'      => false,
-			'class'         => array( 'form-row-last' ),
+			'class'         => array( 'form-row-first' ),
 			'clear'         => true,
-			'order'		 => '6'
+			'priority'      => 20,
+		);
+
+		$fields['shipping_email'] = array(
+			'label'         => esc_html__( 'Email Address', 'zk-nito' ),
+			'placeholder'   => _x( 'Email Address', 'placeholder', 'zk-nito' ),
+			'required'      => false,
+			'class'         => array( 'form-row-last' ),
+			'clear'         => false,
+			'priority'      => 25,
 		);
 
 		return $fields;
