@@ -570,17 +570,17 @@ class FluidCheckout {
 	 * Get user location on ip geolocation
 	 */
 	public function get_user_geo_location() {
-		// Get user location
-		if ( class_exists( 'WC_Geolocation' ) ) {
-			$geo      = new WC_Geolocation(); // Get WC_Geolocation instance object
-			$user_ip  = $geo->get_ip_address(); // Get user IP
-			$user_geo = $geo->geolocate_ip( $user_ip ); // Get geolocated user data.
-			$user_geo['country_name'] = array_key_exists( 'country', $user_geo ) && $user_geo['country'] != '' ? WC()->countries->countries[ $user_geo['country'] ] : '';
+		// Bail if geolocation class not available
+		if ( ! class_exists( 'WC_Geolocation' ) ) { return false; }
+		
+		// Get user location information
+		$geo      = new WC_Geolocation(); // Get WC_Geolocation instance object
+		$user_ip  = $geo->get_ip_address(); // Get user IP
+		$user_geo = $geo->geolocate_ip( $user_ip ); // Get geolocated user data.
+		$user_geo['country_name'] = array_key_exists( 'country', $user_geo ) && $user_geo['country'] != '' ? WC()->countries->countries[ $user_geo['country'] ] : '';
+		$user_geo['ip'] = $user_ip;
 
-			return $user_geo;
-		}
-
-		return false;
+		return $user_geo;
 	}
 
 
