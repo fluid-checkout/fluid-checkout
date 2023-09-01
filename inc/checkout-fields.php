@@ -234,6 +234,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function add_field_has_description_class_checkout_fields_args( $fields ) {
+		// Bail if fields are not available
+		if ( ! is_array( $fields ) ) { return $fields; }
+
 		foreach( $fields as $field_key => $field_args ) {
 			// Bail if field does not have description
 			if ( ! array_key_exists( 'description', $fields[ $field_key ] ) ) { continue; }
@@ -312,8 +315,13 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function change_checkout_field_args( $fields ) {
+		// Bail if fields are not available
+		if ( ! is_array( $fields ) ) { return $fields; }
+
+		// Get new field args
 		$new_field_args = $this->get_checkout_field_args();
 
+		// Merge new field args into the original field args
 		foreach( $fields as $field_key => $original_args ) {
 			$new_args = array_key_exists( $field_key, $new_field_args ) ? $new_field_args[ $field_key ] : array();
 			$fields[ $field_key ] = $this->merge_form_field_args( $original_args, $new_args );
