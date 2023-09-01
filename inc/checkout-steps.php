@@ -142,6 +142,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
 
+		// Shipping Same as Billing
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
+		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
+
 		// Billing phone
 		// Maybe move billing phone to contact step
 		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
@@ -3380,7 +3384,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		?>
 		<input type="hidden" name="billing_same_as_shipping_previous" id="billing_same_as_shipping_previous" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
 		<?php
-
 	}
 
 
@@ -3728,6 +3731,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $billing_only_field_keys;
 	}
 
+
+
 	/**
 	 * Maybe set billing address fields values to same as shipping address from the posted data.
 	 *
@@ -3819,7 +3824,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Set addresses session values when processing an order (place order).
+	 * Maybe set billing address session values to same as shipping when processing an order (place order).
 	 *
 	 * @param array $post_data Post data for all checkout fields.
 	 */
@@ -3843,6 +3848,82 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Update billing field values
 			$post_data[ $field_key ] = isset( $post_data[ $shipping_field_key ] ) ? $post_data[ $shipping_field_key ] : null;
+		}
+
+		return $post_data;
+	}
+
+
+
+	/**
+	 * Maybe set shipping address fields values to same as billing address from the posted data.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_fix_shipping_address_when_shipping_not_needed( $posted_data ) {
+		// Bail if cart needs shipping address
+		if ( WC()->cart->needs_shipping_address() ) { return $posted_data; }
+
+		// Get list of shipping fields to copy from billing fields
+		$shipping_copy_billing_field_keys = array(
+			'shipping_country',
+			'shipping_state',
+			'shipping_postcode',
+			'shipping_city',
+			'shipping_address_1',
+			'shipping_address_2',
+		);
+
+		// Get list of posted data keys
+		$posted_data_field_keys = array_keys( $posted_data );
+
+		// Iterate posted data
+		foreach( $shipping_copy_billing_field_keys as $field_key ) {
+
+			// Get related field keys
+			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+
+			// Update shipping field values
+			if ( in_array( $billing_field_key, $posted_data_field_keys ) ) {
+				// Copy field value from billing fields, maybe set field as empty if not found in billing fields
+				$new_field_value = isset( $posted_data[ $billing_field_key ] ) ? $posted_data[ $billing_field_key ] : '';
+
+				// Update post data
+				$posted_data[ $field_key ] = $new_field_value;
+				$_POST[ $field_key ] = $new_field_value;
+			}
+
+		}
+
+		return $posted_data;
+	}
+
+	/**
+	 * Maybe set shipping address session values to same as billing when processing an order (place order).
+	 *
+	 * @param array $post_data Post data for all checkout fields.
+	 */
+	public function maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout( $post_data ) {
+		// Bail if cart needs shipping address
+		if ( WC()->cart->needs_shipping_address() ) { return $post_data; }
+
+		// Get list of shipping fields to copy from billing fields
+		$shipping_copy_billing_field_keys = array(
+			'shipping_country',
+			'shipping_state',
+			'shipping_postcode',
+			'shipping_city',
+			'shipping_address_1',
+			'shipping_address_2',
+		);
+
+		// Iterate posted data
+		foreach( $shipping_copy_billing_field_keys as $field_key ) {
+			// Get shipping field key
+			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+
+			// Update shipping field values
+			$post_data[ $field_key ] = isset( $post_data[ $billing_field_key ] ) ? $post_data[ $billing_field_key ] : null;
 		}
 
 		return $post_data;
