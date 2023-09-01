@@ -399,6 +399,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Pass `$substep_id` parameters to the filter `fc_no_substep_review_text_notice` so developers can change it for specific substeps.
 * Improved: Position for expansible optional fields when displayed as a second column with class `form-row-last`.
 * Fixed: Missing SVG logo when using distraction free checkout header.
+* Fixed: Wrong address used for tax calculatation in rare cases when shipping address was different than billing, but only billing address was required for the current cart items.
 
 = 3.0.2 - 2023-08-24 =
 
