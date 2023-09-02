@@ -28,8 +28,8 @@
 		formSelector:                            'form.checkout',
 		formRowSelector:                         '.form-row, .shipping-method__package',
 		inputWrapperSelector:                    '.woocommerce-input-wrapper, .form-row',
-		validateFieldsSelector:                  '.input-text, select, .shipping-method__options',
-		referenceNodeSelector:                   '.input-text, select, .shipping-method__options', // Usually same as `validateFieldsSelector`
+		validateFieldsSelector:                  '.input-text, select, input-checkbox, .shipping-method__options',
+		referenceNodeSelector:                   '.input-text, select, input-checkbox, .shipping-method__options', // Usually same as `validateFieldsSelector`
 		clearValidationCountryChangedSelector:   '#state, #shipping_state, #billing_state',
 		alwaysValidateFieldsSelector:            '',
 		select2Selector:                         '.select2, .select2-hidden-accessible',
@@ -121,6 +121,12 @@
 			if ( newReference ) { referenceNode = newReference; }
 		}
 
+		// Change reference field for checkbox
+		if ( isCheckboxField( field ) ) {
+			var newReference = field.closest( _settings.inputWrapperSelector );
+			if ( newReference ) { referenceNode = newReference.lastChild; }
+		}
+
 		// Create message element and add it after the field.
 		var parent = referenceNode.parentNode;
 		var element = document.createElement( 'span' );
@@ -155,8 +161,6 @@
 		return false;
 	};
 
-
-
 	/**
 	 * Check if field is a select field.
 	 * @param  {Element}  field  Field to check.
@@ -164,6 +168,16 @@
 	 */
 	var isSelectField = function( field ) {
 		if ( field.matches( 'select' ) ) { return true; }
+		return false;
+	};
+
+	/**
+	 * Check if field is a checkbox field.
+	 * @param  {Element}  field  Field to check.
+	 * @return {Boolean}         True if is a checkbox field.
+	 */
+	var isCheckboxField = function( field ) {
+		if ( field.matches( 'input[type="checkbox"]' ) ) { return true; }
 		return false;
 	};
 
@@ -175,7 +189,7 @@
 	 * @return {Boolean}        True if field has value.
 	 */
 	_publicMethods.hasValue = function( field ) {
-		// Check for select 2 field
+		// Check for select fields
 		if ( isSelectField( field ) ) {
 			if ( field.options && field.selectedIndex > -1 && field.options[ field.selectedIndex ].value != '' ) {
 				return true;
@@ -183,6 +197,11 @@
 			else {
 				return false;
 			}
+		}
+
+		// Check for checkbox fields
+		if ( isCheckboxField( field ) ) {
+			return field.checked;
 		}
 
 		// Check for all other fields

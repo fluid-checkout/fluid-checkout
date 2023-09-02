@@ -394,6 +394,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme XStore.
 * Added: Compatibility with plugin TI WooCommerce Wishlist Premium.
 * Added: Compatibility with plugin Storefront Powerpack.
+* Improved: Added inline validation for required checkboxes.
 * Improved: Compatibility with theme ZK Nito: add integration option to enable/disable extra shipping email and phone fields added by the theme.
 * Improved: Added text "(optional)" to the create account checkbox label when registration is not required.
 * Improved: Pass `$substep_id` parameters to the filter `fc_no_substep_review_text_notice` so developers can change it for specific substeps.
