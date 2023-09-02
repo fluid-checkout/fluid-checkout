@@ -4733,7 +4733,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Other fields
-		$other_fields_keys = array( 'createaccount' );
+		$other_fields_keys = apply_filters( 'fc_parsed_posted_data_reset_field_keys', array( 'createaccount' ), $posted_data );
 		foreach ( $other_fields_keys as $field_key ) {
 			if ( ! in_array( $field_key, array_keys( $posted_data ) ) ) {
 				$this->set_checkout_field_value_to_session( $field_key, '' );
