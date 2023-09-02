@@ -4841,6 +4841,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function change_default_checkout_field_value_from_session_or_posted_data( $value, $input ) {
 
+		// Maybe return field from persistent storage
+		$value_from_persistent_storage = $this->get_checkout_field_value_from_session_or_posted_data( $input );
+		if ( null !== $value_from_persistent_storage ) {
+			return $value_from_persistent_storage;
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Get checkout field value from posted data or from the persisted fields session.
+	 *
+	 * @param   mixed    $value   Value of the field.
+	 * @param   string   $input   Checkout field key (ie. order_comments ).
+	 */
+	public function get_checkout_field_value_from_session_or_posted_data( $input ) {
 		// Maybe return field value from posted data
 		$posted_data = $this->get_parsed_posted_data();
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && array_key_exists( $input, $posted_data ) ) {
@@ -4854,7 +4870,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $field_session_value;
 		}
 
-		return $value;
+		return null;
 	}
 
 	/**
