@@ -211,7 +211,8 @@ $z-layers: (
 
 $icon-font-name:                 'fluid-checkout-icons' !default;
 
-$icon-size-extra-small:          remsize( 1rem ) !default;
+$icon-size-tiny:                 remsize( 1rem ) !default;
+$icon-size-extra-small:          remsize( 1.3rem ) !default;
 $icon-size-small:                remsize( 1.8rem ) !default;
 $icon-size:                      remsize( 2.4rem ) !default;
 $icon-size-medium:               remsize( 3rem ) !default;
