@@ -14,6 +14,12 @@
 
 
 
+.woocommerce .shipping-method__package-name {
+	margin-bottom: $global-spacing-extra-small;
+}
+
+
+
 #shipping_method.shipping-method__options {
 	list-style-type: none;
 	margin: 0;
@@ -42,7 +48,7 @@
 	line-height: 1.6;
 }
 .woocommerce ul#shipping_method li.shipping-method__option:first-of-type {
-	margin-top: 0;
+	margin-top: 0 !important; // Needed to override theme styles
 }
 
 
@@ -162,6 +168,12 @@
 	display: block;
 	width: 100%;
 	font-size: $font-size-extra-small;
+}
+
+
+
+.woocommerce .woocommerce-shipping-contents {
+	margin: $global-spacing-tiny 0;
 }
 
 

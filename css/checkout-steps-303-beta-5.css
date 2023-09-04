@@ -780,6 +780,10 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
   padding: var(--fluidcheckout--option-box--spacing--vertical, 10px) var(--fluidcheckout--option-box--spacing--horizontal, 10px);
 }
 
+.woocommerce .shipping-method__package-name {
+  margin-bottom: 10px;
+}
+
 #shipping_method.shipping-method__options {
   list-style-type: none;
   margin: 0;
@@ -805,7 +809,7 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 }
 
 .woocommerce ul#shipping_method li.shipping-method__option:first-of-type {
-  margin-top: 0;
+  margin-top: 0 !important;
 }
 
 .shipping-method__option input[type=radio] {
@@ -924,6 +928,10 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
   display: block;
   width: 100%;
   font-size: 13px;
+}
+
+.woocommerce .woocommerce-shipping-contents {
+  margin: 5px 0;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
