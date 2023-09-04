@@ -22,7 +22,7 @@ class FluidCheckout_CaptchaPro extends FluidCheckout {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
-		// Admin settings
+		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10, 2 );
 	}
 
