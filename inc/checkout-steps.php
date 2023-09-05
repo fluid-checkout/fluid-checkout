@@ -2817,10 +2817,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$has_multiple_packages = count( $packages ) > 1;
 
 		// Determine allowed kses attributes and tags
-		$allowed_kses_attributes = array( 'span' => array( 'class' => true ), 'bdi' => array(), 'strong' => array() );
+		$allowed_kses_attributes = array( 'span' => array( 'class' => true ), 'bdi' => array(), 'strong' => array(), 'br' => array() );
 
 		// Iterate shipping packages
 		foreach ( $packages as $i => $package ) {
+			$package_review_text_lines = array();
+
+			// Get shipping method info
 			$available_methods = $package['rates'];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
@@ -2831,11 +2834,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			if ( $has_multiple_packages && $this->is_shipping_package_name_display_enabled() ) {
 				$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
 				$package_name = '<strong>' . $package_name . '</strong>';
-				$review_text_lines[] = wp_kses( $package_name, $allowed_kses_attributes );
+				$package_review_text_lines[] = wp_kses( $package_name, $allowed_kses_attributes );
 			}
 
 			// Add chosen shipping method line
-			$review_text_lines[] = wp_kses( $chosen_method_label, $allowed_kses_attributes );
+			$package_review_text_lines[] = wp_kses( $chosen_method_label, $allowed_kses_attributes );
 
 			// Handle package destination
 			if ( $has_multiple_packages && $this->is_shipping_package_contents_destination_text_lines_enabled() ) {
@@ -2849,7 +2852,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Add package destination line
 				if ( ! empty( $destination_text ) ) {
-					$review_text_lines[] = wp_kses( $destination_text, $allowed_kses_attributes );
+					$package_review_text_lines[] = wp_kses( $destination_text, $allowed_kses_attributes );
 				}
 			}
 	
@@ -2867,8 +2870,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 				$contents = '<span class="fc-step__substep-text-line--small-text">' . $contents . '</span>';
 
 				// Add package contents line
-				$review_text_lines[] = wp_kses( $contents, $allowed_kses_attributes );
+				$package_review_text_lines[] = wp_kses( $contents, $allowed_kses_attributes );
+
 			}
+
+			// Filter review text lines for the shipping package
+			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines', $package_review_text_lines, $package, $chosen_method, $method );
+
+			// Add package review text lines
+			$review_text_lines = array_merge( $review_text_lines, $package_review_text_lines );
 		}
 
 		return $review_text_lines;
