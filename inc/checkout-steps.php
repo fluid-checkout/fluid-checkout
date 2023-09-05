@@ -2781,6 +2781,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Determine if shipping package names should be displayed.
+	 */
+	public function is_shipping_package_name_display_enabled() {
+		return apply_filters( 'fc_shipping_method_display_package_name', false );
+	}
+
+	/**
+	 * Determine if shipping package contents should be displayed on substep review text.
+	 */
+	public function is_shipping_package_contents_substep_text_lines_enabled() {
+		return apply_filters( 'fc_shipping_method_display_package_content_substep_text_lines', true );
+	}
+
+	/**
+	 * Determine if shipping package destination should be displayed on substep review text.
+	 */
+	public function is_shipping_package_contents_destination_text_lines_enabled() {
+		return apply_filters( 'fc_shipping_method_display_package_destination_substep_text_lines', true );
+	}
+
+	/**
 	 * Add the shipping methods substep review text lines.
 	 * 
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
@@ -2789,8 +2810,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
+		// Get shipping packages
 		$packages = WC()->shipping()->get_packages();
 
+		// Determine if has multiple packages
+		$has_multiple_packages = count( $packages ) > 1;
+
+		// Determine allowed kses attributes and tags
+		$allowed_kses_attributes = array( 'span' => array( 'class' => true ), 'bdi' => array(), 'strong' => array() );
+
+		// Iterate shipping packages
 		foreach ( $packages as $i => $package ) {
 			$available_methods = $package['rates'];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
@@ -2798,10 +2827,48 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
 			$chosen_method_label = apply_filters( 'fc_shipping_method_substep_text_chosen_method_label', $chosen_method_label, $method );
 
-			// TODO: Maybe handle multiple packages
-			// $package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
+			// Handle package name
+			if ( $has_multiple_packages && $this->is_shipping_package_name_display_enabled() ) {
+				$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
+				$package_name = '<strong>' . $package_name . '</strong>';
+				$review_text_lines[] = wp_kses( $package_name, $allowed_kses_attributes );
+			}
 
-			$review_text_lines[] = wp_kses( $chosen_method_label, array( 'span' => array( 'class' => '' ), 'bdi' => array(), 'strong' => array() ) );
+			// Add chosen shipping method line
+			$review_text_lines[] = wp_kses( $chosen_method_label, $allowed_kses_attributes );
+
+			// Handle package destination
+			if ( $has_multiple_packages && $this->is_shipping_package_contents_destination_text_lines_enabled() ) {
+				// Get package destination
+				$destination = array_key_exists( 'destination', $package ) && ! empty( $package[ 'destination' ] ) ? $package[ 'destination' ] : array();
+				$destination = apply_filters( 'fc_shipping_method_substep_text_package_destination_data', $destination, $package, $chosen_method, $method );
+
+				// Get formatted destination text
+				$destination_text = WC()->countries->get_formatted_address( $destination, ', ' );
+				$destination_text = apply_filters( 'fc_shipping_method_substep_text_package_destination_text', $destination_text, $package, $chosen_method, $method );
+
+				// Add package destination line
+				if ( ! empty( $destination_text ) ) {
+					$review_text_lines[] = wp_kses( $destination_text, $allowed_kses_attributes );
+				}
+			}
+	
+			// Handle package contents
+			if ( $has_multiple_packages && $this->is_shipping_package_contents_substep_text_lines_enabled() ) {
+				// Get shipping package contents
+				$contents = '';
+				foreach ( $package[ 'contents' ] as $item_id => $values ) {
+					$contents .= $values[ 'quantity' ] . ' × ' . $values[ 'data' ]->get_name() . ', ';
+				}
+				// Remove extra comma at the end
+				$contents = trim( rtrim( $contents, ', ' ) );
+
+				// Wrap contents in a `span` tag for small text
+				$contents = '<span class="fc-step__substep-text-line--small-text">' . $contents . '</span>';
+
+				// Add package contents line
+				$review_text_lines[] = wp_kses( $contents, $allowed_kses_attributes );
+			}
 		}
 
 		return $review_text_lines;

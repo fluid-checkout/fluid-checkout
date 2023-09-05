@@ -401,6 +401,10 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   text-align: right;
 }
 
+.has-checkout-layout--multi-step .fc-step__substep-text-line .fc-step__substep-text-line--small-text {
+  font-size: 80%;
+}
+
 .has-checkout-layout--multi-step .fc-step__actions {
   padding: 20px 20px;
   padding-top: 20px;

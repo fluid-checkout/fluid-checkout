@@ -23,7 +23,7 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 	<?php if ( is_checkout() || ( FluidCheckout_Steps::instance()->is_cart_page_or_fragment() && WC()->cart->show_shipping() ) ) : ?>
 
 		<?php // CHANGE: Conditionally add the shipping package name ?>
-		<?php if ( true === apply_filters( 'fc_shipping_method_display_package_name', false ) ) : ?>
+		<?php if ( FluidCheckout_Steps::instance()->is_shipping_package_name_display_enabled() ) : ?>
 			<p class="shipping-method__package-name"><?php echo esc_html( $package_name ); ?></p>
 		<?php endif; ?>
 
