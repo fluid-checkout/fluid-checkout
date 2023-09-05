@@ -24,6 +24,12 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 
 
 
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields div.shipping_address {
+	display: block !important; // Needed to override other plugin/theme styles
+}
+
+
+
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields,
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
 	margin: 0;
