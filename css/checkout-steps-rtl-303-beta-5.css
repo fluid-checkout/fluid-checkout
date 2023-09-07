@@ -1602,6 +1602,11 @@ div.woocommerce form .form-row textarea {
   min-height: 100px;
 }
 
+div.woocommerce form span.select2-container {
+  width: 100% !important;
+  max-width: 100%;
+}
+
 div.woocommerce form .form-row span.select2-container {
   height: auto;
 }
