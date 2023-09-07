@@ -2844,17 +2844,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 			if ( $has_multiple_packages && $this->is_shipping_package_contents_destination_text_lines_enabled() ) {
 				// Get package destination
 				$destination = array_key_exists( 'destination', $package ) && ! empty( $package[ 'destination' ] ) ? $package[ 'destination' ] : array();
-				$destination = apply_filters( 'fc_shipping_method_substep_text_package_destination_data', $destination, $package, $chosen_method, $method );
+				$destination = apply_filters( 'fc_shipping_method_substep_text_package_destination_data', $destination, $i, $package, $chosen_method, $method );
 
 				// Get formatted destination text
 				$destination_text = WC()->countries->get_formatted_address( $destination, ', ' );
-				$destination_text = apply_filters( 'fc_shipping_method_substep_text_package_destination_text', $destination_text, $package, $chosen_method, $method );
+				$destination_text = apply_filters( 'fc_shipping_method_substep_text_package_destination_text', $destination_text, $i, $package, $chosen_method, $method );
 
 				// Add package destination line
 				if ( ! empty( $destination_text ) ) {
 					$package_review_text_lines[] = wp_kses( $destination_text, $allowed_kses_attributes );
 				}
 			}
+
+			// Filter review text lines for the shipping package before adding the package contents
+			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines_before_contents', $package_review_text_lines, $i, $package, $chosen_method, $method );
 	
 			// Handle package contents
 			if ( $has_multiple_packages && $this->is_shipping_package_contents_substep_text_lines_enabled() ) {
@@ -2875,7 +2878,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			// Filter review text lines for the shipping package
-			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines', $package_review_text_lines, $package, $chosen_method, $method );
+			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines', $package_review_text_lines, $i, $package, $chosen_method, $method );
 
 			// Add package review text lines
 			$review_text_lines = array_merge( $review_text_lines, $package_review_text_lines );
