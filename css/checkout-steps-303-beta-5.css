@@ -797,6 +797,10 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
   overflow: hidden;
 }
 
+.woocommerce .fc-shipping-method__packages {
+  text-align: left;
+}
+
 .woocommerce .fc-shipping-method__packages ul#shipping_method {
   float: none;
   display: block;
