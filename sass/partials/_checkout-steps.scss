@@ -244,6 +244,10 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 	text-align: $alignment-left;
 }
 
+.has-checkout-layout--multi-step .fc-step__substep-text-line .fc-step__substep-text-line--small-text {
+	font-size: 80%;
+}
+
 
 
 

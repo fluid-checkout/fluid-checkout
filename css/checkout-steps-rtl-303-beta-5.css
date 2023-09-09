@@ -401,6 +401,10 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   text-align: right;
 }
 
+.has-checkout-layout--multi-step .fc-step__substep-text-line .fc-step__substep-text-line--small-text {
+  font-size: 80%;
+}
+
 .has-checkout-layout--multi-step .fc-step__actions {
   padding: 20px 20px;
   padding-top: 20px;
@@ -739,6 +743,10 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
   color: inherit;
 }
 
+.woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields div.shipping_address {
+  display: block !important;
+}
+
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields,
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
   margin: 0;
@@ -789,6 +797,10 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
   overflow: hidden;
 }
 
+.woocommerce .fc-shipping-method__packages {
+  text-align: right;
+}
+
 .woocommerce .fc-shipping-method__packages ul#shipping_method {
   float: none;
   display: block;
@@ -805,7 +817,7 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 }
 
 .woocommerce ul#shipping_method li.shipping-method__option:first-of-type {
-  margin-top: 0;
+  margin-top: 0 !important;
 }
 
 .shipping-method__option input[type=radio] {
@@ -926,6 +938,10 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
   font-size: 13px;
 }
 
+.woocommerce .woocommerce-shipping-contents {
+  margin: 5px 0;
+}
+
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
   position: absolute;
   display: flex;
@@ -952,6 +968,22 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .tax_label {
   display: block;
+}
+
+.woocommerce .shipping-method__package {
+  margin-top: 20px;
+}
+
+.woocommerce .shipping-method__package:first-of-type {
+  margin-top: 0;
+}
+
+.woocommerce .shipping-method__package-name {
+  margin-bottom: 10px;
+}
+
+.woocommerce .fc-wrapper .shipping-method__option-label .woocommerce-shipping-contents {
+  line-height: 1.1 !important;
 }
 
 .fc-wrapper .fc-payment-methods__wrapper {
@@ -1568,6 +1600,11 @@ div.woocommerce form .form-row .select2-container {
 }
 div.woocommerce form .form-row textarea {
   min-height: 100px;
+}
+
+div.woocommerce form span.select2-container {
+  width: 100% !important;
+  max-width: 100%;
 }
 
 div.woocommerce form .form-row span.select2-container {

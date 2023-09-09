@@ -2,8 +2,15 @@
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
+div.woocommerce form span.select2-container {
+	width: 100% !important; // Prevents select2 from overflowing the available space
+	max-width: 100%; // Prevents select2 from overflowing the available space
+}
+
+
+
 div.woocommerce form .form-row span.select2-container {
-    height: auto;
+	height: auto;
 }
 
 
