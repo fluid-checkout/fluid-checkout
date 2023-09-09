@@ -268,11 +268,6 @@ class FluidCheckout_Validation extends FluidCheckout {
 			}
 		}
 
-		// Maybe add `valid` classes
-		if ( true == $field_valid ) {
-			// $args['class'] = array_merge( $args['class'], array( 'woocommerce-validated' ) );
-		}
-
 		return $args;
 	}
 
