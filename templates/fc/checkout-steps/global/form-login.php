@@ -13,7 +13,7 @@
  * @see         https://docs.woocommerce.com/document/template-structure/
  * @package     WooCommerce\Templates
  * @version     7.0.1
- * @fc-version  2.0.9
+ * @fc-version  3.0.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -25,7 +25,8 @@ if ( is_user_logged_in() ) {
 }
 
 // CHANGE: Define unique id for the login inputs
-$unique_id = uniqid();
+$unique_id = '_' . uniqid();
+$unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 
 ?>
 <form class="woocommerce-form woocommerce-form-login login" method="post" <?php echo ( $hidden ) ? 'style="display:none;"' : ''; ?>>
@@ -37,14 +38,14 @@ $unique_id = uniqid();
 	<?php // CHANGE: Form row class to `form-row-wide` ?>
 	<p class="form-row form-row-wide">
 		<?php // CHANGE: Add unique id to the fields label and input element ?>
-		<label for="username<?php echo '_' . esc_attr( $unique_id ); ?>"><?php esc_html_e( 'Username or email', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-		<input type="text" class="input-text" name="username" id="username<?php echo '_' . esc_attr( $unique_id ); ?>" autocomplete="username" />
+		<label for="username<?php echo esc_attr( $unique_id ); ?>"><?php esc_html_e( 'Username or email', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+		<input type="text" class="input-text" name="username" id="username<?php echo esc_attr( $unique_id ); ?>" autocomplete="username" />
 	</p>
     <?php // CHANGE: Form row class to `form-row-wide` ?>
 	<p class="form-row form-row-wide">
 		<?php // CHANGE: Add unique id to the fields label and input element ?>
-		<label for="password<?php echo '_' . esc_attr( $unique_id ); ?>"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-		<input class="input-text woocommerce-Input" type="password" name="password" id="password<?php echo '_' . esc_attr( $unique_id ); ?>" autocomplete="current-password" />
+		<label for="password<?php echo esc_attr( $unique_id ); ?>"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+		<input class="input-text woocommerce-Input" type="password" name="password" id="password<?php echo esc_attr( $unique_id ); ?>" autocomplete="current-password" />
 	</p>
 	<div class="clear"></div>
 
@@ -53,7 +54,7 @@ $unique_id = uniqid();
 	<p class="form-row">
 		<label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
 			<?php // CHANGE: Add unique id to the fields label and input element ?>
-			<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme<?php echo '_' . esc_attr( $unique_id ); ?>" value="forever" /> <span><?php esc_html_e( 'Remember me', 'woocommerce' ); ?></span>
+			<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme<?php echo esc_attr( $unique_id ); ?>" value="forever" /> <span><?php esc_html_e( 'Remember me', 'woocommerce' ); ?></span>
 		</label>
 	</p>
 
