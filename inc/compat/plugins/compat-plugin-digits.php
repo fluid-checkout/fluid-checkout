@@ -20,7 +20,7 @@ class FluidCheckout_Digits extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Login form
-		add_filter( 'fc_checkout_login_fields_unique_id', '__return_empty', 10 );
+		add_filter( 'fc_checkout_login_fields_unique_id', '__return_empty_string', 10 );
 	}
 
 }
