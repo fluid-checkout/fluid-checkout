@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Compatibility with plugin: Digits (by UnitedOver).
  */
-class FluidCheckout_Ditigs extends FluidCheckout {
+class FluidCheckout_Digits extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -25,4 +25,4 @@ class FluidCheckout_Ditigs extends FluidCheckout {
 
 }
 
-FluidCheckout_Ditigs::instance();
+FluidCheckout_Digits::instance();
