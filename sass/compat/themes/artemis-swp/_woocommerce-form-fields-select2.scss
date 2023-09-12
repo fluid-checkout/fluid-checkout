@@ -1,0 +1,10 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection__rendered {
+	border-bottom: solid 1px #e1e1e1 !important; // Needed to override the theme styles, needs to use `px` to match theme unit
+}
+body#{ $_body-theme-selector }.has-fc-dark-mode div.woocommerce form .form-row .select2-selection__rendered {
+	border-color: #4c4c4c !important; // Needed to override the theme styles
+}
