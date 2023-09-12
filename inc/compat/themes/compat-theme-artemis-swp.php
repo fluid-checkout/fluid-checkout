@@ -27,6 +27,9 @@ class FluidCheckout_ThemeCompat_ArtemisSWP extends FluidCheckout {
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
+		// Dark mode
+		add_filter( 'fc_enable_dark_mode_styles', array( $this, 'maybe_set_is_dark_mode' ), 10 );
+
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 
@@ -65,6 +68,27 @@ class FluidCheckout_ThemeCompat_ArtemisSWP extends FluidCheckout {
 		$attributes['data-sticky-relative-to'] = '.lc_sticky_menu';
 
 		return $attributes;
+	}
+
+
+
+	/**
+	 * Maybe set dark mode enabled.
+	 * 
+	 * @param  array  $is_dark_mode  Whether it is dark mode or not.
+	 */
+	public function maybe_set_is_dark_mode( $is_dark_mode ) {
+		// Bail if theme functions and classes are not available
+		if ( ! function_exists( 'artemis_swp_get_default_color_scheme' ) ) { return $is_dark_mode; }
+
+		// Get dark mode option from theme
+		$theme_color_scheme = artemis_swp_get_default_color_scheme();
+
+		// Bail if not using the dark mode
+		if ( 'white_on_black' !== $theme_color_scheme ) { return $is_dark_mode; }
+
+		$is_dark_mode = true;
+		return $is_dark_mode;
 	}
 
 }
