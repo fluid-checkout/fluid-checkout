@@ -27,6 +27,9 @@ class FluidCheckout_ThemeCompat_ArtemisSWP extends FluidCheckout {
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
+		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+
 		// Payment methods
 		remove_action( 'woocommerce_review_order_before_payment', 'artemis_swp_woocommerce_review_order_before_payment', 10 );
 
