@@ -391,10 +391,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: New option to set visibility for the Shipping Company field as Required, Optional or Hidden (removed).
-* Added: Compatibility with theme XStore.
 * Added: Compatibility with theme Artemis.
-* Added: Compatibility with plugin TI WooCommerce Wishlist Premium.
+* Added: Compatibility with theme XStore.
 * Added: Compatibility with plugin Storefront Powerpack.
+* Added: Compatibility with plugin TI WooCommerce Wishlist Premium.
 * Added: Partial compatibility with plugin Digits OTP, because changes to Digits plugin are needed for full compatibility.
 * Improved: Compatibility with theme ZK Nito: add integration option to enable/disable extra shipping email and phone fields added by the theme.
 * Improved: Compatibility with theme Riode: fix container class when using the theme header.
