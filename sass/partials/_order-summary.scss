@@ -217,6 +217,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
 	float: $alignment-left;
+	position: static;
 	padding-#{ $alignment-left }: $global-spacing-small;
 	width: calc( 100% - $order-summary-image-width );
 

@@ -1888,6 +1888,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
   float: left;
+  position: static;
   padding-left: 20px;
   width: calc(100% - var(--fluidcheckout--order-summary--image-width, 50px));
 }
