@@ -397,6 +397,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin Storefront Powerpack.
 * Added: Partial compatibility with plugin Digits OTP, because changes to Digits plugin are needed for full compatibility.
 * Improved: Compatibility with theme ZK Nito: add integration option to enable/disable extra shipping email and phone fields added by the theme.
+* Improved: Compatibility with theme Riode: fix container class when using the theme header.
 * Improved: Added inline validation for required checkboxes.
 * Improved: Added text "(optional)" to the create account checkbox label when registration is not required.
 * Improved: Display shipping package name, contents and destination on shipping method substep review text when order has multiple shipping packages.
