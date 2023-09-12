@@ -25,8 +25,8 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false' );
 
-		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		// Dark mode
+		add_filter( 'fc_enable_dark_mode_styles', array( $this, 'maybe_set_is_dark_mode' ), 10 );
 
 		// Header elements
 		add_action( 'fc_checkout_header', array( $this, 'maybe_output_woodmart_checkout_steps_section' ), 20 );
@@ -175,26 +175,22 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 
 
 	/**
-	 * Add CSS variables.
+	 * Maybe set dark mode enabled.
 	 * 
-	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 * @param  array  $is_dark_mode  Whether it is dark mode or not.
 	 */
-	public function add_css_variables( $css_variables ) {
+	public function maybe_set_is_dark_mode( $is_dark_mode ) {
 		// Bail if theme functions and classes are not available
-		if ( ! function_exists( 'woodmart_get_opt' ) ) { return $css_variables; }
+		if ( ! function_exists( 'woodmart_get_opt' ) ) { return $is_dark_mode; }
 
 		// Get dark mode option from theme
 		$dark = woodmart_get_opt( 'dark_version' );
 
 		// Bail if not using the dark mode
-		if ( ! $dark ) { return $css_variables; }
+		if ( ! $dark ) { return $is_dark_mode; }
 
-		// Add CSS variables
-		$new_css_variables = array(
-			':root' => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
-		);
-
-		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+		$is_dark_mode = true;
+		return $is_dark_mode;
 	}
 
 
