@@ -209,6 +209,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
+		remove_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
 
 		// Place order position
 		$place_order_position = $this->get_place_order_position();
