@@ -2,6 +2,10 @@
   --fluidcheckout--field--height: 50px;
 }
 
+body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-step__substep-title {
+  letter-spacing: 3px;
+}
+
 body.theme-artemis-swp div.woocommerce form .form-row .select2-selection__rendered {
   border-bottom: solid 1px #e1e1e1 !important;
 }
