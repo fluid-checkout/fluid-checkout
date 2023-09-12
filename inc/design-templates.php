@@ -67,7 +67,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		);
 
 		// Add dark mode class
-		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_dark_mode_styles' ) ) {
+		if ( $this->is_dark_mode_enabled() ) {
 			$add_classes[] = 'has-fc-dark-mode';
 		}
 
@@ -126,6 +126,15 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function get_allowed_design_templates() {
 		return array_keys( $this->get_design_template_options() );
+	}
+
+
+
+	/**
+	 * Check whether dark mode color scheme is enabled for the page.
+	 */
+	public function is_dark_mode_enabled() {
+		return true === apply_filters( 'fc_enable_dark_mode_styles', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_dark_mode_styles' ) );
 	}
 
 
@@ -294,7 +303,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function maybe_add_css_variables_dark_mode( $css_variables ) {
 		// Bail if dark mode is not enabled
-		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_dark_mode_styles' ) ) { return $css_variables; }
+		if ( ! $this->is_dark_mode_enabled() ) { return $css_variables; }
 
 		return array_merge( $css_variables, array( ':root' => $this->get_css_variables_dark_mode() ) );
 	}
