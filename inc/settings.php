@@ -66,6 +66,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_show_shipping_section_highlighted'                          => 'yes',
 			'fc_show_billing_section_highlighted'                           => 'yes',
 			'fc_default_to_billing_same_as_shipping'                        => 'yes',
+			'fc_shipping_company_field_visibility'                          => 'optional',
 			'fc_shipping_phone_field_visibility'                            => 'no',
 			'fc_shipping_phone_field_position'                              => 'shipping_address',
 			'woocommerce_checkout_phone_field'                              => 'required',
@@ -127,6 +128,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			// Compatibility settings for themes.
 			'fc_compat_theme_impreza_header_spacing'                        => null,
 			'fc_compat_theme_zk_nito_display_field_labels'                  => 'no',
+			'fc_compat_theme_zk_nito_add_extra_fields'                      => 'no',
 			'fc_compat_theme_woodmart_output_checkout_steps_section'        => 'no',
 			'fc_compat_theme_woodmart_disable_theme_checkout_options'       => 'yes',
 

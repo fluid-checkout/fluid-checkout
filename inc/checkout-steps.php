@@ -142,6 +142,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
 
+		// Shipping Same as Billing
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
+		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
+
 		// Billing phone
 		// Maybe move billing phone to contact step
 		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
@@ -205,6 +209,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
+		remove_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
 
 		// Place order position
 		$place_order_position = $this->get_place_order_position();
@@ -1896,16 +1901,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the substep review text notice for when there is no review text.
+	 */
+	public function get_no_substep_review_text_notice( $substep_id ) {
+		return apply_filters( 'fc_no_substep_review_text_notice', _x( 'None.', 'Substep review text', 'fluid-checkout' ), $substep_id );
+	}
+
+	/**
 	 * Get the substep review text.
 	 */
 	public function get_substep_review_text( $substep_id ) {
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--' . $substep_id . '">';
 
+		// Get substep review text lines
 		$review_text_lines = apply_filters( "fc_substep_{$substep_id}_text_lines", array() );
 
 		// Maybe add notice for empty substep text
 		if ( ! is_array( $review_text_lines ) || count ( $review_text_lines ) == 0 ) {
-			$review_text_lines[] = apply_filters( 'fc_no_substep_review_text_notice', _x( 'None.', 'Substep review text', 'fluid-checkout' ) );
+			$review_text_lines[] = $this->get_no_substep_review_text_notice( $substep_id );
 		}
 
 		// Add each review text line to the output html
@@ -2769,6 +2782,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Determine if shipping package names should be displayed.
+	 */
+	public function is_shipping_package_name_display_enabled() {
+		return apply_filters( 'fc_shipping_method_display_package_name', false );
+	}
+
+	/**
+	 * Determine if shipping package contents should be displayed on substep review text.
+	 */
+	public function is_shipping_package_contents_substep_text_lines_enabled() {
+		return apply_filters( 'fc_shipping_method_display_package_content_substep_text_lines', true );
+	}
+
+	/**
+	 * Determine if shipping package destination should be displayed on substep review text.
+	 */
+	public function is_shipping_package_contents_destination_text_lines_enabled() {
+		return apply_filters( 'fc_shipping_method_display_package_destination_substep_text_lines', true );
+	}
+
+	/**
 	 * Add the shipping methods substep review text lines.
 	 * 
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
@@ -2777,19 +2811,78 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
+		// Get shipping packages
 		$packages = WC()->shipping()->get_packages();
 
+		// Determine if has multiple packages
+		$has_multiple_packages = count( $packages ) > 1;
+
+		// Determine allowed kses attributes and tags
+		$allowed_kses_attributes = array( 'span' => array( 'class' => true ), 'bdi' => array(), 'strong' => array(), 'br' => array() );
+
+		// Iterate shipping packages
 		foreach ( $packages as $i => $package ) {
+			$package_review_text_lines = array();
+
+			// Get shipping method info
 			$available_methods = $package['rates'];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
 			$chosen_method_label = apply_filters( 'fc_shipping_method_substep_text_chosen_method_label', $chosen_method_label, $method );
 
-			// TODO: Maybe handle multiple packages
-			// $package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
+			// Handle package name
+			if ( $has_multiple_packages && $this->is_shipping_package_name_display_enabled() ) {
+				$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
+				$package_name = '<strong>' . $package_name . '</strong>';
+				$package_review_text_lines[] = wp_kses( $package_name, $allowed_kses_attributes );
+			}
 
-			$review_text_lines[] = wp_kses( $chosen_method_label, array( 'span' => array( 'class' => '' ), 'bdi' => array(), 'strong' => array() ) );
+			// Add chosen shipping method line
+			$package_review_text_lines[] = wp_kses( $chosen_method_label, $allowed_kses_attributes );
+
+			// Handle package destination
+			if ( $has_multiple_packages && $this->is_shipping_package_contents_destination_text_lines_enabled() ) {
+				// Get package destination
+				$destination = array_key_exists( 'destination', $package ) && ! empty( $package[ 'destination' ] ) ? $package[ 'destination' ] : array();
+				$destination = apply_filters( 'fc_shipping_method_substep_text_package_destination_data', $destination, $i, $package, $chosen_method, $method );
+
+				// Get formatted destination text
+				$destination_text = WC()->countries->get_formatted_address( $destination, ', ' );
+				$destination_text = apply_filters( 'fc_shipping_method_substep_text_package_destination_text', $destination_text, $i, $package, $chosen_method, $method );
+
+				// Add package destination line
+				if ( ! empty( $destination_text ) ) {
+					$package_review_text_lines[] = wp_kses( $destination_text, $allowed_kses_attributes );
+				}
+			}
+
+			// Filter review text lines for the shipping package before adding the package contents
+			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines_before_contents', $package_review_text_lines, $i, $package, $chosen_method, $method );
+	
+			// Handle package contents
+			if ( $has_multiple_packages && $this->is_shipping_package_contents_substep_text_lines_enabled() ) {
+				// Get shipping package contents
+				$contents = '';
+				foreach ( $package[ 'contents' ] as $item_id => $values ) {
+					$contents .= $values[ 'quantity' ] . ' × ' . $values[ 'data' ]->get_name() . ', ';
+				}
+				// Remove extra comma at the end
+				$contents = trim( rtrim( $contents, ', ' ) );
+
+				// Wrap contents in a `span` tag for small text
+				$contents = '<span class="fc-step__substep-text-line--small-text">' . $contents . '</span>';
+
+				// Add package contents line
+				$package_review_text_lines[] = wp_kses( $contents, $allowed_kses_attributes );
+
+			}
+
+			// Filter review text lines for the shipping package
+			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines', $package_review_text_lines, $i, $package, $chosen_method, $method );
+
+			// Add package review text lines
+			$review_text_lines = array_merge( $review_text_lines, $package_review_text_lines );
 		}
 
 		return $review_text_lines;
@@ -2840,7 +2933,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 		// "No order notes" notice.
 		else {
-			$review_text_lines[] = apply_filters( 'fc_no_order_notes_order_review_notice', _x( 'None.', 'Notice for no order notes provided', 'fluid-checkout' ) );
+			$review_text_lines[] = apply_filters( 'fc_no_order_notes_order_review_notice', $this->get_no_substep_review_text_notice( 'order_notes' ) );
 		}
 
 		return $review_text_lines;
@@ -3372,7 +3465,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		?>
 		<input type="hidden" name="billing_same_as_shipping_previous" id="billing_same_as_shipping_previous" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
 		<?php
-
 	}
 
 
@@ -3720,6 +3812,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $billing_only_field_keys;
 	}
 
+
+
 	/**
 	 * Maybe set billing address fields values to same as shipping address from the posted data.
 	 *
@@ -3811,7 +3905,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Set addresses session values when processing an order (place order).
+	 * Maybe set billing address session values to same as shipping when processing an order (place order).
 	 *
 	 * @param array $post_data Post data for all checkout fields.
 	 */
@@ -3835,6 +3929,82 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Update billing field values
 			$post_data[ $field_key ] = isset( $post_data[ $shipping_field_key ] ) ? $post_data[ $shipping_field_key ] : null;
+		}
+
+		return $post_data;
+	}
+
+
+
+	/**
+	 * Maybe set shipping address fields values to same as billing address from the posted data.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_fix_shipping_address_when_shipping_not_needed( $posted_data ) {
+		// Bail if cart needs shipping address
+		if ( WC()->cart->needs_shipping_address() ) { return $posted_data; }
+
+		// Get list of shipping fields to copy from billing fields
+		$shipping_copy_billing_field_keys = array(
+			'shipping_country',
+			'shipping_state',
+			'shipping_postcode',
+			'shipping_city',
+			'shipping_address_1',
+			'shipping_address_2',
+		);
+
+		// Get list of posted data keys
+		$posted_data_field_keys = array_keys( $posted_data );
+
+		// Iterate posted data
+		foreach( $shipping_copy_billing_field_keys as $field_key ) {
+
+			// Get related field keys
+			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+
+			// Update shipping field values
+			if ( in_array( $billing_field_key, $posted_data_field_keys ) ) {
+				// Copy field value from billing fields, maybe set field as empty if not found in billing fields
+				$new_field_value = isset( $posted_data[ $billing_field_key ] ) ? $posted_data[ $billing_field_key ] : '';
+
+				// Update post data
+				$posted_data[ $field_key ] = $new_field_value;
+				$_POST[ $field_key ] = $new_field_value;
+			}
+
+		}
+
+		return $posted_data;
+	}
+
+	/**
+	 * Maybe set shipping address session values to same as billing when processing an order (place order).
+	 *
+	 * @param array $post_data Post data for all checkout fields.
+	 */
+	public function maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout( $post_data ) {
+		// Bail if cart needs shipping address
+		if ( WC()->cart->needs_shipping_address() ) { return $post_data; }
+
+		// Get list of shipping fields to copy from billing fields
+		$shipping_copy_billing_field_keys = array(
+			'shipping_country',
+			'shipping_state',
+			'shipping_postcode',
+			'shipping_city',
+			'shipping_address_1',
+			'shipping_address_2',
+		);
+
+		// Iterate posted data
+		foreach( $shipping_copy_billing_field_keys as $field_key ) {
+			// Get shipping field key
+			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+
+			// Update shipping field values
+			$post_data[ $field_key ] = isset( $post_data[ $billing_field_key ] ) ? $post_data[ $billing_field_key ] : null;
 		}
 
 		return $post_data;
@@ -4644,7 +4814,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Other fields
-		$other_fields_keys = array( 'createaccount' );
+		$other_fields_keys = apply_filters( 'fc_parsed_posted_data_reset_field_keys', array( 'createaccount' ), $posted_data );
 		foreach ( $other_fields_keys as $field_key ) {
 			if ( ! in_array( $field_key, array_keys( $posted_data ) ) ) {
 				$this->set_checkout_field_value_to_session( $field_key, '' );
@@ -4752,6 +4922,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function change_default_checkout_field_value_from_session_or_posted_data( $value, $input ) {
 
+		// Maybe return field from persistent storage
+		$value_from_persistent_storage = $this->get_checkout_field_value_from_session_or_posted_data( $input );
+		if ( null !== $value_from_persistent_storage ) {
+			return $value_from_persistent_storage;
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Get checkout field value from posted data or from the persisted fields session.
+	 *
+	 * @param   mixed    $value   Value of the field.
+	 * @param   string   $input   Checkout field key (ie. order_comments ).
+	 */
+	public function get_checkout_field_value_from_session_or_posted_data( $input ) {
 		// Maybe return field value from posted data
 		$posted_data = $this->get_parsed_posted_data();
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && array_key_exists( $input, $posted_data ) ) {
@@ -4765,7 +4951,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $field_session_value;
 		}
 
-		return $value;
+		return null;
 	}
 
 	/**

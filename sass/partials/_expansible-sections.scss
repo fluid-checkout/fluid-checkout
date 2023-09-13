@@ -41,6 +41,14 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
 	}
 }
 
+div.woocommerce .form-row:not( .fc-expansible-form-section ) + .fc-expansible-form-section.form-row.form-row-last .expansible-section__toggle-plus {
+	@media (#{$bp-larger-than_tablet}) {
+		// Not a perfect calculation, but close enough.
+		// The 1/3 of field height is to try to align the "Add <field>" link to the middle vertically,
+		// and the `$global-spacing-small` is to account for the field label height, which is not always the same.
+		margin-top: calc( $global-spacing-small + ( #{ $form-field-height } / 3 ) );
+	}
+}
 
 
 

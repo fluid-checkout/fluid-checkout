@@ -12,10 +12,19 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.2.0
+ * @version 3.0.3
  */
 
 defined( 'ABSPATH' ) || exit;
+
+// Custom attribute handling.
+$custom_attributes_esc = '';
+$custom_attributes = apply_filters( 'fc_checkout_body_custom_attributes', array() );
+if ( is_array( $custom_attributes ) ) {
+    foreach ( $custom_attributes as $attribute => $attribute_value ) {
+        $custom_attributes_esc .= ' ' . esc_attr( $attribute ) . '="' . esc_attr( $attribute_value ) . '"';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -31,7 +40,7 @@ defined( 'ABSPATH' ) || exit;
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> <?php echo $custom_attributes_esc; // WPCS: XSS ok. ?>>
 
 <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'fluid-checkout' ); ?></a>
 

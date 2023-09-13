@@ -157,8 +157,8 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		$settings[ 'checkoutValidation' ] = apply_filters( 'fc_checkout_validation_script_settings', array(
 			'formRowSelector'                    => '.form-row, .shipping-method__package',
-			'validateFieldsSelector'             => '.input-text, select, .shipping-method__options',
-			'referenceNodeSelector'              => '.input-text, select, .shipping-method__options',
+			'validateFieldsSelector'             => '.input-text, .input-checkbox, select, .shipping-method__options',
+			'referenceNodeSelector'              => '.input-text, .input-checkbox, select, .shipping-method__options',
 			'alwaysValidateFieldsSelector'       => '',
 			'mailcheckSuggestions'               => array(
 				/* translators: %s: html for the email address typo correction suggestion link */
@@ -266,11 +266,6 @@ class FluidCheckout_Validation extends FluidCheckout {
 				$field_valid = false;
 				$args['class'] = array_merge( $args['class'], array( 'woocommerce-invalid', 'woocommerce-invalid-postcode' ) );
 			}
-		}
-
-		// Maybe add `valid` classes
-		if ( true == $field_valid ) {
-			// $args['class'] = array_merge( $args['class'], array( 'woocommerce-validated' ) );
 		}
 
 		return $args;

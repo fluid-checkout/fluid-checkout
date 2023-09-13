@@ -388,6 +388,25 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Bump tested up to WooCommerce 8.1
+* Added: New option to set visibility for the Shipping Company field as Required, Optional or Hidden (removed).
+* Added: Compatibility with theme Artemis.
+* Added: Compatibility with theme XStore.
+* Added: Compatibility with plugin Storefront Powerpack.
+* Added: Compatibility with plugin TI WooCommerce Wishlist Premium.
+* Added: Partial compatibility with plugin Digits OTP, because changes to Digits plugin are needed for full compatibility.
+* Improved: Compatibility with theme ZK Nito: add integration option to enable/disable extra shipping email and phone fields added by the theme.
+* Improved: Compatibility with theme Riode: fix container class when using the theme header.
+* Improved: Added inline validation for required checkboxes.
+* Improved: Added text "(optional)" to the create account checkbox label when registration is not required.
+* Improved: Display shipping package name, contents and destination on shipping method substep review text when order has multiple shipping packages.
+* Improved: Pass `$substep_id` parameters to the filter `fc_no_substep_review_text_notice` so developers can change it for specific substeps.
+* Improved: Position for expansible optional fields when displayed as a second column with class `form-row-last`.
+* Fixed: Missing SVG logo when using distraction free checkout header.
+* Fixed: Wrong address used for tax calculatation in rare cases when shipping address was different than billing, but only billing address was required for the current cart items.
+
 = 3.0.2 - 2023-08-24 =
 
 * Bump tested up to WordPress 6.3 and WooCommerce 8.0.2

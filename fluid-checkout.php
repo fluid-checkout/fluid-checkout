@@ -5,11 +5,11 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 3.0.2
+Version: 3.0.3-beta-11
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 8.0.2
+WC tested up to: 8.1
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
@@ -570,17 +570,17 @@ class FluidCheckout {
 	 * Get user location on ip geolocation
 	 */
 	public function get_user_geo_location() {
-		// Get user location
-		if ( class_exists( 'WC_Geolocation' ) ) {
-			$geo      = new WC_Geolocation(); // Get WC_Geolocation instance object
-			$user_ip  = $geo->get_ip_address(); // Get user IP
-			$user_geo = $geo->geolocate_ip( $user_ip ); // Get geolocated user data.
-			$user_geo['country_name'] = array_key_exists( 'country', $user_geo ) && $user_geo['country'] != '' ? WC()->countries->countries[ $user_geo['country'] ] : '';
+		// Bail if geolocation class not available
+		if ( ! class_exists( 'WC_Geolocation' ) ) { return false; }
+		
+		// Get user location information
+		$geo      = new WC_Geolocation(); // Get WC_Geolocation instance object
+		$user_ip  = $geo->get_ip_address(); // Get user IP
+		$user_geo = $geo->geolocate_ip( $user_ip ); // Get geolocated user data.
+		$user_geo['country_name'] = array_key_exists( 'country', $user_geo ) && $user_geo['country'] != '' ? WC()->countries->countries[ $user_geo['country'] ] : '';
+		$user_geo['ip'] = $user_ip;
 
-			return $user_geo;
-		}
-
-		return false;
+		return $user_geo;
 	}
 
 
