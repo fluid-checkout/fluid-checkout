@@ -390,6 +390,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 8.1
 * Added: New option to set visibility for the Shipping Company field as Required, Optional or Hidden (removed).
 * Added: Compatibility with theme Artemis.
 * Added: Compatibility with theme XStore.
