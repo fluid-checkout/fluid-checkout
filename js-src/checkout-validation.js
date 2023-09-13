@@ -28,8 +28,8 @@
 		formSelector:                            'form.checkout',
 		formRowSelector:                         '.form-row, .shipping-method__package',
 		inputWrapperSelector:                    '.woocommerce-input-wrapper, .form-row',
-		validateFieldsSelector:                  '.input-text, select, input-checkbox, .shipping-method__options',
-		referenceNodeSelector:                   '.input-text, select, input-checkbox, .shipping-method__options', // Usually same as `validateFieldsSelector`
+		validateFieldsSelector:                  '.input-text, select, .input-checkbox, .shipping-method__options',
+		referenceNodeSelector:                   '.input-text, select, .input-checkbox, .shipping-method__options', // Usually same as `validateFieldsSelector`
 		clearValidationCountryChangedSelector:   '#state, #shipping_state, #billing_state',
 		alwaysValidateFieldsSelector:            '',
 		select2Selector:                         '.select2, .select2-hidden-accessible',
