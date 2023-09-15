@@ -87,7 +87,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Design template', 'fluid-checkout' ),
-						'desc'              => __( 'General styles for the checkout steps, order summary and other sections.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'              => __( 'General styles for the checkout steps, order summary and other sections. May also apply to other pages such as the Cart and Order Details pages if you are also using Fluid Checkout PRO and some add-ons.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_design_template',
 						'type'              => 'fc_template_selector',
 						'options'           => FluidCheckout_DesignTemplates::instance()->get_design_template_options(),
