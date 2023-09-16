@@ -391,6 +391,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Compatibility with theme OceanWP: fix container class when using the theme header, and disable conflicting theme features.
 * Added: New option to highlight the order totals row in the order summary on the checkout page.
 * Fixed: Styles for the shipping method items with classic and other design templates.
 
