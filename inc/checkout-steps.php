@@ -517,6 +517,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$add_classes[] = 'has-highlighted-billing-section';
 		}
 
+		// Add extra class to highlight the order totals row in the order summary table
+		if ( true === apply_filters( 'fc_show_order_totals_row_highlighted', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_show_order_totals_row_highlighted' ) ) ) ) {
+			$add_classes[] = 'has-highlighted-order-totals';
+		}
+
 		return array_merge( $classes, $add_classes );
 	}
 

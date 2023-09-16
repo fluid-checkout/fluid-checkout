@@ -391,6 +391,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: New option to highlight the order totals row in the order summary on the checkout page.
 * Fixed: Styles for the shipping method items with classic and other design templates.
 
 = 3.0.3 - 2023-09-13 =

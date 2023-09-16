@@ -236,6 +236,14 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Order summary', 'fluid-checkout' ),
+						'desc'              => __( 'Make the order summary stay visible while scrolling', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_sticky_order_summary',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_sticky_order_summary' ),
+						'autoload'          => false,
+					),
+
+					array(
 						'desc_tip'          => __( 'Choose a background color for the order summary section.', 'fluid-checkout' ),
 						'desc'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_order_review_highlight_color',
@@ -246,10 +254,11 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'              => __( 'Make the order summary stay visible while scrolling', 'fluid-checkout' ),
-						'id'                => 'fc_enable_checkout_sticky_order_summary',
+						'desc'              => __( 'Highlight the order totals row in the order summary table', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Most useful when the order summary section does not have a highlighted background color. Might also apply to the Cart, Order Received and View Order pages when using Fluid Checkout PRO.', 'fluid-checkout' ),
+						'id'                => 'fc_show_order_totals_row_highlighted',
 						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_sticky_order_summary' ),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_show_order_totals_row_highlighted' ),
 						'autoload'          => false,
 					),
 

@@ -52,7 +52,11 @@ class FluidCheckout_ThemeCompat_OceanWP extends FluidCheckout {
 		}
 
 		// Checkout hack.
-		// Do not re-add actions that were removed by the theme. But remove actions added by the theme.
+		// Do not re-add all actions that were removed by the theme. But remove actions added by the theme.
+		add_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 );
+		// remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+		// remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+		// remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 		remove_action( 'ocean_woocommerce_checkout_order_review', 'woocommerce_order_review', 10 );
 		remove_action( 'ocean_woocommerce_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'ocean_checkout_login_form', array( OceanWP_WooCommerce_Config::instance(), 'checkout_login_form' ), 10 );
