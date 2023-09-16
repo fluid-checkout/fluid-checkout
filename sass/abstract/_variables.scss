@@ -301,7 +301,7 @@ $option-box-border:                         $option-box-border-style $option-box
 
 $option-box-label-color--checked:           var( --fluidcheckout--option-box--label-color--checked, $darker-grey ) !default;
 $option-box-label-border-color:             var( --fluidcheckout--option-box--label-border-color, $border-color ) !default;
-$option-box-label-border-color--hover:      var( --fluidcheckout--option-box--label-border-color--hover, $border-dark-color ) !default;
+$option-box-label-border-color--hover:      var( --fluidcheckout--option-box--label-border-color--hover, $option-box-label-border-color ) !default;
 $option-box-label-border-color--checked:    var( --fluidcheckout--option-box--label-border-color--checked, $border-color ) !default;
 $option-box-label-border-style:             var( --fluidcheckout--option-box--label-border-style, solid ) !default;
 $option-box-label-border-width:             var( --fluidcheckout--option-box--label-border-width, remsize( .1rem ) ) !default;
@@ -313,7 +313,7 @@ $option-box-background-color--checked:      var( --fluidcheckout--option-box--ba
 
 $option-box-radio-size:                     $icon-size !default;
 $option-box-radio-color:                    var( --fluidcheckout--option-box--radio-color, $border-color ) !default;
-$option-box-radio-color--hover:             var( --fluidcheckout--option-box--radio-color--hover, $border-color ) !default;
+$option-box-radio-color--hover:             var( --fluidcheckout--option-box--radio-color--hover, $grey ) !default;
 $option-box-radio-color--checked:           var( --fluidcheckout--option-box--radio-color--checked, $success-color ) !default;
 $option-box-radio-icon-color--checked:      var( --fluidcheckout--option-box--radio-icon-color--checked, $white ) !default;
 $option-box-radio-border:                   solid remsize( .2rem ) $option-box-radio-color !default;

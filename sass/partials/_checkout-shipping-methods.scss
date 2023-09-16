@@ -90,7 +90,6 @@
 .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label {
 	background-color: $option-box-background-color--checked !important; // Needed to override theme styles
 	color: $option-box-label-color--checked !important; // Needed to override theme styles
-	border-bottom-width: 0;
 }
 
 

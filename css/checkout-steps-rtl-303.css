@@ -855,7 +855,6 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 .woocommerce ul#shipping_method .shipping-method__option input[type=radio]:checked + .shipping-method__option-label {
   background-color: var(--fluidcheckout--option-box--background-color--checked, var(--fluidcheckout--color--lighter-grey, #f3f3f3)) !important;
   color: var(--fluidcheckout--option-box--label-color--checked, var(--fluidcheckout--color--darker-grey, #1E212B)) !important;
-  border-bottom-width: 0;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:before {
@@ -887,11 +886,11 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:hover:before,
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:focus:before {
-  border-color: var(--fluidcheckout--option-box--radio-color--hover, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
+  border-color: var(--fluidcheckout--option-box--radio-color--hover, var(--fluidcheckout--color--grey, #7b7575));
 }
 
 .woocommerce ul#shipping_method .shipping-method__option.shipping-method__option .shipping-method__option-label:hover {
-  border-color: var(--fluidcheckout--option-box--label-border-color--hover, var(--fluidcheckout--border-color--dark, var(--fluidcheckout--color--grey, #7b7575)));
+  border-color: var(--fluidcheckout--option-box--label-border-color--hover, var(--fluidcheckout--option-box--label-border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8))));
   background-color: var(--fluidcheckout--option-box--background-color--hover, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
 }
 
@@ -1048,8 +1047,8 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   width: 100%;
   border: var(--fluidcheckout--option-box--label-border-style, solid) var(--fluidcheckout--option-box--label-border-width, 1px) var(--fluidcheckout--option-box--label-border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   border-top: 0;
-  border-left: 0;
   border-right: 0;
+  border-left: 0;
   background-color: var(--fluidcheckout--option-box--background-color, var(--fluidcheckout--color--white, #fff));
   font-weight: normal;
   line-height: 24px;
@@ -1058,8 +1057,8 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 }
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label:active, .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label:hover, .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label:focus {
   border-top: 0;
-  border-left: 0;
   border-right: 0;
+  border-left: 0;
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method:first-of-type > label,
@@ -1083,8 +1082,8 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name=payment_method]:checked + label {
   border-top: 0;
-  border-left: 0;
   border-right: 0;
+  border-left: 0;
   border-color: var(--fluidcheckout--option-box--label-border-color--checked, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   background-color: var(--fluidcheckout--option-box--background-color--checked, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
   color: var(--fluidcheckout--option-box--label-color--checked, var(--fluidcheckout--color--darker-grey, #1E212B));
@@ -1798,6 +1797,10 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total {
   border-top: solid var(--fluidcheckout--order-summary--cell-border-width--totals-top, 1px) var(--fluidcheckout--order-summary--cell-border-color--totals-top, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   border-bottom: solid var(--fluidcheckout--order-summary--cell-border-width--totals-bottom, 1px) var(--fluidcheckout--order-summary--cell-border-color--totals-bottom, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
+}
+
+body.has-highlighted-order-totals div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total {
+  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table th,
