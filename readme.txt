@@ -388,6 +388,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+
+= Unreleased =
+
+* Fixed: Styles for the shipping method items with classic and other design templates.
+
 = 3.0.3 - 2023-09-13 =
 
 * Bump tested up to WooCommerce 8.1
