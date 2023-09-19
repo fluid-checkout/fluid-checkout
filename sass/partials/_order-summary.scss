@@ -152,9 +152,12 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td {
 	width: 50%;
 	font-size: $order-summary-font-size;
-	text-align: $alignment-right !important; // Needed to override theme styles
 	line-height: 1;
 	vertical-align: middle;
+}
+
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table > tfoot > tr > td {
+	text-align: $alignment-right !important; // Needed to override theme styles
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total .tax_label,
