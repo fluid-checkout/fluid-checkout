@@ -388,7 +388,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-
 = Unreleased =
 
 * Added: New option to highlight the order totals row in the order summary on the checkout page.
