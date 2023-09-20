@@ -392,6 +392,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: New option to highlight the order totals row in the order summary on the checkout page.
+* Added: Filter `fc_expansible_section_toggle_label_{$key}_add_optional_text` to allow removing the text "(optional)" from specific optional fields.
 * Improved: Compatibility with theme OceanWP: fix container class when using the theme header, and disable conflicting theme features.
 * Improved: Use only the cart total value for the cart link on header for mobile view, instead of getting also taxes and info from other plugins.
 * Fixed: Styles for the shipping method items with classic and other design templates.
