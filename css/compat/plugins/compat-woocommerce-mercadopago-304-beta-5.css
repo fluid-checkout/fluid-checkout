@@ -14,3 +14,7 @@
 .fc-wrapper .mp-input-table-list {
   background-color: var(--fluidcheckout--color--white, #fff) !important;
 }
+
+.fc-wrapper .mp-checkout-container iframe {
+  width: 100% !important;
+}

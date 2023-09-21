@@ -22,3 +22,9 @@
 .fc-wrapper .mp-input-table-list {
 	background-color: $white !important; // Needed to override plugins styles
 }
+
+
+
+.fc-wrapper .mp-checkout-container iframe {
+	width: 100% !important; // Needed to override plugins styles
+}
