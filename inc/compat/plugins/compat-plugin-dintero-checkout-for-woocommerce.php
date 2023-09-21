@@ -42,7 +42,6 @@ class FluidCheckout_DinteroCheckoutForWooCommerce extends FluidCheckout {
 		// Place order
 		remove_action( 'fc_place_order', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order' ), 10, 2 );
 		remove_action( 'fc_place_order', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_custom_buttons' ), 20, 2 );
-		remove_filter( 'woocommerce_update_order_review_fragments', array( FluidCheckout_Steps::instance(), 'add_place_order_fragment' ), 10 );
 		remove_action( 'woocommerce_order_button_html', array( FluidCheckout_Steps::instance(), 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Place order placeholder
