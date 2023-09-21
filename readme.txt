@@ -390,6 +390,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin Dintero Checkout for WooCommerce by Krokedil.
 * Added: New option to highlight the order totals row in the order summary on the checkout page.
 * Added: Filter `fc_expansible_section_toggle_label_{$key}_add_optional_text` to allow removing the text "(optional)" from specific optional fields.
 * Improved: Compatibility with theme OceanWP: fix container class when using the theme header, and disable conflicting theme features.
