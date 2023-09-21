@@ -395,6 +395,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with theme OceanWP: fix container class when using the theme header, and disable conflicting theme features.
 * Improved: Use only the cart total value for the cart link on header for mobile view, instead of getting also taxes and info from other plugins.
 * Fixed: Styles for the shipping method items with classic and other design templates.
+* Fixed: Styles for the latest payment method list items when the payment box is not present.
 
 = 3.0.3 - 2023-09-13 =
 

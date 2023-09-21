@@ -1067,8 +1067,10 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   border-top-left-radius: var(--fluidcheckout--option-box--border-radius, 13px);
 }
 
-.fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name=payment_method]:not(:checked) ~ label,
-#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name=payment_method]:not(:checked) ~ label,
+.fc-wrapper #payment .payment_methods > .wc_payment_method.has-payment-box:last-of-type input[name=payment_method]:not(:checked) ~ label,
+#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method.has-payment-box:last-of-type input[name=payment_method]:not(:checked) ~ label,
+.fc-wrapper #payment .payment_methods > .wc_payment_method:not(.has-payment-box):last-of-type input[name=payment_method] ~ label,
+#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:not(.has-payment-box):last-of-type input[name=payment_method] ~ label,
 .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name=payment_method]:checked ~ .payment_box,
 #add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name=payment_method]:checked ~ .payment_box {
   border-bottom: 0;

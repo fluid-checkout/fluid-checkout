@@ -13,11 +13,19 @@
  * @see         https://docs.woocommerce.com/document/template-structure/
  * @package     WooCommerce\Templates
  * @version     3.5.0
- * @fc-version  3.0.2
+ * @fc-version  3.0.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// CHANGE: Define extra classes for the payment method list item.
+$extra_classes = array();
+
+// CHANGE: Maybe add class for payment method with payment box.
+if ( $gateway->has_fields() || $gateway->get_description() ) {
+	$extra_classes[] = 'has-payment-box';
 }
 
 // CHANGE: Get the payment method icon as html.
@@ -26,10 +34,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 ob_start();
 $icon_html = $gateway->get_icon(); // WPCS: XSS ok.
 $icon_html_from_output_buffer = ob_get_clean();
-$has_icon_classes = ( null !== $icon_html_from_output_buffer && ! empty( $icon_html_from_output_buffer ) ) || ( null !== $icon_html && ! empty( trim( $icon_html ) ) ) ? 'has-icon' : ''; // WPCS: XSS ok.
+if ( ( null !== $icon_html_from_output_buffer && ! empty( $icon_html_from_output_buffer ) ) || ( null !== $icon_html && ! empty( trim( $icon_html ) ) ) ) {
+	$extra_classes[] = 'has-icon';
+}
 ?>
-<?php // CHANGE: Add class to detect when the list item has an icon ?>
-<li class="wc_payment_method payment_method_<?php echo esc_attr( $gateway->id ); ?> <?php echo $has_icon_classes; // WPCS: XSS ok. ?>">
+<?php // CHANGE: Output extra classes to the payment method list item. ?>
+<li class="wc_payment_method payment_method_<?php echo esc_attr( $gateway->id ); ?> <?php echo esc_attr( implode( ' ', $extra_classes ) ); ?>">
 	<input id="payment_method_<?php echo esc_attr( $gateway->id ); ?>" type="radio" class="input-radio" name="payment_method" value="<?php echo esc_attr( $gateway->id ); ?>" <?php checked( $gateway->chosen, true ); ?> data-order_button_text="<?php echo esc_attr( $gateway->order_button_text ); ?>" />
 
 	<label for="payment_method_<?php echo esc_attr( $gateway->id ); ?>">
