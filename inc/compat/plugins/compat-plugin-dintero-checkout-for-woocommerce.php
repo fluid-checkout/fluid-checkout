@@ -22,9 +22,35 @@ class FluidCheckout_DinteroCheckoutForWooCommerce extends FluidCheckout {
 		// Undo hooks
 		add_action( 'wp', array( $this, 'maybe_undo_hooks_early' ), 5 ); // Before very late hooks
 		add_action( 'wp', array( $this, 'maybe_undo_hooks' ), 300 ); // After very late hooks
+		add_action( 'wp', array( $this, 'maybe_undo_place_order_hooks' ), 300 ); // After very late hooks
 
 		// Persisted data
 		add_filter( 'fc_checkout_update_before_unload', array( $this, 'disable_updated_before_unload' ), 10 );
+	}
+
+	/**
+	 * Maybe undo hooks for place order.
+	 */
+	public function maybe_undo_place_order_hooks() {
+		// Bail if not at checkout page, and not an AJAX request to update checkout fragment
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Bail if Dintero is not the selected payment method
+		$settings = get_option( 'woocommerce_dintero_checkout_settings' );
+		if ( ! is_array( $settings ) || 'embedded' !== $settings[ 'form_factor' ] || 'checkout' !== $settings[ 'checkout_type' ] || 'dintero_checkout' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
+
+		// Place order
+		remove_action( 'fc_place_order', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order' ), 10, 2 );
+		remove_action( 'fc_place_order', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_custom_buttons' ), 20, 2 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( FluidCheckout_Steps::instance(), 'add_place_order_fragment' ), 10 );
+		remove_action( 'woocommerce_order_button_html', array( FluidCheckout_Steps::instance(), 'add_place_order_button_wrapper_and_attributes' ), 10 );
+
+		// Place order placeholder
+		remove_action( 'fc_output_step_payment', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_placeholder' ), 100, 2 );
+		remove_action( 'fc_checkout_after_order_review_inside', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_placeholder' ), 1 );
+
+		// Widget areas
+		remove_action( 'fc_place_order', array( FluidCheckout_CheckoutWidgetAreas::instance(), 'output_widget_area_checkout_place_order_below' ), 50 );
 	}
 
 	/**
