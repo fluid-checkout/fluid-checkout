@@ -28,6 +28,24 @@ class FluidCheckout_DinteroCheckoutForWooCommerce extends FluidCheckout {
 		add_filter( 'fc_checkout_update_before_unload', array( $this, 'disable_updated_before_unload' ), 10 );
 	}
 
+
+
+	/**
+	 * Get classes to skip undo early hooks.
+	 */
+	public function get_skip_classes_undo_hooks_early_list() {
+		$skip_undo_hooks_classes = apply_filters( 'fc_compat_dintero_checkout_skip_undo_hooks_early_classes', array( 'FluidCheckout_CheckoutPageTemplate' ) );
+	}
+
+	/**
+	 * Get classes to skip undo hooks.
+	 */
+	public function get_skip_classes_undo_hooks_list() {
+		$skip_undo_hooks_classes = apply_filters( 'fc_compat_dintero_checkout_skip_undo_hooks_classes', array( 'FluidCheckout_CheckoutPageTemplate', 'FluidCheckout_CheckoutWidgetAreas' ) );
+	}
+
+
+
 	/**
 	 * Maybe undo hooks for place order.
 	 */
@@ -65,7 +83,7 @@ class FluidCheckout_DinteroCheckoutForWooCommerce extends FluidCheckout {
 
 		// Undo hooks from feature classes
 		$features_list = FluidCheckout::instance()->get_features_list();
-		$skip_undo_hooks_classes = array( 'FluidCheckout_CheckoutPageTemplate', 'FluidCheckout_CheckoutWidgetAreas' );
+		$skip_undo_hooks_classes = $this->get_skip_classes_undo_hooks_early_list();
 		foreach ( $features_list as $class_name => $args ) {
 			// Skip some classes
 			if ( in_array( $class_name, $skip_undo_hooks_classes ) ) { continue; }
@@ -96,7 +114,7 @@ class FluidCheckout_DinteroCheckoutForWooCommerce extends FluidCheckout {
 
 		// Undo hooks from feature classes
 		$features_list = FluidCheckout::instance()->get_features_list();
-		$skip_undo_hooks_classes = array( 'FluidCheckout_CheckoutPageTemplate' );
+		$skip_undo_hooks_classes = $this->get_skip_classes_undo_hooks_list();
 		foreach ( $features_list as $class_name => $args ) {
 			// Skip some classes
 			if ( in_array( $class_name, $skip_undo_hooks_classes ) ) { continue; }
