@@ -398,6 +398,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Use only the cart total value for the cart link on header for mobile view, instead of getting also taxes and info from other plugins.
 * Fixed: Styles for the shipping method items with classic and other design templates.
 * Fixed: Styles for the latest payment method list items when the payment box is not present.
+* Deprecated: Renamed function `FluidCheckout_CheckoutPageTemplate::get_hide_site_header_footer_at_checkout`, use `FluidCheckout_CheckoutPageTemplate::is_distraction_free_header_footer_checkout` instead.
 
 = 3.0.3 - 2023-09-13 =
 
