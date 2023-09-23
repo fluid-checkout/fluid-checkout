@@ -3,6 +3,20 @@
   --fluidcheckout--field--border-radius: 3px;
 }
 
+body.theme-Divi.woocommerce-checkout:not(.has-checkout-header) .fc-content {
+  padding: 0 20px 80px;
+}
+@media (min-width: 750px) {
+  body.theme-Divi.woocommerce-checkout:not(.has-checkout-header) .fc-content {
+    position: relative;
+    margin: auto;
+    padding-left: 0;
+    padding-right: 0;
+    width: 80%;
+    max-width: 1080px;
+  }
+}
+
 body.theme-Divi div.woocommerce form #billing_country_field,
 body.theme-Divi div.woocommerce form #shipping_country_field,
 body.theme-Divi div.woocommerce form .form-row .select2-container--default,

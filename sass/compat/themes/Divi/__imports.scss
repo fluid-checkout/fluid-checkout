@@ -24,6 +24,7 @@ $_body-theme-selector:                 '.theme-Divi' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-content-area",
 	"woocommerce-form-fields",
 	"checkout-coupon-code",
 	"order-summary";

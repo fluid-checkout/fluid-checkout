@@ -18,3 +18,7 @@ body.theme-martfury .fc-content.container {
     width: 1170px;
   }
 }
+
+body.theme-martfury #payment .wc_payment_methods {
+  background-color: transparent;
+}

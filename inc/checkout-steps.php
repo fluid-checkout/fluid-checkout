@@ -73,7 +73,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
 		// Checkout header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) {
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) {
 			// Cart link on header
 			add_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
@@ -300,7 +300,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
 		// Checkout header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) {
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) {
 			// Cart link on header
 			remove_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
 			remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
@@ -492,8 +492,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$add_classes[] = 'has-fc-sidebar';
 		}
 
-		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) {
+		// Add extra class if using the our distraction free checkout header
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) {
 			$add_classes[] = 'has-checkout-header';
 		}
 
@@ -801,13 +801,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Add container class to the main content element.
+	 * Add container class to the main content element,
+	 * which adds spacing around the content for when the theme does not set any limits.
 	 *
-	 * @param string $class Main content element classes.
+	 * @param  string  $class  Main content element classes.
 	 */
 	public function add_content_section_class( $class ) {
-		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $class; }
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
 
 		// Maybe add the container class
 		if ( apply_filters( 'fc_add_container_class', true ) ) {
@@ -839,8 +840,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the checkout footer.
 	 */
 	public function output_checkout_footer() {
-		// Only display our checkout footer if the site footer is hidden
-		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
+		// Bail if using theme header and footer
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
 
 		// Bail if nothing was added to the footer
 		if ( ! has_action( 'fc_checkout_footer_widgets' ) || ! ( is_active_sidebar( 'fc_checkout_footer' ) || has_action( 'fc_checkout_footer_widgets_inside_before' ) || has_action( 'fc_checkout_footer_widgets_inside_after' ) ) ) { return; }
@@ -5087,16 +5088,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get option for hiding the site's original header and footer at the checkout page.
+	 * Define wheter using distraction free header and footer templates.
 	 *
-	 * @return       boolean  True if should hide the site's original header and footer at the checkout page, false otherwise.
-	 * @deprecated            Use `FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout()` instead.
+	 * @return  boolean  `true` when using distraction free header and footer templates on the checkout page, `false` otherwise.
+	 * 
+	 * @deprecated       Use `FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout()` instead.
 	 */
 	public function get_hide_site_header_footer_at_checkout() {
 		// Add deprecation notice
-		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() instead.', '2.3.0' );
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() instead.', '3.0.4' );
 
-		return FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout();
+		return FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout();
 	}
 
 

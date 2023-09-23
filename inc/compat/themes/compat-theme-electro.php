@@ -52,8 +52,8 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 	 * @param   array   $attributes    HTML element attributes.
 	 */
 	public function change_sticky_elements_relative_header( $attributes ) {
-		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
 		$attributes['data-sticky-relative-to'] = '.site-header.stick-this';
 

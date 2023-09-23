@@ -20,7 +20,7 @@ class FluidCheckout_ThemeCompat_Storefront extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Container class
-		add_filter( 'fc_add_container_class', '__return_false' );
+		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
 		// Coupon code button style
 		add_filter('fc_coupon_code_apply_button_classes', array( $this, 'change_coupon_code_apply_button_class' ), 10 );

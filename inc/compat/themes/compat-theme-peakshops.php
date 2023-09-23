@@ -20,7 +20,7 @@ class FluidCheckout_ThemeCompat_PeakShops extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Container class
-		add_filter( 'fc_add_container_class', '__return_false' );
+		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'add_content_section_class' ), 10 );
 
 		// Checkout Page Layout
@@ -41,8 +41,8 @@ class FluidCheckout_ThemeCompat_PeakShops extends FluidCheckout {
 	 * @param string $class Main content element classes.
 	 */
 	public function add_content_section_class( $class ) {
-		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $class; }
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
 
 		// Maybe add the container class
 		$class = $class . ' row align-middle';
@@ -58,8 +58,8 @@ class FluidCheckout_ThemeCompat_PeakShops extends FluidCheckout {
 	 * @param   array   $attributes    HTML element attributes.
 	 */
 	public function change_sticky_elements_relative_header( $attributes ) {
-		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
 		// Bail if fixed header option is disabled
 		if ( ! function_exists( 'ot_get_option' ) || 'on' !== ot_get_option( 'fixed_header', 'on' ) ) { return $attributes; }
