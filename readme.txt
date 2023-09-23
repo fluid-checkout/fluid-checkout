@@ -23,7 +23,7 @@ Similar to the Shopify checkout, and even better!
 
 **Better accessibility at the checkout page with support for keyboard-only navigation and screen readers.**
 
-[View detailed list of features on our website](https://fluidcheckout.com/features/)
+[View detailed list of features on our website](https://fluidcheckout.com/)
 
 <blockquote>
 <strong>Top notch plugin and support team!</strong>
