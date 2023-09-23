@@ -26,7 +26,7 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Container class
-		add_filter( 'fc_add_container_class', '__return_false' );
+		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
 		// Site header sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 30 );
@@ -65,8 +65,8 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 	 * @param   array  $settings  JS settings object of the plugin.
 	 */
 	public function add_js_settings( $settings ) {
-		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $settings; }
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $settings; }
 
 		// Add settings
 		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = '.site-header, .col-full-nav';
@@ -82,8 +82,8 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 	 * @param   array  $attributes  The element HTML attributes.
 	 */
 	public function change_sticky_elements_relative_header( $attributes ) {
-		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 	
 		$attributes['data-sticky-relative-to'] = '{ "xs": { "breakpointInitial": 0, "breakpointFinal": 992, "selector": ".site-header" }, "sm": { "breakpointInitial": 993, "breakpointFinal": 100000, "selector": ".col-full-nav" } }';
 	

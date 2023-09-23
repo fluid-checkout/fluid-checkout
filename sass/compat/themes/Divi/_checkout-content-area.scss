@@ -1,0 +1,16 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector }:not( .has-checkout-header ) .fc-content {
+	padding: 0 $container-spacing-mobile $global-spacing-large;
+
+	@media (#{$bp-larger-than-tablet}) {
+		position: relative;
+		margin: auto;
+		padding-#{ $alignment-left }: 0;
+		padding-#{ $alignment-right }: 0;
+		width: 80%;
+		max-width: 1080px; // Use px to match unit used by theme
+	}
+}

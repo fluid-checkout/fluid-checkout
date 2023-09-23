@@ -23,7 +23,7 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
 		// Container class
-		add_filter( 'fc_add_container_class', '__return_false' );
+		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -64,8 +64,8 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 		// Bail if Avada class and settings object not available
 		if ( ! function_exists( 'Avada' ) || ! Avada()->settings ) { return $settings; }
 
-		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $settings; }
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $settings; }
 
 		// Add settings
 		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = '.fusion-secondary-main-menu, .fusion-header';
@@ -84,8 +84,8 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 		// Bail if Avada class and settings object not available
 		if ( ! function_exists( 'Avada' ) || ! Avada()->settings ) { return $attributes; }
 
-		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
 		// Get header style
 		$header_style = Avada()->settings->get( 'header_layout' );

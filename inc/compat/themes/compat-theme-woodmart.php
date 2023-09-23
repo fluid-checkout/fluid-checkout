@@ -23,7 +23,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 
 		// Container class
-		add_filter( 'fc_add_container_class', '__return_false' );
+		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
 		// Dark mode
 		add_filter( 'fc_enable_dark_mode_styles', array( $this, 'maybe_set_is_dark_mode' ), 10 );

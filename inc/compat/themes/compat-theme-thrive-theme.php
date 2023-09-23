@@ -26,7 +26,7 @@ class FluidCheckout_ThemeCompat_ThriveTheme extends FluidCheckout {
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template_checkout_page_template' ), 100, 3 );
 
 		// Container class
-		add_filter( 'fc_add_container_class', '__return_false' );
+		add_filter( 'fc_add_container_class', '__return_false', 10 );
 	}
 
 
