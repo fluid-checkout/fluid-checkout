@@ -4533,6 +4533,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 					'formatted_shipping_price' => $this->get_cart_totals_shipping_method_label( $method, $package, $i ),
 					'index'                    => $i,
 					'chosen_method'            => $chosen_method,
+					'method'                   => $method,
 					'formatted_destination'    => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
 					'has_calculated_shipping'  => WC()->customer->has_calculated_shipping(),
 				)
