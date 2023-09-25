@@ -4508,7 +4508,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$first    = true;
 
 		foreach ( $packages as $i => $package ) {
+			$available_methods = $package['rates'];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
+			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
 			$product_names = array();
 
 			if ( count( $packages ) > 1 ) {
@@ -4526,7 +4529,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 					'show_package_details'     => count( $packages ) > 1,
 					'show_shipping_calculator' => is_cart() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $i, $package ),
 					'package_details'          => implode( ', ', $product_names ),
-					'package_name'             => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
+					'package_name'             => apply_filters( 'fc_order_summary_shipping_package_name', $package_name, $method, $i, $package ),
+					'formatted_shipping_price' => $this->get_cart_totals_shipping_method_label( $method, $package, $i ),
 					'index'                    => $i,
 					'chosen_method'            => $chosen_method,
 					'formatted_destination'    => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
@@ -4542,15 +4546,34 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get shipping method label with only the cost, removing the label of the shipping method chosen.
 	 *
-	 * @param  WC_Shipping_Rate $method Shipping method rate data.
+	 * This function is intended to be used on the order summary shipping row only.
+	 * Changing the shipping method label with `woocommerce_cart_shipping_method_full_label` could have unintended consequences.
+	 *
+	 * @param  WC_Shipping_Rate  $method         Shipping method rate data.
+	 * @param  int               $package_index  Package index.
+	 * @param  array             $package        Package data.
 	 *
 	 * @return  string                  Shipping method label with only the cost.
 	 */
-	public function get_cart_totals_shipping_method_label( $method ) {
+	public function get_cart_totals_shipping_method_label( $method, $package_index = 0, $package = null, $package_name = '' ) {
+		// Get the shipping method label and total
 		$method_label = $method->get_label();
+		$shipping_total_label = wc_cart_totals_shipping_method_label( $method );
 
-		// Remove the shipping method label, leaving only the cost
-		$shipping_total_label = str_replace( $method_label.': ', '', wc_cart_totals_shipping_method_label( $method ) );
+		// Get whether shipping method has costs
+		$has_cost  = 0 < $method->cost;
+
+		// Maybe remove the shipping method label, leaving only the cost
+		if ( $has_cost ) {
+			$shipping_total_label = str_replace( $method_label.': ', '', $shipping_total_label );
+		}
+		// Otherwise, show price as zero if shipping method has no cost
+		else {
+			$shipping_total_label = wc_price( 0 );
+		}
+
+		// Filter the shipping method label
+		$shipping_total_label = apply_filters( 'fc_order_summary_shipping_package_price_html', $shipping_total_label, $method, $package_index, $package, $package_name );
 
 		return $shipping_total_label;
 	}
