@@ -13,7 +13,6 @@
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
  * @version 3.0.4
- * @wc-version 3.6.0
  * @wc-original cart/cart-shipping.php
  */
 
@@ -22,13 +21,11 @@ defined( 'ABSPATH' ) || exit;
 <tr class="woocommerce-shipping-totals shipping">
 	<th><?php echo wp_kses_post( $package_name ); ?></th>
 	<td data-title="<?php echo esc_attr( $package_name ); ?>">
-		<?php // CHANGE: Show only shipping method costs on the order summary ?>
 		<?php if ( $method ) : ?>
 			<?php printf( '<span class="shipping_method_%1$s_%2$s">%3$s</span>', $index, esc_attr( sanitize_title( $method->id ) ), wp_kses_post( $formatted_shipping_price ) ); ?>
 		<?php else :
 			// Translators: %s shipping destination.
 			echo wp_kses_post( apply_filters( 'fc_checkout_no_shipping_method_chosen_html', sprintf( esc_html_x( '--', 'No shipping method chosen label for the order summary', 'fluid-checkout' ), ' <strong>' . esc_html( $formatted_destination ) . '</strong>' ) ) );
 		endif; ?>
-		<?php // CHANGE: END - Show only shipping method costs on the order summary ?>
 	</td>
 </tr>
