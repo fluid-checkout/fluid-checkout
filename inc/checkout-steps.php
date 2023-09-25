@@ -4557,8 +4557,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  string                  Shipping method label with only the cost.
 	 */
 	public function get_cart_totals_shipping_method_label( $method, $package_index = 0, $package = null, $package_name = '' ) {
-		// Get the shipping method label and total
-		$method_label = $method->get_label();
+		// Bail if shipping method data is not available
+		if ( ! $method ) { return; }
+
+		// Get the shipping method label from WooCommerce.
+		// This ensures that changes to the shipping method label applied by other plugins are also applied here.
 		$shipping_total_label = wc_cart_totals_shipping_method_label( $method );
 
 		// Get whether shipping method has costs
@@ -4566,6 +4569,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Maybe remove the shipping method label, leaving only the cost
 		if ( $has_cost ) {
+			// Get the shipping method label and total
+			$method_label = $method->get_label();
 			$shipping_total_label = str_replace( $method_label.': ', '', $shipping_total_label );
 		}
 		// Otherwise, show price as zero if shipping method has no cost
