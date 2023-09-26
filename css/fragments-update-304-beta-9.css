@@ -1,3 +1,9 @@
+div.woocommerce form .form-row .woocommerce-input-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
 body div.woocommerce .form-row.fc-loading .woocommerce-input-wrapper:after {
   display: inline-block;
   font-family: "fluid-checkout-icons" !important;
