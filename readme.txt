@@ -394,6 +394,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: New option to highlight the order totals row in the order summary on the checkout page.
 * Added: New filter `fc_expansible_section_toggle_label_{$key}_add_optional_text` to allow removing the text "(optional)" from specific optional fields.
 * Added: New filters `fc_order_summary_shipping_package_name` and `fc_order_summary_shipping_package_price_html` to allow changing the label and price for shipping charges on the order summary.
+* Added: Fragments update script that can be used by add-ons on pages that don't use native WooCommerce functions to update fragments.
 * Improved: Show localized price `0,00` (zero) as shipping charge price on the order summary when shipping method chosen does not have associated costs, instead of showing the shipping method name.
 * Improved: Compatibility with theme OceanWP: fix container class when using the theme header, and disable conflicting theme features.
 * Improved: Compatibility with plugin Mercado Pago payments for WooCommerce: set width to payment elements to avoid them overflowing the available space.

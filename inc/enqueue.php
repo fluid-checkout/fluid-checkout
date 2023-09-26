@@ -39,10 +39,13 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_edit_address' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_add_payment_method' ), 10 );
-	
+
 		// Theme and Plugin Compatibility
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_styles' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_plugin_compat_styles' ), 10 );
+
+		// Fragments refresh
+		add_action( 'wc_ajax_fc_update_fragments', array( $this, 'update_fragments' ), 10 );
 	}
 
 
@@ -63,9 +66,12 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_edit_address' ), 10 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_add_payment_method' ), 10 );
-	
+
 		// Theme and Plugin Compatibility
 		// Should not remove theme and plugin compatibility hooks. Keep this comment here for future reference.
+
+		// Fragments refresh
+		remove_action( 'wc_ajax_fc_update_fragments', array( $this, 'update_fragments' ), 10 );
 	}
 
 
@@ -114,7 +120,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * @return  array  JS settings.
 	 */
 	public function get_js_settings() {
-		return apply_filters( 'fc_js_settings', array(
+		// Define settings
+		$settings = array(
 			'ver'                            => self::$version,
 			'assetsVersion'                  => self::$asset_version,
 			'cookiePath'                     => parse_url( FluidCheckout_Settings::instance()->get_option( 'siteurl' ), PHP_URL_PATH ),
@@ -137,7 +144,19 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 				'.address-field input.input-text',
 				'.update_totals_on_change input.input-text',
 			) ) ),
-		) );
+		);
+
+		// Maybe add settings for fragments refresh
+		if ( true === apply_filters( 'fc_enable_fragments_refresh', false ) ) {
+			$settings[ 'fragmentsRefresh' ] = apply_filters( 'fc_fragments_update_settings', array(
+				'updateFragmentsNonce' => wp_create_nonce( 'fc-fragments-refresh' ),
+			) );
+		}
+
+		// Filter settings
+		$settings = apply_filters( 'fc_js_settings', $settings );
+
+		return $settings;
 	}
 
 	/**
@@ -160,6 +179,10 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Register script utilities
 		wp_register_script( 'fc-utils', self::$directory_url . 'js/fc-utils'. self::$asset_version . '.js', array(), NULL );
 
+		// Register script fragments refresh
+		wp_register_script( 'fc-fragments-update', self::$directory_url . 'js/fc-fragments-refresh'. self::$asset_version . '.js', array( 'jquery', 'jquery-blockui', 'fc-utils' ), NULL );
+		wp_add_inline_script( 'fc-fragments-update', 'window.addEventListener("load",function(){FCFragmentsRefresh.init(fcSettings.fragmentsRefresh);})' );
+
 		// Register custom fonts
 		wp_register_style( 'fc-fonts', self::$directory_url . 'css/fonts' . self::$asset_version . '.css', array(), null );
 
@@ -168,6 +191,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_style( 'fc-add-payment-method-page', self::$directory_url . 'css/add-payment-method-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 		wp_register_style( 'fc-flyout-block', self::$directory_url . 'css/flyout-block' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 		wp_register_style( 'fc-sticky-states', self::$directory_url . 'css/sticky-states' . $rtl_suffix . self::$asset_version . '.css', array(), null );
+
+		// Register script fragments refresh
+		wp_register_style( 'fc-fragments-update', self::$directory_url . 'css/fragments-update' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 	}
 
 
@@ -204,7 +230,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Output settings object
 		$this->output_settings_inline_script();
 	}
-
 
 
 
@@ -274,7 +299,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Enqueue assets
 		$this->enqueue_custom_fonts();
 		$this->enqueue_assets();
-		
+
 		// Enqueue assets for the edit address page
 		$this->enqueue_assets_edit_address();
 	}
@@ -298,9 +323,33 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Enqueue assets
 		$this->enqueue_custom_fonts();
 		$this->enqueue_assets();
-		
+
 		// Enqueue assets for the add payment method page
 		$this->enqueue_assets_add_payment_method();
+	}
+
+
+
+	/**
+	 * Enqueue assets for fragments refresh.
+	 */
+	public function enqueue_assets_fragment_refresh() {
+		// Scripts
+		wp_enqueue_script( 'fc-fragments-update' );
+
+		// Styles
+		wp_enqueue_style( 'fc-fragments-update' );
+	}
+
+	/**
+	 * Dequeue assets for fragments refresh.
+	 */
+	public function dequeue_assets_fragment_refresh() {
+		// Scripts
+		wp_dequeue_script( 'fc-fragments-update' );
+
+		// Styles
+		wp_dequeue_style( 'fc-fragments-update' );
 	}
 
 
@@ -350,7 +399,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Get all plugins installed
 		$plugins_installed = get_plugins();
-		
+
 		foreach ( $plugins_installed as $plugin_file => $plugin_meta ) {
 			// Skip plugins not activated
 			if ( ! is_plugin_active( $plugin_file ) ) { continue; }
@@ -377,6 +426,22 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 				wp_enqueue_style( 'fc-plugin-compat-'.$plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
 			}
 		}
+	}
+
+
+
+	/**
+	 * AJAX Get update cart fragments.
+	 */
+	public function update_fragments() {
+		check_ajax_referer( 'fc-fragments-refresh', 'security' );
+
+		wp_send_json(
+			array(
+				'result'    => 'success',
+				'fragments' => apply_filters( 'fc_update_fragments', array() ),
+			)
+		);
 	}
 
 }
