@@ -4877,7 +4877,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Use the `WC_Customer` object for supported properties
 		foreach ( $customer_supported_field_keys as $field_key ) {
 			// Maybe skip email field if value is invalid
-			if ( 'billing_email' === $field_key && ! is_email( $posted_data[ $field_key ] ) ) { continue; }
+			if ( 'billing_email' === $field_key && array_key_exists( $field_key, $posted_data ) && ! is_email( $posted_data[ $field_key ] ) ) { continue; }
 
 			// Get the setter method name for the customer property
 			$setter = "set_$field_key";
