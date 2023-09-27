@@ -358,6 +358,23 @@
 		// Should do nothing if the default action has been cancelled
 		if ( e.defaultPrevented ) { return; }
 
+		// Bail if control keys pressed
+		if (
+			FCUtils.keyboardKeys.ESC === e.key
+			|| FCUtils.keyboardKeys.ENTER === e.key
+			|| FCUtils.keyboardKeys.TAB === e.key
+			|| FCUtils.keyboardKeys.CAPS === e.key
+			|| FCUtils.keyboardKeys.SHIFT === e.key
+			|| FCUtils.keyboardKeys.FUNCTION === e.key
+			|| FCUtils.keyboardKeys.CONTROL === e.key
+			|| FCUtils.keyboardKeys.COMMAND_OR_WINDOWS === e.key
+			|| FCUtils.keyboardKeys.ALT === e.key
+			|| FCUtils.keyboardKeys.ARROW_LEFT === e.key
+			|| FCUtils.keyboardKeys.ARROW_RIGHT === e.key
+			|| FCUtils.keyboardKeys.ARROW_UP === e.key
+			|| FCUtils.keyboardKeys.ARROW_DOWN === e.key
+		) { return; }
+
 		// LOADING INDICATOR
 		maybeSetLoadingIndicator( e );
 
@@ -389,7 +406,6 @@
 			// After fragments has been updated
 			$( document.body ).on( 'fc_fragments_refreshed', maybeChangeSectionState );
 		}
-
 
 		// Refresh triggers
 		window.addEventListener( 'change', handleChange );
