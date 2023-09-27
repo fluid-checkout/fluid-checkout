@@ -7,14 +7,6 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 
 	/**
-	 * Holds the flag to determine if the settings inline script has been output.
-	 */
-	private static $has_output_settings_inline_script = false;
-
-
-
-
-	/**
 	 * __construct function.
 	 */
 	public function __construct() {
