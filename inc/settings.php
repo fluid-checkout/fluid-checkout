@@ -51,6 +51,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_enable_checkout_express_checkout'                           => 'no',
 			'fc_enable_checkout_express_checkout_inline_buttons'            => 'no',
 			'fc_checkout_order_review_highlight_color'                      => null,
+			'fc_show_order_totals_row_highlighted'                          => 'no',
 			'fc_enable_checkout_sticky_order_summary'                       => 'yes',
 			'fc_pro_checkout_edit_cart_replace_edit_cart_link'              => 'edit_cart_link',
 			'fc_pro_enable_checkout_edit_cart'                              => 'no',

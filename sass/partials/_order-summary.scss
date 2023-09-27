@@ -131,6 +131,10 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	border-top: $order-summary-cell-border--totals-top;
 	border-bottom: $order-summary-cell-border--totals-bottom;
 }
+body.has-highlighted-order-totals div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total {
+	background-color: $lighter-grey;
+}
+
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table th,
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table td {
@@ -148,9 +152,12 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td {
 	width: 50%;
 	font-size: $order-summary-font-size;
-	text-align: $alignment-right !important; // Needed to override theme styles
 	line-height: 1;
 	vertical-align: middle;
+}
+
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table > tfoot > tr > td {
+	text-align: $alignment-right !important; // Needed to override theme styles
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total .tax_label,
@@ -267,9 +274,8 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table dl.variation {
-	margin-top: 0;
-	margin-bottom: 0;
-	padding-left: 0;
+	margin: 0 !important; // Need to override theme styles
+	padding: 0 !important; // Need to override theme styles
 	color: $grey;
 	font-size: $font-size-extra-small;
 }

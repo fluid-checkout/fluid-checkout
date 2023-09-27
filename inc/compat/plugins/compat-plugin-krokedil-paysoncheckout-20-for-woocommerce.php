@@ -45,6 +45,24 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 		add_action( 'pco_wc_after_order_review', 'pco_wc_show_another_gateway_button', 20 );
 	}
 
+
+
+	/**
+	 * Get classes to skip undo early hooks.
+	 */
+	public function get_skip_classes_undo_hooks_early_list() {
+		$skip_undo_hooks_classes = apply_filters( 'fc_compat_payson_checkout_skip_undo_hooks_early_classes', array( 'FluidCheckout_CheckoutPageTemplate', 'FluidCheckout_CheckoutWidgetAreas' ) );
+	}
+
+	/**
+	 * Get classes to skip undo hooks.
+	 */
+	public function get_skip_classes_undo_hooks_list() {
+		$skip_undo_hooks_classes = apply_filters( 'fc_compat_payson_checkout_skip_undo_hooks_classes', array( 'FluidCheckout_CheckoutPageTemplate' ) );
+	}
+
+
+
 	/**
 	 * Maybe undo hooks early.
 	 */
@@ -57,7 +75,7 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 
 		// Undo hooks from feature classes
 		$features_list = FluidCheckout::instance()->get_features_list();
-		$skip_undo_hooks_classes = array( 'FluidCheckout_CheckoutPageTemplate', 'FluidCheckout_CheckoutWidgetAreas' );
+		$skip_undo_hooks_classes = $this->get_skip_classes_undo_hooks_early_list();
 		foreach ( $features_list as $class_name => $args ) {
 			// Skip some classes
 			if ( in_array( $class_name, $skip_undo_hooks_classes ) ) { continue; }
@@ -87,7 +105,7 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 
 		// Undo hooks from feature classes
 		$features_list = FluidCheckout::instance()->get_features_list();
-		$skip_undo_hooks_classes = array( 'FluidCheckout_CheckoutPageTemplate', 'FluidCheckout_CheckoutWidgetAreas' );
+		$skip_undo_hooks_classes = $this->get_skip_classes_undo_hooks_list();
 		foreach ( $features_list as $class_name => $args ) {
 			// Skip some classes
 			if ( in_array( $class_name, $skip_undo_hooks_classes ) ) { continue; }

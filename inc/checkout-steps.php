@@ -73,7 +73,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
 		// Checkout header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) {
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) {
 			// Cart link on header
 			add_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
@@ -300,7 +300,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
 		// Checkout header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) {
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) {
 			// Cart link on header
 			remove_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
 			remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
@@ -492,8 +492,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$add_classes[] = 'has-fc-sidebar';
 		}
 
-		// Add extra class if using the our checkout header, otherwise if using the theme's header don't add this class
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) {
+		// Add extra class if using the our distraction free checkout header
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) {
 			$add_classes[] = 'has-checkout-header';
 		}
 
@@ -515,6 +515,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Add extra class to highlight the billing section
 		if ( true === apply_filters( 'fc_show_billing_section_highlighted', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_show_billing_section_highlighted' ) ) ) ) {
 			$add_classes[] = 'has-highlighted-billing-section';
+		}
+
+		// Add extra class to highlight the order totals row in the order summary table
+		if ( true === apply_filters( 'fc_show_order_totals_row_highlighted', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_show_order_totals_row_highlighted' ) ) ) ) {
+			$add_classes[] = 'has-highlighted-order-totals';
 		}
 
 		return array_merge( $classes, $add_classes );
@@ -751,9 +756,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the cart link for the checkout header.
 	 */
 	public function output_checkout_header_cart_link() {
-		ob_start();
-		wc_cart_totals_order_total_html();
-		$link_label_html = str_replace( 'includes_tax', 'includes_tax screen-reader-text', ob_get_clean() );
+		// Get cart totals
+		$cart_totals_html = '<strong>' . WC()->cart->get_total() . '</strong> ';
+		$link_label_html = preg_replace( '/<br\s*\/?>/i', '', $cart_totals_html );
 		$link_label_html = apply_filters( 'fc_checkout_header_cart_link_label_html', $link_label_html );
 		?>
 		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout__cart-link" aria-description="<?php echo esc_attr( __( 'Click to go to the order summary', 'fluid-checkout' ) ); ?>" data-flyout-toggle data-flyout-target="[data-flyout-order-review]"><span class="screen-reader-text"><?php echo esc_html( __( 'Cart total:', 'fluid-checkout' ) ); ?></span> <?php echo wp_kses_post( $link_label_html ); ?></a>
@@ -796,13 +801,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Add container class to the main content element.
+	 * Add container class to the main content element,
+	 * which adds spacing around the content for when the theme does not set any limits.
 	 *
-	 * @param string $class Main content element classes.
+	 * @param  string  $class  Main content element classes.
 	 */
 	public function add_content_section_class( $class ) {
-		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $class; }
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
 
 		// Maybe add the container class
 		if ( apply_filters( 'fc_add_container_class', true ) ) {
@@ -834,8 +840,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the checkout footer.
 	 */
 	public function output_checkout_footer() {
-		// Only display our checkout footer if the site footer is hidden
-		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return; }
+		// Bail if using theme header and footer
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
 
 		// Bail if nothing was added to the footer
 		if ( ! has_action( 'fc_checkout_footer_widgets' ) || ! ( is_active_sidebar( 'fc_checkout_footer' ) || has_action( 'fc_checkout_footer_widgets_inside_before' ) || has_action( 'fc_checkout_footer_widgets_inside_after' ) ) ) { return; }
@@ -4502,7 +4508,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$first    = true;
 
 		foreach ( $packages as $i => $package ) {
+			$available_methods = $package['rates'];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
+			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
 			$product_names = array();
 
 			if ( count( $packages ) > 1 ) {
@@ -4520,9 +4529,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 					'show_package_details'     => count( $packages ) > 1,
 					'show_shipping_calculator' => is_cart() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $i, $package ),
 					'package_details'          => implode( ', ', $product_names ),
-					'package_name'             => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
+					'package_name'             => apply_filters( 'fc_order_summary_shipping_package_name', $package_name, $method, $i, $package ),
+					'formatted_shipping_price' => $this->get_cart_totals_shipping_method_label( $method, $package, $i ),
 					'index'                    => $i,
 					'chosen_method'            => $chosen_method,
+					'method'                   => $method,
 					'formatted_destination'    => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
 					'has_calculated_shipping'  => WC()->customer->has_calculated_shipping(),
 				)
@@ -4536,15 +4547,39 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get shipping method label with only the cost, removing the label of the shipping method chosen.
 	 *
-	 * @param  WC_Shipping_Rate $method Shipping method rate data.
+	 * This function is intended to be used on the order summary shipping row only.
+	 * Changing the shipping method label with `woocommerce_cart_shipping_method_full_label` could have unintended consequences.
+	 *
+	 * @param  WC_Shipping_Rate  $method         Shipping method rate data.
+	 * @param  int               $package_index  Package index.
+	 * @param  array             $package        Package data.
 	 *
 	 * @return  string                  Shipping method label with only the cost.
 	 */
-	public function get_cart_totals_shipping_method_label( $method ) {
-		$method_label = $method->get_label();
+	public function get_cart_totals_shipping_method_label( $method, $package_index = 0, $package = null, $package_name = '' ) {
+		// Bail if shipping method data is not available
+		if ( ! $method ) { return; }
 
-		// Remove the shipping method label, leaving only the cost
-		$shipping_total_label = str_replace( $method_label.': ', '', wc_cart_totals_shipping_method_label( $method ) );
+		// Get the shipping method label from WooCommerce.
+		// This ensures that changes to the shipping method label applied by other plugins are also applied here.
+		$shipping_total_label = wc_cart_totals_shipping_method_label( $method );
+
+		// Get whether shipping method has costs
+		$has_cost  = 0 < $method->cost;
+
+		// Maybe remove the shipping method label, leaving only the cost
+		if ( $has_cost ) {
+			// Get the shipping method label and total
+			$method_label = $method->get_label();
+			$shipping_total_label = str_replace( $method_label.': ', '', $shipping_total_label );
+		}
+		// Otherwise, show price as zero if shipping method has no cost
+		else {
+			$shipping_total_label = wc_price( 0 );
+		}
+
+		// Filter the shipping method label
+		$shipping_total_label = apply_filters( 'fc_order_summary_shipping_package_price_html', $shipping_total_label, $method, $package_index, $package, $package_name );
 
 		return $shipping_total_label;
 	}
@@ -4842,7 +4877,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Use the `WC_Customer` object for supported properties
 		foreach ( $customer_supported_field_keys as $field_key ) {
 			// Maybe skip email field if value is invalid
-			if ( 'billing_email' === $field_key && ! is_email( $posted_data[ $field_key ] ) ) { continue; }
+			if ( 'billing_email' === $field_key && ( ! array_key_exists( $field_key, $posted_data ) || ! is_email( $posted_data[ $field_key ] ) ) ) { continue; }
 
 			// Get the setter method name for the customer property
 			$setter = "set_$field_key";
@@ -5082,16 +5117,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get option for hiding the site's original header and footer at the checkout page.
+	 * Define wheter using distraction free header and footer templates.
 	 *
-	 * @return       boolean  True if should hide the site's original header and footer at the checkout page, false otherwise.
-	 * @deprecated            Use `FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout()` instead.
+	 * @return  boolean  `true` when using distraction free header and footer templates on the checkout page, `false` otherwise.
+	 * 
+	 * @deprecated       Use `FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout()` instead.
 	 */
 	public function get_hide_site_header_footer_at_checkout() {
 		// Add deprecation notice
-		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() instead.', '2.3.0' );
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() instead.', '3.0.4' );
 
-		return FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout();
+		return FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout();
 	}
 
 

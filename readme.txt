@@ -3,7 +3,7 @@ Contributors: fluidwebco, diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.3
+Tested up to: 6.3.1
 Stable tag: 3.0.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -23,7 +23,7 @@ Similar to the Shopify checkout, and even better!
 
 **Better accessibility at the checkout page with support for keyboard-only navigation and screen readers.**
 
-[View detailed list of features on our website](https://fluidcheckout.com/features/)
+[View detailed list of features on our website](https://fluidcheckout.com/)
 
 <blockquote>
 <strong>Top notch plugin and support team!</strong>
@@ -388,6 +388,22 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Bump tested up to WordPress 6.3.1 and WooCommerce 8.1.1
+* Added: Compatibility with plugin Dintero Checkout for WooCommerce by Krokedil.
+* Added: New option to highlight the order totals row in the order summary on the checkout page.
+* Added: New filter `fc_expansible_section_toggle_label_{$key}_add_optional_text` to allow removing the text "(optional)" from specific optional fields.
+* Added: New filters `fc_order_summary_shipping_package_name` and `fc_order_summary_shipping_package_price_html` to allow changing the label and price for shipping charges on the order summary.
+* Added: Fragments update script that can be used by add-ons on pages that don't use native WooCommerce functions to update fragments.
+* Improved: Show localized price `0,00` (zero) as shipping charge price on the order summary when shipping method chosen does not have associated costs, instead of showing the shipping method name.
+* Improved: Compatibility with theme OceanWP: fix container class when using the theme header, and disable conflicting theme features.
+* Improved: Compatibility with plugin Mercado Pago payments for WooCommerce: set width to payment elements to avoid them overflowing the available space.
+* Improved: Use only the cart total value for the cart link on header for mobile view, instead of getting also taxes and info from other plugins.
+* Fixed: Styles for the shipping method items with classic and other design templates.
+* Fixed: Styles for the latest payment method list items when the payment box is not present.
+* Deprecated: Renamed function `FluidCheckout_CheckoutPageTemplate::get_hide_site_header_footer_at_checkout`, use `FluidCheckout_CheckoutPageTemplate::is_distraction_free_header_footer_checkout` instead.
+
 = 3.0.3 - 2023-09-13 =
 
 * Bump tested up to WooCommerce 8.1
@@ -443,134 +459,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Refactor settings to use centralized class with default values.
 * Improved: Refactor CSS to use CSS variables for customization.
 * Fixed: Auto selecting and overwriting text of email fields while typing.
-
-= 2.5.2 - 2023-06-30 =
-
-* Bump tested up to WordPress 6.2.2 and WooCommerce 7.8.1
-* Added: Translation to Greek (Greece).
-* Added: Compatibility with plugin Extra Product Options & Add-Ons for WooCommerce by ThemeComplete.
-* Added: Compatibility with plugin EU/UK VAT for WooCommerce by WPFactory.
-* Improved: Compatibility with theme Kadence. Use theme container class when using the theme's header and footer.
-* Fixed: Position for payment method logos.
-* Fixed: Losing focus while typing on address fields in some cases.
-* Fixed: Compatibility with plugin German Market. Place order button missing on mobile in some cases.
-
-= 2.5.1 - 2023-05-31 =
-
-* Added: Compatibility with plugin GP Premium by GeneratePress.
-* Improved: Compatibility with theme Enfold.
-* Fixed: Password visibility button not showing when the form section is replaced via checkout fragments.
-
-= 2.5.0 - 2023-05-29 =
-
-IMPORTANT FIX: Critical error introduced in v2.4.0 where functionality was broken with some themes.
-
-* Bump tested up to WooCommerce 7.7.0
-* Added: Add instant validation for Brazilian documents fields CPF and CNPJ.
-* Improved: Added CSS variables for many aspects of the design including: colors, borders, some sizing and spacing aspects.
-* Improved: Compatibility with theme Electro. Support for all pre-defined theme colors, custom theme color and dark mode.
-* Improved: Compatibility with plugin Brazilian Market v3.8.0 or newer. Use new Brazilian documents validation.
-* Improved: Compatibility with plugin Mercado Pago payments for WooCommerce.
-* Improved: Compatibility with plugin PayPal Brasil para WooCommerce.
-* Improved: Compatibility with Delivery & Pickup Date Time for WooCommerce - by CodeRockz, avoid PHP warning messages when that plugin settings are not saved yet.
-* Improved: Output JS settings object directly to the page head element without being associated with enqueued scripts.
-* Improved: Prevent replacing the payment methods section while updating checkout fragments when user switches application or hide the browser app on their devices.
-* Improved: Disable default checkout validation from WooCommerce when validation from Fluid Checkout is enabled.
-* Fixed: Compatibility with plugin Oxygen Builder.
-* Fixed: Compatibility with theme Minimog, missing dependencies on cart page breaking functionality.
-* Fixed: Missing script dependencies breaking functionality on some themes.
-* Fixed: Contact step being defined as incomplete when account registration is required but user is already logged in.
-* Fixed: Unblock place order button if an unexpected error happens while trying to complete a purchase.
-
-= 2.4.0 - 2023-04-21 =
-
-* Bump tested up to WooCommerce 7.6.0
-* Improved: Refactored scripts to reduce duplicate code of utility functions and variables.
-* Improved: Removed dependency on the library RequireBundle to load scripts and styles.
-* Improved: Revert to execute scripts on `load` instead of page `DOMContentLoaded` for better compatibility. Most notably with Cloudflare Rocket Loader.
-* Improved: Compatibility with Delivery & Pickup Date Time for WooCommerce - by CodeRockz, avoid PHP warning messages when that plugin settings are not saved yet.
-* Improved: Update file checkout.js with latest changes to the original file on the WooCommerce plugin.
-* Fixed: Do not display "+ Add" link buttons for optional fields that are also hidden from the page.
-* Fixed: Checkout steps script preventing ENTER key to execute some actions when inside some checkout fields.
-
-= 2.3.4 - 2023-04-06 =
-
-* Bump tested up to WordPress 6.2 and WooCommerce 7.5.1
-* Added: New option to only show checkout sidebar widgets when viewing the last step of checkout on mobile devices.
-* Added: Compatibility with plugin Woo Additional Terms by MyPreview.
-* Added: Compatibility with plugin Woo Additional Terms PRO by MyPreview.
-* Added: Compatibility with plugin YITH WooCommerce Wishlist by YITH.
-* Improved: Compatibility with theme Divi, load checkout page preview when editing the page with the Divi Builder editor.
-* Improved: Compatibility with theme Flatsome, correctly recover field focus on desktop devices when updating checkout fragments if the theme feature Float Labels is activated -- this does not work well for mobile devices due to browser limitations.
-* Improved: Compatibility with plugin Payment Plugins for Stripe WooCommerce, fixing the position for the Stripe Link logo.
-* Improved: Compatibility with plugin Elementor, display checkout steps when editing the checkout page on Elementor.
-* Improved: Added new JS events `fc_checkout_fragments_replace_before` and `fc_checkout_fragments_replace_after` to allow external scripts to run processes before and after replacing checkout fragments.
-* Improved: Added new filter `fc_coupon_code_field_description` to change or add a description below the coupon code field.
-* Fixed: Duplicated MailCheck suggestion message.
-* Fixed: Form loading indicator getting stuck after updating the checkout.js file to use native `fetch` function instead of jQuery Ajax.
-* Fixed: Order summary getting sticky state on mobile when it should not, causing other elements to be overlapping and hidden.
-* Fixed: Logic for the filter `fc_force_register_steps`.
-* Fixed: Shipping step not working in some circunstances.
-* Fixed: Fatal error when trying to determine if a checkout step should be rendered too early.
-
-= 2.3.3 - 2023-03-22 =
-
-IMPORTANT FIX: Critical error with the checkout steps count when shipping is not needed for the order, and the multi-step layout is used.
-
-* Improved: Remove option to set billing address to same as shipping when the shipping address is not usable for billing.
-* Improved: Try to expand or collapse fields after changing country on address sections.
-* Fixed: Shipping address and shipping method not updating correctly on the checkout page when address is changed from the shipping calculator on the cart page.
-* Fixed: Error on Brazilian Market plugin scripts introduced in previous versions of Fluid Checkout Lite.
-* Fixed: Critical error with the checkout steps count when shipping is not needed for the order, and the multi-step layout is used.
-* Fixed: Fatal error when trying to update checkout parts and the email field has an invalid email value.
-
-= 2.3.2 - 2023-03-13 =
-
-IMPORTANT FIX: Compatibility with plugin Payment Plugins for PayPal WooCommerce not working properly on mobile devices.
-
-* Bump tested up to WooCommerce 7.5
-* Improved: Add a safe location for translation files at `wp-content/languages/fluid-checkout/`.
-* Improved: Support for language variations to use the main language translation. (Ie.: `es_AR` will use `es_ES` for the translation).
-* Improved: Set constants `WOOCOMMERCE_CART` and `WOOCOMMERCE_CHECKOUT` when processing cart and checkout fragment requests respectively. This should fix compatibilty with some plugins.
-* Improved: Update file checkout.js with latest changes to the original file on the WooCommerce plugin.
-* Improved: Add security check to dismiss admin notice links and fix related PHP 8.1 deprecated notices.
-* Fixed: Multiple issues when trying to customize template files.
-* Fixed: Critical issue on compatibility with Payment Plugins for PayPal WooCommerce (version 1.0.25+) where the PayPal buttons and secure popup did not work properly on mobile devices, and sometimes also not on desktop devices.
-
-= 2.3.1 - 2023-02-28 =
-
-* Added: Translation to Polish (Poland).
-* Added: New filter `fc_is_checkout_page_or_fragment` to set the current request as a checkout request in some cases.
-* Added: Compatibility with plugin YITH WooCommerce Uploads Premium.
-* Fixed: Compatibility with plugin Sendinblue - WooCommerce Email Marketing versions 3.0.0+.
-* Fixed: Display notice to enter complete shipping address to see shipping methods available, instead of an error message from the start.
-* Fixed: Login link when matching account is detected while trying to place an order with the PayPal plugin from Webtoffee.
-* Fixed: Additional notes field not visible when previously hidden using the Elementor PRO Checkout widget.
-* Fixed: Fatal error trying to save changes to the checkout page when using Elementor editor.
-
-= 2.3.0 - 2023-01-27 =
-
-POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause customizations to those files to stop working. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/) and fix possible issues with your customizations.
-
-* Bump tested up to WooCommerce 7.4.0
-* Added: Compatibility with theme Martfury.
-* Added: Compatibility with plugin Klarna Checkout for WooCommerce by Krokedil.
-* Added: Compatibility with plugin Klarna Payments for WooCommerce by Krokedil.
-* Added: Compatibility with plugin PaysonCheckout for WooCommerce by Krokedil.
-* Added: Functions `undo_hooks` to feature files to allow undoing hook changes in some rare cases.
-* Improved: Persist checked state for create account checkbox and use Collapsible Block script to show/hide the account fields section.
-* Improved: Add loading indicator on the place order button, and other buttons and input fields.
-* Improved: Prevent starting "update checkout" requests while processing place order submit.
-* Improved: Separate styles for checkout layout and checkout steps into different files, allowing to load them independently.
-* Improved: Moved template files to a better structure, making it consistent with the PRO plugin structure and easier to understand. See documentation on [how to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/)  and fix possible issues with your customizations.
-* Improved: Changed the way plugin feature files are registered.
-* Removed: Filter `fc_init_features_list` as it has no valid use case.
-* Deprecated: FluidCheckout::locate_template, use FluidCheckout_Steps::locate_template instead.
-* Deprecated: FluidCheckout_Steps::get_hide_site_header_footer_at_checkout, use FluidCheckout_CheckoutPageTemplate::get_hide_site_header_footer_at_checkout instead.
-* Fixed: Set contact step as incomplete when create account checkbox is checked and required fields do not have a value.
-* Fixed: Missing login form styles on some themes.
-* Fixed: Only load modifield WooCommerce script files on the affected pages.
-* Fixed: Compatibility with plugin Hezarfen causing pages to stop processing.
 
 [See complete changelog](https://fluidcheckout.com/docs/changelog-fluid-checkout/)
 

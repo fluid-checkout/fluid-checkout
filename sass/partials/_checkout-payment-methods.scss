@@ -73,8 +73,8 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	width: 100%;
 	border: $option-box-label-border;
 	border-top: 0;
-	border-left: 0;
-	border-right: 0;
+	border-#{ $alignment-left }: 0;
+	border-#{ $alignment-right }: 0;
 	background-color: $option-box-background-color;
 	font-weight: $payment-method-font-weight;
 	line-height: $option-box-radio-size;
@@ -85,8 +85,8 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	&:hover,
 	&:focus {
 		border-top: 0;
-		border-left: 0;
-		border-right: 0;
+		border-#{ $alignment-left }: 0;
+		border-#{ $alignment-right }: 0;
 	}
 }
 .fc-wrapper #payment .payment_methods > .wc_payment_method:first-of-type > label,
@@ -94,8 +94,10 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	border-top-#{ $alignment-left}-radius: $option-box-border-radius;
 	border-top-#{ $alignment-right}-radius: $option-box-border-radius;
 }
-.fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name="payment_method"]:not( :checked ) ~ label,
-#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name="payment_method"]:not( :checked ) ~ label,
+.fc-wrapper #payment .payment_methods > .wc_payment_method.has-payment-box:last-of-type input[name="payment_method"]:not( :checked ) ~ label,
+#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method.has-payment-box:last-of-type input[name="payment_method"]:not( :checked ) ~ label,
+.fc-wrapper #payment .payment_methods > .wc_payment_method:not( .has-payment-box ):last-of-type input[name="payment_method"] ~ label,
+#add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:not( .has-payment-box ):last-of-type input[name="payment_method"] ~ label,
 .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name="payment_method"]:checked ~ .payment_box,
 #add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name="payment_method"]:checked ~ .payment_box {
 	border-bottom: 0;
@@ -109,8 +111,8 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name="payment_method"]:checked + label {
 	border-top: 0;
-	border-left: 0;
-	border-right: 0;
+	border-#{ $alignment-left }: 0;
+	border-#{ $alignment-right }: 0;
 	border-color: $option-box-label-border-color--checked;
 	background-color: $option-box-background-color--checked;
 	color: $option-box-label-color--checked;
