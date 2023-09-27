@@ -3,7 +3,7 @@ Contributors: fluidwebco, diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.3
+Tested up to: 6.3.1
 Stable tag: 3.0.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -390,6 +390,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WordPress 6.3.1 and WooCommerce 8.1.1
 * Added: Compatibility with plugin Dintero Checkout for WooCommerce by Krokedil.
 * Added: New option to highlight the order totals row in the order summary on the checkout page.
 * Added: New filter `fc_expansible_section_toggle_label_{$key}_add_optional_text` to allow removing the text "(optional)" from specific optional fields.
