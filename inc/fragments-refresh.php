@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Fragments update for pages that do not have native WooCommerce functions to update fragments.
  */
-class FluidCheckout_FragmentsUpdate extends FluidCheckout {
+class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 
 	/**
 	 * Holds the flag to determine if the settings inline script has been output.
@@ -139,4 +139,4 @@ class FluidCheckout_FragmentsUpdate extends FluidCheckout {
 
 }
 
-FluidCheckout_FragmentsUpdate::instance();
+FluidCheckout_FragmentsRefresh::instance();
