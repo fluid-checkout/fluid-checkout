@@ -43,9 +43,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Theme and Plugin Compatibility
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_styles' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_plugin_compat_styles' ), 10 );
-
-		// Fragments refresh
-		add_action( 'wc_ajax_fc_update_fragments', array( $this, 'update_fragments' ), 10 );
 	}
 
 
@@ -69,9 +66,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Theme and Plugin Compatibility
 		// Should not remove theme and plugin compatibility hooks. Keep this comment here for future reference.
-
-		// Fragments refresh
-		remove_action( 'wc_ajax_fc_update_fragments', array( $this, 'update_fragments' ), 10 );
 	}
 
 
@@ -146,13 +140,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			) ) ),
 		);
 
-		// Maybe add settings for fragments refresh
-		if ( true === apply_filters( 'fc_enable_fragments_refresh', false ) ) {
-			$settings[ 'fragmentsRefresh' ] = apply_filters( 'fc_fragments_update_settings', array(
-				'updateFragmentsNonce' => wp_create_nonce( 'fc-fragments-refresh' ),
-			) );
-		}
-
 		// Filter settings
 		$settings = apply_filters( 'fc_js_settings', $settings );
 
@@ -179,10 +166,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Register script utilities
 		wp_register_script( 'fc-utils', self::$directory_url . 'js/fc-utils'. self::$asset_version . '.js', array(), NULL );
 
-		// Register script fragments refresh
-		wp_register_script( 'fc-fragments-update', self::$directory_url . 'js/fc-fragments-refresh'. self::$asset_version . '.js', array( 'jquery', 'jquery-blockui', 'fc-utils' ), NULL );
-		wp_add_inline_script( 'fc-fragments-update', 'window.addEventListener("load",function(){FCFragmentsRefresh.init(fcSettings.fragmentsRefresh);})' );
-
 		// Register custom fonts
 		wp_register_style( 'fc-fonts', self::$directory_url . 'css/fonts' . self::$asset_version . '.css', array(), null );
 
@@ -191,9 +174,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_style( 'fc-add-payment-method-page', self::$directory_url . 'css/add-payment-method-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 		wp_register_style( 'fc-flyout-block', self::$directory_url . 'css/flyout-block' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 		wp_register_style( 'fc-sticky-states', self::$directory_url . 'css/sticky-states' . $rtl_suffix . self::$asset_version . '.css', array(), null );
-
-		// Register script fragments refresh
-		wp_register_style( 'fc-fragments-update', self::$directory_url . 'css/fragments-update' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 	}
 
 
@@ -331,30 +311,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 	/**
-	 * Enqueue assets for fragments refresh.
-	 */
-	public function enqueue_assets_fragment_refresh() {
-		// Scripts
-		wp_enqueue_script( 'fc-fragments-update' );
-
-		// Styles
-		wp_enqueue_style( 'fc-fragments-update' );
-	}
-
-	/**
-	 * Dequeue assets for fragments refresh.
-	 */
-	public function dequeue_assets_fragment_refresh() {
-		// Scripts
-		wp_dequeue_script( 'fc-fragments-update' );
-
-		// Styles
-		wp_dequeue_style( 'fc-fragments-update' );
-	}
-
-
-
-	/**
 	 * Enqueue themes compatibility styles.
 	 * @since 1.2.0
 	 */
@@ -426,22 +382,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 				wp_enqueue_style( 'fc-plugin-compat-'.$plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
 			}
 		}
-	}
-
-
-
-	/**
-	 * AJAX Get update cart fragments.
-	 */
-	public function update_fragments() {
-		check_ajax_referer( 'fc-fragments-refresh', 'security' );
-
-		wp_send_json(
-			array(
-				'result'    => 'success',
-				'fragments' => apply_filters( 'fc_update_fragments', array() ),
-			)
-		);
 	}
 
 }

@@ -313,6 +313,7 @@ class FluidCheckout {
 		self::$features = array(
 			'FluidCheckout_DesignTemplates'                => array( 'file' => self::$directory_path . 'inc/design-templates.php' ),
 			'FluidCheckout_CheckoutPageTemplate'           => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php' ),
+			'FluidCheckout_FragmentsUpdate'                => array( 'file' => self::$directory_path . 'inc/fragments-update.php' ),
 			'FluidCheckout_Steps'                          => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
 			'FluidCheckout_CouponCodes'                    => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ),
 			'FluidCheckout_CartShippingCalculator'         => array( 'file' => self::$directory_path . 'inc/cart-shipping-calculator.php' ),
