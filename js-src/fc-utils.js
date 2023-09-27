@@ -31,10 +31,13 @@
 	 * Mapping of keyboard keys based on and comparable with `event.key` values.
 	 */
 	_publicMethods.keyboardKeys = {
+		ESC: 'Escape',
 		ENTER: 'Enter',
 		SPACE: ' ',
 		TAB: 'Tab',
+		CAPS: 'CapsLock',
 		SHIFT: 'Shift',
+		FUNCTION: 'Fn',
 		CONTROL: 'Control',
 		COMMAND_OR_WINDOWS: 'Meta', // This is the `Windows` logo key, or the `Command` or `⌘` key on Mac keyboards.
 		ALT: 'Alt',
