@@ -35,6 +35,7 @@ class FluidCheckout_ThemeCompat_WordPressThemeAtomion extends FluidCheckout {
 	 */
 	public function late_hooks() {
 		// Checkout elements
+		remove_action( 'atomion_breadcrumb', 'atomion_order_progress', 15 );
 		remove_action( 'woocommerce_after_checkout_form', 'atomion_wc_required_fields_note', 10 );
 	}
 
