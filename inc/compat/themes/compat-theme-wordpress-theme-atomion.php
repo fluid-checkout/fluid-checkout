@@ -35,6 +35,9 @@ class FluidCheckout_ThemeCompat_WordPressThemeAtomion extends FluidCheckout {
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
+
+		// Cart items
+		add_filter( 'atomion_wc_checkout_description_show_excerpt_with_markup', array( $this, 'maybe_change_cart_item_description_html' ), 10 );
 	}
 
 	/**
@@ -98,6 +101,31 @@ class FluidCheckout_ThemeCompat_WordPressThemeAtomion extends FluidCheckout {
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+
+
+	/**
+	 * Change the cart item description HTML.
+	 *
+	 * @param   string   $html    The cart item description HTML.
+	 */
+	public function change_cart_item_description_html( $html ) {
+		$html = str_replace( '<br><small>', '<div class="cart-item__element cart-item__description"><small>', $html );
+		$html = str_replace( '</small>', '</small></div>', $html );
+		return $html;
+	}
+
+	/**
+	 * Maybe change the cart item description HTML for the checkout page.
+	 *
+	 * @param   string   $html    The cart item description HTML.
+	 */
+	public function maybe_change_cart_item_description_html( $html ) {
+		// Bail if not on checkout page or fragment
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $html; }
+
+		return $this->change_cart_item_description_html( $html );
 	}
 
 }
