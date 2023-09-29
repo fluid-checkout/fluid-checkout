@@ -61,5 +61,5 @@ div.woocommerce form #billing_same_as_shipping_field.form-row {
 }
 
 div.woocommerce form #billing_same_as_shipping_field.form-row label {
-	display: inline-block;
+	display: inline-block !important; // Needed to override theme styles
 }

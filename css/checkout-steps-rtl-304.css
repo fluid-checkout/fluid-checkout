@@ -725,7 +725,7 @@ div.woocommerce form #billing_same_as_shipping_field.form-row {
 }
 
 div.woocommerce form #billing_same_as_shipping_field.form-row label {
-  display: inline-block;
+  display: inline-block !important;
 }
 
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] {
