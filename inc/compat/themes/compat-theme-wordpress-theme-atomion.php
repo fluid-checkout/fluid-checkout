@@ -34,9 +34,11 @@ class FluidCheckout_ThemeCompat_WordPressThemeAtomion extends FluidCheckout {
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
-		// Checkout elements
+		// Theme elements
 		remove_action( 'atomion_breadcrumb', 'atomion_order_progress', 15 );
 		remove_action( 'woocommerce_after_checkout_form', 'atomion_wc_required_fields_note', 10 );
+		remove_action( 'woocommerce_review_order_before_submit', 'atomion_checkout_go_back_button', 10 );
+		remove_action( 'woocommerce_checkout_order_review', 'atomion_checkout_go_back_button', 50 );
 	}
 
 
