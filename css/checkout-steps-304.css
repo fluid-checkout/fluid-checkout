@@ -224,6 +224,10 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-step__substep .fc-step
   }
 }
 
+body.woocommerce-checkout form.woocommerce-checkout {
+  float: none;
+}
+
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep:before,
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep:after,
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:before,
