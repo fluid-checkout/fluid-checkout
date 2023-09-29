@@ -36,7 +36,7 @@ class FluidCheckout_ThemeCompat_WordPressThemeAtomion extends FluidCheckout {
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
 
-		// Cart items
+		// Cart items description
 		add_filter( 'atomion_wc_checkout_description_show_excerpt_with_markup', array( $this, 'maybe_change_cart_item_description_html' ), 10 );
 	}
 
