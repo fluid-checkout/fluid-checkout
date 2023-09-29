@@ -29,8 +29,12 @@ class FluidCheckout_ThemeCompat_WordPressThemeAtomion extends FluidCheckout {
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
 	}
 
 	/**
@@ -58,6 +62,42 @@ class FluidCheckout_ThemeCompat_WordPressThemeAtomion extends FluidCheckout {
 		$attributes['data-sticky-relative-to'] = '.header-main.sticky';
 
 		return $attributes;
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Get theme main color
+		$main_color = get_theme_mod( 'gc_primary_color_setting', '#37B9E3' );
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Primary button color
+				'--fluidcheckout--button--primary--border-color' => $main_color,
+				'--fluidcheckout--button--primary--background-color' => $main_color,
+				'--fluidcheckout--button--primary--border-color--hover' => $main_color,
+				'--fluidcheckout--button--primary--background-color--hover' => 'transparent',
+				'--fluidcheckout--button--primary--text-color--hover' => $main_color,
+
+				// Secondary button color
+				'--fluidcheckout--button--secondary--border-color--hover' => $main_color,
+				'--fluidcheckout--button--secondary--background-color--hover' => 'transparent',
+				'--fluidcheckout--button--secondary--text-color--hover' => $main_color,
+
+				// Button design styles
+				'--fluidcheckout--button--border-width' => '3px',
+				'--fluidcheckout--button--height' => '50px',
+				'--fluidcheckout--button--font-weight' => 'bold',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }
