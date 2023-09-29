@@ -27,10 +27,10 @@ body.has-fc-button-colors.has-checkout-layout--multi-step .fc-step__actions .fc-
   background-color: var(--fluidcheckout--button--primary--background-color, var(--fluidcheckout--color--black, #000)) !important;
   color: var(--fluidcheckout--button--primary--text-color, var(--fluidcheckout--color--white, #fff)) !important;
 }
-body.has-fc-button-colors .fc-wrapper .fc-place-order .fc-place-order-button:hover,
-body.has-fc-button-colors.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:hover, body.has-fc-button-colors .fc-wrapper .fc-place-order .fc-place-order-button:focus,
-body.has-fc-button-colors.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:focus, body.has-fc-button-colors .fc-wrapper .fc-place-order .fc-place-order-button:active,
-body.has-fc-button-colors.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:active {
+body.has-fc-button-colors .fc-wrapper .fc-place-order .fc-place-order-button:not([disabled]):not(.disabled):hover,
+body.has-fc-button-colors.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:not([disabled]):not(.disabled):hover, body.has-fc-button-colors .fc-wrapper .fc-place-order .fc-place-order-button:not([disabled]):not(.disabled):focus,
+body.has-fc-button-colors.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:not([disabled]):not(.disabled):focus, body.has-fc-button-colors .fc-wrapper .fc-place-order .fc-place-order-button:not([disabled]):not(.disabled):active,
+body.has-fc-button-colors.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:not([disabled]):not(.disabled):active {
   border-color: var(--fluidcheckout--button--primary--border-color--hover, var(--fluidcheckout--color--darker-grey, #1E212B)) !important;
   background-color: var(--fluidcheckout--button--primary--background-color--hover, var(--fluidcheckout--color--darker-grey, #1E212B)) !important;
   color: var(--fluidcheckout--button--primary--text-color--hover, var(--fluidcheckout--color--white, #fff)) !important;
@@ -41,7 +41,7 @@ body.has-fc-button-colors.has-checkout-layout--multi-step .fc-wrapper .fc-step__
   background-color: var(--fluidcheckout--button--secondary--background-color, var(--fluidcheckout--color--lighter-grey, #f3f3f3)) !important;
   color: var(--fluidcheckout--button--secondary--text-color, var(--fluidcheckout--color--black, #000)) !important;
 }
-body.has-fc-button-colors.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save:hover, body.has-fc-button-colors.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save:focus, body.has-fc-button-colors.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save:active {
+body.has-fc-button-colors.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save:not([disabled]):not(.disabled):hover, body.has-fc-button-colors.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save:not([disabled]):not(.disabled):focus, body.has-fc-button-colors.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save:not([disabled]):not(.disabled):active {
   border-color: var(--fluidcheckout--button--secondary--border-color--hover, var(--fluidcheckout--color--light-grey, #d8d8d8)) !important;
   background-color: var(--fluidcheckout--button--secondary--background-color--hover, var(--fluidcheckout--color--light-grey, #d8d8d8)) !important;
   color: var(--fluidcheckout--button--secondary--text-color--hover, var(--fluidcheckout--color--black, #000)) !important;

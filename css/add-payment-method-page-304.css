@@ -17,7 +17,7 @@ body.has-fc-button-colors #add_payment_method #place_order {
   background-color: var(--fluidcheckout--button--primary--background-color, var(--fluidcheckout--color--black, #000)) !important;
   color: var(--fluidcheckout--button--primary--text-color, var(--fluidcheckout--color--white, #fff)) !important;
 }
-body.has-fc-button-colors #add_payment_method #place_order:hover, body.has-fc-button-colors #add_payment_method #place_order:focus, body.has-fc-button-colors #add_payment_method #place_order:active {
+body.has-fc-button-colors #add_payment_method #place_order:not([disabled]):not(.disabled):hover, body.has-fc-button-colors #add_payment_method #place_order:not([disabled]):not(.disabled):focus, body.has-fc-button-colors #add_payment_method #place_order:not([disabled]):not(.disabled):active {
   border-color: var(--fluidcheckout--button--primary--border-color--hover, var(--fluidcheckout--color--darker-grey, #1E212B)) !important;
   background-color: var(--fluidcheckout--button--primary--background-color--hover, var(--fluidcheckout--color--darker-grey, #1E212B)) !important;
   color: var(--fluidcheckout--button--primary--text-color--hover, var(--fluidcheckout--color--white, #fff)) !important;
