@@ -207,6 +207,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	padding: $global-spacing-small;
 	border-bottom: $option-box-border;
 	background-color: $lighter-grey;
+	border-radius: 0;
 
 	@media (#{$bp-larger-than-tablet}) {
 		padding: $global-spacing-small calc( #{ $option-box-radio-size } +  #{ $option-box-padding-horizontal } );
