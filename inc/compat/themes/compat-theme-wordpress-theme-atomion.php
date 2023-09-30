@@ -19,8 +19,8 @@ class FluidCheckout_ThemeCompat_WordPressThemeAtomion extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Late hooks
-		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
@@ -47,14 +47,21 @@ class FluidCheckout_ThemeCompat_WordPressThemeAtomion extends FluidCheckout {
 	}
 
 	/**
-	 * Add or remove late hooks.
+	 * Add or remove very late hooks.
 	 */
-	public function late_hooks() {
+	public function very_late_hooks() {
 		// Theme elements
-		remove_action( 'atomion_breadcrumb', 'atomion_order_progress', 15 );
 		remove_action( 'woocommerce_after_checkout_form', 'atomion_wc_required_fields_note', 10 );
 		remove_action( 'woocommerce_review_order_before_submit', 'atomion_checkout_go_back_button', 10 );
 		remove_action( 'woocommerce_checkout_order_review', 'atomion_checkout_go_back_button', 50 );
+
+		// Order progress
+		if ( FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) {
+			remove_action( 'atomion_breadcrumb', 'atomion_order_progress', 15 );
+		}
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_atomion_display_order_progress' ) ) {
+			add_action( 'woocommerce_before_checkout_form_cart_notices', 'atomion_order_progress', 10 );
+		}
 
 		// Form fields
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_atomion_display_field_labels' ) ) {
@@ -80,6 +87,15 @@ class FluidCheckout_ThemeCompat_WordPressThemeAtomion extends FluidCheckout {
 				'title' => __( 'Theme Atomion', 'fluid-checkout' ),
 				'type'  => 'title',
 				'id'    => 'fc_integrations_theme_atomion_options',
+			),
+
+			array(
+				'title'           => __( 'Order progress', 'fluid-checkout' ),
+				'desc'            => __( 'Display order progress from the theme', 'fluid-checkout' ),
+				'id'              => 'fc_compat_theme_atomion_display_order_progress',
+				'type'            => 'checkbox',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_atomion_display_order_progress' ),
+				'autoload'        => false,
 			),
 
 			array(
