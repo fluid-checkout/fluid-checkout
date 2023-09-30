@@ -15,5 +15,5 @@ body.theme-wordpress-theme-atomion div.woocommerce .fc-wrapper #order_review tab
 
 body.theme-wordpress-theme-atomion div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total th,
 body.theme-wordpress-theme-atomion div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total td {
-  border-bottom: none !important;
+  border-bottom: 0 !important;
 }
