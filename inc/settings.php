@@ -127,6 +127,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'woocommerce_enable_guest_checkout'                             => 'yes',
 		
 			// Compatibility settings for themes.
+			'fc_compat_theme_atomion_display_field_labels'                  => 'yes',
 			'fc_compat_theme_impreza_header_spacing'                        => null,
 			'fc_compat_theme_zk_nito_display_field_labels'                  => 'no',
 			'fc_compat_theme_zk_nito_add_extra_fields'                      => 'no',

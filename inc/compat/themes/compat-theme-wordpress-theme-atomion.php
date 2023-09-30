@@ -22,6 +22,12 @@ class FluidCheckout_ThemeCompat_WordPressThemeAtomion extends FluidCheckout {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
+		// General
+		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
+
+		// Settings
+		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
@@ -49,6 +55,74 @@ class FluidCheckout_ThemeCompat_WordPressThemeAtomion extends FluidCheckout {
 		remove_action( 'woocommerce_after_checkout_form', 'atomion_wc_required_fields_note', 10 );
 		remove_action( 'woocommerce_review_order_before_submit', 'atomion_checkout_go_back_button', 10 );
 		remove_action( 'woocommerce_checkout_order_review', 'atomion_checkout_go_back_button', 50 );
+
+		// Form fields
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_atomion_display_field_labels' ) ) {
+			remove_filter( 'woocommerce_default_address_fields', 'atomion_wc_checkout_fields_set_placeholder', 20, 1 );
+			remove_filter( 'woocommerce_billing_fields', 'atomion_wc_checkout_fields_set_placeholder_additonal_fields', 20, 1 );
+			remove_filter( 'woocommerce_checkout_fields', 'atomion_wc_checkout_fields_remove_label', 10 );
+
+		}
+	}
+
+
+
+	/**
+	 * Add new settings to the Fluid Checkout admin settings sections.
+	 *
+	 * @param   array   $settings         Array with all settings for the current section.
+	 * @param   string  $current_section  Current section name.
+	 */
+	public function add_settings( $settings ) {
+
+		// Add new settings
+		$settings_new = array(
+			array(
+				'title' => __( 'Theme Atomion', 'fluid-checkout' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_theme_atomion_options',
+			),
+
+			array(
+				'title'           => __( 'Checkout fields', 'fluid-checkout' ),
+				'desc'            => __( 'Display the form field labels visible on the page', 'fluid-checkout' ),
+				'desc_tip'        => __( 'It is recommended to keep this option enabled for a better user experience.', 'fluid-checkout' ),
+				'id'              => 'fc_compat_theme_atomion_display_field_labels',
+				'type'            => 'checkbox',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_atomion_display_field_labels' ),
+				'autoload'        => false,
+			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_theme_atomion_options',
+			),
+		);
+
+		$settings = array_merge( $settings, $settings_new );
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Add page body class for feature detection.
+	 *
+	 * @param array $classes Classes for the body element.
+	 */
+	public function add_body_class( $classes ) {
+		// Bail if not on checkout page.
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
+
+		$add_classes = array();
+
+		// Add extra class when displaying field labels
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_atomion_display_field_labels' ) ) {
+			$add_classes[] = 'has-visible-form-field-labels';
+		}
+
+		return array_merge( $classes, $add_classes );
 	}
 
 

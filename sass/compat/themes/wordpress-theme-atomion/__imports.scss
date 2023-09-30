@@ -24,4 +24,5 @@ $_body-theme-selector:                 '.theme-wordpress-theme-atomion' !default
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"woocommerce-form-fields",
 	"order-summary";
