@@ -61,7 +61,6 @@ class FluidCheckout_ThemeCompat_WordPressThemeAtomion extends FluidCheckout {
 			remove_filter( 'woocommerce_default_address_fields', 'atomion_wc_checkout_fields_set_placeholder', 20, 1 );
 			remove_filter( 'woocommerce_billing_fields', 'atomion_wc_checkout_fields_set_placeholder_additonal_fields', 20, 1 );
 			remove_filter( 'woocommerce_checkout_fields', 'atomion_wc_checkout_fields_remove_label', 10 );
-
 		}
 	}
 
