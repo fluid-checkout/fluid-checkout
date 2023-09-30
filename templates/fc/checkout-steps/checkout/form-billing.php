@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
- * @fc-version 1.5.8
+ * @fc-version 3.0.5
  * @global WC_Checkout $checkout
  */
 
@@ -44,15 +44,18 @@ $collapsible_initial_state = WC()->cart->needs_shipping_address() && FluidChecko
 	<?php do_action( 'fc_before_checkout_billing_only_form', $checkout ); ?>
 
 	<?php // CHANGE: Display billing only fields ?>
-	<?php if ( count( $billing_only_fields ) > 0 ) : ?>
+	<?php if ( count( $billing_only_fields ) > 0 || has_action( 'fc_after_checkout_billing_only_form_inside' ) ) : ?>
 	<div class="woocommerce-billing-only-fields__field-wrapper">
 		<?php
 		foreach ( $billing_only_fields as $key => $field ) {
 			woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
 		}
 		?>
+
+		<?php do_action( 'fc_after_checkout_billing_only_form_inside', $checkout ); ?>
 	</div>
 	<?php endif; ?>
+	<?php // CHANGE: END - Display billing only fields ?>
 
 	<?php
 	// CHANGE: Added for compatibility with plugins that use this action hook
