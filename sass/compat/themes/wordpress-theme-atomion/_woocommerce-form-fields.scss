@@ -1,0 +1,9 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector }.has-visible-form-field-labels #order_comments_field .form-row label,
+body#{ $_body-theme-selector }.has-visible-form-field-labels .woocommerce-billing-fields .form-row label,
+body#{ $_body-theme-selector }.has-visible-form-field-labels .woocommerce-shipping-fields .form-row label {
+	display: inline !important; // Needed to override theme styles
+}
