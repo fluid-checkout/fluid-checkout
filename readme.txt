@@ -388,6 +388,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Compatibility with plugin WooCommerce CobrosYA.com.
+
 = 3.0.4 - 2023-09-27 =
 
 * Bump tested up to WordPress 6.3.1 and WooCommerce 8.1.1
