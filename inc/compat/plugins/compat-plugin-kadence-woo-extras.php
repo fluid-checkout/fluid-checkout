@@ -19,8 +19,38 @@ class FluidCheckout_KadenceWooExtras extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 300 );
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// Cart custom notices
+		$this->cart_notices_hooks();
+	}
+
+	/**
+	 * Cart custom notices hooks.
+	 */
+	public function cart_notices_hooks() {
+		// Bail if class is not available
+		$class_name = 'Kadence_Cart_Notice';
+		if ( ! class_exists( $class_name ) ) { return; }
+
+		// Get object
+		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
+
+		// Bail if object is not available
+		if ( ! $class_object ) { return; }
+
+		// Cart custom notices
+		remove_action( 'woocommerce_before_cart_contents', array( $class_object, 'kt_custom_cart_notices' ), 10 );
+		add_action( 'fc_pro_cart_sections', array( $class_object, 'kt_custom_cart_notices' ), 6 );
 	}
 
 
