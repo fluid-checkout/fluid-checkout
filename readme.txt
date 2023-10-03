@@ -391,6 +391,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with plugin WooCommerce CobrosYA.com.
+* Added: Compatibility with plugin Kadence Shop Kit (WooCommerce extras).
 * Fixed: Cart item product total price alignment on the order summary in some cases.
 
 = 3.0.4 - 2023-09-27 =
