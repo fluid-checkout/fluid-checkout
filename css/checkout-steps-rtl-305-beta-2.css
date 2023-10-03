@@ -1876,6 +1876,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
   padding: 5px 0;
   width: 25%;
   float: left;
+  text-align: left;
   background-color: transparent;
 }
 
