@@ -29,6 +29,8 @@
 		sectionWrapperSelector: '.fc-step__substep',
 		generalNoticesSelector: '.woocommerce-notices-wrapper',
 		messagesWrapperSelector: '.fc-coupon-code-messages',
+
+		useGeneralNoticesSection: 'no',
 		suppressSuccessMessages: 'no',
 
 		couponAddedSectionSelector: '.fc-step__substep-text-content--coupon-codes',
@@ -61,7 +63,7 @@
 	 * @param   HTML  content  HTML content to be displayed.
 	 */
 	var showNotices = function( content, referenceElement ) {
-		// Maybe get specific messages wrapper
+		// Try to get messages wrapper from the coupon code section
 		var messagesWrapper;
 		var sectionWrapper = referenceElement ? referenceElement.closest( _settings.sectionWrapperSelector ) : null;
 		if ( sectionWrapper ) {
@@ -70,7 +72,12 @@
 		else {
 			messagesWrapper = document.querySelector( _settings.generalNoticesSelector );
 		}
-		
+
+		// Otherwise try to get messages wrapper from the general notices section
+		if ( 'yes' === _settings.useGeneralNoticesSection ) {
+			messagesWrapper = document.querySelector( _settings.generalNoticesSelector );
+		}
+
 		// Add message
 		if ( messagesWrapper ) {
 			messagesWrapper.innerHTML = content;
@@ -316,6 +323,9 @@
 				else if ( response.result && 'error' === response.result ) {
 					// Display new messages
 					showNotices( response.message, referenceElement );
+
+					// Trigger error event
+					$( document.body ).trigger( 'checkout_error' , [ response.message ] );
 
 					// Unblock coupon section
 					var couponAddedSection = document.querySelector( _settings.couponAddedSectionSelector );
