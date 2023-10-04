@@ -21,7 +21,10 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	public function hooks() {
 		// Bail if feature is not enabled
 		if( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_apply_checkout_field_args' ) ) { return; }
-		
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
 		// Checkout fields args
 		add_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_args' ), 100 );
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 100 );
@@ -66,6 +69,32 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 		// Select2 field class
 		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_select2_field_class' ), 100, 3 );
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+
+		// Checkout Field Attributes
+		$settings[ 'checkoutFields' ] = WC()->checkout()->get_checkout_fields();
+
+		// Override locale attributes
+		$override_attributes = array();
+		if ( true === apply_filters( 'fc_checkout_address_i18n_override_locale_required_attribute', false ) ) {
+			$override_attributes[] = 'required';
+		}
+
+		// Address i18n
+		$settings[ 'addressI18n' ] = array(
+			'overrideLocaleAttributes'  => apply_filters( 'fc_checkout_address_i18n_override_locale_attributes', $override_attributes ),
+		);
+		
+		return $settings;
 	}
 
 

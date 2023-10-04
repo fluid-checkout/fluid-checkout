@@ -26,13 +26,14 @@ class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 
 		// Checkout field args
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_mailcheck_attributes' ), 100, 3 );
+		add_filter( 'fc_checkout_address_i18n_override_locale_required_attribute', '__return_true', 10 );
 	}
 
 	/**
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
-		
+
 		// Account edit address
 		if ( 'yes' === apply_filters( 'fc_integration_woo_checkout_field_editor_pro_enable_edit_address_changes', 'yes' ) ) {
 			// Get the plugin public class object
