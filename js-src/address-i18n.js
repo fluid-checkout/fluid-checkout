@@ -21,7 +21,10 @@ jQuery( function( $ ) {
 		inputSelector: 'input, select, textarea',
 		countryFieldsSelector: '#billing_country, #shipping_country, #country',
 		addressFieldGroupSelector: '.woocommerce-billing-fields, .woocommerce-shipping-fields, .woocommerce-address-fields',
+
+		overrideLocaleAttributes: [],
 	};
+	_settings = FCUtils.extendObject( true, _settings, window.fcSettings.addressI18n );
 	// CHANGE: END - Add settings
 
 	var locale_json = wc_address_i18n_params.locale.replace( /&quot;/g, '"' ), locale = JSON.parse( locale_json );
@@ -79,6 +82,47 @@ jQuery( function( $ ) {
 
 			var field       = thisform.find( value ),
 				fieldLocale = $.extend( true, {}, locale['default'][ key ], thislocale[ key ] );
+
+			// CHANGE: Maybe replace field attributes from locale with attributes from checkout fields
+			if ( _settings.overrideLocaleAttributes.length > 0 && window.fcSettings && window.fcSettings.checkoutFields ) {
+				// Determine address field group
+				var addressFieldGroup = 'address';
+				if ( wrapper.hasClass( 'woocommerce-billing-fields' ) ) {
+					addressFieldGroup = 'billing';
+				} else if ( wrapper.hasClass( 'woocommerce-shipping-fields' ) ) {
+					addressFieldGroup = 'shipping';
+				}
+
+				// Determine field key prefix
+				var field_key_prefix = addressFieldGroup + '_';
+
+				// Determine field key
+				var field_key = key;
+				if ( 'address' !== addressFieldGroup ) {
+					field_key = field_key_prefix + key;
+				}
+
+				// Get fields for the current group
+				var groupFields = window.fcSettings.checkoutFields[ addressFieldGroup ];
+
+				// Check whether group fields exist
+				if ( groupFields ) {
+					// Get field attributes for the current field
+					var checkoutField = groupFields[ field_key ];
+
+					// Check whether field attributes exist
+					if ( checkoutField ) {
+						// Maybe replace field attribute
+						$.each( checkoutField, function( attr_key, attr_value ) {
+							if ( _settings.overrideLocaleAttributes.indexOf( attr_key ) > -1 ) {
+								fieldLocale[ attr_key ] = attr_value;
+							}
+						} );
+					}
+				}
+
+			}
+			// CHANGE: END - Maybe replace field attributes from locale with attributes from checkout fields
 
 			// Labels.
 			if ( typeof fieldLocale.label !== 'undefined' ) {
@@ -169,7 +213,8 @@ jQuery( function( $ ) {
 
 			// Class changes.
 			if ( Array.isArray( fieldLocale.class ) ) {
-				field.removeClass( 'form-row-first form-row-last form-row-wide' );
+				// CHANGE: Add custom form row classes to be removed
+				field.removeClass( 'form-row-first form-row-last form-row-wide form-row-one-third form-row-two-thirds form-row-middle' );
 				field.addClass( fieldLocale.class.join( ' ' ) );
 			}
 		});
