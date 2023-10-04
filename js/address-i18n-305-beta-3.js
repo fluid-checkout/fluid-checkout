@@ -95,9 +95,12 @@ jQuery( function( $ ) {
 
 				// Determine field key prefix
 				var field_key_prefix = addressFieldGroup + '_';
-				
+
 				// Determine field key
-				var field_key = field_key_prefix + key;
+				var field_key = key;
+				if ( 'address' !== addressFieldGroup ) {
+					field_key = field_key_prefix + key;
+				}
 
 				// Get fields for the current group
 				var groupFields = window.fcSettings.checkoutFields[ addressFieldGroup ];
