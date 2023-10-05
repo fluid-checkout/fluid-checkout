@@ -24,6 +24,9 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 
 		// Shipping methods hooks
 		add_action( 'woocommerce_shipping_init', array( $this, 'shipping_methods_hooks' ), 100 );
+		
+		// Persisted data
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 	}
 
 	/**
@@ -81,6 +84,28 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 
 		// Return what we found
 		return $_template;
+	}
+
+
+
+	/**
+	 * Maybe set session data for the terminals field.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_set_terminals_field_session_values( $posted_data ) {
+		$field_key = 'wc_lpexpress_terminals_info';
+		$shipping_method_id = 'lpexpress_terminals';
+		
+		// Bail if field value was not posted
+		if ( ! array_key_exists( $field_key, $posted_data ) ) { return $posted_data; }
+
+		// Save field value to session, as it is needed for the plugin to recover its value
+		WC()->session->set( $field_key, $posted_data[ $field_key ] );
+		WC()->session->set( $shipping_method_id, $posted_data[ $field_key ] ); // Actually used to determine selected field option
+
+		// Return unchanged posted data
+		return $posted_data;
 	}
 
 }
