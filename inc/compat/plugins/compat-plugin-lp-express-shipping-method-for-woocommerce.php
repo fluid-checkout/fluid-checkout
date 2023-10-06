@@ -27,6 +27,9 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 		
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+
+		// Add substep review text lines
+		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 	}
 
 	/**
@@ -106,6 +109,51 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 
 		// Return unchanged posted data
 		return $posted_data;
+	}
+
+
+
+	/**
+	 * Add the shipping methods substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Bail if class is not available
+		$class_name = 'WC_LPExpress_Terminals_Shipping_Method';
+		if ( ! class_exists( $class_name ) ) { return; }
+
+		// Get object
+		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
+
+		// Define shipping method id
+		$shipping_method_id = 'lpexpress_terminals';
+
+		// Get currently selected shipping methods
+		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
+
+		// Bail if LP is not selected as the shipping method
+		if( empty( $chosen_shipping_methods ) || ! in_array( 'lpexpress_terminals', $chosen_shipping_methods ) ) { return $review_text_lines; }
+
+		// Get selected terminal
+		$selected_terminal = WC()->session->get( 'lpexpress_terminals' );
+
+		// Bail if there is no selected terminal
+		if ( empty( $selected_terminal ) ) { return $review_text_lines; }
+
+		// Get terminal info
+		$terminal = $class_object->get_terminal_info( $selected_terminal );
+
+		// Bail if there is not information for selected terminal
+		if ( empty( $terminal ) ) { return $review_text_lines; }
+
+		// Add terminal name as review text line
+		$review_text_lines[] = $terminal->name;
+
+		return $review_text_lines;
 	}
 
 }
