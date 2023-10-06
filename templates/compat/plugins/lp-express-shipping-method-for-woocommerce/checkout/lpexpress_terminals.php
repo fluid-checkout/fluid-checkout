@@ -1,6 +1,6 @@
 <?php defined( 'ABSPATH' ) or die( 'No script kiddies please!' ); ?>
 <?php // CHANGE: Replace `tr > td` elements with `div > span` as a form field as this section is moved out of the order summary table on the checkout page ?>
-<div class="form-row form-row-wide fc-select2-field validate-required">
+<div class="lpexpress-terminals-field form-row form-row-wide fc-select2-field validate-required">
 	<?php // CHANGE: Add a label to the field ?>
 	<label for="<?php echo $field_id ?>"><?php echo esc_html( __( 'Parcel terminal', 'fluid-checkout' ) ); ?>&nbsp;<abbr class="required" aria-label="<?php echo esc_attr( __( '(Required)', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'required', 'woocommerce' ) ); ?>">*</abbr></label>
 	<span class="woocommerce-input-wrapper">
