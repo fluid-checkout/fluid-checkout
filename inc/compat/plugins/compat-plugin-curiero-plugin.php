@@ -45,7 +45,7 @@ class FluidCheckout_Curiero extends FluidCheckout {
 			remove_action( 'woocommerce_review_order_after_shipping', array( $fan_class_object, 'review_order_after_shipping' ), 10 );
 			add_action( 'fc_shipping_methods_after_packages_inside', array( $fan_class_object, 'review_order_after_shipping' ), 10 );
 		}
-		
+
 		// Sameday
 		$sameday_class_name = 'Sameday_Shipping_Method';
 		if ( class_exists( $sameday_class_name ) ) {
@@ -81,7 +81,7 @@ class FluidCheckout_Curiero extends FluidCheckout {
 					trailingslashit( $template_path ) . $template_name,
 					$template_name,
 				) );
-	
+
 				// Check if files exist before changing template
 				if ( file_exists( $_template_override ) ) {
 					$_template = $_template_override;
