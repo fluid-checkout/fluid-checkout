@@ -7,6 +7,13 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout {
 
 	/**
+	 * The shipping method id.
+	 */
+	public const SHIPPING_METHOD_ID = 'lpexpress_terminals';
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -98,14 +105,13 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 	 */
 	public function maybe_set_terminals_field_session_values( $posted_data ) {
 		$field_key = 'wc_lpexpress_terminals_info';
-		$shipping_method_id = 'lpexpress_terminals';
 		
 		// Bail if field value was not posted
 		if ( ! array_key_exists( $field_key, $posted_data ) ) { return $posted_data; }
 
 		// Save field value to session, as it is needed for the plugin to recover its value
 		WC()->session->set( $field_key, $posted_data[ $field_key ] );
-		WC()->session->set( $shipping_method_id, $posted_data[ $field_key ] ); // Actually used to determine selected field option
+		WC()->session->set( self::SHIPPING_METHOD_ID, $posted_data[ $field_key ] ); // Actually used to determine selected field option
 
 		// Return unchanged posted data
 		return $posted_data;
@@ -129,17 +135,14 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 		// Get object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
 
-		// Define shipping method id
-		$shipping_method_id = 'lpexpress_terminals';
-
 		// Get currently selected shipping methods
 		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
 
 		// Bail if LP is not selected as the shipping method
-		if( empty( $chosen_shipping_methods ) || ! in_array( 'lpexpress_terminals', $chosen_shipping_methods ) ) { return $review_text_lines; }
+		if( empty( $chosen_shipping_methods ) || ! in_array( self::SHIPPING_METHOD_ID, $chosen_shipping_methods ) ) { return $review_text_lines; }
 
 		// Get selected terminal
-		$selected_terminal = WC()->session->get( 'lpexpress_terminals' );
+		$selected_terminal = WC()->session->get( self::SHIPPING_METHOD_ID );
 
 		// Bail if there is no selected terminal
 		if ( empty( $selected_terminal ) ) { return $review_text_lines; }
