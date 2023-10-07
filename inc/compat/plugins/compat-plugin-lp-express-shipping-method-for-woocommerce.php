@@ -29,11 +29,14 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
-		// Shipping methods hooks
-		add_action( 'woocommerce_shipping_init', array( $this, 'shipping_methods_hooks' ), 100 );
-		
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+
+		// Shipping methods hooks
+		add_action( 'woocommerce_shipping_init', array( $this, 'shipping_methods_hooks' ), 100 );
+
+		// Maybe set step as incomplete
+		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -118,6 +121,40 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 	}
 
 
+	/**
+	 * Set the shipping step as incomplete when shipping method is Hungarian Pickup Points and no pickup point is selected.
+	 *
+	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 */
+	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
+		// Bail if step is already incomplete
+		if ( ! $is_step_complete ) { return $is_step_complete; }
+
+		// Bail if class is not available
+		$class_name = 'WC_LPExpress_Terminals_Shipping_Method';
+		if ( ! class_exists( $class_name ) ) { return $is_step_complete; }
+
+		// Get object
+		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
+
+		// Get currently selected shipping methods
+		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
+
+		// Bail if LP is not selected as the shipping method
+		if( empty( $chosen_shipping_methods ) || ! in_array( self::SHIPPING_METHOD_ID, $chosen_shipping_methods ) ) { return $is_step_complete; }
+
+		// Get selected terminal
+		$selected_terminal = WC()->session->get( self::SHIPPING_METHOD_ID );
+
+		// Maybe set step as incomplete
+		if ( empty( $selected_terminal ) ) {
+			$is_step_complete = false;
+		}
+
+		return $is_step_complete;
+	}
+
+
 
 	/**
 	 * Add the shipping methods substep review text lines.
@@ -130,7 +167,7 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 
 		// Bail if class is not available
 		$class_name = 'WC_LPExpress_Terminals_Shipping_Method';
-		if ( ! class_exists( $class_name ) ) { return; }
+		if ( ! class_exists( $class_name ) ) { return $review_text_lines; }
 
 		// Get object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
