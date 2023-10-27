@@ -18,6 +18,16 @@ class FluidCheckout_Migration_3_0_5 extends FluidCheckout {
 
 
 	/**
+	 * Initialize hooks.
+	 */
+	public function migrate() {
+		// Apply migrations
+		$this->maybe_update_billing_field_visibility_option();
+	}
+
+
+
+	/**
 	 * Update the database version option.
 	 */
 	public function maybe_update_billing_field_visibility_option() {
@@ -33,16 +43,6 @@ class FluidCheckout_Migration_3_0_5 extends FluidCheckout {
 
 		// Update option
 		update_option( $option_key, 'hidden' );
-	}
-
-
-
-	/**
-	 * Initialize hooks.
-	 */
-	public function migrate() {
-		// Apply migrations
-		$this->maybe_update_billing_field_visibility_option();
 	}
 
 }
