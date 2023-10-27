@@ -25,7 +25,7 @@ class FluidCheckout_AdminNotices_GermanizedPRO_MultistepFeatureEnabled extends F
 
 
 	/**
-	 * Check if Fluid Checkout (PRO) is activated on a single install or network wide.
+	 * Check if plugin Germanized is activated on a single install or network wide.
 	 * Otherwise, will display an admin notice.
 	 */
 	public function is_germanized_pro_activated() {
@@ -44,7 +44,7 @@ class FluidCheckout_AdminNotices_GermanizedPRO_MultistepFeatureEnabled extends F
 
 
 	/**
-	 * Add plugin review request notice.
+	 * Add notice.
 	 * @param  array  $notices  Admin notices from the plugin.
 	 */
 	public function add_notice( $notices = array() ) {
