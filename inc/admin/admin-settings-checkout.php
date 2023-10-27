@@ -544,7 +544,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'id'                => 'woocommerce_checkout_phone_field',
 						'type'              => 'select',
 						'options'           => array(
-							'no'            => __( 'Hidden (remove field)', 'fluid-checkout' ),
+							'hidden'        => __( 'Hidden (remove field)', 'fluid-checkout' ),
 							'optional'      => __( 'Optional', 'fluid-checkout' ),
 							'required'      => __( 'Required', 'fluid-checkout' ),
 						),

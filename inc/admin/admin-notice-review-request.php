@@ -25,7 +25,7 @@ class FluidCheckout_AdminNotices_ReviewRequest extends FluidCheckout {
 
 
 	/**
-	 * Add plugin review request notice.
+	 * Add notice.
 	 * @param  array  $notices  Admin notices from the plugin.
 	 */
 	public function add_notice( $notices = array() ) {

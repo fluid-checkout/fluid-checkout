@@ -397,6 +397,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Added filter `fc_checkout_address_i18n_override_locale_attributes` and `fc_checkout_address_i18n_override_locale_required_attribute` to allow overriding checkout field attributes that are locale dependent.
 * Fixed: Cart item product total price alignment on the order summary in some cases.
 * Fixed: Alignment for the add coupon code link when displayed on the order summary.
+* Fixed: Fix values for billing phone field visibility settings to match accepted values from WooCommerce.
+* Fixed: Compatibility with plugin Brazilian Market, check if phone fields are enabled before using them.
 
 = 3.0.4 - 2023-09-27 =
 
