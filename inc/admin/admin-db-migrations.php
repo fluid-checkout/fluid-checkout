@@ -159,9 +159,9 @@ class FluidCheckout_AdminDBMigrations extends FluidCheckout {
 		// Sort files by version number
 		usort( $files, function( $a, $b ) {
 			// Get version number from file name
-			$a_version = str_replace( 'migration-', '', $a );
+			$a_version = str_replace( 'migration-', '', basename( $a ) );
 			$a_version = str_replace( '.php', '', $a_version );
-			$b_version = str_replace( 'migration-', '', $b );
+			$b_version = str_replace( 'migration-', '', basename( $b ) );
 			$b_version = str_replace( '.php', '', $b_version );
 
 			// Compare version numbers
