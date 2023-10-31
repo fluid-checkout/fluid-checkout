@@ -77,12 +77,12 @@ div.woocommerce form .form-row:after {
 }
 
 div.woocommerce form .form-row:last-child {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 
 div.woocommerce form .form-row {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
   padding: 0;
   max-width: 100%;
 }

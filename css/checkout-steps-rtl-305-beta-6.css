@@ -1364,8 +1364,9 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
   outline-offset: 2px !important;
 }
 
-.fc-wrapper .fc-place-order .fc-place-order-button:disabled {
-  cursor: not-allowed;
+body.woocommerce-checkout .fc-wrapper .fc-place-order .fc-place-order-button:disabled {
+  cursor: not-allowed !important;
+  opacity: 0.5 !important;
 }
 
 div.place-order .woocommerce-terms-and-conditions-link:focus,
@@ -1390,12 +1391,12 @@ div.woocommerce form .form-row:after {
 }
 
 div.woocommerce form .form-row:last-child {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 
 div.woocommerce form .form-row {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
   padding: 0;
   max-width: 100%;
 }
