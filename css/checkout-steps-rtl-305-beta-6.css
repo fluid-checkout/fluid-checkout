@@ -1391,7 +1391,7 @@ div.woocommerce form .form-row:after {
 }
 
 div.woocommerce form .form-row:last-child {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 
 div.woocommerce form .form-row {
