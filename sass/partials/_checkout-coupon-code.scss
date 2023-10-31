@@ -66,7 +66,7 @@
 	}
 }
 
-.fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
 	z-index: z( 'above' ) + 1;
 	position: absolute;
 	top: $global-spacing-tiny;
@@ -76,6 +76,7 @@
 	#{ $alignment-left }: auto;
 	#{ $alignment-right }: $global-spacing-tiny;
 	height: remsize( 4.5rem ) !important; // Needed to override theme styles
+	min-height: remsize( 4.5rem ) !important; // Needed to override theme styles
 	line-height: 1 !important; // Needed to override theme styles
 	width: auto;
 
