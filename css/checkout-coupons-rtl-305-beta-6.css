@@ -85,11 +85,11 @@ body.has-fc-button-colors .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-co
 
 body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
   z-index: 11;
-  position: absolute;
+  position: absolute !important;
   top: 5px;
   margin: 0;
-  padding-left: 20px;
   padding-right: 20px;
+  padding-left: 20px;
   right: auto;
   left: 5px;
   height: 45px !important;
@@ -123,7 +123,7 @@ body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__a
 }
 
 .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
-  margin-left: 10px;
+  margin-right: 10px;
   font-size: 15px;
   font-weight: normal;
   line-height: inherit;
