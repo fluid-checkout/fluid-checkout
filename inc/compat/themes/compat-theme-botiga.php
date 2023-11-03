@@ -35,7 +35,7 @@ class FluidCheckout_ThemeCompat_Botiga extends FluidCheckout {
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 
-		// Theme layout option
+		// Theme options
 		add_filter( 'theme_mod_shop_checkout_layout', array( $this, 'change_checkout_layout_theme_option' ), 100 );
 	}
 
