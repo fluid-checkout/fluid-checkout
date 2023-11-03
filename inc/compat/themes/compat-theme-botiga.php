@@ -28,6 +28,21 @@ class FluidCheckout_ThemeCompat_Botiga extends FluidCheckout {
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
+		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+	}
+
+	/**
+	 * Add or remove late hooks.
+	 */
+	public function late_hooks() {
+		// Remove theme elements
+		remove_action( 'woocommerce_checkout_before_order_review_heading', 'botiga_wrap_order_review_before', 5 );
+		remove_action( 'woocommerce_checkout_after_order_review', 'botiga_wrap_order_review_after', 15 );
 	}
 
 
@@ -65,12 +80,32 @@ class FluidCheckout_ThemeCompat_Botiga extends FluidCheckout {
 
 
 	/**
-	 * Add or remove late hooks.
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
-	public function late_hooks() {
-		// Remove theme elements
-		remove_action( 'woocommerce_checkout_before_order_review_heading', 'botiga_wrap_order_review_before', 5 );
-		remove_action( 'woocommerce_checkout_after_order_review', 'botiga_wrap_order_review_after', 15 );
+	public function add_css_variables( $css_variables ) {
+		// Get theme colors
+		$button_primary_border_color = get_theme_mod( 'button_border_color', '#212121' );
+		$button_primary_background_color = get_theme_mod( 'button_background_color', '#212121' );
+		$button_primary_color = get_theme_mod( 'button_color', '#FFF' );
+		$button_primary_border_color_hover = get_theme_mod( 'button_border_color_hover', '#757575' );
+		$button_primary_background_color_hover = get_theme_mod( 'button_background_color_hover', '#757575' );
+		$button_primary_color_hover = get_theme_mod( 'button_color_hover', '#FFF' );
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				'--fluidcheckout--button--primary--border-color' => $button_primary_border_color,
+				'--fluidcheckout--button--primary--background-color' => $button_primary_background_color,
+				'--fluidcheckout--button--primary--text-color' => $button_primary_color,
+				'--fluidcheckout--button--primary--border-color--hover' => $button_primary_border_color_hover,
+				'--fluidcheckout--button--primary--background-color--hover' => $button_primary_background_color_hover,
+				'--fluidcheckout--button--primary--text-color--hover' => $button_primary_color_hover,
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }
