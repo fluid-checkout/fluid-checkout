@@ -34,6 +34,9 @@ class FluidCheckout_ThemeCompat_Botiga extends FluidCheckout {
 
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+
+		// Theme layout option
+		add_filter( 'theme_mod_shop_checkout_layout', array( $this, 'change_checkout_layout_theme_option' ), 100 );
 	}
 
 	/**
@@ -106,6 +109,17 @@ class FluidCheckout_ThemeCompat_Botiga extends FluidCheckout {
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+
+
+	/**
+	 * Change the checkout layout theme option to always use "Layout 1", which is the default layout.
+	 * 
+	 * @param  string  $value  The current value.
+	 */
+	public function change_checkout_layout_theme_option( $value ) {
+		return 'layout1';
 	}
 
 }
