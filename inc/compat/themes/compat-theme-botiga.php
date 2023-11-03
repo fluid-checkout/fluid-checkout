@@ -24,6 +24,42 @@ class FluidCheckout_ThemeCompat_Botiga extends FluidCheckout {
 
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
+
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		// Bail if sticky header is not enabled
+		$sticky_header = get_theme_mod( 'enable_sticky_header', 0 );
+		if ( ! $sticky_header ) { return $attributes; }
+
+		// Get sticky rows option
+		$sticky_row = get_theme_mod( 'botiga_section_hb_wrapper__header_builder_sticky_row', 'main-header-row' );
+
+		// Maybe change the relative ID based on the sticky row option
+		switch ( $sticky_row ) {
+			case 'all':
+			case 'main-header-row':
+				$attributes['data-sticky-relative-to'] = '.bhfb-header.has-sticky-header';
+				break;
+			case 'below-header-row':
+				$attributes['data-sticky-relative-to'] = '.bhfb-header.has-sticky-header .is-sticky';
+				break;
+		}
+
+		return $attributes;
 	}
 
 
