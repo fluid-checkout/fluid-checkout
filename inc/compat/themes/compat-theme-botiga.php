@@ -37,6 +37,7 @@ class FluidCheckout_ThemeCompat_Botiga extends FluidCheckout {
 
 		// Theme options
 		add_filter( 'theme_mod_shop_checkout_layout', array( $this, 'change_theme_option_shop_checkout_layout' ), 100 );
+		add_filter( 'theme_mod_checkout_distraction_free', array( $this, 'change_theme_option_checkout_distraction_free' ), 100 );
 	}
 
 	/**
@@ -120,6 +121,16 @@ class FluidCheckout_ThemeCompat_Botiga extends FluidCheckout {
 	 */
 	public function change_theme_option_shop_checkout_layout( $value ) {
 		return 'layout1';
+	}
+
+	/**
+	 * Change the checkout distraction free header theme option to always be disabled.
+	 * 
+	 * @param  string  $value  The current value.
+	 */
+	public function change_theme_option_checkout_distraction_free( $value ) {
+		// 0 = disabled
+		return 0;
 	}
 
 }
