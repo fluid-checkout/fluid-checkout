@@ -391,6 +391,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme Gizmos.
+* Added: Compatibility with theme Botiga.
+* Added: Compatibility with plugin Botiga PRO.
 * Added: Compatibility with plugin WooCommerce CobrosYA.com.
 * Added: Compatibility with plugin Kadence Shop Kit (WooCommerce extras).
 * Added: Compatibility with plugin DPD Baltic Shipping.
