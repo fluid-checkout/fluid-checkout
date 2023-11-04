@@ -36,7 +36,7 @@ class FluidCheckout_ThemeCompat_Botiga extends FluidCheckout {
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 
 		// Theme options
-		add_filter( 'theme_mod_shop_checkout_layout', array( $this, 'change_checkout_layout_theme_option' ), 100 );
+		add_filter( 'theme_mod_shop_checkout_layout', array( $this, 'change_theme_option_shop_checkout_layout' ), 100 );
 	}
 
 	/**
@@ -118,7 +118,7 @@ class FluidCheckout_ThemeCompat_Botiga extends FluidCheckout {
 	 * 
 	 * @param  string  $value  The current value.
 	 */
-	public function change_checkout_layout_theme_option( $value ) {
+	public function change_theme_option_shop_checkout_layout( $value ) {
 		return 'layout1';
 	}
 
