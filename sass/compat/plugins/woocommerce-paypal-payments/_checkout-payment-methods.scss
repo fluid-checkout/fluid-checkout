@@ -5,5 +5,5 @@
 .fc-wrapper #ppcp-credit-card-gateway-card-number,
 .fc-wrapper #ppcp-credit-card-gateway-card-expiry,
 .fc-wrapper #ppcp-credit-card-gateway-card-cvc {
-	height: var( --fluidcheckout--field--height, remsize( 5rem ) ) !important;
+	height: $form-field-height !important;
 }
