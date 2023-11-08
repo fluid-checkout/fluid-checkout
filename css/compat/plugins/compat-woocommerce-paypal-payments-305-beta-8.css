@@ -2,6 +2,12 @@
 .fc-wrapper #ppcp-credit-card-gateway-card-expiry,
 .fc-wrapper #ppcp-credit-card-gateway-card-cvc {
   height: var(--fluidcheckout--field--height, 45.625px) !important;
+  margin-inline: 0 !important;
+}
+
+.fc-wrapper #ppcp-credit-card-gateway-card-number,
+.fc-wrapper #ppcp-credit-card-gateway-card-cvc {
+  margin-right: 0 !important;
 }
 
 body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar,
