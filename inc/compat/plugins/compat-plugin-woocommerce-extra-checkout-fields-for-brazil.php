@@ -107,7 +107,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 				// CHANGE: Always set mailcheck feature as disabled because we already provide this feature
 				'mailcheck'            => 'no',
 				// CHANGE: Maybe disable masked input when International phone number feature is enabled
-				'maskedinput_phone'    => class_exists( 'FluidCheckout_PRO_CheckoutInternationalPhoneField' ) && 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_enable_international_phone_fields' ) ? 'no' : 'yes',
+				'maskedinput_phone'    => true === apply_filters( 'fc_compat_wcbcf_disable_marked_input_phone_feature', false ) ? 'no' : 'yes',
 				'maskedinput'          => isset( $settings['maskedinput'] ) ? 'yes' : 'no',
 				'person_type'          => absint( $settings['person_type'] ),
 				'only_brazil'          => isset( $settings['only_brazil'] ) ? 'yes' : 'no',
