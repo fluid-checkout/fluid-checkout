@@ -99,7 +99,10 @@ class FluidCheckout {
 	 */
 	public function __construct() {
 		$this->set_plugin_vars();
+
+		$this->load_db_migrations();
 		$this->load_admin_notices();
+
 		$this->register_features();
 
 		// Run hooks initialization after all plugins have been loaded
@@ -297,6 +300,17 @@ class FluidCheckout {
 
 
 	/**
+	 * Load the database migrations.
+	 */
+	public function load_db_migrations() {
+		// Bail if migrations class already loaded
+		if ( class_exists( 'FluidCheckout_AdminDBMigrations' ) ) { return; }
+
+		// Load class
+		require_once self::$directory_path . 'inc/admin/admin-db-migrations.php';
+	}
+
+	/**
 	 * Load admin notices.
 	 * @since 1.2.5
 	 */
@@ -430,19 +444,6 @@ class FluidCheckout {
 				require_once $theme_compat_file_path;
 			}
 		}
-	}
-
-
-
-	/**
-	 * Load the database migrations.
-	 */
-	public function load_db_migrations() {
-		// Bail if migrations class already loaded
-		if ( class_exists( 'FluidCheckout_AdminDBMigrations' ) ) { return; }
-
-		// Load class
-		require_once self::$directory_path . 'inc/admin/admin-db-migrations.php';
 	}
 
 

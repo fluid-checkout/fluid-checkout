@@ -388,6 +388,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Prevent fatal error when trying to load admin notices for DB migrations in some rare cases.
+
 = 3.0.5 - 2023-11-10 =
 
 * Added: Compatibility with theme Gizmos.
