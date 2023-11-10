@@ -99,7 +99,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Dark mode', 'fluid-checkout' ),
-						'desc'              => __( 'Enable dark mode', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
+						'desc'              => __( 'Enable dark mode', 'fluid-checkout' ),
 						'id'                => 'fc_enable_dark_mode_styles',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_dark_mode_styles' ),
 						'type'              => 'checkbox',
@@ -544,7 +544,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'id'                => 'woocommerce_checkout_phone_field',
 						'type'              => 'select',
 						'options'           => array(
-							'no'            => __( 'Hidden (remove field)', 'fluid-checkout' ),
+							'hidden'        => __( 'Hidden (remove field)', 'fluid-checkout' ),
 							'optional'      => __( 'Optional', 'fluid-checkout' ),
 							'required'      => __( 'Required', 'fluid-checkout' ),
 						),

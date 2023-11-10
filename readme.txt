@@ -388,6 +388,22 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Compatibility with theme Gizmos.
+* Added: Compatibility with theme Botiga.
+* Added: Compatibility with plugin Botiga PRO.
+* Added: Compatibility with plugin WooCommerce CobrosYA.com.
+* Added: Compatibility with plugin Kadence Shop Kit (WooCommerce extras).
+* Added: Compatibility with plugin DPD Baltic Shipping.
+* Added: Compatibility with plugin "LP Express" Shipping Method for WooCommerce.
+* Improved: Added filter `fc_checkout_address_i18n_override_locale_attributes` and `fc_checkout_address_i18n_override_locale_required_attribute` to allow overriding checkout field attributes that are locale dependent.
+* Improved: Added action hooks `fc_order_summary_cart_item_totals_before` and `fc_order_summary_cart_item_totals_after` to display custom elements near the cart item total price in the order summary on the checkout page.
+* Fixed: Cart item product total price alignment on the order summary in some cases.
+* Fixed: Alignment for the add coupon code link when displayed on the order summary.
+* Fixed: Fix values for billing phone field visibility settings to match accepted values from WooCommerce.
+* Fixed: Compatibility with plugin Brazilian Market, check if phone fields are enabled before trying to use them, and update scripts with latest changes from original plugin.
+
 = 3.0.4 - 2023-09-27 =
 
 * Bump tested up to WordPress 6.3.1 and WooCommerce 8.1.1
@@ -421,7 +437,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Pass `$substep_id` parameters to the filter `fc_no_substep_review_text_notice` so developers can change it for specific substeps.
 * Improved: Position for expansible optional fields when displayed as a second column with class `form-row-last`.
 * Fixed: Missing SVG logo when using distraction free checkout header.
-* Fixed: Wrong address used for tax calculatation in rare cases when shipping address was different than billing, but only billing address was required for the current cart items.
+* Fixed: Wrong address used for tax calculation in rare cases when shipping address was different than billing, but only billing address was required for the current cart items.
 
 = 3.0.2 - 2023-08-24 =
 

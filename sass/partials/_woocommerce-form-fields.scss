@@ -9,14 +9,14 @@ div.woocommerce form .form-row:after {
 
 
 div.woocommerce form .form-row:last-child {
-	margin-bottom: 0;
+	margin-bottom: 0 !important; // Needed to override theme styles
 }
 
 
 
 div.woocommerce form .form-row {
 	display: block;
-	margin-bottom: $global-spacing-small;
+	margin-bottom: $global-spacing-small !important; // Needed to override theme styles
 	padding: 0;
 	max-width: 100%;
 }

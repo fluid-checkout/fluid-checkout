@@ -1,0 +1,19 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-botiga' !default;
+
+
+
+
+
+// ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	--fluidcheckout--field--height: #{ remsize( 5.288rem ) };
+	--fluidcheckout--field--border-radius: 0;
+
+	--fluidcheckout--validation-check--horizontal-spacing--select-alt: #{ remsize( 3.4rem ) };
+}

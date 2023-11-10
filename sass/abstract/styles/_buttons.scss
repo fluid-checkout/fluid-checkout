@@ -23,12 +23,14 @@
 	background-color: $button-primary-background-color !important; // Needed to override theme styles
 	color: $button-primary-text-color !important; // Needed to override theme styles
 
-	&:hover,
-	&:focus,
-	&:active {
-		border-color: $button-primary-border-color--hover !important; // Needed to override theme styles
-		background-color: $button-primary-background-color--hover !important; // Needed to override theme styles
-		color: $button-primary-text-color--hover !important; // Needed to override theme styles
+	&:not( [disabled] ):not( .disabled ) {
+		&:hover,
+		&:focus,
+		&:active {
+			border-color: $button-primary-border-color--hover !important; // Needed to override theme styles
+			background-color: $button-primary-background-color--hover !important; // Needed to override theme styles
+			color: $button-primary-text-color--hover !important; // Needed to override theme styles
+		}
 	}
 }
 
@@ -39,11 +41,13 @@
 	background-color: $button-secondary-background-color !important; // Needed to override theme styles
 	color: $button-secondary-text-color !important; // Needed to override theme styles
 
-	&:hover,
-	&:focus,
-	&:active {
-		border-color: $button-secondary-border-color--hover !important; // Needed to override theme styles
-		background-color: $button-secondary-background-color--hover !important; // Needed to override theme styles
-		color: $button-secondary-text-color--hover !important; // Needed to override theme styles
+	&:not( [disabled] ):not( .disabled ) {
+		&:hover,
+		&:focus,
+		&:active {
+			border-color: $button-secondary-border-color--hover !important; // Needed to override theme styles
+			background-color: $button-secondary-background-color--hover !important; // Needed to override theme styles
+			color: $button-secondary-text-color--hover !important; // Needed to override theme styles
+		}
 	}
 }

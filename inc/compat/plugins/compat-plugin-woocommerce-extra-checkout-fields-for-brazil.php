@@ -65,11 +65,22 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
+		$this->shipping_phone_hooks();
+	}
+
+	/**
+	 * Add or remove late hooks for shipping phone field.
+	 */
+	public function shipping_phone_hooks() {
+		// Bail if shipping phone class is not available
+		if ( ! class_exists( 'FluidCheckout_CheckoutShippingPhoneField' ) ) { return; }
+
+		// Bail if shipping phone field is disabled
+		if ( 'no' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_visibility' ) ) { return; }
+
 		// Shipping phone
-		if ( class_exists( 'FluidCheckout_CheckoutShippingPhoneField' ) ) {
-			add_filter( 'wcbcf_shipping_fields', array( FluidCheckout_CheckoutShippingPhoneField::instance(), 'add_shipping_phone_field' ), 5 );
-			add_filter( 'wcbcf_shipping_fields' , array( FluidCheckout_CheckoutShippingPhoneField::instance(), 'change_shipping_company_field_args' ), 10 );
-		}
+		add_filter( 'wcbcf_shipping_fields', array( FluidCheckout_CheckoutShippingPhoneField::instance(), 'add_shipping_phone_field' ), 5 );
+		add_filter( 'wcbcf_shipping_fields' , array( FluidCheckout_CheckoutShippingPhoneField::instance(), 'change_shipping_company_field_args' ), 10 );
 	}
 
 
@@ -96,7 +107,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 				// CHANGE: Always set mailcheck feature as disabled because we already provide this feature
 				'mailcheck'            => 'no',
 				// CHANGE: Maybe disable masked input when International phone number feature is enabled
-				'maskedinput_phone'    => class_exists( 'FluidCheckout_PRO_CheckoutInternationalPhoneField' ) && 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_enable_international_phone_fields' ) ? 'no' : 'yes',
+				'maskedinput_phone'    => true === apply_filters( 'fc_compat_wcbcf_disable_marked_input_phone_feature', false ) ? 'no' : 'yes',
 				'maskedinput'          => isset( $settings['maskedinput'] ) ? 'yes' : 'no',
 				'person_type'          => absint( $settings['person_type'] ),
 				'only_brazil'          => isset( $settings['only_brazil'] ) ? 'yes' : 'no',

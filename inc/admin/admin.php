@@ -22,8 +22,10 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Plugin settings link
 		add_filter( 'plugin_action_links_' . self::$plugin_basename, array( $this, 'add_plugin_settings_link' ), 10 );
 		
-		// Setting types
+		// Load dashboard
 		add_action( 'init', array( $this, 'load_dashboard' ), 10 );
+
+		// Setting types
 		add_action( 'init', array( $this, 'load_setting_types' ), 10 );
 
 		// WooCommerce Settings

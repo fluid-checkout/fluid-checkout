@@ -5,7 +5,7 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 3.0.4
+Version: 3.0.5-beta-11
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
@@ -265,6 +265,9 @@ class FluidCheckout {
 		add_action( 'after_setup_theme', array( $this, 'load_plugin_compat_features' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_theme_compat_features' ), 10 );
 
+		// Database Migrations
+		add_action( 'after_setup_theme', array( $this, 'load_db_migrations' ), 20 );
+
 		// Clear cache after upgrading the plugin
 		add_action( 'upgrader_process_complete', array( $this, 'clear_cache_on_updates' ), 10, 2 );
 	}
@@ -299,6 +302,8 @@ class FluidCheckout {
 	 */
 	private function load_admin_notices() {
 		require_once self::$directory_path . 'inc/admin/admin-notices.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-db-migrations.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-db-migrations-applied.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-review-request.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
 	}
@@ -425,6 +430,19 @@ class FluidCheckout {
 				require_once $theme_compat_file_path;
 			}
 		}
+	}
+
+
+
+	/**
+	 * Load the database migrations.
+	 */
+	public function load_db_migrations() {
+		// Bail if migrations class already loaded
+		if ( class_exists( 'FluidCheckout_AdminDBMigrations' ) ) { return; }
+
+		// Load class
+		require_once self::$directory_path . 'inc/admin/admin-db-migrations.php';
 	}
 
 
