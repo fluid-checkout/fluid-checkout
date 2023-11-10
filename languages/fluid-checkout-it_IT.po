@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-03 13:49+0000\n"
-"PO-Revision-Date: 2023-09-27 15:23+0000\n"
+"PO-Revision-Date: 2023-11-10 13:48+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -18,11 +18,14 @@ msgstr ""
 msgid "\"Add\" link button"
 msgstr "\"Pulsante di collegamento \"Aggiungi"
 
-#: inc/admin/admin.php:165
+#: inc/admin/admin.php:167
 msgid "(experimental)"
 msgstr "(sperimentale)"
 
 #: inc/checkout-validation.php:315
+#: templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5
+#: templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals-with-map.php:15
+#: templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals.php:15
 msgid "(Required)"
 msgstr "(Obbligatorio)"
 
@@ -61,7 +64,7 @@ msgstr ""
 "tuo account</a> per rinnovare la chiave di licenza e continuare a ricevere "
 "aggiornamenti e supporto."
 
-#: inc/admin/admin.php:151
+#: inc/admin/admin.php:153
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
@@ -82,7 +85,7 @@ msgstr ""
 "correttamente.</p><p>Per ulteriori informazioni, visitare la documentazione "
 "di Fluid Checkout.</p>"
 
-#: fluid-checkout.php:537
+#: fluid-checkout.php:555
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -104,7 +107,7 @@ msgstr "Corrispondenza tra account e utenti"
 msgid "Action link on the order summary at checkout."
 msgstr "Link all'azione nel riepilogo dell'ordine al momento del pagamento."
 
-#: fluid-checkout.php:533
+#: fluid-checkout.php:551
 #, php-format
 msgid "Activate %s"
 msgstr "Attiva %s"
@@ -270,7 +273,7 @@ msgstr "Mostra sempre"
 msgid "An account will be created with the information provided."
 msgstr "Verrà creato un account con le informazioni fornite."
 
-#: inc/checkout-fields.php:132
+#: inc/checkout-fields.php:161
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Appartamento, unità, edificio, piano, ecc."
 
@@ -460,6 +463,7 @@ msgid "Checkout elements"
 msgstr "Elementi della cassa"
 
 #: inc/admin/admin-settings-checkout.php:411
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:102
 #: inc/compat/themes/compat-theme-zk-nito.php:87
 msgid "Checkout fields"
 msgstr "Campi della cassa"
@@ -726,6 +730,10 @@ msgstr "Intendevi %s?"
 msgid "Disable the theme checkout options"
 msgstr "Disattivare le opzioni di pagamento del tema"
 
+#: inc/admin/admin-notice-db-migrations-applied.php:60
+msgid "Dismiss"
+msgstr "Congedo"
+
 #: inc/admin/admin-settings-cart.php:170
 msgid "Display as a cart section"
 msgstr "Visualizzazione come sezione del carrello"
@@ -766,6 +774,10 @@ msgstr ""
 "notifiche via e-mail. Gli stili dei dettagli dell'ordine nelle notifiche via "
 "e-mail rimangono invariati."
 
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:94
+msgid "Display order progress from the theme"
+msgstr "Visualizzare l'avanzamento dell'ordine dal tema"
+
 #: inc/admin/admin-settings-checkout.php:429
 msgid "Display the \"Add\" link buttons in lowercase"
 msgstr "Visualizza i pulsanti di collegamento \"Aggiungi\" in minuscolo"
@@ -786,6 +798,7 @@ msgstr ""
 msgid "Display the coupon codes section title"
 msgstr "Visualizza il titolo della sezione Codici coupon"
 
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:103
 #: inc/compat/themes/compat-theme-zk-nito.php:88
 msgid "Display the form field labels visible on the page"
 msgstr "Visualizzare le etichette dei campi del modulo visibili nella pagina"
@@ -927,7 +940,7 @@ msgstr ""
 "Abilitare il formato del numero di telefono internazionale e la convalida "
 "per i campi del telefono"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:171
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:182
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Abilita il controllo dell'indirizzo e-mail: (funzione disabilitata)"
 
@@ -1000,6 +1013,14 @@ msgstr ""
 #: inc/admin/admin-tab-fluid-checkout.php:25
 msgid "Fluid Checkout"
 msgstr "Fluid Checkout"
+
+#: inc/admin/admin-notice-db-migrations.php:51
+msgid "Fluid Checkout database update"
+msgstr "Aggiornamento del database di Fluid Checkout"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:55
+msgid "Fluid Checkout database updated successfully"
+msgstr "Il database di Fluid Checkout è stato aggiornato con successo"
 
 #. Name of the plugin
 msgid "Fluid Checkout for WooCommerce - Lite"
@@ -1079,7 +1100,7 @@ msgstr "Opzioni regalo"
 msgid "Go to Germanized settings"
 msgstr "Vai alle impostazioni di Germanized"
 
-#: fluid-checkout.php:529
+#: fluid-checkout.php:547
 msgid "Go to Plugin Search"
 msgstr "Vai alla Ricerca plugin"
 
@@ -1180,7 +1201,7 @@ msgstr "Ce l'ho già &mdash; Nascondi questa offerta"
 msgid "I need help!"
 msgstr "Ho bisogno di aiuto!"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:174
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:185
 msgid ""
 "If checked informs typos in email to users. (This feature has been disabled "
 "because Fluid Checkout offers the feature. Changes to this option will not "
@@ -1263,6 +1284,13 @@ msgstr ""
 "di campi di input aperti, <a href=\"https://baymard.com/blog/checkout-flow-"
 "average-form-fields#1-address-line-2--company-name-can-safely-be-collapsed-"
 "behind-a-link\" target=\"_blank\">leggi la ricerca</a>."
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:104
+msgid ""
+"It is recommended to keep this option enabled for a better user experience."
+msgstr ""
+"Si consiglia di mantenere questa opzione abilitata per una migliore "
+"esperienza utente."
 
 #: inc/admin/admin-settings-checkout.php:493
 msgid ""
@@ -1448,6 +1476,10 @@ msgctxt "Notice for no delivery or pickup options provided"
 msgid "None."
 msgstr "Nessuno."
 
+#: inc/admin/admin-notice-db-migrations-applied.php:59
+msgid "Ok"
+msgstr "Ok"
+
 #: inc/admin/admin-settings-order-received.php:186
 msgid "On the sidebar"
 msgstr "Sulla barra laterale"
@@ -1524,10 +1556,14 @@ msgstr "Ordine di download"
 msgid "Order notes"
 msgstr "Note all'ordine"
 
-#: inc/checkout-fields.php:77
+#: inc/checkout-fields.php:106
 msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 "Il numero d'ordine e la ricevuta saranno inviati a questo indirizzo e-mail."
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:93
+msgid "Order progress"
+msgstr "Stato dell'ordine"
 
 #: inc/admin/admin-settings-order-received.php:167
 msgid "Order status"
@@ -1553,6 +1589,10 @@ msgstr ""
 #: inc/admin/admin-settings-checkout.php:159
 msgid "Page background color"
 msgstr "Colore di sfondo della pagina"
+
+#: templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5
+msgid "Parcel terminal"
+msgstr "Terminale pacchi"
 
 #: inc/checkout-steps.php:4069
 msgid "Payment method"
@@ -1604,7 +1644,7 @@ msgstr ""
 msgid "Rate the plugin"
 msgstr "Valuta il plugin"
 
-#: inc/admin/admin.php:172
+#: inc/admin/admin.php:174
 msgid "Read the documentation."
 msgstr "Leggete la documentazione."
 
@@ -1723,7 +1763,7 @@ msgstr "Prima di procedere è necessario selezionare un punto di prelievo."
 msgid "Sendinblue - WooCommerce Email Marketing"
 msgstr "Sendinblue - WooCommerce Email Marketing"
 
-#: inc/admin/admin.php:129
+#: inc/admin/admin.php:131
 msgid "Settings"
 msgstr "Impostazioni"
 
@@ -1815,6 +1855,15 @@ msgstr "Passo singolo"
 msgid "Skip to content"
 msgstr "Passa ai contenuti"
 
+#: inc/admin/admin-notice-db-migrations.php:52
+msgid ""
+"Some changes to the database are required. As with any update, we recommend "
+"you to <strong>take a full backup of your website before proceeding</strong>."
+msgstr ""
+"Sono necessarie alcune modifiche al database. Come per ogni aggiornamento, "
+"vi consigliamo di <strong>effettuare un backup completo del vostro sito web "
+"prima di procedere</strong>."
+
 #: inc/admin/admin-settings-checkout.php:305
 msgid "Some options might not be compatible with some plugins and themes."
 msgstr ""
@@ -1858,7 +1907,7 @@ msgctxt "Substep review text"
 msgid "None."
 msgstr "Nessuno."
 
-#: inc/admin/admin.php:130
+#: inc/admin/admin.php:132
 msgid "Support"
 msgstr "Assistenza"
 
@@ -1903,6 +1952,10 @@ msgstr "Il numero CNPJ \"{cnpj_number}\" non è valido."
 msgid "The CPF number \"{cpf_number}\" is invalid."
 msgstr "Il numero CPF \"{cpf_number}\" non è valido."
 
+#: inc/admin/admin-notice-db-migrations-applied.php:56
+msgid "The database changes where applied successfully."
+msgstr "Le modifiche al database sono state applicate con successo."
+
 #: inc/compat/themes/compat-theme-woodmart.php:110
 msgid ""
 "The options display product image, quantity field, remove button and link to "
@@ -1926,6 +1979,10 @@ msgstr ""
 "fatturazione diversi durante il checkout. Un'opzione per impostare in modo "
 "predefinito la coincidenza tra l'indirizzo di fatturazione e quello di "
 "spedizione è disponibile su WooCommerce > Impostazioni > Fluid Checkout."
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:87
+msgid "Theme Atomion"
+msgstr "Tema Atomion"
 
 #: inc/compat/themes/compat-theme-Impreza.php:50
 msgid "Theme Impreza"
@@ -2034,7 +2091,11 @@ msgstr "Simboli di fiducia nel carrello e nelle pagine di ringraziamento"
 msgid "Up to 40% less checkout fields to fill in."
 msgstr "Fino al 40% in meno di campi di checkout da compilare."
 
-#: inc/admin/admin.php:137
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "Update database"
+msgstr "Aggiornare il database"
+
+#: inc/admin/admin.php:139
 msgid "Upgrade to PRO"
 msgstr "Passa a PRO"
 
@@ -2116,7 +2177,7 @@ msgstr ""
 "fase di elaborazione dei nuovi ordini</strong>. Disabilita la funzione di "
 "checkout a più passaggi di Germanized PRO nelle impostazioni del plugin."
 
-#: fluid-checkout.php:526
+#: fluid-checkout.php:544
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
