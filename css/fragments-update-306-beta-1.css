@@ -92,3 +92,18 @@ body div.woocommerce .button.fc-loading:after {
     transform: translateX(-50%) translateY(-50%) rotate(360deg);
   }
 }
+.shake {
+  animation: shake 0.75s;
+}
+
+@keyframes shake {
+  from, to {
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translate3d(5px, 0, 0);
+  }
+}

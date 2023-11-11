@@ -2,12 +2,39 @@
 // ANIMATIONS
 // ------------------------------------
 
+// LOADER
 @keyframes loader-spin {
 	0% { transform: rotate( 0deg ); }
 	100% { transform: rotate( 360deg ); }
 }
 
+// LOADER CENTERED
 @keyframes loader-spin-centered {
 	0% { transform: translateX( -50% ) translateY( -50% ) rotate( 0deg ); }
 	100% { transform: translateX( -50% ) translateY( -50% ) rotate( 360deg ); }
+}
+
+
+// SHAKE
+.shake { animation: shake $global-animation-duration-slow; }
+@keyframes shake {
+	from,
+	to {
+		transform: translate3d( 0, 0, 0 );
+	}
+
+	10%,
+	30%,
+	50%,
+	70%,
+	90% {
+		transform: translate3d( -5px, 0, 0 );
+	}
+
+	20%,
+	40%,
+	60%,
+	80% {
+		transform: translate3d( 5px, 0, 0 );
+	}
 }
