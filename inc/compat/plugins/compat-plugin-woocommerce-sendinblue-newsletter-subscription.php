@@ -25,17 +25,9 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Late hooks
-		add_action( 'init', array( $this, 'late_hooks' ), 100 );
-
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
-	}
 
-	/**
-	 * Add or remove late hooks.
-	 */
-	public function late_hooks() {
 		// Get plugin version
 		$plugin_version = $this->get_plugin_version( 'woocommerce-sendinblue-newsletter-subscription/woocommerce-sendinblue.php' );
 

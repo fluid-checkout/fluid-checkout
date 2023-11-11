@@ -239,7 +239,7 @@ Only the themes that we have added explicit compatibility with or that we have t
 * MailerLite WooCommerce Integration - by MailerLite
 * MailPoet - by MailPoet
 * Oxygen Builder - Soflyy
-* Sendinblue - WooCommerce Email Marketing (by Sendinblue)
+* Brevo WooCommerce Email Marketing (by Brevo) (formerly Sendinblue)
 * SG Checkout Location Picker for WooCommerce - by Sevengits
 * SG Map to Address - by Sevengits
 * WooCommerce Correios - by Claudio Sanches
@@ -391,6 +391,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Improved: Compatibility with theme Woodmart. Remove extra free shipping bar section from the billing section, displaying it only at the top of the checkout page.
+* Fixed: Compatibility with plugin Brevo for WooCommerce (formerly Sendinblue).
 * Fixed: Prevent fatal error when trying to load admin notices for DB migrations in some rare cases.
 
 = 3.0.5 - 2023-11-10 =
