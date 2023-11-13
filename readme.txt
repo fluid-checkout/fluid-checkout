@@ -393,6 +393,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with theme Woodmart. Remove extra free shipping bar section from the billing section, displaying it only at the top of the checkout page.
 * Fixed: Compatibility with plugin Brevo for WooCommerce (formerly Sendinblue).
 * Fixed: Prevent fatal error when trying to load admin notices for DB migrations in some rare cases.
+* Fixed: Call `wp_cache_flush()` directly when saving settings to avoid passing any parameters with wrong type or values.
 
 = 3.0.5 - 2023-11-10 =
 
