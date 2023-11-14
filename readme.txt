@@ -394,6 +394,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin Brevo for WooCommerce (formerly Sendinblue).
 * Fixed: Prevent fatal error when trying to load admin notices for DB migrations in some rare cases.
 * Fixed: Call `wp_cache_flush()` directly when saving settings to avoid passing any parameters with wrong type or values.
+* Fixed: Missing script dependency `jquery-blockui` for the checkout script file causing Javascript errors when dependencies are not loaded by other components.
 
 = 3.0.5 - 2023-11-10 =
 
