@@ -3,7 +3,7 @@ Contributors: fluidwebco, diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.3.1
+Tested up to: 6.4.1
 Stable tag: 3.0.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -224,7 +224,7 @@ Only the themes that we have added explicit compatibility with or that we have t
 
 * Brazilian Market on WooCommerce - by Claudio Sanches ([see demo](https://demos.fluidcheckout.com/google-address-autocomplete-brazilian-market/cart/?add-to-cart=14&quantity=1))
 * Checkout Field Editor for WooCommerce - by ThemeHigh
-* Checkout Field Editor for WooCommerce PRO - by ThemeHigh, only basic features. For advanced features, you'll need [Fluid Checkout PRO](https://fluidcheckout.com/).
+* Checkout Field Editor for WooCommerce PRO - by ThemeHigh, only basic features. For advanced features as conditional fields and integrated custom sections, you will need [Fluid Checkout PRO](https://fluidcheckout.com/).
 * Captcha Pro - by BestWebSoft
 * Creative Mail - by Constant Contact
 * Delivery & Pickup Date Time for WooCommerce - by CodeRockz
@@ -239,7 +239,7 @@ Only the themes that we have added explicit compatibility with or that we have t
 * MailerLite WooCommerce Integration - by MailerLite
 * MailPoet - by MailPoet
 * Oxygen Builder - Soflyy
-* Sendinblue - WooCommerce Email Marketing (by Sendinblue)
+* Brevo WooCommerce Email Marketing (by Brevo) (formerly Sendinblue)
 * SG Checkout Location Picker for WooCommerce - by Sevengits
 * SG Map to Address - by Sevengits
 * WooCommerce Correios - by Claudio Sanches
@@ -387,6 +387,17 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Bump tested up to WordPress 6.4.1 and WooCommerce 8.2.2
+* Improved: Compatibility with theme Woodmart. Remove extra free shipping bar section from the billing section, displaying it only at the top of the checkout page.
+* Improved: Make option "Display the 'Add' link buttons in lowercase" independent from other optional field options and clarify that it is also used for coupon code fields.
+* Fixed: Compatibility with plugin Elementor PRO. Show navigation menus above the checkout progress bar and order summary.
+* Fixed: Compatibility with plugin Brevo for WooCommerce (formerly Sendinblue).
+* Fixed: Prevent fatal error when trying to load admin notices for DB migrations in some rare cases.
+* Fixed: Call `wp_cache_flush()` directly when saving settings to avoid passing any parameters with wrong type or values.
+* Fixed: Missing script dependency `jquery-blockui` for the checkout script file causing Javascript errors when dependencies are not loaded by other components.
 
 = 3.0.5 - 2023-11-10 =
 

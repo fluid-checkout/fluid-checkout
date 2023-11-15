@@ -40,7 +40,7 @@ class FluidCheckout_AdminNotices_DBMigrations extends FluidCheckout {
 		if ( ! current_user_can( 'install_plugins' ) ) { return $notices; }
 
 		// Bail if there are no database migrations to apply
-		if ( ! FluidCheckout_AdminDBMigrations::instance()->has_migrations_to_apply() ) { return $notices; }
+		if ( ! class_exists( 'FluidCheckout_AdminDBMigrations' ) || ! FluidCheckout_AdminDBMigrations::instance()->has_migrations_to_apply() ) { return $notices; }
 
 		// Get url of the current page, adding a nonce value and parameter to it
 		$database_update_url = wp_nonce_url( add_query_arg( array( self::$plugin_prefix . '_action' => 'update_db' ) ), self::$plugin_prefix . '_update_db' );
