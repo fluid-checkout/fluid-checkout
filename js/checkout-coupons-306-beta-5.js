@@ -34,6 +34,7 @@
 		suppressSuccessMessages: 'no',
 
 		couponAddedSectionSelector: '.fc-step__substep-text-content--coupon-codes',
+		couponSectionSelector: '.fc-coupon-code-section',
 		couponFieldSelector: 'input[name="coupon_code"]',
 		addCouponButtonSelector: '.fc-coupon-code__apply',
 		removeCouponButtonSelector: '.woocommerce-remove-coupon',
@@ -118,7 +119,7 @@
 
 		// Try to get coupon code from coupon field
 		if ( ! couponCode || '' == couponCode ) {
-			var couponSection = referenceElement.closest( '.fc-coupon-code-section' );
+			var couponSection = referenceElement.closest( _settings.couponSectionSelector );
 			var couponField = couponSection.querySelector( _settings.couponFieldSelector );
 
 			// Bail if coupon code field was not found
