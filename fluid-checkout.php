@@ -9,11 +9,11 @@ Version: 3.0.6-beta-7
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 8.1.1
+WC tested up to: 8.2.2
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
-Copyright (C) 2021-2022 Fluidweb OÜ
+Copyright (C) 2021-2023 Fluidweb OÜ
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
