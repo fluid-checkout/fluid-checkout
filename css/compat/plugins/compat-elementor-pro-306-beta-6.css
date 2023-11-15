@@ -1,3 +1,7 @@
+body.has-fluid-checkout .elementor-nav-menu {
+  z-index: 2000;
+}
+
 .elementor-widget-woocommerce-checkout-page .fc-wrapper .woocommerce-shipping-fields .shipping_address {
   margin: 0;
   padding: 0;
