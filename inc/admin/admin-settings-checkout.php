@@ -426,16 +426,6 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'autoload'          => false,
 					),
 					array(
-						'desc'              => __( 'Display the "Add" link buttons in lowercase', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Make the labels of optional field "Add" link button as <code>lowercase</code>. (ie. "Add phone number" instead of "Add Phone Number")', 'fluid-checkout' ),
-						'id'                => 'fc_optional_fields_link_label_lowercase',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_optional_fields_link_label_lowercase' ),
-						'checkboxgroup'     => '',
-						'show_if_checked'   => 'yes',
-						'autoload'          => false,
-					),
-					array(
 						'desc'              => __( 'Do not hide "Address line 2" fields behind a link button', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Recommended only when most customers actually need the "Address line 2" field, or when getting the right shipping address is crucial (ie. if delivering food and other perishable products).', 'fluid-checkout' ),
 						'id'                => 'fc_hide_optional_fields_skip_address_2',
@@ -443,6 +433,15 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_hide_optional_fields_skip_address_2' ),
 						'checkboxgroup'     => 'end',
 						'show_if_checked'   => 'yes',
+						'autoload'          => false,
+					),
+
+					array(
+						'desc'              => __( 'Display the "Add" link buttons in lowercase', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Make the labels of optional field "Add" link button as <code>lowercase</code> (ie. "Add phone number" instead of "Add Phone Number"). This option also affects the link buttons for coupon code fields.', 'fluid-checkout' ),
+						'id'                => 'fc_optional_fields_link_label_lowercase',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_optional_fields_link_label_lowercase' ),
 						'autoload'          => false,
 					),
 
