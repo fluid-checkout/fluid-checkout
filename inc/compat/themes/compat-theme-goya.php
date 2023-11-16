@@ -19,6 +19,10 @@ class FluidCheckout_ThemeCompat_Goya extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Enqueue
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
@@ -32,6 +36,35 @@ class FluidCheckout_ThemeCompat_Goya extends FluidCheckout {
 
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Scripts
+		wp_register_script( 'fc-compat-goya-floating-labels', self::$directory_url . 'js/compat/themes/goya/float-labels'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
+		wp_add_inline_script( 'fc-compat-goya-floating-labels', 'window.addEventListener("load",function(){GoyaFloatLabels.init();})' );
+	}
+
+	/**
+	 * Enqueue assets.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-compat-goya-floating-labels' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 
