@@ -1,0 +1,10 @@
+body.theme-goya.checkout-distraction-free.woocommerce-checkout .header-contents .header-center-items,
+body.theme-goya.checkout-distraction-free.woocommerce-checkout .header-contents .header-right-items {
+  display: none !important;
+}
+
+body.theme-goya.checkout-distraction-free.woocommerce-checkout .header-contents .header-left-items .logo-holder {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
