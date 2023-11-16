@@ -1049,6 +1049,7 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   padding-right: calc( var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px );
   padding-left: var(--fluidcheckout--option-box--spacing--horizontal, 10px);
   width: 100%;
+  max-width: 100%;
   border: var(--fluidcheckout--option-box--label-border-style, solid) var(--fluidcheckout--option-box--label-border-width, 1px) var(--fluidcheckout--option-box--label-border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   border-top: 0;
   border-right: 0;
