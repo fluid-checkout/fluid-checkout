@@ -12,12 +12,7 @@ $_body-theme-selector:                 '.theme-goya' !default;
 // DEFINE CSS VARIABLES
 // ------------------------------------
 :root {
-	// --fluidcheckout--field--height: #{ remsize( 4.498rem ) };
-	// --fluidcheckout--field--border-radius: #{ remsize( 2.249rem ) };
-
-	// --fluidcheckout--validation-check--horizontal-spacing: #{ remsize( 1rem ) };
-	// --fluidcheckout--validation-check--horizontal-spacing--select: #{ remsize( 3rem ) };
-	// --fluidcheckout--validation-check--horizontal-spacing--select-alt: #{ remsize( 4rem ) };
+	--fluidcheckout--field--height: #{ remsize( 5.4rem ) };
 }
 
 
@@ -28,4 +23,6 @@ $_body-theme-selector:                 '.theme-goya' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"header--distraction-free";
+	"header--distraction-free",
+	"checkout-validation-check",
+	"woocommerce-form-fields-select2";

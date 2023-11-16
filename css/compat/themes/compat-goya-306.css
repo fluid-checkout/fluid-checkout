@@ -1,3 +1,7 @@
+:root {
+  --fluidcheckout--field--height: 54px;
+}
+
 body.theme-goya.checkout-distraction-free.woocommerce-checkout .header-contents .header-center-items,
 body.theme-goya.checkout-distraction-free.woocommerce-checkout .header-contents .header-right-items {
   display: none !important;
@@ -7,4 +11,13 @@ body.theme-goya.checkout-distraction-free.woocommerce-checkout .header-contents 
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+
+body.theme-goya div.woocommerce form .form-row .woocommerce-input-wrapper {
+  position: absolute;
+  top: 0;
+}
+
+body.theme-goya div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-left: 0.75rem;
 }
