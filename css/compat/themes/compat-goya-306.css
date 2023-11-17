@@ -14,8 +14,7 @@ body.theme-goya.checkout-distraction-free.woocommerce-checkout .header-contents 
 }
 
 body.theme-goya div.woocommerce form .form-row .woocommerce-input-wrapper {
-  position: absolute;
-  top: 0;
+  position: static;
 }
 
 body.theme-goya div.woocommerce .fc-wrapper .fc-coupon-code-section .form-row .woocommerce-input-wrapper {
