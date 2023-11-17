@@ -388,6 +388,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Compatibility with theme Goya.
+
 = 3.0.6 - 2023-11-15 =
 
 * Bump tested up to WordPress 6.4.1 and WooCommerce 8.2.2

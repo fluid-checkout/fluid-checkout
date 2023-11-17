@@ -716,14 +716,12 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
 .fc-widget-area .widget:first-child,
 .fc-widget-area p:first-child {
   margin-top: 0;
-  -webkit-margin-before: 0;
   margin-block-start: 0;
 }
 
 .fc-widget-area .widget:last-child,
 .fc-widget-area p:last-child {
   margin-bottom: 0;
-  -webkit-margin-after: 0;
   margin-block-end: 0;
 }
 
