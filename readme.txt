@@ -391,6 +391,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme Goya.
+* Fixed: Force text color for form fields on shipping and billing address sections when section is highlighted.
 
 = 3.0.6 - 2023-11-15 =
 
