@@ -99,10 +99,8 @@ class FluidCheckout {
 	 */
 	public function __construct() {
 		$this->set_plugin_vars();
-
 		$this->load_db_migrations();
 		$this->load_admin_notices();
-
 		$this->register_features();
 
 		// Run hooks initialization after all plugins have been loaded
@@ -267,9 +265,6 @@ class FluidCheckout {
 		add_action( 'after_setup_theme', array( $this, 'load_features' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_plugin_compat_features' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_theme_compat_features' ), 10 );
-
-		// Database Migrations
-		add_action( 'after_setup_theme', array( $this, 'load_db_migrations' ), 20 );
 
 		// Clear cache after upgrading the plugin
 		add_action( 'upgrader_process_complete', array( $this, 'clear_cache_on_updates' ), 10, 2 );

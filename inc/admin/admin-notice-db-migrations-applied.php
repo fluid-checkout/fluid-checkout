@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Admin notice: ask review.
+ * Admin notice: database migrations applied successfully.
  */
 class FluidCheckout_AdminNotices_DBMigrationsApplied extends FluidCheckout {
 	
@@ -44,14 +44,14 @@ class FluidCheckout_AdminNotices_DBMigrationsApplied extends FluidCheckout {
 		$option_value = get_option( self::$plugin_prefix . '_show_db_update_notice' );
 
 		// Bail if not set to show notice
-		if ( 'yes' !== $option_value ) { return $notices; }
+		if ( ! $option_value || 'yes' !== $option_value ) { return $notices; }
 
 		// Get url of the current page, adding a nonce value and parameter to it
 		$database_update_url = wp_nonce_url( add_query_arg( array( self::$plugin_prefix . '_action' => 'dismiss_updated_db' ) ), self::$plugin_prefix . '_updated_db_notice' );
 
 		// Add notice
 		$notices[] = array(
-			'name'           => 'db_migrations_applied',
+			'name'           => self::$plugin_prefix . '_db_migrations_applied',
 			'title'          => __( 'Fluid Checkout database updated successfully', 'fluid-checkout' ),
 			'description'    => __( 'The database changes where applied successfully.', 'fluid-checkout' ),
 			'dismissable'    => false,
