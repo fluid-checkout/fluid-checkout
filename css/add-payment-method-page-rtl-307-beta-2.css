@@ -234,6 +234,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   float: none;
   display: inline-block;
   margin-right: 5px;
+  width: auto;
   height: 24px;
   vertical-align: middle;
 }
