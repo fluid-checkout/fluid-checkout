@@ -218,7 +218,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 							<?php elseif ( FluidCheckout::instance()->is_plugin_installed( 'fc-vat-assistant/fc-vat-assistant.php' ) ) : ?>
 								<a href="<?php echo esc_url( add_query_arg( array( 'fc_action' => 'activate_plugin', 'plugin' => 'fc-vat-assistant/fc-vat-assistant.php', '_wpnonce' => wp_create_nonce( 'fc-activate-plugin' ) ) ) ); ?>" class="button"><?php echo esc_html( __( 'Installed &mdash; Activate', 'fluid-checkout' ) ); ?></a>
 							<?php else : ?>
-								<a href="<?php echo esc_url( 'https://fluidcheckout.com/fc-eu-vat-assistant/?mtm_campaign=addons&mtm_kwd=fc-vat&mtm_source=lite-plugin' ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( __( 'Get this add-on &mdash; 59 EUR', 'fluid-checkout' ) ); ?></a>
+								<a href="<?php echo esc_url( 'https://fluidcheckout.com/fc-eu-vat-assistant/?mtm_campaign=addons&mtm_kwd=fc-vat&mtm_source=lite-plugin' ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( __( 'Get this add-on &mdash; 39 EUR', 'fluid-checkout' ) ); ?></a>
 							<?php endif; ?>
 						</div>
 					</li>
