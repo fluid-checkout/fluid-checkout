@@ -201,6 +201,28 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 						</div>
 					</li>
 
+					<li class="fc-addons__item">
+						<div class="fc-addons__item-header">
+							<img class="fc-addons__item-image" src="<?php echo esc_url( FluidCheckout::$directory_url . 'images/admin/addons/fc-vat-assistant-icon.png' ); ?>" alt="<?php echo esc_attr( __( 'EU-VAT Assistant', 'fluid-checkout' ) ); ?>">
+							<div class="fc-addons__item-title-section">
+								<h3 class="fc-addons__item-title"><?php echo esc_html( __( 'EU-VAT Assistant', 'fluid-checkout' ) ); ?></h3>
+								<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'Simplified EU-VAT validation for your store.', 'fluid-checkout' ) ); ?></p>
+							</div>
+						</div>
+						<div class="fc-addons__item-description">
+							<p><?php echo wp_kses_post( __( 'Collect and <strong>validate EU VAT numbers at the checkout page</strong>, removes tax charges on reverse charge basis and confirms customer location when needed.', 'fluid-checkout' ) ); ?></p>
+						</div>
+						<div class="fc-addons__item-actions">
+							<?php if ( FluidCheckout::instance()->is_plugin_activated( 'fc-vat-assistant/fc-vat-assistant.php' ) ) : ?>
+								<a href="javascript:void(0);" class="button button--activated disabled"><?php echo esc_html( __( 'Activated', 'fluid-checkout' ) ); ?></a>
+							<?php elseif ( FluidCheckout::instance()->is_plugin_installed( 'fc-vat-assistant/fc-vat-assistant.php' ) ) : ?>
+								<a href="<?php echo esc_url( add_query_arg( array( 'fc_action' => 'activate_plugin', 'plugin' => 'fc-vat-assistant/fc-vat-assistant.php', '_wpnonce' => wp_create_nonce( 'fc-activate-plugin' ) ) ) ); ?>" class="button"><?php echo esc_html( __( 'Installed &mdash; Activate', 'fluid-checkout' ) ); ?></a>
+							<?php else : ?>
+								<a href="<?php echo esc_url( 'https://fluidcheckout.com/fc-eu-vat-assistant/?mtm_campaign=addons&mtm_kwd=fc-vat&mtm_source=lite-plugin' ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( __( 'Get this add-on &mdash; 59 EUR', 'fluid-checkout' ) ); ?></a>
+							<?php endif; ?>
+						</div>
+					</li>
+
 				</ul>
 
 				<div class="fc-dashboard__disclaimer">

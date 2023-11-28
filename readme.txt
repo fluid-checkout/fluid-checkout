@@ -390,6 +390,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: EU-VAT Assistant to the list of add-ons on the plugin settings dashboard.
 * Added: Compatibility with theme Goya.
 * Fixed: Force text color for form fields on shipping and billing address sections when section is highlighted.
 * Fixed: Stretched payment method icons on mobile when custom styles are set by other plugins.
