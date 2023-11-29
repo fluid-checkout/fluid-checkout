@@ -470,7 +470,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Handle new custom arguments `optional_expand_link_label` and `optional_expand_link_lowercase` for checkout fields array to customize how optional field "+ Add <field>" links are displayed.
 * Fixed: PHP warnings when setting shipping address from the shipping calculator on the cart page.
 * Fixed: Show password toggle buttons on popup login form not working.
-* Fixed: Compasiron for checkout fields `required` attribute to accept type casting of non-boolean values.
+* Fixed: Comparison for checkout fields `required` attribute to accept type casting of non-boolean values.
 * Fixed: Compatibility with plugin Checkout Field Editor PRO by ThemeHigh causing checkout process to validate conditional fields as required when fields are not available.
 * Fixed: Remove validation icon from coupon field.
 * Fixed: Force show coupon code related messages on some edge cases.

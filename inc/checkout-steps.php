@@ -3943,16 +3943,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Maybe set shipping address fields values to same as billing address from the posted data.
-	 *
-	 * @param  array  $posted_data   Post data for all checkout fields.
+	 * Get list of shipping fields to copy from billing fields.
 	 */
-	public function maybe_fix_shipping_address_when_shipping_not_needed( $posted_data ) {
-		// Bail if cart needs shipping address
-		if ( WC()->cart->needs_shipping_address() ) { return $posted_data; }
-
-		// Get list of shipping fields to copy from billing fields
+	public function get_shipping_not_needed_shipping_field_keys() {
+		// Define initial list
 		$shipping_copy_billing_field_keys = array(
+			'shipping_first_name',
+			'shipping_last_name',
 			'shipping_country',
 			'shipping_state',
 			'shipping_postcode',
@@ -3961,13 +3958,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'shipping_address_2',
 		);
 
+		// Filter field keys
+		$shipping_copy_billing_field_keys = apply_filters( 'fc_billing_same_as_shipping_skip_fields', $shipping_copy_billing_field_keys );
+
+		return $shipping_copy_billing_field_keys;
+	}
+
+	/**
+	 * Maybe set shipping address fields values to same as billing address from the posted data.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_fix_shipping_address_when_shipping_not_needed( $posted_data ) {
+		// Bail if cart needs shipping address
+		if ( WC()->cart->needs_shipping_address() ) { return $posted_data; }
+
 		// Get list of posted data keys
 		$posted_data_field_keys = array_keys( $posted_data );
 
 		// Iterate posted data
-		foreach( $shipping_copy_billing_field_keys as $field_key ) {
-
-			// Get related field keys
+		foreach( $this->get_shipping_not_needed_shipping_field_keys() as $field_key ) {
+			// Get related billing field keys
 			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
 
 			// Update shipping field values
@@ -3994,19 +4005,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if cart needs shipping address
 		if ( WC()->cart->needs_shipping_address() ) { return $post_data; }
 
-		// Get list of shipping fields to copy from billing fields
-		$shipping_copy_billing_field_keys = array(
-			'shipping_country',
-			'shipping_state',
-			'shipping_postcode',
-			'shipping_city',
-			'shipping_address_1',
-			'shipping_address_2',
-		);
-
 		// Iterate posted data
-		foreach( $shipping_copy_billing_field_keys as $field_key ) {
-			// Get shipping field key
+		foreach( $this->get_shipping_not_needed_shipping_field_keys() as $field_key ) {
+			// Get related billing field keys
 			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
 
 			// Update shipping field values
