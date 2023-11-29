@@ -712,7 +712,7 @@
 		}
 
 		// Add event listeners
-		window.addEventListener( 'click', handleClick );
+		window.addEventListener( 'click', handleClick, true );
 		document.addEventListener( 'keydown', handleKeyDown, true );
 
 		// Add jQuery event listeners

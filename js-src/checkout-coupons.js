@@ -422,7 +422,7 @@
 		_settings = FCUtils.extendObject( _settings, options );
 
 		// Add event listeners
-		window.addEventListener( 'click', handleClick );
+		window.addEventListener( 'click', handleClick, true );
 		document.addEventListener( 'keydown', handleKeyDown, true );
 
 		// Add init class
