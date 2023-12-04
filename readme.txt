@@ -395,6 +395,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Force text color for form fields on shipping and billing address sections when section is highlighted.
 * Fixed: Stretched payment method icons on mobile when custom styles are set by other plugins.
 * Fixed: Ensure use of captured JS events, even when event propagation has been stop in some cases.
+* Fixed: Maybe collapse substep edit section when step is complete when changing substep visibility. Fixes missing local pickup (PRO feature) address when switching shipping methods.
 
 = 3.0.6 - 2023-11-15 =
 
