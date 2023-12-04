@@ -52,6 +52,7 @@
 		substepEditButtonSelector: '[data-step-edit]',
 		substepSaveButtonSelector: '[data-step-save]',
 
+		stepCompleteSelector: '[data-step-complete]',
 		stepCompleteAttribute: 'data-step-complete',
 		stepCurrentAttribute: 'data-step-current',
 		stepIndexAttribute: 'data-step-index',
@@ -161,6 +162,18 @@
 		return Array.from( stepsWrapper.querySelectorAll( _settings.stepSelector ) );
 	}
 
+
+
+	/**
+	 * Check whether the step related to the element is complete.
+	 * 
+	 * @param  {HTMLElement}  element   Element to check. It can the the step element, a substep element or any child of the step.
+	 * 
+	 * @return {Boolean}                Whether the step is complete.
+	 */
+	var isStepComplete = function( element ) {
+		return null !== element.closest( _settings.stepCompleteSelector );
+	}
 
 
 
@@ -594,8 +607,13 @@
 
 			// Handle visibility state
 			var visibilityHiddenField = substepElement.querySelector( _settings.substepVisibleStateFieldSelector );
-			if ( visibilityHiddenField && 'no' === visibilityHiddenField.value ) {
+			if ( visibilityHiddenField ) {
 				substepElement.setAttribute( _settings.substepVisibleStateAttribute, visibilityHiddenField.value );
+
+				// Maybe collapse substep edit when step is complete
+				if ( isStepComplete( substepElement ) ) {
+					collapseSubstepEdit( substepElement, true, false );
+				}
 			}
 			else {
 				substepElement.removeAttribute( _settings.substepVisibleStateAttribute );
