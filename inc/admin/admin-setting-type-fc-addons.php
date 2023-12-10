@@ -33,7 +33,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	public function output_field( $value ) {
 		?>
 
-		<?php // if ( ! FluidCheckout::instance()->is_pro_installed() && ! FluidCheckout::instance()->is_pro_activated() ) : ?>
+		<?php if ( ! FluidCheckout::instance()->is_pro_installed() && ! FluidCheckout::instance()->is_pro_activated() ) : ?>
 		<tr valign="top" class="fc-dashboard-section__row fc-dashboard-section__row--special-offers">
 
 			<td colspan="2" class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
@@ -108,7 +108,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			</td>
 
 		</tr>
-		<?php // endif; ?>
+		<?php endif; ?>
 
 		<tr valign="top" class="fc-dashboard-section__row">
 			<td colspan="2" class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
