@@ -33,7 +33,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	public function output_field( $value ) {
 		?>
 
-		<?php if ( ! FluidCheckout::instance()->is_pro_installed() && ! FluidCheckout::instance()->is_pro_activated() ) : ?>
+		<?php // if ( ! FluidCheckout::instance()->is_pro_installed() && ! FluidCheckout::instance()->is_pro_activated() ) : ?>
 		<tr valign="top" class="fc-dashboard-section__row fc-dashboard-section__row--special-offers">
 
 			<td colspan="2" class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
@@ -78,17 +78,20 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 							<img class="fc-addons__item-image" src="<?php echo esc_url( FluidCheckout::$directory_url . 'images/admin/addons/fluid-checkout-pro-bundle-icon.png' ); ?>" alt="<?php echo esc_attr( __( 'Fluid Checkout PRO - Bundle', 'fluid-checkout' ) ); ?>">
 							<div class="fc-addons__item-title-section">
 								<h3 class="fc-addons__item-title"><?php echo esc_html( __( 'Fluid Checkout PRO &mdash; Bundle', 'fluid-checkout' ) ); ?></h3>
-								<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'All PRO features + All add-ons for a discounted price.', 'fluid-checkout' ) ); ?></p>
+								<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'All PRO features + All add-ons for a special price.', 'fluid-checkout' ) ); ?></p>
 							</div>
 						</div>
 						<div class="fc-addons__item-description">
 							<p><?php echo wp_kses_post( __( 'The bundle includes all add-ons we currently offer and Fluid Checkout add-ons we launch in the future.', 'fluid-checkout' ) ); ?></p>
 							<ul class="fc-addons__item-features-list">
-								<li><strong><?php echo esc_html( __( '187 EUR value (30% discount)', 'fluid-checkout' ) ); ?></strong></li>
+								<li><strong><?php echo esc_html( __( '226 EUR value (Save 42%)', 'fluid-checkout' ) ); ?></strong></li>
 								<li><?php echo esc_html( __( 'Fluid Checkout PRO', 'fluid-checkout' ) ); ?></li>
 								<li><?php echo esc_html( __( 'Google Address Autocomplete', 'fluid-checkout' ) ); ?></li>
 								<li><?php echo esc_html( __( 'Address Book', 'fluid-checkout' ) ); ?></li>
+								<li><?php echo esc_html( __( 'EU-VAT Assistant', 'fluid-checkout' ) ); ?></li>
+								<li><?php echo esc_html( __( 'All future add-ons*', 'fluid-checkout' ) ); ?></li>
 							</ul>
+							<p><?php echo wp_kses_post( __( '* For as long as you have an active subscription.', 'fluid-checkout' ) ); ?></p>
 						</div>
 						<div class="fc-addons__item-actions">
 							<a href="<?php echo esc_url( 'https://fluidcheckout.com/pricing/?mtm_campaign=addons&mtm_kwd=fc-pro-bundle&mtm_source=lite-plugin' ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( __( 'Get the bundle &mdash; Only 129 EUR', 'fluid-checkout' ) ); ?></a>
@@ -98,14 +101,14 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 				<div class="fc-dashboard__disclaimer">
 					<ul>
-						<li><?php echo wp_kses_post( __( 'All prices shown in EUR and already include taxes. If there are any divergencies with the prices on our website, the offers shown on the website superseed these and will be applied.', 'fluid-checkout' ) ); ?></li>
+						<li><?php echo wp_kses_post( __( 'All prices shown in EUR. If there are any divergencies with the prices on our website, the offers shown on the website superseed these and will be applied.', 'fluid-checkout' ) ); ?></li>
 					</ul>
 				</div>
 
 			</td>
 
 		</tr>
-		<?php endif; ?>
+		<?php // endif; ?>
 
 		<tr valign="top" class="fc-dashboard-section__row">
 			<td colspan="2" class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
@@ -122,12 +125,12 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 								<img class="fc-addons__item-image" src="<?php echo esc_url( FluidCheckout::$directory_url . 'images/admin/addons/fluid-checkout-pro-bundle-icon.png' ); ?>" alt="<?php echo esc_attr( __( 'Fluid Checkout PRO - Bundle', 'fluid-checkout' ) ); ?>">
 								<div class="fc-addons__item-title-section">
 									<h3 class="fc-addons__item-title"><?php echo esc_html( __( 'Fluid Checkout PRO &mdash; Bundle', 'fluid-checkout' ) ); ?></h3>
-									<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'All PRO features + All add-ons for a discounted price.', 'fluid-checkout' ) ); ?></p>
+									<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'All PRO features + All add-ons for a special price.', 'fluid-checkout' ) ); ?></p>
 								</div>
 							</div>
 							<div class="fc-addons__item-description">
 								<p><?php echo wp_kses_post( __( 'The bundle includes all add-ons we currently offer and Fluid Checkout add-ons we launch in the future.', 'fluid-checkout' ) ); ?></p>
-								<p><strong><?php echo esc_html( __( '187 EUR value (30% discount)', 'fluid-checkout' ) ); ?></strong></p>
+								<p><strong><?php echo esc_html( __( '226 EUR value (Save 42%)', 'fluid-checkout' ) ); ?></strong></p>
 							</div>
 							<div class="fc-addons__item-actions">
 								<a href="<?php echo esc_url( 'https://fluidcheckout.com/pricing/?mtm_campaign=addons&mtm_kwd=fc-pro-bundle&mtm_source=lite-plugin' ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( __( 'Get the bundle &mdash; Only 129 EUR', 'fluid-checkout' ) ); ?></a>
@@ -228,7 +231,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				<div class="fc-dashboard__disclaimer">
 					<ul>
 						<li><?php echo wp_kses_post( __( 'All add-ons are sold separately and require the <strong>Fluid Checkout Lite</strong> plugin to be installed and activated, except when noted.', 'fluid-checkout' ) ); ?></li>
-						<li><?php echo wp_kses_post( __( 'All prices shown in EUR and already include taxes. If there are any divergencies with the prices on our website, the offers shown on the website superseed these and will be applied.', 'fluid-checkout' ) ); ?></li>
+						<li><?php echo wp_kses_post( __( 'All prices shown in EUR. If there are any divergencies with the prices on our website, the offers shown on the website superseed these and will be applied.', 'fluid-checkout' ) ); ?></li>
 					</ul>
 				</div>
 
