@@ -3854,7 +3854,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 				$shipping_field_key = str_replace( 'billing_', 'shipping_', $field_key );
 				$save_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
 
-				// Update billing field values
+				// Initialize new field value
+				$new_field_value = null;
+
+				// Get field value from shipping fields
 				if ( in_array( $shipping_field_key, $posted_data_field_keys ) ) {
 					// Maybe update new address data
 					if ( '0' === $is_billing_same_as_shipping_previous && ! apply_filters( 'fc_save_new_address_data_billing_skip_update', false ) ) {
@@ -3863,12 +3866,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 					// Copy field value from shipping fields, maybe set field as empty if not found in shipping fields
 					$new_field_value = isset( $posted_data[ $shipping_field_key ] ) ? $posted_data[ $shipping_field_key ] : '';
-
-					// Update post data
-					$posted_data[ $field_key ] = $new_field_value;
-					$_POST[ $field_key ] = $new_field_value;
 				}
 
+				// Filter field value before updating post data
+				$filtered_field_value = apply_filters( 'fc_billing_same_as_shipping_field_value', $new_field_value, $field_key, $shipping_field_key, $posted_data );
+
+				// Maybe update post data with new field value
+				if ( null !== $filtered_field_value )  {
+					// Update post data
+					$posted_data[ $field_key ] = $filtered_field_value;
+					$_POST[ $field_key ] = $filtered_field_value;
+				}
 			}
 
 		}
@@ -3933,8 +3941,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Get shipping field key
 			$shipping_field_key = str_replace( 'billing_', 'shipping_', $field_key );
 
+			// Copy field value from shipping fields, maybe set field as empty if not found in shipping fields
+			$new_field_value = isset( $post_data[ $shipping_field_key ] ) ? $post_data[ $shipping_field_key ] : null;
+			$new_field_value = apply_filters( 'fc_billing_same_as_shipping_field_value', $new_field_value, $field_key, $shipping_field_key, $post_data );
+
 			// Update billing field values
-			$post_data[ $field_key ] = isset( $post_data[ $shipping_field_key ] ) ? $post_data[ $shipping_field_key ] : null;
+			$post_data[ $field_key ] = $new_field_value;
 		}
 
 		return $post_data;

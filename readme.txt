@@ -392,6 +392,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: EU-VAT Assistant to the list of add-ons on the plugin settings dashboard.
 * Added: Compatibility with theme Goya.
+* Improved: Added filter `fc_billing_same_as_shipping_field_value` to allow developers to change the field values copied from shipping address to billing address.
 * Fixed: Force text color for form fields on shipping and billing address sections when section is highlighted.
 * Fixed: Stretched payment method icons on mobile when custom styles are set by other plugins.
 * Fixed: Ensure use of captured JS events, even when event propagation has been stop in some cases.
