@@ -397,6 +397,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Ensure use of captured JS events, even when event propagation has been stop in some cases.
 * Fixed: Maybe collapse substep edit section when step is complete when changing substep visibility. Fixes missing local pickup (PRO feature) address when switching shipping methods.
 * Fixed: Remove extra text "Shipping" added by some themes to the shipping costs value column on the order summary.
+* Fixed: Also register styles on admin page requests, but do not automtically enqueue them.
 
 = 3.0.6 - 2023-11-15 =
 
