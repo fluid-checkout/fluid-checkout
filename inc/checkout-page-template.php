@@ -44,6 +44,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	public function undo_hooks() {
 		// Checkout page template
 		remove_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
+		remove_filter( 'fc_enable_checkout_page_template', array( $this, 'maybe_disable_checkout_page_template' ), 100 );
 
 		// Template file loader
 		remove_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
@@ -57,8 +58,6 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 			remove_action( 'fc_checkout_footer', array( $this, 'output_checkout_footer' ), 100 );
 		}
 	}
-
-
 
 	/**
 	 * Disable custom template for the checkout page content part when using the Full Site Editor (FSE).
