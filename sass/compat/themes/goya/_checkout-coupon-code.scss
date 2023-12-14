@@ -22,7 +22,7 @@ body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .fc-coupon-code-secti
 
 body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .fc-coupon-code-section .form-row .woocommerce-input-wrapper label:after {
 	content: '';
-	background: #fff;
+	background: $white;
 	height: 2px; // Used px directly to match unit used by the theme styles
 	width: 100%;
 	position: absolute;
