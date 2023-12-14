@@ -3,7 +3,7 @@ Contributors: fluidwebco, diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.4.1
+Tested up to: 6.4.2
 Stable tag: 3.0.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -394,6 +394,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WordPress 6.4.2 and WooCommerce 8.4.0
 * Added: EU-VAT Assistant to the list of add-ons on the plugin settings dashboard.
 * Added: Compatibility with theme Goya.
 * Improved: Added filter `fc_billing_same_as_shipping_field_value` to allow developers to change the field values copied from shipping address to billing address.
