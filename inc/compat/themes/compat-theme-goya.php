@@ -109,7 +109,7 @@ class FluidCheckout_ThemeCompat_Goya extends FluidCheckout {
 		$primary_background_color = get_theme_mod( 'primary_buttons', '#282828' );
 		$primary_text_color = get_theme_mod( 'primary_buttons_text_color', '#fff' );
 		$secondary_background_color = get_theme_mod( 'second_buttons', '#282828' );
-		
+
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
