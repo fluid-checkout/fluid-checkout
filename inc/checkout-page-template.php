@@ -47,6 +47,9 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		// Template file loader
 		remove_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
+		// Shortcode wrapper
+		remove_action( 'init', array( $this, 'maybe_setup_checkout_shortcode_wrapper' ), 10 );
+
 		// Checkout header and footer
 		if ( $this->is_distraction_free_header_footer_checkout() ) {
 			remove_action( 'fc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
