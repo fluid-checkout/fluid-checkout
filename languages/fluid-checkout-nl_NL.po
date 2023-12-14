@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-29 12:58+0000\n"
-"PO-Revision-Date: 2023-11-15 20:15+0000\n"
+"PO-Revision-Date: 2023-12-14 06:15+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.4; wp-6.3"
+"X-Loco-Version: 2.6.6; wp-6.4.2"
 
 #: inc/admin/admin-settings-checkout.php:396
 msgid "\"Add\" link button"
@@ -29,10 +29,14 @@ msgstr "(experimenteel)"
 msgid "(Required)"
 msgstr "(Verplicht)"
 
+#: inc/admin/admin-setting-type-fc-addons.php:94
+msgid "* For as long as you have an active subscription."
+msgstr "* Zolang je een actief abonnement hebt."
+
 #: inc/admin/admin-setting-type-fc-addons.php:87
-#: inc/admin/admin-setting-type-fc-addons.php:130
-msgid "187 EUR value (30% discount)"
-msgstr "Waarde 187 EUR (30% korting)"
+#: inc/admin/admin-setting-type-fc-addons.php:133
+msgid "226 EUR value (Save 42%)"
+msgstr "waarde 226 EUR (Bespaar 42%)"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:165
 #, php-format
@@ -84,7 +88,7 @@ msgstr ""
 "<code>[woocommerce_checkout]</code> gebruiken om goed te werken.</p><p>Voor "
 "meer informatie kun je terecht in de Fluid Checkout documentatie.</p>"
 
-#: fluid-checkout.php:556
+#: fluid-checkout.php:551
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -106,14 +110,15 @@ msgstr "Account koppelen / gebruiker koppelen"
 msgid "Action link on the order summary at checkout."
 msgstr "Actielink op het besteloverzicht bij het afrekenen."
 
-#: fluid-checkout.php:552
+#: fluid-checkout.php:547
 #, php-format
 msgid "Activate %s"
 msgstr "%s activeren"
 
-#: inc/admin/admin-setting-type-fc-addons.php:152
-#: inc/admin/admin-setting-type-fc-addons.php:173
-#: inc/admin/admin-setting-type-fc-addons.php:195
+#: inc/admin/admin-setting-type-fc-addons.php:155
+#: inc/admin/admin-setting-type-fc-addons.php:176
+#: inc/admin/admin-setting-type-fc-addons.php:198
+#: inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "Geactiveerd"
 
@@ -148,7 +153,7 @@ msgstr "Widgetgebieden toevoegen aan de afrekenpagina"
 msgid "Add widget areas to the thank you page"
 msgstr "Widgetgebieden toevoegen aan de bedankpagina"
 
-#: inc/admin/admin-setting-type-fc-addons.php:113
+#: inc/admin/admin-setting-type-fc-addons.php:116
 msgid "Add-ons"
 msgstr "Toevoegingen"
 
@@ -157,11 +162,11 @@ msgid "Additional notes"
 msgstr "Aanvullende opmerkingen"
 
 #: inc/admin/admin-setting-type-fc-addons.php:90
-#: inc/admin/admin-setting-type-fc-addons.php:184
+#: inc/admin/admin-setting-type-fc-addons.php:187
 msgid "Address Book"
 msgstr "Adresboek"
 
-#: inc/admin/admin-setting-type-fc-addons.php:186
+#: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "Adresboek"
 
@@ -217,7 +222,7 @@ msgstr "Na het totaal van de bestelling"
 msgid "After the shipping section"
 msgstr "Na het verzendgedeelte"
 
-#: inc/admin/admin-setting-type-fc-addons.php:208
+#: inc/admin/admin-setting-type-fc-addons.php:233
 msgid ""
 "All add-ons are sold separately and require the <strong>Fluid Checkout "
 "Lite</strong> plugin to be installed and activated, except when noted."
@@ -225,21 +230,30 @@ msgstr ""
 "Alle add-ons worden apart verkocht en vereisen de installatie en activering "
 "van de <strong>Fluid Checkout Lite</strong>-plugin, tenzij anders vermeld."
 
-#: inc/admin/admin-setting-type-fc-addons.php:101
-#: inc/admin/admin-setting-type-fc-addons.php:209
+#: inc/admin/admin-setting-type-fc-addons.php:92
+msgid "All future add-ons*"
+msgstr "Alle toekomstige uitbreidingen*"
+
+#: inc/admin/admin-setting-type-fc-addons.php:104
+#: inc/admin/admin-setting-type-fc-addons.php:234
+#| msgid ""
+#| "All prices shown in EUR and already include taxes. If there are any "
+#| "divergencies with the prices on our website, the offers shown on the "
+#| "website superseed these and will be applied."
 msgid ""
-"All prices shown in EUR and already include taxes. If there are any "
-"divergencies with the prices on our website, the offers shown on the website "
-"superseed these and will be applied."
+"All prices shown in EUR. If there are any divergencies with the prices on "
+"our website, the offers shown on the website superseed these and will be "
+"applied."
 msgstr ""
-"Alle prijzen worden weergegeven in EUR en zijn al inclusief belastingen. Als "
-"er afwijkingen zijn met de prijzen op onze website, dan gaan de aanbiedingen "
-"op de website voor en worden deze toegepast."
+"Alle prijzen worden weergegeven in EUR. Als er afwijkingen zijn met de "
+"prijzen op onze website, dan gaan de aanbiedingen op de website voor en "
+"worden deze toegepast."
 
 #: inc/admin/admin-setting-type-fc-addons.php:81
-#: inc/admin/admin-setting-type-fc-addons.php:125
-msgid "All PRO features + All add-ons for a discounted price."
-msgstr "Alle PRO-functies + Alle add-ons voor een gereduceerde prijs."
+#: inc/admin/admin-setting-type-fc-addons.php:128
+#| msgid "All PRO features + All add-ons for a discounted price."
+msgid "All PRO features + All add-ons for a special price."
+msgstr "Alle PRO functies + Alle add-ons voor een speciale prijs."
 
 #: inc/admin/admin-settings-checkout.php:630
 msgid ""
@@ -289,7 +303,7 @@ msgstr ""
 "Koppel de bestellingen van de gastklant aan hun bestaande account als er al "
 "een account bestaat met de contactgegevens van de klant."
 
-#: inc/admin/admin-setting-type-fc-addons.php:169
+#: inc/admin/admin-setting-type-fc-addons.php:172
 msgid ""
 "Avoid delivery delays and unsatisfied customers. Collect the <strong>correct "
 "address information</strong> from the first time they buy with you."
@@ -605,6 +619,16 @@ msgctxt "Close button aria-label"
 msgid "Close"
 msgstr "Sluiten"
 
+#: inc/admin/admin-setting-type-fc-addons.php:216
+msgid ""
+"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
+"removes tax charges on reverse charge basis and confirms customer location "
+"when needed."
+msgstr ""
+"Verzamelt en <strong>valideert EU btw-nummers op de afrekenpagina</strong>, "
+"verwijdert belastingheffingen op basis van verlegging en bevestigt waar "
+"nodig de locatie van de klant."
+
 #: inc/admin/admin-settings-checkout.php:534
 #: inc/admin/admin-settings-checkout.php:560
 msgid "Contact step"
@@ -698,7 +722,7 @@ msgid "Design template"
 msgstr "Ontwerpsjabloon"
 
 #: inc/admin/admin-setting-type-fc-addons.php:51
-#: inc/admin/admin-setting-type-fc-addons.php:144
+#: inc/admin/admin-setting-type-fc-addons.php:147
 msgid ""
 "Design templates, optimized cart and order received pages, account matching, "
 "and much more."
@@ -876,7 +900,7 @@ msgstr "\"Adresregel 2\"-velden niet achter een koppelingsknop verbergen"
 msgid "Don't show this again"
 msgstr "Dit niet meer weergeven"
 
-#: inc/checkout-steps.php:4355
+#: inc/checkout-steps.php:4368
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 #| msgid "Edit Cart"
 msgid "Edit cart"
@@ -938,7 +962,7 @@ msgstr "De functie voor het matchen van accounts inschakelen"
 msgid "Enable the express checkout section"
 msgstr "De sectie Snelkassa inschakelen"
 
-#: inc/admin/admin-setting-type-fc-addons.php:114
+#: inc/admin/admin-setting-type-fc-addons.php:117
 msgid "Enhance your checkout experience with these add-ons."
 msgstr "Verbeter je kassa-ervaring met deze add-ons."
 
@@ -949,6 +973,12 @@ msgstr "Vul hier je code in"
 #: inc/admin/admin-setting-type-fc-license-key.php:168
 msgid "Error: "
 msgstr "Fout:"
+
+#: inc/admin/admin-setting-type-fc-addons.php:91
+#: inc/admin/admin-setting-type-fc-addons.php:209
+#: inc/admin/admin-setting-type-fc-addons.php:211
+msgid "EU-VAT Assistant"
+msgstr "EU-VAT Assistant"
 
 #. %s: License key expiration date.
 #: inc/admin/admin-setting-type-fc-license-key.php:158
@@ -992,19 +1022,19 @@ msgstr "Fluid Checkout voor WooCommerce - Lite"
 #: inc/admin/admin-setting-type-fc-addons.php:48
 #: inc/admin/admin-setting-type-fc-addons.php:50
 #: inc/admin/admin-setting-type-fc-addons.php:88
-#: inc/admin/admin-setting-type-fc-addons.php:141
-#: inc/admin/admin-setting-type-fc-addons.php:143
+#: inc/admin/admin-setting-type-fc-addons.php:144
+#: inc/admin/admin-setting-type-fc-addons.php:146
 #: inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Fluid Checkout PRO"
 
 #: inc/admin/admin-setting-type-fc-addons.php:80
-#: inc/admin/admin-setting-type-fc-addons.php:124
+#: inc/admin/admin-setting-type-fc-addons.php:127
 msgid "Fluid Checkout PRO &mdash; Bundle"
 msgstr "Fluid Checkout PRO &mdash; Bundel"
 
 #: inc/admin/admin-setting-type-fc-addons.php:78
-#: inc/admin/admin-setting-type-fc-addons.php:122
+#: inc/admin/admin-setting-type-fc-addons.php:125
 msgid "Fluid Checkout PRO - Bundle"
 msgstr "Fluid Checkout PRO - Bundel"
 
@@ -1034,16 +1064,20 @@ msgstr ""
 "Duitse PRO meerstappen afrekenfunctie moet worden uitgeschakeld bij het "
 "gebruik van Fluid Checkout"
 
-#: inc/admin/admin-setting-type-fc-addons.php:94
-#: inc/admin/admin-setting-type-fc-addons.php:133
+#: inc/admin/admin-setting-type-fc-addons.php:97
+#: inc/admin/admin-setting-type-fc-addons.php:136
 msgid "Get the bundle &mdash; Only 129 EUR"
 msgstr "Ontvang de bundel &mdash; Slechts 129 EUR"
 
-#: inc/admin/admin-setting-type-fc-addons.php:177
+#: inc/admin/admin-setting-type-fc-addons.php:180
 msgid "Get this add-on &mdash; 29 EUR"
 msgstr "Koop deze add-on &mdash; 29 EUR"
 
-#: inc/admin/admin-setting-type-fc-addons.php:199
+#: inc/admin/admin-setting-type-fc-addons.php:224
+msgid "Get this add-on &mdash; 39 EUR"
+msgstr "Koop deze add-on &mdash; 39 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:202
 msgid "Get this add-on &mdash; 59 EUR"
 msgstr "Koop deze add-on &mdash; 59 EUR"
 
@@ -1063,7 +1097,7 @@ msgstr "Cadeau-opties"
 msgid "Go to Germanized settings"
 msgstr "Ga naar Duitse instellingen"
 
-#: fluid-checkout.php:548
+#: fluid-checkout.php:543
 msgid "Go to Plugin Search"
 msgstr "Ga naar Plugin zoeken"
 
@@ -1072,8 +1106,8 @@ msgid "Go to the home page"
 msgstr "Terug naar de homepage"
 
 #: inc/admin/admin-setting-type-fc-addons.php:89
-#: inc/admin/admin-setting-type-fc-addons.php:162
-#: inc/admin/admin-setting-type-fc-addons.php:164
+#: inc/admin/admin-setting-type-fc-addons.php:165
+#: inc/admin/admin-setting-type-fc-addons.php:167
 msgid "Google Address Autocomplete"
 msgstr "Google adres autoaanvullen"
 
@@ -1151,7 +1185,7 @@ msgstr "HTML-kleurwaarde. dwz: #f3f3f3"
 msgid "https://fluidcheckout.com/"
 msgstr "https://fluidcheckout.com/"
 
-#: inc/admin/admin-setting-type-fc-addons.php:134
+#: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it &mdash; Hide this offer"
 msgstr "Ik heb het al &mdash; Verberg deze aanbieding"
 
@@ -1212,9 +1246,10 @@ msgstr "Binnen het besteloverzicht"
 msgid "Inside the order summary"
 msgstr "In het besteloverzicht"
 
-#: inc/admin/admin-setting-type-fc-addons.php:154
-#: inc/admin/admin-setting-type-fc-addons.php:175
-#: inc/admin/admin-setting-type-fc-addons.php:197
+#: inc/admin/admin-setting-type-fc-addons.php:157
+#: inc/admin/admin-setting-type-fc-addons.php:178
+#: inc/admin/admin-setting-type-fc-addons.php:200
+#: inc/admin/admin-setting-type-fc-addons.php:222
 msgid "Installed &mdash; Activate"
 msgstr "Geïnstalleerd &mdash; Activeren"
 
@@ -1270,7 +1305,7 @@ msgstr ""
 msgid "Layout &amp; design"
 msgstr "Lay-out &amp; ontwerp"
 
-#: inc/admin/admin-setting-type-fc-addons.php:191
+#: inc/admin/admin-setting-type-fc-addons.php:194
 msgid ""
 "Let customers <strong>save multiple shipping and billing addresses</strong> "
 "on their account and choose which ones to use at checkout and cart pages."
@@ -1391,7 +1426,7 @@ msgstr "Het aanmeldingsvakje naar de contactstap verplaatsen"
 msgid "Multi-step"
 msgstr "Meerstappen"
 
-#: inc/admin/admin-setting-type-fc-addons.php:187
+#: inc/admin/admin-setting-type-fc-addons.php:190
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Meerdere opgeslagen adressen voor verzending en facturering."
 
@@ -1525,7 +1560,7 @@ msgstr "Voortgang bestelling"
 msgid "Order status"
 msgstr "Bestelstatus"
 
-#: inc/checkout-steps.php:4290 inc/admin/admin-settings-cart.php:131
+#: inc/checkout-steps.php:4303 inc/admin/admin-settings-cart.php:131
 #: inc/admin/admin-settings-order-received.php:177
 #: inc/admin/admin-settings-checkout.php:238
 msgid "Order summary"
@@ -1550,7 +1585,7 @@ msgstr "Achtergrondkleur van pagina"
 msgid "Parcel terminal"
 msgstr "Pakketterminal"
 
-#: inc/checkout-steps.php:4069
+#: inc/checkout-steps.php:4082
 msgid "Payment method"
 msgstr "Betaalmethode"
 
@@ -1806,6 +1841,10 @@ msgstr "Tonen indien niet gedefinieerd"
 msgid "Sign up checkbox position"
 msgstr "Positie selectievakje aanmelden"
 
+#: inc/admin/admin-setting-type-fc-addons.php:212
+msgid "Simplified EU-VAT validation for your store."
+msgstr "Vereenvoudigde EU-BTW validatie voor je winkel."
+
 #: inc/checkout-steps.php:593
 msgid "Single step"
 msgstr "Enkele stap"
@@ -1883,7 +1922,7 @@ msgid "Thanks for choosing Fluid Checkout!"
 msgstr "Bedankt voor het kiezen van Fluid Checkout!"
 
 #: inc/admin/admin-setting-type-fc-addons.php:55
-#: inc/admin/admin-setting-type-fc-addons.php:148
+#: inc/admin/admin-setting-type-fc-addons.php:151
 msgid ""
 "The best tools to further <strong>improve your WooCommerce checkout "
 "conversion rate</strong> and make the purchase experience consistent on the "
@@ -1894,7 +1933,7 @@ msgstr ""
 "te maken."
 
 #: inc/admin/admin-setting-type-fc-addons.php:85
-#: inc/admin/admin-setting-type-fc-addons.php:129
+#: inc/admin/admin-setting-type-fc-addons.php:132
 msgid ""
 "The bundle includes all add-ons we currently offer and Fluid Checkout add-"
 "ons we launch in the future."
@@ -2042,7 +2081,7 @@ msgstr "Vertrouwenssymbolen & -badges"
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Vertrouwenssymbolen op de winkelwagen- en bedankpagina's"
 
-#: inc/admin/admin-setting-type-fc-addons.php:165
+#: inc/admin/admin-setting-type-fc-addons.php:168
 msgid "Up to 40% less checkout fields to fill in."
 msgstr "Tot 40% minder afrekenvelden om in te vullen."
 
@@ -2130,7 +2169,7 @@ msgstr ""
 "tijdens het verwerken van nieuwe bestellingen</strong>. Schakel de Duitse "
 "PRO meestappen afrekenfunctie uit in de plugin-instellingen."
 
-#: fluid-checkout.php:545
+#: fluid-checkout.php:540
 msgid "WooCommerce"
 msgstr "WooCommerce"
 

@@ -22,11 +22,12 @@ body.has-checkout-layout--multi-step.fc-checkout-step-current-last .fc-wrapper .
 
 // Fix layout for the `#order_review` element
 body#{ $_body-page-selector } div.woocommerce .fc-wrapper #order_review {
-	float: none;
+	position: static !important; // Needed to override theme styles
+	float: none !important; // Needed to override theme styles
 	padding: 0;
 	margin: 0;
 	border: 0;
-	width: 100%;
+	width: 100%  !important; // Needed to override theme styles
 	background-color: transparent;
 }
 body#{ $_body-page-selector } div.woocommerce .fc-wrapper #order_review:before,
@@ -258,6 +259,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	position: absolute;
 	top: 0;
 	#{ $alignment-left }: calc( #{ $order-summary-image-width } + #{ $global-spacing-tiny } );
+	#{ $alignment-right }: auto;
 	transform: $order-summary-quantity-transform;
 	display: block !important; // Needed to override styles added by some themes
 	padding: remsize( .1rem ) remsize( .6rem ) remsize( .2rem ) $global-spacing-tiny;
@@ -311,6 +313,10 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table > tfoot > tr.coupon-code-form > td {
 	text-align: $alignment-left !important; // Needed to override theme styles
+}
+
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table > tfoot > tr.shipping > td::before {
+	content: none !important; // Need to override theme styles
 }
 
 

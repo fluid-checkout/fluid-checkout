@@ -3,7 +3,7 @@ Contributors: fluidwebco, diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.4.1
+Tested up to: 6.4.2
 Stable tag: 3.0.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -115,7 +115,7 @@ Future features:
 * Customize checkout steps and fields
 * ... and a lot more smaller features.
 
-Want all features? Get the [Fluid Checkout PRO Bundle plan](https://fluidcheckout.com/pricing/) with all the PRO features and add-ons for a discounted price.
+Want all features? Get the [Fluid Checkout PRO Bundle plan](https://fluidcheckout.com/pricing/) with all the PRO features and all add-ons for a special price.
 
 [View detailed list of PRO features on our website](https://fluidcheckout.com/)
 
@@ -129,7 +129,11 @@ Even more features available as separate plugins:
 
 * **[Address book](https://fluidcheckout.com/fc-address-book/)**: allow customers to save multiple addresses to their account and choose which ones to use at the checkout and cart pages.
 
-Want all features? Get the [Fluid Checkout PRO Bundle plan](https://fluidcheckout.com/pricing/) with all the PRO features and add-ons for a discounted price.
+* **[EU-VAT Assistant](https://fluidcheckout.com/fc-eu-vat-assistant/)**: Collect and validate EU VAT numbers at the checkout page, removes tax charges on reverse charge basis and confirms customer location when needed.
+
+[View all products](https://fluidcheckout.com/add-ons/).
+
+Want all features? Get the [Fluid Checkout PRO Bundle plan](https://fluidcheckout.com/pricing/) with all the PRO features and all add-ons for a special price.
 
 == Need more features? ==
 
@@ -265,7 +269,7 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 In addition to a number of default settings (including a custom header/logo), multi-step or single step layout types and easily enabling/disabling features from settings page, the plugin contains HTML/PHP based templates and provides many filters and action hooks that allow for customization.
 
-To customize template files, copy the templates to your theme folder, add a hook to the filter `fc_override_template_with_theme_file` to allow the plugin's version of the template to be overriden by the your customized template file. For more information and examples, see our guide [How to customize template files](https://fluidcheckout.com/support/portal/en/kb/articles/how-to-customize-template-files).
+To customize template files, copy the templates to your theme folder, add a hook to the filter `fc_override_template_with_theme_file` to allow the plugin's version of the template to be overriden by the your customized template file. For more information and examples, see our guide [How to customize template files](https://fluidcheckout.com/docs/how-to-customize-template-files/).
 
 To customize styles when making small adjustments, just add your custom CSS through your theme, the Customizer Custom CSS field or using a plugin.
 
@@ -388,6 +392,19 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Bump tested up to WordPress 6.4.2 and WooCommerce 8.4.0
+* Added: EU-VAT Assistant to the list of add-ons on the plugin settings dashboard.
+* Added: Compatibility with theme Goya.
+* Improved: Added filter `fc_billing_same_as_shipping_field_value` to allow developers to change the field values copied from shipping address to billing address.
+* Fixed: Force text color for form fields on shipping and billing address sections when section is highlighted.
+* Fixed: Stretched payment method icons on mobile when custom styles are set by other plugins.
+* Fixed: Ensure use of captured JS events, even when event propagation has been stop in some cases.
+* Fixed: Maybe collapse substep edit section when step is complete when changing substep visibility. Fixes missing local pickup (PRO feature) address when switching shipping methods.
+* Fixed: Remove extra text "Shipping" added by some themes to the shipping costs value column on the order summary.
+* Fixed: Also register styles on admin page requests, but do not automtically enqueue them.
+
 = 3.0.6 - 2023-11-15 =
 
 * Bump tested up to WordPress 6.4.1 and WooCommerce 8.2.2
@@ -463,7 +480,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Handle new custom arguments `optional_expand_link_label` and `optional_expand_link_lowercase` for checkout fields array to customize how optional field "+ Add <field>" links are displayed.
 * Fixed: PHP warnings when setting shipping address from the shipping calculator on the cart page.
 * Fixed: Show password toggle buttons on popup login form not working.
-* Fixed: Compasiron for checkout fields `required` attribute to accept type casting of non-boolean values.
+* Fixed: Comparison for checkout fields `required` attribute to accept type casting of non-boolean values.
 * Fixed: Compatibility with plugin Checkout Field Editor PRO by ThemeHigh causing checkout process to validate conditional fields as required when fields are not available.
 * Fixed: Remove validation icon from coupon field.
 * Fixed: Force show coupon code related messages on some edge cases.

@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Admin notice: ask review.
+ * Admin notice: database migrations needed.
  */
 class FluidCheckout_AdminNotices_DBMigrations extends FluidCheckout {
 
@@ -26,7 +26,7 @@ class FluidCheckout_AdminNotices_DBMigrations extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'fc_admin_notices', array( $this, 'add_notice' ), 10 );
+		add_action( self::$plugin_prefix . '_admin_notices', array( $this, 'add_notice' ), 10 );
 	}
 
 
@@ -47,7 +47,7 @@ class FluidCheckout_AdminNotices_DBMigrations extends FluidCheckout {
 
 		// Add notice
 		$notices[] = array(
-			'name'           => 'db_migrations',
+			'name'           => self::$plugin_prefix . '_db_migrations',
 			'title'          => __( 'Fluid Checkout database update', 'fluid-checkout' ),
 			'description'    => __( 'Some changes to the database are required. As with any update, we recommend you to <strong>take a full backup of your website before proceeding</strong>.', 'fluid-checkout' ),
 			'dismissable'    => false,

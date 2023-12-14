@@ -71,6 +71,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	padding-#{ $alignment-left }: calc( #{ $option-box-padding-horizontal } + #{ $option-box-radio-size } + #{ $global-spacing-extra-small } );
 	padding-#{ $alignment-right }: $option-box-padding-horizontal;
 	width: 100%;
+	max-width: 100%;
 	border: $option-box-label-border;
 	border-top: 0;
 	border-#{ $alignment-left }: 0;
@@ -193,6 +194,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	float: none;
 	display: inline-block;
 	margin-#{ $alignment-left }: $global-spacing-tiny;
+	width: auto;
 	height: $option-box-radio-size;
 	vertical-align: middle;
 }

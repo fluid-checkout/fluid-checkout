@@ -1,0 +1,23 @@
+:root {
+  --fluidcheckout--field--height: 40px;
+  --fluidcheckout--field--border-radius: 3px;
+}
+
+body.woocommerce-checkout #main.fc-main {
+  border: 0;
+}
+
+body.theme-oceanwp.has-fc-address-book-entries.has-highlighted-shipping-section .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
+  margin-top: 20px;
+}
+
+body.theme-oceanwp div.woocommerce form .form-row .select2-selection--single,
+body.theme-oceanwp div.woocommerce form .form-row .select2-selection--multiple {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+body.theme-oceanwp div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-oceanwp div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  height: auto;
+}

@@ -32,6 +32,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
 		// Enqueue assets
 		add_action( 'wp_head', array( $this, 'maybe_output_settings_inline_script' ), 10 );
