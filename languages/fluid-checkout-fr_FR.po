@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-02 11:34+0000\n"
-"PO-Revision-Date: 2023-11-15 20:15+0000\n"
+"PO-Revision-Date: 2023-12-14 06:14+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.4; wp-6.3"
+"X-Loco-Version: 2.6.6; wp-6.4.2"
 
 #: inc/admin/admin-settings-checkout.php:396
 msgid "\"Add\" link button"
@@ -29,10 +29,14 @@ msgstr "(expérimental)"
 msgid "(Required)"
 msgstr "(Requis)"
 
+#: inc/admin/admin-setting-type-fc-addons.php:94
+msgid "* For as long as you have an active subscription."
+msgstr "* Tant que votre abonnement est actif."
+
 #: inc/admin/admin-setting-type-fc-addons.php:87
-#: inc/admin/admin-setting-type-fc-addons.php:130
-msgid "187 EUR value (30% discount)"
-msgstr "187 EUR (30% de réduction)"
+#: inc/admin/admin-setting-type-fc-addons.php:133
+msgid "226 EUR value (Save 42%)"
+msgstr "valeur de 226 EUR (économie de 42%)"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:165
 #, php-format
@@ -84,7 +88,7 @@ msgstr ""
 "d'origine <code>[woocommerce_checkout]</code> pour fonctionner correctement."
 "</p><p>Pour plus d'informations, visitez le Fluid Documents de paiement.</p>"
 
-#: fluid-checkout.php:556
+#: fluid-checkout.php:551
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -107,14 +111,15 @@ msgid "Action link on the order summary at checkout."
 msgstr ""
 "Lien d'action sur le récapitulatif de la commande au moment du paiement."
 
-#: fluid-checkout.php:552
+#: fluid-checkout.php:547
 #, php-format
 msgid "Activate %s"
 msgstr "Activer %s"
 
-#: inc/admin/admin-setting-type-fc-addons.php:152
-#: inc/admin/admin-setting-type-fc-addons.php:173
-#: inc/admin/admin-setting-type-fc-addons.php:195
+#: inc/admin/admin-setting-type-fc-addons.php:155
+#: inc/admin/admin-setting-type-fc-addons.php:176
+#: inc/admin/admin-setting-type-fc-addons.php:198
+#: inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "Activé"
 
@@ -148,7 +153,7 @@ msgstr "Ajouter des zones de widget à la page de paiement"
 msgid "Add widget areas to the thank you page"
 msgstr "Ajouter des zones de widgets à la page de remerciement"
 
-#: inc/admin/admin-setting-type-fc-addons.php:113
+#: inc/admin/admin-setting-type-fc-addons.php:116
 msgid "Add-ons"
 msgstr "Compléments"
 
@@ -157,11 +162,11 @@ msgid "Additional notes"
 msgstr "Notes complémentaires"
 
 #: inc/admin/admin-setting-type-fc-addons.php:90
-#: inc/admin/admin-setting-type-fc-addons.php:184
+#: inc/admin/admin-setting-type-fc-addons.php:187
 msgid "Address Book"
 msgstr "Carnet d'adresses"
 
-#: inc/admin/admin-setting-type-fc-addons.php:186
+#: inc/admin/admin-setting-type-fc-addons.php:189
 msgid "Address book"
 msgstr "Carnet d'adresses"
 
@@ -217,7 +222,7 @@ msgstr "Après les totaux de la commande"
 msgid "After the shipping section"
 msgstr "Après la section d'expédition"
 
-#: inc/admin/admin-setting-type-fc-addons.php:208
+#: inc/admin/admin-setting-type-fc-addons.php:233
 msgid ""
 "All add-ons are sold separately and require the <strong>Fluid Checkout "
 "Lite</strong> plugin to be installed and activated, except when noted."
@@ -226,21 +231,32 @@ msgstr ""
 "l'installation et l'activation du plugin <strong>Fluid Checkout Lite</strong>"
 ", sauf indication contraire."
 
-#: inc/admin/admin-setting-type-fc-addons.php:101
-#: inc/admin/admin-setting-type-fc-addons.php:209
+#: inc/admin/admin-setting-type-fc-addons.php:92
+msgid "All future add-ons*"
+msgstr "Tous les futurs add-ons*"
+
+#: inc/admin/admin-setting-type-fc-addons.php:104
+#: inc/admin/admin-setting-type-fc-addons.php:234
+#| msgid ""
+#| "All prices shown in EUR and already include taxes. If there are any "
+#| "divergencies with the prices on our website, the offers shown on the "
+#| "website superseed these and will be applied."
 msgid ""
-"All prices shown in EUR and already include taxes. If there are any "
-"divergencies with the prices on our website, the offers shown on the website "
-"superseed these and will be applied."
+"All prices shown in EUR. If there are any divergencies with the prices on "
+"our website, the offers shown on the website superseed these and will be "
+"applied."
 msgstr ""
-"Tous les prix sont indiqués en EUR et incluent déjà les taxes. En cas de "
-"divergence avec les prix indiqués sur notre site web, les offres présentées "
-"sur le site web les supplantent et s'appliquent."
+"Tous les prix sont indiqués en EUR. En cas de divergence avec les prix "
+"indiqués sur notre site Internet, les offres présentées sur le site Internet "
+"prévalent et s'appliquent."
 
 #: inc/admin/admin-setting-type-fc-addons.php:81
-#: inc/admin/admin-setting-type-fc-addons.php:125
-msgid "All PRO features + All add-ons for a discounted price."
-msgstr "Toutes les fonctionnalités PRO + tous les add-ons à un prix réduit."
+#: inc/admin/admin-setting-type-fc-addons.php:128
+#| msgid "All PRO features + All add-ons for a discounted price."
+msgid "All PRO features + All add-ons for a special price."
+msgstr ""
+"Toutes les fonctionnalités PRO + Tous les modules complémentaires à un prix "
+"spécial."
 
 #: inc/admin/admin-settings-checkout.php:630
 msgid ""
@@ -290,7 +306,7 @@ msgstr ""
 "Associer les commandes du client invité à son compte existant lorsqu'un "
 "compte existe déjà avec les coordonnées du client."
 
-#: inc/admin/admin-setting-type-fc-addons.php:169
+#: inc/admin/admin-setting-type-fc-addons.php:172
 msgid ""
 "Avoid delivery delays and unsatisfied customers. Collect the <strong>correct "
 "address information</strong> from the first time they buy with you."
@@ -620,6 +636,16 @@ msgctxt "Close button aria-label"
 msgid "Close"
 msgstr "Fermer"
 
+#: inc/admin/admin-setting-type-fc-addons.php:216
+msgid ""
+"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
+"removes tax charges on reverse charge basis and confirms customer location "
+"when needed."
+msgstr ""
+"Collecte et <strong>valide les numéros de TVA de l'UE à la page de "
+"paiement</strong>, supprime les charges fiscales sur la base de "
+"l'autoliquidation et confirme la localisation du client si nécessaire."
+
 #: inc/admin/admin-settings-checkout.php:534
 #: inc/admin/admin-settings-checkout.php:560
 msgid "Contact step"
@@ -712,7 +738,7 @@ msgid "Design template"
 msgstr "Modèle de conception"
 
 #: inc/admin/admin-setting-type-fc-addons.php:51
-#: inc/admin/admin-setting-type-fc-addons.php:144
+#: inc/admin/admin-setting-type-fc-addons.php:147
 msgid ""
 "Design templates, optimized cart and order received pages, account matching, "
 "and much more."
@@ -902,7 +928,7 @@ msgstr ""
 msgid "Don't show this again"
 msgstr "Ne plus afficher"
 
-#: inc/checkout-steps.php:4355
+#: inc/checkout-steps.php:4368
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 #| msgid "Edit Cart"
 msgid "Edit cart"
@@ -967,7 +993,7 @@ msgstr "Activer la fonction d'appariement des comptes"
 msgid "Enable the express checkout section"
 msgstr "Activer la section de paiement express"
 
-#: inc/admin/admin-setting-type-fc-addons.php:114
+#: inc/admin/admin-setting-type-fc-addons.php:117
 msgid "Enhance your checkout experience with these add-ons."
 msgstr ""
 "Améliorez votre expérience de paiement avec ces modules complémentaires."
@@ -979,6 +1005,12 @@ msgstr "Entrer votre code ici"
 #: inc/admin/admin-setting-type-fc-license-key.php:168
 msgid "Error: "
 msgstr "Erreur :"
+
+#: inc/admin/admin-setting-type-fc-addons.php:91
+#: inc/admin/admin-setting-type-fc-addons.php:209
+#: inc/admin/admin-setting-type-fc-addons.php:211
+msgid "EU-VAT Assistant"
+msgstr "EU-VAT Assistant"
 
 #. %s: License key expiration date.
 #: inc/admin/admin-setting-type-fc-license-key.php:158
@@ -1023,19 +1055,19 @@ msgstr "Fluid Checkout pour WooCommerce - Lite"
 #: inc/admin/admin-setting-type-fc-addons.php:48
 #: inc/admin/admin-setting-type-fc-addons.php:50
 #: inc/admin/admin-setting-type-fc-addons.php:88
-#: inc/admin/admin-setting-type-fc-addons.php:141
-#: inc/admin/admin-setting-type-fc-addons.php:143
+#: inc/admin/admin-setting-type-fc-addons.php:144
+#: inc/admin/admin-setting-type-fc-addons.php:146
 #: inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Fluid Checkout PRO"
 
 #: inc/admin/admin-setting-type-fc-addons.php:80
-#: inc/admin/admin-setting-type-fc-addons.php:124
+#: inc/admin/admin-setting-type-fc-addons.php:127
 msgid "Fluid Checkout PRO &mdash; Bundle"
 msgstr "Fluid Checkout PRO &mdash ; Offre groupée"
 
 #: inc/admin/admin-setting-type-fc-addons.php:78
-#: inc/admin/admin-setting-type-fc-addons.php:122
+#: inc/admin/admin-setting-type-fc-addons.php:125
 msgid "Fluid Checkout PRO - Bundle"
 msgstr "Fluid Checkout PRO - Offre groupée"
 
@@ -1066,16 +1098,20 @@ msgstr ""
 "La fonction de paiement en plusieurs étapes Germanized PRO doit être "
 "désactivée lors de l'utilisation de Fluid Checkout"
 
-#: inc/admin/admin-setting-type-fc-addons.php:94
-#: inc/admin/admin-setting-type-fc-addons.php:133
+#: inc/admin/admin-setting-type-fc-addons.php:97
+#: inc/admin/admin-setting-type-fc-addons.php:136
 msgid "Get the bundle &mdash; Only 129 EUR"
 msgstr "Obtenez l'offre groupée &mdash ; Seulement 129 EUR"
 
-#: inc/admin/admin-setting-type-fc-addons.php:177
+#: inc/admin/admin-setting-type-fc-addons.php:180
 msgid "Get this add-on &mdash; 29 EUR"
 msgstr "Obtenir cet add-on &mdash ; 29 EUR"
 
-#: inc/admin/admin-setting-type-fc-addons.php:199
+#: inc/admin/admin-setting-type-fc-addons.php:224
+msgid "Get this add-on &mdash; 39 EUR"
+msgstr "Obtenir ce module complémentaire &mdash ; 39 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:202
 msgid "Get this add-on &mdash; 59 EUR"
 msgstr "Obtenir cet add-on &mdash ; 59 EUR"
 
@@ -1095,7 +1131,7 @@ msgstr "Possibilités de cadeaux"
 msgid "Go to Germanized settings"
 msgstr "Accéder aux paramètres germanisés"
 
-#: fluid-checkout.php:548
+#: fluid-checkout.php:543
 msgid "Go to Plugin Search"
 msgstr "Aller à la recherche de plugin"
 
@@ -1104,8 +1140,8 @@ msgid "Go to the home page"
 msgstr "Accéder à la page d’accueil"
 
 #: inc/admin/admin-setting-type-fc-addons.php:89
-#: inc/admin/admin-setting-type-fc-addons.php:162
-#: inc/admin/admin-setting-type-fc-addons.php:164
+#: inc/admin/admin-setting-type-fc-addons.php:165
+#: inc/admin/admin-setting-type-fc-addons.php:167
 msgid "Google Address Autocomplete"
 msgstr "Autocomplétion d'adresses Google"
 
@@ -1191,7 +1227,7 @@ msgstr "Valeur de couleur HTML. ex : #f3f3f3"
 msgid "https://fluidcheckout.com/"
 msgstr "https://fluidcheckout.com/"
 
-#: inc/admin/admin-setting-type-fc-addons.php:134
+#: inc/admin/admin-setting-type-fc-addons.php:137
 msgid "I already have it &mdash; Hide this offer"
 msgstr "Je l'ai déjà &mdash ; Masquer cette offre"
 
@@ -1252,9 +1288,10 @@ msgstr "Dans l'aperçu de la commande"
 msgid "Inside the order summary"
 msgstr "Dans le récapitulatif de la commande"
 
-#: inc/admin/admin-setting-type-fc-addons.php:154
-#: inc/admin/admin-setting-type-fc-addons.php:175
-#: inc/admin/admin-setting-type-fc-addons.php:197
+#: inc/admin/admin-setting-type-fc-addons.php:157
+#: inc/admin/admin-setting-type-fc-addons.php:178
+#: inc/admin/admin-setting-type-fc-addons.php:200
+#: inc/admin/admin-setting-type-fc-addons.php:222
 msgid "Installed &mdash; Activate"
 msgstr "Installé &mdash ; Activer"
 
@@ -1322,7 +1359,7 @@ msgstr ""
 msgid "Layout &amp; design"
 msgstr "Mise en page et conception"
 
-#: inc/admin/admin-setting-type-fc-addons.php:191
+#: inc/admin/admin-setting-type-fc-addons.php:194
 msgid ""
 "Let customers <strong>save multiple shipping and billing addresses</strong> "
 "on their account and choose which ones to use at checkout and cart pages."
@@ -1442,7 +1479,7 @@ msgstr "Déplacer la case à cocher d'inscription à l'étape de contact"
 msgid "Multi-step"
 msgstr "En plusieurs étapes"
 
-#: inc/admin/admin-setting-type-fc-addons.php:187
+#: inc/admin/admin-setting-type-fc-addons.php:190
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Plusieurs adresses enregistrées pour l'expédition et la facturation."
 
@@ -1577,7 +1614,7 @@ msgstr "Avancement de la commande"
 msgid "Order status"
 msgstr "Statut de la commande"
 
-#: inc/checkout-steps.php:4290 inc/admin/admin-settings-cart.php:131
+#: inc/checkout-steps.php:4303 inc/admin/admin-settings-cart.php:131
 #: inc/admin/admin-settings-order-received.php:177
 #: inc/admin/admin-settings-checkout.php:238
 msgid "Order summary"
@@ -1602,7 +1639,7 @@ msgstr "Couleur de fond de la page"
 msgid "Parcel terminal"
 msgstr "Terminal colis"
 
-#: inc/checkout-steps.php:4069
+#: inc/checkout-steps.php:4082
 msgid "Payment method"
 msgstr "Méthode de paiement"
 
@@ -1864,6 +1901,10 @@ msgstr "Afficher si non défini"
 msgid "Sign up checkbox position"
 msgstr "Position de la case à cocher d'inscription"
 
+#: inc/admin/admin-setting-type-fc-addons.php:212
+msgid "Simplified EU-VAT validation for your store."
+msgstr "Validation simplifiée de la TVA européenne pour votre magasin."
+
 #: inc/checkout-steps.php:593
 msgid "Single step"
 msgstr "Étape unique"
@@ -1942,7 +1983,7 @@ msgid "Thanks for choosing Fluid Checkout!"
 msgstr "Merci d’avoir choisi Fluid Checkout !"
 
 #: inc/admin/admin-setting-type-fc-addons.php:55
-#: inc/admin/admin-setting-type-fc-addons.php:148
+#: inc/admin/admin-setting-type-fc-addons.php:151
 msgid ""
 "The best tools to further <strong>improve your WooCommerce checkout "
 "conversion rate</strong> and make the purchase experience consistent on the "
@@ -1953,7 +1994,7 @@ msgstr ""
 "l'ensemble du parcours."
 
 #: inc/admin/admin-setting-type-fc-addons.php:85
-#: inc/admin/admin-setting-type-fc-addons.php:129
+#: inc/admin/admin-setting-type-fc-addons.php:132
 msgid ""
 "The bundle includes all add-ons we currently offer and Fluid Checkout add-"
 "ons we launch in the future."
@@ -2106,7 +2147,7 @@ msgstr "Symboles de confiance &amp ; badges"
 msgid "Trust symbols on the cart and thank you pages"
 msgstr "Symboles de confiance sur les pages de panier et de remerciement"
 
-#: inc/admin/admin-setting-type-fc-addons.php:165
+#: inc/admin/admin-setting-type-fc-addons.php:168
 msgid "Up to 40% less checkout fields to fill in."
 msgstr "Jusqu'à 40 % de champs de vérification en moins à remplir."
 
@@ -2196,7 +2237,7 @@ msgstr ""
 "désactiver la fonctionnalité de paiement en plusieurs étapes Germanized PRO "
 "dans les paramètres du plugin."
 
-#: fluid-checkout.php:545
+#: fluid-checkout.php:540
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
