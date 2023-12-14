@@ -89,7 +89,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 								<li><?php echo esc_html( __( 'Google Address Autocomplete', 'fluid-checkout' ) ); ?></li>
 								<li><?php echo esc_html( __( 'Address Book', 'fluid-checkout' ) ); ?></li>
 								<li><?php echo esc_html( __( 'EU-VAT Assistant', 'fluid-checkout' ) ); ?></li>
-								<li><?php echo esc_html( __( 'All future add-ons*', 'fluid-checkout' ) ); ?></li>
+								<li><?php echo esc_html( __( 'All future add-ons *', 'fluid-checkout' ) ); ?></li>
 							</ul>
 							<p><?php echo wp_kses_post( __( '* For as long as you have an active subscription.', 'fluid-checkout' ) ); ?></p>
 						</div>
