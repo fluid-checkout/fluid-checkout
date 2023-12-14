@@ -25,6 +25,9 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
+		// Shortcode wrapper
+		add_action( 'init', array( $this, 'maybe_setup_checkout_shortcode_wrapper' ), 10 );
+
 		// Checkout header and footer
 		if ( $this->is_distraction_free_header_footer_checkout() ) {
 			add_action( 'fc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
@@ -50,6 +53,44 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 			remove_action( 'fc_checkout_footer', array( $this, 'output_checkout_footer' ), 100 );
 		}
 	}
+
+
+
+	/**
+	 * Setup shortcode wrapper for the checkout shortcode.
+	 */
+	public function maybe_setup_checkout_shortcode_wrapper() {
+		// Bail if checkout page template is not enabled
+		if ( true === apply_filters( 'fc_enable_checkout_page_template', true ) ) { return; }
+
+		// Define shortcode tag
+		$checkout_shortcode_tag = apply_filters( 'woocommerce_checkout_shortcode_tag', 'woocommerce_checkout' );
+
+		// Replace checkout shortcode
+		remove_shortcode( $checkout_shortcode_tag );
+		add_shortcode( $checkout_shortcode_tag, array( $this, 'output_checkout_shortcode_wrapper' ), 10 );
+	}
+
+	/**
+	 * Get the shortcode wrapper attributes.
+	 */
+	public function get_shortcode_wrapper_attributes() {
+		return array(
+			'before' => '<div class="fc-content ' . esc_attr( apply_filters( 'fc_content_section_class', '' ) ) . '"><div class="woocommerce">',
+			'after'  => '</div></div>',
+		);
+	}
+
+	/**
+	 * Output the checkout shortcode contents with a wrapper `fc-content` element around it, for when the custom checkout page template is disabled.
+	 */
+	public function output_checkout_shortcode_wrapper( $attributes ) {
+		// Bail if not on checkout page
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return WC_Shortcode_Checkout::get( $attributes ); }
+
+		return WC_Shortcodes::shortcode_wrapper( array( 'WC_Shortcode_Checkout', 'output' ), $attributes, $this->get_shortcode_wrapper_attributes() );
+	}
+
 
 
 
