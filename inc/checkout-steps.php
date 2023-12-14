@@ -539,6 +539,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init(fcSettings.checkoutSteps);})' );
 
 		// Styles
+		wp_register_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
 		wp_register_style( 'fc-checkout-steps', self::$directory_url . 'css/checkout-steps'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
 	}
 
@@ -550,6 +551,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		wp_enqueue_script( 'fc-checkout-steps' );
 
 		// Styles
+		wp_enqueue_style( 'fc-checkout-layout' );
 		wp_enqueue_style( 'fc-checkout-steps' );
 	}
 

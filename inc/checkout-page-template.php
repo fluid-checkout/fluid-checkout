@@ -19,10 +19,6 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Enqueue
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
-
 		// Checkout page template
 		add_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
 
@@ -42,10 +38,6 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 * Undo hooks.
 	 */
 	public function undo_hooks() {
-		// Enqueue
-		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
-		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
-
 		// Checkout page template
 		remove_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
 
@@ -186,37 +178,6 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		if ( ! has_action( 'fc_checkout_footer_widgets' ) || ! ( is_active_sidebar( 'fc_checkout_footer' ) || has_action( 'fc_checkout_footer_widgets_inside_before' ) || has_action( 'fc_checkout_footer_widgets_inside_after' ) ) ) { return; }
 
 		wc_get_template( 'checkout/checkout-footer.php' );
-	}
-
-
-
-	/**
-	 * Register assets.
-	 */
-	public function register_assets() {
-		// Maybe load RTL file
-		$rtl_suffix = is_rtl() ? '-rtl' : '';
-
-		// Styles
-		wp_register_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
-	}
-
-	/**
-	 * Enqueue assets.
-	 */
-	public function enqueue_assets() {
-		// Styles
-		wp_enqueue_style( 'fc-checkout-layout' );
-	}
-
-	/**
-	 * Maybe enqueue assets.
-	 */
-	public function maybe_enqueue_assets() {
-		// Bail if not at checkout
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
-
-		$this->enqueue_assets();
 	}
 
 }
