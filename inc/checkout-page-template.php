@@ -21,6 +21,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	public function hooks() {
 		// Checkout page template
 		add_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
+		add_filter( 'fc_enable_checkout_page_template', array( $this, 'maybe_disable_checkout_page_template' ), 100 );
 
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
@@ -60,6 +61,22 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 
 
 	/**
+	 * Disable custom template for the checkout page content part when using the Full Site Editor (FSE).
+	 */
+	public function maybe_disable_checkout_page_template( $enabled ) {
+		// Bail if using distraction free header and footer
+		if ( $this->is_distraction_free_header_footer_checkout() ) { return $enabled; }
+
+		// Bail if theme not using FSE
+		if ( ! current_theme_supports( 'block-templates' ) ) { return $enabled; }
+
+		// Disable custom checkout templates.
+		return false;
+	}
+
+
+
+	/**
 	 * Setup shortcode wrapper for the checkout shortcode.
 	 */
 	public function maybe_setup_checkout_shortcode_wrapper() {
@@ -93,7 +110,6 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 
 		return WC_Shortcodes::shortcode_wrapper( array( 'WC_Shortcode_Checkout', 'output' ), $attributes, $this->get_shortcode_wrapper_attributes() );
 	}
-
 
 
 
