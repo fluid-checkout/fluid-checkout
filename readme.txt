@@ -115,7 +115,7 @@ Future features:
 * Customize checkout steps and fields
 * ... and a lot more smaller features.
 
-Want all features? Get the [Fluid Checkout PRO Bundle plan](https://fluidcheckout.com/pricing/) with all the PRO features and add-ons for a discounted price.
+Want all features? Get the [Fluid Checkout PRO Bundle plan](https://fluidcheckout.com/pricing/) with all the PRO features and all add-ons for a special price.
 
 [View detailed list of PRO features on our website](https://fluidcheckout.com/)
 
@@ -129,7 +129,11 @@ Even more features available as separate plugins:
 
 * **[Address book](https://fluidcheckout.com/fc-address-book/)**: allow customers to save multiple addresses to their account and choose which ones to use at the checkout and cart pages.
 
-Want all features? Get the [Fluid Checkout PRO Bundle plan](https://fluidcheckout.com/pricing/) with all the PRO features and add-ons for a discounted price.
+* **[EU-VAT Assistant](https://fluidcheckout.com/fc-eu-vat-assistant/)**: Collect and validate EU VAT numbers at the checkout page, removes tax charges on reverse charge basis and confirms customer location when needed.
+
+[View all products](https://fluidcheckout.com/add-ons/).
+
+Want all features? Get the [Fluid Checkout PRO Bundle plan](https://fluidcheckout.com/pricing/) with all the PRO features and all add-ons for a special price.
 
 == Need more features? ==
 
