@@ -24,7 +24,9 @@ jQuery( function( $ ) {
 
 		overrideLocaleAttributes: [],
 	};
-	_settings = FCUtils.extendObject( true, _settings, window.fcSettings.addressI18n );
+	if ( FCUtils && window.fcSettings && window.fcSettings.addressI18n ) {
+		_settings = FCUtils.extendObject( true, _settings, window.fcSettings.addressI18n );
+	}
 	// CHANGE: END - Add settings
 
 	var locale_json = wc_address_i18n_params.locale.replace( /&quot;/g, '"' ), locale = JSON.parse( locale_json );
