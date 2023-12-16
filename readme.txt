@@ -395,7 +395,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Support for block themes using the Full Site Editor (FSE) mode.
-* Added: Compatibility partial compatibility with plugin WooCommerce Fast Cart by Barn2 plugins.
+* Added: Compatibility with plugin WooCommerce NL Postcode Checker by WP Overnight.
 * Fixed: Check whether JS settings object is available before trying to use it in the `address-i18n` script.
 
 = 3.0.7 - 2023-12-14 =
