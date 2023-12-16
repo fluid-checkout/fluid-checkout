@@ -19,107 +19,25 @@ jQuery( function( $ ) {
 		}
 	});
 
-	$( document.body )
-		// Handle locale
-		.on( 'country_to_state_changing', function( event, country, wrapper ) {
-			var thisform = wrapper;
-			if ( $.inArray( country, wpo_wcnlpc.postcode_field_countries ) !== -1 ) {
-				if ( country == 'NL' ) {
-					// hide & disable street & city according to settings
-					if (wpo_wcnlpc.street_city_visibility == 'hide' || wpo_wcnlpc.street_city_visibility == 'readonly' ) {
-						thisform.find('#billing_street_name_field, #shipping_street_name_field, #billing_city_field, #shipping_city_field')
-							.find('input')
-								.attr('readonly', true);
-					}
-					if (wpo_wcnlpc.street_city_visibility == 'hide') {
-						thisform.find('#billing_street_name_field, #shipping_street_name_field, #billing_city_field, #shipping_city_field')
-							.hide();
-					}
-				} else {
-					 // Postcode fields are used outside NL (wpo_wcnlpc.postcode_field_countries)
-					 // but don't get validated and thus shouldn't be blocked.
+	// CHANGE: Extract the `handle_locale` function from the `country_to_state_changing` event handler.
+	var handle_locale = function( event, country, wrapper ) {
+		var thisform = wrapper;
+		if ( $.inArray( country, wpo_wcnlpc.postcode_field_countries ) !== -1 ) {
+			if ( country == 'NL' ) {
+				// hide & disable street & city according to settings
+				if (wpo_wcnlpc.street_city_visibility == 'hide' || wpo_wcnlpc.street_city_visibility == 'readonly' ) {
 					thisform.find('#billing_street_name_field, #shipping_street_name_field, #billing_city_field, #shipping_city_field')
-						.show()
 						.find('input')
-							.attr('readonly', false);
-
-					// remove postcode checker fields!
-					thisform.find('.wcnlpc-error, .wcnlpc-address, .wcnlpc-manual').remove();
+							.attr('readonly', true);
 				}
-
-				var $postcodefield = thisform.find('#billing_postcode_field, #shipping_postcode_field');
-				var $cityfield     = thisform.find('#billing_city_field, #shipping_city_field');
-				var $statefield    = thisform.find('#billing_state_field, #shipping_state_field');
-				var $emailfield    = thisform.find('#billing_email_field');
-				var $phonefield    = thisform.find('#billing_phone_field');
-				var $address1field = thisform.find('#billing_address_1_field, #shipping_address_1_field');
-				var $address2field = thisform.find('#billing_address_2_field, #shipping_address_2_field');
-				var $streetfield   = thisform.find('#billing_street_name_field, #shipping_street_name_field');
-				var $numberfield   = thisform.find('#billing_house_number_field, #shipping_house_number_field');
-				var $suffixfield   = thisform.find('#billing_house_number_suffix_field, #shipping_house_number_suffix_field');
-
-
-				// determine if this is the billing or shipping form
-				if ( thisform.find('#shipping_postcode_field').length ) {
-					var form_name = 'shipping';
-				} else {
-					var form_name = 'billing';
+				if (wpo_wcnlpc.street_city_visibility == 'hide') {
+					thisform.find('#billing_street_name_field, #shipping_street_name_field, #billing_city_field, #shipping_city_field')
+						.hide();
 				}
-
-				// make sure we have the correct layout class (can be overriden the via wpo_wcnlpc_checkout_field_classes filter in php)
-				$postcodefield.removeClass( 'form-row-first form-row-last form-row-wide' ).addClass( wpo_wcnlpc['field_classes'][form_name]['postcode'] );
-				$numberfield.removeClass( 'form-row-first form-row-last form-row-quart-first form-row-quart' ).addClass( wpo_wcnlpc['field_classes'][form_name]['house_number'] );
-				$suffixfield.removeClass( 'form-row-first form-row-last form-row-quart-first form-row-quart' ).addClass( wpo_wcnlpc['field_classes'][form_name]['house_number_suffix'] );
-
-				// fix layout for order notes
-				$('#order_comments_field').addClass( 'form-row-wide' );
-				
-				// moving postcode field (again) to override woocommerce i18n postcode_before_city js
-				$postcodefield.insertBefore( $address1field );
-
-				// below is a fallback, should be already set like this under normal circumstances
-				if (country == 'NL') {
-					$numberfield.insertAfter( $postcodefield );
-					$suffixfield.insertAfter( $numberfield );
-					$streetfield.insertBefore( $cityfield );
-
-					// WC3.0 reorders using the priority attribute, so we set street to one less than the city field 
-					// data-priority & data('priority') are ambiguously used by WooCommerce Checkout Field editor, we pick the minimum value...
-					if ($cityfield.data('priority')) {
-						var city_prio =  Math.min( $cityfield.data('priority'), $cityfield.attr('data-priority') );
-						$streetfield.data('priority',city_prio-1).attr("data-priority", city_prio-1);
-					}
-					// number & suffix come after postcode
-					if ($address1field.data('priority')) {
-						var address1_prio = $address1field.data('priority');
-						// var postcode_prio = Math.min( $postcodefield.data('priority'), $postcodefield.attr('data-priority') );
-						$postcodefield.data('priority',address1_prio-3).attr("data-priority", address1_prio-3);
-						$numberfield.data('priority',address1_prio-2).attr("data-priority", address1_prio-2);
-						$suffixfield.data('priority',address1_prio-1).attr("data-priority", address1_prio-1);
-					}
-				} else {
-					$numberfield.insertAfter( $streetfield );
-					$suffixfield.insertAfter( $numberfield );
-					$postcodefield.insertAfter( $suffixfield );
-
-					// WC3.0 reorders using the priority attribute
-					// Postcode comes after number & suffix
-					if ( $address1field.data('priority') ) {
-						var address1_prio = $address1field.data('priority');
-						$numberfield.data('priority',address1_prio-3).attr("data-priority", address1_prio-3);
-						$suffixfield.data('priority',address1_prio-2).attr("data-priority", address1_prio-2);
-						$postcodefield.data('priority',address1_prio-1).attr("data-priority", address1_prio-1);
-					}
-          
-					if (wpo_wcnlpc['checkout_layout'] == 'one_line') {
-						$postcodefield.removeClass('form-row-first').addClass('form-row-last');
-					}
-				}
-
-				$streetfield.removeClass( 'form-row-first form-row-last' ).addClass( wpo_wcnlpc['field_classes'][form_name]['street_name'] );
 			} else {
-				// make sure city is shown and not read only
-				thisform.find('#billing_city_field, #shipping_city_field')
+				 // Postcode fields are used outside NL (wpo_wcnlpc.postcode_field_countries)
+				 // but don't get validated and thus shouldn't be blocked.
+				thisform.find('#billing_street_name_field, #shipping_street_name_field, #billing_city_field, #shipping_city_field')
 					.show()
 					.find('input')
 						.attr('readonly', false);
@@ -128,14 +46,120 @@ jQuery( function( $ ) {
 				thisform.find('.wcnlpc-error, .wcnlpc-address, .wcnlpc-manual').remove();
 			}
 
-			// Reposition notices and errors if necessary
-			$( '.wcnlpc-error, .wcnlpc-address, .wcnlpc-manual' ).each( function( index ) {
-				let $position_before = $( '#'+$( this ).data( 'position_before' ) );
-				if ( $position_before.length ) {
-					$position_before.before( $( this ) );
+			var $postcodefield = thisform.find('#billing_postcode_field, #shipping_postcode_field');
+			var $cityfield     = thisform.find('#billing_city_field, #shipping_city_field');
+			var $statefield    = thisform.find('#billing_state_field, #shipping_state_field');
+			var $emailfield    = thisform.find('#billing_email_field');
+			var $phonefield    = thisform.find('#billing_phone_field');
+			var $address1field = thisform.find('#billing_address_1_field, #shipping_address_1_field');
+			var $address2field = thisform.find('#billing_address_2_field, #shipping_address_2_field');
+			var $streetfield   = thisform.find('#billing_street_name_field, #shipping_street_name_field');
+			var $numberfield   = thisform.find('#billing_house_number_field, #shipping_house_number_field');
+			var $suffixfield   = thisform.find('#billing_house_number_suffix_field, #shipping_house_number_suffix_field');
+
+
+			// determine if this is the billing or shipping form
+			if ( thisform.find('#shipping_postcode_field').length ) {
+				var form_name = 'shipping';
+			} else {
+				var form_name = 'billing';
+			}
+
+			// make sure we have the correct layout class (can be overriden the via wpo_wcnlpc_checkout_field_classes filter in php)
+			$postcodefield.removeClass( 'form-row-first form-row-last form-row-wide' ).addClass( wpo_wcnlpc['field_classes'][form_name]['postcode'] );
+			$numberfield.removeClass( 'form-row-first form-row-last form-row-quart-first form-row-quart' ).addClass( wpo_wcnlpc['field_classes'][form_name]['house_number'] );
+			$suffixfield.removeClass( 'form-row-first form-row-last form-row-quart-first form-row-quart' ).addClass( wpo_wcnlpc['field_classes'][form_name]['house_number_suffix'] );
+
+			// fix layout for order notes
+			$('#order_comments_field').addClass( 'form-row-wide' );
+			
+			// moving postcode field (again) to override woocommerce i18n postcode_before_city js
+			$postcodefield.insertBefore( $address1field );
+
+			// below is a fallback, should be already set like this under normal circumstances
+			if (country == 'NL') {
+				$numberfield.insertAfter( $postcodefield );
+				$suffixfield.insertAfter( $numberfield );
+				$streetfield.insertBefore( $cityfield );
+
+				// WC3.0 reorders using the priority attribute, so we set street to one less than the city field 
+				// data-priority & data('priority') are ambiguously used by WooCommerce Checkout Field editor, we pick the minimum value...
+				if ($cityfield.data('priority')) {
+					var city_prio =  Math.min( $cityfield.data('priority'), $cityfield.attr('data-priority') );
+					$streetfield.data('priority',city_prio-1).attr("data-priority", city_prio-1);
 				}
-			});
-		})
+				// number & suffix come after postcode
+				if ($address1field.data('priority')) {
+					var address1_prio = $address1field.data('priority');
+					// var postcode_prio = Math.min( $postcodefield.data('priority'), $postcodefield.attr('data-priority') );
+					$postcodefield.data('priority',address1_prio-3).attr("data-priority", address1_prio-3);
+					$numberfield.data('priority',address1_prio-2).attr("data-priority", address1_prio-2);
+					$suffixfield.data('priority',address1_prio-1).attr("data-priority", address1_prio-1);
+				}
+			} else {
+				$numberfield.insertAfter( $streetfield );
+				$suffixfield.insertAfter( $numberfield );
+				$postcodefield.insertAfter( $suffixfield );
+
+				// WC3.0 reorders using the priority attribute
+				// Postcode comes after number & suffix
+				if ( $address1field.data('priority') ) {
+					var address1_prio = $address1field.data('priority');
+					$numberfield.data('priority',address1_prio-3).attr("data-priority", address1_prio-3);
+					$suffixfield.data('priority',address1_prio-2).attr("data-priority", address1_prio-2);
+					$postcodefield.data('priority',address1_prio-1).attr("data-priority", address1_prio-1);
+				}
+	
+				if (wpo_wcnlpc['checkout_layout'] == 'one_line') {
+					$postcodefield.removeClass('form-row-first').addClass('form-row-last');
+				}
+			}
+
+			$streetfield.removeClass( 'form-row-first form-row-last' ).addClass( wpo_wcnlpc['field_classes'][form_name]['street_name'] );
+		} else {
+			// make sure city is shown and not read only
+			thisform.find('#billing_city_field, #shipping_city_field')
+				.show()
+				.find('input')
+					.attr('readonly', false);
+
+			// remove postcode checker fields!
+			thisform.find('.wcnlpc-error, .wcnlpc-address, .wcnlpc-manual').remove();
+		}
+
+		// Reposition notices and errors if necessary
+		$( '.wcnlpc-error, .wcnlpc-address, .wcnlpc-manual' ).each( function( index ) {
+			let $position_before = $( '#'+$( this ).data( 'position_before' ) );
+			if ( $position_before.length ) {
+				$position_before.before( $( this ) );
+			}
+		});
+	};
+
+	// CHANGE: Declare function to trigger handle locale on `updated_checkout`.
+	var trigger_handle_locale = function() {
+		// Get postcode fields
+		var $postcode_field = $( '#billing_postcode_field, #shipping_postcode_field' );
+
+		// Iterate postcode fields
+		$postcode_field.each( function( index ) {
+			var wrapper = $( this ).closest( '.form-row' ).parent();
+			var countryField = $( this ).closest( '.form-row' ).parent().find( '#billing_country, #shipping_country' );
+			var country = countryField.val();
+
+			// Trigger handle locale
+			handle_locale( null, country, wrapper );
+		});
+	};
+
+	$( document.body )
+		// Handle locale
+		// CHANGE: Call the extracted `handle_locale` function.
+		.on( 'country_to_state_changing', handle_locale )
+
+
+		// CHANGE: Trigger handle locale on `updated_checkout`.
+		.on( 'updated_checkout', trigger_handle_locale )
 
 		// Init trigger
 		.on('init_checkout', function() {
