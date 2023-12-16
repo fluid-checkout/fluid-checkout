@@ -22,8 +22,10 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Plugin settings link
 		add_filter( 'plugin_action_links_' . self::$plugin_basename, array( $this, 'add_plugin_settings_link' ), 10 );
 		
-		// Setting types
+		// Load dashboard
 		add_action( 'init', array( $this, 'load_dashboard' ), 10 );
+
+		// Setting types
 		add_action( 'init', array( $this, 'load_setting_types' ), 10 );
 
 		// WooCommerce Settings
@@ -34,7 +36,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_dashboard_styles' ), 10 );
 
 		// Clear cache after saving settings
-		add_action( 'woocommerce_settings_saved', 'wp_cache_flush', 10 );
+		add_action( 'woocommerce_settings_saved', array( $this, 'flush_cache' ), 10 );
 	}
 
 
@@ -170,6 +172,15 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 */
 	public function get_documentation_link_html( $url = 'https://fluidcheckout.com/docs/' ) {
 		return sprintf( '<a target="_blank" href="%s">%s</a>', esc_url( $url ), __( 'Read the documentation.', 'fluid-checkout' ) );
+	}
+
+
+
+	/**
+	 * Encloses the function `wp_cache_flush()` to ensure no parameter is passed into it.
+	 */
+	public function flush_cache() {
+		wp_cache_flush();
 	}
 
 }

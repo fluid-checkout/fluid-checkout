@@ -25,6 +25,12 @@
 
 
 
+.woocommerce .fc-shipping-method__packages {
+	text-align: #{ $alignment-left };
+}
+
+
+
 .woocommerce .fc-shipping-method__packages ul#shipping_method {
 	float: none;
 	display: block;
@@ -42,18 +48,20 @@
 	line-height: 1.6;
 }
 .woocommerce ul#shipping_method li.shipping-method__option:first-of-type {
-	margin-top: 0;
+	margin-top: 0 !important; // Needed to override theme styles
 }
 
 
 
 // Hide default radio elements with opacity to allow for keyboard navigation
 .shipping-method__option input[type="radio"] {
-	position: absolute;
-	display: block;
+	position: absolute !important; // Needed to override theme styles
+	display: block !important; // Needed to override theme styles
+	margin: 0 !important; // Needed to override theme styles
+	padding: 0 !important; // Needed to override theme styles
 	width: 1px; // Needs to be 1px to hide element visually but still allow for keyboard navigation
 	height: 1px; // Needs to be 1px to hide element visually but still allow for keyboard navigation
-	opacity: 0;
+	opacity: 0 !important; // Needed to override theme styles
 }
 
 
@@ -82,7 +90,6 @@
 .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label {
 	background-color: $option-box-background-color--checked !important; // Needed to override theme styles
 	color: $option-box-label-color--checked !important; // Needed to override theme styles
-	border-bottom-width: 0;
 }
 
 
@@ -109,8 +116,8 @@
 	background-color: $option-box-radio-color--checked;
 }
 .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:focus + .shipping-method__option-label:before {
-	outline: $focus-outline-field;
-	outline-offset: $focus-outline-offset-field;
+	outline: $focus-outline-field !important; // Needed to override theme styles
+	outline-offset: $focus-outline-offset-field !important; // Needed to override theme styles
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:hover:before,
@@ -164,6 +171,12 @@
 
 
 
+.woocommerce .woocommerce-shipping-contents {
+	margin: $global-spacing-tiny 0;
+}
+
+
+
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
 	position: absolute;
 	display: flex;
@@ -191,4 +204,23 @@
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .tax_label {
 	display: block;
+}
+
+
+
+.woocommerce .shipping-method__package {
+	margin-top: $global-spacing-small;
+}
+.woocommerce .shipping-method__package:first-of-type {
+	margin-top: 0;
+}
+
+.woocommerce .shipping-method__package-name {
+	margin-bottom: $global-spacing-extra-small;
+}
+
+
+
+.woocommerce .fc-wrapper .shipping-method__option-label .woocommerce-shipping-contents {
+	line-height: 1.1 !important; // Needed to override theme styles
 }

@@ -9,14 +9,14 @@ div.woocommerce form .form-row:after {
 
 
 div.woocommerce form .form-row:last-child {
-	margin-bottom: 0;
+	margin-bottom: 0 !important; // Needed to override theme styles
 }
 
 
 
 div.woocommerce form .form-row {
 	display: block;
-	margin-bottom: $global-spacing-small;
+	margin-bottom: $global-spacing-small !important; // Needed to override theme styles
 	padding: 0;
 	max-width: 100%;
 }
@@ -72,6 +72,10 @@ div.woocommerce form #payment .form-row.form-row-middle {
 		margin-#{ $alignment-left }: 0;
 		margin-#{ $alignment-right }: 4%;
 	}
+}
+
+div.woocommerce form .form-row.form-row-last {
+	margin-#{ $alignment-left }: 0;
 }
 
 
@@ -180,8 +184,8 @@ div.woocommerce form .form-row {
 		position: relative;
 
 		&:focus {
-			outline: $focus-outline-field;
-			outline-offset: $focus-outline-offset-field;
+			outline: $focus-outline-field !important; // Needed to override theme styles
+			outline-offset: $focus-outline-offset-field !important; // Needed to override theme styles
 		}
 	}
 
@@ -201,8 +205,8 @@ div.woocommerce {
 	input[type="checkbox"],
 	input[type="radio"] {
 		&:focus {
-			outline: $focus-outline-field;
-			outline-offset: $focus-outline-offset-field;
+			outline: $focus-outline-field !important; // Needed to override theme styles
+			outline-offset: $focus-outline-offset-field !important; // Needed to override theme styles
 		}
 	}
 }

@@ -36,8 +36,8 @@ div.woocommerce .form-row .fc-mailcheck-suggestion {
 
 div.woocommerce .form-row .fc-mailcheck-suggestion .mailcheck-suggestion {
 	&:focus {
-		outline: $focus-outline-link;
-		outline-offset: $focus-outline-offset-link;
+		outline: $focus-outline-link !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-link !important; // Needed to override theme styles
 	}
 }
 

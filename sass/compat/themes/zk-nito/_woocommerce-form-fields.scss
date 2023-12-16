@@ -1,0 +1,15 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector }:not( .has-visible-form-field-labels ) div.woocommerce form .form-row > label:not( input[type="checkbox"] ~ label ):not( .place-order label ) {
+	@extend %screen-reader-text-styles;
+}
+
+
+
+body#{ $_body-theme-selector } div.woocommerce input[type="checkbox"] {
+	position: static;
+	margin-#{ $alignment-left }: 0;
+	margin-#{ $alignment-right }: $global-spacing-tiny;
+}

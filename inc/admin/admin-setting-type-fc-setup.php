@@ -45,6 +45,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 
 				<div class="fc-dashboard-docs">
 					<ul>
+						<li><?php echo wp_kses_post( sprintf( __( 'Read the installation guide <a href="%s" target="_blank">Getting stated with Fluid Checkout</a>.', 'fluid-checkout' ), 'https://fluidcheckout.com/docs/getting-started-fluid-checkout/' ) ); ?></li>
 						<li><?php echo wp_kses_post( sprintf( __( 'Setup layout and design on the <a href="%s">checkout options</a>.', 'fluid-checkout' ), admin_url( 'admin.php?page=wc-settings&tab=fc_checkout&section=checkout' ) ) ); ?></li>
 						<li><?php echo wp_kses_post( sprintf( __( 'Check if there are any <a href="%s">integration options</a> available for other plugins you have installed.', 'fluid-checkout' ), admin_url( 'admin.php?page=wc-settings&tab=fc_checkout&section=integrations' ) ) ); ?></li>
 						<li><?php echo wp_kses_post( sprintf( __( 'Visit <a href="%s" target="_blank">our documentation</a> for more information about Fluid Checkout features.', 'fluid-checkout' ), 'https://fluidcheckout.com/docs/' ) ); ?></li>

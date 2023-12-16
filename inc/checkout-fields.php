@@ -21,10 +21,14 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	public function hooks() {
 		// Bail if feature is not enabled
 		if( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_apply_checkout_field_args' ) ) { return; }
-		
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
 		// Checkout fields args
 		add_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_args' ), 100 );
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 100 );
+		add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_change_shipping_company_field_args' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'change_order_field_args' ), 100 );
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 100 );
 
@@ -50,6 +54,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		// Checkout fields args
 		remove_filter( 'woocommerce_billing_fields', array( $this, 'change_checkout_field_args' ), 100 );
 		remove_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 100 );
+		remove_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_change_shipping_company_field_args' ), 100 );
 		remove_filter( 'woocommerce_checkout_fields', array( $this, 'change_order_field_args' ), 100 );
 		remove_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 100 );
 
@@ -64,6 +69,32 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 		// Select2 field class
 		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_select2_field_class' ), 100, 3 );
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+
+		// Checkout Field Attributes
+		$settings[ 'checkoutFields' ] = WC()->checkout()->get_checkout_fields();
+
+		// Override locale attributes
+		$override_attributes = array();
+		if ( true === apply_filters( 'fc_checkout_address_i18n_override_locale_required_attribute', false ) ) {
+			$override_attributes[] = 'required';
+		}
+
+		// Address i18n
+		$settings[ 'addressI18n' ] = array(
+			'overrideLocaleAttributes'  => apply_filters( 'fc_checkout_address_i18n_override_locale_attributes', $override_attributes ),
+		);
+		
+		return $settings;
 	}
 
 
@@ -118,10 +149,18 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function change_default_locale_field_args( $fields ) {
-		$new_field_args = array(
-			'address_1' => array( 'class' => array( 'form-row-wide' ), 'description' => __( 'House number and street name', 'woocommerce' ) ),
-			'address_2' => array( 'class' => array( 'form-row-wide' ), 'label' => __( 'Apartment, unit, building, floor, etc.', 'fluid-checkout' ), 'placeholder' => __( 'Apartment, unit, building, floor, etc.', 'fluid-checkout' ) ),
-		);
+		$new_field_args = array();
+
+		// Maybe change address 1 field description
+		if ( true === apply_filters( 'fc_apply_address_1_field_description', true ) ) {
+			$new_field_args[ 'address_1' ] = array( 'class' => array( 'form-row-wide' ), 'description' => __( 'House number and street name', 'woocommerce' ), 'placeholder' => '' );
+		}
+
+		// Maybe change address 2 field description and place holder
+		if ( true === apply_filters( 'fc_apply_address_2_field_description', true ) ) {
+			$address_2_field_description = __( 'Apartment, unit, building, floor, etc.', 'fluid-checkout' );
+			$new_field_args[ 'address_2' ] = array( 'class' => array( 'form-row-wide' ), 'description' => $address_2_field_description, 'placeholder' => $address_2_field_description );
+		}
 
 		// Only apply class changes on checkout and account pages
 		if ( function_exists( 'is_checkout' ) && ( is_checkout() || is_account_page() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) ) {
@@ -135,6 +174,32 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		foreach( $fields as $field_key => $original_args ) {
 			$new_args = array_key_exists( $field_key, $new_field_args ) ? $new_field_args[ $field_key ] : array();
 			$fields[ $field_key ] = $this->merge_form_field_args( $original_args, $new_args );
+		}
+
+		return $fields;
+	}
+
+
+
+	/**
+	 * Maybe change shipping company field arguments to make it required, optional or remove the field.
+	 *
+	 * @param   array  $fields  Fields used in checkout.
+	 */
+	public function maybe_change_shipping_company_field_args( $fields ) {
+		// Bail if shipping company field is not available
+		if ( ! array_key_exists( 'shipping_company', $fields ) ) { return $fields; }
+
+		// Get field visibility option value
+		$field_visibility = FluidCheckout_Settings::instance()->get_option( 'fc_shipping_company_field_visibility' );
+
+		// Maybe remove the field
+		if ( 'no' === $field_visibility ) {
+			unset( $fields[ 'shipping_company' ] );
+		}
+		// Maybe set as required
+		else if( 'required' === $field_visibility ) {
+			$fields[ 'shipping_company' ][ 'required' ] = true;
 		}
 
 		return $fields;
@@ -198,6 +263,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function add_field_has_description_class_checkout_fields_args( $fields ) {
+		// Bail if fields are not available
+		if ( ! is_array( $fields ) ) { return $fields; }
+
 		foreach( $fields as $field_key => $field_args ) {
 			// Bail if field does not have description
 			if ( ! array_key_exists( 'description', $fields[ $field_key ] ) ) { continue; }
@@ -276,8 +344,13 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function change_checkout_field_args( $fields ) {
+		// Bail if fields are not available
+		if ( ! is_array( $fields ) ) { return $fields; }
+
+		// Get new field args
 		$new_field_args = $this->get_checkout_field_args();
 
+		// Merge new field args into the original field args
 		foreach( $fields as $field_key => $original_args ) {
 			$new_args = array_key_exists( $field_key, $new_field_args ) ? $new_field_args[ $field_key ] : array();
 			$fields[ $field_key ] = $this->merge_form_field_args( $original_args, $new_args );

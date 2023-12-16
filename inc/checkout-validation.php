@@ -157,8 +157,8 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		$settings[ 'checkoutValidation' ] = apply_filters( 'fc_checkout_validation_script_settings', array(
 			'formRowSelector'                    => '.form-row, .shipping-method__package',
-			'validateFieldsSelector'             => '.input-text, select, .shipping-method__options',
-			'referenceNodeSelector'              => '.input-text, select, .shipping-method__options',
+			'validateFieldsSelector'             => '.input-text, .input-checkbox, select, .shipping-method__options',
+			'referenceNodeSelector'              => '.input-text, .input-checkbox, select, .shipping-method__options',
 			'alwaysValidateFieldsSelector'       => '',
 			'mailcheckSuggestions'               => array(
 				/* translators: %s: html for the email address typo correction suggestion link */
@@ -268,11 +268,6 @@ class FluidCheckout_Validation extends FluidCheckout {
 			}
 		}
 
-		// Maybe add `valid` classes
-		if ( true == $field_valid ) {
-			// $args['class'] = array_merge( $args['class'], array( 'woocommerce-validated' ) );
-		}
-
 		return $args;
 	}
 
@@ -312,9 +307,9 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 * @param   mixed   $value  Value of the field. Defaults to `null`.
 	 */
 	public function change_required_field_attributes( $field, $key, $args, $value ) {
-		
 		// Bail if field is not required
-		if ( ! array_key_exists( 'required', $args ) || $args['required'] != true ) { return $field; }
+		// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
+		if ( ! array_key_exists( 'required', $args ) || true != $args['required'] ) { return $field; }
 		
 		// Add `aria-label` to required field labels
 		$field = str_replace( '<abbr class="required"', '<abbr class="required" aria-label="' . __( '(Required)', 'fluid-checkout' ) . '" ', $field );

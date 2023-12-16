@@ -22,6 +22,9 @@ defined( 'ABSPATH' ) || exit;
 // CHANGE: Determine create account checked state
 $create_account_checked = FluidCheckout_Steps::instance()->is_create_account_checked() || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) );
 $collapsible_initial_state = $create_account_checked ? 'expanded' : 'collapsed';
+
+// CHANGE: Define "optional" label HTML
+$optional_label = apply_filters( 'fc_checkout_display_create_account_optional_label', true ) ? ' (' . esc_html__( 'optional', 'woocommerce' ) . ')' : '';
 ?>
 
 <?php if ( ! is_user_logged_in() && $checkout->is_registration_enabled() ) : ?>
@@ -30,8 +33,8 @@ $collapsible_initial_state = $create_account_checked ? 'expanded' : 'collapsed';
 
 			<p class="form-row form-row-wide create-account">
 				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-					<?php // CHANGE: Use variable to determine checked state ?>
-					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( $create_account_checked, true ); ?> type="checkbox" name="createaccount" value="1" /> <span><?php esc_html_e( 'Create an account', 'fluid-checkout' ); ?></span>
+					<?php // CHANGE: Use variable to determine checked state, and maybe display text "optional" ?>
+					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( $create_account_checked, true ); ?> type="checkbox" name="createaccount" value="1" /> <span><?php echo esc_html( __( 'Create an account', 'fluid-checkout' ) . $optional_label ); ?></span>
 				</label>
 			</p>
 

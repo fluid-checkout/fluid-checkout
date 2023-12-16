@@ -76,6 +76,8 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 
 .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox input[type="checkbox"] {
 	top: 0;
+	margin-#{ $alignment-left }: 0;
+	margin-#{ $alignment-right }: $global-spacing-tiny;
 }
 
 
@@ -119,20 +121,22 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 
 // Place order button
 .fc-wrapper .fc-place-order .fc-place-order-button {
+	float: none;
+	display: block !important; // Needed to override theme styles
 	margin: 0;
 	width: 100% !important; // Needed to override theme styles
 	min-width: remsize( 24rem );
 	min-height: remsize( 5rem );
 	text-align: center;
-	float: none;
 
 	&:focus {
-		outline: $focus-outline-button;
-		outline-offset: $focus-outline-offset-button;
+		outline: $focus-outline-button !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-button !important; // Needed to override theme styles
 	}
 }
-.fc-wrapper .fc-place-order .fc-place-order-button:disabled {
-	cursor: not-allowed;
+body.woocommerce-checkout .fc-wrapper .fc-place-order .fc-place-order-button:disabled {
+	cursor: not-allowed !important; // Needed to override theme styles
+	opacity: .5 !important; // Needed to override theme styles
 }
 
 
@@ -140,7 +144,7 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 div.place-order .woocommerce-terms-and-conditions-link,
 div.place-order .woocommerce-privacy-policy-link {
 	&:focus {
-		outline: $focus-outline-link !important; // Needed to override theme styles set with `!important`
-		outline-offset: $focus-outline-offset-link !important; // Needed to override theme styles set with `!important`
+		outline: $focus-outline-link !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-link !important; // Needed to override theme styles
 	}
 }

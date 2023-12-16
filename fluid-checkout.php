@@ -5,15 +5,15 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 3.0.2-beta-1
+Version: 3.0.8-beta-2
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 7.9
+WC tested up to: 8.4.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
-Copyright (C) 2021-2022 Fluidweb OÜ
+Copyright (C) 2021-2023 Fluidweb OÜ
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -99,6 +99,7 @@ class FluidCheckout {
 	 */
 	public function __construct() {
 		$this->set_plugin_vars();
+		$this->load_db_migrations();
 		$this->load_admin_notices();
 		$this->register_features();
 
@@ -294,11 +295,24 @@ class FluidCheckout {
 
 
 	/**
+	 * Load the database migrations.
+	 */
+	public function load_db_migrations() {
+		// Bail if migrations class already loaded
+		if ( class_exists( 'FluidCheckout_AdminDBMigrations' ) ) { return; }
+
+		// Load class
+		require_once self::$directory_path . 'inc/admin/admin-db-migrations.php';
+	}
+
+	/**
 	 * Load admin notices.
 	 * @since 1.2.5
 	 */
 	private function load_admin_notices() {
 		require_once self::$directory_path . 'inc/admin/admin-notices.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-db-migrations.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-db-migrations-applied.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-review-request.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
 	}
@@ -313,6 +327,7 @@ class FluidCheckout {
 		self::$features = array(
 			'FluidCheckout_DesignTemplates'                => array( 'file' => self::$directory_path . 'inc/design-templates.php' ),
 			'FluidCheckout_CheckoutPageTemplate'           => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php' ),
+			'FluidCheckout_FragmentsRefresh'               => array( 'file' => self::$directory_path . 'inc/fragments-refresh.php' ),
 			'FluidCheckout_Steps'                          => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
 			'FluidCheckout_CouponCodes'                    => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ),
 			'FluidCheckout_CartShippingCalculator'         => array( 'file' => self::$directory_path . 'inc/cart-shipping-calculator.php' ),
@@ -570,17 +585,17 @@ class FluidCheckout {
 	 * Get user location on ip geolocation
 	 */
 	public function get_user_geo_location() {
-		// Get user location
-		if ( class_exists( 'WC_Geolocation' ) ) {
-			$geo      = new WC_Geolocation(); // Get WC_Geolocation instance object
-			$user_ip  = $geo->get_ip_address(); // Get user IP
-			$user_geo = $geo->geolocate_ip( $user_ip ); // Get geolocated user data.
-			$user_geo['country_name'] = array_key_exists( 'country', $user_geo ) && $user_geo['country'] != '' ? WC()->countries->countries[ $user_geo['country'] ] : '';
+		// Bail if geolocation class not available
+		if ( ! class_exists( 'WC_Geolocation' ) ) { return false; }
+		
+		// Get user location information
+		$geo      = new WC_Geolocation(); // Get WC_Geolocation instance object
+		$user_ip  = $geo->get_ip_address(); // Get user IP
+		$user_geo = $geo->geolocate_ip( $user_ip ); // Get geolocated user data.
+		$user_geo['country_name'] = array_key_exists( 'country', $user_geo ) && $user_geo['country'] != '' ? WC()->countries->countries[ $user_geo['country'] ] : '';
+		$user_geo['ip'] = $user_ip;
 
-			return $user_geo;
-		}
-
-		return false;
+		return $user_geo;
 	}
 
 

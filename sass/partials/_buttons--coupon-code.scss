@@ -1,0 +1,11 @@
+// ------------------------------------
+// BUTTONS -- CHECKOUT
+// ------------------------------------
+
+// Primary actions
+body.has-fc-button-colors .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+	@extend %button-primary-actions;
+}
+body.has-fc-button-styles .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+	@extend %button-styles;
+}

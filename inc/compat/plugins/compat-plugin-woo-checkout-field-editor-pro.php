@@ -26,13 +26,14 @@ class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 
 		// Checkout field args
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_mailcheck_attributes' ), 100, 3 );
+		add_filter( 'fc_checkout_address_i18n_override_locale_required_attribute', '__return_true', 10 );
 	}
 
 	/**
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
-		
+
 		// Account edit address
 		if ( 'yes' === apply_filters( 'fc_integration_woo_checkout_field_editor_pro_enable_edit_address_changes', 'yes' ) ) {
 			// Get the plugin public class object
@@ -86,7 +87,7 @@ class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 	 */
 	public function apply_billing_fields_changes( $fields, $country ) {
 		// Bail if not on account edit address endpoint
-		if( ! is_wc_endpoint_url('edit-address') ) { return $fields; }
+		if ( ! is_wc_endpoint_url('edit-address') ) { return $fields; }
 
 		return self::$thwcfd_public->prepare_address_fields( FluidCheckout_Settings::instance()->get_option( 'wc_fields_billing' ), $country, $fields, 'billing' );
 	}
@@ -101,7 +102,7 @@ class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 	 */
 	public function apply_shipping_fields_changes( $fields, $country ) {
 		// Bail if not on account edit address endpoint
-		if( ! is_wc_endpoint_url('edit-address') ) { return $fields; }
+		if ( ! is_wc_endpoint_url('edit-address') ) { return $fields; }
 
 		return self::$thwcfd_public->prepare_address_fields( FluidCheckout_Settings::instance()->get_option( 'wc_fields_shipping' ), $country, $fields, 'shipping' );
 	}

@@ -91,7 +91,7 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 	public function add_js_settings( $settings ) {
 
 		// Add validation settings
-		$settings[ 'checkoutValidationBrazilianDocuments' ] = array(
+		$settings[ 'checkoutValidationFermopoint' ] = array(
 			'validationMessages'  => array(
 				'fermopoint_not_selected' => __( 'Selecting a collection point is required when shipping with FermoPoint.', 'fluid-checkout' ),
 			),

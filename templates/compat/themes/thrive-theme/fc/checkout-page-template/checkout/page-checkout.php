@@ -17,8 +17,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// Replace site header with our implementation
-if ( class_exists( 'FluidCheckout_CheckoutPageTemplate' ) && FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) {
+// Replace header with our distraction free template
+if ( class_exists( 'FluidCheckout_CheckoutPageTemplate' ) && FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) {
 	wc_get_template( 'checkout/page-checkout-header.php' );
 }
 // Display the site's default header
@@ -46,8 +46,8 @@ else {
 </div>
 
 <?php
-// Replace site footer with our implementation
-if ( class_exists( 'FluidCheckout_CheckoutPageTemplate' ) && FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) {
+// Replace footer with our distraction free template
+if ( class_exists( 'FluidCheckout_CheckoutPageTemplate' ) && FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) {
 	wc_get_template( 'checkout/page-checkout-footer.php' );
 }
 // Display the site's default footer

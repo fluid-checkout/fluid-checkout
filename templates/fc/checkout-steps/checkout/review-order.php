@@ -53,7 +53,13 @@ defined( 'ABSPATH' ) || exit;
 
 						</div>
 						<div class="product-total" role="cell">
+							<?php // CHANGE: Add hook for before the cart item product totals ?>
+							<?php do_action( 'fc_order_summary_cart_item_totals_before', $cart_item, $cart_item_key, $_product ); ?>
+
 							<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+
+							<?php // CHANGE: Add hook for after the cart item product totals ?>
+							<?php do_action( 'fc_order_summary_cart_item_totals_after', $cart_item, $cart_item_key, $_product ); ?>
 						</div>
 					</td>
 				</tr>

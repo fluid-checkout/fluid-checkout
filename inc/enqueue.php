@@ -32,6 +32,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
 		// Enqueue assets
 		add_action( 'wp_head', array( $this, 'maybe_output_settings_inline_script' ), 10 );
@@ -39,7 +40,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_edit_address' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_add_payment_method' ), 10 );
-	
+
 		// Theme and Plugin Compatibility
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_styles' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_plugin_compat_styles' ), 10 );
@@ -63,7 +64,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_edit_address' ), 10 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_add_payment_method' ), 10 );
-	
+
 		// Theme and Plugin Compatibility
 		// Should not remove theme and plugin compatibility hooks. Keep this comment here for future reference.
 	}
@@ -93,7 +94,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_script( 'woocommerce', self::$directory_url . 'js/woocommerce'. self::$asset_version . '.js', array( 'jquery', 'jquery-blockui', 'js-cookie' ), NULL, true );
 		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
 		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
-		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, true );
+		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, true );
 	}
 
 	/**
@@ -114,7 +115,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 * @return  array  JS settings.
 	 */
 	public function get_js_settings() {
-		return apply_filters( 'fc_js_settings', array(
+		// Define settings
+		$settings = array(
 			'ver'                            => self::$version,
 			'assetsVersion'                  => self::$asset_version,
 			'cookiePath'                     => parse_url( FluidCheckout_Settings::instance()->get_option( 'siteurl' ), PHP_URL_PATH ),
@@ -137,7 +139,12 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 				'.address-field input.input-text',
 				'.update_totals_on_change input.input-text',
 			) ) ),
-		) );
+		);
+
+		// Filter settings
+		$settings = apply_filters( 'fc_js_settings', $settings );
+
+		return $settings;
 	}
 
 	/**
@@ -207,7 +214,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 
-
 	/**
 	 * Enqueue assets.
 	 */
@@ -274,7 +280,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Enqueue assets
 		$this->enqueue_custom_fonts();
 		$this->enqueue_assets();
-		
+
 		// Enqueue assets for the edit address page
 		$this->enqueue_assets_edit_address();
 	}
@@ -298,7 +304,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Enqueue assets
 		$this->enqueue_custom_fonts();
 		$this->enqueue_assets();
-		
+
 		// Enqueue assets for the add payment method page
 		$this->enqueue_assets_add_payment_method();
 	}
@@ -350,7 +356,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Get all plugins installed
 		$plugins_installed = get_plugins();
-		
+
 		foreach ( $plugins_installed as $plugin_file => $plugin_meta ) {
 			// Skip plugins not activated
 			if ( ! is_plugin_active( $plugin_file ) ) { continue; }

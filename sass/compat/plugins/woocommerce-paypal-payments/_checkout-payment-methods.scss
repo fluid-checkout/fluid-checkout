@@ -1,0 +1,15 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+.fc-wrapper #ppcp-credit-card-gateway-card-number,
+.fc-wrapper #ppcp-credit-card-gateway-card-expiry,
+.fc-wrapper #ppcp-credit-card-gateway-card-cvc {
+	height: $form-field-height !important; // Needed to override the height set by the plugin at runtime
+	margin-inline: 0 !important; // Needed to override the margin set by the plugin at runtime
+}
+
+.fc-wrapper #ppcp-credit-card-gateway-card-number,
+.fc-wrapper #ppcp-credit-card-gateway-card-cvc {
+	margin-right: 0 !important; // Needed to override the margin set by the plugin at runtime
+}

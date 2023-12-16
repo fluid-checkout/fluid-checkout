@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT STEPS
+// ------------------------------------
+
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-step__substep-title {
+	letter-spacing: 3px; // Needs to use `px` to match unit used by theme styles
+}

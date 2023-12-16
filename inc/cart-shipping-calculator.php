@@ -71,7 +71,19 @@ class FluidCheckout_CartShippingCalculator extends FluidCheckout {
 
 			// Update field values
 			WC()->session->set( FluidCheckout_Steps::SESSION_PREFIX . $field_key, $new_field_value );
-			WC()->customer->__set( $field_key, $new_field_value );
+
+			// Get the setter method name for the customer property
+			$setter = "set_$field_key";
+
+			// Check if the setter method is supported
+			if ( is_callable( array( WC()->customer, $setter ) ) ) {
+				// Set property value to the customer object using its setter method
+				WC()->customer->{$setter}( $new_field_value );
+			}
+			else {
+				// Set property value directly
+				WC()->customer->__set( $field_key, $new_field_value );
+			}
 
 			$apply_changes = true;
 		}

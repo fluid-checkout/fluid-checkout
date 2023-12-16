@@ -51,6 +51,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_enable_checkout_express_checkout'                           => 'no',
 			'fc_enable_checkout_express_checkout_inline_buttons'            => 'no',
 			'fc_checkout_order_review_highlight_color'                      => null,
+			'fc_show_order_totals_row_highlighted'                          => 'no',
 			'fc_enable_checkout_sticky_order_summary'                       => 'yes',
 			'fc_pro_checkout_edit_cart_replace_edit_cart_link'              => 'edit_cart_link',
 			'fc_pro_enable_checkout_edit_cart'                              => 'no',
@@ -66,6 +67,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_show_shipping_section_highlighted'                          => 'yes',
 			'fc_show_billing_section_highlighted'                           => 'yes',
 			'fc_default_to_billing_same_as_shipping'                        => 'yes',
+			'fc_shipping_company_field_visibility'                          => 'optional',
 			'fc_shipping_phone_field_visibility'                            => 'no',
 			'fc_shipping_phone_field_position'                              => 'shipping_address',
 			'woocommerce_checkout_phone_field'                              => 'required',
@@ -113,7 +115,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_enable_checkout_validation'                                 => 'yes',
 			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'true',
 
-			// Compatibility settings.
+			// Compatibility settings for plugins.
 			'fc_integration_captcha_pro_captcha_position'                   => 'before_place_order_section',
 			'hezarfen_checkout_fields_auto_sort'                            => 'no',
 			'hezarfen_hide_checkout_postcode_fields'                        => 'no',
@@ -122,8 +124,14 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'woocommerce_gzd_display_checkout_back_to_cart_button'          => 'no',
 			'woocommerce_gzd_display_checkout_table_color'                  => '#eeeeee',
 			'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' => 'yes',
-			'fc_compat_theme_impreza_header_spacing'                        => null,
 			'woocommerce_enable_guest_checkout'                             => 'yes',
+		
+			// Compatibility settings for themes.
+			'fc_compat_theme_atomion_display_order_progress'                => 'no',
+			'fc_compat_theme_atomion_display_field_labels'                  => 'yes',
+			'fc_compat_theme_impreza_header_spacing'                        => null,
+			'fc_compat_theme_zk_nito_display_field_labels'                  => 'no',
+			'fc_compat_theme_zk_nito_add_extra_fields'                      => 'no',
 			'fc_compat_theme_woodmart_output_checkout_steps_section'        => 'no',
 			'fc_compat_theme_woodmart_disable_theme_checkout_options'       => 'yes',
 

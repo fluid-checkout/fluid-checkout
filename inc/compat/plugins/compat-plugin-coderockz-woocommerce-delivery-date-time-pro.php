@@ -14,17 +14,6 @@ class FluidCheckout_CodeRockz_WooCommerceDelivery extends FluidCheckout {
 		$this->hooks();
 	}
 
-
-
-	/**
-	 * Initialize hooks.
-	 */
-	public function hooks() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_plugin_compat_styles' ), 10 );
-	}
-
-
-
 	/**
 	 * Load compatibility with Lite version of the same plugin.
 	 */
@@ -33,6 +22,15 @@ class FluidCheckout_CodeRockz_WooCommerceDelivery extends FluidCheckout {
 		if ( file_exists( $compat_file ) ) {
 			require_once $compat_file;
 		}
+	}
+
+
+
+	/**
+	 * Initialize hooks.
+	 */
+	public function hooks() {
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_plugin_compat_styles' ), 10 );
 	}
 
 

@@ -61,27 +61,28 @@
 	&:focus {
 		z-index: z( 'above' );
 		position: relative;
-		outline: $focus-outline-button;
-		outline-offset: $focus-outline-offset-button;
+		outline: $focus-outline-button !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-button !important; // Needed to override theme styles
 	}
 }
 
-.fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
 	z-index: z( 'above' ) + 1;
-	position: absolute;
+	position: absolute !important; // Needed to override theme styles
 	top: $global-spacing-tiny;
 	margin: 0;
-	padding-left: $global-spacing-small;
-	padding-right: $global-spacing-small;
+	padding-#{ $alignment-left }: $global-spacing-small;
+	padding-#{ $alignment-right }: $global-spacing-small;
 	#{ $alignment-left }: auto;
 	#{ $alignment-right }: $global-spacing-tiny;
 	height: remsize( 4.5rem ) !important; // Needed to override theme styles
+	min-height: remsize( 4.5rem ) !important; // Needed to override theme styles
 	line-height: 1 !important; // Needed to override theme styles
 	width: auto;
 
 	&:focus {
-		outline: $focus-outline-button;
-		outline-offset: $focus-outline-offset-button;
+		outline: $focus-outline-button !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-button !important; // Needed to override theme styles
 	}
 }
 
@@ -110,7 +111,7 @@
 }
 
 .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
-	margin-left: $coupon-code-remove-spacing;
+	margin-#{ $alignment-left }: $coupon-code-remove-spacing;
 	font-size: $coupon-code-remove-font-size;
 	font-weight: $coupon-code-remove-font-weight;
 	line-height: inherit;
@@ -125,7 +126,14 @@
 	}
 
 	&:focus {
-		outline: $focus-outline-link;
-		outline-offset: $focus-outline-offset-link;
+		outline: $focus-outline-link !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-link !important; // Needed to override theme styles
 	}
+}
+
+
+
+.fc-wrapper .fc-coupon-code-messages .woocommerce-error,
+.fc-wrapper .fc-coupon-code-messages .woocommerce-message {
+	display: block;
 }

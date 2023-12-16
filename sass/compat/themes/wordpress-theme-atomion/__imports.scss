@@ -1,0 +1,28 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-wordpress-theme-atomion' !default;
+
+
+
+
+
+// ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	--fluidcheckout--field--height: #{ remsize( 5rem ) };
+	--fluidcheckout--field--border-width: #{ remsize( .3rem ) };
+}
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"woocommerce-form-fields",
+	"order-summary";

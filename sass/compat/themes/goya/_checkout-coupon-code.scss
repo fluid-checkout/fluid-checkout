@@ -1,0 +1,32 @@
+// ------------------------------------
+// CHECKOUT COUPON CODE
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .fc-coupon-code-section .form-row .woocommerce-input-wrapper {
+	position: relative !important; // Needed to override theme styles
+	top: 0 !important; // Needed to override theme styles
+	#{ $alignment-left}: 0 !important; // Needed to override theme styles
+	#{ $alignment-right}: auto !important; // Needed to override theme styles
+}
+
+
+
+body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .fc-coupon-code-section .form-row .woocommerce-input-wrapper label {
+	z-index: z( 'above' ) !important; // Needed to override theme styles
+	position: absolute !important; // Needed to override theme styles
+	top: -10px !important; // Needed to override theme styles, used px directly to match unit used by the theme styles
+	#{ $alignment-left}: 10px !important; // Needed to override theme styles, used px directly to match unit used by the theme styles
+	padding: 0 5px !important; // Needed to override theme styles, used px directly to match unit used by the theme styles
+	font-size: 0.95em !important; // Needed to override theme styles, used em directly to match unit used by the theme styles
+}
+
+body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .fc-coupon-code-section .form-row .woocommerce-input-wrapper label:after {
+	content: '';
+	background: $white;
+	height: 2px; // Used px directly to match unit used by the theme styles
+	width: 100%;
+	position: absolute;
+	top: 10px; // Used px directly to match unit used by the theme styles
+	#{ $alignment-left}: 0;
+	z-index: -1;
+}

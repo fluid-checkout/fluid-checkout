@@ -19,18 +19,18 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Enqueue
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
-
 		// Checkout page template
 		add_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
+		add_filter( 'fc_enable_checkout_page_template', array( $this, 'maybe_disable_checkout_page_template' ), 100 );
 
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
+		// Shortcode wrapper
+		add_action( 'init', array( $this, 'maybe_setup_checkout_shortcode_wrapper' ), 10 );
+
 		// Checkout header and footer
-		if ( $this->get_hide_site_header_footer_at_checkout() ) {
+		if ( $this->is_distraction_free_header_footer_checkout() ) {
 			add_action( 'fc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
 			add_action( 'fc_checkout_footer', array( $this, 'output_checkout_footer' ), 100 );
 		}
@@ -42,21 +42,72 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 * Undo hooks.
 	 */
 	public function undo_hooks() {
-		// Enqueue
-		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
-		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
-
 		// Checkout page template
 		remove_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
+		remove_filter( 'fc_enable_checkout_page_template', array( $this, 'maybe_disable_checkout_page_template' ), 100 );
 
 		// Template file loader
 		remove_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
+		// Shortcode wrapper
+		remove_action( 'init', array( $this, 'maybe_setup_checkout_shortcode_wrapper' ), 10 );
+
 		// Checkout header and footer
-		if ( $this->get_hide_site_header_footer_at_checkout() ) {
+		if ( $this->is_distraction_free_header_footer_checkout() ) {
 			remove_action( 'fc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
 			remove_action( 'fc_checkout_footer', array( $this, 'output_checkout_footer' ), 100 );
 		}
+	}
+
+	/**
+	 * Disable custom template for the checkout page content part when using the Full Site Editor (FSE).
+	 */
+	public function maybe_disable_checkout_page_template( $enabled ) {
+		// Bail if using distraction free header and footer
+		if ( $this->is_distraction_free_header_footer_checkout() ) { return $enabled; }
+
+		// Bail if theme not using FSE
+		if ( ! current_theme_supports( 'block-templates' ) ) { return $enabled; }
+
+		// Disable custom checkout templates.
+		return false;
+	}
+
+
+
+	/**
+	 * Setup shortcode wrapper for the checkout shortcode.
+	 */
+	public function maybe_setup_checkout_shortcode_wrapper() {
+		// Bail if checkout page template is not enabled
+		if ( true === apply_filters( 'fc_enable_checkout_page_template', true ) ) { return; }
+
+		// Define shortcode tag
+		$checkout_shortcode_tag = apply_filters( 'woocommerce_checkout_shortcode_tag', 'woocommerce_checkout' );
+
+		// Replace checkout shortcode
+		remove_shortcode( $checkout_shortcode_tag );
+		add_shortcode( $checkout_shortcode_tag, array( $this, 'output_checkout_shortcode_wrapper' ), 10 );
+	}
+
+	/**
+	 * Get the shortcode wrapper attributes.
+	 */
+	public function get_shortcode_wrapper_attributes() {
+		return array(
+			'before' => '<div class="fc-content ' . esc_attr( apply_filters( 'fc_content_section_class', '' ) ) . '"><div class="woocommerce">',
+			'after'  => '</div></div>',
+		);
+	}
+
+	/**
+	 * Output the checkout shortcode contents with a wrapper `fc-content` element around it, for when the custom checkout page template is disabled.
+	 */
+	public function output_checkout_shortcode_wrapper( $attributes ) {
+		// Bail if not on checkout page
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return WC_Shortcode_Checkout::get( $attributes ); }
+
+		return WC_Shortcodes::shortcode_wrapper( array( 'WC_Shortcode_Checkout', 'output' ), $attributes, $this->get_shortcode_wrapper_attributes() );
 	}
 
 
@@ -128,16 +179,36 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 
 
 	/**
-	 * Get option for hiding the site's original header and footer at the checkout page.
+	 * Define wheter using distraction free header and footer templates.
 	 *
-	 * @return  boolean  True if should hide the site's original header and footer at the checkout page, false otherwise.
+	 * @return  boolean  `true` when using distraction free header and footer templates on the checkout page, `false` otherwise.
 	 */
-	public function get_hide_site_header_footer_at_checkout() {
+	public function is_distraction_free_header_footer_checkout() {
 		// Bail if WooCommerce class not available
 		if ( ! function_exists( 'WC' ) ) { return false; }
 
-		// Check if checkout page is showing the checkout form, then check the settings to show theme header or plugin header
-		return ( ! ( ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() && ! is_user_logged_in() ) ) && 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_hide_site_header_footer_at_checkout' );
+		// Bail if not showing the checkout form
+		// - registration at checkout not enabled
+		// - registration is required to checkout
+		// - user is not logged in
+		if ( ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() && ! is_user_logged_in() ) { return false; }
+
+		// Return `true` when distraction free header and footer is enabled
+		return 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_hide_site_header_footer_at_checkout' );
+	}
+
+	/**
+	 * Define wheter using distraction free header and footer templates.
+	 *
+	 * @return  boolean  `true` when using distraction free header and footer templates on the checkout page, `false` otherwise.
+	 * 
+	 * @deprecated       Use `FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout()` instead.
+	 */
+	public function get_hide_site_header_footer_at_checkout() {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() instead.', '3.0.4' );
+
+		return $this->is_distraction_free_header_footer_checkout();
 	}
 
 
@@ -146,8 +217,8 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 * Output the checkout header.
 	 */
 	public function output_checkout_header() {
-		// Only display our checkout header if the site header is hidden
-		if ( ! $this->get_hide_site_header_footer_at_checkout() ) { return; }
+		// Bail if not using distraction free header and footer
+		if ( ! $this->is_distraction_free_header_footer_checkout() ) { return; }
 
 		wc_get_template(
 			'checkout/checkout-header.php',
@@ -159,44 +230,13 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 * Output the checkout footer.
 	 */
 	public function output_checkout_footer() {
-		// Only display our checkout footer if the site footer is hidden
-		if ( ! $this->get_hide_site_header_footer_at_checkout() ) { return; }
+		// Bail if not using distraction free header and footer
+		if ( ! $this->is_distraction_free_header_footer_checkout() ) { return; }
 
 		// Bail if nothing was added to the footer
 		if ( ! has_action( 'fc_checkout_footer_widgets' ) || ! ( is_active_sidebar( 'fc_checkout_footer' ) || has_action( 'fc_checkout_footer_widgets_inside_before' ) || has_action( 'fc_checkout_footer_widgets_inside_after' ) ) ) { return; }
 
 		wc_get_template( 'checkout/checkout-footer.php' );
-	}
-
-
-
-	/**
-	 * Register assets.
-	 */
-	public function register_assets() {
-		// Maybe load RTL file
-		$rtl_suffix = is_rtl() ? '-rtl' : '';
-
-		// Styles
-		wp_register_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
-	}
-
-	/**
-	 * Enqueue assets.
-	 */
-	public function enqueue_assets() {
-		// Styles
-		wp_enqueue_style( 'fc-checkout-layout' );
-	}
-
-	/**
-	 * Maybe enqueue assets.
-	 */
-	public function maybe_enqueue_assets() {
-		// Bail if not at checkout
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
-
-		$this->enqueue_assets();
 	}
 
 }

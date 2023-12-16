@@ -87,7 +87,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Design template', 'fluid-checkout' ),
-						'desc'              => __( 'General styles for the checkout steps, order summary and other sections.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'              => __( 'General styles for the checkout steps, order summary and other sections. Might also apply to other pages such as the Cart, Order Received and View Order pages.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_design_template',
 						'type'              => 'fc_template_selector',
 						'options'           => FluidCheckout_DesignTemplates::instance()->get_design_template_options(),
@@ -99,7 +99,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Dark mode', 'fluid-checkout' ),
-						'desc'              => __( 'Enable dark mode', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
+						'desc'              => __( 'Enable dark mode', 'fluid-checkout' ),
 						'id'                => 'fc_enable_dark_mode_styles',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_dark_mode_styles' ),
 						'type'              => 'checkbox',
@@ -236,6 +236,14 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Order summary', 'fluid-checkout' ),
+						'desc'              => __( 'Make the order summary stay visible while scrolling', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_sticky_order_summary',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_sticky_order_summary' ),
+						'autoload'          => false,
+					),
+
+					array(
 						'desc_tip'          => __( 'Choose a background color for the order summary section.', 'fluid-checkout' ),
 						'desc'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_order_review_highlight_color',
@@ -246,10 +254,11 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'              => __( 'Make the order summary stay visible while scrolling', 'fluid-checkout' ),
-						'id'                => 'fc_enable_checkout_sticky_order_summary',
+						'desc'              => __( 'Highlight the order totals row in the order summary table', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Most useful when the order summary section does not have a highlighted background color. Might also apply to the Cart, Order Received and View Order pages when using Fluid Checkout PRO.', 'fluid-checkout' ),
+						'id'                => 'fc_show_order_totals_row_highlighted',
 						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_sticky_order_summary' ),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_show_order_totals_row_highlighted' ),
 						'autoload'          => false,
 					),
 
@@ -417,16 +426,6 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'autoload'          => false,
 					),
 					array(
-						'desc'              => __( 'Display the "Add" link buttons in lowercase', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Make the labels of optional field "Add" link button as <code>lowercase</code>. (ie. "Add phone number" instead of "Add Phone Number")', 'fluid-checkout' ),
-						'id'                => 'fc_optional_fields_link_label_lowercase',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_optional_fields_link_label_lowercase' ),
-						'checkboxgroup'     => '',
-						'show_if_checked'   => 'yes',
-						'autoload'          => false,
-					),
-					array(
 						'desc'              => __( 'Do not hide "Address line 2" fields behind a link button', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Recommended only when most customers actually need the "Address line 2" field, or when getting the right shipping address is crucial (ie. if delivering food and other perishable products).', 'fluid-checkout' ),
 						'id'                => 'fc_hide_optional_fields_skip_address_2',
@@ -434,6 +433,15 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_hide_optional_fields_skip_address_2' ),
 						'checkboxgroup'     => 'end',
 						'show_if_checked'   => 'yes',
+						'autoload'          => false,
+					),
+
+					array(
+						'desc'              => __( 'Display the "Add" link buttons in lowercase', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Make the labels of optional field "Add" link button as <code>lowercase</code> (ie. "Add phone number" instead of "Add Phone Number"). This option also affects the link buttons for coupon code fields.', 'fluid-checkout' ),
+						'id'                => 'fc_optional_fields_link_label_lowercase',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_optional_fields_link_label_lowercase' ),
 						'autoload'          => false,
 					),
 
@@ -487,6 +495,21 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_default_to_billing_same_as_shipping' ),
 						'autoload'          => false,
 					),
+
+					array(
+						'title'             => __( 'Shipping company', 'fluid-checkout' ),
+						'desc'              => __( 'Change visibility for the shipping company field on the checkout form.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'If field is set as "optional", which is the default visibility state, no changes will be applied to let other plugins apply any changes they need.', 'fluid-checkout' ),
+						'id'                => 'fc_shipping_company_field_visibility',
+						'type'              => 'select',
+						'options'           => array(
+							'no'            => __( 'Hidden (remove field)', 'fluid-checkout' ),
+							'optional'      => __( 'Optional', 'fluid-checkout' ),
+							'required'      => __( 'Required', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_company_field_visibility' ),
+						'autoload'          => false,
+					),
 						
 					array(
 						'title'             => __( 'Shipping phone', 'fluid-checkout' ),
@@ -520,7 +543,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'id'                => 'woocommerce_checkout_phone_field',
 						'type'              => 'select',
 						'options'           => array(
-							'no'            => __( 'Hidden (remove field)', 'fluid-checkout' ),
+							'hidden'        => __( 'Hidden (remove field)', 'fluid-checkout' ),
 							'optional'      => __( 'Optional', 'fluid-checkout' ),
 							'required'      => __( 'Required', 'fluid-checkout' ),
 						),

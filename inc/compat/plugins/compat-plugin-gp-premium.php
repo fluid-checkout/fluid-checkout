@@ -32,8 +32,8 @@ class FluidCheckout_GPPremium extends FluidCheckout {
 	 * @param   array   $attributes    HTML element attributes.
 	 */
 	public function maybe_change_sticky_elements_relative_header( $attributes ) {
-		// Bail if using the plugin's header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->get_hide_site_header_footer_at_checkout() ) { return $attributes; }
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
 		// Bail if required functions are not available
 		if ( ! function_exists( 'generate_menu_plus_get_defaults' ) ) { return $attributes; }

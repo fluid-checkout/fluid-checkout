@@ -211,7 +211,8 @@ $z-layers: (
 
 $icon-font-name:                 'fluid-checkout-icons' !default;
 
-$icon-size-extra-small:          remsize( 1rem ) !default;
+$icon-size-tiny:                 remsize( 1rem ) !default;
+$icon-size-extra-small:          remsize( 1.3rem ) !default;
 $icon-size-small:                remsize( 1.8rem ) !default;
 $icon-size:                      remsize( 2.4rem ) !default;
 $icon-size-medium:               remsize( 3rem ) !default;
@@ -263,19 +264,19 @@ $button-border:                             $button-border-style $button-border-
 $button-border-radius:                      var( --fluidcheckout--button--border-radius, 0 ) !default;
 $button-box-shadow:                         $box-shadow-offset-x $box-shadow-offset-y var( --fluidcheckout--button--box-shadow-blur-radius, $box-shadow-blur-radius ) var( --fluidcheckout--button--box-shadow-color, transparent ) !default;
 
-$button-primary-border-color:               var( --fluidcheckout--button--primary--border-color, #000 ) !default;
-$button-primary-background-color:           var( --fluidcheckout--button--primary--background-color, #000 ) !default;
-$button-primary-text-color:                 var( --fluidcheckout--button--primary--text-color, #fff ) !default;
-$button-primary-border-color--hover:        var( --fluidcheckout--button--primary--border-color--hover, #1E212B ) !default;
-$button-primary-background-color--hover:    var( --fluidcheckout--button--primary--background-color--hover, #1E212B ) !default;
-$button-primary-text-color--hover:          var( --fluidcheckout--button--primary--text-color--hover, #fff ) !default;
+$button-primary-border-color:               var( --fluidcheckout--button--primary--border-color, $black ) !default;
+$button-primary-background-color:           var( --fluidcheckout--button--primary--background-color, $black ) !default;
+$button-primary-text-color:                 var( --fluidcheckout--button--primary--text-color, $white ) !default;
+$button-primary-border-color--hover:        var( --fluidcheckout--button--primary--border-color--hover, $darker-grey ) !default;
+$button-primary-background-color--hover:    var( --fluidcheckout--button--primary--background-color--hover, $darker-grey ) !default;
+$button-primary-text-color--hover:          var( --fluidcheckout--button--primary--text-color--hover, $white ) !default;
 
-$button-secondary-border-color:             var( --fluidcheckout--button--secondary--border-color, #f3f3f3 ) !default;
-$button-secondary-background-color:         var( --fluidcheckout--button--secondary--background-color, #f3f3f3 ) !default;
-$button-secondary-text-color:               var( --fluidcheckout--button--secondary--text-color, #000 ) !default;
-$button-secondary-border-color--hover:      var( --fluidcheckout--button--secondary--border-color--hover, #d8d8d8 ) !default;
-$button-secondary-background-color--hover:  var( --fluidcheckout--button--secondary--background-color--hover, #d8d8d8 ) !default;
-$button-secondary-text-color--hover:        var( --fluidcheckout--button--secondary--text-color--hover, #000 ) !default;
+$button-secondary-border-color:             var( --fluidcheckout--button--secondary--border-color, $lighter-grey ) !default;
+$button-secondary-background-color:         var( --fluidcheckout--button--secondary--background-color, $lighter-grey ) !default;
+$button-secondary-text-color:               var( --fluidcheckout--button--secondary--text-color, $black ) !default;
+$button-secondary-border-color--hover:      var( --fluidcheckout--button--secondary--border-color--hover, $light-grey ) !default;
+$button-secondary-background-color--hover:  var( --fluidcheckout--button--secondary--background-color--hover, $light-grey ) !default;
+$button-secondary-text-color--hover:        var( --fluidcheckout--button--secondary--text-color--hover, $black ) !default;
 
 // END - BUTTONS
 // ----------------------------------------
@@ -300,7 +301,7 @@ $option-box-border:                         $option-box-border-style $option-box
 
 $option-box-label-color--checked:           var( --fluidcheckout--option-box--label-color--checked, $darker-grey ) !default;
 $option-box-label-border-color:             var( --fluidcheckout--option-box--label-border-color, $border-color ) !default;
-$option-box-label-border-color--hover:      var( --fluidcheckout--option-box--label-border-color--hover, $border-dark-color ) !default;
+$option-box-label-border-color--hover:      var( --fluidcheckout--option-box--label-border-color--hover, $option-box-label-border-color ) !default;
 $option-box-label-border-color--checked:    var( --fluidcheckout--option-box--label-border-color--checked, $border-color ) !default;
 $option-box-label-border-style:             var( --fluidcheckout--option-box--label-border-style, solid ) !default;
 $option-box-label-border-width:             var( --fluidcheckout--option-box--label-border-width, remsize( .1rem ) ) !default;
@@ -312,7 +313,7 @@ $option-box-background-color--checked:      var( --fluidcheckout--option-box--ba
 
 $option-box-radio-size:                     $icon-size !default;
 $option-box-radio-color:                    var( --fluidcheckout--option-box--radio-color, $border-color ) !default;
-$option-box-radio-color--hover:             var( --fluidcheckout--option-box--radio-color--hover, $border-color ) !default;
+$option-box-radio-color--hover:             var( --fluidcheckout--option-box--radio-color--hover, $grey ) !default;
 $option-box-radio-color--checked:           var( --fluidcheckout--option-box--radio-color--checked, $success-color ) !default;
 $option-box-radio-icon-color--checked:      var( --fluidcheckout--option-box--radio-icon-color--checked, $white ) !default;
 $option-box-radio-border:                   solid remsize( .2rem ) $option-box-radio-color !default;
@@ -540,7 +541,7 @@ $order-summary-image-box-shadow:                 $box-shadow-offset-x--small $bo
 
 $order-summary-quantity-transform:               translateX( -100% ) translateY( -25% ) !default;
 $order-summary-quantity-background-color:        var( --fluidcheckout--order-summary--quantity-background-color, $dark-grey ) !default;
-$order-summary-quantity-text-color:              var( --fluidcheckout--order-summary--quantity-background-color, $white ) !default;
+$order-summary-quantity-text-color:              var( --fluidcheckout--order-summary--quantity-text-color, $white ) !default;
 $order-summary-quantity-font-size:               $font-size-extra-small !default;
 
 $order-summary-font-size:                        $font-size-small !default;

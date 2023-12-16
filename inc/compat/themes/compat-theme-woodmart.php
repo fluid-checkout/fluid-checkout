@@ -23,10 +23,10 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 
 		// Container class
-		add_filter( 'fc_add_container_class', '__return_false' );
+		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
-		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		// Dark mode
+		add_filter( 'fc_enable_dark_mode_styles', array( $this, 'maybe_set_is_dark_mode' ), 10 );
 
 		// Header elements
 		add_action( 'fc_checkout_header', array( $this, 'maybe_output_woodmart_checkout_steps_section' ), 20 );
@@ -39,6 +39,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 
 		// Free shipping bar
 		add_action( 'wp', array( $this, 'init_free_shipping_bar_hooks' ), 150 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_add_free_shipping_bar_fragment' ), 10 );
 	}
 
 	/**
@@ -72,6 +73,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		// Checkout page
 		if ( woodmart_get_opt( 'shipping_progress_bar_location_checkout' ) ) {
 			remove_action( 'woocommerce_checkout_before_customer_details', array( $free_shipping_bar_instance, 'render_shipping_progress_bar_with_wrapper' ), 10 );
+			remove_action( 'woocommerce_checkout_billing', array( $free_shipping_bar_instance, 'render_shipping_progress_bar_with_wrapper' ), 10 );
 			add_action( 'fc_checkout_before_steps', array( $free_shipping_bar_instance, 'render_shipping_progress_bar_with_wrapper' ), 5 ); // Right before coupon code section
 		}
 	}
@@ -174,26 +176,49 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 
 
 	/**
-	 * Add CSS variables.
+	 * Maybe set dark mode enabled.
 	 * 
-	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 * @param  array  $is_dark_mode  Whether it is dark mode or not.
 	 */
-	public function add_css_variables( $css_variables ) {
+	public function maybe_set_is_dark_mode( $is_dark_mode ) {
 		// Bail if theme functions and classes are not available
-		if ( ! function_exists( 'woodmart_get_opt' ) ) { return $css_variables; }
+		if ( ! function_exists( 'woodmart_get_opt' ) ) { return $is_dark_mode; }
 
 		// Get dark mode option from theme
 		$dark = woodmart_get_opt( 'dark_version' );
 
 		// Bail if not using the dark mode
-		if ( ! $dark ) { return $css_variables; }
+		if ( ! $dark ) { return $is_dark_mode; }
 
-		// Add CSS variables
-		$new_css_variables = array(
-			':root' => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
-		);
+		$is_dark_mode = true;
+		return $is_dark_mode;
+	}
 
-		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+
+
+	/**
+	 * Maybe add free shipping bar a checkout fragment.
+	 *
+	 * @param   array  $fragments  Checkout fragments.
+	 */
+	public function maybe_add_free_shipping_bar_fragment( $fragments ) {
+		// Bail if theme functions and classes are not available
+		if ( ! function_exists( 'woodmart_get_opt' ) || ! class_exists( 'XTS\Modules\Shipping_Progress_Bar\Main' ) || ! class_exists( 'XTS\Modules\Layouts\Main' ) ) { return $fragments; }
+
+		// Get theme class instances
+		$free_shipping_bar_instance = XTS\Modules\Shipping_Progress_Bar\Main::get_instance();
+		$builder_instance = XTS\Modules\Layouts\Main::get_instance();
+
+		// Bail if shipping bar is disabled for the checkout page
+		if ( ! woodmart_get_opt( 'shipping_progress_bar_location_checkout' ) ) { return $fragments; }
+
+		// Get HTML for the free shipping bar
+		ob_start();
+		$free_shipping_bar_instance->render_shipping_progress_bar_with_wrapper();
+		$html = ob_get_clean();
+
+		$fragments['.wd-shipping-progress-bar'] = $html;
+		return $fragments;
 	}
 
 }
