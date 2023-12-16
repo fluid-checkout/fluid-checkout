@@ -19,12 +19,25 @@ class FluidCheckout_WCPostcodeChecker extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
 		// Optional fields
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'add_optional_fields_skip_fields' ), 10, 2 );
 
 		// Substep review text
 		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_shipping' ), 100 );
 		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_billing' ), 100 );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Scripts
+		wp_register_script( 'wpo-wcnlpc', self::$directory_url . 'js/compat/plugins/wc-postcode-checker/wc-postcode-checker' . self::$asset_version . '.js', array( 'jquery', 'wc-address-i18n' ), NULL );
 	}
 
 
