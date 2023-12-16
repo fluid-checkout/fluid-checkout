@@ -157,7 +157,6 @@ jQuery( function( $ ) {
 		// CHANGE: Call the extracted `handle_locale` function.
 		.on( 'country_to_state_changing', handle_locale )
 
-
 		// CHANGE: Trigger handle locale on `updated_checkout`.
 		.on( 'updated_checkout', trigger_handle_locale )
 
