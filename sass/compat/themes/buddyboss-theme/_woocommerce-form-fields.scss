@@ -1,0 +1,12 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type=text] {
+	z-index: 3;
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type="checkbox"] {
+	position: absolute;
+    cursor: pointer;
+}
