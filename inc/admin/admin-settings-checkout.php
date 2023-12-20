@@ -480,6 +480,23 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Billing address', 'fluid-checkout' ),
+						'desc'              => __( 'Select position where to display the billing address section on the checkout page.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'id'                => 'fc_pro_checkout_billing_address_position',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'force_single_address'       => array( 'label' => __( 'Billing and shipping as a single address section', 'fluid-checkout' ), 'disabled' => true ),
+							'step_before_shipping'       => array( 'label' => __( 'As a separate step before shipping', 'fluid-checkout' ) ),
+							'substep_before_shipping'    => array( 'label' => __( 'As a substep before the shipping address section', 'fluid-checkout' ), 'disabled' => true ),
+							'substep_after_shipping'     => array( 'label' => __( 'As a substep after the shipping address section', 'fluid-checkout' ), 'disabled' => true ),
+							'step_after_shipping'        => array( 'label' => __( 'As a separate step after shipping', 'fluid-checkout' ) ),
+							'substep_before_payment'     => array( 'label' => __( 'As a substep before the payment section', 'fluid-checkout' ), 'disabled' => true ),
+							'substep_after_payment'      => array( 'label' => __( 'As a substep after the payment section', 'fluid-checkout' ), 'disabled' => true ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_billing_address_position' ),
+						'autoload'          => false,
+					),
+
+					array(
 						'desc'              => __( 'Highlight the billing address section in the checkout form', 'fluid-checkout' ),
 						'id'                => 'fc_show_billing_section_highlighted',
 						'type'              => 'checkbox',

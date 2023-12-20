@@ -65,6 +65,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_shipping_methods_substep_position'                          => 'after_shipping_address',
 			'fc_enable_checkout_local_pickup'                               => 'no',
 			'fc_show_shipping_section_highlighted'                          => 'yes',
+			'fc_pro_checkout_billing_address_position'                      => 'step_after_shipping',
 			'fc_show_billing_section_highlighted'                           => 'yes',
 			'fc_default_to_billing_same_as_shipping'                        => 'yes',
 			'fc_shipping_company_field_visibility'                          => 'optional',
