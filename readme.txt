@@ -392,6 +392,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased — 3.1.0 =
+
+* Added: New option to show billing address before shipping. More options for billing address position available with Fluid Checkout PRO.
+
 = Unreleased =
 
 * Added: Support for block themes using the Full Site Editor (FSE) mode.
