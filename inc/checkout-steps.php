@@ -1447,7 +1447,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->register_checkout_step( array(
 			'step_id' => 'billing',
 			'step_title' => apply_filters( 'fc_step_title_billing', _x( 'Billing', 'Checkout step title', 'fluid-checkout' ) ),
-			'priority' => 30,
+			'priority' => $this->get_billing_step_hook_priority(),
 			'render_callback' => array( $this, 'output_step_billing' ),
 			'is_complete_callback' => array( $this, 'is_step_complete_billing' ),
 		) );
@@ -3059,6 +3059,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function set_ship_to_different_address_true() {
 		return 1;
+	}
+
+
+
+	/**
+	 * Get hook priority for the billing step.
+	 */
+	public function get_billing_step_hook_priority() {
+		// Define default priority
+		$priority = 30;
+
+		// Change priority depending on the settings
+		if ( 'step_before_shipping' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' ) ) {
+			$priority = 15;
+		}
+
+		return $priority;
 	}
 
 
