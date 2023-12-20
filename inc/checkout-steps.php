@@ -131,7 +131,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 
 		// Billing Address
-		add_action( 'fc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
+		// TODO: Maybe move this hook priority changes to the PRO plugin
+		$billing_step_hook_priority = $this->get_billing_address_hook_priority();
+		$billing_step_hook = $billing_step_hook_priority[ 0 ];
+		$billing_step_priority = $billing_step_hook_priority[ 1 ];
+		add_action( $billing_step_hook, array( $this, 'output_substep_billing_address' ), $billing_step_priority );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_billing_address' ), 10 );
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_billing_address' ), 20 );
@@ -3102,6 +3106,34 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $priority;
 	}
 
+	/**
+	 * Get hook priority for the billing address substep.
+	 */
+	public function get_billing_address_hook_priority() {
+		// Define substep hook and priority for each position
+		$substep_position_priority = array(
+			// TODO: Define what is the hook priority or behavior for when billing and shipping are forced into a single address section
+			// 'force_single_address'       => array( 'fc_output_step_billing', 10 ),
+			'step_before_shipping'       => array( 'fc_output_step_billing', 10 ),
+			'substep_before_shipping'    => array( 'fc_output_step_shipping', 9 ),
+			'substep_after_shipping'     => array( 'fc_output_step_shipping', 9 ),
+			'step_after_shipping'        => array( 'fc_output_step_billing', 10 ),
+			'substep_before_payment'     => array( 'fc_output_step_payment', 9 ),
+			'substep_after_payment'      => array( 'fc_output_step_payment', 9 ),
+		);
+
+		// Get selected position for delivery date
+		$position = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' );
+		if ( ! array_key_exists( $position, $substep_position_priority ) ) {
+			$position = FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_billing_address_position' );
+		}
+
+		// Get hook priority for the selected position
+		$hook_priority = $substep_position_priority[ $position ];
+
+		return $hook_priority;
+	}
+
 
 
 	/**
@@ -3548,6 +3580,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return in_array( $country_code, array_keys( $allowed_countries ) );
 	}
 
+
+
 	/**
 	 * Check whether the selected shipping country is also available for billing country.
 	 *
@@ -3594,9 +3628,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if cart is not available
 		if ( ! function_exists( 'WC' ) || null === WC()->cart ) { return false; }
 
-		$is_available = WC()->cart->needs_shipping_address() && true === $this->is_shipping_country_allowed_for_billing();
+		// Bail as not available if billing is displayed before shipping
+		if ( $this->is_billing_address_before_shipping_address() ) { return false; }
 
-		return apply_filters( 'fc_is_shipping_address_available_for_billing', $is_available );
+		// Define whether shipping address is available for billing address.
+		$is_available = WC()->cart->needs_shipping_address() && true === $this->is_shipping_country_allowed_for_billing();
+		$is_available = apply_filters( 'fc_is_shipping_address_available_for_billing', $is_available );
+
+		return $is_available;
 	}
 
 
