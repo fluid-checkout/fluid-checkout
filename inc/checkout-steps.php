@@ -3064,6 +3064,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Check whether the billing address is displayed before the shipping address.
+	 */
+	public function is_billing_address_before_shipping_address() {
+		// Define default value
+		$is_billing_before_shipping = false;
+
+		// Define positions for the billing address section which are before the shipping address
+		$step_position_before_shipping = array(
+			'step_before_shipping',
+			'substep_before_shipping',
+		);
+
+		// Get position from settings
+		$position = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' );
+
+		// Check if position is before shipping
+		if ( in_array( $position, $step_position_before_shipping ) ) {
+			$is_billing_before_shipping = true;
+		}
+
+		return $is_billing_before_shipping;
+	}
+
+	/**
 	 * Get hook priority for the billing step.
 	 */
 	public function get_billing_step_hook_priority() {
