@@ -855,6 +855,9 @@ jQuery( function( $ ) {
 						// Detach the unload handler that prevents a reload / redirect
 						wc_checkout_form.detachUnloadEventsOnSubmit();
 
+						// CHANGE: Set to not prompt user before leaving the page
+						_updateBeforeUnload = false;
+
 						try {
 							if ( 'success' === result.result && $form.triggerHandler( 'checkout_place_order_success', result ) !== false ) {
 								if ( -1 === result.redirect.indexOf( 'https://' ) || -1 === result.redirect.indexOf( 'http://' ) ) {
