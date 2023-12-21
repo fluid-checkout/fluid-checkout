@@ -154,9 +154,6 @@ jQuery( function( $ ) {
 				var checkbox = document.querySelector( '#shipping_same_as_billing' );
 				var fieldsWrapper = document.querySelector( '#woocommerce-shipping-fields__field-wrapper' );
 
-				console.log( checkbox );
-				console.log( fieldsWrapper );
-
 				// Toggle state
 				if ( ! checkbox.checked ) {
 					CollapsibleBlock.expand( fieldsWrapper );
