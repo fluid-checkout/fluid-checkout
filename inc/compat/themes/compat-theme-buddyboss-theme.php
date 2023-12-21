@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with theme: Avada (by ThemeFusion).
+ * Compatibility with theme: BuddyBoss theme.
  */
 class FluidCheckout_ThemeCompat_Buddyboss extends FluidCheckout {
 
