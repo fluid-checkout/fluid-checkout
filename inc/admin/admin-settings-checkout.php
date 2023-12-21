@@ -451,7 +451,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'id'                => 'fc_pro_checkout_billing_address_position',
 						'type'              => 'fc_select',
 						'options'           => array(
-							'force_single_address'       => array( 'label' => __( 'Billing and shipping as a single address section', 'fluid-checkout' ), 'disabled' => true ),
+							'force_single_address'       => array( 'label' => __( 'Force billing and shipping addresses to the same (single section)', 'fluid-checkout' ), 'disabled' => true ),
 							'step_before_shipping'       => array( 'label' => __( 'As a separate step before shipping', 'fluid-checkout' ) ),
 							'substep_before_shipping'    => array( 'label' => __( 'As a substep before the shipping address section', 'fluid-checkout' ), 'disabled' => true ),
 							'substep_after_shipping'     => array( 'label' => __( 'As a substep after the shipping address section', 'fluid-checkout' ), 'disabled' => true ),
