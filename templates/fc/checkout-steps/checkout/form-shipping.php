@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
- * @fc-version 2.2.0
+ * @fc-version 3.1.0
  * @global WC_Checkout $checkout
  */
 
@@ -25,6 +25,7 @@ $shipping_only_fields = FluidCheckout_Steps::instance()->get_shipping_only_field
 
 // CHANGE: Get initial state for collapsible-block component
 $collapsible_initial_state = FluidCheckout_Steps::instance()->is_billing_country_allowed_for_shipping() === null ? 'expanded' : ( $is_shipping_same_as_billing ? 'collapsed' : 'expanded' );
+$collapsible_initial_state = apply_filters( 'fc_checkout_shipping_collapsible_initial_state', $collapsible_initial_state );
 ?>
 
 

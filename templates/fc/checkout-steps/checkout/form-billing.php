@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 3.6.0
- * @fc-version 3.0.5
+ * @fc-version 3.1.0
  * @global WC_Checkout $checkout
  */
 
@@ -21,6 +21,7 @@ defined( 'ABSPATH' ) || exit;
 
 // CHANGE: Get initial state for collapsible-block component
 $collapsible_initial_state = WC()->cart->needs_shipping_address() && FluidCheckout_Steps::instance()->is_shipping_country_allowed_for_billing() === null ? 'expanded' : ( $is_billing_same_as_shipping ? 'collapsed' : 'expanded' );
+$collapsible_initial_state = apply_filters( 'fc_checkout_billing_collapsible_initial_state', $collapsible_initial_state );
 ?>
 
 <div class="woocommerce-billing-fields">
