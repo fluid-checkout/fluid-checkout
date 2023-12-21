@@ -19,6 +19,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
+// CHANGE: Get initial state for collapsible-block component
 $collapsible_initial_state = WC()->cart->needs_shipping_address() && FluidCheckout_Steps::instance()->is_shipping_country_allowed_for_billing() === null ? 'expanded' : ( $is_billing_same_as_shipping ? 'collapsed' : 'expanded' );
 ?>
 

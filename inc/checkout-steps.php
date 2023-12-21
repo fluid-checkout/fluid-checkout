@@ -130,7 +130,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 
-		// Billing Address
+		// Billing address
 		// TODO: Maybe move this hook priority changes to the PRO plugin
 		$billing_step_hook_priority = $this->get_billing_address_hook_priority();
 		$billing_step_hook = $billing_step_hook_priority[ 0 ];
@@ -141,14 +141,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_billing_address' ), 20 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_billing_address_text_fragment' ), 10 );
 
-		// Billing Same as Shipping
+		// Billing same as shipping
 		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_field' ), 100 );
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
 
-		// Shipping Same as Billing
+		// Shipping same as billing
+		// Fix for when shipping is not needed while
+		// billing address is displayed after shipping address.
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
+
+		// Shipping same as billing
 		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_same_as_billing_field' ), 100 );
 
 		// Billing phone
@@ -170,7 +174,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_payment_method_text_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_suppress_payment_methods_fragment' ), 1000 );
 
-		// Formatted Address
+		// Formatted address
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
 
@@ -2461,7 +2465,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_substep_shipping_address_fields() {
 		ob_start();
-		wc_get_template( 'checkout/form-shipping.php', array( 'checkout' => WC()->checkout() ) );
+
+		wc_get_template( 'checkout/form-shipping.php', array(
+			'checkout'                        => WC()->checkout(),
+			'is_shipping_same_as_billing'     => $this->is_shipping_same_as_billing(),
+		) );
+
 		return ob_get_clean();
 	}
 
@@ -3685,7 +3694,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if customer object not available
 		if ( ! function_exists( 'WC' ) || null === WC()->customer ) { return null; }
 
-		// Get shipping value from customer data
+		// Get billing value from customer data
 		$customer = WC()->customer;
 		$billing_country = $customer->get_billing_country();
 
@@ -3698,8 +3707,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Use posted data when doing checkout update
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			// Try get value from the post_data
-			if ( isset( $_POST['s_country'] ) ) {
-				$billing_country = isset( $_POST['s_country'] ) ? wc_clean( wp_unslash( $_POST['s_country'] ) ) : null;
+			if ( isset( $_POST['country'] ) ) {
+				$billing_country = isset( $_POST['country'] ) ? wc_clean( wp_unslash( $_POST['country'] ) ) : null;
 			}
 			// Try get value from the form data sent on process checkout
 			else if ( isset( $_POST['billing_country'] ) ) {
