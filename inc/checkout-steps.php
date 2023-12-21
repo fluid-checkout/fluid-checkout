@@ -131,7 +131,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 
 		// Billing address
-		// TODO: Maybe move this hook priority changes to the PRO plugin
 		$billing_step_hook_priority = $this->get_billing_address_hook_priority();
 		$billing_step_hook = $billing_step_hook_priority[ 0 ];
 		$billing_step_priority = $billing_step_hook_priority[ 1 ];
@@ -367,7 +366,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 
 		// Billing address
-		remove_action( 'fc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
+		$billing_step_hook_priority = $this->get_billing_address_hook_priority();
+		$billing_step_hook = $billing_step_hook_priority[ 0 ];
+		$billing_step_priority = $billing_step_hook_priority[ 1 ];
+		remove_action( $billing_step_hook, array( $this, 'output_substep_billing_address' ), $billing_step_priority );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
 		remove_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_billing_address' ), 10 );
 		remove_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_billing_address' ), 20 );
@@ -3144,15 +3146,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_billing_address_hook_priority() {
 		// Define substep hook and priority for each position
 		$substep_position_priority = array(
-			// TODO: Define what is the hook priority or behavior for when billing and shipping are forced into a single address section
-			// 'force_single_address'       => array( 'fc_output_step_billing', 10 ),
 			'step_before_shipping'       => array( 'fc_output_step_billing', 10 ),
-			'substep_before_shipping'    => array( 'fc_output_step_shipping', 9 ),
-			'substep_after_shipping'     => array( 'fc_output_step_shipping', 9 ),
 			'step_after_shipping'        => array( 'fc_output_step_billing', 10 ),
-			'substep_before_payment'     => array( 'fc_output_step_payment', 9 ),
-			'substep_after_payment'      => array( 'fc_output_step_payment', 9 ),
+			// More options are added from the PRO plugin
 		);
+
+		// Filter substep position priority to allow for customizations
+		$substep_position_priority = apply_filters( 'fc_billing_address_hook_priority_options', $substep_position_priority );
 
 		// Get selected position for delivery date
 		$position = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' );
