@@ -3891,7 +3891,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Set to different billing address when shipping country not allowed
-		if ( null === $this->is_shipping_country_allowed_for_billing() || ! $this->is_shipping_country_allowed_for_billing() ) {
+		if ( true !== $this->is_shipping_country_allowed_for_billing() ) {
 			return false;
 		}
 
@@ -4028,7 +4028,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Set to different shipping address when billing country not allowed
-		if ( null === $this->is_billing_country_allowed_for_shipping() || ! $this->is_billing_country_allowed_for_shipping() ) {
+		if ( true !== $this->is_billing_country_allowed_for_shipping() ) {
 			return false;
 		}
 
