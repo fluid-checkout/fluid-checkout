@@ -149,6 +149,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Shipping Same as Billing
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
+		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_same_as_billing_field' ), 100 );
 
 		// Billing phone
 		// Maybe move billing phone to contact step
@@ -3516,6 +3517,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 
+
 	/**
 	 * Get the label for billing same as shipping option.
 	 */
@@ -3545,6 +3547,40 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// to be able to detect when the value changes
 		?>
 		<input type="hidden" name="billing_same_as_shipping_previous" id="billing_same_as_shipping_previous" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
+		<?php
+	}
+
+
+
+	/**
+	 * Get the label for shipping same as billing option.
+	 */
+	public function get_option_label_shipping_same_as_billing() {
+		return apply_filters( 'fc_shipping_same_as_billing_option_label', __( 'Same as billing address', 'fluid-checkout' ) );
+	}
+
+	/**
+	 * Output field for shipping address same as billing.
+	 */
+	public function output_shipping_same_as_billing_field() {
+		// Output a hidden field when billing country not allowed for shipping
+		if ( apply_filters( 'fc_output_shipping_same_as_billing_as_hidden_field', false ) || ! $this->is_billing_address_available_for_shipping() ) : ?>
+			<input type="hidden" name="shipping_same_as_billing" id="shipping_same_as_billing" value="<?php echo $this->is_shipping_same_as_billing_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
+		<?php
+		// Output the checkbox when billing country is allowed for shipping
+		else :
+		?>
+			<p id="shipping_same_as_billing_field" class="form-row form-row-wide">
+				<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="shipping_same_as_billing" id="shipping_same_as_billing" value="1" <?php checked( $this->is_shipping_same_as_billing(), true ); ?>>
+				<label for="shipping_same_as_billing"><?php echo esc_html( $this->get_option_label_shipping_same_as_billing() ); ?></label>
+			</p>
+		<?php
+		endif;
+
+		// Output the current value as a hidden field
+		// to be able to detect when the value changes
+		?>
+		<input type="hidden" name="shipping_same_as_billing_previous" id="shipping_same_as_billing_previous" value="<?php echo $this->is_shipping_same_as_billing_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
 		<?php
 	}
 
@@ -3641,6 +3677,64 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Check whether the selected billing country is also available for shipping country.
+	 *
+	 * @return  mixed  `true` if the selected billing country is also available for shipping country, `false` if the billing country is not allowed for shipping, and `null` if the billing country is not set.
+	 */
+	public function is_billing_country_allowed_for_shipping() {
+		// Bail if customer object not available
+		if ( ! function_exists( 'WC' ) || null === WC()->customer ) { return null; }
+
+		// Get shipping value from customer data
+		$customer = WC()->customer;
+		$billing_country = $customer->get_billing_country();
+
+		// Try get value from session
+		$billing_country_session = $this->get_checkout_field_value_from_session( 'billing_country' );
+		if ( isset( $billing_country_session ) && ! empty( $billing_country_session ) ) {
+			$billing_country = $billing_country_session;
+		}
+
+		// Use posted data when doing checkout update
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			// Try get value from the post_data
+			if ( isset( $_POST['s_country'] ) ) {
+				$billing_country = isset( $_POST['s_country'] ) ? wc_clean( wp_unslash( $_POST['s_country'] ) ) : null;
+			}
+			// Try get value from the form data sent on process checkout
+			else if ( isset( $_POST['billing_country'] ) ) {
+				$billing_country = isset( $_POST['billing_country'] ) ? wc_clean( wp_unslash( $_POST['billing_country'] ) ) : null;
+			}
+		}
+
+		// Billing country is defined, return bool
+		if ( null !== $billing_country && ! empty( $billing_country ) ) {
+			return $this->is_country_allowed_for_shipping( $billing_country );
+		}
+
+		return null;
+	}
+
+	/**
+	 * Check whether the billing address is available to be used for the shipping address.
+	 */
+	public function is_billing_address_available_for_shipping() {
+		// Bail if cart is not available
+		if ( ! function_exists( 'WC' ) || null === WC()->cart ) { return false; }
+
+		// Bail as not available if billing is displayed after shipping
+		if ( ! $this->is_billing_address_before_shipping_address() ) { return false; }
+
+		// Define whether billing address is available for shipping address.
+		$is_available = true === $this->is_billing_country_allowed_for_shipping();
+		$is_available = apply_filters( 'fc_is_billing_address_available_for_shipping', $is_available );
+
+		return $is_available;
+	}
+
+
+
+	/**
 	 * Determine if billing address field values are the same as shipping address.
 	 *
 	 * @param  array  $posted_data   Post data for all checkout fields.
@@ -3700,6 +3794,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Check whether the checkbox "billing address same as shipping" is checked.
+	 * 
 	 * This function will return `true` even if the shipping country is not allowed for billing,
 	 * use `is_billing_same_as_shipping` to also check if the shipping country is allowed for billing.
 	 * 
@@ -3745,8 +3840,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $billing_same_as_shipping;
 	}
 
-
-
 	/**
 	 * Get value for whether the billing address is the same as the shipping address.
 	 * 
@@ -3779,6 +3872,143 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function set_billing_same_as_shipping_session( $billing_same_as_shipping ) {
 		// Set session value
 		WC()->session->set( 'fc_billing_same_as_shipping', $billing_same_as_shipping ? '1' : '0');
+	}
+
+
+
+	/**
+	 * Determine if shipping address field values are the same as billing address.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function is_shipping_address_data_same_as_billing( $posted_data = array() ) {
+		// Get parsed posted data
+		if ( empty( $posted_data ) ) {
+			$posted_data = $this->get_parsed_posted_data();
+		}
+
+		// Allow developers to hijack the returning value
+		$value_from_filter = apply_filters( 'fc_is_shipping_address_data_same_as_billing_before', null );
+		if ( null !== $value_from_filter ) {
+			return $value_from_filter;
+		}
+
+		$is_shipping_same_as_billing = true;
+		
+		// Get list of shipping fields to copy from billing fields
+		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
+
+		// Get billing fields
+		$billing_fields = WC()->checkout->get_checkout_fields( 'billing' );
+
+		// Iterate posted data
+		foreach( $shipping_copy_billing_field_keys as $field_key ) {
+
+			// Get billing field key
+			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+
+			// Check billing field values against billing
+			if ( array_key_exists( $billing_field_key, $billing_fields ) ) {
+				$shipping_field_value = null;
+				$billing_field_value = null;
+
+				// Maybe get field values from posted data
+				if ( isset( $_POST['post_data'] ) ) {
+					$shipping_field_value = array_key_exists( $field_key, $posted_data ) ? $posted_data[ $field_key ] : null;
+					$billing_field_value = array_key_exists( $billing_field_key, $posted_data ) ? $posted_data[ $billing_field_key ] : null;
+				}
+				// Maybe get field values from checkout fields
+				else {
+					$shipping_field_value = WC()->checkout->get_value( $field_key );
+					$billing_field_value = WC()->checkout->get_value( $billing_field_key );
+				}
+
+				if ( $shipping_field_value !== $billing_field_value ) {
+					$is_shipping_same_as_billing = false;
+					break;
+				}
+			}
+
+		}
+
+		return $is_shipping_same_as_billing;
+	}
+
+	/**
+	 * Check whether the checkbox "shipping address same as billing" is checked.
+	 * 
+	 * This function will return `true` even if the billing country is not allowed for shipping,
+	 * use `is_shipping_same_as_billing` to also check if the billing country is allowed for shipping.
+	 * 
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 *
+	 * @return  bool  `true` checkbox "shipping address same as billing" is checked, `false` otherwise.
+	 */
+	public function is_shipping_same_as_billing_checked( $posted_data = array() ) {
+		// Get parsed posted data
+		if ( empty( $posted_data ) ) {
+			$posted_data = $this->get_parsed_posted_data();
+		}
+
+		// Set default value
+		// 
+		// NOTE: Filter and option names are inverted because the option as initially intended
+		// to be used only when copying shipping to billing address. Later when adding option to
+		// move the billing address before shipping, the option name was not changed or
+		// a new option was not added to avoid duplicate options in the plugin settings.
+		$shipping_same_as_billing = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
+		
+		// Maybe set as same as billing for logged users
+		if ( is_user_logged_in() ) {
+			$shipping_same_as_billing = $this->is_shipping_address_data_same_as_billing( $posted_data );
+		}
+
+		// Try get value from the post_data
+		if ( isset( $_POST['post_data'] ) ) {
+			$shipping_same_as_billing = isset( $posted_data['shipping_same_as_billing'] ) && $posted_data['shipping_same_as_billing'] === '1' ? true : false;
+		}
+		// Try get value from the form data sent on process checkout
+		else if ( isset( $_POST['shipping_same_as_billing'] ) ) {
+			$shipping_same_as_billing = isset( $_POST['shipping_same_as_billing'] ) && wc_clean( wp_unslash( $_POST['shipping_same_as_billing'] ) ) === '1' ? true : false;
+		}
+		// Try to get value from the session
+		else if ( WC()->session->__isset( 'fc_shipping_same_as_billing' ) ) {
+			$shipping_same_as_billing = WC()->session->get( 'fc_shipping_same_as_billing' ) === '1';
+		}
+
+		// Filter to allow for customizations
+		$shipping_same_as_billing = apply_filters( 'fc_is_shipping_same_as_billing_checked', $shipping_same_as_billing );
+
+		return $shipping_same_as_billing;
+	}
+
+	/**
+	 * Get value for whether the shipping address is the same as the billing address.
+	 * 
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 *
+	 * @return  bool  `true` if the shipping address is the same as the billing address, `false` otherwise.
+	 */
+	public function is_shipping_same_as_billing( $posted_data = array() ) {
+		// Bail if billing address not available for shipping
+		if ( ! $this->is_billing_address_available_for_shipping() ) {
+			return false;
+		}
+
+		// Set to different shipping address when billing country not allowed
+		if ( null === $this->is_billing_country_allowed_for_shipping() || ! $this->is_billing_country_allowed_for_shipping() ) {
+			return false;
+		}
+
+		return $this->is_shipping_same_as_billing_checked( $posted_data );
+	}
+
+	/**
+	 * Save value of `shipping_same_as_billing` to the current user session.
+	 */
+	public function set_shipping_same_as_billing_session( $shipping_same_as_billing ) {
+		// Set session value
+		WC()->session->set( 'fc_shipping_same_as_billing', $shipping_same_as_billing ? '1' : '0');
 	}
 
 
