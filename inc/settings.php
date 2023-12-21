@@ -215,10 +215,10 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	// public function set_option_billing_address_position_checkout( $pre_option, $option, $default ) {
 	public function set_option_billing_address_position_checkout( $value, $option ) {
-		// Get substep hook and priority options available
+		// Get options available for the Lite plugin
 		$substep_position_available_in_lite = array( 'step_before_shipping', 'step_after_shipping' );
 
-		// Bail if the value is available for the Lite plugin
+		// Bail if the option is available for the Lite plugin
 		if ( in_array( $value, $substep_position_available_in_lite ) ) { return $value; }
 
 		// Otherwise, return the default value.
