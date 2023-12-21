@@ -4,18 +4,18 @@
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-dropdown {
 	max-width: none;
-    border: 1px solid var(--bb-content-border-color);
-    box-shadow: none;
+	border: 1px solid var(--bb-content-border-color);
+	box-shadow: none;
 }
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-dropdown--below {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-dropdown--above {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
 }
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-search {
