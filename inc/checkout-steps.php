@@ -4025,6 +4025,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get list of shipping fields to skip copying from billing fields.
+	 */
+	public function get_shipping_same_as_billing_skip_fields() {
+		return apply_filters( 'fc_shipping_same_as_billing_skip_fields', array() );
+	}
+
+	/**
 	 * Get list of shipping checkout field keys which values are to be copied from shipping to billing fields.
 	 *
 	 * @return  array  List of checkout field keys.
@@ -4038,7 +4045,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
 
 		// Get list of billing fields to skip copying from shipping fields
-		$skip_field_keys = apply_filters( 'fc_shipping_same_as_billing_skip_fields', array() );
+		$skip_field_keys = $this->get_shipping_same_as_billing_skip_fields();
 
 		// Use the `WC_Customer` object for supported properties
 		foreach ( $shipping_fields as $field_key => $field_args ) {
@@ -4060,7 +4067,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Get list of billing fields to skip copying from shipping fields
+	 * Get list of billing fields to skip copying from shipping fields.
 	 */
 	public function get_billing_same_as_shipping_skip_fields() {
 		return apply_filters( 'fc_billing_same_as_shipping_skip_fields', array() );
@@ -4395,7 +4402,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
 
 		// Get list of shipping fields to skip copying from billing fields
-		$skip_field_keys = apply_filters( 'fc_shipping_same_as_billing_skip_fields', array() );
+		$skip_field_keys = $this->get_shipping_same_as_billing_skip_fields();
 
 		// Iterate posted data
 		foreach( $shipping_copy_billing_field_keys as $field_key ) {
