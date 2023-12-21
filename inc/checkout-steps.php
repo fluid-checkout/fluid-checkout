@@ -3122,7 +3122,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$is_billing_before_shipping = true;
 		}
 
-		return $is_billing_before_shipping;
+		return apply_filters( 'fc_is_billing_address_before_shipping_address', $is_billing_before_shipping );
 	}
 
 	/**
