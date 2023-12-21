@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Compatibility with theme: BuddyBoss theme.
  */
-class FluidCheckout_ThemeCompat_Buddyboss extends FluidCheckout {
+class FluidCheckout_ThemeCompat_BuddyBoss extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -37,4 +37,4 @@ class FluidCheckout_ThemeCompat_Buddyboss extends FluidCheckout {
 
 }
 
-FluidCheckout_ThemeCompat_Buddyboss::instance();
+FluidCheckout_ThemeCompat_BuddyBoss::instance();
