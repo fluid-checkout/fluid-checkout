@@ -6,7 +6,10 @@ $_body-theme-selector:                 '.theme-buddyboss-theme' !default;
 
 
 
-
+:root {
+	--fluidcheckout--field--height: #{ remsize( 4.4rem ) };
+	--fluidcheckout--field--border-radius: #{ remsize( .3rem ) };
+}
 
 // ------------------------------------
 // IMPORT STYLES
