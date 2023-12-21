@@ -147,15 +147,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
 
 		// Shipping same as billing
+		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_same_as_billing_field' ), 100 );
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing' ), 10 );
+		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing_on_process_checkout' ), 10 );
+
+		// Shipping same as billing
 		// Fix for when shipping is not needed while
 		// billing address is displayed after shipping address.
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
-
-		// Shipping same as billing
-		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_same_as_billing_field' ), 100 );
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing' ), 10 );
-		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing_on_process_checkout' ), 10 );
 
 		// Billing phone
 		// Maybe move billing phone to contact step
@@ -366,17 +366,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 
-		// Billing Address
+		// Billing address
 		remove_action( 'fc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
 		remove_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_billing_address' ), 10 );
 		remove_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_billing_address' ), 20 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_billing_address_text_fragment' ), 10 );
 
-		// Billing Same as Shipping
+		// Billing same as shipping
 		remove_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_field' ), 100 );
 		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
 		remove_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
+
+		// Shipping same as billing
+		remove_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_same_as_billing_field' ), 100 );
+		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing' ), 10 );
+		remove_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing_on_process_checkout' ), 10 );
+
+		// Shipping same as billing
+		// Fix for when shipping is not needed while
+		// billing address is displayed after shipping address.
+		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
+		remove_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
 
 		// Billing phone
 		// Maybe move billing phone to contact step
