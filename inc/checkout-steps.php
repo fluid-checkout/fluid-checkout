@@ -154,6 +154,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Shipping same as billing
 		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_same_as_billing_field' ), 100 );
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing' ), 10 );
+		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing_on_process_checkout' ), 10 );
 
 		// Billing phone
 		// Maybe move billing phone to contact step
@@ -4265,6 +4267,140 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Copy field value from shipping fields, maybe set field as empty if not found in shipping fields
 			$new_field_value = isset( $post_data[ $shipping_field_key ] ) ? $post_data[ $shipping_field_key ] : null;
 			$new_field_value = apply_filters( 'fc_billing_same_as_shipping_field_value', $new_field_value, $field_key, $shipping_field_key, $post_data );
+
+			// Update billing field values
+			$post_data[ $field_key ] = $new_field_value;
+		}
+
+		return $post_data;
+	}
+
+
+
+	/**
+	 * Maybe set shipping address fields values to same as billing address from the posted data.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_set_shipping_address_same_as_billing( $posted_data ) {
+		// Get value for shipping same as billing
+		$is_shipping_same_as_billing_previous = isset( $posted_data[ 'shipping_same_as_billing_previous' ] ) ? $posted_data[ 'shipping_same_as_billing_previous' ] : null;
+		$is_shipping_same_as_billing = $this->is_shipping_same_as_billing( $posted_data );
+		$is_shipping_same_as_billing_checked = $this->is_shipping_same_as_billing_checked( $posted_data );
+
+		// Save checked state of the shipping same as billing field to the session,
+		// for the case the billing country changes again and the new value is also accepted for shipping.
+		$this->set_shipping_same_as_billing_session( $is_shipping_same_as_billing_checked );
+
+		// Bail if billing address not available for shipping
+		if ( ! $this->is_billing_address_available_for_shipping() ) { return $posted_data; }
+
+		// Get list of shipping fields to copy from billing fields
+		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
+
+		// Get list of posted data keys
+		$posted_data_field_keys = array_keys( $posted_data );
+
+		// Maybe set post data for shipping same as billing
+		if ( $is_shipping_same_as_billing ) {
+
+			// Iterate posted data
+			foreach( $shipping_copy_billing_field_keys as $field_key ) {
+
+				// Get related field keys
+				$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+				$save_field_key = str_replace( 'shipping_', 'save_shipping_', $field_key );
+
+				// Initialize new field value
+				$new_field_value = null;
+
+				// Get field value from billing fields
+				if ( in_array( $billing_field_key, $posted_data_field_keys ) ) {
+					// Maybe update new address data
+					if ( '0' === $is_shipping_same_as_billing_previous && ! apply_filters( 'fc_save_new_address_data_shipping_skip_update', false ) ) {
+						$posted_data[ $save_field_key ] = $posted_data[ $field_key ];
+					}
+
+					// Copy field value from billing fields, maybe set field as empty if not found in shipping fields
+					$new_field_value = isset( $posted_data[ $billing_field_key ] ) ? $posted_data[ $billing_field_key ] : '';
+				}
+
+				// Filter field value before updating post data
+				$filtered_field_value = apply_filters( 'fc_shipping_same_as_billing_field_value', $new_field_value, $field_key, $billing_field_key, $posted_data );
+
+				// Maybe update post data with new field value
+				if ( null !== $filtered_field_value )  {
+					// Update post data
+					$posted_data[ $field_key ] = $filtered_field_value;
+					$_POST[ $field_key ] = $filtered_field_value;
+				}
+			}
+
+		}
+		// When switching to "Shipping (NOT) same as billing", restore new billing address fields.
+		else if ( '1' === $is_shipping_same_as_billing_previous ) {
+
+			// Iterate posted data
+			foreach( $shipping_copy_billing_field_keys as $field_key ) {
+				// Get related field keys
+				$save_field_key = str_replace( 'shipping_', 'save_shipping_', $field_key );
+
+				// Get field value from new address session
+				$new_field_value = $this->get_checkout_field_value_from_session( $save_field_key );
+
+				// Maybe set field as empty if not found in session
+				$new_field_value = null !== $new_field_value ? $new_field_value : '';
+
+				// Maybe set country and state to the default location
+				if ( empty( $new_field_value ) && ( strpos( $field_key, '_country' ) > 0 || strpos( $field_key, '_state' ) > 0 ) ) {
+					// Get customer default location
+					$customer_default_location = wc_get_customer_default_location();
+
+					// Get field key without the address type
+					$default_location_field_key = str_replace( 'billing_', '', str_replace( 'shipping_', '', $field_key ) );
+
+					// Set field value to default location
+					if ( is_array( $customer_default_location ) && array_key_exists( $default_location_field_key, $customer_default_location ) ) {
+						$new_field_value = $customer_default_location[ $default_location_field_key ];
+					}
+				}
+
+				// Update post data
+				$posted_data[ $field_key ] = $new_field_value;
+				$_POST[ $field_key ] = $new_field_value;
+			}
+
+		}
+
+		return $posted_data;
+	}
+
+	/**
+	 * Maybe set shipping address session values to same as billing when processing an order (place order).
+	 *
+	 * @param array $post_data Post data for all checkout fields.
+	 */
+	public function maybe_set_shipping_address_same_as_billing_on_process_checkout( $post_data ) {
+		// Maybe set posted data for billing address to same as shipping
+		if ( ! $this->is_shipping_same_as_billing() ) { return $post_data; }
+
+		// Get list of shipping fields to copy from billing fields
+		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
+
+		// Get list of shipping fields to skip copying from billing fields
+		$skip_field_keys = apply_filters( 'fc_shipping_same_as_billing_skip_fields', array() );
+
+		// Iterate posted data
+		foreach( $shipping_copy_billing_field_keys as $field_key ) {
+			// Skip some fields
+			if ( in_array( $field_key, $skip_field_keys ) ) { continue; }
+
+			// Get billing field key
+			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+
+			// Copy field value from billing fields, maybe set field as empty if not found in billing fields
+			$new_field_value = isset( $post_data[ $billing_field_key ] ) ? $post_data[ $billing_field_key ] : null;
+			$new_field_value = apply_filters( 'fc_shipping_same_as_billing_field_value', $new_field_value, $field_key, $billing_field_key, $post_data );
 
 			// Update billing field values
 			$post_data[ $field_key ] = $new_field_value;
