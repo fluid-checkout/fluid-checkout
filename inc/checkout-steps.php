@@ -513,6 +513,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
+		// Add class for billing address position
+		$position = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' );
+		$add_classes[] = 'has-billing-address-position--' . esc_attr( $position );
+
 		// Add extra class when sidebar is present
 		if ( has_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ) ) ) {
 			$add_classes[] = 'has-fc-sidebar';

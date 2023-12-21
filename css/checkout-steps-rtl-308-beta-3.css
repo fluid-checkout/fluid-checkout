@@ -784,6 +784,10 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
   width: 100%;
 }
 
+body.woocommerce-checkout.has-billing-address-position--force_single_address div.woocommerce .fc-wrapper .woocommerce-shipping-fields .woocommerce-billing-only-fields__field-wrapper {
+  margin-top: 0;
+}
+
 .woocommerce .fc-shipping-method__no-shipping-methods {
   border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   border-radius: var(--fluidcheckout--option-box--border-radius, 13px);

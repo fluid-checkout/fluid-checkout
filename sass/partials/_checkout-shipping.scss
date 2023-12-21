@@ -59,3 +59,13 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .shipping_address:after {
 	@include clearfix();
 }
+
+
+
+// ------------------------------------
+// BILLING ONLY FIELDS FORCE SINGLE ADDRESS
+// ------------------------------------
+
+body.woocommerce-checkout.has-billing-address-position--force_single_address div.woocommerce .fc-wrapper .woocommerce-shipping-fields .woocommerce-billing-only-fields__field-wrapper {
+	margin-top: 0;
+}
