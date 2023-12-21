@@ -3145,14 +3145,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_billing_address_hook_priority() {
 		// Define substep hook and priority for each position
-		$substep_position_priority = array(
+		$substep_position_priority = apply_filters( 'fc_billing_address_hook_priority_options', array(
 			'step_before_shipping'       => array( 'fc_output_step_billing', 10 ),
 			'step_after_shipping'        => array( 'fc_output_step_billing', 10 ),
-			// More options are added from the PRO plugin
-		);
-
-		// Filter substep position priority to allow for customizations
-		$substep_position_priority = apply_filters( 'fc_billing_address_hook_priority_options', $substep_position_priority );
+			// PRO: Hooks and priorities for other options are added from the PRO plugin.
+			// This ensures that the Lite plugin will fall back to the default option
+			// in case the PRO plugin is not active and a PRO only option as previously selected.
+		) );
 
 		// Get selected position for delivery date
 		$position = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' );
