@@ -2766,7 +2766,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_shipping_address( $review_text_lines = array() ) {
-		return $this->get_substep_text_lines_address_type( 'shipping', $review_text_lines );
+		// Maybe display shipping same as billing notice
+		if ( $this->is_shipping_same_as_billing() && true === apply_filters( 'fc_shipping_same_as_billing_display_substep_review_text_notice', true ) ) {
+			$review_text_lines[] = '<em>' . $this->get_option_label_shipping_same_as_billing() . '</em>';
+		}
+		// Otherwise, display the address data
+		else {
+			$review_text_lines = $this->get_substep_text_lines_address_type( 'shipping', $review_text_lines );
+		}
+
+		return $review_text_lines;
 	}
 
 	/**
