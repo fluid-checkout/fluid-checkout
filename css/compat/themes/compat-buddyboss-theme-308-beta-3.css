@@ -19,7 +19,7 @@ body.theme-buddyboss-theme.woocommerce-checkout .select2-container .select2-sear
 }
 
 body.theme-buddyboss-theme.woocommerce-checkout div.woocommerce form .form-row input[type=text] {
-  z-index: 3;
+  z-index: 10;
 }
 
 body.theme-buddyboss-theme.woocommerce-checkout div.woocommerce form .form-row input[type=checkbox] {

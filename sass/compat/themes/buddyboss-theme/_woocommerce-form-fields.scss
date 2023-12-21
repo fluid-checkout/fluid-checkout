@@ -3,7 +3,7 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type=text] {
-	z-index: 3;
+	z-index: z( 'above' );
 }
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type="checkbox"] {
