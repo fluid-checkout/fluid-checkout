@@ -32,6 +32,7 @@ class FluidCheckout_MapToAddress extends FluidCheckout {
 			$this->remove_action_for_class( 'woocommerce_after_checkout_billing_form', array( 'Sgitsdlmp_Public', 'sgitsdlmp_woocommerce_after_checkout_billing_form' ), 10 );
 			$this->remove_action_for_class( 'woocommerce_after_checkout_shipping_form', array( 'Sgitsdlmp_Public', 'sgitsdlmp_woocommerce_after_checkout_shipping_form' ), 10 );
 			remove_action( 'woocommerce_before_checkout_billing_form', array( FluidCheckout_Steps::instance(), 'output_billing_same_as_shipping_field' ), 100 );
+			remove_action( 'woocommerce_before_checkout_shipping_form', array( FluidCheckout_Steps::instance(), 'output_shipping_same_as_billing_field' ), 100 );
 
 			// Re-add hooks in different position
 			$plugin_public = new Sgitsdlmp_Public( 'map-to-address', SGITSDLMP_VERSION );
@@ -40,6 +41,7 @@ class FluidCheckout_MapToAddress extends FluidCheckout {
 
 			// Replace billing same as shipping field
 			add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_field_always_false' ), 100 );
+			add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_shipping_same_as_billing_field_always_false' ), 100 );
 
 			// Remove substep text
 			add_filter( 'fc_substep_billing_address_text', '__return_empty_string' );
@@ -55,6 +57,15 @@ class FluidCheckout_MapToAddress extends FluidCheckout {
 	public function output_billing_same_as_shipping_field_always_false() {
 		?>
 		<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="0">
+		<?php
+	}
+
+	/**
+	 * Output field for shipping address same as billing.
+	 */
+	public function output_shipping_same_as_billing_field_always_false() {
+		?>
+		<input type="hidden" name="shipping_same_as_billing" id="shipping_same_as_billing" value="0">
 		<?php
 	}
 
