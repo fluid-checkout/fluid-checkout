@@ -3113,21 +3113,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function is_billing_address_before_shipping_address() {
 		// Define default value
 		$is_billing_before_shipping = false;
-
-		// Define positions for the billing address section which are before the shipping address
-		$step_position_before_shipping = array(
-			'step_before_shipping',
-			'substep_before_shipping',
-		);
-
-		// Get position from settings
-		$position = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' );
-
-		// Check if position is before shipping
-		if ( in_array( $position, $step_position_before_shipping ) ) {
-			$is_billing_before_shipping = true;
-		}
-
 		return apply_filters( 'fc_is_billing_address_before_shipping_address', $is_billing_before_shipping );
 	}
 
@@ -3136,14 +3121,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_billing_step_hook_priority() {
 		// Define default priority
-		$priority = 30;
-
-		// Change priority depending on the settings
-		if ( 'step_before_shipping' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' ) ) {
-			$priority = 15;
-		}
-
-		return $priority;
+		$step_priority = 30;
+		return apply_filters( 'fc_billing_step_hook_priority', $step_priority );
 	}
 
 	/**
@@ -3152,7 +3131,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_billing_address_hook_priority() {
 		// Define substep hook and priority for each position
 		$substep_position_priority = apply_filters( 'fc_billing_address_hook_priority_options', array(
-			'step_before_shipping'       => array( 'fc_output_step_billing', 10 ),
 			'step_after_shipping'        => array( 'fc_output_step_billing', 10 ),
 			// PRO: Hooks and priorities for other options are added from the PRO plugin.
 			// This ensures that the Lite plugin will fall back to the default option

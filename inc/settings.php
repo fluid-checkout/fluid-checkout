@@ -23,7 +23,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 		add_filter( 'pre_option_fc_design_template', array( $this, 'set_option_lite_design_template' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_edit_cart_replace_edit_cart_link', array( $this, 'set_option_replace_edit_cart_link' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_coupon_codes_position', array( $this, 'set_option_coupon_code_position_checkout' ), 10, 3 );
-		add_filter( 'option_fc_pro_checkout_billing_address_position', array( $this, 'set_option_billing_address_position_checkout' ), 10, 2 );
+		add_filter( 'pre_option_fc_pro_checkout_billing_address_position', array( $this, 'set_option_billing_address_position_checkout' ), 10, 3 );
 
 		// Settings save
 		add_action( 'woocommerce_admin_settings_sanitize_option', array( $this, 'maybe_prevent_change_disabled_settings_on_save' ), 10, 3 );
@@ -213,15 +213,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * @param  string  $option       Option name.
 	 * @param  mixed   $default      The fallback value to return if the option does not exist.
 	 */
-	// public function set_option_billing_address_position_checkout( $pre_option, $option, $default ) {
-	public function set_option_billing_address_position_checkout( $value, $option ) {
-		// Get options available for the Lite plugin
-		$substep_position_available_in_lite = array( 'step_before_shipping', 'step_after_shipping' );
-
-		// Bail if the option is available for the Lite plugin
-		if ( in_array( $value, $substep_position_available_in_lite ) ) { return $value; }
-
-		// Otherwise, return the default value.
+	public function set_option_billing_address_position_checkout( $pre_option, $option, $default ) {
 		return $this->get_option_default( 'fc_pro_checkout_billing_address_position' );
 	}
 
