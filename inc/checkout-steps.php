@@ -1816,7 +1816,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
-		<div <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
+		<section <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
 			<?php
 			echo $this->get_substep_title_html( $substep_id, $substep_title ); // WPCS: XSS ok.
 			do_action( "fc_before_substep_{$substep_id}" , $step_id, $substep_id );
@@ -1838,7 +1838,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				<button class="fc-step__substep-save <?php echo esc_attr( apply_filters( 'fc_substep_save_button_classes', 'button' ) ); ?>" data-step-save><?php echo esc_html( apply_filters( 'fc_substep_save_button_label', _x( 'Save changes', 'Checkout substep save link label', 'fluid-checkout' ) ) ); ?></button>
 			<?php endif; ?>
 
-		</div>
+		</section>
 		<?php
 	}
 
