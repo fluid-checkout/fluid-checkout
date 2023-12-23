@@ -77,7 +77,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		if ( ! class_exists( 'FluidCheckout_CheckoutShippingPhoneField' ) ) { return; }
 
 		// Bail if shipping phone field is disabled
-		if ( 'no' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_visibility' ) ) { return; }
+		if ( ! FluidCheckout_Steps::instance()->is_shipping_phone_enabled() ) { return; }
 
 		// Shipping phone
 		add_filter( 'wcbcf_shipping_fields', array( FluidCheckout_CheckoutShippingPhoneField::instance(), 'add_shipping_phone_field' ), 5 );
