@@ -9,13 +9,13 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .sele
 }
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-dropdown--below {
-	border-top-left-radius: 0; // Needed to override theme specific `select2` styles
-	border-top-right-radius: 0; // Needed to override theme specific `select2` styles
+	border-top-#{ $alignment-left }-radius: 0; // Needed to override theme specific `select2` styles
+	border-top-#{ $alignment-right }-radius: 0; // Needed to override theme specific `select2` styles
 }
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-dropdown--above {
-	border-bottom-left-radius: 0; // Needed to override theme specific `select2` styles
-	border-bottom-right-radius: 0; // Needed to override theme specific `select2` styles
+	border-bottom-#{ $alignment-left }-radius: 0; // Needed to override theme specific `select2` styles
+	border-bottom-#{ $alignment-right }-radius: 0; // Needed to override theme specific `select2` styles
 }
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-search {
