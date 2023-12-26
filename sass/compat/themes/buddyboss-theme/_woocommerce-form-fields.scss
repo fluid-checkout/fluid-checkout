@@ -10,3 +10,31 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .fo
 	position: absolute;
 	cursor: pointer;
 }
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row#billing_same_as_shipping_field input[type="checkbox"] + label:before {
+	content: '';
+	margin-right: 10px; // Needed to use `px` as units to match theme styles
+	display: inline-block;
+	vertical-align: text-top;
+	width: 20px; // Needed to use `px` as units to match theme styles
+	height: 20px; // Needed to use `px` as units to match theme styles
+	background: #fff;
+	border-radius: 3px; // Needed to use `px` as units to match theme styles
+	border: 1px solid var(--bb-primary-color); // Needed to use `px` as units and theme variable to match theme styles
+	box-shadow: none;
+	cursor: pointer;
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row#billing_same_as_shipping_field input[type="checkbox"]:checked + label:before {
+	content: '\e876';
+	background-color: var(--bb-primary-color); // Needed to use theme variable to match theme styles
+	border-color: var(--bb-primary-color); // Needed to use theme variable to match theme styles
+	font-family: bb-icons;
+	display: inline-block;
+	text-align: center;
+	font-variant: normal;
+	color: #fff;
+	line-height: 18px; // Needed to use `px` as units to match theme styles
+	font-size: 14px; // Needed to use `px` as units to match theme styles
+	box-shadow: 0 0 0 1px var(--bb-primary-color); // Needed to use `px` as units and theme variable to match theme styles
+}
