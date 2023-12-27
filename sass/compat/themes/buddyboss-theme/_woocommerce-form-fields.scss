@@ -11,7 +11,7 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .fo
 	cursor: pointer;
 }
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row#billing_same_as_shipping_field input[type="checkbox"] + label:before {
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type="checkbox"] + label:before {
 	content: '';
 	margin-right: 10px; // Needed to use `px` as units to match theme styles
 	display: inline-block;
@@ -25,7 +25,7 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .fo
 	cursor: pointer;
 }
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row#billing_same_as_shipping_field input[type="checkbox"]:checked + label:before {
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type="checkbox"]:checked + label:before {
 	content: '\e876';
 	background-color: var(--bb-primary-color); // Needed to use theme variable to match theme styles
 	border-color: var(--bb-primary-color); // Needed to use theme variable to match theme styles

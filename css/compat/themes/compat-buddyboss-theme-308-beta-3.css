@@ -32,7 +32,7 @@ body.theme-buddyboss-theme.woocommerce-checkout div.woocommerce form .form-row i
   cursor: pointer;
 }
 
-body.theme-buddyboss-theme.woocommerce-checkout div.woocommerce form .form-row#billing_same_as_shipping_field input[type=checkbox] + label:before {
+body.theme-buddyboss-theme.woocommerce-checkout div.woocommerce form .form-row input[type=checkbox] + label:before {
   content: "";
   margin-right: 10px;
   display: inline-block;
@@ -46,7 +46,7 @@ body.theme-buddyboss-theme.woocommerce-checkout div.woocommerce form .form-row#b
   cursor: pointer;
 }
 
-body.theme-buddyboss-theme.woocommerce-checkout div.woocommerce form .form-row#billing_same_as_shipping_field input[type=checkbox]:checked + label:before {
+body.theme-buddyboss-theme.woocommerce-checkout div.woocommerce form .form-row input[type=checkbox]:checked + label:before {
   content: "\e876";
   background-color: var(--bb-primary-color);
   border-color: var(--bb-primary-color);
