@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body.woocommerce-checkout .fc-wrapper .fc-place-order .fc-place-order-button:disabled,
+body.woocommerce-checkout .fc-wrapper .fc-place-order .fc-place-order-button:disabled:hover {
+	background-color: var(--bb-primary-button-background-regular); // Needed to use theme variable to match theme styles
+}
