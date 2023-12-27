@@ -60,6 +60,12 @@ body.theme-buddyboss-theme.woocommerce-checkout div.woocommerce form .form-row i
   box-shadow: 0 0 0 1px var(--bb-primary-color);
 }
 
+body.theme-buddyboss-theme.woocommerce-checkout div.woocommerce form .form-row input[type=checkbox]:focus + label:before,
+body.theme-buddyboss-theme.woocommerce-checkout div.woocommerce form .form-row input[type=checkbox]:focus + span:before {
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
+  outline-offset: 2px;
+}
+
 body.theme-buddyboss-theme.woocommerce-checkout .fc-wrapper #payment .payment_methods {
   background-color: transparent;
 }

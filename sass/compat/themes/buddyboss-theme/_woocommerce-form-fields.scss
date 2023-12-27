@@ -38,3 +38,9 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .fo
 	font-size: 14px; // Needed to use `px` as units to match theme styles
 	box-shadow: 0 0 0 1px var(--bb-primary-color); // Needed to use `px` as units and theme variable to match theme styles
 }
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type="checkbox"]:focus + label:before,
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type="checkbox"]:focus + span:before {
+	outline: $focus-outline-field;
+	outline-offset: $focus-outline-offset-field;
+}
