@@ -59,3 +59,7 @@ body.theme-buddyboss-theme.woocommerce-checkout div.woocommerce form .form-row i
   font-size: 14px;
   box-shadow: 0 0 0 1px var(--bb-primary-color);
 }
+
+body.theme-buddyboss-theme.woocommerce-checkout .fc-wrapper #payment .payment_methods {
+  background-color: transparent;
+}
