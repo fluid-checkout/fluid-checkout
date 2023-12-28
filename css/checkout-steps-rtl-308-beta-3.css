@@ -1492,6 +1492,11 @@ div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
   }
 }
 
+div.woocommerce form .form-row.fc-checkbox-field .woocommerce-input-wrapper span.description {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description:before {
   display: none;
 }
