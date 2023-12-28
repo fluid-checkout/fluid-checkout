@@ -39,7 +39,7 @@ div.woocommerce .shipping-method__package .woocommerce-error {
 }
 
 div.woocommerce .shipping-method__package .woocommerce-error {
-  padding-right: calc(10px + 24px + var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 1px);
+  padding-right: calc( 10px + 24px + var(--fluidcheckout--option-box--spacing--horizontal, 10px) + remsize( .1rem ) );
   background-color: transparent;
 }
 
@@ -125,7 +125,7 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-inv
   font-size: 24px;
   z-index: 10;
   position: absolute;
-  top: calc(var(--fluidcheckout--field--height, 45.625px) / 2 - 24px / 2);
+  top: calc(( var(--fluidcheckout--field--height, 45.625px) / 2 ) - ( 24px / 2 ));
   left: var(--fluidcheckout--validation-check--horizontal-spacing, 5px);
   border-radius: 100%;
   color: var(--fluidcheckout--color--success, #007a3d);

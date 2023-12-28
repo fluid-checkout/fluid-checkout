@@ -1,7 +1,7 @@
 body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
   min-height: var(--fluidcheckout--button--height, 44px) !important;
   height: var(--fluidcheckout--button--height, 44px) !important;
-  line-height: calc(var(--fluidcheckout--button--height, 44px) - var(--fluidcheckout--button--border-width, 1px) * 2) !important;
+  line-height: calc( var(--fluidcheckout--button--height, 44px) - ( var(--fluidcheckout--button--border-width, 1px) * 2 ) ) !important;
   padding: 0 20px !important;
   border: var(--fluidcheckout--button--border-style, solid) var(--fluidcheckout--button--border-width, 1px) transparent !important;
   border-radius: var(--fluidcheckout--button--border-radius, 0) !important;

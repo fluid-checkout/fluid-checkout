@@ -1,7 +1,7 @@
 body.has-fc-button-styles #add_payment_method #place_order {
   min-height: var(--fluidcheckout--button--height, 44px) !important;
   height: var(--fluidcheckout--button--height, 44px) !important;
-  line-height: calc(var(--fluidcheckout--button--height, 44px) - var(--fluidcheckout--button--border-width, 1px) * 2) !important;
+  line-height: calc( var(--fluidcheckout--button--height, 44px) - ( var(--fluidcheckout--button--border-width, 1px) * 2 ) ) !important;
   padding: 0 20px !important;
   border: var(--fluidcheckout--button--border-style, solid) var(--fluidcheckout--button--border-width, 1px) transparent !important;
   border-radius: var(--fluidcheckout--button--border-radius, 0) !important;
@@ -92,7 +92,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   margin: 0;
   padding-top: var(--fluidcheckout--option-box--spacing--vertical, 10px);
   padding-bottom: var(--fluidcheckout--option-box--spacing--vertical, 10px);
-  padding-right: calc(var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px);
+  padding-right: calc( var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px );
   padding-left: var(--fluidcheckout--option-box--spacing--horizontal, 10px);
   width: 100%;
   max-width: 100%;
@@ -250,7 +250,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
 @media (min-width: 750px) {
   .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box,
   #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
-    padding: 20px calc(24px + var(--fluidcheckout--option-box--spacing--horizontal, 10px));
+    padding: 20px calc( 24px + var(--fluidcheckout--option-box--spacing--horizontal, 10px) );
   }
 }
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box textarea,

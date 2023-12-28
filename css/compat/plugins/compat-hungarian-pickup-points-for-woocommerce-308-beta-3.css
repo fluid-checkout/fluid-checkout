@@ -24,7 +24,7 @@
 .fc-wrapper .fc-step__substep .vp-woo-pont-review-order-selected {
   position: relative;
   display: block;
-  padding-left: calc(32px + 10px);
+  padding-left: calc( 32px + 10px );
 }
 
 .fc-wrapper .fc-step__substep .vp-woo-pont-review-order-selected .vp-woo-pont-provider-icon {

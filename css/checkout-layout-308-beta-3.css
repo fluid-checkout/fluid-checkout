@@ -10,7 +10,7 @@ body.has-fc-button-styles.has-checkout-layout--multi-step .fc-wrapper .fc-step__
 body.has-fc-button-styles.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
   min-height: var(--fluidcheckout--button--height, 44px) !important;
   height: var(--fluidcheckout--button--height, 44px) !important;
-  line-height: calc(var(--fluidcheckout--button--height, 44px) - var(--fluidcheckout--button--border-width, 1px) * 2) !important;
+  line-height: calc( var(--fluidcheckout--button--height, 44px) - ( var(--fluidcheckout--button--border-width, 1px) * 2 ) ) !important;
   padding: 0 20px !important;
   border: var(--fluidcheckout--button--border-style, solid) var(--fluidcheckout--button--border-width, 1px) transparent !important;
   border-radius: var(--fluidcheckout--button--border-radius, 0) !important;
@@ -128,7 +128,7 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:foc
 
 @media (min-width: 750px) {
   div.woocommerce .form-row:not(.fc-expansible-form-section) + .fc-expansible-form-section.form-row.form-row-last .expansible-section__toggle-plus {
-    margin-top: calc(20px + var(--fluidcheckout--field--height, 45.625px) / 3);
+    margin-top: calc(20px + ( var(--fluidcheckout--field--height, 45.625px) / 3 ));
   }
 }
 
@@ -317,7 +317,7 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
   body:not(.has-checkout-must-login-notice) .fc-progress-bar,
   body:not(.has-checkout-must-login-notice) .fc-inside {
     float: left;
-    width: calc(62.5% - var(--fluidcheckout--columns--gap, 50px));
+    width: calc( 62.5% - var(--fluidcheckout--columns--gap, 50px) );
     padding-top: 5px;
     padding-left: 0;
     padding-right: 0;
@@ -385,7 +385,7 @@ body.woocommerce-checkout .fc-content > div.woocommerce {
 
 @media (min-width: 1000px) {
   .admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
-    padding-top: calc(5px + 32px);
+    padding-top: calc( 5px + 32px );
   }
 }
 
@@ -790,7 +790,7 @@ body div.woocommerce .form-row.fc-loading .woocommerce-input-wrapper:after {
   z-index: 10;
   content: "\e816" !important;
   position: absolute;
-  top: calc(var(--fluidcheckout--field--height, 45.625px) / 2 - 24px / 2);
+  top: calc(( var(--fluidcheckout--field--height, 45.625px) / 2 ) - ( 24px / 2 ));
   right: 5px;
   width: 24px !important;
   height: 24px !important;
