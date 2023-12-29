@@ -22,6 +22,25 @@ body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data
 	}
 }
 
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--billing {
+	background-color: $lighter-grey;
+
+	// Padding
+	padding: $checkout-substep-padding;
+	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
+
+	// Margin
+	margin: $checkout-substep-margin-expand;
+	margin-top: 0;
+	margin-bottom: #{ - $global-spacing-small };
+
+	@media (#{$bp-larger-than-tablet}) {
+		margin: $checkout-substep-margin-expand--large-screen;
+		margin-top: 0;
+		margin-bottom: #{ - $global-spacing-small };
+	}
+}
+
 
 
 div.woocommerce form .woocommerce-billing-only-fields__field-wrapper {

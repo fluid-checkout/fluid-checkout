@@ -703,6 +703,26 @@ body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data
   color: inherit !important;
 }
 
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--billing {
+  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
+  padding: 20px 20px;
+  margin: 20px -20px;
+  margin-top: 0;
+  margin-bottom: -20px;
+}
+@media (min-width: 750px) {
+  body.has-highlighted-billing-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--billing {
+    padding: 20px 20px;
+  }
+}
+@media (min-width: 750px) {
+  body.has-highlighted-billing-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--billing {
+    margin: 20px -20px;
+    margin-top: 0;
+    margin-bottom: -20px;
+  }
+}
+
 div.woocommerce form .woocommerce-billing-only-fields__field-wrapper {
   margin-top: 20px;
 }
@@ -761,6 +781,26 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection .select2-selection__rendered {
   background-color: var(--fluidcheckout--color--white, #fff) !important;
   color: inherit !important;
+}
+
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--shipping {
+  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
+  padding: 20px 20px;
+  margin: 20px -20px;
+  margin-top: 0;
+  margin-bottom: -20px;
+}
+@media (min-width: 750px) {
+  body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--shipping {
+    padding: 20px 20px;
+  }
+}
+@media (min-width: 750px) {
+  body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--shipping {
+    margin: 20px -20px;
+    margin-top: 0;
+    margin-bottom: -20px;
+  }
 }
 
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields div.shipping_address {
