@@ -395,12 +395,13 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased — 3.1.0 =
 
 * Added: Support for new PRO options for which position to show the billing address section on the checkout page, including before shipping and forced to same as shipping address.
+* Improved: Change the element used for checkout substeps from `div` to `section` for better semantics and to set correct rounded borders when needed.
 
 = Unreleased =
 
 * Added: Support for block themes using the Full Site Editor (FSE) mode.
 * Added: Compatibility with plugin WooCommerce NL Postcode Checker by WP Overnight.
-* Improved: Change the element used for checkout substeps from `div` to `section` for better semantics and to set correct rounded borders when needed.
+* Added: Compatibility with theme BuddyBoss.
 * Fixed: Check whether JS settings object is available before trying to use it in the `address-i18n` script.
 * Fixed: Do not ask user before leaving the page if a redirect is needed after a successful payment is taken with some payment gateways.
 
