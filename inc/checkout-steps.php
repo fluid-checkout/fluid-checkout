@@ -3673,28 +3673,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! function_exists( 'WC' ) || null === WC()->customer ) { return null; }
 
 		// Get shipping value from customer data
-		$customer = WC()->customer;
-		$shipping_country = $customer->get_shipping_country();
+		$shipping_country = WC()->checkout->get_value( 'shipping_country' );
 
-		// Try get value from session
-		$shipping_country_session = $this->get_checkout_field_value_from_session( 'shipping_country' );
-		if ( isset( $shipping_country_session ) && ! empty( $shipping_country_session ) ) {
-			$shipping_country = $shipping_country_session;
-		}
-
-		// Use posted data when doing checkout update
-		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-			// Try get value from the post_data
-			if ( isset( $_POST['s_country'] ) ) {
-				$shipping_country = isset( $_POST['s_country'] ) ? wc_clean( wp_unslash( $_POST['s_country'] ) ) : null;
-			}
-			// Try get value from the form data sent on process checkout
-			else if ( isset( $_POST['shipping_country'] ) ) {
-				$shipping_country = isset( $_POST['shipping_country'] ) ? wc_clean( wp_unslash( $_POST['shipping_country'] ) ) : null;
-			}
-		}
-
-		// Shipping country is defined, return bool
+		// shipping country is defined, return bool
 		if ( null !== $shipping_country && ! empty( $shipping_country ) ) {
 			return $this->is_country_allowed_for_billing( $shipping_country );
 		}
@@ -3731,26 +3712,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! function_exists( 'WC' ) || null === WC()->customer ) { return null; }
 
 		// Get billing value from customer data
-		$customer = WC()->customer;
-		$billing_country = $customer->get_billing_country();
-
-		// Try get value from session
-		$billing_country_session = $this->get_checkout_field_value_from_session( 'billing_country' );
-		if ( isset( $billing_country_session ) && ! empty( $billing_country_session ) ) {
-			$billing_country = $billing_country_session;
-		}
-
-		// Use posted data when doing checkout update
-		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-			// Try get value from the post_data
-			if ( isset( $_POST['country'] ) ) {
-				$billing_country = isset( $_POST['country'] ) ? wc_clean( wp_unslash( $_POST['country'] ) ) : null;
-			}
-			// Try get value from the form data sent on process checkout
-			else if ( isset( $_POST['billing_country'] ) ) {
-				$billing_country = isset( $_POST['billing_country'] ) ? wc_clean( wp_unslash( $_POST['billing_country'] ) ) : null;
-			}
-		}
+		$billing_country = WC()->checkout->get_value( 'billing_country' );
 
 		// Billing country is defined, return bool
 		if ( null !== $billing_country && ! empty( $billing_country ) ) {
