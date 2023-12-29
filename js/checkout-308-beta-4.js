@@ -684,6 +684,10 @@ jQuery( function( $ ) {
 								}
 								$( key ).replaceWith( value );
 							}
+							// CHANGE: Log skipped fragment to console if debug mode is enabled.
+							else if ( fcSettings.debugMode ) {
+								console.log( 'Skipping fragment: ' + key );
+							}
 
 							$( key ).unblock();
 						} );
