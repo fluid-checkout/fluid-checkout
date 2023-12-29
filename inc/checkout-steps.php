@@ -3117,6 +3117,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Check whether the billing address is forced to be the same as the shipping address.
+	 */
+	public function is_billing_forced_same_as_shipping() {
+		// Define default value
+		$is_billing_forced_same_as_shipping = false;
+		return apply_filters( 'fc_is_billing_address_forced_same_as_shipping_address', $is_billing_forced_same_as_shipping );
+	}
+
+	/**
 	 * Get hook priority for the billing step.
 	 */
 	public function get_billing_step_hook_priority() {
@@ -3877,7 +3886,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Get value for whether the billing address is the same as the shipping address.
+	 * Check whether the billing address is set to be copied from the shipping address.
 	 * 
 	 * @param  array  $posted_data   Post data for all checkout fields.
 	 *
@@ -4019,17 +4028,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Get value for whether the shipping address is the same as the billing address.
+	 * Check whether the shipping address is set to be copied from the billing address.
 	 * 
 	 * @param  array  $posted_data   Post data for all checkout fields.
 	 *
 	 * @return  bool  `true` if the shipping address is the same as the billing address, `false` otherwise.
 	 */
 	public function is_shipping_same_as_billing( $posted_data = array() ) {
+		// Bail if shipping is displayed before billing
+		if ( ! $this->is_billing_address_before_shipping_address() ) { return false; }
+
 		// Bail if billing address not available for shipping
-		if ( ! $this->is_billing_address_available_for_shipping() ) {
-			return false;
-		}
+		if ( ! $this->is_billing_address_available_for_shipping() ) { return false; }
 
 		// Set to different shipping address when billing country not allowed
 		if ( true !== $this->is_billing_country_allowed_for_shipping() ) {
@@ -4322,6 +4332,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $posted_data   Post data for all checkout fields.
 	 */
 	public function maybe_set_shipping_address_same_as_billing( $posted_data ) {
+		// Bail if shipping is displayed before billing
+		if ( ! $this->is_billing_address_before_shipping_address() ) { return $posted_data; }
+
 		// Get value for shipping same as billing
 		$is_shipping_same_as_billing_previous = isset( $posted_data[ 'shipping_same_as_billing_previous' ] ) ? $posted_data[ 'shipping_same_as_billing_previous' ] : null;
 		$is_shipping_same_as_billing = $this->is_shipping_same_as_billing( $posted_data );
