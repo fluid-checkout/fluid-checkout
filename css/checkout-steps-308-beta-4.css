@@ -736,11 +736,11 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
   display: none;
 }
 
-div.woocommerce form #billing_same_as_shipping_field.form-row {
+div.woocommerce form .form-row.fc-same-address-checkbox {
   margin-bottom: 20px;
 }
 
-div.woocommerce form #billing_same_as_shipping_field.form-row label {
+div.woocommerce form .form-row.fc-same-address-checkbox label {
   display: inline-block !important;
 }
 
