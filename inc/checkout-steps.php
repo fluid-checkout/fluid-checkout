@@ -2673,7 +2673,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$address_data[ $address_field_key ] = WC()->checkout->get_value( $field_key );
 		}
 
-		$address_data = apply_filters( 'fc_'.$address_type.'_substep_text_address_data', $address_data );
+		$address_data = apply_filters( 'fc_' . $address_type . '_substep_text_address_data', $address_data );
 
 		return WC()->countries->get_formatted_address( $address_data );
 	}
@@ -3543,6 +3543,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output field for billing address same as shipping.
 	 */
 	public function output_billing_same_as_shipping_field() {
+		// Bail if billing is displayed before shipping
+		if ( $this->is_billing_address_before_shipping_address() ) { return false; }
+
 		// Output a hidden field when shipping country not allowed for billing, or shipping not needed
 		if ( apply_filters( 'fc_output_billing_same_as_shipping_as_hidden_field', false ) || ! $this->is_shipping_address_available_for_billing() ) : ?>
 			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
@@ -3557,7 +3560,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'type'      => 'checkbox',
 				'required'  => false,
 				'class'     => array( 'form-row-wide', 'fc-same-address-checkbox' ),
-				'value'     => '1',
+				'value'     => $current_field_value,
 				'default'   => null === $current_field_value || '' === $current_field_value ? 1 : $current_field_value, // Current selected value, or `checked`.
 			);
 
@@ -3585,6 +3588,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output field for shipping address same as billing.
 	 */
 	public function output_shipping_same_as_billing_field() {
+		// Bail if shipping is displayed before billing
+		if ( ! $this->is_billing_address_before_shipping_address() ) { return; }
+
 		// Output a hidden field when billing country not allowed for shipping
 		if ( apply_filters( 'fc_output_shipping_same_as_billing_as_hidden_field', false ) || ! $this->is_billing_address_available_for_shipping() ) : ?>
 			<input type="hidden" name="shipping_same_as_billing" id="shipping_same_as_billing" value="<?php echo $this->is_shipping_same_as_billing_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
@@ -3599,7 +3605,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'type'      => 'checkbox',
 				'required'  => false,
 				'class'     => array( 'form-row-wide', 'fc-same-address-checkbox' ),
-				'value'     => '1',
+				'value'     => $current_field_value,
 				'default'   => null === $current_field_value || '' === $current_field_value ? 1 : $current_field_value, // Current selected value, or `checked`.
 			);
 
