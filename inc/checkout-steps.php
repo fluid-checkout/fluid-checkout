@@ -3591,12 +3591,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 		<?php
 		// Output the checkbox when billing country is allowed for shipping
 		else :
-		?>
-			<p id="shipping_same_as_billing_field" class="form-row form-row-wide">
-				<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="shipping_same_as_billing" id="shipping_same_as_billing" value="1" <?php checked( $this->is_shipping_same_as_billing(), true ); ?>>
-				<label for="shipping_same_as_billing"><?php echo esc_html( $this->get_option_label_shipping_same_as_billing() ); ?></label>
-			</p>
-		<?php
+			// Define field args
+			$field_key = 'shipping_same_as_billing';
+			$current_field_value = $this->is_shipping_same_as_billing_checked() ? '1' : '0';
+			$args = array(
+				'label'     => $this->get_option_label_shipping_same_as_billing(),
+				'type'      => 'checkbox',
+				'required'  => false,
+				'class'     => array( 'form-row-wide', 'fc-same-address-checkbox' ),
+				'value'     => '1',
+				'default'   => null === $current_field_value || '' === $current_field_value ? 1 : $current_field_value, // Current selected value, or `checked`.
+			);
+
+			// Output the checkbox field
+			woocommerce_form_field( $field_key, $args );
 		endif;
 
 		// Output the current value as a hidden field
