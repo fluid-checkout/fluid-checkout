@@ -4160,6 +4160,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $posted_data   Post data for all checkout fields.
 	 */
 	public function maybe_set_billing_address_same_as_shipping( $posted_data ) {
+		// Bail if billing is displayed before shipping
+		if ( $this->is_billing_address_before_shipping_address() ) { return $posted_data; }
+
 		// Get value for billing same as shipping
 		$is_billing_same_as_shipping_previous = isset( $posted_data[ 'billing_same_as_shipping_previous' ] ) ? $posted_data[ 'billing_same_as_shipping_previous' ] : null;
 		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping( $posted_data );
@@ -4258,6 +4261,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param array $post_data Post data for all checkout fields.
 	 */
 	public function maybe_set_billing_address_same_as_shipping_on_process_checkout( $post_data ) {
+		// Bail if billing is displayed before shipping
+		if ( $this->is_billing_address_before_shipping_address() ) { return $post_data; }
+
 		// Maybe set posted data for billing address to same as shipping
 		if ( ! $this->is_billing_same_as_shipping() ) { return $post_data; }
 
@@ -4395,6 +4401,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param array $post_data Post data for all checkout fields.
 	 */
 	public function maybe_set_shipping_address_same_as_billing_on_process_checkout( $post_data ) {
+		// Bail if shipping is displayed before billing
+		if ( ! $this->is_billing_address_before_shipping_address() ) { return $post_data; }
+		
 		// Maybe set posted data for billing address to same as shipping
 		if ( ! $this->is_shipping_same_as_billing() ) { return $post_data; }
 
