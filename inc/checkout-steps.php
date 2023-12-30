@@ -3675,7 +3675,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get shipping value from customer data
 		$shipping_country = WC()->checkout->get_value( 'shipping_country' );
 
-		// shipping country is defined, return bool
+		// Shipping country is defined, return bool
 		if ( null !== $shipping_country && ! empty( $shipping_country ) ) {
 			return $this->is_country_allowed_for_billing( $shipping_country );
 		}
@@ -4403,7 +4403,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function maybe_set_shipping_address_same_as_billing_on_process_checkout( $post_data ) {
 		// Bail if shipping is displayed before billing
 		if ( ! $this->is_billing_address_before_shipping_address() ) { return $post_data; }
-		
+
 		// Maybe set posted data for billing address to same as shipping
 		if ( ! $this->is_shipping_same_as_billing() ) { return $post_data; }
 
