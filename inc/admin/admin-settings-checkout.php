@@ -386,7 +386,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_coupon_codes_position' ),
 						'autoload'          => false,
 					),
-		
+
 					array(
 						'desc'              => __( 'Select style of the "apply coupon" button. Only applicable when the coupon code section is displayed "Before the checkout steps" on the checkout page, or "Before the cart items section" on the cart page.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_checkout_coupon_code_message_button_style',
@@ -461,7 +461,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_billing_address_position' ),
 						'autoload'          => false,
 					),
-					
+
 					array(
 						'desc'              => __( 'Checkbox for "Same as shipping/billing address" checked by default', 'fluid-checkout' ),
 						'desc_tip'          => __( 'The checkbox "Same as shiping address" will start as checked by default when the shipping address section is the displayed first. <br>The checkbox "Same as billing address" will start as checked by default when the billing address section is the displayed first. <br> It is recommended to leave this option checked as to significantly reduce the number of open input fields at checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
