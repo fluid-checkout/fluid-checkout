@@ -386,7 +386,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_coupon_codes_position' ),
 						'autoload'          => false,
 					),
-		
+
 					array(
 						'desc'              => __( 'Select style of the "apply coupon" button. Only applicable when the coupon code section is displayed "Before the checkout steps" on the checkout page, or "Before the cart items section" on the cart page.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_checkout_coupon_code_message_button_style',
@@ -446,6 +446,49 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'title'             => __( 'Billing address', 'fluid-checkout' ),
+						'desc'              => __( 'Select position where to display the billing address section on the checkout page.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'id'                => 'fc_pro_checkout_billing_address_position',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'step_before_shipping'       => array( 'label' => __( 'As a step before shipping', 'fluid-checkout' ), 'disabled' => true ),
+							'substep_before_shipping'    => array( 'label' => __( 'As a sub-step before the shipping address section', 'fluid-checkout' ), 'disabled' => true ),
+							'substep_after_shipping'     => array( 'label' => __( 'As a sub-step after the shipping address section', 'fluid-checkout' ), 'disabled' => true ),
+							'step_after_shipping'        => array( 'label' => __( 'As a step after shipping', 'fluid-checkout' ) ),
+							'substep_before_payment'     => array( 'label' => __( 'As a sub-step before the payment section', 'fluid-checkout' ), 'disabled' => true ),
+							'force_single_address'       => array( 'label' => __( 'Force billing and shipping addresses to the same (single section)', 'fluid-checkout' ), 'disabled' => true ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_billing_address_position' ),
+						'autoload'          => false,
+					),
+
+					array(
+						'desc'              => __( 'Checkbox for "Same as shipping/billing address" checked by default', 'fluid-checkout' ),
+						'desc_tip'          => __( 'The checkbox "Same as shiping address" will start as checked by default when the shipping address section is the displayed first. <br>The checkbox "Same as billing address" will start as checked by default when the billing address section is the displayed first. <br> It is recommended to leave this option checked as to significantly reduce the number of open input fields at checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
+						'id'                => 'fc_default_to_billing_same_as_shipping',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_default_to_billing_same_as_shipping' ),
+						'autoload'          => false,
+					),
+
+					array(
+						'desc'              => __( 'Highlight the billing address section in the checkout form', 'fluid-checkout' ),
+						'id'                => 'fc_show_billing_section_highlighted',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_show_billing_section_highlighted' ),
+						'autoload'          => false,
+					),
+
+					array(
+						'title'             => __( 'Shipping address', 'fluid-checkout' ),
+						'desc'              => __( 'Highlight the shipping address section in the checkout form', 'fluid-checkout' ),
+						'id'                => 'fc_show_shipping_section_highlighted',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_show_shipping_section_highlighted' ),
+						'autoload'          => false,
+					),
+
+					array(
 						'title'             => __( 'Shipping methods', 'fluid-checkout' ),
 						'desc'              => __( 'Choose in which position to display the shipping methods section.', 'fluid-checkout' ),
 						'id'                => 'fc_shipping_methods_substep_position',
@@ -467,33 +510,6 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_local_pickup' ),
 						'autoload'          => false,
 						'disabled'          => true,
-					),		
-
-					array(
-						'title'             => __( 'Shipping address', 'fluid-checkout' ),
-						'desc'              => __( 'Highlight the shipping address section in the checkout form', 'fluid-checkout' ),
-						'id'                => 'fc_show_shipping_section_highlighted',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_show_shipping_section_highlighted' ),
-						'autoload'          => false,
-					),
-
-					array(
-						'title'             => __( 'Billing address', 'fluid-checkout' ),
-						'desc'              => __( 'Highlight the billing address section in the checkout form', 'fluid-checkout' ),
-						'id'                => 'fc_show_billing_section_highlighted',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_show_billing_section_highlighted' ),
-						'autoload'          => false,
-					),
-					
-					array(
-						'desc'              => __( 'Billing address same as the shipping address checked by default', 'fluid-checkout' ),
-						'desc_tip'          => __( 'It is recommended to leave this option checked. The billing address at checkout will start with the option "Billing same as shipping" checked by default. This will significantly reduce the number of open input fields at the checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
-						'id'                => 'fc_default_to_billing_same_as_shipping',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_default_to_billing_same_as_shipping' ),
-						'autoload'          => false,
 					),
 
 					array(

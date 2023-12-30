@@ -23,6 +23,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 		add_filter( 'pre_option_fc_design_template', array( $this, 'set_option_lite_design_template' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_edit_cart_replace_edit_cart_link', array( $this, 'set_option_replace_edit_cart_link' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_coupon_codes_position', array( $this, 'set_option_coupon_code_position_checkout' ), 10, 3 );
+		add_filter( 'pre_option_fc_pro_checkout_billing_address_position', array( $this, 'set_option_billing_address_position_checkout' ), 10, 3 );
 
 		// Settings save
 		add_action( 'woocommerce_admin_settings_sanitize_option', array( $this, 'maybe_prevent_change_disabled_settings_on_save' ), 10, 3 );
@@ -65,6 +66,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_shipping_methods_substep_position'                          => 'after_shipping_address',
 			'fc_enable_checkout_local_pickup'                               => 'no',
 			'fc_show_shipping_section_highlighted'                          => 'yes',
+			'fc_pro_checkout_billing_address_position'                      => 'step_after_shipping',
 			'fc_show_billing_section_highlighted'                           => 'yes',
 			'fc_default_to_billing_same_as_shipping'                        => 'yes',
 			'fc_shipping_company_field_visibility'                          => 'optional',
@@ -194,7 +196,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	}
 
 	/**
-	 * Force the option value for coupon code sectin position on checkout when only Lite plugin is activated.
+	 * Force the option value for coupon code section position on checkout when only Lite plugin is activated.
 	 *
 	 * @param  mixed   $pre_option   The value to return instead of the option value.
 	 * @param  string  $option       Option name.
@@ -202,6 +204,17 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	public function set_option_coupon_code_position_checkout( $pre_option, $option, $default ) {
 		return $this->get_option_default( 'fc_pro_checkout_coupon_codes_position' );
+	}
+
+	/**
+	 * Force the option value for billing address section position on checkout when only Lite plugin is activated.
+	 *
+	 * @param  mixed   $pre_option   The value to return instead of the option value.
+	 * @param  string  $option       Option name.
+	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 */
+	public function set_option_billing_address_position_checkout( $pre_option, $option, $default ) {
+		return $this->get_option_default( 'fc_pro_checkout_billing_address_position' );
 	}
 
 

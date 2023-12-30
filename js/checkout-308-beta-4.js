@@ -104,8 +104,9 @@ jQuery( function( $ ) {
 				this.$checkout_form.on( 'change, input', 'select, input, textarea', this.maybe_prevent_unload );
 			}
 
-			// CHANGE: Update checkout when "billing same as shipping" checked state changes
+			// CHANGE: Update checkout when "same as address" checkboxes state changes
 			this.$checkout_form.on( 'change', '#billing_same_as_shipping', this.billing_same_shipping_changed );
+			this.$checkout_form.on( 'change', '#shipping_same_as_billing', this.shipping_same_billing_changed );
 
 			// CHANGE: Trigger reinitialization functions after checkout is updated
 			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_collapsible_blocks );
@@ -135,6 +136,23 @@ jQuery( function( $ ) {
 			if ( window.CollapsibleBlock ) {
 				var checkbox = document.querySelector( '#billing_same_as_shipping' );
 				var fieldsWrapper = document.querySelector( '#woocommerce-billing-fields__field-wrapper' );
+
+				// Toggle state
+				if ( ! checkbox.checked ) {
+					CollapsibleBlock.expand( fieldsWrapper );
+				}
+				else {
+					CollapsibleBlock.collapse( fieldsWrapper );
+				}
+			}
+
+			$( document.body ).trigger( 'update_checkout' );
+		},
+		// CHANGE: Update checkout when "Shipping same as billing" checked state changes
+		shipping_same_billing_changed: function( e ) {
+			if ( window.CollapsibleBlock ) {
+				var checkbox = document.querySelector( '#shipping_same_as_billing' );
+				var fieldsWrapper = document.querySelector( '#woocommerce-shipping-fields__field-wrapper' );
 
 				// Toggle state
 				if ( ! checkbox.checked ) {
@@ -665,6 +683,10 @@ jQuery( function( $ ) {
 									console.log( 'Replacing fragment: ' + key );
 								}
 								$( key ).replaceWith( value );
+							}
+							// CHANGE: Log skipped fragment to console if debug mode is enabled.
+							else if ( fcSettings.debugMode ) {
+								console.log( 'Skipping fragment: ' + key );
 							}
 
 							$( key ).unblock();

@@ -169,14 +169,16 @@
 @media (min-width: 750px) {
   .fc-wrapper .fc-checkout-step:first-child,
   .fc-wrapper .fc-checkout-step:first-child > div:first-of-type {
-    border-radius: var(--fluidcheckout--section--border-radius, 8px) var(--fluidcheckout--section--border-radius, 8px) 0 0;
+    border-top-right-radius: var(--fluidcheckout--section--border-radius, 8px);
+    border-top-left-radius: var(--fluidcheckout--section--border-radius, 8px);
   }
 }
 
 @media (min-width: 750px) {
   .fc-wrapper .fc-checkout-step:last-child,
   .fc-wrapper .fc-checkout-step:last-child > div:last-of-type {
-    border-radius: 0 0 var(--fluidcheckout--section--border-radius, 8px) var(--fluidcheckout--section--border-radius, 8px);
+    border-bottom-right-radius: var(--fluidcheckout--section--border-radius, 8px);
+    border-bottom-left-radius: var(--fluidcheckout--section--border-radius, 8px);
   }
 }
 
@@ -189,6 +191,20 @@
 @media (min-width: 750px) {
   .fc-wrapper .fc-step__substep {
     padding: 20px 20px;
+  }
+}
+
+@media (min-width: 750px) {
+  .fc-wrapper .fc-step__substep:first-of-type {
+    border-top-right-radius: var(--fluidcheckout--section--border-radius, 8px);
+    border-top-left-radius: var(--fluidcheckout--section--border-radius, 8px);
+  }
+}
+
+@media (min-width: 750px) {
+  .fc-wrapper .fc-step__substep:last-of-type {
+    border-bottom-right-radius: var(--fluidcheckout--section--border-radius, 8px);
+    border-bottom-left-radius: var(--fluidcheckout--section--border-radius, 8px);
   }
 }
 
@@ -687,6 +703,26 @@ body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data
   color: inherit !important;
 }
 
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--billing {
+  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
+  padding: 20px 20px;
+  margin: 20px -20px;
+  margin-top: 0;
+  margin-bottom: -20px;
+}
+@media (min-width: 750px) {
+  body.has-highlighted-billing-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--billing {
+    padding: 20px 20px;
+  }
+}
+@media (min-width: 750px) {
+  body.has-highlighted-billing-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--billing {
+    margin: 20px -20px;
+    margin-top: 0;
+    margin-bottom: -20px;
+  }
+}
+
 div.woocommerce form .woocommerce-billing-only-fields__field-wrapper {
   margin-top: 20px;
 }
@@ -720,11 +756,11 @@ body:not(.has-collapsible-block) .woocommerce-billing-fields__field-wrapper.is-c
   display: none;
 }
 
-div.woocommerce form #billing_same_as_shipping_field.form-row {
+div.woocommerce form .form-row.fc-same-address-checkbox {
   margin-bottom: 20px;
 }
 
-div.woocommerce form #billing_same_as_shipping_field.form-row label {
+div.woocommerce form .form-row.fc-same-address-checkbox label {
   display: inline-block !important;
 }
 
@@ -745,6 +781,26 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection .select2-selection__rendered {
   background-color: var(--fluidcheckout--color--white, #fff) !important;
   color: inherit !important;
+}
+
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--shipping {
+  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
+  padding: 20px 20px;
+  margin: 20px -20px;
+  margin-top: 0;
+  margin-bottom: -20px;
+}
+@media (min-width: 750px) {
+  body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--shipping {
+    padding: 20px 20px;
+  }
+}
+@media (min-width: 750px) {
+  body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--shipping {
+    margin: 20px -20px;
+    margin-top: 0;
+    margin-bottom: -20px;
+  }
 }
 
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields div.shipping_address {
@@ -782,6 +838,10 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
   display: table;
   table-layout: fixed;
   width: 100%;
+}
+
+body.woocommerce-checkout.has-billing-address-position--force_single_address div.woocommerce .fc-wrapper .woocommerce-shipping-fields .woocommerce-billing-only-fields__field-wrapper {
+  margin-top: 0;
 }
 
 .woocommerce .fc-shipping-method__no-shipping-methods {
