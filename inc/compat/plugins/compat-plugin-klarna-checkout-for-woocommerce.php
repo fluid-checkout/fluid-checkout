@@ -34,6 +34,7 @@ class FluidCheckout_KlarnaCheckoutForWooCommerce extends FluidCheckout {
 	 */
 	public function get_skip_classes_undo_hooks_early_list() {
 		$skip_undo_hooks_classes = apply_filters( 'fc_compat_klarna_checkout_skip_undo_hooks_early_classes', array( 'FluidCheckout_CheckoutPageTemplate', 'FluidCheckout_CheckoutWidgetAreas' ) );
+		return $skip_undo_hooks_classes;
 	}
 
 	/**
@@ -41,6 +42,7 @@ class FluidCheckout_KlarnaCheckoutForWooCommerce extends FluidCheckout {
 	 */
 	public function get_skip_classes_undo_hooks_list() {
 		$skip_undo_hooks_classes = apply_filters( 'fc_compat_klarna_checkout_skip_undo_hooks_classes', array( 'FluidCheckout_CheckoutPageTemplate' ) );
+		return $skip_undo_hooks_classes;
 	}
 
 

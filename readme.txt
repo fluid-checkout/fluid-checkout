@@ -403,6 +403,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Change the element used for checkout substeps from `div` to `section` for better semantics and to set correct rounded borders when needed.
 * Fixed: Check whether JS settings object is available before trying to use it in the `address-i18n` script.
 * Fixed: Do not ask user before leaving the page if a redirect is needed after a successful payment is taken with some payment gateways.
+* Fixed: PHP eroor on compatibility with plugin Klarna Checkout for WooCommerce.
 
 = 3.0.7 - 2023-12-14 =
 
