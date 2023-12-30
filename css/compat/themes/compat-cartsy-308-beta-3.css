@@ -1,0 +1,8 @@
+body.theme-cartsy .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:before,
+body.theme-cartsy .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:after {
+  transform: none;
+}
+
+body.theme-cartsy .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:after {
+  background-color: transparent;
+}
