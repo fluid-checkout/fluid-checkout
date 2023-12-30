@@ -464,7 +464,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					
 					array(
 						'desc'              => __( 'Checkbox for "Same as shipping/billing address" checked by default', 'fluid-checkout' ),
-						'desc_tip'          => __( 'The option "[Billing] same as shipping address" will start as checked by default when the shipping address section is the displayed first. <br>The option "[Shipping] same as billing address" will start as checked by default when the billing address section is the displayed first. <br> It is recommended to leave this option checked as to significantly reduce the number of open input fields at checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'The checkbox "Same as shiping address" will start as checked by default when the shipping address section is the displayed first. <br>The checkbox "Same as billing address" will start as checked by default when the billing address section is the displayed first. <br> It is recommended to leave this option checked as to significantly reduce the number of open input fields at checkout, <a href="https://baymard.com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-hide-the-fields-entirely" target="_blank">read the research</a>.', 'fluid-checkout' ),
 						'id'                => 'fc_default_to_billing_same_as_shipping',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_default_to_billing_same_as_shipping' ),
