@@ -22,6 +22,25 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 	}
 }
 
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--shipping {
+	background-color: $lighter-grey;
+
+	// Padding
+	padding: $checkout-substep-padding;
+	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
+
+	// Margin
+	margin: $checkout-substep-margin-expand;
+	margin-top: 0;
+	margin-bottom: #{ - $global-spacing-small };
+
+	@media (#{$bp-larger-than-tablet}) {
+		margin: $checkout-substep-margin-expand--large-screen;
+		margin-top: 0;
+		margin-bottom: #{ - $global-spacing-small };
+	}
+}
+
 
 
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields div.shipping_address {
@@ -58,4 +77,16 @@ div.woocommerce form .woocommerce-shipping-only-fields__field-wrapper:after {
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper:after,
 .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .shipping_address:after {
 	@include clearfix();
+}
+
+
+
+
+
+// ------------------------------------
+// BILLING ONLY FIELDS FORCE SINGLE ADDRESS
+// ------------------------------------
+
+body.woocommerce-checkout.has-billing-address-position--force_single_address div.woocommerce .fc-wrapper .woocommerce-shipping-fields .woocommerce-billing-only-fields__field-wrapper {
+	margin-top: 0;
 }

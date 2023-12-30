@@ -1,0 +1,8 @@
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table th,
+body#{ $_body-theme-selector } div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table td {
+	color: var(--bb-body-text-color); // Needed to use theme variable to match theme styles
+}

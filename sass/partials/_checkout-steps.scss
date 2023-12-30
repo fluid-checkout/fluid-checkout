@@ -19,11 +19,17 @@
 }
 .fc-wrapper .fc-checkout-step:first-child,
 .fc-wrapper .fc-checkout-step:first-child > div:first-of-type {
-	@media (#{$bp-larger-than-tablet}) { border-radius: $checkout-substep-border-radius $checkout-substep-border-radius 0 0; }
+	@media (#{$bp-larger-than-tablet}) {
+		border-top-#{ $alignment-left }-radius: $checkout-substep-border-radius;
+		border-top-#{ $alignment-right }-radius: $checkout-substep-border-radius;
+	}
 }
 .fc-wrapper .fc-checkout-step:last-child,
 .fc-wrapper .fc-checkout-step:last-child > div:last-of-type {
-	@media (#{$bp-larger-than-tablet}) { border-radius: 0 0 $checkout-substep-border-radius $checkout-substep-border-radius; }
+	@media (#{$bp-larger-than-tablet}) {
+		border-bottom-#{ $alignment-left }-radius: $checkout-substep-border-radius;
+		border-bottom-#{ $alignment-right }-radius: $checkout-substep-border-radius;
+	}
 }
 
 
@@ -35,6 +41,18 @@
 	border-top: $checkout-step-border;
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
+}
+.fc-wrapper .fc-step__substep:first-of-type {
+	@media (#{$bp-larger-than-tablet}) {
+		border-top-#{ $alignment-left }-radius: $checkout-substep-border-radius;
+		border-top-#{ $alignment-right }-radius: $checkout-substep-border-radius;
+	}
+}
+.fc-wrapper .fc-step__substep:last-of-type {
+	@media (#{$bp-larger-than-tablet}) {
+		border-bottom-#{ $alignment-left }-radius: $checkout-substep-border-radius;
+		border-bottom-#{ $alignment-right }-radius: $checkout-substep-border-radius;
+	}
 }
 .fc-wrapper .fc-step__substep[data-substep-id="payment"] + .fc-step__substep {
 	border-bottom: $checkout-step-border;

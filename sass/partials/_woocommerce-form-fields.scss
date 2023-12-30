@@ -93,6 +93,10 @@ div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
 
 	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-field-description-font-size--large-screen; }
 }
+div.woocommerce form .form-row.fc-checkbox-field .woocommerce-input-wrapper span.description {
+	padding-#{ $alignment-left }: 0;
+	padding-#{ $alignment-right }: 0;
+}
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description:before {
 	display: none;
 }
