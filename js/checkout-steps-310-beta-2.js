@@ -185,8 +185,11 @@
 	 * @param   Boolean      withFocus       Whether to set the focus to the field when expanding. Cannot be used with `withTransition = true`. Defaults to `true`.
 	 */
 	var expandSubstepEdit = function( substepElement, withTransition, withFocus ) {
-		// Bail if editButton not valid
+		// Bail if substep element not valid
 		if ( ! substepElement ) { return; }
+
+		// Bail if substep is already expanded
+		if ( substepElement.classList.contains( _settings.isEditingClass ) ) { return; }
 
 		var substepFieldsElement = substepElement.querySelector( _settings.substepFieldsSelector );
 		var substepTextElement = substepElement.querySelector( _settings.substepTextSelector );
@@ -203,17 +206,22 @@
 	 * Collapse the substep fields, and expand the substep values in text format for review.
 	 *
 	 * @param   HTMLElement  substepElement  Substep element to change the state of.
+	 * @param   Boolean      withTransition  Whether to use transitions between states. Defaults to `true`.
+	 * @param   Boolean      withFocus       Whether to set the focus to the field when expanding. Cannot be used with `withTransition = true`. Defaults to `true`.
 	 */
-	var collapseSubstepEdit = function( substepElement ) {
-		// Bail if editButton not valid
+	var collapseSubstepEdit = function( substepElement, withTransition, withFocus ) {
+		// Bail if substep element not valid
 		if ( ! substepElement ) { return; }
+
+		// Bail if substep is already collapsed
+		if ( ! substepElement.classList.contains( _settings.isEditingClass ) ) { return; }
 
 		var substepFieldsElement = substepElement.querySelector( _settings.substepFieldsSelector );
 		var substepTextElement = substepElement.querySelector( _settings.substepTextSelector );
 
 		// Change expanded/collapsed states for the fields and text blocks
-		CollapsibleBlock.collapse( substepFieldsElement );
-		CollapsibleBlock.expand( substepTextElement );
+		CollapsibleBlock.collapse( substepFieldsElement, withTransition );
+		CollapsibleBlock.expand( substepTextElement, withTransition, withFocus );
 
 		// Remove editing class from the substep element
 		substepElement.classList.remove( _settings.isEditingClass );
@@ -608,15 +616,14 @@
 			// Handle visibility state
 			var visibilityHiddenField = substepElement.querySelector( _settings.substepVisibleStateFieldSelector );
 			if ( visibilityHiddenField ) {
+				// Change visibility state
 				substepElement.setAttribute( _settings.substepVisibleStateAttribute, visibilityHiddenField.value );
 
-				// Maybe collapse substep edit when step is complete
+				// Maybe collapse substep edit
+				// when step is complete
 				if ( isStepComplete( substepElement ) ) {
 					collapseSubstepEdit( substepElement, true, false );
 				}
-			}
-			else {
-				substepElement.removeAttribute( _settings.substepVisibleStateAttribute );
 			}
 
 			// Handle expanded state
