@@ -23,4 +23,5 @@ $_body-theme-selector:                 '.theme-cartsy' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-steps",
 	"checkout-shipping-methods";
