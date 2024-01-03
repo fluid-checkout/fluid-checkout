@@ -19,6 +19,62 @@ Additional labels for beta builds are available as extensions to the MAJOR.MINOR
 
 [See latest changes in the plugin's readme.txt](https://github.com/fluidweb-co/fluid-checkout/blob/main/readme.txt)
 
+= 3.0.3 - 2023-09-13 =
+
+* Bump tested up to WooCommerce 8.1
+* Added: New option to set visibility for the Shipping Company field as Required, Optional or Hidden (removed).
+* Added: Compatibility with theme Artemis.
+* Added: Compatibility with theme XStore.
+* Added: Compatibility with plugin Storefront Powerpack.
+* Added: Compatibility with plugin TI WooCommerce Wishlist Premium.
+* Added: Partial compatibility with plugin Digits OTP, because changes to Digits plugin are needed for full compatibility.
+* Improved: Compatibility with theme ZK Nito: add integration option to enable/disable extra shipping email and phone fields added by the theme.
+* Improved: Compatibility with theme Riode: fix container class when using the theme header.
+* Improved: Added inline validation for required checkboxes.
+* Improved: Added text "(optional)" to the create account checkbox label when registration is not required.
+* Improved: Display shipping package name, contents and destination on shipping method substep review text when order has multiple shipping packages.
+* Improved: Pass `$substep_id` parameters to the filter `fc_no_substep_review_text_notice` so developers can change it for specific substeps.
+* Improved: Position for expansible optional fields when displayed as a second column with class `form-row-last`.
+* Fixed: Missing SVG logo when using distraction free checkout header.
+* Fixed: Wrong address used for tax calculation in rare cases when shipping address was different than billing, but only billing address was required for the current cart items.
+
+= 3.0.2 - 2023-08-24 =
+
+* Bump tested up to WordPress 6.3 and WooCommerce 8.0.2
+* Added: Compatibility with theme ZK Nito.
+* Added: Compatibility with plugin Tilopay.
+* Added: Compatibility with plugin Hungarian Pickup Points & Shipping Labels for WooCommerce (by Viszt Péter).
+* Improved: Compatibility with theme Woodmart. Disable theme checkout options by default.
+* Improved: Avoid triggering payment method field validation when updating checkout fragments.
+* Improved: Handle name fields as a single line for displaying on the substep review text.
+* Improved: Added filter hooks `fc_apply_address_1_field_description` and `fc_apply_address_2_field_description` to stop changing the address fields description and placeholder.
+* Improved: Handle new custom arguments `optional_expand_link_label` and `optional_expand_link_lowercase` for checkout fields array to customize how optional field "+ Add <field>" links are displayed.
+* Fixed: PHP warnings when setting shipping address from the shipping calculator on the cart page.
+* Fixed: Show password toggle buttons on popup login form not working.
+* Fixed: Comparison for checkout fields `required` attribute to accept type casting of non-boolean values.
+* Fixed: Compatibility with plugin Checkout Field Editor PRO by ThemeHigh causing checkout process to validate conditional fields as required when fields are not available.
+* Fixed: Remove validation icon from coupon field.
+* Fixed: Force show coupon code related messages on some edge cases.
+
+= 3.0.1 - 2023-08-04 =
+
+* Improved: Compatibility with theme Astra and companion plugin Astra PRO.
+* Improved: Compatibility with theme Woodmart.
+* Improved: Add more CSS variables for changing the look of buttons.
+* Fixed: Duplicate phone field data displayed on order received pages.
+
+= 3.0.0 - 2023-07-18 =
+
+* Bump tested up to WooCommerce 7.9
+* Added: New feature to select design template for the checkout page, more design template options are available with [Fluid Checkout PRO](https://fluidcheckout.com/pricing/).
+* Added: PRO settings on the plugin settings page so users can easily discover PRO features.
+* Added: Compatibility with plugin BRT Fermopoint by BRT.
+* Improved: Compatibility with plugin Payment Plugins for PayPal. Only change the state for checkout updates when the `click` event is triggered.
+* Improved: Reorganized plugins settings in sections that are easier to understand and set up.
+* Improved: Refactor settings to use centralized class with default values.
+* Improved: Refactor CSS to use CSS variables for customization.
+* Fixed: Auto selecting and overwriting text of email fields while typing.
+
 = 2.5.2 - 2023-06-30 =
 
 * Bump tested up to WordPress 6.2.2 and WooCommerce 7.8.1

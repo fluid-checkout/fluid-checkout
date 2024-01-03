@@ -1,0 +1,18 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type=text] {
+	z-index: z( 'above' );
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type="checkbox"] {
+	position: absolute;
+	cursor: pointer;
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type="checkbox"]:focus + label:before,
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type="checkbox"]:focus + span:before {
+	outline: $focus-outline-field;
+	outline-offset: $focus-outline-offset-field;
+}

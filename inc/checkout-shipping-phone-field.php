@@ -20,7 +20,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Bail if feature is not enabled
-		if( 'no' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_visibility' ) ) { return; }
+		if( ! FluidCheckout_Steps::instance()->is_shipping_phone_enabled() ) { return; }
 
 		// Add shipping phone field
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'add_shipping_phone_field' ), 5 );
@@ -33,6 +33,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		}
 
 		// Change shipping field args
+		add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_set_billing_phone_required' ), 100 );
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_set_shipping_phone_required' ), 100 );
 		add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_shipping_company_field_args' ), 100 );
 
@@ -74,6 +75,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		}
 
 		// Change shipping field args
+		remove_filter( 'woocommerce_billing_fields', array( $this, 'maybe_set_billing_phone_required' ), 100 );
 		remove_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_set_shipping_phone_required' ), 100 );
 		remove_filter( 'woocommerce_shipping_fields' , array( $this, 'change_shipping_company_field_args' ), 100 );
 	}
@@ -100,13 +102,34 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	}
 
 
+	
+	/**
+	 * Change billing phone `required` argument when shipping phone field is required.
+	 *
+	 * @param   array  $billing_fields  The billing fields arguments.
+	 */
+	public function maybe_set_billing_phone_required( $billing_fields ) {
+		// Bail if NOT billing before shipping
+		if ( ! FluidCheckout_Steps::instance()->is_billing_address_before_shipping_address() ) { return $billing_fields; }
+
+		// Bail if billing phone not present, or shipping phone field not required
+		if ( ! array_key_exists( 'billing_phone', $billing_fields ) || 'required' !== FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_visibility' ) || 'shipping_address' !== FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_position' ) ) { return $billing_fields; }
+
+		// Set billing phone as required
+		$billing_fields['billing_phone']['required'] = true;
+
+		return $billing_fields;
+	}
 
 	/**
 	 * Change shipping phone `required` argument when billing phone field is required.
 	 *
-	 * @param   array  $shipping_fields  Contains shipping fields arguments.
+	 * @param   array  $shipping_fields  The shipping fields arguments.
 	 */
 	public function maybe_set_shipping_phone_required( $shipping_fields ) {
+		// Bail if billing before shipping
+		if ( FluidCheckout_Steps::instance()->is_billing_address_before_shipping_address() ) { return $shipping_fields; }
+
 		// Bail if shipping phone not present, or billing phone field not required
 		if ( ! array_key_exists( 'shipping_phone', $shipping_fields ) || 'required' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_checkout_phone_field' ) || 'billing_address' !== FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) { return $shipping_fields; }
 
