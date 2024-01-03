@@ -1,3 +1,7 @@
+:root {
+  --fluidcheckout--field--border-radius: 6px;
+}
+
 body.theme-cartsy .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:before,
 body.theme-cartsy .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:after {
   transform: none;
