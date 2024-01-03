@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with theme: Flatsome (by UX-Themes).
+ * Compatibility with theme: Cartsy (by Redq).
  */
 class FluidCheckout_ThemeCompat_Cartsy extends FluidCheckout {
 
@@ -19,8 +19,10 @@ class FluidCheckout_ThemeCompat_Cartsy extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Prevent theme's page template from being replaced by FC Pro checkout template
-		add_filter( 'fc_enable_checkout_page_template', '__return_false', 10 );
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) {
+			// Prevent theme's page template from being replaced by FC checkout template
+			add_filter( 'fc_enable_checkout_page_template', '__return_false', 10 );
+		}
 	}
 
 }
