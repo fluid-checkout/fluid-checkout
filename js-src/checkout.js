@@ -636,16 +636,15 @@ jQuery( function( $ ) {
 						// CHANGE: Trigger custom event before fragments are replaced.
 						$( document.body ).trigger( 'fc_checkout_fragments_replace_before', [ data ] );
 
-						// CHANGE: Try to remove select2 components from existing fields before replacing fragments
+						// CHANGE: Try to remove `select2` components from existing fields before replacing fragments
 						$( 'select.country_select, select.state_select' ).each( function() {
-							var field = $( this );
-							if ( field.hasClass( 'select2-hidden-accessible' ) ) { // Field has `select2` initialized
-								if ( typeof field.selectWoo === 'function' ) { field.selectWoo( 'destroy' ); }
-								else if ( typeof field.select2 === 'function' ) { field.select2( 'destroy' ); }
-								field.off( 'select2:select' );
+							var $field = $( this );
+							if ( $field.hasClass( 'select2-hidden-accessible' ) ) { // Field has `select2` initialized
+								$field.off( 'select2:select' );
+								$field.parent().find( '.select2-container' ).remove();
 							}
 						} );
-						// CHANGE: END - Try to remove select2 components from existing fields before replacing fragments
+						// CHANGE: END - Try to remove `select2` components from existing fields before replacing fragments
 
 						// CHANGE: Try to remove intl-tel-input components from existing fields before replacing fragments
 						if ( window.intlTelInput && window.intlTelInputGlobals ) {

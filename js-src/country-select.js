@@ -60,21 +60,29 @@ jQuery( function( $ ) {
 		};
 
 		var wc_country_select_select2 = function() {
-			// CHANGE: Allow building `select2` fields while not visible
-			$( 'select.country_select, select.state_select' ).each( function() {
-				var $this = $( this );
+			// CHANGE: Run function code after a short delay,
+			// to allow components to be completely rendered
+			requestAnimationFrame(function(){
+				// CHANGE: Allow building `select2` fields while not visible
+				$( 'select.country_select, select.state_select' ).each( function() {
+					var $this = $( this );
 
-				var select2_args = $.extend({
-					placeholder: $this.attr( 'data-placeholder' ) || $this.attr( 'placeholder' ) || '',
-					label: $this.attr( 'data-label' ) || null,
-					width: '100%'
-				}, getEnhancedSelectFormatString() );
-
-				$( this )
-					.on( 'select2:select', function() {
-						$( this ).trigger( 'focus' ); // Maintain focus after select https://github.com/select2/select2/issues/4384
-					} )
-					.selectWoo( select2_args );
+					// CHANGE: Try to remove rendered `select2` elements before building it again
+					$this.off( 'select2:select' );
+					$this.parent().find( '.select2-container' ).remove();
+	
+					var select2_args = $.extend({
+						placeholder: $this.attr( 'data-placeholder' ) || $this.attr( 'placeholder' ) || '',
+						label: $this.attr( 'data-label' ) || null,
+						width: '100%'
+					}, getEnhancedSelectFormatString() );
+	
+					$( this )
+						.on( 'select2:select', function() {
+							$( this ).trigger( 'focus' ); // Maintain focus after select https://github.com/select2/select2/issues/4384
+						} )
+						.selectWoo( select2_args );
+				});
 			});
 		};
 
