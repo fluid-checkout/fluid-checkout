@@ -14,3 +14,7 @@ body.theme-cartsy .woocommerce ul#shipping_method .shipping-method__option .ship
 body.theme-cartsy .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:after {
   background-color: transparent;
 }
+
+body.theme-cartsy.woocommerce-checkout .fc-wrapper .fc-place-order .fc-place-order-button {
+  background-color: var(--colorPrimary, #212121);
+}
