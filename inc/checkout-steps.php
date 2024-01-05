@@ -3571,7 +3571,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'type'      => 'checkbox',
 				'required'  => false,
 				'class'     => array( 'form-row-wide', 'fc-same-address-checkbox' ),
-				'value'     => $current_field_value,
+				'value'     => '1',
 				'default'   => '1' == $current_field_value ? 1 : 0,
 			);
 
@@ -3618,7 +3618,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'type'      => 'checkbox',
 				'required'  => false,
 				'class'     => array( 'form-row-wide', 'fc-same-address-checkbox' ),
-				'value'     => $current_field_value,
+				'value'     => '1',
 				'default'   => '1' == $current_field_value ? 1 : 0,
 			);
 
@@ -4330,10 +4330,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Iterate posted data
 			foreach( $shipping_copy_billing_field_keys as $field_key ) {
-
 				// Get related field keys
 				$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
 				$save_field_key = str_replace( 'shipping_', 'save_shipping_', $field_key );
+				$post_field_key = str_replace( 'shipping_', 's_', $field_key );
 
 				// Initialize new field value
 				$new_field_value = null;
@@ -4356,18 +4356,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 				if ( null !== $filtered_field_value )  {
 					// Update post data
 					$posted_data[ $field_key ] = $filtered_field_value;
-					$_POST[ $field_key ] = $filtered_field_value;
+					$_POST[ $post_field_key ] = $filtered_field_value;
 				}
 			}
 
 		}
-		// When switching to "Shipping (NOT) same as billing", restore new billing address fields.
+		// When switching to "Shipping (NOT) same as billing", restore new shipping address fields.
 		else if ( '1' === $is_shipping_same_as_billing_previous ) {
 
 			// Iterate posted data
 			foreach( $shipping_copy_billing_field_keys as $field_key ) {
 				// Get related field keys
 				$save_field_key = str_replace( 'shipping_', 'save_shipping_', $field_key );
+				$post_field_key = str_replace( 'shipping_', 's_', $field_key );
 
 				// Get field value from new address session
 				$new_field_value = $this->get_checkout_field_value_from_session( $save_field_key );
@@ -4391,7 +4392,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Update post data
 				$posted_data[ $field_key ] = $new_field_value;
-				$_POST[ $field_key ] = $new_field_value;
+				$_POST[ $post_field_key ] = $new_field_value;
 			}
 
 		}

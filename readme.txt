@@ -397,6 +397,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Steps not closing to show review text when advancing to next step on multi-step mode.
+* Fixed: Support for copying shipping from billing when first checking the option "Same as billing address" at checkout (PRO).
 * Fixed: Moved shortcode wrappers setup to later on the request lifecycle to avoid PHP warnings when some functions of WooCommerce are used early, usually related to cart data initialization.
 * Fixed: Changed the way `select2` fields are replaced when updating checkout fragments.
 
