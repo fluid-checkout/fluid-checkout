@@ -188,9 +188,7 @@
 		// Bail if substep element not valid
 		if ( ! substepElement ) { return; }
 
-		// Bail if substep is already expanded
-		if ( substepElement.classList.contains( _settings.isEditingClass ) ) { return; }
-
+		// Get substep collapsible elements
 		var substepFieldsElement = substepElement.querySelector( _settings.substepFieldsSelector );
 		var substepTextElement = substepElement.querySelector( _settings.substepTextSelector );
 
@@ -213,9 +211,14 @@
 		// Bail if substep element not valid
 		if ( ! substepElement ) { return; }
 
-		// Bail if substep is already collapsed
-		if ( ! substepElement.classList.contains( _settings.isEditingClass ) ) { return; }
+		// Maybe set to skip scrolling to the substep element
+		// if the substep is already collapsed.
+		var shouldScroll = true;
+		if ( ! substepElement.classList.contains( _settings.isEditingClass ) ) {
+			shouldScroll = false;
+		}
 
+		// Get substep collapsible elements
 		var substepFieldsElement = substepElement.querySelector( _settings.substepFieldsSelector );
 		var substepTextElement = substepElement.querySelector( _settings.substepTextSelector );
 
@@ -232,8 +235,10 @@
 			editbutton.focus();
 		}
 
-		// Change scroll position after collapsing substep
-		scrollTo( substepElement );
+		// Maybe change scroll position after collapsing substep
+		if ( shouldScroll ) {
+			scrollTo( substepElement );
+		}
 	}
 
 
