@@ -396,6 +396,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = 3.1.1 - 2024-01-05 =
 
+IMPORTANT: This update fixes issues introduced with version 3.1.0 which may cause the payment section to keep loading indefinitely or the completed steps to not close properly when advancing to next steps.
+
 * Fixed: Steps not closing to show review text when advancing to next step on multi-step mode.
 * Fixed: Support for copying shipping from billing when first checking the option "Same as billing address" at checkout (PRO).
 * Fixed: Moved shortcode wrappers setup to later on the request lifecycle to avoid PHP warnings when some functions of WooCommerce are used early, usually related to cart data initialization.
