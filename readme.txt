@@ -394,6 +394,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Default value for the checkbox "Same as shipping/billing address" based on the plugin settings when first accessing the checkout page.
+
 = 3.1.1 - 2024-01-05 =
 
 IMPORTANT: This update fixes issues introduced with version 3.1.0 which may cause the payment section to keep loading indefinitely or the completed steps to not close properly when advancing to next steps.
