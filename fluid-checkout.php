@@ -13,7 +13,7 @@ WC tested up to: 8.4.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
-Copyright (C) 2021-2023 Fluidweb OÜ
+Copyright (C) 2021-2024 Fluidweb OÜ
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
