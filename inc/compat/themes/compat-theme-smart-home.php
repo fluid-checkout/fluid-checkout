@@ -38,6 +38,9 @@ class FluidCheckout_ThemeCompat_SmartHome extends FluidCheckout {
 	 * @param   String  $template  Template file path.
 	 */
 	public function checkout_page_template( $template ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $template; }
+
 		// Bail if checkout page template is not enabled
 		if ( true !== apply_filters( 'fc_enable_checkout_page_template', true ) ) { return $template; }
 
@@ -61,6 +64,9 @@ class FluidCheckout_ThemeCompat_SmartHome extends FluidCheckout {
 	 * Locate template files from this plugin.
 	 */
 	public function locate_template_checkout_page_template( $template, $template_name, $template_path ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $template; }
+		
 		$_template = null;
 
 		// Set template path to default value when not provided
