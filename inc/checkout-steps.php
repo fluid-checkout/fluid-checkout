@@ -3556,33 +3556,29 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( $this->is_billing_address_before_shipping_address() ) { return false; }
 
 		// Get current field value
-		$current_field_value = $this->is_billing_same_as_shipping_checked() ? '1' : '0';
+		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping();
+		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked() ? 1 : 0;
 
 		// Output a hidden field when shipping country not allowed for billing, or shipping not needed
-		if ( apply_filters( 'fc_output_billing_same_as_shipping_as_hidden_field', false ) || ! $this->is_shipping_address_available_for_billing() ) : ?>
-			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo esc_attr( $current_field_value ); ?>">
-		<?php
+		if ( apply_filters( 'fc_output_billing_same_as_shipping_as_hidden_field', false ) || ! $this->is_shipping_address_available_for_billing() ) :
+			?>
+			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo esc_attr( $is_billing_same_as_shipping_checked ); ?>">
+			<?php
 		// Output the checkbox when shipping country is allowed for billing
 		else :
-			// Define field args
-			$field_key = 'billing_same_as_shipping';
-			$args = array(
-				'label'     => $this->get_option_label_billing_same_as_shipping(),
-				'type'      => 'checkbox',
-				'required'  => false,
-				'class'     => array( 'form-row-wide', 'fc-same-address-checkbox' ),
-				'value'     => '1',
-				'default'   => '1' == $current_field_value ? 1 : 0,
-			);
-
-			// Output the checkbox field
-			woocommerce_form_field( $field_key, $args, $current_field_value );
+			?>
+			<p class="form-row form-row-wide fc-same-address-checkbox fc-checkbox-field fc-no-validation-icon" id="billing_same_as_shipping_field">
+				<span class="woocommerce-input-wrapper">
+					<label class="checkbox"><input type="checkbox" class="input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $is_billing_same_as_shipping, true ); ?>> <span class="fc-checkbox-label-text"><?php echo esc_html( $this->get_option_label_billing_same_as_shipping() ); ?></span></label>
+				</span>
+			</p>
+			<?php
 		endif;
 
 		// Output the current value as a hidden field
 		// to be able to detect when the value changes
 		?>
-		<input type="hidden" name="billing_same_as_shipping_previous" id="billing_same_as_shipping_previous" value="<?php echo esc_attr( $current_field_value ); ?>">
+		<input type="hidden" name="billing_same_as_shipping_previous" id="billing_same_as_shipping_previous" value="<?php echo esc_attr( $is_billing_same_as_shipping_checked ); ?>">
 		<?php
 	}
 
@@ -3603,33 +3599,29 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! $this->is_billing_address_before_shipping_address() ) { return; }
 
 		// Get current field value
-		$current_field_value = $this->is_shipping_same_as_billing_checked() ? '1' : '0';
+		$is_shipping_same_as_billing = $this->is_shipping_same_as_billing();
+		$is_shipping_same_as_billing_checked = $this->is_shipping_same_as_billing_checked() ? 1 : 0;
 
 		// Output a hidden field when billing country not allowed for shipping
-		if ( apply_filters( 'fc_output_shipping_same_as_billing_as_hidden_field', false ) || ! $this->is_billing_address_available_for_shipping() ) : ?>
-			<input type="hidden" name="shipping_same_as_billing" id="shipping_same_as_billing" value="<?php echo esc_attr( $current_field_value ); ?>">
-		<?php
+		if ( apply_filters( 'fc_output_shipping_same_as_billing_as_hidden_field', false ) || ! $this->is_billing_address_available_for_shipping() ) :
+			?>
+			<input type="hidden" name="shipping_same_as_billing" id="shipping_same_as_billing" value="<?php echo esc_attr( $is_shipping_same_as_billing_checked ); ?>">
+			<?php
 		// Output the checkbox when billing country is allowed for shipping
 		else :
-			// Define field args
-			$field_key = 'shipping_same_as_billing';
-			$args = array(
-				'label'     => $this->get_option_label_shipping_same_as_billing(),
-				'type'      => 'checkbox',
-				'required'  => false,
-				'class'     => array( 'form-row-wide', 'fc-same-address-checkbox' ),
-				'value'     => '1',
-				'default'   => '1' == $current_field_value ? 1 : 0,
-			);
-
-			// Output the checkbox field
-			woocommerce_form_field( $field_key, $args, $current_field_value );
+			?>
+			<p class="form-row form-row-wide fc-same-address-checkbox fc-checkbox-field fc-no-validation-icon" id="shipping_same_as_billing_field">
+				<span class="woocommerce-input-wrapper">
+					<label class="checkbox"><input type="checkbox" class="input-checkbox" name="shipping_same_as_billing" id="shipping_same_as_billing" value="1" <?php checked( $is_shipping_same_as_billing, true ); ?>> <span class="fc-checkbox-label-text"><?php echo esc_html( $this->get_option_label_shipping_same_as_billing() ); ?></span></label>
+				</span>
+			</p>
+			<?php
 		endif;
 
 		// Output the current value as a hidden field
 		// to be able to detect when the value changes
 		?>
-		<input type="hidden" name="shipping_same_as_billing_previous" id="shipping_same_as_billing_previous" value="<?php echo esc_attr( $current_field_value ); ?>">
+		<input type="hidden" name="shipping_same_as_billing_previous" id="shipping_same_as_billing_previous" value="<?php echo esc_attr( $is_shipping_same_as_billing_checked ); ?>">
 		<?php
 	}
 
