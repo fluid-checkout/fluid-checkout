@@ -71,8 +71,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		remove_filter( 'woocommerce_shipping_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
 		remove_filter( 'woocommerce_checkout_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
 
-		// Select2 field class
+		// Extra field classes
 		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_select2_field_class' ), 100, 3 );
+		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_field_type_class' ), 100, 3 );
 
 		// Checkbox label wrapper
 		remove_filter( 'woocommerce_form_field_checkbox', array( $this, 'add_checkbox_label_text_wrapper' ), 100, 4 );
@@ -438,6 +439,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   string  $value  The field value.
 	 */
 	public function add_checkbox_label_text_wrapper( $field, $key, $args, $value ) {
+		// Bail if field is not a checkbox field
+		if ( ! is_array( $args ) || ! array_key_exists( 'type', $args ) || 'checkbox' !== $args[ 'type' ] ) { return $field; }
+
 		//
 		// COPIED FROM `woocommerce_form_field` function
 		//

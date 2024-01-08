@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.4.2
-Stable tag: 3.0.7
+Stable tag: 3.1.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -394,7 +394,20 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= 3.1.2 - 2024-01-06 =
+
+* Fixed: Default value for the checkbox "Same as shipping/billing address" based on the plugin settings when first accessing the checkout page.
+
+= 3.1.1 - 2024-01-05 =
+
+IMPORTANT: This update fixes issues introduced with version 3.1.0 which may cause the payment section to keep loading indefinitely or the completed steps to not close properly when advancing to next steps.
+
+* Fixed: Steps not closing to show review text when advancing to next step on multi-step mode.
+* Fixed: Support for copying shipping from billing when first checking the option "Same as billing address" at checkout (PRO).
+* Fixed: Moved shortcode wrappers setup to later on the request lifecycle to avoid PHP warnings when some functions of WooCommerce are used early, usually related to cart data initialization.
+* Fixed: Changed the way `select2` fields are replaced when updating checkout fragments.
+
+= 3.1.0 - 2024-01-03 =
 
 * Added: Support for new PRO options for which position to show the billing address section on the checkout page, including before shipping and forced to same as shipping address.
 * Added: Support for block themes using the Full Site Editor (FSE) mode.
