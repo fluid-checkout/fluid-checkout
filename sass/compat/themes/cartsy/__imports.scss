@@ -12,7 +12,7 @@ $_body-theme-selector:                 '.theme-cartsy' !default;
 // DEFINE CSS VARIABLES
 // ------------------------------------
 :root {
-	--fluidcheckout--field--height: #{ remsize( 4.5rem ) };
+	--fluidcheckout--field--height: #{ remsize( 4.4rem ) };
 	--fluidcheckout--field--border-radius: #{ remsize( 0.6rem ) }; // Needed to use theme variable to match theme styles
 }
 
