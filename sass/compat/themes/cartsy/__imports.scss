@@ -25,4 +25,5 @@ $_body-theme-selector:                 '.theme-cartsy' !default;
 // ------------------------------------
 @import
 	"checkout-shipping-methods",
-	"checkout-place-order";
+	"checkout-place-order",
+	"checkout-payment-methods";

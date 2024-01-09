@@ -1,5 +1,5 @@
 :root {
-  --fluidcheckout--field--height: 45px;
+  --fluidcheckout--field--height: 44px;
   --fluidcheckout--field--border-radius: 6px;
 }
 
@@ -18,4 +18,9 @@ body.theme-cartsy.woocommerce-checkout .fc-wrapper .fc-place-order .fc-place-ord
 
 body.theme-cartsy.woocommerce-checkout .fc-wrapper .fc-place-order .fc-place-order-button:hover {
   background-color: var(--colorPrimaryHover, #3a3a3a);
+}
+
+body.theme-cartsy #content .woocommerce .checkout.woocommerce-checkout .woocommerce-checkout-payment,
+body.theme-cartsy #content .woocommerce .checkout.woocommerce-checkout .woocommerce-checkout-payment ul.payment_methods {
+  border: 0;
 }
