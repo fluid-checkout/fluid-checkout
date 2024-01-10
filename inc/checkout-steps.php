@@ -2653,6 +2653,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_substep_text_formatted_address_text_line( $address_type ) {
 		// Field prefix
+		$substep_id = 'shipping' === $address_type ? 'shipping_address' : 'billing_address';
 		$field_key_prefix = $address_type . '_';
 
 		// Get field keys from checkout fields
@@ -2673,7 +2674,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$address_data[ $address_field_key ] = WC()->checkout->get_value( $field_key );
 		}
 
+		// Filter address data
 		$address_data = apply_filters( 'fc_' . $address_type . '_substep_text_address_data', $address_data );
+
+		// Bail if no address data
+		if ( empty( $address_data ) ) { return $this->get_no_substep_review_text_notice( $substep_id ); }
 
 		return WC()->countries->get_formatted_address( $address_data );
 	}
