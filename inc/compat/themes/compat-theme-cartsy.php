@@ -24,6 +24,10 @@ class FluidCheckout_ThemeCompat_Cartsy extends FluidCheckout {
 
 		// Checkout templates
 		$this->checkout_layout_hooks();
+
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 	}
 
 	/**
@@ -48,6 +52,22 @@ class FluidCheckout_ThemeCompat_Cartsy extends FluidCheckout {
 
 		// Prevent theme's page template from being replaced by FC checkout template
 		add_filter( 'fc_enable_checkout_page_template', '__return_false', 10 );
+	}
+
+
+
+	/**
+	 * Change the element used to position the progress bar and order summary when sticky.
+	 * 
+	 * @param  array  $attributes  The elements attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = '.cartsy-menu-area';
+
+		return $attributes;
 	}
 
 }
