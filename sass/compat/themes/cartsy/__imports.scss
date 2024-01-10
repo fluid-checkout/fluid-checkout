@@ -1,0 +1,29 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-cartsy' !default;
+
+
+
+
+
+// ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	--fluidcheckout--field--height: #{ remsize( 4.4rem ) };
+	--fluidcheckout--field--border-radius: #{ remsize( 0.6rem ) }; // Needed to use theme variable to match theme styles
+}
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"checkout-shipping-methods",
+	"checkout-place-order",
+	"checkout-payment-methods";
