@@ -34,8 +34,8 @@ class FluidCheckout_ThemeCompat_Cartsy extends FluidCheckout {
 	 * Add or remove very late hooks.
 	 */
 	public function very_late_hooks() {
-		// Bail if not on checkout page
-		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) { return; }
+		// Bail if not on checkout page.
+		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		// Bring back currency and decimals to cart item price values
 		$this->remove_filter_for_class( 'woocommerce_cart_product_price', array( 'Framework\App\WooCommerceLoad', 'cartsyCartProductPrice' ), 10 );
