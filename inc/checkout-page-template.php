@@ -87,7 +87,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 
 		// Replace checkout shortcode
 		remove_shortcode( $checkout_shortcode_tag );
-		add_shortcode( $checkout_shortcode_tag, array( $this, 'output_checkout_shortcode_wrapper' ), 10 );
+		add_shortcode( $checkout_shortcode_tag, array( $this, 'output_checkout_shortcode_wrapper' ) );
 	}
 
 	/**
