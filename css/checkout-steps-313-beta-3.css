@@ -908,6 +908,7 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
   font-weight: normal !important;
   cursor: pointer;
   text-align: left !important;
+  text-indent: 0 !important;
   line-height: 24px !important;
   transition: all 0.15s linear;
 }
@@ -1116,7 +1117,9 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   border-right: 0;
   background-color: var(--fluidcheckout--option-box--background-color, var(--fluidcheckout--color--white, #fff));
   font-weight: normal;
-  line-height: 24px;
+  text-align: left !important;
+  text-indent: 0 !important;
+  line-height: 24px !important;
   cursor: pointer;
   transition: all 0.15s linear;
 }

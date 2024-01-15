@@ -398,6 +398,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Fixed: Compatibility with plugin MailerLite. Fix multiple AJAX requests being triggered by the MailerLite plugin and move checkbox field to expected positions.
 * Fixed: Default value for the checkbox "Same as shipping/billing address" based on the plugin settings when first accessing the checkout page.
+* Fixed: Compatibility issues causing layout to break on the shipping method and payment methods options.
 
 = 3.1.1 - 2024-01-05 =
 
