@@ -35,6 +35,7 @@ class FluidCheckout_ThemeCompat_SmartHome extends FluidCheckout {
 		// Remove theme elements from checkout page
 		remove_action( 'woocommerce_checkout_before_customer_details', 'thb_checkout_before_customer_details', 5 );
 		remove_action( 'woocommerce_checkout_after_customer_details', 'thb_checkout_after_customer_details', 30 );
+		remove_action( 'woocommerce_checkout_after_order_review', 'thb_checkout_after_order_review', 30 );
 
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
