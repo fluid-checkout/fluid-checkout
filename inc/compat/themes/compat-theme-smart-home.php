@@ -35,6 +35,10 @@ class FluidCheckout_ThemeCompat_SmartHome extends FluidCheckout {
 		// Remove theme elements from checkout page
 		remove_action( 'woocommerce_checkout_before_customer_details', 'thb_checkout_before_customer_details', 5 );
 		remove_action( 'woocommerce_checkout_after_customer_details', 'thb_checkout_after_customer_details', 30 );
+
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 	}
 
 	/**
@@ -131,6 +135,22 @@ class FluidCheckout_ThemeCompat_SmartHome extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
 
 		return $class . ' row';
+	}
+
+
+
+	/**
+	 * Change the element used to position the progress bar and order summary when sticky.
+	 * 
+	 * @param  array  $attributes  The elements attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = '.thb-main-header';
+
+		return $attributes;
 	}
 
 }
