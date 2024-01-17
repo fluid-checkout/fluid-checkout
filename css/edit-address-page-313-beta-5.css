@@ -1,7 +1,7 @@
 body.has-fc-button-styles .woocommerce-address-fields button[type=submit] {
   min-height: var(--fluidcheckout--button--height, 44px) !important;
   height: var(--fluidcheckout--button--height, 44px) !important;
-  line-height: calc( var(--fluidcheckout--button--height, 44px) - ( var(--fluidcheckout--button--border-width, 1px) * 2 ) ) !important;
+  line-height: calc(var(--fluidcheckout--button--height, 44px) - var(--fluidcheckout--button--border-width, 1px) * 2) !important;
   padding: 0 20px !important;
   border: var(--fluidcheckout--button--border-style, solid) var(--fluidcheckout--button--border-width, 1px) transparent !important;
   border-radius: var(--fluidcheckout--button--border-radius, 0) !important;
@@ -311,13 +311,13 @@ div.woocommerce form .form-row span.select2-container {
 
 div.woocommerce form .form-row .select2-selection {
   height: auto;
-  min-height: calc( var(--fluidcheckout--field--height, 45.625px) - ( var(--fluidcheckout--field--border-width, 1px) * 2 ) );
+  min-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2);
   border-radius: var(--fluidcheckout--field--border-radius, 0);
   line-height: 0;
 }
 
 div.woocommerce form .form-row .select2-selection__rendered {
-  min-height: calc( var(--fluidcheckout--field--height, 45.625px) - ( var(--fluidcheckout--field--border-width, 1px) * 2 ) );
+  min-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2);
   border-radius: var(--fluidcheckout--field--border-radius, 0);
 }
 
@@ -326,8 +326,8 @@ div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
   top: 0;
   margin-top: 0;
   height: auto;
-  min-height: var(--fluidcheckout--select2--inner-component-height, calc( var(--fluidcheckout--field--height, 45.625px) - ( var(--fluidcheckout--field--border-width, 1px) * 2 ) ));
-  line-height: var(--fluidcheckout--select2--inner-component-height, calc( var(--fluidcheckout--field--height, 45.625px) - ( var(--fluidcheckout--field--border-width, 1px) * 2 ) ));
+  min-height: var(--fluidcheckout--select2--inner-component-height, calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2));
+  line-height: var(--fluidcheckout--select2--inner-component-height, calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2));
   transform: none;
 }
 
@@ -338,7 +338,7 @@ div.woocommerce form .form-row .select2-selection--single {
 div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   padding-top: 0;
   padding-bottom: 0;
-  line-height: calc( var(--fluidcheckout--field--height, 45.625px) - ( var(--fluidcheckout--field--border-width, 1px) * 2 ) );
+  line-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2);
 }
 
 div.woocommerce form .form-row .select2-selection--multiple {
@@ -347,26 +347,26 @@ div.woocommerce form .form-row .select2-selection--multiple {
 
 div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
   padding-bottom: var(--fluidcheckout--select2--inner-spacing, 5px);
-  min-height: calc( var(--fluidcheckout--field--height, 45.625px) - ( var(--fluidcheckout--field--border-width, 1px) * 2 ) - ( var(--fluidcheckout--select2--inner-spacing, 5px) * 2 ) );
-  line-height: calc( var(--fluidcheckout--field--height, 45.625px) - ( var(--fluidcheckout--field--border-width, 1px) * 2 ) - ( var(--fluidcheckout--select2--inner-spacing, 5px) * 2 ) );
+  min-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2 - var(--fluidcheckout--select2--inner-spacing, 5px) * 2);
+  line-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2 - var(--fluidcheckout--select2--inner-spacing, 5px) * 2);
   white-space: normal;
 }
 
 div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
   margin-top: var(--fluidcheckout--select2--inner-spacing, 5px);
-  line-height: var(--fluidcheckout--select2--inner-component-height, calc( var(--fluidcheckout--field--height, 45.625px) - ( var(--fluidcheckout--field--border-width, 1px) * 2 ) ));
+  line-height: var(--fluidcheckout--select2--inner-component-height, calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2));
   overflow: hidden;
 }
 
 div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
   margin-top: var(--fluidcheckout--select2--inner-spacing, 5px);
-  min-height: var(--fluidcheckout--select2--inner-component-height, calc( var(--fluidcheckout--field--height, 45.625px) - ( var(--fluidcheckout--field--border-width, 1px) * 2 ) ));
-  line-height: var(--fluidcheckout--select2--inner-component-height, calc( var(--fluidcheckout--field--height, 45.625px) - ( var(--fluidcheckout--field--border-width, 1px) * 2 ) ));
+  min-height: var(--fluidcheckout--select2--inner-component-height, calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2));
+  line-height: var(--fluidcheckout--select2--inner-component-height, calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2));
 }
 
 div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
   margin-top: 0;
-  height: calc( var(--fluidcheckout--field--height, 45.625px) - ( var(--fluidcheckout--field--border-width, 1px) * 2 ) - ( var(--fluidcheckout--select2--inner-spacing, 5px) * 2 ) );
+  height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2 - var(--fluidcheckout--select2--inner-spacing, 5px) * 2);
   min-height: auto;
 }
 
@@ -420,7 +420,7 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:foc
 
 @media (min-width: 750px) {
   div.woocommerce .form-row:not(.fc-expansible-form-section) + .fc-expansible-form-section.form-row.form-row-last .expansible-section__toggle-plus {
-    margin-top: calc(20px + ( var(--fluidcheckout--field--height, 45.625px) / 3 ));
+    margin-top: calc(20px + var(--fluidcheckout--field--height, 45.625px) / 3);
   }
 }
 
