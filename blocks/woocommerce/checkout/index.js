@@ -9,6 +9,7 @@ import { registerBlockType } from '@wordpress/blocks';
  * Internal dependencies
  */
 import json from './block.json';
+import icon from './icon.js';
 import edit from './edit';
 import save from './save';
 
@@ -20,6 +21,7 @@ const { name } = json;
 
 // Register the block
 registerBlockType( name, {
+	icon,
 	edit,
-	save, // Object shorthand property - same as writing: save: save,
+	save,
 } );
