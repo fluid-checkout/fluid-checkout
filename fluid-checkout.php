@@ -327,6 +327,7 @@ class FluidCheckout {
 		self::$features = array(
 			'FluidCheckout_DesignTemplates'                => array( 'file' => self::$directory_path . 'inc/design-templates.php' ),
 			'FluidCheckout_CheckoutPageTemplate'           => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php' ),
+			'FluidCheckout_CheckoutBlock'                  => array( 'file' => self::$directory_path . 'inc/checkout-block.php' ),
 			'FluidCheckout_FragmentsRefresh'               => array( 'file' => self::$directory_path . 'inc/fragments-refresh.php' ),
 			'FluidCheckout_Steps'                          => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
 			'FluidCheckout_CouponCodes'                    => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ),
