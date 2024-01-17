@@ -63,10 +63,6 @@ class FluidCheckout_CheckoutBlock extends FluidCheckout {
 	 * Replace checkout block.
 	 */
 	public function maybe_replace_checkout_block() {
-		// Bail on admin pages to allow editor to load the original block.
-		// TODO: Replace with Fluid Checkout block once it is added.
-		if ( is_admin() ) { return; }
-
 		// Bail if block functions are not available.
 		if ( ! function_exists( 'unregister_block_type' ) ) { return; }
 
@@ -86,7 +82,8 @@ class FluidCheckout_CheckoutBlock extends FluidCheckout {
 	 * Render block contents using the shortcode.
 	 */
 	public function render_checkout_block( $attributes = array(), $content = '', $block = null ) {
-		echo do_shortcode( '[woocommerce_checkout]' );
+		// Render the block using the shortcode-based checkout.
+		return function_exists( 'wc_current_theme_is_fse_theme' ) && wc_current_theme_is_fse_theme() ? do_shortcode( '[woocommerce_checkout]' ) : '[woocommerce_checkout]';
 	}
 
 }
