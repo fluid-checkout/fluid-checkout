@@ -6,14 +6,17 @@
   "scripts": {
     "version": "git pull && gulp update-ver-release && gulp build && git add -A",
     "postversion": "git push && git push --tags",
+    "start": "wp-scripts start --webpack-src-dir=blocks",
+    "build": "wp-scripts build --webpack-src-dir=blocks",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {},
   "author": "Fluidweb.co",
   "license": "GPL-3.0",
-  "copyright": "Copyright (c) 2021-2023, Fluidweb OÜ",
+  "copyright": "Copyright (c) 2021-2024, Fluidweb OÜ",
   "homepage": "https://fluidcheckout.com",
   "devDependencies": {
+    "@wordpress/scripts": "^27.0.0",
     "browser-sync": "^2.27.9",
     "del": "^5.1.0",
     "gulp": "^4.0.2",

@@ -1,7 +1,10 @@
 {
+	"defaultAction": "watch",
+
 	"watch": [
 		[ "./sass/**/*.scss", [ "build-css" ] ],
-		[ "./js-src/**/*.js", [ "build-js" ] ]
+		[ "./js-src/**/*.js", [ "build-js" ] ],
+		[ "./blocks/**/*.*", [ "npm-run-build" ] ]
 	],
 
 	"browserSyncWatch": [

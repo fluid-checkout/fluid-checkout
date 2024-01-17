@@ -927,9 +927,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function is_cart_page_or_fragment() {
 		global $wp_query;
-		$ajax_action = $wp_query->get( 'wc-ajax' );
+		$ajax_action = wc_clean( wp_unslash( $wp_query->get( 'wc-ajax' ) ) );
 
-		return is_cart() || 'fc_pro_update_cart_fragments' === $ajax_action || ( array_key_exists( 'wc-ajax', $_GET ) && 'fc_pro_update_cart_fragments' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) );
+		// Return `true` if any of the following conditions are met:
+		if ( is_cart() ) { return true; }
+		if ( 'fc_pro_update_cart_fragments' === $ajax_action ) { return true; }
+
+		// Filter to allow other plugins to add their own conditions
+		if ( true === apply_filters( 'fc_is_cart_page_or_fragment', false ) ) { return true; }
+
+		// Otherwise, return `false`
+		return false;
 	}
 
 
