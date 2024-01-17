@@ -400,8 +400,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = 3.1.2 - 2024-01-06 =
 
-* Improved: Compatibility with plugin MailerLite. Move checkbox field to expected positions on newer versions of MailerLite.
+* Bump tested up to WooCommerce 8.5.1
+* Improved: Compatibility with plugin Colissimo shipping methods for WooCommerce. Fix styles for the Colissimo Relay pickup button by setting the class `button` to it.
+* Fixed: Compatibility with plugin MailerLite. Fix multiple AJAX requests being triggered by the MailerLite plugin and move checkbox field to expected positions.
 * Fixed: Default value for the checkbox "Same as shipping/billing address" based on the plugin settings when first accessing the checkout page.
+* Fixed: Compatibility issues causing layout to break on the shipping method and payment methods options.
 
 = 3.1.1 - 2024-01-05 =
 

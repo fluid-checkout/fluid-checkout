@@ -21,6 +21,9 @@ class FluidCheckout_WooMailerLite extends FluidCheckout {
 	public function hooks() {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 	}
 
 	/**
@@ -73,6 +76,16 @@ class FluidCheckout_WooMailerLite extends FluidCheckout {
 
 		// Maybe remove field from billing address
 		remove_filter( 'woocommerce_checkout_fields', 'woo_ml_billing_checkout_fields', PHP_INT_MAX );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Scripts
+		wp_register_script( 'woo-ml-public-script', self::$directory_url . 'js/compat/plugins/woo-mailerlite/public' . self::$asset_version . '.js', array( 'jquery' ), NULL );
 	}
 
 
