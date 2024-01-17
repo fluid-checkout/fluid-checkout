@@ -394,9 +394,12 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= 3.1.2 - 2024-01-06 =
+= Unreleased =
 
 * Added: Compatibility with theme Smart Home.
+
+= 3.1.2 - 2024-01-06 =
+
 * Improved: Compatibility with plugin MailerLite. Move checkbox field to expected positions on newer versions of MailerLite.
 * Fixed: Default value for the checkbox "Same as shipping/billing address" based on the plugin settings when first accessing the checkout page.
 
