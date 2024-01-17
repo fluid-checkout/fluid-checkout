@@ -71,19 +71,7 @@ class FluidCheckout_CheckoutBlock extends FluidCheckout {
 		unregister_block_type( $block_name );
 
 		// Register block replacement.
-		register_block_type( $block_name, array(
-			'render_callback' => array( $this, 'render_checkout_block' ),
-		) );
-	}
-
-
-
-	/**
-	 * Render block contents using the shortcode.
-	 */
-	public function render_checkout_block( $attributes = array(), $content = '', $block = null ) {
-		// Render the block using the shortcode-based checkout.
-		return function_exists( 'wc_current_theme_is_fse_theme' ) && wc_current_theme_is_fse_theme() ? do_shortcode( '[woocommerce_checkout]' ) : '[woocommerce_checkout]';
+		register_block_type( self::$directory_path . 'build/woocommerce/checkout' );
 	}
 
 }
