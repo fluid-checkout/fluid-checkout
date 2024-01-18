@@ -81,8 +81,14 @@ class FluidCheckout_AdminNotices_Divi_CheckoutLayoutBeingUsed extends FluidCheck
 		// Bail if checkout page does not have any of the shortcodes
 		if ( ! $checkout_page_has_divi_builder_shortcodes ) { return $notices; }
 
-		// Get checkout page edit URL
-		$checkout_page_edit_url = get_edit_post_link( $checkout_page_id );
+		// Get woocommerce checkout page URL
+		$checkout_page_url = wc_get_checkout_url();
+
+		// Get checkout page edit URL for the Divi Builder editor
+		$checkout_page_edit_url = add_query_arg( array(
+			'et_fb' => 1,
+			'PageSpeed' => 'off',
+		), $checkout_page_url );
 
 		$notices[] = array(
 			'name'           => 'divi_checkout_layout_feature_enabled',
