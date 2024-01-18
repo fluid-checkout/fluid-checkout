@@ -107,7 +107,7 @@ class FluidCheckout_ThemeCompat_SmartHome extends FluidCheckout {
 					trailingslashit( $template_path ) . $template_name,
 					$template_name,
 				) );
-	
+
 				// Check if files exist before changing template
 				if ( file_exists( $_template_override ) ) {
 					$_template = $_template_override;
