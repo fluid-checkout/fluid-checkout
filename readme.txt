@@ -394,6 +394,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Admin notice for when using the Divi Builder checkout layout, which is not compatible with Fluid Checkout.
+
 = 3.1.2 - 2024-01-06 =
 
 * Bump tested up to WooCommerce 8.5.1
