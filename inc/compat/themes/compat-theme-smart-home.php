@@ -23,7 +23,7 @@ class FluidCheckout_ThemeCompat_SmartHome extends FluidCheckout {
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
 		// Checkout page template
-		add_filter( 'template_include', array( $this, 'checkout_page_template' ), 110 );
+		add_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
 
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template_checkout_page_template' ), 100, 3 );
