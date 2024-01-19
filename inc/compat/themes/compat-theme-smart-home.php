@@ -46,10 +46,21 @@ class FluidCheckout_ThemeCompat_SmartHome extends FluidCheckout {
 	 * Add or remove very late hooks.
 	 */
 	public function very_late_hooks() {
-		if ( FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) {
-			// Prevent theme from replacing `select2` field assets on checkout page
-			remove_action( 'wp_enqueue_scripts', 'thb_woocommerce_scripts_styles', 10001 );
-		}
+		// Checkout page hooks
+		$this->checkout_hooks();
+	}
+
+
+
+	/*
+	* Add or remove checkout page hooks.
+	*/
+	public function checkout_hooks() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Prevent theme from replacing `select2` field assets
+		remove_action( 'wp_enqueue_scripts', 'thb_woocommerce_scripts_styles', 10001 );
 	}
 
 
