@@ -93,7 +93,7 @@ class FluidCheckout_AdminNotices_Divi_CheckoutLayoutBeingUsed extends FluidCheck
 		$notices[] = array(
 			'name'           => 'divi_checkout_layout_feature_enabled',
 			'title'          => __( 'Fluid Checkout is not compatible with the Divi Builder checkout layout', 'fluid-checkout' ),
-			'description'    => __( 'Fluid Checkout needs the classic WooCommerce shortcode-based checkout form to work. When using the Divi Builder to customize the look and feel of the checkout page, the classic shortcodes are replaced with custom widgets from the Divi Builder for each part of the checkout page. These custom widgets are not compatible with Fluid Checkout. <br>Please edit your checkout page replacing the Divi Builder widgets with the a text widget containing the shortcode <code>[woocommerce_checkout]</code>.', 'fluid-checkout' ),
+			'description'    => __( '<p>Fluid Checkout needs the classic WooCommerce shortcode-based checkout form to work. When using the Divi Builder to customize the look and feel of the checkout page, the classic shortcodes are replaced with custom widgets from the Divi Builder for each part of the checkout page. These custom widgets are not compatible with Fluid Checkout.</p><p>Please edit your checkout page replacing the Divi Builder widgets with the a text widget containing the shortcode <code>[woocommerce_checkout]</code>.</p>', 'fluid-checkout' ),
 			'dismissable'    => false,
 			'error'          => true,
 			'actions'        => array(
