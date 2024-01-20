@@ -68,7 +68,11 @@ class FluidCheckout_CheckoutBlock extends FluidCheckout {
 
 		// Remove default checkout block.
 		$block_name = 'woocommerce/checkout';
-		unregister_block_type( $block_name );
+
+		// Maybe deregister block.
+		if ( WP_Block_Type_Registry::get_instance()->is_registered( $block_name ) ) {
+			unregister_block_type( $block_name );
+		}
 
 		// Register block replacement.
 		register_block_type( self::$directory_path . 'build/woocommerce/checkout' );
