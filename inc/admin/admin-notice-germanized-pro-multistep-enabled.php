@@ -25,10 +25,9 @@ class FluidCheckout_AdminNotices_GermanizedPRO_MultistepFeatureEnabled extends F
 
 
 	/**
-	 * Check if plugin Germanized is activated on a single install or network wide.
-	 * Otherwise, will display an admin notice.
+	 * Check if component is activated on a single install or network wide.
 	 */
-	public function is_germanized_pro_activated() {
+	public function is_component_activated() {
 		$plugin_path_name = 'woocommerce-germanized-pro/woocommerce-germanized-pro.php';
 
 		// Get plugin file path
@@ -51,8 +50,8 @@ class FluidCheckout_AdminNotices_GermanizedPRO_MultistepFeatureEnabled extends F
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( 'manage_options' ) ) { return $notices; }
 
-		// Bail if Germanized PRO is not activated
-		if ( ! $this->is_germanized_pro_activated() ) { return $notices; }
+		// Bail if component is not activated
+		if ( ! $this->is_component_activated() ) { return $notices; }
 
 		// Bail if multistep feature is not enabled
 		// Need to get option directly as the Lite plugin might not be activated at this point
