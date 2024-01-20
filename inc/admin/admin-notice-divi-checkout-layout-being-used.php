@@ -98,7 +98,7 @@ class FluidCheckout_AdminNotices_Divi_CheckoutLayoutBeingUsed extends FluidCheck
 			'error'          => true,
 			'actions'        => array(
 				sprintf( '<a href="%s" class="button button-primary">%s</a>', $checkout_page_edit_url, __( 'Edit the checkout page', 'fluid-checkout' ) ),
-				sprintf( '<a href="%s" class="button button-secondary">%s</a>', 'https://fluidcheckout.com/docs/compat-theme-divi/', __( 'Read the documentation.', 'fluid-checkout' ) ),
+				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', 'https://fluidcheckout.com/docs/compat-theme-divi/', __( 'Read the documentation.', 'fluid-checkout' ) ),
 			),
 		);
 
