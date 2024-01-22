@@ -394,13 +394,19 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= 3.1.2 - 2024-01-06 =
+= Unreleased =
 
 * Bump tested up to WooCommerce 8.5.1
+* Added: Automatically replace the WooCommerce Checkout block with the shortcode-based form.
+* Added: Admin notice for when using the Divi Builder checkout layout, which is not compatible with Fluid Checkout.
+* Added: Compatibility with theme Smart Home.
 * Improved: Compatibility with plugin Colissimo shipping methods for WooCommerce. Fix styles for the Colissimo Relay pickup button by setting the class `button` to it.
 * Fixed: Compatibility with plugin MailerLite. Fix multiple AJAX requests being triggered by the MailerLite plugin and move checkbox field to expected positions.
+* Fixed: Compatibility issues causing layout to break on the shipping method and payment methods options in some cases.
+
+= 3.1.2 - 2024-01-06 =
+
 * Fixed: Default value for the checkbox "Same as shipping/billing address" based on the plugin settings when first accessing the checkout page.
-* Fixed: Compatibility issues causing layout to break on the shipping method and payment methods options.
 
 = 3.1.1 - 2024-01-05 =
 
