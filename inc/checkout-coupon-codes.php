@@ -182,7 +182,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		FluidCheckout_Steps::instance()->output_substep_fields_start_tag( $step_id, $substep_id, false );
 		$this->output_substep_coupon_codes_fields();
-		FluidCheckout_Steps::instance()->output_substep_fields_end_tag();
+		FluidCheckout_Steps::instance()->output_substep_fields_end_tag( $step_id, $substep_id, false );
 
 		FluidCheckout_Steps::instance()->output_substep_end_tag( $step_id, $substep_id, $substep_title, false );
 	}

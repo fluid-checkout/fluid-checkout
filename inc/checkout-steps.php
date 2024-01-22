@@ -1827,7 +1827,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		<section <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
 			<?php
 			echo $this->get_substep_title_html( $substep_id, $substep_title ); // WPCS: XSS ok.
-			do_action( "fc_before_substep_{$substep_id}" , $step_id, $substep_id );
+			do_action( "fc_before_substep_{$substep_id}", $step_id, $substep_id );
 	}
 
 	/**
@@ -1838,7 +1838,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $substep_title  Title of the substep.
 	 */
 	public function output_substep_end_tag( $step_id, $substep_id, $substep_title, $output_edit_buttons = true ) {
-			do_action( "fc_after_substep_{$substep_id}" , $step_id, $substep_id, $output_edit_buttons );
+			do_action( "fc_after_substep_{$substep_id}", $step_id, $substep_id, $output_edit_buttons );
 			?>
 
 			<?php if ( $output_edit_buttons && $this->is_checkout_layout_multistep() ) : ?>
@@ -1891,12 +1891,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		<div <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
 			<div <?php echo $substep_inner_attributes_str; // WPCS: XSS ok. ?>>
 			<?php
+			do_action( "fc_before_substep_fields_{$substep_id}", $step_id, $substep_id, $collapsible );
 	}
 
 	/**
 	 * Output checkout substep end tag.
 	 */
-	public function output_substep_fields_end_tag() {
+	public function output_substep_fields_end_tag( $step_id = null, $substep_id = null, $collapsible = true ) {
+			do_action( "fc_after_substep_fields_{$substep_id}", $step_id, $substep_id, $collapsible );
 			?>
 			</div>
 		</div>
@@ -1936,8 +1938,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Output checkout substep end tag.
+	 * 
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
+	 * @param   string  $substep_id  Id of the substep.
 	 */
-	public function output_substep_text_end_tag() {
+	public function output_substep_text_end_tag( $step_id = null, $substep_id = null ) {
 			?>
 			</div>
 		</div>
@@ -2112,13 +2117,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_step_contact_fields();
-		$this->output_substep_fields_end_tag();
+		$this->output_substep_fields_end_tag( $step_id, $substep_id );
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
 			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_contact();
-			$this->output_substep_text_end_tag();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
 		}
 
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
@@ -2355,13 +2360,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_shipping_address_fields();
-		$this->output_substep_fields_end_tag();
+		$this->output_substep_fields_end_tag( $step_id, $substep_id );
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
 			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_shipping_address();
-			$this->output_substep_text_end_tag();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
 		}
 
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
@@ -2378,14 +2383,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
-		$this->output_shipping_methods_available();
+		$this->output_shipping_methods_available( $step_id, $substep_id );
 		$this->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
 			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_shipping_method();
-			$this->output_substep_text_end_tag();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
 		}
 
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
@@ -2403,13 +2408,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_additional_fields();
-		$this->output_substep_fields_end_tag();
+		$this->output_substep_fields_end_tag( $step_id, $substep_id );
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
 			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_order_notes();
-			$this->output_substep_text_end_tag();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
 		}
 
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
@@ -3380,13 +3385,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_billing_address_fields();
-		$this->output_substep_fields_end_tag();
+		$this->output_substep_fields_end_tag( $step_id, $substep_id );
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
 			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_billing_address();
-			$this->output_substep_text_end_tag();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
 		}
 
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
@@ -4576,13 +4581,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_payment_fields();
-		$this->output_substep_fields_end_tag();
+		$this->output_substep_fields_end_tag( $step_id, $substep_id );
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
 			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_payment_method();
-			$this->output_substep_text_end_tag();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
 		}
 
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, false );

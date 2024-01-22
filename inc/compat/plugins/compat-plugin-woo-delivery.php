@@ -134,7 +134,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 		FluidCheckout_Steps::instance()->output_substep_fields_start_tag( $step_id, $substep_id );
 		$woodelivery_public->coderockz_woo_delivery_add_custom_field();
-		FluidCheckout_Steps::instance()->output_substep_fields_end_tag();
+		FluidCheckout_Steps::instance()->output_substep_fields_end_tag( $step_id, $substep_id );
 
 		// Only output substep text format for multi-step checkout layout
 		if ( FluidCheckout_Steps::instance()->is_checkout_layout_multistep() ) {
