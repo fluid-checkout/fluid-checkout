@@ -112,7 +112,7 @@
 		// Bail if message is empty
 		if ( ! message || message.length == 0 ) { return; }
 
-		var inputWrapper = field.closest( _settings.inputWrapperSelector );
+		var inputWrapper = field.closest( _settings.inputWrapperSelector ) || formRow;
 		var referenceNode = inputWrapper.querySelector( _settings.referenceNodeSelector );
 
 		// Change reference field for select2
