@@ -405,6 +405,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Added actions `fc_before_substep_fields_<substep_id>` and `fc_after_substep_fields_<substep_id>` to allow developers to output content to the substep fields section at those positions.
 * Fixed: Compatibility with plugin MailerLite. Fix multiple AJAX requests being triggered by the MailerLite plugin and move checkbox field to expected positions.
 * Fixed: Compatibility issues causing layout to break on the shipping method and payment methods options in some cases.
+* Fixed: Shipping method inline validation not being triggered when there are no shipping methods available.
 
 = 3.1.2 - 2024-01-06 =
 

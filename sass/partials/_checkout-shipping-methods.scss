@@ -4,7 +4,7 @@
 // CHECKOUT SHIPPING METHODS
 // ------------------------------------
 
-.woocommerce .fc-shipping-method__no-shipping-methods {
+.woocommerce .fc-shipping-method__no-shipping-methods .shipping-method__options {
 	border: $option-box-border;
 	border-radius: $option-box-border-radius;
 	border-color: $error-color;
