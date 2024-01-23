@@ -399,6 +399,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Bump tested up to WooCommerce 8.5.1
 * Added: Automatically replace the WooCommerce Checkout block with the shortcode-based form.
 * Added: Admin notice for when using the Divi Builder checkout layout, which is not compatible with Fluid Checkout.
+* Added: Compatibility with theme Cartsy.
 * Added: Compatibility with theme Smart Home.
 * Added: Compatibility with plugin Shipping Zones by Drawing for WooCommerce.
 * Added: Compatibility with plugin Shipping Zones by Drawing Premium for WooCommerce.
@@ -428,7 +429,6 @@ IMPORTANT: This update fixes issues introduced with version 3.1.0 which may caus
 * Added: Support for block themes using the Full Site Editor (FSE) mode.
 * Added: Compatibility with plugin WooCommerce NL Postcode Checker by WP Overnight.
 * Added: Compatibility with theme BuddyBoss.
-* Added: Compatibility with theme Cartsy.
 * Improved: Change the element used for checkout substeps from `div` to `section` for better semantics and to set correct rounded borders when needed.
 * Fixed: Check whether JS settings object is available before trying to use it in the `address-i18n` script.
 * Fixed: Do not ask user before leaving the page if a redirect is needed after a successful payment is taken with some payment gateways.
