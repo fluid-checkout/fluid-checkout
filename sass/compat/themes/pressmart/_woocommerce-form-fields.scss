@@ -1,0 +1,7 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row label.checkbox {
+	line-height: 1.5; // Needed to increase line height to accommodate for themes pseudo element
+}
