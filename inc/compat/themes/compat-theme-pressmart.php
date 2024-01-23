@@ -49,6 +49,42 @@ class FluidCheckout_ThemeCompat_PressMart extends FluidCheckout {
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'maybe_change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'maybe_change_sticky_elements_relative_header' ), 20 );
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function maybe_change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		// Bail if required functions are not available
+		if ( ! function_exists( 'pressmart_get_option' ) ) { return $attributes; }
+
+		// Get sticky header setting
+		$header_is_sticky = pressmart_get_option( 'header-sticky', 0 );
+
+		// Bail if option is not enabled on the plugin
+		if ( ! $header_is_sticky ) { return $attributes; }
+
+		// Get sticky header class ending
+		$header_selector_part = pressmart_get_option( 'header-sticky-part', 'main' );
+
+		// Append class ending to the static header class as per theme's requirements
+		$header_selector = '.header-' . $header_selector_part;
+
+		// Change the relative ID
+		$attributes['data-sticky-relative-to'] = $header_selector;
+
+		return $attributes;
 	}
 
 
