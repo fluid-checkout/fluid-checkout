@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-29 12:58+0000\n"
-"PO-Revision-Date: 2023-12-29 23:44+0000\n"
+"PO-Revision-Date: 2024-01-23 11:46+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -21,6 +21,12 @@ msgstr "\"Toevoegen\" link knop"
 #: inc/admin/admin.php:167
 msgid "(experimental)"
 msgstr "(experimenteel)"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+#, php-format
+msgid "(originally \"%s\")"
+msgstr "(oorspronkelijk \"%s\")"
 
 #: inc/checkout-validation.php:315
 #: templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5
@@ -76,6 +82,25 @@ msgstr ""
 "<a target=\"_blank\" href=\"%s\">Upgrade naar PRO</a> om meer opties vrij te "
 "spelen."
 
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:96
+msgid ""
+"<p>Fluid Checkout needs the classic WooCommerce shortcode-based checkout "
+"form to work. When using the Divi Builder to customize the look and feel of "
+"the checkout page, the classic shortcodes are replaced with custom widgets "
+"from the Divi Builder for each part of the checkout page. These custom "
+"widgets are not compatible with Fluid Checkout.</p><p>Please edit your "
+"checkout page replacing the Divi Builder widgets with the a text widget "
+"containing the shortcode <code>[woocommerce_checkout]</code>.</p>"
+msgstr ""
+"<p>Fluid Checkout heeft het klassieke, op WooCommerce shortcodes gebaseerde "
+"afrekenformulier nodig om te werken. Als je de Divi Builder gebruikt om de "
+"look en feel van de afrekenpagina aan te passen, worden de klassieke "
+"shortcodes vervangen door aangepaste widgets van de Divi Builder voor elk "
+"onderdeel van de afrekenpagina. Deze aangepaste widgets zijn niet compatibel "
+"met Fluid Checkout.</p><p>Wijzig je afrekenpagina en vervang de Divi Builder-"
+"widgets door een tekstwidget met de shortcode <code>[woocommerce_checkout]"
+"</code>.</p>"
+
 #: inc/compat/plugins/elementor-pro/widgets/woocommerce/checkout.php:70
 msgid ""
 "<p>This widget has been replaced by Fluid Checkout. </p><p>When using Fluid "
@@ -88,7 +113,7 @@ msgstr ""
 "<code>[woocommerce_checkout]</code> gebruiken om goed te werken.</p><p>Voor "
 "meer informatie kun je terecht in de Fluid Checkout documentatie.</p>"
 
-#: fluid-checkout.php:551
+#: fluid-checkout.php:553
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -110,7 +135,7 @@ msgstr "Account koppelen / gebruiker koppelen"
 msgid "Action link on the order summary at checkout."
 msgstr "Actielink op het besteloverzicht bij het afrekenen."
 
-#: fluid-checkout.php:547
+#: fluid-checkout.php:549
 #, php-format
 msgid "Activate %s"
 msgstr "%s activeren"
@@ -157,7 +182,7 @@ msgstr "Widgetgebieden toevoegen aan de bedankpagina"
 msgid "Add-ons"
 msgstr "Toevoegingen"
 
-#: inc/checkout-steps.php:2393
+#: inc/checkout-steps.php:2406
 msgid "Additional notes"
 msgstr "Aanvullende opmerkingen"
 
@@ -181,6 +206,10 @@ msgstr ""
 #: inc/admin/admin-settings-order-received.php:159
 msgid "After order sections"
 msgstr "Na bestelsecties"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+msgid "After Shipping Address"
+msgstr "Na verzendadres"
 
 #: inc/admin/admin-settings-checkout.php:498
 msgid "After shipping address"
@@ -280,11 +309,11 @@ msgstr "Heb je al een account?"
 msgid "Always show"
 msgstr "Altijd laten zien"
 
-#: inc/checkout-steps.php:2165
+#: inc/checkout-steps.php:2178
 msgid "An account will be created with the information provided."
 msgstr "Er wordt een account aangemaakt met de verstrekte informatie."
 
-#: inc/checkout-fields.php:168
+#: inc/checkout-fields.php:169
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Appartement, unit, gebouw, verdieping, enz."
 
@@ -331,6 +360,10 @@ msgid ""
 msgstr ""
 "Voorkom leveringsvertragingen en ontevreden klanten. Verzamel de <strong>"
 "correcte adresgegevens</strong> vanaf de eerste keer dat ze bij je kopen."
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87
+msgid "Before Shipping Address"
+msgstr "Voor verzendadres"
 
 #: inc/admin/admin-settings-checkout.php:497
 msgid "Before shipping address"
@@ -385,7 +418,7 @@ msgstr "Factuuradres"
 msgid "Billing phone"
 msgstr "Facturering telefoon"
 
-#: inc/checkout-steps.php:3363
+#: inc/checkout-steps.php:3383
 msgid "Billing to"
 msgstr "Facturering aan"
 
@@ -453,7 +486,7 @@ msgid "Change visibility for the shipping company field on the checkout form."
 msgstr ""
 "Wijzig de zichtbaarheid van het veld Verzendbedrijf op het afrekenformulier."
 
-#: inc/checkout-steps.php:1837
+#: inc/checkout-steps.php:1845
 #, php-format
 msgid "Change: %s"
 msgstr "Wijzigingen: %s"
@@ -529,32 +562,32 @@ msgstr "Voortgang afrekenen"
 msgid "Checkout Sidebar"
 msgstr "Afrekenen zijbalk"
 
-#: inc/checkout-steps.php:1479
+#: inc/checkout-steps.php:1487
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Facturering"
 
-#: inc/checkout-steps.php:1458
+#: inc/checkout-steps.php:1466
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Contact"
 
-#: inc/checkout-steps.php:1488
+#: inc/checkout-steps.php:1496
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Betaling"
 
-#: inc/checkout-steps.php:1467
+#: inc/checkout-steps.php:1475
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Verzending"
 
-#: inc/checkout-steps.php:1837
+#: inc/checkout-steps.php:1845
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Wijzigen"
 
-#: inc/checkout-steps.php:1838
+#: inc/checkout-steps.php:1846
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Wijzigingen opslaan"
@@ -922,7 +955,7 @@ msgstr "\"Adresregel 2\"-velden niet achter een koppelingsknop verbergen"
 msgid "Don't show this again"
 msgstr "Dit niet meer weergeven"
 
-#: inc/checkout-steps.php:4848
+#: inc/checkout-steps.php:4865
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 #| msgid "Edit Cart"
 msgid "Edit cart"
@@ -935,6 +968,10 @@ msgstr "Inhoud winkelwagen bewerken op afrekenpagina"
 #: inc/admin/admin-settings-checkout.php:270
 msgid "Edit cart link"
 msgstr "Winkelwagenkoppeling bewerken"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:100
+msgid "Edit the checkout page"
+msgstr "De afrekenpagina bewerken"
 
 #: inc/admin/admin-settings-cart.php:79
 msgid "Enable cart page optimizations"
@@ -1041,6 +1078,10 @@ msgstr "Fluid Checkout-database succesvol bijgewerkt"
 msgid "Fluid Checkout for WooCommerce - Lite"
 msgstr "Fluid Checkout voor WooCommerce - Lite"
 
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:95
+msgid "Fluid Checkout is not compatible with the Divi Builder checkout layout"
+msgstr "Fluid Checkout is niet compatibel met de Divi Builder afrekenlay-out"
+
 #: inc/admin/admin-setting-type-fc-addons.php:48
 #: inc/admin/admin-setting-type-fc-addons.php:50
 #: inc/admin/admin-setting-type-fc-addons.php:88
@@ -1083,7 +1124,7 @@ msgstr ""
 "secties. Kan ook van toepassing zijn op andere pagina's, zoals de pagina's "
 "Winkelwagen, Ontvangen bestelling en Bestelling weergeven."
 
-#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
 msgid ""
 "Germanized PRO multistep checkout feature needs to be disabled when using "
 "Fluid Checkout"
@@ -1120,11 +1161,11 @@ msgstr "Cadeauberichten en pakbonnen"
 msgid "Gift options"
 msgstr "Cadeau-opties"
 
-#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:68
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:67
 msgid "Go to Germanized settings"
 msgstr "Ga naar Duitse instellingen"
 
-#: fluid-checkout.php:543
+#: fluid-checkout.php:545
 msgid "Go to Plugin Search"
 msgstr "Ga naar Plugin zoeken"
 
@@ -1441,7 +1482,7 @@ msgstr "Meerstappen"
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Meerdere opgeslagen adressen voor verzending en facturering."
 
-#: inc/checkout-steps.php:2102
+#: inc/checkout-steps.php:2115
 msgid "My contact"
 msgstr "Mijn contact"
 
@@ -1470,7 +1511,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2883
+#: inc/checkout-steps.php:2901
 msgid "Not selected yet."
 msgstr "Nog niet geselecteerd."
 
@@ -1559,7 +1600,7 @@ msgstr "Downloads bestellen"
 msgid "Order notes"
 msgstr "Notities bij bestelling"
 
-#: inc/checkout-fields.php:113
+#: inc/checkout-fields.php:114
 msgid "Order number and receipt will be sent to this email address."
 msgstr "Bestelnummer en ontvangstbewijs worden naar dit e-mailadres verzonden."
 
@@ -1571,7 +1612,7 @@ msgstr "Voortgang bestelling"
 msgid "Order status"
 msgstr "Bestelstatus"
 
-#: inc/checkout-steps.php:4783 inc/admin/admin-settings-cart.php:131
+#: inc/checkout-steps.php:4800 inc/admin/admin-settings-cart.php:131
 #: inc/admin/admin-settings-order-received.php:177
 #: inc/admin/admin-settings-checkout.php:238
 msgid "Order summary"
@@ -1596,7 +1637,7 @@ msgstr "Achtergrondkleur van pagina"
 msgid "Parcel terminal"
 msgstr "Pakketterminal"
 
-#: inc/checkout-steps.php:4562
+#: inc/checkout-steps.php:4579
 msgid "Payment method"
 msgstr "Betaalmethode"
 
@@ -1621,7 +1662,7 @@ msgid "Place order"
 msgstr "Bestelling plaatsen"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1344
+#: inc/checkout-steps.php:1352
 #, php-format
 msgid "Proceed to %s"
 msgstr "Doorgaan naar %s"
@@ -1646,6 +1687,7 @@ msgstr ""
 msgid "Rate the plugin"
 msgstr "Geef de plugin een waardering"
 
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:101
 #: inc/admin/admin.php:174
 msgid "Read the documentation."
 msgstr "Lees de documentatie."
@@ -1706,11 +1748,11 @@ msgstr ""
 msgid "Required"
 msgstr "Verplicht"
 
-#: inc/checkout-steps.php:3593
+#: inc/checkout-steps.php:3611
 msgid "Same as billing address"
 msgstr "Zelfde als factuuradres"
 
-#: inc/checkout-steps.php:3548
+#: inc/checkout-steps.php:3568
 msgid "Same as shipping address"
 msgstr "Hetzelfde als verzendadres"
 
@@ -1831,7 +1873,7 @@ msgstr "Verzendadres"
 msgid "Shipping company"
 msgstr "Scheepvaartmaatschappij"
 
-#: inc/checkout-steps.php:2369
+#: inc/checkout-steps.php:2382
 msgid "Shipping method"
 msgstr "Verzendmethode"
 
@@ -1844,7 +1886,7 @@ msgstr "Verzendmethoden"
 msgid "Shipping phone"
 msgstr "Telefoonnummer voor verzending"
 
-#: inc/checkout-steps.php:2345
+#: inc/checkout-steps.php:2358
 msgid "Shipping to"
 msgstr "Verzenden naar"
 
@@ -1904,26 +1946,26 @@ msgid "Split"
 msgstr "Gesplitst"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1600
+#: inc/checkout-steps.php:1608
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Stap %1$s van %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2547
+#: inc/checkout-steps.php:2560
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2552
+#: inc/checkout-steps.php:2565
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:1945
+#: inc/checkout-steps.php:1958
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Geen."
@@ -2201,7 +2243,7 @@ msgstr ""
 "onafhankelijk van de weergavelocatie die is gedefinieerd in de instellingen "
 "van de Sendinblue-plugin."
 
-#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:64
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
 msgid ""
 "When using Fluid Checkout, the multistep feature from the Germanized PRO "
 "plugin becomes unnecessary and can cause <strong>critical errors while "
@@ -2213,7 +2255,7 @@ msgstr ""
 "tijdens het verwerken van nieuwe bestellingen</strong>. Schakel de Duitse "
 "PRO meestappen afrekenfunctie uit in de plugin-instellingen."
 
-#: fluid-checkout.php:540
+#: fluid-checkout.php:542
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
