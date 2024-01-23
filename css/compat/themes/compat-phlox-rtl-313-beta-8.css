@@ -1,0 +1,32 @@
+:root {
+  --fluidcheckout--field--height: 55.2px;
+  --fluidcheckout--validation-check--horizontal-spacing--password: 32px;
+}
+
+body.theme-phlox .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+  line-height: 1.4;
+}
+
+body.theme-phlox .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label .payment-method__label-text {
+  line-height: 1.4;
+}
+
+body.theme-phlox div.woocommerce form .form-row textarea,
+body.theme-phlox div.woocommerce form .form-row select,
+body.theme-phlox div.woocommerce form .form-row input[type=email],
+body.theme-phlox div.woocommerce form .form-row input[type=number],
+body.theme-phlox div.woocommerce form .form-row input[type=date],
+body.theme-phlox div.woocommerce form .form-row input[type=search],
+body.theme-phlox div.woocommerce form .form-row input[type=text],
+body.theme-phlox div.woocommerce form .form-row input[type=tel],
+body.theme-phlox div.woocommerce form .form-row input[type=url],
+body.theme-phlox div.woocommerce form .form-row input[type=password],
+body.theme-phlox div.woocommerce form .form-row input[type=checkbox],
+body.theme-phlox div.woocommerce form .form-row input[type=radio],
+body.theme-phlox div.woocommerce form .form-row .select2-selection {
+  max-width: none;
+}
+
+body.theme-phlox .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+  padding-right: 15px;
+}
