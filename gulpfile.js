@@ -14,6 +14,7 @@ var browserSync = require('browser-sync').create();
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var del = require('del');
+var exec = require('child_process').exec;
 
 
 
@@ -403,9 +404,27 @@ gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
 
 
 // Run:
+// gulp npm-run-build
+// Run the command `npm run build` to build the project assets for WordPress blocks.
+gulp.task( 'npm-run-build', gulp.series( function( done ) {
+	exec('npm run build', function (err, stdout, stderr) {
+		console.log( stdout );
+		console.log( stderr );
+		if ( err ) {
+			// If an error occurred, make the Gulp task fail
+			done( err );
+		}
+	});
+
+	done();
+} ) );
+
+
+
+// Run:
 // gulp build
 // Build css and js assets
-gulp.task( 'build', gulp.series( gulp.parallel( 'build-js', 'build-css' ) ) );
+gulp.task( 'build', gulp.series( gulp.parallel( 'build-js', 'build-css', 'npm-run-build' ) ) );
 
 
 
@@ -471,4 +490,4 @@ gulp.task( 'watch-reload', gulp.series( gulp.parallel( 'build-js', 'build-css-de
 // Run:
 // gulp
 // Defines gulp default task
-gulp.task( 'default', gulp.series( 'watch-reload' ) );
+gulp.task( 'default', gulp.series( _gulpSettings.defaultAction ) );

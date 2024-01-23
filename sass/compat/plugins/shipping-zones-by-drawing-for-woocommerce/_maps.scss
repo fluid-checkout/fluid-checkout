@@ -1,0 +1,14 @@
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
+body .fc-checkout-order-review #szbd_checkout_field,
+body .fc-step__substep[data-substep-id="payment"] #szbd_checkout_field {
+	margin-bottom: $global-spacing-small;
+}
+
+
+
+body .fc-step__substep[data-substep-id="shipping_address"] #szbd_checkout_field + .woocommerce-shipping-fields,
+body .fc-step__substep[data-substep-id="shipping_address"] .woocommerce-shipping-fields + #szbd_checkout_field {
+	margin-top: $global-spacing-small;
+}

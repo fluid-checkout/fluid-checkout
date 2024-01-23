@@ -42,7 +42,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		// Checkout fields validation
 		add_filter( 'woocommerce_billing_fields', array( $this, 'add_brazilian_documents_validation_classes' ), 1100 ); // Needs to be higher than 1000 to run after checkout field editor plugins
 
-		// Prevent hiding optional fields behind a link button
+		// Optional fields
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_person_type_fields' ), 10 );
 
 		// Address format

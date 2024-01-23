@@ -4,7 +4,7 @@
 // CHECKOUT SHIPPING METHODS
 // ------------------------------------
 
-.woocommerce .fc-shipping-method__no-shipping-methods {
+.woocommerce .fc-shipping-method__no-shipping-methods .shipping-method__options {
 	border: $option-box-border;
 	border-radius: $option-box-border-radius;
 	border-color: $error-color;
@@ -80,6 +80,7 @@
 	font-weight: $shipping-method-font-weight !important; // Needed to override theme styles
 	cursor: pointer;
 	text-align: #{ $alignment-left } !important; // Needed to override theme styles
+	text-indent: 0 !important; // Needed to override theme styles
 	line-height: $option-box-radio-size !important; // Needed to override theme styles
 	transition: all $global-animation-duration-fast linear;
 }

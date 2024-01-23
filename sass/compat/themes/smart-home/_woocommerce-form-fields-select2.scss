@@ -1,0 +1,7 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2.select2-container--default .select2-selection__arrow {
+	background-position-y: calc($form-field-height / 2 - 3px); // Needed to use `px` as units to match theme styles
+}

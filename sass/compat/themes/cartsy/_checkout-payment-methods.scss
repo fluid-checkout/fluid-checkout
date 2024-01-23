@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector } #content .woocommerce .checkout.woocommerce-checkout .woocommerce-checkout-payment,
+body#{ $_body-theme-selector } #content .woocommerce .checkout.woocommerce-checkout .woocommerce-checkout-payment ul.payment_methods {
+	border: 0;
+}
