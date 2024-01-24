@@ -40,7 +40,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
-		// Prevent hiding coupon code field behind a link button, as it is implemented directly
+		// Optional fields
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_coupon_code' ), 10 );
 
 		// Actions
@@ -182,7 +182,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		FluidCheckout_Steps::instance()->output_substep_fields_start_tag( $step_id, $substep_id, false );
 		$this->output_substep_coupon_codes_fields();
-		FluidCheckout_Steps::instance()->output_substep_fields_end_tag();
+		FluidCheckout_Steps::instance()->output_substep_fields_end_tag( $step_id, $substep_id, false );
 
 		FluidCheckout_Steps::instance()->output_substep_end_tag( $step_id, $substep_id, $substep_title, false );
 	}

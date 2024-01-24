@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.4.2
-Stable tag: 3.1.2
+Stable tag: 3.1.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -396,14 +396,24 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Criteria for conditional function of cart page or fragments request.
+
+= 3.1.3 - 2024-01-23 =
+
 * Bump tested up to WooCommerce 8.5.1
 * Added: Automatically replace the WooCommerce Checkout block with the shortcode-based form.
 * Added: Admin notice for when using the Divi Builder checkout layout, which is not compatible with Fluid Checkout.
+* Added: Compatibility with theme Cartsy.
 * Added: Compatibility with theme Smart Home.
 * Added: Compatibility with theme Pressmart.
+* Added: Compatibility with plugin Shipping Zones by Drawing for WooCommerce.
+* Added: Compatibility with plugin Shipping Zones by Drawing Premium for WooCommerce.
 * Improved: Compatibility with plugin Colissimo shipping methods for WooCommerce. Fix styles for the Colissimo Relay pickup button by setting the class `button` to it.
+* Improved: Compatibility with 3rd-party plugins by restoring the checkbox "Shipping to a different address", but make it visually hidden.
+* Improved: Added actions `fc_before_substep_fields_<substep_id>` and `fc_after_substep_fields_<substep_id>` to allow developers to output content to the substep fields section at those positions.
 * Fixed: Compatibility with plugin MailerLite. Fix multiple AJAX requests being triggered by the MailerLite plugin and move checkbox field to expected positions.
 * Fixed: Compatibility issues causing layout to break on the shipping method and payment methods options in some cases.
+* Fixed: Shipping method inline validation not being triggered when there are no shipping methods available.
 
 = 3.1.2 - 2024-01-06 =
 
@@ -424,7 +434,6 @@ IMPORTANT: This update fixes issues introduced with version 3.1.0 which may caus
 * Added: Support for block themes using the Full Site Editor (FSE) mode.
 * Added: Compatibility with plugin WooCommerce NL Postcode Checker by WP Overnight.
 * Added: Compatibility with theme BuddyBoss.
-* Added: Compatibility with theme Cartsy.
 * Improved: Change the element used for checkout substeps from `div` to `section` for better semantics and to set correct rounded borders when needed.
 * Fixed: Check whether JS settings object is available before trying to use it in the `address-i18n` script.
 * Fixed: Do not ask user before leaving the page if a redirect is needed after a successful payment is taken with some payment gateways.
