@@ -12,8 +12,8 @@ body.theme-pressmart div.woocommerce form .form-row label.checkbox {
 
 body.theme-pressmart div.woocommerce form .form-row input[type=checkbox]:not(:checked) {
   background-color: var(--site-input-background);
-  margin-left: 0;
-  margin-right: 5px;
+  margin-right: 0;
+  margin-left: 5px;
 }
 
 body.theme-pressmart div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
