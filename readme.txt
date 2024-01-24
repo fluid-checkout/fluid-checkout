@@ -394,6 +394,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Criteria for conditional function of cart page or fragments request.
+
 = 3.1.3 - 2024-01-23 =
 
 * Bump tested up to WooCommerce 8.5.1
