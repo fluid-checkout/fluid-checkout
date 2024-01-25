@@ -114,20 +114,20 @@ class FluidCheckout_ThemeCompat_PressMart extends FluidCheckout {
 
 		// Get theme colors
 		$primary_button_color = pressmart_get_option( 'checkout-button-background', array(
-			'regular' 	=> '#9e7856',
-			'hover' 	=> '#ae8866',
+			'regular'     => '#9e7856',
+			'hover'       => '#ae8866',
 		) );
 		$primary_text_color = pressmart_get_option( 'checkout-button-color', array(
-			'regular' 	=> '#ffffff',
-			'hover' 	=> '#fcfcfc',
+			'regular'     => '#ffffff',
+			'hover'       => '#fcfcfc',
 		) );
 		$secondary_button_color = pressmart_get_option( 'button-background', array(
-			'regular' 	=> '#059473',
-			'hover' 	=> '#048567',
+			'regular'     => '#059473',
+			'hover'       => '#048567',
 		) );
 		$secondary_text_color = pressmart_get_option( 'button-color', array(
-			'regular' 	=> '#ffffff',
-			'hover' 	=> '#fcfcfc',
+			'regular'     => '#ffffff',
+			'hover'       => '#fcfcfc',
 		) );
 
 		// Add CSS variables
