@@ -396,6 +396,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme Pressmart.
 * Fixed: Criteria for conditional function of cart page or fragments request.
 
 = 3.1.3 - 2024-01-23 =
@@ -405,7 +406,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Admin notice for when using the Divi Builder checkout layout, which is not compatible with Fluid Checkout.
 * Added: Compatibility with theme Cartsy.
 * Added: Compatibility with theme Smart Home.
-* Added: Compatibility with theme Pressmart.
 * Added: Compatibility with plugin Shipping Zones by Drawing for WooCommerce.
 * Added: Compatibility with plugin Shipping Zones by Drawing Premium for WooCommerce.
 * Improved: Compatibility with plugin Colissimo shipping methods for WooCommerce. Fix styles for the Colissimo Relay pickup button by setting the class `button` to it.
