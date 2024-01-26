@@ -397,6 +397,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Criteria for conditional function of cart page or fragments request.
+* Fixed: Set to show shipping phone field values on the order admin order edit page.
 
 = 3.1.3 - 2024-01-23 =
 
