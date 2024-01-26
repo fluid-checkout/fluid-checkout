@@ -31,6 +31,10 @@ jQuery( function( $ ) {
 		emailFieldSelector:                           'form.woocommerce-checkout input[name="billing_email"]',
 		usernameFieldSelector:                        '.fc-login-form__inner input[name="username"]',
 
+		addressSectionSelectors:                       [ '.woocommerce-shipping-fields', '.woocommerce-billing-fields' ],
+		select2ContainerSelector:                      '.select2-container',
+		select2ResultsSelector:                        '.select2-results__options',
+
 		loadingClass:                                 'fc-loading',
 		checkoutBlockUISelector:                      '.woocommerce-checkout-payment, .woocommerce-checkout-review-order-table .fc-shipping-method__packages',
 
@@ -408,7 +412,8 @@ jQuery( function( $ ) {
 
 				if ( $required_inputs.length ) {
 					$required_inputs.each( function() {
-						if ( $( this ).find( 'input.input-text' ).val() === '' ) {
+						// CHANGE: Also check for empty value in `select` fields
+						if ( $( this ).find( 'input.input-text' ).val() === '' || $( this ).find( 'select' ).val() === '' ) {
 							update_totals = false;
 						}
 					});
@@ -668,6 +673,15 @@ jQuery( function( $ ) {
 
 							// CHANGE: Maybe set to skip fragment with the focus within it. This avoids unexpected closing of mobile keyboard and lost of focus when updating fragments.
 							if ( fragmentToReplace && currentFocusedElement.closest( key ) && currentFocusedElement.closest( _settings.focusedFieldSkipFragmentReplaceSelector ) ) {
+								replaceFragment = false;
+							}
+
+							// CHANGE: Maybe skip updating address sections when focus is on a `select2` field related to it
+							if ( fragmentToReplace
+								&& -1 !== _settings.addressSectionSelectors.indexOf( key )
+								&& currentFocusedElement.closest( _settings.select2ContainerSelector )
+								&& currentFocusedElement.closest( _settings.select2ContainerSelector ).querySelector( _settings.select2ResultsSelector )
+							) {
 								replaceFragment = false;
 							}
 

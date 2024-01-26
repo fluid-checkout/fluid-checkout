@@ -396,6 +396,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Prevent updating checkout fragments when changing address fields but the address is not complete yet, also taking into account `select` fields.
 * Fixed: Criteria for conditional function of cart page or fragments request.
 * Fixed: Set to show shipping phone field values on the order admin order edit page.
 
