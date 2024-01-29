@@ -88,6 +88,9 @@ jQuery( function( $ ) {
 						} )
 						.selectWoo( select2_args );
 
+					// CHANGE: Maybe reset focus to element
+					FCUtils.maybeRefocusElement( window.fcCurrentFocusedElement, window.fcCurrentFocusedElementValue );
+
 					// CHANGE: Maybe reopen `select2` field
 					setTimeout( function() {
 						// Reopen `select2` field if it was open before replacing fields
@@ -126,6 +129,10 @@ jQuery( function( $ ) {
 	$( document.body ).on( 'change refresh', 'select.country_to_state, input.country_to_state', function() {
 		// Grab wrapping element to target only stateboxes in same 'group'
 		var $wrapper = $( this ).closest( wrapper_selectors );
+
+		// CHANGE: Set variables for current forused element,
+		// which will set focus to relative `select2` field if a field option currently has the focus.
+		FCUtils.setCurrentFocusedElementGlobalVariables( true );
 
 		if ( ! $wrapper.length ) {
 			$wrapper = $( this ).closest('.form-row').parent();
@@ -201,6 +208,9 @@ jQuery( function( $ ) {
 				$( document.body ).trigger( 'country_to_state_changed', [country, $wrapper ] );
 			}
 		}
+
+		// Re-focus element
+		FCUtils.maybeRefocusElement( window.fcCurrentFocusedElement, window.fcCurrentFocusedElementValue );
 
 		$( document.body ).trigger( 'country_to_state_changing', [country, $wrapper ] );
 	});

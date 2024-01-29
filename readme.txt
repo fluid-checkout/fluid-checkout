@@ -398,7 +398,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Fixed: Criteria for conditional function of cart page or fragments request.
 * Fixed: Set to show shipping phone field values on the order admin order edit page.
-* Fixed: Keep `select2` field open after replacing section which contains it.
+* Fixed: Keep `select2` field open after replacing section which contains it, and keep focus on `select2` fields after updating fragments or selecting a different country.
 
 = 3.1.3 - 2024-01-23 =
 

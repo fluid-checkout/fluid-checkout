@@ -142,6 +142,53 @@
 
 
 	/**
+	 * Set the variables that track the current focused element and its value.
+	 */
+	_publicMethods.setCurrentFocusedElementGlobalVariables = function( setToRelativeSelect2 ) {
+		// Set defaults
+		if ( setToRelativeSelect2 !== true ) {
+			setToRelativeSelect2 = false;
+		}
+
+		// Set current focused element and value
+		window.fcCurrentFocusedElement = document.activeElement;
+		window.fcCurrentFocusedElementValue = window.fcCurrentFocusedElement.value;
+
+		console.log( window.fcCurrentFocusedElement );
+
+		// Maybe set set to relative `select2` field element,
+		// if the focus is current on a `select2` field option.
+		var select2Options = window.fcCurrentFocusedElement.closest( '.select2-results__options' );
+		if ( setToRelativeSelect2 && select2Options ) {
+			var select2ElementId = select2Options.getAttribute( 'id' ).replace( '-results', '-container' );
+			window.fcCurrentFocusedElement = document.getElementById( select2ElementId );
+		}
+
+		// Maybe set to form row for `select2` fields
+		var currentFocusedFormRow = window.fcCurrentFocusedElement.closest( _settings.select2FormRowSelector );
+		if ( currentFocusedFormRow ) {
+			// Remove focus from current element as it will be replaced
+			// This fixes an issue where `select2` fields would not work properly
+			// after checkout is updated while focus is on a `select2` field
+			if ( window.fcCurrentFocusedElement ) { window.fcCurrentFocusedElement.blur(); }
+
+			window.fcCurrentFocusedElement = currentFocusedFormRow;
+		}
+	}
+
+
+
+	/**
+	 * Unset the variables that track the current focused element and its value.
+	 */
+	_publicMethods.unsetCurrentFocusedElementGlobalVariables = function() {
+		window.fcCurrentFocusedElement = null;
+		window.fcCurrentFocusedElementValue = null;
+	}
+
+
+
+	/**
 	 * Maybe set focus back to the element that was focused before an update.
 	 * 
 	 * @param  {HTMLElement}  currentFocusedElement  The element that was currently focused before an update.
@@ -149,7 +196,7 @@
 	 */
 	_publicMethods.maybeRefocusElement = function( currentFocusedElement, currentValue ) {
 		// Bail if no element to focus
-		if ( null === currentFocusedElement ) { return; }
+		if ( null == currentFocusedElement ) { return; }
 
 		// Bail if focus is set to the document body
 		if ( document.body === currentFocusedElement ) { return; }
