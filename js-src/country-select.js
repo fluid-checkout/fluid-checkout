@@ -67,6 +67,11 @@ jQuery( function( $ ) {
 				$( 'select.country_select, select.state_select' ).each( function() {
 					var $this = $( this );
 
+					// CHANGE: Get field ID and open `select2` options element
+					var fieldID = $this.attr( 'id' );
+					var currentOpenSelect2 = document.querySelector( '.select2-container--open' );
+					var shouldReopen = null != currentOpenSelect2 && null != currentOpenSelect2.querySelector( '#select2-' + fieldID + '-results' ); // Intentionally loose comparisson
+
 					// CHANGE: Try to remove rendered `select2` elements before building it again
 					$this.off( 'select2:select' );
 					$this.parent().find( '.select2-container' ).remove();
@@ -82,6 +87,22 @@ jQuery( function( $ ) {
 							$( this ).trigger( 'focus' ); // Maintain focus after select https://github.com/select2/select2/issues/4384
 						} )
 						.selectWoo( select2_args );
+
+					// CHANGE: Maybe reopen `select2` field
+					setTimeout( function() {
+						// Reopen `select2` field if it was open before replacing fields
+						if ( shouldReopen && 'function' === typeof $this.selectWoo ) {
+							// Remove any open options for `select2` fields
+							var currentOpenSelect2 = document.querySelectorAll( '.select2-container--open' );
+							for ( var i = 0; i < currentOpenSelect2.length; i++ ) {
+								currentOpenSelect2[ i ].remove();
+							}
+
+							// Reopen options for this `select2` field
+							$this.selectWoo( 'open' );
+						}
+					}, 50 );
+					// CHANGE: END - Maybe reopen `select2` field
 				});
 			});
 		};
