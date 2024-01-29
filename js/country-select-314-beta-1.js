@@ -132,7 +132,7 @@ jQuery( function( $ ) {
 
 		// CHANGE: Set variables for current forused element,
 		// which will set focus to relative `select2` field if a field option currently has the focus.
-		FCUtils.setCurrentFocusedElementGlobalVariables( true );
+		FCUtils.setCurrentFocusedElementGlobalVariablesRelativeSelect2();
 
 		if ( ! $wrapper.length ) {
 			$wrapper = $( this ).closest('.form-row').parent();
