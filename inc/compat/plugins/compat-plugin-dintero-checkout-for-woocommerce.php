@@ -34,14 +34,14 @@ class FluidCheckout_DinteroCheckoutForWooCommerce extends FluidCheckout {
 	 * Get classes to skip undo early hooks.
 	 */
 	public function get_skip_classes_undo_hooks_early_list() {
-		$skip_undo_hooks_classes = apply_filters( 'fc_compat_dintero_checkout_skip_undo_hooks_early_classes', array( 'FluidCheckout_CheckoutPageTemplate', 'FluidCheckout_CheckoutWidgetAreas' ) );
+		$skip_undo_hooks_classes = apply_filters( 'fc_compat_dintero_checkout_skip_undo_hooks_early_classes', array( 'FluidCheckout_CheckoutWidgetAreas' ) );
 	}
 
 	/**
 	 * Get classes to skip undo hooks.
 	 */
 	public function get_skip_classes_undo_hooks_list() {
-		$skip_undo_hooks_classes = apply_filters( 'fc_compat_dintero_checkout_skip_undo_hooks_classes', array( 'FluidCheckout_CheckoutPageTemplate' ) );
+		$skip_undo_hooks_classes = apply_filters( 'fc_compat_dintero_checkout_skip_undo_hooks_classes', array() );
 	}
 
 
