@@ -63,7 +63,7 @@ jQuery( function( $ ) {
 				$( this ).wrap( '<span class="password-input"></span>' );
 			}
 		} );
-		
+
 		// Add 'password-input' class to the password wrapper in checkout page.
 		// CHANGE: Only wrap password inputs if they aren't already wrapped.
 		$( $( '.woocommerce form input' ).filter(':password') ).each( function() {

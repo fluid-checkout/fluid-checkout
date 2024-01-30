@@ -70,13 +70,13 @@ jQuery( function( $ ) {
 					// CHANGE: Try to remove rendered `select2` elements before building it again
 					$this.off( 'select2:select' );
 					$this.parent().find( '.select2-container' ).remove();
-	
+
 					var select2_args = $.extend({
 						placeholder: $this.attr( 'data-placeholder' ) || $this.attr( 'placeholder' ) || '',
 						label: $this.attr( 'data-label' ) || null,
 						width: '100%'
 					}, getEnhancedSelectFormatString() );
-	
+
 					$( this )
 						.on( 'select2:select', function() {
 							$( this ).trigger( 'focus' ); // Maintain focus after select https://github.com/select2/select2/issues/4384

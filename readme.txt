@@ -396,6 +396,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Merged changes from the original `checkout.js` file from the WooCommerce code into our modified copy.
 * Fixed: Criteria for conditional function of cart page or fragments request.
 * Fixed: Set to show shipping phone field values on the order admin order edit page.
 * Fixed: Compatibility with plugins Klarna Checkout, Dintero Checkout and Payson Checkout by Krokedil. Fix layout of the checkout page template when one of these payment methods are selected.
