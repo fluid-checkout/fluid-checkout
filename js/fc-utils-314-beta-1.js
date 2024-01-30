@@ -17,6 +17,8 @@
 	var _settings = {
 		select2FormRowSelector:                '.form-row.fc-select2-field',
 		select2FocusElementSelector:           '.select2-selection, input[type="text"]',
+		select2OptionsSelector:                '.select2-results__options',
+		select2SelectionSelector:              '.select2-selection__rendered',
 	}
 
 
@@ -155,7 +157,7 @@
 
 		// Maybe set set to relative `select2` field element,
 		// if the focus is current on a `select2` field option.
-		var select2Options = currentfocusedElement.closest( '.select2-results__options' );
+		var select2Options = currentfocusedElement.closest( _settings.select2OptionsSelector );
 		if ( setToRelativeSelect2 && select2Options ) {
 			var select2ElementId = select2Options.getAttribute( 'id' ).replace( '-results', '-container' );
 			currentfocusedElement = document.getElementById( select2ElementId );
@@ -163,7 +165,7 @@
 
 		// Maybe set to form row for `select2` fields
 		var currentFocusedFormRow = currentfocusedElement.closest( _settings.select2FormRowSelector );
-		if ( currentFocusedFormRow ) {
+		if ( currentFocusedFormRow && currentFocusedFormRow.querySelector( _settings.select2SelectionSelector ) ) {
 			// Remove focus from current element as it will be replaced
 			// This fixes an issue where `select2` fields would not work properly
 			// after checkout is updated while focus is on a `select2` field
@@ -182,7 +184,7 @@
 	/**
 	 * Set the variables that track the current focused element and its value.
 	 */
-	_publicMethods.setCurrentFocusedElementGlobalVariables = function( ) {
+	_publicMethods.setCurrentFocusedElementGlobalVariables = function() {
 		// Set current focused element and value
 		window.fcCurrentFocusedElement = getCurrentFocusedElementGlobalVariables();
 		window.fcCurrentFocusedElementValue = window.fcCurrentFocusedElement.value;
@@ -191,7 +193,7 @@
 	/**
 	 * Set the variables that track the current focused element and its value.
 	 */
-	_publicMethods.setCurrentFocusedElementGlobalVariablesRelativeSelect2 = function( ) {
+	_publicMethods.maybeSetCurrentFocusedElementGlobalVariablesRelativeSelect2 = function() {
 		// Set current focused element and value,
 		// and retrieve relative `select2` field element if focus is on a `select2` field option.
 		var currentFocusedSelect2Element = getCurrentFocusedElementGlobalVariables( true );

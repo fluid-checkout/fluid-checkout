@@ -35,10 +35,13 @@
 	 */
 	var maybeRebuildFloatLabels = function() {
 		// Add jQuery event listeners
-		if ( window.floatlabels && typeof floatlabels.rebuild === 'function' ) {			
+		if ( window.floatlabels && typeof floatlabels.rebuild === 'function' ) {
+			// Set variables for current focused element
+			FCUtils.setCurrentFocusedElementGlobalVariables();
+
 			// Rebuild floating labels
 			floatlabels.rebuild();
-			
+
 			// Re-focus element
 			FCUtils.maybeRefocusElement( window.fcCurrentFocusedElement, window.fcCurrentFocusedElementValue );
 		}

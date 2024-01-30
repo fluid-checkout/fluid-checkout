@@ -130,9 +130,9 @@ jQuery( function( $ ) {
 		// Grab wrapping element to target only stateboxes in same 'group'
 		var $wrapper = $( this ).closest( wrapper_selectors );
 
-		// CHANGE: Set variables for current forused element,
+		// CHANGE: Maybe set variables for current focused element,
 		// which will set focus to relative `select2` field if a field option currently has the focus.
-		FCUtils.setCurrentFocusedElementGlobalVariablesRelativeSelect2();
+		FCUtils.maybeSetCurrentFocusedElementGlobalVariablesRelativeSelect2();
 
 		if ( ! $wrapper.length ) {
 			$wrapper = $( this ).closest('.form-row').parent();

@@ -615,7 +615,7 @@ jQuery( function( $ ) {
 						}
 					});
 
-					// CHANGE: Get current element with focus, will re-set focus after updating the fragments
+					// CHANGE: Set variables for current focused element
 					FCUtils.setCurrentFocusedElementGlobalVariables();
 
 					// Always update the fragments
