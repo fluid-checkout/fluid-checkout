@@ -14,7 +14,7 @@ body.theme-kosi div.woocommerce input[type=checkbox] {
   margin-left: 5px;
 }
 
-body.theme-kosi .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+body.theme-kosi .select2-container .select2-selection--single .select2-selection__rendered {
   padding-right: 15px;
   padding-left: 15px;
 }
