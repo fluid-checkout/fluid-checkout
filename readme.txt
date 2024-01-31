@@ -396,6 +396,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme Kosi.
 * Fixed: Criteria for conditional function of cart page or fragments request.
 * Fixed: Set to show shipping phone field values on the order admin order edit page.
 
