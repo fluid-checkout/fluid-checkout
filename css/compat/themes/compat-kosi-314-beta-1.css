@@ -5,3 +5,8 @@
 body.theme-kosi #order_review .woocommerce-checkout-review-order-table .order-total .amount {
   font-size: 15px;
 }
+
+body.theme-kosi .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+  padding-left: 15px;
+  padding-right: 15px;
+}
