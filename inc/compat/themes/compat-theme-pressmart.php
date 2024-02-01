@@ -58,7 +58,7 @@ class FluidCheckout_ThemeCompat_PressMart extends FluidCheckout {
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'maybe_change_sticky_elements_relative_header' ), 20 );
 
 		// Theme's checkout steps
-		add_action( 'wp', array( $this, 'maybe_remove_pressmart_checkout_steps_section' ), 1001 );
+		add_action( 'wp', array( $this, 'maybe_output_pressmart_checkout_steps_section' ), 1001 );
 	}
 
 
@@ -177,7 +177,7 @@ class FluidCheckout_ThemeCompat_PressMart extends FluidCheckout {
 
 			array(
 				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
-				'desc'            => __( 'Output the checkout steps section from the Pressmart theme when using Fluid Checkout.', 'fluid-checkout' ),
+				'desc'            => __( 'Output the checkout steps section from the Pressmart theme when using Fluid Checkout header and footer.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_pressmart_output_checkout_steps_section',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_pressmart_output_checkout_steps_section' ),
@@ -198,18 +198,26 @@ class FluidCheckout_ThemeCompat_PressMart extends FluidCheckout {
 
 
 	/**
-	 * Maybe remove the checkout steps section from the Pressmart theme.
+	 * Maybe output the checkout steps section from the Pressmart theme.
 	 */
-	public function maybe_remove_pressmart_checkout_steps_section() {
-		// Bail if Pressmart section output is enabled in the plugin settings
-		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_pressmart_output_checkout_steps_section' ) ) { return; }
+	public function maybe_output_pressmart_checkout_steps_section() {
+		// Bail if not using distraction free header and footer
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+		
+		// Bail if Pressmart checkout steps section output is disabled in the plugin settings
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_pressmart_output_checkout_steps_section' ) ) { return; }
 
-		// Remove checkout steps
-		remove_action( 'pressmart_inner_page_title', 'pressmart_checkout_steps', 10 );
+		// Add checkout steps
+		add_action( 'fc_checkout_header', array( $this, 'add_theme_page_title_section' ), 20 );
+	}
 
-		// Re-add default theme elements
-		add_action( 'pressmart_inner_page_title', 'pressmart_template_page_title', 10 );
-		add_action( 'pressmart_inner_page_title', 'pressmart_template_breadcrumbs', 20 );
+
+
+	/**
+	 * Add page title section from Pressmart theme that includes checkout steps
+	 */
+	public function add_theme_page_title_section() {
+		do_action( 'pressmart_page_title' );
 	}
 
 }

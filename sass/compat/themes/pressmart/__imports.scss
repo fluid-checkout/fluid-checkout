@@ -24,5 +24,6 @@ $_body-theme-selector:                 '.theme-pressmart' !default;
 // ------------------------------------
 @import
 	"checkout-steps",
+	"checkout-header",
 	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2";

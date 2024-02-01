@@ -6,6 +6,18 @@ body.theme-pressmart .fc-wrapper .woocommerce-billing-fields {
   margin-bottom: 0;
 }
 
+@media (max-width: 999px) {
+  body.theme-pressmart.woocommerce-checkout header.fc-checkout-header + #page-title {
+    padding-top: 110px;
+  }
+}
+
+@media (max-width: 999px) {
+  body.theme-pressmart.woocommerce-checkout #page-title ~ #main.fc-main {
+    padding-top: 0;
+  }
+}
+
 body.theme-pressmart div.woocommerce form .form-row label.checkbox {
   line-height: 1.5;
 }
