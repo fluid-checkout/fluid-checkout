@@ -396,7 +396,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = 3.1.4 - 2024-02-02 =
 
-* Bump tested up to WordPress 6.4.3 and WooCommerce 8.5.1
+* Bump tested up to WordPress 6.4.3 and WooCommerce 8.5.2
 * Improved: Add process to automatically generate the installable zip file when creating a new version.
 * Fixed: Merged changes from the original `checkout.js` file from the WooCommerce code into our modified copy.
 * Fixed: Criteria for conditional function of cart page or fragments request.
