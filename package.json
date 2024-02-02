@@ -5,7 +5,7 @@
   "main": "fluid-checkout.php",
   "scripts": {
     "version": "git pull && gulp update-ver-release && gulp build && git add -A",
-    "postversion": "git push && git push --tags",
+    "postversion": "git push && git push --tags && gulp copy-plugin-files && gulp pack-plugin-zip",
     "start": "wp-scripts start --webpack-src-dir=blocks",
     "build": "wp-scripts build --webpack-src-dir=blocks",
     "test": "echo \"Error: no test specified\" && exit 1"
