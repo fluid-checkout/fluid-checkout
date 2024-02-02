@@ -932,6 +932,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Return `true` if any of the following conditions are met:
 		if ( is_cart() ) { return true; }
 		if ( 'fc_pro_update_cart_fragments' === $ajax_action ) { return true; }
+		if ( ( array_key_exists( 'wc-ajax', $_GET ) && 'fc_pro_update_cart_fragments' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) ) ) { return true; } // Needed to check for AJAX calls for the cart fragments early in the request.
 
 		// Filter to allow other plugins to add their own conditions
 		if ( true === apply_filters( 'fc_is_cart_page_or_fragment', false ) ) { return true; }
