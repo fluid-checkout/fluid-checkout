@@ -457,7 +457,6 @@ gulp.task( 'copy-plugin-files', gulp.series( function( done ) {
 	}
 
 	exec( 'rsync -av --exclude-from=.gitignore ../' + _package.name + ' ' + _gulpSettingsLocal.pluginZipPath, function ( err, stdout, stderr ) {
-		console.log( 'COPYING FILES...' );
 		console.log( stdout );
 		console.log( stderr );
 		if ( err ) {
