@@ -135,10 +135,10 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		$layoutID = get_post_meta( get_the_ID(), 'mfn-post-custom-layout', true );
+		$layout_id = get_post_meta( get_the_ID(), 'mfn-post-custom-layout', true );
 
 		// Bail if theme's conditions for sticky header are not met
-		if ( ! $layout_id && ! get_post_meta( $layout_id, 'mfn-post-sticky-header', true) && ! mfn_opts_get('sticky-header') ) { return $attributes; }
+		if ( ! $layout_id && ! get_post_meta( $layout_id, 'mfn-post-sticky-header', true ) && ! mfn_opts_get( 'sticky-header' ) ) { return $attributes; }
 
 		$attributes['data-sticky-relative-to'] = '#Top_bar.is-sticky';
 
