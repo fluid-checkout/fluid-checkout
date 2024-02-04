@@ -394,6 +394,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Compatibility with plugin Klarna Payments. Update copied and modified scripts with the latest version from Klarna.
+
 = 3.1.4 - 2024-02-02 =
 
 * Bump tested up to WordPress 6.4.3 and WooCommerce 8.5.2
