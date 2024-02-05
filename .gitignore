@@ -1,5 +1,6 @@
 # OS storage files
 .DS_Store
+__MACOSX
 
 # Cache
 .sass-cache
@@ -12,10 +13,20 @@ gulp-settings.local.json
 .vscode
 
 # Translation backup files
-*.po~
-*.pot~
+**/*.po~
+**/*.mo~
+**/*.pot~
 
 # Project dependencies
 node_modules
+node_modules/**
 bower_components
+bower_compoents/**
 /vendor/**/.git
+
+# Git files
+.git
+.git/**
+
+# Zip files
+**/*.zip

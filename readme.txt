@@ -3,8 +3,8 @@ Contributors: fluidwebco, diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.4.2
-Stable tag: 3.1.3
+Tested up to: 6.4.3
+Stable tag: 3.1.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -397,7 +397,16 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme Pressmart.
+* Fixed: Compatibility with plugin Klarna Payments. Redirect after successful payment not working.
+
+= 3.1.4 - 2024-02-02 =
+
+* Bump tested up to WordPress 6.4.3 and WooCommerce 8.5.2
+* Improved: Add process to automatically generate the installable zip file when creating a new version.
+* Fixed: Merged changes from the original `checkout.js` file from the WooCommerce code into our modified copy.
 * Fixed: Criteria for conditional function of cart page or fragments request.
+* Fixed: Set to show shipping phone field values on the order admin order edit page.
+* Fixed: Compatibility with plugins Klarna Checkout, Dintero Checkout and Payson Checkout by Krokedil. Fix layout of the checkout page template when one of these payment methods are selected.
 
 = 3.1.3 - 2024-01-23 =
 

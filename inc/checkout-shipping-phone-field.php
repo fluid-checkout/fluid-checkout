@@ -220,7 +220,6 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		$shipping_fields[ 'phone' ] = array(
 			'label'         => __( 'Phone', 'woocommerce' ),
 			'wrapper_class' => 'form-field-wide',
-			'show'          => false,
 		);
 
 		return $shipping_fields;
