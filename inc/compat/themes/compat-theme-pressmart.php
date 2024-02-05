@@ -177,8 +177,7 @@ class FluidCheckout_ThemeCompat_PressMart extends FluidCheckout {
 
 			array(
 				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
-				'desc'            => __( 'Output the checkout steps section from the Pressmart theme on the checkout, cart and order received pages.', 'fluid-checkout' ),
-				'desc_tip'        => __( 'For showing or hiding the section on the cart and order received pages you will Fluid Checkout PRO, and those features need to be enabled in the plugin settings.', 'fluid-checkout' ),
+				'desc'            => __( 'Output the checkout steps section from the Pressmart theme on the checkout, cart and order received pages.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/compat-theme-pressmart/' ),
 				'id'              => 'fc_compat_theme_pressmart_output_checkout_steps_section',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_pressmart_output_checkout_steps_section' ),
@@ -208,21 +207,12 @@ class FluidCheckout_ThemeCompat_PressMart extends FluidCheckout {
 		// Maybe output the checkout steps section from the Pressmart theme
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_pressmart_output_checkout_steps_section' ) ) {
 			// Add checkout steps
-			add_action( 'fc_checkout_header', array( $this, 'add_theme_page_title_section' ), 20 );
+			add_action( 'fc_checkout_header', 'pressmart_page_title', 20 );
 		}
 		else {
 			// Remove the checkout steps section from the Pressmart theme
 			remove_action( 'pressmart_page_title', 'pressmart_page_title', 10 );
 		}
-	}
-
-
-
-	/**
-	 * Add page title section from Pressmart theme that includes checkout steps
-	 */
-	public function add_theme_page_title_section() {
-		do_action( 'pressmart_page_title' );
 	}
 
 }
