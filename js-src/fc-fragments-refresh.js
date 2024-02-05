@@ -107,74 +107,6 @@
 
 
 
-	/**
-	 * Maybe set the focus back to the element with focus previously to fragments replacement.
-	 *
-	 * @param   HTMLElement  focusedElement  The current focused element.
-	 * @param   mixed        value           Value for the current focused element.
-	 */
-	var maybeRefocusElement = function( focusedElement, value ) {
-		// Bail if no element to focus
-		if ( null === focusedElement ) { return; }
-
-		requestAnimationFrame( function() {
-			var elementToFocus;
-
-			// Try findind the the current focused element after updating updated element by ID
-			if ( focusedElement.id ) {
-				elementToFocus = document.getElementById( focusedElement.id );
-			}
-			// Try findind the updated element by name
-			else if ( focusedElement.getAttribute( 'name' ) ) {
-				var nameAttr = focusedElement.getAttribute( 'name' );
-				elementToFocus = document.querySelector( '[name="'+nameAttr+'"]' );
-			}
-			// Try findind the `select2` focusable element
-			else if ( focusedElement.closest( '.form-row' ) ) {
-				var formRow = focusedElement.closest( '.form-row' );
-				if ( formRow.id ) {
-					elementToFocus = document.querySelector( '.form-row[id="'+formRow.id+'"] .select2-selection' );
-				}
-			}
-
-			// Try setting focus if element is found
-			if ( elementToFocus ) {
-				elementToFocus.focus();
-
-				// Try to set current value to the focused element
-				if ( null !== value && value !== elementToFocus.value ) {
-					elementToFocus.value = value;
-				}
-
-				// Set keyboard track position back to that previously to update
-				setTimeout( function(){
-					// Try to set the same track position
-					if( null !== elementToFocus.selectionStart && null !== elementToFocus.selectionEnd ) {
-						if ( focusedElement.selectionStart && focusedElement.selectionEnd ) {
-							elementToFocus.selectionStart = focusedElement.selectionStart;
-							elementToFocus.selectionEnd = focusedElement.selectionEnd;
-						}
-						// Otherwise try set the track position to the end of the field
-						// @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange
-						// @see https://html.spec.whatwg.org/multipage/input.html#concept-input-apply
-						else {
-							elementToFocus.selectionStart = elementToFocus.selectionEnd = Number.MAX_SAFE_INTEGER || 10000;
-						}
-					}
-					// Try to select the entire content of the field
-					// @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select
-					// @see https://html.spec.whatwg.org/multipage/input.html#concept-input-apply
-					else {
-						try { elementToFocus.select(); }
-						catch { /* Do nothing */ }
-					}
-				}, 0 );
-			}
-		} );
-	};
-
-
-
 	// CHANGE: Maybe add loading class to the form row
 	var maybeSetLoadingIndicator = function ( e ) {
 		if ( e.target && e.target.matches( _settings.loadingInputSelector ) ) {
@@ -225,9 +157,8 @@
 					return;
 				}
 
-				// Get current element with focus, will reset after updating the fragments
-				var currentFocusedElement = document.activeElement;
-				var currentValue = document.activeElement.value;
+				// CHANGE: Set variables for current focused element
+				FCUtils.setCurrentFocusedElementGlobalVariables();
 
 				// Always update the fragments
 				if ( result && result.fragments ) {
@@ -255,8 +186,8 @@
 					_fragments = result.fragments;
 				}
 
-				// Re-set focus to the element with focus previously to updating fragments
-				maybeRefocusElement( currentFocusedElement, currentValue );
+				// CHANGE: Re-set focus to the element with focus previously to updating fragments
+				FCUtils.maybeRefocusElement( window.fcCurrentFocusedElement, window.fcCurrentFocusedElementValue );
 
 				// Maybe remove loading class from form rows when completing the ajax request
 				maybeStopLoadingIndicators();

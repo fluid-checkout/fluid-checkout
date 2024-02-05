@@ -17,6 +17,8 @@
 	var _settings = {
 		select2FormRowSelector:                '.form-row.fc-select2-field',
 		select2FocusElementSelector:           '.select2-selection, input[type="text"]',
+		select2OptionsSelector:                '.select2-results__options',
+		select2SelectionSelector:              '.select2-selection__rendered',
 	}
 
 
@@ -142,6 +144,80 @@
 
 
 	/**
+	 * Set the variables that track the current focused element and its value.
+	 */
+	var getCurrentFocusedElementGlobalVariables = function( setToRelativeSelect2 ) {
+		// Set defaults
+		if ( setToRelativeSelect2 !== true ) {
+			setToRelativeSelect2 = false;
+		}
+
+		// Set current focused element and value
+		var currentfocusedElement = document.activeElement;
+
+		// Maybe set set to relative `select2` field element,
+		// if the focus is current on a `select2` field option.
+		var select2Options = currentfocusedElement.closest( _settings.select2OptionsSelector );
+		if ( setToRelativeSelect2 && select2Options ) {
+			var select2ElementId = select2Options.getAttribute( 'id' ).replace( '-results', '-container' );
+			currentfocusedElement = document.getElementById( select2ElementId );
+		}
+
+		// Maybe set to form row for `select2` fields
+		var currentFocusedFormRow = currentfocusedElement.closest( _settings.select2FormRowSelector );
+		if ( currentFocusedFormRow && currentFocusedFormRow.querySelector( _settings.select2SelectionSelector ) ) {
+			// Remove focus from current element as it will be replaced
+			// This fixes an issue where `select2` fields would not work properly
+			// after checkout is updated while focus is on a `select2` field
+			if ( currentfocusedElement ) { currentfocusedElement.blur(); }
+
+			currentfocusedElement = currentFocusedFormRow;
+		}
+
+		return currentfocusedElement;
+	}
+
+
+
+
+
+	/**
+	 * Set the variables that track the current focused element and its value.
+	 */
+	_publicMethods.setCurrentFocusedElementGlobalVariables = function() {
+		// Set current focused element and value
+		window.fcCurrentFocusedElement = getCurrentFocusedElementGlobalVariables();
+		window.fcCurrentFocusedElementValue = window.fcCurrentFocusedElement.value;
+	}
+
+	/**
+	 * Set the variables that track the current focused element and its value.
+	 */
+	_publicMethods.maybeSetCurrentFocusedElementGlobalVariablesRelativeSelect2 = function() {
+		// Set current focused element and value,
+		// and retrieve relative `select2` field element if focus is on a `select2` field option.
+		var currentFocusedSelect2Element = getCurrentFocusedElementGlobalVariables( true );
+		
+		// Maybe set current focused element to relative `select2` field element
+		if ( currentFocusedSelect2Element ) {
+			window.fcCurrentFocusedElement = currentFocusedSelect2Element;
+			window.fcCurrentFocusedElementValue = window.fcCurrentFocusedElement.value;
+		}
+	}
+
+
+
+	/**
+	 * Unset the variables that track the current focused element and its value.
+	 */
+	_publicMethods.unsetCurrentFocusedElementGlobalVariables = function() {
+		window.fcCurrentFocusedElement = null;
+		window.fcCurrentFocusedElementValue = null;
+	}
+
+
+
+	/**
 	 * Maybe set focus back to the element that was focused before an update.
 	 * 
 	 * @param  {HTMLElement}  currentFocusedElement  The element that was currently focused before an update.
@@ -149,7 +225,7 @@
 	 */
 	_publicMethods.maybeRefocusElement = function( currentFocusedElement, currentValue ) {
 		// Bail if no element to focus
-		if ( null === currentFocusedElement ) { return; }
+		if ( null == currentFocusedElement ) { return; }
 
 		// Bail if focus is set to the document body
 		if ( document.body === currentFocusedElement ) { return; }

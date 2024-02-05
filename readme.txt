@@ -397,6 +397,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Compatibility with plugin Klarna Payments. Redirect after successful payment not working.
+* Fixed: Keep `select2` field open after replacing section which contains it, and keep focus on `select2` fields after updating fragments or selecting a different country.
 
 = 3.1.4 - 2024-02-02 =
 
