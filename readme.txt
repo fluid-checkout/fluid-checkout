@@ -397,6 +397,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme Pressmart.
+* Added: Compatibility with plugin The Bluehost Plugin.
 * Added: Partial compatibility with plugin States, Cities, and Places for WooCommerce. Trigger select events when appropriate.
 * Fixed: Compatibility with plugin Klarna Payments. Redirect after successful payment not working.
 * Fixed: Keep `select2` field open after replacing section which contains it, and keep focus on `select2` fields after updating fragments or selecting a different country.
