@@ -614,36 +614,13 @@ jQuery( function( $ ) {
 						}
 					});
 
-					// CHANGE: Get current element with focus, will re-set focus after updating the fragments
-					var currentFocusedElement = document.activeElement;
-					var currentValue = document.activeElement.value;
-
-					// Maybe set current element with focus to the form row for `select2` fields
-					var currentFocusedFormRow = currentFocusedElement.closest( '.fc-select2-field' );
-					if ( currentFocusedFormRow ) {
-						// Remove focus from current element as it will be replaced
-						// This fixes an issue where `select2` fields would not work properly
-						// after checkout is updated while focus is on a `select2` field
-						if ( currentFocusedElement ) { currentFocusedElement.blur(); }
-
-						currentFocusedElement = currentFocusedFormRow;
-					}
-					// CHANGE: END - Get current element with focus, will re-set focus after updating the fragments
+					// CHANGE: Set variables for current focused element
+					FCUtils.setCurrentFocusedElementGlobalVariables();
 
 					// Always update the fragments
 					if ( data && data.fragments ) {
 						// CHANGE: Trigger custom event before fragments are replaced.
 						$( document.body ).trigger( 'fc_checkout_fragments_replace_before', [ data ] );
-
-						// CHANGE: Try to remove `select2` components from existing fields before replacing fragments
-						$( 'select.country_select, select.state_select' ).each( function() {
-							var $field = $( this );
-							if ( $field.hasClass( 'select2-hidden-accessible' ) ) { // Field has `select2` initialized
-								$field.off( 'select2:select' );
-								$field.parent().find( '.select2-container' ).remove();
-							}
-						} );
-						// CHANGE: END - Try to remove `select2` components from existing fields before replacing fragments
 
 						// CHANGE: Try to remove intl-tel-input components from existing fields before replacing fragments
 						if ( window.intlTelInput && window.intlTelInputGlobals ) {
@@ -666,7 +643,7 @@ jQuery( function( $ ) {
 							var replaceFragment = true;
 
 							// CHANGE: Maybe set to skip fragment with the focus within it. This avoids unexpected closing of mobile keyboard and lost of focus when updating fragments.
-							if ( fragmentToReplace && currentFocusedElement.closest( key ) && currentFocusedElement.closest( _settings.focusedFieldSkipFragmentReplaceSelector ) ) {
+							if ( fragmentToReplace && window.fcCurrentFocusedElement.closest( key ) && window.fcCurrentFocusedElement.closest( _settings.focusedFieldSkipFragmentReplaceSelector ) ) {
 								replaceFragment = false;
 							}
 
@@ -699,7 +676,7 @@ jQuery( function( $ ) {
 					$( _settings.checkoutBlockUISelector ).unblock();
 
 					// CHANGE: Re-set focus to the element with focus previously to updating fragments
-					FCUtils.maybeRefocusElement( currentFocusedElement, currentValue );
+					FCUtils.maybeRefocusElement( window.fcCurrentFocusedElement, window.fcCurrentFocusedElementValue );
 
 					// Recheck the terms and conditions box, if needed
 					if ( termsCheckBoxChecked ) {
@@ -755,6 +732,11 @@ jQuery( function( $ ) {
 
 					// Fire updated_checkout event.
 					$( document.body ).trigger( 'updated_checkout', [ data ] );
+
+					// CHANGE: Unset current focused element and value
+					setTimeout( function() {
+						FCUtils.unsetCurrentFocusedElementGlobalVariables();
+					}, 60 );
 
 					// CHANGE: Maybe remove loading class from form rows when completing the ajax request
 					wc_checkout_form.maybe_stop_form_row_loading_indicators();
