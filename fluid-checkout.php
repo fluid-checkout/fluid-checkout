@@ -5,15 +5,15 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 3.0.8-beta-3
+Version: 3.1.5-beta-2
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 8.4.0
+WC tested up to: 8.5.2
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
-Copyright (C) 2021-2023 Fluidweb OÜ
+Copyright (C) 2021-2024 Fluidweb OÜ
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -315,6 +315,7 @@ class FluidCheckout {
 		require_once self::$directory_path . 'inc/admin/admin-notice-db-migrations-applied.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-review-request.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-divi-checkout-layout-being-used.php';
 	}
 
 
@@ -327,6 +328,7 @@ class FluidCheckout {
 		self::$features = array(
 			'FluidCheckout_DesignTemplates'                => array( 'file' => self::$directory_path . 'inc/design-templates.php' ),
 			'FluidCheckout_CheckoutPageTemplate'           => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php' ),
+			'FluidCheckout_CheckoutBlock'                  => array( 'file' => self::$directory_path . 'inc/checkout-block.php' ),
 			'FluidCheckout_FragmentsRefresh'               => array( 'file' => self::$directory_path . 'inc/fragments-refresh.php' ),
 			'FluidCheckout_Steps'                          => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
 			'FluidCheckout_CouponCodes'                    => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ),

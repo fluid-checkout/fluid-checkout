@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-wrapper .fc-place-order .fc-place-order-button {
+	background-color: var(--colorPrimary, #212121); // Needed to use theme variable to match theme styles
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-wrapper .fc-place-order .fc-place-order-button:hover {
+	background-color: var(--colorPrimaryHover, #3a3a3a); // Needed to use theme variable to match theme styles
+}

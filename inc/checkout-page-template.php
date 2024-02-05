@@ -27,7 +27,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
 		// Shortcode wrapper
-		add_action( 'init', array( $this, 'maybe_setup_checkout_shortcode_wrapper' ), 10 );
+		add_action( 'wp', array( $this, 'maybe_setup_checkout_shortcode_wrapper' ), 10 );
 
 		// Checkout header and footer
 		if ( $this->is_distraction_free_header_footer_checkout() ) {
@@ -50,7 +50,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		remove_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
 		// Shortcode wrapper
-		remove_action( 'init', array( $this, 'maybe_setup_checkout_shortcode_wrapper' ), 10 );
+		remove_action( 'wp', array( $this, 'maybe_setup_checkout_shortcode_wrapper' ), 10 );
 
 		// Checkout header and footer
 		if ( $this->is_distraction_free_header_footer_checkout() ) {
@@ -87,7 +87,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 
 		// Replace checkout shortcode
 		remove_shortcode( $checkout_shortcode_tag );
-		add_shortcode( $checkout_shortcode_tag, array( $this, 'output_checkout_shortcode_wrapper' ), 10 );
+		add_shortcode( $checkout_shortcode_tag, array( $this, 'output_checkout_shortcode_wrapper' ) );
 	}
 
 	/**
@@ -105,7 +105,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 */
 	public function output_checkout_shortcode_wrapper( $attributes ) {
 		// Bail if not on checkout page
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return WC_Shortcode_Checkout::get( $attributes ); }
+		if ( is_admin() || ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $attributes; }
 
 		return WC_Shortcodes::shortcode_wrapper( array( 'WC_Shortcode_Checkout', 'output' ), $attributes, $this->get_shortcode_wrapper_attributes() );
 	}

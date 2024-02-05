@@ -130,19 +130,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 
-		// Billing Address
-		add_action( 'fc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
+		// Billing address
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_billing_address' ), 10 );
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_billing_address' ), 20 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_billing_address_text_fragment' ), 10 );
 
-		// Billing Same as Shipping
+		// Billing same as shipping
 		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_field' ), 100 );
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
 
-		// Shipping Same as Billing
+		// Shipping same as billing
+		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_same_as_billing_field' ), 100 );
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing' ), 10 );
+		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing_on_process_checkout' ), 10 );
+
+		// Shipping same as billing
+		// Fix for when shipping is not needed while
+		// billing address is displayed after shipping address.
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
 
@@ -165,7 +171,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_payment_method_text_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_suppress_payment_methods_fragment' ), 1000 );
 
-		// Formatted Address
+		// Formatted address
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
 
@@ -210,6 +216,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
+
+		// Billing address
+		$billing_step_hook_priority = $this->get_billing_address_hook_priority();
+		$billing_step_hook = $billing_step_hook_priority[ 0 ];
+		$billing_step_priority = $billing_step_hook_priority[ 1 ];
+		add_action( $billing_step_hook, array( $this, 'output_substep_billing_address' ), $billing_step_priority );
 
 		// Place order position
 		$place_order_position = $this->get_place_order_position();
@@ -355,17 +367,31 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 
-		// Billing Address
-		remove_action( 'fc_output_step_billing', array( $this, 'output_substep_billing_address' ), 10 );
+		// Billing address
+		$billing_step_hook_priority = $this->get_billing_address_hook_priority();
+		$billing_step_hook = $billing_step_hook_priority[ 0 ];
+		$billing_step_priority = $billing_step_hook_priority[ 1 ];
+		remove_action( $billing_step_hook, array( $this, 'output_substep_billing_address' ), $billing_step_priority );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
 		remove_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_billing_address' ), 10 );
 		remove_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_billing_address' ), 20 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_billing_address_text_fragment' ), 10 );
 
-		// Billing Same as Shipping
+		// Billing same as shipping
 		remove_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_field' ), 100 );
 		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
 		remove_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
+
+		// Shipping same as billing
+		remove_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_same_as_billing_field' ), 100 );
+		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing' ), 10 );
+		remove_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing_on_process_checkout' ), 10 );
+
+		// Shipping same as billing
+		// Fix for when shipping is not needed while
+		// billing address is displayed after shipping address.
+		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
+		remove_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
 
 		// Billing phone
 		// Maybe move billing phone to contact step
@@ -486,6 +512,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 				$add_classes[] = 'fc-checkout-step-current-last';
 			}
 		}
+
+		// Add class for billing address position
+		$position = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' );
+		$add_classes[] = 'has-billing-address-position--' . esc_attr( $position );
 
 		// Add extra class when sidebar is present
 		if ( has_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ) ) ) {
@@ -897,9 +927,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function is_cart_page_or_fragment() {
 		global $wp_query;
-		$ajax_action = $wp_query->get( 'wc-ajax' );
+		$ajax_action = wc_clean( wp_unslash( $wp_query->get( 'wc-ajax' ) ) );
 
-		return is_cart() || 'fc_pro_update_cart_fragments' === $ajax_action || ( array_key_exists( 'wc-ajax', $_GET ) && 'fc_pro_update_cart_fragments' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) );
+		// Return `true` if any of the following conditions are met:
+		if ( is_cart() ) { return true; }
+		if ( 'fc_pro_update_cart_fragments' === $ajax_action ) { return true; }
+		if ( ( array_key_exists( 'wc-ajax', $_GET ) && 'fc_pro_update_cart_fragments' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) ) ) { return true; } // Needed to check for AJAX calls for the cart fragments early in the request.
+
+		// Filter to allow other plugins to add their own conditions
+		if ( true === apply_filters( 'fc_is_cart_page_or_fragment', false ) ) { return true; }
+
+		// Otherwise, return `false`
+		return false;
 	}
 
 
@@ -1447,7 +1486,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->register_checkout_step( array(
 			'step_id' => 'billing',
 			'step_title' => apply_filters( 'fc_step_title_billing', _x( 'Billing', 'Checkout step title', 'fluid-checkout' ) ),
-			'priority' => 30,
+			'priority' => $this->get_billing_step_hook_priority(),
 			'render_callback' => array( $this, 'output_step_billing' ),
 			'is_complete_callback' => array( $this, 'is_step_complete_billing' ),
 		) );
@@ -1786,10 +1825,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
-		<div <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
+		<section <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
 			<?php
 			echo $this->get_substep_title_html( $substep_id, $substep_title ); // WPCS: XSS ok.
-			do_action( "fc_before_substep_{$substep_id}" , $step_id, $substep_id );
+			do_action( "fc_before_substep_{$substep_id}", $step_id, $substep_id );
 	}
 
 	/**
@@ -1800,7 +1839,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $substep_title  Title of the substep.
 	 */
 	public function output_substep_end_tag( $step_id, $substep_id, $substep_title, $output_edit_buttons = true ) {
-			do_action( "fc_after_substep_{$substep_id}" , $step_id, $substep_id, $output_edit_buttons );
+			do_action( "fc_after_substep_{$substep_id}", $step_id, $substep_id, $output_edit_buttons );
 			?>
 
 			<?php if ( $output_edit_buttons && $this->is_checkout_layout_multistep() ) : ?>
@@ -1808,7 +1847,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				<button class="fc-step__substep-save <?php echo esc_attr( apply_filters( 'fc_substep_save_button_classes', 'button' ) ); ?>" data-step-save><?php echo esc_html( apply_filters( 'fc_substep_save_button_label', _x( 'Save changes', 'Checkout substep save link label', 'fluid-checkout' ) ) ); ?></button>
 			<?php endif; ?>
 
-		</div>
+		</section>
 		<?php
 	}
 
@@ -1853,12 +1892,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		<div <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
 			<div <?php echo $substep_inner_attributes_str; // WPCS: XSS ok. ?>>
 			<?php
+			do_action( "fc_before_substep_fields_{$substep_id}", $step_id, $substep_id, $collapsible );
 	}
 
 	/**
 	 * Output checkout substep end tag.
 	 */
-	public function output_substep_fields_end_tag() {
+	public function output_substep_fields_end_tag( $step_id = null, $substep_id = null, $collapsible = true ) {
+			do_action( "fc_after_substep_fields_{$substep_id}", $step_id, $substep_id, $collapsible );
 			?>
 			</div>
 		</div>
@@ -1898,8 +1939,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Output checkout substep end tag.
+	 * 
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
+	 * @param   string  $substep_id  Id of the substep.
 	 */
-	public function output_substep_text_end_tag() {
+	public function output_substep_text_end_tag( $step_id = null, $substep_id = null ) {
 			?>
 			</div>
 		</div>
@@ -2074,13 +2118,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_step_contact_fields();
-		$this->output_substep_fields_end_tag();
+		$this->output_substep_fields_end_tag( $step_id, $substep_id );
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
 			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_contact();
-			$this->output_substep_text_end_tag();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
 		}
 
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
@@ -2317,13 +2361,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_shipping_address_fields();
-		$this->output_substep_fields_end_tag();
+		$this->output_substep_fields_end_tag( $step_id, $substep_id );
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
 			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_shipping_address();
-			$this->output_substep_text_end_tag();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
 		}
 
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
@@ -2340,14 +2384,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
-		$this->output_shipping_methods_available();
+		$this->output_shipping_methods_available( $step_id, $substep_id );
 		$this->output_substep_fields_end_tag();
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
 			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_shipping_method();
-			$this->output_substep_text_end_tag();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
 		}
 
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
@@ -2365,13 +2409,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_additional_fields();
-		$this->output_substep_fields_end_tag();
+		$this->output_substep_fields_end_tag( $step_id, $substep_id );
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
 			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_order_notes();
-			$this->output_substep_text_end_tag();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
 		}
 
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
@@ -2456,7 +2500,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_substep_shipping_address_fields() {
 		ob_start();
-		wc_get_template( 'checkout/form-shipping.php', array( 'checkout' => WC()->checkout() ) );
+
+		wc_get_template( 'checkout/form-shipping.php', array(
+			'checkout'                        => WC()->checkout(),
+			'is_shipping_same_as_billing'     => $this->is_shipping_same_as_billing(),
+		) );
+
 		return ob_get_clean();
 	}
 
@@ -2618,6 +2667,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_substep_text_formatted_address_text_line( $address_type ) {
 		// Field prefix
+		$substep_id = 'shipping' === $address_type ? 'shipping_address' : 'billing_address';
 		$field_key_prefix = $address_type . '_';
 
 		// Get field keys from checkout fields
@@ -2638,7 +2688,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$address_data[ $address_field_key ] = WC()->checkout->get_value( $field_key );
 		}
 
-		$address_data = apply_filters( 'fc_'.$address_type.'_substep_text_address_data', $address_data );
+		// Filter address data
+		$address_data = apply_filters( 'fc_' . $address_type . '_substep_text_address_data', $address_data );
+
+		// Bail if no address data
+		if ( empty( $address_data ) ) { return $this->get_no_substep_review_text_notice( $substep_id ); }
 
 		return WC()->countries->get_formatted_address( $address_data );
 	}
@@ -2750,7 +2804,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_shipping_address( $review_text_lines = array() ) {
-		return $this->get_substep_text_lines_address_type( 'shipping', $review_text_lines );
+		// Maybe display shipping same as billing notice
+		if ( $this->is_shipping_same_as_billing() && true === apply_filters( 'fc_shipping_same_as_billing_display_substep_review_text_notice', true ) ) {
+			$review_text_lines[] = '<em>' . $this->get_option_label_shipping_same_as_billing() . '</em>';
+		}
+		// Otherwise, display the address data
+		else {
+			$review_text_lines = $this->get_substep_text_lines_address_type( 'shipping', $review_text_lines );
+		}
+
+		return $review_text_lines;
 	}
 
 	/**
@@ -3050,7 +3113,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_ship_to_different_address_hidden_field() {
 		?>
-		<input type="hidden" name="ship_to_different_address" value="1" />
+		<div id="ship-to-different-address" class="fc-hidden">
+			<input id="ship-to-different-address-checkbox" name="ship_to_different_address" type="checkbox" checked value="1" tabindex="-1" aria-hidden="true" />
+		</div>
 		<?php
 	}
 
@@ -3059,6 +3124,59 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function set_ship_to_different_address_true() {
 		return 1;
+	}
+
+
+
+	/**
+	 * Check whether the billing address is displayed before the shipping address.
+	 */
+	public function is_billing_address_before_shipping_address() {
+		// Define default value
+		$is_billing_before_shipping = false;
+		return apply_filters( 'fc_is_billing_address_before_shipping_address', $is_billing_before_shipping );
+	}
+
+	/**
+	 * Check whether the billing address is forced to be the same as the shipping address.
+	 */
+	public function is_billing_forced_same_as_shipping() {
+		// Define default value
+		$is_billing_forced_same_as_shipping = false;
+		return apply_filters( 'fc_is_billing_address_forced_same_as_shipping_address', $is_billing_forced_same_as_shipping );
+	}
+
+	/**
+	 * Get hook priority for the billing step.
+	 */
+	public function get_billing_step_hook_priority() {
+		// Define default priority
+		$step_priority = 30;
+		return apply_filters( 'fc_billing_step_hook_priority', $step_priority );
+	}
+
+	/**
+	 * Get hook priority for the billing address substep.
+	 */
+	public function get_billing_address_hook_priority() {
+		// Define substep hook and priority for each position
+		$substep_position_priority = apply_filters( 'fc_billing_address_hook_priority_options', array(
+			'step_after_shipping'        => array( 'fc_output_step_billing', 10 ),
+			// PRO: Hooks and priorities for other options are added from the PRO plugin.
+			// This ensures that the Lite plugin will fall back to the default option
+			// in case the PRO plugin is not active and a PRO only option as previously selected.
+		) );
+
+		// Get selected position for billing address
+		$position = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' );
+		if ( ! array_key_exists( $position, $substep_position_priority ) ) {
+			$position = FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_billing_address_position' );
+		}
+
+		// Get hook priority for the selected position
+		$hook_priority = $substep_position_priority[ $position ];
+
+		return $hook_priority;
 	}
 
 
@@ -3268,13 +3386,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_billing_address_fields();
-		$this->output_substep_fields_end_tag();
+		$this->output_substep_fields_end_tag( $step_id, $substep_id );
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
 			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_billing_address();
-			$this->output_substep_text_end_tag();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
 		}
 
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
@@ -3443,6 +3561,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 
+
 	/**
 	 * Get the label for billing same as shipping option.
 	 */
@@ -3454,24 +3573,76 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output field for billing address same as shipping.
 	 */
 	public function output_billing_same_as_shipping_field() {
+		// Bail if billing is displayed before shipping
+		if ( $this->is_billing_address_before_shipping_address() ) { return false; }
+
+		// Get current field value
+		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping();
+		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked() ? 1 : 0;
+
 		// Output a hidden field when shipping country not allowed for billing, or shipping not needed
-		if ( apply_filters( 'fc_output_billing_same_as_shipping_as_hidden_field', false ) || ! $this->is_shipping_address_available_for_billing() ) : ?>
-			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
-		<?php
+		if ( apply_filters( 'fc_output_billing_same_as_shipping_as_hidden_field', false ) || ! $this->is_shipping_address_available_for_billing() ) :
+			?>
+			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo esc_attr( $is_billing_same_as_shipping_checked ); ?>">
+			<?php
 		// Output the checkbox when shipping country is allowed for billing
 		else :
-		?>
-			<p id="billing_same_as_shipping_field" class="form-row form-row-wide">
-				<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $this->is_billing_same_as_shipping(), true ); ?>>
-				<label for="billing_same_as_shipping"><?php echo esc_html( $this->get_option_label_billing_same_as_shipping() ); ?></label>
+			?>
+			<p class="form-row form-row-wide fc-same-address-checkbox fc-checkbox-field fc-no-validation-icon" id="billing_same_as_shipping_field">
+				<span class="woocommerce-input-wrapper">
+					<label class="checkbox"><input type="checkbox" class="input-checkbox" name="billing_same_as_shipping" id="billing_same_as_shipping" value="1" <?php checked( $is_billing_same_as_shipping, true ); ?>> <span class="fc-checkbox-label-text"><?php echo esc_html( $this->get_option_label_billing_same_as_shipping() ); ?></span></label>
+				</span>
 			</p>
-		<?php
+			<?php
 		endif;
 
 		// Output the current value as a hidden field
 		// to be able to detect when the value changes
 		?>
-		<input type="hidden" name="billing_same_as_shipping_previous" id="billing_same_as_shipping_previous" value="<?php echo $this->is_billing_same_as_shipping_checked() ? '1' : '0'; // WPCS: XSS ok. ?>">
+		<input type="hidden" name="billing_same_as_shipping_previous" id="billing_same_as_shipping_previous" value="<?php echo esc_attr( $is_billing_same_as_shipping_checked ); ?>">
+		<?php
+	}
+
+
+
+	/**
+	 * Get the label for shipping same as billing option.
+	 */
+	public function get_option_label_shipping_same_as_billing() {
+		return apply_filters( 'fc_shipping_same_as_billing_option_label', __( 'Same as billing address', 'fluid-checkout' ) );
+	}
+
+	/**
+	 * Output field for shipping address same as billing.
+	 */
+	public function output_shipping_same_as_billing_field() {
+		// Bail if shipping is displayed before billing
+		if ( ! $this->is_billing_address_before_shipping_address() ) { return; }
+
+		// Get current field value
+		$is_shipping_same_as_billing = $this->is_shipping_same_as_billing();
+		$is_shipping_same_as_billing_checked = $this->is_shipping_same_as_billing_checked() ? 1 : 0;
+
+		// Output a hidden field when billing country not allowed for shipping
+		if ( apply_filters( 'fc_output_shipping_same_as_billing_as_hidden_field', false ) || ! $this->is_billing_address_available_for_shipping() ) :
+			?>
+			<input type="hidden" name="shipping_same_as_billing" id="shipping_same_as_billing" value="<?php echo esc_attr( $is_shipping_same_as_billing_checked ); ?>">
+			<?php
+		// Output the checkbox when billing country is allowed for shipping
+		else :
+			?>
+			<p class="form-row form-row-wide fc-same-address-checkbox fc-checkbox-field fc-no-validation-icon" id="shipping_same_as_billing_field">
+				<span class="woocommerce-input-wrapper">
+					<label class="checkbox"><input type="checkbox" class="input-checkbox" name="shipping_same_as_billing" id="shipping_same_as_billing" value="1" <?php checked( $is_shipping_same_as_billing, true ); ?>> <span class="fc-checkbox-label-text"><?php echo esc_html( $this->get_option_label_shipping_same_as_billing() ); ?></span></label>
+				</span>
+			</p>
+			<?php
+		endif;
+
+		// Output the current value as a hidden field
+		// to be able to detect when the value changes
+		?>
+		<input type="hidden" name="shipping_same_as_billing_previous" id="shipping_same_as_billing_previous" value="<?php echo esc_attr( $is_shipping_same_as_billing_checked ); ?>">
 		<?php
 	}
 
@@ -3507,6 +3678,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return in_array( $country_code, array_keys( $allowed_countries ) );
 	}
 
+
+
 	/**
 	 * Check whether the selected shipping country is also available for billing country.
 	 *
@@ -3517,26 +3690,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! function_exists( 'WC' ) || null === WC()->customer ) { return null; }
 
 		// Get shipping value from customer data
-		$customer = WC()->customer;
-		$shipping_country = $customer->get_shipping_country();
-
-		// Try get value from session
-		$shipping_country_session = $this->get_checkout_field_value_from_session( 'shipping_country' );
-		if ( isset( $shipping_country_session ) && ! empty( $shipping_country_session ) ) {
-			$shipping_country = $shipping_country_session;
-		}
-
-		// Use posted data when doing checkout update
-		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-			// Try get value from the post_data
-			if ( isset( $_POST['s_country'] ) ) {
-				$shipping_country = isset( $_POST['s_country'] ) ? wc_clean( wp_unslash( $_POST['s_country'] ) ) : null;
-			}
-			// Try get value from the form data sent on process checkout
-			else if ( isset( $_POST['shipping_country'] ) ) {
-				$shipping_country = isset( $_POST['shipping_country'] ) ? wc_clean( wp_unslash( $_POST['shipping_country'] ) ) : null;
-			}
-		}
+		$shipping_country = WC()->checkout->get_value( 'shipping_country' );
 
 		// Shipping country is defined, return bool
 		if ( null !== $shipping_country && ! empty( $shipping_country ) ) {
@@ -3553,9 +3707,53 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if cart is not available
 		if ( ! function_exists( 'WC' ) || null === WC()->cart ) { return false; }
 
-		$is_available = WC()->cart->needs_shipping_address() && true === $this->is_shipping_country_allowed_for_billing();
+		// Bail as not available if billing is displayed before shipping
+		if ( $this->is_billing_address_before_shipping_address() ) { return false; }
 
-		return apply_filters( 'fc_is_shipping_address_available_for_billing', $is_available );
+		// Define whether shipping address is available for billing address.
+		$is_available = WC()->cart->needs_shipping_address() && true === $this->is_shipping_country_allowed_for_billing();
+		$is_available = apply_filters( 'fc_is_shipping_address_available_for_billing', $is_available );
+
+		return $is_available;
+	}
+
+
+
+	/**
+	 * Check whether the selected billing country is also available for shipping country.
+	 *
+	 * @return  mixed  `true` if the selected billing country is also available for shipping country, `false` if the billing country is not allowed for shipping, and `null` if the billing country is not set.
+	 */
+	public function is_billing_country_allowed_for_shipping() {
+		// Bail if customer object not available
+		if ( ! function_exists( 'WC' ) || null === WC()->customer ) { return null; }
+
+		// Get billing value from customer data
+		$billing_country = WC()->checkout->get_value( 'billing_country' );
+
+		// Billing country is defined, return bool
+		if ( null !== $billing_country && ! empty( $billing_country ) ) {
+			return $this->is_country_allowed_for_shipping( $billing_country );
+		}
+
+		return null;
+	}
+
+	/**
+	 * Check whether the billing address is available to be used for the shipping address.
+	 */
+	public function is_billing_address_available_for_shipping() {
+		// Bail if cart is not available
+		if ( ! function_exists( 'WC' ) || null === WC()->cart ) { return false; }
+
+		// Bail as not available if billing is displayed after shipping
+		if ( ! $this->is_billing_address_before_shipping_address() ) { return false; }
+
+		// Define whether billing address is available for shipping address.
+		$is_available = true === $this->is_billing_country_allowed_for_shipping();
+		$is_available = apply_filters( 'fc_is_billing_address_available_for_shipping', $is_available );
+
+		return $is_available;
 	}
 
 
@@ -3620,6 +3818,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Check whether the checkbox "billing address same as shipping" is checked.
+	 * 
 	 * This function will return `true` even if the shipping country is not allowed for billing,
 	 * use `is_billing_same_as_shipping` to also check if the shipping country is allowed for billing.
 	 * 
@@ -3665,10 +3864,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $billing_same_as_shipping;
 	}
 
-
-
 	/**
-	 * Get value for whether the billing address is the same as the shipping address.
+	 * Check whether the billing address is set to be copied from the shipping address.
 	 * 
 	 * @param  array  $posted_data   Post data for all checkout fields.
 	 *
@@ -3686,7 +3883,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Set to different billing address when shipping country not allowed
-		if ( null === $this->is_shipping_country_allowed_for_billing() || ! $this->is_shipping_country_allowed_for_billing() ) {
+		if ( true !== $this->is_shipping_country_allowed_for_billing() ) {
 			return false;
 		}
 
@@ -3704,6 +3901,151 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Determine if shipping address field values are the same as billing address.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function is_shipping_address_data_same_as_billing( $posted_data = array() ) {
+		// Get parsed posted data
+		if ( empty( $posted_data ) ) {
+			$posted_data = $this->get_parsed_posted_data();
+		}
+
+		// Allow developers to hijack the returning value
+		$value_from_filter = apply_filters( 'fc_is_shipping_address_data_same_as_billing_before', null );
+		if ( null !== $value_from_filter ) {
+			return $value_from_filter;
+		}
+
+		$is_shipping_same_as_billing = true;
+		
+		// Get list of shipping fields to copy from billing fields
+		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
+
+		// Get billing fields
+		$billing_fields = WC()->checkout->get_checkout_fields( 'billing' );
+
+		// Iterate posted data
+		foreach( $shipping_copy_billing_field_keys as $field_key ) {
+
+			// Get billing field key
+			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+
+			// Check billing field values against billing
+			if ( array_key_exists( $billing_field_key, $billing_fields ) ) {
+				$shipping_field_value = null;
+				$billing_field_value = null;
+
+				// Maybe get field values from posted data
+				if ( isset( $_POST['post_data'] ) ) {
+					$shipping_field_value = array_key_exists( $field_key, $posted_data ) ? $posted_data[ $field_key ] : null;
+					$billing_field_value = array_key_exists( $billing_field_key, $posted_data ) ? $posted_data[ $billing_field_key ] : null;
+				}
+				// Maybe get field values from checkout fields
+				else {
+					$shipping_field_value = WC()->checkout->get_value( $field_key );
+					$billing_field_value = WC()->checkout->get_value( $billing_field_key );
+				}
+
+				if ( $shipping_field_value !== $billing_field_value ) {
+					$is_shipping_same_as_billing = false;
+					break;
+				}
+			}
+
+		}
+
+		return $is_shipping_same_as_billing;
+	}
+
+	/**
+	 * Check whether the checkbox "shipping address same as billing" is checked.
+	 * 
+	 * This function will return `true` even if the billing country is not allowed for shipping,
+	 * use `is_shipping_same_as_billing` to also check if the billing country is allowed for shipping.
+	 * 
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 *
+	 * @return  bool  `true` checkbox "shipping address same as billing" is checked, `false` otherwise.
+	 */
+	public function is_shipping_same_as_billing_checked( $posted_data = array() ) {
+		// Get parsed posted data
+		if ( empty( $posted_data ) ) {
+			$posted_data = $this->get_parsed_posted_data();
+		}
+
+		// Set default value
+		// 
+		// NOTE: Filter and option names are inverted because the option as initially intended
+		// to be used only when copying shipping to billing address. Later when adding option to
+		// move the billing address before shipping, the option name was not changed or
+		// a new option was not added to avoid duplicate options in the plugin settings.
+		$shipping_same_as_billing = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
+		
+		// Maybe set as same as billing for logged users
+		if ( is_user_logged_in() ) {
+			$shipping_same_as_billing = $this->is_shipping_address_data_same_as_billing( $posted_data );
+		}
+
+		// Try get value from the post_data
+		if ( isset( $_POST['post_data'] ) ) {
+			$shipping_same_as_billing = isset( $posted_data['shipping_same_as_billing'] ) && $posted_data['shipping_same_as_billing'] === '1' ? true : false;
+		}
+		// Try get value from the form data sent on process checkout
+		else if ( isset( $_POST['shipping_same_as_billing'] ) ) {
+			$shipping_same_as_billing = isset( $_POST['shipping_same_as_billing'] ) && wc_clean( wp_unslash( $_POST['shipping_same_as_billing'] ) ) === '1' ? true : false;
+		}
+		// Try to get value from the session
+		else if ( WC()->session->__isset( 'fc_shipping_same_as_billing' ) ) {
+			$shipping_same_as_billing = WC()->session->get( 'fc_shipping_same_as_billing' ) === '1';
+		}
+
+		// Filter to allow for customizations
+		$shipping_same_as_billing = apply_filters( 'fc_is_shipping_same_as_billing_checked', $shipping_same_as_billing );
+
+		return $shipping_same_as_billing;
+	}
+
+	/**
+	 * Check whether the shipping address is set to be copied from the billing address.
+	 * 
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 *
+	 * @return  bool  `true` if the shipping address is the same as the billing address, `false` otherwise.
+	 */
+	public function is_shipping_same_as_billing( $posted_data = array() ) {
+		// Bail if shipping is displayed before billing
+		if ( ! $this->is_billing_address_before_shipping_address() ) { return false; }
+
+		// Bail if billing address not available for shipping
+		if ( ! $this->is_billing_address_available_for_shipping() ) { return false; }
+
+		// Set to different shipping address when billing country not allowed
+		if ( true !== $this->is_billing_country_allowed_for_shipping() ) {
+			return false;
+		}
+
+		return $this->is_shipping_same_as_billing_checked( $posted_data );
+	}
+
+	/**
+	 * Save value of `shipping_same_as_billing` to the current user session.
+	 */
+	public function set_shipping_same_as_billing_session( $shipping_same_as_billing ) {
+		// Set session value
+		WC()->session->set( 'fc_shipping_same_as_billing', $shipping_same_as_billing ? '1' : '0');
+	}
+
+
+
+	/**
+	 * Get list of shipping fields to skip copying from billing fields.
+	 */
+	public function get_shipping_same_as_billing_skip_fields() {
+		return apply_filters( 'fc_shipping_same_as_billing_skip_fields', array() );
+	}
+
+	/**
 	 * Get list of shipping checkout field keys which values are to be copied from shipping to billing fields.
 	 *
 	 * @return  array  List of checkout field keys.
@@ -3717,7 +4059,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
 
 		// Get list of billing fields to skip copying from shipping fields
-		$skip_field_keys = apply_filters( 'fc_shipping_same_as_billing_skip_fields', array() );
+		$skip_field_keys = $this->get_shipping_same_as_billing_skip_fields();
 
 		// Use the `WC_Customer` object for supported properties
 		foreach ( $shipping_fields as $field_key => $field_args ) {
@@ -3739,6 +4081,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Get list of billing fields to skip copying from shipping fields.
+	 */
+	public function get_billing_same_as_shipping_skip_fields() {
+		return apply_filters( 'fc_billing_same_as_shipping_skip_fields', array() );
+	}
+
+	/**
 	 * Get list of billing checkout field keys which values are to be copied from shipping to billing fields.
 	 *
 	 * @return  array  List of checkout field keys.
@@ -3752,7 +4101,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
 
 		// Get list of billing fields to skip copying from shipping fields
-		$skip_field_keys = apply_filters( 'fc_billing_same_as_shipping_skip_fields', array() );
+		$skip_field_keys = $this->get_billing_same_as_shipping_skip_fields();
 
 		// Iterate shipping fields
 		foreach ( $shipping_fields as $field_key => $field_args ) {
@@ -3828,6 +4177,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $posted_data   Post data for all checkout fields.
 	 */
 	public function maybe_set_billing_address_same_as_shipping( $posted_data ) {
+		// Bail if billing is displayed before shipping
+		if ( $this->is_billing_address_before_shipping_address() ) { return $posted_data; }
+
 		// Get value for billing same as shipping
 		$is_billing_same_as_shipping_previous = isset( $posted_data[ 'billing_same_as_shipping_previous' ] ) ? $posted_data[ 'billing_same_as_shipping_previous' ] : null;
 		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping( $posted_data );
@@ -3926,6 +4278,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param array $post_data Post data for all checkout fields.
 	 */
 	public function maybe_set_billing_address_same_as_shipping_on_process_checkout( $post_data ) {
+		// Bail if billing is displayed before shipping
+		if ( $this->is_billing_address_before_shipping_address() ) { return $post_data; }
+
 		// Maybe set posted data for billing address to same as shipping
 		if ( ! $this->is_billing_same_as_shipping() ) { return $post_data; }
 
@@ -3933,7 +4288,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
 
 		// Get list of billing fields to skip copying from shipping fields
-		$skip_field_keys = apply_filters( 'fc_billing_same_as_shipping_skip_fields', array() );
+		$skip_field_keys = $this->get_billing_same_as_shipping_skip_fields();
 
 		// Iterate posted data
 		foreach( $billing_copy_shipping_field_keys as $field_key ) {
@@ -3946,6 +4301,147 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Copy field value from shipping fields, maybe set field as empty if not found in shipping fields
 			$new_field_value = isset( $post_data[ $shipping_field_key ] ) ? $post_data[ $shipping_field_key ] : null;
 			$new_field_value = apply_filters( 'fc_billing_same_as_shipping_field_value', $new_field_value, $field_key, $shipping_field_key, $post_data );
+
+			// Update billing field values
+			$post_data[ $field_key ] = $new_field_value;
+		}
+
+		return $post_data;
+	}
+
+
+
+	/**
+	 * Maybe set shipping address fields values to same as billing address from the posted data.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_set_shipping_address_same_as_billing( $posted_data ) {
+		// Bail if shipping is displayed before billing
+		if ( ! $this->is_billing_address_before_shipping_address() ) { return $posted_data; }
+
+		// Get value for shipping same as billing
+		$is_shipping_same_as_billing_previous = isset( $posted_data[ 'shipping_same_as_billing_previous' ] ) ? $posted_data[ 'shipping_same_as_billing_previous' ] : null;
+		$is_shipping_same_as_billing = $this->is_shipping_same_as_billing( $posted_data );
+		$is_shipping_same_as_billing_checked = $this->is_shipping_same_as_billing_checked( $posted_data );
+
+		// Save checked state of the shipping same as billing field to the session,
+		// for the case the billing country changes again and the new value is also accepted for shipping.
+		$this->set_shipping_same_as_billing_session( $is_shipping_same_as_billing_checked );
+
+		// Bail if billing address not available for shipping
+		if ( ! $this->is_billing_address_available_for_shipping() ) { return $posted_data; }
+
+		// Get list of shipping fields to copy from billing fields
+		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
+
+		// Get list of posted data keys
+		$posted_data_field_keys = array_keys( $posted_data );
+
+		// Maybe set post data for shipping same as billing
+		if ( $is_shipping_same_as_billing ) {
+
+			// Iterate posted data
+			foreach( $shipping_copy_billing_field_keys as $field_key ) {
+				// Get related field keys
+				$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+				$save_field_key = str_replace( 'shipping_', 'save_shipping_', $field_key );
+				$post_field_key = str_replace( 'shipping_', 's_', $field_key );
+
+				// Initialize new field value
+				$new_field_value = null;
+
+				// Get field value from billing fields
+				if ( in_array( $billing_field_key, $posted_data_field_keys ) ) {
+					// Maybe update new address data
+					if ( '0' === $is_shipping_same_as_billing_previous && ! apply_filters( 'fc_save_new_address_data_shipping_skip_update', false ) ) {
+						$posted_data[ $save_field_key ] = $posted_data[ $field_key ];
+					}
+
+					// Copy field value from billing fields, maybe set field as empty if not found in shipping fields
+					$new_field_value = isset( $posted_data[ $billing_field_key ] ) ? $posted_data[ $billing_field_key ] : '';
+				}
+
+				// Filter field value before updating post data
+				$filtered_field_value = apply_filters( 'fc_shipping_same_as_billing_field_value', $new_field_value, $field_key, $billing_field_key, $posted_data );
+
+				// Maybe update post data with new field value
+				if ( null !== $filtered_field_value )  {
+					// Update post data
+					$posted_data[ $field_key ] = $filtered_field_value;
+					$_POST[ $post_field_key ] = $filtered_field_value;
+				}
+			}
+
+		}
+		// When switching to "Shipping (NOT) same as billing", restore new shipping address fields.
+		else if ( '1' === $is_shipping_same_as_billing_previous ) {
+
+			// Iterate posted data
+			foreach( $shipping_copy_billing_field_keys as $field_key ) {
+				// Get related field keys
+				$save_field_key = str_replace( 'shipping_', 'save_shipping_', $field_key );
+				$post_field_key = str_replace( 'shipping_', 's_', $field_key );
+
+				// Get field value from new address session
+				$new_field_value = $this->get_checkout_field_value_from_session( $save_field_key );
+
+				// Maybe set field as empty if not found in session
+				$new_field_value = null !== $new_field_value ? $new_field_value : '';
+
+				// Maybe set country and state to the default location
+				if ( empty( $new_field_value ) && ( strpos( $field_key, '_country' ) > 0 || strpos( $field_key, '_state' ) > 0 ) ) {
+					// Get customer default location
+					$customer_default_location = wc_get_customer_default_location();
+
+					// Get field key without the address type
+					$default_location_field_key = str_replace( 'billing_', '', str_replace( 'shipping_', '', $field_key ) );
+
+					// Set field value to default location
+					if ( is_array( $customer_default_location ) && array_key_exists( $default_location_field_key, $customer_default_location ) ) {
+						$new_field_value = $customer_default_location[ $default_location_field_key ];
+					}
+				}
+
+				// Update post data
+				$posted_data[ $field_key ] = $new_field_value;
+				$_POST[ $post_field_key ] = $new_field_value;
+			}
+
+		}
+
+		return $posted_data;
+	}
+
+	/**
+	 * Maybe set shipping address session values to same as billing when processing an order (place order).
+	 *
+	 * @param array $post_data Post data for all checkout fields.
+	 */
+	public function maybe_set_shipping_address_same_as_billing_on_process_checkout( $post_data ) {
+		// Bail if shipping is displayed before billing
+		if ( ! $this->is_billing_address_before_shipping_address() ) { return $post_data; }
+
+		// Maybe set posted data for billing address to same as shipping
+		if ( ! $this->is_shipping_same_as_billing() ) { return $post_data; }
+
+		// Get list of shipping fields to copy from billing fields
+		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
+
+		// Get list of shipping fields to skip copying from billing fields
+		$skip_field_keys = $this->get_shipping_same_as_billing_skip_fields();
+
+		// Iterate posted data
+		foreach( $shipping_copy_billing_field_keys as $field_key ) {
+			// Skip some fields
+			if ( in_array( $field_key, $skip_field_keys ) ) { continue; }
+
+			// Get billing field key
+			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+
+			// Copy field value from billing fields, maybe set field as empty if not found in billing fields
+			$new_field_value = isset( $post_data[ $billing_field_key ] ) ? $post_data[ $billing_field_key ] : null;
+			$new_field_value = apply_filters( 'fc_shipping_same_as_billing_field_value', $new_field_value, $field_key, $billing_field_key, $post_data );
 
 			// Update billing field values
 			$post_data[ $field_key ] = $new_field_value;
@@ -3973,7 +4469,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		// Filter field keys
-		$shipping_copy_billing_field_keys = apply_filters( 'fc_billing_same_as_shipping_skip_fields', $shipping_copy_billing_field_keys );
+		$shipping_copy_billing_field_keys = apply_filters( 'fc_shipping_not_needed_shipping_field_keys', $shipping_copy_billing_field_keys );
 
 		return $shipping_copy_billing_field_keys;
 	}
@@ -4086,13 +4582,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_substep_payment_fields();
-		$this->output_substep_fields_end_tag();
+		$this->output_substep_fields_end_tag( $step_id, $substep_id );
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
 			$this->output_substep_text_start_tag( $step_id, $substep_id );
 			$this->output_substep_text_payment_method();
-			$this->output_substep_text_end_tag();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
 		}
 
 		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, false );

@@ -69,10 +69,6 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 			add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
 			add_filter( 'fc_is_step_complete_billing', array( $this, 'maybe_set_step_incomplete_billing' ), 10 );
 		}
-
-		// Shipping to different address field
-		remove_action( 'fc_before_checkout_shipping_address_wrapper', array( FluidCheckout_Steps::instance(), 'output_ship_to_different_address_hidden_field' ), 10 );
-		add_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 	}
 
 
@@ -92,21 +88,6 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 	public function change_hidden_fields_display_position_hook( $hidden_fields_display_position ) {
 		$hidden_fields_display_position = 'fc_checkout_after';
 		return $hidden_fields_display_position;
-	}
-
-
-
-	/**
-	 * Output "ship to different address" hidden field.
-	 * 
-	 * IMPORTANT: The JavaScript from the Checkout Field Editor plugin needs the field
-	 * "ship to different address" to be a checkbox as the original WooCommerce field.
-	 * Otherwise, the plugin will clear the shipping address data and hide the fields.
-	 */
-	public function output_ship_to_different_address_hidden_field() {
-		?>
-		<input id="ship-to-different-address-checkbox" name="ship_to_different_address" type="checkbox" checked value="1" tabindex="-1" aria-hidden="true" />
-		<?php
 	}
 
 

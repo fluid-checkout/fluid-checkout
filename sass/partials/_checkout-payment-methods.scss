@@ -78,7 +78,9 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	border-#{ $alignment-right }: 0;
 	background-color: $option-box-background-color;
 	font-weight: $payment-method-font-weight;
-	line-height: $option-box-radio-size;
+	text-align: #{ $alignment-left } !important; // Needed to override theme styles
+	text-indent: 0 !important; // Needed to override theme styles
+	line-height: $option-box-radio-size !important; // Needed to override theme styles
 	cursor: pointer;
 	transition: all $global-animation-duration-fast linear;
 

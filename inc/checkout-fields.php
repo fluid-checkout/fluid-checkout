@@ -41,8 +41,12 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
 
-		// Select2 field class
+		// Extra field classes
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_select2_field_class' ), 100, 3 );
+		add_filter( 'woocommerce_form_field_args', array( $this, 'add_field_type_class' ), 100, 3 );
+
+		// Checkbox label wrapper
+		add_filter( 'woocommerce_form_field_checkbox', array( $this, 'add_checkbox_label_text_wrapper' ), 100, 4 );
 	}
 
 
@@ -67,8 +71,12 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		remove_filter( 'woocommerce_shipping_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
 		remove_filter( 'woocommerce_checkout_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
 
-		// Select2 field class
+		// Extra field classes
 		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_select2_field_class' ), 100, 3 );
+		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_field_type_class' ), 100, 3 );
+
+		// Checkbox label wrapper
+		remove_filter( 'woocommerce_form_field_checkbox', array( $this, 'add_checkbox_label_text_wrapper' ), 100, 4 );
 	}
 
 
@@ -384,9 +392,10 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @return  array           Modified checkout field args.
 	 */
 	public function add_select2_field_class( $args, $key, $value ) {
+		// Define field types which render as a `select2` field
 		$select2_field_types = apply_filters( 'fc_select2_field_types', array( 'country', 'state', 'select' ) );
 
-		// Bail if field type is not a select2 field
+		// Bail if field type is not a `select2` field
 		if ( ! in_array( $args[ 'type' ], $select2_field_types ) ) { return $args; }
 
 		// Initialize class argument if not existing yet
@@ -396,6 +405,106 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		$args[ 'class' ] = array_merge( $args[ 'class' ], array( 'fc-select2-field' ) );
 
 		return $args;
+	}
+
+
+
+	/**
+	 * Add extra class field types.
+	 *
+	 * @param   array   $args   Checkout field args.
+	 * @param   string  $key    Field key.
+	 * @param   mixed   $value  Field value.
+	 *
+	 * @return  array           Modified checkout field args.
+	 */
+	public function add_field_type_class( $args, $key, $value ) {
+		// Initialize class argument if not existing yet
+		if ( ! array_key_exists( 'class', $args ) ) { $args[ 'class' ] = array(); }
+
+		// Add extra class
+		$args[ 'class' ] = array_merge( $args[ 'class' ], array( 'fc-' . $args[ 'type' ] . '-field' ) );
+
+		return $args;
+	}
+
+
+
+	/**
+	 * Add a wrapper element to checkbox fields label text.
+	 * 
+	 * @param   string  $field  The HTML for the field.
+	 * @param   string  $key    The field key.
+	 * @param   array   $args   The field args.
+	 * @param   string  $value  The field value.
+	 */
+	public function add_checkbox_label_text_wrapper( $field, $key, $args, $value ) {
+		// Bail if field is not a checkbox field
+		if ( ! is_array( $args ) || ! array_key_exists( 'type', $args ) || 'checkbox' !== $args[ 'type' ] ) { return $field; }
+
+		//
+		// COPIED FROM `woocommerce_form_field` function
+		//
+		if ( $args['required'] ) {
+			$args['class'][] = 'validate-required';
+			$required        = '&nbsp;<abbr class="required" title="' . esc_attr__( 'required', 'woocommerce' ) . '">*</abbr>';
+		} else {
+			$required = '&nbsp;<span class="optional">(' . esc_html__( 'optional', 'woocommerce' ) . ')</span>';
+		}
+
+		if ( is_string( $args['label_class'] ) ) {
+			$args['label_class'] = array( $args['label_class'] );
+		}
+
+		if ( is_null( $value ) ) {
+			$value = $args['default'];
+		}
+
+		// Custom attribute handling.
+		$custom_attributes         = array();
+		$args['custom_attributes'] = array_filter( (array) $args['custom_attributes'], 'strlen' );
+
+		if ( $args['maxlength'] ) {
+			$args['custom_attributes']['maxlength'] = absint( $args['maxlength'] );
+		}
+
+		if ( $args['minlength'] ) {
+			$args['custom_attributes']['minlength'] = absint( $args['minlength'] );
+		}
+
+		if ( ! empty( $args['autocomplete'] ) ) {
+			$args['custom_attributes']['autocomplete'] = $args['autocomplete'];
+		}
+
+		if ( true === $args['autofocus'] ) {
+			$args['custom_attributes']['autofocus'] = 'autofocus';
+		}
+
+		if ( $args['description'] ) {
+			$args['custom_attributes']['aria-describedby'] = $args['id'] . '-description';
+		}
+
+		if ( ! empty( $args['custom_attributes'] ) && is_array( $args['custom_attributes'] ) ) {
+			foreach ( $args['custom_attributes'] as $attribute => $attribute_value ) {
+				$custom_attributes[] = esc_attr( $attribute ) . '="' . esc_attr( $attribute_value ) . '"';
+			}
+		}
+		//
+		// END - COPIED FROM `woocommerce_form_field` function
+		//
+		
+		// Get the orignal `label` html for the checkbox field
+		$label_original = '<label class="checkbox ' . implode( ' ', $args['label_class'] ) . '" ' . implode( ' ', $custom_attributes ) . '>
+						<input type="' . esc_attr( $args['type'] ) . '" class="input-checkbox ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" value="1" ' . checked( $value, 1, false ) . ' /> ' . $args['label'] . $required . '</label>';
+
+		// Wrap the label text with a `<span>` element
+		$label_replacement = '<label class="checkbox ' . implode( ' ', $args['label_class'] ) . '" ' . implode( ' ', $custom_attributes ) . '>
+						<input type="' . esc_attr( $args['type'] ) . '" class="input-checkbox ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" value="1" ' . checked( $value, 1, false ) . ' /> ' . '<span class="fc-checkbox-label-text">' . $args['label'] . '</span>' . $required . '</label>';
+
+		// Replace the original label with the new one
+		$field = str_replace( $label_original, $label_replacement, $field );
+
+		return $field;
 	}
 
 }

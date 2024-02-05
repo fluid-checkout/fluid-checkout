@@ -22,7 +22,7 @@ class FluidCheckout_CobrosYA extends FluidCheckout {
 		// Billing fields
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_billing_fields' ), 10 );
 
-		// Prevent hiding optional fields behind a link button
+		// Optional fields
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields' ), 10 );
 	}
 
