@@ -21,7 +21,7 @@ class FluidCheckout_TheBluehostPlugin extends FluidCheckout {
 	public function hooks() {
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
-		
+
 		// Checkout fields
 		add_action( 'after_setup_theme', array( $this, 'undo_ecommerce_hooks' ), 100 );
 	}
@@ -129,7 +129,7 @@ class FluidCheckout_TheBluehostPlugin extends FluidCheckout {
 	public function save_custom_shipping_email_field( $order ) {
 		// Get shipping email
 		$shipping_email = isset( $_POST[ 'shipping_email' ] ) ? sanitize_email( $_POST[ 'shipping_email' ] ) : '';
-	
+
 		// Maybe save shipping email to order
 		if ( ! empty( $shipping_email ) ) {
 			$order->update_meta_data( '_shipping_email', $shipping_email );
