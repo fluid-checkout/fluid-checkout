@@ -40,10 +40,6 @@ class FluidCheckout_TheBluehostPlugin extends FluidCheckout {
 		// Prevent swapping address fields
 		remove_filter( 'woocommerce_checkout_fields', array( $class_object, 'swap_billing_shipping_fields' ), 10 );
 
-		// // Cart page
-		// remove_filter( 'woocommerce_coupons_enabled',  array( $class_object, 'disable_coupon_field_on_cart' ) );
-		// remove_filter( 'woocommerce_before_cart', array( $class_object, 'hide_banner_notice_on_cart'));
-
 		// Remove custom fields
 		// - Shipping phone fields should be managed by Fluid Checkout
 		// - Shipping email field may be added back depending on the integration settings
