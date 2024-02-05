@@ -136,6 +136,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_theme_zk_nito_add_extra_fields'                      => 'no',
 			'fc_compat_theme_woodmart_output_checkout_steps_section'        => 'no',
 			'fc_compat_theme_woodmart_disable_theme_checkout_options'       => 'yes',
+			'fc_compat_theme_pressmart_output_checkout_steps_section'       => 'no',
 
 			// Deprecated settings.
 			'fc_enable_checkout_place_order_sidebar'                        => 'no',
