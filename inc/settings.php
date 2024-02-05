@@ -126,6 +126,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'woocommerce_gzd_display_checkout_back_to_cart_button'          => 'no',
 			'woocommerce_gzd_display_checkout_table_color'                  => '#eeeeee',
 			'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' => 'yes',
+			'fc_integration_bluehost_plugin_custom_fields'                  => 'no',
 			'woocommerce_enable_guest_checkout'                             => 'yes',
 		
 			// Compatibility settings for themes.
