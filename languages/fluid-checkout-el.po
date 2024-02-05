@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-29 17:17+0000\n"
-"PO-Revision-Date: 2024-01-23 11:46+0000\n"
+"PO-Revision-Date: 2024-02-02 19:30+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Greek\n"
 "Language: el\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.6; wp-6.4.2"
+"X-Loco-Version: 2.6.6; wp-6.4.3"
 
 #: inc/admin/admin-settings-checkout.php:396
 msgid "\"Add\" link button"
@@ -183,7 +183,7 @@ msgstr "Προσθέστε περιοχές widget στη σελίδα ευχα�
 msgid "Add-ons"
 msgstr "Πρόσθετα"
 
-#: inc/checkout-steps.php:2406
+#: inc/checkout-steps.php:2407
 msgid "Additional notes"
 msgstr "Πρόσθετες σημειώσεις"
 
@@ -311,7 +311,7 @@ msgstr "Έχετε ήδη λογαριασμό"
 msgid "Always show"
 msgstr "Πάντα να δείχνετε"
 
-#: inc/checkout-steps.php:2178
+#: inc/checkout-steps.php:2179
 msgid "An account will be created with the information provided."
 msgstr "Θα δημιουργηθεί ένας λογαριασμός με τις πληροφορίες που παρέχονται."
 
@@ -421,7 +421,7 @@ msgstr "Διεύθυνση χρέωσης"
 msgid "Billing phone"
 msgstr "Τηλέφωνο χρέωσης"
 
-#: inc/checkout-steps.php:3383
+#: inc/checkout-steps.php:3384
 msgid "Billing to"
 msgstr "Χρέωση σε"
 
@@ -491,7 +491,7 @@ msgstr ""
 "Αλλαγή της ορατότητας για το πεδίο της εταιρείας αποστολής στη φόρμα "
 "πληρωμής."
 
-#: inc/checkout-steps.php:1845
+#: inc/checkout-steps.php:1846
 #, php-format
 msgid "Change: %s"
 msgstr "Αλλαγή: %s"
@@ -569,32 +569,32 @@ msgstr "Πρόοδος πληρωμής"
 msgid "Checkout Sidebar"
 msgstr "Πλαϊνή μπάρα πληρωμής"
 
-#: inc/checkout-steps.php:1487
+#: inc/checkout-steps.php:1488
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Τιμολόγηση"
 
-#: inc/checkout-steps.php:1466
+#: inc/checkout-steps.php:1467
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Επικοινωνία"
 
-#: inc/checkout-steps.php:1496
+#: inc/checkout-steps.php:1497
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Πληρωμή"
 
-#: inc/checkout-steps.php:1475
+#: inc/checkout-steps.php:1476
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Αποστολή"
 
-#: inc/checkout-steps.php:1845
+#: inc/checkout-steps.php:1846
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Αλλαγή"
 
-#: inc/checkout-steps.php:1846
+#: inc/checkout-steps.php:1847
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Αποθήκευση αλλαγών"
@@ -970,7 +970,7 @@ msgstr ""
 msgid "Don't show this again"
 msgstr "Μην το ξαναδείξετε αυτό"
 
-#: inc/checkout-steps.php:4865
+#: inc/checkout-steps.php:4866
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 msgid "Edit cart"
 msgstr "Επεξεργασία καλαθιού"
@@ -1502,7 +1502,7 @@ msgstr "Πολλαπλών βημάτων"
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Πολλαπλές αποθηκευμένες διευθύνσεις για αποστολή και τιμολόγηση."
 
-#: inc/checkout-steps.php:2115
+#: inc/checkout-steps.php:2116
 msgid "My contact"
 msgstr "Η επαφή μου"
 
@@ -1531,7 +1531,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2901
+#: inc/checkout-steps.php:2902
 msgid "Not selected yet."
 msgstr "Δεν έχει επιλεγεί ακόμη."
 
@@ -1634,7 +1634,7 @@ msgstr "Πρόοδος της παραγγελίας"
 msgid "Order status"
 msgstr "Κατάσταση παραγγελίας"
 
-#: inc/checkout-steps.php:4800 inc/admin/admin-settings-cart.php:131
+#: inc/checkout-steps.php:4801 inc/admin/admin-settings-cart.php:131
 #: inc/admin/admin-settings-order-received.php:177
 #: inc/admin/admin-settings-checkout.php:238
 msgid "Order summary"
@@ -1659,7 +1659,7 @@ msgstr "Χρώμα φόντου σελίδας"
 msgid "Parcel terminal"
 msgstr "Τερματικός σταθμός δεμάτων"
 
-#: inc/checkout-steps.php:4579
+#: inc/checkout-steps.php:4580
 msgid "Payment method"
 msgstr "Μέθοδος πληρωμής"
 
@@ -1684,7 +1684,7 @@ msgid "Place order"
 msgstr "Τοποθετήστε την παραγγελία"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1352
+#: inc/checkout-steps.php:1353
 #, php-format
 msgid "Proceed to %s"
 msgstr "Προχωρήστε στην %s"
@@ -1770,11 +1770,11 @@ msgstr ""
 msgid "Required"
 msgstr "Απαιτούμενο"
 
-#: inc/checkout-steps.php:3611
+#: inc/checkout-steps.php:3612
 msgid "Same as billing address"
 msgstr "Ίδια με τη διεύθυνση χρέωσης"
 
-#: inc/checkout-steps.php:3568
+#: inc/checkout-steps.php:3569
 msgid "Same as shipping address"
 msgstr "Ίδια με τη διεύθυνση αποστολής"
 
@@ -1898,7 +1898,7 @@ msgstr "Διεύθυνση αποστολής"
 msgid "Shipping company"
 msgstr "Ναυτιλιακή εταιρεία"
 
-#: inc/checkout-steps.php:2382
+#: inc/checkout-steps.php:2383
 msgid "Shipping method"
 msgstr "Μέθοδος αποστολής"
 
@@ -1911,7 +1911,7 @@ msgstr "Μέθοδοι αποστολής"
 msgid "Shipping phone"
 msgstr "Τηλέφωνο αποστολής"
 
-#: inc/checkout-steps.php:2358
+#: inc/checkout-steps.php:2359
 msgid "Shipping to"
 msgstr "Αποστολή σε"
 
@@ -1974,26 +1974,26 @@ msgid "Split"
 msgstr "Split"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1608
+#: inc/checkout-steps.php:1609
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Βήμα %1$s από %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2560
+#: inc/checkout-steps.php:2561
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2565
+#: inc/checkout-steps.php:2566
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:1958
+#: inc/checkout-steps.php:1959
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Καμία."
@@ -2035,23 +2035,32 @@ msgstr ""
 "πρόσθετα Fluid Checkout που θα κυκλοφορήσουμε στο μέλλον."
 
 #: inc/admin/admin-settings-checkout.php:467
+#| msgid ""
+#| "The checkbox \"Same as shiping address\" will start as checked by default "
+#| "when the shipping address section is the displayed first. <br>The "
+#| "checkbox \"Same as billing address\" will start as checked by default "
+#| "when the billing address section is the displayed first. <br> It is "
+#| "recommended to leave this option checked as to significantly reduce the "
+#| "number of open input fields at checkout, <a href=\"https://baymard."
+#| "com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-"
+#| "and-hide-the-fields-entirely\" target=\"_blank\">read the research</a>."
 msgid ""
 "The checkbox \"Same as shiping address\" will start as checked by default "
-"when the shipping address section is the displayed first. <br>The checkbox "
+"when the shipping address section is displayed first. <br>The checkbox "
 "\"Same as billing address\" will start as checked by default when the "
-"billing address section is the displayed first. <br> It is recommended to "
-"leave this option checked as to significantly reduce the number of open "
-"input fields at checkout, <a href=\"https://baymard.com/blog/checkout-flow-"
-"average-form-fields#3-default-billing--shipping-and-hide-the-fields-"
-"entirely\" target=\"_blank\">read the research</a>."
+"billing address section is displayed first. <br> It is recommended to leave "
+"this option checked as to significantly reduce the number of open input "
+"fields at checkout, <a href=\"https://baymard.com/blog/checkout-flow-average-"
+"form-fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
+"target=\"_blank\">read the research</a>."
 msgstr ""
 "Το πλαίσιο ελέγχου \"Ίδια με τη διεύθυνση αποστολής\" θα αρχίσει να είναι "
-"επιλεγμένο από προεπιλογή όταν το τμήμα της διεύθυνσης αποστολής εμφανίζεται "
-"πρώτο. <br>Το πλαίσιο ελέγχου \"Same as billing address\" (Ίδια με διεύθυνση "
-"χρέωσης) θα αρχίσει να είναι επιλεγμένο από προεπιλογή όταν το τμήμα "
-"διεύθυνσης χρέωσης εμφανίζεται πρώτο. <br> Συνιστάται να αφήσετε αυτή την "
-"επιλογή επιλεγμένη, καθώς θα μειωθεί σημαντικά ο αριθμός των ανοικτών πεδίων "
-"εισαγωγής κατά την ολοκλήρωση της πληρωμής, <a href=\"https://baymard."
+"επιλεγμένο από προεπιλογή όταν εμφανίζεται πρώτα το τμήμα της διεύθυνσης "
+"αποστολής. <br>Το πλαίσιο ελέγχου \"Same as billing address\" (Ίδια με "
+"διεύθυνση χρέωσης) θα αρχίσει να είναι επιλεγμένο από προεπιλογή όταν το "
+"τμήμα διεύθυνσης χρέωσης εμφανίζεται πρώτο. <br> Συνιστάται να αφήσετε αυτήν "
+"την επιλογή επιλεγμένη, καθώς θα μειωθεί σημαντικά ο αριθμός των ανοικτών "
+"πεδίων εισαγωγής κατά την ολοκλήρωση της πληρωμής, <a href=\"https://baymard."
 "com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-"
 "hide-the-fields-entirely\" target=\"_blank\">διαβάστε την έρευνα</a>."
 

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-08 14:39+0000\n"
-"PO-Revision-Date: 2024-01-23 11:45+0000\n"
+"PO-Revision-Date: 2024-02-02 19:28+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.6; wp-6.4.2"
+"X-Loco-Version: 2.6.6; wp-6.4.3"
 
 #: inc/admin/admin-settings-checkout.php:396
 msgid "\"Add\" link button"
@@ -189,7 +189,7 @@ msgstr "Adicionar áreas de widget à página de agradecimento"
 msgid "Add-ons"
 msgstr "Complementos"
 
-#: inc/checkout-steps.php:2406
+#: inc/checkout-steps.php:2407
 msgid "Additional notes"
 msgstr "Notas Adicionais"
 
@@ -317,7 +317,7 @@ msgstr "Já tem uma conta?"
 msgid "Always show"
 msgstr "Sempre mostrar"
 
-#: inc/checkout-steps.php:2178
+#: inc/checkout-steps.php:2179
 msgid "An account will be created with the information provided."
 msgstr "Sua conta será criada com as informações fornecidas."
 
@@ -429,7 +429,7 @@ msgstr "Endereço de faturamento"
 msgid "Billing phone"
 msgstr "Telefone de faturamento"
 
-#: inc/checkout-steps.php:3383
+#: inc/checkout-steps.php:3384
 msgid "Billing to"
 msgstr "Faturamento para"
 
@@ -498,7 +498,7 @@ msgstr ""
 "Altere a visibilidade do campo da empresa de remessa no formulário de "
 "checkout."
 
-#: inc/checkout-steps.php:1845
+#: inc/checkout-steps.php:1846
 #, php-format
 msgid "Change: %s"
 msgstr "Alterar: %s"
@@ -576,32 +576,32 @@ msgstr "Progresso do checkout"
 msgid "Checkout Sidebar"
 msgstr "Barra lateral do checkout"
 
-#: inc/checkout-steps.php:1487
+#: inc/checkout-steps.php:1488
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Cobrança"
 
-#: inc/checkout-steps.php:1466
+#: inc/checkout-steps.php:1467
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Contato"
 
-#: inc/checkout-steps.php:1496
+#: inc/checkout-steps.php:1497
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Pagamento"
 
-#: inc/checkout-steps.php:1475
+#: inc/checkout-steps.php:1476
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Entrega"
 
-#: inc/checkout-steps.php:1845
+#: inc/checkout-steps.php:1846
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Alterar"
 
-#: inc/checkout-steps.php:1846
+#: inc/checkout-steps.php:1847
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Salvar alterações"
@@ -980,7 +980,7 @@ msgstr "Não esconder os campos \"linha de endereço 2\" atrás de um link"
 msgid "Don't show this again"
 msgstr "Não mostre isso novamente"
 
-#: inc/checkout-steps.php:4865
+#: inc/checkout-steps.php:4866
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 msgid "Edit cart"
 msgstr "Editar carrinho"
@@ -1518,7 +1518,7 @@ msgstr "Multi-etapas"
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Vários endereços salvos para envio e cobrança."
 
-#: inc/checkout-steps.php:2115
+#: inc/checkout-steps.php:2116
 msgid "My contact"
 msgstr "Meu contato"
 
@@ -1546,7 +1546,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2901
+#: inc/checkout-steps.php:2902
 msgid "Not selected yet."
 msgstr "Não selecionado."
 
@@ -1647,7 +1647,7 @@ msgstr "Progresso do pedido"
 msgid "Order status"
 msgstr "Status do pedido"
 
-#: inc/checkout-steps.php:4800 inc/admin/admin-settings-cart.php:131
+#: inc/checkout-steps.php:4801 inc/admin/admin-settings-cart.php:131
 #: inc/admin/admin-settings-order-received.php:177
 #: inc/admin/admin-settings-checkout.php:238
 #| msgid "Order Summary"
@@ -1673,7 +1673,7 @@ msgstr "Cor de fundo da página"
 msgid "Parcel terminal"
 msgstr "Terminal de encomendas"
 
-#: inc/checkout-steps.php:4579
+#: inc/checkout-steps.php:4580
 msgid "Payment method"
 msgstr "Forma de pagamento"
 
@@ -1698,7 +1698,7 @@ msgid "Place order"
 msgstr "Finalizar pedido"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1352
+#: inc/checkout-steps.php:1353
 #, php-format
 msgid "Proceed to %s"
 msgstr "Prosseguir para %s"
@@ -1787,11 +1787,11 @@ msgstr ""
 msgid "Required"
 msgstr "Obrigatório"
 
-#: inc/checkout-steps.php:3611
+#: inc/checkout-steps.php:3612
 msgid "Same as billing address"
 msgstr "Igual ao endereço de cobrança"
 
-#: inc/checkout-steps.php:3568
+#: inc/checkout-steps.php:3569
 msgid "Same as shipping address"
 msgstr "Igual ao endereço de entrega"
 
@@ -1913,7 +1913,7 @@ msgstr "Endereço de entrega"
 msgid "Shipping company"
 msgstr "Empresa de transporte"
 
-#: inc/checkout-steps.php:2382
+#: inc/checkout-steps.php:2383
 msgid "Shipping method"
 msgstr "Método de entrega"
 
@@ -1926,7 +1926,7 @@ msgstr "Métodos de envio"
 msgid "Shipping phone"
 msgstr "Telefone de entrega"
 
-#: inc/checkout-steps.php:2358
+#: inc/checkout-steps.php:2359
 msgid "Shipping to"
 msgstr "Enviando para"
 
@@ -1987,26 +1987,26 @@ msgid "Split"
 msgstr "Dividir"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1608
+#: inc/checkout-steps.php:1609
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Passo %1$s de %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2560
+#: inc/checkout-steps.php:2561
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2565
+#: inc/checkout-steps.php:2566
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:1958
+#: inc/checkout-steps.php:1959
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Nenhum."
@@ -2049,24 +2049,34 @@ msgstr ""
 "Fluid Checkout que lançaremos no futuro."
 
 #: inc/admin/admin-settings-checkout.php:467
+#| msgid ""
+#| "The checkbox \"Same as shiping address\" will start as checked by default "
+#| "when the shipping address section is the displayed first. <br>The "
+#| "checkbox \"Same as billing address\" will start as checked by default "
+#| "when the billing address section is the displayed first. <br> It is "
+#| "recommended to leave this option checked as to significantly reduce the "
+#| "number of open input fields at checkout, <a href=\"https://baymard."
+#| "com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-"
+#| "and-hide-the-fields-entirely\" target=\"_blank\">read the research</a>."
 msgid ""
 "The checkbox \"Same as shiping address\" will start as checked by default "
-"when the shipping address section is the displayed first. <br>The checkbox "
+"when the shipping address section is displayed first. <br>The checkbox "
 "\"Same as billing address\" will start as checked by default when the "
-"billing address section is the displayed first. <br> It is recommended to "
-"leave this option checked as to significantly reduce the number of open "
-"input fields at checkout, <a href=\"https://baymard.com/blog/checkout-flow-"
-"average-form-fields#3-default-billing--shipping-and-hide-the-fields-"
-"entirely\" target=\"_blank\">read the research</a>."
+"billing address section is displayed first. <br> It is recommended to leave "
+"this option checked as to significantly reduce the number of open input "
+"fields at checkout, <a href=\"https://baymard.com/blog/checkout-flow-average-"
+"form-fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
+"target=\"_blank\">read the research</a>."
 msgstr ""
-"A caixa de seleção \"Igual ao endereço de entrega\" começará marcada por "
-"padrão quando a seção de endereço de entrega for exibida primeiro. <br>A "
-"caixa de seleção \"Igual ao endereço de cobrança\" começará a ser marcada "
-"por padrão quando a seção de endereço de cobrança for exibida primeiro. <br> "
-"Recomenda-se deixar essa opção marcada para reduzir significativamente o "
-"número de campos de entrada abertos no checkout, <a href=\"https://baymard."
-"com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-"
-"hide-the-fields-entirely\" target=\"_blank\">leia a pesquisa</a>."
+"A caixa de seleção \"Same as shiping address\" (Igual ao endereço de entrega)"
+" começará a ser marcada por padrão quando a seção de endereço de entrega for "
+"exibida primeiro. <br>A caixa de seleção \"Same as billing address\" (Igual "
+"ao endereço de cobrança) começará a ser marcada por padrão quando a seção de "
+"endereço de cobrança for exibida primeiro. <br> Recomenda-se deixar essa "
+"opção marcada para reduzir significativamente o número de campos de entrada "
+"abertos no checkout, <a href=\"https://baymard.com/blog/checkout-flow-"
+"average-form-fields#3-default-billing--shipping-and-hide-the-fields-"
+"entirely\" target=\"_blank\">leia a pesquisa</a>."
 
 #: inc/checkout-validation.php:180
 msgid "The CNPJ number \"{cnpj_number}\" is invalid."
