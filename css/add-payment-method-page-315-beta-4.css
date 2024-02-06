@@ -279,7 +279,9 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
 }
 
 .fc-wrapper #payment .payment_methods > li .payment_box:before,
-#add_payment_method .fc-wrapper #payment .payment_methods > li .payment_box:before {
+#add_payment_method .fc-wrapper #payment .payment_methods > li .payment_box:before,
+.fc-wrapper #payment .payment_methods > li .payment_box:after,
+#add_payment_method .fc-wrapper #payment .payment_methods > li .payment_box:after {
   display: none;
 }
 

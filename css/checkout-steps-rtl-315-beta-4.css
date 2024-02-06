@@ -1294,7 +1294,9 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 }
 
 .fc-wrapper #payment .payment_methods > li .payment_box:before,
-#add_payment_method .fc-wrapper #payment .payment_methods > li .payment_box:before {
+#add_payment_method .fc-wrapper #payment .payment_methods > li .payment_box:before,
+.fc-wrapper #payment .payment_methods > li .payment_box:after,
+#add_payment_method .fc-wrapper #payment .payment_methods > li .payment_box:after {
   display: none;
 }
 
