@@ -396,6 +396,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme Kosi.
 * Added: Compatibility with theme Pressmart.
 * Added: Compatibility with plugin The Bluehost Plugin.
 * Added: Partial compatibility with plugin States, Cities, and Places for WooCommerce. Trigger select events when appropriate.
