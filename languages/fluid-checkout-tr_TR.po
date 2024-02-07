@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-03 18:58+0000\n"
-"PO-Revision-Date: 2024-01-23 11:46+0000\n"
+"PO-Revision-Date: 2024-02-02 19:29+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -183,7 +183,7 @@ msgstr "Teşekkür sayfasına widget alanları ekleyin"
 msgid "Add-ons"
 msgstr "Eklentiler"
 
-#: inc/checkout-steps.php:2406
+#: inc/checkout-steps.php:2407
 msgid "Additional notes"
 msgstr "Ek notlar"
 
@@ -311,7 +311,7 @@ msgstr "Zaten bir hesabınız var mı?"
 msgid "Always show"
 msgstr "Her zaman göster"
 
-#: inc/checkout-steps.php:2178
+#: inc/checkout-steps.php:2179
 msgid "An account will be created with the information provided."
 msgstr "Verdiğiniz bilgilerle yeni bir hesap oluşturulacaktır."
 
@@ -422,7 +422,7 @@ msgstr "Fatura Adresi"
 msgid "Billing phone"
 msgstr "Fatura telefonu"
 
-#: inc/checkout-steps.php:3383
+#: inc/checkout-steps.php:3384
 msgid "Billing to"
 msgstr "Fatura Bilgileri"
 
@@ -489,7 +489,7 @@ msgstr "E-posta adresini şu şekilde değiştirin: {suggestion-value}"
 msgid "Change visibility for the shipping company field on the checkout form."
 msgstr "Ödeme formundaki kargo şirketi alanının görünürlüğünü değiştirin."
 
-#: inc/checkout-steps.php:1845
+#: inc/checkout-steps.php:1846
 #, php-format
 msgid "Change: %s"
 msgstr "Değiştir: %s"
@@ -566,32 +566,32 @@ msgstr "Ödeme ilerlemesi"
 msgid "Checkout Sidebar"
 msgstr "Ödeme Sayfası Kenar Çubuğu"
 
-#: inc/checkout-steps.php:1487
+#: inc/checkout-steps.php:1488
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Faturalandırma"
 
-#: inc/checkout-steps.php:1466
+#: inc/checkout-steps.php:1467
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "İletişim"
 
-#: inc/checkout-steps.php:1496
+#: inc/checkout-steps.php:1497
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Ödeme"
 
-#: inc/checkout-steps.php:1475
+#: inc/checkout-steps.php:1476
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Gönderim"
 
-#: inc/checkout-steps.php:1845
+#: inc/checkout-steps.php:1846
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Değiştir"
 
-#: inc/checkout-steps.php:1846
+#: inc/checkout-steps.php:1847
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Değişiklikleri kaydet"
@@ -958,7 +958,7 @@ msgstr "Bir bağlantı düğmesinin arkasına \"Adres satırı 2\" alanlarını 
 msgid "Don't show this again"
 msgstr "Bunu bir daha gösterme"
 
-#: inc/checkout-steps.php:4865
+#: inc/checkout-steps.php:4866
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 #| msgid "Edit Cart"
 msgid "Edit cart"
@@ -1491,7 +1491,7 @@ msgstr "Çok adımlı"
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Gönderim ve faturalandırma için birden fazla kayıtlı adres."
 
-#: inc/checkout-steps.php:2115
+#: inc/checkout-steps.php:2116
 msgid "My contact"
 msgstr "İletişim"
 
@@ -1519,7 +1519,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2901
+#: inc/checkout-steps.php:2902
 msgid "Not selected yet."
 msgstr "Henüz seçilmedi."
 
@@ -1619,7 +1619,7 @@ msgstr "Sipariş ilerleme durumu"
 msgid "Order status"
 msgstr "Sipariş durumu"
 
-#: inc/checkout-steps.php:4800 inc/admin/admin-settings-cart.php:131
+#: inc/checkout-steps.php:4801 inc/admin/admin-settings-cart.php:131
 #: inc/admin/admin-settings-order-received.php:177
 #: inc/admin/admin-settings-checkout.php:238
 msgid "Order summary"
@@ -1644,7 +1644,7 @@ msgstr "Sayfa arka plan rengi"
 msgid "Parcel terminal"
 msgstr "Koli terminali"
 
-#: inc/checkout-steps.php:4579
+#: inc/checkout-steps.php:4580
 msgid "Payment method"
 msgstr "Ödeme yöntemi"
 
@@ -1669,7 +1669,7 @@ msgid "Place order"
 msgstr "Sipariş verin"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1352
+#: inc/checkout-steps.php:1353
 #, php-format
 msgid "Proceed to %s"
 msgstr "%s'ye ilerleyin"
@@ -1758,11 +1758,11 @@ msgstr ""
 msgid "Required"
 msgstr "Gerekli"
 
-#: inc/checkout-steps.php:3611
+#: inc/checkout-steps.php:3612
 msgid "Same as billing address"
 msgstr "Fatura adresi ile aynı"
 
-#: inc/checkout-steps.php:3568
+#: inc/checkout-steps.php:3569
 msgid "Same as shipping address"
 msgstr "Sevkiyat adresiyle aynı"
 
@@ -1878,7 +1878,7 @@ msgstr "Nakliye adresi"
 msgid "Shipping company"
 msgstr "Nakliye şirketi"
 
-#: inc/checkout-steps.php:2382
+#: inc/checkout-steps.php:2383
 msgid "Shipping method"
 msgstr "Kargo"
 
@@ -1891,7 +1891,7 @@ msgstr "Gönderi yöntemleri"
 msgid "Shipping phone"
 msgstr "Telefon numarası"
 
-#: inc/checkout-steps.php:2358
+#: inc/checkout-steps.php:2359
 msgid "Shipping to"
 msgstr "Alıcı Bilgileri"
 
@@ -1950,26 +1950,26 @@ msgid "Split"
 msgstr "Bölünmüş"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1608
+#: inc/checkout-steps.php:1609
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Adım %1$s / %2$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2560
+#: inc/checkout-steps.php:2561
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2565
+#: inc/checkout-steps.php:2566
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:1958
+#: inc/checkout-steps.php:1959
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Yok."
@@ -2012,15 +2012,25 @@ msgstr ""
 "Fluid Checkout eklentilerini içerir."
 
 #: inc/admin/admin-settings-checkout.php:467
+#, fuzzy
+#| msgid ""
+#| "The checkbox \"Same as shiping address\" will start as checked by default "
+#| "when the shipping address section is the displayed first. <br>The "
+#| "checkbox \"Same as billing address\" will start as checked by default "
+#| "when the billing address section is the displayed first. <br> It is "
+#| "recommended to leave this option checked as to significantly reduce the "
+#| "number of open input fields at checkout, <a href=\"https://baymard."
+#| "com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-"
+#| "and-hide-the-fields-entirely\" target=\"_blank\">read the research</a>."
 msgid ""
 "The checkbox \"Same as shiping address\" will start as checked by default "
-"when the shipping address section is the displayed first. <br>The checkbox "
+"when the shipping address section is displayed first. <br>The checkbox "
 "\"Same as billing address\" will start as checked by default when the "
-"billing address section is the displayed first. <br> It is recommended to "
-"leave this option checked as to significantly reduce the number of open "
-"input fields at checkout, <a href=\"https://baymard.com/blog/checkout-flow-"
-"average-form-fields#3-default-billing--shipping-and-hide-the-fields-"
-"entirely\" target=\"_blank\">read the research</a>."
+"billing address section is displayed first. <br> It is recommended to leave "
+"this option checked as to significantly reduce the number of open input "
+"fields at checkout, <a href=\"https://baymard.com/blog/checkout-flow-average-"
+"form-fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
+"target=\"_blank\">read the research</a>."
 msgstr ""
 "\"Sevkiyat adresiyle aynı\" onay kutusu, sevkiyat adresi bölümü ilk olarak "
 "görüntülendiğinde varsayılan olarak işaretli olarak başlayacaktır. <br>"

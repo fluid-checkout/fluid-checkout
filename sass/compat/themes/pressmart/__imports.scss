@@ -1,0 +1,29 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-pressmart' !default;
+
+
+
+
+
+// ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	--fluidcheckout--field--height: #{ remsize( 4.2rem ) };
+}
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"checkout-steps",
+	"checkout-header",
+	"woocommerce-form-fields",
+	"woocommerce-form-fields-select2";

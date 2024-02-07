@@ -1,0 +1,11 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+	padding-#{ $alignment-left }: 12px; // Use `px` as units to match theme styles
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__arrow b {
+	margin-top: -2px; // Use `px` as units to match Woocommerce styles
+}
