@@ -257,7 +257,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 }
 
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
-  float: left;
+  float: none;
   text-align: left;
 }
 

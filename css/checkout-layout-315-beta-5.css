@@ -167,6 +167,7 @@ form.woocommerce-checkout {
 }
 
 body.woocommerce-checkout #main.fc-main {
+  box-sizing: border-box;
   position: static;
   float: none;
   margin: 0 auto;

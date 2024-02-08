@@ -403,6 +403,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin Klarna Payments. Redirect after successful payment not working.
 * Fixed: Keep `select2` field open after replacing section which contains it, and keep focus on `select2` fields after updating fragments or selecting a different country.
 * Fixed: Start checkout with "billing same as shipping" checked for registered customers when saved address data are the same for shipping and billing, and the option is enabled in the plugin settings.
+* Fixed: Issue with content wider than screen on mobile when using certain themes.
 
 = 3.1.4 - 2024-02-02 =
 
