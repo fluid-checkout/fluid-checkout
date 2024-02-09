@@ -12,8 +12,51 @@ jQuery( function( $ ) {
 		return false;
 	}
 
+
+	// CHANGE: END - Enhanced select fields with TomSelect
+	var usingTomSelect = window.TomSelect && window.fcSettings && fcSettings.replace_enhanced_dropdown && 'yes' === fcSettings.replace_enhanced_dropdown;
+	if ( usingTomSelect ) {
+		// CHANGE: Use TomSelect for select2 fields
+		var wc_country_select_tomselect = function() {
+			var fields = document.querySelectorAll( '.fc-select2-field select' );
+
+			// Iterate fields
+			for ( var i = 0; i < fields.length; i++ ) {
+				var field = fields[ i ];
+				var value = field.value;
+
+				// Maybe destroy TomSelect instance
+				if ( field.tomselect ) {
+					console.log( 'Skipping at event handler: ', field.getAttribute( 'id' ) );
+					field.tomselect.destroy();
+				}
+
+				// Enhance field with TomSelect
+				new TomSelect( field, {
+					create: false,
+					openOnFocus: true,
+					selectOnTab: true,
+					diacritics: true,
+				} );
+
+				// Set value, without triggering `change` event
+				// to avoid infinite loop.
+				field.tomselect.setValue( value, true );
+			}
+		}
+
+		wc_country_select_tomselect();
+
+		// CHANGE: Rebuild `select2` fields in some cases
+		$( document.body ).on( 'country_to_state_changed', wc_country_select_tomselect );
+		$( document.body ).on( 'updated_checkout', wc_country_select_tomselect );
+		$( document.body ).on( 'wc_fragments_refreshed', wc_country_select_tomselect );
+	}
+	// CHANGE: END - Enhanced select fields with TomSelect
+
 	// Select2 Enhancement if it exists
-	if ( $().selectWoo ) {
+	// CHANGE: maybe disable select2 enhancement if TomSelect is being used
+	if ( $().selectWoo && ! usingTomSelect ) {
 		var getEnhancedSelectFormatString = function() {
 			return {
 				'language': {
@@ -148,6 +191,14 @@ jQuery( function( $ ) {
 			value         = $statebox.val(),
 			placeholder   = $statebox.attr( 'placeholder' ) || $statebox.attr( 'data-placeholder' ) || '',
 			$newstate;
+
+		// CHANGE: Maybe destroy TomSelect component before replacing the field
+		if ( usingTomSelect ) {
+			var stateField = $statebox.get( 0 );
+			if ( $statebox.length > 0 && stateField.tomselect ) {
+				stateField.tomselect.destroy();
+			}
+		}
 
 		if ( states[ country ] ) {
 			if ( $.isEmptyObject( states[ country ] ) ) {

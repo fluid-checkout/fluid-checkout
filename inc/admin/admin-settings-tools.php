@@ -109,6 +109,15 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 				),
 
 				array(
+					'title'            => __( 'Enhanced dropdown fields', 'fluid-checkout' ),
+					'desc'             => __( 'Replace <code>select2</code> dropdown components with <code>TomSelect</code>', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
+					'id'               => 'fc_replace_enhanced_dropdown_components',
+					'type'             => 'checkbox',
+					'default'          => FluidCheckout_Settings::instance()->get_option_default( 'fc_replace_enhanced_dropdown_components' ),
+					'autoload'         => false,
+				),
+
+				array(
 					'type' => 'sectionend',
 					'id'   => 'fc_checkout_advanced_debug_options',
 				),

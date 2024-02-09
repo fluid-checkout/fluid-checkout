@@ -79,6 +79,12 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_deregister_script( 'wc-country-select' );
 		wp_deregister_script( 'wc-address-i18n' );
 		wp_deregister_script( 'wc-checkout' );
+
+		// Select2 / SelectWoo, will be replaced with TomSelect
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_replace_enhanced_dropdown_components' ) ) {
+			wp_deregister_script( 'selectWoo' );
+			wp_deregister_style( 'select2' );
+		}
 	}
 
 	/**
@@ -95,6 +101,13 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
 		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
 		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, true );
+
+		// Select2 / SelectWoo, replaced with TomSelect but keeping the same handle and dependencies
+		// because many plugins and themes depend on `select2` or `selectWoo` scripts.
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_replace_enhanced_dropdown_components' ) ) {
+			wp_register_script( 'selectWoo', self::$directory_url . 'js/tom-select.base'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
+			wp_register_style( 'select2', self::$directory_url . 'css/tom-select'. self::$asset_version . '.css', array(), NULL );
+		}
 	}
 
 	/**
@@ -127,6 +140,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			'ajaxUrl'                        => admin_url( 'admin-ajax.php' ),
 			'wcAjaxUrl'                      => WC_AJAX::get_endpoint( '%%endpoint%%' ),
 			'debugMode'                      => get_option( 'fc_debug_mode', 'no' ),
+			'replace_enhanced_dropdown'      => FluidCheckout_Settings::instance()->get_option( 'fc_replace_enhanced_dropdown_components' ),
 			'flyoutBlock'                    => array(
 				'openAnimationClass'         => 'fade-in-up',
 				'closeAnimationClass'        => 'fade-out-down',
