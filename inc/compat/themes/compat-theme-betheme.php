@@ -34,6 +34,9 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
+		// Ensure header cart updates when products are added via AJAX from checkout order summary
+		add_filter('woocommerce_update_order_review_fragments', 'woocommerce_header_add_to_cart_fragment');
+
 		// Dequeue
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_scripts' ), 100 );
 
