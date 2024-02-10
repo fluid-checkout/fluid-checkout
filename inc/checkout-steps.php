@@ -5537,6 +5537,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'account_username',
 			'account_password',
 			'order_comments',
+			'billing_same_as_shipping',
+			'shipping_same_as_billing',
 		);
 
 		// Maybe set shipping fields to be cleared

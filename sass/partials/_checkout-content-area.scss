@@ -26,6 +26,7 @@ form.woocommerce-checkout {
 
 
 body#{ $_body-page-selector } #main.fc-main {
+	box-sizing: border-box;
 	position: static;
 	float: none;
 	margin: 0 auto;

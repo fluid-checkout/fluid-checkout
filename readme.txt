@@ -396,7 +396,14 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme Kosi.
+* Added: Compatibility with theme Pressmart.
+* Added: Compatibility with plugin The Bluehost Plugin.
+* Added: Partial compatibility with plugin States, Cities, and Places for WooCommerce. Trigger select events when appropriate.
 * Fixed: Compatibility with plugin Klarna Payments. Redirect after successful payment not working.
+* Fixed: Keep `select2` field open after replacing section which contains it, and keep focus on `select2` fields after updating fragments or selecting a different country.
+* Fixed: Start checkout with "billing same as shipping" checked for registered customers when saved address data are the same for shipping and billing, and the option is enabled in the plugin settings.
+* Fixed: Issue with content wider than screen on mobile when using certain themes.
 
 = 3.1.4 - 2024-02-02 =
 
@@ -441,8 +448,6 @@ IMPORTANT: This update fixes issues introduced with version 3.1.0 which may caus
 * Added: Support for new PRO options for which position to show the billing address section on the checkout page, including before shipping and forced to same as shipping address.
 * Added: Support for block themes using the Full Site Editor (FSE) mode.
 * Added: Compatibility with plugin WooCommerce NL Postcode Checker by WP Overnight.
-* Added: Compatibility with theme BuddyBoss.
-* Improved: Change the element used for checkout substeps from `div` to `section` for better semantics and to set correct rounded borders when needed.
 * Fixed: Check whether JS settings object is available before trying to use it in the `address-i18n` script.
 * Fixed: Do not ask user before leaving the page if a redirect is needed after a successful payment is taken with some payment gateways.
 * Fixed: PHP error on compatibility with plugin Klarna Checkout for WooCommerce.

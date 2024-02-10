@@ -1,0 +1,13 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row label.checkbox {
+	line-height: 1.5; // Needed to increase line height to accommodate for themes pseudo element
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row input[type=checkbox]:not( :checked ) {
+	background-color: var(--site-input-background); // Needed to use theme variable to match theme styles
+	margin-#{ $alignment-left }: 0;
+	margin-#{ $alignment-right }: 5px; // Use `px` as units to match theme styles
+}
