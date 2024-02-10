@@ -34,8 +34,23 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
+		// Dequeue
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_scripts' ), 100 );
+
 		// Remove redundant theme elements
 		remove_action( 'woocommerce_review_order_after_submit', 'mfn_return_cart_link' );
+	}
+
+
+
+	/**
+	 * Dequeue theme scripts unnecessary on checkout page and that interfere with Fluid Checkout scripts.
+	 */
+	public function maybe_dequeue_scripts() {
+		// Bail if not on checkout page
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+		
+		wp_dequeue_script( 'mfn-woojs' );
 	}
 
 
