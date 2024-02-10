@@ -23,4 +23,5 @@ $_body-theme-selector:                 '.theme-betheme' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"order-summary",
 	"woocommerce-form-fields-select2";
