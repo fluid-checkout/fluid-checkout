@@ -1,0 +1,8 @@
+:root {
+  --fluidcheckout--field--height: 44px;
+}
+
+body.theme-betheme .select2-container .select2-selection--single .select2-selection__rendered {
+  padding-left: 10px;
+  padding-right: 10px;
+}

@@ -33,6 +33,9 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
+		// Remove redundant theme elements
+		remove_action( 'woocommerce_review_order_after_submit', 'mfn_return_cart_link' );
 	}
 
 
