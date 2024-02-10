@@ -112,7 +112,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			// Settings tools.
 			'fc_debug_mode'                                                 => 'no',
 			'fc_load_unminified_assets'                                     => 'no',
-			// 'fc_replace_enhanced_dropdown_components'                       => 'no',
+			'fc_use_enhanced_select_components'                             => 'no',
 
 			// Settings without options in the admin panel.
 			'fc_plugin_activation_time'                                     => null,

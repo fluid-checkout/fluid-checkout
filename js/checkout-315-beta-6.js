@@ -130,6 +130,16 @@ jQuery( function( $ ) {
 
 			// CHANGE: Add handler for login form modal initialization
 			document.addEventListener( 'click', this.maybe_copy_email_to_login_form, true );
+
+			// CHANGE: Enhance dropdown fields on initialization and updates
+			if ( window.FCEnhancedSelect ) {
+				this.init_enhanced_dropdowns();
+				$( document.body ).on( 'fc_checkout_fragments_replace_after', this.init_enhanced_dropdowns );
+			}
+		},
+		// CHANGE: Enhance dropdown fields
+		init_enhanced_dropdowns: function() {
+			FCEnhancedSelect.enhanceFields();
 		},
 		// CHANGE: Update checkout when "billing same as shipping" checked state changes
 		billing_same_shipping_changed: function( e ) {

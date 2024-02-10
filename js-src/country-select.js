@@ -14,43 +14,16 @@ jQuery( function( $ ) {
 
 
 	// CHANGE: END - Enhanced select fields with TomSelect
-	var usingTomSelect = window.TomSelect && window.fcSettings && fcSettings.replace_enhanced_dropdown && 'yes' === fcSettings.replace_enhanced_dropdown;
-	if ( usingTomSelect ) {
+	var usingTomSelect = window.TomSelect && window.fcSettings && fcSettings.use_enhanced_select && 'yes' === fcSettings.use_enhanced_select;
+	if ( usingTomSelect && window.FCEnhancedSelect ) {
 		// CHANGE: Use TomSelect for select2 fields
 		var wc_country_select_tomselect = function() {
-			var fields = document.querySelectorAll( '.fc-select2-field select' );
-
-			// Iterate fields
-			for ( var i = 0; i < fields.length; i++ ) {
-				var field = fields[ i ];
-				var value = field.value;
-
-				// Maybe destroy TomSelect instance
-				if ( field.tomselect ) {
-					console.log( 'Skipping at event handler: ', field.getAttribute( 'id' ) );
-					field.tomselect.destroy();
-				}
-
-				// Enhance field with TomSelect
-				new TomSelect( field, {
-					create: false,
-					openOnFocus: true,
-					selectOnTab: true,
-					diacritics: true,
-				} );
-
-				// Set value, without triggering `change` event
-				// to avoid infinite loop.
-				field.tomselect.setValue( value, true );
-			}
+			var selector = 'select.country_select, select.state_select';
+			FCEnhancedSelect.enhanceFields( selector );
 		}
 
-		wc_country_select_tomselect();
-
-		// CHANGE: Rebuild `select2` fields in some cases
+		// Rebuild enhanced fields when changing the selected country
 		$( document.body ).on( 'country_to_state_changed', wc_country_select_tomselect );
-		$( document.body ).on( 'updated_checkout', wc_country_select_tomselect );
-		$( document.body ).on( 'wc_fragments_refreshed', wc_country_select_tomselect );
 	}
 	// CHANGE: END - Enhanced select fields with TomSelect
 
