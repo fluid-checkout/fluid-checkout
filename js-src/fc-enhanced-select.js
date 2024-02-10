@@ -184,6 +184,35 @@
 	}
 
 
+	
+	/**
+	 * Get the selected values of a select field.
+	 * 
+	 * @param    {Element}       field   The select field.
+	 * 
+	 * @returns  {Array|string}          The selected values as an array, or a single value if only one is selected.
+	 */
+	var getSelectValues = function( field ) {
+		var results = [];
+		var options = field && field.options;
+		var currentOption;
+
+		// Iterate options and get selected values
+		for ( var i = 0; i < options.length; i++ ) {
+			currentOption = options[i];
+		
+			if ( currentOption.selected ) {
+				results.push( currentOption.value || currentOption.text );
+			}
+		}
+
+		// Maybe return single value
+		if ( results.length === 1 ) {
+			results = results[0];
+		}
+
+		return results;
+	}
 
 	/**
 	 * Update the selected value of an enhanced select field.
@@ -201,11 +230,11 @@
 		if ( ! field.tomselect ) { return; }
 
 		// Get updated field value
-		var value = field.value;
+		var values = getSelectValues( field );
 
 		// Set value, without triggering `change` event
 		// to avoid infinite loop.
-		field.tomselect.setValue( value, true );
+		field.tomselect.setValue( values, true );
 	}
 
 
@@ -247,7 +276,7 @@
 		for ( var i = 0; i < fields.length; i++ ) {
 			// Get field reference and value
 			var field = fields[ i ];
-			var value = field.value;
+			var values = getSelectValues( field );
 
 			// Maybe destroy TomSelect instance
 			if ( field.tomselect ) {
@@ -259,7 +288,7 @@
 
 			// Set value, without triggering `change` event
 			// to avoid infinite loop.
-			field.tomselect.setValue( value, true );
+			field.tomselect.setValue( values, true );
 		}
 	}
 
