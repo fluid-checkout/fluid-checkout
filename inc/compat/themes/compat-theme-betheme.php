@@ -19,6 +19,8 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
 		// Checkout page template
 		add_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
@@ -34,6 +36,9 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
+		// Settings
+		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
+
 		// Ensure header cart updates when products are added via AJAX from checkout order summary
 		add_filter('woocommerce_update_order_review_fragments', 'woocommerce_header_add_to_cart_fragment');
 
@@ -42,6 +47,27 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 
 		// Remove redundant theme elements
 		remove_action( 'woocommerce_review_order_after_submit', 'mfn_return_cart_link' );
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// Checkout page hooks
+		$this->checkout_hooks();
+	}
+
+
+
+	/*
+	* Add or remove checkout page hooks.
+	*/
+	public function checkout_hooks() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Checkout steps
+		add_action( 'the_content', array( $this, 'maybe_output_betheme_checkout_steps_section' ), 5 );
 	}
 
 
@@ -164,6 +190,69 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		$attributes['data-sticky-relative-to'] = '#Top_bar.is-sticky';
 
 		return $attributes;
+	}
+
+
+
+	/**
+	 * Add new settings to the Fluid Checkout admin settings sections.
+	 *
+	 * @param   array   $settings         Array with all settings for the current section.
+	 * @param   string  $current_section  Current section name.
+	 */
+	public function add_settings( $settings ) {
+
+		// Add new settings
+		$settings_new = array(
+			array(
+				'title' => __( 'Theme Betheme', 'fluid-checkout' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_theme_betheme_options',
+			),
+
+			array(
+				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
+				'desc'            => __( 'Output the checkout steps section from Betheme when using Fluid Checkout header and footer.', 'fluid-checkout' ),
+				'id'              => 'fc_compat_theme_betheme_output_checkout_steps_section',
+				'type'            => 'checkbox',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_betheme_output_checkout_steps_section' ),
+				'autoload'        => false,
+			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_theme_betheme_options',
+			),
+		);
+
+		$settings = array_merge( $settings, $settings_new );
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Maybe output the checkout steps section from the Woodmart theme.
+	 */
+	public function maybe_output_betheme_checkout_steps_section( $content ) {
+
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) {
+			// Bail if using distraction free header and footer when Betheme section output is disabled in the plugin settings
+			if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_betheme_output_checkout_steps_section' ) ) { return $content; }
+		}
+
+		// Bail if Betheme checkout steps function isn't available
+		if ( ! function_exists( 'mfn_carts_page_before' ) ) { return $content; }
+
+		ob_start();
+		mfn_carts_page_before();
+		$checkout_steps = ob_get_clean();
+
+		// Append theme's checkout steps to page content
+		$content = wp_kses_post( $checkout_steps ) . $content;
+
+		return $content;
 	}
 
 }
