@@ -212,7 +212,7 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 
 			array(
 				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
-				'desc'            => __( 'Output the checkout steps section from Betheme when using Fluid Checkout header and footer.', 'fluid-checkout' ),
+				'desc'            => __( 'Output the checkout steps section from Betheme on the checkout, cart and order received pages.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_betheme_output_checkout_steps_section',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_betheme_output_checkout_steps_section' ),
@@ -237,10 +237,8 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 	 */
 	public function maybe_output_betheme_checkout_steps_section( $content ) {
 
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) {
-			// Bail if using distraction free header and footer when Betheme section output is disabled in the plugin settings
-			if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_betheme_output_checkout_steps_section' ) ) { return $content; }
-		}
+		// Bail when Betheme section output is disabled in the plugin settings
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_betheme_output_checkout_steps_section' ) ) { return $content; }
 
 		// Bail if Betheme checkout steps function isn't available
 		if ( ! function_exists( 'mfn_carts_page_before' ) ) { return $content; }
