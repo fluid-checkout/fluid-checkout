@@ -165,7 +165,7 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
 
-		return $class . ' section_wrapper';
+		return $class . ' content_wrapper';
 	}
 
 

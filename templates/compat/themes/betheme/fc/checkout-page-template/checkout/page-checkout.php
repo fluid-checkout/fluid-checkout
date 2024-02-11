@@ -30,19 +30,25 @@ else {
 <div class="fc-content <?php echo esc_attr( apply_filters( 'fc_content_section_class', '' ) ); ?>">
 
 	<?php // CHANGE: Add inner `div` container used by theme ?>
-	<div class="the_content_wrapper">
+	<div class="section_wrapper">
 
-		<h1 class="fc-checkout__title <?php echo false === apply_filters( 'fc_display_checkout_page_title', false ) ? 'screen-reader-text' : ''; ?>"><?php the_title(); ?></h1>
+		<?php // CHANGE: Add inner `div` container used by theme ?>
+		<div class="the_content_wrapper">
 
-		<?php
-		// Load the checkout page content
-		while ( have_posts() ) :
-			the_post();
-			the_content();
-		endwhile;
-		?>
+			<h1 class="fc-checkout__title <?php echo false === apply_filters( 'fc_display_checkout_page_title', false ) ? 'screen-reader-text' : ''; ?>"><?php the_title(); ?></h1>
 
-	<?php // CHANGE: Add `div` closing tag ?>
+			<?php
+			// Load the checkout page content
+			while ( have_posts() ) :
+				the_post();
+				the_content();
+			endwhile;
+			?>
+
+		<?php // CHANGE: Add closing `div` tag ?>
+		</div>
+
+	<?php // CHANGE: Add closing `div` tag ?>
 	</div>
 
 </div>
