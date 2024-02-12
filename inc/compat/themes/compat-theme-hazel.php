@@ -42,7 +42,7 @@ class FluidCheckout_ThemeCompat_Hazel extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $settings; }
 
 		// Add settings
-		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = 'header.page_header';
+		$settings[ 'utils' ][ 'scrollOffsetSelector' ] = 'header.page_header';
 
 		return $settings;
 	}

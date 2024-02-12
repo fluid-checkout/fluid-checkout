@@ -143,6 +143,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			'wcAjaxUrl'                      => WC_AJAX::get_endpoint( '%%endpoint%%' ),
 			'debugMode'                      => get_option( 'fc_debug_mode', 'no' ),
 			'use_enhanced_select'            => FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ),
+			'utils'                          => array(),
 			'flyoutBlock'                    => array(
 				'openAnimationClass'         => 'fade-in-up',
 				'closeAnimationClass'        => 'fade-out-down',

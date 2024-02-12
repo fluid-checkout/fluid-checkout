@@ -40,7 +40,6 @@
 		lastStepSelector: '[data-step-last]',
 		nextStepSelector: '[data-step-current] ~ .fc-checkout-step',
 		nextStepButtonSelector: '[data-step-next]',
-		focusableElementsSelector: 'a[role="button"], a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), details, summary, iframe, object, embed, [contenteditable] [tabindex]:not([tabindex="-1"])',
 
 		checkoutFormSelector: 'form.checkout',
 		fieldSubmitFormSelector: 'input[type="text"], input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="radio"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"]',
@@ -80,11 +79,6 @@
 		placeOrderPlaceholderMainSelector: '.fc-inside .fc-place-order__section-placeholder',
 		placeOrderPlaceholderSidebarSelector: '.fc-sidebar .fc-place-order__section-placeholder',
 		placeOrderRefreshRate: 50,
-
-		scrollOffsetSelector: '.fc-checkout-header',
-		scrollBehavior: 'smooth',
-		scrollOffset: 0,
-		scrollDelay: 50,
 	}
 	var _resizeObserver;
 
@@ -97,53 +91,18 @@
 
 
 	/**
-	 * Check if the element is considered visible. Does not consider the CSS property `visibility: hidden;`.
+	 * Change scroll position to top of the element after the sticky elements.
+	 *
+	 * @param   HTMLElement  element      The element of to scroll to.
 	 */
-	var isVisible = function( element ) {
-		return !!( element.offsetWidth || element.offsetHeight || element.getClientRects().length );
-	}
+	var scrollToElement = function( element ) {
+		// Bail if step element not provided
+		if ( ! element ) { return; }
 
+		// Bail if FCUtils is not available
+		if ( ! window.FCUtils && 'function' === typeof FCUtils.scrollToElement ) { return; }
 
-
-	/**
-	 * Gets keyboard-focusable elements within a specified element
-	 *
-	 * @param   HTMLElement  element  The element to search within. Defaults to the `document` root element.
-	 *
-	 * @return  NodeList              All focusable elements withing the element passed in.
-	 */
-	var getFocusableElements = function( element ) {
-		// Set element to `document` root if not passed in
-		if ( ! element ) { element = document; }
-		
-		// Get elements that are keyboard-focusable, but might be `disabled`
-		return element.querySelectorAll( _settings.focusableElementsSelector );
-	}
-
-
-
-	/**
-	 * Get the offset position of the element recursively adding the offset position of parent elements until the `stopElement` (or the `body` element).
-	 *
-	 * @param   HTMLElement  element      Element to get the offset position for.
-	 * @param   HTMLElement  stopElement  Parent element where to stop adding the offset position to the total offset top position of the element.
-	 *
-	 * @return  int                       Offset position of the element until the `stopElement` or the `body` element.
-	 */
-	var getOffsetTop = function( element, stopElement ) {
-		var offsetTop = 0;
-		
-		while( element ) {
-			// Reached the stopElement
-			if ( stopElement && stopElement == element ) {
-				break;
-			}
-
-			offsetTop += element.offsetTop;
-			element = element.offsetParent;
-		}
-		
-		return offsetTop;
+		FCUtils.scrollToElement( element, _settings.progressBarSelector );
 	}
 
 
@@ -237,7 +196,7 @@
 
 		// Maybe change scroll position after collapsing substep
 		if ( shouldScroll ) {
-			scrollTo( substepElement );
+			scrollToElement( substepElement );
 		}
 	}
 
@@ -384,56 +343,6 @@
 	}
 
 
-	/**
-	 * Get the scroll offset position for the sticky elements.
-	 */
-	var getStickyElementsOffset = function() {
-		var stickyElementsOffset = 0;
-
-		// Maybe add height of the progress bar to scroll position
-		var progressBarElement = document.querySelector( _settings.progressBarSelector );
-		if ( progressBarElement ) {
-			var height = progressBarElement.getBoundingClientRect().height;
-			stickyElementsOffset += height;
-		}
-
-		// Maybe add sticky elements height to scroll position
-		if ( window.StickyStates ) {
-			var maybeStickyElements = document.querySelectorAll( _settings.scrollOffsetSelector );
-			if ( maybeStickyElements && maybeStickyElements.length > 0 ) {
-				for ( var i = 0; i < maybeStickyElements.length; i++ ) {
-					var stickyElement = maybeStickyElements[i];
-					if ( StickyStates.isStickyPosition( stickyElement ) ) {
-						var height = stickyElement.getBoundingClientRect().height;
-						stickyElementsOffset += height;
-					}
-				}
-			}
-		}
-
-		return stickyElementsOffset;
-	}
-
-	/**
-	 * Change scroll position to top of the element after the sticky elements.
-	 *
-	 * @param   HTMLElement  element      The element of to scroll to.
-	 */
-	var scrollTo = function( element ) {
-		// Bail if step element not provided
-		if ( ! element ) { return; }
-
-		var stickyElementsOffset = getStickyElementsOffset();
-		var elementOffset = getOffsetTop( element ) + ( _settings.scrollOffset * -1 ) + ( stickyElementsOffset * -1 );
-		window.setTimeout( function() {
-			window.scrollTo( {
-				top: elementOffset,
-				behavior: _settings.scrollBehavior,
-			} );
-		}, _settings.scrollDelay );
-	}
-
-
 
 	/**
 	 * Collapse the substep fields, and expand the substep values in text format for review.
@@ -498,10 +407,10 @@
 
 		// Maybe set focusElement to the first focusable element that is visible
 		var focusElement = null;
-		var focusableElements = Array.from( getFocusableElements( nextStepElement ) );
+		var focusableElements = window.FCUtils && Array.from( FCUtils.getFocusableElements( nextStepElement ) );
 		for ( var i = 0; i < focusableElements.length; i++ ) {
 			var focusableElement = focusableElements[i];
-			if ( isVisible( focusableElement ) ) {
+			if ( FCUtils.isElementVisible( focusableElement ) ) {
 				focusElement = focusableElement;
 				break;
 			}
@@ -513,7 +422,7 @@
 		}
 
 		// Change scroll position after moving to next step
-		scrollTo( stepElement );
+		scrollToElement( stepElement );
 
 		// Trigger update checkout
 		if ( _hasJQuery ) {

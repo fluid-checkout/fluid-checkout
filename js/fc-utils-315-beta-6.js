@@ -15,6 +15,8 @@
 
 	var _publicMethods = { }
 	var _settings = {
+		focusableElementsSelector:             'a[role="button"], a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), details, summary, iframe, object, embed, [contenteditable] [tabindex]:not([tabindex="-1"])',
+
 		select2FormRowSelector:                '.form-row.fc-select2-field',
 		select2FocusElementSelector:           '.select2-selection, input[type="text"]',
 		select2OptionsSelector:                '.select2-results__options',
@@ -22,6 +24,11 @@
 		
 		tomSelectFormRowSelector:              '.form-row.fc-select2-field',
 		tomSelectKeepingClosedClass:           'keeping-closed',
+
+		scrollOffsetSelector:                  '.fc-checkout-header',
+		scrollBehavior:                        'smooth',
+		scrollOffset:                          0,
+		scrollDelay:                           50,
 	}
 
 
@@ -144,6 +151,13 @@
 
 
 
+	/**
+	 * Check if the element is considered visible. Does not consider the CSS property `visibility: hidden;`.
+	 */
+	_publicMethods.isElementVisible = function( element ) {
+		return !!( element.offsetWidth || element.offsetHeight || element.getClientRects().length );
+	}
+
 
 
 	/**
@@ -180,9 +194,20 @@
 		return currentfocusedElement;
 	}
 
-
-
-
+	/**
+	 * Gets keyboard-focusable elements within a specified element
+	 *
+	 * @param   HTMLElement  element  The element to search within. Defaults to the `document` root element.
+	 *
+	 * @return  NodeList              All focusable elements withing the element passed in.
+	 */
+	_publicMethods.getFocusableElements = function( element ) {
+		// Set element to `document` root if not passed in
+		if ( ! element ) { element = document; }
+		
+		// Get elements that are keyboard-focusable, but might be `disabled`
+		return element.querySelectorAll( _settings.focusableElementsSelector );
+	}
 
 	/**
 	 * Set the variables that track the current focused element and its value.
@@ -222,8 +247,6 @@
 		}
 	}
 
-
-
 	/**
 	 * Unset the variables that track the current focused element and its value.
 	 */
@@ -231,8 +254,6 @@
 		window.fcCurrentFocusedElement = null;
 		window.fcCurrentFocusedElementValue = null;
 	}
-
-
 
 	/**
 	 * Maybe set focus back to the element that was focused before an update.
@@ -318,6 +339,83 @@
 	};
 
 
+
+	/**
+	 * Get the offset position of the element recursively adding the offset position of parent elements until the `stopElement` (or the `body` element).
+	 *
+	 * @param   HTMLElement  element      Element to get the offset position for.
+	 * @param   HTMLElement  stopElement  Parent element where to stop adding the offset position to the total offset top position of the element.
+	 *
+	 * @return  int                       Offset position of the element until the `stopElement` or the `body` element.
+	 */
+	_publicMethods.getOffsetTop = function( element, stopElement ) {
+		var offsetTop = 0;
+		
+		while( element ) {
+			// Reached the stopElement
+			if ( stopElement && stopElement == element ) {
+				break;
+			}
+
+			offsetTop += element.offsetTop;
+			element = element.offsetParent;
+		}
+		
+		return offsetTop;
+	}
+
+	/**
+	 * Get the scroll offset position for the sticky elements.
+	 */
+	_publicMethods.getStickyElementsOffset = function( includeOffsetSelector ) {
+		var stickyElementsOffset = 0;
+
+		// Maybe add height of the progress bar to scroll position
+		var offsetItemsList = null !== includeOffsetSelector && undefined !== includeOffsetSelector ? document.querySelectorAll( includeOffsetSelector ) : [];
+		if ( offsetItemsList.length > 0 ) {
+			var offsetItem = offsetItemsList[ 0 ];
+			var height = offsetItem.getBoundingClientRect().height;
+			stickyElementsOffset += height;
+		}
+
+		// Maybe add sticky elements height to scroll position
+		if ( window.StickyStates ) {
+			var maybeStickyElements = document.querySelectorAll( _settings.scrollOffsetSelector );
+			if ( maybeStickyElements && maybeStickyElements.length > 0 ) {
+				for ( var i = 0; i < maybeStickyElements.length; i++ ) {
+					var stickyElement = maybeStickyElements[i];
+					if ( StickyStates.isStickyPosition( stickyElement ) ) {
+						var height = stickyElement.getBoundingClientRect().height;
+						stickyElementsOffset += height;
+					}
+				}
+			}
+		}
+
+		return stickyElementsOffset;
+	}
+
+	/**
+	 * Change scroll position to top of the element after the sticky elements.
+	 *
+	 * @param   HTMLElement  element      The element of to scroll to.
+	 */
+	_publicMethods.scrollToElement = function( element, includeOffsetSelector ) {
+		// Bail if step element not provided
+		if ( ! element ) { return; }
+
+		// Get the offset position of the element
+		var stickyElementsOffset = _publicMethods.getStickyElementsOffset( includeOffsetSelector );
+		var elementOffset = _publicMethods.getOffsetTop( element ) + ( _settings.scrollOffset * -1 ) + ( stickyElementsOffset * -1 );
+
+		// Scroll to the element, considering its offset position.
+		window.setTimeout( function() {
+			window.scrollTo( {
+				top: elementOffset,
+				behavior: _settings.scrollBehavior,
+			} );
+		}, _settings.scrollDelay );
+	}
 
 
 
