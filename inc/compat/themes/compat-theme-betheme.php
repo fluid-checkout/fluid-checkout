@@ -187,7 +187,7 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		// Bail if theme's conditions for sticky header are not met
 		if ( ! $layout_id && ! get_post_meta( $layout_id, 'mfn-post-sticky-header', true ) && ! mfn_opts_get( 'sticky-header' ) ) { return $attributes; }
 
-		$attributes['data-sticky-relative-to'] = '#Top_bar.is-sticky';
+		$attributes['data-sticky-relative-to'] = '{ "sm": { "breakpointInitial": 1240, "breakpointFinal": 100000, "selector": "#Top_bar.is-sticky" } }';
 
 		return $attributes;
 	}
