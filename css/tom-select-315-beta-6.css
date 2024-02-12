@@ -498,3 +498,7 @@
 .ts-dropdown .optgroup:first-child {
   border-top: 0 none;
 }
+
+.fc-select2-field.keeping-closed .ts-dropdown {
+  display: none !important;
+}

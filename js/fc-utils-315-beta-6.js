@@ -19,6 +19,9 @@
 		select2FocusElementSelector:           '.select2-selection, input[type="text"]',
 		select2OptionsSelector:                '.select2-results__options',
 		select2SelectionSelector:              '.select2-selection__rendered',
+		
+		tomSelectFormRowSelector:              '.form-row.fc-select2-field',
+		tomSelectKeepingClosedClass:           'keeping-closed',
 	}
 
 
@@ -155,7 +158,7 @@
 		// Set current focused element and value
 		var currentfocusedElement = document.activeElement;
 
-		// Maybe set set to relative `select2` field element,
+		// Maybe set to relative `select2` field element,
 		// if the focus is current on a `select2` field option.
 		var select2Options = currentfocusedElement.closest( _settings.select2OptionsSelector );
 		if ( setToRelativeSelect2 && select2Options ) {
@@ -188,6 +191,20 @@
 		// Set current focused element and value
 		window.fcCurrentFocusedElement = getCurrentFocusedElementGlobalVariables();
 		window.fcCurrentFocusedElementValue = window.fcCurrentFocusedElement.value;
+		window.fcCurrentFocusedElementReopenDropdown = false;
+
+		// Maybe set to reopen dropdown after refocusing
+		// Maybe close TomSelect dropdown when refocusing
+		if ( fcCurrentFocusedElement.id.includes( '-ts-control' ) ) {
+			// Get related select field
+			var formRow = fcCurrentFocusedElement.closest( _settings.tomSelectFormRowSelector );
+			var selectField = formRow && formRow.querySelector( 'select' );
+
+			// Maybe set to reopen dropdown after refocusing
+			if ( selectField && selectField.tomselect && selectField.tomselect.isOpen ) {
+				fcCurrentFocusedElementReopenDropdown = true;
+			}
+		}
 	}
 
 	/**
@@ -197,7 +214,7 @@
 		// Set current focused element and value,
 		// and retrieve relative `select2` field element if focus is on a `select2` field option.
 		var currentFocusedSelect2Element = getCurrentFocusedElementGlobalVariables( true );
-		
+
 		// Maybe set current focused element to relative `select2` field element
 		if ( currentFocusedSelect2Element ) {
 			window.fcCurrentFocusedElement = currentFocusedSelect2Element;
@@ -250,6 +267,16 @@
 
 			// Try setting focus if element is found
 			if ( elementToFocus ) {
+				// Get related select field
+				var formRow = elementToFocus.closest( _settings.tomSelectFormRowSelector );
+				var selectField = formRow && formRow.querySelector( 'select' );
+
+				// Maybe set class for keeping dropdown closed
+				if ( ! fcCurrentFocusedElementReopenDropdown && formRow ) {
+					formRow.classList.add( _settings.tomSelectKeepingClosedClass );
+				}
+
+				// Set focus to element
 				elementToFocus.focus();
 
 				// Try to set current value to the focused element
@@ -260,7 +287,7 @@
 				// Set keyboard track position back to that previously to update
 				setTimeout( function(){
 					// Try to set the same track position
-					if( null !== elementToFocus.selectionStart && null !== elementToFocus.selectionEnd ) {
+					if ( null !== elementToFocus.selectionStart && null !== elementToFocus.selectionEnd ) {
 						if ( currentFocusedElement.selectionStart && currentFocusedElement.selectionEnd ) {
 							elementToFocus.selectionStart = currentFocusedElement.selectionStart;
 							elementToFocus.selectionEnd = currentFocusedElement.selectionEnd;
@@ -271,6 +298,19 @@
 						else {
 							elementToFocus.selectionStart = elementToFocus.selectionEnd = 999999;
 						}
+					}
+
+					// Maybe close TomSelect dropdown when refocusing
+					if ( ! fcCurrentFocusedElementReopenDropdown && elementToFocus.id.includes( '-ts-control' ) ) {
+						// Maybe close TomSelect dropdown
+						if ( selectField && selectField.tomselect ) {
+							selectField.tomselect.close();
+						}
+					}
+
+					// Remove TomSelect class for keeping dropdown closed
+					if ( formRow ) {
+						formRow.classList.remove( _settings.tomSelectKeepingClosedClass );
 					}
 				}, 0 );
 			}

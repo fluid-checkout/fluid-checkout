@@ -21,8 +21,6 @@
 		enhancedSelectFieldsSelector:          '.fc-select2-field select',
 		enhancedSelectSettings: {
 			create: false,
-			openOnFocus: true,
-			selectOnTab: true,
 			diacritics: true,
 		},
 	};
