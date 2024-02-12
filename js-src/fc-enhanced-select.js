@@ -18,6 +18,8 @@
 	var _settings = {
 		bodyClass:                             'has-fc-enhanced-select',
 
+		formRowSelector:                       '.form-row.fc-select2-field',
+
 		enhancedSelectFieldsSelector:          '.fc-select2-field select',
 		enhancedSelectSettings: {
 			create: false,
@@ -101,6 +103,25 @@
 		searchField.removeAttribute( 'autocomplete' );
 	}
 
+	/**
+	 * Maybe scroll to the top of the field when opening the dropdown.
+	 */
+	var maybeScrollToField = function() {
+		// Bail if not on target breakpoint or smaller
+		if ( ! FCUtils.isCurrentBreakpointOrSmaller( 'phablet' ) ) { return; }
+
+		// Get field reference
+		var tomselect = this;
+		var searchField = tomselect.focus_node;
+		var formRow = searchField.closest( _settings.formRowSelector );
+
+		// Bail if form row is not found
+		if ( ! formRow ) { return; }
+
+		// Scroll to the top of the form row
+		FCUtils.scrollToElement( formRow, null, 30 );
+	}
+
 
 
 	/** 
@@ -154,11 +175,11 @@
 			// to avoid infinite loop.
 			field.tomselect.setValue( values, true );
 
-			// Unset autocomplete attribute for the search field
-			// on initialization, focus and blur events.
+			// Set event listeners
 			field.tomselect.on( 'initialize', unsetAutocompleteAttribute );
 			field.tomselect.on( 'focus', unsetAutocompleteAttribute );
 			field.tomselect.on( 'blur', unsetAutocompleteAttribute );
+			field.tomselect.on( 'dropdown_open', maybeScrollToField );
 		}
 	}
 

@@ -17,6 +17,21 @@
 	var _settings = {
 		focusableElementsSelector:             'a[role="button"], a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), details, summary, iframe, object, embed, [contenteditable] [tabindex]:not([tabindex="-1"])',
 
+		scrollOffsetSelector:                  '.fc-checkout-header',
+		scrollBehavior:                        'smooth',
+		scrollOffset:                          0,
+		scrollDelay:                           50,
+
+		breakpoints: {
+			mobile: { minWidth: 0, maxWidth: 549 },
+			phablet: { minWidth: 550, maxWidth: 749 },
+			tablet: { minWidth: 750, maxWidth: 999 },
+			desktop: { minWidth: 1000, maxWidth: 1279 },
+			desktopMedium: { minWidth: 1280, maxWidth: 1499 },
+			desktopLarge: { minWidth: 1500, maxWidth: 1999 },
+			desktopExtraLarge: { minWidth: 2000, maxWidth: 1000000 },
+		},
+
 		select2FormRowSelector:                '.form-row.fc-select2-field',
 		select2FocusElementSelector:           '.select2-selection, input[type="text"]',
 		select2OptionsSelector:                '.select2-results__options',
@@ -24,11 +39,6 @@
 		
 		tomSelectFormRowSelector:              '.form-row.fc-select2-field',
 		tomSelectKeepingClosedClass:           'keeping-closed',
-
-		scrollOffsetSelector:                  '.fc-checkout-header',
-		scrollBehavior:                        'smooth',
-		scrollOffset:                          0,
-		scrollDelay:                           50,
 	}
 
 
@@ -72,6 +82,42 @@
 	/**
 	 * METHODS
 	 */
+
+
+
+	/**
+	 * Set the variables that track the current focused element and its value.
+	 */
+	var getCurrentFocusedElementGlobalVariables = function( setToRelativeSelect2 ) {
+		// Set defaults
+		if ( setToRelativeSelect2 !== true ) {
+			setToRelativeSelect2 = false;
+		}
+
+		// Set current focused element and value
+		var currentfocusedElement = document.activeElement;
+
+		// Maybe set to relative `select2` field element,
+		// if the focus is current on a `select2` field option.
+		var select2Options = currentfocusedElement.closest( _settings.select2OptionsSelector );
+		if ( setToRelativeSelect2 && select2Options ) {
+			var select2ElementId = select2Options.getAttribute( 'id' ).replace( '-results', '-container' );
+			currentfocusedElement = document.getElementById( select2ElementId );
+		}
+
+		// Maybe set to form row for `select2` fields
+		var currentFocusedFormRow = currentfocusedElement.closest( _settings.select2FormRowSelector );
+		if ( currentFocusedFormRow && currentFocusedFormRow.querySelector( _settings.select2SelectionSelector ) ) {
+			// Remove focus from current element as it will be replaced
+			// This fixes an issue where `select2` fields would not work properly
+			// after checkout is updated while focus is on a `select2` field
+			if ( currentfocusedElement ) { currentfocusedElement.blur(); }
+
+			currentfocusedElement = currentFocusedFormRow;
+		}
+
+		return currentfocusedElement;
+	}
 
 
 
@@ -161,38 +207,63 @@
 
 
 	/**
-	 * Set the variables that track the current focused element and its value.
+	 * Get the current breakpoints matched based on the window width.
 	 */
-	var getCurrentFocusedElementGlobalVariables = function( setToRelativeSelect2 ) {
-		// Set defaults
-		if ( setToRelativeSelect2 !== true ) {
-			setToRelativeSelect2 = false;
+	_publicMethods.getCurrentBreakpoints = function() {
+		// Define variables
+		var windowWidth = window.innerWidth;
+		var breakpointSelectors = Object.entries( _settings.breakpoints );
+		var currentBreakpoints = [];
+
+		// Iterate through all breakpoints
+		for ( var i = 0; i < breakpointSelectors.length; i++ ) {
+			// Get variables
+			var breakpoint = breakpointSelectors[ i ][ 0 ];
+			var values = breakpointSelectors[ i ][ 1 ];
+
+			// Check whether window width is within the breakpoint max width bounds,
+			// that is, exclude breakpoints which are min width is larger than the
+			// actual window width.
+			if ( values.minWidth <= windowWidth ) {
+				// Add breakpoint to the current breakpoints
+				currentBreakpoints.push( breakpoint );
+			}
 		}
 
-		// Set current focused element and value
-		var currentfocusedElement = document.activeElement;
-
-		// Maybe set to relative `select2` field element,
-		// if the focus is current on a `select2` field option.
-		var select2Options = currentfocusedElement.closest( _settings.select2OptionsSelector );
-		if ( setToRelativeSelect2 && select2Options ) {
-			var select2ElementId = select2Options.getAttribute( 'id' ).replace( '-results', '-container' );
-			currentfocusedElement = document.getElementById( select2ElementId );
-		}
-
-		// Maybe set to form row for `select2` fields
-		var currentFocusedFormRow = currentfocusedElement.closest( _settings.select2FormRowSelector );
-		if ( currentFocusedFormRow && currentFocusedFormRow.querySelector( _settings.select2SelectionSelector ) ) {
-			// Remove focus from current element as it will be replaced
-			// This fixes an issue where `select2` fields would not work properly
-			// after checkout is updated while focus is on a `select2` field
-			if ( currentfocusedElement ) { currentfocusedElement.blur(); }
-
-			currentfocusedElement = currentFocusedFormRow;
-		}
-
-		return currentfocusedElement;
+		// Return list with the current breakpoint and smaller breakpoints
+		return currentBreakpoints;
 	}
+
+	/**
+	 * Check if the current breakpoint matches the specified breakpoint or is smaller than the target breakpoint.
+	 * 
+	 * @param   string   targetBreakpoint  The breakpoint to check against. Accepted values are: `mobile`, `phablet`, `tablet`, `desktop`, `desktopMedium`, `desktopLarge` and `desktopExtraLarge`.
+	 */
+	_publicMethods.isCurrentBreakpointOrSmaller = function( targetBreakpoint ) {
+		// Get variables
+		var currentBreakpoints = _publicMethods.getCurrentBreakpoints();
+		var targetBreakpointIndex = currentBreakpoints.indexOf( targetBreakpoint );
+		var higherstBreakpointIndex = currentBreakpoints.length - 1;
+
+		// Return `true` if highest breakpoint matches the target breakpoint
+		if ( targetBreakpointIndex == higherstBreakpointIndex ) {
+			return true;
+		}
+
+		// Iterate through current breakpoints
+		for ( var i = 0; i < currentBreakpoints.length; i++ ) {
+			// Check whether higherst breakpoint is higher than target
+			// If so, return `false`.
+			if ( -1 !== targetBreakpointIndex && i > targetBreakpointIndex ) {
+				return false;
+			}
+		}
+
+		// Otherwise it is smaller, then return `true`.
+		return true;
+	}
+
+
 
 	/**
 	 * Gets keyboard-focusable elements within a specified element
@@ -350,7 +421,7 @@
 	 */
 	_publicMethods.getOffsetTop = function( element, stopElement ) {
 		var offsetTop = 0;
-		
+
 		while( element ) {
 			// Reached the stopElement
 			if ( stopElement && stopElement == element ) {
@@ -366,16 +437,24 @@
 
 	/**
 	 * Get the scroll offset position for the sticky elements.
+	 * 
+	 * @param   string       includeOffsetSelector  (optional) Selector for the elements to include in the offset position. Pass `0` or `false` to skip this parameter.
+	 * @param   int          addedOffsetAmount      (optional) Added offset amount to the scroll position.
 	 */
-	_publicMethods.getStickyElementsOffset = function( includeOffsetSelector ) {
+	_publicMethods.getStickyElementsOffset = function( includeOffsetSelector, addedOffsetAmount ) {
 		var stickyElementsOffset = 0;
 
 		// Maybe add height of the progress bar to scroll position
-		var offsetItemsList = null !== includeOffsetSelector && undefined !== includeOffsetSelector ? document.querySelectorAll( includeOffsetSelector ) : [];
-		if ( offsetItemsList.length > 0 ) {
-			var offsetItem = offsetItemsList[ 0 ];
-			var height = offsetItem.getBoundingClientRect().height;
-			stickyElementsOffset += height;
+		try {
+			var offsetItemsList = null !== includeOffsetSelector && undefined !== includeOffsetSelector ? document.querySelectorAll( includeOffsetSelector ) : [];
+			if ( offsetItemsList.length > 0 ) {
+				var offsetItem = offsetItemsList[ 0 ];
+				var height = offsetItem.getBoundingClientRect().height;
+				stickyElementsOffset += height;
+			}
+		}
+		catch ( error ) {
+			// Do nothing
 		}
 
 		// Maybe add sticky elements height to scroll position
@@ -392,20 +471,27 @@
 			}
 		}
 
+		// Maybe add arbitrary offset amount
+		if ( ! isNaN( addedOffsetAmount ) ) {
+			stickyElementsOffset += addedOffsetAmount;
+		}
+
 		return stickyElementsOffset;
 	}
 
 	/**
 	 * Change scroll position to top of the element after the sticky elements.
 	 *
-	 * @param   HTMLElement  element      The element of to scroll to.
+	 * @param   HTMLElement  element                The element of to scroll to.
+	 * @param   string       includeOffsetSelector  (optional) Selector for the elements to include in the offset position. Pass `0` or `false` to skip this parameter.
+	 * @param   int          addedOffsetAmount      (optional) Added offset amount to the scroll position.
 	 */
-	_publicMethods.scrollToElement = function( element, includeOffsetSelector ) {
+	_publicMethods.scrollToElement = function( element, includeOffsetSelector, addedOffsetAmount ) {
 		// Bail if step element not provided
 		if ( ! element ) { return; }
 
 		// Get the offset position of the element
-		var stickyElementsOffset = _publicMethods.getStickyElementsOffset( includeOffsetSelector );
+		var stickyElementsOffset = _publicMethods.getStickyElementsOffset( includeOffsetSelector, addedOffsetAmount );
 		var elementOffset = _publicMethods.getOffsetTop( element ) + ( _settings.scrollOffset * -1 ) + ( stickyElementsOffset * -1 );
 
 		// Scroll to the element, considering its offset position.
