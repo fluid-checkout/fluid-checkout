@@ -78,7 +78,7 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 	public function maybe_dequeue_scripts() {
 		// Bail if not on checkout page
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
-		
+
 		wp_dequeue_script( 'mfn-woojs' );
 	}
 
