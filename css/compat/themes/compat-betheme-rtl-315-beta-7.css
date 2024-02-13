@@ -1,5 +1,6 @@
 :root {
   --fluidcheckout--field--height: 44px;
+  --fluidcheckout--field--border-color: #ebebeb;
 }
 
 body.theme-betheme.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] textarea:focus,

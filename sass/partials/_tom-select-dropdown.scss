@@ -27,9 +27,9 @@
 
 .ts-dropdown [data-selectable] .highlight {
 	padding: 0;
-	border-radius: $ts-select-highlight-border-radius;
-	background: $ts-select-color-highlight;
+	background: transparent;
 	color: $ts-select-color-text;
+	text-decoration: underline;
 }
 
 .ts-dropdown .option,

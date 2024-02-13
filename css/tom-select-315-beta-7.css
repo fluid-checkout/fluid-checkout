@@ -170,7 +170,7 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
   left: 0;
   margin: 0;
   width: 100%;
-  border: var(--fluidcheckout--field--border-width, 1px) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+  border: var(--fluidcheckout--field--border-width, 1px) solid var(--fluidcheckout--color--light-grey, #d8d8d8);
   background: var(--fluidcheckout--color--white, #fff);
   border-top: 0 none;
   box-shadow: 0 3px 8px var(--fluidcheckout--shadow-color--darker, var(--fluidcheckout--color--light-grey, #d8d8d8));
@@ -188,9 +188,9 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
 
 .ts-dropdown [data-selectable] .highlight {
   padding: 0;
-  border-radius: 3px;
-  background: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
+  background: transparent;
   color: var(--fluidcheckout--field--text-color, inherit);
+  text-decoration: underline;
 }
 
 .ts-dropdown .option,
@@ -224,12 +224,12 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
 }
 
 .ts-dropdown .active {
-  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
-  color: var(--fluidcheckout--field--text-color, inherit);
+  background-color: var(--fluidcheckout--color--grey, #7b7575);
+  color: var(--fluidcheckout--color--white, #fff);
 }
 
 .ts-dropdown .active.create {
-  color: var(--fluidcheckout--field--text-color, inherit);
+  color: var(--fluidcheckout--color--white, #fff);
 }
 
 .ts-dropdown .create {
