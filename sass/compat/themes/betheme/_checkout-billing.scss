@@ -25,7 +25,8 @@ body#{ $_body-theme-selector }.has-highlighted-billing-section div.woocommerce f
 
 body#{ $_body-theme-selector }.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] .select2-selection {
 	&:focus {
-		&, .select2-selection__rendered {
+		&,
+		.select2-selection__rendered {
 			background-color: var(--fluidcheckout--betheme--form-field--background-color--focus) !important; // Needed to override FC styles
 			color: var(--fluidcheckout--betheme--form-field--text-color--focus) !important; // Needed to override FC styles
 			border-color: var(--fluidcheckout--betheme--form-field--border-color--focus) !important; // Needed to override FC styles
