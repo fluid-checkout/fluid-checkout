@@ -1,0 +1,267 @@
+// ------------------------------------
+// TOM SELECT CONTROL
+// ------------------------------------
+
+.ts-hidden-accessible {
+	border: 0 !important; // Needed to enforce styles for the select component
+	clip: rect(0 0 0 0) !important; // Needed to enforce styles for the select component
+	clip-path: inset(50%) !important; // Needed to enforce styles for the select component
+	overflow: hidden !important; // Needed to enforce styles for the select component
+	padding: 0 !important; // Needed to enforce styles for the select component
+	position: absolute !important; // Needed to enforce styles for the select component
+	width: 1px !important; // Needed to enforce styles for the select component
+	white-space: nowrap !important; // Needed to enforce styles for the select component
+}
+
+
+
+.ts-wrapper {
+	position: relative;
+	display: flex;
+	width: 100%;
+	min-height: $ts-select-field-height;
+}
+
+
+
+.ts-control > * {
+	vertical-align: baseline;
+	display: inline-block;
+}
+
+
+
+.ts-control {
+	z-index: z( 'default' );
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	height: $ts-select-field-height;
+		
+	padding: $ts-select-padding-y $ts-select-padding-x;
+	padding-#{ $alignment-right }: $global-spacing;
+
+	border: $ts-select-border;
+	border-width: $ts-select-border-width;
+	border-color: $ts-select-color-border;
+	border-radius: $ts-select-border-radius;
+
+	box-shadow: $ts-select-shadow-input;
+
+	color: $ts-select-color-text;
+	line-height: $ts-select-line-height;
+	text-align: #{ $alignment-left };
+	cursor: text;
+}
+.ts-wrapper.single .ts-control {
+	border-radius: $ts-select-border-radius;
+	cursor: pointer;
+}
+.ts-wrapper.single.input-active .ts-control {
+	cursor: text;
+}
+
+.ts-wrapper.focus .ts-control {
+	box-shadow: $ts-select-shadow-input-focus;
+}
+
+.ts-wrapper.disabled .ts-control,
+.ts-wrapper.disabled .ts-control * {
+	cursor: default !important; // Needed to enforce styles for the select component
+}
+
+
+
+
+.ts-control > input {
+	display: inline-block !important;  // Needed to enforce styles for the select component
+	flex: 1 1 auto;
+	margin: 0 !important;  // Needed to enforce styles for the select component
+	padding: 0 !important;  // Needed to enforce styles for the select component
+	min-width: 7rem;
+	min-height: 0 !important;  // Needed to enforce styles for the select component
+	max-height: none !important;  // Needed to enforce styles for the select component
+	max-width: 100% !important;  // Needed to enforce styles for the select component
+	border: 0 none !important;  // Needed to enforce styles for the select component
+	background: none !important;  // Needed to enforce styles for the select component
+	text-indent: 0 !important;  // Needed to enforce styles for the select component
+	line-height: calc( $form-field-height - ( $form-field-border-width * 2 ) - ( $ts-select-padding-y * 2 ) );
+	user-select: auto !important;  // Needed to enforce styles for the select component
+	box-shadow: none !important;  // Needed to enforce styles for the select component
+
+	&:focus {
+		outline: none !important;  // Needed to enforce styles for the select component
+		outline-offset: none !important;  // Needed to enforce styles for the select component
+	}
+}
+.ts-control > input::-ms-clear {
+	display: none;
+}
+
+.has-items .ts-control > input {
+	margin: $ts-select-caret-margin !important; // Needed to enforce styles for the select component
+}
+
+.disabled .ts-control {
+	opacity: $ts-select-opacity-disabled;
+	background-color: $ts-select-color-disabled;
+}
+
+
+
+.ts-wrapper.single .ts-control input {
+	cursor: pointer;
+}
+
+
+
+.ts-control:focus-within {
+	outline: $focus-outline-field !important; // Needed to override theme styles
+	outline-offset: $focus-outline-offset-field !important; // Needed to override theme styles
+}
+div.woocommerce form .form-row .ts-control input[type=text]:focus {
+	outline: 0 !important; // Needed to clear focus from the input element inside the control
+	outline-offset: 0 !important; // Needed to clear focus from the input element inside the control
+}
+
+
+
+.ts-wrapper.single .ts-control > [data-ts-item] {
+	position: absolute;
+	top: 0;
+	#{ $alignment-left }: 0;
+	#{ $alignment-right }: auto;
+	width: auto;
+	padding-#{ $alignment-left }: $form-field-padding-horizontal;
+	height: calc( $form-field-height - ( $form-field-border-width * 2 ) );
+	font-size: $ts-select-font-size;
+	line-height: calc( $form-field-height - ( $form-field-border-width * 2 ) );
+	color: $ts-select-color-text;
+}
+.dropdown-active.single .ts-control > [data-ts-item] {
+	display: none;
+}
+
+
+
+.ts-wrapper.single .ts-control::after {
+	content: ' ';
+	display: block;
+	position: absolute;
+	top: 50%;
+	#{ $alignment-right }: $ts-select-arrow-offset;
+	#{ $alignment-left }: auto;
+	margin-top: round(-0.5 * $ts-select-arrow-size);
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: $ts-select-arrow-size $ts-select-arrow-size 0 $ts-select-arrow-size;
+	border-color: transparent;
+	border-top-color: $ts-select-arrow-color;
+}
+
+.ts-wrapper.single.dropdown-active .ts-control::after {
+	margin-top: calc( $ts-select-arrow-size * -0.8 );
+	border-width: 0 $ts-select-arrow-size $ts-select-arrow-size $ts-select-arrow-size;
+	border-color: transparent;
+	border-bottom-color: $ts-select-arrow-color;
+}
+
+.ts-wrapper.single.input-active .ts-control,
+.ts-wrapper.single.input-active .ts-control input {
+	cursor: text;
+}
+
+
+
+// hide input, while retaining its focus, and maintain layout so users can still click on the space to bring the display back
+// visibility:hidden can prevent the input from receiving focus
+.input-hidden .ts-control > input {
+	opacity: 0;
+	position: absolute;
+	#{ $alignment-left }: -10000px;
+}
+
+
+
+
+
+
+
+
+
+// .ts-wrapper.multi {
+// 	&.has-items .ts-control {
+// 		$padding-x: $ts-select-padding-x - 3px;
+
+// 		padding-left: $padding-x;
+
+// 		--ts-pr-min: $padding-x;
+// 	}
+
+// 	.ts-control {
+// 		[data-value] {
+// 			text-shadow: 0 1px 0 rgba(0, 51, 83, 30%);
+// 			border-radius: 3px;
+// 			@include selectize-vertical-gradient(#1da7ee, #178ee9);
+
+// 			box-shadow: 0 1px 0 rgba(0, 0, 0, 20%),inset 0 1px rgba(255, 255, 255, 3%);
+
+// 			&.active {
+// 				@include selectize-vertical-gradient(#008fd8, #0075cf);
+// 			}
+// 		}
+// 	}
+
+// 	&.disabled .ts-control [data-value] {
+// 		color: #999;
+// 		text-shadow: none;
+// 		background: none;
+// 		box-shadow: none;
+
+// 		&,
+// 		.remove {
+// 			border-color: #e6e6e6;
+// 		}
+
+// 		.remove {
+// 			background: none;
+// 		}
+// 	}
+// }
+
+
+
+// .ts-wrapper.multi.has-items .ts-control {
+// 	$padding-x: $ts-select-padding-x;
+// 	$padding-top: calc( #{$ts-select-padding-y} - #{$ts-select-padding-item-y} - #{$ts-select-width-item-border});
+// 	$padding-bottom: calc( #{$ts-select-padding-y} - #{$ts-select-padding-item-y} - #{$ts-select-margin-item-y} - #{$ts-select-width-item-border});
+
+// 	padding: $padding-top $padding-x $padding-bottom;
+// }
+
+
+// .ts-wrapper.multi .ts-control > div {
+// 	cursor: pointer;
+// 	margin: 0 $ts-select-margin-item-x $ts-select-margin-item-y 0;
+// 	padding: $ts-select-padding-item-y $ts-select-padding-item-x;
+// 	background: $ts-select-color-item;
+// 	color: $ts-select-color-item-text;
+// 	border: $ts-select-width-item-border solid $ts-select-color-item-border;
+
+// 	&.active {
+// 		background: $ts-select-color-item-active;
+// 		color: $ts-select-color-item-active-text;
+// 		border: $ts-select-width-item-border solid $ts-select-color-item-active-border;
+// 	}
+// }
+
+// .ts-wrapper.multi.disabled .ts-control > div {
+// 	&, &.active {
+// 		color: lighten(desaturate($ts-select-color-item-text, 100%), $ts-select-lighten-disabled-item-text);
+// 		background: lighten(desaturate($ts-select-color-item, 100%), $ts-select-lighten-disabled-item);
+// 		border: $ts-select-width-item-border solid lighten(desaturate($ts-select-color-item-border, 100%), $ts-select-lighten-disabled-item-border);
+// 	}
+// }

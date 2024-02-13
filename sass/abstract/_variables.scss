@@ -640,6 +640,10 @@ $checkout-field-description-font-size--large-screen:  $font-size-extra-small !de
 $form-field-height:                                   var( --fluidcheckout--field--height, remsize( 4.5625rem ) ) !default;
 $form-field-border-radius:                            var( --fluidcheckout--field--border-radius, 0 ) !default;
 $form-field-border-width:                             var( --fluidcheckout--field--border-width, remsize( .1rem ) ) !default;
+$form-field-padding-horizontal:                       var( --fluidcheckout--field--padding-horizontal, $global-spacing-extra-small ) !default;
+$form-field-font-size:                                var( --fluidcheckout--field--font-size, remsize( 1.6rem ) ) !default;
+$form-field-text-color:                               var( --fluidcheckout--field--text-color, inherit ) !default;
+$form-field-border-color:                             var( --fluidcheckout--field--border-color, $light-grey ) !default;
 
 $form-field-select2-inner-spacing:                    var( --fluidcheckout--select2--inner-spacing, remsize( .5rem ) ) !default;
 $form-field-select2-inner-component-height:           var( --fluidcheckout--select2--inner-component-height, calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) ) ) !default;

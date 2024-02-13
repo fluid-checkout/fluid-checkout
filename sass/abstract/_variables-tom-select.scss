@@ -1,0 +1,71 @@
+// ----------------------------------------
+// VARIABLES FOR TOM SELECT
+// ----------------------------------------
+
+$ts-select-color-text:                                   $form-field-text-color !default;
+$ts-select-color-border:                                 $form-field-border-color !default;
+$ts-select-color-highlight:                              $lighter-grey !default;
+$ts-select-color-disabled:                               $light-grey !default;
+
+$ts-select-color-item:                                   $lighter-grey !default;
+$ts-select-color-item-text:                              $ts-select-color-text !default;
+$ts-select-color-item-border:                            $lighter-grey !default;
+$ts-select-color-item-active:                            $light-grey !default;
+$ts-select-color-item-active-text:                       $ts-select-color-text !default;
+$ts-select-color-item-active-border:                     $light-grey !default;
+
+$ts-select-color-dropdown:                               $white !default;
+$ts-select-color-dropdown-border:                        $ts-select-color-border !default;
+$ts-select-color-dropdown-border-top:                    $ts-select-color-border !default;
+$ts-select-color-dropdown-item-active:                   $ts-select-color-highlight !default;
+$ts-select-color-dropdown-item-active-text:              $ts-select-color-text !default;
+$ts-select-color-dropdown-item-create-text:              $ts-select-color-text !default; //rgba(red($ts-select-color-text), green($ts-select-color-text), blue($ts-select-color-text), 50%) !default;
+$ts-select-color-dropdown-item-create-active-text:       $ts-select-color-dropdown-item-active-text !default;
+
+$ts-select-color-optgroup:                               $ts-select-color-dropdown !default;
+$ts-select-color-optgroup-text:                          $ts-select-color-text !default;
+
+$ts-select-font-family:                                  inherit !default;
+$ts-select-font-size:                                    $form-field-font-size !default;
+
+$ts-select-margin-item-x:                                $global-spacing-tiny !default;
+$ts-select-margin-item-y:                                $global-spacing-tiny !default;
+
+$ts-select-padding-x:                                    $global-spacing-extra-small !default;
+$ts-select-padding-y:                                    $global-spacing-extra-small !default;
+$ts-select-padding-item-x:                               $global-spacing-tiny !default;
+$ts-select-padding-item-y:                               $global-spacing-tiny !default;
+$ts-select-padding-dropdown-item-x:                      $ts-select-padding-x !default;
+$ts-select-padding-dropdown-item-y:                      $global-spacing-tiny !default;
+
+$ts-select-border-width:                                 $form-field-border-width !default;
+$ts-select-border:                                       $ts-select-border-width solid $ts-select-color-border !default;
+
+$ts-select-field-height:                                 $form-field-height !default;
+$ts-select-line-height:                                  calc( $ts-select-field-height - ( $ts-select-padding-y * 2 ) - ( $ts-select-border-width * 2 ) ) !default;
+
+$ts-select-highlight-border-radius:                      $global-radius-extra-small !default;
+
+$ts-select-lighten-disabled-item:                        30% !default;
+$ts-select-lighten-disabled-item-text:                   30% !default;
+$ts-select-lighten-disabled-item-border:                 30% !default;
+
+$ts-select-opacity-disabled:                             0.5 !default;
+$ts-select-shadow-input:                                 none !default;
+$ts-select-shadow-input-focus:                           none !default;
+
+$ts-select-dropdown-border:                              $ts-select-border-width solid $ts-select-color-dropdown-border !default;
+$ts-select-border-radius:                                $form-field-border-radius !default;
+$ts-select-width-item-border:                            0 !default;
+$ts-select-max-height-dropdown:                          200px !default;
+
+$ts-select-arrow-size:                                   remsize( .5rem ) !default;
+$ts-select-arrow-color:                                  $grey !default;
+$ts-select-arrow-offset:                                 remsize( 1.5rem ) !default;
+
+$ts-select-caret-margin:                                 0 4px !default;
+$ts-select-caret-margin-rtl:                             0 4px 0 -2px !default;
+
+$ts-select-spinner-size:                                 30px !default;
+$ts-select-spinner-border-size:                          5px !default;
+$ts-select-spinner-border-color:                         $ts-select-color-border !default;
