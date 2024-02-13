@@ -4406,8 +4406,893 @@
 	  }
 	}
 
+	/**
+	 * Plugin: "change_listener" (Tom Select)
+	 * Copyright (c) contributors
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+	 * file except in compliance with the License. You may obtain a copy of the License at:
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software distributed under
+	 * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+	 * ANY KIND, either express or implied. See the License for the specific language
+	 * governing permissions and limitations under the License.
+	 *
+	 */
+
+	function change_listener () {
+	  addEvent(this.input, 'change', () => {
+	    this.sync();
+	  });
+	}
+
+	/**
+	 * Plugin: "checkbox_options" (Tom Select)
+	 * Copyright (c) contributors
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+	 * file except in compliance with the License. You may obtain a copy of the License at:
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software distributed under
+	 * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+	 * ANY KIND, either express or implied. See the License for the specific language
+	 * governing permissions and limitations under the License.
+	 *
+	 */
+
+	function checkbox_options (userOptions) {
+	  var self = this;
+	  var orig_onOptionSelect = self.onOptionSelect;
+	  self.settings.hideSelected = false;
+	  const cbOptions = Object.assign({
+	    // so that the user may add different ones as well
+	    className: "tomselect-checkbox",
+	    // the following default to the historic plugin's values
+	    checkedClassNames: undefined,
+	    uncheckedClassNames: undefined
+	  }, userOptions);
+	  var UpdateChecked = function UpdateChecked(checkbox, toCheck) {
+	    if (toCheck) {
+	      checkbox.checked = true;
+	      if (cbOptions.uncheckedClassNames) {
+	        checkbox.classList.remove(...cbOptions.uncheckedClassNames);
+	      }
+	      if (cbOptions.checkedClassNames) {
+	        checkbox.classList.add(...cbOptions.checkedClassNames);
+	      }
+	    } else {
+	      checkbox.checked = false;
+	      if (cbOptions.checkedClassNames) {
+	        checkbox.classList.remove(...cbOptions.checkedClassNames);
+	      }
+	      if (cbOptions.uncheckedClassNames) {
+	        checkbox.classList.add(...cbOptions.uncheckedClassNames);
+	      }
+	    }
+	  };
+
+	  // update the checkbox for an option
+	  var UpdateCheckbox = function UpdateCheckbox(option) {
+	    setTimeout(() => {
+	      var checkbox = option.querySelector('input.' + cbOptions.className);
+	      if (checkbox instanceof HTMLInputElement) {
+	        UpdateChecked(checkbox, option.classList.contains('selected'));
+	      }
+	    }, 1);
+	  };
+
+	  // add checkbox to option template
+	  self.hook('after', 'setupTemplates', () => {
+	    var orig_render_option = self.settings.render.option;
+	    self.settings.render.option = (data, escape_html) => {
+	      var rendered = getDom(orig_render_option.call(self, data, escape_html));
+	      var checkbox = document.createElement('input');
+	      if (cbOptions.className) {
+	        checkbox.classList.add(cbOptions.className);
+	      }
+	      checkbox.addEventListener('click', function (evt) {
+	        preventDefault(evt);
+	      });
+	      checkbox.type = 'checkbox';
+	      const hashed = hash_key(data[self.settings.valueField]);
+	      UpdateChecked(checkbox, !!(hashed && self.items.indexOf(hashed) > -1));
+	      rendered.prepend(checkbox);
+	      return rendered;
+	    };
+	  });
+
+	  // uncheck when item removed
+	  self.on('item_remove', value => {
+	    var option = self.getOption(value);
+	    if (option) {
+	      // if dropdown hasn't been opened yet, the option won't exist
+	      option.classList.remove('selected'); // selected class won't be removed yet
+	      UpdateCheckbox(option);
+	    }
+	  });
+
+	  // check when item added
+	  self.on('item_add', value => {
+	    var option = self.getOption(value);
+	    if (option) {
+	      // if dropdown hasn't been opened yet, the option won't exist
+	      UpdateCheckbox(option);
+	    }
+	  });
+
+	  // remove items when selected option is clicked
+	  self.hook('instead', 'onOptionSelect', (evt, option) => {
+	    if (option.classList.contains('selected')) {
+	      option.classList.remove('selected');
+	      self.removeItem(option.dataset.value);
+	      self.refreshOptions();
+	      preventDefault(evt, true);
+	      return;
+	    }
+	    orig_onOptionSelect.call(self, evt, option);
+	    UpdateCheckbox(option);
+	  });
+	}
+
+	/**
+	 * Plugin: "dropdown_header" (Tom Select)
+	 * Copyright (c) contributors
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+	 * file except in compliance with the License. You may obtain a copy of the License at:
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software distributed under
+	 * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+	 * ANY KIND, either express or implied. See the License for the specific language
+	 * governing permissions and limitations under the License.
+	 *
+	 */
+
+	function clear_button (userOptions) {
+	  const self = this;
+	  const options = Object.assign({
+	    className: 'clear-button',
+	    title: 'Clear All',
+	    html: data => {
+	      return `<div class="${data.className}" title="${data.title}">&#10799;</div>`;
+	    }
+	  }, userOptions);
+	  self.on('initialize', () => {
+	    var button = getDom(options.html(options));
+	    button.addEventListener('click', evt => {
+	      if (self.isLocked) return;
+	      self.clear();
+	      if (self.settings.mode === 'single' && self.settings.allowEmptyOption) {
+	        self.addItem('');
+	      }
+	      evt.preventDefault();
+	      evt.stopPropagation();
+	    });
+	    self.control.appendChild(button);
+	  });
+	}
+
+	/**
+	 * Plugin: "drag_drop" (Tom Select)
+	 * Copyright (c) contributors
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+	 * file except in compliance with the License. You may obtain a copy of the License at:
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software distributed under
+	 * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+	 * ANY KIND, either express or implied. See the License for the specific language
+	 * governing permissions and limitations under the License.
+	 *
+	 */
+
+	const insertAfter = (referenceNode, newNode) => {
+	  var _referenceNode$parent;
+	  (_referenceNode$parent = referenceNode.parentNode) == null || _referenceNode$parent.insertBefore(newNode, referenceNode.nextSibling);
+	};
+	const insertBefore = (referenceNode, newNode) => {
+	  var _referenceNode$parent2;
+	  (_referenceNode$parent2 = referenceNode.parentNode) == null || _referenceNode$parent2.insertBefore(newNode, referenceNode);
+	};
+	const isBefore = (referenceNode, newNode) => {
+	  do {
+	    var _newNode;
+	    newNode = (_newNode = newNode) == null ? void 0 : _newNode.previousElementSibling;
+	    if (referenceNode == newNode) {
+	      return true;
+	    }
+	  } while (newNode && newNode.previousElementSibling);
+	  return false;
+	};
+	function drag_drop () {
+	  var self = this;
+	  if (self.settings.mode !== 'multi') return;
+	  var orig_lock = self.lock;
+	  var orig_unlock = self.unlock;
+	  let sortable = true;
+	  let drag_item;
+
+	  /**
+	   * Add draggable attribute to item
+	   */
+	  self.hook('after', 'setupTemplates', () => {
+	    var orig_render_item = self.settings.render.item;
+	    self.settings.render.item = (data, escape) => {
+	      const item = getDom(orig_render_item.call(self, data, escape));
+	      setAttr(item, {
+	        'draggable': 'true'
+	      });
+
+	      // prevent doc_mousedown (see tom-select.ts)
+	      const mousedown = evt => {
+	        if (!sortable) preventDefault(evt);
+	        evt.stopPropagation();
+	      };
+	      const dragStart = evt => {
+	        drag_item = item;
+	        setTimeout(() => {
+	          item.classList.add('ts-dragging');
+	        }, 0);
+	      };
+	      const dragOver = evt => {
+	        evt.preventDefault();
+	        item.classList.add('ts-drag-over');
+	        moveitem(item, drag_item);
+	      };
+	      const dragLeave = () => {
+	        item.classList.remove('ts-drag-over');
+	      };
+	      const moveitem = (targetitem, dragitem) => {
+	        if (dragitem === undefined) return;
+	        if (isBefore(dragitem, item)) {
+	          insertAfter(targetitem, dragitem);
+	        } else {
+	          insertBefore(targetitem, dragitem);
+	        }
+	      };
+	      const dragend = () => {
+	        var _drag_item;
+	        document.querySelectorAll('.ts-drag-over').forEach(el => el.classList.remove('ts-drag-over'));
+	        (_drag_item = drag_item) == null || _drag_item.classList.remove('ts-dragging');
+	        drag_item = undefined;
+	        var values = [];
+	        self.control.querySelectorAll(`[data-value]`).forEach(el => {
+	          if (el.dataset.value) {
+	            let value = el.dataset.value;
+	            if (value) {
+	              values.push(value);
+	            }
+	          }
+	        });
+	        self.setValue(values);
+	      };
+	      addEvent(item, 'mousedown', mousedown);
+	      addEvent(item, 'dragstart', dragStart);
+	      addEvent(item, 'dragenter', dragOver);
+	      addEvent(item, 'dragover', dragOver);
+	      addEvent(item, 'dragleave', dragLeave);
+	      addEvent(item, 'dragend', dragend);
+	      return item;
+	    };
+	  });
+	  self.hook('instead', 'lock', () => {
+	    sortable = false;
+	    return orig_lock.call(self);
+	  });
+	  self.hook('instead', 'unlock', () => {
+	    sortable = true;
+	    return orig_unlock.call(self);
+	  });
+	}
+
+	/**
+	 * Plugin: "dropdown_header" (Tom Select)
+	 * Copyright (c) contributors
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+	 * file except in compliance with the License. You may obtain a copy of the License at:
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software distributed under
+	 * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+	 * ANY KIND, either express or implied. See the License for the specific language
+	 * governing permissions and limitations under the License.
+	 *
+	 */
+
+	function dropdown_header (userOptions) {
+	  const self = this;
+	  const options = Object.assign({
+	    title: 'Untitled',
+	    headerClass: 'dropdown-header',
+	    titleRowClass: 'dropdown-header-title',
+	    labelClass: 'dropdown-header-label',
+	    closeClass: 'dropdown-header-close',
+	    html: data => {
+	      return '<div class="' + data.headerClass + '">' + '<div class="' + data.titleRowClass + '">' + '<span class="' + data.labelClass + '">' + data.title + '</span>' + '<a class="' + data.closeClass + '">&times;</a>' + '</div>' + '</div>';
+	    }
+	  }, userOptions);
+	  self.on('initialize', () => {
+	    var header = getDom(options.html(options));
+	    var close_link = header.querySelector('.' + options.closeClass);
+	    if (close_link) {
+	      close_link.addEventListener('click', evt => {
+	        preventDefault(evt, true);
+	        self.close();
+	      });
+	    }
+	    self.dropdown.insertBefore(header, self.dropdown.firstChild);
+	  });
+	}
+
+	/**
+	 * Plugin: "dropdown_input" (Tom Select)
+	 * Copyright (c) contributors
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+	 * file except in compliance with the License. You may obtain a copy of the License at:
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software distributed under
+	 * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+	 * ANY KIND, either express or implied. See the License for the specific language
+	 * governing permissions and limitations under the License.
+	 *
+	 */
+
+	function caret_position () {
+	  var self = this;
+
+	  /**
+	   * Moves the caret to the specified index.
+	   *
+	   * The input must be moved by leaving it in place and moving the
+	   * siblings, due to the fact that focus cannot be restored once lost
+	   * on mobile webkit devices
+	   *
+	   */
+	  self.hook('instead', 'setCaret', new_pos => {
+	    if (self.settings.mode === 'single' || !self.control.contains(self.control_input)) {
+	      new_pos = self.items.length;
+	    } else {
+	      new_pos = Math.max(0, Math.min(self.items.length, new_pos));
+	      if (new_pos != self.caretPos && !self.isPending) {
+	        self.controlChildren().forEach((child, j) => {
+	          if (j < new_pos) {
+	            self.control_input.insertAdjacentElement('beforebegin', child);
+	          } else {
+	            self.control.appendChild(child);
+	          }
+	        });
+	      }
+	    }
+	    self.caretPos = new_pos;
+	  });
+	  self.hook('instead', 'moveCaret', direction => {
+	    if (!self.isFocused) return;
+
+	    // move caret before or after selected items
+	    const last_active = self.getLastActive(direction);
+	    if (last_active) {
+	      const idx = nodeIndex(last_active);
+	      self.setCaret(direction > 0 ? idx + 1 : idx);
+	      self.setActiveItem();
+	      removeClasses(last_active, 'last-active');
+
+	      // move caret left or right of current position
+	    } else {
+	      self.setCaret(self.caretPos + direction);
+	    }
+	  });
+	}
+
+	/**
+	 * Plugin: "dropdown_input" (Tom Select)
+	 * Copyright (c) contributors
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+	 * file except in compliance with the License. You may obtain a copy of the License at:
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software distributed under
+	 * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+	 * ANY KIND, either express or implied. See the License for the specific language
+	 * governing permissions and limitations under the License.
+	 *
+	 */
+
+	function dropdown_input () {
+	  const self = this;
+	  self.settings.shouldOpen = true; // make sure the input is shown even if there are no options to display in the dropdown
+
+	  self.hook('before', 'setup', () => {
+	    self.focus_node = self.control;
+	    addClasses(self.control_input, 'dropdown-input');
+	    const div = getDom('<div class="dropdown-input-wrap">');
+	    div.append(self.control_input);
+	    self.dropdown.insertBefore(div, self.dropdown.firstChild);
+
+	    // set a placeholder in the select control
+	    const placeholder = getDom('<input class="items-placeholder" tabindex="-1" />');
+	    placeholder.placeholder = self.settings.placeholder || '';
+	    self.control.append(placeholder);
+	  });
+	  self.on('initialize', () => {
+	    // set tabIndex on control to -1, otherwise [shift+tab] will put focus right back on control_input
+	    self.control_input.addEventListener('keydown', evt => {
+	      //addEvent(self.control_input,'keydown' as const,(evt:KeyboardEvent) =>{
+	      switch (evt.keyCode) {
+	        case KEY_ESC:
+	          if (self.isOpen) {
+	            preventDefault(evt, true);
+	            self.close();
+	          }
+	          self.clearActiveItems();
+	          return;
+	        case KEY_TAB:
+	          self.focus_node.tabIndex = -1;
+	          break;
+	      }
+	      return self.onKeyDown.call(self, evt);
+	    });
+	    self.on('blur', () => {
+	      self.focus_node.tabIndex = self.isDisabled ? -1 : self.tabIndex;
+	    });
+
+	    // give the control_input focus when the dropdown is open
+	    self.on('dropdown_open', () => {
+	      self.control_input.focus();
+	    });
+
+	    // prevent onBlur from closing when focus is on the control_input
+	    const orig_onBlur = self.onBlur;
+	    self.hook('instead', 'onBlur', evt => {
+	      if (evt && evt.relatedTarget == self.control_input) return;
+	      return orig_onBlur.call(self);
+	    });
+	    addEvent(self.control_input, 'blur', () => self.onBlur());
+
+	    // return focus to control to allow further keyboard input
+	    self.hook('before', 'close', () => {
+	      if (!self.isOpen) return;
+	      self.focus_node.focus({
+	        preventScroll: true
+	      });
+	    });
+	  });
+	}
+
+	/**
+	 * Plugin: "input_autogrow" (Tom Select)
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+	 * file except in compliance with the License. You may obtain a copy of the License at:
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software distributed under
+	 * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+	 * ANY KIND, either express or implied. See the License for the specific language
+	 * governing permissions and limitations under the License.
+	 *
+	 */
+
+	function input_autogrow () {
+	  var self = this;
+	  self.on('initialize', () => {
+	    var test_input = document.createElement('span');
+	    var control = self.control_input;
+	    test_input.style.cssText = 'position:absolute; top:-99999px; left:-99999px; width:auto; padding:0; white-space:pre; ';
+	    self.wrapper.appendChild(test_input);
+	    var transfer_styles = ['letterSpacing', 'fontSize', 'fontFamily', 'fontWeight', 'textTransform'];
+	    for (const style_name of transfer_styles) {
+	      // @ts-ignore TS7015 https://stackoverflow.com/a/50506154/697576
+	      test_input.style[style_name] = control.style[style_name];
+	    }
+
+	    /**
+	     * Set the control width
+	     *
+	     */
+	    var resize = () => {
+	      test_input.textContent = control.value;
+	      control.style.width = test_input.clientWidth + 'px';
+	    };
+	    resize();
+	    self.on('update item_add item_remove', resize);
+	    addEvent(control, 'input', resize);
+	    addEvent(control, 'keyup', resize);
+	    addEvent(control, 'blur', resize);
+	    addEvent(control, 'update', resize);
+	  });
+	}
+
+	/**
+	 * Plugin: "input_autogrow" (Tom Select)
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+	 * file except in compliance with the License. You may obtain a copy of the License at:
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software distributed under
+	 * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+	 * ANY KIND, either express or implied. See the License for the specific language
+	 * governing permissions and limitations under the License.
+	 *
+	 */
+
+	function no_backspace_delete () {
+	  var self = this;
+	  var orig_deleteSelection = self.deleteSelection;
+	  this.hook('instead', 'deleteSelection', evt => {
+	    if (self.activeItems.length) {
+	      return orig_deleteSelection.call(self, evt);
+	    }
+	    return false;
+	  });
+	}
+
+	/**
+	 * Plugin: "no_active_items" (Tom Select)
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+	 * file except in compliance with the License. You may obtain a copy of the License at:
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software distributed under
+	 * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+	 * ANY KIND, either express or implied. See the License for the specific language
+	 * governing permissions and limitations under the License.
+	 *
+	 */
+
+	function no_active_items () {
+	  this.hook('instead', 'setActiveItem', () => {});
+	  this.hook('instead', 'selectAll', () => {});
+	}
+
+	/**
+	 * Plugin: "optgroup_columns" (Tom Select.js)
+	 * Copyright (c) contributors
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+	 * file except in compliance with the License. You may obtain a copy of the License at:
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software distributed under
+	 * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+	 * ANY KIND, either express or implied. See the License for the specific language
+	 * governing permissions and limitations under the License.
+	 *
+	 */
+
+	function optgroup_columns () {
+	  var self = this;
+	  var orig_keydown = self.onKeyDown;
+	  self.hook('instead', 'onKeyDown', evt => {
+	    var index, option, options, optgroup;
+	    if (!self.isOpen || !(evt.keyCode === KEY_LEFT || evt.keyCode === KEY_RIGHT)) {
+	      return orig_keydown.call(self, evt);
+	    }
+	    self.ignoreHover = true;
+	    optgroup = parentMatch(self.activeOption, '[data-group]');
+	    index = nodeIndex(self.activeOption, '[data-selectable]');
+	    if (!optgroup) {
+	      return;
+	    }
+	    if (evt.keyCode === KEY_LEFT) {
+	      optgroup = optgroup.previousSibling;
+	    } else {
+	      optgroup = optgroup.nextSibling;
+	    }
+	    if (!optgroup) {
+	      return;
+	    }
+	    options = optgroup.querySelectorAll('[data-selectable]');
+	    option = options[Math.min(options.length - 1, index)];
+	    if (option) {
+	      self.setActiveOption(option);
+	    }
+	  });
+	}
+
+	/**
+	 * Plugin: "remove_button" (Tom Select)
+	 * Copyright (c) contributors
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+	 * file except in compliance with the License. You may obtain a copy of the License at:
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software distributed under
+	 * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+	 * ANY KIND, either express or implied. See the License for the specific language
+	 * governing permissions and limitations under the License.
+	 *
+	 */
+
+	function remove_button (userOptions) {
+	  const options = Object.assign({
+	    label: '&times;',
+	    title: 'Remove',
+	    className: 'remove',
+	    append: true
+	  }, userOptions);
+
+	  //options.className = 'remove-single';
+	  var self = this;
+
+	  // override the render method to add remove button to each item
+	  if (!options.append) {
+	    return;
+	  }
+	  var html = '<a href="javascript:void(0)" class="' + options.className + '" tabindex="-1" title="' + escape_html(options.title) + '">' + options.label + '</a>';
+	  self.hook('after', 'setupTemplates', () => {
+	    var orig_render_item = self.settings.render.item;
+	    self.settings.render.item = (data, escape) => {
+	      var item = getDom(orig_render_item.call(self, data, escape));
+	      var close_button = getDom(html);
+	      item.appendChild(close_button);
+	      addEvent(close_button, 'mousedown', evt => {
+	        preventDefault(evt, true);
+	      });
+	      addEvent(close_button, 'click', evt => {
+	        if (self.isLocked) return;
+
+	        // propagating will trigger the dropdown to show for single mode
+	        preventDefault(evt, true);
+	        if (self.isLocked) return;
+	        if (!self.shouldDelete([item], evt)) return;
+	        self.removeItem(item);
+	        self.refreshOptions(false);
+	        self.inputState();
+	      });
+	      return item;
+	    };
+	  });
+	}
+
+	/**
+	 * Plugin: "restore_on_backspace" (Tom Select)
+	 * Copyright (c) contributors
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+	 * file except in compliance with the License. You may obtain a copy of the License at:
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software distributed under
+	 * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+	 * ANY KIND, either express or implied. See the License for the specific language
+	 * governing permissions and limitations under the License.
+	 *
+	 */
+
+	function restore_on_backspace (userOptions) {
+	  const self = this;
+	  const options = Object.assign({
+	    text: option => {
+	      return option[self.settings.labelField];
+	    }
+	  }, userOptions);
+	  self.on('item_remove', function (value) {
+	    if (!self.isFocused) {
+	      return;
+	    }
+	    if (self.control_input.value.trim() === '') {
+	      var option = self.options[value];
+	      if (option) {
+	        self.setTextboxValue(options.text.call(self, option));
+	      }
+	    }
+	  });
+	}
+
+	/**
+	 * Plugin: "restore_on_backspace" (Tom Select)
+	 * Copyright (c) contributors
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+	 * file except in compliance with the License. You may obtain a copy of the License at:
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software distributed under
+	 * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+	 * ANY KIND, either express or implied. See the License for the specific language
+	 * governing permissions and limitations under the License.
+	 *
+	 */
+
+	function virtual_scroll () {
+	  const self = this;
+	  const orig_canLoad = self.canLoad;
+	  const orig_clearActiveOption = self.clearActiveOption;
+	  const orig_loadCallback = self.loadCallback;
+	  var pagination = {};
+	  var dropdown_content;
+	  var loading_more = false;
+	  var load_more_opt;
+	  var default_values = [];
+	  if (!self.settings.shouldLoadMore) {
+	    // return true if additional results should be loaded
+	    self.settings.shouldLoadMore = () => {
+	      const scroll_percent = dropdown_content.clientHeight / (dropdown_content.scrollHeight - dropdown_content.scrollTop);
+	      if (scroll_percent > 0.9) {
+	        return true;
+	      }
+	      if (self.activeOption) {
+	        var selectable = self.selectable();
+	        var index = Array.from(selectable).indexOf(self.activeOption);
+	        if (index >= selectable.length - 2) {
+	          return true;
+	        }
+	      }
+	      return false;
+	    };
+	  }
+	  if (!self.settings.firstUrl) {
+	    throw 'virtual_scroll plugin requires a firstUrl() method';
+	  }
+
+	  // in order for virtual scrolling to work,
+	  // options need to be ordered the same way they're returned from the remote data source
+	  self.settings.sortField = [{
+	    field: '$order'
+	  }, {
+	    field: '$score'
+	  }];
+
+	  // can we load more results for given query?
+	  const canLoadMore = query => {
+	    if (typeof self.settings.maxOptions === 'number' && dropdown_content.children.length >= self.settings.maxOptions) {
+	      return false;
+	    }
+	    if (query in pagination && pagination[query]) {
+	      return true;
+	    }
+	    return false;
+	  };
+	  const clearFilter = (option, value) => {
+	    if (self.items.indexOf(value) >= 0 || default_values.indexOf(value) >= 0) {
+	      return true;
+	    }
+	    return false;
+	  };
+
+	  // set the next url that will be
+	  self.setNextUrl = (value, next_url) => {
+	    pagination[value] = next_url;
+	  };
+
+	  // getUrl() to be used in settings.load()
+	  self.getUrl = query => {
+	    if (query in pagination) {
+	      const next_url = pagination[query];
+	      pagination[query] = false;
+	      return next_url;
+	    }
+
+	    // if the user goes back to a previous query
+	    // we need to load the first page again
+	    self.clearPagination();
+	    return self.settings.firstUrl.call(self, query);
+	  };
+
+	  // clear pagination
+	  self.clearPagination = () => {
+	    pagination = {};
+	  };
+
+	  // don't clear the active option (and cause unwanted dropdown scroll)
+	  // while loading more results
+	  self.hook('instead', 'clearActiveOption', () => {
+	    if (loading_more) {
+	      return;
+	    }
+	    return orig_clearActiveOption.call(self);
+	  });
+
+	  // override the canLoad method
+	  self.hook('instead', 'canLoad', query => {
+	    // first time the query has been seen
+	    if (!(query in pagination)) {
+	      return orig_canLoad.call(self, query);
+	    }
+	    return canLoadMore(query);
+	  });
+
+	  // wrap the load
+	  self.hook('instead', 'loadCallback', (options, optgroups) => {
+	    if (!loading_more) {
+	      self.clearOptions(clearFilter);
+	    } else if (load_more_opt) {
+	      const first_option = options[0];
+	      if (first_option !== undefined) {
+	        load_more_opt.dataset.value = first_option[self.settings.valueField];
+	      }
+	    }
+	    orig_loadCallback.call(self, options, optgroups);
+	    loading_more = false;
+	  });
+
+	  // add templates to dropdown
+	  //	loading_more if we have another url in the queue
+	  //	no_more_results if we don't have another url in the queue
+	  self.hook('after', 'refreshOptions', () => {
+	    const query = self.lastValue;
+	    var option;
+	    if (canLoadMore(query)) {
+	      option = self.render('loading_more', {
+	        query: query
+	      });
+	      if (option) {
+	        option.setAttribute('data-selectable', ''); // so that navigating dropdown with [down] keypresses can navigate to this node
+	        load_more_opt = option;
+	      }
+	    } else if (query in pagination && !dropdown_content.querySelector('.no-results')) {
+	      option = self.render('no_more_results', {
+	        query: query
+	      });
+	    }
+	    if (option) {
+	      addClasses(option, self.settings.optionClass);
+	      dropdown_content.append(option);
+	    }
+	  });
+
+	  // add scroll listener and default templates
+	  self.on('initialize', () => {
+	    default_values = Object.keys(self.options);
+	    dropdown_content = self.dropdown_content;
+
+	    // default templates
+	    self.settings.render = Object.assign({}, {
+	      loading_more: () => {
+	        return `<div class="loading-more-results">Loading more results ... </div>`;
+	      },
+	      no_more_results: () => {
+	        return `<div class="no-more-results">No more results</div>`;
+	      }
+	    }, self.settings.render);
+
+	    // watch dropdown content scroll position
+	    dropdown_content.addEventListener('scroll', () => {
+	      if (!self.settings.shouldLoadMore.call(self)) {
+	        return;
+	      }
+
+	      // !important: this will get checked again in load() but we still need to check here otherwise loading_more will be set to true
+	      if (!canLoadMore(self.lastValue)) {
+	        return;
+	      }
+
+	      // don't call load() too much
+	      if (loading_more) return;
+	      loading_more = true;
+	      self.load.call(self, self.lastValue);
+	    });
+	  });
+	}
+
+	TomSelect.define('change_listener', change_listener);
+	TomSelect.define('checkbox_options', checkbox_options);
+	TomSelect.define('clear_button', clear_button);
+	TomSelect.define('drag_drop', drag_drop);
+	TomSelect.define('dropdown_header', dropdown_header);
+	TomSelect.define('caret_position', caret_position);
+	TomSelect.define('dropdown_input', dropdown_input);
+	TomSelect.define('input_autogrow', input_autogrow);
+	TomSelect.define('no_backspace_delete', no_backspace_delete);
+	TomSelect.define('no_active_items', no_active_items);
+	TomSelect.define('optgroup_columns', optgroup_columns);
+	TomSelect.define('remove_button', remove_button);
+	TomSelect.define('restore_on_backspace', restore_on_backspace);
+	TomSelect.define('virtual_scroll', virtual_scroll);
+
 	return TomSelect;
 
 }));
 var tomSelect=function(el,opts){return new TomSelect(el,opts);} 
-//# sourceMappingURL=tom-select.base.js.map
+//# sourceMappingURL=tom-select.complete.js.map

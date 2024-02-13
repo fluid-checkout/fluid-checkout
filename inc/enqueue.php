@@ -106,8 +106,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Select2 / SelectWoo, replaced with TomSelect but keeping the same handle and dependencies
 		// because many plugins and themes depend on `select2` or `selectWoo` scripts.
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
-			wp_register_script( 'selectWoo', self::$directory_url . 'js/tom-select.base'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
-			wp_register_script( 'select2', self::$directory_url . 'js/tom-select.base'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
+			wp_register_script( 'selectWoo', self::$directory_url . 'js/tom-select.complete'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
+			wp_register_script( 'select2', self::$directory_url . 'js/tom-select.complete'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
 			wp_register_style( 'select2', self::$directory_url . 'css/tom-select'. self::$asset_version . '.css', array(), NULL );
 		}
 	}
