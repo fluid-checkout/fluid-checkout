@@ -25,6 +25,16 @@ body.theme-betheme.has-highlighted-billing-section div.woocommerce form .fc-step
   border-color: var(--fluidcheckout--betheme--form-field--border-color--focus) !important;
 }
 
+@media (max-width: 768px) {
+  body.theme-betheme .fc-content.content_wrapper .section_wrapper {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  body.theme-betheme .fc-content.content_wrapper .section_wrapper .the_content_wrapper {
+    width: 100%;
+    margin: 0;
+  }
+}
 body.theme-betheme.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] textarea:focus,
 body.theme-betheme.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select:focus,
 body.theme-betheme.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=email]:focus,
