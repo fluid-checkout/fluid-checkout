@@ -398,6 +398,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Compatibility with theme Kosi.
 * Added: Compatibility with theme Pressmart.
+* Added: Compatibility with theme BeTheme.
 * Added: Compatibility with plugin The Bluehost Plugin.
 * Added: Partial compatibility with plugin States, Cities, and Places for WooCommerce. Trigger select events when appropriate.
 * Improved: Refactor scroll and focus functions moving them to the FCUtils script, making it available to the entire application.
@@ -405,6 +406,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Keep `select2` field open after replacing section which contains it, and keep focus on `select2` fields after updating fragments or selecting a different country.
 * Fixed: Start checkout with "billing same as shipping" checked for registered customers when saved address data are the same for shipping and billing, and the option is enabled in the plugin settings.
 * Fixed: Issue with content wider than screen on mobile when using certain themes.
+* Fixed: Only use default checked state for the account creation checkbox when a value is not defined.
 
 = 3.1.4 - 2024-02-02 =
 

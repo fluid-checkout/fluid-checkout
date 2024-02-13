@@ -947,7 +947,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Returns whether the create account checkbox is checked or registration is required.
 	 */
 	public function is_create_account_checked() {
-		return ( WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() ) || ( '1' === WC()->checkout()->get_value( 'createaccount' ) || true === WC()->checkout()->get_value( 'createaccount' ) );
+		// Get registration required state
+		$is_registration_required = WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required();
+
+		// Get create account value
+		// $create_account_field_value = $this->get_checkout_field_value_from_session( 'createaccount' );
+		$create_account_field_value = $this->get_checkout_field_value_from_session_or_posted_data( 'createaccount' );
+
+		// Maybe get default checked state
+		if ( null === $create_account_field_value ) {
+			$create_account_field_value = apply_filters( 'woocommerce_create_account_default_checked', false ) ? '1' : '';
+		}
+
+		// Determine if the create account checkbox is checked
+		$is_create_account_checked = $is_registration_required || ( '1' === $create_account_field_value || true === $create_account_field_value );
+
+		return $is_create_account_checked;
 	}
 
 
