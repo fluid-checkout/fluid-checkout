@@ -16,9 +16,9 @@ body#{ $_body-theme-selector }.has-highlighted-billing-section div.woocommerce f
 	.select2-selection,
 	.select2-selection .select2-selection__rendered {
 		&:focus {
-			background-color: var(--fluidcheckout--betheme--form-field--background-color--focus) !important; // Needed to override FC styles
-			color: var(--fluidcheckout--betheme--form-field--text-color--focus) !important; // Needed to override FC styles
-			border-color: var(--fluidcheckout--betheme--form-field--border-color--focus) !important; // Needed to override FC styles
+			background-color: var( --fluidcheckout--betheme--form-field--background-color--focus ) !important; // Needed to override FC styles
+			color: var( --fluidcheckout--betheme--form-field--text-color--focus ) !important; // Needed to override FC styles
+			border-color: var( --fluidcheckout--betheme--form-field--border-color--focus ) !important; // Needed to override FC styles
 		}
 	}
 }
@@ -27,9 +27,9 @@ body#{ $_body-theme-selector }.has-highlighted-billing-section div.woocommerce f
 	&:focus {
 		&,
 		.select2-selection__rendered {
-			background-color: var(--fluidcheckout--betheme--form-field--background-color--focus) !important; // Needed to override FC styles
-			color: var(--fluidcheckout--betheme--form-field--text-color--focus) !important; // Needed to override FC styles
-			border-color: var(--fluidcheckout--betheme--form-field--border-color--focus) !important; // Needed to override FC styles
+			background-color: var( --fluidcheckout--betheme--form-field--background-color--focus ) !important; // Needed to override FC styles
+			color: var( --fluidcheckout--betheme--form-field--text-color--focus ) !important; // Needed to override FC styles
+			border-color: var( --fluidcheckout--betheme--form-field--border-color--focus ) !important; // Needed to override FC styles
 		}
 	}
 }
