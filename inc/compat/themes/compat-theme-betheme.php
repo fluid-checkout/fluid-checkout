@@ -42,6 +42,9 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		// Ensure header cart updates when products are added via AJAX from checkout order summary
 		add_filter('woocommerce_update_order_review_fragments', 'woocommerce_header_add_to_cart_fragment');
 
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
 		// Dequeue
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_scripts' ), 100 );
 
@@ -251,6 +254,38 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		$content = wp_kses_post( $checkout_steps ) . $content;
 
 		return $content;
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Bail if theme function isn't available
+		if ( ! function_exists( 'mfn_opts_get' ) ) { return; }
+
+		// Get alpha value for theme's field backround color
+		$background_alpha = mfn_opts_get( 'form-transparent', 100 );
+		$background_alpha = str_replace( ',', '.', ( $background_alpha / 100 ) );
+
+		// Get theme's colors
+		$field_background_color = esc_attr( mfn_opts_get( 'background-form-focus', '#E9F5FC' ), $background_alpha );
+		$field_text_color = esc_attr( mfn_opts_get( 'color-form-focus', '#0089F7' ) );
+		$field_border_color = esc_attr( mfn_opts_get( 'border-form-focus', '#D5E5EE' ) );
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				'--fluidcheckout--betheme--form-field--background-color--focus' => $field_background_color,
+				'--fluidcheckout--betheme--form-field--text-color--focus' => $field_text_color,
+				'--fluidcheckout--betheme--form-field--border-color--focus' => $field_border_color,
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }
