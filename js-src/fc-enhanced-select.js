@@ -21,13 +21,17 @@
 	var _settings = {
 		bodyClass:                             'has-fc-enhanced-select',
 		formRowSelector:                       '.form-row.fc-select2-field',
-		enhancedSelectFieldsSelector:          '.fc-select2-field select',
-		enhancedSelectSettings: {
+		selectFieldSelector:                   '.fc-select2-field select',
+		controlElementSelector:                '.ts-control',
+		inputFieldSelector:                    '.fc-select2-field .ts-control > input',
+
+		fieldSettings: {
+			openOnFocus: false,
 			create: false,
 			diacritics: true,
 		},
-		enhancedSelectPluginsSingle: [],
-		enhancedSelectPluginsMulti: [ 'remove_button' ],
+		fieldPluginsSingle: [],
+		fieldPluginsMulti: [ 'remove_button' ],
 	};
 
 
@@ -95,7 +99,7 @@
 		var field = event.target;
 
 		// Bail if field does not match enhanced select selector
-		if ( ! field.matches( _settings.enhancedSelectFieldsSelector ) ) { return; }
+		if ( ! field.matches( _settings.selectFieldSelector ) ) { return; }
 
 		// Bail if field is not a TomSelect field
 		if ( ! field.tomselect ) { return; }
@@ -155,7 +159,7 @@
 
 		// Get selector from settings if not defined
 		if ( undefined === selector || null === selector ) {
-			selector = _settings.enhancedSelectFieldsSelector;
+			selector = _settings.selectFieldSelector;
 		}
 
 		// Bail if selector is not of type string
@@ -163,7 +167,7 @@
 
 		// Maybe get default settings
 		if ( undefined === settings || null === settings ) {
-			settings = _settings.enhancedSelectSettings;
+			settings = _settings.fieldSettings;
 		}
 
 		// Get fields to apply the enhanced select
@@ -190,11 +194,11 @@
 			// Maybe add TomSelect plugins for single or multi select
 			// Multi select
 			if ( field.hasAttribute( 'multiple' ) ) {
-				settings.plugins = _settings.enhancedSelectPluginsMulti;
+				settings.plugins = _settings.fieldPluginsMulti;
 			}
 			// Single select
 			else {
-				settings.plugins = _settings.enhancedSelectPluginsSingle;
+				settings.plugins = _settings.fieldPluginsSingle;
 			}
 
 			// Enhance field with TomSelect
@@ -214,6 +218,40 @@
 
 
 	/**
+	 * Handle captured `focus` event and route to the appropriate functions.
+	 */
+	var handleFocus = function( e ) {
+		// INPUT ELEMENT
+		if ( e.target.closest( _settings.inputFieldSelector ) ) {
+			var formRow = e.target.closest( _settings.formRowSelector );
+			var field = formRow.querySelector( 'select' );
+			var tomselect = field.tomselect;
+
+			if ( ! tomselect.isOpen ) {
+				tomselect.open();
+			}
+		}
+	};
+
+	/**
+	 * Handle captured `blur` event and route to the appropriate functions.
+	 */
+	var handleBlur = function( e ) {
+		// INPUT ELEMENT
+		if ( e.target.closest( _settings.inputFieldSelector ) ) {
+			var formRow = e.target.closest( _settings.formRowSelector );
+			var field = formRow.querySelector( 'select' );
+			var tomselect = field.tomselect;
+
+			if ( tomselect.isOpen ) {
+				tomselect.close();
+			}
+		}
+	};
+
+
+
+	/**
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.init = function( options ) {
@@ -224,6 +262,8 @@
 
 		// Set event listener for enhanced select fields
 		document.addEventListener( 'change', updateSelectedValue, true );
+		document.addEventListener( 'focus', handleFocus, true );
+		document.addEventListener( 'blur', handleBlur, true );
 
 		// Initialize fields
 		_publicMethods.enhanceFields();
