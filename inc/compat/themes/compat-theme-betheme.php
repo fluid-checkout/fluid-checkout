@@ -279,11 +279,13 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				'--fluidcheckout--field--background-color--focus'                    => $field_background_color_focus,
+				'--fluidcheckout--field--background-color--accent'                   => $field_text_color_focus,
+
+				// Custom theme variables
 				'--fluidcheckout--betheme--form-field--background-color--focus'      => $field_background_color_focus,
 				'--fluidcheckout--betheme--form-field--text-color--focus'            => $field_text_color_focus,
 				'--fluidcheckout--betheme--form-field--border-color--focus'          => $field_border_color_focus,
-
-				'--fluidcheckout--field--background-color--accent'                   => $field_text_color_focus,
 			),
 		);
 

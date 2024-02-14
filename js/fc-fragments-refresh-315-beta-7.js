@@ -101,6 +101,16 @@
 		}
 	}
 
+	/**
+	 * Maybe enhance select fields with TomSelect.
+	 */
+	var maybeEnhanceFields = function() {
+		// Bail if FCEnhancedSelect is not available
+		if ( ! window.FCEnhancedSelect ) { return; }
+
+		FCEnhancedSelect.enhanceFields();
+	}
+
 
 
 	// CHANGE: Maybe add loading class to the form row
@@ -299,6 +309,7 @@
 
 			// After fragments has been updated
 			$( document.body ).on( 'fc_fragments_refreshed', maybeChangeSectionState );
+			$( document.body ).on( 'fc_fragments_refreshed', maybeEnhanceFields );
 		}
 
 		// Refresh triggers

@@ -28,20 +28,26 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
+  padding: 10px 10px;
+  padding-right: 30px;
   width: 100%;
   height: var(--fluidcheckout--field--height, 45.625px);
   min-height: var(--fluidcheckout--field--height, 45.625px);
-  padding: 10px 10px;
-  padding-right: 30px;
   border: var(--fluidcheckout--field--border-width, 1px) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
   border-width: var(--fluidcheckout--field--border-width, 1px);
   border-color: var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
   border-radius: var(--fluidcheckout--field--border-radius, 0);
-  box-shadow: none;
+  background-color: var(--fluidcheckout--field--background-color, var(--fluidcheckout--color--white, #fff));
+  box-shadow: var(--fluidcheckout--field--box-shadow, none);
   color: var(--fluidcheckout--field--text-color, inherit);
   line-height: calc(var(--fluidcheckout--field--height, 45.625px) - 20px - var(--fluidcheckout--field--border-width, 1px) * 2);
   text-align: left;
   cursor: text;
+}
+
+.ts-wrapper.focus .ts-control {
+  background-color: var(--fluidcheckout--field--background-color--focus, var(--fluidcheckout--field--background-color, var(--fluidcheckout--color--white, #fff)));
+  box-shadow: var(--fluidcheckout--field--box-shadow--focus, var(--fluidcheckout--field--box-shadow, none));
 }
 
 .ts-wrapper.single .ts-control {
@@ -51,10 +57,6 @@
 
 .ts-wrapper.single.input-active .ts-control {
   cursor: text;
-}
-
-.ts-wrapper.focus .ts-control {
-  box-shadow: none;
 }
 
 .ts-wrapper.disabled .ts-control,

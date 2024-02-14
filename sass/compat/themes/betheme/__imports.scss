@@ -14,6 +14,7 @@ $_body-theme-selector:                 '.theme-betheme' !default;
 :root {
 	--fluidcheckout--field--height: #{ remsize( 4.4rem ) };
 	--fluidcheckout--field--border-color: #{ #ebebeb };
+	--fluidcheckout--field--box-shadow: inset 0 0 2px 2px rgba( 0, 0, 0, .02 ); // Uses `px` to match theme styles
 }
 
 

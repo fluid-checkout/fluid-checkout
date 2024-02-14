@@ -3,6 +3,8 @@
 // ----------------------------------------
 
 $ts-select-color-text:                                   $form-field-text-color !default;
+$ts-select-color-background:                             $form-field-background-color !default;
+$ts-select-color-background-focus:                       $form-field-background-color--focus !default;
 $ts-select-color-border:                                 $form-field-border-color !default;
 $ts-select-color-disabled:                               $lighter-grey !default;
 
@@ -45,8 +47,8 @@ $ts-select-field-height:                                 $form-field-height !def
 $ts-select-line-height:                                  calc( $ts-select-field-height - ( $ts-select-padding-y * 2 ) - ( $ts-select-border-width * 2 ) ) !default;
 
 $ts-select-opacity-disabled:                             0.5 !default;
-$ts-select-shadow-input:                                 none !default;
-$ts-select-shadow-input-focus:                           none !default;
+$ts-select-shadow-input:                                 $form-field-box-shadow !default;
+$ts-select-shadow-input-focus:                           $form-field-box-shadow--focus !default;
 
 $ts-select-dropdown-border:                              $ts-select-border-width solid $ts-select-color-dropdown-border !default;
 $ts-select-border-radius:                                $form-field-border-radius !default;

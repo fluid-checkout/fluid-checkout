@@ -37,35 +37,33 @@
 	position: relative;
 	display: flex;
 	flex-wrap: wrap;
+	padding: $ts-select-padding-y $ts-select-padding-x;
+	padding-#{ $alignment-right }: $global-spacing;
 	width: 100%;
 	height: $ts-select-field-height;
 	min-height: $ts-select-field-height;
-		
-	padding: $ts-select-padding-y $ts-select-padding-x;
-	padding-#{ $alignment-right }: $global-spacing;
-
 	border: $ts-select-border;
 	border-width: $ts-select-border-width;
 	border-color: $ts-select-color-border;
 	border-radius: $ts-select-border-radius;
-
+	background-color: $ts-select-color-background;
 	box-shadow: $ts-select-shadow-input;
-
 	color: $ts-select-color-text;
 	line-height: $ts-select-line-height;
 	text-align: #{ $alignment-left };
 	cursor: text;
 }
+.ts-wrapper.focus .ts-control {
+	background-color: $ts-select-color-background-focus;
+	box-shadow: $ts-select-shadow-input-focus;
+}
+
 .ts-wrapper.single .ts-control {
 	border-radius: $ts-select-border-radius;
 	cursor: pointer;
 }
 .ts-wrapper.single.input-active .ts-control {
 	cursor: text;
-}
-
-.ts-wrapper.focus .ts-control {
-	box-shadow: $ts-select-shadow-input-focus;
 }
 
 .ts-wrapper.disabled .ts-control,
