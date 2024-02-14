@@ -651,6 +651,8 @@ $form-field-border-color:                             var( --fluidcheckout--fiel
 $form-field-box-shadow:                               var( --fluidcheckout--field--box-shadow, none ) !default;
 $form-field-box-shadow--focus:                        var( --fluidcheckout--field--box-shadow--focus, $form-field-box-shadow ) !default;
 
+$form-field-item-border-radius:                       var( --fluidcheckout--field-item--border-radius, $global-radius-extra-small ) !default;
+
 $form-field-select2-inner-spacing:                    var( --fluidcheckout--select2--inner-spacing, remsize( .5rem ) ) !default;
 $form-field-select2-inner-component-height:           var( --fluidcheckout--select2--inner-component-height, calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) ) ) !default;
 $form-field-select2-selection-height--single:         calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) ) !default;

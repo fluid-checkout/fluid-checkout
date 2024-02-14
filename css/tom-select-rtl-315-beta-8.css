@@ -316,7 +316,7 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-inv
   margin-left: calc(10px / 2);
   padding: 0 5px;
   border: solid 1px var(--fluidcheckout--color--light-grey, #d8d8d8);
-  border-radius: 3px;
+  border-radius: var(--fluidcheckout--field-item--border-radius, 3px);
   background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
   line-height: calc(var(--fluidcheckout--field--height, 45.625px) - 10px - 10px / 2);
   text-shadow: 0 1px 0 rgba(0, 51, 83, 0.3);
