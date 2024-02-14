@@ -217,8 +217,18 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 				'--fluidcheckout--button--secondary--border-color--hover' => $colors['secondary-border-color--hover'],
 				'--fluidcheckout--button--secondary--background-color--hover' => $colors['secondary-background-color--hover'],
 				'--fluidcheckout--button--secondary--text-color--hover' => $colors['secondary-text-color--hover'],
+
+				'--fluidcheckout--field--background-color' => '#fff',
+				'--fluidcheckout--field--background-color--accent' => $colors['primary-background-color'],
+				'--fluidcheckout--field--text-color--accent' => $colors['primary-text-color'],
+				'--fluidcheckout--field--text-color--focus' => $colors['primary-text-color'],
 			),
-			':root body.electro-dark' => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
+			':root body.electro-dark' => array_merge(
+				FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
+				array(
+					'--fluidcheckout--field--background-color' => '#212121',
+				)
+			),
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
