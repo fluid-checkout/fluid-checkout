@@ -28,7 +28,7 @@ div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-i
 		pointer-events: none;
 	}
 	// Single select fields
-	&:not( .fc-no-validation-icon ).fc-select2-field.fc-select-field .woocommerce-input-wrapper:after {
+	&:not( .fc-no-validation-icon ).fc-select2-field:not( .fc-multiselect-field ) .woocommerce-input-wrapper:after {
 		#{ $alignment-right }: calc( #{ $checkout-validation-check-horizontal-spacing } + #{ $ts-select-arrow-offset } + #{ $ts-select-arrow-size } + #{ $global-spacing-tiny } );
 	}
 }
