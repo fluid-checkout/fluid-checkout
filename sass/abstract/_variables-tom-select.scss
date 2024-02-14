@@ -44,10 +44,6 @@ $ts-select-border:                                       $ts-select-border-width
 $ts-select-field-height:                                 $form-field-height !default;
 $ts-select-line-height:                                  calc( $ts-select-field-height - ( $ts-select-padding-y * 2 ) - ( $ts-select-border-width * 2 ) ) !default;
 
-$ts-select-lighten-disabled-item:                        30% !default;
-$ts-select-lighten-disabled-item-text:                   30% !default;
-$ts-select-lighten-disabled-item-border:                 30% !default;
-
 $ts-select-opacity-disabled:                             0.5 !default;
 $ts-select-shadow-input:                                 none !default;
 $ts-select-shadow-input-focus:                           none !default;
@@ -55,7 +51,7 @@ $ts-select-shadow-input-focus:                           none !default;
 $ts-select-dropdown-border:                              $ts-select-border-width solid $ts-select-color-dropdown-border !default;
 $ts-select-border-radius:                                $form-field-border-radius !default;
 $ts-select-width-item-border:                            0 !default;
-$ts-select-max-height-dropdown:                          200px !default;
+$ts-select-max-height-dropdown:                          remsize( 20rem ) !default;
 
 $ts-select-arrow-size:                                   remsize( .5rem ) !default;
 $ts-select-arrow-color:                                  $grey !default;
@@ -65,9 +61,9 @@ $ts-select-remove-size:                                   $global-spacing-small 
 $ts-select-remove-color:                                  $grey !default;
 $ts-select-remove-color-hover:                            $error-color !default;
 
-$ts-select-caret-margin:                                 0 4px !default;
-$ts-select-caret-margin-rtl:                             0 4px 0 -2px !default;
+$ts-select-caret-margin:                                 0 remsize( .4rem ) !default;
+$ts-select-caret-margin-rtl:                             0 remsize( .4rem ) 0 remsize( -.2rem ) !default;
 
-$ts-select-spinner-size:                                 30px !default;
-$ts-select-spinner-border-size:                          5px !default;
+$ts-select-spinner-size:                                 $global-spacing !default;
+$ts-select-spinner-border-size:                          $global-spacing-tiny !default;
 $ts-select-spinner-border-color:                         $ts-select-color-border !default;
