@@ -134,7 +134,7 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
   display: block;
   position: absolute;
   top: 50%;
-  right: 15px;
+  right: 10px;
   left: auto;
   margin-top: -3px;
   width: 0;
@@ -161,6 +161,42 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
   opacity: 0;
   position: absolute;
   left: -10000px;
+}
+
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .ts-control {
+  border-color: var(--fluidcheckout--color--success, #007a3d);
+}
+
+div.woocommerce form .form-row[class*=woocommerce-invalid] .ts-control {
+  border-color: var(--fluidcheckout--color--error, #cc1818);
+}
+
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon).fc-select2-field .woocommerce-input-wrapper:after {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "\e805";
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  z-index: 10;
+  position: absolute;
+  top: calc(var(--fluidcheckout--field--height, 45.625px) / 2 - 24px / 2);
+  right: var(--fluidcheckout--validation-check--horizontal-spacing, 5px);
+  border-radius: 100%;
+  color: var(--fluidcheckout--color--success, #007a3d);
+  pointer-events: none;
+}
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon).fc-select2-field.fc-select-field .woocommerce-input-wrapper:after {
+  right: calc(var(--fluidcheckout--validation-check--horizontal-spacing, 5px) + 10px + 5px + 5px);
 }
 
 .ts-dropdown {

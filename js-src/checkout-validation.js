@@ -32,7 +32,11 @@
 		referenceNodeSelector:                   '.input-text, select, .input-checkbox, .shipping-method__options', // Usually same as `validateFieldsSelector`
 		clearValidationCountryChangedSelector:   '#state, #shipping_state, #billing_state',
 		alwaysValidateFieldsSelector:            '',
+
 		select2Selector:                         '.select2, .select2-hidden-accessible',
+		select2WrapperSelector:                  '.select2-container',
+		selectTomSelector:                       '.ts-hidden-accessible',
+		selectTomWrapperSelector:                '.ts-wrapper',
 
 		typeRequiredSelector:                    '.validate-required',
 		typeEmailSelector:                       '.validate-email',
@@ -117,7 +121,13 @@
 
 		// Change reference field for select2
 		if ( isSelect2Field( field ) ) {
-			var newReference = field.parentNode.querySelector( '.select2-container' );
+			var newReference = field.parentNode.querySelector( _settings.select2WrapperSelector );
+			if ( newReference ) { referenceNode = newReference; }
+		}
+
+		// Change reference field for TomSelect control element 
+		if ( isSelectTomField( field ) ) {
+			var newReference = field.parentNode.querySelector( _settings.selectTomWrapperSelector );
 			if ( newReference ) { referenceNode = newReference; }
 		}
 
@@ -158,6 +168,16 @@
 	 */
 	var isSelect2Field = function( field ) {
 		if ( field.closest( _settings.select2Selector ) ) { return true; }
+		return false;
+	};
+
+	/**
+	 * Check field is a TomSelect element.
+	 * @param  {Field}  field     Field to check.
+	 * @return {Boolean}          True if field is select2.
+	 */
+	var isSelectTomField = function( field ) {
+		if ( field.closest( _settings.selectTomSelector ) ) { return true; }
 		return false;
 	};
 
