@@ -198,7 +198,7 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-inv
 }
 
 .ts-dropdown {
-  z-index: 200;
+  z-index: 11;
   overflow: hidden;
   position: absolute;
   top: 100%;

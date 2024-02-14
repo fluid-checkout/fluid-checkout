@@ -3,7 +3,7 @@
 // ------------------------------------
 
 .ts-dropdown {
-	z-index: z( 'float-element' );
+	z-index: z( 'above' ) + 1;
 	overflow: hidden;
 	position: absolute;
 	top: 100%;
