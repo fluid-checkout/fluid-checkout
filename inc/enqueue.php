@@ -106,9 +106,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Select2 / SelectWoo, replaced with TomSelect but keeping the same handle and dependencies
 		// because many plugins and themes depend on `select2` or `selectWoo` scripts.
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
-			wp_register_script( 'selectWoo', self::$directory_url . 'js/tom-select.complete'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
-			wp_register_script( 'select2', self::$directory_url . 'js/tom-select.complete'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
-			wp_register_style( 'select2', self::$directory_url . 'css/tom-select'. self::$asset_version . '.css', array(), NULL );
+			wp_register_script( 'selectWoo', self::$directory_url . 'js/select2-empty'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
+			wp_register_script( 'select2', self::$directory_url . 'js/select2-empty'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
+			wp_register_style( 'select2', self::$directory_url . 'css/select2-empty'. self::$asset_version . '.css', array(), NULL );
 		}
 	}
 
@@ -182,9 +182,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("load",function(){StickyStates.init(fcSettings.stickyStates);})' );
 
 		// Enhanced select
-		// Needs reference to `selectWoo` script as the library TomSelect is loaded
-		// using that script handle to ensure compatibility with other plugins and themes.
-		wp_register_script( 'fc-enhanced-select', self::$directory_url . 'js/fc-enhanced-select'. self::$asset_version . '.js', array( 'selectWoo' ), NULL );
+		wp_register_script( 'tomselect', self::$directory_url . 'js/tom-select.complete'. self::$asset_version . '.js', array(), NULL );
+		wp_register_script( 'fc-enhanced-select', self::$directory_url . 'js/fc-enhanced-select'. self::$asset_version . '.js', array( 'tomselect' ), NULL );
 		wp_add_inline_script( 'fc-enhanced-select', 'window.addEventListener("load",function(){FCEnhancedSelect.init();})' );
 
 		// Register script utilities
@@ -198,6 +197,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_style( 'fc-add-payment-method-page', self::$directory_url . 'css/add-payment-method-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 		wp_register_style( 'fc-flyout-block', self::$directory_url . 'css/flyout-block' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 		wp_register_style( 'fc-sticky-states', self::$directory_url . 'css/sticky-states' . $rtl_suffix . self::$asset_version . '.css', array(), null );
+
+		// Enhanced select
+		wp_register_style( 'tomselect', self::$directory_url . 'css/tom-select' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 	}
 
 
@@ -249,14 +251,25 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_enqueue_script( 'fc-flyout-block' );
 		wp_enqueue_script( 'fc-sticky-states' );
 
-		// Enhanced select
-		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
-			wp_enqueue_script( 'fc-enhanced-select' );
-		}
-
 		// Styles
 		wp_enqueue_style( 'fc-flyout-block' );
 		wp_enqueue_style( 'fc-sticky-states' );
+
+		// Enhanced select
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
+			wp_enqueue_script( 'tomselect' );
+			wp_enqueue_script( 'fc-enhanced-select' );
+			wp_enqueue_style( 'tomselect' );
+		}
+	}
+
+	/**
+	 * Dequeue enhanced select assets.
+	 */
+	public function dequeue_enhanced_select_assets() {
+		wp_dequeue_script( 'tomselect' );
+		wp_dequeue_script( 'fc-enhanced-select' );
+		wp_dequeue_style( 'tomselect' );
 	}
 
 	/**
