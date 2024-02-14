@@ -78,7 +78,8 @@
 	flex: 1 1 auto;
 	margin: 0 !important;  // Needed to enforce styles for the select component
 	padding: 0 !important;  // Needed to enforce styles for the select component
-	min-width: 7rem;
+	width: auto !important;  // Needed to enforce styles for the select component
+	min-width: remsize( 7rem );
 	min-height: 0 !important;  // Needed to enforce styles for the select component
 	max-height: none !important;  // Needed to enforce styles for the select component
 	max-width: 100% !important;  // Needed to enforce styles for the select component
@@ -127,12 +128,7 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
 
 
 .ts-wrapper.single .ts-control > [data-ts-item] {
-	position: absolute;
-	top: 0;
-	#{ $alignment-left }: 0;
-	#{ $alignment-right }: auto;
 	width: auto;
-	padding-#{ $alignment-left }: $form-field-padding-horizontal;
 	height: calc( $form-field-height - ( $form-field-border-width * 2 ) );
 	font-size: $ts-select-font-size;
 	line-height: calc( $form-field-height - ( $form-field-border-width * 2 ) );

@@ -69,7 +69,8 @@
   flex: 1 1 auto;
   margin: 0 !important;
   padding: 0 !important;
-  min-width: 7rem;
+  width: auto !important;
+  min-width: 70px;
   min-height: 0 !important;
   max-height: none !important;
   max-width: 100% !important;
@@ -115,12 +116,7 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
 }
 
 .ts-wrapper.single .ts-control > [data-ts-item] {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: auto;
   width: auto;
-  padding-left: var(--fluidcheckout--field--padding-horizontal, 10px);
   height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2);
   font-size: var(--fluidcheckout--field--font-size, 16px);
   line-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2);
