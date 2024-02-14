@@ -28,7 +28,7 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  padding: 10px 10px;
+  padding: 0 10px;
   padding-left: 30px;
   width: 100%;
   height: var(--fluidcheckout--field--height, 45.625px);
@@ -136,9 +136,9 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
   display: block;
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
   left: 10px;
   right: auto;
-  margin-top: -3px;
   width: 0;
   height: 0;
   border-style: solid;
@@ -301,7 +301,7 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-inv
 }
 
 .ts-wrapper.multi.has-items .ts-control {
-  padding: calc(10px / 2) calc(10px / 2) 0;
+  padding: 0 calc(10px / 2);
   height: auto;
 }
 
@@ -311,13 +311,14 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-inv
 
 .ts-wrapper.multi .ts-control [data-value] {
   position: relative;
+  margin-top: calc(10px / 2);
   margin-bottom: calc(10px / 2);
   margin-left: calc(10px / 2);
   padding: 0 5px;
   border: solid 1px var(--fluidcheckout--color--light-grey, #d8d8d8);
   border-radius: 3px;
   background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
-  line-height: calc(var(--fluidcheckout--field--height, 45.625px) - (10px) - 10px / 2);
+  line-height: calc(var(--fluidcheckout--field--height, 45.625px) - 10px - 10px / 2);
   text-shadow: 0 1px 0 rgba(0, 51, 83, 0.3);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), inset 0 1px rgba(255, 255, 255, 0.03);
 }
@@ -349,7 +350,7 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-inv
   border: 0;
   border-radius: 0;
   background: none;
-  line-height: calc(var(--fluidcheckout--field--height, 45.625px) - (10px) - 10px / 2);
+  line-height: calc(var(--fluidcheckout--field--height, 45.625px) - 10px - 10px / 2) !important;
   text-align: center;
   color: var(--fluidcheckout--color--grey, #7b7575) !important;
   font-weight: normal;

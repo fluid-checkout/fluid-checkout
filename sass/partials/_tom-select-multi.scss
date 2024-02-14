@@ -3,7 +3,7 @@
 // ------------------------------------
 
 .ts-wrapper.multi.has-items .ts-control {
-	padding: calc( #{ $ts-select-padding-y } / 2 ) calc( #{ $ts-select-padding-x } / 2 ) 0;
+	padding: 0 calc( #{ $ts-select-padding-x } / 2 );
 	height: auto;
 }
 
@@ -17,13 +17,14 @@
 
 .ts-wrapper.multi .ts-control [data-value] {
 	position: relative;
+	margin-top: calc( #{ $ts-select-padding-y } / 2 );
 	margin-bottom: calc( #{ $ts-select-padding-y } / 2 );
 	margin-#{ $alignment-right }: calc( #{ $ts-select-padding-x } / 2 );
 	padding: 0 $ts-select-padding-item-x;
 	border: solid remsize( .1rem ) $ts-select-color-item-border;
 	border-radius: $ts-select-border-radius-item;
 	background-color: $ts-select-color-item;
-	line-height: calc( #{ $ts-select-field-height } - ( #{ $ts-select-padding-y } ) - ( #{ $ts-select-padding-y } / 2 ) );
+	line-height: calc( #{ $ts-select-field-height } - #{ $ts-select-padding-y } - ( #{ $ts-select-padding-y } / 2 ) );
 
 	text-shadow: 0 remsize( .1rem ) 0 rgba( 0, 51, 83, 30% );
 	box-shadow: 0 remsize( .1rem ) 0 rgba( 0, 0, 0, 20% ), inset 0 remsize( .1rem ) rgba( 255, 255, 255, 3% );
@@ -54,7 +55,7 @@
 	border: 0;
 	border-radius: 0;
 	background: none;
-	line-height: calc( #{ $ts-select-field-height } - ( #{ $ts-select-padding-y } ) - ( #{ $ts-select-padding-y } / 2 ) );
+	line-height: calc( #{ $ts-select-field-height } - #{ $ts-select-padding-y } - ( #{ $ts-select-padding-y } / 2 ) ) !important; // Needed to enforce styles for the select component
 	text-align: center;
 	color: $ts-select-remove-color !important; // Needed to enforce styles for the select component
 	font-weight: normal;

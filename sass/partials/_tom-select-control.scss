@@ -37,7 +37,7 @@
 	position: relative;
 	display: flex;
 	flex-wrap: wrap;
-	padding: $ts-select-padding-y $ts-select-padding-x;
+	padding: 0 $ts-select-padding-x;
 	padding-#{ $alignment-right }: $global-spacing;
 	width: 100%;
 	height: $ts-select-field-height;
@@ -149,9 +149,9 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
 	display: block;
 	position: absolute;
 	top: 50%;
+	transform: translateY( -50% );
 	#{ $alignment-right }: $ts-select-arrow-offset;
 	#{ $alignment-left }: auto;
-	margin-top: round(-0.5 * $ts-select-arrow-size);
 	width: 0;
 	height: 0;
 	border-style: solid;
