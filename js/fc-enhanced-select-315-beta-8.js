@@ -25,8 +25,9 @@
 		enhancedSelectSettings: {
 			create: false,
 			diacritics: true,
-			plugins: [ 'remove_button' ],
 		},
+		enhancedSelectPluginsSingle: [],
+		enhancedSelectPluginsMulti: [ 'remove_button' ],
 	};
 
 
@@ -184,6 +185,16 @@
 			// Maybe destroy TomSelect instance
 			if ( field.tomselect ) {
 				field.tomselect.destroy();
+			}
+
+			// Maybe add TomSelect plugins for single or multi select
+			// Multi select
+			if ( field.hasAttribute( 'multiple' ) ) {
+				settings.plugins = _settings.enhancedSelectPluginsMulti;
+			}
+			// Single select
+			else {
+				settings.plugins = _settings.enhancedSelectPluginsSingle;
 			}
 
 			// Enhance field with TomSelect
