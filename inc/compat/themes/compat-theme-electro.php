@@ -218,6 +218,7 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 				'--fluidcheckout--button--secondary--background-color--hover' => $colors['secondary-background-color--hover'],
 				'--fluidcheckout--button--secondary--text-color--hover' => $colors['secondary-text-color--hover'],
 
+				'--fluidcheckout--field--border-color' => '#ddd',
 				'--fluidcheckout--field--background-color' => '#fff',
 				'--fluidcheckout--field--background-color--accent' => $colors['primary-background-color'],
 				'--fluidcheckout--field--text-color--accent' => $colors['primary-text-color'],
@@ -226,6 +227,7 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 			':root body.electro-dark' => array_merge(
 				FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
 				array(
+					'--fluidcheckout--field--border-color' => '#212121',
 					'--fluidcheckout--field--background-color' => '#212121',
 				)
 			),
