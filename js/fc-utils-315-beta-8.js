@@ -171,9 +171,9 @@
 	 * N milliseconds. If `immediate` is passed, trigger the function on the
 	 * leading edge, instead of the trailing.
 	 *
-	 * @param   {[type]}  func       Function to be executed.
-	 * @param   {[type]}  wait       Wait time in milliseconds.
-	 * @param   {[type]}  immediate  Trigger the function on the leading edge.
+	 * @param   {[type]}  func        Function to be executed.
+	 * @param   {[type]}  wait        Wait time in milliseconds.
+	 * @param   {[type]}  immediate   Trigger the function on the leading edge.
 	 *
 	 * @return  function              Function to be executed, incapsulated in a timed function.
 	 */
@@ -194,6 +194,40 @@
 			if ( callNow ) func.apply( context, args );
 		};
 	};
+
+	/**
+	 * Return a function, that, when invoked, will only be triggered at most once
+	 * during a given window of time. Normally, the throttled function will run
+	 * as much as it can, without ever going more than once per `wait` duration;
+	 * 
+	 * @param   function  fn          Function to be executed.
+	 * @param   int       threshhold  Wait time in milliseconds.
+	 * @param   object    scope       Scope of the function to be executed.
+	 * 
+	 * @return  function              Function to be executed, incapsulated in a timed function.
+	 */
+	_publicMethods.throttle = function( fn, threshhold, scope ) {
+		threshhold || (threshhold = 250);
+		var last,
+		deferTimer;
+		return function () {
+		var context = scope || this;
+	
+		var now = +new Date,
+			args = arguments;
+		if ( last && now < last + threshhold ) {
+			// hold on to it
+			clearTimeout( deferTimer );
+			deferTimer = setTimeout( function () {
+				last = now;
+				fn.apply( context, args );
+			}, threshhold );
+		} else {
+			last = now;
+			fn.apply( context, args );
+		}
+		};
+	}
 
 
 

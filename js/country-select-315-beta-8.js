@@ -18,7 +18,7 @@ jQuery( function( $ ) {
 	if ( usingTomSelect && window.FCEnhancedSelect ) {
 		// CHANGE: Use TomSelect for select2 fields
 		var wc_country_select_tomselect = function() {
-			var selector = 'select.country_select, select.state_select';
+			var selector = 'select.state_select';
 			FCEnhancedSelect.enhanceFields( selector );
 		}
 
