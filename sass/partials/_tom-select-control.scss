@@ -39,6 +39,7 @@
 	flex-wrap: wrap;
 	width: 100%;
 	height: $ts-select-field-height;
+	min-height: $ts-select-field-height;
 		
 	padding: $ts-select-padding-y $ts-select-padding-x;
 	padding-#{ $alignment-right }: $global-spacing;
@@ -183,85 +184,3 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
 	position: absolute;
 	#{ $alignment-left }: -10000px;
 }
-
-
-
-
-
-
-
-
-
-// .ts-wrapper.multi {
-// 	&.has-items .ts-control {
-// 		$padding-x: $ts-select-padding-x - 3px;
-
-// 		padding-left: $padding-x;
-
-// 		--ts-pr-min: $padding-x;
-// 	}
-
-// 	.ts-control {
-// 		[data-value] {
-// 			text-shadow: 0 1px 0 rgba(0, 51, 83, 30%);
-// 			border-radius: 3px;
-// 			@include selectize-vertical-gradient(#1da7ee, #178ee9);
-
-// 			box-shadow: 0 1px 0 rgba(0, 0, 0, 20%),inset 0 1px rgba(255, 255, 255, 3%);
-
-// 			&.active {
-// 				@include selectize-vertical-gradient(#008fd8, #0075cf);
-// 			}
-// 		}
-// 	}
-
-// 	&.disabled .ts-control [data-value] {
-// 		color: #999;
-// 		text-shadow: none;
-// 		background: none;
-// 		box-shadow: none;
-
-// 		&,
-// 		.remove {
-// 			border-color: #e6e6e6;
-// 		}
-
-// 		.remove {
-// 			background: none;
-// 		}
-// 	}
-// }
-
-
-
-// .ts-wrapper.multi.has-items .ts-control {
-// 	$padding-x: $ts-select-padding-x;
-// 	$padding-top: calc( #{$ts-select-padding-y} - #{$ts-select-padding-item-y} - #{$ts-select-width-item-border});
-// 	$padding-bottom: calc( #{$ts-select-padding-y} - #{$ts-select-padding-item-y} - #{$ts-select-margin-item-y} - #{$ts-select-width-item-border});
-
-// 	padding: $padding-top $padding-x $padding-bottom;
-// }
-
-
-// .ts-wrapper.multi .ts-control > div {
-// 	cursor: pointer;
-// 	margin: 0 $ts-select-margin-item-x $ts-select-margin-item-y 0;
-// 	padding: $ts-select-padding-item-y $ts-select-padding-item-x;
-// 	background: $ts-select-color-item;
-// 	color: $ts-select-color-item-text;
-// 	border: $ts-select-width-item-border solid $ts-select-color-item-border;
-
-// 	&.active {
-// 		background: $ts-select-color-item-active;
-// 		color: $ts-select-color-item-active-text;
-// 		border: $ts-select-width-item-border solid $ts-select-color-item-active-border;
-// 	}
-// }
-
-// .ts-wrapper.multi.disabled .ts-control > div {
-// 	&, &.active {
-// 		color: lighten(desaturate($ts-select-color-item-text, 100%), $ts-select-lighten-disabled-item-text);
-// 		background: lighten(desaturate($ts-select-color-item, 100%), $ts-select-lighten-disabled-item);
-// 		border: $ts-select-width-item-border solid lighten(desaturate($ts-select-color-item-border, 100%), $ts-select-lighten-disabled-item-border);
-// 	}
-// }

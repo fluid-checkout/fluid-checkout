@@ -24,6 +24,7 @@
 		enhancedSelectSettings: {
 			create: false,
 			diacritics: true,
+			plugins: [ 'remove_button' ],
 		},
 	};
 

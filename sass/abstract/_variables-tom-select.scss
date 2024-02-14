@@ -4,14 +4,14 @@
 
 $ts-select-color-text:                                   $form-field-text-color !default;
 $ts-select-color-border:                                 $form-field-border-color !default;
-$ts-select-color-disabled:                               $light-grey !default;
+$ts-select-color-disabled:                               $lighter-grey !default;
 
 $ts-select-color-item:                                   $lighter-grey !default;
 $ts-select-color-item-text:                              $ts-select-color-text !default;
-$ts-select-color-item-border:                            $lighter-grey !default;
+$ts-select-color-item-border:                            $light-grey !default;
 $ts-select-color-item-active:                            $light-grey !default;
 $ts-select-color-item-active-text:                       $ts-select-color-text !default;
-$ts-select-color-item-active-border:                     $light-grey !default;
+$ts-select-color-item-active-border:                     $grey !default;
 
 $ts-select-color-dropdown:                               $white !default;
 $ts-select-color-dropdown-border:                        $light-grey !default;
@@ -29,11 +29,12 @@ $ts-select-font-size:                                    $form-field-font-size !
 
 $ts-select-margin-item-x:                                $global-spacing-tiny !default;
 $ts-select-margin-item-y:                                $global-spacing-tiny !default;
+$ts-select-padding-item-x:                               $global-spacing-tiny !default;
+$ts-select-padding-item-y:                               $global-spacing-tiny !default;
+$ts-select-border-radius-item:                           $global-radius-extra-small !default;
 
 $ts-select-padding-x:                                    $global-spacing-extra-small !default;
 $ts-select-padding-y:                                    $global-spacing-extra-small !default;
-$ts-select-padding-item-x:                               $global-spacing-tiny !default;
-$ts-select-padding-item-y:                               $global-spacing-tiny !default;
 $ts-select-padding-dropdown-item-x:                      $ts-select-padding-x !default;
 $ts-select-padding-dropdown-item-y:                      $global-spacing-tiny !default;
 
@@ -59,6 +60,10 @@ $ts-select-max-height-dropdown:                          200px !default;
 $ts-select-arrow-size:                                   remsize( .5rem ) !default;
 $ts-select-arrow-color:                                  $grey !default;
 $ts-select-arrow-offset:                                 remsize( 1.5rem ) !default;
+
+$ts-select-remove-size:                                   $global-spacing-small !default;
+$ts-select-remove-color:                                  $grey !default;
+$ts-select-remove-color-hover:                            $error-color !default;
 
 $ts-select-caret-margin:                                 0 4px !default;
 $ts-select-caret-margin-rtl:                             0 4px 0 -2px !default;

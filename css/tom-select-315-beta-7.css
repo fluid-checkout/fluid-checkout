@@ -30,6 +30,7 @@
   flex-wrap: wrap;
   width: 100%;
   height: var(--fluidcheckout--field--height, 45.625px);
+  min-height: var(--fluidcheckout--field--height, 45.625px);
   padding: 10px 10px;
   padding-right: 30px;
   border: var(--fluidcheckout--field--border-width, 1px) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
@@ -94,7 +95,7 @@
 
 .disabled .ts-control {
   opacity: 0.5;
-  background-color: var(--fluidcheckout--color--light-grey, #d8d8d8);
+  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
 }
 
 .ts-wrapper.single .ts-control input {
@@ -259,4 +260,67 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
   overflow: hidden auto;
   max-height: 200px;
   scroll-behavior: smooth;
+}
+
+.ts-wrapper.multi.has-items .ts-control {
+  padding: calc(10px / 2) calc(10px / 2) 0;
+  height: auto;
+}
+
+.ts-wrapper.multi .ts-control > input {
+  width: auto !important;
+}
+
+.ts-wrapper.multi .ts-control [data-value] {
+  position: relative;
+  margin-bottom: calc(10px / 2);
+  margin-right: calc(10px / 2);
+  padding: 0 5px;
+  border: solid 1px var(--fluidcheckout--color--light-grey, #d8d8d8);
+  border-radius: 3px;
+  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
+  line-height: calc(var(--fluidcheckout--field--height, 45.625px) - (10px) - 10px / 2);
+  text-shadow: 0 1px 0 rgba(0, 51, 83, 0.3);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), inset 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.ts-wrapper.multi.plugin-remove_button .ts-control [data-value] {
+  padding-right: calc(10px / 2 + 20px);
+}
+
+.ts-wrapper.multi .ts-control [data-value].active {
+  background-color: var(--fluidcheckout--color--light-grey, #d8d8d8);
+}
+
+.ts-wrapper.multi.disabled .ts-control [data-value] {
+  color: #999;
+  text-shadow: none;
+  background: none;
+  box-shadow: none;
+  border-color: #e6e6e6;
+}
+
+.ts-wrapper.multi .ts-control [data-value] .remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  border: 0;
+  border-left: solid 1px var(--fluidcheckout--color--light-grey, #d8d8d8);
+  border-radius: 0;
+  background: none;
+  line-height: calc(var(--fluidcheckout--field--height, 45.625px) - (10px) - 10px / 2);
+  text-align: center;
+  color: var(--fluidcheckout--color--grey, #7b7575) !important;
+  font-weight: normal;
+}
+.ts-wrapper.multi .ts-control [data-value] .remove:focus, .ts-wrapper.multi .ts-control [data-value] .remove:hover, .ts-wrapper.multi .ts-control [data-value] .remove:active {
+  outline: none;
+  color: var(--fluidcheckout--color--error, #cc1818) !important;
+}
+
+.ts-wrapper.multi.disabled .ts-control [data-value] .remove {
+  border-color: #e6e6e6;
+  background: none;
 }
