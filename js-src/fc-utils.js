@@ -298,7 +298,7 @@
 
 			// Maybe set to reopen dropdown after refocusing
 			if ( selectField && selectField.tomselect && selectField.tomselect.isOpen ) {
-				fcCurrentFocusedElementReopenDropdown = true;
+				window.fcCurrentFocusedElementReopenDropdown = true;
 			}
 		}
 	}
@@ -347,7 +347,7 @@
 				var formRow = currentFocusedElement.closest( _settings.select2FormRowSelector );
 				elementToFocus = formRow.querySelector( _settings.select2FocusElementSelector );
 			}
-			// Try findind the the current focused element after updating updated element by ID
+			// Try findind the updated element by id
 			else if ( currentFocusedElement.id ) {
 				elementToFocus = document.getElementById( currentFocusedElement.id );
 			}
@@ -364,7 +364,7 @@
 				var selectField = formRow && formRow.querySelector( 'select' );
 
 				// Maybe set class for keeping dropdown closed
-				if ( ! fcCurrentFocusedElementReopenDropdown && formRow ) {
+				if ( ! window.fcCurrentFocusedElementReopenDropdown && formRow ) {
 					formRow.classList.add( _settings.tomSelectKeepingClosedClass );
 				}
 
@@ -393,7 +393,7 @@
 					}
 
 					// Maybe close TomSelect dropdown when refocusing
-					if ( ! fcCurrentFocusedElementReopenDropdown && elementToFocus.id.includes( '-ts-control' ) ) {
+					if ( ! window.fcCurrentFocusedElementReopenDropdown && elementToFocus.id.includes( '-ts-control' ) ) {
 						// Maybe close TomSelect dropdown
 						if ( selectField && selectField.tomselect ) {
 							selectField.tomselect.close();

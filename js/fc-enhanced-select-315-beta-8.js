@@ -198,17 +198,16 @@
 			}
 
 			// Enhance field with TomSelect
-			new TomSelect( field, settings );
+			var instance = new TomSelect( field, settings );
 
 			// Set value, without triggering `change` event
 			// to avoid infinite loop.
-			field.tomselect.setValue( values, true );
+			instance.setValue( values, true );
 
 			// Set event listeners
-			field.tomselect.on( 'initialize', unsetAutocompleteAttribute );
-			field.tomselect.on( 'focus', unsetAutocompleteAttribute );
-			field.tomselect.on( 'blur', unsetAutocompleteAttribute );
-			field.tomselect.on( 'dropdown_open', maybeScrollToField );
+			instance.on( 'focus', unsetAutocompleteAttribute );
+			instance.on( 'blur', unsetAutocompleteAttribute );
+			instance.on( 'dropdown_open', maybeScrollToField );
 		}
 	}
 
