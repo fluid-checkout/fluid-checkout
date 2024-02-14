@@ -225,12 +225,12 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
 }
 
 .ts-dropdown .active {
-  background-color: var(--fluidcheckout--color--grey, #7b7575);
-  color: var(--fluidcheckout--color--white, #fff);
+  background-color: var(--fluidcheckout--field--background-color--accent, var(--fluidcheckout--color--grey, #7b7575));
+  color: var(--fluidcheckout--field--text-color--accent, var(--fluidcheckout--color--white, #fff));
 }
 
 .ts-dropdown .active.create {
-  color: var(--fluidcheckout--color--white, #fff);
+  color: var(--fluidcheckout--field--text-color--accent, var(--fluidcheckout--color--white, #fff));
 }
 
 .ts-dropdown .create {
@@ -289,15 +289,17 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
 }
 
 .ts-wrapper.multi .ts-control [data-value].active {
-  background-color: var(--fluidcheckout--color--light-grey, #d8d8d8);
+  color: var(--fluidcheckout--field--text-color--accent, var(--fluidcheckout--color--white, #fff));
+  background-color: var(--fluidcheckout--field--background-color--accent, var(--fluidcheckout--color--grey, #7b7575));
+  border-color: var(--fluidcheckout--field--background-color--accent, var(--fluidcheckout--color--grey, #7b7575));
 }
 
 .ts-wrapper.multi.disabled .ts-control [data-value] {
-  color: #999;
+  color: var(--fluidcheckout--color--light-grey, #d8d8d8);
   text-shadow: none;
   background: none;
   box-shadow: none;
-  border-color: #e6e6e6;
+  border-color: var(--fluidcheckout--color--light-grey, #d8d8d8);
 }
 
 .ts-wrapper.multi .ts-control [data-value] .remove {
@@ -307,7 +309,6 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
   width: 20px;
   height: 100%;
   border: 0;
-  border-left: solid 1px var(--fluidcheckout--color--light-grey, #d8d8d8);
   border-radius: 0;
   background: none;
   line-height: calc(var(--fluidcheckout--field--height, 45.625px) - (10px) - 10px / 2);
@@ -320,7 +321,26 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
   color: var(--fluidcheckout--color--error, #cc1818) !important;
 }
 
+.ts-wrapper.multi .ts-control [data-value] .remove:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background-color: var(--fluidcheckout--color--grey, #7b7575);
+  opacity: 0.15;
+}
+
+.ts-wrapper.multi .ts-control [data-value].active .remove {
+  color: var(--fluidcheckout--field--text-color--accent, var(--fluidcheckout--color--white, #fff)) !important;
+}
+
+.ts-wrapper.multi .ts-control [data-value].active .remove:after {
+  background-color: var(--fluidcheckout--field--text-color--accent, var(--fluidcheckout--color--white, #fff));
+}
+
 .ts-wrapper.multi.disabled .ts-control [data-value] .remove {
-  border-color: #e6e6e6;
+  border-color: var(--fluidcheckout--color--light-grey, #d8d8d8);
   background: none;
 }

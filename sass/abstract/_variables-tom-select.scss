@@ -9,16 +9,16 @@ $ts-select-color-disabled:                               $lighter-grey !default;
 $ts-select-color-item:                                   $lighter-grey !default;
 $ts-select-color-item-text:                              $ts-select-color-text !default;
 $ts-select-color-item-border:                            $light-grey !default;
-$ts-select-color-item-active:                            $light-grey !default;
-$ts-select-color-item-active-text:                       $ts-select-color-text !default;
-$ts-select-color-item-active-border:                     $grey !default;
+$ts-select-color-item-active:                            $form-field-background-color--accent !default;
+$ts-select-color-item-active-text:                       $form-field-text-color--accent !default;
+$ts-select-color-item-active-border:                     $form-field-background-color--accent !default;
 
 $ts-select-color-dropdown:                               $white !default;
 $ts-select-color-dropdown-border:                        $light-grey !default;
 $ts-select-color-dropdown-border-top:                    $ts-select-color-dropdown-border !default;
-$ts-select-color-dropdown-item-active:                   $grey !default;
-$ts-select-color-dropdown-item-active-text:              $white !default;
-$ts-select-color-dropdown-item-create-text:              $ts-select-color-text !default; //rgba(red($ts-select-color-text), green($ts-select-color-text), blue($ts-select-color-text), 50%) !default;
+$ts-select-color-dropdown-item-active:                   $ts-select-color-item-active !default;
+$ts-select-color-dropdown-item-active-text:              $ts-select-color-item-active-text !default;
+$ts-select-color-dropdown-item-create-text:              $ts-select-color-text !default;
 $ts-select-color-dropdown-item-create-active-text:       $ts-select-color-dropdown-item-active-text !default;
 
 $ts-select-color-optgroup:                               $ts-select-color-dropdown !default;
