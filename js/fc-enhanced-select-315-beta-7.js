@@ -13,13 +13,14 @@
 
 	'use strict';
 
+	var $ = jQuery;
+	var _hasJQuery = ( $ != null );
+
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _settings = {
 		bodyClass:                             'has-fc-enhanced-select',
-
 		formRowSelector:                       '.form-row.fc-select2-field',
-
 		enhancedSelectFieldsSelector:          '.fc-select2-field select',
 		enhancedSelectSettings: {
 			create: false,
@@ -29,6 +30,22 @@
 	};
 
 
+
+
+	/**
+	 * Support for Select2 and SelectWoo jQuery plugins.
+	 * Replace `$.fn.select2` and `$.fn.selectWoo` with a dummy function to avoid JS errors when other plugins try to use them.
+	 */
+	var replaceSelect2JQueryPlugins = function() {
+		// Bail if jQuery is not available
+		if ( ! _hasJQuery ) { return; }
+
+		// Replace `$.fn.select2` and `$.fn.selectWoo` with a dummy function
+		$.fn.select2 = function() { return this; };
+		$.fn.selectWoo = function() { return this; };
+	}
+	// Replace immediatelly.
+	replaceSelect2JQueryPlugins();
 
 
 
