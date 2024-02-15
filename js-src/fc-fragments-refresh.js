@@ -37,10 +37,6 @@
 		loadingClass:                           'fc-loading',
 		uiProcessingClass:                     'processing',
 
-		scrollOffsetSelector:                  '.fc-checkout-header',
-		scrollBehavior:                        'smooth',
-		scrollOffset:                          0,
-
 		updateFragmentsNonce:                  '', // Value updated during runtime
 		updateWaitTime:                        500,
 	}
@@ -103,6 +99,16 @@
 				sectionElement.removeAttribute( _settings.sectionVisibleStateAttribute );
 			}
 		}
+	}
+
+	/**
+	 * Maybe enhance select fields with TomSelect.
+	 */
+	var maybeEnhanceFields = function() {
+		// Bail if FCEnhancedSelect is not available
+		if ( ! window.FCEnhancedSelect ) { return; }
+
+		FCEnhancedSelect.enhanceFields();
 	}
 
 
@@ -194,8 +200,8 @@
 
 				// Maybe scroll to notices
 				var messagesWrapper = document.querySelector( _settings.messagesWrapperSelector );
-				if ( messagesWrapper && messagesWrapper.children.length > 0 ) {
-					_publicMethods.scrollToNotices( messagesWrapper );
+				if ( messagesWrapper && messagesWrapper.children.length > 0 && window.FCUtils && 'function' === typeof FCUtils.scrollToElement ) {
+					FCUtils.scrollToElement( messagesWrapper );
 				}
 
 				$( document.body ).trigger( 'fc_fragments_refreshed' );
@@ -203,39 +209,6 @@
 
 		});
 	};
-
-
-
-	/**
-	 * Change scroll position after changing steps.
-	 */
-	_publicMethods.scrollToNotices = function() {
-		var element = document.querySelector( _settings.messagesWrapperSelector );
-		var stickyElementsOffset = 0;
-
-		// Maybe add sticky elements height to scroll position
-		if ( window.StickyStates ) {
-			var maybeStickyElements = document.querySelectorAll( _settings.scrollOffsetSelector );
-			if ( maybeStickyElements && maybeStickyElements.length > 0 ) {
-				for ( var i = 0; i < maybeStickyElements.length; i++ ) {
-					var stickyElement = maybeStickyElements[i];
-					if ( StickyStates.isStickyPosition( stickyElement ) ) {
-						var height = stickyElement.getBoundingClientRect().height;
-						stickyElementsOffset += height;
-					}
-				}
-			}
-		}
-
-		// Scroll to the top of the collapsed step
-		var elementOffset = getOffsetTop( element ) + ( _settings.scrollOffset * -1 ) + ( stickyElementsOffset * -1 );
-		requestAnimationFrame( function() {
-			window.scrollTo( {
-				top: elementOffset,
-				behavior: _settings.scrollBehavior,
-			} );
-		} );
-	}
 
 	
 
@@ -336,6 +309,7 @@
 
 			// After fragments has been updated
 			$( document.body ).on( 'fc_fragments_refreshed', maybeChangeSectionState );
+			$( document.body ).on( 'fc_fragments_refreshed', maybeEnhanceFields );
 		}
 
 		// Refresh triggers

@@ -640,6 +640,18 @@ $checkout-field-description-font-size--large-screen:  $font-size-extra-small !de
 $form-field-height:                                   var( --fluidcheckout--field--height, remsize( 4.5625rem ) ) !default;
 $form-field-border-radius:                            var( --fluidcheckout--field--border-radius, 0 ) !default;
 $form-field-border-width:                             var( --fluidcheckout--field--border-width, remsize( .1rem ) ) !default;
+$form-field-padding-horizontal:                       var( --fluidcheckout--field--padding-horizontal, $global-spacing-extra-small ) !default;
+$form-field-font-size:                                var( --fluidcheckout--field--font-size, remsize( 1.6rem ) ) !default;
+$form-field-text-color:                               var( --fluidcheckout--field--text-color, inherit ) !default;
+$form-field-text-color--accent:                       var( --fluidcheckout--field--text-color--accent, $white ) !default;
+$form-field-background-color:                         var( --fluidcheckout--field--background-color, $white ) !default;
+$form-field-background-color--focus:                  var( --fluidcheckout--field--background-color--focus, $form-field-background-color ) !default;
+$form-field-background-color--accent:                 var( --fluidcheckout--field--background-color--accent, $grey ) !default;
+$form-field-border-color:                             var( --fluidcheckout--field--border-color, $light-grey ) !default;
+$form-field-box-shadow:                               var( --fluidcheckout--field--box-shadow, none ) !default;
+$form-field-box-shadow--focus:                        var( --fluidcheckout--field--box-shadow--focus, $form-field-box-shadow ) !default;
+
+$form-field-item-border-radius:                       var( --fluidcheckout--field-item--border-radius, $global-radius-extra-small ) !default;
 
 $form-field-select2-inner-spacing:                    var( --fluidcheckout--select2--inner-spacing, remsize( .5rem ) ) !default;
 $form-field-select2-inner-component-height:           var( --fluidcheckout--select2--inner-component-height, calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) ) ) !default;
@@ -681,11 +693,11 @@ $checkout-field-group-padding--large-screen:          $global-spacing-small !def
 // ----------------------------------------
 // CHECKOUT VALIDATION
 
-$_checkout-validation-check-top:                                calc( ( #{ $form-field-height } / 2 ) - ( #{ $icon-size } / 2 ) ) !default;
-$_checkout-validation-check-horizontal-spacing:                 var( --fluidcheckout--validation-check--horizontal-spacing, remsize( .5rem ) ) !default;
-$_checkout-validation-check-horizontal-spacing--select:         var( --fluidcheckout--validation-check--horizontal-spacing--select, remsize( 1.5rem ) ) !default;
-$_checkout-validation-check-horizontal-spacing--select-alt:     var( --fluidcheckout--validation-check--horizontal-spacing--select-alt, remsize( 2.5rem ) ) !default;
-$_checkout-validation-check-horizontal-spacing--password:       var( --fluidcheckout--validation-check--horizontal-spacing--password, remsize( 2.5rem ) ) !default;
+$checkout-validation-check-top:                                calc( ( #{ $form-field-height } / 2 ) - ( #{ $icon-size } / 2 ) ) !default;
+$checkout-validation-check-horizontal-spacing:                 var( --fluidcheckout--validation-check--horizontal-spacing, remsize( .5rem ) ) !default;
+$checkout-validation-check-horizontal-spacing--select:         var( --fluidcheckout--validation-check--horizontal-spacing--select, remsize( 1.5rem ) ) !default;
+$checkout-validation-check-horizontal-spacing--select-alt:     var( --fluidcheckout--validation-check--horizontal-spacing--select-alt, remsize( 2.5rem ) ) !default;
+$checkout-validation-check-horizontal-spacing--password:       var( --fluidcheckout--validation-check--horizontal-spacing--password, remsize( 2.5rem ) ) !default;
 
 // END - CHECKOUT VALIDATION
 // ----------------------------------------

@@ -272,16 +272,20 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		$background_alpha = str_replace( ',', '.', ( $background_alpha / 100 ) );
 
 		// Get theme's colors
-		$field_background_color = esc_attr( mfn_opts_get( 'background-form-focus', '#E9F5FC' ), $background_alpha );
-		$field_text_color = esc_attr( mfn_opts_get( 'color-form-focus', '#0089F7' ) );
-		$field_border_color = esc_attr( mfn_opts_get( 'border-form-focus', '#D5E5EE' ) );
+		$field_background_color_focus = esc_attr( mfn_opts_get( 'background-form-focus', '#E9F5FC' ), $background_alpha );
+		$field_text_color_focus = esc_attr( mfn_opts_get( 'color-form-focus', '#0089F7' ) );
+		$field_border_color_focus = esc_attr( mfn_opts_get( 'border-form-focus', '#D5E5EE' ) );
 
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
-				'--fluidcheckout--betheme--form-field--background-color--focus' => $field_background_color,
-				'--fluidcheckout--betheme--form-field--text-color--focus' => $field_text_color,
-				'--fluidcheckout--betheme--form-field--border-color--focus' => $field_border_color,
+				'--fluidcheckout--field--background-color--focus'                    => $field_background_color_focus,
+				'--fluidcheckout--field--background-color--accent'                   => $field_text_color_focus,
+
+				// Custom theme variables
+				'--fluidcheckout--betheme--form-field--background-color--focus'      => $field_background_color_focus,
+				'--fluidcheckout--betheme--form-field--text-color--focus'            => $field_text_color_focus,
+				'--fluidcheckout--betheme--form-field--border-color--focus'          => $field_border_color_focus,
 			),
 		);
 

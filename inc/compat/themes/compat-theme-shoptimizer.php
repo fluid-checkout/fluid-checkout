@@ -69,7 +69,7 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $settings; }
 
 		// Add settings
-		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = '.site-header, .col-full-nav';
+		$settings[ 'utils' ][ 'scrollOffsetSelector' ] = '.site-header, .col-full-nav';
 
 		return $settings;
 	}

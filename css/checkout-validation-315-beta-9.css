@@ -76,6 +76,20 @@ div.woocommerce .shipping-method__package .woocommerce-error:after {
   display: none;
 }
 
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) textarea,
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) select,
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=email],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=number],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=search],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=text],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=date],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=tel],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=url],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=password],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection {
+  border-color: var(--fluidcheckout--color--success, #007a3d);
+}
+
 div.woocommerce form .form-row[class*=woocommerce-invalid] textarea,
 div.woocommerce form .form-row[class*=woocommerce-invalid] select,
 div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=email],
@@ -94,19 +108,6 @@ div.woocommerce form .shipping-method__package[class*=woocommerce-invalid] #ship
   border-color: var(--fluidcheckout--color--error, #cc1818);
 }
 
-div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) textarea,
-div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) select,
-div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=email],
-div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=number],
-div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=search],
-div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=text],
-div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=date],
-div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=tel],
-div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=url],
-div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=password],
-div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection {
-  border-color: var(--fluidcheckout--color--success, #007a3d);
-}
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
   display: inline-block;
   font-family: "fluid-checkout-icons" !important;

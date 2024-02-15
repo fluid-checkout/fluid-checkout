@@ -1,0 +1,108 @@
+// ------------------------------------
+// TOM SELECT DROPDOWN
+// ------------------------------------
+
+.ts-dropdown {
+	z-index: z( 'above' ) + 1;
+	overflow: hidden;
+	position: absolute;
+	top: 100%;
+	#{ $alignment-left }: 0;
+	#{ $alignment-right }: auto;
+	margin: 0;
+	width: 100%;
+	border: $ts-select-dropdown-border;
+	background: $ts-select-color-dropdown;
+	border-top: 0 none;
+	box-shadow: $box-shadow-darker;
+	border-radius: $ts-select-border-radius;
+}
+.keeping-closed .ts-dropdown {
+	display: none !important; // Needed to ensure the dropdown stays hidden while updating page fragments
+}
+
+.ts-dropdown [data-selectable] {
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.ts-dropdown [data-selectable] .highlight {
+	padding: 0;
+	background: transparent;
+	color: $ts-select-color-text;
+	text-decoration: underline;
+}
+
+.ts-dropdown .option,
+.ts-dropdown .optgroup-header,
+.ts-dropdown .no-results,
+.ts-dropdown .create {
+	padding: $ts-select-padding-dropdown-item-y $ts-select-padding-dropdown-item-x;
+	font-size: $ts-select-font-size;
+}
+
+.ts-dropdown .option,
+.ts-dropdown [data-disabled],
+.ts-dropdown [data-disabled] [data-selectable].option {
+	cursor: inherit;
+	opacity: 0.5;
+}
+
+.ts-dropdown [data-selectable].option {
+	opacity: 1;
+	cursor: pointer;
+}
+
+
+
+.ts-dropdown .optgroup:first-child .optgroup-header {
+	border-top: 0 none;
+}
+
+.ts-dropdown .optgroup-header {
+	color: $ts-select-color-optgroup-text;
+	background: $ts-select-color-optgroup;
+	cursor: default;
+}
+
+
+
+.ts-dropdown .active {
+	background-color: $ts-select-color-dropdown-item-active;
+	color: $ts-select-color-dropdown-item-active-text;
+}
+.ts-dropdown .active.create {
+	color: $ts-select-color-dropdown-item-create-active-text;
+}
+
+.ts-dropdown .create {
+	color: $ts-select-color-dropdown-item-create-text;
+}
+
+
+
+.ts-dropdown .spinner {
+	display: inline-block;
+	width: $ts-select-spinner-size;
+	height: $ts-select-spinner-size;
+	margin: $ts-select-padding-dropdown-item-y $ts-select-padding-dropdown-item-x;
+}
+.ts-dropdown .spinner::after {
+	content: " ";
+	display: block;
+	width: $ts-select-spinner-size * .8;
+	height: $ts-select-spinner-size * .8;
+	margin: $ts-select-spinner-size * .1;
+	border-radius: 50%;
+	border: $ts-select-spinner-border-size solid $ts-select-spinner-border-color;
+	border-color: $ts-select-spinner-border-color transparent $ts-select-spinner-border-color transparent;
+	animation: loader-spin 1.2s linear infinite;
+}
+
+
+
+.ts-dropdown-content {
+	overflow: hidden auto;
+	max-height: $ts-select-max-height-dropdown;
+	scroll-behavior: smooth;
+}

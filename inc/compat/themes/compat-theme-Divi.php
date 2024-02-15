@@ -45,7 +45,7 @@ class FluidCheckout_ThemeCompat_Divi extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $settings; }
 
 		// Add settings
-		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = '#main-header';
+		$settings[ 'utils' ][ 'scrollOffsetSelector' ] = '#main-header';
 
 		return $settings;
 	}

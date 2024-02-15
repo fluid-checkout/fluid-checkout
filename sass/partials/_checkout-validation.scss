@@ -84,6 +84,23 @@ div.woocommerce .shipping-method__package .woocommerce-error:after {
 // CHECKOUT FIELD VALIDATION
 // ------------------------------------
 
+// VALID FIELDS
+div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="search"],
+	input[type="text"],
+	input[type="date"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"],
+	.select2-selection {
+		border-color: $success-color;
+	}
+}
+
 // INVALID FIELDS
 div.woocommerce form .form-row[class*='woocommerce-invalid'] {
 	textarea,

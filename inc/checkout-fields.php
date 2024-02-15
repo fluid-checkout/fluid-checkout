@@ -42,8 +42,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
 
 		// Extra field classes
-		add_filter( 'woocommerce_form_field_args', array( $this, 'add_select2_field_class' ), 100, 3 );
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_field_type_class' ), 100, 3 );
+		add_filter( 'woocommerce_form_field_args', array( $this, 'add_select2_field_class' ), 100, 3 );
 
 		// Checkbox label wrapper
 		add_filter( 'woocommerce_form_field_checkbox', array( $this, 'add_checkbox_label_text_wrapper' ), 100, 4 );
@@ -72,8 +72,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		remove_filter( 'woocommerce_checkout_fields', array( $this, 'add_field_has_description_class_checkout_fields_args' ), 100 );
 
 		// Extra field classes
-		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_select2_field_class' ), 100, 3 );
 		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_field_type_class' ), 100, 3 );
+		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_select2_field_class' ), 100, 3 );
 
 		// Checkbox label wrapper
 		remove_filter( 'woocommerce_form_field_checkbox', array( $this, 'add_checkbox_label_text_wrapper' ), 100, 4 );
@@ -383,6 +383,27 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 	/**
+	 * Add extra class field types.
+	 *
+	 * @param   array   $args   Checkout field args.
+	 * @param   string  $key    Field key.
+	 * @param   mixed   $value  Field value.
+	 *
+	 * @return  array           Modified checkout field args.
+	 */
+	public function add_field_type_class( $args, $key, $value ) {
+		// Initialize class argument if not existing yet
+		if ( ! array_key_exists( 'class', $args ) ) { $args[ 'class' ] = array(); }
+
+		// Add extra class
+		$args[ 'class' ] = array_merge( $args[ 'class' ], array( 'fc-' . $args[ 'type' ] . '-field' ) );
+
+		return $args;
+	}
+	
+	
+	
+	/**
 	 * Add extra class for `select2` fields.
 	 *
 	 * @param   array   $args   Checkout field args.
@@ -401,29 +422,37 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		// Initialize class argument if not existing yet
 		if ( ! array_key_exists( 'class', $args ) ) { $args[ 'class' ] = array(); }
 
-		// Add extra class
-		$args[ 'class' ] = array_merge( $args[ 'class' ], array( 'fc-select2-field' ) );
+		// Define extra classes to add
+		$extra_classes = array( 'fc-select2-field' );
 
-		return $args;
-	}
+		// Add extra class for type of `select` fields
+		// which is needed when fields change type dynamically.
+		// Treat `state` fields differently
+		if ( 'state' === $args[ 'type' ] ) {
+			/* Get country this state field is representing */
+			$for_country = isset( $args['country'] ) ? $args['country'] : WC()->checkout->get_value( 'billing_state' === $key ? 'billing_country' : 'shipping_country' );
+			$states      = WC()->countries->get_states( $for_country );
 
+			// Text field
+			if ( false === $states ) {
+				$extra_classes[] = 'fc-select-field--text';
+			}
+			// Hidden field
+			else if ( is_array( $states ) && empty( $states ) ) {
+				$extra_classes[] = 'fc-select-field--hidden';
+			}
+			// Select field
+			else {
+				$extra_classes[] = 'fc-select-field--select';
+			}
+		}
+		// Add `select` type class otherwise
+		else {
+			$extra_classes[] = 'fc-select-field--select';
+		}
 
-
-	/**
-	 * Add extra class field types.
-	 *
-	 * @param   array   $args   Checkout field args.
-	 * @param   string  $key    Field key.
-	 * @param   mixed   $value  Field value.
-	 *
-	 * @return  array           Modified checkout field args.
-	 */
-	public function add_field_type_class( $args, $key, $value ) {
-		// Initialize class argument if not existing yet
-		if ( ! array_key_exists( 'class', $args ) ) { $args[ 'class' ] = array(); }
-
-		// Add extra class
-		$args[ 'class' ] = array_merge( $args[ 'class' ], array( 'fc-' . $args[ 'type' ] . '-field' ) );
+		// Add extra classes
+		$args[ 'class' ] = array_merge( $args[ 'class' ], $extra_classes );
 
 		return $args;
 	}

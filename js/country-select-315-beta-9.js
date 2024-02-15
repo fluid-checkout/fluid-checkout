@@ -12,8 +12,24 @@ jQuery( function( $ ) {
 		return false;
 	}
 
+
+	// CHANGE: END - Enhanced select fields with TomSelect
+	var usingTomSelect = window.TomSelect && window.fcSettings && fcSettings.use_enhanced_select && 'yes' === fcSettings.use_enhanced_select;
+	if ( usingTomSelect && window.FCEnhancedSelect ) {
+		// CHANGE: Use TomSelect for select2 fields
+		var wc_country_select_tomselect = function() {
+			var selector = 'select.state_select';
+			FCEnhancedSelect.enhanceFields( selector );
+		}
+
+		// Rebuild enhanced fields when changing the selected country
+		$( document.body ).on( 'country_to_state_changed', wc_country_select_tomselect );
+	}
+	// CHANGE: END - Enhanced select fields with TomSelect
+
 	// Select2 Enhancement if it exists
-	if ( $().selectWoo ) {
+	// CHANGE: maybe disable select2 enhancement if TomSelect is being used
+	if ( $().selectWoo && ! usingTomSelect ) {
 		var getEnhancedSelectFormatString = function() {
 			return {
 				'language': {
@@ -149,6 +165,17 @@ jQuery( function( $ ) {
 			placeholder   = $statebox.attr( 'placeholder' ) || $statebox.attr( 'data-placeholder' ) || '',
 			$newstate;
 
+		// CHANGE: Define class names to be removed from state field when changing its type
+		var state_field_type_classes = [ 'fc-select-field--hidden', 'fc-select-field--text', 'fc-select-field--select' ];
+
+		// CHANGE: Maybe destroy TomSelect component before replacing the field
+		if ( usingTomSelect ) {
+			var stateField = $statebox.get( 0 );
+			if ( $statebox.length > 0 && stateField.tomselect ) {
+				stateField.tomselect.destroy();
+			}
+		}
+
 		if ( states[ country ] ) {
 			if ( $.isEmptyObject( states[ country ] ) ) {
 				$newstate = $( '<input type="hidden" />' )
@@ -159,6 +186,10 @@ jQuery( function( $ ) {
 					.addClass( 'hidden ' + input_classes );
 				$parent.hide().find( '.select2-container' ).remove();
 				$statebox.replaceWith( $newstate );
+
+				// CHANGE: Add class for current type of of the state field
+				$parent.removeClass( state_field_type_classes ).addClass( 'fc-select-field--hidden' );
+
 				$( document.body ).trigger( 'country_to_state_changed', [ country, $wrapper ] );
 			} else {
 				var state          = states[ country ],
@@ -193,6 +224,9 @@ jQuery( function( $ ) {
 
 				$statebox.val( value ).trigger( 'change' );
 
+				// CHANGE: Add class for current type of of the state field
+				$parent.removeClass( state_field_type_classes ).addClass( 'fc-select-field--select' );
+
 				$( document.body ).trigger( 'country_to_state_changed', [country, $wrapper ] );
 			}
 		} else {
@@ -205,6 +239,10 @@ jQuery( function( $ ) {
 					.addClass( 'input-text  ' + input_classes );
 				$parent.show().find( '.select2-container' ).remove();
 				$statebox.replaceWith( $newstate );
+
+				// CHANGE: Add class for current type of of the state field
+				$parent.removeClass( state_field_type_classes ).addClass( 'fc-select-field--text' );
+
 				$( document.body ).trigger( 'country_to_state_changed', [country, $wrapper ] );
 			}
 		}
@@ -218,7 +256,7 @@ jQuery( function( $ ) {
 	$( document.body ).on( 'wc_address_i18n_ready', function() {
 		// Init country selects with their default value once the page loads.
 		$( wrapper_selectors ).each( function() {
-            // CHANGE: Add selector for address fields without prefix
+			// CHANGE: Add selector for address fields without prefix
 			var $country_input = $( this ).find( '#country, #billing_country, #shipping_country, #calc_shipping_country' );
 
 			if ( 0 === $country_input.length || 0 === $country_input.val().length ) {

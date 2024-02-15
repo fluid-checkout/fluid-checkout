@@ -32,13 +32,17 @@
 		referenceNodeSelector:                   '.input-text, select, .input-checkbox, .shipping-method__options', // Usually same as `validateFieldsSelector`
 		clearValidationCountryChangedSelector:   '#state, #shipping_state, #billing_state',
 		alwaysValidateFieldsSelector:            '',
+
 		select2Selector:                         '.select2, .select2-hidden-accessible',
+		select2WrapperSelector:                  '.select2-container',
+		selectTomSelector:                       '.ts-hidden-accessible',
+		selectTomWrapperSelector:                '.ts-wrapper',
 
 		typeRequiredSelector:                    '.validate-required',
 		typeEmailSelector:                       '.validate-email',
 		typeConfirmationSelector:                '[data-confirm-with]',
 		typeShippingMethodSelector:              '.shipping-method__package',
-		
+
 		validClass:                              'woocommerce-validated',
 		invalidClass:                            'woocommerce-invalid',
 
@@ -82,7 +86,7 @@
 		return false;
 	};
 
-	
+
 
 	/**
 	 * Get the form-row element related to the field.
@@ -117,7 +121,13 @@
 
 		// Change reference field for select2
 		if ( isSelect2Field( field ) ) {
-			var newReference = field.parentNode.querySelector( '.select2-container' );
+			var newReference = field.parentNode.querySelector( _settings.select2WrapperSelector );
+			if ( newReference ) { referenceNode = newReference; }
+		}
+
+		// Change reference field for TomSelect control element 
+		if ( isSelectTomField( field ) ) {
+			var newReference = field.parentNode.querySelector( _settings.selectTomWrapperSelector );
 			if ( newReference ) { referenceNode = newReference; }
 		}
 
@@ -149,7 +159,7 @@
 		}
 	}
 
-	
+
 
 	/**
 	 * Check field is a select2 element.
@@ -158,6 +168,16 @@
 	 */
 	var isSelect2Field = function( field ) {
 		if ( field.closest( _settings.select2Selector ) ) { return true; }
+		return false;
+	};
+
+	/**
+	 * Check field is a TomSelect element.
+	 * @param  {Field}  field     Field to check.
+	 * @return {Boolean}          True if field is select2.
+	 */
+	var isSelectTomField = function( field ) {
+		if ( field.closest( _settings.selectTomSelector ) ) { return true; }
 		return false;
 	};
 
@@ -419,7 +439,7 @@
 	var maybeClearStateFields = function( event, country, wrapper ) {
 		// Bail if jQuery is not available
 		if ( ! _hasJQuery ) { return; }
-		
+
 		var wrappersList = $( wrapper ).toArray();
 
 		wrappersList.forEach( function( wrapperItem ) {
@@ -483,7 +503,7 @@
 	 _publicMethods.clearValidationResults = function( field, formRow ) {
 		// Bail if field or form row invalid
 		if ( ! field || ! formRow ) { return; }
-		
+
 		// Remove invalid classes for validation types
 		var validationTypeKeys = Object.keys( _validationTypes );
 		for ( var i = 0; i < validationTypeKeys.length; i++ ) {
@@ -580,7 +600,7 @@
 
 		// Bail if fnNeedsValidation or fnValidate are not functions
 		if ( ! ( fnNeedsValidation instanceof Function ) || ! ( fnValidate instanceof Function ) ) { return false; }
-		
+
 		// Bail if validation type already registered
 		if ( _validationTypes.hasOwnProperty( validationType ) ) {
 			console.log( 'Validation type "' + validationType + '" already registered.' );
@@ -608,7 +628,7 @@
 		return _validationTypes;
 	}
 
-	
+
 
 	/**
 	 * Initialize component and set related handlers.
@@ -624,7 +644,7 @@
 
 		if ( _hasJQuery ) {
 			$( _settings.formSelector ).on( 'input validate change', _settings.validateFieldsSelector, handleValidateEvent );
-			
+
 			// Run on checkout or cart changes
 			$( document ).on( 'load_ajax_content_done', _publicMethods.init );
 			$( document ).on( 'country_to_state_changed', maybeClearStateFields );
