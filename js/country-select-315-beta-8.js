@@ -256,7 +256,7 @@ jQuery( function( $ ) {
 	$( document.body ).on( 'wc_address_i18n_ready', function() {
 		// Init country selects with their default value once the page loads.
 		$( wrapper_selectors ).each( function() {
-            // CHANGE: Add selector for address fields without prefix
+			// CHANGE: Add selector for address fields without prefix
 			var $country_input = $( this ).find( '#country, #billing_country, #shipping_country, #calc_shipping_country' );
 
 			if ( 0 === $country_input.length || 0 === $country_input.val().length ) {

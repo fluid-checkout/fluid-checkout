@@ -203,6 +203,7 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-inv
   position: absolute;
   top: 100%;
   left: 0;
+  right: auto;
   margin: 0;
   width: 100%;
   border: var(--fluidcheckout--field--border-width, 1px) solid var(--fluidcheckout--color--light-grey, #d8d8d8);

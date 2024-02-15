@@ -253,7 +253,7 @@
 	var maybeSaveSubstep = function( substepElement ) {
 		// Bail if editButton not valid
 		if ( ! substepElement ) { return; }
-		
+
 		// Maybe validate fields
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( substepElement ) ) {
 			// Try to focus the first invalid field
@@ -291,7 +291,7 @@
 	var updateProgressBar = function() {
 		// Get current step
 		var currentStepElement = document.querySelector( _settings.currentStepSelector );
-		
+
 		// Bail if no current step was found
 		if ( ! currentStepElement ) { return; }
 
@@ -453,11 +453,11 @@
 		var lastStepElement = document.querySelector( _settings.lastStepSelector );
 		if ( currentStepElement ) {
 			var stepId = currentStepElement.getAttribute( _settings.stepIdAttribute );
-			
+
 			// Add current step class
 			var className = _settings.currentStepClassTemplate.replace( '##STEP_ID##', stepId );
 			document.body.classList.add( className );
-			
+
 			// Maybe add last step class
 			if ( lastStepElement ) {
 				var currentStepId = currentStepElement.getAttribute( _settings.stepIdAttribute );

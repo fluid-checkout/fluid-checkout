@@ -75,7 +75,7 @@
 		// Iterate options and get selected values
 		for ( var i = 0; i < options.length; i++ ) {
 			currentOption = options[i];
-		
+
 			if ( currentOption.selected ) {
 				results.push( currentOption.value || currentOption.text );
 			}
@@ -350,8 +350,6 @@
 
 		_hasInitialized = true;
 	}
-
-
 
 
 

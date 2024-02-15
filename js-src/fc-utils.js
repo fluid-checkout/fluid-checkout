@@ -211,21 +211,21 @@
 		var last,
 		deferTimer;
 		return function () {
-		var context = scope || this;
-	
-		var now = +new Date,
-			args = arguments;
-		if ( last && now < last + threshhold ) {
-			// hold on to it
-			clearTimeout( deferTimer );
-			deferTimer = setTimeout( function () {
+			var context = scope || this;
+		
+			var now = +new Date,
+				args = arguments;
+			if ( last && now < last + threshhold ) {
+				// hold on to it
+				clearTimeout( deferTimer );
+				deferTimer = setTimeout( function () {
+					last = now;
+					fn.apply( context, args );
+				}, threshhold );
+			} else {
 				last = now;
 				fn.apply( context, args );
-			}, threshhold );
-		} else {
-			last = now;
-			fn.apply( context, args );
-		}
+			}
 		};
 	}
 
@@ -309,7 +309,7 @@
 	_publicMethods.getFocusableElements = function( element ) {
 		// Set element to `document` root if not passed in
 		if ( ! element ) { element = document; }
-		
+
 		// Get elements that are keyboard-focusable, but might be `disabled`
 		return element.querySelectorAll( _settings.focusableElementsSelector );
 	}

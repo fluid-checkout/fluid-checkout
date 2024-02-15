@@ -42,7 +42,7 @@
 		typeEmailSelector:                       '.validate-email',
 		typeConfirmationSelector:                '[data-confirm-with]',
 		typeShippingMethodSelector:              '.shipping-method__package',
-		
+
 		validClass:                              'woocommerce-validated',
 		invalidClass:                            'woocommerce-invalid',
 
@@ -86,7 +86,7 @@
 		return false;
 	};
 
-	
+
 
 	/**
 	 * Get the form-row element related to the field.
@@ -159,7 +159,7 @@
 		}
 	}
 
-	
+
 
 	/**
 	 * Check field is a select2 element.
@@ -439,7 +439,7 @@
 	var maybeClearStateFields = function( event, country, wrapper ) {
 		// Bail if jQuery is not available
 		if ( ! _hasJQuery ) { return; }
-		
+
 		var wrappersList = $( wrapper ).toArray();
 
 		wrappersList.forEach( function( wrapperItem ) {
@@ -503,7 +503,7 @@
 	 _publicMethods.clearValidationResults = function( field, formRow ) {
 		// Bail if field or form row invalid
 		if ( ! field || ! formRow ) { return; }
-		
+
 		// Remove invalid classes for validation types
 		var validationTypeKeys = Object.keys( _validationTypes );
 		for ( var i = 0; i < validationTypeKeys.length; i++ ) {
@@ -600,7 +600,7 @@
 
 		// Bail if fnNeedsValidation or fnValidate are not functions
 		if ( ! ( fnNeedsValidation instanceof Function ) || ! ( fnValidate instanceof Function ) ) { return false; }
-		
+
 		// Bail if validation type already registered
 		if ( _validationTypes.hasOwnProperty( validationType ) ) {
 			console.log( 'Validation type "' + validationType + '" already registered.' );
@@ -628,7 +628,7 @@
 		return _validationTypes;
 	}
 
-	
+
 
 	/**
 	 * Initialize component and set related handlers.
@@ -644,7 +644,7 @@
 
 		if ( _hasJQuery ) {
 			$( _settings.formSelector ).on( 'input validate change', _settings.validateFieldsSelector, handleValidateEvent );
-			
+
 			// Run on checkout or cart changes
 			$( document ).on( 'load_ajax_content_done', _publicMethods.init );
 			$( document ).on( 'country_to_state_changed', maybeClearStateFields );
