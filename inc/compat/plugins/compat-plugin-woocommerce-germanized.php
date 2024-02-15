@@ -27,6 +27,11 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		// Place order position
 		add_filter( 'pre_option_fc_checkout_place_order_position', array( $this, 'change_place_order_position_option' ), 10, 3 );
+
+		// Germanized thumbnails
+		add_filter( 'woocommerce_gzd_checkout_use_legacy_table_replacement_template', '__return_false', 10 );
+		add_filter( 'pre_option_woocommerce_gzd_display_checkout_thumbnails', array( $this, 'change_germanized_display_checkout_thumbnails_option' ), 10, 3 );
+
 	}
 
 	/**
@@ -117,6 +122,19 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	 */
 	public function change_place_order_position_option( $pre_option, $option, $default ) {
 		return 'below_order_summary';
+	}
+
+
+
+	/**
+	 * Change the option for displaying the Germanized enhanced checkout thumbnails to `no`.
+	 *
+	 * @param  mixed   $pre_option   The value to return instead of the option value.
+	 * @param  string  $option       Option name.
+	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 */
+	public function change_germanized_display_checkout_thumbnails_option( $pre_option, $option, $default ) {
+		return 'no';
 	}
 
 
