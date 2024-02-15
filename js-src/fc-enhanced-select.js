@@ -26,9 +26,9 @@
 		inputFieldSelector:                    '.fc-select2-field .ts-control > input',
 
 		fieldSettings: {
-			openOnFocus: false,
 			create: false,
 			diacritics: true,
+			openOnFocus: false,
 		},
 		fieldPluginsSingle: [],
 		fieldPluginsMulti: [ 'remove_button' ],
@@ -117,13 +117,13 @@
 	/**
 	 * Unset autocomplete attribute for the search field.
 	 */
-	var unsetAutocompleteAttribute = function() {
+	var disableFieldAutocomplete = function() {
 		// Get field reference
 		var tomselect = this;
 		var searchField = tomselect.focus_node;
 
 		// Unset autocomplete attribute for the search field
-		searchField.removeAttribute( 'autocomplete' );
+		searchField.setAttribute( 'autocomplete', 'off-' + Date.now() );
 	}
 
 	/**
@@ -143,6 +143,77 @@
 
 		// Scroll to the top of the form row
 		FCUtils.scrollToElement( formRow, null, 30 );
+	}
+
+
+
+	/**
+	 * Maybe open the dropdown of the field.
+	 * 
+	 * @param  {Element}  field  The select field.
+	 */
+	var maybeOpenDropdown = function( field ) {
+		// Bail if field is not valid
+		if ( ! field ) { return; }
+
+		// Bail if not a TomSelect field
+		if ( ! field.tomselect ) { return; }
+
+		// Get TomSelect instance
+		var tomselect = field.tomselect;
+
+		// Maybe open field dropdown
+		if ( ! tomselect.isOpen ) {
+			tomselect.open();
+		}
+	}
+
+	/**
+	 * Maybe close the dropdown of the field.
+	 * 
+	 * @param  {Element}  field  The select field.
+	 */
+	var maybeCloseDropdown = function( field ) {
+		// Bail if field is not valid
+		if ( ! field ) { return; }
+
+		// Bail if not a TomSelect field
+		if ( ! field.tomselect ) { return; }
+
+		// Get TomSelect instance
+		var tomselect = field.tomselect;
+
+		// Maybe close field dropdown
+		if ( tomselect.isOpen ) {
+			tomselect.close();
+		}
+	}
+
+	/**
+	 * Maybe toggle the dropdown of the field open/closed status.
+	 * 
+	 * @param  {Element}  field  The select field.
+	 */
+	var maybeToggleDropdown = function( field ) {
+		// Bail if field is not valid
+		if ( ! field ) { return; }
+
+		// Bail if not a TomSelect field
+		if ( ! field.tomselect ) { return; }
+
+		// Get TomSelect instance
+		var tomselect = field.tomselect;
+		var isOpen = tomselect.isOpen;
+
+		// Maybe toggle field dropdown
+		requestAnimationFrame( function() {
+		if ( isOpen ) {
+				maybeCloseDropdown( field );
+			}
+			else {
+				maybeOpenDropdown( field );
+			}
+		} );
 	}
 
 
@@ -210,8 +281,8 @@
 			instance.setValue( values, true );
 
 			// Set event listeners
-			instance.on( 'focus', unsetAutocompleteAttribute );
-			instance.on( 'blur', unsetAutocompleteAttribute );
+			instance.on( 'focus', disableFieldAutocomplete );
+			instance.on( 'blur', disableFieldAutocomplete );
 			instance.on( 'dropdown_open', maybeScrollToField );
 		}
 	}
@@ -226,11 +297,7 @@
 		if ( e.target.closest( _settings.inputFieldSelector ) ) {
 			var formRow = e.target.closest( _settings.formRowSelector );
 			var field = formRow.querySelector( 'select' );
-			var tomselect = field.tomselect;
-
-			if ( ! tomselect.isOpen ) {
-				tomselect.open();
-			}
+			maybeOpenDropdown( field );
 		}
 	};
 
@@ -242,13 +309,21 @@
 		if ( e.target.closest( _settings.inputFieldSelector ) ) {
 			var formRow = e.target.closest( _settings.formRowSelector );
 			var field = formRow.querySelector( 'select' );
-			var tomselect = field.tomselect;
-
-			if ( tomselect.isOpen ) {
-				tomselect.close();
-			}
+			maybeCloseDropdown( field );
 		}
 	};
+
+	/**
+	 * Handle captured `click` event and route to the appropriate functions.
+	 */
+	var handleClick = function( e ) {
+		// INPUT ELEMENT
+		if ( e.target.closest( _settings.controlElementSelector ) ) {
+			var formRow = e.target.closest( _settings.formRowSelector );
+			var field = formRow.querySelector( 'select' );
+			maybeToggleDropdown( field );
+		}
+	}
 
 
 
@@ -262,6 +337,7 @@
 		_settings = FCUtils.extendObject( _settings, options );
 
 		// Set event listener for enhanced select fields
+		document.addEventListener( 'click', handleClick, true );
 		document.addEventListener( 'change', updateSelectedValue, true );
 		document.addEventListener( 'focus', handleFocus, true );
 		document.addEventListener( 'blur', handleBlur, true );
