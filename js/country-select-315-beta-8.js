@@ -165,6 +165,9 @@ jQuery( function( $ ) {
 			placeholder   = $statebox.attr( 'placeholder' ) || $statebox.attr( 'data-placeholder' ) || '',
 			$newstate;
 
+		// CHANGE: Define class names to be removed from state field when changing its type
+		var state_field_type_classes = [ 'fc-select-field--hidden', 'fc-select-field--text', 'fc-select-field--select' ];
+
 		// CHANGE: Maybe destroy TomSelect component before replacing the field
 		if ( usingTomSelect ) {
 			var stateField = $statebox.get( 0 );
@@ -183,6 +186,10 @@ jQuery( function( $ ) {
 					.addClass( 'hidden ' + input_classes );
 				$parent.hide().find( '.select2-container' ).remove();
 				$statebox.replaceWith( $newstate );
+
+				// CHANGE: Add class for current type of of the state field
+				$parent.removeClass( state_field_type_classes ).addClass( 'fc-select-field--hidden' );
+
 				$( document.body ).trigger( 'country_to_state_changed', [ country, $wrapper ] );
 			} else {
 				var state          = states[ country ],
@@ -217,6 +224,9 @@ jQuery( function( $ ) {
 
 				$statebox.val( value ).trigger( 'change' );
 
+				// CHANGE: Add class for current type of of the state field
+				$parent.removeClass( state_field_type_classes ).addClass( 'fc-select-field--select' );
+
 				$( document.body ).trigger( 'country_to_state_changed', [country, $wrapper ] );
 			}
 		} else {
@@ -229,6 +239,10 @@ jQuery( function( $ ) {
 					.addClass( 'input-text  ' + input_classes );
 				$parent.show().find( '.select2-container' ).remove();
 				$statebox.replaceWith( $newstate );
+
+				// CHANGE: Add class for current type of of the state field
+				$parent.removeClass( state_field_type_classes ).addClass( 'fc-select-field--text' );
+
 				$( document.body ).trigger( 'country_to_state_changed', [country, $wrapper ] );
 			}
 		}

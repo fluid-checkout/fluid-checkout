@@ -185,15 +185,16 @@
 			// Get field reference and value
 			var field = fields[ i ];
 			var values = getSelectValues( field );
+			var isMultiple = field.hasAttribute( 'multiple' );
 
 			// Maybe destroy TomSelect instance
 			if ( field.tomselect ) {
 				field.tomselect.destroy();
 			}
 
-			// Maybe add TomSelect plugins for single or multi select
-			// Multi select
-			if ( field.hasAttribute( 'multiple' ) ) {
+			// Handle differences between single and multiple select fields
+			// Multiple select
+			if ( isMultiple ) {
 				settings.plugins = _settings.fieldPluginsMulti;
 			}
 			// Single select
