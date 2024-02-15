@@ -23,5 +23,6 @@ $_body-theme-selector:                 '.theme-iona' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-place-order",
 	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2";

@@ -1,0 +1,16 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
+	padding-#{ $alignment-left }: remsize( 2rem );
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .woocommerce-terms-and-conditions-wrapper input[type="checkbox"]:focus {
+	outline: none !important; // Needed to override FC styles
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .woocommerce-terms-and-conditions-wrapper input[type="checkbox"]:focus:before {
+	outline: $focus-outline-field;
+	outline-offset: $focus-outline-offset-field;
+}
