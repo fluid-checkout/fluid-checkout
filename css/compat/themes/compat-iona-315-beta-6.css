@@ -2,6 +2,15 @@
   --fluidcheckout--field--height: 42.8px;
 }
 
+body.theme-iona div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-left: 0.9em;
+}
+
 body.theme-iona div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  display: block;
   top: 0 !important;
+}
+
+body.theme-iona div.woocommerce .select_container:after {
+  content: none;
 }
