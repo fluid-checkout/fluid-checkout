@@ -23,4 +23,5 @@ $_body-theme-selector:                 '.theme-iona' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2";
