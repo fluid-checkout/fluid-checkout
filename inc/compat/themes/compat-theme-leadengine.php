@@ -39,7 +39,7 @@ class FluidCheckout_ThemeCompat_LeadEngine extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $settings; }
 
 		// Add settings
-		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = '.navbar-default';
+		$settings[ 'utils' ][ 'scrollOffsetSelector' ] = '.navbar-default';
 
 		return $settings;
 	}

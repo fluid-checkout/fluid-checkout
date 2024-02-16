@@ -86,7 +86,7 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $settings; }
 
 		// Add settings
-		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = '#page-header';
+		$settings[ 'utils' ][ 'scrollOffsetSelector' ] = '#page-header';
 
 		return $settings;
 	}

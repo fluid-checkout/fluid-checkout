@@ -79,6 +79,13 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_deregister_script( 'wc-country-select' );
 		wp_deregister_script( 'wc-address-i18n' );
 		wp_deregister_script( 'wc-checkout' );
+
+		// Select2 / SelectWoo, will be replaced with TomSelect
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
+			wp_deregister_script( 'selectWoo' );
+			wp_deregister_script( 'select2' );
+			wp_deregister_style( 'select2' );
+		}
 	}
 
 	/**
@@ -92,9 +99,17 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Register WooCommerce scripts with modified version
 		wp_register_script( 'woocommerce', self::$directory_url . 'js/woocommerce'. self::$asset_version . '.js', array( 'jquery', 'jquery-blockui', 'js-cookie' ), NULL, true );
-		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
+		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery', 'fc-utils' ), NULL, true );
 		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
 		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, true );
+
+		// Select2 / SelectWoo, replaced with TomSelect but keeping the same handle and dependencies
+		// because many plugins and themes depend on `select2` or `selectWoo` scripts.
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
+			wp_register_script( 'selectWoo', self::$directory_url . 'js/select2-empty'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
+			wp_register_script( 'select2', self::$directory_url . 'js/select2-empty'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
+			wp_register_style( 'select2', self::$directory_url . 'css/select2-empty'. self::$asset_version . '.css', array(), NULL );
+		}
 	}
 
 	/**
@@ -127,6 +142,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			'ajaxUrl'                        => admin_url( 'admin-ajax.php' ),
 			'wcAjaxUrl'                      => WC_AJAX::get_endpoint( '%%endpoint%%' ),
 			'debugMode'                      => get_option( 'fc_debug_mode', 'no' ),
+			'use_enhanced_select'            => FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ),
+			'utils'                          => array(),
 			'flyoutBlock'                    => array(
 				'openAnimationClass'         => 'fade-in-up',
 				'closeAnimationClass'        => 'fade-out-down',
@@ -164,6 +181,11 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_script( 'fc-sticky-states', self::$directory_url . 'js/lib/sticky-states'. self::$asset_version . '.js', array(), NULL );
 		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("load",function(){StickyStates.init(fcSettings.stickyStates);})' );
 
+		// Enhanced select
+		wp_register_script( 'tomselect', self::$directory_url . 'js/tom-select.complete'. self::$asset_version . '.js', array(), NULL );
+		wp_register_script( 'fc-enhanced-select', self::$directory_url . 'js/fc-enhanced-select'. self::$asset_version . '.js', array( 'tomselect' ), NULL );
+		wp_add_inline_script( 'fc-enhanced-select', 'window.addEventListener("load",function(){FCEnhancedSelect.init();})' );
+
 		// Register script utilities
 		wp_register_script( 'fc-utils', self::$directory_url . 'js/fc-utils'. self::$asset_version . '.js', array(), NULL );
 
@@ -175,6 +197,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_style( 'fc-add-payment-method-page', self::$directory_url . 'css/add-payment-method-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 		wp_register_style( 'fc-flyout-block', self::$directory_url . 'css/flyout-block' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 		wp_register_style( 'fc-sticky-states', self::$directory_url . 'css/sticky-states' . $rtl_suffix . self::$asset_version . '.css', array(), null );
+
+		// Enhanced select
+		wp_register_style( 'tomselect', self::$directory_url . 'css/tom-select' . $rtl_suffix . self::$asset_version . '.css', array(), null );
 	}
 
 
@@ -229,6 +254,22 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Styles
 		wp_enqueue_style( 'fc-flyout-block' );
 		wp_enqueue_style( 'fc-sticky-states' );
+
+		// Enhanced select
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
+			wp_enqueue_script( 'tomselect' );
+			wp_enqueue_script( 'fc-enhanced-select' );
+			wp_enqueue_style( 'tomselect' );
+		}
+	}
+
+	/**
+	 * Dequeue enhanced select assets.
+	 */
+	public function dequeue_enhanced_select_assets() {
+		wp_dequeue_script( 'tomselect' );
+		wp_dequeue_script( 'fc-enhanced-select' );
+		wp_dequeue_style( 'tomselect' );
 	}
 
 	/**

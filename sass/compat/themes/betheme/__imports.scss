@@ -1,0 +1,32 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-betheme' !default;
+
+
+
+
+
+// ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	--fluidcheckout--field--height: #{ remsize( 4.5rem ) };
+	--fluidcheckout--field--border-color: #{ #ebebeb };
+	--fluidcheckout--field--box-shadow: inset 0 0 2px 2px rgba( 0, 0, 0, .02 ); // Uses `px` to match theme styles
+}
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"checkout-billing",
+	"checkout-content-area",
+	"checkout-shipping",
+	"order-summary",
+	"woocommerce-form-fields-select2";

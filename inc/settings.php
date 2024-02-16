@@ -36,9 +36,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	public function get_default_option_values() {
 		$defaults = array(
-			// Settings checkout.
-			'fc_debug_mode'                                                 => 'no',
-			'fc_load_unminified_assets'                                     => 'no',
+			// Settings checkout.			
 			'fc_checkout_layout'                                            => 'multi-step',
 			'fc_design_template'                                            => 'classic',
 			'fc_enable_dark_mode_styles'                                    => 'no',
@@ -111,6 +109,11 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_order_details_order_notes_position'                     => 'inside_order_items',
 			'fc_pro_enable_order_received_widget_areas'                     => 'no',
 
+			// Settings tools.
+			'fc_debug_mode'                                                 => 'no',
+			'fc_load_unminified_assets'                                     => 'no',
+			'fc_use_enhanced_select_components'                             => 'no',
+
 			// Settings without options in the admin panel.
 			'fc_plugin_activation_time'                                     => null,
 			'fc_apply_checkout_field_args'                                  => 'yes',
@@ -138,6 +141,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_theme_woodmart_output_checkout_steps_section'        => 'no',
 			'fc_compat_theme_woodmart_disable_theme_checkout_options'       => 'yes',
 			'fc_compat_theme_pressmart_output_checkout_steps_section'       => 'no',
+			'fc_compat_theme_betheme_output_checkout_steps_section'         => 'no',
 
 			// Deprecated settings.
 			'fc_enable_checkout_place_order_sidebar'                        => 'no',

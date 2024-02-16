@@ -14,6 +14,7 @@ $_body-theme-selector:                 '.theme-electro' !default;
 :root {
 	--fluidcheckout--field--height: #{ remsize( 4.498rem ) };
 	--fluidcheckout--field--border-radius: #{ remsize( 2.249rem ) };
+	--fluidcheckout--field-item--border-radius: #{ remsize( 1.2rem ) };
 
 	--fluidcheckout--validation-check--horizontal-spacing: #{ remsize( 1rem ) };
 	--fluidcheckout--validation-check--horizontal-spacing--select: #{ remsize( 3rem ) };

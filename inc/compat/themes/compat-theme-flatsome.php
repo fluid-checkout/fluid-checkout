@@ -25,6 +25,7 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_enhanced_select_assets' ), 100 );
 
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
@@ -62,7 +63,10 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 	 */
 	public function enqueue_assets() {
 		// Scripts
-		wp_enqueue_script( 'fc-compat-flatsome-floating-labels' );
+		// Floating labels
+		if ( get_theme_mod( 'checkout_floating_labels', 0 ) ) {
+			wp_enqueue_script( 'fc-compat-flatsome-floating-labels' );
+		}
 	}
 
 	/**
@@ -73,6 +77,22 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		$this->enqueue_assets();
+	}
+
+	/**
+	 * Dequeue enhanced select assets.
+	 */
+	public function maybe_dequeue_enhanced_select_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		// Bail if function is not available
+		if ( ! method_exists( FluidCheckout_Enqueue::instance(), 'dequeue_enhanced_select_assets' ) ) { return; }
+
+		// Bail if theme's floating labels feature is not enabled
+		if ( ! get_theme_mod( 'checkout_floating_labels', 0 ) ) { return; }
+
+		FluidCheckout_Enqueue::instance()->dequeue_enhanced_select_assets();
 	}
 
 

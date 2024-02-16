@@ -1,0 +1,34 @@
+// ------------------------------------
+// TOM SELECT CONTROL VALIDATION
+// ------------------------------------
+
+div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) .ts-control {
+	border-color: $success-color;
+}
+
+div.woocommerce form .form-row[class*='woocommerce-invalid'] .ts-control {
+	border-color: $error-color;
+}
+
+
+
+div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+	// "valid" field check icon
+	// Single select and multi select fields
+	&:not( .fc-no-validation-icon ).fc-select2-field .woocommerce-input-wrapper:after {
+		@include icon( 'i-check-small' );
+		@include icon-size( $icon-size );
+
+		z-index: z( 'above' );
+		position: absolute;
+		top: $checkout-validation-check-top;
+		#{ $alignment-right }: $checkout-validation-check-horizontal-spacing;
+		border-radius: 100%;
+		color: $success-color;
+		pointer-events: none;
+	}
+	// Single select fields
+	&:not( .fc-no-validation-icon ).fc-select2-field:not( .fc-multiselect-field ):not( .fc-select-field--text ):not( .fc-select-field--hidden ) .woocommerce-input-wrapper:after {
+		#{ $alignment-right }: calc( #{ $checkout-validation-check-horizontal-spacing } + #{ $ts-select-arrow-offset } + #{ $ts-select-arrow-size } + #{ $global-spacing-tiny } );
+	}
+}

@@ -1,0 +1,91 @@
+// ------------------------------------
+// TOM SELECT MULTI
+// ------------------------------------
+
+.ts-wrapper.multi.has-items .ts-control {
+	padding: 0 calc( #{ $ts-select-padding-x } / 2 );
+	height: auto;
+}
+
+
+
+.ts-wrapper.multi .ts-control > input {
+	width: auto !important; // Needed to enforce styles for the select component
+}
+
+
+
+.ts-wrapper.multi .ts-control [data-value] {
+	position: relative;
+	margin-top: calc( #{ $ts-select-padding-y } / 2 );
+	margin-bottom: calc( #{ $ts-select-padding-y } / 2 );
+	margin-#{ $alignment-right }: calc( #{ $ts-select-padding-x } / 2 );
+	padding: 0 $ts-select-padding-item-x;
+	border: solid remsize( .1rem ) $ts-select-color-item-border;
+	border-radius: $ts-select-border-radius-item;
+	background-color: $ts-select-color-item;
+	line-height: calc( #{ $ts-select-field-height } - #{ $ts-select-padding-y } - ( #{ $ts-select-padding-y } / 2 ) );
+
+	text-shadow: 0 remsize( .1rem ) 0 rgba( 0, 51, 83, 30% );
+	box-shadow: 0 remsize( .1rem ) 0 rgba( 0, 0, 0, 20% ), inset 0 remsize( .1rem ) rgba( 255, 255, 255, 3% );
+}
+.ts-wrapper.multi.plugin-remove_button .ts-control [data-value] {
+	padding-#{ $alignment-right }: calc( ( #{ $ts-select-padding-x } / 2 ) + $ts-select-remove-size );
+}
+.ts-wrapper.multi .ts-control [data-value].active {
+	color: $ts-select-color-item-active-text;
+	background-color: $ts-select-color-item-active;
+	border-color: $ts-select-color-item-active-border;
+}
+.ts-wrapper.multi.disabled .ts-control [data-value] {
+	color: $light-grey;
+	text-shadow: none;
+	background: none;
+	box-shadow: none;
+	border-color: $light-grey;
+}
+
+
+.ts-wrapper.multi .ts-control [data-value] .remove {
+	position: absolute;
+	top: 0;
+	#{ $alignment-right }: 0;
+	width: $ts-select-remove-size;
+	height: 100%;
+	border: 0;
+	border-radius: 0;
+	background: none;
+	line-height: calc( #{ $ts-select-field-height } - #{ $ts-select-padding-y } - ( #{ $ts-select-padding-y } / 2 ) ) !important; // Needed to enforce styles for the select component
+	text-align: center;
+	color: $ts-select-remove-color !important; // Needed to enforce styles for the select component
+	font-weight: normal;
+
+	&:focus,
+	&:hover,
+	&:active {
+		outline: none;
+		color: $ts-select-remove-color-hover !important; // Needed to enforce styles for the select component
+	}
+}
+.ts-wrapper.multi .ts-control [data-value] .remove:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	#{ $alignment-left }: 0;
+	width: remsize( .1rem );
+	height: 100%;
+	background-color: $ts-select-remove-color;
+	opacity: .15;
+}
+
+.ts-wrapper.multi .ts-control [data-value].active .remove {
+	color: $ts-select-color-item-active-text !important; // Needed to enforce styles for the select component
+}
+.ts-wrapper.multi .ts-control [data-value].active .remove:after {
+	background-color: $ts-select-color-item-active-text;
+}
+
+.ts-wrapper.multi.disabled .ts-control [data-value] .remove {
+	border-color: $light-grey;
+	background: none;
+}
