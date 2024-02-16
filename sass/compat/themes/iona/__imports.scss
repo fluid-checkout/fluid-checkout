@@ -23,8 +23,10 @@ $_body-theme-selector:                 '.theme-iona' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-content-area",
 	"checkout-coupon-code",
 	"checkout-place-order",
+	"checkout-steps",
 	"order-summary",
 	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2";

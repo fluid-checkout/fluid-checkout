@@ -1,0 +1,15 @@
+// ------------------------------------
+// CHECKOUT STEPS
+// ------------------------------------
+
+body#{ $_body-theme-selector }.scheme_default.has-highlighted-shipping-section .fc-wrapper .fc-step__substep[data-substep-id="shipping_address"] .fc-step__substep-save,
+body#{ $_body-theme-selector }.scheme_default.has-highlighted-billing-section .fc-wrapper .fc-step__substep[data-substep-id="billing_address"] .fc-step__substep-save {
+	background-color: #222222; // Use same color as the theme to match its styles
+	color: #ffffff; // Use same color as the theme to match its styles
+
+	&:hover,
+	&:focus {
+		background-color: #ecb928; // Use same color as the theme to match its styles
+		color: #ffffff; // Use same color as the theme to match its styles
+	}
+}
