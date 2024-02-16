@@ -15,6 +15,24 @@ body.theme-iona div.woocommerce form .form-row .woocommerce-terms-and-conditions
   outline-offset: 2px;
 }
 
+body.theme-iona.scheme_default .fc-wrapper .fc-place-order .fc-place-order-button {
+  background-color: #f4f4f2;
+  color: #222222;
+}
+body.theme-iona.scheme_default .fc-wrapper .fc-place-order .fc-place-order-button:hover, body.theme-iona.scheme_default .fc-wrapper .fc-place-order .fc-place-order-button:focus {
+  background-color: #f8f8f8;
+  color: #222222;
+}
+
+body.theme-iona.scheme_dark .fc-wrapper .fc-place-order .fc-place-order-button {
+  background-color: #222222;
+  color: #ffffff;
+}
+body.theme-iona.scheme_dark .fc-wrapper .fc-place-order .fc-place-order-button:hover, body.theme-iona.scheme_dark .fc-wrapper .fc-place-order .fc-place-order-button:focus {
+  background-color: #f8f8f8;
+  color: #222222;
+}
+
 body.theme-iona div.woocommerce input[type=radio] + label:after {
   z-index: 10;
 }
