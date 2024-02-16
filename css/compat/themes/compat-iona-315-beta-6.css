@@ -2,6 +2,11 @@
   --fluidcheckout--field--height: 42.8px;
 }
 
+body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 body.theme-iona .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
   padding-left: 20px;
 }
