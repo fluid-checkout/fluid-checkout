@@ -19,6 +19,15 @@ class FluidCheckout_Seur extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 		add_action( 'wp', array( $this, 'maybe_set_terminals_field_from_session_to_postdata' ), 20 );
@@ -31,6 +40,54 @@ class FluidCheckout_Seur extends FluidCheckout {
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Add validation script
+		wp_register_script( 'fc-checkout-validation-seur', self::$directory_url . 'js/compat/plugins/seur/checkout-validation-seur'. self::$asset_version . '.js', array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-validation-seur', 'window.addEventListener("load",function(){CheckoutValidationSeur.init(fcSettings.checkoutValidationSeur);})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-validation-seur' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		$this->enqueue_assets();
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+
+		// Add validation settings
+		$settings[ 'checkoutValidationSeur' ] = array(
+			'validationMessages'  => array(
+				'pickup_point_not_selected' => __( 'Selecting a pickup point is required before proceeding.', 'fluid-checkout' ),
+			),
+		);
+
+		return $settings;
 	}
 
 
