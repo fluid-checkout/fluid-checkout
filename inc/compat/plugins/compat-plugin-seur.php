@@ -34,6 +34,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 
 		// Shipping methods hooks
 		add_filter( 'fc_shipping_method_option_markup', array( $this, 'change_shipping_method_options_markup_set_selected_value' ), 100, 5 );
+		add_action( 'woocommerce_shipping_init', array( $this, 'shipping_methods_hooks' ), 100 );
 
 		// Maybe set step as incomplete
 		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
@@ -42,12 +43,25 @@ class FluidCheckout_Seur extends FluidCheckout {
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 	}
 
+	/**
+	 * Add or remove shipping method hooks.
+	 */
+	public function shipping_methods_hooks() {
+		// Select2 fields
+		remove_action( 'wp_footer', 'seur_add_map_type_select2', 10 );
+	}
+
 
 
 	/**
 	 * Register assets.
 	 */
 	public function register_assets() {
+		// Checkout scripts
+		$checkout_script_deps = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ? array( 'jquery', 'selectWoo', 'fc-enhanced-select' ) : array( 'jquery', 'selectWoo' );
+		wp_register_script( 'fc-checkout-seur', self::$directory_url . 'js/compat/plugins/seur/checkout-seur'. self::$asset_version . '.js', $checkout_script_deps, NULL, true );
+		wp_add_inline_script( 'fc-checkout-seur', 'window.addEventListener("load",function(){CheckoutSeur.init();})' );
+
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-seur', self::$directory_url . 'js/compat/plugins/seur/checkout-validation-seur'. self::$asset_version . '.js', array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
 		wp_add_inline_script( 'fc-checkout-validation-seur', 'window.addEventListener("load",function(){CheckoutValidationSeur.init(fcSettings.checkoutValidationSeur);})' );
@@ -58,6 +72,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 	 */
 	public function enqueue_assets() {
 		// Scripts
+		wp_enqueue_script( 'fc-checkout-seur' );
 		wp_enqueue_script( 'fc-checkout-validation-seur' );
 	}
 
