@@ -22,7 +22,7 @@
 		bodyClass:                             'has-fc-enhanced-select',
 		formRowSelector:                       '.form-row.fc-select2-field',
 		selectFieldSelector:                   '.fc-select2-field select',
-		controlElementSelector:                '.ts-control',
+		wrapperElementSelector:                '.ts-wrapper',
 		inputFieldSelector:                    '.fc-select2-field .ts-control > input',
 
 		fieldSettings: {
@@ -36,6 +36,23 @@
 
 
 
+	/**
+	 * SELECT2 SUPPORT
+	 */
+
+	/**
+	 * Enhance select fields with TomSelect when trying to use `select2` or `selectWoo` jQuery plugins.
+	 */
+	var initializeFromSelect2 = function() {
+		var fields = $( this );
+
+		// Iterate fields and enhance them with TomSelect
+		fields.each( function( i, field ) {
+			_publicMethods.enhanceFields( field );
+		} );
+
+		return this;
+	}
 
 	/**
 	 * Support for Select2 and SelectWoo jQuery plugins.
@@ -46,8 +63,8 @@
 		if ( ! _hasJQuery ) { return; }
 
 		// Replace `$.fn.select2` and `$.fn.selectWoo` with a dummy function
-		$.fn.select2 = function() { return this; };
-		$.fn.selectWoo = function() { return this; };
+		$.fn.select2 = initializeFromSelect2;
+		$.fn.selectWoo = initializeFromSelect2;
 	}
 	// Replace immediatelly.
 	replaceSelect2JQueryPlugins();
@@ -97,9 +114,6 @@
 	var updateSelectedValue = function( event ) {
 		// Get field reference and value
 		var field = event.target;
-
-		// Bail if field does not match enhanced select selector
-		if ( ! field.matches( _settings.selectFieldSelector ) ) { return; }
 
 		// Bail if field is not a TomSelect field
 		if ( ! field.tomselect ) { return; }
@@ -221,20 +235,21 @@
 	/** 
 	 * Enhance selecct fields with TomSelect.
 	 * 
-	 * @param  {string}  selector   (optional) Selector for the fields to enhance, will use default settings if not defined.
-	 * @param  {object}  settings   (optional) Settings for the enhanced select fields, will use default settings if not defined.
+	 * @param  {Element|string}  fieldOrSelector   (optional) Field or CSS selector for the fields to enhance, will use default settings if not defined.
+	 * @param  {object}          settings          (optional) Settings for the enhanced select fields, will use default settings if not defined.
 	 */
-	_publicMethods.enhanceFields = function( selector, settings ) {
+	_publicMethods.enhanceFields = function( fieldOrSelector, settings ) {
 		// Bail if TomSelect is not defined
 		if ( 'undefined' === typeof TomSelect ) { return; }
 
 		// Get selector from settings if not defined
-		if ( undefined === selector || null === selector ) {
-			selector = _settings.selectFieldSelector;
+		if ( undefined === fieldOrSelector || null === fieldOrSelector ) {
+			fieldOrSelector = _settings.selectFieldSelector;
 		}
 
-		// Bail if selector is not of type string
-		if ( 'string' !== typeof selector ) { return; }
+		// Bail if not an accepted field or selector is not of type string
+		// fieldOrSelector is a `select` Field
+		if ( 'string' !== typeof fieldOrSelector && ( 'object' !== typeof fieldOrSelector || ! fieldOrSelector.matches( 'select' ) ) ) { return; }
 
 		// Maybe get default settings
 		if ( undefined === settings || null === settings ) {
@@ -242,13 +257,17 @@
 		}
 
 		// Get fields to apply the enhanced select
-		var fields;
-		try {
-			fields = document.querySelectorAll( selector );
-		}
-		catch( error ) {
-			console.warn( 'Enhanced select: ' + error.message );
-			return;
+		var fields = [ fieldOrSelector ];
+
+		// Maybe get fields from selector
+		if ( 'string' === typeof fieldOrSelector ) {
+			try {
+				fields = document.querySelectorAll( fieldOrSelector );
+			}
+			catch( error ) {
+				console.warn( 'Enhanced select: ' + error.message );
+				return;
+			}
 		}
 
 		// Iterate fields and enhance them with TomSelect
@@ -318,9 +337,9 @@
 	 */
 	var handleClick = function( e ) {
 		// INPUT ELEMENT
-		if ( e.target.closest( _settings.controlElementSelector ) ) {
-			var formRow = e.target.closest( _settings.formRowSelector );
-			var field = formRow.querySelector( 'select' );
+		if ( e.target.closest( _settings.wrapperElementSelector ) ) {
+			var wrapper = e.target.closest( _settings.wrapperElementSelector );
+			var field = wrapper.parentNode.querySelector( 'select' );
 			maybeToggleDropdown( field );
 		}
 	}
