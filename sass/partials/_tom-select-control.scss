@@ -84,6 +84,7 @@
 	max-height: none !important;  // Needed to enforce styles for the select component
 	max-width: 100% !important;  // Needed to enforce styles for the select component
 	border: 0 none !important;  // Needed to enforce styles for the select component
+	border-radius: 0 !important;  // Needed to enforce styles for the select component
 	background: none !important;  // Needed to enforce styles for the select component
 	text-indent: 0 !important;  // Needed to enforce styles for the select component
 	line-height: calc( $form-field-height - ( $form-field-border-width * 2 ) - ( $ts-select-padding-y * 2 ) );

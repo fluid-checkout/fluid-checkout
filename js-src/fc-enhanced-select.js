@@ -23,7 +23,7 @@
 		formRowSelector:                       '.form-row.fc-select2-field',
 		selectFieldSelector:                   '.fc-select2-field select',
 		wrapperElementSelector:                '.ts-wrapper',
-		inputFieldSelector:                    '.fc-select2-field .ts-control > input',
+		inputFieldSelector:                    '.ts-control > input',
 
 		fieldSettings: {
 			create: false,
@@ -85,14 +85,21 @@
 	 * @returns  {Array|string}          The selected values as an array, or a single value if only one is selected.
 	 */
 	var getSelectValues = function( field ) {
+		// Bail if field is not valid
+		if ( ! field || ! field.options ) { return; }
+
+		// Initialize results array
 		var results = [];
-		var options = field && field.options;
+
+		// Get options
+		var options = field.options;
 		var currentOption;
 
 		// Iterate options and get selected values
 		for ( var i = 0; i < options.length; i++ ) {
 			currentOption = options[i];
 
+			// Add selected value to results
 			if ( currentOption.selected ) {
 				results.push( currentOption.value || currentOption.text );
 			}
@@ -100,7 +107,7 @@
 
 		// Maybe return single value
 		if ( results.length === 1 ) {
-			results = results[0];
+			results = results[ 0 ];
 		}
 
 		return results;
@@ -108,15 +115,11 @@
 
 	/**
 	 * Update the selected value of an enhanced select field.
-	 * 
-	 * @param  {Event}  event  The `change` event.
+	 *
 	 */
-	var updateSelectedValue = function( event ) {
-		// Get field reference and value
-		var field = event.target;
-
-		// Bail if field is not a TomSelect field
-		if ( ! field.tomselect ) { return; }
+	var updateSelectedValue = function( field ) {
+		// Bail if field is not valid
+		if ( ! field ) { return; }
 
 		// Get updated field value
 		var values = getSelectValues( field );
@@ -312,31 +315,49 @@
 	 * Handle captured `focus` event and route to the appropriate functions.
 	 */
 	var handleFocus = function( e ) {
-		// INPUT ELEMENT
+		// SEARCH INPUT FIELD
 		if ( e.target.closest( _settings.inputFieldSelector ) ) {
-			var formRow = e.target.closest( _settings.formRowSelector );
-			var field = formRow.querySelector( 'select' );
+			var wrapper = e.target.closest( _settings.wrapperElementSelector );
+			var field = wrapper.parentNode.querySelector( 'select' );
 			maybeOpenDropdown( field );
 		}
-	};
+	}
 
 	/**
 	 * Handle captured `blur` event and route to the appropriate functions.
 	 */
 	var handleBlur = function( e ) {
-		// INPUT ELEMENT
+		// SEARCH INPUT FIELD
 		if ( e.target.closest( _settings.inputFieldSelector ) ) {
-			var formRow = e.target.closest( _settings.formRowSelector );
-			var field = formRow.querySelector( 'select' );
+			console.log( e.target );
+			var wrapper = e.target.closest( _settings.wrapperElementSelector );
+			var field = wrapper.parentNode.querySelector( 'select' );
 			maybeCloseDropdown( field );
 		}
-	};
+	}
+
+	/**
+	 * Handle captured `change` event and route to the appropriate functions.
+	 */
+	var handleChange = function( e ) {
+		// SELECT FIELD
+		if ( e.target.closest( _settings.wrapperElementSelector ) ) {
+			var wrapper = e.target.closest( _settings.wrapperElementSelector );
+			var field = wrapper.parentNode.querySelector( 'select' );
+
+			// Only process if field is a TomSelect instance
+			if ( field.tomselect ) {
+				// Update selected value
+				updateSelectedValue( field );
+			}
+		}
+	}
 
 	/**
 	 * Handle captured `click` event and route to the appropriate functions.
 	 */
 	var handleClick = function( e ) {
-		// INPUT ELEMENT
+		// SELECT FIELD
 		if ( e.target.closest( _settings.wrapperElementSelector ) ) {
 			var wrapper = e.target.closest( _settings.wrapperElementSelector );
 			var field = wrapper.parentNode.querySelector( 'select' );
@@ -357,7 +378,7 @@
 
 		// Set event listener for enhanced select fields
 		document.addEventListener( 'click', handleClick, true );
-		document.addEventListener( 'change', updateSelectedValue, true );
+		document.addEventListener( 'change', handleChange, true );
 		document.addEventListener( 'focus', handleFocus, true );
 		document.addEventListener( 'blur', handleBlur, true );
 
