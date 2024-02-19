@@ -94,7 +94,6 @@ class FluidCheckout_Seur extends FluidCheckout {
 	 * @param   array  $settings  JS settings object of the plugin.
 	 */
 	public function add_js_settings( $settings ) {
-
 		// Add validation settings
 		$settings[ 'checkoutValidationSeur' ] = array(
 			'validationMessages'  => array(
@@ -155,12 +154,10 @@ class FluidCheckout_Seur extends FluidCheckout {
 	}
 
 
-
 	/**
-	 * Change the shipping method options markup to set the selected value
-	 * at the component initialization, rather than after adding the component to the DOM.
+	 * Get whether the shipping method is a local pickup method from this plugin.
 	 */
-	public function change_shipping_method_options_markup_set_selected_value( $markup, $method, $package_index, $chosen_method, $first ) {
+	public function is_shipping_method_local_pickup( $method ) {
 		// Get variables
 		$custom_name_seur_2shop = get_option( 'seur_2shop_custom_name_field' );
 		$custom_name_classic_2shop = get_option( 'seur_classic_int_2shop_custom_name_field' );
@@ -169,8 +166,23 @@ class FluidCheckout_Seur extends FluidCheckout {
 		if ( empty( $custom_name_seur_2shop ) ) { $custom_name_seur_2shop = 'SEUR 2SHOP'; }
 		if ( empty( $custom_name_classic_2shop ) ) { $custom_name_classic_2shop = 'SEUR CLASSIC 2SHOP'; }
 
-		// Bail if not SEUR shipping method
-		if ( ! ( $method->label === $custom_name_seur_2shop || $method->label === $custom_name_classic_2shop ) ) { return $markup; }
+		// Maybe set as local pickup shipping method
+		if ( $method->label === $custom_name_seur_2shop || $method->label === $custom_name_classic_2shop ) {
+			return true;
+		}
+
+		return false;
+	}
+
+
+
+	/**
+	 * Change the shipping method options markup to set the selected value
+	 * at the component initialization, rather than after adding the component to the DOM.
+	 */
+	public function change_shipping_method_options_markup_set_selected_value( $markup, $method, $package_index, $chosen_method, $first ) {
+		// Bail if not local pickup shipping method
+		if ( ! $this->is_shipping_method_local_pickup( $method ) ) { return $markup; }
 
 		// Get location id
 		$location_id = WC()->checkout->get_value( 'seur_pickup' );
@@ -208,16 +220,8 @@ class FluidCheckout_Seur extends FluidCheckout {
 			// Skip if no shipping method selected for the package
 			if ( empty( $method ) ) { continue; }
 
-			// Get variables
-			$custom_name_seur_2shop = get_option( 'seur_2shop_custom_name_field' );
-			$custom_name_classic_2shop = get_option( 'seur_classic_int_2shop_custom_name_field' );
-
-			// Get default values if custom names are not set
-			if ( empty( $custom_name_seur_2shop ) ) { $custom_name_seur_2shop = 'SEUR 2SHOP'; }
-			if ( empty( $custom_name_classic_2shop ) ) { $custom_name_classic_2shop = 'SEUR CLASSIC 2SHOP'; }
-
-			// Skip if not SEUR shipping method for the package
-			if ( ! ( $method->label === $custom_name_seur_2shop || $method->label === $custom_name_classic_2shop ) ) { continue; }
+			// Skip if not local pickup shipping method
+			if ( ! $this->is_shipping_method_local_pickup( $method ) ) { continue; }
 
 			// Get location id
 			$location_id = WC()->checkout->get_value( 'seur_pickup' );
