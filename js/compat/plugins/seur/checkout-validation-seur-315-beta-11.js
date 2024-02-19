@@ -46,8 +46,6 @@
 		// Bail if not the target field for this validation
 		if ( ! field.matches( _settings.typeFieldSelector ) ) { return false; }
 
-		console.log( field, formRow );
-
 		return true;
 	};
 
