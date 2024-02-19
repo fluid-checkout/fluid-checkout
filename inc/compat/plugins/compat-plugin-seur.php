@@ -293,14 +293,12 @@ class FluidCheckout_Seur extends FluidCheckout {
 		// Add terminal name as review text line
 		$review_text_lines[] = '<strong>' . __( 'Pickup point:', 'fluid-checkout' ) . '</strong>';
 
-		// Add location title
-		$review_text_lines[] = $selected_location[ 'company' ];
-
 		// Get address data
 		$address_data = array(
-			'address_1' => $selected_location[ 'address' ] . ' ' . $selected_location[ 'numvia' ],
-			'city' => $selected_location[ 'city' ],
-			'postcode' => $selected_location[ 'post_code' ],
+			'company'     => $selected_location[ 'company' ],
+			'address_1'   => $selected_location[ 'address' ] . ' ' . $selected_location[ 'numvia' ],
+			'city'        => $selected_location[ 'city' ],
+			'postcode'    => $selected_location[ 'post_code' ],
 		);
 
 		// Add formatted address
