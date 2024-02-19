@@ -41,6 +41,9 @@ class FluidCheckout_Seur extends FluidCheckout {
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
+
+		// Phone field
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_set_mobile_phone_field_type' ), 300 );
 	}
 
 	/**
@@ -305,6 +308,27 @@ class FluidCheckout_Seur extends FluidCheckout {
 		$review_text_lines[] = $formatted_address;
 
 		return $review_text_lines;
+	}
+
+
+
+	/**
+	 * Maybe set mobile phone field added by this plugin as type `tel`.
+	 * 
+	 * @param  array  $field_groups   The checkout field groups.
+	 */
+	public function maybe_set_mobile_phone_field_type( $field_groups ) {
+		// Maybe set billing mobile phone field as type `tel`
+		if ( array_key_exists( 'billing', $field_groups ) && array_key_exists( 'billing_mobile_phone', $field_groups[ 'billing' ] ) ) {
+			$field_groups[ 'billing' ][ 'billing_mobile_phone' ][ 'type' ] = 'tel';
+		}
+
+		// Maybe set shipping mobile phone field as type `tel`
+		if ( array_key_exists( 'shipping', $field_groups ) && array_key_exists( 'shipping_mobile_phone', $field_groups[ 'shipping' ] ) ) {
+			$field_groups[ 'shipping' ][ 'shipping_mobile_phone' ][ 'type' ] = 'tel';
+		}
+
+		return $field_groups;
 	}
 
 }
