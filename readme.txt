@@ -405,8 +405,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with plugin Germanized. Prevent Germanized from adding extra product thumbnails on the checkout page.
 * Improved: Refactor scroll and focus functions moving them to the FCUtils script, making it available to the entire application.
 * Improved: Add experiemental feature to replace `select2` fields with `TomSelect` enhanced select fields component. Fixes issues with quirky Select2 behaviors.
-* Fixed: Order pay page contents not being displayed in some cases.
 * Fixed: Compatibility with plugin Klarna Payments. Redirect after successful payment not working.
+* Fixed: Compatibility with plugin FluentCRM PRO. Remove duplicate checkbox in the order notes section, only show it in the contact section.
+* Fixed: Order pay page contents not being displayed in some cases.
 * Fixed: Keep `select2` field open after replacing section which contains it, and keep focus on `select2` fields after updating fragments or selecting a different country.
 * Fixed: Start checkout with "billing same as shipping" checked for registered customers when saved address data are the same for shipping and billing, and the option is enabled in the plugin settings.
 * Fixed: Issue with content wider than screen on mobile when using certain themes.
