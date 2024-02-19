@@ -116,7 +116,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 	 */
 	public function maybe_set_terminals_field_session_values( $posted_data ) {
 		$field_key = 'seur_pickup';
-		
+
 		// Bail if field value was not posted
 		if ( ! array_key_exists( $field_key, $posted_data ) ) { return $posted_data; }
 
