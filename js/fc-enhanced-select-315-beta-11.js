@@ -22,8 +22,8 @@
 		bodyClass:                             'has-fc-enhanced-select',
 		formRowSelector:                       '.form-row.fc-select2-field',
 		selectFieldSelector:                   '.fc-select2-field select',
-		controlElementSelector:                '.ts-control',
-		inputFieldSelector:                    '.fc-select2-field .ts-control > input',
+		wrapperElementSelector:                '.ts-wrapper',
+		inputFieldSelector:                    '.ts-control > input',
 
 		fieldSettings: {
 			create: false,
@@ -36,6 +36,23 @@
 
 
 
+	/**
+	 * SELECT2 SUPPORT
+	 */
+
+	/**
+	 * Enhance select fields with TomSelect when trying to use `select2` or `selectWoo` jQuery plugins.
+	 */
+	var initializeFromSelect2 = function() {
+		var fields = $( this );
+
+		// Iterate fields and enhance them with TomSelect
+		fields.each( function( i, field ) {
+			_publicMethods.enhanceFields( field );
+		} );
+
+		return this;
+	}
 
 	/**
 	 * Support for Select2 and SelectWoo jQuery plugins.
@@ -46,8 +63,8 @@
 		if ( ! _hasJQuery ) { return; }
 
 		// Replace `$.fn.select2` and `$.fn.selectWoo` with a dummy function
-		$.fn.select2 = function() { return this; };
-		$.fn.selectWoo = function() { return this; };
+		$.fn.select2 = initializeFromSelect2;
+		$.fn.selectWoo = initializeFromSelect2;
 	}
 	// Replace immediatelly.
 	replaceSelect2JQueryPlugins();
@@ -68,14 +85,21 @@
 	 * @returns  {Array|string}          The selected values as an array, or a single value if only one is selected.
 	 */
 	var getSelectValues = function( field ) {
+		// Bail if field is not valid
+		if ( ! field || ! field.options ) { return; }
+
+		// Initialize results array
 		var results = [];
-		var options = field && field.options;
+
+		// Get options
+		var options = field.options;
 		var currentOption;
 
 		// Iterate options and get selected values
 		for ( var i = 0; i < options.length; i++ ) {
 			currentOption = options[i];
 
+			// Add selected value to results
 			if ( currentOption.selected ) {
 				results.push( currentOption.value || currentOption.text );
 			}
@@ -83,7 +107,7 @@
 
 		// Maybe return single value
 		if ( results.length === 1 ) {
-			results = results[0];
+			results = results[ 0 ];
 		}
 
 		return results;
@@ -91,18 +115,11 @@
 
 	/**
 	 * Update the selected value of an enhanced select field.
-	 * 
-	 * @param  {Event}  event  The `change` event.
+	 *
 	 */
-	var updateSelectedValue = function( event ) {
-		// Get field reference and value
-		var field = event.target;
-
-		// Bail if field does not match enhanced select selector
-		if ( ! field.matches( _settings.selectFieldSelector ) ) { return; }
-
-		// Bail if field is not a TomSelect field
-		if ( ! field.tomselect ) { return; }
+	var updateSelectedValue = function( field ) {
+		// Bail if field is not valid
+		if ( ! field ) { return; }
 
 		// Get updated field value
 		var values = getSelectValues( field );
@@ -221,20 +238,21 @@
 	/** 
 	 * Enhance selecct fields with TomSelect.
 	 * 
-	 * @param  {string}  selector   (optional) Selector for the fields to enhance, will use default settings if not defined.
-	 * @param  {object}  settings   (optional) Settings for the enhanced select fields, will use default settings if not defined.
+	 * @param  {Element|string}  fieldOrSelector   (optional) Field or CSS selector for the fields to enhance, will use default settings if not defined.
+	 * @param  {object}          settings          (optional) Settings for the enhanced select fields, will use default settings if not defined.
 	 */
-	_publicMethods.enhanceFields = function( selector, settings ) {
+	_publicMethods.enhanceFields = function( fieldOrSelector, settings ) {
 		// Bail if TomSelect is not defined
 		if ( 'undefined' === typeof TomSelect ) { return; }
 
 		// Get selector from settings if not defined
-		if ( undefined === selector || null === selector ) {
-			selector = _settings.selectFieldSelector;
+		if ( undefined === fieldOrSelector || null === fieldOrSelector ) {
+			fieldOrSelector = _settings.selectFieldSelector;
 		}
 
-		// Bail if selector is not of type string
-		if ( 'string' !== typeof selector ) { return; }
+		// Bail if not an accepted field or selector is not of type string
+		// fieldOrSelector is a `select` Field
+		if ( 'string' !== typeof fieldOrSelector && ( 'object' !== typeof fieldOrSelector || ! fieldOrSelector.matches( 'select' ) ) ) { return; }
 
 		// Maybe get default settings
 		if ( undefined === settings || null === settings ) {
@@ -242,13 +260,17 @@
 		}
 
 		// Get fields to apply the enhanced select
-		var fields;
-		try {
-			fields = document.querySelectorAll( selector );
-		}
-		catch( error ) {
-			console.warn( 'Enhanced select: ' + error.message );
-			return;
+		var fields = [ fieldOrSelector ];
+
+		// Maybe get fields from selector
+		if ( 'string' === typeof fieldOrSelector ) {
+			try {
+				fields = document.querySelectorAll( fieldOrSelector );
+			}
+			catch( error ) {
+				console.warn( 'Enhanced select: ' + error.message );
+				return;
+			}
 		}
 
 		// Iterate fields and enhance them with TomSelect
@@ -293,34 +315,52 @@
 	 * Handle captured `focus` event and route to the appropriate functions.
 	 */
 	var handleFocus = function( e ) {
-		// INPUT ELEMENT
+		// SEARCH INPUT FIELD
 		if ( e.target.closest( _settings.inputFieldSelector ) ) {
-			var formRow = e.target.closest( _settings.formRowSelector );
-			var field = formRow.querySelector( 'select' );
+			var wrapper = e.target.closest( _settings.wrapperElementSelector );
+			var field = wrapper.parentNode.querySelector( 'select' );
 			maybeOpenDropdown( field );
 		}
-	};
+	}
 
 	/**
 	 * Handle captured `blur` event and route to the appropriate functions.
 	 */
 	var handleBlur = function( e ) {
-		// INPUT ELEMENT
+		// SEARCH INPUT FIELD
 		if ( e.target.closest( _settings.inputFieldSelector ) ) {
-			var formRow = e.target.closest( _settings.formRowSelector );
-			var field = formRow.querySelector( 'select' );
+			console.log( e.target );
+			var wrapper = e.target.closest( _settings.wrapperElementSelector );
+			var field = wrapper.parentNode.querySelector( 'select' );
 			maybeCloseDropdown( field );
 		}
-	};
+	}
+
+	/**
+	 * Handle captured `change` event and route to the appropriate functions.
+	 */
+	var handleChange = function( e ) {
+		// SELECT FIELD
+		if ( e.target.closest( _settings.wrapperElementSelector ) ) {
+			var wrapper = e.target.closest( _settings.wrapperElementSelector );
+			var field = wrapper.parentNode.querySelector( 'select' );
+
+			// Only process if field is a TomSelect instance
+			if ( field.tomselect ) {
+				// Update selected value
+				updateSelectedValue( field );
+			}
+		}
+	}
 
 	/**
 	 * Handle captured `click` event and route to the appropriate functions.
 	 */
 	var handleClick = function( e ) {
-		// INPUT ELEMENT
-		if ( e.target.closest( _settings.controlElementSelector ) ) {
-			var formRow = e.target.closest( _settings.formRowSelector );
-			var field = formRow.querySelector( 'select' );
+		// SELECT FIELD
+		if ( e.target.closest( _settings.wrapperElementSelector ) ) {
+			var wrapper = e.target.closest( _settings.wrapperElementSelector );
+			var field = wrapper.parentNode.querySelector( 'select' );
 			maybeToggleDropdown( field );
 		}
 	}
@@ -338,7 +378,7 @@
 
 		// Set event listener for enhanced select fields
 		document.addEventListener( 'click', handleClick, true );
-		document.addEventListener( 'change', updateSelectedValue, true );
+		document.addEventListener( 'change', handleChange, true );
 		document.addEventListener( 'focus', handleFocus, true );
 		document.addEventListener( 'blur', handleBlur, true );
 

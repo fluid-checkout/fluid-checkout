@@ -951,7 +951,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$is_registration_required = WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required();
 
 		// Get create account value
-		// $create_account_field_value = $this->get_checkout_field_value_from_session( 'createaccount' );
 		$create_account_field_value = $this->get_checkout_field_value_from_session_or_posted_data( 'createaccount' );
 
 		// Maybe get default checked state

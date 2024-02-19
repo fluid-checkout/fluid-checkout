@@ -400,6 +400,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Pressmart.
 * Added: Compatibility with theme BeTheme.
 * Added: Compatibility with plugin The Bluehost Plugin.
+* Added: Compatibility with plugin SEUR Oficial.
 * Added: Partial compatibility with plugin States, Cities, and Places for WooCommerce. Trigger select events when appropriate.
 * Improved: Compatibility with plugin Germanized. Prevent Germanized from adding extra product thumbnails on the checkout page.
 * Improved: Refactor scroll and focus functions moving them to the FCUtils script, making it available to the entire application.

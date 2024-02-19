@@ -75,6 +75,7 @@
   max-height: none !important;
   max-width: 100% !important;
   border: 0 none !important;
+  border-radius: 0 !important;
   background: none !important;
   text-indent: 0 !important;
   line-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2 - 20px);
