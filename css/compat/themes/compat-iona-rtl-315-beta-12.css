@@ -7,9 +7,9 @@ body.theme-iona .page_content_wrap .content_wrap {
 }
 @media (max-width: 749px) {
   body.theme-iona .page_content_wrap .content_wrap {
-    width: 100% !important;
     padding-left: 20px;
     padding-right: 20px;
+    width: 100% !important;
   }
 }
 

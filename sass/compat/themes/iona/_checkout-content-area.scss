@@ -6,8 +6,8 @@ body#{ $_body-theme-selector } .page_content_wrap .content_wrap {
 	box-sizing: border-box;
 
 	@media (#{$bp-smaller-than-tablet}) {
-		width: 100% !important; // Needed to override theme styles
 		padding-left: remsize( 2rem );
 		padding-right: remsize( 2rem );
+		width: 100% !important; // Needed to override theme styles
 	}
 }
