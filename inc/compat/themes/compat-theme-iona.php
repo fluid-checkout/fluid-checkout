@@ -27,6 +27,10 @@ class FluidCheckout_ThemeCompat_Iona extends FluidCheckout {
 
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+
+		// Site header sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 30 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 30 );
 	}
 
 
@@ -55,6 +59,22 @@ class FluidCheckout_ThemeCompat_Iona extends FluidCheckout {
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+
+
+	/**
+	 * Change the relative selector for sticky elements.
+	 *
+	 * @param   array  $attributes  The element HTML attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = 'header .sc_layouts_row_fixed_on';
+
+		return $attributes;
 	}
 
 }

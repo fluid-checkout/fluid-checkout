@@ -24,6 +24,8 @@ $_body-theme-selector:                 '.theme-iona' !default;
 // ------------------------------------
 @import
 	"checkout-content-area",
+	"checkout-columns",
+	"checkout-progress-bar",
 	"checkout-coupon-code",
 	"checkout-place-order",
 	"order-summary",
