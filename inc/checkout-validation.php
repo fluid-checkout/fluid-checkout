@@ -144,8 +144,6 @@ class FluidCheckout_Validation extends FluidCheckout {
 		wp_enqueue_script( 'fc-checkout-validation-brazilian-documents' );
 	}
 
-
-
 	/**
 	 * Maybe enqueue assets.
 	 */
