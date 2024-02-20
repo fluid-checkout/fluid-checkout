@@ -51,7 +51,6 @@ class FluidCheckout_ThemeCompat_Iona extends FluidCheckout {
 				'--fluidcheckout--button--secondary--border-color--hover' => $theme_hover_color,
 				'--fluidcheckout--button--secondary--background-color--hover' => $theme_hover_color,
 				'--fluidcheckout--button--secondary--text-color--hover' => $theme_hover_text_color,
-
 			),
 		);
 
