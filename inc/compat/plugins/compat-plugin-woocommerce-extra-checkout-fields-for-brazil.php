@@ -176,6 +176,9 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	 * @param   string  $text_domain  The text domain.
 	 */
 	public function change_mailcheck_options_text( $translated, $text, $text_domain ) {
+		// Bail if not on admin pages
+		if ( ! is_admin() ) { return $translated; }
+
 		// Bail if not the targetted text domain
 		if ( 'woocommerce-extra-checkout-fields-for-brazil' !== $text_domain ) { return $translated; }
 
