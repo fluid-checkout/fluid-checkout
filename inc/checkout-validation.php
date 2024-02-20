@@ -31,12 +31,13 @@ class FluidCheckout_Validation extends FluidCheckout {
 		// Enqueue assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_mailcheck_assets' ), 10 );
 
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Mailcheck validation
-		add_filter( 'fc_checkout_field_args' , array( $this, 'change_checkout_email_field_args' ), 10 );
+		add_filter( 'fc_checkout_field_args' , array( $this, 'maybe_enable_mailcheck_on_email_field_args' ), 10 );
 
 		// Add validation status classes to checkout fields
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_status_classes' ), 100, 3 );
@@ -61,12 +62,13 @@ class FluidCheckout_Validation extends FluidCheckout {
 		// Enqueue assets
 		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_mailcheck_assets' ), 10 );
 
 		// JS settings object
 		remove_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Mailcheck validation
-		remove_filter( 'fc_checkout_field_args' , array( $this, 'change_checkout_email_field_args' ), 10 );
+		remove_filter( 'fc_checkout_field_args' , array( $this, 'maybe_enable_mailcheck_on_email_field_args' ), 10 );
 
 		// Add validation status classes to checkout fields
 		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_status_classes' ), 100, 3 );
@@ -109,7 +111,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		wp_register_script( 'fc-mailcheck-init', self::$directory_url . 'js/mailcheck-init'. self::$asset_version . '.js', array( 'jquery', 'fc-utils', 'fc-mailcheck' ), NULL );
 		wp_add_inline_script( 'fc-mailcheck-init', 'window.addEventListener("load",function(){MailcheckInit.init(fcSettings.checkoutValidation.mailcheckSuggestions);})' );
 
-		// Add validation script
+		// Brazilian documents validation script
 		wp_register_script( 'fc-checkout-validation-brazilian-documents', self::$directory_url . 'js/checkout-validation-brazilian-documents'. self::$asset_version . '.js', array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
 		wp_add_inline_script( 'fc-checkout-validation-brazilian-documents', 'window.addEventListener("load",function(){CheckoutValidationBrazilianDocuments.init(fcSettings.checkoutValidationBrazilianDocuments);})' );
 	}
@@ -123,6 +125,13 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		// Scripts
 		wp_enqueue_script( 'fc-checkout-validation' );
+	}
+
+	/**
+	 * Enqueue scripts for Brazilian documents validation.
+	 */
+	public function enqueue_mailcheck_assets() {
+		// Scripts
 		wp_enqueue_script( 'fc-mailcheck' );
 		wp_enqueue_script( 'fc-mailcheck-init' );
 	}
@@ -143,6 +152,17 @@ class FluidCheckout_Validation extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		$this->enqueue_assets();
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_mailcheck_assets() {
+		// Bail if feature is not enabled
+		if ( ! $this->is_email_typo_suggestions_enabled() ) { return; }
+
+		// Enqueue Mailcheck assets
+		$this->enqueue_mailcheck_assets();
 	}
 
 
@@ -187,6 +207,15 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 
 	/**
+	 * Check whether the Mailcheck email typo suggestions feature is enabled.
+	 */
+	public function is_email_typo_suggestions_enabled() {
+		return true === apply_filters( 'fc_enable_checkout_email_mailcheck', true );
+	}
+
+
+
+	/**
 	 * Checks whether a phone number is valid.
 	 *
 	 * @param   string  $phone_number  The phone number to validate.
@@ -203,15 +232,28 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 *
 	 * @param   array  $field_args  Contains checkout field arguments.
 	 */
-	public function change_checkout_email_field_args( $field_args ) {
+	public function maybe_enable_mailcheck_on_email_field_args( $field_args ) {
+		// Bail if feature is not enabled
+		if ( ! $this->is_email_typo_suggestions_enabled() ) { return $field_args; }
+
+		// Define custom attributes to enable the Mailcheck feature on email fields
 		$email_field_custom_attributes = array( 'data-mailcheck' => 1 );
 
+		// Get list of email fields to apply the custom attributes
 		$checkout_email_fields = apply_filters( 'fc_checkout_email_fields_for_mailcheck', array( 'billing_email' ) );
+
+		// Apply custom attributes to each email field
 		foreach( $field_args as $field => $values ) {
-			if ( in_array( $field, $checkout_email_fields ) ) {
-				if ( ! array_key_exists( 'custom_attributes', $field_args[ $field ] ) ) { $field_args[ $field ][ 'custom_attributes' ] = array(); }
-				$field_args[ $field ][ 'custom_attributes' ] = array_merge( $field_args[ $field ][ 'custom_attributes' ] ?: array(), $email_field_custom_attributes );
+			// Bail if field is not an email field
+			if ( ! in_array( $field, $checkout_email_fields ) ) { continue; }
+
+			// Maybe create array of custom attributes for the field
+			if ( ! array_key_exists( 'custom_attributes', $field_args[ $field ] ) ) {
+				$field_args[ $field ][ 'custom_attributes' ] = array();
 			}
+
+			// Add custom attributes to the field
+			$field_args[ $field ][ 'custom_attributes' ] = array_merge( $field_args[ $field ][ 'custom_attributes' ] ?: array(), $email_field_custom_attributes );
 		}
 
 		return $field_args;
