@@ -403,6 +403,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin The Bluehost Plugin.
 * Added: Compatibility with plugin SEUR Oficial.
 * Added: Partial compatibility with plugin States, Cities, and Places for WooCommerce. Trigger select events when appropriate.
+* Added: Filter hook `fc_enable_checkout_email_mailcheck` allow developers to enable/disable the email field typo fix suggestions feature.
 * Improved: Compatibility with plugin Germanized. Prevent Germanized from adding extra product thumbnails on the checkout page.
 * Improved: Refactor scroll and focus functions moving them to the FCUtils script, making it available to the entire application.
 * Improved: Add experiemental feature to replace `select2` fields with `TomSelect` enhanced select fields component. Fixes issues with quirky Select2 behaviors.
