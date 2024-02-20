@@ -14,35 +14,3 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .woocommerce-terms
 	outline: $focus-outline-field;
 	outline-offset: $focus-outline-offset-field;
 }
-
-// Default color scheme
-body#{ $_body-theme-selector }.scheme_default .fc-wrapper .fc-place-order .fc-place-order-button {
-	&,
-	&:disabled,
-	&:disabled:hover {
-		background-color: #f4f4f2 !important; // Needed to override theme styles
-		color: #222222 !important; // Needed to override theme styles
-	}
-
-	&:hover,
-	&:focus {
-		background-color: #f8f8f8 !important; // Needed to override theme styles
-		color: #222222 !important; // Needed to override theme styles
-	}
-}
-
-// Dark color scheme
-body#{ $_body-theme-selector }.scheme_dark .fc-wrapper .fc-place-order .fc-place-order-button {
-	&,
-	&:disabled,
-	&:disabled:hover {
-		background-color: #222222 !important; // Needed to override theme styles
-		color: #ffffff !important; // Needed to override theme styles
-	}
-
-	&:hover,
-	&:focus {
-		background-color: #f8f8f8 !important; // Needed to override theme styles
-		color: #222222 !important; // Needed to override theme styles
-	}
-}
