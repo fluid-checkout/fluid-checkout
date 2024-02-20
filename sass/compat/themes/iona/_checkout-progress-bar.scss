@@ -1,0 +1,9 @@
+// ------------------------------------
+// CHECKOUT PROGRESS BAR
+// ------------------------------------
+
+// Sticky state
+body#{ $_body-theme-selector }.hide_fixed_rows .fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
+	top: $global-spacing-tiny !important; // Needed to override the offset from the sticky state
+	transition: top var( --trx-addons-fixed-rows-duration ) ease-in; // Needed to apply same animation as when hiding the sticky header on scroll
+}

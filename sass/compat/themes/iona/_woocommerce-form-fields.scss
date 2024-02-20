@@ -1,0 +1,16 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce input[type="radio"] + label:after {
+	z-index: z( 'above' );
+}
+
+body#{ $_body-theme-selector } div.woocommerce input[type="checkbox"] {
+	appearance: auto;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row input[type="checkbox"]:focus {
+	outline: $focus-outline-field !important; // Needed to override theme styles
+	outline-offset: $focus-outline-offset-field !important; // Needed to override theme styles
+}
