@@ -2,9 +2,9 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with plugin: PaysonCheckout for WooCommerce (by Krokedil).
+ * Compatibility with plugin: Nets Easy for WooCommerce (by Krokedil).
  */
-class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout {
+class FluidCheckout_DibsEasyForWooCommerce extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -19,30 +19,12 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Undo hooks
+		// // Undo hooks
 		add_action( 'wp', array( $this, 'maybe_undo_hooks_early' ), 5 ); // Before very late hooks
 		add_action( 'wp', array( $this, 'maybe_undo_hooks' ), 300 ); // After very late hooks
 
-		// Very late hooks
-		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
-
 		// Persisted data
 		add_filter( 'fc_checkout_update_before_unload', array( $this, 'disable_updated_before_unload' ), 10 );
-	}
-
-	/**
-	 * Add or remove very late hooks.
-	 */
-	public function very_late_hooks() {
-		// Bail if not at checkout page, and not an AJAX request to update checkout fragment
-		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
-
-		// Bail if this payment method is not currently selected
-		if ( 'paysoncheckout' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
-
-		// Switch payment method button
-		remove_action( 'pco_wc_before_snippet', 'pco_wc_show_another_gateway_button', 20 );
-		add_action( 'pco_wc_after_order_review', 'pco_wc_show_another_gateway_button', 20 );
 	}
 
 
@@ -51,7 +33,7 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 	 * Get classes to skip undo early hooks.
 	 */
 	public function get_skip_classes_undo_hooks_early_list() {
-		$skip_undo_hooks_classes = apply_filters( 'fc_compat_payson_checkout_skip_undo_hooks_early_classes', array( 'FluidCheckout_CheckoutWidgetAreas' ) );
+		$skip_undo_hooks_classes = apply_filters( 'fc_compat_dibs_easy_skip_undo_hooks_early_classes', array( 'FluidCheckout_CheckoutWidgetAreas' ) );
 		return $skip_undo_hooks_classes;
 	}
 
@@ -59,7 +41,7 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 	 * Get classes to skip undo hooks.
 	 */
 	public function get_skip_classes_undo_hooks_list() {
-		$skip_undo_hooks_classes = apply_filters( 'fc_compat_payson_checkout_skip_undo_hooks_classes', array() );
+		$skip_undo_hooks_classes = apply_filters( 'fc_compat_dibs_easy_skip_undo_hooks_classes', array() );
 		return $skip_undo_hooks_classes;
 	}
 
@@ -73,7 +55,7 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		// Bail if this payment method is not currently selected
-		if ( 'paysoncheckout' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
+		if ( 'dibs_easy' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 
 		// Undo hooks from feature classes
 		$features_list = FluidCheckout::instance()->get_features_list();
@@ -98,7 +80,7 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		// Bail if this payment method is not currently selected
-		if ( 'paysoncheckout' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
+		if ( 'dibs_easy' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 
 		// Undo enqueue hooks
 		if ( class_exists( 'FluidCheckout_Enqueue' ) ) {
@@ -131,4 +113,4 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 
 }
 
-FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce::instance();
+FluidCheckout_DibsEasyForWooCommerce::instance();
