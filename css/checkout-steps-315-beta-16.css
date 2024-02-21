@@ -258,6 +258,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
   float: none;
+  width: 100%;
   text-align: left;
 }
 

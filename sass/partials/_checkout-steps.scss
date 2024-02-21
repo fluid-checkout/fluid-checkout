@@ -108,6 +108,7 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 
 body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
 	float: none;
+	width: 100%;
 	text-align: $alignment-left;
 }
 
