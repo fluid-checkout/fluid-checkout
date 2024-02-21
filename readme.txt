@@ -396,6 +396,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 8.6.1
 * Added: Compatibility with theme Kosi.
 * Added: Compatibility with theme Pressmart.
 * Added: Compatibility with theme BeTheme.
