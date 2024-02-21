@@ -466,7 +466,6 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 
 
 
-
 .fc-checkout-order-review__head .fc-checkout-order-review__header-link {
 	position: relative;
 	#{ $alignment-right }: $order-summary-edit-cart-button-right;
@@ -483,7 +482,6 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	color: $order-summary-edit-cart-button-color;
 	background-color: $order-summary-edit-cart-button-background-color;
 	cursor: pointer;
-
 
 	&:focus {
 		outline: $focus-outline-link !important; // Needed to override theme styles

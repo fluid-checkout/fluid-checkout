@@ -12,7 +12,7 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-valida
 
 		z-index: z( 'above' );
 		position: absolute;
-		#{ $alignment-right }: $_checkout-validation-check-horizontal-spacing--select;
+		#{ $alignment-right }: $checkout-validation-check-horizontal-spacing--select;
 		top: remsize( 1rem );
 		border-radius: 100%;
 		color: $success-color;

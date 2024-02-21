@@ -1,0 +1,13 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector } .page_content_wrap .content_wrap {
+	box-sizing: border-box;
+
+	@media (#{$bp-smaller-than-tablet}) {
+		padding-#{ $alignment-left }: remsize( 2rem );
+		padding-#{ $alignment-right }: remsize( 2rem );
+		width: 100% !important; // Needed to override theme styles
+	}
+}

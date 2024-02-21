@@ -13,11 +13,25 @@
  * @see https://github.com/vendidero/woocommerce-germanized/wiki/Overriding-Germanized-Templates
  * @package Germanized/Templates
  * @version 2.4.3
- * @fc-version 2.4.0
+ * @fc-version 3.1.5
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+// CHANGE: Add dummy function for button elements class name to avoid fatal error on older versions of Germanized
+if ( ! function_exists( 'wc_gzd_wp_theme_get_element_class_name' ) ) {
+	function wc_gzd_wp_theme_get_element_class_name( $element = '' ) {
+		// Maybe use the function from WooCommerce
+		if ( function_exists( 'wc_wp_theme_get_element_class_name' ) ) {
+			return wc_wp_theme_get_element_class_name( $element );
+		}
+
+		// Otherwise return an empty space
+		return ' ';
+	}
+}
+
 ?>
 <div class="wc-gzd-order-submit">
 

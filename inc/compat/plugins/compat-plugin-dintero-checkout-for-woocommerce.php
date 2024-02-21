@@ -55,7 +55,7 @@ class FluidCheckout_DinteroCheckoutForWooCommerce extends FluidCheckout {
 		// Bail if not at checkout page, and not an AJAX request to update checkout fragment
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
-		// Bail if Dintero is not the selected payment method
+		// Bail if this payment method is not currently selected
 		$settings = get_option( 'woocommerce_dintero_checkout_settings' );
 		if ( ! is_array( $settings ) || 'embedded' !== $settings[ 'form_factor' ] || 'checkout' !== $settings[ 'checkout_type' ] || 'dintero_checkout' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 
@@ -79,7 +79,7 @@ class FluidCheckout_DinteroCheckoutForWooCommerce extends FluidCheckout {
 		// Bail if not at checkout page, and not an AJAX request to update checkout fragment
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
-		// Bail if Dintero is not the selected payment method
+		// Bail if this payment method is not currently selected
 		$settings = get_option( 'woocommerce_dintero_checkout_settings' );
 		if ( ! is_array( $settings ) || 'embedded' !== $settings[ 'form_factor' ] || 'express' !== $settings[ 'checkout_type' ] || 'dintero_checkout' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 
@@ -105,7 +105,7 @@ class FluidCheckout_DinteroCheckoutForWooCommerce extends FluidCheckout {
 		// Bail if not at checkout page, and not an AJAX request to update checkout fragment
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
-		// Bail if Dintero is not the selected payment method
+		// Bail if this payment method is not currently selected
 		$settings = get_option( 'woocommerce_dintero_checkout_settings' );
 		if ( ! is_array( $settings ) || 'embedded' !== $settings[ 'form_factor' ] || 'express' !== $settings[ 'checkout_type' ] || 'dintero_checkout' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 

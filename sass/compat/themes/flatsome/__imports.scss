@@ -13,7 +13,8 @@ $_body-theme-selector:                 '.theme-flatsome' !default;
 // ------------------------------------
 :root {
 	--fluidcheckout--field--height: #{ remsize( 3.891rem ) };
-	--fluidcheckout--field--border-radius: #{ remsize( .3rem ) };
+	--fluidcheckout--field--box-shadow: inset 0 1px 2px rgba( 0, 0, 0, .1 );
+	--fluidcheckout--field--box-shadow--focus: none;
 }
 :root body.fl-labels {
 	--fluidcheckout--field--height: #{ remsize( 4.669rem ) };

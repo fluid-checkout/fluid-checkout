@@ -168,6 +168,15 @@ class FluidCheckout_Admin extends FluidCheckout {
 	}
 
 	/**
+	 * Get HTML experimental features explanation.
+	 * 
+	 * @param  bool  $newline  Whether to add a new line before.
+	 */
+	public function get_experimental_feature_explanation_html( $newline = false ) {		
+		return ' ' . ( $newline ? '<br>' : '' ) . __( 'This is an experimental feature and may not work as expected with all themes and plugins. Use it with caution.', 'fluid-checkout' );
+	}
+
+	/**
 	 * Get HTML for documentation link to be used on settings descriptions.
 	 */
 	public function get_documentation_link_html( $url = 'https://fluidcheckout.com/docs/' ) {

@@ -37,7 +37,7 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 		// Bail if not at checkout page, and not an AJAX request to update checkout fragment
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
-		// Bail if Payson is not the selected payment method
+		// Bail if this payment method is not currently selected
 		if ( 'paysoncheckout' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 
 		// Switch payment method button
@@ -72,7 +72,7 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 		// Bail if not at checkout page, and not an AJAX request to update checkout fragment
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
-		// Bail if Payson is not the selected payment method
+		// Bail if this payment method is not currently selected
 		if ( 'paysoncheckout' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 
 		// Undo hooks from feature classes
@@ -97,7 +97,7 @@ class FluidCheckout_KrokedilPaysonCheckout20ForWooCommerce extends FluidCheckout
 		// Bail if not at checkout page, and not an AJAX request to update checkout fragment
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
-		// Bail if Payson is not the selected payment method
+		// Bail if this payment method is not currently selected
 		if ( 'paysoncheckout' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 
 		// Undo enqueue hooks

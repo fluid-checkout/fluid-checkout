@@ -1,0 +1,11 @@
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
+
+body#{ $_body-theme-selector } #order_review .woocommerce-checkout-review-order-table .order-total .amount {
+	font-size: $order-summary-font-size;
+}
+
+body#{ $_body-theme-selector } div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-item__price .amount {
+	font-weight: 400;
+}

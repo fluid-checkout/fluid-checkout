@@ -68,7 +68,7 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $settings; }
 
 		// Add settings
-		$settings[ 'checkoutSteps' ][ 'scrollOffsetSelector' ] = '.fusion-secondary-main-menu, .fusion-header';
+		$settings[ 'utils' ][ 'scrollOffsetSelector' ] = '.fusion-secondary-main-menu, .fusion-header';
 
 		return $settings;
 	}

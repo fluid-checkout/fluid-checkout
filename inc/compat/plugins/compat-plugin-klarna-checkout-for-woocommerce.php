@@ -54,7 +54,7 @@ class FluidCheckout_KlarnaCheckoutForWooCommerce extends FluidCheckout {
 		// Bail if not at checkout page, and not an AJAX request to update checkout fragment
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
-		// Bail if Klarna is not the selected payment method
+		// Bail if this payment method is not currently selected
 		if ( 'kco' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 
 		// Undo hooks from feature classes
@@ -79,7 +79,7 @@ class FluidCheckout_KlarnaCheckoutForWooCommerce extends FluidCheckout {
 		// Bail if not at checkout page, and not an AJAX request to update checkout fragment
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
-		// Bail if Klarna is not the selected payment method
+		// Bail if this payment method is not currently selected
 		if ( 'kco' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 
 		// Undo enqueue hooks

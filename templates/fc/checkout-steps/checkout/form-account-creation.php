@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 2.3.0
+ * @version 3.1.5
  * @wc-version 3.6.0
  * @wc-original checkout/form-billing.php
  */
@@ -20,7 +20,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // CHANGE: Determine create account checked state
-$create_account_checked = FluidCheckout_Steps::instance()->is_create_account_checked() || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) );
+$create_account_checked = FluidCheckout_Steps::instance()->is_create_account_checked();
 $collapsible_initial_state = $create_account_checked ? 'expanded' : 'collapsed';
 
 // CHANGE: Define "optional" label HTML

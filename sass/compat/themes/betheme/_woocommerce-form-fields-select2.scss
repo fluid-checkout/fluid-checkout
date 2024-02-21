@@ -1,0 +1,17 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .select2-container .select2-selection--single .select2-selection__rendered {
+	padding-#{ $alignment-left }: remsize( 1rem );
+	padding-#{ $alignment-right }: remsize( 1rem );
+}
+
+body#{ $_body-theme-selector } .select2-container .select2-selection {
+	&:focus,
+	&:focus .select2-selection__rendered {
+		background-color: var( --fluidcheckout--betheme--form-field--background-color--focus );
+		color: var( --fluidcheckout--betheme--form-field--text-color--focus );
+		border-color: var( --fluidcheckout--betheme--form-field--border-color--focus );
+	}
+}

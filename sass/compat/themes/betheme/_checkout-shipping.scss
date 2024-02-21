@@ -1,0 +1,31 @@
+// ------------------------------------
+// CHECKOUT SHIPPING STEP
+// ------------------------------------
+
+body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="search"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"] {
+		&:focus {
+			background-color: var( --fluidcheckout--betheme--form-field--background-color--focus ) !important; // Needed to override FC styles
+			color: var( --fluidcheckout--betheme--form-field--text-color--focus ) !important; // Needed to override FC styles
+			border-color: var( --fluidcheckout--betheme--form-field--border-color--focus ) !important; // Needed to override FC styles
+		}
+	}
+}
+
+body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] .select2-selection {
+	&:focus,
+	&:focus .select2-selection__rendered {
+		background-color: var( --fluidcheckout--betheme--form-field--background-color--focus ) !important; // Needed to override FC styles
+		color: var( --fluidcheckout--betheme--form-field--text-color--focus ) !important; // Needed to override FC styles
+		border-color: var( --fluidcheckout--betheme--form-field--border-color--focus ) !important; // Needed to override FC styles
+	}
+}

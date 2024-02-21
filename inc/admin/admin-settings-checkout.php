@@ -87,7 +87,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Design template', 'fluid-checkout' ),
-						'desc'              => __( 'General styles for the checkout steps, order summary and other sections. Might also apply to other pages such as the Cart, Order Received and View Order pages.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'              => __( 'General styles for the checkout steps, order summary and other sections. Might also apply to other pages such as the Cart, Order Received and View Order pages.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-design-templates/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_design_template',
 						'type'              => 'fc_template_selector',
 						'options'           => FluidCheckout_DesignTemplates::instance()->get_design_template_options(),
@@ -526,10 +526,11 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_company_field_visibility' ),
 						'autoload'          => false,
 					),
-						
+
 					array(
 						'title'             => __( 'Shipping phone', 'fluid-checkout' ),
 						'desc'              => __( 'Add shipping phone field to the checkout form.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Maybe be forced as "required" if the billing address section is displayed after the shipping address section, and the billing phone field is set as "required. This is needed to ensure the shipping address can be copied to the billing address when that option is checked.' ),
 						'id'                => 'fc_shipping_phone_field_visibility',
 						'type'              => 'select',
 						'options'           => array(
@@ -556,6 +557,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					array(
 						'title'             => __( 'Billing phone', 'fluid-checkout' ),
 						'desc'              => __( 'Add billing phone field to the checkout form.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Maybe be forced as "required" if the billing address section is displayed after the billing address section, and the billing phone field is set as "required. This is needed to ensure the billing address can be copied to the billing address when that option is checked.' ),
 						'id'                => 'woocommerce_checkout_phone_field',
 						'type'              => 'select',
 						'options'           => array(
@@ -612,7 +614,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'autoload'          => false,
 						'disabled'          => true,
 					),
-					
+
 					array(
 						'desc'              => __( 'Show an example of a valid phone number inside phone fields', 'fluid-checkout' ),
 						'id'                => 'fc_pro_international_phone_fields_placeholder',

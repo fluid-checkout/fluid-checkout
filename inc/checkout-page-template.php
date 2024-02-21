@@ -105,8 +105,13 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 */
 	public function output_checkout_shortcode_wrapper( $attributes ) {
 		// Bail if not on checkout page
-		if ( is_admin() || ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $attributes; }
+		if ( is_admin() || ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) {
+			return $attributes;
+			// Output the checkout shortcode contents without a wrapper
+			return WC_Shortcodes::shortcode_wrapper( array( 'WC_Shortcode_Checkout', 'output' ), $attributes );
+		}
 
+		// Output the checkout shortcode contents with a wrapper
 		return WC_Shortcodes::shortcode_wrapper( array( 'WC_Shortcode_Checkout', 'output' ), $attributes, $this->get_shortcode_wrapper_attributes() );
 	}
 

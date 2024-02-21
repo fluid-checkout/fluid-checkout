@@ -1,0 +1,7 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce input[type="checkbox"] {
+	margin-#{ $alignment-right }: 5px; // Needed to use `px` as units to match theme styles
+}

@@ -36,9 +36,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	public function get_default_option_values() {
 		$defaults = array(
-			// Settings checkout.
-			'fc_debug_mode'                                                 => 'no',
-			'fc_load_unminified_assets'                                     => 'no',
+			// Settings checkout.			
 			'fc_checkout_layout'                                            => 'multi-step',
 			'fc_design_template'                                            => 'classic',
 			'fc_enable_dark_mode_styles'                                    => 'no',
@@ -111,6 +109,11 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_order_details_order_notes_position'                     => 'inside_order_items',
 			'fc_pro_enable_order_received_widget_areas'                     => 'no',
 
+			// Settings tools.
+			'fc_debug_mode'                                                 => 'no',
+			'fc_load_unminified_assets'                                     => 'no',
+			'fc_use_enhanced_select_components'                             => 'no',
+
 			// Settings without options in the admin panel.
 			'fc_plugin_activation_time'                                     => null,
 			'fc_apply_checkout_field_args'                                  => 'yes',
@@ -118,6 +121,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'true',
 
 			// Compatibility settings for plugins.
+			'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' => 'yes',
+			'fc_integration_bluehost_plugin_custom_fields'                  => 'no',
 			'fc_integration_captcha_pro_captcha_position'                   => 'before_place_order_section',
 			'hezarfen_checkout_fields_auto_sort'                            => 'no',
 			'hezarfen_hide_checkout_postcode_fields'                        => 'no',
@@ -125,7 +130,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'gm_order_review_checkboxes_before_order_review'                => 'off',
 			'woocommerce_gzd_display_checkout_back_to_cart_button'          => 'no',
 			'woocommerce_gzd_display_checkout_table_color'                  => '#eeeeee',
-			'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' => 'yes',
 			'woocommerce_enable_guest_checkout'                             => 'yes',
 		
 			// Compatibility settings for themes.
@@ -136,6 +140,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_theme_zk_nito_add_extra_fields'                      => 'no',
 			'fc_compat_theme_woodmart_output_checkout_steps_section'        => 'no',
 			'fc_compat_theme_woodmart_disable_theme_checkout_options'       => 'yes',
+			'fc_compat_theme_pressmart_output_checkout_steps_section'       => 'no',
+			'fc_compat_theme_betheme_output_checkout_steps_section'         => 'no',
 
 			// Deprecated settings.
 			'fc_enable_checkout_place_order_sidebar'                        => 'no',

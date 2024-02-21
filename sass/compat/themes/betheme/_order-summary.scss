@@ -1,0 +1,11 @@
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
+
+body#{ $_body-theme-selector } #order_review .woocommerce-checkout-review-order-table .order-total .amount {
+	font-size: $order-summary-font-size;
+}
+
+body#{ $_body-theme-selector } .mfn-cart-step-2 .woocommerce #order_review {
+	max-width: 100%;
+}
