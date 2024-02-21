@@ -403,6 +403,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin The Bluehost Plugin.
 * Added: Compatibility with plugin SEUR Oficial.
 * Added: Compatibility with plugin Nets Easy for WooCommerce by Krokedil (a.k.a Dibs Payments).
+* Added: Compatibility with plugin Svea Checkout for WooCommerce by The Generation AB.
 * Added: Partial compatibility with plugin States, Cities, and Places for WooCommerce. Trigger select events when appropriate.
 * Added: Filter hook `fc_enable_checkout_email_mailcheck` allow developers to enable/disable the email field typo fix suggestions feature.
 * Improved: Compatibility with plugin Germanized. Prevent Germanized from adding extra product thumbnails on the checkout page.
