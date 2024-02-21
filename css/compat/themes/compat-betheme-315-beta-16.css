@@ -73,8 +73,7 @@ body.theme-betheme .select2-container .select2-selection--single .select2-select
   padding-right: 10px;
 }
 
-body.theme-betheme .select2-container .select2-selection:focus,
-body.theme-betheme .select2-container .select2-selection:focus .select2-selection__rendered {
+body.theme-betheme .select2-container .select2-selection:focus, body.theme-betheme .select2-container .select2-selection:focus .select2-selection__rendered {
   background-color: var(--fluidcheckout--betheme--form-field--background-color--focus);
   color: var(--fluidcheckout--betheme--form-field--text-color--focus);
   border-color: var(--fluidcheckout--betheme--form-field--border-color--focus);

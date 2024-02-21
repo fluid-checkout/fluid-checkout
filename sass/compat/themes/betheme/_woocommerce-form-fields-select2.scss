@@ -8,12 +8,10 @@ body#{ $_body-theme-selector } .select2-container .select2-selection--single .se
 }
 
 body#{ $_body-theme-selector } .select2-container .select2-selection {
-	&:focus {
-		&,
-		.select2-selection__rendered {
-			background-color: var( --fluidcheckout--betheme--form-field--background-color--focus );
-			color: var( --fluidcheckout--betheme--form-field--text-color--focus );
-			border-color: var( --fluidcheckout--betheme--form-field--border-color--focus );
-		}
+	&:focus,
+	&:focus .select2-selection__rendered {
+		background-color: var( --fluidcheckout--betheme--form-field--background-color--focus );
+		color: var( --fluidcheckout--betheme--form-field--text-color--focus );
+		border-color: var( --fluidcheckout--betheme--form-field--border-color--focus );
 	}
 }
