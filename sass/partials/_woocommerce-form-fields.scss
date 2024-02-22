@@ -39,7 +39,9 @@ div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form .form-row.form-row-last {
 	clear: $alignment-left;
 	float: none;
+	flex-grow: unset !important; // Needed to override theme styles
 	width: 100% !important; // Needed to override theme styles
+	min-width: auto !important; // Needed to override theme styles
 
 	@media (#{$bp-larger-than-phablet}) {
 		clear: none;

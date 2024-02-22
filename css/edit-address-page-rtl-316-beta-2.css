@@ -104,7 +104,9 @@ div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form .form-row.form-row-last {
   clear: right;
   float: none;
+  flex-grow: unset !important;
   width: 100% !important;
+  min-width: auto !important;
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,

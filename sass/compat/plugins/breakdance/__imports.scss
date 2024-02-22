@@ -2,8 +2,13 @@
 // DEFINE CSS VARIABLES
 // ------------------------------------
 :root {
-	// --fluidcheckout--field--height: #{ remsize( 3.5rem ) };
-	// --fluidcheckout--field--border-radius: #{ remsize( .4rem ) };
+	--fluidcheckout--field--height: #{ remsize( 4.84rem ) };
+	--fluidcheckout--field--border-radius: var(--bde-woo-forms__inputs-border-radius);
+	--fluidcheckout--field--border-color: var(--bde-form-input-border-color);
+	--fluidcheckout--field--background-color: var(--bde-woo-forms__inputs-background-color);
+	--fluidcheckout--field--background-color--accent: var(--bde-woo-buttons-and-links__text-link-color-hover);
+	--fluidcheckout--field--text-color--accent: var(--bde-woo-base-text-on-primary-color);
+	--fluidcheckout--field--text-color--focus: var(--bde-woo-base-text-on-primary-color);
 
 	// // Button design styles
 	--fluidcheckout--button--height: #{ remsize( 5rem ) };
@@ -24,12 +29,6 @@
 	--fluidcheckout--button--secondary--border-color--hover: var(--bde-button-secondary-border-color-hover);
 	--fluidcheckout--button--secondary--background-color--hover: var(--bde-button-secondary-background-color-hover);
 	--fluidcheckout--button--secondary--text-color--hover: var(--bde-button-secondary-text-color-hover);
-
-	// --fluidcheckout--field--border-color: '#ddd',
-	// --fluidcheckout--field--background-color: '#fff',
-	// --fluidcheckout--field--background-color--accent: $colors['primary-background-color'];
-	// --fluidcheckout--field--text-color--accent: $colors['primary-text-color'];
-	// --fluidcheckout--field--text-color--focus: $colors['primary-text-color'];
 }
 
 
@@ -41,4 +40,6 @@
 // ------------------------------------
 @import
 	"header",
+	"woocommerce-form-fields",
+	"woocommerce-form-fields-select2",
 	"checkout-place-order";
