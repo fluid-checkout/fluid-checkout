@@ -1,29 +1,3 @@
-:root {
-  --fluidcheckout--field--height: 48.4px;
-  --fluidcheckout--field--border-radius: var(--bde-woo-forms__inputs-border-radius);
-  --fluidcheckout--field--border-color: var(--bde-form-input-border-color);
-  --fluidcheckout--field--background-color: var(--bde-woo-forms__inputs-background-color);
-  --fluidcheckout--field--background-color--accent: var(--bde-woo-buttons-and-links__text-link-color-hover);
-  --fluidcheckout--field--text-color--accent: var(--bde-woo-base-text-on-primary-color);
-  --fluidcheckout--field--text-color--focus: var(--bde-woo-base-text-on-primary-color);
-  --fluidcheckout--button--height: 50px;
-  --fluidcheckout--button--border-radius: var(--bde-button-border-radius);
-  --fluidcheckout--button--font-size: var(--bde-button-font-size);
-  --fluidcheckout--button--font-weight: var(--bde-button-font-weight);
-  --fluidcheckout--button--primary--border-color: var(--bde-button-primary-border-color);
-  --fluidcheckout--button--primary--background-color: var(--bde-button-primary-background-color);
-  --fluidcheckout--button--primary--text-color: var(--bde-button-primary-text-color);
-  --fluidcheckout--button--primary--border-color--hover: var(--bde-button-primary-border-color-hover);
-  --fluidcheckout--button--primary--background-color--hover: var(--bde-button-primary-background-color-hover);
-  --fluidcheckout--button--primary--text-color--hover: var(--bde-button-primary-text-color-hover);
-  --fluidcheckout--button--secondary--border-color: var(--bde-button-secondary-border-color);
-  --fluidcheckout--button--secondary--background-color: var(--bde-button-secondary-background-color);
-  --fluidcheckout--button--secondary--text-color: var(--bde-button-secondary-text-color);
-  --fluidcheckout--button--secondary--border-color--hover: var(--bde-button-secondary-border-color-hover);
-  --fluidcheckout--button--secondary--background-color--hover: var(--bde-button-secondary-background-color-hover);
-  --fluidcheckout--button--secondary--text-color--hover: var(--bde-button-secondary-text-color-hover);
-}
-
 body.breakdance .bde-section.bde-header,
 body.breakdance .bde-section.bde-header--sticky {
   z-index: 300;
