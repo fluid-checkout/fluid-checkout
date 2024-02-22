@@ -2,6 +2,7 @@
 // DEFINE CSS VARIABLES
 // ------------------------------------
 :root {
+	// Form field styles
 	--fluidcheckout--field--height: #{ remsize( 4.84rem ) };
 	--fluidcheckout--field--border-radius: var(--bde-woo-forms__inputs-border-radius);
 	--fluidcheckout--field--border-color: var(--bde-form-input-border-color);
@@ -10,12 +11,13 @@
 	--fluidcheckout--field--text-color--accent: var(--bde-woo-base-text-on-primary-color);
 	--fluidcheckout--field--text-color--focus: var(--bde-woo-base-text-on-primary-color);
 
-	// // Button design styles
+	// Button design styles
 	--fluidcheckout--button--height: #{ remsize( 5rem ) };
 	--fluidcheckout--button--border-radius: var(--bde-button-border-radius);
 	--fluidcheckout--button--font-size: var(--bde-button-font-size);
 	--fluidcheckout--button--font-weight: var(--bde-button-font-weight);
 
+	// Button color styles - primary
 	--fluidcheckout--button--primary--border-color: var(--bde-button-primary-border-color);
 	--fluidcheckout--button--primary--background-color: var(--bde-button-primary-background-color);
 	--fluidcheckout--button--primary--text-color: var(--bde-button-primary-text-color);
@@ -23,6 +25,7 @@
 	--fluidcheckout--button--primary--background-color--hover: var(--bde-button-primary-background-color-hover);
 	--fluidcheckout--button--primary--text-color--hover: var(--bde-button-primary-text-color-hover);
 
+	// Button color styles - secondary
 	--fluidcheckout--button--secondary--border-color: var(--bde-button-secondary-border-color);
 	--fluidcheckout--button--secondary--background-color: var(--bde-button-secondary-background-color);
 	--fluidcheckout--button--secondary--text-color: var(--bde-button-secondary-text-color);
