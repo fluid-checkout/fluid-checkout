@@ -396,6 +396,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin Breakdance.
 * Fixed: Compatibility with theme Phlox. Checkout elements not clickable because of position for Phlox page background element.
 
 = 3.1.5 - 2024-02-21 =
