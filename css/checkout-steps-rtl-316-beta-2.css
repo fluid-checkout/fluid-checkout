@@ -1842,6 +1842,8 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review table.woocom
 body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot {
   display: table-row-group;
   border: none;
+  box-shadow: none;
+  background-color: transparent;
 }
 
 body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody::after {
