@@ -104,7 +104,7 @@ class FluidCheckout_Breakdance extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		$attributes['data-sticky-relative-to'] = '.bde-section.sticky-header.is-sticky';
+		$attributes['data-sticky-relative-to'] = '.bde-section.bde-header--sticky.is-sticky';
 
 		return $attributes;
 	}

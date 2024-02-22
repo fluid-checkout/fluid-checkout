@@ -17,6 +17,11 @@
   --fluidcheckout--button--secondary--text-color--hover: var(--bde-button-secondary-text-color-hover);
 }
 
+body.breakdance .bde-section.bde-header,
+body.breakdance .bde-section.bde-header--sticky {
+  z-index: 300;
+}
+
 body.breakdance .fc-wrapper .form-row.place-order {
   gap: 0;
 }
