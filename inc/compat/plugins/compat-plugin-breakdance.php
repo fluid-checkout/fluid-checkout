@@ -21,6 +21,10 @@ class FluidCheckout_Breakdance extends FluidCheckout {
 	public function hooks() {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
+		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
 	}
 
 	/**

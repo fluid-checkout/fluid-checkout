@@ -14,6 +14,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	border: 0;
 	border-radius: 0;
 	background-color: transparent;
+	box-shadow: none;
 }
 
 
@@ -209,6 +210,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
 	margin: 0;
 	padding: $global-spacing-small;
+	border: 0;
 	border-bottom: $option-box-border;
 	background-color: $lighter-grey;
 	border-radius: 0;

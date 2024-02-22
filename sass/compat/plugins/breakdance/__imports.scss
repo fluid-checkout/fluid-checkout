@@ -1,0 +1,50 @@
+// ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	// --fluidcheckout--field--height: #{ remsize( 3.5rem ) };
+	// --fluidcheckout--field--border-radius: #{ remsize( .4rem ) };
+
+	// // Button design styles
+	--fluidcheckout--button--height: #{ remsize( 5rem ) };
+	--fluidcheckout--button--border-radius: var(--bde-button-border-radius);
+	--fluidcheckout--button--font-size: var(--bde-button-font-size);
+	--fluidcheckout--button--font-weight: var(--bde-button-font-weight);
+
+	--fluidcheckout--button--primary--border-color: var(--bde-button-primary-border-color);
+	--fluidcheckout--button--primary--background-color: var(--bde-button-primary-background-color);
+	--fluidcheckout--button--primary--text-color: var(--bde-button-primary-text-color);
+	--fluidcheckout--button--primary--border-color--hover: var(--bde-button-primary-border-color-hover);
+	--fluidcheckout--button--primary--background-color--hover: var(--bde-button-primary-background-color-hover);
+	--fluidcheckout--button--primary--text-color--hover: var(--bde-button-primary-text-color-hover);
+
+	--fluidcheckout--button--secondary--border-color: var(--bde-button-secondary-border-color);
+	--fluidcheckout--button--secondary--background-color: var(--bde-button-secondary-background-color);
+	--fluidcheckout--button--secondary--text-color: var(--bde-button-secondary-text-color);
+	--fluidcheckout--button--secondary--border-color--hover: var(--bde-button-secondary-border-color-hover);
+	--fluidcheckout--button--secondary--background-color--hover: var(--bde-button-secondary-background-color-hover);
+	--fluidcheckout--button--secondary--text-color--hover: var(--bde-button-secondary-text-color-hover);
+
+	// --fluidcheckout--button--secondary--border-color: $colors['secondary-border-color'];
+	// --fluidcheckout--button--secondary--background-color: $colors['secondary-background-color'];
+	// --fluidcheckout--button--secondary--text-color: $colors['secondary-text-color'];
+	// --fluidcheckout--button--secondary--border-color--hover: $colors['secondary-border-color--hover'];
+	// --fluidcheckout--button--secondary--background-color--hover: $colors['secondary-background-color--hover'];
+	// --fluidcheckout--button--secondary--text-color--hover: $colors['secondary-text-color--hover'];
+
+	// --fluidcheckout--field--border-color: '#ddd',
+	// --fluidcheckout--field--background-color: '#fff',
+	// --fluidcheckout--field--background-color--accent: $colors['primary-background-color'];
+	// --fluidcheckout--field--text-color--accent: $colors['primary-text-color'];
+	// --fluidcheckout--field--text-color--focus: $colors['primary-text-color'];
+}
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"checkout-place-order";

@@ -46,6 +46,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   border: 0;
   border-radius: 0;
   background-color: transparent;
+  box-shadow: none;
 }
 
 body.woocommerce-add-payment-method div.woocommerce .fc-wrapper #payment ul.payment_methods,
@@ -245,6 +246,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
 #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
   margin: 0;
   padding: 20px;
+  border: 0;
   border-bottom: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
   border-radius: 0;
