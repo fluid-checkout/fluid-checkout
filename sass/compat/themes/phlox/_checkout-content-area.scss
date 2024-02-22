@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT CONTENT
+// ------------------------------------
+
+body#{ $_body-theme-selector }:before {
+	z-index: -1 !important; // Needed to override theme styles. This pseudo element is used to display a background image.
+}

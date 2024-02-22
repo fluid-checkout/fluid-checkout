@@ -3,6 +3,10 @@
   --fluidcheckout--validation-check--horizontal-spacing--password: 32px;
 }
 
+body.theme-phlox:before {
+  z-index: -1 !important;
+}
+
 body.theme-phlox .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
   line-height: 1.4;
 }

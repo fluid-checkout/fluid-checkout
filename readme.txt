@@ -394,6 +394,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Compatibility with theme Phlox. Checkout elements not clickable because of position for Phlox page background element.
+
 = 3.1.5 - 2024-02-21 =
 
 * Bump tested up to WooCommerce 8.6.1
