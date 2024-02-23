@@ -3,6 +3,7 @@
 // ------------------------------------
 
 %button-styles {
+	display: inline-block !important; // Needed to override theme styles
 	min-height: $button-height !important; // Needed to override theme styles
 	height: $button-height !important; // Needed to override theme styles
 	line-height: calc( #{ $button-height } - ( #{ $button-border-width } * 2 ) ) !important; // Needed to override theme styles
@@ -11,6 +12,7 @@
 	border-radius: $button-border-radius !important; // Needed to override theme styles
 	font-weight: $button-font-weight !important; // Needed to override theme styles
 	font-size: $button-font-size !important; // Needed to override theme styles
+	text-decoration: none !important; // Needed to override theme styles
 	box-shadow: $button-box-shadow !important; // Needed to override theme styles
 	cursor: pointer !important; // Needed to override theme styles
 	transition: all $global-animation-duration !important; // Needed to override theme styles

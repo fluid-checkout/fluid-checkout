@@ -329,7 +329,6 @@
 	var handleBlur = function( e ) {
 		// SEARCH INPUT FIELD
 		if ( e.target.closest( _settings.inputFieldSelector ) ) {
-			console.log( e.target );
 			var wrapper = e.target.closest( _settings.wrapperElementSelector );
 			var field = wrapper.parentNode.querySelector( 'select' );
 			maybeCloseDropdown( field );

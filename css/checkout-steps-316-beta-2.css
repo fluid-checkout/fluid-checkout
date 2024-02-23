@@ -1062,6 +1062,7 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   border: 0;
   border-radius: 0;
   background-color: transparent;
+  box-shadow: none;
 }
 
 body.woocommerce-checkout div.woocommerce .fc-wrapper #payment ul.payment_methods,
@@ -1261,6 +1262,7 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
   margin: 0;
   padding: 20px;
+  border: 0;
   border-bottom: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
   border-radius: 0;
@@ -1486,7 +1488,9 @@ div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form .form-row.form-row-last {
   clear: left;
   float: none;
+  flex-grow: unset !important;
   width: 100% !important;
+  min-width: auto !important;
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,
@@ -1842,6 +1846,8 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review table.woocom
 body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot {
   display: table-row-group;
   border: none;
+  box-shadow: none;
+  background-color: transparent;
 }
 
 body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody::after {

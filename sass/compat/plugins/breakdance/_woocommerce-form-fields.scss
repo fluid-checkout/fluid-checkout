@@ -1,0 +1,13 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+body.breakdance div.woocommerce form .form-row.form-row-first,
+body.breakdance div.woocommerce form .form-row.form-row-middle,
+body.breakdance div.woocommerce form #payment .form-row.form-row-first,
+body.breakdance div.woocommerce form #payment .form-row.form-row-middle {
+	@media (#{$bp-larger-than-phablet}) {
+		margin-#{ $alignment-left }: 0;
+		margin-#{ $alignment-right }: 0;
+	}
+}

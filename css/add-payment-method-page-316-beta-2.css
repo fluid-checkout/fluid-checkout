@@ -1,4 +1,5 @@
 body.has-fc-button-styles #add_payment_method #place_order {
+  display: inline-block !important;
   min-height: var(--fluidcheckout--button--height, 44px) !important;
   height: var(--fluidcheckout--button--height, 44px) !important;
   line-height: calc(var(--fluidcheckout--button--height, 44px) - var(--fluidcheckout--button--border-width, 1px) * 2) !important;
@@ -7,6 +8,7 @@ body.has-fc-button-styles #add_payment_method #place_order {
   border-radius: var(--fluidcheckout--button--border-radius, 0) !important;
   font-weight: var(--fluidcheckout--button--font-weight, normal) !important;
   font-size: var(--fluidcheckout--button--font-size, inherit) !important;
+  text-decoration: none !important;
   box-shadow: 0 3px var(--fluidcheckout--button--box-shadow-blur-radius, 8px) var(--fluidcheckout--button--box-shadow-color, transparent) !important;
   cursor: pointer !important;
   transition: all 0.3s !important;
@@ -46,6 +48,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   border: 0;
   border-radius: 0;
   background-color: transparent;
+  box-shadow: none;
 }
 
 body.woocommerce-add-payment-method div.woocommerce .fc-wrapper #payment ul.payment_methods,
@@ -245,6 +248,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
 #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box {
   margin: 0;
   padding: 20px;
+  border: 0;
   border-bottom: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
   border-radius: 0;
