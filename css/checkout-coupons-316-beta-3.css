@@ -1,5 +1,5 @@
 body.has-fc-button-styles .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
-  display: inline-block !important;
+  display: inline-block;
   min-height: var(--fluidcheckout--button--height, 44px) !important;
   height: var(--fluidcheckout--button--height, 44px) !important;
   line-height: calc(var(--fluidcheckout--button--height, 44px) - var(--fluidcheckout--button--border-width, 1px) * 2) !important;
