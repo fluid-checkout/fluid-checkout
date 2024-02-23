@@ -209,6 +209,9 @@
 	 * @param   HTMLElement  element  Element to block the UI and show the loading indicator.
 	 */
 	_publicMethods.blockUI = function( element ) {
+		// Bail if jQuery is not available
+		if ( ! _hasJQuery ) { return; }
+
 		// Bail if element is invalid
 		if ( ! element ) { return; }
 
@@ -229,6 +232,9 @@
 	 * @see  blockUI
 	 */
 	_publicMethods.unblockUI = function( element ) {
+		// Bail if jQuery is not available
+		if ( ! _hasJQuery ) { return; }
+
 		$( element ).removeClass( _settings.uiProcessingClass ).unblock();
 	}
 
