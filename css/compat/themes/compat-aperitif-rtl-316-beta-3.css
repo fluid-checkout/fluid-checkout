@@ -4,6 +4,16 @@
   --fluidcheckout--validation-check--horizontal-spacing--select-alt: 40px;
 }
 
+body.theme-aperitif div.woocommerce form .form-row textarea,
+body.theme-aperitif div.woocommerce form .form-row input[type=email],
+body.theme-aperitif div.woocommerce form .form-row input[type=number],
+body.theme-aperitif div.woocommerce form .form-row input[type=text],
+body.theme-aperitif div.woocommerce form .form-row input[type=tel],
+body.theme-aperitif div.woocommerce form .form-row input[type=url],
+body.theme-aperitif div.woocommerce form .form-row input[type=password] {
+  cursor: auto;
+}
+
 body.theme-aperitif div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   padding-right: 20px;
 }
