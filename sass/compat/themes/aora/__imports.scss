@@ -9,18 +9,6 @@ $_body-theme-selector:                 '.theme-aora' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 4.4rem ) };
-	--fluidcheckout--field--border-radius: #{ remsize( .3rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
