@@ -7,8 +7,8 @@
 @media (max-width: 749px) {
   body.theme-aperitif.woocommerce-checkout #qodef-page-inner.qodef-content-grid {
     width: 100%;
-    padding-right: 20px;
     padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
@@ -23,7 +23,7 @@ body.theme-aperitif div.woocommerce form .form-row input[type=password] {
 }
 
 body.theme-aperitif div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
-  padding-right: 20px;
+  padding-left: 20px;
 }
 
 body.theme-aperitif div.woocommerce form .form-row .select2-container .select2-selection__arrow:before {
