@@ -1,0 +1,16 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row {
+	textarea,
+	input {
+		background-image: none;
+	}
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row input[type="tel"] {
+	padding: 0.5rem 0.625rem; // Used rem directly to match unit used on theme styles
+	border: 1px solid $form-field-border-color; // Use `px` as units to match theme styles
+	border-radius: $form-field-border-radius;
+}

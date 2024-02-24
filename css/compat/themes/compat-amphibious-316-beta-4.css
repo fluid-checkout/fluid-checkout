@@ -1,6 +1,18 @@
 :root {
   --fluidcheckout--field--height: 38.3px;
+  --fluidcheckout--field--border-color: #ebebeb;
   --fluidcheckout--field--border-radius: 2px;
+}
+
+body.theme-amphibious div.woocommerce form .form-row textarea,
+body.theme-amphibious div.woocommerce form .form-row input {
+  background-image: none;
+}
+
+body.theme-amphibious div.woocommerce form .form-row input[type=tel] {
+  padding: 0.5rem 0.625rem;
+  border: 1px solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+  border-radius: var(--fluidcheckout--field--border-radius, 0);
 }
 
 body.theme-amphibious .select2-container .select2-selection--single {
