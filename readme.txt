@@ -398,6 +398,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Compatibility with plugin Breakdance.
 * Fixed: Compatibility with theme Phlox. Checkout elements not clickable because of position for Phlox page background element.
+* Fixed: Compatibility with plugin SEUR Oficial. Only show information about the selected pickup point when the shipping method selected is SEUR 2Shop (pickup point).
 * Fixed: JS error on checkout coupon code script when jQuery BlockUI is missing.
 * Fixed: Only load Mailcheck script on the checkout page. Fixed the error "fcSettings is not defined" on other pages.
 
