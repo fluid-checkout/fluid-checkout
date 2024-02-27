@@ -3,7 +3,7 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } .select2-container .select2-selection--single {
-	border-color: #ebebeb;
+	border-color: var( --fluidcheckout--field--border-color, #ebebeb );
 }
 
 body#{ $_body-theme-selector } .select2-container .select2-selection--single .select2-selection__rendered {
