@@ -3,7 +3,7 @@
 // ------------------------------------
 
 %button-styles {
-	display: inline-block !important; // Needed to override theme styles
+	display: inline-block;
 	min-height: $button-height !important; // Needed to override theme styles
 	height: $button-height !important; // Needed to override theme styles
 	line-height: calc( #{ $button-height } - ( #{ $button-border-width } * 2 ) ) !important; // Needed to override theme styles

@@ -158,6 +158,9 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 * Maybe enqueue assets.
 	 */
 	public function maybe_enqueue_mailcheck_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
 		// Bail if feature is not enabled
 		if ( ! $this->is_email_typo_suggestions_enabled() ) { return; }
 
