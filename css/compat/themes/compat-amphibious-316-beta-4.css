@@ -4,6 +4,10 @@
   --fluidcheckout--field--border-radius: 2px;
 }
 
+body.theme-amphibious .fc-wrapper .fc-coupon_code__collapsible input#coupon_code {
+  font-size: 16px;
+}
+
 body.theme-amphibious div.woocommerce form .form-row textarea,
 body.theme-amphibious div.woocommerce form .form-row input {
   background-image: none;
