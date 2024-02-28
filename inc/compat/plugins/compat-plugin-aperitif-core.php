@@ -21,6 +21,12 @@ class FluidCheckout_AperitifCore extends FluidCheckout {
 	public function hooks() {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
+		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 	}
 
 
@@ -38,6 +44,32 @@ class FluidCheckout_AperitifCore extends FluidCheckout {
 
 		// Re-add Woocommerce stylesheet
 		remove_filter( 'woocommerce_enqueue_styles', '__return_false' );
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Theme color values
+		$button_text_color = '#ffffff';
+		$button_background_color = '#c8693a';
+		$button_background_color_hover = '#d77647';
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				'--fluidcheckout--button--primary--background-color' => $button_background_color,
+				'--fluidcheckout--button--primary--text-color' => $button_text_color,
+				'--fluidcheckout--button--primary--background-color--hover' => $button_background_color_hover,
+				'--fluidcheckout--button--primary--text-color--hover' => $button_text_color,
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }
