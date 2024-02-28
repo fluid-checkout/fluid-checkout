@@ -35,9 +35,6 @@ class FluidCheckout_AperitifCore extends FluidCheckout {
 	 * Add or remove very late hooks.
 	 */
 	public function very_late_hooks() {
-		// Bail if not at checkout page, and not an AJAX request to update checkout fragment
-		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
-
 		// Remove container with ID `qodef-woo-page` added by the plugin
 		remove_action( 'woocommerce_before_checkout_form', 'aperitif_core_add_main_woo_page_holder', 5 );
 		remove_action( 'woocommerce_after_checkout_form', 'aperitif_core_add_main_woo_page_holder_end', 20 );
@@ -62,8 +59,10 @@ class FluidCheckout_AperitifCore extends FluidCheckout {
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				'--fluidcheckout--button--primary--border-color' => $button_background_color,
 				'--fluidcheckout--button--primary--background-color' => $button_background_color,
 				'--fluidcheckout--button--primary--text-color' => $button_text_color,
+				'--fluidcheckout--button--primary--border-color--hover' => $button_background_color_hover,
 				'--fluidcheckout--button--primary--background-color--hover' => $button_background_color_hover,
 				'--fluidcheckout--button--primary--text-color--hover' => $button_text_color,
 			),
