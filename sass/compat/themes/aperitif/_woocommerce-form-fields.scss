@@ -1,0 +1,15 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row {
+	textarea,
+	input[type="email"],
+	input[type="number"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"] {
+		cursor: auto;
+	}
+}
