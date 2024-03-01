@@ -203,6 +203,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
 		add_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10, 2 );
 		add_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
+		add_action( 'template_redirect', array( $this, 'maybe_update_checkout_address_from_account' ), 5 );
 	}
 
 	/**
@@ -444,6 +445,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
 		remove_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10, 2 );
 		remove_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
+		remove_action( 'template_redirect', array( $this, 'maybe_update_checkout_address_from_account' ), 5 );
 
 		// Re-hook removed WooCommerce functions
 		add_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
@@ -5624,6 +5626,53 @@ class FluidCheckout_Steps extends FluidCheckout {
 			if ( in_array( $field_key, $clear_field_keys_skip_list ) ) { continue; }
 			
 			WC()->session->__unset( self::SESSION_PREFIX . $field_key );
+		}
+	}
+
+
+
+	/**
+	 * Maybe update the address data on the checkout session from the edit address pages on account pages.
+	 */
+	public function maybe_update_checkout_address_from_account() {
+		global $wp;
+
+		// Security checks
+		$nonce_value = wc_get_var( $_REQUEST['woocommerce-edit-address-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
+		if ( ! wp_verify_nonce( $nonce_value, 'woocommerce-edit_address' ) ) { return; }
+		if ( empty( $_POST['action'] ) || 'edit_address' !== $_POST['action'] ) { return; }
+
+		wc_nocache_headers();
+
+		$address_type = isset( $wp->query_vars['edit-address'] ) ? wc_edit_address_i18n( sanitize_title( $wp->query_vars['edit-address'] ), true ) : 'billing';
+
+		if ( ! isset( $_POST[ $address_type . '_country' ] ) ) {
+			return;
+		}
+
+		$address = WC()->countries->get_address_fields( wc_clean( wp_unslash( $_POST[ $address_type . '_country' ] ) ), $address_type . '_' );
+
+		foreach ( $address as $key => $field ) {
+			// Maybe skip if the field has not being saved to session yet
+			if ( null === $this->get_checkout_field_value_from_session( $key ) ) { continue; }
+
+			// Set default field type
+			if ( ! isset( $field['type'] ) ) {
+				$field['type'] = 'text';
+			}
+
+			// Get Value.
+			if ( 'checkbox' === $field['type'] ) {
+				$value = (int) isset( $_POST[ $key ] );
+			} else {
+				$value = isset( $_POST[ $key ] ) ? wc_clean( wp_unslash( $_POST[ $key ] ) ) : '';
+			}
+
+			// Hook to allow modification of value.
+			$value = apply_filters( 'woocommerce_process_myaccount_field_' . $key, $value );
+
+			// Update checkout field value on session
+			$this->set_checkout_field_value_to_session( $key, $value );
 		}
 	}
 
