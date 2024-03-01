@@ -399,6 +399,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Aperitif.
 * Added: Compatibility with theme Amphibious.
 * Added: Compatibility with plugin Breakdance.
+* Improved: Update billing or shipping address data on checkout when changed on the customer account profile. Does not apply when using the Address Book add-on.
 * Fixed: Compatibility with theme Phlox. Checkout elements not clickable because of position for Phlox page background element.
 * Fixed: Compatibility with plugin SEUR Oficial. Only show information about the selected pickup point when the shipping method selected is SEUR 2Shop (pickup point).
 * Fixed: JS error on checkout coupon code script when jQuery BlockUI is missing.
