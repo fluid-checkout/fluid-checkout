@@ -571,11 +571,16 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		// Get Brazilian Market plugin settings
 		$settings = FluidCheckout_Settings::instance()->get_option( 'wcbcf_settings' );
 
+		// Maybe convert the class argument to an array
+		if ( is_string( $args[ 'class' ] ) ) {
+			$args[ 'class' ] = explode( ' ', $args[ 'class' ] );
+		}
+
 		// Maybe set CPF field as invalid
 		if ( 'billing_cpf' === $key && isset( $settings[ 'validate_cpf' ] ) ) {
 			$billing_cpf = WC()->checkout()->get_value( 'billing_cpf' );
 			if ( ! empty( $billing_cpf ) && ! Extra_Checkout_Fields_For_Brazil_Formatting::is_cpf( $billing_cpf ) ) {
-				$args[ 'class' ] = array_merge( $args[ 'class' ], array( 'woocommerce-invalid', 'woocommerce-invalid-cpf' ) );
+				$args[ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $args[ 'class' ], array( 'woocommerce-invalid', 'woocommerce-invalid-cpf' ) );
 			}
 		}
 
@@ -583,7 +588,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		if ( 'billing_cnpj' === $key && isset( $settings[ 'validate_cnpj' ] ) ) {
 			$billing_cnpj = WC()->checkout()->get_value( 'billing_cnpj' );
 			if ( ! empty( $billing_cnpj ) && ! Extra_Checkout_Fields_For_Brazil_Formatting::is_cnpj( $billing_cnpj ) ) {
-				$args[ 'class' ] = array_merge( $args[ 'class' ], array( 'woocommerce-invalid', 'woocommerce-invalid-cnpj' ) );
+				$args[ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $args[ 'class' ], array( 'woocommerce-invalid', 'woocommerce-invalid-cnpj' ) );
 			}
 		}
 

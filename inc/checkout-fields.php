@@ -307,6 +307,11 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		$field_classes = is_array( $field_classes ) ? $field_classes : array();
 		$new_classes = is_array( $new_classes ) ? $new_classes : array();
 
+		// Maybe convert the class argument to an array
+		if ( is_string( $field_classes ) ) {
+			$field_classes = explode( ' ', $field_classes );
+		}
+
 		// Maybe remove form-row-XX classes
 		$form_row_classes = array( 'form-row-first', 'form-row-last', 'form-row-wide', 'form-row-middle' );
 
@@ -392,11 +397,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @return  array           Modified checkout field args.
 	 */
 	public function add_field_type_class( $args, $key, $value ) {
-		// Initialize class argument if not existing yet
-		if ( ! array_key_exists( 'class', $args ) ) { $args[ 'class' ] = array(); }
-
 		// Add extra class
-		$args[ 'class' ] = array_merge( $args[ 'class' ], array( 'fc-' . $args[ 'type' ] . '-field' ) );
+		$args[ 'class' ] = $this->merge_form_field_class_args( $args[ 'class' ], array( 'fc-' . $args[ 'type' ] . '-field' ) );
 
 		return $args;
 	}
@@ -452,7 +454,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		}
 
 		// Add extra classes
-		$args[ 'class' ] = array_merge( $args[ 'class' ], $extra_classes );
+		$args[ 'class' ] = $this->merge_form_field_class_args( $args[ 'class' ], $extra_classes );
 
 		return $args;
 	}
