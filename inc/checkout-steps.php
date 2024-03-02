@@ -115,6 +115,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Account creation
 		add_action( 'fc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
 
+		// Formatted address
+		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10, 2 );
+
 		// Shipping
 		add_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), $this->get_shipping_address_hook_priority() );
@@ -352,6 +355,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Account creation
 		remove_action( 'fc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
+
+		// Formatted address
+		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10, 2 );
 
 		// Shipping
 		remove_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
@@ -1565,7 +1571,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add phone field replacement to formatted addresses.
 	 *
-	 * @param   array  $replacements  Default replacements.
+	 * @param   array  $replacements  Formatted address replacements.
 	 * @param   array  $address       Contains address fields.
 	 */
 	public function add_phone_formatted_address_replacements( $replacements, $args ) {
@@ -2677,6 +2683,39 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get list of custom field keys to be added to the formatted address replacements.
+	 * Field keys may include the field group prefixes, which will be removed before adding the replacements.
+	 */
+	public function get_formatted_address_replacements_custom_field_keys() {
+		return apply_filters( 'fc_formatted_address_replacements_custom_field_keys', array() );
+	}
+
+	/**
+	 * Add custom field replacements to formatted addresses.
+	 *
+	 * @param   array  $replacements  Formatted address replacements.
+	 * @param   array  $address       Contains address fields.
+	 */
+	public function add_custom_fields_formatted_address_replacements( $replacements, $args ) {
+		// Get custom field keys
+		$custom_field_keys = $this->get_formatted_address_replacements_custom_field_keys();
+
+		// Iterate custom field keys
+		foreach( $custom_field_keys as $field_key ) {
+			// Get field key removing the field group prefixes
+			$key = str_replace( 'shipping_', '', $field_key );
+			$key = str_replace( 'billing_', '', $key );
+
+			// Add replacement values
+			$replacements['{'.$key.'}'] = isset( $args[ $key ] ) ? $args[ $key ] : '';
+		}
+
+		return $replacements;
+	}
+
+
+
+	/**
 	 * Get the address substep review text for the address type.
 	 * 
 	 * @param   string  $address_type  The address type.
@@ -2745,8 +2784,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get contact step fields
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
 
+		// Get custom fields for address replacements
+		$custom_field_keys = $this->get_formatted_address_replacements_custom_field_keys();
+
+		// Maybe add address type to custom fields keys
+		foreach( $custom_field_keys as $index => $field_key ) {
+			// Skip if already has address type
+			if ( 0 === strpos( $field_key, 'shipping_' ) || 0 === strpos( $field_key, 'billing_' ) ) { continue; }
+
+			// Add address type to field key
+			$custom_field_keys[ $index ] = $address_type . '_' . $field_key;
+		}
+
 		// Define list of address fields to skip as the formatted address has already been added
-		$field_keys_skip_list = apply_filters( "fc_substep_text_{$address_type}_address_field_keys_skip_list", array_merge( $contact_field_ids, array(
+		$field_keys_skip_list = apply_filters( "fc_substep_text_{$address_type}_address_field_keys_skip_list", array_merge( $contact_field_ids, $custom_field_keys, array(
 			$address_type . '_first_name',
 			$address_type . '_last_name',
 			$address_type . '_company',
