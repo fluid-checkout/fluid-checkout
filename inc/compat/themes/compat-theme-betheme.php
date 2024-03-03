@@ -274,11 +274,15 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		// Get theme's colors
 		$field_background_color_focus = esc_attr( mfn_opts_get( 'background-form-focus', '#E9F5FC' ), $background_alpha );
 		$field_text_color_focus = esc_attr( mfn_opts_get( 'color-form-focus', '#0089F7' ) );
+		$field_border_color = esc_attr( mfn_opts_get( 'border-form', '#EBEBEB' ) );
 		$field_border_color_focus = esc_attr( mfn_opts_get( 'border-form-focus', '#D5E5EE' ) );
 
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				'--fluidcheckout--field--height'                                     => '45px',
+				'--fluidcheckout--field--box-shadow'                                 => 'inset 0 0 2px 2px rgba( 0, 0, 0, .02 )',
+				'--fluidcheckout--field--border-color'                               => $field_border_color,
 				'--fluidcheckout--field--background-color--focus'                    => $field_background_color_focus,
 				'--fluidcheckout--field--background-color--accent'                   => $field_text_color_focus,
 
