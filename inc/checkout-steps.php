@@ -2707,7 +2707,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$key = str_replace( 'billing_', '', $key );
 
 			// Add replacement values
-			$replacements['{'.$key.'}'] = isset( $args[ $key ] ) ? $args[ $key ] : '';
+			if ( isset( $args[ $field_key ] ) ) {
+				// With data from full field key
+				$replacements['{'.$key.'}'] = isset( $args[ $field_key ] ) ? $args[ $field_key ] : '';
+			}
+			else {
+				// With data from short field key
+				$replacements['{'.$key.'}'] = isset( $args[ $key ] ) ? $args[ $key ] : '';
+			}
 		}
 
 		return $replacements;
