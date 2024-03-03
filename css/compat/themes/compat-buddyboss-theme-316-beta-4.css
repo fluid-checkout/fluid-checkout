@@ -1,8 +1,3 @@
-:root {
-  --fluidcheckout--field--height: 41px;
-  --fluidcheckout--field--border-radius: var(--bb-input-radius);
-}
-
 body.theme-buddyboss-theme.woocommerce-checkout .select2-container .select2-dropdown {
   max-width: none;
   border: 1px solid var(--bb-content-border-color);

@@ -21,6 +21,9 @@ class FluidCheckout_ThemeCompat_BuddyBoss extends FluidCheckout {
 	public function hooks() {
 		// Dequeue
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_scripts' ), 100 );
+
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 
@@ -33,6 +36,26 @@ class FluidCheckout_ThemeCompat_BuddyBoss extends FluidCheckout {
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 		
 		wp_dequeue_script( 'buddyboss-theme-woocommerce-js' );
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '41px',
+				'--fluidcheckout--field--border-radius' => 'var(--bb-input-radius)',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }
