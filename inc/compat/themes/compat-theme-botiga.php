@@ -99,7 +99,16 @@ class FluidCheckout_ThemeCompat_Botiga extends FluidCheckout {
 
 		// Add CSS variables
 		$new_css_variables = array(
-			':root' => array(
+			':root body' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '52.88px',
+				'--fluidcheckout--field--border-radius' => '0',
+				'--fluidcheckout--field--border-color' => 'var(--bt-color-forms-borders, #212121)',
+
+				// Checkout validation styles
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '34px',
+
+				// Button color styles - primary
 				'--fluidcheckout--button--primary--border-color' => $button_primary_border_color,
 				'--fluidcheckout--button--primary--background-color' => $button_primary_background_color,
 				'--fluidcheckout--button--primary--text-color' => $button_primary_color,
