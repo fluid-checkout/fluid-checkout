@@ -280,6 +280,7 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				// Form field styles
 				'--fluidcheckout--field--height'                                     => '45px',
 				'--fluidcheckout--field--box-shadow'                                 => 'inset 0 0 2px 2px rgba( 0, 0, 0, .02 )',
 				'--fluidcheckout--field--border-color'                               => $field_border_color,
