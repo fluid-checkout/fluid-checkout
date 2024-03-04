@@ -19,23 +19,12 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Late hooks
-		add_action( 'init', array( $this, 'late_hooks' ), 100 );
-	}
-
-	/**
-	 * Add or remove late hooks.
-	 */
-	public function late_hooks() {
-		// Bail if fragments refresh is not enabled
-		if ( true !== apply_filters( 'fc_enable_fragments_refresh', false ) ) { return; }
-
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets_fragment_refresh' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_fragment_refresh' ), 10 );
 
 		// JS settings object
-		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+		add_filter( 'fc_js_settings', array( $this, 'maybe_add_js_settings' ), 10 );
 
 		// Fragments refresh
 		add_action( 'wc_ajax_fc_update_fragments', array( $this, 'update_fragments' ), 10 );
@@ -49,9 +38,10 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 	public function undo_hooks() {
 		// Register assets
 		remove_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_fragment_refresh' ), 10 );
 
 		// JS settings object
-		remove_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+		remove_filter( 'fc_js_settings', array( $this, 'maybe_add_js_settings' ), 10 );
 
 		// Fragments refresh
 		remove_action( 'wc_ajax_fc_update_fragments', array( $this, 'update_fragments' ), 10 );
@@ -64,8 +54,11 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 	 *
 	 * @param   array  $settings  JS settings object of the plugin.
 	 */
-	public function add_js_settings( $settings ) {
+	public function maybe_add_js_settings( $settings ) {
+		// Bail if fragments refresh is not enabled
+		if ( true !== apply_filters( 'fc_enable_fragments_refresh', false ) ) { return $settings; }
 
+		// Add settings for fragments refresh
 		$settings[ 'fragmentsRefresh' ] = apply_filters( 'fc_fragments_update_settings', array(
 			'updateFragmentsNonce' => wp_create_nonce( 'fc-fragments-refresh' ),
 		) );
@@ -95,7 +88,10 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 	/**
 	 * Enqueue assets for fragments refresh.
 	 */
-	public function enqueue_assets_fragment_refresh() {
+	public function maybe_enqueue_assets_fragment_refresh() {
+		// Bail if fragments refresh is not enabled
+		if ( true !== apply_filters( 'fc_enable_fragments_refresh', false ) ) { return; }
+
 		// Scripts
 		wp_enqueue_script( 'fc-fragments-update' );
 
@@ -120,8 +116,20 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 	 * AJAX Get update cart fragments.
 	 */
 	public function update_fragments() {
+		// Check security
 		check_ajax_referer( 'fc-fragments-refresh', 'security' );
 
+		// Return result if fragments refresh is not enabled
+		if ( true !== apply_filters( 'fc_enable_fragments_refresh', false ) ) {
+			wp_send_json(
+				array(
+					'result' => 'error',
+					'error'  => 'fragments_refresh_disabled',
+				)
+			);
+		}
+
+		// Otherwise, return fragments
 		wp_send_json(
 			array(
 				'result'    => 'success',
