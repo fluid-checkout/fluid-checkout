@@ -119,16 +119,6 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 		// Check security
 		check_ajax_referer( 'fc-fragments-refresh', 'security' );
 
-		// Return result if fragments refresh is not enabled
-		if ( true !== apply_filters( 'fc_enable_fragments_refresh', false ) ) {
-			wp_send_json(
-				array(
-					'result' => 'error',
-					'error'  => 'fragments_refresh_disabled',
-				)
-			);
-		}
-
 		// Otherwise, return fragments
 		wp_send_json(
 			array(
