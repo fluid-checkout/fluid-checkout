@@ -32,6 +32,7 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets_fragment_refresh' ), 10 );
 
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );

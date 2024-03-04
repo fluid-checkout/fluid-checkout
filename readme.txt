@@ -402,6 +402,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Filter hook `fc_formatted_address_replacements_custom_field_keys` to allow developers to set formatted address replacements for custom fields.
 * Improved: Compatibility with plugin Checkout Field Editor PRO by Themehigh. Add custom address fields from the plugin settings to formatted address replacements.
 * Improved: Update billing or shipping address data on checkout when changed on the customer account profile. Does not apply when using the Address Book add-on.
+* Improved: Enqueue fragments update assets on the page whenever that feature is enabled.
 * Fixed: Compatibility with theme Phlox. Checkout elements not clickable because of position for Phlox page background element.
 * Fixed: Compatibility with plugin SEUR Oficial. Only show information about the selected pickup point when the shipping method selected is SEUR 2Shop (pickup point).
 * Fixed: JS error on checkout coupon code script when jQuery BlockUI is missing.
