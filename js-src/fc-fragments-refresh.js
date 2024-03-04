@@ -101,6 +101,8 @@
 		}
 	}
 
+
+
 	/**
 	 * Maybe enhance select fields with TomSelect.
 	 */
@@ -111,9 +113,48 @@
 		FCEnhancedSelect.enhanceFields();
 	}
 
+	/**
+	 * Reinitialize collapsible blocks after checkout update.
+	 */
+	var maybeReinitializeCollapsibleBlocks = function() {
+		// Bail if collapsible blocks are not available
+		if ( ! window.CollapsibleBlock ) { return; }
+
+		requestAnimationFrame( function() {
+			// Get the current focused element
+			var currentFocusedElement = document.activeElement;
+
+			var collapsibleBlocks = document.querySelectorAll( '[data-collapsible]' );
+			for ( var i = 0; i < collapsibleBlocks.length; i++ ) {
+				var collapsibleBlock = collapsibleBlocks[i];
+
+				// Maybe initialize the collapsible block
+				if ( ! CollapsibleBlock.getInstance( collapsibleBlock ) ) {
+					CollapsibleBlock.initializeElement( collapsibleBlock );
+				}
+
+				//  Maybe expand section if it was previously expanded
+				if ( collapsibleBlock.contains( currentFocusedElement ) ) {
+					CollapsibleBlock.expand( collapsibleBlock, false, true );
+
+					// Get collapsible block for the toggle link of optional fields
+					var wrapper = currentFocusedElement.closest( '.fc-expansible-form-section' );
+					var toggleCollapsibleBlock = wrapper ? wrapper.querySelector( '.fc-expansible-form-section__toggle' ) : false;
+
+					// Maybe collapse the toggle section
+					if ( false !== toggleCollapsibleBlock ) {
+						CollapsibleBlock.collapse( toggleCollapsibleBlock, false );
+					}
+				}
+			}
+		} );
+	}
 
 
-	// CHANGE: Maybe add loading class to the form row
+
+	/*
+	 * Maybe add loading class to the form row.
+	 */
 	var maybeSetLoadingIndicator = function ( e ) {
 		if ( e.target && e.target.matches( _settings.loadingInputSelector ) ) {
 			var formRow = e.target.closest( _settings.formRowSelector );
@@ -121,9 +162,11 @@
 				formRow.classList.add( _settings.loadingClass );
 			}
 		}
-	};
+	}
 
-	// CHANGE: Add function to remove loading classes from elements after updating the checkout fragments
+	/**
+	 * Add function to remove loading classes from elements after updating the checkout fragments
+	 */
 	var maybeStopLoadingIndicators = function() {
 		var maybeLoadingFields = document.querySelectorAll( _settings.loadingInputSelector );
 		for ( var i = 0; i < maybeLoadingFields.length; i++ ) {
@@ -133,7 +176,7 @@
 				formRow.classList.remove( _settings.loadingClass );
 			}
 		}
-	};
+	}
 
 
 
@@ -163,25 +206,25 @@
 					return;
 				}
 
-				// CHANGE: Set variables for current focused element
+				// Set variables for current focused element
 				FCUtils.setCurrentFocusedElementGlobalVariables();
 
 				// Always update the fragments
 				if ( result && result.fragments ) {
 
 					$.each( result.fragments, function ( key, value ) {
-						// CHANGE: Declare local variables needed for some checks before replacing the fragment
+						// Declare local variables needed for some checks before replacing the fragment
 						var fragmentToReplace = document.querySelector( key );
 						var replaceFragment = true;
 
-						// CHANGE: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM
+						// Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM
 						if ( value && -1 !== value.toString().indexOf( 'fc-fragment-always-replace' ) ) {
 							replaceFragment = true;
 						}
 						
-						// CHANGE: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM
+						// Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM
 						if ( replaceFragment && ( ! _fragments || _fragments[ key ] !== value ) ) {
-							// CHANGE: Log replaced fragment to console if debug mode is enabled.
+							// Log replaced fragment to console if debug mode is enabled.
 							if ( fcSettings.debugMode ) {
 								console.log( 'Replacing fragment: ' + key );
 							}
@@ -192,7 +235,7 @@
 					_fragments = result.fragments;
 				}
 
-				// CHANGE: Re-set focus to the element with focus previously to updating fragments
+				// Re-set focus to the element with focus previously to updating fragments
 				FCUtils.maybeRefocusElement( window.fcCurrentFocusedElement, window.fcCurrentFocusedElementValue );
 
 				// Maybe remove loading class from form rows when completing the ajax request
@@ -204,6 +247,7 @@
 					FCUtils.scrollToElement( messagesWrapper );
 				}
 
+				// Triger fragments refreshed event
 				$( document.body ).trigger( 'fc_fragments_refreshed' );
 			}
 
@@ -253,7 +297,7 @@
 		if ( e.target.matches( _settings.updateFieldsSelector ) ) {
 			_debouncedUpdateFragments();
 		}
-	};
+	}
 
 	/**
 	 * Handle keypress event.
@@ -305,9 +349,10 @@
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
 			// Refresh triggers
-			$( document.body ).on( 'fc_fragment_refresh', _debouncedUpdateFragments );
+			$( document.body ).on( 'fc_fragments_refresh', _debouncedUpdateFragments );
 
 			// After fragments has been updated
+			$( document.body ).on( 'fc_fragments_refreshed', maybeReinitializeCollapsibleBlocks );
 			$( document.body ).on( 'fc_fragments_refreshed', maybeChangeSectionState );
 			$( document.body ).on( 'fc_fragments_refreshed', maybeEnhanceFields );
 		}
@@ -320,7 +365,7 @@
 		document.body.classList.add( _settings.bodyClass );
 
 		_hasInitialized = true;
-	};
+	}
 
 
 

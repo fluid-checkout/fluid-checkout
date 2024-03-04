@@ -408,6 +408,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: JS error on checkout coupon code script when jQuery BlockUI is missing.
 * Fixed: Only load Mailcheck script on the checkout page. Fixed the error "fcSettings is not defined" on other pages.
 * Fixed: Convert form field classes to array before trying to merge them to add custom classes.
+* Fixed: Keep optional field expanded when replacing fragments on some pages if the field has the focus and is cleared.
 
 = 3.1.5 - 2024-02-21 =
 
