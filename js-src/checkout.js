@@ -32,7 +32,7 @@ jQuery( function( $ ) {
 		usernameFieldSelector:                        '.fc-login-form__inner input[name="username"]',
 
 		loadingClass:                                 'fc-loading',
-		checkoutBlockUISelector:                      '.woocommerce-checkout-payment, .woocommerce-checkout-review-order-table .fc-shipping-method__packages',
+		checkoutBlockUISelector:                      '.woocommerce-checkout-payment, .fc-shipping-method__packages',
 
 		checkoutPlaceOrderApplyLoadingClass:          'yes',
 		checkoutUpdateBeforeUnload:                   'yes',
@@ -607,6 +607,9 @@ jQuery( function( $ ) {
 				}
 			});
 
+			// CHANGE: Set body class for processing checkout update
+			document.body.classList.add( 'fc-processing-update' );
+
 			wc_checkout_form.xhr = $.ajax({
 				type:		'POST',
 				url:		wc_checkout_params.wc_ajax_url.toString().replace( '%%endpoint%%', 'update_order_review' ),
@@ -702,6 +705,9 @@ jQuery( function( $ ) {
 
 					// CHANGE: Unblock remaining blocked fragments after updating.
 					$( _settings.checkoutBlockUISelector ).unblock();
+
+					// CHANGE: Unset body class for processing checkout update
+					document.body.classList.remove( 'fc-processing-update' );
 
 					// CHANGE: Re-set focus to the element with focus previously to updating fragments
 					FCUtils.maybeRefocusElement( window.fcCurrentFocusedElement, window.fcCurrentFocusedElementValue );
