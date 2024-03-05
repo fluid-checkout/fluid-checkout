@@ -150,6 +150,15 @@ jQuery( function( $ ) {
 				// Toggle state
 				if ( ! checkbox.checked ) {
 					CollapsibleBlock.expand( fieldsWrapper );
+
+					// Show section as loading
+					$( fieldsWrapper ).block({
+						message: null,
+						overlayCSS: {
+							background: '#fff',
+							opacity: 0.6
+						}
+					});
 				}
 				else {
 					CollapsibleBlock.collapse( fieldsWrapper );
@@ -167,6 +176,15 @@ jQuery( function( $ ) {
 				// Toggle state
 				if ( ! checkbox.checked ) {
 					CollapsibleBlock.expand( fieldsWrapper );
+
+					// Show section as loading
+					$( fieldsWrapper ).block({
+						message: null,
+						overlayCSS: {
+							background: '#fff',
+							opacity: 0.6
+						}
+					});
 				}
 				else {
 					CollapsibleBlock.collapse( fieldsWrapper );
