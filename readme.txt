@@ -399,6 +399,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Aperitif.
 * Added: Compatibility with theme Amphibious.
 * Added: Compatibility with plugin Breakdance.
+* Added: Compatibility with plugin MailChimp for WooCommerce.
 * Added: Filter hook `fc_formatted_address_replacements_custom_field_keys` to allow developers to set formatted address replacements for custom fields.
 * Improved: Show progress indication on the shipping methods and other sections when processing checkout updates.
 * Improved: Compatibility with plugin Checkout Field Editor PRO by Themehigh. Add custom address fields from the plugin settings to formatted address replacements.
