@@ -44,6 +44,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Theme and Plugin Compatibility
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_styles' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_plugin_compat_styles' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_edit_address_styles' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_plugin_compat_edit_address_styles' ), 10 );
 	}
 
 
@@ -354,7 +356,6 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 	/**
 	 * Enqueue themes compatibility styles.
-	 * @since 1.2.0
 	 */
 	public function enqueue_theme_compat_styles() {
 		// Bail if not on checkout, address edit or add payment method pages
@@ -385,11 +386,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		}
 	}
 
-
-
 	/**
 	 * Enqueue plugins compatibility styles.
-	 * @since 1.2.4
 	 */
 	public function enqueue_plugin_compat_styles() {
 		// Bail if not on checkout, address edit or add payment method pages
@@ -422,6 +420,80 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			// Maybe load plugin's compatibility file
 			if ( file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
 				wp_enqueue_style( 'fc-plugin-compat-'.$plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
+			}
+		}
+	}
+
+
+
+	/**
+	 * Enqueue themes compatibility styles for the address edit page.
+	 */
+	public function enqueue_theme_compat_edit_address_styles() {
+		// Bail if not on account address edit page
+		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'edit-address' ) ) { return; }
+
+		// Get currently active theme and child theme
+		$theme_slugs = array( get_template(), get_stylesheet() );
+
+		foreach ( $theme_slugs as $theme_slug ) {
+			// Maybe skip compat file
+			if ( apply_filters( 'fc_enable_compat_theme_edit_address_style_' . $theme_slug, true ) === false ) { continue; }
+
+			// Maybe load RTL file
+			$rtl_suffix = is_rtl() ? '-rtl' : '';
+
+			// Get current theme's compatibility style file name
+			$theme_compat_file_path = 'css/compat/themes/compat-edit-address-' . $theme_slug . $rtl_suffix . self::$asset_version . '.css';
+
+			// Revert to default compat style file if RTL file does not exist
+			if ( is_rtl() && ! file_exists( self::$directory_path . $theme_compat_file_path ) ) {
+				$theme_compat_file_path = 'css/compat/themes/compat-edit-address-' . $theme_slug . self::$asset_version . '.css';
+			}
+
+			// Maybe load theme's compatibility file
+			if ( file_exists( self::$directory_path . $theme_compat_file_path ) ) {
+				wp_enqueue_style( 'fc-theme-compat-edit-address-'.$theme_slug, self::$directory_url . $theme_compat_file_path, array(), null );
+			}
+		}
+	}
+
+
+
+	/**
+	 * Enqueue plugins compatibility styles for the address edit page.
+	 */
+	public function enqueue_plugin_compat_edit_address_styles() {
+		// Bail if not on account address edit page
+		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'edit-address' ) ) { return; }
+
+		// Get all plugins installed
+		$plugins_installed = get_plugins();
+
+		foreach ( $plugins_installed as $plugin_file => $plugin_meta ) {
+			// Skip plugins not activated
+			if ( ! is_plugin_active( $plugin_file ) ) { continue; }
+
+			// Get plugin slug
+			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
+
+			// Maybe skip compat file
+			if ( apply_filters( 'fc_enable_compat_plugin_edit_address_style_' . $plugin_slug, true ) === false ) { continue; }
+
+			// Maybe load RTL file
+			$rtl_suffix = is_rtl() ? '-rtl' : '';
+
+			// Get current plugin's compatibility style file name
+			$plugin_compat_file_path = 'css/compat/plugins/compat-edit-address-' . $plugin_slug . $rtl_suffix . self::$asset_version . '.css';
+
+			// Revert to default compat style file if RTL file does not exist
+			if ( is_rtl() && ! file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
+				$plugin_compat_file_path = 'css/compat/plugins/compat-edit-address-' . $plugin_slug . self::$asset_version . '.css';
+			}
+
+			// Maybe load plugin's compatibility file
+			if ( file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
+				wp_enqueue_style( 'fc-plugin-compat-edit-address-'.$plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
 			}
 		}
 	}

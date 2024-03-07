@@ -24,6 +24,7 @@ $_body-theme-selector:                 '.theme-phlox' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-content-area",
 	"checkout-payment-methods",
 	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2";

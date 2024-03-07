@@ -115,6 +115,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Account creation
 		add_action( 'fc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
 
+		// Formatted address
+		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10, 2 );
+
 		// Shipping
 		add_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), $this->get_shipping_address_hook_priority() );
@@ -203,6 +206,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
 		add_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10, 2 );
 		add_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
+		add_action( 'template_redirect', array( $this, 'maybe_update_checkout_address_from_account' ), 5 );
 	}
 
 	/**
@@ -352,6 +356,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Account creation
 		remove_action( 'fc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
 
+		// Formatted address
+		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10, 2 );
+
 		// Shipping
 		remove_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
 		remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), $this->get_shipping_address_hook_priority() );
@@ -444,6 +451,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
 		remove_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10, 2 );
 		remove_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
+		remove_action( 'template_redirect', array( $this, 'maybe_update_checkout_address_from_account' ), 5 );
 
 		// Re-hook removed WooCommerce functions
 		add_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
@@ -1563,7 +1571,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add phone field replacement to formatted addresses.
 	 *
-	 * @param   array  $replacements  Default replacements.
+	 * @param   array  $replacements  Formatted address replacements.
 	 * @param   array  $address       Contains address fields.
 	 */
 	public function add_phone_formatted_address_replacements( $replacements, $args ) {
@@ -2675,6 +2683,46 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get list of custom field keys to be added to the formatted address replacements.
+	 * Field keys may include the field group prefixes, which will be removed before adding the replacements.
+	 */
+	public function get_formatted_address_replacements_custom_field_keys() {
+		return apply_filters( 'fc_formatted_address_replacements_custom_field_keys', array() );
+	}
+
+	/**
+	 * Add custom field replacements to formatted addresses.
+	 *
+	 * @param   array  $replacements  Formatted address replacements.
+	 * @param   array  $address       Contains address fields.
+	 */
+	public function add_custom_fields_formatted_address_replacements( $replacements, $args ) {
+		// Get custom field keys
+		$custom_field_keys = $this->get_formatted_address_replacements_custom_field_keys();
+
+		// Iterate custom field keys
+		foreach( $custom_field_keys as $field_key ) {
+			// Get field key removing the field group prefixes
+			$key = str_replace( 'shipping_', '', $field_key );
+			$key = str_replace( 'billing_', '', $key );
+
+			// Add replacement values
+			if ( isset( $args[ $field_key ] ) ) {
+				// With data from full field key
+				$replacements['{'.$key.'}'] = isset( $args[ $field_key ] ) ? $args[ $field_key ] : '';
+			}
+			else {
+				// With data from short field key
+				$replacements['{'.$key.'}'] = isset( $args[ $key ] ) ? $args[ $key ] : '';
+			}
+		}
+
+		return $replacements;
+	}
+
+
+
+	/**
 	 * Get the address substep review text for the address type.
 	 * 
 	 * @param   string  $address_type  The address type.
@@ -2743,8 +2791,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get contact step fields
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
 
+		// Get custom fields for address replacements
+		$custom_field_keys = $this->get_formatted_address_replacements_custom_field_keys();
+
+		// Maybe add address type to custom fields keys
+		foreach( $custom_field_keys as $index => $field_key ) {
+			// Skip if already has address type
+			if ( 0 === strpos( $field_key, 'shipping_' ) || 0 === strpos( $field_key, 'billing_' ) ) { continue; }
+
+			// Add address type to field key
+			$custom_field_keys[ $index ] = $address_type . '_' . $field_key;
+		}
+
 		// Define list of address fields to skip as the formatted address has already been added
-		$field_keys_skip_list = apply_filters( "fc_substep_text_{$address_type}_address_field_keys_skip_list", array_merge( $contact_field_ids, array(
+		$field_keys_skip_list = apply_filters( "fc_substep_text_{$address_type}_address_field_keys_skip_list", array_merge( $contact_field_ids, $custom_field_keys, array(
 			$address_type . '_first_name',
 			$address_type . '_last_name',
 			$address_type . '_company',
@@ -5624,6 +5684,53 @@ class FluidCheckout_Steps extends FluidCheckout {
 			if ( in_array( $field_key, $clear_field_keys_skip_list ) ) { continue; }
 			
 			WC()->session->__unset( self::SESSION_PREFIX . $field_key );
+		}
+	}
+
+
+
+	/**
+	 * Maybe update the address data on the checkout session from the edit address pages on account pages.
+	 */
+	public function maybe_update_checkout_address_from_account() {
+		global $wp;
+
+		// Security checks
+		$nonce_value = wc_get_var( $_REQUEST['woocommerce-edit-address-nonce'], wc_get_var( $_REQUEST['_wpnonce'], '' ) ); // @codingStandardsIgnoreLine.
+		if ( ! wp_verify_nonce( $nonce_value, 'woocommerce-edit_address' ) ) { return; }
+		if ( empty( $_POST['action'] ) || 'edit_address' !== $_POST['action'] ) { return; }
+
+		wc_nocache_headers();
+
+		$address_type = isset( $wp->query_vars['edit-address'] ) ? wc_edit_address_i18n( sanitize_title( $wp->query_vars['edit-address'] ), true ) : 'billing';
+
+		if ( ! isset( $_POST[ $address_type . '_country' ] ) ) {
+			return;
+		}
+
+		$address = WC()->countries->get_address_fields( wc_clean( wp_unslash( $_POST[ $address_type . '_country' ] ) ), $address_type . '_' );
+
+		foreach ( $address as $key => $field ) {
+			// Maybe skip if the field has not being saved to session yet
+			if ( null === $this->get_checkout_field_value_from_session( $key ) ) { continue; }
+
+			// Set default field type
+			if ( ! isset( $field['type'] ) ) {
+				$field['type'] = 'text';
+			}
+
+			// Get Value.
+			if ( 'checkbox' === $field['type'] ) {
+				$value = (int) isset( $_POST[ $key ] );
+			} else {
+				$value = isset( $_POST[ $key ] ) ? wc_clean( wp_unslash( $_POST[ $key ] ) ) : '';
+			}
+
+			// Hook to allow modification of value.
+			$value = apply_filters( 'woocommerce_process_myaccount_field_' . $key, $value );
+
+			// Update checkout field value on session
+			$this->set_checkout_field_value_to_session( $key, $value );
 		}
 	}
 

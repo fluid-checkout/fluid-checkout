@@ -1,0 +1,8 @@
+// ------------------------------------
+// HEADER SECTION
+// ------------------------------------
+
+body.breakdance .bde-section.bde-header,
+body.breakdance .bde-section.bde-header--sticky {
+	z-index: z( 'sticky-element' );
+}

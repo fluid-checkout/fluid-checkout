@@ -1,0 +1,7 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body.breakdance div.woocommerce .form-row .select2-selection--single {
+	padding-#{ $alignment-left }: var(--bde-form-input-padding-#{ $alignment-left });
+}

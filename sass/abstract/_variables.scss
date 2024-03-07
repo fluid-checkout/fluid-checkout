@@ -253,6 +253,21 @@ $icons: (
 
 
 // ----------------------------------------
+// LOADERS
+
+$loader-icon-name:                          'i-loader-circle' !default;
+$loader-animation-name:                     loader-spin !default;
+$loader-animation-name--button:             loader-spin-centered !default;
+$loader-animation-speed:                    $global-animation-duration-slow !default;
+
+// END - LOADERS
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
 // BUTTONS
 
 $button-height:                             var( --fluidcheckout--button--height, remsize( 4.4rem ) ) !default;
@@ -657,6 +672,9 @@ $form-field-select2-inner-spacing:                    var( --fluidcheckout--sele
 $form-field-select2-inner-component-height:           var( --fluidcheckout--select2--inner-component-height, calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) ) ) !default;
 $form-field-select2-selection-height--single:         calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) ) !default;
 $form-field-select2-selection-height--multiple:       calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) - ( #{ $form-field-select2-inner-spacing } * 2 ) ) !default;
+
+$form-field-loader-icon-top:                          calc( ( #{ $form-field-height } / 2 ) - ( #{ $icon-size } / 2 ) ) !default;
+$form-field-loader-icon-horizontal-spacing:           remsize( .5rem ) !default;
 
 $checkout-message-error-icon:                         'i-alert-octagon' !default;
 $checkout-message-error-icon-size:                    $icon-size-small !default;
