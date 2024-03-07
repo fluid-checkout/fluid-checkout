@@ -397,6 +397,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @return  array           Modified checkout field args.
 	 */
 	public function add_field_type_class( $args, $key, $value ) {
+		// Initialize class argument if not existing yet
+		if ( ! array_key_exists( 'class', $args ) ) { $args[ 'class' ] = array(); }
+
 		// Add extra class
 		$args[ 'class' ] = $this->merge_form_field_class_args( $args[ 'class' ], array( 'fc-' . $args[ 'type' ] . '-field' ) );
 
