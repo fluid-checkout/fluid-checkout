@@ -394,6 +394,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing by Acowebs.
+* Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing PRO by Acowebs.
+
 = 3.1.6 - 2024-03-07 =
 
 * Added: Compatibility with theme Aperitif.
