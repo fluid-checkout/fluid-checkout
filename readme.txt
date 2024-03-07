@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.4.3
-Stable tag: 3.1.5
+Stable tag: 3.1.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -394,7 +394,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= 3.1.6 - 2024-03-07 =
 
 * Added: Compatibility with theme Aperitif.
 * Added: Compatibility with theme Amphibious.
