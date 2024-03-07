@@ -88,15 +88,22 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 	/**
 	 * Enqueue assets for fragments refresh.
 	 */
-	public function maybe_enqueue_assets_fragment_refresh() {
-		// Bail if fragments refresh is not enabled
-		if ( true !== apply_filters( 'fc_enable_fragments_refresh', false ) ) { return; }
-
+	public function enqueue_assets_fragment_refresh() {
 		// Scripts
 		wp_enqueue_script( 'fc-fragments-update' );
 
 		// Styles
 		wp_enqueue_style( 'fc-fragments-update' );
+	}
+
+	/**
+	 * Maybe enqueue assets for fragments refresh if enabled.
+	 */
+	public function maybe_enqueue_assets_fragment_refresh() {
+		// Bail if fragments refresh is not enabled
+		if ( true !== apply_filters( 'fc_enable_fragments_refresh', false ) ) { return; }
+
+		$this->enqueue_assets_fragment_refresh();
 	}
 
 	/**
