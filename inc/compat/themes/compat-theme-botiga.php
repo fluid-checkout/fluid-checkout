@@ -38,6 +38,9 @@ class FluidCheckout_ThemeCompat_Botiga extends FluidCheckout {
 		// Theme options
 		add_filter( 'theme_mod_shop_checkout_layout', array( $this, 'change_theme_option_shop_checkout_layout' ), 100 );
 		add_filter( 'theme_mod_checkout_distraction_free', array( $this, 'change_theme_option_checkout_distraction_free' ), 100 );
+
+		// Remove theme's function causing fatal error
+		remove_filter( 'woocommerce_loop_add_to_cart_link', 'botiga_filter_loop_add_to_cart', 10, 3 );
 	}
 
 	/**
