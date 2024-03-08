@@ -282,6 +282,7 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 			':root' => array(
 				// Form field styles
 				'--fluidcheckout--field--height'                                     => '45px',
+				'--fluidcheckout--field--padding-left'                               => '10px',
 				'--fluidcheckout--field--box-shadow'                                 => 'inset 0 0 2px 2px rgba( 0, 0, 0, .02 )',
 				'--fluidcheckout--field--border-color'                               => $field_border_color,
 				'--fluidcheckout--field--background-color--focus'                    => $field_background_color_focus,
