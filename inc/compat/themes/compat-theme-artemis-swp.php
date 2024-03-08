@@ -86,6 +86,7 @@ class FluidCheckout_ThemeCompat_ArtemisSWP extends FluidCheckout {
 			':root' => array(
 				// Form field styles
 				'--fluidcheckout--field--height' => '50px',
+				'--fluidcheckout--field--padding-left' => '10px',
 			),
 		);
 
