@@ -86,8 +86,10 @@ class FluidCheckout_ThemeCompat_Cartsy extends FluidCheckout {
 			':root' => array(
 				// Form field styles
 				'--fluidcheckout--field--height' => '44px',
+				'--fluidcheckout--field--padding-left' => '20px',
 				'--fluidcheckout--field--border-radius' => '6px',
 				'--fluidcheckout--field--border-color' => 'var(--colorTextMain, #212121)',
+				'--fluidcheckout--field--background-color--accent' => 'var(--colorPrimary, #212121)',
 			),
 		);
 
