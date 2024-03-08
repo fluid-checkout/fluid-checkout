@@ -23,7 +23,7 @@ class FluidCheckout_ExpressCheckoutPaypalPaymentGatewayForWoocommerce extends Fl
 			$this->class_object = eh_paypal_express_run();
 			$this->hooks_class_object = $this->class_object->hook_include;
 		}
-		
+
 		$this->hooks();
 	}
 
