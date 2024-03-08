@@ -56,11 +56,6 @@ class FluidCheckout_ExpressCheckoutPaypalPaymentGatewayForWoocommerce extends Fl
 			remove_action( 'woocommerce_review_order_after_payment', array( $this->hooks_class_object, 'eh_express_checkout_hook' ), 10 );
 			add_action( 'fc_place_order_custom_buttons', array( $this, 'maybe_output_payment_buttons' ), 10, 2 );
 		}
-		else {
-			// Express buttons
-			remove_action( 'woocommerce_before_checkout_form', array( $this->hooks_class_object, 'eh_express_checkout_hook' ), 10 );
-			add_action( 'woocommerce_before_checkout_form', array( $this->hooks_class_object, 'eh_express_checkout_hook' ), 110 );
-		}
 	}
 
 
