@@ -121,6 +121,7 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 				// Form field styles
 				'--fluidcheckout--field--height' => '50px',
 				'--fluidcheckout--field--border-radius' => '7px',
+				'--fluidcheckout--field--padding-left' => '15px',
 				'--fluidcheckout--validation-check--horizontal-spacing--select' => '40px',
 				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '50px',
 				'--fluidcheckout--field--background-color--accent' => 'var(--awb-color4)',
