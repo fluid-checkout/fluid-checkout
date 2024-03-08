@@ -135,6 +135,7 @@ class FluidCheckout_ThemeCompat_Divi extends FluidCheckout {
 			':root' => array(
 				// Form field styles
 				'--fluidcheckout--field--height' => '51px',
+				'--fluidcheckout--field--padding-left' => '16px',
 				'--fluidcheckout--field--border-radius' => '3px',
 				'--fluidcheckout--field--background-color--accent' => $theme_accent_color,
 			),
