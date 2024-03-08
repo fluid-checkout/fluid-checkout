@@ -54,6 +54,7 @@ class FluidCheckout_ThemeCompat_Astra extends FluidCheckout {
 			':root' => array(
 				// Form field styles
 				'--fluidcheckout--field--height' => '44.7px',
+				'--fluidcheckout--field--padding-left' => '11px',
 				'--fluidcheckout--field--background-color--accent' => 'var(--ast-global-color-1)',
 			),
 		);
