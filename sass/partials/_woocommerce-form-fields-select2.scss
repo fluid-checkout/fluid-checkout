@@ -52,6 +52,7 @@ div.woocommerce form .form-row .select2-selection--single {
 div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
 	padding-top: 0;
 	padding-bottom: 0;
+	padding-#{ $alignment-left }: $form-field-padding-left;
 	line-height: $form-field-select2-selection-height--single;
 }
 

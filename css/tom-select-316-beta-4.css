@@ -28,8 +28,10 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  padding: 0 10px;
+  padding-top: 0;
+  padding-bottom: 0;
   padding-right: 30px;
+  padding-left: var(--fluidcheckout--field--padding-left, 8px);
   width: 100%;
   height: var(--fluidcheckout--field--height, 45.625px);
   min-height: var(--fluidcheckout--field--height, 45.625px);
