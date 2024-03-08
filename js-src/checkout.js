@@ -97,7 +97,7 @@ jQuery( function( $ ) {
 			// CHANGE: Removed shipping to different address checkout `change` listener
 
 			// CHANGE: Update checkout totals to save data to session when user switches tabs, apps, goes to homescreen, etc.
-			document.addEventListener( 'visibilitychange', this.maybe_update_checkout_visibility_change );
+			document.addEventListener( 'visibilitychange', FCUtils.debounce( this.maybe_update_checkout_visibility_change, 50 ) );
 
 			// CHANGE: Maybe prevent leaving the page if there are unsaved changes, and trigger `update_checkout` to save the data.
 			if ( 'yes' === _settings.checkoutUpdateBeforeUnload ) {
@@ -220,6 +220,7 @@ jQuery( function( $ ) {
 		},
 		// CHANGE: Update checkout when page gets hidden or visible again
 		maybe_update_checkout_visibility_change: function() {
+			console.log( 'maybe_update_checkout_visibility_change' );
 			// Bail if update on visibility change is disabled
 			if ( 'yes' !== _settings.checkoutUpdateOnVisibilityChange ) { return; }
 

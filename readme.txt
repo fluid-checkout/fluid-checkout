@@ -399,6 +399,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing by Acowebs.
 * Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing PRO by Acowebs.
 * Added: Compatibility with plugin WebToffee PayPal Express Checkout Payment Gateway for WooCommerce.
+* Improved: Add delay before triggering update of the checkout fragments when the browser tab visibility changes.
 
 = 3.1.6 - 2024-03-07 =
 
