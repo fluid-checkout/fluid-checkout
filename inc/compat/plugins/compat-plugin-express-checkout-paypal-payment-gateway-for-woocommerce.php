@@ -50,10 +50,8 @@ class FluidCheckout_ExpressCheckoutPaypalPaymentGatewayForWoocommerce extends Fl
 		// Get plugin settings
 		$plugin_settings = get_option( 'woocommerce_eh_paypal_express_settings' );
 
-		// Payment buttons
-		remove_action( 'woocommerce_review_order_after_payment', array( $this->hooks_class_object, 'eh_express_checkout_hook' ), 10 );
+		// Smart payment buttons
 		if ( array_key_exists( 'smart_button_enabled', $plugin_settings ) && 'yes' === $plugin_settings[ 'smart_button_enabled' ] ) {
-			// Smart buttons
 			remove_action( 'woocommerce_review_order_after_payment', array( $this->hooks_class_object, 'eh_express_checkout_hook' ), 10 );
 			add_action( 'fc_place_order_custom_buttons', array( $this, 'maybe_output_payment_buttons' ), 10, 2 );
 		}
@@ -81,12 +79,14 @@ class FluidCheckout_ExpressCheckoutPaypalPaymentGatewayForWoocommerce extends Fl
 	 * @param   string   $step_id      The ID of the step currently being output.
 	 * @param   boolean  $is_sidebar   Whether outputting the sidebar.
 	 */
-	public function maybe_output_payment_buttons( $step_id, $is_sidebar ) {
+	public function maybe_output_payment_buttons( $step_id = 'payment', $is_sidebar = false ) {
 		// Bail if outputting the sidebar
 		if ( $is_sidebar && 'below_order_summary' !== FluidCheckout_Steps::instance()->get_place_order_position() ) { return; }
 
 		// Output the payment buttons
+		echo '<div class="fc-payment-buttons--webtoffee-paypal">';
 		$this->hooks_class_object->eh_express_checkout_hook();
+		echo '</div>';
 	}
 
 }
