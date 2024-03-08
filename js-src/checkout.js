@@ -220,7 +220,6 @@ jQuery( function( $ ) {
 		},
 		// CHANGE: Update checkout when page gets hidden or visible again
 		maybe_update_checkout_visibility_change: function() {
-			console.log( 'maybe_update_checkout_visibility_change' );
 			// Bail if update on visibility change is disabled
 			if ( 'yes' !== _settings.checkoutUpdateOnVisibilityChange ) { return; }
 
