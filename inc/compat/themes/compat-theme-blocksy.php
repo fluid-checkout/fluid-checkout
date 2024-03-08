@@ -36,6 +36,7 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 			':root' => array(
 				// Form field styles
 				'--fluidcheckout--field--height' => '40px',
+				'--fluidcheckout--field--padding-left' => '12px',
 				'--fluidcheckout--field--border-radius' => '3px',
 				'--fluidcheckout--field--background-color--accent' => 'var(--theme-palette-color-1)',
 
