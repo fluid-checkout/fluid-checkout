@@ -51,7 +51,9 @@ class FluidCheckout_ThemeCompat_BuddyBoss extends FluidCheckout {
 			':root' => array(
 				// Form field styles
 				'--fluidcheckout--field--height' => '41px',
+				'--fluidcheckout--field--padding-left' => '12px',
 				'--fluidcheckout--field--border-radius' => 'var(--bb-input-radius)',
+				'--fluidcheckout--field--background-color--accent' => 'var(--bb-primary-color)',
 			),
 		);
 
