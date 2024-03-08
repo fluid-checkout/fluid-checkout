@@ -1,0 +1,30 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-amphibious' !default;
+
+
+
+
+
+// ------------------------------------
+// DEFINE CSS VARIABLES
+// ------------------------------------
+:root {
+	--fluidcheckout--field--height: #{ remsize( 3.83rem ) };
+	--fluidcheckout--field--border-color: #{ #ebebeb };
+	--fluidcheckout--field--border-radius: #{ remsize( .2rem ) };
+}
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"checkout-coupon-code",
+	"woocommerce-form-fields",
+	"woocommerce-form-fields-select2";

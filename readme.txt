@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.4.3
-Stable tag: 3.1.5
+Stable tag: 3.1.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -396,9 +396,26 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing by Acowebs.
+* Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing PRO by Acowebs.
+
+= 3.1.6 - 2024-03-07 =
+
+* Added: Compatibility with theme Aperitif.
+* Added: Compatibility with theme Amphibious.
 * Added: Compatibility with plugin Breakdance.
+* Added: Compatibility with plugin MailChimp for WooCommerce.
+* Added: Filter hook `fc_formatted_address_replacements_custom_field_keys` to allow developers to set formatted address replacements for custom fields.
+* Improved: Show progress indication on the shipping methods and other sections when processing checkout updates.
+* Improved: Compatibility with plugin Checkout Field Editor PRO by Themehigh. Add custom address fields from the plugin settings to formatted address replacements.
+* Improved: Update billing or shipping address data on checkout when changed on the customer account profile. Does not apply when using the Address Book add-on.
+* Improved: Enqueue fragments update assets on the page whenever that feature is enabled.
 * Fixed: Compatibility with theme Phlox. Checkout elements not clickable because of position for Phlox page background element.
+* Fixed: Compatibility with plugin SEUR Oficial. Only show information about the selected pickup point when the shipping method selected is SEUR 2Shop (pickup point).
 * Fixed: JS error on checkout coupon code script when jQuery BlockUI is missing.
+* Fixed: Only load Mailcheck script on the checkout page. Fixed the error "fcSettings is not defined" on other pages.
+* Fixed: Convert form field classes to array before trying to merge them to add custom classes.
+* Fixed: Keep optional field expanded when replacing fragments on some pages if the field has the focus and is cleared.
 
 = 3.1.5 - 2024-02-21 =
 

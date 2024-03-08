@@ -124,6 +124,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' => 'yes',
 			'fc_integration_bluehost_plugin_custom_fields'                  => 'no',
 			'fc_integration_captcha_pro_captcha_position'                   => 'before_place_order_section',
+			'fc_integration_mailchimp_force_subscribe_checkbox_position'    => 'yes',
 			'hezarfen_checkout_fields_auto_sort'                            => 'no',
 			'hezarfen_hide_checkout_postcode_fields'                        => 'no',
 			'sg_enable_picker'                                              => 'enable',

@@ -334,6 +334,8 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$reference_id = sanitize_text_field( wp_unslash( $_REQUEST['reference_id'] ) );
 
 		if ( ! empty( $coupon_code ) ) {
+			// Add the coupon code to the cart,
+			// which triggers calculating the cart totals to ensure pricing is correct.
 			WC()->cart->add_discount( wc_format_coupon_code( $coupon_code ) );
 
 			// Intercept notices to avoid them being displayed on other pages
