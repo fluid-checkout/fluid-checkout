@@ -21,3 +21,9 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection__arrow {
 	#{ $alignment-right }: remsize( 1rem );
 }
+
+
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row input[type="email"] {
+	padding-left: $form-field-padding-left;
+}
