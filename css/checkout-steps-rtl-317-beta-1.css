@@ -779,7 +779,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=url],
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=password],
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection,
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection .select2-selection__rendered {
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection .select2-selection__rendered,
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .ts-control {
   background-color: var(--fluidcheckout--color--white, #fff) !important;
   color: inherit !important;
 }
