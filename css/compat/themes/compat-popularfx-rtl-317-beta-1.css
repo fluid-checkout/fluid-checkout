@@ -1,0 +1,17 @@
+:root {
+  --fluidcheckout--field--height: 40px;
+  --fluidcheckout--field--border-radius: 3px;
+  --fluidcheckout--validation-check--horizontal-spacing--password: 32px;
+}
+
+body.theme-popularfx .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+  padding-right: 10px;
+}
+
+body.theme-popularfx div.woocommerce form .form-row .select2-selection--single {
+  padding: 0;
+}
+
+body.theme-popularfx div.woocommerce form .form-row .select2-selection .select2-selection__clear {
+  left: 5px;
+}

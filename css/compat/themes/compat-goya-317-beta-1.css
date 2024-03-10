@@ -1,0 +1,45 @@
+body.theme-goya.checkout-distraction-free.woocommerce-checkout .header-contents .header-center-items,
+body.theme-goya.checkout-distraction-free.woocommerce-checkout .header-contents .header-right-items {
+  display: none !important;
+}
+
+body.theme-goya.checkout-distraction-free.woocommerce-checkout .header-contents .header-left-items .logo-holder {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+body.theme-goya div.woocommerce form .form-row .woocommerce-input-wrapper {
+  position: static;
+}
+
+body.theme-goya div.woocommerce .fc-wrapper .fc-coupon-code-section .form-row .woocommerce-input-wrapper {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: auto !important;
+}
+
+body.theme-goya div.woocommerce .fc-wrapper .fc-coupon-code-section .form-row .woocommerce-input-wrapper label {
+  z-index: 10 !important;
+  position: absolute !important;
+  top: -10px !important;
+  left: 10px !important;
+  padding: 0 5px !important;
+  font-size: 0.95em !important;
+}
+
+body.theme-goya div.woocommerce .fc-wrapper .fc-coupon-code-section .form-row .woocommerce-input-wrapper label:after {
+  content: "";
+  background: var(--fluidcheckout--color--white, #fff);
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  z-index: -1;
+}
+
+body.theme-goya div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-left: 0.75rem;
+}
