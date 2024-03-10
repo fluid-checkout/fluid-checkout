@@ -109,10 +109,19 @@ class FluidCheckout_ThemeCompat_Goya extends FluidCheckout {
 		$primary_background_color = get_theme_mod( 'primary_buttons', '#282828' );
 		$primary_text_color = get_theme_mod( 'primary_buttons_text_color', '#fff' );
 		$secondary_background_color = get_theme_mod( 'second_buttons', '#282828' );
+		$accent_color = get_theme_mod( 'accent_color', '#b9a16b' );
 
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '54px',
+				'--fluidcheckout--field--padding-left' => '12px',
+				'--fluidcheckout--field--border-color' => '#ddd',
+				'--fluidcheckout--field--border-width' => '2px',
+				'--fluidcheckout--field--background-color--accent' => $accent_color,
+
+				// Primary button colors
 				'--fluidcheckout--button--primary--border-color' => $primary_background_color,
 				'--fluidcheckout--button--primary--background-color' => $primary_background_color,
 				'--fluidcheckout--button--primary--text-color' => $primary_text_color,
@@ -120,6 +129,7 @@ class FluidCheckout_ThemeCompat_Goya extends FluidCheckout {
 				'--fluidcheckout--button--primary--background-color--hover' => $primary_background_color,
 				'--fluidcheckout--button--primary--text-color--hover' => $primary_text_color,
 
+				// Secondary button color
 				'--fluidcheckout--button--secondary--border-color' => 'currentColor',
 				'--fluidcheckout--button--secondary--background-color' => 'transparent',
 				'--fluidcheckout--button--secondary--text-color' => 'currentColor',
