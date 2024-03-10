@@ -34,12 +34,18 @@ class FluidCheckout_ThemeCompat_GeneratePress extends FluidCheckout {
 		// Get theme settings
 		$theme_settings = get_option( 'generate_settings', array() );
 
-		// Default color
+		// Default colors
 		$border_color = '#ccc';
+		$background_color = '#fafafa';
 
-		// Fetch color from theme settings if exists
+		// Fetch border color from theme settings if exists
 		if ( ! empty( $theme_settings['form_border_color'] ) ) {
 			$border_color = $theme_settings['form_border_color'];
+		}
+
+		// Fetch background color from theme settings if exists
+		if ( ! empty( $theme_settings['form_background_color'] ) ) {
+			$background_color = $theme_settings['form_background_color'];
 		}
 
 		// Add CSS variables
@@ -49,6 +55,7 @@ class FluidCheckout_ThemeCompat_GeneratePress extends FluidCheckout {
 				'--fluidcheckout--field--height' => '46.64px',
 				'--fluidcheckout--field--padding-left' => '15px',
 				'--fluidcheckout--field--border-color' => $border_color,
+				'--fluidcheckout--field--background-color' => $background_color,
 				'--fluidcheckout--field--background-color--accent' => 'var(--accent)',
 			),
 		);
