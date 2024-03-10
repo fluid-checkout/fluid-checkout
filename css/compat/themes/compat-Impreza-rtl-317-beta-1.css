@@ -1,7 +1,0 @@
-body.theme-Impreza:not(.has-checkout-header).theme-Impreza div.woocommerce {
-  padding-top: 120px;
-}
-
-.ts-dropdown .active {
-  background: var(--color-content-primary-grad);
-}
