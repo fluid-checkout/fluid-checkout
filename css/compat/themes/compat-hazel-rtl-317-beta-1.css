@@ -59,7 +59,7 @@ body.theme-hazel div.woocommerce form .form-row .select2-container .select2-sele
 }
 
 body.theme-hazel div.woocommerce form .form-row input[type=email] {
-  padding-left: var(--fluidcheckout--field--padding-left, 8px);
+  padding-right: var(--fluidcheckout--field--padding-left, 8px);
 }
 
 body.theme-hazel .select2-search--dropdown .select2-search__field {
