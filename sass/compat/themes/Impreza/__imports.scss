@@ -9,18 +9,8 @@ $_body-theme-selector:                 '.theme-Impreza' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 4.48rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"checkout-content-area";
+	"checkout-content-area",
+	"tom-select-dropdown";
