@@ -58,6 +58,17 @@ class FluidCheckout_ThemeCompat_Gizmos extends FluidCheckout {
 		$new_css_variables = array(
 			// Buttons
 			':root body' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '60.14px',
+				'--fluidcheckout--field--padding-left' => '20px',
+				'--fluidcheckout--field--border-radius' => '8px',
+				'--fluidcheckout--field--border-color' => '#eaeaea',
+				'--fluidcheckout--field--font-size' => '14px',
+				'--fluidcheckout--field--background-color--accent' => 'var( --qode-main-color )',
+
+				// Checkout validation styles
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '30px',
+
 				// Primary button color
 				'--fluidcheckout--button--primary--border-color' => 'var( --qode-main-color );',
 				'--fluidcheckout--button--primary--background-color' => 'var( --qode-main-color );',
