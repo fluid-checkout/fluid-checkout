@@ -46,7 +46,13 @@ class FluidCheckout_ThemeCompat_Diza extends FluidCheckout {
 		// Bail if theme function is not available
 		if ( ! function_exists( 'diza_tbay_get_config' ) ) { return $css_variables; }
 
-		$accent_color = diza_tbay_get_config( 'main_color_second' ) ? : '#52d5e6';
+		// Get accent color from the theme
+		$accent_color = diza_tbay_get_config( 'main_color_second' );
+
+		// If color isn't set, use the default value
+		if ( ! $accent_color ) {
+			$accent_color = '#52d5e6';
+		}
 
 		// Add CSS variables
 		$new_css_variables = array(
