@@ -93,7 +93,7 @@ jQuery( function($) {
 
   // CHANGE: Add selector for fields without a section prefix, and add the event object as a parameter
   $( 'body' ).on( 'change', 'select.state_select, #calc_shipping_state, #state', function( e ) {
-    // CHANGE: Trigger change event after a delay to ensure the field is updated
+    // CHANGE: Run after a delay to ensure fields are updated
     requestAnimationFrame( function() {
       var $field = $( e.target );
 
@@ -184,6 +184,11 @@ jQuery( function($) {
   function cityToSelect( $citybox, current_cities ) {
     var value = $citybox.val();
 
+    // CHANGE: Get fallback value from element attributes
+    if ( ! value && $citybox.attr( 'data-fallback-value' ) ) {
+      value = $citybox.attr( 'data-fallback-value' );
+    }
+
     if ( $citybox.is('input') ) {
       var input_name = $citybox.attr( 'name' );
       var input_id = $citybox.attr( 'id' );
@@ -217,6 +222,7 @@ jQuery( function($) {
       CheckoutValidation.clearValidationResults( $citybox[ 0 ], $citybox[ 0 ].closest( '.form-row' ) );
     }
 
+    // CHANGE: Trigger event after a delay to ensure fields are updated
     $( document.body ).trigger( 'city_to_select' );
   }
 });
