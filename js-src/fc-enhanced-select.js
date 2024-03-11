@@ -26,6 +26,7 @@
 		inputFieldSelector:                    '.ts-control > input',
 
 		fieldSettings: {
+			maxOptions: 999999,
 			create: false,
 			diacritics: true,
 			openOnFocus: false,
@@ -44,10 +45,10 @@
 	 * Enhance select fields with TomSelect when trying to use `select2` or `selectWoo` jQuery plugins.
 	 */
 	var initializeFromSelect2 = function() {
-		var fields = $( this );
+		var $fields = $( this );
 
 		// Iterate fields and enhance them with TomSelect
-		fields.each( function( i, field ) {
+		$fields.each( function( i, field ) {
 			_publicMethods.enhanceFields( field );
 		} );
 
