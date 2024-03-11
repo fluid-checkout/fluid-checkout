@@ -91,18 +91,36 @@ jQuery( function($) {
     $( document.body ).trigger( 'state_changing', [country, state, $container ] );
   });
 
-  $( 'body' ).on( 'change', 'select.state_select, #calc_shipping_state', function() {
-    var $container = $( this ).closest( 'div' );
-    // CHANGE: Add selector for fields without a section prefix
-    var country = $container.find( '#billing_country, #shipping_country, #calc_shipping_country, #country' ).val();
-    var state = $( this ).val();
+  // CHANGE: Add selector for fields without a section prefix, and add the event object as a parameter
+  $( 'body' ).on( 'change', 'select.state_select, #calc_shipping_state, #state', function( e ) {
+    // CHANGE: Trigger change event after a delay to ensure the field is updated
+    requestAnimationFrame( function() {
+      var $field = $( e.target );
 
-    $( document.body ).trigger( 'state_changing', [country, state, $container ] );
+      // CHANGE: Use address group selector instead of `div` to find the fields container element
+      var $container = $field.closest( '.woocommerce-shipping-fields, .woocommerce-billing-fields, .woocommerce-address-fields' );
+      
+      // CHANGE: Add selector for fields without a section prefix
+      var country = $container.find( '#billing_country, #shipping_country, #calc_shipping_country, #country' ).val();
+      var state = $field.val();
+      
+      
+      $( document.body ).trigger( 'state_changing', [country, state, $container ] );
+    } );
   });
 
   $( 'body' ).on( 'state_changing', function(e, country, state, $container) {
     // CHANGE: Add selector for fields without a section prefix
     var $citybox = $container.find( '#billing_city, #shipping_city, #calc_shipping_city, #city' );
+
+    // CHANGE: Set class `state_to_city` to the state field
+    var $statebox = $container.find( '#billing_state, #shipping_state, #calc_shipping_state, #state' );
+    $statebox.addClass( 'state_to_city' );
+
+    // CHANGE: Maybe destroy TomSelect fields before replacing options
+    if ( $citybox.length > 0 && $citybox[ 0 ].tomselect ) {
+      $citybox[ 0 ].tomselect.destroy();
+    }
 
     if ( cities[ country ] ) {
       /* if the country has no states */
@@ -115,6 +133,9 @@ jQuery( function($) {
           cityToInput( $citybox );
         }
       } else {
+        // CHANGE: Convert field to input for better presentation when no state is selected
+        cityToInput( $citybox );
+
         disableCity( $citybox );
       }
     } else {
@@ -143,11 +164,21 @@ jQuery( function($) {
     $citybox.parent().find( '.select2-container' ).remove();
 
     $citybox.replaceWith( '<input type="text" class="input-text" name="' + input_name + '" id="' + input_id + '" placeholder="' + placeholder + '" />' );
+
+    // CHANGE: Clear validation status if Fluid Checkout checkout validation script is available
+    if ( window.CheckoutValidation && $citybox.length > 0 ) {
+      CheckoutValidation.clearValidationResults( $citybox[ 0 ], $citybox[ 0 ].closest( '.form-row' ) );
+    }
   }
 
   function disableCity( $citybox ) {
     $citybox.val( '' ).change();
     $citybox.prop( 'disabled', true );
+
+    // CHANGE: Clear validation status if Fluid Checkout checkout validation script is available
+    if ( window.CheckoutValidation ) {
+      CheckoutValidation.clearValidationResults( $citybox[ 0 ], $citybox[ 0 ].closest( '.form-row' ) );
+    }
   }
 
   function cityToSelect( $citybox, current_cities ) {
@@ -179,6 +210,11 @@ jQuery( function($) {
       $citybox.val( value ).change();
     } else {
       $citybox.val( '' ).change();
+    }
+
+    // CHANGE: Clear validation status if Fluid Checkout checkout validation script is available
+    if ( window.CheckoutValidation && ( ! value || ! $('option[value="'+value+'"]', $citybox).length ) ) {
+      CheckoutValidation.clearValidationResults( $citybox[ 0 ], $citybox[ 0 ].closest( '.form-row' ) );
     }
 
     $( document.body ).trigger( 'city_to_select' );
