@@ -1,0 +1,7 @@
+// ------------------------------------
+// TOM SELECT CONTROL
+// ------------------------------------
+
+body#{ $_body-theme-selector } .ts-control {
+	border-width: 0 0 2px 0; // Use `px` as units to match theme styles
+}

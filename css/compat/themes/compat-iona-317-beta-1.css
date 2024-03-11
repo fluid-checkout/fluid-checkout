@@ -1,7 +1,3 @@
-:root {
-  --fluidcheckout--field--height: 42.8px;
-}
-
 body.theme-iona .page_content_wrap .content_wrap {
   box-sizing: border-box;
 }
@@ -43,6 +39,10 @@ body.theme-iona div.woocommerce form .form-row .woocommerce-terms-and-conditions
 
 body.theme-iona div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr.order-total th {
   font-weight: bold;
+}
+
+body.theme-iona .ts-control {
+  border-width: 0 0 2px 0;
 }
 
 body.theme-iona div.woocommerce input[type=radio] + label:after {

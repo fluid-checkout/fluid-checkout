@@ -9,17 +9,6 @@ $_body-theme-selector:                 '.theme-iona' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 4.28rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
@@ -29,5 +18,6 @@ $_body-theme-selector:                 '.theme-iona' !default;
 	"checkout-coupon-code",
 	"checkout-place-order",
 	"order-summary",
+	"tom-select-control",
 	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2";
