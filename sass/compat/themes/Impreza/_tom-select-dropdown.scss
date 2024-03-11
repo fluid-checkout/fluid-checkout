@@ -2,6 +2,6 @@
 // TOM SELECT DROPDOWN
 // ------------------------------------
 
-.ts-dropdown .active {
+body#{ $_body-theme-selector } .ts-dropdown .active {
 	background: var(--color-content-primary-grad); // Needed to use theme variable to match its styles
 }

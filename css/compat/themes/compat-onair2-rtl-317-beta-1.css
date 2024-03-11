@@ -1,0 +1,11 @@
+:root {
+  --fluidcheckout--field--height: 48px;
+  --fluidcheckout--validation-check--horizontal-spacing--select: 20px;
+  --fluidcheckout--validation-check--horizontal-spacing--select-alt: 32px;
+  --fluidcheckout--validation-check--horizontal-spacing--password: 32px;
+}
+
+body.theme-onair2 div.woocommerce form .form-row .select2-selection--single,
+body.theme-onair2 div.woocommerce form .form-row .select2-selection--multiple {
+  text-align: right;
+}

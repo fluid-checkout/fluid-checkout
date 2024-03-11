@@ -1,6 +1,7 @@
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
-body#{ $_body-theme-selector }:not( .has-checkout-header ).theme-Impreza div.woocommerce {
-	padding-top: remsize( 12rem );
+
+body#{ $_body-theme-selector } .fc-content .l-section-h {
+	padding-top: var(--header-height); // Use theme variable to match its styles
 }
