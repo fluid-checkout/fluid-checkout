@@ -109,6 +109,13 @@ jQuery( function($) {
     } );
   });
 
+  // CHANGE: Add `state_to_city` class to the state field when updating checkout fragments
+  var add_state_to_city_class = function() {
+    var $state_fields = $( '#billing_state, #shipping_state, #calc_shipping_state, #state' );
+    $state_fields.addClass( 'state_to_city' );
+  };
+  $( document.body ).on( 'updated_checkout', add_state_to_city_class );
+
   $( 'body' ).on( 'state_changing', function(e, country, state, $container) {
     // CHANGE: Add selector for fields without a section prefix
     var $citybox = $container.find( '#billing_city, #shipping_city, #calc_shipping_city, #city' );
@@ -210,6 +217,25 @@ jQuery( function($) {
     }
 
     $citybox.html( '<option value="">' + wc_city_select_params.i18n_select_city_text + '</option>' + options );
+
+    // CHANGE: If there isn't a case sensitive matching value in the options,
+    // try comparing select field values against available options both in lowercase,
+    // then use the value from the matching option from the select field.
+    if ( $citybox[ 0 ].type.indexOf( 'select' ) > -1 && null !== value && ! $citybox[ 0 ].querySelector( 'option[value="' + value + '"]' ) ) {
+      // Get available field options
+      var options = $citybox[ 0 ].options;
+
+      // Iterate field options
+      for ( var j = 0; j < options.length; j++ ) {
+        // Skip if values do not match
+        if ( options[ j ].value.toLowerCase() != value.toLowerCase() ) { continue; }
+
+        // Update value to the matching option value
+        value = options[ j ].value;
+
+        break;
+      }
+    }
 
     if ( $('option[value="'+value+'"]', $citybox).length ) {
       $citybox.val( value ).change();
