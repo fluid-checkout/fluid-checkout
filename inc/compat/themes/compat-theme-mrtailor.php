@@ -134,6 +134,12 @@ class FluidCheckout_ThemeCompat_MrTailor extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
+		// Bail if theme function is not available
+		if ( ! method_exists( 'MrTailor_Opt', 'getOption' ) ) { return $attributes; }
+
+		// Bail if sticky header option is disabled in the theme
+		if ( ! MrTailor_Opt::getOption( 'sticky_header' ) ) { return $attributes; }
+
 		$attributes['data-sticky-relative-to'] = '.site-header-sticky.sticky';
 
 		return $attributes;

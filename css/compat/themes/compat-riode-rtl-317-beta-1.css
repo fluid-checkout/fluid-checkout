@@ -1,0 +1,33 @@
+:root {
+  --fluidcheckout--field--height: 45.5px;
+  --fluidcheckout--validation-check--horizontal-spacing--select-alt: 32px;
+}
+
+body.theme-riode .fc-checkout-notices .form-row.form-row:before,
+body.theme-riode .fc-checkout-notices .form-row.form-row:after {
+  display: none;
+}
+
+body.theme-riode .fc-checkout-notices .input-wrapper-inline.input-wrapper-inline {
+  max-width: 100%;
+}
+
+body.theme-riode .fc-wrapper .wc_payment_method label img {
+  min-width: auto;
+}
+
+body.theme-riode .fc-login-form .login {
+  display: block;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  margin-top: 0;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection .select2-selection__arrow:before {
+  left: 0;
+}
+
+body.theme-riode div.woocommerce form .form-row .select2-selection .select2-selection__clear {
+  left: 5px;
+}
