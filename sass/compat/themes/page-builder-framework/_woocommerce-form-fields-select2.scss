@@ -2,8 +2,13 @@
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
-	padding: remsize( .5rem ) remsize( 1.6rem );
+body#{ $_body-theme-selector } .fc-wrapper .select2-container .select2-selection--single {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+	line-height: $form-field-select2-selection-height--single;
 }
 
 
