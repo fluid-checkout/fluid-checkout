@@ -1,3 +1,10 @@
+@media (max-width: 749px) {
+  body.theme-phlox .fc-content.aux-container {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+  }
+}
+
 body.theme-phlox:before {
   z-index: -1 !important;
 }
