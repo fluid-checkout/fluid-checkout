@@ -8,11 +8,4 @@ $_body-theme-selector:                 '.theme-onepress' !default;
 
 
 
-// ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 4.1rem ) };
 
-	--fluidcheckout--validation-check--horizontal-spacing--password: #{ remsize( 3.2rem ) };
-}
