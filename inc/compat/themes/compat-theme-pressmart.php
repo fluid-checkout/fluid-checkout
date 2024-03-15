@@ -139,6 +139,12 @@ class FluidCheckout_ThemeCompat_PressMart extends FluidCheckout {
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '42px',
+				'--fluidcheckout--field--padding-left' => '12px',
+				'--fluidcheckout--field--background-color--accent' => $secondary_button_color['regular'],
+
+				// Primary button colors
 				'--fluidcheckout--button--primary--border-color' => $primary_button_color['regular'],
 				'--fluidcheckout--button--primary--background-color' => $primary_button_color['regular'],
 				'--fluidcheckout--button--primary--text-color' => $primary_text_color['regular'],
@@ -146,6 +152,7 @@ class FluidCheckout_ThemeCompat_PressMart extends FluidCheckout {
 				'--fluidcheckout--button--primary--background-color--hover' => $primary_button_color['hover'],
 				'--fluidcheckout--button--primary--text-color--hover' => $primary_text_color['hover'],
 
+				// Secondary button colors
 				'--fluidcheckout--button--secondary--border-color' => $secondary_button_color['regular'],
 				'--fluidcheckout--button--secondary--background-color' => $secondary_button_color['regular'],
 				'--fluidcheckout--button--secondary--text-color' => $secondary_text_color['regular'],
