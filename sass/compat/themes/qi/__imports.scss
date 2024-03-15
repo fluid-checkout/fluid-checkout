@@ -9,20 +9,6 @@ $_body-theme-selector:                 '.theme-qi' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 5.8rem ) };
-
-	--fluidcheckout--validation-check--horizontal-spacing--select: #{ remsize( 4rem ) };
-	--fluidcheckout--validation-check--horizontal-spacing--select-alt: #{ remsize( 4rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
