@@ -11,7 +11,6 @@ class FluidCheckout_AcoWooDynamicPricingPRO extends FluidCheckout {
 	 */
 	public function __construct() {
 		$this->load_compat_plugin_lite();
-		$this->hooks();
 	}
 
 	/**
