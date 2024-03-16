@@ -9,20 +9,6 @@ $_body-theme-selector:                 '.theme-woostify' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 5rem ) };
-	--fluidcheckout--field--border-radius: #{ remsize( .2rem ) };
-
-	--fluidcheckout--validation-check--horizontal-spacing--password: #{ remsize( 3.2rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
