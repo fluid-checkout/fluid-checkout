@@ -61,6 +61,12 @@ class FluidCheckout_ThemeCompat_Umea extends FluidCheckout {
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '44px',
+				'--fluidcheckout--field--padding-left' => '18px',
+				'--fluidcheckout--field--border-color' => '#959595',
+				'--fluidcheckout--field--background-color--accent' => $main_color,
+
 				// Primary button color
 				'--fluidcheckout--button--primary--border-color' => $main_color,
 				'--fluidcheckout--button--primary--background-color' => $main_color,

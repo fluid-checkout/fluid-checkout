@@ -25,10 +25,6 @@ body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply:
   color: var(--fluidcheckout--button--primary--text-color--hover, var(--fluidcheckout--color--white, #fff)) !important;
 }
 
-:root {
-  --fluidcheckout--field--height: 44px;
-}
-
 body.theme-umea .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box .woocommerce-SavedPaymentMethods,
 body.theme-umea #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box .woocommerce-SavedPaymentMethods {
   list-style: none !important;
@@ -91,4 +87,9 @@ body.theme-umea div.woocommerce form .form-row input[type=radio]:after {
 body.theme-umea .select2-container--default .select2-selection--single {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+  overflow: hidden;
+}
+
+body.theme-umea div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-right: var(--fluidcheckout--field--padding-left, 8px);
 }
