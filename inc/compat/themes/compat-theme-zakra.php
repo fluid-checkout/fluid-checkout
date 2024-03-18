@@ -44,6 +44,8 @@ class FluidCheckout_ThemeCompat_Zakra extends FluidCheckout {
 				// Form field styles
 				'--fluidcheckout--field--height' => '48px',
 				'--fluidcheckout--field--padding-left' => '18px',
+				'--fluidcheckout--field--border-radius' => '4px',
+				'--fluidcheckout--field--border-color' => '#D4D4D8',
 				'--fluidcheckout--field--background-color--accent' => $primary_color,
 
 				// Checkout validation styles
