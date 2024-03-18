@@ -141,12 +141,19 @@ class FluidCheckout_ThemeCompat_ZKNito extends FluidCheckout {
 
 		// Get default primary/accent colors
 		$primary_color = ! empty( $opt_theme_options[ 'wp_nito_primary_color' ][ 'regular' ] ) ? esc_attr( $opt_theme_options[ 'wp_nito_primary_color' ][ 'regular' ] ) : '#1f1f1f';
+		$accent_color = ! empty( $opt_theme_options[ 'wp_nito_accent_color' ][ 'active' ] ) ? esc_attr( $opt_theme_options[ 'wp_nito_accent_color' ][ 'active' ] ) : '#1f1f1f';
 		$accent_color_hover = ! empty( $opt_theme_options[ 'wp_nito_accent_color' ][ 'hover' ] ) ? esc_attr( $opt_theme_options[ 'wp_nito_accent_color' ][ 'hover' ] ) : '#1f1f1f';
 
 		// Add CSS variables
 		// For default primary/accent colors
 		$new_css_variables = array(
 			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '40.14px',
+				'--fluidcheckout--field--padding-left' => '25px',
+				'--fluidcheckout--field--background-color--accent' => $accent_color,
+
+				// Primary button colors
 				'--fluidcheckout--button--primary--border-color' => $primary_color,
 				'--fluidcheckout--button--primary--background-color' => $primary_color,
 				'--fluidcheckout--button--primary--text-color' => '#fff',
@@ -154,6 +161,7 @@ class FluidCheckout_ThemeCompat_ZKNito extends FluidCheckout {
 				'--fluidcheckout--button--primary--background-color--hover' => $accent_color_hover,
 				'--fluidcheckout--button--primary--text-color--hover' => '#fff',
 
+				// Secondary button colors
 				'--fluidcheckout--button--secondary--border-color' => $primary_color,
 				'--fluidcheckout--button--secondary--background-color' => 'transparent',
 				'--fluidcheckout--button--secondary--text-color' => $primary_color,
