@@ -894,6 +894,13 @@ jQuery( function( $ ) {
 						// CHANGE: Set to not prompt user before leaving the page
 						_updateBeforeUnload = false;
 
+						// CHANGE: Use event like trigger to allow other scripts to stop the code execution at this point
+						var eventResult = $( document.body ).triggerHandler( 'fc_checkout_request_place_order_success', [ result, wc_checkout_form ] );
+						console.log( eventResult );
+						if ( eventResult === false ) {
+							return; // Exit the function if the event returned value is false
+						}
+
 						try {
 							if ( 'success' === result.result && $form.triggerHandler( 'checkout_place_order_success', [ result, wc_checkout_form ] ) !== false ) {
 								if ( -1 === result.redirect.indexOf( 'https://' ) || -1 === result.redirect.indexOf( 'http://' ) ) {
