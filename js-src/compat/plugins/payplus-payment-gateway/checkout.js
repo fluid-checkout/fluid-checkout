@@ -172,7 +172,6 @@
 		if ( _hasInitialized ) return;
 
 		if ( _hasJQuery ) {
-
 			// Payment method change event
 			// Originally the event `change` is not used by the PayPlus Checkout plugin,
 			// but it's added here to ensure the function is called when the payment method is changed.
