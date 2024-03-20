@@ -897,6 +897,18 @@ jQuery( function( $ ) {
 						// CHANGE: Use event like trigger to allow other scripts to stop the code execution at this point
 						var eventResult = $( document.body ).triggerHandler( 'fc_checkout_request_place_order_success', [ result, wc_checkout_form ] );
 						if ( eventResult === false ) {
+							// CHANGE: Unblock checkout update requests
+							window.can_update_checkout = true;
+
+							// CHANGE: Unblock the place order button
+							if ( 'yes' === _settings.checkoutPlaceOrderApplyLoadingClass ) {
+								$( _settings.checkoutPlaceOrderSelector ).removeClass( _settings.loadingClass );
+							}
+							$( _settings.checkoutPlaceOrderSelector ).removeAttr( 'disabled' );
+							$( _settings.checkoutPlaceOrderSelector ).removeClass( 'disabled' );
+							FCUtils.maybeRefocusElement( currentFocusedElement );
+							// END - Unblock the place order button
+
 							return; // Exit the function if the event returned value is false
 						}
 
