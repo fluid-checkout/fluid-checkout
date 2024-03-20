@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } #qodef-page-inner.qodef-content-grid {
+	@media (#{$bp-smaller-than-tablet}) { 
+		width: 100%;
+		padding-#{ $alignment-left }: remsize( 2rem );
+		padding-#{ $alignment-right }: remsize( 2rem );
+	}
+}

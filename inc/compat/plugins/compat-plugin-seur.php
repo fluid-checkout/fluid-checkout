@@ -62,11 +62,11 @@ class FluidCheckout_Seur extends FluidCheckout {
 	public function register_assets() {
 		// Checkout scripts
 		$checkout_script_deps = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ? array( 'jquery', 'selectWoo', 'fc-enhanced-select' ) : array( 'jquery', 'selectWoo' );
-		wp_register_script( 'fc-checkout-seur', self::$directory_url . 'js/compat/plugins/seur/checkout-seur'. self::$asset_version . '.js', $checkout_script_deps, NULL, true );
+		wp_register_script( 'fc-checkout-seur', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/seur/checkout-seur' ), $checkout_script_deps, NULL, true );
 		wp_add_inline_script( 'fc-checkout-seur', 'window.addEventListener("load",function(){CheckoutSeur.init();})' );
 
 		// Add validation script
-		wp_register_script( 'fc-checkout-validation-seur', self::$directory_url . 'js/compat/plugins/seur/checkout-validation-seur'. self::$asset_version . '.js', array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_register_script( 'fc-checkout-validation-seur', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/seur/checkout-validation-seur' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
 		wp_add_inline_script( 'fc-checkout-validation-seur', 'window.addEventListener("load",function(){CheckoutValidationSeur.init(fcSettings.checkoutValidationSeur);})' );
 	}
 
@@ -253,6 +253,27 @@ class FluidCheckout_Seur extends FluidCheckout {
 		// Bail if SEUR function not available
 		if ( ! function_exists( 'seur_get_local_pickups' ) ) { return $review_text_lines; }
 
+		// Get shipping packages
+		$packages = WC()->shipping()->get_packages();
+
+		// Check whether target shipping method is selected
+		// Iterate shipping packages
+		$has_target_shipping_method = false;
+		foreach ( $packages as $i => $package ) {
+			// Get selected shipping method
+			$available_methods = $package['rates'];
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
+
+			if ( $this->is_shipping_method_local_pickup( $method ) ) {
+				$has_target_shipping_method = true;
+				break;
+			}
+		}
+
+		// Bail if target shipping method is not selected
+		if ( ! $has_target_shipping_method ) { return $review_text_lines; }
+
 		// Get location id
 		$location_id = WC()->checkout->get_value( 'seur_pickup' );
 
@@ -287,8 +308,12 @@ class FluidCheckout_Seur extends FluidCheckout {
 		$location_index = intval( $location_id ) - 1;
 		$selected_location = array_key_exists( $location_index, $pickup_locations ) ? $pickup_locations[ $location_index ] : null;
 
-		// Bail if no location data is available
-		if ( empty( $selected_location ) ) { return $review_text_lines; }
+		// Maybe set add pickup point address as not selected
+		// to the review text lines, then bail
+		if ( empty( $selected_location ) ) {
+			$review_text_lines[] = __( 'Pickup point not selected yet.', 'fluid-checkout' );
+			return $review_text_lines;
+		}
 
 		// Add terminal name as review text line
 		$review_text_lines[] = '<strong>' . __( 'Pickup point:', 'fluid-checkout' ) . '</strong>';

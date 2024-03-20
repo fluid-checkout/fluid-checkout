@@ -50,25 +50,31 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 		// Checkout field args
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_mailcheck_attributes' ), 100, 3 );
 		add_filter( 'fc_checkout_field_args', array( $this, 'change_checkout_field_args' ), 120, 3 ); // Needs to run after the hooks from the compat with Brazilian Market
+
+		// Formatted address
+		add_filter( 'fc_formatted_address_replacements_custom_field_keys', array( $this, 'add_custom_fields_for_formatted_address_replacements' ), 100 );
 	}
 
 	/**
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
+		// Set instance of the plugin class
 		$this->thwcfe = FluidCheckout::instance()->get_object_by_class_name_from_hooks( 'THWCFE_Public_Checkout' );
-		if ( null !== $this->thwcfe ) {
-			// Get hook priority
-			$hp_cf = apply_filters( 'thwcfd_woocommerce_checkout_fields_hook_priority', $this->change_hook_priority() );
 
-			// Output hidden fields
-			add_filter( 'thwcfe_hidden_fields_display_position', array( $this, 'change_hidden_fields_display_position_hook' ), 10 );
+		// Bail if plugin class is not available
+		if ( null === $this->thwcfe ) { return; }
 
-			// Set steps as incomplete
-			add_filter( 'fc_is_step_complete_contact', array( $this, 'maybe_set_step_incomplete_contact' ), 10 );
-			add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
-			add_filter( 'fc_is_step_complete_billing', array( $this, 'maybe_set_step_incomplete_billing' ), 10 );
-		}
+		// Get hook priority
+		$hp_cf = apply_filters( 'thwcfd_woocommerce_checkout_fields_hook_priority', $this->change_hook_priority() );
+
+		// Output hidden fields
+		add_filter( 'thwcfe_hidden_fields_display_position', array( $this, 'change_hidden_fields_display_position_hook' ), 10 );
+
+		// Set steps as incomplete
+		add_filter( 'fc_is_step_complete_contact', array( $this, 'maybe_set_step_incomplete_contact' ), 10 );
+		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
+		add_filter( 'fc_is_step_complete_billing', array( $this, 'maybe_set_step_incomplete_billing' ), 10 );
 	}
 
 
@@ -376,6 +382,34 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 		self::$cached_values[ $cache_key ] = $field_args;
 
 		return $field_args;
+	}
+
+
+
+	/**
+	 * Add custom address fields for the formatted addresses replacements.
+	 *
+	 * @param   array  $replacements  Custom field keys to be added to formatted address replacements.
+	 */
+	public function add_custom_fields_for_formatted_address_replacements( $custom_field_keys ) {
+		// Bail if plugin class is not available
+		if ( null === $this->thwcfe ) { return $custom_field_keys; }
+
+		// Get custom field keys from settings
+		$billing_keys  = $this->thwcfe->get_settings( 'custom_billing_address_keys' );
+		$shipping_keys = $this->thwcfe->get_settings( 'custom_shipping_address_keys' );
+
+		// Maybe add custom billing keys
+		if ( is_array( $billing_keys ) && ! empty( $billing_keys ) ) {
+			$custom_field_keys = array_merge( $custom_field_keys, $billing_keys );
+		}
+
+		// Maybe add custom shipping keys
+		if ( is_array( $shipping_keys ) && ! empty( $shipping_keys ) ) {
+			$custom_field_keys = array_merge( $custom_field_keys, $shipping_keys );
+		}
+
+		return $custom_field_keys;
 	}
 
 }

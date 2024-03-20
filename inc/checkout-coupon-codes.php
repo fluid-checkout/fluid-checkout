@@ -115,15 +115,12 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
-		// Maybe load RTL file
-		$rtl_suffix = is_rtl() ? '-rtl' : '';
-
 		// Scripts
-		wp_register_script( 'fc-checkout-coupons', self::$directory_url . 'js/checkout-coupons'. self::$asset_version . '.js', array( 'jquery', 'fc-utils', 'fc-collapsible-block' ), NULL, true );
+		wp_register_script( 'fc-checkout-coupons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-coupons' ), array( 'jquery', 'fc-utils', 'fc-collapsible-block' ), NULL, true );
 		wp_add_inline_script( 'fc-checkout-coupons', 'window.addEventListener("load",function(){CheckoutCoupons.init(fcSettings.checkoutCoupons);})' );
 
 		// Styles
-		wp_register_style( 'fc-checkout-coupons', self::$directory_url . 'css/checkout-coupons'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
+		wp_register_style( 'fc-checkout-coupons', FluidCheckout_Enqueue::instance()->get_style_url( 'css/checkout-coupons' ), NULL, NULL );
 	}
 
 	/**
@@ -334,6 +331,8 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$reference_id = sanitize_text_field( wp_unslash( $_REQUEST['reference_id'] ) );
 
 		if ( ! empty( $coupon_code ) ) {
+			// Add the coupon code to the cart,
+			// which triggers calculating the cart totals to ensure pricing is correct.
 			WC()->cart->add_discount( wc_format_coupon_code( $coupon_code ) );
 
 			// Intercept notices to avoid them being displayed on other pages
