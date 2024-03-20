@@ -32,7 +32,7 @@ class FluidCheckout_PayplusPaymentGateway extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Checkout events
-		wp_register_script( 'fc-compat-payplus-payment-gateway-checkout', self::$directory_url . 'js/compat/plugins/payplus-payment-gateway/checkout' . self::$asset_version . '.js', array( 'jquery', 'wc-checkout' ), NULL, true );
+		wp_register_script( 'fc-compat-payplus-payment-gateway-checkout', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/payplus-payment-gateway/checkout' ), array( 'jquery', 'wc-checkout' ), NULL, true );
 		wp_add_inline_script( 'fc-compat-payplus-payment-gateway-checkout', 'window.addEventListener("load",function(){PayPlusCheckout.init();})' );
 
 		// Define whether to import ApplePay script
