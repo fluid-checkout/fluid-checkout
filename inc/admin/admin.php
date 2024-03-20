@@ -50,7 +50,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Bail if not on WooCommerce settings page
 		if ( $hook_suffix !== 'woocommerce_page_wc-settings' ) { return; }
 
-		wp_enqueue_style( 'fc-admin-options', self::$directory_url . 'css/admin-options'. self::$asset_version . '.css', NULL, NULL );
+		wp_enqueue_style( 'fc-admin-options', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-options' ), NULL, NULL );
 	}
 
 	/**
@@ -72,7 +72,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Bail if not on dashboard settings page
 		if ( 'fc_checkout' !== $current_tab || ! empty( $current_section ) ) { return; }
 
-		wp_enqueue_style( 'fc-admin-dashboard', self::$directory_url . 'css/admin-dashboard'. self::$asset_version . '.css', NULL, NULL );
+		wp_enqueue_style( 'fc-admin-dashboard', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-dashboard' ), NULL, NULL );
 	}
 
 

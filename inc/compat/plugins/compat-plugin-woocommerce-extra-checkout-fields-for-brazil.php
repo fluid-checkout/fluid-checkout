@@ -92,7 +92,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 	public function replace_wcbcf_script() {
 		// Replace frontend script, also removing dependency on Mailcheck script from the Brazilian Market plugin
 		wp_deregister_script( 'woocommerce-extra-checkout-fields-for-brazil-front' );
-		wp_enqueue_script( 'woocommerce-extra-checkout-fields-for-brazil-front', self::$directory_url . 'js/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend'. self::$asset_version . '.js', array( 'jquery', 'jquery-mask' ), NULL, true );
+		wp_enqueue_script( 'woocommerce-extra-checkout-fields-for-brazil-front', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend' ), array( 'jquery', 'jquery-mask' ), NULL, true );
 		
 		// Replace settings object for the Brazilian Market plugin
 		$settings = FluidCheckout_Settings::instance()->get_option( 'wcbcf_settings' );

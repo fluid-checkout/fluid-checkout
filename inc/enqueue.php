@@ -170,16 +170,31 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 	/**
 	 * Get the script URL with asset version number.
+	 * 
+	 * @param  string  $src_file_part          The file part of the script URL.
+	 * @param  bool    $append_directory_url   (Optional) Whether to append the directory URL to the file path. Defaults to `true`.
 	 */
-	public function get_script_url( $src_file_part ) {
-		return self::$directory_url . $src_file_part . self::$asset_version . '.js';
+	public function get_script_url( $src_file_part, $append_directory_url = true ) {
+		// Define URL or file path
+		$file_path = $src_file_part . self::$asset_version . '.js';
+
+		// Return URL or file path
+		if ( $append_directory_url ) {
+			return self::$directory_url . $file_path;
+		}
+		else {
+			return $file_path;
+		}
 	}
 
 	/**
 	 * Get the style URL with asset version number.
 	 * Maybe add RTL suffix when viewing the website on a RTL language and a RTL file is available for that style.
+	 * 
+	 * @param  string  $src_file_part          The file part of the style URL.
+	 * @param  bool    $append_directory_url   (Optional) Whether to append the directory URL to the file path. Defaults to `true`.
 	 */
-	public function get_style_url( $src_file_part ) {
+	public function get_style_url( $src_file_part, $append_directory_url = true ) {
 		// Define file path
 		$file_path = $src_file_part . self::$asset_version . '.css';
 		$rtl_file_path = $src_file_part . '-rtl' . self::$asset_version . '.css';
@@ -189,7 +204,13 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			$file_path = $rtl_file_path;
 		}
 
-		return self::$directory_url . $file_path;
+		// Return URL or file path
+		if ( $append_directory_url ) {
+			return self::$directory_url . $file_path;
+		}
+		else {
+			return $file_path;
+		}
 	}
 
 
@@ -393,20 +414,12 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			// Maybe skip compat file
 			if ( apply_filters( 'fc_enable_compat_theme_style_' . $theme_slug, true ) === false ) { continue; }
 
-			// Maybe load RTL file
-			$rtl_suffix = is_rtl() ? '-rtl' : '';
-
-			// Get current theme's compatibility style file name
-			$theme_compat_file_path = 'css/compat/themes/compat-' . $theme_slug . $rtl_suffix . self::$asset_version . '.css';
-
-			// Revert to default compat style file if RTL file does not exist
-			if ( is_rtl() && ! file_exists( self::$directory_path . $theme_compat_file_path ) ) {
-				$theme_compat_file_path = 'css/compat/themes/compat-' . $theme_slug . self::$asset_version . '.css';
-			}
+			// Get file path
+			$theme_compat_file_path = $this->get_style_url( 'css/compat/themes/compat-' . $theme_slug, false );
 
 			// Maybe load theme's compatibility file
 			if ( file_exists( self::$directory_path . $theme_compat_file_path ) ) {
-				wp_enqueue_style( 'fc-theme-compat-'.$theme_slug, self::$directory_url . $theme_compat_file_path, array(), null );
+				wp_enqueue_style( 'fc-theme-compat-' . $theme_slug, self::$directory_url . $theme_compat_file_path, array(), null );
 			}
 		}
 	}
@@ -431,20 +444,12 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			// Maybe skip compat file
 			if ( apply_filters( 'fc_enable_compat_plugin_style_' . $plugin_slug, true ) === false ) { continue; }
 
-			// Maybe load RTL file
-			$rtl_suffix = is_rtl() ? '-rtl' : '';
+			// Get file path
+			$plugin_compat_file_path = $this->get_style_url( 'css/compat/plugins/compat-' . $plugin_slug, false );
 
-			// Get current plugin's compatibility style file name
-			$plugin_compat_file_path = 'css/compat/plugins/compat-' . $plugin_slug . $rtl_suffix . self::$asset_version . '.css';
-
-			// Revert to default compat style file if RTL file does not exist
-			if ( is_rtl() && ! file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
-				$plugin_compat_file_path = 'css/compat/plugins/compat-' . $plugin_slug . self::$asset_version . '.css';
-			}
-
-			// Maybe load plugin's compatibility file
+			// Maybe load theme's compatibility file
 			if ( file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
-				wp_enqueue_style( 'fc-plugin-compat-'.$plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
+				wp_enqueue_style( 'fc-plugin-compat-' . $plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
 			}
 		}
 	}
@@ -465,20 +470,12 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			// Maybe skip compat file
 			if ( apply_filters( 'fc_enable_compat_theme_edit_address_style_' . $theme_slug, true ) === false ) { continue; }
 
-			// Maybe load RTL file
-			$rtl_suffix = is_rtl() ? '-rtl' : '';
-
-			// Get current theme's compatibility style file name
-			$theme_compat_file_path = 'css/compat/themes/compat-edit-address-' . $theme_slug . $rtl_suffix . self::$asset_version . '.css';
-
-			// Revert to default compat style file if RTL file does not exist
-			if ( is_rtl() && ! file_exists( self::$directory_path . $theme_compat_file_path ) ) {
-				$theme_compat_file_path = 'css/compat/themes/compat-edit-address-' . $theme_slug . self::$asset_version . '.css';
-			}
+			// Get file path
+			$theme_compat_file_path = $this->get_style_url( 'css/compat/themes/compat-edit-address-' . $theme_slug, false );
 
 			// Maybe load theme's compatibility file
 			if ( file_exists( self::$directory_path . $theme_compat_file_path ) ) {
-				wp_enqueue_style( 'fc-theme-compat-edit-address-'.$theme_slug, self::$directory_url . $theme_compat_file_path, array(), null );
+				wp_enqueue_style( 'fc-theme-compat-edit-address-' . $theme_slug, self::$directory_url . $theme_compat_file_path, array(), null );
 			}
 		}
 	}
@@ -505,20 +502,12 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			// Maybe skip compat file
 			if ( apply_filters( 'fc_enable_compat_plugin_edit_address_style_' . $plugin_slug, true ) === false ) { continue; }
 
-			// Maybe load RTL file
-			$rtl_suffix = is_rtl() ? '-rtl' : '';
+			// Get file path
+			$plugin_compat_file_path = $this->get_style_url( 'css/compat/plugins/compat-edit-address-' . $plugin_slug, false );
 
-			// Get current plugin's compatibility style file name
-			$plugin_compat_file_path = 'css/compat/plugins/compat-edit-address-' . $plugin_slug . $rtl_suffix . self::$asset_version . '.css';
-
-			// Revert to default compat style file if RTL file does not exist
-			if ( is_rtl() && ! file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
-				$plugin_compat_file_path = 'css/compat/plugins/compat-edit-address-' . $plugin_slug . self::$asset_version . '.css';
-			}
-
-			// Maybe load plugin's compatibility file
+			// Maybe load theme's compatibility file
 			if ( file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
-				wp_enqueue_style( 'fc-plugin-compat-edit-address-'.$plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
+				wp_enqueue_style( 'fc-plugin-compat-edit-address-' . $plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
 			}
 		}
 	}
