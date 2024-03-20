@@ -896,7 +896,6 @@ jQuery( function( $ ) {
 
 						// CHANGE: Use event like trigger to allow other scripts to stop the code execution at this point
 						var eventResult = $( document.body ).triggerHandler( 'fc_checkout_request_place_order_success', [ result, wc_checkout_form ] );
-						console.log( eventResult );
 						if ( eventResult === false ) {
 							return; // Exit the function if the event returned value is false
 						}
