@@ -128,7 +128,7 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'fc-compat-woo-ups-pickup-location-handler', self::$directory_url . 'js/compat/plugins/woo-ups-pickup/ups-pickup-location-handler' . self::$asset_version . '.js', array(), NULL );
+		wp_register_script( 'fc-compat-woo-ups-pickup-location-handler', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-ups-pickup/ups-pickup-location-handler' ), array(), NULL );
 		wp_add_inline_script( 'fc-compat-woo-ups-pickup-location-handler', 'window.addEventListener("load",function(){UpsPickupLocationHandler.init();})' );
 	}
 

@@ -7,6 +7,7 @@
  * @author   DPD
  */
 
+defined( 'ABSPATH' ) || exit;
 ?>
 
 <?php // CHANGE: Replace `tr > td` elements with `div > span` as a form field as this section is moved out of the order summary table on the checkout page ?>

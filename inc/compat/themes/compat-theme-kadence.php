@@ -3,7 +3,7 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Compatibility with theme: Kadence (by Kadence WP).
-*/
+ */
 class FluidCheckout_ThemeCompat_Kadence extends FluidCheckout {
 
 	/**

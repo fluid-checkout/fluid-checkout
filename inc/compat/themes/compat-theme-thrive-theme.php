@@ -3,7 +3,7 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Compatibility with theme: Thrive Theme (by Thrive Themes).
-*/
+ */
 class FluidCheckout_ThemeCompat_ThriveTheme extends FluidCheckout {
 
 	/**
