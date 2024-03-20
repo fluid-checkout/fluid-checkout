@@ -405,6 +405,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Partial compatibility with plugin States, Cities, and Places for WooCommerce. Fix update to city fields, and add support for TomSelect dropdown components.
 * Fixed: Missing styles for RTL languages, instead use the main file when the RTL file does not exist.
 * Fixed: Set default limit for number of options on TomSelect dropdown fields to `999999`, previous was set to default of `50` options.
+* Fixed: Order Pay page is displayed empty when the theme does not support the block editor.
 
 = 3.1.6 - 2024-03-07 =
 
