@@ -166,8 +166,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		return $settings;
 	}
 
-	
-	
+
+
 	/**
 	 * Get the script URL with asset version number.
 	 */
@@ -525,4 +525,4 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 }
 
-$this;
+FluidCheckout_Enqueue::instance();
