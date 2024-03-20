@@ -166,42 +166,67 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		return $settings;
 	}
 
+	
+	
+	/**
+	 * Get the script URL with asset version number.
+	 */
+	public function get_script_url( $src_file_part ) {
+		return self::$directory_url . $src_file_part . self::$asset_version . '.js';
+	}
+
+	/**
+	 * Get the style URL with asset version number.
+	 * Maybe add RTL suffix when viewing the website on a RTL language and a RTL file is available for that style.
+	 */
+	public function get_style_url( $src_file_part ) {
+		// Define file path
+		$file_path = $src_file_part . self::$asset_version . '.css';
+		$rtl_file_path = $src_file_part . '-rtl' . self::$asset_version . '.css';
+
+		// Maybe use RTL file when available
+		if ( is_rtl() && file_exists( self::$directory_path . $rtl_file_path ) ) {
+			$file_path = $rtl_file_path;
+		}
+
+		return self::$directory_url . $file_path;
+	}
+
+
+
 	/**
 	 * Register assets.
 	 */
 	public function register_assets() {
-		// Maybe load RTL file
-		$rtl_suffix = is_rtl() ? '-rtl' : '';
-
 		// Register library scripts
-		wp_register_script( 'fc-polyfill-inert', self::$directory_url . 'js/lib/inert'. self::$asset_version . '.js', array(), NULL );
-		wp_register_script( 'fc-animate-helper', self::$directory_url . 'js/lib/animate-helper'. self::$asset_version . '.js', array(), NULL );
-		wp_register_script( 'fc-collapsible-block', self::$directory_url . 'js/lib/collapsible-block'. self::$asset_version . '.js', array(), NULL );
+		wp_register_script( 'fc-polyfill-inert', $this->get_script_url( 'js/lib/inert' ), array(), NULL );
+		wp_register_script( 'fc-animate-helper', $this->get_script_url( 'js/lib/animate-helper' ), array(), NULL );
+		wp_register_script( 'fc-collapsible-block', $this->get_script_url( 'js/lib/collapsible-block' ), array(), NULL );
 		wp_add_inline_script( 'fc-collapsible-block', 'window.addEventListener("load",function(){CollapsibleBlock.init(fcSettings.collapsibleBlock);})' );
-		wp_register_script( 'fc-flyout-block', self::$directory_url . 'js/lib/flyout-block'. self::$asset_version . '.js', array( 'fc-polyfill-inert', 'fc-animate-helper' ), NULL );
+		wp_register_script( 'fc-flyout-block', $this->get_script_url( 'js/lib/flyout-block' ), array( 'fc-polyfill-inert', 'fc-animate-helper' ), NULL );
 		wp_add_inline_script( 'fc-flyout-block', 'window.addEventListener("load",function(){FlyoutBlock.init(fcSettings.flyoutBlock);})' );
-		wp_register_script( 'fc-sticky-states', self::$directory_url . 'js/lib/sticky-states'. self::$asset_version . '.js', array(), NULL );
+		wp_register_script( 'fc-sticky-states', $this->get_script_url( 'js/lib/sticky-states' ), array(), NULL );
 		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("load",function(){StickyStates.init(fcSettings.stickyStates);})' );
 
 		// Enhanced select
-		wp_register_script( 'tomselect', self::$directory_url . 'js/tom-select.complete'. self::$asset_version . '.js', array(), NULL );
-		wp_register_script( 'fc-enhanced-select', self::$directory_url . 'js/fc-enhanced-select'. self::$asset_version . '.js', array( 'tomselect' ), NULL );
+		wp_register_script( 'tomselect', $this->get_script_url( 'js/tom-select.complete' ), array(), NULL );
+		wp_register_script( 'fc-enhanced-select', $this->get_script_url( 'js/fc-enhanced-select' ), array( 'tomselect' ), NULL );
 		wp_add_inline_script( 'fc-enhanced-select', 'window.addEventListener("load",function(){FCEnhancedSelect.init();})' );
 
 		// Register script utilities
-		wp_register_script( 'fc-utils', self::$directory_url . 'js/fc-utils'. self::$asset_version . '.js', array(), NULL );
+		wp_register_script( 'fc-utils', $this->get_script_url( 'js/fc-utils' ), array(), NULL );
 
 		// Register custom fonts
-		wp_register_style( 'fc-fonts', self::$directory_url . 'css/fonts' . self::$asset_version . '.css', array(), null );
+		wp_register_style( 'fc-fonts', $this->get_style_url( 'css/fonts' ), array(), null );
 
 		// Register styles
-		wp_register_style( 'fc-edit-address-page', self::$directory_url . 'css/edit-address-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
-		wp_register_style( 'fc-add-payment-method-page', self::$directory_url . 'css/add-payment-method-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
-		wp_register_style( 'fc-flyout-block', self::$directory_url . 'css/flyout-block' . $rtl_suffix . self::$asset_version . '.css', array(), null );
-		wp_register_style( 'fc-sticky-states', self::$directory_url . 'css/sticky-states' . $rtl_suffix . self::$asset_version . '.css', array(), null );
+		wp_register_style( 'fc-edit-address-page', $this->get_style_url( 'css/edit-address-page' ), array(), null );
+		wp_register_style( 'fc-add-payment-method-page', $this->get_style_url( 'css/add-payment-method-page' ), array(), null );
+		wp_register_style( 'fc-flyout-block', $this->get_style_url( 'css/flyout-block' ), array(), null );
+		wp_register_style( 'fc-sticky-states', $this->get_style_url( 'css/sticky-states' ), array(), null );
 
 		// Enhanced select
-		wp_register_style( 'tomselect', self::$directory_url . 'css/tom-select' . $rtl_suffix . self::$asset_version . '.css', array(), null );
+		wp_register_style( 'tomselect', $this->get_style_url( 'css/tom-select' ), array(), null );
 	}
 
 
