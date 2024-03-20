@@ -100,17 +100,17 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		$this->deregister_woocommerce_scripts();
 
 		// Register WooCommerce scripts with modified version
-		wp_register_script( 'woocommerce', self::$directory_url . 'js/woocommerce'. self::$asset_version . '.js', array( 'jquery', 'jquery-blockui', 'js-cookie' ), NULL, true );
-		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery', 'fc-utils' ), NULL, true );
-		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
-		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, true );
+		wp_register_script( 'woocommerce', $this->get_script_url( 'js/woocommerce' ), array( 'jquery', 'jquery-blockui', 'js-cookie' ), NULL, true );
+		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), array( 'jquery', 'fc-utils' ), NULL, true );
+		wp_register_script( 'wc-address-i18n', $this->get_script_url( 'js/address-i18n' ), array( 'jquery', 'wc-country-select' ), NULL, true );
+		wp_register_script( 'wc-checkout', $this->get_script_url( 'js/checkout' ), array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, true );
 
 		// Select2 / SelectWoo, replaced with TomSelect but keeping the same handle and dependencies
 		// because many plugins and themes depend on `select2` or `selectWoo` scripts.
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
-			wp_register_script( 'selectWoo', self::$directory_url . 'js/select2-empty'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
-			wp_register_script( 'select2', self::$directory_url . 'js/select2-empty'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
-			wp_register_style( 'select2', self::$directory_url . 'css/select2-empty'. self::$asset_version . '.css', array(), NULL );
+			wp_register_script( 'selectWoo', $this->get_script_url( 'js/select2-empty' ), array( 'jquery' ), NULL, true );
+			wp_register_script( 'select2', $this->get_script_url( 'js/select2-empty' ), array( 'jquery' ), NULL, true );
+			wp_register_style( 'select2', $this->get_style_url( 'css/select2-empty' ), array(), NULL );
 		}
 	}
 
@@ -525,4 +525,4 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 }
 
-FluidCheckout_Enqueue::instance();
+$this;

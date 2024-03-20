@@ -33,7 +33,7 @@ class FluidCheckout_WooAdditionalTerms extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'fc-compat-woo-additional-terms-checkbox-states', self::$directory_url . 'js/compat/plugins/woo-additional-terms/checkbox-states' . self::$asset_version . '.js', array(), NULL );
+		wp_register_script( 'fc-compat-woo-additional-terms-checkbox-states', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-additional-terms/checkbox-states' ), array(), NULL );
 		wp_add_inline_script( 'fc-compat-woo-additional-terms-checkbox-states', 'window.addEventListener("load",function(){WooAdditionalTermsCheckboxStates.init();})' );
 	}
 

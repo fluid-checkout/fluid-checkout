@@ -569,16 +569,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
-		// Maybe load RTL file
-		$rtl_suffix = is_rtl() ? '-rtl' : '';
-
 		// Scripts
-		wp_register_script( 'fc-checkout-steps', self::$directory_url . 'js/checkout-steps'. self::$asset_version . '.js', array( 'jquery', 'wc-checkout', 'fc-utils', 'fc-collapsible-block' ), NULL, true );
+		wp_register_script( 'fc-checkout-steps', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-steps' ), array( 'jquery', 'wc-checkout', 'fc-utils', 'fc-collapsible-block' ), NULL, true );
 		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init(fcSettings.checkoutSteps);})' );
 
 		// Styles
-		wp_register_style( 'fc-checkout-layout', self::$directory_url . 'css/checkout-layout'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
-		wp_register_style( 'fc-checkout-steps', self::$directory_url . 'css/checkout-steps'. $rtl_suffix . self::$asset_version . '.css', NULL, NULL );
+		wp_register_style( 'fc-checkout-layout', FluidCheckout_Enqueue::instance()->get_style_url( 'css/checkout-layout' ), NULL, NULL );
+		wp_register_style( 'fc-checkout-steps', FluidCheckout_Enqueue::instance()->get_style_url( 'css/checkout-steps' ), NULL, NULL );
 	}
 
 	/**
