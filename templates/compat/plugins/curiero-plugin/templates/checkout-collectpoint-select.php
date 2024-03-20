@@ -1,3 +1,4 @@
+<?php defined( 'ABSPATH' ) || exit; ?>
 <?php // CHANGE: Change table elements with `div` elements ?>
 
 <div class="wc_shipping_fan_collectpoint_header shipping" style="display: none">

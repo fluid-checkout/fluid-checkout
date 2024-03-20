@@ -49,11 +49,11 @@ class FluidCheckout_CodeRockz_WooCommerceDelivery extends FluidCheckout {
 		if ( apply_filters( 'fc_enable_compat_plugin_style_' . $plugin_slug, true ) === false ) { return; }
 
 		// Get current plugin's compatibility style file name
-		$plugin_compat_file_path = 'css/compat/plugins/compat-' . $plugin_slug . self::$asset_version . '.css';
+		$plugin_compat_file_path = FluidCheckout_Enqueue::instance()->get_style_url( 'css/compat/plugins/compat-' . $plugin_slug, false );
 
 		// Maybe load plugin's compatibility file
 		if ( file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
-			wp_enqueue_style( 'fc-plugin-compat-'.$plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
+			wp_enqueue_style( 'fc-plugin-compat-' . $plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
 		}
 	}
 
