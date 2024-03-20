@@ -36,7 +36,8 @@
 		if ($("#pp_iframe").length && ($("#pp_iframe").is(":visible") || force === true)) {
 			$("#pp_iframe").fadeOut(()=>{
 				$('.payplus-option-description-area').show()
-				$("#place_order").prop("disabled",false);
+				// CHANGE: Enable also additional Place Order buttons, and remove `disabled` class
+				$("#place_order, .fc-place-order-button").prop("disabled",false).removeClass( 'disabled' );
 
 
 			})
@@ -78,7 +79,8 @@
 		const height =ppIframe.getAttribute('data-height');
 		ppIframe.innerHTML="";
 		ppIframe.append(getIframePayment(src,"100%",height));
-		$("#place_order").prop("disabled",true);
+		// CHANGE: Disable also additional Place Order buttons, and add `disabled` class
+		$("#place_order, .fc-place-order-button").prop("disabled",true).addClass( 'disabled' );
 
 		if(payplus_script_checkout.payplus_mobile){
 			$('html, body').animate({
@@ -182,9 +184,9 @@
 
 			// COPIED FROM PAYPLUS CHECKOUT.JS
 			// Adapted to use ES5 function syntax
-			$( $( window ).on( "popstate", function() {
+			$( window ).on( "popstate", function() {
 				closePayplusIframe( false );
-			} ) );
+			} );
 			// END - COPIED FROM PAYPLUS CHECKOUT.JS
 
 			_hasInitialized = true;
