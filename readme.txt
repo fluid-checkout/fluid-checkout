@@ -399,10 +399,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing by Acowebs.
 * Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing PRO by Acowebs.
 * Added: Compatibility with plugin PayPlus Payment Gateway.
+* Added: Compatibility with plugin MkRapel Regiones y Ciudades de Chile para WC.
 * Added: Compatibility with plugin WebToffee PayPal Express Checkout Payment Gateway for WooCommerce.
-* Added: compatibility with plugin MkRapel Regiones y Ciudades de Chile para WC.
 * Improved: Add delay before triggering update of the checkout fragments when the browser tab visibility changes.
 * Improved: Partial compatibility with plugin States, Cities, and Places for WooCommerce. Fix update to city fields, and add support for TomSelect dropdown components.
+* Fixed: Missing styles for RTL languages, instead use the main file when the RTL file does not exist.
 * Fixed: Set default limit for number of options on TomSelect dropdown fields to `999999`, previous was set to default of `50` options.
 
 = 3.1.6 - 2024-03-07 =
