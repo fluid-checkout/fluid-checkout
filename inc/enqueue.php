@@ -415,11 +415,11 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			if ( apply_filters( 'fc_enable_compat_theme_style_' . $theme_slug, true ) === false ) { continue; }
 
 			// Get file path
-			$theme_compat_file_path = $this->get_style_url( 'css/compat/themes/compat-' . $theme_slug, false );
+			$compat_file_path = $this->get_style_url( 'css/compat/themes/compat-' . $theme_slug, false );
 
-			// Maybe load theme's compatibility file
-			if ( file_exists( self::$directory_path . $theme_compat_file_path ) ) {
-				wp_enqueue_style( 'fc-theme-compat-' . $theme_slug, self::$directory_url . $theme_compat_file_path, array(), null );
+			// Maybe load compatibility file
+			if ( file_exists( self::$directory_path . $compat_file_path ) ) {
+				wp_enqueue_style( 'fc-theme-compat-' . $theme_slug, self::$directory_url . $compat_file_path, array(), null );
 			}
 		}
 	}
@@ -445,11 +445,11 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			if ( apply_filters( 'fc_enable_compat_plugin_style_' . $plugin_slug, true ) === false ) { continue; }
 
 			// Get file path
-			$plugin_compat_file_path = $this->get_style_url( 'css/compat/plugins/compat-' . $plugin_slug, false );
+			$compat_file_path = $this->get_style_url( 'css/compat/plugins/compat-' . $plugin_slug, false );
 
-			// Maybe load theme's compatibility file
-			if ( file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
-				wp_enqueue_style( 'fc-plugin-compat-' . $plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
+			// Maybe load compatibility file
+			if ( file_exists( self::$directory_path . $compat_file_path ) ) {
+				wp_enqueue_style( 'fc-plugin-compat-' . $plugin_slug, self::$directory_url . $compat_file_path, array(), null );
 			}
 		}
 	}
@@ -471,11 +471,11 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			if ( apply_filters( 'fc_enable_compat_theme_edit_address_style_' . $theme_slug, true ) === false ) { continue; }
 
 			// Get file path
-			$theme_compat_file_path = $this->get_style_url( 'css/compat/themes/compat-edit-address-' . $theme_slug, false );
+			$compat_file_path = $this->get_style_url( 'css/compat/themes/compat-edit-address-' . $theme_slug, false );
 
-			// Maybe load theme's compatibility file
-			if ( file_exists( self::$directory_path . $theme_compat_file_path ) ) {
-				wp_enqueue_style( 'fc-theme-compat-edit-address-' . $theme_slug, self::$directory_url . $theme_compat_file_path, array(), null );
+			// Maybe load compatibility file
+			if ( file_exists( self::$directory_path . $compat_file_path ) ) {
+				wp_enqueue_style( 'fc-theme-compat-edit-address-' . $theme_slug, self::$directory_url . $compat_file_path, array(), null );
 			}
 		}
 	}
@@ -503,11 +503,11 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			if ( apply_filters( 'fc_enable_compat_plugin_edit_address_style_' . $plugin_slug, true ) === false ) { continue; }
 
 			// Get file path
-			$plugin_compat_file_path = $this->get_style_url( 'css/compat/plugins/compat-edit-address-' . $plugin_slug, false );
+			$compat_file_path = $this->get_style_url( 'css/compat/plugins/compat-edit-address-' . $plugin_slug, false );
 
-			// Maybe load theme's compatibility file
-			if ( file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
-				wp_enqueue_style( 'fc-plugin-compat-edit-address-' . $plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
+			// Maybe load compatibility file
+			if ( file_exists( self::$directory_path . $compat_file_path ) ) {
+				wp_enqueue_style( 'fc-plugin-compat-edit-address-' . $plugin_slug, self::$directory_url . $compat_file_path, array(), null );
 			}
 		}
 	}
