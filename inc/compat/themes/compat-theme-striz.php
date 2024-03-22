@@ -54,7 +54,6 @@ class FluidCheckout_ThemeCompat_Striz extends FluidCheckout {
 				'--fluidcheckout--field--padding-left' => '12px',
 				'--fluidcheckout--field--border-color' => '#e1e1e1',
 				'--fluidcheckout--field--font-size' => '.875rem',
-				// '--fluidcheckout--field--background-color--accent' => 'var(--theme-palette-color-1)',
 			),
 		);
 
