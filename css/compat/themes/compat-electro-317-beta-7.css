@@ -1,12 +1,3 @@
-:root {
-  --fluidcheckout--field--height: 44.98px;
-  --fluidcheckout--field--border-radius: 22.49px;
-  --fluidcheckout--field-item--border-radius: 12px;
-  --fluidcheckout--validation-check--horizontal-spacing: 10px;
-  --fluidcheckout--validation-check--horizontal-spacing--select: 30px;
-  --fluidcheckout--validation-check--horizontal-spacing--select-alt: 40px;
-}
-
 body.theme-electro.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title {
   padding-bottom: 3px;
 }

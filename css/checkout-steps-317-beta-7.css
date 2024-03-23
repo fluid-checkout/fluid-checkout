@@ -699,7 +699,8 @@ body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=url],
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=password],
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection,
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection .select2-selection__rendered {
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection .select2-selection__rendered,
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .ts-control {
   background-color: var(--fluidcheckout--color--white, #fff) !important;
   color: inherit !important;
 }
@@ -779,7 +780,8 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=url],
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=password],
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection,
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection .select2-selection__rendered {
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection .select2-selection__rendered,
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .ts-control {
   background-color: var(--fluidcheckout--color--white, #fff) !important;
   color: inherit !important;
 }
@@ -1724,6 +1726,7 @@ div.woocommerce form .form-row .select2-selection--single {
 div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   padding-top: 0;
   padding-bottom: 0;
+  padding-left: var(--fluidcheckout--field--padding-left, 8px);
   line-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2);
 }
 

@@ -38,6 +38,9 @@ class FluidCheckout_ThemeCompat_Botiga extends FluidCheckout {
 		// Theme options
 		add_filter( 'theme_mod_shop_checkout_layout', array( $this, 'change_theme_option_shop_checkout_layout' ), 100 );
 		add_filter( 'theme_mod_checkout_distraction_free', array( $this, 'change_theme_option_checkout_distraction_free' ), 100 );
+
+		// Remove theme's function causing fatal error
+		remove_filter( 'woocommerce_loop_add_to_cart_link', 'botiga_filter_loop_add_to_cart', 10, 3 );
 	}
 
 	/**
@@ -99,7 +102,18 @@ class FluidCheckout_ThemeCompat_Botiga extends FluidCheckout {
 
 		// Add CSS variables
 		$new_css_variables = array(
-			':root' => array(
+			':root body' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '52.88px',
+				'--fluidcheckout--field--padding-left' => '16px',
+				'--fluidcheckout--field--border-radius' => '0',
+				'--fluidcheckout--field--border-color' => 'var(--bt-color-forms-borders, #212121)',
+				'--fluidcheckout--field--background-color--accent' => 'var(--bt-color-button-bg)',
+
+				// Checkout validation styles
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '34px',
+
+				// Button color styles - primary
 				'--fluidcheckout--button--primary--border-color' => $button_primary_border_color,
 				'--fluidcheckout--button--primary--background-color' => $button_primary_background_color,
 				'--fluidcheckout--button--primary--text-color' => $button_primary_color,

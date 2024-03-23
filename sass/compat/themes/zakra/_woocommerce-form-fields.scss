@@ -1,0 +1,7 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row:not( .form-row-first ) {
+	margin-#{ $alignment-right }: 0;
+}

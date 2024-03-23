@@ -9,17 +9,6 @@ $_body-theme-selector:                 '.theme-the-hanger' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 4.8rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import

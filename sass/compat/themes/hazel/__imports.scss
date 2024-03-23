@@ -9,23 +9,11 @@ $_body-theme-selector:                 '.theme-hazel' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 4.7rem ) };
-
-	--fluidcheckout--validation-check--horizontal-spacing--select: #{ remsize( 2.4rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
 	"checkout-content-area",
 	"checkout-header",
 	"checkout-progress-bar",
-	"woocommerce-form-fields";
+	"woocommerce-form-fields",
+	"woocommerce-form-fields-select2";

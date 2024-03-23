@@ -1,9 +1,3 @@
-:root {
-  --fluidcheckout--field--height: 38.3px;
-  --fluidcheckout--field--border-color: #ebebeb;
-  --fluidcheckout--field--border-radius: 2px;
-}
-
 body.theme-amphibious .fc-wrapper .fc-coupon_code__collapsible input#coupon_code {
   font-size: 16px;
 }

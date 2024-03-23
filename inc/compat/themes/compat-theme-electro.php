@@ -204,6 +204,7 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				// Primary button styles
 				'--fluidcheckout--button--primary--border-color' => $colors['primary-border-color'],
 				'--fluidcheckout--button--primary--background-color' => $colors['primary-background-color'],
 				'--fluidcheckout--button--primary--text-color' => $colors['primary-text-color'],
@@ -211,6 +212,7 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 				'--fluidcheckout--button--primary--background-color--hover' => $colors['primary-background-color--hover'],
 				'--fluidcheckout--button--primary--text-color--hover' => $colors['primary-text-color--hover'],
 
+				// Secondary button styles
 				'--fluidcheckout--button--secondary--border-color' => $colors['secondary-border-color'],
 				'--fluidcheckout--button--secondary--background-color' => $colors['secondary-background-color'],
 				'--fluidcheckout--button--secondary--text-color' => $colors['secondary-text-color'],
@@ -218,17 +220,27 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 				'--fluidcheckout--button--secondary--background-color--hover' => $colors['secondary-background-color--hover'],
 				'--fluidcheckout--button--secondary--text-color--hover' => $colors['secondary-text-color--hover'],
 
+				// Form field styles
+				'--fluidcheckout--field--height' => '44.98px',
+				'--fluidcheckout--field--padding-left' => '16px',
+				'--fluidcheckout--field--border-radius' => '22.49px',
 				'--fluidcheckout--field--border-color' => '#ddd',
+				'--fluidcheckout--field-item--border-radius' => '12px',
 				'--fluidcheckout--field--background-color' => '#fff',
 				'--fluidcheckout--field--background-color--accent' => $colors['primary-background-color'],
 				'--fluidcheckout--field--text-color--accent' => $colors['primary-text-color'],
 				'--fluidcheckout--field--text-color--focus' => $colors['primary-text-color'],
+
+				// Checkout validation styles
+				'--fluidcheckout--validation-check--horizontal-spacing' => '10px',
+				'--fluidcheckout--validation-check--horizontal-spacing--select' => '30px',
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '40px',
 			),
 			':root body.electro-dark' => array_merge(
 				FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
 				array(
-					'--fluidcheckout--field--border-color' => '#212121',
-					'--fluidcheckout--field--background-color' => '#212121',
+					'--fluidcheckout--field--border-color' => '#000',
+					'--fluidcheckout--field--background-color' => '#000',
 				)
 			),
 		);

@@ -1,8 +1,3 @@
-:root {
-  --fluidcheckout--field--height: 40px;
-  --fluidcheckout--validation-check--horizontal-spacing--select: 30px;
-}
-
 body.theme-peakshops .fc-content.row.align-middle div.woocommerce {
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;

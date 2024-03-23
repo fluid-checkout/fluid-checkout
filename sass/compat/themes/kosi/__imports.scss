@@ -9,17 +9,6 @@ $_body-theme-selector:                 '.theme-kosi' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 6rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import

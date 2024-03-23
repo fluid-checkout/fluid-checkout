@@ -31,6 +31,9 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 		// Site header sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 30 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 30 );
+
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 
@@ -89,6 +92,30 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 	
 		return $attributes;
 	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '40px',
+				'--fluidcheckout--field--padding-left' => '11.2px',
+				'--fluidcheckout--field--border-radius' => '5px',
+				'--fluidcheckout--field--border-color' => '#d2d6dc',
+				'--fluidcheckout--field--box-shadow' => '0 1px 2px 0 rgba( 0, 0, 0, .05 )',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
 }
 
 FluidCheckout_ThemeCompat_Shoptimizer::instance();

@@ -9,20 +9,6 @@ $_body-theme-selector:                 '.theme-diza' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 4.2rem ) };
-	--fluidcheckout--field--border-radius: #{ remsize( .3rem ) };
-
-	--fluidcheckout--validation-check--horizontal-spacing--select-alt: #{ remsize( 3rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import

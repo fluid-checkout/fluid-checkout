@@ -16,7 +16,8 @@ body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data
 	input[type="url"],
 	input[type="password"],
 	.select2-selection,
-	.select2-selection .select2-selection__rendered {
+	.select2-selection .select2-selection__rendered,
+	.ts-control {
 		background-color: $white !important; // Needed to override theme styles
 		color: inherit !important; // Needed to override theme styles
 	}

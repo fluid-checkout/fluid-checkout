@@ -47,6 +47,7 @@ class FluidCheckout_ThemeCompat_Aora extends FluidCheckout {
 				// Form field styles
 				'--fluidcheckout--field--height' => '44px',
 				'--fluidcheckout--field--border-radius' => '3px',
+				'--fluidcheckout--field--padding-left' => '15px',
 				'--fluidcheckout--field--background-color--accent' => 'var(--tb-theme-color)',
 				'--fluidcheckout--field--text-color--accent' => 'var(--link-color-2)',
 				'--fluidcheckout--field--text-color--focus' => 'var(--link-color-2)',
