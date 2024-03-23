@@ -16,6 +16,8 @@ div.woocommerce form .form-row:last-child {
 
 div.woocommerce form .form-row {
 	display: block;
+	margin-block-start: 0;
+	margin-block-end: 0;
 	margin-bottom: $global-spacing-small !important; // Needed to override theme styles
 	padding: 0;
 	max-width: 100%;
