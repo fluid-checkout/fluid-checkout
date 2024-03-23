@@ -140,17 +140,6 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
-		// Theme colors
-		$primary_button_background = '#393d50';
-		$primary_button_background_hover = 'transparent';
-		$primary_button_text = '#ffffff';
-		$primary_button_text_hover = '#393d50';
-		$secondary_button_background = '#00bcd4';
-		$secondary_button_background_hover = 'transparent';
-		$secondary_button_text = '#ffffff';
-		$secondary_button_text_hover = '#00bcd4';
-
-
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
@@ -158,23 +147,24 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 				'--fluidcheckout--field--height' => '40px',
 				'--fluidcheckout--field--padding-left' => '18px',
 				'--fluidcheckout--field--border-radius' => '3px',
-				'--fluidcheckout--field--background-color--accent' => $secondary_button_background,
+				'--fluidcheckout--field--border-color' => 'var(--thegem-to-form-elements-border-color)',
+				'--fluidcheckout--field--background-color--accent' => 'var(--thegem-to-styled-color1)',
 
 				// Primary button color
-				'--fluidcheckout--button--primary--border-color' => $primary_button_background,
-				'--fluidcheckout--button--primary--background-color' => $primary_button_background,
-				'--fluidcheckout--button--primary--text-color' => $primary_button_text,
-				'--fluidcheckout--button--primary--border-color--hover' => $primary_button_background,
-				'--fluidcheckout--button--primary--background-color--hover' => $primary_button_background_hover,
-				'--fluidcheckout--button--primary--text-color--hover' => $primary_button_text_hover,
+				'--fluidcheckout--button--primary--border-color' => 'var(--thegem-to-styled-color4)',
+				'--fluidcheckout--button--primary--background-color' => 'var(--thegem-to-styled-color4)',
+				'--fluidcheckout--button--primary--text-color' => 'var(--thegem-to-button-basic-color)',
+				'--fluidcheckout--button--primary--border-color--hover' => 'var(--thegem-to-styled-color4)',
+				'--fluidcheckout--button--primary--background-color--hover' => 'transparent',
+				'--fluidcheckout--button--primary--text-color--hover' => 'var(--thegem-to-styled-color4)',
 
 				// // Secondary button color
-				'--fluidcheckout--button--secondary--border-color' => $secondary_button_background,
-				'--fluidcheckout--button--secondary--background-color' => $secondary_button_background,
-				'--fluidcheckout--button--secondary--text-color' => $secondary_button_text,
-				'--fluidcheckout--button--secondary--border-color--hover' => $secondary_button_background,
-				'--fluidcheckout--button--secondary--background-color--hover' => $secondary_button_background_hover,
-				'--fluidcheckout--button--secondary--text-color--hover' => $secondary_button_text_hover,
+				'--fluidcheckout--button--secondary--border-color' => 'var(--thegem-to-styled-color1)',
+				'--fluidcheckout--button--secondary--background-color' => 'var(--thegem-to-styled-color1)',
+				'--fluidcheckout--button--secondary--text-color' => 'var(--thegem-to-button-basic-color)',
+				'--fluidcheckout--button--secondary--border-color--hover' => 'var(--thegem-to-styled-color1)',
+				'--fluidcheckout--button--secondary--background-color--hover' => 'transparent',
+				'--fluidcheckout--button--secondary--text-color--hover' => 'var(--thegem-to-styled-color1)',
 
 				// // Button design styles
 				'--fluidcheckout--button--border-radius' => '3px',
