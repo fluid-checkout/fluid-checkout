@@ -19,6 +19,10 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		
@@ -58,6 +62,28 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 
 		// Re-add with higher priority
 		add_action( 'woocommerce_before_checkout_form', 'woocommerce_output_all_notices', 10 );
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if theme function isn't available
+		if ( ! function_exists( 'thegem_get_option' ) ) { return $attributes; }
+
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		// Bail if fixed header is disabled in the theme
+		if ( thegem_get_option( 'disable_fixed_header' ) ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = '#site-header.fixed';
+
+		return $attributes;
 	}
 
 
