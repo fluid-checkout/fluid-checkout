@@ -9,8 +9,7 @@ $_body-theme-selector:                 '.theme-generatepress' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
+// IMPORT STYLES
 // ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 4.2rem ) };
-}
+@import
+	"woocommerce-form-fields-select2";

@@ -37,8 +37,10 @@
 	position: relative;
 	display: flex;
 	flex-wrap: wrap;
-	padding: 0 $ts-select-padding-x;
+	padding-top: 0;
+	padding-bottom: 0;
 	padding-#{ $alignment-right }: $global-spacing;
+	padding-#{ $alignment-left }: $ts-select-padding-left;
 	width: 100%;
 	height: $ts-select-field-height;
 	min-height: $ts-select-field-height;

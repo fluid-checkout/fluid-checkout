@@ -44,17 +44,27 @@ class FluidCheckout_ThemeCompat_Iona extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
-		// Button colors from the theme
+		// Color values from the theme
 		$theme_hover_color = '#ecb928';
 		$theme_hover_text_color = '#ffffff';
+		$theme_input_border_color = '#dcdcdc';
+		$theme_selection_background_color = '#222222';
 
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '42.8px',
+				'--fluidcheckout--field--padding-left' => '16.2px',
+				'--fluidcheckout--field--border-color' => $theme_input_border_color,
+				'--fluidcheckout--field--background-color--accent' => $theme_selection_background_color,
+
+				// Primary button colors
 				'--fluidcheckout--button--primary--border-color--hover' => $theme_hover_color,
 				'--fluidcheckout--button--primary--background-color--hover' => $theme_hover_color,
 				'--fluidcheckout--button--primary--text-color--hover' => $theme_hover_text_color,
 
+				// Secondary button colors
 				'--fluidcheckout--button--secondary--border-color--hover' => $theme_hover_color,
 				'--fluidcheckout--button--secondary--background-color--hover' => $theme_hover_color,
 				'--fluidcheckout--button--secondary--text-color--hover' => $theme_hover_text_color,

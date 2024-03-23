@@ -9,22 +9,6 @@ $_body-theme-selector:                 '.theme-mrtailor' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 4.5rem ) };
-	--fluidcheckout--field--border-radius: #{ remsize( .3rem ) };
-
-	--fluidcheckout--validation-check--horizontal-spacing--select: #{ remsize( 3.2rem ) };
-	--fluidcheckout--validation-check--horizontal-spacing--select-alt: #{ remsize( 3.2rem ) };
-	--fluidcheckout--validation-check--horizontal-spacing--password: #{ remsize( 3.2rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import

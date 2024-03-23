@@ -63,6 +63,12 @@ class FluidCheckout_ThemeCompat_XStore extends FluidCheckout {
 		$new_css_variables = array(
 			// Buttons
 			':root body' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '2.642rem',
+				'--fluidcheckout--field--padding-left' => '1.07em',
+				'--fluidcheckout--field--border-color' => 'var( --et_inputs-border-color, var( --et_border-color ) )',
+
+				// Primary button colors
 				'--fluidcheckout--button--primary--border-color' => 'var( --et_btn-dark-br-color )',
 				'--fluidcheckout--button--primary--background-color' => 'var( --et_btn-dark-bg-color )',
 				'--fluidcheckout--button--primary--text-color' => 'var( --et_btn-dark-color )',
@@ -70,6 +76,7 @@ class FluidCheckout_ThemeCompat_XStore extends FluidCheckout {
 				'--fluidcheckout--button--primary--background-color--hover' => 'var( --et_btn-dark-bg-color-hover )',
 				'--fluidcheckout--button--primary--text-color--hover' => 'var( --et_btn-dark-color-hover )',
 
+				// Secondary button colors
 				'--fluidcheckout--button--secondary--border-color' => 'var( --et_btn-br-color )',
 				'--fluidcheckout--button--secondary--background-color' => 'var( --et_btn-bg-color )',
 				'--fluidcheckout--button--secondary--text-color' => 'var( --et_btn-color )',

@@ -22,6 +22,9 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
@@ -45,6 +48,33 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 		// Revert Flatsome changes to the privacy policy placement at the checkout page
 		remove_action( 'woocommerce_checkout_after_order_review', 'wc_checkout_privacy_policy_text', 1 );
 		add_action( 'woocommerce_checkout_terms_and_conditions', 'wc_checkout_privacy_policy_text', 20 );
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '38.91px',
+				'--fluidcheckout--field--padding-left' => '10px',
+				'--fluidcheckout--field--box-shadow' => 'inset 0 1px 2px rgba( 0, 0, 0, .1 )',
+				'--fluidcheckout--field--box-shadow--focus' => 'none',
+				'--fluidcheckout--field--background-color--accent' => 'var(--primary-color)',
+			),
+			':root body.fl-labels' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '46.69px',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 

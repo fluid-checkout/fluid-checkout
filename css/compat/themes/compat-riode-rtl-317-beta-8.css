@@ -1,8 +1,3 @@
-:root {
-  --fluidcheckout--field--height: 45.5px;
-  --fluidcheckout--validation-check--horizontal-spacing--select-alt: 32px;
-}
-
 body.theme-riode .fc-checkout-notices .form-row.form-row:before,
 body.theme-riode .fc-checkout-notices .form-row.form-row:after {
   display: none;

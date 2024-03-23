@@ -2,6 +2,13 @@
 // CHECKOUT CONTENT
 // ------------------------------------
 
+body#{ $_body-theme-selector } .fc-content.aux-container {
+	@media (#{$bp-smaller-than-tablet}) {
+		padding-#{ $alignment-left }: remsize( 2rem ) !important; // Needed to override theme styles
+		padding-#{ $alignment-right }: remsize( 2rem ) !important; // Needed to override theme styles
+	}
+}
+
 body#{ $_body-theme-selector }:before {
 	z-index: -1 !important; // Needed to override theme styles. This pseudo element is used to display a background image.
 }

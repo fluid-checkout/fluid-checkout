@@ -7,18 +7,6 @@ $_body-theme-selector:                 '.theme-riode' !default;
 
 
 
-// ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 4.55rem ) };
-
-	--fluidcheckout--validation-check--horizontal-spacing--select-alt: #{ remsize( 3.2rem ) };
-}
-
-
-
-
 
 // ------------------------------------
 // IMPORT STYLES

@@ -7,18 +7,6 @@ $_body-theme-selector:                 '.theme-phlox' !default;
 
 
 
-// ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 5.52rem ) };
-
-	--fluidcheckout--validation-check--horizontal-spacing--password: #{ remsize( 3.2rem ) };
-}
-
-
-
-
 
 // ------------------------------------
 // IMPORT STYLES

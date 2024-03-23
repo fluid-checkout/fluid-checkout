@@ -11,3 +11,13 @@ body#{ $_body-theme-selector }:not( .has-checkout-header ) {
 body#{ $_body-theme-selector }:not( .has-checkout-header ).admin-bar .fc-sidebar[data-sticky-states].is-sticky--top .fc-sidebar__inner {
 	padding-top: $global-spacing-tiny;
 }
+
+
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content.container .container_inner {
+	@media (#{$bp-smaller-than-tablet}) { 
+		width: 100%;
+		padding-#{ $alignment-left }: remsize( 2rem );
+		padding-#{ $alignment-right }: remsize( 2rem );
+	}
+}

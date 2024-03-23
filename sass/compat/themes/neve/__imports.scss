@@ -9,19 +9,6 @@ $_body-theme-selector:                 '.theme-neve' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 5.12rem ) };
-	--fluidcheckout--field--border-radius: #{ remsize( .3rem ) };
-	--fluidcheckout--field--border-width: #{ remsize( .2rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import

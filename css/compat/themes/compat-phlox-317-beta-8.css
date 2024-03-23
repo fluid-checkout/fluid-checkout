@@ -1,6 +1,8 @@
-:root {
-  --fluidcheckout--field--height: 55.2px;
-  --fluidcheckout--validation-check--horizontal-spacing--password: 32px;
+@media (max-width: 749px) {
+  body.theme-phlox .fc-content.aux-container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
 }
 
 body.theme-phlox:before {

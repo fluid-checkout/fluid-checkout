@@ -1,8 +1,3 @@
-:root {
-  --fluidcheckout--field--height: 50px;
-  --fluidcheckout--field--border-width: 3px;
-}
-
 body.theme-wordpress-theme-atomion.has-visible-form-field-labels #order_comments_field .form-row label,
 body.theme-wordpress-theme-atomion.has-visible-form-field-labels .woocommerce-billing-fields .form-row label,
 body.theme-wordpress-theme-atomion.has-visible-form-field-labels .woocommerce-shipping-fields .form-row label {
