@@ -7,6 +7,7 @@ body.theme-thegem div.woocommerce .fc-wrapper #order_review table.woocommerce-ch
 }
 
 body.theme-thegem div.woocommerce form .form-row {
+  width: auto;
   margin-top: 0;
 }
 
