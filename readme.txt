@@ -396,6 +396,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 8.7.0
 * Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing by Acowebs.
 * Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing PRO by Acowebs.
 * Added: Compatibility with plugin MkRapel Regiones y Ciudades de Chile para WC.
