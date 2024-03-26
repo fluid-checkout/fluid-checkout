@@ -36,6 +36,9 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
 
+		// Terms checkbox template
+		add_filter( 'wc_get_template', array( $this, 'revert_terms_template' ), 10, 5 );
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
@@ -156,6 +159,23 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 
 		// Return what we found
 		return $_template;
+	}
+
+
+
+	/**
+	 * Revert the 'terms.php' template file to use the original file as located by WooCommerce.
+	 */
+	public function revert_terms_template( $template, $template_name, $args, $template_path, $default_path ) {
+		// Bail if WooCommerce object or method are not available
+		if ( ! function_exists( 'WC' ) || ! method_exists( WC(), 'plugin_path' ) ) { return $template; }
+
+		if ( $template_name == 'checkout/terms.php' ) {
+			$default_path = WC()->plugin_path() . '/templates/';
+			$template = $default_path . $template_name;
+		}
+
+		return $template;
 	}
 
 
