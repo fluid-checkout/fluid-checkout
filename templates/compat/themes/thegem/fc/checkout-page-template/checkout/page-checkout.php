@@ -26,6 +26,14 @@ else {
 	get_header( 'checkout' );
 }
 ?>
+
+<?php // CHANGE: Add theme's page title ?>
+<?php
+if ( class_exists( 'FluidCheckout_ThemeCompat_TheGem' ) && method_exists( 'FluidCheckout_ThemeCompat_TheGem', 'maybe_display_page_title' ) ) {
+	FluidCheckout_ThemeCompat_TheGem::instance()->maybe_display_page_title();
+}
+?>
+
 <div class="fc-content <?php echo esc_attr( apply_filters( 'fc_content_section_class', '' ) ); ?>">
 
 	<?php // CHANGE: Add inner `div` container used by theme ?>

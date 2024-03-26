@@ -167,7 +167,7 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 	 * Revert the 'terms.php' template file to use the original file as located by WooCommerce.
 	 */
 	public function revert_terms_template( $template, $template_name, $args, $template_path, $default_path ) {
-		// Bail if WooCommerce object or method are not available
+		// Bail if necessary WooCommerce functions are not available
 		if ( ! function_exists( 'WC' ) || ! method_exists( WC(), 'plugin_path' ) ) { return $template; }
 
 		if ( $template_name == 'checkout/terms.php' ) {
@@ -176,6 +176,25 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 		}
 
 		return $template;
+	}
+
+
+
+	/**
+	 * Maybe display the default page title from The Gem theme
+	 */
+	public function maybe_display_page_title() {
+		// Bail if theme function isn't available
+		if ( ! function_exists( 'thegem_page_title' ) ) { return; }
+
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		$page_title = thegem_page_title();
+		
+		if ( ! empty( $page_title ) ) {
+			echo $page_title;
+		}
 	}
 
 
