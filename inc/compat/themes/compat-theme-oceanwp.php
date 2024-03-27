@@ -23,6 +23,9 @@ class FluidCheckout_ThemeCompat_OceanWP extends FluidCheckout {
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
 
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
 		// Multistep checkout
 		$this->maybe_undo_multistep_checkout_hooks();
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_multistep_assets' ), 300 );
@@ -99,6 +102,27 @@ class FluidCheckout_ThemeCompat_OceanWP extends FluidCheckout {
 		else {
 			return $class . ' container';
 		}
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '40px',
+				'--fluidcheckout--field--padding-left' => '12px',
+				'--fluidcheckout--field--border-radius' => '3px',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }

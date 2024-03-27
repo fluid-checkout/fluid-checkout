@@ -9,18 +9,8 @@ $_body-theme-selector:                 '.theme-striz' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 5.3rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"checkout-payment-methods";
+	"checkout-payment-methods",
+	"woocommerce-form-fields-select2";

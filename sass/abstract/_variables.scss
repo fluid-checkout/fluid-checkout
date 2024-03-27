@@ -656,6 +656,7 @@ $form-field-height:                                   var( --fluidcheckout--fiel
 $form-field-border-radius:                            var( --fluidcheckout--field--border-radius, 0 ) !default;
 $form-field-border-width:                             var( --fluidcheckout--field--border-width, remsize( .1rem ) ) !default;
 $form-field-padding-horizontal:                       var( --fluidcheckout--field--padding-horizontal, $global-spacing-extra-small ) !default;
+$form-field-padding-left:                             var( --fluidcheckout--field--padding-left, remsize( 0.8rem ) ) !default;
 $form-field-font-size:                                var( --fluidcheckout--field--font-size, remsize( 1.6rem ) ) !default;
 $form-field-text-color:                               var( --fluidcheckout--field--text-color, inherit ) !default;
 $form-field-text-color--accent:                       var( --fluidcheckout--field--text-color--accent, $white ) !default;

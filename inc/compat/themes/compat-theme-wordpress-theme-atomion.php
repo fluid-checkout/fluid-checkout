@@ -170,6 +170,14 @@ class FluidCheckout_ThemeCompat_WordPressThemeAtomion extends FluidCheckout {
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '50px',
+				'--fluidcheckout--field--padding-left' => '12px',
+				'--fluidcheckout--field--border-radius' => '3px',
+				'--fluidcheckout--field--border-width' => '3px',
+				'--fluidcheckout--field--border-color' => '#ddd',
+				'--fluidcheckout--field--background-color--accent' => $main_color,
+
 				// Primary button color
 				'--fluidcheckout--button--primary--border-color' => $main_color,
 				'--fluidcheckout--button--primary--background-color' => $main_color,

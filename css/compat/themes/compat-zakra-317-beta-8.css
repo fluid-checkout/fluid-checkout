@@ -1,0 +1,3 @@
+body.theme-zakra div.woocommerce form .form-row:not(.form-row-first) {
+  margin-right: 0;
+}

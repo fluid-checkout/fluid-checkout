@@ -1,0 +1,12 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .woocommerce form .form-row .select2-container .select2-selection--single {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+body#{ $_body-theme-selector } .woocommerce form .form-row .select2-container .select2-selection--single .select2-selection__arrow {
+	top: 0;
+}

@@ -100,17 +100,17 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		$this->deregister_woocommerce_scripts();
 
 		// Register WooCommerce scripts with modified version
-		wp_register_script( 'woocommerce', self::$directory_url . 'js/woocommerce'. self::$asset_version . '.js', array( 'jquery', 'jquery-blockui', 'js-cookie' ), NULL, true );
-		wp_register_script( 'wc-country-select', self::$directory_url . 'js/country-select'. self::$asset_version . '.js', array( 'jquery', 'fc-utils' ), NULL, true );
-		wp_register_script( 'wc-address-i18n', self::$directory_url . 'js/address-i18n'. self::$asset_version . '.js', array( 'jquery', 'wc-country-select' ), NULL, true );
-		wp_register_script( 'wc-checkout', self::$directory_url . 'js/checkout'. self::$asset_version . '.js', array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, true );
+		wp_register_script( 'woocommerce', $this->get_script_url( 'js/woocommerce' ), array( 'jquery', 'jquery-blockui', 'js-cookie' ), NULL, true );
+		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), array( 'jquery', 'fc-utils' ), NULL, true );
+		wp_register_script( 'wc-address-i18n', $this->get_script_url( 'js/address-i18n' ), array( 'jquery', 'wc-country-select' ), NULL, true );
+		wp_register_script( 'wc-checkout', $this->get_script_url( 'js/checkout' ), array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, true );
 
 		// Select2 / SelectWoo, replaced with TomSelect but keeping the same handle and dependencies
 		// because many plugins and themes depend on `select2` or `selectWoo` scripts.
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
-			wp_register_script( 'selectWoo', self::$directory_url . 'js/select2-empty'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
-			wp_register_script( 'select2', self::$directory_url . 'js/select2-empty'. self::$asset_version . '.js', array( 'jquery' ), NULL, true );
-			wp_register_style( 'select2', self::$directory_url . 'css/select2-empty'. self::$asset_version . '.css', array(), NULL );
+			wp_register_script( 'selectWoo', $this->get_script_url( 'js/select2-empty' ), array( 'jquery' ), NULL, true );
+			wp_register_script( 'select2', $this->get_script_url( 'js/select2-empty' ), array( 'jquery' ), NULL, true );
+			wp_register_style( 'select2', $this->get_style_url( 'css/select2-empty' ), array(), NULL );
 		}
 	}
 
@@ -166,42 +166,88 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		return $settings;
 	}
 
+
+
+	/**
+	 * Get the script URL with asset version number.
+	 * 
+	 * @param  string  $src_file_part          The file part of the script URL.
+	 * @param  bool    $append_directory_url   (Optional) Whether to append the directory URL to the file path. Defaults to `true`.
+	 */
+	public function get_script_url( $src_file_part, $append_directory_url = true ) {
+		// Define URL or file path
+		$file_path = $src_file_part . self::$asset_version . '.js';
+
+		// Return URL or file path
+		if ( $append_directory_url ) {
+			return self::$directory_url . $file_path;
+		}
+		else {
+			return $file_path;
+		}
+	}
+
+	/**
+	 * Get the style URL with asset version number.
+	 * Maybe add RTL suffix when viewing the website on a RTL language and a RTL file is available for that style.
+	 * 
+	 * @param  string  $src_file_part          The file part of the style URL.
+	 * @param  bool    $append_directory_url   (Optional) Whether to append the directory URL to the file path. Defaults to `true`.
+	 */
+	public function get_style_url( $src_file_part, $append_directory_url = true ) {
+		// Define file path
+		$file_path = $src_file_part . self::$asset_version . '.css';
+		$rtl_file_path = $src_file_part . '-rtl' . self::$asset_version . '.css';
+
+		// Maybe use RTL file when available
+		if ( is_rtl() && file_exists( self::$directory_path . $rtl_file_path ) ) {
+			$file_path = $rtl_file_path;
+		}
+
+		// Return URL or file path
+		if ( $append_directory_url ) {
+			return self::$directory_url . $file_path;
+		}
+		else {
+			return $file_path;
+		}
+	}
+
+
+
 	/**
 	 * Register assets.
 	 */
 	public function register_assets() {
-		// Maybe load RTL file
-		$rtl_suffix = is_rtl() ? '-rtl' : '';
-
 		// Register library scripts
-		wp_register_script( 'fc-polyfill-inert', self::$directory_url . 'js/lib/inert'. self::$asset_version . '.js', array(), NULL );
-		wp_register_script( 'fc-animate-helper', self::$directory_url . 'js/lib/animate-helper'. self::$asset_version . '.js', array(), NULL );
-		wp_register_script( 'fc-collapsible-block', self::$directory_url . 'js/lib/collapsible-block'. self::$asset_version . '.js', array(), NULL );
+		wp_register_script( 'fc-polyfill-inert', $this->get_script_url( 'js/lib/inert' ), array(), NULL );
+		wp_register_script( 'fc-animate-helper', $this->get_script_url( 'js/lib/animate-helper' ), array(), NULL );
+		wp_register_script( 'fc-collapsible-block', $this->get_script_url( 'js/lib/collapsible-block' ), array(), NULL );
 		wp_add_inline_script( 'fc-collapsible-block', 'window.addEventListener("load",function(){CollapsibleBlock.init(fcSettings.collapsibleBlock);})' );
-		wp_register_script( 'fc-flyout-block', self::$directory_url . 'js/lib/flyout-block'. self::$asset_version . '.js', array( 'fc-polyfill-inert', 'fc-animate-helper' ), NULL );
+		wp_register_script( 'fc-flyout-block', $this->get_script_url( 'js/lib/flyout-block' ), array( 'fc-polyfill-inert', 'fc-animate-helper' ), NULL );
 		wp_add_inline_script( 'fc-flyout-block', 'window.addEventListener("load",function(){FlyoutBlock.init(fcSettings.flyoutBlock);})' );
-		wp_register_script( 'fc-sticky-states', self::$directory_url . 'js/lib/sticky-states'. self::$asset_version . '.js', array(), NULL );
+		wp_register_script( 'fc-sticky-states', $this->get_script_url( 'js/lib/sticky-states' ), array(), NULL );
 		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("load",function(){StickyStates.init(fcSettings.stickyStates);})' );
 
 		// Enhanced select
-		wp_register_script( 'tomselect', self::$directory_url . 'js/tom-select.complete'. self::$asset_version . '.js', array(), NULL );
-		wp_register_script( 'fc-enhanced-select', self::$directory_url . 'js/fc-enhanced-select'. self::$asset_version . '.js', array( 'tomselect' ), NULL );
+		wp_register_script( 'tomselect', $this->get_script_url( 'js/tom-select.complete' ), array(), NULL );
+		wp_register_script( 'fc-enhanced-select', $this->get_script_url( 'js/fc-enhanced-select' ), array( 'tomselect' ), NULL );
 		wp_add_inline_script( 'fc-enhanced-select', 'window.addEventListener("load",function(){FCEnhancedSelect.init();})' );
 
 		// Register script utilities
-		wp_register_script( 'fc-utils', self::$directory_url . 'js/fc-utils'. self::$asset_version . '.js', array(), NULL );
+		wp_register_script( 'fc-utils', $this->get_script_url( 'js/fc-utils' ), array(), NULL );
 
 		// Register custom fonts
-		wp_register_style( 'fc-fonts', self::$directory_url . 'css/fonts' . self::$asset_version . '.css', array(), null );
+		wp_register_style( 'fc-fonts', $this->get_style_url( 'css/fonts' ), array(), null );
 
 		// Register styles
-		wp_register_style( 'fc-edit-address-page', self::$directory_url . 'css/edit-address-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
-		wp_register_style( 'fc-add-payment-method-page', self::$directory_url . 'css/add-payment-method-page' . $rtl_suffix . self::$asset_version . '.css', array(), null );
-		wp_register_style( 'fc-flyout-block', self::$directory_url . 'css/flyout-block' . $rtl_suffix . self::$asset_version . '.css', array(), null );
-		wp_register_style( 'fc-sticky-states', self::$directory_url . 'css/sticky-states' . $rtl_suffix . self::$asset_version . '.css', array(), null );
+		wp_register_style( 'fc-edit-address-page', $this->get_style_url( 'css/edit-address-page' ), array(), null );
+		wp_register_style( 'fc-add-payment-method-page', $this->get_style_url( 'css/add-payment-method-page' ), array(), null );
+		wp_register_style( 'fc-flyout-block', $this->get_style_url( 'css/flyout-block' ), array(), null );
+		wp_register_style( 'fc-sticky-states', $this->get_style_url( 'css/sticky-states' ), array(), null );
 
 		// Enhanced select
-		wp_register_style( 'tomselect', self::$directory_url . 'css/tom-select' . $rtl_suffix . self::$asset_version . '.css', array(), null );
+		wp_register_style( 'tomselect', $this->get_style_url( 'css/tom-select' ), array(), null );
 	}
 
 
@@ -368,20 +414,12 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			// Maybe skip compat file
 			if ( apply_filters( 'fc_enable_compat_theme_style_' . $theme_slug, true ) === false ) { continue; }
 
-			// Maybe load RTL file
-			$rtl_suffix = is_rtl() ? '-rtl' : '';
+			// Get file path
+			$compat_file_path = $this->get_style_url( 'css/compat/themes/compat-' . $theme_slug, false );
 
-			// Get current theme's compatibility style file name
-			$theme_compat_file_path = 'css/compat/themes/compat-' . $theme_slug . $rtl_suffix . self::$asset_version . '.css';
-
-			// Revert to default compat style file if RTL file does not exist
-			if ( is_rtl() && ! file_exists( self::$directory_path . $theme_compat_file_path ) ) {
-				$theme_compat_file_path = 'css/compat/themes/compat-' . $theme_slug . self::$asset_version . '.css';
-			}
-
-			// Maybe load theme's compatibility file
-			if ( file_exists( self::$directory_path . $theme_compat_file_path ) ) {
-				wp_enqueue_style( 'fc-theme-compat-'.$theme_slug, self::$directory_url . $theme_compat_file_path, array(), null );
+			// Maybe load compatibility file
+			if ( file_exists( self::$directory_path . $compat_file_path ) ) {
+				wp_enqueue_style( 'fc-theme-compat-' . $theme_slug, self::$directory_url . $compat_file_path, array(), null );
 			}
 		}
 	}
@@ -406,20 +444,12 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			// Maybe skip compat file
 			if ( apply_filters( 'fc_enable_compat_plugin_style_' . $plugin_slug, true ) === false ) { continue; }
 
-			// Maybe load RTL file
-			$rtl_suffix = is_rtl() ? '-rtl' : '';
+			// Get file path
+			$compat_file_path = $this->get_style_url( 'css/compat/plugins/compat-' . $plugin_slug, false );
 
-			// Get current plugin's compatibility style file name
-			$plugin_compat_file_path = 'css/compat/plugins/compat-' . $plugin_slug . $rtl_suffix . self::$asset_version . '.css';
-
-			// Revert to default compat style file if RTL file does not exist
-			if ( is_rtl() && ! file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
-				$plugin_compat_file_path = 'css/compat/plugins/compat-' . $plugin_slug . self::$asset_version . '.css';
-			}
-
-			// Maybe load plugin's compatibility file
-			if ( file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
-				wp_enqueue_style( 'fc-plugin-compat-'.$plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
+			// Maybe load compatibility file
+			if ( file_exists( self::$directory_path . $compat_file_path ) ) {
+				wp_enqueue_style( 'fc-plugin-compat-' . $plugin_slug, self::$directory_url . $compat_file_path, array(), null );
 			}
 		}
 	}
@@ -440,20 +470,12 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			// Maybe skip compat file
 			if ( apply_filters( 'fc_enable_compat_theme_edit_address_style_' . $theme_slug, true ) === false ) { continue; }
 
-			// Maybe load RTL file
-			$rtl_suffix = is_rtl() ? '-rtl' : '';
+			// Get file path
+			$compat_file_path = $this->get_style_url( 'css/compat/themes/compat-edit-address-' . $theme_slug, false );
 
-			// Get current theme's compatibility style file name
-			$theme_compat_file_path = 'css/compat/themes/compat-edit-address-' . $theme_slug . $rtl_suffix . self::$asset_version . '.css';
-
-			// Revert to default compat style file if RTL file does not exist
-			if ( is_rtl() && ! file_exists( self::$directory_path . $theme_compat_file_path ) ) {
-				$theme_compat_file_path = 'css/compat/themes/compat-edit-address-' . $theme_slug . self::$asset_version . '.css';
-			}
-
-			// Maybe load theme's compatibility file
-			if ( file_exists( self::$directory_path . $theme_compat_file_path ) ) {
-				wp_enqueue_style( 'fc-theme-compat-edit-address-'.$theme_slug, self::$directory_url . $theme_compat_file_path, array(), null );
+			// Maybe load compatibility file
+			if ( file_exists( self::$directory_path . $compat_file_path ) ) {
+				wp_enqueue_style( 'fc-theme-compat-edit-address-' . $theme_slug, self::$directory_url . $compat_file_path, array(), null );
 			}
 		}
 	}
@@ -480,20 +502,12 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			// Maybe skip compat file
 			if ( apply_filters( 'fc_enable_compat_plugin_edit_address_style_' . $plugin_slug, true ) === false ) { continue; }
 
-			// Maybe load RTL file
-			$rtl_suffix = is_rtl() ? '-rtl' : '';
+			// Get file path
+			$compat_file_path = $this->get_style_url( 'css/compat/plugins/compat-edit-address-' . $plugin_slug, false );
 
-			// Get current plugin's compatibility style file name
-			$plugin_compat_file_path = 'css/compat/plugins/compat-edit-address-' . $plugin_slug . $rtl_suffix . self::$asset_version . '.css';
-
-			// Revert to default compat style file if RTL file does not exist
-			if ( is_rtl() && ! file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
-				$plugin_compat_file_path = 'css/compat/plugins/compat-edit-address-' . $plugin_slug . self::$asset_version . '.css';
-			}
-
-			// Maybe load plugin's compatibility file
-			if ( file_exists( self::$directory_path . $plugin_compat_file_path ) ) {
-				wp_enqueue_style( 'fc-plugin-compat-edit-address-'.$plugin_slug, self::$directory_url . $plugin_compat_file_path, array(), null );
+			// Maybe load compatibility file
+			if ( file_exists( self::$directory_path . $compat_file_path ) ) {
+				wp_enqueue_style( 'fc-plugin-compat-edit-address-' . $plugin_slug, self::$directory_url . $compat_file_path, array(), null );
 			}
 		}
 	}

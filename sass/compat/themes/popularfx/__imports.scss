@@ -7,19 +7,6 @@ $_body-theme-selector:                 '.theme-popularfx' !default;
 
 
 
-// ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 4rem ) };
-	--fluidcheckout--field--border-radius: #{ remsize( .3rem ) };
-
-	--fluidcheckout--validation-check--horizontal-spacing--password: #{ remsize( 3.2rem ) };
-}
-
-
-
-
 
 // ------------------------------------
 // IMPORT STYLES

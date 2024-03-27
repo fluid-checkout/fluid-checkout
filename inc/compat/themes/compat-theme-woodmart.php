@@ -19,6 +19,9 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 
@@ -76,6 +79,35 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 			remove_action( 'woocommerce_checkout_billing', array( $free_shipping_bar_instance, 'render_shipping_progress_bar_with_wrapper' ), 10 );
 			add_action( 'fc_checkout_before_steps', array( $free_shipping_bar_instance, 'render_shipping_progress_bar_with_wrapper' ), 5 ); // Right before coupon code section
 		}
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => 'var( --wd-form-height, 42px )',
+				'--fluidcheckout--field--padding-left' => '15px',
+				'--fluidcheckout--field--border-radius' => 'var( --wd-form-brd-radius, 2px )',
+				'--fluidcheckout--field--border-width' => 'var( --wd-form-brd-width, 3px )',
+				'--fluidcheckout--field--border-color' => 'var( --wd-form-brd-color, rgba( 0, 0, 0, 0.1 ) )',
+				'--fluidcheckout--field--font-size' => '14px',
+				'--fluidcheckout--field--background-color--accent' => 'var( --wd-primary-color, #83b735 )',
+
+				// Checkout validation styles
+				'--fluidcheckout--validation-check--horizontal-spacing--select' => '20px',
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '30px',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 

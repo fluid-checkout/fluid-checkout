@@ -1,0 +1,66 @@
+body.theme-phlox-pro .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label span {
+  vertical-align: baseline;
+}
+
+body.theme-phlox-pro .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:before {
+  top: 12px;
+}
+
+body.theme-phlox-pro .woocommerce ul#shipping_method .shipping-method__option input[type=radio]:checked + .shipping-method__option-label:after {
+  top: 12px;
+}
+
+body.theme-phlox-pro .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] + label:before {
+  top: 12px;
+}
+
+body.theme-phlox-pro .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child + label:after {
+  top: 12px;
+}
+
+body.theme-phlox-pro div.woocommerce .form-row.woocommerce-invalid:after {
+  content: "!";
+  display: block;
+  z-index: 10;
+  width: 1.375em;
+  height: 1.375em;
+  right: -0.6em;
+  top: 6.2em;
+}
+
+body.theme-phlox-pro div.woocommerce .form-row.woocommerce-invalid > .validation-message {
+  display: none;
+}
+
+body.theme-phlox-pro .fc-wrapper .fc-place-order .fc-place-order-button {
+  font-size: 1.2em;
+}
+
+body.theme-phlox-pro div.woocommerce form .form-row textarea,
+body.theme-phlox-pro div.woocommerce form .form-row select,
+body.theme-phlox-pro div.woocommerce form .form-row input[type=email],
+body.theme-phlox-pro div.woocommerce form .form-row input[type=number],
+body.theme-phlox-pro div.woocommerce form .form-row input[type=date],
+body.theme-phlox-pro div.woocommerce form .form-row input[type=search],
+body.theme-phlox-pro div.woocommerce form .form-row input[type=text],
+body.theme-phlox-pro div.woocommerce form .form-row input[type=tel],
+body.theme-phlox-pro div.woocommerce form .form-row input[type=url],
+body.theme-phlox-pro div.woocommerce form .form-row input[type=password],
+body.theme-phlox-pro div.woocommerce form .form-row input[type=checkbox],
+body.theme-phlox-pro div.woocommerce form .form-row input[type=radio],
+body.theme-phlox-pro div.woocommerce form .form-row .select2-selection {
+  max-width: none;
+}
+
+body.theme-phlox-pro .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+  right: 20px;
+  left: 20px;
+}
+
+body.theme-phlox-pro div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  left: 0;
+}
+
+body.theme-phlox-pro div.woocommerce form .form-row .select2-selection .select2-selection__arrow b {
+  position: absolute;
+}

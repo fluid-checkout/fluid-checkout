@@ -11,18 +11,6 @@ $_body-theme-selector:                 '.theme-shoptimizer' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 4rem ) };
-	--fluidcheckout--field--border-radius: #{ remsize( .5rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import

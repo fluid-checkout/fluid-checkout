@@ -9,18 +9,6 @@ $_body-theme-selector:                 '.theme-buddyboss-theme' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 4.1rem ) };
-	--fluidcheckout--field--border-radius: var(--bb-input-radius); // Needed to use theme variable to match theme styles
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import

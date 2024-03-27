@@ -9,19 +9,6 @@ $_body-theme-selector:                 '.theme-go' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 5.218rem ) };
-	--fluidcheckout--field--border-radius: #{ remsize( .4rem ) };
-	--fluidcheckout--field--border-width: #{ remsize( .2rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import

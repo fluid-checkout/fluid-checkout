@@ -5,5 +5,9 @@
 body#{ $_body-theme-selector } div.woocommerce form .form-row .fl-wrap label.fl-label,
 body#{ $_body-theme-selector } div.woocommerce form #billing_address_2_field .fl-wrap > label.fl-label,
 body#{ $_body-theme-selector } div.woocommerce form #shipping_address_2_field .fl-wrap > label.fl-label {
-    z-index: z( 'default' ) + 1;
+	z-index: z( 'default' ) + 1;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form select {
+	box-shadow: none;
 }

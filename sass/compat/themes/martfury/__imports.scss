@@ -9,19 +9,9 @@ $_body-theme-selector:                 '.theme-martfury' !default;
 
 
 // ------------------------------------
-// DEFINE CSS VARIABLES
-// ------------------------------------
-:root {
-	--fluidcheckout--field--height: #{ remsize( 5.05rem ) };
-}
-
-
-
-
-
-// ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
 	"checkout-content-area",
-	"checkout-payment-methods";
+	"checkout-payment-methods",
+	"woocommerce-form-fields-select2";
