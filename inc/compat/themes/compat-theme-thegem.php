@@ -25,6 +25,7 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
+		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
 		
 		// Checkout page template
 		add_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
@@ -87,6 +88,20 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 		$attributes['data-sticky-relative-to'] = '#site-header.fixed';
 
 		return $attributes;
+	}
+
+
+
+	/**
+	 * Add container class to the main content element.
+	 *
+	 * @param string $class Main content element classes.
+	 */
+	public function change_fc_content_section_class( $class ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
+
+		return $class . ' block-content';
 	}
 
 
