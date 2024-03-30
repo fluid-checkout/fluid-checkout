@@ -362,6 +362,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Compatibility with plugin MailChimp for WooCommerce. Fix fatal error on checkout page when connection to Mailchimp is not completely set up.
+
 = 3.1.7 - 2024-03-27 =
 
 * Bump tested up to WooCommerce 8.7.0
