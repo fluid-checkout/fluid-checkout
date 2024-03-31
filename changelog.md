@@ -19,6 +19,100 @@ Additional labels for beta builds are available as extensions to the MAJOR.MINOR
 
 [See latest changes in the plugin's readme.txt](https://github.com/fluidweb-co/fluid-checkout/blob/main/readme.txt)
 
+= 3.1.3 - 2024-01-23 =
+
+* Bump tested up to WooCommerce 8.5.1
+* Added: Automatically replace the WooCommerce Checkout block with the shortcode-based form.
+* Added: Admin notice for when using the Divi Builder checkout layout, which is not compatible with Fluid Checkout.
+* Added: Compatibility with theme Cartsy.
+* Added: Compatibility with theme Smart Home.
+* Added: Compatibility with plugin Shipping Zones by Drawing for WooCommerce.
+* Added: Compatibility with plugin Shipping Zones by Drawing Premium for WooCommerce.
+* Improved: Compatibility with plugin Colissimo shipping methods for WooCommerce. Fix styles for the Colissimo Relay pickup button by setting the class `button` to it.
+* Improved: Compatibility with 3rd-party plugins by restoring the checkbox "Shipping to a different address", but make it visually hidden.
+* Improved: Added actions `fc_before_substep_fields_<substep_id>` and `fc_after_substep_fields_<substep_id>` to allow developers to output content to the substep fields section at those positions.
+* Fixed: Compatibility with plugin MailerLite. Fix multiple AJAX requests being triggered by the MailerLite plugin and move checkbox field to expected positions.
+* Fixed: Compatibility issues causing layout to break on the shipping method and payment methods options in some cases.
+* Fixed: Shipping method inline validation not being triggered when there are no shipping methods available.
+
+= 3.1.2 - 2024-01-06 =
+
+* Fixed: Default value for the checkbox "Same as shipping/billing address" based on the plugin settings when first accessing the checkout page.
+
+= 3.1.1 - 2024-01-05 =
+
+IMPORTANT: This update fixes issues introduced with version 3.1.0 which may cause the payment section to keep loading indefinitely or the completed steps to not close properly when advancing to next steps.
+
+* Fixed: Steps not closing to show review text when advancing to next step on multi-step mode.
+* Fixed: Support for copying shipping from billing when first checking the option "Same as billing address" at checkout (PRO).
+* Fixed: Moved shortcode wrappers setup to later on the request lifecycle to avoid PHP warnings when some functions of WooCommerce are used early, usually related to cart data initialization.
+* Fixed: Changed the way `select2` fields are replaced when updating checkout fragments.
+
+= 3.1.0 - 2024-01-03 =
+
+* Added: Support for new PRO options for which position to show the billing address section on the checkout page, including before shipping and forced to same as shipping address.
+* Added: Support for block themes using the Full Site Editor (FSE) mode.
+* Added: Compatibility with plugin WooCommerce NL Postcode Checker by WP Overnight.
+* Fixed: Check whether JS settings object is available before trying to use it in the `address-i18n` script.
+* Fixed: Do not ask user before leaving the page if a redirect is needed after a successful payment is taken with some payment gateways.
+* Fixed: PHP error on compatibility with plugin Klarna Checkout for WooCommerce.
+
+= 3.0.7 - 2023-12-14 =
+
+* Bump tested up to WordPress 6.4.2 and WooCommerce 8.4.0
+* Added: EU-VAT Assistant to the list of add-ons on the plugin settings dashboard.
+* Added: Compatibility with theme Goya.
+* Improved: Added filter `fc_billing_same_as_shipping_field_value` to allow developers to change the field values copied from shipping address to billing address.
+* Fixed: Force text color for form fields on shipping and billing address sections when section is highlighted.
+* Fixed: Stretched payment method icons on mobile when custom styles are set by other plugins.
+* Fixed: Ensure use of captured JS events, even when event propagation has been stop in some cases.
+* Fixed: Maybe collapse substep edit section when step is complete when changing substep visibility. Fixes missing local pickup (PRO feature) address when switching shipping methods.
+* Fixed: Remove extra text "Shipping" added by some themes to the shipping costs value column on the order summary.
+* Fixed: Also register styles on admin page requests, but do not automtically enqueue them.
+
+= 3.0.6 - 2023-11-15 =
+
+* Bump tested up to WordPress 6.4.1 and WooCommerce 8.2.2
+* Improved: Compatibility with theme Woodmart. Remove extra free shipping bar section from the billing section, displaying it only at the top of the checkout page.
+* Improved: Make option "Display the 'Add' link buttons in lowercase" independent from other optional field options and clarify that it is also used for coupon code fields.
+* Fixed: Compatibility with plugin Elementor PRO. Show navigation menus above the checkout progress bar and order summary.
+* Fixed: Compatibility with plugin Brevo for WooCommerce (formerly Sendinblue).
+* Fixed: Prevent fatal error when trying to load admin notices for DB migrations in some rare cases.
+* Fixed: Call `wp_cache_flush()` directly when saving settings to avoid passing any parameters with wrong type or values.
+* Fixed: Missing script dependency `jquery-blockui` for the checkout script file causing Javascript errors when dependencies are not loaded by other components.
+
+= 3.0.5 - 2023-11-10 =
+
+* Added: Compatibility with theme Gizmos.
+* Added: Compatibility with theme Botiga.
+* Added: Compatibility with plugin Botiga PRO.
+* Added: Compatibility with plugin WooCommerce CobrosYA.com.
+* Added: Compatibility with plugin Kadence Shop Kit (WooCommerce extras).
+* Added: Compatibility with plugin DPD Baltic Shipping.
+* Added: Compatibility with plugin "LP Express" Shipping Method for WooCommerce.
+* Improved: Added filter `fc_checkout_address_i18n_override_locale_attributes` and `fc_checkout_address_i18n_override_locale_required_attribute` to allow overriding checkout field attributes that are locale dependent.
+* Improved: Added action hooks `fc_order_summary_cart_item_totals_before` and `fc_order_summary_cart_item_totals_after` to display custom elements near the cart item total price in the order summary on the checkout page.
+* Fixed: Cart item product total price alignment on the order summary in some cases.
+* Fixed: Alignment for the add coupon code link when displayed on the order summary.
+* Fixed: Fix values for billing phone field visibility settings to match accepted values from WooCommerce.
+* Fixed: Compatibility with plugin Brazilian Market, check if phone fields are enabled before trying to use them, and update scripts with latest changes from original plugin.
+
+= 3.0.4 - 2023-09-27 =
+
+* Bump tested up to WordPress 6.3.1 and WooCommerce 8.1.1
+* Added: Compatibility with plugin Dintero Checkout for WooCommerce by Krokedil.
+* Added: New option to highlight the order totals row in the order summary on the checkout page.
+* Added: New filter `fc_expansible_section_toggle_label_{$key}_add_optional_text` to allow removing the text "(optional)" from specific optional fields.
+* Added: New filters `fc_order_summary_shipping_package_name` and `fc_order_summary_shipping_package_price_html` to allow changing the label and price for shipping charges on the order summary.
+* Added: Fragments update script that can be used by add-ons on pages that don't use native WooCommerce functions to update fragments.
+* Improved: Show localized price `0,00` (zero) as shipping charge price on the order summary when shipping method chosen does not have associated costs, instead of showing the shipping method name.
+* Improved: Compatibility with theme OceanWP: fix container class when using the theme header, and disable conflicting theme features.
+* Improved: Compatibility with plugin Mercado Pago payments for WooCommerce: set width to payment elements to avoid them overflowing the available space.
+* Improved: Use only the cart total value for the cart link on header for mobile view, instead of getting also taxes and info from other plugins.
+* Fixed: Styles for the shipping method items with classic and other design templates.
+* Fixed: Styles for the latest payment method list items when the payment box is not present.
+* Deprecated: Renamed function `FluidCheckout_CheckoutPageTemplate::get_hide_site_header_footer_at_checkout`, use `FluidCheckout_CheckoutPageTemplate::is_distraction_free_header_footer_checkout` instead.
+
 = 3.0.3 - 2023-09-13 =
 
 * Bump tested up to WooCommerce 8.1
