@@ -19,12 +19,46 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Optional fields
+		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'add_optional_fields_skip_fields' ), 10, 2 );
+
 		// Shipping methods
 		add_filter( 'wc_wcmp_delivery_options_location', array( $this, 'change_hook_delivery_options_location' ), 10 );
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'maybe_change_substep_text_lines_shipping_methods' ), 20 );
 
 		// Maybe set step as incomplete
 		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
+	}
+
+
+
+	/**
+	 * Adds custom fields to the list of optional fields to skip hiding behind a link button.
+	 *
+	 * @param  array  $skip_field_keys     Checkout field keys to skip from hiding behind a link button.
+	 */
+	public function add_optional_fields_skip_fields( $skip_field_keys ) {
+		$fields_keys = array(
+			'address_1',
+			'address_2',
+			'street_name',
+			'house_number',
+			'house_number_suffix',
+
+			'shipping_address_1',
+			'shipping_address_2',
+			'shipping_street_name',
+			'shipping_house_number',
+			'shipping_house_number_suffix',
+
+			'billing_address_1',
+			'billing_address_2',
+			'billing_street_name',
+			'billing_house_number',
+			'billing_house_number_suffix',
+		);
+
+		return array_merge( $skip_field_keys, $fields_keys );
 	}
 
 
