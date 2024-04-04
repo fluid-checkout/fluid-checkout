@@ -178,9 +178,9 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 		$delivery_options = $this->get_delivery_options_data();
 
 		// Bail if delivery options data is not available
-		if ( ! $delivery_options ) { return $text_lines; }
+		if ( ! is_array( $delivery_options ) ) { return $text_lines; }
 
-		// Carriers
+		// Get list of carriers
 		$carrier_classes = MyParcelNL\Sdk\src\Model\Carrier\CarrierFactory::CARRIER_CLASSES;
 		$carriers = array();
 		foreach ( $carrier_classes as $carrier_class ) {
@@ -189,11 +189,13 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 		}
 
 		// Add carrier to substep review text lines
-		$text_lines[] = '<strong>' . __( 'Carrier:', 'fluid-checkout' ) . '</strong>';
-		$text_lines[] = $carriers[ $delivery_options[ 'carrier' ] ];
+		if ( array_key_exists( 'carrier', $delivery_options ) && ! empty( $delivery_options[ 'carrier' ] ) ) {
+			$text_lines[] = '<strong>' . __( 'Carrier:', 'fluid-checkout' ) . '</strong>';
+			$text_lines[] = $carriers[ $delivery_options[ 'carrier' ] ];
+		}
 
 		// Maybe add pickup location to substep review text lines
-		if ( is_array( $delivery_options ) && array_key_exists( 'isPickup', $delivery_options ) && $delivery_options[ 'isPickup' ] ) {
+		if ( array_key_exists( 'isPickup', $delivery_options ) && $delivery_options[ 'isPickup' ] ) {
 			// Add pickup point to substep review text lines
 			$text_lines[] = '<strong>' . __( 'Pickup point:', 'fluid-checkout' ) . '</strong>';
 
