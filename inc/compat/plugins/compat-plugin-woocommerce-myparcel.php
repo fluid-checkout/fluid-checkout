@@ -21,6 +21,7 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 	public function hooks() {
 		// Shipping methods
 		add_filter( 'wc_wcmp_delivery_options_location', array( $this, 'change_hook_delivery_options_location' ), 10 );
+		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'maybe_change_substep_text_lines_shipping_methods' ), 20 );
 
 		// Maybe set step as incomplete
 		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
@@ -105,7 +106,7 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 	/**
 	 * Check whether a shipping method associated with MyParcel is selected.
 	 */
-	public function is_shipping_method_associated_selected() {
+	public function is_shipping_method_selected() {
 		$is_selected = false;
 
 		// Check chosen shipping method
@@ -134,11 +135,88 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 		if ( ! $is_step_complete ) { return $is_step_complete; }
 
 		// Maybe set step as incomplete if shipping method associated with MyParcel is selected
-		if ( $this->is_shipping_method_associated_selected() ) {
+		if ( $this->is_shipping_method_selected() ) {
 			$is_step_complete = false;
 		}
 
 		return $is_step_complete;
+	}
+
+
+
+	/**
+	 * Get delivery options data as an array.
+	 */
+	public function get_delivery_options_data() {
+		// Get delivery options data
+		$delivery_options = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( '_myparcel_delivery_options' );
+		
+		// Bail if delivery options data is not available
+		if ( ! $delivery_options || empty( $delivery_options ) ) { return false; }
+		
+		// Try to decode delivery options data
+		$delivery_options_object = json_decode( $delivery_options, true );
+		
+		// Bail if delivery options data is not valid
+		if ( ! $delivery_options_object ) { return false; }
+
+		// Otherwise, return the delivery options object
+		return $delivery_options_object;
+	}
+
+	/**
+	 * Maybe change the shipping methods substep text to display information from the selected MyParcel shipping method.
+	 */
+	public function maybe_change_substep_text_lines_shipping_methods( $text_lines ) {
+		// Bail if class not available
+		if ( ! class_exists( 'MyParcelNL\Sdk\src\Model\Carrier\CarrierFactory' ) ) { return $text_lines; }
+		
+		// Bail if selected shipping method is not associated with MyParcel
+		if ( ! $this->is_shipping_method_selected() ) { return $text_lines; }
+
+		// Get delivery options data
+		$delivery_options = $this->get_delivery_options_data();
+
+		// Bail if delivery options data is not available
+		if ( ! $delivery_options ) { return $text_lines; }
+
+		// Carriers
+		$carrier_classes = MyParcelNL\Sdk\src\Model\Carrier\CarrierFactory::CARRIER_CLASSES;
+		$carriers = array();
+		foreach ( $carrier_classes as $carrier_class ) {
+			$carrier = MyParcelNL\Sdk\src\Model\Carrier\CarrierFactory::create( $carrier_class );
+			$carriers[ $carrier->getName() ] = $carrier->getHuman();
+		}
+
+		// Add carrier to substep review text lines
+		$text_lines[] = '<strong>' . __( 'Carrier:', 'fluid-checkout' ) . '</strong>';
+		$text_lines[] = $carriers[ $delivery_options[ 'carrier' ] ];
+
+		// Maybe add pickup location to substep review text lines
+		if ( is_array( $delivery_options ) && array_key_exists( 'isPickup', $delivery_options ) && $delivery_options[ 'isPickup' ] ) {
+			// Add pickup point to substep review text lines
+			$text_lines[] = '<strong>' . __( 'Pickup point:', 'fluid-checkout' ) . '</strong>';
+
+			// Maybe add notice for pickup location not selected
+			if ( ! array_key_exists( 'pickupLocation', $delivery_options ) ) {
+				$text_lines[] = __( 'Pickup point not selected yet.', 'fluid-checkout' );
+			}
+			else {
+				// Get address data object
+				$address_data = array(
+					'postcode' => $delivery_options[ 'pickupLocation' ][ 'postal_code' ],
+					'country' => $delivery_options[ 'pickupLocation' ][ 'cc' ],
+					'city' => $delivery_options[ 'pickupLocation' ][ 'city' ],
+					'address_1' => $delivery_options[ 'pickupLocation' ][ 'street' ] . ' ' . $delivery_options[ 'pickupLocation' ][ 'number' ] . $delivery_options[ 'pickupLocation' ][ 'number_suffix' ],
+				);
+
+				// Add pickup location data to substep review text lines
+				$text_lines[] = $delivery_options[ 'pickupLocation' ][ 'location_name' ];
+				$text_lines[] = WC()->countries->get_formatted_address( $address_data );
+			}
+		}
+
+		return $text_lines;
 	}
 
 }
