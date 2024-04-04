@@ -22,6 +22,10 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 		// Optional fields
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'add_optional_fields_skip_fields' ), 10, 2 );
 
+		// Substep review text
+		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_shipping' ), 100 );
+		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_billing' ), 100 );
+
 		// Shipping methods
 		add_filter( 'wc_wcmp_delivery_options_location', array( $this, 'change_hook_delivery_options_location' ), 10 );
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'maybe_change_substep_text_lines_shipping_methods' ), 20 );
@@ -59,6 +63,37 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 		);
 
 		return array_merge( $skip_field_keys, $fields_keys );
+	}
+
+
+
+	/**
+	 * Change shipping extra fields to skip for the substep review text.
+	 *
+	 * @param   array  $skip_list  List of fields to skip adding to the substep review text.
+	 */
+	function change_substep_text_extra_fields_skip_list_shipping( $skip_list ) {
+		$skip_list = array_merge( $skip_list, array(
+			'shipping_house_number',
+			'shipping_house_number_suffix',
+			'shipping_street_name',
+		) );
+		return $skip_list;
+	}
+
+	/**
+	* Change billing extra fields to skip for the substep review text.
+	*
+	* @param   array  $skip_list  List of fields to skip adding to the substep review text.
+	*/
+	function change_substep_text_extra_fields_skip_list_billing( $skip_list ) {
+		$skip_list = array_merge( $skip_list, array(
+			'billing_house_number',
+			'billing_house_number_suffix',
+			'billing_street_name',
+		) );
+
+		return $skip_list;
 	}
 
 
