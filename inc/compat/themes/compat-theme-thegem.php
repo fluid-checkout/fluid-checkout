@@ -27,6 +27,12 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
 
+		// Settings
+		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
+
+		// Header elements
+		add_action( 'fc_checkout_header', array( $this, 'maybe_output_thegem_checkout_steps_section' ), 20 );
+
 		// Checkout page template
 		add_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
 
@@ -102,6 +108,63 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
 
 		return $class . ' block-content';
+	}
+
+
+
+	/**
+	 * Add new settings to the Fluid Checkout admin settings sections.
+	 *
+	 * @param   array   $settings         Array with all settings for the current section.
+	 * @param   string  $current_section  Current section name.
+	 */
+	public function add_settings( $settings ) {
+
+		// Add new settings
+		$settings_new = array(
+			array(
+				'title' => __( 'Theme The Gem', 'fluid-checkout' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_theme_thegem_options',
+			),
+
+			array(
+				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
+				'desc'            => __( 'Output the checkout steps section from The Gem theme when using Fluid Checkout header and footer.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/compat-theme-thegem/' ),
+				'id'              => 'fc_compat_theme_thegem_output_checkout_steps_section',
+				'type'            => 'checkbox',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_thegem_output_checkout_steps_section' ),
+				'autoload'        => false,
+			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_theme_thegem_options',
+			),
+		);
+
+		$settings = array_merge( $settings, $settings_new );
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Maybe output the checkout steps section from The Gem theme.
+	 */
+	public function maybe_output_thegem_checkout_steps_section() {
+		// Bail if not using distraction free header and footer
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		// Bail if The Gem section output is disabled in the plugin settings
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_thegem_output_checkout_steps_section' ) ) { return; }
+
+		// Bail if The Gem checkout steps function isn't available
+		if ( ! function_exists( 'thegem_cart_checkout_title_steps' ) ) { return; }
+		
+		// Output the checkout steps section from the theme
+		echo thegem_cart_checkout_title_steps( '' );
 	}
 
 
