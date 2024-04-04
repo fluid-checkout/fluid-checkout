@@ -268,11 +268,14 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
 
+		// Get page title
 		$page_title = thegem_page_title();
 
-		if ( ! empty( $page_title ) ) {
-			echo $page_title;
-		}
+		// Bail if no page title
+		if ( empty( $page_title ) ) { return; }
+
+		// Output page title
+		echo $page_title;
 	}
 
 
