@@ -1,7 +1,0 @@
-// ------------------------------------
-// TOM SELECT CONTROL
-// ------------------------------------
-
-body#{ $_body-theme-selector } .ts-control:focus-within {
-	border-color: var(--nectar-accent-color); // Needed to use theme color to match theme styles
-}

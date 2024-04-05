@@ -100,8 +100,6 @@ class FluidCheckout_ThemeCompat_Salient extends FluidCheckout {
 				'--fluidcheckout--field--height' => '42.29px',
 				'--fluidcheckout--field--padding-left' => '10px',
 				'--fluidcheckout--field--border-radius' => '4px',
-				'--fluidcheckout--field--border-width' => '2px',
-				'--fluidcheckout--field--border-color' => 'transparent',
 				'--fluidcheckout--field--font-size' => '14px',
 				'--fluidcheckout--field--background-color--accent' => $theme_options['accent-color'],
 			),
