@@ -1,3 +1,11 @@
+body.theme-salient .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name=payment_method] + label span {
+  color: inherit;
+}
+
+body.theme-salient .woocommerce ul#shipping_method .shipping-method__option input[type=radio] + .shipping-method__option-label span {
+  color: inherit;
+}
+
 body.theme-salient .ts-control:focus-within {
   border-color: var(--nectar-accent-color);
 }

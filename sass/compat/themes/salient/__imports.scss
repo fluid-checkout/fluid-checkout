@@ -12,5 +12,7 @@ $_body-theme-selector:                 '.theme-salient' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-payment-methods",
+	"checkout-shipping-methods",
 	"tom-select-control",
 	"woocommerce-form-fields-select2";
