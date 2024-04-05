@@ -1,0 +1,14 @@
+// ------------------------------------
+// PICKUP LOCATIONS MAP
+// ------------------------------------
+
+.fc-wrapper .woocommerce-myparcel__delivery-options .leaflet-pane {
+	z-index: z( 'default' );
+}
+
+
+
+.fc-wrapper .woocommerce-myparcel__delivery-options .leaflet-top,
+.fc-wrapper .woocommerce-myparcel__delivery-options .leaflet-bottom {
+	z-index: z( 'default' ) + 1;
+}
