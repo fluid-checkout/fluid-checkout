@@ -12,6 +12,7 @@ $_body-theme-selector:                 '.theme-salient' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-content-area",
 	"checkout-payment-methods",
 	"checkout-shipping-methods",
 	"checkout-validation",

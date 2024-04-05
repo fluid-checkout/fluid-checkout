@@ -1,3 +1,11 @@
+@media (max-width: 749px) {
+  body.theme-salient.woocommerce-checkout .fc-content.container {
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 body.theme-salient .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name=payment_method] + label span {
   color: inherit;
 }
