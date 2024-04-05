@@ -1,0 +1,22 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-selection--single,
+body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-selection--single .select2-selection__rendered,
+body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-selection--single .select2-selection__arrow {
+	height: auto;
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-selection--single {
+	border-color: $form-field-border-color;
+	border-width: $form-field-border-width;
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-selection--single:focus {
+	border-color: var(--nectar-accent-color); // Needed to use theme color to match theme styles
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-selection--single .select2-selection__rendered {
+	line-height: $form-field-select2-selection-height--single;
+}
