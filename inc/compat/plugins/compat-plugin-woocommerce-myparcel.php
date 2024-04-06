@@ -25,6 +25,9 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 		// Enqueue assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
+		// Persisted fields
+		add_filter( 'fc_customer_persisted_data_clear_fields_order_processed', array( $this, 'change_customer_persisted_data_clear_fields_order_processed' ), 10 );
+
 		// Optional fields
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'add_optional_fields_skip_fields' ), 10, 2 );
 
@@ -67,6 +70,20 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		$this->enqueue_assets();
+	}
+
+
+
+	/**
+	 * Add pickup location fields to be cleared when order is processed.
+	 *
+	 * @param   array  $clear_field_keys  Checkout field keys to clear from the session after placing an order.
+	 */
+	public function change_customer_persisted_data_clear_fields_order_processed( $clear_field_keys ) {
+		// Add fields to be cleared
+		$clear_field_keys[] = '_myparcel_delivery_options';
+
+		return $clear_field_keys;
 	}
 
 
