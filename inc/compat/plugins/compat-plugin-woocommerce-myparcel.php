@@ -230,6 +230,31 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 
 
 	/**
+	 * Check whether the order shipping method is local pickup from MyParcel.
+	 */
+	public function is_order_shipping_method_local_pickup( $order ) {
+		// Bail if order is not valid
+		if ( ! $order ) { return null; }
+
+		// Get my parcel delivery data
+		$delivery_options_meta = $order->get_meta( '_myparcel_delivery_options' );
+		$delivery_options = $this->parse_delivery_options_data( $delivery_options_meta );
+
+		// Bail if delivery options data is not available
+		if ( ! $delivery_options ) { return null; }
+
+		// Check whether a local pickup delivery option has been selected
+		if ( is_array( $delivery_options ) && array_key_exists( 'isPickup', $delivery_options ) && $delivery_options[ 'isPickup' ] ) {
+			return true;
+		}
+
+		// Otherwise, return `false`
+		return false;
+	}
+
+
+
+	/**
 	 * Set the shipping step as always incomplete when shipping method is associated with MyParcel.
 	 *
 	 * @param   bool  $is_step_complete  Whether the step is complete or not.
@@ -249,23 +274,56 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 
 
 	/**
-	 * Get delivery options data as an array.
+	 * Parse delivery options data.
 	 */
-	public function get_delivery_options_data() {
-		// Get delivery options data
-		$delivery_options = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( '_myparcel_delivery_options' );
-		
+	public function parse_delivery_options_data( $data_json ) {
 		// Bail if delivery options data is not available
-		if ( ! $delivery_options || empty( $delivery_options ) ) { return false; }
+		if ( ! $data_json || empty( $data_json ) ) { return false; }
 		
 		// Try to decode delivery options data
-		$delivery_options_object = json_decode( $delivery_options, true );
+		$delivery_options_object = json_decode( $data_json, true );
 		
 		// Bail if delivery options data is not valid
 		if ( ! $delivery_options_object ) { return false; }
 
 		// Otherwise, return the delivery options object
 		return $delivery_options_object;
+	}
+
+	/**
+	 * Get delivery options data as an array.
+	 */
+	public function get_delivery_options_data() {
+		global $wp;
+
+		// Initialize delivery options data as empty
+		$delivery_options = false;
+		
+		// Maybe get delivery options for the checkout page
+		if ( FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) {
+			$delivery_options = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( '_myparcel_delivery_options' );
+		}
+		// Maybe get delivery options for the order details pages
+		else if ( is_order_received_page() || is_view_order_page() ) {
+			// Get order id
+			$order_id = array_key_exists( 'view-order', $wp->query_vars ) ? $wp->query_vars[ 'view-order' ] : false;
+			if ( ! $order_id ) { $order_id = array_key_exists( 'order-received', $wp->query_vars ) ? $wp->query_vars[ 'order-received' ] : false; }
+
+			// Bail if order id is not available
+			if ( ! $order_id ) { return false; }
+
+			// Get order object
+			$order = wc_get_order( $order_id );
+
+			// Bail if order object is not available
+			if ( ! $order ) { return false; }
+
+			// Get delivery options data
+			$delivery_options = $order->get_meta( '_myparcel_delivery_options' );
+		}
+
+		// Otherwise, return the delivery options object
+		return $this->parse_delivery_options_data( $delivery_options );
 	}
 
 	/**
