@@ -19,6 +19,12 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
 		// Optional fields
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'add_optional_fields_skip_fields' ), 10, 2 );
 
@@ -32,6 +38,35 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 
 		// Maybe set step as incomplete
 		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Scripts
+		wp_register_script( 'fc-compat-my-parcel-update-handler', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-myparcel/myparcel-update-handler' ), array( 'fc-utils', 'wc-myparcel-frontend' ), NULL );
+		wp_add_inline_script( 'fc-compat-my-parcel-update-handler', 'window.addEventListener("load",function(){MyParcelUpdateHandler.init();})' );
+	}
+
+	/**
+	 * Enqueue assets.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-compat-my-parcel-update-handler' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 
