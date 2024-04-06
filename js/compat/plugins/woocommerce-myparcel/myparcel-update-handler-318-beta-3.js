@@ -40,8 +40,10 @@
 	}
 	var debouncedUpdateDeliveryOptions;
 
+
+
 	/**
-	 * Handle keypress event.
+	 * Handle captured `keydown` event and route to the appropriate functions.
 	 */
 	var handleKeyDown = function( e ) {
 		// Should do nothing if the default action has been cancelled
@@ -49,13 +51,23 @@
 
 		// ADDRESS FIELDS
 		if ( e.target.closest( _settings.addressFieldsSelector ) ) {
-			console.log( debouncedUpdateDeliveryOptions );
-
 			if ( null !== debouncedUpdateDeliveryOptions ) {
 				debouncedUpdateDeliveryOptions();
 			}
 		}
 	};
+
+	/**
+	 * Handle captured `change` event and route to the appropriate functions.
+	 */
+	var handleChange = function( e ) {
+		// ADDRESS FIELDS
+		if ( e.target.closest( _settings.addressFieldsSelector ) ) {
+			if ( null !== debouncedUpdateDeliveryOptions ) {
+				debouncedUpdateDeliveryOptions();
+			}
+		}
+	}
 
 
 
@@ -70,6 +82,7 @@
 
 		// Add event listeners
 		document.addEventListener( 'keydown', handleKeyDown, true );
+		document.addEventListener( 'change', handleChange, true );
 
 		// Maybe add jQuery event listeners
 		if ( _hasJQuery ) {
