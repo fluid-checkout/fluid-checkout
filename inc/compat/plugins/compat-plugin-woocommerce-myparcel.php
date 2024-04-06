@@ -181,7 +181,7 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 		// Check chosen shipping method
 		$packages = WC()->shipping()->get_packages();
 		foreach ( $packages as $i => $package ) {
-			// Check if `vp_pont` shipping method is selected
+			// Check if a MyParcel shipping method is selected
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			if ( $chosen_method && $this->is_shipping_method_myparcel( $chosen_method ) ) {
 				$is_selected = true;
@@ -234,6 +234,27 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 	}
 
 	/**
+	 * Get the selected pickup location address data.
+	 */
+	public function get_selected_pickup_location_address( $delivery_options ) {
+		// Intialize address data
+		$address_data = false;
+
+		// Maybe add pickup location to substep review text lines
+		if ( ! array_key_exists( 'isPickup', $delivery_options ) || ! $delivery_options[ 'isPickup' ] || ! array_key_exists( 'pickupLocation', $delivery_options ) ) { return $address_data; }
+
+		// Get address data object
+		$address_data = array(
+			'postcode' => $delivery_options[ 'pickupLocation' ][ 'postal_code' ],
+			'country' => $delivery_options[ 'pickupLocation' ][ 'cc' ],
+			'city' => $delivery_options[ 'pickupLocation' ][ 'city' ],
+			'address_1' => $delivery_options[ 'pickupLocation' ][ 'street' ] . ' ' . $delivery_options[ 'pickupLocation' ][ 'number' ] . $delivery_options[ 'pickupLocation' ][ 'number_suffix' ],
+		);
+
+		return $address_data;
+	}
+
+	/**
 	 * Maybe change the shipping methods substep text to display information from the selected MyParcel shipping method.
 	 */
 	public function maybe_change_substep_text_lines_shipping_methods( $text_lines ) {
@@ -269,21 +290,16 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 			$text_lines[] = '<strong>' . __( 'Pickup point:', 'fluid-checkout' ) . '</strong>';
 
 			// Maybe add notice for pickup location not selected
-			if ( ! array_key_exists( 'pickupLocation', $delivery_options ) ) {
-				$text_lines[] = __( 'Pickup point not selected yet.', 'fluid-checkout' );
-			}
-			else {
+			if ( array_key_exists( 'pickupLocation', $delivery_options ) ) {
 				// Get address data object
-				$address_data = array(
-					'postcode' => $delivery_options[ 'pickupLocation' ][ 'postal_code' ],
-					'country' => $delivery_options[ 'pickupLocation' ][ 'cc' ],
-					'city' => $delivery_options[ 'pickupLocation' ][ 'city' ],
-					'address_1' => $delivery_options[ 'pickupLocation' ][ 'street' ] . ' ' . $delivery_options[ 'pickupLocation' ][ 'number' ] . $delivery_options[ 'pickupLocation' ][ 'number_suffix' ],
-				);
-
+				$address_data = $this->get_selected_pickup_location_address( $delivery_options );
+	
 				// Add pickup location data to substep review text lines
 				$text_lines[] = $delivery_options[ 'pickupLocation' ][ 'location_name' ];
 				$text_lines[] = WC()->countries->get_formatted_address( $address_data );
+			}
+			else {
+				$text_lines[] = __( 'Pickup point not selected yet.', 'fluid-checkout' );
 			}
 		}
 
