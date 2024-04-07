@@ -10,6 +10,10 @@ body.theme-salient .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_me
   color: inherit;
 }
 
+body.theme-salient.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:not([disabled]):not(.disabled):hover, body.theme-salient.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:not([disabled]):not(.disabled):focus, body.theme-salient.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:not([disabled]):not(.disabled):active {
+  opacity: 0.8;
+}
+
 body.theme-salient .woocommerce ul#shipping_method .shipping-method__option input[type=radio] + .shipping-method__option-label span {
   color: inherit;
 }

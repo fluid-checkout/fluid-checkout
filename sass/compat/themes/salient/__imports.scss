@@ -14,6 +14,7 @@ $_body-theme-selector:                 '.theme-salient' !default;
 @import
 	"checkout-content-area",
 	"checkout-payment-methods",
+	"checkout-steps",
 	"checkout-shipping-methods",
 	"checkout-validation",
 	"woocommerce-form-fields-select2";
