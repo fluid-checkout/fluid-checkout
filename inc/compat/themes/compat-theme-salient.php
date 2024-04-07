@@ -90,7 +90,7 @@ class FluidCheckout_ThemeCompat_Salient extends FluidCheckout {
 
 				// Secondary button styles
 				'--fluidcheckout--button--secondary--border-color' => $theme_options['accent-color'],
-				'--fluidcheckout--button--secondary--background-color' => $theme_options['accent-color'],
+				'--fluidcheckout--button--secondary--background-color' => $theme_options['extra-color-3'],
 				'--fluidcheckout--button--secondary--text-color' => '#ffffff',
 				'--fluidcheckout--button--secondary--border-color--hover' => $theme_options['accent-color'],
 				'--fluidcheckout--button--secondary--background-color--hover' => $theme_options['accent-color'],
