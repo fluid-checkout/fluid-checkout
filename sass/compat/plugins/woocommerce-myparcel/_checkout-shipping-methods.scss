@@ -1,0 +1,30 @@
+// ------------------------------------
+// CHECKOUT SHIPPING METHODS
+// ------------------------------------
+
+.fc-wrapper .woocommerce-myparcel__delivery-options {
+	margin-top: $global-spacing-small;
+}
+
+
+
+.fc-wrapper .woocommerce-myparcel__delivery-options h3 {
+	margin: $checkout-substep-title-margin;
+	padding: $checkout-substep-title-padding;
+	color: $checkout-substep-title-color;
+	font-weight: $checkout-substep-title-font-weight;
+	font-size: $checkout-substep-title-font-size;
+	text-transform: $checkout-substep-title-text-transform;
+	text-align: $checkout-substep-title-text-align;
+	line-height: 1.2;
+	overflow: unset;
+
+	@media (#{$bp-larger-than-desktop}) {
+		margin: $checkout-substep-title-margin--large-screen;
+		padding: $checkout-substep-title-padding--large-screen;
+		font-size: $checkout-substep-title-font-size--large-screen;
+	}
+}
+.fc-wrapper .woocommerce-myparcel__delivery-options h3::after {
+	@include clearfix();
+}
