@@ -296,10 +296,10 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 	public function parse_delivery_options_data( $data_json ) {
 		// Bail if delivery options data is not available
 		if ( ! $data_json || empty( $data_json ) ) { return false; }
-		
+
 		// Try to decode delivery options data
 		$delivery_options_object = json_decode( $data_json, true );
-		
+
 		// Bail if delivery options data is not valid
 		if ( ! $delivery_options_object ) { return false; }
 
@@ -315,7 +315,7 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 
 		// Initialize delivery options data as empty
 		$delivery_options = false;
-		
+
 		// Maybe get delivery options for the checkout page
 		if ( FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) {
 			$delivery_options = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( '_myparcel_delivery_options' );
@@ -370,7 +370,7 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 	public function maybe_change_substep_text_lines_shipping_methods( $text_lines ) {
 		// Bail if class not available
 		if ( ! class_exists( 'MyParcelNL\Sdk\src\Model\Carrier\CarrierFactory' ) ) { return $text_lines; }
-		
+
 		// Bail if selected shipping method is not associated with MyParcel
 		if ( ! $this->is_shipping_method_selected() ) { return $text_lines; }
 
@@ -403,7 +403,7 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 			if ( array_key_exists( 'pickupLocation', $delivery_options ) ) {
 				// Get address data object
 				$address_data = $this->get_selected_pickup_location_address( $delivery_options );
-	
+
 				// Add pickup location data to substep review text lines
 				$text_lines[] = $delivery_options[ 'pickupLocation' ][ 'location_name' ];
 				$text_lines[] = WC()->countries->get_formatted_address( $address_data );
