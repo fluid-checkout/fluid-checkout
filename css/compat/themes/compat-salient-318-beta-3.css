@@ -24,6 +24,10 @@ body.theme-salient div.woocommerce .form-row .fc-mailcheck-suggestion {
   background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3) !important;
 }
 
+body.theme-salient div.woocommerce form .form-row .woocommerce-input-wrapper span.description > code {
+  display: inline;
+}
+
 body.theme-salient.woocommerce-checkout .select2-container .select2-selection--single,
 body.theme-salient.woocommerce-checkout .select2-container .select2-selection--single .select2-selection__rendered,
 body.theme-salient.woocommerce-checkout .select2-container .select2-selection--single .select2-selection__arrow {
