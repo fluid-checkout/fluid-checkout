@@ -24,7 +24,7 @@ body.theme-salient div.woocommerce .form-row .fc-mailcheck-suggestion {
   background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3) !important;
 }
 
-body.theme-salient div.woocommerce form p {
+body.theme-salient div.woocommerce form p:not(.form-row) {
   padding-bottom: 0;
 }
 

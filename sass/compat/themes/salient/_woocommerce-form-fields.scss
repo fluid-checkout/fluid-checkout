@@ -2,7 +2,7 @@
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form p {
+body#{ $_body-theme-selector } div.woocommerce form p:not( .form-row ) {
 	padding-bottom: 0;
 }
 
