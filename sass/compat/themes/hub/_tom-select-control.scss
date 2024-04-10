@@ -1,0 +1,8 @@
+// ------------------------------------
+// TOM SELECT CONTROL
+// ------------------------------------
+
+body#{ $_body-theme-selector } .ts-wrapper.single .ts-control:after {
+	#{ $alignment-right }: remsize( 2.5rem );
+	z-index: z( 'above' );
+}

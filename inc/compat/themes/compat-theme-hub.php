@@ -46,7 +46,8 @@ class FluidCheckout_ThemeCompat_Hub extends FluidCheckout {
 				'--fluidcheckout--field--background-color--accent' => 'var(--color-primary)',
 
 				// Checkout validation styles
-				'--fluidcheckout--validation-check--horizontal-spacing--select' => '40px',
+				'--fluidcheckout--validation-check--horizontal-spacing' => '20px',
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '40px',
 			),
 		);
 

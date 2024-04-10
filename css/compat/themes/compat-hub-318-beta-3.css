@@ -1,3 +1,8 @@
+body.theme-hub .ts-wrapper.single .ts-control:after {
+  right: 25px;
+  z-index: 10;
+}
+
 body.theme-hub div.woocommerce form.woocommerce-checkout .form-row {
   display: block;
 }
