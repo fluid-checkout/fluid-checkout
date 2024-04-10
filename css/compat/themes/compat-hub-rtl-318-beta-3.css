@@ -1,3 +1,7 @@
+body.theme-hub #order_review .woocommerce-checkout-review-order-table .amount {
+  font-size: 15px;
+}
+
 body.theme-hub .ts-wrapper.single .ts-control:after {
   left: 25px;
   z-index: 10;

@@ -12,6 +12,7 @@ $_body-theme-selector:                 '.theme-hub' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"order-summary",
 	"tom-select-control",
 	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2";
