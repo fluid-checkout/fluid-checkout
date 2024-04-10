@@ -27,6 +27,12 @@ class FluidCheckout_ThemeCompat_Hub extends FluidCheckout {
 
 		// Theme's "Payment" section in order summary
 		remove_action( 'woocommerce_checkout_order_review', 'liquid_heading_payment_method', 15 );
+
+		// Dequeue
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_scripts' ), 100 );
+
+		// Lazy load hooks
+		add_action( 'wp', array( $this, 'disable_image_lazy_load' ), 10 );
 	}
 
 
@@ -52,6 +58,33 @@ class FluidCheckout_ThemeCompat_Hub extends FluidCheckout {
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+
+
+	/**
+	 * Dequeue theme scripts that break the layout on checkout page.
+	 */
+	public function maybe_dequeue_scripts() {
+		// Bail if not on checkout page
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		// jQuery UI from the theme
+		wp_deregister_script( 'jquery-ui' );
+		wp_dequeue_script( 'jquery-ui' );
+	}
+
+
+
+	/**
+	 * Disable Hub theme's lazy loading for images that doesn't work without the jQuery UI script.
+	 */
+	public function disable_image_lazy_load() {
+		// Bail if not on checkout page
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $options; }
+
+		remove_filter( 'wp_get_attachment_image_attributes', 'liquid_filter_gallery_img_atts', 10 );
+		remove_filter( 'wp_lazy_loading_enabled', '__return_false' );
 	}
 
 }
