@@ -5,3 +5,8 @@
 body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row {
 	display: block;
 }
+
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-additional-fields {
+	padding-top: 0;
+	margin-bottom: 0;
+}
