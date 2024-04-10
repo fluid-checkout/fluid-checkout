@@ -10,3 +10,11 @@ body#{ $_body-theme-selector } div.woocommerce .woocommerce-additional-fields {
 	padding-top: 0;
 	margin-bottom: 0;
 }
+
+body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row label.checkbox {
+	display: inline;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row label.checkbox input {
+	margin-top: 0;
+}

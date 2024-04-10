@@ -16,6 +16,14 @@ body.theme-hub div.woocommerce .woocommerce-additional-fields {
   margin-bottom: 0;
 }
 
+body.theme-hub div.woocommerce form.woocommerce-checkout .form-row label.checkbox {
+  display: inline;
+}
+
+body.theme-hub div.woocommerce form.woocommerce-checkout .form-row label.checkbox input {
+  margin-top: 0;
+}
+
 body.theme-hub div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   padding-right: 0;
 }
