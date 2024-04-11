@@ -50,6 +50,8 @@ class FluidCheckout_ThemeCompat_Hub extends FluidCheckout {
 				'--fluidcheckout--field--height' => '45px',
 				'--fluidcheckout--field--padding-left' => '25px',
 				'--fluidcheckout--field--background-color--accent' => 'var(--color-primary)',
+				'--fluidcheckout--field--border-color' => '#e1e1e1',
+				'--fluidcheckout--field--font-size' => '18px',
 
 				// Checkout validation styles
 				'--fluidcheckout--validation-check--horizontal-spacing' => '20px',

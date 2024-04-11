@@ -3,7 +3,7 @@ body.theme-hub #order_review .woocommerce-checkout-review-order-table .amount {
 }
 
 body.theme-hub .ts-wrapper.single .ts-control:after {
-  right: 25px;
+  right: 20px;
   z-index: 10;
 }
 
@@ -24,6 +24,11 @@ body.theme-hub div.woocommerce form.woocommerce-checkout .form-row label.checkbo
   margin-top: 0;
 }
 
+body.theme-hub div.woocommerce form .form-row .select2-selection--single {
+  border: var(--fluidcheckout--field--border-width, 1px) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+}
+
 body.theme-hub div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   padding-left: 0;
+  color: #808291;
 }
