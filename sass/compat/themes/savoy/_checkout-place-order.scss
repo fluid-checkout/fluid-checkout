@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-privacy-policy-text {
+	margin-bottom: 0;
+}
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-place-order #place_order {
+	margin-top: 0;
+}
