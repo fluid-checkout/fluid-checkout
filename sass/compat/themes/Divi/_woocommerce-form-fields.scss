@@ -16,16 +16,3 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row select {
 	border-radius: 3px;
 	height: remsize( 5rem );
 }
-
-
-
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection__rendered,
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection__arrow {
-	line-height: remsize( 4.9rem );
-}
-
-
-
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection__arrow {
-	top: remsize( 1.2rem );
-}

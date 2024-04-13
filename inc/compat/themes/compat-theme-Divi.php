@@ -134,10 +134,14 @@ class FluidCheckout_ThemeCompat_Divi extends FluidCheckout {
 		$new_css_variables = array(
 			':root' => array(
 				// Form field styles
-				'--fluidcheckout--field--height' => '51px',
+				'--fluidcheckout--field--height' => '55.79px',
 				'--fluidcheckout--field--padding-left' => '16px',
-				'--fluidcheckout--field--border-radius' => '3px',
+				'--fluidcheckout--field--border-width' => '0px',
 				'--fluidcheckout--field--background-color--accent' => $theme_accent_color,
+
+				// Checkout validation styles
+				'--fluidcheckout--validation-check--horizontal-spacing' => '10px',
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '30px',
 			),
 		);
 
