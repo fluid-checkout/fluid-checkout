@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme The Gem.
 * Added: Compatibility with plugin Flexible Checkout Fields PRO.
 * Added: Compatibility with plugin MyParcel.
 * Fixed: Compatibility with plugin MailChimp for WooCommerce. Fix fatal error on checkout page when connection to Mailchimp is not completely set up.
