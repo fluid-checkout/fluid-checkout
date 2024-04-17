@@ -112,7 +112,7 @@ class FluidCheckout_ThemeCompat_Divi extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		$attributes['data-sticky-relative-to'] = '#main-header';
+		$attributes['data-sticky-relative-to'] = '{ "sm": { "breakpointInitial": 981, "breakpointFinal": 100000, "selector": "#main-header" } }';
 
 		return $attributes;
 	}
