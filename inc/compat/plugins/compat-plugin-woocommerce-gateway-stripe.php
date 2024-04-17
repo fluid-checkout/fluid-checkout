@@ -20,6 +20,8 @@ class FluidCheckout_WooCommerceGatewayStripe extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Styles
+		// Applies only to Legacy Stripe Checkout experience.
+		// For the New Stripe Checkout, the is currently no way to customize the styles of the payment fields.
 		add_filter( 'wc_stripe_elements_styling', array( $this, 'change_stripe_fields_styles' ), 10 );
 	}
 
