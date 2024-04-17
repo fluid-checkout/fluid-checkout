@@ -1,0 +1,13 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-selection--single,
+body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-selection--single .select2-selection__rendered,
+body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-selection--single .select2-selection__arrow {
+	height: auto;
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .select2-container .select2-selection--single .select2-selection__rendered {
+	line-height: $form-field-select2-selection-height--single;
+}
