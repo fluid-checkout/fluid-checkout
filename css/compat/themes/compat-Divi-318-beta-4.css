@@ -53,6 +53,14 @@ body.theme-Divi.has-highlighted-shipping-section div.woocommerce form .fc-step__
   border-width: 0;
 }
 
+@media (min-width: 550px) {
+  body.theme-Divi.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
+  body.theme-Divi.woocommerce-checkout div.woocommerce form .form-row.form-row-middle,
+  body.theme-Divi.woocommerce-checkout div.woocommerce form .form-row.form-row-last {
+    float: left !important;
+  }
+}
+
 body.theme-Divi div.woocommerce form .form-row .select2-container .select2-selection__arrow {
   right: 10px;
 }

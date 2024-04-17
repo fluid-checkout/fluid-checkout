@@ -25,3 +25,14 @@ body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce 
 body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] .select2-selection--single {
 	border-width: 0;
 }
+
+
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-first,
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-middle,
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-last {
+
+	@media (#{$bp-larger-than-phablet}) {
+		float: #{ $alignment-left } !important; // Needed to override theme styles
+	}
+}
