@@ -249,7 +249,7 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 	 * @param   array  $clear_field_keys  Checkout field keys to clear from the session after placing an order.
 	 */
 	public function change_customer_persisted_data_clear_fields_order_processed( $clear_field_keys ) {
-		// Define skip fields
+		// Add fields to be cleared
 		$clear_field_keys[] = 'pickups_location1';
 		$clear_field_keys[] = 'pickups_location2';
 
