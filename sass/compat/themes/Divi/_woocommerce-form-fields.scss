@@ -16,3 +16,12 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row select {
 	border-radius: 3px;
 	height: remsize( 5rem );
 }
+
+
+
+body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] .ts-control,
+body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] .ts-control,
+body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] .select2-selection--single,
+body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] .select2-selection--single {
+	border-width: 0;
+}
