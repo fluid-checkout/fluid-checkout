@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT SHIPPING METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option input[type="radio"] + .shipping-method__option-label span {
+	color: inherit;
+}
