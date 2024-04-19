@@ -13,7 +13,7 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row select {
 	padding: remsize( 1.4rem );
-	border-radius: 3px;
+	border-radius: 3px; // Needed to match theme unit
 	height: remsize( 5rem );
 }
 
