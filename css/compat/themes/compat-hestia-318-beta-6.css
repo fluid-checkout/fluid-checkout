@@ -6,6 +6,7 @@ body.theme-hestia div.woocommerce .form-row .fc-mailcheck-suggestion {
 
 body.theme-hestia div.woocommerce form .form-row .input-checkbox {
   margin-top: 0;
+  margin-right: 5px;
 }
 
 body.theme-hestia div.woocommerce form .form-row .select2-selection .select2-selection__arrow {

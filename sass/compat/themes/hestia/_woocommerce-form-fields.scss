@@ -4,4 +4,5 @@
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row .input-checkbox {
 	margin-top: 0;
+	margin-#{ $alignment-right }: 5px; // Needed to use `px` as units to match theme styles
 }
