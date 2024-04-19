@@ -221,15 +221,19 @@ class FluidCheckout {
 	/**
 	 * Maybe set a different locale for the plugin language files for the language variants.
 	 *
-	 * @param   string  $locale  The locale to be used for the plugin language files.
+	 * @param   string  $mofile  The MO file path.
 	 * @param   string  $domain  The text domain.
 	 */
-	public function maybe_set_locale_for_language_variants( $locale, $domain ) {
+	public function maybe_set_locale_file_for_language_variants( $mofile, $domain ) {
 		// Bail if not loading the plugin text domain.
-		if ( self::$plugin_slug !== $domain ) { return $locale; }
+		if ( self::$plugin_slug !== $domain ) { return $mofile; }
+
+		// Get current locale
+		$current_locale = apply_filters( 'plugin_locale', determine_locale(), self::$plugin_slug );
+		$locale = $current_locale;
 
 		// Bail if a translation file was found for the locale.
-		if ( $this->locale_translation_file_exists( $locale ) ) { return $locale; }
+		if ( $this->locale_translation_file_exists( $locale ) ) { return $mofile; }
 
 		// Define language to load for the language variants.
 		$locale_language_variants = $this->get_locale_language_variants();
@@ -239,7 +243,10 @@ class FluidCheckout {
 			$locale = $locale_language_variants[ $locale ];
 		}
 
-		return $locale;
+		// Replace locale in the translation file path
+		$mofile = str_replace( $current_locale . '.mo', $locale . '.mo', $mofile );
+
+		return $mofile;
 	}
 
 
@@ -258,7 +265,7 @@ class FluidCheckout {
 		add_action( 'before_woocommerce_init', array( $this, 'declare_woocommerce_hpos_compatibility' ), 10 );
 
 		// Language locale
-		add_filter( 'plugin_locale', array( $this, 'maybe_set_locale_for_language_variants' ), 10, 2 );
+		add_filter( 'load_textdomain_mofile', array( $this, 'maybe_set_locale_file_for_language_variants' ), 10, 2 );
 		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
 
 		// Load features
