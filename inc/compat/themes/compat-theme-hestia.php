@@ -139,6 +139,7 @@ class FluidCheckout_ThemeCompat_Hestia extends FluidCheckout {
 				// Form field styles
 				'--fluidcheckout--field--height' => '30.5px',
 				'--fluidcheckout--field--padding-left' => '7px',
+				'--fluidcheckout--field--background-color--accent' => '#9c27b0',
 			),
 		);
 
