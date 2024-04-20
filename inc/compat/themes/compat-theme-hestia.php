@@ -19,6 +19,9 @@ class FluidCheckout_ThemeCompat_Hestia extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
 		// Checkout page template
 		add_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
 
@@ -28,12 +31,20 @@ class FluidCheckout_ThemeCompat_Hestia extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
-		// CSS variables
+		// General CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// CSS variables on edit address page
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables_edit_address' ), 20 );
 	}
 
 
@@ -140,6 +151,28 @@ class FluidCheckout_ThemeCompat_Hestia extends FluidCheckout {
 				'--fluidcheckout--field--height' => '30.5px',
 				'--fluidcheckout--field--padding-left' => '7px',
 				'--fluidcheckout--field--background-color--accent' => '#9c27b0',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+
+
+	/**
+	 * Add CSS variables to the edit address page.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables_edit_address( $css_variables ) {
+		// Bail if not on account address edit page
+		if ( ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'edit-address' ) ) { return $css_variables; }
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '36px', 
 			),
 		);
 
