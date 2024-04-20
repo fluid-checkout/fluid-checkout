@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-27 14:19+0000\n"
+"POT-Creation-Date: 2024-04-20 13:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -73,7 +73,7 @@ msgid ""
 "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
 msgstr ""
 
-#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:96
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:99
 msgid ""
 "<p>Fluid Checkout needs the classic WooCommerce shortcode-based checkout "
 "form to work. When using the Divi Builder to customize the look and feel of "
@@ -92,7 +92,7 @@ msgid ""
 "information, visit the Fluid Checkout documentation.</p>"
 msgstr ""
 
-#: fluid-checkout.php:553
+#: fluid-checkout.php:560
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -112,7 +112,7 @@ msgstr ""
 msgid "Action link on the order summary at checkout."
 msgstr ""
 
-#: fluid-checkout.php:549
+#: fluid-checkout.php:556
 #, php-format
 msgid "Activate %s"
 msgstr ""
@@ -428,6 +428,10 @@ msgstr ""
 msgid "Captcha Pro by BestWebSoft"
 msgstr ""
 
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:393
+msgid "Carrier:"
+msgstr ""
+
 #: inc/admin/admin-settings-cart.php:124
 msgid "Cart elements"
 msgstr ""
@@ -457,7 +461,9 @@ msgid "Change email address to: {suggestion-value}"
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:517
-msgid "Change visibility for the shipping company field on the checkout form."
+msgid ""
+"Change visibility for the company name field for the shipping address "
+"section on the checkout form."
 msgstr ""
 
 #: inc/checkout-steps.php:1865
@@ -526,6 +532,7 @@ msgstr ""
 #: inc/compat/themes/compat-theme-woodmart.php:132
 #: inc/compat/themes/compat-theme-betheme.php:217
 #: inc/compat/themes/compat-theme-pressmart.php:186
+#: inc/compat/themes/compat-theme-thegem.php:132
 msgid "Checkout progress"
 msgstr ""
 
@@ -636,6 +643,10 @@ msgid ""
 "Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
 "removes tax charges on reverse charge basis and confirms customer location "
 "when needed."
+msgstr ""
+
+#: inc/admin/admin-settings-checkout.php:516
+msgid "Company name field for shipping address"
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:551
@@ -892,7 +903,7 @@ msgstr ""
 msgid "Edit cart link"
 msgstr ""
 
-#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:100
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:103
 msgid "Edit the checkout page"
 msgstr ""
 
@@ -1004,7 +1015,7 @@ msgstr ""
 msgid "Fluid Checkout for WooCommerce - Lite"
 msgstr ""
 
-#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:95
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:98
 msgid "Fluid Checkout is not compatible with the Divi Builder checkout layout"
 msgstr ""
 
@@ -1085,7 +1096,7 @@ msgstr ""
 msgid "Go to Germanized settings"
 msgstr ""
 
-#: fluid-checkout.php:545
+#: fluid-checkout.php:552
 msgid "Go to Plugin Search"
 msgstr ""
 
@@ -1322,7 +1333,7 @@ msgstr ""
 msgid "Logo image"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:66
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:69
 msgid "Mailchimp for WooCommerce"
 msgstr ""
 
@@ -1506,6 +1517,12 @@ msgid ""
 "order received pages."
 msgstr ""
 
+#: inc/compat/themes/compat-theme-thegem.php:133
+msgid ""
+"Output the checkout steps section from The Gem theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+
 #: inc/compat/themes/compat-theme-pressmart.php:187
 msgid ""
 "Output the checkout steps section from the Pressmart theme on the checkout, "
@@ -1518,7 +1535,7 @@ msgid ""
 "Checkout header and footer."
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:73
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:76
 msgid ""
 "Override the position for the subscribe checkbox on the checkout page and "
 "always display it on the contact step"
@@ -1544,11 +1561,13 @@ msgstr ""
 msgid "Pickup point"
 msgstr ""
 
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:412
 #: inc/compat/plugins/compat-plugin-seur.php:314
 #: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:313
 msgid "Pickup point not selected yet."
 msgstr ""
 
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:400
 #: inc/compat/plugins/compat-plugin-seur.php:319
 #: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:307
 msgid "Pickup point:"
@@ -1580,7 +1599,7 @@ msgstr ""
 msgid "Rate the plugin"
 msgstr ""
 
-#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:101
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104
 #: inc/admin/admin.php:183
 msgid "Read the documentation."
 msgstr ""
@@ -1739,10 +1758,6 @@ msgstr ""
 msgid "Shipping address"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:516
-msgid "Shipping company"
-msgstr ""
-
 #: inc/checkout-steps.php:2402
 msgid "Shipping method"
 msgstr ""
@@ -1817,7 +1832,7 @@ msgstr ""
 msgid "Step %1$s of %2$s"
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:72
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:75
 msgid "Subscribe checkbox"
 msgstr ""
 
@@ -1928,6 +1943,10 @@ msgstr ""
 
 #: inc/compat/themes/compat-theme-pressmart.php:180
 msgid "Theme Pressmart"
+msgstr ""
+
+#: inc/compat/themes/compat-theme-thegem.php:126
+msgid "Theme The Gem"
 msgstr ""
 
 #: inc/compat/themes/compat-theme-woodmart.php:126
@@ -2098,7 +2117,7 @@ msgid ""
 "checkout feature in the plugin settings."
 msgstr ""
 
-#: fluid-checkout.php:542
+#: fluid-checkout.php:549
 msgid "WooCommerce"
 msgstr ""
 
