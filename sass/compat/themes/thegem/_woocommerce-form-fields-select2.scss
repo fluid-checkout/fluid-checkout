@@ -1,0 +1,8 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } #page div.woocommerce form .form-row .select2-container .select2-selection__arrow:before {
+	top: 0;
+	margin-top: 0;
+}

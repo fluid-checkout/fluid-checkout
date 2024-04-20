@@ -45,6 +45,9 @@ class FluidCheckout_AdminNotices_Divi_CheckoutLayoutBeingUsed extends FluidCheck
 	 * @param  array  $notices  Admin notices from the plugin.
 	 */
 	public function add_notice( $notices = array() ) {
+		// Bail if function is not available
+		if ( ! function_exists( 'wc_get_page_id' ) ) { return $notices; }
+
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( 'manage_options' ) ) { return $notices; }
 

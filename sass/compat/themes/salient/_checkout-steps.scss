@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT STEP ACTIONS
+// ------------------------------------
+
+body#{ $_body-theme-selector }.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:not( [disabled] ):not( .disabled ) {
+	&:hover,
+	&:focus,
+	&:active {
+		opacity: .8;
+	}
+}
