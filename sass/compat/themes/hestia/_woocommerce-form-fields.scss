@@ -10,3 +10,8 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .input-checkbox {
 body#{ $_body-theme-selector } div.woocommerce .form-row .input-text.form-control {
 	padding-#{ $alignment-left }: $form-field-padding-left;
 }
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .woocommerce-input-wrapper.form-group,
+body#{ $_body-theme-selector } div.woocommerce form .form-row .woocommerce-input-wrapper.form-group .form-group {
+	padding-bottom: 0;
+}
