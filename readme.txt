@@ -364,8 +364,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: Compatibility with theme Savoy.
+* Added: Compatibility with theme Hub.
 * Added: Compatibility with theme Salient.
+* Added: Compatibility with theme Savoy.
 * Added: Compatibility with theme The Gem.
 * Added: Compatibility with plugin Flexible Checkout Fields PRO.
 * Added: Compatibility with plugin MyParcel.
