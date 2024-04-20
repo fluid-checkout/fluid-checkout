@@ -18,3 +18,24 @@ body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-r
 body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row label.checkbox input {
 	margin-top: 0;
 }
+
+
+
+
+body#{ $_body-theme-selector } div.woocommerce form {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="search"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"],
+	.select2-selection--single {
+		height: $form-field-height;
+		padding: 0 $form-field-padding-left;
+		border: $form-field-border-width solid $form-field-border-color;
+	}
+}

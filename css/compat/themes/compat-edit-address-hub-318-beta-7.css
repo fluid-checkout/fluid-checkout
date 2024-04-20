@@ -1,9 +1,5 @@
-body.theme-hub #order_review .woocommerce-checkout-review-order-table .amount {
-  font-size: 15px;
-}
-
 body.theme-hub .ts-wrapper.single .ts-control:after {
-  left: 20px;
+  right: 20px;
   z-index: 10;
 }
 
@@ -45,6 +41,6 @@ body.theme-hub div.woocommerce form .form-row .select2-selection--single {
 }
 
 body.theme-hub div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
-  padding-right: 0;
+  padding-left: 0;
   color: #808291;
 }

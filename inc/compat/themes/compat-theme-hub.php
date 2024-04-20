@@ -28,8 +28,9 @@ class FluidCheckout_ThemeCompat_Hub extends FluidCheckout {
 		// Theme's "Payment" section in order summary
 		remove_action( 'woocommerce_checkout_order_review', 'liquid_heading_payment_method', 15 );
 
-		// Dequeue
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_scripts' ), 100 );
+		// Dequeue scripts
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_scripts_jquery_ui_checkout_page' ), 100 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_scripts_jquery_ui_edit_address_page' ), 100 );
 
 		// Lazy load hooks
 		add_action( 'wp', array( $this, 'disable_image_lazy_load' ), 10 );
@@ -65,15 +66,34 @@ class FluidCheckout_ThemeCompat_Hub extends FluidCheckout {
 
 
 	/**
-	 * Dequeue theme scripts that break the layout on checkout page.
+	 * Dequeue theme scripts that break the layout on cart page.
 	 */
-	public function maybe_dequeue_scripts() {
-		// Bail if not on checkout page
-		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
-
+	public function dequeue_scripts_jquery_ui() {
 		// jQuery UI from the theme
 		wp_deregister_script( 'jquery-ui' );
 		wp_dequeue_script( 'jquery-ui' );
+	}
+
+	/**
+	 * Dequeue theme scripts that break the layout on checkout page.
+	 */
+	public function maybe_dequeue_scripts_jquery_ui_checkout_page() {
+		// Bail if not on checkout page
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		// Dequeue jQuery UI scripts
+		$this->dequeue_scripts_jquery_ui();
+	}
+
+	/**
+	 * Dequeue theme scripts that break the layout on edit address page.
+	 */
+	public function maybe_dequeue_scripts_jquery_ui_edit_address_page() {
+		// Bail if not on account edit address page
+		if ( ! is_account_page() || ! is_wc_endpoint_url( 'edit-address' ) ) { return; }
+
+		// Dequeue jQuery UI scripts
+		$this->dequeue_scripts_jquery_ui();
 	}
 
 
