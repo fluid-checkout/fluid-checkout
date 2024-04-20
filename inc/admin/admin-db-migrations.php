@@ -28,6 +28,7 @@ class FluidCheckout_AdminDBMigrations extends FluidCheckout {
 	public function hooks() {
 		add_action( 'admin_init', array( $this, 'maybe_dismiss_migrate_success_message' ), 10 );
 		add_action( 'admin_init', array( $this, 'maybe_migrate_database' ), 10 );
+		add_action( 'plugins_loaded', array( $this, 'maybe_migrate_database_on_first_activation' ), 10 );
 	}
 
 
@@ -80,6 +81,28 @@ class FluidCheckout_AdminDBMigrations extends FluidCheckout {
 		wp_safe_redirect( $redirect_url );
 		exit;
 	}
+
+	/**
+	 * Maybe migrate database on first activation.
+	 */
+	public function maybe_migrate_database_on_first_activation() {
+		// Bail if there are no migrations to apply
+		if ( ! $this->has_migrations_to_apply() ) { return; }
+
+		// Get install date
+		// Need to get option directly as the Lite plugin might not be activated at this point
+		$install_date = get_option( self::$plugin_prefix . '_plugin_activation_time' );
+		$past_date = strtotime( '-10 min' );
+
+		// Bail if time limit has passed since first installation,
+		// in which case the admin user needs to confirm the action through the admin notice.
+		if ( ! $install_date || $past_date > $install_date ) { return; }
+
+		// Migrate database, do not show notice in this case.
+		$this->migrate_database();
+	}
+
+
 
 	/**
 	 * Migrate database.
