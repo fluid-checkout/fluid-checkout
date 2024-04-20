@@ -1,0 +1,10 @@
+// ------------------------------------
+// CHECKOUT VALIDATION MESSAGES
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce .form-row .woocommerce-error {
+	padding: $checkout-message-error-padding !important; // Needed to override theme styles
+	padding-#{ $alignment-left }: $checkout-message-error-padding-left !important; // Needed to override theme styles
+	font-size: $font-size-extra-small !important; // Needed to override theme styles
+	color: $checkout-message-error-color !important; // Needed to override theme styles
+}

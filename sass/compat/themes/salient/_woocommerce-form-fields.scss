@@ -1,0 +1,12 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form p:not( .form-row ) {
+	padding-bottom: 0;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .woocommerce-input-wrapper span.description > code {
+	display: inline;
+	padding: .1em .5em; // Use `em` as units to match theme styles
+}

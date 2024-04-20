@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name="payment_method"] + label span {
+	color: inherit;
+}
