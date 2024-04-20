@@ -3,6 +3,6 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } .ts-wrapper.single .ts-control:after {
-	#{ $alignment-right }: remsize( 2rem );
 	z-index: z( 'above' );
+	#{ $alignment-right }: remsize( 2rem );
 }
