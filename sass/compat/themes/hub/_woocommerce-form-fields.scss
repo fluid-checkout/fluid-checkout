@@ -34,8 +34,8 @@ body#{ $_body-theme-selector } div.woocommerce form {
 	input[type="url"],
 	input[type="password"],
 	.select2-selection--single {
-		height: $form-field-height;
 		padding: 0 $form-field-padding-left;
+		height: $form-field-height;
 		border: $form-field-border-width solid $form-field-border-color;
 	}
 }
