@@ -131,7 +131,7 @@ class FluidCheckout_ThemeCompat_Hestia extends FluidCheckout {
 		$hestia_general_layout = get_theme_mod( 'hestia_general_layout', apply_filters( 'hestia_boxed_layout_default', 1 ) );
 
 		// Return the class if the Boxed Layout option is not enabled in the Hestia theme
-		if ( ! isset( $hestia_general_layout ) && (bool) $hestia_general_layout !== true ) { return; }
+		if ( ! isset( $hestia_general_layout ) || (bool) $hestia_general_layout !== true ) { return; }
 
 		return 'main-raised';
 	}
