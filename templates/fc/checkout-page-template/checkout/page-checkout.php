@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 3.0.4
+ * @version 3.1.8
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -26,7 +26,12 @@ else {
 	get_header( 'checkout' );
 }
 ?>
+
+<?php do_action( 'fc_checkout_after_header' ); ?>
+
 <div class="fc-content <?php echo esc_attr( apply_filters( 'fc_content_section_class', '' ) ); ?>">
+
+	<?php do_action( 'fc_checkout_before_content' ); ?>
 
 	<h1 class="fc-checkout__title <?php echo false === apply_filters( 'fc_display_checkout_page_title', false ) ? 'screen-reader-text' : ''; ?>"><?php the_title(); ?></h1>
 
@@ -37,6 +42,8 @@ else {
 		the_content();
 	endwhile;
 	?>
+
+	<?php do_action( 'fc_checkout_after_content' ); ?>
 
 </div>
 
