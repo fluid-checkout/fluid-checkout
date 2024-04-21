@@ -5,11 +5,11 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 3.1.8-beta-6
+Version: 3.1.8-beta-8
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 8.7.0
+WC tested up to: 8.8.2
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
@@ -221,15 +221,19 @@ class FluidCheckout {
 	/**
 	 * Maybe set a different locale for the plugin language files for the language variants.
 	 *
-	 * @param   string  $locale  The locale to be used for the plugin language files.
+	 * @param   string  $mofile  The MO file path.
 	 * @param   string  $domain  The text domain.
 	 */
-	public function maybe_set_locale_for_language_variants( $locale, $domain ) {
+	public function maybe_set_locale_file_for_language_variants( $mofile, $domain ) {
 		// Bail if not loading the plugin text domain.
-		if ( self::$plugin_slug !== $domain ) { return $locale; }
+		if ( self::$plugin_slug !== $domain ) { return $mofile; }
+
+		// Get current locale
+		$current_locale = apply_filters( 'plugin_locale', determine_locale(), self::$plugin_slug );
+		$locale = $current_locale;
 
 		// Bail if a translation file was found for the locale.
-		if ( $this->locale_translation_file_exists( $locale ) ) { return $locale; }
+		if ( $this->locale_translation_file_exists( $locale ) ) { return $mofile; }
 
 		// Define language to load for the language variants.
 		$locale_language_variants = $this->get_locale_language_variants();
@@ -239,7 +243,10 @@ class FluidCheckout {
 			$locale = $locale_language_variants[ $locale ];
 		}
 
-		return $locale;
+		// Replace locale in the translation file path
+		$mofile = str_replace( $current_locale . '.mo', $locale . '.mo', $mofile );
+
+		return $mofile;
 	}
 
 
@@ -258,7 +265,7 @@ class FluidCheckout {
 		add_action( 'before_woocommerce_init', array( $this, 'declare_woocommerce_hpos_compatibility' ), 10 );
 
 		// Language locale
-		add_filter( 'plugin_locale', array( $this, 'maybe_set_locale_for_language_variants' ), 10, 2 );
+		add_filter( 'load_textdomain_mofile', array( $this, 'maybe_set_locale_file_for_language_variants' ), 10, 2 );
 		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
 
 		// Load features
