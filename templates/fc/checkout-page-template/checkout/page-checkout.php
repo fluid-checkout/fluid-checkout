@@ -27,11 +27,11 @@ else {
 }
 ?>
 
-<?php do_action( 'fc_checkout_after_header' ); ?>
+<?php do_action( 'fc_checkout_before_main_section_wrapper' ); ?>
 
 <div class="fc-content <?php echo esc_attr( apply_filters( 'fc_content_section_class', '' ) ); ?>">
 
-	<?php do_action( 'fc_checkout_before_content' ); ?>
+	<?php do_action( 'fc_checkout_before_main_section' ); ?>
 
 	<h1 class="fc-checkout__title <?php echo false === apply_filters( 'fc_display_checkout_page_title', false ) ? 'screen-reader-text' : ''; ?>"><?php the_title(); ?></h1>
 
@@ -43,9 +43,11 @@ else {
 	endwhile;
 	?>
 
-	<?php do_action( 'fc_checkout_after_content' ); ?>
+	<?php do_action( 'fc_checkout_after_main_section' ); ?>
 
 </div>
+
+<?php do_action( 'fc_checkout_after_main_section_wrapper' ); ?>
 
 <?php
 // Replace footer with our distraction free template

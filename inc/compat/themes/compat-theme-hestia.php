@@ -54,11 +54,11 @@ class FluidCheckout_ThemeCompat_Hestia extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
 
 		// Missing header part from the theme
-		add_action( 'fc_checkout_after_header', array( $this, 'add_header_part' ) );
+		add_action( 'fc_checkout_before_main_section_wrapper', array( $this, 'add_header_part' ), 10 );
 
 		// Theme's inner containers
-		add_action( 'fc_checkout_before_content', array( $this, 'add_inner_container_opening_tags' ) );
-		add_action( 'fc_checkout_after_content', array( $this, 'add_inner_container_closing_tags' ) );
+		add_action( 'fc_checkout_before_main_section', array( $this, 'add_inner_container_opening_tags' ), 10 );
+		add_action( 'fc_checkout_after_main_section', array( $this, 'add_inner_container_closing_tags' ), 10 );
 	}
 
 
@@ -87,16 +87,18 @@ class FluidCheckout_ThemeCompat_Hestia extends FluidCheckout {
 		<div class="main <?php echo $this->maybe_add_inner_container_class(); ?>">
 			<div class="blog-post">
 				<div class="container">
-		<?php
+				<?php
 	}
-
-
 
 	/**
 	 * Add opening tags for inner container from the Hestia theme.
 	 */
 	public function add_inner_container_closing_tags() {
-		echo '</div></div></div>';
+				?>
+				</div>
+			</div>
+		</div>
+		<?php
 	}
 
 

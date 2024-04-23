@@ -81,11 +81,11 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
 
 		// Theme's page title section
-		add_action( 'fc_checkout_after_header', array( $this, 'maybe_display_page_title' ) );
+		add_action( 'fc_checkout_before_main_section_wrapper', array( $this, 'maybe_display_page_title' ), 10 );
 
 		// Theme's inner container
-		add_action( 'fc_checkout_before_content', array( $this, 'add_inner_container_opening_tag' ) );
-		add_action( 'fc_checkout_after_content', array( $this, 'add_inner_container_closing_tag' ) );
+		add_action( 'fc_checkout_before_main_section', array( $this, 'add_inner_container_opening_tag' ), 10 );
+		add_action( 'fc_checkout_after_main_section', array( $this, 'add_inner_container_closing_tag' ), 10 );
 	}
 
 
@@ -99,13 +99,13 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 		<?php
 	}
 
-
-
 	/**
 	 * Add opening tag for inner container from the Hestia theme.
 	 */
 	public function add_inner_container_closing_tag() {
-		echo '</div>';
+		?>
+		</div>
+		<?php
 	}
 
 
