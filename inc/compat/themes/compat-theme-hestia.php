@@ -22,6 +22,7 @@ class FluidCheckout_ThemeCompat_Hestia extends FluidCheckout {
 		// Late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
+		// Checkout template hooks
 		$this->checkout_template_hooks();
 
 		// Container class
