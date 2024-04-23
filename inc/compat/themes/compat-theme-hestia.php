@@ -84,9 +84,9 @@ class FluidCheckout_ThemeCompat_Hestia extends FluidCheckout {
 	 */
 	public function add_inner_container_opening_tags() {
 		?>
-			<div class="main <?php echo $this->maybe_add_inner_container_class(); ?>">
-				<div class="blog-post">
-					<div class="container">
+		<div class="main <?php echo $this->maybe_add_inner_container_class(); ?>">
+			<div class="blog-post">
+				<div class="container">
 		<?php
 	}
 
