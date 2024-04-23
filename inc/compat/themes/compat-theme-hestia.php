@@ -104,9 +104,6 @@ class FluidCheckout_ThemeCompat_Hestia extends FluidCheckout {
 	 * Maybe add the "main-raised" class from Hestia to the inner container of the page content.
 	 */
 	public function maybe_add_inner_container_class() {
-		// Bail if using distraction free header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
-
 		$hestia_general_layout = get_theme_mod( 'hestia_general_layout', apply_filters( 'hestia_boxed_layout_default', 1 ) );
 
 		// Return the class if the Boxed Layout option is not enabled in the Hestia theme
