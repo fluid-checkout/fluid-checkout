@@ -51,7 +51,7 @@ class FluidCheckout_ThemeCompat_Savoy extends FluidCheckout {
 
 
 	/**
-	 * Add opening tag for inner container from the Hestia theme.
+	 * Add opening tag for inner container from the theme.
 	 */
 	public function add_inner_container_opening_tag() {
 		?>
@@ -60,7 +60,7 @@ class FluidCheckout_ThemeCompat_Savoy extends FluidCheckout {
 	}
 
 	/**
-	 * Add closing tag for inner container from the Hestia theme.
+	 * Add closing tag for inner container from the theme.
 	 */
 	public function add_inner_container_closing_tag() {
 		?>
