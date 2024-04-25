@@ -1,0 +1,12 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single {
+	border: $form-field-border-width solid $form-field-border-color;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+	padding-#{ $alignment-left }: 0;
+	color: #808291; // Needed to use a color from the theme
+}

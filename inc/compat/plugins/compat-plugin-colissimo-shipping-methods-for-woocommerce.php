@@ -71,7 +71,7 @@ class FluidCheckout_ColissimoShippingMethodsForWooCommerce extends FluidCheckout
 
 		// Bail if Colissimo objects are not found
 		if ( ! $this->colissimo_pickup_webservice ) { return; }
-		
+
 		// Get HTML for the webservice map
 		ob_start();
 		if ( class_exists( 'FC_GoogleAddressAutocomplete_ColissimoShippingMethodsForWooCommerce' ) && method_exists( FC_GoogleAddressAutocomplete_ColissimoShippingMethodsForWooCommerce::instance(), 'add_webservice_map_without_script' ) && 'yes' === FC_GoogleAddressAutocomplete_Settings::instance()->get_option( 'fc_gaa_enabled' ) && ! empty( FC_GoogleAddressAutocomplete_Settings::instance()->get_option( 'fc_gaa_google_places_api_key' ) ) ) {

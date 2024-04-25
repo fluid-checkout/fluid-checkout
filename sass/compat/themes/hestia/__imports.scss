@@ -13,4 +13,5 @@ $_body-theme-selector:                 '.theme-hestia' !default;
 // ------------------------------------
 @import
 	"checkout-validation",
+	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2";

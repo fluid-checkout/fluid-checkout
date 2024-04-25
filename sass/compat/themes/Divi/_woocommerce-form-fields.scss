@@ -13,19 +13,25 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row select {
 	padding: remsize( 1.4rem );
-	border-radius: 3px;
+	border-radius: 3px; // Needed to match theme unit
 	height: remsize( 5rem );
 }
 
 
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection__rendered,
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection__arrow {
-	line-height: remsize( 4.9rem );
+body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] .ts-control,
+body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] .ts-control,
+body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] .select2-selection--single,
+body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] .select2-selection--single {
+	border-width: 0;
 }
 
 
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection__arrow {
-	top: remsize( 1.2rem );
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-first,
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-middle,
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-last {
+	@media (#{$bp-larger-than-phablet}) {
+		float: #{ $alignment-left } !important; // Needed to override theme styles
+	}
 }

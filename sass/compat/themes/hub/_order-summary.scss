@@ -1,0 +1,7 @@
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
+
+body#{ $_body-theme-selector } #order_review .woocommerce-checkout-review-order-table .amount {
+	font-size: $order-summary-font-size;
+}

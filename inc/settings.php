@@ -125,10 +125,10 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_integration_bluehost_plugin_custom_fields'                  => 'no',
 			'fc_integration_captcha_pro_captcha_position'                   => 'before_place_order_section',
 			'fc_integration_mailchimp_force_subscribe_checkbox_position'    => 'yes',
+			'gm_order_review_checkboxes_before_order_review'                => 'off',
 			'hezarfen_checkout_fields_auto_sort'                            => 'no',
 			'hezarfen_hide_checkout_postcode_fields'                        => 'no',
 			'sg_enable_picker'                                              => 'enable',
-			'gm_order_review_checkboxes_before_order_review'                => 'off',
 			'woocommerce_gzd_display_checkout_back_to_cart_button'          => 'no',
 			'woocommerce_gzd_display_checkout_table_color'                  => '#eeeeee',
 			'woocommerce_enable_guest_checkout'                             => 'yes',
@@ -143,6 +143,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_theme_woodmart_disable_theme_checkout_options'       => 'yes',
 			'fc_compat_theme_pressmart_output_checkout_steps_section'       => 'no',
 			'fc_compat_theme_betheme_output_checkout_steps_section'         => 'no',
+			'fc_compat_theme_thegem_output_checkout_steps_section'          => 'no',
 
 			// Deprecated settings.
 			'fc_enable_checkout_place_order_sidebar'                        => 'no',

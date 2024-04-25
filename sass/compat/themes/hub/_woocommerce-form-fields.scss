@@ -1,0 +1,41 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row {
+	display: block;
+}
+
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-additional-fields {
+	margin-bottom: 0;
+	padding-top: 0;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row label.checkbox {
+	display: inline;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row label.checkbox input {
+	margin-top: 0;
+}
+
+
+
+
+body#{ $_body-theme-selector } div.woocommerce form {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="search"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"],
+	.select2-selection--single {
+		padding: 0 $form-field-padding-left;
+		height: $form-field-height;
+		border: $form-field-border-width solid $form-field-border-color;
+	}
+}

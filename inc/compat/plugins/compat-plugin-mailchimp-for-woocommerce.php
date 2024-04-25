@@ -40,6 +40,9 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 	public function subscribe_box_hooks() {
 		// Bail if option to move subscribe box is not enabled
 		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_integration_mailchimp_force_subscribe_checkbox_position' ) ) { return; }
+		
+		// Bail if Mailchimp List Key is not set
+		if ( ! function_exists( 'mailchimp_get_api_key' ) || empty( mailchimp_get_api_key() ) ) { return; }
 
 		// Get settings from the plugin
 		$service = MailChimp_Newsletter::instance();
