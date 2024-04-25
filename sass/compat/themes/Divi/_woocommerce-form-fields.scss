@@ -31,7 +31,6 @@ body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce 
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-first,
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-middle,
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row.form-row-last {
-
 	@media (#{$bp-larger-than-phablet}) {
 		float: #{ $alignment-left } !important; // Needed to override theme styles
 	}

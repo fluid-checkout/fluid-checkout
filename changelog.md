@@ -19,6 +19,57 @@ Additional labels for beta builds are available as extensions to the MAJOR.MINOR
 
 [See latest changes in the plugin's readme.txt](https://github.com/fluidweb-co/fluid-checkout/blob/main/readme.txt)
 
+= 3.1.6 - 2024-03-07 =
+
+* Added: Compatibility with theme Aperitif.
+* Added: Compatibility with theme Amphibious.
+* Added: Compatibility with plugin Breakdance.
+* Added: Compatibility with plugin MailChimp for WooCommerce.
+* Added: Filter hook `fc_formatted_address_replacements_custom_field_keys` to allow developers to set formatted address replacements for custom fields.
+* Improved: Show progress indication on the shipping methods and other sections when processing checkout updates.
+* Improved: Compatibility with plugin Checkout Field Editor PRO by Themehigh. Add custom address fields from the plugin settings to formatted address replacements.
+* Improved: Update billing or shipping address data on checkout when changed on the customer account profile. Does not apply when using the Address Book add-on.
+* Improved: Enqueue fragments update assets on the page whenever that feature is enabled.
+* Fixed: Compatibility with theme Phlox. Checkout elements not clickable because of position for Phlox page background element.
+* Fixed: Compatibility with plugin SEUR Oficial. Only show information about the selected pickup point when the shipping method selected is SEUR 2Shop (pickup point).
+* Fixed: JS error on checkout coupon code script when jQuery BlockUI is missing.
+* Fixed: Only load Mailcheck script on the checkout page. Fixed the error "fcSettings is not defined" on other pages.
+* Fixed: Convert form field classes to array before trying to merge them to add custom classes.
+* Fixed: Keep optional field expanded when replacing fragments on some pages if the field has the focus and is cleared.
+
+= 3.1.5 - 2024-02-21 =
+
+* Bump tested up to WooCommerce 8.6.1
+* Added: Compatibility with theme Kosi.
+* Added: Compatibility with theme Pressmart.
+* Added: Compatibility with theme BeTheme.
+* Added: Compatibility with theme Iona.
+* Added: Compatibility with plugin The Bluehost Plugin.
+* Added: Compatibility with plugin SEUR Oficial.
+* Added: Compatibility with plugin Nets Easy for WooCommerce by Krokedil (a.k.a Dibs Payments).
+* Added: Compatibility with plugin Svea Checkout for WooCommerce by The Generation AB.
+* Added: Partial compatibility with plugin States, Cities, and Places for WooCommerce. Trigger select events when appropriate.
+* Added: Filter hook `fc_enable_checkout_email_mailcheck` allow developers to enable/disable the email field typo fix suggestions feature.
+* Improved: Compatibility with plugin Germanized. Prevent Germanized from adding extra product thumbnails on the checkout page.
+* Improved: Refactor scroll and focus functions moving them to the FCUtils script, making it available to the entire application.
+* Improved: Add experiemental feature to replace `select2` fields with `TomSelect` enhanced select fields component. Fixes issues with quirky Select2 behaviors.
+* Fixed: Compatibility with plugin Klarna Payments. Redirect after successful payment not working.
+* Fixed: Compatibility with plugin FluentCRM PRO. Remove duplicate checkbox in the order notes section, only show it in the contact section.
+* Fixed: Order pay page contents not being displayed in some cases.
+* Fixed: Keep `select2` field open after replacing section which contains it, and keep focus on `select2` fields after updating fragments or selecting a different country.
+* Fixed: Start checkout with "billing same as shipping" checked for registered customers when saved address data are the same for shipping and billing, and the option is enabled in the plugin settings.
+* Fixed: Issue with content wider than screen on mobile when using certain themes.
+* Fixed: Only use default checked state for the account creation checkbox when a value is not defined.
+
+= 3.1.4 - 2024-02-02 =
+
+* Bump tested up to WordPress 6.4.3 and WooCommerce 8.5.2
+* Improved: Add process to automatically generate the installable zip file when creating a new version.
+* Fixed: Merged changes from the original `checkout.js` file from the WooCommerce code into our modified copy.
+* Fixed: Criteria for conditional function of cart page or fragments request.
+* Fixed: Set to show shipping phone field values on the order admin order edit page.
+* Fixed: Compatibility with plugins Klarna Checkout, Dintero Checkout and Payson Checkout by Krokedil. Fix layout of the checkout page template when one of these payment methods are selected.
+
 = 3.1.3 - 2024-01-23 =
 
 * Bump tested up to WooCommerce 8.5.1

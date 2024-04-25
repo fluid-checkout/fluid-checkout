@@ -254,7 +254,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Order notes hooks.
+	 * Add or remove hooks for order notes.
 	 */
 	public function order_notes_hooks() {
 		// Bail if not on checkout or cart page or doing AJAX call
