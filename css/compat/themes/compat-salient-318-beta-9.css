@@ -1,8 +1,8 @@
 @media (max-width: 749px) {
   body.theme-salient.woocommerce-checkout .fc-content.container {
-    max-width: 100%;
     padding-left: 20px;
     padding-right: 20px;
+    max-width: 100%;
   }
 }
 
