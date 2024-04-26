@@ -362,6 +362,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Handle checkout fields with indexed multiple values to an `array` when parsing posted data.
+
 = 3.1.8 - 2024-04-25 =
 
 * Bump tested up to WordPress 6.5.2 and WooCommerce 8.8.2
