@@ -5345,18 +5345,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$field_key = $decoded_data[0];
 
 			// Handle multi value fields
-			$needle = '[]';
-			$needle_len = strlen( $needle );
-			if ( $needle_len === 0 || 0 === substr_compare( $field_key, $needle, - $needle_len ) ) {
+			if ( preg_match( '/\[(.*)\]$/', $field_key, $matches ) ) {
 				// Get new field key, without the multi value markers
-				$new_field_key = str_replace( $needle, '', $field_key );
+				$new_field_key = str_replace( $matches[ 0 ], '', $field_key );
+
+				// Get value index
+				$value_index = array_key_exists( 1, $matches ) ? $matches[ 1 ] : '';
 
 				// Initialize field array on posted data
 				if ( ! array_key_exists( $new_field_key, $new_posted_data ) ) {
 					$new_posted_data[ $new_field_key ] = array();
 				}
+
+				// Maybe set value index if not set yet
+				if ( '' === $value_index ) {
+					$value_index = count( $new_posted_data[ $new_field_key ] );
+				}
+
 				// Add new field value
-				$new_posted_data[ $new_field_key ][] = array_key_exists( 1, $decoded_data ) ? wc_clean( wp_unslash( $decoded_data[1] ) ) : null;
+				$new_posted_data[ $new_field_key ][ $value_index ] = array_key_exists( 1, $decoded_data ) ? wc_clean( wp_unslash( $decoded_data[1] ) ) : null;
 			}
 			// Handle single value fields
 			else {

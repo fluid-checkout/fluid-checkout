@@ -6,7 +6,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 3.1.3
+ * @version 3.1.9
  * @wc-version 3.6.0
  * @wc-original cart/cart-shipping.php
  */
@@ -100,7 +100,7 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 	<?php endif; ?>
 
 	<?php // CHANGE: Output the current shipping method to detect changes to this value later ?>
-	<input type="hidden" name="fc_previous_selected_shipping_method" value="<?php echo esc_attr( $chosen_method ); ?>" />
+	<input type="hidden" name="fc_previous_selected_shipping_method[<?php echo esc_attr( $package_index ); ?>]" value="<?php echo esc_attr( $chosen_method ); ?>" />
 
 </div>
 
