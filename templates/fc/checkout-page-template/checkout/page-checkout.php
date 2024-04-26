@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 3.1.8
+ * @version 3.1.9
  */
 
 defined( 'ABSPATH' ) || exit;
