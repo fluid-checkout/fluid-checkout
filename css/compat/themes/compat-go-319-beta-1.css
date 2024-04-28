@@ -1,3 +1,8 @@
+body.theme-go div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 body.theme-go .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:before {
   background-color: var(--fluidcheckout--color--success, #007a3d) !important;
 }
