@@ -27,6 +27,9 @@ class FluidCheckout_ThemeCompat_Go extends FluidCheckout {
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
+		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
@@ -82,6 +85,14 @@ class FluidCheckout_ThemeCompat_Go extends FluidCheckout {
 				'--fluidcheckout--field--border-color' => 'var(--go-input--border-color, var(--go-heading--color--text))',
 				'--fluidcheckout--field--border-width' => '2px',
 				'--fluidcheckout--field--background-color--accent' => 'var(--go--color--secondary)',
+
+				// Primary button colors
+				'--fluidcheckout--button--primary--border-color' => 'var(--go-button--color--background, var(--go--color--primary))',
+				'--fluidcheckout--button--primary--background-color' => 'var(--go-button--color--background, var(--go--color--primary))',
+				'--fluidcheckout--button--primary--text-color' => '#fff',
+				'--fluidcheckout--button--primary--border-color--hover' => 'var(--go-button-interactive--color--background, var(--go--color--secondary))',
+				'--fluidcheckout--button--primary--background-color--hover' => 'var(--go-button-interactive--color--background, var(--go--color--secondary))',
+				'--fluidcheckout--button--primary--text-color--hover' => '#fff',
 			),
 		);
 
