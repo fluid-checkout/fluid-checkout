@@ -93,6 +93,14 @@ class FluidCheckout_ThemeCompat_Go extends FluidCheckout {
 				'--fluidcheckout--button--primary--border-color--hover' => 'var(--go-button-interactive--color--background, var(--go--color--secondary))',
 				'--fluidcheckout--button--primary--background-color--hover' => 'var(--go-button-interactive--color--background, var(--go--color--secondary))',
 				'--fluidcheckout--button--primary--text-color--hover' => '#fff',
+
+				// Secondary button colors
+				'--fluidcheckout--button--secondary--border-color' => 'var(--go-button--color--background, var(--go--color--primary))',
+				'--fluidcheckout--button--secondary--background-color' => 'var(--go-button--color--background, var(--go--color--primary))',
+				'--fluidcheckout--button--secondary--text-color' => '#fff',
+				'--fluidcheckout--button--secondary--border-color--hover' => 'var(--go-button-interactive--color--background, var(--go--color--secondary))',
+				'--fluidcheckout--button--secondary--background-color--hover' => 'var(--go-button-interactive--color--background, var(--go--color--secondary))',
+				'--fluidcheckout--button--secondary--text-color--hover' => '#fff',
 			),
 		);
 
