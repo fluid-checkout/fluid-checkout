@@ -368,6 +368,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Handle checkout fields with indexed multiple values to an `array` when parsing posted data.
 * Fixed: Checkout page template for distraction free header and footer should not be applied to the order pay and order received pages.
 * Fixed: Redirect to the cart page when visiting the checkout with an empty cart when using the WooCommerce block-based checkout form.
+* Fixed: Order received page showing blank in some cases when using the WooCommerce block-based checkout form.
 
 = 3.1.8 - 2024-04-25 =
 
