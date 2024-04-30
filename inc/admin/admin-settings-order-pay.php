@@ -88,18 +88,6 @@ class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'              => __( 'Enable order details customizations on email notifications', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Display new sections and change order of sections on email notifications. Styles of order details on email notifications remain unchanged.', 'fluid-checkout' ),
-						'id'                => 'fc_pro_enable_order_details_email_customizations',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_details_email_customizations' ),
-						'checkboxgroup'     => 'end',
-						'show_if_checked'   => 'yes',
-						'autoload'          => false,
-						'disabled'          => true,
-					),
-
-					array(
 						'type' => 'sectionend',
 						'id'   => 'fc_pro_order_pay_layout_options',
 					),
