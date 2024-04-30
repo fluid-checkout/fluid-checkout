@@ -112,6 +112,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-checkout.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-cart.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-received.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-pay.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-integrations.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-tools.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-license-keys.php';

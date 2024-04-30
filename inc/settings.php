@@ -109,6 +109,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_order_details_order_notes_position'                     => 'inside_order_items',
 			'fc_pro_enable_order_received_widget_areas'                     => 'no',
 
+			// Settings order pay.
+			'fc_pro_enable_pay_received'                                    => 'no',
+
 			// Settings tools.
 			'fc_debug_mode'                                                 => 'no',
 			'fc_load_unminified_assets'                                     => 'no',
