@@ -59,6 +59,7 @@ class FluidCheckout_CheckoutBlock extends FluidCheckout {
 	}
 
 
+
 	/**
 	 * Replace checkout block.
 	 */
