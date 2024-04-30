@@ -73,15 +73,21 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	/**
 	 * Disable custom template for the checkout page content part when using FSE (Full Site Editor).
 	 */
-	public function maybe_disable_checkout_page_template( $enabled ) {
-		// Bail if using distraction free header and footer
-		if ( $this->is_distraction_free_header_footer_checkout() ) { return $enabled; }
+	public function maybe_disable_checkout_page_template( $is_enabled ) {
+		// Disable not if using distraction free header and footer
+		if ( ! $this->is_distraction_free_header_footer_checkout() ) { return false; }
 
-		// Bail if theme not using FSE
-		if ( ! current_theme_supports( 'block-templates' ) ) { return $enabled; }
+		// Disable if theme is using FSE
+		if ( current_theme_supports( 'block-templates' ) ) { return false; }
 
-		// Disable custom checkout templates.
-		return false;
+		// Disable if on order pay page
+		if ( is_checkout_pay_page() || is_wc_endpoint_url( 'order-pay' ) ) { return false; }
+
+		// Disable if on order received page
+		if ( is_order_received_page() || is_wc_endpoint_url( 'order-received' ) ) { return false; }
+
+		// Otherwise, make no changes.
+		return $is_enabled;
 	}
 
 

@@ -364,8 +364,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Fixed: Handle checkout fields with indexed multiple values to an `array` when parsing posted data.
 * Improved: Compatibility with plugin Elementor PRO. Automatically disable checkout page template when using the custom order received page created with Elementor PRO.
+* Fixed: Handle checkout fields with indexed multiple values to an `array` when parsing posted data.
+* Fixed: Checkout page template for distraction free header and footer should not be applied to the order pay and order received pages.
 
 = 3.1.8 - 2024-04-25 =
 
