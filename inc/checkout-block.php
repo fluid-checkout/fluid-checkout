@@ -26,6 +26,9 @@ class FluidCheckout_CheckoutBlock extends FluidCheckout {
 		// Replace WooCommerce blocks
 		// Needs to run right after the blocks are registered (priority 10).
 		add_action( 'init', array( $this, 'maybe_replace_checkout_block' ), 11 );
+
+		// Cart Redirect
+		add_action( 'template_redirect', array( $this, 'maybe_redirect_empty_cart_checkout' ), 10 );
 	}
 
 
@@ -41,6 +44,21 @@ class FluidCheckout_CheckoutBlock extends FluidCheckout {
 		// Replace WooCommerce blocks
 		// Needs to run right after the blocks are registered (priority 10).
 		remove_action( 'init', array( $this, 'maybe_replace_checkout_block' ), 11 );
+	}
+
+
+
+	/**
+	 * Maybe redirect to the cart page when visiting the checkout with an empty cart.
+	 */
+	public function maybe_redirect_empty_cart_checkout() {
+		global $wp;
+
+		// When on the checkout with an empty cart, redirect to cart page.
+		if ( is_checkout() && wc_get_page_id( 'checkout' ) !== wc_get_page_id( 'cart' ) && WC()->cart->is_empty() && empty( $wp->query_vars['order-pay'] ) && ! isset( $wp->query_vars['order-received'] ) && ! is_customize_preview() && apply_filters( 'woocommerce_checkout_redirect_empty_cart', true ) ) {
+			wp_safe_redirect( wc_get_cart_url() );
+			exit;
+		}
 	}
 
 
