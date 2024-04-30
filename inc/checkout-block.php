@@ -7,6 +7,13 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_CheckoutBlock extends FluidCheckout {
 
 	/**
+	 * Hold cached values to improve performance.
+	 */
+	private $cached_values = array();
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -67,13 +74,25 @@ class FluidCheckout_CheckoutBlock extends FluidCheckout {
 	 * Maybe set the current request as a checkout page or fragment when the checkout block is present.
 	 */
 	public function maybe_set_is_checkout_page_or_fragment( $is_checkout_page_or_fragment ) {
-		// Bail if block functions are not available.
-		if ( ! function_exists( 'has_block' ) ) { return $is_checkout_page_or_fragment; }
+		// Get values from cache
+		$cache_handle = 'is_checkout_page';
+		$return_value = $is_checkout_page_or_fragment;
 
-		// Bail if current page does not have the WooCommerce Checkout block in the contents
-		if ( ! has_block( 'woocommerce/checkout' ) ) { return $is_checkout_page_or_fragment; }
+		// Try to return value from cache
+		if ( array_key_exists( $cache_handle, $this->cached_values ) ) {
+			// Return value from cache
+			return $this->cached_values[ $cache_handle ];
+		}
+		// Check whether page has the checkout block in the contents
+		else if ( function_exists( 'has_block' ) && has_block( 'woocommerce/checkout' ) ) {
+			$return_value = true;
 
-		return true;
+			// Set cache
+			// once detected a request to the checkout page.
+			$this->cached_values[ $cache_handle ] = $return_value;
+		}
+
+		return $return_value;
 	}
 
 
