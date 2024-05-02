@@ -19,3 +19,7 @@ body#{ $_body-theme-selector } div.woocommerce form.checkout #order_comments {
 	line-height: normal !important; // Needed to override theme styles
 	min-height: remsize( 10rem );
 }
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .input-checkbox {
+	display: none;
+}
