@@ -311,7 +311,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 		// Maybe set add pickup point address as not selected
 		// to the review text lines, then bail
 		if ( empty( $selected_location ) ) {
-			$review_text_lines[] = __( 'Pickup point not selected yet.', 'fluid-checkout' );
+			$review_text_lines[] = '<em>' . __( 'Pickup point not selected yet.', 'fluid-checkout' ) . '</em>';
 			return $review_text_lines;
 		}
 
