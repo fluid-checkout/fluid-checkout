@@ -32,17 +32,11 @@ body.theme-diza .fc-content form.woocommerce-checkout {
   padding: 0;
 }
 
-body.theme-diza .woocommerce-checkout-payment .payment_methods li label {
-  padding: var(--fluidcheckout--option-box--spacing--vertical, 10px) var(--fluidcheckout--option-box--spacing--horizontal, 10px) !important;
-  padding-right: 24pxvar(--fluidcheckout--option-box--spacing--horizontal, 10px) !important;
-}
-
-body.theme-diza .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] + label:before {
-  top: 13px;
-}
-
-body.theme-diza .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child + label:after {
-  top: 13px;
+body.theme-diza .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+  padding-top: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
+  padding-bottom: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
+  padding-right: calc(var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px) !important;
+  padding-left: var(--fluidcheckout--option-box--spacing--horizontal, 10px) !important;
 }
 
 body.theme-diza .woocommerce table.shop_table > thead > tr > th .woocommerce-Price-amount,
