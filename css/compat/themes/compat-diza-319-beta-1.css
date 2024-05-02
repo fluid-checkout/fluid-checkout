@@ -32,6 +32,10 @@ body.theme-diza .fc-content form.woocommerce-checkout {
   padding: 0;
 }
 
+body.theme-diza .fc-content form.woocommerce-checkout:before {
+  content: none;
+}
+
 body.theme-diza .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
   padding-top: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
   padding-bottom: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
