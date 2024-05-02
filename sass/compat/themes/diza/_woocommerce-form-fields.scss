@@ -23,3 +23,11 @@ body#{ $_body-theme-selector } div.woocommerce form.checkout #order_comments {
 body#{ $_body-theme-selector } div.woocommerce form .form-row .input-checkbox {
 	display: none;
 }
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row label.checkbox {
+	display: block;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .woocommerce-form__input + span {
+	display: inline;
+}
