@@ -22,6 +22,9 @@ class FluidCheckout_ThemeCompat_Diza extends FluidCheckout {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
+		// Checkout template hooks
+		$this->checkout_template_hooks();
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
@@ -33,6 +36,44 @@ class FluidCheckout_ThemeCompat_Diza extends FluidCheckout {
 	 */
 	public function late_hooks() {
 		remove_filter( 'woocommerce_cart_item_name', 'diza_woocommerce_cart_item_name', 10, 3 );
+	}
+
+
+
+	/**
+	 * Add checkout template hooks.
+	 */
+	public function checkout_template_hooks() {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		// Theme's inner containers
+		add_action( 'fc_checkout_before_main_section', array( $this, 'add_inner_container_opening_tags' ), 10 );
+		add_action( 'fc_checkout_after_main_section', array( $this, 'add_inner_container_closing_tags' ), 10 );
+	}
+
+
+
+	/**
+	 * Add opening tags for inner container from the Hestia theme.
+	 */
+	public function add_inner_container_opening_tags() {
+		?>
+		<div id="main-container" class="container">
+			<div class="row">
+				<div class="main-page col-12">
+				<?php
+	}
+
+	/**
+	 * Add closing tags for inner container from the Hestia theme.
+	 */
+	public function add_inner_container_closing_tags() {
+				?>
+				</div>
+			</div>
+		</div>
+		<?php
 	}
 
 
