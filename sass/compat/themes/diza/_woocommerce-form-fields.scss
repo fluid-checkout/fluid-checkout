@@ -9,3 +9,13 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection {
 	margin-bottom: 0 !important; // Needed to override `!important` directive added by the theme.
 }
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row textarea,
+body#{ $_body-theme-selector } div.woocommerce form.checkout #order_comments {
+	padding: $form-field-padding-left !important; // Needed to override theme styles
+}
+
+body#{ $_body-theme-selector } div.woocommerce form.checkout #order_comments {
+	line-height: normal !important; // Needed to override theme styles
+	min-height: remsize( 10rem );
+}

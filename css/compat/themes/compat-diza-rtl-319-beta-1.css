@@ -6,6 +6,16 @@ body.theme-diza div.woocommerce form .form-row .select2-container .select2-selec
   margin-bottom: 0 !important;
 }
 
+body.theme-diza div.woocommerce form .form-row textarea,
+body.theme-diza div.woocommerce form.checkout #order_comments {
+  padding: var(--fluidcheckout--field--padding-left, 8px) !important;
+}
+
+body.theme-diza div.woocommerce form.checkout #order_comments {
+  line-height: normal !important;
+  min-height: 100px;
+}
+
 body.theme-diza .woocommerce-checkout-payment .payment_methods li label {
   padding: var(--fluidcheckout--option-box--spacing--vertical, 10px) var(--fluidcheckout--option-box--spacing--horizontal, 10px) !important;
   padding-right: 24pxvar(--fluidcheckout--option-box--spacing--horizontal, 10px) !important;
