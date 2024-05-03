@@ -1020,6 +1020,7 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
   height: 24px !important;
   width: auto !important;
   vertical-align: middle !important;
+  margin-left: 5px !important;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {

@@ -190,6 +190,7 @@
 	height: remsize( 2.4rem ) !important; // Needed to override theme styles
 	width: auto !important; // Needed to override theme styles
 	vertical-align: middle !important; // Needed to override theme styles
+	margin-#{ $alignment-left }: $global-spacing-tiny !important; // Needed to override theme styles
 }
 
 
