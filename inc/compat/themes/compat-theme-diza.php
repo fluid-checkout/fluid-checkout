@@ -25,6 +25,9 @@ class FluidCheckout_ThemeCompat_Diza extends FluidCheckout {
 		// Checkout template hooks
 		$this->checkout_template_hooks();
 
+		// Container class
+		add_filter( 'fc_add_container_class', '__return_false', 10 );
+
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 
