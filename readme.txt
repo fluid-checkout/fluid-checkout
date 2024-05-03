@@ -364,7 +364,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin Omniva Shipping.
 * Improved: Compatibility with plugin Elementor PRO. Automatically disable checkout page template when using the custom order received page created with Elementor PRO.
+* Improved: Add hooks for displaying the shipping method logo images for compatible shipping plugins.
+* Improved: Layout of the shipping methods and position of shipping methods description.
 * Fixed: Handle checkout fields with indexed multiple values to an `array` when parsing posted data.
 * Fixed: Checkout page template for distraction free header and footer should not be applied to the order pay and order received pages.
 * Fixed: Redirect to the cart page when visiting the checkout with an empty cart when using the WooCommerce block-based checkout form.
@@ -379,7 +382,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme The Gem.
 * Added: Compatibility with plugin Flexible Checkout Fields PRO.
 * Added: Compatibility with plugin MyParcel.
-* Added: Compatibility with plugin Omniva Shipping.
 * Improved: Change wording for the company name field option in the plugin settings to be clear what it is related to.
 * Improved: Automatically apply database migrations on first plugin installation, showing the message for database migration available only when updating the plugin.
 * Fixed: Compatibility with plugin MailChimp for WooCommerce. Fix fatal error on checkout page when connection to Mailchimp is not completely set up.

@@ -60,7 +60,10 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		// Remove hooks
-		remove_filter('woocommerce_cart_shipping_method_full_label', 'OmnivaLt_Frontend::add_logo_to_method', 10, 2);
+		remove_filter( 'woocommerce_cart_shipping_method_full_label', 'OmnivaLt_Frontend::add_logo_to_method', 10, 2 );
+
+		// Shipping methods
+		add_filter( 'fc_shipping_method_option_image_html', array( $this, 'maybe_change_shipping_method_option_image_html' ), 10, 2 );
 	}
 
 
@@ -295,6 +298,52 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 		$review_text_lines[] = $selected_terminal;
 
 		return $review_text_lines;
+	}
+
+
+
+	/**
+	 * Maybe change the shipping method option image HTML.
+	 * 
+	 * @param  string  $html     The HTML of the shipping method option image.
+	 * @param  object  $method   The shipping method object.
+	 */
+	public function maybe_change_shipping_method_option_image_html( $html, $method ) {
+		// Bail if not a local pickup shipping method from this plugin
+		if ( ! $this->is_shipping_method_local_pickup( $method->id ) ) { return $html; }
+
+		// Get Omniva settings
+		$settings = OmnivaLt_Core::get_settings();
+		$label_design = $settings[ 'label_design' ] ? $settings[ 'label_design' ] : 'classic';
+
+		// Bail if should not show logo
+		if ( 'full' != $label_design && 'logo' != $label_design ) { return $html; }
+
+		// Get method parameters
+		$method_key = OmnivaLt_Omniva_Order::get_method_key_from_id( $method->id );
+		$method_params = OmnivaLt_Helper::get_omniva_method_by_key( $method_key );
+
+		// Bail if method parameters not found
+		if ( ! $method_params || ! array_key_exists( 'title_logo', $method_params ) ) { return $html; }
+
+		// Get image file
+		$image_file = $method_params[ 'title_logo' ];
+
+		// Get country code
+		// Try to get shipping country, then billing country, then base shop country
+		$country = WC()->checkout->get_value( 'shipping_country' );
+		if ( empty( $country ) ) { $country = WC()->checkout->get_billing_country(); }
+		if ( empty( $country ) ) { $country = WC()->countries->get_base_country(); }
+
+		// Maybe get image file by country
+		if ( ! empty( $country ) && array_key_exists( 'display_by_country', $method_params ) && array_key_exists( $country, $method_params[ 'display_by_country' ] ) ) {
+			$image_file = $method_params[ 'display_by_country' ][ $country ][ 'title_logo' ];
+		}
+
+		// Define image HTML
+		$html = '<img class="omnivalt-logo" src="' . OMNIVALT_URL . 'assets/img/logos/' . $image_file . '" alt="Omniva"/>';
+
+		return $html;
 	}
 
 }
