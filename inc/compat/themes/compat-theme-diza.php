@@ -25,6 +25,9 @@ class FluidCheckout_ThemeCompat_Diza extends FluidCheckout {
 		// Checkout template hooks
 		$this->checkout_template_hooks();
 
+		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
@@ -87,10 +90,15 @@ class FluidCheckout_ThemeCompat_Diza extends FluidCheckout {
 		// Bail if theme function is not available
 		if ( ! function_exists( 'diza_tbay_get_config' ) ) { return $css_variables; }
 
-		// Get accent color from the theme
+		// Get colors from the theme
+		$main_color = diza_tbay_get_config( 'main_color' );
 		$accent_color = diza_tbay_get_config( 'main_color_second' );
 
-		// If color isn't set, use the default value
+		// If colors are not set, use the default value
+		if ( ! $main_color ) {
+			$main_color = '#075cc9';
+		}
+
 		if ( ! $accent_color ) {
 			$accent_color = '#52d5e6';
 		}
@@ -106,6 +114,22 @@ class FluidCheckout_ThemeCompat_Diza extends FluidCheckout {
 
 				// Checkout validation styles
 				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '30px',
+
+				// Primary button colors
+				'--fluidcheckout--button--primary--border-color' => $main_color,
+				'--fluidcheckout--button--primary--background-color' => $main_color,
+				'--fluidcheckout--button--primary--text-color' => '#fff',
+				'--fluidcheckout--button--primary--border-color--hover' => $accent_color,
+				'--fluidcheckout--button--primary--background-color--hover' => $accent_color,
+				'--fluidcheckout--button--primary--text-color--hover' => '#fff',
+
+				// Secondary button color
+				'--fluidcheckout--button--secondary--border-color' => $main_color,
+				'--fluidcheckout--button--secondary--background-color' => $main_color,
+				'--fluidcheckout--button--secondary--text-color' => '#fff',
+				'--fluidcheckout--button--secondary--border-color--hover' => $accent_color,
+				'--fluidcheckout--button--secondary--background-color--hover' => $accent_color,
+				'--fluidcheckout--button--secondary--text-color--hover' => '#fff',
 			),
 		);
 
