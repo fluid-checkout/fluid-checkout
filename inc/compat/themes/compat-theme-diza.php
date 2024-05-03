@@ -133,6 +133,9 @@ class FluidCheckout_ThemeCompat_Diza extends FluidCheckout {
 				'--fluidcheckout--button--secondary--border-color--hover' => $accent_color,
 				'--fluidcheckout--button--secondary--background-color--hover' => $accent_color,
 				'--fluidcheckout--button--secondary--text-color--hover' => '#fff',
+
+				// Custom variable for the primary color from the theme
+				'--fluidcheckout--diza--primary-color' => $main_color,
 			),
 		);
 
