@@ -19,6 +19,9 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
@@ -39,6 +42,25 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// Shipping methods
+		$this->checkout_shipping_methods_hooks();
+	}
+
+	/**
+	 * Add or remove hooks for the shipping methods on the checkout page.
+	 */
+	public function checkout_shipping_methods_hooks() {
+		// Bail if not on the checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Remove hooks
+		remove_filter('woocommerce_cart_shipping_method_full_label', 'OmnivaLt_Frontend::add_logo_to_method', 10, 2);
 	}
 
 
