@@ -31,6 +31,9 @@ class FluidCheckout_ThemeCompat_Diza extends FluidCheckout {
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 
+		// Dequeue
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_scripts' ), 100 );
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
@@ -80,6 +83,18 @@ class FluidCheckout_ThemeCompat_Diza extends FluidCheckout {
 			</div>
 		</div>
 		<?php
+	}
+
+
+
+	/**
+	 * Dequeue theme scripts on checkout page that interfere with Fluid Checkout scripts.
+	 */
+	public function maybe_dequeue_scripts() {
+		// Bail if not on checkout page
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		wp_dequeue_script( 'diza-woocommerce' );
 	}
 
 
