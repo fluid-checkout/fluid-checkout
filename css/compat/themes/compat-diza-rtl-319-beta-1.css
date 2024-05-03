@@ -10,6 +10,12 @@ body.theme-diza div.woocommerce form .form-row textarea,
 body.theme-diza div.woocommerce form.checkout #order_comments {
   padding: var(--fluidcheckout--field--padding-left, 8px) !important;
 }
+@media (max-width: 480px) {
+  body.theme-diza div.woocommerce form .form-row textarea,
+  body.theme-diza div.woocommerce form.checkout #order_comments {
+    padding: 8px !important;
+  }
+}
 
 body.theme-diza div.woocommerce form.checkout #order_comments {
   line-height: normal !important;
@@ -61,8 +67,20 @@ body.theme-diza div.woocommerce .fc-wrapper #order_review table.woocommerce-chec
   line-height: 26px !important;
 }
 
+@media (max-width: 480px) {
+  body.theme-diza .ts-control {
+    padding-right: 8px;
+  }
+}
+
 body.theme-diza div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
   padding-top: 0;
+}
+
+@media (max-width: 480px) {
+  body.theme-diza div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+    padding-right: 8px;
+  }
 }
 
 body.theme-diza div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {

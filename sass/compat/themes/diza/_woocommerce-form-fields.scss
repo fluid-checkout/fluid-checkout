@@ -13,6 +13,10 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container
 body#{ $_body-theme-selector } div.woocommerce form .form-row textarea,
 body#{ $_body-theme-selector } div.woocommerce form.checkout #order_comments {
 	padding: $form-field-padding-left !important; // Needed to override theme styles
+
+	@media (max-width: 480px) { // Needed to use theme's breakpoint
+		padding: 8px !important; // Needed to override theme styles
+	}
 }
 
 body#{ $_body-theme-selector } div.woocommerce form.checkout #order_comments {
