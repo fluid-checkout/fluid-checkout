@@ -202,6 +202,21 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 
 
 	/**
+	 * Get the customer country from shipping, otherwise billing, otherwise base shop country.
+	 */
+	public function get_customer_country() {
+		// Get country code
+		// Try to get shipping country, then billing country, then base shop country
+		$country = WC()->checkout->get_value( 'shipping_country' );
+		if ( empty( $country ) ) { $country = WC()->checkout->get_billing_country(); }
+		if ( empty( $country ) ) { $country = WC()->countries->get_base_country(); }
+
+		return $country;
+	}
+
+
+
+	/**
 	 * Set the shipping step as incomplete.
 	 *
 	 * @param   bool  $is_step_complete  Whether the step is complete or not.
@@ -329,11 +344,8 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 		// Get image file
 		$image_file = $method_params[ 'title_logo' ];
 
-		// Get country code
-		// Try to get shipping country, then billing country, then base shop country
-		$country = WC()->checkout->get_value( 'shipping_country' );
-		if ( empty( $country ) ) { $country = WC()->checkout->get_billing_country(); }
-		if ( empty( $country ) ) { $country = WC()->countries->get_base_country(); }
+		// Get customer's country code
+		$country = $this->get_customer_country();
 
 		// Maybe get image file by country
 		if ( ! empty( $country ) && array_key_exists( 'display_by_country', $method_params ) && array_key_exists( $country, $method_params[ 'display_by_country' ] ) ) {
