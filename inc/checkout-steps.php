@@ -305,7 +305,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				// Register substep
 				$this->register_checkout_substep( $order_notes_step, array(
 					'substep_id' => 'order_notes',
-					'substep_title' => __( 'Order notes', 'fluid-checkout' ),
+					'substep_title' => __( 'Additional notes', 'fluid-checkout' ),
 					'priority' => 100,
 					'render_fields_callback' => array( $this, 'output_additional_fields' ),
 					'render_review_text_callback' => array( $this, 'output_substep_text_order_notes' ),
@@ -3610,7 +3610,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  string  $step_id     Id of the step in which the substep will be rendered.
 	 * @param  string  $substep_id  Id of the substep.
 	 */
-	public function output_shipping_methods_available( $step_id, $substep_id) {
+	public function output_shipping_methods_available( $step_id, $substep_id ) {
 		do_action( 'fc_shipping_methods_before_packages' );
 		echo $this->get_shipping_methods_available();
 		do_action( 'fc_shipping_methods_after_packages' );
