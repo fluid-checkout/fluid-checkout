@@ -22,7 +22,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *            ['is_complete_callback']           callable    (optional) Function name or callable array to determine if all required data for the substep has been provided. Defaults to `false`, considering the substep as 'incomplete' if a callback is not provided.
 	 *      ['next_step_button_classes']     array       Array of CSS classes to add to the "Next step" button.
 	 *      ['render_condition_callback']    callable    (optional) Function name or callable array to determine if the step should be rendered. If a callback is not provided the checkout step will be displayed.
-	 *      ['is_complete_callback']         callable    (optional) Function name or callable array to determine if all required data for the step has been provided. Defaults to `false`, considering the step as 'incomplete' if a callback is not provided.
 	 *
 	 * @var array
 	 **/
@@ -1101,9 +1100,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  array  List of checkout steps which all required data has been provided. The index is preserved from the registered checkout steps list.
 	 */
 	public function get_complete_steps() {
-		$_checkout_steps = $this->get_checkout_steps();
+		// Initialize return value
 		$complete_steps = array();
 
+		// Get checkout steps
+		$_checkout_steps = $this->get_checkout_steps();
+
+		// Iterate checkout steps
 		for ( $step_index = 0; $step_index < count( $_checkout_steps ); $step_index++ ) {
 			// Get last step index
 			$last_step = $this->get_last_step();
@@ -1112,12 +1115,37 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Maybe skip checking last step
 			if ( $step_index === $last_step_index ) { continue; }
 
+			// Initialize variables
 			$step_args = $_checkout_steps[ $step_index ];
 			$step_id = $step_args[ 'step_id' ];
-			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
+			$is_step_complete = true;
+
+			// Get substeps
+			$substeps = array_key_exists( 'substeps', $step_args ) ? $step_args[ 'substeps' ] : false;
+
+			// Maybe check if each substeps is complete
+			if ( is_array( $substeps ) ) {
+				foreach ( $substeps as $substep_args ) {
+					// Get substep id
+					$substep_id = $substep_args[ 'substep_id' ];
+
+					// Get substep is complete callback
+					// Defaults to 'complete' if callback is not provided.
+					$is_substep_complete_callback = array_key_exists( 'is_complete_callback', $substep_args ) ? $substep_args[ 'is_complete_callback' ] : '__return_true';
+
+					// Maybe skip substep if it is not complete
+					if ( ! $is_substep_complete_callback || ! is_callable( $is_substep_complete_callback ) || ! call_user_func( $is_substep_complete_callback ) ) {
+						$is_step_complete = false;
+						break;
+					}
+				}
+			}
+
+			// Filter to allow other plugins to add their own conditions
+			$is_step_complete = apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete );
 
 			// Add complete steps to the list
-			if ( $is_complete_callback && is_callable( $is_complete_callback ) && call_user_func( $is_complete_callback ) ) {
+			if ( $is_step_complete ) {
 				$complete_steps[ $step_index ] = $step_args;
 			}
 		}
@@ -1148,16 +1176,45 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  array  List of checkout steps with required data missing. The index is preserved from the registered checkout steps list.
 	 */
 	public function get_incomplete_steps() {
-		$_checkout_steps = $this->get_checkout_steps();
+		// Initialize return value
 		$incomplete_steps = array();
 
+		// Get checkout steps
+		$_checkout_steps = $this->get_checkout_steps();
+
+		// Iterate checkout steps
 		for ( $step_index = 0; $step_index < count( $_checkout_steps ); $step_index++ ) {
+			// Initialize variables
 			$step_args = $_checkout_steps[ $step_index ];
 			$step_id = $step_args[ 'step_id' ];
-			$is_complete_callback = array_key_exists( 'is_complete_callback', $step_args ) ? $step_args[ 'is_complete_callback' ] : '__return_false'; // Default step status to 'incomplete'.
+			$is_step_complete = true;
 
-			// Add incomplete steps to the list
-			if ( $is_complete_callback && is_callable( $is_complete_callback ) && ! call_user_func( $is_complete_callback ) ) {
+			// Get substeps
+			$substeps = array_key_exists( 'substeps', $step_args ) ? $step_args[ 'substeps' ] : false;
+
+			// Maybe check if each substeps is complete
+			if ( is_array( $substeps ) ) {
+				foreach ( $substeps as $substep_args ) {
+					// Get substep id
+					$substep_id = $substep_args[ 'substep_id' ];
+
+					// Get substep is complete callback
+					// Defaults to 'complete' if callback is not provided.
+					$is_substep_complete_callback = array_key_exists( 'is_complete_callback', $substep_args ) ? $substep_args[ 'is_complete_callback' ] : '__return_true';
+
+					// Maybe skip substep if it is not complete
+					if ( ! $is_substep_complete_callback || ! is_callable( $is_substep_complete_callback ) || ! call_user_func( $is_substep_complete_callback ) ) {
+						$is_step_complete = false;
+						break;
+					}
+				}
+			}
+
+			// Filter to allow other plugins to add their own conditions
+			$is_step_complete = apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete );
+
+			// Add complete steps to the list
+			if ( ! $is_step_complete ) {
 				$incomplete_steps[ $step_index ] = $step_args;
 			}
 		}
@@ -1315,9 +1372,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function is_step_complete( $step_id ) {
 		$complete_steps = $this->get_complete_steps();
 
-		// Return `true` if step id is found in the complete steps list
+		// Iterate complete steps
 		foreach ( $complete_steps as $step_args ) {
-			if ( $step_id == $step_args[ 'step_id' ] ) { return true; }
+			// Skip other steps
+			if ( $step_id != $step_args[ 'step_id' ] ) { continue; }
+
+			// Return as complete if step is found in the complete steps list
+			return true;
 		}
 
 		return false;
@@ -1725,7 +1786,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'step_id' => $step_id_contact,
 			'step_title' => apply_filters( 'fc_step_title_contact', _x( 'Contact', 'Checkout step title', 'fluid-checkout' ) ),
 			'priority' => 10,
-			'is_complete_callback' => array( $this, 'is_step_complete_contact' ),
 		) );
 		$this->register_checkout_substep( $step_id_contact, array(
 			'substep_id' => 'contact',
@@ -1745,7 +1805,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Need to set condition as an anonymous function that returns checks if shipping is needed directly,
 			// because if the step is registered before the object `WC()->cart` is available, the condition will always return false.
 			'render_condition_callback' => function() { return WC()->cart && WC()->cart->needs_shipping(); },
-			'is_complete_callback' => array( $this, 'is_step_complete_shipping' ),
 		) );
 		$this->register_checkout_substep( $step_id_shipping, array(
 			'substep_id' => 'shipping_address',
@@ -1770,7 +1829,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'step_id' => $step_id_billing,
 			'step_title' => apply_filters( 'fc_step_title_billing', _x( 'Billing', 'Checkout step title', 'fluid-checkout' ) ),
 			'priority' => $this->get_billing_step_hook_priority(),
-			'is_complete_callback' => array( $this, 'is_step_complete_billing' ),
 		) );
 		$this->register_checkout_substep( $step_id_billing, array(
 			'substep_id' => 'billing_address',
@@ -1788,9 +1846,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'step_id' => $step_id_payment,
 			'step_title' => apply_filters( 'fc_step_title_payment', _x( 'Payment', 'Checkout step title', 'fluid-checkout' ) ),
 			'priority' => 100,
-			// Payment step is only complete when the order has been placed and the payment has been accepted,
-			// during the checkout process it will always be considered 'incomplete'.
-			'is_complete_callback' => '__return_false',
 		) );
 		$this->register_checkout_substep( $step_id_payment, array(
 			'substep_id' => 'payment',
@@ -2589,22 +2644,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return apply_filters( 'fc_is_substep_complete_' . $substep_id, $is_substep_complete );
-	}
-
-	/**
-	 * Determines if all required data for the contact step has been provided.
-	 *
-	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
-	 */
-	public function is_step_complete_contact() {
-		$is_step_complete = true;
-
-		// Bail if contact substep is not complete
-		if ( ! $this->is_substep_complete_contact() ) {
-			$is_step_complete = false;
-		}
-
-		return apply_filters( 'fc_is_step_complete_contact', $is_step_complete );
 	}
 
 
@@ -3474,31 +3513,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Determines if all required data for the shipping step has been provided.
-	 *
-	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
-	 */
-	public function is_step_complete_shipping() {
-		// Initialize variables
-		$step_id = 'shipping';
-		$is_step_complete = true;
-
-		// Bail if shipping address substep is not complete
-		if ( ! $this->is_substep_complete_shipping_address() ) {
-			$is_step_complete = false;
-		}
-
-		// Bail if shipping address substep is not complete
-		if ( ! $this->is_substep_complete_shipping_method() ) {
-			$is_step_complete = false;
-		}
-
-		return apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete );
-	}
-
-
-
-	/**
 	 * Output "ship to different address" hidden field.
 	 */
 	public function output_ship_to_different_address_hidden_field() {
@@ -3923,24 +3937,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return apply_filters( 'fc_is_substep_complete_' . $substep_id, $is_substep_complete );
-	}
-
-	/**
-	 * Determines if all required data for the billing step has been provided.
-	 *
-	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
-	 */
-	public function is_step_complete_billing() {
-		// Initialize variables
-		$step_id = 'billing';
-		$is_step_complete = true;
-
-		// Bail if billing address substep is not complete
-		if ( ! $this->is_substep_complete_billing_address() ) {
-			$is_step_complete = false;
-		}
-
-		return apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete );
 	}
 
 
