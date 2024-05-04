@@ -309,7 +309,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 					'priority' => 100,
 					'render_fields_callback' => array( $this, 'output_additional_fields' ),
 					'render_review_text_callback' => array( $this, 'output_substep_text_order_notes' ),
-					// 'is_complete_callback' => array( $this, 'is_substep_complete_order_notes' ),
+					'is_complete_callback' => array( $this, 'is_substep_complete_order_notes' ),
 				) );
 
 				// Add hooks
@@ -1733,7 +1733,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'priority' => 20,
 			'render_fields_callback' => array( $this, 'output_substep_contact_fields' ),
 			'render_review_text_callback' => array( $this, 'output_substep_text_contact' ),
-			// 'is_complete_callback' => array( $this, 'is_substep_complete_contact' ),
+			'is_complete_callback' => array( $this, 'is_substep_complete_contact' ),
 		) );
 
 		// SHIPPING
@@ -1753,7 +1753,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'priority' => $this->get_shipping_address_hook_priority(),
 			'render_fields_callback' => array( $this, 'output_substep_shipping_address_fields' ),
 			'render_review_text_callback' => array( $this, 'output_substep_text_shipping_address' ),
-			// 'is_complete_callback' => array( $this, 'is_substep_complete_shipping_address' ),
+			'is_complete_callback' => array( $this, 'is_substep_complete_shipping_address' ),
 		) );
 		$this->register_checkout_substep( $step_id_shipping, array(
 			'substep_id' => 'shipping_method',
@@ -1761,7 +1761,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'priority' => $this->get_shipping_methods_hook_priority(),
 			'render_fields_callback' => array( $this, 'output_shipping_methods_available' ),
 			'render_review_text_callback' => array( $this, 'output_substep_text_shipping_method' ),
-			// 'is_complete_callback' => array( $this, 'is_substep_complete_shipping_method' ),
+			'is_complete_callback' => array( $this, 'is_substep_complete_shipping_method' ),
 		) );
 
 		// BILLING
@@ -1779,7 +1779,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'priority' => $this->get_billing_address_hook_priority()[ 1 ],
 			'render_fields_callback' => array( $this, 'output_substep_billing_address_fields' ),
 			'render_review_text_callback' => array( $this, 'output_substep_text_billing_address' ),
-			// 'is_complete_callback' => array( $this, 'is_substep_complete_billing_address' ),
+			'is_complete_callback' => array( $this, 'is_substep_complete_billing_address' ),
 		) );
 
 		// PAYMENT
@@ -1788,7 +1788,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'step_id' => $step_id_payment,
 			'step_title' => apply_filters( 'fc_step_title_payment', _x( 'Payment', 'Checkout step title', 'fluid-checkout' ) ),
 			'priority' => 100,
-			'is_complete_callback' => '__return_false', // Payment step is only complete when the order has been placed and the payment has been accepted, during the checkout process it will always be considered 'incomplete'.
+			// Payment step is only complete when the order has been placed and the payment has been accepted,
+			// during the checkout process it will always be considered 'incomplete'.
+			'is_complete_callback' => '__return_false',
 		) );
 		$this->register_checkout_substep( $step_id_payment, array(
 			'substep_id' => 'payment',
@@ -1796,7 +1798,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'priority' => 80,
 			'render_fields_callback' => array( $this, 'output_substep_payment_fields' ),
 			'render_review_text_callback' => array( $this, 'output_substep_text_payment_method' ),
-			// 'is_complete_callback' => array( $this, 'is_substep_complete_payment_method' ),
+			// Payment step is only complete when the order has been placed and the payment has been accepted,
+			// during the checkout process it will always be considered 'incomplete'.
+			'is_complete_callback' => '__return_false',
 		) );
 
 		do_action( 'fc_register_steps' );
@@ -2534,12 +2538,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Determines if all required data for the contact step has been provided.
+	 * Determines if all required data for the contact substep has been provided.
 	 *
-	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
+	 * @return  boolean  `true` if the user has provided all the required data for this substep, `false` otherwise. Defaults to `true`.
 	 */
-	public function is_step_complete_contact() {
-		$is_step_complete = true;
+	public function is_substep_complete_contact() {
+		// Initialize variables
+		$substep_id = 'contact';
+		$is_substep_complete = true;
 
 		// Get contact fields
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
@@ -2551,7 +2557,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach( $contact_field_ids as $field_key ) {
 			// Maybe break if email field is not valid
 			if ( 'billing_email' === $field_key && ! is_email( WC()->checkout()->get_value( $field_key ) ) ) {
-				$is_step_complete = false;
+				$is_substep_complete = false;
 				break;
 			}
 
@@ -2562,7 +2568,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 					// Check required fields
 					// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
 					if ( array_key_exists( 'required', $fields[ $field_key ] ) && true == $fields[ $field_key ][ 'required' ] && ! WC()->checkout()->get_value( $field_key ) ) {
-						$is_step_complete = false;
+						$is_substep_complete = false;
 						break 2;
 					}
 				}
@@ -2576,10 +2582,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 				// Check required fields
 				// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
 				if ( array_key_exists( 'required', $field_args ) && true == $field_args[ 'required' ] && ! WC()->checkout()->get_value( $field_key ) ) {
-					$is_step_complete = false;
+					$is_substep_complete = false;
 					break;
 				}
 			}
+		}
+
+		return apply_filters( 'fc_is_substep_complete_' . $substep_id, $is_substep_complete );
+	}
+
+	/**
+	 * Determines if all required data for the contact step has been provided.
+	 *
+	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
+	 */
+	public function is_step_complete_contact() {
+		$is_step_complete = true;
+
+		// Bail if contact substep is not complete
+		if ( ! $this->is_substep_complete_contact() ) {
+			$is_step_complete = false;
 		}
 
 		return apply_filters( 'fc_is_step_complete_contact', $is_step_complete );
@@ -3367,11 +3389,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Determines if all required data for the shipping step has been provided.
+	 * Determines if all required data for the order notes substep has been provided.
 	 *
-	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
+	 * @return  boolean  `true` if the user has provided all the required data for this substep, `false` otherwise. Defaults to `true`.
+	 */
+	public function is_substep_complete_order_notes() {
+		// Initialize variables
+		$substep_id = 'order_notes';
+		$is_substep_complete = true;
+
+		return apply_filters( 'fc_is_substep_complete_' . $substep_id, $is_substep_complete );
+	}
+
+
+
+	/**
+	 * Determines if all required data for the shipping address substep has been provided.
+	 *
+	 * @return  boolean  `true` if the user has provided all the required data for this substep, `false` otherwise. Defaults to `true`.
 	 */
 	public function is_substep_complete_shipping_address() {
+		// Initialize variables
+		$substep_id = 'shipping_address';
 		$is_substep_complete = true;
 
 		// Check required data for shipping address
@@ -3405,21 +3444,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
-		return apply_filters( 'fc_is_substep_complete_shipping_address', $is_substep_complete );
+		return apply_filters( 'fc_is_substep_complete_' . $substep_id, $is_substep_complete );
 	}
 
 	/**
-	 * Determines if all required data for the shipping step has been provided.
+	 * Determines if all required data for the shipping method substep has been provided.
 	 *
-	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
+	 * @return  boolean  `true` if the user has provided all the required data for this substep, `false` otherwise. Defaults to `true`.
 	 */
-	public function is_step_complete_shipping() {
-		$is_step_complete = true;
-
-		// Bail if shipping address substep is not complete
-		if ( ! $this->is_substep_complete_shipping_address() ) {
-			$is_step_complete = false;
-		}
+	public function is_substep_complete_shipping_method() {
+		// Initialize variables
+		$substep_id = 'shipping_method';
+		$is_substep_complete = true;
 
 		// Check chosen shipping method
 		$packages = WC()->shipping()->get_packages();
@@ -3427,12 +3463,37 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$available_methods = $package['rates'];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			if ( ! $chosen_method || empty( $chosen_method ) ) {
-				$is_step_complete = false;
+				$is_substep_complete = false;
 				break;
 			}
 		}
 
-		return apply_filters( 'fc_is_step_complete_shipping', $is_step_complete );
+		return apply_filters( 'fc_is_substep_complete_' . $substep_id, $is_substep_complete );
+	}
+
+
+
+	/**
+	 * Determines if all required data for the shipping step has been provided.
+	 *
+	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
+	 */
+	public function is_step_complete_shipping() {
+		// Initialize variables
+		$step_id = 'shipping';
+		$is_step_complete = true;
+
+		// Bail if shipping address substep is not complete
+		if ( ! $this->is_substep_complete_shipping_address() ) {
+			$is_step_complete = false;
+		}
+
+		// Bail if shipping address substep is not complete
+		if ( ! $this->is_substep_complete_shipping_method() ) {
+			$is_step_complete = false;
+		}
+
+		return apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete );
 	}
 
 
@@ -3824,12 +3885,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Determines if all required data for the billing step has been provided.
+	 * Determines if all required data for the billing address substep has been provided.
 	 *
-	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
+	 * @return  boolean  `true` if the user has provided all the required data for this substep, `false` otherwise. Defaults to `true`.
 	 */
-	public function is_step_complete_billing() {
-		$is_step_complete = true;
+	public function is_substep_complete_billing_address() {
+		// Initialize variables
+		$substep_id = 'billing_address';
+		$is_substep_complete = true;
 
 		// Get billing country
 		$billing_country = WC()->customer->get_billing_country();
@@ -3854,12 +3917,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Check required fields
 			// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
 			if ( array_key_exists( 'required', $field ) && true == $field[ 'required' ] && empty( WC()->checkout()->get_value( $field_key ) ) ) {
-				$is_step_complete = false;
+				$is_substep_complete = false;
 				break;
 			}
 		}
 
-		return apply_filters( 'fc_is_step_complete_billing', $is_step_complete );
+		return apply_filters( 'fc_is_substep_complete_' . $substep_id, $is_substep_complete );
+	}
+
+	/**
+	 * Determines if all required data for the billing step has been provided.
+	 *
+	 * @return  boolean  `true` if the user has provided all the required data for this step, `false` otherwise. Defaults to `false`.
+	 */
+	public function is_step_complete_billing() {
+		// Initialize variables
+		$step_id = 'billing';
+		$is_step_complete = true;
+
+		// Bail if billing address substep is not complete
+		if ( ! $this->is_substep_complete_billing_address() ) {
+			$is_step_complete = false;
+		}
+
+		return apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete );
 	}
 
 
