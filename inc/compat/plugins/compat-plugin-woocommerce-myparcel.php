@@ -409,7 +409,7 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 				$text_lines[] = WC()->countries->get_formatted_address( $address_data );
 			}
 			else {
-				$text_lines[] = __( 'Pickup point not selected yet.', 'fluid-checkout' );
+				$text_lines[] = '<em>' . __( 'Pickup point not selected yet.', 'fluid-checkout' ) . '</em>';
 			}
 		}
 
