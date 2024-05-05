@@ -2,6 +2,14 @@ body.theme-kentha .fc-content {
   color: var(--fluidcheckout--color--dark-grey, #535156);
 }
 
+@media (max-width: 749px) {
+  body.theme-kentha.woocommerce-checkout .qt-container {
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 100%;
+  }
+}
+
 body.theme-kentha.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h1,
 body.theme-kentha.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h2,
 body.theme-kentha.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h3,

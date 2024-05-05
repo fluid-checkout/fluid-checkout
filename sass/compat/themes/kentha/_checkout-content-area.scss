@@ -5,3 +5,11 @@
 body#{ $_body-theme-selector } .fc-content {
 	color: $dark-grey;
 }
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .qt-container {
+	@media (#{$bp-smaller-than-tablet}) { 
+		padding-#{ $alignment-left }: 0;
+		padding-#{ $alignment-right }: 0;
+		max-width: 100%;
+	}
+}
