@@ -22,6 +22,10 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 		// Checkout template hooks
 		$this->checkout_template_hooks();
 
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
 		// Dark mode
 		add_filter( 'fc_enable_dark_mode_styles', '__return_true', 10 );
 
@@ -68,6 +72,22 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 			</div>
 		</div>
 		<?php
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = '.qt-menubar';
+
+		return $attributes;
 	}
 
 
