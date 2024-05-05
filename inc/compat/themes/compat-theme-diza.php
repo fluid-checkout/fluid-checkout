@@ -128,7 +128,7 @@ class FluidCheckout_ThemeCompat_Diza extends FluidCheckout {
 				'--fluidcheckout--field--height' => '42px',
 				'--fluidcheckout--field--padding-left' => '15px',
 				'--fluidcheckout--field--border-radius' => '3px',
-				'--fluidcheckout--field--background-color--accent' => $accent_color,
+				'--fluidcheckout--field--background-color--accent' => $main_color,
 
 				// Checkout validation styles
 				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '30px',
