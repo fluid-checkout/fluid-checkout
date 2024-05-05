@@ -58,6 +58,8 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 	public function add_inner_container_opening_tags() {
 		?>
 		<div class="qt-main">
+			<?php // Background element from the theme ?>
+			<?php get_template_part( 'phpincludes/part-background' ); ?>
 			<div class="qt-container qt-main-contents">
 				<div class="qt-the-content qt-paper qt-paddedcontent qt-card">
 				<?php
