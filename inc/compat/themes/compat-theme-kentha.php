@@ -105,6 +105,7 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 			':root' => array(
 				// Form field styles
 				'--fluidcheckout--field--height' => '48px',
+				'--fluidcheckout--field--padding-left' => '24px',
 			),
 		);
 

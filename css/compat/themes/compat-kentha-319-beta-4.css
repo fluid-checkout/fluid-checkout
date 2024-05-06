@@ -19,6 +19,10 @@ body.theme-kentha.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h6 
   color: inherit;
 }
 
+body.theme-kentha#qtBody form .form-row {
+  padding: 0;
+}
+
 body.theme-kentha div.woocommerce form .form-row input[type=checkbox] {
   position: initial;
 }
@@ -38,6 +42,34 @@ body.theme-kentha div.woocommerce form .form-row [type=radio]:checked + label:af
 body.theme-kentha div.woocommerce form .form-row .with-gap[type=radio]:checked + label:before,
 body.theme-kentha div.woocommerce form .form-row .with-gap[type=radio]:checked + label:after {
   border: 2px solid transparent;
+}
+
+body.theme-kentha#qtBody div.woocommerce form .form-row textarea {
+  min-height: 100px;
+  font-size: 1rem;
+}
+
+body.theme-kentha.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] textarea,
+body.theme-kentha.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select,
+body.theme-kentha.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=email],
+body.theme-kentha.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=number],
+body.theme-kentha.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=date],
+body.theme-kentha.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=search],
+body.theme-kentha.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=text],
+body.theme-kentha.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=tel],
+body.theme-kentha.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=url],
+body.theme-kentha.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=password],
+body.theme-kentha.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] textarea,
+body.theme-kentha.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] select,
+body.theme-kentha.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=email],
+body.theme-kentha.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=number],
+body.theme-kentha.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=date],
+body.theme-kentha.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=search],
+body.theme-kentha.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=text],
+body.theme-kentha.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=tel],
+body.theme-kentha.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=url],
+body.theme-kentha.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=password] {
+  padding: 0 var(--fluidcheckout--field--padding-left, 8px);
 }
 
 body.theme-kentha .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
