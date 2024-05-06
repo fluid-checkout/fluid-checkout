@@ -175,9 +175,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_payment_method_text_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_suppress_payment_methods_fragment' ), 1000 );
 
-		// // Order notes
-		// add_action( 'wp', array( $this, 'maybe_register_checkout_substep_order_notes' ), 100 );
-
 		// Formatted address
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
