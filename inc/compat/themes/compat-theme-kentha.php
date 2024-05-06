@@ -100,12 +100,17 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
+
+		$accent_color = get_theme_mod( 'kentha_color_accent', '#00fcff' );
+
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
 				// Form field styles
 				'--fluidcheckout--field--height' => '48px',
 				'--fluidcheckout--field--padding-left' => '24px',
+				'--fluidcheckout--field--background-color--accent' => $accent_color,
+				'--fluidcheckout--field--text-color--accent' => '#fff',
 			),
 		);
 

@@ -6,3 +6,12 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple {
 	text-align: #{ $alignment-left };
 }
+
+body#{ $_body-theme-selector }#qtBody div.woocommerce form .form-row .select2-selection--single,
+body#{ $_body-theme-selector }#qtBody div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+	height: auto;
+}
+
+body#{ $_body-theme-selector }#qtBody div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+	line-height: $form-field-select2-selection-height--single;
+}

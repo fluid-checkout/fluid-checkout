@@ -103,3 +103,12 @@ body.theme-kentha div.woocommerce form .form-row .select2-selection--single,
 body.theme-kentha div.woocommerce form .form-row .select2-selection--multiple {
   text-align: left;
 }
+
+body.theme-kentha#qtBody div.woocommerce form .form-row .select2-selection--single,
+body.theme-kentha#qtBody div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  height: auto;
+}
+
+body.theme-kentha#qtBody div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  line-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2);
+}
