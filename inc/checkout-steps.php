@@ -1085,7 +1085,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Look for a step with the same id
 		foreach ( $this->get_checkout_steps() as $key => $step_args ) {
 			if ( $step_args[ 'step_id' ] == sanitize_title( $step_id ) ) {
-				return array( $key, $step_args );
+				return $step_args;
 			}
 		}
 
@@ -1445,9 +1445,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $step_id  ID of the step.
 	 */
 	public function get_next_step_button_label( $step_id ) {
+		// Get next step args
 		$next_step_args = $this->get_next_step( $step_id );
+
+		// Get title of the next step
+		$next_step_id = $next_step_args[ 'step_id' ];
+		$next_step_title = $this->get_step_title( $next_step_id );
+
 		/** translators: Next checkout step title */
-		return sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_args[ 'step_title' ] );
+		return sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_title );
 	}
 
 
@@ -1864,6 +1870,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the title of the checkout step.
+	 * 
+	 * @param  string  $step_id   Checkout step id.
+	 */
+	public function get_step_title( $step_id ) {
+		// Initialize variables
+		$step_title = false;
+
+		// Get step args
+		$step_args = $this->get_checkout_step( $step_id );
+
+		// Bail if step was not found
+		if ( ! $step_args ) { return $step_title; }
+		
+		// Get step title and apply filters
+		$step_title = $step_args[ 'step_title' ];
+		$step_title = apply_filters( "fc_step_title_{$step_id}", $step_title );
+
+		return $step_title;
+	}
+	
+	/**
 	 * Output the contents of each registered checkout step.
 	 */
 	public function output_checkout_steps() {
@@ -1893,10 +1921,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Get substep variables
 				$substep_id = $substep_args[ 'substep_id' ];
-				$substep_title = $substep_args[ 'substep_title' ];
 				
 				// Output the substep start tag
-				$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
+				$this->output_substep_start_tag( $step_id, $substep_id );
 
 				// Output the substep fields
 				$this->output_substep_fields_start_tag( $step_id, $substep_id );
@@ -1911,7 +1938,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 
 				// Output the substep end tag
-				$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
+				$this->output_substep_end_tag( $step_id, $substep_id, null, true );
 			}
 
 			// Output the step end tag
@@ -2087,8 +2114,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_step_start_tag( $step_args, $step_index ) {
 		// Get step variables
 		$step_id = $step_args[ 'step_id' ];
-		$step_title = apply_filters( "fc_step_title_{$step_id}", $step_args[ 'step_title' ] );
-		$step_title_id = 'fc-step__title--' . $step_args[ 'step_id' ];
+		$step_title = $this->get_step_title( $step_id );
+		$step_title_element_id = 'fc-step__title--' . $step_args[ 'step_id' ];
 
 		// Define step attributes
 		$step_attributes = array(
@@ -2137,7 +2164,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Output step start tag and title
 		$step_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $step_attributes ), $step_attributes ) );
 		echo '<section ' . $step_attributes_str . '>'; // WPCS: XSS ok.
-		echo '<h2 id="' . esc_attr( $step_title_id ) . '" class="fc-step__title screen-reader-text">' . wp_kses( $step_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h2>';
+		echo '<h2 id="' . esc_attr( $step_title_element_id ) . '" class="fc-step__title screen-reader-text">' . wp_kses( $step_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h2>';
 
 		do_action( 'fc_checkout_start_step_' . $step_id );
 	}
@@ -2185,24 +2212,48 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get the checkout substep title text with filters applied.
+	 * Get the checkout substep title text.
 	 * 
 	 * @param   string  $substep_id     Id of the substep.
-	 * @param   string  $substep_title  Title of the substep.
 	 */
-	public function get_substep_title_with_filters( $substep_id, $substep_title ) {
-		return apply_filters( "fc_substep_title_{$substep_id}", $substep_title );
+	public function get_substep_title( $substep_id ) {
+		// Initialize variables
+		$substep_title = false;
+		
+		// Get step
+		$steps = $this->get_checkout_steps();
+
+		// Iterate steps
+		foreach ( $steps as $step_index => $step_args ) {
+			// Get substeps
+			$step_id = $step_args[ 'step_id' ];
+			$substeps = $this->get_registered_checkout_substeps( $step_id );
+
+			// Iterate substeps
+			foreach ( $substeps as $substep_index => $substep_args ) {
+				// Check if substep id matches
+				if ( $substep_id === $substep_args[ 'substep_id' ] ) {
+					$substep_title = $substep_args[ 'substep_title' ];
+					break 2;
+				}
+			}
+		}
+
+		// Apply filters
+		$substep_title = apply_filters( "fc_substep_title_{$substep_id}", $substep_title );
+
+		return $substep_title;
 	}
 
 	/**
 	 * Get the checkout substep title html.
 	 *
-	 * @param   string  $substep_id     Id of the substep.
-	 * @param   string  $substep_title  Title of the substep.
+	 * @param   string  $substep_id                 Id of the substep.
+	 * @param   string  $deprecated_substep_title   Deprecated parameter, not used anymore.
 	 */
-	public function get_substep_title_html( $substep_id, $substep_title ) {
+	public function get_substep_title_html( $substep_id, $deprecated_substep_title = null ) {
 		$html = '';
-		$substep_title = $this->get_substep_title_with_filters( $substep_id, $substep_title );
+		$substep_title = $this->get_substep_title( $substep_id );
 
 		if ( ! empty( $substep_title ) ) {
 			$html = '<h3 class="fc-step__substep-title fc-step__substep-title--' . esc_attr( $substep_id ) . '">' . wp_kses( $substep_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h3>';
@@ -2216,12 +2267,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout substep start tag.
 	 *
-	 * @param   string  $step_id                Id of the step in which the substep will be rendered.
-	 * @param   string  $substep_id             Id of the substep.
-	 * @param   string  $substep_title          Title of the substep.
-	 * @param   array   $additional_attributes  Additional HTML attributes to add to the substep element.
+	 * @param   string  $step_id                     Id of the step in which the substep will be rendered.
+	 * @param   string  $substep_id                  Id of the substep.
+	 * @param   string  $_deprecated_substep_title   Deprecated parameter, not used anymore.
+	 * @param   array   $additional_attributes       Additional HTML attributes to add to the substep element.
 	 */
-	public function output_substep_start_tag( $step_id, $substep_id, $substep_title, $additional_attributes = array() ) {
+	public function output_substep_start_tag( $step_id, $substep_id, $_deprecated_substep_title = null, $additional_attributes = array() ) {
 		$additional_attributes = apply_filters( "fc_substep_{$substep_id}_attributes", $additional_attributes );
 
 		// Make sure additional attributes is an array before using it
@@ -2236,18 +2287,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 		?>
 		<section <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
 			<?php
-			echo $this->get_substep_title_html( $substep_id, $substep_title ); // WPCS: XSS ok.
+			echo $this->get_substep_title_html( $substep_id ); // WPCS: XSS ok.
 			do_action( "fc_before_substep_{$substep_id}", $step_id, $substep_id );
 	}
 
 	/**
 	 * Output checkout substep end tag.
 	 *
-	 * @param   string  $step_id        Id of the step in which the substep will be rendered.
-	 * @param   string  $substep_id     Id of the substep.
-	 * @param   string  $substep_title  Title of the substep.
+	 * @param   string  $step_id                     Id of the step in which the substep will be rendered.
+	 * @param   string  $substep_id                  Id of the substep.
+	 * @param   string  $_deprecated_substep_title   Deprecated parameter, not used anymore.
+	 * @param   bool    $output_edit_buttons         Whether to output the edit buttons or not
 	 */
-	public function output_substep_end_tag( $step_id, $substep_id, $substep_title, $output_edit_buttons = true ) {
+	public function output_substep_end_tag( $step_id, $substep_id, $_deprecated_substep_title = null, $output_edit_buttons = true ) {
+			// Get the substep title for accessibility label
+			$substep_title = $this->get_substep_title( $substep_id );
+
 			do_action( "fc_after_substep_{$substep_id}", $step_id, $substep_id, $output_edit_buttons );
 			?>
 
@@ -2725,30 +2780,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 
 
-
-	/**
-	 * Output order notes substep.
-	 *
-	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
-	 */
-	public function output_substep_order_notes( $step_id ) {
-		$substep_id = 'order_notes';
-		$substep_title = __( 'Additional notes', 'fluid-checkout' );
-		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
-
-		$this->output_substep_fields_start_tag( $step_id, $substep_id );
-		$this->output_additional_fields();
-		$this->output_substep_fields_end_tag( $step_id, $substep_id );
-
-		// Only output substep text format for multi-step checkout layout
-		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $step_id, $substep_id );
-			$this->output_substep_text_order_notes();
-			$this->output_substep_text_end_tag( $step_id, $substep_id );
-		}
-
-		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
-	}
 
 	/**
 	 * Run additional order notes hooks, for when the order notes fields are disabled.
@@ -6134,6 +6165,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_Steps::instance()->output_substep_contact_fields() instead.', '4.0.0' );
 
 		$this->output_substep_contact_fields( 'contact', 'contact' );
+	}
+
+	/**
+	 * Get the checkout substep title text with filters applied.
+	 * 
+	 * @param   string  $substep_id     Id of the substep.
+	 * @param   string  $substep_title  Title of the substep.
+	 */
+	public function get_substep_title_with_filters( $substep_id, $substep_title ) {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_Steps::instance()->get_substep_title() instead.', '4.0.0' );
+
+		return $this->get_substep_title( $substep_id );
 	}
 
 
