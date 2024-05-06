@@ -14,6 +14,11 @@ body.theme-kentha#qtBody div.woocommerce .fc-wrapper .fc-coupon_code__collapsibl
   min-height: 45px !important;
 }
 
+body.theme-kentha#qtBody .fc-wrapper .fc-place-order .fc-place-order-button {
+  min-width: 240px !important;
+  min-height: 50px !important;
+}
+
 body.theme-kentha.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h1,
 body.theme-kentha.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h2,
 body.theme-kentha.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h3,
