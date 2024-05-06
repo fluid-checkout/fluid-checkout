@@ -1912,9 +1912,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 				$render_fields_callback = array_key_exists( 'render_fields_callback', $substep_args ) ? $substep_args[ 'render_fields_callback' ] : null;
 				if ( ! $render_fields_callback || ! is_callable( $render_fields_callback ) ) { continue; }
 
-				// Maybe skip if render review text callback is not callable
+				// Get review text callback
 				$render_review_text_callback = array_key_exists( 'render_review_text_callback', $substep_args ) ? $substep_args[ 'render_review_text_callback' ] : null;
-				if ( ! $render_review_text_callback || ! is_callable( $render_review_text_callback ) ) { continue; }
 
 				// Get substep variables
 				$substep_id = $substep_args[ 'substep_id' ];
@@ -1928,7 +1927,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				$this->output_substep_fields_end_tag( $step_id, $substep_id );
 
 				// Only output substep text format for multi-step checkout layout
-				if ( $this->is_checkout_layout_multistep() ) {
+				if ( $this->is_checkout_layout_multistep() && is_callable( $render_review_text_callback ) ) {
 					$this->output_substep_text_start_tag( $step_id, $substep_id );
 					call_user_func( $render_review_text_callback, $step_id, $substep_id );
 					$this->output_substep_text_end_tag( $step_id, $substep_id );
