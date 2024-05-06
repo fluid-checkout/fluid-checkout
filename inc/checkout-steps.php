@@ -3699,38 +3699,69 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return string $label Shipping rate label.
 	 */
 	public function get_cart_shipping_methods_label( $method ) {
-		$label     = sprintf( apply_filters( 'fc_shipping_method_option_label_markup', '<span class="shipping-method__option-text">%s</span>', $method ), $method->get_label() );
+		// Initialize label variable
+		$label = '';
+		
+		// Get method label
+		$label .= sprintf( apply_filters( 'fc_shipping_method_option_label_markup', '<span class="shipping-method__option-text">%s</span>', $method ), $method->get_label() );
+
+		// Maybe add shipping method logo image to label
+		$method_image_html = apply_filters( 'fc_shipping_method_option_image_html', '', $method );
+		if ( ! empty( $method_image_html ) ) {
+			$label .= sprintf( apply_filters( 'fc_shipping_method_option_image_markup', '<span class="shipping-method__option-image">%s</span>', $method, $method_image_html ), $method_image_html );
+		}
+
+		// Get shipping method costs settings
 		$has_cost  = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
 		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
 
-		// Maybe add shipping method description
-		$method_description = apply_filters( 'fc_shipping_method_option_description', '', $method );
-		$method_description_markup = ! empty( $method_description ) ? apply_filters( 'fc_shipping_method_option_description_markup', ' <span class="shipping-method__option-description">%s</span>', $method ) : '';
-		$label .= sprintf( $method_description_markup, $method_description );
-
+		// Maybe add shipping method costs to label
 		if ( $has_cost && ! $hide_cost ) {
 			$method_costs = '';
 
+			// Maybe get shipping method costs including tax
 			if ( WC()->cart->display_prices_including_tax() ) {
 				$method_costs = wc_price( $method->cost + $method->get_shipping_tax() );
 				if ( $method->get_shipping_tax() > 0 && ! wc_prices_include_tax() ) {
 					$method_costs .= ' <small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
 				}
-			} else {
+			}
+			// Otherwise get shipping method costs excluding tax
+			else {
 				$method_costs = wc_price( $method->cost );
 				if ( $method->get_shipping_tax() > 0 && wc_prices_include_tax() ) {
 					$method_costs .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
 				}
 			}
 
-			// Filter method costs
+			// Allow developers to change the shipping method costs
 			$method_costs = apply_filters( 'fc_shipping_method_option_price', $method_costs, $method );
 
 			// Add shipping method costs to label
-			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>', $method ), $method_costs );
+			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>', $method, $method_costs ), $method_costs );
 		}
 
 		return $label;
+	}
+
+	/**
+	 * Get the shipping methods .
+	 *
+	 * @param object|string $method Either the name of the method's class, or an instance of the method's class.
+	 *
+	 * @return string $label Shipping rate label.
+	 */
+	public function get_cart_shipping_methods_description( $method ) {
+		// Get HTML element to use for the shipping method description
+		$method_description_element = apply_filters( 'fc_shipping_method_description_html_element', 'small' );
+
+		// Get shipping method description
+		$method_description = apply_filters( 'fc_shipping_method_option_description', '', $method );
+
+		// Get shipping method description markup
+		$method_description_markup = ! empty( $method_description ) ? sprintf( apply_filters( 'fc_shipping_method_option_description_markup', '<%1$s class="shipping-method__option-description">%2$s</%1$s>', $method ), $method_description_element, $method_description ) : '';
+
+		return $method_description_markup;
 	}
 
 

@@ -159,8 +159,12 @@ class FluidCheckout_Seur extends FluidCheckout {
 
 	/**
 	 * Get whether the shipping method is a local pickup method from this plugin.
+	 * 
+	 * @param  string  $shipping_method_id  The shipping method ID.
+	 * @param  object  $method              The shipping method object.
+	 * @param  object  $order               The order object.
 	 */
-	public function is_shipping_method_local_pickup( $method ) {
+	public function is_shipping_method_local_pickup( $shipping_method_id, $method = null, $order = null ) {
 		// Get variables
 		$custom_name_seur_2shop = get_option( 'seur_2shop_custom_name_field' );
 		$custom_name_classic_2shop = get_option( 'seur_classic_int_2shop_custom_name_field' );
@@ -185,7 +189,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 	 */
 	public function change_shipping_method_options_markup_set_selected_value( $markup, $method, $package_index, $chosen_method, $first ) {
 		// Bail if not local pickup shipping method
-		if ( ! $this->is_shipping_method_local_pickup( $method ) ) { return $markup; }
+		if ( ! $this->is_shipping_method_local_pickup( $method->get_method_id(), $method ) ) { return $markup; }
 
 		// Get location id
 		$location_id = WC()->checkout->get_value( 'seur_pickup' );
@@ -224,7 +228,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 			if ( empty( $method ) ) { continue; }
 
 			// Skip if not local pickup shipping method
-			if ( ! $this->is_shipping_method_local_pickup( $method ) ) { continue; }
+			if ( ! $this->is_shipping_method_local_pickup( $chosen_method, $method ) ) { continue; }
 
 			// Get location id
 			$location_id = WC()->checkout->get_value( 'seur_pickup' );
@@ -265,7 +269,8 @@ class FluidCheckout_Seur extends FluidCheckout {
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 
-			if ( $this->is_shipping_method_local_pickup( $method ) ) {
+			// Check whether the shipping method is a local pickup method from this plugin
+			if ( $this->is_shipping_method_local_pickup( $chosen_method, $method ) ) {
 				$has_target_shipping_method = true;
 				break;
 			}
@@ -311,7 +316,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 		// Maybe set add pickup point address as not selected
 		// to the review text lines, then bail
 		if ( empty( $selected_location ) ) {
-			$review_text_lines[] = __( 'Pickup point not selected yet.', 'fluid-checkout' );
+			$review_text_lines[] = '<em>' . __( 'Pickup point not selected yet.', 'fluid-checkout' ) . '</em>';
 			return $review_text_lines;
 		}
 
