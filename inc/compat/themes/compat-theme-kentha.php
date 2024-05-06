@@ -106,7 +106,6 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 		// Get theme colors
 		$primary_color = get_theme_mod( 'kentha_color_accent', '#00ced0' );
 		$primary_color_hover = get_theme_mod( 'kentha_color_accent_hover', '#00fcff' );
-		$secondary_color = get_theme_mod( 'kentha_color_secondary', '#ff0d51' );
 		$text_color = get_theme_mod( 'kentha_textcolor_on_buttons', '#fff' );
 
 		// Add CSS variables
@@ -115,7 +114,7 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 				// Form field styles
 				'--fluidcheckout--field--height' => '48px',
 				'--fluidcheckout--field--padding-left' => '24px',
-				'--fluidcheckout--field--background-color--accent' => $secondary_color,
+				'--fluidcheckout--field--background-color--accent' => $primary_color,
 				'--fluidcheckout--field--text-color--accent' => '#fff',
 
 				// Primary button colors
