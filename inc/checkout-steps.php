@@ -252,7 +252,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function very_late_hooks() {
 		// Order notes
 		$this->order_notes_hooks();
-		$this->maybe_register_checkout_substep_order_notes();
+		$this->maybe_register_substep_order_notes();
 	}
 
 	/**
@@ -277,7 +277,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Maybe register the order notes substep and add related hooks.
 	 */
-	public function maybe_register_checkout_substep_order_notes() {
+	public function maybe_register_substep_order_notes() {
 		// Bail if not on checkout or cart page or doing AJAX call
 		if ( ! $this->is_checkout_page_or_fragment() && ! $this->is_cart_page_or_fragment() ) { return; }
 
