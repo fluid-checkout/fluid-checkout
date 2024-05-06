@@ -45,6 +45,9 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
+		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+
 		// Theme's inner containers
 		add_action( 'fc_checkout_before_main_section', array( $this, 'add_inner_container_opening_tags' ), 10 );
 		add_action( 'fc_checkout_after_main_section', array( $this, 'add_inner_container_closing_tags' ), 10 );
@@ -100,8 +103,12 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
-
-		$accent_color = get_theme_mod( 'kentha_color_accent', '#00fcff' );
+		// Get theme colors
+		$primary_color = get_theme_mod( 'kentha_color_accent', '#00ced0' );
+		$primary_color_hover = get_theme_mod( 'kentha_color_accent_hover', '#00fcff' );
+		$secondary_color = get_theme_mod( 'kentha_color_secondary', '#ff0d51' );
+		$secondary_color_hover = get_theme_mod( 'kentha_color_secondary_hover', '#c60038' );
+		$text_color = get_theme_mod( 'kentha_textcolor_on_buttons', '#fff' );
 
 		// Add CSS variables
 		$new_css_variables = array(
@@ -109,8 +116,24 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 				// Form field styles
 				'--fluidcheckout--field--height' => '48px',
 				'--fluidcheckout--field--padding-left' => '24px',
-				'--fluidcheckout--field--background-color--accent' => $accent_color,
+				'--fluidcheckout--field--background-color--accent' => $secondary_color,
 				'--fluidcheckout--field--text-color--accent' => '#fff',
+
+				// Primary button colors
+				'--fluidcheckout--button--primary--border-color' => $primary_color,
+				'--fluidcheckout--button--primary--background-color' => $primary_color,
+				'--fluidcheckout--button--primary--text-color' => $text_color,
+				'--fluidcheckout--button--primary--border-color--hover' => $primary_color_hover,
+				'--fluidcheckout--button--primary--background-color--hover' => $primary_color_hover,
+				'--fluidcheckout--button--primary--text-color--hover' => $text_color,
+
+				// Secondary button color
+				'--fluidcheckout--button--secondary--border-color' => $secondary_color,
+				'--fluidcheckout--button--secondary--background-color' => $secondary_color,
+				'--fluidcheckout--button--secondary--text-color' => $text_color,
+				'--fluidcheckout--button--secondary--border-color--hover' => $secondary_color_hover,
+				'--fluidcheckout--button--secondary--background-color--hover' => $secondary_color_hover,
+				'--fluidcheckout--button--secondary--text-color--hover' => $text_color,
 			),
 		);
 
