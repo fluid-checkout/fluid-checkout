@@ -57,12 +57,12 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		// Bail if plugin classes and functions are not available
 		if ( ! class_exists( 'Coderockz_Woo_Delivery' ) || ! class_exists( 'Coderockz_Woo_Delivery_Public' ) ) { return; }
 
-		// Substep
-		$this->maybe_register_substep_delivery_date();
-
 		// Add substep review text fragment
 		add_filter( 'fc_substep_delivery_date_text_lines', array( $this, 'add_substep_text_lines_delivery_date' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_delivery_date_text_fragment' ), 10 );
+
+		// Substep
+		$this->maybe_register_substep_delivery_date();
 	}
 
 	public function maybe_register_substep_delivery_date() {
