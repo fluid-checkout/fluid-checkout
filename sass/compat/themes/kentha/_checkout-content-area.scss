@@ -13,3 +13,10 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } .qt-container {
 		max-width: 100%;
 	}
 }
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .qt-paddedcontent {
+	@media (#{$bp-smaller-than-tablet}) { 
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
