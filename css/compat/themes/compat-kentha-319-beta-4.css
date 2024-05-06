@@ -10,6 +10,10 @@ body.theme-kentha .fc-content {
   }
 }
 
+body.theme-kentha#qtBody div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+  min-height: 45px !important;
+}
+
 body.theme-kentha.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h1,
 body.theme-kentha.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h2,
 body.theme-kentha.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h3,
