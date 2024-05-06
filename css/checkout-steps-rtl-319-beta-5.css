@@ -1125,6 +1125,7 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 }
 
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+  box-sizing: border-box !important;
   position: relative;
   display: flex;
   align-items: center;
