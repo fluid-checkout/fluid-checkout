@@ -107,7 +107,6 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 		$primary_color = get_theme_mod( 'kentha_color_accent', '#00ced0' );
 		$primary_color_hover = get_theme_mod( 'kentha_color_accent_hover', '#00fcff' );
 		$secondary_color = get_theme_mod( 'kentha_color_secondary', '#ff0d51' );
-		$secondary_color_hover = get_theme_mod( 'kentha_color_secondary_hover', '#c60038' );
 		$text_color = get_theme_mod( 'kentha_textcolor_on_buttons', '#fff' );
 
 		// Add CSS variables
@@ -128,11 +127,11 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 				'--fluidcheckout--button--primary--text-color--hover' => $text_color,
 
 				// Secondary button color
-				'--fluidcheckout--button--secondary--border-color' => $secondary_color,
-				'--fluidcheckout--button--secondary--background-color' => $secondary_color,
+				'--fluidcheckout--button--secondary--border-color' => $primary_color,
+				'--fluidcheckout--button--secondary--background-color' => $primary_color,
 				'--fluidcheckout--button--secondary--text-color' => $text_color,
-				'--fluidcheckout--button--secondary--border-color--hover' => $secondary_color_hover,
-				'--fluidcheckout--button--secondary--background-color--hover' => $secondary_color_hover,
+				'--fluidcheckout--button--secondary--border-color--hover' => $primary_color_hover,
+				'--fluidcheckout--button--secondary--background-color--hover' => $primary_color_hover,
 				'--fluidcheckout--button--secondary--text-color--hover' => $text_color,
 			),
 		);
