@@ -37,6 +37,7 @@ body.theme-kentha.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h6 
 
 body.theme-kentha#qtBody form .form-row {
   padding: 0;
+  line-height: normal;
 }
 
 body.theme-kentha div.woocommerce form .form-row input[type=checkbox] {
