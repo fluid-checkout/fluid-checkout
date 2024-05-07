@@ -74,8 +74,8 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 * Disable custom template for the checkout page content part when using FSE (Full Site Editor).
 	 */
 	public function maybe_disable_checkout_page_template( $is_enabled ) {
-		// Disable if using distraction free header and footer
-		if ( $this->is_distraction_free_header_footer_checkout() ) { return false; }
+		// Disable not if using distraction free header and footer
+		if ( ! $this->is_distraction_free_header_footer_checkout() ) { return false; }
 
 		// Disable if theme is using FSE
 		if ( current_theme_supports( 'block-templates' ) ) { return false; }
