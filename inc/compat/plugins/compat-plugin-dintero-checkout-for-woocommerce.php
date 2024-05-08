@@ -60,12 +60,12 @@ class FluidCheckout_DinteroCheckoutForWooCommerce extends FluidCheckout {
 		if ( ! is_array( $settings ) || 'embedded' !== $settings[ 'form_factor' ] || 'checkout' !== $settings[ 'checkout_type' ] || 'dintero_checkout' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 
 		// Place order
-		remove_action( 'fc_place_order', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order' ), 10, 2 );
-		remove_action( 'fc_place_order', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_custom_buttons' ), 20, 2 );
+		remove_action( 'fc_place_order', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order' ), 10 );
+		remove_action( 'fc_place_order', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_custom_buttons' ), 20 );
 		remove_action( 'woocommerce_order_button_html', array( FluidCheckout_Steps::instance(), 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Place order placeholder
-		remove_action( 'fc_output_step_payment', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_placeholder' ), 100, 2 );
+		remove_action( 'fc_checkout_end_step_payment', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_placeholder' ), 100 );
 		remove_action( 'fc_checkout_after_order_review_inside', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_placeholder' ), 1 );
 
 		// Widget areas
