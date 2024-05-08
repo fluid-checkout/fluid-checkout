@@ -186,7 +186,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Place order placeholder
-		add_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_placeholder' ), 100, 1 );
+		add_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_placeholder_for_substep' ), 100, 2 );
 		add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_placeholder' ), 1 );
 
 		// Order summary
@@ -236,13 +236,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 		// Both below payment section and order summary
 		else if ( 'both_payment_and_order_summary' === $place_order_position ) {
-			add_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
+			add_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_section_for_substep' ), 100, 2 );
 			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section_for_sidebar' ), 1 );
 			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_order_summary' ), 10 );
 		}
 		// Defaults to below the payment section `below_payment_section`
 		else {
-			add_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
+			add_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_section_for_substep' ), 100, 2 );
 		}
 	}
 
@@ -447,7 +447,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Place order placeholder
-		remove_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_placeholder' ), 100 );
+		remove_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_placeholder_for_substep' ), 100 );
 		remove_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_placeholder' ), 1 );
 
 		// Order summary
@@ -479,7 +479,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Place order position
 		remove_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section' ), 1 );
-		remove_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_section' ), 100 );
+		remove_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_section_for_substep' ), 100 );
 		remove_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section_for_sidebar' ), 1 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_order_summary' ), 10 );
 
@@ -5322,13 +5322,37 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Output checkout place order section.
+	 * 
+	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
+	 * @param   array  $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
+	 */
+	public function output_checkout_place_order_placeholder_for_substep( $step_args, $step_index ) {
+		$this->output_checkout_place_order_placeholder();
+	}
+
+	/**
+	 * Output checkout place order section.
 	 */
 	public function output_checkout_place_order_section( $step_id = 'payment', $is_sidebar = false ) {
 		// Output place order section
-		$section_class = $is_sidebar ? 'fc-place-order__section--sidebar' : 'fc-place-order__section--main';
+		$section_class = true === $is_sidebar ? 'fc-place-order__section--sidebar' : 'fc-place-order__section--main';
 		echo '<div class="fc-place-order__section ' . esc_attr( $section_class ) . '">';
 		do_action( 'fc_place_order', $step_id, $is_sidebar );
 		echo '</div>';
+	}
+
+	/**
+	 * Output checkout place order section for a substep section.
+	 * 
+	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
+	 * @param   array  $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
+	 */
+	public function output_checkout_place_order_section_for_substep( $step_args, $step_index ) {
+		// Get step id
+		$step_id = array_key_exists( 'id', $step_args ) ? $step_args[ 'id' ] : 'payment';
+
+		// Output place order section
+		$this->output_checkout_place_order_section( $step_id, false );
 	}
 
 	/**
