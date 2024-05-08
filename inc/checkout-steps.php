@@ -1770,9 +1770,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if has already registered steps
 		if ( count( $this->registered_checkout_steps ) > 0 ) { return; }
 
-		// Bail if not checkout or cart page or fragments
-		if ( ! $this->is_checkout_page_or_fragment() && ! $this->is_cart_page_or_fragment() && ( ! has_filter( 'fc_force_register_steps' ) || false === apply_filters( 'fc_force_register_steps', false ) ) ) { return; }
-
 		//
 		// STEPS
 		//

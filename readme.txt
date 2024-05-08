@@ -362,6 +362,13 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased 4.0.0 =
+
+* BREAKING CHANGES - Changes to how substeps are added to the checkout page can break functionality of Fluid Checkout PRO and other add-ons until they are also updated to the latest versions.
+
+* Improved: Refator how substeps are registered and output to the checkout form. Needed for the upcoming feature optimized Order Pay page.
+* Removed: Filter `fc_force_register_steps` as checkout steps and substeps needs to be registered for some functions to be available.
+
 = Unreleased =
 
 * Added: Compatibility with plugin Omniva Shipping.
@@ -391,6 +398,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 
 == Upgrade Notice ==
+
+= 4.0 =
+* BREAKING CHANGES - Changes to how substeps are added to the checkout page can break functionality of Fluid Checkout PRO and other add-ons until they are also updated to the latest versions.
 
 = 2.3 =
 * POSSIBLY BREAKING CHANGES - Some template files were moved, which can cause customizations to those files to stop working. See details in the changelog section.
