@@ -13,6 +13,9 @@ $_body-theme-selector:                 '.theme-diza' !default;
 // ------------------------------------
 @import
 	"woocommerce-form-fields",
+	"checkout-content-area",
 	"checkout-payment-methods",
 	"checkout-validation",
+	"order-summary",
+	"tom-select-control",
 	"woocommerce-form-fields-select2";

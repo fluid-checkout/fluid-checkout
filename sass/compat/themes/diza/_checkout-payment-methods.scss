@@ -2,17 +2,11 @@
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .woocommerce-checkout-payment .payment_methods li label {
-	padding: $option-box-padding-vertical $option-box-padding-horizontal !important; // Needed to override `!important` directive added by the theme.;
-	padding-#{ $alignment-left }: #{ $option-box-radio-size + $option-box-padding-horizontal } !important; // Needed to override `!important` directive added by the theme.;
-}
-
-body#{ $_body-theme-selector } .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] + label:before {
-	top: remsize( 1.3rem );
-}
-
-body#{ $_body-theme-selector } .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child + label:after{
-	top: remsize( 1.3rem );
+body#{ $_body-theme-selector } .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+	padding-top: $option-box-padding-vertical !important; // Needed to override theme styles
+	padding-bottom: $option-box-padding-vertical !important; // Needed to override theme styles
+	padding-#{ $alignment-left }: calc( #{ $option-box-padding-horizontal } + #{ $option-box-radio-size } + #{ $global-spacing-extra-small } ) !important; // Needed to override theme styles
+	padding-#{ $alignment-right }: $option-box-padding-horizontal !important; // Needed to override theme styles
 }
 
 body#{ $_body-theme-selector } .woocommerce table.shop_table > thead > tr > th .woocommerce-Price-amount,
