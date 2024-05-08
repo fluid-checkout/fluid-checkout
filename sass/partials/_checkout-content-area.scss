@@ -99,8 +99,9 @@ body#{ $_body-page-selector }.has-checkout-header .fc-content {
 
 
 
-body#{ $_body-page-selector } .fc-content > div.woocommerce {
+body#{ $_body-page-selector } div.woocommerce {
 	position: static;
+	max-width: 100%;
 
 	@media (#{$bp-larger-than-desktop-medium}) {
 		margin: 0 auto;
