@@ -42,7 +42,7 @@ class FluidCheckout_CaptchaPro extends FluidCheckout {
 		$captcha_position = FluidCheckout_Settings::instance()->get_option( 'fc_integration_captcha_pro_captcha_position' );
 		
 		$captcha_position_hook_priority = array(
-			'before_place_order_section' => array( 'hook' => 'fc_output_step_payment', 'priority' => 95, 'args_count' => 2 ),
+			'before_place_order_section' => array( 'hook' => 'fc_checkout_end_step_payment', 'priority' => 95, 'args_count' => 2 ),
 			'before_place_order_button'  => array( 'hook' => 'woocommerce_review_order_before_submit', 'priority' => 20, 'args_count' => 1 ),
 		);
 
