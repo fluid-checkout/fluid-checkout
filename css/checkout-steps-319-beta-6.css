@@ -1353,6 +1353,7 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 .fc-wrapper .fc-inside .fc-place-order__section {
   float: none;
   margin: 0;
+  padding: 20px 20px;
 }
 @media (min-width: 1000px) {
   .fc-wrapper .fc-inside .fc-place-order__section {

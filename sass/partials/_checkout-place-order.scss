@@ -11,6 +11,7 @@
 .fc-wrapper .fc-inside .fc-place-order__section {
 	float: none;
 	margin: 0;
+	padding: $place-order-padding;
 
 	@media (#{$bp-larger-than-desktop}) {
 		display: block;
