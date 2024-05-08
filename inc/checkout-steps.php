@@ -222,12 +222,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
 
-		// Billing address
-		$billing_step_hook_priority = $this->get_billing_address_hook_priority();
-		$billing_step_hook = $billing_step_hook_priority[ 0 ];
-		$billing_step_priority = $billing_step_hook_priority[ 1 ];
-		// add_action( $billing_step_hook, array( $this, 'output_substep_billing_address' ), $billing_step_priority );
-
 		// Place order position
 		$place_order_position = $this->get_place_order_position();
 		// Below order summary
@@ -393,10 +387,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 
 		// Billing address
-		// $billing_step_hook_priority = $this->get_billing_address_hook_priority();
-		// $billing_step_hook = $billing_step_hook_priority[ 0 ];
-		// $billing_step_priority = $billing_step_hook_priority[ 1 ];
-		// remove_action( $billing_step_hook, array( $this, 'output_substep_billing_address' ), $billing_step_priority );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
 		remove_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_billing_address' ), 10 );
 		remove_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_billing_address' ), 20 );
@@ -1833,11 +1823,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'step_title' => apply_filters( 'fc_step_title_billing', _x( 'Billing', 'Checkout step title', 'fluid-checkout' ) ),
 			'priority' => $this->get_billing_step_hook_priority(),
 		) );
-		$this->register_checkout_substep( $step_id_billing, array(
+
+		// BILLING ADDRESS SUBSTEP
+		$billing_substep_position_args = $this->get_billing_address_substep_position_args();
+		$billing_substep_step_id = $billing_substep_position_args[ 'step_id' ];
+		$billing_substep_priority = $billing_substep_position_args[ 'priority' ];
+		$this->register_checkout_substep( $billing_substep_step_id, array(
 			'substep_id' => 'billing_address',
 			'substep_title' => __( 'Billing to', 'fluid-checkout' ),
-			// TODO: CHANGE FUNCTION TO SET BILLING SUBSTEP PRIORITY
-			'priority' => $this->get_billing_address_hook_priority()[ 1 ],
+			'priority' => $billing_substep_priority,
 			'render_fields_callback' => array( $this, 'output_substep_billing_address_fields' ),
 			'render_review_text_callback' => array( $this, 'output_substep_text_billing_address' ),
 			'is_complete_callback' => array( $this, 'is_substep_complete_billing_address' ),
@@ -3589,23 +3583,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get hook priority for the billing address substep.
 	 */
-	public function get_billing_address_hook_priority() {
-		// Define substep hook and priority for each position
-		$substep_position_priority = apply_filters( 'fc_billing_address_hook_priority_options', array(
-			'step_after_shipping'        => array( 'fc_output_step_billing', 10 ),
-			// PRO: Hooks and priorities for other options are added from the PRO plugin.
+	public function get_billing_address_substep_position_args() {
+		// Define substep position and priority for each positioning option
+		$substep_position_args = apply_filters( 'fc_billing_address_substep_position_args', array(
+			'step_after_shipping'        => array( 'step_id' => 'billing', 'priority' => 10 ),
+			// PRO: Step position and priority for other positioning options are added from the PRO plugin.
 			// This ensures that the Lite plugin will fall back to the default option
 			// in case the PRO plugin is not active and a PRO only option as previously selected.
 		) );
 
 		// Get selected position for billing address
 		$position = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' );
-		if ( ! array_key_exists( $position, $substep_position_priority ) ) {
+		if ( ! array_key_exists( $position, $substep_position_args ) ) {
 			$position = FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_billing_address_position' );
 		}
 
 		// Get hook priority for the selected position
-		$hook_priority = $substep_position_priority[ $position ];
+		$hook_priority = $substep_position_args[ $position ];
 
 		return $hook_priority;
 	}
