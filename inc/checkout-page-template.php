@@ -30,6 +30,9 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+
 		// Checkout page template
 		add_filter( 'template_include', array( $this, 'checkout_page_template' ), 100 );
 		add_filter( 'fc_enable_checkout_page_template', array( $this, 'maybe_disable_checkout_page_template' ), 100 );
@@ -39,12 +42,26 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 
 		// Shortcode wrapper
 		add_action( 'wp', array( $this, 'maybe_setup_checkout_shortcode_wrapper' ), 10 );
+	}
 
-		// Checkout header and footer
-		if ( $this->is_distraction_free_header_footer_checkout() ) {
-			add_action( 'fc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
-			add_action( 'fc_checkout_footer', array( $this, 'output_checkout_footer' ), 100 );
-		}
+	/**
+	 * Add or remove late hooks.
+	 */
+	public function late_hooks() {
+		// Template parts
+		$this->template_parts_hooks();
+	}
+
+	/**
+	 * Add or remove template parts hooks.
+	 */
+	public function template_parts_hooks() {
+		// Bail if not using distraction free header and footer
+		if ( ! $this->is_distraction_free_header_footer_checkout() ) { return; }
+
+          // Checkout header and footer
+          add_action( 'fc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
+          add_action( 'fc_checkout_footer', array( $this, 'output_checkout_footer' ), 100 );
 	}
 
 
@@ -64,21 +81,16 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		remove_action( 'wp', array( $this, 'maybe_setup_checkout_shortcode_wrapper' ), 10 );
 
 		// Checkout header and footer
-		if ( $this->is_distraction_free_header_footer_checkout() ) {
-			remove_action( 'fc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
-			remove_action( 'fc_checkout_footer', array( $this, 'output_checkout_footer' ), 100 );
-		}
+		remove_action( 'fc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
+		remove_action( 'fc_checkout_footer', array( $this, 'output_checkout_footer' ), 100 );
 	}
 
 	/**
-	 * Disable custom template for the checkout page content part when using FSE (Full Site Editor).
+	 * Disable custom template for the checkout page content in some cases.
 	 */
 	public function maybe_disable_checkout_page_template( $is_enabled ) {
-		// Disable not if using distraction free header and footer
+		// Disable if not using distraction free header and footer
 		if ( ! $this->is_distraction_free_header_footer_checkout() ) { return false; }
-
-		// Disable if theme is using FSE
-		if ( current_theme_supports( 'block-templates' ) ) { return false; }
 
 		// Disable if on order pay page
 		if ( is_checkout_pay_page() || is_wc_endpoint_url( 'order-pay' ) ) { return false; }
