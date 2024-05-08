@@ -334,7 +334,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Template file loader
-		remove_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
+		remove_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100 );
 
 		// Checkout header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) {
@@ -377,10 +377,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_checkout_after_contact_fields', array( $this, 'output_form_account_creation' ), 10 );
 
 		// Formatted address
-		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10, 2 );
+		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10 );
 
 		// Shipping
-		remove_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
+		remove_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100 );
 		remove_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		remove_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_shipping_address' ), 10 );
 		remove_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_shipping_address' ), 20 );
@@ -430,24 +430,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Payment
 		remove_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
-		remove_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html_remove_links' ), 10, 2 );
-		remove_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html_fix_accessibility_attributes' ), 10, 2 );
+		remove_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html_remove_links' ), 10 );
+		remove_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html_fix_accessibility_attributes' ), 10 );
 		remove_filter( 'fc_substep_payment_method_text_lines', array( $this, 'add_substep_text_lines_payment_method' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_payment_method_text_fragment' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_suppress_payment_methods_fragment' ), 1000 );
 
 		// Formatted Address
 		remove_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
-		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
+		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10 );
 
 		// Place order
-		remove_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10, 2 );
-		remove_action( 'fc_place_order', array( $this, 'output_checkout_place_order_custom_buttons' ), 20, 2 );
+		remove_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10 );
+		remove_action( 'fc_place_order', array( $this, 'output_checkout_place_order_custom_buttons' ), 20 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
 		remove_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Place order placeholder
-		remove_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_placeholder' ), 100, 2 );
+		remove_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_placeholder' ), 100 );
 		remove_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_placeholder' ), 1 );
 
 		// Order summary
@@ -457,16 +457,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 
 		// Order summary cart items details
-		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_product_name' ), 10, 3 );
-		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_unit_price' ), 30, 3 );
-		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_meta_data' ), 40, 3 );
-		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_quantity' ), 90, 3 );
+		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_product_name' ), 10 );
+		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_unit_price' ), 30 );
+		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_meta_data' ), 40 );
+		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_quantity' ), 90 );
 
 		// Persisted data
 		remove_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
-		remove_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100, 2 );
+		remove_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100 );
 		remove_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
-		remove_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10, 2 );
+		remove_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10 );
 		remove_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
 		remove_action( 'template_redirect', array( $this, 'maybe_update_checkout_address_from_account' ), 5 );
 
@@ -479,7 +479,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Place order position
 		remove_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section' ), 1 );
-		remove_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
+		remove_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_section' ), 100 );
 		remove_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section_for_sidebar' ), 1 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment_for_order_summary' ), 10 );
 

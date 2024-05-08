@@ -31,8 +31,8 @@ class FluidCheckout_ThemeCompat_PageBuilderFramework extends FluidCheckout {
 	 */
 	public function very_late_hooks() {
 		// Remove theme's spin buttons
-		remove_action( 'woocommerce_before_quantity_input_field', 'wpbf_woo_before_quantity_input_field' );
-		remove_action( 'woocommerce_after_quantity_input_field', 'wpbf_woo_after_quantity_input_field' );
+		remove_action( 'woocommerce_before_quantity_input_field', 'wpbf_woo_before_quantity_input_field', 10 );
+		remove_action( 'woocommerce_after_quantity_input_field', 'wpbf_woo_after_quantity_input_field', 10 );
 	}
 
 

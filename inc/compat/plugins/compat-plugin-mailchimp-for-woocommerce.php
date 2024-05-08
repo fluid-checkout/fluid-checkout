@@ -49,8 +49,8 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 		$render_on = $service->getOption( 'mailchimp_checkbox_action', 'woocommerce_after_checkout_billing_form' );
 
 		// Move subscribe box
-		remove_action( $render_on, array( $service, 'applyNewsletterField' ) );
-		add_action( 'fc_checkout_after_contact_fields', array( $service, 'applyNewsletterField' ) );
+		remove_action( $render_on, array( $service, 'applyNewsletterField' ), 10 );
+		add_action( 'fc_checkout_after_contact_fields', array( $service, 'applyNewsletterField' ), 10 );
 	}
 
 

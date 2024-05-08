@@ -30,7 +30,7 @@ class FluidCheckout_CaptchaPro extends FluidCheckout {
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
-		remove_action( 'woocommerce_after_checkout_billing_form', 'cptch_woocommerce_checkout' );
+		remove_action( 'woocommerce_after_checkout_billing_form', 'cptch_woocommerce_checkout', 10 );
 		
 		$captcha_position_args = $this->get_captcha_position_args();
 		add_action( $captcha_position_args[ 'hook' ], 'cptch_woocommerce_checkout', $captcha_position_args[ 'priority' ], $captcha_position_args[ 'args_count' ] );

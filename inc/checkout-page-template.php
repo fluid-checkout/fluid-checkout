@@ -58,7 +58,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		remove_filter( 'fc_enable_checkout_page_template', array( $this, 'maybe_disable_checkout_page_template' ), 100 );
 
 		// Template file loader
-		remove_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
+		remove_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100 );
 
 		// Shortcode wrapper
 		remove_action( 'wp', array( $this, 'maybe_setup_checkout_shortcode_wrapper' ), 10 );

@@ -39,8 +39,8 @@ class FluidCheckout_ThemeCompat_OceanWP extends FluidCheckout {
 		if ( true != get_theme_mod( 'ocean_woo_multi_step_checkout', false ) ) { return; }
 	
 		// Checkout validation.
-		remove_action( 'wp_ajax_oceanwp_validate_checkout', array( OceanWP_WooCommerce_Config::instance(), 'validate_checkout_callback' ) );
-		remove_action( 'wp_ajax_nopriv_oceanwp_validate_checkout', array( OceanWP_WooCommerce_Config::instance(), 'validate_checkout_callback' ) );
+		remove_action( 'wp_ajax_oceanwp_validate_checkout', array( OceanWP_WooCommerce_Config::instance(), 'validate_checkout_callback' ), 10 );
+		remove_action( 'wp_ajax_nopriv_oceanwp_validate_checkout', array( OceanWP_WooCommerce_Config::instance(), 'validate_checkout_callback' ), 10 );
 
 		// Add checkout timeline template.
 		remove_action( 'woocommerce_before_checkout_form', array( OceanWP_WooCommerce_Config::instance(), 'checkout_timeline' ), 10 );
