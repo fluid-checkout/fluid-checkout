@@ -1773,20 +1773,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if not checkout or cart page or fragments
 		if ( ! $this->is_checkout_page_or_fragment() && ! $this->is_cart_page_or_fragment() && ( ! has_filter( 'fc_force_register_steps' ) || false === apply_filters( 'fc_force_register_steps', false ) ) ) { return; }
 
+		//
+		// STEPS
+		//
+
 		// CONTACT
 		$step_id_contact = 'contact';
 		$this->register_checkout_step( array(
 			'step_id' => $step_id_contact,
 			'step_title' => apply_filters( 'fc_step_title_contact', _x( 'Contact', 'Checkout step title', 'fluid-checkout' ) ),
 			'priority' => 10,
-		) );
-		$this->register_checkout_substep( $step_id_contact, array(
-			'substep_id' => 'contact',
-			'substep_title' => __( 'My contact', 'fluid-checkout' ),
-			'priority' => 20,
-			'render_fields_callback' => array( $this, 'output_substep_contact_fields' ),
-			'render_review_text_callback' => array( $this, 'output_substep_text_contact' ),
-			'is_complete_callback' => array( $this, 'is_substep_complete_contact' ),
 		) );
 
 		// SHIPPING
@@ -1799,6 +1795,38 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// because if the step is registered before the object `WC()->cart` is available, the condition will always return false.
 			'render_condition_callback' => function() { return WC()->cart && WC()->cart->needs_shipping(); },
 		) );
+
+		// BILLING
+		$step_id_billing = 'billing';
+		$this->register_checkout_step( array(
+			'step_id' => $step_id_billing,
+			'step_title' => apply_filters( 'fc_step_title_billing', _x( 'Billing', 'Checkout step title', 'fluid-checkout' ) ),
+			'priority' => $this->get_billing_step_hook_priority(),
+		) );
+
+		// PAYMENT
+		$step_id_payment = 'payment';
+		$this->register_checkout_step( array(
+			'step_id' => $step_id_payment,
+			'step_title' => apply_filters( 'fc_step_title_payment', _x( 'Payment', 'Checkout step title', 'fluid-checkout' ) ),
+			'priority' => 100,
+		) );
+
+		//
+		// SUBSTEPS
+		//
+
+		// CONTACT SUBSTEP
+		$this->register_checkout_substep( $step_id_contact, array(
+			'substep_id' => 'contact',
+			'substep_title' => __( 'My contact', 'fluid-checkout' ),
+			'priority' => 20,
+			'render_fields_callback' => array( $this, 'output_substep_contact_fields' ),
+			'render_review_text_callback' => array( $this, 'output_substep_text_contact' ),
+			'is_complete_callback' => array( $this, 'is_substep_complete_contact' ),
+		) );
+
+		// SHIPPING ADDRESS SUBSTEP
 		$this->register_checkout_substep( $step_id_shipping, array(
 			'substep_id' => 'shipping_address',
 			'substep_title' => __( 'Shipping to', 'fluid-checkout' ),
@@ -1807,6 +1835,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'render_review_text_callback' => array( $this, 'output_substep_text_shipping_address' ),
 			'is_complete_callback' => array( $this, 'is_substep_complete_shipping_address' ),
 		) );
+
+		// SHIPPING METHODS SUBSTEP
 		$this->register_checkout_substep( $step_id_shipping, array(
 			'substep_id' => 'shipping_method',
 			'substep_title' => __( 'Shipping method', 'fluid-checkout' ),
@@ -1814,14 +1844,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'render_fields_callback' => array( $this, 'output_shipping_methods_available' ),
 			'render_review_text_callback' => array( $this, 'output_substep_text_shipping_method' ),
 			'is_complete_callback' => array( $this, 'is_substep_complete_shipping_method' ),
-		) );
-
-		// BILLING
-		$step_id_billing = 'billing';
-		$this->register_checkout_step( array(
-			'step_id' => $step_id_billing,
-			'step_title' => apply_filters( 'fc_step_title_billing', _x( 'Billing', 'Checkout step title', 'fluid-checkout' ) ),
-			'priority' => $this->get_billing_step_hook_priority(),
 		) );
 
 		// BILLING ADDRESS SUBSTEP
@@ -1837,13 +1859,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'is_complete_callback' => array( $this, 'is_substep_complete_billing_address' ),
 		) );
 
-		// PAYMENT
-		$step_id_payment = 'payment';
-		$this->register_checkout_step( array(
-			'step_id' => $step_id_payment,
-			'step_title' => apply_filters( 'fc_step_title_payment', _x( 'Payment', 'Checkout step title', 'fluid-checkout' ) ),
-			'priority' => 100,
-		) );
+		// PAYMENT SUBSTEP
 		$this->register_checkout_substep( $step_id_payment, array(
 			'substep_id' => 'payment',
 			'substep_title' => __( 'Payment method', 'fluid-checkout' ),
@@ -1855,6 +1871,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'is_complete_callback' => '__return_false',
 		) );
 
+		/**
+		 * Trigger action to let plugins add or modify checkout steps.
+		 */
 		do_action( 'fc_register_steps' );
 	}
 
