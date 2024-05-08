@@ -56,12 +56,18 @@ body#{ $_body-page-selector }.has-flyout--open #main.fc-main {
 
 
 body#{ $_body-page-selector } .fc-content,
-body#{ $_body-page-selector } .fc-content * {
-	box-sizing: border-box !important; // Needed to override theme styles breaking the layout
+body#{ $_body-page-selector } .fc-progress-bar,
+body#{ $_body-page-selector } .fc-checkout-notices,
+body#{ $_body-page-selector } .fc-wrapper {
+	&,
+	& * {
+		box-sizing: border-box !important; // Needed to override theme styles breaking the layout
+	}
 }
 
+
+
 body#{ $_body-page-selector } .fc-content {
-	box-sizing: border-box;
 	float: none !important; // Needed to override theme styles breaking the layout
 	margin: 0 auto;
 	padding-bottom: $global-spacing-large;

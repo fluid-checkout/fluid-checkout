@@ -232,13 +232,17 @@ body.woocommerce-checkout.has-flyout--open #main.fc-main {
   z-index: unset;
 }
 
-body.woocommerce-checkout .fc-content,
-body.woocommerce-checkout .fc-content * {
+body.woocommerce-checkout .fc-content, body.woocommerce-checkout .fc-content *,
+body.woocommerce-checkout .fc-progress-bar,
+body.woocommerce-checkout .fc-progress-bar *,
+body.woocommerce-checkout .fc-checkout-notices,
+body.woocommerce-checkout .fc-checkout-notices *,
+body.woocommerce-checkout .fc-wrapper,
+body.woocommerce-checkout .fc-wrapper * {
   box-sizing: border-box !important;
 }
 
 body.woocommerce-checkout .fc-content {
-  box-sizing: border-box;
   float: none !important;
   margin: 0 auto;
   padding-bottom: 80px;
