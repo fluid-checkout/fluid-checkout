@@ -66,9 +66,6 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		if ( $this->is_feature_enabled() ) {
 			// Checkout coupon notice
 			remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
-
-			// Coupon code substep
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_coupon_codes_text_fragment' ), 10 );
 		}
 	}
 
@@ -77,7 +74,6 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function very_late_hooks() {
 		// Substep
-		add_action( 'fc_before_substep_coupon_codes', array( $this, 'output_substep_coupon_codes_auxiliary_sections' ), 10, 2 );
 		$this->maybe_register_substep_coupon_codes();
 	}
 
@@ -113,22 +109,39 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 			add_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 
 			// Coupon code substep
-			remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_coupon_codes_text_fragment' ), 10 );
+			$this->unregister_substep_coupon_codes();
 		}
 	}
 
 
 
 	/**
-	 * Maybe register the order notes substep and add related hooks.
+	 * Get the step id for where to display the coupon codes substep.
+	 */
+	public function get_coupon_codes_substep_step_id() {
+		return apply_filters( 'fc_coupon_code_substep_step_id', 'payment' );
+	}
+
+	/**
+	 * Get the priority for the coupon codes substep.
+	 */
+	public function get_coupon_codes_substep_priority() {
+		return apply_filters( 'fc_coupon_code_substep_priority', 10 );
+	}
+
+	/**
+	 * Maybe register the coupon codes substep and add related hooks.
 	 */
 	public function maybe_register_substep_coupon_codes() {
 		// Bail if feature is not enabled
 		if ( ! $this->is_feature_enabled() ) { return; }
 
+		// Maybe bail if coupon codes is not to be displayed as a substep
+		if ( false === apply_filters( 'fc_coupon_code_displayed_as_substep', true ) ) { return; }
+
 		// Get variables for the substep
-		$step_id = 'payment';
-		$substep_priority = 10;
+		$step_id = $this->get_coupon_codes_substep_step_id();
+		$substep_priority = $this->get_coupon_codes_substep_priority();
 		$substep_id = 'coupon_codes';
 		$substep_title = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_display_coupon_code_section_title' ) ? apply_filters( 'fc_substep_coupon_codes_section_title', __( 'Coupon code', 'fluid-checkout' ) ) : null;
 
@@ -140,6 +153,28 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 			'render_fields_callback' => array( $this, 'output_substep_coupon_codes_fields' ),
 			'render_review_text_callback' => null,
 		) );
+
+		// Auxiliary sections
+		add_action( 'fc_before_substep_coupon_codes', array( $this, 'output_substep_coupon_codes_auxiliary_sections' ), 10, 2 );
+
+		// Substep review text fragment
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_coupon_codes_text_fragment' ), 10 );
+	}
+
+	/**
+	 * Unregister the coupon codes substep and add related hooks.
+	 */
+	public function unregister_substep_coupon_codes() {
+		// Get variables for the substep
+		$step_id = $this->get_coupon_codes_substep_step_id();
+		$substep_priority = $this->get_coupon_codes_substep_priority();
+		$substep_id = 'coupon_codes';
+
+		// Unregister substep
+		FluidCheckout_Steps::instance()->unregister_checkout_substep( $step_id, $substep_id );
+
+		// Remove substep review text fragment
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_coupon_codes_text_fragment' ), 10 );
 	}
 
 

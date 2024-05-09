@@ -50,7 +50,7 @@ class FluidCheckout_ThemeCompat_OceanWP extends FluidCheckout {
 
 		// Coupon form.
 		// Maybe re-add the coupon form if integrated coupon code from the plugin is not enabled.
-		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_coupon_codes' ) ) {
+		if ( ! FluidCheckout_CouponCodes::instance()->is_feature_enabled() ) {
 			add_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 		}
 
