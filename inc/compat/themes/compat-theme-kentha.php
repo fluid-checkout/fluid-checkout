@@ -115,7 +115,6 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 				'--fluidcheckout--field--height' => '48px',
 				'--fluidcheckout--field--padding-left' => '24px',
 				'--fluidcheckout--field--background-color--accent' => $primary_color,
-				'--fluidcheckout--field--text-color--accent' => '#fff',
 
 				// Primary button colors
 				'--fluidcheckout--button--primary--border-color' => $primary_color,
