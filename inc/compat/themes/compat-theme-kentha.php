@@ -90,7 +90,7 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		$attributes['data-sticky-relative-to'] = '{ "xs": { "breakpointInitial": 0, "breakpointFinal": 1200, "selector": ".qt-mobilemenu.qt-up" }, "sm": { "breakpointInitial": 1201, "breakpointFinal": 100000, "selector": ".qt-menubar" } }';
+		$attributes['data-sticky-relative-to'] = '{ "sm": { "breakpointInitial": 1201, "breakpointFinal": 100000, "selector": ".qt-menubar" } }';
 
 		return $attributes;
 	}

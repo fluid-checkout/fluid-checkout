@@ -12,9 +12,11 @@ $_body-theme-selector:                 '.theme-kentha' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-columns",
 	"checkout-content-area",
 	"checkout-coupon-code",
 	"checkout-place-order",
+	"checkout-progress-bar",
 	"checkout-steps",
 	"woocommerce-form-fields",
 	"checkout-payment-methods",

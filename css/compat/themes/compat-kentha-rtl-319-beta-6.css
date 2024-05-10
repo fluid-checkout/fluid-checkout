@@ -1,3 +1,8 @@
+body.theme-kentha .qt-mobilemenu.qt-up + .fc-content .fc-progress-bar__inner {
+  top: 56px !important;
+  transition: top 0.35s ease;
+}
+
 body.theme-kentha .fc-content {
   color: var(--fluidcheckout--color--dark-grey, #535156);
 }
@@ -24,6 +29,11 @@ body.theme-kentha#qtBody div.woocommerce .fc-wrapper .fc-coupon_code__collapsibl
 body.theme-kentha#qtBody .fc-wrapper .fc-place-order .fc-place-order-button {
   min-width: 240px !important;
   min-height: 50px !important;
+}
+
+body.theme-kentha.hide_fixed_rows .fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
+  top: 5px !important;
+  transition: top var(--trx-addons-fixed-rows-duration) ease-in;
 }
 
 body.theme-kentha.woocommerce-checkout form.woocommerce-checkout .fc-wrapper h1,
