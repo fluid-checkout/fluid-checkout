@@ -19,6 +19,10 @@ class FluidCheckout_ThemeCompat_Go extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Settings
+		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'fc_enable_compat_theme_account_style_go', array( $this, 'maybe_disable_compat_styles_account_pages' ), 10 );
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
@@ -32,6 +36,56 @@ class FluidCheckout_ThemeCompat_Go extends FluidCheckout {
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+	}
+
+
+
+	/**
+	 * Add new settings to the Fluid Checkout admin settings sections.
+	 *
+	 * @param   array   $settings         Array with all settings for the current section.
+	 * @param   string  $current_section  Current section name.
+	 */
+	public function add_settings( $settings ) {
+		// Add new settings
+		$settings_new = array(
+			array(
+				'title' => __( 'Theme Go', 'fluid-checkout' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_theme_go_options',
+			),
+
+			array(
+				'title'           => __( 'My account layout', 'fluid-checkout' ),
+				'desc'            => __( 'Enable wide layout on "My account" page.', 'fluid-checkout' ),
+				'id'              => 'fc_compat_theme_go_enable_account_wide_layout',
+				'type'            => 'checkbox',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_go_enable_account_wide_layout' ),
+				'autoload'        => false,
+			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_theme_go_options',
+			),
+		);
+
+		$settings = array_merge( $settings, $settings_new );
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Maybe disable the compatibility styles for the account pages.
+	 * 
+	 */
+	public function maybe_disable_compat_styles_account_pages( $is_enabled ) {
+		// Change the status basedon the settings
+		$is_enabled = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_go_enable_account_wide_layout' );
+
+		return $is_enabled;
 	}
 
 
