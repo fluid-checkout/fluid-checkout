@@ -144,6 +144,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_theme_pressmart_output_checkout_steps_section'       => 'no',
 			'fc_compat_theme_betheme_output_checkout_steps_section'         => 'no',
 			'fc_compat_theme_thegem_output_checkout_steps_section'          => 'no',
+			'fc_compat_theme_go_enable_account_wide_layout'                 => 'yes',
 
 			// Deprecated settings.
 			'fc_enable_checkout_place_order_sidebar'                        => 'no',

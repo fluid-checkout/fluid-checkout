@@ -1,7 +1,7 @@
 // ------------------------------------
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-page-selector:                  '.woocommerce-account' !default;
 $_body-theme-selector:                 '.theme-go' !default;
 
 
@@ -12,8 +12,4 @@ $_body-theme-selector:                 '.theme-go' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"checkout-content-area",
-	"checkout-coupon-code",
-	"checkout-payment-methods",
-	"checkout-shipping-methods",
-	"woocommerce-form-fields-select2";
+	"account-content-area";
