@@ -3,19 +3,19 @@ body.theme-go.woocommerce-account .entry-content > .woocommerce {
 }
 
 body.theme-go.woocommerce-account .woocommerce-MyAccount-navigation {
-  width: 20%;
+  width: 100%;
 }
-@media (max-width: 999px) {
+@media (min-width: 769px) {
   body.theme-go.woocommerce-account .woocommerce-MyAccount-navigation {
-    width: 100%;
+    width: 20%;
   }
 }
 
 body.theme-go.woocommerce-account .woocommerce-MyAccount-content {
-  width: 78%;
+  width: 100%;
 }
-@media (max-width: 999px) {
+@media (min-width: 769px) {
   body.theme-go.woocommerce-account .woocommerce-MyAccount-content {
-    width: 100%;
+    width: 78%;
   }
 }
