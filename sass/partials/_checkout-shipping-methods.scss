@@ -65,6 +65,13 @@
 }
 
 
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label-wrapper {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label {
 	position: relative;
@@ -73,7 +80,7 @@
 	padding-top: $option-box-padding-vertical !important; // Needed to override theme styles
 	padding-bottom: $option-box-padding-vertical !important; // Needed to override theme styles
 	padding-#{ $alignment-left }: calc( #{ $option-box-padding-horizontal } + #{ $option-box-radio-size } + #{ $global-spacing-extra-small } )  !important; // Needed to override theme styles
-	padding-#{ $alignment-right }: calc( #{ $option-box-padding-horizontal } + #{ $shipping-method-price-width } ) !important; // Needed to override theme styles
+	padding-#{ $alignment-right }: #{ $option-box-padding-horizontal } !important; // Needed to override theme styles
 	width: 100% !important; // Needed to override theme styles
 	background-color: $option-box-background-color;
 	border-bottom: $option-box-label-border;
@@ -160,6 +167,7 @@
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-text {
 	position: static;
+	flex-grow: 1;
 }
 
 
@@ -178,19 +186,29 @@
 
 
 
+.woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-image img {
+	height: remsize( 2.4rem ) !important; // Needed to override theme styles
+	width: auto !important; // Needed to override theme styles
+	vertical-align: middle !important; // Needed to override theme styles
+	margin-#{ $alignment-left }: $global-spacing-tiny !important; // Needed to override theme styles
+}
+
+
+
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
-	position: absolute;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
 	justify-content: center;
-	top: 0;
-	#{ $alignment-left }: auto;
-	#{ $alignment-right }: $option-box-padding-horizontal;
+	width: $shipping-method-price-width;
 	height: 100%;
-	line-height: 1.2;
+	line-height: 1.1;
 	font-weight: $shipping-method-price-font-weight;
 	text-align: #{ $alignment-right };
+}
+.woocommerce ul#shipping_method .shipping-method__option .has-price.has-tax-notes .shipping-method__option-price {
+	margin-top: - remsize( 0.3rem );
+	margin-bottom: - remsize( 0.3rem );
 }
 
 
@@ -205,6 +223,14 @@
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .tax_label {
 	display: block;
+	font-size: .7em;
+	font-weight: normal;
+}
+
+
+
+.woocommerce ul#shipping_method .shipping_method:checked + .shipping-method__option-label .shipping-method__after-shipping-rate {
+	margin-top: $global-spacing-extra-small;
 }
 
 

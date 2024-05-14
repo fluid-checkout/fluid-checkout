@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-content form.woocommerce-checkout {
+	padding: 0;
+}
+
+body#{ $_body-theme-selector } .fc-content form.woocommerce-checkout:before {
+	content: none;
+}

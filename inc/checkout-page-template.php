@@ -16,6 +16,17 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 
 
 	/**
+	 * Check whether the feature is enabled or not.
+	 */
+	public function is_feature_enabled() {
+		// Return whether the feature is enabled or not.
+		// Use comparison to `true` to ensure a boolean value is returned.
+		return true === apply_filters( 'fc_enable_checkout_page_template', true );
+	}
+
+
+
+	/**
 	 * Initialize hooks.
 	 */
 	public function hooks() {
@@ -60,17 +71,23 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	}
 
 	/**
-	 * Disable custom template for the checkout page content part when using the Full Site Editor (FSE).
+	 * Disable custom template for the checkout page content part when using FSE (Full Site Editor).
 	 */
-	public function maybe_disable_checkout_page_template( $enabled ) {
-		// Bail if using distraction free header and footer
-		if ( $this->is_distraction_free_header_footer_checkout() ) { return $enabled; }
+	public function maybe_disable_checkout_page_template( $is_enabled ) {
+		// Disable not if using distraction free header and footer
+		if ( ! $this->is_distraction_free_header_footer_checkout() ) { return false; }
 
-		// Bail if theme not using FSE
-		if ( ! current_theme_supports( 'block-templates' ) ) { return $enabled; }
+		// Disable if theme is using FSE
+		if ( current_theme_supports( 'block-templates' ) ) { return false; }
 
-		// Disable custom checkout templates.
-		return false;
+		// Disable if on order pay page
+		if ( is_checkout_pay_page() || is_wc_endpoint_url( 'order-pay' ) ) { return false; }
+
+		// Disable if on order received page
+		if ( is_order_received_page() || is_wc_endpoint_url( 'order-received' ) ) { return false; }
+
+		// Otherwise, make no changes.
+		return $is_enabled;
 	}
 
 
@@ -79,8 +96,8 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 * Setup shortcode wrapper for the checkout shortcode.
 	 */
 	public function maybe_setup_checkout_shortcode_wrapper() {
-		// Bail if checkout page template is not enabled
-		if ( true === apply_filters( 'fc_enable_checkout_page_template', true ) ) { return; }
+		// Bail if feature is not enabled
+		if ( ! $this->is_feature_enabled() ) { return; }
 
 		// Define shortcode tag
 		$checkout_shortcode_tag = apply_filters( 'woocommerce_checkout_shortcode_tag', 'woocommerce_checkout' );
@@ -105,7 +122,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 */
 	public function output_checkout_shortcode_wrapper( $attributes ) {
 		// Bail if not on checkout page
-		if ( is_admin() || ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) {
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) {
 			// Output the checkout shortcode contents without a wrapper
 			return WC_Shortcodes::shortcode_wrapper( array( 'WC_Shortcode_Checkout', 'output' ), $attributes );
 		}
@@ -120,6 +137,9 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 * Locate template files from this plugin.
 	 */
 	public function locate_template( $template, $template_name, $template_path ) {
+		// Bail if feature is not enabled
+		if ( ! $this->is_feature_enabled() ) { return $template; }
+
 		$_template = null;
 
 		// Set template path to default value when not provided
@@ -163,8 +183,8 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 * @param   String  $template  Template file path.
 	 */
 	public function checkout_page_template( $template ) {
-		// Bail if checkout page template is not enabled
-		if ( true !== apply_filters( 'fc_enable_checkout_page_template', true ) ) { return $template; }
+		// Bail if feature is not enabled
+		if ( ! $this->is_feature_enabled() ) { return $template; }
 
 		// Bail if not on checkout page.
 		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $template; }

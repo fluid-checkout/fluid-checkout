@@ -526,17 +526,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		//
 		// END - COPIED FROM `woocommerce_form_field` function
 		//
-		
-		// Get the orignal `label` html for the checkbox field
-		$label_original = '<label class="checkbox ' . implode( ' ', $args['label_class'] ) . '" ' . implode( ' ', $custom_attributes ) . '>
-						<input type="' . esc_attr( $args['type'] ) . '" class="input-checkbox ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" value="1" ' . checked( $value, 1, false ) . ' /> ' . $args['label'] . $required . '</label>';
 
-		// Wrap the label text with a `<span>` element
-		$label_replacement = '<label class="checkbox ' . implode( ' ', $args['label_class'] ) . '" ' . implode( ' ', $custom_attributes ) . '>
-						<input type="' . esc_attr( $args['type'] ) . '" class="input-checkbox ' . esc_attr( implode( ' ', $args['input_class'] ) ) . '" name="' . esc_attr( $key ) . '" id="' . esc_attr( $args['id'] ) . '" value="1" ' . checked( $value, 1, false ) . ' /> ' . '<span class="fc-checkbox-label-text">' . $args['label'] . '</span>' . $required . '</label>';
-
-		// Replace the original label with the new one
-		$field = str_replace( $label_original, $label_replacement, $field );
+		// Replace the original label text adding a wrapper element to it
+		$field = str_replace( $args['label'] . $required . '</label>', '<span class="fc-checkbox-label-text">' . $args['label'] . $required . '</span>' . '</label>', $field );
 
 		return $field;
 	}
