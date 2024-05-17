@@ -1,0 +1,23 @@
+// ------------------------------------
+// MY ACCOUNT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .entry-content > .woocommerce {
+	max-width: var(--go--max-width--alignwide) !important; // Needed to override theme styles
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .woocommerce-MyAccount-navigation {
+	width: 100%;
+
+	@media (min-width: 769px) { // Use breakpoint values from the theme
+		width: 20%;
+	}
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .woocommerce-MyAccount-content {
+	width: 100%;
+
+	@media (min-width: 769px) { // Use breakpoint values from the theme
+		width: 78%;
+	}
+}

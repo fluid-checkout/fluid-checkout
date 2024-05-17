@@ -62,7 +62,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_optional_fields_link_label_lowercase'                       => 'yes',
 			'fc_hide_optional_fields_skip_address_2'                        => 'no',
 			'fc_shipping_methods_substep_position'                          => 'after_shipping_address',
+			'fc_shipping_methods_disable_auto_select'                       => 'no',
 			'fc_enable_checkout_local_pickup'                               => 'no',
+			'fc_local_pickup_display_clear_shipping_methods_button'         => 'no',
 			'fc_show_shipping_section_highlighted'                          => 'yes',
 			'fc_pro_checkout_billing_address_position'                      => 'step_after_shipping',
 			'fc_show_billing_section_highlighted'                           => 'yes',
@@ -147,6 +149,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_theme_pressmart_output_checkout_steps_section'       => 'no',
 			'fc_compat_theme_betheme_output_checkout_steps_section'         => 'no',
 			'fc_compat_theme_thegem_output_checkout_steps_section'          => 'no',
+			'fc_compat_theme_go_enable_account_wide_layout'                 => 'yes',
 
 			// Deprecated settings.
 			'fc_enable_checkout_place_order_sidebar'                        => 'no',

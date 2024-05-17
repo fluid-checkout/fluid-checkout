@@ -1,0 +1,12 @@
+// ------------------------------------
+// CHECKOUT COLUMNS LAYOUT
+// ------------------------------------
+
+body#{ $_body-theme-selector } .qt-mobilemenu + .fc-content .fc-sidebar .fc-sidebar__inner {
+	transition: top .35s ease; // Needed to apply same animation as when hiding the sticky header on scroll
+}
+
+// Sticky state on mobile
+body#{ $_body-theme-selector } .qt-mobilemenu.qt-up + .fc-content .fc-sidebar .fc-sidebar__inner {
+	top: 56px !important; // Needed to use `px` as units to match theme's header height
+}

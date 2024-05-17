@@ -371,6 +371,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: New option to prevent automatic selection of the first shipping method available, forcing customer to manually select the shipping method for each new order.
 * Added: Compatibility with plugin Omniva Shipping.
 * Improved: Compatibility with plugin Elementor PRO. Automatically disable checkout page template when using the custom order received page created with Elementor PRO.
 * Improved: Layout of the shipping methods and position of shipping methods description.
@@ -379,6 +380,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Checkout page template for distraction free header and footer should not be applied to the order pay and order received pages.
 * Fixed: Redirect to the cart page when visiting the checkout with an empty cart when using the WooCommerce block-based checkout form.
 * Fixed: Order received page showing blank in some cases when using the WooCommerce block-based checkout form.
+* Fixed: Page layout issues when using full site editor (FSE).
+* Fixed: Not adding the checkbox field label wrapper element for some themes.
 
 = 3.1.8 - 2024-04-25 =
 
