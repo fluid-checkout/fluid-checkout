@@ -167,7 +167,6 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	public function unregister_substep_coupon_codes() {
 		// Get variables for the substep
 		$step_id = $this->get_coupon_codes_substep_step_id();
-		$substep_priority = $this->get_coupon_codes_substep_priority();
 		$substep_id = 'coupon_codes';
 
 		// Unregister substep
