@@ -14,9 +14,9 @@ body.theme-iona.hide_fixed_rows .fc-wrapper .fc-sidebar .fc-sidebar__inner {
   transition: top var(--trx-addons-fixed-rows-duration) ease-in;
 }
 
-body.theme-iona .qt-mobilemenu.qt-up + .fc-content .fc-progress-bar__inner {
-  top: 56px !important;
-  transition: top 0.35s ease;
+body.theme-iona.hide_fixed_rows .fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
+  top: 5px !important;
+  transition: top var(--trx-addons-fixed-rows-duration) ease-in;
 }
 
 body.theme-iona div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
