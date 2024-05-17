@@ -44,6 +44,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Theme and Plugin Compatibility
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_styles' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_plugin_compat_styles' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_account_pages_styles' ), 10 ); // Only for themes
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_edit_address_styles' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_plugin_compat_edit_address_styles' ), 10 );
 	}
@@ -450,6 +451,32 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			// Maybe load compatibility file
 			if ( file_exists( self::$directory_path . $compat_file_path ) ) {
 				wp_enqueue_style( 'fc-plugin-compat-' . $plugin_slug, self::$directory_url . $compat_file_path, array(), null );
+			}
+		}
+	}
+
+
+	
+	/**
+	 * Enqueue themes compatibility styles for all of the customer account pages.
+	 */
+	public function enqueue_theme_compat_account_pages_styles() {
+		// Bail if not on account address edit page
+		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() ) { return; }
+
+		// Get currently active theme and child theme
+		$theme_slugs = array( get_template(), get_stylesheet() );
+
+		foreach ( $theme_slugs as $theme_slug ) {
+			// Maybe skip compat file
+			if ( apply_filters( 'fc_enable_compat_theme_account_style_' . $theme_slug, true ) === false ) { continue; }
+
+			// Get file path
+			$compat_file_path = $this->get_style_url( 'css/compat/themes/compat-account-' . $theme_slug, false );
+
+			// Maybe load compatibility file
+			if ( file_exists( self::$directory_path . $compat_file_path ) ) {
+				wp_enqueue_style( 'fc-theme-compat-account-' . $theme_slug, self::$directory_url . $compat_file_path, array(), null );
 			}
 		}
 	}

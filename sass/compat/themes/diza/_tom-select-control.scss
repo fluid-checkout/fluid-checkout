@@ -1,0 +1,9 @@
+// ------------------------------------
+// TOM SELECT CONTROL
+// ------------------------------------
+
+body#{ $_body-theme-selector } .ts-control{
+	@media (max-width: 480px) { // Needed to use theme's breakpoint
+		padding-#{ $alignment-left }: 8px;
+	}
+}
