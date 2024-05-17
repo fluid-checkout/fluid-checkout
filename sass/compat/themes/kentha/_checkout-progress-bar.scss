@@ -1,0 +1,12 @@
+// ------------------------------------
+// CHECKOUT PROGRESS BAR
+// ------------------------------------
+
+body#{ $_body-theme-selector } .qt-mobilemenu + .fc-content .fc-progress-bar__inner {
+	transition: top .35s ease; // Needed to apply same animation as when hiding the sticky header on scrol
+}
+
+// Sticky state
+body#{ $_body-theme-selector } .qt-mobilemenu.qt-up + .fc-content .fc-progress-bar__inner {
+	top: 56px !important; // Needed to use `px` as units to match theme's header height
+}
