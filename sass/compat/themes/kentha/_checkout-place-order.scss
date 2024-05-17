@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body#{ $_body-theme-selector }#qtBody .fc-wrapper .fc-place-order .fc-place-order-button {
+	min-width: remsize( 24rem ) !important; // Needed to override theme styles
+	min-height: remsize( 5rem ) !important; // Needed to override theme styles
+}
