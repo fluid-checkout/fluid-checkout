@@ -35,6 +35,7 @@ body#{ $_body-theme-selector }#qtBody div.woocommerce form .form-row .select2-se
 }
 
 body#{ $_body-theme-selector }#qtBody div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+	color: $dark-grey;
 	font-size: $form-field-font-size;
 	line-height: $form-field-select2-selection-height--single;
 }

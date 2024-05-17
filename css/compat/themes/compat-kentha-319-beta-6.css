@@ -165,6 +165,7 @@ body.theme-kentha#qtBody div.woocommerce form .form-row .select2-selection--sing
 }
 
 body.theme-kentha#qtBody div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  color: var(--fluidcheckout--color--dark-grey, #535156);
   font-size: var(--fluidcheckout--field--font-size, 16px);
   line-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2);
 }
