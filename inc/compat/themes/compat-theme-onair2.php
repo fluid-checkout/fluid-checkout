@@ -64,17 +64,15 @@ class FluidCheckout_ThemeCompat_OnAir2 extends FluidCheckout {
 		<?php get_template_part( 'phpincludes/part-background' ); ?>
 
 		<div class="qt-container qt-spacer-l">
-				<div class="qt-paper qt-paddedcontainer">
-					<div class="qt-the-content">
-					<?php
+			<div class="qt-paper qt-paddedcontainer">
+			<?php
 	}
 
 	/**
 	 * Add closing tags for inner container from the Hestia theme.
 	 */
 	public function add_inner_container_closing_tags() {
-				?>
-				</div>
+			?>
 			</div>
 		</div>
 		<?php
