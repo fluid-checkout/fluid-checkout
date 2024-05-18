@@ -86,7 +86,7 @@ class FluidCheckout_ThemeCompat_OnAir2 extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
-		$theme_color_accent = get_theme_mod( 'qt_color_accent', '#dd0e34' );
+		$theme_color_accent = get_theme_mod( 'qt_color_secondary', '#64c9d9' );
 
 		// Add CSS variables
 		$new_css_variables = array(
@@ -95,11 +95,12 @@ class FluidCheckout_ThemeCompat_OnAir2 extends FluidCheckout {
 				'--fluidcheckout--field--height' => '48px',
 				'--fluidcheckout--field--padding-left' => '12px',
 				'--fluidcheckout--field--border-color' => '#bbb',
+				'--fluidcheckout--field--border-width' => '1px',
 				'--fluidcheckout--field--background-color--accent' => $theme_color_accent,
 
 				// Checkout validation styles
 				'--fluidcheckout--validation-check--horizontal-spacing--select' => '20px',
-				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '32px',
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '20px',
 				'--fluidcheckout--validation-check--horizontal-spacing--password' => '32px',
 			),
 		);

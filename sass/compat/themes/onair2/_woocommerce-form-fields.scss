@@ -5,3 +5,18 @@
 body#{ $_body-theme-selector } div.woocommerce form .form-row textarea {
 	padding: $form-field-padding-left;
 }
+
+body#{ $_body-theme-selector } div.woocommerce form {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="search"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"] {
+		border: $form-field-border-width solid $form-field-border-color;
+	}
+}
