@@ -86,7 +86,15 @@ class FluidCheckout_ThemeCompat_OnAir2 extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
+
+		// Get theme colors
 		$theme_color_accent = get_theme_mod( 'qt_color_secondary', '#64c9d9' );
+		$theme_color_text = get_theme_mod( 'qt_textcolor_original', '#000000' );
+
+		// Get derivated color as per theme's design
+		if ( function_exists( 'qantumthemes_hex2rgba' ) ) {
+			$theme_color_text = qantumthemes_hex2rgba( $theme_color_text, 0.87 );
+		}
 
 		// Add CSS variables
 		$new_css_variables = array(
@@ -102,6 +110,9 @@ class FluidCheckout_ThemeCompat_OnAir2 extends FluidCheckout {
 				'--fluidcheckout--validation-check--horizontal-spacing--select' => '20px',
 				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '20px',
 				'--fluidcheckout--validation-check--horizontal-spacing--password' => '32px',
+
+				// Custom theme variables
+				'--fluidcheckout--onair2--text-color' => $theme_color_text,
 			),
 		);
 

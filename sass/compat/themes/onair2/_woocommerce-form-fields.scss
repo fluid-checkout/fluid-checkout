@@ -20,3 +20,8 @@ body#{ $_body-theme-selector } div.woocommerce form {
 		border: $form-field-border-width solid $form-field-border-color;
 	}
 }
+
+body#{ $_body-theme-selector } div.woocommerce form label,
+body#{ $_body-theme-selector } div.woocommerce .shipping-method__option-label {
+	color: var(--fluidcheckout--onair2--text-color);
+}

@@ -1,3 +1,16 @@
+@media (max-width: 749px) {
+  body.theme-onair2.woocommerce-checkout .qt-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 749px) {
+  body.theme-onair2.woocommerce-checkout .qt-paddedcontainer {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
 body.theme-onair2 .fc-wrapper .fc-coupon_code__collapsible input#coupon_code {
   border: var(--fluidcheckout--field--border-width, 1px) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
 }
@@ -17,6 +30,11 @@ body.theme-onair2 div.woocommerce form input[type=tel],
 body.theme-onair2 div.woocommerce form input[type=url],
 body.theme-onair2 div.woocommerce form input[type=password] {
   border: var(--fluidcheckout--field--border-width, 1px) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+}
+
+body.theme-onair2 div.woocommerce form label,
+body.theme-onair2 div.woocommerce .shipping-method__option-label {
+  color: var(--fluidcheckout--onair2--text-color);
 }
 
 body.theme-onair2 div.woocommerce form .form-row .select2-selection--single,
