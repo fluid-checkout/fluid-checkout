@@ -1131,10 +1131,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 					$substep_id = $substep_args[ 'substep_id' ];
 
 					// Get substep is complete callback
-					// Defaults to 'complete' if callback is not provided.
+					// Defaults to 'true/complete' if callback is not provided.
 					$is_substep_complete_callback = array_key_exists( 'is_complete_callback', $substep_args ) ? $substep_args[ 'is_complete_callback' ] : '__return_true';
 
-					// Maybe skip substep if it is not complete
+					// Maybe set step as not complete if a substep is not complete
 					if ( ! $is_substep_complete_callback || ! is_callable( $is_substep_complete_callback ) || ! call_user_func( $is_substep_complete_callback ) ) {
 						$is_step_complete = false;
 						break;
