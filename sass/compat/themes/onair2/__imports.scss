@@ -12,5 +12,6 @@ $_body-theme-selector:                 '.theme-onair2' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-coupon-code",
 	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2";

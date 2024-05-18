@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT COUPON CODE
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon_code__collapsible input#coupon_code {
+	border: $form-field-border-width solid $form-field-border-color;
+}
