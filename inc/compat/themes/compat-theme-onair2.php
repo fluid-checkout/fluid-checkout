@@ -29,7 +29,7 @@ class FluidCheckout_ThemeCompat_OnAir2 extends FluidCheckout {
 
 
 	/**
-	 * Add checkout template hooks.
+	 * Add or remove checkout template hooks.
 	 */
 	public function checkout_template_hooks() {
 		// Bail if using distraction free header and footer
