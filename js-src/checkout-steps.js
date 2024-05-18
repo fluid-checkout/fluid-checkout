@@ -527,6 +527,14 @@
 				substepElement.removeAttribute( _settings.substepEditableStateAttribute );
 			}
 
+			// Handle expanded state
+			var expandedHiddenField = substepElement.querySelector( _settings.substepExpandedStateFieldSelector );
+			var hasExpanded = false;
+			if ( expandedHiddenField && 'yes' === expandedHiddenField.value ) {
+				expandSubstepEdit( substepElement, true, false );
+				hasExpanded = true;
+			}
+
 			// Handle visibility state
 			var visibilityHiddenField = substepElement.querySelector( _settings.substepVisibleStateFieldSelector );
 			if ( visibilityHiddenField ) {
@@ -535,15 +543,9 @@
 
 				// Maybe collapse substep edit
 				// when step is complete
-				if ( isStepComplete( substepElement ) ) {
+				if ( ! hasExpanded && isStepComplete( substepElement ) ) {
 					collapseSubstepEdit( substepElement, true, false );
 				}
-			}
-
-			// Handle expanded state
-			var expandedHiddenField = substepElement.querySelector( _settings.substepExpandedStateFieldSelector );
-			if ( expandedHiddenField && 'yes' === expandedHiddenField.value ) {
-				expandSubstepEdit( substepElement, true, false );
 			}
 		}
 	}

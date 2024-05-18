@@ -22,6 +22,9 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 		// Checkout template hooks
 		$this->checkout_template_hooks();
 
+		// Body attributes
+		add_filter( 'fc_checkout_body_custom_attributes', array( $this, 'add_body_attributes' ), 10 );
+
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
@@ -33,10 +36,8 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
-
-
 	/**
-	 * Add checkout template hooks.
+	 * Add or remove checkout template hooks.
 	 */
 	public function checkout_template_hooks() {
 		// Bail if using distraction free header and footer
@@ -51,6 +52,20 @@ class FluidCheckout_ThemeCompat_Kentha extends FluidCheckout {
 		// Theme's inner containers
 		add_action( 'fc_checkout_before_main_section', array( $this, 'add_inner_container_opening_tags' ), 10 );
 		add_action( 'fc_checkout_after_main_section', array( $this, 'add_inner_container_closing_tags' ), 10 );
+	}
+
+
+
+	/**
+	 * Add custom attributes to the body element.
+	 *
+	 * @param  array  $custom_attributes   Body attributes.
+	 */
+	public function add_body_attributes( $custom_attributes ) {
+		// Add body element id
+		$custom_attributes[ 'id' ] = 'qtBody';
+
+		return $custom_attributes;
 	}
 
 
