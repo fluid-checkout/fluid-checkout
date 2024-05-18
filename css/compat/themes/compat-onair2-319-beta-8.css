@@ -1,3 +1,7 @@
+body.theme-onair2 div.woocommerce form .form-row textarea {
+  padding: var(--fluidcheckout--field--padding-left, 8px);
+}
+
 body.theme-onair2 div.woocommerce form .form-row .select2-selection--single,
 body.theme-onair2 div.woocommerce form .form-row .select2-selection--multiple {
   text-align: left;

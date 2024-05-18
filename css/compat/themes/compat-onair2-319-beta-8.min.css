@@ -1,1 +1,1 @@
-body.theme-onair2 div.woocommerce form .form-row .select2-selection--multiple,body.theme-onair2 div.woocommerce form .form-row .select2-selection--single{text-align:left}
+body.theme-onair2 div.woocommerce form .form-row textarea{padding:var(--fluidcheckout--field--padding-left,8px)}body.theme-onair2 div.woocommerce form .form-row .select2-selection--multiple,body.theme-onair2 div.woocommerce form .form-row .select2-selection--single{text-align:left}
