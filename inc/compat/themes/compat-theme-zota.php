@@ -19,11 +19,35 @@ class FluidCheckout_ThemeCompat_Zota extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Checkout template hooks
-		$this->checkout_template_hooks();
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// Checkout page hooks
+		$this->checkout_hooks();
+	}
+
+
+
+	/*
+	* Add or remove checkout page hooks.
+	*/
+	public function checkout_hooks() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Checkout template hooks
+		$this->checkout_template_hooks();
+
+		// Remove unnecessary theme's WooCommerce scripts
+		$this->remove_action_for_class( 'wp_enqueue_scripts', array( 'Zota_WooCommerce', 'woocommerce_scripts' ), 20 );
 	}
 
 
