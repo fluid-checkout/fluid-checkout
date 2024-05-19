@@ -15,6 +15,10 @@ body.theme-onair2 .fc-wrapper .fc-coupon_code__collapsible input#coupon_code {
   border: var(--fluidcheckout--field--border-width, 1px) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
 }
 
+body.theme-onair2 div.woocommerce form .form-row {
+  padding: 0 !important;
+}
+
 body.theme-onair2 div.woocommerce form .form-row textarea {
   padding: var(--fluidcheckout--field--padding-left, 8px);
 }

@@ -2,6 +2,10 @@
 // WOOCOMMERCE FORM FIELDS
 // ------------------------------------
 
+body#{ $_body-theme-selector } div.woocommerce form .form-row {
+	padding: 0 !important; // Needed to override theme styles
+}
+
 body#{ $_body-theme-selector } div.woocommerce form .form-row textarea {
 	padding: $form-field-padding-left;
 }
