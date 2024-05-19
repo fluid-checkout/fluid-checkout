@@ -60,9 +60,6 @@ class FluidCheckout_ThemeCompat_OnAir2 extends FluidCheckout {
 	 */
 	public function add_inner_container_opening_tags() {
 		?>
-		<?php // Theme's header elements ?>
-		<?php get_template_part( 'phpincludes/part-background' ); ?>
-
 		<div class="qt-container qt-spacer-l">
 			<div class="qt-paper qt-paddedcontainer">
 			<?php
