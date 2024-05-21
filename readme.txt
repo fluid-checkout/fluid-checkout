@@ -8,7 +8,7 @@ Stable tag: 3.1.8
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Frictionless Multi-step Checkout for WooCommerce. Get up to 36% increase in conversion rates with a better purchase experience at the checkout page.
+Frictionless Multistep Checkout for WooCommerce. Get up to 36% increase in conversion rates with a better purchase experience at the checkout page.
 
 
 == Description ==
