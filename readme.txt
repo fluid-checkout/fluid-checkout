@@ -376,6 +376,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Page layout issues when using full site editor (FSE).
 * Fixed: Not adding the checkbox field label wrapper element for some themes.
 * Fixed: Only apply changes of the shipping address from the cart shipping calculator when using that function, and not when other plugins trigger the action hook used for that.
+* Fixed: Layout of product quantity label on the order summary at checkout for some themes.
 
 = 3.1.8 - 2024-04-25 =
 
