@@ -25,6 +25,10 @@ body.theme-zota .fc-wrapper .fc-place-order .fc-place-order-button {
   position: relative !important;
 }
 
+body.theme-zota.woocommerce-checkout form.woocommerce-checkout {
+  padding-top: 0;
+}
+
 body.theme-zota div.woocommerce form .form-row .input-checkbox {
   display: none;
 }
