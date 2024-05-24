@@ -3,7 +3,7 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
-	padding-right: $order-summary-cell-padding-horizontal; // Targets only the right side, should not use `$alignment-right` in this case
+	padding-#{ $alignment-right }: $order-summary-cell-padding-horizontal; // Targets only the right side, should not use `$alignment-right` in this case
 }
 
 body#{ $_body-theme-selector } .woocommerce table.shop_table > thead > tr > th,
