@@ -39,7 +39,12 @@ body.theme-zota div.woocommerce form .form-row .input-text {
 
 body.theme-zota div.woocommerce form .form-row textarea {
   min-height: 100px !important;
-  padding: 13px 16px;
+  padding: 13px 15px !important;
+}
+@media (max-width: 480px) {
+  body.theme-zota div.woocommerce form .form-row textarea {
+    padding: 8px 10px !important;
+  }
 }
 
 body.theme-zota div.woocommerce form .form-row .woocommerce-form__input + span {
