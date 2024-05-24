@@ -14,5 +14,6 @@ $_body-theme-selector:                 '.theme-zota' !default;
 @import
 	"order-summary",
 	"checkout-payment-methods",
+	"checkout-place-order",
 	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2";

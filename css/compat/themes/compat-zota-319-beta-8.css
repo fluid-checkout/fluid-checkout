@@ -21,6 +21,10 @@ body.theme-zota .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_metho
   padding-left: calc(var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px) !important;
 }
 
+body.theme-zota .fc-wrapper .fc-place-order .fc-place-order-button {
+  position: relative !important;
+}
+
 body.theme-zota div.woocommerce form .form-row .input-checkbox {
   display: none;
 }
