@@ -22,6 +22,9 @@ class FluidCheckout_ThemeCompat_Zota extends FluidCheckout {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
+		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
@@ -127,6 +130,22 @@ class FluidCheckout_ThemeCompat_Zota extends FluidCheckout {
 				'--fluidcheckout--field--padding-left' => '15px',
 				'--fluidcheckout--field--border-radius' => '4px',
 				'--fluidcheckout--field--background-color--accent' => 'var(--tb-theme-color)',
+
+				// Primary button colors
+				'--fluidcheckout--button--primary--border-color' => 'var(--tb-theme-color)',
+				'--fluidcheckout--button--primary--background-color' => 'var(--tb-theme-color)',
+				'--fluidcheckout--button--primary--text-color' => '#fff',
+				'--fluidcheckout--button--primary--border-color--hover' => 'var(--tb-theme-color-hover)',
+				'--fluidcheckout--button--primary--background-color--hover' => 'var(--tb-theme-color-hover)',
+				'--fluidcheckout--button--primary--text-color--hover' => '#fff',
+
+				// Secondary button color
+				'--fluidcheckout--button--secondary--border-color' => 'var(--tb-theme-color)',
+				'--fluidcheckout--button--secondary--background-color' => 'var(--tb-theme-color)',
+				'--fluidcheckout--button--secondary--text-color' => '#fff',
+				'--fluidcheckout--button--secondary--border-color--hover' => 'var(--tb-theme-color-hover)',
+				'--fluidcheckout--button--secondary--background-color--hover' => 'var(--tb-theme-color-hover)',
+				'--fluidcheckout--button--secondary--text-color--hover' => '#fff',
 			),
 		);
 
