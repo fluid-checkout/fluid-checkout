@@ -1,0 +1,7 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .woocommerce-form__input + span {
+	display: inline;
+}
