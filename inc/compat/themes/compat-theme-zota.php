@@ -46,6 +46,10 @@ class FluidCheckout_ThemeCompat_Zota extends FluidCheckout {
 		// Checkout template hooks
 		$this->checkout_template_hooks();
 
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
 		// Remove unnecessary theme's WooCommerce scripts
 		$this->remove_action_for_class( 'wp_enqueue_scripts', array( 'Zota_WooCommerce', 'woocommerce_scripts' ), 20 );
 	}
@@ -89,6 +93,22 @@ class FluidCheckout_ThemeCompat_Zota extends FluidCheckout {
 			</div>
 		</div>
 		<?php
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = '{ "xs": { "breakpointInitial": 0, "breakpointFinal": 1199, "selector": ".topbar-device-mobile" } }';
+
+		return $attributes;
 	}
 
 
