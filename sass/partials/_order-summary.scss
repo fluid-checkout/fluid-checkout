@@ -262,6 +262,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	top: 0;
 	#{ $alignment-left }: calc( #{ $order-summary-image-width } + #{ $global-spacing-tiny } );
 	#{ $alignment-right }: auto;
+	width: auto;
 	transform: $order-summary-quantity-transform;
 	display: block !important; // Needed to override styles added by some themes
 	padding: remsize( .1rem ) remsize( .6rem ) remsize( .2rem ) $global-spacing-tiny;

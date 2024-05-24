@@ -8,7 +8,7 @@ Stable tag: 3.1.8
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Frictionless Multi-step Checkout for WooCommerce. Get up to 36% increase in conversion rates with a better purchase experience at the checkout page.
+Frictionless Multistep Checkout for WooCommerce. Get up to 36% increase in conversion rates with a better purchase experience at the checkout page.
 
 
 == Description ==
@@ -376,6 +376,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Order received page showing blank in some cases when using the WooCommerce block-based checkout form.
 * Fixed: Page layout issues when using full site editor (FSE).
 * Fixed: Not adding the checkbox field label wrapper element for some themes.
+* Fixed: Only apply changes of the shipping address from the cart shipping calculator when using that function, and not when other plugins trigger the action hook used for that.
+* Fixed: Layout of product quantity label on the order summary at checkout for some themes.
 
 = 3.1.8 - 2024-04-25 =
 
