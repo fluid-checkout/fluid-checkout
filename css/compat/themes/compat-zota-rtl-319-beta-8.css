@@ -1,3 +1,16 @@
+body.theme-zota form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
+  padding-right: 20px;
+}
+
+body.theme-zota .woocommerce table.shop_table > thead > tr > th,
+body.theme-zota .woocommerce table.shop_table > thead > tr > td,
+body.theme-zota .woocommerce table.shop_table > tbody > tr > td,
+body.theme-zota .woocommerce table.shop_table > tbody > tr > th,
+body.theme-zota .woocommerce table.shop_table > tfoot > tr > td,
+body.theme-zota .woocommerce table.shop_table > tfoot > tr > th {
+  line-height: inherit !important;
+}
+
 body.theme-zota.woocommerce-checkout.woocommerce-page .fc-wrapper #payment ul.payment_methods {
   border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8))) !important;
 }
