@@ -23,6 +23,10 @@ class FluidCheckout_ThemeCompat_SiteOriginCorp extends FluidCheckout {
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
 
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 
@@ -42,6 +46,28 @@ class FluidCheckout_ThemeCompat_SiteOriginCorp extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
 
 		return $class . ' corp-container';
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if theme function isn't available
+		if ( ! function_exists( 'siteorigin_setting' ) ) { return $attributes; }
+
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		// Bail if fixed header is disabled in the theme
+		if ( ! siteorigin_setting( 'header_sticky' ) ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = '.site-header.sticky';
+
+		return $attributes;
 	}
 
 
