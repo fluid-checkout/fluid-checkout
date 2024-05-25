@@ -54,7 +54,7 @@ class FluidCheckout_ThemeCompat_SiteOriginCorp extends FluidCheckout {
 	public function add_css_variables( $css_variables ) {
 		// Get theme colors
 		$primary_color = get_theme_mod( 'theme_settings_typography_accent', '#f14e4e' );
-		$input_border_color = get_theme_mod( 'theme_settings_typography_border_dark', '#e6e6e6' );
+		$input_border_color = get_theme_mod( 'theme_settings_typography_border_dark', '#d6d6d6' );
 
 		// Get RGBA hover color if theme's function exists
 		if ( method_exists( 'SiteOrigin_Settings_Color', 'hex2rgb' ) ) {
