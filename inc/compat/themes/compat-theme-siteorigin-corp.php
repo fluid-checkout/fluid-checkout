@@ -79,6 +79,7 @@ class FluidCheckout_ThemeCompat_SiteOriginCorp extends FluidCheckout {
 				'--fluidcheckout--field--padding-left' => '13px',
 				'--fluidcheckout--field--border-radius' => '0px',
 				'--fluidcheckout--field--border-color' => $input_border_color,
+				'--fluidcheckout--field--font-size' => '14px',
 				'--fluidcheckout--field--background-color--accent' => $primary_color,
 
 				// Primary button color
