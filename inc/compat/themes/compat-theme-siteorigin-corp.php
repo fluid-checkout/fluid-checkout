@@ -66,6 +66,8 @@ class FluidCheckout_ThemeCompat_SiteOriginCorp extends FluidCheckout {
 		// Get theme colors
 		$primary_color = get_theme_mod( 'theme_settings_typography_accent', '#f14e4e' );
 		$input_border_color = get_theme_mod( 'theme_settings_typography_border_dark', '#d6d6d6' );
+		$cart_item_text_color = get_theme_mod( 'theme_settings_typography_heading', '#2d2d2d' );
+		$cart_item_text_color_hover = get_theme_mod( 'theme_settings_typography_text', '#626262' );
 
 		// Get RGBA hover color if theme's function exists
 		if ( method_exists( 'SiteOrigin_Settings_Color', 'hex2rgb' ) ) {
@@ -108,6 +110,10 @@ class FluidCheckout_ThemeCompat_SiteOriginCorp extends FluidCheckout {
 				'--fluidcheckout--button--secondary--border-color--hover' => $primary_color_hover,
 				'--fluidcheckout--button--secondary--background-color--hover' => $primary_color_hover,
 				'--fluidcheckout--button--secondary--text-color--hover' => '#fff',
+
+				// Custom theme variables
+				'--fluidcheckout--siteorigin-corp--cart-item--text-color' => $cart_item_text_color,
+				'--fluidcheckout--siteorigin-corp--cart-item--text-color--hover' => $cart_item_text_color_hover,
 			),
 		);
 
