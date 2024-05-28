@@ -88,6 +88,7 @@ class FluidCheckout_ThemeCompat_BeaverBuilderTheme extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
+		// Get theme settings from the Customizer
 		$mods = FLCustomizer::get_mods();
 
 		// Bail if fixed header is disabled in the theme
@@ -133,7 +134,7 @@ class FluidCheckout_ThemeCompat_BeaverBuilderTheme extends FluidCheckout {
 		// Get default color values from the theme to use as fallbacks
 		$defaults = FLCustomizer::_get_default_mods();
 
-		// Get current theme colors from the customizer
+		// Get current theme colors from the Customizer
 		$mods = FLCustomizer::get_mods();
 
 		// Get currently active colors
