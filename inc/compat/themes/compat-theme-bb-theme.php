@@ -25,6 +25,9 @@ class FluidCheckout_ThemeCompat_BeaverBuilderTheme extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
+		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
@@ -75,6 +78,12 @@ class FluidCheckout_ThemeCompat_BeaverBuilderTheme extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
+		// Bail if theme's class methods aren't available
+		if ( ! method_exists( 'FLCustomizer', '_get_default_mods' ) ) { return $css_variables; }
+		if ( ! method_exists( 'FLCustomizer', 'get_mods' ) ) { return $css_variables; }
+		if ( ! method_exists( 'FLColor', 'hex' ) ) { return $css_variables; }
+		if ( ! method_exists( 'FLColor', 'foreground' ) ) { return $css_variables; }
+
 		// Get default color values from the theme to use as fallbacks
 		$defaults = FLCustomizer::_get_default_mods();
 
@@ -83,6 +92,28 @@ class FluidCheckout_ThemeCompat_BeaverBuilderTheme extends FluidCheckout {
 
 		// Get currently active colors
 		$accent_color = FLColor::hex( array( $mods['fl-accent'], $defaults['fl-accent'] ) );
+		$accent_color_hover = FLColor::hex( array( $mods['fl-accent-hover'], $defaults['fl-accent-hover'] ) );
+
+		// Get button colors from the theme
+		if ( 'custom' === $mods['fl-button-style'] ) {
+			// Get colors based on Customizer settings if enabled
+			$button_background_color = FLColor::hex( array( $mods['fl-button-background-color'], $defaults['fl-button-background-color'] ) );
+			$button_background_color_hover = FLColor::hex( array( $mods['fl-button-background-hover-color'], $defaults['fl-button-background-hover-color'] ) );
+			$button_border_color = FLColor::hex( array( $mods['fl-button-border-color'], $defaults['fl-button-border-color'] ) );
+			$button_border_color_hover = FLColor::hex( array( $mods['fl-button-border-hover-color'], $defaults['fl-button-border-hover-color'] ) );
+			$button_text_color = FLColor::hex( array( $mods['fl-button-color'], $defaults['fl-button-color'] ) );
+			$button_text_color_hover = FLColor::hex( array( $mods['fl-button-hover-color'], $defaults['fl-button-hover-color'] ) );
+		} else {
+			// Get default colors
+			$button_background_color = $accent_color;
+			$button_background_color_hover = $accent_color_hover;
+			$button_text_color = FLColor::foreground( $accent_color );
+			$button_text_color_hover = FLColor::foreground( $accent_color_hover );
+
+			// Get border colors by replicating theme's LESS function to darken a color
+			$button_border_color = $this->adjust_color_brightness( $accent_color, -0.12 );
+			$button_border_color_hover = $this->adjust_color_brightness( $accent_color_hover, -0.12 );
+		}
 
 		// Add CSS variables
 		$new_css_variables = array(
@@ -95,10 +126,57 @@ class FluidCheckout_ThemeCompat_BeaverBuilderTheme extends FluidCheckout {
 				'--fluidcheckout--field--border-color' => '#e6e6e6',
 				'--fluidcheckout--field--font-size' => '14px',
 				'--fluidcheckout--field--background-color--accent' => $accent_color,
+
+				// Primary button color
+				'--fluidcheckout--button--primary--border-color' => $button_border_color,
+				'--fluidcheckout--button--primary--background-color' => $button_background_color,
+				'--fluidcheckout--button--primary--text-color' => $button_text_color,
+				'--fluidcheckout--button--primary--border-color--hover' => $button_border_color_hover,
+				'--fluidcheckout--button--primary--background-color--hover' => $button_background_color_hover,
+				'--fluidcheckout--button--primary--text-color--hover' => $button_text_color_hover,
+
+				// Secondary button color
+				'--fluidcheckout--button--secondary--border-color' => $button_border_color,
+				'--fluidcheckout--button--secondary--background-color' => $button_background_color,
+				'--fluidcheckout--button--secondary--text-color' => $button_text_color,
+				'--fluidcheckout--button--secondary--border-color--hover' => $button_border_color_hover,
+				'--fluidcheckout--button--secondary--background-color--hover' => $button_background_color_hover,
+				'--fluidcheckout--button--secondary--text-color--hover' => $button_text_color_hover,
 			),
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+
+
+	/**
+	 * Increases or decreases the brightness of a color by a percentage of the current brightness.
+	 * Replicates the Less `lighten()` and `darken()` functions used in the Beaver Builder theme.
+	 *
+	 * @param  string  $hexCode
+	 * @param  float  $steps  A number between -1 and 1. E.g. 0.3 = 30% lighter; -0.4 = 40% darker.
+	 */
+	public function adjust_color_brightness( $hex, $steps ) {
+		// Bail if not a hex color
+		if ( '#' !== $hex[0] ) { return $hex; }
+
+		// Steps should be between -1 and 1
+		$steps = max( -1, min( 1, $steps ) );
+
+		// Get RGB values
+		$rgb = str_split( str_replace( '#', '', $hex ), 2 );
+		$rgb = array_map( 'hexdec', $rgb );
+
+		// Adjust each RGB value
+		foreach ( $rgb as $key => $value ) {
+			$rgb[ $key ] = max( 0, min( 255, $value + ( $steps * 255 ) ) );
+		}
+
+		// Regenerate the adjusted hex code
+		$color = sprintf( '#%02x%02x%02x', $rgb[0], $rgb[1], $rgb[2] );
+
+		return $color;
 	}
 
 }
