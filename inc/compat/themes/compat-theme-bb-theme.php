@@ -22,6 +22,10 @@ class FluidCheckout_ThemeCompat_BeaverBuilderTheme extends FluidCheckout {
 		// Checkout template hooks
 		$this->checkout_template_hooks();
 
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
@@ -68,6 +72,48 @@ class FluidCheckout_ThemeCompat_BeaverBuilderTheme extends FluidCheckout {
 			</div>
 		</div>
 		<?php
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if theme function isn't available
+		if ( ! method_exists( 'FLCustomizer', 'get_mods' ) ) { return $attributes; }
+
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		$mods = FLCustomizer::get_mods();
+
+		// Bail if fixed header is disabled in the theme
+		if ( empty( $mods['fl-fixed-header'] ) || 'hidden' === $mods['fl-fixed-header'] ) { return $attributes; }
+
+		// Get theme breakpoint for the sticky header
+		if ( get_theme_mod( 'fl-medium-breakpoint' ) ) {
+			$medium_breakpoint = get_theme_mod( 'fl-medium-breakpoint' );
+		} else {
+			$medium_breakpoint = 992;
+		}
+
+		// Maybe change the relative ID based on the theme's header option
+		switch ( $mods['fl-fixed-header'] ) {
+			case 'fixed':
+				$attributes['data-sticky-relative-to'] = '{ "sm": { "breakpointInitial":' . $medium_breakpoint . ', "breakpointFinal": 100000, "selector": ".fl-fixed-header .fl-page-header" } }';
+				break;
+			case 'fadein':
+				$attributes['data-sticky-relative-to'] = '{ "sm": { "breakpointInitial": ' . $medium_breakpoint . ', "breakpointFinal": 100000, "selector": ".fl-page-header-fixed" } }';
+				break;
+			case 'shrink':
+				$attributes['data-sticky-relative-to'] = '{ "sm": { "breakpointInitial": ' . $medium_breakpoint . ', "breakpointFinal": 100000, "selector": ".fl-shrink-header-enabled .fl-page-header" } }';
+				break;
+		}
+
+		return $attributes;
 	}
 
 
