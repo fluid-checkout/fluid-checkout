@@ -26,6 +26,10 @@ class FluidCheckout_ThemeCompat_Kenta extends FluidCheckout {
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
 
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
@@ -42,6 +46,34 @@ class FluidCheckout_ThemeCompat_Kenta extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
 
 		return $class . ' kenta-container container mx-auto px-gutter';
+	}
+
+
+
+	/**
+	 * Change the element used to position the progress bar and order summary when sticky.
+	 * 
+	 * @param  array  $attributes  The elements attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if theme function is not available
+		if ( ! function_exists( 'kenta_app' ) ) { return $attributes; }
+
+		// Get theme application instance
+		$app = kenta_app( 'CZ' );
+
+		// Bail if object or method isn't not available
+		if ( ! is_object( $app ) || ! method_exists( $app, 'checked' ) ) { return $attributes; }
+
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		// Bail if sticky header is disabled in theme options
+		if ( ! $app->checked( 'kenta_sticky_header' ) ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = 'header .kenta-sticky';
+
+		return $attributes;
 	}
 
 
