@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT STEP ACTIONS
+// ------------------------------------
+
+body#{ $_body-theme-selector }.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
+	justify-content: center;
+}
