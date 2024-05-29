@@ -59,7 +59,7 @@ class FluidCheckout_ThemeCompat_Kenta extends FluidCheckout {
 				'--fluidcheckout--field--height' => 'var(--kenta-form-control-height, 45px)',
 				'--fluidcheckout--field--padding-left' => 'var(--kenta-form-control-paddding, 10.2px)',
 				'--fluidcheckout--field--border-radius' => 'var(--kenta-form-control-radius, 2px)',
-				'--fluidcheckout--field--border-color' => 'var(--kenta-form-border-color)',
+				'--fluidcheckout--field--border-color' => 'var(--kenta-form-border-color, var(--kenta-base-300))',
 				'--fluidcheckout--field--font-size' => '13.6px',
 				'--fluidcheckout--field--background-color--accent' => 'var(--kenta-primary-color)',
 			),
