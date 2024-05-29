@@ -12,5 +12,6 @@ $_body-theme-selector:                 '.theme-kenta' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-place-order",
 	"checkout-steps",
 	"woocommerce-form-fields-select2";
