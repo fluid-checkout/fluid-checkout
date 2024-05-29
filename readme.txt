@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: New option to prevent automatic selection of the first shipping method available, forcing customer to manually select the shipping method for each new order.
+* Added: Compatibility with theme Kenta.
 * Added: Compatibility with plugin Omniva Shipping.
 * Improved: Compatibility with plugin Elementor PRO. Automatically disable checkout page template when using the custom order received page created with Elementor PRO.
 * Improved: Layout of the shipping methods and position of shipping methods description.
