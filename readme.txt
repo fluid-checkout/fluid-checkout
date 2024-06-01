@@ -387,6 +387,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Salient.
 * Added: Compatibility with theme Savoy.
 * Added: Compatibility with theme The Gem.
+* Added: Compatibility with theme Beaver Builder Theme.
 * Added: Compatibility with plugin Flexible Checkout Fields PRO.
 * Added: Compatibility with plugin MyParcel.
 * Improved: Change wording for the company name field option in the plugin settings to be clear what it is related to.
