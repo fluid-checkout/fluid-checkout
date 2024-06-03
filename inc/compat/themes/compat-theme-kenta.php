@@ -43,6 +43,9 @@ class FluidCheckout_ThemeCompat_Kenta extends FluidCheckout {
 	 * Locate template files from this plugin.
 	 */
 	public function locate_template_checkout_page_template( $template, $template_name, $template_path ) {
+		// Bail if not using distraction free header and footer
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $template; }
+
 		$_template = null;
 
 		// Set template path to default value when not provided
