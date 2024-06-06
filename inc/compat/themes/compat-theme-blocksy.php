@@ -19,6 +19,9 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Settings
+		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
+
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
@@ -34,6 +37,44 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+	}
+
+
+
+	/**
+	 * Add new settings to the Fluid Checkout admin settings sections.
+	 *
+	 * @param   array   $settings         Array with all settings for the current section.
+	 * @param   string  $current_section  Current section name.
+	 */
+	public function add_settings( $settings ) {
+
+		// Add new settings
+		$settings_new = array(
+			array(
+				'title' => __( 'Theme Blocksy', 'fluid-checkout' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_theme_blocksy_options',
+			),
+
+			array(
+				'title'           => __( 'Color switch', 'fluid-checkout' ),
+				'desc'            => __( 'Force FC elements to follow color mode settings from the Blocksy theme.', 'fluid-checkout' ),
+				'id'              => 'fc_compat_theme_blocksy_force_color_mode_switch',
+				'type'            => 'checkbox',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_blocksy_force_color_mode_switch' ),
+				'autoload'        => false,
+			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_theme_blocksy_options',
+			),
+		);
+
+		$settings = array_merge( $settings, $settings_new );
+
+		return $settings;
 	}
 
 
@@ -63,6 +104,15 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 		// Bail if not at checkout
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
+		// Bail when auto switch is disabled in the plugin settings
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_blocksy_force_color_mode_switch' ) ) { return; }
+
+		// Get active extensions from Blocksy
+		$active_extenstions = get_option('blocksy_active_extensions');
+
+		// Bail if Color Switch extension is not active
+		if ( ! is_array( $active_extenstions ) || ! in_array( 'color-mode-switch', $active_extenstions ) ) { return; }
+
 		$this->enqueue_assets();
 	}
 
@@ -74,6 +124,15 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 	 * @param  bool  $is_dark_mode  Whether it is dark mode or not.
 	 */
 	public function maybe_force_enable_dark_mode( $is_dark_mode ) {
+		// Bail when auto switch is disabled in the plugin settings
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_blocksy_force_color_mode_switch' ) ) { return $is_dark_mode; }
+
+		// Get active extensions from Blocksy
+		$active_extenstions = get_option('blocksy_active_extensions');
+
+		// Bail if Color Switch extension is not active
+		if ( ! is_array( $active_extenstions ) || ! in_array( 'color-mode-switch', $active_extenstions ) ) { return $is_dark_mode; }
+
 		$is_dark_mode = false;
 
 		// Bail if cookie is not available
