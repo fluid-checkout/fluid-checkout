@@ -2,7 +2,7 @@
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-onair2' !default;
+$_body-theme-selector:                 '.theme-bb-theme' !default;
 
 
 
@@ -12,7 +12,5 @@ $_body-theme-selector:                 '.theme-onair2' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"checkout-content-area",
-	"checkout-coupon-code",
-	"woocommerce-form-fields",
+	"checkout-validation",
 	"woocommerce-form-fields-select2";

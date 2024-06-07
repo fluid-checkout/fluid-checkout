@@ -365,11 +365,15 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: New option to prevent automatic selection of the first shipping method available, forcing customer to manually select the shipping method for each new order.
+* Added: Compatibility with theme SiteOrigin Corp.
 * Added: Compatibility with plugin Omniva Shipping.
+* Added: Compatibility with plugin Advanced Coupons for WooCommerce.
 * Improved: Compatibility with theme Zota.
+* Improved: Compatibility with theme OnAir2.
 * Improved: Compatibility with plugin Elementor PRO. Automatically disable checkout page template when using the custom order received page created with Elementor PRO.
 * Improved: Layout of the shipping methods and position of shipping methods description.
 * Improved: Add hooks for displaying the shipping method logo images for compatible shipping plugins.
+* Fixed: Compatibility with plugin Fluent CRM PRO. Fix fatal error when trying to add the subscribe box on the checkout page when using the plugin Fluent CRM PRO version 2.9.0+.
 * Fixed: Handle checkout fields with indexed multiple values to an `array` when parsing posted data.
 * Fixed: Checkout page template for distraction free header and footer should not be applied to the order pay and order received pages.
 * Fixed: Redirect to the cart page when visiting the checkout with an empty cart when using the WooCommerce block-based checkout form.
@@ -386,6 +390,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Salient.
 * Added: Compatibility with theme Savoy.
 * Added: Compatibility with theme The Gem.
+* Added: Compatibility with theme Beaver Builder Theme.
 * Added: Compatibility with plugin Flexible Checkout Fields PRO.
 * Added: Compatibility with plugin MyParcel.
 * Improved: Change wording for the company name field option in the plugin settings to be clear what it is related to.

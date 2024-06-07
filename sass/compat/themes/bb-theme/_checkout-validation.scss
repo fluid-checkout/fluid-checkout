@@ -1,0 +1,9 @@
+// ------------------------------------
+// CHECKOUT VALIDATION MESSAGES
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce .form-row .woocommerce-error,
+body#{ $_body-theme-selector } div.woocommerce .shipping-method__package .woocommerce-error {
+	padding: $checkout-message-error-padding !important; // Needed to override theme styles
+	padding-#{ $alignment-left }: $checkout-message-error-padding-left !important; // Needed to override theme styles
+}
