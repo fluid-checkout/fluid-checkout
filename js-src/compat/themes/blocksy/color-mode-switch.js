@@ -39,18 +39,25 @@
 	 *  @param  {String}  cname  Name of the cookie.
 	 */
 	var getCookie = function( cname ) {
+		// Append "=" to the cookie name
 		let name = cname + "=";
-		let ca = document.cookie.split(';');
 
-		for ( let i = 0; i < ca.length; i++ ) {
-			let c = ca[i];
+		// Get all cookies in an array by splitting them by ";"
+		let cookies = document.cookie.split( ';' );
 
-			while ( c.charAt(0) == ' ' ) {
-				c = c.substring(1);
+		// Loop through the cookies array
+		for ( let i = 0; i < cookies.length; i++ ) {
+			// Get the current cookie
+			let cookie = cookies[i];
+
+			// Remove any leading spaces
+			while ( cookie.charAt( 0 ) == ' ' ) {
+				cookie = cookie.substring( 1 );
 			}
 
-			if ( c.indexOf(name) == 0 ) {
-				return c.substring(name.length, c.length);
+			// If the cookie is found, return the value of the cookie
+			if ( cookie.indexOf( name ) == 0 ) {
+				return cookie.substring( name.length, cookie.length );
 			}
 		}
 
@@ -64,7 +71,7 @@
 	 */
 	var maybeSwitchColorMode = function() {
 		// Wait until the color mode is updated
-		setTimeout(() => {
+		setTimeout( () => {
 			let colorMode = getCookie( 'blocksy_current_theme' );
 
 			// Add body class inidicating dark mode
@@ -76,7 +83,7 @@
 
 			// CSS variables
 			loadCssVariables( colorMode );
-		}, 300)
+		}, 300 )
 	}
 
 
@@ -101,7 +108,7 @@
 				let cssVariables = response.variables;
 
 				// Add the received variables to root
-				Object.keys(cssVariables).forEach(function(key) {
+				Object.keys( cssVariables ).forEach(function( key ) {
 					document.documentElement.style.setProperty( key, cssVariables[key] );
 				});
 			}
