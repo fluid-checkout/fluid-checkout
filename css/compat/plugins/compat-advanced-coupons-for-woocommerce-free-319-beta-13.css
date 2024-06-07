@@ -1,3 +1,5 @@
-div.woocommerce .fc-wrapper .woocommerce-checkout-review-order-table ~ .acfw-checkout-ui-block .acfw-store-credits-checkout-ui {
-  margin-top: 20px;
+div.woocommerce .fc-wrapper .woocommerce-checkout-review-order-table ~ .acfw-checkout-ui-block {
+  margin: 0 -20px;
+  margin-top: 10px;
+  margin-bottom: 0;
 }
