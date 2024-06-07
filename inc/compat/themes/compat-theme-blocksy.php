@@ -19,24 +19,47 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 
-		// Enqueue
+		// Assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
-
-		// Dark mode
-		add_filter( 'fc_enable_dark_mode_styles', array( $this, 'maybe_force_enable_dark_mode' ), 10 );
-
-		// Actions
-		add_action( 'wc_ajax_fc_switch_color_mode', array( $this, 'switch_color_mode' ), 10 );
 
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
+		// Actions
+		add_action( 'wc_ajax_fc_switch_color_mode', array( $this, 'switch_color_mode' ), 10 );
+
+		// Dark mode
+		add_filter( 'fc_enable_dark_mode_styles', array( $this, 'maybe_force_enable_dark_mode' ), 10 );
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// Checkout page hooks
+		$this->checkout_hooks();
+	}
+
+
+
+	/*
+	* Add or remove checkout page hooks.
+	*/
+	public function checkout_hooks() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Enqueue
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 	}
 
 
@@ -48,7 +71,6 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 	 * @param   string  $current_section  Current section name.
 	 */
 	public function add_settings( $settings ) {
-
 		// Add new settings
 		$settings_new = array(
 			array(
@@ -101,9 +123,6 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 	 * Maybe enqueue assets.
 	 */
 	public function maybe_enqueue_assets() {
-		// Bail if not at checkout
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
-
 		// Bail when auto switch is disabled in the plugin settings
 		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_blocksy_force_color_mode_switch' ) ) { return; }
 
@@ -153,6 +172,7 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 	public function switch_color_mode() {
 		check_ajax_referer( 'fc-switch-color-mode', 'security' );
 
+		// Get color mode to switch to
 		$color_mode = sanitize_text_field( $_REQUEST['color_mode'] );
 		$variables = array();
 
@@ -160,11 +180,11 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 		if ( empty( $color_mode ) ) { wp_send_json( array( 'result' => 'error' ) ); }
 
 		if ( 'dark' === $color_mode ) {
-			// Get CSS variables
+			// Get CSS variables for dark mode
 			$variables = FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode();
 		} 
 		else {
-			// Get CSS variables
+			// Get CSS variables for light mode
 			$variables = $this->get_css_variables_light_mode();
 		}
 		
@@ -174,7 +194,6 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 				'variables'      => $variables,
 			)
 		);
-		
 	}
 
 
