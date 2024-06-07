@@ -368,6 +368,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme SiteOrigin Corp.
 * Added: Compatibility with plugin Omniva Shipping.
 * Added: Compatibility with plugin Advanced Coupons for WooCommerce.
+* Improved: Compatibility with theme Zota.
 * Improved: Compatibility with theme OnAir2.
 * Improved: Compatibility with plugin Elementor PRO. Automatically disable checkout page template when using the custom order received page created with Elementor PRO.
 * Improved: Layout of the shipping methods and position of shipping methods description.

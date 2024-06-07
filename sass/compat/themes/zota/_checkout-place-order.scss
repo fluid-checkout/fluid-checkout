@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+// Place order button
+body#{ $_body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-button {
+	position: relative !important; // Needed to override theme styles
+}
