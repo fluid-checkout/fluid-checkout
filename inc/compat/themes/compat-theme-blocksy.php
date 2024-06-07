@@ -64,6 +64,9 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
+		// Prevent theme from adding custom quantity fields
+		add_filter( 'theme_mod_has_custom_quantity', '__return_false', 10 );
 	}
 
 
