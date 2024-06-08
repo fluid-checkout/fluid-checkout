@@ -262,6 +262,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	top: 0;
 	#{ $alignment-left }: calc( #{ $order-summary-image-width } + #{ $global-spacing-tiny } );
 	#{ $alignment-right }: auto;
+	width: auto;
 	transform: $order-summary-quantity-transform;
 	display: block !important; // Needed to override styles added by some themes
 	padding: remsize( .1rem ) remsize( .6rem ) remsize( .2rem ) $global-spacing-tiny;
@@ -370,7 +371,10 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	width: $order-summary-table-width;
 	max-width: $order-summary-table-width;
 	background-color: $order-summary-background-color;
-	overflow: visible;
+	// Note: `overflow` is used here to avoid scrollbars
+	// and inner elements overlapping with the order summary borders,
+	// especially the last element overlapping with the rounded boders.
+	overflow: hidden;
 	box-shadow: $order-summary-box-shadow;
 
 	@media (#{$bp-larger-than-tablet}) {

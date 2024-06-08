@@ -105,11 +105,11 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 
 
 	/**
-	 * Setup shortcode wrapper for the checkout shortcode.
+	 * Setup shortcode wrapper for the checkout shortcode, for when the custom checkout page template is disabled.
 	 */
 	public function maybe_setup_checkout_shortcode_wrapper() {
-		// Bail if feature is not enabled
-		if ( ! $this->is_feature_enabled() ) { return; }
+		// Bail if feature is enabled
+		if ( $this->is_feature_enabled() ) { return; }
 
 		// Define shortcode tag
 		$checkout_shortcode_tag = apply_filters( 'woocommerce_checkout_shortcode_tag', 'woocommerce_checkout' );

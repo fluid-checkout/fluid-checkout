@@ -8,7 +8,7 @@ Stable tag: 3.1.8
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Frictionless Multi-step Checkout for WooCommerce. Get up to 36% increase in conversion rates with a better purchase experience at the checkout page.
+Frictionless Multistep Checkout for WooCommerce. Get up to 36% increase in conversion rates with a better purchase experience at the checkout page.
 
 
 == Description ==
@@ -372,16 +372,25 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: New option to prevent automatic selection of the first shipping method available, forcing customer to manually select the shipping method for each new order.
+* Added: Compatibility with theme SiteOrigin Corp.
 * Added: Compatibility with plugin Omniva Shipping.
+* Added: Compatibility with plugin Advanced Coupons for WooCommerce.
+* Improved: Compatibility with theme Zota.
+* Improved: Compatibility with theme OnAir2.
 * Improved: Compatibility with plugin Elementor PRO. Automatically disable checkout page template when using the custom order received page created with Elementor PRO.
 * Improved: Layout of the shipping methods and position of shipping methods description.
 * Improved: Add hooks for displaying the shipping method logo images for compatible shipping plugins.
+* Fixed: Compatibility with plugin Fluent CRM PRO. Fix fatal error when trying to add the subscribe box on the checkout page when using the plugin Fluent CRM PRO version 2.9.0+.
 * Fixed: Handle checkout fields with indexed multiple values to an `array` when parsing posted data.
 * Fixed: Checkout page template for distraction free header and footer should not be applied to the order pay and order received pages.
 * Fixed: Redirect to the cart page when visiting the checkout with an empty cart when using the WooCommerce block-based checkout form.
 * Fixed: Order received page showing blank in some cases when using the WooCommerce block-based checkout form.
 * Fixed: Page layout issues when using full site editor (FSE).
 * Fixed: Not adding the checkbox field label wrapper element for some themes.
+* Fixed: Only apply changes of the shipping address from the cart shipping calculator when using that function, and not when other plugins trigger the action hook used for that.
+* Fixed: Layout of product quantity label on the order summary at checkout for some themes.
+* Fixed: Inner elements overflowing the order summary borders.
+* Fixed: Display in the substep review text the fields only present in the current address section when that address is set as "Same as <shipping/billing> address".
 
 = 3.1.8 - 2024-04-25 =
 
@@ -390,6 +399,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Salient.
 * Added: Compatibility with theme Savoy.
 * Added: Compatibility with theme The Gem.
+* Added: Compatibility with theme Beaver Builder Theme.
 * Added: Compatibility with plugin Flexible Checkout Fields PRO.
 * Added: Compatibility with plugin MyParcel.
 * Improved: Change wording for the company name field option in the plugin settings to be clear what it is related to.

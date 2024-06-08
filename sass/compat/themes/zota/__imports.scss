@@ -12,4 +12,9 @@ $_body-theme-selector:                 '.theme-zota' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"checkout-payment-methods";
+	"order-summary",
+	"checkout-payment-methods",
+	"checkout-place-order",
+	"checkout-steps",
+	"woocommerce-form-fields",
+	"woocommerce-form-fields-select2";

@@ -219,7 +219,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		$custom_styles = apply_filters( 'fc_output_custom_styles', '' );
 
 		// Prepend CSS variables
-		$custom_styles = $this->get_css_variables_styles() . $custom_styles . "\n";
+		$custom_styles = $this->get_css_variables_styles() . "\n" . $custom_styles . "\n";
 
 		// Bail if styles are empty
 		if ( empty( $custom_styles ) ) { return; }
