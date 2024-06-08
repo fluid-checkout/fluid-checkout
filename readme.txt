@@ -383,6 +383,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Only apply changes of the shipping address from the cart shipping calculator when using that function, and not when other plugins trigger the action hook used for that.
 * Fixed: Layout of product quantity label on the order summary at checkout for some themes.
 * Fixed: Inner elements overflowing the order summary borders.
+* Fixed: Display in the substep review text the fields only present in the current address section when that address is set as "Same as <shipping/billing> address".
 
 = 3.1.8 - 2024-04-25 =
 
