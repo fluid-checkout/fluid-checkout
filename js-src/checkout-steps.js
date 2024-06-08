@@ -529,10 +529,9 @@
 
 			// Handle expanded state
 			var expandedHiddenField = substepElement.querySelector( _settings.substepExpandedStateFieldSelector );
-			var hasExpanded = false;
-			if ( expandedHiddenField && 'yes' === expandedHiddenField.value ) {
+			var isSetExpanded = expandedHiddenField && 'yes' === expandedHiddenField.value;
+			if ( isSetExpanded ) {
 				expandSubstepEdit( substepElement, true, false );
-				hasExpanded = true;
 			}
 
 			// Handle visibility state
@@ -542,8 +541,8 @@
 				substepElement.setAttribute( _settings.substepVisibleStateAttribute, visibilityHiddenField.value );
 
 				// Maybe collapse substep edit
-				// when step is complete
-				if ( ! hasExpanded && isStepComplete( substepElement ) ) {
+				// when expanded state field exists and substep is complete
+				if ( ! isSetExpanded && isStepComplete( substepElement ) ) {
 					collapseSubstepEdit( substepElement, true, false );
 				}
 			}
