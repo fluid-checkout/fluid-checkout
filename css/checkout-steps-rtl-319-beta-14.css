@@ -1030,7 +1030,7 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
   justify-content: center;
   width: 80px;
   height: 100%;
-  line-height: 1.1;
+  line-height: inherit;
   font-weight: bold;
   text-align: left;
 }
@@ -1038,6 +1038,7 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
 .woocommerce ul#shipping_method .shipping-method__option .has-price.has-tax-notes .shipping-method__option-price {
   margin-top: -3px;
   margin-bottom: -3px;
+  line-height: 1.1;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .amount {
