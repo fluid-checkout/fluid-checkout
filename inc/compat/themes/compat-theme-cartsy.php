@@ -47,8 +47,8 @@ class FluidCheckout_ThemeCompat_Cartsy extends FluidCheckout {
 
 
 	/*
-	* Checkout templates hooks.
-	*/
+	 * Checkout templates hooks.
+	 */
 	public function checkout_layout_hooks() {
 		// Bail if using the distraction free template
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
