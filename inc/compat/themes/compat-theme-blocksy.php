@@ -133,7 +133,7 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '32px',
 			),
 			':root[data-color-mode="dark"]' => $dark_mode_variables,
-			'@media (prefers-color-scheme: dark) { [data-color-mode="os-default"]' => $dark_mode_variables,
+			':root[data-color-mode="dark:updating"]' => $dark_mode_variables,
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
