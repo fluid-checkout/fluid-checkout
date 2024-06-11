@@ -6,7 +6,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 3.1.3
+ * @version 3.1.9
  * @wc-version 3.6.0
  * @wc-original cart/cart-shipping.php
  */
@@ -42,6 +42,9 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 				ob_start();
 				do_action( 'woocommerce_after_shipping_rate', $method, $package_index );
 				$after_shipping_rate = ob_get_clean();
+				if ( ! empty( $after_shipping_rate ) ) {
+					$after_shipping_rate = '<div class="shipping-method__after-shipping-rate">' . $after_shipping_rate . '</div>';
+				}
 
 				// Maybe add extra class
 				$label_extra_classes = '';
@@ -54,7 +57,7 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 
 				echo apply_filters( 'fc_shipping_method_option_markup',
 					sprintf( '<li class="shipping-method__option"><input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />
-						<label for="shipping_method_%1$d_%2$s" class="shipping-method__option-label has-price %7$s">%5$s%6$s</label>
+						<label for="shipping_method_%1$d_%2$s" class="shipping-method__option-label has-price %7$s"><div class="shipping-method__option-label-wrapper">%5$s</div>%8$s%6$s</label>
 					</li>',
 					$package_index,
 					// The function `sanitize_title` is used below to convert the string into a CSS-class-like string
@@ -63,7 +66,8 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 					checked( $checked_method, true, false ),
 					FluidCheckout_Steps::instance()->get_cart_shipping_methods_label( $method ),
 					$after_shipping_rate,
-					$label_extra_classes
+					$label_extra_classes,
+					FluidCheckout_Steps::instance()->get_cart_shipping_methods_description( $method )
 				), $method, $package_index, $chosen_method, $first );
 
 				$first = false;
@@ -100,7 +104,7 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 	<?php endif; ?>
 
 	<?php // CHANGE: Output the current shipping method to detect changes to this value later ?>
-	<input type="hidden" name="fc_previous_selected_shipping_method" value="<?php echo esc_attr( $chosen_method ); ?>" />
+	<input type="hidden" name="fc_previous_selected_shipping_method[<?php echo esc_attr( $package_index ); ?>]" value="<?php echo esc_attr( $chosen_method ); ?>" />
 
 </div>
 

@@ -6,6 +6,12 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection
 	padding-top: 0;
 }
 
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+	@media (max-width: 480px) { // Needed to use theme's breakpoint
+		padding-#{ $alignment-left }: 8px;
+	}
+}
+
 
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {

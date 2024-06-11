@@ -2,6 +2,11 @@
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
+body#{ $_body-theme-selector }#qtBody form .form-row {
+	padding: 0;
+	line-height: normal;
+}
+
 body#{ $_body-theme-selector } div.woocommerce form .form-row input[type="checkbox"] {
 	position: initial;
 }
@@ -21,4 +26,25 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row [type="radio"]:che
 body#{ $_body-theme-selector } div.woocommerce form .form-row .with-gap[type="radio"]:checked + label:before, 
 body#{ $_body-theme-selector } div.woocommerce form .form-row .with-gap[type="radio"]:checked + label:after {
 	border: remsize( .2rem ) solid transparent;
+}
+
+body#{ $_body-theme-selector }#qtBody div.woocommerce form .form-row textarea {
+	min-height: remsize( 10rem );
+	font-size: 1rem; // Use `rem` to match theme styles
+}
+
+body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"],
+body#{ $_body-theme-selector }.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="search"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"] {
+		padding: 0 $form-field-padding-left;
+	}
 }

@@ -118,20 +118,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Formatted address
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10, 2 );
 
-		// Shipping
+		// Shipping address
 		add_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), $this->get_shipping_address_hook_priority() );
-		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), $this->get_shipping_methods_hook_priority() );
 		add_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		add_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_shipping_address' ), 10 );
 		add_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_shipping_address' ), 20 );
-		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
-		add_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
+		
+		// Shipping method
+		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), $this->get_shipping_methods_hook_priority() );
+		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
+		add_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10, 3 );
+		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
+		
+		// Order notes
+		add_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
 
 		// Billing address
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
@@ -254,7 +260,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Order notes hooks.
+	 * Add or remove hooks for order notes.
 	 */
 	public function order_notes_hooks() {
 		// Bail if not on checkout or cart page or doing AJAX call
@@ -359,20 +365,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Formatted address
 		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10, 2 );
 
-		// Shipping
-		remove_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100, 2 );
+		// Shipping address
+		remove_filter( 'option_woocommerce_ship_to_destination', array( $this, 'change_woocommerce_ship_to_destination' ), 100 );
 		remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_address' ), $this->get_shipping_address_hook_priority() );
-		remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), $this->get_shipping_methods_hook_priority() );
 		remove_action( 'fc_before_checkout_shipping_address_wrapper', array( $this, 'output_ship_to_different_address_hidden_field' ), 10 );
 		remove_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_shipping_address' ), 10 );
 		remove_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_shipping_address' ), 20 );
-		remove_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
-		remove_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
 		remove_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_fields_fragment' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
+
+		// Shipping method
+		remove_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), $this->get_shipping_methods_hook_priority() );
+		remove_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
+		remove_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10 );
+		remove_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
+
+		// Order notes
+		remove_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
 
 		// Billing address
 		$billing_step_hook_priority = $this->get_billing_address_hook_priority();
@@ -2815,6 +2827,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$address_type . '_email',
 		) ) );
 
+		// Get list of field keys that are only present in the current address type
+		$address_type_only_field_keys = $this->{"get_{$address_type}_only_fields_keys"}();
+
+		// Remove the fields only present in the current address type from the skip list
+		$field_keys_skip_list = array_diff( $field_keys_skip_list, $address_type_only_field_keys );
+
 		// Handle name fields as a single line
 		$name_field_keys = array(
 			$address_type . '_first_name',
@@ -3197,6 +3215,44 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return 1;
 	}
 
+	/**
+	 * Maybe prevent autoselect shipping method.
+	 * 
+	 * @param string $default Default shipping method.
+	 * @param array  $rates   Shipping rates.
+	 * @param string $chosen_method Chosen method id.
+	 */
+	public function maybe_prevent_autoselect_shipping_method( $default, $rates, $chosen_method ) {
+		// Bail if option is not enabled
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' ) ) { return $default; }
+
+		// Prevent autoselect
+		return false;
+	}
+
+
+
+	/**
+	 * Output substep state hidden fields for shipping methods.
+	 */
+	public function output_substep_state_hidden_fields_shipping_methods() {
+		// Get shipping packages
+		$packages = WC()->shipping()->get_packages();
+
+		// Iterate shipping packages
+		foreach ( $packages as $i => $package ) {
+			// Get shipping method info
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+
+			// Maybe output hidden field to set the shipping method substep as expanded
+			// if no shipping method has been selected, then break.
+			if ( empty( $chosen_method ) ) {
+				echo '<input class="fc-substep-expanded-state" type="hidden" value="yes" />';
+				break;
+			}
+		}
+	}
+
 
 
 	/**
@@ -3365,38 +3421,69 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return string $label Shipping rate label.
 	 */
 	public function get_cart_shipping_methods_label( $method ) {
-		$label     = sprintf( apply_filters( 'fc_shipping_method_option_label_markup', '<span class="shipping-method__option-text">%s</span>', $method ), $method->get_label() );
+		// Initialize label variable
+		$label = '';
+		
+		// Get method label
+		$label .= sprintf( apply_filters( 'fc_shipping_method_option_label_markup', '<span class="shipping-method__option-text">%s</span>', $method ), $method->get_label() );
+
+		// Maybe add shipping method logo image to label
+		$method_image_html = apply_filters( 'fc_shipping_method_option_image_html', '', $method );
+		if ( ! empty( $method_image_html ) ) {
+			$label .= sprintf( apply_filters( 'fc_shipping_method_option_image_markup', '<span class="shipping-method__option-image">%s</span>', $method, $method_image_html ), $method_image_html );
+		}
+
+		// Get shipping method costs settings
 		$has_cost  = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
 		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
 
-		// Maybe add shipping method description
-		$method_description = apply_filters( 'fc_shipping_method_option_description', '', $method );
-		$method_description_markup = ! empty( $method_description ) ? apply_filters( 'fc_shipping_method_option_description_markup', ' <span class="shipping-method__option-description">%s</span>', $method ) : '';
-		$label .= sprintf( $method_description_markup, $method_description );
-
+		// Maybe add shipping method costs to label
 		if ( $has_cost && ! $hide_cost ) {
 			$method_costs = '';
 
+			// Maybe get shipping method costs including tax
 			if ( WC()->cart->display_prices_including_tax() ) {
 				$method_costs = wc_price( $method->cost + $method->get_shipping_tax() );
 				if ( $method->get_shipping_tax() > 0 && ! wc_prices_include_tax() ) {
 					$method_costs .= ' <small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
 				}
-			} else {
+			}
+			// Otherwise get shipping method costs excluding tax
+			else {
 				$method_costs = wc_price( $method->cost );
 				if ( $method->get_shipping_tax() > 0 && wc_prices_include_tax() ) {
 					$method_costs .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
 				}
 			}
 
-			// Filter method costs
+			// Allow developers to change the shipping method costs
 			$method_costs = apply_filters( 'fc_shipping_method_option_price', $method_costs, $method );
 
 			// Add shipping method costs to label
-			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>', $method ), $method_costs );
+			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>', $method, $method_costs ), $method_costs );
 		}
 
 		return $label;
+	}
+
+	/**
+	 * Get the shipping methods .
+	 *
+	 * @param object|string $method Either the name of the method's class, or an instance of the method's class.
+	 *
+	 * @return string $label Shipping rate label.
+	 */
+	public function get_cart_shipping_methods_description( $method ) {
+		// Get HTML element to use for the shipping method description
+		$method_description_element = apply_filters( 'fc_shipping_method_description_html_element', 'small' );
+
+		// Get shipping method description
+		$method_description = apply_filters( 'fc_shipping_method_option_description', '', $method );
+
+		// Get shipping method description markup
+		$method_description_markup = ! empty( $method_description ) ? sprintf( apply_filters( 'fc_shipping_method_option_description_markup', '<%1$s class="shipping-method__option-description">%2$s</%1$s>', $method ), $method_description_element, $method_description ) : '';
+
+		return $method_description_markup;
 	}
 
 
@@ -5345,18 +5432,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$field_key = $decoded_data[0];
 
 			// Handle multi value fields
-			$needle = '[]';
-			$needle_len = strlen( $needle );
-			if ( $needle_len === 0 || 0 === substr_compare( $field_key, $needle, - $needle_len ) ) {
+			if ( preg_match( '/\[(.*)\]$/', $field_key, $matches ) ) {
 				// Get new field key, without the multi value markers
-				$new_field_key = str_replace( $needle, '', $field_key );
+				$new_field_key = str_replace( $matches[ 0 ], '', $field_key );
+
+				// Get value index
+				$value_index = array_key_exists( 1, $matches ) ? $matches[ 1 ] : '';
 
 				// Initialize field array on posted data
 				if ( ! array_key_exists( $new_field_key, $new_posted_data ) ) {
 					$new_posted_data[ $new_field_key ] = array();
 				}
+
+				// Maybe set value index if not set yet
+				if ( '' === $value_index ) {
+					$value_index = count( $new_posted_data[ $new_field_key ] );
+				}
+
 				// Add new field value
-				$new_posted_data[ $new_field_key ][] = array_key_exists( 1, $decoded_data ) ? wc_clean( wp_unslash( $decoded_data[1] ) ) : null;
+				$new_posted_data[ $new_field_key ][ $value_index ] = array_key_exists( 1, $decoded_data ) ? wc_clean( wp_unslash( $decoded_data[1] ) ) : null;
 			}
 			// Handle single value fields
 			else {

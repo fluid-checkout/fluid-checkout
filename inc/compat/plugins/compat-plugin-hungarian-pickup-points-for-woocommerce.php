@@ -60,7 +60,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		// Shipping methods
 		add_filter( 'fc_shipping_method_has_cost', array( $this, 'maybe_set_shipping_method_has_cost' ), 10, 2 );
 		add_filter( 'fc_shipping_method_option_price', array( $this, 'maybe_change_shipping_method_option_costs' ), 10, 2 );
-		
+
 		// Order summary
 		add_filter( 'woocommerce_cart_shipping_method_full_label', array( $this, 'maybe_replace_hook_change_shipping_method_label' ), 5, 2 );
 	}
@@ -263,7 +263,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 
 			// Button
 			$html .= '<a href="#" id="vp-woo-pont-show-map" data-shipping-costs="' . $shipping_costs_attr . '">' . esc_html( 'Modify', 'vp-woo-pont' ) . '</a>';
-			
+
 			$html .= '</div>';
 		}
 
@@ -310,7 +310,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		// Does not have pickup location selected
 		else {
 			// Add pickup point to substep review text lines
-			$text_lines[] = __( 'Pickup point not selected yet.', 'fluid-checkout' );
+			$text_lines[] = '<em>' . __( 'Pickup point not selected yet.', 'fluid-checkout' ) . '</em>';
 		}
 
 

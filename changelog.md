@@ -19,6 +19,22 @@ Additional labels for beta builds are available as extensions to the MAJOR.MINOR
 
 [See latest changes in the plugin's readme.txt](https://github.com/fluidweb-co/fluid-checkout/blob/main/readme.txt)
 
+= 3.1.7 - 2024-03-27 =
+
+* Bump tested up to WooCommerce 8.7.0
+* Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing by Acowebs.
+* Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing PRO by Acowebs.
+* Added: Compatibility with plugin MkRapel Regiones y Ciudades de Chile para WC.
+* Added: Compatibility with plugin WebToffee PayPal Express Checkout Payment Gateway for WooCommerce.
+* Added: Partial compatibility with plugin PayPlus Payment Gateway.
+* Improved: Compatibility with various themes.
+* Improved: Add delay before triggering update of the checkout fragments when the browser tab visibility changes.
+* Improved: Partial compatibility with plugin States, Cities, and Places for WooCommerce. Fix update to city fields, and add support for TomSelect dropdown components.
+* Fixed: Missing styles for RTL languages, instead use the main file when the RTL file does not exist.
+* Fixed: Set default limit for number of options on TomSelect dropdown fields to `999999`, previous was set to default of `50` options.
+* Fixed: Order Pay and Order Received pages are displayed empty when the theme does not support the block editor.
+* Fixed: Spacing around form fields on some themes.
+
 = 3.1.6 - 2024-03-07 =
 
 * Added: Compatibility with theme Aperitif.

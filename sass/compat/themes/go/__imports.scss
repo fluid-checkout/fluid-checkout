@@ -12,6 +12,8 @@ $_body-theme-selector:                 '.theme-go' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-content-area",
+	"checkout-coupon-code",
 	"checkout-payment-methods",
 	"checkout-shipping-methods",
 	"woocommerce-form-fields-select2";

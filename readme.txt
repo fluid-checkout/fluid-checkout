@@ -3,12 +3,12 @@ Contributors: fluidwebco, diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.5.2
+Tested up to: 6.5.4
 Stable tag: 3.1.8
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Frictionless Multi-step Checkout for WooCommerce. Get up to 36% increase in conversion rates with a better purchase experience at the checkout page.
+Frictionless Multistep Checkout for WooCommerce. Get up to 36% increase in conversion rates with a better purchase experience at the checkout page.
 
 
 == Description ==
@@ -362,6 +362,32 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Bump tested up to WordPress 6.5.4 and WooCommerce 8.9.3
+* Added: New option to prevent automatic selection of the first shipping method available, forcing customer to manually select the shipping method for each new order.
+* Added: Compatibility with theme Beaver Builder Theme.
+* Added: Compatibility with theme SiteOrigin Corp.
+* Added: Compatibility with plugin Omniva Shipping.
+* Added: Compatibility with plugin Advanced Coupons for WooCommerce.
+* Improved: Compatibility with theme Zota.
+* Improved: Compatibility with theme OnAir2.
+* Improved: Compatibility with theme Blocksy. Support for the theme's color modes dark/light.
+* Improved: Compatibility with plugin Elementor PRO. Automatically disable checkout page template when using the custom order received page created with Elementor PRO.
+* Improved: Layout of the shipping methods and position of shipping methods description.
+* Improved: Add hooks for displaying the shipping method logo images for compatible shipping plugins.
+* Fixed: Compatibility with plugin Fluent CRM PRO. Fix fatal error when trying to add the subscribe box on the checkout page when using the plugin Fluent CRM PRO version 2.9.0+.
+* Fixed: Handle checkout fields with indexed multiple values to an `array` when parsing posted data.
+* Fixed: Checkout page template for distraction free header and footer should not be applied to the order pay and order received pages.
+* Fixed: Redirect to the cart page when visiting the checkout with an empty cart when using the WooCommerce block-based checkout form.
+* Fixed: Order received page showing blank in some cases when using the WooCommerce block-based checkout form.
+* Fixed: Page layout issues when using full site editor (FSE).
+* Fixed: Not adding the checkbox field label wrapper element for some themes.
+* Fixed: Only apply changes of the shipping address from the cart shipping calculator when using that function, and not when other plugins trigger the action hook used for that.
+* Fixed: Layout of product quantity label on the order summary at checkout for some themes.
+* Fixed: Inner elements overflowing the order summary borders.
+* Fixed: Display in the substep review text the fields only present in the current address section when that address is set as "Same as <shipping/billing> address".
+
 = 3.1.8 - 2024-04-25 =
 
 * Bump tested up to WordPress 6.5.2 and WooCommerce 8.8.2
@@ -375,22 +401,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Automatically apply database migrations on first plugin installation, showing the message for database migration available only when updating the plugin.
 * Fixed: Compatibility with plugin MailChimp for WooCommerce. Fix fatal error on checkout page when connection to Mailchimp is not completely set up.
 * Fixed: Translations not being loaded correctly for language variations on WordPress 6.5+.
-
-= 3.1.7 - 2024-03-27 =
-
-* Bump tested up to WooCommerce 8.7.0
-* Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing by Acowebs.
-* Added: Compatibility with plugin Acowebs Woocommerce Dynamic Pricing PRO by Acowebs.
-* Added: Compatibility with plugin MkRapel Regiones y Ciudades de Chile para WC.
-* Added: Compatibility with plugin WebToffee PayPal Express Checkout Payment Gateway for WooCommerce.
-* Added: Partial compatibility with plugin PayPlus Payment Gateway.
-* Improved: Compatibility with various themes.
-* Improved: Add delay before triggering update of the checkout fragments when the browser tab visibility changes.
-* Improved: Partial compatibility with plugin States, Cities, and Places for WooCommerce. Fix update to city fields, and add support for TomSelect dropdown components.
-* Fixed: Missing styles for RTL languages, instead use the main file when the RTL file does not exist.
-* Fixed: Set default limit for number of options on TomSelect dropdown fields to `999999`, previous was set to default of `50` options.
-* Fixed: Order Pay and Order Received pages are displayed empty when the theme does not support the block editor.
-* Fixed: Spacing around form fields on some themes.
 
 [See complete changelog](https://fluidcheckout.com/docs/changelog-fluid-checkout/)
 

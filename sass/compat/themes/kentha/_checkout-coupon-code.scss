@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT COUPON CODE
+// ------------------------------------
+
+body#{ $_body-theme-selector }#qtBody div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+	min-height: remsize( 4.5rem ) !important; // Needed to override theme styles
+}
