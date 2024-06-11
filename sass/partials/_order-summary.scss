@@ -371,7 +371,10 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	width: $order-summary-table-width;
 	max-width: $order-summary-table-width;
 	background-color: $order-summary-background-color;
-	overflow: visible;
+	// Note: `overflow` is used here to avoid scrollbars
+	// and inner elements overlapping with the order summary borders,
+	// especially the last element overlapping with the rounded boders.
+	overflow: hidden;
 	box-shadow: $order-summary-box-shadow;
 
 	@media (#{$bp-larger-than-tablet}) {

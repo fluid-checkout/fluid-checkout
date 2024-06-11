@@ -202,13 +202,14 @@
 	justify-content: center;
 	width: $shipping-method-price-width;
 	height: 100%;
-	line-height: 1.1;
+	line-height: inherit;
 	font-weight: $shipping-method-price-font-weight;
 	text-align: #{ $alignment-right };
 }
 .woocommerce ul#shipping_method .shipping-method__option .has-price.has-tax-notes .shipping-method__option-price {
 	margin-top: - remsize( 0.3rem );
 	margin-bottom: - remsize( 0.3rem );
+	line-height: 1.1;
 }
 
 
