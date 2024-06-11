@@ -38,8 +38,6 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 		$this->checkout_hooks();
 	}
 
-
-
 	/*
 	* Add or remove checkout page hooks.
 	*/
@@ -117,9 +115,6 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
-		// Get dark mode CSS variables
-		$dark_mode_variables = FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode();
-
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
@@ -133,8 +128,6 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 				'--fluidcheckout--validation-check--horizontal-spacing--select' => '20px',
 				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '32px',
 			),
-			':root[data-color-mode="dark"]' => $dark_mode_variables,
-			':root[data-color-mode="dark:updating"]' => $dark_mode_variables,
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
