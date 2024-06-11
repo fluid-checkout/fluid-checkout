@@ -366,6 +366,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Bump tested up to WordPress 6.5.4 and WooCommerce 8.9.3
 * Added: New option to prevent automatic selection of the first shipping method available, forcing customer to manually select the shipping method for each new order.
+* Added: Compatibility with theme Beaver Builder Theme.
 * Added: Compatibility with theme SiteOrigin Corp.
 * Added: Compatibility with plugin Omniva Shipping.
 * Added: Compatibility with plugin Advanced Coupons for WooCommerce.
@@ -394,7 +395,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Salient.
 * Added: Compatibility with theme Savoy.
 * Added: Compatibility with theme The Gem.
-* Added: Compatibility with theme Beaver Builder Theme.
 * Added: Compatibility with plugin Flexible Checkout Fields PRO.
 * Added: Compatibility with plugin MyParcel.
 * Improved: Change wording for the company name field option in the plugin settings to be clear what it is related to.
