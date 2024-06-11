@@ -117,6 +117,7 @@ class FluidCheckout_ThemeCompat_Blocksy extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
+		// Get dark mode CSS variables
 		$dark_mode_variables = FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode();
 
 		// Add CSS variables
