@@ -1,0 +1,9 @@
+// ------------------------------------
+// CHECKOUT STORE CREDITS
+// ------------------------------------
+
+div.woocommerce .fc-wrapper .woocommerce-checkout-review-order-table ~ .acfw-checkout-ui-block  {
+	margin: $order-summary-table-margin;
+	margin-top: $global-spacing-extra-small;
+	margin-bottom: 0;
+}

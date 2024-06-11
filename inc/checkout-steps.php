@@ -2827,6 +2827,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$address_type . '_email',
 		) ) );
 
+		// Get list of field keys that are only present in the current address type
+		$address_type_only_field_keys = $this->{"get_{$address_type}_only_fields_keys"}();
+
+		// Remove the fields only present in the current address type from the skip list
+		$field_keys_skip_list = array_diff( $field_keys_skip_list, $address_type_only_field_keys );
+
 		// Handle name fields as a single line
 		$name_field_keys = array(
 			$address_type . '_first_name',
