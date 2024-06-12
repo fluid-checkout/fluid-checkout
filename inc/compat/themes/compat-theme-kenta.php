@@ -19,8 +19,8 @@ class FluidCheckout_ThemeCompat_Kenta extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Template file loader
-		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template_checkout_page_template' ), 100, 3 );
+		// Template custom attributes
+		add_filter( 'fc_checkout_html_custom_attributes', array( $this, 'add_html_attributes' ), 10 );
 
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
@@ -40,45 +40,21 @@ class FluidCheckout_ThemeCompat_Kenta extends FluidCheckout {
 
 
 	/**
-	 * Locate template files from this plugin.
+	 * Add custom attributes to the html element.
+	 *
+	 * @param  array  $custom_attributes   HTML attributes.
 	 */
-	public function locate_template_checkout_page_template( $template, $template_name, $template_path ) {
-		// Bail if not using distraction free header and footer
-		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $template; }
+	public function add_html_attributes( $custom_attributes ) {
+		// Bail if theme function is not available
+		if ( ! function_exists( 'kenta_get_html_attributes' ) ) { return $custom_attributes; }
 
-		$_template = null;
+		// Get theme custom attributes
+		$theme_custom_attributes = kenta_get_html_attributes();
 
-		// Set template path to default value when not provided
-		if ( ! $template_path ) { $template_path = 'woocommerce/'; };
+		// Merge custom attributes
+		$custom_attributes = array_merge( $custom_attributes, $theme_custom_attributes );
 
-		// Get plugin path
-		$plugin_path = self::$directory_path . 'templates/compat/themes/kenta/checkout-page-template/';
-
-		// Get the template from this plugin, if it exists
-		if ( file_exists( $plugin_path . $template_name ) ) {
-			$_template = $plugin_path . $template_name;
-
-			// Look for template file in the theme
-			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
-				$_template_override = locate_template( array(
-					trailingslashit( $template_path ) . $template_name,
-					$template_name,
-				) );
-	
-				// Check if files exist before changing template
-				if ( file_exists( $_template_override ) ) {
-					$_template = $_template_override;
-				}
-			}
-		}
-
-		// Use default template
-		if ( ! $_template ) {
-			$_template = $template;
-		}
-
-		// Return what we found
-		return $_template;
+		return $custom_attributes;
 	}
 
 
@@ -142,6 +118,7 @@ class FluidCheckout_ThemeCompat_Kenta extends FluidCheckout {
 				'--fluidcheckout--field--font-size' => '13.6px',
 				'--fluidcheckout--field--background-color--accent' => 'var(--kenta-primary-color)',
 			),
+			':root[data-kenta-theme="dark"]' => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );

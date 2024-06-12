@@ -12,6 +12,7 @@ $_body-theme-selector:                 '.theme-kenta' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-header",
 	"checkout-content-area",
 	"checkout-place-order",
 	"checkout-steps",
