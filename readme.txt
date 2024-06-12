@@ -362,6 +362,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Compatibility with theme Kenta.
+
 = 3.1.9 - 2024-06-11 =
 
 * Bump tested up to WordPress 6.5.4 and WooCommerce 8.9.3
