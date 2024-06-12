@@ -21,9 +21,6 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 	public function hooks() {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
-
-		// Register assets
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 	}
 
 	/**
@@ -43,7 +40,8 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 		// Bail if not on checkout page
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
-		// Enqueue assets
+		// Enqueue
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 	}
 

@@ -63,7 +63,7 @@
 
 		if ( _hasJQuery ) {
 			// Rebuild on updates
-			$( document.body ).on( 'updated_checkout', maybeLazyLoadImages );
+			$( document.body ).on( 'updated_checkout updated_cart_totals', maybeLazyLoadImages );
 		}
 
 		_hasInitialized = true;
