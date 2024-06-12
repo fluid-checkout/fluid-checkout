@@ -48,6 +48,10 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
 
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
 		// Quantity fields
 		remove_action( 'woocommerce_after_quantity_input_field', 'fennik_wc_add_qty_control_plus', 10 );
 		remove_action( 'woocommerce_before_quantity_input_field', 'fennik_wc_add_qty_control_minus', 10 );
@@ -98,6 +102,30 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
 
 		return $class . ' container';
+	}
+
+
+
+	/**
+	 * Change the element used to position the progress bar and order summary when sticky.
+	 * 
+	 * @param  array  $attributes  The elements attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		// Bail if theme function isn't available
+		if ( ! function_exists( 'fennik_get_theme_option_by_context' ) ) { return $attributes; }
+
+		$is_sticky = fennik_get_theme_option_by_context( 'header_sticky', 'no' );
+
+		// Bail if theme's conditions for sticky header are not met
+		if ( ! $is_sticky ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = '#lastudio-header-builder.is-sticky .lahbhinner';
+
+		return $attributes;
 	}
 
 }
