@@ -55,6 +55,9 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 		// Quantity fields
 		remove_action( 'woocommerce_after_quantity_input_field', 'fennik_wc_add_qty_control_plus', 10 );
 		remove_action( 'woocommerce_before_quantity_input_field', 'fennik_wc_add_qty_control_minus', 10 );
+
+		// Order review heading
+		remove_action( 'woocommerce_checkout_order_review', 'fennik_add_custom_heading_to_checkout_order_review', 0 );
 	}
 
 
