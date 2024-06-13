@@ -306,12 +306,12 @@ body.woocommerce-checkout .fc-content.fc-container {
   }
 }
 
-body.woocommerce-checkout div.woocommerce {
+body.woocommerce-checkout .fc-content div.woocommerce {
   position: static;
   max-width: 100%;
 }
 @media (min-width: 1280px) {
-  body.woocommerce-checkout div.woocommerce {
+  body.woocommerce-checkout .fc-content div.woocommerce {
     margin: 0 auto;
   }
 }
