@@ -10,3 +10,7 @@ body.theme-fennik div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-c
   padding-top: 0;
   padding-bottom: 0;
 }
+
+body.theme-fennik .select2-container--default .select2-selection--single .select2-selection__rendered {
+  margin-top: 0;
+}

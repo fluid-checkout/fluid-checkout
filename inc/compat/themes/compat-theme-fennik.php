@@ -52,6 +52,9 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
 		// Quantity fields
 		remove_action( 'woocommerce_after_quantity_input_field', 'fennik_wc_add_qty_control_plus', 10 );
 		remove_action( 'woocommerce_before_quantity_input_field', 'fennik_wc_add_qty_control_minus', 10 );
@@ -129,6 +132,30 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 		$attributes['data-sticky-relative-to'] = '#lastudio-header-builder.is-sticky .lahbhinner';
 
 		return $attributes;
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '50px',
+				'--fluidcheckout--field--padding-left' => '20px',
+				'--fluidcheckout--field--font-size' => '14px',
+				'--fluidcheckout--field--border-color' => 'var(--theme-border-color)',
+				'--fluidcheckout--field--border-width' => '1px',
+				'--fluidcheckout--field--background-color--accent' => 'var(--theme-secondary-color)',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }
