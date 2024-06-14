@@ -9,3 +9,11 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content.container {
 		max-width: 100%;
 	}
 }
+
+body#{ $_body-theme-selector }#{ $_body-theme-selector }.has-checkout-header.header-v-default .section-page-header .page-header-inner {
+	padding-bottom: 40px; // Use `px` as units to match theme styles
+
+	@media (min-width: 992px) { // Needed to use theme's breakpoint
+		padding-bottom: 50px; // Use `px` as units to match theme styles
+	}
+}
