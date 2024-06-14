@@ -36,8 +36,7 @@
 	 */
 	var maybeLazyLoadImages = function() {
 		// Bail if theme objects are not available
-		if ( 'undefined' === typeof LaStudio ) { return; }
-		if ( 'undefined' === typeof LaStudio.global ) { return; }
+		if ( 'undefined' === typeof LaStudio || 'undefined' === typeof LaStudio.global ) { return; }
 
 		// Bail if theme method is not available
 		if ( 'function' !== typeof LaStudio.global.makeImageAsLoaded ) { return; }
