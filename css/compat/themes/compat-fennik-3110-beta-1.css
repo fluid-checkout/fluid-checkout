@@ -6,13 +6,17 @@
   }
 }
 
-body.theme-fennik.theme-fennik.has-checkout-header.header-v-default .section-page-header .page-header-inner {
+body.theme-fennik.theme-fennik.header-v-default .section-page-header .page-header-inner {
   padding-bottom: 40px;
 }
 @media (min-width: 992px) {
-  body.theme-fennik.theme-fennik.has-checkout-header.header-v-default .section-page-header .page-header-inner {
+  body.theme-fennik.theme-fennik.header-v-default .section-page-header .page-header-inner {
     padding-bottom: 50px;
   }
+}
+
+body.theme-fennik.theme-fennik.has-checkout-header.header-v-default #main #content-wrap {
+  padding-top: 0;
 }
 
 body.theme-fennik div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {

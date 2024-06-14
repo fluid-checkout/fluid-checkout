@@ -10,10 +10,14 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content.container {
 	}
 }
 
-body#{ $_body-theme-selector }#{ $_body-theme-selector }.has-checkout-header.header-v-default .section-page-header .page-header-inner {
+body#{ $_body-theme-selector }#{ $_body-theme-selector }.header-v-default .section-page-header .page-header-inner {
 	padding-bottom: 40px; // Use `px` as units to match theme styles
 
 	@media (min-width: 992px) { // Needed to use theme's breakpoint
 		padding-bottom: 50px; // Use `px` as units to match theme styles
 	}
+}
+
+body#{ $_body-theme-selector }#{ $_body-theme-selector }.has-checkout-header.header-v-default #main #content-wrap {
+	padding-top: 0;
 }

@@ -49,6 +49,8 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 		// Bail if not on checkout page
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
+		$this->distraction_free_hooks();
+
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
@@ -59,9 +61,6 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
-
-		// Header elements
-		add_action( 'fc_checkout_before_main_section', array( $this, 'maybe_output_fennik_checkout_steps_section' ), 20 );
 
 		// Quantity fields
 		remove_action( 'woocommerce_after_quantity_input_field', 'fennik_wc_add_qty_control_plus', 10 );
@@ -74,11 +73,24 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 
 
 	/**
-	 * Add checkout template hooks.
+	 * Add or remove hooks when using distraction free header and footer.
+	 */
+	public function distraction_free_hooks() {
+		// Bail if not using distraction free header and footer
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		// Header elements
+		add_action( 'fc_checkout_before_main_section', array( $this, 'maybe_output_fennik_checkout_steps_section' ), 20 );
+	}
+
+
+
+	/**
+	 * Add or remove checkout template hooks.
 	 */
 	public function checkout_template_hooks() {
 		// Bail if using distraction free header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
 
 		// Theme's inner containers
 		add_action( 'fc_checkout_before_main_section', array( $this, 'add_inner_container_opening_tags' ), 10 );
