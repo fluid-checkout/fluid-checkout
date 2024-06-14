@@ -241,11 +241,11 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 		}
 
 		// Custom text from the theme
-		$enable_custom_text = fennik_get_theme_option_by_context('enable_page_title_subtext', 'no');
-		$custom_text = fennik_get_theme_option_by_context('page_title_custom_subtext', '');
+		$enable_custom_text = fennik_get_theme_option_by_context( 'enable_page_title_subtext', 'no' );
+		$custom_text = fennik_get_theme_option_by_context( 'page_title_custom_subtext', '' );
 
 		// HTML tag for the title
-		$title_tag = fennik_get_option('page_title_bar_heading_tag', 'h1');
+		$title_tag = fennik_get_option( 'page_title_bar_heading_tag', 'h1' );
 
 		// Bail if both page title and breadcrumbs are disabled
 		if ( ! $show_page_title && ! $show_breadcrumbs ) { return; }
@@ -254,7 +254,7 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 			<div class="page-header-inner">
 				<?php
 				if ( $show_page_title ){
-					printf(' <%1$s class="page-title" %3$s>%2$s</%1$s> ', esc_attr( $title_tag ), fennik_title(), fennik_get_schema_markup( 'headline' ) );
+					printf( '<%1$s class="page-title" %3$s>%2$s</%1$s>', esc_attr( $title_tag ), fennik_title(), fennik_get_schema_markup( 'headline' ) );
 				}
 				if ( $enable_custom_text == 'yes' && ! empty( $custom_text ) ){
 					printf( '<div class="site-breadcrumbs use-custom-text">%s</div>', esc_html( $custom_text ) );
