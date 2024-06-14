@@ -1,8 +1,9 @@
 /**
- * Rebuild floating labels for Flatsome theme.
+ * Lazy load images for Fennik theme.
  *
  * DEPENDS ON:
  * - jQuery // Interact with WooCommerce events
+ * - LaStudio // Theme objects and methods
  */
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
