@@ -79,8 +79,8 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 		// Bail if not using distraction free header and footer
 		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
 
-		// Header elements
-		add_action( 'fc_checkout_before_main_section', array( $this, 'maybe_output_fennik_checkout_steps_section' ), 20 );
+		// Breadcrumbs
+		add_action( 'fc_checkout_before_main_section', array( $this, 'maybe_output_fennik_breadcrumbs_section' ), 20 );
 	}
 
 
@@ -193,11 +193,11 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 			),
 
 			array(
-				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
-				'desc'            => __( 'Output the checkout steps section from the Fennik theme when using Fluid Checkout header and footer.', 'fluid-checkout' ),
-				'id'              => 'fc_compat_theme_fennik_output_checkout_steps_section',
+				'title'           => __( 'Breadcrumbs', 'fluid-checkout' ),
+				'desc'            => __( 'Output the breadcrumbs section from the Fennik theme when using Fluid Checkout header and footer.', 'fluid-checkout' ),
+				'id'              => 'fc_compat_theme_fennik_output_breadcrumbs_section',
 				'type'            => 'checkbox',
-				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_fennik_output_checkout_steps_section' ),
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_fennik_output_breadcrumbs_section' ),
 				'autoload'        => false,
 			),
 
@@ -215,20 +215,20 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 
 
 	/**
-	 * Maybe output the checkout steps section from the Fennik theme.
+	 * Maybe output the breadcrumbs section from the Fennik theme.
 	 */
-	public function maybe_output_fennik_checkout_steps_section() {
+	public function maybe_output_fennik_breadcrumbs_section() {
 		// Bail if Fennik section output is disabled in the plugin settings
-		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_fennik_output_checkout_steps_section' ) ) { return; }
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_fennik_output_breadcrumbs_section' ) ) { return; }
 
 		// Bail if theme functions are not available
 		if ( ! function_exists( 'fennik_get_post_meta' ) || ! function_exists( 'fennik_get_option' ) || ! function_exists( 'fennik_get_option' ) || ! function_exists( 'fennik_title' ) || ! function_exists( 'fennik_get_schema_markup' ) || ! function_exists( 'fennik_breadcrumb_trail' ) ) { return; }
 
-		// Global theme settings for page title and breadcrumbs (checkout steps)
+		// Global theme settings for page title and breadcrumbs
 		$show_page_title = apply_filters( 'fennik/filter/show_page_title', true );
 		$show_breadcrumbs = apply_filters( 'fennik/filter/show_breadcrumbs', true );
 
-		// Current page settings for page title and breadcrumbs (checkout steps)
+		// Current page settings for page title and breadcrumbs
 		$hide_breadcrumbs = fennik_get_post_meta( get_the_ID(), 'hide_breadcrumb' );
 		$hide_page_title = fennik_get_post_meta( get_the_ID(), 'hide_page_title' );
 
