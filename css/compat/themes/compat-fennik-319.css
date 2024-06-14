@@ -24,6 +24,10 @@ body.theme-fennik .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocomm
   margin: 0;
 }
 
+body.theme-fennik #order_review .woocommerce-checkout-review-order-table .amount {
+  font-size: 15px;
+}
+
 body.theme-fennik .select2-container--default .select2-selection--single .select2-selection__rendered {
   margin-top: 0;
 }
