@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-button {
+	min-height: remsize( 5rem );
+	font-size: 1.15rem; // Needed to use 'rem' as units to match theme styles
+}
