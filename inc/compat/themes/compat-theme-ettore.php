@@ -84,6 +84,16 @@ class FluidCheckout_Ettore extends FluidCheckout {
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '50.14px',
+				'--fluidcheckout--field--border-color' => '#ccc',
+				'--fluidcheckout--field--padding-left' => '20px',
+				'--fluidcheckout--field--font-size' => '14px',
+				'--fluidcheckout--field--background-color--accent' => 'var(--qode-main-color, #13161a)',
+
+				// Checkout validation styles
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '35px',
+
 				// Primary button color
 				'--fluidcheckout--button--primary--border-color' => 'transparent',
 				'--fluidcheckout--button--primary--background-color' => $button_background_color,
