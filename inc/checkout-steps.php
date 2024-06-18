@@ -5676,7 +5676,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   WC_Customer  $customer   The customer object.
 	 */
 	public function maybe_change_customer_address_field_value_from_checkout_data( $value, $customer ) {
-		// Maybe get field value from checkout data
+		// Get name of the current filter hook running this function
 		$hook_name = current_filter();
 
 		// Bail if the hook name is not supported
