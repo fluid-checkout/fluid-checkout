@@ -257,6 +257,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function very_late_hooks() {
 		// Order notes
 		$this->order_notes_hooks();
+
+		// Persisted data
+		$this->customer_address_data_hooks();
 	}
 
 	/**
@@ -296,6 +299,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields_inside' );
 			$order_notes_substep_priority = apply_filters( 'fc_do_order_notes_hooks_priority', 100 );
 			add_action( $order_notes_substep_position, array( $this, 'do_order_notes_hooks' ), $order_notes_substep_priority );
+		}
+	}
+
+	/**
+	 * Add or remove hooks for the customer address data.
+	 */
+	public function customer_address_data_hooks() {
+		// Get checkout fields
+		$checkout_fields = WC()->checkout()->get_checkout_fields();
+
+		// Iterate checkout field groups
+		foreach ( $checkout_fields as $field_group => $group_fields ) {
+			// Skip if not shipping or billing groups
+			if ( ! in_array( $field_group, array( 'shipping', 'billing' ) ) ) { continue; }
+
+			// Iterate fields
+			foreach ( $group_fields as $field_key => $field ) {
+				add_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10, 2 );
+			}
 		}
 	}
 
@@ -485,6 +507,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields_inside' );
 		$order_notes_substep_priority = apply_filters( 'fc_do_order_notes_hooks_priority', 100 );
 		remove_action( $order_notes_substep_position, array( $this, 'do_order_notes_hooks' ), $order_notes_substep_priority );
+
+		// Persisted data
+		$this->undo_customer_address_data_hooks();
+	}
+
+	/**
+	 * Add or remove hooks for the customer address data.
+	 */
+	public function undo_customer_address_data_hooks() {
+		// Get checkout fields
+		$checkout_fields = WC()->checkout()->get_checkout_fields();
+
+		// Iterate checkout field groups
+		foreach ( $checkout_fields as $field_group => $group_fields ) {
+			// Skip if not shipping or billing groups
+			if ( ! in_array( $field_group, array( 'shipping', 'billing' ) ) ) { continue; }
+
+			// Iterate fields
+			foreach ( $group_fields as $field_key => $field ) {
+				remove_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10, 2 );
+			}
+		}
 	}
 
 
@@ -5621,6 +5665,46 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$field_keys = apply_filters( 'fc_address_field_keys', $field_keys, $address_type );
 
 		return $field_keys;
+	}
+
+
+
+	/**
+	 * Maybe change the customer address field value to get data saved to the checkout session.
+	 *
+	 * @param   mixed        $value      The field value.
+	 * @param   WC_Customer  $customer   The customer object.
+	 */
+	public function maybe_change_customer_address_field_value_from_checkout_data( $value, $customer ) {
+		// Maybe get field value from checkout data
+		$hook_name = current_filter();
+
+		// Bail if the hook name is not supported
+		if ( strpos( $hook_name, 'woocommerce_customer_get_' ) !== 0 ) { return $value; }
+
+		// Get field key
+		$field_key = str_replace( 'woocommerce_customer_get_', '', $hook_name );
+
+		// Try to return value from cache
+		$cache_handle = 'customer_address_field_value_' . $field_key;
+		if ( array_key_exists( $cache_handle, $this->cached_values ) ) {
+			// Return value from cache
+			return $this->cached_values[ $cache_handle ];
+		}
+
+		// Get checkout session value
+		$session_value = $this->get_checkout_field_value_from_session_or_posted_data( $field_key );
+
+		// Maybe set new value from session value
+		if ( ! empty( $session_value ) ) {
+			$value = $session_value;
+		}
+
+		// Set cache
+		$this->cached_values[ $cache_handle ] = $value;
+
+		// Return new value
+		return $value;
 	}
 
 

@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme Kenta.
+* Fixed: Retrieve customer address data from the checkout session data when available.
 
 = 3.1.9 - 2024-06-11 =
 
