@@ -1,0 +1,24 @@
+// ------------------------------------
+// CHECKOUT COLUMNS LAYOUT
+// ------------------------------------
+
+body.qodef-header-appearance--sticky .fc-wrapper .fc-sidebar .fc-sidebar__inner {
+	transition: top .5s ease; // Needed to apply same animation as when hiding the sticky header on scroll
+}
+
+body.qodef-mobile-header-appearance--sticky .fc-wrapper .fc-sidebar .fc-sidebar__inner {
+	@media ( max-width: 1200px ) { // Needs to match theme breakpoint
+		transition: top .3s ease; // Needed to apply same animation as when hiding the sticky header on scroll
+	}
+}
+
+// Sticky state on mobile
+body.qodef-header-appearance--sticky:not( .qodef-header--sticky-display ) .fc-wrapper .fc-sidebar .fc-sidebar__inner {
+	top: $global-spacing-tiny !important; // Needed to override the offset from the sticky state
+}
+
+body.qodef-mobile-header-appearance--sticky:not( .qodef-mobile-header--sticky-display ) .fc-wrapper .fc-sidebar .fc-sidebar__inner {
+	@media ( max-width: 1200px ) { // Needs to match theme breakpoint
+		top: $global-spacing-tiny !important; // Needed to override the offset from the sticky state
+	}
+}

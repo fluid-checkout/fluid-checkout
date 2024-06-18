@@ -1,0 +1,24 @@
+// ------------------------------------
+// CHECKOUT PROGRESS BAR
+// ------------------------------------
+
+body.qodef-header-appearance--sticky .fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
+	transition: top .5s ease; // Needed to apply same animation as when hiding the sticky header on scroll
+}
+
+body.qodef-mobile-header-appearance--sticky .fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
+	@media ( max-width: 1200px ) { // Needs to match theme breakpoint
+		transition: top .3s ease; // Needed to apply same animation as when hiding the sticky header on scroll
+	}
+}
+
+// Sticky state
+body.qodef-header-appearance--sticky:not( .qodef-header--sticky-display ) .fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
+	top: $global-spacing-tiny !important; // Needed to override the offset from the sticky state
+}
+
+body.qodef-mobile-header-appearance--sticky:not( .qodef-mobile-header--sticky-display ) .fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
+	@media ( max-width: 1200px ) { // Needs to match theme breakpoint
+		top: $global-spacing-tiny !important; // Needed to override the offset from the sticky state
+	}
+}
