@@ -31,7 +31,6 @@ class FluidCheckout_WooMailerLite extends FluidCheckout {
 	 */
 	public function late_hooks() {
 		// Checkbox position and state
-		add_filter( 'fc_parsed_posted_data_reset_field_keys', array( $this, 'add_checkbox_reset_posted_data_field_key' ), 10, 2 );
 		$this->checkbox_hooks();
 
 		// Substep review text
@@ -69,6 +68,9 @@ class FluidCheckout_WooMailerLite extends FluidCheckout {
 			$checkout_new_position = $checkbox_hook_priority[ $checkout_position ][0];
 			$checkout_new_priority = $checkbox_hook_priority[ $checkout_position ][1];
 		}
+
+		// Reset checkbox field value
+		add_filter( 'fc_parsed_posted_data_reset_field_keys', array( $this, 'add_checkbox_reset_posted_data_field_key' ), 10, 2 );
 
 		// Move the checkbox to the new hook position
 		remove_action( 'woocommerce_' . $checkout_position, 'woo_ml_checkout_label', 20 );
