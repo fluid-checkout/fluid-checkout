@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme Kenta.
+* * Fixed: Compatibility with plugin Fluent CRM PRO.
 * Fixed: Retrieve customer address data from the checkout session data when available.
 * Fixed: Layout issues for some elements with class `woocommerce` that are displayed outside the scope of Fluid Checkout.
 
