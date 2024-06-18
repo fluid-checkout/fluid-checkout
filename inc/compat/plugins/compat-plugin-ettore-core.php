@@ -38,6 +38,7 @@ class FluidCheckout_EttoreCore extends FluidCheckout {
 		// Bail if plugin function isn't available
 		if ( ! function_exists( 'ettore_core_get_post_value_through_levels' ) ) { return $attributes; }
 
+		// Get theme settings for sticky header
 		$header_scroll_appearance = ettore_core_get_post_value_through_levels( 'qodef_header_scroll_appearance' );
 		$header_scroll_appearance_mobile = ettore_core_get_post_value_through_levels( 'qodef_mobile_header_scroll_appearance' );
 
