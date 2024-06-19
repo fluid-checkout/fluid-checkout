@@ -95,10 +95,10 @@ class FluidCheckout_Ettore extends FluidCheckout {
 				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '35px',
 
 				// Primary button color
-				'--fluidcheckout--button--primary--border-color' => 'transparent',
+				'--fluidcheckout--button--primary--border-color' => $button_background_color,
 				'--fluidcheckout--button--primary--background-color' => $button_background_color,
 				'--fluidcheckout--button--primary--text-color' => $button_text_color,
-				'--fluidcheckout--button--primary--border-color--hover' => 'transparent',
+				'--fluidcheckout--button--primary--border-color--hover' => $button_background_color,
 				'--fluidcheckout--button--primary--background-color--hover' => $button_background_color,
 				'--fluidcheckout--button--primary--text-color--hover' => $button_text_color,
 
