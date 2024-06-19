@@ -1,6 +1,6 @@
 {
   "name": "fluid-checkout",
-  "version": "3.1.10-beta-5",
+  "version": "3.1.10-beta-6",
   "description": "Provides a fluid checkout experience for any WooCommerce store. Ask for shipping information before billing in a linear and multi-step checkout, add options for gift message and packaging and add a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.",
   "main": "fluid-checkout.php",
   "scripts": {
