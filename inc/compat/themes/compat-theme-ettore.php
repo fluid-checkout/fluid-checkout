@@ -22,12 +22,16 @@ class FluidCheckout_Ettore extends FluidCheckout {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
-		// // CSS variables
-		// add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
+
+		add_filter( 'fc_next_step_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_coupon_code_apply_button_classes', array( $this, 'add_button_class' ), 10 );
 
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
@@ -50,37 +54,67 @@ class FluidCheckout_Ettore extends FluidCheckout {
 
 
 	/**
+	 * Add button class from the theme.
+	 * 
+	 * @param  array  $classes  The button classes.
+	 */
+	public function add_button_class( $classes ) {
+		// Add 'qodef-theme-button' class to apply theme styles and 'qodef-m-checkout-link' to add hover animation
+		if ( is_array( $classes ) ) {
+			array_push( $classes, 'qodef-theme-button', 'qodef-m-checkout-link' );
+		} 
+		else {
+			$classes .= ' qodef-theme-button qodef-m-checkout-link';
+		}
+
+		return $classes;
+	}
+
+
+
+	/**
+
 	 * Add CSS variables.
 	 * 
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
-		// Theme default color values
-		$button_text_color = '#ffffff';
-		$button_background_color = '#c8693a';
-		$button_background_color_hover = '#d77647';
-
-		// Maybe get color values from the theme settings
-		if ( function_exists( 'aperitif_core_get_post_value_through_levels' ) ) {
-			$main_color = aperitif_core_get_post_value_through_levels( 'qodef_main_color' );
-			$main_color_hover = aperitif_core_get_post_value_through_levels( 'qodef_main_color_hover' );
-
-			// Primary color
-			if ( ! empty( $main_color ) ) { $button_background_color = $main_color; }
-
-			// Primary color in hover state
-			if ( ! empty( $main_color_hover ) ) { $button_background_color_hover = $main_color_hover; }
-		}
+		// Theme color values
+		$button_text_color = 'var(--qode-button-color, #fff)';
+		$button_background_color = 'var(--qode-button-bg-color, #000)';
 
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '50.14px',
+				'--fluidcheckout--field--border-color' => '#ccc',
+				'--fluidcheckout--field--padding-left' => '20px',
+				'--fluidcheckout--field--font-size' => '14px',
+				'--fluidcheckout--field--background-color--accent' => 'var(--qode-main-color, #13161a)',
+
+				// Checkout validation styles
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '35px',
+
+				// Primary button color
 				'--fluidcheckout--button--primary--border-color' => $button_background_color,
 				'--fluidcheckout--button--primary--background-color' => $button_background_color,
 				'--fluidcheckout--button--primary--text-color' => $button_text_color,
-				'--fluidcheckout--button--primary--border-color--hover' => $button_background_color_hover,
-				'--fluidcheckout--button--primary--background-color--hover' => $button_background_color_hover,
+				'--fluidcheckout--button--primary--border-color--hover' => $button_background_color,
+				'--fluidcheckout--button--primary--background-color--hover' => $button_background_color,
 				'--fluidcheckout--button--primary--text-color--hover' => $button_text_color,
+
+				// Secondary button color
+				'--fluidcheckout--button--secondary--border-color' => $button_background_color,
+				'--fluidcheckout--button--secondary--background-color' => $button_background_color,
+				'--fluidcheckout--button--secondary--text-color' => $button_text_color,
+				'--fluidcheckout--button--secondary--border-color--hover' => 'var(--qode-button-border-color, var(--qode-main-color))',
+				'--fluidcheckout--button--secondary--background-color--hover' => 'transparent',
+				'--fluidcheckout--button--secondary--text-color--hover' => 'var(--qode-button-outlined-color, var(--qode-main-color))',
+
+				// Button design styles
+				'--fluidcheckout--button--height' => '51.14px',
+				'--fluidcheckout--button--font-size' => '12px',
 			),
 		);
 
