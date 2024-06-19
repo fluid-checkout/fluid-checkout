@@ -101,7 +101,6 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 	 * Maybe change the SMS compliance checkbox field arguments.
 	 */
 	public function maybe_change_sms_compliance_checkbox_field_args( $fields ) {
-		var_dump( 'PASSED 2' );
 		// SMS Compliance
 		if ( array_key_exists( 'billing', $fields ) && array_key_exists( 'kl_sms_consent_checkbox', $fields[ 'billing' ] ) ) {
 			// Get SMS compliance text
