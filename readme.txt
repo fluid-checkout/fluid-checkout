@@ -372,6 +372,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin Klaviyo. Always show the SMS compliance notice below the checkbox field, and move the checkbox automatically to the contact step if the billing phone field is also displayed in the contact step.
 * Fixed: Retrieve customer address data from the checkout session data when available.
 * Fixed: Layout issues for some elements with class `woocommerce` that are displayed outside the scope of Fluid Checkout.
+* Fixed: Remove duplicate values shown in the substep review text for fields only present in the current address section when that address is set as "Same as <shipping/billing> address".
 
 = 3.1.9 - 2024-06-11 =
 

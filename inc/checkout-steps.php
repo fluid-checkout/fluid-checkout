@@ -2781,7 +2781,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $address_type  The address type.
 	 */
 	public function get_substep_text_formatted_address_text_line( $address_type ) {
-		// Field prefix
+		// Get field prefix
 		$substep_id = 'shipping' === $address_type ? 'shipping_address' : 'billing_address';
 		$field_key_prefix = $address_type . '_';
 
@@ -2838,6 +2838,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
+		// Initialize variables
+		$address_type_alt = 'billing' === $address_type ? 'shipping' : 'billing';
+		$is_same_as_address_notice_displayed = $this->{"is_{$address_type}_same_as_{$address_type_alt}"}() && true === apply_filters( "fc_{$address_type}_same_as_{$address_type_alt}_display_substep_review_text_notice", true );
+
 		// Get address fields
 		$address_fields = WC()->checkout->get_checkout_fields( $address_type );
 
@@ -2874,8 +2878,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get list of field keys that are only present in the current address type
 		$address_type_only_field_keys = $this->{"get_{$address_type}_only_fields_keys"}();
 
-		// Remove the fields only present in the current address type from the skip list
-		$field_keys_skip_list = array_diff( $field_keys_skip_list, $address_type_only_field_keys );
+		foreach ( $field_keys_skip_list as $field_key_index => $field_key_skipped ) {
+			// Skip if the field key for a skipped field is not present in the address type only field keys list
+			if ( ! in_array( $field_key_skipped, $address_type_only_field_keys ) ) { continue; }
+		
+			// Skip if the address section is not displayed with the "same as" address notice
+			if ( ! $is_same_as_address_notice_displayed ) { continue; }
+
+			// Remove from skipped fields list
+			unset( $field_keys_skip_list[ $field_key_index ] );
+		}
 
 		// Handle name fields as a single line
 		$name_field_keys = array(
