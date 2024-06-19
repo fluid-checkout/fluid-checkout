@@ -49,8 +49,6 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 		// Bail if not on checkout page
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
-		$this->distraction_free_hooks();
-
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
@@ -68,9 +66,10 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 
 		// Order review heading
 		remove_action( 'woocommerce_checkout_order_review', 'fennik_add_custom_heading_to_checkout_order_review', 0 );
+
+		// Distraction free header and footer
+		$this->distraction_free_hooks();
 	}
-
-
 
 	/**
 	 * Add or remove hooks when using distraction free header and footer.
@@ -82,8 +81,6 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 		// Breadcrumbs
 		add_action( 'fc_checkout_before_main_section', array( $this, 'maybe_output_fennik_breadcrumbs_section' ), 20 );
 	}
-
-
 
 	/**
 	 * Add or remove checkout template hooks.
