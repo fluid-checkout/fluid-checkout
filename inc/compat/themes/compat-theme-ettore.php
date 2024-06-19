@@ -28,6 +28,7 @@ class FluidCheckout_Ettore extends FluidCheckout {
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
+
 		add_filter( 'fc_next_step_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_coupon_code_apply_button_classes', array( $this, 'add_button_class' ), 10 );
@@ -72,6 +73,7 @@ class FluidCheckout_Ettore extends FluidCheckout {
 
 
 	/**
+
 	 * Add CSS variables.
 	 * 
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
