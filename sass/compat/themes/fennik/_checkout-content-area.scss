@@ -2,11 +2,15 @@
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content.container {
-	@media (#{$bp-smaller-than-tablet}) { 
-		padding-#{ $alignment-left }: remsize( 2rem );
-		padding-#{ $alignment-right }: remsize( 2rem );
-		max-width: 100%;
+body#{ $_body-theme-selector }#{ $_body-page-selector }:not( .body-boxed ) .fc-content.container {
+	max-width: 100%;
+	padding-#{ $alignment-left }: remsize( 2rem );
+	padding-#{ $alignment-right }: remsize( 2rem );
+	
+	@media (#{$bp-larger-than-tablet}) { 
+		max-width: 96%;
+		padding-#{ $alignment-left }: 0;
+		padding-#{ $alignment-right }: 0;
 	}
 }
 

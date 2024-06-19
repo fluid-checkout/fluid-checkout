@@ -1,8 +1,13 @@
-@media (max-width: 749px) {
-  body.theme-fennik.woocommerce-checkout .fc-content.container {
-    padding-left: 20px;
-    padding-right: 20px;
-    max-width: 100%;
+body.theme-fennik.woocommerce-checkout:not(.body-boxed) .fc-content.container {
+  max-width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media (min-width: 750px) {
+  body.theme-fennik.woocommerce-checkout:not(.body-boxed) .fc-content.container {
+    max-width: 96%;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
