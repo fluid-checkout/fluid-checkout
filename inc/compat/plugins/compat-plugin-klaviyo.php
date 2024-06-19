@@ -111,7 +111,7 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 
 			// Change field args
 			$fields[ 'billing' ][ 'kl_sms_consent_checkbox' ][ 'priority' ] = 210;
-			$fields[ 'billing' ][ 'kl_sms_consent_checkbox' ][ 'description' ] = $sms_compliance_text . '<a href="https://a.klaviyo.com/api/webhook">test <strong>link</strong></a>';
+			$fields[ 'billing' ][ 'kl_sms_consent_checkbox' ][ 'description' ] = $sms_compliance_text;
 		}
 
 		return $fields;
