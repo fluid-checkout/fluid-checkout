@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-29 17:17+0000\n"
-"PO-Revision-Date: 2024-06-11 12:21+0000\n"
+"PO-Revision-Date: 2024-06-20 20:06+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Greek\n"
 "Language: el\n"
@@ -183,7 +183,7 @@ msgstr "Προσθέστε περιοχές widget στη σελίδα ευχα�
 msgid "Add-ons"
 msgstr "Πρόσθετα"
 
-#: inc/checkout-steps.php:2438
+#: inc/checkout-steps.php:2482
 msgid "Additional notes"
 msgstr "Πρόσθετες σημειώσεις"
 
@@ -311,7 +311,7 @@ msgstr "Έχετε ήδη λογαριασμό"
 msgid "Always show"
 msgstr "Πάντα να δείχνετε"
 
-#: inc/checkout-steps.php:2210
+#: inc/checkout-steps.php:2254
 msgid "An account will be created with the information provided."
 msgstr "Θα δημιουργηθεί ένας λογαριασμός με τις πληροφορίες που παρέχονται."
 
@@ -421,7 +421,7 @@ msgstr "Διεύθυνση χρέωσης"
 msgid "Billing phone"
 msgstr "Τηλέφωνο χρέωσης"
 
-#: inc/checkout-steps.php:3542
+#: inc/checkout-steps.php:3598
 msgid "Billing to"
 msgstr "Χρέωση σε"
 
@@ -455,6 +455,10 @@ msgstr ""
 #: inc/design-templates.php:116
 msgid "Boxed"
 msgstr "Κουτί"
+
+#: inc/compat/themes/compat-theme-fennik.php:222
+msgid "Breadcrumbs"
+msgstr "Ψίχουλα ψωμιού"
 
 #: inc/checkout-coupon-codes.php:199
 msgctxt "Button label for applying coupon codes"
@@ -503,7 +507,7 @@ msgstr "Διάταξη καλαθιού"
 msgid "Cart optimizations"
 msgstr "Βελτιστοποιήσεις καλαθιού"
 
-#: inc/checkout-steps.php:813
+#: inc/checkout-steps.php:857
 msgid "Cart total:"
 msgstr "Σύνολο καλαθιού:"
 
@@ -519,7 +523,7 @@ msgstr ""
 "Αλλαγή της ορατότητας του πεδίου ονόματος εταιρείας για την ενότητα "
 "διεύθυνσης αποστολής στη φόρμα πληρωμής."
 
-#: inc/checkout-steps.php:1877
+#: inc/checkout-steps.php:1921
 #, php-format
 msgid "Change: %s"
 msgstr "Αλλαγή: %s"
@@ -592,7 +596,7 @@ msgstr "Σύνοψη παραγγελίας στο ταμείο"
 #: inc/compat/themes/compat-theme-woodmart.php:132
 #: inc/compat/themes/compat-theme-betheme.php:178
 #: inc/compat/themes/compat-theme-pressmart.php:186
-#: inc/compat/themes/compat-theme-thegem.php:166
+#: inc/compat/themes/compat-theme-thegem.php:164
 msgid "Checkout progress"
 msgstr "Πρόοδος πληρωμής"
 
@@ -600,32 +604,32 @@ msgstr "Πρόοδος πληρωμής"
 msgid "Checkout Sidebar"
 msgstr "Πλαϊνή μπάρα πληρωμής"
 
-#: inc/checkout-steps.php:1519
+#: inc/checkout-steps.php:1563
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Τιμολόγηση"
 
-#: inc/checkout-steps.php:1498
+#: inc/checkout-steps.php:1542
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Επικοινωνία"
 
-#: inc/checkout-steps.php:1528
+#: inc/checkout-steps.php:1572
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Πληρωμή"
 
-#: inc/checkout-steps.php:1507
+#: inc/checkout-steps.php:1551
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Αποστολή"
 
-#: inc/checkout-steps.php:1877
+#: inc/checkout-steps.php:1921
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Αλλαγή"
 
-#: inc/checkout-steps.php:1878
+#: inc/checkout-steps.php:1922
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Αποθήκευση αλλαγών"
@@ -702,7 +706,7 @@ msgstr "Επιλέξτε σε ποιο βήμα θα εμφανιστεί το �
 msgid "Classic"
 msgstr "Κλασικό"
 
-#: inc/checkout-steps.php:813
+#: inc/checkout-steps.php:857
 msgid "Click to go to the order summary"
 msgstr "Κάντε κλικ για να μεταβείτε στη σύνοψη της παραγγελίας"
 
@@ -1009,7 +1013,7 @@ msgstr ""
 msgid "Don't show this again"
 msgstr "Μην το ξαναδείξετε αυτό"
 
-#: inc/checkout-steps.php:5024
+#: inc/checkout-steps.php:5080
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 msgid "Edit cart"
 msgstr "Επεξεργασία καλαθιού"
@@ -1549,7 +1553,7 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Μετακινήστε το πλαίσιο ελέγχου εγγραφής στο βήμα επαφής"
 
-#: inc/checkout-steps.php:641
+#: inc/checkout-steps.php:685
 msgid "Multi-step"
 msgstr "Πολλαπλών βημάτων"
 
@@ -1561,7 +1565,7 @@ msgstr "Πολλαπλές αποθηκευμένες διευθύνσεις γ�
 msgid "My account layout"
 msgstr "Η διάταξη του λογαριασμού μου"
 
-#: inc/checkout-steps.php:2147
+#: inc/checkout-steps.php:2191
 msgid "My contact"
 msgstr "Η επαφή μου"
 
@@ -1590,7 +1594,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2991
+#: inc/checkout-steps.php:3047
 msgid "Not selected yet."
 msgstr "Δεν έχει επιλεγεί ακόμη."
 
@@ -1693,11 +1697,19 @@ msgstr "Πρόοδος της παραγγελίας"
 msgid "Order status"
 msgstr "Κατάσταση παραγγελίας"
 
-#: inc/checkout-steps.php:4959 inc/admin/admin-settings-cart.php:131
+#: inc/checkout-steps.php:5015 inc/admin/admin-settings-cart.php:131
 #: inc/admin/admin-settings-order-received.php:177
 #: inc/admin/admin-settings-checkout.php:238
 msgid "Order summary"
 msgstr "Περίληψη παραγγελίας"
+
+#: inc/compat/themes/compat-theme-fennik.php:223
+msgid ""
+"Output the breadcrumbs section from the Fennik theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"Εξαγωγή της ενότητας breadcrumbs από το θέμα Fennik όταν χρησιμοποιείται η "
+"κεφαλίδα και το υποσέλιδο του Fluid Checkout."
 
 #: inc/compat/themes/compat-theme-betheme.php:179
 msgid ""
@@ -1707,7 +1719,7 @@ msgstr ""
 "Εξάγετε το τμήμα βημάτων πληρωμής από το Betheme στις σελίδες πληρωμής, "
 "καλαθιού και παραγγελίας που παραλήφθηκαν."
 
-#: inc/compat/themes/compat-theme-thegem.php:167
+#: inc/compat/themes/compat-theme-thegem.php:165
 msgid ""
 "Output the checkout steps section from The Gem theme when using Fluid "
 "Checkout header and footer."
@@ -1750,7 +1762,7 @@ msgstr "Χρώμα φόντου σελίδας"
 msgid "Parcel terminal"
 msgstr "Τερματικός σταθμός δεμάτων"
 
-#: inc/checkout-steps.php:4738
+#: inc/checkout-steps.php:4794
 msgid "Payment method"
 msgstr "Μέθοδος πληρωμής"
 
@@ -1786,7 +1798,7 @@ msgid "Prevent automatic selection of the first shipping method"
 msgstr "Αποτροπή της αυτόματης επιλογής της πρώτης μεθόδου αποστολής"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1384
+#: inc/checkout-steps.php:1428
 #, php-format
 msgid "Proceed to %s"
 msgstr "Προχωρήστε στην %s"
@@ -1879,11 +1891,11 @@ msgstr ""
 msgid "Required"
 msgstr "Απαιτούμενο"
 
-#: inc/checkout-steps.php:3770
+#: inc/checkout-steps.php:3826
 msgid "Same as billing address"
 msgstr "Ίδια με τη διεύθυνση χρέωσης"
 
-#: inc/checkout-steps.php:3727
+#: inc/checkout-steps.php:3783
 msgid "Same as shipping address"
 msgstr "Ίδια με τη διεύθυνση αποστολής"
 
@@ -2005,7 +2017,7 @@ msgstr "Αποστολή"
 msgid "Shipping address"
 msgstr "Διεύθυνση αποστολής"
 
-#: inc/checkout-steps.php:2414
+#: inc/checkout-steps.php:2458
 msgid "Shipping method"
 msgstr "Μέθοδος αποστολής"
 
@@ -2018,7 +2030,7 @@ msgstr "Μέθοδοι αποστολής"
 msgid "Shipping phone"
 msgstr "Τηλέφωνο αποστολής"
 
-#: inc/checkout-steps.php:2390
+#: inc/checkout-steps.php:2434
 msgid "Shipping to"
 msgstr "Αποστολή σε"
 
@@ -2060,7 +2072,7 @@ msgstr "Θέση checkbox εγγραφής"
 msgid "Simplified EU-VAT validation for your store."
 msgstr "Απλοποιημένη επικύρωση ΦΠΑ ΕΕ για το κατάστημά σας."
 
-#: inc/checkout-steps.php:642
+#: inc/checkout-steps.php:686
 msgid "Single step"
 msgstr "Ενιαίο βήμα"
 
@@ -2098,7 +2110,7 @@ msgid "Split"
 msgstr "Split"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1640
+#: inc/checkout-steps.php:1684
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Βήμα %1$s από %2$s"
@@ -2108,20 +2120,20 @@ msgid "Subscribe checkbox"
 msgstr "Πλαίσιο ελέγχου εγγραφής"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2592
+#: inc/checkout-steps.php:2636
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2597
+#: inc/checkout-steps.php:2641
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:1990
+#: inc/checkout-steps.php:2034
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Καμία."
@@ -2240,6 +2252,10 @@ msgstr "Θέμα Atomion"
 msgid "Theme Betheme"
 msgstr "Θέμα Betheme"
 
+#: inc/compat/themes/compat-theme-fennik.php:216
+msgid "Theme Fennik"
+msgstr "Θέμα Fennik"
+
 #: inc/compat/themes/compat-theme-go.php:53
 msgid "Theme Go"
 msgstr "Θέμα Go"
@@ -2252,7 +2268,7 @@ msgstr "Θέμα Impreza"
 msgid "Theme Pressmart"
 msgstr "Θέμα Pressmart"
 
-#: inc/compat/themes/compat-theme-thegem.php:160
+#: inc/compat/themes/compat-theme-thegem.php:158
 msgid "Theme The Gem"
 msgstr "Θέμα The Gem"
 
