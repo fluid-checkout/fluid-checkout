@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 9.0.1
 * Added: Compatibility with theme Kenta.
 * Added: Compatibility with theme Ettore.
 * Added: Compatibility with theme Fennik.
