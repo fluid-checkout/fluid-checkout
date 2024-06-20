@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-29 12:58+0000\n"
-"PO-Revision-Date: 2024-06-11 12:21+0000\n"
+"PO-Revision-Date: 2024-06-20 20:06+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -182,7 +182,7 @@ msgstr "Widgetgebieden toevoegen aan de bedankpagina"
 msgid "Add-ons"
 msgstr "Toevoegingen"
 
-#: inc/checkout-steps.php:2438
+#: inc/checkout-steps.php:2482
 msgid "Additional notes"
 msgstr "Aanvullende opmerkingen"
 
@@ -309,7 +309,7 @@ msgstr "Heb je al een account?"
 msgid "Always show"
 msgstr "Altijd laten zien"
 
-#: inc/checkout-steps.php:2210
+#: inc/checkout-steps.php:2254
 msgid "An account will be created with the information provided."
 msgstr "Er wordt een account aangemaakt met de verstrekte informatie."
 
@@ -418,7 +418,7 @@ msgstr "Factuuradres"
 msgid "Billing phone"
 msgstr "Facturering telefoon"
 
-#: inc/checkout-steps.php:3542
+#: inc/checkout-steps.php:3598
 msgid "Billing to"
 msgstr "Facturering aan"
 
@@ -451,6 +451,10 @@ msgstr "Zowel onder het betaalgedeelte als het besteloverzicht"
 #: inc/design-templates.php:116
 msgid "Boxed"
 msgstr "In doos"
+
+#: inc/compat/themes/compat-theme-fennik.php:222
+msgid "Breadcrumbs"
+msgstr "Broodkruimels"
 
 #: inc/checkout-coupon-codes.php:199
 msgctxt "Button label for applying coupon codes"
@@ -499,7 +503,7 @@ msgstr "Indeling winkelwagentje"
 msgid "Cart optimizations"
 msgstr "Winkelwagen optimalisaties"
 
-#: inc/checkout-steps.php:813
+#: inc/checkout-steps.php:857
 msgid "Cart total:"
 msgstr "Winkelwagen totaal:"
 
@@ -515,7 +519,7 @@ msgstr ""
 "Wijzig de zichtbaarheid van het veld met de bedrijfsnaam voor het gedeelte "
 "met het verzendadres op het afrekenformulier."
 
-#: inc/checkout-steps.php:1877
+#: inc/checkout-steps.php:1921
 #, php-format
 msgid "Change: %s"
 msgstr "Wijzigingen: %s"
@@ -586,7 +590,7 @@ msgstr "Overzicht Bestelling afrekenen"
 #: inc/compat/themes/compat-theme-woodmart.php:132
 #: inc/compat/themes/compat-theme-betheme.php:178
 #: inc/compat/themes/compat-theme-pressmart.php:186
-#: inc/compat/themes/compat-theme-thegem.php:166
+#: inc/compat/themes/compat-theme-thegem.php:164
 msgid "Checkout progress"
 msgstr "Voortgang afrekenen"
 
@@ -594,32 +598,32 @@ msgstr "Voortgang afrekenen"
 msgid "Checkout Sidebar"
 msgstr "Afrekenen zijbalk"
 
-#: inc/checkout-steps.php:1519
+#: inc/checkout-steps.php:1563
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Facturering"
 
-#: inc/checkout-steps.php:1498
+#: inc/checkout-steps.php:1542
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Contact"
 
-#: inc/checkout-steps.php:1528
+#: inc/checkout-steps.php:1572
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Betaling"
 
-#: inc/checkout-steps.php:1507
+#: inc/checkout-steps.php:1551
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Verzending"
 
-#: inc/checkout-steps.php:1877
+#: inc/checkout-steps.php:1921
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Wijzigen"
 
-#: inc/checkout-steps.php:1878
+#: inc/checkout-steps.php:1922
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Wijzigingen opslaan"
@@ -693,7 +697,7 @@ msgstr "Kies in welke stap het telefoonveld voor verzending wordt weergegeven."
 msgid "Classic"
 msgstr "Klassiek"
 
-#: inc/checkout-steps.php:813
+#: inc/checkout-steps.php:857
 msgid "Click to go to the order summary"
 msgstr "Klik om naar het besteloverzicht te gaan"
 
@@ -995,7 +999,7 @@ msgstr "\"Adresregel 2\"-velden niet achter een koppelingsknop verbergen"
 msgid "Don't show this again"
 msgstr "Dit niet meer weergeven"
 
-#: inc/checkout-steps.php:5024
+#: inc/checkout-steps.php:5080
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 #| msgid "Edit Cart"
 msgid "Edit cart"
@@ -1530,7 +1534,7 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Het aanmeldingsvakje naar de contactstap verplaatsen"
 
-#: inc/checkout-steps.php:641
+#: inc/checkout-steps.php:685
 msgid "Multi-step"
 msgstr "Meerstappen"
 
@@ -1542,7 +1546,7 @@ msgstr "Meerdere opgeslagen adressen voor verzending en facturering."
 msgid "My account layout"
 msgstr "De lay-out van mijn account"
 
-#: inc/checkout-steps.php:2147
+#: inc/checkout-steps.php:2191
 msgid "My contact"
 msgstr "Mijn contact"
 
@@ -1571,7 +1575,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:2991
+#: inc/checkout-steps.php:3047
 msgid "Not selected yet."
 msgstr "Nog niet geselecteerd."
 
@@ -1672,11 +1676,19 @@ msgstr "Voortgang bestelling"
 msgid "Order status"
 msgstr "Bestelstatus"
 
-#: inc/checkout-steps.php:4959 inc/admin/admin-settings-cart.php:131
+#: inc/checkout-steps.php:5015 inc/admin/admin-settings-cart.php:131
 #: inc/admin/admin-settings-order-received.php:177
 #: inc/admin/admin-settings-checkout.php:238
 msgid "Order summary"
 msgstr "Besteloverzicht"
+
+#: inc/compat/themes/compat-theme-fennik.php:223
+msgid ""
+"Output the breadcrumbs section from the Fennik theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"Voer de broodkruimelsectie van het Fennik-thema uit wanneer je de Fluid "
+"Checkout-header en footer gebruikt."
 
 #: inc/compat/themes/compat-theme-betheme.php:179
 msgid ""
@@ -1686,7 +1698,7 @@ msgstr ""
 "Voer de sectie Afrekenstappen van Betheme uit op de pagina's Afrekenen, "
 "Winkelwagen en Ontvangen bestelling."
 
-#: inc/compat/themes/compat-theme-thegem.php:167
+#: inc/compat/themes/compat-theme-thegem.php:165
 msgid ""
 "Output the checkout steps section from The Gem theme when using Fluid "
 "Checkout header and footer."
@@ -1729,7 +1741,7 @@ msgstr "Achtergrondkleur van pagina"
 msgid "Parcel terminal"
 msgstr "Pakketterminal"
 
-#: inc/checkout-steps.php:4738
+#: inc/checkout-steps.php:4794
 msgid "Payment method"
 msgstr "Betaalmethode"
 
@@ -1765,7 +1777,7 @@ msgid "Prevent automatic selection of the first shipping method"
 msgstr "Automatische selectie van de eerste verzendmethode voorkomen"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1384
+#: inc/checkout-steps.php:1428
 #, php-format
 msgid "Proceed to %s"
 msgstr "Doorgaan naar %s"
@@ -1857,11 +1869,11 @@ msgstr ""
 msgid "Required"
 msgstr "Verplicht"
 
-#: inc/checkout-steps.php:3770
+#: inc/checkout-steps.php:3826
 msgid "Same as billing address"
 msgstr "Zelfde als factuuradres"
 
-#: inc/checkout-steps.php:3727
+#: inc/checkout-steps.php:3783
 msgid "Same as shipping address"
 msgstr "Hetzelfde als verzendadres"
 
@@ -1980,7 +1992,7 @@ msgstr "Verzenden"
 msgid "Shipping address"
 msgstr "Verzendadres"
 
-#: inc/checkout-steps.php:2414
+#: inc/checkout-steps.php:2458
 msgid "Shipping method"
 msgstr "Verzendmethode"
 
@@ -1993,7 +2005,7 @@ msgstr "Verzendmethoden"
 msgid "Shipping phone"
 msgstr "Telefoonnummer voor verzending"
 
-#: inc/checkout-steps.php:2390
+#: inc/checkout-steps.php:2434
 msgid "Shipping to"
 msgstr "Verzenden naar"
 
@@ -2031,7 +2043,7 @@ msgstr "Positie selectievakje aanmelden"
 msgid "Simplified EU-VAT validation for your store."
 msgstr "Vereenvoudigde EU-BTW validatie voor je winkel."
 
-#: inc/checkout-steps.php:642
+#: inc/checkout-steps.php:686
 msgid "Single step"
 msgstr "Enkele stap"
 
@@ -2067,7 +2079,7 @@ msgid "Split"
 msgstr "Gesplitst"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1640
+#: inc/checkout-steps.php:1684
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Stap %1$s van %2$s"
@@ -2077,20 +2089,20 @@ msgid "Subscribe checkbox"
 msgstr "Aanmelden selectievakje"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2592
+#: inc/checkout-steps.php:2636
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2597
+#: inc/checkout-steps.php:2641
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:1990
+#: inc/checkout-steps.php:2034
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Geen."
@@ -2208,6 +2220,10 @@ msgstr "Thema Atomion"
 msgid "Theme Betheme"
 msgstr "Thema Bethema"
 
+#: inc/compat/themes/compat-theme-fennik.php:216
+msgid "Theme Fennik"
+msgstr "Thema Fennik"
+
 #: inc/compat/themes/compat-theme-go.php:53
 msgid "Theme Go"
 msgstr "Thema Ga"
@@ -2220,7 +2236,7 @@ msgstr "Thema Impreza"
 msgid "Theme Pressmart"
 msgstr "Thema Pressmart"
 
-#: inc/compat/themes/compat-theme-thegem.php:160
+#: inc/compat/themes/compat-theme-thegem.php:158
 msgid "Theme The Gem"
 msgstr "Thema The Gem"
 

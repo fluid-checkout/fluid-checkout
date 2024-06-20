@@ -362,6 +362,19 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Bump tested up to WooCommerce 9.0.1
+* Added: Compatibility with theme Kenta.
+* Added: Compatibility with theme Ettore.
+* Added: Compatibility with theme Fennik.
+* Added: Compatibility with plugin Ettore Core.
+* Fixed: Compatibility with plugin Fluent CRM PRO.
+* Fixed: Compatibility with plugin Klaviyo. Always show the SMS compliance notice below the checkbox field, and move the checkbox automatically to the contact step if the billing phone field is also displayed in the contact step.
+* Fixed: Retrieve customer address data from the checkout session data when available.
+* Fixed: Layout issues for some elements with class `woocommerce` that are displayed outside the scope of Fluid Checkout.
+* Fixed: Remove duplicate values shown in the substep review text for fields only present in the current address section when that address is set as "Same as <shipping/billing> address".
+
 = 3.1.9 - 2024-06-11 =
 
 * Bump tested up to WordPress 6.5.4 and WooCommerce 8.9.3

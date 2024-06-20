@@ -1,0 +1,20 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-kenta' !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"checkout-header",
+	"checkout-content-area",
+	"checkout-place-order",
+	"checkout-steps",
+	"woocommerce-form-fields",
+	"woocommerce-form-fields-select2";
