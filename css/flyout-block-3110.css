@@ -335,7 +335,7 @@ body.has-flyout--open {
 }
 @media (min-width: 1280px) {
   [data-flyout-content] {
-    max-width: 80%;
+    max-width: 1200px;
   }
 }
 @media (min-width: 1500px) {
