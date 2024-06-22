@@ -43,13 +43,13 @@ class FluidCheckout_QodeFramework extends FluidCheckout {
 	 *
 	 * @param  boolean  $enable  Whether to enable Fluid Checkout button color styles.
 	 */
-	public function maybe_enable_fc_button_color_styles( $enable ) {
+	public function maybe_enable_fc_button_color_styles( $enabled ) {
 		// Enable button color styles if at least one button option value is set
 		if ( ! empty( $this->button_option_values ) ) {
-			$enable = true;
+			$enabled = true;
 		}
 
-		return $enable;
+		return $enabled;
 	}
 
 
@@ -101,6 +101,7 @@ class FluidCheckout_QodeFramework extends FluidCheckout {
 		// Bail if no button option values are set
 		if ( empty( $this->button_option_values ) ) { return $css_variables; }
 
+		// Define default selector
 		$selector = ':root';
 
 		// Check if any of the existing selectors in $css_variables already contain variables that start with '--fluidcheckout'
