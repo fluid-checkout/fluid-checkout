@@ -1,0 +1,9 @@
+// ------------------------------------
+// BUTTONS -- CHECKOUT
+// ------------------------------------
+
+body#{ $_body-theme-selector }.has-fc-button-styles .fc-wrapper .fc-place-order .fc-place-order-button .qodef-m-text,
+body#{ $_body-theme-selector }.has-fc-button-styles.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step .qodef-m-text,
+body#{ $_body-theme-selector }.has-fc-button-styles.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save .qodef-m-text {
+	line-height: 1em !important; // Needed to use `em` as units to match theme styles and !important to override FC styles
+}

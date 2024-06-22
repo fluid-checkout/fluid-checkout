@@ -36,6 +36,10 @@ class FluidCheckout_FluentCampaignPRO extends FluidCheckout {
 
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
+		// Persisted data
+		add_filter( 'fc_parsed_posted_data_reset_field_keys', array( $this, 'add_checkbox_reset_posted_data_field_key' ), 10, 2 );
+		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_checkbox_posted_data' ), 10 );
 	}
 
 	/**
@@ -143,6 +147,42 @@ class FluidCheckout_FluentCampaignPRO extends FluidCheckout {
 
 		// Output the field directly
 		woocommerce_form_field( $field_key, $checkboxField, $defaultValue );
+	}
+
+
+
+	/**
+	 * Add newsletter checkbox field key to be cleared when not present in posted data.
+	 * 
+	 * @param   array  $field_keys   Field keys.
+	 * @param   array  $posted_data  Posted data.
+	 */
+	public function add_checkbox_reset_posted_data_field_key( $field_keys, $posted_data ) {
+		// Initialize variables
+		$field_key = '_fc_woo_checkout_subscribe';
+
+		// Add customer location confirmation field key
+		$field_keys[] = $field_key;
+
+		return $field_keys;
+	}
+
+	/**
+	 * Maybe set the newsletter checkbox checked value to posted data.
+	 *
+	 * @param array $post_data Post data for all checkout fields.
+	 */
+	public function maybe_set_checkbox_posted_data( $post_data ) {
+		// Initialize variables
+		$field_key = '_fc_woo_checkout_subscribe';
+
+		// Bail if field is already set
+		if ( array_key_exists( $field_key, $post_data ) ) { return $post_data; }
+
+		// Set the field value to the posted data
+		$post_data[ $field_key ] = WC()->checkout->get_value( $field_key );
+
+		return $post_data;
 	}
 
 }

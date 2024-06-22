@@ -254,6 +254,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Order notes
 		$this->order_notes_hooks();
 		$this->maybe_register_substep_order_notes();
+
+		// Persisted data
+		$this->customer_address_data_hooks();
 	}
 
 	/**
@@ -311,6 +314,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Add hooks
 				add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
+			}
+		}
+	}
+
+	/**
+	 * Add or remove hooks for the customer address data.
+	 */
+	public function customer_address_data_hooks() {
+		// Get checkout fields
+		$checkout_fields = WC()->checkout()->get_checkout_fields();
+
+		// Iterate checkout field groups
+		foreach ( $checkout_fields as $field_group => $group_fields ) {
+			// Skip if not shipping or billing groups
+			if ( ! in_array( $field_group, array( 'shipping', 'billing' ) ) ) { continue; }
+
+			// Iterate fields
+			foreach ( $group_fields as $field_key => $field ) {
+				add_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10, 2 );
 			}
 		}
 	}
@@ -492,6 +514,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields_inside' );
 		$order_notes_substep_priority = apply_filters( 'fc_do_order_notes_hooks_priority', 100 );
 		remove_action( $order_notes_substep_position, array( $this, 'do_order_notes_hooks' ), $order_notes_substep_priority );
+
+		// Persisted data
+		$this->undo_customer_address_data_hooks();
+	}
+
+	/**
+	 * Add or remove hooks for the customer address data.
+	 */
+	public function undo_customer_address_data_hooks() {
+		// Get checkout fields
+		$checkout_fields = WC()->checkout()->get_checkout_fields();
+
+		// Iterate checkout field groups
+		foreach ( $checkout_fields as $field_group => $group_fields ) {
+			// Skip if not shipping or billing groups
+			if ( ! in_array( $field_group, array( 'shipping', 'billing' ) ) ) { continue; }
+
+			// Iterate fields
+			foreach ( $group_fields as $field_key => $field ) {
+				remove_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10, 2 );
+			}
+		}
 	}
 
 
@@ -3089,7 +3133,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $address_type  The address type.
 	 */
 	public function get_substep_text_formatted_address_text_line( $address_type ) {
-		// Field prefix
+		// Get field prefix
 		$substep_id = 'shipping' === $address_type ? 'shipping_address' : 'billing_address';
 		$field_key_prefix = $address_type . '_';
 
@@ -3146,6 +3190,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
+		// Initialize variables
+		$address_type_alt = 'billing' === $address_type ? 'shipping' : 'billing';
+		$is_same_as_address_notice_displayed = $this->{"is_{$address_type}_same_as_{$address_type_alt}"}() && true === apply_filters( "fc_{$address_type}_same_as_{$address_type_alt}_display_substep_review_text_notice", true );
+
 		// Get address fields
 		$address_fields = WC()->checkout->get_checkout_fields( $address_type );
 
@@ -3182,8 +3230,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get list of field keys that are only present in the current address type
 		$address_type_only_field_keys = $this->{"get_{$address_type}_only_fields_keys"}();
 
-		// Remove the fields only present in the current address type from the skip list
-		$field_keys_skip_list = array_diff( $field_keys_skip_list, $address_type_only_field_keys );
+		foreach ( $field_keys_skip_list as $field_key_index => $field_key_skipped ) {
+			// Skip if the field key for a skipped field is not present in the address type only field keys list
+			if ( ! in_array( $field_key_skipped, $address_type_only_field_keys ) ) { continue; }
+		
+			// Skip if the address section is not displayed with the "same as" address notice
+			if ( ! $is_same_as_address_notice_displayed ) { continue; }
+
+			// Remove from skipped fields list
+			unset( $field_keys_skip_list[ $field_key_index ] );
+		}
 
 		// Handle name fields as a single line
 		$name_field_keys = array(
@@ -5963,6 +6019,46 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$field_keys = apply_filters( 'fc_address_field_keys', $field_keys, $address_type );
 
 		return $field_keys;
+	}
+
+
+
+	/**
+	 * Maybe change the customer address field value to get data saved to the checkout session.
+	 *
+	 * @param   mixed        $value      The field value.
+	 * @param   WC_Customer  $customer   The customer object.
+	 */
+	public function maybe_change_customer_address_field_value_from_checkout_data( $value, $customer ) {
+		// Get name of the current filter hook running this function
+		$hook_name = current_filter();
+
+		// Bail if the hook name is not supported
+		if ( strpos( $hook_name, 'woocommerce_customer_get_' ) !== 0 ) { return $value; }
+
+		// Get field key
+		$field_key = str_replace( 'woocommerce_customer_get_', '', $hook_name );
+
+		// Try to return value from cache
+		$cache_handle = 'customer_address_field_value_' . $field_key;
+		if ( array_key_exists( $cache_handle, $this->cached_values ) ) {
+			// Return value from cache
+			return $this->cached_values[ $cache_handle ];
+		}
+
+		// Get checkout session value
+		$session_value = $this->get_checkout_field_value_from_session_or_posted_data( $field_key );
+
+		// Maybe set new value from session value
+		if ( ! empty( $session_value ) ) {
+			$value = $session_value;
+		}
+
+		// Set cache
+		$this->cached_values[ $cache_handle ] = $value;
+
+		// Return new value
+		return $value;
 	}
 
 

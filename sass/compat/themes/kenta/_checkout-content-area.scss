@@ -1,0 +1,23 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-content,
+body#{ $_body-theme-selector } .fc-wrapper {
+	color: var( --kenta-accent-active );
+}
+
+
+
+body#{ $_body-theme-selector } {
+	background-color: var( --kenta-base-100 );
+}
+
+
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content.kenta-container.px-gutter {
+	@media (#{$bp-smaller-than-tablet}) { 
+		padding-#{ $alignment-left }: remsize( 2rem );
+		padding-#{ $alignment-right }: remsize( 2rem );
+	}
+}

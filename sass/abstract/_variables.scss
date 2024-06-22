@@ -152,7 +152,7 @@ $container-spacing-desktop-extra-large:     $global-spacing-medium !default;
 $container-width-mobile:                    100% !default;
 $container-width-tablet:                    100% !default;
 $container-width-desktop:                   100% !default;
-$container-width-desktop-medium:            80% !default;
+$container-width-desktop-medium:            remsize( 120rem ) !default;
 $container-width-desktop-large:             remsize( 140rem ) !default;
 $container-width-desktop-extra-large:       remsize( 140rem ) !default;
 

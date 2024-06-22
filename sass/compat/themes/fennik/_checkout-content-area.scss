@@ -1,0 +1,27 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector }:not( .body-boxed ) .fc-content.container {
+	max-width: 100%;
+	padding-#{ $alignment-left }: remsize( 2rem );
+	padding-#{ $alignment-right }: remsize( 2rem );
+	
+	@media (#{$bp-larger-than-tablet}) { 
+		max-width: 96%;
+		padding-#{ $alignment-left }: 0;
+		padding-#{ $alignment-right }: 0;
+	}
+}
+
+body#{ $_body-theme-selector }#{ $_body-theme-selector }.header-v-default .section-page-header .page-header-inner {
+	padding-bottom: 40px; // Use `px` as units to match theme styles
+
+	@media (min-width: 992px) { // Needed to use theme's breakpoint
+		padding-bottom: 50px; // Use `px` as units to match theme styles
+	}
+}
+
+body#{ $_body-theme-selector }#{ $_body-theme-selector }.has-checkout-header.header-v-default #main #content-wrap {
+	padding-top: 0;
+}

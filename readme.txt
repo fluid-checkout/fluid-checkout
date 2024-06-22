@@ -3,8 +3,8 @@ Contributors: fluidwebco, diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.5.2
-Stable tag: 3.1.8
+Tested up to: 6.5.4
+Stable tag: 3.1.10
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -371,12 +371,32 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Max width for the container element on the checkout page when using the plugin's container classes.
+
+= 3.1.10 - 2024-06-20 =
+
+* Bump tested up to WooCommerce 9.0.1
+* Added: Compatibility with theme Kenta.
+* Added: Compatibility with theme Ettore.
+* Added: Compatibility with theme Fennik.
+* Added: Compatibility with plugin Ettore Core.
+* Fixed: Compatibility with plugin Fluent CRM PRO.
+* Fixed: Compatibility with plugin Klaviyo. Always show the SMS compliance notice below the checkbox field, and move the checkbox automatically to the contact step if the billing phone field is also displayed in the contact step.
+* Fixed: Retrieve customer address data from the checkout session data when available.
+* Fixed: Layout issues for some elements with class `woocommerce` that are displayed outside the scope of Fluid Checkout.
+* Fixed: Remove duplicate values shown in the substep review text for fields only present in the current address section when that address is set as "Same as <shipping/billing> address".
+
+= 3.1.9 - 2024-06-11 =
+
+* Bump tested up to WordPress 6.5.4 and WooCommerce 8.9.3
 * Added: New option to prevent automatic selection of the first shipping method available, forcing customer to manually select the shipping method for each new order.
+* Added: Compatibility with theme Beaver Builder Theme.
 * Added: Compatibility with theme SiteOrigin Corp.
 * Added: Compatibility with plugin Omniva Shipping.
 * Added: Compatibility with plugin Advanced Coupons for WooCommerce.
 * Improved: Compatibility with theme Zota.
 * Improved: Compatibility with theme OnAir2.
+* Improved: Compatibility with theme Blocksy. Support for the theme's color modes dark/light.
 * Improved: Compatibility with plugin Elementor PRO. Automatically disable checkout page template when using the custom order received page created with Elementor PRO.
 * Improved: Layout of the shipping methods and position of shipping methods description.
 * Improved: Add hooks for displaying the shipping method logo images for compatible shipping plugins.
@@ -399,7 +419,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Salient.
 * Added: Compatibility with theme Savoy.
 * Added: Compatibility with theme The Gem.
-* Added: Compatibility with theme Beaver Builder Theme.
 * Added: Compatibility with plugin Flexible Checkout Fields PRO.
 * Added: Compatibility with plugin MyParcel.
 * Improved: Change wording for the company name field option in the plugin settings to be clear what it is related to.

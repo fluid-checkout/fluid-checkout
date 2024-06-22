@@ -19,9 +19,6 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Checkout template hooks
-		$this->checkout_template_hooks();
-
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
@@ -69,9 +66,10 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 
 		// Re-add with higher priority
 		add_action( 'woocommerce_before_checkout_form', 'woocommerce_output_all_notices', 10 );
+
+		// Checkout template hooks
+		$this->checkout_template_hooks();
 	}
-
-
 
 	/**
 	 * Add checkout template hooks.

@@ -99,7 +99,7 @@ body#{ $_body-page-selector }.has-checkout-header .fc-content {
 
 
 
-body#{ $_body-page-selector } div.woocommerce {
+body#{ $_body-page-selector } .fc-content div.woocommerce {
 	position: static;
 	max-width: 100%;
 
