@@ -68,9 +68,9 @@ class FluidCheckout_QodeFramework extends FluidCheckout {
 		if ( ! $scope ) { return; }
 
 		// Option names to fetch
-		$option_names = array( 
-			'qodef_elements_buttons_simple_color',
-			'qodef_elements_buttons_simple_hover_color',
+		$option_names = array(
+			'qodef_elements_buttons_color',
+			'qodef_elements_buttons_hover_color',
 			'qodef_elements_buttons_background_color',
 			'qodef_elements_buttons_background_hover_color',
 			'qodef_elements_buttons_border_color',
@@ -116,16 +116,16 @@ class FluidCheckout_QodeFramework extends FluidCheckout {
 		$new_css_variables = array( $selector => array() );
 
 		// Maybe set variables for button text color
-		if ( isset( $this->button_option_values[ 'qodef_elements_buttons_simple_color' ] ) ) {
-			$button_text_color = $this->button_option_values[ 'qodef_elements_buttons_simple_color' ];
+		if ( isset( $this->button_option_values[ 'qodef_elements_buttons_color' ] ) ) {
+			$button_text_color = $this->button_option_values[ 'qodef_elements_buttons_color' ];
 
 			$new_css_variables[ $selector ][ '--fluidcheckout--button--primary--text-color' ] = $button_text_color;
 			$new_css_variables[ $selector ][ '--fluidcheckout--button--secondary--text-color' ] = $button_text_color;
 		}
 
 		// Maybe set variables for button text color on hover state
-		if ( isset( $this->button_option_values[ 'qodef_elements_buttons_simple_hover_color' ] ) ) {
-			$button_text_color_hover = $this->button_option_values[ 'qodef_elements_buttons_simple_hover_color' ];
+		if ( isset( $this->button_option_values[ 'qodef_elements_buttons_hover_color' ] ) ) {
+			$button_text_color_hover = $this->button_option_values[ 'qodef_elements_buttons_hover_color' ];
 
 			$new_css_variables[ $selector ][ '--fluidcheckout--button--primary--text-color--hover' ] = $button_text_color_hover;
 			$new_css_variables[ $selector ][ '--fluidcheckout--button--secondary--text-color--hover' ] = $button_text_color_hover;
