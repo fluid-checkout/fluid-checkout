@@ -1750,8 +1750,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return false;
 		}
 
-		// Add substep to the list
+		// Get list of substeps already registered
 		$_substeps = $this->get_registered_checkout_substeps( $step_id );
+		$_substeps = is_array( $_substeps ) ? $_substeps : array();
+
+		// Add substep to the list
 		$_substeps[] = $substep_args;
 
 		// Sort steps based on priority.
