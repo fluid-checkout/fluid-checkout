@@ -20,6 +20,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *            ['render_fields_callback']         callable    Function name or callable array to display the fields of the substep step.
 	 *            ['render_review_text_callback']    callable    Function name or callable array to display the substep review text of the substep step.
 	 *            ['is_complete_callback']           callable    (optional) Function name or callable array to determine if all required data for the substep has been provided. Defaults to `false`, considering the substep as 'incomplete' if a callback is not provided.
+	 *            ['additional_attributes']          array       (optional) Array of additional attributes to add to the substep container start tag.
 	 *      ['next_step_button_classes']     array       Array of CSS classes to add to the "Next step" button.
 	 *      ['render_condition_callback']    callable    (optional) Function name or callable array to determine if the step should be rendered. If a callback is not provided the checkout step will be displayed.
 	 *
@@ -1179,7 +1180,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 					$is_substep_complete_callback = array_key_exists( 'is_complete_callback', $substep_args ) ? $substep_args[ 'is_complete_callback' ] : '__return_true';
 
 					// Maybe set step as not complete if a substep is not complete
-					if ( ! $is_substep_complete_callback || ! is_callable( $is_substep_complete_callback ) || ! call_user_func( $is_substep_complete_callback ) ) {
+					if ( ! $is_substep_complete_callback || ! is_callable( $is_substep_complete_callback ) || ! call_user_func( $is_substep_complete_callback, $step_id, $substep_id ) ) {
 						$is_step_complete = false;
 						break;
 					}
@@ -1248,7 +1249,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 					$is_substep_complete_callback = array_key_exists( 'is_complete_callback', $substep_args ) ? $substep_args[ 'is_complete_callback' ] : '__return_true';
 
 					// Maybe skip substep if it is not complete
-					if ( ! $is_substep_complete_callback || ! is_callable( $is_substep_complete_callback ) || ! call_user_func( $is_substep_complete_callback ) ) {
+					if ( ! $is_substep_complete_callback || ! is_callable( $is_substep_complete_callback ) || ! call_user_func( $is_substep_complete_callback, $step_id, $substep_id ) ) {
 						$is_step_complete = false;
 						break;
 					}
@@ -1988,9 +1989,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Get substep variables
 				$substep_id = $substep_args[ 'substep_id' ];
+				$additional_attributes = array_key_exists( 'additional_attributes', $substep_args ) ? $substep_args[ 'additional_attributes' ] : array();
 				
 				// Output the substep start tag
-				$this->output_substep_start_tag( $step_id, $substep_id );
+				$this->output_substep_start_tag( $step_id, $substep_id, $additional_attributes );
 
 				// Output the substep fields
 				$this->output_substep_fields_start_tag( $step_id, $substep_id );
@@ -2005,7 +2007,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 
 				// Output the substep end tag
-				$this->output_substep_end_tag( $step_id, $substep_id, null, true );
+				$this->output_substep_end_tag( $step_id, $substep_id, true );
 			}
 
 			// Output the step end tag
@@ -2336,10 +2338,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param   string  $step_id                     Id of the step in which the substep will be rendered.
 	 * @param   string  $substep_id                  Id of the substep.
-	 * @param   string  $_deprecated_substep_title   Deprecated parameter, not used anymore.
 	 * @param   array   $additional_attributes       Additional HTML attributes to add to the substep element.
 	 */
-	public function output_substep_start_tag( $step_id, $substep_id, $_deprecated_substep_title = null, $additional_attributes = array() ) {
+	public function output_substep_start_tag( $step_id, $substep_id, $additional_attributes = array() ) {
 		$additional_attributes = apply_filters( "fc_substep_{$substep_id}_attributes", $additional_attributes );
 
 		// Make sure additional attributes is an array before using it
@@ -2363,10 +2364,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param   string  $step_id                     Id of the step in which the substep will be rendered.
 	 * @param   string  $substep_id                  Id of the substep.
-	 * @param   string  $_deprecated_substep_title   Deprecated parameter, not used anymore.
 	 * @param   bool    $output_edit_buttons         Whether to output the edit buttons or not
 	 */
-	public function output_substep_end_tag( $step_id, $substep_id, $_deprecated_substep_title = null, $output_edit_buttons = true ) {
+	public function output_substep_end_tag( $step_id, $substep_id, $output_edit_buttons = true ) {
 			// Get the substep title for accessibility label
 			$substep_title = $this->get_substep_title( $substep_id );
 
