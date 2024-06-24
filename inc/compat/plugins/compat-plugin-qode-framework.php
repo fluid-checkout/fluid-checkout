@@ -119,50 +119,32 @@ class FluidCheckout_QodeFramework extends FluidCheckout {
 
 		// Maybe set variables for button text color
 		if ( isset( $this->button_option_values[ 'qodef_elements_buttons_color' ] ) ) {
-			$button_text_color = $this->button_option_values[ 'qodef_elements_buttons_color' ];
-
-			$new_css_variables[ $selector ][ '--fluidcheckout--button--primary--text-color' ] = $button_text_color;
-			$new_css_variables[ $selector ][ '--fluidcheckout--button--secondary--text-color' ] = $button_text_color;
+			$new_css_variables[ $selector ][ '--fluidcheckout--button--primary--text-color' ] = $this->button_option_values[ 'qodef_elements_buttons_color' ];
 		}
 
 		// Maybe set variables for button text color on hover state
 		if ( isset( $this->button_option_values[ 'qodef_elements_buttons_hover_color' ] ) ) {
-			$button_text_color_hover = $this->button_option_values[ 'qodef_elements_buttons_hover_color' ];
-
-			$new_css_variables[ $selector ][ '--fluidcheckout--button--primary--text-color--hover' ] = $button_text_color_hover;
-			$new_css_variables[ $selector ][ '--fluidcheckout--button--secondary--text-color--hover' ] = $button_text_color_hover;
+			$new_css_variables[ $selector ][ '--fluidcheckout--button--primary--text-color--hover' ] = $this->button_option_values[ 'qodef_elements_buttons_hover_color' ];
 		}
 
 		// Maybe set variables for button background colors
 		if ( isset( $this->button_option_values[ 'qodef_elements_buttons_background_color' ] ) ) {
-			$button_bg_color = $this->button_option_values[ 'qodef_elements_buttons_background_color' ];
-
-			$new_css_variables[ $selector ][ '--fluidcheckout--button--primary--background-color' ] = $button_bg_color;
-			$new_css_variables[ $selector ][ '--fluidcheckout--button--secondary--background-color' ] = $button_bg_color;
+			$new_css_variables[ $selector ][ '--fluidcheckout--button--primary--background-color' ] = $this->button_option_values[ 'qodef_elements_buttons_background_color' ];
 		}
 
 		// Maybe set variables for button background colors on hover state
 		if ( isset( $this->button_option_values[ 'qodef_elements_buttons_background_hover_color' ] ) ) {
-			$button_bg_color_hover = $this->button_option_values[ 'qodef_elements_buttons_background_hover_color' ];
-
-			$new_css_variables[ $selector ][ '--fluidcheckout--button--primary--background-color--hover' ] = $button_bg_color_hover;
-			$new_css_variables[ $selector ][ '--fluidcheckout--button--secondary--background-color--hover' ] = $button_bg_color_hover;
+			$new_css_variables[ $selector ][ '--fluidcheckout--button--primary--background-color--hover' ] = $this->button_option_values[ 'qodef_elements_buttons_background_hover_color' ];
 		}
 
 		// Maybe set variables for button border colors
 		if ( isset( $this->button_option_values[ 'qodef_elements_buttons_border_color' ] ) ) {
-			$button_border_color = $this->button_option_values[ 'qodef_elements_buttons_border_color' ];
-
-			$new_css_variables[ $selector ][ '--fluidcheckout--button--primary--border-color' ] = $button_border_color;
-			$new_css_variables[ $selector ][ '--fluidcheckout--button--secondary--border-color' ] = $button_border_color;
+			$new_css_variables[ $selector ][ '--fluidcheckout--button--primary--border-color' ] = $this->button_option_values[ 'qodef_elements_buttons_border_color' ];
 		}
 
 		// Maybe set variables for button border colors on hover state
 		if ( isset( $this->button_option_values[ 'qodef_elements_buttons_border_hover_color' ] ) ) {
-			$button_border_color_hover = $this->button_option_values[ 'qodef_elements_buttons_border_hover_color' ];
-
-			$new_css_variables[ $selector ][ '--fluidcheckout--button--primary--border-color--hover' ] = $button_border_color_hover;
-			$new_css_variables[ $selector ][ '--fluidcheckout--button--secondary--border-color--hover' ] = $button_border_color_hover;
+			$new_css_variables[ $selector ][ '--fluidcheckout--button--primary--border-color--hover' ] = $this->button_option_values[ 'qodef_elements_buttons_border_hover_color' ];
 		}
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
