@@ -364,8 +364,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Fixed: Max width for the container element on the checkout page when using the plugin's container classes.
 * Added: Compatibility with plugin Qode Framework.
+* Fixed: Max width for the container element on the checkout page when using the plugin's container classes.
 
 = 3.1.10 - 2024-06-20 =
 
