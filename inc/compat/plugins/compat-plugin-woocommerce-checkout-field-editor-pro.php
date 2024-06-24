@@ -45,6 +45,7 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 		add_filter( 'fc_no_validation_icon_field_types', array( $this, 'add_no_validation_icon_field_types' ), 10 );
 
 		// Persisted fields
+		add_filter( 'thwcfe_woocommerce_form_field_value', array( FluidCheckout_Steps::instance(), 'change_default_checkout_field_value_from_session_or_posted_data' ), 100, 2 );
 		add_filter( 'fc_customer_persisted_data_clear_fields_order_processed', array( $this, 'change_customer_persisted_data_clear_fields_order_processed' ), 10 );
 
 		// Checkout field args
@@ -75,7 +76,7 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 		add_filter( 'fc_is_substep_complete_contact', array( $this, 'maybe_set_substep_incomplete_contact' ), 10 );
 		add_filter( 'fc_is_substep_complete_shipping_address', array( $this, 'maybe_set_substep_incomplete_shipping_address' ), 10 );
 		add_filter( 'fc_is_substep_complete_order_notes', array( $this, 'maybe_set_substep_incomplete_order_notes' ), 10 );
-		add_filter( 'fc_is_substep_complete_billing_address', array( $this, 'maybe_set_substep_incomplete_billing' ), 10 );
+		add_filter( 'fc_is_substep_complete_billing_address', array( $this, 'maybe_set_substep_incomplete_billing_address' ), 10 );
 	}
 
 
@@ -293,9 +294,9 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 	 *
 	 * @param   bool   $is_substep_complete  Whether the substep is to be considered complete or not.
 	 */
-	public function maybe_set_substep_incomplete_billing( $is_substep_complete ) {
+	public function maybe_set_substep_incomplete_billing_address( $is_substep_complete ) {
 		// Maybe return from cache
-		$cache_key = 'substep_incomplete_billing';
+		$cache_key = 'substep_incomplete_billing_address';
 		if ( array_key_exists( $cache_key, self::$cached_values ) ) {
 			return self::$cached_values[ $cache_key ];
 		}
