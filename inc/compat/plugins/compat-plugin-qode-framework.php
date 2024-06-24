@@ -104,13 +104,14 @@ class FluidCheckout_QodeFramework extends FluidCheckout {
 		// Define default selector
 		$selector = ':root';
 
-		// Check if any of the existing selectors in $css_variables already contain variables that start with '--fluidcheckout'
-		foreach ( $css_variables as $key => $value ) {
-			if ( is_array( $value ) && array_key_exists( '--fluidcheckout--field--height', $value ) ) {
-				// Use the selector if found
-				$selector = $key;
-				break;
-			}
+		// Maybe change selector used for CSS variables
+		foreach ( $css_variables as $selector_key => $selector_variables ) {
+			// Skip if selector variables do not contain the target variable '--fluidcheckout--field--height'
+			if ( ! is_array( $selector_variables ) || ! array_key_exists( '--fluidcheckout--field--height', $selector_variables ) ) { continue; }
+		
+			// Use the selector if target variable was found
+			$selector = $selector_key;
+			break;
 		}
 
 		// Add empty array for new CSS variables
