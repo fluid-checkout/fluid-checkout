@@ -175,10 +175,10 @@ class FluidCheckout_QodeFramework extends FluidCheckout {
 	 */
 	public function get_core_plugin_options_name() {
 		// Get theme name
-		$theme_name = get_option( 'stylesheet' );
+		$theme_slug = get_template();
 
 		// Get constant name
-		$constant_name = strtoupper( $theme_name ) . '_CORE_OPTIONS_NAME';
+		$constant_name = strtoupper( $theme_slug ) . '_CORE_OPTIONS_NAME';
 
 		// Bail if constant is not defined
 		if ( ! defined( $constant_name ) ) { return; }
