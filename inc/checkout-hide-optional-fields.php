@@ -16,6 +16,18 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 
 
 	/**
+	 * Check whether the feature is enabled or not.
+	 */
+	public function is_feature_enabled() {
+		// Bail if feature is not enabled
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_hide_optional_fields' ) ) { return false; }
+
+		return true;
+	}
+
+
+
+	/**
 	 * Initialize hooks.
 	 */
 	public function hooks() {
@@ -23,7 +35,7 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		if ( is_admin() ) { return; }
 
 		// Bail if feature is not enabled
-		if( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_hide_optional_fields' ) ) { return; }
+		if( ! $this->is_feature_enabled() ) { return; }
 
 		// WooCommerce fields output
 		add_filter( 'woocommerce_form_field', array( $this, 'add_optional_form_field_link_button' ), 100, 4 );

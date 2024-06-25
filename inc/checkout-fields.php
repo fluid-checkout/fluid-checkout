@@ -16,11 +16,23 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 
 
 	/**
+	 * Check whether the feature is enabled or not.
+	 */
+	public function is_feature_enabled() {
+		// Bail if feature is not enabled
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_apply_checkout_field_args' ) ) { return false; }
+
+		return true;
+	}
+
+
+
+	/**
 	 * Initialize hooks.
 	 */
 	public function hooks() {
 		// Bail if feature is not enabled
-		if( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_apply_checkout_field_args' ) ) { return; }
+		if( ! $this->is_feature_enabled() ) { return; }
 
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );

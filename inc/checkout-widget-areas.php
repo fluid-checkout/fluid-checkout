@@ -16,11 +16,23 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 
 
 	/**
+	 * Check whether the feature is enabled or not.
+	 */
+	public function is_feature_enabled() {
+		// Bail if feature is not enabled
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_widget_areas' ) ) { return false; }
+
+		return true;
+	}
+
+
+
+	/**
 	 * Initialize hooks.
 	 */
 	public function hooks() {
 		// Bail if feature is not enabled
-		if( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_widget_areas' ) ) { return; }
+		if( ! $this->is_feature_enabled() ) { return; }
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
