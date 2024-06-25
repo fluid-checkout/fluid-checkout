@@ -19,11 +19,24 @@ class FluidCheckout_ThemeCompat_Konte extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+	}
+
+
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// Extra coupon field
+		remove_action( 'woocommerce_before_checkout_form', array( 'Konte_WooCommerce_Template_Checkout', 'checkout_coupon_form' ), 15 );
 	}
 
 
