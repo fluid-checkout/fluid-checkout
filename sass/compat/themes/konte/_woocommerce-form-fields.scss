@@ -5,3 +5,21 @@
 body#{ $_body-theme-selector } div.woocommerce form .form-row-last label {
 	display: inline-block;
 }
+
+body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"],
+body#{ $_body-theme-selector }.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="search"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"],
+	.select2-selection__rendered,
+	.ts-control {
+		padding-#{ $alignment-left }: remsize( 1rem );
+	}
+}
