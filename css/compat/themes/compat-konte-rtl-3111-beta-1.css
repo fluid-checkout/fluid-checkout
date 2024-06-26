@@ -73,7 +73,7 @@ body.theme-konte div.woocommerce form .form-row label.checkbox > span:after {
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 0;
+  right: 0;
   top: 0.1em;
   margin-left: 10px;
   background: #e3e7e8;
