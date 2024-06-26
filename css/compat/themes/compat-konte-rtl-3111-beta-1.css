@@ -26,7 +26,7 @@ body.theme-konte.has-highlighted-billing-section div.woocommerce form .fc-step__
 body.theme-konte.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=password],
 body.theme-konte.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection__rendered,
 body.theme-konte.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .ts-control {
-  padding-left: 10px;
+  padding-right: 10px;
 }
 
 body.theme-konte div.woocommerce form .form-row .input-checkbox {
@@ -34,7 +34,7 @@ body.theme-konte div.woocommerce form .form-row .input-checkbox {
 }
 
 body.theme-konte div.woocommerce form .form-row label.checkbox > span {
-  padding-left: 30px;
+  padding-right: 30px;
 }
 
 body.theme-konte div.woocommerce form .form-row label.checkbox > span:before {
@@ -42,9 +42,9 @@ body.theme-konte div.woocommerce form .form-row label.checkbox > span:before {
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 0;
+  right: 0;
   top: 0.1em;
-  margin-right: 10px;
+  margin-left: 10px;
   border: 1px solid #e3e7e8;
   background: #e3e7e8;
   transition: 0.4s;
@@ -57,7 +57,7 @@ body.theme-konte div.woocommerce form .form-row label.checkbox > span:after {
   position: absolute;
   left: 0;
   top: 0.1em;
-  margin-right: 10px;
+  margin-left: 10px;
   background: #e3e7e8;
   transition: 0.4s;
 }
@@ -82,5 +82,5 @@ body.theme-konte.has-highlighted-billing-section div.woocommerce form .fc-step__
 }
 
 body.theme-konte div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-  right: 10px;
+  left: 10px;
 }
