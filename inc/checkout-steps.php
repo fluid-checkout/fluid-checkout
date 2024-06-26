@@ -306,18 +306,38 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add or remove hooks for the customer address data.
 	 */
 	public function customer_address_data_hooks() {
-		// Get checkout fields
-		$checkout_fields = WC()->checkout()->get_checkout_fields();
+		// Define fields to add hooks to, even if the fields are not available at checkout.
+		//
+		// IMPORTANT: Shoud not try to get fields from `WC()->checkout()->get_checkout_fields()` or similar functions
+		// because other plugins do not expect these functions to be called early and may cause fatal errors.
+		$field_keys = array(
+			'billing_first_name',
+			'billing_last_name',
+			'billing_company',
+			'billing_address_1',
+			'billing_address_2',
+			'billing_city',
+			'billing_state',
+			'billing_postcode',
+			'billing_country',
+			'billing_email',
+			'billing_phone',
 
-		// Iterate checkout field groups
-		foreach ( $checkout_fields as $field_group => $group_fields ) {
-			// Skip if not shipping or billing groups
-			if ( ! in_array( $field_group, array( 'shipping', 'billing' ) ) ) { continue; }
-
-			// Iterate fields
-			foreach ( $group_fields as $field_key => $field ) {
-				add_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10, 2 );
-			}
+			'shipping_first_name',
+			'shipping_last_name',
+			'shipping_company',
+			'shipping_address_1',
+			'shipping_address_2',
+			'shipping_city',
+			'shipping_state',
+			'shipping_postcode',
+			'shipping_country',
+			'shipping_phone',
+		);
+		
+		// Iterate fields and add hook
+		foreach ( $field_keys as $field_key ) {
+			add_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10, 2 );
 		}
 	}
 
