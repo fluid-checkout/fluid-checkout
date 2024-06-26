@@ -12,5 +12,6 @@ $_body-theme-selector:                 '.theme-konte' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"tom-select-control",
 	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2";

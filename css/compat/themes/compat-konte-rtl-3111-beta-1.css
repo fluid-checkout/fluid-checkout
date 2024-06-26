@@ -1,3 +1,17 @@
+body.theme-konte .ts-control {
+  border-bottom: 2px solid #e3e7e8;
+  transition: 0.4s;
+}
+
+body.theme-konte form.woocommerce-checkout .ts-control {
+  border-color: #cdcfd0;
+}
+
+body.theme-konte .ts-control:hover,
+body.theme-konte form.woocommerce-checkout .ts-control:hover {
+  border-color: #161619;
+}
+
 body.theme-konte div.woocommerce form .form-row-last label {
   display: inline-block;
 }
