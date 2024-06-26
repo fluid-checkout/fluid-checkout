@@ -22,6 +22,9 @@ class FluidCheckout_ThemeCompat_Konte extends FluidCheckout {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
+		// Container class
+		add_filter( 'fc_add_container_class', '__return_false', 10 );
+
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 
