@@ -366,6 +366,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Compatibility with plugin Qode Framework.
 * Fixed: Max width for the container element on the checkout page when using the plugin's container classes.
+* Fixed: Also trigger checkout update for text fields with class `update_totals_on_change`.
 
 = 3.1.10 - 2024-06-20 =
 

@@ -86,7 +86,7 @@ jQuery( function( $ ) {
 
 			// Inputs/selects which update totals
 			// CHANGE: Removed selector `#ship-to-different-address input`
-			this.$checkout_form.on( 'change', 'select.shipping_method, input[name^="shipping_method"], .update_totals_on_change select, .update_totals_on_change input[type="radio"], .update_totals_on_change input[type="checkbox"]', this.trigger_update_checkout ); // eslint-disable-line max-len
+			this.$checkout_form.on( 'change', 'select.shipping_method, input[name^="shipping_method"], .update_totals_on_change select, .update_totals_on_change input[type="radio"], .update_totals_on_change input[type="checkbox"], .update_totals_on_change input:not([type="hidden"])', this.trigger_update_checkout ); // eslint-disable-line max-len
 			this.$checkout_form.on( 'change', '.address-field select', this.input_changed );
 
 			// CHANGE: Move CSS selector for fields that trigger update checkout when value is changed
