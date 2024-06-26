@@ -25,6 +25,10 @@ class FluidCheckout_ThemeCompat_Konte extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 
@@ -32,14 +36,42 @@ class FluidCheckout_ThemeCompat_Konte extends FluidCheckout {
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
-
-
 	/**
 	 * Add or remove very late hooks.
 	 */
 	public function very_late_hooks() {
 		// Extra coupon field
 		remove_action( 'woocommerce_before_checkout_form', array( 'Konte_WooCommerce_Template_Checkout', 'checkout_coupon_form' ), 15 );
+	}
+
+
+
+	/**
+	 * Change the element used to position the progress bar and order summary when sticky.
+	 * 
+	 * @param  array  $attributes  The elements attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		// Bail if theme functions isn't available
+		if ( ! function_exists( 'konte_get_option' ) ) { return $attributes; }
+
+		// Get sticky header option from the theme
+		$sticky_header = konte_get_option( 'header_sticky' );
+
+		// Maybe change the relative ID based on the sticky header option
+		switch ( $sticky_header ) {
+			case 'smart':
+				$attributes['data-sticky-relative-to'] = '.header-sticky--smart';
+				break;
+			case 'normal':
+				$attributes['data-sticky-relative-to'] = '.header-sticky--normal.sticky';
+				break;
+		}
+
+		return $attributes;
 	}
 
 
