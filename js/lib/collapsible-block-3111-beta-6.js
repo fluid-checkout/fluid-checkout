@@ -440,6 +440,8 @@
 	 * @param   mixed    element     The content element of the collapsible block as a HTMLElement, or an Event dispatched on that element.
 	 */
 	var finishExpand = function ( element ) {
+		console.log( 'Enter finishExpand' );
+
 		// Bail if element is invalid
 		if ( ! element ) { return; }
 
@@ -451,10 +453,11 @@
 			element = element.target;
 		}
 
-
 		// Remove content element properties when transition is complete
 		element.style.height = '';
 		element.style.overflow = '';
+
+		console.log( 'Height prop removed' );
 
 		// Syncronize `aria-expanded` for every handler on the page
 		syncAriaExpanded( element, true );
@@ -641,6 +644,21 @@
 			manager.contentElement.addEventListener( getTransitionEndEvent(), finishExpand );
 		}
 
+		// Get transition duration for the height property
+		var transitionProperties = window.getComputedStyle( manager.contentElement ).transitionProperty;
+		var transitionDurations = window.getComputedStyle( manager.contentElement ).transitionDuration;
+
+		// Get inded of the `height` property in the transition properties list 
+		var transitionPropertiesList = transitionProperties.split( ', ' );
+		var transitionDurationsList = transitionDurations.split( ', ' );
+		var heightPropertyIndex = transitionPropertiesList.indexOf( 'height' );
+
+		// Get the duration of the `height` property transition in milliseconds
+		var heightTransitionValue = transitionDurationsList[ heightPropertyIndex ];
+		var heightTransitionInMilliseconds = heightTransitionValue && heightTransitionValue.indexOf( 'ms' ) > -1;
+		var heightTransitionDuration = heightPropertyIndex > -1 ? parseFloat( heightTransitionValue ) : 0;
+		heightTransitionDuration = heightTransitionInMilliseconds ? heightTransitionDuration : heightTransitionDuration * 1000;
+
 		// Expand element to its content height
 		requestAnimationFrame( function() {
 			var computedHeight = getComputedHeight( manager.contentElement );
@@ -657,8 +675,15 @@
 
 			// Make sure to finish the "expand" state change when transitions are not used
 			if ( ! withTransition ) {
+				console.log( 'Call finishExpand immediately `! withTransition`' );
 				finishExpand( manager.contentElement );
 			}
+
+			// Ensure the element is expanded for the duration of the transition
+			setTimeout( function() {
+				console.log( 'Call timed finishExpand' );
+				finishExpand( manager.contentElement );
+			}, heightTransitionDuration + 50 );
 		} );
 	}
 
