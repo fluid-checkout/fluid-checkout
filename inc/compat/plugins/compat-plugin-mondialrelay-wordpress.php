@@ -12,7 +12,6 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	public const SHIPPING_METHOD_ID = 'mondialrelay';
 
 
-
 	/**
 	 * Class name for the plugin which this compatibility class is related to.
 	 */
@@ -51,7 +50,7 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		remove_action( 'woocommerce_review_order_after_shipping', array( $class_object, 'modaal_link' ), 10 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_pickup_point_selection_ui' ), 10 );
 
-		// Mondial Relay logo from order overview
+		// Remove Mondial Relay logo from order overview
 		remove_filter( 'woocommerce_cart_shipping_method_full_label', array( 'MRWP_Shipping_Method', 'embellish_label' ), 10, 2 );
 	}
 
@@ -91,7 +90,7 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 
 
 	/**
-	 * Maybe change the pickup point substep text to display the Mondial Relay information.
+	 * Output the pickup point selection UI from Mondial Relay.
 	 */
 	public function output_pickup_point_selection_ui() {
 		// Bail if selected shipping method is not a Mondial Relay shipping method
