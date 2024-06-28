@@ -1,9 +1,8 @@
 /**
- * File slider.js.
+ * File collapsible-block.js.
  *
- * Implement interactive mobile and desktop slider
+ * Implement collapsible block functionality.
  */
-
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
 	  define([], factory(root));
@@ -66,13 +65,13 @@
 
 
 
-	/*!
-	* Merge two or more objects together.
-	* (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
-	* @param   {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
-	* @param   {Object}   objects  The objects to merge together
-	* @returns {Object}            Merged values of defaults and options
-	*/
+	/**!
+	 * Merge two or more objects together.
+	 * (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
+	 * @param   {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
+	 * @param   {Object}   objects  The objects to merge together
+	 * @returns {Object}            Merged values of defaults and options
+	 */
 	var extend = function () {
 		// Variables
 		var extended = {};
@@ -475,8 +474,6 @@
 	 * @param   mixed    element     The content element of the collapsible block as a HTMLElement, or an Event dispatched on that element.
 	 */
 	var finishExpand = function ( element ) {
-		console.log( 'Enter finishExpand' );
-
 		// Bail if element is invalid
 		if ( ! element ) { return; }
 
@@ -491,8 +488,6 @@
 		// Remove content element properties when transition is complete
 		element.style.height = '';
 		element.style.overflow = '';
-
-		console.log( 'Height prop removed' );
 
 		// Syncronize `aria-expanded` for every handler on the page
 		syncAriaExpanded( element, true );
@@ -698,14 +693,12 @@
 
 			// Make sure to finish the "expand" state change when transitions are not used
 			if ( ! withTransition ) {
-				console.log( 'Call finishExpand immediately `! withTransition`' );
 				finishExpand( manager.contentElement );
 			}
 
 			// Make sure to finish the "expand" state change after the duration of the height transition,
 			// so we don't need to rely completely on the browser's transitionend event.
 			setTimeout( function() {
-				console.log( 'Call timed finishExpand' );
 				finishExpand( manager.contentElement );
 			}, heightTransitionDuration + 50 );
 		} );
