@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Compatibility with plugin: Mondial Relay - WordPress (by Kasutan).
  */
-class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
+class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 
 	/**
 	 * Class name for the plugin which this compatibility class is related to.
@@ -119,4 +119,4 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 
 }
 
-FluidCheckout_WooShippingDPDBaltic::instance();
+FluidCheckout_MondialRelayWordpress::instance();
