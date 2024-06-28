@@ -35,7 +35,7 @@
     "uglify-js": "^3.15.5"
   },
   "dependencies": {
-    "collapsible-block": "^1.1.8",
+    "collapsible-block": "^1.1.9",
     "flyout-block": "^1.2.0",
     "mailcheck": "^1.1.1",
     "sticky-states": "^1.0.8",
