@@ -7,6 +7,13 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 
 	/**
+	 * The shipping method id.
+	 */
+	public const SHIPPING_METHOD_ID = 'mondialrelay';
+
+
+
+	/**
 	 * Class name for the plugin which this compatibility class is related to.
 	 */
 	public const CLASS_NAME = 'class_MRWP_public';
@@ -56,7 +63,7 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	 * @param  string  $shipping_method_id  The shipping method ID.
 	 */
 	public function is_shipping_method_mondial_relay( $shipping_method_id ) {
-		return 0 === strpos( $shipping_method_id, 'mondialrelay' );
+		return 0 === strpos( $shipping_method_id, self::SHIPPING_METHOD_ID );
 	}
 
 
