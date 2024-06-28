@@ -43,6 +43,9 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 		// Move shipping method hooks
 		remove_action( 'woocommerce_review_order_after_shipping', array( $class_object, 'modaal_link' ), 10 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $class_object, 'modaal_link' ), 10 );
+
+		// Mondial Relay logo from order overview
+		remove_filter( 'woocommerce_cart_shipping_method_full_label', array( 'MRWP_Shipping_Method', 'embellish_label' ), 10, 2 );
 	}
 
 }
