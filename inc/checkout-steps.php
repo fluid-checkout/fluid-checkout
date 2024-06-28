@@ -2820,7 +2820,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Get field key
 			$address_field_key = str_replace( $field_key_prefix, '', $field_key );
-			$address_data[ $address_field_key ] = WC()->checkout->get_value( $field_key );
+
+			// Set field value to the address data
+			$field_value = WC()->checkout->get_value( $field_key );
+			$address_data[ $address_field_key ] = null !== $field_value ? WC()->checkout->get_value( $field_key ) : '';
 		}
 
 		// Filter address data
