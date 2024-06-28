@@ -1994,6 +1994,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > a img {
   float: left;
   margin-left: calc(-1 * (var(--fluidcheckout--order-summary--image-padding, 3px) + 5px));
+  margin-right: 0 !important;
   padding: var(--fluidcheckout--order-summary--image-padding, 3px);
   width: var(--fluidcheckout--order-summary--image-width, 50px) !important;
   height: auto !important;
