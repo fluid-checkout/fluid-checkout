@@ -369,6 +369,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Also trigger checkout update for text fields with class `update_totals_on_change`.
 * Fixed: Shipping methods list not expanding correctly and overlapping with other elements.
 * Fixed: Fatal errors with some 3rd-party plugins when trying to retrieve customer address data from the checkout session too early.
+* Fixed: Do not use cache for customer address data values as this might affect how other plugins work with the data.
 
 = 3.1.10 - 2024-06-20 =
 
