@@ -28,8 +28,8 @@ class FluidCheckout_WooCommerceSuperFaktura extends FluidCheckout {
 		// Billing fields
 		add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_set_additional_billing_fields_required' ), 100 );
 
-		// Step complete billing
-		add_filter( 'fc_is_step_complete_billing_field_keys_skip_list', array( $this, 'maybe_add_step_complete_billing_field_skip_list_by_person_type' ), 10 );
+		// Substep complete
+		add_filter( 'fc_is_step_complete_billing_field_keys_skip_list', array( $this, 'maybe_add_substep_complete_billing_field_skip_list' ), 10 );
 	}
 
 
@@ -94,11 +94,11 @@ class FluidCheckout_WooCommerceSuperFaktura extends FluidCheckout {
 
 
 	/**
-	 * Add fields by person type to the step complete verification skip list.
+	 * Maybe set to skip checking if additional fields are required when determining if the substep is complete.
 	 * 
 	 * @param  array  List of fields to skip checking for required value.
 	 */
-	public function maybe_add_step_complete_billing_field_skip_list_by_person_type( $skip_list ) {
+	public function maybe_add_substep_complete_billing_field_skip_list( $skip_list ) {
 		// Get value for the checkbox field "Purchasing as a company"
 		$is_company_purchase = WC()->checkout->get_value( 'wi_as_company' );
 
