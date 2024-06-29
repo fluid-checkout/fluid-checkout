@@ -54,7 +54,6 @@ class FluidCheckout_WooCommerceSuperFaktura extends FluidCheckout {
 		$skip_list[] = 'billing_company_wi_id';
 		$skip_list[] = 'billing_company_wi_vat';
 		$skip_list[] = 'billing_company_wi_tax';
-		$skip_list[] = 'billing_company_wi_tax';
 
 		return $skip_list;
 	}
