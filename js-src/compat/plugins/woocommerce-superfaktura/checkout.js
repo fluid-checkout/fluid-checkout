@@ -43,6 +43,8 @@ jQuery(document).ready(function() {
 
 	// CHANGE: Use captured events instead of attaching directly to the element
 	jQuery( document.body ).on( 'change', '#wi_as_company', trigger_toggle_fields );
+
+	// CHANGE: Add event to manage checkout fragments update
 	jQuery( document.body ).on( 'change', '#wi_as_company', trigger_update_checkout );
 	jQuery( document.body ).on( 'updated_checkout', trigger_toggle_fields );
 
