@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with plugin Qode Framework.
+* Added: Compatibility with plugin SuperFaktúra WooCommerce.
 * Fixed: Max width for the container element on the checkout page when using the plugin's container classes.
 * Fixed: Also trigger checkout update for text fields with class `update_totals_on_change`.
 * Fixed: Shipping methods list not expanding correctly and overlapping with other elements.
