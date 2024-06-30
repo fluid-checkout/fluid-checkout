@@ -31,6 +31,9 @@ class FluidCheckout_ThemeCompat_XStore extends FluidCheckout {
 
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+
+		// Theme feature: Advanced cart and checkout layout
+		add_filter( 'theme_mod_cart_checkout_advanced_layout', '__return_false', 10 );
 	}
 
 

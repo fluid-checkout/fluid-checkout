@@ -46,7 +46,7 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_billing_collapsible_ini
 	<?php do_action( 'fc_before_checkout_billing_only_form', $checkout ); ?>
 
 	<?php // CHANGE: Display billing only fields ?>
-	<?php if ( count( $billing_only_fields ) > 0 || has_action( 'fc_after_checkout_billing_only_form_inside' ) ) : ?>
+	<?php if ( ( $billing_only_fields && count( $billing_only_fields ) > 0 ) || has_action( 'fc_after_checkout_billing_only_form_inside' ) ) : ?>
 	<div class="woocommerce-billing-only-fields__field-wrapper">
 		<?php
 		foreach ( $billing_only_fields as $key => $field ) {

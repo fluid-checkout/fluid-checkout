@@ -323,18 +323,38 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add or remove hooks for the customer address data.
 	 */
 	public function customer_address_data_hooks() {
-		// Get checkout fields
-		$checkout_fields = WC()->checkout()->get_checkout_fields();
+		// Define fields to add hooks to, even if the fields are not available at checkout.
+		//
+		// IMPORTANT: Shoud not try to get fields from `WC()->checkout()->get_checkout_fields()` or similar functions
+		// because other plugins do not expect these functions to be called early and may cause fatal errors.
+		$field_keys = array(
+			'billing_first_name',
+			'billing_last_name',
+			'billing_company',
+			'billing_address_1',
+			'billing_address_2',
+			'billing_city',
+			'billing_state',
+			'billing_postcode',
+			'billing_country',
+			'billing_email',
+			'billing_phone',
 
-		// Iterate checkout field groups
-		foreach ( $checkout_fields as $field_group => $group_fields ) {
-			// Skip if not shipping or billing groups
-			if ( ! in_array( $field_group, array( 'shipping', 'billing' ) ) ) { continue; }
-
-			// Iterate fields
-			foreach ( $group_fields as $field_key => $field ) {
-				add_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10, 2 );
-			}
+			'shipping_first_name',
+			'shipping_last_name',
+			'shipping_company',
+			'shipping_address_1',
+			'shipping_address_2',
+			'shipping_city',
+			'shipping_state',
+			'shipping_postcode',
+			'shipping_country',
+			'shipping_phone',
+		);
+		
+		// Iterate fields and add hook
+		foreach ( $field_keys as $field_key ) {
+			add_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10, 2 );
 		}
 	}
 
@@ -3155,7 +3175,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Get field key
 			$address_field_key = str_replace( $field_key_prefix, '', $field_key );
-			$address_data[ $address_field_key ] = WC()->checkout->get_value( $field_key );
+
+			// Set field value to the address data
+			$field_value = WC()->checkout->get_value( $field_key );
+			$address_data[ $address_field_key ] = null !== $field_value ? WC()->checkout->get_value( $field_key ) : '';
 		}
 
 		// Filter address data
@@ -6031,6 +6054,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param   mixed        $value      The field value.
 	 * @param   WC_Customer  $customer   The customer object.
+	 * 
+	 * IMPORTANT: This function cannot use cached values because values for the fields
+	 *            might change during the lifecycle of the request process.
 	 */
 	public function maybe_change_customer_address_field_value_from_checkout_data( $value, $customer ) {
 		// Get name of the current filter hook running this function
@@ -6042,13 +6068,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get field key
 		$field_key = str_replace( 'woocommerce_customer_get_', '', $hook_name );
 
-		// Try to return value from cache
-		$cache_handle = 'customer_address_field_value_' . $field_key;
-		if ( array_key_exists( $cache_handle, $this->cached_values ) ) {
-			// Return value from cache
-			return $this->cached_values[ $cache_handle ];
-		}
-
 		// Get checkout session value
 		$session_value = $this->get_checkout_field_value_from_session_or_posted_data( $field_key );
 
@@ -6056,9 +6075,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! empty( $session_value ) ) {
 			$value = $session_value;
 		}
-
-		// Set cache
-		$this->cached_values[ $cache_handle ] = $value;
 
 		// Return new value
 		return $value;

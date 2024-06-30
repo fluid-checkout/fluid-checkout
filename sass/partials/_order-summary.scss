@@ -212,6 +212,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > a img {
 	float: $alignment-left;
 	margin-#{ $alignment-left }: calc( -1 * ( #{ $order-summary-image-padding } + #{ $global-spacing-tiny } ) );
+	margin-#{ $alignment-right }: 0 !important; // Needed to override inline styles added by some themes
 	padding: $order-summary-image-padding;
 	width: $order-summary-image-width !important; // Needed to override inline styles added by some themes
 	height: auto !important; // Needed to override inline styles added by some themes
