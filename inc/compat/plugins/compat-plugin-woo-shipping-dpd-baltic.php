@@ -46,8 +46,8 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
-		// Maybe set step as incomplete
-		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
+		// Maybe set substep as incomplete
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
 
 		// Checkout validation settings
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
@@ -158,7 +158,7 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 	 *
 	 * @param   bool  $is_step_complete  Whether the step is complete or not.
 	 */
-	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
+	public function maybe_set_substep_incomplete_shipping_method( $is_step_complete ) {
 		// Bail if step is already incomplete
 		if ( ! $is_step_complete ) { return $is_step_complete; }
 
@@ -189,7 +189,7 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 		// Get selected terminal
 		$selected_terminal = WC()->session->get( self::SESSION_FIELD_NAME );
 
-		// Maybe set step as incomplete
+		// Maybe set substep as incomplete
 		if ( empty( $selected_terminal ) ) {
 			$is_step_complete = false;
 		}

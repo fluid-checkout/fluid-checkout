@@ -35,8 +35,8 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 		// Shipping methods hooks
 		add_action( 'woocommerce_shipping_init', array( $this, 'shipping_methods_hooks' ), 100 );
 
-		// Maybe set step as incomplete
-		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
+		// Maybe set substep as incomplete
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -122,17 +122,17 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 
 
 	/**
-	 * Set the shipping step as incomplete.
+	 * Set the shipping method substep as incomplete.
 	 *
-	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
-	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
+	public function maybe_set_substep_incomplete_shipping_method( $is_substep_complete ) {
 		// Bail if step is already incomplete
-		if ( ! $is_step_complete ) { return $is_step_complete; }
+		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
 		// Bail if class is not available
 		$class_name = 'WC_LPExpress_Terminals_Shipping_Method';
-		if ( ! class_exists( $class_name ) ) { return $is_step_complete; }
+		if ( ! class_exists( $class_name ) ) { return $is_substep_complete; }
 
 		// Get object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
@@ -141,17 +141,17 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
 
 		// Bail if LP is not selected as the shipping method
-		if( empty( $chosen_shipping_methods ) || ! in_array( self::SHIPPING_METHOD_ID, $chosen_shipping_methods ) ) { return $is_step_complete; }
+		if( empty( $chosen_shipping_methods ) || ! in_array( self::SHIPPING_METHOD_ID, $chosen_shipping_methods ) ) { return $is_substep_complete; }
 
 		// Get selected terminal
 		$selected_terminal = WC()->session->get( self::SHIPPING_METHOD_ID );
 
-		// Maybe set step as incomplete
+		// Maybe set substep as incomplete
 		if ( empty( $selected_terminal ) ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 

@@ -39,7 +39,7 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 		add_filter( 'wc_wcmp_delivery_options_location', array( $this, 'change_hook_delivery_options_location' ), 10 );
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'maybe_change_substep_text_lines_shipping_methods' ), 20 );
 
-		// Maybe set step as incomplete
+		// Maybe subset step as incomplete
 		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
 	}
 
@@ -280,7 +280,7 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 		// Bail if step is already incomplete
 		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
-		// Maybe set step as incomplete if shipping method associated with MyParcel is selected
+		// Maybe set substep as incomplete if shipping method associated with MyParcel is selected
 		if ( $this->is_shipping_method_selected() ) {
 			$is_substep_complete = false;
 		}

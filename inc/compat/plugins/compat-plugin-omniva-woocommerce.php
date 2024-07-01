@@ -37,8 +37,8 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
-		// Maybe set step as incomplete
-		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
+		// Maybe set substep as incomplete
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -217,13 +217,13 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 
 
 	/**
-	 * Set the shipping step as incomplete.
+	 * Set the shipping method substep as incomplete.
 	 *
-	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
-	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
+	public function maybe_set_substep_incomplete_shipping_method( $is_substep_complete ) {
 		// Bail if step is already incomplete
-		if ( ! $is_step_complete ) { return $is_step_complete; }
+		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
 		// Get shipping packages
 		$packages = WC()->shipping()->get_packages();
@@ -243,14 +243,14 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 			// Get location id
 			$selected_terminal_id = WC()->session->get( 'omnivalt_terminal_id' );
 
-			// Maybe set step as incomplete
+			// Maybe set substep as incomplete
 			if ( empty( $selected_terminal_id ) ) {
-				$is_step_complete = false;
+				$is_substep_complete = false;
 				break;
 			}
 		}
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 
