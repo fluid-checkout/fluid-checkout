@@ -3791,7 +3791,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$address_fields = WC()->countries->get_address_fields( $shipping_country, 'shipping_' );
 
 			// Get fields skip list
-			$step_complete_field_keys_skip_list = apply_filters( 'fc_is_step_complete_shipping_field_keys_skip_list', $this->get_contact_step_display_field_ids() );
+			$step_complete_field_keys_skip_list = apply_filters( 'fc_is_substep_complete_shipping_address_field_keys_skip_list', $this->get_contact_step_display_field_ids() );
 
 			// Check each required country field
 			foreach ( $address_fields as $field_key => $field ) {
@@ -4314,7 +4314,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$address_fields = WC()->countries->get_address_fields( $billing_country, 'billing_' );
 
 		// Get fields skip list
-		$step_complete_field_keys_skip_list = apply_filters( 'fc_is_step_complete_billing_field_keys_skip_list', $this->get_contact_step_display_field_ids() );
+		$step_complete_field_keys_skip_list = apply_filters( 'fc_is_substep_complete_billing_address_field_keys_skip_list', $this->get_contact_step_display_field_ids() );
 
 		// Check each required country field
 		foreach ( $address_fields as $field_key => $field ) {
