@@ -2169,7 +2169,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$substeps = $this->get_checkout_substeps( $step_id );
 
 			// Maybe skip if there are no substeps to be rendered
-			if ( ! is_array( $substeps ) || count( $substeps ) < 1 ) { continue; }
+			if ( 'payment' !== $step_id && ( ! is_array( $substeps ) || count( $substeps ) < 1 ) ) { continue; }
+
+			// Maybe set payment step substeps as an empty array if it has no substeps registered
+			if ( 'payment' === $step_id && ( ! is_array( $substeps ) || count( $substeps ) < 1 ) ) {
+				$substeps = array();
+			}
 
 			// Output the step start tag
 			$this->output_step_start_tag( $step_args, $step_index );
