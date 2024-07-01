@@ -131,7 +131,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
-		
+
 		// Shipping method
 		add_action( 'fc_output_step_shipping', array( $this, 'output_substep_shipping_method' ), $this->get_shipping_methods_hook_priority() );
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -139,7 +139,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 		add_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10, 3 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
-		
+
 		// Order notes
 		add_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
 
@@ -288,7 +288,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get checkout fields
 		$all_fields = WC()->checkout()->get_checkout_fields();
-		
+
 		// Prepare the hooks related to the additional order notes substep.
 		if ( in_array( 'order', array_keys( $all_fields ) ) ) {
 			// Get additional order fields
@@ -302,6 +302,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 				if ( ! WC()->cart->needs_shipping() ) {
 					$order_notes_step = 'billing';
 				}
+
+				// Filter the order notes step
+				$order_notes_step = apply_filters( 'fc_step_id_for_substep_order_notes', $order_notes_step );
 
 				// Register substep
 				$this->register_checkout_substep( $order_notes_step, array(
@@ -351,7 +354,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'shipping_country',
 			'shipping_phone',
 		);
-		
+
 		// Iterate fields and add hook
 		foreach ( $field_keys as $field_key ) {
 			add_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10, 2 );
@@ -1125,6 +1128,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			if ( array_key_exists( 'render_condition_callback', $step_args ) && ( ! is_callable( $step_args[ 'render_condition_callback' ] ) || ! call_user_func( $step_args[ 'render_condition_callback' ] ) ) ) {
 				unset( $_checkout_steps[ $step_index ] );
 			}
+
+			// Maybe remove the step from the list if no substep is available
+			if ( ! array_key_exists( 'substeps', $step_args ) || ! is_array( $step_args[ 'substeps' ] ) ) {
+				unset( $_checkout_steps[ $step_index ] );
+			}
 		}
 
 		// Reassign the steps indexes based on the steps position in the array
@@ -1349,7 +1357,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				// Get next step render conditional callback
 				$render_conditional_callback = array_key_exists( 'render_condition_callback', $next_step_args ) ? $next_step_args[ 'render_condition_callback' ] : null;
 			}
-			
+
 			return $next_step_args;
 		}
 
@@ -1972,7 +1980,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Bail if step was not found
 		if ( ! $step_args ) { return $step_title; }
-		
+
 		// Get step title and apply filters
 		$step_title = $step_args[ 'step_title' ];
 		$step_title = apply_filters( "fc_step_title_{$step_id}", $step_title );
@@ -2010,7 +2018,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				// Get substep variables
 				$substep_id = $substep_args[ 'substep_id' ];
 				$additional_attributes = array_key_exists( 'additional_attributes', $substep_args ) ? $substep_args[ 'additional_attributes' ] : array();
-				
+
 				// Output the substep start tag
 				$this->output_substep_start_tag( $step_id, $substep_id, $additional_attributes );
 
@@ -2098,6 +2106,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if user must log in before checkout
 		if ( ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() && ! is_user_logged_in() ) { return; }
 
+		// Get checkout steps to be rendered
 		$_checkout_steps = $this->get_checkout_steps();
 
 		// Get step count
@@ -2308,7 +2317,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_substep_title( $substep_id ) {
 		// Initialize variables
 		$substep_title = false;
-		
+
 		// Get step
 		$steps = $this->get_checkout_steps();
 
@@ -2317,6 +2326,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Get substeps
 			$step_id = $step_args[ 'step_id' ];
 			$substeps = $this->get_registered_checkout_substeps( $step_id );
+
+			// Skip if substeps is not an array
+			if ( ! is_array( $substeps ) ) { continue; }
 
 			// Iterate substeps
 			foreach ( $substeps as $substep_index => $substep_args ) {
@@ -2365,7 +2377,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Make sure additional attributes is an array before using it
 		if ( null === $additional_attributes ) { $additional_attributes = array(); }
-		
+
 		$substep_attributes = array_merge( $additional_attributes, array(
 			'class' => array_key_exists( 'class', $additional_attributes ) ? 'fc-step__substep ' . $additional_attributes['class'] : 'fc-step__substep',
 			'data-substep-id' => $substep_id,
@@ -3259,7 +3271,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach ( $field_keys_skip_list as $field_key_index => $field_key_skipped ) {
 			// Skip if the field key for a skipped field is not present in the address type only field keys list
 			if ( ! in_array( $field_key_skipped, $address_type_only_field_keys ) ) { continue; }
-		
+
 			// Skip if the address section is not displayed with the "same as" address notice
 			if ( ! $is_same_as_address_notice_displayed ) { continue; }
 
@@ -3289,7 +3301,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				foreach ( $address_fields as $field_key_2 => $field_args_2 ) {
 					// Skip fields not in the name fields list
 					if ( ! in_array( $field_key_2, $name_field_keys ) ) { continue; }
-					
+
 					// Get field display value
 					$field_value = WC()->checkout->get_value( $field_key_2 );
 					$field_display_value = $this->get_field_display_value( $field_value, $field_key_2, $field_args_2 );
@@ -3299,13 +3311,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 						$name_field_values[] = $field_display_value;
 					}
 				}
-				
+
 				// Add name fields as a single line
 				$review_text_lines[] = implode( ' ', $name_field_values );
 				$has_added_name_fields_as_single_line = true;
 				continue;
 			}
-			
+
 			// Get field display value
 			$field_value = WC()->checkout->get_value( $field_key );
 			$field_display_value = $this->get_field_display_value( $field_value, $field_key, $field_args );
@@ -4362,8 +4374,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $value_from_filter;
 		}
 
+		// Initialize variables
 		$is_billing_same_as_shipping = true;
-		
+
 		// Get list of billing fields to copy from shipping fields
 		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
 
@@ -4421,7 +4434,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Set default value
 		$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
-		
+
 		// Maybe set as same as shipping for logged users
 		if ( is_user_logged_in() ) {
 			$billing_same_as_shipping = $this->is_billing_address_data_same_as_shipping( $posted_data );
@@ -4504,8 +4517,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $value_from_filter;
 		}
 
+		// Initialize variables
 		$is_shipping_same_as_billing = true;
-		
+
 		// Get list of shipping fields to copy from billing fields
 		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
 
@@ -4568,7 +4582,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// move the billing address before shipping, the option name was not changed or
 		// a new option was not added to avoid duplicate options in the plugin settings.
 		$shipping_same_as_billing = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
-		
+
 		// Maybe set as same as billing for logged users
 		if ( is_user_logged_in() ) {
 			$shipping_same_as_billing = $this->is_shipping_address_data_same_as_billing( $posted_data );
