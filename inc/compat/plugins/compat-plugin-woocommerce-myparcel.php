@@ -40,7 +40,7 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'maybe_change_substep_text_lines_shipping_methods' ), 20 );
 
 		// Maybe set step as incomplete
-		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
 	}
 
 
@@ -272,20 +272,20 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 
 
 	/**
-	 * Set the shipping step as always incomplete when shipping method is associated with MyParcel.
+	 * Set the shipping method substep as always incomplete when shipping method is associated with MyParcel.
 	 *
-	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
-	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
+	public function maybe_set_substep_incomplete_shipping_method( $is_substep_complete ) {
 		// Bail if step is already incomplete
-		if ( ! $is_step_complete ) { return $is_step_complete; }
+		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
 		// Maybe set step as incomplete if shipping method associated with MyParcel is selected
 		if ( $this->is_shipping_method_selected() ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 
