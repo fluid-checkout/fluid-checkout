@@ -303,9 +303,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 					$order_notes_step = 'billing';
 				}
 
-				// Filter the order notes step
-				$order_notes_step = apply_filters( 'fc_step_id_for_substep_order_notes', $order_notes_step );
-
 				// Register substep
 				$this->register_checkout_substep( $order_notes_step, array(
 					'substep_id' => 'order_notes',
@@ -1124,13 +1121,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Iterate all steps and check if they should be rendered
 		foreach ( $_checkout_steps as $step_index => $step_args ) {
+			// Skip payment step
+			if ( 'payment' === $step_args[ 'step_id' ] ) { continue; }
+
 			// Maybe remove the step from the list if it has a render condition callback and it returns `false`.
 			if ( array_key_exists( 'render_condition_callback', $step_args ) && ( ! is_callable( $step_args[ 'render_condition_callback' ] ) || ! call_user_func( $step_args[ 'render_condition_callback' ] ) ) ) {
 				unset( $_checkout_steps[ $step_index ] );
 			}
 
 			// Maybe remove the step from the list if no substep is available
-			if ( ! array_key_exists( 'substeps', $step_args ) || ! is_array( $step_args[ 'substeps' ] ) ) {
+			if ( ! array_key_exists( 'substeps', $step_args ) || ! is_array( $step_args[ 'substeps' ] ) || empty( $step_args[ 'substeps' ] ) ) {
 				unset( $_checkout_steps[ $step_index ] );
 			}
 		}
@@ -1634,12 +1634,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Check if a checkout substep is registered the `substep_id` for the step.
 	 *
-	 * @param   string  $step_id      ID of the checkout step.
 	 * @param   string  $substep_id   ID of the checkout substep.
+	 * @param   string  $step_id      ID of the checkout step.
 	 *
 	 * @return  boolean               `true` if a checkout step is registered with the `step_id`, `false` otherwise.
 	 */
-	public function is_checkout_substep_registered( $step_id, $substep_id ) {
+	public function is_checkout_substep_registered( $substep_id, $step_id = false ) {
+		// Maybe check for the substep id registered to any step if step id is not provided
+		if ( false === $step_id ) {
+			return false !== $this->get_registered_checkout_substep( $substep_id );
+		}
+
 		// Get substeps for the step
 		$substeps = $this->get_registered_checkout_substeps( $step_id );
 
@@ -1704,7 +1709,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * 
 	 * @param   string  $step_id        ID of the checkout step.
 	 *
-	 * @return  array  An array of the registered checkout steps. For more details of what is expected see the documentation of the private property `$checkout_steps` of this class.
+	 * @return  array                   An array of the registered checkout steps. For more details of what is expected see the documentation of the private property `$checkout_steps` of this class.
 	 */
 	private function get_registered_checkout_substeps( $step_id ) {
 		// Bail if checkout step is not registered
@@ -1722,14 +1727,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if step index not found
 		if ( false === $step_index ) { return false; }
 
-		// Bail if substeps is not present or not an array
-		if ( ! array_key_exists( 'substeps', $this->registered_checkout_steps[ $step_index ] ) ) { return false; }
+		// Bail if substeps is not present or not an array, , returning as an empty array.
+		if ( ! array_key_exists( 'substeps', $this->registered_checkout_steps[ $step_index ] ) || ! is_array( $this->registered_checkout_steps[ $step_index ][ 'substeps' ] ) ) { return array(); }
 
 		// Get substeps of the step
 		$substeps = $this->registered_checkout_steps[ $step_index ][ 'substeps' ];
-
-		// Bail if substeps is not an array
-		if ( ! is_array( $substeps ) ) { return false; }
 
 		return $substeps;
 	}
@@ -1774,7 +1776,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$substep_id = $substep_args[ 'substep_id' ];
 
 		// Check for duplicate step_id
-		if ( $this->is_checkout_substep_registered( $step_id, $substep_id ) ) {
+		if ( $this->is_checkout_substep_registered( $substep_id ) ) {
 			trigger_error( "A checkout substep with `substep_id = {$substep_id}` already exists for the step {$step_id}. Skipping substep.", E_USER_WARNING );
 			return false;
 		}
@@ -1804,9 +1806,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @return  boolean           `true` if the substep was successfully unregistered, `false` otherwise.
 	 */
-	public function unregister_checkout_substep( $step_id, $substep_id ) {
-		// Bail if checkout step is not registered
-		if ( ! $this->is_checkout_step_registered( $step_id ) ) { return false; }
+	public function unregister_checkout_substep( $substep_id ) {
+		// Bail if checkout substep is not registered
+		if ( ! $this->is_checkout_substep_registered( $substep_id ) ) { return false; }
+
+		// Get the step id for the substep
+		$step_id = $this->get_step_id_for_registered_substep( $substep_id );
+
+		// Bail if step id was not found
+		if ( false === $step_id ) { return false; }
 
 		// Look for a step with the same id and get the step index
 		$step_index = false;
@@ -1819,9 +1827,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Bail if step index not found
 		if ( false === $step_index ) { return false; }
-
-		// Bail if checkout substep is not registered
-		if ( ! $this->is_checkout_substep_registered( $step_id, $substep_id ) ) { return false; }
 
 		// Get substeps of the step
 		$_substeps = $this->get_registered_checkout_substeps( $step_id );
@@ -1847,6 +1852,169 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Update registered substeps for the step
 		$this->registered_checkout_steps[ $step_index ][ 'substeps' ] = $_substeps;
+
+		return true;
+	}
+
+	/**
+	 * Get the registered substep arguments from the substep registed to any checkout step.
+	 *
+	 * @param   string       $substep_id   ID of the checkout substep.
+	 *
+	 * @return  array|bool                 Array with arguments of the substep, or `false` if the substep was not found.
+	 */
+	public function get_registered_checkout_substep( $substep_id ) {
+		// Get registered steps
+		$_checkout_steps = $this->get_registered_checkout_steps();
+
+		// Iterate all steps
+		foreach ( $_checkout_steps as $step_args ) {
+			// Get substeps
+			$substeps = array_key_exists( 'substeps', $step_args ) ? $step_args[ 'substeps' ] : false;
+
+			// Maybe skip if no substeps are registered
+			if ( false === $substeps || empty( $substeps ) ) { continue; }
+
+			// Look for a substep with the same id
+			foreach ( $substeps as $substep_args ) {
+				// Skip if substep id does not match
+				if ( $substep_args[ 'substep_id' ] != sanitize_title( $substep_id ) ) { continue; }
+
+				// Return substep args
+				return $substep_args;
+			}
+		}
+
+		// Return false if substep was not found
+		return false;
+	}
+
+	/**
+	 * Check if a checkout substep is registered the `substep_id` for the step.
+	 *
+	 * @param   string  $substep_id   ID of the checkout substep.
+	 * @param   string  $step_id      ID of the checkout step.
+	 *
+	 * @return  boolean               `true` if a checkout step is registered with the `step_id`, `false` otherwise.
+	 */
+	public function get_step_id_for_registered_substep( $substep_id ) {
+		// Get registered steps
+		$_checkout_steps = $this->get_registered_checkout_steps();
+
+		// Iterate all steps
+		foreach ( $_checkout_steps as $step_args ) {
+			// Get substeps
+			$substeps = array_key_exists( 'substeps', $step_args ) ? $step_args[ 'substeps' ] : false;
+
+			// Maybe skip if no substeps are registered
+			if ( false === $substeps || empty( $substeps ) ) { continue; }
+
+			// Look for a substep with the same id
+			foreach ( $substeps as $substep_args ) {
+				// Skip if substep id does not match
+				// Intentionally use loose comparison.
+				if ( $substep_args[ 'substep_id' ] != sanitize_title( $substep_id ) ) { continue; }
+
+				// Return substep args
+				return $step_args[ 'step_id' ];
+			}
+		}
+
+		// Return false if substep was not found
+		return false;
+	}
+
+	/**
+	 * Move a substep from one step to another.
+	 *
+	 * @param   string  $substep_id                ID of the checkout substep to be moved.
+	 * @param   string  $previous_step_id          ID of the previous checkout step.
+	 * @param   string  $new_step_id               ID of the new checkout step.
+	 * @param   array   $additional_substep_args   Additional arguments to be merged with the substep arguments. This can be used to change the priority or other arguments of the substep.
+	 *
+	 * @return  boolean                            `true` if the substep was successfully unregistered, `false` otherwise.
+	 */
+	public function move_checkout_substep( $substep_id, $new_step_id, $additional_substep_args = array() ) {
+		// Bail if checkout substep is not registered
+		if ( ! $this->is_checkout_substep_registered( $substep_id ) ) { return false; }
+
+		// Get the step id for the substep
+		$previous_step_id = $this->get_step_id_for_registered_substep( $substep_id );
+
+		// Bail if step id was not found
+		if ( false === $previous_step_id ) { return false; }
+
+		// Get step index for the previous step
+		$previous_step_index = false;
+		foreach ( $this->get_registered_checkout_steps() as $step_index => $step_args ) {
+			// Skip if step id does not match
+			// Intentionally use loose comparison.
+			if ( $step_args[ 'step_id' ] != sanitize_title( $previous_step_id ) ) { continue; }
+
+			// Get step index
+			$previous_step_index = $step_index;
+			break;
+		}
+
+		// Get step index for the previous step
+		$new_step_index = false;
+		foreach ( $this->get_registered_checkout_steps() as $step_index => $step_args ) {
+			// Skip if step id does not match
+			// Intentionally use loose comparison.
+			if ( $step_args[ 'step_id' ] != sanitize_title( $new_step_id ) ) { continue; }
+
+			// Get step index
+			$new_step_index = $step_index;
+			break;
+		}
+
+		// Bail if step index not found
+		if ( false === $previous_step_index || false === $new_step_index ) { return false; }
+
+		// Get substeps of the previous step
+		$_previous_substeps = $this->get_registered_checkout_substeps( $previous_step_id );
+
+		// Look for a substep with the same id within the step and get the substep index.
+		$previous_substep_index = false;
+		foreach ( $_previous_substeps as $substep_index => $substep_args ) {
+			// Skip if substep id does not match
+			// Intentionally use loose comparison.
+			if ( $substep_args[ 'substep_id' ] != sanitize_title( $substep_id ) ) { continue; }
+
+			// Get substep index
+			$previous_substep_index = $substep_index;
+			break;
+		}
+
+		// Bail if substep index not found
+		if ( false === $previous_substep_index ) { return false; }
+
+		// Get substeps of the new step
+		$_new_substeps = $this->get_registered_checkout_substeps( $new_step_id );
+
+		// Get substep args and merge additional args
+		$_new_substep_args = $_previous_substeps[ $previous_substep_index ];
+		$_new_substep_args = is_array( $additional_substep_args ) ? array_merge( $_new_substep_args, $additional_substep_args ) : $_new_substep_args;
+
+		// Add substep to the new step
+		$_new_substeps[] = $_new_substep_args;
+
+		// Sort steps based on priority.
+		uasort( $_new_substeps, array( $this, 'checkout_step_priority_uasort_comparison' ) );
+		$_new_substeps = array_values( $_new_substeps );
+
+		// Update registered substeps for the new step
+		$this->registered_checkout_steps[ $new_step_index ][ 'substeps' ] = $_new_substeps;
+
+		// Remove substep from the previous step
+		unset( $_previous_substeps[ $substep_index ] );
+
+		// Sort steps based on priority.
+		uasort( $_previous_substeps, array( $this, 'checkout_step_priority_uasort_comparison' ) );
+		$_previous_substeps = array_values( $_previous_substeps );
+
+		// Update registered substeps for the previous step
+		$this->registered_checkout_steps[ $previous_step_index ][ 'substeps' ] = $_previous_substeps;
 
 		return true;
 	}
