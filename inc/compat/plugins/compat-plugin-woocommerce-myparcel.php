@@ -277,7 +277,7 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
 	public function maybe_set_substep_incomplete_shipping_method( $is_substep_complete ) {
-		// Bail if step is already incomplete
+		// Bail if substep is already incomplete
 		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
 		// Maybe set substep as incomplete if shipping method associated with MyParcel is selected

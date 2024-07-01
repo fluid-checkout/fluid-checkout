@@ -159,7 +159,7 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 	 * @param   bool  $is_step_complete  Whether the step is complete or not.
 	 */
 	public function maybe_set_substep_incomplete_shipping_method( $is_step_complete ) {
-		// Bail if step is already incomplete
+		// Bail if substep is already incomplete
 		if ( ! $is_step_complete ) { return $is_step_complete; }
 
 		// Bail if class is not available

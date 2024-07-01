@@ -37,7 +37,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		// Checkout validation settings
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
 
-		// Maybe set step as incomplete
+		// Maybe set substep as incomplete
 		add_filter( 'fc_is_substep_complete_pickup_point', array( $this, 'maybe_set_substep_incomplete_pickup_point' ), 10 );
 
 		// Shipping address
@@ -328,13 +328,13 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
 	public function maybe_set_substep_incomplete_pickup_point( $is_substep_complete ) {
-		// Bail if step is already incomplete
+		// Bail if substep is already incomplete
 		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 		
 		// Bail if Hungarian Pickup Points shipping method is not selected
 		if ( ! $this->is_shipping_method_vp_pont_selected() ) { return $is_substep_complete; }
 
-		// Maybe set step as incomplete if a Hungarian Pickup Points location is not yet selected
+		// Maybe set substep as incomplete if a Hungarian Pickup Points location is not yet selected
 		if ( ! $this->is_vp_pont_location_selected() ) {
 			$is_substep_complete = false;
 		}
