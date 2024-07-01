@@ -154,16 +154,16 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 
 
 	/**
-	 * Set the shipping step as incomplete.
+	 * Set the shipping substep as incomplete.
 	 *
-	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 * @param   bool  $is_substep_complete  Whether the step is complete or not.
 	 */
-	public function maybe_set_substep_incomplete_shipping_method( $is_step_complete ) {
+	public function maybe_set_substep_incomplete_shipping_method( $is_substep_complete ) {
 		// Bail if substep is already incomplete
-		if ( ! $is_step_complete ) { return $is_step_complete; }
+		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
 		// Bail if class is not available
-		if ( ! class_exists( self::CLASS_NAME ) ) { return $is_step_complete; }
+		if ( ! class_exists( self::CLASS_NAME ) ) { return $is_substep_complete; }
 
 		// Get object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( self::CLASS_NAME );
@@ -172,7 +172,7 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
 
 		// Bail if there are no shipping methods selected
-		if ( empty( $chosen_shipping_methods ) ) { return $is_step_complete; }
+		if ( empty( $chosen_shipping_methods ) ) { return $is_substep_complete; }
 
 		// Check whether target shipping method is selected
 		$has_target_shipping_method = false;
@@ -184,17 +184,17 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 		}
 
 		// Bail if target shipping method is not selected
-		if ( ! $has_target_shipping_method ) { return $is_step_complete; }
+		if ( ! $has_target_shipping_method ) { return $is_substep_complete; }
 
 		// Get selected terminal
 		$selected_terminal = WC()->session->get( self::SESSION_FIELD_NAME );
 
 		// Maybe set substep as incomplete
 		if ( empty( $selected_terminal ) ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 
