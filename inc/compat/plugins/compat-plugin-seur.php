@@ -174,7 +174,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 		if ( empty( $custom_name_classic_2shop ) ) { $custom_name_classic_2shop = 'SEUR CLASSIC 2SHOP'; }
 
 		// Maybe set as local pickup shipping method
-		if ( $method->label === $custom_name_seur_2shop || $method->label === $custom_name_classic_2shop ) {
+		if ( $method && ( $method->label === $custom_name_seur_2shop || $method->label === $custom_name_classic_2shop ) ) {
 			return true;
 		}
 
