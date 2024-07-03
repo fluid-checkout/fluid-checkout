@@ -56,7 +56,7 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_shipping_collapsible_in
 			<?php do_action( 'fc_before_checkout_shipping_only_form', $checkout ); ?>
 
 			<?php // CHANGE: Display shipping only fields ?>
-			<?php if ( count( $shipping_only_fields ) > 0 ) : ?>
+			<?php if ( $shipping_only_fields && count( $shipping_only_fields ) > 0 ) : ?>
 			<div class="woocommerce-shipping-only-fields__field-wrapper">
 				<?php
 				foreach ( $shipping_only_fields as $key => $field ) {
