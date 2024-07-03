@@ -1,5 +1,5 @@
 === Fluid Checkout for WooCommerce - Lite ===
-Contributors: fluidwebco, diegoversiani
+Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 9.0.2
 * Added: Compatibility with theme Konte.
 * Added: Compatibility with plugin Qode Framework.
 * Added: Compatibility with plugin SuperFaktúra WooCommerce.
