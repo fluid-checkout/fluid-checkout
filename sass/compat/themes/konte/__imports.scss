@@ -1,0 +1,18 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-konte' !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"checkout-validation",
+	"tom-select-control",
+	"woocommerce-form-fields",
+	"woocommerce-form-fields-select2";

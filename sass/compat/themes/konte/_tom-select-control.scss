@@ -1,0 +1,17 @@
+// ------------------------------------
+// TOM SELECT CONTROL
+// ------------------------------------
+
+body#{ $_body-theme-selector } .ts-control {
+	border-bottom: 2px solid #e3e7e8; // Needed to use theme color to match its styles
+	transition: 0.4s;
+}
+
+body#{ $_body-theme-selector } form.woocommerce-checkout .ts-control {
+	border-color: #cdcfd0; // Needed to use theme color to match its styles
+}
+
+body#{ $_body-theme-selector } .ts-control:hover,
+body#{ $_body-theme-selector } form.woocommerce-checkout .ts-control:hover {
+	border-color: #161619; // Needed to use theme color to match its styles
+}

@@ -1,5 +1,5 @@
 === Fluid Checkout for WooCommerce - Lite ===
-Contributors: fluidwebco, diegoversiani
+Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
@@ -361,6 +361,18 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Bump tested up to WooCommerce 9.0.2
+* Added: Compatibility with theme Konte.
+* Added: Compatibility with plugin Qode Framework.
+* Added: Compatibility with plugin SuperFaktúra WooCommerce.
+* Fixed: Max width for the container element on the checkout page when using the plugin's container classes.
+* Fixed: Also trigger checkout update for text fields with class `update_totals_on_change`.
+* Fixed: Shipping methods list not expanding correctly and overlapping with other elements.
+* Fixed: Fatal errors with some 3rd-party plugins when trying to retrieve customer address data from the checkout session too early.
+* Fixed: Do not use cache for customer address data values as this might affect how other plugins work with the data.
 
 = 3.1.10 - 2024-06-20 =
 
