@@ -135,7 +135,7 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	 * @param  object  $method   The shipping method object.
 	 */
 	public function maybe_change_shipping_method_option_image_html( $html, $method ) {
-		// Bail if not a Mondial Relay shipping method
+		// Bail if not a shipping method from this plugin
 		if ( ! $this->is_shipping_method_mondial_relay( $method->id ) ) { return $html; }
 
 		// Get shipping method instance
