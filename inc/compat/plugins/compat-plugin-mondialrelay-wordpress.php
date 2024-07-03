@@ -34,6 +34,9 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	public function hooks() {
 		// Shipping methods hooks
 		add_action( 'woocommerce_shipping_init', array( $this, 'shipping_methods_hooks' ), 100 );
+
+		// Shipping methods
+		add_filter( 'fc_shipping_method_option_image_html', array( $this, 'maybe_change_shipping_method_option_image_html' ), 10, 2 );
 	}
 
 	/**
@@ -121,6 +124,33 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 
 		// Output
 		echo $html;
+	}
+
+
+
+	/**
+	 * Maybe change the shipping method option image HTML.
+	 * 
+	 * @param  string  $html     The HTML of the shipping method option image.
+	 * @param  object  $method   The shipping method object.
+	 */
+	public function maybe_change_shipping_method_option_image_html( $html, $method ) {
+		// Bail if not a Mondial Relay shipping method
+		if ( ! $this->is_shipping_method_mondial_relay( $method->id ) ) { return $html; }
+
+		// Get shipping method instance
+		$method_instance = new MRWP_Shipping_Method( $method->get_instance_id() );
+
+		// Bail if not set to display the logo
+		if ( $method_instance && 'yes' !== $method_instance->get_option( 'display_logo' ) ) { return $html; }
+
+		// Get image URL
+		$image_url = trailingslashit( plugins_url() ) . 'mondialrelay-wordpress/public/img/mondial-relay-logo.png';
+
+		// Define image HTML
+		$html = '<img class="shipping_logo" src="' . $image_url . '" alt="Mondial Relay"/>';
+
+		return $html;
 	}
 
 }
