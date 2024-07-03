@@ -1,0 +1,77 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row-last label {
+	display: inline-block;
+}
+
+body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"],
+body#{ $_body-theme-selector }.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
+	textarea,
+	select,
+	input[type="email"],
+	input[type="number"],
+	input[type="date"],
+	input[type="search"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"],
+	.select2-selection__rendered,
+	.ts-control {
+		padding-#{ $alignment-left }: remsize( 1rem );
+	}
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .input-checkbox {
+	display: none;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row label.checkbox > span {
+	padding-#{ $alignment-left }: 30px; // Needed to use `px` as units to match theme styles
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row label.checkbox > span:before {
+	content: "";
+	width: 20px; // Needed to use `px` as units to match theme styles
+	height: 20px; // Needed to use `px` as units to match theme styles
+	position: absolute;
+	#{ $alignment-left }: 0;
+	top: 0.1em; // Needed to use `em` as units to match theme styles
+	margin-#{ $alignment-right }: 10px; // Needed to use `px` as units to match theme styles
+	border: 1px solid #e3e7e8; // Needed to use theme color to match its styles
+	background: #e3e7e8; // Needed to use theme color to match its styles
+	transition: 0.4s;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row label.checkbox > span:after {
+	content: "";
+	width: 20px; // Needed to use `px` as units to match theme styles
+	height: 20px; // Needed to use `px` as units to match theme styles
+	position: absolute;
+	#{ $alignment-left }: 0;
+	top: 0.1em; // Needed to use `em` as units to match theme styles
+	margin-#{ $alignment-right }: 10px; // Needed to use `px` as units to match theme styles
+	background: #e3e7e8; // Needed to use theme color to match its styles
+	transition: 0.4s;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row label.checkbox > .input-checkbox:checked + span:before {
+	border-color: #161619; // Needed to use theme color to match its styles
+	background: transparent;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row label.checkbox > .input-checkbox + span:after {
+	opacity: 0;
+	background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSIxMnB4IiBoZWlnaHQ9IjEycHgiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTIgMTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxnPjxnPjxwb2x5Z29uIHBvaW50cz0iNC4xNzcsMTAuNTQzIDAuNDM0LDYuOCAxLjU2Niw1LjY2OCA0LjE3Nyw4LjI3OSAxMC40MzUsMi4wMjMgMTEuNTY1LDMuMTU1ICIvPjwvZz48L2c+PC9zdmc+") no-repeat center center;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row label.checkbox > .input-checkbox:checked + span:after {
+	opacity: 1;
+}
+
+body#{ $_body-theme-selector }.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] label.checkbox > span:before,
+body#{ $_body-theme-selector }.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] label.checkbox > span:before {
+	background: $white;
+}

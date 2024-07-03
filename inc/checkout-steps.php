@@ -2820,7 +2820,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Get field key
 			$address_field_key = str_replace( $field_key_prefix, '', $field_key );
-			$address_data[ $address_field_key ] = WC()->checkout->get_value( $field_key );
+
+			// Set field value to the address data
+			$field_value = WC()->checkout->get_value( $field_key );
+			$address_data[ $address_field_key ] = null !== $field_value ? WC()->checkout->get_value( $field_key ) : '';
 		}
 
 		// Filter address data
@@ -5706,6 +5709,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param   mixed        $value      The field value.
 	 * @param   WC_Customer  $customer   The customer object.
+	 * 
+	 * IMPORTANT: This function cannot use cached values because values for the fields
+	 *            might change during the lifecycle of the request process.
 	 */
 	public function maybe_change_customer_address_field_value_from_checkout_data( $value, $customer ) {
 		// Get name of the current filter hook running this function
@@ -5717,13 +5723,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get field key
 		$field_key = str_replace( 'woocommerce_customer_get_', '', $hook_name );
 
-		// Try to return value from cache
-		$cache_handle = 'customer_address_field_value_' . $field_key;
-		if ( array_key_exists( $cache_handle, $this->cached_values ) ) {
-			// Return value from cache
-			return $this->cached_values[ $cache_handle ];
-		}
-
 		// Get checkout session value
 		$session_value = $this->get_checkout_field_value_from_session_or_posted_data( $field_key );
 
@@ -5731,9 +5730,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! empty( $session_value ) ) {
 			$value = $session_value;
 		}
-
-		// Set cache
-		$this->cached_values[ $cache_handle ] = $value;
 
 		// Return new value
 		return $value;
