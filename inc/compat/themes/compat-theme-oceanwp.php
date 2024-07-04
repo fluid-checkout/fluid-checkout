@@ -21,7 +21,6 @@ class FluidCheckout_ThemeCompat_OceanWP extends FluidCheckout {
 	public function hooks() {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
-		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
@@ -29,6 +28,9 @@ class FluidCheckout_ThemeCompat_OceanWP extends FluidCheckout {
 		// Multistep checkout
 		$this->maybe_undo_multistep_checkout_hooks();
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_multistep_assets' ), 300 );
+
+		// Checkout template hooks
+		$this->checkout_template_hooks();
 	}
 
 	/**
@@ -89,19 +91,35 @@ class FluidCheckout_ThemeCompat_OceanWP extends FluidCheckout {
 
 
 	/**
-	 * Add container class to the main content element.
-	 *
-	 * @param string $class Main content element classes.
+	 * Add checkout template hooks.
 	 */
-	public function change_fc_content_section_class( $class ) {
-		// Add `fc-container` when using distraction free header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) {
-			return $class . ' fc-container';
-		}
-		// Add `container` when using theme header and footer
-		else {
-			return $class . ' container';
-		}
+	public function checkout_template_hooks() {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		// Theme's inner containers
+		add_action( 'fc_checkout_before_main_section', array( $this, 'add_inner_container_opening_tag' ), 10 );
+		add_action( 'fc_checkout_after_main_section', array( $this, 'add_inner_container_closing_tag' ), 10 );
+	}
+
+
+
+	/**
+	 * Add opening tag for inner container from the theme.
+	 */
+	public function add_inner_container_opening_tag() {
+		?>
+		<div class="container">
+		<?php
+	}
+
+	/**
+	 * Add closing tag for inner container from the theme.
+	 */
+	public function add_inner_container_closing_tag() {
+		?>
+		</div>
+		<?php
 	}
 
 
