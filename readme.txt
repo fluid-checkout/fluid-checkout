@@ -362,6 +362,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Compatibility with theme Ocean WP.
+
 = 3.1.11 - 2024-07-03 =
 
 * Bump tested up to WooCommerce 9.0.2
