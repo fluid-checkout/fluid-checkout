@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Compatibility with theme Ocean WP.
 * Improved: Compatibility with theme Hello Elementor.
 
 = 3.1.11 - 2024-07-03 =
