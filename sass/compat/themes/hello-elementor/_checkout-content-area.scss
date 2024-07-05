@@ -1,0 +1,10 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content.site-main {
+	@media (#{$bp-smaller-than-tablet}) { 
+		padding-#{ $alignment-left }: remsize( 2rem );
+		padding-#{ $alignment-right }: remsize( 2rem );
+	}
+}
