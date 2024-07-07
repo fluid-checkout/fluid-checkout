@@ -22,7 +22,7 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	 *
 	 * @var array
 	 */
-	private $carrier_agent_ids = array();
+	public $carrier_agent_ids = array();
 
 
 
