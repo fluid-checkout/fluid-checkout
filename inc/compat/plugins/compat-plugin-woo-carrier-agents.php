@@ -50,6 +50,9 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 
 		// Maybe set step as incomplete
 		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
+
+		// Add substep review text lines
+		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 	}
 
 
@@ -127,10 +130,14 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	 * @param  array  $posted_data   Post data for all checkout fields.
 	 */
 	public function maybe_set_terminals_field_session_values( $posted_data ) {
+		// Field key used for carrier agent data
+		$field_key = 'carrier-agents-data';
+
 		// Bail if field value was not posted
 		if ( ! array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) ) { return $posted_data; }
 
 		// Save field value to session, as it is needed for the plugin to recover its value
+		WC()->session->set( $field_key, $posted_data[ $field_key ] );
 		WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
 
 		// Return unchanged posted data
@@ -184,6 +191,67 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		}
 
 		return $is_step_complete;
+	}
+
+
+
+	/**
+	 * Add the shipping methods substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Get currently selected shipping methods
+		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
+
+		// Bail if there are no shipping methods selected
+		if ( empty( $chosen_shipping_methods ) ) { return $review_text_lines; }
+
+		// Check whether target shipping method is selected
+		$has_target_shipping_method = false;
+		foreach ( $chosen_shipping_methods as $shipping_method_id ) {
+			// Check if currently chosen shipping method is a Woo Carrier Agent
+			$matching_carrier_agent_id = $this->get_matching_woo_carrier_agent_id( $shipping_method_id );
+
+			// Break if a Woo Carrier Agent shipping method matches the selected shipping method
+			if ( $matching_carrier_agent_id ) {
+				$has_target_shipping_method = true;
+				break;
+			}
+		}
+
+		// Bail if target shipping method is not selected
+		if ( ! $has_target_shipping_method ) { return $review_text_lines; }
+
+		// Get selected carrier agent
+		$data = WC()->session->get( 'carrier-agents-data' );
+		$selected_agent = WC()->session->get( self::SESSION_FIELD_NAME );
+
+		// Bail if there is no selected carrier agent
+		if ( empty( $selected_agent ) ) { return $review_text_lines; }
+
+		// Get IDs
+		$carrier_instance_id = key( $selected_agent );
+		$agent_id = $selected_agent[ $carrier_instance_id ];
+
+		// Generate array key to get selected carrier agent name
+		$array_key = sprintf( '%s][%s][title', $carrier_instance_id, $agent_id );
+
+		// Get carrier agent name
+		$agent_name = '';
+		if ( isset( $data[ $array_key ] ) ) {
+			$agent_name = sanitize_text_field( $data[ $array_key ] );
+		}
+
+		// Add carrier agent name as review text line if not empty
+		if ( ! empty( $agent_name ) ) {
+			$review_text_lines[] = $agent_name;
+		}
+
+		return $review_text_lines;
 	}
 
 }
