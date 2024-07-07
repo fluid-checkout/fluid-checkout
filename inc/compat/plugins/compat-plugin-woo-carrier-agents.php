@@ -114,6 +114,9 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	 * @param  string  $shipping_method_id  The shipping method ID.
 	 */
 	public function get_matching_woo_carrier_agent_id( $shipping_method_id ) {
+		// Bail if no carrier agent IDs are available
+		if ( empty( $this->carrier_agent_ids ) ) { return; }
+
 		// Check if any carrier agent IDs starts with the given shipping method ID
 		foreach ( $this->carrier_agent_ids as $carrier_agent_id ) {
 			if ( 0 === strpos( $shipping_method_id, $carrier_agent_id ) ) {
