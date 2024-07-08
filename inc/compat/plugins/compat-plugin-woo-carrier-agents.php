@@ -12,9 +12,14 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	public const CLASS_NAME = 'Woo_Carrier_Agents';
 
 	/**
-	 * Session field name.
+	 * Session field name for the selected pickup location.
 	 */
 	public const SESSION_FIELD_NAME = 'carrier-agent';
+
+	/**
+	 * Session field name for the carrier agent data.
+	 */
+	public const SESSION_FIELD_NAME_DATA = 'carrier-agents-data';
 
 
 	/**
@@ -133,14 +138,11 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	 * @param  array  $posted_data   Post data for all checkout fields.
 	 */
 	public function maybe_set_terminals_field_session_values( $posted_data ) {
-		// Field key used for carrier agent data
-		$field_key = 'carrier-agents-data';
-
-		// Bail if field value was not posted
-		if ( ! array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) ) { return $posted_data; }
+		// Bail if field values were not posted
+		if ( ! array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) || ! array_key_exists( self::SESSION_FIELD_NAME_DATA, $posted_data ) ) { return $posted_data; }
 
 		// Save field value to session, as it is needed for the plugin to recover its value
-		WC()->session->set( $field_key, $posted_data[ $field_key ] );
+		WC()->session->set( self::SESSION_FIELD_NAME_DATA, $posted_data[ self::SESSION_FIELD_NAME_DATA ] );
 		WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
 
 		// Return unchanged posted data
