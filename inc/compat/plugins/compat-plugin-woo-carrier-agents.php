@@ -179,7 +179,7 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 
 
 	/**
-	 * Set the shipping step as incomplete when shipping method is Hungarian Pickup Points and no pickup point is selected.
+	 * Set the shipping step as incomplete when shipping method is Woo Carrier Agents and no pickup point is selected.
 	 *
 	 * @param   bool  $is_step_complete  Whether the step is complete or not.
 	 */
