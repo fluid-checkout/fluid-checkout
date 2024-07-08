@@ -241,6 +241,9 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Bail if there is no selected carrier agent
 		if ( empty( $selected_agent ) ) { return $review_text_lines; }
 
+		// Bail if carrier agent data is not avaialble
+		if ( ! is_array( $data ) || empty( $data ) ) { return $review_text_lines; }
+
 		// Get IDs
 		$carrier_instance_id = key( $selected_agent );
 		$agent_id = $selected_agent[ $carrier_instance_id ];
