@@ -58,6 +58,9 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
+
+		// Checkout validation settings
+		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
 	}
 
 
@@ -257,6 +260,27 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		}
 
 		return $review_text_lines;
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object for the checkout validation.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function change_js_settings_checkout_validation( $settings ) {
+		// Get current values
+		$current_validate_field_selector = array_key_exists( 'validateFieldsSelector', $settings ) ? $settings[ 'validateFieldsSelector' ] : '';
+		$current_reference_node_selector = array_key_exists( 'referenceNodeSelector', $settings ) ? $settings[ 'referenceNodeSelector' ] : '';
+		$current_always_validate_selector = array_key_exists( 'alwaysValidateFieldsSelector', $settings ) ? $settings[ 'alwaysValidateFieldsSelector' ] : '';
+
+		// Prepend new values to existing settings
+		$settings[ 'validateFieldsSelector' ] = 'input[name="' . self::SESSION_FIELD_NAME . '"]' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
+		$settings[ 'referenceNodeSelector' ] = 'input[name="' . self::SESSION_FIELD_NAME . '"]' . ( ! empty( $current_reference_node_selector ) ? ', ' : '' ) . $current_reference_node_selector;
+		$settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="' . self::SESSION_FIELD_NAME . '"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
+
+		return $settings;
 	}
 
 }
