@@ -55,6 +55,9 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 
 		// Remove Mondial Relay logo from order overview
 		remove_filter( 'woocommerce_cart_shipping_method_full_label', array( 'MRWP_Shipping_Method', 'embellish_label' ), 10, 2 );
+
+		// Remove Mondial Relay button from order overview
+		add_filter( 'mrwp_modaal_button', '__return_empty_string' );
 	}
 
 
