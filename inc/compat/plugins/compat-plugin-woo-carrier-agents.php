@@ -202,6 +202,55 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 
 
 	/**
+	 * Transform terminal data into a multidimensional array.
+	 *
+	 * @param   array  $terminal_data  The terminal data.
+	 */
+	public function transform_terminal_data( $terminal_data ) {
+		// Iterate through each item in the terminal data array
+		foreach ( $terminal_data as $key => $value ) {
+			// Split the key into parts divided by ']['
+			$parts = explode( '][', $key );
+
+			// Extract the agent ID from the first part
+			$agent_id = array_shift( $parts );
+
+			// Create a reference to the current level of the new array
+			$level_reference = &$terminal_data_transformed[ $agent_id ];
+
+			// For each part of the original key build new level of the nested array
+			foreach ( $parts as $part ) {
+				$level_reference = &$level_reference[ $part ];
+			}
+			
+			// Assign the original array value to the last level of the new array
+			$level_reference = $value;
+		}
+
+		return $terminal_data_transformed;
+	}
+
+
+
+	/**
+	 * Get terminal data for the selected carrier agent.
+	 */
+	public function get_terminal_data() {
+		// Get data for all fetched terminals
+		$terminal_data = WC()->session->get( self::SESSION_FIELD_NAME_DATA );
+
+		// Bail if terminal data is not available
+		if ( ! is_array( $terminal_data ) || empty( $terminal_data ) ) { return; }
+
+		// Transform terminal data into a more usable format
+		$terminal_data = $this->transform_terminal_data( $terminal_data );
+
+		return $terminal_data;
+	}
+
+
+
+	/**
 	 * Add the shipping methods substep review text lines.
 	 * 
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
@@ -210,54 +259,36 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
-		// Get currently selected shipping methods
-		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
-
-		// Bail if there are no shipping methods selected
-		if ( empty( $chosen_shipping_methods ) ) { return $review_text_lines; }
-
-		// Check whether target shipping method is selected
-		$has_target_shipping_method = false;
-		foreach ( $chosen_shipping_methods as $shipping_method_id ) {
-			// Check if currently chosen shipping method is a Woo Carrier Agent
-			$matching_carrier_agent_id = $this->get_matching_woo_carrier_agent_id( $shipping_method_id );
-
-			// Break if a Woo Carrier Agent shipping method matches the selected shipping method
-			if ( $matching_carrier_agent_id ) {
-				$has_target_shipping_method = true;
-				break;
-			}
-		}
-
 		// Bail if target shipping method is not selected
-		if ( ! $has_target_shipping_method ) { return $review_text_lines; }
+		if ( ! $this->is_shipping_method_carrier_agent_selected() ) { return $review_text_lines; }
 
-		// Get selected carrier agent
-		$data = WC()->session->get( 'carrier-agents-data' );
-		$selected_agent = WC()->session->get( self::SESSION_FIELD_NAME );
+		// Get selected terminal
+		$selected_terminal = WC()->session->get( self::SESSION_FIELD_NAME );
 
-		// Bail if there is no selected carrier agent
-		if ( empty( $selected_agent ) ) { return $review_text_lines; }
+		// Bail if there is no selected terminal
+		if ( empty( $selected_terminal ) ) { return $review_text_lines; }
 
-		// Bail if carrier agent data is not available
-		if ( ! is_array( $data ) || empty( $data ) ) { return $review_text_lines; }
+		// Get terminal data
+		$terminal_data = $this->get_terminal_data();
 
-		// Get IDs
-		$carrier_instance_id = key( $selected_agent );
-		$agent_id = $selected_agent[ $carrier_instance_id ];
+		// Bail if terminal data is not available
+		if ( ! $terminal_data ) { return $review_text_lines; }
 
-		// Generate array key to get selected carrier agent name
-		$array_key = sprintf( '%s][%s][title', $carrier_instance_id, $agent_id );
+		// Get agent ID (shipping method)
+		$agent_id = key( $selected_terminal );
 
-		// Get carrier agent name
-		$agent_name = '';
-		if ( isset( $data[ $array_key ] ) ) {
-			$agent_name = sanitize_text_field( $data[ $array_key ] );
+		// Get terminal ID
+		$terminal_id = $selected_terminal[ $agent_id ];
+
+		// Get terminal name
+		$terminal_name = '';
+		if ( isset( $terminal_data[ $agent_id ][ $terminal_id ]['title'] ) ) {
+			$terminal_name = sanitize_text_field( $terminal_data[ $agent_id ][ $terminal_id ]['title'] );
 		}
 
-		// Add carrier agent name as review text line if not empty
-		if ( ! empty( $agent_name ) ) {
-			$review_text_lines[] = $agent_name;
+		// Add terminal name as review text line if not empty
+		if ( ! empty( $terminal_name ) ) {
+			$review_text_lines[] = $terminal_name;
 		}
 
 		return $review_text_lines;
