@@ -84,9 +84,7 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		if ( ! is_array( $shipping_methods ) ) { return; }
 
 		// Turn 2 dimensional array into 1 dimensional with keys as values
-		array_walk_recursive( $shipping_methods, function( $value, $key ) {
-			$this->carrier_agent_ids[] = $key;
-		} );
+		$this->carrier_agent_ids = array_keys( $shipping_methods );
 	}
 
 
