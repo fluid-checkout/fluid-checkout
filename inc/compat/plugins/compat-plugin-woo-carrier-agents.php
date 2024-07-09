@@ -101,14 +101,14 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		if ( ! is_array( $hooks ) ) { $hooks = array(); }
 
 		// Remove postcode search from the order summary section if it exists
-		if ( isset( $hooks['woocommerce_checkout_order_review'] ) ) {
-			unset( $hooks['woocommerce_checkout_order_review'] );
+		if ( isset( $hooks[ 'woocommerce_checkout_order_review' ] ) ) {
+			unset( $hooks[ 'woocommerce_checkout_order_review' ] );
 		}
 		
 		// Add postcode search to the shipping methods section if it's not already there
 		if ( ! in_array( 'fc_shipping_methods_after_packages_inside', $hooks ) ) {
 			// Target hook name and priority
-			$hooks['fc_shipping_methods_after_packages_inside'] = 10;
+			$hooks[ 'fc_shipping_methods_after_packages_inside' ] = 10;
 		}
 		
 		return $hooks;
@@ -241,7 +241,7 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Bail if there is no selected carrier agent
 		if ( empty( $selected_agent ) ) { return $review_text_lines; }
 
-		// Bail if carrier agent data is not avaialble
+		// Bail if carrier agent data is not available
 		if ( ! is_array( $data ) || empty( $data ) ) { return $review_text_lines; }
 
 		// Get IDs
