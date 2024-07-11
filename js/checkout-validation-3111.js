@@ -374,6 +374,8 @@
 			var validationTypeName = validationTypeNames[i];
 			var validationType = _validationTypes[ validationTypeName ];
 			if ( validationType.needsValidation( field, formRow, validationEvent ) ) {
+				console.log("field:")
+				console.log(field)
 				return true;
 			}
 		}

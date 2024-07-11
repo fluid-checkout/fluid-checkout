@@ -44,6 +44,18 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
+		// Output hidden fields
+		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_custom_hidden_fields' ), 10 );
+
 		// Postcode search section
 		add_filter( 'woo_carrier_agents_search_output', array( $this, 'maybe_change_postcode_search_placement' ), 10 );
 
@@ -61,6 +73,70 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 
 		// Checkout validation settings
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Add validation script
+		wp_register_script( 'fc-checkout-validation-woo-carrier-agents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-carrier-agents/checkout-validation-woo-carrier-agents' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-validation-woo-carrier-agents', 'window.addEventListener("load",function(){CheckoutValidationWooCarrierAgents.init(fcSettings.CheckoutValidationWooCarrierAgents);})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-validation-woo-carrier-agents' );
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Add validation settings
+		$settings[ 'checkoutValidationWooCarrierAgents' ] = array(
+			'validationMessages'  => array(
+				'pickup_point_not_selected' => __( 'Selecting a pickup point is required before proceeding.', 'fluid-checkout' ),
+			),
+		);
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Output the custom hidden fields.
+	 */
+	public function output_custom_hidden_fields( $checkout ) {
+		// Bail if target shipping method is not selected
+		if ( ! $this->is_shipping_method_carrier_agent_selected() ) { return; }
+
+		// Get selected terminal
+		$selected_terminal = WC()->session->get( self::SESSION_FIELD_NAME );
+
+		// Meaybe get selected terminal ID
+		$selected_terminal_id = '';
+		if ( is_array( $selected_terminal ) ) {
+			// Get the first value of the array which is the terminal ID
+			$selected_terminal_id = reset( $selected_terminal );
+		}
+
+		// Output custom hidden fields
+		echo '<div id="woo_carrier_agents-custom_checkout_fields" class="form-row fc-no-validation-icon">';
+		echo '<div class="woocommerce-input-wrapper">';
+		echo '<input type="hidden" id="woo_carrier_agents-terminal_id" name="woo_carrier_agents-terminal_id" value="'. esc_attr( $selected_terminal_id ) .'" class="validate-woo-carrier-agents">';
+		echo '</div>';
+		echo '</div>';
 	}
 
 
@@ -308,9 +384,9 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		$current_always_validate_selector = array_key_exists( 'alwaysValidateFieldsSelector', $settings ) ? $settings[ 'alwaysValidateFieldsSelector' ] : '';
 
 		// Prepend new values to existing settings
-		$settings[ 'validateFieldsSelector' ] = 'input[name="' . self::SESSION_FIELD_NAME . '"]' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
-		$settings[ 'referenceNodeSelector' ] = 'input[name="' . self::SESSION_FIELD_NAME . '"]' . ( ! empty( $current_reference_node_selector ) ? ', ' : '' ) . $current_reference_node_selector;
-		$settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="' . self::SESSION_FIELD_NAME . '"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
+		$settings[ 'validateFieldsSelector' ] = 'input[name="woo_carrier_agents-terminal_id"]' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
+		$settings[ 'referenceNodeSelector' ] = 'input[name="woo_carrier_agents-terminal_id"]' . ( ! empty( $current_reference_node_selector ) ? ', ' : '' ) . $current_reference_node_selector;
+		$settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="woo_carrier_agents-terminal_id"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
 
 		return $settings;
 	}
