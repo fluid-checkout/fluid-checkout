@@ -21,6 +21,11 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	 */
 	public const SESSION_FIELD_NAME_DATA = 'carrier-agents-data';
 
+	/**
+	 * Session field name for the entered postcode value.
+	 */
+	public const SESSION_FIELD_NAME_POSTCODE = 'woo-carrier-agents-postcode';
+
 
 	/**
 	 *	Carrier agent IDs.
@@ -81,9 +86,13 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
+		// Checkout scripts
+		wp_register_script( 'fc-checkout-woo-carrier-agents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-carrier-agents/checkout-woo-carrier-agents' ), array( 'jquery', 'fc-utils' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-woo-carrier-agents', 'window.addEventListener("load",function(){CheckoutWooCarrierAgents.init(fcSettings.checkoutWooCarrierAgents);})' );
+
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-woo-carrier-agents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-carrier-agents/checkout-validation-woo-carrier-agents' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-validation-woo-carrier-agents', 'window.addEventListener("load",function(){CheckoutValidationWooCarrierAgents.init(fcSettings.CheckoutValidationWooCarrierAgents);})' );
+		wp_add_inline_script( 'fc-checkout-validation-woo-carrier-agents', 'window.addEventListener("load",function(){CheckoutValidationWooCarrierAgents.init(fcSettings.checkoutValidationWooCarrierAgents);})' );
 	}
 
 	/**
@@ -91,6 +100,7 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	 */
 	public function enqueue_assets() {
 		// Scripts
+		wp_enqueue_script( 'fc-checkout-woo-carrier-agents' );
 		wp_enqueue_script( 'fc-checkout-validation-woo-carrier-agents' );
 	}
 
@@ -108,6 +118,15 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 				'pickup_point_not_selected' => __( 'Selecting a pickup point is required before proceeding.', 'fluid-checkout' ),
 			),
 		);
+
+		$entered_postcode = WC()->session->get( self::SESSION_FIELD_NAME_POSTCODE );
+
+		// Add checkout setting if postcode is entered
+		if ( ! empty( $entered_postcode ) ) {
+			$settings[ 'checkoutWooCarrierAgents' ] = array(
+				'enteredPostcode' => sanitize_text_field( $entered_postcode ),
+			);
+		}
 
 		return $settings;
 	}
@@ -221,6 +240,7 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Save field value to session, as it is needed for the plugin to recover its value
 		WC()->session->set( self::SESSION_FIELD_NAME_DATA, $posted_data[ self::SESSION_FIELD_NAME_DATA ] );
 		WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
+		WC()->session->set( self::SESSION_FIELD_NAME_POSTCODE, $posted_data[ self::SESSION_FIELD_NAME_POSTCODE ] );
 
 		// Return unchanged posted data
 		return $posted_data;
