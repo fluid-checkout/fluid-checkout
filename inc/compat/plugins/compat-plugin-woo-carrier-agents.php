@@ -143,7 +143,7 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Get selected terminal
 		$selected_terminal = WC()->session->get( self::SESSION_FIELD_NAME );
 
-		// Meaybe get selected terminal ID
+		// Maybe get selected terminal ID
 		$selected_terminal_id = '';
 		if ( is_array( $selected_terminal ) ) {
 			// Get the first value of the array which is the terminal ID
@@ -173,6 +173,7 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Bail if class method is not available
 		if ( ! method_exists( $class_object, 'get_carrier_titles' ) ) { return; }
 
+		// Get shipping method titles from the plugin
 		$shipping_methods = $class_object->get_carrier_titles();
 
 		// Bail if not array
@@ -267,8 +268,8 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 			// Get the first shipping method ID available
 			if ( $shipping_method_id ) {
 				// Extract the numeric value of the shipping method ID
-				$carrier_agent_id = explode( ':', $shipping_method_id );
-				$carrier_agent_id = end( $carrier_agent_id );
+				$carrier_agent_id_parts = explode( ':', $shipping_method_id );
+				$carrier_agent_id = end( $carrier_agent_id_parts );
 
 				// Return carrier agent ID if it's not empty and is numeric
 				if ( ! empty( $carrier_agent_id ) && is_numeric( $carrier_agent_id ) ) {
