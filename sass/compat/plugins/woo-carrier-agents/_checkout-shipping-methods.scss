@@ -1,0 +1,16 @@
+// ------------------------------------
+// CHECKOUT SHIPPING METHODS
+// ------------------------------------
+
+body.woocommerce-checkout .fc-content .carrier-agent {
+	padding-#{ $alignment-left }: 0;
+}
+
+body.woocommerce-checkout .fc-content .carrier-agent .carrier-agent-input input[type="radio"] {
+	position: static !important; // Needed to override FC styles
+	margin-top: remsize( 0.5rem ) !important; // Needed to override FC styles
+	margin-#{ $alignment-right }: remsize( 1rem ) !important; // Needed to override FC styles
+	width: auto;
+	height: auto;
+	opacity: 1 !important; // Needed to override FC styles
+}

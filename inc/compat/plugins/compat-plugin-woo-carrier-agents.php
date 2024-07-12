@@ -240,10 +240,42 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Save field value to session, as it is needed for the plugin to recover its value
 		WC()->session->set( self::SESSION_FIELD_NAME_DATA, $posted_data[ self::SESSION_FIELD_NAME_DATA ] );
 		WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
-		WC()->session->set( self::SESSION_FIELD_NAME_POSTCODE, $posted_data[ self::SESSION_FIELD_NAME_POSTCODE ] );
+		
+		// Additionaly save postcode value to session if it was entered
+		if ( array_key_exists( self::SESSION_FIELD_NAME_POSTCODE, $posted_data ) ) {
+			WC()->session->set( self::SESSION_FIELD_NAME_POSTCODE, $posted_data[ self::SESSION_FIELD_NAME_POSTCODE ] );
+		}
 
 		// Return unchanged posted data
 		return $posted_data;
+	}
+
+
+
+	/**
+	 * Get currently selected number carrier agent ID.
+	 */
+	public function get_numeric_carrier_agent_id() {
+		// Get currently selected shipping method
+		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
+
+		// Bail if there are no shipping methods selected
+		if ( empty( $chosen_shipping_methods ) ) { return; }
+
+		// Check whether target shipping method is selected
+		foreach ( $chosen_shipping_methods as $shipping_method_id ) {
+			// Get the first shipping method ID available
+			if ( $shipping_method_id ) {
+				// Extract the numeric value of the shipping method ID
+				$carrier_agent_id = explode( ':', $shipping_method_id );
+				$carrier_agent_id = end( $carrier_agent_id );
+
+				// Return carrier agent ID if it's not empty and is numeric
+				if ( ! empty( $carrier_agent_id ) && is_numeric( $carrier_agent_id ) ) {
+					return $carrier_agent_id;
+				}
+			}
+		}
 	}
 
 
@@ -370,8 +402,11 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Bail if terminal data is not available
 		if ( ! $terminal_data ) { return $review_text_lines; }
 
-		// Get agent ID (shipping method)
-		$agent_id = key( $selected_terminal );
+		// Get agent (shipping method) ID 
+		$agent_id = $this->get_numeric_carrier_agent_id();
+
+		// Bail if agent ID is not available
+		if ( ! $agent_id ) { return $review_text_lines; }
 
 		// Get terminal ID
 		$terminal_id = $selected_terminal[ $agent_id ];
