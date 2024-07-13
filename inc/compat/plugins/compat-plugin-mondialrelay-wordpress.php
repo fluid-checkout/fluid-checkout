@@ -14,7 +14,7 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	/**
 	 * Session field name.
 	 */
-	public const SESSION_FIELD_NAME = 'mrwp_parcel_shop_id';
+	public const SESSION_FIELD_NAME = 'mrwp_parcel_shop_address';
 
 
 	/**
@@ -45,6 +45,9 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+
+		// Add substep review text lines
+		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 	}
 
 	/**
@@ -180,6 +183,84 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 
 		// Return unchanged posted data
 		return $posted_data;
+	}
+
+
+
+	/**
+	 * Get the selected terminal info.
+	 */
+	public function get_selected_terminal_info() {
+		// Set default value to empty array
+		$selected_terminal_info = array();
+
+		// Get session field value
+		$selected_terminal = WC()->session->get( self::SESSION_FIELD_NAME );
+
+		// Bail if there is no selected terminal
+		if ( empty( $selected_terminal ) ) { return $selected_terminal_info; }
+
+		// Bail if the session value is not in the expected format
+		if ( 0 === strpos( $selected_terminal, "-MRWP-" ) ) { return; }
+
+		// Split session value received from the API into parts by using "-MRWP-" as separator
+		$terminal_parts = explode( '-MRWP-', $selected_terminal );
+
+		// Assign terminal parts to variables if they exist
+		$selected_terminal_info = array(
+			'company' => isset( $terminal_parts[0] ) ? $terminal_parts[0] : '',
+			'address_1' => isset( $terminal_parts[1] ) ? $terminal_parts[1] : '',
+			'address_2' => isset( $terminal_parts[2] ) ? $terminal_parts[2] : '',
+			'postcode' => isset( $terminal_parts[3] ) ? $terminal_parts[3] : '',
+			'city' => isset( $terminal_parts[4] ) ? $terminal_parts[4] : '',
+			'country' => isset( $terminal_parts[5] ) ? $terminal_parts[5] : '',
+		);
+
+		return $selected_terminal_info;
+	}
+
+
+
+	/**
+	 * Add the shipping methods substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Bail if class is not available
+		if ( ! class_exists( self::CLASS_NAME ) ) { return $review_text_lines; }
+
+		// Get currently selected shipping methods
+		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
+
+		// Bail if there are no shipping methods selected
+		if ( empty( $chosen_shipping_methods ) ) { return $review_text_lines; }
+
+		// Check whether target shipping method is selected
+		$has_target_shipping_method = false;
+		foreach ( $chosen_shipping_methods as $shipping_method_id ) {
+			if ( 0 === strpos( $shipping_method_id, self::SHIPPING_METHOD_ID ) ) {
+				$has_target_shipping_method = true;
+				break;
+			}
+		}
+
+		// Bail if target shipping method is not selected
+		if ( ! $has_target_shipping_method ) { return $review_text_lines; }
+
+		// Get selected terminal
+		$selected_terminal_info = $this->get_selected_terminal_info();
+
+		// Bail if there is no selected terminal
+		if ( empty( $selected_terminal_info ) ) { return $review_text_lines; }
+
+		// Add terminal name as review text line
+		$review_text_lines[] = $selected_terminal_info['company'];
+
+		return $review_text_lines;
 	}
 
 }
