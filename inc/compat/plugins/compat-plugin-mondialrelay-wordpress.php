@@ -11,6 +11,11 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	 */
 	public const SHIPPING_METHOD_ID = 'mondialrelay';
 
+	/**
+	 * Session field name.
+	 */
+	public const SESSION_FIELD_NAME = 'mrwp_parcel_shop_id';
+
 
 	/**
 	 * Class name for the plugin which this compatibility class is related to.
@@ -37,6 +42,9 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 
 		// Shipping methods
 		add_filter( 'fc_shipping_method_option_image_html', array( $this, 'maybe_change_shipping_method_option_image_html' ), 10, 2 );
+
+		// Persisted data
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 	}
 
 	/**
@@ -154,6 +162,24 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		$html = '<img class="shipping_logo" src="' . $image_url . '" alt="Mondial Relay"/>';
 
 		return $html;
+	}
+
+
+
+	/**
+	 * Maybe set session data for the terminals field.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_set_terminals_field_session_values( $posted_data ) {
+		// Bail if field value was not posted
+		if ( ! array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) ) { return $posted_data; }
+
+		// Save field value to session, as it is needed for the plugin to recover its value
+		WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
+
+		// Return unchanged posted data
+		return $posted_data;
 	}
 
 }
