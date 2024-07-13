@@ -1631,9 +1631,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if viewing order confirmation or order pay page
 		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) { return $formats; }
 
-		// Bail when displaying addresses for email messages
-		if ( did_action( 'woocommerce_email' ) ) { return $formats; }
-
 		foreach ( $formats as $locale => $format) {
 			$formats[ $locale ] = $format . "\n{phone}";
 		}
