@@ -1,11 +1,3 @@
-body.woocommerce-checkout #main.fc-main {
-  border: 0;
-}
-
-body.theme-oceanwp.has-fc-address-book-entries.has-highlighted-shipping-section .woocommerce-checkout .fc-wrapper .woocommerce-shipping-fields .woocommerce-shipping-fields__field-wrapper {
-  margin-top: 20px;
-}
-
 body.theme-oceanwp div.woocommerce form .form-row .select2-selection--single,
 body.theme-oceanwp div.woocommerce form .form-row .select2-selection--multiple {
   padding-top: 0;

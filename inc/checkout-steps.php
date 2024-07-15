@@ -2228,9 +2228,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if viewing order confirmation or order pay page
 		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) { return $formats; }
 
-		// Bail when displaying addresses for email messages
-		if ( did_action( 'woocommerce_email' ) ) { return $formats; }
-
 		foreach ( $formats as $locale => $format) {
 			$formats[ $locale ] = $format . "\n{phone}";
 		}
@@ -3840,7 +3837,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_ship_to_different_address_hidden_field() {
 		?>
 		<div id="ship-to-different-address" class="fc-hidden">
-			<input id="ship-to-different-address-checkbox" name="ship_to_different_address" type="checkbox" checked value="1" tabindex="-1" aria-hidden="true" />
+			<input id="ship-to-different-address-checkbox" name="ship_to_different_address" type="checkbox" checked value="1" tabindex="-1" aria-hidden="true" aria-label="<?php echo esc_attr( 'Ship to a different address?', 'woocommerce' ); ?>" />
 		</div>
 		<?php
 	}

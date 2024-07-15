@@ -11,9 +11,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {},
-  "author": "Fluidweb.co",
+  "author": "Fluid Checkout",
   "license": "GPL-3.0",
-  "copyright": "Copyright (c) 2021-2024, Fluidweb OÜ",
+  "copyright": "Copyright (c) 2021-2024, Fluid Checkout OÜ",
   "homepage": "https://fluidcheckout.com",
   "devDependencies": {
     "@wordpress/scripts": "^27.0.0",

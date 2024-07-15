@@ -1,10 +1,10 @@
 === Fluid Checkout for WooCommerce - Lite ===
-Contributors: fluidwebco, diegoversiani
+Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.5.4
-Stable tag: 3.1.10
+Stable tag: 3.1.11
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -371,6 +371,18 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Admin notice about changes to next major version and customization migration guide.
+* Improved: Compatibility with theme Ocean WP.
+* Improved: Compatibility with theme Hello Elementor.
+* Improved: Moved template files used to display customer addresses on email notifications from Fluid Checkout PRO to Lite.
+* Improved: Add accessibility label to hidden checkbox "Ship to different address" to overcome issue reported by automated accessibility validation tools.
+* Fixed: Prevent showing duplicate billing and shipping phone number values on email notifications.
+* Fixed: Make string translatable in compatibility class with Hungarian Pickup Points plugin.
+
+= 3.1.11 - 2024-07-03 =
+
+* Bump tested up to WooCommerce 9.0.2
+* Added: Compatibility with theme Konte.
 * Added: Compatibility with plugin Qode Framework.
 * Added: Compatibility with plugin SuperFaktúra WooCommerce.
 * Fixed: Max width for the container element on the checkout page when using the plugin's container classes.
