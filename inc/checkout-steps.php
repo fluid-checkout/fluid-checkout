@@ -3279,7 +3279,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_ship_to_different_address_hidden_field() {
 		?>
 		<div id="ship-to-different-address" class="fc-hidden">
-			<input id="ship-to-different-address-checkbox" name="ship_to_different_address" type="checkbox" checked value="1" tabindex="-1" aria-hidden="true" />
+			<input id="ship-to-different-address-checkbox" name="ship_to_different_address" type="checkbox" checked value="1" tabindex="-1" aria-hidden="true" aria-label="<?php echo esc_attr( 'Ship to a different address?', 'woocommerce' ); ?>" />
 		</div>
 		<?php
 	}
