@@ -323,6 +323,7 @@ class FluidCheckout {
 		require_once self::$directory_path . 'inc/admin/admin-notice-review-request.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-divi-checkout-layout-being-used.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-breaking-changes-version-400.php';
 	}
 
 
