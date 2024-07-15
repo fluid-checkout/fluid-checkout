@@ -92,6 +92,10 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
+		// Checkout scripts
+		wp_register_script( 'fc-checkout-mondial-relay', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mondialrelay/checkout-mondialrelay' ), array( 'jquery', 'fc-utils' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-mondial-relay', 'window.addEventListener("load",function(){CheckoutMondialRelay.init(fcSettings.checkoutMondialRelay);})' );
+
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-mondial-relay', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mondialrelay/checkout-validation-mondialrelay' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
 		wp_add_inline_script( 'fc-checkout-validation-mondial-relay', 'window.addEventListener("load",function(){CheckoutValidationMondialRelay.init(fcSettings.checkoutValidationMondialRelay);})' );
@@ -102,6 +106,7 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	 */
 	public function enqueue_assets() {
 		// Scripts
+		wp_enqueue_script( 'fc-checkout-mondial-relay' );
 		wp_enqueue_script( 'fc-checkout-validation-mondial-relay' );
 	}
 
