@@ -1,5 +1,5 @@
 /**
- * Manage checkout front-end validation for: WooCommerce Carrier Agents (by Markup.fi).
+ * Manage checkout front-end validation for: Hungarian Pickup Points & Shipping Labels for WooCommerce (by Viszt Péter).
  *
  * DEPENDS ON:
  * - checkout-validation.js // Main checkout validation script from Fluid Checkout
@@ -11,7 +11,7 @@
 	} else if ( typeof exports === 'object' ) {
 		module.exports = factory(root);
 	} else {
-		root.CheckoutValidationWooCarrierAgents = factory(root);
+		root.CheckoutValidationHungarianShippingMethods = factory(root);
 	}
 })(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
@@ -20,8 +20,8 @@
 	var _hasInitialized = false;
 	var _publicMethods = { };
 	var _settings = {
-		typeFieldSelector: '.validate-woo-carrier-agents',
-		sectionSelector: '.fc-shipping-method__packages',
+		typeFieldSelector: '.validate-hungarian-shipping-method',
+		sectionSelector: '.vp-woo-pont-pickup-location',
 		validationMessages: {
 			pickup_point_not_selected: 'Selecting a pickup point is required before proceeding.',
 		},
@@ -43,7 +43,7 @@
 	 * @return {Boolean}                   Whether the field is a CNPF field.
 	 */
 	var isValidateField = function( field, formRow, validationEvent ) {
-		// Bail if not a target shipping method field
+		// Bail if not a hungarian shipping method field
 		if ( ! field.matches( _settings.typeFieldSelector ) ) { return false; }
 
 		return true;
@@ -52,14 +52,14 @@
 
 
 	/**
-	 * Validate if a target shipping method collection point is selected.
+	 * Validate if a hungarian shipping method collection point is selected.
 	 * @param  {Field}    field            Field for validation.
 	 * @param  {Element}  formRow          Form row element.
 	 * @param  {String}   validationEvent  Event that triggered the validation.
-	 * @return {Boolean}                   Whether a target shipping method collection point has been selected.
+	 * @return {Boolean}                   Whether a hungarian shipping method collection point has been selected.
 	 */
 	var validateField = function( field, formRow, validationEvent ) {
-		// Bail if target shipping method field is empty
+		// Bail if hungarian shipping method field is empty
 		if ( '' === field.value ) {
 			// Scroll to section
 			var section = document.querySelector( _settings.sectionSelector );
@@ -81,7 +81,7 @@
 	 * Register validation types.
 	 */
 	var registerValidationTypes = function() {
-		CheckoutValidation.registerValidationType( 'woo-carrier-agents-shipping-method', 'woo-carrier-agents-shipping-method', isValidateField, validateField );
+		CheckoutValidation.registerValidationType( 'hungarian-shipping-method', 'hungarian-shipping-method', isValidateField, validateField );
 	}
 
 
