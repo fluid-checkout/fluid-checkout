@@ -21,9 +21,9 @@
 	var _publicMethods = {};
 	var _settings = {
 		searchFieldSelector: 'input[name="woo-carrier-agents-postcode"]',
-		enteredPostcode: '',
+		searchButtonSelector: '#woo-carrier-agents-search-button',
 	};
-
+	var _newEnteredPostcode = '';
 
 
 	/**
@@ -37,15 +37,24 @@
 	 */
 	var maybeUpdatePostcodeField = function() {
 		// Get postcode search input field
-		var $searchField = $( _settings.searchFieldSelector );
+		var searchField = document.querySelector( _settings.searchFieldSelector );
+		var searchButton = document.querySelector( _settings.searchButtonSelector );
+		var postcode =  _settings.enteredPostcode;
 
-		// Update postcode field with the previously entered value if the new one is not set
-		if ( $searchField.length && _settings.enteredPostcode ) {
-			$searchField.attr( 'value', _settings.enteredPostcode );
+		// Maybe update the variable if the new postcode value is set
+		if ( _newEnteredPostcode ) {
+			postcode = _newEnteredPostcode;
 		}
 
-		// Trigger search button click
-		$( '#woo-carrier-agents-search-button' ).trigger( 'click' );
+		// Maybe update postcode field with the previously entered value if the new one is not set
+		if ( postcode ) {
+			searchField.setAttribute( 'value', postcode );
+		}
+
+		// Maybe trigger search button click
+		if ( searchButton ) {
+			searchButton.click();
+		}
 	}
 
 
@@ -55,7 +64,7 @@
 	 */
 	var updatePostcodeValue = function() {
 		// Replace the old postcode with the entered value
-		_settings.enteredPostcode = $( this ).val();
+		_newEnteredPostcode = this.value;
 	}
 
 
