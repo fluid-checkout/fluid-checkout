@@ -349,14 +349,17 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		// Bail if target shipping method is not selected
 		if ( ! $has_target_shipping_method ) { return $review_text_lines; }
 
-		// Get selected terminal
+		// Get selected terminal info
 		$selected_terminal_info = $this->get_selected_terminal_info();
 
 		// Bail if there is no selected terminal
 		if ( empty( $selected_terminal_info ) ) { return $review_text_lines; }
 
-		// Add terminal name as review text line
-		$review_text_lines[] = $selected_terminal_info['company'];
+		// Format terminal info
+		$selected_terminal_info = WC()->countries->get_formatted_address( $selected_terminal_info );
+
+		// Add terminal info as review text line
+		$review_text_lines[] = $selected_terminal_info;
 
 		return $review_text_lines;
 	}
