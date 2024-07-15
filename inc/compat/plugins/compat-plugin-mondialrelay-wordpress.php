@@ -40,8 +40,23 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		// Shipping methods hooks
 		add_action( 'woocommerce_shipping_init', array( $this, 'shipping_methods_hooks' ), 100 );
 
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
+		// Checkout validation settings
+		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
+
 		// Shipping methods
 		add_filter( 'fc_shipping_method_option_image_html', array( $this, 'maybe_change_shipping_method_option_image_html' ), 10, 2 );
+
+		// Output hidden fields
+		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_custom_hidden_fields' ), 10 );
 
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
@@ -69,6 +84,64 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 
 		// Remove Mondial Relay button from order overview
 		add_filter( 'mrwp_modaal_button', '__return_empty_string' );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Add validation script
+		wp_register_script( 'fc-checkout-validation-mondial-relay', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mondialrelay/checkout-validation-mondialrelay' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-validation-mondial-relay', 'window.addEventListener("load",function(){CheckoutValidationMondialRelay.init(fcSettings.checkoutValidationMondialRelay);})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-validation-mondial-relay' );
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Add validation settings
+		$settings[ 'checkoutValidationMondialRelay' ] = array(
+			'validationMessages'  => array(
+				'pickup_point_not_selected' => __( 'Selecting a pickup point is required before proceeding.', 'fluid-checkout' ),
+			),
+		);
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object for the checkout validation.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function change_js_settings_checkout_validation( $settings ) {
+		// Get current values
+		$current_validate_field_selector = array_key_exists( 'validateFieldsSelector', $settings ) ? $settings[ 'validateFieldsSelector' ] : '';
+		$current_reference_node_selector = array_key_exists( 'referenceNodeSelector', $settings ) ? $settings[ 'referenceNodeSelector' ] : '';
+		$current_always_validate_selector = array_key_exists( 'alwaysValidateFieldsSelector', $settings ) ? $settings[ 'alwaysValidateFieldsSelector' ] : '';
+
+		// Prepend new values to existing settings
+		$settings[ 'validateFieldsSelector' ] = 'input[name="mondial_relay-terminal"]' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
+		$settings[ 'referenceNodeSelector' ] = 'input[name="mondial_relay-terminal"]' . ( ! empty( $current_reference_node_selector ) ? ', ' : '' ) . $current_reference_node_selector;
+		$settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="mondial_relay-terminal"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
+
+		return $settings;
 	}
 
 
@@ -102,6 +175,26 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		}
 
 		return $is_selected;
+	}
+
+
+
+	/**
+	 * Output the custom hidden fields.
+	 */
+	public function output_custom_hidden_fields( $checkout ) {
+		// Bail if target shipping method is not selected
+		if ( ! $this->is_shipping_method_selected() ) { return; }
+
+		// Get selected terminal
+		$selected_terminal = WC()->session->get( self::SESSION_FIELD_NAME );
+
+		// Output custom hidden fields
+		echo '<div id="mondial_relay-custom_checkout_fields" class="form-row fc-no-validation-icon">';
+		echo '<div class="woocommerce-input-wrapper">';
+		echo '<input type="hidden" id="mondial_relay-terminal" name="mondial_relay-terminal" value="'. esc_attr( $selected_terminal ) .'" class="validate-mondial-relay">';
+		echo '</div>';
+		echo '</div>';
 	}
 
 
