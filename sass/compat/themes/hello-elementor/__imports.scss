@@ -2,7 +2,7 @@
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-oceanwp' !default;
+$_body-theme-selector:                 '.theme-hello-elementor' !default;
 
 
 
@@ -12,4 +12,4 @@ $_body-theme-selector:                 '.theme-oceanwp' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"woocommerce-form-fields-select2";
+	"checkout-content-area";

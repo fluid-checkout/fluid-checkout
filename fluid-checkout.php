@@ -9,11 +9,11 @@ Version: 4.0.0-beta-1
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 9.0.1
+WC tested up to: 9.0.2
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
-Copyright (C) 2021-2024 Fluidweb OÜ
+Copyright (C) 2021-2024 Fluid Checkout OÜ
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -323,6 +323,7 @@ class FluidCheckout {
 		require_once self::$directory_path . 'inc/admin/admin-notice-review-request.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-divi-checkout-layout-being-used.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-breaking-changes-version-400.php';
 	}
 
 

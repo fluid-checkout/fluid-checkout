@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file and the plugin's readme.txt file.
 
-To avoid duplicate work, changes are first added to the [plugin's readme.txt file](https://github.com/fluidweb-co/fluid-checkout/blob/main/readme.txt), then after a few iterations, they are moved to this file.
+To avoid duplicate work, changes are first added to the [plugin's readme.txt file](https://github.com/fluid-checkout/fluid-checkout/blob/main/readme.txt), then after a few iterations, they are moved to this file.
 
 The format is based on the [WordPress plugin readme file standard](https://developer.wordpress.org/plugins/wordpress-org/how-your-readme-txt-works/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -17,7 +17,7 @@ Additional labels for beta builds are available as extensions to the MAJOR.MINOR
 
 # CHANGES
 
-[See latest changes in the plugin's readme.txt](https://github.com/fluidweb-co/fluid-checkout/blob/main/readme.txt)
+[See latest changes in the plugin's readme.txt](https://github.com/fluid-checkout/fluid-checkout/blob/main/readme.txt)
 
 = 3.1.7 - 2024-03-27 =
 
