@@ -22,8 +22,9 @@
 	var _settings = {
 		searchFieldSelector: 'input[name="woo-carrier-agents-postcode"]',
 		searchButtonSelector: '#woo-carrier-agents-search-button',
+		previousPostcodeFieldSelector: '#woo_carrier_agents-entered_postcode',
 	};
-	var _newEnteredPostcode = '';
+	var _enteredPostcode = '';
 
 
 	/**
@@ -39,16 +40,10 @@
 		// Get postcode search input field
 		var searchField = document.querySelector( _settings.searchFieldSelector );
 		var searchButton = document.querySelector( _settings.searchButtonSelector );
-		var postcode =  _settings.enteredPostcode;
 
-		// Maybe update the variable if the new postcode value is set
-		if ( _newEnteredPostcode ) {
-			postcode = _newEnteredPostcode;
-		}
-
-		// Maybe update postcode field with the previously entered value if the new one is not set
-		if ( postcode ) {
-			searchField.setAttribute( 'value', postcode );
+		// Maybe update postcode field value
+		if ( _enteredPostcode ) {
+			searchField.setAttribute( 'value', _enteredPostcode );
 		}
 
 		// Maybe trigger search button click
@@ -60,11 +55,22 @@
 
 
 	/**
-	 * Update entered postcode value.
+	 * Set previously entered postcode value as the current one.
+	 */
+	var setPreviousPostcodeValue = function() {
+		var previousPostcodeField = document.querySelector( _settings.previousPostcodeFieldSelector );
+
+		_enteredPostcode = previousPostcodeField.value;
+	}
+
+
+
+	/**
+	 * Update postcode value.
 	 */
 	var updatePostcodeValue = function() {
 		// Replace the old postcode with the entered value
-		_newEnteredPostcode = this.value;
+		_enteredPostcode = this.value;
 	}
 
 
@@ -77,6 +83,9 @@
 
 		// Merge settings
 		_settings = FCUtils.extendObject( _settings, options );
+
+		// Set postcode value
+		setPreviousPostcodeValue();
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {

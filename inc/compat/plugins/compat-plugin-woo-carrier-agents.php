@@ -21,11 +21,6 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	 */
 	public const SESSION_FIELD_NAME_DATA = 'carrier-agents-data';
 
-	/**
-	 * Session field name for the entered postcode value.
-	 */
-	public const SESSION_FIELD_NAME_POSTCODE = 'woo-carrier-agents-postcode';
-
 
 	/**
 	 *	Carrier agent IDs.
@@ -119,15 +114,6 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 			),
 		);
 
-		$entered_postcode = WC()->session->get( self::SESSION_FIELD_NAME_POSTCODE );
-
-		// Add checkout setting if postcode is entered
-		if ( ! empty( $entered_postcode ) ) {
-			$settings[ 'checkoutWooCarrierAgents' ] = array(
-				'enteredPostcode' => sanitize_text_field( $entered_postcode ),
-			);
-		}
-
 		return $settings;
 	}
 
@@ -150,10 +136,14 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 			$selected_terminal_id = reset( $selected_terminal );
 		}
 
+		// Get previously entered postcode
+		$entered_postcode = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'woo-carrier-agents-postcode' );
+
 		// Output custom hidden fields
 		echo '<div id="woo_carrier_agents-custom_checkout_fields" class="form-row fc-no-validation-icon">';
 		echo '<div class="woocommerce-input-wrapper">';
 		echo '<input type="hidden" id="woo_carrier_agents-terminal_id" name="woo_carrier_agents-terminal_id" value="'. esc_attr( $selected_terminal_id ) .'" class="validate-woo-carrier-agents">';
+		echo '<input type="hidden" id="woo_carrier_agents-entered_postcode" name="woo_carrier_agents-entered_postcode" value="'. esc_attr( $entered_postcode ) .'">';
 		echo '</div>';
 		echo '</div>';
 	}
@@ -241,11 +231,6 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Save field value to session, as it is needed for the plugin to recover its value
 		WC()->session->set( self::SESSION_FIELD_NAME_DATA, $posted_data[ self::SESSION_FIELD_NAME_DATA ] );
 		WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
-		
-		// Additionaly save postcode value to session if it was entered
-		if ( array_key_exists( self::SESSION_FIELD_NAME_POSTCODE, $posted_data ) ) {
-			WC()->session->set( self::SESSION_FIELD_NAME_POSTCODE, $posted_data[ self::SESSION_FIELD_NAME_POSTCODE ] );
-		}
 
 		// Return unchanged posted data
 		return $posted_data;
