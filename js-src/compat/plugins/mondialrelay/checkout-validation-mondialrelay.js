@@ -17,9 +17,6 @@
 
 	'use strict';
 
-	var $ = jQuery;
-	var _hasJQuery = ( $ != null );
-
 	var _hasInitialized = false;
 	var _publicMethods = { };
 	var _settings = {
@@ -46,7 +43,7 @@
 	 * @return {Boolean}                   Whether the field is a CNPF field.
 	 */
 	var isValidateField = function( field, formRow, validationEvent ) {
-		// Bail if not a hungarian shipping method field
+		// Bail if not a target shipping method field
 		if ( ! field.matches( _settings.typeFieldSelector ) ) { return false; }
 
 		return true;
@@ -55,14 +52,14 @@
 
 
 	/**
-	 * Validate if a hungarian shipping method collection point is selected.
+	 * Validate if the target shipping method collection point is selected.
 	 * @param  {Field}    field            Field for validation.
 	 * @param  {Element}  formRow          Form row element.
 	 * @param  {String}   validationEvent  Event that triggered the validation.
-	 * @return {Boolean}                   Whether a hungarian shipping method collection point has been selected.
+	 * @return {Boolean}                   Whether a target shipping method collection point has been selected.
 	 */
 	var validateField = function( field, formRow, validationEvent ) {
-		// Bail if hungarian shipping method field is empty
+		// Bail if target shipping method field is empty
 		if ( '' === field.value ) {
 			// Scroll to section
 			var section = document.querySelector( _settings.sectionSelector );

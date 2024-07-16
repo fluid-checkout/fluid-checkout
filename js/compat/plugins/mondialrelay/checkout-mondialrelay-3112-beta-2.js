@@ -1,5 +1,5 @@
 /**
- * Checkout scripts for: SEUR Oficial (by SEUR Oficial).
+ * Checkout scripts for: Mondial Relay - WordPress (by Kasutan).
  */
 
 (function (root, factory) {
