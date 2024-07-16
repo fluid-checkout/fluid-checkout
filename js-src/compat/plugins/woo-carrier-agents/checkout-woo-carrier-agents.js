@@ -42,7 +42,7 @@
 		var searchButton = document.querySelector( _settings.searchButtonSelector );
 
 		// Maybe update postcode field value
-		if ( _enteredPostcode ) {
+		if ( searchField && _enteredPostcode ) {
 			searchField.setAttribute( 'value', _enteredPostcode );
 		}
 
@@ -60,7 +60,10 @@
 	var setPreviousPostcodeValue = function() {
 		var previousPostcodeField = document.querySelector( _settings.previousPostcodeFieldSelector );
 
-		_enteredPostcode = previousPostcodeField.value;
+		// Maybe set the previously entered postcode value
+		if ( previousPostcodeField && previousPostcodeField.value) {
+			_enteredPostcode = previousPostcodeField.value;
+		}
 	}
 
 
@@ -68,9 +71,11 @@
 	/**
 	 * Update postcode value.
 	 */
-	var updatePostcodeValue = function() {
-		// Replace the old postcode with the entered value
-		_enteredPostcode = this.value;
+	var updatePostcodeValue = function( e ) {
+		// Maybe replace the old postcode with the entered value
+		if ( e.target && e.target.value ) {
+			_enteredPostcode = e.target.value;
+		}
 	}
 
 

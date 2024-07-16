@@ -395,7 +395,10 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		if ( ! $agent_id ) { return $review_text_lines; }
 
 		// Get terminal ID
-		$terminal_id = $selected_terminal[ $agent_id ];
+		$terminal_id = '';
+		if ( isset( $selected_terminal[ $agent_id ] ) ) {
+			$terminal_id = $selected_terminal[ $agent_id ];
+		}
 
 		// Get terminal name
 		$terminal_name = '';
