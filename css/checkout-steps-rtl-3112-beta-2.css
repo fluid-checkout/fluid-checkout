@@ -887,7 +887,7 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
   margin-top: 0 !important;
 }
 
-.shipping-method__option input[type=radio] {
+.shipping-method__option > input[type=radio] {
   position: absolute !important;
   display: block !important;
   margin: 0 !important;
