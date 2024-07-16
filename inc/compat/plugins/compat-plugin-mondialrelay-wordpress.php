@@ -331,23 +331,8 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		// Bail if class is not available
 		if ( ! class_exists( self::CLASS_NAME ) ) { return $review_text_lines; }
 
-		// Get currently selected shipping methods
-		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
-
-		// Bail if there are no shipping methods selected
-		if ( empty( $chosen_shipping_methods ) ) { return $review_text_lines; }
-
-		// Check whether target shipping method is selected
-		$has_target_shipping_method = false;
-		foreach ( $chosen_shipping_methods as $shipping_method_id ) {
-			if ( 0 === strpos( $shipping_method_id, self::SHIPPING_METHOD_ID ) ) {
-				$has_target_shipping_method = true;
-				break;
-			}
-		}
-
 		// Bail if target shipping method is not selected
-		if ( ! $has_target_shipping_method ) { return $review_text_lines; }
+		if ( ! $this->is_shipping_method_selected() ) { return; }
 
 		// Get selected terminal info
 		$selected_terminal_info = $this->get_selected_terminal_info();
