@@ -359,9 +359,6 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Transform terminal data into a more usable format
 		$terminal_data = $this->transform_terminal_data( $terminal_data );
 
-		// Apply filter to the terminal data array
-		$terminal_data = apply_filters( 'fc_compat_woo_carrier_agents_terminal_data', $terminal_data );
-
 		return $terminal_data;
 	}
 
