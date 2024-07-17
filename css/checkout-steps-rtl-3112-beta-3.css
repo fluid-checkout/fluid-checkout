@@ -641,6 +641,10 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   width: 100%;
 }
 
+.woocommerce-checkout .fc-login-form form.login .form-row.form-row-wide .woocommerce-checkout .fc-login-form form.login .form-row.form-row-wide::after {
+  clear: both;
+}
+
 .woocommerce-checkout .fc-login-form form.login .form-row input[type=text],
 .woocommerce-checkout .fc-login-form form.login .form-row input[type=password],
 .woocommerce-checkout .fc-login-form form.login .fc-login-button {

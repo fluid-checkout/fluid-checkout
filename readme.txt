@@ -371,6 +371,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Add accessibility label to hidden checkbox "Ship to different address" to overcome issue reported by automated accessibility validation tools.
 * Fixed: Prevent showing duplicate billing and shipping phone number values on email notifications.
 * Fixed: Make string translatable in compatibility class with Hungarian Pickup Points plugin.
+* Fixed: Layout for login form fields in the popup login form for some themes.
 
 = 3.1.11 - 2024-07-03 =
 
