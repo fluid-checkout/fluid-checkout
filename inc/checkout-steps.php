@@ -4069,7 +4069,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Initialize variables
 		$billing_same_as_shipping = false;
 
-		// Maybe set default value
+		// Maybe set default value if not doing AJAX requests
 		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
 			$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
 		}
@@ -4213,14 +4213,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$posted_data = $this->get_parsed_posted_data();
 		}
 
-		// Set default value
-		// 
-		// NOTE: Filter and option names are inverted because the option as initially intended
-		// to be used only when copying shipping to billing address. Later when adding option to
-		// move the billing address before shipping, the option name was not changed or
-		// a new option was not added to avoid duplicate options in the plugin settings.
-		$shipping_same_as_billing = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
-		
+		// Initialize variables
+		$shipping_same_as_billing = false;
+
+		// Maybe set default value if not doing AJAX requests
+		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
+			// NOTE: Filter and option names are inverted because the option as initially intended
+			// to be used only when copying shipping to billing address. Later when adding option to
+			// move the billing address before shipping, the option name was not changed or
+			// a new option was not added to avoid duplicate options in the plugin settings.
+			$shipping_same_as_billing = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
+		}
+
 		// Maybe set as same as billing for logged users
 		if ( is_user_logged_in() ) {
 			$shipping_same_as_billing = $this->is_shipping_address_data_same_as_billing( $posted_data );
