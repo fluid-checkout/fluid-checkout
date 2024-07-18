@@ -4066,9 +4066,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$posted_data = $this->get_parsed_posted_data();
 		}
 
-		// Set default value
-		$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
-		
+		// Initialize variables
+		$billing_same_as_shipping = false;
+
+		// Maybe set default value if not doing AJAX requests for the checkout page
+		if ( ! array_key_exists( 'wc-ajax', $_GET ) || ( 'checkout' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) || 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) ) ) {
+			$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
+		}
+
 		// Maybe set as same as shipping for logged users
 		if ( is_user_logged_in() ) {
 			$billing_same_as_shipping = $this->is_billing_address_data_same_as_shipping( $posted_data );
@@ -4208,14 +4213,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$posted_data = $this->get_parsed_posted_data();
 		}
 
-		// Set default value
-		// 
-		// NOTE: Filter and option names are inverted because the option as initially intended
-		// to be used only when copying shipping to billing address. Later when adding option to
-		// move the billing address before shipping, the option name was not changed or
-		// a new option was not added to avoid duplicate options in the plugin settings.
-		$shipping_same_as_billing = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
-		
+		// Initialize variables
+		$shipping_same_as_billing = false;
+
+		// Maybe set default value if not doing AJAX requests for the checkout page
+		if ( ! array_key_exists( 'wc-ajax', $_GET ) || ( 'checkout' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) || 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) ) ) {
+			// NOTE: Filter and option names are inverted because the option as initially intended
+			// to be used only when copying shipping to billing address. Later when adding option to
+			// move the billing address before shipping, the option name was not changed or
+			// a new option was not added to avoid duplicate options in the plugin settings.
+			$shipping_same_as_billing = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
+		}
+
 		// Maybe set as same as billing for logged users
 		if ( is_user_logged_in() ) {
 			$shipping_same_as_billing = $this->is_shipping_address_data_same_as_billing( $posted_data );

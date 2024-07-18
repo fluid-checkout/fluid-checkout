@@ -372,6 +372,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Prevent showing duplicate billing and shipping phone number values on email notifications.
 * Fixed: Make string translatable in compatibility class with Hungarian Pickup Points plugin.
 * Fixed: Layout for login form fields in the popup login form for some themes.
+* Fixed: Same addresses being used for express payments when processing order from other pages other than the checkout page.
 
 = 3.1.11 - 2024-07-03 =
 
