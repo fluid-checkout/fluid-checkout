@@ -369,6 +369,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with theme Hello Elementor.
 * Improved: Moved template files used to display customer addresses on email notifications from Fluid Checkout PRO to Lite.
 * Improved: Add accessibility label to hidden checkbox "Ship to different address" to overcome issue reported by automated accessibility validation tools.
+* Fixed: Compatibility issues with plugin WooPayments (WooCommerce Payments).
 * Fixed: Prevent showing duplicate billing and shipping phone number values on email notifications.
 * Fixed: Make string translatable in compatibility class with Hungarian Pickup Points plugin.
 * Fixed: Layout for login form fields in the popup login form for some themes.
