@@ -4069,7 +4069,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Initialize variables
 		$billing_same_as_shipping = false;
 
-		// Maybe set default value if not doing AJAX requests
+		// Maybe set default value if not doing AJAX requests for the checkout page
 		if ( ! array_key_exists( 'wc-ajax', $_GET ) || ( 'checkout' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) || 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) ) ) {
 			$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
 		}
@@ -4216,8 +4216,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Initialize variables
 		$shipping_same_as_billing = false;
 
-		// Maybe set default value if not doing AJAX requests
-		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
+		// Maybe set default value if not doing AJAX requests for the checkout page
+		if ( ! array_key_exists( 'wc-ajax', $_GET ) || ( 'checkout' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) || 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) ) ) {
 			// NOTE: Filter and option names are inverted because the option as initially intended
 			// to be used only when copying shipping to billing address. Later when adding option to
 			// move the billing address before shipping, the option name was not changed or
