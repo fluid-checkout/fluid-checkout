@@ -4066,9 +4066,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$posted_data = $this->get_parsed_posted_data();
 		}
 
-		// Set default value
-		$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
-		
+		// Initialize variables
+		$billing_same_as_shipping = false;
+
+		// Maybe set default value
+		if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
+			$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
+		}
+
 		// Maybe set as same as shipping for logged users
 		if ( is_user_logged_in() ) {
 			$billing_same_as_shipping = $this->is_billing_address_data_same_as_shipping( $posted_data );
