@@ -1,0 +1,3 @@
+.fc-wrapper ul#shipping_method .shipping-method__option input[type=radio]:checked + .shipping-method__option-label .carrier-agents {
+  display: block !important;
+}

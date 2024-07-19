@@ -23,6 +23,9 @@
 		searchFieldSelector: 'input[name="woo-carrier-agents-postcode"]',
 		searchButtonSelector: '#woo-carrier-agents-search-button',
 		previousPostcodeFieldSelector: '#woo_carrier_agents-entered_postcode',
+		radioFieldSelector: '.shipping-method__option input[type="radio"][name^="carrier-agent"]',
+		selectFieldSelector: 'select[name^="carrier-agent"]',
+		searchRadioFieldSelector: '.woo-carrier-agent',
 	};
 	var _enteredPostcode = '';
 
@@ -81,6 +84,22 @@
 
 
 	/**
+	 * Trigger update checkout.
+	 */
+	var maybeTriggerCheckoutUpdate = function(e) {
+		// Bail if no target element is set
+		if ( ! e.target ) { return; }
+
+		// Bail if the target element is select and its value is empty
+		if ( 'select' === e.target.type && ! e.target.value ) { return; }
+
+		// Trigger update checkout
+		$( document.body ).trigger( 'update_checkout' );
+	}
+
+
+
+	/**
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.init = function( options ) {
@@ -94,6 +113,12 @@
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
+			// Trigger update checkout when switching between the pickup terminals
+			$( document ).on( 'change', _settings.selectFieldSelector, maybeTriggerCheckoutUpdate );
+			$( document ).on( 'change', _settings.radioFieldSelector, maybeTriggerCheckoutUpdate );
+			// Use 'click' event to avoid infinite loop of 'updated_checkout' followed by 'change' event when using postcode search
+			$( document ).on( 'click', _settings.searchRadioFieldSelector, maybeTriggerCheckoutUpdate );
+
 			// Maybe update postcode field with the previously entered value when switching between shipping methods
 			$( document.body ).on( 'updated_checkout', maybeUpdatePostcodeField );
 
