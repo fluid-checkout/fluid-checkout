@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Admin notice about changes to next major version and customization migration guide.
+* Added: Compatibility issues the order attribution feature from WooCommerce.
 * Improved: Compatibility with theme Ocean WP.
 * Improved: Compatibility with theme Hello Elementor.
 * Improved: Moved template files used to display customer addresses on email notifications from Fluid Checkout PRO to Lite.
