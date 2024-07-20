@@ -93,7 +93,7 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Checkout scripts
-		wp_register_script( 'fc-checkout-mondial-relay', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mondialrelay/checkout-mondialrelay' ), array( 'jquery', 'fc-utils' ), NULL, true );
+		wp_register_script( 'fc-checkout-mondial-relay', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mondialrelay/checkout-mondialrelay' ), array( 'jquery', 'fc-utils', 'mondialrelay-wp' ), NULL, true );
 		wp_add_inline_script( 'fc-checkout-mondial-relay', 'window.addEventListener("load",function(){CheckoutMondialRelay.init(fcSettings.checkoutMondialRelay);})' );
 
 		// Add validation script
@@ -122,6 +122,13 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		$settings[ 'checkoutValidationMondialRelay' ] = array(
 			'validationMessages'  => array(
 				'pickup_point_not_selected' => __( 'Selecting a pickup point is required before proceeding.', 'fluid-checkout' ),
+			),
+		);
+
+		// Add checkout settings
+		$settings[ 'checkoutMondialRelay' ] = array(
+			'checkoutMessages'  => array(
+				'pickup_point_selected' => __( 'Livraison en Point Relais®', 'mondialrelay-wordpress' ),
 			),
 		);
 
@@ -234,6 +241,21 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		);
 		$html = str_replace( array_keys( $replace ), array_values( $replace ), $html );
 
+		// Get selected terminal info
+		$selected_terminal_info = $this->get_selected_terminal_info();
+
+		// If selected terminal info is available, use it to replace the default plugin output
+		if ( ! empty( $selected_terminal_info ) ) {
+			// Turn into a string and separate array elements by line breaks (use array_filter to avoid having 2 breaks in a row)
+			$terminal_location = implode( '<br>', array_filter( $selected_terminal_info ) );
+
+			// Prepend translated text to selected terminal info
+			$terminal_location = __( 'Livraison en Point Relais®', 'mondialrelay-wordpress' ) . '<br>' . $terminal_location;
+
+			// Replace content of the "em"  element with the selected terminal location
+			$html = preg_replace( '/<em id="parcel_shop_info" class="parcel_shop_info">.*<\/em>/', '<em id="parcel_shop_info" class="parcel_shop_info">' . $terminal_location . '</em>', $html );
+		}
+
 		// Output
 		echo $html;
 	}
@@ -273,8 +295,8 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	 * @param  array  $posted_data   Post data for all checkout fields.
 	 */
 	public function maybe_set_terminals_field_session_values( $posted_data ) {
-		// Bail if field value was not posted
-		if ( ! array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) ) { return $posted_data; }
+		// Bail if field value was not posted or is empty
+		if ( ! array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) || empty( $posted_data[ self::SESSION_FIELD_NAME ] ) ) { return $posted_data; }
 
 		// Save field value to session, as it is needed for the plugin to recover its value
 		WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
