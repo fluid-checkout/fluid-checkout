@@ -214,7 +214,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
 		add_action( 'template_redirect', array( $this, 'maybe_update_checkout_address_from_account' ), 5 );
 
-		// Order attribuition
+		// Order attribution
 		$this->order_attribution_hooks();
 	}
 
@@ -567,10 +567,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Persisted data
 		$this->undo_customer_address_data_hooks();
+
+		// Order attribution
+		$this->undo_order_attribution_hooks();
 	}
 
 	/**
-	 * Add or remove hooks for the customer address data.
+	 * Undo customer address data hooks.
 	 */
 	public function undo_customer_address_data_hooks() {
 		// Get checkout fields
@@ -585,6 +588,40 @@ class FluidCheckout_Steps extends FluidCheckout {
 			foreach ( $group_fields as $field_key => $field ) {
 				remove_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10, 2 );
 			}
+		}
+	}
+
+	/**
+	 * Undo order attribution hooks.
+	 */
+	public function undo_order_attribution_hooks() {
+		// Define class name
+		$class_name = 'Automattic\WooCommerce\Internal\Orders\OrderAttributionController';
+
+		// Bail if class is not available
+		if ( ! class_exists( $class_name ) ) { return; }
+
+		// Get class object
+		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
+		
+		// Get list of hooks to which the order attribution stamp should be added
+		$stamp_checkout_html_actions = apply_filters(
+			'wc_order_attribution_stamp_checkout_html_actions',
+			array(
+				'woocommerce_checkout_billing',
+				'woocommerce_after_checkout_billing_form',
+				'woocommerce_checkout_shipping',
+				'woocommerce_after_order_notes',
+				'woocommerce_checkout_after_customer_details',
+			)
+		);
+
+		// Remove the order attribution stamp hooks from this plugin
+		remove_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
+
+		// Re-add the order attribution stamp hooks
+		foreach ( $stamp_checkout_html_actions as $hook_name ) {
+			add_action( $hook_name, array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
 		}
 	}
 
