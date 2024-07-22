@@ -246,13 +246,13 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 
 		// If selected terminal info is available, use it to replace the default plugin output
 		if ( ! empty( $selected_terminal_info ) ) {
-			// Turn into a string and separate array elements by line breaks (use array_filter to avoid having 2 breaks in a row)
+			// Turn into a string and separate array elements by line breaks (use array_filter to avoid using empty elements)
 			$terminal_location = implode( '<br>', array_filter( $selected_terminal_info ) );
 
 			// Prepend translated text to selected terminal info
 			$terminal_location = __( 'Livraison en Point Relais®', 'mondialrelay-wordpress' ) . '<br>' . $terminal_location;
 
-			// Replace content of the "em"  element with the selected terminal location
+			// Replace content of the "em" element with the selected terminal location
 			$html = preg_replace( '/<em id="parcel_shop_info" class="parcel_shop_info">.*<\/em>/', '<em id="parcel_shop_info" class="parcel_shop_info">' . $terminal_location . '</em>', $html );
 		}
 
