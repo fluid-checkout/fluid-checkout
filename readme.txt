@@ -368,6 +368,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility issues the order attribution feature from WooCommerce.
 * Improved: Compatibility with theme Ocean WP.
 * Improved: Compatibility with theme Hello Elementor.
+* Improved: Compatibility with plugin Email Template Customizer for WooCommerce (by VillaTheme). Do not show duplicate phone numbers when generating email messages with this plugin.
 * Improved: Moved template files used to display customer addresses on email notifications from Fluid Checkout PRO to Lite.
 * Improved: Add accessibility label to hidden checkbox "Ship to different address" to overcome issue reported by automated accessibility validation tools.
 * Fixed: Compatibility issues with plugin WooPayments (WooCommerce Payments).
