@@ -115,9 +115,11 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
-		// Get theme settings
 		if ( function_exists( 'awb_get_fusion_settings' ) ) {
+			// Get theme settings
 			$theme_settings = awb_get_fusion_settings();
+
+			// Retrieve danger accent color from the settings
 			$danger_accent_color = $theme_settings->get( 'danger_accent_color' );
 		}
 
