@@ -376,6 +376,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Make string translatable in compatibility class with Hungarian Pickup Points plugin.
 * Fixed: Layout for login form fields in the popup login form for some themes.
 * Fixed: Same addresses being used for express payments when processing order from other pages other than the checkout page.
+* Fixed: Redirection to cart page when trying to access the checkout page with an empty cart, and checkout page is using block-based checkout form.
 
 = 3.1.11 - 2024-07-03 =
 
