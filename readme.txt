@@ -365,7 +365,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Admin notice about changes to next major version and customization migration guide.
+* Added: Compatibility with the Order Attribution feature from WooCommerce.
 * Added: Compatibility issues the order attribution feature from WooCommerce.
+* Added: Compatibility with plugin Avada Builder.
+* Added: Compatibility with plugin Mondial Relay - WordPress.
 * Improved: Compatibility with theme Avada.
 * Improved: Compatibility with theme Ocean WP.
 * Improved: Compatibility with theme Hello Elementor.
@@ -377,6 +380,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Make string translatable in compatibility class with Hungarian Pickup Points plugin.
 * Fixed: Layout for login form fields in the popup login form for some themes.
 * Fixed: Same addresses being used for express payments when processing order from other pages other than the checkout page.
+* Fixed: Redirection to cart page when trying to access the checkout page with an empty cart, and checkout page is using block-based checkout form.
 
 = 3.1.11 - 2024-07-03 =
 
