@@ -86,7 +86,7 @@
 	/**
 	 * Trigger update checkout.
 	 */
-	var maybeTriggerCheckoutUpdate = function(e) {
+	var maybeTriggerCheckoutUpdate = function( e ) {
 		// Bail if no target element is set
 		if ( ! e.target ) { return; }
 
@@ -103,7 +103,7 @@
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.init = function( options ) {
-		if ( _hasInitialized ) return;
+		if ( _hasInitialized ) { return; }
 
 		// Merge settings
 		_settings = FCUtils.extendObject( _settings, options );
