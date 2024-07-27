@@ -33,7 +33,7 @@ class FluidCheckout_WooCommercePayments extends FluidCheckout {
 	 */
 	public function maybe_set_skip_setting_address_data_to_same_as_address( $is_address_same_as ) {
 		// Bail if not doing AJAX request to create account from express checkout payments from this plugin
-		if ( ! array_key_exists( 'wc-ajax', $_GET ) || 'wcpay_create_order' !== sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) )  return $is_address_same_as; }
+		if ( ! array_key_exists( 'wc-ajax', $_GET ) || 'wcpay_create_order' !== sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) ) { return $is_address_same_as; }
 
 		// Otherwise, set as not same address
 		return false;
