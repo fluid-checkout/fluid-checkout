@@ -1535,7 +1535,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @return  array  An array of the registered checkout steps. For more details of what is expected see the documentation of the private property `$checkout_steps` of this class.
 	 */
-	private function get_registered_checkout_steps() {
+	public function get_registered_checkout_steps() {
 		return $this->registered_checkout_steps;
 	}
 
@@ -1664,7 +1664,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * 
 	 * @param   string  $step_id      ID of the checkout step.
 	 *
-	 * @return  array                 An array of the registered checkout steps to be rendered. For more details of what is expected see the documentation of the private property `$checkout_steps` of this class.
+	 * @return  array                 An array of the registered checkout substeps to be rendered. For more details of what is expected see the documentation of the private property `$checkout_steps` of this class.
 	 */
 	public function get_checkout_substeps( $step_id ) {
 		// Try to return value from cache
@@ -1709,7 +1709,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @return  array                   An array of the registered checkout steps. For more details of what is expected see the documentation of the private property `$checkout_steps` of this class.
 	 */
-	private function get_registered_checkout_substeps( $step_id ) {
+	public function get_registered_checkout_substeps( $step_id ) {
 		// Bail if checkout step is not registered
 		if ( ! $this->is_checkout_step_registered( $step_id ) ) { return false; }
 
@@ -2374,10 +2374,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout step start tag.
 	 *
-	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
-	 * @param   array  $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
+	 * @param   array   $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
+	 * @param   array   $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
+	 * @param   string  $context     Context in which the step is being output for. Defaults to `checkout`, also accepts `order-pay` as the context.
 	 */
-	public function output_step_start_tag( $step_args, $step_index ) {
+	public function output_step_start_tag( $step_args, $step_index, $context = 'checkout' ) {
 		// Get step variables
 		$step_id = $step_args[ 'step_id' ];
 		$step_title = $this->get_step_title( $step_id );
@@ -2438,10 +2439,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout step end tag.
 	 *
-	 * @param   array  $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
-	 * @param   array  $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
+	 * @param   array   $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
+	 * @param   array   $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
+	 * @param   string  $context     Context in which the step is being output for. Defaults to `checkout`, also accepts `order-pay` as the context.
 	 */
-	public function output_step_end_tag( $step_args, $step_index ) {
+	public function output_step_end_tag( $step_args, $step_index, $context = 'checkout' ) {
 		// Get step id
 		$step_id = $step_args[ 'step_id' ];
 
@@ -2454,7 +2456,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$last_step_index = array_keys( $last_step )[0];
 
 			// Maybe output next step button if not on last step
-			if ( $step_index !== $last_step_index ) :
+			if ( 'checkout' === $context && $step_index !== $last_step_index ) :
 				// Maybe output the "Next step" button
 				$button_label = apply_filters( 'fc_next_step_button_label', $this->get_next_step_button_label( $step_args[ 'step_id' ] ), $step_args[ 'step_id' ] );
 
