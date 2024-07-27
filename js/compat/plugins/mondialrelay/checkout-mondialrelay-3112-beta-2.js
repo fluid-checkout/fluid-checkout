@@ -34,14 +34,14 @@
 
 
 	/**
-	 * Update checkout fields.
+	 * Trigget checkout fragments update.
 	 */
-	var updateCheckout = function() {
-		// Create update checkout event
-		var event = new Event( 'update_checkout' );
+	var triggerUpdateCheckout = function() {
+		// Bail if jQuery is not available
+		if ( ! _hasJQuery ) { return; }
 
-		// Trigger event
-		document.body.dispatchEvent( event );
+		// Trigger update checkout
+		$( document.body ).trigger( 'update_checkout' );
 	}
 
 
@@ -54,10 +54,10 @@
 		var terminalAddress = '';
 
 		// Bail if the hidden terminal field is not found
-		if ( ! selectedTerminal ) return;
+		if ( ! selectedTerminal ) { return; }
 
 		// Bail if value is empty
-		if ( selectedTerminal.value === '' ) return;
+		if ( selectedTerminal.value === '' ) { return; }
 
 		// Transform terminal address to include line breaks
 		terminalAddress = tranformTerminalAddress( selectedTerminal.value );
@@ -79,7 +79,7 @@
 		var newAddress = '';
 
 		// Bail if terminal address is empty
-		if ( terminalAddress === '' ) return '';
+		if ( terminalAddress === '' ) { return ''; };
 
 		// Split address by separator and join with line breaks
 		newAddress = terminalAddress.split( separator ).join( '<br>' );
@@ -93,19 +93,31 @@
 
 
 	/**
+	 * Handle document clicks and route to the appropriate function.
+	 */
+	var handleClick = function( e ) {
+		// CHOOSE PICKUP POINT
+		if ( e.target.closest( _settings.buttonSelector ) ) {
+			triggerUpdateCheckout();
+		}
+	};
+
+
+
+	/**
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.init = function( options ) {
-		if ( _hasInitialized ) return;
+		if ( _hasInitialized ) { return; }
 
 		// Merge settings
 		_settings = FCUtils.extendObject( _settings, options );
 
+		// Add event listeners
+		window.addEventListener( 'click', handleClick, true );
+
 		// Update checkout fields on button click
 		if ( _hasJQuery ) {
-			// Update checkout when pickup terminal is selected
-			$( _settings.buttonSelector ).on( 'click', updateCheckout );
-
 			// Update terminal address information to avoid stripping line breaks
 			$( document ).on( 'updated_checkout', updateTerminalAddress );
 		}
