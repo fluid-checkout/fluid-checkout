@@ -366,6 +366,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Admin notice about changes to next major version and customization migration guide.
 * Added: Compatibility with the Order Attribution feature from WooCommerce.
+* Added: Compatibility issues the order attribution feature from WooCommerce.
+* Added: Compatibility with plugin Avada Builder.
 * Added: Compatibility with plugin Mondial Relay - WordPress.
 * Improved: Compatibility with theme Ocean WP.
 * Improved: Compatibility with theme Hello Elementor.
