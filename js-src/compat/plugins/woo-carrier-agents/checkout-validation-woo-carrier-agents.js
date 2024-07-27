@@ -90,7 +90,7 @@
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.init = function( options ) {
-		if ( _hasInitialized ) return;
+		if ( _hasInitialized ) { return; }
 
 		// Bail if `CheckoutValidation` is not available
 		if ( ! window.CheckoutValidation ) { return; }
