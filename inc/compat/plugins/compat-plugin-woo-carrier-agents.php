@@ -411,6 +411,36 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 			$review_text_lines[] = $terminal_name;
 		}
 
+		// Set address data as empty array
+		$address_data = array();
+
+		// Connect address data keys with terminal data keys
+		$address_data_keys = array(
+			'address_1' => 'street_address',
+			'city'      => 'city',
+			'postcode'  => 'postcode',
+			'country'   => 'country',
+		);
+
+		// Get selected terminal data
+		$selected_terminal_data = array();
+		if ( isset( $terminal_data[ $agent_id ][ $terminal_id ] ) ) {
+			$selected_terminal_data = $terminal_data[ $agent_id ][ $terminal_id ];
+		}
+
+		// Assign terminal data to the corresponding address data keys
+		foreach ( $address_data_keys as $address_key => $data_key ) {
+			if ( isset( $selected_terminal_data[ $data_key ] ) ) {
+				$address_data[ $address_key ] = $selected_terminal_data[ $data_key ];
+			}
+		}
+
+		// Add formatted address data as review text line if not empty
+		if ( ! empty( $address_data ) ) {
+			$address_data = WC()->countries->get_formatted_address( $address_data );
+			$review_text_lines[] = $address_data;
+		}
+
 		return $review_text_lines;
 	}
 
