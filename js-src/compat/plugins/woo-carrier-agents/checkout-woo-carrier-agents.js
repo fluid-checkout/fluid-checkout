@@ -74,10 +74,10 @@
 	/**
 	 * Update postcode value.
 	 */
-	var updatePostcodeValue = function( e ) {
+	var updatePostcodeValue = function( element ) {
 		// Maybe replace the old postcode with the entered value
-		if ( e.target && e.target.value ) {
-			_enteredPostcode = e.target.value;
+		if ( element && element.value ) {
+			_enteredPostcode = element.value;
 		}
 	}
 
@@ -86,15 +86,41 @@
 	/**
 	 * Trigger update checkout.
 	 */
-	var maybeTriggerCheckoutUpdate = function( e ) {
-		// Bail if no target element is set
-		if ( ! e.target ) { return; }
-
+	var maybeTriggerCheckoutUpdate = function( element ) {
 		// Bail if the target element is select and its value is empty
-		if ( 'select' === e.target.type && ! e.target.value ) { return; }
+		if ( 'select' === element.type && ! element.value ) { return; }
 
 		// Trigger update checkout
 		$( document.body ).trigger( 'update_checkout' );
+	}
+
+
+
+	/**
+	 * Handle document clicks and route to the appropriate function.
+	 */
+	var handleClick = function( e ) {
+		// POSTCODE SEARCH RADIO FIELD
+		if ( e.target.matches( _settings.searchRadioFieldSelector ) ) {
+			maybeTriggerCheckoutUpdate( e.target );
+		}
+	};
+
+
+
+	/**
+	 * Handle captured `change` event and route to the appropriate functions.
+	 */
+	var handleChange = function( e ) {
+		// SELECT OR RADIO FIELDS
+		if ( e.target.matches( _settings.selectFieldSelector ) || e.target.matches( _settings.radioFieldSelector ) ) {
+			maybeTriggerCheckoutUpdate( e.target );
+		}
+
+		// POSTCODE SEARCH FIELD
+		if ( e.target.matches( _settings.searchFieldSelector ) ) {
+			updatePostcodeValue( e.target );
+		}
 	}
 
 
@@ -111,19 +137,14 @@
 		// Set postcode value
 		setPreviousPostcodeValue();
 
+		// Add event listeners
+		window.addEventListener( 'click', handleClick );
+		window.addEventListener( 'change', handleChange );
+
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
-			// Trigger update checkout when switching between the pickup terminals
-			$( document ).on( 'change', _settings.selectFieldSelector, maybeTriggerCheckoutUpdate );
-			$( document ).on( 'change', _settings.radioFieldSelector, maybeTriggerCheckoutUpdate );
-			// Use 'click' event to avoid infinite loop of 'updated_checkout' followed by 'change' event when using postcode search
-			$( document ).on( 'click', _settings.searchRadioFieldSelector, maybeTriggerCheckoutUpdate );
-
 			// Maybe update postcode field with the previously entered value when switching between shipping methods
 			$( document.body ).on( 'updated_checkout', maybeUpdatePostcodeField );
-
-			// Update postcode value when the field changes
-			$( document ).on( 'change', _settings.searchFieldSelector, updatePostcodeValue );
 		}
 
 		_hasInitialized = true;
