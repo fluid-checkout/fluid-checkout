@@ -116,9 +116,8 @@
 		if ( e.target.matches( _settings.selectFieldSelector ) || e.target.matches( _settings.radioFieldSelector ) ) {
 			maybeTriggerCheckoutUpdate( e.target );
 		}
-
 		// POSTCODE SEARCH FIELD
-		if ( e.target.matches( _settings.searchFieldSelector ) ) {
+		else if ( e.target.matches( _settings.searchFieldSelector ) ) {
 			updatePostcodeValue( e.target );
 		}
 	}
