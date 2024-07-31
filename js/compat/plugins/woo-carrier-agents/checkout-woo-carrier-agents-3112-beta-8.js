@@ -88,7 +88,7 @@
 	 */
 	var maybeTriggerCheckoutUpdate = function( element ) {
 		// Bail if the target element is select and its value is empty
-		if ( 'select' === element.type && ! element.value ) return;
+		if ( 'select' === element.type && ! element.value ) { return; }
 
 		// Trigger update checkout
 		$( document.body ).trigger( 'update_checkout' );
@@ -128,7 +128,7 @@
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.init = function( options ) {
-		if ( _hasInitialized ) return;
+		if ( _hasInitialized ) { return; }
 
 		// Merge settings
 		_settings = FCUtils.extendObject( _settings, options );
