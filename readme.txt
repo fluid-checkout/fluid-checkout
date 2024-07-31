@@ -366,6 +366,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Admin notice about changes to next major version and customization migration guide.
 * Added: Compatibility with the Order Attribution feature from WooCommerce.
+* Added: Compatibility issues the order attribution feature from WooCommerce.
+* Added: Compatibility with plugin Avada Builder.
 * Added: Compatibility with plugin Mondial Relay - WordPress.
 * Added: Compatibility with plugin WooCommerce Carrier Agents.
 * Improved: Compatibility with theme Ocean WP.
@@ -373,7 +375,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with plugin Email Template Customizer for WooCommerce (by VillaTheme). Do not show duplicate phone numbers when generating email messages with this plugin.
 * Improved: Moved template files used to display customer addresses on email notifications from Fluid Checkout PRO to Lite.
 * Improved: Add accessibility label to hidden checkbox "Ship to different address" to overcome issue reported by automated accessibility validation tools.
-* Fixed: Compatibility issues with plugin WooPayments (WooCommerce Payments).
+* Fixed: Compatibility issues with plugin WooPayments (WooCommerce Payments). Avoid setting address data to same as billing or shipping when processing express payments such as Apple Pay and Google Pay.
 * Fixed: Prevent showing duplicate billing and shipping phone number values on email notifications.
 * Fixed: Make string translatable in compatibility class with Hungarian Pickup Points plugin.
 * Fixed: Layout for login form fields in the popup login form for some themes.
