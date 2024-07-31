@@ -369,6 +369,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility issues the order attribution feature from WooCommerce.
 * Added: Compatibility with plugin Avada Builder.
 * Added: Compatibility with plugin Mondial Relay - WordPress.
+* Added: Compatibility with plugin WooCommerce Carrier Agents.
 * Improved: Compatibility with theme Ocean WP.
 * Improved: Compatibility with theme Hello Elementor.
 * Improved: Compatibility with plugin Email Template Customizer for WooCommerce (by VillaTheme). Do not show duplicate phone numbers when generating email messages with this plugin.
