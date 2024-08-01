@@ -1,0 +1,11 @@
+// ------------------------------------
+// TOM SELECT CONTROL
+// ------------------------------------
+
+.validate-required.woocommerce-validated .ts-control {
+	box-shadow: inset 3px 0 0 var(--fluidcheckout--avada-builder--danger-accent-color); // Needed to use `px` as unit to match theme styles
+}
+
+.validate-required.woocommerce-validated .ts-control input {
+	box-shadow: none !important; // Needed to override theme styles
+}
