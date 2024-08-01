@@ -19,8 +19,6 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		global $avada_woocommerce;
-
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
