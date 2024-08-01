@@ -183,6 +183,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Formatted address
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
+		add_filter( 'fc_add_phone_localisation_formats', array( $this, 'maybe_skip_adding_phone_to_formatted' ), 100, 1 );
 
 		// Place order
 		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10, 2 );
@@ -1702,11 +1703,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if should not display phone in formatted addresses
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $formats; }
 
-		// Bail if viewing order confirmation or order pay page
-		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) { return $formats; }
-
 		foreach ( $formats as $locale => $format) {
-			$formats[ $locale ] = $format . "\n{phone}";
+			$formats[ $locale ] = $format . "{phone}";
 		}
 
 		return $formats;
@@ -1719,14 +1717,31 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   array  $address       Contains address fields.
 	 */
 	public function add_phone_formatted_address_replacements( $replacements, $args ) {
-		// Bail if should not display phone in formatted addresses
-		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $replacements; }
+		// Maybe set as empty if should not display phone in formatted addresses
+		// then bail
+		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) {
+			$replacements['{phone}'] = '';
+			return $replacements;
+		}
 
-		// Bail if viewing order confirmation or order pay page
-		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) { return $replacements; }
+		// Otherwise, set replacement with the actual phone number
+		$replacements['{phone}'] = isset( $args['phone'] ) ? "\n" . $args['phone'] : '';
 
-		$replacements['{phone}'] = isset( $args['phone'] ) ? $args['phone'] : '';
 		return $replacements;
+	}
+
+	/**
+	 * Maybe skip adding phone to formatted addresses for certain pages.
+	 *
+	 * @param   bool  $should_add   Whether to add phone to formatted addresses.
+	 */
+	public function maybe_skip_adding_phone_to_formatted( $should_add ) {
+		// Maybe set to skip if viewing order confirmation or order pay page
+		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) {
+			$should_add = 'no';
+		}
+
+		return $should_add;
 	}
 
 
