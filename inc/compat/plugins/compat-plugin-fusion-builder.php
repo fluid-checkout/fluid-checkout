@@ -35,6 +35,17 @@ class FluidCheckout_AvadaBuilder extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
+		// Define default color
+		$danger_accent_color = '#12b878';
+
+		if ( function_exists( 'awb_get_fusion_settings' ) ) {
+			// Get Avada Builder settings
+			$plugin_settings = awb_get_fusion_settings();
+
+			// Retrieve danger accent color from the settings
+			$danger_accent_color = $plugin_settings->get( 'danger_accent_color' );
+		}
+
 		// Add CSS variables
 		$new_css_variables = array(
 			':root body' => array(
@@ -52,6 +63,9 @@ class FluidCheckout_AvadaBuilder extends FluidCheckout {
 				'--fluidcheckout--button--font-weight' => 'var(--button_typography-font-weight)',
 				'--fluidcheckout--button--border-width' => 'var(--button_border_width-top, 0)',
 				'--fluidcheckout--button--border-radius' => 'var(--button-border-radius-top-left, 0) var(--button-border-radius-top-right, 0) var(--button-border-radius-bottom-right, 0) var(--button-border-radius-bottom-left, 0)',
+
+				// Custom variables
+				'--fluidcheckout--avada-builder--danger-accent-color' => $danger_accent_color,
 			),
 		);
 
