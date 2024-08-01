@@ -129,11 +129,14 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Get selected terminal
 		$selected_terminal = WC()->session->get( self::SESSION_FIELD_NAME );
 
+		// Get agent (shipping method) ID
+		$agent_id = $this->get_numeric_carrier_agent_id();
+
 		// Maybe get selected terminal ID
 		$selected_terminal_id = '';
-		if ( is_array( $selected_terminal ) ) {
-			// Get the first value of the array which is the terminal ID
-			$selected_terminal_id = reset( $selected_terminal );
+		if ( is_array( $selected_terminal ) && ! empty( $selected_terminal[ $agent_id ] ) ) {
+			// Get the terminal ID
+			$selected_terminal_id = $selected_terminal[ $agent_id ];
 		}
 
 		// Get previously entered postcode
@@ -146,6 +149,38 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		echo '<input type="hidden" id="woo_carrier_agents-entered_postcode" name="woo_carrier_agents-entered_postcode" value="'. esc_attr( $entered_postcode ) .'">';
 		echo '</div>';
 		echo '</div>';
+	}
+
+
+
+	/**
+	 * Maybe change selected terminal ID to the cookie value.
+	 *
+	 * @param  array  $selected_terminal  The selected terminal.
+	 */
+	public function maybe_change_terminal_id_to_cookie( $selected_terminal ) {
+		// Get agent (shipping method) ID
+		$agent_id = $this->get_numeric_carrier_agent_id();
+
+		// Bail if agent ID or selected terminal ID are not available
+		if ( ! $agent_id || empty( $selected_terminal[ $agent_id ] ) ) { return $selected_terminal; }
+
+		// Construct cookie name
+		$cookie_name = 'woo_carrier_agent_' . $agent_id . '_value';
+
+		// Bail if cookie is not set
+		if ( ! isset( $_COOKIE[ $cookie_name ] ) ) { return $selected_terminal; }
+
+		// Get cookie value
+		$cookie_value = isset( $_COOKIE[ $cookie_name ] ) ? sanitize_text_field( $_COOKIE[ $cookie_name ] ) : '';
+
+		// Bail if cookie value is empty
+		if ( empty( $cookie_value ) ) { return $selected_terminal; }
+
+		// Change selected terminal ID to the cookie value
+		$selected_terminal[ $agent_id ] = $cookie_value;
+
+		return $selected_terminal;
 	}
 
 
@@ -228,9 +263,18 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Bail if field values were not posted
 		if ( ! array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) || ! array_key_exists( self::SESSION_FIELD_NAME_DATA, $posted_data ) ) { return $posted_data; }
 
+		// Get selected terminal from posted data
+		$selected_terminal = $posted_data[ self::SESSION_FIELD_NAME ];
+
+		// Maybe change terminal ID when using the "Select" display style for AJAX calls
+		if ( wp_doing_ajax() && 'select' === FluidCheckout_Settings::instance()->get_option( 'woo_carrier_agents_display_style', 'search' ) ) { 
+			// Maybe change the terminal ID to the cookie value
+			$selected_terminal = $this->maybe_change_terminal_id_to_cookie( $selected_terminal );
+		}
+
 		// Save field value to session, as it is needed for the plugin to recover its value
 		WC()->session->set( self::SESSION_FIELD_NAME_DATA, $posted_data[ self::SESSION_FIELD_NAME_DATA ] );
-		WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
+		WC()->session->set( self::SESSION_FIELD_NAME, $selected_terminal );
 
 		// Return unchanged posted data
 		return $posted_data;
