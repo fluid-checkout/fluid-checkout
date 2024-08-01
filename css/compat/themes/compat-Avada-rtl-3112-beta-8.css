@@ -41,11 +41,3 @@ body.theme-Avada div.woocommerce form.woocommerce-checkout .fc-wrapper #order_re
 body.theme-Avada.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-checkout-order-review-title {
   border: 0;
 }
-
-body.theme-Avada .validate-required.woocommerce-validated .ts-control {
-  box-shadow: inset 3px 0 0 var(--fluidcheckout--avada--danger-accent-color);
-}
-
-body.theme-Avada .validate-required.woocommerce-validated .ts-control input {
-  box-shadow: none !important;
-}

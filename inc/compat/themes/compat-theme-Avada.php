@@ -134,19 +134,6 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
-		if ( function_exists( 'awb_get_fusion_settings' ) ) {
-			// Get theme settings
-			$theme_settings = awb_get_fusion_settings();
-
-			// Retrieve danger accent color from the settings
-			$danger_accent_color = $theme_settings->get( 'danger_accent_color' );
-		}
-
-		// Define default color if not set
-		if ( empty( $danger_accent_color ) ) {
-			$danger_accent_color = '#12b878';
-		}
-
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
@@ -157,9 +144,6 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 				'--fluidcheckout--validation-check--horizontal-spacing--select' => '40px',
 				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '50px',
 				'--fluidcheckout--field--background-color--accent' => 'var(--awb-color4)',
-
-				// Custom theme variables
-				'--fluidcheckout--avada--danger-accent-color' => $danger_accent_color,
 			),
 		);
 
