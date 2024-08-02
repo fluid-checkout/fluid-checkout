@@ -183,6 +183,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Formatted address
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
+		add_filter( 'fc_add_phone_localisation_formats', array( $this, 'maybe_skip_adding_phone_to_formatted' ), 100, 1 );
 
 		// Place order
 		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10, 2 );
@@ -213,6 +214,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10, 2 );
 		add_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
 		add_action( 'template_redirect', array( $this, 'maybe_update_checkout_address_from_account' ), 5 );
+
+		// Order attribution
+		$this->order_attribution_hooks();
 	}
 
 	/**
@@ -339,6 +343,40 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach ( $field_keys as $field_key ) {
 			add_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10, 2 );
 		}
+	}
+
+	/**
+	 * Add or remove order attribution hooks.
+	 */
+	public function order_attribution_hooks() {
+		// Define class name
+		$class_name = 'Automattic\WooCommerce\Internal\Orders\OrderAttributionController';
+
+		// Bail if class is not available
+		if ( ! class_exists( $class_name ) ) { return; }
+
+		// Get class object
+		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
+		
+		// Get list of hooks to which the order attribution stamp should be added
+		$stamp_checkout_html_actions = apply_filters(
+			'wc_order_attribution_stamp_checkout_html_actions',
+			array(
+				'woocommerce_checkout_billing',
+				'woocommerce_after_checkout_billing_form',
+				'woocommerce_checkout_shipping',
+				'woocommerce_after_order_notes',
+				'woocommerce_checkout_after_customer_details',
+			)
+		);
+
+		// Remove the order attribution stamp hooks
+		foreach ( $stamp_checkout_html_actions as $hook_name ) {
+			remove_action( $hook_name, array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
+		}
+
+		// Add the order attribution stamp hooks
+		add_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
 	}
 
 
@@ -530,10 +568,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Persisted data
 		$this->undo_customer_address_data_hooks();
+
+		// Order attribution
+		$this->undo_order_attribution_hooks();
 	}
 
 	/**
-	 * Add or remove hooks for the customer address data.
+	 * Undo customer address data hooks.
 	 */
 	public function undo_customer_address_data_hooks() {
 		// Get checkout fields
@@ -548,6 +589,40 @@ class FluidCheckout_Steps extends FluidCheckout {
 			foreach ( $group_fields as $field_key => $field ) {
 				remove_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10, 2 );
 			}
+		}
+	}
+
+	/**
+	 * Undo order attribution hooks.
+	 */
+	public function undo_order_attribution_hooks() {
+		// Define class name
+		$class_name = 'Automattic\WooCommerce\Internal\Orders\OrderAttributionController';
+
+		// Bail if class is not available
+		if ( ! class_exists( $class_name ) ) { return; }
+
+		// Get class object
+		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
+		
+		// Get list of hooks to which the order attribution stamp should be added
+		$stamp_checkout_html_actions = apply_filters(
+			'wc_order_attribution_stamp_checkout_html_actions',
+			array(
+				'woocommerce_checkout_billing',
+				'woocommerce_after_checkout_billing_form',
+				'woocommerce_checkout_shipping',
+				'woocommerce_after_order_notes',
+				'woocommerce_checkout_after_customer_details',
+			)
+		);
+
+		// Remove the order attribution stamp hooks from this plugin
+		remove_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
+
+		// Re-add the order attribution stamp hooks
+		foreach ( $stamp_checkout_html_actions as $hook_name ) {
+			add_action( $hook_name, array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
 		}
 	}
 
@@ -1628,14 +1703,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if should not display phone in formatted addresses
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $formats; }
 
-		// Bail if viewing order confirmation or order pay page
-		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) { return $formats; }
-
-		// Bail when displaying addresses for email messages
-		if ( did_action( 'woocommerce_email' ) ) { return $formats; }
-
 		foreach ( $formats as $locale => $format) {
-			$formats[ $locale ] = $format . "\n{phone}";
+			$formats[ $locale ] = $format . "{phone}";
 		}
 
 		return $formats;
@@ -1648,14 +1717,31 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   array  $address       Contains address fields.
 	 */
 	public function add_phone_formatted_address_replacements( $replacements, $args ) {
-		// Bail if should not display phone in formatted addresses
-		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $replacements; }
+		// Maybe set as empty if should not display phone in formatted addresses
+		// then bail
+		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) {
+			$replacements['{phone}'] = '';
+			return $replacements;
+		}
 
-		// Bail if viewing order confirmation or order pay page
-		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) { return $replacements; }
+		// Otherwise, set replacement with the actual phone number
+		$replacements['{phone}'] = isset( $args['phone'] ) ? "\n" . $args['phone'] : '';
 
-		$replacements['{phone}'] = isset( $args['phone'] ) ? $args['phone'] : '';
 		return $replacements;
+	}
+
+	/**
+	 * Maybe skip adding phone to formatted addresses for certain pages.
+	 *
+	 * @param   bool  $should_add   Whether to add phone to formatted addresses.
+	 */
+	public function maybe_skip_adding_phone_to_formatted( $should_add ) {
+		// Maybe set to skip if viewing order confirmation or order pay page
+		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) {
+			$should_add = 'no';
+		}
+
+		return $should_add;
 	}
 
 
@@ -3282,7 +3368,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_ship_to_different_address_hidden_field() {
 		?>
 		<div id="ship-to-different-address" class="fc-hidden">
-			<input id="ship-to-different-address-checkbox" name="ship_to_different_address" type="checkbox" checked value="1" tabindex="-1" aria-hidden="true" />
+			<input id="ship-to-different-address-checkbox" name="ship_to_different_address" type="checkbox" checked value="1" tabindex="-1" aria-hidden="true" aria-label="<?php echo esc_attr( 'Ship to a different address?', 'woocommerce' ); ?>" />
 		</div>
 		<?php
 	}
@@ -4069,9 +4155,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$posted_data = $this->get_parsed_posted_data();
 		}
 
-		// Set default value
-		$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
-		
+		// Initialize variables
+		$billing_same_as_shipping = false;
+
+		// Maybe set default value if not doing AJAX requests for the checkout page
+		if ( ! array_key_exists( 'wc-ajax', $_GET ) || ( 'checkout' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) || 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) ) ) {
+			$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
+		}
+
 		// Maybe set as same as shipping for logged users
 		if ( is_user_logged_in() ) {
 			$billing_same_as_shipping = $this->is_billing_address_data_same_as_shipping( $posted_data );
@@ -4211,14 +4302,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$posted_data = $this->get_parsed_posted_data();
 		}
 
-		// Set default value
-		// 
-		// NOTE: Filter and option names are inverted because the option as initially intended
-		// to be used only when copying shipping to billing address. Later when adding option to
-		// move the billing address before shipping, the option name was not changed or
-		// a new option was not added to avoid duplicate options in the plugin settings.
-		$shipping_same_as_billing = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
-		
+		// Initialize variables
+		$shipping_same_as_billing = false;
+
+		// Maybe set default value if not doing AJAX requests for the checkout page
+		if ( ! array_key_exists( 'wc-ajax', $_GET ) || ( 'checkout' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) || 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) ) ) {
+			// NOTE: Filter and option names are inverted because the option as initially intended
+			// to be used only when copying shipping to billing address. Later when adding option to
+			// move the billing address before shipping, the option name was not changed or
+			// a new option was not added to avoid duplicate options in the plugin settings.
+			$shipping_same_as_billing = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
+		}
+
 		// Maybe set as same as billing for logged users
 		if ( is_user_logged_in() ) {
 			$shipping_same_as_billing = $this->is_shipping_address_data_same_as_billing( $posted_data );

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-29 17:17+0000\n"
-"PO-Revision-Date: 2024-06-20 20:06+0000\n"
+"PO-Revision-Date: 2024-08-02 11:15+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Greek\n"
 "Language: el\n"
@@ -115,7 +115,7 @@ msgstr ""
 " για να λειτουργεί σωστά.</p><p>Για περισσότερες πληροφορίες, επισκεφθείτε "
 "την τεκμηρίωση του Fluid Checkout.</p>"
 
-#: fluid-checkout.php:560
+#: fluid-checkout.php:561
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -137,7 +137,7 @@ msgstr "Αντιστοίχιση λογαριασμού/χρήστη"
 msgid "Action link on the order summary at checkout."
 msgstr "Σύνδεσμος δράσης στη σύνοψη της παραγγελίας στο ταμείο."
 
-#: fluid-checkout.php:556
+#: fluid-checkout.php:557
 #, php-format
 msgid "Activate %s"
 msgstr "Ενεργοποίηση %s"
@@ -183,7 +183,7 @@ msgstr "Προσθέστε περιοχές widget στη σελίδα ευχα�
 msgid "Add-ons"
 msgstr "Πρόσθετα"
 
-#: inc/checkout-steps.php:2482
+#: inc/checkout-steps.php:2588
 msgid "Additional notes"
 msgstr "Πρόσθετες σημειώσεις"
 
@@ -311,7 +311,7 @@ msgstr "Έχετε ήδη λογαριασμό"
 msgid "Always show"
 msgstr "Πάντα να δείχνετε"
 
-#: inc/checkout-steps.php:2254
+#: inc/checkout-steps.php:2360
 msgid "An account will be created with the information provided."
 msgstr "Θα δημιουργηθεί ένας λογαριασμός με τις πληροφορίες που παρέχονται."
 
@@ -421,7 +421,7 @@ msgstr "Διεύθυνση χρέωσης"
 msgid "Billing phone"
 msgstr "Τηλέφωνο χρέωσης"
 
-#: inc/checkout-steps.php:3598
+#: inc/checkout-steps.php:3707
 msgid "Billing to"
 msgstr "Χρέωση σε"
 
@@ -507,7 +507,7 @@ msgstr "Διάταξη καλαθιού"
 msgid "Cart optimizations"
 msgstr "Βελτιστοποιήσεις καλαθιού"
 
-#: inc/checkout-steps.php:857
+#: inc/checkout-steps.php:952
 msgid "Cart total:"
 msgstr "Σύνολο καλαθιού:"
 
@@ -523,7 +523,7 @@ msgstr ""
 "Αλλαγή της ορατότητας του πεδίου ονόματος εταιρείας για την ενότητα "
 "διεύθυνσης αποστολής στη φόρμα πληρωμής."
 
-#: inc/checkout-steps.php:1921
+#: inc/checkout-steps.php:2027
 #, php-format
 msgid "Change: %s"
 msgstr "Αλλαγή: %s"
@@ -604,32 +604,32 @@ msgstr "Πρόοδος πληρωμής"
 msgid "Checkout Sidebar"
 msgstr "Πλαϊνή μπάρα πληρωμής"
 
-#: inc/checkout-steps.php:1563
+#: inc/checkout-steps.php:1658
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Τιμολόγηση"
 
-#: inc/checkout-steps.php:1542
+#: inc/checkout-steps.php:1637
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Επικοινωνία"
 
-#: inc/checkout-steps.php:1572
+#: inc/checkout-steps.php:1667
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Πληρωμή"
 
-#: inc/checkout-steps.php:1551
+#: inc/checkout-steps.php:1646
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Αποστολή"
 
-#: inc/checkout-steps.php:1921
+#: inc/checkout-steps.php:2027
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Αλλαγή"
 
-#: inc/checkout-steps.php:1922
+#: inc/checkout-steps.php:2028
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Αποθήκευση αλλαγών"
@@ -706,7 +706,7 @@ msgstr "Επιλέξτε σε ποιο βήμα θα εμφανιστεί το �
 msgid "Classic"
 msgstr "Κλασικό"
 
-#: inc/checkout-steps.php:857
+#: inc/checkout-steps.php:952
 msgid "Click to go to the order summary"
 msgstr "Κάντε κλικ για να μεταβείτε στη σύνοψη της παραγγελίας"
 
@@ -1013,7 +1013,7 @@ msgstr ""
 msgid "Don't show this again"
 msgstr "Μην το ξαναδείξετε αυτό"
 
-#: inc/checkout-steps.php:5080
+#: inc/checkout-steps.php:5198
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 msgid "Edit cart"
 msgstr "Επεξεργασία καλαθιού"
@@ -1139,6 +1139,11 @@ msgstr ""
 msgid "Fluid Checkout"
 msgstr "Έλεγχος υγρών"
 
+#: inc/admin/admin-notice-breaking-changes-version-400.php:37
+msgid "Fluid Checkout - Important changes coming in the next major version!"
+msgstr ""
+"Fluid Checkout - Σημαντικές αλλαγές έρχονται στην επόμενη μεγάλη έκδοση!"
+
 #: inc/admin/admin-notice-db-migrations.php:51
 msgid "Fluid Checkout database update"
 msgstr "Ενημέρωση της βάσης δεδομένων Fluid Checkout"
@@ -1155,6 +1160,26 @@ msgstr "Fluid Checkout για το WooCommerce - Lite"
 msgid "Fluid Checkout is not compatible with the Divi Builder checkout layout"
 msgstr ""
 "Το Fluid Checkout δεν είναι συμβατό με τη διάταξη checkout του Divi Builder"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:38
+msgid ""
+"Fluid Checkout Lite 4.0 will be released soon with <strong>important changes "
+"that might impact your website</strong> if you have made customizations to "
+"our plugins. If your website does not have any customizations for Fluid "
+"Checkout plugins, it should work in the same way as before to the next major "
+"versions.<br><br>If you have any customizations for Fluid Checkout on your "
+"website, please read our guide <a href=\"https://fluidcheckout.com/version-4-"
+"customization-migration/\">Migrating customizations to Fluid Checkout Lite 4."
+"0+</a>"
+msgstr ""
+"Το Fluid Checkout Lite 4.0 θα κυκλοφορήσει σύντομα με <strong>σημαντικές "
+"αλλαγές που μπορεί να επηρεάσουν τον ιστότοπό σας</strong>, αν έχετε κάνει "
+"προσαρμογές στα plugins μας. Εάν ο ιστότοπός σας δεν έχει προσαρμογές για τα "
+"plugins του Fluid Checkout, θα πρέπει να λειτουργεί με τον ίδιο τρόπο όπως "
+"και πριν στις επόμενες μεγάλες εκδόσεις.<br><br>Εάν έχετε προσαρμογές για το "
+"Fluid Checkout στον ιστότοπό σας, παρακαλούμε διαβάστε τον οδηγό μας <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\">"
+"Μεταφορά προσαρμογών στο Fluid Checkout Lite 4.0+</a>"
 
 #: inc/admin/admin-setting-type-fc-addons.php:48
 #: inc/admin/admin-setting-type-fc-addons.php:50
@@ -1239,7 +1264,7 @@ msgstr "Επιλογές δώρων"
 msgid "Go to Germanized settings"
 msgstr "Μεταβείτε στις γερμανικές ρυθμίσεις"
 
-#: fluid-checkout.php:552
+#: fluid-checkout.php:553
 msgid "Go to Plugin Search"
 msgstr "Πηγαίνετε στην Αναζήτηση Plugin"
 
@@ -1553,7 +1578,7 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Μετακινήστε το πλαίσιο ελέγχου εγγραφής στο βήμα επαφής"
 
-#: inc/checkout-steps.php:685
+#: inc/checkout-steps.php:780
 msgid "Multi-step"
 msgstr "Πολλαπλών βημάτων"
 
@@ -1565,7 +1590,7 @@ msgstr "Πολλαπλές αποθηκευμένες διευθύνσεις γ�
 msgid "My account layout"
 msgstr "Η διάταξη του λογαριασμού μου"
 
-#: inc/checkout-steps.php:2191
+#: inc/checkout-steps.php:2297
 msgid "My contact"
 msgstr "Η επαφή μου"
 
@@ -1594,7 +1619,7 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:3047
+#: inc/checkout-steps.php:3156
 msgid "Not selected yet."
 msgstr "Δεν έχει επιλεγεί ακόμη."
 
@@ -1697,7 +1722,7 @@ msgstr "Πρόοδος της παραγγελίας"
 msgid "Order status"
 msgstr "Κατάσταση παραγγελίας"
 
-#: inc/checkout-steps.php:5015 inc/admin/admin-settings-cart.php:131
+#: inc/checkout-steps.php:5133 inc/admin/admin-settings-cart.php:131
 #: inc/admin/admin-settings-order-received.php:177
 #: inc/admin/admin-settings-checkout.php:238
 msgid "Order summary"
@@ -1762,7 +1787,7 @@ msgstr "Χρώμα φόντου σελίδας"
 msgid "Parcel terminal"
 msgstr "Τερματικός σταθμός δεμάτων"
 
-#: inc/checkout-steps.php:4794
+#: inc/checkout-steps.php:4912
 msgid "Payment method"
 msgstr "Μέθοδος πληρωμής"
 
@@ -1798,7 +1823,7 @@ msgid "Prevent automatic selection of the first shipping method"
 msgstr "Αποτροπή της αυτόματης επιλογής της πρώτης μεθόδου αποστολής"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1428
+#: inc/checkout-steps.php:1523
 #, php-format
 msgid "Proceed to %s"
 msgstr "Προχωρήστε στην %s"
@@ -1837,6 +1862,10 @@ msgid ""
 msgstr ""
 "Διαβάστε τον οδηγό εγκατάστασης <a href=\"%s\" target=\"_blank\">Δηλώσεις "
 "σχετικά με το Fluid Checkout</a>."
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:41
+msgid "Read the migration guide"
+msgstr "Διαβάστε τον οδηγό μετάβασης"
 
 #: inc/admin/admin-settings-checkout.php:430
 msgid ""
@@ -1891,11 +1920,11 @@ msgstr ""
 msgid "Required"
 msgstr "Απαιτούμενο"
 
-#: inc/checkout-steps.php:3826
+#: inc/checkout-steps.php:3935
 msgid "Same as billing address"
 msgstr "Ίδια με τη διεύθυνση χρέωσης"
 
-#: inc/checkout-steps.php:3783
+#: inc/checkout-steps.php:3892
 msgid "Same as shipping address"
 msgstr "Ίδια με τη διεύθυνση αποστολής"
 
@@ -1963,7 +1992,9 @@ msgstr ""
 "Η επιλογή ενός σημείου συλλογής είναι απαραίτητη κατά την αποστολή με το "
 "FermoPoint."
 
+#: inc/compat/plugins/compat-plugin-woo-carrier-agents.php:113
 #: inc/compat/plugins/compat-plugin-seur.php:103
+#: inc/compat/plugins/compat-plugin-mondialrelay-wordpress.php:124
 #: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:126
 #: inc/compat/plugins/compat-plugin-omniva-woocommerce.php:109
 msgid "Selecting a pickup point is required before proceeding."
@@ -2017,7 +2048,7 @@ msgstr "Αποστολή"
 msgid "Shipping address"
 msgstr "Διεύθυνση αποστολής"
 
-#: inc/checkout-steps.php:2458
+#: inc/checkout-steps.php:2564
 msgid "Shipping method"
 msgstr "Μέθοδος αποστολής"
 
@@ -2030,7 +2061,7 @@ msgstr "Μέθοδοι αποστολής"
 msgid "Shipping phone"
 msgstr "Τηλέφωνο αποστολής"
 
-#: inc/checkout-steps.php:2434
+#: inc/checkout-steps.php:2540
 msgid "Shipping to"
 msgstr "Αποστολή σε"
 
@@ -2072,7 +2103,7 @@ msgstr "Θέση checkbox εγγραφής"
 msgid "Simplified EU-VAT validation for your store."
 msgstr "Απλοποιημένη επικύρωση ΦΠΑ ΕΕ για το κατάστημά σας."
 
-#: inc/checkout-steps.php:686
+#: inc/checkout-steps.php:781
 msgid "Single step"
 msgstr "Ενιαίο βήμα"
 
@@ -2110,7 +2141,7 @@ msgid "Split"
 msgstr "Split"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1684
+#: inc/checkout-steps.php:1790
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Βήμα %1$s από %2$s"
@@ -2120,20 +2151,20 @@ msgid "Subscribe checkbox"
 msgstr "Πλαίσιο ελέγχου εγγραφής"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2636
+#: inc/checkout-steps.php:2742
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2641
+#: inc/checkout-steps.php:2747
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:2034
+#: inc/checkout-steps.php:2140
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Καμία."
@@ -2506,7 +2537,7 @@ msgstr ""
 "απενεργοποιήστε τη λειτουργία πληρωμής πολλαπλών βημάτων του Germanized PRO "
 "στις ρυθμίσεις του πρόσθετου."
 
-#: fluid-checkout.php:549
+#: fluid-checkout.php:550
 msgid "WooCommerce"
 msgstr "WooCommerce"
 

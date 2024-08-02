@@ -3,7 +3,7 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.5.4
+Tested up to: 6.6.1
 Stable tag: 3.1.11
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -361,6 +361,28 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Bump tested up to WordPress 6.6.1 and WooCommerce 9.1.4
+* Added: Admin notice about changes to next major version and customization migration guide.
+* Added: Compatibility with the Order Attribution feature from WooCommerce.
+* Added: Compatibility issues the order attribution feature from WooCommerce.
+* Added: Compatibility with plugin Avada Builder.
+* Added: Compatibility with plugin Mondial Relay - WordPress.
+* Added: Compatibility with plugin WooCommerce Carrier Agents.
+* Improved: Compatibility with theme Avada.
+* Improved: Compatibility with theme Ocean WP.
+* Improved: Compatibility with theme Hello Elementor.
+* Improved: Compatibility with plugin Email Template Customizer for WooCommerce (by VillaTheme). Do not show duplicate phone numbers when generating email messages with this plugin.
+* Improved: Moved template files used to display customer addresses on email notifications from Fluid Checkout PRO to Lite.
+* Improved: Add accessibility label to hidden checkbox "Ship to different address" to overcome issue reported by automated accessibility validation tools.
+* Fixed: Compatibility issues with plugin WooPayments (WooCommerce Payments). Avoid setting address data to same as billing or shipping when processing express payments such as Apple Pay and Google Pay.
+* Fixed: Prevent showing duplicate billing and shipping phone number values on email notifications.
+* Fixed: Make string translatable in compatibility class with Hungarian Pickup Points plugin.
+* Fixed: Layout for login form fields in the popup login form for some themes.
+* Fixed: Same addresses being used for express payments when processing order from other pages other than the checkout page.
+* Fixed: Redirection to cart page when trying to access the checkout page with an empty cart, and checkout page is using block-based checkout form.
 
 = 3.1.11 - 2024-07-03 =
 

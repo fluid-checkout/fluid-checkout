@@ -262,7 +262,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 			$html .= '</div>';
 
 			// Button
-			$html .= '<a href="#" id="vp-woo-pont-show-map" data-shipping-costs="' . $shipping_costs_attr . '">' . esc_html( 'Modify', 'vp-woo-pont' ) . '</a>';
+			$html .= '<a href="#" id="vp-woo-pont-show-map" data-shipping-costs="' . $shipping_costs_attr . '">' . esc_html( __( 'Modify', 'vp-woo-pont' ) ) . '</a>';
 
 			$html .= '</div>';
 		}

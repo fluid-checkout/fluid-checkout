@@ -130,6 +130,10 @@
 	margin: 0 0 $global-spacing-small;
 	width: 100%;
 }
+.woocommerce-checkout .fc-login-form form.login .form-row.form-row-wide
+.woocommerce-checkout .fc-login-form form.login .form-row.form-row-wide::after {
+	clear: both;
+}
 
 
 
