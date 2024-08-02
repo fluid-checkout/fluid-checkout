@@ -26,12 +26,12 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Shipping methods
+		add_filter( 'fc_shipping_method_option_image_html', array( $this, 'maybe_change_shipping_method_option_image_html' ), 10, 2 );
+
 		// Alter class method from Packlink PRO
 		$this->remove_action_for_class( 'woocommerce_after_shipping_rate', array( 'Packlink\WooCommerce\Components\Checkout\Checkout_Handler', 'after_shipping_rate' ), 10 );
 		add_action( 'woocommerce_after_shipping_rate', array( $this, 'alter_packlink_after_shipping_rate' ), 10, 2 );
-
-		// Shipping methods
-		add_filter( 'fc_shipping_method_option_image_html', array( $this, 'maybe_change_shipping_method_option_image_html' ), 10, 2 );
 	}
 
 
@@ -58,7 +58,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 		// Remove image and hidden input field
 		$output = preg_replace( '/<img[^>]+>/', '', $output );
-		$output = preg_replace( '/<input[^>]+name="packlink_show_image"[^>]+>/', '', $output );
+		$output = preg_replace( '/<input[^>]+name="packlink_image_url"[^>]+>/', '', $output );
 
 		// Print the output
 		echo $output;
