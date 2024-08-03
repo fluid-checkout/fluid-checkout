@@ -275,7 +275,10 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 			// Get coupon label with changed "remove" link
 			ob_start();
 			wc_cart_totals_coupon_html( $coupon );
-			$coupon_html_esc = str_replace( esc_html( __( '[Remove]', 'woocommerce' ) ), esc_html( __( 'Remove', 'fluid-checkout' ) ), ob_get_clean() );
+			$coupon_html_esc = ob_get_clean();
+
+			// Change the "remove" link text
+			$coupon_html_esc = str_replace( esc_html( __( '[Remove]', 'woocommerce' ) ), esc_html( __( 'Remove', 'fluid-checkout' ) ), $coupon_html_esc );
 			?>
 			<?php // The function `sanitize_title` is used below to convert the string into a CSS-class-like string ?>
 			<div class="fc-coupon-codes__coupon coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
