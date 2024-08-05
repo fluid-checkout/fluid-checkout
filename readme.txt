@@ -362,6 +362,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Do not set focus to password field when first visiting the checkout page if account creation is required.
+
 = 3.2.1 - 2024-08-05 =
 
 * Fixed: Compatibility with plugin Germanized. Fix voucher coupons displayed with amount zero on the coupon code substep.
