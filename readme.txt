@@ -362,6 +362,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Compatibility with plugin Germanized. Fix voucher coupons displayed with amount zero on the coupon code substep.
+* Fixed: Fatal error on compatibility with the order attribution feature from WooCommerce on older versions of WooCommerce.
+
 = 3.2.0 - 2024-08-02 =
 
 * Bump tested up to WordPress 6.6.1 and WooCommerce 9.1.4

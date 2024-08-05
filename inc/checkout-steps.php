@@ -357,7 +357,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get class object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
-		
+
+		// Bail if class object or function is not available
+		if ( ! $class_object || ! method_exists( $class_object, 'stamp_checkout_html_element_once' ) ) { return; }
+
 		// Get list of hooks to which the order attribution stamp should be added
 		$stamp_checkout_html_actions = apply_filters(
 			'wc_order_attribution_stamp_checkout_html_actions',
@@ -604,7 +607,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get class object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
-		
+
+		// Bail if class object or function is not available
+		if ( ! $class_object || ! method_exists( $class_object, 'stamp_checkout_html_element_once' ) ) { return; }
+
 		// Get list of hooks to which the order attribution stamp should be added
 		$stamp_checkout_html_actions = apply_filters(
 			'wc_order_attribution_stamp_checkout_html_actions',
