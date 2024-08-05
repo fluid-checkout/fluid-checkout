@@ -224,10 +224,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		if ( ! function_exists( 'WC' ) ) { return false; }
 
 		// Bail if not showing the checkout form
-		// - registration at checkout not enabled
-		// - registration is required to checkout
-		// - user is not logged in
-		if ( ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() && ! is_user_logged_in() ) { return false; }
+		if ( ! is_user_logged_in() && ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() ) { return false; }
 
 		// Return `true` when distraction free header and footer is enabled
 		return 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_hide_site_header_footer_at_checkout' );
