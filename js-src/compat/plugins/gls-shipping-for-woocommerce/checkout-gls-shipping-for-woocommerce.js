@@ -22,6 +22,7 @@
 	var _settings = {
 		shippingMethodOptionSelector: 'input[type="radio"][name^="shipping_method"]',
 		hiddenInputSelector: '#gls-pickup-info-data',
+		mapElementsSelector: '.inchoo-gls-map',
 	};
 
 
@@ -47,12 +48,41 @@
 
 
 	/**
+	 * Trigger update checkout.
+	 */
+	var triggerCheckoutUpdate = function() {
+		// Trigger update checkout
+		$( document.body ).trigger( 'update_checkout' );
+	}
+
+
+
+	/**
 	 * Handle captured `change` event and route to the appropriate functions.
 	 */
 	var handleChange = function( e ) {
 		// SHIPPING METHOD RADIO FIELDS
 		if ( e.target.matches( _settings.shippingMethodOptionSelector ) ) {
 			removeHiddenInput();
+		}
+		// PICKUP POINT SELECTION FIELDS
+		else if ( e.target.matches( _settings.mapElementsSelector ) ) {
+			triggerCheckoutUpdate();
+		}
+	}
+
+
+
+	/**
+	 * Add event listener for map elements.
+	 */
+	var addMapElementsEventListeners = function() {
+		var mapElements = document.querySelectorAll( _settings.mapElementsSelector );
+
+		// Add "change" event listeners to all map elements
+		for ( var i = 0; i < mapElements.length; i++ ) {
+			var mapElement = mapElements[i];
+			mapElement.addEventListener( 'change', handleChange );
 		}
 	}
 
@@ -68,6 +98,7 @@
 		_settings = FCUtils.extendObject( _settings, options );
 
 		// Add event listeners
+		addMapElementsEventListeners();
 		window.addEventListener( 'change', handleChange );
 
 		_hasInitialized = true;
