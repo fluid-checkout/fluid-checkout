@@ -218,8 +218,8 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		// Get selected terminal data
 		$terminal_data = $this->get_selected_terminal_data();
 
-		// Output selected terminal data if associated with the currently selected shipping method
-		if ( ! empty( $terminal_data ) && ! empty( $terminal_data['address_1'] ) ) {
+		// If local pickup feature is disabled, output selected terminal data
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_local_pickup' ) && ! empty( $terminal_data ) && ! empty( $terminal_data['address_1'] ) ) {
 			$html .= '<div id="gls-pickup-info">';
 			$html .= '<strong>' . __('Pickup Location', 'gls-shipping-for-woocommerce') . ':</strong>' . '<br>';
 			$html .= __('Name', 'gls-shipping-for-woocommerce') . ': ' . esc_html( $terminal_data['company'] ) . '<br>';
