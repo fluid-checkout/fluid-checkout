@@ -38,6 +38,9 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+
 		// Shipping methods hooks
 		add_action( 'woocommerce_shipping_init', array( $this, 'shipping_methods_hooks' ), 100 );
 
@@ -64,6 +67,20 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 
 		// Checkout validation settings
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
+	}
+
+	/**
+	 * Initialize late hooks.
+	 */
+	public function late_hooks() {
+		// Bail if class is not available
+		if ( ! class_exists( self::CLASS_NAME ) ) { return; }
+
+		// Get object
+		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( self::CLASS_NAME );
+
+		// Remove default field validation
+		remove_action( 'woocommerce_checkout_process', array( $class_object, 'validate_gls_parcel_shop_selection' ), 10 );
 	}
 
 	/**

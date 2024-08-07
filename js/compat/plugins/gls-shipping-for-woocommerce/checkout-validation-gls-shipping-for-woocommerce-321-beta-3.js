@@ -43,7 +43,6 @@
 	 * @return {Boolean}                   Whether the field is a CNPF field.
 	 */
 	var isValidateField = function( field, formRow, validationEvent ) {
-		console.log(field)
 		// Bail if not a target shipping method field
 		if ( ! field.matches( _settings.typeFieldSelector ) ) { return false; }
 
