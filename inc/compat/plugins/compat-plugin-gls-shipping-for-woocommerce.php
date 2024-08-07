@@ -186,6 +186,9 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	 * Output the pickup point selection UI from the plugin.
 	 */
 	public function output_pickup_point_selection_ui() {
+		// Bail if not at checkout page, and not an AJAX request to update checkout fragment
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
 		// Get object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( self::CLASS_NAME );
 
