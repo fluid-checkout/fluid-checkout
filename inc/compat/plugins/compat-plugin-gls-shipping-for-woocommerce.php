@@ -47,11 +47,23 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		// Enqueue assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
+
+		// Output hidden fields
+		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_custom_hidden_fields' ), 10 );
+
+		// Maybe set step as incomplete
+		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
+
+		// Checkout validation settings
+		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
 	}
 
 	/**
@@ -80,6 +92,10 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		// Checkout scripts
 		wp_register_script( 'fc-checkout-gls-shipping-for-woocommerce', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/gls-shipping-for-woocommerce/checkout-gls-shipping-for-woocommerce' ), array( 'jquery', 'fc-utils' ), NULL, true );
 		wp_add_inline_script( 'fc-checkout-gls-shipping-for-woocommerce', 'window.addEventListener("load",function(){CheckoutGLSShippingForWooCommerce.init(fcSettings.checkoutGLSShippingForWooCommerce);})' );
+
+		// Add validation script
+		wp_register_script( 'fc-checkout-validation-gls-shipping-for-woocommerce', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/gls-shipping-for-woocommerce/checkout-validation-gls-shipping-for-woocommerce' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-validation-gls-shipping-for-woocommerce', 'window.addEventListener("load",function(){CheckoutValidationGLSShippingForWooCommerce.init(fcSettings.checkoutValidationGLSShippingForWooCommerce);})' );
 	}
 
 	/**
@@ -88,6 +104,25 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	public function enqueue_assets() {
 		// Scripts
 		wp_enqueue_script( 'fc-checkout-gls-shipping-for-woocommerce' );
+		wp_enqueue_script( 'fc-checkout-validation-gls-shipping-for-woocommerce' );
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Add validation settings
+		$settings[ 'checkoutValidationGLSShippingForWooCommerce' ] = array(
+			'validationMessages'  => array(
+				'pickup_point_not_selected' => __( 'Selecting a pickup point is required before proceeding.', 'fluid-checkout' ),
+			),
+		);
+
+		return $settings;
 	}
 
 
@@ -173,6 +208,9 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		ob_start();
 		echo $class_object->add_gls_button_to_shipping_method( $label, $shipping_method );
 		$html = ob_get_clean();
+
+		// Remove line breaks from the output
+		$html = preg_replace( '/<br[^>]*>/', '', $html );
 
 		// Get selected terminal data
 		$terminal_data = $this->get_selected_terminal_data();
@@ -293,6 +331,81 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		$review_text_lines[] = $formatted_address;
 
 		return $review_text_lines;
+	}
+
+
+
+	/**
+	 * Set the shipping step as incomplete when shipping method is Hungarian Pickup Points and no pickup point is selected.
+	 *
+	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 */
+	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
+		// Get selected shipping method
+		$shipping_method = $this->maybe_get_selected_shipping_method();
+
+		// Bail if selected shipping method is not available
+		if ( ! is_object( $shipping_method ) ) { return $is_step_complete; }
+
+		// Bail if selected shipping method is not a local pickup method
+		if ( ! $this->is_shipping_method_local_pickup( $shipping_method->id ) ) { return $is_step_complete; }
+
+		// Get selected terminal data
+		$terminal_data = $this->get_selected_terminal_data();
+
+		// Maybe set step as incomplete if terminal data is not set
+		if ( empty( $terminal_data ) ) {
+			$is_step_complete = false;
+		}
+
+		return $is_step_complete;
+	}
+
+
+
+	/**
+	 * Output the custom hidden fields.
+	 */
+	public function output_custom_hidden_fields( $checkout ) {
+		// Maybe get selected shipping method
+		$shipping_method = $this->maybe_get_selected_shipping_method();
+
+		// Bail if target shipping method is not selected
+		if ( ! is_object( $shipping_method ) ) { return; }
+
+		// Bail if target shipping method is not local pickup
+		if ( ! $this->is_shipping_method_local_pickup( $shipping_method->id ) ) { return; }
+
+		// Check if terminal data is set
+		$is_terminal_data_set = ! empty( $this->get_selected_terminal_data() );
+
+		// Output custom hidden fields
+		echo '<div id="gls_shipping-custom_checkout_fields" class="form-row fc-no-validation-icon">';
+		echo '<div class="woocommerce-input-wrapper">';
+		echo '<input type="hidden" id="gls_shipping-terminal" name="gls_shipping-terminal" value="'. $is_terminal_data_set .'" class="validate-gls-shipping">';
+		echo '</div>';
+		echo '</div>';
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object for the checkout validation.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function change_js_settings_checkout_validation( $settings ) {
+		// Get current values
+		$current_validate_field_selector = array_key_exists( 'validateFieldsSelector', $settings ) ? $settings[ 'validateFieldsSelector' ] : '';
+		$current_reference_node_selector = array_key_exists( 'referenceNodeSelector', $settings ) ? $settings[ 'referenceNodeSelector' ] : '';
+		$current_always_validate_selector = array_key_exists( 'alwaysValidateFieldsSelector', $settings ) ? $settings[ 'alwaysValidateFieldsSelector' ] : '';
+
+		// Prepend new values to existing settings
+		$settings[ 'validateFieldsSelector' ] = 'input[name="gls_shipping-terminal"]' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
+		$settings[ 'referenceNodeSelector' ] = 'input[name="gls_shipping-terminal"]' . ( ! empty( $current_reference_node_selector ) ? ', ' : '' ) . $current_reference_node_selector;
+		$settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="gls_shipping-terminal"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
+
+		return $settings;
 	}
 
 }
