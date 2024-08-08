@@ -17,7 +17,6 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	public const SESSION_FIELD_NAME = 'gls_pickup_info';
 
 
-
 	/**
 	 * Class name for the plugin which this compatibility class is related to.
 	 */
@@ -26,9 +25,22 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 
 
 	/**
+	 * GLS_Shipping_Checkout object.
+	 */
+	public $class_object;
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
+		// Maybe set class object from the plugin
+		if ( class_exists( self::CLASS_NAME ) ) {
+			// Get object
+			$this->class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( self::CLASS_NAME );
+		}
+
 		$this->hooks();
 	}
 
@@ -73,31 +85,29 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	 * Initialize late hooks.
 	 */
 	public function late_hooks() {
-		// Bail if class is not available
-		if ( ! class_exists( self::CLASS_NAME ) ) { return; }
+		// Bail if class object is not available
+		if ( ! $this->class_object ) { return; }
 
-		// Get object
-		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( self::CLASS_NAME );
+		// Replace hidden field from which the terminal data is fetched to the order meta
+		remove_action( 'woocommerce_checkout_update_order_meta', array( $this->class_object, 'save_gls_parcel_shop_info' ), 10 );
+		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'save_gls_parcel_shop_info' ), 10 );
 
-		// Remove default field validation
-		remove_action( 'woocommerce_checkout_process', array( $class_object, 'validate_gls_parcel_shop_selection' ), 10 );
+		// Default field validation
+		remove_action( 'woocommerce_checkout_process', array( $this->class_object, 'validate_gls_parcel_shop_selection' ), 10 );
 	}
 
 	/**
 	 * Add or remove shipping method hooks.
 	 */
 	public function shipping_methods_hooks() {
-		// Bail if class is not available
-		if ( ! class_exists( self::CLASS_NAME ) ) { return; }
-
-		// Get object
-		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( self::CLASS_NAME );
+		// Bail if class object is not available
+		if ( ! $this->class_object ) { return; }
 
 		// Move shipping method hooks
-		remove_filter( 'woocommerce_cart_shipping_method_full_label', array( $class_object, 'add_gls_button_to_shipping_method' ), 10 );
-		remove_filter( 'woocommerce_review_order_after_shipping', array( $class_object, 'display_pickup_information'), 10 );
+		remove_filter( 'woocommerce_cart_shipping_method_full_label', array( $this->class_object, 'add_gls_button_to_shipping_method' ), 10 );
+		remove_filter( 'woocommerce_review_order_after_shipping', array( $this->class_object, 'display_pickup_information'), 10 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_pickup_point_selection_ui' ), 10 );
-		add_action( 'fc_shipping_methods_after_packages_inside', array( $class_object, 'display_pickup_information' ), 10 );
+		add_action( 'fc_shipping_methods_after_packages_inside', array( $this->class_object, 'display_pickup_information' ), 10 );
 	}
 
 
@@ -159,14 +169,19 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	 * Maybe get selected shipping method object if it matches the target method.
 	 */
 	public function maybe_get_selected_shipping_method() {
+		// Calculate shipping to make sure packages are set
+		WC()->cart->calculate_shipping();
+
 		// Check chosen shipping method
 		$packages = WC()->shipping()->get_packages();
+
 		foreach ( $packages as $i => $package ) {
 			// Get available shipping methods
 			$available_methods = $package['rates'];
 
 			// Check if target shipping method is selected
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+
 			if ( $chosen_method && $this->is_shipping_method_gls_shipping( $chosen_method ) && ! empty( $available_methods[ $chosen_method ] ) ) {
 				// Return the selected shipping method object
 				return $available_methods[ $chosen_method ];
@@ -203,17 +218,15 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	 * Output the pickup point selection UI from the plugin.
 	 */
 	public function output_pickup_point_selection_ui() {
+
 		// Bail if not at checkout page, and not an AJAX request to update checkout fragment
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
-		// Get object
-		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( self::CLASS_NAME );
-
 		// Bail if plugin's class object is not available
-		if ( ! $class_object ) { return; }
+		if ( ! $this->class_object ) { return; }
 
 		// Bail if plugin's class method is not available
-		if ( ! method_exists( $class_object, 'add_gls_button_to_shipping_method' ) ) { return; }
+		if ( ! method_exists( $this->class_object, 'add_gls_button_to_shipping_method' ) ) { return; }
 
 		// Get selected shipping method object
 		$shipping_method = $this->maybe_get_selected_shipping_method();
@@ -226,7 +239,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 
 		// Get the pickup point selection UI
 		ob_start();
-		echo $class_object->add_gls_button_to_shipping_method( $label, $shipping_method );
+		echo $this->class_object->add_gls_button_to_shipping_method( $label, $shipping_method );
 		$html = ob_get_clean();
 
 		// Remove line breaks from the output
@@ -235,8 +248,11 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		// Get selected terminal data
 		$terminal_data = $this->get_selected_terminal_data();
 
+		// Set condition to show pickup location info
+		$show_pickup_info = ! FluidCheckout::instance()->is_pro_activated() || 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_local_pickup' );
+
 		// If local pickup feature is disabled, output selected terminal data
-		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_local_pickup' ) && ! empty( $terminal_data ) && ! empty( $terminal_data['address_1'] ) ) {
+		if ( $show_pickup_info && ! empty( $terminal_data ) && ! empty( $terminal_data['address_1'] ) ) {
 			$html .= '<div id="gls-pickup-info">';
 			$html .= '<strong>' . __('Pickup Location', 'gls-shipping-for-woocommerce') . ':</strong>' . '<br>';
 			$html .= __('Name', 'gls-shipping-for-woocommerce') . ': ' . esc_html( $terminal_data['company'] ) . '<br>';
@@ -254,7 +270,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	/**
 	 * Get the selected terminal data.
 	 */
-	public function get_selected_terminal_data() {
+	public function get_selected_terminal_data( $unformatted = false ) {
 		// Get session field name
 		$session_field_name = $this->get_session_field_name();
 
@@ -264,8 +280,17 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		// Get session field value
 		$terminal_data = WC()->session->get( $session_field_name );
 
+		// Bail if terminal data is not a string
+		if ( ! is_string( $terminal_data ) ) { return; }
+
 		// Bail if terminal data is empty
 		if ( empty( $terminal_data ) ) { return; }
+
+		// Maybe return unformatted terminal data
+		if ( $unformatted ) { return $terminal_data; }
+
+		// Decode terminal data
+		$terminal_data = json_decode( $terminal_data, true );
 
 		// Assign terminal object property values to the corresponding array keys
 		$selected_terminal_data = array(
@@ -314,8 +339,8 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		// Bail if session field name is not available
 		if ( empty( $session_field_name ) ) { return $posted_data; }
 
-		// Get decoded terminal data from the posted data
-		$terminal_data = json_decode( $posted_data[ self::SESSION_FIELD_NAME ], true );
+		// Get terminal data from the posted data
+		$terminal_data = $posted_data[ self::SESSION_FIELD_NAME ];
 
 		// Save field value to session, as it is needed for the plugin to recover its value
 		WC()->session->set( $session_field_name, $terminal_data );
@@ -397,12 +422,12 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		if ( ! $this->is_shipping_method_local_pickup( $shipping_method->id ) ) { return; }
 
 		// Check if terminal data is set
-		$is_terminal_data_set = ! empty( $this->get_selected_terminal_data() );
+		$terminal_data = $this->get_selected_terminal_data( true );
 
 		// Output custom hidden fields
 		echo '<div id="gls_shipping-custom_checkout_fields" class="form-row fc-no-validation-icon">';
 		echo '<div class="woocommerce-input-wrapper">';
-		echo '<input type="hidden" id="gls_shipping-terminal" name="gls_shipping-terminal" value="'. $is_terminal_data_set .'" class="validate-gls-shipping">';
+		echo '<input type="hidden" id="gls_shipping-terminal" name="gls_shipping-terminal" value="'. esc_attr( $terminal_data ) .'" class="validate-gls-shipping">';
 		echo '</div>';
 		echo '</div>';
 	}
@@ -426,6 +451,45 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		$settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="gls_shipping-terminal"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
 
 		return $settings;
+	}
+
+
+
+	/**
+	 * Save the terminal data to the order meta.
+	 *
+	 * @param   int  $order_id  The order ID.
+	 */
+	public function save_gls_parcel_shop_info( $order_id ) {
+		// Get terminal data
+		$terminal_data = '';
+		if ( ! empty( $_POST['gls_shipping-terminal'] ) ) {
+			$terminal_data = $_POST['gls_shipping-terminal'];
+		}
+
+		// Bail if terminal data is empty
+		if ( empty( $terminal_data ) ) { return; }
+
+		// Un-quote and sanitize terminal data
+		$terminal_data = stripslashes( $_POST['gls_shipping-terminal'] );
+		$terminal_data = sanitize_text_field( $terminal_data );
+
+		// Get shipping methods from order
+		$order = wc_get_order( $order_id );
+		$shipping_methods = $order->get_shipping_methods();
+
+		// Iterate shipping methods used for the order
+		foreach ( $shipping_methods as $method ) {
+			// Check whether shipping method is local pickup
+			if ( $this->is_shipping_method_local_pickup( $method->get_method_id(), $method, $order ) ) {
+				// Save terminal data to order meta
+				$order->update_meta_data( '_gls_pickup_info', $terminal_data );
+
+				// Save order
+				$order->save();
+				break;
+			}
+		}
 	}
 
 }
