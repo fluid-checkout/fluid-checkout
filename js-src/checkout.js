@@ -114,9 +114,6 @@ jQuery( function( $ ) {
 			this.$checkout_form.on( 'change', _settings.billingSameAsShippingCheckboxSelector, this.billing_same_shipping_changed );
 			this.$checkout_form.on( 'change', _settings.shippingSameAsBillingCheckboxSelector, this.shipping_same_billing_changed );
 
-			// // CHANGE: Mirror address field values between billing and shipping fields when "same as address" checkbox is checked
-			// this.$checkout_form.on( 'change, input', _settings.addressFieldsToMirrorSelector, this.mirror_address_field_value_event_handler );
-
 			// CHANGE: Trigger reinitialization functions after checkout is updated
 			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_collapsible_blocks );
 			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_flyout_blocks );
@@ -270,12 +267,6 @@ jQuery( function( $ ) {
 			// Mirror field value
 			mirrorField.value = field.value;
 		},
-		// // CHANGE: Get the address field from the event target and mirror its value to the other address group
-		// mirror_address_field_value_event_handler: function( e ) {
-		// 	// Get field
-		// 	var field = e.target;
-		// 	wc_checkout_form.mirror_address_field_value( field );
-		// },
 		// CHANGE: Mirror all address field values between billing and shipping fields when "same as address" checkbox is checked
 		maybe_mirror_all_address_field_values: function() {
 			// Get the checkbox field
