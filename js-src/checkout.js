@@ -54,8 +54,10 @@ jQuery( function( $ ) {
 		$order_review: $( '#order_review' ),
 		$checkout_form: $( 'form.checkout' ),
 		init: function() {
-			// CHANGE: Merge default settings object with values from the server settings object
-			_settings = FCUtils.extendObject( true, _settings, window.fcSettings );
+			// CHANGE: Maybe merge default settings object with values from the server settings object
+			if ( window.fcSettings ) {
+				_settings = FCUtils.extendObject( true, _settings, window.fcSettings.checkout );
+			}
 
 			$( document.body ).on( 'update_checkout', this.update_checkout );
 			$( document.body ).on( 'init_checkout', this.init_checkout );
