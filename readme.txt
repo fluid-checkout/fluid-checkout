@@ -365,7 +365,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with plugin WP Armour Extended - Honeypot Anti Spam.
+* Improved: Move the checkout script settings into its own property in the `fcSettings` object, optimizing the use of memory on the browser.
+* Fixed: Compatibility with plugin WooCommerce Payments. Fix wrongly displaying error message "missing payment method" in some specific configurations.
 * Fixed: Do not set focus to password field when first visiting the checkout page if account creation is required.
+* Fixed: Copy address fields values to the other address group on the frontend when "same as address" checkbox is checked for better compatibility with some plugins.
 
 = 3.2.1 - 2024-08-05 =
 

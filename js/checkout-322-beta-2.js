@@ -31,6 +31,10 @@ jQuery( function( $ ) {
 		emailFieldSelector:                           'form.woocommerce-checkout input[name="billing_email"]',
 		usernameFieldSelector:                        '.fc-login-form__inner input[name="username"]',
 
+		addressFieldsToMirrorSelector:                'select, input, textarea',
+		billingSameAsShippingCheckboxSelector:        '#billing_same_as_shipping',
+		shippingSameAsBillingCheckboxSelector:        '#shipping_same_as_billing',
+
 		loadingClass:                                 'fc-loading',
 		checkoutBlockUISelector:                      '.woocommerce-checkout-payment, .fc-shipping-method__packages',
 
@@ -50,8 +54,10 @@ jQuery( function( $ ) {
 		$order_review: $( '#order_review' ),
 		$checkout_form: $( 'form.checkout' ),
 		init: function() {
-			// CHANGE: Merge default settings object with values from the server settings object
-			_settings = FCUtils.extendObject( true, _settings, window.fcSettings );
+			// CHANGE: Maybe merge default settings object with values from the server settings object
+			if ( window.fcSettings ) {
+				_settings = FCUtils.extendObject( true, _settings, window.fcSettings.checkout );
+			}
 
 			$( document.body ).on( 'update_checkout', this.update_checkout );
 			$( document.body ).on( 'init_checkout', this.init_checkout );
@@ -105,8 +111,8 @@ jQuery( function( $ ) {
 			}
 
 			// CHANGE: Update checkout when "same as address" checkboxes state changes
-			this.$checkout_form.on( 'change', '#billing_same_as_shipping', this.billing_same_shipping_changed );
-			this.$checkout_form.on( 'change', '#shipping_same_as_billing', this.shipping_same_billing_changed );
+			this.$checkout_form.on( 'change', _settings.billingSameAsShippingCheckboxSelector, this.billing_same_shipping_changed );
+			this.$checkout_form.on( 'change', _settings.shippingSameAsBillingCheckboxSelector, this.shipping_same_billing_changed );
 
 			// CHANGE: Trigger reinitialization functions after checkout is updated
 			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_collapsible_blocks );
@@ -192,6 +198,104 @@ jQuery( function( $ ) {
 			}
 
 			$( document.body ).trigger( 'update_checkout' );
+		},
+		// CHANGE: Check if the "same as" address checkbox option is checked
+		is_same_as_address_option_checked: function( fieldGroup ) {
+			// Bail if field group is not valid
+			if ( 'billing' !== fieldGroup && 'shipping' !== fieldGroup ) { return false; }
+
+			// Get the checkbox field
+			var checkbox = 'billing' === fieldGroup ? document.querySelector( _settings.billingSameAsShippingCheckboxSelector ) : document.querySelector( _settings.shippingSameAsBillingCheckboxSelector );
+
+			// Bail if "same as" checkbox was not found
+			if ( ! checkbox ) { return false; }
+
+			// Get the checkbox field type
+			var checkboxFieldType = checkbox.getAttribute( 'type' );
+
+			// Initialize return value
+			var isChecked = false;
+
+			// Check if checkbox is checked in different ways based on the field type
+			switch ( checkboxFieldType ) {
+				case 'hidden':
+					isChecked = '1' === checkbox.value;
+					break;
+				default:
+					isChecked = checkbox.checked;
+					break;
+			}
+
+			return isChecked;
+		},
+		// CHANGE: Mirror the address field value to the other address group (copy billing to shipping, or shipping to billing)
+		mirror_address_field_value: function( field ) {
+			// Bail if not a valid field
+			if ( ! field || ! field.matches( _settings.addressFieldsToMirrorSelector ) ) { return; }
+
+			// Get field key
+			var fieldKey = field.getAttribute( 'name' );
+
+			// Bail if not address field
+			if ( ! fieldKey || ( 0 !== fieldKey.indexOf( 'billing_' ) && 0 !== fieldKey.indexOf( 'shipping_' ) ) ) { return; }
+
+			// Get field groups
+			var fieldGroup = 0 === fieldKey.indexOf( 'billing_' ) ? 'billing' : 'shipping';
+			var mirrorFieldGroup = 'billing' === fieldGroup ? 'shipping' : 'billing';
+			var mirrorFieldGroupElement = document.querySelector( '.woocommerce-' + mirrorFieldGroup + '-fields__field-wrapper' );
+
+			// Bail if no mirror field group element
+			if ( ! mirrorFieldGroupElement ) { return; }
+
+			// Get the checkbox field
+			var billingSameAsShippingCheckbox = document.querySelector( _settings.billingSameAsShippingCheckboxSelector );
+			var shippingSameAsBillingCheckbox = document.querySelector( _settings.shippingSameAsBillingCheckboxSelector );
+
+			// Get checkbox state
+			var isSameAsAddressChecked = wc_checkout_form.is_same_as_address_option_checked( mirrorFieldGroup );
+
+			// Bail if "same as" checkbox is not checked
+			if ( ! isSameAsAddressChecked ) { return; }
+
+			// Get mirror field
+			var mirrorFieldKey = fieldKey.replace( fieldGroup + '_', mirrorFieldGroup + '_' );
+			var mirrorField = mirrorFieldGroupElement.querySelector( '[name="' + mirrorFieldKey + '"]' );
+
+			// Bail if no mirror field
+			if ( ! mirrorField ) { return; }
+
+			// Mirror field value
+			mirrorField.value = field.value;
+		},
+		// CHANGE: Mirror all address field values between billing and shipping fields when "same as address" checkbox is checked
+		maybe_mirror_all_address_field_values: function() {
+			// Get the checkbox field
+			var billingSameAsShippingCheckbox = document.querySelector( _settings.billingSameAsShippingCheckboxSelector );
+			var shippingSameAsBillingCheckbox = document.querySelector( _settings.shippingSameAsBillingCheckboxSelector );
+
+			// Bail if no checkbox fields are available
+			if ( ! billingSameAsShippingCheckbox && ! shippingSameAsBillingCheckbox ) { return; }
+
+			// Get the field groups based on the available checkbox element
+			var targetFieldGroup = billingSameAsShippingCheckbox ? 'billing' : 'shipping';
+			var originFieldGroup = 'billing' === targetFieldGroup ? 'shipping' : 'billing';
+
+			// Get the checkbox state
+			var isSameAsAddressChecked = wc_checkout_form.is_same_as_address_option_checked( targetFieldGroup );
+
+			// Bail if "same as" checkbox is not checked
+			if ( ! isSameAsAddressChecked ) { return; }
+
+			// Get all address fields from the origin field group
+			var originFieldGroupElement = document.querySelector( '.woocommerce-' + originFieldGroup + '-fields__field-wrapper' );
+			var originAddressFields = originFieldGroupElement.querySelectorAll( _settings.addressFieldsToMirrorSelector );
+
+			// Iterate over address fields and mirror their values
+			for ( var i = 0; i < originAddressFields.length; i++ ) {
+				var originField = originAddressFields[ i ];
+				console.log( originField );
+				wc_checkout_form.mirror_address_field_value( originField );
+			}
 		},
 		// CHANGE: Reinitialize collapsible blocks after checkout update
 		maybe_reinitialize_collapsible_blocks: function() {
@@ -512,6 +616,9 @@ jQuery( function( $ ) {
 			}
 		},
 		update_checkout: function( event, args ) {
+			// CHANGE: Mirror all field values
+			wc_checkout_form.maybe_mirror_all_address_field_values();
+
 			// Small timeout to prevent multiple requests when several fields update at the same time
 			wc_checkout_form.reset_update_checkout_timer();
 			wc_checkout_form.updateTimer = setTimeout( wc_checkout_form.update_checkout_action, '5', args );
@@ -829,6 +936,9 @@ jQuery( function( $ ) {
 
 			// CHANGE: Reset flag to update on `beforeunload`
 			_updateBeforeUnload = false;
+
+			// CHANGE: Mirror all field values
+			wc_checkout_form.maybe_mirror_all_address_field_values();
 
 			// Trigger a handler to let gateways manipulate the checkout if needed
 			// eslint-disable-next-line max-len
