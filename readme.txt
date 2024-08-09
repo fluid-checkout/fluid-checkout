@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin GLS Shipping for WooCommerce.
 * Fixed: Compatibility with plugin Germanized. Fix voucher coupons displayed with amount zero on the coupon code substep.
 * Fixed: Fatal error on compatibility with the order attribution feature from WooCommerce on older versions of WooCommerce.
 
