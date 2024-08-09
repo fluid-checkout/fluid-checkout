@@ -218,7 +218,6 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	 * Output the pickup point selection UI from the plugin.
 	 */
 	public function output_pickup_point_selection_ui() {
-
 		// Bail if not at checkout page, and not an AJAX request to update checkout fragment
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
@@ -360,9 +359,6 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
-		// Bail if class is not available
-		if ( ! class_exists( self::CLASS_NAME ) ) { return $review_text_lines; }
-
 		// Get selected terminal data
 		$terminal_data = $this->get_selected_terminal_data();
 
@@ -381,7 +377,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 
 
 	/**
-	 * Set the shipping step as incomplete when shipping method is Hungarian Pickup Points and no pickup point is selected.
+	 * Set the shipping step as incomplete when no pickup point is selected for the target shipping method.
 	 *
 	 * @param   bool  $is_step_complete  Whether the step is complete or not.
 	 */
@@ -437,7 +433,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	/**
 	 * Add settings to the plugin settings JS object for the checkout validation.
 	 *
-	 * @param   array  $settings  JS settings object of the plugin.
+	 * @param  array  $settings  JS settings object of the plugin.
 	 */
 	public function change_js_settings_checkout_validation( $settings ) {
 		// Get current values
@@ -458,7 +454,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	/**
 	 * Save the terminal data to the order meta.
 	 *
-	 * @param   int  $order_id  The order ID.
+	 * @param  int  $order_id  The order ID.
 	 */
 	public function save_gls_parcel_shop_info( $order_id ) {
 		// Get terminal data
