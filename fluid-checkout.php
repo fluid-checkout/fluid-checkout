@@ -103,6 +103,9 @@ class FluidCheckout {
 		$this->load_admin_notices();
 		$this->register_features();
 
+		// Declare WooCommerce features compatibility
+		add_action( 'before_woocommerce_init', array( $this, 'declare_woocommerce_features_compatibility' ), 10 );
+
 		// Run hooks initialization after all plugins have been loaded
 		add_action( 'plugins_loaded', array( $this, 'load_settings' ), 10 );
 		add_action( 'plugins_loaded', array( $this, 'hooks' ), 10 );
@@ -260,9 +263,6 @@ class FluidCheckout {
 			add_action( 'fc_admin_notices', array( $this, 'add_woocommerce_required_notice' ), 10 );
 			return;
 		}
-
-		// Declare compatibility with WooCommerce HPOS (High Performance Order Storage)
-		add_action( 'before_woocommerce_init', array( $this, 'declare_woocommerce_hpos_compatibility' ), 10 );
 
 		// Language locale
 		add_filter( 'load_textdomain_mofile', array( $this, 'maybe_set_locale_file_for_language_variants' ), 10, 2 );
@@ -482,12 +482,15 @@ class FluidCheckout {
 
 	
 	/**
-	 * Declare compatibility with the WooCommerce High Performance Order Storage feature.
+	 * Declare compatibility with the WooCommerce features.
 	 */
-	public function declare_woocommerce_hpos_compatibility() {
-		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
-			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
-		}
+	public function declare_woocommerce_features_compatibility() {
+		// Bail if class not available
+		if ( ! class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) { return; }
+
+		// Declare compatibility with WooCommerce HPOS (High Performance Order Storage)
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', __FILE__, true );
 	}
 
 
