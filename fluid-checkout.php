@@ -404,10 +404,10 @@ class FluidCheckout {
 	 * @since 1.2.0
 	 */
 	public function load_plugin_compat_features() {
-		// Get all plugins installed
-		$plugins_installed = get_plugins();
-		
-		foreach ( $plugins_installed as $plugin_file => $plugin_meta ) {
+		// Get active plugins
+		$plugins_installed = array_keys( get_plugins() );
+
+		foreach ( $plugins_installed as $plugin_file ) {
 			// Skip plugins not activated
 			if ( ! is_plugin_active( $plugin_file ) ) { continue; }
 
