@@ -216,8 +216,8 @@
   display: none !important;
 }
 
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable=no] .fc-step__substep-edit,
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable=no] .fc-step__substep-save {
+.fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable=no] .fc-step__substep-edit,
+.fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable=no] .fc-step__substep-save {
   display: none !important;
 }
 
@@ -475,24 +475,24 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   outline-offset: 1px !important;
 }
 
-.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save {
+.fc-wrapper .fc-step__substep-save {
   display: none !important;
   margin: 20px 0 0 !important;
   width: 100% !important;
   text-align: center !important;
 }
-.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save:focus {
+.fc-wrapper .fc-step__substep-save:focus {
   outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
   outline-offset: 2px !important;
 }
 
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit,
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-save {
+.fc-wrapper [data-step-complete] .fc-step__substep-edit,
+.fc-wrapper [data-step-complete] .is-editing .fc-step__substep-save {
   display: inline-block !important;
 }
 
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-edit,
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-save {
+.fc-wrapper [data-step-complete] .is-editing .fc-step__substep-edit,
+.fc-wrapper [data-step-complete] .fc-step__substep-save {
   display: none !important;
 }
 
