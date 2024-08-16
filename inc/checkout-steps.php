@@ -1773,7 +1773,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$substep_args[ 'substep_id' ] = sanitize_title( $substep_args[ 'substep_id' ] );
 		$substep_id = $substep_args[ 'substep_id' ];
 
-		// Check for duplicate step_id
+		// Check for duplicate substep_id
 		if ( $this->is_checkout_substep_registered( $substep_id ) ) {
 			trigger_error( "A checkout substep with `substep_id = {$substep_id}` already exists for the step {$step_id}. Skipping substep.", E_USER_WARNING );
 			return false;
