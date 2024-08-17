@@ -183,6 +183,10 @@
 }
 
 .fc-wrapper .fc-step__substep {
+  content: "";
+  display: table;
+  table-layout: fixed;
+  width: 100%;
   position: relative;
   padding: 20px 20px;
   margin: -1px 0 0;
@@ -324,7 +328,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   }
 }
 
-.has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title {
+.has-checkout-layout--multi-step.woocommerce-checkout form .fc-wrapper .fc-checkout-step[data-step-complete] .fc-step__substep .fc-step__substep-title {
   position: relative;
   display: block;
   margin: 0 0 3px;
@@ -333,7 +337,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   color: var(--fluidcheckout--color--dark-grey, #535156);
 }
 @media (min-width: 1000px) {
-  .has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title {
+  .has-checkout-layout--multi-step.woocommerce-checkout form .fc-wrapper .fc-checkout-step[data-step-complete] .fc-step__substep .fc-step__substep-title {
     float: left;
     margin: 0;
     padding: 0 5px 0;
@@ -342,11 +346,11 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   }
 }
 @media (min-width: 1280px) {
-  .has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title {
+  .has-checkout-layout--multi-step.woocommerce-checkout form .fc-wrapper .fc-checkout-step[data-step-complete] .fc-step__substep .fc-step__substep-title {
     width: 220px;
   }
 }
-.has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title:before {
+.has-checkout-layout--multi-step.woocommerce-checkout form .fc-wrapper .fc-checkout-step[data-step-complete] .fc-step__substep .fc-step__substep-title:before {
   display: inline-block;
   font-family: "fluid-checkout-icons" !important;
   font-style: normal !important;

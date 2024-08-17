@@ -35,6 +35,8 @@
 
 
 .fc-wrapper .fc-step__substep {
+	@include clearfix();
+
 	position: relative;
 	padding: $checkout-substep-padding;
 	margin: remsize( -.1rem ) 0 0; // Prevent double borders
@@ -181,7 +183,8 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 }
 
 
-.has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title {
+
+.has-checkout-layout--multi-step.woocommerce-checkout form .fc-wrapper .fc-checkout-step[data-step-complete] .fc-step__substep .fc-step__substep-title {
 	position: relative;
 	display: block;
 	margin: 0 0 $global-radius-extra-small;
@@ -224,7 +227,6 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 .has-checkout-layout--multi-step:not( .has-collapsible-block ) [data-step-complete] .fc-step__substep-fields {
 	display: none;
 }
-
 
 
 
