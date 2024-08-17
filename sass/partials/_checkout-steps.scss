@@ -114,12 +114,6 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 
 
 
-.fc-wrapper .fc-step__substep-text {
-	display: none;
-}
-
-
-
 
 
 // ------------------------------------
@@ -235,7 +229,7 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 
 
 
-.has-checkout-layout--multi-step .fc-step__substep-text {
+.fc-wrapper .fc-step__substep-text {
 	display: none;
 	margin: $checkout-substep-text-margin;
 	padding: $checkout-substep-text-padding;
@@ -255,21 +249,21 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 
 	@media (#{$bp-larger-than-desktop-medium}) { width: calc( 100% - #{ remsize( 22rem ) } ); }
 }
-.has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-text {
+.fc-wrapper [data-step-complete] .fc-step__substep-text {
 	display: block;
 }
 
-.has-checkout-layout--multi-step .fc-step__substep-text-content.is-loading {
+.fc-wrapper .fc-step__substep-text-content.is-loading {
 	min-height: $global-spacing-medium;
 }
 
-.has-checkout-layout--multi-step .fc-step__substep-text-line {
+.fc-wrapper .fc-step__substep-text-line {
 	display: block;
 	width: 100%;
 	text-align: $alignment-left;
 }
 
-.has-checkout-layout--multi-step .fc-step__substep-text-line .fc-step__substep-text-line--small-text {
+.fc-wrapper .fc-step__substep-text-line .fc-step__substep-text-line--small-text {
 	font-size: 80%;
 }
 
