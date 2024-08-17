@@ -1442,18 +1442,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  boolean  `true` if the step is considered complete, `false` otherwise. Defaults to `false`.
 	 */
 	public function is_step_complete( $step_id ) {
+		// Define variables
+		$is_step_complete = false;
+
+		// Get complete steps
 		$complete_steps = $this->get_complete_steps();
+
 
 		// Iterate complete steps
 		foreach ( $complete_steps as $step_args ) {
 			// Skip other steps
 			if ( $step_id != $step_args[ 'step_id' ] ) { continue; }
 
-			// Return as complete if step is found in the complete steps list
-			return true;
+			// Set as complete if step is found in the complete steps list
+			$is_step_complete = true;
 		}
 
-		return false;
+		// Filter to allow other plugins to add their own conditions
+		$is_step_complete = apply_filters( 'fc_is_step_complete', $is_step_complete, $step_id );
+
+		return $is_step_complete;
 	}
 
 	/**
@@ -2393,6 +2401,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'data-step-index' => $step_index,
 			'data-step-complete' => $this->is_step_complete( $step_id ),
 			'data-step-current' => $this->is_current_step( $step_id ),
+			'data-prev-step-complete' => $this->is_prev_step_complete( $step_id ),
+			'data-next-step-complete' => $this->is_next_step_complete( $step_id ),
 		);
 
 		// Maybe attribute for first step
@@ -2415,13 +2425,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
+		// Filter step attributes
+		$step_attributes = apply_filters( 'fc_checkout_step_attributes', $step_attributes, $step_id, $step_index );
+
 		// Maybe add class for previous step completed
-		if ( $this->is_prev_step_complete( $step_id ) ) {
+		if ( array_key_exists( 'data-prev-step-complete', $step_attributes ) && true === $step_attributes['data-prev-step-complete'] ) {
 			$step_attributes['class'] .= ' fc-checkout-step--prev-step-complete';
 		}
 
 		// Maybe add class for next step completed
-		if ( $this->is_next_step_complete( $step_id ) ) {
+		if ( array_key_exists( 'data-next-step-complete', $step_attributes ) && true === $step_attributes['data-next-step-complete'] ) {
 			$step_attributes['class'] .= ' fc-checkout-step--next-step-complete';
 		}
 		else {
@@ -2489,7 +2502,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$substep_title = false;
 
 		// Get step
-		$steps = $this->get_checkout_steps();
+		$steps = $this->get_registered_checkout_steps();
 
 		// Iterate steps
 		foreach ( $steps as $step_index => $step_args ) {
