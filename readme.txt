@@ -366,6 +366,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Compatibility with plugin GLS Shipping for WooCommerce.
 * Added: Compatibility with plugin WP Armour Extended - Honeypot Anti Spam.
+* Added: Compatibility with plugin Biteship for WooCommerce.
 * Improved: How compatibility with WooCommerce features is declared.
 * Improved: Move the checkout script settings into its own property in the `fcSettings` object, optimizing the use of memory on the browser.
 * Improved: Improves the way compatibility classes are loaded to use less memory space.
