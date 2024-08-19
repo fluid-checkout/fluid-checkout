@@ -293,7 +293,6 @@ jQuery( function( $ ) {
 			// Iterate over address fields and mirror their values
 			for ( var i = 0; i < originAddressFields.length; i++ ) {
 				var originField = originAddressFields[ i ];
-				console.log( originField );
 				wc_checkout_form.mirror_address_field_value( originField );
 			}
 		},
