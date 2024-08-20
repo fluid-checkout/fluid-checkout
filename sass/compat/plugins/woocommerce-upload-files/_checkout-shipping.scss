@@ -1,9 +1,14 @@
 // ------------------------------------
-// CHECKOUT SHIPPING METHODS
+// CHECKOUT SHIPPING ADDRESS
 // ------------------------------------
 
-// body.woocommerce-checkout .fc-wrapper 
-.woocommerce-shipping-fields__field-wrapper {
+.fc-wrapper .woocommerce-shipping-fields__field-wrapper {
 	display: block !important; // Needed to override inline styles
 	opacity: 1 !important; // Needed to override inline styles
+}
+
+
+
+.fc-wrapper .woocommerce-shipping-fields {
+	pointer-events: unset;
 }
