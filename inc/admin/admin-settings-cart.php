@@ -195,6 +195,7 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 
 					array(
 						'id'                => 'fc_pro_enable_cart_cross_sells',
+						'desc'              => __( 'Layout of cross-sell items on the cart page.', 'fluid-checkout' ),
 						'type'              => 'fc_select',
 						'options'           => array(
 							'yes'           => __( 'Optimized horizontal cross-sells layout', 'fluid-checkout' ),
@@ -206,7 +207,16 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Trust symbols &amp; badges', 'fluid-checkout' ), // Intentionally use text domain from Lite plugin to avoid duplicating this text in translation files.
+						'desc'              => __( 'Number of cross-sell items to display on the cart page', 'fluid-checkout' ),
+						'id'                => 'fc_pro_cart_cross_sells_display_items_limit',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_cart_cross_sells_display_items_limit' ),
+						'type'              => 'fc_number',
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+
+					array(
+						'title'             => __( 'Trust symbols &amp; badges', 'fluid-checkout' ),
 						'desc'              => __( 'Add widget areas to the cart page', 'fluid-checkout' ),
 						'desc_tip'          => __( 'These widget areas are used to add trust symbols and trust badges on the cart page.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-trust-symbols-badges/' ),
 						'id'                => 'fc_pro_enable_cart_widget_areas',

@@ -367,6 +367,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin GLS Shipping for WooCommerce.
 * Added: Compatibility with plugin WP Armour Extended - Honeypot Anti Spam.
 * Added: Compatibility with plugin Biteship for WooCommerce.
+* Added: Option to choose number of cross sell items to show on the cart page, available with Fluid Checkout PRO.
 * Improved: Compatibility with plugin WooCommerce Stripe Gateway. Set style for the Stripe Checkout fields for the New Stripe Checkout experience.
 * Improved: How compatibility with WooCommerce features is declared.
 * Improved: Move the checkout script settings into its own property in the `fcSettings` object, optimizing the use of memory on the browser.
