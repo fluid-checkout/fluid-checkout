@@ -166,6 +166,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
 			// Add billing phone to contact fields
 			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
+			add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_change_billing_phone_field_args_for_contact' ), 10 );
 
 			// Remove phone field from billing address data
 			add_filter( 'fc_billing_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
@@ -2287,6 +2288,35 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the contact step fields.
+	 */
+	public function get_contact_step_fields() {
+		// Initialize variables
+		$contact_fields = array();
+
+		// Get all checkout fields
+		$field_groups = WC()->checkout->get_checkout_fields();
+		
+		// Iterate contact field ids
+		foreach( $this->get_contact_step_display_field_ids() as $field_key ) {
+			foreach ( $field_groups as $group_key => $fields ) {
+				// Check field exists
+				if ( ! array_key_exists( $field_key, $fields ) ) { continue; }
+
+				// Add field to contact fields
+				$contact_fields[ $field_key ] = $fields[ $field_key ];
+			}
+		}
+
+		// Sort fields by priority
+		uasort( $contact_fields, 'wc_checkout_fields_uasort_comparison' );
+
+		return $contact_fields;
+	}
+
+
+
+	/**
 	 * Output contact step.
 	 */
 	public function output_step_contact() {
@@ -2327,7 +2357,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'checkout/form-contact.php',
 			array(
 				'checkout'             => WC()->checkout(),
-				'contact_field_ids'    => $this->get_contact_step_display_field_ids(),
+				'contact_fields'       => $this->get_contact_step_fields(),
 			)
 		);
 	}
@@ -4875,6 +4905,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function add_billing_phone_field_to_contact_fields( $display_fields ) {
 		$display_fields[] = 'billing_phone';
 		return $display_fields;
+	}
+
+	/**
+	 * Maybe change the billing phone field args when displayed on the contact step.
+	 *
+	 * @param   array  $fields  The billing fields.
+	 */
+	public function maybe_change_billing_phone_field_args_for_contact( $fields ) {
+		// Define variables
+		$field_key = 'billing_phone';
+
+		// Bail if field is not present
+		if ( ! array_key_exists( $field_key, $fields ) ) { return $fields; }
+
+		// Bail if field is not set to be displayed on the contact step
+		if ( ! in_array( $field_key, FluidCheckout_Steps::instance()->get_contact_step_display_field_ids() ) ) { return $fields; }
+
+		// Change field args
+		$fields[ $field_key ][ 'priority' ] = 20;
+
+		return $fields;
 	}
 
 

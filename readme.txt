@@ -369,6 +369,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin Biteship for WooCommerce.
 * Added: Option to choose number of cross sell items to show on the cart page, available with Fluid Checkout PRO.
 * Improved: Compatibility with plugin WooCommerce Stripe Gateway. Set style for the Stripe Checkout fields for the New Stripe Checkout experience.
+* Improved: Compatibility with plugin Mailchimp for WooCommerce. Display newsletter checkbox right below the email field.
+* Improved: Sort contact step fields by priority, and show billing and shipping phone fields on the same row when both are required and set to be display on the contact step.
 * Improved: How compatibility with WooCommerce features is declared.
 * Improved: Move the checkout script settings into its own property in the `fcSettings` object, optimizing the use of memory on the browser.
 * Improved: Improves the way compatibility classes are loaded to use less memory space.
