@@ -153,12 +153,17 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			),
 			'collapsibleBlock'               => array(),
 			'stickyStates'                   => array(),
-			'checkoutUpdateBeforeUnload'     => apply_filters( 'fc_checkout_update_before_unload', 'yes' ),
-			'checkoutUpdateOnVisibilityChange' => apply_filters( 'fc_checkout_update_on_visibility_change', 'yes' ),
-			'checkoutUpdateFieldsSelector'   => join( ',', apply_filters( 'fc_checkout_update_fields_selectors', array(
-				'.address-field input.input-text',
-				'.update_totals_on_change input.input-text',
-			) ) ),
+			'checkout'                       => apply_filters( 'fc_checkout_script_settings', array(
+				'checkoutUpdateBeforeUnload'                => apply_filters( 'fc_checkout_update_before_unload', 'yes' ),
+				'checkoutUpdateOnVisibilityChange'          => apply_filters( 'fc_checkout_update_on_visibility_change', 'yes' ),
+				'checkoutUpdateFieldsSelector'              => join( ',', apply_filters( 'fc_checkout_update_fields_selectors', array(
+					'.address-field input.input-text',
+					'.update_totals_on_change input.input-text',
+				) ) ),
+				'billingSameAsShippingCheckboxSelector'     => '#billing_same_as_shipping',
+				'shippingSameAsBillingCheckboxSelector'     => '#shipping_same_as_billing',
+			) ),
+
 		);
 
 		// Filter settings

@@ -166,6 +166,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
 			// Add billing phone to contact fields
 			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
+			add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_change_billing_phone_field_args_for_contact' ), 10 );
 
 			// Remove phone field from billing address data
 			add_filter( 'fc_billing_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
@@ -216,6 +217,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'template_redirect', array( $this, 'maybe_update_checkout_address_from_account' ), 5 );
 
 		// Order attribution
+		// Run immediatelly for compatibility with WooCommerce versions prior to 9.2.0
 		$this->order_attribution_hooks();
 	}
 
@@ -253,6 +255,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		else {
 			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
 		}
+
+		// Order attribution
+		// Needs to run at `init` hook for compatibility with WooCommerce versions 9.2.0+
+		$this->order_attribution_hooks();
 	}
 
 	/**
@@ -379,6 +385,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Add the order attribution stamp hooks
+		remove_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
 		add_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
 	}
 
@@ -2287,6 +2294,35 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the contact step fields.
+	 */
+	public function get_contact_step_fields() {
+		// Initialize variables
+		$contact_fields = array();
+
+		// Get all checkout fields
+		$field_groups = WC()->checkout->get_checkout_fields();
+		
+		// Iterate contact field ids
+		foreach( $this->get_contact_step_display_field_ids() as $field_key ) {
+			foreach ( $field_groups as $group_key => $fields ) {
+				// Check field exists
+				if ( ! array_key_exists( $field_key, $fields ) ) { continue; }
+
+				// Add field to contact fields
+				$contact_fields[ $field_key ] = $fields[ $field_key ];
+			}
+		}
+
+		// Sort fields by priority
+		uasort( $contact_fields, 'wc_checkout_fields_uasort_comparison' );
+
+		return $contact_fields;
+	}
+
+
+
+	/**
 	 * Output contact step.
 	 */
 	public function output_step_contact() {
@@ -2327,7 +2363,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'checkout/form-contact.php',
 			array(
 				'checkout'             => WC()->checkout(),
-				'contact_field_ids'    => $this->get_contact_step_display_field_ids(),
+				'contact_fields'       => $this->get_contact_step_fields(),
 			)
 		);
 	}
@@ -3374,7 +3410,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_ship_to_different_address_hidden_field() {
 		?>
 		<div id="ship-to-different-address" class="fc-hidden">
-			<input id="ship-to-different-address-checkbox" name="ship_to_different_address" type="checkbox" checked value="1" tabindex="-1" aria-hidden="true" aria-label="<?php echo esc_attr( 'Ship to a different address?', 'woocommerce' ); ?>" />
+			<input id="ship-to-different-address-checkbox" name="ship_to_different_address" type="checkbox" checked value="1" tabindex="-1" aria-hidden="true" aria-label="<?php echo esc_attr( __( 'Ship to a different address?', 'woocommerce' ) ); ?>" />
 		</div>
 		<?php
 	}
@@ -4877,6 +4913,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $display_fields;
 	}
 
+	/**
+	 * Maybe change the billing phone field args when displayed on the contact step.
+	 *
+	 * @param   array  $fields  The billing fields.
+	 */
+	public function maybe_change_billing_phone_field_args_for_contact( $fields ) {
+		// Define variables
+		$field_key = 'billing_phone';
+
+		// Bail if field is not present
+		if ( ! array_key_exists( $field_key, $fields ) ) { return $fields; }
+
+		// Bail if field is not set to be displayed on the contact step
+		if ( ! in_array( $field_key, FluidCheckout_Steps::instance()->get_contact_step_display_field_ids() ) ) { return $fields; }
+
+		// Change field args
+		$fields[ $field_key ][ 'priority' ] = 20;
+
+		return $fields;
+	}
+
 
 
 	/**
@@ -5459,7 +5516,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( true !== apply_filters( 'fc_enable_order_summary_cart_item_unit_price', true ) ) { return; }
 
 		// Item unit price
-		echo '<div class="cart-item__element cart-item__price">' . apply_filters( 'woocommerce_cart_item_price', '<span class="screen-reader-text">' . esc_html( 'Price', 'woocommerce' ) . ': </span>' . WC()->cart->get_product_price( $product ), $cart_item, $cart_item_key ) . '</div>'; // PHPCS: XSS ok.
+		echo '<div class="cart-item__element cart-item__price">' . apply_filters( 'woocommerce_cart_item_price', '<span class="screen-reader-text">' . esc_html( __( 'Price', 'woocommerce' ) ) . ': </span>' . WC()->cart->get_product_price( $product ), $cart_item, $cart_item_key ) . '</div>'; // PHPCS: XSS ok.
 	}
 
 	/**

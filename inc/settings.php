@@ -97,6 +97,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_cart_section_position_coupon_code'                      => 'inside_cart_items',
 			'fc_pro_cart_section_position_cross_sells'                      => 'after_cart_items',
 			'fc_pro_enable_cart_cross_sells'                                => 'yes',
+			'fc_pro_cart_cross_sells_display_items_limit'                   => 2,
 			'fc_pro_enable_cart_widget_areas'                               => 'yes',
 
 			// Settings order received.

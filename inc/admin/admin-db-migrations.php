@@ -86,6 +86,9 @@ class FluidCheckout_AdminDBMigrations extends FluidCheckout {
 	 * Maybe migrate database on first activation.
 	 */
 	public function maybe_migrate_database_on_first_activation() {
+		// Bail if on multisite network
+		if ( is_multisite() ) { return; }
+
 		// Bail if there are no migrations to apply
 		if ( ! $this->has_migrations_to_apply() ) { return; }
 

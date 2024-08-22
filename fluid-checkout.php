@@ -5,11 +5,11 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 3.2.1
+Version: 3.2.2-beta-18
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 9.1.4
+WC tested up to: 9.2.1
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
@@ -102,6 +102,9 @@ class FluidCheckout {
 		$this->load_db_migrations();
 		$this->load_admin_notices();
 		$this->register_features();
+
+		// Declare WooCommerce features compatibility
+		add_action( 'before_woocommerce_init', array( $this, 'declare_woocommerce_features_compatibility' ), 10 );
 
 		// Run hooks initialization after all plugins have been loaded
 		add_action( 'plugins_loaded', array( $this, 'load_settings' ), 10 );
@@ -261,9 +264,6 @@ class FluidCheckout {
 			return;
 		}
 
-		// Declare compatibility with WooCommerce HPOS (High Performance Order Storage)
-		add_action( 'before_woocommerce_init', array( $this, 'declare_woocommerce_hpos_compatibility' ), 10 );
-
 		// Language locale
 		add_filter( 'load_textdomain_mofile', array( $this, 'maybe_set_locale_file_for_language_variants' ), 10, 2 );
 		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
@@ -404,10 +404,10 @@ class FluidCheckout {
 	 * @since 1.2.0
 	 */
 	public function load_plugin_compat_features() {
-		// Get all plugins installed
-		$plugins_installed = get_plugins();
-		
-		foreach ( $plugins_installed as $plugin_file => $plugin_meta ) {
+		// Get active plugins
+		$plugins_installed = array_keys( get_plugins() );
+
+		foreach ( $plugins_installed as $plugin_file ) {
 			// Skip plugins not activated
 			if ( ! is_plugin_active( $plugin_file ) ) { continue; }
 
@@ -482,12 +482,15 @@ class FluidCheckout {
 
 	
 	/**
-	 * Declare compatibility with the WooCommerce High Performance Order Storage feature.
+	 * Declare compatibility with the WooCommerce features.
 	 */
-	public function declare_woocommerce_hpos_compatibility() {
-		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
-			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
-		}
+	public function declare_woocommerce_features_compatibility() {
+		// Bail if class not available
+		if ( ! class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) { return; }
+
+		// Declare compatibility with WooCommerce HPOS (High Performance Order Storage)
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', __FILE__, true );
 	}
 
 

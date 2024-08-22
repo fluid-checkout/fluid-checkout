@@ -362,6 +362,30 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Bump tested up to WordPress 6.6.1 and WooCommerce 9.2.1
+* Added: Translation to Czeck (Czeck Republic).
+* Added: Compatibility with plugin GLS Shipping for WooCommerce.
+* Added: Compatibility with plugin WP Armour Extended - Honeypot Anti Spam.
+* Added: Compatibility with plugin Biteship for WooCommerce.
+* Added: Option to choose number of cross sell items to show on the cart page, available with Fluid Checkout PRO.
+* Improved: Compatibility with plugin WooCommerce Stripe Gateway. Set style for the Stripe Checkout fields for the New Stripe Checkout experience.
+* Improved: Compatibility with plugin Mailchimp for WooCommerce. Display newsletter checkbox right below the email field.
+* Improved: Sort contact step fields by priority, and show billing and shipping phone fields on the same row when both are required and set to be display on the contact step.
+* Improved: How compatibility with WooCommerce features is declared.
+* Improved: Move the checkout script settings into its own property in the `fcSettings` object, optimizing the use of memory on the browser.
+* Improved: Improves the way compatibility classes are loaded to use less memory space.
+* Fixed: Compatibility with the Order Attribution feature from WooCommerce versions 9.2.0+.
+* Fixed: Compatibility with plugin WooCommerce Payments. Fix wrongly displaying error message "missing payment method" in some specific configurations.
+* Fixed: Compatibility with plugin Rvvup for WooCommerce. Hide place order button when PayPal payment method is selected.
+* Fixed: Compatibility with plugin Smartlink Product Designer. Fix product image sizes on cart and checkout page.
+* Fixed: Do not set focus to password field when first visiting the checkout page if account creation is required.
+* Fixed: Copy address fields values to the other address group on the frontend when "same as address" checkbox is checked for better compatibility with some plugins.
+* Fixed: Do not apply database migrations when activating the plugin on a multisite installation.
+* Fixed: Untranslatable strings originated from WooCommerce.
+* Fixed: Layout for the coupon code apply button for some themes.
+
 = 3.2.1 - 2024-08-05 =
 
 * Fixed: Compatibility with plugin Germanized. Fix voucher coupons displayed with amount zero on the coupon code substep.
@@ -372,7 +396,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Bump tested up to WordPress 6.6.1 and WooCommerce 9.1.4
 * Added: Admin notice about changes to next major version and customization migration guide.
 * Added: Compatibility with the Order Attribution feature from WooCommerce.
-* Added: Compatibility issues the order attribution feature from WooCommerce.
 * Added: Compatibility with plugin Avada Builder.
 * Added: Compatibility with plugin Mondial Relay - WordPress.
 * Added: Compatibility with plugin WooCommerce Carrier Agents.
