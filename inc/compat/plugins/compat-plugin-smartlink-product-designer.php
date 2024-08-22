@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Compatibility with plugin: Smartlink Product Designer (by Jigowatt).
  */
-class FluidCheckout_SmartlinkProductDesigner3 extends FluidCheckout {
+class FluidCheckout_SmartlinkProductDesigner extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -33,4 +33,4 @@ class FluidCheckout_SmartlinkProductDesigner3 extends FluidCheckout {
 
 }
 
-FluidCheckout_SmartlinkProductDesigner3::instance();
+FluidCheckout_SmartlinkProductDesigner::instance();
