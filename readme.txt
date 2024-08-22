@@ -374,6 +374,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: How compatibility with WooCommerce features is declared.
 * Improved: Move the checkout script settings into its own property in the `fcSettings` object, optimizing the use of memory on the browser.
 * Improved: Improves the way compatibility classes are loaded to use less memory space.
+* Fixed: Compatibility with the Order Attribution feature from WooCommerce versions 9.2.0+.
 * Fixed: Compatibility with plugin WooCommerce Payments. Fix wrongly displaying error message "missing payment method" in some specific configurations.
 * Fixed: Compatibility with plugin Rvvup for WooCommerce. Hide place order button when PayPal payment method is selected.
 * Fixed: Compatibility with plugin Smartlink Product Designer. Fix product image sizes on cart and checkout page.
@@ -393,7 +394,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Bump tested up to WordPress 6.6.1 and WooCommerce 9.1.4
 * Added: Admin notice about changes to next major version and customization migration guide.
 * Added: Compatibility with the Order Attribution feature from WooCommerce.
-* Added: Compatibility issues the order attribution feature from WooCommerce.
 * Added: Compatibility with plugin Avada Builder.
 * Added: Compatibility with plugin Mondial Relay - WordPress.
 * Added: Compatibility with plugin WooCommerce Carrier Agents.

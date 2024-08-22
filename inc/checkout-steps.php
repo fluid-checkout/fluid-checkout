@@ -217,6 +217,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'template_redirect', array( $this, 'maybe_update_checkout_address_from_account' ), 5 );
 
 		// Order attribution
+		// Run immediatelly for compatibility with WooCommerce versions prior to 9.2.0
 		$this->order_attribution_hooks();
 	}
 
@@ -254,6 +255,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		else {
 			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
 		}
+
+		// Order attribution
+		// Needs to run at `init` hook for compatibility with WooCommerce versions 9.2.0+
+		$this->order_attribution_hooks();
 	}
 
 	/**
@@ -380,6 +385,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Add the order attribution stamp hooks
+		remove_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
 		add_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
 	}
 
