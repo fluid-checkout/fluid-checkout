@@ -35,7 +35,6 @@ class FluidCheckout_Biteship extends FluidCheckout {
 		// Scripts
 		wp_deregister_script( 'biteship' );
 		wp_enqueue_script( 'biteship', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/biteship/biteship-public' ), array( 'jquery' ), NULL );
-		https://fluidcheckout.local/wp-content/plugins/fluid-checkout/js/compat/plugins/biteship/biteship-public-322-beta-8.js
 	}
 
 
