@@ -376,6 +376,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Improves the way compatibility classes are loaded to use less memory space.
 * Fixed: Compatibility with plugin WooCommerce Payments. Fix wrongly displaying error message "missing payment method" in some specific configurations.
 * Fixed: Compatibility with plugin Rvvup for WooCommerce. Hide place order button when PayPal payment method is selected.
+* Fixed: Compatibility with plugin Smartlink Product Designer. Fix product image sizes on cart and checkout page.
 * Fixed: Do not set focus to password field when first visiting the checkout page if account creation is required.
 * Fixed: Copy address fields values to the other address group on the frontend when "same as address" checkbox is checked for better compatibility with some plugins.
 * Fixed: Do not apply database migrations when activating the plugin on a multisite installation.
