@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WordPress 6.6.1 and WooCommerce 9.2.1
 * Added: Translation to Czeck (Czeck Republic).
 * Added: Compatibility with plugin GLS Shipping for WooCommerce.
 * Added: Compatibility with plugin WP Armour Extended - Honeypot Anti Spam.
