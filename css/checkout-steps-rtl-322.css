@@ -711,10 +711,10 @@ body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data
 
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--billing {
   background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
-  padding: 20px 20px;
   margin: 20px -20px;
   margin-top: 0;
   margin-bottom: -20px;
+  padding: 20px 20px;
 }
 @media (min-width: 750px) {
   body.has-highlighted-billing-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--billing {
@@ -792,10 +792,10 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--shipping {
   background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
-  padding: 20px 20px;
   margin: 20px -20px;
   margin-top: 0;
   margin-bottom: -20px;
+  padding: 20px 20px;
 }
 @media (min-width: 750px) {
   body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--shipping {

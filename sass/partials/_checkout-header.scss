@@ -38,14 +38,15 @@
 	justify-content: space-between;
 	flex-wrap: wrap;
 	margin: 0 auto;
+	padding: 0 $container-spacing-mobile;
 	width: 100%;
+	max-width: $container-width-mobile;
+	min-height: $checkout-header-height;
 
 	// min-height should be same as the main header element
-	min-height: $checkout-header-height;
 	@media (#{$bp-larger-than-desktop}) { min-height: $checkout-header-height--large-screen; }
 
 	// max-width
-	max-width: $container-width-mobile;
 	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
 	@media (#{$bp-larger-than-desktop}) { max-width: $container-width-desktop; }
 	@media (#{$bp-larger-than-desktop-medium}) { max-width: $container-width-desktop-medium; }
@@ -53,7 +54,6 @@
 	@media (#{$bp-larger-than-desktop-extra-large}) { max-width: $container-width-desktop-extra-large; }
 
 	// padding
-	padding: 0 $container-spacing-mobile;
 	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet; }
 	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop; }
 	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium; }
