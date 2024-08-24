@@ -362,6 +362,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Javascript error when trying to copy field values into the other address section in some cases.
+
 = 3.2.2 - 2024-08-22 =
 
 * Bump tested up to WordPress 6.6.1 and WooCommerce 9.2.1

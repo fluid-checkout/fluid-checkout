@@ -247,10 +247,6 @@ jQuery( function( $ ) {
 			// Bail if no mirror field group element
 			if ( ! mirrorFieldGroupElement ) { return; }
 
-			// Get the checkbox field
-			var billingSameAsShippingCheckbox = document.querySelector( _settings.billingSameAsShippingCheckboxSelector );
-			var shippingSameAsBillingCheckbox = document.querySelector( _settings.shippingSameAsBillingCheckboxSelector );
-
 			// Get checkbox state
 			var isSameAsAddressChecked = wc_checkout_form.is_same_as_address_option_checked( mirrorFieldGroup );
 
@@ -288,6 +284,11 @@ jQuery( function( $ ) {
 
 			// Get all address fields from the origin field group
 			var originFieldGroupElement = document.querySelector( '.woocommerce-' + originFieldGroup + '-fields__field-wrapper' );
+
+			// Bail if no origin field group element
+			if ( ! originFieldGroupElement ) { return; }
+
+			// Get origin address fields
 			var originAddressFields = originFieldGroupElement.querySelectorAll( _settings.addressFieldsToMirrorSelector );
 
 			// Iterate over address fields and mirror their values
