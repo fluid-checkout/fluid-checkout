@@ -1168,10 +1168,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Get the list checkout steps considered complete, those which all required data has been provided.
+	 * 
+	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
 	 *
-	 * @return  array  List of checkout steps which all required data has been provided. The index is preserved from the registered checkout steps list.
+	 * @return  array              List of checkout steps which all required data has been provided. The index is preserved from the registered checkout steps list.
 	 */
-	public function get_complete_steps() {
+	public function get_complete_steps( $context = 'checkout' ) {
 		// Initialize return value
 		$complete_steps = array();
 
@@ -1192,29 +1194,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$step_id = $step_args[ 'step_id' ];
 			$is_step_complete = true;
 
-			// Get substeps
-			$substeps = array_key_exists( 'substeps', $step_args ) ? $step_args[ 'substeps' ] : false;
+			// Check conditions for the `checkout` context
+			if ( 'checkout' === $context ) {
+				// Get substeps
+				$substeps = array_key_exists( 'substeps', $step_args ) ? $step_args[ 'substeps' ] : false;
 
-			// Maybe check if each substeps is complete
-			if ( is_array( $substeps ) ) {
-				foreach ( $substeps as $substep_args ) {
-					// Get substep id
-					$substep_id = $substep_args[ 'substep_id' ];
+				// Maybe check if each substeps is complete
+				if ( is_array( $substeps ) ) {
+					foreach ( $substeps as $substep_args ) {
+						// Get substep id
+						$substep_id = $substep_args[ 'substep_id' ];
 
-					// Get substep is complete callback
-					// Defaults to 'true/complete' if callback is not provided.
-					$is_substep_complete_callback = array_key_exists( 'is_complete_callback', $substep_args ) ? $substep_args[ 'is_complete_callback' ] : '__return_true';
+						// Get substep is complete callback
+						// Defaults to 'true/complete' if callback is not provided.
+						$is_substep_complete_callback = array_key_exists( 'is_complete_callback', $substep_args ) ? $substep_args[ 'is_complete_callback' ] : '__return_true';
 
-					// Maybe set step as not complete if a substep is not complete
-					if ( ! $is_substep_complete_callback || ! is_callable( $is_substep_complete_callback ) || ! call_user_func( $is_substep_complete_callback, $step_id, $substep_id ) ) {
-						$is_step_complete = false;
-						break;
+						// Maybe set step as not complete if a substep is not complete
+						if ( ! $is_substep_complete_callback || ! is_callable( $is_substep_complete_callback ) || ! call_user_func( $is_substep_complete_callback, $step_id, $substep_id ) ) {
+							$is_step_complete = false;
+							break;
+						}
 					}
 				}
 			}
 
 			// Filter to allow other plugins to add their own conditions
-			$is_step_complete = apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete );
+			$is_step_complete = apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete, $context );
 
 			// Add complete steps to the list
 			if ( $is_step_complete ) {
@@ -1223,7 +1228,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Get the current step
-		$current_step = $this->get_current_step();
+		$current_step = $this->get_current_step( $context );
 
 		// Bail if current step is not defined
 		if ( false === $current_step ) { return $complete_steps; }
@@ -1244,15 +1249,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Get the list checkout steps considered incomplete, those missing required data.
+	 * 
+	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
 	 *
 	 * @return  array  List of checkout steps with required data missing. The index is preserved from the registered checkout steps list.
 	 */
-	public function get_incomplete_steps() {
+	public function get_incomplete_steps( $context = 'checkout' ) {
 		// Initialize return value
 		$incomplete_steps = array();
 
 		// Get checkout steps
-		$_checkout_steps = $this->get_checkout_steps();
+		$_checkout_steps = $this->get_checkout_steps( $context );
 
 		// Iterate checkout steps
 		for ( $step_index = 0; $step_index < count( $_checkout_steps ); $step_index++ ) {
@@ -1283,7 +1290,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			// Filter to allow other plugins to add their own conditions
-			$is_step_complete = apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete );
+			$is_step_complete = apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete, $context );
 
 			// Add complete steps to the list
 			if ( ! $is_step_complete ) {
@@ -1364,12 +1371,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Get the current checkout step. The first checkout step which is considered incomplete.
+	 * 
+	 * @param   string  $context    Context in which the function is running. Defaults to `checkout`.
 	 *
-	 * @return  array  An array with only one value, the first checkout step which is considered incomplete, for `false` when no step was found. The index is preserved from the registered checkout steps list. When no step is incomplete, the last step is returned.
+	 * @return  array               An array with only one value, the first checkout step which is considered incomplete, for `false` when no step was found. The index is preserved from the registered checkout steps list. When no step is incomplete, the last step is returned.
 	 */
-	public function get_current_step() {
+	public function get_current_step( $context = 'checkout' ) {
 		// Get incomplete steps
-		$incomplete_steps = $this->get_incomplete_steps();
+		$incomplete_steps = $this->get_incomplete_steps( $context );
 
 		// Try to get the first incomplete step
 		if ( is_array( $incomplete_steps ) && count( $incomplete_steps ) > 0 ) {
@@ -1380,33 +1389,49 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Defaults to the last step
 		// Needs to be last step instead of first, otherwise the customer would always return
 		// to first step when all steps are completed, which does not make sense.
-		return $this->get_last_step();
+		return $this->get_last_step( $context );
 	}
 
 	/**
  	 * Get the first checkout step.
+	 * 
+	 * @param   string  $context    Context in which the function is running. Defaults to `checkout`.
  	 */
-	public function get_first_step() {
+	public function get_first_step( $context = 'checkout' ) {
 		$_checkout_steps = $this->get_checkout_steps();
 
 		// Bail if no steps are registered
 		if ( ! is_array( $_checkout_steps ) || count( $_checkout_steps ) === 0 ) { return false; }
 
-		return array( 0 => $_checkout_steps[ 0 ] );
+		// Get first step
+		$first_step_index = array_key_first( $_checkout_steps );
+		$first_step = array( $first_step_index => $_checkout_steps[ $first_step_index ] );
+
+		// Filter to allow other plugins to add their own conditions
+		$first_step = apply_filters( 'fc_get_first_step', $first_step, $context );
+
+		return $first_step;
 	}
 
 	/**
 	 * Get the last checkout step.
+	 * 
+	 * @param   string  $context    Context in which the function is running. Defaults to `checkout`.
 	 */
-	public function get_last_step() {
+	public function get_last_step( $context = 'checkout' ) {
 		$_checkout_steps = $this->get_checkout_steps();
 
 		// Bail if no steps are registered
 		if ( ! is_array( $_checkout_steps ) || count( $_checkout_steps ) === 0 ) { return false; }
 
+		// Get last step
 		$last_step_index = array_key_last( $_checkout_steps );
+		$last_step = array( $last_step_index => $_checkout_steps[ $last_step_index ] );
 
-		return array( $last_step_index => $_checkout_steps[ $last_step_index ] );
+		// Filter to allow other plugins to add their own conditions
+		$last_step = apply_filters( 'fc_get_last_step', $last_step, $context );
+
+		return $last_step;
 	}
 
 
@@ -1414,13 +1439,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Determine if the step is the current step.
 	 *
-	 * @param   string  $step_id  Id of the step to check for the "current step" status.
+	 * @param   string    $step_id   Id of the step to check for the "current step" status.
+	 * @param   string    $context   Context in which the function is running. Defaults to `checkout`.
 	 *
-	 * @return  boolean  `true` if the step is the current step, `false` otherwise.
+	 * @return  boolean              `true` if the step is the current step, `false` otherwise.
 	 */
-	public function is_current_step( $step_id ) {
+	public function is_current_step( $step_id, $context = 'checkout' ) {
 		// Get checkout current step
-		$current_step = $this->get_current_step();
+		$current_step = $this->get_current_step( $context );
 
 		// Bail if current step is not defined
 		if ( false === $current_step ) { return false; }
@@ -1429,7 +1455,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the registered checkout steps list
 		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
 
-		return ( $step_id == $current_step_id );
+		// Define and filter return value
+		$is_current_step = ( $step_id == $current_step_id );
+		$is_current_step = apply_filters( 'fc_is_current_step', $is_current_step, $step_id, $context );
+
+		return $is_current_step;
 	}
 
 
@@ -1438,16 +1468,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Determine if the step is completed.
 	 *
 	 * @param   string  $step_id  Id of the step to check for the "complete" status.
+	 * @param   string  $context  Context in which the function is running. Defaults to `checkout`.
 	 *
 	 * @return  boolean  `true` if the step is considered complete, `false` otherwise. Defaults to `false`.
 	 */
-	public function is_step_complete( $step_id ) {
+	public function is_step_complete( $step_id, $context = 'checkout' ) {
 		// Define variables
 		$is_step_complete = false;
 
 		// Get complete steps
-		$complete_steps = $this->get_complete_steps();
-
+		$complete_steps = $this->get_complete_steps( $context );
 
 		// Iterate complete steps
 		foreach ( $complete_steps as $step_args ) {
@@ -1459,7 +1489,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Filter to allow other plugins to add their own conditions
-		$is_step_complete = apply_filters( 'fc_is_step_complete', $is_step_complete, $step_id );
+		$is_step_complete = apply_filters( 'fc_is_step_complete', $is_step_complete, $step_id, $context ); 
 
 		return $is_step_complete;
 	}
@@ -1467,12 +1497,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Determine if the step before the checked step is completed.
 	 *
-	 * @param   string  $step_id  Id of the step to use as a reference to check for the "complete" status of the previous step.
+	 * @param   string   $step_id   Id of the step to use as a reference to check for the "complete" status of the previous step.
+	 * @param   string   $context   Context in which the function is running. Defaults to `checkout`.
 	 *
-	 * @return  boolean  `true` if the step is considered complete, `false` otherwise. Defaults to `false`.
+	 * @return  boolean             `true` if the step is considered complete, `false` otherwise. Defaults to `false`.
 	 */
-	public function is_prev_step_complete( $step_id ) {
-		$complete_steps = $this->get_complete_steps();
+	public function is_prev_step_complete( $step_id, $context = 'checkout' ) {
+		// Get complete steps
+		$complete_steps = $this->get_complete_steps( $context );
 
 		// Return `true` if previous step id is found in the complete steps list
 		foreach ( $complete_steps as $step_index => $step_args ) {
@@ -1490,12 +1522,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Determine if the step after the checked step is completed.
 	 *
-	 * @param   string  $step_id  Id of the step to use as a reference to check for the "complete" status of the next step.
+	 * @param   string   $step_id   Id of the step to use as a reference to check for the "complete" status of the next step.
+	 * @param   string   $context   Context in which the function is running. Defaults to `checkout`.
 	 *
-	 * @return  boolean  `true` if the step is considered complete, `false` otherwise. Defaults to `false`.
+	 * @return  boolean             `true` if the step is considered complete, `false` otherwise. Defaults to `false`.
 	 */
-	public function is_next_step_complete( $step_id ) {
-		$complete_steps = $this->get_complete_steps();
+	public function is_next_step_complete( $step_id, $context = 'checkout' ) {
+		// Get complete steps
+		$complete_steps = $this->get_complete_steps( $context );
 
 		// Return `true` if next step id is found in the complete steps list
 		foreach ( $complete_steps as $step_index => $step_args ) {
@@ -1505,6 +1539,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$next_step_args = array_key_exists( $next_step_index, $complete_steps ) ? $complete_steps[ $next_step_index ] : false;
 
 			// Maybe skip `shipping` step
+			// TODO: Maybe use filter to determine if should skip the shipping step, so that it can be used in other contexts.
 			if ( is_array( $next_step_args ) && 'shipping' == $next_step_args[ 'step_id' ] && ! WC()->cart->needs_shipping() ) {
 				$next_step_index++;
 			}
@@ -2399,13 +2434,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'data-step-label' => $step_title,
 			'aria-label' => $step_title,
 			'data-step-index' => $step_index,
-			'data-step-complete' => $this->is_step_complete( $step_id ),
-			'data-step-current' => $this->is_current_step( $step_id ),
-			'data-prev-step-complete' => $this->is_prev_step_complete( $step_id ),
-			'data-next-step-complete' => $this->is_next_step_complete( $step_id ),
+			'data-step-complete' => $this->is_step_complete( $step_id, $context ),
+			'data-step-current' => $this->is_current_step( $step_id, $context ),
+			'data-prev-step-complete' => $this->is_prev_step_complete( $step_id, $context ),
+			'data-next-step-complete' => $this->is_next_step_complete( $step_id, $context ),
 		);
 
-		// Maybe attribute for first step
+		// Maybe add attribute for first step
 		$first_step = $this->get_first_step();
 		if ( false !== $first_step ) {
 			$first_step_index = array_keys( $first_step )[0];
@@ -2415,7 +2450,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
-		// Maybe attribute for last step
+		// Maybe add attribute for last step
 		$last_step = $this->get_last_step();
 		if ( false !== $last_step ) {
 			$last_step_index = array_keys( $last_step )[0];
@@ -2426,7 +2461,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Filter step attributes
-		$step_attributes = apply_filters( 'fc_checkout_step_attributes', $step_attributes, $step_id, $step_index );
+		$step_attributes = apply_filters( 'fc_checkout_step_attributes', $step_attributes, $step_id, $step_index, $context );
 
 		// Maybe add class for previous step completed
 		if ( array_key_exists( 'data-prev-step-complete', $step_attributes ) && true === $step_attributes['data-prev-step-complete'] ) {
@@ -2446,7 +2481,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		echo '<section ' . $step_attributes_str . '>'; // WPCS: XSS ok.
 		echo '<h2 id="' . esc_attr( $step_title_element_id ) . '" class="fc-step__title screen-reader-text">' . wp_kses( $step_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h2>';
 
-		do_action( 'fc_checkout_start_step_' . $step_id );
+		do_action( 'fc_checkout_start_step_' . $step_id, $context );
 	}
 
 	/**
@@ -2657,11 +2692,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout substep start tag.
 	 *
-	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
-	 * @param   string  $substep_id  Id of the substep.
+	 * @param   string  $step_id      Id of the step in which the substep will be rendered.
+	 * @param   string  $substep_id   Id of the substep.
+	 * @param   string  $context      Context in which the function is running. Defaults to `checkout`.
 	 */
-	public function output_substep_text_start_tag( $step_id, $substep_id ) {
-		$is_step_complete = $this->is_step_complete( $step_id );
+	public function output_substep_text_start_tag( $step_id, $substep_id, $context = 'checkout' ) {
+		// Get step complete state
+		$is_step_complete = $this->is_step_complete( $step_id, $context );
+
+		// Define substep attributes
 		$substep_attributes = array(
 			'id' => 'fc-substep__text--' . $substep_id,
 			'class' => 'fc-step__substep-text',
@@ -2671,10 +2710,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'data-collapsible-initial-state' => $is_step_complete ? 'expanded' : 'collapsed',
 		);
 
+		// Define substep inner attributes
 		$substep_inner_attributes = array(
 			'class' => 'collapsible-content__inner',
 		);
 
+		// Get substep attributes in string format
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		$substep_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_inner_attributes ), $substep_inner_attributes ) );
 		?>
@@ -2686,10 +2727,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout substep end tag.
 	 * 
-	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
-	 * @param   string  $substep_id  Id of the substep.
+	 * @param   string  $step_id      Id of the step in which the substep will be rendered.
+	 * @param   string  $substep_id   Id of the substep.
+	 * @param   string  $context      Context in which the function is running. Defaults to `checkout`.
 	 */
-	public function output_substep_text_end_tag( $step_id = null, $substep_id = null ) {
+	public function output_substep_text_end_tag( $step_id = null, $substep_id = null, $context = 'checkout' ) {
 			?>
 			</div>
 		</div>
