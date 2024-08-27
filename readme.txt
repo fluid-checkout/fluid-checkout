@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Javascript error when trying to copy field values into the other address section in some cases.
+* Fixed: Billing fields getting emptied or copying values from shipping when using the Local Pickup feature from Fluid Checkout PRO.
 
 = 3.2.2 - 2024-08-22 =
 

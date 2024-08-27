@@ -160,8 +160,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 					'.address-field input.input-text',
 					'.update_totals_on_change input.input-text',
 				) ) ),
-				'billingSameAsShippingCheckboxSelector'     => '#billing_same_as_shipping',
-				'shippingSameAsBillingCheckboxSelector'     => '#shipping_same_as_billing',
+				'sameAsCheckboxSelector'                    => '#billing_same_as_shipping, #shipping_same_as_billing',
 			) ),
 
 		);
