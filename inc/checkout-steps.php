@@ -1706,10 +1706,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Get the registered checkout substeps of the step to be rendered. Should only be used after the action `init` has been fired.
 	 * 
 	 * @param   string  $step_id      ID of the checkout step.
+	 * @param   string  $context      Context in which the function is running. Defaults to `checkout`.
 	 *
 	 * @return  array                 An array of the registered checkout substeps to be rendered. For more details of what is expected see the documentation of the private property `$checkout_steps` of this class.
 	 */
-	public function get_checkout_substeps( $step_id ) {
+	public function get_checkout_substeps( $step_id, $context = 'checkout' ) {
 		// Try to return value from cache
 		$cache_handle = 'checkout_substeps_to_render_' . $step_id;
 		if ( array_key_exists( $cache_handle, $this->cached_values ) ) {
@@ -2201,13 +2202,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the contents of each registered checkout step.
 	 */
 	public function output_checkout_steps() {
+		// Intialize variables
+		$context = 'checkout';
+
 		// Iterate checkout steps
 		foreach ( $this->get_checkout_steps() as $step_index => $step_args ) {
 			// Get step id
 			$step_id = $step_args[ 'step_id' ];
 
 			// Get step substeps to be rendered
-			$substeps = $this->get_checkout_substeps( $step_id );
+			$substeps = $this->get_checkout_substeps( $step_id, $context );
 
 			// Maybe skip if there are no substeps to be rendered
 			if ( 'payment' !== $step_id && ( ! is_array( $substeps ) || count( $substeps ) < 1 ) ) { continue; }
@@ -2218,7 +2222,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			// Output the step start tag
-			$this->output_step_start_tag( $step_args, $step_index );
+			$this->output_step_start_tag( $step_args, $step_index, $context );
 
 			// Iterate substeps
 			foreach ( $substeps as $substep_index => $substep_args ) {
@@ -2234,26 +2238,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 				$additional_attributes = array_key_exists( 'additional_attributes', $substep_args ) ? $substep_args[ 'additional_attributes' ] : array();
 
 				// Output the substep start tag
-				$this->output_substep_start_tag( $step_id, $substep_id, $additional_attributes );
+				$this->output_substep_start_tag( $step_id, $substep_id, $additional_attributes, $context );
 
 				// Output the substep fields
-				$this->output_substep_fields_start_tag( $step_id, $substep_id );
-				call_user_func( $render_fields_callback, $step_id, $substep_id );
-				$this->output_substep_fields_end_tag( $step_id, $substep_id );
+				$this->output_substep_fields_start_tag( $step_id, $substep_id, $context );
+				call_user_func( $render_fields_callback, $step_id, $substep_id, $context );
+				$this->output_substep_fields_end_tag( $step_id, $substep_id, $context );
 
 				// Only output substep text format for multi-step checkout layout
 				if ( $this->is_checkout_layout_multistep() && is_callable( $render_review_text_callback ) ) {
-					$this->output_substep_text_start_tag( $step_id, $substep_id );
-					call_user_func( $render_review_text_callback, $step_id, $substep_id );
-					$this->output_substep_text_end_tag( $step_id, $substep_id );
+					$this->output_substep_text_start_tag( $step_id, $substep_id, $context );
+					call_user_func( $render_review_text_callback, $step_id, $substep_id, $context );
+					$this->output_substep_text_end_tag( $step_id, $substep_id, $context );
 				}
 
 				// Output the substep end tag
-				$this->output_substep_end_tag( $step_id, $substep_id, true );
+				$this->output_substep_end_tag( $step_id, $substep_id, true, $context );
 			}
 
 			// Output the step end tag
-			$this->output_step_end_tag( $step_args, $step_index );
+			$this->output_step_end_tag( $step_args, $step_index, $context );
 		}
 	}
 
@@ -2419,7 +2423,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param   array   $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
 	 * @param   array   $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
-	 * @param   string  $context     Context in which the step is being output for. Defaults to `checkout`, also accepts `order-pay` as the context.
+	 * @param   string  $context     Context in which the step is being output for. Defaults to `checkout`.
 	 */
 	public function output_step_start_tag( $step_args, $step_index, $context = 'checkout' ) {
 		// Get step variables
@@ -2489,7 +2493,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param   array   $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
 	 * @param   array   $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
-	 * @param   string  $context     Context in which the step is being output for. Defaults to `checkout`, also accepts `order-pay` as the context.
+	 * @param   string  $context     Context in which the step is being output for. Defaults to `checkout`.
 	 */
 	public function output_step_end_tag( $step_args, $step_index, $context = 'checkout' ) {
 		// Get step id
@@ -2589,24 +2593,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $step_id                     Id of the step in which the substep will be rendered.
 	 * @param   string  $substep_id                  Id of the substep.
 	 * @param   array   $additional_attributes       Additional HTML attributes to add to the substep element.
+	 * @param   string  $context                     Context in which the substep is being output for. Defaults to `checkout`.
 	 */
-	public function output_substep_start_tag( $step_id, $substep_id, $additional_attributes = array() ) {
-		$additional_attributes = apply_filters( "fc_substep_{$substep_id}_attributes", $additional_attributes );
+	public function output_substep_start_tag( $step_id, $substep_id, $additional_attributes = array(), $context = 'checkout' ) {
+		// Filter to allow other plugins to add or modify attributes
+		$additional_attributes = apply_filters( "fc_substep_{$substep_id}_attributes", $additional_attributes, $context );
 
 		// Make sure additional attributes is an array before using it
 		if ( null === $additional_attributes ) { $additional_attributes = array(); }
 
+		// Merge additional attributes with default attributes
 		$substep_attributes = array_merge( $additional_attributes, array(
 			'class' => array_key_exists( 'class', $additional_attributes ) ? 'fc-step__substep ' . $additional_attributes['class'] : 'fc-step__substep',
 			'data-substep-id' => $substep_id,
 		) );
 
+		// Get attributes in string format
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		?>
 		<section <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
 			<?php
 			echo $this->get_substep_title_html( $substep_id ); // WPCS: XSS ok.
-			do_action( "fc_before_substep_{$substep_id}", $step_id, $substep_id );
+			do_action( "fc_before_substep_{$substep_id}", $step_id, $substep_id, $context );
 	}
 
 	/**
@@ -2614,15 +2622,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param   string  $step_id                     Id of the step in which the substep will be rendered.
 	 * @param   string  $substep_id                  Id of the substep.
-	 * @param   bool    $output_edit_buttons         Whether to output the edit buttons or not
+	 * @param   bool    $output_edit_buttons         Whether to output the edit buttons or not. Defaults to `true`.
+	 * @param   string  $context                     Context in which the substep is being output for. Defaults to `checkout`.
 	 */
-	public function output_substep_end_tag( $step_id, $substep_id, $output_edit_buttons = true ) {
+	public function output_substep_end_tag( $step_id, $substep_id, $output_edit_buttons = true, $context = 'checkout' ) {
 			// Get the substep title for accessibility label
 			$substep_title = $this->get_substep_title( $substep_id );
 
-			do_action( "fc_after_substep_{$substep_id}", $step_id, $substep_id, $output_edit_buttons );
+			do_action( "fc_after_substep_{$substep_id}", $step_id, $substep_id, $output_edit_buttons, $context );
 			?>
 
+			<?php // Maybe output substep action edit and save buttons ?>
 			<?php if ( $output_edit_buttons && $this->is_checkout_layout_multistep() ) : ?>
 				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-label="<?php echo sprintf( __( 'Change: %s', 'fluid-checkout' ), $substep_title ); ?>"><?php echo esc_html( apply_filters( 'fc_substep_change_button_label', _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ) ) ); ?></a>
 				<button class="fc-step__substep-save <?php echo esc_attr( apply_filters( 'fc_substep_save_button_classes', 'button' ) ); ?>" data-step-save><?php echo esc_html( apply_filters( 'fc_substep_save_button_label', _x( 'Save changes', 'Checkout substep save link label', 'fluid-checkout' ) ) ); ?></button>
@@ -2637,24 +2647,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout substep start tag.
 	 *
-	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
-	 * @param   string  $substep_id  Id of the substep.
+	 * @param   string   $step_id       Id of the step in which the substep will be rendered.
+	 * @param   string   $substep_id    Id of the substep.
+	 * @param   boolean  $collapsible   Whether to make the section collapsible or not. Defaults to `true`.
+	 * @param   string   $context       Context in which the function is running. Defaults to `checkout`.
 	 */
-	public function output_substep_fields_start_tag( $step_id, $substep_id, $collapsible = true ) {
+	public function output_substep_fields_start_tag( $step_id, $substep_id, $collapsible = true, $context = 'checkout' ) {
+		// Define substep attributes	
 		$substep_attributes = array(
 			'id' => 'fc-substep__fields--' . $substep_id,
 			'class' => 'fc-step__substep-fields fc-substep__fields--' . $substep_id,
 			'data-substep-id' => $substep_id,
 		);
 
+		// Define substep inner attributes
 		$substep_inner_attributes = array(
 			'class' => 'fc-step__substep-fields-inner',
 		);
 
 		// Add collapsible-block attributes for multistep layout
 		if ( $collapsible && $this->is_checkout_layout_multistep() ) {
-			$is_step_complete = $this->is_step_complete( $step_id );
+			// Get step complete state
+			$is_step_complete = $this->is_step_complete( $step_id, $context );
 
+			// Merge substep attribute with default attributes
 			$substep_attributes = array_merge( $substep_attributes, array(
 				'data-collapsible' => true,
 				'data-collapsible-content' => true,
@@ -2662,25 +2678,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'data-collapsible-initial-state' => $is_step_complete ? 'collapsed' : 'expanded',
 			) );
 
+			// Maybe add collapsible block class attribute for the substep inner element
 			$substep_inner_attributes = array(
 				'class' => $substep_inner_attributes[ 'class' ] . ' collapsible-content__inner',
 			);
 		}
 
+		// Get attributes in string format
 		$substep_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_attributes ), $substep_attributes ) );
 		$substep_inner_attributes_str = implode( ' ', array_map( array( $this, 'map_html_attributes' ), array_keys( $substep_inner_attributes ), $substep_inner_attributes ) );
 		?>
 		<div <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
 			<div <?php echo $substep_inner_attributes_str; // WPCS: XSS ok. ?>>
 			<?php
-			do_action( "fc_before_substep_fields_{$substep_id}", $step_id, $substep_id, $collapsible );
+			do_action( "fc_before_substep_fields_{$substep_id}", $step_id, $substep_id, $collapsible, $context );
 	}
 
 	/**
 	 * Output checkout substep end tag.
+	 * 
+	 * @param   string   $step_id       Id of the step in which the substep will be rendered.
+	 * @param   string   $substep_id    Id of the substep.
+	 * @param   boolean  $collapsible   Whether to make the section collapsible or not. Defaults to `true`.
+	 * @param   string   $context       Context in which the function is running. Defaults to `checkout`.
 	 */
-	public function output_substep_fields_end_tag( $step_id = null, $substep_id = null, $collapsible = true ) {
-			do_action( "fc_after_substep_fields_{$substep_id}", $step_id, $substep_id, $collapsible );
+	public function output_substep_fields_end_tag( $step_id = null, $substep_id = null, $collapsible = true, $context = 'checkout' ) {
+			do_action( "fc_after_substep_fields_{$substep_id}", $step_id, $substep_id, $collapsible, $context );
 			?>
 			</div>
 		</div>
