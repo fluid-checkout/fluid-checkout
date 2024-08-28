@@ -1155,9 +1155,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_checkout_step( $step_id ) {
 		// Look for a step with the same id
-		foreach ( $this->get_checkout_steps() as $key => $step_args ) {
+		foreach ( $this->get_checkout_steps() as $step_index => $step_args ) {
 			if ( $step_args[ 'step_id' ] == sanitize_title( $step_id ) ) {
-				return $step_args;
+				return array( $step_index => $step_args );
 			}
 		}
 
@@ -1196,42 +1196,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Maybe skip checking last step
 			if ( $step_index === $last_step_index ) { continue; }
 
-			// Initialize variables
-			$step_args = $_checkout_steps[ $step_index ];
-			$step_id = $step_args[ 'step_id' ];
-			$is_step_complete = true;
-
-			// Check conditions for the `checkout` context
-			if ( 'checkout' === $context ) {
-				// Get substeps
-				$substeps = array_key_exists( 'substeps', $step_args ) ? $step_args[ 'substeps' ] : false;
-
-				// Maybe check if each substeps is complete
-				if ( is_array( $substeps ) ) {
-					foreach ( $substeps as $substep_args ) {
-						// Get substep id
-						$substep_id = $substep_args[ 'substep_id' ];
-
-						// Get substep is complete callback
-						// Defaults to 'true/complete' if callback is not provided.
-						$is_substep_complete_callback = array_key_exists( 'is_complete_callback', $substep_args ) ? $substep_args[ 'is_complete_callback' ] : '__return_true';
-
-						// Maybe set step as not complete if a substep is not complete
-						if ( ! $is_substep_complete_callback || ! is_callable( $is_substep_complete_callback ) || ! call_user_func( $is_substep_complete_callback, $step_id, $substep_id ) ) {
-							$is_step_complete = false;
-							break;
-						}
-					}
-				}
-			}
-
-			// Filter to allow other plugins to add their own conditions
-			$is_step_complete = apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete, $context );
-			$is_step_complete = apply_filters( 'fc_is_step_complete', $is_step_complete, $step_id, $context );
-
-			// Add complete steps to the list
-			if ( $is_step_complete ) {
+			// Maybe add steps to the complete steps list
+			if ( $this->is_step_complete( $step_id, $context ) ) {
 				$complete_steps[ $step_index ] = $step_args;
+			}
+		}
+
+		// Get the current step
+		$current_step = $this->get_current_step();
+
+		// Maybe set the current step as incomplete, and all subsequent steps as complete
+		if ( false !== $current_step ) {
+			// Remove the current step and steps after that,
+			// leaving only the complete steps in the list.
+			$current_step_index = array_keys( $current_step )[ 0 ];
+			foreach ( $complete_steps as $step_index => $step_args ) {
+				if ( $step_index >= $current_step_index ) {
+					unset( $complete_steps[ $step_index ] );
+				}
 			}
 		}
 
@@ -1376,7 +1358,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Try to get the first incomplete step
 		if ( is_array( $_checkout_steps ) && count( $_checkout_steps ) > 0 ) {
-			foreach ($_checkout_steps as $step_index => $step_args ) {
+			foreach ( $_checkout_steps as $step_index => $step_args ) {
 				// Skip if step is complete
 				if ( $this->is_step_complete( $step_args[ 'step_id' ], $context ) ) { continue; }
 
@@ -1472,19 +1454,48 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function is_step_complete( $step_id, $context = 'checkout' ) {
 		// Define variables
-		$is_step_complete = false;
+		$is_step_complete = true;
 
-		// Get complete steps
-		$complete_steps = $this->get_complete_steps( $context );
+		// Get checkout steps
+		$_checkout_steps = $this->get_checkout_steps( $context );
 
-		// Iterate complete steps
-		foreach ( $complete_steps as $step_args ) {
-			// Skip other steps
-			if ( $step_id != $step_args[ 'step_id' ] ) { continue; }
+		// Get step entry
+		$step_entry = $this->get_checkout_step( $step_id );
 
-			// Set as complete if step is found in the complete steps list
-			$is_step_complete = true;
+		// Bail if step was not found
+		if ( ! $step_entry || empty( $step_entry ) ) { return $is_step_complete; }
+
+		// Get step index and args
+		$step_index = array_keys( $step_entry )[ 0 ];
+		$step_args = $step_entry[ $step_index ];
+
+		// Check conditions for the `checkout` context
+		if ( 'checkout' === $context ) {
+			// Get substeps
+			$substeps = array_key_exists( 'substeps', $step_args ) ? $step_args[ 'substeps' ] : false;
+
+			// Maybe check if each substeps is complete
+			if ( is_array( $substeps ) ) {
+				foreach ( $substeps as $substep_args ) {
+					// Get substep id
+					$substep_id = $substep_args[ 'substep_id' ];
+
+					// Get substep is complete callback
+					// Defaults to 'true/complete' if callback is not provided.
+					$is_substep_complete_callback = array_key_exists( 'is_complete_callback', $substep_args ) ? $substep_args[ 'is_complete_callback' ] : '__return_true';
+
+					// Maybe set step as not complete if a substep is not complete
+					if ( ! $is_substep_complete_callback || ! is_callable( $is_substep_complete_callback ) || ! call_user_func( $is_substep_complete_callback, $step_id, $substep_id ) ) {
+						$is_step_complete = false;
+						break;
+					}
+				}
+			}
 		}
+
+		// Filter to allow other plugins to add their own conditions
+		$is_step_complete = apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete, $context );
+		$is_step_complete = apply_filters( 'fc_is_step_complete', $is_step_complete, $step_id, $context );
 
 		return $is_step_complete;
 	}
@@ -2180,11 +2191,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Initialize variables
 		$step_title = false;
 
-		// Get step args
-		$step_args = $this->get_checkout_step( $step_id );
+		// Get step entry
+		$step_entry = $this->get_checkout_step( $step_id );
 
 		// Bail if step was not found
-		if ( ! $step_args ) { return $step_title; }
+		if ( ! $step_entry || empty( $step_entry ) ) { return $step_title; }
+
+		// Get step index and args
+		$step_index = array_keys( $step_entry )[ 0 ];
+		$step_args = $step_entry[ $step_index ];
 
 		// Get step title and apply filters
 		$step_title = $step_args[ 'step_title' ];
