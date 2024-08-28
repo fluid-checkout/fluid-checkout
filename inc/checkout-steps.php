@@ -1370,7 +1370,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Defaults to last step, otherwise the customer would always return
 		// to first step when all steps are completed, which does not make sense.
 		$current_step = $this->get_last_step( $context );
-		
+
 		// Get checkout steps
 		$_checkout_steps = $this->get_checkout_steps();
 
@@ -2192,7 +2192,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		return $step_title;
 	}
-	
+
 	/**
 	 * Output the contents of each registered checkout step.
 	 */
