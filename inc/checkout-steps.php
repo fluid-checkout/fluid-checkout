@@ -183,8 +183,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_suppress_payment_methods_fragment' ), 1000 );
 
 		// Formatted address
-		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
-		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
+		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'maybe_add_phone_localisation_address_formats' ), 10 );
+		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'maybe_add_phone_formatted_address_replacements' ), 10, 2 );
 
 		// Place order
 		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10, 2 );
@@ -491,8 +491,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_suppress_payment_methods_fragment' ), 1000 );
 
 		// Formatted Address
-		remove_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
-		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10 );
+		remove_filter( 'woocommerce_localisation_address_formats', array( $this, 'maybe_add_phone_localisation_address_formats' ), 10 );
+		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'maybe_add_phone_formatted_address_replacements' ), 10 );
 
 		// Place order
 		remove_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10 );
@@ -2308,12 +2308,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if should not display phone in formatted addresses
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $formats; }
 
-		// Bail if viewing order confirmation or order pay page
-		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) { return $formats; }
-
 		foreach ( $formats as $locale => $format) {
 			$formats[ $locale ] = $format . "\n{phone}";
 		}
+
+		return $formats;
+	}
+
+	/**
+	 * Add phone field replacement to localisation addresses formats.
+	 *
+	 * @param  array  $formats  Default localisation formats.
+	 */
+	public function maybe_add_phone_localisation_address_formats( $formats ) {
+		// Bail if viewing order confirmation or order pay page
+		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) { return $formats; }
+
+		// Add phone field replacement to formatted addresses
+		$formats = $this->add_phone_localisation_address_formats( $formats );
 
 		return $formats;
 	}
@@ -2328,10 +2340,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if should not display phone in formatted addresses
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $replacements; }
 
+		$replacements['{phone}'] = isset( $args['phone'] ) ? $args['phone'] : '';
+		return $replacements;
+	}
+
+	/**
+	 * Maybe add phone field replacement to formatted addresses.
+	 *
+	 * @param   array  $replacements  Formatted address replacements.
+	 * @param   array  $address       Contains address fields.
+	 */
+	public function maybe_add_phone_formatted_address_replacements( $replacements, $args ) {
 		// Bail if viewing order confirmation or order pay page
 		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) { return $replacements; }
 
-		$replacements['{phone}'] = isset( $args['phone'] ) ? $args['phone'] : '';
+		// Add phone field replacement to formatted addresses
+		$replacements = $this->add_phone_formatted_address_replacements( $replacements, $args );
+
 		return $replacements;
 	}
 
@@ -3503,6 +3528,43 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Get the list of field keys for extra fields to skip in the address substep review text.
+	 *
+	 * @param   string  $address_type   The address type.
+	 */
+	public function get_substep_text_extra_fields_skip_list( $address_type ) {
+		// Get contact step fields
+		$contact_field_ids = $this->get_contact_step_display_field_ids();
+
+		// Get custom fields for address replacements
+		$custom_field_keys = $this->get_formatted_address_replacements_custom_field_keys();
+
+		// Maybe add address type to custom fields keys
+		foreach( $custom_field_keys as $index => $field_key ) {
+			// Skip if already has address type
+			if ( 0 === strpos( $field_key, 'shipping_' ) || 0 === strpos( $field_key, 'billing_' ) ) { continue; }
+
+			// Add address type to field key
+			$custom_field_keys[ $index ] = $address_type . '_' . $field_key;
+		}
+
+		// Return list of field keys to skip
+		return apply_filters( "fc_substep_text_{$address_type}_address_field_keys_skip_list", array_merge( $contact_field_ids, $custom_field_keys, array(
+			$address_type . '_first_name',
+			$address_type . '_last_name',
+			$address_type . '_company',
+			$address_type . '_country',
+			$address_type . '_address_1',
+			$address_type . '_address_2',
+			$address_type . '_city',
+			$address_type . '_state',
+			$address_type . '_postcode',
+			$address_type . '_phone',
+			$address_type . '_email',
+		) ) );
+	}
+
+	/**
 	 * Add the address substep review text lines for extra fields of the address type.
 	 * 
 	 * @param   string  $address_type  The address type.
@@ -3519,35 +3581,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get address fields
 		$address_fields = WC()->checkout->get_checkout_fields( $address_type );
 
-		// Get contact step fields
-		$contact_field_ids = $this->get_contact_step_display_field_ids();
-
-		// Get custom fields for address replacements
-		$custom_field_keys = $this->get_formatted_address_replacements_custom_field_keys();
-
-		// Maybe add address type to custom fields keys
-		foreach( $custom_field_keys as $index => $field_key ) {
-			// Skip if already has address type
-			if ( 0 === strpos( $field_key, 'shipping_' ) || 0 === strpos( $field_key, 'billing_' ) ) { continue; }
-
-			// Add address type to field key
-			$custom_field_keys[ $index ] = $address_type . '_' . $field_key;
-		}
-
 		// Define list of address fields to skip as the formatted address has already been added
-		$field_keys_skip_list = apply_filters( "fc_substep_text_{$address_type}_address_field_keys_skip_list", array_merge( $contact_field_ids, $custom_field_keys, array(
-			$address_type . '_first_name',
-			$address_type . '_last_name',
-			$address_type . '_company',
-			$address_type . '_country',
-			$address_type . '_address_1',
-			$address_type . '_address_2',
-			$address_type . '_city',
-			$address_type . '_state',
-			$address_type . '_postcode',
-			$address_type . '_phone',
-			$address_type . '_email',
-		) ) );
+		$field_keys_skip_list = $this->get_substep_text_extra_fields_skip_list( $address_type );
 
 		// Get list of field keys that are only present in the current address type
 		$address_type_only_field_keys = $this->{"get_{$address_type}_only_fields_keys"}();
