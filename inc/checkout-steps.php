@@ -3659,7 +3659,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_substep_text_lines_shipping_address( $review_text_lines = array() ) {
 		// Maybe display shipping same as billing notice
-		if ( $this->is_shipping_same_as_billing() && true === apply_filters( 'fc_shipping_same_as_billing_display_substep_review_text_notice', true ) ) {
+		if ( true === apply_filters( 'fc_shipping_same_as_billing_display_substep_review_text_notice', true ) && $this->is_shipping_same_as_billing() ) {
 			$review_text_lines[] = '<em>' . $this->get_option_label_shipping_same_as_billing() . '</em>';
 		}
 		// Otherwise, display the address data
@@ -4387,7 +4387,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_substep_text_lines_billing_address( $review_text_lines = array() ) {
 		// Maybe display billing same as shipping notice
-		if ( $this->is_billing_same_as_shipping() && true === apply_filters( 'fc_billing_same_as_shipping_display_substep_review_text_notice', true ) ) {
+		if ( true === apply_filters( 'fc_billing_same_as_shipping_display_substep_review_text_notice', true ) && $this->is_billing_same_as_shipping() ) {
 			$review_text_lines[] = '<em>' . $this->get_option_label_billing_same_as_shipping() . '</em>';
 		}
 		// Otherwise, display the address data
