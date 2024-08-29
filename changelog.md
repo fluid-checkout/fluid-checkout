@@ -19,6 +19,71 @@ Additional labels for beta builds are available as extensions to the MAJOR.MINOR
 
 [See latest changes in the plugin's readme.txt](https://github.com/fluid-checkout/fluid-checkout/blob/main/readme.txt)
 
+= 3.1.11 - 2024-07-03 =
+
+* Bump tested up to WooCommerce 9.0.2
+* Added: Compatibility with theme Konte.
+* Added: Compatibility with plugin Qode Framework.
+* Added: Compatibility with plugin SuperFaktúra WooCommerce.
+* Fixed: Max width for the container element on the checkout page when using the plugin's container classes.
+* Fixed: Also trigger checkout update for text fields with class `update_totals_on_change`.
+* Fixed: Shipping methods list not expanding correctly and overlapping with other elements.
+* Fixed: Fatal errors with some 3rd-party plugins when trying to retrieve customer address data from the checkout session too early.
+* Fixed: Do not use cache for customer address data values as this might affect how other plugins work with the data.
+
+= 3.1.10 - 2024-06-20 =
+
+* Bump tested up to WooCommerce 9.0.1
+* Added: Compatibility with theme Kenta.
+* Added: Compatibility with theme Ettore.
+* Added: Compatibility with theme Fennik.
+* Added: Compatibility with plugin Ettore Core.
+* Fixed: Compatibility with plugin Fluent CRM PRO.
+* Fixed: Compatibility with plugin Klaviyo. Always show the SMS compliance notice below the checkbox field, and move the checkbox automatically to the contact step if the billing phone field is also displayed in the contact step.
+* Fixed: Retrieve customer address data from the checkout session data when available.
+* Fixed: Layout issues for some elements with class `woocommerce` that are displayed outside the scope of Fluid Checkout.
+* Fixed: Remove duplicate values shown in the substep review text for fields only present in the current address section when that address is set as "Same as <shipping/billing> address".
+
+= 3.1.9 - 2024-06-11 =
+
+* Bump tested up to WordPress 6.5.4 and WooCommerce 8.9.3
+* Added: New option to prevent automatic selection of the first shipping method available, forcing customer to manually select the shipping method for each new order.
+* Added: Compatibility with theme Beaver Builder Theme.
+* Added: Compatibility with theme SiteOrigin Corp.
+* Added: Compatibility with plugin Omniva Shipping.
+* Added: Compatibility with plugin Advanced Coupons for WooCommerce.
+* Improved: Compatibility with theme Zota.
+* Improved: Compatibility with theme OnAir2.
+* Improved: Compatibility with theme Blocksy. Support for the theme's color modes dark/light.
+* Improved: Compatibility with plugin Elementor PRO. Automatically disable checkout page template when using the custom order received page created with Elementor PRO.
+* Improved: Layout of the shipping methods and position of shipping methods description.
+* Improved: Add hooks for displaying the shipping method logo images for compatible shipping plugins.
+* Fixed: Compatibility with plugin Fluent CRM PRO. Fix fatal error when trying to add the subscribe box on the checkout page when using the plugin Fluent CRM PRO version 2.9.0+.
+* Fixed: Handle checkout fields with indexed multiple values to an `array` when parsing posted data.
+* Fixed: Checkout page template for distraction free header and footer should not be applied to the order pay and order received pages.
+* Fixed: Redirect to the cart page when visiting the checkout with an empty cart when using the WooCommerce block-based checkout form.
+* Fixed: Order received page showing blank in some cases when using the WooCommerce block-based checkout form.
+* Fixed: Page layout issues when using full site editor (FSE).
+* Fixed: Not adding the checkbox field label wrapper element for some themes.
+* Fixed: Only apply changes of the shipping address from the cart shipping calculator when using that function, and not when other plugins trigger the action hook used for that.
+* Fixed: Layout of product quantity label on the order summary at checkout for some themes.
+* Fixed: Inner elements overflowing the order summary borders.
+* Fixed: Display in the substep review text the fields only present in the current address section when that address is set as "Same as <shipping/billing> address".
+
+= 3.1.8 - 2024-04-25 =
+
+* Bump tested up to WordPress 6.5.2 and WooCommerce 8.8.2
+* Added: Compatibility with theme Hub.
+* Added: Compatibility with theme Salient.
+* Added: Compatibility with theme Savoy.
+* Added: Compatibility with theme The Gem.
+* Added: Compatibility with plugin Flexible Checkout Fields PRO.
+* Added: Compatibility with plugin MyParcel.
+* Improved: Change wording for the company name field option in the plugin settings to be clear what it is related to.
+* Improved: Automatically apply database migrations on first plugin installation, showing the message for database migration available only when updating the plugin.
+* Fixed: Compatibility with plugin MailChimp for WooCommerce. Fix fatal error on checkout page when connection to Mailchimp is not completely set up.
+* Fixed: Translations not being loaded correctly for language variations on WordPress 6.5+.
+
 = 3.1.7 - 2024-03-27 =
 
 * Bump tested up to WooCommerce 8.7.0
