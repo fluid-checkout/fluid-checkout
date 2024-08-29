@@ -1261,7 +1261,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->cached_values[ $cache_handle ] = $complete_steps;
 
 		// Get the current step
-		$current_step = $this->get_current_step();
+		$current_step = $this->get_current_step( $context );
 
 		// Maybe set the current step as incomplete, as well as all steps after the current step.
 		if ( false !== $current_step ) {
