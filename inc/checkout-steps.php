@@ -4682,15 +4682,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $posted_data   Post data for all checkout fields.
 	 */
 	public function is_billing_address_data_same_as_shipping( $posted_data = array() ) {
-		// Get parsed posted data
-		if ( empty( $posted_data ) ) {
-			$posted_data = $this->get_parsed_posted_data();
-		}
-
 		// Allow developers to hijack the returning value
 		$value_from_filter = apply_filters( 'fc_is_billing_address_data_same_as_shipping_before', null );
 		if ( null !== $value_from_filter ) {
 			return $value_from_filter;
+		}
+
+		// Get parsed posted data
+		if ( empty( $posted_data ) ) {
+			$posted_data = $this->get_parsed_posted_data();
 		}
 
 		// Initialize variables
@@ -4825,15 +4825,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  array  $posted_data   Post data for all checkout fields.
 	 */
 	public function is_shipping_address_data_same_as_billing( $posted_data = array() ) {
-		// Get parsed posted data
-		if ( empty( $posted_data ) ) {
-			$posted_data = $this->get_parsed_posted_data();
-		}
-
 		// Allow developers to hijack the returning value
 		$value_from_filter = apply_filters( 'fc_is_shipping_address_data_same_as_billing_before', null );
 		if ( null !== $value_from_filter ) {
 			return $value_from_filter;
+		}
+
+		// Get parsed posted data
+		if ( empty( $posted_data ) ) {
+			$posted_data = $this->get_parsed_posted_data();
 		}
 
 		// Initialize variables
