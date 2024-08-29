@@ -230,7 +230,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
 
 		// Place order position
+		$this->place_order_position_hooks();
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// Order notes
+		$this->order_notes_hooks();
+		$this->maybe_register_substep_order_notes();
+
+		// Persisted data
+		$this->customer_address_data_hooks();
+	}
+
+	/**
+	 * Add or remove hooks for the place order position.
+	 */
+	public function place_order_position_hooks() {
+		// Place order position
 		$place_order_position = $this->get_place_order_position();
+
 		// Below order summary
 		if ( 'below_order_summary' === $place_order_position ) {
 			add_action( 'fc_checkout_after_order_review_inside', array( $this, 'output_checkout_place_order_section' ), 1 );
@@ -245,18 +266,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		else {
 			add_action( 'fc_checkout_end_step_payment', array( $this, 'output_checkout_place_order_section_for_substep' ), 100, 2 );
 		}
-	}
-
-	/**
-	 * Add or remove very late hooks.
-	 */
-	public function very_late_hooks() {
-		// Order notes
-		$this->order_notes_hooks();
-		$this->maybe_register_substep_order_notes();
-
-		// Persisted data
-		$this->customer_address_data_hooks();
 	}
 
 	/**
@@ -1174,13 +1183,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  array              List of checkout steps which all required data has been provided. The index is preserved from the registered checkout steps list.
 	 */
 	public function get_complete_steps( $context = 'checkout' ) {
+		// Maybe doing it wrong
+		if ( ! did_action( 'wp' ) && ! doing_action( 'wp' ) ) {
+			wc_doing_it_wrong( __FUNCTION__, 'This function should only be used during or after the `wp` hook runs.', '4.0.0' );
+			return array();
+		}
+
 		// Try to return value from cache
 		$cache_handle = 'complete_steps_' . $context;
 		if ( array_key_exists( $cache_handle, $this->cached_values ) ) {
 			// Return value from cache
 			return $this->cached_values[ $cache_handle ];
 		}
-		
+
 		// Initialize return value
 		$complete_steps = array();
 
@@ -1188,24 +1203,67 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$_checkout_steps = $this->get_checkout_steps( $context );
 
 		// Iterate checkout steps
-		for ( $step_index = 0; $step_index < count( $_checkout_steps ); $step_index++ ) {
+		foreach ( $_checkout_steps as $step_index => $step_args ) {
 			// Get last step index
 			$last_step = $this->get_last_step( $context );
-			$last_step_index = array_keys( $last_step )[0];
+			$last_step_index = array_keys( $last_step )[ 0 ];
 
 			// Maybe skip checking last step
 			if ( $step_index === $last_step_index ) { continue; }
 
+			// Get step id
+			$step_id = $step_args[ 'step_id' ];
+
+			// Intialize step as complete
+			$is_step_complete = true;
+
+			// Check conditions for the `checkout` context
+			if ( 'checkout' === $context ) {
+				// Get substeps
+				$substeps = array_key_exists( 'substeps', $step_args ) ? $step_args[ 'substeps' ] : false;
+
+				// Maybe check if each substeps is complete
+				if ( is_array( $substeps ) ) {
+					foreach ( $substeps as $substep_args ) {
+						// Get substep id
+						$substep_id = $substep_args[ 'substep_id' ];
+
+						// Get substep is complete callback
+						// Defaults to 'true/complete' if callback is not provided.
+						$is_substep_complete_callback = array_key_exists( 'is_complete_callback', $substep_args ) ? $substep_args[ 'is_complete_callback' ] : '__return_true';
+
+						// Maybe set step as not complete if a substep is not complete
+						if ( ! $is_substep_complete_callback || ! is_callable( $is_substep_complete_callback ) || ! call_user_func( $is_substep_complete_callback, $step_id, $substep_id ) ) {
+							$is_step_complete = false;
+							break;
+						}
+					}
+				}
+			}
+
+			// Filter to allow other plugins to add their own conditions
+			$is_step_complete = apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete, $context );
+			$is_step_complete = apply_filters( 'fc_is_step_complete', $is_step_complete, $step_id, $context );
+
 			// Maybe add steps to the complete steps list
-			if ( $this->is_step_complete( $step_id, $context ) ) {
+			if ( $is_step_complete ) {
 				$complete_steps[ $step_index ] = $step_args;
 			}
 		}
 
+		// Set cache before checking for the current step to avoid infinite loop.
+		// 
+		// Because we need the list of complete steps to get the current step,
+		// and to get the list of complete steps we need to check for the current step,
+		// this would cause an infinite loop if we don't set the cache before checking for the current step.
+		// 
+		// Cache is then updated below before returning the value, which only happens in the first time this function is called.
+		$this->cached_values[ $cache_handle ] = $complete_steps;
+
 		// Get the current step
 		$current_step = $this->get_current_step();
 
-		// Maybe set the current step as incomplete, and all subsequent steps as complete
+		// Maybe set the current step as incomplete, as well as all steps after the current step.
 		if ( false !== $current_step ) {
 			// Remove the current step and steps after that,
 			// leaving only the complete steps in the list.
@@ -1217,10 +1275,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
-		// Set cache
-		if ( did_action( 'wp' ) || doing_action( 'wp' ) ) {
-			$this->cached_values[ $cache_handle ] = $complete_steps;
-		}
+		// Update cache with complete steps consiering the current step
+		$this->cached_values[ $cache_handle ] = $complete_steps;
 
 		return $complete_steps;
 	}
@@ -1453,49 +1509,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  boolean  `true` if the step is considered complete, `false` otherwise. Defaults to `false`.
 	 */
 	public function is_step_complete( $step_id, $context = 'checkout' ) {
-		// Define variables
-		$is_step_complete = true;
+		// Initialize variables
+		$is_step_complete = false;
 
-		// Get checkout steps
-		$_checkout_steps = $this->get_checkout_steps( $context );
+		// Get complete steps
+		$complete_steps = $this->get_complete_steps( $context );
 
-		// Get step entry
-		$step_entry = $this->get_checkout_step( $step_id );
-
-		// Bail if step was not found
-		if ( ! $step_entry || empty( $step_entry ) ) { return $is_step_complete; }
-
-		// Get step index and args
-		$step_index = array_keys( $step_entry )[ 0 ];
-		$step_args = $step_entry[ $step_index ];
-
-		// Check conditions for the `checkout` context
-		if ( 'checkout' === $context ) {
-			// Get substeps
-			$substeps = array_key_exists( 'substeps', $step_args ) ? $step_args[ 'substeps' ] : false;
-
-			// Maybe check if each substeps is complete
-			if ( is_array( $substeps ) ) {
-				foreach ( $substeps as $substep_args ) {
-					// Get substep id
-					$substep_id = $substep_args[ 'substep_id' ];
-
-					// Get substep is complete callback
-					// Defaults to 'true/complete' if callback is not provided.
-					$is_substep_complete_callback = array_key_exists( 'is_complete_callback', $substep_args ) ? $substep_args[ 'is_complete_callback' ] : '__return_true';
-
-					// Maybe set step as not complete if a substep is not complete
-					if ( ! $is_substep_complete_callback || ! is_callable( $is_substep_complete_callback ) || ! call_user_func( $is_substep_complete_callback, $step_id, $substep_id ) ) {
-						$is_step_complete = false;
-						break;
-					}
-				}
+		// Iterate complete steps
+		foreach ( $complete_steps as $step_index => $step_args ) {
+			if ( $step_id === $step_args[ 'step_id' ] ) {
+				$is_step_complete = true;
+				break;
 			}
 		}
-
-		// Filter to allow other plugins to add their own conditions
-		$is_step_complete = apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete, $context );
-		$is_step_complete = apply_filters( 'fc_is_step_complete', $is_step_complete, $step_id, $context );
 
 		return $is_step_complete;
 	}
