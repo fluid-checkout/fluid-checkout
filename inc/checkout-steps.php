@@ -283,7 +283,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Maybe move order notes to billing step
 			if ( ! WC()->cart->needs_shipping() ) {
-				$this->move_checkout_substep( 'order_notes', 'billing' );
+				$this->update_checkout_substep( 'order_notes', null, 'billing' );
 			}
 		}
 		// Run order notes hooks for better compatibility with plugins that rely on them,
@@ -1967,16 +1967,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Move a substep from one step to another.
+	 * Update the arguments for a registered substep, and move the substep from one step to another when the `new_step_id` is provided.
 	 *
 	 * @param   string  $substep_id                ID of the checkout substep to be moved.
-	 * @param   string  $previous_step_id          ID of the previous checkout step.
-	 * @param   string  $new_step_id               ID of the new checkout step.
 	 * @param   array   $additional_substep_args   Additional arguments to be merged with the substep arguments. This can be used to change the priority or other arguments of the substep.
+	 * @param   string  $new_step_id               ID of the checkout step where to move the substep to. Optional.
 	 *
-	 * @return  boolean                            `true` if the substep was successfully unregistered, `false` otherwise.
+	 * @return  boolean                            `true` if the substep was successfully updated, `false` otherwise.
 	 */
-	public function move_checkout_substep( $substep_id, $new_step_id, $additional_substep_args = array() ) {
+	public function update_checkout_substep( $substep_id, $additional_substep_args = null, $new_step_id = null ) {
 		// Bail if checkout substep is not registered
 		if ( ! $this->is_checkout_substep_registered( $substep_id ) ) { return false; }
 
@@ -1985,6 +1984,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Bail if step id was not found
 		if ( false === $previous_step_id ) { return false; }
+
+		// Initialize variables
+		$additional_substep_args = is_array( $additional_substep_args ) ? $additional_substep_args : array();
+		$new_step_id = null === $new_step_id ? $previous_step_id : $new_step_id;
 
 		// Get step index for the previous step
 		$previous_step_index = false;
@@ -2048,15 +2051,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Update registered substeps for the new step
 		$this->registered_checkout_steps[ $new_step_index ][ 'substeps' ] = $_new_substeps;
 
-		// Remove substep from the previous step
-		unset( $_previous_substeps[ $substep_index ] );
+		// Maybe update previous step substeps
+		if ( $previous_step_index !== $new_step_index ) {
+			// Remove substep from the previous step
+			unset( $_previous_substeps[ $substep_index ] );
 
-		// Sort steps based on priority.
-		uasort( $_previous_substeps, array( $this, 'checkout_step_priority_uasort_comparison' ) );
-		$_previous_substeps = array_values( $_previous_substeps );
+			// Sort steps based on priority.
+			uasort( $_previous_substeps, array( $this, 'checkout_step_priority_uasort_comparison' ) );
+			$_previous_substeps = array_values( $_previous_substeps );
 
-		// Update registered substeps for the previous step
-		$this->registered_checkout_steps[ $previous_step_index ][ 'substeps' ] = $_previous_substeps;
+			// Update registered substeps for the previous step
+			$this->registered_checkout_steps[ $previous_step_index ][ 'substeps' ] = $_previous_substeps;
+		}
 
 		return true;
 	}
