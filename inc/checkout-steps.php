@@ -1080,10 +1080,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Get the registered checkout steps to be rendered. Should only be used after the action `init` has been fired.
+	 * 
+	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
 	 *
 	 * @return  array  An array of the registered checkout steps to be rendered. For more details of what is expected see the documentation of the private property `$checkout_steps` of this class.
 	 */
-	public function get_checkout_steps() {
+	public function get_checkout_steps( $context = 'checkout' ) {
+		// Allow developers to hijack the returning value
+		$value_from_filter = apply_filters( 'fc_get_checkout_steps_before', null, $context );
+		if ( null !== $value_from_filter ) {
+			return $value_from_filter;
+		}
+
 		// Try to return value from cache
 		$cache_handle = 'checkout_steps_to_render';
 		if ( array_key_exists( $cache_handle, $this->cached_values ) ) {
@@ -1126,13 +1134,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get the checkout steps for the passed step id.
 	 *
-	 * @param   string  $step_id  ID of the step.
+	 * @param   string  $step_id   ID of the step.
+	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
 	 *
 	 * @return  mixed             An array with only one value for the step args. The index is preserved from the registered checkout steps list. If not found, returns `false`.
 	 */
-	public function get_checkout_step( $step_id ) {
+	public function get_checkout_step( $step_id, $context = 'checkout' ) {
 		// Look for a step with the same id
-		foreach ( $this->get_checkout_steps() as $step_index => $step_args ) {
+		foreach ( $this->get_checkout_steps( $context ) as $step_index => $step_args ) {
 			if ( $step_args[ 'step_id' ] == sanitize_title( $step_id ) ) {
 				return array( $step_index => $step_args );
 			}
@@ -1295,13 +1304,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get the step arguments for the step ID passed.
 	 *
-	 * @param   string  $step_id  ID of the step.
+	 * @param   string  $step_id   ID of the step.
+	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
 	 *
-	 * @return  array             Array with arguments of the step.
+	 * @return  array              Array with arguments of the step.
 	 */
-	public function get_step( $step_id ) {
-		$_checkout_steps = $this->get_checkout_steps();
+	public function get_step( $step_id, $context = 'checkout' ) {
+		// Get list of checkout steps
+		$_checkout_steps = $this->get_checkout_steps( $context );
 
+		// Look for a step with the same id
 		foreach ( $_checkout_steps as $step_index => $step_args ) {
 			if ( $step_id == $step_args[ 'step_id' ] ) {
 				return $step_args;
@@ -1314,12 +1326,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get the step arguments for the step next to the step ID passed.
 	 *
-	 * @param   string  $step_id  ID of the step.
+	 * @param   string  $step_id   ID of the step.
+	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
 	 *
-	 * @return  array             Array with arguments of the next step.
+	 * @return  array              Array with arguments of the next step.
 	 */
-	public function get_next_step( $step_id ) {
-		$_checkout_steps = $this->get_checkout_steps();
+	public function get_next_step( $step_id, $context = 'checkout' ) {
+		// Get list of checkout steps
+		$_checkout_steps = $this->get_checkout_steps( $context );
 
 		foreach ( $_checkout_steps as $step_index => $step_args ) {
 			// Maybe skip step until target step id is found
@@ -1378,7 +1392,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$current_step = $this->get_last_step( $context );
 
 		// Get checkout steps
-		$_checkout_steps = $this->get_checkout_steps();
+		$_checkout_steps = $this->get_checkout_steps( $context );
 
 		// Try to get the first incomplete step
 		if ( is_array( $_checkout_steps ) && count( $_checkout_steps ) > 0 ) {
@@ -1407,7 +1421,7 @@ class FluidCheckout_Steps extends FluidCheckout {
  	 */
 	public function get_first_step( $context = 'checkout' ) {
 		// Get checkout steps
-		$_checkout_steps = $this->get_checkout_steps();
+		$_checkout_steps = $this->get_checkout_steps( $context );
 
 		// Bail if no steps are registered
 		if ( ! is_array( $_checkout_steps ) || count( $_checkout_steps ) === 0 ) { return false; }
@@ -1426,7 +1440,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_last_step( $context = 'checkout' ) {
 		// Get checkout steps
-		$_checkout_steps = $this->get_checkout_steps();
+		$_checkout_steps = $this->get_checkout_steps( $context );
 
 		// Bail if no steps are registered
 		if ( ! is_array( $_checkout_steps ) || count( $_checkout_steps ) === 0 ) { return false; }
@@ -1557,15 +1571,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get the label for the proceed to next step button.
 	 *
-	 * @param   string  $step_id  ID of the step.
+	 * @param   string  $step_id   ID of the step.
+	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
 	 */
-	public function get_next_step_button_label( $step_id ) {
+	public function get_next_step_button_label( $step_id, $context = 'checkout' ) {
 		// Get next step args
-		$next_step_args = $this->get_next_step( $step_id );
+		$next_step_args = $this->get_next_step( $step_id, $context );
 
 		// Get title of the next step
 		$next_step_id = $next_step_args[ 'step_id' ];
-		$next_step_title = $this->get_step_title( $next_step_id );
+		$next_step_title = $this->get_step_title( $next_step_id, $context );
 
 		/** translators: Next checkout step title */
 		return sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_title );
@@ -1601,7 +1616,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Allow developers to change args for checkout steps at registration
 		$step_args = apply_filters( 'fc_register_checkout_step_args', $step_args );
 
-		// Sanitize step id
+		// Sanitize step id after applying filters to ensure it is safe to use
 		$step_args[ 'step_id' ] = sanitize_title( $step_args[ 'step_id' ] );
 		$step_id = $step_args[ 'step_id' ];
 
@@ -1705,10 +1720,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get the registered checkout substeps of the step to be rendered. Should only be used after the action `init` has been fired.
 	 * 
-	 * @param   string  $step_id      ID of the checkout step.
-	 * @param   string  $context      Context in which the function is running. Defaults to `checkout`.
+	 * @param   string  $step_id   ID of the checkout step.
+	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
 	 *
-	 * @return  array                 An array of the registered checkout substeps to be rendered. For more details of what is expected see the documentation of the private property `$checkout_steps` of this class.
+	 * @return  array              An array of the registered checkout substeps to be rendered. For more details of what is expected see the documentation of the private property `$checkout_steps` of this class.
 	 */
 	public function get_checkout_substeps( $step_id, $context = 'checkout' ) {
 		// Try to return value from cache
@@ -2197,13 +2212,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Get the title of the checkout step.
 	 * 
 	 * @param  string  $step_id   Checkout step id.
+	 * @param  string  $context   Context in which the function is running. Defaults to `checkout`.
 	 */
-	public function get_step_title( $step_id ) {
+	public function get_step_title( $step_id, $context = 'checkout' ) {
 		// Initialize variables
 		$step_title = false;
 
 		// Get step entry
-		$step_entry = $this->get_checkout_step( $step_id );
+		$step_entry = $this->get_checkout_step( $step_id, $context );
 
 		// Bail if step was not found
 		if ( ! $step_entry || empty( $step_entry ) ) { return $step_title; }
@@ -2227,7 +2243,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$context = 'checkout';
 
 		// Iterate checkout steps
-		foreach ( $this->get_checkout_steps() as $step_index => $step_args ) {
+		foreach ( $this->get_checkout_steps( $context ) as $step_index => $step_args ) {
 			// Get step id
 			$step_id = $step_args[ 'step_id' ];
 
@@ -2356,8 +2372,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Output the checkout progress bar.
+	 * 
+	 * @param  string  $context   Context in which the function is running. Defaults to `checkout`.
 	 */
-	public function output_checkout_progress_bar() {
+	public function output_checkout_progress_bar( $context = 'checkout' ) {
 		// Bail if progress bar not enabled
 		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_progress_bar' ) ) { return; }
 
@@ -2368,7 +2386,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() && ! is_user_logged_in() ) { return; }
 
 		// Get checkout steps to be rendered
-		$_checkout_steps = $this->get_checkout_steps();
+		$_checkout_steps = $this->get_checkout_steps( $context );
 
 		// Get step count
 		$steps_count = count( $_checkout_steps );
@@ -2474,7 +2492,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_step_start_tag( $step_args, $step_index, $context = 'checkout' ) {
 		// Get step variables
 		$step_id = $step_args[ 'step_id' ];
-		$step_title = $this->get_step_title( $step_id );
+		$step_title = $this->get_step_title( $step_id, $context );
 		$step_title_element_id = 'fc-step__title--' . $step_args[ 'step_id' ];
 
 		// Define step attributes
@@ -2556,7 +2574,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Maybe output next step button if not on last step
 			if ( 'checkout' === $context && $step_index !== $last_step_index ) :
 				// Maybe output the "Next step" button
-				$button_label = apply_filters( 'fc_next_step_button_label', $this->get_next_step_button_label( $step_args[ 'step_id' ] ), $step_args[ 'step_id' ] );
+				$button_label = apply_filters( 'fc_next_step_button_label', $this->get_next_step_button_label( $step_args[ 'step_id' ], $context ), $step_args[ 'step_id' ] );
 
 				$button_attributes = array(
 					'class' => implode( ' ', array_merge( array( 'fc-step__next-step' ), apply_filters( 'fc_next_step_button_classes', array( 'button' ) ), $step_args[ 'next_step_button_classes' ] ) ),
