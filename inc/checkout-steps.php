@@ -3836,7 +3836,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function should_render_substep_order_notes() {
 		// Bail if not on checkout page
-		if ( ! $this->is_checkout_page_or_fragment() ) { return; }
+		if ( ! $this->is_checkout_page_or_fragment() ) { return false; }
 
 		// Get checkout fields
 		$all_fields = WC()->checkout()->get_checkout_fields();
