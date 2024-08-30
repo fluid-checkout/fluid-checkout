@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
-	 * Holds configuration for each checkout step.
+	 * Holds configuration for each checkout step. Some additional attributes for steps and substeps might be added and used by add-ons and other extensions.
 	 *
 	 * $checkout_steps[]                     array       Defines the checkout steps to be displayed.
 	 *      ['step_id']                      string      ID of the checkout step, it will be sanitized with `sanitize_title()`.
@@ -19,6 +19,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *            ['priority']                       int         Defines the order the substep will be displayed within the step.
 	 *            ['render_fields_callback']         callable    Function name or callable array to display the fields of the substep step.
 	 *            ['render_review_text_callback']    callable    Function name or callable array to display the substep review text of the substep step.
+	 *            ['render_condition_callback']      callable    (optional) Function name or callable array to determine if the substep should be rendered. Defaults to `true`, considering that the substep should be displayed.
 	 *            ['is_complete_callback']           callable    (optional) Function name or callable array to determine if all required data for the substep has been provided. Defaults to `false`, considering the substep as 'incomplete' if a callback is not provided.
 	 *            ['additional_attributes']          array       (optional) Array of additional attributes to add to the substep container start tag.
 	 *      ['next_step_button_classes']     array       Array of CSS classes to add to the "Next step" button.
@@ -139,9 +140,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10, 3 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
 
-		// Order notes
-		add_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
-
 		// Billing address
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_billing_address' ), 10 );
@@ -239,7 +237,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function very_late_hooks() {
 		// Order notes
 		$this->order_notes_hooks();
-		$this->maybe_register_substep_order_notes();
 
 		// Persisted data
 		$this->customer_address_data_hooks();
@@ -278,52 +275,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get checkout fields
 		$all_fields = WC()->checkout()->get_checkout_fields();
 
+		// Prepare the hooks related to the additional order notes substep.
+		if ( $this->should_render_substep_order_notes() ) {
+			// Add hooks
+			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
+			add_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
+
+			// Maybe move order notes to billing step
+			if ( ! WC()->cart->needs_shipping() ) {
+				$this->move_checkout_substep( 'order_notes', 'billing' );
+			}
+		}
 		// Run order notes hooks for better compatibility with plugins that rely on them,
 		// because they originally run regardless of the order notes fields existence.
-		if ( ! in_array( 'order', array_keys( $all_fields ) ) || ! apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_order_comments' ) ) ) {
+		else {
 			$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields_inside' );
 			$order_notes_substep_priority = apply_filters( 'fc_do_order_notes_hooks_priority', 100 );
 			add_action( $order_notes_substep_position, array( $this, 'do_order_notes_hooks' ), $order_notes_substep_priority );
-		}
-	}
-
-	/**
-	 * Maybe register the order notes substep and add related hooks.
-	 */
-	public function maybe_register_substep_order_notes() {
-		// Bail if not on checkout or cart page or doing AJAX call
-		if ( ! $this->is_checkout_page_or_fragment() && ! $this->is_cart_page_or_fragment() ) { return; }
-
-		// Get checkout fields
-		$all_fields = WC()->checkout()->get_checkout_fields();
-
-		// Prepare the hooks related to the additional order notes substep.
-		if ( in_array( 'order', array_keys( $all_fields ) ) ) {
-			// Get additional order fields
-			$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
-			$order_notes_step = 'shipping';
-
-			// Check if no additional order fields are present
-			if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_order_comments' ) ) && is_array( $additional_order_fields ) && count( $additional_order_fields ) > 0 ) {
-
-				// Maybe change output to the billing step
-				if ( ! WC()->cart->needs_shipping() ) {
-					$order_notes_step = 'billing';
-				}
-
-				// Register substep
-				$this->register_checkout_substep( $order_notes_step, array(
-					'substep_id' => 'order_notes',
-					'substep_title' => __( 'Additional notes', 'fluid-checkout' ),
-					'priority' => 100,
-					'render_fields_callback' => array( $this, 'output_additional_fields' ),
-					'render_review_text_callback' => array( $this, 'output_substep_text_order_notes' ),
-					'is_complete_callback' => array( $this, 'is_substep_complete_order_notes' ),
-				) );
-
-				// Add hooks
-				add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
-			}
 		}
 	}
 
@@ -2175,6 +2143,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'is_complete_callback' => array( $this, 'is_substep_complete_shipping_method' ),
 		) );
 
+		// ORDER NOTES
+		$this->register_checkout_substep( $step_id_shipping, array(
+			'substep_id' => 'order_notes',
+			'substep_title' => __( 'Additional notes', 'fluid-checkout' ),
+			'priority' => 100,
+			'render_fields_callback' => array( $this, 'output_additional_fields' ),
+			'render_review_text_callback' => array( $this, 'output_substep_text_order_notes' ),
+			'render_condition_callback' => array( $this, 'should_render_substep_order_notes' ),
+			'is_complete_callback' => array( $this, 'is_substep_complete_order_notes' ),
+		) );
+
 		// BILLING ADDRESS SUBSTEP
 		$billing_substep_position_args = $this->get_billing_address_substep_position_args();
 		$billing_substep_step_id = $billing_substep_position_args[ 'step_id' ];
@@ -3845,6 +3824,29 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 
+
+	/**
+	 * Determines if the substep order notes should be rendered.
+	 */
+	public function should_render_substep_order_notes() {
+		// Bail if not on checkout page
+		if ( ! $this->is_checkout_page_or_fragment() ) { return; }
+
+		// Get checkout fields
+		$all_fields = WC()->checkout()->get_checkout_fields();
+
+		// Bail if the additional order fields group is not present
+		if ( ! in_array( 'order', array_keys( $all_fields ) ) ) { return false; }
+
+		// Get additional order fields
+		$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
+
+		// Bail if no additional order fields are present
+		if ( ! is_array( $additional_order_fields ) || 0 == count( $additional_order_fields ) || ! apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_order_comments' ) ) ) { return false; }
+
+		// Otherwise, should render the substep
+		return true;
+	}
 
 	/**
 	 * Add the order notes substep review text lines.
