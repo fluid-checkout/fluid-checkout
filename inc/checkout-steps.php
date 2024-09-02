@@ -166,6 +166,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
 			// Add billing phone to contact fields
 			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
+			add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_change_billing_phone_field_args_for_contact' ), 10 );
 
 			// Remove phone field from billing address data
 			add_filter( 'fc_billing_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
@@ -183,6 +184,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Formatted address
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
+		add_filter( 'fc_add_phone_localisation_formats', array( $this, 'maybe_skip_adding_phone_to_formatted' ), 100, 1 );
 
 		// Place order
 		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10, 2 );
@@ -215,6 +217,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'template_redirect', array( $this, 'maybe_update_checkout_address_from_account' ), 5 );
 
 		// Order attribution
+		// Run immediatelly for compatibility with WooCommerce versions prior to 9.2.0
 		$this->order_attribution_hooks();
 	}
 
@@ -252,6 +255,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		else {
 			add_action( 'fc_output_step_payment', array( $this, 'output_checkout_place_order_section' ), 100, 2 );
 		}
+
+		// Order attribution
+		// Needs to run at `init` hook for compatibility with WooCommerce versions 9.2.0+
+		$this->order_attribution_hooks();
 	}
 
 	/**
@@ -356,7 +363,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get class object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
-		
+
+		// Bail if class object or function is not available
+		if ( ! $class_object || ! method_exists( $class_object, 'stamp_checkout_html_element_once' ) ) { return; }
+
 		// Get list of hooks to which the order attribution stamp should be added
 		$stamp_checkout_html_actions = apply_filters(
 			'wc_order_attribution_stamp_checkout_html_actions',
@@ -375,6 +385,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Add the order attribution stamp hooks
+		remove_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
 		add_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
 	}
 
@@ -603,7 +614,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get class object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
-		
+
+		// Bail if class object or function is not available
+		if ( ! $class_object || ! method_exists( $class_object, 'stamp_checkout_html_element_once' ) ) { return; }
+
 		// Get list of hooks to which the order attribution stamp should be added
 		$stamp_checkout_html_actions = apply_filters(
 			'wc_order_attribution_stamp_checkout_html_actions',
@@ -1702,11 +1716,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if should not display phone in formatted addresses
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $formats; }
 
-		// Bail if viewing order confirmation or order pay page
-		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) { return $formats; }
-
 		foreach ( $formats as $locale => $format) {
-			$formats[ $locale ] = $format . "\n{phone}";
+			$formats[ $locale ] = $format . "{phone}";
 		}
 
 		return $formats;
@@ -1719,14 +1730,31 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   array  $address       Contains address fields.
 	 */
 	public function add_phone_formatted_address_replacements( $replacements, $args ) {
-		// Bail if should not display phone in formatted addresses
-		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $replacements; }
+		// Maybe set as empty if should not display phone in formatted addresses
+		// then bail
+		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) {
+			$replacements['{phone}'] = '';
+			return $replacements;
+		}
 
-		// Bail if viewing order confirmation or order pay page
-		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) { return $replacements; }
+		// Otherwise, set replacement with the actual phone number
+		$replacements['{phone}'] = isset( $args['phone'] ) ? "\n" . $args['phone'] : '';
 
-		$replacements['{phone}'] = isset( $args['phone'] ) ? $args['phone'] : '';
 		return $replacements;
+	}
+
+	/**
+	 * Maybe skip adding phone to formatted addresses for certain pages.
+	 *
+	 * @param   bool  $should_add   Whether to add phone to formatted addresses.
+	 */
+	public function maybe_skip_adding_phone_to_formatted( $should_add ) {
+		// Maybe set to skip if viewing order confirmation or order pay page
+		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) {
+			$should_add = 'no';
+		}
+
+		return $should_add;
 	}
 
 
@@ -2266,6 +2294,35 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the contact step fields.
+	 */
+	public function get_contact_step_fields() {
+		// Initialize variables
+		$contact_fields = array();
+
+		// Get all checkout fields
+		$field_groups = WC()->checkout->get_checkout_fields();
+		
+		// Iterate contact field ids
+		foreach( $this->get_contact_step_display_field_ids() as $field_key ) {
+			foreach ( $field_groups as $group_key => $fields ) {
+				// Check field exists
+				if ( ! array_key_exists( $field_key, $fields ) ) { continue; }
+
+				// Add field to contact fields
+				$contact_fields[ $field_key ] = $fields[ $field_key ];
+			}
+		}
+
+		// Sort fields by priority
+		uasort( $contact_fields, 'wc_checkout_fields_uasort_comparison' );
+
+		return $contact_fields;
+	}
+
+
+
+	/**
 	 * Output contact step.
 	 */
 	public function output_step_contact() {
@@ -2306,7 +2363,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'checkout/form-contact.php',
 			array(
 				'checkout'             => WC()->checkout(),
-				'contact_field_ids'    => $this->get_contact_step_display_field_ids(),
+				'contact_fields'       => $this->get_contact_step_fields(),
 			)
 		);
 	}
@@ -3353,7 +3410,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_ship_to_different_address_hidden_field() {
 		?>
 		<div id="ship-to-different-address" class="fc-hidden">
-			<input id="ship-to-different-address-checkbox" name="ship_to_different_address" type="checkbox" checked value="1" tabindex="-1" aria-hidden="true" aria-label="<?php echo esc_attr( 'Ship to a different address?', 'woocommerce' ); ?>" />
+			<input id="ship-to-different-address-checkbox" name="ship_to_different_address" type="checkbox" checked value="1" tabindex="-1" aria-hidden="true" aria-label="<?php echo esc_attr( __( 'Ship to a different address?', 'woocommerce' ) ); ?>" />
 		</div>
 		<?php
 	}
@@ -3887,9 +3944,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get current field value
 		$is_billing_same_as_shipping = $this->is_billing_same_as_shipping();
 		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked() ? 1 : 0;
+		$is_billing_same_as_shipping_available = $this->is_shipping_address_available_for_billing() ? 1 : 0;
 
 		// Output a hidden field when shipping country not allowed for billing, or shipping not needed
-		if ( apply_filters( 'fc_output_billing_same_as_shipping_as_hidden_field', false ) || ! $this->is_shipping_address_available_for_billing() ) :
+		if ( apply_filters( 'fc_output_billing_same_as_shipping_as_hidden_field', false ) || ! $is_billing_same_as_shipping_available ) :
 			?>
 			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo esc_attr( $is_billing_same_as_shipping_checked ); ?>">
 			<?php
@@ -3908,6 +3966,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// to be able to detect when the value changes
 		?>
 		<input type="hidden" name="billing_same_as_shipping_previous" id="billing_same_as_shipping_previous" value="<?php echo esc_attr( $is_billing_same_as_shipping_checked ); ?>">
+		<input type="hidden" name="billing_same_as_shipping_available" id="billing_same_as_shipping_available" value="<?php echo esc_attr( $is_billing_same_as_shipping_available ); ?>">
 		<?php
 	}
 
@@ -3930,6 +3989,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get current field value
 		$is_shipping_same_as_billing = $this->is_shipping_same_as_billing();
 		$is_shipping_same_as_billing_checked = $this->is_shipping_same_as_billing_checked() ? 1 : 0;
+		$is_shipping_same_as_billing_available = $this->is_billing_address_available_for_shipping() ? 1 : 0;
 
 		// Output a hidden field when billing country not allowed for shipping
 		if ( apply_filters( 'fc_output_shipping_same_as_billing_as_hidden_field', false ) || ! $this->is_billing_address_available_for_shipping() ) :
@@ -3951,6 +4011,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// to be able to detect when the value changes
 		?>
 		<input type="hidden" name="shipping_same_as_billing_previous" id="shipping_same_as_billing_previous" value="<?php echo esc_attr( $is_shipping_same_as_billing_checked ); ?>">
+		<input type="hidden" name="shipping_same_as_billing_available" id="shipping_same_as_billing_available" value="<?php echo esc_attr( $is_shipping_same_as_billing_available ); ?>">
 		<?php
 	}
 
@@ -4856,6 +4917,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $display_fields;
 	}
 
+	/**
+	 * Maybe change the billing phone field args when displayed on the contact step.
+	 *
+	 * @param   array  $fields  The billing fields.
+	 */
+	public function maybe_change_billing_phone_field_args_for_contact( $fields ) {
+		// Define variables
+		$field_key = 'billing_phone';
+
+		// Bail if field is not present
+		if ( ! array_key_exists( $field_key, $fields ) ) { return $fields; }
+
+		// Bail if field is not set to be displayed on the contact step
+		if ( ! in_array( $field_key, FluidCheckout_Steps::instance()->get_contact_step_display_field_ids() ) ) { return $fields; }
+
+		// Change field args
+		$fields[ $field_key ][ 'priority' ] = 20;
+
+		return $fields;
+	}
+
 
 
 	/**
@@ -5438,7 +5520,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( true !== apply_filters( 'fc_enable_order_summary_cart_item_unit_price', true ) ) { return; }
 
 		// Item unit price
-		echo '<div class="cart-item__element cart-item__price">' . apply_filters( 'woocommerce_cart_item_price', '<span class="screen-reader-text">' . esc_html( 'Price', 'woocommerce' ) . ': </span>' . WC()->cart->get_product_price( $product ), $cart_item, $cart_item_key ) . '</div>'; // PHPCS: XSS ok.
+		echo '<div class="cart-item__element cart-item__price">' . apply_filters( 'woocommerce_cart_item_price', '<span class="screen-reader-text">' . esc_html( __( 'Price', 'woocommerce' ) ) . ': </span>' . WC()->cart->get_product_price( $product ), $cart_item, $cart_item_key ) . '</div>'; // PHPCS: XSS ok.
 	}
 
 	/**

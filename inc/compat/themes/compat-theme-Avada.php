@@ -22,6 +22,9 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
+		// Avada section override hooks
+		add_action( 'wp', array( $this, 'after_layout_section_override_hooks' ), 90 );
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
@@ -53,6 +56,20 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 			remove_action( 'woocommerce_checkout_after_customer_details', array( $avada_woocommerce, 'checkout_after_customer_details' ) );
 			remove_action( 'woocommerce_checkout_billing', array( $avada_woocommerce, 'checkout_billing' ), 20 );
 			remove_action( 'woocommerce_checkout_shipping', array( $avada_woocommerce, 'checkout_shipping' ), 20 );
+		}
+	}
+
+
+
+	/**
+	 * Add or remove hooks after the layout section overrides are done by Avada.
+	 */
+	public function after_layout_section_override_hooks() {
+		global $avada_woocommerce;
+
+		// Remove Avada customizations
+		if ( null !== $avada_woocommerce ) {
+			remove_filter( 'woocommerce_enable_order_notes_field', array( $avada_woocommerce, 'enable_order_notes_field' ) );
 		}
 	}
 

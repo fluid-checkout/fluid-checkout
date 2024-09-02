@@ -54,7 +54,7 @@
 
 
 // Hide default radio elements with opacity to allow for keyboard navigation
-.shipping-method__option input[type="radio"] {
+.shipping-method__option > input[type="radio"] {
 	position: absolute !important; // Needed to override theme styles
 	display: block !important; // Needed to override theme styles
 	margin: 0 !important; // Needed to override theme styles

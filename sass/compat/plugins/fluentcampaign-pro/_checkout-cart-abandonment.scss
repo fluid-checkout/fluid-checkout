@@ -1,0 +1,26 @@
+// ------------------------------------
+// CHECKOUT CART ABANDONMENT
+// ------------------------------------
+
+div.woocommerce form .form-row.fc-ab-cart-gdpr-message {
+	position: static;
+	display: block;
+	margin: 0 !important; // Needed to override Fluid Checkout styles
+	padding: $checkout-field-description-padding !important; // Needed to override Fluid Checkout styles
+	border: 0 !important; // Needed to override Fluid Checkout styles
+	background-color: $checkout-field-description-background-color;
+	color: $checkout-field-description-color;
+	font-size: $checkout-field-description-font-size;
+	line-height: 1.2;
+
+	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-field-description-font-size--large-screen; }
+}
+
+div.woocommerce form .form-row.fc-ab-cart-gdpr-message > label {
+	background-color: $checkout-field-description-background-color;
+	color: $checkout-field-description-color;
+	font-size: $checkout-field-description-font-size;
+	line-height: 1.2;
+
+	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-field-description-font-size--large-screen; }
+}

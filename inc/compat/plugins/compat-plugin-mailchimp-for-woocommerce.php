@@ -24,6 +24,11 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
+
+		// Subscribe box
+		add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_add_newsletter_as_checkout_field' ), 100 );
+		add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'maybe_add_newsletter_to_contact_fields' ), 100 );
+		add_filter( 'woocommerce_form_field_mailchimp_newsletter', array( $this, 'maybe_change_newsletter_field_html' ), 10, 4 );
 	}
 
 	/**
@@ -31,16 +36,16 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 	 */
 	public function late_hooks() {
 		// Subscribe box
-		$this->subscribe_box_hooks();
+		$this->subscribe_box_late_hooks();
 	}
 
 	/**
 	 * Add or remove subscribe box hooks.
 	 */
-	public function subscribe_box_hooks() {
+	public function subscribe_box_late_hooks() {
 		// Bail if option to move subscribe box is not enabled
 		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_integration_mailchimp_force_subscribe_checkbox_position' ) ) { return; }
-		
+
 		// Bail if Mailchimp List Key is not set
 		if ( ! function_exists( 'mailchimp_get_api_key' ) || empty( mailchimp_get_api_key() ) ) { return; }
 
@@ -50,7 +55,6 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 
 		// Move subscribe box
 		remove_action( $render_on, array( $service, 'applyNewsletterField' ) );
-		add_action( 'fc_checkout_after_contact_fields', array( $service, 'applyNewsletterField' ) );
 	}
 
 
@@ -89,6 +93,66 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 		$settings = array_merge( $settings, $settings_new );
 
 		return $settings;
+	}
+
+
+
+	/**
+	 * Maybe add the newsletter checkbox as a checkout field to allow sorting by priority.
+	 *
+	 * @param   array  $fields   The billing fields.
+	 */
+	public function maybe_add_newsletter_as_checkout_field( $fields ) {
+		// Bail if option to move subscribe box is not enabled
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_integration_mailchimp_force_subscribe_checkbox_position' ) ) { return; }
+
+		// Bail if field is already added
+		if ( array_key_exists( 'mailchimp_woocommerce_newsletter', $fields ) ) { return $fields; }
+
+		// Get email field priority
+		$email_field_priority = 10;
+		if ( array_key_exists( 'billing_email', $fields ) ) {
+			$email_field_priority = $fields[ 'billing_email' ][ 'priority' ];
+		}
+
+		// Add Mailchimp newsletter field
+		$fields[ 'mailchimp_woocommerce_newsletter' ] = array(
+			'label'       => '', // Intetionally empty, the fields will be replaced with the Mailchimp output function.
+			'type'        => 'mailchimp_newsletter',
+			'required'    => false,
+			'class'       => array( 'form-row-wide' ),
+			'priority'    => $email_field_priority + 5,
+		);
+
+		return $fields;
+	}
+
+	/**
+	 * Add the newsletter checkbox to the list of fields to display on the contact step.
+	 *
+	 * @param   array  $display_fields  List of fields to display on the contact step.
+	 */
+	public function maybe_add_newsletter_to_contact_fields( $display_fields ) {
+		// Bail if option to move subscribe box is not enabled
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_integration_mailchimp_force_subscribe_checkbox_position' ) ) { return; }
+
+		$display_fields[] = 'mailchimp_woocommerce_newsletter';
+		return $display_fields;
+	}
+
+	public function maybe_change_newsletter_field_html( $field, $key, $args, $value ) {
+		// Bail if option to move subscribe box is not enabled
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_integration_mailchimp_force_subscribe_checkbox_position' ) ) { return $field; }
+
+		// Get the Mailchimp service
+		$service = MailChimp_Newsletter::instance();
+
+		// Get the field html
+		ob_start();
+		$service->applyNewsletterField( WC()->checkout );
+		$field = ob_get_clean();
+
+		return $field;
 	}
 
 }

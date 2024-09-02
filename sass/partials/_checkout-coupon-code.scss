@@ -73,6 +73,8 @@ body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__a
 	margin: 0;
 	padding-#{ $alignment-left }: $global-spacing-small;
 	padding-#{ $alignment-right }: $global-spacing-small;
+	padding-top: 0 !important; // Needed to override theme styles
+	padding-bottom: 0 !important; // Needed to override theme styles
 	#{ $alignment-left }: auto;
 	#{ $alignment-right }: $global-spacing-tiny;
 	height: remsize( 4.5rem ) !important; // Needed to override theme styles

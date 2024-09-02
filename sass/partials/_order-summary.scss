@@ -427,13 +427,13 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	width: 100%;
 	background-color: $white;
 	box-shadow: $box-shadow-dark;
+	max-width: $container-width-mobile;
+	padding: $global-spacing-extra-small $container-spacing-mobile;
 
 	// max-width
-	max-width: $container-width-mobile;
 	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
 
 	// padding
-	padding: $global-spacing-extra-small $container-spacing-mobile;
 	@media (#{$bp-larger-than-tablet}) { padding: $global-spacing-small $container-spacing-tablet; }
 
 	// Hide on desktop view

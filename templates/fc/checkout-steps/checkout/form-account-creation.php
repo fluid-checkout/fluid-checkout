@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 3.1.5
+ * @version 3.2.2
  * @wc-version 3.6.0
  * @wc-original checkout/form-billing.php
  */
@@ -45,7 +45,7 @@ $optional_label = apply_filters( 'fc_checkout_display_create_account_optional_la
 		<?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
 
 			<?php // CHANGE: Add class `fc-field-group` and collapsible block attributes ?>
-			<div class="create-account fc-field-group <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" data-collapsible data-collapsible-content data-autofocus data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
+			<div class="create-account fc-field-group <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" <?php echo 'collapsed' === $collapsible_initial_state ? 'data-autofocus' : ''; ?> data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
 				<div class="collapsible-content__inner">
 					<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
 						<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
