@@ -170,6 +170,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 			'address_1' => isset( $terminal_data['address'] ) ? $terminal_data['address'] : '',
 			'postcode' => isset( $terminal_data['zip'] ) ? esc_html( $terminal_data['zip'] ) : '',
 			'city' => isset( $terminal_data['city'] ) ? esc_html( $terminal_data['city'] ) : '',
+			'state' => isset( $terminal_data['state'] ) ? esc_html( $terminal_data['state'] ) : '',
 		);
 
 		return $selected_terminal_data;
