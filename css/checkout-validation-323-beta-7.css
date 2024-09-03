@@ -65,6 +65,7 @@ div.woocommerce .shipping-method__package .woocommerce-error:before {
   left: 5px;
   transform: translateY(-50%);
   color: inherit;
+  speak: never;
 }
 
 div.woocommerce .shipping-method__package .woocommerce-error:before {

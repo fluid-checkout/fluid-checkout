@@ -139,10 +139,15 @@
 
 		// Create message element and add it after the field.
 		var parent = referenceNode.parentNode;
+		var elementId = field.id + '-invalid-' + invalidClass;
 		var element = document.createElement( 'span' );
 		element.className = 'woocommerce-error invalid-' + invalidClass;
+		element.id = elementId;
 		element.innerText = message;
 		parent.insertBefore( element, referenceNode.nextSibling );
+
+		// Add aria-describedby attribute to the field
+		field.setAttribute( 'aria-describedby', field.getAttribute( 'aria-describedby' ) + ' ' + elementId );
 	};
 
 
@@ -155,6 +160,16 @@
 	var removeInlineMessage = function( field, formRow, invalidClass ) {
 		var messageElements = formRow.querySelectorAll( 'span.woocommerce-error.invalid-' + invalidClass );
 		for ( var i = 0; i < messageElements.length; i++ ) {
+			// Get variables
+			var messageElement = messageElements[ i ];
+			var elementId = messageElement.id;
+
+			// Maybe remove `aria-describedby` attribute from the field
+			if ( elementId ) {
+				field.setAttribute( 'aria-describedby', field.getAttribute( 'aria-describedby' ).replace( ' ' + elementId, '' ) );	
+			}
+
+			// Remove message
 			messageElements[ i ].parentNode.removeChild( messageElements[ i ] );
 		}
 	}
@@ -423,6 +438,9 @@
 		// Toggle general field valid/invalid classes
 		formRow.classList.toggle( _settings.validClass, valid );
 		formRow.classList.toggle( _settings.invalidClass, ! valid );
+
+		// Set field as invalid for accessibility
+		field.setAttribute( 'aria-invalid', ! valid );
 
 		return valid;
 	};

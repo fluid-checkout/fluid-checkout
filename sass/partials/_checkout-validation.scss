@@ -63,6 +63,7 @@ div.woocommerce .shipping-method__package .woocommerce-error:before {
 	#{ $alignment-left }: $checkout-message-error-icon-position-left;
 	transform: translateY( -50% );
 	color: inherit;
+	speak: never;
 }
 
 div.woocommerce .shipping-method__package .woocommerce-error:before {
