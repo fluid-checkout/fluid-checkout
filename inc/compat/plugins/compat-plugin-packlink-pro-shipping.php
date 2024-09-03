@@ -89,24 +89,48 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 
 	/**
-	 * Check whether Packlink Pro is selected as a shipping method.
+	 * Get whether the shipping method is a local pickup method from this plugin.
+	 * 
+	 * @param  string  $shipping_method_id  The shipping method ID.
+	 * @param  object  $method              The shipping method object.
+	 * @param  object  $order               The order object.
 	 */
-	public function is_shipping_method_selected() {
-		$is_selected = false;
+	public function is_shipping_method_local_pickup( $shipping_method_id, $method = null, $order = null ) {
+		// Get shipping method instance ID
+		$instance_id_parts = explode( ':', $shipping_method_id );
+		$instance_id = (int) end( $instance_id_parts );
 
+		// Get Packlink shipping method object
+		$packlink_method = Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper::get_packlink_shipping_method( $instance_id );
+
+		// Check if shipping method is a local pickup method
+		if ( is_object( $packlink_method ) && method_exists( $packlink_method, 'isDestinationDropOff' ) && $packlink_method->isDestinationDropOff() ) {
+			return true;
+		}
+
+		return false;
+	}
+
+
+
+	/**
+	 * Maybe get selected shipping method object if it matches the target method.
+	 */
+	public function maybe_get_selected_shipping_method() {
 		// Check chosen shipping method
 		$packages = WC()->shipping()->get_packages();
 		foreach ( $packages as $i => $package ) {
 			// Check if a target shipping method is selected
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			if ( $chosen_method && $this->is_shipping_method_packlink( $chosen_method ) ) {
-				$is_selected = true;
-				break;
+				return $chosen_method;
 			}
 		}
 
-		return $is_selected;
+		// Return false if the chosen shipping method is not a target shipping method
+		return false;
 	}
+
 
 
 	/**
@@ -162,8 +186,14 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
+		// Get selected shipping method ID
+		$shipping_method_id = $this->maybe_get_selected_shipping_method();
+
 		// Bail if target shipping method is not selected
-		if ( ! $this->is_shipping_method_selected() ) { return; }
+		if ( empty( $shipping_method_id ) ) { return; }
+
+		// Bail if not a local pickup method
+		if ( ! $this->is_shipping_method_local_pickup( $shipping_method_id ) ) { return $review_text_lines; }
 
 		// Get selected terminal data
 		$terminal_data = $this->get_selected_terminal_data();
