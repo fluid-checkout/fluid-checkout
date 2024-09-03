@@ -1995,7 +1995,8 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > img,
-div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > a img {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > a img,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > picture img {
   float: left;
   margin-left: calc(-1 * (var(--fluidcheckout--order-summary--image-padding, 3px) + 5px));
   margin-right: 0 !important;
@@ -2009,7 +2010,8 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 @media (min-width: 1000px) {
   div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > img,
-  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > a img {
+  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > a img,
+  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > picture img {
     width: var(--fluidcheckout--order-summary--image-width--large-screen, 60px) !important;
     height: auto !important;
   }
