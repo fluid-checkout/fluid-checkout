@@ -48,10 +48,15 @@
 	 */
 	var removeSuggestions = function() {
 		// Bail if there is no target
-		if ( _tempTarget === null ) { return; }
+		if ( ! _tempTarget ) { return; }
 
 		// Get variables
-		var parent = _tempTarget.closest( _settings.inputFieldWrapperSelector );
+		var parent = _tempTarget.closest( _settings.formFieldWrapperSelector );
+
+		// Bail if no parent found
+		if ( ! parent ) { return; }
+
+		// Get suggestion elements to be removed
 		var suggestions = parent.querySelectorAll( _settings.suggestionElementSelector );
 
 		// Remove suggestions
@@ -73,7 +78,7 @@
 		removeSuggestions();
 
 		// Bail if there is no target
-		if ( _tempTarget === null ) { return; }
+		if ( ! _tempTarget ) { return; }
 
 		// Get variables
 		var parent = _tempTarget.closest( _settings.inputFieldWrapperSelector );
