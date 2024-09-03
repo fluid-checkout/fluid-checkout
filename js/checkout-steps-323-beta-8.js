@@ -541,8 +541,8 @@
 				substepElement.setAttribute( _settings.substepVisibleStateAttribute, visibilityHiddenField.value );
 
 				// Maybe collapse substep edit
-				// when expanded state field exists and substep is complete
-				if ( ! isSetExpanded && isStepComplete( substepElement ) ) {
+				// when substep is already hidden, set as complete and set as expanded
+				if ( 'no' === visibilityHiddenField.value && ! isSetExpanded && isStepComplete( substepElement ) ) {
 					collapseSubstepEdit( substepElement, true, false );
 				}
 			}
