@@ -1,4 +1,6 @@
-body.theme-thegem div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > img {
+body.theme-thegem div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > img,
+body.theme-thegem div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > a img,
+body.theme-thegem div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > picture img {
   margin-right: 0;
 }
 
