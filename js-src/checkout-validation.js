@@ -467,18 +467,25 @@
 		// Bail if processing checkout update
 		if ( true === window.processing_checkout_update ) { return; }
 
+		// Get variables
 		var field = e.target;
+		var formRow = e.target.closest( _settings.formRowSelector );
 
 		// Get correct field when is select2
 		if ( isSelect2Field( e.target ) ) {
-			var formRow = e.target.closest( _settings.formRowSelector );
-
 			if ( formRow ) {
 				field = formRow.querySelector( 'select' );
 			}
 		}
 
-		_publicMethods.validateField( field, e.type );
+		// Maybe delay validation when user is typing for the first time in the field
+		if ( 'input' === e.type && ! formRow.classList.contains( _settings.validClass ) && ! formRow.classList.contains( _settings.invalidClass ) ) {
+			_publicMethods.validateFieldDebounced( field, e.type );
+		}
+		// Otherwise, trigger validation immediatelly
+		else {
+			_publicMethods.validateField( field, e.type );
+		}
 	};
 
 
@@ -556,6 +563,16 @@
 		// Process results
 		return processValidationResults( field, formRow, validationResults );
 	};
+	/**
+	 * Test multiple validations on the passed field, debounced to allow time for the user to interact with the field.
+	 * 
+	 * @param  {Field} field    Field for validation.
+	 * @return {String}         Event that triggered the field validation. Can also be an arbitrary event name.
+	 * @return {Boolean}        True if field is valid.
+	 * 
+	 * @note   The delay time should be the same as the delay for triggering the update checkout process (see checkout.js).
+	 */
+	_publicMethods.validateFieldDebounced = FCUtils.debounce( _publicMethods.validateField, 1000 );
 
 
 
@@ -643,6 +660,7 @@
 		registerValidationTypes();
 
 		if ( _hasJQuery ) {
+			// Validation events
 			$( _settings.formSelector ).on( 'input validate change', _settings.validateFieldsSelector, handleValidateEvent );
 
 			// Run on checkout or cart changes
