@@ -11,6 +11,11 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 	 */
 	public const SHIPPING_METHOD_ID = 'packlink_shipping_method';
 
+	/**
+	 * Session field name.
+	 */
+	public const SESSION_FIELD_NAME = 'packlink_drop_off_extra';
+
 
 
 	/**
@@ -28,6 +33,12 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 	public function hooks() {
 		// Shipping methods
 		add_filter( 'fc_shipping_method_option_image_html', array( $this, 'maybe_change_shipping_method_option_image_html' ), 10, 2 );
+
+		// Persisted data
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+
+		// Add substep review text lines
+		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 
 		// Alter class method from Packlink PRO
 		$this->remove_action_for_class( 'woocommerce_after_shipping_rate', array( 'Packlink\WooCommerce\Components\Checkout\Checkout_Handler', 'after_shipping_rate' ), 10 );
@@ -95,6 +106,78 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		}
 
 		return $is_selected;
+	}
+
+
+	/**
+	 * Maybe set session data for the terminals field.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_set_terminals_field_session_values( $posted_data ) {
+		// Bail if field value was not posted or is empty
+		if ( ! array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) || empty( $posted_data[ self::SESSION_FIELD_NAME ] ) ) { return $posted_data; }
+
+		// Save field value to session, as it is needed for the plugin to recover its value
+		WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
+
+		// Return unchanged posted data
+		return $posted_data;
+	}
+
+
+
+	/**
+	 * Get the selected terminal data.
+	 */
+	public function get_selected_terminal_data() {
+		// Get session field value
+		$terminal_data = WC()->session->get( self::SESSION_FIELD_NAME );
+
+		// Bail if terminal data is not available
+		if ( empty( $terminal_data ) ) { return; }
+
+		// Decode terminal data
+		$terminal_data = json_decode( $terminal_data, true );
+
+		// Assign terminal object property values to the corresponding array keys
+		$selected_terminal_data = array(
+			'company' => isset( $terminal_data['name'] ) ? esc_html( $terminal_data['name'] ) : '',
+			'address_1' => isset( $terminal_data['address'] ) ? $terminal_data['address'] : '',
+			'postcode' => isset( $terminal_data['zip'] ) ? esc_html( $terminal_data['zip'] ) : '',
+			'city' => isset( $terminal_data['city'] ) ? esc_html( $terminal_data['city'] ) : '',
+		);
+
+		return $selected_terminal_data;
+	}
+
+
+
+	/**
+	 * Add the shipping methods substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Bail if target shipping method is not selected
+		if ( ! $this->is_shipping_method_selected() ) { return; }
+
+		// Get selected terminal data
+		$terminal_data = $this->get_selected_terminal_data();
+
+		// Bail if there terminal data is not available
+		if ( empty( $terminal_data ) ) { return $review_text_lines; }
+
+		// Format data
+		$formatted_address = WC()->countries->get_formatted_address( $terminal_data );
+
+		// Add formatted address to the review text lines
+		$review_text_lines[] = $formatted_address;
+
+		return $review_text_lines;
 	}
 
 
