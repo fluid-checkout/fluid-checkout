@@ -31,11 +31,23 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Shipping methods
-		add_filter( 'fc_shipping_method_option_image_html', array( $this, 'maybe_change_shipping_method_option_image_html' ), 10, 2 );
-
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
+		// Checkout validation settings
+		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
+
+		// Shipping methods
+		add_filter( 'fc_shipping_method_option_image_html', array( $this, 'maybe_change_shipping_method_option_image_html' ), 10, 2 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -43,6 +55,69 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		// Alter class method from Packlink PRO
 		$this->remove_action_for_class( 'woocommerce_after_shipping_rate', array( 'Packlink\WooCommerce\Components\Checkout\Checkout_Handler', 'after_shipping_rate' ), 10 );
 		add_action( 'woocommerce_after_shipping_rate', array( $this, 'alter_packlink_after_shipping_rate' ), 10, 2 );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Checkout scripts
+		wp_register_script( 'fc-checkout-packlink-pro-shipping', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/packlink-pro-shipping/checkout-packlink-pro-shipping' ), array( 'jquery', 'fc-utils' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-packlink-pro-shipping', 'window.addEventListener("load",function(){CheckoutPacklinkProShipping.init(fcSettings.checkoutPacklinkProShipping);})' );
+
+		// Add validation script
+		wp_register_script( 'fc-checkout-validation-packlink-pro-shipping', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/packlink-pro-shipping/checkout-validation-packlink-pro-shipping' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-validation-packlink-pro-shipping', 'window.addEventListener("load",function(){CheckoutValidationPacklinkProShipping.init(fcSettings.checkoutValidationPacklinkProShipping);})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-packlink-pro-shipping' );
+		wp_enqueue_script( 'fc-checkout-validation-packlink-pro-shipping' );
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Add validation settings
+		$settings[ 'checkoutValidationPacklinkProShipping' ] = array(
+			'validationMessages'  => array(
+				'pickup_point_not_selected' => __( 'Selecting a pickup point is required before proceeding.', 'fluid-checkout' ),
+			),
+		);
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object for the checkout validation.
+	 *
+	 * @param  array  $settings  JS settings object of the plugin.
+	 */
+	public function change_js_settings_checkout_validation( $settings ) {
+		// Get current values
+		$current_validate_field_selector = array_key_exists( 'validateFieldsSelector', $settings ) ? $settings[ 'validateFieldsSelector' ] : '';
+		$current_reference_node_selector = array_key_exists( 'referenceNodeSelector', $settings ) ? $settings[ 'referenceNodeSelector' ] : '';
+		$current_always_validate_selector = array_key_exists( 'alwaysValidateFieldsSelector', $settings ) ? $settings[ 'alwaysValidateFieldsSelector' ] : '';
+
+		// Prepend new values to existing settings
+		$settings[ 'validateFieldsSelector' ] = 'input[name="packlink_drop_off_id"]' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
+		$settings[ 'referenceNodeSelector' ] = 'input[name="packlink_drop_off_id"]' . ( ! empty( $current_reference_node_selector ) ? ', ' : '' ) . $current_reference_node_selector;
+		$settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="packlink_drop_off_id"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
+
+		return $settings;
 	}
 
 
@@ -57,6 +132,36 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		// Bail if class is not available
 		if ( ! class_exists( 'Packlink\WooCommerce\Components\Checkout\Checkout_Handler' ) ) { return; }
 
+		// Bail if shipping method is not Packlink PRO
+		if ( ! $this->is_shipping_method_packlink( $rate->id ) ) { return; }
+
+		// Initialize flag
+		$is_target_method_selected = false;
+
+		// Get shipping packages
+		$packages = WC()->shipping()->get_packages();
+
+		// Iterate shipping packages
+		foreach ( $packages as $i => $package ) {
+			// Get selected shipping method
+			$available_methods = $package['rates'];
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
+
+			// Skip if not a chosen method
+			if ( null === $method || $chosen_method !== $rate->id ) { continue; }
+
+			// Maybe set flag to true if the shipping method is a local pickup method from this plugin.
+			if ( $this->is_shipping_method_local_pickup( $chosen_method, $method ) ) {
+				$is_target_method_selected = true;
+				break;
+			}
+		}
+
+		// Bail if target shipping method is not selected
+		if ( ! $is_target_method_selected ) { return; }
+
+		// Get Packlink checkout handler instance
 		$handler = new Packlink\WooCommerce\Components\Checkout\Checkout_Handler();
 
 		// Bail if method is not available
@@ -67,7 +172,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		$handler->after_shipping_rate( $rate, $index );
 		$output = ob_get_clean();
 
-		// Remove image and hidden input field
+		// Remove image fields
 		$output = preg_replace( '/<img[^>]+>/', '', $output );
 		$output = preg_replace( '/<input[^>]+name="packlink_image_url"[^>]+>/', '', $output );
 
