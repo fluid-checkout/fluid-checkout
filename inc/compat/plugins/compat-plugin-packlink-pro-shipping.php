@@ -17,6 +17,12 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 	public const SESSION_FIELD_NAME = 'packlink_drop_off_extra';
 
 
+	/**
+	 * Class name for the plugin which this compatibility class is related to.
+	 */
+	public const CLASS_NAME = 'Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper';
+
+
 
 	/**
 	 * __construct function.
@@ -204,6 +210,12 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 	 * @param  object  $order               The order object.
 	 */
 	public function is_shipping_method_local_pickup( $shipping_method_id, $method = null, $order = null ) {
+		// Bail if plugin class is not available
+		if ( ! class_exists( self::CLASS_NAME ) ) { return false; }
+
+		// Bail if method is not available
+		if ( ! method_exists( self::CLASS_NAME, 'get_packlink_shipping_method' ) ) { return false; }
+
 		// Get shipping method instance ID
 		$instance_id_parts = explode( ':', $shipping_method_id );
 		$instance_id = (int) end( $instance_id_parts );
@@ -360,10 +372,10 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		if ( ! $this->is_shipping_method_packlink( $method->id ) ) { return $html; }
 
 		// Bail if class is not available
-		if ( ! class_exists( 'Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper' ) ) { return $html; }
+		if ( ! class_exists( self::CLASS_NAME ) ) { return $html; }
 
 		// Bail if method is not available
-		if ( ! method_exists( 'Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper', 'get_packlink_shipping_method' ) ) { return $html; }
+		if ( ! method_exists( self::CLASS_NAME, 'get_packlink_shipping_method' ) ) { return $html; }
 
 		// Get plugin's shipping method object
 		$method_id = $method->get_instance_id();
