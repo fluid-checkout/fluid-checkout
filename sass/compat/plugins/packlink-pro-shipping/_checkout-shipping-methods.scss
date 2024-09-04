@@ -2,6 +2,7 @@
 // CHECKOUT SHIPPING METHODS
 // ------------------------------------
 
-.fc-wrapper #packlink-drop-off-picker {
+.fc-wrapper .shipping-method__options #packlink-drop-off-picker {
+	margin-top: $global-spacing-tiny;
 	margin-left: 0;
 }
