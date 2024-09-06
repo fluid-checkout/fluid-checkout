@@ -55,6 +55,10 @@ body.has-fc-button-colors .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-co
   }
 }
 
+.fc-wrapper .fc-coupon-code-section {
+  position: relative;
+}
+
 .fc-wrapper .fc-coupon-code-section__inner .fc-coupon-code-section {
   margin-top: 10px;
 }
