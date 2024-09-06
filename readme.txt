@@ -366,8 +366,15 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: New option to ignore additional required fields for Express Checkout payments, for the PRO feature.
 * Added: Compatibility with plugin Packlink PRO Shipping.
+* Added: Compatibility with plugin Loyalty Program for WooCommerce (for Advanced Coupons) – by Rymera Web Co.
+* Improved: Add initial delay to show instant validation error message while typing in the field for the first time. Most notably on the email fields.
+* Improved: Always show email typo suggestions after the error messages to avoid it jumping back and forth.
+* Improved: Accessibility for form field instant validation error messages. Announce error messages as part of the field description.
 * Fixed: Javascript error when trying to copy field values into the other address section in some cases.
 * Fixed: Billing fields getting emptied or copying values from shipping when using the Local Pickup feature from Fluid Checkout PRO.
+* Fixed: Fix styles for product images on the order summary at first load when a `picture` or `div.thumbnail` element is used.
+* Fixed: Shipping address section closing unexpectedly in some cases.
+* Reverted: Compatibility with plugin Smartlink Product Designer. Fix product image sizes on cart and checkout page. Fixed by changing the default styles for the product images with alternative HTML.
 
 = 3.2.2 - 2024-08-22 =
 
