@@ -239,12 +239,18 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		// Output section
 		FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( $section_key, $coupon_code_toggle_label, $coupon_code_expansible_args );
+
+		do_action( 'fc_coupon_code_section_before' );
+
 		?>
 		<div class="fc-coupon-code-section">
 			<?php woocommerce_form_field( $field_key, $coupon_code_field_args ); ?>
 			<button type="button" class="fc-coupon-code__apply <?php echo esc_attr( apply_filters( 'fc_coupon_code_apply_button_classes', 'button' ) ); ?>" data-apply-coupon-button><?php echo esc_html( $coupon_code_button_label ); ?></button>
 		</div>
 		<?php
+
+		do_action( 'fc_coupon_code_section_after' );
+
 		FluidCheckout_Steps::instance()->output_expansible_form_section_end_tag();
 	}
 
