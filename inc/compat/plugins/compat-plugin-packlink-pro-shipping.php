@@ -311,7 +311,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		$shipping_method_id = $this->maybe_get_selected_shipping_method();
 
 		// Bail if target shipping method is not selected
-		if ( empty( $shipping_method_id ) ) { return; }
+		if ( empty( $shipping_method_id ) ) { return $review_text_lines; }
 
 		// Bail if not a local pickup method
 		if ( ! $this->is_shipping_method_local_pickup( $shipping_method_id ) ) { return $review_text_lines; }
