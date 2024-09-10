@@ -34,6 +34,12 @@ class FluidCheckout_ThemeCompat_Porto extends FluidCheckout {
 
 		// General CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
+		// Checkout steps
+		add_action( 'the_content', array( $this, 'maybe_output_porto_checkout_steps_section' ), 10 );
+
+		// Settings
+		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 	}
 
 
@@ -171,6 +177,73 @@ class FluidCheckout_ThemeCompat_Porto extends FluidCheckout {
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+
+
+	/**
+	 * Add new settings to the Fluid Checkout admin settings sections.
+	 *
+	 * @param   array   $settings         Array with all settings for the current section.
+	 */
+	public function add_settings( $settings ) {
+		// Add new settings
+		$settings_new = array(
+			array(
+				'title' => __( 'Theme Porto', 'fluid-checkout' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_theme_porto_options',
+			),
+
+			array(
+				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
+				'desc'            => __( 'Output the checkout steps section from the Porto theme on the checkout, cart and order received pages.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/compat-theme-porto/' ),
+				'id'              => 'fc_compat_theme_porto_output_checkout_steps_section',
+				'type'            => 'checkbox',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_porto_output_checkout_steps_section' ),
+				'autoload'        => false,
+			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_theme_porto_options',
+			),
+		);
+
+		$settings = array_merge( $settings, $settings_new );
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Maybe output the checkout steps section from the Porto theme.
+	 * 
+	 * @param  string  $content  The current page content.
+	 */
+	public function maybe_output_porto_checkout_steps_section( $content ) {
+		// Bail if not using distraction free header and footer
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $content; }
+
+		// Bail if not on the checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $content; }
+
+		// Bail if Porto section output is disabled in the plugin settings
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_porto_output_checkout_steps_section' ) ) { return $content; }
+
+		// Bail if Porto checkout steps function isn't available
+		if ( ! function_exists( 'porto_breadcrumbs' ) ) { return $content; }
+
+		// Get theme's checkout steps section
+		ob_start();
+		echo get_template_part( 'breadcrumbs' );
+		$checkout_steps = ob_get_clean();
+
+		// Append theme's checkout steps to page content
+		$content = wp_kses_post( $checkout_steps ) . $content;
+
+		return $content;
 	}
 
 }
