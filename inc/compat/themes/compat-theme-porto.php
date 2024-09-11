@@ -166,6 +166,9 @@ class FluidCheckout_ThemeCompat_Porto extends FluidCheckout {
 				'--fluidcheckout--field--border-color' => 'var(--porto-input-bc)',
 				'--fluidcheckout--field--font-size' => '0.85rem',
 
+				// Checkout validation styles
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '35px',
+
 				// Button color styles - primary
 				'--fluidcheckout--button--primary--border-color' => 'var(--porto-heading-color)',
 				'--fluidcheckout--button--primary--background-color' => 'var(--porto-heading-color)',
