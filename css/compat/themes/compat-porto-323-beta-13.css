@@ -1,0 +1,4 @@
+body.theme-porto div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total,
+body.theme-porto div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody tr.cart-item .product-total {
+  color: var(--porto-color-price);
+}
