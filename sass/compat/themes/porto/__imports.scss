@@ -12,5 +12,6 @@ $_body-theme-selector:                 '.theme-porto' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-place-order",
 	"order-summary",
 	"woocommerce-form-fields";
