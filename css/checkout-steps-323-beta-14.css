@@ -791,11 +791,11 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 }
 
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--shipping {
-  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
   margin: 20px -20px;
   margin-top: 0;
   margin-bottom: -20px;
   padding: 20px 20px;
+  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
 }
 @media (min-width: 750px) {
   body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--shipping {
@@ -2217,11 +2217,11 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px 20px;
+  max-width: 100%;
   width: 100%;
   background-color: var(--fluidcheckout--color--white, #fff);
   box-shadow: 0 3px 8px var(--fluidcheckout--shadow-color--dark, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
-  max-width: 100%;
-  padding: 10px 20px;
 }
 @media (min-width: 750px) {
   .has-flyout.has-flyout--open-fc-checkout-order-review .fc-checkout-order-review__actions-mobile {
