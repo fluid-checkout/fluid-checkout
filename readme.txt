@@ -376,6 +376,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Billing fields getting emptied or copying values from shipping when using the Local Pickup feature from Fluid Checkout PRO.
 * Fixed: Fix styles for product images on the order summary at first load when a `picture` or `div.thumbnail` element is used.
 * Fixed: Shipping address section closing unexpectedly in some cases.
+* Fixed: PHP warning message when trying to run database migration processes in some cases.
 * Reverted: Compatibility with plugin Smartlink Product Designer. Fix product image sizes on cart and checkout page. Fixed by changing the default styles for the product images with alternative HTML.
 
 = 3.2.2 - 2024-08-22 =
