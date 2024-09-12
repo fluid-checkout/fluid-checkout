@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: New option to ignore additional required fields for Express Checkout payments, for the PRO feature.
+* Added: Compatibility with theme Porto.
 * Added: Compatibility with plugin Packlink PRO Shipping.
 * Added: Compatibility with plugin VerifyPass.
 * Added: Compatibility with plugin Loyalty Program for WooCommerce (for Advanced Coupons) – by Rymera Web Co.
