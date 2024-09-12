@@ -49,6 +49,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_enable_checkout_sticky_progress_bar'                        => 'yes',
 			'fc_enable_checkout_express_checkout'                           => 'no',
 			'fc_enable_checkout_express_checkout_inline_buttons'            => 'no',
+			'fc_enable_checkout_express_checkout_ignore_required_fields'    => 'yes',
 			'fc_checkout_order_review_highlight_color'                      => null,
 			'fc_show_order_totals_row_highlighted'                          => 'no',
 			'fc_enable_checkout_sticky_order_summary'                       => 'yes',
@@ -135,7 +136,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'woocommerce_gzd_display_checkout_back_to_cart_button'          => 'no',
 			'woocommerce_gzd_display_checkout_table_color'                  => '#eeeeee',
 			'woocommerce_enable_guest_checkout'                             => 'yes',
-		
+
 			// Compatibility settings for themes.
 			'fc_compat_theme_atomion_display_order_progress'                => 'no',
 			'fc_compat_theme_atomion_display_field_labels'                  => 'yes',
@@ -147,6 +148,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_theme_pressmart_output_checkout_steps_section'       => 'no',
 			'fc_compat_theme_betheme_output_checkout_steps_section'         => 'no',
 			'fc_compat_theme_thegem_output_checkout_steps_section'          => 'no',
+			'fc_compat_theme_porto_output_checkout_steps_section'           => 'no',
 			'fc_compat_theme_go_enable_account_wide_layout'                 => 'yes',
 			'fc_compat_theme_fennik_output_breadcrumbs_section'             => 'no',
 
