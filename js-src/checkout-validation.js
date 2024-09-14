@@ -147,7 +147,9 @@
 		parent.insertBefore( element, referenceNode.nextSibling );
 
 		// Add aria-describedby attribute to the field
-		field.setAttribute( 'aria-describedby', field.getAttribute( 'aria-describedby' ) + ' ' + elementId );
+		var describedbyValue = field.getAttribute( 'aria-describedby' );
+		describedbyValue = describedbyValue ? describedbyValue : '';
+		field.setAttribute( 'aria-describedby', describedbyValue + ' ' + elementId );
 	};
 
 
@@ -164,9 +166,11 @@
 			var messageElement = messageElements[ i ];
 			var elementId = messageElement.id;
 
-			// Maybe remove `aria-describedby` attribute from the field
+			// Maybe remove validation `aria-describedby` attribute from the field
 			if ( elementId ) {
-				field.setAttribute( 'aria-describedby', field.getAttribute( 'aria-describedby' ).replace( ' ' + elementId, '' ) );	
+				var describedbyValue = field.getAttribute( 'aria-describedby' );
+				describedbyValue = describedbyValue ? describedbyValue : '';
+				field.setAttribute( 'aria-describedby', describedbyValue.replace( ' ' + elementId, '' ) );
 			}
 
 			// Remove message
