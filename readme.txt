@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 9.3.1
 * Fixed: Error on validation script causing Google Address Autocomplete to stop working.
 
 = 3.2.3 - 2024-09-12 =
