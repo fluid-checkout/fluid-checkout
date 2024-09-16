@@ -4859,7 +4859,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( WC()->cart->needs_shipping_address() ) { return $posted_data; }
 
 		// Bail if forced to not set shipping address
-		if ( true === apply_filters( 'fc_copy_billing_to_shipping_address_when_shipping_not_needed', true ) ) { return $posted_data; }
+		if ( true !== apply_filters( 'fc_copy_billing_to_shipping_address_when_shipping_not_needed', true ) ) { return $posted_data; }
 
 		// Get list of posted data keys
 		$posted_data_field_keys = array_keys( $posted_data );
@@ -4894,7 +4894,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( WC()->cart->needs_shipping_address() ) { return $post_data; }
 
 		// Bail if forced to not set shipping address
-		if ( true === apply_filters( 'fc_copy_billing_to_shipping_address_when_shipping_not_needed', true ) ) { return $posted_data; }
+		if ( true !== apply_filters( 'fc_copy_billing_to_shipping_address_when_shipping_not_needed', true ) ) { return $post_data; }
 
 		// Iterate posted data
 		foreach( $this->get_shipping_not_needed_shipping_field_keys() as $field_key ) {
