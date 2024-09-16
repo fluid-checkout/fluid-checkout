@@ -191,6 +191,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * @param   int  $order_id  Order ID.
 	 */
 	public function update_order_meta_with_shipping_phone( $order_id ) {
+		// Get shipping phone
 		$shipping_phone = isset( $_POST['shipping_phone'] ) ? sanitize_text_field( $_POST['shipping_phone'] ) : '';
 
 		// Bail if shipping phone was not provided
@@ -201,6 +202,9 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 		// Bail if order was not found
 		if ( ! $order ) { return; }
+
+		// Bail if order does not need shipping address
+		if ( ! $order->needs_shipping_address() ) { return; }
 
 		// Update shipping phone value
 		if ( is_callable( array( $order, 'set_shipping_phone' ) ) ) {

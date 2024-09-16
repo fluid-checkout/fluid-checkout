@@ -362,6 +362,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Do not save shipping phone number to order data when shipping address is not needed for the order.
+
 = 3.2.4 - 2024-09-15 =
 
 * Bump tested up to WooCommerce 9.3.1
