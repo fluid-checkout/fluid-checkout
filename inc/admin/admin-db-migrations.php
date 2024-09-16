@@ -206,6 +206,7 @@ class FluidCheckout_AdminDBMigrations extends FluidCheckout {
 	public function get_migrations_to_apply() {
 		// Get db version
 		$db_version = $this->get_db_version();
+		$db_version = ! empty( $db_version ) ? $db_version : '0.0.1';
 
 		// Get available migrations
 		$available_migrations = $this->get_available_migrations();

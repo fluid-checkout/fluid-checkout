@@ -3,8 +3,8 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.6.1
-Stable tag: 3.2.2
+Tested up to: 6.6.2
+Stable tag: 3.2.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -362,9 +362,16 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= 3.2.4 - 2024-09-15 =
 
+* Bump tested up to WooCommerce 9.3.1
+* Fixed: Error on validation script causing Google Address Autocomplete to stop working.
+
+= 3.2.3 - 2024-09-12 =
+
+* Bump tested up to WordPress 6.6.2 and WooCommerce 9.2.3
 * Added: New option to ignore additional required fields for Express Checkout payments, for the PRO feature.
+* Added: Compatibility with theme Porto.
 * Added: Compatibility with plugin Packlink PRO Shipping.
 * Added: Compatibility with plugin VerifyPass.
 * Added: Compatibility with plugin Loyalty Program for WooCommerce (for Advanced Coupons) – by Rymera Web Co.
@@ -375,6 +382,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Billing fields getting emptied or copying values from shipping when using the Local Pickup feature from Fluid Checkout PRO.
 * Fixed: Fix styles for product images on the order summary at first load when a `picture` or `div.thumbnail` element is used.
 * Fixed: Shipping address section closing unexpectedly in some cases.
+* Fixed: PHP warning message when trying to run database migration processes in some cases.
 * Reverted: Compatibility with plugin Smartlink Product Designer. Fix product image sizes on cart and checkout page. Fixed by changing the default styles for the product images with alternative HTML.
 
 = 3.2.2 - 2024-08-22 =

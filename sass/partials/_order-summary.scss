@@ -442,11 +442,11 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	padding: $global-spacing-extra-small $container-spacing-mobile;
+	max-width: $container-width-mobile;
 	width: 100%;
 	background-color: $white;
 	box-shadow: $box-shadow-dark;
-	max-width: $container-width-mobile;
-	padding: $global-spacing-extra-small $container-spacing-mobile;
 
 	// max-width
 	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
