@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Compatibility with plugin WooCommerce Subscriptions. Move shipping methods available for subscription plans from the order summary to the shipping methods section.
 * Fixed: Error on validation script causing Google Address Autocomplete to stop working.
 
 = 3.2.3 - 2024-09-12 =
