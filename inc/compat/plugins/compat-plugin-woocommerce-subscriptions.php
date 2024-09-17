@@ -20,7 +20,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Shipping methods section title
-		add_action( 'fc_after_shipping_method_options', array( $this, 'maybe_add_initial_shipment_title' ), 10, 2 );
+		add_action( 'fc_after_shipping_method_options', array( $this, 'maybe_add_initial_shipment_title' ), 10 );
 
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
@@ -36,9 +36,8 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 	 * Maybe add the initial shipment title to the shipping methods section.
 	 * 
 	 * @param  object  $method   The shipping method instance.
-	 * @param  array   $package  The shipping package.
 	 */
-	public function maybe_add_initial_shipment_title( $method, $package ) {
+	public function maybe_add_initial_shipment_title( $package ) {
 		// Get packages count
 		$packages_count = $this->get_all_packages_count();
 

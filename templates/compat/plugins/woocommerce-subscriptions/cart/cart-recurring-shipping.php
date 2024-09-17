@@ -14,6 +14,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+$packages = WC()->shipping()->get_packages();
+$package_index = array_search( $package, $packages );
 ?>
 
 <div class="shipping shipping-method__package recurring-total <?php echo esc_attr( $recurring_cart_key ); ?>">
