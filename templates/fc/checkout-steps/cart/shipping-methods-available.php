@@ -76,7 +76,7 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 				$first = false;
 			endforeach; ?>
 
-			<?php // CHANGE: Add action to let developers add content after the shipping method option ?>
+			<?php // CHANGE: Add action to let developers add content after the shipping method options ?>
 			<?php do_action( 'fc_after_shipping_method_options', $package ); ?>
 
 			<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element closing tag ?>
