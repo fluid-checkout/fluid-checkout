@@ -6,7 +6,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 3.1.9
+ * @version 3.2.4
  * @wc-version 3.6.0
  * @wc-original cart/cart-shipping.php
  */
@@ -28,6 +28,9 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 		<?php endif; ?>
 
 		<?php if ( count( $available_methods ) > 0 ) : ?>
+
+			<?php // CHANGE: Add action to let developers add content before the shipping method options ?>
+			<?php do_action( 'fc_before_shipping_method_options', $method, $package ); ?>
 
 			<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element markup ?>
 			<?php echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
@@ -72,6 +75,9 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 
 				$first = false;
 			endforeach; ?>
+
+			<?php // CHANGE: Add action to let developers add content after the shipping method option ?>
+			<?php do_action( 'fc_after_shipping_method_options', $method, $package ); ?>
 
 			<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element closing tag ?>
 			<?php echo apply_filters( 'fc_shipping_method_option_end_tag_markup', '</ul>' ); ?>
