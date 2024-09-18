@@ -19,32 +19,121 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Shipping methods section title
-		add_action( 'fc_after_shipping_method_options', array( $this, 'maybe_add_initial_shipment_title' ), 10 );
-
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
 		// Shipping methods available for subscription plans
 		remove_action( 'woocommerce_subscriptions_recurring_totals_shipping', array( 'WCS_Template_Loader', 'get_recurring_cart_shipping' ), 10 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( 'WCS_Template_Loader', 'get_recurring_cart_shipping' ), 10 );
+
+		// Shipping methods
+		add_filter( 'fc_cart_has_multiple_packages', array( $this, 'maybe_set_cart_with_multiple_packages' ), 10 );
+		add_action( 'fc_shipping_method_display_package_destination_substep_text_lines', array( $this, 'maybe_enable_show_shipping_method_package_destination' ), 10 );
+		add_action( 'fc_shipping_method_display_package_name', array( $this, 'maybe_enable_show_shipping_method_package_name' ), 10 );
+		add_filter( 'fc_subscription_shipping_package_name', array( $this, 'maybe_change_subscription_shipping_package_name' ), 10, 4 );
 	}
 
 
 
 	/**
-	 * Maybe add the initial shipment title to the shipping methods section.
+	 * Maybe set cart with multiple packages.
 	 * 
-	 * @param  object  $method   The shipping method instance.
+	 * @param  bool  $has_multiple_packages   Whether the cart has multiple packages.
 	 */
-	public function maybe_add_initial_shipment_title( $package ) {
+	public function maybe_set_cart_with_multiple_packages( $has_multiple_packages ) {
 		// Get packages count
 		$packages_count = $this->get_all_packages_count();
 
-		// Show initial shipment title when one-time product plus a subscription is selected or at least 2 subscription plans are selected
-		if ( $packages_count > 1 ) {
-			echo '<p class="woocommerce-shipping-contents"><small>' . __( 'Initial Shipment', 'woocommerce-subscriptions' ) . '</small></p>';
+		// Maybe set cart with multiple packages when there are at least 2 shipping packages
+		if ( 1 < $packages_count ) {
+			$has_multiple_packages = true;
 		}
+
+		return $has_multiple_packages;
+	}
+
+	/**
+	 * Maybe disable show shipping package destination.
+	 * 
+	 * @param  bool  $show_package_destination   Whether to display the shipping package destination.
+	 */
+	public function maybe_enable_show_shipping_method_package_destination( $show_package_destination ) {
+		// Get packages count
+		$packages_count = $this->get_all_packages_count();
+
+		// Maybe enable show shipping method package name when there are at least 2 shipping packages
+		if ( 1 < $packages_count ) {
+			$show_package_destination = false;
+		}
+
+		return $show_package_destination;
+	}
+
+	/**
+	 * Maybe enable show shipping package name.
+	 * 
+	 * @param  bool  $show_package_name   Whether to display the shipping package name.
+	 */
+	public function maybe_enable_show_shipping_method_package_name( $show_package_name ) {
+		// Get packages count
+		$packages_count = $this->get_all_packages_count();
+
+		// Maybe enable show shipping package name when there are at least 2 shipping packages
+		if ( 1 < $packages_count ) {
+			$show_package_name = true;
+		}
+
+		return $show_package_name;
+	}
+
+	/**
+	 * Changes the shipping package name to add more meaningful information about it's content.
+	 * COPIED FROM: `woocommerce-subscriptions/vendor/woocommerce/subscriptions-core/includes/class-wc-subscriptions-extend-store-endpoint.php`
+	 *
+	 * @param array $package All shipping package data.
+	 * @param array $cart Recurring cart data.
+	 */
+	public function get_shipping_package_name( $package, $cart ) {
+		$package_name = __( 'Shipping', 'woocommerce-subscriptions' );
+		$interval     = wcs_cart_pluck( $cart, 'subscription_period_interval', '' );
+		$period       = wcs_cart_pluck( $cart, 'subscription_period', '' );
+		switch ( $period ) {
+			case 'year':
+				// translators: %d subscription interval.
+				$package_name = $interval > 1 ? sprintf( _n( 'Shipment every %d year', 'Shipment every %d years', $interval, 'woocommerce-subscriptions' ), $interval ) : __( 'Yearly Shipment', 'woocommerce-subscriptions' );
+				break;
+			case 'month':
+				// translators: %d subscription interval.
+				$package_name = $interval > 1 ? sprintf( _n( 'Shipment every %d month', 'Shipment every %d months', $interval, 'woocommerce-subscriptions' ), $interval ) : __( 'Monthly Shipment', 'woocommerce-subscriptions' );
+				break;
+			case 'week':
+				// translators: %d subscription interval.
+				$package_name = $interval > 1 ? sprintf( _n( 'Shipment every %d week', 'Shipment every %d weeks', $interval, 'woocommerce-subscriptions' ), $interval ) : __( 'Weekly Shipment', 'woocommerce-subscriptions' );
+				break;
+			case 'day':
+				// translators: %d subscription interval.
+				$package_name = $interval > 1 ? sprintf( _n( 'Shipment every %d day', 'Shipment every %d days', $interval, 'woocommerce-subscriptions' ), $interval ) : __( 'Daily Shipment', 'woocommerce-subscriptions' );
+				break;
+		}
+		return $package_name;
+	}
+
+	/**
+	 * Maybe change the shipping package name.
+	 * 
+	 * @param  string  $package_name     The shipping package name.
+	 * @param  int     $package_index    The shipping package index.
+	 * @param  array   $package          The shipping package.
+	 * @param  object  $recurring_cart   The recurring cart object.
+	 */
+	public function maybe_change_subscription_shipping_package_name( $package_name, $package_index, $package, $recurring_cart ) {
+		// Bail if not a recurring package
+		if ( ! array_key_exists( 'recurring_cart_key', $package ) ) { return $package_name; }
+
+		// Get shipping package name
+		$package_name = $this->get_shipping_package_name( $package, $recurring_cart );
+
+		return $package_name;
 	}
 
 
@@ -71,7 +160,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 					trailingslashit( $template_path ) . $template_name,
 					$template_name,
 				) );
-	
+
 				// Check if files exist before changing template
 				if ( file_exists( $_template_override ) ) {
 					$_template = $_template_override;
