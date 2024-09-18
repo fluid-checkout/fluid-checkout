@@ -4850,14 +4850,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Maybe set shipping address fields values to same as billing address from the posted data.
+	 * Copy the billing address field values to the shipping address for the posted data.
 	 *
-	 * @param  array  $posted_data   Post data for all checkout fields.
+	 * @param   array  $posted_data   Parsed posted data for all checkout fields.
 	 */
-	public function maybe_fix_shipping_address_when_shipping_not_needed( $posted_data ) {
-		// Bail if cart needs shipping address
-		if ( WC()->cart->needs_shipping_address() ) { return $posted_data; }
-
+	public function copy_posted_data_billing_address_to_shipping( $posted_data ) {
 		// Get list of posted data keys
 		$posted_data_field_keys = array_keys( $posted_data );
 
@@ -4882,6 +4879,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Maybe set shipping address fields values to same as billing address from the posted data.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_fix_shipping_address_when_shipping_not_needed( $posted_data ) {
+		// Bail if cart needs shipping address
+		if ( WC()->cart->needs_shipping_address() ) { return $posted_data; }
+
+		// Bail if forced to not set shipping address
+		if ( true !== apply_filters( 'fc_copy_billing_to_shipping_address_when_shipping_not_needed', true ) ) { return $posted_data; }
+
+		// Copy the billing address field values to the shipping address
+		$posted_data = $this->copy_posted_data_billing_address_to_shipping( $posted_data );
+
+		return $posted_data;
+	}
+
+	/**
 	 * Maybe set shipping address session values to same as billing when processing an order (place order).
 	 *
 	 * @param array $post_data Post data for all checkout fields.
@@ -4889,6 +4904,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout( $post_data ) {
 		// Bail if cart needs shipping address
 		if ( WC()->cart->needs_shipping_address() ) { return $post_data; }
+
+		// Bail if forced to not set shipping address
+		if ( true !== apply_filters( 'fc_copy_billing_to_shipping_address_when_shipping_not_needed', true ) ) { return $post_data; }
 
 		// Iterate posted data
 		foreach( $this->get_shipping_not_needed_shipping_field_keys() as $field_key ) {
