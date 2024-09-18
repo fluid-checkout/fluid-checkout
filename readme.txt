@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Option to define which address to save as the shipping address when using a local pickup shipping method. (PRO feature)
 * Fixed: Do not save shipping phone number to order data when shipping address is not needed for the order.
 
 = 3.2.4 - 2024-09-15 =
