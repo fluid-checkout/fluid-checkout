@@ -294,9 +294,15 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 	 * @param  array  $recurring_carts  The recurring carts.
 	 */
 	public function get_recurring_shipping_subtotals( $recurring_carts ) {
-		$recurring_carts = wcs_apply_array_filter( 'woocommerce_subscriptions_display_recurring_subtotals', $recurring_carts, 'next_payment_date' );
-		$display_heading = true;
+		// Bail if plugin class is not available
+		if ( ! class_exists( 'WC_Subscriptions_Cart' ) ) { return; }
 
+		// Bail if functions are not available
+		if ( ! function_exists( 'wcs_apply_array_filter' ) || ! function_exists( 'wcs_cart_price_string' ) ) { return; }
+
+		$recurring_carts = wcs_apply_array_filter( 'woocommerce_subscriptions_display_recurring_subtotals', $recurring_carts, 'next_payment_date' );
+
+		$display_heading = true;
 		foreach ( $recurring_carts as $recurring_cart_key => $recurring_cart ) {
 			// Ensure we get the correct package IDs (these are filtered by WC_Subscriptions_Cart).
 			WC_Subscriptions_Cart::set_calculation_type( 'recurring_total' );
@@ -342,6 +348,12 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Bail if plugin class is not available
+		if ( ! class_exists( 'WC_Subscriptions_Cart' ) ) { return; }
+
+		// Bail if function is not available
+		if ( ! function_exists( 'wcs_cart_price_string' ) ) { return; }
 
 		// Iterate recurring carts
 		foreach ( WC()->cart->recurring_carts as $recurring_cart_key => $recurring_cart ) {
