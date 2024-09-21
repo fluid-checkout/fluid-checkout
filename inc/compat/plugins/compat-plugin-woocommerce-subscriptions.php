@@ -32,6 +32,9 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 		add_action( 'fc_shipping_method_display_package_destination_substep_text_lines', array( $this, 'maybe_enable_show_shipping_method_package_destination' ), 10 );
 		add_action( 'fc_shipping_method_display_package_name', array( $this, 'maybe_enable_show_shipping_method_package_name' ), 10 );
 		add_filter( 'fc_subscription_shipping_package_name', array( $this, 'maybe_change_subscription_shipping_package_name' ), 10, 4 );
+
+		// Add substep review text lines
+		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 	}
 
 
@@ -307,27 +310,132 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 				$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods', array() );
 				$chosen_recurring_method = $chosen_shipping_methods[ $recurring_cart_package_key ];
 
-				if ( $chosen_recurring_method ) {
-					// Get the shipping subtotal for the chosen method
-					$shipping_rate = $package['rates'][ $chosen_recurring_method ];
-					$shipping_subtotal = $shipping_rate->get_cost();
+				// Skip if no chosen shipping method
+				if ( empty( $chosen_recurring_method ) ) { continue; }
 
-					// Format the shipping subtotal
-					$shipping_subtotal = wcs_cart_price_string( wc_price( $shipping_subtotal ), $recurring_cart );
+				// Get the shipping subtotal for the chosen method
+				$shipping_rate = $package['rates'][ $chosen_recurring_method ];
+				$shipping_subtotal = $shipping_rate->get_cost();
 
-					wc_get_template( 'checkout/recurring-shipping-subtotals.php', array( 
-						'display_heading'   => $display_heading,
-						'recurring_carts'   => $recurring_carts,
-						'shipping_subtotal' => $shipping_subtotal,
-					));
+				// Format the shipping subtotal
+				$shipping_subtotal = wcs_cart_price_string( wc_price( $shipping_subtotal ), $recurring_cart );
 
-					// Reset the flag to prevent table heading from being displayed again
-					$display_heading = false;
+				wc_get_template( 'checkout/recurring-shipping-subtotals.php', array( 
+					'display_heading'   => $display_heading,
+					'recurring_carts'   => $recurring_carts,
+					'shipping_subtotal' => $shipping_subtotal,
+				));
+
+				// Reset the flag to prevent table heading from being displayed again
+				$display_heading = false;
+			}
+		}
+	}
+
+
+
+	/**
+	 * Add the shipping methods substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Iterate recurring carts
+		foreach ( WC()->cart->recurring_carts as $recurring_cart_key => $recurring_cart ) {
+			// Ensure we get the correct package IDs (these are filtered by WC_Subscriptions_Cart).
+			WC_Subscriptions_Cart::set_calculation_type( 'recurring_total' );
+			WC_Subscriptions_Cart::set_recurring_cart_key( $recurring_cart_key );
+			WC_Subscriptions_Cart::set_cached_recurring_cart( $recurring_cart );
+
+			// Get text lines for all shipping packages
+			$package_review_text_lines = $this->get_packages_review_text_lines( $recurring_cart );
+
+			// Add package review text lines
+			$review_text_lines = array_merge( $review_text_lines, $package_review_text_lines );
+		}
+
+		return $review_text_lines;
+	}
+
+	/**
+	 * Get the packages review text lines for the given recurring cart.
+	 * 
+	 * @param  object  $recurring_cart  The recurring cart object.
+	 */
+	public function get_packages_review_text_lines( $recurring_cart ) {
+		// Determine allowed kses attributes and tags
+		$allowed_kses_attributes = array( 'span' => array( 'class' => true ), 'bdi' => array(), 'strong' => array(), 'br' => array() );
+
+		// Iterate over each shipping package in the recurring cart
+		foreach ( $recurring_cart->get_shipping_packages() as $recurring_cart_package_key => $recurring_cart_package ) {
+			$package_review_text_lines = array();
+
+			// Get the chosen shipping method for the recurring cart package
+			$package = WC()->shipping->calculate_shipping_for_package( $recurring_cart_package );
+
+			// Get shipping method info
+			$available_methods = $package['rates'];
+			$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods', array() );
+			$chosen_recurring_method = $chosen_shipping_methods[ $recurring_cart_package_key ];
+			$method = $available_methods && array_key_exists( $chosen_recurring_method, $available_methods ) ? $available_methods[ $chosen_recurring_method ] : null;
+			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
+			$chosen_method_label = apply_filters( 'fc_shipping_method_substep_text_chosen_method_label', $chosen_method_label, $method );
+
+			$has_multiple_packages = $this->get_all_packages_count() > 1;
+			// Handle package name
+			if ( $has_multiple_packages ) {
+				$package_name = $this->get_shipping_package_name( $package, $recurring_cart );
+				$package_name = '<strong>' . $package_name . '</strong>';
+				$package_review_text_lines[] = wp_kses( $package_name, $allowed_kses_attributes );
+			}
+
+			// Add chosen shipping method line
+			$package_review_text_lines[] = wp_kses( $chosen_method_label, $allowed_kses_attributes );
+
+			// Handle package destination
+			if ( $has_multiple_packages && FluidCheckout_Steps::instance()->is_shipping_package_contents_destination_text_lines_enabled() ) {
+				// Get package destination
+				$destination = array_key_exists( 'destination', $package ) && ! empty( $package[ 'destination' ] ) ? $package[ 'destination' ] : array();
+				$destination = apply_filters( 'fc_shipping_method_substep_text_package_destination_data', $destination, $i, $package, $chosen_method, $method );
+
+				// Get formatted destination text
+				$destination_text = WC()->countries->get_formatted_address( $destination, ', ' );
+				$destination_text = apply_filters( 'fc_shipping_method_substep_text_package_destination_text', $destination_text, $i, $package, $chosen_method, $method );
+
+				// Add package destination line
+				if ( ! empty( $destination_text ) ) {
+					$package_review_text_lines[] = wp_kses( $destination_text, $allowed_kses_attributes );
 				}
 			}
 
+			// Filter review text lines for the shipping package before adding the package contents
+			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines_before_contents', $package_review_text_lines, $i, $package, $chosen_method, $method );
+	
+			// Handle package contents
+			if ( $has_multiple_packages && FluidCheckout_Steps::instance()->is_shipping_package_contents_substep_text_lines_enabled() ) {
+				// Get shipping package contents
+				$contents = '';
+				foreach ( $package[ 'contents' ] as $item_id => $values ) {
+					$contents .= $values[ 'quantity' ] . ' × ' . $values[ 'data' ]->get_name() . ', ';
+				}
+				// Remove extra comma at the end
+				$contents = trim( rtrim( $contents, ', ' ) );
+
+				// Wrap contents in a `span` tag for small text
+				$contents = '<span class="fc-step__substep-text-line--small-text">' . $contents . '</span>';
+
+				// Add package contents line
+				$package_review_text_lines[] = wp_kses( $contents, $allowed_kses_attributes );
+			}
+
+			// Filter review text lines for the shipping package
+			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines', $package_review_text_lines, $i, $package, $chosen_method, $method );
 		}
 
+		return $package_review_text_lines;
 	}
 
 }
