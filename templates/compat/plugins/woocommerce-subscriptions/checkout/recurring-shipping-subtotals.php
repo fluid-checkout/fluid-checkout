@@ -18,5 +18,7 @@ defined( 'ABSPATH' ) || exit;
 	<td data-title="<?php esc_attr_e( 'Shipment', 'woocommerce-subscriptions' ); ?>"><?php echo $shipping_subtotal; ?></td>
 <?php } else { ?>
 	<td><?php echo $shipping_subtotal; ?></td>
-<?php }
+<?php } ?>
+
+</tr> 
 
