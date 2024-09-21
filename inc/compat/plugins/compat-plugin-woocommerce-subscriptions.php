@@ -411,11 +411,11 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			if ( $has_multiple_packages && FluidCheckout_Steps::instance()->is_shipping_package_contents_destination_text_lines_enabled() ) {
 				// Get package destination
 				$destination = array_key_exists( 'destination', $package ) && ! empty( $package[ 'destination' ] ) ? $package[ 'destination' ] : array();
-				$destination = apply_filters( 'fc_shipping_method_substep_text_package_destination_data', $destination, $i, $package, $chosen_method, $method );
+				$destination = apply_filters( 'fc_shipping_method_substep_text_package_destination_data', $destination, $recurring_cart_package_key, $package, $chosen_recurring_method, $method );
 
 				// Get formatted destination text
 				$destination_text = WC()->countries->get_formatted_address( $destination, ', ' );
-				$destination_text = apply_filters( 'fc_shipping_method_substep_text_package_destination_text', $destination_text, $i, $package, $chosen_method, $method );
+				$destination_text = apply_filters( 'fc_shipping_method_substep_text_package_destination_text', $destination_text, $recurring_cart_package_key, $package, $chosen_recurring_method, $method );
 
 				// Add package destination line
 				if ( ! empty( $destination_text ) ) {
@@ -424,7 +424,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			}
 
 			// Filter review text lines for the shipping package before adding the package contents
-			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines_before_contents', $package_review_text_lines, $i, $package, $chosen_method, $method );
+			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines_before_contents', $package_review_text_lines, $recurring_cart_package_key, $package, $chosen_recurring_method, $method );
 	
 			// Handle package contents
 			if ( $has_multiple_packages && FluidCheckout_Steps::instance()->is_shipping_package_contents_substep_text_lines_enabled() ) {
@@ -444,7 +444,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			}
 
 			// Filter review text lines for the shipping package
-			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines', $package_review_text_lines, $i, $package, $chosen_method, $method );
+			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines', $package_review_text_lines, $recurring_cart_package_key, $package, $chosen_recurring_method, $method );
 		}
 
 		return $package_review_text_lines;
