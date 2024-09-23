@@ -5411,14 +5411,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if not on checkout or cart page
 		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
+		// Get packages
 		$packages = WC()->shipping()->get_packages();
-		$first    = true;
 
-		foreach ( $packages as $i => $package ) {
-			$available_methods = $package['rates'];
-			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+		// Initialize variables
+		$first    = true;
+		$package_index = 0;
+
+		// Iterate packages
+		foreach ( $packages as $package_key => $package ) {
+			$available_methods = $package[ 'rates' ];
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $package_index ] ) ? WC()->session->chosen_shipping_methods[ $package_index ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
-			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package );
+			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $package_index, $package );
 			$product_names = array();
 
 			if ( count( $packages ) > 1 ) {
@@ -5432,21 +5437,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'checkout/review-order-shipping.php',
 				array(
 					'package'                  => $package,
-					'available_methods'        => $package['rates'],
+					'available_methods'        => $available_methods,
 					'show_package_details'     => count( $packages ) > 1,
-					'show_shipping_calculator' => is_cart() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $i, $package ),
+					'show_shipping_calculator' => is_cart() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $package_index, $package ),
 					'package_details'          => implode( ', ', $product_names ),
-					'package_name'             => apply_filters( 'fc_order_summary_shipping_package_name', $package_name, $method, $i, $package ),
-					'formatted_shipping_price' => $this->get_cart_totals_shipping_method_label( $method, $package, $i ),
-					'index'                    => $i,
+					'package_name'             => apply_filters( 'fc_order_summary_shipping_package_name', $package_name, $method, $package_index, $package ),
+					'formatted_shipping_price' => $this->get_cart_totals_shipping_method_label( $method, $package, $package_index ),
+					'index'                    => $package_index,
 					'chosen_method'            => $chosen_method,
 					'method'                   => $method,
-					'formatted_destination'    => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
+					'formatted_destination'    => WC()->countries->get_formatted_address( $package[ 'destination' ], ', ' ),
 					'has_calculated_shipping'  => WC()->customer->has_calculated_shipping(),
 				)
 			);
 
 			$first = false;
+			$package_index++;
 		}
 	}
 
