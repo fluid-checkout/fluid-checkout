@@ -363,6 +363,8 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 							'chosen_method'        => $chosen_recurring_method,
 							'recurring_cart_key'   => $recurring_cart_key,
 							'recurring_cart'       => $recurring_cart,
+							// CHANGE: Add variable to check whether shipping has been calculated
+							'has_calculated_shipping'    => WC()->customer->has_calculated_shipping(),
 						),
 						'',
 						WC_Subscriptions_Core_Plugin::instance()->get_subscriptions_core_directory( 'templates/' )
