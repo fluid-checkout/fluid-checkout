@@ -546,6 +546,19 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'desc'              => __( 'Choose which address to save as the shipping address for local pickup orders.', 'fluid-checkout' ),
+						'id'                => 'fc_local_pickup_save_shipping_address',
+						'type'              => 'select',
+						'options'           => array(
+							'same_as_pickup_location'    => __( 'Save the selected pickup location', 'fluid-checkout' ),
+							'same_as_billing'            => __( 'Save same as the billing address', 'fluid-checkout' ),
+							'no'                         => __( 'Do not save any shipping address', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_save_shipping_address' ),
+						'autoload'          => false,
+					),
+
+					array(
 						'title'             => __( 'Company name field for shipping address', 'fluid-checkout' ),
 						'desc'              => __( 'Change visibility for the company name field for the shipping address section on the checkout form.', 'fluid-checkout' ),
 						'desc_tip'          => __( 'If field is set as "optional", which is the default visibility state, no changes will be applied to let other plugins apply any changes they need.', 'fluid-checkout' ),

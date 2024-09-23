@@ -2447,7 +2447,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Iterate contact field ids
 		foreach( $contact_field_ids as $field_key ) {
 			// Maybe break if email field is not valid
-			if ( 'billing_email' === $field_key && ! is_email( WC()->checkout()->get_value( $field_key ) ) ) {
+			if ( 'billing_email' === $field_key && ( empty( WC()->checkout()->get_value( $field_key ) ) || ! is_email( WC()->checkout()->get_value( $field_key ) ) ) ) {
 				$is_step_complete = false;
 				break;
 			}
@@ -4854,14 +4854,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Maybe set shipping address fields values to same as billing address from the posted data.
+	 * Copy the billing address field values to the shipping address for the posted data.
 	 *
-	 * @param  array  $posted_data   Post data for all checkout fields.
+	 * @param   array  $posted_data   Parsed posted data for all checkout fields.
 	 */
-	public function maybe_fix_shipping_address_when_shipping_not_needed( $posted_data ) {
-		// Bail if cart needs shipping address
-		if ( WC()->cart->needs_shipping_address() ) { return $posted_data; }
-
+	public function copy_posted_data_billing_address_to_shipping( $posted_data ) {
 		// Get list of posted data keys
 		$posted_data_field_keys = array_keys( $posted_data );
 
@@ -4886,6 +4883,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Maybe set shipping address fields values to same as billing address from the posted data.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_fix_shipping_address_when_shipping_not_needed( $posted_data ) {
+		// Bail if cart needs shipping address
+		if ( WC()->cart->needs_shipping_address() ) { return $posted_data; }
+
+		// Bail if forced to not set shipping address
+		if ( true !== apply_filters( 'fc_copy_billing_to_shipping_address_when_shipping_not_needed', true ) ) { return $posted_data; }
+
+		// Copy the billing address field values to the shipping address
+		$posted_data = $this->copy_posted_data_billing_address_to_shipping( $posted_data );
+
+		return $posted_data;
+	}
+
+	/**
 	 * Maybe set shipping address session values to same as billing when processing an order (place order).
 	 *
 	 * @param array $post_data Post data for all checkout fields.
@@ -4893,6 +4908,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout( $post_data ) {
 		// Bail if cart needs shipping address
 		if ( WC()->cart->needs_shipping_address() ) { return $post_data; }
+
+		// Bail if forced to not set shipping address
+		if ( true !== apply_filters( 'fc_copy_billing_to_shipping_address_when_shipping_not_needed', true ) ) { return $post_data; }
 
 		// Iterate posted data
 		foreach( $this->get_shipping_not_needed_shipping_field_keys() as $field_key ) {
@@ -5801,7 +5819,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Use the `WC_Customer` object for supported properties
 		foreach ( $customer_supported_field_keys as $field_key ) {
 			// Maybe skip email field if value is invalid
-			if ( 'billing_email' === $field_key && ( ! array_key_exists( $field_key, $posted_data ) || ! is_email( $posted_data[ $field_key ] ) ) ) { continue; }
+			if ( 'billing_email' === $field_key && ( ! array_key_exists( $field_key, $posted_data ) || empty( $posted_data[ $field_key ] ) || ! is_email( $posted_data[ $field_key ] ) ) ) { continue; }
 
 			// Get the setter method name for the customer property
 			$setter = "set_$field_key";

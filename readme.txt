@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.6.2
-Stable tag: 3.2.3
+Stable tag: 3.2.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -365,6 +365,13 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Improved: Compatibility with plugin WooCommerce Subscriptions. Move shipping methods available for subscription plans from the order summary to the shipping methods section.
+* Added: Option to define which address to save as the shipping address when using a local pickup shipping method. (PRO feature)
+* Fixed: Do not save shipping phone number to order data when shipping address is not needed for the order.
+* Fixed: Deprecated PHP messages saved to log files when using Fluid Checkout with recent versions of PHP.
+
+= 3.2.4 - 2024-09-15 =
+
+* Bump tested up to WooCommerce 9.3.1
 * Fixed: Error on validation script causing Google Address Autocomplete to stop working.
 
 = 3.2.3 - 2024-09-12 =
