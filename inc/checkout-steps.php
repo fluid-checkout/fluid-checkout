@@ -5420,9 +5420,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Initialize variables
 		$first    = true;
-		$package_index = 0;
-
+		
 		// Iterate packages
+		$package_index = 0;
 		foreach ( $packages as $package_key => $package ) {
 			$available_methods = $package[ 'rates' ];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $package_index ] ) ? WC()->session->chosen_shipping_methods[ $package_index ] : '';
