@@ -289,15 +289,17 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 
 	/**
-	 * Get recurring shipping methods.
-	 *
-	 * @access public
+	 * Output the shipping methods available for recurring carts.
+	 * COPIED AND ADAPTED FROM: wcs_cart_totals_shipping_html()
 	 */
-	function output_cart_shipping_html() {
+	public function output_cart_shipping_methods_available_for_recurring_carts() {
 		$initial_packages        = WC()->shipping->get_packages();
 		$show_package_details    = count( WC()->cart->recurring_carts ) > 1;
 		$show_package_name       = true;
 		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods', array() );
+		// CHANGE: Initialize variables that were removed from the original function
+		$package_details         = '';
+		$shipping_selection_displayed = true;
 
 		// Create new subscriptions for each subscription product in the cart (that is not a renewal)
 		foreach ( WC()->cart->recurring_carts as $recurring_cart_key => $recurring_cart ) {
@@ -311,41 +313,26 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 			// Create shipping packages for each subscription item
 			if ( $cart_has_next_shipment && WC_Subscriptions_Cart::cart_contains_subscriptions_needing_shipping( $recurring_cart ) ) {
+				// CHANGE: Initialize variables for package index
+				$package_index_initial_shipment = 0;
+				$package_index = 0;
+
 				foreach ( $recurring_cart->get_shipping_packages() as $recurring_cart_package_key => $recurring_cart_package ) {
-					$package_index = isset( $recurring_cart_package['package_index'] ) ? $recurring_cart_package['package_index'] : 0;
-					$product_names = array();
+					// CHANGE: Remove retrieval of package index from the cart package data, as it is set by the loop
 					$package       = WC()->shipping->calculate_shipping_for_package( $recurring_cart_package );
 
-					if ( $show_package_details ) {
-						foreach ( $package['contents'] as $item_id => $values ) {
-							$product_names[] = $values['data']->get_title() . ' &times;' . $values['quantity'];
-						}
-						$package_details = implode( ', ', $product_names );
-					} else {
-						$package_details = '';
-					}
+					// CHANGE: Remove code related to package details and product names
 
-					$chosen_initial_method = isset( $chosen_shipping_methods[ $package_index ] ) ? $chosen_shipping_methods[ $package_index ] : '';
+					// CHANGE: Always get chosen method for the first package as the initial shipment
+					$chosen_initial_method = isset( $chosen_shipping_methods[ $package_index_initial_shipment ] ) ? $chosen_shipping_methods[ $package_index_initial_shipment ] : '';
 
-					if ( isset( $chosen_shipping_methods[ $recurring_cart_package_key ] ) ) {
-						$chosen_recurring_method = $chosen_shipping_methods[ $recurring_cart_package_key ];
-					} elseif ( in_array( $chosen_initial_method, $package['rates'], true ) ) {
-						$chosen_recurring_method = $chosen_initial_method;
-					} else {
-						$chosen_recurring_method = empty( $package['rates'] ) ? '' : current( $package['rates'] )->id;
-					}
+					// CHANGE: Get the chosen shipping method for the recurring cart package from the extracted method
+					$chosen_recurring_method = $this->get_chosen_shipping_method_for_package( $recurring_cart_package_key, $package, $package['rates'] );
 
-					$shipping_selection_displayed        = false;
-					$only_one_shipping_option            = count( $package['rates'] ) === 1;
-					$recurring_rates_match_initial_rates = isset( $package['rates'][ $chosen_initial_method ] ) && isset( $initial_packages[ $package_index ] ) && $package['rates'] == $initial_packages[ $package_index ]['rates']; // phpcs:ignore WordPress.PHP.StrictComparisons
-
+					// CHANGE: Remove code related to shipping method selection
 					// CHANGE: Remove special treatment for when only one shipping option is available
 					// or when trying to force showing only shipping prices with the hook `wcs_cart_totals_shipping_html_price_only`
-
-					// Display the options
-					$product_names = array();
-
-					$shipping_selection_displayed = true;
+					// CHANGE: Remove code related to package details and product names
 
 					// CHANGE: Always show the package name
 					// translators: %d: package number.
@@ -372,6 +359,9 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 					$show_package_name = false;
 
 					do_action( 'woocommerce_subscriptions_after_recurring_shipping_rates', $recurring_cart_package_key, $recurring_cart_package, $recurring_cart, $chosen_recurring_method, $shipping_selection_displayed );
+
+					// CHANGE: Increase the value for the package index
+					$package_index ++;
 				}
 			}
 
@@ -387,7 +377,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 	public function maybe_output_recurring_cart_shipping_options() {
 		if ( WC()->cart->show_shipping() && WC_Subscriptions_Cart::cart_contains_subscriptions_needing_shipping() ) {
 			// CHANGE: Use modified method to output the shipping options
-			$this->output_cart_shipping_html();
+			$this->output_cart_shipping_methods_available_for_recurring_carts();
 		}
 	}
 
@@ -437,17 +427,14 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			// Get the chosen shipping method for the recurring cart package
 			$chosen_recurring_method = $this->get_chosen_shipping_method_for_package( $recurring_cart_package_key, $package, $available_methods );
 
-			// Skip if no chosen shipping method
-			if ( empty( $chosen_recurring_method ) ) { continue; }
+			// Calculate shipping costs
+			$recurring_cart->calculate_shipping();
 
 			// Initialize variables
 			$shipping_subtotal = _x( '--', 'No shipping method chosen label for the order summary', 'fluid-checkout' );
 
-			// Get the shipping subtotal for the chosen method
-			$shipping_rate = count( $available_methods ) > 0 ? $available_methods[ $chosen_recurring_method ] : false;
-
 			// Maybe get the shipping costs
-			if ( $shipping_rate ) {
+			if ( count( $available_methods ) > 0 && ! empty( $chosen_recurring_method ) && array_key_exists( $chosen_recurring_method, $available_methods ) ) {
 				// Get shipping subtotals
 				$shipping_subtotal = $recurring_cart->get_shipping_total();
 				$shipping_tax = $recurring_cart->get_shipping_tax();
@@ -456,10 +443,10 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 				if ( $recurring_cart->display_prices_including_tax() ) {
 					$shipping_subtotal += $shipping_tax;
 				}
-				
+
 				// Get formatted shipping subtotal
 				$shipping_subtotal = wcs_cart_price_string( wc_price( $shipping_subtotal ), $recurring_cart );
-			}	
+			}
 
 			// Output the shipping subtotal row
 			wc_get_template( 'checkout/recurring-shipping-subtotals.php', array(
@@ -483,16 +470,28 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 	public function get_chosen_shipping_method_for_package( $recurring_cart_package_key, $package, $available_methods ) {
 		// Get shipping method info
 		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods', array() );
-		$package_index = isset( $recurring_cart_package['package_index'] ) ? $recurring_cart_package['package_index'] : 0;
-		$chosen_initial_method = isset( $chosen_shipping_methods[ $package_index ] ) ? $chosen_shipping_methods[ $package_index ] : '';
+		$package_index_initial_shipment = 0;
+		$chosen_initial_method = isset( $chosen_shipping_methods[ $package_index_initial_shipment ] ) ? $chosen_shipping_methods[ $package_index_initial_shipment ] : '';
+
+		// Initialize variables
+		$should_update_session = false;
+		$chosen_recurring_method = '';
 
 		// Get chosen recurring shipping method
-		if ( isset( $chosen_shipping_methods[ $recurring_cart_package_key ] ) ) {
+		if ( isset( $chosen_shipping_methods[ $recurring_cart_package_key ] ) && in_array( $chosen_initial_method, $available_methods, true ) ) {
 			$chosen_recurring_method = $chosen_shipping_methods[ $recurring_cart_package_key ];
-		} elseif ( in_array( $chosen_initial_method, $available_methods, true ) ) {
+		} elseif ( ! empty( $chosen_initial_method ) && in_array( $chosen_initial_method, $available_methods, true ) ) {
 			$chosen_recurring_method = $chosen_initial_method;
+			$should_update_session = true;
 		} else {
 			$chosen_recurring_method = empty( $available_methods ) ? '' : current( $available_methods )->id;
+			$should_update_session = true;
+		}
+
+		// Maybe update the chosen methods session
+		if ( $should_update_session ) {
+			$chosen_shipping_methods[ $recurring_cart_package_key ] = $chosen_recurring_method;
+			WC()->session->set( 'chosen_shipping_methods', $chosen_shipping_methods );
 		}
 
 		return $chosen_recurring_method;
