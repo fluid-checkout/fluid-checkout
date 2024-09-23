@@ -37,49 +37,47 @@ $package_index = array_search( $package, $packages );
 
 	<?php echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
 
-	<?php if ( 1 < count( $available_methods ) ) : ?>
-		
-		<?php 
-		$first = true;
-		foreach ( $available_methods as $method ) : 
-			$checked_method = $chosen_method && $method->id == $chosen_method;
+	<?php // CHANGE: Remove special treatment for when only one shipping method is available ?>
 
-			// Get contents after the shipping rate
-			ob_start();
-			do_action( 'woocommerce_after_shipping_rate', $method, $package_index );
-			$after_shipping_rate = ob_get_clean();
-			if ( ! empty( $after_shipping_rate ) ) {
-				$after_shipping_rate = '<div class="shipping-method__after-shipping-rate">' . $after_shipping_rate . '</div>';
-			}
+	<?php
+	$first = true;
+	foreach ( $available_methods as $method ) : 
+		$checked_method = $chosen_method && $method->id == $chosen_method;
 
-			// Maybe add extra class
-			$label_extra_classes = '';
-			if (
-				( WC()->cart->display_prices_including_tax() && $method->get_shipping_tax() > 0 && ! wc_prices_include_tax() )
-				|| ( ! WC()->cart->display_prices_including_tax() && $method->get_shipping_tax() > 0 && wc_prices_include_tax() )
-			) {
-				$label_extra_classes = 'has-tax-notes';
-			}
+		// Get contents after the shipping rate
+		ob_start();
+		do_action( 'woocommerce_after_shipping_rate', $method, $package_index );
+		$after_shipping_rate = ob_get_clean();
+		if ( ! empty( $after_shipping_rate ) ) {
+			$after_shipping_rate = '<div class="shipping-method__after-shipping-rate">' . $after_shipping_rate . '</div>';
+		}
 
-			echo apply_filters( 'fc_shipping_method_option_markup',
-				sprintf( '<li class="shipping-method__option"><input type="radio" name="shipping_method[%1$s]" data-index="%1$s" id="shipping_method_%1$s_%2$s" value="%3$s" class="shipping_method" %4$s />
-					<label for="shipping_method_%1$s_%2$s" class="shipping-method__option-label has-price %7$s"><div class="shipping-method__option-label-wrapper">%5$s</div>%8$s%6$s</label>
-				</li>',
-				$index,
-				// The function `sanitize_title` is used below to convert the string into a CSS-class-like string
-				sanitize_title( $method->id ),
-				esc_attr( $method->id ),
-				checked( $checked_method, true, false ),
-				FluidCheckout_WooCommerceSubscriptions::instance()->get_recurring_shipping_methods_label( $recurring_cart, $method ),
-				$after_shipping_rate,
-				$label_extra_classes,
-				FluidCheckout_Steps::instance()->get_cart_shipping_methods_description( $method )
-			), $method, $package_index, $chosen_method, $first );
+		// Maybe add extra class
+		$label_extra_classes = '';
+		if (
+			( WC()->cart->display_prices_including_tax() && $method->get_shipping_tax() > 0 && ! wc_prices_include_tax() )
+			|| ( ! WC()->cart->display_prices_including_tax() && $method->get_shipping_tax() > 0 && wc_prices_include_tax() )
+		) {
+			$label_extra_classes = 'has-tax-notes';
+		}
 
-			$first = false;
-		endforeach; ?>
+		echo apply_filters( 'fc_shipping_method_option_markup',
+			sprintf( '<li class="shipping-method__option"><input type="radio" name="shipping_method[%1$s]" data-index="%1$s" id="shipping_method_%1$s_%2$s" value="%3$s" class="shipping_method" %4$s />
+				<label for="shipping_method_%1$s_%2$s" class="shipping-method__option-label has-price %7$s"><div class="shipping-method__option-label-wrapper">%5$s</div>%8$s%6$s</label>
+			</li>',
+			$index,
+			// The function `sanitize_title` is used below to convert the string into a CSS-class-like string
+			sanitize_title( $method->id ),
+			esc_attr( $method->id ),
+			checked( $checked_method, true, false ),
+			FluidCheckout_WooCommerceSubscriptions::instance()->get_recurring_shipping_methods_label( $recurring_cart, $method ),
+			$after_shipping_rate,
+			$label_extra_classes,
+			FluidCheckout_Steps::instance()->get_cart_shipping_methods_description( $method )
+		), $method, $package_index, $chosen_method, $first );
 
-	<?php endif; ?>
+		$first = false;
+	endforeach; ?>
 
 	<?php echo apply_filters( 'fc_shipping_method_option_end_tag_markup', '</ul>' ); ?>
 

@@ -5,7 +5,7 @@
  * Based on the WooCommerce Subscriptions template: /templates/checkout/recurring-subtotals.php
  * 
  * @package fluid-checkout
- * @version 3.2.4
+ * @version 3.2.5
  */
 
 defined( 'ABSPATH' ) || exit;

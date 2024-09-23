@@ -24,8 +24,8 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 		// Shipping methods available for subscription plans
 		remove_action( 'woocommerce_subscriptions_recurring_totals_shipping', array( 'WCS_Template_Loader', 'get_recurring_cart_shipping' ), 10 );
-		add_action( 'fc_shipping_methods_after_packages_inside', array( 'WCS_Template_Loader', 'get_recurring_cart_shipping' ), 10 );
-		add_action( 'woocommerce_subscriptions_recurring_totals_subtotals', array( $this, 'get_recurring_shipping_subtotals' ), 20 );
+		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'maybe_output_recurring_cart_shipping_options' ), 10 );
+		add_action( 'woocommerce_subscriptions_recurring_totals_subtotals', array( $this, 'maybe_output_get_recurring_shipping_subtotals' ), 20 );
 
 		// Shipping methods
 		add_filter( 'fc_cart_has_multiple_packages', array( $this, 'maybe_set_cart_with_multiple_packages' ), 10 );
@@ -289,19 +289,124 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 
 	/**
-	 * Get the recurring shipping subtotals.
+	 * Get recurring shipping methods.
+	 *
+	 * @access public
+	 */
+	function output_cart_shipping_html() {
+		$initial_packages        = WC()->shipping->get_packages();
+		$show_package_details    = count( WC()->cart->recurring_carts ) > 1;
+		$show_package_name       = true;
+		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods', array() );
+
+		// Create new subscriptions for each subscription product in the cart (that is not a renewal)
+		foreach ( WC()->cart->recurring_carts as $recurring_cart_key => $recurring_cart ) {
+			// This ensures we get the correct package IDs (these are filtered by WC_Subscriptions_Cart).
+			WC_Subscriptions_Cart::set_calculation_type( 'recurring_total' );
+			WC_Subscriptions_Cart::set_recurring_cart_key( $recurring_cart_key );
+			WC_Subscriptions_Cart::set_cached_recurring_cart( $recurring_cart );
+
+			// Allow third parties to filter whether the recurring cart has a shipment.
+			$cart_has_next_shipment = apply_filters( 'woocommerce_subscriptions_cart_has_next_shipment', 0 !== $recurring_cart->next_payment_date, $recurring_cart );
+
+			// Create shipping packages for each subscription item
+			if ( $cart_has_next_shipment && WC_Subscriptions_Cart::cart_contains_subscriptions_needing_shipping( $recurring_cart ) ) {
+				foreach ( $recurring_cart->get_shipping_packages() as $recurring_cart_package_key => $recurring_cart_package ) {
+					$package_index = isset( $recurring_cart_package['package_index'] ) ? $recurring_cart_package['package_index'] : 0;
+					$product_names = array();
+					$package       = WC()->shipping->calculate_shipping_for_package( $recurring_cart_package );
+
+					if ( $show_package_details ) {
+						foreach ( $package['contents'] as $item_id => $values ) {
+							$product_names[] = $values['data']->get_title() . ' &times;' . $values['quantity'];
+						}
+						$package_details = implode( ', ', $product_names );
+					} else {
+						$package_details = '';
+					}
+
+					$chosen_initial_method = isset( $chosen_shipping_methods[ $package_index ] ) ? $chosen_shipping_methods[ $package_index ] : '';
+
+					if ( isset( $chosen_shipping_methods[ $recurring_cart_package_key ] ) ) {
+						$chosen_recurring_method = $chosen_shipping_methods[ $recurring_cart_package_key ];
+					} elseif ( in_array( $chosen_initial_method, $package['rates'], true ) ) {
+						$chosen_recurring_method = $chosen_initial_method;
+					} else {
+						$chosen_recurring_method = empty( $package['rates'] ) ? '' : current( $package['rates'] )->id;
+					}
+
+					$shipping_selection_displayed        = false;
+					$only_one_shipping_option            = count( $package['rates'] ) === 1;
+					$recurring_rates_match_initial_rates = isset( $package['rates'][ $chosen_initial_method ] ) && isset( $initial_packages[ $package_index ] ) && $package['rates'] == $initial_packages[ $package_index ]['rates']; // phpcs:ignore WordPress.PHP.StrictComparisons
+
+					// CHANGE: Remove special treatment for when only one shipping option is available
+					// or when trying to force showing only shipping prices with the hook `wcs_cart_totals_shipping_html_price_only`
+
+					// Display the options
+					$product_names = array();
+
+					$shipping_selection_displayed = true;
+
+					// CHANGE: Always show the package name
+					// translators: %d: package number.
+					$package_name = apply_filters( 'woocommerce_shipping_package_name', sprintf( _n( 'Shipping', 'Shipping %d', ( $package_index + 1 ), 'woocommerce-subscriptions' ), ( $package_index + 1 ) ), $package_index, $package ); // phpcs:ignore WordPress.WP.I18n.MissingSingularPlaceholder,WordPress.WP.I18n.MismatchedPlaceholders
+
+					wc_get_template(
+						'cart/cart-recurring-shipping.php',
+						array(
+							'package'              => $package,
+							'available_methods'    => $package['rates'],
+							'show_package_details' => $show_package_details,
+							'package_details'      => $package_details,
+							'package_name'         => $package_name,
+							'index'                => $recurring_cart_package_key,
+							'chosen_method'        => $chosen_recurring_method,
+							'recurring_cart_key'   => $recurring_cart_key,
+							'recurring_cart'       => $recurring_cart,
+						),
+						'',
+						WC_Subscriptions_Core_Plugin::instance()->get_subscriptions_core_directory( 'templates/' )
+					);
+					$show_package_name = false;
+
+					do_action( 'woocommerce_subscriptions_after_recurring_shipping_rates', $recurring_cart_package_key, $recurring_cart_package, $recurring_cart, $chosen_recurring_method, $shipping_selection_displayed );
+				}
+			}
+
+			WC_Subscriptions_Cart::set_calculation_type( 'none' );
+			WC_Subscriptions_Cart::set_recurring_cart_key( 'none' );
+		}
+	}
+
+	/**
+	 * Gets the recurring totals shipping rows content.
+	 * COPIED AND ADAPTED FROM: WCS_Template_Loader::get_recurring_cart_shipping()
+	 */
+	public function maybe_output_recurring_cart_shipping_options() {
+		if ( WC()->cart->show_shipping() && WC_Subscriptions_Cart::cart_contains_subscriptions_needing_shipping() ) {
+			// CHANGE: Use modified method to output the shipping options
+			$this->output_cart_shipping_html();
+		}
+	}
+
+
+
+	/**
+	 * Maybe output the recurring shipping subtotals.
 	 * 
 	 * @param  array  $recurring_carts  The recurring carts.
 	 */
-	public function get_recurring_shipping_subtotals( $recurring_carts ) {
+	public function maybe_output_get_recurring_shipping_subtotals( $recurring_carts ) {
 		// Bail if plugin class is not available
 		if ( ! class_exists( 'WC_Subscriptions_Cart' ) ) { return; }
 
 		// Bail if functions are not available
 		if ( ! function_exists( 'wcs_apply_array_filter' ) || ! function_exists( 'wcs_cart_price_string' ) ) { return; }
 
+		// Get recurring carts
 		$recurring_carts = wcs_apply_array_filter( 'woocommerce_subscriptions_display_recurring_subtotals', $recurring_carts, 'next_payment_date' );
 
+		// Iterate recurring carts
 		$display_heading = true;
 		foreach ( $recurring_carts as $recurring_cart_key => $recurring_cart ) {
 			// Ensure we get the correct package IDs (these are filtered by WC_Subscriptions_Cart).
@@ -309,23 +414,23 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			WC_Subscriptions_Cart::set_recurring_cart_key( $recurring_cart_key );
 			WC_Subscriptions_Cart::set_cached_recurring_cart( $recurring_cart );
 
-			// Calculate shipping for packages in the recurring cart
-			$this->shipping_subtotal_html( $recurring_cart, $recurring_carts, $display_heading );
+			// Output shipping options for packages in the recurring cart
+			$this->output_shipping_subtotal_html( $recurring_cart, $recurring_carts, $display_heading );
 		}
 	}
 
 	/**
-	 * Show the shipping subtotal HTML for the given recurring cart.
+	 * Output the shipping subtotal HTML for the given recurring cart.
 	 * 
 	 * @param  object  $recurring_cart     The recurring cart object.
 	 * @param  array   $recurring_carts    All recurring carts.
 	 * @param  bool    $display_heading    Whether to display the table heading.
 	 */
-	public function shipping_subtotal_html( $recurring_cart, $recurring_carts, &$display_heading ) {
+	public function output_shipping_subtotal_html( $recurring_cart, $recurring_carts, &$display_heading ) {
 		// Iterate over each shipping package in the recurring cart
 		foreach ( $recurring_cart->get_shipping_packages() as $recurring_cart_package_key => $recurring_cart_package ) {
 			$package = WC()->shipping->calculate_shipping_for_package( $recurring_cart_package );
-			$available_methods = $package['rates'];
+			$available_methods = $package[ 'rates' ];
 
 			// Get the chosen shipping method for the recurring cart package
 			$chosen_recurring_method = $this->get_chosen_shipping_method_for_package( $recurring_cart_package_key, $package, $available_methods );
@@ -333,18 +438,33 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			// Skip if no chosen shipping method
 			if ( empty( $chosen_recurring_method ) ) { continue; }
 
+			// Initialize variables
+			$shipping_subtotal = _x( '--', 'No shipping method chosen label for the order summary', 'fluid-checkout' );
+
 			// Get the shipping subtotal for the chosen method
-			$shipping_rate = $available_methods[ $chosen_recurring_method ];
-			$shipping_subtotal = $shipping_rate->get_cost();
+			$shipping_rate = count( $available_methods ) > 0 ? $available_methods[ $chosen_recurring_method ] : false;
 
-			// Format the shipping subtotal
-			$shipping_subtotal = wcs_cart_price_string( wc_price( $shipping_subtotal ), $recurring_cart );
+			// Maybe get the shipping costs
+			if ( $shipping_rate ) {
+				// Get shipping subtotals
+				$shipping_subtotal = $recurring_cart->get_shipping_total();
+				$shipping_tax = $recurring_cart->get_shipping_tax();
 
-			wc_get_template( 'checkout/recurring-shipping-subtotals.php', array( 
+				// Maybe add shipping tax to the shipping subtotal
+				if ( $recurring_cart->display_prices_including_tax() ) {
+					$shipping_subtotal += $shipping_tax;
+				}
+				
+				// Get formatted shipping subtotal
+				$shipping_subtotal = wcs_cart_price_string( wc_price( $shipping_subtotal ), $recurring_cart );
+			}	
+
+			// Output the shipping subtotal row
+			wc_get_template( 'checkout/recurring-shipping-subtotals.php', array(
 				'display_heading'   => $display_heading,
 				'recurring_carts'   => $recurring_carts,
 				'shipping_subtotal' => $shipping_subtotal,
-			));
+			) );
 
 			// Reset the flag to prevent table heading from being displayed again
 			$display_heading = false;
