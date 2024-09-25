@@ -101,6 +101,7 @@ class FluidCheckout_CustomerEmailVerification extends FluidCheckout {
 		// Get order subtotal
 		$order_subtotal = WC()->cart->subtotal;
 
+		// Use the same conditions as the plugin's checks for 'cev-inline-front-js' script enqueuing
 		$need_inline_verification = false;
 		if ( ( $order_subtotal > 0 && 1 != $cev_enable_email_verification_free_orders ) ) {
 			$need_inline_verification = true;
