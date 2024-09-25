@@ -132,9 +132,8 @@
   padding: 20px 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border: dashed 1px var(--fluidcheckout--coupon-code--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
+  border: var(--fluidcheckout--discount-section--border-style, var(--fluidcheckout--coupon-code--border-style, dashed)) 1px var(--fluidcheckout--discount-section--border-color, var(--fluidcheckout--color--success, #007a3d));
   border-radius: var(--fluidcheckout--section--border-radius, 8px);
-  border-color: var(--fluidcheckout--color--success, #007a3d);
   line-height: 1.2;
 }
 @media (max-width: 749px) {
