@@ -26,6 +26,9 @@ class FluidCheckout_ThemeCompat_Kapee extends FluidCheckout {
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 
@@ -87,6 +90,40 @@ class FluidCheckout_ThemeCompat_Kapee extends FluidCheckout {
 		$attributes['data-sticky-relative-to'] = "{ {$settings} }";
 
 		return $attributes;
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Bail if plugin function isn't available
+		if ( ! function_exists( 'kapee_get_option' ) ) { return $attributes; }
+
+		// Get border width value from theme options
+		$border = kapee_get_option( 'site-border' );
+		$border_width = '1px';
+		if ( ! empty( $border['border-width'] ) ) {
+			$border_width = $border['border-width'];
+		}
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '42px',
+				'--fluidcheckout--field--padding-left' => '12px',
+				'--fluidcheckout--field--border-color' => 'var(--site-border-color)',
+				'--fluidcheckout--field--border-width' => $border_width,
+				'--fluidcheckout--field--border-radius' => 'var(--site-border-radius)',
+				'--fluidcheckout--field--font-size' => 'var(--site-font-size)',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }
