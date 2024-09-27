@@ -1,0 +1,3 @@
+body.theme-kapee div.woocommerce form .form-row input[type=checkbox] {
+  background-color: var(--site-input-background);
+}
