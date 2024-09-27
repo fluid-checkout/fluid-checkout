@@ -517,21 +517,32 @@
 		var substepElements = document.querySelectorAll( _settings.substepSelector );
 		for ( var i = 0; i < substepElements.length; i++ ) {
 			var substepElement = substepElements[i];
-			
+
 			// Handle editable state
 			var editableHiddenField = substepElement.querySelector( _settings.substepEditableStateFieldSelector );
-			if ( editableHiddenField && 'no' === editableHiddenField.value ) {
-				substepElement.setAttribute( _settings.substepEditableStateAttribute, editableHiddenField.value );
-			}
-			else {
-				substepElement.removeAttribute( _settings.substepEditableStateAttribute );
+			if ( editableHiddenField ) {
+				if ( 'no' === editableHiddenField.value ) {
+					substepElement.setAttribute( _settings.substepEditableStateAttribute, editableHiddenField.value );
+				}
+				else {
+					substepElement.removeAttribute( _settings.substepEditableStateAttribute );
+				}
+
+				// Remove editable state hidden field, to avoid it being used again
+				editableHiddenField.parentNode.removeChild( editableHiddenField );
 			}
 
 			// Handle expanded state
 			var expandedHiddenField = substepElement.querySelector( _settings.substepExpandedStateFieldSelector );
-			var isSetExpanded = expandedHiddenField && 'yes' === expandedHiddenField.value;
-			if ( isSetExpanded ) {
-				expandSubstepEdit( substepElement, true, false );
+			if ( expandedHiddenField ) {
+				var isSetExpanded = expandedHiddenField && 'yes' === expandedHiddenField.value;
+				if ( isSetExpanded ) {
+					// Expand section
+					expandSubstepEdit( substepElement, true, false );
+				}
+
+				// Remove expanded state hidden field, to avoid it being used again
+				expandedHiddenField.parentNode.removeChild( expandedHiddenField );
 			}
 
 			// Handle visibility state
@@ -545,6 +556,9 @@
 				if ( 'no' === visibilityHiddenField.value && ! isSetExpanded && isStepComplete( substepElement ) ) {
 					collapseSubstepEdit( substepElement, true, false );
 				}
+
+				// Remove visibility state hidden field, to avoid it being used again
+				visibilityHiddenField.parentNode.removeChild( visibilityHiddenField );
 			}
 		}
 	}
