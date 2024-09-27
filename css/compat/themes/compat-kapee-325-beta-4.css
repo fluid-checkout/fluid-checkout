@@ -1,3 +1,11 @@
+body.theme-kapee.woocommerce-checkout .fc-wrapper .fc-place-order .fc-place-order-button {
+  background-color: var(--fluidcheckout--kappe--place-order-button--background-color);
+}
+
+body.theme-kapee.woocommerce-checkout .fc-wrapper .fc-place-order .fc-place-order-button:hover {
+  background-color: var(--fluidcheckout--kappe--place-order-button--background-color--hover);
+}
+
 body.theme-kapee div.woocommerce form .form-row input[type=checkbox] {
   background-color: var(--site-input-background);
 }

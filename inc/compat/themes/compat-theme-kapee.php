@@ -110,6 +110,17 @@ class FluidCheckout_ThemeCompat_Kapee extends FluidCheckout {
 			$border_width = $border['border-width'];
 		}
 
+		// Get checkout (place order) button colors from theme options
+		$checkout_button = kapee_get_option( 'checkout-button-background' );
+		$checkout_button_background_color = '#FB641B';
+		$checkout_button_background_color_hover = '#FB641B';
+		if ( ! empty( $checkout_button['regular'] ) ) {
+			$checkout_button_background_color = $border['regular'];
+		}
+		if ( ! empty( $checkout_button['hover'] ) ) {
+			$checkout_button_background_color_hover = $border['hover'];
+		}
+
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
@@ -120,6 +131,10 @@ class FluidCheckout_ThemeCompat_Kapee extends FluidCheckout {
 				'--fluidcheckout--field--border-width' => $border_width,
 				'--fluidcheckout--field--border-radius' => 'var(--site-border-radius)',
 				'--fluidcheckout--field--font-size' => 'var(--site-font-size)',
+
+				// Custom variables
+				'--fluidcheckout--kappe--place-order-button--background-color' => $checkout_button_background_color,
+				'--fluidcheckout--kappe--place-order-button--background-color--hover' => $checkout_button_background_color_hover,
 			),
 		);
 
