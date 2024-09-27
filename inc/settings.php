@@ -150,6 +150,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_theme_betheme_output_checkout_steps_section'         => 'no',
 			'fc_compat_theme_thegem_output_checkout_steps_section'          => 'no',
 			'fc_compat_theme_porto_output_checkout_steps_section'           => 'no',
+			'fc_compat_theme_kapee_output_checkout_steps_section'           => 'no',
 			'fc_compat_theme_go_enable_account_wide_layout'                 => 'yes',
 			'fc_compat_theme_fennik_output_breadcrumbs_section'             => 'no',
 

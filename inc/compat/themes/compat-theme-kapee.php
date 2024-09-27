@@ -19,6 +19,9 @@ class FluidCheckout_ThemeCompat_Kapee extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
@@ -27,8 +30,22 @@ class FluidCheckout_ThemeCompat_Kapee extends FluidCheckout {
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
+		// Checkout steps
+		add_action( 'fc_checkout_header', array( $this, 'maybe_output_kapee_checkout_steps_section' ), 10 );
+
+		// Settings
+		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// Page title
+		$this->maybe_remove_page_title();
 	}
 
 
@@ -90,6 +107,77 @@ class FluidCheckout_ThemeCompat_Kapee extends FluidCheckout {
 		$attributes['data-sticky-relative-to'] = "{ {$settings} }";
 
 		return $attributes;
+	}
+
+
+
+	/**
+	 * Add new settings to the Fluid Checkout admin settings sections.
+	 *
+	 * @param  array  $settings  Array with all settings for the current section.
+	 */
+	public function add_settings( $settings ) {
+		// Add new settings
+		$settings_new = array(
+			array(
+				'title' => __( 'Theme Kapee', 'fluid-checkout' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_theme_kapee_options',
+			),
+
+			array(
+				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
+				'desc'            => __( 'Output the checkout steps section from the Kapee theme on the checkout, cart and order received pages.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/compat-theme-kapee/' ),
+				'id'              => 'fc_compat_theme_kapee_output_checkout_steps_section',
+				'type'            => 'checkbox',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_kapee_output_checkout_steps_section' ),
+				'autoload'        => false,
+			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_theme_kapee_options',
+			),
+		);
+
+		$settings = array_merge( $settings, $settings_new );
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Maybe output the checkout steps section from the Kapee theme.
+	 */
+	public function maybe_output_kapee_checkout_steps_section() {
+		// Bail if not using distraction free header and footer
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $content; }
+
+		// Bail if Kapee section output is disabled in the plugin settings
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_kapee_output_checkout_steps_section' ) ) { return $content; }
+
+		// Bail if functions aren't available
+		if ( ! function_exists( 'kapee_page_title' ) ) { return $content; }
+
+		// Get theme's checkout steps section
+		kapee_page_title();
+	}
+
+
+
+	/**
+	 * Maybe remove the page title added by the 'kapee_page_title' function when using distraction free header and footer.
+	 */
+	public function maybe_remove_page_title() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Bail if not using distraction free header and footer
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		// Remove page title
+		remove_action( 'kapee_inner_page_title', 'kapee_template_page_title', 10 );
 	}
 
 
