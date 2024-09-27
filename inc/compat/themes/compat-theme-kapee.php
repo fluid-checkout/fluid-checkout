@@ -22,6 +22,10 @@ class FluidCheckout_ThemeCompat_Kapee extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
+
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 	}
 
 
@@ -36,6 +40,53 @@ class FluidCheckout_ThemeCompat_Kapee extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
 
 		return $class . ' col-md-12';
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		// Bail if plugin function isn't available
+		if ( ! function_exists( 'kapee_get_option' ) ) { return $attributes; }
+
+		// Desktop settings
+		$desktop_settings = '';
+		if ( true == kapee_get_option( 'sticky_header', 0 ) ) {
+			$desktop_settings = '"md": { "breakpointInitial": 993, "breakpointFinal": 10000, "selector": ".header-sticky" }';
+		}
+
+		// Tablet settings
+		$tablet_settings = '';
+		if ( true == kapee_get_option( 'sticky-header-tablet', 0 ) ) {
+			$tablet_settings = '"sm": { "breakpointInitial": 481, "breakpointFinal": 992, "selector": ".site-header .header-sticky" }';
+		}
+
+		// Mobile settings
+		$mobile_settings = '';
+		if ( true == kapee_get_option( 'sticky-header-mobile', 0 ) ) {
+			$mobile_settings = '"xs": { "breakpointInitial": 0, "breakpointFinal": 480, "selector": ".site-header .header-sticky" }';
+		}
+
+		// Only keep non-empty values
+		$settings = '';
+		$settings = array_filter( array( $mobile_settings, $tablet_settings, $desktop_settings ), function( $value ) {
+			return ! empty( $value );
+		} );
+
+		// Concatenate values with a comma
+		$settings = implode( ', ', $settings );
+
+		// Add the settings to the data attribute
+		$attributes['data-sticky-relative-to'] = "{ {$settings} }";
+
+		return $attributes;
 	}
 
 }
