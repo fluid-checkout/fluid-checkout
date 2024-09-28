@@ -17,3 +17,7 @@ body.theme-kapee.woocommerce-checkout .fc-wrapper .fc-place-order .fc-place-orde
 body.theme-kapee div.woocommerce form .form-row input[type=checkbox] {
   background-color: var(--site-input-background);
 }
+
+body.theme-kapee div.woocommerce form .form-row .select2-container .select2-selection__arrow b {
+  margin-top: 0;
+}
