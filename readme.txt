@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Option to define which address to save as the shipping address when using a local pickup shipping method. (PRO feature)
+* Added: Compatibility with theme Kapee.
 * Improved: Compatibility with plugin WooCommerce Subscriptions. Move shipping methods available for subscription plans from the order summary to the shipping methods section.
 * Improved: Add new CSS variables for customizing the coupon code elements and coupon section.
 * Improved: Accept a new parameter `$context` for the hook `fc_css_variables`. Defaults to `frontend`.
