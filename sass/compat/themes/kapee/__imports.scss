@@ -12,5 +12,6 @@ $_body-theme-selector:                 '.theme-kapee' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-billing",
 	"checkout-place-order",
 	"woocommerce-form-fields";
