@@ -152,13 +152,13 @@ class FluidCheckout_ThemeCompat_Kapee extends FluidCheckout {
 	 */
 	public function maybe_output_kapee_checkout_steps_section() {
 		// Bail if not using distraction free header and footer
-		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $content; }
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
 
 		// Bail if Kapee section output is disabled in the plugin settings
-		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_kapee_output_checkout_steps_section' ) ) { return $content; }
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_kapee_output_checkout_steps_section' ) ) { return; }
 
 		// Bail if functions aren't available
-		if ( ! function_exists( 'kapee_page_title' ) ) { return $content; }
+		if ( ! function_exists( 'kapee_page_title' ) ) { return; }
 
 		// Get theme's checkout steps section
 		kapee_page_title();
