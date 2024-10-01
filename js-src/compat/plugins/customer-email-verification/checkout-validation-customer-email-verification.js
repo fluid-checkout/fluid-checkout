@@ -63,7 +63,7 @@
 		// Get hidden field with verification status
 		var verificationStatusField = document.querySelector( _settings.verificationStatusFieldSelector );
 
-		// Bail if verification status field value is empty
+		// Check if verification status field value is empty
 		if ( verificationStatusField && '' === verificationStatusField.value ) {
 			// Scroll to section
 			var section = document.querySelector( _settings.sectionSelector );
