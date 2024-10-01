@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with plugin: Customer Email Verification (by zorem).
+ * Compatibility with plugin: Customer Email Verification (PRO) (by zorem).
  */
 class FluidCheckout_CustomerEmailVerification extends FluidCheckout {
 
