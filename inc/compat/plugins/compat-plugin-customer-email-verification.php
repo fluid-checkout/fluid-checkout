@@ -73,7 +73,7 @@ class FluidCheckout_CustomerEmailVerification extends FluidCheckout {
 		// Check if email is verified in session
 		if ( ! $is_verified ) {
 			$session_data = json_decode( WC()->session->get( 'cev_user_verified_data' ) );
-			
+
 			if ( isset( $session_data->email ) && $session_data->email === $email && true === $session_data->verified ) {
 				$is_verified = true;
 			}
@@ -88,6 +88,7 @@ class FluidCheckout_CustomerEmailVerification extends FluidCheckout {
 	 * Check if inline verification is enabled.
 	 */
 	public function is_inline_verification_enabled() {
+		// Initialize variables
 		$is_enabled = false;
 
 		// Bail if user is logged in
@@ -109,7 +110,7 @@ class FluidCheckout_CustomerEmailVerification extends FluidCheckout {
 			$need_inline_verification = true;
 		}
 
-		if ( 1 == $cev_enable_email_verification_checkout && 2 == $cev_inline_email_verification_checkout && $need_inline_verification && !is_user_logged_in() ) {
+		if ( 1 == $cev_enable_email_verification_checkout && 2 == $cev_inline_email_verification_checkout && $need_inline_verification && ! is_user_logged_in() ) {
 			$is_enabled = true;
 		}
 
@@ -131,7 +132,7 @@ class FluidCheckout_CustomerEmailVerification extends FluidCheckout {
 		if ( ! $this->is_inline_verification_enabled() ) { return $is_step_complete; }
 
 		// Get entered email
-		$email = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data('billing_email');
+		$email = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_email' );
 
 		// Check if email is verified
 		$is_verified = $this->is_email_verified( $email );
@@ -154,7 +155,7 @@ class FluidCheckout_CustomerEmailVerification extends FluidCheckout {
 		if ( ! $this->is_inline_verification_enabled() ) { return; }
 
 		// Get entered email
-		$email = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data('billing_email');
+		$email = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_email' );
 
 		// Check if email is verified
 		$is_verified = $this->is_email_verified( $email );
@@ -162,7 +163,7 @@ class FluidCheckout_CustomerEmailVerification extends FluidCheckout {
 		// Output custom hidden fields
 		echo '<div id="customer_email_verification-custom_checkout_fields" class="form-row fc-no-validation-icon customer_email_verification-custom_checkout_fields">';
 		echo '<div class="woocommerce-input-wrapper">';
-		echo '<input type="hidden" id="customer_email_verification-is_verified" name="customer_email_verification-is_verified" value="'. esc_attr( $is_verified ) .'" class="validate-customer-email-verification">';
+		echo '<input type="hidden" id="customer_email_verification-is_verified" name="customer_email_verification-is_verified" value="' . esc_attr( $is_verified ) . '" class="validate-customer-email-verification">';
 		echo '</div>';
 		echo '</div>';
 	}
@@ -175,11 +176,13 @@ class FluidCheckout_CustomerEmailVerification extends FluidCheckout {
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_contact_hidden_fields_fragment( $fragments ) {
+		// Get custom hidden fields HTML
 		ob_start();
 		$this->output_custom_hidden_fields();
 		$html = ob_get_clean();
 
-		$fragments['.customer_email_verification-custom_checkout_fields'] = $html;
+		// Add fragment
+		$fragments[ '.customer_email_verification-custom_checkout_fields' ] = $html;
 		return $fragments;
 	}
 
