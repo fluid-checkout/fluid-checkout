@@ -62,13 +62,13 @@ class FluidCheckout_CustomerEmailVerification extends FluidCheckout {
 		if ( ! class_exists( self::CLASS_NAME ) ) { return $is_verified; }
 
 		// Bail if class methods are not available
-		if ( ! method_exists( self::CLASS_NAME, 'get_instance' ) || ! method_exists( self::CLASS_NAME, 'check_email_verify' ) ) { return $is_verified; }
+		if ( ! method_exists( self::CLASS_NAME, 'get_instance' ) ) { return $is_verified; }
 
 		// Get object
 		$class_object = call_user_func( array( self::CLASS_NAME, 'get_instance' ) );
 
-		// Bail if object is not available
-		if ( ! $class_object ) { return $is_verified; }
+		// Bail if object or method are not available
+		if ( ! $class_object || ! method_exists( $class_object, 'check_email_verify' ) ) { return $is_verified; }
 
 		// Check if email is verified
 		$is_verified = $class_object->check_email_verify( $email );
