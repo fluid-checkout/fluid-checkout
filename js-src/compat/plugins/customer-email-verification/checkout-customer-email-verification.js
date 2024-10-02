@@ -19,6 +19,9 @@
 
 	var _hasInitialized = false;
 	var _publicMethods = {};
+	var _settings = {
+		emailFieldSelector: '#billing_email',
+	}
 
 
 
@@ -29,13 +32,31 @@
 
 
 	/**
-	 * Maybe trigger checkout update when an AJAX call completes.
+	 * Validate email field.
+	 * 
+	 * @param Field  field  The email field to validate.
+	 * @param Event  e      The event object.
+	 */
+	var validateEmailField = function( field, e ) {
+		// Trigger checkout update before validation
+		$( document.body ).trigger( 'update_checkout' );
+
+		// Validate email field after a delay
+		setTimeout( function() {
+			CheckoutValidation.validateField( field, e.type );
+		}, 1000 );
+	}
+
+
+
+	/**
+	 * Maybe update email field when an AJAX call completes.
 	 * 
 	 * @param Event           e              The event object.
 	 * @param XMLHttpRequest  jqXHR          The jQuery XMLHttpRequest object.
 	 * @param object          jqXHRSettings  The jQuery AJAX settings object.
 	 */
-	var maybeUpdateCheckout = function( e, jqXHR, jqXHRSettings ) {
+	var maybeUpdateEmailField = function( e, jqXHR, jqXHRSettings ) {
 		// Bail if plugin settings object is not available
 		if ( ! window.cev_ajax_object ) return;
 
@@ -51,8 +72,23 @@
 		// Bail if call was not successful
 		if ( ! jqXHR.responseJSON || ! jqXHR.responseJSON.success ) return;
 
-		// Trigger update checkout
-		$( document.body ).trigger( 'update_checkout' );
+		// Get email field to re-validate
+		var field = document.querySelector( _settings.emailFieldSelector );
+
+		// Re-validate email field
+		validateEmailField( field, e );
+	}
+
+
+
+	/**
+	 * Handle captured `blur` event and route to the appropriate functions.
+	 */
+	var handleBlur = function( e ) {
+		// EMAIL INPUT FIELD
+		if ( e.target.matches( _settings.emailFieldSelector ) ) {
+			validateEmailField( e.target, e );
+		}
 	}
 
 
@@ -63,9 +99,12 @@
 	_publicMethods.init = function( options ) {
 		if ( _hasInitialized ) { return; }
 
+		// Add event listeners
+		document.addEventListener( 'blur', handleBlur, true );
+
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
-			$( document ).ajaxComplete( maybeUpdateCheckout );
+			$( document ).ajaxComplete( maybeUpdateEmailField );
 		}
 
 		_hasInitialized = true;
