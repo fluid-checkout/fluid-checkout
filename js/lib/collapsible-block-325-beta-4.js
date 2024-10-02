@@ -1,10 +1,9 @@
 /**
- * File slider.js.
+ * File collapsible-block.js.
  *
- * Implement interactive mobile and desktop slider
+ * Implement collapsible block functionality.
  */
-
- (function (root, factory) {
+(function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
 	  define([], factory(root));
 	} else if ( typeof exports === 'object' ) {
@@ -66,13 +65,13 @@
 
 
 
-	/*!
-	* Merge two or more objects together.
-	* (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
-	* @param   {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
-	* @param   {Object}   objects  The objects to merge together
-	* @returns {Object}            Merged values of defaults and options
-	*/
+	/**!
+	 * Merge two or more objects together.
+	 * (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
+	 * @param   {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
+	 * @param   {Object}   objects  The objects to merge together
+	 * @returns {Object}            Merged values of defaults and options
+	 */
 	var extend = function () {
 		// Variables
 		var extended = {};
@@ -396,6 +395,41 @@
 		}
 	}
 
+	/**
+	 * Get the CSS transition duration in milliseconds for the element.
+	 *
+	 * @param   HTMLElement  element   Element to get the transition duration value.
+	 */
+	var getHeightTransitionDuration = function( element ) {
+		// Bail as zero if element is invalid
+		if ( ! element ) { return 0; }
+
+		// Get transition duration for the height property
+		var transitionProperties = window.getComputedStyle( element ).transitionProperty;
+		var transitionDurations = window.getComputedStyle( element ).transitionDuration;
+
+		// Bail as zero if transition styles are not set
+		if ( ! transitionProperties || ! transitionDurations ) { return 0; }
+
+		// Get transition properties and durations in lists
+		var transitionPropertiesList = transitionProperties.split( ', ' );
+		var transitionDurationsList = transitionDurations.split( ', ' );
+
+		// Get index of the `height` property in the transition properties list
+		var heightPropertyIndex = transitionPropertiesList.indexOf( 'height' );
+
+		// Get the duration of the `height` property transition in milliseconds
+		var heightTransitionValue = transitionDurationsList[ heightPropertyIndex ];
+		var heightTransitionInMilliseconds = heightTransitionValue && heightTransitionValue.indexOf( 'ms' ) > -1;
+		var heightTransitionDuration = heightTransitionValue && heightPropertyIndex > -1 ? parseFloat( heightTransitionValue ) : 0;
+
+		// Maybe convert the duration to milliseconds
+		heightTransitionDuration = heightTransitionInMilliseconds ? heightTransitionDuration : heightTransitionDuration * 1000;
+
+		// Return the duration of the `height` property transition in milliseconds
+		return heightTransitionDuration;
+	}
+
 
 
 	/**
@@ -450,7 +484,6 @@
 		if ( 'target' in element && element.target ) {
 			element = element.target;
 		}
-
 
 		// Remove content element properties when transition is complete
 		element.style.height = '';
@@ -641,6 +674,9 @@
 			manager.contentElement.addEventListener( getTransitionEndEvent(), finishExpand );
 		}
 
+		// Get the duration of the `height` property transition in milliseconds
+		var heightTransitionDuration = getHeightTransitionDuration( manager.contentElement );
+
 		// Expand element to its content height
 		requestAnimationFrame( function() {
 			var computedHeight = getComputedHeight( manager.contentElement );
@@ -659,6 +695,12 @@
 			if ( ! withTransition ) {
 				finishExpand( manager.contentElement );
 			}
+
+			// Make sure to finish the "expand" state change after the duration of the height transition,
+			// so we don't need to rely completely on the browser's transitionend event.
+			setTimeout( function() {
+				finishExpand( manager.contentElement );
+			}, heightTransitionDuration + 50 );
 		} );
 	}
 

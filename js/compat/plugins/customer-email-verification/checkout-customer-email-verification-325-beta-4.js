@@ -20,7 +20,8 @@
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _settings = {
-		emailFieldSelector: '#billing_email',
+		formSelector:                            'form.checkout',
+		emailFieldSelector:                      '#billing_email',
 	}
 
 
@@ -37,15 +38,33 @@
 	 * @param Field  field  The email field to validate.
 	 * @param Event  e      The event object.
 	 */
-	var validateEmailField = function( field, e ) {
-		// Trigger checkout update before validation
-		$( document.body ).trigger( 'update_checkout' );
+	var maybeValidateEmailField = function( field, e ) {
+		// // Trigger checkout update before validation
+		// $( document.body ).trigger( 'update_checkout' );
 
-		// Validate email field after a delay
-		setTimeout( function() {
-			CheckoutValidation.validateField( field, e.type );
-		}, 1000 );
+		// // Validate email field after a delay
+		// setTimeout( function() {
+		// 	CheckoutValidation.validateField( field, e.type );
+		// }, 1000 );
+
+		// Get email field to re-validate
+		var field = document.querySelector( _settings.emailFieldSelector );
+
+		// Maybe trigger field valiation
+		if ( window.CheckoutValidation ) {
+			CheckoutValidation.validateField( field, 'change' );
+		}
 	}
+	/**
+	 * Test multiple validations on the passed field, debounced to allow time for the user to interact with the field.
+	 * 
+	 * @param  {Field}    field             Field for validation.
+	 * @param  {String}   validationEvent   Event that triggered the field validation. Can also be an arbitrary event name.
+	 * @param  {Boolean}  validateHidden    True to validate hidden fields.
+	 * 
+	 * @return {Boolean}                    True if field is valid.
+	 */
+	var maybeValidateEmailFieldDebounced = FCUtils.debounce( maybeValidateEmailField, 1000 );
 
 
 
@@ -58,37 +77,22 @@
 	 */
 	var maybeUpdateEmailField = function( e, jqXHR, jqXHRSettings ) {
 		// Bail if plugin settings object is not available
-		if ( ! window.cev_ajax_object ) return;
+		if ( ! window.cev_ajax_object ) { return; };
 
 		// Bail if AJAX call was not successful
-		if ( 200 !== jqXHR.status ) return;
+		if ( 200 !== jqXHR.status ) { return; };
 
 		// Bail if AJAX call was not to the plugin URL
-		if ( cev_ajax_object.ajax_url !== jqXHRSettings.url ) return;
+		if ( cev_ajax_object.ajax_url !== jqXHRSettings.url ) { return; };
 
 		// Bail if not verification action
-		if ( -1 === jqXHRSettings.data.indexOf( 'action=checkout_page_verify_code' ) ) return;
+		if ( -1 === jqXHRSettings.data.indexOf( 'action=checkout_page_verify_code' ) ) { return; };
 
 		// Bail if call was not successful
-		if ( ! jqXHR.responseJSON || ! jqXHR.responseJSON.success ) return;
+		if ( ! jqXHR.responseJSON || ! jqXHR.responseJSON.success ) { return; };
 
-		// Get email field to re-validate
-		var field = document.querySelector( _settings.emailFieldSelector );
-
-		// Re-validate email field
-		validateEmailField( field, e );
-	}
-
-
-
-	/**
-	 * Handle captured `blur` event and route to the appropriate functions.
-	 */
-	var handleBlur = function( e ) {
-		// EMAIL INPUT FIELD
-		if ( e.target.matches( _settings.emailFieldSelector ) ) {
-			validateEmailField( e.target, e );
-		}
+		// Trigger checkout update before validation
+		$( document.body ).trigger( 'update_checkout' );
 	}
 
 
@@ -99,12 +103,12 @@
 	_publicMethods.init = function( options ) {
 		if ( _hasInitialized ) { return; }
 
-		// Add event listeners
-		document.addEventListener( 'blur', handleBlur, true );
-
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
+			// Validation events
+			$( _settings.formSelector ).on( 'input validate change', _settings.emailFieldSelector, maybeValidateEmailFieldDebounced );
 			$( document ).ajaxComplete( maybeUpdateEmailField );
+			$( document ).on( 'updated_checkout', maybeValidateEmailField );
 		}
 
 		_hasInitialized = true;
