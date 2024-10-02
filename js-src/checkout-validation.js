@@ -493,6 +493,9 @@
 		var field = e.target;
 		var formRow = e.target.closest( _settings.formRowSelector );
 
+		// Bail if field or formRow not available
+		if ( ! field || ! formRow ) { return; }
+
 		// Get correct field when is select2
 		if ( isSelect2Field( e.target ) ) {
 			if ( formRow ) {
