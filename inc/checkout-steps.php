@@ -5850,7 +5850,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 				// Set session value as empty
 				$this->set_checkout_field_value_to_session( $field_key, null );
 			}
-
 		}
 
 		// Clear values for remaining checkout fields
@@ -5868,6 +5867,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $address_type  The address type.
 	 */
 	public function get_address_field_keys( $address_type ) {
+		// Initialize variables
 		$field_key_prefix = $address_type . '_';
 
 		// Get field keys from checkout fields
@@ -5931,7 +5931,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string   $input   Checkout field key (ie. order_comments ).
 	 */
 	public function change_default_checkout_field_value_from_session_or_posted_data( $value, $input ) {
-
 		// Maybe return field from persistent storage
 		$value_from_persistent_storage = $this->get_checkout_field_value_from_session_or_posted_data( $input );
 		if ( null !== $value_from_persistent_storage ) {

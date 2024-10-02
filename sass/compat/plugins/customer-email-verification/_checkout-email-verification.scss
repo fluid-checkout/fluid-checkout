@@ -1,0 +1,25 @@
+// ------------------------------------
+// CHECKOUT EMAIL VERIFICATION
+// ------------------------------------
+
+.fc-wrapper .cev_inline_code_sent {
+	padding: $checkout-field-description-padding;
+}
+
+
+
+.fc-wrapper .cev_pro_chekout_input {
+	&:focus {
+		outline: $focus-outline-field !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-field !important; // Needed to override theme styles
+	}
+}
+
+
+
+.fc-wrapper .verify_account_email_chekout_page {
+	&:focus {
+		outline: $focus-outline-button !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-button !important; // Needed to override theme styles
+	}
+}

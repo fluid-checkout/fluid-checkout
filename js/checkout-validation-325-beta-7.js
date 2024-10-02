@@ -493,6 +493,9 @@
 		var field = e.target;
 		var formRow = e.target.closest( _settings.formRowSelector );
 
+		// Bail if field or formRow not available
+		if ( ! field || ! formRow ) { return; }
+
 		// Get correct field when is select2
 		if ( isSelect2Field( e.target ) ) {
 			if ( formRow ) {
@@ -550,9 +553,12 @@
 
 	/**
 	 * Test multiple validations on the passed field.
-	 * @param  {Field} field    Field for validation.
-	 * @return {String}         Event that triggered the field validation. Can also be an arbitrary event name.
-	 * @return {Boolean}        True if field is valid.
+	 * 
+	 * @param  {Field}    field             Field for validation.
+	 * @param  {String}   validationEvent   Event that triggered the field validation. Can also be an arbitrary event name.
+	 * @param  {Boolean}  validateHidden    True to validate hidden fields.
+	 * 
+	 * @return {Boolean}                    True if field is valid.
 	 */
 	_publicMethods.validateField = function( field, validationEvent, validateHidden ) {
 		// Bail if field is null
@@ -565,7 +571,7 @@
 		if ( ! formRow ) { return true; }
 
 		// Bail if hidden to the user
-		if ( ! isAlwaysValidate( field ) && validateHidden !== true && isFieldHidden( field ) ) { return true; }
+		if ( ! isAlwaysValidate( field ) && true !== validateHidden && isFieldHidden( field ) ) { return true; }
 
 		// Bail if field doesn't need validation
 		if ( ! needsValidation( field, formRow, validationEvent ) ) { return true; }
@@ -588,11 +594,11 @@
 	/**
 	 * Test multiple validations on the passed field, debounced to allow time for the user to interact with the field.
 	 * 
-	 * @param  {Field} field    Field for validation.
-	 * @return {String}         Event that triggered the field validation. Can also be an arbitrary event name.
-	 * @return {Boolean}        True if field is valid.
+	 * @param  {Field}    field             Field for validation.
+	 * @param  {String}   validationEvent   Event that triggered the field validation. Can also be an arbitrary event name.
+	 * @param  {Boolean}  validateHidden    True to validate hidden fields.
 	 * 
-	 * @note   The delay time should be the same as the delay for triggering the update checkout process (see checkout.js).
+	 * @return {Boolean}                    True if field is valid.
 	 */
 	_publicMethods.validateFieldDebounced = FCUtils.debounce( _publicMethods.validateField, 1000 );
 
