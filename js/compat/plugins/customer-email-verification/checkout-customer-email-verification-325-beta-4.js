@@ -20,8 +20,7 @@
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _settings = {
-		formSelector:                            'form.checkout',
-		emailFieldSelector:                      '#billing_email',
+		emailFieldSelector: '#billing_email',
 	}
 
 
@@ -39,14 +38,6 @@
 	 * @param Event  e      The event object.
 	 */
 	var maybeValidateEmailField = function( field, e ) {
-		// // Trigger checkout update before validation
-		// $( document.body ).trigger( 'update_checkout' );
-
-		// // Validate email field after a delay
-		// setTimeout( function() {
-		// 	CheckoutValidation.validateField( field, e.type );
-		// }, 1000 );
-
 		// Get email field to re-validate
 		var field = document.querySelector( _settings.emailFieldSelector );
 
@@ -55,16 +46,6 @@
 			CheckoutValidation.validateField( field, 'change' );
 		}
 	}
-	/**
-	 * Test multiple validations on the passed field, debounced to allow time for the user to interact with the field.
-	 * 
-	 * @param  {Field}    field             Field for validation.
-	 * @param  {String}   validationEvent   Event that triggered the field validation. Can also be an arbitrary event name.
-	 * @param  {Boolean}  validateHidden    True to validate hidden fields.
-	 * 
-	 * @return {Boolean}                    True if field is valid.
-	 */
-	var maybeValidateEmailFieldDebounced = FCUtils.debounce( maybeValidateEmailField, 1000 );
 
 
 
@@ -98,15 +79,29 @@
 
 
 	/**
+	 * Handle captured `blur` event and route to the appropriate functions.
+	 */
+	var handleBlur = function( e ) {
+		// EMAIL INPUT FIELD
+		if ( e.target.matches( _settings.emailFieldSelector ) ) {
+			maybeValidateEmailField( e.target, e );
+		}
+	}
+
+
+
+	/**
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.init = function( options ) {
 		if ( _hasInitialized ) { return; }
 
+		// Add event listeners
+		document.addEventListener( 'blur', handleBlur, true );
+
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
 			// Validation events
-			$( _settings.formSelector ).on( 'input validate change', _settings.emailFieldSelector, maybeValidateEmailFieldDebounced );
 			$( document ).ajaxComplete( maybeUpdateEmailField );
 			$( document ).on( 'updated_checkout', maybeValidateEmailField );
 		}

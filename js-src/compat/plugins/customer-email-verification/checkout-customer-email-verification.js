@@ -37,14 +37,14 @@
 	 * @param Field  field  The email field to validate.
 	 * @param Event  e      The event object.
 	 */
-	var validateEmailField = function( field, e ) {
-		// Trigger checkout update before validation
-		$( document.body ).trigger( 'update_checkout' );
+	var maybeValidateEmailField = function( field, e ) {
+		// Get email field to re-validate
+		var field = document.querySelector( _settings.emailFieldSelector );
 
-		// Validate email field after a delay
-		setTimeout( function() {
-			CheckoutValidation.validateField( field, e.type );
-		}, 1000 );
+		// Maybe trigger field valiation
+		if ( window.CheckoutValidation ) {
+			CheckoutValidation.validateField( field, 'change' );
+		}
 	}
 
 
@@ -58,25 +58,22 @@
 	 */
 	var maybeUpdateEmailField = function( e, jqXHR, jqXHRSettings ) {
 		// Bail if plugin settings object is not available
-		if ( ! window.cev_ajax_object ) return;
+		if ( ! window.cev_ajax_object ) { return; };
 
 		// Bail if AJAX call was not successful
-		if ( 200 !== jqXHR.status ) return;
+		if ( 200 !== jqXHR.status ) { return; };
 
 		// Bail if AJAX call was not to the plugin URL
-		if ( cev_ajax_object.ajax_url !== jqXHRSettings.url ) return;
+		if ( cev_ajax_object.ajax_url !== jqXHRSettings.url ) { return; };
 
 		// Bail if not verification action
-		if ( -1 === jqXHRSettings.data.indexOf( 'action=checkout_page_verify_code' ) ) return;
+		if ( -1 === jqXHRSettings.data.indexOf( 'action=checkout_page_verify_code' ) ) { return; };
 
 		// Bail if call was not successful
-		if ( ! jqXHR.responseJSON || ! jqXHR.responseJSON.success ) return;
+		if ( ! jqXHR.responseJSON || ! jqXHR.responseJSON.success ) { return; };
 
-		// Get email field to re-validate
-		var field = document.querySelector( _settings.emailFieldSelector );
-
-		// Re-validate email field
-		validateEmailField( field, e );
+		// Trigger checkout update before validation
+		$( document.body ).trigger( 'update_checkout' );
 	}
 
 
@@ -87,7 +84,7 @@
 	var handleBlur = function( e ) {
 		// EMAIL INPUT FIELD
 		if ( e.target.matches( _settings.emailFieldSelector ) ) {
-			validateEmailField( e.target, e );
+			maybeValidateEmailField( e.target, e );
 		}
 	}
 
@@ -104,7 +101,9 @@
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
+			// Validation events
 			$( document ).ajaxComplete( maybeUpdateEmailField );
+			$( document ).on( 'updated_checkout', maybeValidateEmailField );
 		}
 
 		_hasInitialized = true;
