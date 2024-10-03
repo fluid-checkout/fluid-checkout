@@ -62,11 +62,14 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 		// Bail if class object is not available
 		if ( ! is_object( $class_object ) ) { return; }
 
-		$enable_otp = FluidCheckout_Settings::instance()->get_option( 'awp_enable_otp', 'no' );
-		$enable_otp_for_visitors = FluidCheckout_Settings::instance()->get_option( 'awp_enable_otp_for_visitors', 'no' );
+		$is_enabled = FluidCheckout_Settings::instance()->get_option( 'awp_enable_otp', 'no' );
+		$is_visitors_only = FluidCheckout_Settings::instance()->get_option( 'awp_enable_otp_for_visitors', 'no' );
 
 		// Bail if OTP verification is not enabled
-		if ( 'yes' !== $enable_otp && ( 'yes' !== $enable_otp_for_visitors || is_user_logged_in() ) ) { return; }
+		if ( 'yes' !== $is_enabled ) { return; }
+
+		// Bail if OTP verification is enabled for visitors only and the user is logged in
+		if ( 'yes' === $is_visitors_only && is_user_logged_in() ) { return; }
 		
 		// Move OTP verification popup
 		remove_action( 'woocommerce_after_order_notes', array( $class_object, 'add_otp_verification_popup' ), 10 );
