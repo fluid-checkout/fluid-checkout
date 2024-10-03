@@ -45,6 +45,9 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 		// Bail if not on checkout page
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
+		// Remove scripts conflicting with FC
+		$this->remove_action_for_class( 'wp_enqueue_scripts', array( 'AWP\Wawp_Countrycode', 'enqueue_scripts' ), 10 );
+
 		// OTP verification popup
 		$this->otp_verification_hooks();
 	}
