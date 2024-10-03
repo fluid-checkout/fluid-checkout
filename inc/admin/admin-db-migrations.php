@@ -28,7 +28,7 @@ class FluidCheckout_AdminDBMigrations extends FluidCheckout {
 	public function hooks() {
 		add_action( 'admin_init', array( $this, 'maybe_dismiss_migrate_success_message' ), 10 );
 		add_action( 'admin_init', array( $this, 'maybe_migrate_database' ), 10 );
-		add_action( 'plugins_loaded', array( $this, 'maybe_migrate_database_on_first_activation' ), 10 );
+		add_action( 'init', array( $this, 'maybe_migrate_database_on_first_activation' ), 10 );
 	}
 
 
