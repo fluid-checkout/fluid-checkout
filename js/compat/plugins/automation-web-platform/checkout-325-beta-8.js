@@ -120,12 +120,13 @@ jQuery(document).ready(function($) {
                     });
                 }
 
-				// CHANGE: Trigger update checkout event
-				$(document.body).trigger('update_checkout');
+                // CHANGE: Trigger update checkout event
+                $( document.body ).trigger( 'update_checkout' );
 
                 setTimeout(function() {
                     $awpOtpPopup.hide();
-                    // CHANGE: Remove checkout form submission
+                    // CHANGE: Replace the checkout form submit event with the default one
+                    return true;
                 }, 2000);
             } else {
                 console.log("Incorrect OTP");
@@ -141,8 +142,8 @@ jQuery(document).ready(function($) {
         $awpOtpPopup.hide();
     });
 
-    // CHANGE: Add more selectors to trigger OTP verification
-    $(document).on('click', '#place_order, .fc-checkout-step .fc-step__substep-save, .fc-checkout-step .fc-step__next-step', async function(e) {
+    // CHANGE: Replace selectors to trigger OTP verification
+    $(document).on('click', '.fc-checkout-step .fc-step__substep-save, .fc-checkout-step .fc-step__next-step', async function(e) {
     if (otpAjax.enableForVisitorsOnly === 'yes' && otpAjax.isLoggedIn === 'true') {
         return true;
     }
@@ -166,25 +167,16 @@ jQuery(document).ready(function($) {
 
             if (response.success) {
                 if (response.data.status === 'verified') {
-					// CHANGE: TODO:: Trigger button click from the inital event instead of submitting the checkout form
-
-					// If target of the event is the substep button
-					if ( e.target.matches('.fc-checkout-step .fc-step__substep-save') ) {
-						return true;
-					}
-
-                    // CHANGE: Remove checkout form submission
+                    // CHANGE: Replace the checkout form submit event with the default one
+                    return true;
                 } else if (response.data.status === 'not_verified') {
                     sendOtp(phoneNumber, firstName);
                     $awpOtpPopup.show();
                 } else if (sessionStorage.getItem('otp_verified') === 'true') {
-					// CHANGE: TODO:: Trigger button click from the inital event instead of submitting the checkout form
-					// If target of the event is the substep button
-					if ( e.target.matches('.fc-checkout-step .fc-step__substep-save') ) {
-						return true;
-					}
-                    // CHANGE: Remove checkout form submission
-                } else {
+                    // CHANGE: Replace the checkout form submit event with the default one
+                    return true;
+                // CHANGE: Check if the hidden field value is empty to avoid repeated verification
+                } else if ( $('#wawp-is_verified').length && ! $('#wawp-is_verified').val() ) {
                     sendOtp(phoneNumber, firstName);
                     $awpOtpPopup.show();
                 }

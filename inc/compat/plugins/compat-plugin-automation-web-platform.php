@@ -75,6 +75,9 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 		// Output hidden fields
 		add_action( 'fc_checkout_contact_after_fields', array( $this, 'output_custom_hidden_fields' ), 10 );
 
+		// Add substep fragments
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_hidden_fields_fragment' ), 10 );
+
 		// Maybe set step as incomplete
 		add_filter( 'fc_is_step_complete_contact', array( $this, 'maybe_set_step_incomplete_contact' ), 10 );
 
@@ -173,6 +176,24 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 		echo '<input type="hidden" id="wawp-is_verified" name="wawp-is_verified" value="'. esc_attr( $is_verified ) .'" class="validate-wawp">';
 		echo '</div>';
 		echo '</div>';
+	}
+
+
+
+	/**
+	 * Add hidden fields as checkout fragment.
+	 *
+	 * @param array $fragments Checkout fragments.
+	 */
+	public function add_contact_hidden_fields_fragment( $fragments ) {
+		// Get custom hidden fields HTML
+		ob_start();
+		$this->output_custom_hidden_fields();
+		$html = ob_get_clean();
+
+		// Add fragment
+		$fragments[ '.wawp-custom_checkout_fields' ] = $html;
+		return $fragments;
 	}
 
 
