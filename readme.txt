@@ -370,6 +370,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with plugin WooCommerce Subscriptions. Move shipping methods available for subscription plans from the order summary to the shipping methods section.
 * Improved: Add new CSS variables for customizing the coupon code elements and coupon section.
 * Improved: Accept a new parameter `$context` for the hook `fc_css_variables`. Defaults to `frontend`.
+* Improved: Change hook used to run database migrations on first activation.
 * Fixed: Do not save shipping phone number to order data when shipping address is not needed for the order.
 * Fixed: Deprecated PHP messages saved to log files when using Fluid Checkout with recent versions of PHP.
 * Fixed: Javascript error when trying to re-set the focus on the element after refreshing fragments in some cases.
