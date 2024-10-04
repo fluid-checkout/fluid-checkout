@@ -473,17 +473,20 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 		// Initialize variables
 		$should_update_session = false;
-		$chosen_recurring_method = '';
+		$chosen_recurring_method = array_key_exists( $recurring_cart_package_key, $chosen_shipping_methods ) && array_key_exists( $chosen_shipping_methods[ $recurring_cart_package_key ], $available_methods ) ? $chosen_shipping_methods[ $recurring_cart_package_key ] : '';
 
-		// Get chosen recurring shipping method
-		if ( isset( $chosen_shipping_methods[ $recurring_cart_package_key ] ) && in_array( $chosen_initial_method, $available_methods, true ) ) {
-			$chosen_recurring_method = $chosen_shipping_methods[ $recurring_cart_package_key ];
-		} elseif ( ! empty( $chosen_initial_method ) && in_array( $chosen_initial_method, $available_methods, true ) ) {
-			$chosen_recurring_method = $chosen_initial_method;
-			$should_update_session = true;
-		} else {
-			$chosen_recurring_method = empty( $available_methods ) ? '' : current( $available_methods )->id;
-			$should_update_session = true;
+		// Maybe set the chosen method if not yet set
+		if ( empty( $chosen_recurring_method ) ) {
+			// Maybe set the chosen method to the initial shipment method
+			if ( ! empty( $chosen_initial_method ) && in_array( $chosen_initial_method, $available_methods, true ) ) {
+				$chosen_recurring_method = $chosen_initial_method;
+				$should_update_session = true;
+			}
+			// Otherwise, set to the first available method
+			else {
+				$chosen_recurring_method = empty( $available_methods ) ? '' : current( $available_methods )->id;
+				$should_update_session = true;
+			}
 		}
 
 		// Maybe update the chosen methods session
