@@ -3569,7 +3569,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			$product_names = array();
 
-			if ( sizeof( $packages ) > 1 ) {
+			// Determine if has multiple packages
+			$has_multiple_packages = apply_filters( 'fc_cart_has_multiple_packages', 1 < count( $packages ) );
+
+			if ( $has_multiple_packages ) {
 				foreach ( $package['contents'] as $item_id => $values ) {
 					$product_names[ $item_id ] = $values['data']->get_name() . ' &times;' . $values['quantity'];
 				}
@@ -3579,7 +3582,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			wc_get_template( 'cart/shipping-methods-available.php', array(
 				'package'                   => $package,
 				'available_methods'         => $package['rates'],
-				'show_package_details'      => sizeof( $packages ) > 1,
+				'show_package_details'      => $has_multiple_packages,
 				'package_details'           => implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
 				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
