@@ -28,6 +28,9 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 	public function hooks() {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
+		// Remove scripts conflicting with FC
+		$this->remove_action_for_class( 'wp_enqueue_scripts', array( 'AWP\Wawp_Countrycode', 'enqueue_scripts' ), 10 );
 	}
 
 	/**
@@ -44,9 +47,6 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 	public function checkout_hooks() {
 		// Bail if not on checkout page
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
-
-		// Remove scripts conflicting with FC
-		$this->remove_action_for_class( 'wp_enqueue_scripts', array( 'AWP\Wawp_Countrycode', 'enqueue_scripts' ), 10 );
 
 		// OTP verification popup
 		$this->otp_verification_hooks();
