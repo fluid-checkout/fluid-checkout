@@ -199,7 +199,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		if ( ! $this->is_feature_enabled() ) { return $template; }
 
 		// Bail if not on checkout page.
-		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $template; }
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $template; }
 
 		// Locate new checkout page template
 		$_template  = $this->locate_template( $template, 'checkout/page-checkout.php', null );

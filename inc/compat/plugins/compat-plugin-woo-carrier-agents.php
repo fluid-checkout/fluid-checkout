@@ -48,7 +48,7 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
 		// Enqueue assets
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -97,6 +97,16 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Scripts
 		wp_enqueue_script( 'fc-checkout-woo-carrier-agents' );
 		wp_enqueue_script( 'fc-checkout-validation-woo-carrier-agents' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not on checkout page.
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 

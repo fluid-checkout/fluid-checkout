@@ -48,7 +48,7 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 	 */
 	public function maybe_enqueue_assets() {
 		// Bail if not at checkout
-		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		$this->enqueue_assets();
 	}
