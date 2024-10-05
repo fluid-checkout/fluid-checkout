@@ -120,7 +120,7 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 		$popup_content = ob_get_clean();
 
 		// Replace the button label
-		$popup_content = str_replace( __( 'Confirm order', 'awp' ), __( 'Back to checkout', 'fluid-checkout' ), $popup_content );
+		$popup_content = str_replace( __( 'Confirm order', 'awp' ), __( 'Confirm', 'fluid-checkout' ), $popup_content );
 
 		// Prepend to the page content
 		$content .= $popup_content;
