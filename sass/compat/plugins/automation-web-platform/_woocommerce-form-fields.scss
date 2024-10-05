@@ -1,0 +1,7 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+div.woocommerce form .fc-contact-fields p.form-row:last-of-type {
+	margin-bottom: 0 !important; // Needed to override FC styles
+}

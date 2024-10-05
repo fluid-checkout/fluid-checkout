@@ -1,3 +1,7 @@
 #awp_otp_popup {
   z-index: 5000;
 }
+
+div.woocommerce form .fc-contact-fields p.form-row:last-of-type {
+  margin-bottom: 0 !important;
+}
