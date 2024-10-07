@@ -30,7 +30,7 @@ class FluidCheckout_StatesCitiesAndPlacesForWooCommerce extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'wc-city-select', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/states-cities-and-places-for-woocommerce/place-select' ), array( 'jquery', 'woocommerce' ), NULL );
+		wp_register_script( 'wc-city-select', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/states-cities-and-places-for-woocommerce/place-select' ), array( 'jquery', 'woocommerce' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 }

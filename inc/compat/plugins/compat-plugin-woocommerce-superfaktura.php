@@ -39,7 +39,7 @@ class FluidCheckout_WooCommerceSuperFaktura extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'wc-sf-checkout-js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-superfaktura/checkout' ), array( 'jquery' ), NULL );
+		wp_register_script( 'wc-sf-checkout-js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-superfaktura/checkout' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 

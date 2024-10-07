@@ -73,11 +73,11 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Checkout scripts
-		wp_register_script( 'fc-checkout-packlink-pro-shipping', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/packlink-pro-shipping/checkout-packlink-pro-shipping' ), array( 'jquery', 'fc-utils' ), NULL, true );
+		wp_register_script( 'fc-checkout-packlink-pro-shipping', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/packlink-pro-shipping/checkout-packlink-pro-shipping' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-packlink-pro-shipping', 'window.addEventListener("load",function(){CheckoutPacklinkProShipping.init(fcSettings.checkoutPacklinkProShipping);})' );
 
 		// Add validation script
-		wp_register_script( 'fc-checkout-validation-packlink-pro-shipping', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/packlink-pro-shipping/checkout-validation-packlink-pro-shipping' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_register_script( 'fc-checkout-validation-packlink-pro-shipping', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/packlink-pro-shipping/checkout-validation-packlink-pro-shipping' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-validation-packlink-pro-shipping', 'window.addEventListener("load",function(){CheckoutValidationPacklinkProShipping.init(fcSettings.checkoutValidationPacklinkProShipping);})' );
 	}
 
