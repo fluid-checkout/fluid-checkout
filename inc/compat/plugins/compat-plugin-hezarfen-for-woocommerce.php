@@ -42,7 +42,7 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'wc_hezarfen_checkout_js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/hezarfen-for-woocommerce/checkout' ), array( 'jquery', 'wc-checkout', 'wc_hezarfen_mahalle_helper_js' ), NULL );
+		wp_register_script( 'wc_hezarfen_checkout_js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/hezarfen-for-woocommerce/checkout' ), array( 'jquery', 'wc-checkout', 'wc_hezarfen_mahalle_helper_js' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 

@@ -64,11 +64,11 @@ class FluidCheckout_Seur extends FluidCheckout {
 	public function register_assets() {
 		// Checkout scripts
 		$checkout_script_deps = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ? array( 'jquery', 'selectWoo', 'fc-enhanced-select' ) : array( 'jquery', 'selectWoo' );
-		wp_register_script( 'fc-checkout-seur', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/seur/checkout-seur' ), $checkout_script_deps, NULL, true );
+		wp_register_script( 'fc-checkout-seur', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/seur/checkout-seur' ), $checkout_script_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-seur', 'window.addEventListener("load",function(){CheckoutSeur.init();})' );
 
 		// Add validation script
-		wp_register_script( 'fc-checkout-validation-seur', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/seur/checkout-validation-seur' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_register_script( 'fc-checkout-validation-seur', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/seur/checkout-validation-seur' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-validation-seur', 'window.addEventListener("load",function(){CheckoutValidationSeur.init(fcSettings.checkoutValidationSeur);})' );
 	}
 

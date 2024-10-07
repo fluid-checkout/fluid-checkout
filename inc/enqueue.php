@@ -101,16 +101,16 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		$this->deregister_woocommerce_scripts();
 
 		// Register WooCommerce scripts with modified version
-		wp_register_script( 'woocommerce', $this->get_script_url( 'js/woocommerce' ), array( 'jquery', 'jquery-blockui', 'js-cookie' ), NULL, true );
-		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), array( 'jquery', 'fc-utils' ), NULL, true );
-		wp_register_script( 'wc-address-i18n', $this->get_script_url( 'js/address-i18n' ), array( 'jquery', 'wc-country-select' ), NULL, true );
-		wp_register_script( 'wc-checkout', $this->get_script_url( 'js/checkout' ), array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, true );
+		wp_register_script( 'woocommerce', $this->get_script_url( 'js/woocommerce' ), array( 'jquery', 'jquery-blockui', 'js-cookie' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'wc-address-i18n', $this->get_script_url( 'js/address-i18n' ), array( 'jquery', 'wc-country-select' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'wc-checkout', $this->get_script_url( 'js/checkout' ), array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
 		// Select2 / SelectWoo, replaced with TomSelect but keeping the same handle and dependencies
 		// because many plugins and themes depend on `select2` or `selectWoo` scripts.
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
-			wp_register_script( 'selectWoo', $this->get_script_url( 'js/select2-empty' ), array( 'jquery' ), NULL, true );
-			wp_register_script( 'select2', $this->get_script_url( 'js/select2-empty' ), array( 'jquery' ), NULL, true );
+			wp_register_script( 'selectWoo', $this->get_script_url( 'js/select2-empty' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+			wp_register_script( 'select2', $this->get_script_url( 'js/select2-empty' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 			wp_register_style( 'select2', $this->get_style_url( 'css/select2-empty' ), array(), NULL );
 		}
 	}
@@ -225,22 +225,22 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Register library scripts
-		wp_register_script( 'fc-polyfill-inert', $this->get_script_url( 'js/lib/inert' ), array(), NULL );
-		wp_register_script( 'fc-animate-helper', $this->get_script_url( 'js/lib/animate-helper' ), array(), NULL );
-		wp_register_script( 'fc-collapsible-block', $this->get_script_url( 'js/lib/collapsible-block' ), array(), NULL );
+		wp_register_script( 'fc-polyfill-inert', $this->get_script_url( 'js/lib/inert' ), array(), NULL ); // Should be loaded at the `<head>`
+		wp_register_script( 'fc-animate-helper', $this->get_script_url( 'js/lib/animate-helper' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-collapsible-block', $this->get_script_url( 'js/lib/collapsible-block' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-collapsible-block', 'window.addEventListener("load",function(){CollapsibleBlock.init(fcSettings.collapsibleBlock);})' );
-		wp_register_script( 'fc-flyout-block', $this->get_script_url( 'js/lib/flyout-block' ), array( 'fc-polyfill-inert', 'fc-animate-helper' ), NULL );
+		wp_register_script( 'fc-flyout-block', $this->get_script_url( 'js/lib/flyout-block' ), array( 'fc-polyfill-inert', 'fc-animate-helper' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-flyout-block', 'window.addEventListener("load",function(){FlyoutBlock.init(fcSettings.flyoutBlock);})' );
-		wp_register_script( 'fc-sticky-states', $this->get_script_url( 'js/lib/sticky-states' ), array(), NULL );
+		wp_register_script( 'fc-sticky-states', $this->get_script_url( 'js/lib/sticky-states' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("load",function(){StickyStates.init(fcSettings.stickyStates);})' );
 
 		// Enhanced select
-		wp_register_script( 'tomselect', $this->get_script_url( 'js/tom-select.complete' ), array(), NULL );
-		wp_register_script( 'fc-enhanced-select', $this->get_script_url( 'js/fc-enhanced-select' ), array( 'tomselect' ), NULL );
+		wp_register_script( 'tomselect', $this->get_script_url( 'js/tom-select.complete' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-enhanced-select', $this->get_script_url( 'js/fc-enhanced-select' ), array( 'tomselect' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-enhanced-select', 'window.addEventListener("load",function(){FCEnhancedSelect.init();})' );
 
 		// Register script utilities
-		wp_register_script( 'fc-utils', $this->get_script_url( 'js/fc-utils' ), array(), NULL );
+		wp_register_script( 'fc-utils', $this->get_script_url( 'js/fc-utils' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
 		// Register custom fonts
 		wp_register_style( 'fc-fonts', $this->get_style_url( 'css/fonts' ), array(), null );

@@ -30,7 +30,7 @@ class FluidCheckout_EUVATForWooCommerce extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'alg-wc-eu-vat', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/eu-vat-for-woocommerce/alg-wc-eu-vat' ), array( 'jquery' ), NULL );
+		wp_register_script( 'alg-wc-eu-vat', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/eu-vat-for-woocommerce/alg-wc-eu-vat' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 }
