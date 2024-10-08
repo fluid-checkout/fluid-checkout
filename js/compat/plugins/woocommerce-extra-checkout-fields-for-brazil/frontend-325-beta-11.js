@@ -140,7 +140,10 @@ jQuery(function ($) {
 
 							handleFields(personType, checkCountry);
 						})
-						.change();
+						// CHANGE: Do not trigger `change` event for the field, as it might cause other plugins to behave errorneusly
+
+					// CHANGE: Run the function `handleFields` directly, to handle the field changes without triggering the `change` event remove above
+					handleFields( '1', checkCountry );
 				}
 			};
 
