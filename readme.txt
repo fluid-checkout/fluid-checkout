@@ -367,6 +367,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Option to define which address to save as the shipping address when using a local pickup shipping method. (PRO feature)
 * Added: Compatibility with theme Kapee.
 * Added: Compatibility with plugin Customer Email Verification PRO by Zorem.
+* Added: Compatibility with plugin Mollie Payments for WooCommerce. Fix company field value empty when using payment method Billie from Mollie.
 * Improved: Set all Javascript assets to be loaded at the page footer and defered for better page loading performance.
 * Improved: Compatibility with plugin WooCommerce Subscriptions. Move shipping methods available for subscription plans from the order summary to the shipping methods section.
 * Improved: Add new CSS variables for customizing the coupon code elements and coupon section.
