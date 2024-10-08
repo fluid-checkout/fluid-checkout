@@ -137,6 +137,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'woocommerce_gzd_display_checkout_back_to_cart_button'          => 'no',
 			'woocommerce_gzd_display_checkout_table_color'                  => '#eeeeee',
 			'woocommerce_enable_guest_checkout'                             => 'yes',
+			'free_gifts_for_woocommerce_position'                           => 'after_cart_items',
 
 			// Compatibility settings for themes.
 			'fc_compat_theme_atomion_display_order_progress'                => 'no',
