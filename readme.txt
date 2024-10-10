@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 9.3.3
 * Added: Option to define which address to save as the shipping address when using a local pickup shipping method. (PRO feature)
 * Added: Compatibility with theme Kapee.
 * Added: Compatibility with plugin Customer Email Verification PRO by Zorem.
