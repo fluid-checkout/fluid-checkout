@@ -23,10 +23,10 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		add_filter( 'body_class', array( $this, 'maybe_add_body_class' ), 10 );
 
 		// CSS variables
-		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5 );
-		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100 );
-		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 100 );
-		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_order_summary' ), 100 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_dark_mode' ), 5, 2 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100, 2 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 100, 2 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_order_summary' ), 100, 2 );
 
 		// Custom styles
 		add_action( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
@@ -157,10 +157,12 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 	/**
 	 * Get CSS variables styles.
+	 * 
+	 * @param  string  $context  The context for which to get the CSS variables styles.
 	 */
-	public function get_css_variables_styles() {
+	public function get_css_variables_styles( $context = 'frontend' ) {
 		// Get CSS variables
-		$css_variables = apply_filters( 'fc_css_variables', array( ':root' => array() ) );
+		$css_variables = apply_filters( 'fc_css_variables', array( ':root' => array() ), $context );
 
 		// Bail if no scope for CSS variables
 		if ( ! is_array( $css_variables ) || empty( $css_variables ) ) { return ''; }
@@ -251,7 +253,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function add_checkout_page_custom_styles( $custom_styles ) {		
 		// Get header background color
-		$page_background_color = trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_page_background_color' ) );
+		$page_background_color = trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_page_background_color', '' ) );
 
 		// Bail if color is empty
 		if ( empty( $page_background_color ) ) { return $custom_styles; }
@@ -299,9 +301,13 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	/**
 	 * Maybe add CSS variables for dark mode.
 	 * 
-	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 * @param  array   $css_variables   The CSS variables key/value pairs.
+	 * @param  string  $context         The context for which to get the CSS variables styles. Defaults to `frontend`.
 	 */
-	public function maybe_add_css_variables_dark_mode( $css_variables ) {
+	public function maybe_add_css_variables_dark_mode( $css_variables, $context = 'frontend' ) {
+		// Bail if not on `frontend` context
+		if ( 'frontend' !== $context ) { return $css_variables; }
+
 		// Bail if dark mode is not enabled
 		if ( ! $this->is_dark_mode_enabled() ) { return $css_variables; }
 
@@ -313,11 +319,12 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	/**
 	 * Maybe add CSS variables for header customization.
 	 * 
-	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 * @param  array   $css_variables  The CSS variables key/value pairs.
+	 * @param  string  $context         The context for which to get the CSS variables styles. Defaults to `frontend`.
 	 */
-	public function add_css_variables_header( $css_variables ) {
+	public function add_css_variables_header( $css_variables, $context = 'frontend' ) {
 		// Get header background color
-		$header_background_color_esc = esc_attr( trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_header_background_color' ) ) );
+		$header_background_color_esc = esc_attr( trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_header_background_color', '' ) ) );
 
 		// Bail if color is empty
 		if ( empty( $header_background_color_esc ) ) { return $css_variables; }
@@ -335,9 +342,10 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	/**
 	 * Maybe add CSS variables for header customization.
 	 * 
-	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 * @param  array   $css_variables  The CSS variables key/value pairs.
+	 * @param  string  $context         The context for which to get the CSS variables styles. Defaults to `frontend`.
 	 */
-	public function maybe_add_css_variables_header( $css_variables ) {
+	public function maybe_add_css_variables_header( $css_variables, $context = 'frontend' ) {
 		// Bail if not on checkout page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $css_variables; }
 
@@ -349,11 +357,12 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	/**
 	 * Maybe add CSS variables for footer customization.
 	 * 
-	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 * @param  array   $css_variables  The CSS variables key/value pairs.
+	 * @param  string  $context         The context for which to get the CSS variables styles. Defaults to `frontend`.
 	 */
-	public function add_css_variables_footer( $css_variables ) {
+	public function add_css_variables_footer( $css_variables, $context = 'frontend' ) {
 		// Get footer background color
-		$footer_background_color_esc = esc_attr( trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_footer_background_color' ) ) );
+		$footer_background_color_esc = esc_attr( trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_footer_background_color', '' ) ) );
 
 		// Bail if color is empty
 		if ( empty( $footer_background_color_esc ) ) { return $css_variables; }
@@ -371,13 +380,14 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	/**
 	 * Maybe add CSS variables for footer customization.
 	 * 
-	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 * @param  array   $css_variables  The CSS variables key/value pairs.
+	 * @param  string  $context         The context for which to get the CSS variables styles. Defaults to `frontend`.
 	 */
-	public function maybe_add_css_variables_footer( $css_variables ) {
+	public function maybe_add_css_variables_footer( $css_variables, $context = 'frontend' ) {
 		// Bail if not on checkout page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $css_variables; }
 
-		return $this->add_css_variables_footer( $css_variables );
+		return $this->add_css_variables_footer( $css_variables, $context );
 	}
 
 
@@ -385,9 +395,10 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	/**
 	 * Maybe add CSS variables for footer customization.
 	 * 
-	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 * @param  array   $css_variables  The CSS variables key/value pairs.
+	 * @param  string  $context         The context for which to get the CSS variables styles. Defaults to `frontend`.
 	 */
-	public function add_css_variables_order_summary( $css_variables ) {
+	public function add_css_variables_order_summary( $css_variables, $context = 'frontend' ) {
 		// Get footer background color
 		$color_esc = esc_attr( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_order_review_highlight_color' ) );
 
@@ -407,13 +418,14 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	/**
 	 * Maybe add CSS variables for order summary.
 	 * 
-	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 * @param  array   $css_variables  The CSS variables key/value pairs.
+	 * @param  string  $context         The context for which to get the CSS variables styles. Defaults to `frontend`.
 	 */
-	public function maybe_add_css_variables_order_summary( $css_variables ) {
+	public function maybe_add_css_variables_order_summary( $css_variables, $context = 'frontend' ) {
 		// Bail if not on checkout page.
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $css_variables; }
 
-		return $this->add_css_variables_order_summary( $css_variables );
+		return $this->add_css_variables_order_summary( $css_variables, $context );
 	}
 
 }

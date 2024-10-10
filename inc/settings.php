@@ -66,6 +66,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_shipping_methods_disable_auto_select'                       => 'no',
 			'fc_enable_checkout_local_pickup'                               => 'no',
 			'fc_local_pickup_display_clear_shipping_methods_button'         => 'no',
+			'fc_local_pickup_save_shipping_address'                         => 'no',
 			'fc_show_shipping_section_highlighted'                          => 'yes',
 			'fc_pro_checkout_billing_address_position'                      => 'step_after_shipping',
 			'fc_show_billing_section_highlighted'                           => 'yes',
@@ -149,6 +150,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_theme_betheme_output_checkout_steps_section'         => 'no',
 			'fc_compat_theme_thegem_output_checkout_steps_section'          => 'no',
 			'fc_compat_theme_porto_output_checkout_steps_section'           => 'no',
+			'fc_compat_theme_kapee_output_checkout_steps_section'           => 'no',
 			'fc_compat_theme_go_enable_account_wide_layout'                 => 'yes',
 			'fc_compat_theme_fennik_output_breadcrumbs_section'             => 'no',
 

@@ -48,7 +48,7 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
 		// Enqueue assets
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -82,11 +82,11 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Checkout scripts
-		wp_register_script( 'fc-checkout-woo-carrier-agents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-carrier-agents/checkout-woo-carrier-agents' ), array( 'jquery', 'fc-utils' ), NULL, true );
+		wp_register_script( 'fc-checkout-woo-carrier-agents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-carrier-agents/checkout-woo-carrier-agents' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-woo-carrier-agents', 'window.addEventListener("load",function(){CheckoutWooCarrierAgents.init(fcSettings.checkoutWooCarrierAgents);})' );
 
 		// Add validation script
-		wp_register_script( 'fc-checkout-validation-woo-carrier-agents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-carrier-agents/checkout-validation-woo-carrier-agents' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_register_script( 'fc-checkout-validation-woo-carrier-agents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-carrier-agents/checkout-validation-woo-carrier-agents' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-validation-woo-carrier-agents', 'window.addEventListener("load",function(){CheckoutValidationWooCarrierAgents.init(fcSettings.checkoutValidationWooCarrierAgents);})' );
 	}
 
@@ -97,6 +97,16 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Scripts
 		wp_enqueue_script( 'fc-checkout-woo-carrier-agents' );
 		wp_enqueue_script( 'fc-checkout-validation-woo-carrier-agents' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not on checkout page.
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 

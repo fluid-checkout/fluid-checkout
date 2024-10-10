@@ -10,9 +10,8 @@
 	padding: $checkout-substep-padding;
 	padding-top: $global-spacing-extra-small;
 	padding-bottom: $global-spacing-extra-small;
-	border: $coupon-code-coupon-border;
-	border-radius: $checkout-substep-border-radius;
-	border-color: $success-color;
+	border: $discount-section-border;
+	border-radius: $discount-section-border-radius;
 	line-height: 1.2;
 	
 	@media (#{$bp-smaller-than-tablet}) {

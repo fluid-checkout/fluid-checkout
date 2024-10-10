@@ -93,11 +93,11 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Checkout scripts
-		wp_register_script( 'fc-checkout-mondial-relay', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mondialrelay/checkout-mondialrelay' ), array( 'jquery', 'fc-utils', 'mondialrelay-wp' ), NULL, true );
+		wp_register_script( 'fc-checkout-mondial-relay', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mondialrelay/checkout-mondialrelay' ), array( 'jquery', 'fc-utils', 'mondialrelay-wp' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-mondial-relay', 'window.addEventListener("load",function(){CheckoutMondialRelay.init(fcSettings.checkoutMondialRelay);})' );
 
 		// Add validation script
-		wp_register_script( 'fc-checkout-validation-mondial-relay', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mondialrelay/checkout-validation-mondialrelay' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_register_script( 'fc-checkout-validation-mondial-relay', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mondialrelay/checkout-validation-mondialrelay' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-validation-mondial-relay', 'window.addEventListener("load",function(){CheckoutValidationMondialRelay.init(fcSettings.checkoutValidationMondialRelay);})' );
 	}
 

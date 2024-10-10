@@ -37,7 +37,7 @@ class FluidCheckout_WCPostcodeChecker extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'wpo-wcnlpc', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-postcode-checker/wc-postcode-checker' ), array( 'jquery', 'wc-address-i18n' ), NULL );
+		wp_register_script( 'wpo-wcnlpc', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-postcode-checker/wc-postcode-checker' ), array( 'jquery', 'wc-address-i18n' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 
