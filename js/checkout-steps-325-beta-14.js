@@ -518,22 +518,6 @@
 	}
 
 
-
-	var maybeSetFocusOnCurrentStep = function() {
-		// Get current step
-		var currentStepElement = document.querySelector( _settings.currentStepSelector );
-
-		// Bail if no current step was found
-		if ( ! currentStepElement ) { return; }
-
-		// Maybe set focus to the first focusable element that is visible inside the current step
-		requestAnimationFrame( function() {
-			maybeFocusFirstElement( currentStepElement );
-		} );
-	}
-
-
-
 	/**
 	 * Maybe change visibility status of checkout substep sections.
 	 *
@@ -701,11 +685,13 @@
 			$( document.body ).on( 'updated_checkout', maybeChangeSubstepState );
 			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
 
+			// Collapsible block, focus on expand		
 			if ( window.CollapsibleBlock ) {
 				$( document.body ).on( 'updated_checkout', CollapsibleBlock.enableFocusOnExpand );
 			}
 		}
 
+		// Collapsible block, focus on expand
 		if ( window.CollapsibleBlock ) {
 			CollapsibleBlock.disableFocusOnExpand();
 		}
