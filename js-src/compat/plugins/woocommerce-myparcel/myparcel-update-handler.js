@@ -14,6 +14,9 @@
 
 	'use strict';
 
+	var $ = jQuery;
+	var _hasJQuery = ( $ != null );
+
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _settings = {
