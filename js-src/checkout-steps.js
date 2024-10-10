@@ -200,6 +200,31 @@
 		}
 	}
 
+	/**
+	 * Maybe set focus to the first focusable element that is visible inside the provided element.
+	 *
+	 * @param   {[type]}  element  [element description]
+	 *
+	 * @return  {[type]}           [return description]
+	 */
+	var maybeFocusFirstElement = function( element ) {
+		// Get first focusable element that is visible
+		var focusElement = null;
+		var focusableElements = window.FCUtils && Array.from( FCUtils.getFocusableElements( element ) );
+		for ( var i = 0; i < focusableElements.length; i++ ) {
+			var focusableElement = focusableElements[i];
+			if ( FCUtils.isElementVisible( focusableElement ) ) {
+				focusElement = focusableElement;
+				break;
+			}
+		}
+
+		// Set focus
+		if ( focusElement ) {
+			focusElement.focus();
+		}
+	}
+
 
 
 	/**
@@ -405,21 +430,8 @@
 		// Update progress bar
 		updateProgressBar();
 
-		// Maybe set focusElement to the first focusable element that is visible
-		var focusElement = null;
-		var focusableElements = window.FCUtils && Array.from( FCUtils.getFocusableElements( nextStepElement ) );
-		for ( var i = 0; i < focusableElements.length; i++ ) {
-			var focusableElement = focusableElements[i];
-			if ( FCUtils.isElementVisible( focusableElement ) ) {
-				focusElement = focusableElement;
-				break;
-			}
-		}
-
-		// Set focus
-		if ( focusElement ) {
-			focusElement.focus();
-		}
+		// Maybe set focus to the first focusable element that is visible in the next step
+		maybeFocusFirstElement( nextStepElement );
 
 		// Change scroll position after moving to next step
 		scrollToElement( stepElement );
@@ -503,6 +515,21 @@
 	var updateGlobalStepStates = function( _event, data ) {
 		updateStepBodyClasses();
 		maybeDisablePlaceOrderButton();
+	}
+
+
+
+	var maybeSetFocusOnCurrentStep = function() {
+		// Get current step
+		var currentStepElement = document.querySelector( _settings.currentStepSelector );
+
+		// Bail if no current step was found
+		if ( ! currentStepElement ) { return; }
+
+		// Maybe set focus to the first focusable element that is visible inside the current step
+		requestAnimationFrame( function() {
+			maybeFocusFirstElement( currentStepElement );
+		} );
 	}
 
 
@@ -673,6 +700,14 @@
 			$( document.body ).on( 'updated_checkout', updateGlobalStepStates );
 			$( document.body ).on( 'updated_checkout', maybeChangeSubstepState );
 			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
+
+			if ( window.CollapsibleBlock ) {
+				$( document.body ).on( 'updated_checkout', CollapsibleBlock.enableFocusOnExpand );
+			}
+		}
+
+		if ( window.CollapsibleBlock ) {
+			CollapsibleBlock.disableFocusOnExpand();
 		}
 
 		// Add init class

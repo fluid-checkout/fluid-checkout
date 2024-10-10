@@ -378,6 +378,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Javascript error when trying to re-set the focus on the element after refreshing fragments in some cases.
 * Fixed: Substeps keeping expanding, collapsing or changing its visibility state in some cases.
 * Fixed: Compatibility issue between Brazilian Market and PayPal Brasil plugins where the state field would be cleared in some cases.
+* Fixed: Wrong focused element and scroll positions when first loading the checkout page in some cases.
 
 = 3.2.4 - 2024-09-15 =
 
