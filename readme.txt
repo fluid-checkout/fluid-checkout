@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.6.2
-Stable tag: 3.2.4
+Stable tag: 3.2.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -362,7 +362,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= 3.2.5 - 2024-10-10 =
 
 * Bump tested up to WooCommerce 9.3.3
 * Added: Option to define which address to save as the shipping address when using a local pickup shipping method. (PRO feature)
