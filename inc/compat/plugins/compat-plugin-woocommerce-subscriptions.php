@@ -513,10 +513,13 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
 		// Bail if plugin class is not available
-		if ( ! class_exists( 'WC_Subscriptions_Cart' ) ) { return; }
+		if ( ! class_exists( 'WC_Subscriptions_Cart' ) ) { return $review_text_lines; }
 
 		// Bail if function is not available
-		if ( ! function_exists( 'wcs_cart_price_string' ) ) { return; }
+		if ( ! function_exists( 'wcs_cart_price_string' ) ) { return $review_text_lines; }
+
+		// Bail if cart does not need shipping
+		if ( ! WC()->cart->needs_shipping() ) { return $review_text_lines; }
 
 		// Iterate recurring carts
 		foreach ( WC()->cart->recurring_carts as $recurring_cart_key => $recurring_cart ) {
