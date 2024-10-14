@@ -23,7 +23,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		$this->shipping_phone_hooks();
 
 		// Personal data management
-		add_filter( 'woocommerce_privacy_get_personal_data_erasers', array( $this, 'register_personal_data_erasers' ), 10 );
+		add_filter( 'wp_privacy_personal_data_erasers', array( $this, 'register_personal_data_erasers' ), 10 );
 	}
 
 	/**
@@ -346,7 +346,14 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 			'limit'            => $limit,
 			'page'             => $page,
 			'return'           => 'ids',
-			'billing_email'    => $email_address,
+			'meta_query'       => array(
+				'relation' => 'AND',
+				array(
+					'key'     => '_billing_email',
+					'value'   => $email_address,
+					'compare' => '=',
+				),
+			),
 		) );
 
 		// Bail if no orders found
