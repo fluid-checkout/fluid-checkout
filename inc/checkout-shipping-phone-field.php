@@ -19,11 +19,11 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Privacy data managers
+		// Shipping phone data export and erasure is handled by the core WooCommerce privacy class.
+
 		// Shipping phone
 		$this->shipping_phone_hooks();
-
-		// Personal data management
-		add_filter( 'wp_privacy_personal_data_erasers', array( $this, 'register_personal_data_erasers' ), 10 );
 	}
 
 	/**
@@ -303,120 +303,6 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		$fields[ $field_key ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_args( $fields[ $field_key ], array( 'class' => array( 'form-row-last' ) ) );
 
 		return $fields;
-	}
-
-
-
-	/**
-	 * Register the data erasers for this feature.
-	 *
-	 * @param   [type]  $erasers  [$erasers description]
-	 *
-	 * @return  [type]            [return description]
-	 */
-	public function register_personal_data_erasers( $erasers ) {
-		// Orders
-		$erasers[ 'woocommerce-order' ] = array(
-			'eraser_friendly_name' => __( 'Shipping phone on orders', 'fluid-checkout' ),
-			'callback'             => array( $this, 'erase_personal_data_shipping_phone_from_orders' ),
-		);
-
-		// User meta
-		$erasers[ 'woocommerce-order' ] = array(
-			'eraser_friendly_name' => __( 'Shipping phone on customer profile', 'fluid-checkout' ),
-			'callback'             => array( $this, 'erase_personal_data_shipping_phone_from_user_meta' ),
-		);
-
-		return $erasers;
-	}
-
-	/**
-	 * Erase personal data from orders for this feature.
-	 *
-	 * @param   string  $email_address  The email address to erase data for.
-	 * @param   int     $page           The page number, used for pagination.
-	 */
-	public function erase_personal_data_shipping_phone_from_orders( $email_address, $page = 1 ) {
-		// Get pagination parameters
-		$limit = 500;
-		$page = (int) $page;
-
-		// Get orders
-		$orders = wc_get_orders( array(
-			'limit'            => $limit,
-			'page'             => $page,
-			'return'           => 'ids',
-			'meta_query'       => array(
-				'relation' => 'AND',
-				array(
-					'key'     => '_billing_email',
-					'value'   => $email_address,
-					'compare' => '=',
-				),
-			),
-		) );
-
-		// Bail if no orders found
-		if ( empty( $orders ) ) { return; }
-
-		// Loop through orders
-		foreach ( $orders as $order_id ) {
-			// Get the order object
-			$order = wc_get_order( $order_id );
-
-			// Bail if order was not found
-			if ( ! $order ) { continue; }
-
-			// Remove shipping phone
-			if ( is_callable( array( $order, 'delete_meta_data' ) ) ) {
-				$order->delete_meta_data( '_shipping_phone' );
-			}
-			else {
-				delete_post_meta( $order_id, '_shipping_phone' );
-			}
-
-			// Save order
-			$order->save();
-
-			// Update flag for items removed
-			$items_removed = true;
-		}
-
-		// Return erasure results
-		return array(
-			'items_removed'  => $items_removed,
-			'items_retained' => false, // Always `false` because this data can always be removed
-			'messages'       => array( __( 'Shipping phone removed from orders.', 'fluid-checkout' ) ),
-			'done'           => count( $orders ) < $limit,
-		);
-	}
-
-	/**
-	 * Erase personal data from user meta for this feature.
-	 *
-	 * @param   string  $email_address  The email address to erase data for.
-	 * @param   int     $page           The page number, used for pagination.
-	 */
-	public function erase_personal_data_shipping_phone_from_user_meta( $email_address, $page = 1 ) {
-		// Get user by email
-		$user = get_user_by( 'email', $email_address );
-
-		// Bail if user was not found
-		if ( ! $user ) { return; }
-
-		// Get user id
-		$user_id = $user->ID;
-		
-		// Remove shipping phone from user meta
-		delete_user_meta( $user_id, 'shipping_phone' );
-
-		// Return erasure results
-		return array(
-			'items_removed'  => true, // Always `true` because this data can always be removed
-			'items_retained' => false, // Always `false` because this data can always be removed
-			'messages'       => array( __( 'Shipping phone removed from user profile.', 'fluid-checkout' ) ),
-			'done'           => true,
-		);
 	}
 
 }
