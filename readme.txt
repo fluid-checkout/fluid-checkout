@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.6.2
-Stable tag: 3.2.4
+Stable tag: 3.2.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -364,9 +364,17 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Compatibility with plugin Mailchimp for WooCommerce. Prevent hiding the newsletter checkbox field behind a link button when set as optional.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix fatal error when processing checkout updates if cart contains only digital products.
+
+= 3.2.5 - 2024-10-10 =
+
+* Bump tested up to WooCommerce 9.3.3
 * Added: Option to define which address to save as the shipping address when using a local pickup shipping method. (PRO feature)
 * Added: Compatibility with theme Kapee.
 * Added: Compatibility with plugin Customer Email Verification PRO by Zorem.
+* Added: Compatibility with plugin Mollie Payments for WooCommerce. Fix company field value empty when using payment method Billie from Mollie.
+* Improved: Set all Javascript assets to be loaded at the page footer and defered for better page loading performance.
 * Improved: Compatibility with plugin WooCommerce Subscriptions. Move shipping methods available for subscription plans from the order summary to the shipping methods section.
 * Improved: Add new CSS variables for customizing the coupon code elements and coupon section.
 * Improved: Accept a new parameter `$context` for the hook `fc_css_variables`. Defaults to `frontend`.
@@ -375,6 +383,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Deprecated PHP messages saved to log files when using Fluid Checkout with recent versions of PHP.
 * Fixed: Javascript error when trying to re-set the focus on the element after refreshing fragments in some cases.
 * Fixed: Substeps keeping expanding, collapsing or changing its visibility state in some cases.
+* Fixed: Compatibility issue between Brazilian Market and PayPal Brasil plugins where the state field would be cleared in some cases.
+* Fixed: Wrong focused element and scroll positions when first loading the checkout page in some cases.
 
 = 3.2.4 - 2024-09-15 =
 

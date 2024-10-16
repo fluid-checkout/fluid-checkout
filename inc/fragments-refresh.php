@@ -73,7 +73,7 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Register scripts
-		wp_register_script( 'fc-fragments-update', FluidCheckout_Enqueue::instance()->get_script_url( 'js/fc-fragments-refresh' ), array( 'jquery', 'jquery-blockui', 'fc-utils' ), NULL );
+		wp_register_script( 'fc-fragments-update', FluidCheckout_Enqueue::instance()->get_script_url( 'js/fc-fragments-refresh' ), array( 'jquery', 'jquery-blockui', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-fragments-update', 'window.addEventListener("load",function(){FCFragmentsRefresh.init(fcSettings.fragmentsRefresh);})' );
 
 		// Register styles

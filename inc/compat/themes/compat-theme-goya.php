@@ -48,7 +48,7 @@ class FluidCheckout_ThemeCompat_Goya extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'fc-compat-goya-floating-labels', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/themes/goya/float-labels' ), array( 'jquery' ), NULL, true );
+		wp_register_script( 'fc-compat-goya-floating-labels', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/themes/goya/float-labels' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-compat-goya-floating-labels', 'window.addEventListener("load",function(){GoyaFloatLabels.init();})' );
 	}
 
