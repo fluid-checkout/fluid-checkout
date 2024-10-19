@@ -82,8 +82,12 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 		// Output hidden fields
 		add_action( 'fc_checkout_contact_after_fields', array( $this, 'output_custom_hidden_fields' ), 10 );
 
+		// OTP verification button
+		add_action( 'woocommerce_form_field', array( $this, 'add_otp_verification_button' ), 10, 4 );
+
 		// Add substep fragments
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_hidden_fields_fragment' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_verification_button_fragment' ), 10 );
 
 		// Maybe set step as incomplete
 		add_filter( 'fc_is_step_complete_contact', array( $this, 'maybe_set_step_incomplete_contact' ), 10 );
@@ -191,6 +195,55 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 
 
 	/**
+	 * Add OTP verification button.
+	 *
+	 * @param  string  $field  Field HTML.
+	 * @param  string  $key  Field key.
+	 * @param  array  $args  Field arguments.
+	 * @param  string  $value  Field value.
+	 */
+	public function add_otp_verification_button( $field, $key, $args, $value ) {
+		// Bail if not the phone field
+		if ( 'billing_phone' !== $key ) { return $field; }
+
+		// Get OTP verification button HTML
+		$button = $this->get_otp_verification_button_html();
+
+		// Maybe append button to the field
+		if ( ! empty( $button ) ) {
+			$field .= $button;
+		}
+
+		return $field;
+	}
+
+
+
+	/**
+	 * Get OTP verification button HTML.
+	 */
+	public function get_otp_verification_button_html() {
+		$button = '';
+
+		// Get entered phone number
+		$phone_number = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_phone' );
+
+		// Check if phone_number is verified
+		$is_verified = $this->is_phone_number_verified( $phone_number );
+
+		// Bail if phone number is verified
+		if ( $is_verified ) { return $button; }
+
+		$button = '<div class="form-row fc-no-validation-icon fc-wawp-verify-button__container">';
+		$button .= '<button type="button" id="fc-wawp-verify-button" class="button">'. __( 'Verify Phone Number', 'fluid-checkout' ) .'</button>';
+		$button .= '</div>';
+
+		return $button;
+	}
+
+
+
+	/**
 	 * Add hidden fields as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
@@ -203,6 +256,20 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 
 		// Add fragment
 		$fragments[ '.wawp-custom_checkout_fields' ] = $html;
+		return $fragments;
+	}
+
+	/**
+	 * Add hidden fields as checkout fragment.
+	 *
+	 * @param array $fragments Checkout fragments.
+	 */
+	public function add_verification_button_fragment( $fragments ) {
+		// Get custom hidden fields HTML
+		$html = $this->get_otp_verification_button_html();
+
+		// Add fragment
+		$fragments[ '.fc-wawp-verify-button__container' ] = $html;
 		return $fragments;
 	}
 

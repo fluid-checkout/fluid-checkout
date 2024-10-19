@@ -110,8 +110,11 @@ jQuery(document).ready(function($) {
                 // Hide the OTP popup after successful verification
                 $awpOtpPopup.hide();
 
-                // Submit the checkout form or continue with the process
-                $checkoutForm.submit();
+				// CHANGE: Trigger update checkout event
+				$( document.body ).trigger( 'update_checkout' );
+
+				// CHANGE: Replace the checkout form submit event with the default one
+				return true;
             } else {
                 console.log("Incorrect OTP");
                 showPopupMessage(awp_translations.otp_incorrect, false);
@@ -128,7 +131,7 @@ jQuery(document).ready(function($) {
     }
 
     // Event Handlers
-    $(document).on('click', '#place_order', async function(e) {
+    $(document).on('click', '#fc-wawp-verify-button', async function(e) {
         if (!otpSent && $awpOtpPopup.is(':hidden')) {
             e.preventDefault();
             var phoneNumber = $('#billing_phone').val();
