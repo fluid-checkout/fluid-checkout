@@ -29,8 +29,9 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
-		// Remove scripts conflicting with FC
-		$this->remove_action_for_class( 'wp_enqueue_scripts', array( 'AWP\Wawp_Countrycode', 'enqueue_scripts' ), 10 );
+		// International phone fields
+		add_filter( 'fc_pro_enable_international_phone_fields', '__return_false', 10 );
+		wp_dequeue_style( 'fc-pro-intl-tel-input' );
 	}
 
 	/**
@@ -236,7 +237,7 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
-		// Scripts
+		// WAWP checkout script
 		wp_register_script( 'awp-checkout-js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/automation-web-platform/checkout' ), array( 'jquery' ), NULL );
 
 		// Add validation script
