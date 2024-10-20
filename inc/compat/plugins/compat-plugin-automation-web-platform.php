@@ -245,7 +245,8 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 	 * Get OTP verification button HTML.
 	 */
 	public function get_otp_verification_button_html() {
-		$button = '';
+		// Create empty container for the button
+		$button = '<div class="fc-wawp-verify-button__container"></div>';
 
 		// Get entered phone number
 		$phone_number = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_phone' );
@@ -256,6 +257,7 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 		// Bail if phone number is verified
 		if ( $is_verified ) { return $button; }
 
+		// Get button HTML
 		$button = '<div class="form-row fc-no-validation-icon fc-wawp-verify-button__container">';
 		$button .= '<button type="button" id="fc-wawp-verify-button" class="button">'. __( 'Verify Phone Number', 'fluid-checkout' ) .'</button>';
 		$button .= '</div>';
@@ -329,6 +331,10 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 		// WAWP checkout script
 		wp_register_script( 'awp-checkout-js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/automation-web-platform/checkout' ), array( 'jquery' ), NULL );
 
+		// Checkout scripts
+		wp_register_script( 'fc-checkout-automation-web-platform', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/automation-web-platform/checkout-automation-web-platform' ), array( 'jquery', 'fc-utils' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-automation-web-platform', 'window.addEventListener("load",function(){CheckoutWAWP.init(fcSettings.checkoutWAWP);})' );
+
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-automation-web-platform', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/automation-web-platform/checkout-validation-automation-web-platform' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
 		wp_add_inline_script( 'fc-checkout-validation-automation-web-platform', 'window.addEventListener("load",function(){CheckoutValidationWAWP.init(fcSettings.checkoutValidationWAWP);})' );
@@ -340,6 +346,7 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 	public function maybe_enqueue_assets() {
 		// Scripts
 		wp_enqueue_script( 'fc-checkout-validation-automation-web-platform' );
+		wp_enqueue_script( 'fc-checkout-automation-web-platform' );
 	}
 
 
