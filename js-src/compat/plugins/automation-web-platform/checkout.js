@@ -12,8 +12,8 @@ jQuery(document).ready(function($) {
     var $checkoutForm = $('form.woocommerce-checkout');
     var otpInputs = $('.otp-input');
     var $verificationMessage = $('#verification_message');
-	// CHANGE: Add new variable
-	var $billingPhoneInput = $('#billing_phone');
+    // CHANGE: Add new variable
+    var $billingPhoneInput = $('#billing_phone');
 
     // Consolidated Functions
     function startResendTimer() {
@@ -36,18 +36,18 @@ jQuery(document).ready(function($) {
     }
 
     function showPopupMessage(message, isSuccess) {
-		// CHANGE: Change the message class to make it consitent with the rest of the messages
+        // CHANGE: Change the message class to make it consitent with the rest of the messages
         var messageClass = isSuccess ? 'woocommerce-success' : 'woocommerce-error';
 
-		// CHANGE: Replace $billingPhoneField variable with $billingPhoneInput and change selector for the message element search
-		var messageElement = $billingPhoneInput.next('.fc-wawp-message');
-		if (messageElement.length === 0) {
-			messageElement = $('<span class="fc-wawp-message"></span>');
-			// CHANGE: Replace $billingPhoneField variable with $billingPhoneInput
-			$billingPhoneInput.after(messageElement);
-		}
+        // CHANGE: Replace $billingPhoneField variable with $billingPhoneInput and change selector for the message element search
+        var messageElement = $billingPhoneInput.next('.fc-wawp-message');
+        if (messageElement.length === 0) {
+            messageElement = $('<span class="fc-wawp-message"></span>');
+            // CHANGE: Replace $billingPhoneField variable with $billingPhoneInput
+            $billingPhoneInput.after(messageElement);
+        }
         messageElement
-			// CHANGE: Replace the custom classes with the default WooCommerce classes
+            // CHANGE: Replace the custom classes with the default WooCommerce classes
             .removeClass('woocommerce-success woocommerce-error')
             .addClass(messageClass)
             .text(message)
@@ -116,11 +116,11 @@ jQuery(document).ready(function($) {
                 // Hide the OTP popup after successful verification
                 $awpOtpPopup.hide();
 
-				// CHANGE: Trigger update checkout event
-				$( document.body ).trigger( 'update_checkout' );
+                // CHANGE: Trigger update checkout event
+                $( document.body ).trigger( 'update_checkout' );
 
-				// CHANGE: Replace the checkout form submit event with the default one
-				return true;
+                // CHANGE: Replace the checkout form submit event with the default one
+                return true;
             } else {
                 console.log("Incorrect OTP");
                 showPopupMessage(awp_translations.otp_incorrect, false);
