@@ -49,6 +49,10 @@ div.woocommerce .form-row .woocommerce-success:before {
   z-index: 200;
 }
 
+#fc-wawp-verify-button {
+  margin-top: 10px;
+}
+
 #awp_otp_popup {
   z-index: 5000;
 }
