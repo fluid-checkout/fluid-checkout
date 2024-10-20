@@ -180,6 +180,9 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 			$user_phone_number = get_user_meta( $current_user->ID, 'billing_phone', true );
 			$phone_verified = get_user_meta( $current_user->ID, 'phone_verified', true );
 
+			// Remove '+' from phone number for compatibility with phone numbers previously saved when using IntlTel field from FC
+			$user_phone_number = str_replace( '+', '', $user_phone_number );
+
 			// Check if the phone number belongs to the current user and is verified
 			if ( $phone_number === $user_phone_number && $phone_verified ) {
 				$is_verified = true;
