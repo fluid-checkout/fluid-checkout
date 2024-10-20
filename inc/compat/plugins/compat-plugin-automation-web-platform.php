@@ -57,6 +57,9 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 	 * Add or remove hooks when OTP verification is enabled.
 	 */
 	public function otp_verification_hooks() {
+		// Bail if billing phone field is disabled
+		if ( ! FluidCheckout_Steps::instance()->is_billing_phone_enabled() ) { return; }
+
 		// Bail if class is not available
 		if ( ! class_exists( self::CLASS_NAME ) ) { return; }
 
