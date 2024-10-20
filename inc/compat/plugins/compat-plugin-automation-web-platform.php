@@ -29,6 +29,9 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
+		// Phone number field position
+		add_filter( 'pre_option_fc_billing_phone_field_position', array( $this, 'maybe_change_billing_phone_position' ), 10, 3 );
+
 		// International phone fields
 		add_filter( 'fc_pro_enable_international_phone_fields', '__return_false', 10 );
 		wp_dequeue_style( 'fc-pro-intl-tel-input' );
@@ -106,6 +109,24 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 
 		// Checkout validation settings
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
+	}
+
+
+
+	/**
+	 * Maybe force change the position of the billing phone field.
+	 *
+	 * @param  mixed   $pre_option   The value to return instead of the option value.
+	 * @param  string  $option       Option name.
+	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 */
+	public function maybe_change_billing_phone_position( $pre_option, $option, $default ) {
+		// Bail if OTP verification is not enabled
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'awp_enable_otp', 'no' ) ) { return $pre_option; }
+
+		$pre_option = 'contact';
+
+		return $pre_option;
 	}
 
 
