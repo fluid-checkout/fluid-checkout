@@ -284,12 +284,12 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 	}
 
 	/**
-	 * Add hidden fields as checkout fragment.
+	 * Add OTP verification button as checkout fragment.
 	 *
 	 * @param array $fragments Checkout fragments.
 	 */
 	public function add_verification_button_fragment( $fragments ) {
-		// Get custom hidden fields HTML
+		// Get OTP verification button HTML
 		$html = $this->get_otp_verification_button_html();
 
 		// Add fragment
