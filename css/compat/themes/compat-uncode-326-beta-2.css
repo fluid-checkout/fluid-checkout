@@ -1,0 +1,9 @@
+body.theme-uncode.theme-uncode .fc-content .row-parent {
+  padding-top: 0;
+}
+@media (max-width: 749px) {
+  body.theme-uncode.theme-uncode .fc-content .row-parent {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
