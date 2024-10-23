@@ -19,8 +19,8 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Checkout template hooks
-		$this->checkout_template_hooks();
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
 		// Buttons
 		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
@@ -29,15 +29,41 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		add_filter( 'fc_next_step_button_classes', array( $this, 'add_next_step_button_classes' ), 10 );
 		remove_filter( 'woocommerce_order_button_html', 'uncode_woocommerce_order_button_html', 10 );
 
-		// Order summary section
-		remove_action( 'woocommerce_review_order_before_cart_contents', 'uncode_woocommerce_activate_thumbs_on_order_review_table' );
-
 		// Dark mode
 		add_filter( 'fc_enable_dark_mode_styles', array( $this, 'maybe_set_is_dark_mode' ), 10 );
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// Checkout page hooks
+		$this->checkout_hooks();
+	}
+
+
+
+	/*
+	* Add or remove checkout page hooks.
+	*/
+	public function checkout_hooks() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Checkout template hooks
+		$this->checkout_template_hooks();
+
+		// Select2 styles
+		add_filter( 'uncode_deregister_select2_style', '__return_false', 10 );
+
+		// Order summary section
+		remove_action( 'woocommerce_review_order_before_cart_contents', 'uncode_woocommerce_activate_thumbs_on_order_review_table', 10 );
+	}
+
+
 
 	/**
 	 * Add or remove checkout template hooks.
@@ -241,6 +267,17 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		$new_css_variables = array(
 			// Buttons
 			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '39.5px',
+				'--fluidcheckout--field--padding-left' => '15px',
+				'--fluidcheckout--field--box-shadow' => 'inset 0 2px 1px rgba( 0, 0, 0, 0.025 )',
+				'--fluidcheckout--field--border-radius' => '2px',
+				'--fluidcheckout--field--border-color' => '#eaeaea',
+				'--fluidcheckout--field--font-size' => '15px',
+
+				// Checkout validation styles
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '20px',
+
 				// Button design styles
 				'--fluidcheckout--button--border-radius' => '2px',
 				'--fluidcheckout--button--font-size' => '12px',
