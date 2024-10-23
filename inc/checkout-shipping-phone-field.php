@@ -19,6 +19,17 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Privacy data managers
+		// Shipping phone data export and erasure is handled by the core WooCommerce privacy class.
+
+		// Shipping phone
+		$this->shipping_phone_hooks();
+	}
+
+	/**
+	 * Add or remove shipping phone hooks.
+	 */
+	public function shipping_phone_hooks() {
 		// Bail if feature is not enabled
 		if( ! FluidCheckout_Steps::instance()->is_shipping_phone_enabled() ) { return; }
 
@@ -41,6 +52,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_position' ) ) {
 			// Add shipping phone to contact fields
 			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_shipping_phone_field_to_contact_fields' ), 10 );
+			add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_change_shipping_phone_field_args_for_contact' ), 10 );
 
 			// Remove phone field from shipping address data
 			add_filter( 'fc_shipping_substep_text_address_data', array( FluidCheckout_Steps::instance(), 'remove_phone_address_data' ), 10 );
@@ -190,6 +202,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * @param   int  $order_id  Order ID.
 	 */
 	public function update_order_meta_with_shipping_phone( $order_id ) {
+		// Get shipping phone
 		$shipping_phone = isset( $_POST['shipping_phone'] ) ? sanitize_text_field( $_POST['shipping_phone'] ) : '';
 
 		// Bail if shipping phone was not provided
@@ -200,6 +213,9 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 		// Bail if order was not found
 		if ( ! $order ) { return; }
+
+		// Bail if order does not need shipping address
+		if ( ! $order->needs_shipping_address() ) { return; }
 
 		// Update shipping phone value
 		if ( is_callable( array( $order, 'set_shipping_phone' ) ) ) {
@@ -262,6 +278,31 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	public function add_shipping_phone_field_to_contact_fields( $display_fields ) {
 		$display_fields[] = 'shipping_phone';
 		return $display_fields;
+	}
+
+	/**
+	 * Maybe change the shipping phone field args when displayed on the contact step.
+	 *
+	 * @param   array  $fields  The shipping fields.
+	 */
+	public function maybe_change_shipping_phone_field_args_for_contact( $fields ) {
+		// Define variables
+		$field_key = 'shipping_phone';
+
+		// Bail if field is not present
+		if ( ! array_key_exists( $field_key, $fields ) ) { return $fields; }
+
+		// Bail if field is not set to be displayed on the contact step
+		if ( ! in_array( $field_key, FluidCheckout_Steps::instance()->get_contact_step_display_field_ids() ) ) { return $fields; }
+
+		// Change field args
+		$fields[ $field_key ][ 'priority' ] = 30;
+
+		// Maybe change the class of the field
+		// if the billing field is also present in the contact step
+		$fields[ $field_key ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_args( $fields[ $field_key ], array( 'class' => array( 'form-row-last' ) ) );
+
+		return $fields;
 	}
 
 }

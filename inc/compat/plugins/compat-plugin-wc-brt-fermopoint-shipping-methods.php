@@ -56,10 +56,10 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'wc_brt_fermopoint_shipping_methods_js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-brt-fermopoint-shipping-methods/wc_brt_fermopoint_shipping_methods_js' ), array( 'jquery' ), NULL );
+		wp_register_script( 'wc_brt_fermopoint_shipping_methods_js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-brt-fermopoint-shipping-methods/wc_brt_fermopoint_shipping_methods_js' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
 		// Add validation script
-		wp_register_script( 'fc-checkout-validation-fermopoint', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-brt-fermopoint-shipping-methods/checkout-validation-fermopoint' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_register_script( 'fc-checkout-validation-fermopoint', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-brt-fermopoint-shipping-methods/checkout-validation-fermopoint' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-validation-fermopoint', 'window.addEventListener("load",function(){CheckoutValidationFermopoint.init(fcSettings.checkoutValidationFermopoint);})' );
 	}
 

@@ -228,6 +228,16 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'id'                => 'fc_enable_checkout_express_checkout_inline_buttons',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_express_checkout_inline_buttons' ),
+						'checkboxgroup'     => '',
+						'show_if_checked'   => 'yes',
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+					array(
+						'desc'              => __( 'Ignore additional checkout required fields when paying with a compatible express checkout payment gateway', 'fluid-checkout' ),
+						'id'                => 'fc_enable_checkout_express_checkout_ignore_required_fields',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_express_checkout_ignore_required_fields' ),
 						'checkboxgroup'     => 'end',
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
@@ -533,6 +543,19 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
 						'disabled'          => true,
+					),
+
+					array(
+						'desc'              => __( 'Choose which address to save as the shipping address for local pickup orders.', 'fluid-checkout' ),
+						'id'                => 'fc_local_pickup_save_shipping_address',
+						'type'              => 'select',
+						'options'           => array(
+							'same_as_pickup_location'    => __( 'Save the selected pickup location', 'fluid-checkout' ),
+							'same_as_billing'            => __( 'Save same as the billing address', 'fluid-checkout' ),
+							'no'                         => __( 'Do not save any shipping address', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_save_shipping_address' ),
+						'autoload'          => false,
 					),
 
 					array(

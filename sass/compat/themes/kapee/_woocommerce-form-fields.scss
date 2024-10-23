@@ -1,0 +1,7 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row input[type="checkbox"] {
+	background-color: var(--site-input-background); // Needed to use theme variable to match its styles
+}

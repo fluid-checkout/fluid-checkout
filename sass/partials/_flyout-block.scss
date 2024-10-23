@@ -4,9 +4,10 @@
 
 [data-flyout-content] {
 	display: none;
+	max-width: $container-width-mobile;
+	padding: $global-spacing-small $container-spacing-mobile;
 
 	// max-width
-	max-width: $container-width-mobile;
 	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
 	@media (#{$bp-larger-than-desktop}) { max-width: $container-width-desktop; }
 	@media (#{$bp-larger-than-desktop-medium}) { max-width: $container-width-desktop-medium; }
@@ -14,7 +15,6 @@
 	@media (#{$bp-larger-than-desktop-extra-large}) { max-width: $container-width-desktop-extra-large; }
 
 	// padding
-	padding: $global-spacing-small $container-spacing-mobile;
 	@media (#{$bp-larger-than-tablet}) { padding: $global-spacing-small $container-spacing-tablet; }
 	@media (#{$bp-larger-than-desktop}) { padding: $global-spacing-small $container-spacing-desktop; }
 	@media (#{$bp-larger-than-desktop-medium}) { padding: $global-spacing-small $container-spacing-desktop-medium; }

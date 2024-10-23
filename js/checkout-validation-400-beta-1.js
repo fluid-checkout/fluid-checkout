@@ -139,10 +139,17 @@
 
 		// Create message element and add it after the field.
 		var parent = referenceNode.parentNode;
+		var elementId = field.id + '-invalid-' + invalidClass;
 		var element = document.createElement( 'span' );
 		element.className = 'woocommerce-error invalid-' + invalidClass;
+		element.id = elementId;
 		element.innerText = message;
 		parent.insertBefore( element, referenceNode.nextSibling );
+
+		// Add aria-describedby attribute to the field
+		var describedbyValue = field.getAttribute( 'aria-describedby' );
+		describedbyValue = describedbyValue ? describedbyValue : '';
+		field.setAttribute( 'aria-describedby', describedbyValue + ' ' + elementId );
 	};
 
 
@@ -155,6 +162,18 @@
 	var removeInlineMessage = function( field, formRow, invalidClass ) {
 		var messageElements = formRow.querySelectorAll( 'span.woocommerce-error.invalid-' + invalidClass );
 		for ( var i = 0; i < messageElements.length; i++ ) {
+			// Get variables
+			var messageElement = messageElements[ i ];
+			var elementId = messageElement.id;
+
+			// Maybe remove validation `aria-describedby` attribute from the field
+			if ( elementId ) {
+				var describedbyValue = field.getAttribute( 'aria-describedby' );
+				describedbyValue = describedbyValue ? describedbyValue : '';
+				field.setAttribute( 'aria-describedby', describedbyValue.replace( ' ' + elementId, '' ) );
+			}
+
+			// Remove message
 			messageElements[ i ].parentNode.removeChild( messageElements[ i ] );
 		}
 	}
@@ -424,6 +443,9 @@
 		formRow.classList.toggle( _settings.validClass, valid );
 		formRow.classList.toggle( _settings.invalidClass, ! valid );
 
+		// Set field as invalid for accessibility
+		field.setAttribute( 'aria-invalid', ! valid );
+
 		return valid;
 	};
 
@@ -467,18 +489,28 @@
 		// Bail if processing checkout update
 		if ( true === window.processing_checkout_update ) { return; }
 
+		// Get variables
 		var field = e.target;
+		var formRow = e.target.closest( _settings.formRowSelector );
+
+		// Bail if field or formRow not available
+		if ( ! field || ! formRow ) { return; }
 
 		// Get correct field when is select2
 		if ( isSelect2Field( e.target ) ) {
-			var formRow = e.target.closest( _settings.formRowSelector );
-
 			if ( formRow ) {
 				field = formRow.querySelector( 'select' );
 			}
 		}
 
-		_publicMethods.validateField( field, e.type );
+		// Maybe delay validation when user is typing for the first time in the field
+		if ( 'input' === e.type && ! formRow.classList.contains( _settings.validClass ) && ! formRow.classList.contains( _settings.invalidClass ) ) {
+			_publicMethods.validateFieldDebounced( field, e.type );
+		}
+		// Otherwise, trigger validation immediatelly
+		else {
+			_publicMethods.validateField( field, e.type );
+		}
 	};
 
 
@@ -521,9 +553,12 @@
 
 	/**
 	 * Test multiple validations on the passed field.
-	 * @param  {Field} field    Field for validation.
-	 * @return {String}         Event that triggered the field validation. Can also be an arbitrary event name.
-	 * @return {Boolean}        True if field is valid.
+	 * 
+	 * @param  {Field}    field             Field for validation.
+	 * @param  {String}   validationEvent   Event that triggered the field validation. Can also be an arbitrary event name.
+	 * @param  {Boolean}  validateHidden    True to validate hidden fields.
+	 * 
+	 * @return {Boolean}                    True if field is valid.
 	 */
 	_publicMethods.validateField = function( field, validationEvent, validateHidden ) {
 		// Bail if field is null
@@ -536,7 +571,7 @@
 		if ( ! formRow ) { return true; }
 
 		// Bail if hidden to the user
-		if ( ! isAlwaysValidate( field ) && validateHidden !== true && isFieldHidden( field ) ) { return true; }
+		if ( ! isAlwaysValidate( field ) && true !== validateHidden && isFieldHidden( field ) ) { return true; }
 
 		// Bail if field doesn't need validation
 		if ( ! needsValidation( field, formRow, validationEvent ) ) { return true; }
@@ -556,6 +591,16 @@
 		// Process results
 		return processValidationResults( field, formRow, validationResults );
 	};
+	/**
+	 * Test multiple validations on the passed field, debounced to allow time for the user to interact with the field.
+	 * 
+	 * @param  {Field}    field             Field for validation.
+	 * @param  {String}   validationEvent   Event that triggered the field validation. Can also be an arbitrary event name.
+	 * @param  {Boolean}  validateHidden    True to validate hidden fields.
+	 * 
+	 * @return {Boolean}                    True if field is valid.
+	 */
+	_publicMethods.validateFieldDebounced = FCUtils.debounce( _publicMethods.validateField, 1000 );
 
 
 
@@ -643,6 +688,7 @@
 		registerValidationTypes();
 
 		if ( _hasJQuery ) {
+			// Validation events
 			$( _settings.formSelector ).on( 'input validate change', _settings.validateFieldsSelector, handleValidateEvent );
 
 			// Run on checkout or cart changes

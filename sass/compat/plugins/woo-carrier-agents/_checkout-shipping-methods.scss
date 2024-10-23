@@ -1,0 +1,15 @@
+// ------------------------------------
+// CHECKOUT SHIPPING METHODS
+// ------------------------------------
+
+.fc-wrapper ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label .carrier-agents {
+	display: block !important; // Needed to override plugin styles
+}
+
+.fc-wrapper ul#shipping_method .shipping-method__option select[name^="carrier-agent"] {
+	width: 100%;
+}
+
+.fc-wrapper ul#shipping_method .shipping-method__option .woo-carrier-agents-shipping-fields:after {
+	@include clearfix();
+}

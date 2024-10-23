@@ -50,7 +50,7 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'fc-compat-my-parcel-update-handler', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-myparcel/myparcel-update-handler' ), array( 'fc-utils', 'wc-myparcel-frontend' ), NULL );
+		wp_register_script( 'fc-compat-my-parcel-update-handler', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-myparcel/myparcel-update-handler' ), array( 'fc-utils', 'wc-myparcel-frontend' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-compat-my-parcel-update-handler', 'window.addEventListener("load",function(){MyParcelUpdateHandler.init();})' );
 	}
 

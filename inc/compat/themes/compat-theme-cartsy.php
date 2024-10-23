@@ -38,7 +38,7 @@ class FluidCheckout_ThemeCompat_Cartsy extends FluidCheckout {
 	 */
 	public function very_late_hooks() {
 		// Bail if not on checkout page.
-		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		// Bring back currency and decimals to cart item price values
 		$this->remove_filter_for_class( 'woocommerce_cart_product_price', array( 'Framework\App\WooCommerceLoad', 'cartsyCartProductPrice' ), 10 );

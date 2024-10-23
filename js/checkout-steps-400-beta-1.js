@@ -200,6 +200,31 @@
 		}
 	}
 
+	/**
+	 * Maybe set focus to the first focusable element that is visible inside the provided element.
+	 *
+	 * @param   {[type]}  element  [element description]
+	 *
+	 * @return  {[type]}           [return description]
+	 */
+	var maybeFocusFirstElement = function( element ) {
+		// Get first focusable element that is visible
+		var focusElement = null;
+		var focusableElements = window.FCUtils && Array.from( FCUtils.getFocusableElements( element ) );
+		for ( var i = 0; i < focusableElements.length; i++ ) {
+			var focusableElement = focusableElements[i];
+			if ( FCUtils.isElementVisible( focusableElement ) ) {
+				focusElement = focusableElement;
+				break;
+			}
+		}
+
+		// Set focus
+		if ( focusElement ) {
+			focusElement.focus();
+		}
+	}
+
 
 
 	/**
@@ -405,21 +430,8 @@
 		// Update progress bar
 		updateProgressBar();
 
-		// Maybe set focusElement to the first focusable element that is visible
-		var focusElement = null;
-		var focusableElements = window.FCUtils && Array.from( FCUtils.getFocusableElements( nextStepElement ) );
-		for ( var i = 0; i < focusableElements.length; i++ ) {
-			var focusableElement = focusableElements[i];
-			if ( FCUtils.isElementVisible( focusableElement ) ) {
-				focusElement = focusableElement;
-				break;
-			}
-		}
-
-		// Set focus
-		if ( focusElement ) {
-			focusElement.focus();
-		}
+		// Maybe set focus to the first focusable element that is visible in the next step
+		maybeFocusFirstElement( nextStepElement );
 
 		// Change scroll position after moving to next step
 		scrollToElement( stepElement );
@@ -506,7 +518,6 @@
 	}
 
 
-
 	/**
 	 * Maybe change visibility status of checkout substep sections.
 	 *
@@ -517,21 +528,32 @@
 		var substepElements = document.querySelectorAll( _settings.substepSelector );
 		for ( var i = 0; i < substepElements.length; i++ ) {
 			var substepElement = substepElements[i];
-			
+
 			// Handle editable state
 			var editableHiddenField = substepElement.querySelector( _settings.substepEditableStateFieldSelector );
-			if ( editableHiddenField && 'no' === editableHiddenField.value ) {
-				substepElement.setAttribute( _settings.substepEditableStateAttribute, editableHiddenField.value );
-			}
-			else {
-				substepElement.removeAttribute( _settings.substepEditableStateAttribute );
+			if ( editableHiddenField ) {
+				if ( 'no' === editableHiddenField.value ) {
+					substepElement.setAttribute( _settings.substepEditableStateAttribute, editableHiddenField.value );
+				}
+				else {
+					substepElement.removeAttribute( _settings.substepEditableStateAttribute );
+				}
+
+				// Remove editable state hidden field, to avoid it being used again
+				editableHiddenField.parentNode.removeChild( editableHiddenField );
 			}
 
 			// Handle expanded state
 			var expandedHiddenField = substepElement.querySelector( _settings.substepExpandedStateFieldSelector );
-			var isSetExpanded = expandedHiddenField && 'yes' === expandedHiddenField.value;
-			if ( isSetExpanded ) {
-				expandSubstepEdit( substepElement, true, false );
+			if ( expandedHiddenField ) {
+				var isSetExpanded = expandedHiddenField && 'yes' === expandedHiddenField.value;
+				if ( isSetExpanded ) {
+					// Expand section
+					expandSubstepEdit( substepElement, true, false );
+				}
+
+				// Remove expanded state hidden field, to avoid it being used again
+				expandedHiddenField.parentNode.removeChild( expandedHiddenField );
 			}
 
 			// Handle visibility state
@@ -541,10 +563,13 @@
 				substepElement.setAttribute( _settings.substepVisibleStateAttribute, visibilityHiddenField.value );
 
 				// Maybe collapse substep edit
-				// when expanded state field exists and substep is complete
-				if ( ! isSetExpanded && isStepComplete( substepElement ) ) {
+				// when substep is already hidden, set as complete and set as expanded
+				if ( 'no' === visibilityHiddenField.value && ! isSetExpanded && isStepComplete( substepElement ) ) {
 					collapseSubstepEdit( substepElement, true, false );
 				}
+
+				// Remove visibility state hidden field, to avoid it being used again
+				visibilityHiddenField.parentNode.removeChild( visibilityHiddenField );
 			}
 		}
 	}
@@ -638,7 +663,7 @@
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.init = function( options ) {
-		if ( _hasInitialized ) return;
+		if ( _hasInitialized ) { return; }
 
 		// Merge settings
 		_settings = FCUtils.extendObject( _settings, options );
@@ -659,6 +684,16 @@
 			$( document.body ).on( 'updated_checkout', updateGlobalStepStates );
 			$( document.body ).on( 'updated_checkout', maybeChangeSubstepState );
 			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
+
+			// Collapsible block, focus on expand		
+			if ( window.CollapsibleBlock ) {
+				$( document.body ).on( 'updated_checkout', CollapsibleBlock.enableFocusOnExpand );
+			}
+		}
+
+		// Collapsible block, focus on expand
+		if ( window.CollapsibleBlock ) {
+			CollapsibleBlock.disableFocusOnExpand();
 		}
 
 		// Add init class

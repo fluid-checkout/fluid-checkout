@@ -209,7 +209,9 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > img,
-div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > a img {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > a img,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > picture img,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > div.product-thumbnail img {
 	float: $alignment-left;
 	margin-#{ $alignment-left }: calc( -1 * ( #{ $order-summary-image-padding } + #{ $global-spacing-tiny } ) );
 	margin-#{ $alignment-right }: 0 !important; // Needed to override inline styles added by some themes
@@ -225,6 +227,22 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 		width: $order-summary-image-width--large-screen !important; // Needed to override inline styles added by some themes
 		height: auto !important;  // Needed to override inline styles added by some themes
 	}
+}
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > picture,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > div.product-thumbnail {
+	float: $alignment-left;
+	margin: 0 !important; // Needed to override inline styles added by some themes
+	margin-#{ $alignment-left }: calc( -1 * ( #{ $order-summary-image-padding } + #{ $global-spacing-tiny } ) ) !important; // Needed to override inline styles added by some themes
+	padding: 0 !important; // Needed to override inline styles added by some themes
+	width: $order-summary-image-width !important; // Needed to override inline styles added by some themes
+
+	@media (#{$bp-larger-than-desktop}) {
+		width: $order-summary-image-width--large-screen !important; // Needed to override inline styles added by some themes
+	}
+}
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > picture img,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > div.product-thumbnail img {
+	margin-#{ $alignment-left }: 0 !important; // Needed to override inline styles added by some themes
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
@@ -424,16 +442,16 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	padding: $global-spacing-extra-small $container-spacing-mobile;
+	max-width: $container-width-mobile;
 	width: 100%;
 	background-color: $white;
 	box-shadow: $box-shadow-dark;
 
 	// max-width
-	max-width: $container-width-mobile;
 	@media (#{$bp-larger-than-tablet}) { max-width: $container-width-tablet; }
 
 	// padding
-	padding: $global-spacing-extra-small $container-spacing-mobile;
 	@media (#{$bp-larger-than-tablet}) { padding: $global-spacing-small $container-spacing-tablet; }
 
 	// Hide on desktop view

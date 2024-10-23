@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT SHIPPING METHODS
+// ------------------------------------
+
+body.woocommerce-checkout #gls-pickup-info {
+	// display: block;
+	margin-top: $global-spacing-extra-small;
+	margin-bottom: 0;
+	padding: $global-spacing-small;
+	border: 1px solid #ddd; // Use px and color value directly to match styles from the plugin
+}

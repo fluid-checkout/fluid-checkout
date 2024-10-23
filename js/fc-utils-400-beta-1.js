@@ -413,8 +413,8 @@
 				// Set keyboard track position back to that previously to update
 				setTimeout( function(){
 					// Try to set the same track position
-					if ( null !== elementToFocus.selectionStart && null !== elementToFocus.selectionEnd ) {
-						if ( currentFocusedElement.selectionStart && currentFocusedElement.selectionEnd ) {
+					if ( elementToFocus && 'selectionStart' in elementToFocus && 'selectionEnd' in elementToFocus && undefined !== elementToFocus.selectionStart && undefined !== elementToFocus.selectionEnd && null !== elementToFocus.selectionStart && null !== elementToFocus.selectionEnd ) {
+						if ( currentFocusedElement && 'selectionStart' in currentFocusedElement && 'selectionEnd' in currentFocusedElement && undefined !== currentFocusedElement.selectionStart && undefined !== currentFocusedElement.selectionEnd && null !== currentFocusedElement.selectionStart && null !== currentFocusedElement.selectionEnd ) {
 							elementToFocus.selectionStart = currentFocusedElement.selectionStart;
 							elementToFocus.selectionEnd = currentFocusedElement.selectionEnd;
 						}

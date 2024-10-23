@@ -38,6 +38,8 @@ class FluidCheckout_Seur extends FluidCheckout {
 
 		// Maybe set substep as incomplete
 		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
+		add_filter( 'fc_is_substep_complete_shipping_address', array( $this, 'maybe_set_substep_incomplete_shipping_address' ), 10 );
+		add_filter( 'fc_is_substep_complete_billing_address', array( $this, 'maybe_set_substep_incomplete_billing_address' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -62,11 +64,11 @@ class FluidCheckout_Seur extends FluidCheckout {
 	public function register_assets() {
 		// Checkout scripts
 		$checkout_script_deps = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ? array( 'jquery', 'selectWoo', 'fc-enhanced-select' ) : array( 'jquery', 'selectWoo' );
-		wp_register_script( 'fc-checkout-seur', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/seur/checkout-seur' ), $checkout_script_deps, NULL, true );
+		wp_register_script( 'fc-checkout-seur', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/seur/checkout-seur' ), $checkout_script_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-seur', 'window.addEventListener("load",function(){CheckoutSeur.init();})' );
 
 		// Add validation script
-		wp_register_script( 'fc-checkout-validation-seur', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/seur/checkout-validation-seur' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_register_script( 'fc-checkout-validation-seur', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/seur/checkout-validation-seur' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-validation-seur', 'window.addEventListener("load",function(){CheckoutValidationSeur.init(fcSettings.checkoutValidationSeur);})' );
 	}
 
@@ -174,7 +176,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 		if ( empty( $custom_name_classic_2shop ) ) { $custom_name_classic_2shop = 'SEUR CLASSIC 2SHOP'; }
 
 		// Maybe set as local pickup shipping method
-		if ( $method && ( $method->label === $custom_name_seur_2shop || $method->label === $custom_name_classic_2shop ) ) {
+		if ( is_object( $method ) && ( $method->label === $custom_name_seur_2shop || $method->label === $custom_name_classic_2shop ) ) {
 			return true;
 		}
 
@@ -206,7 +208,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 
 
 	/**
-	 * Set the shipping substep as incomplete.
+	 * Maybe set the shipping step as incomplete.
 	 *
 	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
@@ -238,6 +240,71 @@ class FluidCheckout_Seur extends FluidCheckout {
 				$is_substep_complete = false;
 				break;
 			}
+		}
+
+		return $is_substep_complete;
+	}
+
+	/**
+	 * Maybe set the shipping step as incomplete.
+	 *
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
+	 */
+	public function maybe_set_substep_incomplete_shipping_address( $is_substep_complete ) {
+		// Get fields
+		$mobile_phone_field_key = 'shipping_mobile_phone';
+		$checkout_fields = WC()->checkout->get_checkout_fields( 'shipping' );
+
+		// Bail if mobile phone field is not set
+		if ( ! array_key_exists( $mobile_phone_field_key, $checkout_fields ) ) { return $is_substep_complete; }
+
+		// Check if mobile phone field is required
+		$mobile_phone_field = $checkout_fields[ $mobile_phone_field_key ];
+		$is_mobile_phone_field_required = array_key_exists( 'required', $mobile_phone_field ) && $mobile_phone_field[ 'required' ];
+
+		// Bail if mobile phone field is not required
+		if ( ! $is_mobile_phone_field_required ) { return $is_substep_complete; }
+
+		// Get mobile phone field value
+		$mobile_phone = WC()->checkout->get_value( $mobile_phone_field_key );
+
+		// Maybe set step as incomplete
+		if ( empty( $mobile_phone ) ) {
+			$is_substep_complete = false;
+		}
+
+		return $is_substep_complete;
+	}
+
+	/**
+	 * Maybe set the billing address substep step as incomplete.
+	 *
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
+	 */
+	public function maybe_set_substep_incomplete_billing_address( $is_substep_complete ) {
+		// Bail if step is already incomplete
+		if ( ! $is_substep_complete ) { return $is_substep_complete; }
+
+		// Get fields
+		$mobile_phone_field_key = 'billing_mobile_phone';
+		$checkout_fields = WC()->checkout->get_checkout_fields( 'billing' );
+
+		// Bail if mobile phone field is not set
+		if ( ! array_key_exists( $mobile_phone_field_key, $checkout_fields ) ) { return $is_substep_complete; }
+
+		// Check if mobile phone field is required
+		$mobile_phone_field = $checkout_fields[ $mobile_phone_field_key ];
+		$is_mobile_phone_field_required = array_key_exists( 'required', $mobile_phone_field ) && $mobile_phone_field[ 'required' ];
+
+		// Bail if mobile phone field is not required
+		if ( ! $is_mobile_phone_field_required ) { return $is_substep_complete; }
+
+		// Get mobile phone field value
+		$mobile_phone = WC()->checkout->get_value( $mobile_phone_field_key );
+
+		// Maybe set step as incomplete
+		if ( empty( $mobile_phone ) ) {
+			$is_substep_complete = false;
 		}
 
 		return $is_substep_complete;
