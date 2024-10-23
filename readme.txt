@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Improved: Compatibility with plugin Mailchimp for WooCommerce. Prevent hiding the newsletter checkbox field behind a link button when set as optional.
+* Fixed: Compatibility with plugin WooCommerce Memberships. Prevent PHP warnings when trying to determine if the distraction free header should be used on the checkout page when user is not logged in.
 * Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix fatal error when processing checkout updates if cart contains only digital products.
 
 = 3.2.5 - 2024-10-10 =
