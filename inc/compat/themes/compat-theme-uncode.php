@@ -32,6 +32,9 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		// Order summary section
 		remove_action( 'woocommerce_review_order_before_cart_contents', 'uncode_woocommerce_activate_thumbs_on_order_review_table' );
 
+		// Dark mode
+		add_filter( 'fc_enable_dark_mode_styles', array( $this, 'maybe_set_is_dark_mode' ), 10 );
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
@@ -203,6 +206,27 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		$class = array_merge( $class, array( 'btn', 'checkout-button', 'btn-default' ) );
 
 		return $class;
+	}
+
+
+
+	/**
+	 * Maybe set dark mode enabled.
+	 * 
+	 * @param  array  $is_dark_mode  Whether it is dark mode or not.
+	 */
+	public function maybe_set_is_dark_mode( $is_dark_mode ) {
+		// Bail if theme function is not available
+		if ( ! function_exists( 'ot_get_option' ) ) { return $is_dark_mode; }
+
+		// Get dark mode option from theme
+		$theme_color_scheme = ot_get_option( '_uncode_general_style' );
+
+		// Bail if not using the dark mode
+		if ( 'dark' !== $theme_color_scheme ) { return $is_dark_mode; }
+
+		$is_dark_mode = true;
+		return $is_dark_mode;
 	}
 
 
