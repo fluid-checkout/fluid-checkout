@@ -22,8 +22,18 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		// Checkout template hooks
 		$this->checkout_template_hooks();
 
+		// Buttons
+		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
+		add_filter( 'fc_place_order_button_classes', array( $this, 'add_place_order_button_classes' ), 10 );
+		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_substep_save_button_classes' ), 10 );
+		add_filter( 'fc_next_step_button_classes', array( $this, 'add_next_step_button_classes' ), 10 );
+		remove_filter( 'woocommerce_order_button_html', 'uncode_woocommerce_order_button_html', 10 );
+
 		// Order summary section
 		remove_action( 'woocommerce_review_order_before_cart_contents', 'uncode_woocommerce_activate_thumbs_on_order_review_table' );
+
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 	/**
@@ -51,9 +61,15 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		$container_info = $this->get_container_info();
 
 		// Get container class from the plugin
-		$container_class = '';
-		if ( isset( $container_info['container_class'] ) ) {
-			$container_class = $container_info['container_class'];
+		$container_width_class = '';
+		if ( isset( $container_info['container_width_class'] ) ) {
+			$container_width_class = $container_info['container_width_class'];
+		}
+
+		// Get color scheme class
+		$color_scheme_class = '';
+		if ( isset( $container_info['color_scheme_class'] ) ) {
+			$color_scheme_class = $container_info['color_scheme_class'];
 		}
 
 		$custom_styles = '';
@@ -63,7 +79,7 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 
 		?>
 		<div class="row-container">
-			<div class="row row-parent <?php echo $container_class; ?>" <?php echo $custom_styles; ?>>
+			<div class="row row-parent <?php echo $container_width_class . $color_scheme_class; ?>" <?php echo $custom_styles; ?>>
 			<?php
 	}
 
@@ -104,7 +120,7 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 			if ( '' === $global_content_full ) {
 				$main_content_full = ot_get_option( '_uncode_body_full' );
 				if ( $main_content_full !== 'on' ) {
-					$container_info['container_class'] = ' limit-width';
+					$container_info['container_width_class'] = ' limit-width';
 				}
 			} else {
 				if ( $global_content_full === 'limit' ) {
@@ -125,7 +141,7 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		// Othersiwse, get the page specific layout width
 		else {
 			if ( 'limit' === $is_page_specific_width ) {
-				$container_info['container_class'] = ' limit-width';
+				$container_info['container_width_class'] = ' limit-width';
 
 				$container_info['custom_styles'] = '';
 				if ( isset( $metabox_data['_uncode_specific_layout_width_custom'][0] ) ) {
@@ -143,9 +159,77 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 			}
 		}
 
+		// Get color scheme class
+		$container_info['color_scheme_class'] = '';
+		if ( ! empty( $metabox_data['_uncode_specific_style'][0] ) ) {
+			$container_info['color_scheme_class'] = ' style-' . $metabox_data['_uncode_specific_style'][0];
+		} else {
+			$container_info['color_scheme_class'] = ' style-' . ot_get_option('_uncode_general_style');
+		}
+
 		return $container_info;
 	}
 
+
+
+	/**
+	 * Add classes to the place order button.
+	 *
+	 * @param  string  $class  Button classes.
+	 */
+	public function add_place_order_button_classes( $class ) {
+		$class .= ' btn checkout-button btn-default';
+
+		return $class;
+	}
+
+	/**
+	 * Add classes to the substep save button.
+	 *
+	 * @param  string  $class  Button classes.
+	 */
+	public function add_substep_save_button_classes( $class ) {
+		$class .= ' btn';
+
+		return $class;
+	}
+
+	/**
+	 * Add classes to the next step button.
+	 *
+	 * @param  array  $class  Button classes.
+	 */
+	public function add_next_step_button_classes( $class ) {
+		$class = array_merge( $class, array( 'btn', 'checkout-button', 'btn-default' ) );
+
+		return $class;
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Add CSS variables
+		$new_css_variables = array(
+			// Buttons
+			':root' => array(
+				// Button design styles
+				'--fluidcheckout--button--border-radius' => '2px',
+				'--fluidcheckout--button--font-size' => '12px',
+				'--fluidcheckout--button--font-weight' => '600',
+
+				// Custom theme variables
+				'--fluidcheckout--uncode--accent-color--light-scheme' => '#303133',
+				'--fluidcheckout--uncode--accent-color--dark-scheme' => '#ffffff',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
 
 }
 

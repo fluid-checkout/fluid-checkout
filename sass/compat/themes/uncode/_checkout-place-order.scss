@@ -1,0 +1,19 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-button {
+	width: 100% !important;
+}
+
+// Light color scheme/mode
+body#{ $_body-theme-selector } .style-light .fc-wrapper .fc-place-order .fc-place-order-button:disabled:hover {
+	background-color: var(--fluidcheckout--uncode--accent-color--light-scheme) !important; // Needed to override theme styles
+	color: var(--fluidcheckout--uncode--accent-color--dark-scheme) !important; // Needed to override theme styles
+}
+
+// Dark color scheme/mode
+body#{ $_body-theme-selector } .style-dark .fc-wrapper .fc-place-order .fc-place-order-button:disabled:hover {
+	background-color: var(--fluidcheckout--uncode--accent-color--dark-scheme) !important; // Needed to override theme styles
+	color: var(--fluidcheckout--uncode--accent-color--light-scheme) !important; // Needed to override theme styles
+}

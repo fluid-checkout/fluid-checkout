@@ -2,7 +2,7 @@
 // CHECKOUT CONTENT
 // ------------------------------------
 
-body#{ $_body-theme-selector }#{ $_body-theme-selector } .fc-content .row-parent {
+body#{ $_body-theme-selector } .fc-content .row-parent {
 	padding-top: 0;
 
 	@media (#{$bp-smaller-than-tablet}) { 
