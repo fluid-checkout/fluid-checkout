@@ -368,6 +368,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with Hubspot. Mark billing fields to send for to Hubspot as the customer lead information when using the Hubspot Tracking scripts.
 * Fixed: Compatibility with plugin WooCommerce Memberships. Prevent PHP warnings when trying to determine if the distraction free header should be used on the checkout page when user is not logged in.
 * Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix fatal error when processing checkout updates if cart contains only digital products.
+* Fixed: Compatibility with plugin MyParcel. Fixed issue with the delivery options keeping triggering the checkout updates indefinitely.
 
 = 3.2.5 - 2024-10-10 =
 

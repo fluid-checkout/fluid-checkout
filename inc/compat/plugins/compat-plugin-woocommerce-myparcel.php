@@ -69,7 +69,45 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 		// Bail if not at checkout
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
+		// Bail if not showing delivery options
+		if ( ! $this->should_show_delivery_options() ) { return; }
+
 		$this->enqueue_assets();
+	}
+
+
+
+	/**
+     * Returns true if any product in the loop is:
+     *  - physical
+     *  - not on backorder OR user allows products on backorder to have delivery options
+     * COPIED FROM WCMP_Checkout::shouldShowDeliveryOptions
+     */
+	public function should_show_delivery_options() {
+		// CHANGE: Bail if function or class not available
+		if ( ! function_exists( 'WCMYPA' ) || ! class_exists( 'WCMYPA_Settings' ) ) { return false; }
+
+		$showForBackorders = WCMYPA()->setting_collection->isEnabled( WCMYPA_Settings::SETTINGS_SHOW_DELIVERY_OPTIONS_FOR_BACKORDERS );
+		$showDeliveryOptions = false;
+
+		foreach ( WC()->cart->get_cart() as $cartItem ) {
+			/**
+			 * @var WC_Product $product
+			 */
+			$product = $cartItem['data'];
+
+			if ( ! $product->is_virtual() ) {
+				$isOnBackOrder = $product->is_on_backorder( $cartItem['quantity'] );
+				if (! $showForBackorders && $isOnBackOrder) {
+					$showDeliveryOptions = false;
+					break;
+				}
+
+				$showDeliveryOptions = true;
+			}
+		}
+
+		return apply_filters( 'wc_myparcel_show_delivery_options', $showDeliveryOptions );
 	}
 
 

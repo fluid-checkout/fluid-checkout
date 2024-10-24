@@ -87,11 +87,6 @@
 		document.addEventListener( 'keydown', handleKeyDown, true );
 		document.addEventListener( 'change', handleChange, true );
 
-		// Maybe add jQuery event listeners
-		if ( _hasJQuery ) {
-			$( document.body ).on( 'updated_checkout', debouncedUpdateDeliveryOptions );
-		}
-
 		_hasInitialized = true;
 	};
 
