@@ -307,6 +307,21 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
+		// Bail if theme function is not available
+		if ( ! function_exists( 'ot_get_option' ) ) { return $css_variables; }
+
+		$button_accent_background_color = '#303133';
+		$button_accent_color = '#ffffff';
+
+		// Get dark mode option from theme
+		$theme_color_scheme = ot_get_option( '_uncode_general_style' );
+
+		// Change color values for dark mode
+		if ( 'dark' === $theme_color_scheme ) {
+			$button_accent_background_color = '#ffffff';
+			$button_accent_color = '#303133';
+		}
+
 		// Add CSS variables
 		$new_css_variables = array(
 			// Buttons
@@ -328,8 +343,8 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 				'--fluidcheckout--button--font-weight' => '600',
 
 				// Custom theme variables
-				'--fluidcheckout--uncode--accent-color--light-scheme' => '#303133',
-				'--fluidcheckout--uncode--accent-color--dark-scheme' => '#ffffff',
+				'--fluidcheckout--uncode--accent-color' => $button_accent_color,
+				'--fluidcheckout--uncode--accent-background-color' => $button_accent_background_color,
 			),
 		);
 
