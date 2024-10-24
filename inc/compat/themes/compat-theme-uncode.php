@@ -38,6 +38,9 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
+		// Product price HTML
+		remove_filter( 'woocommerce_get_price_html', 'uncode_price_html', 10, 2 );
 	}
 
 	/**
