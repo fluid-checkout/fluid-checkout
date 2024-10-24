@@ -58,9 +58,6 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 	 * Enqueue assets.
 	 */
 	public function enqueue_assets() {
-		// Bail if not showing delivery options
-		if ( ! $this->should_show_delivery_options() ) { return; }
-
 		// Scripts
 		wp_enqueue_script( 'fc-compat-my-parcel-update-handler' );
 	}
@@ -71,6 +68,9 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 	public function maybe_enqueue_assets() {
 		// Bail if not at checkout
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		// Bail if not showing delivery options
+		if ( ! $this->should_show_delivery_options() ) { return; }
 
 		$this->enqueue_assets();
 	}
