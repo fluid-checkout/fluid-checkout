@@ -22,6 +22,10 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
 		// Buttons
 		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
 		add_filter( 'fc_place_order_button_classes', array( $this, 'add_place_order_button_classes' ), 10 );
@@ -197,6 +201,46 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		}
 
 		return $container_info;
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		// Bail if plugin function isn't available
+		if ( ! function_exists( 'ot_get_option' ) ) { return $attributes; }
+
+		// Desktop settings
+		$desktop_settings = '';
+		if ( 'on' === ot_get_option( '_uncode_menu_sticky' ) ) {
+			$desktop_settings = '"md": { "breakpointInitial": 960, "breakpointFinal": 10000, "selector": ".menu-sticky .menu-container" }';
+		}
+
+		// Mobile settings
+		$mobile_settings = '';
+		if ( 'on' === ot_get_option( '_uncode_menu_sticky_mobile' ) ) {
+			$mobile_settings = '"xs": { "breakpointInitial": 0, "breakpointFinal": 959, "selector": ".menu-sticky .menu-container" }';
+		}
+
+		// Only keep non-empty values
+		$settings = array_filter( array( $mobile_settings, $desktop_settings ), function( $value ) {
+			return ! empty( $value );
+		} );
+
+		// Concatenate values with a comma
+		$settings = implode( ', ', $settings );
+
+		// Add the settings to the data attribute
+		$attributes['data-sticky-relative-to'] = "{ {$settings} }";
+
+		return $attributes;
 	}
 
 
