@@ -27,6 +27,7 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
 		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
 		add_filter( 'fc_place_order_button_classes', array( $this, 'add_place_order_button_classes' ), 10 );
 		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_substep_save_button_classes' ), 10 );
@@ -329,6 +330,13 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		$new_css_variables = array(
 			// Buttons
 			':root' => array(
+				'--fluidcheckout--button--primary--border-color' => $button_accent_background_color,
+				'--fluidcheckout--button--primary--background-color' => $button_accent_background_color,
+				'--fluidcheckout--button--primary--text-color' => $button_accent_color,
+				'--fluidcheckout--button--primary--border-color--hover' => $button_accent_background_color,
+				'--fluidcheckout--button--primary--background-color--hover' => $button_accent_color,
+				'--fluidcheckout--button--primary--text-color--hover' => $button_accent_background_color,
+
 				// Form field styles
 				'--fluidcheckout--field--height' => '39.5px',
 				'--fluidcheckout--field--padding-left' => '15px',
