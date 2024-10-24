@@ -87,7 +87,7 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 
 
 	/**
-	 * Add opening tags for inner container from the Hestia theme.
+	 * Add opening tags for inner container from the theme.
 	 */
 	public function add_inner_container_opening_tags() {
 		// Get container info from the theme
@@ -117,7 +117,7 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 	}
 
 	/**
-	 * Add closing tags for inner container from the Hestia theme.
+	 * Add closing tags for inner container from the theme.
 	 */
 	public function add_inner_container_closing_tags() {
 			?>
