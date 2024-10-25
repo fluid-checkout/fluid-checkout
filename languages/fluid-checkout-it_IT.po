@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-03 13:49+0000\n"
-"PO-Revision-Date: 2024-10-25 21:16+0000\n"
+"PO-Revision-Date: 2024-10-25 21:45+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -425,7 +425,7 @@ msgstr "Telefono per la fatturazione"
 
 #: inc/checkout-steps.php:3769
 msgid "Billing to"
-msgstr "Fatturazione a"
+msgstr "Fatturazione"
 
 #: blocks/woocommerce/checkout/block.json:1
 #: build/woocommerce/checkout/block.json:1
