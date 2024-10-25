@@ -307,6 +307,7 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 				'--fluidcheckout--field--height' => '39.5px',
 				'--fluidcheckout--field--padding-left' => '15px',
 				'--fluidcheckout--field--box-shadow' => 'inset 0 2px 1px rgba( 0, 0, 0, 0.025 )',
+				'--fluidcheckout--field--border-width' => '1px',
 				'--fluidcheckout--field--border-radius' => '2px',
 				'--fluidcheckout--field--border-color' => '#eaeaea',
 				'--fluidcheckout--field--font-size' => '15px',

@@ -44,4 +44,5 @@ body.theme-uncode div.woocommerce form .form-row input[type=checkbox],
 body.theme-uncode div.woocommerce form .form-row input[type=radio],
 body.theme-uncode div.woocommerce form .form-row .select2-selection {
   margin-top: 0;
+  border: var(--fluidcheckout--field--border-width, 1px) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
 }

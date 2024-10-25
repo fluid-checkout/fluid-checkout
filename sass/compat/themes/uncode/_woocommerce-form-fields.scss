@@ -18,5 +18,6 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row {
 	input[type="radio"],
 	.select2-selection {
 		margin-top: 0;
+		border: $form-field-border-width solid $form-field-border-color;
 	}
 }
