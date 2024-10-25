@@ -1528,9 +1528,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $step_id  ID of the step.
 	 */
 	public function get_next_step_button_label( $step_id ) {
+		// Get next step args
 		$next_step_args = $this->get_next_step( $step_id );
+
+		// Get default label for next step button
 		/** translators: Next checkout step title */
-		return sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_args[ 'step_title' ] );
+		$button_label = sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_args[ 'step_title' ] );
+
+		// Check whether a specific button label is available for the next step
+		if ( array_key_exists( 'proceed_to_step_button_label', $next_step_args ) ) {
+			$button_label = $next_step_args[ 'proceed_to_step_button_label' ];
+		}
+
+		// Filter to allow changes to the proceed to next step button label
+		$button_label = apply_filters( 'fc_proceed_to_next_step_button_label', $button_label, $step_id, $next_step_args );
+
+		return $button_label;
 	}
 
 
@@ -1552,7 +1565,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  boolean             `true` if the step was successfully registered, `false` otherwise. See the PHP log files to troubleshoot the error.
 	 */
 	public function register_checkout_step( $step_args ) {
-
 		// Check for required step arguments
 		$required_args = array( 'step_id', 'step_title', 'priority', 'render_callback' );
 		if ( count( array_intersect( $required_args, array_keys( $step_args ) ) ) !== count( $required_args ) ) {
@@ -1645,6 +1657,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->register_checkout_step( array(
 			'step_id' => 'contact',
 			'step_title' => apply_filters( 'fc_step_title_contact', _x( 'Contact', 'Checkout step title', 'fluid-checkout' ) ),
+			'proceed_to_step_button_label' => __( 'Proceed to contact', 'fluid-checkout' ),
 			'priority' => 10,
 			'render_callback' => array( $this, 'output_step_contact' ),
 			'is_complete_callback' => array( $this, 'is_step_complete_contact' ),
@@ -1654,6 +1667,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->register_checkout_step( array(
 			'step_id' => 'shipping',
 			'step_title' => apply_filters( 'fc_step_title_shipping', _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ) ),
+			'proceed_to_step_button_label' => __( 'Proceed to shipping', 'fluid-checkout' ),
 			'priority' => 20,
 			'render_callback' => array( $this, 'output_step_shipping' ),
 			// Need to set condition as an anonymous function that returns checks if shipping is needed directly,
@@ -1666,6 +1680,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->register_checkout_step( array(
 			'step_id' => 'billing',
 			'step_title' => apply_filters( 'fc_step_title_billing', _x( 'Billing', 'Checkout step title', 'fluid-checkout' ) ),
+			'proceed_to_step_button_label' => __( 'Proceed to billing', 'fluid-checkout' ),
 			'priority' => $this->get_billing_step_hook_priority(),
 			'render_callback' => array( $this, 'output_step_billing' ),
 			'is_complete_callback' => array( $this, 'is_step_complete_billing' ),
@@ -1675,6 +1690,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->register_checkout_step( array(
 			'step_id' => 'payment',
 			'step_title' => apply_filters( 'fc_step_title_payment', _x( 'Payment', 'Checkout step title', 'fluid-checkout' ) ),
+			'proceed_to_step_button_label' => __( 'Proceed to payment', 'fluid-checkout' ),
 			'priority' => 100,
 			'render_callback' => array( $this, 'output_step_payment' ),
 			'is_complete_callback' => '__return_false', // Payment step is only complete when the order has been placed and the payment has been accepted, during the checkout process it will always be considered 'incomplete'.
