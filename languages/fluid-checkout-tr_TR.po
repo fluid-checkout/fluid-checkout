@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-03 18:58+0000\n"
-"PO-Revision-Date: 2024-10-10 12:47+0000\n"
+"PO-Revision-Date: 2024-10-25 21:10+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.6; wp-6.4.3"
+"X-Loco-Version: 2.6.11; wp-6.6.2"
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "\"Add\" link button"
@@ -183,7 +183,7 @@ msgstr "Teşekkür sayfasına widget alanları ekleyin"
 msgid "Add-ons"
 msgstr "Eklentiler"
 
-#: inc/checkout-steps.php:2627
+#: inc/checkout-steps.php:2643
 msgid "Additional notes"
 msgstr "Ek notlar"
 
@@ -311,7 +311,7 @@ msgstr "Zaten bir hesabınız var mı?"
 msgid "Always show"
 msgstr "Her zaman göster"
 
-#: inc/checkout-steps.php:2399
+#: inc/checkout-steps.php:2415
 msgid "An account will be created with the information provided."
 msgstr "Verdiğiniz bilgilerle yeni bir hesap oluşturulacaktır."
 
@@ -422,7 +422,7 @@ msgstr "Fatura Adresi"
 msgid "Billing phone"
 msgstr "Fatura telefonu"
 
-#: inc/checkout-steps.php:3753
+#: inc/checkout-steps.php:3769
 msgid "Billing to"
 msgstr "Fatura Bilgileri"
 
@@ -483,7 +483,7 @@ msgstr "Sipariş bölümünden önce"
 msgid "Captcha Pro by BestWebSoft"
 msgstr "BestWebSoft'tan Captcha Pro"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:393
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:431
 msgid "Carrier:"
 msgstr "Taşıyıcı:"
 
@@ -523,7 +523,7 @@ msgstr ""
 "Ödeme formundaki sevkiyat adresi bölümü için şirket adı alanının "
 "görünürlüğünü değiştirin."
 
-#: inc/checkout-steps.php:2037
+#: inc/checkout-steps.php:2053
 #, php-format
 msgid "Change: %s"
 msgstr "Değiştir: %s"
@@ -605,32 +605,32 @@ msgstr "Ödeme ilerlemesi"
 msgid "Checkout Sidebar"
 msgstr "Ödeme Sayfası Kenar Çubuğu"
 
-#: inc/checkout-steps.php:1668
+#: inc/checkout-steps.php:1682
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Faturalandırma"
 
-#: inc/checkout-steps.php:1647
+#: inc/checkout-steps.php:1659
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "İletişim"
 
-#: inc/checkout-steps.php:1677
+#: inc/checkout-steps.php:1692
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Ödeme"
 
-#: inc/checkout-steps.php:1656
+#: inc/checkout-steps.php:1669
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Gönderim"
 
-#: inc/checkout-steps.php:2037
+#: inc/checkout-steps.php:2053
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Değiştir"
 
-#: inc/checkout-steps.php:2038
+#: inc/checkout-steps.php:2054
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Değişiklikleri kaydet"
@@ -1016,7 +1016,7 @@ msgstr "Herhangi bir gönderi adresi kaydetmeyin"
 msgid "Don't show this again"
 msgstr "Bunu bir daha gösterme"
 
-#: inc/checkout-steps.php:5287
+#: inc/checkout-steps.php:5303
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 #| msgid "Edit Cart"
 msgid "Edit cart"
@@ -1537,7 +1537,7 @@ msgstr "%1$s olarak oturum açıldı. <a href=\"%2$s\">Çıkış</a>"
 msgid "Logo image"
 msgstr "Logo resmi"
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:73
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:74
 msgid "Mailchimp for WooCommerce"
 msgstr "WooCommerce için Mailchimp"
 
@@ -1605,7 +1605,7 @@ msgstr "Gönderim ve faturalandırma için birden fazla kayıtlı adres."
 msgid "My account layout"
 msgstr "Hesap düzenim"
 
-#: inc/checkout-steps.php:2336
+#: inc/checkout-steps.php:2352
 msgid "My contact"
 msgstr "İletişim"
 
@@ -1634,8 +1634,8 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:3196
-#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:560
+#: inc/checkout-steps.php:3212
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:563
 msgid "Not selected yet."
 msgstr "Henüz seçilmedi."
 
@@ -1678,7 +1678,7 @@ msgid ""
 msgstr ""
 "Yalnızca ödeme sayfasında Impreza tema başlığını kullanırken geçerlidir."
 
-#: inc/checkout-shipping-phone-field.php:94
+#: inc/checkout-shipping-phone-field.php:105
 msgid "Only used for shipping-related questions."
 msgstr " Sadece gönderim ile ilgili sorular içindir."
 
@@ -1739,7 +1739,7 @@ msgstr "Sipariş ilerleme durumu"
 msgid "Order status"
 msgstr "Sipariş durumu"
 
-#: inc/checkout-steps.php:5222 inc/admin/admin-settings-cart.php:131
+#: inc/checkout-steps.php:5238 inc/admin/admin-settings-cart.php:131
 #: inc/admin/admin-settings-order-received.php:177
 #: inc/admin/admin-settings-checkout.php:248
 msgid "Order summary"
@@ -1804,7 +1804,7 @@ msgstr ""
 "Fluid Checkout üstbilgisi ve altbilgisi kullanılırken Woodmart temasından "
 "ödeme adımları bölümünün çıktısını alın."
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:81
 msgid ""
 "Override the position for the subscribe checkbox on the checkout page and "
 "always display it on the contact step"
@@ -1820,7 +1820,7 @@ msgstr "Sayfa arka plan rengi"
 msgid "Parcel terminal"
 msgstr "Koli terminali"
 
-#: inc/checkout-steps.php:5001
+#: inc/checkout-steps.php:5017
 msgid "Payment method"
 msgstr "Ödeme yöntemi"
 
@@ -1832,7 +1832,7 @@ msgstr "Alım Tarihi"
 msgid "Pickup point"
 msgstr "Teslim alma noktası"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:412
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:450
 #: inc/compat/plugins/compat-plugin-seur.php:382
 #: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:313
 #: inc/compat/plugins/compat-plugin-omniva-woocommerce.php:297
@@ -1840,7 +1840,7 @@ msgstr "Teslim alma noktası"
 msgid "Pickup point not selected yet."
 msgstr "Teslim noktası henüz seçilmedi."
 
-#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:400
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:438
 #: inc/compat/plugins/compat-plugin-seur.php:387
 #: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:307
 #: inc/compat/plugins/compat-plugin-omniva-woocommerce.php:312
@@ -1856,10 +1856,26 @@ msgid "Prevent automatic selection of the first shipping method"
 msgstr "İlk gönderi yönteminin otomatik olarak seçilmesini önleyin"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1533
+#: inc/checkout-steps.php:1536
 #, php-format
 msgid "Proceed to %s"
 msgstr "%s'ye ilerleyin"
+
+#: inc/checkout-steps.php:1683
+msgid "Proceed to billing"
+msgstr "Faturalandırmaya devam edin"
+
+#: inc/checkout-steps.php:1660
+msgid "Proceed to contact"
+msgstr "İletişim için devam edin"
+
+#: inc/checkout-steps.php:1693
+msgid "Proceed to payment"
+msgstr "Ödemeye devam edin"
+
+#: inc/checkout-steps.php:1670
+msgid "Proceed to shipping"
+msgstr "Gönderime devam edin"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1956,11 +1972,11 @@ msgstr ""
 msgid "Required"
 msgstr "Gerekli"
 
-#: inc/checkout-steps.php:3983
+#: inc/checkout-steps.php:3999
 msgid "Same as billing address"
 msgstr "Fatura adresi ile aynı"
 
-#: inc/checkout-steps.php:3938
+#: inc/checkout-steps.php:3954
 msgid "Same as shipping address"
 msgstr "Sevkiyat adresiyle aynı"
 
@@ -2086,7 +2102,7 @@ msgstr "Nakliye"
 msgid "Shipping address"
 msgstr "Nakliye adresi"
 
-#: inc/checkout-steps.php:2603
+#: inc/checkout-steps.php:2619
 msgid "Shipping method"
 msgstr "Kargo"
 
@@ -2094,12 +2110,12 @@ msgstr "Kargo"
 msgid "Shipping methods"
 msgstr "Gönderi yöntemleri"
 
-#: inc/checkout-shipping-phone-field.php:93
+#: inc/checkout-shipping-phone-field.php:104
 #: inc/admin/admin-settings-checkout.php:577
 msgid "Shipping phone"
 msgstr "Telefon numarası"
 
-#: inc/checkout-steps.php:2579
+#: inc/checkout-steps.php:2595
 msgid "Shipping to"
 msgstr "Alıcı Bilgileri"
 
@@ -2175,30 +2191,30 @@ msgid "Split"
 msgstr "Bölünmüş"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1800
+#: inc/checkout-steps.php:1816
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Adım %1$s / %2$s"
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:79
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
 msgid "Subscribe checkbox"
 msgstr "Abone ol onay kutusu"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2781
+#: inc/checkout-steps.php:2797
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2786
+#: inc/checkout-steps.php:2802
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:2150
+#: inc/checkout-steps.php:2166
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Yok."
