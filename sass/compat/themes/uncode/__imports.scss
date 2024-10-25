@@ -12,7 +12,9 @@ $_body-theme-selector:                 '.theme-uncode' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"buttons--checkout",
 	"checkout-content-area",
+	"checkout-coupon-code",
 	"checkout-place-order",
 	"tom-select-control",
 	"woocommerce-form-fields";

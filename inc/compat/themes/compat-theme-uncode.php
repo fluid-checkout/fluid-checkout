@@ -29,9 +29,6 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
-		add_filter( 'fc_place_order_button_classes', array( $this, 'add_place_order_button_classes' ), 10 );
-		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_substep_save_button_classes' ), 10 );
-		add_filter( 'fc_next_step_button_classes', array( $this, 'add_next_step_button_classes' ), 10 );
 		remove_filter( 'woocommerce_order_button_html', 'uncode_woocommerce_order_button_html', 10 );
 
 		// Dark mode
@@ -250,41 +247,6 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 
 
 	/**
-	 * Add classes to the place order button.
-	 *
-	 * @param  string  $class  Button classes.
-	 */
-	public function add_place_order_button_classes( $class ) {
-		$class .= ' btn checkout-button btn-default';
-
-		return $class;
-	}
-
-	/**
-	 * Add classes to the substep save button.
-	 *
-	 * @param  string  $class  Button classes.
-	 */
-	public function add_substep_save_button_classes( $class ) {
-		$class .= ' btn';
-
-		return $class;
-	}
-
-	/**
-	 * Add classes to the next step button.
-	 *
-	 * @param  array  $class  Button classes.
-	 */
-	public function add_next_step_button_classes( $class ) {
-		$class = array_merge( $class, array( 'btn', 'checkout-button', 'btn-default' ) );
-
-		return $class;
-	}
-
-
-
-	/**
 	 * Maybe set dark mode enabled.
 	 * 
 	 * @param  array  $is_dark_mode  Whether it is dark mode or not.
@@ -314,29 +276,33 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		// Bail if theme function is not available
 		if ( ! function_exists( 'ot_get_option' ) ) { return $css_variables; }
 
+		// Default values
 		$button_accent_background_color = '#303133';
 		$button_accent_color = '#ffffff';
-
-		// Get dark mode option from theme
-		$theme_color_scheme = ot_get_option( '_uncode_general_style' );
+		$button_font_size = '12px';
+		$button_font_weight = '600';
+		$button_text_transform = 'uppercase';
 
 		// Change color values for dark mode
-		if ( 'dark' === $theme_color_scheme ) {
+		if ( 'dark' === ot_get_option( '_uncode_general_style' ) ) {
 			$button_accent_background_color = '#ffffff';
 			$button_accent_color = '#303133';
 		}
 
+		// Maybe get values from the theme settings
+		if ( ! empty( ot_get_option( '_uncode_buttons_font_size' ) ) ) {
+			$button_font_size = ot_get_option( '_uncode_buttons_font_size' ) . 'px';
+		}
+		if ( ! empty( ot_get_option( '_uncode_buttons_font_weight' ) ) ) {
+			$button_font_weight = ot_get_option( '_uncode_buttons_font_weight' );
+		}
+		if ( ! empty( ot_get_option( '_uncode_buttons_text_transform' ) ) ) {
+			$button_text_transform = ot_get_option( '_uncode_buttons_text_transform' );
+		}
+
 		// Add CSS variables
 		$new_css_variables = array(
-			// Buttons
 			':root' => array(
-				'--fluidcheckout--button--primary--border-color' => $button_accent_background_color,
-				'--fluidcheckout--button--primary--background-color' => $button_accent_background_color,
-				'--fluidcheckout--button--primary--text-color' => $button_accent_color,
-				'--fluidcheckout--button--primary--border-color--hover' => $button_accent_background_color,
-				'--fluidcheckout--button--primary--background-color--hover' => $button_accent_color,
-				'--fluidcheckout--button--primary--text-color--hover' => $button_accent_background_color,
-
 				// Form field styles
 				'--fluidcheckout--field--height' => '39.5px',
 				'--fluidcheckout--field--padding-left' => '15px',
@@ -348,12 +314,21 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 				// Checkout validation styles
 				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '20px',
 
+				// Primary button colors
+				'--fluidcheckout--button--primary--border-color' => $button_accent_background_color,
+				'--fluidcheckout--button--primary--background-color' => $button_accent_background_color,
+				'--fluidcheckout--button--primary--text-color' => $button_accent_color,
+				'--fluidcheckout--button--primary--border-color--hover' => $button_accent_background_color,
+				'--fluidcheckout--button--primary--background-color--hover' => $button_accent_color,
+				'--fluidcheckout--button--primary--text-color--hover' => $button_accent_background_color,
+
 				// Button design styles
 				'--fluidcheckout--button--border-radius' => '2px',
-				'--fluidcheckout--button--font-size' => '12px',
-				'--fluidcheckout--button--font-weight' => '600',
+				'--fluidcheckout--button--font-size' => $button_font_size,
+				'--fluidcheckout--button--font-weight' => $button_font_weight,
 
 				// Custom theme variables
+				'--fluidcheckout--uncode--button--text-transform' => $button_text_transform,
 				'--fluidcheckout--uncode--accent-color' => $button_accent_color,
 				'--fluidcheckout--uncode--accent-background-color' => $button_accent_background_color,
 			),
