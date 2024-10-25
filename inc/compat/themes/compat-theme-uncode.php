@@ -277,16 +277,16 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		if ( ! function_exists( 'ot_get_option' ) ) { return $css_variables; }
 
 		// Default values
-		$button_accent_background_color = '#303133';
-		$button_accent_color = '#ffffff';
+		$accent_background_color = '#303133';
+		$accent_color = '#ffffff';
 		$button_font_size = '12px';
 		$button_font_weight = '600';
 		$button_text_transform = 'uppercase';
 
 		// Change color values for dark mode
 		if ( 'dark' === ot_get_option( '_uncode_general_style' ) ) {
-			$button_accent_background_color = '#ffffff';
-			$button_accent_color = '#303133';
+			$accent_background_color = '#ffffff';
+			$accent_color = '#303133';
 		}
 
 		// Maybe get values from the theme settings
@@ -315,12 +315,12 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '20px',
 
 				// Primary button colors
-				'--fluidcheckout--button--primary--border-color' => $button_accent_background_color,
-				'--fluidcheckout--button--primary--background-color' => $button_accent_background_color,
-				'--fluidcheckout--button--primary--text-color' => $button_accent_color,
-				'--fluidcheckout--button--primary--border-color--hover' => $button_accent_background_color,
-				'--fluidcheckout--button--primary--background-color--hover' => $button_accent_color,
-				'--fluidcheckout--button--primary--text-color--hover' => $button_accent_background_color,
+				'--fluidcheckout--button--primary--border-color' => $accent_background_color,
+				'--fluidcheckout--button--primary--background-color' => $accent_background_color,
+				'--fluidcheckout--button--primary--text-color' => $accent_color,
+				'--fluidcheckout--button--primary--border-color--hover' => $accent_background_color,
+				'--fluidcheckout--button--primary--background-color--hover' => $accent_color,
+				'--fluidcheckout--button--primary--text-color--hover' => $accent_background_color,
 
 				// Button design styles
 				'--fluidcheckout--button--border-radius' => '2px',
@@ -329,8 +329,8 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 
 				// Custom theme variables
 				'--fluidcheckout--uncode--button--text-transform' => $button_text_transform,
-				'--fluidcheckout--uncode--accent-color' => $button_accent_color,
-				'--fluidcheckout--uncode--accent-background-color' => $button_accent_background_color,
+				'--fluidcheckout--uncode--accent-color' => $accent_color,
+				'--fluidcheckout--uncode--accent-background-color' => $accent_background_color,
 			),
 		);
 
